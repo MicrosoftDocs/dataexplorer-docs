@@ -901,6 +901,10 @@
       href: ./kusto/query/gettypefunction.md
     - name: getyear()
       href: ./kusto/query/getyearfunction.md
+    - name: has_ipv4()
+      href: ./kusto/query/has-ipv4-function.md
+    - name: has_ipv4_prefix()
+      href: ./kusto/query/has-ipv4-prefix-function.md
     - name: hash()
       href: ./kusto/query/hashfunction.md
     - name: hash_combine()
