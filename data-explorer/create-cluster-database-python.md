@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2019
 ---
 
@@ -17,6 +17,7 @@ ms.date: 06/03/2019
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
+> * [Go](create-cluster-database-go.md)
 > * [ARM template](create-cluster-database-resource-manager.md)
 
 In this article, you create an Azure Data Explorer cluster and database by using Python. Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, first create a cluster, and create one or more databases in that cluster. Then ingest, or load, data into a database so that you can run queries against it.
@@ -27,7 +28,7 @@ In this article, you create an Azure Data Explorer cluster and database by using
 
 * [Python 3.4+](https://www.python.org/downloads/).
 
-* [An Azure AD Application and service principal that can access resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Get values for `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
+* [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Get values for `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
 ## Install Python package
 
@@ -38,7 +39,7 @@ pip install azure-common
 pip install azure-mgmt-kusto
 ```
 ## Authentication
-For running the examples in this article, we need an Azure AD Application and service principal that can access resources. Check [create an Azure AD application](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) to create a free Azure AD Application and add role assignment at the subscription scope. It also shows how to get the `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
+For running the examples in this article, we need an Azure AD Application and service principal that can access resources. Check [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) to create a free Azure AD Application and add role assignment at the subscription scope. It also shows how to get the `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
 ## Create the Azure Data Explorer cluster
 
@@ -70,11 +71,12 @@ For running the examples in this article, we need an Azure AD Application and se
     cluster_name = 'mykustocluster'
     cluster = Cluster(location=location, sku=AzureSku(name=sku_name, capacity=capacity, tier=tier))
     
-    kustoManagementClient = KustoManagementClient(credentials, subscription_id)
-    
-    cluster_operations = kustoManagementClient.clusters
+    kusto_management_client = KustoManagementClient(credentials, subscription_id)
+
+    cluster_operations = kusto_management_client.clusters
     
     poller = cluster_operations.create_or_update(resource_group_name, cluster_name, cluster)
+    poller.wait()
     ```
 
    |**Setting** | **Suggested value** | **Field description**|
@@ -86,12 +88,12 @@ For running the examples in this article, we need an Azure AD Application and se
    | resource_group_name | *testrg* | The resource group name where the cluster will be created. |
 
     > [!NOTE]
-    > **Create a cluster** is a long running operation. Method **create_or_update** returns an instance of LROPoller, see [LROPoller class](/python/api/msrest/msrest.polling.lropoller?view=azure-python) to get more information.
+    > **Create a cluster** is a long running operation. Method **create_or_update** returns an instance of LROPoller, see [LROPoller class](/python/api/msrest/msrest.polling.lropoller) to get more information.
 
 1. Run the following command to check whether your cluster was successfully created:
 
     ```Python
-    cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
+    cluster_operations.get(resource_group_name = resource_group_name, cluster_name= cluster_name, custom_headers=None, raw=False)
     ```
 
 If the result contains `provisioningState` with the `Succeeded` value, then the cluster was successfully created.
@@ -101,24 +103,44 @@ If the result contains `provisioningState` with the `Succeeded` value, then the 
 1. Create your database by using the following command:
 
     ```Python
-    from azure.mgmt.kusto.models import Database
+    from azure.mgmt.kusto import KustoManagementClient
+    from azure.common.credentials import ServicePrincipalCredentials
+    from azure.mgmt.kusto.models import ReadWriteDatabase
 	from datetime import timedelta
+
+    #Directory (tenant) ID
+    tenant_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Application ID
+    client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Client Secret
+    client_secret = "xxxxxxxxxxxxxx"
+    subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    credentials = ServicePrincipalCredentials(
+        client_id=client_id,
+        secret=client_secret,
+        tenant=tenant_id
+    )
 	
-	softDeletePeriod = timedelta(days=3650)
-	hotCachePeriod = timedelta(days=3650)
-	databaseName="mykustodatabase"
-	
-	database_operations = kusto_management_client.databases	
-	_database = ReadWriteDatabase(location=location,
-						soft_delete_period=softDeletePeriod,
-						hot_cache_period=hotCachePeriod)
-	
-	#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
-    poller =database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName, parameters = _database)
+    location = 'Central US'
+    resource_group_name = 'testrg'
+    cluster_name = 'mykustocluster'
+    soft_delete_period = timedelta(days=3650)
+    hot_cache_period = timedelta(days=3650)
+    database_name = "mykustodatabase"
+
+    kusto_management_client = KustoManagementClient(credentials, subscription_id)
+    
+    database_operations = kusto_management_client.databases
+    database = ReadWriteDatabase(location=location,
+     					soft_delete_period=soft_delete_period,
+     					hot_cache_period=hot_cache_period)
+    
+    poller = database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = cluster_name, database_name = database_name, parameters = database)
+    poller.wait()
     ```
 
-        [!NOTE]
-        If you are using Python version 0.4.0 or below, use Database instead of ReadWriteDatabase.
+    > [!NOTE]
+    > If you are using Python version 0.4.0 or below, use Database instead of ReadWriteDatabase.
 
    |**Setting** | **Suggested value** | **Field description**|
    |---|---|---|
@@ -131,7 +153,7 @@ If the result contains `provisioningState` with the `Succeeded` value, then the 
 1. Run the following command to see the database that you created:
 
     ```Python
-    database_operations.get(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName)
+    database_operations.get(resource_group_name = resource_group_name, cluster_name = cluster_name, database_name = database_name)
     ```
 
 You now have a cluster and a database.
@@ -142,7 +164,7 @@ You now have a cluster and a database.
 * To clean up resources, delete the cluster. When you delete a cluster, it also deletes all the databases in it. Use the following command to delete your cluster:
 
     ```Python
-    cluster_operations.delete(resource_group_name = resource_group_name, cluster_name = clusterName)
+    cluster_operations.delete(resource_group_name = resource_group_name, cluster_name = cluster_name)
     ```
 
 ## Next steps

@@ -1,11 +1,11 @@
 ---
 title: Configure customer-managed-keys using C#
-description: This article describes how to configure customer-managed keys encryption on your data in Azure Data Explorer.
+description: 'This article describes how to configure customer-managed keys to encrypt Azure Data Explorer data using C#.'
 author: orspod
 ms.author: orspodek
 ms.reviewer: itsagui
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/06/2020
 ---
 
@@ -67,9 +67,10 @@ By default, Azure Data Explorer encryption uses Microsoft-managed keys. Configur
     var resourceGroupName = "testrg";
     var clusterName = "mykustocluster";
     var keyName = "myKey";
-    var keyVersion = "5b52b20e8d8a42e6bd7527211ae32654";
+    var keyVersion = "5b52b20e8d8a42e6bd7527211ae32654"; // Optional, leave as NULL for the latest version of the key.
     var keyVaultUri = "https://mykeyvault.vault.azure.net/";
-    var keyVaultProperties = new KeyVaultProperties (keyName, keyVersion, keyVaultUri);
+    var keyVaultIdentity = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/identityResourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"; // Use NULL if you want to use system assigned identity.
+    var keyVaultProperties = new KeyVaultProperties(keyName, keyVaultUri, keyVersion, keyVaultIdentity);
     var clusterUpdate = new ClusterUpdate(keyVaultProperties: keyVaultProperties);
     await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdate);
     ```
@@ -92,5 +93,3 @@ When you create a new version of a key, you'll need to update the cluster to use
 * [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md)
 * [Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal](cluster-disk-encryption.md) by enabling encryption at rest.
 * [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md)
-
-

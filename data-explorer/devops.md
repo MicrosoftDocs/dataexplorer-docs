@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/05/2019
 
 #Customer intent: I want to use Azure DevOps to create a release pipeline and deploy
@@ -17,20 +17,20 @@ ms.date: 05/05/2019
 [Azure DevOps Services](https://azure.microsoft.com/services/devops/) provides development collaboration tools such as high-performance pipelines, free private Git repositories, configurable Kanban boards, and extensive automated and continuous testing capabilities. [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) is an Azure DevOps capability that enables you to manage CI/CD to deploy your code with high-performance pipelines that work with any language, platform, and cloud.
 [Azure Data Explorer - Admin Commands](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) is the Azure Pipelines task that enables you to create release pipelines and deploy your database changes to your Azure Data Explorer databases. It's available for free in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 
-This document describes a simple example on the use of the **Azure Data Explorer – Admin Commands** task to deploy your schema changes to your database. For complete CI/CD pipelines, refer to [Azure DevOps documentation](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops#vsts).
+This document describes a simple example on the use of the **Azure Data Explorer – Admin Commands** task to deploy your schema changes to your database. For complete CI/CD pipelines, refer to [Azure DevOps documentation](/azure/devops/user-guide/what-is-azure-devops#vsts).
 
 ## Prerequisites
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Azure Data Explorer Cluster setup:
     * An [Azure Data Explorer cluster and database](create-cluster-database-portal.md).
-    * Create Azure Active Directory (Azure AD) app by [provisioning an Azure AD application](kusto/management/access-control/how-to-provision-aad-app.md).
+    * Create Azure Active Directory (Azure AD) app by [provisioning an Azure AD application](./provision-azure-ad-app.md).
     * Grant access to your Azure AD App on your Azure Data Explorer database by [managing Azure Data Explorer database permissions](manage-database-permissions.md).
 * Azure DevOps setup:
-    * [Sign up for a free organization](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops)
-    * [Create an organization](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-    * [Create a project in Azure DevOps](/azure/devops/organizations/projects/create-project?view=azure-devops)
-    * [Code with Git](/azure/devops/user-guide/code-with-git?view=azure-devops)
+    * [Sign up for a free organization](/azure/devops/user-guide/sign-up-invite-teammates)
+    * [Create an organization](/azure/devops/organizations/accounts/create-organization)
+    * [Create a project in Azure DevOps](/azure/devops/organizations/projects/create-project)
+    * [Code with Git](/azure/devops/user-guide/code-with-git)
 
 ## Create folders
 
@@ -39,7 +39,7 @@ Create the following sample folders (*Functions*, *Policies*, *Tables*) in your 
 ![Create folders](media/devops/create-folders.png)
 
 > [!TIP]
-> When creating your own workflow, we recommend making your code idempotent. For example, use [.create-merge table](kusto/management/create-merge-table-command.md) instead of [.create table](kusto/management/create-table-command.md), and use [.create-or-alter](kusto/management/create-alter-function.md) function instead of [.create](kusto/management/create-function.md) function.
+> When creating your own workflow, we recommend making your code idempotent. For example, use [`.create-merge table`](kusto/management/create-merge-table-command.md) instead of [`.create table`](kusto/management/create-table-command.md), and use [`.create-or-alter`](kusto/management/create-alter-function.md) function instead of [`.create`](kusto/management/create-function.md) function.
 
 ## Create a release pipeline
 

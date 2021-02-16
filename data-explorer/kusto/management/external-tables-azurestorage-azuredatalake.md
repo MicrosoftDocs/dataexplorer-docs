@@ -14,12 +14,14 @@ ms.date: 03/24/2020
 
 The following command describes how to create an external table located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2. 
 
+For an introduction to the external Azure Storage tables feature, see [Query data in Azure Data Lake using Azure Data Explorer](../../data-lake-query-data.md).
+
 ## .create or .alter external table
 
 **Syntax**
 
-(`.create` | `.alter` | `.create-or-alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
-`kind` `=` (`blob` | `adl`)  
+(`.create` `|` `.alter` `|` `.create-or-alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
+`kind` `=` (`blob` `|` `adl`)  
 [`partition` `by` `(` *[Partitions](#partitions)* `)` [`pathformat` `=` `(` *[PathFormat](#path-format)* `)`]]  
 `dataformat` `=` *[Format](#format)*  
 `(` *[StorageConnectionString](#connection-string)* [`,` ...] `)`   
@@ -76,11 +78,12 @@ Partitions list is any combination of partition columns, specified using one of 
   *PartitionName* `:` `datetime` `=` (`startofyear` \| `startofmonth` \| `startofweek` \| `startofday`) `(` *ColumnName* `)`  
   *PartitionName* `:` `datetime` `=` `bin` `(` *ColumnName* `,` *TimeSpan* `)`
 
+To check partitioning definition correctness, use the property `sampleUris` or `filesPreview` when creating an external table.
 
 <a name="path-format"></a>
 *PathFormat*
 
-External data URI file path format, which can be specified in addition to partitions. Path format is a sequence of partition elements and text separators:
+External data folder URI path format, which can be specified in addition to partitions. Path format is a sequence of partition elements and text separators:
 
 &nbsp;&nbsp;[*StringSeparator*] *Partition* [*StringSeparator*] [*Partition* [*StringSeparator*] ...]  
 
@@ -108,6 +111,11 @@ By default, datetime values are rendered using the following formats:
 
 If *PathFormat* is omitted from the external table definition, it's assumed that all partitions, in exactly the same order as they're defined, are separated using `/` separator. Partitions are rendered using their default string presentation.
 
+To check path format definition correctness, use the property `sampleUris` or `filesPreview` when creating an external table.
+
+> [!NOTE]
+> *PathFormat* can only describe the storage "folder" URI path. To filter by file name, use `NamePrefix` and/or `FileExtension` external table properties.
+
 <a name="format"></a>
 *Format*
 
@@ -133,12 +141,14 @@ See [storage connection strings](../api/connection-strings/storage.md) for detai
 | `folder`         | `string` | Table's folder                                                                     |
 | `docString`      | `string` | String documenting the table                                                       |
 | `compressed`     | `bool`   | If set, indicates whether the files are compressed as `.gz` files (used in [export scenario](data-export/export-data-to-an-external-table.md) only) |
-| `includeHeaders` | `string` | For CSV or TSV files, indicates whether files contain a header                     |
+| `includeHeaders` | `string` | For delimited text formats (CSV, TSV, ...), indicates whether files contain a header. Possible values are: `All` (all files contain a header), `FirstFile` (first file in a folder contains a header), `None` (no files contain a header). |
 | `namePrefix`     | `string` | If set, indicates the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
 | `fileExtension`  | `string` | If set, indicates file extensions of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
 | `encoding`       | `string` | Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
-| `sampleUris`     | `bool`   | If set, the command result provides several examples of external data files URI as they are expected by the external table definition. |
+| `sampleUris`     | `bool`   | If set, the command result provides several examples of simulated external data files URI as they are expected by the external table definition. This option helps validate whether the *[Partitions](#partitions)* and *[PathFormat](#path-format)* parameters are defined properly. |
+| `filesPreview`   | `bool`   | If set, one of the command result tables contains a preview of [.show external table artifacts](#show-external-table-artifacts) command. Like `sampleUri`, the option helps validate the *[Partitions](#partitions)* and *[PathFormat](#path-format)* parameters of external table definition. |
 | `validateNotEmpty` | `bool`   | If set, the connection strings are validated for having content in them. The command will fail if the specified URI location doesn't exist, or if there are insufficient permissions to access it. |
+| `dryRun` | `bool` | If set, the external table definition is not persisted. This option is useful for validating the external table definition, especially in conjunction with the `filesPreview` or `sampleUris` parameter. |
 
 > [!TIP]
 > To learn more about the role `namePrefix` and `fileExtension` properties play in data file filtering during query, see [file filtering logic](#file-filtering) section.
@@ -209,6 +219,14 @@ dataformat=csv
 with (fileExtension = ".txt")
 ```
 
+To filter by partition columns in a query, specify original column name in query predicate:
+
+```kusto
+external_table("ExternalTable")
+ | where Timestamp between (datetime(2020-01-01) .. datetime(2020-02-01))
+ | where CustomerName in ("John.Doe", "Ivan.Ivanov")
+```
+
 **Sample Output**
 
 |TableName|TableType|Folder|DocString|Properties|ConnectionStrings|Partitions|PathFormat|
@@ -234,8 +252,13 @@ dataformat=parquet
 )
 ```
 
-> [!NOTE]
-> Currently, virtual columns aren't supported for the following data formats: `CSV`, `TSV`, `TSVE`, `SCsv`, `SOHsv`, `PSV`, `RAW` and `TXT`.
+To filter by virtual columns in a query, specify partition names in query predicate:
+
+```kusto
+external_table("ExternalTable")
+ | where Date between (datetime(2020-01-01) .. datetime(2020-02-01))
+ | where CustomerName in ("John.Doe", "Ivan.Ivanov")
+```
 
 <a name="file-filtering"></a>
 **File filtering logic**
@@ -253,7 +276,7 @@ When querying an external table, the query engine improves performance by filter
 Once all the conditions are met, the file is fetched and processed by the query engine.
 
 > [!NOTE]
-> Initial URI pattern is built using query predicate values. This works best for a limited set of string values as well as for a closed time ranges. 
+> Initial URI pattern is built using query predicate values. This works best for a limited set of string values as well as for a closed time ranges.
 
 ## .show external table artifacts
 
@@ -273,6 +296,8 @@ where *MaxResults* is an optional parameter, which can be set to limit the numbe
 | Output parameter | Type   | Description                       |
 |------------------|--------|-----------------------------------|
 | Uri              | string | URI of external storage data file |
+| Size             | long   | File length in bytes              |
+| Partition        | dynamic | Dynamic object describing file partitions for partitioned external table |
 
 > [!TIP]
 > Iterating on all files referenced by an external table can be quite costly, depending on the number of files. Make sure to use `limit` parameter if you just want to see some URI examples.
@@ -285,20 +310,30 @@ where *MaxResults* is an optional parameter, which can be set to limit the numbe
 
 **Output:**
 
-| Uri                                                                     |
-|-------------------------------------------------------------------------|
-| `https://storageaccount.blob.core.windows.net/container1/folder/file.csv` |
+| Uri                                                                     | Size | Partition |
+|-------------------------------------------------------------------------| ---- | --------- |
+| `https://storageaccount.blob.core.windows.net/container1/folder/file.csv` | 10743 | `{}`   |
+
+
+For partitioned table, `Partition` column will contain extracted partition values:
+
+**Output:**
+
+| Uri                                                                     | Size | Partition |
+|-------------------------------------------------------------------------| ---- | --------- |
+| `https://storageaccount.blob.core.windows.net/container1/customer=john.doe/dt=20200101/file.csv` | 10743 | `{"Customer": "john.doe", "Date": "2020-01-01T00:00:00.0000000Z"}` |
+
 
 ## .create external table mapping
 
-`.create` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* *MappingInJsonFormat*
+`.create` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
 
 Creates a new mapping. For more information, see [Data Mappings](./mappings.md#json-mapping).
 
 **Example** 
  
 ```kusto
-.create external table MyExternalTable json mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
+.create external table MyExternalTable mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
 ```
 
 **Example output**
@@ -309,14 +344,14 @@ Creates a new mapping. For more information, see [Data Mappings](./mappings.md#j
 
 ## .alter external table mapping
 
-`.alter` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* *MappingInJsonFormat*
+`.alter` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
 
 Alters an existing mapping. 
  
 **Example** 
  
 ```kusto
-.alter external table MyExternalTable json mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
+.alter external table MyExternalTable mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
 ```
 
 **Example output**
@@ -327,18 +362,18 @@ Alters an existing mapping.
 
 ## .show external table mappings
 
-`.show` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* 
+`.show` `external` `table` *ExternalTableName* `mapping` *MappingName* 
 
-`.show` `external` `table` *ExternalTableName* `json` `mappings`
+`.show` `external` `table` *ExternalTableName* `mappings`
 
 Show the mappings (all or the one specified by name).
  
 **Example** 
  
 ```kusto
-.show external table MyExternalTable json mapping "Mapping1" 
+.show external table MyExternalTable mapping "Mapping1" 
 
-.show external table MyExternalTable json mappings 
+.show external table MyExternalTable mappings 
 ```
 
 **Example output**
@@ -349,16 +384,17 @@ Show the mappings (all or the one specified by name).
 
 ## .drop external table mapping
 
-`.drop` `external` `table` *ExternalTableName* `json` `mapping` *MappingName* 
+`.drop` `external` `table` *ExternalTableName* `mapping` *MappingName* 
 
 Drops the mapping from the database.
  
 **Example** 
  
 ```kusto
-.drop external table MyExternalTable json mapping "Mapping1" 
+.drop external table MyExternalTable mapping "Mapping1" 
 ```
 ## Next steps
 
-* [External table general control commands](externaltables.md)
-* [Create and alter external SQL tables](external-sql-tables.md)
+* [Query external tables](../../data-lake-query-data.md).
+* [Export data to an external table](data-export/export-data-to-an-external-table.md).
+* [Continuous data export to an external table](data-export/continuous-data-export.md).

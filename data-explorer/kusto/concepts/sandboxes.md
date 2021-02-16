@@ -60,7 +60,8 @@ Some of the  limitations can be controlled using a cluster-level [sandbox policy
 
 ## Errors
 
-|Code                      |Message                                                                                        |Potential reason                                                                                                    |
-|--------------------------|-----------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
-|E_SB_QUERY_THROTTLED_ERROR|The sandboxed query was aborted because of throttling. Retrying after some backoff might succeed   |There are no available sandboxes on the target node. New sandboxes should become available in a few seconds     |
-|E_SB_QUERY_THROTTLED_ERROR|Sandboxes of kind '{kind}' haven't yet been initialized                       |The sandbox policy has recently changed. New sandboxes obeying the new policy will become available in a few seconds           |
+|ErrorCode                 |Status                     |Message                                                                                            |Potential reason                                                                                                    |
+|--------------------------|---------------------------|---------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+|E_SB_QUERY_THROTTLED_ERROR|TooManyRequests (429)      |The sandboxed query was aborted because of throttling. Retrying after some backoff might succeed   |There are no available sandboxes on the target node. New sandboxes should become available in a few seconds         |
+|E_SB_QUERY_THROTTLED_ERROR|TooManyRequests (429)      |Sandboxes of kind '{kind}' haven't yet been initialized                                            |The sandbox policy has recently changed. New sandboxes obeying the new policy will become available in a few seconds|
+|                          |InternalServiceError (520) |The sandboxed query was aborted due to a failure in initializing sandboxes                         |An unexpected infrastructure failure.                         |

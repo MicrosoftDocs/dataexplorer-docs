@@ -4,7 +4,7 @@ description: This article describes set_has_element() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/23/2020
@@ -38,6 +38,6 @@ print arr=dynamic(["this", "is", "an", "example"])
 |---|
 |1|
 
-**See also**
+## See also
 
 Use [`array_index_of(arr, value)`](arrayindexoffunction.md) to find the position at which the value exists in the array. Both functions are equally performant.

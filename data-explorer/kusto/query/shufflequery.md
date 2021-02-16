@@ -4,7 +4,7 @@ description: This article describes Shuffle query in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -16,10 +16,6 @@ Shuffle query is a semantic-preserving transformation for a set of operators tha
 Operators that support shuffling in Kusto are [join](joinoperator.md), [summarize](summarizeoperator.md), and [make-series](make-seriesoperator.md).
 
 Set shuffle query strategy using the query parameter `hint.strategy = shuffle` or `hint.shufflekey = <key>`.
-
-Define a [data partitioning policy](../management/partitioningpolicy.md) on your table. 
-
-Set `shufflekey` as the table's hash partition key for better performance, as the amount of data required to move across cluster nodes is reduced.
 
 ## Syntax
 

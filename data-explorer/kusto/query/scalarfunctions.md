@@ -78,9 +78,18 @@ ms.date: 05/27/2020
 |[array_iif()](arrayifffunction.md)|Applies element-wise iif function on arrays.|
 |[array_index_of()](arrayindexoffunction.md)|Searches the array for the specified item, and returns its position.|
 |[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
+|[array_reverse()](array-reverse-function.md)|Reverses the order of the elements in a dynamic array.|
+|[array_rotate_left()](array_rotate_leftfunction.md)|Rotates values inside a dynamic array to the left.|
+|[array_rotate_right()](array_rotate_rightfunction.md)|Rotates values inside a dynamic array to the right.|
+|[array_shift_left()](array_shift_leftfunction.md)|Shifts values inside a dynamic array to the left.|
+|[array_shift_right()](array_shift_rightfunction.md)|Shifts values inside a dynamic array to the right.|
 |[array_slice()](arrayslicefunction.md)|Extracts a slice of a dynamic array.|
+|[array_sort_asc()](arraysortascfunction.md)|Sorts a collection of arrays in ascending order.|
+|[array_sort_desc()](arraysortdescfunction.md)|Sorts a collection of arrays in descending order.|
 |[array_split()](arraysplitfunction.md)|Builds an array of arrays split from the input array.|
 |[bag_keys()](bagkeysfunction.md)|Enumerates all the root keys in a dynamic property-bag object.|
+|[bag_merge()](bag-merge-function.md)|Merges dynamic property-bags into a dynamic property-bag with all properties merged.|
+|[bag_remove_keys()](bag-remove-keys-function.md)|Removes keys and associated values from a dynamic property-bag.|
 |[pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
 |[pack_all()](packallfunction.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
 |[pack_array()](packarrayfunction.md)|Packs all input values into a dynamic array.|
@@ -100,6 +109,7 @@ ms.date: 05/27/2020
 |[prev()](prevfunction.md)|For the serialized row set, returns a value of a specified column from the earlier row according to the offset.|
 |[row_cumsum()](rowcumsumfunction.md)|Calculates the cumulative sum of a column.|
 |[row_number()](rownumberfunction.md)|Returns a row's number in the serialized row set - consecutive numbers starting from a given index or from 1 by default.|
+|[row_rank()](rowrankfunction.md)|Returns a row's rank in the serialized row set.|
 
 ## Flow control functions
 
@@ -207,11 +217,14 @@ ms.date: 05/27/2020
 |[series_fill_const()](series-fill-constfunction.md)|Replaces missing values in a series with a specified constant value.|
 |[series_fill_forward()](series-fill-forwardfunction.md)|Performs forward fill interpolation of missing values in a series.|
 |[series_fill_linear()](series-fill-linearfunction.md)|Performs linear interpolation of missing values in a series.|
+|[series_fft()](series-fft-function.md)|Applies the Fast Fourier Transform (FFT) on a series.|
 |[series_fir()](series-firfunction.md)|Applies a Finite Impulse Response filter on a series.|
 |[series_fit_2lines()](series-fit-2linesfunction.md)|Applies two segments linear regression on a series, returning multiple columns.|
 |[series_fit_2lines_dynamic()](series-fit-2lines-dynamicfunction.md)|Applies two segments linear regression on a series, returning dynamic object.|
 |[series_fit_line()](series-fit-linefunction.md)|Applies linear regression on a series, returning multiple columns.|
 |[series_fit_line_dynamic()](series-fit-line-dynamicfunction.md)|Applies linear regression on a series, returning dynamic object.|
+|[series_fit_poly()](series-fit-poly-function.md)|Applies polynomial regression on a series, returning multiple columns.|
+|[series_ifft()](series-ifft-function.md)|Applies the Inverse Fast Fourier Transform (IFFT) on a series.|
 |[series_iir()](series-iirfunction.md)|Applies an Infinite Impulse Response filter on a series.|
 |[series_outliers()](series-outliersfunction.md)|Scores anomaly points in a series.|
 |[series_pearson_correlation()](series-pearson-correlationfunction.md)|Calculates the Pearson correlation coefficient of two series.|
@@ -228,7 +241,7 @@ ms.date: 05/27/2020
 |[base64_encode_tostring()](base64_encode_tostringfunction.md)|Encodes a string as base64 string.|
 |[base64_decode_tostring()](base64_decode_tostringfunction.md)|Decodes a base64 string to a UTF-8 string.|
 |[base64_decode_toarray()](base64_decode_toarrayfunction.md)|Decodes a base64 string to an array of long values.|
-|[countof()](cotfunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.|
+|[countof()](countoffunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.|
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
 |[extract_all()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
 |[extractjson()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
@@ -269,13 +282,18 @@ ms.date: 05/27/2020
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[ipv4_compare()](ipv4-comparefunction.md)|Compares two IPv4 strings.|
+|[ipv4_is_in_range()](ipv4-is-in-range-function.md)|Checks if IPv4 string address is in IPv4-prefix notation range.|
 |[ipv4_is_match()](ipv4-is-matchfunction.md)|Matches two IPv4 strings.|
+|[ipv4_is_private()](ipv4-is-privatefunction.md)|Checks if IPv4 string address belongs to a set of private network IPs.|
+|[ipv4_netmask_suffix](ipv4-netmask-suffix-function.md)|Returns the value of the IPv4 netmask suffix from IPv4 string address.|
 |[parse_ipv4()](parse-ipv4function.md)|Converts input string to long (signed 64-bit) number representation.|
 |[parse_ipv4_mask()](parse-ipv4-maskfunction.md)|Converts input string and IP-prefix mask to long (signed 64-bit) number representation.|
 |[ipv6_compare()](ipv6-comparefunction.md)|Compares two IPv4 or IPv6 strings.|
 |[ipv6_is_match()](ipv6-is-matchfunction.md)|Matches two IPv4 or IPv6 strings.|
 |[parse_ipv6()](parse-ipv6function.md)|Converts IPv6 or IPv4 string to a canonical IPv6 string representation.|
 |[parse_ipv6_mask()](parse-ipv6-maskfunction.md)|Converts IPv6 or IPv4 string and netmask to a canonical IPv6 string representation.|
+|[format_ipv4()](format-ipv4-function.md)|Parses input with a netmask and returns string representing IPv4 address.|
+|[format_ipv4_mask()](format-ipv4-mask-function.md)|Parses input with a netmask and returns string representing IPv4 address as CIDR notation.|
 
 ## Type functions
 

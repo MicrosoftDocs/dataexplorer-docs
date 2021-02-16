@@ -78,7 +78,7 @@ The command modifies the table or database `streamingingestion` policy object, a
 
 .alter database DB1 policy streamingingestion '{"IsEnabled": true, "HintAllocatedRate": 2.1}'
 
-.alter table T1 streamingingestion '{"IsEnabled": true}'
+.alter table T1 policy streamingingestion '{"IsEnabled": true}'
 
 .alter-merge database DB1 policy streamingingestion '{"IsEnabled": false}'
 
@@ -95,7 +95,7 @@ The `.delete policy streamingingestion` command deletes the streamingingestion p
 
 **Returns**
 
-The command deletes the table or database streamingingestion policy object and then returns the output of the corresponding [.show policy streamingingestion](#display-the-policy) command.
+The command deletes the table or database streamingingestion policy object and then returns the output of the corresponding [`.show policy streamingingestion`](#display-the-policy) command.
 
 **Examples**
 

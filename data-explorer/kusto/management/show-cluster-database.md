@@ -1,5 +1,5 @@
 ---
-title: .show cluster databases - Azure Data Explorer | Microsoft Docs
+title: .show cluster databases - Azure Data Explorer
 description: This article describes .show cluster databases in Azure Data Explorer.
 services: data-explorer
 author: orspod

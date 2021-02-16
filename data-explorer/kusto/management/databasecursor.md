@@ -46,7 +46,7 @@ Kusto provides three functions to help implement the two above scenarios:
    This special function can be used on the table records that have the
    [IngestionTime policy](ingestiontime-policy.md) enabled. It returns
    a scalar value of type `bool` indicating whether the record's `ingestion_time()`
-   database cursor value comes after the `rhs` database cursor value.
+   database cursor value comes before or at the `rhs` database cursor value.
 
 The two special functions (`cursor_after` and `cursor_before_or_at`) also have
 a side-effect: When they're used, Kusto will emit the **current value of the database cursor** to the `@ExtendedProperties` result set of the query. The property name for the cursor is `Cursor`, and its value is a single `string`. 
@@ -70,6 +70,11 @@ The database cursor object holds no meaningful value unless the database has at 
 This value is guaranteed to update, as-needed by the ingestion history, into such tables and the queries run, that reference such tables. It might, or might not, be updated in other cases.
 
 The ingestion process first commits the data, so that it's available for querying, and only then assigns an actual cursor value to each record. If you attempt to query for data immediately following the ingestion completion using a database cursor, the results might not yet incorporate the last records added, because they haven't yet been assigned the cursor value. Also, retrieving the current database cursor value repeatedly might return the same value, even if ingestion was done in between, because only a cursor commit can update its value.
+
+Querying a table based on database cursors is only guaranteed to "work" (providing exactly-once guarantees) 
+if the records are ingested directly into that table. If you are using extents commands, such as [move extents](move-extents.md)/[.replace extents](replace-extents.md) to move data into the table, or if you are using [.rename table](rename-table-command.md), then querying this table using database cursors is not guaranteed to not miss any data. This is because the ingestion time 
+of the records is assigned when initially ingested, and does not change during the move extents operation. 
+Therefore, when the extents are moved into the target table, it's possible that the cursor value assigned to the records in these extents was already processed (and next query by database cursor will miss the new records).
 
 ## Example: Processing records exactly once
 

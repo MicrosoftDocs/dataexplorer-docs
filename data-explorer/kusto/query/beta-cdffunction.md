@@ -4,7 +4,7 @@ description: This article describes beta_cdf() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -41,7 +41,9 @@ If any argument is nonnumeric, beta_cdf() returns null value.
 
 If x < 0 or x > 1, beta_cdf() returns NaN value.
 
-If alpha ≤ 0 or beta ≤ 0, beta_cdf() returns the NaN value.
+If alpha ≤ 0 or alpha > 10000, beta_cdf() returns the NaN value.
+
+If beta ≤ 0 or beta > 10000, beta_cdf() returns the NaN value.
 
 ## Examples
 
@@ -65,7 +67,7 @@ datatable(x:double, alpha:double, beta:double, comment:string)
 |0.1|-1|20|alpha is < 0, yields NaN|NaN|
 
 
-**See also**
+## See also
 
 
 * For computing the inverse of the beta cumulative probability density function, see [beta-inv()](./beta-invfunction.md).

@@ -13,7 +13,7 @@ ms.date: 05/12/2020
 
 [!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
-As a data platform, Azure Data Explorer supports the ability to delete individual records, through the use of Kusto `.purge` and related commands. You can also [purge an entire table](#purging-an-entire-table).  
+As a data platform, Azure Data Explorer supports the ability to delete individual records, through the use of Kusto `.purge` and related commands. You can also [purge an entire table](#purging-an-entire-table) or purge records in a [materialized view](../management/materialized-views/materialized-view-purge.md).
 
 > [!WARNING]
 > Data deletion through the `.purge` command is designed to be used to protect personal data and should not be used in other scenarios. It is not designed to support frequent delete requests, or deletion of massive quantities of data, and may have a significant performance impact on the service.
@@ -39,11 +39,12 @@ The process of selectively purging data from Azure Data Explorer happens in the 
 	 * The number of nodes in the cluster  
 	 * The spare capacity it has for purge operations
 	 * Several other factors
+	 
 	The duration of phase 2 can vary between a few seconds to many hours.
 1. Phase 3: (Hard Delete)
    Work back all storage artifacts that may have the "poison" data, and delete them from storage. This phase is done at least five days after the completion of the previous phase, but no longer than 30 days after the initial command. These timelines are set to follow data privacy requirements.
 
-Issuing a `.purge` command triggers this process, which takes a few days to complete. If the density of records for which the predicate applies is sufficiently large, the process will effectively reingest all the data in the table. This reingestion has a significant impact on performance and COGS.
+Issuing a `.purge` command triggers this process, which takes a few days to complete. If the density of records for which the predicate applies is sufficiently large, the process will effectively reingest all the data in the table. This reingestion has a significant impact on performance and COGS (cost of goods sold).
 
 ## Purge limitations and considerations
 
@@ -83,7 +84,7 @@ To reduce purge execution time:
 > [!NOTE]
 > Purge execution is invoked by running [purge table *TableName* records](#purge-table-tablename-records-command) command on the Data Management endpoint https://ingest-[YourClusterName].[Region].kusto.windows.net.
 
-### Purge table TableName records command
+### Purge table *TableName* records command
 
 Purge command may be invoked in two ways for differing usage scenarios:
 
@@ -95,17 +96,22 @@ Purge command may be invoked in two ways for differing usage scenarios:
   // Connect to the Data Management service
   #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
  
+  // To purge table records
   .purge table [TableName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
+
+   // To purge materialized view records
+  .purge materialized-view [MaterializedViewName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
    ```
 
-  > [!NOTE]
-  > Generate this command by using the CslCommandGenerator API, available as part of the [Kusto Client Library](../api/netfx/about-kusto-data.md) NuGet package.
+* Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data.
 
-* Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data. Using this option may take a long time to complete on large tables with significant cold cache data.
-	<!-- If query times-out on DM endpoint (default timeout is 10 minutes), it is recommended to use the [engine `whatif` command](#purge-whatif-command) directly againt the engine endpoint while increasing the [server timeout limit](../concepts/querylimits.md#limit-on-request-execution-time-timeout). Only after you have verified the expected results using the engine whatif command, issue the purge command via the DM endpoint using the 'noregrets' option. -->
+ > [!NOTE]
+ > The first step in the two-step invocation requires running a query on the entire data set, to identify records to be purged.
+ > This query may time-out or fail on large tables, especially with significant amount of cold cache data. In case of failures,
+ > please validate the predicate yourself and after verifying correctness use the single-step purge with the `noregrets` option.
 
-  **Syntax**
-
+**Syntax**
+	 
   ```kusto
 	 // Connect to the Data Management service
 	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
@@ -116,21 +122,23 @@ Purge command may be invoked in two ways for differing usage scenarios:
 	 // Step #2 - input the verification token to execute purge
 	 .purge table [TableName] records in database [DatabaseName] with (verificationtoken='<verification token from step #1>') <| [Predicate]
   ```
-	
-	| Parameters  | Description  |
-	|---------|---------|
-	| `DatabaseName`   |   Name of the database      |
-	| `TableName`     |     Name of the table    |
-	| `Predicate`    |    Identifies the records to purge. See Purge predicate limitations below. | 
-	| `noregrets`    |     If set, triggers a single-step activation.    |
-	| `verificationtoken`     |  In the two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. Information about the purge will be returned with a token that should be passed back to the command to do step #2.   |
 
-	**Purge predicate limitations**
+To purge a materialized view, replace the `table` keyword with `materialized-view`, and replace *TableName* with the *MaterializedViewName*.
 
-	* The predicate must be a simple selection (for example, *where [ColumnName] == 'X'* / *where [ColumnName] in ('X', 'Y', 'Z') and [OtherColumn] == 'A'*).
-	* Multiple filters must be combined with an 'and', rather than separate `where` clauses (for example, `where [ColumnName] == 'X' and  OtherColumn] == 'Y'` and not `where [ColumnName] == 'X' | where [OtherColumn] == 'Y'`).
-	* The predicate can't reference tables other than the table being purged (*TableName*). The predicate can only include the selection statement (`where`). It can't project specific columns from the table (output schema when running '*`table` | Predicate*' must match table schema).
-	* System functions (such as, `ingestion_time()`, `extent_id()`) aren't supported.
+| Parameters  | Description  |
+|---------|---------|
+| `DatabaseName`   |   Name of the database      |
+| `TableName` / `MaterializedViewName`    |     Name of the table / materialized view to purge.  |
+| `Predicate`    |    Identifies the records to purge. See [purge predicate limitations](#purge-predicate-limitations). |
+| `noregrets`    |     If set, triggers a single-step activation.    |
+| `verificationtoken`     |  In the two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. Information about the purge will be returned with a token that should be passed back to the command to do step #2.   |
+
+#### Purge predicate limitations
+
+* The predicate must be a simple selection (for example, *where [ColumnName] == 'X'* / *where [ColumnName] in ('X', 'Y', 'Z') and [OtherColumn] == 'A'*).
+* Multiple filters must be combined with an 'and', rather than separate `where` clauses (for example, `where [ColumnName] == 'X' and  OtherColumn] == 'Y'` and not `where [ColumnName] == 'X' | where [OtherColumn] == 'Y'`).
+* The predicate can't reference tables other than the table being purged (*TableName*). The predicate can only include the selection statement (`where`). It can't project specific columns from the table (output schema when running '*`table` | Predicate*' must match table schema).
+* System functions (such as, `ingestion_time()`, `extent_id()`) aren't supported.
 
 #### Example: Two-step purge
 
@@ -138,9 +146,11 @@ To start purge in a two-step activation scenario, run step #1 of the command:
 
  ```kusto
 	// Connect to the Data Management service
-	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
-	 
-	.purge table MyTable records in database MyDatabase <| where CustomerId in ('X', 'Y')
+    #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
+ 
+    .purge table MyTable records in database MyDatabase <| where CustomerId in ('X', 'Y')
+
+    .purge materialized-view MyView records in database MyDatabase <| where CustomerId in ('X', 'Y')
  ```
 
 **Output**
@@ -155,6 +165,10 @@ To complete a purge in a two-step activation scenario, use the verification toke
 
 ```kusto
 .purge table MyTable records in database MyDatabase
+ with(verificationtoken='e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b')
+<| where CustomerId in ('X', 'Y')
+
+.purge materialized-view MyView records in database MyDatabase
  with(verificationtoken='e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b')
 <| where CustomerId in ('X', 'Y')
 ```
@@ -174,6 +188,8 @@ To trigger a purge in a single-step activation scenario, run the following comma
  #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
  
 .purge table MyTable records in database MyDatabase with (noregrets='true') <| where CustomerId in ('X', 'Y')
+
+.purge materialized-view MyView records in database MyDatabase with (noregrets='true') <| where CustomerId in ('X', 'Y')
 ```
 
 **Output**
@@ -372,4 +388,3 @@ The output is the same as the '.show tables' command output (returned without th
 |TableName|DatabaseName|Folder|DocString
 |---|---|---|---
 |OtherTable|MyDatabase|---|---
-

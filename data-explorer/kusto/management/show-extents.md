@@ -12,27 +12,25 @@ ms.date: 07/02/2020
 
 # .show extents
 
-Shows extents from a specified database or table.
-
 > [!NOTE]
 > Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
 
-## Cluster level
+The types of `.show extents` commands are as follows:
 
-`.show` `cluster` `extents` [`hot`]
+* Show some or all extents for a specific [table scope](#table-scope)
+* Show some or all extents for a specific [database scope](#database-scope)
+* Show some or all extents for the entire [cluster](#cluster-scope)
 
-Shows information about extents (data shards) that are present in the cluster.
-If `hot` is specified - shows only extents that are expected to be in the hot cache.
+> [!NOTE]
+> The `.show extents` command may consume a lot of resources if it runs on a scope
+> (such as a database or a cluster) with many extents. We recommended
+> using the command variant at the lowest possible scope. Table-scope
+> is preferable over database-scope, and database-scope over cluster-scope. The
+> command variant that includes filtering extents is preferable to filtering the results
+> of the command using another query.
 
-## Database level
-
-`.show` `database` *DatabaseName* `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
-
-Shows information about extents (data shards) that are present in the specified database.
-If `hot` is specified - shows only extents that expected to be in the hot cache.
-
-## Table level
+## Table scope
 
 `.show` `table` *TableName* `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
 
@@ -41,11 +39,12 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 Shows information about extents (data shards) that are present in the specified tables. The database is taken from the command's context.
 If `hot` is specified, shows only extents that are expected to be in the hot cache.
 
-## Notes
+## Recommendations
 
-* Using database or table level commands is much faster than filtering (adding `| where DatabaseName == '...' and TableName == '...'`) the results of a cluster-level command.
+* Using built-in filtering capabilities in the command is preferred over adding
+  a query-based filter (such as adding `| where DatabaseName == '...'` and `TableName == '...'`).
 * If the optional list of extent IDs is provided, the returned data set is limited to those extents only.
-    * This method is much faster than filtering (adding `| where ExtentId in(...)` to) the results of "bare" commands.
+    * This method is much faster than filtering (adding `| where ExtentId in(...)`) to the results of "bare" commands.
 * If `tags` filters are specified:
     * The returned list is limited to those extents whose tags collection obeys *all* of the provided tags filters.
     * This method is much faster than filtering (adding `| where Tags has '...' and Tags contains '...'` to) the results of "bare" commands.
@@ -53,12 +52,26 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
     * `!has` filters are equality negative filters. Extents that are tagged with either of the specified tags will be filtered out.
     * `contains` filters are case-insensitive substring filters. Extents that don't have the specified strings as a substring of any of their tags will be filtered out.
     * `!contains` filters are case-insensitive substring negative filters. Extents that have the specified strings as a substring of any of their tags will be filtered out.
-  
-## Output parameters
+
+## Database scope
+
+`.show` `database` *DatabaseName* `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
+
+Shows information about extents (data shards) that are present in the specified database.
+If `hot` is specified - shows only extents that expected to be in the hot cache.
+
+## Cluster scope
+
+`.show` `cluster` `extents` [`hot`]
+
+Shows information about extents (data shards) that are present in the cluster.
+If `hot` is specified - shows only extents that are expected to be in the hot cache.
+
+## Output
 
 |Output parameter |Type |Description |
 |---|---|---|
-|ExtentId |Guid |ID of the extent 
+|ExtentId |Guid |ID of the extent
 |DatabaseName |String |Database that the extent belongs to
 |TableName |String |Table that the extents belong to
 |MaxCreatedOn |DateTime |Date-time when the extent was created. For a merged extent, the maximum of creation times among source extents
@@ -74,7 +87,7 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
 |RowCount |Long |Number of rows in the extent
 |MinCreatedOn |DateTime |Date-time when the extent was created. For a merged extent, the minimum of creation times among the source extents
 |Tags|String|Tags, if any, defined for the extent
- 
+
 ## Examples
 
 ### Tagged extent

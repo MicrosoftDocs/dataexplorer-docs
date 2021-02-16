@@ -4,7 +4,7 @@ description: This article describes countof() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -34,7 +34,7 @@ The number of times that the search string can be matched in the container. Plai
 
 ## Examples
 
-|||
+|Function call|Result|
 |---|---
 |`countof("aaa", "a")`| 3 
 |`countof("aaaa", "aa")`| 3 (not 2!)

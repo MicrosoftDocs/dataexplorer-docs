@@ -1,15 +1,15 @@
 ---
-title: Row Level Security (Preview) - Azure Data Explorer
-description: This article describes Row Level Security (Preview) in Azure Data Explorer.
+title: Row Level Security - Azure Data Explorer
+description: This article describes Row Level Security in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/25/2020
+ms.date: 10/11/2020
 ---
-# Row Level Security (Preview)
+# Row Level Security
 
 Use group membership or execution context to control access to rows in a database table.
 
@@ -24,9 +24,6 @@ RLS lets you provide access to other applications and users, only to a certain p
 * All of the above
 
 For more information, see [control commands for managing the Row Level Security policy](../management/row-level-security-policy.md).
-
-> [!NOTE]
-> The RLS policy that you configure on the production database will also take effect in the follower databases. You can’t configure different RLS policies on the production and follower databases.
 
 > [!TIP]
 > These functions are often useful for row_level_security queries:
@@ -101,7 +98,7 @@ First, define a function that receives the table name as a string parameter, and
 
 For example:
 
-```
+```kusto
 .create-or-alter function RLSForCustomersTables(TableName: string) {
     table(TableName)
     | ...
@@ -111,7 +108,7 @@ For example:
 Then configure RLS on multiple tables this way:
 
 
-```
+```kusto
 .alter table Customers1 policy row_level_security enable "RLSForCustomersTables('Customers1')"
 .alter table Customers2 policy row_level_security enable "RLSForCustomersTables('Customers2')"
 .alter table Customers3 policy row_level_security enable "RLSForCustomersTables('Customers3')"
@@ -119,9 +116,9 @@ Then configure RLS on multiple tables this way:
 
 ### Produce an error upon unauthorized access
 
-If you want non-authorized table users to receive an error instead of returning an empty table, use the `[assert()](../query/assert-function.md)` function. The following example shows you how to produce this error in an RLS function:
+If you want non-authorized table users to receive an error instead of returning an empty table, use the [`assert()`](../query/assert-function.md) function. The following example shows you how to produce this error in an RLS function:
 
-```
+```kusto
 .create-or-alter function RLSForCustomersTables() {
     MyTable
     | where assert(current_principal_is_member_of('aadgroup=mygroup@mycompany.com') == true, "You don't have access")
@@ -129,6 +126,21 @@ If you want non-authorized table users to receive an error instead of returning 
 ```
 
 You can combine this approach with other examples. For example, you can display different results to users in different AAD Groups, and produce an error for everyone else.
+
+### Control permissions on follower databases
+
+The RLS policy that you configure on the production database will also take effect in the follower databases. You can’t configure different RLS policies on the production and follower databases. However, you can use the [`current_cluster_endpoint()`](../query/current-cluster-endpoint-function.md) function in your RLS query to achieve the same effect, as having different RLS queries in follower tables.
+
+For example:
+
+```kusto
+.create-or-alter function RLSForCustomersTables() {
+    let IsProductionCluster = current_cluster_endpoint() == "mycluster.eastus.kusto.windows.net";
+    let DataForProductionCluster = TempTable | where IsProductionCluster;
+    let DataForFollowerClusters = TempTable | where not(IsProductionCluster) | extend CreditCardNumber = "****";
+    union DataForProductionCluster, DataForFollowerClusters
+}
+```
 
 ## More use cases
 

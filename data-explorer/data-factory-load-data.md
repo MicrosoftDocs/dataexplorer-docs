@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/15/2019
 
 #Customer intent: I want to use Azure Data Factory to load data into Azure Data Explorer so that I can analyze it later.
@@ -165,7 +165,8 @@ To create the Azure Data Explorer linked service, do the following steps:
     * Select **From Azure subscription** and then, in the drop-down lists, select your **Azure subscription** and your **Cluster**. 
 
         > [!NOTE]
-        > The **Cluster** drop-down control lists only clusters that are associated with your subscription.
+        > * The **Cluster** drop-down control lists only clusters that are associated with your subscription.
+        > * Your cluster must have the appropriate [SKU](manage-cluster-choose-sku.md) for [best performance](data-factory-integration.md#performance).
 
     * Select **Enter manually**, and then enter your **Endpoint**.
 

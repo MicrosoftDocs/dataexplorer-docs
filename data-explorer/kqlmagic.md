@@ -3,10 +3,10 @@ title: Use a Jupyter Notebook to analyze data in Azure Data Explorer
 description: This topic shows you how to analyze data in Azure Data Explorer using a Jupyter Notebook and the kqlmagic extension.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: maraheja
 ms.service: data-explorer
-ms.topic: conceptual
-ms.date: 07/10/2019
+ms.topic: how-to
+ms.date: 10/20/2020
 
 # Customer intent: I want to analyze data using Jupyter Notebooks and kqlmagic.
 ---
@@ -14,12 +14,12 @@ ms.date: 07/10/2019
 # Use a Jupyter Notebook and kqlmagic extension to analyze data in Azure Data Explorer
 
 Jupyter Notebook is an open-source web application that allows you to create and share documents containing live code, equations, visualizations, and narrative text. Usage includes data cleaning and transformation, numerical simulation, statistical modeling, data visualization, and machine learning.
-[Jupyter Notebook](https://jupyter.org/) supports magic functions that extend the capabilities of the kernel by supporting additional commands. kqlmagic is a command that extends the capabilities of the Python kernel in Jupyter Notebook so you can run Kusto language queries natively. You can easily combine Python and Kusto query language to query and visualize data using the rich Plot.ly library integrated with `render` commands. Data sources for running queries are supported. These data sources include Azure Data Explorer, a fast and highly scalable data exploration service for log and telemetry data, as well as Azure Monitor logs and Application Insights. kqlmagic also works with Azure Notebooks, Jupyter Lab, and Visual Studio Code Jupyter extension.
+[Jupyter Notebook](https://jupyter.org/) supports magic functions that extend the capabilities of the kernel by supporting additional commands. kqlmagic is a command that extends the capabilities of the Python kernel in Jupyter Notebook so you can run Kusto language queries natively. You can easily combine Python and Kusto query language to query and visualize data using the rich Plot.ly library integrated with `render` commands. Data sources for running queries are supported. These data sources include Azure Data Explorer, a fast and highly scalable data exploration service for log and telemetry data, as well as Azure Monitor logs and Application Insights. kqlmagic also works with Azure Data Studio, Jupyter Lab, and Visual Studio Code Jupyter extension.
 
 ## Prerequisites
 
-- Organizational email account that is a member of Azure Active Directory (AAD).
-- Jupyter Notebook installed on your local machine or use Azure Notebooks and clone the sample [Azure Notebook](https://kustomagicsamples-manojraheja.notebooks.azure.com/j/notebooks/Getting%20Started%20with%20kqlmagic%20on%20Azure%20Data%20Explorer.ipynb)
+- Organizational email account that is a member of Azure Active Directory (Azure AD).
+- Jupyter Notebook installed on your local machine or use [Azure Data Studio](/sql/azure-data-studio/notebooks/notebooks-kqlmagic)
 
 ## Install kqlmagic library
 
@@ -28,8 +28,6 @@ Jupyter Notebook is an open-source web application that allows you to create and
     ```python
     !pip install Kqlmagic --no-cache-dir  --upgrade
     ```
-    > [!NOTE]
-    > When using Azure Notebooks, this step isn't required.
 
 1. Load kqlmagic:
 
@@ -41,11 +39,15 @@ Jupyter Notebook is an open-source web application that allows you to create and
     
 ## Connect to the Azure Data Explorer Help cluster
 
-Use the following command to connect to the *Samples* database hosted on the *Help* cluster. For non-Microsoft AAD users, replace the tenant name `Microsoft.com` with your AAD Tenant.
+Use the following command to connect to the *Samples* database hosted on the *Help* cluster. For non-Microsoft Azure AD users, replace the tenant name `Microsoft.com` with your Azure AD Tenant.
 
 ```python
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'
 ```
+
+> [!Note]
+> If you are using your own ADX cluster, you must include the region in the connection string as follows:   
+   ```%kql azuredataexplorer://tenant="yourcompany.com";code;cluster='mycluster.westus';database='mykustodb'```
 
 ## Query and visualize
 
