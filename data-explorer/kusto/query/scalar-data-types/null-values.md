@@ -75,7 +75,7 @@ Results:
 
 ## Null expression in filter
 
-If an expression in the context of the filter operation such as in the [where operator](../whereoperator.md) returns null, the expression will be coalesced to `false`. In EngineV2, a null comparison expression returns boolean result. In EngineV3, any comparison with null returns `null`.  
+If an expression in the context of the filter operation such as in the [where operator](../whereoperator.md) returns null, the expression will be coalesced to `false`. In EngineV2, a null comparison expression returns boolean result.  
 
 Example:
 
