@@ -11,7 +11,7 @@ ms.date: 02/16/2021
 ---
 # __has_ipv4()
 
-Returns a value indicating whether specified IPv4 address appears in a text.
+Returns a value indicating whether a specified IPv4 address appears in a text.
 
 IP address entrances in a text must be properly delimited with non-alphanumeric characters. For instance, properly delimited IP addresses are:
 
