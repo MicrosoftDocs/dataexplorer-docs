@@ -123,7 +123,7 @@ This section lists the major changes to docs during October 2020.
 [Create Power Apps application to query data in Azure Data Explorer (preview)](power-apps-connector.md) | New article. In this article, you will create a Power Apps application to query Azure Data Explorer data. 
 |[Microsoft Logic App and Azure Data Explorer ](kusto/tools/logicapps.md) |Updated article. General availability (GA).
 | [Use Azure Advisor recommendations to optimize your Azure Data Explorer cluster](azure-advisor.md) | Updated article. Azure advisor new recommendation.
-| [Use follower database to attach databases in Azure Data Explorer](follower.md) | Updated article. Use powershell to attach and detach follower databases. 
+| [Use follower database to attach databases in Azure Data Explorer](follower.md) | Updated article. Use PowerShell to attach and detach follower databases. 
 
 ### Query
 
