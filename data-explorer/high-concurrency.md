@@ -62,7 +62,7 @@ Configure the caching policy so that queries run on data that is stored in the h
 
 ## Set leader-follower architecture pattern
 
-The follower database is a feature that follows a database or a set of tables in a database from another cluster located in the same region. This feature is exposed through [Azure Data Share](/azure/data-explorer/data-share), [Azure Resource Manager APIs](follower.md), and a set of [cluster commands](kusto/management/cluster-follower.md). 
+The follower database is a feature that follows a database or a set of tables in a database from another cluster located in the same region. This feature is exposed through [Azure Data Share](./data-share.md), [Azure Resource Manager APIs](follower.md), and a set of [cluster commands](kusto/management/cluster-follower.md). 
 
 Use the leader-follower pattern to set compute resources for different workloads. For example, set up a cluster for ingestions, a cluster for querying or serving dashboards or applications, and a cluster that serves the data science workloads. Each workload in this case will have dedicated compute resources that can be scaled independently, and different caching and security configurations. All clusters use the same data, with the leader writing the data, and the followers using it in a read-only mode.
 
@@ -79,7 +79,7 @@ Use the following methods to optimize your queries for high concurrency.
 
 When more than one user loads the same dashboard at similar time, the dashboard to the second and following users can be served from the cache. This setup provides high performance with almost no CPU usage. Use the [query results cache](kusto/query/query-results-cache.md) feature and send query results cache configuration with the query using the `set` statement.
 
-[Grafana](/azure/data-explorer/grafana) contains a configuration setting for the query results cache at the data source level, so all dashboards use this setting by default and don't need to modify the query.
+[Grafana](./grafana.md) contains a configuration setting for the query results cache at the data source level, so all dashboards use this setting by default and don't need to modify the query.
 
 ### Configure query consistency
 
