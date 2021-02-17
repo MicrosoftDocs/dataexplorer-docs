@@ -64,7 +64,9 @@ The query used in the materialized view argument is limited by the following rul
 
 * In addition to the source table of the view, it may also reference one or more [`dimension tables`](../../concepts/fact-and-dimension-tables.md). Dimension tables must be explicitly called out in the view properties. It is important to understand the behavior when joining with dimension tables:
 
-    * Records in the view's source table (the fact table) are materialized once only. A different ingestion latency between the fact table and the dimension table may impact the view results.
+    * Records in the view's source table (the fact table) are materialized once only. Updates to the dimension tables do not have any impact on records that have already been processed from the fact table. 
+
+    * A different ingestion latency between the fact table and the dimension table may impact the view results.
 
     * **Example**: A view definition includes an inner join with a dimension table. At the time of materialization, the dimension record was not fully ingested, but was already ingested to the fact table. This record will be dropped from the view and never reprocessed again. 
 
@@ -85,10 +87,12 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 |docString|string|A string documenting the materialized view|
 
 > [!WARNING]
-> * Using `autoUpdateSchema` may lead to irreversible data loss when columns in the source table are dropped. 
-> * If a change is made to the source table resulting in a schema change to the materialized view, and `autoUpdateSchema` is false, the view will be automatically disabled. 
->    * This error is common when using an `arg_max(Timestamp, *)` and adding columns to the source table. 
->    * Avoid this failure by defining the view query as `arg_max(Timestamp, Column1, Column2, ...)` or by using the `autoUpdateSchema` option.
+> * **A materialized view will be automatically disabled by the system**, if changes to the source table of the materialized view, or changes in data lead to incompatibility between the materialized view query and the expected materialized view's schema.
+>   * Make sure the materialized view query is deterministic to avoid such errors (for example, the [bag_unpack](../../query/bag-unpackplugin.md) or [pivot](../../query/pivotplugin.md) plugins result in a non-deterministic schema).
+>   * When using an `arg_max(Timestamp, *)` aggregation and when `autoUpdateSchema` is false, changes to source table can lead to schema mismatches.
+>     * Avoid this failure by defining the view query as `arg_max(Timestamp, Column1, Column2, ...)` instead, or by using the `autoUpdateSchema` option.
+> * Using `autoUpdateSchema` may lead to irreversible data loss when columns in the source table are dropped.
+> * You can monitor automatic disable of materialized views using the [MaterializedViewResult metric](materialized-view-overview.md#materializedviewresult-metric).
 > * If view is disabled for these reasons, you can re-enable it after fixing the issue using the [enable materialized view](materialized-view-enable-disable.md) command.
 >
 
@@ -216,7 +220,7 @@ The following aggregation functions are supported:
     }
     ```
 
-* Don't include transformations, normalizations, lookups in dimension tables, and other heavy computations that can be moved to an [update policy](../updatepolicy.md) as part of the materialized view definition. Instead, do all those processes in an update policy, and perform the aggregation only in the materialized view.
+* Although the materialized view *can* include transformations, normalizations, and lookups in dimension tables, it's recommended to move such operations to [update policy](../updatepolicy.md), and leave the aggregation only for the materialized view.
 
     **Do**:
     
