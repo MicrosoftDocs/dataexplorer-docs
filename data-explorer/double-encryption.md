@@ -87,7 +87,7 @@ An Azure Resource Manager template can be used to automate deployment of your Az
 ## Add a system-assigned identity using an Azure Resource Manager template
 
 Add the 'EnableDoubleEncryption' type to tell Azure to enable infrastructure encryption (double encryption) for your cluster.    
-    ```json
+```json
     {
         "apiVersion": "2020-06-14",
         "type": "Microsoft.Kusto/clusters",
@@ -102,7 +102,7 @@ Add the 'EnableDoubleEncryption' type to tell Azure to enable infrastructure enc
             "enableDoubleEncryption": true,
         }
     }
-    ```
+```
 ---
 
 ## Next steps
