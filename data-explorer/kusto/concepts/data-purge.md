@@ -77,7 +77,7 @@ To reduce purge execution time:
 * Adjust the [caching policy](../management/cachepolicy.md) since purge takes longer on cold data.
 * Scale out the cluster
 
-* Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../management/capacitypolicy.md#extents-purge-rebuild-capacity). Changing this parameter requires opening a [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../management/capacitypolicy.md#extents-purge-rebuild-capacity).
 
 ## Trigger the purge process
 
