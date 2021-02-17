@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/30/2020
+ms.date: 02/17/2021
 ---
 
 # .create materialized-view
