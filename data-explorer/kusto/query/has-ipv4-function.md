@@ -13,7 +13,7 @@ ms.date: 02/16/2021
 
 Returns a value indicating whether a specified IPv4 address appears in a text.
 
-IP address entrances in a text must be properly delimited with non-alphanumeric characters. For instance, properly delimited IP addresses are:
+IP address entrances in a text must be properly delimited with non-alphanumeric characters. For example, properly delimited IP addresses are:
 
  * "These requests came from: 192.168.1.1, 10.1.1.115 and 10.1.1.201"
  * "05:04:54 127.0.0.1 GET /favicon.ico 404"
