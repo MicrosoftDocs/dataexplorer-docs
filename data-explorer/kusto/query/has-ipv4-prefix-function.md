@@ -11,7 +11,7 @@ ms.date: 02/16/2021
 ---
 # __has_ipv4_prefix()
 
-Returns a value indicating whether specified IPv4 address prefix appears in a text.
+Returns a value indicating whether a specified IPv4 address prefix appears in a text.
 
 A valid IP address prefix is either a complete IPv4 address (`192.168.1.11`) or its prefix ending with a dot (`192.`, `192.168.` or `192.168.1.`).
 
