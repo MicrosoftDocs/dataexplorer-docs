@@ -35,7 +35,7 @@ The function works significantly faster if the searched text column is indexed u
 
 ## Returns
 
-`true` in case *ip_address* is a valid IPv4 address, and it was found in *text*. Otherwise the function returns `false`.
+`true`  if the *ip_address* is a valid IPv4 address, and it was found in *text*. Otherwise, the function returns `false`.
 
 ## Examples
 
