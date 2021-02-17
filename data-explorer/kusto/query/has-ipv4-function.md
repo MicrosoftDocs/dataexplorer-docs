@@ -18,7 +18,7 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
  * "These requests came from: 192.168.1.1, 10.1.1.115 and 10.1.1.201"
  * "05:04:54 127.0.0.1 GET /favicon.ico 404"
 
-The function works significantly faster if text column to search in is indexed using special tokenizer `common_logs_ipv4`. To update column tokenizer type to be used during future data ingestions, use the command:
+The function works significantly faster if the searched text column is indexed using the special tokenizer `common_logs_ipv4`. To update the column tokenizer type to be used in future data ingestions, use the command:
 
 ```kusto
 .alter column Table.Column policy encoding @'{"EncodingPolicyOrigin":"Automatic", "ShardFieldTokenizer":"common_logs_ipv4"}'
