@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/12/2020
+ms.date: 02/16/2020
 ---
 # Capacity policy 
 
@@ -92,6 +92,7 @@ partitioning operations is above 90%.
 
 ## Materialized views capacity policy
 
+Change the capacity policy using the [alter cluster policy capacity](capacity-policy.md#alter-cluster-policy-capacity). This change requires `AllDatabasesAdmin` permissions.
 The policy can be used to change concurrency settings for materialized views. This change may be required when there's more than a single materialized view defined on a cluster, and the cluster can't keep up with the materialization of all views. By default, concurrency settings are relatively low to ensure that materialization doesn't impact cluster's performance.
 
 > [!WARNING]
@@ -121,8 +122,8 @@ Property | Description
 
 ### Extents rebuild capacity
 
-To learn more about extents rebuild operations, see [how materialized views work](materialized-views/materialized-view-overview.md#how-materialized-views-work).
-This setting is only relevant to clusters which are *not* [EngineV3](../../engine-v3.md) clusters.
+For more information about extents rebuild operations, see [how materialized views work](materialized-views/materialized-view-overview.md#how-materialized-views-work).
+This setting is only relevant to Engine V2 clusters. This setting is not relevant to [EngineV3](../../engine-v3.md) clusters.
 
 The maximum number of extents rebuild is calculated by:
     
