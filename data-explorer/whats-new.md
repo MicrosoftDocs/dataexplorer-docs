@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/15/2020
+ms.date: 02/17/2021
 ---
 # What's new in Azure Data Explorer
 
