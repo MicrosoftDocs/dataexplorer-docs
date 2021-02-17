@@ -116,7 +116,7 @@ This section lists the major changes to docs during October 2020.
  Article title | Description
 ---|---
 [Ingest data using the Azure Data Explorer Java SDK](java-ingest-data.md) | New article.  In this article, learn how to ingest data using the Azure Data Explorer Java library. 
-[Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md) | New article. In this article, you learn how to create manually the resources needed for Event Grid Ingestion: Event Grid subscription, Event Hub  Article titlespace, and Event Hub. 
+[Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md) | New article. In this article, you learn how to create manually the resources needed for Event Grid Ingestion: Event Grid subscription, Event Hub  namespace, and Event Hub. 
 [Create a private or service endpoint to Event Hub and Azure Storage](vnet-endpoint-storage-event-hub.md) | New article. A [Private Endpoint](/azure/private-link/private-endpoint-overview) uses an IP address from your VNet’s address space for the Azure service to securely connect between Azure Data Explorer and Azure services such as Azure Storage and Event Hub.  
 [EngineV3 - preview](engine-v3.md) | New article. Kusto EngineV3 is Azure Data Explorer’s next generation storage and query engine. 
 [Create an Azure Data Explorer cluster and database using Go](create-cluster-database-go.md) |  New article. In this article, you create an Azure Data Explorer cluster and database using [Go](https://golang.org/). 
@@ -234,7 +234,7 @@ This section lists the major changes to docs during August 2020.
 [Disable or enable continuous export](./kusto/management/data-export/disable-enable-continuous.md) | New article. Disables or enables the continuous-export job. 
 [Drop continuous export](./kusto/management/data-export/drop-continuous-export.md) | New article. Drops a continuous-export job.
 [Show continuous export artifacts](./kusto/management/data-export/show-continuous-artifacts.md) | New article. Returns all artifacts exported by the continuous-export in all runs. Filter the results by the Timestamp column in the command to view only records of interest.
-[Show continuous export](./kusto/management/data-export/show-continuous-export.md) | New article. Returns the continuous export properties of *ContinuousExport Article title*. 
+[Show continuous export](./kusto/management/data-export/show-continuous-export.md) | New article. Returns the continuous export properties of *ContinuousExport Name*. 
 [Show continuous export failures](./kusto/management/data-export/show-continuous-failures.md) | New article. Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest. 
 | [Row Level Security](kusto/management/rowlevelsecuritypolicy.md) | Updated article. How to produce error for unauthorized access.
 |[Create and alter external tables in Azure Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md) <br> <br> [Create and alter external SQL tables](./kusto/management/external-sql-tables.md) | Updated articles. New command option `.create-or-alter`.
