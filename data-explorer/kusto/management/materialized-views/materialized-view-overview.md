@@ -131,22 +131,25 @@ The `MaterializedViewHealth` metric indicates whether a materialized view is hea
 A materialized view can become unhealthy for any or all of the following reasons:
 
 * The materialization process is failing. The [MaterializedViewResult metric](#materializedviewresult-metric) and the [.show materialized-view failures](materialized-view-show-commands.md#show-materialized-view-failures) command can help identify the root cause of the failure.
-
 * The cluster doesn't have sufficient capacity to materialize all incoming data on-time. In this case, there may not be failures in execution. However, the view's age will gradually increase, since it is not able to keep up with the ingestion rate. There could be several root causes for this situation:
-  * Materialization is slow since there are too many extents to rebuild in each materialization cycle. To learn more about why extents rebuilds impact the view's performance, see [how materialized views work](#how-materialized-views-work). The number of extents rebuilt in each cycle is provided in the `MaterializedViewExtentsRebuild` metric. Consider the following solutions for this case:
+  * Materialization is slow because there are too many extents to rebuild in each materialization cycle. To learn more about why extents rebuilds impact the view's performance, see [how materialized views work](#how-materialized-views-work). The number of extents rebuilt in each cycle is provided in the `MaterializedViewExtentsRebuild` metric. The following solutions may help:
       * Increasing the extents rebuilt concurrency in the [materialized view capacity policy](../capacitypolicy.md#materialized-views-capacity-policy).
       * Moving the cluster to [Engine V3](../../../engine-v3.md) should significantly improve performance of rebuild extents.
    * There are additional materialized views in the cluster, and the cluster doesn't have sufficient capacity to run all views. See [materialized view capacity policy](../capacitypolicy.md#materialized-views-capacity-policy) to change the default settings for number of materialized views executed concurrently.
 
 #### MaterializedViewResult metric
 
-The `MaterializedViewResult` metric provides information about the result of a materialization cycle, and can be used to identify issues in the materialized view health status. The metric includes the `Database` and `MaterializedViewName` as well as a `Result` dimension, which can have one of the following values:
+The `MaterializedViewResult` metric provides information about the result of a materialization cycle, and can be used to identify issues in the materialized view health status. The metric includes the `Database` and `MaterializedViewName` as well as a `Result` dimension. 
+
+The `Result` dimension can have one of the following values:
   
-1. **Success:** materialization completed successfully.
-1. **SourceTableNotFound:** source table of the materialization view was dropped. **The materialized view is automatically disabled as a result**.
-1. **SourceTableSchemaChange:** the schema of the source table has changed in a way that is not compatible with the materialized view definition (materialized view query does not match the materialized view schema). **The materialized view is automatically disabled as a result**.
-1. **InsufficientCapacity:** the cluster does not have sufficient capacity to materialized the materialized view. This can either indicate missing [ingestion capacity](../capacitypolicy.md#ingestion-capacity) or missing [materialized views capacity](../capacitypolicy.md#materialized-views-capacity-policy). Insufficient capacity failures can be transient, but if they reoccur often it is recommended to scale out the cluster and/or increase relevant capacity in policy.
-1. **InsufficientResources:** the cluster doesn't have sufficient resources (CPU/memory) to materialized the materialized view. This failure may also be a transient one, but if it reoccurs often a scale out/up is required.
+| Value | Description
+|---|---
+| Success | Materialization completed successfully.
+| SourceTableNotFound | Source table of the materialization view was dropped. The materialized view is automatically disabled as a result.
+| SourceTableSchemaChange | The schema of the source table has changed in a way that is not compatible with the materialized view definition (materialized view query does not match the materialized view schema). The materialized view is automatically disabled as a result.
+| InsufficientCapacity | The cluster does not have sufficient capacity to materialized the materialized view. This can either indicate missing [ingestion capacity](../capacitypolicy.md#ingestion-capacity) or missing [materialized views capacity](../capacitypolicy.md#materialized-views-capacity-policy). Insufficient capacity failures can be transient, but if they reoccur often it is recommended to scale out the cluster and/or increase relevant capacity in policy.
+| InsufficientResources | The cluster doesn't have sufficient resources (CPU/memory) to materialized the materialized view. This failure may also be a transient one, but if it reoccurs often a scale out/up is required.
 
 ### Track resource consumption
 
