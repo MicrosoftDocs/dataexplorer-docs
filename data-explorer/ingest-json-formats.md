@@ -74,7 +74,7 @@ Use Kusto query language to ingest data in a raw JSON format.
 1. Ingest data into the `RawEvents` table.
 
     ```kusto
-    .ingest into table RawEvents ('https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json') with '{"format":"json", "ingestionMappingReference":"DiagnosticRawRecordsMapping"}'
+    .ingest into table RawEvents ('https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json') with '{"format":"json", "ingestionMappingReference":"RawEventMapping"}'
     ```
 
 # [C#](#tab/c-sharp)
@@ -408,7 +408,7 @@ Array data types are an ordered collection of values. Ingestion of a JSON array 
     ```kusto
     .create function EventRecordsExpand() {
         RawEvents
-        | mv-expand records = Event
+        | mv-expand records = Event.records
         | project
             Time = todatetime(records["timestamp"]),
             Device = tostring(records["deviceId"]),
