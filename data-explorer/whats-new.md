@@ -8,7 +8,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/17/2021
 ---
-# What's new in Azure Data Explorer
+# What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
