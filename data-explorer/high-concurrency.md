@@ -71,7 +71,7 @@ The follower database is a feature that follows a database or a set of tables in
 Use the leader-follower pattern to set compute resources for different workloads. For example, set up a cluster for ingestions, a cluster for querying or serving dashboards or applications, and a cluster that serves the data science workloads. Each workload in this case will have dedicated compute resources that can be scaled independently, and different caching and security configurations. All clusters use the same data, with the leader writing the data and the followers using it in a read-only mode.
 
 > [!NOTE]
-> Follower databases have a lag from the leader, usually of a few seconds. If your solution requires the latest data with no latency, this solution might be useful. Use a view on the follower cluster that unions the data from the leader and the follower and queries the latest data from the leader and the rest of the data from the follower.
+> Follower databases have a lag from the leader, usually of a few seconds. If your solution requires the latest data with no latency, this solution might be useful: Use a view on the follower cluster that unions the data from the leader and the follower and queries the latest data from the leader and the rest of the data from the follower.
 
 To improve the performance of queries on the follower cluster, you can enable [prefetch extents configuration](kusto/management/cluster-follower.md#alter-follower-database-prefetch-extents). Use this configuration carefully, because it could impact the freshness of data in the follower database.
 
