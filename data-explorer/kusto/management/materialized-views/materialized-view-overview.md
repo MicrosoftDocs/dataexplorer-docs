@@ -143,11 +143,11 @@ The `MaterializedViewResult` metric provides information about the result of a m
 
 The `Result` dimension can have one of the following values:
   
-* Success: Materialization completed successfully.
-* SourceTableNotFound: Source table of the materialization view was dropped. The materialized view is automatically disabled as a result.
-* SourceTableSchemaChange: The schema of the source table has changed in a way that is not compatible with the materialized view definition (materialized view query does not match the materialized view schema). The materialized view is automatically disabled as a result.
-* InsufficientCapacity: The cluster does not have sufficient capacity to materialized the materialized view. This can either indicate missing [ingestion capacity](../capacitypolicy.md#ingestion-capacity) or missing [materialized views capacity](../capacitypolicy.md#materialized-views-capacity-policy). Insufficient capacity failures can be transient, but if they reoccur often it is recommended to scale out the cluster and/or increase relevant capacity in policy.
-* InsufficientResources: The cluster doesn't have sufficient resources (CPU/memory) to materialized the materialized view. This failure may also be a transient one, but if it reoccurs often a scale out/up is required.
+* **Success**: Materialization completed successfully.
+* **SourceTableNotFound**: Source table of the materialization view was dropped. The materialized view is automatically disabled as a result.
+* **SourceTableSchemaChange**: The schema of the source table has changed in a way that is not compatible with the materialized view definition (materialized view query does not match the materialized view schema). The materialized view is automatically disabled as a result.
+* **InsufficientCapacity**: The cluster does not have sufficient capacity to materialized the materialized view. This can either indicate missing [ingestion capacity](../capacitypolicy.md#ingestion-capacity) or missing [materialized views capacity](../capacitypolicy.md#materialized-views-capacity-policy). Insufficient capacity failures can be transient, but if they reoccur often it is recommended to scale out the cluster and/or increase relevant capacity in policy.
+* **InsufficientResources:** The cluster doesn't have sufficient resources (CPU/memory) to materialized the materialized view. This failure may also be a transient one, but if it reoccurs often a scale out/up is required.
 
 ### Track resource consumption
 

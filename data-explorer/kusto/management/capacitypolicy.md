@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/16/2020
+ms.date: 02/16/2021
 ---
 # Capacity policy 
 
