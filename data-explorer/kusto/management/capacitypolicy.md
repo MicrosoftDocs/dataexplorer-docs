@@ -92,7 +92,6 @@ partitioning operations is above 90%.
 
 ## Materialized views capacity policy
 
-Change the capacity policy using the [alter cluster policy capacity](capacity-policy.md#alter-cluster-policy-capacity). This change requires `AllDatabasesAdmin` permissions.
 The policy can be used to change concurrency settings for materialized views. This change may be required when there's more than a single materialized view defined on a cluster, and the cluster can't keep up with the materialization of all views. By default, concurrency settings are relatively low to ensure that materialization doesn't impact cluster's performance.
 
 > [!WARNING]
