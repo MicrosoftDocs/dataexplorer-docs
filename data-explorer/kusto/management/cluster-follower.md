@@ -150,12 +150,11 @@ It requires [DatabaseAdmin permission](../management/access-control/role-based-a
 Drops authorized principal(s) from the follower database collection of override authorized principals.
 It requires [DatabaseAdmin permissions](../management/access-control/role-based-authorization.md).
 
-**Notes**
-
-* Viewing the effective collection of principals after the change can be done using the `.show` commands:
-    * [`.show database principals`](../management/security-roles.md#managing-database-security-roles)
-    * [`.show database details`](../management/show-databases.md)
-* Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
+> [!NOTE]
+> * Viewing the effective collection of principals after the change can be done using the `.show` commands:
+>    * [`.show database principals`](../management/security-roles.md#managing-database-security-roles)
+>    * [`.show database details`](../management/show-databases.md)
+> * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
 **Syntax**
 
@@ -173,12 +172,11 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 Alters the follower database authorized principals modification kind. 
 It requires [DatabaseAdmin permissions](../management/access-control/role-based-authorization.md).
 
-**Notes**
-
-* Viewing the effective collection of principals after the change can be done using the `.show` commands:
-    * [`.show database principals`](../management/security-roles.md#managing-database-security-roles)
-    * [`.show database details`](../management/show-databases.md)
-* Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
+> [!NOTE]
+> * Viewing the effective collection of principals after the change can be done using the `.show` commands:
+>    * [`.show database principals`](../management/security-roles.md#managing-database-security-roles)
+>    * [`.show database details`](../management/show-databases.md)
+> * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
 **Syntax**
 
@@ -196,12 +194,11 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 Alters the caching policies modification kind for the follower database, table, and materialized views. 
 It requires [DatabaseAdmin permissions](../management/access-control/role-based-authorization.md).
 
-**Notes**
-
-* Viewing the effective collection of database/table-level caching policies after the change can be done using the standard `.show` commands:
-    * [`.show tables details`](show-tables-command.md)
-    * [`.show database details`](../management/show-databases.md)
-* Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
+> [!NOTE]
+> * Viewing the effective collection of database/table-level caching policies after the change can be done using the standard `.show` commands:
+>    * [`.show tables details`](show-tables-command.md)
+>    * [`.show database details`](../management/show-databases.md)
+> * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
 **Syntax**
 
@@ -243,13 +240,12 @@ This command requires [DatabaseAdmin permissions](../management/access-control/r
 Alters a table's or a materialized view's caching policy on the follower database, to override the policy set on the source database in the leader cluster.
 It requires [DatabaseAdmin permissions](../management/access-control/role-based-authorization.md). 
 
-**Notes**
-
-* Viewing the policy or effective policies after the change can be done using the `.show` commands:
-    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
-    * [`.show database details`](../management/show-databases.md)
-    * [`.show table details`](show-tables-command.md)
-* Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
+> [!NOTE]
+> * Viewing the policy or effective policies after the change can be done using the `.show` commands:
+>    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
+>    * [`.show database details`](../management/show-databases.md)
+>    * [`.show table details`](show-tables-command.md)
+> * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
 **Syntax**
 
@@ -274,13 +270,12 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 Deletes an override for a table's or a materialized-view's caching policy on the follower database. The policy set on the source database in the leader cluster will now be the effective policy. 
 Requires [DatabaseAdmin permissions](../management/access-control/role-based-authorization.md). 
 
-**Notes**
-
-* Viewing the policy or effective policies after the change can be done using the `.show` commands:
-    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
-    * [`.show database details`](../management/show-databases.md)
-    * [`.show table details`](show-tables-command.md)
-* Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
+> [!NOTE]
+> * Viewing the policy or effective policies after the change can be done using the `.show` commands:
+>    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
+>    * [`.show database details`](../management/show-databases.md)
+>    * [`.show table details`](show-tables-command.md)
+> * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
 **Syntax**
 
