@@ -30,11 +30,12 @@ or an empty value.
 
 ## Examples
 
+Some query operators preserve the information about the data shard hosting the record.
+This is true for the `where`, `extend` and `project` operators.
 The following example shows how to get a list the tags of all the data shards
 that have records from an hour ago, with a specific value for the
-column `ActivityId`. Some query operators 
-preserve the information about the data shard hosting the record.
-In this example the `where` operator is used, but this is also true for `extend` and `project`.
+column `ActivityId`. 
+
 
 ```kusto
 T
