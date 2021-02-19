@@ -24,3 +24,9 @@ Alters the `lookback` value of an existing materialized view. For more informati
 ```kusto
 .alter materialized-view MyView lookback 6h
 ```
+
+To remove a lookback from the materialized view, use `timespan(null)` as the lookback argument: 
+
+```kusto
+.alter materialized-view MyView lookback timespan(null)
+```
