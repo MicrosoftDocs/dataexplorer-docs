@@ -15,9 +15,9 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-Returns a dynamic array with the [tags](../management/extents-overview.md#extent-tagging) of the data shard ("extent") that the current record resides in. 
+Returns a dynamic array with the [tags](../management/extents-overview.md#extent-tagging) of the data shard ("extent") that the current record is in. 
 
-Applying this function to calculated data which is not attached to a data shard returns an empty value.
+Applying this function to calculated data, which is not attached to a data shard, returns an empty value.
 
 ## Syntax
 
@@ -31,10 +31,10 @@ or an empty value.
 ## Examples
 
 The following example shows how to get a list the tags of all the data shards
-that have records from an hour ago with a specific value for the
-column `ActivityId`. It demonstrates that some query operators (here,
-the `where` operator, but this is also true for `extend` and `project`)
+that have records from an hour ago, with a specific value for the
+column `ActivityId`. Some query operators 
 preserve the information about the data shard hosting the record.
+In this example the `where` operator is used, but this is also true for `extend` and `project`.
 
 ```kusto
 T
@@ -45,7 +45,7 @@ T
 ```
 
 The following example shows how to obtain a count of all records from the 
-last hour, which are stored in extents which are tagged with the tag `MyTag`
+last hour, which are stored in extents tagged with the tag `MyTag`
 (and potentially other tags), but not tagged with the tag `drop-by:MyOtherTag`.
 
 ```kusto
