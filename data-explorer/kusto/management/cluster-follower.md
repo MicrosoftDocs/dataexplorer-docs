@@ -13,7 +13,7 @@ ms.date: 03/18/2020
 
 Control commands for managing the follower cluster configuration are listed below. These commands run synchronously, but are applied on the next periodic schema refresh. That's why there may be a few minutes delay until the new configuration is applied.
 
-The follower commands include [database level commands](#database-level-commands) and [table level commands](#table-level-commands).
+The follower commands include [database level commands](#database-level-commands) and [table level commands](#tables-and-materialized-views-commands).
 
 ## Database policy overrides
 
@@ -32,7 +32,6 @@ The default [caching policy](cachepolicy.md) for the follower cluster uses the l
 > [!NOTE]
 >  * If the collection of override database and table-level caching policies is *empty*, then everything is cached by default.
 >  * You can set the database-level caching policy override to `0d`, and nothing will be cached by default.
->  * EngineV3 clusters can only follow EngineV3 clusters. EngineV2 clusters can only follow V2 clusters
 
 ### Authorized principals
 
@@ -45,10 +44,11 @@ The default [caching policy](cachepolicy.md) for the follower cluster uses the l
 > [!NOTE]
 > If the collection of override authorized principals is *empty*, there will be no database-level principals.
 
-## Table policy overrides
+## Table and materialized views policy overrides
 
-By default, a table in a database that is being followed by a follower cluster keeps the source table's caching policy. However, the table-level [caching policy](cachepolicy.md) can be overridden in the follower cluster.
-Use the `replace` option to override the source table's caching policy.
+By default, tables and materialized views in a database that is being followed by a follower cluster keep the source entity's caching policy.
+However, table and materialized view [caching policies](cachepolicy.md) can be overridden in the follower cluster.
+Use the `replace` option to override the source entity's caching policy.
 
 ## Database level commands
 
@@ -193,7 +193,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 ### .alter follower database caching-policies-modification-kind
 
-Alters the follower database and table caching policies modification kind. 
+Alters the caching policies modification kind for the follower database, table, and materialized views. 
 It requires [DatabaseAdmin permissions](../management/access-control/role-based-authorization.md).
 
 **Notes**
@@ -236,11 +236,11 @@ This command requires [DatabaseAdmin permissions](../management/access-control/r
 .alter follower database MyDB prefetch-extents = false
 ```
 
-## Table level commands
+## Tables and materialized views commands
 
-### .alter follower table policy caching
+### Alter follower table or materialized view caching policy
 
-Alters a table-level caching policy on the follower database, to override the policy set on the source database in the leader cluster.
+Alters a table's or a materialized view's caching policy on the follower database, to override the policy set on the source database in the leader cluster.
 It requires [DatabaseAdmin permissions](../management/access-control/role-based-authorization.md). 
 
 **Notes**
@@ -257,15 +257,21 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 `.alter` `follower` `database` *DatabaseName* tables `(`*TableName1*`,`...`,`*TableNameN*`)` `policy` `caching` `hot` `=` *HotDataSpan*
 
-**Example**
+`.alter` `follower` `database` *DatabaseName* materialized-view *ViewName* `policy` `caching` `hot` `=` *HotDataSpan*
+
+`.alter` `follower` `database` *DatabaseName* materialized-views `(`*ViewName1*`,`...`,`*ViewNameN*`)` `policy` `caching` `hot` `=` *HotDataSpan*
+
+**Examples**
 
 ```kusto
 .alter follower database MyDb tables (Table1, Table2) policy caching hot = 7d
+
+.alter follower database MyDb materialized-views (View1, View2) policy caching hot = 7d
 ```
 
-### .delete follower table policy caching
+### Delete follower table or materialized view caching policy
 
-Deletes an override table-level caching policy on the follower database, making the policy set on the source database in the leader cluster the effective one. 
+Deletes an override for a table's or a materialized-view's caching policy on the follower database. The policy set on the source database in the leader cluster will now be the effective policy. 
 Requires [DatabaseAdmin permissions](../management/access-control/role-based-authorization.md). 
 
 **Notes**
@@ -282,10 +288,16 @@ Requires [DatabaseAdmin permissions](../management/access-control/role-based-aut
 
 `.delete` `follower` `database` *DatabaseName* `tables` `(`*TableName1*`,`...`,`*TableNameN*`)` `policy` `caching`
 
+`.delete` `follower` `database` *DatabaseName* `materialized-view` *ViewName* `policy` `caching`
+
+`.delete` `follower` `database` *DatabaseName* `materialized-views` `(`*ViewName1*`,`...`,`*ViewNameN*`)` `policy` `caching`
+
 **Example**
 
 ```kusto
 .delete follower database MyDB tables (Table1, Table2) policy caching
+
+.delete follower database MyDB materialized-views (View1, View2) policy caching
 ```
 
 ## Sample configuration
