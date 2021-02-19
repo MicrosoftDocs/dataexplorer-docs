@@ -39,6 +39,10 @@ The RLS policy can't be enabled on a table:
 * for which [continuous data export](../management/data-export/continuous-data-export.md) is configured.
 * referenced by a query of an [update policy](./updatepolicy.md).
 * on which [restricted view access policy](./restrictedviewaccesspolicy.md) is configured.
+* You can only have one RLS policy configured to a table
+
+> [!NOTE]
+> When you enable RLS policy, principals that are not included in the RLS won't see data in the table, including Admins.
 
 ## Examples
 
