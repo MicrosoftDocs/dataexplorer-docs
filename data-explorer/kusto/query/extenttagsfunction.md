@@ -56,6 +56,10 @@ T
 | count
 ```
 
+> ![NOTE]
+> Filtering on the value of `extent_tags()` performs best when one of the following string operators is used:
+> `has`, `has_cs`, `!has`, `!has_cs`.
+
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
