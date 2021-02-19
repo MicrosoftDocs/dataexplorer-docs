@@ -62,7 +62,7 @@ Configure the caching policy so that queries run on data that is stored in the h
 
 ## Set leader-follower architecture pattern
 
-The follower database is a feature that follows a database or a set of tables in a database from another cluster located in the same region. This feature is exposed through [Azure Data Share](/azure/data-explorer/data-share), [Azure Resource Manager APIs](follower.md), and a set of [cluster commands](kusto/management/cluster-follower.md). 
+The follower database is a feature that follows a database or a set of tables in a database from another cluster located in the same region. This feature is exposed through [Azure Data Share](./data-share.md), [Azure Resource Manager APIs](follower.md), and a set of [cluster commands](kusto/management/cluster-follower.md). 
 
 Use the leader-follower pattern to set compute resources for different workloads. For example, set up a cluster for ingestions, a cluster for querying or serving dashboards or applications, and a cluster that serves the data science workloads. Each workload in this case will have dedicated compute resources that can be scaled independently, and different caching and security configurations. All clusters use the same data, with the leader writing the data, and the followers using it in a read-only mode.
 
@@ -79,7 +79,7 @@ Use the following methods to optimize your queries for high concurrency.
 
 When more than one user loads the same dashboard at similar time, the dashboard to the second and following users can be served from the cache. This setup provides high performance with almost no CPU usage. Use the [query results cache](kusto/query/query-results-cache.md) feature and send query results cache configuration with the query using the `set` statement.
 
-[Grafana](/azure/data-explorer/grafana) contains a configuration setting for the query results cache at the data source level, so all dashboards use this setting by default and don't need to modify the query.
+[Grafana](./grafana.md) contains a configuration setting for the query results cache at the data source level, so all dashboards use this setting by default and don't need to modify the query.
 
 ### Configure query consistency
 
@@ -95,4 +95,4 @@ The number of concurrent requests is capped by default and controlled by the [Re
 
 ## Monitor Azure Data Explorer clusters
 
-Monitoring the health of your cluster resources helps you build an optimization plan using the features suggested in the above sections. Azure Monitor for Azure Data Explorer provides a comprehensive view of your cluster's performance, operations, usage, and failures. Get insights on the queries performance, concurrent queries, throttled queries and various other metrics by clicking on the **Insights (preview)** tab under the monitoring section of Azure Data Explorer cluster on Azure portal. Details on monitoring of clusters are given in the [Azure Monitor for Azure Data Explorer](/azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&amp;bc=/azure/data-explorer/breadcrumb/toc.json) documentation. For information on the individual metrics, see [Azure Data Explorer metrics](using-metrics.md#supported-azure-data-explorer-metrics).
+Monitoring the health of your cluster resources helps you build an optimization plan using the features suggested in the above sections. Azure Monitor for Azure Data Explorer provides a comprehensive view of your cluster's performance, operations, usage, and failures. Get insights on the queries performance, concurrent queries, throttled queries and various other metrics by clicking on the **Insights (preview)** tab under the monitoring section of Azure Data Explorer cluster on Azure portal. Details on monitoring of clusters are given in the [Azure Monitor for Azure Data Explorer](/azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json) documentation. For information on the individual metrics, see [Azure Data Explorer metrics](using-metrics.md#supported-azure-data-explorer-metrics).
