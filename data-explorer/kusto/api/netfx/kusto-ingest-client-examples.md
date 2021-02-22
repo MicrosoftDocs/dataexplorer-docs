@@ -56,6 +56,9 @@ Use KustoDirectIngestClient to ingest from a local file.
 
 > [!NOTE]
 > We recommend this method for limited volume and low frequency ingestion.
+ 
+> [!NOTE]
+> When working with local files, path is the absolute file path or a relative one with respect to the working directory.
 
 ```csharp
 // Create Kusto connection string with App Authentication
