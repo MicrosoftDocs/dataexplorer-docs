@@ -69,7 +69,8 @@ Shows all policies of the given entity type (database or table) if the given nam
 '  "Lookback": {'
 '    "Kind": "Default"'
 '  }'
-'}'```
+'}'
+```
 
 #### 3. Setting the *default* merge policy at database level:
 
