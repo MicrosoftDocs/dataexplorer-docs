@@ -28,7 +28,7 @@ external storage, specified by a [storage connection string](../../api/connectio
   See below for more details on the behavior in this mode.
 
 * `compressed`: If specified, the output storage artifacts are compressed
-  as `.gz` files. See `compressionType` for compressing parquet files as snappy. 
+  as `.gz` files. See `compressionType` for compressing Parquet files as snappy. 
 
 * *OutputDataFormat*: Indicates the data format of the storage artifacts written
   by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`.
@@ -59,7 +59,7 @@ external storage, specified by a [storage connection string](../../api/connectio
 |`distribution`   |`string`  |Distribution hint (`single`, `per_node`, `per_shard`). If value equals `single`, a single thread will write to storage. Otherwise, export will write from all nodes executing the query in parallel. See [evaluate plugin operator](../../query/evaluateoperator.md). Defaults to `per_shard`.
 |`distributed`   |`bool`  |Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true.
 |`persistDetails`|`bool`  |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller does not require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
-|`parquetRowGroupSize`|`int`  |Relevant only when data format is parquet. Controls the row group size in the exported files. Default row group size is 100000 records.|
+|`parquetRowGroupSize`|`int`  |Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100000 records.|
 
 **Results**
 
@@ -142,3 +142,22 @@ When the number of extents/nodes is large, this may lead to high load on storage
 
 * If exporting to a partitioned external table, setting the `spread`/`concurrency` properties can reduce concurrency (see details in the [command properties](export-data-to-an-external-table.md#syntax).
 * If neither of the above work, is also possible to completely disable distribution by setting the `distributed` property to false, but this is not recommended, as it may significantly impact the command performance.
+
+## Data types mapping
+
+### Parquet data types mapping
+
+On export, Kusto data types are mapped to Parquet data types using the following rules:
+
+| Kusto Data Type | Parquet Data Type | Parquet Annotation | Comments |
+| --------------- | ----------------- | ------------------ | -------- |
+| `bool`     | `BOOLEAN` | | |
+| `datetime` | `INT96` | | |
+| `dynamic`  | `BYTE_ARRAY` | UTF-8 | Serialized as JSON string |
+| `guid` | `BYTE_ARRAY` | UTF-8 | |
+| `int` | `INT32` | | |
+| `long` | `INT64` | | |
+| `real` | `DOUBLE` | | |
+| `string` | `BYTE_ARRAY` | UTF-8 | |
+| `timespan` | `INT64` | | Stored as ticks (100-nanosecond units) count |
+| `decimal` | `BYTE_ARRAY` | DECIMAL | |
