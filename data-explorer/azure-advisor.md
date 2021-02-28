@@ -96,7 +96,6 @@ The recommended action is to run the [clean databases extentcontainers](kusto/ma
 > [!IMPORTANT]
 > The data recoverability will be reset to the cleanup time and will not be available on data that was created before running the cleanup
 
-
 ### Performance recommendations
 
 The **Performance** recommendations help improve the performance of your Azure Data Explorer clusters. 
