@@ -83,7 +83,7 @@ Use the following methods to optimize your queries for high concurrency.
 
 When more than one user loads the same dashboard at a similar time, the dashboard to the second and following users can be served from the cache. This setup provides high performance with almost no CPU usage. Use the [query results cache](kusto/query/query-results-cache.md) feature, and send query results cache configuration with the query by using the `set` statement.
 
-[Grafana](/azure/data-explorer/grafana) contains a configuration setting for the query results cache at the data source level, so all dashboards use this setting by default and don't need to modify the query.
+[Grafana](grafana.md) contains a configuration setting for the query results cache at the data source level, so all dashboards use this setting by default and don't need to modify the query.
 
 ### Configure query consistency
 
