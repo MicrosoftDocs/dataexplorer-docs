@@ -81,12 +81,12 @@ If `hot` is specified - shows only extents that are expected to be in the hot ca
 |IndexSize |Double |Index size of the extent data
 |Blocks |Long |Number of data blocks in the extent
 |Segments |Long |Number of data segments in the extent
-|AssignedDataNodes |String | Deprecated (an empty string)
-|LoadedDataNodes |String |Deprecated (an empty string)
 |ExtentContainerId |String | ID of the extent container the extent is in
 |RowCount |Long |Number of rows in the extent
 |MinCreatedOn |DateTime |Date-time when the extent was created. For a merged extent, the minimum of creation times among the source extents
 |Tags|String|Tags, if any, defined for the extent
+|Kind|String|The kind of the storage engine that created the extent ("StorageV2" or "StorageV3")
+|DeletedRowCount|Long|Number of deleted rows in the extent
 
 ## Examples
 
