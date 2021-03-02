@@ -40,7 +40,7 @@ The `.alter` command allows changing the auto delete policy that is applied on t
 The following example sets the expiry of a table `T` to 2021-02-01. The table will be deleted even if there are records in it (noted by `DeleteIfNotEmpty`).
 
 ```kusto
-.alter table T policy auto_delete @'{ "ExpiryDate" : "2021-02-01 18:00", "DeleteIfNotEmpty": true }'
+.alter table T policy auto_delete @'{ "ExpiryDate" : "2021-02-01", "DeleteIfNotEmpty": true }'
 ```
 
 ## delete policy
