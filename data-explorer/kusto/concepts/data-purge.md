@@ -208,10 +208,17 @@ If needed, you can cancel pending purge requests.
 **Syntax**
 
 ```kusto
+ // Cancel of a single purge operation
  .cancel purge <OperationId>
+ 
+ // Cancel of all pending purge requests
+ .cancel all purges
+ 
+ // Cancel of all pending purge requests in database
+ .cancel all purges in database <DatabaseName>
 ```
 
-**Example**
+#### Example: Cancel single purge operation
 
 ```kusto
  .cancel purge aa894210-1c60-4657-9d21-adb2887993e1
@@ -220,11 +227,27 @@ If needed, you can cancel pending purge requests.
 **Output**
 
 The output of this command is the same as the 'show purges *OperationId*' command output, showing the updated status of the purge operation being canceled. 
-If the attempt is successful, the operation state is updated to `Abandoned`. Otherwise, the operation state isn't changed. 
+If the attempt is successful, the operation state is updated to `Cancelled`. Otherwise, the operation state isn't changed. 
 
 |`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Abandoned | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
+|c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Cancelled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
+
+#### Example: Cancel all pending purge operations in database
+
+```kusto
+ .cancel all purges in database MyDatabase
+```
+
+**Output**
+
+The output of this command is the same as the [show purges](#show-purges-command) command output, showing all operations in the database with their updated status.
+Operations that were cancelled successfully will have their status updated to `Cancelled`. Otherwise, the operation state isn't changed. 
+
+|`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|5a34169e-8730-49f5-9694-7fde3a7a0139 |MyDatabase |MyTable |2021-03-03 05:07:29.7050198 |00:00:00.2971331 |2021-03-03 05:07:30.0021529 | |Cancelled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
+|2fa7c04c-6364-4ce1-a5e5-1ab921f518f5 |MyDatabase |MyTable |2021-03-03 05:05:03.5035478 |00:00:00.1406211 |2021-03-03 05:05:03.6441689 | |InProgress | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
 
 ## Track purge operation status 
 
