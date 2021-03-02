@@ -218,7 +218,7 @@ If needed, you can cancel pending purge requests.
  .cancel all purges in database <DatabaseName>
 ```
 
-#### Example: Cancel single purge operation
+#### Example: Cancel a single purge operation
 
 ```kusto
  .cancel purge aa894210-1c60-4657-9d21-adb2887993e1
