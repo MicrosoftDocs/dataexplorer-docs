@@ -211,11 +211,11 @@ If needed, you can cancel pending purge requests.
  // Cancel of a single purge operation
  .cancel purge <OperationId>
  
- // Cancel of all pending purge requests
- .cancel all purges
- 
- // Cancel of all pending purge requests in database
+  // Cancel of all pending purge requests in a database
  .cancel all purges in database <DatabaseName>
+ 
+ // Cancel of all pending purge requests, for all databases
+ .cancel all purges
 ```
 
 #### Example: Cancel a single purge operation
