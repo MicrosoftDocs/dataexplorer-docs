@@ -44,7 +44,7 @@ For example:
 datatable(val:int)[5, int(null)]
 | extend IsBiggerThan3 = val > 3
 | extend IsBiggerThan3OrNull = val > 3 or isnull(val)
-| extend IsEqaulToNull = val == int(null)
+| extend IsEqualToNull = val == int(null)
 | extend IsNotEqualToNull = val != int(null)
 ```
 
