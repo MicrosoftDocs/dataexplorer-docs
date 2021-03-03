@@ -57,7 +57,7 @@ Results:
 
 
 > [!NOTE]
-> In EngineV2, a null comparison expression returns a boolean result. This changed in EngineV3 as described above, however, since null coalesces to false in a boolean expression the result in filter expressions is compatible between both engines.    
+> In EngineV2, a null comparison expression returns a boolean result. EngineV3 behaves as described [above](#comparing-null-to-something). However, since null coalesces to false in a boolean expression, the result in filter expressions is compatible between both engines.    
 
 ## Binary operations on null
 
