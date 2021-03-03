@@ -50,7 +50,7 @@ datatable(val:int)[5, int(null)]
 
 Results:
 
-|val | IsBiggerThan3 | IsBiggerThan3OrNull | IsEqaulToNull | IsNotEqualToNull|
+|val | IsBiggerThan3 | IsBiggerThan3OrNull | IsEqualToNull | IsNotEqualToNull|
 |---|---|--------|--------|--------|
 | 5 | true | true | false | true|
 | &nbsp; | &nbsp; | true| &nbsp; | &nbsp;|
