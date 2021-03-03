@@ -81,7 +81,7 @@ Changes to the policy could take up to 1 hour to take effect.
       "Kind": "UniformRange",
       "Properties": {
         "Reference": "1970-01-01T00:00:00",
-        "RangeSize": "1.00:00:00"
+        "RangeSize": "1.00:00:00",
         "OverrideCreationTime": false
       }
     }
@@ -110,7 +110,7 @@ Changes to the policy could take up to 1 hour to take effect.
       "Kind": "UniformRange",
       "Properties": {
         "Reference": "1970-01-01T00:00:00",
-        "RangeSize": "1.00:00:00"
+        "RangeSize": "1.00:00:00",
         "OverrideCreationTime": false
       }
     }
