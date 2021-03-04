@@ -13,7 +13,7 @@ ms.date: 10/11/2020
 
 Use group membership or execution context to control access to rows in a database table.
 
-Row Level Security (RLS) simplifies the design and coding of security. It lets you apply restrictions on data row access in your application. For example, limit user access to rows relevant to their department, or restrict customer access to only the data relevant to their company.
+Row Level Security (RLS) simplifies the design and coding of security. It lets you apply restrictions on data row access in your application. For example, limit user access to rows relevant to their department, or restrict customer access to only the data relevant to their company. 
 
 The access restriction logic is located in the database tier, rather than away from the data in another application tier. The database system applies the access restrictions every time data access is attempted from any tier. This logic makes your security system more reliable and robust by reducing the surface area of your security system.
 
@@ -33,12 +33,13 @@ For more information, see [control commands for managing the Row Level Security 
 
 ## Limitations
 
-There's no limit on the number of tables on which Row Level Security policy can be configured.
+There's no limit on the number of tables on which row level security policy can be configured.
 
 The RLS policy can't be enabled on a table:
 * for which [continuous data export](../management/data-export/continuous-data-export.md) is configured.
 * referenced by a query of an [update policy](./updatepolicy.md).
 * on which [restricted view access policy](./restrictedviewaccesspolicy.md) is configured.
+* on which another row level security policy is enabled. 
 
 ## Examples
 

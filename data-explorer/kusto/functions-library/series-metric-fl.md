@@ -58,12 +58,7 @@ let series_metric_fl=(metrics_tbl:(*), timestamp_col:string, name_col:string, la
     | where name == metric_name and timestamp between(stime..etime)
     | order by timestamp asc
     | summarize timestamp = make_list(timestamp), value=make_list(value) by name, labels
-    //  KQL has native has_any(), but no native has_all(), the lines below implement has_all()
-    | mv-apply x = selector_d to typeof(string) on (
-      summarize countif(labels has x)
-      | where countif_ == array_length(selector_d)
-    )
-    | project-away countif_
+    | where labels has_all (selector_d)
 }
 ;
 //
@@ -92,12 +87,7 @@ series_metric_fl(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_
     | where name == metric_name and timestamp between(stime..etime)
     | order by timestamp asc
     | summarize timestamp = make_list(timestamp), value=make_list(value) by name, labels
-    //  KQL has native has_any(), but no native has_all(), the lines below implement has_all()
-    | mv-apply x = selector_d to typeof(string) on (
-      summarize countif(labels has x)
-      | where countif_ == array_length(selector_d)
-    )
-    | project-away countif_
+    | where labels has_all (selector_d)
 }
 ```
 

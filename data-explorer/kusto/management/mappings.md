@@ -127,6 +127,7 @@ Each element in the list describes a mapping for a specific column, and may cont
   { "column" : "xtext",       "Properties":{"Path":"$.xtext"}}, 
   { "column" : "location",    "Properties":{"transform":"SourceLocation"}}, 
   { "column" : "lineNumber",  "Properties":{"transform":"SourceLineNumber"}}, 
+  { "column" : "timestamp",   "Properties":{"Path":"$.unix_ms", "transform":"DateTimeFromUnixMilliseconds"}}, 
   { "column" : "full_record", "Properties":{"Path":"$"}}
 ]
 ```
@@ -291,6 +292,7 @@ Each element in the list describes a mapping for a specific column, and may cont
   { "column" : "xtext",       "Properties":{"Path":"$.xtext"}}, 
   { "column" : "location",    "Properties":{"transform":"SourceLocation"}}, 
   { "column" : "lineNumber",  "Properties":{"transform":"SourceLineNumber"}}, 
+  { "column" : "timestamp",   "Properties":{"Path":"$.unix_ms", "transform":"DateTimeFromUnixMilliseconds"}}, 
   { "column" : "full_record", "Properties":{"Path":"$"}}
 ]
 ```      
@@ -347,6 +349,7 @@ Each element in the list describes a mapping for a specific column, and may cont
   { "column" : "xtext",       "Properties":{"Path":"$.xtext"}}, 
   { "column" : "location",    "Properties":{"transform":"SourceLocation"}}, 
   { "column" : "lineNumber",  "Properties":{"transform":"SourceLineNumber"}}, 
+  { "column" : "timestamp",   "Properties":{"Path":"$.unix_ms", "transform":"DateTimeFromUnixMilliseconds"}}, 
   { "column" : "full_record", "Properties":{"Path":"$"}}
 ]
 ```      

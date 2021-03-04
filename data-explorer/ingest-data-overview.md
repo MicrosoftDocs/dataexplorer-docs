@@ -82,7 +82,7 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 
 * [REST API](kusto/api/netfx/kusto-ingest-client-rest.md)
 
-* [GO API](kusto/api/golang/kusto-golang-client-library.md)
+* [GO SDK](kusto/api/golang/kusto-golang-client-library.md)
 
 ### Tools
 

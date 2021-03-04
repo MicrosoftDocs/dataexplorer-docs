@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/12/2020
+ms.date: 02/16/2021
 ---
 # Capacity policy 
 
@@ -119,9 +119,12 @@ Property | Description
 |`ClusterMaximumConcurrentOperations` | The maximum number of materialized views that the cluster can materialize concurrently. This value is 1 by default, while materialization itself (of a single individual view) may run many concurrent operations. If there's more than a single materialized view defined on the cluster, and if the cluster's resources are in good state, it's recommended to increase this value. |
 | `ExtentsRebuildCapacity`|  Determines the number of concurrent extents rebuild operations, executed for all materialized views during the materialization process. If several views are executing concurrently, since `ClusterMaximumConcurrentOperation` is greater than 1, they'll share the quota defined by this property. The maximum number of concurrent extents rebuild operations won't exceed this value. |
 
-### Extents rebuild
+### Extents rebuild capacity
 
-To learn more about extents rebuild operations, see [how materialized views work](materialized-views/materialized-view-overview.md#how-materialized-views-work). The maximum number of extents rebuild is calculated by:
+For more information about extents rebuild operations, see [how materialized views work](materialized-views/materialized-view-overview.md#how-materialized-views-work).
+This setting is only relevant to Engine V2 clusters. This setting is not relevant to [EngineV3](../../engine-v3.md) clusters.
+
+The maximum number of extents rebuild is calculated by:
     
 ```kusto
 Maximum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * `MaximumConcurrentOperationsPerNode`)
