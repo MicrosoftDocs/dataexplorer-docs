@@ -73,3 +73,7 @@ Use the [`.show workload groups resources utilization` command](workload-groups-
 
 The same information can also be viewed and analyzed in [Azure Monitor insights](/azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json).
 
+## Control commands
+
+Managing workload groups and their policies is done using [workload groups control commands](workload-groups-commands.md).
+
