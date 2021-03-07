@@ -7,34 +7,29 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/07/2021
 ---
 # Operations management
 
-Kusto maintains an internal log of running and historic operations that it processes,
-such as ingestion operations and data management operations. Entries are appended to the
-log when operations start and change their state, including when they reach their terminal
-state. Users can view the ongoing and past operations they started by using the
-[.show operations](#show-operations) control command. (Database administrators can view
-all operations that apply to the databases they administer.)
+Kusto maintains an internal log of running and historic operations that it processes, such as ingestion operations and data management operations. 
+Entries are appended to the log when operations start and change their state, including when operations reach their terminal state. 
+Users can view the ongoing and past operations they started by using the [`.show operations`](#show-operations) control command. 
+Database administrators can view all operations that apply to the databases they administer.
 
-Additionally, users can view the results of an operation by using the [.show operation details](#show-operation)
-command. Normally, the results are returned as part of the command itself; for asynchronous
-control commands, however, this is the only way to view the command's results.
+Users can also view the results of an operation by using the [`.show operation details`](#show-operations)
+command. Normally, the results are returned as part of `.show operations` command itself. For asynchronous
+control commands, the `.show operation details` command is the only way to view the command's results.
 
 ## .show operations
 
 The `.show operations` command returns a table with all administrative operations, both running and completed,
 which were executed in the last two weeks. The command may run in two "modes":
 
-* **Log mode**: In this mode, all entries in the log (that the user has access to)
-  are returned. Multiple records might be returned for a single operation, with
-  up to one record indicating the terminal state  (`Completed` or `Failed`).
-  This mode is used when the command does not indicate the operation ID(s).
+* **Log mode**: In this mode, all entries in the log that the user has access to
+  are returned. Multiple records might be returned for a single operation. Up to one record indicates the terminal state of `Completed` or `Failed`. This mode is used when the command doesn't indicate the operation ID(s).
 
 * **Latest update mode**: In this mode, the latest updated record for each operation ID
-  provided by the user is returned.
-  This mode is used when the command indicates which operation ID(s) to inspect.
+  provided by the user is returned. This mode is used when the command indicates which operation ID(s) to inspect.
 
 **Syntax**
 
