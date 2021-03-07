@@ -11,15 +11,15 @@ ms.date: 03/02/2021
 ---
 # Auto delete policy command
 
-This article describes control commands used for managing the [auto delete policy](autodeletepolicy.md).
+This article describes control commands used for managing the [auto delete policy](auto-delete-policy.md).
 
 ## show policy
 
 ```kusto
 .show table [table_name] policy auto_delete
 ```
-Displays the auto delete policy that is applied on the table.
 
+Displays the auto delete policy that is applied on the table.
 
 ### Output
 
@@ -33,11 +33,11 @@ Displays the auto delete policy that is applied on the table.
 .alter table [table_name] policy auto_delete 'policy object, serialized as JSON'
 ```
 
-The `.alter` command allows changing the auto delete policy that is applied on the table.
+Changes the auto delete policy that is applied on the table.
 
 ### Examples
 
-The following example sets the expiry of a table `T` to 2021-02-01. The table will be deleted even if there are records in it (noted by `DeleteIfNotEmpty`).
+The following example sets the expiry of a table `T` to `2021-02-01`. The table will be deleted even if there are records in it (noted by `DeleteIfNotEmpty`).
 
 ```kusto
 .alter table T policy auto_delete @'{ "ExpiryDate" : "2021-02-01", "DeleteIfNotEmpty": true }'
@@ -49,4 +49,4 @@ The following example sets the expiry of a table `T` to 2021-02-01. The table wi
 .delete table [table_name] policy auto_delete
 ```
 
-The `.delete` command deletes the auto delete policy of the given table.
+Deletes the auto delete policy of the given table.
