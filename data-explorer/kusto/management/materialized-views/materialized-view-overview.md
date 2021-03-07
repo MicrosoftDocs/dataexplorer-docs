@@ -70,7 +70,7 @@ The [monitoring](#materialized-views-monitoring) section explains how to trouble
 
 * Materialized views can participate in cross-cluster or cross-database queries, but aren't included in wildcard unions or searches.
 
-* See more tips about how to create your materialized view, based on your query pattern, in the [performance tips](materialized-view-create.md#performance-tips) of the [.create materialized-view](materialized-view-create.md) command.
+* See more tips about how to create your materialized view, based on your query pattern, in the [.create materialized-view performance tips](materialized-view-create.md#performance-tips).
 
 ### Examples
 
