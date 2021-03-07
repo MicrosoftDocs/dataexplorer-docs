@@ -23,6 +23,9 @@ RLS lets you provide access to other applications and users, only to a certain p
 * Anonymize data in some of the columns
 * All of the above
 
+> [!NOTE]
+> When an RLS policy is enabled on a table, access is entirely replaced by the RLS query that's defined on the table. That's why only one RLS policy may be enabled on each table. The access restriction applies to all users, including database admins and the RLS creator. The RLS query must include definitions for all types users to whom you want to give access. 
+
 For more information, see [control commands for managing the Row Level Security policy](../management/row-level-security-policy.md).
 
 > [!TIP]
@@ -31,9 +34,6 @@ For more information, see [control commands for managing the Row Level Security 
 > * [current_principal_details()](../query/current-principal-detailsfunction.md)
 > * [current_principal_is_member_of()](../query/current-principal-ismemberoffunction.md)
 
-## How it works
-
-When an RLS policy is enabled on a table, access is entirely replaced by the RLS query that's defined on the table. That's why only one RLS policy may be enabled on each table.  The access restriction applies to all users, including database admins and the RLS creator. The RLS query must include definitions for all types users to whom you want to give access. 
 
 ## Limitations
 
