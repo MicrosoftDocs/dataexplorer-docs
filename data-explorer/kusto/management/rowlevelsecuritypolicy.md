@@ -24,7 +24,7 @@ RLS lets you provide access to other applications and users, only to a certain p
 * All of the above
 
 > [!NOTE]
-> When an RLS policy is enabled on a table, access is entirely replaced by the RLS query that's defined on the table. The access restriction applies to all users, including database admins and the RLS creator. The RLS query must explicitly include definitions for all types users to whom you want to give access. 
+> When an RLS policy is enabled on a table, access is entirely replaced by the RLS query that's defined on the table. The access restriction applies to all users, including database admins and the RLS creator. The RLS query must explicitly include definitions for all types of users to whom you want to give access. 
 
 For more information, see [control commands for managing the Row Level Security policy](../management/row-level-security-policy.md).
 
