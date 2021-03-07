@@ -198,7 +198,7 @@ The following aggregation functions are supported:
 
 ## Performance tips
 
-* Materialized view query filters are optimized when filtered by one of the ,materialized view group-by keys. If you know your query pattern will often filter by some column, which can be added as a group-by key to the materialized view aggregation, include it in the view. For example: For a materialized view exposing an `arg_max` by `ResourceId` that will often be filtered by `SubscriptionId`, the recommendation is as follows:
+* Materialized view query filters are optimized when filtered by one of the materialized view group-by keys. If you know your query pattern will often filter by some column, which can be added as a group-by key to the materialized view aggregation, include it in the view. For example: For a materialized view exposing an `arg_max` by `ResourceId` that will often be filtered by `SubscriptionId`, the recommendation is as follows:
 
     **Do**:
     
