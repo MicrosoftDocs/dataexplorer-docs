@@ -256,7 +256,7 @@ The following aggregation functions are supported:
         | summarize count() by ResourceId
     }
     ```
-* Define a `lookback` on the view, if applicable. See [properties](#properties) section for details. Adding a lookback period to the view can significantly improve query performance.
+* Define a `lookback` on the view, if applicable. For details, see [properties](#properties). Adding a lookback period to the view can significantly improve query performance.
 
 > [!TIP]
 > If you require the best query time performance, but can tolerate some data latency, use the [materialized_view() function](../../query/materialized-view-function.md).
