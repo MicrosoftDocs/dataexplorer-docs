@@ -31,9 +31,13 @@ For more information, see [control commands for managing the Row Level Security 
 > * [current_principal_details()](../query/current-principal-detailsfunction.md)
 > * [current_principal_is_member_of()](../query/current-principal-ismemberoffunction.md)
 
+## How it works
+
+When an RLS policy is enabled on a table, access is entirely replaced by the RLS query that's defined on the table. That's why only one RLS policy may be enabled on each table.  The access restriction applies to all users, including database admins and the RLS creator. The RLS query must include definitions for all types users to whom you want to give access. 
+
 ## Limitations
 
-There's no limit on the number of tables on which row level security policy can be configured.
+There's no limit on the number of tables on which Row Level Security policy can be configured.
 
 The RLS policy can't be enabled on a table:
 * for which [continuous data export](../management/data-export/continuous-data-export.md) is configured.
@@ -154,7 +158,7 @@ the support person. An RLS policy can be applied on the table to mask all but th
 
 ## Performance impact on queries
 
-When an RLS policy is enabled on a table, there will be some performance impact on queries that access that table. Access to the table will actually be replaced by the RLS query that's defined on that table. The performance impact of an RLS query will normally consist of two parts:
+When an RLS policy is enabled on a table, there will be some performance impact on queries that access that table. Access to the table will be replaced by the RLS query that's defined on that table. The performance impact of an RLS query will normally consist of two parts:
 
 * Membership checks in Azure Active Directory
 * The filters applied on the data
