@@ -4,7 +4,7 @@ description: This article describes ago() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -22,20 +22,20 @@ Like `now()`, this function can be used multiple times
 in a statement and the UTC clock time being referenced will be the same
 for all instantiations.
 
-**Syntax**
+## Syntax
 
 `ago(`*a_timespan*`)`
 
-**Arguments**
+## Arguments
 
 * *a_timespan*: Interval to subtract from the current UTC clock time
 (`now()`).
 
-**Returns**
+## Returns
 
 `now() - a_timespan`
 
-**Example**
+## Example
 
 All rows with a timestamp in the past hour:
 

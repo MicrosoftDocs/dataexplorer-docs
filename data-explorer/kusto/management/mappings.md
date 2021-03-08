@@ -4,7 +4,7 @@ description: This article describes Data mappings in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: ohbitton
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/19/2020
@@ -61,19 +61,6 @@ Each element in the list describes a mapping for a specific column, and may cont
 > [!NOTE]
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as a JSON string.
 
-* When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
-
-```kusto
-.ingest into Table123 (@"source1", @"source2")
-    with 
-    (
-        format="csv", 
-        ingestionMappingReference = "Mapping1"
-    )
-```
-
-* When the mapping above is provided as part of the `.ingest` control command it is serialized as a JSON string:
-
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
     with 
@@ -87,8 +74,20 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
-**Note:** 
-The following mapping format, without the `Properties` property-bag, is deprecated.
+> [!NOTE]
+> When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with 
+    (
+        format="csv", 
+        ingestionMappingReference = "Mapping1"
+    )
+```
+
+> [!NOTE]
+> The following mapping format, without the `Properties` property-bag, is deprecated.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -111,7 +110,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 |Property|Description|
 |----|--|
-|`path`|If starts with `$`: JSON path to the field that will become the content of the column in the JSON document (JSON path that denotes the entire document is `$`). If the value does not start with `$`: a constant value is used.|
+|`path`|If starts with `$`: JSON path to the field that will become the content of the column in the JSON document (JSON path that denotes the entire document is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include white-spaces should be escaped as [\'Property Name\'].|
 |`transform`|(Optional) Transformation that should be applied on the content with [mapping transformations](#mapping-transformations).|
 
 ### Example of JSON mapping
@@ -128,12 +127,30 @@ Each element in the list describes a mapping for a specific column, and may cont
   { "column" : "xtext",       "Properties":{"Path":"$.xtext"}}, 
   { "column" : "location",    "Properties":{"transform":"SourceLocation"}}, 
   { "column" : "lineNumber",  "Properties":{"transform":"SourceLineNumber"}}, 
+  { "column" : "timestamp",   "Properties":{"Path":"$.unix_ms", "transform":"DateTimeFromUnixMilliseconds"}}, 
   { "column" : "full_record", "Properties":{"Path":"$"}}
 ]
 ```
 
 > [!NOTE]
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string.
+
+```kusto
+.ingest into Table123 (@"source1", @"source2") 
+  with 
+  (
+      format = "json", 
+      ingestionMapping = 
+      "["
+        "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
+        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}",
+        "{\"column\":\"custom_column\",  \"Properties\":{\"Path\":\"$.[\'property name with space\']\"}}"
+      "]"
+  )
+```
+
+> [!NOTE]
+> When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -144,8 +161,8 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
-**Note:** 
-The following mapping format, without the `Properties` property-bag, is deprecated.
+> [!NOTE]
+> The following mapping format, without the `Properties` property-bag, is deprecated.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2") 
@@ -170,7 +187,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 |Property|Description|
 |----|--|
 |`Field`|The name of the field in the Avro record.|
-|`Path`|Alternative to using `field` which allows taking the inner part of an Avro record-field, if necessary. The value denotes a JSON-path from the root of the record. See the Notes below for more information. |
+|`Path`|Alternative to using `field` which allows taking the inner part of an Avro record-field, if necessary. The value denotes a JSON-path from the root of the record. See the Notes below for more information. JSON paths that include white-spaces should be escaped as [\'Property Name\'].|
 |`transform`|(Optional) Transformation that should be applied on the content with [supported transformations](#mapping-transformations).|
 
 **Notes**
@@ -211,6 +228,22 @@ The two alternatives below are equal:
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string.
 
 ```kusto
+.ingest into Table123 (@"source1", @"source2") 
+  with 
+  (
+      format = "avro", 
+      ingestionMapping = 
+      "["
+        "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
+        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}"
+      "]"
+  )
+```
+
+> [!NOTE]
+> When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
+
+```kusto
 .ingest into Table123 (@"source1", @"source2")
     with 
     (
@@ -219,8 +252,8 @@ The two alternatives below are equal:
     )
 ```
 
-**Note:** 
-The following mapping format, without the `Properties` property-bag, is deprecated.
+> [!NOTE]
+> The following mapping format, without the `Properties` property-bag, is deprecated.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2") 
@@ -243,7 +276,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 |Property|Description|
 |----|--|
-|`path`|If starts with `$`: JSON path to the field that will become the content of the column in the Parquet document (JSON path that denotes the entire document is `$`). If the value does not start with `$`: a constant value is used.|
+|`path`|If starts with `$`: JSON path to the field that will become the content of the column in the Parquet document (JSON path that denotes the entire document is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include white-spaces should be escaped as [\'Property Name\']. |
 |`transform`|(Optional) [mapping transformations](#mapping-transformations) that should be applied on the content.
 
 
@@ -259,6 +292,7 @@ Each element in the list describes a mapping for a specific column, and may cont
   { "column" : "xtext",       "Properties":{"Path":"$.xtext"}}, 
   { "column" : "location",    "Properties":{"transform":"SourceLocation"}}, 
   { "column" : "lineNumber",  "Properties":{"transform":"SourceLineNumber"}}, 
+  { "column" : "timestamp",   "Properties":{"Path":"$.unix_ms", "transform":"DateTimeFromUnixMilliseconds"}}, 
   { "column" : "full_record", "Properties":{"Path":"$"}}
 ]
 ```      
@@ -266,7 +300,22 @@ Each element in the list describes a mapping for a specific column, and may cont
 > [!NOTE]
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as a JSON string.
 
-* When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
+```kusto
+.ingest into Table123 (@"source1", @"source2") 
+  with 
+  (
+      format = "parquet", 
+      ingestionMapping = 
+      "["
+        "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
+        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}",
+        "{\"column\":\"custom_column\",  \"Properties\":{\"Path\":\"$.[\'property name with space\']\"}}"
+      "]"
+  )
+```
+
+> [!NOTE]
+> When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -277,21 +326,6 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
-* When the mapping above is provided as part of the `.ingest` control command it is serialized as a JSON string:
-
-```kusto
-.ingest into Table123 (@"source1", @"source2") 
-  with 
-  (
-      format = "parquet", 
-      ingestionMapping = 
-      "["
-        "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
-        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}"
-      "]"
-  )
-```
-
 ## Orc mapping
 
 When the source file is in Orc format, the file content is mapped to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. The columns mapped in the Orc mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
@@ -300,7 +334,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 |Property|Description|
 |----|--|
-|`path`|If starts with `$`: JSON path to the field that will become the content of the column in the Orc document (JSON path that denotes the entire document is `$`). If the value does not start with `$`: a constant value is used.|
+|`path`|If starts with `$`: JSON path to the field that will become the content of the column in the Orc document (JSON path that denotes the entire document is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include white-spaces should be escaped as [\'Property Name\'].|
 |`transform`|(Optional) [mapping transformations](#mapping-transformations) that should be applied on the content.
 
 ### Example of Orc mapping
@@ -315,6 +349,7 @@ Each element in the list describes a mapping for a specific column, and may cont
   { "column" : "xtext",       "Properties":{"Path":"$.xtext"}}, 
   { "column" : "location",    "Properties":{"transform":"SourceLocation"}}, 
   { "column" : "lineNumber",  "Properties":{"transform":"SourceLineNumber"}}, 
+  { "column" : "timestamp",   "Properties":{"Path":"$.unix_ms", "transform":"DateTimeFromUnixMilliseconds"}}, 
   { "column" : "full_record", "Properties":{"Path":"$"}}
 ]
 ```      
@@ -330,9 +365,22 @@ Each element in the list describes a mapping for a specific column, and may cont
       ingestionMapping = 
       "["
         "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
-        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}"
+        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}",
+        "{\"column\":\"custom_column\",  \"Properties\":{\"Path\":\"$.[\'property name with space\']\"}}"
       "]"
   )
+```
+
+> [!NOTE]
+> When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with 
+    (
+        format="orc", 
+        ingestionMappingReference = "Mapping1"
+    )
 ```
 
 ## Mapping transformations
@@ -342,7 +390,6 @@ Some of the data format mappings (Parquet, JSON and Avro) support simple and use
 |Path-dependant transformation|Description|Conditions|
 |--|--|--|
 |`PropertyBagArrayToDictionary`|Transforms JSON array of properties (e.g. {events:[{"n1":"v1"},{"n2":"v2"}]}) to dictionary and serializes it to valid JSON document (for example, {"n1":"v1","n2":"v2"}).|Can be applied only when `path` is used|
-|`GetPathElement(index)`|Extracts an element from the given path according to the given index (for example, Path: $.a.b.c, GetPathElement(0) == "c", GetPathElement(-1) == "b", type string|Can be applied only when `path` is used|
 |`SourceLocation`|Name of the storage artifact that provided the data, type string (for example, the blob's "BaseUri" field).|
 |`SourceLineNumber`|Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).|
 |`DateTimeFromUnixSeconds`|Converts number representing unix-time (seconds since 1970-01-01) to UTC datetime string|

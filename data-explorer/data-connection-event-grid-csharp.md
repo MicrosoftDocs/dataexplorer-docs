@@ -1,11 +1,11 @@
 ---
 title: 'Create an Event Grid data connection for Azure Data Explorer by using C#'
 description: In this article, you learn how to create an Event Grid data connection for Azure Data Explorer by using C#.
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/07/2019
 ---
 
@@ -18,16 +18,17 @@ ms.date: 10/07/2019
 > * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, and blobs written to blob containers. In this article, you create an Event Grid data connection for Azure Data Explorer by using C#.
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
+ In this article, you create an Event Grid data connection for Azure Data Explorer by using C#.
 
 ## Prerequisites
 
 * If you don't have Visual Studio 2019 installed, you can download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Make sure that you enable **Azure development** during the Visual Studio setup.
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Create [a cluster and database](create-cluster-database-csharp.md)
-* Create [table and column mapping](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
+* Create [table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster)
 * Set [database and table policies](database-table-policies-csharp.md) (optional)
-* Create a [storage account with an Event Grid subscription](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account).
+* Create a [storage account with an Event Grid subscription](ingest-data-event-grid.md).
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
@@ -67,9 +68,10 @@ var location = "Central US";
 var tableName = "StormEvents";
 var mappingRuleName = "StormEvents_CSV_Mapping";
 var dataFormat = DataFormat.CSV;
+var blobStorageEventType = "Microsoft.Storage.BlobCreated";
 
 await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, dataConnectionName,
-    new EventGridDataConnection(storageAccountResourceId, eventHubResourceId, consumerGroup, tableName: tableName, location: location, mappingRuleName: mappingRuleName, dataFormat: dataFormat));
+    new EventGridDataConnection(storageAccountResourceId, eventHubResourceId, consumerGroup, tableName: tableName, location: location, mappingRuleName: mappingRuleName, dataFormat: dataFormat, blobStorageEventType: blobStorageEventType));
 ```
 
 |**Setting** | **Suggested value** | **Field description**|
@@ -89,19 +91,27 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | storageAccountResourceId | *Resource ID* | The resource ID of your storage account that holds the data for ingestion. |
 | consumerGroup | *$Default* | The consumer group of your Event Hub.|
 | location | *Central US* | The location of the data connection resource.|
+| blobStorageEventType | *Microsoft.Storage.BlobCreated* | The type of event that triggers ingestion. Supported events are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage.|
 
 ## Generate sample data
 
-Now that Azure Data Explorer and the storage account are connected, you can create sample data and upload it to the blob storage.
+Now that Azure Data Explorer and the storage account are connected, you can create a sample data and upload it to the storage.
 
-This script creates a new container in your storage account, uploads an existing file (as a blob) to that container, and then lists the blobs in the container.
+> [!NOTE]
+> Azure Data Explorer won't delete the blobs post ingestion. Retain the blobs for three to five days by using [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion.
+
+### Upload file using Azure Blob Storage SDK
+
+The following code snippet creates a new container in your storage account, uploads an existing file (as a blob) to that container, and then lists the blobs in the container.
 
 ```csharp
 var azureStorageAccountConnectionString=<storage_account_connection_string>;
 
-var containerName=<container_name>;
-var blobName=<blob_name>;
-var localFileName=<file_to_upload>;
+var containerName = <container_name>;
+var blobName = <blob_name>;
+var localFileName = <file_to_upload>;
+var uncompressedSizeInBytes = <uncompressed_size_in_bytes>;
+var mapping = <mappingReference>;
 
 // Creating the container
 var azureStorageAccount = CloudStorageAccount.Parse(azureStorageAccountConnectionString);
@@ -111,15 +121,79 @@ container.CreateIfNotExists();
 
 // Set metadata and upload file to blob
 var blob = container.GetBlockBlobReference(blobName);
-blob.Metadata.Add("rawSizeBytes", "4096‬"); // the uncompressed size is 4096 bytes
-blob.Metadata.Add("kustoIngestionMappingReference", "mapping_v2‬");
+blob.Metadata.Add("rawSizeBytes", uncompressedSizeInBytes);
+blob.Metadata.Add("kustoIngestionMappingReference", mapping);
 blob.UploadFromFile(localFileName);
 
 // List blobs
 var blobs = container.ListBlobs();
 ```
 
+### Upload file using Azure Data Lake SDK
+
+When working with Data Lake Storage Gen2, you can use [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload files to storage. The following code snippet uses Azure.Storage.Files.DataLake v12.5.0 to create a new filesystem in Azure Data Lake storage and to upload a local file with metadata to that filesystem.
+
+```csharp
+var accountName = <storage_account_name>;
+var accountKey = <storage_account_key>;
+var fileSystemName = <file_system_name>;
+var fileName = <file_name>;
+var localFileName = <file_to_upload>;
+var uncompressedSizeInBytes = <uncompressed_size_in_bytes>;
+var mapping = <mapping_reference>;
+
+var sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey);
+var dfsUri = "https://" + accountName + ".dfs.core.windows.net";
+var dataLakeServiceClient = new DataLakeServiceClient(new Uri(dfsUri), sharedKeyCredential);
+
+// Create the filesystem
+var dataLakeFileSystemClient = dataLakeServiceClient.CreateFileSystem(fileSystemName).Value;
+
+// Define metadata
+IDictionary<String, String> metadata = new Dictionary<string, string>();
+metadata.Add("rawSizeBytes", uncompressedSizeInBytes);
+metadata.Add("kustoIngestionMappingReference", mapping);
+
+// Set uploading options
+var uploadOptions = new DataLakeFileUploadOptions
+{
+    Metadata = metadata,
+    Close = true // Note: The close option triggers the event being processed by the data connection
+};
+
+// Write to the file
+var dataLakeFileClient = dataLakeFileSystemClient.GetFileClient(fileName);
+dataLakeFileClient.Upload(localFileName, uploadOptions);
+```
+
 > [!NOTE]
-> Azure Data Explorer won't delete the blobs post ingestion. Retain the blobs for three to five days by using [Azure Blob storage lifecycle](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion.
+> When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0, and this event is ignored by Azure Data Explorer. File flushing triggers another event if the *Close* parameter is set to *true*. This event indicates that this is the final update and the file stream has been closed. This event is processed by the Event Grid data connection. In the code snippet above, the Upload method triggers flushing when the file upload is finished. Therefore, a *Close* parameter set to *true* must be defined. For more information about flushing, see [Azure Data Lake flush method](/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush).
+
+### Rename file using Azure Data Lake SDK
+
+The following code snippet uses [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to rename a blob in an ADLSv2 storage account.
+
+```csharp
+var accountName = <storage_account_name>;
+var accountKey = <storage_account_key>;
+var fileSystemName = <file_system_name>;
+var sourceFilePath = <source_file_path>;
+var destinationFilePath = <destination_file_path>;
+
+var sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey);
+var dfsUri = "https://" + accountName + ".dfs.core.windows.net";
+var dataLakeServiceClient = new DataLakeServiceClient(new Uri(dfsUri), sharedKeyCredential);
+
+// Get a client to the the filesystem
+var dataLakeFileSystemClient = dataLakeServiceClient.GetFileSystemClient(fileSystemName);
+
+// Rename a file in the file system
+var dataLakeFileClient = dataLakeFileSystemClient.GetFileClient(sourceFilePath);
+dataLakeFileClient.Rename(destinationFilePath);
+```
+
+> [!NOTE]
+> * Directory renaming is possible in ADLSv2, but it doesn't trigger *blob renamed* events and ingestion of blobs inside the directory. To ingest blobs following renaming, directly rename the desired blobs.
+> * If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]

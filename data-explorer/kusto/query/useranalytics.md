@@ -4,14 +4,14 @@ description: This article describes User Analytics in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/17/2019
 ---
-# User Analytics
+# User analytics plugins
 
-This section describes Kusto extensions (plugins) for User Analytics scenarios.
+This section describes Kusto extensions (plugins) for user analytics scenarios.
 
 |Scenario|Plugin|Details|User Experience|
 |--------|------|--------|-------|

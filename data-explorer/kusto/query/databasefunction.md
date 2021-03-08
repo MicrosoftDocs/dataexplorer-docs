@@ -4,7 +4,7 @@ description: This article describes database() (scope function) in Azure Data Ex
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -22,22 +22,21 @@ database('Sample').StormEvents
 cluster('help').database('Sample').StormEvents
 ```
 
-**Syntax**
+> [!NOTE]
+> * For more information, see [cross-database and cross-cluster queries](cross-cluster-or-database-queries.md).
+> * For accessing remote cluster and remote database, see [cluster()](clusterfunction.md) scope function.
+
+## Syntax
 
 `database(`*stringConstant*`)`
 
-**Arguments**
+## Arguments
 
 * *stringConstant*: Name of the database that is referenced. Database identified can be either `DatabaseName` or `PrettyName`. Argument has to be _constant_ prior of query execution, i.e. cannot come from sub-query evaluation.
 
-**Notes**
-
-* For accessing remote cluster and remote database, see [cluster()](clusterfunction.md) scope function.
-* More information about cross-cluster and cross-database queries available [here](cross-cluster-or-database-queries.md)
-
 ## Examples
 
-### Use database() to access table of other database. 
+### Use database() to access table of other database
 
 ```kusto
 database('Samples').StormEvents | count
@@ -64,7 +63,7 @@ foo('help')
 |---|
 |59066|
 
-### Use database() inside Functions 
+### Use database() inside functions 
 
 The same query as above can be rewritten to be used in a function that 
 receives a parameter `dbName` - which is passed into the database() function.
@@ -76,7 +75,8 @@ receives a parameter `dbName` - which is passed into the database() function.
 };
 ```
 
-**Note:** such functions can be used only locally and not in the cross-cluster query.
+> [!NOTE]
+> Such functions can be used only locally and not in the cross-cluster query.
 
 ::: zone-end
 

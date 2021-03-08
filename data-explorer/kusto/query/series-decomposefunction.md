@@ -4,7 +4,7 @@ description: This article describes series_decompose() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/26/2019
@@ -15,11 +15,11 @@ Applies a decomposition transformation on a series.
 
 Takes an expression containing a series (dynamic numerical array) as input and decomposes it to seasonal, trend, and residual components.
  
-**Syntax**
+## Syntax
 
 `series_decompose(`*Series* `[,` *Seasonality*`,` *Trend*`,` *Test_points*`,` *Seasonality_threshold*`])`
 
-**Arguments**
+## Arguments
 
 * *Series*: Dynamic array cell, which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators
 * *Seasonality*: An integer controlling the seasonal analysis, containing either
@@ -58,9 +58,9 @@ Takes an expression containing a series (dynamic numerical array) as input and d
 
 **More about series decomposition**
 
-This method is usually applied to time series of metrics expected to manifest periodic and/or trend behavior. You can use the method to  forecast future metric values and/or detect anomalous values. The implicit assumption of this regression process is that apart from seasonal and trend behavior, the time series is stochastic and randomly distributed. Forecast future metric values from the seasonal and trend components while ignoring the residual part. Detect anomalous values based on outlier detection only on the residual part only. Further details can be found in the [Time Series Decomposition chapter](https://www.otexts.org/fpp/6).
+This method is usually applied to time series of metrics expected to manifest periodic and/or trend behavior. You can use the method to  forecast future metric values and/or detect anomalous values. The implicit assumption of this regression process is that apart from seasonal and trend behavior, the time series is stochastic and randomly distributed. Forecast future metric values from the seasonal and trend components while ignoring the residual part. Detect anomalous values based on outlier detection only on the residual part only. Further details can be found in the [Time Series Decomposition chapter](https://otexts.com/fpp2/decomposition.html).
 
-**Examples**
+## Examples
 
 **Weekly seasonality**
 

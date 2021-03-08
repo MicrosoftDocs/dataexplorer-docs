@@ -1,5 +1,5 @@
 ---
-title: Database cursors - Azure Data Explorer | Microsoft Docs
+title: Database cursors - Azure Data Explorer
 description: This article describes Database cursors in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,29 +11,25 @@ ms.date: 02/13/2020
 ---
 # Database cursors
 
-A **database cursor** is a database-level object which makes it possible to
-query a database multiple times and get consistent results
-even if there are ongoing data-append/data-retention operations happening in
-parallel with the queries.
+A **database cursor** is a database-level object that lets you query a database multiple times. You'll get consistent results even if there are `data-append` or `data-retention` operations happening in parallel with the queries.
 
 Database cursors are designed to address two important scenarios:
 
 * The ability to repeat the same query multiple times and get the same results,
-  as long as the query indicates the "same data set".
+  as long as the query indicates "same data set".
 
-* The ability to perform an "exactly-once" query (a query that only "sees" the
-   data that a previous query did not see because the data was not available then).
-   This allows, for example, to iterate through all the newly-arrived data in a table without
-   fear of processing the same record twice or skipping records by mistake.
+* The ability to make an "exactly once" query. This query only "sees" the
+   data that a previous query didn't see, because the data wasn't available then.
+   The query lets you iterate, for example, through all the newly arrived data in a table without fear of processing the same record twice or skipping records by mistake.
 
 The database cursor is represented in the query language as a scalar value of type
 `string`. The actual value should be considered opaque and there's no support
-for any operation other than saving its value and/or using the cursor functions
+for any operation other than to save its value or use the cursor functions
 noted below.
 
 ## Cursor functions
 
-Kusto provides three functions to help implement the two scenarios above:
+Kusto provides three functions to help implement the two above scenarios:
 
 * [cursor_current()](../query/cursorcurrent.md):
    Use this function to retrieve the current value of the database cursor.
@@ -50,12 +46,12 @@ Kusto provides three functions to help implement the two scenarios above:
    This special function can be used on the table records that have the
    [IngestionTime policy](ingestiontime-policy.md) enabled. It returns
    a scalar value of type `bool` indicating whether the record's `ingestion_time()`
-   database cursor value comes after the `rhs` database cursor value.
+   database cursor value comes before or at the `rhs` database cursor value.
 
 The two special functions (`cursor_after` and `cursor_before_or_at`) also have
-a side-effect: When they are used, Kusto will emit the **current value of the database cursor**
-to the `@ExtendedProperties` result set of the query. The property name for the
-cursor is `Cursor`, and its value is a single `string`. For example:
+a side-effect: When they're used, Kusto will emit the **current value of the database cursor** to the `@ExtendedProperties` result set of the query. The property name for the cursor is `Cursor`, and its value is a single `string`. 
+
+For example:
 
 ```json
 {"Cursor" : "636040929866477946"}
@@ -66,30 +62,23 @@ cursor is `Cursor`, and its value is a single `string`. For example:
 Database cursors can only be used with tables for which the
 [IngestionTime policy](ingestiontime-policy.md)
 has been enabled. Each record in such a table is associated with the
-value of the database cursor that was in effect when the record was ingested,
-and therefore the [ingestion_time()](../query/ingestiontimefunction.md)
+value of the database cursor that was in effect when the record was ingested.
+As such, the [ingestion_time()](../query/ingestiontimefunction.md)
 function can be used.
 
-The database cursor object holds no meaningful value unless the database has at least one
-table that has an [IngestionTime policy](ingestiontime-policy.md) defined.
-Additionally, it is only guaranteed that this value gets updated as-needed by the ingestion
-history into such tables and the queries run that reference such tables. It might, or might
-not, be updated in other cases.
+The database cursor object holds no meaningful value unless the database has at least one table that has an [IngestionTime policy](ingestiontime-policy.md) defined.
+This value is guaranteed to update, as-needed by the ingestion history, into such tables and the queries run, that reference such tables. It might, or might not, be updated in other cases.
 
-The ingestion process first
-commits the data (so that it is available for querying), and only then assigns
-an actual cursor value to each record. This means that if one attempts to query
-for data immediately following the ingestion completion using a database cursor,
-the results might not yet incorporate the last records added, because they have
-not been assigned the cursor value yet. Similarly, retrieving the current
-database cursor value repeatedly might return the same value (even if ingestion
-was done in between) because only cursor commit will update its value.
+The ingestion process first commits the data, so that it's available for querying, and only then assigns an actual cursor value to each record. If you attempt to query for data immediately following the ingestion completion using a database cursor, the results might not yet incorporate the last records added, because they haven't yet been assigned the cursor value. Also, retrieving the current database cursor value repeatedly might return the same value, even if ingestion was done in between, because only a cursor commit can update its value.
 
-## Example: Processing of records exactly Once
+Querying a table based on database cursors is only guaranteed to "work" (providing exactly-once guarantees) 
+if the records are ingested directly into that table. If you are using extents commands, such as [move extents](move-extents.md)/[.replace extents](replace-extents.md) to move data into the table, or if you are using [.rename table](rename-table-command.md), then querying this table using database cursors is not guaranteed to not miss any data. This is because the ingestion time 
+of the records is assigned when initially ingested, and does not change during the move extents operation. 
+Therefore, when the extents are moved into the target table, it's possible that the cursor value assigned to the records in these extents was already processed (and next query by database cursor will miss the new records).
 
-Assume table `Employees` with schema `[Name, Salary]`.
-To continuously process new records as they are ingested into the table,
-use the following procedure:
+## Example: Processing records exactly once
+
+For a table `Employees` with schema `[Name, Salary]`, to continuously process new records as they're ingested into the table, use the following process:
 
 ```kusto
 // [Once] Enable the IngestionTime policy on table Employees

@@ -4,7 +4,7 @@ description: This article describes isempty() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,11 +17,11 @@ Returns `true` if the argument is an empty string or is null.
 isempty("") == true
 ```
 
-**Syntax**
+## Syntax
 
 `isempty(`[*value*]`)`
 
-**Returns**
+## Returns
 
 Indicates whether the argument is an empty string or isnull.
 
@@ -33,7 +33,7 @@ Indicates whether the argument is an empty string or isnull.
 |parsejson("[]")|false
 |parsejson("{}")|false
 
-**Example**
+## Example
 
 ```kusto
 T

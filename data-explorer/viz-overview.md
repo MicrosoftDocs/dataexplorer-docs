@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 06/02/2020
 ---
 
 # Data visualization with Azure Data Explorer 
@@ -15,6 +15,16 @@ ms.date: 01/30/2020
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data that is used to build complex analytics solutions for vast amounts of data. Azure Data Explorer integrates with various visualization tools, so you can visualize your data and share the results across your organization. This data can be transformed into actionable insights to make an impact on your business.
 
 Data visualization and reporting is a critical step in the data analytics process. Azure Data Explorer supports many BI services so you can use the one that best fits your scenario and budget.
+
+## Azure Data Explorer dashboards
+
+Azure Data Explorer dashboards is a web application that enables you to run queries and build dashboards in the stand-alone web application, the [Web UI](web-query-data.md). Azure Data Explorer dashboards provide three main advantages:
+
+* Natively export queries from the Web UI to Azure Data Explorer dashboards. 
+* Explore the data in the Web UI.
+* Optimized dashboard rendering performance.
+
+For more information see, [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
 
 ## Kusto query language visualizations
 
@@ -40,7 +50,7 @@ Azure Data Explorer provides the capability to connect to [Microsoft Excel](http
 
 ## Kibana
 
-Azure Data Explorer provides the capability to connect to [Kibana (the Discover page)](https://www.elastic.co/guide/en/kibana/6.8/discover.html) using K2Bridge, an open source connector. You [set up Azure Data Explorer as a data source for Kibana, and then visualize the data](k2bridge.md).
+Azure Data Explorer provides the capability to connect to [Kibana](https://www.elastic.co/guide/en/kibana/6.8/discover.html) using K2Bridge, an open source connector. You [set up Azure Data Explorer as a data source for Kibana, and then visualize the data](k2bridge.md).
 
 ## ODBC connector
 

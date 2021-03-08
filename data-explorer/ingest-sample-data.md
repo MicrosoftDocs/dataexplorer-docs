@@ -7,6 +7,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 08/12/2019
+ms.localizationpriority: high
 ---
 
 # Quickstart: Ingest sample data into Azure Data Explorer
@@ -38,7 +39,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 1. Paste in the following command, and select **Run** to ingest data into StormEvents table.
 
     ```Kusto
-    .ingest into table StormEvents h'https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (ignoreFirstRecord=true)
+    .ingest into table StormEvents 'https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D' with (ignoreFirstRecord=true)
     ```
 
 1. After ingestion completes, paste in the following query, select the query in the window, and select **Run**.

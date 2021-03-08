@@ -1,6 +1,6 @@
 ---
-title: User-Defined Functions - Azure Data Explorer | Microsoft Docs
-description: This article describes User-Defined Functions in Azure Data Explorer.
+title: User-defined functions - Azure Data Explorer
+description: This article describes user-defined functions (scalar and views) in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,6 +8,7 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
+ms.localizationpriority: high
 ---
 # User-defined functions
 
@@ -16,7 +17,7 @@ ms.date: 03/12/2020
 A user-defined function belongs to one of two categories:
 
 * Scalar functions 
-* Tabular functions 
+* Tabular functions, also known as views
 
 The function's input arguments and output determine whether it is scalar or tabular, which then establishes how it might be used. 
 
@@ -40,7 +41,7 @@ Valid user-defined function names must follow the same [identifier naming rules]
 The name must also be unique in its scope of definition.
 
 > [!NOTE]
-> Function overloading is not supported. You can't define multiple functions using the same name.
+> If a stored function and a table both have the same name, the stored function overrides when querying the table/function name.
 
 ## Input arguments
 
@@ -280,7 +281,7 @@ union T*
 The following restrictions apply:
 
 * User-defined functions can't pass into [toscalar()](../toscalarfunction.md) invocation information that depends on the row-context in which the function is called.
-* User-defined functions that return a tabular expression can'tbe invoked with an argument that varies with the row context.
+* User-defined functions that return a tabular expression can't be invoked with an argument that varies with the row context.
 * A function taking at least one tabular input can't be invoked on a remote cluster.
 * A scalar function can't be invoked on a remote cluster.
 
@@ -324,3 +325,11 @@ let Table2 = datatable(Column:long)[1235];
 let f = (hours:long) { range x from 1 to hours step 1 | summarize make_list(x) };
 Table2 | where Column != 123 | project d = f(Column)
 ```
+
+## Features that are currently unsupported by user-defined functions
+
+For completeness, here are some commonly-requested features for user-defined functions that are currently not supported:
+
+1.	Function overloading: There is currently no way to overload a function (i.e., create multiple functions with the same name and different input schema).
+
+2.	Default values: The default value for a scalar parameter to a function must be a scalar literal (constant). Furthermore, stored functions cannot have a default value of type `dynamic`.

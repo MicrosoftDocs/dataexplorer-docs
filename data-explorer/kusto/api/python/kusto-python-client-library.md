@@ -1,6 +1,6 @@
 ---
-title: Azure Data Explorer Python SDK - Azure Data Explorer | Microsoft Docs
-description: This article describes Azure Data Explorer Python SDK in Azure Data Explorer.
+title: Azure Data Explorer Python SDK - Azure Data Explorer
+description: This article describes Python SDK in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -11,13 +11,15 @@ ms.date: 10/30/2019
 ---
 # Azure Data Explorer Python SDK
 
-Azure Data Explorer *Kusto Python Client* library provides the capability to query Azure Data Explorer clusters using Python. It is Python 2.x/3.x compatible and supports
-all data types using the familiar Python DB API interface.
+The Azure Data Explorer *Kusto Python Client* library lets you query Azure Data Explorer clusters using Python. 
+The library is Python 2.x/3.x compatible. It supports all data types using the Python DB API interface.
 
-It's possible to use the library, for instance, from [Jupyter Notebooks](https://jupyter.org/) which are attached to Spark clusters,
+You can use the library, for example, from [Jupyter Notebooks](https://jupyter.org/) that are attached to Spark clusters,
 including, but not exclusively, [Azure Databricks](https://azure.microsoft.com/services/databricks/) instances.
 
-*Kusto Python Ingest Client* is a python library that allows to send data to Azure Data Explorer service - i.e. ingest data. 
+*Kusto Python Ingest Client* is a python library that lets you send ingestion data to Azure Data Explorer service.
+
+## Next steps
 
 * [How to install the package](https://github.com/Azure/azure-kusto-python#install)
 
@@ -32,8 +34,8 @@ including, but not exclusively, [Azure Databricks](https://azure.microsoft.com/s
 * Pypi packages:
 
     * [azure-kusto-data](https://pypi.org/project/azure-kusto-data/)
-    [![PyPI version](https://badge.fury.io/py/azure-kusto-data.svg)](https://badge.fury.io/py/azure-kusto-data)
+    [![Screenshot of a button labeled P Y P I package 1.0.2.](https://badge.fury.io/py/azure-kusto-data.svg)](https://badge.fury.io/py/azure-kusto-data)
     * [azure-kusto-ingest](https://pypi.org/project/azure-kusto-ingest/)
-    [![PyPI version](https://badge.fury.io/py/azure-kusto-ingest.svg)](https://badge.fury.io/py/azure-kusto-ingest)
+    [![Screenshot of a button. The button is labeled P Y P I package 1.0.2.](https://badge.fury.io/py/azure-kusto-ingest.svg)](https://badge.fury.io/py/azure-kusto-ingest)
     * [azure-mgmt-kusto](https://pypi.org/project/azure-mgmt-kusto/)
-    [![PyPI version](https://badge.fury.io/py/azure-mgmt-kusto.svg)](https://badge.fury.io/py/azure-mgmt-kusto)
+    [![Screenshot of a button labeled P Y P I package 0.9.0.](https://badge.fury.io/py/azure-mgmt-kusto.svg)](https://badge.fury.io/py/azure-mgmt-kusto)

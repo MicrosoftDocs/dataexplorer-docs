@@ -7,6 +7,8 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
+ms.localizationpriority: high 
+adobe-target: true
 
 #Customer intent: As a database administrator, I want to create an Azure Data Explorer cluster and database so that I can understand whether Azure Data Explorer is suitable for my analytics projects.
 ---
@@ -20,6 +22,7 @@ ms.date: 07/22/2019
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
+> * [Go](create-cluster-database-go.md)
 > * [ARM template](create-cluster-database-resource-manager.md)
 
 
@@ -63,6 +66,11 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
     ![Go to resource](media/create-cluster-database-portal/notification-resource.png)
 
+> [!NOTE]
+> If the deployment fails with the error "SubscriptionNotRegistered", retry the operation. 
+> 
+> Deployment fails when the Kusto resource provider isn't registered on the subscription described in [Azure resource providers and types](/azure/azure-resource-manager/management/resource-providers-and-types). When the deployment fails, the Kusto resource provider registers itself on the subscription, and the retry can then succeed.
+
 ## Create a database
 
 You're now ready for the second step in the process: database creation.
@@ -104,7 +112,10 @@ You can stop and restart a cluster depending on business needs.
 
 1. To stop the cluster, at the top of the **Overview** tab, select **Stop**.
 
-    When the cluster is stopped, data is not available for queries, and you can't ingest new data.
+    :::image type="content" source="media/create-cluster-database-portal/stop-button.png" alt-text="The stop button":::
+
+    > [!NOTE]
+    > When the cluster is stopped, data is not available for queries, and you can't ingest new data.
 
 1. To restart the cluster, at the top of the **Overview** tab, select **Start**.
 

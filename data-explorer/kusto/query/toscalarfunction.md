@@ -1,10 +1,10 @@
 ---
-title: toscalar() - Azure Data Explorer | Microsoft Docs
+title: toscalar() - Azure Data Explorer
 description: This article describes toscalar() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
@@ -13,22 +13,22 @@ ms.date: 10/23/2018
 
 Returns a scalar constant value of the evaluated expression. 
 
-This function is useful for queries that require staged calculations, as for example
-calculating a total count of events and then use it for for filtering groups
-that exceed certain percent of all events. 
+This function is useful for queries that require staged calculations. For example, 
+calculate a total count of events, and then use the result to filter groups
+that exceed a certain percent of all events.
 
-**Syntax**
+## Syntax
 
 `toscalar(`*Expression*`)`
 
-**Arguments**
+## Arguments
 
-* *Expression*: Expression that will be evaluated for scalar conversion  
+* *Expression*: Expression that will be evaluated for scalar conversion.
 
-**Returns**
+## Returns
 
 A scalar constant value of the evaluated expression.
-If expression result is a tabular, then the first column and first row will be taken for conversion.
+If the result is a tabular, then the first column and first row will be taken for conversion.
 
 > [!TIP]
 > You can use a [let statement](letstatement.md) for readability of the query when using `toscalar()`.
@@ -36,12 +36,11 @@ If expression result is a tabular, then the first column and first row will be t
 **Notes**
 
 `toscalar()` can be calculated a constant number of times during the query execution.
-In other words, `toscalar()` function cannot be applied on row-level of (for-each-row scenario).
+The `toscalar()` function can't be applied on row-level (for-each-row scenario).
 
-**Examples**
+## Examples
 
-The following query evaluates `Start`, `End` and `Step` as scalar constants - and
-use it for `range` evaluation. 
+Evaluate `Start`, `End`, and `Step` as scalar constants, and use the result for `range` evaluation.
 
 ```kusto
 let Start = toscalar(print x=1);

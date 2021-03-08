@@ -4,7 +4,7 @@ description: This article describes array_slice() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/03/2018
@@ -13,11 +13,11 @@ ms.date: 12/03/2018
 
 Extracts a slice of a dynamic array.
 
-**Syntax**
+## Syntax
 
-`array_slice`(*`arr`*, *`start`*, *`end`*])
+`array_slice`(*`arr`*, *`start`*, *`end`*)
 
-**Arguments**
+## Arguments
 
 * *`arr`*: Input array to extract the slice from must be dynamic array.
 * *`start`*: zero-based (inclusive) start index of the slice, negative values are converted to array_length+start.
@@ -25,11 +25,11 @@ Extracts a slice of a dynamic array.
 
 Note: out of bounds indices are ignored.
 
-**Returns**
+## Returns
 
 Dynamic array of the values in the range [`start..end`] from `arr`.
 
-**Examples**
+## Examples
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

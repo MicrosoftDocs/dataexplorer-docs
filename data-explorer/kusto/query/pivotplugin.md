@@ -4,7 +4,7 @@ description: This article describes pivot plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -19,25 +19,24 @@ that are wanted in the final output.
 T | evaluate pivot(PivotColumn)
 ```
 
-**Syntax**
+> [!NOTE]
+> The output schema of the `pivot` plugin is based on the data and therefore query may produce different schema for any two runs. This also means that query that is referencing unpacked columns may become 'broken' at any time. Due to this reason - it is not advised to use this plugin for automation jobs.
+
+## Syntax
 
 `T | evaluate pivot(`*pivotColumn*`[, `*aggregationFunction*`] [,`*column1* `[,`*column2* ... `]])`
 
-**Arguments**
+## Arguments
 
 * *pivotColumn*: The column to rotate. each unique value from this column will be a column in the output table.
-* *aggregation function*: (optional) aggregates multiple rows in the input table to a single row in the output table. Currently supported functions: `min()`, `max()`, `any()`, `sum()`, `dcount()`, `avg()`, `stdev()`, `variance()`, and `count()` (default is `count()`).
+* *aggregation function*: (optional) aggregates multiple rows in the input table to a single row in the output table. Currently supported functions: `min()`, `max()`, `any()`, `sum()`, `dcount()`, `avg()`, `stdev()`, `variance()`, `make_list()`, `make_bag()`, `make_set()`, `count()` (default is `count()`).
 * *column1*, *column2*, ...: (optional) column names. The output table will contain an additional column per each specified column. default: all columns other than the pivoted column and the aggregation column.
 
-**Returns**
+## Returns
 
 Pivot returns the rotated table with specified columns (*column1*, *column2*, ...) plus all unique values of the pivot columns. Each cell for the pivoted columns will contain the aggregate function computation.
 
-**Note**
-
-The output schema of the `pivot` plugin is based on the data and therefore query may produce different schema for any two runs. This also means that query that is referencing unpacked columns may become 'broken' at any time. Due to this reason - it is not advised to use this plugin for automation jobs.
-
-**Examples**
+## Examples
 
 ### Pivot by a column
 
@@ -60,7 +59,7 @@ StormEvents
 |Strong Wind|22|0|
 
 
-### Pivot by a column with aggregation function.
+### Pivot by a column with aggregation function
 
 For each EventType and States starting with 'AR', display the total number of direct deaths.
 
@@ -83,7 +82,7 @@ StormEvents
 |Heat|3|0|
 
 
-### Pivot by a column with aggregation function and a single additional column.
+### Pivot by a column with aggregation function and a single additional column
 
 Result is identical to previous example.
 
@@ -106,7 +105,7 @@ StormEvents
 |Heat|3|0|
 
 
-### Specify the pivoted column, aggregation function and multiple additional columns.
+### Specify the pivoted column, aggregation function and multiple additional columns
 
 For each event type, source and state, sum the number of direct deaths.
 

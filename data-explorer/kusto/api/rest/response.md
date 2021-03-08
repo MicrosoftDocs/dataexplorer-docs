@@ -116,7 +116,7 @@ a single table called `Table_0` that has a single column `Text` of type
 
 Another example: 
 
-:::image type="content" source="../images/rest-json-representation.png" alt-text="rest-json-representation":::
+:::image type="content" source="../images/rest-json-representation.png" alt-text="Screenshot showing the tree view of a JSON file that contains an array of Table objects.":::
 
 ## The meaning of tables in the response
 

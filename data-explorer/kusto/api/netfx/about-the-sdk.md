@@ -8,13 +8,13 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/10/2020
+adobe-target: true
 ---
-# About Kusto .NET SDK
+# About Azure Data Explorer .NET SDK
 
-The Kusto .NET SDK is a set of libraries that .NET
-applications can use to communicate with the Kusto service.
+The Azure Data Explorer .NET SDK is a set of libraries that .NET applications can use to communicate with the Azure Data Explorer service.
 
-The Kusto .NET SDK is available from [NuGet Gallery](https://www.nuget.org/).
+The Azure Data Explorer .NET SDK is available from [NuGet Gallery](https://www.nuget.org/).
 Each package provides .NET Framework 4.6.2 and .NET Core 2.0 libraries.
 
 |Package                                                                                             |Description        |

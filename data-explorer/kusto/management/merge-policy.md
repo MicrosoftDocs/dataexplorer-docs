@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# Merge policy management
+# Merge policy command
 
 ## show policy
 
@@ -40,16 +40,17 @@ Shows all policies of the given entity type (database or table) if the given nam
 
 ```kusto
 .alter table [table_name] policy merge 
-@'{'
-    '"ExtentSizeTargetInMb": 1024,'
-    '"OriginalSizeInMbUpperBoundForRebuild": 2048,'
-    '"RowCountUpperBoundForRebuild": 750000, '
-    '"RowCountUpperBoundForMerge": 0, '
-    '"MaxExtentsToMerge": 100, '
-    '"LoopPeriod": "01:00:00", '
-    '"MaxRangeInHours": 8, '
-    '"AllowRebuild": true,'
-    '"AllowMerge": true '
+'{'
+'  "RowCountUpperBoundForMerge": 16000000,'
+'  "OriginalSizeMBUpperBoundForMerge": 0,'
+'  "MaxExtentsToMerge": 100,'
+'  "LoopPeriod": "01:00:00",'
+'  "MaxRangeInHours": 24,'
+'  "AllowRebuild": true,'
+'  "AllowMerge": true,'
+'  "Lookback": {'
+'    "Kind": "Default"'
+'  }'
 '}'
 ```
 
@@ -57,16 +58,17 @@ Shows all policies of the given entity type (database or table) if the given nam
 
 ```kusto
 .alter database [database_name] policy merge 
-@'{'
-    '"ExtentSizeTargetInMb": 1024,'
-    '"OriginalSizeInMbUpperBoundForRebuild": 2048,'
-    '"RowCountUpperBoundForRebuild": 750000,'
-    '"RowCountUpperBoundForMerge": 0,'
-    '"MaxExtentsToMerge": 100,'
-    '"LoopPeriod": "01:00:00",'
-    '"MaxRangeInHours": 8,'
-    '"AllowRebuild": true,'
-    '"AllowMerge": true'
+'{'
+'  "RowCountUpperBoundForMerge": 16000000,'
+'  "OriginalSizeMBUpperBoundForMerge": 0,'
+'  "MaxExtentsToMerge": 100,'
+'  "LoopPeriod": "01:00:00",'
+'  "MaxRangeInHours": 24,'
+'  "AllowRebuild": true,'
+'  "AllowMerge": true,'
+'  "Lookback": {'
+'    "Kind": "Default"'
+'  }'
 '}'
 ```
 
@@ -80,8 +82,8 @@ Shows all policies of the given entity type (database or table) if the given nam
 
 ```kusto
 .alter-merge database [database_name] policy merge
-@'{'
-    '"ExtentSizeTargetInMb": 1024'
+'{'
+    '"MaxRangeInHours": 24'
 '}'
 ```
 
@@ -89,8 +91,8 @@ Shows all policies of the given entity type (database or table) if the given nam
 
 ```kusto
 .alter-merge table [table_name] policy merge
-@'{'
-    '"RowCountUpperBoundForRebuild": 750000'
+'{'
+    '"MaxRangeInHours": 24'
 '}'
 ```
 

@@ -9,22 +9,23 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
 ---
-# Cache policy
+# cache policy command
 
 This article describes commands used for creation and altering [cache policy](cachepolicy.md) 
 
 ## Displaying the cache policy
 
-The policy can be set on a data or a table, and is displayed by using one of the following
+The policy can be set on a database, a table or a [materialized view](materialized-views/materialized-view-overview.md), and is displayed by using one of the following
 commands:
 
 * `.show` `database` *DatabaseName* `policy` `caching`
-* `.show` `table` *DatabaseName*`.`*TableName* `policy` `caching`
+* `.show` `table` *TableName* `policy` `caching`
+* `.show` `materialized-view` *MaterializedViewName* `policy` `caching`
 
 ## Altering the cache policy
 
 ```kusto
-.alter <entity_type> <database_or_table_name> policy caching hot = <timespan>
+.alter <entity_type> <database_or_table_or_materialized-view_name> policy caching hot = <timespan>
 ```
 
 Altering cache policy for multiple tables (in the same database context):
@@ -46,8 +47,8 @@ Cache policy:
 }
 ```
 
-* `entity_type` : table, database or cluster
-* `database_or_table`: if entity is table or database, its name should be specified in the command as follows - 
+* `entity_type` : table, materialized view, database, or cluster
+* `database_or_table_or_materialized-view`: if entity is table or database, its name should be specified in the command as follows - 
   - `database_name` or 
   - `database_name.table_name` or 
   - `table_name` (when running in the specific database's context)
@@ -70,6 +71,7 @@ Setting cache policy of table `MyTable` (in database context) to 3 days:
 
 ```kusto
 .alter table MyTable policy caching hot = 3d
+.alter materialized-view MyMaterializedView policy caching hot = 3d
 ```
 
 Setting policy for multiple tables (in database context), to 3 days:
@@ -82,6 +84,12 @@ Deleting a policy set on a table:
 
 ```kusto
 .delete table MyTable policy caching
+```
+
+Deleting a policy set on a materialized view:
+
+```kusto
+.delete materialized-view MyMaterializedView policy caching
 ```
 
 Deleting a policy set on a database:

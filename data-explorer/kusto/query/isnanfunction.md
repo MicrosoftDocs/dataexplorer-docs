@@ -4,7 +4,7 @@ description: This article describes isnan() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -13,25 +13,25 @@ ms.date: 02/13/2020
 
 Returns whether input is Not-a-Number (NaN) value.  
 
-**Syntax**
+## Syntax
 
 `isnan(`*x*`)`
 
-**Arguments**
+## Arguments
 
 * *x*: A real number.
 
-**Returns**
+## Returns
 
 A non-zero value (true) if x is NaN; and zero (false) otherwise.
 
-**See also**
+## See also
 
 * For checking if value is null, see [isnull()](isnullfunction.md).
 * For checking if value is finite, see [isfinite()](isfinitefunction.md).
 * For checking if value is infinite, see [isinf()](isinffunction.md).
 
-**Example**
+## Example
 
 ```kusto
 range x from -1 to 1 step 1

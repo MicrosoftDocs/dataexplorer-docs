@@ -5,13 +5,20 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2019
 
 # Customer intent: As a Node.js developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
 
 # Ingest data using the Azure Data Explorer Node library
+
+> [!div class="op_single_selector"]
+> * [.NET](net-sdk-ingest-data.md)
+> * [Python](python-ingest-data.md)
+> * [Node](node-ingest-data.md)
+> * [Go](go-ingest-data.md)
+> * [Java](java-ingest-data.md)
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides two client libraries for Node: an [ingest library](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) and [a data library](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). These libraries enable you to ingest (load) data into a cluster and query data from your code. In this article, you first create a table and data mapping in a test cluster. You then queue ingestion to the cluster and validate the results.
 
@@ -47,7 +54,7 @@ const { DataFormat } = require("azure-kusto-ingest").IngestionPropertiesEnums;
 const { BlobDescriptor } = require("azure-kusto-ingest").IngestionDescriptors;
 
 ```
-To authenticate an application, Azure Data Explorer uses your Azure Active Directory tenant ID. To find your tenant ID, follow [Find your Office 365 tenant ID](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id).
+To authenticate an application, Azure Data Explorer uses your Azure Active Directory tenant ID. To find your tenant ID, follow [Find your Microsoft 365 tenant ID](/onedrive/find-your-office-365-tenant-id).
 
 Set the values for `authorityId`, `kustoUri`, `kustoIngestUri` and `kustoDatabase` before running this code.
 

@@ -4,7 +4,7 @@ description: This article describes series_periods_validate() in Azure Data Expl
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2019
@@ -13,34 +13,33 @@ ms.date: 02/19/2019
 
 Checks whether a time series contains periodic patterns of given lengths.  
 
-Very often a metric measuring the traffic of an application is characterized by a weekly and/or daily periods. This can be confirmed by running `series_periods_validate()` checking for a weekly and daily periods.
+Often a metric measuring the traffic of an application is characterized by a weekly or daily period. This period can be confirmed by running `series_periods_validate()` that checks for a weekly and daily period.
 
-The function takes as input a column containing a dynamic array of time series (typically the resulting output of [make-series](make-seriesoperator.md) operator), and one or more `real` numbers that define the lengths of the periods to validate. 
+The function takes as input a column that contains a dynamic array of time series (typically the resulting output of [make-series](make-seriesoperator.md) operator), and one or more `real` numbers that define the lengths of the periods to validate.
 
-The function outputs 2 columns:
-* *periods*: a dynamic array containing the periods to validate (supplied in the input)
-* *scores*: a dynamic array containing a score between 0 and 1 that measures the significance of a period in its respective position in the *periods* array
+The function outputs two columns:
+* *periods*: A dynamic array that contains the periods to validate (supplied in the input).
+* *scores*: A dynamic array that contains a score between 0 and 1. The score shows the significance of a period in its respective position in the *periods* array.
 
-**Syntax**
+## Syntax
 
 `series_periods_validate(`*x*`,` *period1* [ `,` *period2* `,` . . . ] `)`
 
-**Arguments**
+## Arguments
 
-* *x*: Dynamic array scalar expression which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators.
-* *period1*, *period2*, etc.: `real` numbers specifying the periods to validate, in units of the bin size. For example, if the series is in 1h bins, a weekly period is 168 bins.
+* *x*: Dynamic array scalar expression that is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators.
+* *period1*, *period2*, and so on: `real` numbers specifying the periods to validate, in units of the bin size. For example, if the series is in 1h bins, a weekly period is 168 bins.
 
 > [!IMPORTANT]
-> * The minimal value for each of the *period* arguments is **4** and the maximal is half of the length of the input series; for a *period* argument outside these bounds, the output score will be **0**.
+> * The minimal value for each of the *period* arguments is **4** and the maximal is half of the length of the input series. For a *period* argument outside these bounds, the output score will be **0**.
 >
-> * The input time series must be regular, i.e. aggregated in constant bins (which is always the case if it has been created using [make-series](make-seriesoperator.md)). Otherwise, the output is meaningless.
+> * The input time series must be regular, that is, aggregated in constant bins, and is always the case if it has been created using [make-series](make-seriesoperator.md). Otherwise, the output is meaningless.
 > 
 > * The function accepts up to 16 periods to validate.
 
+## Example
 
-**Example**
-
-The following query embeds a snapshot of a month of an application’s traffic, aggregated twice a day (i.e. the bin size is 12 hours).
+The following query embeds a snapshot of a month of an application’s traffic, aggregated twice a day (the bin size is 12 hours).
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -51,7 +50,7 @@ print y=dynamic([80,139,87,110,68,54,50,51,53,133,86,141,97,156,94,149,95,140,77
 
 :::image type="content" source="images/series-periods/series-periods.png" alt-text="Series periods":::
 
-Running `series_periods_validate()` on this series to validate a weekly period (14 points long) results in a high score,  and with a **0** score  when validating a five days period (10 points long).
+If you run `series_periods_validate()` on this series to validate a weekly period (14 points long) it results in a high score, and with a **0** score when you validate a five-day period (10 points long).
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

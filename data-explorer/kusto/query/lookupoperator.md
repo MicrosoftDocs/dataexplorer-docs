@@ -4,7 +4,7 @@ description: This article describes lookup operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
@@ -37,11 +37,11 @@ with the following differences:
   table (essentially, behaves as if `hint.broadcast` was specified). Note that
   this limits the size of the `$right` table.
 
-**Syntax**
+## Syntax
 
 *LeftTable* `|` `lookup` [`kind` `=` (`leftouter`|`inner`)] `(` *RightTable* `)` `on` *Attributes*
 
-**Arguments**
+## Arguments
 
 * *LeftTable*: The table or tabular expression that is the basis for the lookup.
   Denoted as `$left`.
@@ -66,9 +66,9 @@ with the following differences:
   all those rows will appear in the output with null values used for the
   missing values of *RightTable* columns added by the operator. If `inner`
   is used, such rows are omitted from the output. (Other kinds
-  of join are not supported by the `looku`p operator.)
+  of join are not supported by the `lookup` operator.)
   
-**Returns**
+## Returns
 
 A table with:
 
@@ -85,7 +85,7 @@ A table with:
 
      There's a row in the output for every combination of matching rows from left and right.
 
-**Examples**
+## Examples
 
 ```kusto
 let FactTable=datatable(Row:string,Personal:string,Family:string) [

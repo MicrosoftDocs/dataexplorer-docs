@@ -1,92 +1,109 @@
 ---
-title: Use one-click ingestion to ingest data into an existing Azure Data Explorer table
+title: Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer
 description: Ingesting (loading) data into an existing Azure Data Explorer table simply, using one-click ingestion.
 author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
-ms.topic: overview
+ms.topic: how-to
 ms.date: 03/29/2020
 ---
 
-# Use one-click ingestion to ingest data to an existing table in Azure Data Explorer
+# Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer
 
-One-click ingestion enables you to quickly ingest data in JSON, CSV, and other formats into a table. Using the Azure Data Explorer Web UI, you can ingest data from storage, from a local file, or from a container. 
 
-This document describes using the intuitive one-click wizard to ingest JSON data from a file into an existing table. You can then edit the table and run queries with the Azure Data Explorer Web UI.
+> [!div class="op_single_selector"]
+> * [Ingest CSV data from a container to a new table](one-click-ingestion-new-table.md)
+> * [Ingest JSON data from a local file to an existing table](one-click-ingestion-existing-table.md)
 
-One-click ingestion is particularly useful when ingesting data for the first time, or when your data's schema is unfamiliar to you. 
+[One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.  
+
+This document describes using the intuitive one-click wizard in a specific use case to ingest **JSON** data from a **local file** into an **existing table**. Use the same process with slight adaptations to cover a variety of different use cases.
 
 For an overview of one-click ingestion and a list of prerequisites, see [One-click ingestion](ingest-data-one-click.md).
-For information about ingesting data into a new table in Azure Data Explorer, see [One-click ingestion to a new table](one-click-ingestion-new-table.md)
+For different types or sources of data, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md).
 
 ## Ingest new data
 
-1. In the left menu of the Web UI, right-click a *database* or *table* and select **Ingest new data (Preview)**.
+In the left menu of the Web UI, right-click a *database* or *table* and select **Ingest new data**.
 
-    ![Select one-click ingestion in the Web UI](media/one-click-ingestion-existing-table/one-click-ingestion-in-webui.png)   
+   :::image type="content" source="media/one-click-ingestion-existing-table/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI":::
  
-1. In the **Ingest new data (Preview)** window, the **Source** tab is selected.
+## Select an ingestion type
+
+1. In the **Ingest new data** window, the **Source** tab is selected.
+
+1. If the **Cluster** and **Database** fields aren't automatically filled, select an existing cluster and database name from the drop-down menu.
+    
+    [!INCLUDE [one-click-cluster](includes/one-click-cluster.md)]
 
 1. If the **Table** field isn't automatically filled, select an existing table name from the drop-down menu.
-    > [!TIP]
-    > If you select **Ingest new data (Preview)** on a *table* row, the selected table name will appear in the **Project Details**.
 
-[!INCLUDE [data-explorer-one-click-ingestion-types](includes/data-explorer-one-click-ingestion-types.md)]
+1. Under **Source type**, do the following steps:
+
+   1. Select **from file**  
+   1. Select **Browse** to locate up to 10 files, or drag the files into the field. The schema-defining file can be chosen using the blue star.
     
-Select **Edit schema** to view and edit your table column configuration.
+      :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="One-click ingestion from file":::
 
 ## Edit the schema
 
-1. The **Map columns** dialog opens and you can map source data columns to target table columns. 
-    * In the **Source columns** fields, enter column names to map with the **Target columns**.
-    * To delete a column from mapping, select the trash can icon.
+Select **Edit schema** to view and edit your table column configuration. In the **Schema** tab:
 
-    ![Map columns window](media/one-click-ingestion-existing-table/map-columns.png)
-
-1. Select **Update**.
-1. In the **Schema** tab:
-    1. **Compression type** will be selected automatically by the source file name.
-
-        [!INCLUDE [data-explorer-one-click-ingestion-edit-schema](includes/data-explorer-one-click-ingestion-edit-schema.md)]
+   * **Compression type** will be selected automatically by the source file name. In this case, the compression type is **JSON**
         
-    1. If you select  **JSON**, you must also select **JSON levels**, from 1 to 10. The levels affect the table column data depiction.
+   * When you select  **JSON**, you must also select **Nested levels**, from 1 to 10. The levels determine the table column data division.
 
-    ![Select JSON levels](media/one-click-ingestion-existing-table/json-levels.png)
+        :::image type="content" source="media/one-click-ingestion-existing-table/json-levels.png" alt-text="Select Nested levels":::
+    
+       > [!TIP]
+       > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
 
-    * For tabular formats, select the check box **Include column names** to ignore the heading row of the file.
-        
-    ![Select Include column names](media/one-click-ingestion-existing-table/non-json-format.png)
+### Add nested JSON data 
 
-    > [!Note]
-    > Tabular formats can ingest column data into only one column in an Azure Data Explorer table. 
+To add columns from JSON levels that are different than the main **Nested levels** selected above, do the following steps:
 
-    * New mappings are set automatically, but you can change it to use an existing one. 
-    * Select the **Map columns** button to open the **Map columns** window. In the **Map columns** window you can attach one or more source columns or attributes to your Azure Data Explorer columns.
+1. Click on the arrow next to any column name, and select **New column**.
 
-## Copy and paste queries
+    :::image type="content" source="media/one-click-ingestion-existing-table/new-column.png" alt-text="Screenshot of options to add a new column - schema tab during one click ingestion process - Azure Data Explorer":::
 
-1. Above the **Editor** pane, select the **v** button to open the editor. In the editor, you can view and copy the automatic commands generated from your inputs. 
-1. In the table: 
-    * Select new column headers to add a **New column**, **Delete column**, **Sort ascending**, or **Sort descending**. On existing columns, only data sorting is available.
+1. Enter a new **Column Name** and select the **Column Type** from the dropdown menu.
+1. Under **Source**, select **Create new**.
 
-    > [!Note]
-    > * You can't update the name and datatype for existing tables.
-    > * Drop commands will only revert the changes that were made by his ingestion flow (new extents and columns). Nothing else will be dropped.
+    :::image type="content" source="media/one-click-ingestion-existing-table/create-new-source.png" alt-text="Screenshot - create new source for adding nested JSON data in one click ingestion process - Azure Data Explorer":::
 
-[![](media/one-click-ingestion-existing-table/edit-view.png "One-click ingestion edit view")](media/one-click-ingestion-existing-table/edit-view.png#lightbox) 
+1. Enter the new source for this column and click **OK**. This source can come from any JSON level.
+
+    :::image type="content" source="media/one-click-ingestion-existing-table/name-new-source.png" alt-text="Screenshot - popout window to name the new data source for the added column - Azure Data Explorer one click ingestion":::
+
+1. Select **Create**. Your new column will be added at the end of the table.
+
+    :::image type="content" source="media/one-click-ingestion-existing-table/create-new-column.png" alt-text="Screenshot - create a new column during one click ingestion in Azure Data Explorer":::
+
+### Edit the table 
+
+[!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
+
+> [!NOTE]
+> * For tabular formats, you can’t map a column twice. To map to an existing column, first delete the new column.
+> * You can’t change an existing column type. If you try to map to a column having a different format, you may end up with empty columns.
+
+[!INCLUDE [data-explorer-one-click-command-editor](includes/data-explorer-one-click-command-editor.md)]
 
 ## Start ingestion
 
 Select **Start ingestion** to create a table and mapping and to begin data ingestion.
 
-![Start ingestion](media/one-click-ingestion-existing-table/start-ingestion.png)
+:::image type="content" source="media/one-click-ingestion-existing-table/start-ingestion.png" alt-text="Start ingestion":::
 
-## Data ingestion completed
+## Complete data ingestion
 
-In the **Data ingestion completed** window, all three steps will be marked with green check marks if data ingestion finishes successfully.
- 
-![One-click data ingestion complete](media/one-click-ingestion-existing-table/one-click-data-ingestion-complete.png)
+In the **Data ingestion completed** window, all three steps will be marked with green check marks when data ingestion finishes successfully.
+
+:::image type="content" source="media/one-click-ingestion-existing-table/one-click-data-ingestion-complete.png" alt-text="One click ingestion completed":::
+
+> [!IMPORTANT]
+> To set up continuous ingestion from a container, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#create-continuous-ingestion-for-container)
 
 [!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
 

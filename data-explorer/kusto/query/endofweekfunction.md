@@ -4,7 +4,7 @@ description: This article describes endofweek() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -15,20 +15,20 @@ Returns the end of the week containing the date, shifted by an offset, if provid
 
 Last day of the week is considered to be a Saturday.
 
-**Syntax**
+## Syntax
 
 `endofweek(`*date* [`,`*offset*]`)`
 
-**Arguments**
+## Arguments
 
 * `date`: The input date.
 * `offset`: An optional number of offset weeks from the input date (integer, default - 0).
 
-**Returns**
+## Returns
 
 A datetime representing the end of the week for the given *date* value, with the offset, if specified.
 
-**Example**
+## Example
 
 ```kusto
   range offset from -1 to 1 step 1

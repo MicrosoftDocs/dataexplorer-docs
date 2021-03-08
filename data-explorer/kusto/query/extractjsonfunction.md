@@ -4,7 +4,7 @@ description: This article describes extractjson() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -19,20 +19,20 @@ Optionally convert the extracted string to a specific type.
 extractjson("$.hosts[1].AvailableMB", EventText, typeof(int))
 ```
 
-**Syntax**
+## Syntax
 
 `extractjson(`*jsonPath*`,` *dataSource*`)` 
 
-**Arguments**
+## Arguments
 
 * *jsonPath*: JsonPath string that defines an accessor into the JSON document.
 * *dataSource*:  A JSON document.
 
-**Returns**
+## Returns
 
 This function performs a JsonPath query into dataSource which contains a valid JSON string, optionally converting that value to another type depending on the third argument.
 
-**Example**
+## Example
 
 The `[`bracket`]` notatation and dot (`.`) notation are equivalent:
 
@@ -46,7 +46,7 @@ T
 
 ### JSON Path expressions
 
-|||
+|Path expression|Description|
 |---|---|
 |`$`|Root object|
 |`@`|Current object|

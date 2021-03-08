@@ -4,7 +4,7 @@ description: This article describes atan() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
@@ -13,14 +13,14 @@ ms.date: 10/23/2018
 
 Returns the angle whose tangent is the specified number (the inverse operation of [`tan()`](tanfunction.md)) .
 
-**Syntax**
+## Syntax
 
 `atan(`*x*`)`
 
-**Arguments**
+## Arguments
 
 * *x*: A real number.
 
-**Returns**
+## Returns
 
 * The value of the arc tangent of `x`

@@ -4,7 +4,7 @@ description: This article describes current_principal_details() in Azure Data Ex
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/08/2019
@@ -13,15 +13,15 @@ ms.date: 11/08/2019
 
 Returns details of the principal running the query.
 
-**Syntax**
+## Syntax
 
 `current_principal_details()`
 
-**Returns**
+## Returns
 
 The details of the current principal as a `dynamic`.
 
-**Example**
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

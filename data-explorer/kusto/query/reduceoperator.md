@@ -4,7 +4,7 @@ description: This article describes reduce operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -21,11 +21,11 @@ For each such group, it outputs a **pattern** that best describes the group (pos
 asterix (`*`) character to represent wildcards), a **count** of the number of values in the group,
 and a **representative** of the group (one of the original values in the group).
 
-**Syntax**
+## Syntax
 
 *T* `|` `reduce` [`kind` `=` *ReduceKind*] `by` *Expr* [`with` [`threshold` `=` *Threshold*] [`,` `characters` `=` *Characters*] ]
 
-**Arguments**
+## Arguments
 
 * *Expr*: An expression that evaluates to a `string` value.
 * *Threshold*: A `real` literal in the range (0..1). Default is 0.1. For large inputs, threshold should be small. 
@@ -34,7 +34,7 @@ and a **representative** of the group (one of the original values in the group).
   rather than break on `=` and `:`, use `":="` as the string literal.)
 * *ReduceKind*: Specifies the reduce flavor. The only valid value for the time being is `source`.
 
-**Returns**
+## Returns
 
 This operator returns a table with three columns (`Pattern`, `Count`, and `Representative`),
 and as many rows as there are groups. `Pattern` is the pattern value for the group, with `*`
@@ -68,7 +68,7 @@ range x from 1 to 1000 step 1
 |----------------|-----|-----------------|
 |MachineLearning*|1000 |MachineLearningX4|
 
-**Examples**
+## Examples
 
 The following example shows how one might apply the `reduce` operator to a "sanitized"
 input, in which GUIDs in the column being reduced are replaced prior to reducing
@@ -85,7 +85,7 @@ Trace | take 10000
 | reduce by Text with characters="-_"
 ```
 
-**See also**
+## See also
 
 [autocluster](./autoclusterplugin.md)
 

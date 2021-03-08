@@ -4,10 +4,11 @@ description: This article describes make-series operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/16/2020
+ms.localizationpriority: high
 ---
 # make-series operator
 
@@ -17,7 +18,7 @@ Create series of specified aggregated values along a specified axis.
 T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from datetime(2016-01-01) to datetime(2016-01-10) step 1d by fruit, supplier
 ```
 
-**Syntax**
+## Syntax
 
 *T* `| make-series` [*MakeSeriesParamters*]
       [*Column* `=`] *Aggregation* [`default` `=` *DefaultValue*] [`,` ...]
@@ -25,7 +26,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
     [`by`
       [*Column* `=`] *GroupExpression* [`,` ...]]
 
-**Arguments**
+## Arguments
 
 * *Column:* Optional name for a result column. Defaults to a name derived from the expression.
 * *DefaultValue:* Default value that will be used instead of absent values. If there is no row with specific values of *AxisColumn* and *GroupExpression*, then in the results the corresponding element of the array will be assigned a *DefaultValue*. If *DefaultValue* is omitted, then 0 is assumed. 
@@ -42,7 +43,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
   |---------------|-------------------------------------|------------------------------------------------------------------------------|
   |`kind`          |`nonempty`								 |Produces default result when the input of make-series operator is empty|                                
 
-**Returns**
+## Returns
 
 The input rows are arranged into groups having the same values of the `by` expressions and the `bin_at(`*AxisColumn*`, `*step*`, `*start*`)` expression. Then the specified aggregation functions are computed over each group, producing a row for each group. The result contains the `by` columns, *AxisColumn* column and also at least one column for each computed aggregate. (Aggregation that multiple columns or non-numeric results are not supported.)
 
@@ -80,13 +81,19 @@ It is recommended to use the main syntax of make-series and not the alternate sy
 |--------|-----------|
 |[any()](any-aggfunction.md)|Returns a random non-empty value for the group|
 |[avg()](avg-aggfunction.md)|Returns an average value across the group|
+|[avgif()](avgif-aggfunction.md)|Returns an average with the predicate of the group|
 |[count()](count-aggfunction.md)|Returns a count of the group|
 |[countif()](countif-aggfunction.md)|Returns a count with the predicate of the group|
 |[dcount()](dcount-aggfunction.md)|Returns an  approximate distinct count of the group elements|
+|[dcountif()](dcountif-aggfunction.md)|Returns an approximate distinct count with the predicate of the group|
 |[max()](max-aggfunction.md)|Returns the maximum value across the group|
+|[maxif()](maxif-aggfunction.md)|Returns the maximum value with the predicate of the group|
 |[min()](min-aggfunction.md)|Returns the minimum value across the group|
+|[minif()](minif-aggfunction.md)|Returns the minimum value with the predicate of the group|
+|[percentile()](percentiles-aggfunction.md)|Returns the percentile value across the group|
 |[stdev()](stdev-aggfunction.md)|Returns the standard deviation across the group|
 |[sum()](sum-aggfunction.md)|Returns the sum of the elements within the group|
+|[sumif()](sumif-aggfunction.md)|Returns the sum of the elements with the predicate of the group|
 |[variance()](variance-aggfunction.md)|Returns the variance across the group|
 
 ## List of series analysis functions
@@ -104,7 +111,9 @@ It is recommended to use the main syntax of make-series and not the alternate sy
 |[series_periods_validate()](series-periods-validatefunction.md)|Checks whether a time series contains periodic patterns of given lengths|
 |[series_stats_dynamic()](series-stats-dynamicfunction.md)|Return multiple columns with the common statistics (min/max/variance/stdev/average)|
 |[series_stats()](series-statsfunction.md)|Generates a dynamic value with the common statistics (min/max/variance/stdev/average)|
-  
+
+For a complete list of series analysis functions see: [Series processing functions](scalarfunctions.md#series-processing-functions)
+
 ## List of series interpolation functions
 
 |Function|Description|
@@ -125,7 +134,7 @@ T | make-series PriceAvg=avg(Price) default=0
 on Purchase from datetime(2016-09-10) to datetime(2016-09-13) step 1d by Supplier, Fruit
 ```
 
-:::image type="content" source="images/make-seriesoperator/makeseries.png" alt-text="Makeseries":::  
+:::image type="content" source="images/make-seriesoperator/makeseries.png" alt-text="Three tables. The first lists raw data, the second has only distinct supplier-fruit-date combinations, and the third contains the make-series results.":::  
 
 <!-- csl: https://help.kusto.windows.net:443/Samples --> 
 ```kusto

@@ -3,7 +3,7 @@ title: geo_polygon_to_s2cells() - Azure Data Explorer
 description: This article describes geo_polygon_to_s2cells() in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: orspod
+ms.author: orspodek
 ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
@@ -11,29 +11,30 @@ ms.date: 05/10/2020
 ---
 # geo_polygon_to_s2cells()
 
-Calculates S2 cell tokens that cover a polygon or multipolygon on Earth.
+Calculates S2 cell tokens that cover a polygon or multipolygon on Earth. This function is a useful geospatial join tool.
 
 Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy).
 
-**Syntax**
+## Syntax
 
 `geo_polygon_to_s2cells(`*polygon*`, `*level*`)`
 
-**Arguments**
+## Arguments
 
 * *polygon*: Polygon or multiPolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. 
 * *level*: An optional `int` that defines the requested cell level. Supported values are in the range [0, 30]. If unspecified, the default value `11` is used.
 
-**Returns**
+## Returns
 
 Array of S2 cell token strings that cover a polygon or multipolygon. If either the polygon or level is invalid, or the cell count exceeds the limit, the query will produce a null result.
 
 > [!NOTE]
 >
-> * Covering the polygon with S2 cell tokens can be useful in matching coordinates to polygons that might include these coordinates.
+> * Covering the polygon with S2 cell tokens can be useful in matching coordinates to polygons that might include these coordinates and matching polygons to polygons.
 > * The polygon covering tokens are of the same S2 cell level.
 > * The maximum count of tokens per polygon is 65536.
-> * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used for measurements on Earth is a sphere. Polygon edges are geodesics on the sphere.
+> * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used for measurements on Earth is a sphere. Polygon edges are [Geodesics](https://en.wikipedia.org/wiki/Geodesic) on the sphere.
+> * If input polygon edges are straight cartesian lines, consider using [geo_polygon_densify()](geo-polygon-densify-function.md) in order to convert planar edges to geodesics.
 
 **Motivation for covering polygons with S2 cell tokens**
 
@@ -85,12 +86,12 @@ This match can be achieved by the following process:
    - S2 cell level 5 might prove to be good for covering countries.
    - S2 cell level 16 can cover dense and relatively small Manhattan (New York) neighborhoods.
    - S2 cell level 11 can be used for covering suburbs of Australia.
-* Query run time and memory consumption might differ due to different S2 cell level values.
+* Query run time and memory consumption might differ because of different S2 cell level values.
 
 > [!WARNING]
 > Covering a large-area polygon with small-area cells can lead to a huge amount of covering cells. As a result, the query might return null.
 
-**Examples**
+## Examples
 
 The following example classifies coordinates into polygons.
 
@@ -127,6 +128,27 @@ Polygons
 |-73.9741|40.7914|Upper West Side|
 |-73.995|40.734|Greenwich Village|
 |-73.9584|40.7688|Upper East Side|
+
+The following example filters out polygons that don't intersect with the area of the polygon of interest. The maximum error is diagonal of s2cell length. This example is based on a polygonized earth at night raster file.
+
+```kusto
+let intersection_level_hint = 7;
+let area_of_interest = dynamic({"type": "Polygon","coordinates": [[[-73.94966125488281,40.79698248639272],[-73.95841598510742,40.800426144169315],[-73.98124694824219,40.76806170936614],[-73.97283554077148,40.7645513650551],[-73.94966125488281,40.79698248639272]]]});
+let area_of_interest_covering = geo_polygon_to_s2cells(area_of_interest, intersection_level_hint);
+EarthAtNight
+| project value = features.properties.DN, polygon = features.geometry
+| extend covering = geo_polygon_to_s2cells(polygon, intersection_level_hint)
+| mv-apply c = covering to typeof(string) on
+(
+    summarize is_intersects = anyif(1, array_index_of(area_of_interest_covering, c) != -1)
+)
+| where is_intersects == 1
+| count
+```
+
+|Count|
+|---|
+|83|
 
 Count of cells that will be needed in order to cover some polygon with S2 cells of level 5.
 

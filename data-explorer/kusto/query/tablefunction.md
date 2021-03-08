@@ -4,7 +4,7 @@ description: This article describes table() (scope function) in Azure Data Explo
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
@@ -20,11 +20,11 @@ of type `string`.
 table('StormEvent')
 ```
 
-**Syntax**
+## Syntax
 
 `table` `(` *TableName* [`,` *DataScope*] `)`
 
-**Arguments**
+## Arguments
 
 ::: zone pivot="azuredataexplorer"
 

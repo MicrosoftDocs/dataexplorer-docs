@@ -4,10 +4,11 @@ description: This article describes render operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/29/2020
+ms.date: 12/08/2020
+ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -24,7 +25,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 > * The render operator does not modify data. It injects an annotation ("Visualization") into the result's extended properties. The annotation contains the information provided by the operator in the query.
 > * The interpretation of the visualization information is done by the user agent. Different agents (such as Kusto.Explorer,Kusto.WebExplorer) might support different visualizations.
 
-**Syntax**
+## Syntax
 
 *T* `|` `render` *Visualization* [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
 
@@ -36,7 +37,7 @@ Where:
 
 |*Visualization*     |Description|
 |--------------------|-|
-| `anomalychart`     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-out-of-your-data-in-kusto-using-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
+| `anomalychart`     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
 | `areachart`        | Area graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |
 | `barchart`         | First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips.|
 | `card`             | First result record is treated as set of scalar values and shows as a card. |
@@ -115,13 +116,13 @@ These are:
 |`barchart`     |`default`          |Each "bar" stands on its own.      |
 |               |`unstacked`        |Same as `default`.                 |
 |               |`stacked`          |Stack "bars".                      |
-|               |`stacked100`       |Stack "bard" and stretch each one to the same width as the others.|
+|               |`stacked100`       |Stack "bars" and stretch each one to the same width as the others.|
 |`columnchart`  |`default`          |Each "column" stands on its own.   |
 |               |`unstacked`        |Same as `default`.                 |
 |               |`stacked`          |Stack "columns" one atop the other.|
 |               |`stacked100`       |Stack "columns" and stretch each one to the same height as the others.|
+|`scatterchart` |`map`              |Expected columns are [Longitude, Latitude] or GeoJSON point. Series column is optional.|
 |`piechart`     |`map`              |Expected columns are [Longitude, Latitude] or GeoJSON point, color-axis and numeric. Supported in Kusto Explorer desktop.|
-|`scatterchart` |`map`              |Expected columns are [Longitude, Latitude] or GeoJSON point. Series column is optional. Supported in Kusto Explorer desktop.|
 
 ::: zone pivot="azuredataexplorer"
 
@@ -132,8 +133,6 @@ Some visualizations support splitting into multiple y-axis values:
 |`none`    |A single y-axis is displayed for all series data. (Default)       |
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
-
-::: zone-end
 
 > [!NOTE]
 > The data model of the render operator looks at the tabular data as if it has
@@ -157,7 +156,7 @@ three kinds of columns:
   the result might translate into them guessing wrong. Try projecting-away such
   columns when that happens. 
 
-**Example**
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -168,10 +167,46 @@ range x from -2 to 2 step 0.1
 | render linechart with  (ycolumns = sin, cos, series = x_sign, sum_sign)
 ```
 
-::: zone pivot="azuredataexplorer"
+[Rendering examples in the tutorial](./tutorial.md#displaychartortable)
 
-[Rendering examples in the tutorial](./tutorial.md#render-display-a-chart-or-table).
+[Anomaly detection](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning)
 
-[Anomaly detection](./samples.md#get-more-out-of-your-data-in-kusto-using-machine-learning)
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+> [!NOTE]
+> The data model of the render operator looks at the tabular data as if it has
+three kinds of columns:
+>
+> * The x axis column (indicated by the `xcolumn` property).
+> * The series columns (any number of columns indicated by the `series` property.)
+> * The y axis columns (any number of columns indicated by the `ycolumns`
+  property).
+  For each record, the series has as many measurements ("points" in the chart)
+  as there are y-axis columns.
+
+> [!TIP]
+> 
+> * Use `where`, `summarize` and `top` to limit the volume that you display.
+> * Sort the data to define the order of the x-axis.
+> * User agents are free to "guess" the value of properties that are not specified
+  by the query. In particular, having "uninteresting" columns in the schema of
+  the result might translate into them guessing wrong. Try projecting-away such
+  columns when that happens. 
+
+## Example
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+InsightsMetrics
+| where Computer == "DC00.NA.contosohotels.com"
+| where Namespace  == "Processor" and Name == "UtilizationPercentage"
+| summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
+| render timechart
+```
+
+[Rendering examples in the tutorial](./tutorial.md?pivots=azuremonitor#display-a-chart-or-table-render-1)
+
 
 ::: zone-end

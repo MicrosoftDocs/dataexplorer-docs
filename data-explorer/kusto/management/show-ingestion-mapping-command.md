@@ -1,5 +1,5 @@
 ---
-title: .show ingestion mappings - Azure Data Explorer | Microsoft Docs
+title: .show ingestion mappings - Azure Data Explorer
 description: This article describes .show ingestion mappings in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/04/2020
 ---
-# .show ingestion mappings
+# .show ingestion mapping
 
 Show the ingestion mappings (all or the one specified by name).
 
@@ -17,9 +17,9 @@ Show the ingestion mappings (all or the one specified by name).
 
 * `.show` `table` *TableName* `ingestion` *MappingKind*  `mapping` *MappingName* 
 
-Show all ingestion mappings from all mapping kinds:
+Show all ingestion mappings from all mapping types:
 
-* `.show` `table` *TableName* `ingestion`  `mapping`
+* `.show` `table` *TableName* `ingestion`  `mappings`
  
 **Example** 
  
@@ -31,8 +31,8 @@ Show all ingestion mappings from all mapping kinds:
 .show table MyTable ingestion mappings 
 ```
 
-**Example output**
+**Sample output**
 
 | Name     | Kind | Mapping     |
 |----------|------|-------------|
-| mapping1 | CSV  | [{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}] |
+| mapping1 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` |
