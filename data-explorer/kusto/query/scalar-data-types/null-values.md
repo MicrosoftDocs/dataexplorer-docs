@@ -33,8 +33,7 @@ print bool(null), datetime(null), dynamic(null), guid(null), int(null), long(nul
 The null value does not compare to any other value of the data type,
 including itself, with the following exceptions: equal (==) and not equal (!=) operators when comparing with non-null values.
 
-To determine if some value is the null value, use the [isnull()](../isnullfunction.md) function
-, the [isnotnull()](../isnotnullfunction.md) function for numeric types, 
+To determine if some value is the null value, use the [isnull()](../isnullfunction.md) function, the [isnotnull()](../isnotnullfunction.md) function for numeric types, 
 and the [isempty()](../isemptyfunction.md) and the [isnotempty()](../isnotemptyfunction.md) 
 functions for the string type. 
 
