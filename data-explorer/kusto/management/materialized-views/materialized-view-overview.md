@@ -58,11 +58,19 @@ The [monitoring](#materialized-views-monitoring) section explains how to trouble
 
 * The primary way of querying a materialized view is by its name, like querying a table reference. When the materialized view is queried, it combines the materialized part of the view with the records in the source table that haven't been materialized yet (the `delta`). Querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. For more information about the _materialized_ vs. _non-materialized_ parts in materialized view, see [how materialized views work](#how-materialized-views-work).
 
-    * Combining the materialized part with the `delta` executes a join behind the scenes. By default, this join isn't [shuffled](../../query/shufflequery.md). You can force shuffling of the query by adding a [client request property](../../api/netfx/request-properties.md) named `materialized_view_shuffle`. See [examples](#examples) below. Adding this property can sometimes significantly improve the performance of the materialized view query. In the future, the need for shuffling will be automatically deduced based on the materialized view's current state, but for now this requires an explicit "hint".
+  * Combining the materialized part with the `delta` during query time includes aggregating the `delta` and joining it with the materialized part.
+  * Azure Data Explorer's query optimizer chooses summarize/join strategies that are expected to improve query performance. For example, the decision on whether to [shuffle](../../query/shufflequery.md) the query is based on number of records in `delta` part. The following [client request properties](../../api/netfx/request-properties.md) provide some control over the optimizations applied. You can test these properties with your materialized view queries and evaluate their impact on queries performance.
+
+|Client request property name|Type|Description|
+|------------------------|-------|-------------------|
+|`materialized_view_query_optimization_costbased_enabled`|bool|If set to `false`, disables  summarize/join optimizations in materialized view queries. Will use default strategies. Default is `true`.|
+|`materialized_view_shuffle`|dynamic|Force shuffling of the materialized view query, and (optionally) provide specific keys to shuffle by. See [examples](#examples) below.|
 
 * Another way of querying the view is by using the [`materialized_view()` function](../../query/materialized-view-function.md). This option supports querying only the materialized part of the view, while specifying the max latency the user is willing to tolerate. This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you're willing to sacrifice some freshness for performance, for example for telemetry dashboards.
 
-The view can participate in cross-cluster or cross-database queries, but aren't included in wildcard unions or searches.
+* Materialized views can participate in cross-cluster or cross-database queries, but aren't included in wildcard unions or searches.
+
+* See more tips about how to create your materialized view, based on your query pattern, in the [.create materialized-view performance tips](materialized-view-create.md#performance-tips).
 
 ### Examples
 
