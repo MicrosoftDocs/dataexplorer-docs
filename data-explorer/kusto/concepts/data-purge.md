@@ -242,7 +242,7 @@ If the attempt is successful, the operation state is updated to `Canceled`. Othe
 **Output**
 
 The output of this command is the same as the [show purges](#show-purges-command) command output, showing all operations in the database with their updated status.
-Operations that were cancelled successfully will have their status updated to `Cancelled`. Otherwise, the operation state isn't changed. 
+Operations that were canceled successfully will have their status updated to `Canceled`. Otherwise, the operation state isn't changed. 
 
 |`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
