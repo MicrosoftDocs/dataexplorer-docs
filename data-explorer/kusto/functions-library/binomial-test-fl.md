@@ -14,7 +14,7 @@ ms.date: 03/08/2021
 The function `binomial_test_fl()` performs the [binomial test](https://en.wikipedia.org/wiki/Binomial_test).
 
 > [!NOTE]
-> * `binomial_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).
+> * `binomial_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 > * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
 
 ## Syntax
