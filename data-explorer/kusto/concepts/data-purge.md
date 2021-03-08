@@ -227,7 +227,7 @@ If needed, you can cancel pending purge requests.
 **Output**
 
 The output of this command is the same as the 'show purges *OperationId*' command output, showing the updated status of the purge operation being canceled. 
-If the attempt is successful, the operation state is updated to `Cancelled`. Otherwise, the operation state isn't changed. 
+If the attempt is successful, the operation state is updated to `Canceled`. Otherwise, the operation state isn't changed. 
 
 |`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
