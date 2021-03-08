@@ -12,7 +12,7 @@ ms.date: 03/07/2021
 
 Calculate *C(n, k)*
 
-The function `comb_fl()`calculates *C(n, k)*, the number of [combinations](https://en.wikipedia.org/wiki/Combination) for selection of k items out of n, without order. It is based on ADX native [gamma()](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/gammafunction) function to calculate factorial, (see [facorial_fl()](factorial-fl.md)). For selection of k items with order use [perm_fl()](perm-fl.md)
+The function `comb_fl()`calculates *C(n, k)*, the number of [combinations](https://en.wikipedia.org/wiki/Combination) for selection of k items out of n, without order. It is based on ADX native [gamma()](../query/gammafunction.md) function to calculate factorial, (see [facorial_fl()](factorial-fl.md)). For selection of k items with order use [perm_fl()](perm-fl.md)
 
 > [!NOTE]
 > This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).

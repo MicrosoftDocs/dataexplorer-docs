@@ -12,7 +12,7 @@ ms.date: 03/07/2021
 
 Calculate factorial.
 
-The function `factorial_fl()`calculates [factorial](https://en.wikipedia.org/wiki/Factorial) of positive integers (*n!*). It is a simple wrapper of ADX native [gamma()](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/gammafunction) function.
+The function `factorial_fl()`calculates [factorial](https://en.wikipedia.org/wiki/Factorial) of positive integers (*n!*). It is a simple wrapper of ADX native [gamma()](../query/gammafunction.md) function.
 
 > [!NOTE]
 > This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
