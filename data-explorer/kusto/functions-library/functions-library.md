@@ -45,3 +45,12 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 |[series_fit_poly_fl()](series-fit-poly-fl.md)|Fits a polynomial to series using regression analysis. |
 |[series_moving_avg_fl()](series-moving-avg-fl.md)|Applies a moving average filter on a series. |
 |[series_rolling_fl()](series-rolling-fl.md)|Applies a rolling aggregation function on a series. |
+
+## Statistical and probability functions
+
+|Function Name     |Description                                          |
+|-------------------------|--------------------------------------------------------|
+|[binomial_test_fl()](binomial-test-fl.md)|Performs the binomial test. |
+|[comb_fl()](comb-fl.md)|Calculates *C(n, k)*, the number of combinations for selection of k items out of n. |
+|[factorial_fl()](factorial-fl.md)|Calculates *n!*, the factorial of n. |
+|[perm_fl()](perm-fl.md)|Calculates *P(n, k)*, the number of permutations for selection of k items out of n. |
