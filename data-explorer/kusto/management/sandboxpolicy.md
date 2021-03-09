@@ -33,8 +33,8 @@ A sandbox policy has the following properties.
   * Values can be between 1 and 100.
   * The default value is 50.
 * **MaxMemoryMbPerSandbox**: Defines the maximum amount of memory (in megabytes) that a single sandbox can use.
-  * Values can be between 200 and 65536 (64GB).
-  * The default value is 20480 (20GB).
+  * Values can be between 200 and 65536 (64 GB).
+  * The default value is 20480 (20 GB).
 
 If a policy isn't explicitly defined for a sandbox kind, an implicit policy with the default values and `IsEnabled` set to `true` applies.
 
