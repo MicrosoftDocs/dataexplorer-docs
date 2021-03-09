@@ -55,7 +55,7 @@ In the right-hand side of the tab, you can preview your data. On the left-hand s
 > * Delete columns in CSV files
 > * Change column names in JSON files
 
-1. Select **Add partition** 
+1. Select **Add partition**.
 
     :::image type="content" source="media/external-table/view-file.png" alt-text="Screen shot of view file for external table in Azure Data Explorer":::
 
@@ -68,7 +68,7 @@ In the right-hand side of the tab, you can preview your data. On the left-hand s
     Data column | The column used for partitioning. Virtual columns partition according to URL path. | Required
     Function | The function applied to the data column used for partitioning. | Optional
     Function argument | Argument to be used in the partition function. | Required if function is used.
-    Path prefix | The subpath of the file on which the partitioning is defined. This prefix changes the URL of the external table, as seen in the **Uri preview** box and should match the schema defining file URI. | Optional
+    Path prefix | The subpath of the file on which the partitioning is defined. This prefix changes the URL of the external table, as seen in the **Uri preview** box, and should match the schema-defining file URI. | Optional
     Datetime pattern | Format of date that will be used to construct the table URI path. | Optional
 
     :::image type="content" source="media/external-table/add-partitions.png" alt-text="Screen shot add partitions to external table in Azure Data Explorer" lightbox="media/external-table/add-partitions.png":::

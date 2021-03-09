@@ -452,7 +452,6 @@
       href: ./kusto/query/index.md
     - name: Query best practices
       href: ./kusto/query/best-practices.md
-
   - name: Cross-cluster queries
     items:
     - name: Cross-cluster queries and schema changes
@@ -1505,6 +1504,9 @@
         items:
         - name: External tables general control commands
           href: ./kusto/management/external-table-commands.md
+        - name: Create an external table
+          displayName: one-click
+          href: external-table.md
         - name: Create and alter external tables in Azure Storage or Azure Data Lake
           href: ./kusto/management/external-tables-azurestorage-azuredatalake.md
         - name: Create and alter external SQL tables
