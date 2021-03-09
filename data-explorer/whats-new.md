@@ -1,6 +1,6 @@
 ---
-title: What's new in Azure Data Explorer
-description: What's new in the Azure Data Explorer docs
+title: What's new in Azure Data Explorer documentation
+description: What's new in the Azure Data Explorer documentation
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
@@ -24,8 +24,6 @@ Article title | Description
 [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) | New article. In this article, you will learn how to give cluster access to principals from another tenant.
 
 ### Management
-
-### New articles
 
 Article title | Description
 ---|---
