@@ -10,7 +10,6 @@ ms.date: 03/08/2021
 ---
 # binomial_test_fl()
 
-
 The function `binomial_test_fl()` performs the [binomial test](https://en.wikipedia.org/wiki/Binomial_test).
 
 > [!NOTE]
