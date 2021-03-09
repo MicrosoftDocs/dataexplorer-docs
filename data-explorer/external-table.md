@@ -97,4 +97,6 @@ The resulting table includes data from all the files that fit the criteria defin
 ## Next steps
 
 * [Create and alter external tables in Azure Storage or Azure Data Lake](kusto/management/external-tables-azurestorage-azuredatalake.md)
+* [External tables schema entities](kusto/query/schema-entities/externaltables.md)
+* [external_table() function](kusto/query/externaltablefunction.md)
 * [Write queries for Azure Data Explorer](write-queries.md)

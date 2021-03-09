@@ -83,6 +83,9 @@
       href: create-cluster-database-resource-manager.md
   - name: Create a table
     href: one-click-table.md
+  - name: Create an external table
+    displayName: one-click
+    href: external-table.md    
   - name: Ingest data
     items: 
     - name: One-click ingestion
@@ -1504,9 +1507,6 @@
         items:
         - name: External tables general control commands
           href: ./kusto/management/external-table-commands.md
-        - name: Create an external table
-          displayName: one-click
-          href: external-table.md
         - name: Create and alter external tables in Azure Storage or Azure Data Lake
           href: ./kusto/management/external-tables-azurestorage-azuredatalake.md
         - name: Create and alter external SQL tables
