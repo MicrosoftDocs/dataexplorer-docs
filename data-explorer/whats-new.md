@@ -25,8 +25,6 @@ Article title | Description
 
 ### Management
 
-### New articles
-
 Article title | Description
 ---|---
 [Clean extent containers commands](kusto/management/clean-extent-containers.md) | New article. This article describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands in Azure Data Explorer.
