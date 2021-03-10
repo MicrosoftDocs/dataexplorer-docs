@@ -18,8 +18,10 @@ By default, extents are partitioned by their ingestion time. In most cases, ther
 The main purpose of the partitioning policy is to improve performance of queries in [specific scenarios](#common-scenarios).
 
 > [!CAUTION]
-> There are no hard-coded limits set on the number of tables with the partitioning policy defined. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used. For more information, see [monitoring](#monitor-partitioning) and [capacity](#partitioning-capacity).
-Before applying a partitioning policy on a materialized view, review the recommendations for [materialized views partitioning policy](materialized-views/materialized-view-policies.md#partitioning-policy).
+> * There are no hard-coded limits set on the number of tables with the partitioning policy defined.
+> * However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used.
+> * For more information, see [monitoring](#monitor-partitioning) and [capacity](#partitioning-capacity).
+> * Before applying a partitioning policy on a materialized view, review the recommendations for [materialized views partitioning policy](materialized-views/materialized-view-policies.md#partitioning-policy).
 
 ## Common scenarios
 
