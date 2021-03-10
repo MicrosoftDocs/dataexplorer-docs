@@ -1,7 +1,7 @@
 ---
 title: Built-in policy definitions for Azure Data Explorer
 description: Lists Azure Policy built-in policy definitions for Azure Data Explorer. These built-in policy definitions provide common approaches to managing your Azure resources.
-ms.date: 02/05/2021
+ms.date: 03/10/2021
 ms.topic: reference
 author: orspod
 ms.author: orspodek
