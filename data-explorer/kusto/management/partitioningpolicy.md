@@ -18,8 +18,10 @@ By default, extents are partitioned by their ingestion time. In most cases, ther
 The main purpose of the partitioning policy is to improve performance of queries in [specific scenarios](#common-scenarios).
 
 > [!CAUTION]
-> There are no hard-coded limits set on the number of tables with the partitioning policy defined. However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used. For more information, see [monitoring](#monitor-partitioning) and [capacity](#partitioning-capacity).
-Before applying a partitioning policy on a materialized view, review the recommendations for [materialized views partitioning policy](materialized-views/materialized-view-policies.md#partitioning-policy).
+> * There are no hard-coded limits set on the number of tables with the partitioning policy defined.
+> * However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used.
+> * For more information, see [monitoring](#monitor-partitioning) and [capacity](#partitioning-capacity).
+> * Before applying a partitioning policy on a materialized view, review the recommendations for [materialized views partitioning policy](materialized-views/materialized-view-policies.md#partitioning-policy).
 
 ## Common scenarios
 
@@ -141,11 +143,13 @@ The data partitioning policy has the following main properties:
 
 * **EffectiveDateTime**:
   * The UTC datetime from which the policy is effective.
-  * This property is optional. If it isn't specified, the policy will take effect on data ingested after the policy was applied.
+  * This property is optional. If it isn't specified, the policy will take effect for data ingested after the policy was applied.
   * Any non-homogeneous (non-partitioned) extents that may be dropped because of retention are ignored by the partitioning process. The extents are ignored because their creation time precedes 90% of the table's effective soft-delete period.
-	> [!CAUTION]
-	> You can set a datetime value in the past and partition already-ingested data. However, this practice may significantly increase resources used in the partitioning process.
-	> Consider doing so gradually, by setting the *EffectiveDateTime* to a previous `datetime` in steps of up to a few days each time you alter the policy.
+	
+> [!CAUTION]
+> * You can set a datetime value in the past and partition already-ingested data. However, this practice may significantly increase resources used in the partitioning process.
+> * In most cases, it is recommended to only have newly ingested data partitioned, and to avoid partitioning large amounts of historical data.
+> * If you choose to partition historical data, consider doing so gradually, by setting the *EffectiveDateTime* to a previous `datetime` in steps of up to a few days each time you alter the policy.
 
 ### Data partitioning example
 
