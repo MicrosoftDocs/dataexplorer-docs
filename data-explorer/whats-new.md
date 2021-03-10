@@ -153,7 +153,7 @@ Article title | Description
 
 This section lists the major changes to docs during September 2020.
 
-#### General
+### General
 
  Article title | Description
 ---|---
@@ -165,7 +165,7 @@ This section lists the major changes to docs during September 2020.
 | [Visualize data from Azure Data Explorer in Grafana](grafana.md) | Updated article. Updated with new capabilities.
 | [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md) <br> [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) | Updated articles. Updated with new capabilities.
 
-#### Query
+### Query
 
  Article title | Description
 ---|---
@@ -176,7 +176,7 @@ This section lists the major changes to docs during September 2020.
 | [geo_distance_point_to_line()](./kusto/query/geo-distance-point-to-line-function.md) | Updated article. Add multiline support docs.
 |[geo_line_densify()](./kusto/query/geo-line-densify-function.md)| Updated article. Add multiline support docs. |
 
-#### Management
+### Management
 
  Article title | Description
 ---|---
@@ -187,13 +187,13 @@ This section lists the major changes to docs during September 2020.
 [.drop materialized-view](./kusto/management/materialized-views/materialized-view-drop.md) | New article. Drops a materialized view.
 [.show materialized-views commands](./kusto/management/materialized-views/materialized-view-show-commands.md) | New article. The following show commands display information about [materialized views](kusto/management/materialized-views/materialized-view-overview.md).
 
-#### Functions library
+### Functions library
 
  Article title | Description
 ---|---
 [Functions library](./kusto/functions-library/functions-library.md) | New article. The following article contains a categorized list of [UDF (user-defined functions)](kusto/query/functions/user-defined-functions.md). 
 
-#### API
+### API
 
  Article title | Description
 ---|---
