@@ -105,22 +105,26 @@ Purge command may be invoked in two ways for differing usage scenarios:
 
 * Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data.
 
- > [!NOTE]
- > The first step in the two-step invocation requires running a query on the entire data set, to identify records to be purged.
- > This query may time-out or fail on large tables, especially with significant amount of cold cache data. In case of failures,
- > please validate the predicate yourself and after verifying correctness use the single-step purge with the `noregrets` option.
+  > [!NOTE]
+  > The first step in the two-step invocation requires running a query on the entire data set, to identify records to be purged.
+  > This query may time-out or fail on large tables, especially with significant amount of cold cache data. In case of failures,
+  > please validate the predicate yourself and after verifying correctness use the single-step purge with the `noregrets` option.
 
-**Syntax**
+  If you're issuing the purge manually, first connect to the Data Management service:
+  
+  1. Open [dataexplorer.azure.com](https://dataexplorer.azure.com);
+  2. Press `Add Cluster`;
+  3. Enter the **Data Ingestion URI** of your cluster as the Connection URI. It should be in the form of `https://ingest-[YourClusterName].[region].kusto.windows.net`;
+  4. Add this cluster, and execute the following commands against it.
+
+  **Syntax**
 	 
   ```kusto
-	 // Connect to the Data Management service
-	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
-	 
-	 // Step #1 - retrieve a verification token (no records will be purged until step #2 is executed)
-	 .purge table [TableName] records in database [DatabaseName] <| [Predicate]
+  // Step #1 - retrieve a verification token (no records will be purged until step #2 is executed)
+  .purge table [TableName] records in database [DatabaseName] <| [Predicate]
 
-	 // Step #2 - input the verification token to execute purge
-	 .purge table [TableName] records in database [DatabaseName] with (verificationtoken='<verification token from step #1>') <| [Predicate]
+  // Step #2 - input the verification token to execute purge
+  .purge table [TableName] records in database [DatabaseName] with (verificationtoken='<verification token from step #1>') <| [Predicate]
   ```
 
 To purge a materialized view, replace the `table` keyword with `materialized-view`, and replace *TableName* with the *MaterializedViewName*.
