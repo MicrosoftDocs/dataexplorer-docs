@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 07/10/2019
+ms.date: 12/03/2020
 
 # Customer intent: As a data analyst, I want to understand connection options in Power BI so I can choose the option most appropriate to my scenario. I also want to visualize my data for additional insights
 ---
@@ -73,7 +73,7 @@ First, you connect to the Azure Data Explorer help cluster, then you bring in a 
 
     ![Sign in](media/power-bi-connector/sign-in.png)
 
-1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents** then **Edit**.
+1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents** then **Transform Data**.
 
     ![Select table](media/power-bi-connector/select-table.png)
 

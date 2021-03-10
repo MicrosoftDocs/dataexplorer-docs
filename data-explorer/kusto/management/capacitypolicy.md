@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/12/2020
+ms.date: 02/16/2021
 ---
 # Capacity policy 
 
@@ -40,7 +40,7 @@ The capacity policy is made of:
 |MinimumConcurrentOperationsPerNode |long    |A minimal value for the number of concurrent extents merge/rebuild operations on a single node. Default is 1 |
 |MaximumConcurrentOperationsPerNode |long    |A maximal value for the number of concurrent extents merge/rebuild operations on a single node. Default is 3 |
 
-The cluster's total extents merge capacity, as shown by [.show capacity](../management/diagnostics.md#show-capacity), is calculated by:
+The cluster's total extents merge capacity, as shown by [`.show capacity`](../management/diagnostics.md#show-capacity), is calculated by:
 
 `Number of nodes in cluster` x `Concurrent operations per node`
 
@@ -56,7 +56,7 @@ merge operations is above 90%.
 |-----------------------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------|
 |MaximumConcurrentOperationsPerNode |long    |A maximal value for the number of concurrent rebuild extents for purge operations on a single node |
 
-The cluster's total extents purge rebuild capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity)) is calculated by:
+The cluster's total extents purge rebuild capacity (as shown by [`.show capacity`](../management/diagnostics.md#show-capacity)) is calculated by:
 
 `Number of nodes in cluster` x `MaximumConcurrentOperationsPerNode`
 
@@ -70,7 +70,7 @@ The cluster's total extents purge rebuild capacity (as shown by [.show capacity]
 |ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent export operations in a cluster.                                           |
 |CoreUtilizationCoefficient         |double  |A coefficient for the percentage of cores to use when calculating the export capacity. The calculation's result will always be normalized by `ClusterMaximumConcurrentOperations`. |
 
-The cluster's total export capacity, as shown by [.show capacity](../management/diagnostics.md#show-capacity), is calculated by:
+The cluster's total export capacity, as shown by [`.show capacity`](../management/diagnostics.md#show-capacity), is calculated by:
 
 Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
 
@@ -84,7 +84,7 @@ Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Max
 |ClusterMinimumConcurrentOperations |long    |A minimal value for the number of concurrent extents partition operations in a cluster. Default: 1  |
 |ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent extents partition operations in a cluster. Default: 16 |
 
-The cluster's total extents partition capacity (as shown by [.show capacity](../management/diagnostics.md#show-capacity)).
+The cluster's total extents partition capacity (as shown by [`.show capacity`](../management/diagnostics.md#show-capacity)).
 
 The effective value for `Concurrent operations` is automatically adjusted by the system in the range
 [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], as long as the success rate of the
@@ -92,7 +92,6 @@ partitioning operations is above 90%.
 
 ## Materialized views capacity policy
 
-Change the capacity policy using the [alter cluster policy capacity](capacity-policy.md#alter-cluster-policy-capacity). This change requires `AllDatabasesAdmin` permissions.
 The policy can be used to change concurrency settings for materialized views. This change may be required when there's more than a single materialized view defined on a cluster, and the cluster can't keep up with the materialization of all views. By default, concurrency settings are relatively low to ensure that materialization doesn't impact cluster's performance.
 
 > [!WARNING]
@@ -120,9 +119,12 @@ Property | Description
 |`ClusterMaximumConcurrentOperations` | The maximum number of materialized views that the cluster can materialize concurrently. This value is 1 by default, while materialization itself (of a single individual view) may run many concurrent operations. If there's more than a single materialized view defined on the cluster, and if the cluster's resources are in good state, it's recommended to increase this value. |
 | `ExtentsRebuildCapacity`|  Determines the number of concurrent extents rebuild operations, executed for all materialized views during the materialization process. If several views are executing concurrently, since `ClusterMaximumConcurrentOperation` is greater than 1, they'll share the quota defined by this property. The maximum number of concurrent extents rebuild operations won't exceed this value. |
 
-### Extents rebuild
+### Extents rebuild capacity
 
-To learn more about extents rebuild operations, see [how materialized views work](materialized-views/materialized-view-overview.md#how-materialized-views-work). The maximum number of extents rebuild is calculated by:
+For more information about extents rebuild operations, see [how materialized views work](materialized-views/materialized-view-overview.md#how-materialized-views-work).
+This setting is only relevant to Engine V2 clusters. This setting is not relevant to [EngineV3](../../engine-v3.md) clusters.
+
+The maximum number of extents rebuild is calculated by:
     
 ```kusto
 Maximum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * `MaximumConcurrentOperationsPerNode`)
@@ -165,9 +167,9 @@ The default capacity policy has the following JSON representation:
 > [!WARNING]
 > Consult with the Azure Data Explorer team before altering a capacity policy.
 
-* Use [.show cluster policy capacity](capacity-policy.md#show-cluster-policy-capacity) to show the current capacity policy of the cluster.
+* Use [`.show cluster policy capacity`](capacity-policy.md#show-cluster-policy-capacity) to show the current capacity policy of the cluster.
 
-* Use [.alter cluster policy capacity](capacity-policy.md#alter-cluster-policy-capacity) to alter the capacity policy of the cluster.
+* Use [`.alter cluster policy capacity`](capacity-policy.md#alter-cluster-policy-capacity) to alter the capacity policy of the cluster.
 
 ## Throttling
 

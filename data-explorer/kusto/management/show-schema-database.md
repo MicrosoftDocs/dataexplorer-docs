@@ -123,8 +123,6 @@ The following *Options* are all optional:
 
 The script, returned as a string, will contain:
 
-* Commands to create the database and set its pretty name, if any.
-  * The generated command will create a volatile database, and will be commented-out when added to the script.
 * Commands to create all the tables in the database.
 * Commands to set all database/tables/columns policies to match the original policies.
 * Commands to create or alter all user-defined functions in the database.

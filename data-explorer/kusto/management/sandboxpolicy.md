@@ -13,7 +13,7 @@ ms.date: 03/24/2020
 
 Azure Data Explorer runs certain plugins within [sandboxes](../concepts/sandboxes.md) whose available resources are limited and controlled for security and for resource governance.
 
-Sandboxes run on the nodes of the Kusto engine. Some of their limitations are defined in sandbox policies, where each sandbox type can have its own policy.
+Sandboxes run on the nodes of the Kusto engine. Some of their limitations are defined in sandbox policies, where each sandbox kind can have its own policy.
 
 Sandbox policies are managed at cluster-level and affect all the nodes in the cluster.
 
@@ -25,6 +25,7 @@ A sandbox policy has the following properties.
 
 * **SandboxKind**: Defines the type of the sandbox (such as, `PythonExecution`, `RExecution`).
 * **IsEnabled**: Defines if sandboxes of this type may run on the cluster's nodes.
+  * The default value is false.
 * **TargetCountPerNode**: Defines how many sandboxes of this type are allowed to run on the cluster's nodes.
   * Values can be between one and twice the number of processors per node.
   * The default value is 16.
@@ -32,8 +33,10 @@ A sandbox policy has the following properties.
   * Values can be between 1 and 100.
   * The default value is 50.
 * **MaxMemoryMbPerSandbox**: Defines the maximum amount of memory (in megabytes) that a single sandbox can use.
-  * Values can be between 200 and 65536 (64GB).
-  * The default value is 20480 (20GB).
+  * Values can be between 200 and 65536 (64 GB).
+  * The default value is 20480 (20 GB).
+
+If a policy isn't explicitly defined for a sandbox kind, an implicit policy with the default values and `IsEnabled` set to `true` applies.
 
 ## Example
 

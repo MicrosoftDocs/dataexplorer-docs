@@ -13,7 +13,7 @@ ms.date: 10/11/2020
 
 Use group membership or execution context to control access to rows in a database table.
 
-Row Level Security (RLS) simplifies the design and coding of security. It lets you apply restrictions on data row access in your application. For example, limit user access to rows relevant to their department, or restrict customer access to only the data relevant to their company.
+Row Level Security (RLS) simplifies the design and coding of security. It lets you apply restrictions on data row access in your application. For example, limit user access to rows relevant to their department, or restrict customer access to only the data relevant to their company. 
 
 The access restriction logic is located in the database tier, rather than away from the data in another application tier. The database system applies the access restrictions every time data access is attempted from any tier. This logic makes your security system more reliable and robust by reducing the surface area of your security system.
 
@@ -23,6 +23,9 @@ RLS lets you provide access to other applications and users, only to a certain p
 * Anonymize data in some of the columns
 * All of the above
 
+> [!NOTE]
+> When an RLS policy is enabled on a table, access is entirely replaced by the RLS query that's defined on the table. The access restriction applies to all users, including database admins and the RLS creator. The RLS query must explicitly include definitions for all types of users to whom you want to give access. 
+
 For more information, see [control commands for managing the Row Level Security policy](../management/row-level-security-policy.md).
 
 > [!TIP]
@@ -30,6 +33,7 @@ For more information, see [control commands for managing the Row Level Security 
 > * [current_principal()](../query/current-principalfunction.md)
 > * [current_principal_details()](../query/current-principal-detailsfunction.md)
 > * [current_principal_is_member_of()](../query/current-principal-ismemberoffunction.md)
+
 
 ## Limitations
 
@@ -39,6 +43,7 @@ The RLS policy can't be enabled on a table:
 * for which [continuous data export](../management/data-export/continuous-data-export.md) is configured.
 * referenced by a query of an [update policy](./updatepolicy.md).
 * on which [restricted view access policy](./restrictedviewaccesspolicy.md) is configured.
+* on which another row level security policy is enabled. 
 
 ## Examples
 
@@ -153,7 +158,7 @@ the support person. An RLS policy can be applied on the table to mask all but th
 
 ## Performance impact on queries
 
-When an RLS policy is enabled on a table, there will be some performance impact on queries that access that table. Access to the table will actually be replaced by the RLS query that's defined on that table. The performance impact of an RLS query will normally consist of two parts:
+When an RLS policy is enabled on a table, there will be some performance impact on queries that access that table. Access to the table will be replaced by the RLS query that's defined on that table. The performance impact of an RLS query will normally consist of two parts:
 
 * Membership checks in Azure Active Directory
 * The filters applied on the data

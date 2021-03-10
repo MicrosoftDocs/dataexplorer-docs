@@ -65,9 +65,18 @@ DeviceEventsAll
 }
 ```
 
-### Solution #3: Filter duplicates during the ingestion process
+### Solution #3: Use materialized views to deduplicate
 
-Another solution is to filter duplicates during the ingestion process. The system ignores the duplicate data during ingestion into Kusto tables. Data is ingested into a staging table and copied into another table after removing duplicate rows. The advantage of this solution is that query performance improves dramatically as compared to the previous solution. The disadvantages include increased ingestion time and additional data storage costs. Additionally, this solution works only if duplications aren't ingested concurrently. If there are multiple concurrent ingestions containing duplicate records, all may be ingested since the deduplication process will not find any existing matching records in the table.    
+[Materialized views](kusto/management/materialized-views/materialized-view-overview.md) can be used for deduplication, by using the [any()](kusto/query/any-aggfunction.md)/[arg_min()](kusto/query/arg-min-aggfunction.md)/[arg_max()](kusto/query/arg-max-aggfunction.md) aggregation functions (see example #4 in [materialized view create command](kusto/management/materialized-views/materialized-view-create.md#examples)). 
+
+> [!NOTE]
+> Materialized views come with a cost of consuming cluster's resources, which may not be negligible. For more information, see materialized views [performance considerations](kusto/management/materialized-views/materialized-view-overview.md#performance-considerations).
+
+### Solution #4: Filter duplicates during the ingestion process
+
+When you filter duplicates during the ingestion process, the system ignores the duplicate data during ingestion into Kusto tables. Data is ingested into a staging table and copied into another table after removing duplicate rows. This solution can improve query performance, since records are already deduplicated during query time. 
+
+However, this option increases ingestion time and incurs additional data storage costs. Additionally, this solution  only works if duplications aren't ingested concurrently. With multiple concurrent ingestions containing duplicate records, the deduplication process will not find any existing matching records in the table, and may ingest all records.
 
 The following example depicts this method:
 

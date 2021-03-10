@@ -25,21 +25,72 @@ Thus, the following returns a single row full of nulls:
 print bool(null), datetime(null), dynamic(null), guid(null), int(null), long(null), real(null), double(null), time(null)
 ```
 
-> [!WARNING]
-> Please note that currently the `string` type doesn't support null values.
+> [!NOTE]
+>Currently the `string` type doesn't support null values. For string type, use the [isempty()](../isemptyfunction.md) and the [isnotempty()](../isnotemptyfunction.md) functions.
 
 ## Comparing null to something
 
-The null value does not compare equal to any other value of the data type,
-including itself. (That is, `null == null` is false.) To determine if some
-value is the null value, use the [isnull()](../isnullfunction.md) function
-and the [isnotnull()](../isnotnullfunction.md) function.
+The null value does not compare to any other value of the data type,
+including itself, with the following exceptions: equal (==) and not equal (!=) operators when comparing with non-null values.
+
+To determine if some value is the null value, use the [isnull()](../isnullfunction.md) function, the [isnotnull()](../isnotnullfunction.md) function for numeric types, 
+and the [isempty()](../isemptyfunction.md) and the [isnotempty()](../isnotemptyfunction.md) 
+functions for the string type. 
+
+For example:
+
+```kusto
+datatable(val:int)[5, int(null)]
+| extend IsBiggerThan3 = val > 3
+| extend IsBiggerThan3OrNull = val > 3 or isnull(val)
+| extend IsEqualToNull = val == int(null)
+| extend IsNotEqualToNull = val != int(null)
+```
+
+Results:
+
+|val | IsBiggerThan3 | IsBiggerThan3OrNull | IsEqualToNull | IsNotEqualToNull|
+|---|---|--------|--------|--------|
+| 5 | true | true | false | true|
+| &nbsp; | &nbsp; | true| &nbsp; | &nbsp;|
+
+
+> [!NOTE]
+> In EngineV2, a null comparison expression returns a boolean result. EngineV3 behaves as described [above](#comparing-null-to-something). However, since null coalesces to false in a boolean expression, the result in filter expressions is compatible between both engines.    
 
 ## Binary operations on null
 
 In general, null behaves in a "sticky" way around binary operators; a binary
 operation between a null value and any other value (including another null value)
-produces a null value.
+produces a null value. For example:
+
+```kusto
+datatable(val:int)[5, int(null)]
+| extend Add = val + 10
+| extend Multiply = val * 10
+```
+Results:
+
+|val|Add|Multiply|
+|---|---|--------|
+|5|	15|	50|
+|&nbsp;|&nbsp;|&nbsp;| 		
+
+## Null expression in filter
+
+If an expression in the context of the filter operation such as in the [where operator](../whereoperator.md) returns null, the expression will be coalesced to `false`.  
+
+Example:
+
+```kusto
+datatable(ival:int, sval:string)[5, "a", int(null), "b"]
+| where ival != 5
+```
+Results:
+
+|ival|sval|
+|---|---|
+|&nbsp;|b|
 
 ## Data ingestion and null values
 
@@ -49,7 +100,7 @@ in the corresponding table cell. An exception to that are columns of type
 So, for example, if we have: 
 
 ```kusto
-.create table T [a:string, b:int]
+.create table T(a:string, b:int)
 
 .ingest inline into table T
 [,]
