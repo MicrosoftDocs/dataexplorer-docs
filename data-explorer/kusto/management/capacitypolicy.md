@@ -189,6 +189,7 @@ When the cluster detects that an operation has exceeded the limit on concurrent 
   * The error message will include the *command type*, the *origin* of the throttling and the *capacity* that's been exceeded. For example:
     * Example: `The control command was aborted due to throttling. Retrying after some backoff might succeed. CommandType: 'TableSetOrAppend', Capacity: 18, Origin: 'CapacityPolicy/Ingestion'`.
   * The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
-  
+  * The exception type will be `ControlCommandThrottledException`.
+
 > [!NOTE]
 > Control commands may also be throttled as a result of exceeding the limit defined by a workload group's [Request rate limit policy](request-rate-limit-policy.md).
