@@ -171,17 +171,24 @@ The default capacity policy has the following JSON representation:
 
 * Use [`.alter cluster policy capacity`](capacity-policy.md#alter-cluster-policy-capacity) to alter the capacity policy of the cluster.
 
-## Throttling
+## Control commands throttling
 
 Kusto limits the number of concurrent requests for the following user-initiated commands:
 
-* Ingestions (includes all the commands that are listed [here](../../ingest-data-overview.md))
-   * Limit is as defined in the [capacity policy](#capacity-policy).
-* Purges
-   * Global is currently fixed at one per cluster.
-   * The purge rebuild capacity is used internally to determine the number of concurrent rebuild operations during purge commands. Purge commands won't be blocked/throttled because of this process, but will work faster or slower depending on the purge rebuild capacity.
-* Exports
-   * Limit is as defined in the [capacity policy](#capacity-policy).
+* **Ingestions**
+   * This category includes commands that [ingest from storage](data-ingestion/ingest-from-storage.md), [ingest from a query](data-ingestion/ingest-from-query.md), and [ingest inline](data-ingestion/ingest-inline.md).
+   * The limit is as defined by the [ingestion capacity](#ingestion-capacity).
+* **Purges**
+   * The global limit is currently fixed at one per cluster.
+   * The [purge rebuild capacity](#extents-purge-rebuild-capacity) is used internally to determine the number of concurrent rebuild operations during purge commands. Purge commands won't be blocked or throttled because of this process, but will complete faster or slower depending on the purge rebuild capacity.
+* **Exports**
+   * The limit is as defined in the [export capacity](#export-capacity).
 
-When the cluster detects that an operation has exceeded the permitted concurrent operation, it will respond with a 429, "Throttled", HTTP code.
-Retry the operation after some backoff.
+When the cluster detects that an operation has exceeded the limit on concurrent requests:
+  * The command's state (as presented by [.show commands](commands.md) and [.show operations](operations.md)) will be `Throttled`.
+  * The error message will include the *command type*, the *origin* of the throttling and the *capacity* that's been exceeded. For example:
+    * Examples: `The control command was aborted due to throttling. Retrying after some backoff might succeed. CommandType: 'TableSetOrAppend', Capacity: 18, Origin: 'CapacityPolicy/Ingestion'`.
+  * The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
+  
+> [!NOTE]
+> Control commands may also be throttled as a result of exceeding the limit defined by a workload group's [Request rate limit policy](request-rate-limit-policy.md).
