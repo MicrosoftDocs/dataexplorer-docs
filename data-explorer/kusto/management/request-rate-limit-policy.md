@@ -34,9 +34,34 @@ A request rate limit of kind `ConcurrentRequests` includes the following propert
 |-----------------------|------|--------------------------------------------|------------------|
 | MaxConcurrentRequests | int  | The maximum number of concurrent requests. | [`1`, `10000`]   |
 
-Commands that are denied because of this policy will give a `ControlCommandThrottledException` (error code = 429).
+When a request exceeds the limit on maximum number of concurrent requests:
+  * The request's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
+  * The error message will include the the *origin* of the throttling and the *capacity* that's been exceeded. For example:
+    * Examples:
+  
+      1. A throttled `.create table` command, that was classified to the `default` workload group, which has a limit of 80 concurrent requests at the scope of the workload group: 
+      
+         ```
+         The control command was aborted due to throttling. Retrying after some backoff might succeed. CommandType: 'TableCreate', Capacity: 80, Origin: 'RequestRateLimitPolicy/WorkloadGroup/default'.
+         ```
+       
+      1. A throttled query, that was classified to a workload group named `MyWorkloadGroup`, which has a limit of 80 concurrent requests at the scope of the workload group:
 
-Queries that are denied because of this policy will give a `QueryThrottledException` (error code = 429).
+         ```
+         The query was aborted due to throttling. Retrying after some backoff might succeed. Capacity: 50, Origin: 'RequestRateLimitPolicy/WorkloadGroup/MyWorkloadGroup'.
+         ```
+             
+      1. A throttled query, that was classified to a workload group named `MyWorkloadGroup`, which has a limit of 10 concurrent requests at the scope of a principal:
+
+         ```
+         The query was aborted due to throttling. Retrying after some backoff might succeed. Capacity: 10, Origin: 'RequestRateLimitPolicy/WorkloadGroup/MyWorkloadGroup/Principal/aaduser=9e04c4f5-1abd-48d4-a3d2-9f58615b4724;6ccf3fe8-6343-4be5-96c3-29a128dd9570'.
+         ```
+  
+  * The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
+  * The exception type will be `QueryThrottledException` for queries, and `ControlCommandThrottledException` for control commands.
+  
+> [!NOTE]
+> Control commands may also be throttled as a result of exceeding the limit defined by the cluster's [capacity policy](capacity-policy.md).
 
 ### Resource utilization rate limit
 
@@ -48,7 +73,25 @@ A request rate limit of kind `ResourceUtilization` includes the following proper
 | MaxUtilization | `long`         | The maximum of the resource that can be utilized.    | [`1`, `9223372036854775807`]      |
 | TimeWindow     | `timespan`     | The sliding time window during which the limit is applied.     | [`00:01:00`, `1.00:00:00`]        |
 
-Requests denied because of this policy will give a `QuotaExceededException` (error code = 429).
+When a request exceeds the limit on resources utilization:
+  * The request's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
+  * The error message will include the the *origin* of the throttling and the *quota* that's been exceeded. For example:
+    * Examples:
+  
+      1. A throttled request, that was classified to a workload group named `Automated Requests`, which has a limit of 10000 requests per day at the scope of a principal:
+
+         ```
+         The request was denied due to exceeding quota limitations. Resource: 'RequestCount', Quota: '10000', TimeWindow: '1.00:00:00', Origin: 'RequestRateLimitPolicy/WorkloadGroup/Automated Requests/Principal/aadapp=9e04c4f5-1abd-48d4-a3d2-9f58615b4724;6ccf3fe8-6343-4be5-96c3-29a128dd9570'.
+         ```
+         
+      1. A throttled request, that was classified to a workload group named `Automated Requests`, which has a limit of 20000 total CPU seconds per day at the scope of the workload group:
+
+         ```
+         The request was denied due to exceeding quota limitations. Resource: 'TotalCpuSeconds', Quota: '20000', TimeWindow: '1.00:00:00', Origin: 'RequestRateLimitPolicy/WorkloadGroup/Automated Requests'.
+         ```
+         
+  * The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
+  * The exception type will be `QuotaExceededException`.
 
 ### Example
 
