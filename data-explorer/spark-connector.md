@@ -40,11 +40,11 @@ Starting version 2.3.0 we introduce new artifact Ids replacing spark-kusto-conne
 
 > [!NOTE]
 >  Versions prior to 2.5.1 do not work anymore for ingest to an existing table, please update to a later version. 
-> This step is optional. If you are using pre-built libraries (i.e Maven) go to [Spark cluster setup](#spark-cluster-setup).
+> This step is optional. If you are using pre-built libraries, for example, Maven, see [Spark cluster setup](#spark-cluster-setup).
 
 ### Build prerequisites
 
-1. If you are not using pre-built libraries you need to install the libraries listed in [dependencies](https://github.com/Azure/azure-kusto-spark#dependencies) including the following [Kusto Java SDK](kusto/api/java/kusto-java-client-library.md) libraries (to find the right version to install [look in the relevant release's pom](https://github.com/Azure/azure-kusto-spark/releases)):
+1. If you are not using pre-built libraries, you need to install the libraries listed in [dependencies](https://github.com/Azure/azure-kusto-spark#dependencies) including the following [Kusto Java SDK](kusto/api/java/kusto-java-client-library.md) libraries. To find the right version to install, [look in the relevant release's pom](https://github.com/Azure/azure-kusto-spark/releases):
     * [Kusto Data Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Kusto Ingest Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 
@@ -277,5 +277,5 @@ For more information on Azure Data Explorer principal roles, see [role-based aut
 
 ## Next steps
 
-* Learn and use more options of the [Azure Data Explorer Spark Connector](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
+* Learn to use more options of the [Azure Data Explorer Spark Connector](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
 * [Sample code for Scala and Python](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)
