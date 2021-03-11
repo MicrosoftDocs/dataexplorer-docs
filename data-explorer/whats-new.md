@@ -50,7 +50,7 @@ Article title | Description
 ---|---
 [.create table based-on](kusto/management/create-table-based-on-command.md)  | New article. Creates a new empty table based on existing table.
 [Stored query results (Preview)](kusto/management/stored-query-results.md) | New article. Stored query results is a mechanism that temporarily stores the result of a query on the service. 
-[Create and alter external tables in Azure Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake) | Updated article. Document `filesPreview` and `dryRun` external table definition options
+[Create and alter external tables in Azure Storage or Azure Data Lake](./external-tables-azurestorage-azuredatalake) | Updated article. Document `filesPreview` and `dryRun` external table definition options
 
 ### Functions library
 
