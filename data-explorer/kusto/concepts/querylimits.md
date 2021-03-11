@@ -27,10 +27,6 @@ in the form of default query limits. If you're considering removing these limits
 * The default value can be changed by configuring the [request rate limit policy](../management/request-rate-limit-policy.md) of the `default` workload group.
   * The actual number of requests that can run concurrently on a cluster depends on various factors. The most dominant factors are cluster SKU, cluster's available resources, and usage patterns. The policy can be configured based on load tests performed on production-like usage patterns.
 
-Exceeding the request concurrency limit will result in the following behavior:
-* Commands that are denied because of the request rate limit policy will give a `ControlCommandThrottledException` (error code = 429).
-* Queries that are denied because of the request rate limit policy will give a `QueryThrottledException` (error code = 429).
-
 ## Limit on result set size (result truncation)
 
 **Result truncation** is a limit set by default on the
