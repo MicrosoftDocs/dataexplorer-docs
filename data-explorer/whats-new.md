@@ -50,7 +50,7 @@ Article title | Description
 ---|---
 [.create table based-on](kusto/management/create-table-based-on-command.md)  | New article. Creates a new empty table based on existing table.
 [Stored query results (Preview)](kusto/management/stored-query-results.md) | New article. Stored query results is a mechanism that temporarily stores the result of a query on the service. 
-[Create and alter external tables in Azure Storage or Azure Data Lake](./external-tables-azurestorage-azuredatalake) | Updated article. Document `filesPreview` and `dryRun` external table definition options
+[Create and alter external tables in Azure Storage or Azure Data Lake](/kusto/management/external-tables-azurestorage-azuredatalake) | Updated article. Document `filesPreview` and `dryRun` external table definition options
 
 ### Functions library
 
@@ -59,7 +59,7 @@ Article title | Description
 [series_metric_fl()](kusto/functions-library/series-metric-fl.md) | New article. The `series_metric_fl()` function selects and retrieves time series of metrics ingested to Azure Data Explorer using the Prometheus monitoring system.
 [series_rate_fl()](kusto/functions-library/series-rate-fl.md) | New article. The function `series_rate_fl()` calculates the average rate of metric increase per second.
 [series_fit_lowess_fl()](kusto/functions-library/series-fit-lowess-fl.md) | New article. The function `series_fit_lowess_fl()` applies a LOWESS regression on a series.
-[Export data to an external table](./kusto/management/data-export/export-data-to-an-external-table) | Updated article. New external table syntax in export docs
+[Export data to an external table](/data-explorer/kusto/management/data-export/export-data-to-an-external-table) | Updated article. New external table syntax in export docs
 
 ## November 2020
 
