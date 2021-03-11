@@ -45,7 +45,7 @@ The cluster's total extents merge capacity, as shown by [`.show capacity`](../ma
 `Number of nodes in cluster` x `Concurrent operations per node`
 
 The effective value for `Concurrent operations per node` gets automatically adjusted by the system in the range [`MinimumConcurrentOperationsPerNode`,`MaximumConcurrentOperationsPerNode`], as long as the success rate of the
-merge operations is above 90%.
+merge operations is 90% or higher.
 
 > [!Note]
 > In clusters with three or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
@@ -82,13 +82,13 @@ Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Max
 |Property                           |Type    |Description                                                                                         |
 |-----------------------------------|--------|----------------------------------------------------------------------------------------------------|
 |ClusterMinimumConcurrentOperations |long    |A minimal value for the number of concurrent extents partition operations in a cluster. Default: 1  |
-|ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent extents partition operations in a cluster. Default: 16 |
+|ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent extents partition operations in a cluster. Default: 32 |
 
 The cluster's total extents partition capacity (as shown by [`.show capacity`](../management/diagnostics.md#show-capacity)).
 
 The effective value for `Concurrent operations` is automatically adjusted by the system in the range
 [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], as long as the success rate of the
-partitioning operations is above 90%.
+partitioning operations is 90% or higher.
 
 ## Materialized views capacity policy
 
@@ -157,7 +157,7 @@ The default capacity policy has the following JSON representation:
   },
   "ExtentsPartitionCapacity": {
     "ClusterMinimumConcurrentOperations": 1,
-    "ClusterMaximumConcurrentOperations": 16
+    "ClusterMaximumConcurrentOperations": 32
   }
 }
 ```
