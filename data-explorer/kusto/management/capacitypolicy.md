@@ -82,7 +82,7 @@ Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Max
 |Property                           |Type    |Description                                                                                         |
 |-----------------------------------|--------|----------------------------------------------------------------------------------------------------|
 |ClusterMinimumConcurrentOperations |long    |A minimal value for the number of concurrent extents partition operations in a cluster. Default: 1  |
-|ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent extents partition operations in a cluster. Default: 16 |
+|ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent extents partition operations in a cluster. Default: 32 |
 
 The cluster's total extents partition capacity (as shown by [`.show capacity`](../management/diagnostics.md#show-capacity)).
 
@@ -157,7 +157,7 @@ The default capacity policy has the following JSON representation:
   },
   "ExtentsPartitionCapacity": {
     "ClusterMinimumConcurrentOperations": 1,
-    "ClusterMaximumConcurrentOperations": 16
+    "ClusterMaximumConcurrentOperations": 32
   }
 }
 ```
