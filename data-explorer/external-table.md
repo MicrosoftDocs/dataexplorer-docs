@@ -35,23 +35,24 @@ This article shows you how to create an external table using the one-click exper
 1. In **Table name**, enter a name for your table.
     > [!TIP]
     >  Table names can be up to 1024 characters including alphanumeric, hyphens, and underscores. Special characters aren't supported.
-1. In **Link to source**, enter the storage url of your source container. You can add up to 10 sources. The first source container will display files from which to choose the schema-defining file.
+1. In **Link to source**, enter the [SAS url](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of your source container. You can add up to 10 sources. 
+    The first source container will display files below the **File filters**. In a later step, you will use one of these files to generate the table schema.
 
     :::image type="content" source="media/external-table/source-tab.png" alt-text="Screen shot of create external table source tab in Azure Data Explorer":::
 
 1. Use **File filters** to filter the files that the table should include. Files can be filtered according to folder path, file begins with, or file extension.
-1. Choose the schema-defining file by selecting the circle to the left of the file.
 
     :::image type="content" source="media/external-table/schema-defining.png" alt-text="Screenshot of selecting schema-defining file":::
 
+1. Choose the schema-defining file by selecting the circle to the left of the file. This file will be used to generate the table schema.
 1. Select **Edit schema**. The **Schema** tab opens.
 
 ### Schema tab
 
-In the right-hand side of the tab, you can preview your data. On the left-hand side, you can add partitions to your table definitions to access the source data more quickly and achieve better performance.
+In the right-hand side of the tab, you can preview your data. On the left-hand side, you can add [partitions](kusto/management/partitioningpolicy.md) to your table definitions to access the source data more quickly and achieve better performance.
 
 > [!NOTE]
-> Mappings are not part of the definition of an external table, and so they are not supported in this wizard. Mappings can be used afterwards. The following options are not recommended, but are not disabled:
+> Mappings are not part of the definition of an external table, and so they are not supported in this wizard. The following options are not recommended, but are not disabled:
 > * Delete columns in CSV files
 > * Change column names in JSON files
 
@@ -79,7 +80,7 @@ In the right-hand side of the tab, you can preview your data. On the left-hand s
     > Virtual columns appear as part of the schema as the columns data extracted from the file path, and this data can be used later in queries.
 
 1. Select **Add partition** to add another partition. 
-1. Select **Save**. The partitions you added now appear as a list. Partitioned columns can't be changed in preview.
+1. Select **Save**. The partitions you added now appear in the list. Partitioned columns can't be changed in preview.
     
     :::image type="content" source="media/external-table/schema.png" alt-text="Screen shot of schema external table Azure Data Explorer":::
 
@@ -87,6 +88,7 @@ In the right-hand side of the tab, you can preview your data. On the left-hand s
 1. To view the command used to create the table, select **View command**.
 
     :::image type="content" source="media/external-table/successfully-created.png" alt-text="Screen shot of successful creation of external table in Azure Data Explorer":::
+1. To undo the creation of the external table, select **Undo**.
 
 ## Query the external table
 
