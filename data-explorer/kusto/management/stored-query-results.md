@@ -36,12 +36,13 @@ Using stored query results requires `Database Viewer` or higher access role.
 
 **Syntax**
 
-`.set` `stored_query_result` *StoredQueryResultName* 
+`.set` [`async`] `stored_query_result` *StoredQueryResultName* 
 [`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`]
 <| *Query*
 
 **Arguments**
 
+* `async`: If specified, the command will immediately return and continue running in the background. The results of the command will include an `OperationId` value that can then be used with the [.show operation details](operations.md#show-operation-details) command, to retrieve the command completion status and results.
 * *StoredQueryResultName*: Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.
 * *Query*: A potentially heavyweight KQL query whose results will be stored.
 * *PropertyName*: (all properties are optional)
@@ -49,7 +50,7 @@ Using stored query results requires `Database Viewer` or higher access role.
     | Property       | Type       | Description       |
     |----------------|------------|-------------------------------------------------------------------------------------|
     | `expiresAfter` | `timespan` | A timespan literal indicating when the stored query result will expire (maximum of 24 hours). |
-    | `previewCount` | `int`      | The number of rows to return in a preview. Setting this property to `0` (default) makes the command return all the query result rows. |
+    | `previewCount` | `int`      | The number of rows to return in a preview. Setting this property to `0` (default) makes the command return all the query result rows. The property is ignored when the command is invoked using `async` mode. |
     | `distributed`  | `bool`     | Indicates that the command stores query results from all nodes executing the query in parallel. Default is *true*. Setting `distributed` flag to *false* is useful when the amount of data produced by a query is small, or the number of cluster nodes is large, to prevent creating many small data shards. |
 
 ## Retrieve a stored query result
