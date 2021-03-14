@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/14/2020
 ---
 # .show database schema commands
 
@@ -79,9 +79,18 @@ Because a version lower than the current database version was provided, the 'Tes
 
 `.show` `database` *DatabaseName* `schema` [`if_later_than` *"Version"*]  `as` `json`
  
-`.show` `databases` `(` *DatabaseName1*`,` ...`)` `schema` `as` `json`
+`.show` `databases` `(` *DatabaseName1*`,` ...`)` `schema` `as` `json` [`with(`*Options*`)`]
  
-`.show` `databases` `(` *DatabaseName1* if_later_than *"Version"*`,` ...`)` `schema` `as` `json`
+`.show` `databases` `(` *DatabaseName1* if_later_than *"Version"*`,` ...`)` `schema` `as` `json` [`with(`*Options*`)`]
+
+**Arguments**
+
+The following *Options* allow to select a subset of each database schema that is returned. That is, if provided, only the selected entities will return in each database schema (if not, the complete database schema is returned).
+
+* `Tables`: (`true` | `false`) - If `true`, tables are returned.
+* `ExternalTables`: (`true` | `false`) - If `true`, external tables are returned.
+* `MaterializedViews`: (`true` | `false`) - If `true`, materialized views are returned.
+* `Functions`: (`true` | `false`) - If `true`, functions are returned.
 
 **Returns**
 
