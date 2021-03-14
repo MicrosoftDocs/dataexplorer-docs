@@ -102,7 +102,7 @@ When used with a version, the database is only returned if it's a later version 
 ```kusto
 .show database TestDB schema as json
 
-.show databases (TestDB, TestDB2) schema as json with(Tables=True, Functions=True)  // Returns the schema of the TestDB and TestDB2, with tables and functions
+.show databases (TestDB, TestDB2) schema as json with(Tables=True, Functions=True)
 ```
 
 **Output**
