@@ -85,7 +85,7 @@ Because a version lower than the current database version was provided, the 'Tes
 
 **Arguments**
 
-The following *Options* allow to select a subset of each database schema that is returned. That is, if provided, only the selected entities will return in each database schema (if not, the complete database schema is returned).
+The following *Options* allow to select a subset of entities for every database schema that is returned. That is, if provided, only the selected entities are returned, for every database schema (otherwise, all entities are returned).
 
 * `Tables`: (`true` | `false`) - If `true`, tables are returned.
 * `ExternalTables`: (`true` | `false`) - If `true`, external tables are returned.
@@ -101,6 +101,8 @@ When used with a version, the database is only returned if it's a later version 
  
 ```kusto
 .show database TestDB schema as json
+
+.show databases (TestDB, TestDB2) schema as json with(Tables=True, Functions=True)  // Returns the schema of the TestDB and TestDB2, with tables and functions
 ```
 
 **Output**
