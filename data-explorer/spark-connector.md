@@ -20,7 +20,7 @@ You can write to Azure Data Explorer in either batch or streaming mode. Reading 
 This topic describes how to install and configure the Azure Data Explorer Spark connector and move data between Azure Data Explorer and Apache Spark clusters.
 
 > [!NOTE]
-> Although some of the examples below refer to an [Azure Databricks](https://docs.azuredatabricks.net/) Spark cluster, Azure Data Explorer Spark connector does not take direct dependencies on Databricks or any other Spark distribution.
+> Although some of the examples below refer to an [Azure Databricks](/azure/databricks/) Spark cluster, Azure Data Explorer Spark connector does not take direct dependencies on Databricks or any other Spark distribution.
 
 ## Prerequisites
 
