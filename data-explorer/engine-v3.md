@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Explorer Kusto EngineV3
+title: Azure Data Explorer Kusto EngineV3
 description: 'Learn more about Azure Data Explorer (Kusto) EngineV3'
 author: orspod
 ms.author: orspodek
