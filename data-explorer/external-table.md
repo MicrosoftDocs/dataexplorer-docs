@@ -52,9 +52,7 @@ This article shows you how to create an external table using the one-click exper
 In the right-hand side of the tab, you can preview your data. On the left-hand side, you can add [partitions](kusto/management/partitioningpolicy.md) to your table definitions to access the source data more quickly and achieve better performance.
 
 > [!NOTE]
-> Mappings are not part of the definition of an external table, and so they are not supported in this wizard. The following options are not recommended, but are not disabled:
-> * Delete columns in CSV files
-> * Change column names in JSON files
+> Mappings are not part of the definition of an external table, and are not supported in this wizard. Mappings can be configured later if necessary. Some functionalities require mappings to work, such as deleting the last column in CSV files or changing column names in JSON files. 
 
 1. Select **Add partition**.
 
@@ -80,7 +78,7 @@ In the right-hand side of the tab, you can preview your data. On the left-hand s
     > Virtual columns appear as part of the schema as the columns data extracted from the file path, and this data can be used later in queries.
 
 1. Select **Add partition** to add another partition. 
-1. Select **Save**. The partitions you added now appear in the list. Partitioned columns can't be changed in preview.
+1. Select **Save**. The partitions you added now appear in the list of **Partitions** in the left pane. Partitioned columns can't be changed in preview.
     
     :::image type="content" source="media/external-table/schema.png" alt-text="Screen shot of schema external table Azure Data Explorer":::
 
