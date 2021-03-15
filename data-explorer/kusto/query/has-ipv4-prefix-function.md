@@ -28,7 +28,7 @@ The function works significantly faster if the searched text column is indexed u
 
 ## Syntax
 
-`__has_ipv4(`*text* `,` *ip_address_prefix* `)`
+`__has_ipv4_prefix(`*text* `,` *ip_address_prefix* `)`
 
 ## Arguments
 
