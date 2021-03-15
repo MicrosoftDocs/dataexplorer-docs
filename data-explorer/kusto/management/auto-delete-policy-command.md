@@ -13,7 +13,7 @@ ms.date: 03/02/2021
 
 This article describes control commands used for managing the [auto delete policy](auto-delete-policy.md).
 
-## show policy
+## .show policy
 
 ```kusto
 .show table [table_name] policy auto_delete
@@ -27,7 +27,7 @@ Displays the auto delete policy that is applied on the table.
 |---|---|---|---|---
 |AutoDeletePolicy | Table name | JSON serialization of the policy object | null | Table
 
-## alter policy
+## .alter policy
 
 ```kusto
 .alter table [table_name] policy auto_delete 'policy object, serialized as JSON'
@@ -43,7 +43,7 @@ The following example sets the expiry of a table `T` to `2021-02-01`. The table 
 .alter table T policy auto_delete @'{ "ExpiryDate" : "2021-02-01", "DeleteIfNotEmpty": true }'
 ```
 
-## delete policy
+## .delete policy
 
 ```kusto
 .delete table [table_name] policy auto_delete
