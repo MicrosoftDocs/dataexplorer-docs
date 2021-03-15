@@ -13,10 +13,7 @@ ms.date: 03/02/2021
 
 An auto delete policy on a table sets an expiry date for the table. The table will be automatically deleted at this expiry time. Unlike the [retention policy](retentionpolicy.md), which determines when data ([extents](extents-overview.md)) is removed from a table, the auto delete policy drops the entire table.
 
-The auto delete policy can be useful for temporary staging tables. Temporary staging tables are used for data preparation, until the data is moved to its permanent location. <br>
-Recommendations for temporary tables: 
-   * Explicitly drop temporary tables when they're no longer needed. 
-   * Only use the auto delete policy as a backup mechanism if explicit deletion didn't occur.
+The auto delete policy can be useful for temporary staging tables. Temporary staging tables are used for data preparation, until the data is moved to its permanent location. We recommend explicitly dropping temporary tables when they're no longer needed. Only use the auto delete policy as a backup mechanism if explicit deletion didn't occur.
 
 > [!TIP]
 > If you are working with temporary tables, the following commands may also be useful: [create table based-on](create-table-based-on-command.md) and [replace extents](replace-extents.md).
