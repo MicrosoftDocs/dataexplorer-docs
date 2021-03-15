@@ -42,7 +42,7 @@ Using stored query results requires `Database Viewer` or higher access role.
 
 **Arguments**
 
-* `async`: If specified, the command will immediately return and continue running in the background. The results of the command will include an `OperationId` value that can then be used with the [.show operation details](operations.md#show-operation-details) command, to retrieve the command completion status and results.
+* `async`: If specified, the command will immediately return and continue running in the background. The results of the command will include an `OperationId` value. This value can then be used with the [.show operation details](operations.md#show-operation-details) command to retrieve the command completion status and results.
 * *StoredQueryResultName*: Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.
 * *Query*: A potentially heavyweight KQL query whose results will be stored.
 * *PropertyName*: (all properties are optional)
