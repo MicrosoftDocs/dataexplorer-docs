@@ -1574,6 +1574,12 @@
           href: ./kusto/management/show-function.md
     - name: Policies
       items:
+      - name: Auto delete
+        items:
+        - name: Auto delete policy
+          href: ./kusto/management/auto-delete-policy.md
+        - name: auto delete policy command
+          href: ./kusto/management/auto-delete-policy-command.md
       - name: Ingestion batching
         items:
         - name: Ingestionbatching policy
