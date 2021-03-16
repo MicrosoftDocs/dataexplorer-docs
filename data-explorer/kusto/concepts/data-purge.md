@@ -108,12 +108,15 @@ Purge command may be invoked in two ways for differing usage scenarios:
  > [!NOTE]
  > The first step in the two-step invocation requires running a query on the entire data set, to identify records to be purged.
  > This query may time-out or fail on large tables, especially with significant amount of cold cache data. In case of failures,
- > please validate the predicate yourself and after verifying correctness use the single-step purge with the `noregrets` option.
+ > validate the predicate yourself and after verifying correctness use the single-step purge with the `noregrets` option.
 
 **Syntax**
+
+> [!NOTE]
+> To connect to a cluster using the Azure Data Explorer Web UI, see [Add clusters](../../web-query-data.md#add-clusters).
 	 
   ```kusto
-	 // Connect to the Data Management service
+	 // Connect to the Data Management service - this command only works in Kusto.Explorer
 	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
 	 
 	 // Step #1 - retrieve a verification token (no records will be purged until step #2 is executed)
