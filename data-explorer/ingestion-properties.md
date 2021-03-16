@@ -36,5 +36,5 @@ The following table lists the properties supported by Azure Data Explorer, descr
 
 ## Next steps
 
-* Learn more about [data ingestion](ingest-data-overview.md)
-* Learn more about [supported data formats](ingestion-supported-formats.md)
+* Learn more about [data ingestion](ingest-data-overview.md).
+* Learn more about [supported data formats](ingestion-supported-formats.md).
