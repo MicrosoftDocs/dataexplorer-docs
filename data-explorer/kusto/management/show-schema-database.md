@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/14/2020
+ms.date: 03/14/2021
 ---
 # .show database schema commands
 
@@ -85,7 +85,7 @@ Because a version lower than the current database version was provided, the 'Tes
 
 **Arguments**
 
-The following *Options* allow to select a subset of entities for every database schema that is returned. That is, if provided, only the selected entities are returned, for every database schema (otherwise, all entities are returned).
+The following *Options* allow you to select a subset of entities for each database schema that is returned. When using options, only the selected entities are returned for each database schema. Otherwise, all entities are returned.
 
 * `Tables`: (`true` | `false`) - If `true`, tables are returned.
 * `ExternalTables`: (`true` | `false`) - If `true`, external tables are returned.
