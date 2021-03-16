@@ -35,7 +35,7 @@ This article shows you how to create an external table using the one-click exper
 1. In **Table name**, enter a name for your table.
     > [!TIP]
     >  Table names can be up to 1024 characters including alphanumeric, hyphens, and underscores. Special characters aren't supported.
-1. In **Link to source**, enter the [SAS url](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of your source container. You can add up to 10 sources. 
+1. In **Link to source**, enter the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of your source container. You can add up to 10 sources. 
     The first source container will display files below the **File filters**. In a later step, you will use one of these files to generate the table schema.
 
     :::image type="content" source="media/external-table/source-tab.png" alt-text="Screen shot of create external table source tab in Azure Data Explorer":::
