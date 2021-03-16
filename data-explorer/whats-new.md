@@ -137,8 +137,8 @@ Article title | Description
 
  Article title | Description
 ---|---
-[Query throttling policy commands](./kusto/management/query-throttling-policy-commands.md) | New article. The [query throttling policy](kusto/management/query-throttling-policy.md) is a cluster-level policy to restrict query concurrency in the cluster. 
-[Query throttling policy](./kusto/management/query-throttling-policy.md) | New article. Define the query throttling policy to limit the number of concurrent queries the cluster can execute at the same time. 
+[Query throttling policy commands](./kusto/management/workload-groups-commands.md) | New article. The [query throttling policy](./kusto/management/request-rate-limit-policy.md) is a cluster-level policy to restrict query concurrency in the cluster. 
+[Query throttling policy](./kusto/management/request-rate-limit-policy.md) | New article. Define the query throttling policy to limit the number of concurrent queries the cluster can execute at the same time. 
 [.clear table data](./kusto/management/clear-table-data-command.md) | New article. Clears the data of an existing table, including streaming ingestion data.
 |  [row_level_security policy command](kusto/management/row-level-security-policy.md) <br> [Row Level Security](kusto/management/rowlevelsecuritypolicy.md) |Updated articles. General availability (GA).
 
@@ -239,4 +239,4 @@ This section lists the major changes to docs during August 2020.
 
 ## Next steps
 
-To contribute to the Azure Data Explorer docs, see the [Docs contributor guide](https://docs.microsoft.com/contribute/).
+To contribute to the Azure Data Explorer docs, see the [Docs contributor guide](/contribute/).
