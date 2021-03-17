@@ -39,7 +39,7 @@ Article title | Description
 Article title | Description
 ---|--- 
 | [Materialized views data purge](./kusto/management/materialized-views/materialized-view-purge.md) | New article. [Data purge](./kusto/concepts/data-purge.md) commands can be used to purge records from materialized views.
-[.alter materialized-view lookback](./kusto/management/materialized-views/materialized-view-alter-lookback.md) | New article. lters the `lookback` value of an existing materialized view. 
+[.alter materialized-view lookback](./kusto/management/materialized-views/materialized-view-alter-lookback.md) | New article. Alters the `lookback` value of an existing materialized view. 
 [.alter materialized-view autoUpdateSchema](./kusto/management/materialized-views/materialized-view-alter-autoupdateschema.md)  | New article. Sets the `autoUpdateSchema` value of an existing materialized view to `true` or `false`.
 [.alter materialized-view docstring](./kusto/management/materialized-views/materialized-view-alter-docstring.md) | New article. Alters the DocString value of an existing materialized view.
 [.alter materialized-view folder](./kusto/management/materialized-views/materialized-view-alter-folder.md) | New article. Alters the folder value of an existing materialized view. 
