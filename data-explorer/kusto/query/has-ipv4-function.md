@@ -1,6 +1,6 @@
 ---
-title: __has_ipv4() - Azure Data Explorer
-description: This article describes __has_ipv4() in Azure Data Explorer.
+title: has_ipv4() - Azure Data Explorer
+description: This article describes has_ipv4() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/16/2021
 ---
-# __has_ipv4()
+# has_ipv4()
 
 Returns a value indicating whether specified IPv4 address appears in a text.
 
@@ -26,7 +26,7 @@ The function works significantly faster if text column to search in is indexed u
 
 ## Syntax
 
-`__has_ipv4(`*text* `,` *ip_address* `)`
+`has_ipv4(`*text* `,` *ip_address* `)`
 
 ## Arguments
 
@@ -40,7 +40,7 @@ The function works significantly faster if text column to search in is indexed u
 ## Examples
 
 ```kusto
-__has_ipv4('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0.0.1')          // true
-__has_ipv4('05:04:54 127.0.0.256 GET /favicon.ico 404', '127.0.0.256')      // false, invalid IPv4 address
-__has_ipv4('05:04:54127.0.0.1 GET /favicon.ico 404', '127.0.0.1')           // false, improperly delimited IP address
+has_ipv4('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0.0.1')          // true
+has_ipv4('05:04:54 127.0.0.256 GET /favicon.ico 404', '127.0.0.256')      // false, invalid IPv4 address
+has_ipv4('05:04:54127.0.0.1 GET /favicon.ico 404', '127.0.0.1')           // false, improperly delimited IP address
 ```
