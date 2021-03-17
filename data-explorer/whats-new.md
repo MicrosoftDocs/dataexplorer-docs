@@ -6,11 +6,52 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/17/2021
+ms.date: 03/17/2021
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## February 2021
+
+This section lists the major changes to docs during February 2021.
+
+### General
+
+Article title | Description
+---|--- 
+[Optimize for high concurrency with Azure Data Explorer](high-concurrency.md) | New article. In this article, you learn to optimize your Azure Data Explorer setup for high concurrency.
+| [Quickstart: Query data in Azure Data Explorer Web UI](web-query-data.md) | Updated article. Explanation of table grid options.
+
+### Query
+
+Article title | Description
+---|--- 
+[ipv4_is_in_range()](./kusto/query/ipv4-is-in-range-function.md) | New article. Checks if IPv4 string address is in IPv4-prefix notation range.
+[ipv4_netmask_suffix()](./kusto/query/ipv4-netmask-suffix-function.md) | New article. Returns the value of the IPv4 netmask suffix from IPv4 string address.
+[has_all operator](./kusto/query/has-all-operator.md) | New article. `has_all` operator filters based on the provided set of values (all values must be present).
+[row_rank()](./kusto/query/rowrankfunction.md) | New article. Returns the current row's rank in a [serialized row set](kusto/query/windowsfunctions.md#serialized-row-set).
+| [Null Values](./kusto/query/scalar-data-types/null-values.md) | Updated article. New behavior in Engine V3.
+| [String operators](./kusto/query/datatypes-string-operators.md) | Updated article. String term indexing for Engine V3.
+
+### Management
+
+Article title | Description
+---|--- 
+| [Materialized views data purge](./kusto/management/materialized-views/materialized-view-purge.md) | New article. [Data purge](./kusto/concepts/data-purge.md) commands can be used to purge records from materialized views.
+[.alter materialized-view lookback](./kusto/management/materialized-views/materialized-view-alter-lookback.md) | New article. Alters the `lookback` value of an existing materialized view. 
+[.alter materialized-view autoUpdateSchema](./kusto/management/materialized-views/materialized-view-alter-autoupdateschema.md)  | New article. Sets the `autoUpdateSchema` value of an existing materialized view to `true` or `false`.
+[.alter materialized-view docstring](./kusto/management/materialized-views/materialized-view-alter-docstring.md) | New article. Alters the DocString value of an existing materialized view.
+[.alter materialized-view folder](./kusto/management/materialized-views/materialized-view-alter-folder.md) | New article. Alters the folder value of an existing materialized view. 
+[.create-or-alter materialized-view](./kusto/management/materialized-views/materialized-view-create-or-alter.md) | New article. Creates a materialized view or alters an existing materialized view.
+[Materialized views policies](./kusto/management/materialized-views/materialized-view-policies.md) | New article. This article includes information about policies that can be set on a materialized views.
+[Request queuing policy (Preview)](./kusto/management/request-queuing-policy.md) | New article. A workload group's request queuing policy controls queueing of requests for delayed execution, once a certain threshold of concurrent requests is exceeded.
+
+### Functions library
+
+Article title | Description
+---|--- 
+| [series_dbl_exp_smoothing_fl()](./kusto/functions-library/series-dbl-exp-smoothing-fl.md) | New article.  Applies a double exponential smoothing filter on a series.
 
 ## January 2021
 
