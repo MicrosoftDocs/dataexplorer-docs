@@ -36,7 +36,7 @@ This topic describes how to install and configure the Azure Data Explorer Spark 
 
 ## How to build the Spark connector
 
-Starting version 2.3.0 we introduce new artifact Ids replacing spark-kusto-connector: [kusto-spark_3.0_2.12](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-spark_3.0) targeting Spark 3.x and Scala 2.12 and [kusto-spark_2.4_2.11](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-spark) targeting Spark 2.4.x and scala 2.11.
+Starting version 2.3.0 we introduce new artifact Ids replacing spark-kusto-connector: [kusto-spark_3.0_2.12](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-spark_3.0_2.12/2.3.0) targeting Spark 3.x and Scala 2.12 and [kusto-spark_2.4_2.11](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-spark_2.4_2.11/2.4.1) targeting Spark 2.4.x and scala 2.11.
 
 > [!NOTE]
 >  Versions prior to 2.5.1 do not work anymore for ingest to an existing table, please update to a later version. 
