@@ -25,7 +25,7 @@ This article shows you how to create an external table using the one-click exper
 
 1. In the left menu of the Web UI, right-click on your database name and select **Create external table (preview)**.
 
-    :::image type="content" source="media/external-table/access-wizard.png" alt-text="Access the wizard to create an external table in the Azure Data Explorer WebUI":::
+    :::image type="content" source="media/external-table/access-wizard.png" alt-text="Screenshot of how to access the wizard to create an external table in the Azure Data Explorer WebUI.":::
 
     The **Create external table** window opens with the **Source** tab selected.
 
@@ -38,11 +38,11 @@ This article shows you how to create an external table using the one-click exper
 1. In **Link to source**, enter the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of your source container. You can add up to 10 sources. 
     The first source container will display files below the **File filters**. In a later step, you will use one of these files to generate the table schema.
 
-    :::image type="content" source="media/external-table/source-tab.png" alt-text="Screen shot of create external table source tab in Azure Data Explorer":::
+    :::image type="content" source="media/external-table/source-tab.png" alt-text="Screen shot of create external table source tab in Azure Data Explorer.":::
 
 1. Use **File filters** to filter the files that the table should include. Files can be filtered according to folder path, file begins with, or file extension.
 
-    :::image type="content" source="media/external-table/schema-defining.png" alt-text="Screenshot of selecting schema-defining file":::
+    :::image type="content" source="media/external-table/schema-defining.png" alt-text="Screenshot of selecting schema-defining file.":::
 
 1. Choose the schema-defining file by selecting the circle to the left of the file. This file will be used to generate the table schema.
 1. Select **Edit schema**. The **Schema** tab opens.
@@ -56,7 +56,7 @@ In the right-hand side of the tab, you can preview your data. On the left-hand s
 
 1. Select **Add partition**.
 
-    :::image type="content" source="media/external-table/view-file.png" alt-text="Screen shot of view file for external table in Azure Data Explorer":::
+    :::image type="content" source="media/external-table/view-file.png" alt-text="Screen shot of view file for external table in Azure Data Explorer.":::
 
 1. The partition window opens. A partition is defined over a subpath of the file, which can be altered using the **Path prefix** field. For each partition you wish to apply, fill out the fields as follows:
 
@@ -70,7 +70,7 @@ In the right-hand side of the tab, you can preview your data. On the left-hand s
     Path prefix | The subpath of the file on which the partitioning is defined. This prefix changes the URL of the external table, as seen in the **Uri preview** box, and should match the schema-defining file URI. | Optional
     Datetime pattern | Format of date that will be used to construct the table URI path. | Optional
 
-    :::image type="content" source="media/external-table/add-partitions.png" alt-text="Screen shot add partitions to external table in Azure Data Explorer" lightbox="media/external-table/add-partitions.png":::
+    :::image type="content" source="media/external-table/add-partitions.png" alt-text="Screen shot add partitions to external table in Azure Data Explorer." lightbox="media/external-table/add-partitions.png":::
 
     For example, the partition name *CustomerName* suggests that the value to partition by is in the customer name part of the URL. The above example declared two partitions: one partition over the customer name and one partition over the date embedded in the URL. 
 
@@ -80,19 +80,19 @@ In the right-hand side of the tab, you can preview your data. On the left-hand s
 1. Select **Add partition** to add another partition. 
 1. Select **Save**. The partitions you added now appear in the list of **Partitions** in the left pane. Partitioned columns can't be changed in preview.
     
-    :::image type="content" source="media/external-table/schema.png" alt-text="Screen shot of schema external table Azure Data Explorer":::
+    :::image type="content" source="media/external-table/schema.png" alt-text="Screen shot of schema external table Azure Data Explorer.":::
 
 1. Select **Create table**. When the table is created, an **External table successfully created** window opens.
 1. To view the command used to create the table, select **View command**.
 
-    :::image type="content" source="media/external-table/successfully-created.png" alt-text="Screen shot of successful creation of external table in Azure Data Explorer":::
+    :::image type="content" source="media/external-table/successfully-created.png" alt-text="Screen shot of successful creation of external table in Azure Data Explorer.":::
 1. To undo the creation of the external table, select **Tools** > **Undo**.
 
 ## Query the external table
 
 The resulting table includes data from all the files that fit the criteria defined above. You can query this table using the `external_table()` function. For more information on how to query external tables, see [Querying an external table](data-lake-query-data.md#querying-an-external-table).
 
-:::image type="content" source="media/external-table/view-table.png" alt-text="Screen shot of table output from querying external table in Azure Data Explorer":::
+:::image type="content" source="media/external-table/view-table.png" alt-text="Screen shot of table output from querying external table in Azure Data Explorer.":::
 
 ## Next steps
 
