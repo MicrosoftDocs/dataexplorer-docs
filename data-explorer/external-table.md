@@ -86,7 +86,7 @@ In the right-hand side of the tab, you can preview your data. On the left-hand s
 1. To view the command used to create the table, select **View command**.
 
     :::image type="content" source="media/external-table/successfully-created.png" alt-text="Screen shot of successful creation of external table in Azure Data Explorer":::
-1. To undo the creation of the external table, select **Undo**.
+1. To undo the creation of the external table, select **Tools** > **Undo**.
 
 ## Query the external table
 

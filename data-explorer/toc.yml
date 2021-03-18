@@ -81,11 +81,13 @@
       href: create-cluster-database-go.md    
     - name: Azure Resource Manager template
       href: create-cluster-database-resource-manager.md
-  - name: Create a table
-    href: one-click-table.md
-  - name: Create an external table
-    displayName: one-click
-    href: external-table.md    
+  - name: Create tables
+    items: 
+    - name: Create table
+      href: one-click-table.md
+    - name: Create external table
+      displayName: one-click
+      href: external-table.md    
   - name: Ingest data
     items: 
     - name: One-click ingestion
