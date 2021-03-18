@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: avnera
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 10/11/2020
+ms.date: 03/17/2021
 ---
 # Azure Data Explorer performance update (EngineV3)
 
@@ -33,7 +33,7 @@ All data ingested into tables is partitioned into shards, which are horizontal s
 Shards are spread evenly across the cluster nodes, where they're cached both on the local SSD and in memory. The query planner and the query engine prepare and execute a highly distributed and parallel query that benefits from this shard distribution and caching.
 
 EngineV3 focuses on optimizing this "bottom part" of the distributed query.
-
+  
 ## Performance
 
 The improved performance and increased speed of queries comes from the two major changes in the engine:
