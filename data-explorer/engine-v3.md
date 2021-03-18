@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: avnera
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 10/11/2020
+ms.date: 03/17/2021
 ---
 # Azure Data Explorer performance update (EngineV3)
 
