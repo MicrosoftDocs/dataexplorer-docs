@@ -81,8 +81,13 @@
       href: create-cluster-database-go.md    
     - name: Azure Resource Manager template
       href: create-cluster-database-resource-manager.md
-  - name: Create a table
-    href: one-click-table.md
+  - name: Create tables
+    items: 
+    - name: Create table
+      href: one-click-table.md
+    - name: Create external table
+      displayName: one-click
+      href: external-table.md    
   - name: Ingest data
     items: 
     - name: One-click ingestion
@@ -452,7 +457,6 @@
       href: ./kusto/query/index.md
     - name: Query best practices
       href: ./kusto/query/best-practices.md
-
   - name: Cross-cluster queries
     items:
     - name: Cross-cluster queries and schema changes
