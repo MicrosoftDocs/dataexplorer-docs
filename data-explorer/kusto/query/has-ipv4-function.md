@@ -21,7 +21,7 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 The function works significantly faster if the searched text column is indexed using the special tokenizer `common_logs_ipv4`. To update the column tokenizer type to be used in future data ingestions, use the command:
 
 ```kusto
-.alter column Table.Column policy encoding @'{"EncodingPolicyOrigin":"Automatic", "ShardFieldTokenizer":"common_logs_ipv4"}'
+.alter column Table.Column policy encoding @'{"EncodingPolicyOrigin":"Admin", "ShardFieldTokenizer":"common_logs_ipv4"}'
 ```
 
 ## Syntax
