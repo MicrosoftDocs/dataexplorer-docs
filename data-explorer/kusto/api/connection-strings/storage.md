@@ -53,6 +53,8 @@ the account key or SAS):
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;<storage_account_key_text, ends with '=='>"`
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"` 
 
+To learn how to generate a SAS link, see [Get the SAS for a blob container](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
+
 ## Azure Data Lake Store
 
 ### Azure Data Lake Store Gen 2
