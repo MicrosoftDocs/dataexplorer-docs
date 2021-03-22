@@ -101,7 +101,7 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
 ## Share dashboards
 
-Use the share menu to [grant permissions](#grant-permissions) to the dashboard, [change a user's permission level](#change-a-user-permission-level), and [share the dashboard link](#share-the-dashboard-link).
+Use the share menu to [grant permissions](#grant-permissions) for an Azure Active Directory (AAD) user or AAD group to access the dashboard, [change a user's permission level](#change-a-user-permission-level), and [share the dashboard link](#share-the-dashboard-link).
 
 > [!IMPORTANT]
 > To access the dashboard, a dashboard viewer needs the following:
