@@ -75,7 +75,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
     
     ![Create cluster vnet form public IP](media/vnet-create-cluster-portal/vnet-create-public-ip.png)
 
-    **Setting** | **Suggested value** | **Field description**
+   | **Setting** | **Suggested value** | **Field description** |
     |---|---|---|
     | Name | Engine-public-ip | The name of the public ip address resource.|
     | Resource group | Your resource group | Select the resource group that you want to use for creating public ip.|
