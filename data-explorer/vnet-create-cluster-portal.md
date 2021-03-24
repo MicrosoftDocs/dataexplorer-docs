@@ -78,7 +78,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
     | **Setting** | **Suggested value** | **Field description** |
     |---|---|---|
     | Name | Engine-public-ip | The name of the public ip address resource.|
-    | Resource group | Your resource group | Select the resource group that you want to use for creating public ip.|
+    | Resource group | Your resource group | Select the resource group that you want to use for creating public IP.|
 
 1. Do the same steps for **Data ingestion Public IP**
 1. Select **Review + create** to create your cluster.
