@@ -71,7 +71,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. Create Query Public IP:
     1. Select **Create new**
-    1. In **Create  Public IP** window, provide the following details:
+    1. In **Create Public IP** window, provide the following details:
     
     ![Create cluster vnet form](media/vnet-create-cluster-portal/vnet-create-public-ip.png)
 
