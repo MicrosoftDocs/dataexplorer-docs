@@ -1,16 +1,57 @@
 ---
-title: What's new in Azure Data Explorer
-description: What's new in the Azure Data Explorer docs
+title: What's new in Azure Data Explorer documentation
+description: What's new in the Azure Data Explorer documentation
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/17/2021
+ms.date: 03/17/2021
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## February 2021
+
+This section lists the major changes to docs during February 2021.
+
+### General
+
+Article title | Description
+---|--- 
+[Optimize for high concurrency with Azure Data Explorer](high-concurrency.md) | New article. In this article, you learn to optimize your Azure Data Explorer setup for high concurrency.
+| [Quickstart: Query data in Azure Data Explorer Web UI](web-query-data.md) | Updated article. Explanation of table grid options.
+
+### Query
+
+Article title | Description
+---|--- 
+[ipv4_is_in_range()](./kusto/query/ipv4-is-in-range-function.md) | New article. Checks if IPv4 string address is in IPv4-prefix notation range.
+[ipv4_netmask_suffix()](./kusto/query/ipv4-netmask-suffix-function.md) | New article. Returns the value of the IPv4 netmask suffix from IPv4 string address.
+[has_all operator](./kusto/query/has-all-operator.md) | New article. `has_all` operator filters based on the provided set of values (all values must be present).
+[row_rank()](./kusto/query/rowrankfunction.md) | New article. Returns the current row's rank in a [serialized row set](kusto/query/windowsfunctions.md#serialized-row-set).
+| [Null Values](./kusto/query/scalar-data-types/null-values.md) | Updated article. New behavior in Engine V3.
+| [String operators](./kusto/query/datatypes-string-operators.md) | Updated article. String term indexing for Engine V3.
+
+### Management
+
+Article title | Description
+---|--- 
+| [Materialized views data purge](./kusto/management/materialized-views/materialized-view-purge.md) | New article. [Data purge](./kusto/concepts/data-purge.md) commands can be used to purge records from materialized views.
+[.alter materialized-view lookback](./kusto/management/materialized-views/materialized-view-alter-lookback.md) | New article. Alters the `lookback` value of an existing materialized view. 
+[.alter materialized-view autoUpdateSchema](./kusto/management/materialized-views/materialized-view-alter-autoupdateschema.md)  | New article. Sets the `autoUpdateSchema` value of an existing materialized view to `true` or `false`.
+[.alter materialized-view docstring](./kusto/management/materialized-views/materialized-view-alter-docstring.md) | New article. Alters the DocString value of an existing materialized view.
+[.alter materialized-view folder](./kusto/management/materialized-views/materialized-view-alter-folder.md) | New article. Alters the folder value of an existing materialized view. 
+[.create-or-alter materialized-view](./kusto/management/materialized-views/materialized-view-create-or-alter.md) | New article. Creates a materialized view or alters an existing materialized view.
+[Materialized views policies](./kusto/management/materialized-views/materialized-view-policies.md) | New article. This article includes information about policies that can be set on a materialized views.
+[Request queuing policy (Preview)](./kusto/management/request-queuing-policy.md) | New article. A workload group's request queuing policy controls queueing of requests for delayed execution, once a certain threshold of concurrent requests is exceeded.
+
+### Functions library
+
+Article title | Description
+---|--- 
+| [series_dbl_exp_smoothing_fl()](./kusto/functions-library/series-dbl-exp-smoothing-fl.md) | New article.  Applies a double exponential smoothing filter on a series.
 
 ## January 2021
 
@@ -24,8 +65,6 @@ Article title | Description
 [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) | New article. In this article, you will learn how to give cluster access to principals from another tenant.
 
 ### Management
-
-### New articles
 
 Article title | Description
 ---|---
@@ -52,7 +91,7 @@ Article title | Description
 ---|---
 [.create table based-on](kusto/management/create-table-based-on-command.md)  | New article. Creates a new empty table based on existing table.
 [Stored query results (Preview)](kusto/management/stored-query-results.md) | New article. Stored query results is a mechanism that temporarily stores the result of a query on the service. 
-[Create and alter external tables in Azure Storage or Azure Data Lake](/azure/data-explorer/kusto/management/external-tables-azurestorage-azuredatalake.md) | Updated article. Document `filesPreview` and `dryRun` external table definition options
+[Create and alter external tables in Azure Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md) | Updated article. Document `filesPreview` and `dryRun` external table definition options
 
 ### Functions library
 
@@ -61,7 +100,7 @@ Article title | Description
 [series_metric_fl()](kusto/functions-library/series-metric-fl.md) | New article. The `series_metric_fl()` function selects and retrieves time series of metrics ingested to Azure Data Explorer using the Prometheus monitoring system.
 [series_rate_fl()](kusto/functions-library/series-rate-fl.md) | New article. The function `series_rate_fl()` calculates the average rate of metric increase per second.
 [series_fit_lowess_fl()](kusto/functions-library/series-fit-lowess-fl.md) | New article. The function `series_fit_lowess_fl()` applies a LOWESS regression on a series.
-[Export data to an external table](/azure/data-explorer/kusto/management/data-export/export-data-to-an-external-table.md) | Updated article. New external table syntax in export docs
+[Export data to an external table](./kusto/management/data-export/export-data-to-an-external-table.md) | Updated article. New external table syntax in export docs
 
 ## November 2020
 
@@ -139,8 +178,8 @@ Article title | Description
 
  Article title | Description
 ---|---
-[Query throttling policy commands](./kusto/management/query-throttling-policy-commands.md) | New article. The [query throttling policy](kusto/management/query-throttling-policy.md) is a cluster-level policy to restrict query concurrency in the cluster. 
-[Query throttling policy](./kusto/management/query-throttling-policy.md) | New article. Define the query throttling policy to limit the number of concurrent queries the cluster can execute at the same time. 
+[Query throttling policy commands](./kusto/management/workload-groups-commands.md) | New article. The [query throttling policy](./kusto/management/request-rate-limit-policy.md) is a cluster-level policy to restrict query concurrency in the cluster. 
+[Query throttling policy](./kusto/management/request-rate-limit-policy.md) | New article. Define the query throttling policy to limit the number of concurrent queries the cluster can execute at the same time. 
 [.clear table data](./kusto/management/clear-table-data-command.md) | New article. Clears the data of an existing table, including streaming ingestion data.
 |  [row_level_security policy command](kusto/management/row-level-security-policy.md) <br> [Row Level Security](kusto/management/rowlevelsecuritypolicy.md) |Updated articles. General availability (GA).
 
@@ -155,7 +194,7 @@ Article title | Description
 
 This section lists the major changes to docs during September 2020.
 
-#### General
+### General
 
  Article title | Description
 ---|---
@@ -167,7 +206,7 @@ This section lists the major changes to docs during September 2020.
 | [Visualize data from Azure Data Explorer in Grafana](grafana.md) | Updated article. Updated with new capabilities.
 | [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md) <br> [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) | Updated articles. Updated with new capabilities.
 
-#### Query
+### Query
 
  Article title | Description
 ---|---
@@ -178,7 +217,7 @@ This section lists the major changes to docs during September 2020.
 | [geo_distance_point_to_line()](./kusto/query/geo-distance-point-to-line-function.md) | Updated article. Add multiline support docs.
 |[geo_line_densify()](./kusto/query/geo-line-densify-function.md)| Updated article. Add multiline support docs. |
 
-#### Management
+### Management
 
  Article title | Description
 ---|---
@@ -189,13 +228,13 @@ This section lists the major changes to docs during September 2020.
 [.drop materialized-view](./kusto/management/materialized-views/materialized-view-drop.md) | New article. Drops a materialized view.
 [.show materialized-views commands](./kusto/management/materialized-views/materialized-view-show-commands.md) | New article. The following show commands display information about [materialized views](kusto/management/materialized-views/materialized-view-overview.md).
 
-#### Functions library
+### Functions library
 
  Article title | Description
 ---|---
 [Functions library](./kusto/functions-library/functions-library.md) | New article. The following article contains a categorized list of [UDF (user-defined functions)](kusto/query/functions/user-defined-functions.md). 
 
-#### API
+### API
 
  Article title | Description
 ---|---
@@ -241,4 +280,4 @@ This section lists the major changes to docs during August 2020.
 
 ## Next steps
 
-To contribute to the Azure Data Explorer docs, see the [Docs contributor guide](https://docs.microsoft.com/contribute/).
+To contribute to the Azure Data Explorer docs, see the [Docs contributor guide](/contribute/).

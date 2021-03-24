@@ -81,8 +81,13 @@
       href: create-cluster-database-go.md    
     - name: Azure Resource Manager template
       href: create-cluster-database-resource-manager.md
-  - name: Create a table
-    href: one-click-table.md
+  - name: Create tables
+    items: 
+    - name: Create table
+      href: one-click-table.md
+    - name: Create external table
+      displayName: one-click
+      href: external-table.md    
   - name: Ingest data
     items: 
     - name: One-click ingestion
@@ -452,7 +457,6 @@
       href: ./kusto/query/index.md
     - name: Query best practices
       href: ./kusto/query/best-practices.md
-
   - name: Cross-cluster queries
     items:
     - name: Cross-cluster queries and schema changes
@@ -1574,6 +1578,12 @@
           href: ./kusto/management/show-function.md
     - name: Policies
       items:
+      - name: Auto delete
+        items:
+        - name: Auto delete policy
+          href: ./kusto/management/auto-delete-policy.md
+        - name: auto delete policy command
+          href: ./kusto/management/auto-delete-policy-command.md
       - name: Ingestion batching
         items:
         - name: Ingestionbatching policy
@@ -1908,9 +1918,21 @@
     - name: List of functions
       displayName: functions library
       href: kusto/functions-library/functions-library.md
+    - name: binomial_test_fl()
+      displayName: functions library
+      href: kusto/functions-library/binomial-test-fl.md
+    - name: comb_fl()
+      displayName: functions library
+      href: kusto/functions-library/comb-fl.md
+    - name: factorial_fl()
+      displayName: functions library
+      href: kusto/functions-library/factorial-fl.md
     - name: kmeans_fl()
       displayName: functions library
       href: kusto/functions-library/kmeans-fl.md
+    - name: perm_fl()
+      displayName: functions library
+      href: kusto/functions-library/perm-fl.md
     - name: predict_fl()
       displayName: functions library
       href: kusto/functions-library/predict-fl.md

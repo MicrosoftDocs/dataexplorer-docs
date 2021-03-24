@@ -40,10 +40,12 @@ The merge policy contains the following properties:
     * Defaults to 100.
     * Maximum allowed number of extents to be merged in a single operation.
     * Applies to Merge operations.
+    * This value shouldn't be changed.
 * **LoopPeriod**:
     * Defaults to 01:00:00 (1 hour).
     * The maximum time to wait between starting two consecutive iterations of merge or rebuild operations by the Data Management service.
     * Applies to both Merge and Rebuild operations.
+    * This value shouldn't be changed.
 * **AllowRebuild**:
     * Defaults to 'true'.
     * Defines whether `Rebuild` operations are enabled (in which case, they're preferred over `Merge` operations).
