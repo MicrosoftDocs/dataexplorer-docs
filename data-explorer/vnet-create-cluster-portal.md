@@ -51,7 +51,7 @@ To create the virtual network and subnet:
 
 1. In your **default** subnet window:
     1. Select **Microsoft.Kusto/clusters** from the subnet delegation drop-down menu.
-    1. **Save**
+    1. Select **Save**.
     
     ![Configure subnet](media/vnet-create-cluster-portal/vnet-delegate-subnet.png)
 
