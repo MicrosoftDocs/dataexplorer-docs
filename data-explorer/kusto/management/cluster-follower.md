@@ -343,7 +343,7 @@ See the current configuration according to which `MyDatabase` is being followed 
 |AuthorizedPrincipalsModificationKind | None                                                     |
 |IsAutoPrefetchEnabled                | False                                                    |
 |TableMetadataOverrides               |                                                          |
-|CachingPoliciesModificationKind      | Union                                                    |                                                                                                                      |
+|CachingPoliciesModificationKind      | Union                                                    |
 
 #### Override authorized principals
 
