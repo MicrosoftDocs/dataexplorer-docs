@@ -32,11 +32,11 @@ Requires [database user permission](../management/access-control/role-based-auth
  
 **Output example** 
 
-|Name |Parameters|Body|Folder|DocString
-|---|---|---|---|---
+|Name |Parameters|Body|Folder|DocString|
+|---|---|---|---|---|
 |MyFunction1 |() | {StormEvents &#124; limit 100}|MyFolder|Simple demo function|
 |MyFunction2 |(myLimit: long)| {StormEvents &#124; limit myLimit}|MyFolder|Demo function with parameter|
-|MyFunction3 |() | { StormEvents(100) }|MyFolder|Function calling other function||
+|MyFunction3 |() | { StormEvents(100) }|MyFolder|Function calling other function|
 
 ## .show function
 
