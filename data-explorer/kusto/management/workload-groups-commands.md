@@ -28,8 +28,7 @@ Creates a new workload group, or alters an existing workload group.
 Create a workload group with a full definition of its request limits policy:
 
 ```kusto
-.create-or-alter workload_group MyWorkloadGroup 
-```
+.create-or-alter workload_group MyWorkloadGroup ```
 {
   "RequestLimitsPolicy": {
     "DataScope": {
@@ -65,8 +64,7 @@ Create a workload group with a full definition of its request limits policy:
       "Value": "00:04:00"
     }
   }
-}
-```
+}```
 ```
 
 #### Full definition of request limits policy and request rate limits policies
@@ -74,8 +72,7 @@ Create a workload group with a full definition of its request limits policy:
 Create a workload group with a full definition of its request limits policy and request rate limits policies:
 
 ```kusto
-.create-or-alter workload_group ['My Workload Group'] 
-```
+.create-or-alter workload_group ['My Workload Group'] ```
 {
   "RequestLimitsPolicy": {
     "DataScope": {
@@ -129,8 +126,7 @@ Create a workload group with a full definition of its request limits policy and 
       }
     }
   ]
-}
-```
+}```
 ```
 
 ## .alter-merge workload_group
@@ -147,8 +143,7 @@ Alter specific limits in the request limits policy of the `default` workload gro
 while keeping previously defined limits as-is:
 
 ```kusto
-.alter-merge workload_group default 
-```
+.alter-merge workload_group default ```
 {
   "RequestLimitsPolicy": {
     "DataScope": {
@@ -160,8 +155,7 @@ while keeping previously defined limits as-is:
       "Value": "00:01:00"
     }
   }
-}
-```
+}``
 ```
 
 #### Alter the request rate limit policies
@@ -170,8 +164,7 @@ Alter the request rate limit policies of the `default` workload group,
 while keeping its request limits policy as-is:
 
 ```kusto
-.alter-merge workload_group default 
-```
+.alter-merge workload_group default ```
 {
   "RequestRateLimitPolicies": [
     {
@@ -183,8 +176,7 @@ while keeping its request limits policy as-is:
       }
     }
   ]
-}
-```
+}```
 ```
 
 #### Alter the request queuing policy
@@ -193,14 +185,12 @@ Enable request queuing for the `default` workload group, while keeping its reque
 and request rate limit policies as-is:
 
 ```kusto
-.alter-merge workload_group default 
-```
+.alter-merge workload_group default ```
 {
   "RequestQueuingPolicy": {
       "IsEnabled": true
   }
-}
-```
+}```
 ```
 
 ## .drop workload_group
@@ -325,8 +315,7 @@ Request limits that aren't defined in `My Workload Group`'s policy are taken fro
 ```
 
 ```kusto
-.create-or-alter workload_group ['My Workload Group'] 
-```
+.create-or-alter workload_group ['My Workload Group'] ```
 {
   "RequestLimitsPolicy": {
     "DataScope": {
@@ -374,6 +363,5 @@ Request limits that aren't defined in `My Workload Group`'s policy are taken fro
       }
     }
   ]
-}
-```
+}```
 ```
