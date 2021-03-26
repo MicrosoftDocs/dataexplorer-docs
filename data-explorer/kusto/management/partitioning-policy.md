@@ -52,8 +52,7 @@ Changes to the policy could take up to 1 hour to take effect.
 #### Setting a policy with a hash partition key
 
 ```kusto
-.alter table [table_name] policy partitioning 
-```
+.alter table [table_name] policy partitioning ```
 {
   "PartitionKeys": [
     {
@@ -65,15 +64,13 @@ Changes to the policy could take up to 1 hour to take effect.
       }
     }
   ]
-}
-```
+}```
 ```
 
 #### Setting a policy with a uniform range datetime partition key
 
 ```kusto
-.alter table [table_name] policy partitioning 
-```
+.alter table [table_name] policy partitioning ```
 {
   "PartitionKeys": [
     {
@@ -86,15 +83,13 @@ Changes to the policy could take up to 1 hour to take effect.
       }
     }
   ]
-}
-```
+}```
 ```
 
 #### Setting a policy with both kinds of partition keys
 
 ```kusto
-.alter table [table_name] policy partitioning 
-```
+.alter table [table_name] policy partitioning ```
 {
   "PartitionKeys": [
     {
@@ -115,8 +110,7 @@ Changes to the policy could take up to 1 hour to take effect.
       }
     }
   ]
-}
-```
+}```
 ```
 
 #### Setting a specific property of the policy explicitly at table level
