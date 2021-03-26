@@ -29,7 +29,7 @@ Create a workload group with a full definition of its request limits policy:
 
 ```kusto
 .create-or-alter workload_group MyWorkloadGroup 
-~~~
+```
 {
   "RequestLimitsPolicy": {
     "DataScope": {
@@ -66,7 +66,7 @@ Create a workload group with a full definition of its request limits policy:
     }
   }
 }
-~~~
+```
 ```
 
 #### Full definition of request limits policy and request rate limits policies
@@ -75,7 +75,7 @@ Create a workload group with a full definition of its request limits policy and 
 
 ```kusto
 .create-or-alter workload_group ['My Workload Group'] 
-~~~
+```
 {
   "RequestLimitsPolicy": {
     "DataScope": {
@@ -130,7 +130,7 @@ Create a workload group with a full definition of its request limits policy and 
     }
   ]
 }
-~~~
+```
 ```
 
 ## .alter-merge workload_group
@@ -148,7 +148,7 @@ while keeping previously defined limits as-is:
 
 ```kusto
 .alter-merge workload_group default 
-~~~
+```
 {
   "RequestLimitsPolicy": {
     "DataScope": {
@@ -161,7 +161,7 @@ while keeping previously defined limits as-is:
     }
   }
 }
-~~~
+```
 ```
 
 #### Alter the request rate limit policies
@@ -171,7 +171,7 @@ while keeping its request limits policy as-is:
 
 ```kusto
 .alter-merge workload_group default 
-~~~
+```
 {
   "RequestRateLimitPolicies": [
     {
@@ -184,7 +184,7 @@ while keeping its request limits policy as-is:
     }
   ]
 }
-~~~
+```
 ```
 
 #### Alter the request queuing policy
@@ -194,13 +194,13 @@ and request rate limit policies as-is:
 
 ```kusto
 .alter-merge workload_group default 
-~~~
+```
 {
   "RequestQueuingPolicy": {
       "IsEnabled": true
   }
 }
-~~~
+```
 ```
 
 ## .drop workload_group
@@ -326,7 +326,7 @@ Request limits that aren't defined in `My Workload Group`'s policy are taken fro
 
 ```kusto
 .create-or-alter workload_group ['My Workload Group'] 
-~~~
+```
 {
   "RequestLimitsPolicy": {
     "DataScope": {
@@ -375,5 +375,5 @@ Request limits that aren't defined in `My Workload Group`'s policy are taken fro
     }
   ]
 }
-~~~
+```
 ```
