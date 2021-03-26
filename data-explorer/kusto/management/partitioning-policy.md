@@ -11,7 +11,7 @@ ms.date: 03/04/2020
 ---
 # partitioning policy command
 
-The data partitioning policy is detailed [here](../management/partitioningpolicy.md).
+The data partitioning policy is documented [here](../management/partitioningpolicy.md).
 
 ## show policy
 
