@@ -150,7 +150,6 @@ series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_
     ```;
     tbl
      | evaluate python(typeof(*), code, kwargs
-//  fbprophet v0.7.1 for Python 3.6.5, SAS key till 3/26/2030
 //  fbprophet v0.7.1 for Python 3.6.5
 , external_artifacts=pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
 }
