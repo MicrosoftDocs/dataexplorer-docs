@@ -10,7 +10,7 @@ ms.date: 04/01/2021
 ---
 # series_fbprophet_forecast_fl()
 
-The function `series_fbprophet_forecast_fl()` takes an expression containing a time series (dynamic numerical arrays of time stamps and values) as input, and predicts the values of the last trailing points using the [Prophet algorithm](https://facebook.github.io/prophet/). The function returns both the forecasted points and their confidence intervals. Note that this function is just a KQL wrapper to Prophet() class, and exposes only the parameters that are mandatory for prediction. Feel free to modify your copy to support additional parameters (holidays, change points, Fourier order etc.) 
+The function `series_fbprophet_forecast_fl()` takes an expression containing a time series (dynamic numerical arrays of time stamps and values) as input, and predicts the values of the last trailing points using the [Prophet algorithm](https://facebook.github.io/prophet/). The function returns both the forecasted points and their confidence intervals. This function is just a KQL wrapper to Prophet() class, and exposes only the parameters that are mandatory for prediction. Feel free to modify your copy to support more parameters (holidays, change points, Fourier order etc.) 
 
 > [!NOTE]
 > * `series_fbprophet_forecast_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
