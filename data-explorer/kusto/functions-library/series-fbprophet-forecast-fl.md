@@ -52,7 +52,7 @@ let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_
         from sandbox_utils import Zipackage
         Zipackage.install("fbprophet.zip")
         import os
-        os.chdir("D:\\\\Library\\\\mingw-w64\\\\bin")   #  must set this otherwise loading the mingw-w64 DLLs fails
+        os.chdir("D:\\\\Library\\\\mingw-w64\\\\bin")   #  If you don't set this, loading the mingw-w64 DLLs will fail
         ts_series = kargs["ts_series"]
         y_series = kargs["y_series"]
         y_pred_series = kargs["y_pred_series"]
