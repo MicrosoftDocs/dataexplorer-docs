@@ -43,7 +43,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 |[series_exp_smoothing_fl()](series-exp-smoothing-fl.md)|Applies a basic exponential smoothing filter on a series. |
 |[series_fit_lowess_fl()](series-fit-lowess-fl.md)|Fits a local polynomial to series using LOWESS method. |
 |[series_fit_poly_fl()](series-fit-poly-fl.md)|Fits a polynomial to series using regression analysis. |
-|[series_fbprophet_forecast_fl()](series-fbprophet-forecast-fl.md)|Forecasting time series using Prophet algorithm. |
+|[series_fbprophet_forecast_fl()](series-fbprophet-forecast-fl.md)|Forecast time series values using the Prophet algorithm. |
 |[series_moving_avg_fl()](series-moving-avg-fl.md)|Applies a moving average filter on a series. |
 |[series_rolling_fl()](series-rolling-fl.md)|Applies a rolling aggregation function on a series. |
 
