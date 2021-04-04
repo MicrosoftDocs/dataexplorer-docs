@@ -1961,7 +1961,7 @@
       displayName: functions library
       href: kusto/functions-library/series-fit-poly-fl.md
     - name: series_fbprophet_forecast_fl()
-      displayName: functions library
+      displayName: functions library, prophet algorithm, predict
       href: kusto/functions-library/series-fbprophet-forecast-fl.md
     - name: series_metric_fl()
       displayName: functions library
