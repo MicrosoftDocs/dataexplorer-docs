@@ -34,10 +34,12 @@ The function `series_fbprophet_forecast_fl()` takes an expression containing a t
 
 `series_fbprophet_forecast_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
-Note that fbprophet package is _not_ included in the Python image; to install and use it, follow the guidelines for [Installing packages for the Python plugin](../query/pythonplugin.md#install-packages-for-the-python-plugin). Specifically:
-- To save the process of creating fbprophet's zip file (containing the wheel files of fbprophet and its dependencies), you can copy it from [https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip](https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip) to your whitelisted blob container
-- Create a SAS token with read access to your zip file
-- In the example below, replace the URL reference in the external_artifacts parameter to reference your file with its SAS token
+The `fbprophet` package isn't included in the Python image. To install and use this package, do the following steps:
+
+ 1. Follow the guidelines for [Installing packages for the Python plugin](../query/pythonplugin.md#install-packages-for-the-python-plugin).
+  * To save time in the above guidelines, you can download the `fbprophet` zip file, containing the wheel files of `fbprophet` and its dependencies, from [https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip](https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip). Save this file to your allowlisted blob container.
+1. Create a SAS token with read access to your zip file. To create a SAS token, see [get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
+1. In the example below, replace the URL reference in the `external_artifacts` parameter with your file path and its SAS token.
 
 # [Ad hoc](#tab/adhoc)
 
