@@ -28,7 +28,7 @@ The function `series_fbprophet_forecast_fl()` takes an expression containing a t
 * *y_pred_series*: The name of the column to store the predicted series.
 * *points*: Integer specifying the number of points at the end of the series to predict (forecast). These points are excluded from the learning (regression) process. Optional parameter, default to 0.
 * *y_pred_low_series*: The name of the column to store the series of the lowest values of the confidence interval. Optional parameter, can be omitted if confidence interval isn't needed.
-* *y_pred_high_series*: The name of the column to store the series of the highest values of the confidence interval. Optional parameter, can be omitted if confidence interval is not needed.
+* *y_pred_high_series*: The name of the column to store the series of the highest values of the confidence interval. Optional parameter, can be omitted if confidence interval isn't needed.
 
 ## Usage
 
