@@ -103,7 +103,7 @@ This configuration is identical to the [active-active-active configuration](#act
 
 | **Configuration** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- |
-| **Active-Active** | None | None | Lower | High |
+| **Active-Active** | 0 hours | 0 hours | Lower | High |
 
 ### Active-Hot standby configuration
 
@@ -130,7 +130,7 @@ This solution offers the least resiliency (highest RPO and RTO), is the lowest i
 | **Configuration** | **Resiliency** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- | --- |
 | **Active-Active-Active-n** | Highest | 0 hours | 0 hours | Lower | Highest |
-| **Active-Active** | High | None | None | Lower | High |
+| **Active-Active** | High | 0 hours | 0 hours | Lower | High |
 | **Active-Hot Standby** | Medium | Low | Low | Medium | Medium |
 | **On-demand data recovery cluster** | Lowest | Highest | Highest | Highest | Lowest |
 

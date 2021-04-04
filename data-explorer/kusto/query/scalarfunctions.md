@@ -109,6 +109,7 @@ ms.date: 05/27/2020
 |[prev()](prevfunction.md)|For the serialized row set, returns a value of a specified column from the earlier row according to the offset.|
 |[row_cumsum()](rowcumsumfunction.md)|Calculates the cumulative sum of a column.|
 |[row_number()](rownumberfunction.md)|Returns a row's number in the serialized row set - consecutive numbers starting from a given index or from 1 by default.|
+|[row_rank()](rowrankfunction.md)|Returns a row's rank in the serialized row set.|
 
 ## Flow control functions
 
@@ -281,8 +282,10 @@ ms.date: 05/27/2020
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[ipv4_compare()](ipv4-comparefunction.md)|Compares two IPv4 strings.|
+|[ipv4_is_in_range()](ipv4-is-in-range-function.md)|Checks if IPv4 string address is in IPv4-prefix notation range.|
 |[ipv4_is_match()](ipv4-is-matchfunction.md)|Matches two IPv4 strings.|
 |[ipv4_is_private()](ipv4-is-privatefunction.md)|Checks if IPv4 string address belongs to a set of private network IPs.|
+|[ipv4_netmask_suffix](ipv4-netmask-suffix-function.md)|Returns the value of the IPv4 netmask suffix from IPv4 string address.|
 |[parse_ipv4()](parse-ipv4function.md)|Converts input string to long (signed 64-bit) number representation.|
 |[parse_ipv4_mask()](parse-ipv4-maskfunction.md)|Converts input string and IP-prefix mask to long (signed 64-bit) number representation.|
 |[ipv6_compare()](ipv6-comparefunction.md)|Compares two IPv4 or IPv6 strings.|

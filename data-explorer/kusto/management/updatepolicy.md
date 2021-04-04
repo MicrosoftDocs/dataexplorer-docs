@@ -53,6 +53,9 @@ Each such object is represented as a JSON property bag, with the following prope
 |PropagateIngestionProperties  |`bool`  |States if ingestion properties (extent tags and creation time) specified during the ingestion into the source table, should also apply to the ones in the derived table.                 |
 
 > [!NOTE]
+> In production systems, set the *IsTransactional* property to *true* to ensure that the target table doesn't lose data in transient failures.  
+
+> [!NOTE]
 > Cascading updates are allowed (`TableA` → `TableB` → `TableC` → ...).
 >
 > However, if update policies are defined over multiple tables in a circular manner, the chain of updates is cut. This issue is detected at runtime. Data will be ingested only once to each table in the chain of affected tables.
@@ -64,7 +67,7 @@ Commands to control the update policy include:
 * [`.show table *TableName* policy update`](update-policy.md#show-update-policy) shows the current update policy of a table.
 * [`.alter table *TableName* policy update`](update-policy.md#alter-update-policy) sets the current update policy of a table.
 * [`.alter-merge table *TableName* policy update`](update-policy.md#alter-merge-table-tablename-policy-update) appends to the current update policy of a table.
-* [`.delete table *TableName* policy update`](update-policy.md#delete-table-tablename-policy-update) appends to the current update policy of a table.
+* [`.delete table *TableName* policy update`](update-policy.md#delete-table-tablename-policy-update) deletes the current update policy of a table.
 
 ## Update policy is initiated following ingestion
 

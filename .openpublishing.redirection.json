@@ -86,20 +86,45 @@
         "redirect_document_id": false
       },
       {
-        "source_path": "data-explorer/management/best-practices.md",
+        "source_path": "data-explorer/kusto/management/best-practices.md",
         "redirect_url": "/azure/data-explorer/kusto/management/management-best-practices",
         "redirect_document_id": true
       },
       {
-      "source_path": "data-explorer/kusto/concepts/errorsinnativecode.md",
-      "redirect_url": "/azure/data-explorer/error-codes",
-      "redirect_document_id": true
+        "source_path": "data-explorer/kusto/concepts/errorsinnativecode.md",
+        "redirect_url": "/azure/data-explorer/error-codes",
+        "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/tools/kusto-webexplorer.md",
         "redirect_url": "/azure/data-explorer/web-query-data",
         "redirect_document_id": true
-        }
+        },
+      {
+        "source_path": "data-explorer/kusto/query/todynamicfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parsejsonfunction",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/query-throttling-policy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/request-rate-limit-policy",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "data-explorer/kusto/management/query-throttling-policy-commands.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/workload-groups-commands",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "data-explorer/kusto/query/has-ipv4-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "data-explorer/kusto/query/has-ipv4-prefix-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query",
+        "redirect_document_id": false
+      }
     ]
   }
   

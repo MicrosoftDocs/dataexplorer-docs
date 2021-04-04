@@ -19,7 +19,7 @@ Show the ingestion mappings (all or the one specified by name).
 
 Show all ingestion mappings from all mapping types:
 
-* `.show` `table` *TableName* `ingestion`  `mapping`
+* `.show` `table` *TableName* `ingestion`  `mappings`
  
 **Example** 
  

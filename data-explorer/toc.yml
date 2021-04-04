@@ -4,6 +4,8 @@
   items:
   - name: What is Azure Data Explorer?
     href: data-explorer-overview.md
+  - name: What's new
+    href: whats-new.md
 - name: Quickstarts
   expanded: true
   items:
@@ -53,6 +55,8 @@
       href: security.md
     - name: Security baseline
       href: security-baseline.md
+    - name: Security controls by Azure Policy
+      href: ./security-controls-policy.md
   - name: Business continuity
     items:  
     - name: Overview
@@ -77,8 +81,13 @@
       href: create-cluster-database-go.md    
     - name: Azure Resource Manager template
       href: create-cluster-database-resource-manager.md
-  - name: Create a table
-    href: one-click-table.md
+  - name: Create tables
+    items: 
+    - name: Create table
+      href: one-click-table.md
+    - name: Create external table
+      displayName: one-click
+      href: external-table.md    
   - name: Ingest data
     items: 
     - name: One-click ingestion
@@ -86,7 +95,7 @@
       - name: One-click ingestion overview 
         href: ingest-data-one-click.md
       - name: CSV data from container to new table
-        displayName: ingest data, ingestion, one click
+        displayName: Event Grid, ingest data, ingestion, one click
         href: one-click-ingestion-new-table.md
       - name: JSON data from local file to existing table
         displayName: ingest data, ingestion, one click
@@ -209,6 +218,8 @@
       items:  
       - name: Python
         href: python-query-data.md
+    - name: Optimize for high concurrency
+      href: high-concurrency.md
     - name: Time Series Analysis and Machine Learning
       items:
       - name: Time series analysis
@@ -368,7 +379,7 @@
     - name: Monitor Azure Data Explorer with metrics
       displayName: health, performance
       href: using-metrics.md
-    - name: Use diagnostic logs to monitor ingestion, commands, and queries
+    - name: Use diagnostic logs to monitor ingestion, commands, queries, and tables
       href: using-diagnostic-logs.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
@@ -505,6 +516,7 @@
     - name: Function types
       href: ./kusto/query/functions/index.md
     - name: User-defined functions
+      displayName: Kusto view, views, Kusto function
       href: ./kusto/query/functions/user-defined-functions.md
   - name: Query statements
     items:
@@ -707,6 +719,8 @@
         href: ./kusto/query/datatypes-string-operators.md
       - name: in and !in operators
         href: ./kusto/query/inoperator.md
+      - name: has_all operator
+        href: ./kusto/query/has-all-operator.md
       - name: has_any operator
         href: ./kusto/query/has-anyoperator.md
     - name: between operator
@@ -917,10 +931,14 @@
       href: ./kusto/query/ingestiontimefunction.md
     - name: ipv4_compare()
       href: ./kusto/query/ipv4-comparefunction.md
+    - name: ipv4_is_in_range()
+      href: ./kusto/query/ipv4-is-in-range-function.md
     - name: ipv4_is_match()
       href: ./kusto/query/ipv4-is-matchfunction.md
     - name: ipv4_is_private()
       href: ./kusto/query/ipv4-is-privatefunction.md
+    - name: ipv4_netmask_suffix()
+      href: ./kusto/query/ipv4-netmask-suffix-function.md      
     - name: ipv6_compare()
       href: ./kusto/query/ipv6-comparefunction.md
     - name: ipv6_is_match()
@@ -989,8 +1007,6 @@
       href: ./kusto/query/parse-ipv6function.md
     - name: parse_ipv6_mask()
       href: ./kusto/query/parse-ipv6-maskfunction.md
-    - name: parse_json()
-      href: ./kusto/query/parsejsonfunction.md
     - name: parse_path()
       href: ./kusto/query/parsepathfunction.md
     - name: parse_url()
@@ -1081,8 +1097,9 @@
       href: ./kusto/query/todecimalfunction.md
     - name: todouble(), toreal()
       href: ./kusto/query/todoublefunction.md
-    - name: todynamic(), toobject()
-      href: ./kusto/query/todynamicfunction.md
+    - name: todynamic(), parse_json()
+      displayName: toobject(), parsejson()
+      href: ./kusto/query/parsejsonfunction.md
     - name: toguid()
       href: ./kusto/query/toguidfunction.md
     - name: tohex()
@@ -1223,6 +1240,8 @@
       href: ./kusto/query/rowcumsumfunction.md
     - name: row_number()
       href: ./kusto/query/rownumberfunction.md
+    - name: row_rank()
+      href: ./kusto/query/rowrankfunction.md      
     - name: row_window_session()
       href: ./kusto/query/row-window-session-function.md
   - name: Time series analysis
@@ -1405,6 +1424,24 @@
     - name: Control commands overview
       displayName: Management
       href: ./kusto/management/index.md
+    - name: Workload groups (preview)
+      items:
+      - name: Workload groups overview
+        href: ./kusto/management/workload-groups.md
+      - name: Workload groups management
+        href: ./kusto/management/workload-groups-commands.md
+      - name: Request classification policy
+        items:
+        - name: Request classification policy
+          href: ./kusto/management/request-classification-policy.md
+        - name: Request classification policy commands
+          href: ./kusto/management/request-classification-policy-commands.md
+      - name: Request limits policy
+        href: ./kusto/management/request-limits-policy.md
+      - name: Request rate limit policy
+        href: ./kusto/management/request-rate-limit-policy.md
+      - name: Request queuing policy
+        href: ./kusto/management/request-queuing-policy.md
     - name: Schema
       items:
       - name: Best practices for schema management
@@ -1484,12 +1521,26 @@
           href: ./kusto/management/materialized-views/materialized-view-create.md
         - name: .alter materialized-view
           href: ./kusto/management/materialized-views/materialized-view-alter.md
+        - name: .create-or-alter materialized-view
+          href: ./kusto/management/materialized-views/materialized-view-create-or-alter.md
+        - name: .alter materialized-view docstring
+          href: ./kusto/management/materialized-views/materialized-view-alter-docstring.md
+        - name: .alter materialized-view folder
+          href: ./kusto/management/materialized-views/materialized-view-alter-folder.md
+        - name: .alter materialized-view lookback
+          href: ./kusto/management/materialized-views/materialized-view-alter-lookback.md
+        - name: .alter materialized-view autoUpdateSchema
+          href: ./kusto/management/materialized-views/materialized-view-alter-autoUpdateSchema.md
         - name: .show materialized-view commands
           href: ./kusto/management/materialized-views/materialized-view-show-commands.md
         - name: .drop materialized-view
           href: ./kusto/management/materialized-views/materialized-view-drop.md
         - name: .disable | .enable materialized-view
           href: ./kusto/management/materialized-views/materialized-view-enable-disable.md
+        - name: Materialized views policies
+          href: ./kusto/management/materialized-views/materialized-view-policies.md
+        - name: Materialized views data purge
+          href: ./kusto/management/materialized-views/materialized-view-purge.md
       - name: Stored query results
         displayName: .set stored query, .show stored query, .drop stored query
         href: ./kusto/management/stored-query-results.md
@@ -1527,6 +1578,12 @@
           href: ./kusto/management/show-function.md
     - name: Policies
       items:
+      - name: Auto delete
+        items:
+        - name: Auto delete policy
+          href: ./kusto/management/auto-delete-policy.md
+        - name: auto delete policy command
+          href: ./kusto/management/auto-delete-policy-command.md
       - name: Ingestion batching
         items:
         - name: Ingestionbatching policy
@@ -1565,12 +1622,6 @@
           href: ./kusto/management/partitioningpolicy.md
         - name: partitioning policy command
           href: ./kusto/management/partitioning-policy.md
-      - name: Query throttling
-        items:
-        - name: Query throttling policy
-          href: ./kusto/management/query-throttling-policy.md
-        - name: Query throttling policy commands
-          href: ./kusto/management/query-throttling-policy-commands.md
       - name: Retention
         items:
         - name: Retention policy
@@ -1706,29 +1757,35 @@
         href: ./kusto/management/access-control/aad.md
       - name: Principal roles
         href: ./kusto/management/access-control/role-based-authorization.md
+      - name: Allow cross-tenant queries and commands
+        href: cross-tenant-query-and-commands.md
       - name: How-To Azure Active Directory authentication
         displayName: AAD, Azure AD
         href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
     - name: Advanced data management
       items:
-      - name: Extents (data shards) overview
-        href: ./kusto/management/extents-overview.md
-      - name: Extents Commands
+      - name: Extents (data shards) 
         items: 
-        - name: .alter extent
-          href: ./kusto/management/alter-extent.md
-        - name: .drop extents
-          href: ./kusto/management/drop-extents.md
-        - name: .drop extent tags
-          href: ./kusto/management/drop-extent-tags.md
-        - name: .merge extents
-          href: ./kusto/management/merge-extents.md
-        - name: .move extents
-          href: ./kusto/management/move-extents.md
-        - name: .replace extents
-          href: ./kusto/management/replace-extents.md
-        - name: .show extents
-          href: ./kusto/management/show-extents.md
+        - name: Extents overview
+          href: ./kusto/management/extents-overview.md
+        - name: Extents commands
+          items: 
+          - name: .alter extent
+            href: ./kusto/management/alter-extent.md
+          - name: .drop extents
+            href: ./kusto/management/drop-extents.md
+          - name: .drop extent tags
+            href: ./kusto/management/drop-extent-tags.md
+          - name: .merge extents
+            href: ./kusto/management/merge-extents.md
+          - name: .move extents
+            href: ./kusto/management/move-extents.md
+          - name: .replace extents
+            href: ./kusto/management/replace-extents.md
+          - name: .show extents
+            href: ./kusto/management/show-extents.md
+        - name: Extent containers clean commands
+          href: ./kusto/management/clean-extent-containers.md
       - name: Cluster follower
         href: ./kusto/management/cluster-follower.md
       - name: Data purge
@@ -1861,9 +1918,21 @@
     - name: List of functions
       displayName: functions library
       href: kusto/functions-library/functions-library.md
+    - name: binomial_test_fl()
+      displayName: functions library
+      href: kusto/functions-library/binomial-test-fl.md
+    - name: comb_fl()
+      displayName: functions library
+      href: kusto/functions-library/comb-fl.md
+    - name: factorial_fl()
+      displayName: functions library
+      href: kusto/functions-library/factorial-fl.md
     - name: kmeans_fl()
       displayName: functions library
       href: kusto/functions-library/kmeans-fl.md
+    - name: perm_fl()
+      displayName: functions library
+      href: kusto/functions-library/perm-fl.md
     - name: predict_fl()
       displayName: functions library
       href: kusto/functions-library/predict-fl.md
@@ -1873,6 +1942,9 @@
     - name: quantize_fl()
       displayName: functions library
       href: kusto/functions-library/quantize-fl.md
+    - name: series_dbl_exp_smoothing_fl()
+      displayName: functions library
+      href: kusto/functions-library/series-dbl-exp-smoothing-fl.md
     - name: series_dot_product_fl()
       displayName: functions library
       href: kusto/functions-library/series-dot-product-fl.md

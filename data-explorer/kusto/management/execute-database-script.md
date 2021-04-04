@@ -30,6 +30,7 @@ Executes batch of control commands in scope of a single database.
 | Property            | Type            | Description                          |
 |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
 | `ContinueOnErrors`            | `bool`        | If set to `false` - the script will stop on the first error. If set to `true` - the script execution continues. Default: `false`. |
+| `ThrowOnErrors`            | `bool`        | If set to `true` - the script will throw an error (fail) on the first error. Does not work together with `ContinueOnErrors`, only one is allowed. Default: `false`. |
 
 ## Output
 

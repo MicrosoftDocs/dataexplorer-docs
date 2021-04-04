@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/14/2021
 ---
 # .show database schema commands
 
@@ -79,9 +79,18 @@ Because a version lower than the current database version was provided, the 'Tes
 
 `.show` `database` *DatabaseName* `schema` [`if_later_than` *"Version"*]  `as` `json`
  
-`.show` `databases` `(` *DatabaseName1*`,` ...`)` `schema` `as` `json`
+`.show` `databases` `(` *DatabaseName1*`,` ...`)` `schema` `as` `json` [`with(`*Options*`)`]
  
-`.show` `databases` `(` *DatabaseName1* if_later_than *"Version"*`,` ...`)` `schema` `as` `json`
+`.show` `databases` `(` *DatabaseName1* if_later_than *"Version"*`,` ...`)` `schema` `as` `json` [`with(`*Options*`)`]
+
+**Arguments**
+
+The following *Options* allow you to select a subset of entities for each database schema that is returned. When using options, only the selected entities are returned for each database schema. Otherwise, all entities are returned.
+
+* `Tables`: (`true` | `false`) - If `true`, tables are returned.
+* `ExternalTables`: (`true` | `false`) - If `true`, external tables are returned.
+* `MaterializedViews`: (`true` | `false`) - If `true`, materialized views are returned.
+* `Functions`: (`true` | `false`) - If `true`, functions are returned.
 
 **Returns**
 
@@ -92,6 +101,8 @@ When used with a version, the database is only returned if it's a later version 
  
 ```kusto
 .show database TestDB schema as json
+
+.show databases (TestDB, TestDB2) schema as json with(Tables=True, Functions=True)
 ```
 
 **Output**

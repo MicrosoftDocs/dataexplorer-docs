@@ -71,7 +71,7 @@ Create a [Private Endpoint](/azure/private-link/private-endpoint-overview) to re
 
 ### Network Security Groups configuration
 
-[Network Security Groups (NSG)](/azure/virtual-network/security-overview) provide the ability to control network access within a VNet. Azure Data Explorer can be accessed using two endpoints: HTTPs (443) and TDS (1433). The following NSG rules must be configured to allow access to these endpoints for management, monitoring, and proper operation of your cluster. Additional rules depend on your security guidelines.
+[Network Security Groups (NSG)](/azure/virtual-network/security-overview) provide the ability to control network access within a VNet. Azure Data Explorer automatically applies the following required network security rules. For Azure Data Explorer to operate using the [subnet delegation](/azure/virtual-network/subnet-delegation-overview) mechanism, before creating the cluster in the subnet, you must delegate the subnet to **Microsoft.Kusto/clusters** .
 
 #### Inbound NSG configuration
 
@@ -126,7 +126,7 @@ Create a [Private Endpoint](/azure/private-link/private-endpoint-overview) to re
 | Japan West | 40.81.184.86 |
 | Korea Central | 40.82.156.149 |
 | Korea South | 40.80.234.9 |
-| North Central US | 40.81.45.254 |
+| North Central US | 40.81.43.47 |
 | North Europe | 52.142.91.221 |
 | South Africa North | 102.133.129.138 |
 | South Africa West | 102.133.0.97 |
@@ -189,7 +189,7 @@ Create a [Private Endpoint](/azure/private-link/private-endpoint-overview) to re
 | West Central US | 168.61.212.201, 23.101.115.123 |
 | West Europe | 23.97.212.5, 213.199.136.176 |
 | West India | 23.99.5.162 |
-| West US | 23.99.5.162, 13.88.13.50 |
+| West US | 23.99.5.162, 13.88.13.50, 104.210.32.14 |
 | West US 2 | 23.99.5.162, 104.210.32.14, 52.183.35.124 |
 
 ## Disable access to Azure Data Explorer from the public IP

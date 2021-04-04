@@ -44,8 +44,8 @@ let series_downsample_fl=(tbl:(*), t_col:string, y_col:string, ds_t_col:string, 
     | extend _t_ = column_ifexists(t_col, dynamic(0)), _y_ = column_ifexists(y_col, dynamic(0))
     | extend _y_ = series_fir(_y_, repeat(1, sampling_factor), true, true)    //  apply a simple low pass filter before sub-sampling
     | mv-apply _t_ to typeof(DateTime), _y_ to typeof(double) on
-    (extend rid=row_number()
-    | where rid % sampling_factor == (sampling_factor/2+1)                    //  sub-sampling
+    (extend rid=row_number()-1
+    | where rid % sampling_factor == ceiling(sampling_factor/2.0)-1                    //  sub-sampling
     | summarize _t_ = make_list(_t_), _y_ = make_list(_y_))
     | extend cols = pack(ds_t_col, _t_, ds_y_col, _y_)
     | project-away _t_, _y_
@@ -73,8 +73,8 @@ series_downsample_fl(tbl:(*), t_col:string, y_col:string, ds_t_col:string, ds_y_
     | extend _t_ = column_ifexists(t_col, dynamic(0)), _y_ = column_ifexists(y_col, dynamic(0))
     | extend _y_ = series_fir(_y_, repeat(1, sampling_factor), true, true)    //  apply a simple low pass filter before sub-sampling
     | mv-apply _t_ to typeof(DateTime), _y_ to typeof(double) on
-    (extend rid=row_number()
-    | where rid % sampling_factor == (sampling_factor/2+1)                    //  sub-sampling
+    (extend rid=row_number()-1
+    | where rid % sampling_factor == ceiling(sampling_factor/2.0)-1                    //  sub-sampling
     | summarize _t_ = make_list(_t_), _y_ = make_list(_y_))
     | extend cols = pack(ds_t_col, _t_, ds_y_col, _y_)
     | project-away _t_, _y_

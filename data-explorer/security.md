@@ -49,25 +49,34 @@ The Azure Active Directory (Azure AD) managed identities for Azure resources fea
 
 By default, data is encrypted with Microsoft-managed keys. For additional control over encryption keys, you can supply customer-managed keys to use for data encryption. You can manage encryption of your data at the storage level with your own keys. A customer-managed key is used to protect and control access to the root encryption key, which is used to encrypt and decrypt all data. Customer-managed keys offer greater flexibility to create, rotate, disable, and revoke access controls. You can also audit the encryption keys used to protect your data.
 
-Use Azure Key Vault to store your customer-managed keys. You can create your own keys and store them in a key vault, or you can use an Azure Key Vault API to generate keys. The Azure Data Explorer cluster and the Azure Key Vault must be in the same region, but they can be in different subscriptions. For more information about Azure Key Vault, see [What is Azure Key Vault?](/azure/key-vault/key-vault-overview). For a detailed explanation on customer-managed keys, see [Customer-managed keys with Azure Key Vault](/azure/storage/common/storage-service-encryption). Configure customer-managed keys in your Azure Data Explorer cluster using [C#](customer-managed-keys-csharp.md) or the [Azure Resource Manager template](customer-managed-keys-resource-manager.md)
+Use Azure Key Vault to store your customer-managed keys. You can create your own keys and store them in a key vault, or you can use an Azure Key Vault API to generate keys. The Azure Data Explorer cluster and the Azure Key Vault must be in the same region, but they can be in different subscriptions. For more information about Azure Key Vault, see [What is Azure Key Vault?](/azure/key-vault/key-vault-overview). For a detailed explanation on customer-managed keys, see [Customer-managed keys with Azure Key Vault](/azure/storage/common/storage-service-encryption). Configure customer-managed keys in your Azure Data Explorer cluster using the [Portal](customer-managed-keys-portal.md), [C#](customer-managed-keys-csharp.md), [Azure Resource Manager template](customer-managed-keys-resource-manager.md), [CLI, or the [PowerShell](customer-managed-keys-powershell.md)
 
 > [!Note]
-> Customer-managed keys rely on managed identities for Azure resources, a feature of Azure Active Directory (Azure AD). To configure customer-managed keys in the Azure portal, you need to configure a **SystemAssigned** managed identity to your cluster as detailed in [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md).
+> Customer-managed keys rely on managed identities for Azure resources, a feature of Azure Active Directory (Azure AD). To configure customer-managed keys in the Azure portal, configure a managed identity to your cluster as described in [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md).
 
 #### Store customer-managed keys in Azure Key Vault
 
 To enable customer-managed keys on a cluster, use an Azure Key Vault to store your keys. You must enable both the **Soft Delete** and **Do Not Purge** properties on the key vault. The key vault must be located in the same subscription as the cluster. Azure Data Explorer uses managed identities for Azure resources to authenticate to the key vault for encryption and decryption operations. Managed identities don't support cross-directory scenarios.
 
-#### Rotate customer-managed keys
+##### Rotate customer-managed keys  
 
-You can rotate a customer-managed key in Azure Key Vault according to your compliance policies. When the key is rotated, you must update the cluster to use the new key URI. Rotating the key doesn't trigger re-encryption of data in the cluster.
+You can rotate a customer-managed key in Azure Key Vault according to your compliance policies. To rotate a key, in Azure Key Vault, update the key version or create a new key, and then update the cluster to encrypt data using the new key URI. You can do these steps using the Azure CLI or in the portal. Rotating the key doesn't trigger re-encryption of existing data in the cluster.
 
-#### Revoke access to customer-managed keys
+When rotating a key, typically you specify the same identity used when creating the cluster. Optionally, configure a new user-assigned identity for key access, or enable and specify the cluster's system-assigned identity.
+
+> [!NOTE]
+> Ensure that the required **Get**, **Unwrap Key**, and **Wrap Key** permissions are set for the identity you configure for key access.
+
+##### Update key version
+
+A common scenario is to update the version of the key used as a customer-managed key. Depending on how the cluster encryption is configured, the customer-managed key in the cluster is automatically updated, or must be manually updated.
+
+##### Revoke access to customer-managed keys
 
 To revoke access to customer-managed keys, use PowerShell or Azure CLI. For more information, see [Azure Key Vault PowerShell](/powershell/module/az.keyvault/) or [Azure Key Vault CLI](/cli/azure/keyvault). Revoking access blocks access to all data in the cluster's storage level, since the encryption key is consequently inaccessible by Azure Data Explorer.
 
 > [!Note]
-> When Azure Data Explorer identifies that access to a customer-managed key is revoked, it will automatically suspend the cluster to delete any cached data. Once access to the key is returned, the cluster needs to be resumed manually.
+> When Azure Data Explorer identifies that access to a customer-managed key is revoked, it will automatically suspend the cluster to delete any cached data. Once access to the key is returned, the cluster will be resumed automatically.
 
 ## Next steps
 
