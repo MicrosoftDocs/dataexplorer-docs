@@ -15,7 +15,7 @@ The function `series_fbprophet_forecast_fl()` takes an expression containing a t
 > [!NOTE]
 > * `series_fbprophet_forecast_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 > * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
-> * Consider using the native function [series_decompose_forecast()](../query/series-decompose-forecastfunction.md) which is based on a simpler model but is more scalable and runs much faster.
+> * Consider using the native function [series_decompose_forecast()](../query/series-decompose-forecastfunction.md). The native function is based on a simpler model, but is more scalable and runs faster.
 
 ## Syntax
 
