@@ -36,7 +36,7 @@ Do the following steps to enable language extensions on your cluster:
     ![language extension on](media/language-extensions/configurations-enable-extension.png)
 
 > [!NOTE]
-> Enabling the language extension process can take a few minutes. During that time, your cluster will be suspended.
+> Enabling the language extension process can take up to a few minutes. During that time, your cluster may be unavailable.
  
 ## Run language extension-integrated queries
 
