@@ -763,6 +763,8 @@
       href: ./kusto/query/arraysortdescfunction.md
     - name: array_split()
       href: ./kusto/query/arraysplitfunction.md
+    - name: array_sum()
+      href: ./kusto/query/arraysum-function.md
     - name: asin()
       href: ./kusto/query/asinfunction.md
     - name: assert()
