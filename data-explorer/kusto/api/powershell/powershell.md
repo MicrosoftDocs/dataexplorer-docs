@@ -2,16 +2,16 @@
 title: Kusto .NET Client Libraries from PowerShell - Azure Data Explorer
 description: This article describes Using the .NET Client Libraries from PowerShell in Azure Data Explorer.
 services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
+author: shsagir
+ms.author: shsagir
+ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/29/2019
+ms.date: 04/05/2021
 ---
 # Using the .NET client libraries from PowerShell
 
-PowerShell scripts can use Azure Data Explorer .NET client libraries through 
+PowerShell scripts can use Azure Data Explorer .NET client libraries through
 PowerShell's built-in integration with arbitrary (non-PowerShell) .NET libraries.
 
 ## Getting the .NET client libraries for scripting with PowerShell
@@ -21,7 +21,7 @@ To start working with the Azure Data Explorer .NET client libraries using PowerS
 1. Download the [`Microsoft.Azure.Kusto.Tools` NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
     * If you're using Powershell 7 (or above), download the [`Microsoft.Azure.Kusto.Tools.NETCore` NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools.NETCore/).
 1. Extract the contents of the 'tools' directory in the package (use an archiving tool like `7-zip`).
-1. Call `[System.Reflection.Assembly]::LoadFrom("path")` from PowerShell, to load the required library. 
+1. Call `Add-Type -LiteralPath "path\Kusto.Data.dll"` from PowerShell, to load the required library.
     * The `path` parameter for the command should indicate the location of the extracted files.
 1. Once all dependent .NET assemblies are loaded:
    1. Create a Kusto connection string.
@@ -45,7 +45,7 @@ $packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\Tools"
 #  ------------
 #  Loading the Kusto.Client library and its dependencies
 dir $packagesRoot\* | Unblock-File
-[System.Reflection.Assembly]::LoadFrom("$packagesRoot\Kusto.Data.dll")
+Add-Type -LiteralPath "$packagesRoot\Kusto.Data.dll"
 
 #  Part 3 of 3
 #  ------------
@@ -55,7 +55,7 @@ $databaseName = "Samples"
 
 #   Option A: using Azure AD User Authentication
 $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder ($clusterUrl, $databaseName)
- 
+
 #   Option B: using Azure AD application Authentication
 #     $applicationId = "application ID goes here"
 #     $applicationKey = "application key goes here"
@@ -74,12 +74,13 @@ $adminProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslAdminProvi
 $command = [Kusto.Data.Common.CslCommandGenerator]::GenerateDiagnosticsShowCommand()
 Write-Host "Executing command: '$command' with connection string: '$($kcsb.ToString())'"
 $reader = $adminProvider.ExecuteControlCommand($command)
-$reader.Read() # this reads a single row/record. If you have multiple ones returned, you can read in a loop 
+$reader.Read() # this reads a single row/record. If you have multiple ones returned, you can read in a loop
 $isHealthy = $Reader.GetBoolean(0)
 Write-Host "IsHealthy = $isHealthy"
 ```
 
 And the output is:
+
 ```
 IsHealthy = True
 ```
@@ -98,7 +99,7 @@ $crp.SetOption([Kusto.Data.Common.ClientRequestProperties]::OptionServerTimeout,
 #   Execute the query
 $reader = $queryProvider.ExecuteQuery($query, $crp)
 
-# Do something with the result datatable, for example: print it formatted as a table, sorted by the 
+# Do something with the result datatable, for example: print it formatted as a table, sorted by the
 # "StartTime" column, in descending order
 $dataTable = [Kusto.Cloud.Platform.Data.ExtendedDataReader]::ToDataSet($reader).Tables[0]
 $dataView = New-Object System.Data.DataView($dataTable)
