@@ -764,7 +764,7 @@
     - name: array_split()
       href: ./kusto/query/arraysplitfunction.md
     - name: array_sum()
-      href: ./kusto/query/arraysum-function.md
+      href: ./kusto/query/array-sum-function.md
     - name: asin()
       href: ./kusto/query/asinfunction.md
     - name: assert()
