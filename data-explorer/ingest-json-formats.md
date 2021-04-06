@@ -23,6 +23,8 @@ Azure Data Explorer supports two JSON file formats:
 * `json`: Line separated JSON. Each line in the input data has exactly one JSON record.
 * `multijson`: Multi-lined JSON. The parser ignores the line separators and reads a record from the previous position to the end of a valid JSON.
 
+For more information, see [JSON Lines](https://jsonlines.org/).
+
 ### Ingest and map JSON formatted data
 
 Ingestion of JSON formatted data requires you to specify the *format* using [ingestion property](ingestion-properties.md). Ingestion of JSON data requires [mapping](kusto/management/mappings.md), which maps a JSON source entry to its target column. When ingesting data, use the `IngestionMapping` property with its `ingestionMappingReference` (for a pre-defined mapping) ingestion property or its `IngestionMappings` property. This article will use the `ingestionMappingReference` ingestion property, which is pre-defined on the table used for ingestion. In the examples below, we'll start by ingesting JSON records as raw data to a single column table. Then we'll use the mapping to ingest each property to its mapped column. 
@@ -47,7 +49,7 @@ In this example, you ingest JSON records as raw data to a single column table. T
 
 # [KQL](#tab/kusto-query-language)
 
-Use Kusto query language to ingest data in a raw JSON format.
+Use Kusto query language to ingest data in a raw [JSON format](#the-json-format).
 
 1. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
 
@@ -79,7 +81,7 @@ Use Kusto query language to ingest data in a raw JSON format.
 
 # [C#](#tab/c-sharp)
 
-Use C# to ingest data in raw JSON format.
+Use C# to ingest data in raw [JSON format](#the-json-format).
 
 1. Create the `RawEvents` table.
 
@@ -160,7 +162,7 @@ Use C# to ingest data in raw JSON format.
 
 # [Python](#tab/python)
 
-Use Python to ingest data in raw JSON format.
+Use Python to ingest data in raw [JSON format](#the-json-format).
 
 1. Create the `RawEvents` table.
 
