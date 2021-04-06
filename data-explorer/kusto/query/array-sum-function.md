@@ -23,9 +23,11 @@ Calculates the sum of elements in a dynamic array.
 
 ## Returns
 
-Double type value with the of elements of the array.
+Double type value with the sum of the elements of the array.
 
-Note: if the array contains elements of non-numeric types, the result is `null`.
+> [!NOTE]
+> If the array contains elements of non-numeric types, the result is `null`.
+
 
 ## Example
 
