@@ -53,7 +53,8 @@ The following list contains error codes you may come across during [ingestion](i
 |Download_SourceNotFound                           |Failed to download source from Azure Storage. Source not found.       |Permanent       |
 |BadRequest_EntityNameIsNotValid                   |Entity name isn't valid.<br>For more information about Azure Data Explorer naming convention, see [Entity names](./kusto/query/schema-entities/entity-names.md).    |Permanent           |
 |BadRequest_MalformedIngestionProperty              |Ingestion property is malformed.    |Permanent           |
-| BadRequest_IngestionPropertyNotSupportedInThisContext | Ingestion property is not supported in this context| Permanent
+| BadRequest_IngestionPropertyNotSupportedInThisContext | Ingestion property is not supported in this context.| Permanent |
+| BadRequest_InvalidBlobUri                        | Blob Uri is invalid.      | Permanent          |
 
 ## Category: DataAccessNotAuthorized
 
@@ -64,6 +65,7 @@ The following list contains error codes you may come across during [ingestion](i
 |Download_AccountNotFound                          |Failed to download source from Azure storage. Account not found.    |Permanent           |
 |BadRequest_TableAccessDenied                      |Access to table is denied.<br>For more information, see [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md).     |Permanent           |
 |BadRequest_DatabaseAccessDenied                   |Access to database is denied.<br>For more information, see [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md).                        |Permanent           |
+|BadRequest_InvalidAuthentication                  |Authentication to data is not valid.                                |Permanent           |
 
 ## Category: DownloadFailed
 
@@ -97,6 +99,8 @@ The following list contains error codes you may come across during [ingestion](i
 |General_TransientSchemaMismatch                   |Schema of target table when starting the ingestion doesn't match the schema when committing the ingestion.         |Transient           |
 |Timeout                                            |The operation has been aborted because of timeout.     |Transient           |
 |BadRequest_MessageExhausted                       |Failed to ingest data since ingestion reached the maximum retry attempts or the maximum retry period.<br>Retrying ingestion may succeed.   |Transient          |
+|OutOfMemory                                       |Ingestion operation ran out of memory.                  |Transient           |
+|Schema_PermanentUpdateFailure                     |Failed to update schema permanently.                    |Permanent           |
 
 ## Category: UpdatePolicyFailure
 
@@ -114,6 +118,12 @@ The following list contains error codes you may come across during [ingestion](i
 |---|---|---|
 |BadRequest_InvalidKustoIdentityToken              |Invalid Kusto identity token.                           |Permanent           |
 |Forbidden                                          |Insufficient security permissions to execute request. | Permanent|
+
+## Category: ThrottledOnEngine
+
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
+|General_ThrottledIngestion                    |Throttled ingestion.                                  |Transient          |
 
 ## Category: Unknown
 
