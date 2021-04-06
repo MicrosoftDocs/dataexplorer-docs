@@ -212,6 +212,7 @@ download the package and its dependencies.
     * For public packages, zip the files that were downloaded in the previous step.
     
     > [!NOTE]
+    > * Make sure to download the package that is compatible to the Python engine of the sandbox runtime (currently 3.6.5)
     > * Make sure to zip the `.whl` files themselves, and not their parent folder.
     > * You can skip `.whl` files for packages that already exist with the same version in the base sandbox image.
 
