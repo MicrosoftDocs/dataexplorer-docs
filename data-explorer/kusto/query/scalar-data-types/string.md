@@ -11,11 +11,24 @@ ms.date: 02/13/2020
 ---
 # The string data type
 
-The `string` data type represents a Unicode string. Kusto strings are encoded in UTF-8 and by default are limited to 1MB.
+The `string` data type represents a sequence of zero or more [Unicode](https://home.unicode.org/)
+characters.
+
+> [!NOTE]
+> Internally, strings are encoded in [UTF-8](https://en.wikipedia.org/wiki/UTF-8).
+
+> [!NOTE]
+> Kusto has no data type that is equivalent to a single character. In Kusto a single character
+> is represented as a string of length 1.
+
+> [!NOTE]
+> While the `string` data type itself has no predefined limit on the length of the string,
+> actual implementations are free to limit individual values. Commonly, strings are limited
+> to 1MB (measured using the UTF-8 encoding.)
 
 ## String literals
 
-There are several ways to encode literals of the `string` data type.
+There are several ways to encode literals of the `string` data type in a query text:
 
 * Enclose the string in double-quotes (`"`): `"This is a string literal. Single quote characters (') don't require escaping. Double quote characters (\") are escaped by a backslash (\\)"`
 * Enclose the string in single-quotes (`'`): `'Another string literal. Single quote characters (\') require escaping by a backslash (\\). Double quote characters (") do not require escaping.'`
@@ -24,14 +37,28 @@ In the two representations above, the backslash (`\`) character indicates escapi
 It's used to escape the enclosing quote characters, tab characters (`\t`),
 newline characters (`\n`), and itself (`\\`).
 
+> [!NOTE]
+> The newline character (`\n`) and the return character (`\r`) cannot be included
+> as part of the string literal without being quoted. See also [multi-line string literals](#multi-line-string-literals)
+> below.
+
+## Verbatim string literals
+
 Verbatim string literals are also supported. In this form, the backslash character (`\`) stands for itself, and not as an escape character.
 
 * Enclose in double-quotes (`"`): `@"This is a verbatim string literal that ends with a backslash\"`
 * Enclose in single-quotes (`'`): `@'This is a verbatim string literal that ends with a backslash\'`
 
-Two string literals in the query with nothing between them, or separated
-only by whitespace and comments, automatically join to form a new string literal.
-For example, the following expressions all yield length `13`.
+> [!NOTE]
+> The newline character (`\n`) and the return character (`\r`) cannot be included
+> as part of the string literal without being quoted. See also [multi-line string literals](#multi-line-string-literals)
+> below.
+
+## Splicing string literals
+
+Two or more string literals in the query with nothing between them, or separated
+only by whitespace and comments, are automatically joined to form a new string literal.
+For example, the following expressions all yield a string of length 13:
 
 ```kusto
 print strlen("Hello"', '@"world!"); // Nothing between them
@@ -42,6 +69,21 @@ print strlen("Hello"
   // Comment
   ', '@"world!"); // Separated by whitespace and a comment
 ```
+
+## Multi-line string literals
+
+Multi-line string literals are string literals for which the newline (`\n`) and return (`\r`)
+characters do not require escaping.
+
+* Multi-line string literals always appear between two occurrences of the "triple-backtick chord" (`\``).
+
+> [!NOTE]
+> Multi-line string literals do not support escaped characters. They are like
+> [verbatim string literals](#verbatim-string-literals) that additionally allow
+> newline and return characters.
+
+> [!NOTE]
+> Multi-line string literals do not support obfuscation.
 
 ## Examples
 
@@ -58,6 +100,14 @@ print myPath1 = @'C:\Folder\filename.txt'
 
 // Escaping using '\' notation
 print s = '\\n.*(>|\'|=|\")[a-zA-Z0-9/+]{86}=='
+
+// Encode a C# program in a Kusto multi-line string
+print program=```
+  public class Program {
+    public static void Main() {
+      System.Console.WriteLine("Hello!");
+    }
+  }```
 ```
 
 As can be seen, when a string is enclosed in double-quotes (`"`), the single-quote (`'`) character doesn't require escaping, and also the other way around. This method makes it easier to quote strings according to context.
