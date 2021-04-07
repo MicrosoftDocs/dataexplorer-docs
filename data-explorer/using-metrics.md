@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/19/2020
+ms.date: 04/07/2021
 ms.custom: contperf-fy21q1
 ---
 
@@ -67,6 +67,7 @@ The cluster metrics track the general health of the cluster. For example, resour
 | Cache utilization | Percent | Avg, Max, Min | Percentage of allocated cache resources currently in use by the cluster. Cache is the size of SSD allocated for user activity according to the defined cache policy. <br> <br> An average cache utilization of 80% or less is a sustainable state for a cluster. If the average cache utilization is above 80%, the cluster should be <br> [scaled up](manage-cluster-vertical-scaling.md) to a storage optimized pricing tier or <br> [scaled out](manage-cluster-horizontal-scaling.md) to more instances. Alternatively, adapt the cache policy (fewer days in cache). If cache utilization is over 100%, the size of data to be cached, according to the caching policy, is larger that the total size of cache on the cluster. | None |
 | CPU | Percent | Avg, Max, Min | Percentage of allocated compute resources currently in use by machines in the cluster. <br> <br> An average CPU of 80% or less is sustainable for a cluster. The maximum value of CPU is 100%, which means there are no additional compute resources to process data. <br> When a cluster isn't performing well, check the maximum value of the CPU to determine if there are specific CPUs that are blocked. | None |
 | Ingestion utilization | Percent | Avg, Max, Min | Percentage of actual resources used to ingest data from the total resources allocated, in the capacity policy, to perform ingestion. The default capacity policy is no more than 512 concurrent ingestion operations or 75% of the cluster resources invested in ingestion. <br> <br> Average ingestion utilization of 80% or less is a sustainable state for a cluster. Maximum value of ingestion utilization is 100%, which means all cluster ingestion ability is used and an ingestion queue may result. | None |
+| InstanceCount | Count	| Avg |	Total instance count. |
 | Keep alive | Count | Avg | Tracks the responsiveness of the cluster. <br> <br> A fully responsive cluster returns value 1 and a blocked or disconnected cluster returns 0. |
 | Total number of throttled commands | Count | Avg, Max, Min, Sum | The number of throttled (rejected) commands in the cluster, since the maximum allowed number of concurrent (parallel) commands was reached. | None |
 | Total number of extents | Count | Avg, Max, Min, Sum | Total number of data extents in the cluster. <br> <br> Changes in this metric can imply massive data structure changes and high load on the cluster, since merging data extents is a CPU-heavy activity. | None |
@@ -131,6 +132,7 @@ Query performance metrics track query duration and total number of concurrent or
 |**Metric** | **Unit** | **Aggregation** | **Metric description** | **Dimensions** |
 |---|---|---|---|---|
 | Query duration | Milliseconds | Avg, Min, Max, Sum | Total time until query results are received (doesn't include network latency). | QueryStatus |
+| QueryResult |	Count | Count | Total number of queries. |	QueryStatus | 
 | Total number of concurrent queries | Count | Avg, Max, Min, Sum | The number of queries run in parallel in the cluster. This metric is a good way to estimate the load on the cluster. | None |
 | Total number of throttled queries | Count | Avg, Max, Min, Sum | The number of throttled (rejected) queries in the cluster. The maximum number of concurrent (parallel) queries allowed is defined in the request rate limit policy. | None |
 
