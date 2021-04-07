@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 04/07/2021
 ---
 # The string data type
 
@@ -15,16 +15,12 @@ The `string` data type represents a sequence of zero or more [Unicode](https://h
 characters.
 
 > [!NOTE]
-> Internally, strings are encoded in [UTF-8](https://en.wikipedia.org/wiki/UTF-8).
-
-> [!NOTE]
-> Kusto has no data type that is equivalent to a single character. In Kusto a single character
+> * Internally, strings are encoded in [UTF-8](https://en.wikipedia.org/wiki/UTF-8).
+> * Kusto has no data type that is equivalent to a single character. A single character
 > is represented as a string of length 1.
-
-> [!NOTE]
-> While the `string` data type itself has no predefined limit on the length of the string,
+> * While the `string` data type itself has no predefined limit on the length of the string,
 > actual implementations are free to limit individual values. Commonly, strings are limited
-> to 1MB (measured using the UTF-8 encoding.)
+> to 1MB (measured using UTF-8 encoding).
 
 ## String literals
 
@@ -34,13 +30,12 @@ There are several ways to encode literals of the `string` data type in a query t
 * Enclose the string in single-quotes (`'`): `'Another string literal. Single quote characters (\') require escaping by a backslash (\\). Double quote characters (") do not require escaping.'`
 
 In the two representations above, the backslash (`\`) character indicates escaping.
-It's used to escape the enclosing quote characters, tab characters (`\t`),
+The backslash is used to escape the enclosing quote characters, tab characters (`\t`),
 newline characters (`\n`), and itself (`\\`).
 
 > [!NOTE]
-> The newline character (`\n`) and the return character (`\r`) cannot be included
-> as part of the string literal without being quoted. See also [multi-line string literals](#multi-line-string-literals)
-> below.
+> The newline character (`\n`) and the return character (`\r`) can't be included
+> as part of the string literal without being quoted. See also [multi-line string literals](#multi-line-string-literals).
 
 ## Verbatim string literals
 
@@ -50,14 +45,12 @@ Verbatim string literals are also supported. In this form, the backslash charact
 * Enclose in single-quotes (`'`): `@'This is a verbatim string literal that ends with a backslash\'`
 
 > [!NOTE]
-> The newline character (`\n`) and the return character (`\r`) cannot be included
-> as part of the string literal without being quoted. See also [multi-line string literals](#multi-line-string-literals)
-> below.
+> The newline character (`\n`) and the return character (`\r`) can't be included
+> as part of the string literal without being quoted. See also [multi-line string literals](#multi-line-string-literals).
 
 ## Splicing string literals
 
-Two or more string literals in the query with nothing between them, or separated
-only by whitespace and comments, are automatically joined to form a new string literal.
+Two or more string literals are automatically joined to form a new string literal in the query if they have nothing between them, or they are separated only by whitespace and comments. <br>
 For example, the following expressions all yield a string of length 13:
 
 ```kusto
@@ -78,12 +71,9 @@ characters do not require escaping.
 * Multi-line string literals always appear between two occurrences of the "triple-backtick chord" (`\``).
 
 > [!NOTE]
-> Multi-line string literals do not support escaped characters. They are like
-> [verbatim string literals](#verbatim-string-literals) that additionally allow
-> newline and return characters.
-
-> [!NOTE]
-> Multi-line string literals do not support obfuscation.
+> * Multi-line string literals do not support escaped characters. Similar to 
+> [verbatim string literals](#verbatim-string-literals), multi-line string literals allow newline and return characters.
+> * Multi-line string literals don't support obfuscation.
 
 ## Examples
 
