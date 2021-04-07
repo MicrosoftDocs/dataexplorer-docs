@@ -53,8 +53,8 @@ The following list contains error codes you may come across during [ingestion](i
 |Download_SourceNotFound                           |Failed to download source from Azure Storage. Source not found.       |Permanent       |
 |BadRequest_EntityNameIsNotValid                   |Entity name isn't valid.<br>For more information about Azure Data Explorer naming convention, see [Entity names](./kusto/query/schema-entities/entity-names.md).    |Permanent           |
 |BadRequest_MalformedIngestionProperty              |Ingestion property is malformed.    |Permanent           |
-| BadRequest_IngestionPropertyNotSupportedInThisContext | Ingestion property is not supported in this context.| Permanent |
-| BadRequest_InvalidBlobUri                        | Blob Uri is invalid.      | Permanent          |
+| BadRequest_IngestionPropertyNotSupportedInThisContext | Ingestion property isn't supported in this context.| Permanent |
+| BadRequest_InvalidBlobUri                        | Blob URI is invalid.      | Permanent          |
 
 ## Category: DataAccessNotAuthorized
 
@@ -65,7 +65,7 @@ The following list contains error codes you may come across during [ingestion](i
 |Download_AccountNotFound                          |Failed to download source from Azure storage. Account not found.    |Permanent           |
 |BadRequest_TableAccessDenied                      |Access to table is denied.<br>For more information, see [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md).     |Permanent           |
 |BadRequest_DatabaseAccessDenied                   |Access to database is denied.<br>For more information, see [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md).                        |Permanent           |
-|BadRequest_InvalidAuthentication                  |Authentication to data is not valid.                                |Permanent           |
+|BadRequest_InvalidAuthentication                  |Authentication to data isn't valid.                                |Permanent           |
 
 ## Category: DownloadFailed
 
