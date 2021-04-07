@@ -6,11 +6,35 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/17/2021
+ms.date: 04/07/2021
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## March 2021
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Create an external table (preview)](external-table.md) | New article. An external table is a schema entity that references data stored outside the Azure Data Explorer database. |
+
+### Management
+
+| Article title | Description |
+|--|--|
+| [Auto delete policy command](kusto/management/auto-delete-policy-command.md), [Auto delete policy](kusto/management/auto-delete-policy.md) | New articles. An auto delete policy on a table sets an expiry date for the table. |
+| [Stored query results (Preview)](kusto/management/stored-query-results.md) | Updated article. Added async mode. |
+
+### Functions library
+
+| Article title | Description |
+|--|--|
+| [binomial_test_fl()](kusto/functions-library/binomial-test-fl.md) | New article. The function `binomial_test_fl()` performs the [binomial test](https://en.wikipedia.org/wiki/Binomial_test). |
+| [comb_fl()](kusto/functions-library/comb-fl.md) | New article. The function `comb_fl()`calculates *C(n, k)*, the number of [combinations](https://en.wikipedia.org/wiki/Combination) for selection of k items out of n, without order. |
+| [factorial_fl()](kusto/functions-library/factorial-fl.md) | New article. The function `factorial_fl()`calculates [factorial](https://en.wikipedia.org/wiki/Factorial) of positive integers (*n!*). |
+| [perm_fl()](kusto/functions-library/perm-fl.md) | New article. The function `perm_fl()`calculates *P(n, k)*, the number of [permutations](https://en.wikipedia.org/wiki/Permutation) for selection of k items out of n, with order. |
 
 ## February 2021
 
@@ -44,7 +68,7 @@ Article title | Description
 [.alter materialized-view docstring](./kusto/management/materialized-views/materialized-view-alter-docstring.md) | New article. Alters the DocString value of an existing materialized view.
 [.alter materialized-view folder](./kusto/management/materialized-views/materialized-view-alter-folder.md) | New article. Alters the folder value of an existing materialized view. 
 [.create-or-alter materialized-view](./kusto/management/materialized-views/materialized-view-create-or-alter.md) | New article. Creates a materialized view or alters an existing materialized view.
-[Materialized views policies](./kusto/management/materialized-views/materialized-view-policies.md) | New article. This article includes information about policies that can be set on a materialized views.
+[Materialized views policies](./kusto/management/materialized-views/materialized-view-policies.md) | New article. This article includes information about policies that can be set on a materialized view.
 [Request queuing policy (Preview)](./kusto/management/request-queuing-policy.md) | New article. A workload group's request queuing policy controls queueing of requests for delayed execution, once a certain threshold of concurrent requests is exceeded.
 
 ### Functions library
