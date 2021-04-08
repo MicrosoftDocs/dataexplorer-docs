@@ -1,3 +1,14 @@
+---
+title: scan operator - Azure Data Explorer
+description: This article describes the scan opertaor in Azure Data Explorer.
+services: data-explorer
+author: orspod
+ms.author: orspodek
+ms.reviewer: alexans
+ms.service: data-explorer
+ms.topic: reference
+ms.date: 04/08/2021
+---
 # scan operator (Preview)
 
 Scans the data, matches and builds sequences based on the predicates.
