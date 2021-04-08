@@ -14,6 +14,8 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 ## March 2021
 
+This section lists the major changes to docs during March 2021.
+
 ### General
 
 | Article title | Description |
