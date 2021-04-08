@@ -31,6 +31,9 @@ Data ingestion is the process by which data is added to a table and is made avai
 |TXT      |`.txt`      |A text file with lines delimited by `\n`. Empty lines are skipped.|
 |W3CLOGFILE |`.log`    |[Web log file](https://www.w3.org/TR/WD-logfile.html) format standardised by the W3C.|
 
+> [!NOTE]
+> Internally, strings are encoded in [UTF-8](https://en.wikipedia.org/wiki/UTF-8).
+
 ## Supported data compression formats
 
 Blobs and files can be compressed through any of the following compression algorithms:
