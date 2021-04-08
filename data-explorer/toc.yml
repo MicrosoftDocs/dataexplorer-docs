@@ -661,7 +661,7 @@
     - name: sample-distinct operator
       href: ./kusto/query/sampledistinctoperator.md
     - name: scan operator
-      href: ./kusto/query/scanoperator.md
+      href: ./kusto/query/scan-operator.md
     - name: search operator
       href: ./kusto/query/searchoperator.md
     - name: serialize operator
