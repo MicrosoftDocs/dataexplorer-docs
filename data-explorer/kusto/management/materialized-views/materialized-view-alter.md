@@ -37,13 +37,13 @@ Requires [Database Admin](../access-control/role-based-authorization.md) permiss
 
 ## Properties
 
-The `dimensionTables` is the only supported property in materialized-view alter command. This property should be used in case query references dimension tables. For more information, see the [.create materialized-view](materialized-view-create.md) command.
+The `dimensionTables` and `lookback` properties are the only supported properties in the materialized-view alter command. For more information about these, see the [`.create materialized-view`](materialized-view-create.md) command.
 
 ## Use cases
 
 * Add aggregations to the view - for example, add `avg` aggregation to `T | summarize count(), min(Value) by Id`, by altering view query to `T | summarize count(), min(Value), avg(Value) by Id`.
 * Change operators other than the summarize operator. Tor example, filter out some records by altering  `T | summarize arg_max(Timestamp, *) by User` to `T | where User != 'someone' | summarize arg_max(Timestamp, *) by User`.
-* Alter with no change to the query because of a change in source table. Tor example, assume a view of `T | summarize arg_max(Timestamp, *) by Id`, which isn't set to `autoUpdateSchema` (see [.create materialized-view](materialized-view-create.md) command). If a column is added or removed from the source table of the view, the view will be automatically disabled. Execute the alter command, with the exact same query, to change the materialized view's schema to align with new table schema. The view still must be explicitly enabled following the change, using the [enable materialized view](materialized-view-enable-disable.md) command.
+* Alter with no change to the query because of a change in source table. Tor example, assume a view of `T | summarize arg_max(Timestamp, *) by Id`, which isn't set to `autoUpdateSchema` (see [`.create materialized-view`](materialized-view-create.md) command). If a column is added or removed from the source table of the view, the view will be automatically disabled. Execute the alter command, with the exact same query, to change the materialized view's schema to align with new table schema. The view still must be explicitly enabled following the change, using the [enable materialized view](materialized-view-enable-disable.md) command.
 
 ## Alter materialized view limitations
 

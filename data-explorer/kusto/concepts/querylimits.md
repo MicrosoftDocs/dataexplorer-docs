@@ -15,17 +15,17 @@ ms.localizationpriority: high
 Kusto is an ad-hoc query engine that hosts large data sets and
 attempts to satisfy queries by holding all relevant data in-memory.
 There's an inherent risk that queries will monopolize the service
-resources without bounds. Kusto provides a number of built-in protections
+resources without bounds. Kusto provides several built-in protections
 in the form of default query limits. If you're considering removing these limits, first determine whether you actually gain any value by doing so.
 
-## Limit on query concurrency
+## Limit on request concurrency
 
-**Query concurrency**  is a limit that a cluster imposes on a number of queries running at the same time.
+**Request concurrency** is a limit that a cluster imposes on several requests running at the same time.
 
-* The default value of the query concurrency limit depends on the SKU cluster it's running on, and is calculated as: `Cores-Per-Node x 10`.
-  * For example, for a cluster that's set-up on D14v2 SKU, where each machine has 16 vCores, the default Query Concurrency limit is `16 cores x10 = 160`.
-* The default value can be changed by configuring the [query throttling policy](../management/query-throttling-policy.md). 
-  * The actual number of queries that can run concurrently on a cluster depends on various factors. The most dominant factors are cluster SKU, cluster's available resources, and query patterns. Query throttling policy can be configured based on load tests performed on production-like query patterns.
+* The default value of the limit depends on the SKU the cluster is running on, and is calculated as: `Cores-Per-Node x 10`.
+  * For example, for a cluster that's set-up on D14v2 SKU, where each machine has 16 vCores, the default limit is `16 cores x10 = 160`.
+* The default value can be changed by configuring the [request rate limit policy](../management/request-rate-limit-policy.md) of the `default` workload group.
+  * The actual number of requests that can run concurrently on a cluster depends on various factors. The most dominant factors are cluster SKU, cluster's available resources, and usage patterns. The policy can be configured based on load tests performed on production-like usage patterns.
 
 ## Limit on result set size (result truncation)
 
@@ -46,10 +46,10 @@ Exceeding the number of records will fail with an exception that says:
 The Kusto DataEngine has failed to execute a query: 'Query result set has exceeded the internal record count limit 500000 (E_QUERY_RESULT_SET_TOO_LARGE).'
 ```
 
-There are a number of strategies for dealing with this error.
+There are several strategies for dealing with this error.
 
 * Reduce the result set size by modifying the query to only return interesting data. This strategy is useful when the initial failing query is too "wide". For example, the query doesn't project away data columns that aren't needed.
-* Reduce the result set size by shifting post-query processing, such as aggregations, into the query itself. The strategy is useful in scenarios where the output of the query is fed to another processing system, and that then does additional aggregations.
+* Reduce the result set size by shifting post-query processing, such as aggregations, into the query itself. The strategy is useful in scenarios where the output of the query is fed to another processing system, and that then does other aggregations.
 * Switch from queries to using [data export](../management/data-export/index.md) when you want to export large sets of data from the service.
 * Instruct the service to suppress this query limit using `set` statements listed below or flags in [client request properties](../api/netfx/request-properties.md).
 
@@ -75,7 +75,7 @@ It's also possible to have more refined control over result truncation
 by setting the value of `truncationmaxsize` (maximum data size in bytes,
 defaults to 64 MB) and `truncationmaxrecords` (maximum number of records,
 defaults to 500,000). For example, the following query sets result truncation
-to happen at either 1,105 records or 1MB, whichever is exceeded.
+to happen at either 1,105 records or 1 MB, whichever is exceeded.
 
 ```kusto
 set truncationmaxsize=1048576;
@@ -95,6 +95,13 @@ Result truncation is applied by default, not just to the
 result stream returned to the client. It's also applied by default to
 any subquery that one cluster issues to another cluster
 in a cross-cluster query, with similar effects.
+
+### Setting multiple result truncation properties
+
+The following apply when using `set` statements, and/or when specifying flags in [client request properties](../api/netfx/request-properties.md).
+
+* If `notruncation` is set, and any of `truncationmaxsize`, `truncationmaxrecords`, or `query_take_max_records` are also set - `notruncation` is ignored.
+* If `truncationmaxsize`, `truncationmaxrecords` and/or `query_take_max_records` are set multiple times - the *lower* value for each property applies.
 
 ## Limit on memory per iterator
 
@@ -129,13 +136,18 @@ set maxmemoryconsumptionperiterator=68719476736;
 MyTable | ...
 ```
 
-In many cases, exceeding this limit can be avoided by sampling the data set. The two queries below show how to do the sampling. The first, is a statistical sampling, that uses a random number generator). The second, is deterministic sampling, done by hashing some column from the data set, usually some ID.
+If the query uses `summarize`, `join`, or `make-series` operators, you can use the [shuffle query](../query/shufflequery.md) strategy to reduce memory pressure on a single machine.
+
+In other cases, you can sample the data set to avoid exceeding this limit. The two queries below show how to do the sampling. The first query is a statistical sampling, using a random number generator. The second query is deterministic sampling, done by hashing some column from the data set, usually some ID.
 
 ```kusto
 T | where rand() < 0.1 | ...
 
 T | where hash(UserId, 10) == 1 | ...
 ```
+
+If `maxmemoryconsumptionperiterator` is set multiple times, for example in both client request properties and using a `set` statement, the lower value applies.
+
 
 ## Limit on memory per node
 
@@ -147,24 +159,9 @@ set max_memory_consumption_per_query_per_node=68719476736;
 MyTable | ...
 ```
 
-## Limit on accumulated string sets
+If `max_memory_consumption_per_query_per_node` is set multiple times, for example in both client request properties and using a `set` statement, the lower value applies.
 
-In various query operations, Kusto needs to "gather" string values and buffer
-them internally before it starts to produce results. These accumulated string
-sets are limited in size and in how many items they can hold. Additionally, each
-individual string shouldn't exceed a certain limit.
-Exceeding one of these limits will result in one of the following errors:
-
-```
-Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the limit of ...GB (see https://aka.ms/kustoquerylimits)')
-
-Runaway query (E_RUNAWAY_QUERY). (message: 'Accumulated string array getting too large and exceeds the maximum count of ..GB items (see http://aka.ms/kustoquerylimits)')
-```
-
-There's currently no switch to increase the maximum string set size.
-As a workaround, rephrase the query to reduce the amount of data that
-has to be buffered. You can project away unneeded columns before
-they're used by operators such as join and summarize. Or, you can use the [shuffle query](../query/shufflequery.md) strategy.
+If the query uses `summarize`, `join`, or `make-series` operators, you can use the [shuffle query](../query/shufflequery.md) strategy to reduce memory pressure on a single machine.
 
 ## Limit execution timeout
 
@@ -202,10 +199,19 @@ At other times, you may want to limit the CPU resources used for a particular
 query. If you run a "background job", for example, the system might tolerate higher
 latencies to give concurrent ad-hoc queries high priority.
 
-Kusto supports specifying two [client request properties](../api/netfx/request-properties.md) when running a query. The properties are  *query_fanout_threads_percent* and *query_fanout_nodes_percent*.
-Both properties are integers that default to the maximum value (100), but may be reduced for a specific query to some other value. 
+Kusto supports specifying two [client request properties](../api/netfx/request-properties.md) when running a query.
+The properties are *query_fanout_threads_percent* and *query_fanout_nodes_percent*.
+Both properties are integers that default to the maximum value (100), but may be reduced for a specific query to some other value.
 
-The first, *query_fanout_threads_percent*, controls the fanout factor for thread use. When it's 100%, the cluster will assign all CPUs on each node. For example, 16 CPUs on a cluster deployed on Azure D14 nodes. When it's 50%, then half of the CPUs will be used, and so on. The numbers are rounded up to a whole CPU, so it's safe to set it to 0. The second, *query_fanout_nodes_percent*, controls how many of the query nodes in the cluster to use per subquery distribution operation. It functions in a similar manner.
+The first, *query_fanout_threads_percent*, controls the fanout factor for thread use.
+When this property is set 100%, the cluster will assign all CPUs on each node. For example, 16 CPUs on a cluster deployed on Azure D14 nodes.
+When this property is set to 50%, then half of the CPUs will be used, and so on.
+The numbers are rounded up to a whole CPU, so it's safe to set the property value to 0.
+
+The second, *query_fanout_nodes_percent*, controls how many of the query nodes in the cluster to use per subquery distribution operation.
+It functions in a similar manner.
+
+If `query_fanout_nodes_percent` or `query_fanout_threads_percent` are set multiple times, for example, in both client request properties and using a `set` statement - the lower value for each property applies.
 
 ## Limit on query complexity
 

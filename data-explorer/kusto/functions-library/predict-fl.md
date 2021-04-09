@@ -13,8 +13,8 @@ ms.date: 09/09/2020
 The function `predict_fl()` predicts using an existing trained machine learning model. This model was built using [Scikit-learn](https://scikit-learn.org/stable/), serialized to string, and saved in a standard Azure Data Explorer table.
 
 > [!NOTE]
-> * `predict_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).
-> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage).
+> * `predict_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
 
 ## Syntax
 
@@ -80,7 +80,7 @@ OccupancyDetection
 
 # [Persistent](#tab/persistent)
 
-For persistent usage, use [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 

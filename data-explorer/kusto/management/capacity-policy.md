@@ -44,35 +44,35 @@ Displays the current capacity policy for the cluster.
 * Explicitly altering all properties of the cluster policy:
 
 ```kusto
-.alter cluster policy capacity
-'{'
-  '"IngestionCapacity": {'
-    '"ClusterMaximumConcurrentOperations": 512,'
-    '"CoreUtilizationCoefficient": 0.75'
-  '},'
-  '"ExtentsMergeCapacity": {'
-    '"MaximumConcurrentOperationsPerNode": 1'
-  '},'
-  '"ExtentsPurgeRebuildCapacity": {'
-    '"MaximumConcurrentOperationsPerNode": 1'
-  '},'
-  '"ExportCapacity": {'
-    '"ClusterMaximumConcurrentOperations": 100,'
-    '"CoreUtilizationCoefficient": 0.25'
-  '},'
-  '"ExtentsPartitionCapacity": {'
-    '"ClusterMaximumConcurrentOperations": 4'
-  '}'
-'}'
+.alter cluster policy capacity ```
+{
+  "IngestionCapacity": {
+    "ClusterMaximumConcurrentOperations": 512,
+    "CoreUtilizationCoefficient": 0.75
+  },
+  "ExtentsMergeCapacity": {
+    "MaximumConcurrentOperationsPerNode": 1
+  },
+  "ExtentsPurgeRebuildCapacity": {
+    "MaximumConcurrentOperationsPerNode": 1
+  },
+  "ExportCapacity": {
+    "ClusterMaximumConcurrentOperations": 100,
+    "CoreUtilizationCoefficient": 0.25
+  },
+  "ExtentsPartitionCapacity": {
+    "ClusterMaximumConcurrentOperations": 4
+  }
+}```
 ```
 
 * Altering a single property of the cluster level policy, keeping all other properties intact:
 
 ```kusto
-.alter-merge cluster policy capacity
-'{'
-  '"ExtentsPartitionCapacity": {'
-    '"MaximumConcurrentOperationsPerNode": 4'
-  '}'
-'}'
+.alter-merge cluster policy capacity ```
+{
+  "ExtentsPartitionCapacity": {
+    "MaximumConcurrentOperationsPerNode": 4
+  }
+}```
 ```

@@ -49,7 +49,7 @@ This query will generate an error from Kusto, indicating that the next
 pattern invocations can't be resolved: `app("ApplicationX")["StartEvents"]`
 and `app("ApplicationX")["StopEvents"]`.
 
-## Syntax
+## Syntax of pattern declaration
 
 `declare` `pattern` *PatternName*
 
@@ -64,7 +64,7 @@ the query, it replaces each pattern invocation with the corresponding pattern bo
 declare pattern app = (applicationId:string)[eventType:string]
 {
     ("ApplicationX").["StopEvents"] = { database("AppX").Events | where EventType == "StopEvent" };
-    ("ApplicationX").["StartEvents"] = { database(applicationId).Events | where EventType == eventType } ;
+    ("ApplicationX").["StartEvents"] = { database("AppX").Events | where EventType == "StartEvents" } ;
 };
 app("ApplicationX").StartEvents
 | join kind=inner app("ApplicationX").StopEvents on CorrelationId
@@ -73,7 +73,7 @@ app("ApplicationX").StartEvents
 
 The expression that is provided for each pattern that is matched, is either a table name or a reference to a [let statement](letstatement.md).
 
-## Syntax
+## Syntax of pattern definition
 
 `declare` `pattern` *PatternName* = `(`*ArgName* `:` *ArgType* [`,` ... ]`)` [`[` *PathName* `:` *PathArgType* `]`]
 `{`

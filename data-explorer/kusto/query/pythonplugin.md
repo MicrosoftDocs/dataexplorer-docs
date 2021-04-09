@@ -130,7 +130,7 @@ print "This is an example for using 'external_artifacts'"
     * You can also use the [partition operator](partitionoperator.md) for partitioning the input data set.
 * Use Kusto's query language whenever possible, to implement the logic of your Python script.
 
-    ## Example
+    ### Example
 
     ```kusto    
     .show operations
@@ -158,7 +158,7 @@ print "This is an example for using 'external_artifacts'"
      * Double quote characters (`"`) for Python string literals in Python scripts
 * Use the [`externaldata` operator](externaldata-operator.md) to obtain the content of a script that you've stored in an external location, such as Azure Blob storage.
   
-    ## Example
+    ### Example
 
     ```kusto
     let script = 
@@ -212,6 +212,7 @@ download the package and its dependencies.
     * For public packages, zip the files that were downloaded in the previous step.
     
     > [!NOTE]
+    > * Make sure to download the package that is compatible to the Python engine of the sandbox runtime (currently 3.6.5)
     > * Make sure to zip the `.whl` files themselves, and not their parent folder.
     > * You can skip `.whl` files for packages that already exist with the same version in the base sandbox image.
 

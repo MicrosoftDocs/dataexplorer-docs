@@ -149,7 +149,7 @@ The [Ingestion](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#I
     1. **Mapping creation**: `StormEvents_CSV_Mapping` mapping is created.
     1. **File ingestion**: A CSV file (in Azure Blob Storage) is queued for ingestion.
 
-1. To create a service principal for authentication, use Azure CLI with the [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command. Set the service principal information with the cluster endpoint and the database name in the form of environment variables that will be used by the program:
+1. To create a service principal for authentication, use Azure CLI with the [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) command. Set the service principal information with the cluster endpoint and the database name in the form of environment variables that will be used by the program:
 
     ```console
     export AZURE_SP_CLIENT_ID="<replace with appID>"

@@ -39,37 +39,37 @@ Shows all policies of the given entity type (database or table) if the given nam
 #### 1. Setting all properties of the policy explicitly, at table level:
 
 ```kusto
-.alter table [table_name] policy merge 
-@'{'
-    '"ExtentSizeTargetInMb": 1024,'
-    '"OriginalSizeInMbUpperBoundForRebuild": 2048,'
-    '"OriginalSizeInMbUpperBoundForMerge": 4096,'
-    '"RowCountUpperBoundForRebuild": 750000,'
-    '"RowCountUpperBoundForMerge": 0,'
-    '"MaxExtentsToMerge": 100,'
-    '"LoopPeriod": "01:00:00",'
-    '"MaxRangeInHours": 8,'
-    '"AllowRebuild": true,'
-    '"AllowMerge": true '
-'}'
+.alter table [table_name] policy merge ```
+{
+  "RowCountUpperBoundForMerge": 16000000,
+  "OriginalSizeMBUpperBoundForMerge": 0,
+  "MaxExtentsToMerge": 100,
+  "LoopPeriod": "01:00:00",
+  "MaxRangeInHours": 24,
+  "AllowRebuild": true,
+  "AllowMerge": true,
+  "Lookback": {
+    "Kind": "Default"
+  }
+}```
 ```
 
 #### 2. Setting all properties of the policy explicitly, at database level:
 
 ```kusto
-.alter database [database_name] policy merge 
-@'{'
-    '"ExtentSizeTargetInMb": 1024,'
-    '"OriginalSizeInMbUpperBoundForRebuild": 2048,'
-    '"OriginalSizeInMbUpperBoundForMerge": 4096,'
-    '"RowCountUpperBoundForRebuild": 750000,'
-    '"RowCountUpperBoundForMerge": 0,'
-    '"MaxExtentsToMerge": 100,'
-    '"LoopPeriod": "01:00:00",'
-    '"MaxRangeInHours": 8,'
-    '"AllowRebuild": true,'
-    '"AllowMerge": true'
-'}'
+.alter database [database_name] policy merge ``
+{
+  "RowCountUpperBoundForMerge": 16000000,
+  "OriginalSizeMBUpperBoundForMerge": 0,
+  "MaxExtentsToMerge": 100,
+  "LoopPeriod": "01:00:00",
+  "MaxRangeInHours": 24,
+  "AllowRebuild": true,
+  "AllowMerge": true,
+  "Lookback": {
+    "Kind": "Default"
+  }
+}```
 ```
 
 #### 3. Setting the *default* merge policy at database level:
@@ -81,19 +81,19 @@ Shows all policies of the given entity type (database or table) if the given nam
 #### 4. Altering a single property of the policy at database level, keeping all other properties as-is:
 
 ```kusto
-.alter-merge database [database_name] policy merge
-@'{'
-    '"ExtentSizeTargetInMb": 1024'
-'}'
+.alter-merge database [database_name] policy merge ```
+{
+    "MaxRangeInHours": 24
+}`````
 ```
 
 #### 5. Altering a single property of the policy at table level, keeping all other properties as-is:
 
 ```kusto
-.alter-merge table [table_name] policy merge
-@'{'
-    '"RowCountUpperBoundForRebuild": 750000'
-'}'
+.alter-merge table [table_name] policy merge ```
+{
+    "MaxRangeInHours": 24
+}```
 ```
 
 All of the above returns the updated extents merge policy for the entity (database or table specified as a qualified name) as their output.

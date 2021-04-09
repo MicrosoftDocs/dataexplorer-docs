@@ -20,8 +20,8 @@ Kusto permits [stored functions](../../query/schema-entities/stored-functions.md
 For example, the stored function MyFunction:
 
 |Name |Parameters|Body|Folder|DocString
-|---|---|---|---|---
-|MyFunction |(myLimit: long)| {StormEvents &#124; limit myLimit}|MyFolder|Demo function with parameter||
+|---|---|---|---|---|
+|MyFunction |(myLimit: long)| {StormEvents &#124; limit myLimit}|MyFolder|Demo function with parameter|
 
 can be called like this:
 

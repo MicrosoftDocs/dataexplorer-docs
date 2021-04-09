@@ -28,11 +28,12 @@ Kusto uses a URI format to describe these storage resources and the properties
 necessary to access them (such as security credentials).
 
 
-|Provider                   |Scheme    |URI template                          |
-|---------------------------|----------|--------------------------------------|
-|Azure Storage Blob         |`https://`|`https://`*Account*`.blob.core.windows.net/`*Container*[`/`*BlobName*][`?`*SasKey* \| `;`*AccountKey*]|
-|Azure Data Lake Store Gen 2|`abfss://`|`abfss://`*Filesystem*`@`*Account*`.dfs.core.windows.net/`*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
-|Azure Data Lake Store Gen 1|`adl://`  |`adl://`*Account*.azuredatalakestore.net/*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
+|Provider                     |Scheme    |URI template                          |
+|-----------------------------|----------|--------------------------------------|
+|Azure Storage Blob-AccountKey|`https://`|`https://`*Account*`.blob.core.windows.net/`*Container*[`/`*BlobName*][`;`*AccountKey*]|
+|Azure Storage Blob - SasKey  |`https://`|`https://`*Account*`.blob.core.windows.net/`*Container*[`/`*BlobName*][`?`*SasKey*]|
+|Azure Data Lake Store Gen 2  |`abfss://`|`abfss://`*Filesystem*`@`*Account*`.dfs.core.windows.net/`*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
+|Azure Data Lake Store Gen 1  |`adl://`  |`adl://`*Account*.azuredatalakestore.net/*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
 
 ## Azure Storage Blob
 
@@ -51,6 +52,8 @@ the account key or SAS):
 
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;<storage_account_key_text, ends with '=='>"`
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"` 
+
+To learn how to generate a SAS link, see [Get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
 
 ## Azure Data Lake Store
 

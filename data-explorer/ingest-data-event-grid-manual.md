@@ -25,6 +25,7 @@ In this article, you learn how to create manually the resources needed for Event
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* [A cluster and database](create-cluster-database-portal.md).
 * [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
     * Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
 * [An Event Hub namespace and Event Hub](/azure/event-hubs/event-hubs-create).
@@ -47,10 +48,10 @@ In this article, you learn how to create manually the resources needed for Event
     |---|---|---|
     | Name | *test-grid-connection* | The name of the event grid subscription that you want to create.|
     | Event Schema | *Event Grid Schema* | The schema that should be used for the Event Grid. |
-    | Topic Type | *Storage account* | The type of Event Grid topic. Automatically populated.|
+    | Topic Type | *Storage account* | The type of event grid topic. Automatically populated.|
     | Source Resource | *gridteststorage1* | The name of your storage account. Automatically populated.|
     | System Topic Name | *gridteststorage1...* | The system topic where Azure Storage publishes events. This system topic then forwards the event to a subscriber that receives and processes events. Automatically populated.|
-    | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select one of the currently supported types: Microsoft.Storage.BlobCreated. or Microsoft.Storage.BlobRenamed|
+    | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select one of the supported types: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage. |
 
 1. In **ENDPOINT DETAILS**, select **Event Hubs**.
 

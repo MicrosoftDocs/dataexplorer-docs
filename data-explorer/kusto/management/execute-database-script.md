@@ -30,6 +30,7 @@ Executes batch of control commands in scope of a single database.
 | Property            | Type            | Description                          |
 |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
 | `ContinueOnErrors`            | `bool`        | If set to `false` - the script will stop on the first error. If set to `true` - the script execution continues. Default: `false`. |
+| `ThrowOnErrors`            | `bool`        | If set to `true` - the script will throw an error (fail) on the first error. Does not work together with `ContinueOnErrors`, only one is allowed. Default: `false`. |
 
 ## Output
 
@@ -48,7 +49,7 @@ Each command appearing in the script will be reported as a separate record in th
 >* Commands are executed sequentially, in the order they appear in the input script.
 >* Script execution is non-transactional, and no rollback is performed upon error. It's advised to use the idempotent form of commands when using `.execute database script`.
 >* Default behavior of the command - fail on the first error, it can be changed using property argument.
->* Read-only control commands (.show commands) aren't executed and are reported with status `Skipped`.
+>* Read-only control commands (`.show` commands) aren't executed and are reported with status `Skipped`.
 
 ## Example
 

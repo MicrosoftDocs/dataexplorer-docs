@@ -51,6 +51,8 @@ The command requires [table admin or database admin permission](../access-contro
 
 * For suggestions to overcome storage errors during export commands, see [failures during export commands](export-data-to-storage.md#failures-during-export-commands).
 
+* External table columns are mapped to suitable target format data types, according to [data types mapping](export-data-to-storage.md#data-types-mapping) rules.
+
 ### Number of files
 
 The number of files written per partition depends on the settings:
@@ -80,9 +82,8 @@ PartitionedExternalBlob is an external table, defined as follows:
 ```kusto
 .create external table PartitionedExternalBlob (Timestamp:datetime, CustomerName:string) 
 kind=blob
-partition by 
-   "CustomerName="CustomerName,
-   bin(Timestamp, 1d)
+partition by (CustomerName:string=CustomerName, Date:datetime=startofday(Timestamp))   
+pathformat = ("CustomerName=" CustomerName "/" datetime_pattern("yyyy/MM/dd", Date))   
 dataformat=csv
 ( 
    h@'http://storageaccount.blob.core.windows.net/container1;secretKey'
