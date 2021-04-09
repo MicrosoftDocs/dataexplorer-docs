@@ -36,7 +36,7 @@ A request rate limit of kind `ConcurrentRequests` includes the following propert
 
 When a request exceeds the limit on maximum number of concurrent requests:
   * The request's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
-  * The error message will include the the *origin* of the throttling and the *capacity* that's been exceeded. For example:
+  * The error message will include the *origin* of the throttling and the *capacity* that's been exceeded. For example:
     * Examples:
   
       1. A throttled `.create table` command, that was classified to the `default` workload group, which has a limit of 80 concurrent requests at the scope of the workload group: 
