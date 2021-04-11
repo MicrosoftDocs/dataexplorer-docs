@@ -62,7 +62,7 @@ For organizations who wish to have management (throttling, retries, monitors, al
 
 * **Kafka connector**, see [Ingest data from Kafka into Azure Data Explorer](ingest-data-kafka.md).
 
-* **[Power Automate](https://flow.microsoft.com/)**: An automated workflow pipeline to Azure Data Explorer. Power Automate can be used to execute a query and do preset actions using the query results as a trigger. See [Azure Data Explorer connector to Power Automate (Preview)](flow.md).
+* **[:::no-loc text="Power Automate":::](https://flow.microsoft.com/)**: An automated workflow pipeline to Azure Data Explorer. :::no-loc text="Power Automate"::: can be used to execute a query and do preset actions using the query results as a trigger. See [Azure Data Explorer connector to :::no-loc text="Power Automate"::: (Preview)](flow.md).
 
 * **Apache Spark connector**:  An open-source project that can run on any Spark cluster. It implements data source and data sink for moving data across Azure Data Explorer and Spark clusters. You can build fast and scalable applications targeting data-driven scenarios. See [Azure Data Explorer Connector for Apache Spark](spark-connector.md).
 
