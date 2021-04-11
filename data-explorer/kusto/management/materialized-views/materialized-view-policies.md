@@ -20,7 +20,7 @@ A materialized view has a [retention policy](../retentionpolicy.md) and [caching
 
 Both policies are applied on the *materialized part* of the materialized view only.  For an explanation of the differences between the *materialized part* and *delta* part, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work). For example, if the caching policy of a materialized view is set to 7d, but the caching policy of its source table is set to 0d, there may still be disk misses when querying the materialized view. This will happen because the source table (*delta part*) participates in the query as well.
 
-The retention policy of the materialized view is unrelated to the retention policy of the source table. If the source table records aren't otherwise used, the retention policy of the source table can be dropped to a minimum. The materialized view will still store the data according to the retention policy set on the view. While materialized views are in preview mode, the recommendation is to allow a minimum of at least seven days and recoverability set to true. This setting allows for fast recovery for errors and for diagnostic purposes.
+The retention policy of the materialized view is unrelated to the retention policy of the source table. If the source table records aren't otherwise used, the retention policy of the source table can be dropped to a minimum. The materialized view will still store the data according to the retention policy set on the view. XXX YIFAT HAS THIS REC CHANGED?? XXX While materialized views are in preview mode, the recommendation is to allow a minimum of at least seven days and recoverability set to true. This setting allows for fast recovery for errors and for diagnostic purposes.
 
 > [!NOTE]
 > Zero retention policy on the source table isn't supported.
@@ -31,7 +31,7 @@ A [partitioning policy](../partitioningpolicy.md) can be applied on a materializ
 
 For the commands to alter a materialized view's partitioning policy, see [partitioning policy commands](../partitioning-policy.md#alter-and-alter-merge-policy).
 
-Adding a partitioning policy on a materialized views will increase the number of extents in the materialized view, and will create more "work" for the materialization process. For more information on why this happens, see the extents rebuild process mentioned in [how materialized views work](materialized-view-overview.md#how-materialized-views-work)). In [EngineV3](../../../engine-v3.md) clusters, this process is much more efficient than in V2. Therefore, we recommend to only add a partitioning policy on a materialized view only if the cluster is a V3 cluster (preview).
+Adding a partitioning policy on a materialized views will increase the number of extents in the materialized view, and will create more "work" for the materialization process. For more information on why this happens, see the extents rebuild process mentioned in [how materialized views work](materialized-view-overview.md#how-materialized-views-work)). In [EngineV3](../../../engine-v3.md) clusters, this process is much more efficient than in V2. Therefore, we recommend to only add a partitioning policy on a materialized view only if the cluster is a V3 cluster.
 
 ## Row level security policy
 
