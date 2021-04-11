@@ -1,5 +1,5 @@
 ---
-title: Stored query results (Preview) - Azure Data Explorer
+title: Stored query results - Azure Data Explorer
 description: This article describes how to create and use stored query results in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 12/3/2020
 ---
 
-# Stored query results (Preview)
+# Stored query results
 
 Stored query results is a mechanism that temporarily stores the result of a query on the service. You can reference this data in later queries.
 Create the stored query object with a command that uses the name of the created entity and the executed query.
@@ -23,8 +23,7 @@ Stored query results can be useful in the following scenarios:
   explored using other queries.
 
 > [!NOTE]
-> * The stored query results are in preview phase, and shouldn't be used for production scenarios. 
-> * This feature is only available when [EngineV3](../../engine-v3.md) is enabled.
+> This feature is only available when [EngineV3](../../engine-v3.md) is enabled.
 
 Stored query results can be accessed for up to 24 hours from the moment of creation. Updates to security policies (for example, database access, row level security, and so on) aren't propagated to stored query results. Use [`.drop stored_query_results`](#drop-stored_query_results) if there is user permission revocation. A stored query result can only be accessed by the same principal identity that created the stored query. 
 
