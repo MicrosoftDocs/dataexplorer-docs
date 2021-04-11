@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/08/2021
+ms.date: 04/11/2021
 ---
 # scan operator (preview)
 
@@ -34,17 +34,17 @@ T
 
 *T* `| scan` [ `with_match_id` `=` *MatchIdColumnName* ] [ `declare` `(` *ColumnDeclarations* `)` ] `with` `(` *StepDefinitions* `)`
 
-### *ColumnDeclarations* syntax
+***ColumnDeclarations* syntax:**
 
 *ColumnName* `:` *ColumnType*[`=` *DefaultValue* ] [`,` ... ]
 
-### *StepDefinition* syntax
+***StepDefinition* syntax:**
 
 `step` *StepName* `:` *Condition* [ `=>` *Column* `=` *Assignment* [`,` ... ] ] `;`
 
 ## Arguments
 
-* *MatchIdColumnName*:  Indicates the name of a column of type `long` that is appended to the output as part of scan's execution. Indicates the 0-based index of the match for the row. (Optional)
+* *MatchIdColumnName*:  Indicates the name of a column of type `long` that is appended to the output as part of the scan execution. Indicates the 0-based index of the match for the row. (Optional)
 * *ColumnDeclarations*: Declares an extension to the schema of the operator’s source. Aditional columns are assigned in the steps or *DefaultValue* if not assigned. *DefaultValue* is `null` not specified. (Optional)
 * *StepName*: Used to reference values in the state of scan for conditions and assignments. The step name must be unique.
 * *Condition*: A Boolean expression that defines which records from the input matches the step. A record matches the step when the condition is true with the step’s state or with the previous step’s state.
