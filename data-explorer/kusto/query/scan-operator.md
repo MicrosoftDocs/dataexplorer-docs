@@ -34,11 +34,11 @@ T
 
 *T* `| scan` [ `with_match_id` `=` *MatchIdColumnName* ] [ `declare` `(` *ColumnDeclarations* `)` ] `with` `(` *StepDefinitions* `)`
 
-***ColumnDeclarations* syntax:**
+### *ColumnDeclarations* syntax
 
 *ColumnName* `:` *ColumnType*[`=` *DefaultValue* ] [`,` ... ]
 
-***StepDefinition* syntax:**
+### *StepDefinition* syntax
 
 `step` *StepName* `:` *Condition* [ `=>` *Column* `=` *Assignment* [`,` ... ] ] `;`
 
@@ -58,7 +58,7 @@ A record for each match of a record from the input to a step. The schema of the 
 
 ### Cumulative sum
 
-Calculate the cumulative sum for an input column. The result of this example is the same as using [row_cumsum()](rowcumsumfunction.md).
+Calculate the cumulative sum for an input column. The result of this example is equivalent to using [row_cumsum()](rowcumsumfunction.md).
 
 ```kusto
 range x from 1 to 10 step 1 
@@ -193,7 +193,7 @@ Events
 
 ### Calculate a custom funnel of events
 
-Calculate a funnel completion of the sequence  `Hail` -> `Tornado` -> `Thunderstorm Wind` by `State` with custom thresholds on the times between the events (`Tornado` within `1h` and `Thunderstorm Wind` within `2h`). This example is similar to [funnel_sequence_completion](funnel-sequence-completion-plugin.md) but allows greater flexibility.
+Calculate a funnel completion of the sequence  `Hail` -> `Tornado` -> `Thunderstorm Wind` by `State` with custom thresholds on the times between the events (`Tornado` within `1h` and `Thunderstorm Wind` within `2h`). This example is similar to the [funnel_sequence_completion plugin](funnel-sequence-completion-plugin.md), but allows greater flexibility.
 
 ```kusto
 StormEvents
@@ -224,7 +224,7 @@ StormEvents
 
 ### Scan's state
 
-The state that is used behind the scenes by scan is a set of records, with the same schema of the output (source + declared columns).
+The state that is used behind the scenes by `scan` is a set of records, with the same schema of the output (source + declared columns).
 Each step has its own state, the state of step *k* has *k* records in it – each record in the step’s state corresponds to a step up to *k*.
 
 For example, if a scan operator has *n* steps named *s_1*, *s_2*, ..., *s_n* then step *s_k* would have *k* records in its state corresponding to *s_1*, *s_2*, ..., *s_k*.
