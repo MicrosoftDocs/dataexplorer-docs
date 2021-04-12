@@ -13,7 +13,7 @@ ms.date: 01/18/2021
 
 A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests. When a request's execution begins, the request is classified and assigned to a specific workload group. Then, the request runs using the policies assigned to the workload group.
 
-You can define up to 10 custom workload groups, excluding the two built-in workload groups.
+Workload groups are defined per cluster. Up to 10 custom workload groups may be defined in addition to the two built-in workload groups.
 
 > [!NOTE]
 > Requests that aren't queries or control commands aren't included in the scope of workload groups. For example: streaming ingestion requests.
