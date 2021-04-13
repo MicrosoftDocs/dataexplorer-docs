@@ -67,7 +67,9 @@ T | where Event=="Start" | project ActivityId, Started=Timestamp
 
 If the compound key is too unique, but each key is not unique enough, use this `hint` to shuffle the data by all the keys of the shuffled operator.
 
-There are cases where `hint.strategy=shuffle` will be ignored and the query will not run in shuffle strategy like when the `join` has other shuffle-able operator (`join`, `summarize`, or `make-series`) on the left side or the right side or when the `summarize` appears after other shuffle-able operator (`join`, `summarize`, or `make-series`) in the query.
+In some cases, the `hint.strategy=shuffle` will be ignored, and the query won't run in shuffle strategy. Example scenarios are: 
+* The `join` has another shuffle-able operator (`join`, `summarize`, or `make-series`) on the left side or the right side.
+* The `summarize` appears after other shuffle-able operator (`join`, `summarize`, or `make-series`) in the query.
 
 for example:
 
