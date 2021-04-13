@@ -218,7 +218,6 @@ gcs.prod.monitoring.core.windows.net:443
 production.diagnostics.monitoring.core.windows.net:443
 graph.windows.net:443
 *.update.microsoft.com:443
-shavamanifestcdnprod1.azureedge.net:443
 login.live.com:443
 wdcp.microsoft.com:443
 login.microsoftonline.com:443
