@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/08/2021
+ms.date: 04/13/2021
 ---
 
 # Materialized views policies
@@ -20,7 +20,7 @@ A materialized view has a [retention policy](../retentionpolicy.md) and [caching
 
 Both policies are applied on the *materialized part* of the materialized view only.  For an explanation of the differences between the *materialized part* and *delta* part, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work). For example, if the caching policy of a materialized view is set to 7d, but the caching policy of its source table is set to 0d, there may still be disk misses when querying the materialized view. This will happen because the source table (*delta part*) participates in the query as well.
 
-The retention policy of the materialized view is unrelated to the retention policy of the source table. If the source table records aren't otherwise used, the retention policy of the source table can be dropped to a minimum. The materialized view will still store the data according to the retention policy set on the view. XXX YIFAT HAS THIS REC CHANGED?? XXX While materialized views are in preview mode, the recommendation is to allow a minimum of at least seven days and recoverability set to true. This setting allows for fast recovery for errors and for diagnostic purposes.
+The retention policy of the materialized view is unrelated to the retention policy of the source table. Retention policy of source table can be shorter than the retention policy of the materialized view, if source records are required for a shorter period. We recommend a minimum retention policy of at least few days, and recoverability set to true on the source table. This setting allows for fast recovery for errors and for diagnostic purposes.
 
 > [!NOTE]
 > Zero retention policy on the source table isn't supported.
