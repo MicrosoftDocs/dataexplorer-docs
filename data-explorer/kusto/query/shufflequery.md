@@ -66,7 +66,10 @@ T | where Event=="Start" | project ActivityId, Started=Timestamp
 ```
 
 If the compound key is too unique, but each key is not unique enough, use this `hint` to shuffle the data by all the keys of the shuffled operator.
-When the shuffled operator has other shuffle-able operators, like `summarize` or `join`, the query becomes more complex and then hint.strategy=shuffle won't be applied.
+
+In some cases, the `hint.strategy=shuffle` will be ignored, and the query won't run in shuffle strategy. Example scenarios are: 
+* The `join` has another shuffle-able operator (`join`, `summarize`, or `make-series`) on the left side or the right side.
+* The `summarize` appears after other shuffle-able operator (`join`, `summarize`, or `make-series`) in the query.
 
 for example:
 
@@ -85,31 +88,8 @@ on ActivityId, numeric_column
 | summarize avg(Duration)
 ```
 
-If you apply the `hint.strategy=shuffle` (instead of ignoring the strategy during query-planning) and shuffle the data by the compound key [`ActivityId`, `numeric_column`], the result won't be correct.
-The `summarize` operator is on the left side of the `join` operator. This operator will group by a subset of the `join` keys, which in our case is `ActivityId`. Thus, the `summarize` will group by the key `ActivityId`, while the data is partitioned by the compound key [`ActivityId`, `numeric_column`].
-Shuffling by the compound key [`ActivityId`, `numeric_column`] doesn't necessarily mean that shuffling for the key `ActivityId` is valid, and the results may be incorrect.
-
-This example assumes that the hash function used for a compound key is `binary_xor(hash(key1, 100) , hash(key2, 100))`:
-
-```kusto
-
-datatable(ActivityId:string, NumericColumn:long)
-[
-"activity1", 2,
-"activity1" ,1,
-]
-| extend hash_by_key = binary_xor(hash(ActivityId, 100) , hash(NumericColumn, 100))
-```
-
-|ActivityId|NumericColumn|hash_by_key|
-|---|---|---|
-|activity1|2|56|
-|activity1|1|65|
-
-The compound key for both records was mapped to different partitions (56 and 65), but these two records have the same value of `ActivityId`. The `summarize` operator on the left side of the `join` expects similar values of the column `ActivityId` to be in the same partition. This query will produce incorrect results.
-
-You can solve this issue by using `hint.shufflekey` to specify the shuffle key on the join to `hint.shufflekey = ActivityId`. This key is common for all shuffle-able operators.
-The shuffling is safe in this case, because both `join` and `summarize` shuffle by the same key. Thus, all similar values will be in the same partition and the results are correct:
+In this query, the join has summarize on its left side, so using `hint.strategy=shuffle` will not apply shuffle strategy to the query.
+To overcome this issue and run in shuffle strategy, choose the key which is common among summarize and join. In this case, this key is `ActivityId`. Use the hint `hint.shufflekey` to specify the shuffle key on the join to `hint.shufflekey = ActivityId`:
 
 ```kusto
 T
