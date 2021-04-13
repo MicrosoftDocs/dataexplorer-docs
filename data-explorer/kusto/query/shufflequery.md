@@ -88,8 +88,8 @@ on ActivityId, numeric_column
 | summarize avg(Duration)
 ```
 
-In this query, the join has summarize on it's left side and therefore using `hint.strategy=shuffle` will not apply shuffle strategy to the query.
-In this kind of queries, to make it run in shuffle strategy, choose the key which is common among summarize and join which is `ActivityId` in this example and use the hint `hint.shufflekey` to specify the shuffle key on the join to `hint.shufflekey = ActivityId`:
+In this query, the join has summarize on its left side, so using `hint.strategy=shuffle` will not apply shuffle strategy to the query.
+To overcome this issue and run in shuffle strategy, choose the key which is common among summarize and join. In this case, this key is `ActivityId`. Use the hint `hint.shufflekey` to specify the shuffle key on the join to `hint.shufflekey = ActivityId`:
 
 ```kusto
 T
