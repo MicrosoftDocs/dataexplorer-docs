@@ -181,7 +181,7 @@ Log JSON strings include elements listed in the following table:
 |IngestionSourcePath|Path of the ingestion data source or blob URI
 |RootActivityId     |Activity ID
 |Details            |Detailed description of the failure and error message
-|ErrorCode          |Error code 
+|ErrorCode          |[Ingestion error code] (error-codes.md)
 |FailureStatus      |`Permanent` or `Transient`. Retry of a transient failure may succeed.
 |OriginatesFromUpdatePolicy|True if failure originates from an update policy
 |ShouldRetry        |True if retry may succeed
