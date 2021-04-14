@@ -62,11 +62,11 @@ let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_
         y_pred_low_series = kargs["y_pred_low_series"]
         y_pred_high_series = kargs["y_pred_high_series"]
         result = df
-        result[y_pred_series] = df[y_series]
+        sr = pd.Series(df[y_pred_series])
         if y_pred_low_series != '':
-            result[y_pred_low_series] = df[y_series]
+            srl = pd.Series(df[y_pred_low_series])
         if y_pred_high_series != '':
-            result[y_pred_high_series] = df[y_series]
+            srh = pd.Series(df[y_pred_high_series])
         from fbprophet import Prophet
         df1 = pd.DataFrame(columns=["ds", "y"])
         for i in range(df.shape[0]):
@@ -78,15 +78,20 @@ let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_
             m.fit(df2)
             future = df1[["ds"]]
             forecast = m.predict(future)
-            result.loc[i, y_pred_series] = list(forecast["yhat"])
+            sr[i] = list(forecast["yhat"])
             if y_pred_low_series != '':
-                result.loc[i, y_pred_low_series] = list(forecast["yhat_lower"])
+                srl[i] = list(forecast["yhat_lower"])
             if y_pred_high_series != '':
-                result.loc[i, y_pred_high_series] = list(forecast["yhat_upper"])
+                srh[i] = list(forecast["yhat_upper"])
+        result[y_pred_series] = sr
+        if y_pred_low_series != '':
+            result[y_pred_low_series] = srl
+        if y_pred_high_series != '':
+            result[y_pred_high_series] = srh
     ```;
     tbl
      | evaluate python(typeof(*), code, kwargs
-//  fbprophet v0.7.1 for Python 3.6.5
+//  fbprophet v0.7.1 for Python 3.6.5, SAS key till 3/26/2030
 , external_artifacts=pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
 };
 //
@@ -120,7 +125,7 @@ series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_
         from sandbox_utils import Zipackage
         Zipackage.install("fbprophet.zip")
         import os
-        os.chdir("D:\\\\Library\\\\mingw-w64\\\\bin")   #  must set this otherwise loading the mingw-w64 DLLs fails
+        os.chdir("D:\\\\Library\\\\mingw-w64\\\\bin")   #  If you don't set this, loading the mingw-w64 DLLs will fail
         ts_series = kargs["ts_series"]
         y_series = kargs["y_series"]
         y_pred_series = kargs["y_pred_series"]
@@ -128,11 +133,11 @@ series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_
         y_pred_low_series = kargs["y_pred_low_series"]
         y_pred_high_series = kargs["y_pred_high_series"]
         result = df
-        result[y_pred_series] = df[y_series]
+        sr = pd.Series(df[y_pred_series])
         if y_pred_low_series != '':
-            result[y_pred_low_series] = df[y_series]
+            srl = pd.Series(df[y_pred_low_series])
         if y_pred_high_series != '':
-            result[y_pred_high_series] = df[y_series]
+            srh = pd.Series(df[y_pred_high_series])
         from fbprophet import Prophet
         df1 = pd.DataFrame(columns=["ds", "y"])
         for i in range(df.shape[0]):
@@ -144,15 +149,20 @@ series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_
             m.fit(df2)
             future = df1[["ds"]]
             forecast = m.predict(future)
-            result.loc[i, y_pred_series] = list(forecast["yhat"])
+            sr[i] = list(forecast["yhat"])
             if y_pred_low_series != '':
-                result.loc[i, y_pred_low_series] = list(forecast["yhat_lower"])
+                srl[i] = list(forecast["yhat_lower"])
             if y_pred_high_series != '':
-                result.loc[i, y_pred_high_series] = list(forecast["yhat_upper"])
+                srh[i] = list(forecast["yhat_upper"])
+        result[y_pred_series] = sr
+        if y_pred_low_series != '':
+            result[y_pred_low_series] = srl
+        if y_pred_high_series != '':
+            result[y_pred_high_series] = srh
     ```;
     tbl
      | evaluate python(typeof(*), code, kwargs
-//  fbprophet v0.7.1 for Python 3.6.5
+//  fbprophet v0.7.1 for Python 3.6.5, SAS key till 3/26/2030
 , external_artifacts=pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
 }
 ~~~

@@ -11,9 +11,9 @@ ms.date: 01/18/2021
 ---
 # Workload groups (Preview)
 
-A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests. When a request's execution begins, the request is classified and assigned to a specific workload group. Then, the request runs using the policies assigned to the workload group.
+A workload group serves as a container for requests (queries, commands) that have similar classification criteria. Workload groups and [workload group policies](#workload-group-policies) are a means of resource governance for incoming requests to the cluster, and allow aggregate monitoring of the requests. When a request's execution begins, the request is classified and assigned to a specific workload group. Then, the request runs using the policies assigned to the workload group.
 
-You can define up to 10 custom workload groups, excluding the two built-in workload groups.
+Workload groups are defined at the cluster level. Up to 10 custom workload groups may be defined in addition to the two built-in workload groups.
 
 > [!NOTE]
 > Requests that aren't queries or control commands aren't included in the scope of workload groups. For example: streaming ingestion requests.
@@ -37,6 +37,12 @@ You can:
 * Classify requests into the `default` workload group.
 
 Monitor what gets classified to the internal workload group and the statistics of those requests using the [Monitoring recommendations](#monitoring).
+
+> [!NOTE]
+> * A limit on the maximum amount of concurrent *queries* may have been defined on some cluster using the optional *"Query throttling policy"*, which has been deprecated.
+> * In these clusters, the limit on the maximum amount of concurrent *queries* was automatically applied on the `default` workload group's [request rate limits policies](request-rate-limit-policy.md).
+> * While the old limit applied only to *queries*, the new limit applies to *all reqeusts* - queries and control commands.
+
 
 ### Internal workload group
 

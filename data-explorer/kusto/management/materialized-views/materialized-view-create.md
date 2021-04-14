@@ -194,6 +194,7 @@ The following aggregation functions are supported:
 * [`hll`](../../query/hll-aggfunction.md)
 * [`make_set`](../../query/makeset-aggfunction.md)
 * [`make_list`](../../query/makelist-aggfunction.md)
+* [`make_bag`](../../query/make-bag-aggfunction.md)
 * [`percentile`, `percentiles`](../../query/percentiles-aggfunction.md)
 * [`tdigest`](../../query/tdigest-aggfunction.md)
 

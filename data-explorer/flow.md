@@ -9,9 +9,9 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ---
 
-# Azure Data Explorer connector to Power Automate (Preview)
+# Azure Data Explorer connector to :::no-loc text="Power Automate"::: (Preview)
 
-The Azure Data Explorer Power Automate (previously Microsoft Flow) connector allows Azure Data Explorer to use the flow capabilities of [Microsoft Power Automate](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task.
+The Azure Data Explorer :::no-loc text="Power Automate"::: (previously Microsoft Flow) connector allows Azure Data Explorer to use the flow capabilities of [Microsoft :::no-loc text="Power Automate":::](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task.
 
 You can:
 
@@ -20,7 +20,7 @@ You can:
 * Schedule control commands on clusters.
 * Export and import data between Azure Data Explorer and other databases. 
 
-For more information, see [Azure Data Explorer Power Automate connector usage examples](flow-usage.md).
+For more information, see [Azure Data Explorer :::no-loc text="Power Automate"::: connector usage examples](flow-usage.md).
 
 ##  Sign in 
 
@@ -61,10 +61,10 @@ From now on, this flow will run by using these application credentials.
 
 ## Find the Azure Kusto connector
 
-To use the Power Automate connector, you need to first add a trigger. 
+To use the :::no-loc text="Power Automate"::: connector, you need to first add a trigger. 
 You can define a trigger based on a recurring time period, or as a response to a previous flow action.
 
-1. [Create a new flow](https://flow.microsoft.com/manage/flows/new), or, from the Microsoft Power Automate home page, select the **My flows** > **+ New**.
+1. [Create a new flow](https://flow.microsoft.com/manage/flows/new), or, from the Microsoft :::no-loc text="Power Automate"::: home page, select the **My flows** > **+ New**.
 
     ![Screenshot of the Microsoft Power Automate home page, with My flows and New highlighted](./media/flow/flow-newflow.png)
 
@@ -160,10 +160,10 @@ You can include a step in any flow to send reports by email, to any email addres
 ## Check if your flow succeeded
 
 To check if your flow succeeded, see the flow's run history:
-1. Go to the [Microsoft Power Automate home page](https://flow.microsoft.com/).
+1. Go to the [Microsoft :::no-loc text="Power Automate"::: home page](https://flow.microsoft.com/).
 1. From the main menu, select [My flows](https://flow.microsoft.com/manage/flows).
    
-   ![Screenshot of Microsoft Power Automate main menu, with My flows highlighted](./media/flow/flow-myflows.png)
+   ![Screenshot of Microsoft :::no-loc text="Power Automate"::: main menu, with My flows highlighted](./media/flow/flow-myflows.png)
 
 1. On the row of the flow you want to investigate, select the more commands icon, and then select **Run history**.
 
