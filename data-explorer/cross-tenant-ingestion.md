@@ -6,11 +6,11 @@ ms.author: orspodek
 ms.reviewer: miwalia
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/11/2021
+ms.date: 04/14/2021
 ---
 # Allow cross-tenant ingestion
 
-If you want to ingest data from Event Hub to Azure Data Explorer, and the two services are in different tenants, this article will show you how. The process involves invoking [Kusto API](/rest/api/azurerekusto/dataconnections/createorupdate) through PowerShell to build a Kusto data connection. You will use [auxiliary tokens](/azure/azure-resource-manager/management/authenticate-multi-tenant) to authenticate.
+If you want to ingest data from Event Hub to Azure Data Explorer, and the two services are in different tenants, this article will show you how. The process involves invoking [Kusto API](/rest/api/azurerekusto/dataconnections/createorupdate) through PowerShell to build a Kusto data connection. You'll use [auxiliary tokens](/azure/azure-resource-manager/management/authenticate-multi-tenant) to authenticate.
 
 ## Prerequisites
 
@@ -41,7 +41,7 @@ If you want to ingest data from Event Hub to Azure Data Explorer, and the two se
 
 ## Get access token for Tenant1
 
-1. The source code for “Get-AzCachedAccessToken” function can be found at [PowerShell gallery](https://www.powershellgallery.com/packages/AzureSimpleREST/0.2.64/Content/internal%5Cfunctions%5CGet-AzCachedAccessToken.ps1). You can include this in your personal PowerShell profile to make it easier to call, or run the following function and use it in further commands.
+1. The source code for “Get-AzCachedAccessToken” function can be found at [PowerShell gallery](https://www.powershellgallery.com/packages/AzureSimpleREST/0.2.64/Content/internal%5Cfunctions%5CGet-AzCachedAccessToken.ps1). You can include this code in your personal PowerShell profile to make it easier to call, or run the following function and use it in further commands.
     
     ```PowerShell
     function Get-AzCachedAccessToken()
@@ -119,10 +119,10 @@ If you want to ingest data from Event Hub to Azure Data Explorer, and the two se
     Invoke-WebRequest -Headers @{Authorization = $pat; 'x-ms-authorization-auxiliary' = $auxpat} -Uri $adxdcuri -Body $requestbody -Method PUT -ContentType 'application/json'
     ```
     
-Now you will be able to see the newly created Kusto data connection on Azure portal.
+Now you can see the newly created Kusto data connection on Azure portal.
 
 > [!NOTE]
-> Aaccess for account/app was used in this process to build the data connection. If this access is revoked on Event Hub, make sure you delete the Kusto data connection. Otherwise, Azure Data Epxlorer will continue to ingest data even if access on Event Hub is revoked.
+> Access for account/app was used in this process to build the data connection. If this access is revoked on Event Hub, make sure you delete the Kusto data connection. Otherwise, Azure Data Explorer will continue to ingest data even if access on Event Hub is revoked.
 
 ## Next steps
 
