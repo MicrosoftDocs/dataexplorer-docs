@@ -19,7 +19,7 @@ T | top-hitters 25 of Page by Views
 
 > [!NOTE]
 > `top-hitters` is an approximation algorithm and should be used when running with large data. 
-> The approximation of the the top-hitters is based on the [Count-Min-Sketch](https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch) algorithm.  
+> The approximation of the top-hitters is based on the [Count-Min-Sketch](https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch) algorithm.  
 
 ## Syntax
 
