@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/18/2021
 ---
-# Request limits policy (Preview)
+# Request limits policy
 
 A workload group's request limits policy allows limiting the resources used by the request during its execution.
 
