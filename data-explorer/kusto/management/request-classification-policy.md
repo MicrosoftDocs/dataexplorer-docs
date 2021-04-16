@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/18/2021
 ---
-# Request classification policy (Preview)
+# Request classification policy
 
 The classification process assigns incoming requests to a workload group, based on the characteristics of the requests. Tailor the classification logic by writing a user-defined function, as part of a cluster-level request classification policy.
 
