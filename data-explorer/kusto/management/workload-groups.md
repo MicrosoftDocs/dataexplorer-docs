@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/18/2021
 ---
-# Workload groups (Preview)
+# Workload groups
 
 A workload group serves as a container for requests (queries, commands) that have similar classification criteria. Workload groups and [workload group policies](#workload-group-policies) are a means of resource governance for incoming requests to the cluster, and allow aggregate monitoring of the requests. When a request's execution begins, the request is classified and assigned to a specific workload group. Then, the request runs using the policies assigned to the workload group.
 
