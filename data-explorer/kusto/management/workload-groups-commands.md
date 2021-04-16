@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/18/2021
 ---
-# Workload groups (Preview) - Control commands
+# Workload groups - Control commands
 
 These commands require [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
 
