@@ -1,8 +1,3 @@
----
-title: shard level query results caching - Azure Data Explorer
-description: This article describes shard level query results caching functionality in Azure Data Explorer.
-services: data-explorer
----
 # Shard-level query results caching
 
 Kusto can cache query results on per-shard level and has ability to reuse these results for queries with overlapping calculations over these shards.
