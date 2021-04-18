@@ -15,11 +15,12 @@ Packs all input values into a dynamic array.
 
 ## Syntax
 
-`pack_array(`*Expr1*`[`,` *Expr2*]`)`
+`pack_array(`[ [*Expr1*`[`,` *Expr2*]`] | `*`])`
 
 ## Arguments
 
 * *Expr1...N*: Input expressions to be packed into a dynamic array.
+* *The wildcard `*`*: providing the wildcard `*` will pack all input columns into a dynamic array.
 
 ## Returns
 
