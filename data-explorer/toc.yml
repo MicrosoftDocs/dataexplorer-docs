@@ -538,8 +538,6 @@
       href: ./kusto/query/tabularexpressionstatements.md
     - name: Batches
       href: ./kusto/query/batches.md
-    - name: Shard level query results cache
-      href: ./kusto/query/shard-level-query-results-cache.md
   - name: Tabular operators
     items:
     - name: Query operators
