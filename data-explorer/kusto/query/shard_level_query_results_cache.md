@@ -1,7 +1,12 @@
+---
+title: shard level query results caching - Azure Data Explorer
+description: This article describes shard level query results caching functionality in Azure Data Explorer.
+services: data-explorer
+---
 # Shard-level query results caching
 
-Kusto can cache query results on per-shard level, and has ability to reuse these results for queries with overlapping calculations over these shards. 
-This cache is particularly useful for operational dashboards scenarios, where same query is executed in a scheduled manner, each time shifting time according to the current time. 
+Kusto can cache query results on per-shard level and has ability to reuse these results for queries with overlapping calculations over these shards.
+This cache is useful for operational dashboards scenarios where same query is executed in a scheduled manner, each time shifting time according to the current time.
 for example - running dashboard over last hour and moving timespan forward each 10 seconds.
 
 > [!Note]
@@ -18,4 +23,6 @@ GithubEvent
 | summarize arg_max(CreatedAt, Type) by Id
 ```
 
-The feature is enabled automatically when the [Query Results Cache](query-results-cache.md) is in use. The cache capacity is currently fixed at 1 GB and is shared with the [Query Results Cache](query-results-cache.md) per cluster node. The eviction policy is LRU.
+The feature is also enabled automatically when the [Query Results Cache](query-results-cache.md) is in use.
+The cache capacity is currently fixed at 1 GB and is shared with the [Query Results Cache](query-results-cache.md) per cluster node. 
+The eviction policy is LRU.
