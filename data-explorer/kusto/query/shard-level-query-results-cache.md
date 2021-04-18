@@ -1,4 +1,4 @@
-# Shard-level query results caching
+# Shard level query results caching
 
 Kusto can cache query results on per-shard level and has ability to reuse these results for queries with overlapping calculations over these shards.
 This cache is useful for operational dashboards scenarios where same query is executed in a scheduled manner, each time shifting time according to the current time.
