@@ -15,7 +15,9 @@ Packs all input values into a dynamic array.
 
 ## Syntax
 
-`pack_array(`[ [*Expr1*`[`,` *Expr2*]`] | `*`])`
+`pack_array(`*Expr1*`[`,` *Expr2*]`)`
+
+`pack_array(*)`
 
 ## Arguments
 
