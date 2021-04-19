@@ -43,7 +43,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 # [Commands and Queries](#tab/commands-and-queries)
 
 * **Commands**: These logs have information about admin commands that have reached a final state.
-* **Queries**: These logs have detailed information about queries that have reached a final state. 
+* **Queries**: These logs have detailed information about queries that have reached a final state.  
 
     > [!NOTE]
     > The query log data doesn't contain the query text.
