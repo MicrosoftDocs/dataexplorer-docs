@@ -19,6 +19,7 @@ An **external table** is created once. See the following commands for external t
 * [External table general control commands](../../management/external-table-commands.md)
 * [Create and alter external SQL tables](../../management/external-sql-tables.md)
 * [Create and alter tables in Azure Storage or Azure Data Lake](../../management/external-tables-azurestorage-azuredatalake.md)
+* [Create an external table](../../../external-table.md)
 
 An **external table** can be referenced by its name using the [external_table()](../../query/externaltablefunction.md) function. 
 

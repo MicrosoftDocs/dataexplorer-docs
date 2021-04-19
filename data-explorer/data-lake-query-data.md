@@ -195,7 +195,7 @@ This section shows the query used to create the *TaxiRides* external table in th
   dropoff_puma: string
 )
 kind=blob 
-partition by bin(pickup_datetime, 1d)
+partition by (Date:datetime = bin(pickup_datetime, 1d))   
 dataformat=csv
 ( 
     h@'https://storageaccount.blob.core.windows.net/container1;secretKey'

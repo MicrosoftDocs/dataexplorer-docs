@@ -28,9 +28,11 @@ For information about ingesting data into an existing table in Azure Data Explor
 
     :::image type="content" source="media/one-click-ingestion-new-table/one-click-ingestion-in-web-ui.png" alt-text="Ingest new data":::
 
-1. In the **Ingest new data** window, the **Source** tab is selected. 
+1. In the **Ingest new data** window, the **Source** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 
-1. Select **Create new table** and enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
+    [!INCLUDE [one-click-cluster](includes/one-click-cluster.md)]
+
+1. Select **Table** > **Create new** and enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
     > [!NOTE]
     > Table names must be between 1 and 1024 characters.
@@ -39,9 +41,9 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 ## Select an ingestion type
 
-Under **Ingestion type**, do the following steps:
+Under **Source type**, do the following steps:
    
-  1. Select **from container** (blob container, ADLS Gen1 container, ADLS Gen2 container).
+  1. Select **From blob container** (blob container, ADLS Gen1 container, ADLS Gen2 container). You can ingest up to 1000 blobs from a single container.
   1. In the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container, and optionally enter the sample size. To ingest from a folder within this container, see [Ingest from folder in a container](#ingest-from-folder-in-a-container).
 
       :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container":::
@@ -51,7 +53,7 @@ Under **Ingestion type**, do the following steps:
 
 ### Ingest from folder in a container
 
-To ingest from a specific folder within a container, generate a string of the following format:
+To ingest from a specific folder within a container, [generate a string of the following format](kusto/api/connection-strings/storage.md#azure-data-lake-store):
 
 *container_path*`/`*folder_path*`;`*access_key_1*
 

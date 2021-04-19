@@ -50,8 +50,8 @@ For example, 192.168.2.0/24 will have an associated net/subnetmask containing 24
 ## Returns
 
 * `true`: If the IPv4 address belongs to any of the private network ranges.
-*  `false`: Otherwise.
-* `null`: If conversion for one of the two IPv4 strings wasn't successful.
+* `false`: Otherwise.
+* `null`: If parsing of the input as IPv4 address string wasn't successful.
 
 ## Example: Check if IPv4 belongs to a private network
 

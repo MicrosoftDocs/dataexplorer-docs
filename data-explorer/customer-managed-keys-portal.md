@@ -34,7 +34,9 @@ This article shows you how to enable customer-managed keys encryption using the 
 1. In the **Select key from Azure Key Vault** window, select an existing **Key vault** from the dropdown list. If you select **Create new** to [create a new Key Vault](/azure/key-vault/quick-create-portal#create-a-vault), you'll be routed to the **Create Key Vault** screen.
 
 1. Select **Key**.
-1. Select **Version**.
+1. Version:
+    * To ensure that this key always uses the latest key version, select the **Always use current key version** checkbox.
+    * Otherwise, select **Version**.
 1. Click **Select**.
 
     :::image type="content" source="media/customer-managed-keys-portal/customer-managed-key-key-vault.png" alt-text="Select key from Azure Key Vault":::

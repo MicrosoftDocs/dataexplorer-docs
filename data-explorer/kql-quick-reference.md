@@ -8,6 +8,7 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.localizationpriority: high
+adobe-target: true
 ---
 
 # KQL quick reference

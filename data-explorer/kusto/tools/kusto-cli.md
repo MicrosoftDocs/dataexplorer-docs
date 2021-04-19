@@ -154,30 +154,30 @@ ignores the rest of the line and continues reading the next line.
 
 Commands                        | Effect                                                                            | Currently
 --------------------------------|-----------------------------------------------------------------------------------|-----------
-#timeon|#timeoff                | enable/disable option `timing`: Display the time requests took                    | TRUE
-#tableon|#tableoff              | enable/disable option `tableView`: Format results sets as tables                  | TRUE
-#marson|#marsoff                | enable/disable option `marsView`: Display the second-to-last result sets          | FALSE
-#resultson|#resultsoff          | enable/disable option `outputResultsSet`: Display the result sets                 | TRUE
-#prettyon|#prettyoff            | enable/disable option `prettyErrors`: Clean up errors                             | TRUE
-#markdownon|#markdownoff        | enable/disable option `markdownView`: Format tables as MarkDown                   | FALSE
-#progressiveon|#progressiveoff  | enable/disable option `progressiveView`: Ask for and display progressive results  | FALSE
-#linemode|#blockmode            | enable/disable option `lineMode`: Single-line input mode                          | TRUE
+#timeon\|#timeoff                | enable/disable option `timing`: Display the time requests took                    | TRUE
+#tableon\|#tableoff              | enable/disable option `tableView`: Format results sets as tables                  | TRUE
+#marson\|#marsoff                | enable/disable option `marsView`: Display the second-to-last result sets          | FALSE
+#resultson\|#resultsoff          | enable/disable option `outputResultsSet`: Display the result sets                 | TRUE
+#prettyon\|#prettyoff            | enable/disable option `prettyErrors`: Clean up errors                             | TRUE
+#markdownon\|#markdownoff        | enable/disable option `markdownView`: Format tables as MarkDown                   | FALSE
+#progressiveon\|#progressiveoff  | enable/disable option `progressiveView`: Ask for and display progressive results  | FALSE
+#linemode\|#blockmode            | enable/disable option `lineMode`: Single-line input mode                          | TRUE
 
 Commands                              | Effect                                                                                                         | Default
 --------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------
-#cridon|#cridoff                      | (enable|disable option `crid`: Display the ClientRequestId before sending the request)                          | FALSE
-#csvheaderson|#csvheadersoff          | (enable|disable option `csvHeaders`: Include headers in CSV output)                                            | TRUE
-#focuson|#focusoff                    | (enable|disable option `focus`: Remove all the extra fluff and focus on the right stuff)                        | FALSE
-#linemode|#blockmode                  | (enable|disable option `lineMode`: Single-line input mode)                                                      | TRUE
-#markdownon|#markdownoff              | (enable|disable option `markdownView`: Format tables as MarkDown)                                              | FALSE
-#marson|#marsoff                      | (enable|disable option `marsView`: Display the second-to-last result sets)                                      | FALSE
-#prettyon|#prettyoff                  | (enable|disable option `prettyErrors`: Clean up errors)                                                        | TRUE
-#querystreamingon|#querystreamingoff  | (enable|disable option `queryStreaming`: Use the queryStreaming endpoint (Kusto team only))                    | FALSE
-#resultson|#resultsoff                | (enable|disable option `outputResultsSet`: Display the result sets)                                            | TRUE
-#tableon|#tableoff                    | (enable|disable option `tableView`: Format results sets as tables)                                              | TRUE
-#timeon|#timeoff                      | (enable|disable option `timing`: Display the amount of time that the requests took)                               | TRUE
-#typeon|#typeoff                      | (enable|disable option `typeView`: Display the type of each column in table view. Forces Streaming=true)| TRUE
-#v2protocolon|#v2protocoloff          | (enable|disable option `v2protocol`: Use the v2 query protocol, not v1)                                        | TRUE
+#cridon\|#cridoff                      | (enable\|disable option `crid`: Display the ClientRequestId before sending the request)                          | FALSE
+#csvheaderson\|#csvheadersoff          | (enable\|disable option `csvHeaders`: Include headers in CSV output)                                            | TRUE
+#focuson\|#focusoff                    | (enable\|disable option `focus`: Remove all the extra fluff and focus on the right stuff)                        | FALSE
+#linemode\|#blockmode                  | (enable\|disable option `lineMode`: Single-line input mode)                                                      | TRUE
+#markdownon\|#markdownoff              | (enable\|disable option `markdownView`: Format tables as MarkDown)                                              | FALSE
+#marson\|#marsoff                      | (enable\|disable option `marsView`: Display the second-to-last result sets)                                      | FALSE
+#prettyon\|#prettyoff                  | (enable\|disable option `prettyErrors`: Clean up errors)                                                        | TRUE
+#querystreamingon\|#querystreamingoff  | (enable\|disable option `queryStreaming`: Use the queryStreaming endpoint (Kusto team only))                    | FALSE
+#resultson\|#resultsoff                | (enable\|disable option `outputResultsSet`: Display the result sets)                                            | TRUE
+#tableon\|#tableoff                    | (enable\|disable option `tableView`: Format results sets as tables)                                              | TRUE
+#timeon\|#timeoff                      | (enable\|disable option `timing`: Display the amount of time that the requests took)                               | TRUE
+#typeon\|#typeoff                      | (enable\|disable option `typeView`: Display the type of each column in table view. Forces Streaming=true)| TRUE
+#v2protocolon\|#v2protocoloff          | (enable\|disable option `v2protocol`: Use the v2 query protocol, not v1)                                        | TRUE
 
 ## Use Kusto.Cli to export results as CSV
 

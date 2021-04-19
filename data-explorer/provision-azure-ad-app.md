@@ -79,7 +79,7 @@ If your application needs to access Azure Data Explorer using the credentials of
 
 ## Grant the service principal access to an Azure Data Explorer database
 
-Now that your service principal application registration is created, you need to grant the corresponding service principal access to your Azure Data Explorer database. 
+Now that your service principal application registration is created, you need to grant the corresponding service principal access to your Azure Data Explorer database. The following example gives viewer access. For other roles, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md). 
 
 1. In the [Web UI](https://dataexplorer.azure.com/), connect to your database and open a query tab.
 

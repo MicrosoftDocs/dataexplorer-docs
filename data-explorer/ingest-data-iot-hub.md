@@ -82,15 +82,14 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     
     :::image type="content" source="media/ingest-data-iot-hub/data-connection-pane.png" alt-text="Data connection pane in IoT Hub - Azure Data Explorer":::
 
-    **Setting** | **Field description**
+    |**Setting** | **Field description**|
     |---|---|
-    | Data connection name | The name of the connection you want to create in Azure Data Explorer
+    | Data connection name | The name of the connection you want to create in Azure Data Explorer|
     | Subscription |  The subscription ID where the Event Hub resource is located.  |
     | IoT Hub | IoT Hub name |
     | Shared access policy | The name of the shared access policy. Must have read permissions |
     | Consumer group |  The consumer group defined in the IoT Hub built-in endpoint |
-    | Event system properties | The [IoT Hub event system properties](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. | | | 
-
+    | Event system properties | The [IoT Hub event system properties](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties.|
 #### Target table
 
 There are two options for routing the ingested data: *static* and *dynamic*. 

@@ -88,7 +88,7 @@ For running the examples in this article, we need an Azure AD Application and se
    | resource_group_name | *testrg* | The resource group name where the cluster will be created. |
 
     > [!NOTE]
-    > **Create a cluster** is a long running operation. Method **create_or_update** returns an instance of LROPoller, see [LROPoller class](/python/api/msrest/msrest.polling.lropoller?view=azure-python) to get more information.
+    > **Create a cluster** is a long running operation. Method **create_or_update** returns an instance of LROPoller, see [LROPoller class](/python/api/msrest/msrest.polling.lropoller) to get more information.
 
 1. Run the following command to check whether your cluster was successfully created:
 

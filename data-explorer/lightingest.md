@@ -108,6 +108,9 @@ The argument values must include:
 * The timestamp format, in standard [.NET DateTime notation](/dotnet/standard/base-types/custom-date-and-time-format-strings)
 * Constant text immediately following the timestamp (suffix).
 
+> [!IMPORTANT]
+> When specifying that the creation time should be overridden, make sure the `Lookback` property in the target table's effective [Extents merge policy](kusto/management/mergepolicy.md) is aligned with the values in your file or blob paths.
+
 **Examples** 
 
 * A blob name that contains the datetime as follows: `historicalvalues19840101.parquet` (the timestamp is four digits for the year, two digits for the month, and two digits for the day of month), 

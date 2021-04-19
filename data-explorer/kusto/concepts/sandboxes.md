@@ -20,7 +20,7 @@ Flows that run in sandboxes aren't isolated. They're also local (close to the da
 
 ## Prerequisites
 
-* The data engine mustn't have [disk encryption](../../security.md#data-encryption) enabled.
+* The data engine mustn't have [disk encryption](../../security.md#data-protection) enabled.
   * Support for both features running side by side is expected in the future.
 * The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space to run
   * The estimated size is 20GB, that is roughly 2.5% the SSD capacity of a D14_v2 VM, for example, or 0.7% the SSD capacity of a L16_v1 VM.

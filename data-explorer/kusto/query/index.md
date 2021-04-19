@@ -9,6 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/07/2019
 ms.localizationpriority: high 
+adobe-target: true
 ---
 # Overview
 

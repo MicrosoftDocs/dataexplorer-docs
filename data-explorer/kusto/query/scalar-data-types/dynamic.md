@@ -187,6 +187,8 @@ arrays to hold aggregated values:
 
 ## Operators and functions over dynamic types
 
+For a complete list of scalar dynamic/array functions, see [dynamic/array functions](../scalarfunctions.md#dynamicarray-functions).
+
 |Operator or function|Usage with dynamic data types|
 |---|---|
 | *value* `in` *array*| True if there is an element of *array* that == *value*<br/>`where City in ('London', 'Paris', 'Rome')`

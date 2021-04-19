@@ -8,6 +8,7 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/23/2020
+adobe-target: true
 ---
 # make_list() (aggregation function)
 

@@ -34,7 +34,7 @@ The Queued ingestion mode, defined by [IKustoQueuedIngestClient](kusto-ingest-cl
 * Lets ingestion requests to be persisted when the Kusto Engine (or Ingestion) service is unavailable
 * Improves performance by efficient and controllable aggregation of inbound data by the Ingestion service 
 * Lets the Kusto Ingestion service manage the ingestion load on the Kusto Engine service
-* Retries the Kusto Ingestion service, as needed, on transient ingestion failures, such as for XStore throttling
+* Retries the Kusto Ingestion service, as needed, on transient ingestion failures, such as for Azure Storage throttling
 * Provides a convenient mechanism to track the progress and outcome of every ingestion request
 
 The following diagram outlines the Queued ingestion client interaction with Kusto:

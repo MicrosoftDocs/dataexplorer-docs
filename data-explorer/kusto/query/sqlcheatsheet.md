@@ -26,7 +26,7 @@ SELECT COUNT_BIG(*) as C FROM StormEvents
 
 |Query|
 |---|
-|StormEvents<br>| summarize C=count()<br>| project C|
+|StormEvents<br>\| summarize C=count()<br>\| project C|
 
 ## SQL to Kusto cheat sheet
 

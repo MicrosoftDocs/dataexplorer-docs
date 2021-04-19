@@ -1,6 +1,6 @@
 ---
-title: User-Defined Functions - Azure Data Explorer | Microsoft Docs
-description: This article describes User-Defined Functions in Azure Data Explorer.
+title: User-defined functions - Azure Data Explorer
+description: This article describes user-defined functions (scalar and views) in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -17,7 +17,7 @@ ms.localizationpriority: high
 A user-defined function belongs to one of two categories:
 
 * Scalar functions 
-* Tabular functions 
+* Tabular functions, also known as views
 
 The function's input arguments and output determine whether it is scalar or tabular, which then establishes how it might be used. 
 

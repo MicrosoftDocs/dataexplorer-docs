@@ -20,13 +20,13 @@ ms.date: 05/21/2020
 - [Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
 - [Create an Azure Databricks workspace](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace). Under **Azure Databricks Service**, in the **Pricing Tier** drop-down list, select **Premium**. This selection enables you to use Azure Databricks secrets to store your credentials and reference them in notebooks and jobs.
 
-- [Create a cluster](https://docs.azuredatabricks.net/user-guide/clusters/create.html) in Azure Databricks with the default settings.
+- [Create a cluster](/azure/databricks/clusters/create) in Azure Databricks with the default settings.
 
  ## Install the Kusto Spark connector on your Azure Databricks cluster
 
 To install the [spark-kusto-connector](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector) on your Azure Databricks cluster:
 
-1. Go to your Azure Databricks workspace and [create a library](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library).
+1. Go to your Azure Databricks workspace and [create a library](/azure/databricks/libraries/).
 1. Search for the *spark-kusto-connector* package on Maven Central, install the latest version, and attach to your cluster. 
 
 ## Connect to Azure Data Explorer by using a device authentication
@@ -67,9 +67,9 @@ Your tenant ID is `6babcaad-604b-40ac-a9d7-9fd97c0b779f`.
 
 ### Store and secure your Azure AD app ID and key (optional)  
 
-Store and secure your Azure AD app ID and key by using Azure Databricks [secrets](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) as follows:
+Store and secure your Azure AD app ID and key by using Azure Databricks [secrets](/azure/databricks/security/secrets/secrets) as follows:
 
-1. [Set up the CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-the-cli).
+1. [Set up the CLI](/azure/databricks/dev-tools/cli/).
 1. [Install the CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 1. [Set up authentication](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-authentication).
 1. Configure the [secrets](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) by using the following sample commands:

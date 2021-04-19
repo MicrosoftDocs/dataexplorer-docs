@@ -250,7 +250,7 @@ Now, group the results by sample time and count the occurrences of each activity
 ```kusto
 X
 | mv-expand samples = range(bin(StartTime, 1m), StopTime , 1m)
-| summarize count(SessionId) by bin(todatetime(samples),1m)
+| summarize count_SessionId = count() by bin(todatetime(samples),1m)
 ```
 
 * Use `todatetime()` because [mv-expand](./mvexpandoperator.md) results in a column of dynamic type.

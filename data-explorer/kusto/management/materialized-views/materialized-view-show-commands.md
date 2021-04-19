@@ -79,7 +79,7 @@ Returns the schema of the materialized view in CSL/JSON.
 
 Returns the extents in the *materialized* part of the materialized view. For a definition of the *materialized* portion, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work).
 
-This command provides the same details as the [show table extents](../show-extents.md#table-level) command.
+This command provides the same details as the [show table extents](../show-extents.md#table-scope) command.
 
 ### Syntax
 

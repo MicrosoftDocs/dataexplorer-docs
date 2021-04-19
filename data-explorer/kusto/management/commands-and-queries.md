@@ -47,6 +47,7 @@ The output schema is as follows:
 | CacheStatistics          | dynamic    |
 | ScannedExtentsStatistics | dynamic    |
 | ResultSetStatistics      | dynamic    |
+| WorkloadGroup            | string     |
 
 > [!NOTE]
 > For queries, the value of `CommandType` is `Query`.

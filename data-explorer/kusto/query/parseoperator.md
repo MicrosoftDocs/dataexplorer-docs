@@ -12,8 +12,7 @@ ms.localizationpriority: high
 ---
 # parse operator
 
-Evaluates a string expression and parses its value into one or more calculated columns. The calculated columns will have nulls, for unsuccessfully parsed strings.
-For more information, see the [parse-where operator](parsewhereoperator.md).
+Evaluates a string expression and parses its value into one or more calculated columns. The calculated columns will have nulls, for unsuccessfully parsed strings. If there is no need to use rows where parsing doesn't succeed, prefer using the [parse-where operator](parsewhereoperator.md).
 
 ```kusto
 T | parse Text with "ActivityName=" name ", ActivityType=" type

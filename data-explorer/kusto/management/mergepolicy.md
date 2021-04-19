@@ -29,9 +29,7 @@ By default, Rebuild operations are preferred. If there are extents that don't fi
 The merge policy contains the following properties:
 
 * **RowCountUpperBoundForMerge**:
-    * Defaults:
-      * 0 (unlimited) for policies that were set before June 2020.
-      * 16,000,000 for policies that were set starting June 2020.
+    * Defaults to 16,000,000.
     * Maximum allowed row count of the merged extent.
     * Applies to Merge operations, not Rebuild.  
 * **OriginalSizeMBUpperBoundForMerge**:
@@ -42,10 +40,12 @@ The merge policy contains the following properties:
     * Defaults to 100.
     * Maximum allowed number of extents to be merged in a single operation.
     * Applies to Merge operations.
+    * This value shouldn't be changed.
 * **LoopPeriod**:
     * Defaults to 01:00:00 (1 hour).
     * The maximum time to wait between starting two consecutive iterations of merge or rebuild operations by the Data Management service.
     * Applies to both Merge and Rebuild operations.
+    * This value shouldn't be changed.
 * **AllowRebuild**:
     * Defaults to 'true'.
     * Defines whether `Rebuild` operations are enabled (in which case, they're preferred over `Merge` operations).
@@ -53,12 +53,39 @@ The merge policy contains the following properties:
     * Defaults to 'true'.
     * Defines whether `Merge` operations are enabled, in which case, they're less preferred than `Rebuild` operations.
 * **MaxRangeInHours**:
-    * Defaults to 8.
-        * Defaults to 14 days in [materialized views](materialized-views/materialized-view-overview.md), unless recoverability is disabled in the materialized views' effective [retention policy](retentionpolicy.md).
-    * Maximum allowed difference, in hours, between any two different extents' creation times, so that they can still be merged.
+    * Defaults to 24.
+    * The maximum allowed difference, in hours, between any two different extents' creation times, so that they can still be merged.
     * Timestamps are of extent creation, and don't relate to the actual data contained in the extents.
     * Applies to both Merge and Rebuild operations.
+    * In [materialized views](materialized-views/materialized-view-overview.md): defaults to to 336 (14 days), *unless* recoverability is disabled in the materialized view's effective [retention policy](retentionpolicy.md).
     * This value should be set according to the effective [retention policy](./retentionpolicy.md) *SoftDeletePeriod*, or [cache policy](./cachepolicy.md) *DataHotSpan* values. Take the lower value of *SoftDeletePeriod* and *DataHotSpan*. Set the *MaxRangeInHours* value to between 2-3% of it. See the [examples](#maxrangeinhours-examples) .
+* **Lookback**:
+    * Defines the timespan during which extents are considered for rebuild/merge.
+	* Supported values: 
+	  * `Default` - The system-managed default. This is the recommended and default value.
+	  * `All` - All extents, hot and cold, are included.
+	  * `HotCache` - Only hot extents are included.
+      * `Custom` - Only extents whose age is under the provided `CustomPeriod` are included. `CustomPeriod` is a timespan value.
+
+## Default policy example
+
+The following example shows the default policy:
+
+```json
+{
+  "RowCountUpperBoundForMerge": 16000000,
+  "OriginalSizeMBUpperBoundForMerge": 0,
+  "MaxExtentsToMerge": 100,
+  "LoopPeriod": "01:00:00",
+  "MaxRangeInHours": 8,
+  "AllowRebuild": true,
+  "AllowMerge": true,
+  "Lookback": {
+    "Kind": "Default",
+    "CustomPeriod": null
+  }
+}
+```
 
 ## MaxRangeInHours examples
 
