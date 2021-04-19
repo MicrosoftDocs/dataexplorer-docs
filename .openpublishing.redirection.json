@@ -124,6 +124,11 @@
         "source_path": "data-explorer/kusto/query/has-ipv4-prefix-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query",
         "redirect_document_id": false
+      },
+      {
+        "source_path": "data-explorer/connect-from-databricks.md",
+        "redirect_url": "/azure/data-explorer/spark-connector",
+        "redirect_document_id": false
       }
     ]
   }
