@@ -47,7 +47,7 @@ T
 ## Arguments
 
 * *MatchIdColumnName*:  Indicates the name of a column of type `long` that is appended to the output as part of the scan execution. Indicates the 0-based index of the match for the row. (Optional)
-* *ColumnDeclarations*: Declares an extension to the schema of the operator’s source. Aditional columns are assigned in the steps or *DefaultValue* if not assigned. *DefaultValue* is `null` if not specified. (Optional)
+* *ColumnDeclarations*: Declares an extension to the schema of the operator’s source. Additional columns are assigned in the steps or *DefaultValue* if not assigned. *DefaultValue* is `null` if not specified. (Optional)
 * *StepName*: Used to reference values in the state of scan for conditions and assignments. The step name must be unique.
 * *Condition*: A Boolean expression that defines which records from the input matches the step. A record matches the step when the condition is true with the step’s state or with the previous step’s state.
 * *Assignment*: A scalar expression that is assigned to the corresponding column when a record matches a step.
