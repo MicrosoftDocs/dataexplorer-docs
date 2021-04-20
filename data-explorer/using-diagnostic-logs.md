@@ -112,7 +112,7 @@ Log JSON strings include elements listed in the following table:
 ```json
 {
     "time": "2019-05-27 07:55:05.3693628",
-    "resourceId": "/SUBSCRIPTIONS/SUBSCRIPTION_ID/RESOURCEGROUPS/RESOURCE_GROUP_NAME/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/CLUSTER_NAME",
+    "resourceId": "/SUBSCRIPTIONS/SUBSCRIPTION_ID/RESOURCEGROUPS/myResourceGroup/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/mycluster",
     "operationName": "MICROSOFT.KUSTO/CLUSTERS/INGEST/ACTION",
     "operationVersion": "1.0",
     "category": "SucceededIngestion",
@@ -147,7 +147,7 @@ Log JSON strings include elements listed in the following table:
 ```json
 {
     "time": "2019-05-27 08:57:05.4273524",
-    "resourceId": "/SUBSCRIPTIONS/SUBSCRIPTION_ID/RESOURCEGROUPS/RESOURCE_GROUP_NAME/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/CLUSTER_NAME",
+    "resourceId": "/SUBSCRIPTIONS/SUBSCRIPTION_ID/RESOURCEGROUPS/myResourceGroup/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/mycluster",
     "operationName": "MICROSOFT.KUSTO/CLUSTERS/INGEST/ACTION",
     "operationVersion": "1.0",
     "category": "FailedIngestion",
@@ -192,7 +192,7 @@ Log JSON strings include elements listed in the following table:
 
 ```json
 {
-  "resourceId": "/SUBSCRIPTIONS/SUBSCRIPTION_ID/RESOURCEGROUPS/RESOURCE_GROUP_NAME/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/CLUSTER_NAME",
+  "resourceId": "/SUBSCRIPTIONS/SUBSCRIPTION_ID/RESOURCEGROUPS/myResourceGroup/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/mycluster",
   "time": "2021-04-18T19:19:57.0211782Z",
   "operationVersion": "1.0",
   "operationName": "MICROSOFT.KUSTO/CLUSTERS/INGESTIONBATCHING/ACTION",
