@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/11/2021
+ms.date: 04/19/2021
 ---
 # scan operator (preview)
 
