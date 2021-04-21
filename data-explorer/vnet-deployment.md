@@ -157,7 +157,7 @@ Create a [Private Endpoint](/azure/private-link/private-endpoint-overview) to re
 | Brazil South | 23.98.145.105 |
 | Canada Central | 168.61.212.201 |
 | Canada East | 168.61.212.201, 23.101.115.123 |
-| Central India | 23.99.5.162 |
+| Central India | 23.99.5.162, 52.163.244.128 |
 | Central US | 168.61.212.201, 23.101.115.123 |
 | Central US EUAP | 168.61.212.201, 23.101.115.123 |
 | China East 2 | 40.73.96.39 |
