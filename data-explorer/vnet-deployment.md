@@ -177,7 +177,7 @@ Create a [Private Endpoint](/azure/private-link/private-endpoint-overview) to re
 | South Africa North | 104.211.224.189 |
 | South Africa West | 104.211.224.189 |
 | South Central US | 23.98.145.105, 104.215.116.88 |
-| South India | 23.99.5.162 |
+| South India | 23.99.5.162, 52.163.244.128 |
 | Southeast Asia | 168.63.173.234, 52.163.244.128 |
 | UK South | 23.97.212.5 |
 | UK West | 23.97.212.5 |
