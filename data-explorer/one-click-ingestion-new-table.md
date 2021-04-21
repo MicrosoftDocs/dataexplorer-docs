@@ -47,7 +47,7 @@ For information about ingesting data into an existing table in Azure Data Explor
     > [!NOTE]
     > Table names must be between 1 and 1024 characters.
 
-    :::image type="content" source="media/one-click-ingestion-new-table/create-new-table.png" alt-text="Create a new table one click ingestion":::
+    :::image type="content" source="media/one-click-ingestion-new-table/create-new-table.png" alt-text="Create a new table one-click ingestion":::
 
 ## Select an ingestion type
 
@@ -92,7 +92,7 @@ If you get the following error message when ingesting from a storage account:
 
 > Couldn't find the storage under your selected subscriptions. Please add the storage account *`storage_account_name`* subscription to your selected subscriptions in the portal.
 
-1. Select the :::image type="icon" source="media/ingest-data-one-click/directory-subscription-icon.png" border="false":::  icon from the top right menu tray. A **Directory + subscription** pane opens.
+1. Select the :::image type="icon" source="media/ingest-data-one-click/directory-subscription-icon.png" border="false":::  icon from the top-right menu tray. A **Directory + subscription** pane opens.
 
 1. In the **All subscriptions** dropdown, add your storage account's subscription to the selected list. 
 
@@ -127,7 +127,7 @@ In the **Schema** tab:
 
 In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
 
-:::image type="content" source="media/one-click-ingestion-new-table/table-mapping.png" alt-text="Table mapping name One Click Ingestion":::
+:::image type="content" source="media/one-click-ingestion-new-table/table-mapping.png" alt-text="Table-mapping name One-click Ingestion":::
 
 ### Edit the table
 
@@ -162,7 +162,7 @@ Continuous ingestion enables you to create an Event Grid that listens for new fi
     
     :::image type="content" source="media/one-click-ingestion-new-table/continuous-button.png" alt-text="continuous ingestion button":::
 
-1. Select **Create** to create a data connection which will listen for any changes, updates, or new data in that container. 
+1. Select **Create** to create a data connection that will listen for any changes, updates, or new data in that container. 
 
     :::image type="content" source="media/one-click-ingestion-new-table/event-hub-create.png" alt-text="Create Event Hub connection":::
 
