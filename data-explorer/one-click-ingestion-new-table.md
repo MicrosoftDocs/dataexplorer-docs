@@ -1,26 +1,36 @@
 ---
-title: Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer
-description: Ingesting (loading) data into a new Azure Data Explorer table simply, using one-click ingestion.
+title: Use one-click ingestion to ingest data from a container into Azure Data Explorer.
+description: Ingest (load) data into a new Azure Data Explorer table from a container, either as a one-time or continuous operation.
 author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 03/29/2020
+ms.date: 04/21/2021
 ---
 
-# Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer
+# Use one-click ingestion to ingest data from a container into Azure Data Explorer
 
 > [!div class="op_single_selector"]
-> * [Ingest CSV data from a container to a new table](one-click-ingestion-new-table.md)
-> * [Ingest JSON data from a local file to an existing table](one-click-ingestion-existing-table.md)
+> * [One-click](one-click-ingestion-new-table.md)
+> * [Portal](ingest-data-event-grid.md)
+> * [C#](data-connection-event-grid-csharp.md)
+> * [Python](data-connection-event-grid-python.md)
+> * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 
 [One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.  
 
-This document describes using the intuitive one-click wizard in a specific use case to ingest **CSV** data from a **container** into a **new table**. After ingestion, you can [set up an Event Grid ingestion pipeline](#create-continuous-ingestion-for-container) that that listens for new files in the source container and ingests qualifying data into your new table. You can use the same process with slight adaptations to cover a variety of different use cases.
+This document describes using the intuitive one-click wizard to ingest **CSV** data from a **container** into a **new table**. This can be done as a one-tim operation. Alternatibely, after ingestion, you can [set up an Event Grid ingestion pipeline](#create-continuous-ingestion-for-container) that that listens for new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
 
-For an overview of one-click ingestion and a list of prerequisites, see [One-click ingestion](ingest-data-one-click.md).
+For an overview of one-click ingestion, see [One-click ingestion](ingest-data-one-click.md).
 For information about ingesting data into an existing table in Azure Data Explorer, see [One-click ingestion to an existing table](one-click-ingestion-existing-table.md)
+
+## Prerequisites
+
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* [A cluster and database](create-cluster-database-portal.md).
+* [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+    * Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
 
 ## Ingest new data
 
@@ -44,7 +54,10 @@ For information about ingesting data into an existing table in Azure Data Explor
 Under **Source type**, do the following steps:
    
   1. Select **From blob container** (blob container, ADLS Gen1 container, ADLS Gen2 container). You can ingest up to 1000 blobs from a single container.
-  1. In the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container, and optionally enter the sample size. To ingest from a folder within this container, see [Ingest from folder in a container](#ingest-from-folder-in-a-container).
+  1. In the **Link to storage** field, add the SAS URL of the container, and optionally enter the sample size. To ingest from a folder within this container, see [Ingest from folder in a container](#ingest-from-folder-in-a-container).
+  
+    > [!NOTE]
+    > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage.md). 
 
       :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container":::
 
@@ -141,7 +154,7 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 
 [!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
 
-## Create continuous ingestion for container
+## Create continuous ingestion
 
 Continuous ingestion enables you to create an Event Grid that listens for new files in the source container. Any new file that meets the criteria of the pre-defined parameters (prefix, suffix, and so on) will be automatically ingested into the destination table. 
 
