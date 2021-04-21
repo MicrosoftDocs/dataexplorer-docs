@@ -162,9 +162,6 @@ public static System.Data.IDataReader QueryKusto(
 <!-- The following text can be re-produced by running the Kusto.Cli.exe directive '#crp -doc' -->
 
 * `deferpartialqueryfailures` (*OptionDeferPartialQueryFailures*): If true, disables reporting partial query failures as part of the result set. [Boolean]
-* `materialized_view_broadcast` (*OptionMaterializedViewBroadcastQuery*): An hint to use broadcast strategy for materialized views that are referenced in the query.
-The property is an array of materialized views names.
-examples: 'dynamic([ { "Name": "V1" } ])' [dynamic]
 * `materialized_view_shuffle` (*OptionMaterializedViewShuffleQuery*): An hint to use shuffle strategy for materialized views that are referenced in the query.
 The property is an array of materialized views names and the shuffle keys to use.
 examples: 'dynamic([ { "Name": "V1", "Keys" : [ "K1", "K2" ] } ])' (shuffle view V1 by K1, K2)
@@ -194,7 +191,6 @@ in the query hierarchy for each sub-group of nodes; the size of the sub-group is
 * `query_language` (*OptionQueryLanguage*): Controls how the query text is to be interpreted. ['csl','kql' or 'sql']
 * `query_max_entities_in_union` (*OptionMaxEntitiesToUnion*): Overrides the default maximum number of columns a query is allowed to produce. [Long]
 * `query_now` (*OptionQueryNow*): Overrides the datetime value returned by the now(0s) function. [DateTime]
-* `query_parquet_in_shard_engine` (*QueryParquetInShardEngine*): Force a Parquet external_table/externaldata query to run in EngineV3 (true) or EngineV2 (false) [Boolean]
 * `query_python_debug` (*OptionDebugPython*): If set, generate python debug query for the enumerated python node (default first). [Boolean or Int]
 * `query_results_apply_getschema` (*OptionQueryResultsApplyGetSchema*): If set, retrieves the schema of each tabular data in the results of the query instead of the data itself. [Boolean]
 * `query_results_cache_max_age` (*OptionQueryResultsCacheMaxAge*): If positive, controls the maximum age of the cached query results which Kusto is allowed to return [TimeSpan]
