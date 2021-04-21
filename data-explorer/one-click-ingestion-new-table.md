@@ -20,7 +20,7 @@ ms.date: 04/21/2021
 
 [One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.  
 
-This document describes using the intuitive one-click wizard to ingest **CSV** data from a **container** into a **new table**. This can be done as a one-tim operation. Alternatibely, after ingestion, you can [set up an Event Grid ingestion pipeline](#create-continuous-ingestion) that that listens for new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
+This document describes using the intuitive one-click wizard to ingest **CSV** data from a **container** into a **new table**. Ingestion can be done as a one-time operation, or as a continuous method by [setting up an Event Grid ingestion pipeline](#create-continuous-ingestion) that that listens for new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
 
 For an overview of one-click ingestion, see [One-click ingestion](ingest-data-one-click.md).
 For information about ingesting data into an existing table in Azure Data Explorer, see [One-click ingestion to an existing table](one-click-ingestion-existing-table.md)
