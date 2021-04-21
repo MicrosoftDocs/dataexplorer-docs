@@ -20,7 +20,7 @@ ms.date: 04/21/2021
 
 [One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.  
 
-This document describes using the intuitive one-click wizard to ingest **CSV** data from a **container** into a **new table**. This can be done as a one-tim operation. Alternatibely, after ingestion, you can [set up an Event Grid ingestion pipeline](#create-continuous-ingestion-for-container) that that listens for new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
+This document describes using the intuitive one-click wizard to ingest **CSV** data from a **container** into a **new table**. This can be done as a one-tim operation. Alternatibely, after ingestion, you can [set up an Event Grid ingestion pipeline](#create-continuous-ingestion) that that listens for new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
 
 For an overview of one-click ingestion, see [One-click ingestion](ingest-data-one-click.md).
 For information about ingesting data into an existing table in Azure Data Explorer, see [One-click ingestion to an existing table](one-click-ingestion-existing-table.md)
@@ -56,13 +56,13 @@ Under **Source type**, do the following steps:
   1. Select **From blob container** (blob container, ADLS Gen1 container, ADLS Gen2 container). You can ingest up to 1000 blobs from a single container.
   1. In the **Link to storage** field, add the SAS URL of the container, and optionally enter the sample size. To ingest from a folder within this container, see [Ingest from folder in a container](#ingest-from-folder-in-a-container).
   
-    > [!NOTE]
-    > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage.md). 
+  > [!NOTE]
+  > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage.md). 
 
-      :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container":::
+   :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container":::
 
-     > [!TIP] 
-     > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
+   > [!TIP] 
+   > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
 
 ### Ingest from folder in a container
 
