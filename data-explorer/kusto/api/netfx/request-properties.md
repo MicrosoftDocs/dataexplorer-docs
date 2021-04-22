@@ -162,7 +162,7 @@ public static System.Data.IDataReader QueryKusto(
 <!-- The following text can be re-produced by running the Kusto.Cli.exe directive '#crp -doc' -->
 
 * `deferpartialqueryfailures` (*OptionDeferPartialQueryFailures*): If true, disables reporting partial query failures as part of the result set. [Boolean]
-* `materialized_view_shuffle` (*OptionMaterializedViewShuffleQuery*): A hint to use shuffle strategy for materialized views that are referenced in the query.
+* `materialized_view_shuffle` (*OptionMaterializedViewShuffleQuery*): An hint to use shuffle strategy for materialized views that are referenced in the query.
 The property is an array of materialized views names and the shuffle keys to use.
 examples: 'dynamic([ { "Name": "V1", "Keys" : [ "K1", "K2" ] } ])' (shuffle view V1 by K1, K2)
 or 'dynamic([ { "Name": "V1" } ])' (shuffle view V1 by all keys) [dynamic]
@@ -179,35 +179,40 @@ or 'dynamic([ { "Name": "V1" } ])' (shuffle view V1 by all keys) [dynamic]
 * `query_cursor_current` (*OptionQueryCursorCurrent*): Overrides the cursor value returned by the cursor_current() or current_cursor() functions. [string]
 * `query_cursor_disabled` (*OptionQueryCursorDisabled*): Disables usage of cursor functions in the context of the query. [boolean]
 * `query_cursor_scoped_tables` (*OptionQueryCursorScopedTables*): List of table names that should be scoped to cursor_after_default .. cursor_before_or_at_default (upper bound is optional). [dynamic]
-* `query_datascope` (*OptionQueryDataScope*): Controls the query's datascope--whether the query applies to all data or just part of it. ['default', 'all', or 'hotcache']
+* `query_datascope` (*OptionQueryDataScope*): Controls the query's datascope -- whether the query applies to all data or just part of it. ['default', 'all', or 'hotcache']
 * `query_datetimescope_column` (*OptionQueryDateTimeScopeColumn*): Controls the column name for the query's datetime scope (query_datetimescope_to / query_datetimescope_from). [String]
 * `query_datetimescope_from` (*OptionQueryDateTimeScopeFrom*): Controls the query's datetime scope (earliest) -- used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
 * `query_datetimescope_to` (*OptionQueryDateTimeScopeTo*): Controls the query's datetime scope (latest) -- used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
-* `query_distribution_nodes_span` (*OptionQueryDistributionNodesSpanSize*): If set, controls the way subquery merge behaves: the executing node will introduce an additional level
-in the query hierarchy for each subgroup of nodes; the size of the subgroup is set by this option. [Int]
-* `query_fanout_nodes_percent` (*OptionQueryFanoutNodesPercent*): The percentage of nodes to fan out execution to. [Int]
-* `query_fanout_threads_percent` (*OptionQueryFanoutThreadsPercent*): The percentage of threads to fan out execution to. [Int]
+* `query_distribution_nodes_span` (*OptionQueryDistributionNodesSpanSize*): If set, controls the way sub-query merge behaves: the executing node will introduce an additional level
+in the query hierarchy for each sub-group of nodes; the size of the sub-group is set by this option. [Int]
+* `query_fanout_nodes_percent` (*OptionQueryFanoutNodesPercent*): The percentage of nodes to fanout execution to. [Int]
+* `query_fanout_threads_percent` (*OptionQueryFanoutThreadsPercent*): The percentage of threads to fanout execution to. [Int]
 * `query_force_row_level_security` (*OptionQueryForceRowLevelSecurity*): If specified, forces Row Level Security rules, even if row_level_security policy is disabled [Boolean]
 * `query_language` (*OptionQueryLanguage*): Controls how the query text is to be interpreted. ['csl','kql' or 'sql']
 * `query_max_entities_in_union` (*OptionMaxEntitiesToUnion*): Overrides the default maximum number of columns a query is allowed to produce. [Long]
 * `query_now` (*OptionQueryNow*): Overrides the datetime value returned by the now(0s) function. [DateTime]
 * `query_python_debug` (*OptionDebugPython*): If set, generate python debug query for the enumerated python node (default first). [Boolean or Int]
 * `query_results_apply_getschema` (*OptionQueryResultsApplyGetSchema*): If set, retrieves the schema of each tabular data in the results of the query instead of the data itself. [Boolean]
-* `query_results_cache_max_age` (*OptionQueryResultsCacheMaxAge*): If positive, controls the maximum age of the cached query results that Kusto is allowed to return [TimeSpan]
+* `query_results_cache_max_age` (*OptionQueryResultsCacheMaxAge*): If positive, controls the maximum age of the cached query results which Kusto is allowed to return [TimeSpan]
+* `query_results_cache_per_shard` (*OptionQueryResultsCachePerShardEnabled*): If set, enables per-shard query cache. [Boolean]
 * `query_results_progressive_row_count` (*OptionProgressiveQueryMinRowCountPerUpdate*): Hint for Kusto as to how many records to send in each update (takes effect only if OptionResultsProgressiveEnabled is set)
 * `query_results_progressive_update_period` (*OptionProgressiveProgressReportPeriod*): Hint for Kusto as to how often to send progress frames (takes effect only if OptionResultsProgressiveEnabled is set)
 * `query_take_max_records` (*OptionTakeMaxRecords*): Enables limiting query results to this number of records. [Long]
 * `queryconsistency` (*OptionQueryConsistency*): Controls query consistency. ['strongconsistency' or 'normalconsistency' or 'weakconsistency']
 * `request_block_row_level_security` (*OptionRequestBlockRowLevelSecurity*): If specified, blocks access to tables for which row_level_security policy is enabled [Boolean]
-* `request_callout_disabled` (*OptionRequestCalloutDisabled*): If specified, indicates that the request can't call-out to a user-provided service. [Boolean]
+* `request_callout_disabled` (*OptionRequestCalloutDisabled*): If specified, indicates that the request cannot call-out to a user-provided service. [Boolean]
 * `request_description` (*OptionRequestDescription*): Arbitrary text that the author of the request wants to include as the request description. [String]
-* `request_external_table_disabled` (*OptionRequestExternalTableDisabled*):  If specified, indicates that the request can't invoke code in the ExternalTable. [Boolean]
-* `request_impersonation_disabled` (*OptionDoNotImpersonate*): If specified, indicates that the service shouldn't impersonate the caller's identity. [Boolean]
-* `request_readonly` (*OptionRequestReadOnly*): If specified, indicates that the request can't write anything. [Boolean]
-* `request_remote_entities_disabled` (*OptionRequestRemoteEntitiesDisabled*): If specified, indicates that the request can't access remote databases and clusters. [Boolean]
-* `request_sandboxed_execution_disabled` (*OptionRequestSandboxedExecutionDisabled*): If specified, indicates that the request can't invoke code in the sandbox. [Boolean]
+* `request_external_table_disabled` (*OptionRequestExternalTableDisabled*):  If specified, indicates that the request cannot invoke code in the ExternalTable. [Boolean]
+* `request_impersonation_disabled` (*OptionDoNotImpersonate*): If specified, indicates that the service should not impersonate the caller's identity. [Boolean]
+* `request_readonly` (*OptionRequestReadOnly*): If specified, indicates that the request must not be able to write anything. [Boolean]
+* `request_remote_entities_disabled` (*OptionRequestRemoteEntitiesDisabled*): If specified, indicates that the request cannot access remote databases and clusters. [Boolean]
+* `request_sandboxed_execution_disabled` (*OptionRequestSandboxedExecutionDisabled*): If specified, indicates that the request cannot invoke code in the sandbox. [Boolean]
 * `results_progressive_enabled` (*OptionResultsProgressiveEnabled*): If set, enables the progressive query stream
 * `servertimeout` (*OptionServerTimeout*): Overrides the default request timeout. [TimeSpan]
 * `truncationmaxrecords` (*OptionTruncationMaxRecords*): Overrides the default maximum number of records a query is allowed to return to the caller (truncation). [Long]
 * `truncationmaxsize` (*OptionTruncationMaxSize*): Overrides the default maximum data size a query is allowed to return to the caller (truncation). [Long]
 * `validate_permissions` (*OptionValidatePermissions*): Validates user's permissions to perform the query and doesn't run the query itself. [Boolean]
+The possible results for this property are:
+- "OK": permissions are present and valid.
+- "Incomplete": validation could not be completed as the query uses dynamic schema evaluation.
+- The query will fail with KustoRequestDeniedException when the permissions are not present.
