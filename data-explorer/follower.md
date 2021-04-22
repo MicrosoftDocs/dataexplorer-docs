@@ -40,7 +40,7 @@ To attach a database, you must have user, group, service principal, or managed i
 
 #### Needed NuGets
 
-* Install [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Install [Microsoft.Azure.Management.Kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Install [Microsoft.Rest.ClientRuntime.Azure.Authentication for authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
 
 #### Example
