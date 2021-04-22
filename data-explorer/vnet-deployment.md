@@ -155,9 +155,9 @@ Create a [Private Endpoint](/azure/private-link/private-endpoint-overview) to re
 | Australia East | 191.239.64.128 |
 | Australia Southeast | 191.239.160.47 |
 | Brazil South | 23.98.145.105 |
-| Canada Central | 168.61.212.201 |
+| Canada Central | 168.61.212.201, 23.101.115.123 |
 | Canada East | 168.61.212.201, 23.101.115.123 |
-| Central India | 23.99.5.162 |
+| Central India | 23.99.5.162, 52.163.244.128 |
 | Central US | 168.61.212.201, 23.101.115.123 |
 | Central US EUAP | 168.61.212.201, 23.101.115.123 |
 | China East 2 | 40.73.96.39 |
@@ -177,8 +177,8 @@ Create a [Private Endpoint](/azure/private-link/private-endpoint-overview) to re
 | South Africa North | 104.211.224.189 |
 | South Africa West | 104.211.224.189 |
 | South Central US | 23.98.145.105, 104.215.116.88 |
-| South India | 23.99.5.162 |
-| Southeast Asia | 168.63.173.234 |
+| South India | 23.99.5.162, 52.163.244.128 |
+| Southeast Asia | 168.63.173.234, 52.163.244.128 |
 | UK South | 23.97.212.5 |
 | UK West | 23.97.212.5 |
 | USDoD Central | 52.238.116.34 |
