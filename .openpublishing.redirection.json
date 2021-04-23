@@ -114,7 +114,6 @@
         "source_path": "data-explorer/kusto/management/query-throttling-policy-commands.md",
         "redirect_url": "/azure/data-explorer/kusto/management/workload-groups-commands",
         "redirect_document_id": false
-      },
+      }
     ]
   }
-  
