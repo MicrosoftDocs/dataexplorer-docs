@@ -64,14 +64,14 @@ The following kinds of partition keys are supported.
 |Property | Description | Supported value(s)| Recommended value |
 |---|---|---|---|
 | `Function` | The name of a hash-modulo function to use.| `XxHash64` | |
-| `MaxPartitionCount` | The maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period. | In the range `(1,2048]`. <br>  Larger than five times the number of nodes in the cluster, and smaller than the cardinality of the column. |  Higher values lead to greater overhead of the data partitioning process on the cluster's nodes, and a higher number of extents for each time period. For clusters with fewer than 50 nodes, start with `256`. Adjust the value based on these considerations, or based on the benefit in query performance vs. the overhead of partitioning the data post-ingestion.
+| `MaxPartitionCount` | The maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period. | In the range `(1,2048]`. <br>  Larger than five times the number of nodes in the cluster, and smaller than the cardinality of the column. |  Higher values lead to greater overhead of the data partitioning process on the cluster's nodes, and a higher number of extents for each time period. For clusters with fewer than 50 nodes, start with `128`. For clusters with fewer than 50 nodes, start with `256`. Adjust the value based on these considerations, or based on the benefit in query performance vs. the overhead of partitioning the data post-ingestion.
 | `Seed` | Use for randomizing the hash value. | A positive integer. | `1`, which is also the default value. |
 | `PartitionAssignmentMode` | The mode used for assigning partitions to nodes in the cluster. | `Default`: All homogeneous (partitioned) extents that belong to the same partition are assigned to the same node. <br> `Uniform`: An extents' partition values are disregarded. Extents are assigned uniformly to the cluster's nodes. | If queries don't join or aggregate on the hash partition key, use `Uniform`. Otherwise, use `Default`. |
 
 #### Hash partition key example
 
 A hash partition key over a `string`-typed column named `tenant_id`.
-It uses the `XxHash64` hash function, with a `MaxPartitionCount` of `256`, and the default `Seed` of `1`.
+It uses the `XxHash64` hash function, with a `MaxPartitionCount` of `128`, and the default `Seed` of `1`.
 
 ```json
 {
@@ -79,7 +79,7 @@ It uses the `XxHash64` hash function, with a `MaxPartitionCount` of `256`, and t
   "Kind": "Hash",
   "Properties": {
     "Function": "XxHash64",
-    "MaxPartitionCount": 256,
+    "MaxPartitionCount": 128,
     "Seed": 1,
     "PartitionAssignmentMode": "Default"
   }
@@ -155,7 +155,7 @@ The data partitioning policy has the following main properties:
 
 Data partitioning policy object with two partition keys.
 1. A hash partition key over a `string`-typed column named `tenant_id`.
-    * It uses the `XxHash64` hash function, with a `MaxPartitionCount` of 256, and the default `Seed` of `1`.
+    * It uses the `XxHash64` hash function, with a `MaxPartitionCount` of 128, and the default `Seed` of `1`.
 1. A uniform datetime range partition key over a `datetime` type column named `timestamp`.
     * It uses `datetime(1970-01-01)` as its reference point, with a size of `1d` for each partition.
 
@@ -167,7 +167,7 @@ Data partitioning policy object with two partition keys.
       "Kind": "Hash",
       "Properties": {
         "Function": "XxHash64",
-        "MaxPartitionCount": 256,
+        "MaxPartitionCount": 128,
         "Seed": 1,
         "PartitionAssignmentMode": "Default"
       }
