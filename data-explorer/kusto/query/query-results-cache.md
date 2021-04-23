@@ -62,8 +62,8 @@ If a cached result satisfying the time constraints couldn't be found, or there i
 ## Results from the cache
 
 How does the service indicate that the query results are being served from the cache?
-When responding to a query, Kusto sends an additional [ExtendedProperties](../api/rest/response.md) response table that includes a `Key` column and a `Value` column.
-Cached query results will have an additional row appended to that table:
+When responding to a query, Kusto sends another [ExtendedProperties](../api/rest/response.md) response table that includes a `Key` column and a `Value` column.
+Cached query results will have another row appended to that table:
 * The row's `Key` column will contain the string `ServerCache`
 * The row's `Value` column will contain a property bag with two fields:
    * `OriginalClientRequestId` - Specifies the original request's [ClientRequestId](../api/netfx/request-properties.md#clientrequestid-x-ms-client-request-id).
@@ -88,7 +88,7 @@ The eviction policy is LRU.
 ## Shard level query results cache
 
 The `Query Results Cache` is effective when the exact same query is being run multiple times in rapid succession, and tolerates returning slightly old data. In some scenarios, such as a “live dashboard”, the most up-to-date results are required for the repeated query. 
-For example, when the query runs every 10 seconds and spans the last 1 hour. For such scenarios, Kusto can enable an advanced form of query results caching which caches intermediate query results at the storage (shard) level.
+For example, when the query runs every 10 seconds and spans the last 1 hour. For such scenarios, Kusto can enable an advanced form of query results caching, which caches intermediate query results at the storage (shard) level.
 
 > [!Note]
 > In order to use this feature, the cluster should be running with V3 engine mode.
