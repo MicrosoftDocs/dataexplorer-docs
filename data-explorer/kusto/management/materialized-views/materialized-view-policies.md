@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/13/2021
+ms.date: 04/23/2021
 ---
 
 # Materialized views policies
