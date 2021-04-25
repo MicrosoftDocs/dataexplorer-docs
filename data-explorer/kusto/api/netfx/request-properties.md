@@ -37,7 +37,7 @@ The `Kusto.Data.Common.ClientRequestProperties` class holds three kinds of data:
 ### ClientRequestId (x-ms-client-request-id)
 
 This named property has the client-specified identity of the request. Clients should specify 
-a unique per-request value with each request they send. 
+a unique per-request value with each request they send.
 This value makes debugging failures easier to do, and it's required in
 some scenarios, such as for query cancellation.
 
@@ -179,10 +179,10 @@ or 'dynamic([ { "Name": "V1" } ])' (shuffle view V1 by all keys) [dynamic]
 * `query_cursor_current` (*OptionQueryCursorCurrent*): Overrides the cursor value returned by the cursor_current() or current_cursor() functions. [string]
 * `query_cursor_disabled` (*OptionQueryCursorDisabled*): Disables usage of cursor functions in the context of the query. [boolean]
 * `query_cursor_scoped_tables` (*OptionQueryCursorScopedTables*): List of table names that should be scoped to cursor_after_default .. cursor_before_or_at_default (upper bound is optional). [dynamic]
-* `query_datascope` (*OptionQueryDataScope*): Controls the query's datascope--whether the query applies to all data or just part of it. ['default', 'all', or 'hotcache']
+* `query_datascope` (*OptionQueryDataScope*): Controls the query's data scope&mdash;whether the query applies to all data or just part of it. ['default', 'all', or 'hotcache']
 * `query_datetimescope_column` (*OptionQueryDateTimeScopeColumn*): Controls the column name for the query's datetime scope (query_datetimescope_to / query_datetimescope_from). [String]
-* `query_datetimescope_from` (*OptionQueryDateTimeScopeFrom*): Controls the query's datetime scope (earliest) -- used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
-* `query_datetimescope_to` (*OptionQueryDateTimeScopeTo*): Controls the query's datetime scope (latest) -- used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
+* `query_datetimescope_from` (*OptionQueryDateTimeScopeFrom*): Controls the query's datetime scope (earliest)&mdash;used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
+* `query_datetimescope_to` (*OptionQueryDateTimeScopeTo*): Controls the query's datetime scope (latest)&mdash;used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
 * `query_distribution_nodes_span` (*OptionQueryDistributionNodesSpanSize*): If set, controls the way subquery merge behaves: the executing node will introduce an additional level
 in the query hierarchy for each subgroup of nodes; the size of the subgroup is set by this option. [Int]
 * `query_fanout_nodes_percent` (*OptionQueryFanoutNodesPercent*): The percentage of nodes to fan out execution to. [Int]
@@ -194,6 +194,7 @@ in the query hierarchy for each subgroup of nodes; the size of the subgroup is s
 * `query_python_debug` (*OptionDebugPython*): If set, generate python debug query for the enumerated python node (default first). [Boolean or Int]
 * `query_results_apply_getschema` (*OptionQueryResultsApplyGetSchema*): If set, retrieves the schema of each tabular data in the results of the query instead of the data itself. [Boolean]
 * `query_results_cache_max_age` (*OptionQueryResultsCacheMaxAge*): If positive, controls the maximum age of the cached query results that Kusto is allowed to return [TimeSpan]
+* `query_results_cache_per_shard` (*OptionQueryResultsCachePerShardEnabled*): If set, enables per-shard query cache. [Boolean]
 * `query_results_progressive_row_count` (*OptionProgressiveQueryMinRowCountPerUpdate*): Hint for Kusto as to how many records to send in each update (takes effect only if OptionResultsProgressiveEnabled is set)
 * `query_results_progressive_update_period` (*OptionProgressiveProgressReportPeriod*): Hint for Kusto as to how often to send progress frames (takes effect only if OptionResultsProgressiveEnabled is set)
 * `query_take_max_records` (*OptionTakeMaxRecords*): Enables limiting query results to this number of records. [Long]
@@ -210,4 +211,8 @@ in the query hierarchy for each subgroup of nodes; the size of the subgroup is s
 * `servertimeout` (*OptionServerTimeout*): Overrides the default request timeout. [TimeSpan]
 * `truncationmaxrecords` (*OptionTruncationMaxRecords*): Overrides the default maximum number of records a query is allowed to return to the caller (truncation). [Long]
 * `truncationmaxsize` (*OptionTruncationMaxSize*): Overrides the default maximum data size a query is allowed to return to the caller (truncation). [Long]
-* `validate_permissions` (*OptionValidatePermissions*): Validates user's permissions to perform the query and doesn't run the query itself. [Boolean]
+* `validate_permissions` (*OptionValidatePermissions*): Validates user's permissions to perform the query and doesn't run the query itself. [Boolean] <br>
+    This property can return the following results:
+    * `OK`: permissions are present and valid.
+    * `Incomplete`: validation could not be completed because the query uses dynamic schema evaluation.
+    * If permissions aren't present, the `KustoRequestDeniedException` exception will be thrown and the query will fail.
