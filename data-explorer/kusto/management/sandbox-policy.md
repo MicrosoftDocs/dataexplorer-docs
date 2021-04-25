@@ -43,7 +43,7 @@ Modifies the collection of sandbox policies at the cluster level.
   '{'
     '"SandboxKind": "RExecution",'
     '"IsEnabled": true,'
-	'"InitializeOnStartup": false,'
+    '"InitializeOnStartup": false,'
     '"TargetCountPerNode": 4,'
     '"MaxCpuRatePerSandbox": 50,'
     '"MaxMemoryMbPerSandbox": 10240'
