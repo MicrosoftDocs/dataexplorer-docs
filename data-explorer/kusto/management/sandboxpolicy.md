@@ -26,8 +26,8 @@ A sandbox policy has the following properties.
 * **SandboxKind**: Defines the type of the sandbox (such as, `PythonExecution`, `RExecution`).
 * **IsEnabled**: Defines if sandboxes of this type may run on the cluster's nodes.
   * The default value is false.
-* **InitializeOnStartup**: Defines whether or not sandboxes of this type are initialized on startup.
-  * The default value is false.
+* **InitializeOnStartup**: Defines whether sandboxes of this type are initialized on startup, or lazily, upon first use.
+  * The default value is false. Set to true to insure consistent performance, avoid any delays for running queries following service restart.
 * **TargetCountPerNode**: Defines how many sandboxes of this type are allowed to run on the cluster's nodes.
   * Values can be between one and twice the number of processors per node.
   * The default value is 16.
