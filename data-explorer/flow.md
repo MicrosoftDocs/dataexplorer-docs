@@ -193,7 +193,7 @@ The same query might run successfully in Azure Data Explorer, where the time isn
 ## Limitations
 
 * Results returned to the client are limited to 500,000 records. The overall memory for those records can't exceed 64 MB and a time of 90 seconds to run.
-* The connector doesn't support operators that are not supported by the [getschema operator](kusto/query/getschemaoperator.md). For example, [fork](kusto/query/forkoperator.md), [facet](kusto/query/facetoperator.md) and [evaluate](kusto/query/evaluateoperator.md) operators are not supported. 
+* The connector doesn't support operators that aren't supported by the [`getschema` operator](kusto/query/getschemaoperator.md). For example, the [fork](kusto/query/forkoperator.md), [facet](kusto/query/facetoperator.md), and [evaluate](kusto/query/evaluateoperator.md) operators aren't supported. 
 * Flow works best on Microsoft Edge and Google Chrome.
 
 ## Next steps
