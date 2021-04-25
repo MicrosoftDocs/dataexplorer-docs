@@ -203,7 +203,7 @@ in the query hierarchy for each subgroup of nodes; the size of the subgroup is s
 * `request_callout_disabled` (*OptionRequestCalloutDisabled*): If specified, indicates that the request can't call-out to a user-provided service. [Boolean]
 * `request_description` (*OptionRequestDescription*): Arbitrary text that the author of the request wants to include as the request description. [String]
 * `request_external_table_disabled` (*OptionRequestExternalTableDisabled*):  If specified, indicates that the request can't invoke code in the ExternalTable. [Boolean]
-* `request_impersonation_disabled` (*OptionDoNotImpersonate*): If specified, indicates that the service should not impersonate the caller's identity. [Boolean]
+* `request_impersonation_disabled` (*OptionDoNotImpersonate*): If specified, indicates that the service shouldn't impersonate the caller's identity. [Boolean]
 * `request_readonly` (*OptionRequestReadOnly*): If specified, indicates that the request must not be able to write anything. [Boolean]
 * `request_remote_entities_disabled` (*OptionRequestRemoteEntitiesDisabled*): If specified, indicates that the request can't access remote databases and clusters. [Boolean]
 * `request_sandboxed_execution_disabled` (*OptionRequestSandboxedExecutionDisabled*): If specified, indicates that the request can't invoke code in the sandbox. [Boolean]
