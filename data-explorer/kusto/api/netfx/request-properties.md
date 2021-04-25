@@ -181,8 +181,8 @@ or 'dynamic([ { "Name": "V1" } ])' (shuffle view V1 by all keys) [dynamic]
 * `query_cursor_scoped_tables` (*OptionQueryCursorScopedTables*): List of table names that should be scoped to cursor_after_default .. cursor_before_or_at_default (upper bound is optional). [dynamic]
 * `query_datascope` (*OptionQueryDataScope*): Controls the query's data scope&mdash;whether the query applies to all data or just part of it. ['default', 'all', or 'hotcache']
 * `query_datetimescope_column` (*OptionQueryDateTimeScopeColumn*): Controls the column name for the query's datetime scope (query_datetimescope_to / query_datetimescope_from). [String]
-* `query_datetimescope_from` (*OptionQueryDateTimeScopeFrom*): Controls the query's datetime scope (earliest)—used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
-* `query_datetimescope_to` (*OptionQueryDateTimeScopeTo*): Controls the query's datetime scope (latest)—used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
+* `query_datetimescope_from` (*OptionQueryDateTimeScopeFrom*): Controls the query's datetime scope (earliest)&mdash;used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
+* `query_datetimescope_to` (*OptionQueryDateTimeScopeTo*): Controls the query's datetime scope (latest)&mdash;used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
 * `query_distribution_nodes_span` (*OptionQueryDistributionNodesSpanSize*): If set, controls the way subquery merge behaves: the executing node will introduce an additional level
 in the query hierarchy for each subgroup of nodes; the size of the subgroup is set by this option. [Int]
 * `query_fanout_nodes_percent` (*OptionQueryFanoutNodesPercent*): The percentage of nodes to fan out execution to. [Int]
@@ -204,14 +204,14 @@ in the query hierarchy for each subgroup of nodes; the size of the subgroup is s
 * `request_description` (*OptionRequestDescription*): Arbitrary text that the author of the request wants to include as the request description. [String]
 * `request_external_table_disabled` (*OptionRequestExternalTableDisabled*):  If specified, indicates that the request can't invoke code in the ExternalTable. [Boolean]
 * `request_impersonation_disabled` (*OptionDoNotImpersonate*): If specified, indicates that the service shouldn't impersonate the caller's identity. [Boolean]
-* `request_readonly` (*OptionRequestReadOnly*): If specified, indicates that the request must not be able to write anything. [Boolean]
+* `request_readonly` (*OptionRequestReadOnly*): If specified, indicates that the request can't write anything. [Boolean]
 * `request_remote_entities_disabled` (*OptionRequestRemoteEntitiesDisabled*): If specified, indicates that the request can't access remote databases and clusters. [Boolean]
 * `request_sandboxed_execution_disabled` (*OptionRequestSandboxedExecutionDisabled*): If specified, indicates that the request can't invoke code in the sandbox. [Boolean]
 * `results_progressive_enabled` (*OptionResultsProgressiveEnabled*): If set, enables the progressive query stream
 * `servertimeout` (*OptionServerTimeout*): Overrides the default request timeout. [TimeSpan]
 * `truncationmaxrecords` (*OptionTruncationMaxRecords*): Overrides the default maximum number of records a query is allowed to return to the caller (truncation). [Long]
 * `truncationmaxsize` (*OptionTruncationMaxSize*): Overrides the default maximum data size a query is allowed to return to the caller (truncation). [Long]
-* `validate_permissions` (*OptionValidatePermissions*): Validates user's permissions to perform the query and doesn't run the query itself. [Boolean]
+* `validate_permissions` (*OptionValidatePermissions*): Validates user's permissions to perform the query and doesn't run the query itself. [Boolean] <br>
     This property can return the following results:
     * `OK`: permissions are present and valid.
     * `Incomplete`: validation could not be completed because the query uses dynamic schema evaluation.
