@@ -60,7 +60,7 @@ Changes to the policy could take up to 1 hour to take effect.
       "Kind": "Hash",
       "Properties": {
         "Function": "XxHash64",
-        "MaxPartitionCount": 256,
+        "MaxPartitionCount": 128,
       }
     }
   ]
@@ -97,7 +97,7 @@ Changes to the policy could take up to 1 hour to take effect.
       "Kind": "Hash",
       "Properties": {
         "Function": "XxHash64",
-        "MaxPartitionCount": 256,
+        "MaxPartitionCount": 128,
       }
     },
     {

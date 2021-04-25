@@ -43,7 +43,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 # [Commands and Queries](#tab/commands-and-queries)
 
 * **Commands**: These logs have information about admin commands that have reached a final state.
-* **Queries**: These logs have detailed information about queries that have reached a final state. 
+* **Queries**: These logs have detailed information about queries that have reached a final state.
 
     > [!NOTE]
     > The query log data doesn't contain the query text.
@@ -111,8 +111,8 @@ Log JSON strings include elements listed in the following table:
 
 ```json
 {
-    "time": "",
-    "resourceId": "",
+    "time": "2019-05-27 07:55:05.3693628",
+    "resourceId": "/SUBSCRIPTIONS/12534000-8109-4D84-83AD-576C0D5E1AAA/RESOURCEGROUPS/myResourceGroup/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/mycluster",
     "operationName": "MICROSOFT.KUSTO/CLUSTERS/INGEST/ACTION",
     "operationVersion": "1.0",
     "category": "SucceededIngestion",
@@ -146,8 +146,8 @@ Log JSON strings include elements listed in the following table:
 
 ```json
 {
-    "time": "",
-    "resourceId": "",
+    "time": "2019-05-27 08:57:05.4273524",
+    "resourceId": "/SUBSCRIPTIONS/12534000-8109-4D84-83AD-576C0D5E1AAA/RESOURCEGROUPS/myResourceGroup/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/mycluster",
     "operationName": "MICROSOFT.KUSTO/CLUSTERS/INGEST/ACTION",
     "operationVersion": "1.0",
     "category": "FailedIngestion",
@@ -192,20 +192,21 @@ Log JSON strings include elements listed in the following table:
 
 ```json
 {
-  "resourceId": "/SUBSCRIPTIONS/12534EB3-8109-4D84-83AD-576C0D5E1D06/RESOURCEGROUPS/KEREN/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KERENEUS",
-  "time": "2020-05-27T07:55:05.3693628Z",
+  "resourceId": "/SUBSCRIPTIONS/12534000-8109-4D84-83AD-576C0D5E1AAA/RESOURCEGROUPS/myResourceGroup/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/mycluster",
+  "time": "2021-04-18T19:19:57.0211782Z",
   "operationVersion": "1.0",
   "operationName": "MICROSOFT.KUSTO/CLUSTERS/INGESTIONBATCHING/ACTION",
   "category": "IngestionBatching",
   "correlationId": "2bb51038-c7dc-4ebd-9d7f-b34ece4cb735",
   "properties": {
+    "Timestamp": "2021-04-18T19:19:57.0211782Z",
     "Database": "Samples",
     "Table": "StormEvents",
-    "BatchingType": "Size",
-    "SourceCreationTime": "2020-05-27 07:52:04.9623640",
-    "BatchTimeSeconds": 215.5,
-    "BatchSizeBytes": 2356425,
-    "DataSourcesInBatch": 4,
+    "BatchingType": "Time",
+    "SourceCreationTime": "2021-04-18T19:14:53.9543732Z",
+    "BatchTimeSeconds": 302.1449075,
+    "BatchSizeBytes": 3988,
+    "DataSourcesInBatch": 2,
     "RootActivityId": "2bb51038-c7dc-4ebd-9d7f-b34ece4cb735"
   }
 }
@@ -215,7 +216,7 @@ Log JSON strings include elements listed in the following table:
 
 |Name               |Description
 |---                   |---
-| TimeGenerated        | The time (UTC) at which this event was generated |
+| Timestamp            | The time of the batching reporting |
 | Database             | Name of the database holding the target table |
 | Table                | Name of the target table into which the data is ingested |
 | BatchingType         | Type of batching: whether the batch reached batching time, data size, or number of files limit set by batching policy |
