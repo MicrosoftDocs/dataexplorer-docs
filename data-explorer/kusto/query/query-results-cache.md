@@ -87,7 +87,7 @@ The eviction policy is LRU.
 
 ## Shard level query results cache
 
-The query results cache is effective when the exact same query is being run multiple times in rapid succession and can tolerate returning slightly old data. However, some scenarios, like a live dashboard, require the most up-to-date results.
+The query results cache is effective when the exact same query is run multiple times in rapid succession and can tolerate returning slightly old data. However, some scenarios, like a live dashboard, require the most up-to-date results.
 
 For example, a query that runs every 10 seconds and spans the last 1 hour can benefit from caching intermediate query results at the storage (shard) level.
 
