@@ -1,3 +1,4 @@
+items:
 - name: Azure Data Explorer documentation
   href: index.yml
 - name: Overview
@@ -409,10 +410,9 @@
       href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
     - name: Apache Spark Connector
       href: spark-connector.md
+      displayName: databricks
     - name: Connect from Azure Synapse Apache Spark
       href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
-    - name: Connect from Azure Databricks
-      href: connect-from-databricks.md
     - name: Notebooks
       items:
       - name: Analyze data in Jupyter Notebooks & Kqlmagic
