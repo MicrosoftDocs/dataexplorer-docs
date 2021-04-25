@@ -181,10 +181,10 @@ or 'dynamic([ { "Name": "V1" } ])' (shuffle view V1 by all keys) [dynamic]
 * `query_cursor_scoped_tables` (*OptionQueryCursorScopedTables*): List of table names that should be scoped to cursor_after_default .. cursor_before_or_at_default (upper bound is optional). [dynamic]
 * `query_datascope` (*OptionQueryDataScope*): Controls the query's data scope&mdash;whether the query applies to all data or just part of it. ['default', 'all', or 'hotcache']
 * `query_datetimescope_column` (*OptionQueryDateTimeScopeColumn*): Controls the column name for the query's datetime scope (query_datetimescope_to / query_datetimescope_from). [String]
-* `query_datetimescope_from` (*OptionQueryDateTimeScopeFrom*): Controls the query's datetime scope (earliest) &mdash; used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
-* `query_datetimescope_to` (*OptionQueryDateTimeScopeTo*): Controls the query's datetime scope (latest) &mdash; used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
+* `query_datetimescope_from` (*OptionQueryDateTimeScopeFrom*): Controls the query's datetime scope (earliest)—used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
+* `query_datetimescope_to` (*OptionQueryDateTimeScopeTo*): Controls the query's datetime scope (latest)—used as auto-applied filter on query_datetimescope_column only (if defined). [DateTime]
 * `query_distribution_nodes_span` (*OptionQueryDistributionNodesSpanSize*): If set, controls the way subquery merge behaves: the executing node will introduce an additional level
-in the query hierarchy for each subgroup of nodes; the size of the sub-group is set by this option. [Int]
+in the query hierarchy for each subgroup of nodes; the size of the subgroup is set by this option. [Int]
 * `query_fanout_nodes_percent` (*OptionQueryFanoutNodesPercent*): The percentage of nodes to fan out execution to. [Int]
 * `query_fanout_threads_percent` (*OptionQueryFanoutThreadsPercent*): The percentage of threads to fan out execution to. [Int]
 * `query_force_row_level_security` (*OptionQueryForceRowLevelSecurity*): If specified, forces Row Level Security rules, even if row_level_security policy is disabled [Boolean]
@@ -212,7 +212,7 @@ in the query hierarchy for each subgroup of nodes; the size of the sub-group is 
 * `truncationmaxrecords` (*OptionTruncationMaxRecords*): Overrides the default maximum number of records a query is allowed to return to the caller (truncation). [Long]
 * `truncationmaxsize` (*OptionTruncationMaxSize*): Overrides the default maximum data size a query is allowed to return to the caller (truncation). [Long]
 * `validate_permissions` (*OptionValidatePermissions*): Validates user's permissions to perform the query and doesn't run the query itself. [Boolean]
-    Results for this property are:
+    This property can return the following results:
     * `OK`: permissions are present and valid.
-    * `Incomplete`: validation could not be completed as the query uses dynamic schema evaluation. 
-    * The query will fail with `KustoRequestDeniedException` when the permissions are not present.
+    * `Incomplete`: validation could not be completed because the query uses dynamic schema evaluation.
+    * If permissions aren't present, the `KustoRequestDeniedException` exception will be thrown and the query will fail.

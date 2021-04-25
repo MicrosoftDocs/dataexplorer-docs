@@ -87,15 +87,23 @@ The eviction policy is LRU.
 
 ## Shard level query results cache
 
-The `Query Results Cache` is effective when the exact same query is being run multiple times in rapid succession, and tolerates returning slightly old data. In some scenarios, such as a “live dashboard”, the most up-to-date results are required for the repeated query. 
-For example, when the query runs every 10 seconds and spans the last 1 hour. For such scenarios, Kusto can enable an advanced form of query results caching, which caches intermediate query results at the storage (shard) level.
+The query results cache is effective when the exact same query is being run multiple times in rapid succession, and tolerates returning slightly old data. However, some scenarios require the most up-to-date results, such as a live dashboard.
 
-> [!Note]
-> In order to use this feature, the cluster should be running with V3 engine mode.
+For example, a query that runs every 10 seconds and spans the last 1 hour can benefit from caching intermediate query results at the storage (shard) level.
+
+> [!NOTE]
+> This feature is only available on EngineV3 clusters.
+
+The shard level query results cache is automatically enabled when the `Query results cache` is in use. Because it shares the same cache as `Query results cache`, the same capacity and eviction policies apply.
 
 ### Syntax
 
-Set the query_results_cache_per_shard option as part of the query to use the shard level results cache. You can set this option in the query text or as a client request property. For example:
+`set` `query_results_cache_per_shard`; *Query*
+
+> [!NOTE]
+> This option can be set in the query text or as a [client request property](../api/netfx/request-properties.md).
+
+### Example
 
 ```kusto
 set query_results_cache_per_shard;
@@ -103,6 +111,3 @@ GithubEvent
 | where CreatedAt > ago(180d)
 | summarize arg_max(CreatedAt, Type) by Id
 ```
-
-The feature is also enabled automatically when the `Query Results Cache` is in use.
-This feature shares the same cache that the `Query Results Cache` uses so the same capacity and eviction policy applies for it.
