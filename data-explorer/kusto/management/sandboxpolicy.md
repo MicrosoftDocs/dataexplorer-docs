@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 04/25/2021
 ---
 # Sandbox policy
 
@@ -25,6 +25,8 @@ A sandbox policy has the following properties.
 
 * **SandboxKind**: Defines the type of the sandbox (such as, `PythonExecution`, `RExecution`).
 * **IsEnabled**: Defines if sandboxes of this type may run on the cluster's nodes.
+  * The default value is false.
+* **InitializeOnStartup**: Defines whether or not sandboxes of this type are initialized on startup.
   * The default value is false.
 * **TargetCountPerNode**: Defines how many sandboxes of this type are allowed to run on the cluster's nodes.
   * Values can be between one and twice the number of processors per node.
@@ -47,6 +49,7 @@ The following policy sets different limits for `PythonExecution` and `RExecution
   {
     "SandboxKind": "PythonExecution",
     "IsEnabled": true,
+    "InitializeOnStartup": false,
     "TargetCountPerNode": 4,
     "MaxCpuRatePerSandbox": 55,
     "MaxMemoryMbPerSandbox": 65536
@@ -54,6 +57,7 @@ The following policy sets different limits for `PythonExecution` and `RExecution
   {
     "SandboxKind": "RExecution",
     "IsEnabled": true,
+    "InitializeOnStartup": false,
     "TargetCountPerNode": 2,
     "MaxCpuRatePerSandbox": 50,
     "MaxMemoryMbPerSandbox": 10240

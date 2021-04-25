@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 04/25/2021
 ---
 # sandbox policy command
 
@@ -35,6 +35,7 @@ Modifies the collection of sandbox policies at the cluster level.
   '{'
     '"SandboxKind": "PythonExecution",'
     '"IsEnabled": true,'
+    '"InitializeOnStartup": false,'
     '"TargetCountPerNode": 4,'
     '"MaxCpuRatePerSandbox": 50,'
     '"MaxMemoryMbPerSandbox": 10240'
@@ -42,6 +43,7 @@ Modifies the collection of sandbox policies at the cluster level.
   '{'
     '"SandboxKind": "RExecution",'
     '"IsEnabled": true,'
+	'"InitializeOnStartup": false,'
     '"TargetCountPerNode": 4,'
     '"MaxCpuRatePerSandbox": 50,'
     '"MaxMemoryMbPerSandbox": 10240'
