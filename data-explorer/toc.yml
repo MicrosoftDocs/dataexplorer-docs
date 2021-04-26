@@ -1,3 +1,4 @@
+items:
 - name: Azure Data Explorer documentation
   href: index.yml
 - name: Overview
@@ -94,9 +95,6 @@
       items:
       - name: One-click ingestion overview 
         href: ingest-data-one-click.md
-      - name: CSV data from container to new table
-        displayName: Event Grid, ingest data, ingestion, one click
-        href: one-click-ingestion-new-table.md
       - name: JSON data from local file to existing table
         displayName: ingest data, ingestion, one click
         href: one-click-ingestion-existing-table.md
@@ -136,6 +134,9 @@
       - name: Event Grid data connection
         displayName: ingest
         href: ingest-data-event-grid-overview.md
+      - name: One-click
+        displayName: Event Grid, ingest data, ingestion, one click, csv file
+        href: one-click-ingestion-new-table.md
       - name: Azure portal
         displayName: Event Grid, ingest, data connection
         href: ingest-data-event-grid.md
@@ -409,10 +410,9 @@
       href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
     - name: Apache Spark Connector
       href: spark-connector.md
+      displayName: databricks
     - name: Connect from Azure Synapse Apache Spark
       href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
-    - name: Connect from Azure Databricks
-      href: connect-from-databricks.md
     - name: Notebooks
       items:
       - name: Analyze data in Jupyter Notebooks & Kqlmagic

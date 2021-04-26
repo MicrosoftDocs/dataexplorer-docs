@@ -21,7 +21,7 @@ The following features make one-click ingestion so useful:
 * Ingest data in a variety of [formats](#file-formats)
 * Ingest data into new or existing tables
 * Table mapping and schema are suggested to you and easy to change
-* Continue ingestion easily and quickly from a container with [Event Grid](one-click-ingestion-new-table.md#create-continuous-ingestion-for-container)
+* Continue ingestion easily and quickly from a container with [Event Grid](one-click-ingestion-new-table.md#create-continuous-ingestion)
 
 One-click ingestion is particularly useful when ingesting data for the first time, or when your data's schema is unfamiliar to you.
 
@@ -113,7 +113,7 @@ Once you have completed schema mapping and column manipulations, the ingestion w
 * If your data source is a **container**:
     * Azure Data Explorer's [batching policy](kusto/management/batchingpolicy.md) will aggregate your data. 
     * After ingestion, you can download the ingestion report and review the performance of each blob that was addressed. 
-    * You can select **Create continuous ingestion** and set up [continuous ingestion using Event Grid](one-click-ingestion-new-table.md#create-continuous-ingestion-for-container).
+    * You can select **Create continuous ingestion** and set up [continuous ingestion using Event Grid](one-click-ingestion-new-table.md#create-continuous-ingestion).
  
 ### Initial data exploration
    
