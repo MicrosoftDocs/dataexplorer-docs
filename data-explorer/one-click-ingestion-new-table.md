@@ -1,5 +1,5 @@
 ---
-title: Use one-click ingestion to ingest data from a container into Azure Data Explorer.
+title: Use one-click ingestion to ingest data from a container/ALDS into Azure Data Explorer.
 description: Ingest (load) data into a new Azure Data Explorer table from a container, either as a one-time or continuous operation.
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.topic: how-to
 ms.date: 04/21/2021
 ---
 
-# Use one-click ingestion to ingest data from a container into Azure Data Explorer
+# Ingest data from a container/ADLS into Azure Data Explorer
 
 > [!div class="op_single_selector"]
 > * [One-click](one-click-ingestion-new-table.md)
