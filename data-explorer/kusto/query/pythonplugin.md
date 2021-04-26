@@ -149,7 +149,7 @@ print "This is an example for using 'external_artifacts'"
 * To generate multi-line strings containing the Python script in `Kusto.Explorer`, copy your Python script from your favorite
   Python editor (*Jupyter*, *Visual Studio Code*, *PyCharm*, and so on). 
   Now do one of:
-    * Enclosed the full script in with 3 backticks character, i.e. ``` python code ```.
+    * Enclosed the full script between 3 consecutive backticks, i.e. ` ``` python code ``` `.
     * Press **F2** to open the *Edit in Python* window. Paste the script into this window. Select **OK**. The script will be
       decorated with quotes and new lines, so it's valid in Kusto, and automatically pasted into the query tab.
     * Paste the Python code directly into the query tab. Select those lines, and press **Ctrl+K**, **Ctrl+S** hot keys, to decorate them as
