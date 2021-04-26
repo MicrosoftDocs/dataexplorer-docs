@@ -6,17 +6,17 @@ ms.author: orspodek
 ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 10/07/2019
+ms.date: 04/21/2021
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer by using C#
 
 > [!div class="op_single_selector"]
+> * [One-click](one-click-ingestion-new-table.md)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
-
 
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
  In this article, you create an Event Grid data connection for Azure Data Explorer by using C#.

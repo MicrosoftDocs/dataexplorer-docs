@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 08/13/2020
+ms.date: 04/21/2021
 
 # Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
 ---
@@ -14,6 +14,7 @@ ms.date: 08/13/2020
 # Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications
 
 > [!div class="op_single_selector"]
+> * [One-click](one-click-ingestion-new-table.md)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
