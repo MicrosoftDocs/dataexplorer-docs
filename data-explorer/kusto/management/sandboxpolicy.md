@@ -27,7 +27,7 @@ A sandbox policy has the following properties.
 * **IsEnabled**: Defines if sandboxes of this type may run on the cluster's nodes.
   * The default value is false.
 * **InitializeOnStartup**: Defines whether sandboxes of this type are initialized on startup, or lazily, upon first use.
-  * The default value is false. Set to true to insure consistent performance, avoid any delays for running queries following service restart.
+  * The default value is false. To ensure consistent performance and avoid any delays for running queries following service restart, set this property to *true*.
 * **TargetCountPerNode**: Defines how many sandboxes of this type are allowed to run on the cluster's nodes.
   * Values can be between one and twice the number of processors per node.
   * The default value is 16.
