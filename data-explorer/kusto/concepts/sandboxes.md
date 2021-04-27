@@ -68,7 +68,7 @@ Some of the  limitations can be controlled using a cluster-level [sandbox policy
 
 ## Virtual machine sizes
 
-The following table shows VM sizes that support both features running side by side:
+The following table shows VM sizes that support both encryption and sandbox features running side by side:
 
 | **Name**                              | **Category**      | **Supports sandboxes and encryption** |
 |---------------------------------------|-------------------|---------------------------------------|
