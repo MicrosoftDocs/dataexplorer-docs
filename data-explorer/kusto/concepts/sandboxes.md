@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 04/27/2021
 ---
 # Sandboxes
 
@@ -20,8 +20,7 @@ Flows that run in sandboxes aren't isolated. They're also local (close to the da
 
 ## Prerequisites
 
-* The data engine mustn't have [disk encryption](../../security.md#data-protection) enabled.
-  * Support for both features running side by side is expected in the future.
+* The data engine mustn't have [disk encryption](../../security.md#data-protection) enabled, except those engines with VM sizes that support [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 * The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space to run
   * The estimated size is 20GB, that is roughly 2.5% the SSD capacity of a D14_v2 VM, for example, or 0.7% the SSD capacity of a L16_v1 VM.
   * This affects the cluster's data capacity, and may affect the [cost](https://azure.microsoft.com/pricing/details/data-explorer) of the cluster.
