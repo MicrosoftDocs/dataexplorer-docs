@@ -20,7 +20,35 @@ Flows that run in sandboxes aren't isolated. They're also local (close to the da
 
 ## Prerequisites
 
-* The data engine mustn't have [disk encryption](../../security.md#data-protection) enabled, except those engines with VM sizes that support [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+* Some VM sizes may not support for both [disk encryption](../../security.md#data-protection) and sandboxes running side by side, check the following table:
+    |**Name**| **Category** | **Supports sandboxes and encryption**
+    |---|---|---
+    |Dev(No SLA) Standard_D11_v2| compute-optimized | No
+    |Dev(No SLA) Standard_E2a_v4| compute-optimized | No
+    |Standard_D11_v2| compute-optimized | No
+    |Standard_D12_v2| compute-optimized | No
+    |Standard_D13_v2| compute-optimized | No
+    |Standard_D14_v2| compute-optimized | No
+    |Standard_E2a_v4| heavy compute | No
+    |Standard_E4a_v4| heavy compute | No
+    |Standard_E8a_v4| heavy compute | No
+    |Standard_E16a_v4| heavy compute | No
+    |Standard_DS13_v2 + 1&nbsp;TB&nbsp;PS| storage-optimized | Yes
+    |Standard_DS13_v2 + 2&nbsp;TB&nbsp;PS| storage-optimized | Yes
+    |Standard_DS14_v2 + 3&nbsp;TB&nbsp;PS| storage-optimized | Yes
+    |Standard_DS14_v2 + 4&nbsp;TB&nbsp;PS| storage-optimized | Yes
+    |Standard_E8as_v4 + 1&nbsp;TB&nbsp;PS| storage-optimized | Yes
+    |Standard_E8as_v4 + 2&nbsp;TB&nbsp;PS| storage-optimized | Yes
+    |Standard_E16as_v4 + 3&nbsp;TB&nbsp;PS| storage-optimized | Yes
+    |Standard_E16as_v4 + 4&nbsp;TB&nbsp;PS| storage-optimized | Yes
+    |Standard_L4s| storage-optimized | Yes
+    |Standard_L8s| storage-optimized | Yes
+    |Standard_L16s| storage-optimized | Yes
+    |Standard_L8s_v2| storage-optimized | Yes
+    |Standard_L16s_v2| storage-optimized | Yes
+    |Standard_E64i_v3| isolated compute | No
+    |Standard_E80ids_v4| isolated compute | No
+  * If encryption is enabled on the data engine before we use encryption at host as the default, the data engine may not support both features side by side. In this case, to support both features, stop and stat the cluster will make it work.
 * The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space to run
   * The estimated size is 20GB, that is roughly 2.5% the SSD capacity of a D14_v2 VM, for example, or 0.7% the SSD capacity of a L16_v1 VM.
   * This affects the cluster's data capacity, and may affect the [cost](https://azure.microsoft.com/pricing/details/data-explorer) of the cluster.
