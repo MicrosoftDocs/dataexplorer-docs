@@ -20,7 +20,7 @@ Flows that run in sandboxes aren't isolated. They're also local (close to the da
 
 ## Prerequisites
 
-* Some VM sizes may not support for both [disk encryption](../../security.md#data-protection) and sandboxes running side by side, check the following table:
+* Data engines that support for both [disk encryption](../../security.md#data-protection) and sandboxes features, need to run with the VM size that supports [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data). The following table shows what VM sizes that support both features running side by side:
     |**Name**| **Category** | **Supports sandboxes and encryption**
     |---|---|---
     |Dev(No SLA) Standard_D11_v2| compute-optimized | No
@@ -48,7 +48,7 @@ Flows that run in sandboxes aren't isolated. They're also local (close to the da
     |Standard_L16s_v2| storage-optimized | Yes
     |Standard_E64i_v3| isolated compute | No
     |Standard_E80ids_v4| isolated compute | No
-  * If encryption is enabled on the data engine before we use encryption at host as the default, the data engine may not support both features side by side. In this case, to support both features, stop and stat the cluster will make it work.
+  * If encryption is enabled on the data engine before encryption at host is adopted as the default for VM sizes that support it, the data engine may not support both features side by side. In this case, stop and start the cluster will make it work.
 * The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space to run
   * The estimated size is 20GB, that is roughly 2.5% the SSD capacity of a D14_v2 VM, for example, or 0.7% the SSD capacity of a L16_v1 VM.
   * This affects the cluster's data capacity, and may affect the [cost](https://azure.microsoft.com/pricing/details/data-explorer) of the cluster.
