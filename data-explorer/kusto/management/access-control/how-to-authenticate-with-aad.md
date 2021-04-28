@@ -206,8 +206,10 @@ the administrator of the AAD tenant.
 AuthenticationContext authContext = new AuthenticationContext("AAD Authority URL");
 
 // Exchange your token for a Kusto token
-// You will need to provide your application's client ID (customerAadWebApplicationClientId) and secret to authenticate your application (customerAAdWebApplicationSecret),
-// and the token your web app receives for the logged in user (customerAadWebApplicationToken)
+// You will need to provide:
+// - your application's client ID (customerAadWebApplicationClientId),
+// - your application's secret to authenticate your application (customerAAdWebApplicationSecret),
+// - The token your web app receives for the logged in user (customerAadWebApplicationToken)
 var tokenForKusto = authContext.AcquireTokenAsync(
     "https://{serviceNameAndRegion}.kusto.windows.net",
     new ClientCredential(customerAadWebApplicationClientId, customerAAdWebApplicationSecret),
