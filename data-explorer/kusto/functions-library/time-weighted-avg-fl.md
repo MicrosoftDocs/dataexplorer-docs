@@ -19,15 +19,15 @@ This type of aggregation is required for use cases where the metric values are e
 
 ## Syntax
 
-`T | invoke time_weighted_avg_fl(`*t_col*, *y_col*, *key_col*, *time*, :::no-loc text="*etime*":::, *dt*`)`
+`T | invoke time_weighted_avg_fl(`*t_col*, *y_col*, *key_col*, *stime*, *:::no-loc text="etime":::*, *dt*`)`
   
 ## Arguments
 
 * *t_col*: The name of the column containing the time stamp of the records.
 * *y_col*: The name of the column containing the metric value of the records.
 * *key_col*: The name of the column containing the partition key of the records.
-* :::no-loc text="*stime*":::: Start time of the aggregation window.
-* :::no-loc text="*etime*":::: End time of the aggregation window.
+* *:::no-loc text="stime":::*: Start time of the aggregation window.
+* *:::no-loc text="etime":::*: End time of the aggregation window.
 * *dt*: Aggregation time bin.
 
 ## Usage
