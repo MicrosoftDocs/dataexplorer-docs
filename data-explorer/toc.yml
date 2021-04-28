@@ -1983,6 +1983,9 @@ items:
     - name: series_rolling_fl()
       displayName: functions library
       href: kusto/functions-library/series-rolling-fl.md
+    - name: time_weighted_avg_fl()
+      displayName: functions library
+      href: kusto/functions-library/time-weighted-avg-fl.md
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions
     href: ./policy-reference.md
