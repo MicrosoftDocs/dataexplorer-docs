@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: ohbitton
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/28/2021
+ms.date: 04/28/2021
 ---
 
 # Create an external table (preview)
@@ -25,7 +25,7 @@ This article shows you how to create an external table using the one-click exper
 
 There are two ways to access the creation wizard:
 
-* In the left blade of the Web UI, select **Data**. In the **Create External table** card, select **Create**.
+* In the left blade of the Web UI, select **Data**. In the **Create external table (preview)** card, select **Create**.
 
      :::image type="content" source="media/external-table/data-blade.png" alt-text="Screenshot of data blade in Azure Data Explorer Web UI with create external table highlighted. ":::
 
