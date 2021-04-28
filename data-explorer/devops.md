@@ -15,9 +15,16 @@ ms.date: 05/05/2019
 # Azure DevOps Task for Azure Data Explorer
 
 [Azure DevOps Services](https://azure.microsoft.com/services/devops/) provides development collaboration tools such as high-performance pipelines, free private Git repositories, configurable Kanban boards, and extensive automated and continuous testing capabilities. [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) is an Azure DevOps capability that enables you to manage CI/CD to deploy your code with high-performance pipelines that work with any language, platform, and cloud.
-[Azure Data Explorer - Admin Commands](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) is the Azure Pipelines task that enables you to create release pipelines and deploy your database changes to your Azure Data Explorer databases. It's available for free in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
+[Azure Data Explorer - Pipeline Tools](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) is the Azure Pipelines task that enables you to create release pipelines and deploy your database changes to your Azure Data Explorer databases. It's available for free in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
+this extension includes 3 basic tasks:
+   * Azure Data Explorer Command - Run Admin Commands against ADX cluster
+   * Azure Data Explorer Query - Run Queries against ADX cluster and parse the results
+   * Azure Data Explorer Query Server Gate - Agentless task to Gate releases depending on the query outcome
 
-This document describes a simple example on the use of the **Azure Data Explorer – Admin Commands** task to deploy your schema changes to your database. For complete CI/CD pipelines, refer to [Azure DevOps documentation](/azure/devops/user-guide/what-is-azure-devops#vsts).
+   ![Task Types](media/devops/ExtensionTaskTypes.png)
+* Internal Microsoft users or early adopters can submit a request to share the [internal version of the extension](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.ADXAdminCommands) 
+
+This document describes a simple example on the use of the **Azure Data Explorer - Pipeline Tools** task to deploy your schema changes to your database. For complete CI/CD pipelines, refer to [Azure DevOps documentation](/azure/devops/user-guide/what-is-azure-devops#vsts).
 
 ## Prerequisites
 
@@ -31,6 +38,10 @@ This document describes a simple example on the use of the **Azure Data Explorer
     * [Create an organization](/azure/devops/organizations/accounts/create-organization)
     * [Create a project in Azure DevOps](/azure/devops/organizations/projects/create-project)
     * [Code with Git](/azure/devops/user-guide/code-with-git)
+* Extension Installation:
+    * if you are the Azure DevOps instance owner install the extension from the [extension page](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX)
+    * ![Create folders](media/devops/GetExtention.PNG)   ![Create folders](media/devops/ExtensionInstall.PNG)
+    * if you are NOT the Azure DevOps instance owner, Please refer / request your ADO instance admin to install it.
 
 ## Create folders
 
@@ -76,7 +87,7 @@ Create the following sample folders (*Functions*, *Policies*, *Tables*) in your 
 
 1. Create three tasks to deploy **Tables**, **Functions**, and **Policies**, in this order. 
 
-1. In the **Tasks** tab, select **+** by **Agent job**. Search for **Azure Data Explorer**. In **Marketplace**, install the **Azure Data Explorer – Admin Commands** extension. Then, select **Add** in **Run Azure Data Explorer Command**.
+1. In the **Tasks** tab, select **+** by **Agent job**. Search for **Azure Data Explorer**. In **Marketplace**, install the **Azure Data Explorer – Pipeline Tools** extension. Then, select **Add** in **Run Azure Data Explorer Command**.
 
      ![Add admin commands](media/devops/add-admin-commands.png)
 
@@ -84,7 +95,7 @@ Create the following sample folders (*Functions*, *Policies*, *Tables*) in your 
     * **Display name**: Name of the task
     * **File path**: In the **Tables** task, specify */Tables/*.csl since the table creation files are in the *Table* folder.
     * **Endpoint URL**: enter the `EndPoint URL`variable created in previous step.
-    * Select **Use Service Endpoint** and select **+ New**.
+    * Select **Use Service Endpoint** and pick the service endpoint in the selection box (if none exist create a new endpoint **+ New**.)
 
     ![Update Kusto command task](media/devops/kusto-command-task.png)
 
@@ -105,6 +116,31 @@ Create the following sample folders (*Functions*, *Policies*, *Tables*) in your 
 1. Repeat steps 1-5 another two times to deploy files from the *Functions* and *Policies* folders. Select **Save**. In the **Tasks** tab, see the three tasks created: **Deploy Tables**, **Deploy Functions**, and **Deploy Policies**.
 
     ![Deploy all folders](media/devops/deploy-all-folders.png)
+
+1. Query Task - Run A query against a cluster
+
+    ![Query Task](media/devops/QueryTask.png)
+
+    Set Task Results based on the Query Row Count or single Value
+    
+    ![Query Task](media/devops/RowCount.png)  ![Query Task](media/devops/SingleValue.png) 
+
+1. Query Gate Task - Run A query against a cluster and Gate Release Progress pending on Query Results Row Count
+
+    How To Add the Gate:
+
+    ![Query Gate Task](media/devops/QueryGateAdd.png)
+
+    How To Configure the Task:
+   
+    ![Query Gate Task](media/devops/QueryGate.png)
+
+    How it looks when running a release:
+
+    ![Query Gate Task](media/devops/QueryGateLook.png)
+
+
+
 
 1. Select **+ Release** > **Create release** to create a release.
 
