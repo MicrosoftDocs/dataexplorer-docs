@@ -10,24 +10,24 @@ ms.date: 04/27/2021
 ---
 # time_weighted_avg_fl()
 
-The function `time_weighted_avg_fl()` calculates the time weighted average of a metric in a given time window, over input time bins. Similar to [summarize operator](../query/summarizeoperator.md), it aggregates the metric by time bins, but instead of calculating simple [avg()](../query/avg-aggfunction.md) of the metric value in each bin, it weights each value by its duration. The duration is defined from the timestamp of the current value to the timestamp of the next value.
+The function `time_weighted_avg_fl()` calculates the time weighted average of a metric in a given time window, over input time bins. This function is similar to [summarize operator](../query/summarizeoperator.md). The function aggregates the metric by time bins, but instead of calculating simple [avg()](../query/avg-aggfunction.md) of the metric value in each bin, it weights each value by its duration. The duration is defined from the timestamp of the current value to the timestamp of the next value.
 
-This type of aggregation is required for use cases, where the metric values are emitted only when changed (and not in constant intervals). This scenarios are common for example in IoT, where edge devices send metrics to the cloud only upon changes, thus optimizing communication bandwidth.
+This type of aggregation is required for use cases where the metric values are emitted only when changed (and not in constant intervals). For example in IoT, where edge devices send metrics to the cloud only upon changes, and optimize communication bandwidth.
 
 > [!NOTE]
 > This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 
 ## Syntax
 
-`T | invoke time_weighted_avg_fl(`*t_col*, *y_col*, *key_col*, *time*, *etime*, *dt*`)`
+`T | invoke time_weighted_avg_fl(`*t_col*, *y_col*, *key_col*, *time*, :::no-loc text="*etime*":::, *dt*`)`
   
 ## Arguments
 
 * *t_col*: The name of the column containing the time stamp of the records.
 * *y_col*: The name of the column containing the metric value of the records.
 * *key_col*: The name of the column containing the partition key of the records.
-* *stime*: Start time of the aggregation window.
-* *etime*: End time of the aggregation window.
+* :::no-loc text="*stime*":::: Start time of the aggregation window.
+* :::no-loc text="*etime*":::: End time of the aggregation window.
 * *dt*: Aggregation time bin.
 
 ## Usage
@@ -144,4 +144,4 @@ timestamp	                   key      val
 2021-04-26 01:00:00.0000000    Device2	100
 ```
 
-The first value is (45m*100 + 15m*200)/60m = 125, the second value is (6m*200 + 54m*100)/60m = 110 etc.
+The first value is (45m*100 + 15m*200)/60m = 125, the second value is (6m*200 + 54m*100)/60m = 110, and so on.
