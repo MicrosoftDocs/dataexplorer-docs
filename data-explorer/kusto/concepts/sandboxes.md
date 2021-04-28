@@ -20,7 +20,7 @@ Flows that run in sandboxes aren't isolated. They're also local (close to the da
 
 ## Prerequisites
 
-* Data engines that support both [disk encryption](../../security.md#data-protection) and sandboxes features must run on a VM size that supports [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data). For more information on supported VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
+* Data engines that enable both [disk encryption](../../security.md#data-protection) and sandboxes features must run on a VM size that supports [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data). For more information on supported VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
   * If encryption is enabled on the data engine before encryption at host is adopted as the default for supporting VM sizes, the data engine may not support both features side by side. In this case, stop and start the cluster.
 * The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space to run.
   * The estimated size is 20 GB, that is roughly 2.5% the SSD capacity of a D14_v2 VM, for example, or 0.7% the SSD capacity of a L16_v1 VM.
