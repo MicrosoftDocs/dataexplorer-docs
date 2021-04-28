@@ -129,7 +129,7 @@ Now that you've seen how basic queries work, you can use the table grid to custo
 
 ### Expand a cell
 
-Expanding cells is useful to view long strings or dynamic fields such a JSON. 
+Expanding cells is useful to view long strings or dynamic fields such as JSON. 
 
 1. Double-click a cell to open an expanded view. This view allows you to read long strings, and provides a JSON formatting for dynamic data.
 

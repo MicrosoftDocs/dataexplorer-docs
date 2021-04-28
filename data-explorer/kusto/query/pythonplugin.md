@@ -27,7 +27,7 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
 * *output_schema*: A `type` literal that defines the output schema of the tabular data, returned by the Python code.
     * The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`. For example, `typeof(col1:string, col2:long)`.
     * To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`
-* *script*: A `string` literal that is the valid Python script to execute.
+* *script*: A `string` literal that is a valid Python script to execute. To generate multi-line strings see [Usage tips](#usage-tips).
 * *script_parameters*: An optional `dynamic` literal. It's a property bag of name/value pairs to be passed to the
    Python script as the reserved `kargs` dictionary. For more information, see [Reserved Python variables](#reserved-python-variables).
 * *hint.distribution*: An optional hint for the plugin's execution to be distributed across multiple cluster nodes.
@@ -149,6 +149,7 @@ print "This is an example for using 'external_artifacts'"
 * To generate multi-line strings containing the Python script in `Kusto.Explorer`, copy your Python script from your favorite
   Python editor (*Jupyter*, *Visual Studio Code*, *PyCharm*, and so on). 
   Now do one of:
+    * Enclose the full script between three consecutive backticks, for example ` ``` python code ``` `.
     * Press **F2** to open the *Edit in Python* window. Paste the script into this window. Select **OK**. The script will be
       decorated with quotes and new lines, so it's valid in Kusto, and automatically pasted into the query tab.
     * Paste the Python code directly into the query tab. Select those lines, and press **Ctrl+K**, **Ctrl+S** hot keys, to decorate them as
