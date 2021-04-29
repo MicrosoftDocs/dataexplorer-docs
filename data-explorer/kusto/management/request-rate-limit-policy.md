@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/18/2021
+ms.date: 04/30/2021
 ---
 # Request rate limit policy
 
