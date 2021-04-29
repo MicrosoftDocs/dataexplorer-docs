@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/18/2021
+ms.date: 04/30/2021
 ---
 # Workload groups
 
@@ -82,4 +82,3 @@ The same information can also be viewed and analyzed in [Azure Monitor insights]
 ## Control commands
 
 Managing workload groups and their policies is done using [workload groups control commands](workload-groups-commands.md).
-
