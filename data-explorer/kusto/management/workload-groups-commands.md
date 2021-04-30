@@ -280,7 +280,6 @@ For example, when there are no concurrent requests in the workload group.
 | TimeWindow        | timespan   | The time window during which the resource was tracked (or `null`, if `ResourceKind` is `ConcurrentRequests`). |
 | MeasuredOn        | datetime   | The UTC date and time at which the resource utilization was last measured.                                    |
 | NodeId            | string     | The ID of the node on which the resource utilization was last measured.                                       |
-| EnforcementLevel  | string     | The enforcement level of the rate limit being measured.                                                       |
 
 ### Example
 
@@ -288,15 +287,15 @@ For example, when there are no concurrent requests in the workload group.
 .show workload_group MyWorkloadGroup resources utilization
 ```
 
-| WorkloadGroupName | Principal                                                                         | ResourceKind       | Capacity | Consumed | TimeWindow | MeasuredOn                  | NodeId        | EnforcementLevel |
-|-------------------|-----------------------------------------------------------------------------------|--------------------|----------|----------|------------|-----------------------------|---------------|------------------| 
-| MyWorkloadGroup   |                                                                                   | ConcurrentRequests | 30       | 25       |            | 2020-11-04 22:38:54.7256255 | KEngine000001 | Cluster          |
-| MyWorkloadGroup   | aadapp=7929a76b-6f2d-49ef-9aa5-facaccbbf106;94918272-e999-45a6-81f1-85f0428dad53  | ConcurrentRequests | 25       | 19       |            | 2020-11-04 22:38:54.7256255 | KEngine000001 | Cluster          |
-| MyWorkloadGroup   | aadapp=7929a76b-6f2d-49ef-9aa5-facaccbbf106;94918272-e999-45a6-81f1-85f0428dad53  | RequestCount       | 120      | 2        | 00:01:00   | 2020-11-04 22:38:54.0000000 | KEngine000001 | Cluster          |
-| MyWorkloadGroup   | aadapp=7929a76b-6f2d-49ef-9aa5-facaccbbf106;94918272-e999-45a6-81f1-85f0428dad53  | TotalCpuSeconds    | 32500    | 32480    | 01:00:00   | 2020-11-04 22:38:54.0000000 | KEngine000001 | Cluster          |
-| MyWorkloadGroup   | aaduser=e2056bdc-5448-4999-8b9b-1ebf9dd1e62b;94918272-e999-45a6-81f1-85f0428dad53 | ConcurrentRequests | 25       | 6        |            | 2020-11-04 22:38:53.4456894 | KEngine000001 | Cluster          |
-| MyWorkloadGroup   | aaduser=e2056bdc-5448-4999-8b9b-1ebf9dd1e62b;94918272-e999-45a6-81f1-85f0428dad53 | RequestCount       | 120      | 15       | 00:01:00   | 2020-11-04 22:38:54.0000000 | KEngine000001 | Cluster          |
-| MyWorkloadGroup   | aaduser=e2056bdc-5448-4999-8b9b-1ebf9dd1e62b;94918272-e999-45a6-81f1-85f0428dad53 | TotalCpuSeconds    | 32500    | 22584    | 01:00:00   | 2020-11-04 22:38:54.0000000 | KEngine000001 | Cluster          |
+| WorkloadGroupName | Principal                                                                         | ResourceKind       | Capacity | Consumed | TimeWindow | MeasuredOn                  | NodeId        |
+|-------------------|-----------------------------------------------------------------------------------|--------------------|----------|----------|------------|-----------------------------|---------------|
+| MyWorkloadGroup   |                                                                                   | ConcurrentRequests | 30       | 25       |            | 2020-11-04 22:38:54.7256255 | KEngine000001 |
+| MyWorkloadGroup   | aadapp=7929a76b-6f2d-49ef-9aa5-facaccbbf106;94918272-e999-45a6-81f1-85f0428dad53  | ConcurrentRequests | 25       | 19       |            | 2020-11-04 22:38:54.7256255 | KEngine000001 |
+| MyWorkloadGroup   | aadapp=7929a76b-6f2d-49ef-9aa5-facaccbbf106;94918272-e999-45a6-81f1-85f0428dad53  | RequestCount       | 120      | 2        | 00:01:00   | 2020-11-04 22:38:54.0000000 | KEngine000001 |
+| MyWorkloadGroup   | aadapp=7929a76b-6f2d-49ef-9aa5-facaccbbf106;94918272-e999-45a6-81f1-85f0428dad53  | TotalCpuSeconds    | 32500    | 32480    | 01:00:00   | 2020-11-04 22:38:54.0000000 | KEngine000001 |
+| MyWorkloadGroup   | aaduser=e2056bdc-5448-4999-8b9b-1ebf9dd1e62b;94918272-e999-45a6-81f1-85f0428dad53 | ConcurrentRequests | 25       | 6        |            | 2020-11-04 22:38:53.4456894 | KEngine000001 |
+| MyWorkloadGroup   | aaduser=e2056bdc-5448-4999-8b9b-1ebf9dd1e62b;94918272-e999-45a6-81f1-85f0428dad53 | RequestCount       | 120      | 15       | 00:01:00   | 2020-11-04 22:38:54.0000000 | KEngine000001 |
+| MyWorkloadGroup   | aaduser=e2056bdc-5448-4999-8b9b-1ebf9dd1e62b;94918272-e999-45a6-81f1-85f0428dad53 | TotalCpuSeconds    | 32500    | 22584    | 01:00:00   | 2020-11-04 22:38:54.0000000 | KEngine000001 |
 
 ## Example
 
