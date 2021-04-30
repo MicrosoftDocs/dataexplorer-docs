@@ -12,7 +12,11 @@ ms.custom: contperf-fy21q1
 
 # Batching Ingestion Monitoring
 
-Batching ingestion is one of the [methods](ingest-data-overview#batching-vs-streaming-ingestion) used by Azure Data Explorer (ADX) for ingesting data. Using this method, ADX optimizes ingestion throughput by batching the small ingress data chunks that it receives. The batching occurs based on a [batching policy](kusto/management/batchingpolicy) defined on the database or the table. ADX uses a default value of 5 minutes as the maximum delay time, 1000 items and total size of 1G for batching. The batching ingestion is divided into several stages, and there are specific components responsible for each of these steps:
+Batching ingestion is one of the [methods](ingest-data-overview#batching-vs-streaming-ingestion) used by Azure Data Explorer (ADX) for ingesting data. Using this method, ADX optimizes ingestion throughput by batching the small ingress data chunks that it receives. 
+
+The batching occurs based on a [batching policy](kusto/management/batchingpolicy) defined on the database or the table. ADX uses a default value of 5 minutes as the maximum delay time, 1000 items and total size of 1G for batching. 
+
+The batching ingestion is divided into several stages, and there are specific components responsible for each of these steps:
 
 * For Event Grid, Event Hub and IoT Hub ingestion, there is a component of Data Connection that gets the data from external sources and performs initial data rearrangement.
 
