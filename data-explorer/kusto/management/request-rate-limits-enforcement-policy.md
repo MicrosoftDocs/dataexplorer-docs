@@ -17,10 +17,10 @@ A workload group's request rate limits enforcement policy controls how request r
 
 A request rate limit policy has the following properties:
 
-| Name                     | Supported values                            | Description                                   |
-|--------------------------|---------------------------------------------|-----------------------------------------------|
-| QueriesEnforcementLevel  | `Cluster`, `Database`, `QueryHead`          | Indicates the enforcement level for queries.  |
-| CommandsEnforcementLevel | `Cluster`, `Database`                       | Indicates the enforcement level for commands. |
+| Name                     | Supported values                            | Default value | Description                                   |
+|--------------------------|---------------------------------------------|---------------------------------------------------------------|
+| QueriesEnforcementLevel  | `Cluster`, `Database`, `QueryHead`          | `Database`    | Indicates the enforcement level for queries.  |
+| CommandsEnforcementLevel | `Cluster`, `Database`                       | `Database`    | Indicates the enforcement level for commands. |
 
 ### Request rate limits enforcement level
 
@@ -39,6 +39,7 @@ The enforcement level for request rate limits can be one of the following:
 
 ### Notes
 
+* If the policy is undefined (`null`), the default enforcement level (`Database`) applies to both commands and queries.
 * Rate limits for cluster-scoped commands are always enforced at the cluster level, regardless of the value configured in the policy.
   * For example: control commands that manage cluster-level policies.
 
