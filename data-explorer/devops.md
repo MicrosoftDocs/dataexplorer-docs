@@ -4,10 +4,10 @@ description: 'In this topic, you learn to create a release pipeline and deploy'
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: jasonh
+ms.reviewer: shfeldma
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 05/05/2019
+ms.date: 04/30/2021
 
 #Customer intent: I want to use Azure DevOps to create a release pipeline and deploy
 ---
@@ -17,12 +17,13 @@ ms.date: 05/05/2019
 [Azure DevOps Services](https://azure.microsoft.com/services/devops/) provides development collaboration tools such as high-performance pipelines, free private Git repositories, configurable Kanban boards, and extensive automated and continuous testing capabilities. [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) is an Azure DevOps capability that enables you to manage CI/CD to deploy your code with high-performance pipelines that work with any language, platform, and cloud.
 [Azure Data Explorer - Pipeline Tools](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) is the Azure Pipelines task that enables you to create release pipelines and deploy your database changes to your Azure Data Explorer databases. It's available for free in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 this extension includes 3 basic tasks:
-   * Azure Data Explorer Command - Run Admin Commands against ADX cluster
-   * Azure Data Explorer Query - Run Queries against ADX cluster and parse the results
-   * Azure Data Explorer Query Server Gate - Agentless task to Gate releases depending on the query outcome
 
-   ![Task Types](media/devops/ExtensionTaskTypes.png)
-* Internal Microsoft users or early adopters can submit a request to share the [internal version of the extension](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.ADXAdminCommands) 
+* Azure Data Explorer Command - Run Admin Commands against ADX cluster
+* Azure Data Explorer Query - Run Queries against ADX cluster and parse the results
+* Azure Data Explorer Query Server Gate - Agentless task to Gate releases depending on the query outcome
+
+    ![Task Types](media/devops/ExtensionTaskTypes.png)
+* Internal Microsoft users or early adopters can submit a request to share the [internal version of the extension](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.ADXAdminCommands)
 
 This document describes a simple example on the use of the **Azure Data Explorer - Pipeline Tools** task to deploy your schema changes to your database. For complete CI/CD pipelines, refer to [Azure DevOps documentation](/azure/devops/user-guide/what-is-azure-devops#vsts).
 
@@ -39,9 +40,10 @@ This document describes a simple example on the use of the **Azure Data Explorer
     * [Create a project in Azure DevOps](/azure/devops/organizations/projects/create-project)
     * [Code with Git](/azure/devops/user-guide/code-with-git)
 * Extension Installation:
-    * if you are the Azure DevOps instance owner install the extension from the [extension page](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX)
-    * ![Create folders](media/devops/GetExtention.PNG)   ![Create folders](media/devops/ExtensionInstall.PNG)
-    * if you are NOT the Azure DevOps instance owner, Please refer / request your ADO instance admin to install it.
+    * If you are the Azure DevOps instance owner, install the extension from the [Marketplace](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX).
+        ![Get extension in Marketplace](media/devops/GetExtention.PNG)
+        ![Install extension](media/devops/ExtensionInstall.PNG)
+    * If you are NOT the Azure DevOps instance owner, contact your owner and ask them to install it.
 
 ## Create folders
 
@@ -61,7 +63,7 @@ Create the following sample folders (*Functions*, *Policies*, *Tables*) in your 
 
 1. The **New release pipeline** window opens. In the **Pipelines** tab, in the **Select a template** pane, select **Empty job**.
 
-     ![Select a template](media/devops/select-template.png)
+    ![Select a template](media/devops/select-template.png)
 
 1. Select **Stage** button. In **Stage** pane, add the **Stage name**. Select **Save** to save your pipeline.
 
@@ -71,7 +73,7 @@ Create the following sample folders (*Functions*, *Policies*, *Tables*) in your 
 
     ![Add an artifact](media/devops/add-artifact.png)
 
-1. In the **Variables** tab, select **+ Add** to create a variable for **Endpoint URL** that will be used in the task. Write the **Name** and the **Value** of the endpoint. Select **Save** to save your pipeline. 
+1. In the **Variables** tab, select **+ Add** to create a variable for **Endpoint URL** that will be used in the task. Write the **Name** and the **Value** of the endpoint. Select **Save** to save your pipeline.
 
     ![Create variable](media/devops/create-variable.png)
 
@@ -79,68 +81,98 @@ Create the following sample folders (*Functions*, *Policies*, *Tables*) in your 
 
     ![Azure Data Explorer cluster URI](media/devops/adx-cluster-uri.png)
 
-## Create tasks to deploy
+### Create tasks to deploy the folders
 
-1. In the **Pipeline** tab, click on **1 job, 0 task** to add tasks. 
+1. In the **Pipeline** tab, click on **1 job, 0 task** to add tasks.
 
     ![Add tasks](media/devops/add-task.png)
 
-1. Create three tasks to deploy **Tables**, **Functions**, and **Policies**, in this order. 
+1. Repeat the following steps to create command tasks to deploy files from the **Tables**, **Functions**, and **Policies** folders:
 
-1. In the **Tasks** tab, select **+** by **Agent job**. Search for **Azure Data Explorer**. In **Marketplace**, install the **Azure Data Explorer – Pipeline Tools** extension. Then, select **Add** in **Run Azure Data Explorer Command**.
+    ![Add admin commands](media/devops/add-admin-commands.png)
 
-     ![Add admin commands](media/devops/add-admin-commands.png)
+    1. In the **Tasks** tab, select **+** by **Agent job** and search for **Azure Data Explorer**.
+    1. Under **Run Azure Data Explorer Command**, select **Add**.
+    1. Select **Kusto Command** and update the task with the following information:
+        * **Display name**: Name of the task. For example, **`Deploy <FOLDER>`** where `<FOLDER>` is the name of the folder for the deployment task you are creating.
+        * **File path**: For each folder, specify the path as `*/<FOLDER>/*.csl` where `<FOLDER>` is the relevant folder for the task.
+        * **Endpoint URL**: Specify the `EndPoint URL` variable created in previous step.
+        * **Use Service Endpoint**: Select this option.
+        * **Service Endpoint**: Select an existing service endpoint or create a new one (**+ New**) providing the following information in the **Add Azure Data Explorer service connection** window:
 
-1. Click on **Kusto Command** on the left and update the task with the following information:
-    * **Display name**: Name of the task
-    * **File path**: In the **Tables** task, specify */Tables/*.csl since the table creation files are in the *Table* folder.
-    * **Endpoint URL**: enter the `EndPoint URL`variable created in previous step.
-    * Select **Use Service Endpoint** and pick the service endpoint in the selection box (if none exist create a new endpoint **+ New**.)
+            | Setting | Suggested value |
+            |--|--|
+            | **Connection name** | Enter a name to identify this service endpoint |
+            | **Cluster Url** | Value can be found in the overview section of your Azure Data Explorer Cluster in the Azure portal |
+            | **Service Principal Id** | Enter the AAD App ID (created as prerequisite) |
+            | **Service Principal App Key** | Enter the AAD App Key (created as prerequisite) |
+            | **AAD tenant Id** | Enter your AAD tenant (such as microsoft.com or contoso.com) |
 
-    ![Update Kusto command task](media/devops/kusto-command-task.png)
+        Select **Allow all pipelines to use this connection** checkbox. Select **OK**.
 
-1. Complete the following information in the **Add Azure Data Explorer service connection** window:
+        ![Add service connection](media/devops/add-service-connection.png)
 
-    |Setting  |Suggested value  |
-    |---------|---------|
-    |**Connection name**     |    Enter a name to identify this service endpoint     |
-    |**Cluster Url**    |    Value can be found in the overview section of your Azure Data Explorer Cluster in the Azure portal | 
-    |**Service Principal Id**    |    Enter the AAD App ID (created as prerequisite)     |
-    |**Service Principal App Key**     |    Enter the AAD App Key (created as prerequisite)    |
-    |**AAD tenant Id**    |      Enter your AAD tenant (such as microsoft.com, contoso.com...)    |
-
-    Select **Allow all pipelines to use this connection** checkbox. Select **OK**.
-
-    ![Add service connection](media/devops/add-service-connection.png)
-
-1. Repeat steps 1-5 another two times to deploy files from the *Functions* and *Policies* folders. Select **Save**. In the **Tasks** tab, see the three tasks created: **Deploy Tables**, **Deploy Functions**, and **Deploy Policies**.
+1. Select **Save**. In the **Tasks** tab, verify that there are three tasks: **Deploy Tables**, **Deploy Functions**, and **Deploy Policies**.
 
     ![Deploy all folders](media/devops/deploy-all-folders.png)
 
-1. Query Task - Run A query against a cluster
+### Create a Query task
 
-    ![Query Task](media/devops/QueryTask.png)
+If required, create a task to run a query against a cluster.
 
-    Set Task Results based on the Query Row Count or single Value
-    
-    ![Query Task](media/devops/RowCount.png)  ![Query Task](media/devops/SingleValue.png) 
+1. In the **Tasks** tab, select **+** by **Agent job** and search for **Azure Data Explorer**.
 
-1. Query Gate Task - Run A query against a cluster and Gate Release Progress pending on Query Results Row Count
+1. Under **Run Azure Data Explorer Query**, select **Add**.
+1. Select **Kusto Query** and update the task with the following information:
 
-    How To Add the Gate:
+    * **Display name**: Name of the task. For example, **Query cluster**.
+    * **Type**: Select **Inline**.
+    * **Query**: Enter the query you want to run.
+    * **Endpoint URL**: Specify the `EndPoint URL` variable created earlier.
+    * **Use Service Endpoint**: Select this option.
+    * **Service Endpoint**: Select a service endpoint.
+
+    ![Query task](media/devops/QueryTask.png)
+
+1. Under Task Results, select the task's success criteria based on the results of your query, as follows:
+
+    * If your query returns rows, select **Row Count** and provide the criteria you require.
+
+        ![Query task row count](media/devops/RowCount.png)
+
+    * If your query returns a value, select **Single Value** and provide the expected result.
+
+        ![Query task single value](media/devops/SingleValue.png)
+
+### Create a Query Server Gate task
+
+If required, create a task to run a query against a cluster and gate release progress pending Query Results Row Count.
+
+1. In the **Tasks** tab, select **+** by **Agent job** and search for **Azure Data Explorer**.
+
+1. Under **Run Azure Data Explorer Query Server Gate**, select **Add**.
+1. Select **Kusto Query Server Gate** and update the task with the following information:
+1. Select **Server Gate Test**.
 
     ![Query Gate Task](media/devops/QueryGateAdd.png)
 
-    How To Configure the Task:
-   
+1. Configure the task providing the following information:
+
+    * **Display name**: Name of the gate. For example, **ADX Query Gate**.
+    * **Service Endpoint**: Select a service endpoint.
+    * **Database name**: Specify the database name.
+    * **Type**: Select **Inline query**.
+    * **Query**: Enter the query you want to run.
+    * **Maximum threshold**: Specify the maximum row count for the query's success criteria.
+
     ![Query Gate Task](media/devops/QueryGate.png)
 
-    How it looks when running a release:
+> [!NOTE]
+> You should see results like the following When running the release.
+>
+> ![Query Gate Task](media/devops/QueryGateLook.png)
 
-    ![Query Gate Task](media/devops/QueryGateLook.png)
-
-
-
+### Run the release
 
 1. Select **+ Release** > **Create release** to create a release.
 
@@ -150,4 +182,4 @@ Create the following sample folders (*Functions*, *Policies*, *Tables*) in your 
 
     ![Deployment is successful](media/devops/deployment-successful.png)
 
-You have now completed creation of a release pipeline for deployment of three tasks to pre-production.
+You have now completed creation of a release pipeline for deployment to pre-production.
