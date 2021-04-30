@@ -72,8 +72,8 @@ Request rate limits can be enforced at one of the following levels:
 * The effective rate limits for the `default` workload group are:
    * The maximum number of concurrent *cluster-scoped control commands* is `200`.
    * The maximum number of concurrent *database-scoped control commands* is `2` (database admin nodes) x `200` (max per admin node) = `400`.
-   * The maximum number of concurrent *strongly-consistent queries* is `2` (database admin nodes) x `200` (max per admin node) = `400`.
-   * The maximum number of concurrent *weakly-consistent queries* is `5` (query heads) x `200` (max per query head) = `1000`.
+   * The maximum number of concurrent *strongly consistent queries* is `2` (database admin nodes) x `200` (max per admin node) = `400`.
+   * The maximum number of concurrent *weakly consistent queries* is `5` (query heads) x `200` (max per query head) = `1000`.
 
 ## Control commands
 
