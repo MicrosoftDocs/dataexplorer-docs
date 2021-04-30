@@ -52,7 +52,7 @@ Request rate limits can be enforced at one of the following levels:
     * 50% of the tail nodes (5 out of 10) can serve as query heads for weakly consistent queries.
   * The `default` workload group is defined with the following policies:
 
-    ```
+    ```json
     "RequestRateLimitPolicies": [
         {
             "IsEnabled": true,
