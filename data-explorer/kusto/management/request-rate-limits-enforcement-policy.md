@@ -1,6 +1,6 @@
 ---
 title: Request rate limits enforcement policy - Azure Data Explorer
-description: This article describes the request rate limits enforcement policy policy in Azure Data Explorer.
+description: This article describes the request rate limits enforcement policy in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -24,16 +24,16 @@ A request rate limit policy has the following properties:
 
 ### Request rate limits enforcement level
 
-The enforcement level for request rate limits can be one of the following:
+Request rate limits can be enforced at one of the following levels:
 
 * `Cluster`:
-  * Rate limits are enforced at the cluster level, by the single cluster admin node.
+  * Rate limits are enforced by the single cluster admin node.
 * `Database`:
-  * Rate limits are enforced at the database level, by the database admin node that manages the database the request was sent to.
+  * Rate limits are enforced by the database admin node that manages the database the request was sent to.
   * If there are multiple database admin nodes, the configured rate limit is effectively multiplied by the number of database admin nodes.
 * `QueryHead`:
-  * Rate limits for *queries* are enforced at the query level head, by the query the query was routed to.
-  * This impacts queries that are sent with [weak consistenty](../concepts/queryconsistency.md), and effetively multiplies the configured limit
+  * Rate limits for *queries* are enforced by the query head node that the query was routed to.
+  * This affects queries that are sent with [weak consistency](../concepts/queryconsistency.md), and effetively multiplies the configured limit
     by the number of query heads.
   * This option can't be applied to *control commands*.
 
@@ -46,10 +46,10 @@ The enforcement level for request rate limits can be one of the following:
 ### Examples
 
 * Setup:
-  * The cluster has 10 nodes as follows:
-    * 1 cluster admin node.
-    * 2 database admin nodes (each manages 50% of the cluster's databases).
-    * 50% of the tail nodes (5 out of 10) can serve as query heads for weakly consistent queries.
+  * The cluster has ten nodes as follows:
+    * one cluster admin node.
+    * two database admin nodes (each manages 50% of the cluster's databases).
+    * 50% of the tail nodes (five out of ten) can serve as query heads for weakly consistent queries.
   * The `default` workload group is defined with the following policies:
 
     ```
