@@ -7,9 +7,9 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/18/2021
+ms.date: 04/30/2021
 ---
-# Request rate limit policy (Preview)
+# Request rate limit policy
 
 The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group:
   * Per workload group
@@ -164,4 +164,4 @@ The `default` workload group has the following policy defined by default. This p
 
 ## Control commands
 
-Manage the workload group's request concurrency policy with [Workload groups control commands](workload-groups-commands.md).
+Manage the workload group's request rate limit policies with [Workload groups control commands](workload-groups-commands.md).
