@@ -164,4 +164,4 @@ The `default` workload group has the following policy defined by default. This p
 
 ## Control commands
 
-Manage the workload group's request concurrency policy with [Workload groups control commands](workload-groups-commands.md).
+Manage the workload group's request rate limit policies with [Workload groups control commands](workload-groups-commands.md).
