@@ -57,17 +57,17 @@ When analyzing the amount of data passing through ingestion and ingestion latenc
 ## Use metrics to monitor your Azure Data Explorer resources
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
-1. In the left-hand pane of your Azure Data Explorer cluster, search for *metrics*.
-1. Select **Metrics** to open the metrics pane and begin analysis on your cluster.
-    :::image type="content" source="media/using-metrics/select-metrics.gif" alt-text="Search and select metrics in the Azure portal":::
+1. Select **Monitor** from the left-hand navigation bar and select **Metrics** to open the metrics pane. 
+
+   :::image type="content" source="media/monitor-batching-ingestion/monitor-metrics-blade.png" alt-text="Search and select metrics in the Azure portal":::
 
 ## Work in the metrics pane
 
-In the metrics pane, select specific metrics to track, choose how to aggregate your data, and create metric charts to view on your dashboard.
+To begin analysis on your cluster in the metrics pane, select specific metrics to track, choose how to aggregate your data, and create metric charts to view on your dashboard.
 
-The **Resource** and **Metric Namespace** pickers are pre-selected for your Azure Data Explorer cluster. The numbers in the following image correspond to the numbered list below. They guide you through different options in setting up and viewing your metrics.
+The **Resource** and **Metric Namespace** pickers are pre-selected for your Azure Data Explorer cluster. 
 
-![Metrics pane](media/using-metrics/metrics-pane.png)
+The numbers in the following image correspond to the numbered list below. They guide you through different options in setting up and viewing your metrics.
 
 1. To create a metric chart, select **Metric** name and relevant **Aggregation** per metric. For more information about different metrics, see [supported Azure Data Explorer metrics](#supported-azure-data-explorer-metrics).
 1. Select **Add metric** to see multiple metrics plotted in the same chart.
@@ -76,6 +76,10 @@ The **Resource** and **Metric Namespace** pickers are pre-selected for your Azur
 1. Use [**Add filter** and **Apply splitting**](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) for metrics that have dimensions.
 1. Select **Pin to dashboard** to add your chart configuration to the dashboards so that you can view it again.
 1. Set **New alert rule** to visualize your metrics using the set criteria. The new alerting rule will include your target resource, metric, splitting, and filter dimensions from your chart. Modify these settings in the [alert rule creation pane](/azure/azure-monitor/platform/metrics-charts#create-alert-rules).
+
+![Metrics pane](media/using-metrics/metrics-pane.png)
+
+
 
 
 

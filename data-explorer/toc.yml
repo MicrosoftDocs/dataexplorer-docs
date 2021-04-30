@@ -100,6 +100,12 @@
       - name: JSON data from local file to existing table
         displayName: ingest data, ingestion, one click
         href: one-click-ingestion-existing-table.md
+  - name: Monitor
+    items: 
+    - name: Batching ingestion
+      items:
+      - name: Monitor batching ingestion 
+        href: monitor-batching-ingestion.md
     - name: Streaming ingestion
       items:
       - name: Azure portal
