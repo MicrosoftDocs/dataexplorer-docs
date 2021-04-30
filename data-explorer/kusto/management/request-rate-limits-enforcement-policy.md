@@ -33,8 +33,8 @@ Request rate limits can be enforced at one of the following levels:
   * If there are multiple database admin nodes, the configured rate limit is effectively multiplied by the number of database admin nodes.
 * `QueryHead`:
   * Rate limits for *queries* are enforced by the query head node that the query was routed to.
-  * This affects queries that are sent with [weak consistency](../concepts/queryconsistency.md), and effetively multiplies the configured limit
-    by the number of query heads.
+  * This option affects queries that are sent with [weak consistency](../concepts/queryconsistency.md). For those queries, the configured rate limit
+    is effectively multiplied by the number of query head nodes.
   * This option can't be applied to *control commands*.
 
 ### Notes
@@ -46,10 +46,10 @@ Request rate limits can be enforced at one of the following levels:
 ### Examples
 
 * Setup:
-  * The cluster has ten nodes as follows:
+  * The cluster has 10 nodes as follows:
     * one cluster admin node.
     * two database admin nodes (each manages 50% of the cluster's databases).
-    * 50% of the tail nodes (five out of ten) can serve as query heads for weakly consistent queries.
+    * 50% of the tail nodes (5 out of 10) can serve as query heads for weakly consistent queries.
   * The `default` workload group is defined with the following policies:
 
     ```
@@ -72,8 +72,8 @@ Request rate limits can be enforced at one of the following levels:
 * The effective rate limits for the `default` workload group are:
    * The maximum number of concurrent *cluster-scoped control commands* is `200`.
    * The maximum number of concurrent *database-scoped control commands* is `2` (database admin nodes) x `200` (max per admin node) = `400`.
-   * The maximum number of concurrent *strongly consistent queries* is `2` (database admin nodes) x `200` (max per admin node) = `400`.
-   * The maximum number of concurrent *weakly consistent queries* is `5` (query heads) x `200` (max per query head) = `1000`.
+   * The maximum number of concurrent *strongly-consistent queries* is `2` (database admin nodes) x `200` (max per admin node) = `400`.
+   * The maximum number of concurrent *weakly-consistent queries* is `5` (query heads) x `200` (max per query head) = `1000`.
 
 ## Control commands
 
