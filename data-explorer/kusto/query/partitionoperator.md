@@ -11,22 +11,22 @@ ms.date: 05/02/2021
 ---
 # partition operator
 
-The partition operator partitions the records of its input table into multiple sub-tables
-according to the values of some column, executes a sub-query over each
-sub-table, and produces a single output table that is the union of the results
-of all sub-queries.
+The partition operator partitions the records of its input table into multiple subtables
+according to the values of some column, executes a subquery over each
+subtable, and produces a single output table that is the union of the results
+of all subqueries.
 
 The partition operator supports two modes of operation: 
 
-* The sub-query is a tabular transformation that doesn't specify a tabular source. The source is implicit and will be
-assigned according to the sub-table partitions. 
+* The subquery is a tabular transformation that doesn't specify a tabular source. The source is implicit and will be
+assigned according to the subtable partitions. 
 
   ```kusto
   Grades | partition by StudentId (top 2 by Grade)
   ```
 
-* The sub-query must include a tabular source explicitly. Only the key column of the input table is available
-in the sub-query, and referenced by using its name in the `toscalar()` function.
+* The subquery must include a tabular source explicitly. Only the key column of the input table is available
+in the subquery, and referenced by using its name in the `toscalar()` function.
 
   ```kusto
   range x from 1 to 2 step 1 | partition by x {U | extend y=toscalar(x)}
@@ -47,21 +47,21 @@ in the sub-query, and referenced by using its name in the `toscalar()` function.
 * *Column*: The name of a column in *T* whose values determine how the input table
   is to be partitioned. See **Notes** below.
 * *TransformationSubQuery*: A tabular transformation expression, whose source
-  is implicitly the sub-tables produced by partitioning the records of *T*,
-  each sub-table being homogenous on the value of *Column*.
-* *ContextFreeSubQuery*: A tabular expression which includes its own tabular source, such as a table reference. The expression can reference a single column from *T*, being the key column *Column* using the syntax `toscalar(`*Column*`)`.
+  is implicitly the subtables produced by partitioning the records of *T*,
+  each subtable being homogenous on the value of *Column*.
+* *ContextFreeSubQuery*: A tabular expression that includes its own tabular source, such as a table reference. The expression can reference a single column from *T*, being the key column *Column* using the syntax `toscalar(`*Column*`)`.
 * *PartitionParameters*: Zero or more (space-separated) parameters in the form of: <br>
   *Name* `=` *Value* that control the behavior of the operator. The following parameters are supported:
 
   |Name               |Values         |Description|
   |-------------------|---------------|-----------|
-  |`hint.materialized`|`true`,`false` |If set to `true` will materialize the source of the `partition` operator. The default value is `false`.|
+  |`hint.materialized`|`true`,`false` |If set to `true`, will materialize the source of the `partition` operator. The default value is `false`.|
   |`hint.concurrency`|*Number*|Hints the system how many partitions to run in parallel. The default value is 16.|
   |`hint.spread`|*Number*|Hints the system how to distribute the partitions among cluster nodes. For example, if there are N partitions and the spread hint is set to P, then the N partitions will be processed by P different cluster nodes equally in parallel/sequentially depending on the concurrency hint. The default value is 1.|
 
 ## Returns
 
-The operator returns a union of the results of the individual sub-queries.
+The operator returns a union of the results of the individual subqueries.
 
 > [!NOTE]
 > The partition operator is currently limited by the number of partitions.
@@ -74,7 +74,7 @@ The operator returns a union of the results of the individual sub-queries.
 ## Example: top-nested case
 
 In some cases, it is more performant and easier to write a query using the `partition` operator than using the [`top-nested` operator](topnestedoperator.md)
-The following example runs a sub-query calculating `summarize` and `top` for-each of States starting with `W`: (WYOMING, WASHINGTON, WEST VIRGINIA, WISCONSIN)
+The following example runs a subquery calculating `summarize` and `top` for each of States starting with `W`: (WYOMING, WASHINGTON, WEST VIRGINIA, WISCONSIN)
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -105,7 +105,7 @@ StormEvents
 
 ## Example: query non-overlapping data partitions
 
-It can be useful performance-wise to run a complex sub-query over non-overlapping data partitions in a map/reduce style. The following example shows how to create a manual distribution of aggregation over 10 partitions.
+It can be useful performance-wise to run a complex subquery over non-overlapping data partitions in a map/reduce style. The following example shows how to create a manual distribution of aggregation over 10 partitions.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
@@ -150,7 +150,7 @@ range p from 0 to N-1 step 1  //
 
 ## Example: partition-reference
 
-The following example shows how to use the [as operator](asoperator.md) to give a "name" to each data partition and then reuse that name within the sub-query:
+The following example shows how to use the [as operator](asoperator.md) to give a "name" to each data partition and then reuse that name within the subquery:
 
 ```kusto
 T
@@ -161,9 +161,9 @@ T
 )
 ```
 
-## Example: complex sub-query hidden by a function call
+## Example: complex subquery hidden by a function call
 
-The same technique can be applied with much more complex subqueries. To simplify the syntax, you can wrap the sub-query in a function call:
+The same technique can be applied with much more complex subqueries. To simplify the syntax, you can wrap the subquery in a function call:
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
