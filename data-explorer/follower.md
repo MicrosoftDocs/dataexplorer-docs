@@ -25,8 +25,9 @@ Attaching a database to a different cluster using the follower capability is use
 ## Prerequisites
 
 1. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
-1. [Create cluster and DB](create-cluster-database-portal.md) for the leader and follower.
-1. [Ingest data](ingest-sample-data.md) to leader database using one of various methods discussed in [ingestion overview](./ingest-data-overview.md).
+2. [Create cluster and DB](create-cluster-database-portal.md) for the leader.
+3. [Create cluster](create-cluster-database-portal.md) for the follower.
+4. [Ingest data](ingest-sample-data.md) to leader database using one of various methods discussed in [ingestion overview](./ingest-data-overview.md).
 
 ## Attach a database
 
@@ -65,13 +66,26 @@ var attachedDatabaseConfigurationName = "uniqueNameForAttachedDatabaseConfigurat
 var databaseName = "db"; // Can be specific database name or * for all databases
 var defaultPrincipalsModificationKind = "Union"; 
 var location = "North Central US";
+var tablesToInclude = new List<string>
+{
+    "table1",
+    "table2",
+    "table3"
+};
+var externalTablesToExclude = new List<string>
+{
+    "Logs*"
+};
+
+var tls = new TableLevelSharingProperties(tablesToInclude: tablesToInclude, externalTablesToExclude: externalTablesToExclude);
 
 AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new AttachedDatabaseConfiguration()
 {
     ClusterResourceId = $"/subscriptions/{leaderSubscriptionId}/resourceGroups/{leaderResourceGroup}/providers/Microsoft.Kusto/Clusters/{leaderClusterName}",
     DatabaseName = databaseName,
     DefaultPrincipalsModificationKind = defaultPrincipalsModificationKind,
-    Location = location
+    Location = location,
+    TableLevelSharingProperties = tls
 };
 
 var attachedDatabaseConfigurations = resourceManagementClient.AttachedDatabaseConfigurations.CreateOrUpdate(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationName, attachedDatabaseConfigurationProperties);
@@ -120,8 +134,12 @@ database_name  = "db" # Can be specific database name or * for all databases
 default_principals_modification_kind  = "Union"
 location = "North Central US"
 cluster_resource_id = "/subscriptions/" + leader_subscription_id + "/resourceGroups/" + leader_resouce_group_name + "/providers/Microsoft.Kusto/Clusters/" + leader_cluster_name
+tables_to_include = ["table1", "table2", "table3"]
+external_tables_to_include =  ["Logs*"]
+table_level_sharing_properties = TableLevelSharingProperties(tables_to_include = tables_to_include, external_tables_to_include = external_tables_to_include)
 
-attached_database_configuration_properties = AttachedDatabaseConfiguration(cluster_resource_id = cluster_resource_id, database_name = database_name, default_principals_modification_kind = default_principals_modification_kind, location = location)
+
+attached_database_configuration_properties = AttachedDatabaseConfiguration(cluster_resource_id = cluster_resource_id, database_name = database_name, default_principals_modification_kind = default_principals_modification_kind, location = location, table_level_sharing_properties = table_level_sharing_properties)
 
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.create_or_update(follower_resource_group_name, follower_cluster_name, attached_database_Configuration_name, attached_database_configuration_properties)
@@ -138,6 +156,9 @@ Install : Az.Kusto
 ```
 
 #### Example
+
+[comment]: # (TODO: update Powershell with Table level sharing)
+
 
 ```Powershell
 $FollowerClustername = 'follower'
@@ -216,6 +237,48 @@ In this section, you learn to attach a database to an existing cluster by using 
                 "description": "The default principal modification kind."
             }
         },
+        "tablesToInclude": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "The list of tables to include"
+            }
+        },
+        "tablesToExclude": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "The list of tables to exclude"
+            }
+        },
+        "externalTablesToInclude": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "The list of external tables to include"
+            }
+        },
+        "externalTablesToExclude": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "The list of external tables to exclude"
+            }
+        },
+        "materializedViewsToInclude": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "The list of materialized views to include"
+            }
+        },
+        "materializedViewsToExclude": {
+            "type": "array",
+            "defaultValue": [],
+            "metadata": {
+                "description": "The list of materialized views to exclude"
+            }
+        },
         "location": {
             "type": "string",
             "defaultValue": "",
@@ -229,12 +292,21 @@ In this section, you learn to attach a database to an existing cluster by using 
         {
             "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
-            "apiVersion": "2020-02-15",
+            "apiVersion": "2021-01-01",
             "location": "[parameters('location')]",
             "properties": {
                 "databaseName": "[parameters('databaseName')]",
                 "clusterResourceId": "[parameters('leaderClusterResourceId')]",
-                "defaultPrincipalsModificationKind": "[parameters('defaultPrincipalsModificationKind')]"
+                "defaultPrincipalsModificationKind": "[parameters('defaultPrincipalsModificationKind')]",
+                "tableLevelSharingProperties":{
+                    "tablesToInclude": "[parameters('tablesToInclude')]",
+                    "tablesToExclude": "[parameters('tablesToExclude')]",
+                    "externalTablesToInclude": "[parameters('externalTablesToInclude')]",
+                    "externalTablesToExclude": "[parameters('externalTablesToExclude')]",
+                    "materializedViewsToInclude": "[parameters('materializedViewsToInclude')]",
+                    "materializedViewsToExclude": "[parameters('materializedViewsToExclude')]"
+
+                }
             }
         }
     ]
@@ -254,6 +326,12 @@ You can deploy the Azure Resource Manager template by [using the Azure portal](h
 |Database Name     |      The name of the database to be followed. If you want to follow all the leader's databases, use '*'.   |
 |Leader Cluster Resource ID    |   The resource ID of the leader cluster.      |
 |Default Principals Modification Kind    |   The default principal modification kind. Can be `Union`, `Replace`, or `None`. For more information about default principal modification kind, see [principal modification kind control command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind).      |
+| Tables To Include | The list of tables to include, i.e. ["table1ToInclude", "table2ToInclude"] |
+| Tables To Exclude | The list of tables to exclude,  i.e. ["table1ToExclude", "table2ToExclude"]|
+| External Tables To Include | The list of tables to include,  i.e. ["ExternalTable1ToInclude", "ExternalTable2ToInclude"] |
+| External Tables To Exclude | The list of tables to exclude, i.e. ["ExternalTable1ToExclude", "ExternalTable2ToExclude"]|
+| Materialized Views To Include | The list of materialized views to include, i.e. ["Mv1ToInclude", "Mv2ToInclude"] |
+| Materialized Views To Exclude | The list of materialized views to exclude, i.e. ["Mv11ToExclude", "Mv22ToExclude"]|
 |Location   |   The location of all the resources. The leader and the follower must be in the same location.       |
 
 ---
