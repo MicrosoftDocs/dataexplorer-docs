@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/28/2021
+ms.date: 05/03/2021
 ---
 # Sandboxes
 
