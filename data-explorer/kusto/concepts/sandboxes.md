@@ -70,7 +70,7 @@ Some of the  limitations can be controlled using a cluster-level [sandbox policy
 
 ## Virtual machine sizes
 
-The following table shows VM sizes that support both encryption and sandbox features running side by side, and hyper-threading:
+The following table lists all VM sizes, and  whether they support both encryption and sandbox features running side by side, and hyper-threading:
 
 | **Name**                              | **Category**      | **Supports sandboxes and encryption** | **Supports hyper-threading** |
 |---------------------------------------|-------------------|---------------------------------------|
