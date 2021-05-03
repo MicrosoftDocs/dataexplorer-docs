@@ -25,7 +25,7 @@ Flows that run in sandboxes aren't isolated. They're also local (close to the da
 * The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space to run.
   * The estimated size is 20 GB, that is roughly 2.5% the SSD capacity of a D14_v2 VM, for example, or 0.7% the SSD capacity of a L16_v1 VM.
   * This affects the cluster's data capacity, and may affect the [cost](https://azure.microsoft.com/pricing/details/data-explorer) of the cluster.
-* Hyper-threading is disabled for hyper-threaded VM sizes when sandboxes are deployed. For more information on hyper-threaded VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
+* Hyper-threading is disabled for hyper-threaded VM sizes when sandboxes are enabled. For more information on hyper-threaded VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
 
 ## Runtime
 
