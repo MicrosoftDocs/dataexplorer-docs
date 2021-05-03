@@ -1432,7 +1432,7 @@ items:
     - name: Control commands overview
       displayName: Management
       href: ./kusto/management/index.md
-    - name: Workload groups (preview)
+    - name: Workload groups
       items:
       - name: Workload groups overview
         href: ./kusto/management/workload-groups.md
