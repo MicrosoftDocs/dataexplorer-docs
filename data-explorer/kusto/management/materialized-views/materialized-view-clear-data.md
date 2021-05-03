@@ -13,11 +13,9 @@ ms.date: 04/30/2021
 
 Clears the data of an existing materialized view. 
 
-* The data is cleared from the `materialized part` of the view only (see [how materialized views work](materialized-view-overview.md#how-materialized-views-work) for details about the `materialized part`).
+The data is cleared from the `materialized part` of the view only. For more details about the  `materialized part`, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work). After the materialized view data is cleared, the view will continue processing the source table records ingested since the last materialization time. Use the [.show materialized-view](materialized-view-show-commands.md#show-materialized-view) command to get the last materialization timestamp.
 
-* After the materialized view data is cleared, the view will continue processing the source table records ingested since the last materialization time. Use [.show materialized-view](materialized-view-show-commands.md#show-materialized-view) command to get the last materialization timestamp.
-
-* The difference between this command and dropping and recreating the view (with no `backfill`) is that using this command preserves all policies set on the materialized view. 
+The difference between this command and dropping and recreating the view (with no `backfill`) is that using this command preserves all policies set on the materialized view. 
 
 Requires [Database Admin](../access-control/role-based-authorization.md) permissions, or an admin of the materialized view.
 
