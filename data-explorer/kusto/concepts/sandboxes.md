@@ -36,7 +36,7 @@ Flows that run in sandboxes aren't isolated. They're also local (close to the da
   * When a node is restarted, for example, as part of a service upgrade, all running sandboxes on it are disposed of.
 * Each node maintains a predefined number of sandboxes that are ready for running incoming requests.
   * Once a sandbox is used, a new one is automatically made available to replace it.
-* If there are no pre-allocated sandboxes available to serve a query operator, it will be throttled until new sandboxes are available. For more information, see [Errors](#errors). New sandbox allocation could take up to 10-15 seconds per sandbox, depending on the SKU and available resources on the data node.
+* If there are no pre-allocated sandboxes available to serve a query operator, it will be throttled until new sandboxes are available. For more information, see [Errors](#errors). New sandbox allocation could take up to 10-15 seconds per sandbox, depending on the SKU and available resources on the data node. 
 
 ## Limitations
 
