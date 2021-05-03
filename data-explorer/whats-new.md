@@ -6,11 +6,47 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/07/2021
+ms.date: 05/03/2021
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## April 2021
+
+This section lists the major changes to docs during April 2021.
+
+### Query
+
+| Article title | Description |
+|--|--|
+[has_ipv4()](kusto/query/has-ipv4-function.md) | New article. Returns a value indicating whether a specified IPv4 address appears in a text.
+[has_ipv4_prefix()](kusto/query/has-ipv4-prefix-function.md) | New article. Returns a value indicating whether a specified IPv4 address prefix appears in a text.
+[scan operator (preview)](kusto/query/scan-operator.md) | New article. Scans data, matches, and builds sequences based on the predicates.
+[Query results cache](kusto/query/query-results-cache.md) | Updated article.  Per shard query results cache added. 
+[The string data type](kusto/query/scalar-data-types/string.md) | Updated article.  
+[Null Values](kusto/query/scalar-data-types/null-values.md) | Updated article. 
+
+### Management
+
+| Article title | Description |
+|--|--|
+[Workload groups - Control commands](kusto/management/workload-groups-commands.md)  | Updated article. General Availability (GA).
+[Workload groups](kusto/management/workload-groups.md)  | Updated article. General Availability (GA).
+[Materialized views](kusto/management/materialized-views/materialized-view-overview.md)  | Updated article. General Availability (GA).
+[Materialized views policies](kusto/management/materialized-views/materialized-view-policies.md)  | Updated article. General Availability (GA).
+
+### Functions library
+
+| Article title | Description |
+|--|--|
+[time_weighted_avg_fl()](kusto/functions-library/time-weighted-avg-fl.md) | New article. The function `time_weighted_avg_fl()` calculates the time weighted average of a metric in a given time window, over input time bins. 
+
+### API
+
+| Article title | Description |
+|--|--|
+[Request properties and ClientRequestProperties](kusto/api/netfx/request-properties.md) | Updated article. Per shard query results cache added.
 
 ## March 2021
 
