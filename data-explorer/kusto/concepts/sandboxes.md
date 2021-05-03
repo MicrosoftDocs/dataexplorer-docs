@@ -16,14 +16,14 @@ Examples of these flows are user-defined scripts that run using the [Python plug
 
 To run these sandboxes, Kusto uses an evolved version of Microsoft's [Drawbridge](https://www.microsoft.com/research/project/drawbridge/) project. This solution is used by other Microsoft services to run user-defined objects in a multi-tenant environment.
 
-Flows that run in sandboxes aren't isolated. They're also local (close to the data). This means that there's no additional latency added for remote calls.
+Flows that run in sandboxes aren't isolated. They're also local (close to the data). For these reasons, there's no extra latency added for remote calls.
 
 ## Prerequisites
 
-* The data engine mustn't have [disk encryption](../../security.md#data-protection) enabled.
-  * Support for both features running side by side is expected in the future.
-* The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space to run
-  * The estimated size is 20GB, that is roughly 2.5% the SSD capacity of a D14_v2 VM, for example, or 0.7% the SSD capacity of a L16_v1 VM.
+* Data engines that enable both [disk encryption](../../security.md#data-protection) and sandboxes features must run on a VM size that supports [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data). For more information on supported VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
+  * If encryption is enabled on the data engine before encryption at host is adopted as the default for supported VM sizes, the data engine may not support both features side by side. In this case, stop and start the cluster.
+* The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space to run.
+  * The estimated size is 20 GB, that is roughly 2.5% the SSD capacity of a D14_v2 VM, for example, or 0.7% the SSD capacity of a L16_v1 VM.
   * This affects the cluster's data capacity, and may affect the [cost](https://azure.microsoft.com/pricing/details/data-explorer) of the cluster.
 * Hyper-threading is disabled for hyper-threaded VM sizes when sandboxes are deployed. For more information on hyper-threaded VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
 
