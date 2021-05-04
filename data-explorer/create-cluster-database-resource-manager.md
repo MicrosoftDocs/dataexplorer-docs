@@ -28,7 +28,7 @@ If you don't have an Azure subscription, [create a free account](https://azure.m
 
 ## Azure Resource Manager template for cluster and database creation
 
-In this article, you use an [existing quickstart template](https://azure.microsoft.com/en-gb/resources/templates/101-kusto-cluster-database/)
+In this article, you use an [existing quickstart template](https://azure.microsoft.com/resources/templates/101-kusto-cluster-database/)
 
 ```json
 {
@@ -149,7 +149,7 @@ It takes a few minutes to create an Azure Data Explorer cluster and database.
     $clusterName = "${projectName}cluster"
     $parameters = @{}
     $parameters.Add("clusters_kustocluster_name", $clusterName)
-    $templateUri = "https://azure.microsoft.com/en-gb/resources/templates/101-kusto-cluster-database/"
+    $templateUri = "https://azure.microsoft.com/resources/templates/101-kusto-cluster-database/"
     New-AzResourceGroup -Name $resourceGroupName -Location $location
     New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -TemplateParameterObject $parameters
     Write-Host "Press [ENTER] to continue ..."
