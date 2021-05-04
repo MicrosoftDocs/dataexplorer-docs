@@ -1399,6 +1399,8 @@ items:
     items:
     - name: RE2 syntax
       href: ./kusto/query/re2.md
+    - name: RE2 library
+      href: ./kusto/query/re2-library.md
     - name: SQL to Kusto cheat sheet
       href: ./kusto/query/sqlcheatsheet.md
     - name: Splunk to Kusto cheat sheet
