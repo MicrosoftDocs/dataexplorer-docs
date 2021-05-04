@@ -76,8 +76,6 @@ The following policies can be defined per workload group:
 [System commands](systeminfo.md) indicate which workload group requests were classified into.
 Use these commands to aggregate resources utilization by workload group for requests that have completed.
 
-Use the [`.show workload groups resources utilization` command](workload-groups-commands.md#show-workload-groups-resources-utilization) to see the *current* resources utilization.
-
 The same information can also be viewed and analyzed in [Azure Monitor insights](/azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json).
 
 ## Control commands
