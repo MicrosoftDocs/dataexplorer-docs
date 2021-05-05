@@ -151,17 +151,17 @@ The `default` workload group has the following policy defined by default. This p
 
 #### Notes
 
-1. Rate limits are enforced at the level defined by the workload group's [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md).
-1. The limit on maximum concurrent requests for the `default` workload group depends on the SKU of the cluster, and is calculated as: `Cores-Per-Node x 10`.
-  * For example: A cluster that's set-up with Azure D14_v2 nodes, where each node has 16 vCores, will have the default limit of `16` x `10` = `160`.
-1. If a workload group has no limit on maximum concurrent requests defined, then the maximum allowed value of `10000` applies.
-1. When altering the policy for the `default` workload group, there must be a limit defined for the workload group's max concurrent requests.
-1. The cluster's [capacity policy](capacitypolicy.md) may also limit the request rate of requests that fall under a specific category, for example: *ingestions*.
-  * If either of the limits defined by [capacity policy](capacitypolicy.md) or by a request rate limit policy is exceeded, a control command will be throttled.
-1. When request rate limits of kind `ConcurrentRequests` are applied, the output of [`.show capacity`](diagnostics.md#show-capacity) may change based on those limits.
-  * [`.show capacity`](diagnostics.md#show-capacity) will show the capacities for the principal that ran the request, according to the context of the request, the workload group it was classified into, and its effective policies.
-  * Different principals may see different outputs when running the command, if their requests are classified into different workload groups.
-  * When running `.show capacity with(scope=cluster)`, the request context is ignored, and the output is only affected by the cluster's [capacity policy](capacitypolicy.md).
+* Rate limits are enforced at the level defined by the workload group's [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md).
+* The limit on maximum concurrent requests for the `default` workload group depends on the SKU of the cluster, and is calculated as: `Cores-Per-Node x 10`.
+    * For example: A cluster that's set-up with Azure D14_v2 nodes, where each node has 16 vCores, will have the default limit of `16` x `10` = `160`.
+* If a workload group has no limit on maximum concurrent requests defined, then the maximum allowed value of `10000` applies.
+* When altering the policy for the `default` workload group, there must be a limit defined for the workload group's max concurrent requests.
+* The cluster's [capacity policy](capacitypolicy.md) may also limit the request rate of requests that fall under a specific category, for example: *ingestions*.
+    * If either of the limits defined by [capacity policy](capacitypolicy.md) or by a request rate limit policy is exceeded, a control command will be throttled.
+* When request rate limits of kind `ConcurrentRequests` are applied, the output of [`.show capacity`](diagnostics.md#show-capacity) may change based on those limits.
+    * [`.show capacity`](diagnostics.md#show-capacity) will show the capacities for the principal that ran the request, according to the context of the request, the workload group it was classified into, and its effective policies.
+    * Different principals may see different outputs when running the command, if their requests are classified into different workload groups.
+    * When running `.show capacity with(scope=cluster)`, the request context is ignored, and the output is only affected by the cluster's [capacity policy](capacitypolicy.md).
 
 ## Control commands
 
