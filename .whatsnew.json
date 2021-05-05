@@ -7,6 +7,9 @@
     "relativeLinkPrefix": "/azure/data-explorer/"
   },
   "inclusionCriteria": {
+    "labels": [
+      "label:whats-new"
+    ],
     "minAdditionsToFile": 1,
     "pullRequestTitlesToIgnore": [
       "^Confirm merge from repo_sync_working_branch",

@@ -1,5 +1,10 @@
 {
   "redirections": [
+		{
+			"source_path": "data-explorer/security-baseline.md",
+			"redirect_url": "/security/benchmark/azure/baselines/data-explorer-security-baseline",
+			"redirect_document_id": false
+		},
     {
       "source_path": "data-explorer/kusto/index.md",
       "redirect_url": "/azure/data-explorer",

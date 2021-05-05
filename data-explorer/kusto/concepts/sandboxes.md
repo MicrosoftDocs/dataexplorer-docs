@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 05/03/2021
 ---
 # Sandboxes
 
@@ -16,15 +16,16 @@ Examples of these flows are user-defined scripts that run using the [Python plug
 
 To run these sandboxes, Kusto uses an evolved version of Microsoft's [Drawbridge](https://www.microsoft.com/research/project/drawbridge/) project. This solution is used by other Microsoft services to run user-defined objects in a multi-tenant environment.
 
-Flows that run in sandboxes aren't isolated. They're also local (close to the data). This means that there's no additional latency added for remote calls.
+Flows that run in sandboxes aren't isolated. They're also local (close to the data). For these reasons, there's no extra latency added for remote calls.
 
 ## Prerequisites
 
-* The data engine mustn't have [disk encryption](../../security.md#data-protection) enabled.
-  * Support for both features running side by side is expected in the future.
-* The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space to run
-  * The estimated size is 20GB, that is roughly 2.5% the SSD capacity of a D14_v2 VM, for example, or 0.7% the SSD capacity of a L16_v1 VM.
+* Data engines that enable both [disk encryption](../../security.md#data-protection) and sandboxes features must run on a VM size that supports [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data). For more information on supported VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
+  * If encryption is enabled on the data engine before encryption at host is adopted as the default for supported VM sizes, the data engine may not support both features side by side. In this case, stop and start the cluster.
+* The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space to run.
+  * The estimated size is 20 GB, that is roughly 2.5% the SSD capacity of a D14_v2 VM, for example, or 0.7% the SSD capacity of a L16_v1 VM.
   * This affects the cluster's data capacity, and may affect the [cost](https://azure.microsoft.com/pricing/details/data-explorer) of the cluster.
+* Hyper-threading is disabled for hyper-threaded VM sizes when sandboxes are enabled. For more information on hyper-threaded VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
 
 ## Runtime
 
@@ -35,7 +36,7 @@ Flows that run in sandboxes aren't isolated. They're also local (close to the da
   * When a node is restarted, for example, as part of a service upgrade, all running sandboxes on it are disposed of.
 * Each node maintains a predefined number of sandboxes that are ready for running incoming requests.
   * Once a sandbox is used, a new one is automatically made available to replace it.
-* If there are no pre-allocated sandboxes available to serve a query operator, it will be throttled until new sandboxes are available. For more information, see [Errors](#errors). New sandbox allocation could take up to 10-15 seconds per sandbox, depending on the SKU and available resources on the data node.
+* If there are no pre-allocated sandboxes available to serve a query operator, it will be throttled until new sandboxes are available. For more information, see [Errors](#errors). New sandbox allocation could take up to 10-15 seconds per sandbox, depending on the SKU and available resources on the data node. 
 
 ## Limitations
 
@@ -65,3 +66,36 @@ Some of the  limitations can be controlled using a cluster-level [sandbox policy
 |E_SB_QUERY_THROTTLED_ERROR|TooManyRequests (429)      |The sandboxed query was aborted because of throttling. Retrying after some backoff might succeed   |There are no available sandboxes on the target node. New sandboxes should become available in a few seconds         |
 |E_SB_QUERY_THROTTLED_ERROR|TooManyRequests (429)      |Sandboxes of kind '{kind}' haven't yet been initialized                                            |The sandbox policy has recently changed. New sandboxes obeying the new policy will become available in a few seconds|
 |                          |InternalServiceError (520) |The sandboxed query was aborted due to a failure in initializing sandboxes                         |An unexpected infrastructure failure.                         |
+
+
+## Virtual machine sizes
+
+The following table lists all VM sizes, and  whether they support both encryption and sandbox features running side by side, and hyper-threading:
+
+| **Name**                              | **Category**      | **Supports sandboxes and encryption** | **Supports hyper-threading** |
+|---------------------------------------|-------------------|---------------------------------------|
+| Dev(No SLA) Standard_D11_v2           | compute-optimized | No                                    |No                            |
+| Dev(No SLA) Standard_E2a_v4           | compute-optimized | No                                    |No                            |
+| Standard_D11_v2                       | compute-optimized | No                                    |No                            |
+| Standard_D12_v2                       | compute-optimized | No                                    |No                            |
+| Standard_D13_v2                       | compute-optimized | No                                    |No                            |
+| Standard_D14_v2                       | compute-optimized | No                                    |No                            |
+| Standard_E2a_v4                       | heavy compute     | No                                    |Yes                           |
+| Standard_E4a_v4                       | heavy compute     | No                                    |Yes                           |
+| Standard_E8a_v4                       | heavy compute     | No                                    |Yes                           |
+| Standard_E16a_v4                      | heavy compute     | No                                    |Yes                           |
+| Standard_DS13_v2 + 1&nbsp;TB&nbsp;PS  | storage-optimized | Yes                                   |No                            |
+| Standard_DS13_v2 + 2&nbsp;TB&nbsp;PS  | storage-optimized | Yes                                   |No                            |
+| Standard_DS14_v2 + 3&nbsp;TB&nbsp;PS  | storage-optimized | Yes                                   |No                            |
+| Standard_DS14_v2 + 4&nbsp;TB&nbsp;PS  | storage-optimized | Yes                                   |No                            |
+| Standard_E8as_v4 + 1&nbsp;TB&nbsp;PS  | storage-optimized | Yes                                   |Yes                           |
+| Standard_E8as_v4 + 2&nbsp;TB&nbsp;PS  | storage-optimized | Yes                                   |Yes                           |
+| Standard_E16as_v4 + 3&nbsp;TB&nbsp;PS | storage-optimized | Yes                                   |Yes                           |
+| Standard_E16as_v4 + 4&nbsp;TB&nbsp;PS | storage-optimized | Yes                                   |Yes                           |
+| Standard_L4s                          | storage-optimized | Yes                                   |No                            |
+| Standard_L8s                          | storage-optimized | Yes                                   |No                            |
+| Standard_L16s                         | storage-optimized | Yes                                   |No                            |
+| Standard_L8s_v2                       | storage-optimized | Yes                                   |Yes                           |
+| Standard_L16s_v2                      | storage-optimized | Yes                                   |Yes                           |
+| Standard_E64i_v3                      | isolated compute  | No                                    |No                            |
+| Standard_E80ids_v4                    | isolated compute  | No                                    |Yes                           |

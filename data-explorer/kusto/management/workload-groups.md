@@ -7,9 +7,9 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/18/2021
+ms.date: 04/30/2021
 ---
-# Workload groups (Preview)
+# Workload groups
 
 A workload group serves as a container for requests (queries, commands) that have similar classification criteria. Workload groups and [workload group policies](#workload-group-policies) are a means of resource governance for incoming requests to the cluster, and allow aggregate monitoring of the requests. When a request's execution begins, the request is classified and assigned to a specific workload group. Then, the request runs using the policies assigned to the workload group.
 
@@ -75,11 +75,8 @@ The following policies can be defined per workload group:
 [System commands](systeminfo.md) indicate which workload group requests were classified into.
 Use these commands to aggregate resources utilization by workload group for requests that have completed.
 
-Use the [`.show workload groups resources utilization` command](workload-groups-commands.md#show-workload-groups-resources-utilization) to see the *current* resources utilization.
-
 The same information can also be viewed and analyzed in [Azure Monitor insights](/azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json).
 
 ## Control commands
 
 Managing workload groups and their policies is done using [workload groups control commands](workload-groups-commands.md).
-

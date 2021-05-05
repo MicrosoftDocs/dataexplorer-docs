@@ -1,13 +1,13 @@
 ---
-title: Security roles management - Azure Data Explorer | Microsoft Docs
-description: This article describes Security roles management in Azure Data Explorer.
+title: Security roles management - Azure Data Explorer
+description: This article describes security roles management in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 04/25/2021
 ---
 # Security roles management
 
@@ -30,17 +30,18 @@ that the principal is associated with at least one security role that grants
 permissions to perform this operation on the resource. This is called an
 **authorization check**. Failing the authorization check aborts the operation.
 
-**Syntax**
+## Security roles management commands
 
-Syntax of security roles management commands:
+### Syntax
 
 *Verb* *SecurableObjectType* *SecurableObjectName* *Role* [`(` *ListOfPrincipals* `)` [*Description*]]
+
+### Arguments
 
 * *Verb* indicates the kind of action to perform: `.show`, `.add`, `.drop`, and `.set`.
 
     |*Verb* |Description                                  |
     |-------|---------------------------------------------|
-    |`.show`|Returns the current value or values.         |
     |`.add` |Adds one or more principals to the role.     |
     |`.drop`|Removes one or more principals from the role.|
     |`.set` |Sets the role to the specific list of principals, removing all previous ones (if any).|
@@ -59,7 +60,6 @@ Syntax of security roles management commands:
 
     |*Role*      |Description|
     |------------|-----------|
-    |`principals`|Can appear only as part of a `.show` verb; returns the list of principals that can affect the securable object.|
     |`admins`    |Have control over the securable object, including the ability to view, modify it, and remove the object and all sub-objects.|
     |`users`     |Can view the securable object, and create new objects underneath it.|
     |`viewers`   |Can view the securable object.|
@@ -73,7 +73,15 @@ Syntax of security roles management commands:
 * *Description* is an optional value of type `string` that is stored alongside
   the association, for future audit purposes.
 
-## Example
+### .show command
+
+The `.show` command lists the principals that are set on the securable object. A line is returned for each role assigned to the principal. 
+
+#### Syntax
+
+`.show` *SecurableObjectType* *SecurableObjectName* `principals`
+
+#### Example
 
 The following control command lists all security principals which have some
 access to the table `StormEvents` in the database:
@@ -87,10 +95,6 @@ Here are potential results from this command:
 |Role |PrincipalType |PrincipalDisplayName |PrincipalObjectId |PrincipalFQN 
 |---|---|---|---|---
 |Database Apsty Admin |Azure AD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com|
-
-
-
-
 
 ## Managing database security roles
 
@@ -150,7 +154,7 @@ Where:
 * *Description*, if provided, is text that will be associated with the change
   and retrieved by the corresponding `.show` command.
 
-**Example**
+### Example
 
 ```kusto
 .add table Test admins ('aaduser=imike@fabrikam.com ')
@@ -201,9 +205,8 @@ Where:
 * *Description*, if provided, is text that will be associated with the change
   and retrieved by the corresponding `.show` command.
 
-**Example**
+### Example
 
 ```kusto
 .add function MyFunction admins ('aaduser=imike@fabrikam.com') 'This user should have access'
 ```
-

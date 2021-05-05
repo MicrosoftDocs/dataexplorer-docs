@@ -55,7 +55,7 @@ items:
     - name: Security overview
       href: security.md
     - name: Security baseline
-      href: security-baseline.md
+      href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
     - name: Security controls by Azure Policy
       href: ./security-controls-policy.md
   - name: Business continuity
@@ -1399,6 +1399,8 @@ items:
     items:
     - name: RE2 syntax
       href: ./kusto/query/re2.md
+    - name: RE2 library
+      href: ./kusto/query/re2-library.md
     - name: SQL to Kusto cheat sheet
       href: ./kusto/query/sqlcheatsheet.md
     - name: Splunk to Kusto cheat sheet
@@ -1432,7 +1434,7 @@ items:
     - name: Control commands overview
       displayName: Management
       href: ./kusto/management/index.md
-    - name: Workload groups (preview)
+    - name: Workload groups
       items:
       - name: Workload groups overview
         href: ./kusto/management/workload-groups.md
@@ -1983,6 +1985,9 @@ items:
     - name: series_rolling_fl()
       displayName: functions library
       href: kusto/functions-library/series-rolling-fl.md
+    - name: time_weighted_avg_fl()
+      displayName: functions library
+      href: kusto/functions-library/time-weighted-avg-fl.md
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions
     href: ./policy-reference.md
