@@ -76,7 +76,10 @@ DeviceEventsAll
 
 When you filter duplicates during the ingestion process, the system ignores the duplicate data during ingestion into Kusto tables. Data is ingested into a staging table and copied into another table after removing duplicate rows. This solution can improve query performance, since records are already deduplicated during query time. 
 
-However, this option increases ingestion time and incurs additional data storage costs. Additionally, this solution  only works if duplications aren't ingested concurrently. With multiple concurrent ingestions containing duplicate records, the deduplication process will not find any existing matching records in the table, and may ingest all records.
+However, this option increases ingestion time and incurs additional data storage costs. 
+
+> [!WARNING]
+> This solution  only works if duplications aren't ingested concurrently. When multiple concurrent ingestions contain duplicate records, the deduplication process will not find any existing matching records in the table, and may ingest duplicate records.
 
 The following example depicts this method:
 
