@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: shfeldma
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 04/30/2021
+ms.date: 05/05/2021
 
 #Customer intent: I want to use Azure DevOps to create a release pipeline and deploy
 ---
@@ -18,8 +18,8 @@ ms.date: 04/30/2021
 [Azure Data Explorer - Pipeline Tools](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) is the Azure Pipelines task that enables you to create release pipelines and deploy your database changes to your Azure Data Explorer databases. It's available for free in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 this extension includes 3 basic tasks:
 
-* Azure Data Explorer Command - Run Admin Commands against ADX cluster
-* Azure Data Explorer Query - Run Queries against ADX cluster and parse the results
+* Azure Data Explorer Command - Run Admin Commands against an Azure Data Explorer cluster
+* Azure Data Explorer Query - Run Queries against an Azure Data Explorer cluster and parse the results
 * Azure Data Explorer Query Server Gate - Agentless task to Gate releases depending on the query outcome
 
     ![Task Types](media/devops/ExtensionTaskTypes.png)
@@ -41,18 +41,26 @@ This document describes a simple example on the use of the **Azure Data Explorer
 * Extension Installation:
     * If you are the Azure DevOps instance owner, install the extension from the [Marketplace](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX).
 
-        ![Get extension in Marketplace](media/devops/GetExtention.PNG)
-        ![Install extension](media/devops/ExtensionInstall.PNG)
-    * If you are NOT the Azure DevOps instance owner, contact your [owner](https://docs.microsoft.com/en-us/azure/devops/organizations/security/lookup-organization-owner-admin?view=azure-devops&tabs=preview-page#look-up-the-organization-owner) and ask them to install it.
+        ![Get extension in Marketplace](media/devops/GetExtention.png)
+        ![Install extension](media/devops/ExtensionInstall.png)
+    * If you are NOT the Azure DevOps instance owner, contact your [owner](/azure/devops/organizations/security/lookup-organization-owner-admin?view=azure-devops&tabs=preview-page#look-up-the-organization-owner&preserve-view=true) and ask them to install it.
 
 ## Prepare your content for release
 
-* There are three options to get the ADX commands / script to run in the task
+The are three ways to run admin commands against cluster in a task.
 
-    ![Source Control Options](media/devops/SourceControlOptions.png)
+![Source Control Options](media/devops/SourceControlOptions.png)
 
-    ### Get a file path directly from git source control:
-    
+* Use a search pattern to get multiple command files from a local agent folder (Build sources or Release artifacts)
+
+    ![Local Folder Option](media/devops/LocalFolderOption.png)
+
+* Write commands inline
+
+    ![Inline command Option](media/devops/InlineOption.png)
+
+* Specify a file path to get command files directly from git source control (recommended)
+
     Create the following sample folders (*Functions*, *Policies*, *Tables*) in your Git repository. Copy the files from [here](https://github.com/Azure/azure-kusto-docs-samples/tree/master/DevOps_release_pipeline) into the respective folders as seen below and commit the changes. The sample files are provided to execute the following workflow.
 
     ![Create folders](media/devops/create-folders.png)
@@ -61,15 +69,6 @@ This document describes a simple example on the use of the **Azure Data Explorer
     > When creating your own workflow, we recommend making your code idempotent. For example, use [`.create-merge table`](kusto/management/create-merge-table-command.md) instead of [`.create table`](kusto/management/create-table-command.md), and use [`.create-or-alter`](kusto/management/create-alter-function.md) function instead of [`.create`](kusto/management/create-function.md) function.
 
     ![Git Option](media/devops/GitOption.png)
-
-    ### Get Multiple Files from Local Agent Folder (Build Sources / Release Artifacts) using search pattern 
-
-    ![Local Folder Option](media/devops/LocalFolderOption.png)
-
-    ### Write the commands inline in the task
-
-    ![Local Folder Option](media/devops/InlineOption.png)
- 
 
 ## Create a release pipeline
 
@@ -125,19 +124,17 @@ This document describes a simple example on the use of the **Azure Data Explorer
             | **Service Principal App Key** | Enter the AAD App Key (created as prerequisite) |
             | **AAD tenant Id** | Enter your AAD tenant (such as microsoft.com or contoso.com) |
 
-        Select **Allow all pipelines to use this connection** checkbox. Select **OK**.
+        Select **Allow all pipelines to use this connection** checkbox and then select **OK**.
 
         ![Add service connection](media/devops/add-service-connection.png)
 
-1. Select **Save**. In the **Tasks** tab, verify that there are three tasks: **Deploy Tables**, **Deploy Functions**, and **Deploy Policies**.
+1. Select **Save** and then in the **Tasks** tab, verify that there are three tasks: **Deploy Tables**, **Deploy Functions**, and **Deploy Policies**.
 
     ![Deploy all folders](media/devops/deploy-all-folders.png)
 
 ### Create a Query task
 
-If required, create a task to run a query against a cluster.
-Runing Queries in a Build / Release pipeline may be used either for informational purposes or to validate a data set and have a step succeed / fail based on the query results.
-The results exit criteria are either row count threshold or a single value (in the single value case the query needs to be written in a way that it returns a single value [using |project])
+If required, create a task to run a query against the cluster. Running queries in a Build or Release pipeline can be used to validate a data set and have a step succeed or fail based on the query results. The tasks success criteria can be based on a row count threshold or a single value depending on what the query returns.
 
 1. In the **Tasks** tab, select **+** by **Agent job** and search for **Azure Data Explorer**.
 
@@ -165,27 +162,25 @@ The results exit criteria are either row count threshold or a single value (in t
 
 ### Create a Query Server Gate task
 
-If required, create a task to run a query against a cluster and gate release progress pending Query Results Row Count.
-The Server Query Gate is an **Agentless** that runs the query directly from the Azure DevOps server.
+If required, create a task to run a query against a cluster and gate the release progress pending Query Results Row Count. The Server Query Gate task is an agentless job, meaning that the query runs directly on the Azure DevOps server.
 
 1. In the **Tasks** tab, select **+** by **Agentless job** and search for **Azure Data Explorer**.
 
 1. Under **Run Azure Data Explorer Query Server Gate**, select **Add**.
-1. Select **Kusto Query Server Gate** and update the task with the following information:
-1. Select **Server Gate Test**.
+1. Select **Kusto Query Server Gate** and then select **Server Gate Test**.
 
-    ![Query Gate Task](media/devops/QueryGateAdd.png)
+    ![Select Server Gate Task](media/devops/QueryGateAdd.png)
 
 1. Configure the task providing the following information:
 
-    * **Display name**: Name of the gate. For example, **ADX Query Gate**.
+    * **Display name**: Name of the gate.
     * **Service Endpoint**: Select a service endpoint.
     * **Database name**: Specify the database name.
     * **Type**: Select **Inline query**.
     * **Query**: Enter the query you want to run.
     * **Maximum threshold**: Specify the maximum row count for the query's success criteria.
 
-    ![Query Gate Task](media/devops/QueryGate.png)
+    ![Configure Server Gate Task](media/devops/QueryGate.png)
 
 > [!NOTE]
 > You should see results like the following When running the release.
