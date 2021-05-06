@@ -149,7 +149,7 @@ print "This is an example for using 'external_artifacts'"
 * To generate multi-line strings containing the Python script in `Kusto.Explorer`, copy your Python script from your favorite
   Python editor (*Jupyter*, *Visual Studio Code*, *PyCharm*, and so on). 
   Now do one of:
-    * Enclose the full script between lines containing three consecutive backticks, for example:
+    * Enclose the full script between lines containing three consecutive backticks, for example:  
       ` ``` `  
       ` python code`  
       ` ``` `
