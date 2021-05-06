@@ -69,7 +69,7 @@ to all the data:
 
 ```kusto
 set query_datascope="hotcache";
-T | union U | join (T datascope=all | where Timestamp < ago(365d) on X
+T | union U | join (T datascope=all | where Timestamp < ago(365d)) on X
 ```
 
 ## Cache policy vs retention policy

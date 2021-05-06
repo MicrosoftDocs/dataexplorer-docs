@@ -39,7 +39,7 @@ Requires [Database viewer permission](../management/access-control/role-based-au
 | `AuthorizedPrincipals`     | String   | The table's authorized principals, serialized as JSON.                                          |
 | `RetentionPolicy`          | String   | The table's effective`*` retention policy, serialized as JSON.                                  |
 | `CachingPolicy`            | String   | The table's effective`*` caching policy, serialized as JSON.                                    |
-| `ShardingPolicy`           | String   | The table's effective`*` sharding policy, serialized as JSON.66666666666666                     |
+| `ShardingPolicy`           | String   | The table's effective`*` sharding policy, serialized as JSON.                                   |
 | `MergePolicy`              | String   | The table's effective`*` merge policy, serialized as JSON.                                      |
 | `StreamingIngestionPolicy` | String   | The table's effective`*` streaming ingestion policy, serialized as JSON.                        |
 | `MinExtentsCreationTime`   | DateTime | The minimum creation time of an extent in the table (or null, if there are no extents).         |
