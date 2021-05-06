@@ -23,7 +23,7 @@ Requires [Database Admin](../access-control/role-based-authorization.md) permiss
 
 `.clear` `materialized-view` *MaterializedViewName* `data`
 
-**Example** 
+## Example 
 
 ```kusto
 .clear materialized-view UsersView data 
