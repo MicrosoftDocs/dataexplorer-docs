@@ -172,3 +172,4 @@ The `Result` dimension can have one of the following values:
 * [`.create materialized view`](materialized-view-create.md)
 * [`.alter materialized-view`](materialized-view-alter.md)
 * [Materialized views show commands](materialized-view-show-commands.md)
+* [Materialized views policies](materialized-view-policies.md)
