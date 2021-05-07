@@ -1,5 +1,5 @@
 ---
-title: around() - Azure Data Explorer | Microsoft Docs
+title: around() function - Azure Data Explorer
 description: This article describes around() in Azure Data Explorer.
 services: data-explorer
 author: alexans
