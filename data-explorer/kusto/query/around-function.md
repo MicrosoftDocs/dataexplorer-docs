@@ -11,7 +11,7 @@ ms.date: 05/05/2021
 ---
 # around()
 
-Returns a `bool` value indicating if the first argument is in the range around the center value.
+Returns a `bool` value indicating if the first argument is within a range around the center value.
 
 ## Syntax
 
