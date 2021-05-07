@@ -1,6 +1,6 @@
 ---
 title: around() function - Azure Data Explorer
-description: This article describes around() in Azure Data Explorer.
+description: This article describes the around() function in Azure Data Explorer.
 services: data-explorer
 author: alexans
 ms.author: orspodek
