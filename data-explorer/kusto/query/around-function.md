@@ -28,9 +28,7 @@ Returns a `bool` value indicating if the first argument is within a range around
 Returns `true` if the value within the range, `false` if the value outside the range.
 Returns `null` if any of the arguments is `null`.
 
-## Examples
-
-### Filtering values around specific timestamp
+## Example: Filtering values around a specific timestamp
 
 The following example filters rows around specific timestamp.
 
