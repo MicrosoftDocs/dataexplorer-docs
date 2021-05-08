@@ -12,19 +12,17 @@ ms.custom: contperf-fy21q1
 
 # Batching Ingestion Monitoring
 
-Batching ingestion is one of the [methods](ingest-data-overview#batching-vs-streaming-ingestion) used by Azure Data Explorer (ADX) for ingesting data. Using this method, ADX optimizes ingestion throughput by batching the small ingress data chunks that it receives. 
+Batching ingestion is the most performant [method](ingest-data-overview#batching-vs-streaming-ingestion) used by Azure Data Explorer (ADX) for ingesting data.
 
-The batching occurs based on a [batching policy](kusto/management/batchingpolicy) defined on the database or the table. ADX uses a default value of 5 minutes as the maximum delay time, 1000 items and total size of 1G for batching. 
+Using this method, ADX optimizes data ingestion for high throughput by batching the incoming data into small chunks based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md) defined on the database or table. These small batches of data are then merged, and optimized for fast query results.
 
-The batching ingestion is divided into several stages, and there are specific components responsible for each of these steps:
+Batching ingestion occurs in stages, and each stage is governed by a *component*:
 
-* For Event Grid, Event Hub and IoT Hub ingestion, there is a component of Data Connection that gets the data from external sources and performs initial data rearrangement.
+1. Prior to ingestion, as the data is retrieved from Event Grid, Event Hub, or IoT Hub, the *Data Connection* component performs initial data rearrangement.
+2. The *Batching Manager* optimizes the ingestion throughput by batching the small ingress data chunks that it receives based on the ingestion batching policy.
+3. The *Ingestion Manager* starts the data ingestion by sending the ingestion command to the *ADX Storage Engine*.
+4. The *ADX Storage Engine* stores the ingested data, making it available for query.
 
-* The Batching Manager batches the received small ingress data chunks to optimize ingestion throughput based on [batching policy](kusto/management/batchingpolicy).
-
-* The Ingestion Manager sends the ingestion command to the ADX Storage Engine.
-
-* The ADX Storage Engine stores the ingested data so it available for query.
 
 In this tutorial you will learn how to use [ingestion metrics](using-metrics#ingestion-metrics) to monitor [Batching ingestion to ADX](ingest-data-overview) in Azure portal.
 
