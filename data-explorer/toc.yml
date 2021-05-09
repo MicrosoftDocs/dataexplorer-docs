@@ -739,6 +739,8 @@ items:
       href: ./kusto/query/acosfunction.md
     - name: ago()
       href: ./kusto/query/agofunction.md
+    - name: around()
+      href: ./kusto/query/around-function.md
     - name: array_concat()
       href: ./kusto/query/arrayconcatfunction.md
     - name: array_iif()
@@ -1399,6 +1401,8 @@ items:
     items:
     - name: RE2 syntax
       href: ./kusto/query/re2.md
+    - name: RE2 library
+      href: ./kusto/query/re2-library.md
     - name: SQL to Kusto cheat sheet
       href: ./kusto/query/sqlcheatsheet.md
     - name: Splunk to Kusto cheat sheet
@@ -1432,7 +1436,7 @@ items:
     - name: Control commands overview
       displayName: Management
       href: ./kusto/management/index.md
-    - name: Workload groups (preview)
+    - name: Workload groups
       items:
       - name: Workload groups overview
         href: ./kusto/management/workload-groups.md
@@ -1523,7 +1527,7 @@ items:
           href: ./kusto/management/external-sql-tables.md
       - name: Materialized views
         items:
-        - name: Overview of materialized views
+        - name: Materialized views overview
           href: ./kusto/management/materialized-views/materialized-view-overview.md
         - name: .create materialized-view
           href: ./kusto/management/materialized-views/materialized-view-create.md
@@ -1543,6 +1547,8 @@ items:
           href: ./kusto/management/materialized-views/materialized-view-show-commands.md
         - name: .drop materialized-view
           href: ./kusto/management/materialized-views/materialized-view-drop.md
+        - name: .clear materialized-view data
+          href: ./kusto/management/materialized-views/materialized-view-clear-data.md
         - name: .disable | .enable materialized-view
           href: ./kusto/management/materialized-views/materialized-view-enable-disable.md
         - name: Materialized views policies
