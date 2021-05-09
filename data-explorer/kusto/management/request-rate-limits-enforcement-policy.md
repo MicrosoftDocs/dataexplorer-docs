@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/01/2021
+ms.date: 05/09/2021
 ---
 # Request rate limits enforcement policy
 
@@ -18,9 +18,12 @@ A workload group's request rate limits enforcement policy controls how request r
 A request rate limit policy has the following properties:
 
 | Name                     | Supported values                            | Default value | Description                                   |
-|--------------------------|---------------------------------------------|---------------------------------------------------------------|
+|--------------------------|---------------------------------------------|----------------|-----------------------------------------------|
 | QueriesEnforcementLevel  | `Cluster`, `Database`, `QueryHead`          | `QueryHead`   | Indicates the enforcement level for queries.  |
 | CommandsEnforcementLevel | `Cluster`, `Database`                       | `Database`    | Indicates the enforcement level for commands. |
+
+> [!NOTE]
+>  If the policy is undefined (`null`), the default enforcement level (`Database`) applies to both commands and queries.
 
 ### Request rate limits enforcement level
 
@@ -37,20 +40,19 @@ Request rate limits can be enforced at one of the following levels:
     is effectively multiplied by the number of query head nodes.
   * This option can't be applied to *control commands*.
 
-### Notes
 
-* If the policy is undefined (`null`), the default enforcement level (`Database`) applies to both commands and queries.
-* Rate limits for cluster-scoped commands are always enforced at the cluster level, regardless of the value configured in the policy.
-  * For example: control commands that manage cluster-level policies.
+> [!NOTE]
+> Rate limits for cluster-scoped commands are always enforced at the cluster level, regardless of the value configured in the policy. For example: control commands that manage cluster-level policies.
 
-### Examples
+## Examples
 
-* Setup:
-  * The cluster has 10 nodes as follows:
+### Setup:
+
+* The cluster has 10 nodes as follows:
     * one cluster admin node.
     * two database admin nodes (each manages 50% of the cluster's databases).
     * 50% of the tail nodes (5 out of 10) can serve as query heads for weakly consistent queries.
-  * The `default` workload group is defined with the following policies:
+* The `default` workload group is defined with the following policies:
 
     ```json
     "RequestRateLimitPolicies": [
@@ -69,11 +71,13 @@ Request rate limits can be enforced at one of the following levels:
     }
     ```
 
-* The effective rate limits for the `default` workload group are:
+### Effective rate limits
+
+The effective rate limits for the `default` workload group are:
    * The maximum number of concurrent *cluster-scoped control commands* is `200`.
-   * The maximum number of concurrent *database-scoped control commands* is `2` (database admin nodes) x `200` (max per admin node) = `400`.
-   * The maximum number of concurrent *strongly consistent queries* is `2` (database admin nodes) x `200` (max per admin node) = `400`.
-   * The maximum number of concurrent *weakly consistent queries* is `5` (query heads) x `200` (max per query head) = `1000`.
+   * The maximum number of concurrent *database-scoped control commands* is <br>`2` (database admin nodes) x `200` (max per admin node) = `400`.
+   * The maximum number of concurrent *strongly consistent queries* is <br>`2` (database admin nodes) x `200` (max per admin node) = `400`.
+   * The maximum number of concurrent *weakly consistent queries* is <br>`5` (query heads) x `200` (max per query head) = `1000`.
 
 ## Control commands
 
