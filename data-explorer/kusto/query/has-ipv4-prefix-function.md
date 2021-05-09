@@ -20,13 +20,6 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
  * "These requests came from: 192.168.1.1, 10.1.1.115 and 10.1.1.201"
  * "05:04:54 127.0.0.1 GET /favicon.ico 404"
 
-The function works significantly faster if the searched text column is indexed using special tokenizer. To update the column tokenizer type to be used in future data ingestions, use the command:
-
-```kusto
-.alter column MyTable.TextColumn policy encoding type='NetworkLogIpv4'
-```
-
-
 ## Syntax
 
 `has_ipv4_prefix(`*text* `,` *ip_address_prefix* `)`
