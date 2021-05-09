@@ -16,7 +16,7 @@ ms.date: 05/05/2021
 
 [Azure DevOps Services](https://azure.microsoft.com/services/devops/) provides development collaboration tools such as high-performance pipelines, free private Git repositories, configurable Kanban boards, and extensive automated and continuous testing capabilities. [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) is an Azure DevOps capability that enables you to manage CI/CD to deploy your code with high-performance pipelines that work with any language, platform, and cloud.
 [Azure Data Explorer - Pipeline Tools](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) is the Azure Pipelines task that enables you to create release pipelines and deploy your database changes to your Azure Data Explorer databases. It's available for free in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
-this extension includes 3 basic tasks:
+This extension includes 3 basic tasks:
 
 * Azure Data Explorer Command - Run Admin Commands against an Azure Data Explorer cluster
 * Azure Data Explorer Query - Run Queries against an Azure Data Explorer cluster and parse the results
