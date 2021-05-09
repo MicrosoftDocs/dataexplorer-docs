@@ -78,8 +78,8 @@ When you filter duplicates during the ingestion process, the system ignores the 
 
 However, this option increases ingestion time and incurs additional data storage costs. 
 
-> [!WARNING]
-> This solution  only works if duplications aren't ingested concurrently. When multiple concurrent ingestions contain duplicate records, the deduplication process will not find any existing matching records in the table, and may ingest duplicate records.
+> [!IMPORTANT]
+> This solution only works if duplications aren't ingested concurrently. When multiple concurrent ingestions contain duplicate records, the deduplication process will not find any existing matching records in the table, and may ingest duplicate records.
 
 The following example depicts this method:
 
