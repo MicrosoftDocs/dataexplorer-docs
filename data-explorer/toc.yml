@@ -739,6 +739,8 @@ items:
       href: ./kusto/query/acosfunction.md
     - name: ago()
       href: ./kusto/query/agofunction.md
+    - name: around()
+      href: ./kusto/query/around-function.md
     - name: array_concat()
       href: ./kusto/query/arrayconcatfunction.md
     - name: array_iif()
