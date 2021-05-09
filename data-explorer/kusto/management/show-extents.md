@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/02/2020
+ms.date: 05/09/2021
 ---
 
 # .show extents
