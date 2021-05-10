@@ -20,7 +20,7 @@ The `.clean databases extentcontainers` command deletes unused storage artifacts
 You must have an AllDatabasesAdmin or specific database admin permission to execute this command. For more information, see [Role-based Authorization in Kusto](access-control/role-based-authorization.md).
 
 > [!WARNING]
-> Once the `.clean databases extentcontainers` command is run, the recoverability defined in the [retention policy](../management/retentionpolicy.md) is reset to the time when the command was executed by the user. You won't be able change the database state to an earlier point in time. We advise only running this command based on [Azure Advisor recommendation](azure-advisor#delete-unused-storage-artifact).
+> Once the `.clean databases extentcontainers` command is run, the recoverability defined in the [retention policy](../management/retentionpolicy.md) is reset to the time when the command was executed by the user. You won't be able change the database state to an earlier point in time. We advise only running this command based on [Azure Advisor recommendation](../../azure-advisor.md#delete-unused-storage-artifact).
 
 ### Syntax
 
