@@ -55,7 +55,7 @@ This command monitors the [`.clean databases extentcontainers`](#clean-databases
 
 You must have an AllDatabasesAdmin, AllDatabasesMonitor or specific database admin or monitor permission to execute this command. For more information, see [Role-based Authorization in Kusto](access-control/role-based-authorization.md).
 
-The cleanup action doesn’t start immediately after running the command. There is a delay period (of 5 to 30 days) that is set by the system.
+The cleanup action doesn’t start immediately after running the command. There is a delay period (at least five days) that is set by the system.
 The initial state would be 'Cleanup requested'.
 
 ### Syntax
