@@ -39,8 +39,8 @@ When attaching the database all tables, external tables and materialized views a
 
 Below are few examples:
 1. Include all tables with name that starts with "Logs" then tablesToInclude = ["Logs*"].
-2. Include all externalTables then externalTablesToInclude = ["*"].
-3. Exclude all materialzied views materializedViewsToExclude=["*"].
+2. Exclude all externalTables then externalTablesToExclude = ["*"].
+3. Exclude all materialized views materializedViewsToExclude=["*"].
 
 
 
@@ -337,11 +337,11 @@ You can deploy the Azure Resource Manager template by [using the Azure portal](h
 |Database Name     |      The name of the database to be followed. If you want to follow all the leader's databases, use '*'.   |
 |Leader Cluster Resource ID    |   The resource ID of the leader cluster.      |
 |Default Principals Modification Kind    |   The default principal modification kind. Can be `Union`, `Replace`, or `None`. For more information about default principal modification kind, see [principal modification kind control command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind).      |
-| Tables To Include | The list of tables to include, i.e. ["table1ToInclude", "table2ToInclude"]. To include all tables use ["*"]. |
+| Tables To Include | The list of tables to include, i.e. ["table1ToInclude", "table2ToInclude"]. |
 | Tables To Exclude | The list of tables to exclude,  i.e. ["table1ToExclude", "table2ToExclude"]. To exclude all tables use ["*"].|
-| External Tables To Include | The list of tables to include,  i.e. ["ExternalTable1ToInclude", "ExternalTable2ToInclude"]. To include all external tables use ["*"]. |
+| External Tables To Include | The list of tables to include,  i.e. ["ExternalTable1ToInclude", "ExternalTable2ToInclude"]. |
 | External Tables To Exclude | The list of tables to exclude, i.e. ["ExternalTable1ToExclude", "ExternalTable2ToExclude"]. To exclude all external tables use ["*"].|
-| Materialized Views To Include | The list of materialized views to include, i.e. ["Mv1ToInclude", "Mv2ToInclude"]. To include all materialized views use ["*"]. |
+| Materialized Views To Include | The list of materialized views to include, i.e. ["Mv1ToInclude", "Mv2ToInclude"].  |
 | Materialized Views To Exclude | The list of materialized views to exclude, i.e. ["Mv11ToExclude", "Mv22ToExclude"] To exclude all materialized views use ["*"].|
 |Location   |   The location of all the resources. The leader and the follower must be in the same location.       |
 
