@@ -193,6 +193,7 @@ The following properties can be defined as part of the policy. These properties 
 |---|---|---|---|
 | **MinRowCountPerOperation** |  Minimum target for the sum of row count of the source extents of a single data partitioning operation. | | `0` |
 | **MaxRowCountPerOperation** |  Maximum target for the sum of the row count of the source extents of a single data partitioning operation. | Set a value lower than 5M if you see that the partitioning operations consume a large amount of memory or CPU per operation. For more information, see [monitoring](#monitor-partitioning). | `0`, with a default target of 5,000,000 records. |
+| **MaxOriginalSizePerOperation** |  Maximum target for the sum of the original size (in bytes) of the source extents of a single data partitioning operation. | Set a value lower than 5 GB if you see that the partitioning operations consume a large amount of memory or CPU per operation. For more information, see [monitoring](#monitor-partitioning). | `0`, with a default target of 5,368,709,120 bytes (5 GB). |
 
 ## The data partitioning process
 
