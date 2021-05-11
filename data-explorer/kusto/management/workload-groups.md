@@ -68,6 +68,7 @@ The following policies can be defined per workload group:
 
 * [Request limits policy](request-limits-policy.md)
 * [Request rate limit policy](request-rate-limit-policy.md)
+* [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md)
 * [Request queuing policy](request-queuing-policy.md)
 
 ## Monitoring
