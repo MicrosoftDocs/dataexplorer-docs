@@ -123,7 +123,7 @@ The are three ways to run admin commands against cluster in a task.
             | **Cluster Url** | Value can be found in the overview section of your Azure Data Explorer Cluster in the Azure portal |
             | **Service Principal Id** | Enter the AAD App ID (created as prerequisite) |
             | **Service Principal App Key** | Enter the AAD App Key (created as prerequisite) |
-            | **AAD tenant Id** | Enter your AAD tenant (such as microsoft.com or contoso.com) |
+            | **AAD tenant ID** | Enter your AAD tenant (such as microsoft.com or contoso.com) |
 
         Select **Allow all pipelines to use this connection** checkbox and then select **OK**.
 
@@ -163,7 +163,7 @@ If required, create a task to run a query against the cluster. Running queries i
 
 ### Create a Query Server Gate task
 
-If required, create a task to run a query against a cluster and gate the release progress pending Query Results Row Count. The Server Query Gate task is an agentless job, meaning that the query runs directly on the Azure DevOps server.
+If required, create a task to run a query against a cluster and gate the release progress pending Query Results Row Count. The Server Query Gate task is an agentless job, meaning that the query runs directly on the Azure DevOps Server.
 
 1. In the **Tasks** tab, select **+** by **Agentless job** and search for **Azure Data Explorer**.
 
