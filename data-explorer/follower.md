@@ -35,7 +35,7 @@ There are various methods you can use to attach a database. In this article, we 
 To attach a database, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster and the follower cluster. You can add or remove role assignments using [Azure portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli), and [ARM template](/azure/role-based-access-control/role-assignments-template). You can learn more about [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) and the [different roles](/azure/role-based-access-control/rbac-and-directory-admin-roles). 
 
 ### Table Level Sharing
-When attaching the database all tables, external tables and materialized views are followed as well. You can share specific tables/external tables/materialized views by configuring the '*TableLevelSharingProperties*'. '*TableLevelSharingProperties*' contains six arrays of strings: tablesToInclude, tablesToExclude, externalTablesToInclude, externalTablesToExclude, materializedViewsToInclude and materializedViewsToExclude.
+When attaching the database all tables, external tables and materialized views are followed as well. You can share specific tables/external tables/materialized views by configuring the '*TableLevelSharingProperties*'. '*TableLevelSharingProperties*' contains six arrays of strings: tablesToInclude, tablesToExclude, externalTablesToInclude, externalTablesToExclude, materializedViewsToInclude and materializedViewsToExclude. Note that when materialized views are included, their source tables are included as well.
 
 Below are few examples:
 1. Include all tables with name that starts with "Logs" then tablesToInclude = ["Logs*"].
@@ -337,11 +337,11 @@ You can deploy the Azure Resource Manager template by [using the Azure portal](h
 |Database Name     |      The name of the database to be followed. If you want to follow all the leader's databases, use '*'.   |
 |Leader Cluster Resource ID    |   The resource ID of the leader cluster.      |
 |Default Principals Modification Kind    |   The default principal modification kind. Can be `Union`, `Replace`, or `None`. For more information about default principal modification kind, see [principal modification kind control command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind).      |
-| Tables To Include | The list of tables to include, i.e. ["table1ToInclude", "table2ToInclude"]. |
-| Tables To Exclude | The list of tables to exclude,  i.e. ["table1ToExclude", "table2ToExclude"]. To exclude all tables use ["*"].|
-| External Tables To Include | The list of tables to include,  i.e. ["ExternalTable1ToInclude", "ExternalTable2ToInclude"]. |
+| Tables To Include | The list of tables to include, i.e. ["table1ToInclude", "table2ToInclude"]. To include all tables starting with 'Logs' use ["Logs*"]. |
+| Tables To Exclude | The list of tables to exclude,  i.e. ["table1ToExclude", "table2ToExclude"]. To exclude all tables use ["*"]. |
+| External Tables To Include | The list of tables to include,  i.e. ["ExternalTable1ToInclude", "ExternalTable2ToInclude"]. To include all external tables starting with 'Logs' use ["Logs*"]. |
 | External Tables To Exclude | The list of tables to exclude, i.e. ["ExternalTable1ToExclude", "ExternalTable2ToExclude"]. To exclude all external tables use ["*"].|
-| Materialized Views To Include | The list of materialized views to include, i.e. ["Mv1ToInclude", "Mv2ToInclude"].  |
+| Materialized Views To Include | The list of materialized views to include, i.e. ["Mv1ToInclude", "Mv2ToInclude"]. To include all materialized views starting with 'Logs' use ["Logs*"].  |
 | Materialized Views To Exclude | The list of materialized views to exclude, i.e. ["Mv11ToExclude", "Mv22ToExclude"] To exclude all materialized views use ["*"].|
 |Location   |   The location of all the resources. The leader and the follower must be in the same location.       |
 
