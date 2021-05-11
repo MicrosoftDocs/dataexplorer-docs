@@ -48,18 +48,18 @@ When attaching the database all tables, external tables and materialized views a
 1. Include all tables with names that start with "Logs":
   
    ```kusto
-    tablesToInclude = ["Logs*"].
+    tablesToInclude = ["Logs*"]
     ```
 1. Exclude all external tables:
     
     ```kusto
-    externalTablesToExclude = ["*"].
+    externalTablesToExclude = ["*"]
     ```
 
 1. Exclude all materialized views:
 
     ```kusto 
-    materializedViewsToExclude=["*"].
+    materializedViewsToExclude=["*"]
     ```
 
 # [C#](#tab/csharp)
