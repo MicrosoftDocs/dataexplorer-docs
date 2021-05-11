@@ -38,7 +38,7 @@ Request rate limits can be enforced at one of the following levels:
   * This option can't be applied to *control commands*.
 
 > [!NOTE]
-> * If the policy is undefined (`null`), the default enforcement level (`Database`) applies to both commands and queries.
+> * If the policy is undefined (`null`), the default enforcement level applies to both commands and queries.
 > * Rate limits for cluster-scoped commands are always enforced at the cluster level, regardless of the value configured in the policy. For example: control commands that manage cluster-level policies.
 
 ## Examples
