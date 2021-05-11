@@ -6,10 +6,10 @@ ms.author: orspodek
 ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 05/11/2021
 ---
 
-# Use follower database to attach databases in Azure Data Explorer
+# Use follower databases
 
 The **follower database** feature allows you to attach a database located in a different cluster to your Azure Data Explorer cluster. The **follower database** is attached in *read-only* mode, making it possible to view the data and run queries on the data that was ingested into the **leader database**. The follower database synchronizes changes in the leader databases. Because of the synchronization, there's a data lag of a few seconds to a few minutes in data availability. The length of the time lag depends on the overall size of the leader database metadata. The leader and follower databases use the same storage account to fetch the data. The storage is owned by the leader database. The follower database views the data without needing to ingest it. Since the attached database is a read-only database, the data, tables, and policies in the database can't be modified except for [caching policy](#configure-caching-policy), [principals](#manage-principals), and [permissions](#manage-permissions). Attached databases can't be deleted. They must be detached by the leader or follower and only then they can be deleted. 
 
@@ -25,24 +25,42 @@ Attaching a database to a different cluster using the follower capability is use
 ## Prerequisites
 
 1. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
-2. [Create cluster and DB](create-cluster-database-portal.md) for the leader.
-3. [Create cluster](create-cluster-database-portal.md) for the follower.
-4. [Ingest data](ingest-sample-data.md) to leader database using one of various methods discussed in [ingestion overview](./ingest-data-overview.md).
+1. [Create cluster and DB](create-cluster-database-portal.md) for the leader.
+1. [Create cluster](create-cluster-database-portal.md) for the follower.
+1. [Ingest data](ingest-sample-data.md) to the leader database using one of various methods discussed in [ingestion overview](./ingest-data-overview.md).
 
 ## Attach a database
 
 There are various methods you can use to attach a database. In this article, we discuss attaching a database using C#, Python, PowerShell, or an Azure Resource Manager template. 
-To attach a database, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster and the follower cluster. You can add or remove role assignments using [Azure portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli), and [ARM template](/azure/role-based-access-control/role-assignments-template). You can learn more about [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) and the [different roles](/azure/role-based-access-control/rbac-and-directory-admin-roles). 
+To attach a database, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster and the follower cluster. Add or remove role assignments using [Azure portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli), and [ARM template](/azure/role-based-access-control/role-assignments-template). Learn more about [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) and the [different roles](/azure/role-based-access-control/rbac-and-directory-admin-roles). 
 
-### Table Level Sharing
-When attaching the database all tables, external tables and materialized views are followed as well. You can share specific tables/external tables/materialized views by configuring the '*TableLevelSharingProperties*'. '*TableLevelSharingProperties*' contains six arrays of strings: tablesToInclude, tablesToExclude, externalTablesToInclude, externalTablesToExclude, materializedViewsToInclude and materializedViewsToExclude. Note that when materialized views are included, their source tables are included as well.
+### Table level sharing
 
-Below are few examples:
-1. Include all tables with name that starts with "Logs" then tablesToInclude = ["Logs*"].
-2. Exclude all externalTables then externalTablesToExclude = ["*"].
-3. Exclude all materialized views materializedViewsToExclude=["*"].
+When attaching the database all tables, external tables and materialized views are followed as well. You can share specific tables/external tables/materialized views by configuring the '*TableLevelSharingProperties*'. 
 
+'*TableLevelSharingProperties*' contains six arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, and `materializedViewsToExclude`. 
 
+> [!NOTE]
+> When materialized views are included, their source tables are included as well.
+
+#### Examples
+
+1. Include all tables with names that start with "Logs":
+  
+   ```kusto
+    tablesToInclude = ["Logs*"].
+    ```
+1. Exclude all external tables:
+    
+    ```kusto
+    externalTablesToExclude = ["*"].
+    ```
+
+1. Exclude all materialized views:
+
+    ```kusto 
+    materializedViewsToExclude=["*"].
+    ```
 
 # [C#](#tab/csharp)
 
@@ -165,9 +183,6 @@ Install : Az.Kusto
 ```
 
 #### Example
-
-[comment]: # (TODO: update Powershell with Table level sharing)
-
 
 ```Powershell
 $FollowerClustername = 'follower'
@@ -324,25 +339,25 @@ In this section, you learn to attach a database to an existing cluster by using 
 }
 ```
 
-### Deploy the template 
+### Deploy the template
 
 You can deploy the Azure Resource Manager template by [using the Azure portal](https://portal.azure.com) or using PowerShell.
 
    ![template deployment](media/follower/template-deployment.png)
 
-|**Setting**  |**Description**  |
-|---------|---------|
+|**Setting**  |**Description**  | **Example** |
+|---------|---------|---|
 |Follower Cluster Name     |  The name of the follower cluster; where the template will be deployed.  |
 |Attached Database Configurations Name    |    The name of the attached database configurations object. The name can be any string that is unique at the cluster level.     |
-|Database Name     |      The name of the database to be followed. If you want to follow all the leader's databases, use '*'.   |
+|Database Name     |      The name of the database to be followed. To follow all the leader's databases, use '*'.   |
 |Leader Cluster Resource ID    |   The resource ID of the leader cluster.      |
-|Default Principals Modification Kind    |   The default principal modification kind. Can be `Union`, `Replace`, or `None`. For more information about default principal modification kind, see [principal modification kind control command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind).      |
-| Tables To Include | The list of tables to include, i.e. ["table1ToInclude", "table2ToInclude"]. To include all tables starting with 'Logs' use ["Logs*"]. |
-| Tables To Exclude | The list of tables to exclude,  i.e. ["table1ToExclude", "table2ToExclude"]. To exclude all tables use ["*"]. |
-| External Tables To Include | The list of tables to include,  i.e. ["ExternalTable1ToInclude", "ExternalTable2ToInclude"]. To include all external tables starting with 'Logs' use ["Logs*"]. |
-| External Tables To Exclude | The list of tables to exclude, i.e. ["ExternalTable1ToExclude", "ExternalTable2ToExclude"]. To exclude all external tables use ["*"].|
-| Materialized Views To Include | The list of materialized views to include, i.e. ["Mv1ToInclude", "Mv2ToInclude"]. To include all materialized views starting with 'Logs' use ["Logs*"].  |
-| Materialized Views To Exclude | The list of materialized views to exclude, i.e. ["Mv11ToExclude", "Mv22ToExclude"] To exclude all materialized views use ["*"].|
+|Default Principals Modification Kind    |   The default principal modification kind. | Can be `Union`, `Replace`, or `None`. For more information about the default principal modification kind, see [principal modification kind control command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind).      |
+| Tables To Include | The list of tables to include. To include all tables starting with 'Logs', use ["Logs*"]. | `["table1ToInclude", "table2ToInclude"]`  |
+| Tables To Exclude | The list of tables to exclude. To exclude all tables, use ["*"].| `["table1ToExclude", "table2ToExclude"]`  |
+| External Tables To Include | The list of tables to include. To include all external tables starting with 'Logs', use ["Logs*"].| `["ExternalTable1ToInclude", "ExternalTable2ToInclude"]`  |
+| External Tables To Exclude | The list of tables to exclude. To exclude all external tables, use ["*"]. | `["ExternalTable1ToExclude", "ExternalTable2ToExclude"]` |
+| Materialized Views To Include | The list of materialized views to include. To include all materialized views starting with 'Logs', use ["Logs*"]. | `["Mv1ToInclude", "Mv2ToInclude"]`   |
+| Materialized Views To Exclude | The list of materialized views to exclude. To exclude all materialized views, use ["*"]. | `["Mv11ToExclude", "Mv22ToExclude"]` |
 |Location   |   The location of all the resources. The leader and the follower must be in the same location.       |
 
 ---
@@ -361,7 +376,7 @@ To verify that the database was successfully attached, find your attached databa
 ### Check your leader cluster
 
 1. Navigate to the leader cluster and select **Databases**
-2. Check that the relevant databases are marked as **SHARED WITH OTHERS** > **Yes**
+1. Check that the relevant databases are marked as **SHARED WITH OTHERS** > **Yes**
 
     ![Read and write attached databases](media/follower/read-write-databases-shared.png)
 
