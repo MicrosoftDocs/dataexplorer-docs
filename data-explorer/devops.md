@@ -16,7 +16,7 @@ ms.date: 05/05/2021
 
 [Azure DevOps Services](https://azure.microsoft.com/services/devops/) provides development collaboration tools such as high-performance pipelines, free private Git repositories, configurable Kanban boards, and extensive automated and continuous testing capabilities. [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) is an Azure DevOps capability that enables you to manage CI/CD to deploy your code with high-performance pipelines that work with any language, platform, and cloud.
 [Azure Data Explorer - Pipeline Tools](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) is the Azure Pipelines task that enables you to create release pipelines and deploy your database changes to your Azure Data Explorer databases. It's available for free in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
-this extension includes 3 basic tasks:
+This extension includes 3 basic tasks:
 
 * Azure Data Explorer Command - Run Admin Commands against an Azure Data Explorer cluster
 * Azure Data Explorer Query - Run Queries against an Azure Data Explorer cluster and parse the results
@@ -61,6 +61,8 @@ The are three ways to run admin commands against cluster in a task.
 
 * Specify a file path to get command files directly from git source control (recommended)
 
+    ![Git files option](media/devops/git-option.png)
+
     Create the following sample folders (*Functions*, *Policies*, *Tables*) in your Git repository. Copy the files from [here](https://github.com/Azure/azure-kusto-docs-samples/tree/master/DevOps_release_pipeline) into the respective folders as seen below and commit the changes. The sample files are provided to execute the following workflow.
 
     ![Create folders for repo](media/devops/create-folders.png)
@@ -68,7 +70,6 @@ The are three ways to run admin commands against cluster in a task.
     > [!TIP]
     > When creating your own workflow, we recommend making your code idempotent. For example, use [`.create-merge table`](kusto/management/create-merge-table-command.md) instead of [`.create table`](kusto/management/create-table-command.md), and use [`.create-or-alter`](kusto/management/create-alter-function.md) function instead of [`.create`](kusto/management/create-function.md) function.
 
-    ![Git files option](media/devops/git-option.png)
 
 ## Create a release pipeline
 
@@ -126,7 +127,7 @@ The are three ways to run admin commands against cluster in a task.
 
         Select **Allow all pipelines to use this connection** checkbox and then select **OK**.
 
-        ![Add service connection](media/devops/add-service-connection.png)
+        ![Add service connection](media/devops/add-service-endpoint.png)
 
 1. Select **Save** and then in the **Tasks** tab, verify that there are three tasks: **Deploy Tables**, **Deploy Functions**, and **Deploy Policies**.
 
