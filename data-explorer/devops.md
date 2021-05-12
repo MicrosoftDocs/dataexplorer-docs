@@ -199,3 +199,56 @@ If required, create a task to run a query against a cluster and gate the release
     ![Deployment is successful](media/devops/deployment-successful.png)
 
 You have now completed creation of a release pipeline for deployment to pre-production.
+
+## Yaml Pipeline configuration
+
+The tasks can be configured both via Azure DevOps Web UI (as show above) and via Yaml code within the [pipeline schema](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema%2Cparameter-schema)
+
+### Admin Command Sample Usage
+``` 
+steps:
+- task: Azure-Kusto.PublishToADX.PublishToADX.PublishToADX@1
+  displayName: '<Task Name>'
+  inputs:
+    script: '<inline Script>'
+    waitForOperation: true
+    kustoUrls: '$(CONNECTIONSTRING):443?DatabaseName=""'
+    customAuth: true
+    connectedServiceName: '<Service Endpoint Name>'
+    serialDelay: 1000
+  continueOnError: true
+  condition: ne(variables['ProductVersion'], '') ## Custom condition Sample
+```
+
+### Query Sample Usage
+``` 
+steps:
+- task: Azure-Kusto.PublishToADX.ADXQuery.ADXQuery@1
+  displayName: '<Task Display Name>'
+  inputs:
+    script: |  
+     let badVer=
+     RunnersLogs | where Timestamp > ago(30m)
+         | where EventText startswith "$$runnerresult" and Source has "ShowDiagnostics"
+         | extend State = extract(@"Status='(.*)', Duration.*",1, EventText)
+         | where State == "Unhealthy"
+         | extend Reason = extract(@'"NotHealthyReason":"(.*)","IsAttentionRequired.*',1, EventText)
+         | extend Cluster = extract(@'Kusto.(Engine|DM|CM|ArmResourceProvider).(.*).ShowDiagnostics',2, Source)
+         | where Reason != "Merge success rate past 60min is < 90%"
+         | where Reason != "Ingestion success rate past 5min is < 90%"
+         | where Reason != "Ingestion success rate past 5min is < 90%, Merge success rate past 60min is < 90%"
+         | where isnotempty(Cluster)
+         | summarize max(Timestamp) by Cluster,Reason 
+         | order by  max_Timestamp desc      
+         | where Reason startswith "Differe"
+         | summarize by Cluster
+     ;   
+      DimClusters | where Cluster in (badVer)
+     | summarize by Cluster , CmConnectionString , ServiceConnectionString ,DeploymentRing
+     | extend ServiceConnectionString = strcat("#connect ", ServiceConnectionString)
+     | where DeploymentRing == "$(DeploymentRing)"
+    kustoUrls: 'https://<ClusterName>.kusto.windows.net:443?DatabaseName=<DataBaneName>'
+    customAuth: true
+    connectedServiceName: '<Service Endpoint Name>'
+  continueOnError: true
+```
