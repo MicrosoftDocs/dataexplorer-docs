@@ -12,11 +12,21 @@ ms.custom: contperf-fy21q1
 
 # Batching Ingestion Monitoring
 
-Batching ingestion is the most performant [method](ingest-data-overview#batching-vs-streaming-ingestion) used by Azure Data Explorer (ADX) for ingesting data.
+Batching ingestion is the most performant [method](ingest-data-overview#batching-vs-streaming-ingestion) for ingesting data used by Azure Data Explorer (ADX).
 
-Using this method, ADX optimizes data ingestion for high throughput by batching the incoming data into small chunks based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md) defined on the database or table. These small batches of data are then merged, and optimized for fast query results.
+In batching ingestion, ADX optimizes data ingestion for high throughput by batching the incoming data into small chunks based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md) that is defined on the database or table from which the data is ingested. The small batches of incoming data are then merged and optimized for fast query results.
+
+By monitoring the batching ingestion, you can get information about the *[ingestion result], the *[amount of ingested data], the *[latency of the ingestion], and the *[batching process] itself.
+
+ADX uses Azure monitor to monitor ingestion metrics in Azure portal.
+
+What does the information do for you?
+understand what they mean and 
+see how to use them to get valuable insights.
 
 Batching ingestion occurs in stages, and each stage is governed by a *component*:
+
+When analyzing the amount of data passing through ingestion and ingestion latency, it is possible to split metrics by **Component Type** to better understand the performance of each of the batching ingestion stages.
 
 1. Prior to ingestion, as the data is retrieved from Event Grid, Event Hub, or IoT Hub, the *Data Connection* component performs initial data rearrangement.
 2. The *Batching Manager* optimizes the ingestion throughput by batching the small ingress data chunks that it receives based on the ingestion batching policy.
@@ -24,7 +34,10 @@ Batching ingestion occurs in stages, and each stage is governed by a *component*
 4. The *ADX Storage Engine* stores the ingested data, making it available for query.
 
 
+
 In this tutorial you will learn how to use [ingestion metrics](using-metrics#ingestion-metrics) to monitor [Batching ingestion to ADX](ingest-data-overview) in Azure portal.
+
+
 
 By monitoring the batching ingestion, you can get information about the ingestion result, the amount of ingested data, the latency of the ingestion, and the batching process itself.
 
@@ -42,14 +55,9 @@ After reading this tutorial you will know how to answer the following questions:
 
 When analyzing the amount of data passing through ingestion and ingestion latency, it is possible to split metrics by **Component Type** to better understand the performance of each of the batching ingestion steps.
 
-**Related Articles:**
 
-* For more information about Azure Metric Explorer see [Getting started with Azure Metrics Explorer](/azure/azure-monitor/platform/metrics-getting-started)
-
-* To get the full list of ADX metrics see [Supported Azure Data Explorer metrics](using-metrics#supported-azure-data-explorer-metrics)
 
 *(include the text from* [*Use metrics to monitor your Azure Data Explorer resources*](using-metrics#use-metrics-to-monitor-your-azure-data-explorer-resources) *and* [*Work in the metrics pane*](using-metrics#work-in-the-metrics-pane) *which explains how to arrive on the metric pane and work with it in general)*
-
 
 ## Prerequisites
 
@@ -80,9 +88,6 @@ The numbers in the following image correspond to the numbered list below. They g
 1. Set **New alert rule** to visualize your metrics using the set criteria. The new alerting rule will include your target resource, metric, splitting, and filter dimensions from your chart. Modify these settings in the [alert rule creation pane](/azure/azure-monitor/platform/metrics-charts#create-alert-rules).
 
 ![Metrics pane](media/using-metrics/metrics-pane.png)
-
-
-
 
 
 In this tutorial, we are analyzing data from the last 48 hours:
@@ -272,3 +277,7 @@ Applying Event Hub, IoT Hub or Event Grid ingestion, it is important to compare 
 * [Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs?tabs=ingestion)
 * [Use Azure Monitor Insights](/azure/azure-monitor/insights/data-explorer)
 
+**Related Articles:**
+
+* For more information about Azure Metric Explorer see [Getting started with Azure Metrics Explorer](/azure/azure-monitor/platform/metrics-getting-started)
+* To get the full list of ADX metrics see [Supported Azure Data Explorer metrics](using-metrics#supported-azure-data-explorer-metrics)
