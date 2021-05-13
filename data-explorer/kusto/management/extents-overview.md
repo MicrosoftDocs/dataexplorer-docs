@@ -151,7 +151,5 @@ The following example ingests data only once. The 2nd and 3rd commands do nothin
 > [!WARNING]
 > * Overusing `ingest-by` tags isn't recommended.
 > * If the pipeline feeding Kusto is known to have data duplications, we recommend that you solve these duplications as much as possible, before ingesting the data into Kusto.
-> * Use `ingest-by` tags in Kusto only when the part that ingests to Kusto might introduce duplicates by itself
->   * For example, there's a retry mechanism that can overlap with already-in-progress ingestion calls).
 > * Attempting to set a unique `ingest-by` tag for each ingestion call might result with severe impact on performance.
 > * If such tags aren't required for some period of time after the data is ingested, we recommend that you [drop extent tags](drop-extent-tags.md).
