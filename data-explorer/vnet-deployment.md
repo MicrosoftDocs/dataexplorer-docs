@@ -61,7 +61,7 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 
 ## Private Endpoints
 
-[Private Endpoints](/azure/private-link/private-endpoint-overview) allow private access to Azure resources (such as Storage/Event Hub/Data Lake Gen 2), and use private IP from your Virtual Network, effectively bringing the resource into your VNet.
+[Private Endpoints](/azure/private-link/private-endpoint-overview) allow private access to Azure resources (such as [Storage](/azure/data-explorer/vnet-endpoint-storage-event-hub)/[Event Hub](/azure/data-explorer/vnet-endpoint-storage-event-hub)/Data Lake Gen 2), and use private IP from your Virtual Network, effectively bringing the resource into your VNet.
 Create a [private endpoint](/azure/private-link/private-endpoint-overview) to resources used by data connections, such as Event Hub and Storage, and external tables such as Storage, Data Lake Gen 2, and SQL Database from your VNet to access the underlying resources privately.
 
  > [!NOTE]
@@ -105,10 +105,11 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | Region | Addresses |
 | --- | --- |
 | Australia Central | 20.37.26.134 |
-| Australia Central2 | 20.39.99.177 |
+| Australia Central 2 | 20.39.99.177 |
 | Australia East | 40.82.217.84 |
 | Australia Southeast | 20.40.161.39 |
-| BrazilSouth | 191.233.25.183 |
+| Brazil South | 191.233.25.183 |
+| Brazil Southeast | 191.232.16.14 |
 | Canada Central | 40.82.188.208 |
 | Canada East | 40.80.255.12 |
 | Central India | 40.81.249.251, 104.211.98.159 |
@@ -118,21 +119,28 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | China North 2 | 139.217.60.6 |
 | East Asia | 20.189.74.103 |
 | East US | 52.224.146.56 |
-| East US2 | 52.232.230.201 |
-| East US2 EUAP | 52.253.226.110 |
+| East US 2 | 52.232.230.201 |
+| East US 2 EUAP | 52.253.226.110 |
 | France Central | 40.66.57.91 |
 | France South | 40.82.236.24 |
+| Germany West Central | 51.116.98.150 |
 | Japan East | 20.43.89.90 |
 | Japan West | 40.81.184.86 |
 | Korea Central | 40.82.156.149 |
 | Korea South | 40.80.234.9 |
 | North Central US | 40.81.43.47 |
 | North Europe | 52.142.91.221 |
+| Norway East | 51.120.49.100 |
+| Norway West | 51.120.133.5 |
 | South Africa North | 102.133.129.138 |
 | South Africa West | 102.133.0.97 |
 | South Central US | 20.45.3.60 |
 | Southeast Asia | 40.119.203.252 |
 | South India | 40.81.72.110, 104.211.224.189 |
+| Switzerland North | 51.107.42.144 |
+| Switzerland West | 51.107.98.201 |
+| UAE Central | 20.37.82.194 |
+| UAE North | 20.46.146.7 |
 | UK South | 40.81.154.254 |
 | UK West | 40.81.122.39 |
 | USDoD Central | 52.182.33.66 |
@@ -144,7 +152,8 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | West Europe | 51.145.176.215 |
 | West India | 40.81.88.112, 104.211.160.120 |
 | West US | 13.64.38.225 |
-| West US2 | 40.90.219.23 |
+| West US 2 | 40.90.219.23 |
+| West US 3 | 20.40.24.116 |
 
 #### Health monitoring addresses
 
