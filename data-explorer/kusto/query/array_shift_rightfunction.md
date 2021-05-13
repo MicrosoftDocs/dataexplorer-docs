@@ -4,7 +4,7 @@ description: This article describes array_shift_right() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/11/2019
@@ -27,7 +27,7 @@ ms.date: 08/11/2019
 
 Dynamic array containing the same amount of the elements as in the original array. Each element has been shifted according to *`shift_count`*. New elements that are added instead of the removed elements will have a value of *`fill_value`*.
 
-**See also**
+## See also
 
 * For shifting array left, see [array_shift_left()](array_shift_leftfunction.md).
 * For rotating array right, see [array_rotate_right()](array_rotate_rightfunction.md).

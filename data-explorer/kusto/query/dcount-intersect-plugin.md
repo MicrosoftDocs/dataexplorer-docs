@@ -4,7 +4,7 @@ description: This article describes dcount_intersect plugin in Azure Data Explor
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
@@ -14,7 +14,8 @@ ms.date: 10/23/2018
 Calculates intersection between N sets based on `hll` values (N in range of [2..16]), and returns N `dcount` values.
 
 Given sets S<sub>1</sub>, S<sub>2</sub>, .. S<sub>n</sub> - returns values will be representing distinct counts of:  
-S<sub>1</sub>, S<sub>1</sub> ∩ S<sub>2</sub>,  
+S<sub>1</sub>,  
+S<sub>1</sub> ∩ S<sub>2</sub>,  
 S<sub>1</sub> ∩ S<sub>2</sub> ∩ S<sub>3</sub>,  
 ... ,  
 S<sub>1</sub> ∩ S<sub>2</sub> ∩ ... ∩ S<sub>n</sub>

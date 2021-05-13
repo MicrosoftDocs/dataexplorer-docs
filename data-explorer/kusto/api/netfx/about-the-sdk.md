@@ -8,6 +8,7 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/10/2020
+adobe-target: true
 ---
 # About Azure Data Explorer .NET SDK
 

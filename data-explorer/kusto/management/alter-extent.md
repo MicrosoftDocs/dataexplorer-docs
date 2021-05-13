@@ -28,8 +28,8 @@ Requires [Table admin permission](../management/access-control/role-based-author
 
 `async` (optional): Execute the command asynchronously.
    * An Operation ID (Guid) is returned. 
-   * The operation's status can be monitored. Use the [.show operations](operations.md#show-operations) command.
-   * You can retrieve the results of a successful execution. Use the [.show operation details](operations.md#show-operation-details) command.
+   * The operation's status can be monitored. Use the [`.show operations`](operations.md#show-operations) command.
+   * You can retrieve the results of a successful execution. Use the [`.show operation details`](operations.md#show-operation-details) command.
 
 ## Restrictions
 

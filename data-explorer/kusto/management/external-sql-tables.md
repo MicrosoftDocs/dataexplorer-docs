@@ -40,7 +40,7 @@ The user or application authenticates via AAD to Kusto, and the same token is th
 |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
 | `folder`            | `string`        | The table's folder.                  |
 | `docString`         | `string`        | A string documenting the table.      |
-| `firetriggers`      | `true`/`false`  | If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. (For more information, see [BULK INSERT](https://msdn.microsoft.com/library/ms188365.aspx) and [System.Data.SqlClient.SqlBulkCopy](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy(v=vs.110).aspx)) |
+| `firetriggers`      | `true`/`false`  | If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. (For more information, see [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) and [System.Data.SqlClient.SqlBulkCopy](/dotnet/api/system.data.sqlclient.sqlbulkcopy)) |
 | `createifnotexists` | `true`/ `false` | If `true`, the target SQL table will be created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column that is the primary key. The default is `false`.  |
 | `primarykey`        | `string`        | If `createifnotexists` is `true`, the resulting column name will be used as the SQL table's primary key if it is created by this command.                  |
 
@@ -98,5 +98,5 @@ When an SQL query can be optimized in T-SQL, use the [sql_request plugin](../que
 
 ## Next steps
 
-* [External table general control commands](externaltables.md)
+* [External table general control commands](./external-table-commands.md)
 * [Create and alter external tables in Azure Storage or Azure Data Lake](external-tables-azurestorage-azuredatalake.md)

@@ -12,10 +12,15 @@ ms.date: 02/11/2020
 # .drop column
 
 Removes a column from a table.
-To drop multiple columns from a table, see [below](#drop-table-columns).
+
+To drop multiple columns from a table, see [drop table columns](#drop-table-columns).
+
+> [!NOTE]
+> This command does not physically delete the data, and does not reduce the cost of storage
+> for data that was already ingested.
 
 > [!WARNING]
-> This command is irreversible. All data in the column that is removed will be deleted.
+> This command is irreversible. All data in the column that is removed will no longer by queryable.
 > Future commands to add that column back will not be able to restore the data.
 
 **Syntax**
@@ -24,10 +29,14 @@ To drop multiple columns from a table, see [below](#drop-table-columns).
 
 ## drop table columns
 
-Removes a number of columns from a table.
+Removes multiple columns from a table.
+
+> [!NOTE]
+> This command does not physically delete the data, and does not reduce the cost of storage
+> for data that was already ingested.
 
 > [!WARNING]
-> This command is irreversible. All data in the columns that are removed will be deleted.
+> This command is irreversible. All data in the column that is removed will no longer by queryable.
 > Future commands to add those columns back will not be able to restore the data.
 
 **Syntax**

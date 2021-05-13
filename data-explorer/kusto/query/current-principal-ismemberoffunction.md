@@ -4,7 +4,7 @@ description: This article describes current_principal_is_member_of() in Azure Da
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/09/2020
@@ -45,7 +45,7 @@ print current_principal_is_member_of(
 The function returns:
 * `true`: if the current principal running the query was successfully matched for at least one input argument.
 * `false`: if the current principal running the query was not member of any `aadgroup=` FQN arguments and was not equal to any of the `aaduser=` or `aadapp=` FQN arguments.
-* `(null)`: if the current principal running the query was not member of any `aadgroup=` FQN arguments and was not equal to any of the `aaduser=` or `aadapp=` FQN arguments, and at least one FQN argument wasn't successfully resolved (wasn't  pressed in Azure AD). 
+* `(null)`: if the current principal running the query was not member of any `aadgroup=` FQN arguments and was not equal to any of the `aaduser=` or `aadapp=` FQN arguments, and at least one FQN argument wasn't successfully resolved (wasn't present in Azure AD). 
 
 > [!NOTE]
 > Because the function returns a tri-state value (`true`, `false`,  and `null`), it's important to rely only on positive return values to confirm successful membership. In other words, the following expressions are NOT the same:

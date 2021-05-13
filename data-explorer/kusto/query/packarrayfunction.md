@@ -4,7 +4,7 @@ description: This article describes pack_array() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
@@ -17,9 +17,12 @@ Packs all input values into a dynamic array.
 
 `pack_array(`*Expr1*`[`,` *Expr2*]`)`
 
+`pack_array(*)`
+
 ## Arguments
 
 * *Expr1...N*: Input expressions to be packed into a dynamic array.
+* *The wildcard `*`*: providing the wildcard `*` will pack all input columns into a dynamic array.
 
 ## Returns
 

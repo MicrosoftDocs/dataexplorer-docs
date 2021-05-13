@@ -1,6 +1,6 @@
 ---
 title: .alter function docstring - Azure Data Explorer
-description: This article describes `.alter function docstring` in Azure Data Explorer.
+description: This article describes .alter function docstring in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -18,7 +18,7 @@ Alters the `DocString` value of an existing function.
 > [!NOTE]
 > * Requires [database admin permission](../management/access-control/role-based-authorization.md)
 > * The [database user](../management/access-control/role-based-authorization.md) who originally created the function is allowed to modify the function.
-> * If the function doesn't exist, an error is returned. For more information on how to create a new function, see [.create function](create-function.md).
+> * If the function doesn't exist, an error is returned. For more information on how to create a new function, see [`.create function`](create-function.md).
 
 |Output parameter |Type |Description
 |---|---|--- 

@@ -18,7 +18,7 @@ Alters the Folder value of an existing table.
 > [!NOTE]
 > * Requires [database admin permission](../management/access-control/role-based-authorization.md)
 > * The [database user](../management/access-control/role-based-authorization.md) who originally created the table is also allowed to edit it
-> * If the table does not exist, an error is returned. For creating a new table, see [.create table](create-table-command.md)
+> * If the table does not exist, an error is returned. For creating a new table, see [`.create table`](create-table-command.md)
 
 **Examples** 
 

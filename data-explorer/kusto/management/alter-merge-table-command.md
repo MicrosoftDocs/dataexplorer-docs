@@ -22,7 +22,7 @@ The `.alter-merge table` command:
 > Using the `.alter-merge` command incorrectly may lead to data loss.
 
 > [!TIP]
-> The `.alter-merge` has a counterpart, the `.alter` table command that has similar functionality. For more information, see [.alter table](../management/alter-table-command.md)
+> The `.alter-merge` has a counterpart, the `.alter` table command that has similar functionality. For more information, see [`.alter table`](../management/alter-table-command.md)
 
 **Syntax**
 

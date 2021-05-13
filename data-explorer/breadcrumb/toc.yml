@@ -9,3 +9,27 @@
       - name: Kusto
         tocHref: /azure/data-explorer/kusto/
         topicHref: /azure/data-explorer/kusto/
+
+- name: Azure
+  tocHref: /sql/
+  topicHref: /azure/index
+  items:
+  - name: Azure Data Explorer
+    tocHref: /sql/azure-data-studio/
+    topicHref: /azure/data-explorer/index
+
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+  - name: Azure Data Explorer
+    tocHref: /azure/azure-monitor/insights/
+    topicHref: /azure/data-explorer/index
+
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+  - name: Azure Data Explorer
+    tocHref: /azure/synapse-analytics/
+    topicHref: /azure/data-explorer/index

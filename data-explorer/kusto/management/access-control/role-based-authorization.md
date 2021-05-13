@@ -29,3 +29,6 @@ The **Kusto Engine** service has the following roles:
 |Function admin             |Can alter function, delete function, or grant admin permissions to another principal                                                                         |
 |Table admin                |Can do anything in the scope of a particular table                                                                                                           |
 |Table ingestor             |Can ingest data in the scope of a particular table, but can't query the data                                                                                 |
+
+> [!NOTE]
+> To grant a principal from a different tenant access to your cluster, see [Allow cross-tenant queries and commands](../../../cross-tenant-query-and-commands.md).

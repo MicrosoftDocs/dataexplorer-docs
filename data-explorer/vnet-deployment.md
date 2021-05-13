@@ -13,7 +13,7 @@ ms.date: 10/31/2019
 
 This article explains the resources that are present when you deploy an Azure Data Explorer cluster into a custom Azure Virtual Network. This information will help you deploy a cluster into a subnet in your Virtual Network (VNet). For more information on Azure Virtual Networks, see [What is Azure Virtual Network?](/azure/virtual-network/virtual-networks-overview)
 
-   ![vnet diagram](media/vnet-deployment/vnet-diagram.png)
+:::image type="content" source="media/vnet-deployment/vnet-diagram.png" alt-text="diagram showing schematic virtual network architecture"::: 
 
 Azure Data Explorer supports deploying a cluster into a subnet in your Virtual Network (VNet). This capability enables you to:
 
@@ -32,7 +32,7 @@ The following DNS records are created to access the service:
 
 * `[clustername].[geo-region].kusto.windows.net` (engine) `ingest-[clustername].[geo-region].kusto.windows.net` (data management) are mapped to the public IP for each service. 
 
-* `private-[clustername].[geo-region].kusto.windows.net` (engine) `private-ingest-[clustername].[geo-region].kusto.windows.net` (data management) are mapped to the private IP for each service.
+* `private-[clustername].[geo-region].kusto.windows.net` (engine) `ingest-private-[clustername].[geo-region].kusto.windows.net`\\`private-ingest-[clustername].[geo-region].kusto.windows.net` (data management) are mapped to the private IP for each service.
 
 ## Plan subnet size in your VNet
 
@@ -57,7 +57,7 @@ The total number of IP addresses:
 Deploying Azure Data Explorer cluster into your subnet allows you to setup data connections with [Event Hub](/azure/event-hubs/event-hubs-about) or [Event Grid](/azure/event-grid/overview) while restricting the underlying resources for Azure Data Explorer subnet.
 
 > [!NOTE]
-> When using EventGrid setup with [Storage](/azure/storage/common/storage-introduction) and [Event Hub], the storage account used in the subscription can be locked with service endpoints to Azure Data Explorer's subnet while allowing trusted Azure platform services in the [firewall configuration](/azure/storage/common/storage-network-security), but the Event Hub can't enable Service Endpoint since it doesn't support trusted [Azure platform services](/azure/event-hubs/event-hubs-service-endpoints).
+> When using EventGrid setup with [Storage](/azure/storage/common/storage-introduction) and [Event Hub](/azure/event-hubs/event-hubs-about), the storage account used in the subscription can be locked with service endpoints to Azure Data Explorer's subnet while allowing trusted Azure platform services in the [firewall configuration](/azure/storage/common/storage-network-security), but the Event Hub can't enable Service Endpoint since it doesn't support trusted [Azure platform services](/azure/event-hubs/event-hubs-service-endpoints).
 
 ## Private Endpoints
 
@@ -71,7 +71,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 
 ### Network Security Groups configuration
 
-[Network Security Groups (NSG)](/azure/virtual-network/security-overview) provide the ability to control network access within a VNet. Azure Data Explorer can be accessed using two endpoints: HTTPs (443) and TDS (1433). The following NSG rules must be configured to allow access to these endpoints for management, monitoring, and proper operation of your cluster. Additional rules depend on your security guidelines.
+[Network Security Groups (NSG)](/azure/virtual-network/security-overview) provide the ability to control network access within a VNet. Azure Data Explorer automatically applies the following required network security rules. For Azure Data Explorer to operate using the [subnet delegation](/azure/virtual-network/subnet-delegation-overview) mechanism, before creating the cluster in the subnet, you must delegate the subnet to **Microsoft.Kusto/clusters** .
 
 #### Inbound NSG configuration
 
@@ -150,7 +150,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | USGov Virginia | 52.227.228.88 |
 | West Central US | 52.159.55.120 |
 | West Europe | 51.145.176.215 |
-| West India | 40.81.88.112, 104.211.160.120 |
+| West India | 40.81.88.112 |
 | West US | 13.64.38.225 |
 | West US 2 | 40.90.219.23 |
 | West US 3 | 20.40.24.116 |
@@ -159,53 +159,53 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 
 | Region | Addresses |
 | --- | --- |
-| Australia Central | 191.239.64.128 |
-| Australia Central 2 | 191.239.64.128 |
-| Australia East | 191.239.64.128 |
-| Australia Southeast | 191.239.160.47 |
-| Brazil South | 23.98.145.105 |
-| Canada Central | 168.61.212.201 |
-| Canada East | 168.61.212.201 |
-| Central India | 23.99.5.162 |
+| Australia Central | 191.239.64.128, 52.163.244.128 |
+| Australia Central 2 | 191.239.64.128, 52.163.244.128 |
+| Australia East | 191.239.64.128,52.163.244.128 |
+| Australia Southeast | 191.239.160.47,52.163.244.128 |
+| Brazil South | 23.98.145.105, 23.101.115.123 |
+| Canada Central | 168.61.212.201, 23.101.115.123 |
+| Canada East | 168.61.212.201, 23.101.115.123 |
+| Central India | 23.99.5.162, 52.163.244.128 |
 | Central US | 168.61.212.201, 23.101.115.123 |
 | Central US EUAP | 168.61.212.201, 23.101.115.123 |
 | China East 2 | 40.73.96.39 |
 | China North 2 | 40.73.33.105 |
-| East Asia | 168.63.212.33 |
+| East Asia | 168.63.212.33,52.163.244.128 |
 | East US | 137.116.81.189, 52.249.253.174 |
 | East US 2 | 137.116.81.189, 104.46.110.170 |
 | East US 2 EUAP | 137.116.81.189, 104.46.110.170 |
-| France Central | 23.97.212.5 |
-| France South | 23.97.212.5 |
-| Japan East | 138.91.19.129 |
-| Japan West | 138.91.19.129 |
-| Korea Central | 138.91.19.129 |
-| Korea South | 138.91.19.129 |
-| North Central US | 23.96.212.108 |
+| France Central | 23.97.212.5, 40.127.194.147 |
+| France South | 23.97.212.5, 40.127.194.147 |
+| Japan East | 138.91.19.129, 52.163.244.128 |
+| Japan West | 138.91.19.129, 52.163.244.128 |
+| Korea Central | 138.91.19.129, 52.163.244.128 |
+| Korea South | 138.91.19.129, 52.163.244.128 |
+| North Central US | 23.96.212.108, 23.101.115.123 |
 | North Europe | 191.235.212.69, 40.127.194.147 |
-| South Africa North | 104.211.224.189 |
-| South Africa West | 104.211.224.189 |
+| South Africa North | 104.211.224.189, 52.163.244.128 |
+| South Africa West | 104.211.224.189, 52.163.244.128 |
 | South Central US | 23.98.145.105, 104.215.116.88 |
-| South India | 23.99.5.162 |
-| Southeast Asia | 168.63.173.234 |
-| UK South | 23.97.212.5 |
-| UK West | 23.97.212.5 |
+| South India | 23.99.5.162, 52.163.244.128 |
+| Southeast Asia | 168.63.173.234, 52.163.244.128 |
+| UK South | 23.97.212.5, 40.127.194.147 |
+| UK West | 23.97.212.5,40.127.194.147 |
 | USDoD Central | 52.238.116.34 |
 | USDoD East | 52.238.116.34 |
 | USGov Arizona | 52.244.48.35 |
 | USGov Texas | 52.238.116.34 |
 | USGov Virginia | 23.97.0.26 |
-| West Central US | 168.61.212.201 |
+| West Central US | 168.61.212.201, 23.101.115.123 |
 | West Europe | 23.97.212.5, 213.199.136.176 |
-| West India | 23.99.5.162 |
-| West US | 23.99.5.162, 13.88.13.50 |
+| West India | 23.99.5.162, 52.163.244.128 |
+| West US | 23.99.5.162, 13.88.13.50, 104.210.32.14 |
 | West US 2 | 23.99.5.162, 104.210.32.14, 52.183.35.124 |
 
 ## Disable access to Azure Data Explorer from the public IP
 
 If you want to completely disable access to Azure Data Explorer via the public IP address, create another inbound rule in the NSG. This rule has to have a lower [priority](/azure/virtual-network/security-overview#security-rules) (a higher number). 
 
-| **Use**   | **Source** | **Source service tag** | **Source port ranges**  | **Destination** | **Destination port ranges** | **Protocol ** | **Action** | **Priority ** |
+| **Use**   | **Source** | **Source service tag** | **Source port ranges**  | **Destination** | **Destination port ranges** | **Protocol** | **Action** | **Priority** |
 | ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
 | Disable access from the internet | Service Tag | Internet | *  | VirtualNetwork | * | Any | Deny | higher number than the rules above |
 
@@ -227,7 +227,6 @@ gcs.prod.monitoring.core.windows.net:443
 production.diagnostics.monitoring.core.windows.net:443
 graph.windows.net:443
 *.update.microsoft.com:443
-shavamanifestcdnprod1.azureedge.net:443
 login.live.com:443
 wdcp.microsoft.com:443
 login.microsoftonline.com:443
@@ -249,10 +248,8 @@ crl3.digicert.com:80
 ```
 
 > [!NOTE]
-> If you're using [Azure Firewall](/azure/firewall/overview), add **Network Rule** with the following properties:
-> | **Protocol**   | **Source Type** | **Source** | **Service Tags**  | **Destination Ports** |
-> | ---   | --- | --- | ---  | --- |
-> | TCP | IP Address | * | AzureMonitor | 443 |
+> If you're using [Azure Firewall](/azure/firewall/overview), add **Network Rule** with the following properties: <br>
+> **Protocol**: TCP <br> **Source Type**: IP Address <br> **Source**: * <br> **Service Tags**: AzureMonitor <br> **Destination Ports**: 443
 
 You also need to define the [route table](/azure/virtual-network/virtual-networks-udr-overview) on the subnet with the [management addresses](#azure-data-explorer-management-ip-addresses) and [health monitoring addresses](#health-monitoring-addresses) with next hop *Internet* to prevent asymmetric routes issues.
 
