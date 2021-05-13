@@ -120,11 +120,11 @@ For example:
 .drop extents <| .show table MyTable extents where tags has "drop-by:2016-02-17" 
 ```
 
-#### Performance notes
-
-* Don't overuse `drop-by` tags. Dropping data in the manner mentioned above is meant for rarely occurring events. It isn't for replacing record-level data, and it relies on the fact that the data tagged in this manner is bulky. Attempting to give a different tag for each record, or small number of records, might result in a severe impact on performance.
-* If `drop-by` tags aren't needed for a period of time after data is ingested,
-we recommend that you [drop the tags](#drop-by-extent-tags).
+> [!WARNING]
+> * Don't overuse `drop-by` tags. Dropping data in the manner mentioned above is meant for rarely occurring events.
+>   * It shouldn't be used for replacing record-level data, and it relies on the fact that the data tagged in this manner is bulky.
+>   * Attempting to give a unique tag for each record, small number of records, or file - might result with severe impact to performance.
+> * If `drop-by` tags aren't needed for a period of time after data is ingested, we recommend that you [drop the tags](#drop-by-extent-tags).
 
 ### 'ingest-by:' extent tags
 
@@ -148,13 +148,10 @@ The following example ingests data only once. The 2nd and 3rd commands do nothin
 > both an `ingest-by:` tag and an `ingestIfNotExists` property,
 > set to the same value, as shown in the 3rd command above.
 
-#### Performance notes
-
-* Overusing `ingest-by` tags isn't recommended.
-If the pipeline feeding Kusto is known to have data duplications, we recommend
-that you solve these duplications as much as possible, before ingesting the data into Kusto. Also, use `ingest-by` tags in Kusto only when the part that ingests to Kusto
-might introduce duplicates by itself (for example, there's a retry mechanism that can overlap 
-with already-in-progress ingestion calls). Attempting to set a unique `ingest-by` tag
-for each ingestion call might result in a severe impact on performance.
-* If such tags aren't required for some period of time after the data is ingested,
-we recommend that you [drop extent tags](drop-extent-tags.md).
+> [!WARNING]
+> * Overusing `ingest-by` tags isn't recommended.
+> * If the pipeline feeding Kusto is known to have data duplications, we recommend that you solve these duplications as much as possible, before ingesting the data into Kusto.
+> * Use `ingest-by` tags in Kusto only when the part that ingests to Kusto might introduce duplicates by itself
+>   * For example, there's a retry mechanism that can overlap with already-in-progress ingestion calls).
+> * Attempting to set a unique `ingest-by` tag for each ingestion call might result with severe impact on performance.
+> * If such tags aren't required for some period of time after the data is ingested, we recommend that you [drop extent tags](drop-extent-tags.md).
