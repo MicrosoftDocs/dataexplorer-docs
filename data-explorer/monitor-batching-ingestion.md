@@ -37,6 +37,8 @@ When analyzing the amount of data passing through ingestion and ingestion latenc
 
 In this tutorial you will learn how to use [ingestion metrics](using-metrics#ingestion-metrics) to monitor [Batching ingestion to ADX](ingest-data-overview) in Azure portal.
 
+For more information about different metrics, see [supported Azure Data Explorer metrics](#supported-azure-data-explorer-metrics).
+
 
 
 By monitoring the batching ingestion, you can get information about the ingestion result, the amount of ingested data, the latency of the ingestion, and the batching process itself.
@@ -55,10 +57,6 @@ After reading this tutorial you will know how to answer the following questions:
 
 When analyzing the amount of data passing through ingestion and ingestion latency, it is possible to split metrics by **Component Type** to better understand the performance of each of the batching ingestion steps.
 
-
-
-*(include the text from* [*Use metrics to monitor your Azure Data Explorer resources*](using-metrics#use-metrics-to-monitor-your-azure-data-explorer-resources) *and* [*Work in the metrics pane*](using-metrics#work-in-the-metrics-pane) *which explains how to arrive on the metric pane and work with it in general)*
-
 ## Prerequisites
 
 * An Azure subscription. If you don't have one, you can create a [free Azure account](https://azure.microsoft.com/free/).
@@ -67,38 +65,32 @@ When analyzing the amount of data passing through ingestion and ingestion latenc
 ## Use metrics to monitor your Azure Data Explorer resources
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
-1. Select **Monitor** from the left-hand navigation bar and select **Metrics** to open the metrics pane. 
+1. Select **Monitor** from the left-hand navigation bar and select **Metrics** to open the metrics pane.
 
    :::image type="content" source="media/monitor-batching-ingestion/monitor-metrics-blade.png" alt-text="Search and select metrics in the Azure portal":::
 
-## Work in the metrics pane
+1. In the **Metrics** pane, ensure that **Resource** is set to your Azure Data Explorer cluster, and that the **Metric Namespace** value is set to *Kusto Cluster Standard Metrics*. This is the namespace that contains the ingestion metrics.
 
 To begin analysis on your cluster in the metrics pane, select specific metrics to track, choose how to aggregate your data, and create metric charts to view on your dashboard.
 
-The **Resource** and **Metric Namespace** pickers are pre-selected for your Azure Data Explorer cluster.
+The numbers in the following list correspond to the numbers in the image below it. They guide you through different options in setting up and viewing your metrics.
 
-The numbers in the following image correspond to the numbered list below. They guide you through different options in setting up and viewing your metrics.
+1. To create a metric chart, select the **Metric** name and the relevant **Aggregation** per metric. In this article we'll be using the **Aggregation** values *sum* and *avg*.
+1. **Add metric** allows you to plot additional metrics in the same chart.
+1. **+ New chart** allows you to see multiple charts in one view.
+1. Use the time selector to change the time range for the chart. In this article we'll be using the value *Last 48 hours*.
+1. Use [**Add filter** and **Apply splitting**](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) for metrics that have dimensions. We'll be using the **Apply splitting** command.
+1. **Pin to dashboard** adds your chart configuration to the dashboards so that you can view it again.
+1. Set **New alert rule** to visualize your metrics using the set criteria. The new alerting rule will include the target resource, metric, splitting, and filter dimensions from your chart. You can modify these settings in the [alert rule creation pane](/azure/azure-monitor/platform/metrics-charts#create-alert-rules).
 
-1. To create a metric chart, select **Metric** name and relevant **Aggregation** per metric. For more information about different metrics, see [supported Azure Data Explorer metrics](#supported-azure-data-explorer-metrics).
-1. Select **Add metric** to see multiple metrics plotted in the same chart.
-1. Select **+ New chart** to see multiple charts in one view.
-1. Use the time picker to change the time range (default: past 24 hours).
-1. Use [**Add filter** and **Apply splitting**](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) for metrics that have dimensions.
-1. Select **Pin to dashboard** to add your chart configuration to the dashboards so that you can view it again.
-1. Set **New alert rule** to visualize your metrics using the set criteria. The new alerting rule will include your target resource, metric, splitting, and filter dimensions from your chart. Modify these settings in the [alert rule creation pane](/azure/azure-monitor/platform/metrics-charts#create-alert-rules).
-
-![Metrics pane](media/using-metrics/metrics-pane.png)
-
-
-In this tutorial, we are analyzing data from the last 48 hours:
-
-1. In the upper right corner above the chart, click on the time selector (*0-time selector.png*):
-
-2. Select the desired timespan for metrics analyzing (in this example – last 48 hours), then select **Apply** *(0.1- time selector.png)*:
+   ![Metrics pane](media/using-metrics/metrics-pane.png)
+   :::image type="content" source="media/using-metrics/metrics-pane.png" alt-text="Screenshot of the Metrics pane in Azure portal highlighting the settings and options in the pane":::
 
 ## Ingestion result
 
-The **ingestion result** metric provides information about the total number of sources that either failed or succeeded to be ingested. Splitting the metric by status, you can get detailed information about the status of the ingestion operations.
+The **ingestion result** metric provides information about the total number of sources that either failed or succeeded to be ingested. 
+
+Splitting the metric by status, you can get detailed information about the status of the ingestion operations.
 
 To view the ingestion result metric, do the following:
 
