@@ -75,7 +75,7 @@ When analyzing the amount of data passing through ingestion and ingestion latenc
 
 To begin analysis on your cluster in the metrics pane, select specific metrics to track, choose how to aggregate your data, and create metric charts to view on your dashboard.
 
-The **Resource** and **Metric Namespace** pickers are pre-selected for your Azure Data Explorer cluster. 
+The **Resource** and **Metric Namespace** pickers are pre-selected for your Azure Data Explorer cluster.
 
 The numbers in the following image correspond to the numbered list below. They guide you through different options in setting up and viewing your metrics.
 
@@ -96,16 +96,14 @@ In this tutorial, we are analyzing data from the last 48 hours:
 
 2. Select the desired timespan for metrics analyzing (in this example – last 48 hours), then select **Apply** *(0.1- time selector.png)*:
 
-## Ingestion Result
+## Ingestion result
 
-The **ingestion result** metric gives information about the total number of sources that either failed or succeeded to be ingested. Splitting the metric by status, you can get detailed information about the status of the ingestion operations.
+The **ingestion result** metric provides information about the total number of sources that either failed or succeeded to be ingested. Splitting the metric by status, you can get detailed information about the status of the ingestion operations.
 
-**Note**:
+To view the ingestion result metric, do the following:
 
-* Using Event Hub ingestion there is an event pre-aggregation in the data connection component *(link to component section)*. Then, events are treated as a single source to be ingested. Therefore, a few events appear as a single ingestion result after pre-aggregation.
-* Transient failures are retried internally to a limited number of attempts. Each transient failure is reported as a transient ingestion result. Therefore, a single ingestion may result with more than one ingestion result.
+1. Select the **Ingestion result** metric from the list of available metrics. To learn in detail about all the available metrics in this list, see the Metrics by category article.
 
- 
 1. In the metrics pane select the following settings (*1- Select ingestion Result metric.png*):
  
 
@@ -126,6 +124,12 @@ You can now see the number of ingestion sources (that either failed or succeeded
 5. In the chart above, you can see 3 lines: blue for successful ingestion operations, orange for ingestion operations that failed due to “Entity not found” and purple for ingestion operations that failed due to "Bad request”. You can see that most ingestion operations were succeeded.
 6. The error in the chart represents the category of the error code. To see the full list of ingestion error codes by categories and try to better understand the possible error reason see [Ingestion error codes in Azure Data Explorer](error-codes).
 7. To get more details on an ingestion error, you can set [failed ingestion diagnostic logs.](using-diagnostic-logs?tabs=ingestion#failed-ingestion-operation-log) (take into account that logs emission results with creation of additional resources, and therefore costs money).
+
+**Note**:
+
+* Using Event Hub ingestion there is an event pre-aggregation in the data connection component *(link to component section)*. Then, events are treated as a single source to be ingested. Therefore, a few events appear as a single ingestion result after pre-aggregation.
+* Transient failures are retried internally to a limited number of attempts. Each transient failure is reported as a transient ingestion result. Therefore, a single ingestion may result with more than one ingestion result. 
+
 
 **The Amount of Ingested Data:**
 
