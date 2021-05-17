@@ -16,7 +16,7 @@ Batching ingestion is the most performant [method](ingest-data-overview#batching
 
 In batching ingestion, ADX optimizes data ingestion for high throughput by batching the incoming data into small chunks based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md) that is defined on the database or table from which the data is ingested. The small batches of incoming data are then merged and optimized for fast query results.
 
-By monitoring the batching ingestion, you can get information about the *[ingestion result], the *[amount of ingested data], the *[latency of the ingestion], and the *[batching process] itself.
+By monitoring the batching ingestion, you can get information about the ingestion result, the amount of ingested data, the latency of the ingestion, and the batching process itself.
 
 ADX uses Azure monitor to monitor ingestion metrics in Azure portal.
 
@@ -34,14 +34,11 @@ When analyzing the amount of data passing through ingestion and ingestion latenc
 4. The *ADX Storage Engine* stores the ingested data, making it available for query.
 
 
-
 In this tutorial you will learn how to use [ingestion metrics](using-metrics#ingestion-metrics) to monitor [Batching ingestion to ADX](ingest-data-overview) in Azure portal.
 
 For more information about different metrics, see [supported Azure Data Explorer metrics](#supported-azure-data-explorer-metrics).
 
 
-
-By monitoring the batching ingestion, you can get information about the ingestion result, the amount of ingested data, the latency of the ingestion, and the batching process itself.
 
 After reading this tutorial you will know how to answer the following questions:
 
@@ -69,46 +66,38 @@ When analyzing the amount of data passing through ingestion and ingestion latenc
 
    :::image type="content" source="media/monitor-batching-ingestion/monitor-metrics-blade.png" alt-text="Search and select metrics in the Azure portal":::
 
-1. In the **Metrics** pane, ensure that **Resource** is set to your Azure Data Explorer cluster, and that the **Metric Namespace** value is set to *Kusto Cluster Standard Metrics*. This is the namespace that contains the ingestion metrics.
-
-To begin analysis on your cluster in the metrics pane, select specific metrics to track, choose how to aggregate your data, and create metric charts to view on your dashboard.
-
 The numbers in the following list correspond to the numbers in the image below it. They guide you through different options in setting up and viewing your metrics.
 
 1. To create a metric chart, select the **Metric** name and the relevant **Aggregation** per metric. In this article we'll be using the **Aggregation** values *sum* and *avg*.
 1. **Add metric** allows you to plot additional metrics in the same chart.
 1. **+ New chart** allows you to see multiple charts in one view.
-1. Use the time selector to change the time range for the chart. In this article we'll be using the value *Last 48 hours*.
+1. Use the time selector to change the time range for the chart. In this article we'll be using the value **Last 48 hours**.
 1. Use [**Add filter** and **Apply splitting**](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) for metrics that have dimensions. We'll be using the **Apply splitting** command.
 1. **Pin to dashboard** adds your chart configuration to the dashboards so that you can view it again.
 1. Set **New alert rule** to visualize your metrics using the set criteria. The new alerting rule will include the target resource, metric, splitting, and filter dimensions from your chart. You can modify these settings in the [alert rule creation pane](/azure/azure-monitor/platform/metrics-charts#create-alert-rules).
 
-   ![Metrics pane](media/using-metrics/metrics-pane.png)
-   :::image type="content" source="media/using-metrics/metrics-pane.png" alt-text="Screenshot of the Metrics pane in Azure portal highlighting the settings and options in the pane":::
+   :::image type="content" source="media/using-metrics/metrics-pane.png" alt-text="Screenshot of the Metrics pane in Azure portal highlighting the settings and options in the pane.":::
+
+For the examples in this article:
+
+* Set **Scope** to the name of your Azure Data Explorer cluster.
+* Set **Metric Namespace** to **Kusto Cluster standard metrics**. This is the namespace that contains the ingestion metrics.
+
+   :::image type="content" source="media/monitor-batching-ingestion/metrics-settings-selector.png" alt-text="Screenshot showing how to select settings for a metric in Azure portal.":::
+
+To begin analysis on your cluster in the metrics pane, select specific metrics to track, choose how to aggregate your data, and create metric charts to view on your dashboard.
 
 ## Ingestion result
 
-The **ingestion result** metric provides information about the total number of sources that either failed or succeeded to be ingested. 
-
-Splitting the metric by status, you can get detailed information about the status of the ingestion operations.
+The **ingestion result** metric provides information about the total number of sources that were successfully ingested and those that failed to be ingested. The metric allows you to see the result of your ingestion attempts, including detailed status information to help you troubleshoot any failed attempts.
 
 To view the ingestion result metric, do the following:
 
-1. Select the **Ingestion result** metric from the list of available metrics. To learn in detail about all the available metrics in this list, see the Metrics by category article.
+Select the **Ingestion result** metric from the list of available metrics and select **Sum** as the aggregation value.
 
-1. In the metrics pane select the following settings (*1- Select ingestion Result metric.png*):
- 
+:::image type="content" source="media/monitor-batching-ingestion/ingestion-result-graph.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of ingestion results aggregated by sum.":::
 
-| Settings         | Suggested Value                  | Field Description                                            |
-| ---------------- | -------------------------------- | ------------------------------------------------------------ |
-| Scope            | *<Your Cluster Name>*            | The name of the ADX cluster                                  |
-| Metric Namespace | *Kusto Cluster Standard Metrics* | A namespace that acts like a category for the metric         |
-| Metric           | *Ingestion result*               | The metric name                                              |
-| Aggregation      | *Sum*                            | The aggregated function by which the metrics are  aggregated over time. To better understand aggregation see [Changing aggregation](/azure/azure-monitor/platform/metrics-charts#changing-aggregation) |
-
- 
-
-You can now see the number of ingestion sources (that either failed or succeeded to be ingested) over time (*2- ingestion result graph.png*):
+Splitting the metric by status, you can get detailed information about the status of the ingestion operations.
 
 2. Select **Apply splitting** above the chart *(3- apply splitting.png):*
 3. Choose the **Status** dimension to segment your chart by the status of the ingestion operations (*4- split by status.png*):
@@ -116,6 +105,9 @@ You can now see the number of ingestion sources (that either failed or succeeded
 5. In the chart above, you can see 3 lines: blue for successful ingestion operations, orange for ingestion operations that failed due to “Entity not found” and purple for ingestion operations that failed due to "Bad request”. You can see that most ingestion operations were succeeded.
 6. The error in the chart represents the category of the error code. To see the full list of ingestion error codes by categories and try to better understand the possible error reason see [Ingestion error codes in Azure Data Explorer](error-codes).
 7. To get more details on an ingestion error, you can set [failed ingestion diagnostic logs.](using-diagnostic-logs?tabs=ingestion#failed-ingestion-operation-log) (take into account that logs emission results with creation of additional resources, and therefore costs money).
+
+:::image type="content" source="media/monitor-batching-ingestion/ingestion-result-by-status-graph.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of ingestion results aggregated by sum and split by status.":::
+
 
 **Note**:
 
