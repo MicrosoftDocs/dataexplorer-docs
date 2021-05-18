@@ -205,6 +205,7 @@ You have now completed creation of a release pipeline for deployment to pre-prod
 The tasks can be configured both via Azure DevOps Web UI (as show above) and via Yaml code within the [pipeline schema](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema%2Cparameter-schema)
 
 ### Admin Command Sample Usage
+
 ``` 
 steps:
 - task: Azure-Kusto.PublishToADX.PublishToADX.PublishToADX@1
