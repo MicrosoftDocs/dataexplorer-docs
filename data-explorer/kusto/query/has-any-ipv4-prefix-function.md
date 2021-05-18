@@ -22,9 +22,7 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 ## Syntax
 
-`has_any_ipv4_prefix(`*text* `,` *ip_address_prefix* [`,` *ip_address_prefix* ...] `)`
-
-Or,
+`has_any_ipv4_prefix(`*text* `,` *ip_address_prefix* [`,` *ip_address_prefix* ...] `)`     
 
 `has_any_ipv4_prefix(`*text* `,` *ip_address_prefixes* `)`
 
