@@ -6,12 +6,9 @@ ms.author: orspodek
 ms.reviewer: avnera
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 05/18/2021
 ---
 # Azure Data Explorer performance update (EngineV3)
-
-> [!NOTE]
-> EngineV3 became generally available (GA) on March 17, 2021.
 
 Kusto EngineV3 is Azure Data Explorer’s performance update next generation storage and query engine. It's designed to provide unparalleled performance for ingesting and querying telemetry, logs, and time series data.
 
