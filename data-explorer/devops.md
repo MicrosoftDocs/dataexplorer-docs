@@ -222,6 +222,7 @@ steps:
 ```
 
 ### Query Sample Usage
+
 ``` 
 steps:
 - task: Azure-Kusto.PublishToADX.ADXQuery.ADXQuery@1
