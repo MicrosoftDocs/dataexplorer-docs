@@ -20,7 +20,8 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 ## Syntax
 
-`has_any_ipv4(`*text* `,` *ip_address* [ `,` *ip_address* ...] `)`
+`has_any_ipv4(`*text* `,` *ip_address* [ `,` *ip_address* ...] `)`     
+
 `has_any_ipv4(`*text* `,` *ip_addresses* `)`
 
 ## Arguments
