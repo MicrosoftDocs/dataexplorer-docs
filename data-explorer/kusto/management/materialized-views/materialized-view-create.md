@@ -46,10 +46,10 @@ The create operation requires [Database Admin](../access-control/role-based-auth
 |Query|String|The materialized view query. For more information, see [query](#query-argument).|
 
 > [!NOTE]
-> * If materialized view already exists:
+> * If the materialized view already exists:
 >    * If `ifnotexists` flag is specified, the command is ignored (no change applied, even if new definition does not match existing one).
->    * If `ifnotexists` flag is NOT specified, an error is returned.
->    * For altering an existing materialized view, see [.alter materialized-view](materialized-view-alter.md) command.
+>    * If `ifnotexists` flag isn't specified, an error is returned.
+>    * To alter an existing materialized view, see [.alter materialized-view](materialized-view-alter.md) command.
 
 ### Query argument
 
