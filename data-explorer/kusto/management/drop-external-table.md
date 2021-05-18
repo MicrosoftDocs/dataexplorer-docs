@@ -1,0 +1,34 @@
+---
+title: drop external table control command - Azure Data Explorer
+description: This article describes the drop external table control command in Azure Data Explorer 
+services: data-explorer
+author: orspod
+ms.author: orspodek
+ms.reviewer: rkarlin
+ms.service: data-explorer
+ms.topic: reference
+ms.date: 05/18/2021
+---
+# .drop external table
+
+Drops an external table.
+
+The external table definition can't be restored following this operation. Requires [database admin permission](../management/access-control/role-based-authorization.md).
+
+## Syntax  
+
+`.drop` `external` `table` *TableName* [`ifexists`]
+
+## Output
+
+Returns the properties of the dropped table. For more information, see [`.show external tables`](#show-external-tables).
+
+## Examples
+
+```kusto
+.drop external table ExternalBlob
+```
+
+| TableName | TableType | Folder         | DocString | Schema       | Properties |
+|-----------|-----------|----------------|-----------|-----------------------------------------------------|------------|
+| T         | Blob      | ExternalTables | Docs      | [{ "Name": "x",  "CslType": "long"},<br> { "Name": "s",  "CslType": "string" }] | {}         |

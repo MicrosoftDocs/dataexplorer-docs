@@ -1,0 +1,59 @@
+---
+title: show external table schema control command - Azure Data Explorer
+description: This article describes the show external table schema control command in Azure Data Explorer 
+services: data-explorer
+author: orspod
+ms.author: orspodek
+ms.reviewer: rkarlin
+ms.service: data-explorer
+ms.topic: reference
+ms.date: 05/18/2021
+---
+# .show external table schema
+
+Returns the schema of the external table, as JSON or CSL. 
+
+Requires [Database monitor permission](../management/access-control/role-based-authorization.md).
+
+## Syntax 
+
+`.show` `external` `table` *TableName* `schema` `as` (`json` | `csl`)
+
+`.show` `external` `table` *TableName* `cslschema`
+
+## Output
+
+| Output parameter | Type   | Description                        |
+|------------------|--------|------------------------------------|
+| TableName        | string | Name of external table            |
+| Schema           | string | The table schema in a JSON format |
+| DatabaseName     | string | Table's database name             |
+| Folder           | string | Table's folder                    |
+| DocString        | string | String documenting the table      |
+
+## Examples
+
+```kusto
+.show external table T schema as JSON
+```
+
+```kusto
+.show external table T schema as CSL
+.show external table T cslschema
+```
+
+### Example output
+
+*json:*
+
+| TableName | Schema    | DatabaseName | Folder         | DocString |
+|-----------|----------------------------------|--------------|----------------|-----------|
+| T         | {"Name":"ExternalBlob",<br>"Folder":"ExternalTables",<br>"DocString":"Docs",<br>"OrderedColumns":[{"Name":"x","Type":"System.Int64","CslType":"long","DocString":""},{"Name":"s","Type":"System.String","CslType":"string","DocString":""}]} | DB           | ExternalTables | Docs      |
+
+
+*csl:*
+
+| TableName | Schema          | DatabaseName | Folder         | DocString |
+|-----------|-----------------|--------------|----------------|-----------|
+| T         | x:long,s:string | DB           | ExternalTables | Docs      |
+
