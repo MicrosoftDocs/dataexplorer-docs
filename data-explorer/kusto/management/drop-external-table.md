@@ -21,7 +21,7 @@ The external table definition can't be restored following this operation. Requir
 
 ## Output
 
-Returns the properties of the dropped table. For more information, see [`.show external tables`](#show-external-tables).
+Returns the properties of the dropped table. For more information, see [`.show external tables`](show-external-tables.md).
 
 ## Examples
 
