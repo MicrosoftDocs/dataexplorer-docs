@@ -32,7 +32,7 @@ The create operation requires [Database Admin](../access-control/role-based-auth
 
 ## Syntax
 
-`.create` [`async`] `materialized-view` <br>
+`.create` [`async`] [`ifnotexists`] `materialized-view` <br>
 [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <br>
 *ViewName* `on table` *SourceTableName* <br>
 `{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
@@ -44,6 +44,12 @@ The create operation requires [Database Admin](../access-control/role-based-auth
 |ViewName|String|Materialized View name. The view name can't conflict with table or function names in same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
 |SourceTableName|String|Name of source table that the view is defined on.|
 |Query|String|The materialized view query. For more information, see [query](#query-argument).|
+
+> [!NOTE]
+> * If the materialized view already exists:
+>    * If `ifnotexists` flag is specified, the command is ignored (no change applied, even if new definition does not match existing one).
+>    * If `ifnotexists` flag isn't specified, an error is returned.
+>    * To alter an existing materialized view, see [.alter materialized-view](materialized-view-alter.md) command.
 
 ### Query argument
 
