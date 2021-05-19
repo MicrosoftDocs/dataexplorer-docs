@@ -202,7 +202,7 @@ You have now completed creation of a release pipeline for deployment to pre-prod
 
 ## Yaml Pipeline configuration
 
-The tasks can be configured both via Azure DevOps Web UI (as show above) and via Yaml code within the [pipeline schema](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema%2Cparameter-schema)
+The tasks can be configured both via Azure DevOps Web UI (as shown above) and via Yaml code within the [pipeline schema](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema%2Cparameter-schema)
 
 ### Admin Command Sample Usage
 
