@@ -32,7 +32,7 @@ The create operation requires [Database Admin](../access-control/role-based-auth
 
 ## Syntax
 
-`.create` [`async`] `materialized-view` <br>
+`.create` [`async`] [`ifnotexists`] `materialized-view` <br>
 [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <br>
 *ViewName* `on table` *SourceTableName* <br>
 `{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
@@ -44,6 +44,12 @@ The create operation requires [Database Admin](../access-control/role-based-auth
 |ViewName|String|Materialized View name. The view name can't conflict with table or function names in same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
 |SourceTableName|String|Name of source table that the view is defined on.|
 |Query|String|The materialized view query. For more information, see [query](#query-argument).|
+
+> [!NOTE]
+> * If the materialized view already exists:
+>    * If `ifnotexists` flag is specified, the command is ignored. No change applied, even if the new definition doesn't match the existing definition.
+>    * If `ifnotexists` flag isn't specified, an error is returned.
+>    * To alter an existing materialized view, see [.alter materialized-view](materialized-view-alter.md) command.
 
 ### Query argument
 
@@ -188,9 +194,11 @@ The following aggregation functions are supported:
 * [`avg`](../../query/avg-aggfunction.md)
 * [`avgif`](../../query/avgif-aggfunction.md)
 * [`sum`](../../query/sum-aggfunction.md)
+* [`sumif`](../../query/sumif-aggfunction.md)
 * [`arg_max`](../../query/arg-max-aggfunction.md)
 * [`arg_min`](../../query/arg-min-aggfunction.md)
 * [`any`](../../query/any-aggfunction.md)
+* [`anyif`](../../query/anyif-aggfunction.md)
 * [`hll`](../../query/hll-aggfunction.md)
 * [`make_set`](../../query/makeset-aggfunction.md)
 * [`make_list`](../../query/makelist-aggfunction.md)
