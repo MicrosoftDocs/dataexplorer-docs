@@ -2,16 +2,16 @@
 title: regex_quote() - Azure Data Explorer | Microsoft Docs
 description: This article describes regex_quote() in Azure Data Explorer.
 services: data-explorer
-author: orspod
-ms.author: orspodek
+author: shanisolomon
+ms.author: shanisolomon
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 05/19/2021
 ---
 # regex_quote()
 
- Returns a string that escapes all regular expression characters.
+Returns a string that escapes all regular expression characters.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ ms.date: 10/23/2018
 
 ## Returns
 
- Returns *string* where all regex expression characters are escaped.
+Returns *string* where all regex expression characters are escaped.
 
 ## Example
 

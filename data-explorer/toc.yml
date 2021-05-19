@@ -1045,6 +1045,8 @@ items:
       href: ./kusto/query/rangefunction.md
     - name: rank_tdigest()
       href: ./kusto/query/rank-tdigest.md
+    - name: regex_quote()
+      href: ./kusto/query/regexquotefunction.md
     - name: repeat()
       href: ./kusto/query/repeatfunction.md
     - name: replace()
