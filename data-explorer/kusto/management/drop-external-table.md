@@ -15,7 +15,7 @@ Drops an external table.
 
 The external table definition can't be restored following this operation. Requires [database admin permission](../management/access-control/role-based-authorization.md).
 
-This command is relevant to any external table (of any type). For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
+This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
 
 ## Syntax  
 
