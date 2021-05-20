@@ -154,7 +154,7 @@ Use C# to ingest data in raw [JSON format](#the-json-format).
             }
         };
 
-    ingestClient.IngestFromStorageAsync(blobPath, properties);
+    await ingestClient.IngestFromStorageAsync(blobPath, properties);
     ```
 
 > [!NOTE]
@@ -291,7 +291,7 @@ In this example, you ingest JSON records data. Each JSON property is mapped to a
             }
         };
 
-    ingestClient.IngestFromStorageAsync(blobPath, properties);
+    await ingestClient.IngestFromStorageAsync(blobPath, properties);
     ```
 
     The file 'simple.json' has a few line-separated JSON records. The format is `json`, and the mapping used in the ingest command is the `FlatEventMapping` you created.
@@ -359,7 +359,7 @@ var properties =
         }
     };
 
-ingestClient.IngestFromStorageAsync(blobPath, properties);
+await ingestClient.IngestFromStorageAsync(blobPath, properties);
 ```
 
 # [Python](#tab/python)
@@ -496,7 +496,7 @@ Array data types are an ordered collection of values. Ingestion of a JSON array 
             }
         };
 
-    ingestClient.IngestFromStorageAsync(blobPath, properties);
+    await ingestClient.IngestFromStorageAsync(blobPath, properties);
     ```
     
 1. Review data in the `Events` table.
@@ -644,7 +644,7 @@ Dictionary structured JSON contains key-value pairs. Json records undergo ingest
                 IngestionMappingReference = tableMapping
             }
         };
-    ingestClient.IngestFromStorageAsync(blobPath, properties);
+    await ingestClient.IngestFromStorageAsync(blobPath, properties);
     ```
 
 # [Python](#tab/python)
