@@ -258,10 +258,12 @@ In this example, you ingest JSON records data. Each JSON property is mapped to a
 
     ```csharp
     var tableMapping = "FlatEventMapping";
+    var table = "Events";
+    
     var command =
          CslCommandGenerator.GenerateTableMappingCreateCommand(
             Data.Ingestion.IngestionMappingKind.Json,
-            "",
+            table,
             tableMapping,
             new[]
             {
