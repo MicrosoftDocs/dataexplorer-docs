@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/18/2021
+ms.date: 05/20/2021
 ---
 # .show external table schema
 
 Returns the schema of the external table, as JSON or CSL. 
 
-Requires [Database monitor permission](../management/access-control/role-based-authorization.md).
+Requires [Database monitor permission](../management/access-control/role-based-authorization.md). This command is relevant to any external table (of any type). For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
 
 ## Syntax 
 
