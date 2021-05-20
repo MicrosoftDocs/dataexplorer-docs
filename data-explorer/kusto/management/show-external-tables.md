@@ -4,7 +4,7 @@ description: This article describes the show external table control command in A
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/20/2021
