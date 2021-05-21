@@ -169,14 +169,15 @@ This file contains the Kusto sink properties file where you'll update specific c
         "aad.auth.authority": "<enter tenant ID>",
         "aad.auth.appid": "<enter application ID>",
         "aad.auth.appkey": "<enter client secret>",
-        "kusto.url": "https://ingest-<name of cluster>.<region>.kusto.windows.net",
+        "kusto.ingestion.url": "https://ingest-<name of cluster>.<region>.kusto.windows.net",
+        "kusto.query.url": "https://<name of cluster>.<region>.kusto.windows.net",
         "key.converter": "org.apache.kafka.connect.storage.StringConverter",
         "value.converter": "org.apache.kafka.connect.storage.StringConverter"
     }
 }
 ```
 
-Replace the values for the following attributes as per your Azure Data Explorer setup: `aad.auth.authority`, `aad.auth.appid`, `aad.auth.appkey`, `kusto.tables.topics.mapping` (the database name), and `kusto.url`.
+Replace the values for the following attributes as per your Azure Data Explorer setup: `aad.auth.authority`, `aad.auth.appid`, `aad.auth.appkey`, `kusto.tables.topics.mapping` (the database name), `kusto.ingestion.url`, and `kusto.query.url`.
 
 #### Connector - Dockerfile
 
