@@ -93,22 +93,20 @@ The **ingestion result** metric provides information about the total number of s
 
 To view the ingestion result metric, do the following:
 
-Select the **Ingestion result** metric from the list of available metrics and select **Sum** as the aggregation value.
-
-:::image type="content" source="media/monitor-batching-ingestion/ingestion-result-graph.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of ingestion results aggregated by sum.":::
+Select the **Ingestion result** metric and select **Sum** as the aggregation value. This shows you the ingestion operations over time.
 
 Splitting the metric by status, you can get detailed information about the status of the ingestion operations.
 
-2. Select **Apply splitting** above the chart *(3- apply splitting.png):*
-3. Choose the **Status** dimension to segment your chart by the status of the ingestion operations (*4- split by status.png*):
-4. After selecting the splitting values, click away from the split selector to close it. Now the chart shows how many ingestion sources were tried to be ingested over time, and the status of the ingestions. There are multiple lines, one for each possible ingestion result (*5- ingestion result by status graph.png*).
+Select the **Apply splitting** button above the chart and choose **Status** to segment your chart by the status of the ingestion operations. After selecting the splitting values, click away from the split selector to close it.
 
-1. In the following chart, you can see 3 lines: blue for successful ingestion operations, orange for ingestion operations that failed due to “Entity not found” and purple for ingestion operations that failed due to "Bad request”. You can see that most ingestion operations were succeeded.
-1. The error in the chart represents the category of the error code. To see the full list of ingestion error codes by categories and try to better understand the possible error reason see [Ingestion error codes in Azure Data Explorer](error-codes).
-1. To get more details on an ingestion error, you can set [failed ingestion diagnostic logs.](using-diagnostic-logs?tabs=ingestion#failed-ingestion-operation-log) (take into account that logs emission results with creation of additional resources, and therefore costs money).
+Now the chart shows how many ingestion sources were tried to be ingested over time, and the status of the ingestions. There are multiple lines, one for each possible ingestion result.
+
+In the following chart, you can see 3 lines: blue for successful ingestion operations, orange for ingestion operations that failed due to “Entity not found” and purple for ingestion operations that failed due to "Bad request”.
 
 :::image type="content" source="media/monitor-batching-ingestion/ingestion-result-by-status-graph.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of ingestion results aggregated by sum and split by status.":::
 
+1. The error in the chart represents the category of the error code. To see the full list of ingestion error codes by categories and try to better understand the possible error reason see [Ingestion error codes in Azure Data Explorer](error-codes).
+1. To get more details on an ingestion error, you can set [failed ingestion diagnostic logs.](using-diagnostic-logs?tabs=ingestion#failed-ingestion-operation-log) (take into account that logs emission results with creation of additional resources, and therefore costs money).
 
 **Note**:
 
