@@ -20,7 +20,7 @@ The query may return more then one rowset, but only the first rowset is made ava
 
 ## Syntax
 
-  `evaluate` `sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)`
+  `evaluate` `sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)` [`:` *OutputSchema*]
 
 ## Arguments
 
@@ -35,6 +35,8 @@ The query may return more then one rowset, but only the first rowset is made ava
 * *Options*: A constant value of type `dynamic` that holds more advanced settings
   as key-value pairs. Currently, only `token` can be set, to pass a caller-provided
   Azure AD access token that is forwarded to the SQL endpoint for authentication. Optional.
+  
+* *OutputSchema*: An optional expected schema (column names and their types) of the sql_request output. The syntax for output schema is: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`. There is a performance benefit of providing explicit schema at the query: if the schema is known at query planning - different optimizations can utilize it without need to explore the schema by running the actual query before the optimizations kick in.
 
 ## Examples
 
@@ -81,6 +83,21 @@ evaluate sql_request(
     'Initial Catalog=Fabrikam;',
   'select *, @param0 as dt from [dbo].[Table]',
   dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)}))
+| where Id > 0
+| project Name
+```
+
+The following example sends a SQL query to an Azure SQL DB database
+retrieving all records from `[dbo].[Table]`, while selecting only specific columns.
+It uses explicit schema definition that allow various optimizations to be evaluated before the 
+actual query against SQL is run.
+
+```kusto
+evaluate sql_request(
+  'Server=tcp:contoso.database.windows.net,1433;'
+    'Authentication="Active Directory Integrated";'
+    'Initial Catalog=Fabrikam;',
+  'select Id, Name') : (Id:long, Name:string)
 | where Id > 0
 | project Name
 ```
