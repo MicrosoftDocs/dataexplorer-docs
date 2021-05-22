@@ -33,26 +33,17 @@ When analyzing the amount of data passing through ingestion and ingestion latenc
 3. The *Ingestion Manager* starts the data ingestion by sending the ingestion command to the *ADX Storage Engine*.
 4. The *ADX Storage Engine* stores the ingested data, making it available for query.
 
-
 In this tutorial you will learn how to use [ingestion metrics](using-metrics#ingestion-metrics) to monitor [Batching ingestion to ADX](ingest-data-overview) in Azure portal.
 
 For more information about different metrics, see [supported Azure Data Explorer metrics](#supported-azure-data-explorer-metrics).
 
-
-
 After reading this tutorial you will know how to answer the following questions:
 
 1. How can I see the result of my ingestion attempts? *(link to the “ingestion result” section)*
-
 2. How much data passes through the ingestion pipeline? *(link to “the amount of ingested data” section)*
-
 3. What is the latency of the ingestion process and does long latency happen in ADX or before data actually arrives in ADX for ingestion? *(link to the “ingestion latency” section)*
-
 4. How can I better understand the batching process of my cluster during ingestion? (*link to “understanding batching policy” section)*
-
 5. When working with Event Hub, Event Grid and IoT Hub ingestion, how can I compare the number of events arrived to ADX to the number of events sent for ingestion *(link to “Compare data connection incoming events to the number of events sent for ingestion” section*)?
-
-When analyzing the amount of data passing through ingestion and ingestion latency, it is possible to split metrics by **Component Type** to better understand the performance of each of the batching ingestion steps.
 
 ## Prerequisites
 
@@ -87,104 +78,104 @@ For the examples in this article:
 
 To begin analysis on your cluster in the metrics pane, select specific metrics to track, choose how to aggregate your data, and create metric charts to view on your dashboard.
 
-## Ingestion result
+## View the ingestion result metric
 
-The **ingestion result** metric provides information about the total number of sources that were successfully ingested and those that failed to be ingested. The metric allows you to see the result of your ingestion attempts, including detailed status information to help you troubleshoot any failed attempts.
+The **ingestion result** metric provides information about the total number of sources that were successfully ingested and those that failed to be ingested.
 
-To view the ingestion result metric, do the following:
+In this example, we'll use this metric to see the result of our ingestion attempts, including detailed status information to helps us troubleshoot any failed attempts.
 
-Select the **Ingestion result** metric and select **Sum** as the aggregation value. This shows you the ingestion operations over time.
+1. Select the **Ingestion result** metric and select **Sum** as the aggregation value. This shows you the ingestion operations over time in one chart line.
+1. Select the **Apply splitting** button above the chart and choose **Status** to segment your chart by the status of the ingestion operations. After selecting the splitting values, click away from the split selector to close it.
 
-Splitting the metric by status, you can get detailed information about the status of the ingestion operations.
+Now the metric information is split by status, so we can see detailed information about the status of the ingestion operations. The chart shows 3 lines.
 
-Select the **Apply splitting** button above the chart and choose **Status** to segment your chart by the status of the ingestion operations. After selecting the splitting values, click away from the split selector to close it.
-
-Now the chart shows how many ingestion sources were tried to be ingested over time, and the status of the ingestions. There are multiple lines, one for each possible ingestion result.
-
-In the following chart, you can see 3 lines: blue for successful ingestion operations, orange for ingestion operations that failed due to “Entity not found” and purple for ingestion operations that failed due to "Bad request”.
+1. Blue for successful ingestion operations.
+2. Orange for ingestion operations that failed due to *Entity not found*.
+3. Purple for ingestion operations that failed due to *Bad request*.
 
 :::image type="content" source="media/monitor-batching-ingestion/ingestion-result-by-status-graph.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of ingestion results aggregated by sum and split by status.":::
 
 1. The error in the chart represents the category of the error code. To see the full list of ingestion error codes by categories and try to better understand the possible error reason see [Ingestion error codes in Azure Data Explorer](error-codes).
-1. To get more details on an ingestion error, you can set [failed ingestion diagnostic logs.](using-diagnostic-logs?tabs=ingestion#failed-ingestion-operation-log) (take into account that logs emission results with creation of additional resources, and therefore costs money).
+1. To get more details on an ingestion error, you can set [failed ingestion diagnostic logs.](using-diagnostic-logs?tabs=ingestion#failed-ingestion-operation-log). However, It's important to take into account that generating logs results in the creation of additional resources, and therefore costs money).
 
-**Note**:
+### Considerations
 
-* Using Event Hub ingestion there is an event pre-aggregation in the data connection component *(link to component section)*. Then, events are treated as a single source to be ingested. Therefore, a few events appear as a single ingestion result after pre-aggregation.
-* Transient failures are retried internally to a limited number of attempts. Each transient failure is reported as a transient ingestion result. Therefore, a single ingestion may result with more than one ingestion result. 
+Consider the following when looking at the chart of ingestion results:
 
+* When using Event Hub ingestion, there is an event pre-aggregation in the *Data connection component*. During this stage of ingestion, events are treated as a single source to be ingested. Therefore, a few events appear as a single ingestion result after pre-aggregation.
+* Transient failures are retried internally to a limited number of attempts. Each transient failure is reported as a transient ingestion result. Therefore, a single ingestion may result with more than one ingestion result.
 
-**The Amount of Ingested Data:**
+## View the amount of ingested data
 
-The **Blobs Processed**, **Blobs Received** and **Blobs Dropped** metrics give information about the number of blobs that are processed by ingestion components *(link to the beginning of the doc that explains ingestion components)*.
+The **Blobs Processed**, **Blobs Received** and **Blobs Dropped** metrics provide information about the number of blobs that are processed by the ingestion components during the stages of batching ingestion. 
 
-1. In the metrics pane select the following settings (*6- select blobs processed.png*):
+In this example, we'll use these metrics to see how much data passed through the ingestion pipeline, how much data was received by the ingestion components, and how much data was dropped.
 
-| Settings         | Suggested Value                  | Field Description                                            |
-| ---------------- | -------------------------------- | ------------------------------------------------------------ |
-| Scope            | *<Your Cluster Name>*            | The name of the ADX cluster                                  |
-| Metric Namespace | *Kusto Cluster Standard Metrics* | A namespace that acts like a category for the metric         |
-| Metric           | *Blobs Processed*                | The metric name                                              |
-| Aggregation      | *Sum*                            | The aggregated function by which the metrics are  aggregated over time. To better understand aggregation see [Changing aggregation](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-charts#changing-aggregation) |
+1. Select the **Blobs Processed** metric and select **Sum** as the aggregation value.
+1. Select the **Apply splitting** button and then select the **Component Type** dimension to segment the chart by the different ingestion components.
+1. To focus on a specific database in your cluster, select the **Add filter** button above the chart and then choose which database values to include when plotting the chart. In this example, we filter on the blobs sent to the *GitHub* database by selecting *Database* as the **Property**, *=* as the **Operator**, and *GitHub** in the **Values** drop-down. After selecting the filter values, click away from the filter selector to close it.
 
-2. Select **Apply splitting** above the chart *(3- apply splitting.png)*:
-3. Select the **Component Type** dimension to segment the chart by different components through ingestion (*7- split by component type.png)*:
-4. If you want to focus on a specific database of your cluster, select **Add filter** above the chart (*8- add filter.png*):
-5. Select which database values you want to include when plotting the chart (this example shows filtering out blobs sent to the *GitHub* database) (*9- filter by database.png*):
-6. After selecting the filter values, click away from the Filter Selector to close it. Now the chart shows how many blobs that are sent to the *GitHub* database were processed at each of the ingestion components over time (*10- blobs processed by type in DB.png*):
-7. In the chart above you can see that at 13 Feb there is a decrease in the number of blobs that were ingested to the *GitHub* database over time. You can also see that the number of blobs that were processed at each of the components is similar, meaning that approximately all data processed in the data connection was also processed successfully by the batching manager, by the ingestion manager and by the storage engine. Therefore, this data is ready for query.
-8. To better understand the relation between the number of blobs that were received at each component and the number of blobs that were processed successfully at each component, you can add a new chart to describe the number of blobs that were sent to *GitHub* database and were received at each component. 
+Now the chart shows how many blobs that are sent to the *GitHub* database were processed at each of the ingestion components over time.
 
-Above the Blob processed chart, select **New chart (***11- new chart.png***):**
+:::image type="content" source="media/monitor-batching-ingestion/blobs-processed-by-component-type-graph.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of blobs processed from the github database, aggregated by sum and split by component type.":::
 
-9. Select the following settings for the new chart (*12- select blob received.png*):
-10.  Return steps 2-5 to split the **Blob Received** metric by component type and filter only blob sent to *GitHub* database. You can now see the following charts next to each other (*13- blobs received and processed by type.png*):
-11. Comparing the charts, you can see that the number of blobs that were received on each component is like the number of blobs that were processed. That is means that approximately there are not blobs that were dropped during ingestion.
-12. You can also analyze the **Blob Dropped** metric following steps 2-5 above to see how many blobs were dropped during ingestion and detect whether there is problem in processing at specific component during ingestion. For each dropped blob you will also get an **Ingestion Result** metric with more information about the failure reason (*link to the ingestion result section*).
+In the preceding chart, you can see that on Februrary 13 there is a decrease in the number of blobs that were ingested to the *GitHub* database over time. You can also see that the number of blobs that were processed at each of the components is similar, meaning that approximately all data processed in the data connection was also processed successfully by the batching manager, by the ingestion manager and by the storage engine. Therefore, this data is ready for query.
 
- **Ingestion Latency:**
+To better understand the relation between the number of blobs that were received at each component and the number of blobs that were processed successfully at each component, we'll add a new chart to describe the number of blobs that were sent to *GitHub* database and were received at each component.
+
+1. Above the Blob processed chart, select **New chart**.
+1. Leave the **Scope**, **Metric Namespace**, and **Aggregation** values the same, and select the **Blobs Received** metric.
+1. Select the **Apply splitting** button and select **Component Type** to split the **Blob Received** metric by component type.
+1. Select the **Add filter** button and set the same values as before to filter only the blobs sent to the *GitHub* database. 
+
+You can now see both charts next to each other.
+
+:::image type="content" source="media/monitor-batching-ingestion/blobs-received-and-processed-by-component-type-graph.png" alt-text="Screenshot of the Metrics pane in Azure portal showing charts of blobs processed and blobs received from the github database aggregated by sum and split by component type.":::
+
+Comparing these charts, you can see that the number of blobs that were received by each component closely matches the number of blobs that were processed. This indicates that no blobs were dropped during ingestion. 
+
+However, to determine that information exactly, you can also analyze the **Blob Dropped** metric following steps 2-5 above to see how many blobs were dropped during ingestion and detect whether there is problem in processing at specific component during ingestion. For each dropped blob you will also get an **Ingestion Result** metric with more information about the failure reason.
+
+## View the ingestion latency
 
 **Note**: According to the default [batching policy](kusto/management/batchingpolicy), the default batching time is 5 minutes. Therefore, the expected latency is at least 5 minutes using the default batching policy.
 
-While ingesting data to ADX, it is important to understand the ingestion latency to know how much time passes until data is ready for query. The metrics **Stage Latency** and **Discovery Latency** aimed to monitor ingestion latency.
+While ingesting data to Azure Data Explorer, it is important to understand the ingestion latency to know how much time passes until your data is ready for query. The metrics **Stage Latency** and **Discovery Latency** help you monitor ingestion latency.
 
-The **Stage Latency** indicates the timespan from when a message is discovered by Azure Data Explorer, until its content is received by an ingestion component *(link to the section that explains ingestion components)* for processing.
+* **Stage Latency** indicates the timespan from when a message is discovered by ADX until its content is received by an ingestion component for processing.
+* **Discovery Latency** is used for ingestion pipelines with data connections (such as Event Hub, IoT Hub, and Event Grid). This metric gives information about the timespan from data enqueue until discovery by ADX data connections. This timespan is upstream to ADX, and therefore it is not included in the **Stage Latency** metric that measures only latency in ADX.
 
-The **Discovery Latency** is used for ingestion pipelines with data connections (Event Hub, IoT Hub and Event Grid). This metric gives information about the timespan from data enqueue until discovery by ADX data connections. This timespan is upstream to Azure Data Explorer, and therefore it is not included in the **Stage Latency** that measures only latency in ADX.
+When you see a long latency until data is ready for query, analyzing **Stage Latency** and **Discovery Latency** can help you to understand whether the long latency is due to long latency in ADX, or is upstream to ADX. You can also detect the specific component responsible for the long latency.
 
-When you see a long latency until data is ready for query, analyzing **Stage Latency** and **Discovery Latency** can help you to understand whether the long latency is because long latency in ADX, or upstream to ADX. You can also detect the specific component responsible for the long latency.
+Let's first take a look at the stage latency of our batching ingestion:
 
-1. In the metrics pane select the following settings (*14- select stage latency.png*):
+1. Select the **Stage Latency** metric and select **Avg** as the aggregation value.
+1. Select the **Apply splitting** button and then select the **Component Type** dimension to segment the chart by the different ingestion components.
+1. In this example, we filter on the blobs sent to the *GitHub* database by selecting *Database* as the **Property**, *=* as the **Operator**, and *GitHub** in the **Values** drop-down. After selecting the filter values, click away from the filter selector to close it.
 
+:::image type="content" source="media/monitor-batching-ingestion/stage-latency-by-component-graph.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of stage latency for ingestion from the github database aggregated by avg and split by component type.":::
 
-| Settings         | Suggested Value                  | Field Description                                            |
-| ---------------- | -------------------------------- | ------------------------------------------------------------ |
-| Scope            | *<Your Cluster Name>*            | The name of the ADX cluster                                  |
-| Metric Namespace | *Kusto Cluster Standard Metrics* | A namespace that acts like a category for the metric         |
-| Metric           | *Stage Latency*                  | The metric name                                              |
-| Aggregation      | *Avg*                            | The aggregated function by which the metrics are  aggregated over time. To better understand aggregation see [Changing aggregation](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-charts#changing-aggregation) |
+We can tell the following information from this chart:
 
-2. Select **Apply splitting** above the chart (*3-apply spilitting.png*):
-3. Select the **Component Type** dimension to segment the chart by different components through ingestion (*7- split by component type.png*): 
-4. If you want to focus on a specific database of your cluster, select **Add filter** above the chart (*8- add filter.png*):
+* The latency at the data connection is approximately 0 seconds. This makes sense, because **Stage Latency** only measures latency from when a message is discovered by ADX.
+* The longest time in the ingestion process (approximately 5 minutes) passes from when the Batching Manager received data to when the Ingestion Manager received data. In this example, we use the default [Batching Policy](kusto/management/batchingpolicy) for the *GitHub* database. The latency time for the default batching policy is [5 minutes](kusto/management/batching-policy#altering-the-ingestionbatching-policy). This indicates that nearly all of the latency time for the batching ingestion was due to the default latency. You can see this conclusion in detail in the section about Understanding Batching Process *(link to this section)*.
+* The Storage engine latency in the chart represents the latency when receiving data by the Storage Engine. You can see that the average total latency from the time of data discovery by ADX until it ready for query is 5.2 minutes.
 
-Select which database values you want to include when plotting the chart (this example shows filtering out blobs sent to the *GitHub* database) (*9- filter by database.png*):
-
-5. After selecting the filter values, click away from the Filter Selector to close it. Now the chart shows the latency of ingestion operations that are sent to the GitHub database at each of the components through ingestion over time (*15- stage latency by component type in DB.png*):
-6. In the chart above, you can see that the latency at the data connection is approximately 0 seconds. It makes sense since the **Stage Latency** measures only latency from when a message is discovered by ADX.
-
-You can also see that the longest time passes from when the Batching Manager received data to then the Ingestion Manager received data. In the chart above it takes around 5 minutes as we use default [Batching Policy](kusto/management/batchingpolicy) for the *GitHub* database and [**the default time for**](kusto/management/batching-policy#altering-the-ingestionbatching-policy) **batching policy is 5 minutes**, that means that apparently the sole reason for the batching was time. You can see this conclusion in detail in the section about Understanding Batching Process *(link to this section)*.
-
-Finally, looking at the Storage engine latency in the chart, represents the latency when receiving data by the Storage Engine, you can see the average total latency from the time of discovery data by ADX until it ready for query. In the graph above it is take 5.2 minutes in average.
+Now we'll examine the discovery latency:
 
 7. If you use ingestion with data connections, you may want to estimate the latency upstream to ADX over time as long latency may also be because of long latency before ADX actually gets the data for ingestion. For that purpose, you can use the **Discovery Latency** metric.
 8. Above the chart you have already created, select **New chart**:
 9. Select the following settings to see the average **Discovery Latency** over time:
 10. Return steps 2-3 above to split the **Discovery Latency** by **Component Type**.
-11. After selecting the splitting values, click away from the split selector to close it. Now you have charts for **Discovery Latency (***16- discovery latency graph.png***):**
-12. You can see that almost all the time, the discovery Latency is 0 seconds means that ADX gets data immediately after data enqueue. The highest peak of around 300 milliseconds is around 13 Feb 14:00 AM means that at this time ADX cluster got the data around 300 milliseconds after data enqueue.
+11. After selecting the splitting values, click away from the split selector to close it. 
 
-**Understand the Batching Process:**
+Now you have charts for **Discovery Latency**:
+
+:::image type="content" source="media/monitor-batching-ingestion/discovery-latency-by-component-type.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of discovery latency for ingestion from the github database aggregated by avg and split by component type.":::
+
+You can see that almost all the time, the discovery Latency is 0 seconds means that ADX gets data immediately after data enqueue. The highest peak of around 300 milliseconds is around 13 Feb 14:00 AM means that at this time ADX cluster got the data around 300 milliseconds after data enqueue.
+
+## Understand the batching process
 
 The **Batch blob count**, **Batch duration**, **Batch size** and **Batches processed** metrics aimed to give information about the batching process (*link to the intro of this doc*):
 
