@@ -36,7 +36,7 @@ The query may return more then one rowset, but only the first rowset is made ava
   as key-value pairs. Currently, only `token` can be set, to pass a caller-provided
   Azure AD access token that is forwarded to the SQL endpoint for authentication. Optional.
   
-* *OutputSchema*: An optional expected schema (column names and their types) of the sql_request output. The syntax for output schema is: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`. There is a performance benefit of providing explicit schema at the query: if the schema is known at query planning - different optimizations can utilize it without need to explore the schema by running the actual query before the optimizations kick in.
+* *OutputSchema*: An optional expected schema (column names and their types) of the sql_request output. The syntax for output schema is: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`. There is a performance benefit of providing explicit schema at the query: if the schema is known at query planning - different optimizations can utilize it without need to explore the schema by running the actual query before the optimizations kick in. In the case the run-time schema is not matched to the the schema specified by *OutputSchema* - the query will yield an error, indicating the mismatch.
 
 ## Examples
 
