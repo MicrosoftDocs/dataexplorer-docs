@@ -61,7 +61,9 @@ The geohash string value of a given geographic location with requested accuracy 
 | 17       | 4.55 μ    | 4.55 μ    |
 | 18       | 1.14 μ    | 0.57 μ    |
 
-See also [geo_point_to_s2cell()](geo-point-to-s2cell-function.md).
+See also [geo_point_to_s2cell()](geo-point-to-s2cell-function.md), [geo_point_to_h3cell()](geo-point-to-h3cell-function.md).
+
+For comparison with other available grid systems read about [geospatial clustering with KQL](../../geospatial-grid-systems.md).
 
 ## Examples
 

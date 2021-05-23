@@ -31,16 +31,16 @@ The S2 cell token string value of a given geographic location. If the coordinate
 
 > [!NOTE]
 >
-> * S2 cell can be a useful geospatial clustering tool.
-> * S2 cell has 31 levels of hierarchy with area coverage ranging from 85,011,012.19km² at the highest level 0 to 00.44cm² at the lowest level 30.
-> * S2 cell preserves the cell center well during level increase from 0 to 30.
-> * S2 cell is a cell on a spherical surface and its edges are geodesics.
+> * S2 Cell can be a useful geospatial clustering tool.
+> * S2 Cell has 31 levels of hierarchy with area coverage ranging from 85,011,012.19km² at the highest level 0 to 0.44cm² at the lowest level 30.
+> * S2 Cell preserves the cell center well during level increase from 0 to 30.
+> * S2 Cell is a cell on a spherical surface and its edges are geodesics.
 > * Invoking the [geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md) function on an S2 cell token string that was calculated on longitude x and latitude y won't necessarily return x and y.
 > * It's possible that two geographic locations are very close to each other but have different S2 cell tokens.
 
-**S2 cell approximate area coverage per level value**
+**S2 Cell approximate area coverage per level value**
 
-For every level, the size of the S2 cell is similar but not exactly equal. Nearby cell sizes tend to be more equal.
+For every level, the size of the S2 Cell is similar but not exactly equal. Nearby cell sizes tend to be more equal.
 
 |Level|Minimum random cell edge length (UK)|Maximum random cell edge length (US)|
 |--|--|--|
@@ -76,13 +76,15 @@ For every level, the size of the S2 cell is similar but not exactly equal. Nearb
 |29|12 mm|18 mm|
 |30|6 mm|9 mm|
 
-The table source can be found [in this S2 cell statistical resource](https://s2geometry.io/resources/s2cell_statistics).
+The table source can be found [in this S2 Cell statistical resource](https://s2geometry.io/resources/s2cell_statistics).
 
-See also [geo_point_to_geohash()](geo-point-to-geohash-function.md).
+See also [geo_point_to_geohash()](geo-point-to-geohash-function.md), [geo_point_to_h3cell()](geo-point-to-h3cell-function.md).
+
+For comparison with other available grid systems read about [geospatial clustering with KQL](../../geospatial-grid-systems.md).
 
 ## Examples
 
-US storm events aggregated by s2cell.
+US storm events aggregated by S2 Cell.
 
 :::image type="content" source="images/geo-point-to-s2cell-function/s2cell.png" alt-text="US s2cell":::
 
