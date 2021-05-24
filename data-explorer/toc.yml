@@ -172,6 +172,10 @@
         href: anomaly-detection.md
       - name: Machine learning
         href: machine-learning-clustering.md
+    - name: Geospatial Analysis
+      items:
+      - name: Geospatial clustering with KQL
+        href: geospatial-grid-systems.md
   - name: Visualize data
     items:
     - name: Azure Data Explorer dashboards
@@ -210,10 +214,6 @@
       href: redash.md
     - name: Kibana (K2Bridge connector)
       href: k2bridge.md
-  - name: Geospatial clustering with KQL
-    items:
-    - name: Geospatial grid systems
-      href: geospatial-grid-systems.md
   - name: Secure
     items:
     - name: Network isolation (VNet)
