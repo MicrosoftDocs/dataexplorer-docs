@@ -6,12 +6,9 @@ ms.author: orspodek
 ms.reviewer: avnera
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 05/18/2021
 ---
 # Azure Data Explorer performance update (EngineV3)
-
-> [!NOTE]
-> EngineV3 became generally available (GA) on March 17, 2021.
 
 Kusto EngineV3 is Azure Data Explorer’s performance update next generation storage and query engine. It's designed to provide unparalleled performance for ingesting and querying telemetry, logs, and time series data.
 
@@ -20,7 +17,7 @@ EngineV3 includes a new optimized storage format and indexes. EngineV3 uses adva
 Azure Data Explorer cluster running in EngineV3 mode is fully compatible with the EngineV2, so data migration isn't required.
 
 > [!IMPORTANT]
-> In General Availability (GA), new clusters are created in EngineV3 mode by default. SLA applies to all EngineV3 and EngineV2 production clusters. To migrate EngineV2 clusters, please [create a support ticket](https://ms.portal.azure.com/#create/Microsoft.Support). 
+> In General Availability (GA), new clusters are created in EngineV3 mode by default. SLA applies to all EngineV3 and EngineV2 production clusters. To migrate EngineV2 clusters, please [create a support ticket](https://ms.portal.azure.com/#create/Microsoft.Support). The migration process itself requires minimal downtime of less than a minute and does not have material impact on ingestion and query performance.     
 
 ## How EngineV3 works
 

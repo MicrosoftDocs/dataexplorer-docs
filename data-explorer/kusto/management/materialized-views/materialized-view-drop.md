@@ -17,7 +17,10 @@ Requires [Database Admin](../access-control/role-based-authorization.md) or mate
 
 ## Syntax
 
-`.drop` `materialized-view` *MaterializedViewName*
+`.drop` `materialized-view` *MaterializedViewName* [`ifexists`]
+
+> [!NOTE]
+> If `ifexists` is specified, the command won't fail if it refers to a non-existent materialized view.
 
 ## Properties
 

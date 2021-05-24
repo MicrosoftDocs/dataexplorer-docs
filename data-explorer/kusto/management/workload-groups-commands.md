@@ -140,7 +140,7 @@ Create a workload group with a full definition of its request limits policy and 
 #### Alter specific limits in the request limits policy
 
 Alter specific limits in the request limits policy of the `default` workload group,
-while keeping previously defined limits as-is:
+while keeping previously defined limits unchanged:
 
 ```kusto
 .alter-merge workload_group default ```
@@ -161,7 +161,7 @@ while keeping previously defined limits as-is:
 #### Alter the request rate limit policies
 
 Alter the request rate limit policies of the `default` workload group,
-while keeping its request limits policy as-is:
+while keeping all of its other policies unchanged:
 
 ```kusto
 .alter-merge workload_group default ```
@@ -182,13 +182,28 @@ while keeping its request limits policy as-is:
 #### Alter the request queuing policy
 
 Enable request queuing for the `default` workload group, while keeping its request limits policy
-and request rate limit policies as-is:
+and request rate limit policies unchanged:
 
 ```kusto
 .alter-merge workload_group default ```
 {
   "RequestQueuingPolicy": {
       "IsEnabled": true
+  }
+}```
+```
+
+#### Alter the request rate limits enforcement policy
+
+Enable request rate limits enforcement policy for the `default` workload group,
+while keeping all of its other policies unchanged:
+
+```kusto
+.alter-merge workload_group default ```
+{
+  "RequestRateLimitsEnforcementpolicy": {
+      "QueriesEnforcementLevel": "QueryHead",
+      "CommandsEnforcementLevel": "Cluster"
   }
 }```
 ```

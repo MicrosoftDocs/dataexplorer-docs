@@ -104,7 +104,7 @@ Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true"
 **Example**
 
 ```
-Kusto.Cli.exe "https://kustolab.kusto.windows.net/;Fed=true" -script:"c:\mycommands.txt"
+Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true" -script:"c:\mycommands.txt"
 ```
 
 > [!NOTE] 
