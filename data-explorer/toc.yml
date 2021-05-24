@@ -1,4 +1,4 @@
-- name: Azure Data Explorer documentation
+- name: Azure Data Explorer Documentation
   href: index.yml
 - name: Overview
   items:
@@ -50,14 +50,6 @@
       href: security.md
     - name: Security baseline
       href: security-baseline.md
-  - name: Business continuity
-    items:  
-    - name: Overview
-      href: business-continuity-overview.md
-    - name: Create solutions
-      href: business-continuity-create-solution.md   
-  - name: Tools and integrations overview
-    href: tools-integrations-overview.md
 - name: How-to guides
   items:
   - name: Create cluster and database
@@ -78,22 +70,18 @@
       items:
       - name: One-click ingestion overview 
         href: ingest-data-one-click.md
-      - name: CSV data from container to new table
+      - name: One-click ingestion into a new table
         href: one-click-ingestion-new-table.md
-      - name: JSON data from local file to existing table
+      - name: One-click ingestion into an existing table
         href: one-click-ingestion-existing-table.md
     - name: Streaming ingestion
       items:
-      - name: Azure portal
+      - name: Streaming ingestion
         href: ingest-data-streaming.md
-      - name: C#
-        href: ingest-data-streaming-csharp.md
     - name: Using LightIngest
       href: lightingest.md    
     - name: Event Hub
       items:
-      - name: Create a connection to Event Hub
-        href: ingest-data-event-hub-overview.md
       - name: Azure portal
         href: ingest-data-event-hub.md
       - name: C#
@@ -104,8 +92,6 @@
         href: data-connection-event-hub-resource-manager.md
     - name: Event Grid
       items:
-      - name: Create a connection to Event Grid
-        href: ingest-data-event-grid-overview.md
       - name: Azure portal
         href: ingest-data-event-grid.md
       - name: C#
@@ -116,8 +102,6 @@
         href: data-connection-event-grid-resource-manager.md
     - name: IoT Hub
       items:
-      - name: Create a connection to IoT Hub
-        href: ingest-data-iot-hub-overview.md
       - name: Azure portal
         href: ingest-data-iot-hub.md
       - name: C#
@@ -126,26 +110,14 @@
         href: data-connection-iot-hub-python.md
       - name: Azure Resource Manager template
         href: data-connection-iot-hub-resource-manager.md
-    - name: Azure Data Factory
-      items:
-      - name: Integration with Data Factory 
-        href: data-factory-integration.md 
-      - name: Copy data using Azure Data Factory
-        href: data-factory-load-data.md  
-      - name: Bulk copy data using Azure Data Factory template
-        href: data-factory-template.md 
-      - name: Run control commands using Azure Data Factory
-        href: data-factory-command-activity.md
     - name: Using SDKs
       items: 
-      - name: .NET SDK
-        href: net-sdk-ingest-data.md
       - name: Python
         href: python-ingest-data.md
       - name: Node SDK
         href: node-ingest-data.md
-      - name: Go SDK
-        href: go-ingest-data.md
+      - name: .NET Standard SDK
+        href: net-standard-ingest-data.md
     - name: Kafka
       href: ingest-data-kafka.md
     - name: Logstash
@@ -172,20 +144,14 @@
         href: anomaly-detection.md
       - name: Machine learning
         href: machine-learning-clustering.md
-    - name: Geospatial Analysis
-      items:
-      - name: Geospatial clustering with KQL
-        href: geospatial-grid-systems.md
   - name: Visualize data
     items:
     - name: Azure Data Explorer dashboards
       items:
-      - name: use dashboards
+      - name: using dashboards
         href: azure-data-explorer-dashboards.md
-      - name: use dashboard parameters
+      - name: using dashboard parameters
         href: dashboard-parameters.md  
-      - name: customize dashboard visuals
-        href: dashboard-customize-visuals.md  
     - name: Power BI
       items:
       - name: Best practices
@@ -224,14 +190,8 @@
           href: vnet-deployment.md  
         - name: Troubleshoot VNet cluster creation, connectivity, and operation 
           href: vnet-deploy-troubleshoot.md
-        - name: Create Private Endpoint for your VNet cluster - Portal
-          href: vnet-create-private-endpoint.md
-    - name: Encryption
-      items:
-      - name: Cluster disk encryption - portal
-        href: cluster-disk-encryption.md
-      - name: Double Encryption
-        href: double-encryption.md
+    - name: Manage cluster security
+      href: manage-cluster-security.md
     - name: Configure managed identities
       href: managed-identities.md
     - name: Configure customer-managed-keys
@@ -301,8 +261,7 @@
     items:
     - name: Use diagnostic logs to monitor ingestion
       href: using-diagnostic-logs.md
-    - name: Monitor Azure Data Explorer with metrics
-      displayName: health, performance
+    - name: Use metrics to monitor cluster health
       href: using-metrics.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
@@ -314,19 +273,27 @@
         href: follower.md    
   - name: Integrate with other tools
     items:
-    - name: Power Automate 
+    - name: Azure Data Factory
       items:
-      - name: Power Automate flow connector
+      - name: Integration with Data Factory 
+        href: data-factory-integration.md 
+      - name: Copy data using Azure Data Factory
+        href: data-factory-load-data.md  
+      - name: Bulk copy data using Azure Data Factory template
+        href: data-factory-template.md 
+      - name: Run control commands using Azure Data Factory
+        href: data-factory-command-activity.md
+    - name: Microsoft Flow connector
+      items:
+      - name: Microsoft Flow connector
         href: flow.md
-      - name: Power Automate connector usage examples
+      - name: Microsoft Flow connector usage examples
         href: flow-usage.md
     - name: Logic Apps
       href: kusto/tools/logicapps.md
     - name: Apache Spark Connector
       href: spark-connector.md
-    - name: Cosmos DB
-      href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
-    - name: Connect from Azure Databricks
+    - name: Connect from Databricks using Python
       href: connect-from-databricks.md
     - name: Analyze data in Jupyter Notebooks & Kqlmagic
       href: kqlmagic.md
@@ -334,8 +301,6 @@
       href: azure-notebooks.md
     - name: Azure Pipelines
       href: devops.md  
-    - name: Sync Kusto
-      href: ./kusto/tools/synckusto.md
   - name: Troubleshoot
     items:
     - name: Creating a cluster
@@ -346,7 +311,7 @@
       href: troubleshoot-database-table.md
 - name: Reference
   items:
-  - name: Kusto Query Language
+  - name: Kusto query
     items:
     - name: Overview
       href: ./kusto/query/index.md
@@ -730,8 +695,6 @@
         href: ./kusto/query/dcount-hllfunction.md
       - name: degrees()
         href: ./kusto/query/degreesfunction.md
-      - name: dynamic_to_json()
-        href: ./kusto/query/dynamic-to-json-function.md
       - name: endofday()
         href: ./kusto/query/endofdayfunction.md
       - name: endofmonth()
@@ -764,10 +727,6 @@
         href: ./kusto/query/format-bytesfunction.md
       - name: format_datetime()
         href: ./kusto/query/format-datetimefunction.md
-      - name: format_ipv4()
-        href: ./kusto/query/format-ipv4-function.md
-      - name: format_ipv4_mask()
-        href: ./kusto/query/format-ipv4-mask-function.md
       - name: format_timespan()
         href: ./kusto/query/format-timespanfunction.md
       - name: gamma()
@@ -1122,8 +1081,6 @@
         href: ./kusto/query/series-dividefunction.md
       - name: series_equals()
         href: ./kusto/query/series-equalsfunction.md
-      - name: series_fft()
-        href: ./kusto/query/series-fft-function.md
       - name: series_fill_backward()
         href: ./kusto/query/series-fill-backwardfunction.md
       - name: series_fill_const()
@@ -1146,8 +1103,6 @@
         href: ./kusto/query/series-greaterfunction.md
       - name: series_greater_equals()
         href: ./kusto/query/series-greater-equalsfunction.md
-      - name: series_ifft()
-        href: ./kusto/query/series-ifft-function.md
       - name: series_iir()
         href: ./kusto/query/series-iirfunction.md
       - name: series_less()
@@ -1220,355 +1175,42 @@
         href: kusto/query/geo-polygon-densify-function.md
     - name: User analytics
       items:
-      - name: User analytics plugins overview
+      - name: User analytics plugins
         href: ./kusto/query/useranalytics.md
-      - name: active_users_count plugin
+      - name: Active users count plugin
         href: ./kusto/query/active-users-count-plugin.md
-      - name: activity_counts_metrics plugin
+      - name: Activity counts metrics plugin
         href: ./kusto/query/activity-counts-metrics-plugin.md
-      - name: activity_engagement plugin
+      - name: Activity engagement plugin
         href: ./kusto/query/activity-engagement-plugin.md
-      - name: activity_metrics plugin
+      - name: Activity metrics plugin
         href: ./kusto/query/activity-metrics-plugin.md
-      - name: new_activity_metrics plugin
+      - name: Activity Metrics plugin - New
         href: ./kusto/query/new-activity-metrics-plugin.md
-      - name: funnel_sequence_completion plugin
+      - name: Funnel sequence completion plugin
         href: ./kusto/query/funnel-sequence-completion-plugin.md
-      - name: funnel_sequence plugin
+      - name: Funnel sequence plugin
         href: ./kusto/query/funnel-sequence-plugin.md
-      - name: session_count plugin
+      - name: Session count plugin
         href: ./kusto/query/session-count-plugin.md
-      - name: sliding_window_counts plugin
+      - name: Sliding window counts plugin
         href: ./kusto/query/sliding-window-counts-plugin.md
     - name: Reference material for Kusto Query Language
       items:
       - name: RE2 syntax
         href: ./kusto/query/re2.md
-      - name: SQL to Kusto cheat sheet
+      - name: SQL to Kusto Cheat Sheet
         href: ./kusto/query/sqlcheatsheet.md
-    - name: Query tools
-      items:
-      - name: Kusto.Explorer
-        items:
-        - name: Kusto.Explorer installation and user interface
-          href: ./kusto/tools/kusto-explorer.md
-        - name: Using Kusto.Explorer
-          href: ./kusto/tools/kusto-explorer-using.md
-        - name: Kusto.Explorer options
-          href: ./kusto/tools/kusto-explorer-options.md
-        - name: Keyboard shortcuts
-          href: ./kusto/tools/kusto-explorer-shortcuts.md
-        - name: Code Refactoring
-          href: ./kusto/tools/kusto-explorer-refactor.md
-        - name: Code Navigation
-          href: ./kusto/tools/kusto-explorer-codenav.md
-        - name: Code Analyzer
-          href: ./kusto/tools/kusto-explorer-code-analyzer.md
-        - name: Troubleshooting Kusto.Explorer
-          href: ./kusto/tools/kusto-explorer-troubleshooting.md
-      - name: Kusto.Cli
-        href: ./kusto/tools/kusto-cli.md
-  - name: Management
-    items:
-    - name: Management (control commands) overview
-      href: ./kusto/management/index.md
-    - name: Schema
-      items:
-      - name: Best practices for schema design
-        href: ./kusto/management/best-practices.md
-      - name: Databases management
-        href: ./kusto/management/databases.md
-        items:
-        - name: .show databases
-          href: ./kusto/management/show-databases.md
-        - name: .show database
-          href: ./kusto/management/show-database.md
-        - name: .show cluster databases
-          href: ./kusto/management/show-cluster-database.md
-        - name: .alter database prettyname
-          href: ./kusto/management/alter-database.md
-        - name: .show database(s) schema
-          href: ./kusto/management/show-schema-database.md
-        - name: .execute database script
-          href: ./kusto/management/execute-database-script.md
-      - name: Tables
-        items:
-        - name: Tables management
-          href: ./kusto/management/tables.md
-        - name: .alter-merge table
-          href: ./kusto/management/alter-merge-table-command.md
-        - name: .alter table
-          href: ./kusto/management/alter-table-command.md
-        - name: .alter table docstring
-          href: ./kusto/management/alter-table-docstring-command.md
-        - name: .alter table folder
-          href: ./kusto/management/alter-table-folder-command.md
-        - name: .alter ingestion mapping
-          href: ./kusto/management/alter-ingestion-mapping-command.md
-        - name: .create ingestion mapping
-          href: ./kusto/management/create-ingestion-mapping-command.md
-        - name: .drop ingestion mapping
-          href: ./kusto/management/drop-ingestion-mapping-command.md
-        - name: .show ingestion mapping
-          href: ./kusto/management/show-ingestion-mapping-command.md
-        - name: .create table
-          href: ./kusto/management/create-table-command.md
-        - name: .create tables
-          href: ./kusto/management/create-tables-command.md
-        - name: .create-merge table
-          href: ./kusto/management/create-merge-table-command.md  
-        - name: .create-merge tables
-          href: ./kusto/management/create-merge-tables-command.md
-        - name: .drop table(s)
-          href: ./kusto/management/drop-table-command.md
-        - name: .rename table(s)
-          href: ./kusto/management/rename-table-command.md
-        - name: .show tables
-          href: ./kusto/management/show-tables-command.md
-        - name: .undo drop table
-          href: ./kusto/management/undo-drop-table-command.md
-        - name: .show table details
-          href: ./kusto/management/show-table-details-command.md
-        - name: .show table schema
-          href: ./kusto/management/show-table-schema-command.md
-      - name: External tables
-        items:
-        - name: External tables general control commands
-          href: ./kusto/management/external-table-commands.md
-        - name: Create and alter external tables in Azure Storage or Azure Data Lake
-          href: ./kusto/management/external-tables-azurestorage-azuredatalake.md
-        - name: Create and alter external SQL tables
-          href: ./kusto/management/external-sql-tables.md
-      - name: Columns
-        items:
-        - name: Columns management
-          href: ./kusto/management/columns.md
-        - name: .alter column
-          href: ./kusto/management/alter-column.md
-        - name: .alter-merge table column-docstrings
-          href: ./kusto/management/alter-merge-table-column.md
-        - name: .drop column
-          href: ./kusto/management/drop-column.md
-        - name: .rename column(s)
-          href: ./kusto/management/rename-column.md
-      - name: Data mappings
-        href: ./kusto/management/mappings.md
-      - name: Functions
-        items:
-        - name: Stored functions management overview
-          href: ./kusto/management/functions.md
-        - name: .alter function
-          href: ./kusto/management/alter-function.md
-        - name: .alter function docstring
-          href: ./kusto/management/alter-docstring-function.md
-        - name: .alter function folder
-          href: ./kusto/management/alter-folder-function.md
-        - name: .create function
-          href: ./kusto/management/create-function.md
-        - name: .create-or-alter function
-          href: ./kusto/management/create-alter-function.md
-        - name: .drop function
-          href: ./kusto/management/drop-function.md
-        - name: .show functions
-          href: ./kusto/management/show-function.md
-    - name: Policies
-      items:
-      - name: Ingestion batching
-        items:
-        - name: Ingestionbatching policy
-          href: ./kusto/management/batchingpolicy.md
-        - name: ingestionbatching policy command
-          href: ./kusto/management/batching-policy.md
-      - name: Cache
-        items:
-        - name: Cache policy (hot and cold cache)
-          href: ./kusto/management/cachepolicy.md
-        - name: cache policy command
-          href: ./kusto/management/cache-policy.md
-      - name: Callout
-        href: ./kusto/management/calloutpolicy.md
-      - name: Capacity
-        items:
-        - name: Capacity policy
-          href: ./kusto/management/capacitypolicy.md
-        - name: capacity policy commands
-          href: ./kusto/management/capacity-policy.md
-      - name: Ingestiontime
-        items:
-        - name: Ingestiontime policy
-          href: ./kusto/management/ingestiontimepolicy.md
-        - name: ingestiontime policy command
-          href: ./kusto/management/ingestiontime-policy.md
-      - name: Merge
-        items:
-        - name: Merge policy
-          href: ./kusto/management/mergepolicy.md
-        - name: merge policy command
-          href: ./kusto/management/merge-policy.md
-      - name: Partitioning
-        items:
-        - name: Partitioning policy
-          href: ./kusto/management/partitioningpolicy.md
-        - name: partitioning policy command
-          href: ./kusto/management/partitioning-policy.md
-      - name: Retention
-        items:
-        - name: Retention policy
-          href: ./kusto/management/retentionpolicy.md
-        - name: retention policy command
-          href: ./kusto/management/retention-policy.md
-      - name: Restricted view access
-        items:
-        - name: Restricted view access policy
-          href: ./kusto/management/restrictedviewaccesspolicy.md
-        - name: restricted_view_access policy command
-          href: ./kusto/management/restrictedviewaccess-policy.md
-      - name: Row level security
-        items:
-        - name: Row level security policy
-          href: ./kusto/management/rowlevelsecuritypolicy.md
-        - name: row_level_security policy command
-          href: ./kusto/management/row-level-security-policy.md
-      - name: Roworder
-        items:
-        - name: Roworder policy
-          href: ./kusto/management/roworderpolicy.md
-        - name: roworder policy command
-          href: ./kusto/management/roworder-policy.md
-      - name: Sandbox
-        items:
-        - name: Sandbox policy
-          href: ./kusto/management/sandboxpolicy.md
-        - name: Sandbox policy command
-          href: ./kusto/management/sandbox-policy.md
-      - name: Sharding
-        items:
-        - name: Sharding policy
-          href: ./kusto/management/shardingpolicy.md
-        - name: sharding policy command
-          href: ./kusto/management/sharding-policy.md
-      - name: Streaming ingestion
-        items:
-        - name: Streaming ingestion policy
-          href: ./kusto/management/streamingingestionpolicy.md
-        - name: streamingingestion policy command
-          href: ./kusto/management/streamingingestion-policy.md
-      - name: Update
-        items:
-        - name: Update policy
-          href: ./kusto/management/updatepolicy.md
-        - name: update policy commands
-          href: ./kusto/management/update-policy.md
-    - name: Security roles
-      href: ./kusto/management/security-roles.md
-    - name: Data ingestion
-      items:
-      - name: Ingest from storage
-        href: ./kusto/management/data-ingestion/ingest-from-storage.md
-      - name: Ingest from query
-        href: ./kusto/management/data-ingestion/ingest-from-query.md
-      - name: Inline ingestion
-        href: ./kusto/management/data-ingestion/ingest-inline.md
-      - name: Streaming ingestion
-        items:
-        - name: Streaming ingestion and schema changes
-          href: ./kusto/management/data-ingestion/streaming-ingestion-schema-changes.md
-        - name: Clear schema cache for streaming ingestion
-          href: ./kusto/management/data-ingestion/clear-schema-cache-command.md
-    - name: Data export
-      href: ./kusto/management/data-export/index.md
-      items:
-      - name: To cloud storage
-        href: ./kusto/management/data-export/export-data-to-storage.md
-      - name: To a SQL table
-        href: ./kusto/management/data-export/export-data-to-sql.md
-      - name: To an external table
-        href: ./kusto/management/data-export/export-data-to-an-external-table.md
-      - name: Continuous data export
-        items:
-        - name: Overview
-          href: ./kusto/management/data-export/continuous-data-export.md
-        - name: Create or alter continuous export
-          href: ./kusto/management/data-export/create-alter-continuous.md
-        - name: Disable or enable continuous export
-          href: ./kusto/management/data-export/disable-enable-continuous.md
-        - name: Drop continuous export
-          href: ./kusto/management/data-export/drop-continuous-export.md
-        - name: Show continuous export
-          href: ./kusto/management/data-export/show-continuous-export.md
-        - name: Show continuous export artifacts
-          href: ./kusto/management/data-export/show-continuous-artifacts.md
-        - name: Show continuous export failures
-          href: ./kusto/management/data-export/show-continuous-failures.md
-    - name: Database cursors
-      href: ./kusto/management/databasecursor.md
-    - name: Query results cache
-      href: ./kusto/management/query-results-cache-commands.md
-      items:
-      - name: Show cache
-        href: ./kusto/management/show-query-results-cache-command.md
-      - name: Clear cache
-        href: ./kusto/management/clear-query-results-cache-command.md
-    - name: System information
-      href: ./kusto/management/systeminfo.md
-      items:
-      - name: Diagnostics
-        href: ./kusto/management/diagnostics.md
-      - name: Journal
-        href: ./kusto/management/journal.md
-      - name: Queries
-        href: ./kusto/management/queries.md
-      - name: Commands
-        href: ./kusto/management/commands.md
-      - name: Commands and queries
-        href: ./kusto/management/commands-and-queries.md
-      - name: Ingestion failures
-        href: ./kusto/management/ingestionfailures.md
-      - name: Operations
-        href: ./kusto/management/operations.md
-    - name: Access control
-      href: ./kusto/management/access-control/index.md
-      items:
-      - name: Identities
-        href: ./kusto/management/access-control/principals-and-identity-providers.md
-      - name: AAD
-        href: ./kusto/management/access-control/aad.md
-      - name: Principal roles
-        href: ./kusto/management/access-control/role-based-authorization.md
-      - name: How-To AAD authentication
-        href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
-    - name: Advanced data management
-      items:
-      - name: Extents (data shards) overview
-        href: ./kusto/management/extents-overview.md
-      - name: Extents Commands
-        items: 
-        - name: .alter extent
-          href: ./kusto/management/alter-extent.md
-        - name: .drop extents
-          href: ./kusto/management/drop-extents.md
-        - name: .drop extent tags
-          href: ./kusto/management/drop-extent-tags.md
-        - name: .merge extents
-          href: ./kusto/management/merge-extents.md
-        - name: .move extents
-          href: ./kusto/management/move-extents.md
-        - name: .replace extents
-          href: ./kusto/management/replace-extents.md
-        - name: .show extents
-          href: ./kusto/management/show-extents.md
-      - name: Cluster follower
-        href: ./kusto/management/cluster-follower.md
-      - name: Data purge
-        href: ./kusto/concepts/data-purge.md
   - name: Concepts
+    href: ./kusto/concepts/index.md
     items:
     - name: Getting started
       href: ./kusto/concepts/index.md
-    - name: Misc and Errors
       items:
       - name: Sandboxes
         href: ./kusto/concepts/sandboxes.md
+    - name: Misc and Errors
+      items:
       - name: Query limits
         href: ./kusto/concepts/querylimits.md
       - name: Partial query failures
@@ -1588,9 +1230,284 @@
         href: ./kusto/concepts/errorsinnativecode.md
       - name: Fact and dimension tables
         href: ./kusto/concepts/fact-and-dimension-tables.md
-  - name: API
+  - name: Management
+    href: ./kusto/management/index.md
     items:
-    - name: API overview
+    - name: Overview
+      href: ./kusto/management/index.md
+      items:
+      - name: Best practices
+        href: ./kusto/management/best-practices.md
+    - name: Schema
+      href: ./kusto/management/schema.md
+      items:
+      - name: Databases
+        href: ./kusto/management/databases.md
+        items:
+        - name: .show databases
+          href: ./kusto/management/show-databases.md
+        - name: .show database
+          href: ./kusto/management/show-database.md
+        - name: .show cluster database
+          href: ./kusto/management/show-cluster-database.md
+        - name: .alter database
+          href: ./kusto/management/alter-database.md
+        - name: .show database schema
+          href: ./kusto/management/show-schema-database.md
+        - name: .execute database script
+          href: ./kusto/management/execute-database-script.md
+      - name: Tables
+        items:
+        - name: Tables overview
+          href: ./kusto/management/tables.md
+        - name: .alter merge table
+          href: ./kusto/management/alter-merge-table-command.md
+        - name: .alter table
+          href: ./kusto/management/alter-table-command.md
+        - name: .alter table docstring
+          href: ./kusto/management/alter-table-docstring-command.md
+        - name: .alter table folder
+          href: ./kusto/management/alter-table-folder-command.md
+        - name: .alter ingestion mapping
+          href: ./kusto/management/alter-ingestion-mapping-command.md
+        - name: .create ingestion mapping
+          href: ./kusto/management/create-ingestion-mapping-command.md
+        - name: .drop ingestion mapping
+          href: ./kusto/management/drop-ingestion-mapping-command.md
+        - name: .show ingestion mapping
+          href: ./kusto/management/show-ingestion-mapping-command.md
+        - name: .create table
+          href: ./kusto/management/create-table-command.md
+        - name: .create tables
+          href: ./kusto/management/create-tables-command.md
+        - name: .create-merge tables
+          href: ./kusto/management/create-merge-tables-command.md
+        - name: .drop table(s)
+          href: ./kusto/management/drop-table-command.md
+        - name: .rename table
+          href: ./kusto/management/rename-table-command.md
+        - name: .show table
+          href: ./kusto/management/show-tables-command.md
+        - name: .undo drop table
+          href: ./kusto/management/undo-drop-table-command.md
+        - name: .show table details
+          href: ./kusto/management/show-table-details-command.md
+        - name: .show table schema
+          href: ./kusto/management/show-table-schema-command.md
+      - name: External tables
+        items:
+        - name: External tables general control commands
+          href: ./kusto/management/externaltables.md
+        - name: Create and alter external SQL tables
+          href: ./kusto/management/external-sql-tables.md
+        - name: Create and alter external tables in Azure Storage or Azure Data Lake
+          href: ./kusto/management/external-tables-azurestorage-azuredatalake.md  
+      - name: Columns
+        items:
+        - name: Columns overview
+          href: ./kusto/management/columns.md
+        - name: .alter column
+          href: ./kusto/management/alter-column.md
+        - name: .alter-merge table column-docstrings
+          href: ./kusto/management/alter-merge-table-column.md
+        - name: .drop column
+          href: ./kusto/management/drop-column.md
+        - name: .rename column(s)
+          href: ./kusto/management/rename-column.md
+      - name: Mappings
+        href: ./kusto/management/mappings.md
+      - name: Functions
+        items:
+        - name: Functions overview
+          href: ./kusto/management/functions.md
+        - name: .alter function
+          href: ./kusto/management/alter-function.md
+        - name: .alter docstring function
+          href: ./kusto/management/alter-docstring-function.md
+        - name: .alter folder function
+          href: ./kusto/management/alter-folder-function.md
+        - name: .create function
+          href: ./kusto/management/create-function.md
+        - name: .create-or-alter function
+          href: ./kusto/management/create-alter-function.md
+        - name: .drop function
+          href: ./kusto/management/drop-function.md
+        - name: .show function
+          href: ./kusto/management/show-function.md
+    - name: Policies
+      items:
+      - name: Policies overview
+        href: ./kusto/management/policies.md
+      - name: Cache policy
+        items:
+        - name: Cache policy
+          href: ./kusto/management/cachepolicy.md
+        - name: cache policy command
+          href: ./kusto/management/cache-policy.md
+      - name: IngestionTime policy
+        items:
+        - name: Ingestiontime policy
+          href: ./kusto/management/ingestiontimepolicy.md
+        - name: ingestiontime policy command
+          href: ./kusto/management/ingestiontime-policy.md
+      - name: Retention policy
+        items:
+        - name: Retention policy
+          href: ./kusto/management/retentionpolicy.md
+        - name: retention policy command
+          href: ./kusto/management/retention-policy.md
+      - name: RowLevelSecurity policy
+        items:
+        - name: Row Level Security policy
+          href: ./kusto/management/rowlevelsecuritypolicy.md
+        - name: row_level_securityy policy command
+          href: ./kusto/management/row-level-security-policy.md
+      - name: RowOrder policy
+        items:
+        - name: Row Order policy
+          href: ./kusto/management/roworderpolicy.md
+        - name: roworder command
+          href: ./kusto/management/roworder-policy.md
+      - name: Update policy
+        items:
+        - name: Update policy
+          href: ./kusto/management/updatepolicy.md
+        - name: update policy command
+          href: ./kusto/management/update-policy.md
+      - name: Batch policy
+        items:
+        - name: Ingestion batching policy
+          href: ./kusto/management/batchingpolicy.md
+        - name: ingestionbatching policy command
+          href: ./kusto/management/batching-policy.md
+      - name: Merge policy
+        items:
+        - name: Merge policy
+          href: ./kusto/management/mergepolicy.md
+        - name: merge policy command
+          href: ./kusto/management/merge-policy.md
+      - name: Partitioning policy
+        items:
+        - name: Partitioning policy
+          href: ./kusto/management/partitioningpolicy.md
+        - name: partitioning policy command
+          href: ./kusto/management/partitioning-policy.md
+      - name: Restricted View Access policy
+        items:
+        - name: Restricted View Access policy
+          href: ./kusto/management/restrictedviewaccesspolicy.md
+        - name: restricted_view_access policy command
+          href: ./kusto/management/restrictedviewaccess-policy.md
+      - name: Sandbox policy
+        items:
+        - name: Sandbox policy
+          href: ./kusto/management/sandboxpolicy.md
+        - name: Sandbox policy command
+          href: ./kusto/management/sandbox-policy.md
+      - name: Sharding policy
+        items:
+        - name: Sharding policy
+          href: ./kusto/management/shardingpolicy.md
+        - name: sharding policy command
+          href: ./kusto/management/sharding-policy.md
+      - name: Streaming Ingestion policy
+        items:
+        - name: Streaming Ingestion policy
+          href: ./kusto/management/streamingingestionpolicy.md
+        - name: streamingingestion policy command
+          href: ./kusto/management/streamingingestion-policy.md
+      - name: Callout policy
+        href: ./kusto/management/calloutpolicy.md
+      - name: Capacity policy
+        items:
+        - name: Capacity policy
+          href: ./kusto/management/capacitypolicy.md
+        - name: capacity policy command
+          href: ./kusto/management/capacity-policy.md
+    - name: Security Roles
+      href: ./kusto/management/security-roles.md
+    - name: Data Ingestion
+      items:
+      - name: Ingest from storage
+        href: ./kusto/management/data-ingestion/ingest-from-storage.md
+      - name: Ingest from query
+        href: ./kusto/management/data-ingestion/ingest-from-query.md
+      - name: Inline ingestion
+        href: ./kusto/management/data-ingestion/ingest-inline.md
+      - name: Ingest from storage using Event Grid subscription
+        href: ./kusto/management/data-ingestion/eventgrid.md
+      - name: Ingest from Event Hub
+        href: ./kusto/management/data-ingestion/eventhub.md
+      - name: Ingest from IoT Hub
+        href: ./kusto/management/data-ingestion/iothub.md
+      - name: Streaming Ingestion
+        items:
+        - name: Streaming ingestion and schema changes
+          href: ./kusto/management/data-ingestion/streaming-ingestion-schema-changes.md
+        - name: Clear schema cache for streaming ingestion
+          href: ./kusto/management/data-ingestion/clear-schema-cache-command.md
+    - name: Data Export
+      href: ./kusto/management/data-export/index.md
+      items:
+      - name: To cloud storage
+        href: ./kusto/management/data-export/export-data-to-storage.md
+      - name: To a SQL table
+        href: ./kusto/management/data-export/export-data-to-sql.md
+      - name: To an external table
+        href: ./kusto/management/data-export/export-data-to-an-external-table.md
+      - name: Continuous data export
+        href: ./kusto/management/data-export/continuous-data-export.md
+    - name: Database Cursors
+      href: ./kusto/management/databasecursor.md
+    - name: Query results cache
+      href: ./kusto/management/query-results-cache-commands.md
+      items:
+      - name: Show cache
+        href: ./kusto/management/show-query-results-cache-command.md
+      - name: Clear cache
+        href: ./kusto/management/clear-query-results-cache-command.md      
+    - name: System Information
+      href: ./kusto/management/systeminfo.md
+      items:
+      - name: Diagnostics
+        href: ./kusto/management/diagnostics.md
+      - name: Journal
+        href: ./kusto/management/journal.md
+      - name: Queries
+        href: ./kusto/management/queries.md
+      - name: Commands
+        href: ./kusto/management/commands.md
+      - name: Commands and Queries
+        href: ./kusto/management/commands-and-queries.md
+      - name: Ingestion Failures
+        href: ./kusto/management/ingestionfailures.md
+      - name: Operations
+        href: ./kusto/management/operations.md
+    - name: Access Control
+      href: ./kusto/management/access-control/index.md
+      items:
+      - name: Identities
+        href: ./kusto/management/access-control/principals-and-identity-providers.md
+      - name: AAD
+        href: ./kusto/management/access-control/aad.md
+      - name: Principal roles
+        href: ./kusto/management/access-control/role-based-authorization.md
+      - name: How-To AAD Authentication
+        href: ./kusto/management/access-control/how-to-authenticate-with-aad.md
+    - name: Advanced Data Management
+      items:
+      - name: Extents (Data Shards) Overview
+        href: ./kusto/management/extents-overview.md
+      - name: Extents Commands
+        href: ./kusto/management/extents-commands.md
+      - name: Cluster follower
+        href: ./kusto/management/cluster-follower.md
+      - name: Data purge
+        href: ./kusto/concepts/data-purge.md
+  - name: API
+    href: ./kusto/api/index.md
+    items:
+    - name: Overview
       href: ./kusto/api/index.md
       items:
       - name: Client libraries
@@ -1626,7 +1543,7 @@
         href: ./kusto/api/tds/tdskql.md
       - name: Clients
         href: ./kusto/api/tds/clients.md
-      - name: Linked server
+      - name: Linked Server
         href: ./kusto/api/tds/linkedserver.md
       - name: AAD
         href: ./kusto/api/tds/aad.md
@@ -1638,28 +1555,30 @@
         items:
         - name: About the SDK
           href: ./kusto/api/netfx/about-the-sdk.md
-        - name: Controlling tracing
+        - name: Controlling Tracing
           href: ./kusto/api/netfx/controlling-tracing.md
       - name: Kusto.Data
         href: ./kusto/api/netfx/about-kusto-data.md
         items:
-        - name: Request properties, ClientRequestProperties
+        - name: Request Properties, ClientRequestProperties
           href: ./kusto/api/netfx/request-properties.md
       - name: Kusto.Ingest
         href: ./kusto/api/netfx/about-kusto-ingest.md
         items:
         - name: Permissions
           href: ./kusto/api/netfx/kusto-ingest-client-permissions.md
-        - name: Client reference
+        - name: Client Reference
           href: ./kusto/api/netfx/kusto-ingest-client-reference.md
         - name: Exceptions
           href: ./kusto/api/netfx/kusto-ingest-client-errors.md
-        - name: Operation status
+        - name: Operation Status
           href: ./kusto/api/netfx/kusto-ingest-client-status.md
-        - name: Best practices
+        - name: Best Practices
           href: ./kusto/api/netfx/kusto-ingest-best-practices.md
-        - name: Code samples
+        - name: Code Samples
           href: ./kusto/api/netfx/kusto-ingest-client-examples.md
+        - name: HowTo Data Ingestion
+          href: ./kusto/api/netfx/kusto-ingest-queued-ingest-sample.md
         - name: HowTo Data Ingestion with REST API
           href: ./kusto/api/netfx/kusto-ingest-client-rest.md
     - name: Python SDK
@@ -1692,22 +1611,79 @@
         href: ./kusto/api/monaco/monaco-kusto.md
       - name: Embed web UX in an iFrame
         href: ./kusto/api/monaco/host-web-ux-in-iframe.md
-  - name: Functions library
+  - name: Tools
+    href: ./kusto/tools/index.md
     items:
-    - name: List of functions
-      href: kusto/functions-library/functions-library.md
-    - name: predict_lf()
-      href: kusto/functions-library/predict-lf.md
-    - name: predict_onnx_lf()
-      href: kusto/functions-library/predict-onnx-lf.md
-    - name: quantize_lf()
-      href: kusto/functions-library/quantize-lf.md
-    - name: series_fit_poly_lf()
-      href: kusto/functions-library/series-fit-poly-lf.md
-    - name: series_moving_avg_lf()
-      href: kusto/functions-library/series-moving-avg-lf.md
-    - name: series_rolling_lf()
-      href: kusto/functions-library/series-rolling-lf.md
+    - name: Tools overview
+      href: ./kusto/tools/index.md
+    - name: Ad-hoc query
+      items:
+      - name: Kusto.Explorer
+        items:
+        - name: Kusto.Explorer installation and user interface
+          href: ./kusto/tools/kusto-explorer.md
+        - name: Using Kusto.Explorer
+          href: ./kusto/tools/kusto-explorer-using.md
+        - name: Kusto.Explorer options
+          href: ./kusto/tools/kusto-explorer-options.md
+        - name: Keyboard shortcuts
+          href: ./kusto/tools/kusto-explorer-shortcuts.md
+        - name: Code Refactoring
+          href: ./kusto/tools/kusto-explorer-refactor.md
+        - name: Code Navigation
+          href: ./kusto/tools/kusto-explorer-codenav.md
+        - name: Code Analyzer
+          href: ./kusto/tools/kusto-explorer-code-analyzer.md
+        - name: Troubleshooting Kusto.Explorer
+          href: ./kusto/tools/kusto-explorer-troubleshooting.md
+      - name: Web UI
+        href: ./web-query-data.md
+      - name: Kusto.Cli
+        href: ./kusto/tools/kusto-cli.md
+    - name: Visualizations, dashboards, and reporting
+      items:
+      - name: Azure Notebooks
+        href: ./azure-notebooks.md
+      - name: Excel
+        items:
+        - name: Excel blank query
+          href: ./excel-blank-query.md
+        - name: Excel connector
+          href: ./excel-connector.md
+      - name: Grafana
+        href: ./grafana.md
+      - name: Power BI
+        items:
+        - name: Power BI best practices
+          href: ./power-bi-best-practices.md
+        - name: Power BI Connector
+          href: ./power-bi-connector.md
+        - name: Power BI imported query
+          href: ./power-bi-imported-query.md
+        - name: Power BI SQL query
+          href: ./power-bi-sql-query.md
+    - name: Orchestration
+      items:
+      - name: Microsoft Flow (Preview)
+        items:
+        - name: Microsoft Flow connector
+          href: ./flow.md
+        - name: Microsoft Flow connector usage examples
+          href: ./flow-usage.md
+      - name: Microsoft Logic Apps (Preview)
+        href: ./kusto/tools/logicapps.md
+    - name: Data ingestion
+      items:
+      - name: LightIngest
+        href: ./lightingest.md
+      - name: Apache Spark connector
+        href: ./spark-connector.md
+    - name: Source control integration
+      items:
+      - name: Sync Kusto
+        href: ./kusto/tools/synckusto.md
+      - name: Azure Pipelines/DevOps
+        href: ./devops.md
 - name: Resources
   items:
   - name: Blog
@@ -1732,3 +1708,4 @@
       href: pricing-reserved-capacity.md 
   - name: Service updates
     href: https://azure.microsoft.com/updates/?product=data-explorer
+    
