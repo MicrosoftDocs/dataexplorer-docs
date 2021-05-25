@@ -4,7 +4,7 @@ description: This article describes hll_merge() (aggregation function) in Azure 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/15/2019
@@ -31,4 +31,4 @@ The function returns the merged `hll` values of `*Expr*` across the group.
  
 **Tips**
 
-1) Use the function [dcount_hll] (dcount-hllfunction.md) to calculate the `dcount` from `hll` / `hll-merge` aggregation functions.
+1) Use the function [dcount_hll](dcount-hllfunction.md) to calculate the `dcount` from `hll` / `hll-merge` aggregation functions.

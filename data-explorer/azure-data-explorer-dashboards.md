@@ -7,9 +7,10 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/26/2020
+ms.localizationpriority: high 
 ---
 
-# Visualize data with Azure Data Explorer dashboards
+# Visualize data with Azure Data Explorer dashboards(Preview)
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides a web application that enables you to run queries and build dashboards. Dashboards are available in the stand-alone web application, the [Web UI](web-query-data.md). Azure Data Explorer is also integrated with other dashboard services like [Power BI](power-bi-connector.md) and [Grafana](grafana.md).
 
@@ -22,6 +23,9 @@ Azure Data Explorer dashboards provide three main advantages:
 The following image depicts an Azure Data Explorer dashboard.
 
 :::image type="content" source="media/adx-dashboards/dash.png" alt-text="Final dashboard":::
+
+> [!IMPORTANT]
+> Your data is secure. Dashboards and dashboard-related metadata about users is encrypted at rest.
 
 ## Create a dashboard
 
@@ -97,7 +101,7 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
 ## Share dashboards
 
-Use the share menu to [grant permissions](#grant-permissions) to the dashboard, [change a user's permission level](#change-a-user-permission-level), and [share the dashboard link](#share-the-dashboard-link).
+Use the share menu to [grant permissions](#grant-permissions) for an Azure Active Directory (AAD) user or AAD group to access the dashboard, [change a user's permission level](#change-a-user-permission-level), and [share the dashboard link](#share-the-dashboard-link).
 
 > [!IMPORTANT]
 > To access the dashboard, a dashboard viewer needs the following:

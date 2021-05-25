@@ -29,7 +29,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 |DocString|String|A description of the function for UI purposes.
 
 > [!NOTE]
-> * If the function doesn't exist, an error is returned. For creating a new function, see [.create function](create-function.md)
+> * If the function doesn't exist, an error is returned. For creating a new function, see [`.create function`](create-function.md)
 > * Requires [database admin permission](../management/access-control/role-based-authorization.md)
 > * The [database user](../management/access-control/role-based-authorization.md) who originally created the function is allowed to modify the function. 
 > * Not all Kusto types are supported in `let` statements. Supported types are: string, long, datetime, timespan, and double.

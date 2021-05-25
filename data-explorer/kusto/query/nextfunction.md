@@ -4,14 +4,14 @@ description: This article describes next() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
 # next()
 
-Returns the value of a column in a row that it at some offset following the
+Returns the value of a column in a row that is at some offset following the
 current row in a [serialized row set](./windowsfunctions.md#serialized-row-set).
 
 ## Syntax

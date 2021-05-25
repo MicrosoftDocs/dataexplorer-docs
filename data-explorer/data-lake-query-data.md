@@ -7,6 +7,7 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/17/2020
+ms.localizationpriority: high
 ---
 # Query data in Azure Data Lake using Azure Data Explorer
 
@@ -119,7 +120,7 @@ dataformat=multijson
 Define a JSON mapping that maps data fields to external table definition fields:
 
 ```kusto
-.create external table ApiCalls json mapping 'MyMapping' '[{"Column":"Timestamp","Properties":{"Path":"$.time"}},{"Column":"TenantId","Properties":{"Path":"$.data.tenant"}},{"Column":"MethodName","Properties":{"Path":"$.data.method"}}]'
+.create external table ApiCalls json mapping 'MyMapping' '[{"Column":"Timestamp","Properties":{"Path":"$.timestamp"}},{"Column":"TenantId","Properties":{"Path":"$.data.tenant"}},{"Column":"MethodName","Properties":{"Path":"$.data.method"}}]'
 ```
 
 When you query the external table, the mapping will be invoked, and relevant data will be mapped to the external table columns:
@@ -194,7 +195,7 @@ This section shows the query used to create the *TaxiRides* external table in th
   dropoff_puma: string
 )
 kind=blob 
-partition by bin(pickup_datetime, 1d)
+partition by (Date:datetime = bin(pickup_datetime, 1d))   
 dataformat=csv
 ( 
     h@'https://storageaccount.blob.core.windows.net/container1;secretKey'

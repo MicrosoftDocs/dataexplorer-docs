@@ -13,6 +13,7 @@ ms.date: 10/07/2019
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
+> * [One-click](one-click-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
@@ -25,7 +26,7 @@ In this article, you create an Event Hub data connection for Azure Data Explorer
 * An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * [Python 3.4+](https://www.python.org/downloads/).
 * [A cluster and database](create-cluster-database-python.md).
-* [Table and column mapping](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
+* [Table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
 * [Database and table policies](database-table-policies-python.md) (optional).
 * [Event Hub with data for ingestion](ingest-data-event-hub.md#create-an-event-hub).
 

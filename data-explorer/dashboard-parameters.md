@@ -292,10 +292,9 @@ The new parameter is now visible in the parameter list at the top of the dashboa
 
 ## Use filter search for single and multiple selection filters
 
-In single and multiple selection filters, type the value that you want. The filter search will present all the recently retrieved values that match the search term.
+In single and multiple selection filters, type the value that you want. The filter search will present only the recently retrieved values that match the search term.
 
 ## Next Steps
 
 * [Customize dashboard visuals](dashboard-customize-visuals.md)
 * [Query data in Azure Data Explorer](web-query-data.md) 
-

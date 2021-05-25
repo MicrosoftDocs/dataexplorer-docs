@@ -21,7 +21,13 @@ or the default cluster value set by Kusto.
 If the policy is not set for a certain entity, it will look for a higher hierarchy level policy,
 if all are set to null the default value will be used. 
 
-The policy has a lower limit of 10 seconds and it is not recommended to use values larger than 15 minutes.
+**IngestionBatching limits:**
+
+| Type | Default | Minimum | Maximum
+|---|---|---|---|
+| Number of items | 1000 | 1 | 2000 |
+| Data size (MB) | 1000 | 100 | 1000 |
+| Time | 5 minutes | 10 seconds | 15 minutes |
 
 ## Displaying the IngestionBatching policy
 

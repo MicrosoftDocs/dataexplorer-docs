@@ -4,7 +4,7 @@ description: This article describes rolling_percentile plugin in Azure Data Expl
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -33,9 +33,7 @@ T | evaluate rolling_percentile(ValueColumn, Percentile, IndexColumn, BinSize, B
 
 ## Returns
 
-Returns a table with a row per each bin (and combination of dimensions if specified) that has the rolling percentile of values in the window ending at the bin (inclusive). distinct count values, distinct count of new values, aggregated distinct count for each 
-time window.
-
+Returns a table with a row per each bin (and combination of dimensions if specified) that has the rolling percentile of values in the window ending at the bin (inclusive). 
 Output table schema is:
 
 

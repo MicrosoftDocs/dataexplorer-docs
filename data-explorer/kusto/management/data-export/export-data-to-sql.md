@@ -32,7 +32,7 @@ Properties:
 
 |Name               |Values           |Description|
 |-------------------|-----------------|-----------|
-|`firetriggers`     |`true` or `false`|If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. (For more information see [BULK INSERT](https://msdn.microsoft.com/library/ms188365.aspx) and [System.Data.SqlClient.SqlBulkCopy](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy(v=vs.110).aspx))|
+|`firetriggers`     |`true` or `false`|If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. (For more information see [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) and [System.Data.SqlClient.SqlBulkCopy](/dotnet/api/system.data.sqlclient.sqlbulkcopy))|
 |`createifnotexists`|`true` or `false`|If `true`, the target SQL table will be created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column which is the primary key. The default is `false`.|
 |`primarykey`       |                 |If `createifnotexists` is `true`, indicates the name of the column in the result that will be used as the SQL table's primary key if it is created by this command.|
 |`persistDetails`   |`bool`           |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results). Defaults to `false` in synchronous executions, but can be turned on. |
@@ -61,9 +61,9 @@ There are a number of limitations and restrictions when exporting data to a SQL 
 
 4. Exporting large volumes of data may take a long time. It's recommended that
    the target SQL table be set for minimal logging during bulk import.
-   See [SQL Server Database Engine > ... > Database Features > Bulk Import and Export of Data](https://msdn.microsoft.com/library/ms190422.aspx).
+   See [SQL Server Database Engine > ... > Database Features > Bulk Import and Export of Data](/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import).
 
-5. Data export is performed using SQL bulk copy and provides no transactional guarantees on the target SQL database. See [Transaction and Bulk Copy Operations](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/transaction-and-bulk-copy-operations) for more details.
+5. Data export is performed using SQL bulk copy and provides no transactional guarantees on the target SQL database. See [Transaction and Bulk Copy Operations](/dotnet/framework/data/adonet/sql/transaction-and-bulk-copy-operations) for more details.
 
 6. The SQL table name is restricted to a name consisting of letters, digits, spaces, underscores (`_`), dots (`.`) and hyphens (`-`).
 
@@ -78,7 +78,7 @@ There are a number of limitations and restrictions when exporting data to a SQL 
 
 ## Azure DB AAD Integrated Authentication Documentation
 
-* [Use Azure Active Directory Authentication for authentication with SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)
+* [Use Azure Active Directory Authentication for authentication with SQL Database](/azure/sql-database/sql-database-aad-authentication)
 * [Azure AD authentication extensions for Azure SQL DB and SQL DW tools] (https://azure.microsoft.com/blog/azure-ad-authentication-extensions-for-azure-sql-db-and-sql-dw-tools/)
 
 **Examples** 

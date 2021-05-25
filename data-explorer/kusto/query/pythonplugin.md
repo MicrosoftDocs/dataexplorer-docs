@@ -27,7 +27,7 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
 * *output_schema*: A `type` literal that defines the output schema of the tabular data, returned by the Python code.
     * The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`. For example, `typeof(col1:string, col2:long)`.
     * To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`
-* *script*: A `string` literal that is the valid Python script to execute.
+* *script*: A `string` literal that is a valid Python script to execute. To generate multi-line strings see [Usage tips](#usage-tips).
 * *script_parameters*: An optional `dynamic` literal. It's a property bag of name/value pairs to be passed to the
    Python script as the reserved `kargs` dictionary. For more information, see [Reserved Python variables](#reserved-python-variables).
 * *hint.distribution*: An optional hint for the plugin's execution to be distributed across multiple cluster nodes.
@@ -130,7 +130,7 @@ print "This is an example for using 'external_artifacts'"
     * You can also use the [partition operator](partitionoperator.md) for partitioning the input data set.
 * Use Kusto's query language whenever possible, to implement the logic of your Python script.
 
-    ## Example
+    ### Example
 
     ```kusto    
     .show operations
@@ -149,6 +149,10 @@ print "This is an example for using 'external_artifacts'"
 * To generate multi-line strings containing the Python script in `Kusto.Explorer`, copy your Python script from your favorite
   Python editor (*Jupyter*, *Visual Studio Code*, *PyCharm*, and so on). 
   Now do one of:
+    * Enclose the full script between lines containing three consecutive backticks, for example:  
+      ` ``` `  
+      ` python code`  
+      ` ``` `
     * Press **F2** to open the *Edit in Python* window. Paste the script into this window. Select **OK**. The script will be
       decorated with quotes and new lines, so it's valid in Kusto, and automatically pasted into the query tab.
     * Paste the Python code directly into the query tab. Select those lines, and press **Ctrl+K**, **Ctrl+S** hot keys, to decorate them as
@@ -158,7 +162,7 @@ print "This is an example for using 'external_artifacts'"
      * Double quote characters (`"`) for Python string literals in Python scripts
 * Use the [`externaldata` operator](externaldata-operator.md) to obtain the content of a script that you've stored in an external location, such as Azure Blob storage.
   
-    ## Example
+    ### Example
 
     ```kusto
     let script = 
@@ -212,6 +216,7 @@ download the package and its dependencies.
     * For public packages, zip the files that were downloaded in the previous step.
     
     > [!NOTE]
+    > * Make sure to download the package that is compatible to the Python engine of the sandbox runtime (currently 3.6.5)
     > * Make sure to zip the `.whl` files themselves, and not their parent folder.
     > * You can skip `.whl` files for packages that already exist with the same version in the base sandbox image.
 

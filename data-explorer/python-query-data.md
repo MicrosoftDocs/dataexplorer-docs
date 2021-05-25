@@ -17,8 +17,6 @@ In this article, you query data using the Azure Data Explorer. Azure Data Explor
 
 Azure Data Explorer provides a [data client library for Python](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). This library enables you to query data from your code. Connect to a table on the *help cluster* that we have set up to aid learning. You can query a table on that cluster and return the results.
 
-This article is also available as an [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb).
-
 ## Prerequisites
 
 * [Python 3.4+](https://www.python.org/downloads/)

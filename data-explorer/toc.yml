@@ -1336,40 +1336,40 @@ items:
       href: ./kusto/query/diffpatternsplugin.md
     - name: diffpatterns_text plugin
       href: ./kusto/query/diffpatterns-textplugin.md
-  - name: Geospatial
-    items:
-    - name: geo_distance_2points()
-      href: ./kusto/query/geo-distance-2points-function.md
-    - name: geo_distance_point_to_line()
-      href: ./kusto/query/geo-distance-point-to-line-function.md
-    - name: geo_point_in_circle()
-      href: ./kusto/query/geo-point-in-circle-function.md
-    - name: geo_point_in_polygon()
-      href: ./kusto/query/geo-point-in-polygon-function.md
-    - name: geo_point_to_geohash()
-      href: ./kusto/query/geo-point-to-geohash-function.md
-    - name: geo_geohash_to_central_point()
-      href: ./kusto/query/geo-geohash-to-central-point-function.md 
-    - name: geo_geohash_to_polygon()
-      href: ./kusto/query/geo-geohash-to-polygon-function.md 
-    - name: geo_point_to_s2cell()
-      href: ./kusto/query/geo-point-to-s2cell-function.md
-    - name: geo_s2cell_to_central_point()
-      href: ./kusto/query/geo-s2cell-to-central-point-function.md
-    - name: geo_s2cell_to_polygon()
-      href: ./kusto/query/geo-s2cell-to-polygon-function.md 
-    - name: geo_point_to_h3cell()
-      href: ./kusto/query/geo-point-to-h3cell-function.md
-    - name: geo_h3cell_to_central_point()
-      href: ./kusto/query/geo-h3cell-to-central-point-function.md
-    - name: geo_h3cell_to_polygon()
-      href: ./kusto/query/geo-h3cell-to-polygon-function.md 
-    - name: geo_polygon_to_s2cells()
-      href: ./kusto/query/geo-polygon-to-s2cells-function.md
-    - name: geo_line_densify()
-      href: ./kusto/query/geo-line-densify-function.md   
-    - name: geo_polygon_densify()
-      href: ./kusto/query/geo-polygon-densify-function.md 
+    - name: Geospatial
+      items:
+      - name: geo_distance_2points()
+        href: ./kusto/query/geo-distance-2points-function.md
+      - name: geo_distance_point_to_line()
+        href: ./kusto/query/geo-distance-point-to-line-function.md   
+      - name: geo_point_in_circle()
+        href: ./kusto/query/geo-point-in-circle-function.md
+      - name: geo_point_in_polygon()
+        href: ./kusto/query/geo-point-in-polygon-function.md
+      - name: geo_point_to_geohash()
+        href: ./kusto/query/geo-point-to-geohash-function.md
+      - name: geo_geohash_to_central_point()
+        href: ./kusto/query/geo-geohash-to-central-point-function.md
+      - name: geo_geohash_to_polygon()
+        href: ./kusto/query/geo-geohash-to-polygon-function.md
+      - name: geo_point_to_s2cell()
+        href: ./kusto/query/geo-point-to-s2cell-function.md
+      - name: geo_s2cell_to_central_point()
+        href: ./kusto/query/geo-s2cell-to-central-point-function.md
+      - name: geo_s2cell_to_polygon()
+        href: ./kusto/query/geo-s2cell-to-polygon-function.md
+      - name: geo_point_to_h3cell()
+        href: ./kusto/query/geo-point-to-h3cell-function.md
+      - name: geo_h3cell_to_central_point()
+        href: ./kusto/query/geo-h3cell-to-central-point-function.md
+      - name: geo_h3cell_to_polygon()
+        href: ./kusto/query/geo-h3cell-to-polygon-function.md
+      - name: geo_polygon_to_s2cells()
+        href: kusto/query/geo-polygon-to-s2cells-function.md
+      - name: geo_line_densify()
+        href: kusto/query/geo-line-densify-function.md 
+      - name: geo_polygon_densify()
+        href: kusto/query/geo-polygon-densify-function.md
   - name: User analytics
     items:
     - name: User analytics plugins overview

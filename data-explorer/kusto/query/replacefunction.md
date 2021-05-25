@@ -4,14 +4,17 @@ description: This article describes replace() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
 ---
 # replace()
 
-Replace all regex matches with another string.
+Replace all regex matches with another string. 
+
+> [!NOTE]
+> If you do not need regex matching, use [translate()](translatefunction.md).
 
 ## Syntax
 

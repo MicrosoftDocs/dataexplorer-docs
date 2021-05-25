@@ -4,7 +4,7 @@ description: This article describes make_list_if() (aggregation function) in Azu
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -49,6 +49,6 @@ T
 |----|
 |["George", "Ringo"]|
 
-**See also**
+## See also
 
 [`make_list`](./makelist-aggfunction.md) function, which does the same, without predicate expression.

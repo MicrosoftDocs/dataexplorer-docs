@@ -8,6 +8,7 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
+ms.localizationpriority: high 
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
 
@@ -45,7 +46,7 @@ existing or nonexistent tables and data.
 
 |Property        |Description|
 |----------------|-----------------------------------------------------------------------------------------------------------------------------|
-|`creationTime`   | The datetime value, formatted as an ISO8601 string, to use at the creation time of the ingested data extents. If unspecified, the current value (`now()`) will be used|
+|`creationTime`   | The datetime value, formatted as an ISO8601 string, to use at the creation time of the ingested data extents. If unspecified, the current value (`now()`) will be used. When specified, make sure the `Lookback` property in the target table's effective [Extents merge policy](../mergepolicy.md) is aligned with the specified value|
 |`extend_schema`  | A Boolean value that, if specified, instructs the command to extend the schema of the table. Default is "false". This option applies only to `.append`, `.set-or-append`, and `set-or-replace` commands. The only permitted schema extensions have additional columns added to the table at the end|
 |`recreate_schema`  | A Boolean value that. If specified, describes if the command may recreate the schema of the table. Default is "false". This option applies only to the *set-or-replace* command. This option takes precedence over the extend_schema property if both are set|
 |`folder`         | The folder to assign to the table. If the table already exists, this property will overwrite the table's folder.|
@@ -82,7 +83,7 @@ existing or nonexistent tables and data.
 
 **Examples** 
 
-Create a new table called "RecentErrors" in the database that has the same schema as "LogsTable" and holds all the error records of the last hour.
+Create a new table called :::no-loc text="RecentErrors"::: in the database that has the same schema as :::no-loc text="LogsTable"::: and holds all the error records of the last hour.
 
 ```kusto
 .set RecentErrors <|

@@ -9,9 +9,9 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ---
 
-# Azure Data Explorer connector to Power Automate (Preview)
+# Azure Data Explorer connector to :::no-loc text="Power Automate"::: (Preview)
 
-The Azure Data Explorer flow connector allows Azure Data Explorer to use the flow capabilities of [Microsoft Power Automate](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task.
+The Azure Data Explorer :::no-loc text="Power Automate"::: (previously Microsoft Flow) connector allows Azure Data Explorer to use the flow capabilities of [Microsoft :::no-loc text="Power Automate":::](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task.
 
 You can:
 
@@ -20,7 +20,7 @@ You can:
 * Schedule control commands on clusters.
 * Export and import data between Azure Data Explorer and other databases. 
 
-For more information, see [Azure Data Explorer flow connector usage examples](flow-usage.md).
+For more information, see [Azure Data Explorer :::no-loc text="Power Automate"::: connector usage examples](flow-usage.md).
 
 ##  Sign in 
 
@@ -35,7 +35,7 @@ For more information, see [Azure Data Explorer flow connector usage examples](fl
 You can authenticate with user credentials, or with an Azure Active Directory (Azure AD) application.
 
 > [!Note]
-> Make sure your application is an [Azure AD application](kusto/management/access-control/how-to-provision-aad-app.md), and is authorized to run queries on your cluster.
+> Make sure your application is an [Azure AD application](./provision-azure-ad-app.md), and is authorized to run queries on your cluster.
 
 1. In **Run control command and visualize results**, select the three dots at the top right of the flow connector.
 
@@ -61,10 +61,10 @@ From now on, this flow will run by using these application credentials.
 
 ## Find the Azure Kusto connector
 
-To use the flow connector, you need to first add a trigger. 
+To use the :::no-loc text="Power Automate"::: connector, you need to first add a trigger. 
 You can define a trigger based on a recurring time period, or as a response to a previous flow action.
 
-1. [Create a new flow](https://flow.microsoft.com/manage/flows/new), or, from the Microsoft Power Automate home page, select the **My flows** > **+ New**.
+1. [Create a new flow](https://flow.microsoft.com/manage/flows/new), or, from the Microsoft :::no-loc text="Power Automate"::: home page, select the **My flows** > **+ New**.
 
     ![Screenshot of the Microsoft Power Automate home page, with My flows and New highlighted](./media/flow/flow-newflow.png)
 
@@ -94,15 +94,15 @@ Use this action to run a [control command](kusto/management/index.md).
 1. Specify the cluster URL. For example, `https://clusterName.eastus.kusto.windows.net`.
 1. Enter the name of the database.
 1. Specify the control command:
-   - Select dynamic content from the apps and connectors used in the flow.
-   - Add an expression to access, convert, and compare values.
+   * Select dynamic content from the apps and connectors used in the flow.
+   * Add an expression to access, convert, and compare values.
 1. To send the results of this action by email as a table or a chart, specify the chart type. This can be:
-   - An HTML table.
-   - A pie chart.
-   - A time chart.
-   - A bar chart.
+   * An HTML table.
+   * A pie chart.
+   * A time chart.
+   * A bar chart.
 
-![Screenshot of Run control command and visualize results](./media/flow/flow-runcontrolcommand.png)
+![Screenshot of Run control command and visualize results in recurrence pane](./media/flow/flow-runcontrolcommand.png)
 
 > [!IMPORTANT]
 > In the **Cluster Name** field, enter the cluster URL.
@@ -160,10 +160,10 @@ You can include a step in any flow to send reports by email, to any email addres
 ## Check if your flow succeeded
 
 To check if your flow succeeded, see the flow's run history:
-1. Go to the [Microsoft Power Automate home page](https://flow.microsoft.com/).
+1. Go to the [Microsoft :::no-loc text="Power Automate"::: home page](https://flow.microsoft.com/).
 1. From the main menu, select [My flows](https://flow.microsoft.com/manage/flows).
    
-   ![Screenshot of Microsoft Power Automate main menu, with My flows highlighted](./media/flow/flow-myflows.png)
+   ![Screenshot of Microsoft :::no-loc text="Power Automate"::: main menu, with My flows highlighted](./media/flow/flow-myflows.png)
 
 1. On the row of the flow you want to investigate, select the more commands icon, and then select **Run history**.
 
@@ -182,7 +182,7 @@ To see why a run failed, select the run start time. The flow appears, and the st
 
 ## Timeout exceptions
 
-Your flow can fail and return a "RequestTimeout" exception if it runs for more than seven minutes.
+Your flow can fail and return a "RequestTimeout" exception if it runs for more than 90 seconds.
     
 ![Screenshot of the flow request timeout exception error](./media/flow/flow-requesttimeout.png)
 
@@ -192,8 +192,8 @@ The same query might run successfully in Azure Data Explorer, where the time isn
 
 ## Limitations
 
-* Results returned to the client are limited to 500,000 records. The overall memory for those records can't exceed 64 MB and a time of seven minutes to run.
-* The connector doesn't support the [fork](kusto/query/forkoperator.md) and [facet](kusto/query/facetoperator.md) operators.
+* Results returned to the client are limited to 500,000 records. The overall memory for those records can't exceed 64 MB and a time of 90 seconds to run.
+* The connector doesn't support operators that aren't supported by the [`getschema` operator](kusto/query/getschemaoperator.md). For example, the [fork](kusto/query/forkoperator.md), [facet](kusto/query/facetoperator.md), and [evaluate](kusto/query/evaluateoperator.md) operators aren't supported. 
 * Flow works best on Microsoft Edge and Google Chrome.
 
 ## Next steps

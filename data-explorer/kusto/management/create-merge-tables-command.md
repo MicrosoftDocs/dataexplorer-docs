@@ -19,7 +19,7 @@ Lets you create and extend the schemas of existing tables in a single bulk opera
 
 **Syntax**
 
-`.create-merge` `tables` *TableName1* ([columnName:columnType], ...) [`,` *TableName2* ([columnName:columnType], ...) ... ]
+`.create-merge` `tables` *TableName1* ([columnName:columnType], ...) [`,` *TableName2* ([columnName:columnType], ...) ... ] [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
 * Specified tables that don't exist will be created.
 * Specified tables that already exist will have their schemas extended.

@@ -18,7 +18,7 @@ Alters the Folder value of an existing function.
 > [!NOTE]
 > * Requires [database admin permission](../management/access-control/role-based-authorization.md)
 > * The [database user](../management/access-control/role-based-authorization.md) who originally created the function is allowed to modify the function. 
-> * If the function doesn't exist, an error is returned. For creating new function, [.create function](create-function.md)
+> * If the function doesn't exist, an error is returned. For creating new function, [`.create function`](create-function.md)
 
 |Output parameter |Type |Description
 |---|---|--- 

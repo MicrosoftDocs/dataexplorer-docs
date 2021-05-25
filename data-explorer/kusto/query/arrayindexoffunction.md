@@ -4,7 +4,7 @@ description: This article describes array_index_of() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/22/2020
@@ -39,7 +39,7 @@ print arr=dynamic(["this", "is", "an", "example"])
 |---|
 |3|
 
-**See also**
+## See also
 
 If you only want to check whether a value exists in an array,
 but you are not interested in its position, you can use

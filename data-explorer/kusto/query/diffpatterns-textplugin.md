@@ -4,7 +4,7 @@ description: This article describes diffpatterns_text plugin in Azure Data Explo
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -65,6 +65,8 @@ The result of diffpatterns_text returns the following columns:
 > The patterns aren't necessarily distinct and may not provide full coverage of the data set. The patterns may be overlapping and some rows may not match any pattern.
 
 ## Example
+
+The following example uses data from the StormEvents table in the help cluster. To access this data, sign in to [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples). In the left menu, browse to **help** > **Samples** > **Tables** > **Storm_Events**.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto

@@ -95,7 +95,7 @@ The `.delete policy streamingingestion` command deletes the streamingingestion p
 
 **Returns**
 
-The command deletes the table or database streamingingestion policy object and then returns the output of the corresponding [.show policy streamingingestion](#display-the-policy) command.
+The command deletes the table or database streamingingestion policy object and then returns the output of the corresponding [`.show policy streamingingestion`](#display-the-policy) command.
 
 **Examples**
 
