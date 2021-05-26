@@ -143,6 +143,10 @@ When the number of extents/nodes is large, this may lead to high load on storage
 * If exporting to a partitioned external table, setting the `spread`/`concurrency` properties can reduce concurrency (see details in the [command properties](export-data-to-an-external-table.md#syntax).
 * If neither of the above work, is also possible to completely disable distribution by setting the `distributed` property to false, but this is not recommended, as it may significantly impact the command performance.
 
+### Authorization failures
+
+Authentication / authorization failures during export commands can occur when the credentials provided in the storage connection string aren't permitted to write to storage. If you are using `impersonate` or a user delegated SAS token for the export command, [Storage Blob Data Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) role is required to write to the storage account. Please refer to the [Storage connection strings](../../api/connection-strings/storage.md) page for more details.
+
 ## Data types mapping
 
 ### Parquet data types mapping

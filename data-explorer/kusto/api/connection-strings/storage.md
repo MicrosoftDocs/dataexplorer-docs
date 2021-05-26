@@ -27,13 +27,15 @@ used to describe the storage resources and how to access them.
 Kusto uses a URI format to describe these storage resources and the properties
 necessary to access them (such as security credentials).
 
-
 |Provider                     |Scheme    |URI template                          |
 |-----------------------------|----------|--------------------------------------|
 |Azure Storage Blob-AccountKey|`https://`|`https://`*Account*`.blob.core.windows.net/`*Container*[`/`*BlobName*][`;`*AccountKey*]|
 |Azure Storage Blob - SasKey  |`https://`|`https://`*Account*`.blob.core.windows.net/`*Container*[`/`*BlobName*][`?`*SasKey*]|
 |Azure Data Lake Store Gen 2  |`abfss://`|`abfss://`*Filesystem*`@`*Account*`.dfs.core.windows.net/`*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
 |Azure Data Lake Store Gen 1  |`adl://`  |`adl://`*Account*.azuredatalakestore.net/*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
+
+> [!TIP]
+> When using impersonation or when using a [user delegation SAS token](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas) in the connection string, the AAD principal which the operation is executed on-behalf-of must be assigned (minimally) the [Storage Blob Data Reader role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) for read operations, or [Storage Blob Data Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) for write (e.g., export) operations.
 
 ## Azure Storage Blob
 
