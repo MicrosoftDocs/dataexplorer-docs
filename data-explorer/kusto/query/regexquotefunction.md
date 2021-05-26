@@ -1,5 +1,5 @@
 ---
-title: regex_quote() - Azure Data Explorer | Microsoft Docs
+title: regex_quote() - Azure Data Explorer
 description: This article describes regex_quote() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -34,6 +34,7 @@ print result = regex_quote('(so$me.Te^xt)')
 ```
 
 Returns the following results:
+
 ```
 \(so\$me\.Te\^xt\)
 ```
