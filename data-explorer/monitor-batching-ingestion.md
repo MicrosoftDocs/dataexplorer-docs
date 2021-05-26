@@ -12,17 +12,14 @@ ms.custom: contperf-fy21q1
 
 # Batching Ingestion Monitoring
 
-Batching ingestion is the most performant [method](ingest-data-overview#batching-vs-streaming-ingestion) for ingesting data used by Azure Data Explorer (ADX).
+Batching ingestion is the most performant [method for ingesting data](ingest-data-overview#batching-vs-streaming-ingestion) used by Azure Data Explorer (ADX).
 
 In batching ingestion, ADX optimizes data ingestion for high throughput by batching the incoming data into small chunks based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md) that is defined on the database or table from which the data is ingested. The small batches of incoming data are then merged and optimized for fast query results.
 
+ADX uses Azure monitor to monitor ingestion metrics in Azure portal.
 By monitoring the batching ingestion, you can get information about the ingestion result, the amount of ingested data, the latency of the ingestion, and the batching process itself.
 
-ADX uses Azure monitor to monitor ingestion metrics in Azure portal.
-
-What does the information do for you?
-understand what they mean and 
-see how to use them to get valuable insights.
+ADX uses Azure monitor to monitor ingestion metrics in Azure portal that provide information about the ingestion result, the amount of ingested data, the latency of the ingestion, and the batching process itself.
 
 Batching ingestion occurs in stages, and each stage is governed by a *component*:
 
@@ -36,14 +33,6 @@ When analyzing the amount of data passing through ingestion and ingestion latenc
 In this tutorial you will learn how to use [ingestion metrics](using-metrics#ingestion-metrics) to monitor [Batching ingestion to ADX](ingest-data-overview) in Azure portal.
 
 For more information about different metrics, see [supported Azure Data Explorer metrics](#supported-azure-data-explorer-metrics).
-
-After reading this tutorial you will know how to answer the following questions:
-
-1. How can I see the result of my ingestion attempts? *(link to the “ingestion result” section)*
-2. How much data passes through the ingestion pipeline? *(link to “the amount of ingested data” section)*
-3. What is the latency of the ingestion process and does long latency happen in ADX or before data actually arrives in ADX for ingestion? *(link to the “ingestion latency” section)*
-4. How can I better understand the batching process of my cluster during ingestion? (*link to “understanding batching policy” section)*
-5. When working with Event Hub, Event Grid and IoT Hub ingestion, how can I compare the number of events arrived to ADX to the number of events sent for ingestion *(link to “Compare data connection incoming events to the number of events sent for ingestion” section*)?
 
 ## Prerequisites
 
