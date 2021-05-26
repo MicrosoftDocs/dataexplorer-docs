@@ -8,6 +8,7 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/15/2020
+adobe-target: true
 ---
 # Kusto client library
     

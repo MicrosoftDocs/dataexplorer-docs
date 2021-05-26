@@ -105,5 +105,5 @@ as the audience, and the "Access Kusto" permission as the scope.
 
 The following articles explain how to programmatically authenticate to Kusto with AAD:
 
-* [How to provision an AAD Application](./how-to-provision-aad-app.md)
+* [How to provision an AAD Application](../../../provision-azure-ad-app.md)
 * [How to perform AAD Authentication](./how-to-authenticate-with-aad.md)

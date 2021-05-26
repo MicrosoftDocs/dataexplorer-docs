@@ -4,7 +4,7 @@ description: This article describes lookup operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
@@ -66,7 +66,7 @@ with the following differences:
   all those rows will appear in the output with null values used for the
   missing values of *RightTable* columns added by the operator. If `inner`
   is used, such rows are omitted from the output. (Other kinds
-  of join are not supported by the `looku`p operator.)
+  of join are not supported by the `lookup` operator.)
   
 ## Returns
 

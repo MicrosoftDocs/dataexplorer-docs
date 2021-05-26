@@ -16,7 +16,6 @@ When you create a cluster, its storage is [automatically encrypted at the servic
 > [!IMPORTANT]
 > * Enabling double encryption is only possible during cluster creation.
 > * Once infrastructure encryption is enabled on your cluster, you **can't** disable it.
-> * Double encryption is only available in regions where infrastructure encryption is supported. For more information, see [storage infrastructure encryption](/azure/storage/common/infrastructure-encryption-enable).
 
 # [Azure portal](#tab/portal)
 
@@ -87,9 +86,8 @@ An Azure Resource Manager template can be used to automate deployment of your Az
 
 ## Add a system-assigned identity using an Azure Resource Manager template
 
-1. Add the 'EnableDoubleEncryption' type to tell Azure to enable infrastructure encryption (double encryption) for your cluster.
-    
-    ```json
+Add the 'EnableDoubleEncryption' type to tell Azure to enable infrastructure encryption (double encryption) for your cluster.    
+```json
     {
         "apiVersion": "2020-06-14",
         "type": "Microsoft.Kusto/clusters",
@@ -104,17 +102,7 @@ An Azure Resource Manager template can be used to automate deployment of your Az
             "enableDoubleEncryption": true,
         }
     }
-    ```
-
-1. When the cluster is created, it has the following additional properties:
-
-    ```json
-    "identity": {
-        "type": "SystemAssigned",
-        "tenantId": "<TENANTID>",
-        "principalId": "<PRINCIPALID>"
-    }
-    ```
+```
 ---
 
 ## Next steps

@@ -15,7 +15,7 @@ Returns a table showing statistics related to the [query results cache](../query
 
 **Syntax**
 
-`.show database query results cache`
+`.show database cache query_results`
 
 **Output**
  

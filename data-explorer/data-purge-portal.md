@@ -15,7 +15,7 @@ ms.date: 05/12/2020
 
 Azure Data Explorer supports the ability to delete individual records. Data deletion through the `.purge` command protects personal data and shouldn't be used in other scenarios. It isn't designed to support frequent delete requests, or deletion of massive quantities of data, and may have a significant performance impact on the service.
 
-Executing a `.purge` command triggers a process that can take a few days to complete. If the "density" of records on which the `predicate` is applied is large, the process will reingest all the data in the table. This process has a significant impact on performance and COGS. For more information, see [Data purge in Azure Data Explorer](kusto/concepts/data-purge.md).
+Executing a `.purge` command triggers a process that can take a few days to complete. If the "density" of records on which the `predicate` is applied is large, the process will reingest all the data in the table. This process has a significant impact on performance and COGS (cost of goods sold). For more information, see [Data purge in Azure Data Explorer](kusto/concepts/data-purge.md).
 
 ## Methods of invoking purge operations 
 

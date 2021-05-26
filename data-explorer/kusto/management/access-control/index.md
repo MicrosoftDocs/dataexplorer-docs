@@ -56,7 +56,7 @@ Use the Azure AD application authentication flow when requests aren't associated
 ### Microsoft Accounts (MSAs)
 
 Microsoft Account (MSA) is the term used for all the Microsoft-managed non-organizational user accounts, such as `hotmail.com`, `live.com`, `outlook.com`.
-Kusto supports user authentication for MSAs (there's no security groups concept) that are identified by their Universal Principal Name (UPN).
+Kusto supports user authentication for MSAs (there's no security groups concept) that are identified by their User Principal Name (UPN).
 
 When an MSA principal is configured on an Azure Data Explorer resource, Azure Data Explorer **won't** attempt to resolve the UPN provided.
 

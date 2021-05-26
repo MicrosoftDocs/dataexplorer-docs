@@ -4,10 +4,11 @@ description: This article describes join operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
+ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -49,7 +50,7 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 
     |Parameters name           |Values                                        |Description                                  |
     |---------------|----------------------------------------------|---------------------------------------------|
-    |`kind`         |Join flavors|See [Join Flavors](#join-flavors)|                                             |
+    |`kind`         |Join flavors|See [Join Flavors](#join-flavors)|
     |`hint.remote`  |`auto`, `left`, `local`, `right`              |See [Cross-Cluster Join](joincrosscluster.md)|
     |`hint.strategy`|Execution hints                               |See [Join hints](#join-hints)                |
 
@@ -59,7 +60,7 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 
     |Name           |Values                                        |Description                                  |
     |---------------|----------------------------------------------|---------------------------------------------|
-    |`kind`         |Join flavors|See [Join Flavors](#join-flavors)|                                             |
+    |`kind`         |Join flavors|See [Join Flavors](#join-flavors)|
     |`hint.remote`  |`auto`, `left`, `local`, `right`              |                                             |
     |`hint.strategy`|Execution hints                               |See [Join hints](#join-hints)                |
 

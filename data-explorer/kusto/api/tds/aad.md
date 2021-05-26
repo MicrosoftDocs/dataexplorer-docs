@@ -76,7 +76,7 @@ public class Sample {
 
 ## Azure AD Application Authentication
 
-Azure AD application provisioned for Kusto can use SQL client libraries that support Azure AD for connecting to Kusto. For more information about Azure AD applications, see [Creating an Azure AD Application](../../management/access-control/how-to-provision-aad-app.md).
+Azure AD application provisioned for Kusto can use SQL client libraries that support Azure AD for connecting to Kusto. For more information about Azure AD applications, see [Creating an Azure AD Application](../../../provision-azure-ad-app.md).
 
 ### .NET SQL Client (application)
 

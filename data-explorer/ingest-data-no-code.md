@@ -453,25 +453,30 @@ Select a resource from which to export metrics. Several resource types support e
 ### Connect activity logs to your event hub
 
 1. In the left menu of the Azure portal, select **Activity log**.
-1. The **Activity log** window opens. Select **Export to Event Hub**.
+1. The **Activity log** window opens. Select **Diagnostics settings**.
 
     ![Activity log window](media/ingest-data-no-code/activity-log.png)
 
-1. The **Export activity log** window opens:
- 
-    ![Export activity log window](media/ingest-data-no-code/export-activity-log.png)
+1. The **Diagnostics settings** window opens. Select **+ Add diagnostic setting**.
 
-1. In the **Export activity log** window, take the following steps:
-      1. Select your subscription.
-      1. In the **Regions** list, choose **Select all**.
-      1. Select the **Export to an event hub** check box.
-      1. Choose **Select a service bus namespace** to open the **Select event hub** pane.
-      1. In the **Select event hub** pane, select your subscription.
-      1. In the **Select event hub namespace** list, select *AzureMonitoringData*.
-      1. In the **Select event hub policy name** list, select the default event hub policy name.
-      1. Select **OK**.
-      1. In the upper-left corner of the window, select **Save**.
-   An event hub with the name *insights-operational-logs* will be created.
+    :::image type="content" source="media/ingest-data-no-code/add-diagnosting-setting.png" alt-text="Add diagnostic setting in Diagnostic settings window, Azure Data Explorer portal":::
+
+1. A new **Diagnostic setting** window opens. 
+
+    :::image type="content" source="media/ingest-data-no-code/export-activity-log.PNG" alt-text="Diagnostic settings window with fields to fill out - Azure Data Explorer portal":::
+
+    Do the following steps:
+    1. Enter a name in the **Diagnostic setting name** field.  
+    1. On the left-hand side of check boxes, select the platform log(s) you wish to collect from a subscription.
+    1. Select the **Stream to an event hub** check box.
+    1. Select your subscription.
+    1. In the **Event hub namespace** list, select *AzureMonitoringData*.
+    1. Optionally, select your **Event hub name**.
+    1. In the **Event hub policy name** list, select the default event hub policy name.
+    1. In the upper-left corner of the window, select **Save**. An event hub with the name *insights-operational-logs* will be created (unless you have selected an Event hub name above).
+      
+    
+
 ---
 
 ### See data flowing to your event hubs

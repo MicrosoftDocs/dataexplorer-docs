@@ -6,12 +6,13 @@ ms.author: orspodek
 ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 10/07/2019
+ms.date: 04/21/2021
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer by using Python
 
 > [!div class="op_single_selector"]
+> * [One-click](one-click-ingestion-new-table.md)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
@@ -25,7 +26,7 @@ In this article, you create an Event Grid data connection for Azure Data Explore
 * An Azure account with an active subscription. [Create one for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * [Python 3.4+](https://www.python.org/downloads/).
 * [A cluster and database](create-cluster-database-python.md).
-* [Table and column mapping](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
+* [Table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
 * [Database and table policies](database-table-policies-csharp.md) (optional).
 * [A storage account with an Event Grid subscription](ingest-data-event-grid.md).
 
@@ -71,11 +72,13 @@ location = "Central US"
 table_name = "StormEvents"
 mapping_rule_name = "StormEvents_CSV_Mapping"
 data_format = "csv"
+blob_storage_event_type = "Microsoft.Storage.BlobCreated"
 
 #Returns an instance of LROPoller, check https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.data_connections.create_or_update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name, data_connection_name=data_connection_name,
                                             parameters=EventGridDataConnection(storage_account_resource_id=storage_account_resource_id, event_hub_resource_id=event_hub_resource_id, 
-                                                                                consumer_group=consumer_group, table_name=table_name, location=location, mapping_rule_name=mapping_rule_name, data_format=data_format))
+                                                                                consumer_group=consumer_group, table_name=table_name, location=location, mapping_rule_name=mapping_rule_name, data_format=data_format,
+                                                                                blob_storage_event_type=blob_storage_event_type))
 ```
 |**Setting** | **Suggested value** | **Field description**|
 |---|---|---|
@@ -94,5 +97,6 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | storage_account_resource_id | *Resource ID* | The resource ID of your storage account that holds the data for ingestion. |
 | consumer_group | *$Default* | The consumer group of your Event Hub.|
 | location | *Central US* | The location of the data connection resource.|
+| blob_storage_event_type | *Microsoft.Storage.BlobCreated* | The type of event that triggers ingestion. Supported events are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage.|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-python](includes/data-explorer-data-connection-clean-resources-python.md)]

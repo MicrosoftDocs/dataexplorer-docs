@@ -4,15 +4,18 @@ description: This article describes fork operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # fork operator
+::: zone pivot="azuredataexplorer"
 
 Runs multiple consumer operators in parallel.
-
+ 
 ## Syntax
 
 *T* `|` `fork` [*name*`=`]`(`*subquery*`)` [*name*`=`]`(`*subquery*`)` ...
@@ -28,7 +31,7 @@ Multiple result tables, one for each of the subqueries.
 
 **Supported Operators**
 
-[`as`](asoperator.md), [`count`](countoperator.md), [`extend`](extendoperator.md), [`parse`](parseoperator.md), [`where`](whereoperator.md), [`take`](takeoperator.md), [`project`](projectoperator.md), [`project-away`](projectawayoperator.md), [`summarize`](summarizeoperator.md), [`top`](topoperator.md), [`top-nested`](topnestedoperator.md), [`sort`](sortoperator.md), [`mv-expand`](mvexpandoperator.md), [`reduce`](reduceoperator.md)
+[`as`](asoperator.md), [`count`](countoperator.md), [`extend`](extendoperator.md), [`parse`](parseoperator.md), [`where`](whereoperator.md), [`take`](takeoperator.md), [`project`](projectoperator.md), [`project-away`](projectawayoperator.md), [`project-keep`](project-keep-operator.md), [`project-rename`](projectrenameoperator.md), [`project-reorder`](projectreorderoperator.md), [`summarize`](summarizeoperator.md), [`top`](topoperator.md), [`top-nested`](topnestedoperator.md), [`sort`](sortoperator.md), [`mv-expand`](mvexpandoperator.md), [`reduce`](reduceoperator.md)
 
 **Notes**
 
@@ -66,3 +69,11 @@ KustoLogs
     EventsTexts = ( project Timestamp, EventText | top 1000 by Timestamp desc )
     TimeRangePerActivityID = ( summarize min(Timestamp), max(Timestamp) by ActivityID )
 ```
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This capability isn't supported in Azure Monitor
+
+::: zone-end

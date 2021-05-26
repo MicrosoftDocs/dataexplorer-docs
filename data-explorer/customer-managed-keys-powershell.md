@@ -38,10 +38,16 @@ with the cluster.
     Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
 
-1. Run the following command to set the new key.
+1. Run the following command to set the new key using a system assigned identity.
 
     ```azurepowershell-interactive
     Update-AzKustoCluster -ResourceGroupName "mytestrg" -Name "mytestcluster" -KeyVaultPropertyKeyName "<key-name>" -KeyVaultPropertyKeyVaultUri "<key-vault-uri>" -KeyVaultPropertyKeyVersion "<key-version>"
+    ```
+
+    Alternatively, set the new key using a user assigned identity.
+
+    ```azurepowershell-interactive
+    Update-AzKustoCluster -ResourceGroupName "mytestrg" -Name "mytestcluster" -KeyVaultPropertyKeyName "<key-name>" -KeyVaultPropertyKeyVaultUri "<key-vault-uri>" -KeyVaultPropertyKeyVersion "<key-version>" -KeyVaultPropertyUserIdentity "user-assigned-identity-resource-id"
     ```
 
 1. Run the following command and check the 'KeyVaultProperty...' properties to verify the cluster updated successfully.

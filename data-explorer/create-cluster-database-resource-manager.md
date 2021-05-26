@@ -17,6 +17,7 @@ ms.date: 09/26/2019
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
+> * [Go](create-cluster-database-go.md)
 > * [Azure Resource Manager template](create-cluster-database-resource-manager.md)
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a database so that you can run queries against it. 
@@ -27,7 +28,7 @@ If you don't have an Azure subscription, [create a free account](https://azure.m
 
 ## Azure Resource Manager template for cluster and database creation
 
-In this article, you use an [existing quickstart template](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-kusto-cluster-database/azuredeploy.json)
+In this article, you use an [existing quickstart template](https://azure.microsoft.com/resources/templates/101-kusto-cluster-database/)
 
 ```json
 {
@@ -66,16 +67,39 @@ In this article, you use an [existing quickstart template](https://raw.githubuse
               "tier": "Standard",
               "capacity": 2
           },
-          "apiVersion": "2019-09-07",
+          "apiVersion": "2020-09-18",
           "location": "[parameters('location')]",
           "tags": {
             "Created By": "GitHub quickstart template"
+          },
+          "properties": {
+              "trustedExternalTenants": [],
+              "optimizedAutoscale": {
+                  "version": 1,
+                  "isEnabled": true,
+                  "minimum": 2,
+                  "maximum": 10
+              },
+              "enableDiskEncryption": false,
+              "enableStreamingIngest": false,
+              "virtualNetworkConfiguration":{
+                  "subnetId": "<subnet resource id>",
+                  "enginePublicIpId": "<Engine service's public IP address resource id>",
+                  "dataManagementPublicIpId": "<Data management's service public IP address resource id>"
+              },
+              "keyVaultProperties":{
+                  "keyName": "<Key name>",
+                  "keyVaultUri": "<Key vault uri>"
+              },
+              "enablePurge": false,
+              "enableDoubleEncryption": false,
+              "engineType": "V3",
           }
       },
       {
           "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
           "type": "Microsoft.Kusto/clusters/databases",
-          "apiVersion": "2019-09-07",
+          "apiVersion": "2020-09-18",
           "location": "[parameters('location')]",
           "dependsOn": [
               "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"
@@ -99,11 +123,11 @@ You can deploy the Azure Resource Manager template by [using the Azure portal](#
 
 1. To create a cluster and database, use the following button to start the deployment. Right-click and select **Open in new window**, so you can follow the rest of the steps in this article.
 
-    [![Deploy to Azure](media/create-cluster-database-resource-manager/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-kusto-cluster-database%2Fazuredeploy.json)
+    [![Screenshot of a blue button that pictures clouds and is labeled Deploy to Azure.](media/create-cluster-database-resource-manager/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-kusto-cluster-database%2Fazuredeploy.json)
 
     The **Deploy to Azure** button takes you to the Azure portal to fill out a deployment form.
 
-    ![Deploy to Azure](media/create-cluster-database-resource-manager/deploy-2-azure.png)
+    :::image type="content" source="media/create-cluster-database-resource-manager/deploy-2-azure.png" alt-text="Screenshot of a template on the Azure portal. All buttons, boxes, and check boxes used in editing are highlighted." border="false":::
 
     You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) by using the form.
 
@@ -125,7 +149,7 @@ It takes a few minutes to create an Azure Data Explorer cluster and database.
     $clusterName = "${projectName}cluster"
     $parameters = @{}
     $parameters.Add("clusters_kustocluster_name", $clusterName)
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-kusto-cluster-database/azuredeploy.json"
+    $templateUri = "https://azure.microsoft.com/resources/templates/101-kusto-cluster-database/"
     New-AzResourceGroup -Name $resourceGroupName -Location $location
     New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -TemplateParameterObject $parameters
     Write-Host "Press [ENTER] to continue ..."
@@ -137,7 +161,7 @@ It takes a few minutes to create an Azure Data Explorer cluster and database.
 
 #### Verify the deployment using PowerShell
 
-To verify the deployment, use the following Azure PowerShell script.  If the Cloud Shell is still open, you don't need to copy/run the first line (Read-Host). For more information regarding managing Azure Data Explorer resources in PowerShell, read [Az.Kusto](/powershell/module/az.kusto/?view=azps-2.7.0). 
+To verify the deployment, use the following Azure PowerShell script.  If the Cloud Shell is still open, you don't need to copy/run the first line (Read-Host). For more information regarding managing Azure Data Explorer resources in PowerShell, read [Az.Kusto](/powershell/module/az.kusto/). 
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"

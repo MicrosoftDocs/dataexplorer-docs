@@ -28,11 +28,12 @@ Kusto uses a URI format to describe these storage resources and the properties
 necessary to access them (such as security credentials).
 
 
-|Provider                   |Scheme    |URI template                          |
-|---------------------------|----------|--------------------------------------|
-|Azure Storage Blob         |`https://`|`https://`*Account*`.blob.core.windows.net/`*Container*[`/`*BlobName*][`?`*SasKey* \| `;`*AccountKey*]|
-|Azure Data Lake Store Gen 2|`abfss://`|`abfss://`*Filesystem*`@`*Account*`.dfs.core.windows.net/`*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
-|Azure Data Lake Store Gen 1|`adl://`  |`adl://`*Account*.azuredatalakestore.net/*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
+|Provider                     |Scheme    |URI template                          |
+|-----------------------------|----------|--------------------------------------|
+|Azure Storage Blob-AccountKey|`https://`|`https://`*Account*`.blob.core.windows.net/`*Container*[`/`*BlobName*][`;`*AccountKey*]|
+|Azure Storage Blob - SasKey  |`https://`|`https://`*Account*`.blob.core.windows.net/`*Container*[`/`*BlobName*][`?`*SasKey*]|
+|Azure Data Lake Store Gen 2  |`abfss://`|`abfss://`*Filesystem*`@`*Account*`.dfs.core.windows.net/`*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
+|Azure Data Lake Store Gen 1  |`adl://`  |`adl://`*Account*.azuredatalakestore.net/*PathToDirectoryOrFile*[`;`*CallerCredentials*]|
 
 ## Azure Storage Blob
 
@@ -51,6 +52,8 @@ the account key or SAS):
 
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;<storage_account_key_text, ends with '=='>"`
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"` 
+
+To learn how to generate a SAS link, see [Get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
 
 ## Azure Data Lake Store
 
@@ -80,7 +83,7 @@ supported:
   the storage account key
 * Append `;impersonate` to the URI. Kusto will use the requestor's principal
   identity and impersonate it to access the resource. Principal needs to have the appropriate RBAC role assignments to be 
-  able to perform the read/write operations, as documented [here](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). (For example, the minimal role for read operations is the `Storage Blob Data Reader` role).
+  able to perform the read/write operations, as documented [here](/azure/storage/blobs/data-lake-storage-access-control). (For example, the minimal role for read operations is the `Storage Blob Data Reader` role).
 * Append `;token=`*AadToken* to the URI, with _AadToken_ being a base-64
   encoded AAD access token (make sure the token is for the resource `https://storage.azure.com/`).
 * Append `;prompt` to the URI. Kusto requests user credentials
@@ -106,6 +109,3 @@ supported:
 * Append `;prompt` to the URI. Kusto will request user credentials
   when it needs to access the resource. (Prompting the user is disabled for
   cloud deployments and is only enabled in test environments.)
-
-
-

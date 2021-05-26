@@ -26,7 +26,7 @@ Creates or alters a continuous export job.
 | Property             | Type     | Description   |
 |----------------------|----------|---------------------------------------|
 | ContinuousExportName | String   | Name of continuous export. Name must be unique within the database and is used to periodically run the continuous export.      |
-| ExternalTableName    | String   | Name of [external table](../externaltables.md) to export to.  |
+| ExternalTableName    | String   | Name of [external table](../external-table-commands.md) to export to.  |
 | Query                | String   | Query to export.  |
 | over (T1, T2)        | String   | An optional comma-separated list of fact tables in the query. If not specified, all tables referenced in the query are assumed to be fact tables. If specified, tables *not* in this list are treated as dimension tables and will not be scoped (all records will participate in all exports). See [continuous data export overview](continuous-data-export.md) for details. |
 | intervalBetweenRuns  | Timespan | The time span between continuous export executions. Must be greater than 1 minute.   |

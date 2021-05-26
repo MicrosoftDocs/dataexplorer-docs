@@ -13,6 +13,7 @@ ms.date: 10/07/2019
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
+> * [One-click](one-click-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
@@ -25,7 +26,7 @@ In this article, you create an Event Hub data connection for Azure Data Explorer
 * If you don't have Visual Studio 2019 installed, you can download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Make sure that you enable **Azure development** during the Visual Studio setup.
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Create [a cluster and database](create-cluster-database-csharp.md)
-* Create [table and column mapping](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
+* Create [table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster)
 * Set [database and table policies](database-table-policies-csharp.md) (optional)
 * Create an [Event Hub with data for ingestion](ingest-data-event-hub.md#create-an-event-hub). 
 
@@ -66,8 +67,9 @@ var location = "Central US";
 var tableName = "StormEvents";
 var mappingRuleName = "StormEvents_CSV_Mapping";
 var dataFormat = DataFormat.CSV;
+var compression = "None";
 await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, dataConnectionName, 
-    new EventHubDataConnection(eventHubResourceId, consumerGroup, location: location, tableName: tableName, mappingRuleName: mappingRuleName, dataFormat: dataFormat));
+    new EventHubDataConnection(eventHubResourceId, consumerGroup, location: location, tableName: tableName, mappingRuleName: mappingRuleName, dataFormat: dataFormat, compression: compression));
 ```
 
 |**Setting** | **Suggested value** | **Field description**|
@@ -86,6 +88,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | eventHubResourceId | *Resource ID* | The resource ID of your Event Hub that holds the data for ingestion. |
 | consumerGroup | *$Default* | The consumer group of your Event Hub.|
 | location | *Central US* | The location of the data connection resource.|
+| compression | *Gzip* or *None* | The type of data compression. |
 
 ## Generate data
 

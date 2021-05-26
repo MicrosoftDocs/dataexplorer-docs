@@ -44,9 +44,8 @@ if not policy is defined, Kusto will use a default value of **5 minutes** as the
 maximum delay time, **1000** items, total size of **1G** for batching.
 
 > [!WARNING]
-> It is recommended that customers who want to set this policy to first contact
-> the Kusto ops team. The impact of setting this policy to a very small value is
-> an increase in the COGS of the cluster and reduced performance. Additionally,
+> The impact of setting this policy to a very small value is
+> an increase in the COGS (cost of goods sold) of the cluster and reduced performance. Additionally,
 > in the limit, reducing this value might actually result in **increased** effective
 > end-to-end ingestion latency, due to the overhead of managing multiple ingestion
 > processes in parallel.
