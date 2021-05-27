@@ -159,47 +159,47 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 
 | Region | Addresses |
 | --- | --- |
-| Australia Central | 191.239.64.128, 52.163.244.128 |
-| Australia Central 2 | 191.239.64.128, 52.163.244.128 |
-| Australia East | 191.239.64.128,52.163.244.128 |
-| Australia Southeast | 191.239.160.47,52.163.244.128 |
-| Brazil South | 23.98.145.105, 23.101.115.123 |
-| Canada Central | 168.61.212.201, 23.101.115.123 |
-| Canada East | 168.61.212.201, 23.101.115.123 |
-| Central India | 23.99.5.162, 52.163.244.128 |
-| Central US | 168.61.212.201, 23.101.115.123 |
-| Central US EUAP | 168.61.212.201, 23.101.115.123 |
+| Australia Central | 52.163.244.128 |
+| Australia Central 2 | 52.163.244.128 |
+| Australia East | 52.163.244.128 |
+| Australia Southeast | 52.163.244.128 |
+| Brazil South | 23.101.115.123 |
+| Canada Central | 23.101.115.123 |
+| Canada East | 23.101.115.123 |
+| Central India | 52.163.244.128 |
+| Central US | 23.101.115.123 |
+| Central US EUAP | 23.101.115.123 |
 | China East 2 | 40.73.96.39 |
 | China North 2 | 40.73.33.105 |
-| East Asia | 168.63.212.33,52.163.244.128 |
-| East US | 137.116.81.189, 52.249.253.174 |
-| East US 2 | 137.116.81.189, 104.46.110.170 |
-| East US 2 EUAP | 137.116.81.189, 104.46.110.170 |
-| France Central | 23.97.212.5, 40.127.194.147 |
-| France South | 23.97.212.5, 40.127.194.147 |
-| Japan East | 138.91.19.129, 52.163.244.128 |
-| Japan West | 138.91.19.129, 52.163.244.128 |
-| Korea Central | 138.91.19.129, 52.163.244.128 |
-| Korea South | 138.91.19.129, 52.163.244.128 |
-| North Central US | 23.96.212.108, 23.101.115.123 |
-| North Europe | 191.235.212.69, 40.127.194.147 |
-| South Africa North | 104.211.224.189, 52.163.244.128 |
-| South Africa West | 104.211.224.189, 52.163.244.128 |
-| South Central US | 23.98.145.105, 104.215.116.88 |
-| South India | 23.99.5.162, 52.163.244.128 |
-| Southeast Asia | 168.63.173.234, 52.163.244.128 |
-| UK South | 23.97.212.5, 40.127.194.147 |
-| UK West | 23.97.212.5,40.127.194.147 |
+| East Asia | 52.163.244.128 |
+| East US | 52.249.253.174 |
+| East US 2 | 104.46.110.170 |
+| East US 2 EUAP | 104.46.110.170 |
+| France Central | 40.127.194.147 |
+| France South | 40.127.194.147 |
+| Japan East | 52.163.244.128 |
+| Japan West | 52.163.244.128 |
+| Korea Central | 52.163.244.128 |
+| Korea South | 52.163.244.128 |
+| North Central US | 23.101.115.123 |
+| North Europe |  40.127.194.147 |
+| South Africa North | 52.163.244.128 |
+| South Africa West | 52.163.244.128 |
+| South Central US | 104.215.116.88 |
+| South India | 52.163.244.128 |
+| Southeast Asia | 52.163.244.128 |
+| UK South | 40.127.194.147 |
+| UK West | 40.127.194.147 |
 | USDoD Central | 52.238.116.34 |
 | USDoD East | 52.238.116.34 |
 | USGov Arizona | 52.244.48.35 |
 | USGov Texas | 52.238.116.34 |
 | USGov Virginia | 23.97.0.26 |
-| West Central US | 168.61.212.201, 23.101.115.123 |
-| West Europe | 23.97.212.5, 213.199.136.176 |
-| West India | 23.99.5.162, 52.163.244.128 |
-| West US | 23.99.5.162, 13.88.13.50, 104.210.32.14 |
-| West US 2 | 23.99.5.162, 104.210.32.14, 52.183.35.124 |
+| West Central US | 23.101.115.123 |
+| West Europe | 213.199.136.176 |
+| West India | 52.163.244.128 |
+| West US | 13.88.13.50 |
+| West US 2 | 52.183.35.124 |
 
 ## Disable access to Azure Data Explorer from the public IP
 
