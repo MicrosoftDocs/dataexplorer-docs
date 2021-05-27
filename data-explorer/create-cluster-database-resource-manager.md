@@ -28,7 +28,7 @@ If you don't have an Azure subscription, [create a free account](https://azure.m
 
 ## Azure Resource Manager template for cluster and database creation
 
-In this article, you use an [existing quickstart template](https://azure.microsoft.com/resources/templates/101-kusto-cluster-database/)
+In this article, you use an [existing quickstart template](https://azure.microsoft.com/resources/templates/kusto-cluster-database/)
 
 ```json
 {
