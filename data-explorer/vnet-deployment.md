@@ -262,6 +262,6 @@ For example, for **West US** region, the following UDRs must be defined:
 
 ## Deploy Azure Data Explorer cluster into your VNet using an Azure Resource Manager template
 
-To deploy Azure Data Explorer cluster into your virtual network, use the [Deploy Azure Data Explorer cluster into your VNet](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) Azure Resource Manager template.
+To deploy Azure Data Explorer cluster into your virtual network, use the [Deploy Azure Data Explorer cluster into your VNet](https://azure.microsoft.com/resources/templates/kusto-vnet/) Azure Resource Manager template.
 
 This template creates the cluster, virtual network, subnet, network security group, and public IP addresses.

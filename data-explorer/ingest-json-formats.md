@@ -588,7 +588,7 @@ Dictionary structured JSON contains key-value pairs. Json records undergo ingest
 1. Create a JSON mapping.
 
     ```kusto
-    .create table Events ingestion json mapping 'KeyValueEventMapping' '[{"column":"a","Properties":{"path":"$.event[?(@.Key == \'timestamp\')]"}},{"column":"b","Properties":{"path":"$.event[?(@.Key == \'deviceId\')]"}},{"column":"c","Properties":{"path":"$.event[?(@.Key == \'messageId\')]"}},{"column":"d","Properties":{"path":"$.event[?(@.Key == \'temperature\')]"}},{"column":"Humidity","datatype":"string","Properties":{"path":"$.event[?(@.Key == \'humidity\')]"}}]'
+    .create table Events ingestion json mapping 'KeyValueEventMapping' '[{"column":"Time","Properties":{"path":"$.event[?(@.Key == \'timestamp\')].Value"}},{"column":"Device","Properties":{"path":"$.event[?(@.Key == \'deviceId\')].Value","datatype":"StringBuffer"}},{"column":"MessageId","Properties":{"path":"$.event[?(@.Key == \'messageId\')].Value"}},{"column":"Temperature","Properties":{"path":"$.event[?(@.Key == \'temperature\')].Value"}},{"column":"Humidity","Properties":{"path":"$.event[?(@.Key == \'humidity\')].Value"}}]'
     ```
 
 1. Ingest data into the `Events` table.
