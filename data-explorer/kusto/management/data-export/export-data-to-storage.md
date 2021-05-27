@@ -145,7 +145,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
 
 ### Authorization failures
 
-Authentication / authorization failures during export commands can occur when the credentials provided in the storage connection string aren't permitted to write to storage. If you are using `impersonate` or a user delegated SAS token for the export command, [Storage Blob Data Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) role is required to write to the storage account. Please refer to the [Storage connection strings](../../api/connection-strings/storage.md) page for more details.
+Authentication or authorization failures during export commands can occur when the credentials provided in the storage connection string aren't permitted to write to storage. If you are using `impersonate` or a user-delegated SAS token for the export command, the [Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) role is required to write to the storage account. For more details, see [Storage connection strings](../../api/connection-strings/storage.md).
 
 ## Data types mapping
 
