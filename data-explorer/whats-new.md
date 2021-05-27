@@ -25,7 +25,7 @@ This section lists the major changes to docs during April 2021.
 [scan operator (preview)](kusto/query/scan-operator.md) | New article. Scans data, matches, and builds sequences based on the predicates.
 [Query results cache](kusto/query/query-results-cache.md) | Updated article.  Per shard query results cache added. 
 [The string data type](kusto/query/scalar-data-types/string.md) | Updated article.  
-[Null Values](kusto/query/scalar-data-types/null-values.md) | Updated article. 
+[Null Values](kusto/query/scalar-data-types/null-values.md) | Updated article.
 
 ### Management
 
@@ -218,8 +218,8 @@ This section lists the major changes to docs during October 2020.
 ---|---
 [Ingest data using the Azure Data Explorer Java SDK](java-ingest-data.md) | New article.  In this article, learn how to ingest data using the Azure Data Explorer Java library. 
 [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md) | New article. In this article, you learn how to create manually the resources needed for Event Grid Ingestion: Event Grid subscription, Event Hub  namespace, and Event Hub. 
-[Create a private or service endpoint to Event Hub and Azure Storage](vnet-endpoint-storage-event-hub.md) | New article. A [Private Endpoint](/azure/private-link/private-endpoint-overview) uses an IP address from your VNet’s address space for the Azure service to securely connect between Azure Data Explorer and Azure services such as Azure Storage and Event Hub.  
-[EngineV3 - preview](engine-v3.md) | New article. Kusto EngineV3 is Azure Data Explorer’s next generation storage and query engine. 
+[Create a private or service endpoint to Event Hub and Azure Storage](vnet-endpoint-storage-event-hub.md) | New article. A [Private Endpoint](/azure/private-link/private-endpoint-overview) uses an IP address from your VNet's address space for the Azure service to securely connect between Azure Data Explorer and Azure services such as Azure Storage and Event Hub.  
+[EngineV3 - preview](engine-v3.md) | New article. Kusto EngineV3 is Azure Data Explorer's next generation storage and query engine. 
 [Create an Azure Data Explorer cluster and database using Go](create-cluster-database-go.md) |  New article. In this article, you create an Azure Data Explorer cluster and database using [Go](https://golang.org/). 
 [Create Power Apps application to query data in Azure Data Explorer (preview)](power-apps-connector.md) | New article. In this article, you will create a Power Apps application to query Azure Data Explorer data. 
 |[Microsoft Logic App and Azure Data Explorer ](kusto/tools/logicapps.md) |Updated article. General availability (GA).
