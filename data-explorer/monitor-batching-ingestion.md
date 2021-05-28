@@ -59,7 +59,7 @@ Use the following steps to create metric charts with the [Azure Monitor metrics 
 For some examples in this article, we'll select **Add Filter** and **Apply Splitting** for metrics that have dimensions. We'll also use **Add metric** to plot additional metrics in the same chart and **+ New chart** to see multiple charts in one view.
 
 > [!NOTE]
-> For more complete information about how to use metrics to monitor ADX in general and how to work with the metrics pane, see [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics).
+> To learn more about how to use metrics to monitor ADX in general and how to work with the metrics pane, see [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics).
 
 To begin analysis of a batching ingestion operation to your ADX cluster in the metrics pane of Azure portal, select specific metrics to track, choose how to aggregate your data, and create metric charts to view on your dashboard.
 
@@ -85,7 +85,7 @@ Consider the following when looking at the chart of ingestion results:
 
 * When using Event Hub ingestion, there is an event pre-aggregation in the *Data connection component*. During this stage of ingestion, events are treated as a single source to be ingested. Therefore, a few events appear as a single ingestion result after pre-aggregation.
 * Transient failures are retried internally in a limited number of attempts. Each transient failure is reported as a transient ingestion result. Therefore, a single ingestion may lead to more than one ingestion result.
-* Ingestion errors in the chart are listed by the category of the error code. To see the full list of ingestion error codes by categories and try to better understand the possible error reason, see [Ingestion error codes in Azure Data Explorer](error-codes). 
+* Ingestion errors in the chart are listed by the category of the error code. To see the full list of ingestion error codes by categories and try to better understand the possible error reason, see [Ingestion error codes in Azure Data Explorer](error-codes).
 * To get more details on an ingestion error, you can set [failed ingestion diagnostic logs.](using-diagnostic-logs?tabs=ingestion#failed-ingestion-operation-log). However, it's important to consider that generating logs results in the creation of additional resources, and therefore costs money.
 
 ## View the amount of ingested data
@@ -239,7 +239,7 @@ The chart now shows the number of Events that were received, processed, and drop
 
 :::image type="content" source="media/monitor-batching-ingestion/events-received-processed-dropped-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart with graphs of the events received, processed and dropped during ingestion from the github database aggregated over time.":::
 
-* Almost all the received events were processed successfully by the data connection. There is 1 dropped event, which is compatible with the failed ingestion result due to bad request that we saw when [viewing the ingestion result metric](#view-the-ingestion-result-metric).
+* Almost all the received events were processed successfully by the data connection. There is 1 dropped event, which is compatible with the failed ingestion result due to bad request that we saw when [viewing the ingestion result metric](#view-the-ingestion-result).
 
 ### Compare Events Received and Outgoing Messages
 
