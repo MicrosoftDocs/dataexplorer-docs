@@ -5,8 +5,6 @@ items:
   href: tutorial.md
 - name: Samples
   href: samples.md
-- name: Samples 2
-  href: samples.md
 - name: Queries
   items:
   - name: Overview of queries
