@@ -986,3 +986,5 @@ items:
       href: ../tools/kusto-explorer-troubleshooting.md
   - name: Kusto.Cli
     href: ../tools/kusto-cli.md
+  - name: Samples
+    href: samples.md
