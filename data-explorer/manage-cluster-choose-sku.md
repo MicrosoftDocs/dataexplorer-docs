@@ -9,16 +9,18 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ---
 
-# Select the correct compute SKU for your Azure Data Explorer cluster 
+# Select the correct compute SKU for your Azure Data Explorer cluster
 
-When you create a new cluster or optimize a cluster for a changing workload, Azure Data Explorer offers multiple virtual machine (VM) SKUs to choose from. These compute SKUs have been carefully chosen to give you the most optimal cost for any workload. 
+When you create a new cluster or optimize a cluster for a changing workload, Azure Data Explorer offers multiple virtual machine (VM) SKUs to choose from. These compute SKUs have been carefully chosen to give you the most optimal cost for any workload.
 
 The size and VM SKU of the data-management cluster are fully managed by the Azure Data Explorer service. They're determined by such factors as the engine's VM size and the ingestion workload. 
 
 You can change the compute SKU for the engine cluster at any time by [scaling up the cluster](manage-cluster-vertical-scaling.md). It's best to start with the smallest SKU size that fits the initial scenario. Keep in mind that scaling up the cluster results in a downtime of up to 30 minutes while the cluster is re-created with the new SKU. You can also use the [Azure Advisor recommendations](azure-advisor.md) to optimize your compute SKU.
 
+You can use the [Cost Estimator tool](https://dataexplorer.azure.com/AzureDataExplorerCostEstimator.html) to estimate the pricing of your Azure Data Explorer cluster, based on your workloads and data volume.
+
 > [!TIP]
-> [Compute Reserved Instances (RI)](/azure/virtual-machines/windows/prepay-reserved-vm-instances) is applicable to the Azure Data Explorer cluster.  
+> [Compute Reserved Instances (RI)](/azure/virtual-machines/windows/prepay-reserved-vm-instances) is applicable to the Azure Data Explorer cluster. 
 
 This article describes various compute SKU options and provides the technical details that can help you make the best choice.
 

@@ -84,7 +84,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 1. Select **Review + create** to create your cluster.
 1. When the deployment is complete, select **Go to resource**.
 
-To deploy your Azure Data Explorer cluster into your virtual network, use the [Deploy Azure Data Explorer cluster into your VNet](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) Azure Resource Manager template.
+To deploy your Azure Data Explorer cluster into your virtual network, use the [Deploy Azure Data Explorer cluster into your VNet](https://azure.microsoft.com/resources/templates/kusto-vnet/) Azure Resource Manager template.
 
 ## Next steps
 

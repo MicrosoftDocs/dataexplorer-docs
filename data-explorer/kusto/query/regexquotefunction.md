@@ -1,5 +1,5 @@
 ---
-title: regex_quote() - Azure Data Explorer | Microsoft Docs
+title: regex_quote() - Azure Data Explorer
 description: This article describes regex_quote() in Azure Data Explorer.
 services: data-explorer
 author: orspod

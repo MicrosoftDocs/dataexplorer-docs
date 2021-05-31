@@ -95,7 +95,7 @@ AAD has many endpoints for authentication:
 ## AAD token cache
 
 When using the Azure Data Explorer SDK, the AAD tokens are stored on the local machine in a
-per-user token cache (a file called **%APPDATA%\Kusto\tokenCache.data** which can
+per-user token cache (a file called **%APPDATA%\Kusto\userTokenCache.data** which can
 only be accessed or decrypted by the signed-in user.) The cache is inspected
 for tokens before prompting the user for credentials, thus greatly reducing the
 number of times a user has to enter credentials.

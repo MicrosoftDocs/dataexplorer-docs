@@ -1219,6 +1219,7 @@ items:
     - name: minif()
       href: ./kusto/query/minif-aggfunction.md
     - name: percentiles(), percentile()
+      displayName: percentiles_array(), percentilew(), percentilesw(), percentilesw_array()
       href: ./kusto/query/percentiles-aggfunction.md
     - name: stdev()
       href: ./kusto/query/stdev-aggfunction.md
@@ -1523,8 +1524,14 @@ items:
           href: ./kusto/management/clear-table-data-command.md
       - name: External tables
         items:
-        - name: External tables general control commands
-          href: ./kusto/management/external-table-commands.md
+        - name: External tables commands
+          href:  ./kusto/management/external-table-commands.md
+        - name: .drop external table
+          href: ./kusto/management/drop-external-table.md
+        - name: .show external table
+          href: ./kusto/management/show-external-tables.md
+        - name: .show external table schema
+          href: ./kusto/management/show-external-table-schema.md
         - name: Create and alter external tables in Azure Storage or Azure Data Lake
           href: ./kusto/management/external-tables-azurestorage-azuredatalake.md
         - name: Create and alter external SQL tables
