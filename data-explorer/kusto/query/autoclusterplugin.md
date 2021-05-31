@@ -58,7 +58,7 @@ All arguments are optional, but they must be ordered as above. To indicate that 
 
 ### Using autocluster
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5
@@ -75,7 +75,7 @@ StormEvents
 
 ### Using custom wildcards
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5

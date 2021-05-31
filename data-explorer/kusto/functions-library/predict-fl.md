@@ -38,7 +38,7 @@ The function `predict_fl()` predicts using an existing trained machine learning 
 
 For ad hoc usage, embed the code using the [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let predict_fl=(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
@@ -84,7 +84,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create function with (folder = "Packages\\ML", docstring = "Predict using ML model, build by Scikit-learn")
 predict_fl(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
@@ -115,7 +115,7 @@ predict_fl(samples:(*), models_tbl:(name:string, timestamp:datetime, model:strin
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 //
 // Predicts room occupancy from sensors measurements, and calculates the confusion matrix
@@ -134,7 +134,7 @@ OccupancyDetection
 ---
 
 Confusion matrix:
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 Occupancy	pred_Occupancy	n
 TRUE	    TRUE	        3006

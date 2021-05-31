@@ -31,7 +31,7 @@ Dynamic array of the values in the range [`start..end`] from `arr`.
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print arr=dynamic([1,2,3]) 
 | extend sliced=array_slice(arr, 1, 2)
@@ -40,7 +40,7 @@ print arr=dynamic([1,2,3])
 |---|---|
 |[1,2,3]|[2,3]|
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print arr=dynamic([1,2,3,4,5]) 
 | extend sliced=array_slice(arr, 2, -1)
@@ -49,7 +49,7 @@ print arr=dynamic([1,2,3,4,5])
 |---|---|
 |[1,2,3,4,5]|[3,4,5]|
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print arr=dynamic([1,2,3,4,5]) 
 | extend sliced=array_slice(arr, -3, -2)

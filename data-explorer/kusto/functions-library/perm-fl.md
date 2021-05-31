@@ -34,7 +34,7 @@ The function `perm_fl()`calculates *P(n, k)*, the number of [permutations](https
 
 For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let perm_fl=(n:int, k:int)
 {
@@ -54,7 +54,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Calculate number of permutations for selection of k items out of n items with order")
 perm_fl(n:int, k:int)
@@ -67,7 +67,7 @@ perm_fl(n:int, k:int)
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range n from 3 to 10 step 3
 | extend k = n-2

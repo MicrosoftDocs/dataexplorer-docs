@@ -423,7 +423,7 @@ The next two examples demonstrate how to change from using a device model to a f
 
 You can achieve mapping by using a dynamic dictionary and dynamic accessors. For example:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 // Dataset definition
 let Source = datatable(DeviceModel:string, Count:long)

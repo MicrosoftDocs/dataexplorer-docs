@@ -68,8 +68,8 @@ The tenant ID in this case is `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. Set the va
 
 ```python
 AAD_TENANT_ID = "<TenantId>"
-KUSTO_URI = "https://<ClusterName>.<Region>.kusto.windows.net:443/"
-KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/"
+KUSTO_URI = "https://<ClusterName>.<Region>.kusto.windows.net/"
+KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net/"
 KUSTO_DATABASE = "<DatabaseName>"
 ```
 

@@ -35,7 +35,7 @@ The function `binomial_test_fl()` performs the [binomial test](https://en.wikipe
 
 For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let binomial_test_fl = (tbl:(*), successes:string, trials:string, p_value:string, success_prob:real=0.5, alt_hypotheis:string='two-sided')
 {
@@ -74,7 +74,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Binomial test")
 binomial_test_fl(tbl:(*), successes:string, trials:string, p_value:string, success_prob:real=0.5, alt_hypotheis:string='two-sided')
@@ -102,7 +102,7 @@ binomial_test_fl(tbl:(*), successes:string, trials:string, p_value:string, succe
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(id:string, x:int, n:int) [
 'Test #1', 3, 5,
@@ -115,7 +115,7 @@ datatable(id:string, x:int, n:int) [
 
 ---
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 id	x	n	p_val
 Test #1	3	5	0.05792
