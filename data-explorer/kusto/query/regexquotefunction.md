@@ -15,11 +15,11 @@ Returns a string that escapes all regular expression characters.
 
 ## Syntax
 
-`regex_quote(`*string*`)`
+`regex_quote(`*value*`)`
 
 ## Arguments
 
-*string*: The string to escape.
+*value*: The string to escape.
 
 ## Returns
 
@@ -34,6 +34,6 @@ print result = regex_quote('(so$me.Te^xt)')
 ```
 
 Returns the following results:
-```
-\(so\$me\.Te\^xt\)
-```
+| result |
+|---|
+| \\(so\\$me\\.Te\\^xt\\)
