@@ -63,7 +63,7 @@ Returns three output tables, which are useful for constructing a sankey diagram 
 
 The following query looks at the table StormEvents (weather statistics for 2007) and shows which events happened before/after all Tornado events occurred in 2007.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 // Looking on StormEvents statistics: 
 // Q1: What happens before Tornado event?
@@ -160,7 +160,7 @@ Result includes three tables:
 Now, let's try to find out how the following sequence continues:  
 `Hail` -> `Tornado` -> `Thunderstorm Wind`
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | evaluate funnel_sequence(EpisodeId, StartTime, datetime(2007-01-01), datetime(2008-01-01), 1d,365d, EventType, 

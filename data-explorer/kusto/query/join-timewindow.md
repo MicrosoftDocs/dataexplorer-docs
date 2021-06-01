@@ -28,7 +28,7 @@ For example, if you want to identify event sequences within a relatively small t
 * `EventType`: A column of type `string` that identifies the event type of the record.
 * `Timestamp`: A column of type `datetime` indicates when the event described by the record happened.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let T = datatable(SessionId:string, EventType:string, Timestamp:datetime)
 [
@@ -121,7 +121,7 @@ T
 
 **Runnable query reference (with table inlined)**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let T = datatable(SessionId:string, EventType:string, Timestamp:datetime)
 [
@@ -160,7 +160,7 @@ T
 
 The next query emulates a data set of 50M records and ~10M IDs and runs the query with the technique described above.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let T = range x from 1 to 50000000 step 1
 | extend SessionId = rand(10000000), EventType = rand(3), Time=datetime(2017-01-01)+(x * 10ms)

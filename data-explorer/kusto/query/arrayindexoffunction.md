@@ -29,7 +29,7 @@ Returns -1 if the value isn't found in the array.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print arr=dynamic(["this", "is", "an", "example"]) 
 | project Result=array_index_of(arr, "example")

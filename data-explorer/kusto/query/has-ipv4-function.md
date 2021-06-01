@@ -31,10 +31,15 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 `true`  if the *ip_address* is a valid IPv4 address, and it was found in *text*. Otherwise, the function returns `false`.
 
+> [!NOTE]
+> To search for many IPv4 addresses at once, use [has_any_ipv4()](has-any-ipv4-function.md) function.
+
 ## Examples
 
 ```kusto
-has_ipv4('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0.0.1')          // true
-has_ipv4('05:04:54 127.0.0.256 GET /favicon.ico 404', '127.0.0.256')      // false, invalid IPv4 address
-has_ipv4('05:04:54127.0.0.1 GET /favicon.ico 404', '127.0.0.1')           // false, improperly delimited IP address
+has_ipv4('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0.0.1') // true
+
+has_ipv4('05:04:54 127.0.0.256 GET /favicon.ico 404', '127.0.0.256') // false, invalid IPv4 address
+
+has_ipv4('05:04:54127.0.0.1 GET /favicon.ico 404', '127.0.0.1') // false, improperly delimited IP address
 ```

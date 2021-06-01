@@ -86,7 +86,7 @@ Use C# to ingest data in raw [JSON format](#the-json-format).
 1. Create the `RawEvents` table.
 
     ```csharp
-    var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
+    var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net/";
     var kustoConnectionStringBuilder =
         new KustoConnectionStringBuilder(ingestUri)
         {
@@ -131,7 +131,7 @@ Use C# to ingest data in raw [JSON format](#the-json-format).
 1. Ingest data into the `RawEvents` table.
 
     ```csharp
-    var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/";
+    var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net/";
     var blobPath = "https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json"; 
     var ingestConnectionStringBuilder =
         new KustoConnectionStringBuilder(ingestUri)
@@ -167,7 +167,7 @@ Use Python to ingest data in raw [JSON format](#the-json-format).
 1. Create the `RawEvents` table.
 
     ```python
-    KUSTO_URI = "https://<ClusterName>.<Region>.kusto.windows.net:443/"
+    KUSTO_URI = "https://<ClusterName>.<Region>.kusto.windows.net/"
     KCSB_DATA = KustoConnectionStringBuilder.with_aad_device_authentication(KUSTO_URI, AAD_TENANT_ID)
     KUSTO_CLIENT = KustoClient(KCSB_DATA)
     TABLE = "RawEvents"
@@ -189,7 +189,7 @@ Use Python to ingest data in raw [JSON format](#the-json-format).
 1. Ingest data into the `RawEvents` table.
 
     ```python
-    INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/"
+    INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net/"
     KCSB_INGEST = KustoConnectionStringBuilder.with_aad_device_authentication(INGEST_URI, AAD_TENANT_ID)
     INGESTION_CLIENT = KustoIngestClient(KCSB_INGEST)
     BLOB_PATH = 'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json'
@@ -588,7 +588,7 @@ Dictionary structured JSON contains key-value pairs. Json records undergo ingest
 1. Create a JSON mapping.
 
     ```kusto
-    .create table Events ingestion json mapping 'KeyValueEventMapping' '[{"column":"a","Properties":{"path":"$.event[?(@.Key == \'timestamp\')]"}},{"column":"b","Properties":{"path":"$.event[?(@.Key == \'deviceId\')]"}},{"column":"c","Properties":{"path":"$.event[?(@.Key == \'messageId\')]"}},{"column":"d","Properties":{"path":"$.event[?(@.Key == \'temperature\')]"}},{"column":"Humidity","datatype":"string","Properties":{"path":"$.event[?(@.Key == \'humidity\')]"}}]'
+    .create table Events ingestion json mapping 'KeyValueEventMapping' '[{"column":"Time","Properties":{"path":"$.event[?(@.Key == \'timestamp\')].Value"}},{"column":"Device","Properties":{"path":"$.event[?(@.Key == \'deviceId\')].Value","datatype":"StringBuffer"}},{"column":"MessageId","Properties":{"path":"$.event[?(@.Key == \'messageId\')].Value"}},{"column":"Temperature","Properties":{"path":"$.event[?(@.Key == \'temperature\')].Value"}},{"column":"Humidity","Properties":{"path":"$.event[?(@.Key == \'humidity\')].Value"}}]'
     ```
 
 1. Ingest data into the `Events` table.

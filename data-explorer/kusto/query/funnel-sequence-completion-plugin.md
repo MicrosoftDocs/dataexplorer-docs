@@ -49,7 +49,7 @@ Returns a single table useful for constructing a funnel diagram for the analyzed
 The following query checks the completion funnel of the sequence: `Hail` -> `Tornado` -> `Thunderstorm Wind`
 in "overall" time of 1hour, 4hours, 1day. 
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let _start = datetime(2007-01-01);
 let _end =  datetime(2008-01-01);

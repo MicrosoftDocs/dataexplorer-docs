@@ -65,7 +65,7 @@ Available arguments:
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5
@@ -87,7 +87,7 @@ StormEvents
 
 **Example with custom wildcards**
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5

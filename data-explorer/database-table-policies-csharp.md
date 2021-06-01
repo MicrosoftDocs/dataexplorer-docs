@@ -90,7 +90,7 @@ await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName
 Sets a cache policy for the table. The previous five days of data will be on the cluster SSD.
 
 ```csharp
-var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
+var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net/";
 var databaseName = "<DatabaseName>";
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID

@@ -45,7 +45,7 @@ The `series_metric_fl()` function selects and retrieves time series of metrics i
 
 For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let series_metric_fl=(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_col:string, value_col:string, metric_name:string, labels_selector:string='', lookback:timespan=timespan(10m), offset:timespan=timespan(0))
 {
@@ -73,7 +73,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create function with (folder = "Packages\\Series", docstring = "Selecting & retrieving metrics like PromQL")
 series_metric_fl(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_col:string, value_col:string, metric_name:string, labels_selector:string='', lookback:timespan=timespan(10m), offset:timespan=timespan(0))
@@ -93,7 +93,7 @@ series_metric_fl(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 demo_prometheus
 | invoke series_metric_fl('TimeStamp', 'Name', 'Labels', 'Val', 'writes', '"disk":"sda1","host":"aks-agentpool-88086459-vmss000001"', offset=now()-datetime(2020-12-08 00:00))
@@ -108,7 +108,7 @@ demo_prometheus
 
 The following example doesn't specify selector, so all 'writes' metrics are selected. This example assumes that the function is already installed, and uses alternative direct calling syntax, specifying the input table as the first parameter:
     
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 series_metric_fl(demo_prometheus, 'TimeStamp', 'Name', 'Labels', 'Val', 'writes', offset=now()-datetime(2020-12-08 00:00))
 | render timechart with(series=labels, ysplit=axes)

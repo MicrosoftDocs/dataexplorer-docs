@@ -38,7 +38,7 @@ The function `series_moving_avg_fl()` takes an expression containing a dynamic n
 
 For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let series_moving_avg_fl = (y_series:dynamic, n:int, center:bool=false)
 {
@@ -60,7 +60,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Calculate moving average of specified width")
 series_moving_avg_fl(y_series:dynamic, n:int, center:bool=false)
@@ -71,7 +71,7 @@ series_moving_avg_fl(y_series:dynamic, n:int, center:bool=false)
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 //
 //  Moving average of 5 bins

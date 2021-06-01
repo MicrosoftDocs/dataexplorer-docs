@@ -76,7 +76,7 @@ The operator returns a union of the results of the individual subqueries.
 In some cases, it is more performant and easier to write a query using the `partition` operator than using the [`top-nested` operator](topnestedoperator.md)
 The following example runs a subquery calculating `summarize` and `top` for each of States starting with `W`: (WYOMING, WASHINGTON, WEST VIRGINIA, WISCONSIN)
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | where State startswith 'W'
@@ -107,7 +107,7 @@ StormEvents
 
 It can be useful performance-wise to run a complex subquery over non-overlapping data partitions in a map/reduce style. The following example shows how to create a manual distribution of aggregation over 10 partitions.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | extend p = hash(EventId, 10)
@@ -165,7 +165,7 @@ T
 
 The same technique can be applied with much more complex subqueries. To simplify the syntax, you can wrap the subquery in a function call:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let partition_function = (T:(Source:string)) 
 {
