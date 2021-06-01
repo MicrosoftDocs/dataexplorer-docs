@@ -467,8 +467,12 @@ items:
     href: gettypefunction.md
   - name: getyear()
     href: getyearfunction.md
+  - name: has_any_ipv4()
+    href: has-any-ipv4-function.md
   - name: has_ipv4()
     href: has-ipv4-function.md
+  - name: has_any_ipv4_prefix()
+    href: has-any-ipv4-prefix-function.md
   - name: has_ipv4_prefix()
     href: has-ipv4-prefix-function.md
   - name: hash()
