@@ -43,7 +43,7 @@ The percentiles/percentilesw value of each value in *`Expr`*.
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | summarize tdigestRes = tdigest(DamageProperty) by State
@@ -58,7 +58,7 @@ StormEvents
 |1200000|
 |250000|
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | summarize tdigestRes = tdigest(DamageProperty) by State
@@ -73,7 +73,7 @@ StormEvents
 |[0,0,1200000]|
 |[0,0,250000]|
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | summarize tdigestRes = tdigest(DamageProperty) by State

@@ -38,7 +38,7 @@ of the connection information). The data (rows) for that table are then filtered
 by the value of the `StartTime` column, and then filtered by the value of the
 `State` column. The query then returns the count of "surviving" rows.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | where StartTime >= datetime(2007-11-01) and StartTime < datetime(2007-12-01)

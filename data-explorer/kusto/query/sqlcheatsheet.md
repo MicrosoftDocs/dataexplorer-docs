@@ -18,7 +18,7 @@ The primary language to interact with Kusto is KQL (Kusto Query Language). To ma
 
 For example:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 EXPLAIN 
 SELECT COUNT_BIG(*) as C FROM StormEvents 

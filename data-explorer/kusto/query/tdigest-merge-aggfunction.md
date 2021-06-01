@@ -36,7 +36,7 @@ The merged tdigest values of *Expr* across the group.
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | summarize PreAggDamageProperty=tdigest(DamageProperty) by State

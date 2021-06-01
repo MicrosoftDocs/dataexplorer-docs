@@ -47,7 +47,7 @@ Output table schema is:
 
 The next query calculates a 3-day median value in daily granularity. Each row in the output represents the median value for the last 3 bins (days), including the bin itself.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let T = 
 range idx from 0 to 24*10-1 step 1
@@ -74,7 +74,7 @@ range idx from 0 to 24*10-1 step 1
 
 Same example from above, but now also calculates the rolling window partitioned for each value of the dimension.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let T = 
 range idx from 0 to 24*10-1 step 1

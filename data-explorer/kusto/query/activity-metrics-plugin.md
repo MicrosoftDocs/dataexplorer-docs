@@ -92,7 +92,7 @@ Derived from the definition of `Churn Rate` and `Retention Rate`, the following 
 
 The next query calculates retention and churn rate for week-over-week window.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 // Generate random data of user activities
 let _start = datetime(2017-01-02);
@@ -139,7 +139,7 @@ range _day from _start to _end  step 1d
 
 The next query calculates distinct values and 'new' values (ids that didn't appear in previous time window) for week-over-week window.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 // Generate random data of user activities
 let _start = datetime(2017-01-02);
