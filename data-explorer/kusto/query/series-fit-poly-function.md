@@ -47,7 +47,7 @@ The `series_fit_poly()` function returns the following columns:
 
 A fifth order polynomial with noise on x & y axes:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range x from 1 to 200 step 1
 | project x = rand()*5 - 2.3
@@ -68,7 +68,7 @@ range x from 1 to 200 step 1
 
 Verify that `series_fit_poly` with degree=1 matches `series_fit_line`:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 demo_series1
 | extend series_fit_line(y)
@@ -86,7 +86,7 @@ demo_series1
 
 Irregular (unevenly spaced) time series:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 //
 //  x-axis must be normalized to the range [0-1] if either degree is relatively big (>= 5) or original x range is big.

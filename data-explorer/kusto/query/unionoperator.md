@@ -34,7 +34,7 @@ Alternative form with no piped input:
 
 * `Table`:
     *  The name of a table, such as `Events`; or
-    *  A query expression that must be enclosed with parenthesis, such as `(Events | where id==42)` or `(cluster("https://help.kusto.windows.net:443").database("Samples").table("*"))`; or
+    *  A query expression that must be enclosed with parenthesis, such as `(Events | where id==42)` or `(cluster("https://help.kusto.windows.net").database("Samples").table("*"))`; or
     *  A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin `E`.
 * `kind`: 
     * `inner` - The result has the subset of columns that are common to all of the input tables.

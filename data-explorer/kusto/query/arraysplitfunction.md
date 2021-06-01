@@ -28,7 +28,7 @@ Dynamic array containing N+1 arrays with the values in the range `[0..i1), [i1..
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print arr=dynamic([1,2,3,4,5]) 
 | extend arr_split=array_split(arr, 2)
@@ -38,7 +38,7 @@ print arr=dynamic([1,2,3,4,5])
 |---|---|
 |[1,2,3,4,5]|[[1,2],[3,4,5]]|
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print arr=dynamic([1,2,3,4,5]) 
 | extend arr_split=array_split(arr, dynamic([1,3]))

@@ -42,7 +42,7 @@ Pivot returns the rotated table with specified columns (*column1*, *column2*, ..
 
 For each EventType and States starting with 'AL', count the number of events of this type in this state.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | project State, EventType 
@@ -63,7 +63,7 @@ StormEvents
 
 For each EventType and States starting with 'AR', display the total number of direct deaths.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | where State startswith "AR" 
@@ -86,7 +86,7 @@ StormEvents
 
 Result is identical to previous example.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | where State startswith "AR" 
@@ -109,7 +109,7 @@ StormEvents
 
 For each event type, source and state, sum the number of direct deaths.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | where State startswith "AR" 

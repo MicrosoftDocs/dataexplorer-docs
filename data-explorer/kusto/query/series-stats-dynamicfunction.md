@@ -33,7 +33,7 @@ The `series_stats_dynamic()` function takes a column containing dynamic numerica
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print x=dynamic([23,46,23,87,4,8,3,75,2,56,13,75,32,16,29]) 
 | project stats=series_stats_dynamic(x)
