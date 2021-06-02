@@ -66,8 +66,8 @@ Set the values for `authorityId`, `kustoUri`, `kustoIngestUri` and `kustoDatabas
 const cluster = "MyCluster";
 const region = "westus";
 const authorityId = "microsoft.com";
-const kustoUri = `https://${cluster}.${region}.kusto.windows.net:443`;
-const kustoIngestUri = `https://ingest-${cluster}.${region}.kusto.windows.net:443`;
+const kustoUri = `https://${cluster}.${region}.kusto.windows.net`;
+const kustoIngestUri = `https://ingest-${cluster}.${region}.kusto.windows.net`;
 const kustoDatabase  = "Weather";
 ```
 

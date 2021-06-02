@@ -249,7 +249,7 @@ steps:
      | summarize by Cluster , CmConnectionString , ServiceConnectionString ,DeploymentRing
      | extend ServiceConnectionString = strcat("#connect ", ServiceConnectionString)
      | where DeploymentRing == "$(DeploymentRing)"
-    kustoUrls: 'https://<ClusterName>.kusto.windows.net:443?DatabaseName=<DataBaneName>'
+    kustoUrls: 'https://<ClusterName>.kusto.windows.net?DatabaseName=<DataBaneName>'
     customAuth: true
     connectedServiceName: '<Service Endpoint Name>'
   continueOnError: true

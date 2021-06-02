@@ -37,7 +37,7 @@ The function `series_fit_lowess_fl()` applies a [LOWESS regression](https://www.
 
 For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let series_fit_lowess_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_size:int=5, x_series:string='', x_istime:bool=False)
 {
@@ -91,7 +91,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Fits a local polynomial using LOWESS method to a series")
 series_fit_lowess_fl(tbl:(*), y_series:string, y_fit_series:string, fit_size:int=5, x_series:string='', x_istime:bool=False)
@@ -133,7 +133,7 @@ series_fit_lowess_fl(tbl:(*), y_series:string, y_fit_series:string, fit_size:int
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 //
 // Apply 9 points LOWESS regression on regular time series
@@ -158,7 +158,7 @@ The following examples assume the function is already installed:
 
 The following example tests irregular (unevenly spaced) time series
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let max_t = datetime(2016-09-03);
 demo_make_series1
@@ -178,7 +178,7 @@ Compare LOWESS versus polynomial fit
 
 The following example contains fifth order polynomial with noise on x and y axes. See comparison of LOWESS versus polynomial fit. 
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range x from 1 to 200 step 1
 | project x = rand()*5 - 2.3

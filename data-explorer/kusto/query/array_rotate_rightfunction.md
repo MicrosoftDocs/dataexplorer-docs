@@ -36,7 +36,7 @@ Dynamic array containing the same amount of the elements as in the original arra
 
 * Rotating to the right by two positions:
 
-    <!-- csl: https://help.kusto.windows.net:443/Samples -->
+    <!-- csl: https://help.kusto.windows.net/Samples -->
     ```kusto
     print arr=dynamic([1,2,3,4,5]) 
     | extend arr_rotated=array_rotate_right(arr, 2)
@@ -48,7 +48,7 @@ Dynamic array containing the same amount of the elements as in the original arra
 
 * Rotating to the left by two positions by using negative rotate_count value:
 
-    <!-- csl: https://help.kusto.windows.net:443/Samples -->
+    <!-- csl: https://help.kusto.windows.net/Samples -->
     ```kusto
     print arr=dynamic([1,2,3,4,5]) 
     | extend arr_rotated=array_rotate_right(arr, -2)

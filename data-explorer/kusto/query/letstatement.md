@@ -197,7 +197,7 @@ search MyColumn == 5
 
 The [`materialize`](materializefunction.md) function lets you cache subquery results during the time of query execution. 
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let totalPagesPerDay = PageViews
 | summarize by Page, Day = startofday(Timestamp)

@@ -31,7 +31,7 @@ Normalization is a convenient way to make sure that the sum of the coefficients 
 
 * Calculate a moving average of five points by setting *filter*=[1,1,1,1,1] and *normalize*=`true` (default). Note the effect of *center*=`false` (default) vs. `true`:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range t from bin(now(), 1h)-23h to bin(now(), 1h) step 1h
 | summarize t=make_list(t)
@@ -49,7 +49,7 @@ This query returns:
 
 * To calculate the difference between a point and its preceding one, set *filter*=[1,-1].
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range t from bin(now(), 1h)-11h to bin(now(), 1h) step 1h
 | summarize t=make_list(t)

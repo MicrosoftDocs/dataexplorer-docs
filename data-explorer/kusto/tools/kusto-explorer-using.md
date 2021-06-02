@@ -39,7 +39,7 @@ This section describes how to run basic queries in Kusto.Explorer and how to add
 
 If you have table Logs, you can start exploring them:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 
 ```kusto
 StormEvents | count 
@@ -49,14 +49,14 @@ When your cursor is on this line, it's colored gray. Press **F5** to run the que
 
 Here are some more example queries:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 
 ```kusto
 // Take 10 lines from the table. Useful to get familiar with the data
 StormEvents | limit 10 
 ```
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 
 ```kusto
 // Filter by EventType == 'Flood' and State == 'California' (=~ means case insensitive) 
@@ -145,7 +145,7 @@ The easiest way to create a deep-link is to author your query in Kusto.Explorer 
         
 When copied to an email, the deep link is displayed in small font. For example:
 
-https://help.kusto.windows.net:443/Samples [[Click to run query](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] 
+https://help.kusto.windows.net/Samples [[Click to run query](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] 
 
 The first link opens Kusto.Explorer and sets the cluster and database context appropriately.
 The second link (`Click to run query`) is the deep link. If you move the link to an email message and press CTRL+K, you can see the actual URL:
