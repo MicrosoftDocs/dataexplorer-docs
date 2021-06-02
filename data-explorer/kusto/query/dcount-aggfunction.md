@@ -50,7 +50,7 @@ It may result in memory errors or large execution times.
 `dcount()`provides a fast and reliable alternative:
 
 ```kusto
-T | summarize dcount(B) by G | count
+T | summarize dcount(V) by G | count
 ```
 
 ## Estimation accuracy
