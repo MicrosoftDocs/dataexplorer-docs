@@ -159,9 +159,9 @@ The `default` workload group has the following policy defined by default. This p
 * The cluster's [capacity policy](capacitypolicy.md) may also limit the request rate of requests that fall under a specific category, for example *ingestions*.
     * If either of the limits defined by the [capacity policy](capacitypolicy.md) or by a request rate limit policy is exceeded, a control command will be throttled.
 * When request rate limits of kind `ConcurrentRequests` are applied, the output of [`.show capacity`](diagnostics.md#show-capacity) may change based on those limits.
-    * [`.show capacity`](diagnostics.md#show-capacity) will show the capacities for the principal that ran the request, according to: the context of the request, the workload group it was classified into, and its effective policies.
-    * Different principals may see different outputs when running the command if their requests are classified into different workload groups.
-    * When running `.show capacity with(scope=cluster)`, the request context is ignored, and the output is only affected by the cluster's [capacity policy](capacitypolicy.md).
+    * [`.show capacity`](diagnostics.md#show-capacity) can show the capacities for the principal that ran the request, according to: the context of the request, the workload group it was classified into, and its effective policies.
+    * When running `.show capacity with(scope=workloadgroup)`, different principals may see different outputs if their requests are classified into different workload groups.
+    * Otherwise, the request context is ignored, and the output is only affected by the cluster's [capacity policy](capacitypolicy.md).
 
 ## Control commands
 
