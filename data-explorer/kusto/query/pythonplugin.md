@@ -223,7 +223,7 @@ download the package and its dependencies.
 1. Upload the zipped file to a blob in the artifacts location (from step 1).
 
 1. Call the `python` plugin.
-    * Specify the `external_artifacts` parameter with a property bag of name and reference to the zip file (the blob's URL).
+    * Specify the `external_artifacts` parameter with a property bag of name and reference to the zip file (the blob's URL, including a SAS token).
     * In your inline python code, import `Zipackage` from `sandbox_utils` and call its `install()` method with the name of the zip file.
 
 ### Example
@@ -241,7 +241,7 @@ range ID from 1 to 3 step 1
     'result = df\n'
     'for i in range(df.shape[0]):\n'
     '    result.loc[i, "Name"] = fake.name()\n',
-    external_artifacts=pack('faker.zip', 'https://artifacts.blob.core.windows.net/kusto/Faker.zip?...'))
+    external_artifacts=pack('faker.zip', 'https://artifacts.blob.core.windows.net/kusto/Faker.zip?*** REPLACE WITH YOUR SAS TOKEN ***'))
 ```
 
 | ID | Name         |
