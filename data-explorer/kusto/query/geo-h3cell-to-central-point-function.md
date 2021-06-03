@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/18/2021
+ms.date: 06/03/2021
 ---
 # geo_h3cell_to_central_point()
 
@@ -41,7 +41,7 @@ print h3cell = geo_h3cell_to_central_point("862a1072fffffff")
 |---|
 |{<br>"type": "Point",<br>"coordinates": [-74.016008479792447, 40.7041679083504]<br>}|
 
-The following example returns longitude of H3 Cell center point
+The following example returns the longitude of the H3 Cell center point:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

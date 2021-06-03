@@ -21,8 +21,8 @@ Read more about [H3 Cell](https://eng.uber.com/h3/).
 
 ## Arguments
 
-* *longitude*: Longitude value of a geographic location. Longitude *x* will be considered valid if *x* is a real number and *x* is in the range [-180, +180]. 
-* *latitude*: Latitude value of a geographic location. Latitude y will be considered valid if y is a real number and y in the range [-90, +90]. 
+* *longitude*: Longitude value of a geographic location. Longitude *x* will be considered valid if *x* is a real number and *x* is in the range [-180, +180].
+* *latitude*: Latitude value of a geographic location. Latitude *y* will be considered valid if y is a real number and y in the range [-90, +90].
 * *resolution*: An optional `int` that defines the requested cell resolution. Supported values are in the range [0, 15]. If unspecified, the default value `6` is used.
 
 ## Returns
@@ -67,7 +67,7 @@ The table source can be found [in this H3 Cell statistical resource](https://h3g
 
 See also [geo_point_to_s2cell()](geo-point-to-s2cell-function.md), [geo_point_to_geohash()](geo-point-to-geohash-function.md).
 
-For comparison with other available grid systems read about [geospatial clustering with KQL](../../geospatial-grid-systems.md).
+For comparison with other available grid systems. see [geospatial clustering with Kusto Query Language](../../geospatial-grid-systems.md).
 
 ## Examples
 
@@ -100,7 +100,6 @@ datatable(location_id:string, longitude:real, latitude:real)
 |852a100bfffffff|2|[<br>  "A",<br>  "B"<br>]|
 |852a1073fffffff|1|[<br>  "C"<br>]|
 
-
 The following example produces an empty result because of the invalid coordinate input.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -112,7 +111,6 @@ print h3cell = geo_point_to_h3cell(300,1,8)
 |---|
 ||
 
-
 The following example produces an empty result because of the invalid level input.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -123,7 +121,6 @@ print h3cell = geo_point_to_h3cell(1,1,16)
 |h3cell|
 |---|
 ||
-
 
 The following example produces an empty result because of the invalid level input.
 

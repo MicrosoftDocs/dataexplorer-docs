@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/18/2021
+ms.date: 06/03/2021
 ---
 # geo_geohash_to_polygon()
 
 Calculates the polygon that represents the geohash rectangular area.
 
-Read more about [`geohash`](https://en.wikipedia.org/wiki/Geohash).  
+Read more about [geohash](https://en.wikipedia.org/wiki/Geohash).  
 
 ## Syntax
 
@@ -21,14 +21,14 @@ Read more about [`geohash`](https://en.wikipedia.org/wiki/Geohash).
 
 ## Arguments
 
-*geohash*: Geohash string value as it was calculated by [geo_point_to_geohash()](geo-point-to-geohash-function.md). The geohash string can be 1 to 18 characters.
+*geohash*: Geohash string value as it was calculated by [geo_point_to_geohash()](geo-point-to-geohash-function.md). The geohash string must be between one and 18 characters.
 
 ## Returns
 
 Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the geohash is invalid, the query will produce a null result.
 
 > [!NOTE]
-> Geohash edges are straight lines and aren't geodesics. If geohash polygon is part of some other calculation, consider densifying it with [geo_polygon_densify()](geo-polygon-densify-function.md).
+> Geohash edges are straight lines and aren't geodesics. If the geohash polygon is part of some other calculation, consider densifying it with [geo_polygon_densify()](geo-polygon-densify-function.md).
 
 ## Examples
 
@@ -64,7 +64,6 @@ datatable(lng:real, lat:real)
 |Column1|
 |---|
 |{<br>"type": "Feature",<br>"geometry": {"type": "GeometryCollection","geometries": [<br>{"type": "Polygon", "coordinates": [[[-74.00390625, 40.78125], [-73.9599609375, 40.78125], [-73.9599609375, 40.8251953125],[ -74.00390625, 40.8251953125], [ -74.00390625, 40.78125]]]},<br>{"type": "Polygon", "coordinates": [[[ -73.9599609375, 40.78125], [-73.916015625, 40.78125], [-73.916015625, 40.8251953125], [-73.9599609375, 40.8251953125], [-73.9599609375, 40.78125]]]},<br>{"type": "Polygon", "coordinates": [[[-74.00390625, 40.7373046875], [-73.9599609375, 40.7373046875], [-73.9599609375, 40.78125], [-74.00390625, 40.78125], [-74.00390625, 40.7373046875]]]}]<br>},<br>"properties": {"name": "Geohash polygons collection"<br>}}|
-
 
 The following example returns a null result because of the invalid geohash input.
 

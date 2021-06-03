@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/18/2021
+ms.date: 06/03/2021
 ---
 # geo_s2cell_to_polygon()
 
