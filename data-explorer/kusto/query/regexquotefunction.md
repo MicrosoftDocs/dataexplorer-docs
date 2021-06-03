@@ -36,4 +36,4 @@ print result = regex_quote('(so$me.Te^xt)')
 Returns the following results:
 | result |
 |---|
-| \\(so\\$me\\.Te\\^xt\\)
+| `\(so\\$me\\.Te\\^xt\\)`
