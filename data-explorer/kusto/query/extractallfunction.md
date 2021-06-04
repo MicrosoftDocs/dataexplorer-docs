@@ -26,7 +26,7 @@ print extract_all(@"(\d+)", "a set of numbers: 123, 567 and 789") // results wit
 
 |Argument        |Description                                  |Required or Optional  |
 |----------------|---------------------------------------------|----------------------|
-|regex           | A [regular expression](./re2.md). The expression must have at least one capturing group, and less than or equal to 16 capturing groups                                                         |Required              |
+|regex           | A [regular expression](./re2.md) containing between one and 16 capture groups. Example of a valid regex: `@"(\d+)"`. Example of an invalid regex: `@"\d+"`                                                         |Required              |
 |captureGroups   |A dynamic array constant that indicates the capture group to extract. Valid values are from 1 to the number of capturing groups in the regular expression. Named capture groups are allowed as well (See [Examples](#examples))|Optional         |
 |text            |A `string` to search                         |Required              |
 
