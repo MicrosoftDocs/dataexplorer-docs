@@ -50,3 +50,11 @@ print
     result2 = time(1d) / time(1s),
     result3 = 24 * 60 * time(00:01:00) / time(1s)
 ```
+
+This example converts an integer to a timespan by multiplying it by the timespan unit:
+
+```kusto
+print 
+    seconds = 86400
+| extend t = seconds * 1s
+```
