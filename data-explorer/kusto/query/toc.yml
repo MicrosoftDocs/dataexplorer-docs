@@ -899,6 +899,9 @@ items:
     href: diffpatterns-textplugin.md
 - name: Geospatial
   items:
+  - name: Geospatial clustering overview 
+    displayName: H3, S2, Geohash
+    href: geospatial-grid-systems.md
   - name: geo_distance_2points()
     href: geo-distance-2points-function.md
   - name: geo_distance_point_to_line()
