@@ -63,7 +63,7 @@ The geohash string value of a given geographic location with requested accuracy 
 
 See also [geo_point_to_s2cell()](geo-point-to-s2cell-function.md), [geo_point_to_h3cell()](geo-point-to-h3cell-function.md).
 
-For comparison with other available grid systems, see [geospatial clustering with Kusto Query Language](../../geospatial-grid-systems.md).
+For comparison with other available grid systems, see [geospatial clustering with Kusto Query Language](geospatial-grid-systems.md).
 
 ## Examples
 

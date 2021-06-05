@@ -74,7 +74,7 @@ For every level, the size of the S2 Cell is similar but not exactly equal. Nearb
 
 The table source can be found [in this S2 Cell statistical resource](https://s2geometry.io/resources/s2cell_statistics).
 
-For comparison with other available grid systems, see [geospatial clustering with Kusto Query Language](../../geospatial-grid-systems.md).
+For comparison with other available grid systems, see [geospatial clustering with Kusto Query Language](geospatial-grid-systems.md).
 
 ## Examples
 

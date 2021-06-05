@@ -67,7 +67,7 @@ The table source can be found [in this H3 Cell statistical resource](https://h3g
 
 See also [geo_point_to_s2cell()](geo-point-to-s2cell-function.md), [geo_point_to_geohash()](geo-point-to-geohash-function.md).
 
-For comparison with other available grid systems. see [geospatial clustering with Kusto Query Language](../../geospatial-grid-systems.md).
+For comparison with other available grid systems. see [geospatial clustering with Kusto Query Language](geospatial-grid-systems.md).
 
 ## Examples
 
