@@ -52,7 +52,7 @@ evaluate azure_digital_twins_query_request(
 
 The result looks like this:
 
-![The twins present in the Azure Digital Twins instance](images/adt-twins.png "The twins present in the Azure Digital Twins instance")
+![The twins present in the Azure Digital Twins instance](images/azure-digital-twins-request-plugin/adt-twins.png "The twins present in the Azure Digital Twins instance")
 
 ### Projection of twin properties as columns along with additional Kusto expressions
 
@@ -100,4 +100,4 @@ ADT_Data_History is a table whose schema as follows:
 
 The output looks like this:
 
-![Anomaly chart of the above expression](images/adt-anomaly.png "Highlighted point is the anomaly")
+![Anomaly chart of the above expression](images/azure-digital-twins-request-plugin/adt-anomaly.png "Highlighted point is the anomaly")
