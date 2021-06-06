@@ -15,7 +15,7 @@ Calculates the S2 cell token string value for a geographic location.
 
 S2 Cell can be a useful geospatial clustering tool. The S2 Cell is a cell on a spherical surface and its edges are geodesics. S2 Cell has 31 levels of hierarchy with area coverage ranging from 85,011,012.19km² at the highest level of 0 to 0.44cm² at the lowest level of 30. S2 Cell preserves the cell center well during level increase from 0 to 30. Two geographic locations can be very close to each other but have different S2 cell tokens.
 
-[!NOTE]
+>[!NOTE]
 > If you invoke the [geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md) function on an S2 cell token string that was calculated on longitude x and latitude y, the function won't necessarily return x and y.
 
 Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy).
