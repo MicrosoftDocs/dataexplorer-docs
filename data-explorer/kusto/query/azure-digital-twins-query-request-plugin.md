@@ -34,7 +34,7 @@ The user of the azure_digital_twins_query_request plugin must be granted the **A
 This plugin is disabled by default. To enable the plugin on your cluster, run the following command:
 `.enable plugin azure_digital_twins_query_request`. This command requires **All Databases admin** permission. 
 
-For more information on this command, see [**.enable plugin | Azure Data Explorer documentation**](../management/enable-plugin.md). For more information on role-based authorization in Kusto, see [**Role-based Authorization in Kusto | Azure Data Explorer documentation**](../management/access-control/role-based-authorization).
+For more information on this command, see [**.enable plugin | Azure Data Explorer documentation**](../management/enable-plugin.md). For more information on role-based authorization in Kusto, see [**Role-based Authorization in Kusto | Azure Data Explorer documentation**](../management/access-control/role-based-authorization.md).
 
 ## Examples
 
