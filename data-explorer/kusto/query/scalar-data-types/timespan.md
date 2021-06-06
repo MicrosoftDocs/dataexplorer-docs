@@ -51,7 +51,7 @@ print
     result3 = 24 * 60 * time(00:01:00) / time(1s)
 ```
 
-This example converts an integer to a timespan by multiplying it by the timespan unit:
+This example converts the number of seconds in a day (represented by an integer value) to a timespan unit:
 
 ```kusto
 print 
