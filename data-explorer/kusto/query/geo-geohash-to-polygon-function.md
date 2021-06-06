@@ -21,7 +21,7 @@ Read more about [geohash](https://en.wikipedia.org/wiki/Geohash).
 
 ## Arguments
 
-*geohash*: Geohash string value as it was calculated by [geo_point_to_geohash()](geo-point-to-geohash-function.md). The geohash string must be between one and 18 characters.
+*geohash*: Geohash string value as it was calculated by [geo_point_to_geohash()](geo-point-to-geohash-function.md). The geohash string must be between 1 and 18 characters.
 
 ## Returns
 
