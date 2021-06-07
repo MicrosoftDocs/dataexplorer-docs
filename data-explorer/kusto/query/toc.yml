@@ -722,10 +722,6 @@ items:
     href: zlib-base64-decompress.md
 - name: Aggregation functions
   items:
-  - name: any()
-    href: any-aggfunction.md
-  - name: anyif()
-    href: anyif-aggfunction.md
   - name: arg_max()
     href: arg-max-aggfunction.md
   - name: arg_min()
@@ -779,6 +775,10 @@ items:
   - name: percentiles(), percentile()
     displayName: percentiles_array(), percentilew(), percentilesw(), percentilesw_array()
     href: percentiles-aggfunction.md
+  - name: take_any()
+    href: take-any-aggfunction.md
+  - name: take_anyif()
+    href: take-anyif-aggfunction.md    
   - name: stdev()
     href: stdev-aggfunction.md
   - name: stdevif()

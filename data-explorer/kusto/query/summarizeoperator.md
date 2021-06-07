@@ -68,8 +68,6 @@ To summarize over ranges of numeric values, use `bin()` to reduce ranges to disc
 
 |Function|Description|
 |--------|-----------|
-|[any()](any-aggfunction.md)|Returns a random non-empty value for the group|
-|[anyif()](anyif-aggfunction.md)|Returns a random non-empty value for the group (with predicate)|
 |[arg_max()](arg-max-aggfunction.md)|Returns one or more expressions when the argument is maximized|
 |[arg_min()](arg-min-aggfunction.md)|Returns one or more expressions when the argument is minimized|
 |[avg()](avg-aggfunction.md)|Returns an average value across the group|
@@ -97,6 +95,8 @@ To summarize over ranges of numeric values, use `bin()` to reduce ranges to disc
 |[percentiles_array()](percentiles-aggfunction.md)|Returns the percentiles approximates of the group|
 |[percentilesw()](percentiles-aggfunction.md)|Returns the weighted percentile approximate of the group|
 |[percentilesw_array()](percentiles-aggfunction.md)|Returns the weighted percentiles approximates of the group|
+|[take_any()](take-any-aggfunction.md)|Returns a random non-empty value for the group|
+|[take_anyif()](take-anyif-aggfunction.md)|Returns a random non-empty value for the group (with predicate)|
 |[stdev()](stdev-aggfunction.md)|Returns the standard deviation across the group|
 |[stdevif()](stdevif-aggfunction.md)|Returns the standard deviation across the group (with predicate)|
 |[sum()](sum-aggfunction.md)|Returns the sum of the elements within the group|
