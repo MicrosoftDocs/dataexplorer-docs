@@ -62,7 +62,7 @@ Kusto.Azure.Svc_IN_0|net.tcp://100.112.138.15:23107/|Kusto.Azure.Svc_IN_0/RD000D
 
 Returns information about the Kusto cluster state of health.
 
-`scope` controls the basis on which the capacities are shown. The capacity can be based on the [workload group](workload-groups.md) the command was classified to, or the cluster's total capacity. If unspecified, the default scope is `workloadgroup`.
+`scope` controls the basis on which the capacities are shown. The capacity can be based on the [workload group](workload-groups.md) the command was classified to, or the cluster's total capacity. If unspecified, the default scope is `cluster`.
  
 **Returns**
 
@@ -110,7 +110,7 @@ Returns information about the Kusto cluster state of health.
 
 Returns the results of a calculation for an estimated cluster capacity for each resource.
 
-`scope` controls the basis on which the capacities are shown. The capacity can be based on the [workload group](workload-groups.md) the command was classified to, or the cluster's total capacity. If unspecified, the default scope is `workloadgroup`.
+`scope` controls the basis on which the capacities are shown. The capacity can be based on the [workload group](workload-groups.md) the command was classified to, or the cluster's total capacity. If unspecified, the default scope is `cluster`.
  
 **Results**
 
