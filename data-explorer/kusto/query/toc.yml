@@ -775,10 +775,6 @@ items:
   - name: percentiles(), percentile()
     displayName: percentiles_array(), percentilew(), percentilesw(), percentilesw_array()
     href: percentiles-aggfunction.md
-  - name: take_any()
-    href: take-any-aggfunction.md
-  - name: take_anyif()
-    href: take-anyif-aggfunction.md    
   - name: stdev()
     href: stdev-aggfunction.md
   - name: stdevif()
@@ -789,6 +785,10 @@ items:
     href: sum-aggfunction.md
   - name: sumif()
     href: sumif-aggfunction.md
+  - name: take_any()
+    href: take-any-aggfunction.md
+  - name: take_anyif()
+    href: take-anyif-aggfunction.md        
   - name: tdigest()
     href: tdigest-aggfunction.md
   - name: tdigest_merge()

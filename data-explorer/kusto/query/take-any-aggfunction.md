@@ -32,7 +32,7 @@ If the `*` argument is provided, the function behaves as if the expressions are 
 of the input to the summarize operator barring the group-by columns, if any.
 
 > [!NOTE]
-> `any()` is a legacy and obsolete version of the `take_any()` function. The legacy version adds `any_` suffix to the columns return by the `any()` aggregation.
+> `any()` is a legacy and obsolete version of the `take_any()` function. The legacy version adds `any_` prefix to the columns returned by the `any()` aggregation.
 
 **Remarks**
 
