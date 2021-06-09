@@ -91,6 +91,8 @@ Event Hub exposes the following system properties:
 | x-opt-publisher |string | The publisher name, if the message was sent to a publisher endpoint |
 | x-opt-partition-key |string |The partition key of the corresponding partition that stored the event |
 
+When working with [IoT Central](https://azure.microsoft.com/en-us/services/iot-central/) Event Hubs, IoT Hub system properties are also available and can be embedded in the payload. See [IoT Hub system properties](ingest-data-iot-hub-overview.md#event-system-properties-mapping) for the complete list.
+
 If you selected **Event system properties** in the **Data Source** section of the table, you must include the properties in the table schema and mapping.
 
 [!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
