@@ -76,7 +76,7 @@ IoT Hub exposes the following system properties:
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include the properties in the table schema and mapping.
 
-[!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-iot-system-properties.md)]
+[!INCLUDE [data-explorer-iot-system-properties](includes/data-explorer-iot-system-properties.md)]
 
 ## IoT Hub connection
 
