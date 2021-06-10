@@ -36,7 +36,8 @@ Minimal required permission levels are `Database Ingestor` and `Table Ingestor` 
 If table creation is required, `Database User` or a higher access role must also be assigned.
 
 
->`Ingestor` role only grants permissions to ingest data into an existing table. It does not allow creating tables or modifying existing table schema. If table schema changes are required, the relevant identity needs to be granted `Database Admin` or `Table Admin` role.
+> [!NOTE]
+> `Ingestor` roles only grant permissions to ingest data into an existing table. They do not allow creating tables or modifying the schema of an existing table. If table schema changes are required, the relevant identity needs to be granted the `Database Admin` or `Table Admin` role.
 
 
 |Role                 |PrincipalType        |PrincipalDisplayName
