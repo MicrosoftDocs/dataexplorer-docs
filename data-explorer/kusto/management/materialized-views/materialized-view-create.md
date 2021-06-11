@@ -208,19 +208,35 @@ The following aggregation functions are supported:
 
 ## Performance tips
 
-* Materialized view query filters are optimized when filtered by one of the materialized view group-by keys. If you know your query pattern will often filter by some column, which can be added as a group-by key to the materialized view aggregation, include it in the view. For example: For a materialized view exposing an `arg_max` by `ResourceId` that will often be filtered by `SubscriptionId`, the recommendation is as follows:
+* **Datetime group-by key:** materialized views which have a datetime column as one of their group-by keys are more efficient than those that don't, due to some optimizations that can only be applied when there is a datetime group-by key. If adding a datetime group-by key does not change the semantics of your aggregation, it's recommended to add it. 
 
-    **Do**:
+    For example, assume the following aggregation:
+
+    ```kusto
+        SourceTable | summarize any(*) by EventId
+    ``` 
     
+    If an EventId always has the same Timestamp value, and therefore adding Timestamp does not change the semantics of the aggregation, it's better to define the view as:
+    
+    ```kusto
+        SourceTable | summarize any(*) by EventId, Timestamp
+    ``` 
+    
+* **Define a lookback period**: if applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [properties](#properties).  
+
+* **Add columns frequently used for filtering as group-by keys:** materialized view query filters are optimized when filtered by one of the materialized view group-by keys. If you know your query pattern will often filter by some column, which can be added as a group-by key to the materialized view aggregation, include it in the view.
+
+    For example, for a materialized view exposing an `arg_max` by `ResourceId` that will often be filtered by `SubscriptionId`, and assuming a `ResourceId` always belongs to the same `SubscriptionId`, you should define the materialized view query as:
+
     ```kusto
     .create materialized-view ArgMaxResourceId on table FactResources
     {
         FactResources | summarize arg_max(Timestamp, *) by SubscriptionId, ResouceId 
     }
-    ``` 
-    
-    **Don't do**:
-    
+    ```
+
+    instead of:
+
     ```kusto
     .create materialized-view ArgMaxResourceId on table FactResources
     {
@@ -228,11 +244,10 @@ The following aggregation functions are supported:
     }
     ```
 
-* The materialized view can include transformations, normalizations, and lookups in dimension tables. However, we recommend moving these operations to [update policy](../updatepolicy.md), and leaving only the aggregation for the materialized view.
+* **Use update policies where appropriate:** the materialized view can include transformations, normalizations, and lookups in dimension tables. However, we recommend moving these operations to [update policy](../updatepolicy.md), and leaving only the aggregation for the materialized view.
 
-    **Do**:
-    
-    * Update policy:
+    For example, it's better to define the following: 
+    * **Update policy:**
     
     ```kusto
     .alter-merge table Target policy update 
@@ -242,10 +257,10 @@ The following aggregation functions are supported:
             "SourceTable 
             | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)", 
             | lookup DimResources on ResourceId
+            | mv-expand Events
         "IsTransactional": false}]'  
     ```
-        
-    * Materialized View:
+    * **Materialized view:**
     
     ```kusto
     .create materialized-view Usage on table Events
@@ -255,7 +270,7 @@ The following aggregation functions are supported:
     }
     ```
     
-    **Don't Do**:
+    Than to include the update policy query as part of the materialized view: 
     
     ```kusto
     .create materialized-view Usage on table SourceTable
@@ -263,10 +278,10 @@ The following aggregation functions are supported:
         SourceTable
         | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)
         | lookup DimResources on ResourceId
+        | mv-expand Events
         | summarize count() by ResourceId
     }
     ```
-* Define a `lookback` on the view, if applicable. For details, see [properties](#properties). Adding a lookback period to the view can significantly improve query performance.
 
 > [!TIP]
 > If you require the best query time performance, but can tolerate some data latency, use the [materialized_view() function](../../query/materialized-view-function.md).

@@ -25,6 +25,11 @@ The retention policy of the materialized view is unrelated to the retention poli
 > [!NOTE]
 > Zero retention policy on the source table isn't supported.
 
+The retention and caching policies both depend on [Extent Creation time](../extents-overview.md#extent-creation-time). The extent creation time in the case of materialized views is determined by the last update for a record.
+
+> [!WARNING]
+> The materialization process attempts to minimize the amount of updates to the [materialized part of the view](materialized-view-overview.md#how-materialized-views-work). In cases where a record doesn't _have_ to be updated in the view, it won't be updated. For example, when the materialized view is an `any(*)` aggregation, new records of same group-by keys won't be re-ingested into the view, and therefore the retention policy would be by earliest record ingested.
+
 ## Partitioning policy
 
 A [partitioning policy](../partitioningpolicy.md) can be applied on a materialized view. We recommend configuring a partitioning policy on a materialized view when most or all of the view queries filter by one of the materialized view's group-by keys. This is common in multi-tenant solutions, where one of the materialized view's group-by keys is the tenant's identifer (for example, `tenantId`, `customerId`). For more information, see the first use case described in the [partitioning policy common scenarios](../partitioningpolicy.md#common-scenarios) page.
