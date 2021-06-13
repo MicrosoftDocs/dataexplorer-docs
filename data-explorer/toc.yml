@@ -26,6 +26,12 @@ items:
         href: end-to-end-csharp.md
       - name: Python
         href: end-to-end-python.md
+      - name: Node
+        href: end-to-end-node.md
+      - name: Go
+        href: end-to-end-go.md
+      - name: Java
+        href: end-to-end-java.md
   - name: Ingest and query monitoring data
     href: ingest-data-no-code.md
   - name: Visualize data in Power BI
@@ -106,6 +112,18 @@ items:
       - name: C#
         displayName: ingest data, ingestion
         href: ingest-data-streaming-csharp.md
+      - name: Python
+        displayName: ingest data, ingestion
+        href: ingest-data-streaming-python.md
+      - name: Node
+        displayName: ingest data, ingestion
+        href: ingest-data-streaming-node.md
+      - name: Go
+        displayName: ingest data, ingestion
+        href: ingest-data-streaming-go.md
+      - name: Java
+        displayName: ingest data, ingestion
+        href: ingest-data-streaming-java.md
     - name: Using LightIngest
       displayName: ingest data, ingestion
       href: lightingest.md

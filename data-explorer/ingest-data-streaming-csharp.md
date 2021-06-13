@@ -1,6 +1,6 @@
 ---
 title:  Configure streaming ingestion on your Azure Data Explorer cluster using C#
-description: Learn how to configure your Azure Data Explorer cluster and start loading data with streaming ingestion  using C#
+description: Learn how to configure your Azure Data Explorer cluster and start loading data with streaming ingestion using C#
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexefro
@@ -9,21 +9,25 @@ ms.topic: how-to
 ms.date: 07/13/2020
 ---
 
-# Configure streaming ingestion on your Azure Data Explorer cluster using C#
+# Configure streaming ingestion on your Azure Data Explorer cluster using C\#
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-streaming.md)
 > * [C#](ingest-data-streaming-csharp.md)
+> * [Python](ingest-data-streaming-python.md)
+> * [Node](ingest-data-streaming-node.md)
+> * [Go](ingest-data-streaming-go.md)
+> * [Java](ingest-data-streaming-java.md)
 
 [!INCLUDE [ingest-data-streaming-intro](includes/ingest-data-streaming-intro.md)]
 
 ## Prerequisites
 
-* If you don't have Visual Studio 2019 installed, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/).  Enable **Azure development** during the Visual Studio setup.
+* If you don't have Visual Studio 2019 installed, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-csharp.md)
-   
-## Enable streaming ingestion on your cluster using C#
+
+## Enable streaming ingestion on your cluster using C\#
 
 ### Enable streaming ingestion while creating a new cluster
 
@@ -65,7 +69,7 @@ To enable streaming ingestion on your Azure Data Explorer cluster, run the follo
 > [!WARNING]
 > Review the [limitations](#limitations) prior to enabling steaming ingestion.
 
-## Create a target table and define the policy using C#
+## Create a target table and define the policy using C\#
 
 To create a table and define a streaming ingestion policy on this table, run the following code:
 
@@ -102,10 +106,10 @@ To create a table and define a streaming ingestion policy on this table, run the
 
 [!INCLUDE [ingest-data-streaming-disable](includes/ingest-data-streaming-disable.md)]
 
-### Drop the streaming ingestion policy using C#
+### Drop the streaming ingestion policy using C\#
 
 To drop the streaming ingestion policy from the table, run the following code:
-    
+
 ```csharp
         var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
         var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
@@ -114,7 +118,7 @@ To drop the streaming ingestion policy from the table, run the following code:
         var tableName = "TestTable";
         var kcsb = new KustoConnectionStringBuilder("https://mystreamingcluster.westcentralus.kusto.windows.net", databaseName);
         kcsb = kcsb.WithAadApplicationKeyAuthentication(clientId, clientSecret, tenantId);
-    
+
         var tablePolicyDropCommand = CslCommandGenerator.GenerateTableStreamingIngestionPolicyDropCommand(databaseName, tableName);
         using (var client = KustoClientFactory.CreateCslAdminProvider(kcsb))
         {
@@ -122,10 +126,10 @@ To drop the streaming ingestion policy from the table, run the following code:
         }
 ```
 
-### Disable streaming ingestion using C#
+### Disable streaming ingestion using C\#
 
 To disable streaming ingestion on your cluster, run the following code:
-    
+
 ```csharp
         var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
         var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
@@ -134,21 +138,21 @@ To disable streaming ingestion on your cluster, run the following code:
         var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
         var credential = new ClientCredential(clientId, clientSecret);
         var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
-    
+
         var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
-    
+
         var kustoManagementClient = new KustoManagementClient(credentials)
         {
             SubscriptionId = subscriptionId
         };
-    
+
         var resourceGroupName = "testrg";
         var clusterName = "mystreamingcluster";
         var clusterUpdateParameters = new ClusterUpdate(enableStreamingIngest: false);
-    
+
         await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdateParameters);
 ```
-    
+
 [!INCLUDE [ingest-data-streaming-limitations](includes/ingest-data-streaming-limitations.md)]
 
 ## Next steps
