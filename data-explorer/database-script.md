@@ -282,7 +282,7 @@ Use the following settings:
 |**Setting**  |**Description**  |
 |---------|---------|
 | Identity | Resource ID of a [user assigned managed identity](/azure/active-directory/managed-identities-azure-resources/overview). This identity must have a contributor-level permission on the subscription  |
-| Ps Deployment Name | The name of the PowerShell script deployment name. This script uploads the **inline** Kusto Query Language script into a blob in the storage account. By default the name of this PowerShell deployment script will be random Guid. |
+| PowerShell Deployment Name | The name of the PowerShell script deployment name. This script uploads the **inline** Kusto Query Language script into a blob in the storage account. By default the name of this PowerShell deployment script will be random Guid. |
 | Storage Account Name | The name of the storage account that will be created to host the Kusto Query Language script.
 | Container Name | The name of the container that will be created to host the Kusto Query Language script.
 | Location | The location of the Azure Data Explorer cluster |
