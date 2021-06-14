@@ -112,6 +112,8 @@ items:
       href: evaluateoperator.md
     - name: autocluster plugin
       href: autoclusterplugin.md
+    - name: azure_digital_twins_query_request plugin
+      href: azure-digital-twins-query-request-plugin.md
     - name: bag_unpack plugin
       href: bag-unpackplugin.md
     - name: basket plugin
