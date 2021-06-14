@@ -26,7 +26,7 @@ ms.date: 07/13/2020
 
 ### Enable streaming ingestion while creating a new cluster in the Azure portal
 
-You can enable streaming ingestion while creating a new Azure Data Explorer cluster. 
+You can enable streaming ingestion while creating a new Azure Data Explorer cluster.
 
 In the **Configurations** tab, select **Streaming ingestion** > **On**.
 
@@ -34,8 +34,8 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 
 ### Enable streaming ingestion on an existing cluster in the Azure portal
 
-1. In the Azure portal, go to your Azure Data Explorer cluster. 
-1. In **Settings**, select **Configurations**. 
+1. In the Azure portal, go to your Azure Data Explorer cluster.
+1. In **Settings**, select **Configurations**.
 1. In the **Configurations** pane, select **On** to enable **Streaming ingestion**.
 1. Select **Save**.
 
@@ -59,11 +59,11 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 
     :::image type="content" source="media/ingest-data-streaming/create-table.png" alt-text="Create a table for streaming ingestion into Azure Data Explorer":::
 
-1. Define the [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) on the table you've created or on the database that contains this table. 
- 
+1. Define the [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) on the table you've created or on the database that contains this table.
+
     > [!TIP]
-    > A policy that is defined at the database level applies to all existing and future tables in the database. 
-    
+    > A policy that is defined at the database level applies to all existing and future tables in the database.
+
 1. Copy one of the following commands into the **Query pane** and select **Run**.
 
     ```kusto
@@ -80,15 +80,66 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 
 [!INCLUDE [ingest-data-streaming-use](includes/ingest-data-streaming-types.md)]
 
+### [Go](#tab/go)
+
+### [Java](#tab/java)
+
+### [Node.js](#tab/nodejs)
+
+```nodejs
+// Streaming ingest client 
+const props = new IngestionProps({
+database: "<YOUR DB HERE>",
+table: "<YOUR TABLE HERE>",
+format: DataFormat.JSON,
+ingestionMappingReference: "Pre-defined mapping name" // For json format mapping is required
+});
+// Init with engine endpoint
+const streamingIngestClient = new StreamingIngestClient(
+KustoConnectionStringBuilder.withAadApplicationKeyAuthentication(
+`https://<YOUR CLUSTER HERE>.kusto.windows.net`, <YOUR APP ID>, <YOUR APP KEY>, <YOUR AUTHORITY ID>
+),
+props
+);
+await streamingIngestClient.ingestFromFile("file.json", props);
+```
+
+### [Python](#tab/python)
+
+```python
+import io
+from azure.kusto.data import KustoConnectionStringBuilder
+from azure.kusto.ingest import (
+    IngestionProperties,
+    DataFormat,
+    KustoStreamingIngestClient,
+)
+
+# In case you want to authenticate with AAD device code.
+# Please note that if you choose this option, you'll need to authenticate for every new instance that is initialized.
+# It is highly recommended to create one instance and use it for all of your queries.
+
+cluster = "https://{cluster_name}.kusto.windows.net"
+kcsb = KustoConnectionStringBuilder.with_aad_device_authentication(cluster)
+client = KustoStreamingIngestClient(kcsb)
+
+ingestion_properties = IngestionProperties(database="{database_name}", table="{table_name}", data_format=DataFormat.CSV)
+
+# ingest from stream
+byte_sequence = b"56,56,56"
+bytes_stream = io.BytesIO(byte_sequence)
+client.ingest_from_stream(bytes_stream, ingestion_properties=ingestion_properties)
+```
+
 [!INCLUDE [ingest-data-streaming-disable](includes/ingest-data-streaming-disable.md)]
 
 ## Drop the streaming ingestion policy in the Azure portal
 
-1. In the Azure portal, go to your Azure Data Explorer cluster and select **Query**. 
+1. In the Azure portal, go to your Azure Data Explorer cluster and select **Query**.
 1. To drop the streaming ingestion policy from the table, copy the following command into **Query pane** and select **Run**.
 
     ```Kusto
-    .delete table TestTable policy streamingingestion 
+    .delete table TestTable policy streamingingestion
     ```
 
     :::image type="content" source="media/ingest-data-streaming/delete-streaming-ingestion-policy.png" alt-text="Delete streaming ingestion policy in Azure Data Explorer":::

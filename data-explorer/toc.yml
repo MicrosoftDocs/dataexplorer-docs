@@ -112,18 +112,6 @@ items:
       - name: C#
         displayName: ingest data, ingestion
         href: ingest-data-streaming-csharp.md
-      - name: Python
-        displayName: ingest data, ingestion
-        href: ingest-data-streaming-python.md
-      - name: Node
-        displayName: ingest data, ingestion
-        href: ingest-data-streaming-node.md
-      - name: Go
-        displayName: ingest data, ingestion
-        href: ingest-data-streaming-go.md
-      - name: Java
-        displayName: ingest data, ingestion
-        href: ingest-data-streaming-java.md
     - name: Using LightIngest
       displayName: ingest data, ingestion
       href: lightingest.md
