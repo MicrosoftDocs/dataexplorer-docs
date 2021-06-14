@@ -33,6 +33,8 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 > [!NOTE]
 > To search for many IPv4 addresses at once, use [has_any_ipv4()](has-any-ipv4-function.md) function.
+> 
+> To search for IPv4 addresses prefix, use [has_ipv4_prefix()](has-ipv4-prefix-function.md) function.
 
 ## Examples
 
