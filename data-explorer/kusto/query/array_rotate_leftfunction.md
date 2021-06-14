@@ -15,11 +15,11 @@ Rotates values inside a `dynamic` array to the left.
 
 ## Syntax
 
-`array_rotate_left(`*arr*, *rotate_count*`)`
+`array_rotate_left(`*array*, *rotate_count*`)`
 
 ## Arguments
 
-* *arr*: Input array to split, must be dynamic array.
+* *array*: Input array to split, must be dynamic array.
 * *rotate_count*: Integer specifying the number of positions that array elements will be rotated to the left. If the value is negative, the elements will be rotated to the right.
 
 ## Returns
