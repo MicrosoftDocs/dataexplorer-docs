@@ -22,7 +22,7 @@ There are various methods you can use to configure a database with Kusto Query L
 * If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
 * [Create a cluster and database](create-cluster-database-portal.md).
 
-## Simple method: Upload Kusto Query Language script
+## Upload Kusto Query Language script
 
 This method assumes that you already have a blob in Azure storage account and you provide its details (url and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) directly.
 
@@ -110,7 +110,7 @@ Use the following settings:
 |Database Name   |   The name of the database. The script will run under this database scope.      |
 |Script Name   |   The name of the script.      |
 
-## Advanced method: Inline Kusto Query Language script
+## Inline Kusto Query Language script
 
 In this method, you run a Kusto Query Language script by using an [Azure Resource Manager template](/azure/azure-resource-manager/management/overview). You'll provide the Kusto Query Language script inline, and the storage account will be created for you.
 
