@@ -22,16 +22,16 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 ## Syntax
 
-`has_ipv4_prefix(`*text* `,` *ip_address_prefix* `)`
+`has_ipv4_prefix(`*source* `,` *ip_address_prefix* `)`
 
 ## Arguments
 
-* *text*: The value containing the text to search in.
+* *source*: The value containing the text to search in.
 * *ip_address_prefix*: String value containing the IP address prefix to look for.
 
 ## Returns
 
-`true` if the *ip_address_prefix* is a valid IPv4 address prefix, and it was found in *text*. Otherwise, the function returns `false`.
+`true` if the *ip_address_prefix* is a valid IPv4 address prefix, and it was found in *source*. Otherwise, the function returns `false`.
 
 ## Examples
 
