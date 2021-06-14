@@ -88,7 +88,7 @@ items:
   - name: External tables
     items:
     - name: External tables commands
-      href:  external-table-commands.md
+      href:  ./show-external-tables.md
     - name: .drop external table
       href: drop-external-table.md
     - name: .show external table

@@ -46,7 +46,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 * **Queries**: These logs have detailed information about queries that have reached a final state.
 
     > [!NOTE]
-    > The query log data doesn't contain the query text.
+    > The command and query log data contains the query text.
     
 # [Tables](#tab/tables)
 
@@ -267,7 +267,8 @@ Log JSON strings include elements listed in the following table:
         "ResourceUtilization": "{\"CacheStatistics\":{\"Memory\":{\"Hits\":0,\"Misses\":0},\"Disk\":{\"Hits\":0,\"Misses\":0},\"Shards\":{\"Hot\":{\"HitBytes\":0,\"MissBytes\":0,\"RetrieveBytes\":0},\"Cold\":{\"HitBytes\":0,\"MissBytes\":0,\"RetrieveBytes\":0},\"BypassBytes\":0}},\"TotalCpu\":\"00:00:00\",\"MemoryPeak\":0,\"ScannedExtentsStatistics\":{\"MinDataScannedTime\":null,\"MaxDataScannedTime\":null,\"TotalExtentsCount\":0,\"ScannedExtentsCount\":0,\"TotalRowsCount\":0,\"ScannedRowsCount\":0}}",
         "Duration": "00:03:30.1562500",
         "User": "AAD app id=0571b364-eeeb-4f28-ba74-90a8b4132b53",
-        "Principal": "aadapp=0571b364-eeeb-4f28-ba74-90a3b4136b53;5c443533-c927-4410-a5d6-4d6a5443b64f"
+        "Principal": "aadapp=0571b364-eeeb-4f28-ba74-90a3b4136b53;5c443533-c927-4410-a5d6-4d6a5443b64f",
+        "Text": ".show principal roles"
     }
 }
 ```
@@ -288,6 +289,7 @@ Log JSON strings include elements listed in the following table:
 |Duration     |Command duration
 |User     |The user that invoked the query
 |Principal     |The principal that invoked the query
+|Text     |The command text
 
 #### Query log
 
@@ -313,6 +315,7 @@ Log JSON strings include elements listed in the following table:
         "Duration": "00:00:00.0165122",
         "User": "AAD app id=0571b364-eeeb-4f28-ba74-90a8b4132b53",
         "Principal": "aadapp=0571b364-eeeb-4f28-ba74-90a8b4132b53;5c823e4d-c927-4010-a2d8-6dda2449b6cf",
+        "Text": "TestTable | take 10",
         "ScannedExtentsStatistics": {
             "MinDataScannedTime": "2020-07-27T08:34:35.3299941",
             "MaxDataScannedTime": "2020-07-27T08:34:41.991661",
@@ -402,6 +405,7 @@ Log JSON strings include elements listed in the following table:
 |TablesStatistics        |Contains result set table statistics
 |RowCount        | Result set table row count
 |TableSize        |Result set table row count
+|Text     |The query text
 
 
 # [Tables](#tab/tables)
