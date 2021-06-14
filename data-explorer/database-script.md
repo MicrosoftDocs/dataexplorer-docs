@@ -12,7 +12,7 @@ ms.date: 05/25/2021
 
 You can run a Kusto Query Language script to configure your database during ARM template deployment. A Kusto Query Language script is a list of one or more [control commands](kusto/management/index.md), each separated by **exactly** one line break, and is created as a resource that will be accessed with the ARM template.
 
-There are various methods you can use to configure a database with Kusto Query Language scripts. We'll focus on two main methods using ARM template deployment. In the first, [**simple** method](#simple-method-upload-kusto-query-language-script), you create a script as a blob in an Azure storage account, and provide its details (url and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) directly. In the second, [more advanced scenario](#advanced-method-inline-kusto-query-language-script), you provide your Kusto Query Language script **inline**, and a storage account is created during the deployment.
+There are various methods you can use to configure a database with Kusto Query Language scripts. We'll focus on two main methods using ARM template deployment. In the first, [*simple* method](#upload-kusto-query-language-script), you create a script as a blob in an Azure storage account, and provide its details (url and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) directly. In the second, [*more advanced* method](#inline-kusto-query-language-script), you provide your Kusto Query Language script **inline**, and a storage account is created during the deployment.
 
 > [!NOTE]
 > Each cluster can have a maximum of 50 scripts.
