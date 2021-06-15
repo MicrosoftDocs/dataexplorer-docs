@@ -36,7 +36,8 @@ When *RowsAfter* is specified, returns every row from the input that is *NumRows
 
 ## Example
 
-Find rows with an `"Error"` *State* and `2` rows before and after the `"Error"` record.
+Find rows with an `"Error"` *State*, and returns `2` rows before and after the `"Error"` record.
+
 
 ```kusto
 datatable (Timestamp:datetime, Value:long, State:string )
