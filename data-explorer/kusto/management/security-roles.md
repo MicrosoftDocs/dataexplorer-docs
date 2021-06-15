@@ -157,7 +157,14 @@ Where:
 ### Example
 
 ```kusto
-.add table Test admins ('aaduser=imike@fabrikam.com ')
+// No need to specify AAD tenant for UPN, as Kusto performs the resolution by itself
+.add database Test users ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
+
+// AAD SG on 'fabrikam.com' tenant
+.add database Test admins ('aadgroup=SGDisplayName;fabrikam.com') 'Test group @fabrikam.com (AAD)'
+
+// AAD App on another tenant - by tenant guid
+.add database Test viewers ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
 ```
 
 ## Managing materialized view security roles
