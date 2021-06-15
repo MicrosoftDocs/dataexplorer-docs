@@ -226,7 +226,8 @@ The following aggregation functions are supported:
 
 * **Add columns frequently used for filtering as group-by keys:** materialized view query filters are optimized when filtered by one of the materialized view group-by keys. If you know your query pattern will often filter by some column, which can be added as a group-by key to the materialized view aggregation, include it in the view.
 
-    For example, for a materialized view exposing an `arg_max` by `ResourceId` that will often be filtered by `SubscriptionId`, and assuming a `ResourceId` always belongs to the same `SubscriptionId`, you should define the materialized view query as:
+    For example, for a materialized view exposing an `arg_max` by `ResourceId` that will often be filtered by `SubscriptionId`, and assuming a `ResourceId` always belongs to the same `SubscriptionId`.
+    Define the materialized view query as:
 
     ```kusto
     .create materialized-view ArgMaxResourceId on table FactResources
