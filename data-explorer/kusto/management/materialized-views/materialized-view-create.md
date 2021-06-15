@@ -210,7 +210,7 @@ The following aggregation functions are supported:
 
 * **Datetime group-by key:** materialized views which have a datetime column as one of their group-by keys are more efficient than those that don't, due to some optimizations that can only be applied when there is a datetime group-by key. If adding a datetime group-by key does not change the semantics of your aggregation, it's recommended to add it. 
 
-    For example, assume the following aggregation:
+    For example, in the following aggregation:
 
     ```kusto
         SourceTable | summarize any(*) by EventId
