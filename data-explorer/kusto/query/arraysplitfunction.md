@@ -20,7 +20,7 @@ Splits an array to multiple arrays according to the split indices and packs the 
 ## Arguments
 
 * *array*: Input array to split, must be dynamic array.
-* *`indices`*: Integer or dynamic array of integers with the split indices (zero based), negative values are converted to array_length + value.
+* *indices*: Integer or dynamic array of integers with the split indices (zero based), negative values are converted to array_length + value.
 
 ## Returns
 
