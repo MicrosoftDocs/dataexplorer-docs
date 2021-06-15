@@ -15,16 +15,16 @@ Splits an array to multiple arrays according to the split indices and packs the 
 
 ## Syntax
 
-`array_split`(*`arr`*, *`indices`*)
+`array_split`(*array*, *`indices`*)
 
 ## Arguments
 
-* *`arr`*: Input array to split, must be dynamic array.
-* *`indices`*: Integer or dynamic array of integers with the split indices (zero based), negative values are converted to array_length + value.
+* *array*: Input array to split, must be dynamic array.
+* *indices*: Integer or dynamic array of integers with the split indices (zero based), negative values are converted to array_length + value.
 
 ## Returns
 
-Dynamic array containing N+1 arrays with the values in the range `[0..i1), [i1..i2), ... [iN..array_length)` from `arr`, where N is the number of input indices and `i1...iN` are the indices.
+Dynamic array containing N+1 arrays with the values in the range `[0..i1), [i1..i2), ... [iN..array_length)` from `array`, where N is the number of input indices and `i1...iN` are the indices.
 
 ## Examples
 

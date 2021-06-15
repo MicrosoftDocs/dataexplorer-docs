@@ -144,6 +144,8 @@ items:
       href: rplugin.md
     - name: rolling_percentile plugin
       href: rolling-percentile-plugin.md
+    - name: rows_near plugin
+      href: rows-near-plugin.md  
     - name: schema_merge plugin
       href: schemamergeplugin.md
     - name: sql_request plugin
