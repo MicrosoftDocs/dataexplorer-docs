@@ -15,7 +15,7 @@ ms.date: 08/11/2019
 
 ## Syntax
 
-`array_shift_right(`*array*, *`shift_count`* [, *`fill_value`* ]`)`
+`array_shift_right(`*array*, *shift_count* [, *fill_value* ]`)`
 
 ## Arguments
 
@@ -25,7 +25,7 @@ ms.date: 08/11/2019
 
 ## Returns
 
-Dynamic array containing the same amount of the elements as in the original array. Each element has been shifted according to *`shift_count`*. New elements that are added instead of the removed elements will have a value of *`fill_value`*.
+Dynamic array containing the same amount of the elements as in the original array. Each element has been shifted according to *shift_count*. New elements that are added instead of the removed elements will have a value of *fill_value*.
 
 ## See also
 
