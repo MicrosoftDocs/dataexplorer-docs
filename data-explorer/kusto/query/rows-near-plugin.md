@@ -30,7 +30,9 @@ T | evaluate rows_near(Condition, NumRows)
 
 ## Returns
 
-Every row from the input that is within *NumRows* from a `true` *Condition* or (when *RowsAfter* is specified), every row from the input that is *NumRows* before or *RowsAfter* after a `true` *Condition*.
+Every row from the input that is within *NumRows* from a `true` *Condition*,
+When *RowsAfter* is specified, returns every row from the input that is *NumRows* before or *RowsAfter* after a `true` *Condition*.
+
 
 ## Example
 
