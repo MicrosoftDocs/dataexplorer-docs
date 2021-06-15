@@ -24,7 +24,7 @@ Splits an array to multiple arrays according to the split indices and packs the 
 
 ## Returns
 
-Dynamic array containing N+1 arrays with the values in the range `[0..i1), [i1..i2), ... [iN..array_length)` from `arr`, where N is the number of input indices and `i1...iN` are the indices.
+Dynamic array containing N+1 arrays with the values in the range `[0..i1), [i1..i2), ... [iN..array_length)` from `array`, where N is the number of input indices and `i1...iN` are the indices.
 
 ## Examples
 
