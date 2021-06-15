@@ -147,7 +147,7 @@ Three tables are often produced:
   |{"Visualization":"piechart",...}|
   |{"Cursor":"637239957206013576"}|
 
-  For queries sent using the /v2 protocol, the table has three columns:
+  For queries sent using the v2 protocol, the table has three columns:
   (1) An `integer` column called `TableId`, which indicates which table
       in the results set the record applies to;
   (2) A `string` column called `Key` indicating the kind of information
