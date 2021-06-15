@@ -139,7 +139,7 @@ Three tables are often produced:
   information about the query's effective [database cursor](../../management/databasecursor.md),
   or information about the query's effective use of the [query results cache](../../query/query-results-cache.md).
   
-  For queries sent using the /v1 protocol, the table has a single column of type `string`,
+  For queries sent using the v1 protocol, the table has a single column of type `string`,
   whose value is a JSON-encoded string, such as:
 
   |Value|
