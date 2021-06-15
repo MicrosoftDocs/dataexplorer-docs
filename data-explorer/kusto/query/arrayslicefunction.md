@@ -15,11 +15,11 @@ Extracts a slice of a dynamic array.
 
 ## Syntax
 
-`array_slice`(*`arr`*, *`start`*, *`end`*)
+`array_slice`(*array*, *`start`*, *`end`*)
 
 ## Arguments
 
-* *`arr`*: Input array to extract the slice from must be dynamic array.
+* *array*: Input array to extract the slice from must be dynamic array.
 * *`start`*: zero-based (inclusive) start index of the slice, negative values are converted to array_length+start.
 * *`end`*: zero-based (inclusive) end index of the slice, negative values are converted to array_length+end.
 

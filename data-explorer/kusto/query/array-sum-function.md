@@ -15,11 +15,11 @@ Calculates the sum of elements in a dynamic array.
 
 ## Syntax
 
-`array_sum`(*`arr`*)
+`array_sum`(*array*)
 
 ## Arguments
 
-* *`arr`*: Input array.
+* *array*: Input array.
 
 ## Returns
 
