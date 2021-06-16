@@ -96,7 +96,7 @@ let Traces = datatable(EventText:string)
 ];
 Traces  
 | parse EventText with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previousLockTime:date ")" *  
-| project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previousLockTime
+| project resourceName, totalSlices, sliceNumber, lockTime, releaseTime, previousLockTime
 ```
 
 |resourceName|totalSlices|sliceNumber|lockTime|releaseTime|previousLockTime|
@@ -121,7 +121,7 @@ let Traces = datatable(EventText:string)
 ];
 Traces  
 | parse kind = regex EventText with "(.*?)[a-zA-Z]*=" resourceName @", totalSlices=\s*\d+\s*.*?sliceNumber=" sliceNumber:long  ".*?(previous)?lockTime=" lockTime ".*?releaseTime=" releaseTime ".*?previousLockTime=" previousLockTime:date "\\)"  
-| project resourceName , sliceNumber , lockTime , releaseTime , previousLockTime
+| project resourceName, sliceNumber, lockTime, releaseTime, previousLockTime
 ```
 
 |resourceName|sliceNumber|lockTime|releaseTime|previousLockTime|

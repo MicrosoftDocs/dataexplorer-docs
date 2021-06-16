@@ -112,6 +112,8 @@ items:
       href: evaluateoperator.md
     - name: autocluster plugin
       href: autoclusterplugin.md
+    - name: azure_digital_twins_query_request plugin
+      href: azure-digital-twins-query-request-plugin.md
     - name: bag_unpack plugin
       href: bag-unpackplugin.md
     - name: basket plugin
@@ -142,6 +144,8 @@ items:
       href: rplugin.md
     - name: rolling_percentile plugin
       href: rolling-percentile-plugin.md
+    - name: rows_near plugin
+      href: rows-near-plugin.md  
     - name: schema_merge plugin
       href: schemamergeplugin.md
     - name: sql_request plugin

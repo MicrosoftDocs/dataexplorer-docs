@@ -20,19 +20,21 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 ## Syntax
 
-`has_ipv4(`*text* `,` *ip_address* `)`
+`has_ipv4(`*source* `,` *ip_address* `)`
 
 ## Arguments
 
-* *text*: The value containing the text to search in.
+* *source*: The value containing the text to search in.
 * *ip_address*: String value containing the IP address to look for.
 
 ## Returns
 
-`true`  if the *ip_address* is a valid IPv4 address, and it was found in *text*. Otherwise, the function returns `false`.
+`true`  if the *ip_address* is a valid IPv4 address, and it was found in *source*. Otherwise, the function returns `false`.
 
 > [!NOTE]
 > To search for many IPv4 addresses at once, use [has_any_ipv4()](has-any-ipv4-function.md) function.
+> 
+> To search for IPv4 addresses prefix, use [has_ipv4_prefix()](has-ipv4-prefix-function.md) function.
 
 ## Examples
 
