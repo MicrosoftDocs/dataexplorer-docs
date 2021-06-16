@@ -726,10 +726,6 @@ items:
     href: zlib-base64-decompress.md
 - name: Aggregation functions
   items:
-  - name: any()
-    href: any-aggfunction.md
-  - name: anyif()
-    href: anyif-aggfunction.md
   - name: arg_max()
     href: arg-max-aggfunction.md
   - name: arg_min()
@@ -793,6 +789,10 @@ items:
     href: sum-aggfunction.md
   - name: sumif()
     href: sumif-aggfunction.md
+  - name: take_any()
+    href: take-any-aggfunction.md
+  - name: take_anyif()
+    href: take-anyif-aggfunction.md        
   - name: tdigest()
     href: tdigest-aggfunction.md
   - name: tdigest_merge()
