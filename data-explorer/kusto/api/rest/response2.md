@@ -60,7 +60,7 @@ The Table objects can be encoded in two ways:
 The second case is called "progressive mode", and will only appear if
 the client request property `results_progressive_enabled` is set to `true`.
 In this case, each TableFragment frame describes an update to the data
-accummulated by all previous such frames for the table, either as an append
+accumulated by all previous such frames for the table, either as an append
 operation, or as a replace operation. (The latter is used, for example, when
 some long-running aggregation calculation is performed at the "top level" of
 the query, so an initial aggregation result is replaced by more accurate
