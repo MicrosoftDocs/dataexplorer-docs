@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/12/2020
+ms.date: 06/16/2021
 ms.localizationpriority: high 
 ---
 # Query limits
@@ -56,7 +56,7 @@ There are several strategies for dealing with this error.
 Methods for reducing the result set size produced by the query include:
 
 * Use the [summarize operator](../query/summarizeoperator.md) group and aggregate over
-   similar records in the query output. Potentially sample some columns by using the [take any aggregation function](../query/take-any-aggfunction.md).
+   similar records in the query output. Potentially sample some columns by using the [take_any aggregation function](../query/take-any-aggfunction.md).
 * Use a [take operator](../query/takeoperator.md) to sample the query output.
 * Use the [substring function](../query/substringfunction.md) to trim wide free-text columns.
 * Use the [project operator](../query/projectoperator.md) to drop any uninteresting column from the result set.

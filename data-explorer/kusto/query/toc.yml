@@ -790,10 +790,10 @@ items:
     href: sum-aggfunction.md
   - name: sumif()
     href: sumif-aggfunction.md
-  - name: take_any()
+  - name: take_any(), any()
     displayName: any()
     href: take-any-aggfunction.md
-  - name: take_anyif()
+  - name: take_anyif(), anyif()
     displayNae: anyif()
     href: take-anyif-aggfunction.md        
   - name: tdigest()
