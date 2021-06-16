@@ -137,7 +137,7 @@
     },
     {
       "source_path": "data-explorer/kusto/query/anyif-aggfunction.md",
-      "redirect_url": "/azure/data-explorer/query/take-anyif-aggfunction",
+      "redirect_url": "/azure/data-explorer/kusto/query/take-anyif-aggfunction",
       "redirect_document_id": true
     }
   ]
