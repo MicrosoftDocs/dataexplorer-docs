@@ -207,7 +207,7 @@ The following aggregation functions are supported:
 
 ## Performance tips
 
-* **Datetime group-by key:** materialized views which have a datetime column as one of their group-by keys are more efficient than those that don't, due to some optimizations that can only be applied when there is a datetime group-by key. If adding a datetime group-by key does not change the semantics of your aggregation, it's recommended to add it. This can be done only if the datetime column is immutable for each unique entity.
+* **Datetime group-by key:** materialized views which have a datetime column as one of their group-by keys are more efficient than those that don't, due to some optimizations that can only be applied when there is a datetime group-by key. If adding a datetime group-by key does not change the semantics of your aggregation, it's recommended to add it. This can be done only if the datetime column is *immutable* for each unique entity.
 
     For example, in the following aggregation:
 
@@ -223,7 +223,7 @@ The following aggregation functions are supported:
 
 * **Define a lookback period**: if applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [properties](#properties).  
 
-* **Add columns frequently used for filtering as group-by keys:** materialized view query filters are optimized when filtered by one of the materialized view group-by keys. If you know your query pattern will often filter by some column, which can be added as a group-by key to the materialized view aggregation, include it in the view.
+* **Add columns frequently used for filtering as group-by keys:** materialized view query filters are optimized when filtered by one of the materialized view group-by keys. If you know your query pattern will often filter by a column, which is *immutable* per a unique entity in the materialized view, include it in the materialized view group by keys.
 
     For example, for a materialized view exposing an `arg_max` by `ResourceId` that will often be filtered by `SubscriptionId`, and assuming a `ResourceId` always belongs to the same `SubscriptionId`.
      Define the materialized view query as:
@@ -231,7 +231,7 @@ The following aggregation functions are supported:
     ```kusto
     .create materialized-view ArgMaxResourceId on table FactResources
     {
-        FactResources | summarize arg_max(Timestamp, *) by SubscriptionId, ResouceId 
+        FactResources | summarize arg_max(Timestamp, *) by SubscriptionId, ResourceId 
     }
     ```
 
@@ -240,7 +240,7 @@ The following aggregation functions are supported:
     ```kusto
     .create materialized-view ArgMaxResourceId on table FactResources
     {
-        FactResources | summarize arg_max(Timestamp, *) by ResouceId 
+        FactResources | summarize arg_max(Timestamp, *) by ResourceId 
     }
     ```
 
