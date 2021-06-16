@@ -27,7 +27,7 @@ The retention policy of the materialized view is unrelated to the retention poli
 
 The retention and caching policies both depend on [Extent Creation time](../extents-overview.md#extent-creation-time). The extent creation time in the case of materialized views is determined by the last update for a record.
 
-> [!WARNING]
+> [!NOTE]
 > The materialization process attempts to minimize the amount of updates to the [materialized part of the view](materialized-view-overview.md#how-materialized-views-work). In cases where a record doesn't _have_ to be updated in the view, it won't be updated. For example, when the materialized view is an `any(*)` aggregation, new records of same group-by keys won't be re-ingested into the view, and therefore the retention policy would be by earliest record ingested.
 
 ## Partitioning policy

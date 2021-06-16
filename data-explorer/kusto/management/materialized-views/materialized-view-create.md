@@ -179,7 +179,6 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
         | summarize arg_max(Timestamp, *) by User 
     }
     ```
-    
 
 ## Supported aggregation functions
 
@@ -208,7 +207,7 @@ The following aggregation functions are supported:
 
 ## Performance tips
 
-* **Datetime group-by key:** materialized views which have a datetime column as one of their group-by keys are more efficient than those that don't, due to some optimizations that can only be applied when there is a datetime group-by key. If adding a datetime group-by key does not change the semantics of your aggregation, it's recommended to add it. 
+* **Datetime group-by key:** materialized views which have a datetime column as one of their group-by keys are more efficient than those that don't, due to some optimizations that can only be applied when there is a datetime group-by key. If adding a datetime group-by key does not change the semantics of your aggregation, it's recommended to add it. This can be done only if the datetime column is immutable for each unique entity.
 
     For example, in the following aggregation:
 
@@ -220,14 +219,14 @@ The following aggregation functions are supported:
     
     ```kusto
         SourceTable | summarize any(*) by EventId, Timestamp
-    ``` 
-    
+    ```
+
 * **Define a lookback period**: if applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [properties](#properties).  
 
 * **Add columns frequently used for filtering as group-by keys:** materialized view query filters are optimized when filtered by one of the materialized view group-by keys. If you know your query pattern will often filter by some column, which can be added as a group-by key to the materialized view aggregation, include it in the view.
 
     For example, for a materialized view exposing an `arg_max` by `ResourceId` that will often be filtered by `SubscriptionId`, and assuming a `ResourceId` always belongs to the same `SubscriptionId`.
-    Define the materialized view query as:
+     Define the materialized view query as:
 
     ```kusto
     .create materialized-view ArgMaxResourceId on table FactResources
@@ -236,7 +235,7 @@ The following aggregation functions are supported:
     }
     ```
 
-    instead of:
+    The definition above is preferable over the following:
 
     ```kusto
     .create materialized-view ArgMaxResourceId on table FactResources
@@ -245,9 +244,9 @@ The following aggregation functions are supported:
     }
     ```
 
-* **Use update policies where appropriate:** the materialized view can include transformations, normalizations, and lookups in dimension tables. However, we recommend moving these operations to [update policy](../updatepolicy.md), and leaving only the aggregation for the materialized view.
+* **Use update policies where appropriate:** the materialized view can include transformations, normalizations, and lookups in dimension tables. However, we recommend moving these operations to an [update policy](../updatepolicy.md), and leaving only the aggregation for the materialized view.
 
-    For example, it's better to define the following: 
+    For example, it's better to define the following:
     * **Update policy:**
     
     ```kusto
@@ -271,7 +270,7 @@ The following aggregation functions are supported:
     }
     ```
     
-    Than to include the update policy query as part of the materialized view: 
+    Don't include the update policy query as part of the materialized view:
     
     ```kusto
     .create materialized-view Usage on table SourceTable
