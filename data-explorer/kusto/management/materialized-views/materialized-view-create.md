@@ -197,7 +197,7 @@ The following aggregation functions are supported:
 * [`arg_max`](../../query/arg-max-aggfunction.md)
 * [`arg_min`](../../query/arg-min-aggfunction.md)
 * [`take_any`](../../query/take-any-aggfunction.md)
-* [`take_anyif`](../../query/anyif-aggfunction.md)
+* [`take_anyif`](../../query/take-anyif-aggfunction.md)
 * [`hll`](../../query/hll-aggfunction.md)
 * [`make_set`](../../query/makeset-aggfunction.md)
 * [`make_list`](../../query/makelist-aggfunction.md)
