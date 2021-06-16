@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/17/2021
+ms.date: 06/16/2021
 ---
 
 # .create materialized-view
@@ -196,7 +196,7 @@ The following aggregation functions are supported:
 * [`sumif`](../../query/sumif-aggfunction.md)
 * [`arg_max`](../../query/arg-max-aggfunction.md)
 * [`arg_min`](../../query/arg-min-aggfunction.md)
-* [`any`](../../query/any-aggfunction.md)
+* [`take_any`](../../query/take-any-aggfunction.md)
 * [`anyif`](../../query/anyif-aggfunction.md)
 * [`hll`](../../query/hll-aggfunction.md)
 * [`make_set`](../../query/makeset-aggfunction.md)

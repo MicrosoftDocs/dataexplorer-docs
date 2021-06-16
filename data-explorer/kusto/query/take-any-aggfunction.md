@@ -14,6 +14,9 @@ ms.date: 06/07/2021
 Arbitrarily chooses one record for each group in a [summarize operator](summarizeoperator.md),
 and returns the value of one or more expressions over each such record.
 
+> [!NOTE]
+> `any()` is a legacy and obsolete version of the `take_any()` function. The legacy version adds `any_` prefix to the columns returned by the `any()` aggregation.
+
 ## Syntax
 
 `summarize` `take_any` `(` (*Expr* [`,` *Expr2* ...]) | `*` `)`
@@ -31,10 +34,7 @@ for each of the records, selected randomly from each group of the summarize oper
 If the `*` argument is provided, the function behaves as if the expressions are all columns
 of the input to the summarize operator barring the group-by columns, if any.
 
-> [!NOTE]
-> `any()` is a legacy and obsolete version of the `take_any()` function. The legacy version adds `any_` prefix to the columns returned by the `any()` aggregation.
-
-**Remarks**
+## Remarks
 
 This function is useful when you want to get a sample value of one or more columns
 per value of the compound group key.

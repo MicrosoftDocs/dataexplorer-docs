@@ -14,9 +14,10 @@ ms.date: 06/07/2021
 Arbitrarily selects one record for each group in a [summarize operator](summarizeoperator.md), for which the predicate
 is "true". The function returns the value of an expression over each such record.
 
+This function is useful when you want to get a sample value of one column per value of the compound group key, subject to some predicate that is "true". If such a value is present, the function attempts to return a non-null/non-empty value.
+
 > [!NOTE]
-> This function is useful when you want to get a sample value of one column per value of the compound group key, subject to some predicate that is "true".
-> If such a value is present, the function attempts to return a non-null/non-empty value.
+> `anyif()` is a legacy and obsolete version of the `take_anyif()` function. The legacy version adds `any_` prefix to the columns returned by the `any()` aggregation.
 
 ## Syntax
 
