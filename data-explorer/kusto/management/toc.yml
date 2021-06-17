@@ -87,8 +87,6 @@ items:
       href: clear-table-data-command.md
   - name: External tables
     items:
-    - name: External tables commands
-      href:  ./show-external-tables.md
     - name: .drop external table
       href: drop-external-table.md
     - name: .show external table

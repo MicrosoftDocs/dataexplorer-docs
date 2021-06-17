@@ -11,20 +11,62 @@ ms.date: 02/11/2020
 ---
 # Query V2 HTTP response
 
-If the status code is 200, then the response body is a JSON array.
-Each JSON object in the array is called a _frame_.
+## HTTP response headers
 
-There are several types of frames:
+Two custom HTTP headers are included with the response:
 
-* [DataSetHeader](#datasetheader)
-* [TableHeader](#tableheader)
-* [TableFragment](#tablefragment)
-* [TableProgress](#tableprogress)
-* [TableCompletion](#tablecompletion)
-* [DataTable](#datatable)
-* [DataSetCompletion](#datasetcompletion)
+1. `x-ms-client-request-id`: The service returns an opaque string
+   that identifies the request/response pair for correlation purposes.
+   If the request included a client request ID, it's value will appear here;
+   otherwise, some random string is returned.
 
-## DataSetHeader 
+1. `x-ms-activity-id`: The service returns an opaque string
+   that uniquely identifies the request/response pair for correlation purposes.
+   Unlike `x-ms-client-request-id`, this identifier is not affected by
+   any information in the request, and is unique per response.
+
+## HTTP response body
+
+If the request failed, the HTTP status code will indicate a failure
+(a 4xx or a 5xx code).
+
+If the HTTP status code is 200, the response body will be a JSON array
+that encodes the V2 response.
+
+Logically, the V2 response describes a **DataSet** object which contains
+any number of **Tables**. These tables can represent the actual data asked-for
+by the request, or additional information about the execution of the request
+(such as an accounting of the resources consumed by the request). Additionally,
+the actual request might actually fail (due to various conditions) even though
+a 200 status code gets returned, and in that case the response will include
+partial response data plus an indication of the errors.
+
+Physically, the response body's JSON array is a list of JSON objects, each of
+which is called a **frame**. The DataSet object is encoded into two frames:
+[DataSetHeader](#datasetheader) and [DataSetCompletion](#datasetcompletion).
+The first is always the first frame, and the second is always the last frame.
+In "between" them one can find the frames describing the Table objects.
+
+The Table objects can be encoded in two ways:
+
+1. As a single frame: [DataTable](#datatable). This is the default.
+
+1. Alternatively, as a "mix" of four kinds of frames: [TableHeader](#tableheader)
+   (which comes first and describes the table), [TableFragment](#tablefragment)
+   (which describes a table's data), [TableProgress](#tableprogress) (which is
+   optional and provides an estimation into how far in the table's data we are),
+   and [TableCompletion](#tablecompletion) (which is the last frame of the table).
+
+The second case is called "progressive mode", and will only appear if
+the client request property `results_progressive_enabled` is set to `true`.
+In this case, each TableFragment frame describes an update to the data
+accumulated by all previous such frames for the table, either as an append
+operation, or as a replace operation. (The latter is used, for example, when
+some long-running aggregation calculation is performed at the "top level" of
+the query, so an initial aggregation result is replaced by more accurate
+results later-on.)
+
+## DataSetHeader
 
 The `DataSetHeader` frame is always the first in the data set and appears exactly once.
 
@@ -40,14 +82,14 @@ Where:
 * `Version` is the protocol version. The current version is `v2.0`.
 * `IsProgressive` is a boolean flag that indicates whether this data set contains progressive frames. 
    A progressive frame is one of:
-   
+
      | Frame             | Description                                    |
      |-------------------| -----------------------------------------------|
      | `TableHeader`     | Contains general information about the table   |
      | `TableFragment`   | Contains a rectangular data shard of the table |
      | `TableProgress`   | Contains the progress in percent (0-100)       |
      | `TableCompletion` | Indicates that this frame is the last one      |
-        
+
     The frames above describe a table.
     If the `IsProgressive` flag isn't set to true, then every table in the set will be serialized using a single frame:
 * `DataTable`: Contains all the information that the client needs about a single table in the data set.

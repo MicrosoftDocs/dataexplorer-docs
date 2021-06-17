@@ -175,7 +175,7 @@ In this method, you run a Kusto Query Language script by using an [Azure Resourc
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2021-01-01",
             "name": "[parameters('storageAccountName')]",
-            "location": "eastus2",
+            "location": "[parameters('location')]",
             "sku": {
                 "name": "Standard_LRS",
                 "tier": "Standard"

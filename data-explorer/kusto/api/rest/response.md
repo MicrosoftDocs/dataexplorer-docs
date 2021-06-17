@@ -130,19 +130,35 @@ one or more tables are generated in-order, representing the results produced by 
 
 > [!NOTE]
 > There can be multiple such tables because of [batches](../../query/batches.md)
-and [fork operators](../../query/forkoperator.md)).
+> and [fork operators](../../query/forkoperator.md)).
 
 Three tables are often produced:
+
 * An @ExtendedProperties table that provides additional values, such as client visualization
-  instructions. These values are generated, for example, to reflect the information in 
-  [render operator](../../query/renderoperator.md)) and [database cursor](../../management/databasecursor.md).
+  instructions (information provided by the [render operator](../../query/renderoperator.md)),
+  information about the query's effective [database cursor](../../management/databasecursor.md),
+  or information about the query's effective use of the [query results cache](../../query/query-results-cache.md).
   
-  This table has a single column of type `string`, holding JSON-like values:
+  For queries sent using the v1 protocol, the table has a single column of type `string`,
+  whose value is a JSON-encoded string, such as:
 
   |Value|
   |-----|
   |{"Visualization":"piechart",...}|
   |{"Cursor":"637239957206013576"}|
+
+  For queries sent using the v2 protocol, the table has three columns:
+  (1) An `integer` column called `TableId` indicating which table
+      in the results set the record applies to;
+  (2) A `string` column called `Key` indicating the kind of information
+      provided by the record (possible values: `Visualization`, `ServerCache`,
+      and `Cursor`);
+  (3) A `dynamic` column called `Value` providing the Key-determined information.
+
+  |TableId|Key|Value|
+  |-------|---|-----|
+  |1      |ServerCache|{"OriginalStartedOn":"2021-06-11T07:48:34.6201025Z",...}|
+  |1      |Visualization|{"Visualization":"piechart",...}|
 
 * A QueryStatus table that provides additional information about the execution
   of the query itself, such as, if it completed successfully or not,
