@@ -29,7 +29,7 @@ figures, such as country, salesperson, and amount sold: what are the top five co
 
 ## Syntax
 
-*T* `|` `top-nested` *TopNestedClause2* [`,` *TopNestedClause2*...]
+*T* `|` `top-nested` *TopNestedClause* [`,` *TopNestedClause2*...]
 
 Where *TopNestedClause* has the following syntax:
 
