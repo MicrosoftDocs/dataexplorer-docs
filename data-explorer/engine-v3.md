@@ -23,7 +23,7 @@ Azure Data Explorer cluster running in EngineV3 mode is fully compatible with th
 
 EngineV3 is an additional column store storage engine running in parallel with the existing column store (EngineV2) and row store (used for streaming ingestion). Tables can incorporate data from all three stores at once, and this “federation” of data is transparent from the user perspective.
 
-:::image type="content" source="media\engine-v3\engine-v3-architecture.png" alt-text="Schematic representation of Azure Data Explorer/Kusto EngineV3 architecture":::
+:::image type="content" source="media/engine-v3/engine-v3-architecture.png" alt-text="Schematic representation of Azure Data Explorer/Kusto EngineV3 architecture":::
 
 All data ingested into tables is partitioned into shards, which are horizontal slices of the table. Each shard usually contains a few million records and is encoded and indexed independently of other shards. This functionality allows the engine to achieve linear scale in ingestion throughput.
 
