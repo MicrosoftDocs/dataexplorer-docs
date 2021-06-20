@@ -29,7 +29,7 @@ Stored query results can be accessed for up to 24 hours from the moment of creat
 
 Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, it's recommended that the query includes unique ID columns. For more information, see [examples](#examples). If there are multiple result sets returned by a query, only the first result set will be stored. 
 
-> [!NOTE]
+>[!NOTE]
 > Above 500 columns, an error is obtained and the results aren't stored.
 
 Using stored query results requires `Database Viewer` or higher access role.
