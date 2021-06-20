@@ -37,7 +37,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 |Property|Description|
 |----|--|
 |`Ordinal`|The column order number in CSV.|
-|`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside CSV file.|
+|`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside the CSV file.|
 
 > [!NOTE]
 > `Ordinal` and `ConstantValue` are mutually exclusive.
