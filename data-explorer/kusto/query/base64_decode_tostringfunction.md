@@ -30,7 +30,7 @@ Returns UTF-8 string decoded from base64 string.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print Quine=base64_decode_tostring("S3VzdG8=")
 ```
@@ -41,7 +41,7 @@ print Quine=base64_decode_tostring("S3VzdG8=")
 
 Trying to decode a base64 string that was generated from invalid UTF-8 encoding will return null:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print Empty=base64_decode_tostring("U3RyaW5n0KHR0tGA0L7Rh9C60LA=")
 ```

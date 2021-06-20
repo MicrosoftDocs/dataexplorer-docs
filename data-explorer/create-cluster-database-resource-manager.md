@@ -28,7 +28,7 @@ If you don't have an Azure subscription, [create a free account](https://azure.m
 
 ## Azure Resource Manager template for cluster and database creation
 
-In this article, you use an [existing quickstart template](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-kusto-cluster-database/azuredeploy.json)
+In this article, you use an [existing quickstart template](https://azure.microsoft.com/resources/templates/kusto-cluster-database/)
 
 ```json
 {
@@ -67,7 +67,7 @@ In this article, you use an [existing quickstart template](https://raw.githubuse
               "tier": "Standard",
               "capacity": 2
           },
-          "apiVersion": "2020-18-09",
+          "apiVersion": "2020-09-18",
           "location": "[parameters('location')]",
           "tags": {
             "Created By": "GitHub quickstart template"
@@ -99,7 +99,7 @@ In this article, you use an [existing quickstart template](https://raw.githubuse
       {
           "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
           "type": "Microsoft.Kusto/clusters/databases",
-          "apiVersion": "2020-18-09",
+          "apiVersion": "2020-09-18",
           "location": "[parameters('location')]",
           "dependsOn": [
               "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"
@@ -149,7 +149,7 @@ It takes a few minutes to create an Azure Data Explorer cluster and database.
     $clusterName = "${projectName}cluster"
     $parameters = @{}
     $parameters.Add("clusters_kustocluster_name", $clusterName)
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-kusto-cluster-database/azuredeploy.json"
+    $templateUri = "https://azure.microsoft.com/resources/templates/101-kusto-cluster-database/"
     New-AzResourceGroup -Name $resourceGroupName -Location $location
     New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -TemplateParameterObject $parameters
     Write-Host "Press [ENTER] to continue ..."

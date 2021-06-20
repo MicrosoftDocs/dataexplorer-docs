@@ -1,0 +1,384 @@
+items:
+- name: Control commands overview
+  displayName: Management
+  href: index.md
+- name: Workload groups
+  items:
+  - name: Workload groups overview
+    href: workload-groups.md
+  - name: Workload groups management
+    href: workload-groups-commands.md
+  - name: Request classification policy
+    items:
+    - name: Request classification policy
+      href: request-classification-policy.md
+    - name: Request classification policy commands
+      href: request-classification-policy-commands.md
+  - name: Request limits policy
+    href: request-limits-policy.md
+  - name: Request rate limit policy
+    href: request-rate-limit-policy.md
+  - name: Request rate limits enforcement policy
+    href: request-rate-limits-enforcement-policy.md
+  - name: Request queuing policy
+    href: request-queuing-policy.md
+- name: Schema
+  items:
+  - name: Best practices for schema management
+    href: management-best-practices.md
+  - name: Databases
+    href: databases.md
+    items:
+    - name: .show databases
+      href: show-databases.md
+    - name: .show database
+      href: show-database.md
+    - name: .show cluster databases
+      href: show-cluster-database.md
+    - name: .alter database prettyname
+      href: alter-database.md
+    - name: .show database(s) schema
+      href: show-schema-database.md
+    - name: .execute database script
+      href: execute-database-script.md
+  - name: Tables
+    items:
+    - name: Tables management
+      href: tables.md
+    - name: .alter-merge table
+      href: alter-merge-table-command.md
+    - name: .alter table
+      href: alter-table-command.md
+    - name: .alter table docstring
+      href: alter-table-docstring-command.md
+    - name: .alter table folder
+      href: alter-table-folder-command.md
+    - name: .alter ingestion mapping
+      href: alter-ingestion-mapping-command.md
+    - name: .create ingestion mapping
+      href: create-ingestion-mapping-command.md
+    - name: .drop ingestion mapping
+      href: drop-ingestion-mapping-command.md
+    - name: .show ingestion mapping
+      href: show-ingestion-mapping-command.md
+    - name: .create table
+      href: create-table-command.md
+    - name: .create table based-on
+      href: create-table-based-on-command.md
+    - name: .create tables
+      href: create-tables-command.md
+    - name: .create-merge table
+      href: create-merge-table-command.md
+    - name: .create-merge tables
+      href: create-merge-tables-command.md
+    - name: .drop table(s)
+      href: drop-table-command.md
+    - name: .rename table(s)
+      href: rename-table-command.md
+    - name: .show tables
+      href: show-tables-command.md
+    - name: .undo drop table
+      href: undo-drop-table-command.md
+    - name: .show table details
+      href: show-table-details-command.md
+    - name: .show table schema
+      href: show-table-schema-command.md
+    - name: .clear table data
+      href: clear-table-data-command.md
+  - name: External tables
+    items:
+    - name: .drop external table
+      href: drop-external-table.md
+    - name: .show external table
+      href: show-external-tables.md
+    - name: .show external table schema
+      href: show-external-table-schema.md
+    - name: Create and alter external tables in Azure Storage or Azure Data Lake
+      href: external-tables-azurestorage-azuredatalake.md
+    - name: Create and alter external SQL tables
+      href: external-sql-tables.md
+  - name: Materialized views
+    items:
+    - name: Materialized views overview
+      href: materialized-views/materialized-view-overview.md
+    - name: .create materialized-view
+      href: materialized-views/materialized-view-create.md
+    - name: .alter materialized-view
+      href: materialized-views/materialized-view-alter.md
+    - name: .create-or-alter materialized-view
+      href: materialized-views/materialized-view-create-or-alter.md
+    - name: .alter materialized-view docstring
+      href: materialized-views/materialized-view-alter-docstring.md
+    - name: .alter materialized-view folder
+      href: materialized-views/materialized-view-alter-folder.md
+    - name: .alter materialized-view lookback
+      href: materialized-views/materialized-view-alter-lookback.md
+    - name: .alter materialized-view autoUpdateSchema
+      href: materialized-views/materialized-view-alter-autoUpdateSchema.md
+    - name: .show materialized-view commands
+      href: materialized-views/materialized-view-show-commands.md
+    - name: .drop materialized-view
+      href: materialized-views/materialized-view-drop.md
+    - name: .clear materialized-view data
+      href: materialized-views/materialized-view-clear-data.md
+    - name: .disable | .enable materialized-view
+      href: materialized-views/materialized-view-enable-disable.md
+    - name: Materialized views policies
+      href: materialized-views/materialized-view-policies.md
+    - name: Materialized views data purge
+      href: materialized-views/materialized-view-purge.md
+  - name: Stored query results
+    displayName: .set stored query, .show stored query, .drop stored query
+    href: stored-query-results.md
+  - name: Columns
+    items:
+    - name: Columns management
+      href: columns.md
+    - name: .alter column
+      href: alter-column.md
+    - name: .alter-merge table column-docstrings
+      href: alter-merge-table-column.md
+    - name: .drop column
+      href: drop-column.md
+    - name: .rename column(s)
+      href: rename-column.md
+  - name: Data mappings
+    href: mappings.md
+  - name: Functions
+    items:
+    - name: Stored functions management overview
+      href: functions.md
+    - name: .alter function
+      href: alter-function.md
+    - name: .alter function docstring
+      href: alter-docstring-function.md
+    - name: .alter function folder
+      href: alter-folder-function.md
+    - name: .create function
+      href: create-function.md
+    - name: .create-or-alter function
+      href: create-alter-function.md
+    - name: .drop function
+      href: drop-function.md
+    - name: .show functions
+      href: show-function.md
+- name: Policies
+  items:
+  - name: Auto delete
+    items:
+    - name: Auto delete policy
+      href: auto-delete-policy.md
+    - name: auto delete policy command
+      href: auto-delete-policy-command.md
+  - name: Ingestion batching
+    items:
+    - name: Ingestionbatching policy
+      href: batchingpolicy.md
+    - name: ingestionbatching policy command
+      href: batching-policy.md
+  - name: Cache
+    items:
+    - name: Cache policy (hot and cold cache)
+      href: cachepolicy.md
+    - name: cache policy command
+      href: cache-policy.md
+  - name: Callout
+    href: calloutpolicy.md
+  - name: Capacity
+    items:
+    - name: Capacity policy
+      href: capacitypolicy.md
+    - name: capacity policy commands
+      href: capacity-policy.md
+  - name: Ingestiontime
+    items:
+    - name: Ingestiontime policy
+      href: ingestiontimepolicy.md
+    - name: ingestiontime policy command
+      href: ingestiontime-policy.md
+  - name: Merge
+    items:
+    - name: Merge policy
+      href: mergepolicy.md
+    - name: merge policy command
+      href: merge-policy.md
+  - name: Partitioning
+    items:
+    - name: Partitioning policy
+      href: partitioningpolicy.md
+    - name: partitioning policy command
+      href: partitioning-policy.md
+  - name: Retention
+    items:
+    - name: Retention policy
+      href: retentionpolicy.md
+    - name: retention policy command
+      href: retention-policy.md
+  - name: Restricted view access
+    items:
+    - name: Restricted view access policy
+      href: restrictedviewaccesspolicy.md
+    - name: restricted_view_access policy command
+      href: restrictedviewaccess-policy.md
+  - name: Row level security
+    items:
+    - name: Row level security policy
+      href: rowlevelsecuritypolicy.md
+    - name: row_level_security policy command
+      href: row-level-security-policy.md
+  - name: Roworder
+    items:
+    - name: Roworder policy
+      href: roworderpolicy.md
+    - name: roworder policy command
+      href: roworder-policy.md
+  - name: Sandbox
+    items:
+    - name: Using sandboxes
+      href: ../concepts/sandboxes.md
+    - name: Sandbox policy
+      href: sandboxpolicy.md
+    - name: Sandbox policy command
+      href: sandbox-policy.md
+  - name: Sharding
+    items:
+    - name: Sharding policy
+      href: shardingpolicy.md
+    - name: sharding policy command
+      href: sharding-policy.md
+  - name: Streaming ingestion
+    items:
+    - name: Streaming ingestion policy
+      href: streamingingestionpolicy.md
+    - name: streamingingestion policy command
+      href: streamingingestion-policy.md
+  - name: Update
+    items:
+    - name: Update policy
+      href: updatepolicy.md
+    - name: update policy commands
+      href: update-policy.md
+- name: Security roles
+  href: security-roles.md
+- name: Data ingestion
+  items:
+  - name: Ingest from storage
+    href: data-ingestion/ingest-from-storage.md
+  - name: Ingest from query
+    href: data-ingestion/ingest-from-query.md
+  - name: Inline ingestion
+    href: data-ingestion/ingest-inline.md
+  - name: Streaming ingestion
+    items:
+    - name: Streaming ingestion and schema changes
+      href: data-ingestion/streaming-ingestion-schema-changes.md
+    - name: Clear schema cache for streaming ingestion
+      href: data-ingestion/clear-schema-cache-command.md
+- name: Data export
+  href: data-export/index.md
+  items:
+  - name: To cloud storage
+    href: data-export/export-data-to-storage.md
+  - name: To a SQL table
+    href: data-export/export-data-to-sql.md
+  - name: To an external table
+    href: data-export/export-data-to-an-external-table.md
+  - name: Continuous data export
+    items:
+    - name: Continuous data export overview
+      href: data-export/continuous-data-export.md
+    - name: Create or alter continuous export
+      href: data-export/create-alter-continuous.md
+    - name: Disable or enable continuous export
+      href: data-export/disable-enable-continuous.md
+    - name: Drop continuous export
+      href: data-export/drop-continuous-export.md
+    - name: Show continuous export
+      href: data-export/show-continuous-export.md
+    - name: Show continuous export artifacts
+      href: data-export/show-continuous-artifacts.md
+    - name: Show continuous export failures
+      href: data-export/show-continuous-failures.md
+- name: Database cursors
+  href: databasecursor.md
+- name: Plugin commands
+  items:
+  - name: .show plugins
+    href: show-plugins.md
+  - name: .enable plugin
+    href: enable-plugin.md
+  - name: .disable plugin
+    href: disable-plugin.md
+- name: Query results cache
+  href: query-results-cache-commands.md
+  items:
+  - name: Show cache
+    displayName: show database cache query results
+    href: show-query-results-cache-command.md
+  - name: Clear cache
+    displayName: clear query results cache
+    href: clear-query-results-cache-command.md
+- name: System information
+  href: systeminfo.md
+  items:
+  - name: Diagnostics
+    href: diagnostics.md
+  - name: Journal
+    href: journal.md
+  - name: Queries
+    href: queries.md
+  - name: Commands
+    href: commands.md
+  - name: Commands and queries
+    href: commands-and-queries.md
+  - name: Operations
+    href: operations.md
+- name: Access control
+  href: access-control/index.md
+  items:
+  - name: Identities
+    href: access-control/principals-and-identity-providers.md
+  - name: Azure Active Directory
+    displayName: AAD, Azure AD
+    href: access-control/aad.md
+  - name: Principal roles
+    href: access-control/role-based-authorization.md
+  - name: Allow cross-tenant queries and commands
+    href: ../../cross-tenant-query-and-commands.md
+  - name: How-To Azure Active Directory authentication
+    displayName: AAD, Azure AD
+    href: access-control/how-to-authenticate-with-aad.md
+- name: Advanced data management
+  items:
+  - name: Extents (data shards)
+    items:
+    - name: Extents overview
+      href: extents-overview.md
+    - name: Extents commands
+      items:
+      - name: .alter extent
+        href: alter-extent.md
+      - name: .drop extents
+        href: drop-extents.md
+      - name: .drop extent tags
+        href: drop-extent-tags.md
+      - name: .merge extents
+        href: merge-extents.md
+      - name: .move extents
+        href: move-extents.md
+      - name: .replace extents
+        href: replace-extents.md
+      - name: .show extents
+        href: show-extents.md
+    - name: Extent containers clean commands
+      href: clean-extent-containers.md
+  - name: Cluster follower
+    href: cluster-follower.md
+  - name: Data purge
+    href: ../concepts/data-purge.md
+- name: Errors and failures
+  items:
+  - name: Ingestion error codes
+    href: ../../error-codes.md
+  - name: Ingestion failures
+    href: ingestionfailures.md

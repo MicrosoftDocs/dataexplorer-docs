@@ -1,15 +1,15 @@
 ---
-title: Create an external table (preview) with Azure Data Explorer
+title: Create an external table with Azure Data Explorer
 description: Use the one-click experience to create an external table.
 author: orspod
 ms.author: orspodek
 ms.reviewer: ohbitton
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/28/2021
+ms.date: 04/28/2021
 ---
 
-# Create an external table (preview)
+# Create an external table
 
 An external table is a schema entity that references data stored outside the Azure Data Explorer database. Azure Data Explorer Web UI can create external tables by taking sample files from a storage container and creating schema based on these samples. You can then analyze and query data in external tables without ingestion into Azure Data Explorer. For information about different ways to create external tables, see [create and alter external tables in Azure Storage or Azure Data Lake](kusto/management/external-tables-azurestorage-azuredatalake.md).
 
@@ -23,11 +23,17 @@ This article shows you how to create an external table using the one-click exper
 
 ## Create an external table
 
-1. In the left menu of the Web UI, right-click on your database name and select **Create external table (preview)**.
+There are two ways to access the creation wizard:
+
+* In the left blade of the Web UI, select **Data**. In the **Create external table** card, select **Create**.
+
+     :::image type="content" source="media/external-table/data-blade.png" alt-text="Screenshot of data blade in Azure Data Explorer Web UI with create external table highlighted. ":::
+
+* In the left blade of the Web UI, select **Query**. In the left menu, right-click on your database name and select **Create external table**.
 
     :::image type="content" source="media/external-table/access-wizard.png" alt-text="Screenshot of how to access the wizard to create an external table in the Azure Data Explorer WebUI.":::
 
-    The **Create external table** window opens with the **Source** tab selected.
+The **Create external table** window opens with the **Source** tab selected.
 
 ### Source tab
 

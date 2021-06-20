@@ -32,7 +32,7 @@ The create operation requires [Database Admin](../access-control/role-based-auth
 
 ## Syntax
 
-`.create` [`async`] `materialized-view` <br>
+`.create` [`async`] [`ifnotexists`] `materialized-view` <br>
 [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <br>
 *ViewName* `on table` *SourceTableName* <br>
 `{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
@@ -44,6 +44,12 @@ The create operation requires [Database Admin](../access-control/role-based-auth
 |ViewName|String|Materialized View name. The view name can't conflict with table or function names in same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
 |SourceTableName|String|Name of source table that the view is defined on.|
 |Query|String|The materialized view query. For more information, see [query](#query-argument).|
+
+> [!NOTE]
+> * If the materialized view already exists:
+>    * If `ifnotexists` flag is specified, the command is ignored. No change applied, even if the new definition doesn't match the existing definition.
+>    * If `ifnotexists` flag isn't specified, an error is returned.
+>    * To alter an existing materialized view, see [.alter materialized-view](materialized-view-alter.md) command.
 
 ### Query argument
 
@@ -173,7 +179,6 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
         | summarize arg_max(Timestamp, *) by User 
     }
     ```
-    
 
 ## Supported aggregation functions
 
@@ -188,42 +193,61 @@ The following aggregation functions are supported:
 * [`avg`](../../query/avg-aggfunction.md)
 * [`avgif`](../../query/avgif-aggfunction.md)
 * [`sum`](../../query/sum-aggfunction.md)
+* [`sumif`](../../query/sumif-aggfunction.md)
 * [`arg_max`](../../query/arg-max-aggfunction.md)
 * [`arg_min`](../../query/arg-min-aggfunction.md)
 * [`any`](../../query/any-aggfunction.md)
+* [`anyif`](../../query/anyif-aggfunction.md)
 * [`hll`](../../query/hll-aggfunction.md)
 * [`make_set`](../../query/makeset-aggfunction.md)
 * [`make_list`](../../query/makelist-aggfunction.md)
+* [`make_bag`](../../query/make-bag-aggfunction.md)
 * [`percentile`, `percentiles`](../../query/percentiles-aggfunction.md)
 * [`tdigest`](../../query/tdigest-aggfunction.md)
 
 ## Performance tips
 
-* Materialized view query filters are optimized when filtered by one of the materialized view group-by keys. If you know your query pattern will often filter by some column, which can be added as a group-by key to the materialized view aggregation, include it in the view. For example: For a materialized view exposing an `arg_max` by `ResourceId` that will often be filtered by `SubscriptionId`, the recommendation is as follows:
+* **Datetime group-by key:** materialized views which have a datetime column as one of their group-by keys are more efficient than those that don't, due to some optimizations that can only be applied when there is a datetime group-by key. If adding a datetime group-by key does not change the semantics of your aggregation, it's recommended to add it. This can be done only if the datetime column is *immutable* for each unique entity.
 
-    **Do**:
-    
+    For example, in the following aggregation:
+
     ```kusto
-    .create materialized-view ArgMaxResourceId on table FactResources
-    {
-        FactResources | summarize arg_max(Timestamp, *) by SubscriptionId, ResouceId 
-    }
+        SourceTable | summarize any(*) by EventId
     ``` 
     
-    **Don't do**:
+    If an EventId always has the same Timestamp value, and therefore adding Timestamp does not change the semantics of the aggregation, it's better to define the view as:
     
+    ```kusto
+        SourceTable | summarize any(*) by EventId, Timestamp
+    ```
+
+* **Define a lookback period**: if applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [properties](#properties).  
+
+* **Add columns frequently used for filtering as group-by keys:** materialized view query filters are optimized when filtered by one of the materialized view group-by keys. If you know your query pattern will often filter by a column, which is *immutable* per a unique entity in the materialized view, include it in the materialized view group by keys.
+
+    For example, for a materialized view exposing an `arg_max` by `ResourceId` that will often be filtered by `SubscriptionId`, and assuming a `ResourceId` always belongs to the same `SubscriptionId`.
+     Define the materialized view query as:
+
     ```kusto
     .create materialized-view ArgMaxResourceId on table FactResources
     {
-        FactResources | summarize arg_max(Timestamp, *) by ResouceId 
+        FactResources | summarize arg_max(Timestamp, *) by SubscriptionId, ResourceId 
     }
     ```
 
-* The materialized view can include transformations, normalizations, and lookups in dimension tables. However, we recommend moving these operations to [update policy](../updatepolicy.md), and leaving only the aggregation for the materialized view.
+    The definition above is preferable over the following:
 
-    **Do**:
-    
-    * Update policy:
+    ```kusto
+    .create materialized-view ArgMaxResourceId on table FactResources
+    {
+        FactResources | summarize arg_max(Timestamp, *) by ResourceId 
+    }
+    ```
+
+* **Use update policies where appropriate:** the materialized view can include transformations, normalizations, and lookups in dimension tables. However, we recommend moving these operations to an [update policy](../updatepolicy.md), and leaving only the aggregation for the materialized view.
+
+    For example, it's better to define the following:
+    * **Update policy:**
     
     ```kusto
     .alter-merge table Target policy update 
@@ -233,10 +257,10 @@ The following aggregation functions are supported:
             "SourceTable 
             | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)", 
             | lookup DimResources on ResourceId
+            | mv-expand Events
         "IsTransactional": false}]'  
     ```
-        
-    * Materialized View:
+    * **Materialized view:**
     
     ```kusto
     .create materialized-view Usage on table Events
@@ -246,7 +270,7 @@ The following aggregation functions are supported:
     }
     ```
     
-    **Don't Do**:
+    Don't include the update policy query as part of the materialized view:
     
     ```kusto
     .create materialized-view Usage on table SourceTable
@@ -254,10 +278,10 @@ The following aggregation functions are supported:
         SourceTable
         | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)
         | lookup DimResources on ResourceId
+        | mv-expand Events
         | summarize count() by ResourceId
     }
     ```
-* Define a `lookback` on the view, if applicable. For details, see [properties](#properties). Adding a lookback period to the view can significantly improve query performance.
 
 > [!TIP]
 > If you require the best query time performance, but can tolerate some data latency, use the [materialized_view() function](../../query/materialized-view-function.md).
@@ -316,10 +340,10 @@ When creating a materialized view with the `backfill` property, the materialized
 * A materialized view only processes new records ingested into the source table. Records which are removed from the source table, either by running [data purge](../../concepts/data-purge.md)/[drop extents](../drop-extents.md), or due to [retention policy](../retentionpolicy.md) or any other reason, have no impact on the materialized view. The materialized view has its own [retention policy](materialized-view-policies.md#retention-and-caching-policy), which is independent of the retention policy of the source table. The materialized view might include records which are not present in the source table.
 * The source table of a materialized view:
     * Must be a table that is being ingested to directly, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md).
-        * Specifically, using [move extents](../move-extents.md) from other tables into the source table of the materialized view is not supported. Move extents may fail with the following error: `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`. 
+        * Specifically, using [move extents](../move-extents.md) from other tables into the source table of the materialized view is not supported. Move extents may fail with the following error: `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
     * Must have [IngestionTime policy](../ingestiontimepolicy.md) enabled (the default is enabled).
-    * Can't be enabled for streaming ingestion.
-    * Can't be a restricted table or a table with row level security enabled.
+    * Can't be enabled for [streaming ingestion](../streamingingestionpolicy.md). Materialized views over streaming ingestion tables are supported in preview mode. Enabling this feature on your cluster requires [creating a support ticket](https://ms.portal.azure.com/#create/Microsoft.Support).
+    * Can't be a table with [restricted view access policy](../restrictedviewaccesspolicy.md).
 * [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
 * Continuous export from a materialized view isn't supported.
 

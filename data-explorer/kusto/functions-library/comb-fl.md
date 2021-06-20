@@ -34,7 +34,7 @@ The function `comb_fl()`calculates *C(n, k)*, the number of [combinations](https
 
 For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let comb_fl=(n:int, k:int)
 {
@@ -55,7 +55,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Calculate number of combinations for selection of k items out of n items without order")
 comb_fl(n:int, k:int)
@@ -69,7 +69,7 @@ comb_fl(n:int, k:int)
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range n from 3 to 10 step 3
 | extend k = n-2

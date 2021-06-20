@@ -20,7 +20,7 @@ The `.clean databases extentcontainers` command deletes unused storage artifacts
 You must have an AllDatabasesAdmin or specific database admin permission to execute this command. For more information, see [Role-based Authorization in Kusto](access-control/role-based-authorization.md).
 
 > [!WARNING]
-> Once the `.clean databases extentcontainers` command is run, the recoverability defined in the [retention policy](../management/retentionpolicy.md) is reset to the time when the command started. You can't change the database state to an earlier point in time. We advise only running this command based on Azure Advisor recommendation.
+> Once the `.clean databases extentcontainers` command is run, the recoverability defined in the [retention policy](../management/retentionpolicy.md) is reset to the time when the command was executed by the user. You won't be able change the database state to an earlier point in time. We advise only running this command based on [Azure Advisor recommendation](../../azure-advisor.md#delete-unused-storage-artifacts).
 
 ### Syntax
 
@@ -55,6 +55,9 @@ This command monitors the [`.clean databases extentcontainers`](#clean-databases
 
 You must have an AllDatabasesAdmin, AllDatabasesMonitor or specific database admin or monitor permission to execute this command. For more information, see [Role-based Authorization in Kusto](access-control/role-based-authorization.md).
 
+The cleanup action doesn’t start immediately after running the command. A delay period of at least five days is set by the system.
+The initial state is 'Cleanup requested'.
+
 ### Syntax
 
 `.show` `database` *DatabaseName1* `extentcontainers` `clean` `operations`
@@ -79,4 +82,3 @@ You must have an AllDatabasesAdmin, AllDatabasesMonitor or specific database adm
 | Database                             | String  | The name of the database on which the operation was activated.                                                     |
 | DatabaseVersion                      | String  | The version of the database based on which the cleanup is done.                                               |
 | State                                | String  | The state of the operation.                                                                                        |
-

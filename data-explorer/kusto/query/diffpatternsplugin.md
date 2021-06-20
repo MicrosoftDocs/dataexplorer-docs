@@ -103,7 +103,7 @@ For each pattern, columns that are not set in the pattern (that is, without rest
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
 | where monthofyear(StartTime) == 5

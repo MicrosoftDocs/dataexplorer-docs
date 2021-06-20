@@ -7,9 +7,9 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/18/2021
+ms.date: 05/09/2021
 ---
-# Request rate limit policy (Preview)
+# Request rate limit policy
 
 The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group:
   * Per workload group
@@ -51,7 +51,7 @@ When a request exceeds the limit on maximum number of concurrent requests:
          The query was aborted due to throttling. Retrying after some backoff might succeed. Capacity: 50, Origin: 'RequestRateLimitPolicy/WorkloadGroup/MyWorkloadGroup'.
          ```
              
-      1. A throttled query, that was classified to a workload group named `MyWorkloadGroup`, which has a limit of 10 concurrent requests at the scope of a principal:
+      1. A throttled query that was classified to a workload group named `MyWorkloadGroup`, which has a limit of 10 concurrent requests at the scope of a principal:
 
          ```
          The query was aborted due to throttling. Retrying after some backoff might succeed. Capacity: 10, Origin: 'RequestRateLimitPolicy/WorkloadGroup/MyWorkloadGroup/Principal/aaduser=9e04c4f5-1abd-48d4-a3d2-9f58615b4724;6ccf3fe8-6343-4be5-96c3-29a128dd9570'.
@@ -151,17 +151,18 @@ The `default` workload group has the following policy defined by default. This p
 
 #### Notes
 
+* Rate limits are enforced at the level defined by the workload group's [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md).
 * The limit on maximum concurrent requests for the `default` workload group depends on the SKU of the cluster, and is calculated as: `Cores-Per-Node x 10`.
-  * For example: A cluster that's set-up with Azure D14_v2 nodes, where each node has 16 vCores, will have the default limit of `16` x `10` = `160`.
+    * For example: A cluster that's set-up with Azure D14_v2 nodes, where each node has 16 vCores, will have a default limit of `16` x `10` = `160`.
 * If a workload group has no limit on maximum concurrent requests defined, then the maximum allowed value of `10000` applies.
-* When altering the policy for the `default` workload group, there must be a limit defined for the workload group's max concurrent requests.
-* The cluster's [capacity policy](capacitypolicy.md) may also limit the request rate of requests that fall under a specific category, for example: *ingestions*.
-  * If either of the limits defined by [capacity policy](capacitypolicy.md) or by a request rate limit policy is exceeded, a control command will be throttled.
+* When altering the policy for the `default` workload group, a limit must be defined for the workload group's max concurrent requests.
+* The cluster's [capacity policy](capacitypolicy.md) may also limit the request rate of requests that fall under a specific category, for example *ingestions*.
+    * If either of the limits defined by the [capacity policy](capacitypolicy.md) or by a request rate limit policy is exceeded, a control command will be throttled.
 * When request rate limits of kind `ConcurrentRequests` are applied, the output of [`.show capacity`](diagnostics.md#show-capacity) may change based on those limits.
-  * [`.show capacity`](diagnostics.md#show-capacity) will show the capacities for the principal that ran the request, according to the context of the request, the workload group it was classified into, and its effective policies.
-  * Different principals may see different outputs when running the command, if their requests are classified into different workload groups.
-  * When running `.show capacity with(scope=cluster)`, the request context is ignored, and the output is only affected by the cluster's [capacity policy](capacitypolicy.md).
+    * [`.show capacity`](diagnostics.md#show-capacity) can show the capacities for the principal that ran the request, according to: the context of the request, the workload group it was classified into, and its effective policies.
+    * When running `.show capacity with(scope=workloadgroup)`, different principals may see different outputs if their requests are classified into different workload groups.
+    * Otherwise, the request context is ignored, and the output is only affected by the cluster's [capacity policy](capacitypolicy.md).
 
 ## Control commands
 
-Manage the workload group's request concurrency policy with [Workload groups control commands](workload-groups-commands.md).
+Manage the workload group's request rate limit policies with [Workload groups control commands](workload-groups-commands.md).

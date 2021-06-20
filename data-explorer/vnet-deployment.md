@@ -61,8 +61,8 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 
 ## Private Endpoints
 
-[Private Endpoints](/azure/private-link/private-endpoint-overview) allow private access to Azure resources (such as Storage/Event Hub/Data Lake Gen 2), and use private IP from your Virtual Network, effectively bringing the resource into your VNet.
-Create a [Private Endpoint](/azure/private-link/private-endpoint-overview) to resources used by data connections, such as Event Hub and Storage, and external tables such as Storage, Data Lake Gen 2, and SQL Database from your VNet to access the underlying resources privately.
+[Private Endpoints](/azure/private-link/private-endpoint-overview) allow private access to Azure resources (such as [Storage/Event Hub](vnet-endpoint-storage-event-hub.md)/Data Lake Gen 2), and use private IP from your Virtual Network, effectively bringing the resource into your VNet.
+Create a [private endpoint](/azure/private-link/private-endpoint-overview) to resources used by data connections, such as Event Hub and Storage, and external tables such as Storage, Data Lake Gen 2, and SQL Database from your VNet to access the underlying resources privately.
 
  > [!NOTE]
  > Setting up Private Endpoint requires [configuring DNS](/azure/private-link/private-endpoint-dns), We support [Azure Private DNS zone](/azure/dns/private-dns-privatednszone) setup only. Custom DNS server isn't supported. 
@@ -105,10 +105,11 @@ Create a [Private Endpoint](/azure/private-link/private-endpoint-overview) to re
 | Region | Addresses |
 | --- | --- |
 | Australia Central | 20.37.26.134 |
-| Australia Central2 | 20.39.99.177 |
+| Australia Central 2 | 20.39.99.177 |
 | Australia East | 40.82.217.84 |
 | Australia Southeast | 20.40.161.39 |
-| BrazilSouth | 191.233.25.183 |
+| Brazil South | 191.233.25.183 |
+| Brazil Southeast | 191.232.16.14 |
 | Canada Central | 40.82.188.208 |
 | Canada East | 40.80.255.12 |
 | Central India | 40.81.249.251, 104.211.98.159 |
@@ -118,21 +119,28 @@ Create a [Private Endpoint](/azure/private-link/private-endpoint-overview) to re
 | China North 2 | 139.217.60.6 |
 | East Asia | 20.189.74.103 |
 | East US | 52.224.146.56 |
-| East US2 | 52.232.230.201 |
-| East US2 EUAP | 52.253.226.110 |
+| East US 2 | 52.232.230.201 |
+| East US 2 EUAP | 52.253.226.110 |
 | France Central | 40.66.57.91 |
 | France South | 40.82.236.24 |
+| Germany West Central | 51.116.98.150 |
 | Japan East | 20.43.89.90 |
 | Japan West | 40.81.184.86 |
 | Korea Central | 40.82.156.149 |
 | Korea South | 40.80.234.9 |
 | North Central US | 40.81.43.47 |
 | North Europe | 52.142.91.221 |
+| Norway East | 51.120.49.100 |
+| Norway West | 51.120.133.5 |
 | South Africa North | 102.133.129.138 |
 | South Africa West | 102.133.0.97 |
 | South Central US | 20.45.3.60 |
 | Southeast Asia | 40.119.203.252 |
 | South India | 40.81.72.110, 104.211.224.189 |
+| Switzerland North | 51.107.42.144 |
+| Switzerland West | 51.107.98.201 |
+| UAE Central | 20.37.82.194 |
+| UAE North | 20.46.146.7 |
 | UK South | 40.81.154.254 |
 | UK West | 40.81.122.39 |
 | USDoD Central | 52.182.33.66 |
@@ -142,55 +150,56 @@ Create a [Private Endpoint](/azure/private-link/private-endpoint-overview) to re
 | USGov Virginia | 52.227.228.88 |
 | West Central US | 52.159.55.120 |
 | West Europe | 51.145.176.215 |
-| West India | 40.81.88.112, 104.211.160.120 |
+| West India | 40.81.88.112 |
 | West US | 13.64.38.225 |
-| West US2 | 40.90.219.23 |
+| West US 2 | 40.90.219.23 |
+| West US 3 | 20.40.24.116 |
 
 #### Health monitoring addresses
 
 | Region | Addresses |
 | --- | --- |
-| Australia Central | 191.239.64.128 |
-| Australia Central 2 | 191.239.64.128 |
-| Australia East | 191.239.64.128 |
-| Australia Southeast | 191.239.160.47 |
-| Brazil South | 23.98.145.105 |
-| Canada Central | 168.61.212.201 |
-| Canada East | 168.61.212.201, 23.101.115.123 |
-| Central India | 23.99.5.162 |
-| Central US | 168.61.212.201, 23.101.115.123 |
-| Central US EUAP | 168.61.212.201, 23.101.115.123 |
+| Australia Central | 52.163.244.128 |
+| Australia Central 2 | 52.163.244.128 |
+| Australia East | 52.163.244.128 |
+| Australia Southeast | 52.163.244.128 |
+| Brazil South | 23.101.115.123 |
+| Canada Central | 23.101.115.123 |
+| Canada East | 23.101.115.123 |
+| Central India | 52.163.244.128 |
+| Central US | 23.101.115.123 |
+| Central US EUAP | 23.101.115.123 |
 | China East 2 | 40.73.96.39 |
 | China North 2 | 40.73.33.105 |
-| East Asia | 168.63.212.33 |
-| East US | 137.116.81.189, 52.249.253.174 |
-| East US 2 | 137.116.81.189, 104.46.110.170 |
-| East US 2 EUAP | 137.116.81.189, 104.46.110.170 |
-| France Central | 23.97.212.5 |
-| France South | 23.97.212.5 |
-| Japan East | 138.91.19.129 |
-| Japan West | 138.91.19.129 |
-| Korea Central | 138.91.19.129 |
-| Korea South | 138.91.19.129 |
-| North Central US | 23.96.212.108 |
-| North Europe | 191.235.212.69, 40.127.194.147 |
-| South Africa North | 104.211.224.189 |
-| South Africa West | 104.211.224.189 |
-| South Central US | 23.98.145.105, 104.215.116.88 |
-| South India | 23.99.5.162 |
-| Southeast Asia | 168.63.173.234 |
-| UK South | 23.97.212.5 |
-| UK West | 23.97.212.5 |
+| East Asia | 52.163.244.128 |
+| East US | 52.249.253.174 |
+| East US 2 | 104.46.110.170 |
+| East US 2 EUAP | 104.46.110.170 |
+| France Central | 40.127.194.147 |
+| France South | 40.127.194.147 |
+| Japan East | 52.163.244.128 |
+| Japan West | 52.163.244.128 |
+| Korea Central | 52.163.244.128 |
+| Korea South | 52.163.244.128 |
+| North Central US | 23.101.115.123 |
+| North Europe |  40.127.194.147 |
+| South Africa North | 52.163.244.128 |
+| South Africa West | 52.163.244.128 |
+| South Central US | 104.215.116.88 |
+| South India | 52.163.244.128 |
+| Southeast Asia | 52.163.244.128 |
+| UK South | 40.127.194.147 |
+| UK West | 40.127.194.147 |
 | USDoD Central | 52.238.116.34 |
 | USDoD East | 52.238.116.34 |
 | USGov Arizona | 52.244.48.35 |
 | USGov Texas | 52.238.116.34 |
 | USGov Virginia | 23.97.0.26 |
-| West Central US | 168.61.212.201, 23.101.115.123 |
-| West Europe | 23.97.212.5, 213.199.136.176 |
-| West India | 23.99.5.162 |
-| West US | 23.99.5.162, 13.88.13.50, 104.210.32.14 |
-| West US 2 | 23.99.5.162, 104.210.32.14, 52.183.35.124 |
+| West Central US | 23.101.115.123 |
+| West Europe | 213.199.136.176 |
+| West India | 52.163.244.128 |
+| West US | 13.88.13.50 |
+| West US 2 | 52.183.35.124 |
 
 ## Disable access to Azure Data Explorer from the public IP
 
@@ -218,7 +227,6 @@ gcs.prod.monitoring.core.windows.net:443
 production.diagnostics.monitoring.core.windows.net:443
 graph.windows.net:443
 *.update.microsoft.com:443
-shavamanifestcdnprod1.azureedge.net:443
 login.live.com:443
 wdcp.microsoft.com:443
 login.microsoftonline.com:443
@@ -254,6 +262,6 @@ For example, for **West US** region, the following UDRs must be defined:
 
 ## Deploy Azure Data Explorer cluster into your VNet using an Azure Resource Manager template
 
-To deploy Azure Data Explorer cluster into your virtual network, use the [Deploy Azure Data Explorer cluster into your VNet](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) Azure Resource Manager template.
+To deploy Azure Data Explorer cluster into your virtual network, use the [Deploy Azure Data Explorer cluster into your VNet](https://azure.microsoft.com/resources/templates/kusto-vnet/) Azure Resource Manager template.
 
 This template creates the cluster, virtual network, subnet, network security group, and public IP addresses.

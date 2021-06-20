@@ -7,9 +7,9 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/18/2021
+ms.date: 04/30/2021
 ---
-# Request limits policy (Preview)
+# Request limits policy
 
 A workload group's request limits policy allows limiting the resources used by the request during its execution.
 
@@ -25,13 +25,13 @@ The following limits are configurable:
 | Name   | Type    | Description      | Supported values  | Matching client request property       |
 |-----------|------------|-----------|---------------------|--------------|
 | DataScope     | `QueryDataScope` | The query's data scope - whether the query applies to all data or just the 'hot' portion of it.   | `All`, `HotCache`, or `null`     | `query_datascope`      |
-| MaxMemoryPerQueryPerNode   | `long`  | The maximum amount of memory a query can allocate.    | [`1`, *50% of a single node's total RAM*] | `max_memory_consumption_per_query_per_node` |
-| MaxMemoryPerIterator       | `long`    | The maximum amount of memory a query operator can allocate.  | [`1`, *50% of a single node's total RAM*] | `maxmemoryconsumptionperiterator`   |
+| MaxMemoryPerQueryPerNode   | `long`  | The maximum amount of memory (in bytes) a query can allocate.    | [`1`, *50% of a single node's total RAM*] | `max_memory_consumption_per_query_per_node` |
+| MaxMemoryPerIterator       | `long`    | The maximum amount of memory (in bytes) a query operator can allocate.  | [`1`, *50% of a single node's total RAM*] | `maxmemoryconsumptionperiterator`   |
 | MaxFanoutThreadsPercentage | `int`   | The percentage of threads on each node to fan out query execution to. When set to 100%, the cluster will assign all CPUs on each node. For example, 16 CPUs on a cluster deployed on Azure D14_v2 nodes. | [`1`, `100`]   | `query_fanout_threads_percent` |
 | MaxFanoutNodesPercentage   | `int`     | The percentage of nodes on the cluster to fan out query execution to. Functions in a similar manner to `MaxFanoutThreadsPercentage`.    | [`1`, `100`]                              |  `query_fanout_nodes_percent`               |
 | MaxResultRecords           | `long`     | maximum number of records a request is allowed to return to the caller, above which the results are truncated.    | [`1`, `9223372036854775807`]   | `truncationmaxrecords`  |
 | MaxResultBytes     | `long`           | The maximum data size (in bytes) a request is allowed to return to the caller, above which the results are truncated.  | [`1`, `9223372036854775807`]    | `truncationmaxsize`    |
-| MaxExecutionTime     | `timespan`   | The maximum duration the request may run for.  | (`00:00:00`, `01:00:00`]   | `servertimeout`    |
+| MaxExecutionTime     | `timespan`   | The maximum duration the request may run for. Note: timeout processing isn't at the resolution of *seconds*, rather it's designed to prevent a query from running for *minutes*.  | (`00:01:00`, `01:00:00`]   | `servertimeout`    |
 
 ### Notes
 

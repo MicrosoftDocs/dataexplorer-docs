@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/08/2021
+ms.date: 04/23/2021
 ---
 
 # Materialized views policies
@@ -20,10 +20,15 @@ A materialized view has a [retention policy](../retentionpolicy.md) and [caching
 
 Both policies are applied on the *materialized part* of the materialized view only.  For an explanation of the differences between the *materialized part* and *delta* part, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work). For example, if the caching policy of a materialized view is set to 7d, but the caching policy of its source table is set to 0d, there may still be disk misses when querying the materialized view. This will happen because the source table (*delta part*) participates in the query as well.
 
-The retention policy of the materialized view is unrelated to the retention policy of the source table. If the source table records aren't otherwise used, the retention policy of the source table can be dropped to a minimum. The materialized view will still store the data according to the retention policy set on the view. While materialized views are in preview mode, the recommendation is to allow a minimum of at least seven days and recoverability set to true. This setting allows for fast recovery for errors and for diagnostic purposes.
+The retention policy of the materialized view is unrelated to the retention policy of the source table. Retention policy of source table can be shorter than the retention policy of the materialized view, if source records are required for a shorter period. We recommend a minimum retention policy of at least few days, and recoverability set to true on the source table. This setting allows for fast recovery for errors and for diagnostic purposes.
 
 > [!NOTE]
 > Zero retention policy on the source table isn't supported.
+
+The retention and caching policies both depend on [Extent Creation time](../extents-overview.md#extent-creation-time). The extent creation time in the case of materialized views is determined by the last update for a record.
+
+> [!NOTE]
+> The materialization process attempts to minimize the amount of updates to the [materialized part of the view](materialized-view-overview.md#how-materialized-views-work). In cases where a record doesn't _have_ to be updated in the view, it won't be updated. For example, when the materialized view is an `any(*)` aggregation, new records of same group-by keys won't be re-ingested into the view, and therefore the retention policy would be by earliest record ingested.
 
 ## Partitioning policy
 
@@ -31,7 +36,7 @@ A [partitioning policy](../partitioningpolicy.md) can be applied on a materializ
 
 For the commands to alter a materialized view's partitioning policy, see [partitioning policy commands](../partitioning-policy.md#alter-and-alter-merge-policy).
 
-Adding a partitioning policy on a materialized views will increase the number of extents in the materialized view, and will create more "work" for the materialization process. For more information on why this happens, see the extents rebuild process mentioned in [how materialized views work](materialized-view-overview.md#how-materialized-views-work)). In [EngineV3](../../../engine-v3.md) clusters, this process is much more efficient than in V2. Therefore, we recommend to only add a partitioning policy on a materialized view only if the cluster is a V3 cluster (preview).
+Adding a partitioning policy on a materialized views will increase the number of extents in the materialized view, and will create more "work" for the materialization process. For more information on why this happens, see the extents rebuild process mentioned in [how materialized views work](materialized-view-overview.md#how-materialized-views-work)). In [EngineV3](../../../engine-v3.md) clusters, this process is much more efficient than in V2. Therefore, we recommend to only add a partitioning policy on a materialized view only if the cluster is a V3 cluster.
 
 ## Row level security policy
 

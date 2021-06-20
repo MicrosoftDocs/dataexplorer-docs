@@ -7,9 +7,9 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/18/2021
+ms.date: 04/30/2021
 ---
-# Workload groups (Preview) - Control commands
+# Workload groups - Control commands
 
 These commands require [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
 
@@ -140,7 +140,7 @@ Create a workload group with a full definition of its request limits policy and 
 #### Alter specific limits in the request limits policy
 
 Alter specific limits in the request limits policy of the `default` workload group,
-while keeping previously defined limits as-is:
+while keeping previously defined limits unchanged:
 
 ```kusto
 .alter-merge workload_group default ```
@@ -161,7 +161,7 @@ while keeping previously defined limits as-is:
 #### Alter the request rate limit policies
 
 Alter the request rate limit policies of the `default` workload group,
-while keeping its request limits policy as-is:
+while keeping all of its other policies unchanged:
 
 ```kusto
 .alter-merge workload_group default ```
@@ -182,13 +182,28 @@ while keeping its request limits policy as-is:
 #### Alter the request queuing policy
 
 Enable request queuing for the `default` workload group, while keeping its request limits policy
-and request rate limit policies as-is:
+and request rate limit policies unchanged:
 
 ```kusto
 .alter-merge workload_group default ```
 {
   "RequestQueuingPolicy": {
       "IsEnabled": true
+  }
+}```
+```
+
+#### Alter the request rate limits enforcement policy
+
+Enable request rate limits enforcement policy for the `default` workload group,
+while keeping all of its other policies unchanged:
+
+```kusto
+.alter-merge workload_group default ```
+{
+  "RequestRateLimitsEnforcementpolicy": {
+      "QueriesEnforcementLevel": "QueryHead",
+      "CommandsEnforcementLevel": "Cluster"
   }
 }```
 ```
@@ -239,47 +254,6 @@ Shows a specific or all workload group definitions.
 | WorkloadGroupName  | WorkloadGroup                                                                                                                                                 |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | MyWorkloadGroup    | {"RequestRateLimitPolicies": [{"IsEnabled": true, "Scope": "WorkloadGroup", "LimitKind": "ConcurrentRequests", "Properties": {"MaxConcurrentRequests": 30}}]} |
-
-## .show workload groups resources utilization
-
-Shows the *current* resources utilization per workload group and/or per principal, if request rate limits have been defined.
-
-If the amount of consumed resource equals zero, a record won't be included in the result set.
-For example, when there are no concurrent requests in the workload group.
-
-### Syntax
-
-`.show` `workload_group` *WorkloadGroupName* `resources` `utilization`
-
-`.show` `workload_groups` `resources` `utilization`
-
-### Output
-
-| ColumnName        | ColumnType | Description                                                                                                   |
-|-------------------|------------|---------------------------------------------------------------------------------------------------------------|
-| WorkloadGroupName | string     | The name of the workload group.                                                                               |
-| Principal         | string     | The fully qualified name of the principal identity (or `null`, if the scope is the workload group).           |
-| ResourceKind      | string     | The kind of the tracked resource (`ConcurrentRequests`, `TotalCpuSeconds`, or `RequestCount`).                |
-| Capacity          | long       | The capacity of the tracked resource, as defined in the request rate limit policy.                            |
-| Consumed          | long       | The amount of the tracked resource that is currently being consumed.                                          |
-| TimeWindow        | timespan   | The time window during which the resource was tracked (or `null`, if `ResourceKind` is `ConcurrentRequests`). |
-| MeasuredOn        | datetime   | The UTC date and time at which the resource utilization was last measured.                                    |
-
-### Example
-
-```kusto
-.show workload_group MyWorkloadGroup resources utilization
-```
-
-| WorkloadGroupName | Principal                                                                         | ResourceKind       | Capacity | Consumed | TimeWindow | MeasuredOn                  |
-|-------------------|-----------------------------------------------------------------------------------|--------------------|----------|----------|------------|-----------------------------|
-| MyWorkloadGroup   |                                                                                   | ConcurrentRequests | 30       | 25       |            | 2020-11-04 22:38:54.7256255 |
-| MyWorkloadGroup   | aadapp=7929a76b-6f2d-49ef-9aa5-facaccbbf106;94918272-e999-45a6-81f1-85f0428dad53  | ConcurrentRequests | 25       | 19       |            | 2020-11-04 22:38:54.7256255 |
-| MyWorkloadGroup   | aadapp=7929a76b-6f2d-49ef-9aa5-facaccbbf106;94918272-e999-45a6-81f1-85f0428dad53  | RequestCount       | 120      | 2        | 00:01:00   | 2020-11-04 22:38:54.0000000 |
-| MyWorkloadGroup   | aadapp=7929a76b-6f2d-49ef-9aa5-facaccbbf106;94918272-e999-45a6-81f1-85f0428dad53  | TotalCpuSeconds    | 32500    | 32480    | 01:00:00   | 2020-11-04 22:38:54.0000000 |
-| MyWorkloadGroup   | aaduser=e2056bdc-5448-4999-8b9b-1ebf9dd1e62b;94918272-e999-45a6-81f1-85f0428dad53 | ConcurrentRequests | 25       | 6        |            | 2020-11-04 22:38:53.4456894 |
-| MyWorkloadGroup   | aaduser=e2056bdc-5448-4999-8b9b-1ebf9dd1e62b;94918272-e999-45a6-81f1-85f0428dad53 | RequestCount       | 120      | 15       | 00:01:00   | 2020-11-04 22:38:54.0000000 |
-| MyWorkloadGroup   | aaduser=e2056bdc-5448-4999-8b9b-1ebf9dd1e62b;94918272-e999-45a6-81f1-85f0428dad53 | TotalCpuSeconds    | 32500    | 22584    | 01:00:00   | 2020-11-04 22:38:54.0000000 |
 
 ## Example
 

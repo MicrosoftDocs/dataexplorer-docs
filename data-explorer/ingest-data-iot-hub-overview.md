@@ -72,10 +72,11 @@ IoT Hub exposes the following system properties:
 | iothub-connection-device-id| An ID set by IoT Hub on device-to-cloud messages. It contains the deviceId of the device that sent the message. |
 | iothub-connection-auth-generation-id| An ID set by IoT Hub on device-to-cloud messages. It contains the connectionDeviceGenerationId (as per Device identity properties) of the device that sent the message. |
 | iothub-connection-auth-method| An authentication method set by IoT Hub on device-to-cloud messages. This property contains information about the authentication method used to authenticate the device sending the message. |
+| iothub-creation-time-utc| Timestamp recording when the message was sent by the device. |
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include the properties in the table schema and mapping.
 
-[!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
+[!INCLUDE [data-explorer-iot-system-properties](includes/data-explorer-iot-system-properties.md)]
 
 ## IoT Hub connection
 
@@ -89,6 +90,7 @@ If you don't already have one, [Create an Iot Hub](ingest-data-iot-hub.md#create
 > [!Note]
 > * The `device-to-cloud partitions` count is not changeable, so you should consider long-term scale when setting partition count.
 > * Consumer group must be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection. Find your resource in the Azure portal and go to `Built-in endpoints` to add a new consumer group.
+> * The Data Connection uses IoT Hub `Built-in endpoints`. If you configure any other `Message routing endpoint`, message routing to the `Built-in endpoint` will be prevented. To configure multiple routing endpoints, create an EventHub custom endpoint. Use this custom endpoint to create the Data Connection, instead of using the IoT Hub directly.
 
 ## Sending events
 

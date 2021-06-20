@@ -39,7 +39,7 @@ make-series num=count() default=long(null) on TimeStamp from ago(1d) to ago(1h) 
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let data = datatable(arr: dynamic)
 [
@@ -47,7 +47,7 @@ let data = datatable(arr: dynamic)
 ];
 data 
 | project arr, 
-          fill_forward = series_fill_backward(arr)
+          fill_backward = series_fill_backward(arr)
 
 ```
 

@@ -169,14 +169,15 @@ This file contains the Kusto sink properties file where you'll update specific c
         "aad.auth.authority": "<enter tenant ID>",
         "aad.auth.appid": "<enter application ID>",
         "aad.auth.appkey": "<enter client secret>",
-        "kusto.url": "https://ingest-<name of cluster>.<region>.kusto.windows.net",
+        "kusto.ingestion.url": "https://ingest-<name of cluster>.<region>.kusto.windows.net",
+        "kusto.query.url": "https://<name of cluster>.<region>.kusto.windows.net",
         "key.converter": "org.apache.kafka.connect.storage.StringConverter",
         "value.converter": "org.apache.kafka.connect.storage.StringConverter"
     }
 }
 ```
 
-Replace the values for the following attributes as per your Azure Data Explorer setup: `aad.auth.authority`, `aad.auth.appid`, `aad.auth.appkey`, `kusto.tables.topics.mapping` (the database name), and `kusto.url`.
+Replace the values for the following attributes as per your Azure Data Explorer setup: `aad.auth.authority`, `aad.auth.appid`, `aad.auth.appkey`, `kusto.tables.topics.mapping` (the database name), `kusto.ingestion.url`, and `kusto.query.url`.
 
 #### Connector - Dockerfile
 
@@ -344,7 +345,7 @@ To reset, do the following steps:
 
 ## Clean up resources
 
-To delete the Azure Data Explorer resources, use [az cluster delete](/cli/azure/kusto/cluster#az-kusto-cluster-delete) or [az Kusto database delete](/cli/azure/kusto/database#az-kusto-database-delete):
+To delete the Azure Data Explorer resources, use [az cluster delete](/cli/azure/kusto/cluster#az_kusto_cluster_delete) or [az Kusto database delete](/cli/azure/kusto/database#az_kusto_database_delete):
 
 ```azurecli-interactive
 az kusto cluster delete -n <cluster name> -g <resource group name>
