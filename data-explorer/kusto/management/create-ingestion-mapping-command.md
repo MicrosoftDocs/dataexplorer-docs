@@ -26,7 +26,7 @@ Creates an ingestion mapping that can be associated with a specific format and a
 >    * `.create` will fail
 >    * `.create-or-alter` will alter the existing mapping
 > * If a mapping with the same name is created in both the table scope and the database scope, the mapping in the table scope will have a higher priority.
-> * When ingesting into a table and referencing a mapping which its schema does not match the ingested table schema, the ingest operation will fail.
+> * When ingesting into a table and referencing a mapping whose schema does not match the ingested table schema, the ingest operation will fail.
  
 **Example** 
  
