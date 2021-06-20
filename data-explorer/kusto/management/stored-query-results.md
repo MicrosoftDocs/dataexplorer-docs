@@ -25,7 +25,7 @@ Stored query results can be useful in the following scenarios:
 > [!NOTE]
 > * The stored query results are in preview phase, and shouldn't be used for production scenarios. 
 > * This feature is only available when [EngineV3](../../engine-v3.md) is enabled.
-> * Maximal number of columns in stored query results is limited by 500.
+> Above 500 columns, an error is obtained and the results aren't stored.
 
 Stored query results can be accessed for up to 24 hours from the moment of creation. Updates to security policies (for example, database access, row level security, and so on) aren't propagated to stored query results. Use [`.drop stored_query_results`](#drop-stored_query_results) if there is user permission revocation. A stored query result can only be accessed by the same principal identity that created the stored query. 
 
