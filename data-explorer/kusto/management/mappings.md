@@ -153,7 +153,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 **Notes**
 >[!NOTE]
-> * `Field` and `Path` cannot be used together, only one is allowed. 
+> * `Field` and `Path` cannot be used together; only one is allowed. 
 
 The two alternatives below are equal:
 
