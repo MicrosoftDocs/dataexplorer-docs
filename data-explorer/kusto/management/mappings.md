@@ -253,7 +253,7 @@ The two alternatives below are equal:
 ```
 
 > [!NOTE]
-> When the mapping above is provided as part of the `.ingest` control command it is serialized as a JSON string.
+> When the mapping above is provided as part of the `.ingest` control command, the mapping is serialized as a JSON string.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2") 
