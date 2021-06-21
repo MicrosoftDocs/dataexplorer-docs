@@ -13,7 +13,7 @@ ms.date: 11/11/2020
 The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). When you enable failed ingestion [diagnostic logs](using-diagnostic-logs.md#ingestion-logs-schema) on your cluster, you can see error codes in the **Failed ingestion** operation log. You can also monitor the **Ingestion result** [metric](using-metrics.md#ingestion-metrics) to see the **Category** of ingestion errors, but not the specific error codes. Errors below are organized by these categories. 
 
 > [!NOTE]
-> If the error is transient, retrying the ingestion may succeed.
+> For transient errors or 'General_RetryAttemptsExceeded' error, retrying the ingestion may succeed.
 
 ## Category: BadFormat
 
@@ -98,7 +98,6 @@ The following list contains error codes you may come across during [ingestion](i
 |General_InternalServerError                       |Internal server error occurred.                     |Transient          |
 |General_TransientSchemaMismatch                   |Schema of target table when starting the ingestion doesn't match the schema when committing the ingestion.         |Transient           |
 |Timeout                                            |The operation has been aborted because of timeout.     |Transient           |
-|BadRequest_MessageExhausted                       |Failed to ingest data since ingestion reached the maximum retry attempts or the maximum retry period.<br>Retrying ingestion may succeed.   |Transient          |
 |OutOfMemory                                       |Ingestion operation ran out of memory.                  |Transient           |
 |Schema_PermanentUpdateFailure                     |Failed to update schema permanently.                    |Permanent           |
 
@@ -124,6 +123,12 @@ The following list contains error codes you may come across during [ingestion](i
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
 |General_ThrottledIngestion                    |Throttled ingestion.                                  |Transient          |
+
+## Category: RetryAttemptsExceeded
+
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
+|General_RetryAttemptsExceeded                 |Operation has exceeded the retry attempts limit or timespan following a recurring transient error.                                  |Permanent          |
 
 ## Category: Unknown
 
