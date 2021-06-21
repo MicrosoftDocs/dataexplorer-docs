@@ -1,5 +1,5 @@
 ---
-title: Configure a database using a Kusto Query Language script in Azure Data Explorer
+title: Configure a database using a Kusto Query Language script in Azure Data Explorer - Preview
 description: Learn about how to use database script to run a Kusto Query Language script in Azure Data Explorer
 author: orspod
 ms.author: orspodek
