@@ -12,7 +12,7 @@ ms.date: 05/19/2020
 
 # Data mappings
 
-Data mappings are used during ingestion to map incoming data to columns inside Kusto tables.
+Data mappings are used during ingestion to map incoming data to columns inside tables.
 
 Kusto supports different types of mappings, both `row-oriented` (CSV, JSON, AVRO and W3CLOGFILE), and `column-oriented` (Parquet and ORC).
 
@@ -20,15 +20,15 @@ Each element in the mapping list is constructed from three properties:
 
 |Property|Description|
 |----|--|
-|`Column`|Target column name in the Kusto table|
-|`Datatype`| (Optional) Datatype with which to create the mapped column if it doesn't already exist in the Kusto table|
+|`Column`|Target column name in the table|
+|`Datatype`| (Optional) Datatype with which to create the mapped column if it doesn't already exist in the table|
 |`Properties`|(Optional) Property-bag containing properties specific for each mapping as described in each section below.|
 
 All mappings can be [pre-created](create-ingestion-mapping-command.md) and can be referenced from the ingest command using `ingestionMappingReference` parameters.
 
 ## CSV mapping
 
-When the source file is a CSV (or any delimeter-separated format) and its schema doesn't match the current Kusto table schema, a CSV mapping maps from the file schema to the Kusto table schema. If the table doesn't exist in Kusto, it will be created according to this mapping. If some fields in the mapping are missing in the table, they will be added. 
+When the source file is a CSV (or any delimeter-separated format) and its schema doesn't match the current table schema, a CSV mapping maps from the file schema to the table schema. If the table doesn't exist in Azure Data Explorer, it will be created according to this mapping. If some fields in the mapping are missing in the table, they will be added. 
 
 CSV mapping can be applied on all the delimiter-separated formats: CSV, TSV, PSV, SCSV, and SOHsv.
 
@@ -83,7 +83,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 ## JSON mapping
 
-When the source file is in JSON format, the file content is mapped to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. The columns mapped in the JSON mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
+When the source file is in JSON format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the JSON mapping must exist in the table unless a datatype is specified for all the non-existing columns.
 
 Each element in the list describes a mapping for a specific column, and may contain the following properties: 
 
@@ -139,8 +139,8 @@ Each element in the list describes a mapping for a specific column, and may cont
     
 ## AVRO mapping
 
-When the source file is in AVRO format, the AVRO file content is mapped to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. 
-The columns mapped in the AVRO mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
+When the source file is in AVRO format, the AVRO file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. 
+The columns mapped in the AVRO mapping must exist in the table unless a datatype is specified for all the non-existing columns.
 
 Each element in the list describes a mapping for a specific column, and may contain the following properties: 
 
@@ -212,7 +212,7 @@ The two alternatives below are equal:
 
 ## Parquet mapping
 
-When the source file is in Parquet format, the file content is mapped to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. The columns mapped in the Parquet mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
+When the source file is in Parquet format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the Parquet mapping must exist in the table unless a datatype is specified for all the non-existing columns.
 
 Each element in the list describes a mapping for a specific column, and may contain the following properties:
 
@@ -282,7 +282,7 @@ The two alternatives below are equal:
 
 ## ORC mapping
 
-When the source file is in ORC format, the file content is mapped to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. The columns mapped in the ORC mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
+When the source file is in ORC format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the ORC mapping must exist in the table unless a datatype is specified for all the non-existing columns.
 
 Each element in the list describes a mapping for a specific column, and may contain the following properties:
 
@@ -352,7 +352,7 @@ The two alternatives below are equal:
 
 ## W3CLOGFILE mapping
 
-When the source file is in W3CLOGFILE format, the file content is mapped to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. The columns mapped in the W3CLOGFILE mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
+When the source file is in W3CLOGFILE format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the W3CLOGFILE mapping must exist in the table unless a datatype is specified for all the non-existing columns.
 
 Each element in the list describes a mapping for a specific column, and may contain the following properties:
 
