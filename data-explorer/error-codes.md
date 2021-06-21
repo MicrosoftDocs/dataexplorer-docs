@@ -128,7 +128,7 @@ The following list contains error codes you may come across during [ingestion](i
 
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
-|General_RetryAttemptsExceeded                 |Operation has exceeded the retry attempts limit or timespan following a recurring transient error.                                  |Permanent          |
+|General_RetryAttemptsExceeded                 |Operation has exceeded the retry attempts limit or timespan limit following a recurring transient error.                                  |Permanent          |
 
 ## Category: Unknown
 
