@@ -9,26 +9,26 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/19/2020
 ---
+
 # Data mappings
 
-Data mappings are used during ingestion to map incoming data to columns inside Kusto tables.
+Data mappings are used during ingestion to map incoming data to columns inside tables.
 
-Kusto supports different types of mappings, both `row-oriented` (CSV, JSON and AVRO), and `column-oriented` (Parquet).
+Kusto supports different types of mappings, both `row-oriented` (CSV, JSON, AVRO and W3CLOGFILE), and `column-oriented` (Parquet and ORC).
 
 Each element in the mapping list is constructed from three properties:
 
 |Property|Description|
 |----|--|
-|`column`|Target column name in the Kusto table|
-|`datatype`| (Optional) Datatype with which to create the mapped column if it doesn't already exist in the Kusto table|
-|`Properties`|(Optional) Property-bag containing properties specific for each mapping as described in each section below.
-
+|`Column`|Target column name in the table|
+|`Datatype`| (Optional) Datatype with which to create the mapped column if it doesn't already exist in the table|
+|`Properties`|(Optional) Property-bag containing properties specific for each mapping as described in each section below.|
 
 All mappings can be [pre-created](create-ingestion-mapping-command.md) and can be referenced from the ingest command using `ingestionMappingReference` parameters.
 
 ## CSV mapping
 
-When the source file is a CSV (or any delimeter-separated format) and its schema doesn't match the current Kusto table schema, a CSV mapping maps from the file schema to the Kusto table schema. If the table doesn't exist in Kusto, it will be created according to this mapping. If some fields in the mapping are missing in the table, they will be added. 
+When the source file is a CSV (or any delimeter-separated format) and its schema doesn't match the current table schema, a CSV mapping maps from the file schema to the table schema. If the table doesn't exist in Azure Data Explorer, it will be created according to this mapping. If some fields in the mapping are missing in the table, they will be added. 
 
 CSV mapping can be applied on all the delimiter-separated formats: CSV, TSV, PSV, SCSV, and SOHsv.
 
@@ -36,8 +36,8 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 |Property|Description|
 |----|--|
-|`ordinal`|The column order number in CSV|
-|`constantValue`|(Optional) The constant value to be used for a column instead of some value inside the CSV|
+|`Ordinal`|The column order number in CSV.|
+|`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside the CSV file.|
 
 > [!NOTE]
 > `Ordinal` and `ConstantValue` are mutually exclusive.
@@ -46,15 +46,10 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 ``` json
 [
-  { "column" : "rownumber", "Properties":{"Ordinal":"0"}},
-  { "column" : "rowguid",   "Properties":{"Ordinal":"1"}},
-  { "column" : "xdouble",   "Properties":{"Ordinal":"2"}},
-  { "column" : "xbool",     "Properties":{"Ordinal":"3"}},
-  { "column" : "xint32",    "Properties":{"Ordinal":"4"}},
-  { "column" : "xint64",    "Properties":{"Ordinal":"5"}},
-  { "column" : "xdate",     "Properties":{"Ordinal":"6"}},
-  { "column" : "xtext",     "Properties":{"Ordinal":"7"}},
-  { "column" : "const_val", "Properties":{"ConstValue":"Sample: constant value"}}
+  {"Column": "event_time", "Properties": {"Ordinal": "0"}},
+  {"Column": "event_name", "Properties": {"Ordinal": "1"}},
+  {"Column": "event_type", "Properties": {"Ordinal": "2"}},
+  {"Column": "ingestion_time", "Properties": {"ConstValue": "2021-01-01T10:32:00"}}
 ]
 ```
 
@@ -67,10 +62,10 @@ Each element in the list describes a mapping for a specific column, and may cont
     (
         format="csv", 
         ingestionMapping = 
-        "["
-            "{\"column\":\"rownumber\",\"Properties\":{\"Ordinal\":0}},"
-            "{\"column\":\"rowguid\",  \"Properties\":{\"Ordinal\":1}}"
-        "]" 
+        '['
+            '{"Column": "column_a", "Properties": {"Ordinal": 0}},'
+            '{"Column": "column_b", "Properties": {"Ordinal": 1}}'
+        ']'
     )
 ```
 
@@ -82,53 +77,34 @@ Each element in the list describes a mapping for a specific column, and may cont
     with 
     (
         format="csv", 
-        ingestionMappingReference = "Mapping1"
-    )
-```
-
-> [!NOTE]
-> The following mapping format, without the `Properties` property-bag, is deprecated.
-
-```kusto
-.ingest into Table123 (@"source1", @"source2")
-    with 
-    (
-        format="csv", 
-        ingestionMapping = 
-        "["
-            "{\"column\":\"rownumber\",\"Ordinal\": 0},"
-            "{\"column\":\"rowguid\",  \"Ordinal\": 1}"
-        "]" 
+        ingestionMappingReference = "MappingName"
     )
 ```
 
 ## JSON mapping
 
-When the source file is in JSON format, the file content is mapped to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. The columns mapped in the JSON mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
+When the source file is in JSON format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the JSON mapping must exist in the table unless a datatype is specified for all the non-existing columns.
 
 Each element in the list describes a mapping for a specific column, and may contain the following properties: 
 
 |Property|Description|
 |----|--|
-|`path`|If starts with `$`: JSON path to the field that will become the content of the column in the JSON document (JSON path that denotes the entire document is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include white-spaces should be escaped as [\'Property Name\'].|
-|`transform`|(Optional) Transformation that should be applied on the content with [mapping transformations](#mapping-transformations).|
+|`Path`|If the value starts with `$`: JSON path to the field that will become the content of the column in the JSON document (JSON path that denotes the entire document is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\'].|
+|`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside the JSON file.|
+|`Transform`|(Optional) Transformation that should be applied on the content with [mapping transformations](#mapping-transformations).|
 
 ### Example of JSON mapping
 
 ```json
 [
-  { "column" : "rownumber",   "Properties":{"Path":"$.rownumber"}}, 
-  { "column" : "rowguid",     "Properties":{"Path":"$.rowguid"}}, 
-  { "column" : "xdouble",     "Properties":{"Path":"$.xdouble"}}, 
-  { "column" : "xbool",       "Properties":{"Path":"$.xbool"}}, 
-  { "column" : "xint32",      "Properties":{"Path":"$.xint32"}}, 
-  { "column" : "xint64",      "Properties":{"Path":"$.xint64"}}, 
-  { "column" : "xdate",       "Properties":{"Path":"$.xdate"}}, 
-  { "column" : "xtext",       "Properties":{"Path":"$.xtext"}}, 
-  { "column" : "location",    "Properties":{"transform":"SourceLocation"}}, 
-  { "column" : "lineNumber",  "Properties":{"transform":"SourceLineNumber"}}, 
-  { "column" : "timestamp",   "Properties":{"Path":"$.unix_ms", "transform":"DateTimeFromUnixMilliseconds"}}, 
-  { "column" : "full_record", "Properties":{"Path":"$"}}
+  {"Column": "event_timestamp", "Properties": {"Path": "$.Timestamp"}}, 
+  {"Column": "event_name",      "Properties": {"Path": "$.Event.Name"}}, 
+  {"Column": "event_type",      "Properties": {"Path": "$.Event.Type"}}, 
+  {"Column": "source_uri",      "Properties": {"Transform": "SourceLocation"}}, 
+  {"Column": "source_line",     "Properties": {"Transform": "SourceLineNumber"}}, 
+  {"Column": "event_time",      "Properties": {"Path": "$.Timestamp", "Transform": "DateTimeFromUnixMilliseconds"}}, 
+  {"Column": "ingestion_time", "Properties": {"ConstValue": "2021-01-01T10:32:00"}}, 
+  {"Column": "full_record",     "Properties": {"Path": "$"}}
 ]
 ```
 
@@ -141,11 +117,11 @@ Each element in the list describes a mapping for a specific column, and may cont
   (
       format = "json", 
       ingestionMapping = 
-      "["
-        "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
-        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}",
-        "{\"column\":\"custom_column\",  \"Properties\":{\"Path\":\"$.[\'property name with space\']\"}}"
-      "]"
+      '['
+        '{"Column": "column_a", "Properties": {"Path": "$.Obj.Property"}},'
+        '{"Column": "column_b", "Properties": {"Path": "$.Property"}},'
+        '{"Column": "custom_column", "Properties": {"Path": "$.[\'Property name with space\']"}}'
+      ']'
   )
 ```
 
@@ -157,55 +133,39 @@ Each element in the list describes a mapping for a specific column, and may cont
     with 
     (
         format="json", 
-        ingestionMappingReference = "Mapping1"
+        ingestionMappingReference = "Mapping_Name"
     )
 ```
-
-> [!NOTE]
-> The following mapping format, without the `Properties` property-bag, is deprecated.
-
-```kusto
-.ingest into Table123 (@"source1", @"source2") 
-  with 
-  (
-      format = "json", 
-      ingestionMapping = 
-      "["
-        "{\"column\":\"rownumber\",\"path\":\"$.rownumber\"},"
-        "{\"column\":\"rowguid\",  \"path\":\"$.rowguid\"}"
-      "]"
-  )
-```
     
-## Avro mapping
+## AVRO mapping
 
-When the source file is in Avro format, the Avro file content is mapped to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. 
-The columns mapped in the Avro mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
+When the source file is in AVRO format, the AVRO file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. 
+The columns mapped in the AVRO mapping must exist in the table unless a datatype is specified for all the non-existing columns.
 
 Each element in the list describes a mapping for a specific column, and may contain the following properties: 
 
 |Property|Description|
 |----|--|
-|`Field`|The name of the field in the Avro record.|
-|`Path`|Alternative to using `field` which allows taking the inner part of an Avro record-field, if necessary. The value denotes a JSON-path from the root of the record. See the Notes below for more information. JSON paths that include white-spaces should be escaped as [\'Property Name\'].|
-|`transform`|(Optional) Transformation that should be applied on the content with [supported transformations](#mapping-transformations).|
+|`Field`|The name of the field in the AVRO record.|
+|`Path`|Alternative to using `Field` which allows taking the inner part of an AVRO record-field, if necessary. The value denotes a JSON-path from the root of the AVRO record (JSON path that denotes the entire AVRO record is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. See the Notes below for more information.|
+|`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside AVRO file.|
+|`Transform`|(Optional) Transformation that should be applied on the content with [supported transformations](#mapping-transformations).|
 
 **Notes**
 >[!NOTE]
-> * `field` and `path` cannot be used together,only one is allowed. 
-> * `path` cannot point to root `$` only, it must have at least one level of path.
+> * `Field` and `Path` cannot be used together; only one is allowed. 
 
 The two alternatives below are equal:
 
 ``` json
 [
-  {"column": "rownumber", "Properties":{"Path":"$.RowNumber"}}
+  {"Column": "event_name", "Properties": {"Path": "$.EventName"}}
 ]
 ```
 
 ``` json
 [
-  {"column": "rownumber", "Properties":{"Field":"RowNumber"}}
+  {"Column": "event_name", "Properties": {"Field": "EventName"}}
 ]
 ```
 
@@ -213,14 +173,12 @@ The two alternatives below are equal:
 
 ``` json
 [
-  {"column": "rownumber", "Properties":{"Field":"rownumber"}},
-  {"column": "rowguid",   "Properties":{"Field":"rowguid"}},
-  {"column": "xdouble",   "Properties":{"Field":"xdouble"}},
-  {"column": "xboolean",  "Properties":{"Field":"xboolean"}},
-  {"column": "xint32",    "Properties":{"Field":"xint32"}},
-  {"column": "xint64",    "Properties":{"Field":"xint64"}},
-  {"column": "xdate",     "Properties":{"Field":"xdate"}},
-  {"column": "xtext",     "Properties":{"Field":"xtext"}}
+  {"Column": "event_timestamp", "Properties": {"Field": "Timestamp"}},
+  {"Column": "event_name",      "Properties": {"Field": "Name"}},
+  {"Column": "event_type",      "Properties": {"Field": "Type"}},
+  {"Column": "event_time",      "Properties": {"Field": "Timestamp", "Transform": "DateTimeFromUnixMilliseconds"}}, 
+  {"Column": "ingestion_time",  "Properties": {"ConstValue": "2021-01-01T10:32:00"}}, 
+  {"Column": "full_record",     "Properties": {"Path": "$"}} 
 ]
 ``` 
 
@@ -231,12 +189,12 @@ The two alternatives below are equal:
 .ingest into Table123 (@"source1", @"source2") 
   with 
   (
-      format = "avro", 
+      format = "AVRO", 
       ingestionMapping = 
-      "["
-        "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
-        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}"
-      "]"
+      '['
+        '{"Column": "column_a", "Properties": {"Field": "Field1"}},'
+        '{"Column": "column_b", "Properties": {"Field": "$.[\'Field name with space\']"}}'
+      ']'
   )
 ```
 
@@ -247,58 +205,55 @@ The two alternatives below are equal:
 .ingest into Table123 (@"source1", @"source2")
     with 
     (
-        format="avro", 
-        ingestionMappingReference = "Mapping1"
+        format="AVRO", 
+        ingestionMappingReference = "Mapping_Name"
     )
-```
-
-> [!NOTE]
-> The following mapping format, without the `Properties` property-bag, is deprecated.
-
-```kusto
-.ingest into Table123 (@"source1", @"source2") 
-  with 
-  (
-      format = "avro", 
-      ingestionMapping = 
-      "["
-        "{\"column\":\"rownumber\",\"field\":\"rownumber\"},"
-        "{\"column\":\"rowguid\",  \"field\":\"rowguid\"}"
-      "]"
-  )
 ```
 
 ## Parquet mapping
 
-When the source file is in Parquet format, the file content is mapped to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. The columns mapped in the Parquet mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
+When the source file is in Parquet format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the Parquet mapping must exist in the table unless a datatype is specified for all the non-existing columns.
 
 Each element in the list describes a mapping for a specific column, and may contain the following properties:
 
 |Property|Description|
 |----|--|
-|`path`|If starts with `$`: JSON path to the field that will become the content of the column in the Parquet document (JSON path that denotes the entire document is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include white-spaces should be escaped as [\'Property Name\']. |
-|`transform`|(Optional) [mapping transformations](#mapping-transformations) that should be applied on the content.
+|`Field`|The name of the field in the Parquet record.|
+|`Path`|Alternative to using `Field` which allows taking the inner part of an Parquet record-field, if necessary. The value denotes a JSON-path from the root of the Parquet record (JSON path that denotes the entire AVRO record is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. See the Notes below for more information.|
+|`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside Parquet file.|
+|`Transform`|(Optional) [mapping transformations](#mapping-transformations) that should be applied on the content.|
 
+> * `Field` and `Path` cannot be used together, only one is allowed. 
+
+The two alternatives below are equal:
+
+``` json
+[
+  {"Column": "event_name", "Properties": {"Path": "$.EventName"}}
+]
+```
+
+``` json
+[
+  {"Column": "event_name", "Properties": {"Field": "EventName"}}
+]
+```
 
 ### Example of the Parquet mapping
 
 ```json
 [
-  { "column" : "rownumber",   "Properties":{"Path":"$.rownumber"}}, 
-  { "column" : "xdouble",     "Properties":{"Path":"$.xdouble"}}, 
-  { "column" : "xbool",       "Properties":{"Path":"$.xbool"}}, 
-  { "column" : "xint64",      "Properties":{"Path":"$.xint64"}}, 
-  { "column" : "xdate",       "Properties":{"Path":"$.xdate"}}, 
-  { "column" : "xtext",       "Properties":{"Path":"$.xtext"}}, 
-  { "column" : "location",    "Properties":{"transform":"SourceLocation"}}, 
-  { "column" : "lineNumber",  "Properties":{"transform":"SourceLineNumber"}}, 
-  { "column" : "timestamp",   "Properties":{"Path":"$.unix_ms", "transform":"DateTimeFromUnixMilliseconds"}}, 
-  { "column" : "full_record", "Properties":{"Path":"$"}}
+  {"Column": "event_timestamp", "Properties": {"Path": "$.Timestamp"}}, 
+  {"Column": "event_name",      "Properties": {"Path": "$.Event.Name"}}, 
+  {"Column": "event_type",      "Properties": {"Path": "$.Event.Type"}}, 
+  {"Column": "event_time",      "Properties": {"Path": "$.Timestamp", "Transform": "DateTimeFromUnixMilliseconds"}}, 
+  {"Column": "ingestion_time",  "Properties": {"ConstValue": "2021-01-01T10:32:00"}}, 
+  {"Column": "full_record",     "Properties": {"Path": "$"}} 
 ]
-```      
+```
 
 > [!NOTE]
-> When the mapping above is provided as part of the `.ingest` control command it is serialized as a JSON string.
+> When the mapping above is provided as part of the `.ingest` control command, the mapping is serialized as a JSON string.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2") 
@@ -306,53 +261,66 @@ Each element in the list describes a mapping for a specific column, and may cont
   (
       format = "parquet", 
       ingestionMapping = 
-      "["
-        "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
-        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}",
-        "{\"column\":\"custom_column\",  \"Properties\":{\"Path\":\"$.[\'property name with space\']\"}}"
-      "]"
+      '['
+        '{"Column": "column_a", "Properties": {"Path": "$.Field1.Subfield"}},'
+        '{"Column": "column_b", "Properties": {"Path": "$.[\'Field name with space\']"}},'
+      ']'
   )
 ```
 
 > [!NOTE]
-> When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
+> When the mapping above is [pre-created](create-ingestion-mapping-command.md), it can be referenced in the `.ingest` control command:
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
     with 
     (
         format="parquet", 
-        ingestionMappingReference = "Mapping1"
+        ingestionMappingReference = "Mapping_Name"
     )
 ```
 
-## Orc mapping
+## ORC mapping
 
-When the source file is in Orc format, the file content is mapped to the Kusto table. The table must exist in the Kusto database unless a valid datatype is specified for all the columns mapped. The columns mapped in the Orc mapping must exist in the Kusto table unless a datatype is specified for all the non-existing columns.
+When the source file is in ORC format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the ORC mapping must exist in the table unless a datatype is specified for all the non-existing columns.
 
 Each element in the list describes a mapping for a specific column, and may contain the following properties:
 
 |Property|Description|
 |----|--|
-|`path`|If starts with `$`: JSON path to the field that will become the content of the column in the Orc document (JSON path that denotes the entire document is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include white-spaces should be escaped as [\'Property Name\'].|
-|`transform`|(Optional) [mapping transformations](#mapping-transformations) that should be applied on the content.
+|`Field`|The name of the field in the ORC record.|
+|`Path`|Alternative to using `Field` which allows taking the inner part of an ORC record-field, if necessary. The value denotes a JSON-path from the root of the ORC record (JSON path that denotes the entire ORC record is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. See the Notes below for more information.|
+|`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside the ORC file.|
+|`Transform`|(Optional) [mapping transformations](#mapping-transformations) that should be applied on the content.|
 
-### Example of Orc mapping
+> * `Field` and `Path` cannot be used together, only one is allowed. 
+
+The two alternatives below are equal:
+
+``` json
+[
+  {"Column": "event_name", "Properties": {"Path": "$.EventName"}}
+]
+```
+
+``` json
+[
+  {"Column": "event_name", "Properties": {"Field": "EventName"}}
+]
+```
+
+### Example of ORC mapping
 
 ```json
 [
-  { "column" : "rownumber",   "Properties":{"Path":"$.rownumber"}}, 
-  { "column" : "xdouble",     "Properties":{"Path":"$.xdouble"}}, 
-  { "column" : "xbool",       "Properties":{"Path":"$.xbool"}}, 
-  { "column" : "xint64",      "Properties":{"Path":"$.xint64"}}, 
-  { "column" : "xdate",       "Properties":{"Path":"$.xdate"}}, 
-  { "column" : "xtext",       "Properties":{"Path":"$.xtext"}}, 
-  { "column" : "location",    "Properties":{"transform":"SourceLocation"}}, 
-  { "column" : "lineNumber",  "Properties":{"transform":"SourceLineNumber"}}, 
-  { "column" : "timestamp",   "Properties":{"Path":"$.unix_ms", "transform":"DateTimeFromUnixMilliseconds"}}, 
-  { "column" : "full_record", "Properties":{"Path":"$"}}
+  {"Column": "event_timestamp", "Properties": {"Path": "$.Timestamp"}}, 
+  {"Column": "event_name",      "Properties": {"Path": "$.Event.Name"}}, 
+  {"Column": "event_type",      "Properties": {"Path": "$.Event.Type"}}, 
+  {"Column": "event_time",      "Properties": {"Path": "$.Timestamp", "Transform": "DateTimeFromUnixMilliseconds"}}, 
+  {"Column": "ingestion_time",  "Properties": {"ConstValue": "2021-01-01T10:32:00"}}, 
+  {"Column": "full_record",     "Properties": {"Path": "$"}} 
 ]
-```      
+```
 
 > [!NOTE]
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as a JSON string.
@@ -363,11 +331,10 @@ Each element in the list describes a mapping for a specific column, and may cont
   (
       format = "orc", 
       ingestionMapping = 
-      "["
-        "{\"column\":\"rownumber\",\"Properties\":{\"Path\":\"$.rownumber\"}},"
-        "{\"column\":\"rowguid\",  \"Properties\":{\"Path\":\"$.rowguid\"}}",
-        "{\"column\":\"custom_column\",  \"Properties\":{\"Path\":\"$.[\'property name with space\']\"}}"
-      "]"
+      '['
+        '{"Column": "column_a", "Properties": {"Path": "$.Field1"}},'
+        '{"Column": "column_b", "Properties": {"Path": "$.[\'Field name with space\']"}}'
+      ']'
   )
 ```
 
@@ -379,17 +346,78 @@ Each element in the list describes a mapping for a specific column, and may cont
     with 
     (
         format="orc", 
-        ingestionMappingReference = "Mapping1"
+        ingestionMappingReference = "ORC_Mapping"
+    )
+```
+
+## W3CLOGFILE mapping
+
+When the source file is in W3CLOGFILE format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the W3CLOGFILE mapping must exist in the table unless a datatype is specified for all the non-existing columns.
+
+Each element in the list describes a mapping for a specific column, and may contain the following properties:
+
+|Property|Description|
+|----|--|
+|`Field`|W3CLOGFILE entry name|
+|`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside W3CLOGFILE file.|
+|`Transform`|(Optional) [mapping transformations](#mapping-transformations) that should be applied on the content.|
+
+### Example of W3CLOGFILE mapping
+
+```json
+[
+   {"Column": "Date",          "Properties": {"Field": "date"}},
+   {"Column": "Time",          "Properties": {"Field": "time"}},
+   {"Column": "IP",            "Properties": {"Field": "s-ip"}},
+   {"Column": "ClientMethod",  "Properties": {"Field": "cs-method"}},
+   {"Column": "ClientQuery",   "Properties": {"Field": "cs-uri-query"}},
+   {"Column": "ServerPort",    "Properties": {"Field": "s-port"}},
+   {"Column": "ClientIP",      "Properties": {"Field": "c-ip"}},
+   {"Column": "UserAgent",     "Properties": {"Field": "cs(User-Agent)"}},
+   {"Column": "Referer",       "Properties": {"Field": "cs(Referer)"}},
+   {"Column": "Status",        "Properties": {"Field": "sc-status"}},
+   {"Column": "ResponseBytes", "Properties": {"Field": "sc-bytes"}},
+   {"Column": "RequestBytes",  "Properties": {"Field": "cs-bytes"}},
+   {"Column": "TimeTaken",     "Properties": {"Field": "time-taken"}}
+]
+```
+
+> [!NOTE]
+> The only supported transformations for W3CLOGFILE format are: `SourceLineNumber` and `SourceLocation`.
+> When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string.
+
+```kusto
+.ingest into Table123 (@"source1", @"source2") 
+  with 
+  (
+      format = "w3clogfile", 
+      ingestionMapping = 
+      '['
+         '{"Column": "column_a", "Properties": {"Field": "field1"}},' 
+         '{"Column": "column_b", "Properties": {"Field": "field2"}}'
+      ']'
+  )
+```
+
+> [!NOTE]
+> When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with 
+    (
+        format="w3clogfile", 
+        ingestionMappingReference = "Mapping_Name"
     )
 ```
 
 ## Mapping transformations
 
-Some of the data format mappings (Parquet, JSON and Avro) support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time, use [Update policy](update-policy.md), which allows defining lightweight processing using KQL expression.
+Some of the data format mappings (Parquet, JSON and AVRO) support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time, use [Update policy](update-policy.md), which allows defining lightweight processing using KQL expression.
 
 |Path-dependant transformation|Description|Conditions|
 |--|--|--|
-|`PropertyBagArrayToDictionary`|Transforms JSON array of properties (e.g. {events:[{"n1":"v1"},{"n2":"v2"}]}) to dictionary and serializes it to valid JSON document (for example, {"n1":"v1","n2":"v2"}).|Can be applied only when `path` is used|
+|`PropertyBagArrayToDictionary`|Transforms JSON array of properties (e.g. {events:[{"n1":"v1"},{"n2":"v2"}]}) to dictionary and serializes it to valid JSON document (for example, {"n1":"v1","n2":"v2"}).|Can be applied only when `Path` is used|
 |`SourceLocation`|Name of the storage artifact that provided the data, type string (for example, the blob's "BaseUri" field).|
 |`SourceLineNumber`|Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).|
 |`DateTimeFromUnixSeconds`|Converts number representing unix-time (seconds since 1970-01-01) to UTC datetime string|
