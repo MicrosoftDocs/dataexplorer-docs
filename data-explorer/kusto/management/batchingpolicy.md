@@ -23,7 +23,7 @@ There is a downside, however, to performing batching before ingestion, which is
 the introduction of a forced delay, so that the end-to-end time from requesting
 the ingestion of data until it is ready for query is larger.
 
-To allow control of this trade-off, one may use the `IngestionBatching` policy.
+To allow control of this trade-off, one may use the [`IngestionBatching`](batching-policy.md) policy.
 This policy gets applied to queued ingestion only, and provides the maximum
 forced delay to allow when batching small blobs together.
 
@@ -32,23 +32,43 @@ forced delay to allow when batching small blobs together.
 As explained above, there is an optimal size of data to be ingested in bulk.
 Currently that size is about 1 GB of uncompressed data. Ingestion that is done
 in blobs that hold much less data than the optimal size is non-optimal, and
-therefore in queued ingestion Kusto will batch such small blobs together. Batching
-is done until the first condition becomes true:
+therefore in queued ingestion Kusto will batch such small blobs together.
 
-1. The total size of the batched data reaches the optimal size, or
-2. The maximum delay time, total size, or number of blobs allowed by 
-the `IngestionBatching` policy is reached
+Batches are sealed when the first condition is met:
 
-The `IngestionBatching` policy can be set on databases, or tables. By default,
-if not policy is defined, Kusto will use a default value of **5 minutes** as the
-maximum delay time, **1000** items, total size of **1G** for batching.
+1. The total size of the batched data reaches the optimal size
+1. The maximum delay time is reached
+1. The number of blobs set by the `IngestionBatching` policy is reached
+
+The `IngestionBatching` policy can be set on databases, or tables. Default values are as follows: **5 minutes** maximum delay time, **1000** items, total size of **1G**.
 
 > [!WARNING]
-> The impact of setting this policy to a very small value is
+> The impact of setting this policy to very small values is
 > an increase in the COGS (cost of goods sold) of the cluster and reduced performance. Additionally,
-> in the limit, reducing this value might actually result in **increased** effective
+> reducing batching policy values might actually result in **increased** effective
 > end-to-end ingestion latency, due to the overhead of managing multiple ingestion
 > processes in parallel.
+
+## Batching types
+
+The following lists show all possible types of batch sealing. The batch is sealed and ingested when the first condition is met.
+
+### Defined by the batching policy
+
+* Size: Batch size limit defined by the batching policy reached
+* Count: Batch files number limit defined by the batching policy reached
+* Time: Batching time defined by the batching policy has expired
+
+### Single blob ingestion
+
+* SingleBlob_FlushImmediately: Single blob ingestion as ['FlushImmediately'](../api/netfx/kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) was set
+* SingleBlob_IngestIfNotExists: Single blob ingestion as ['IngestIfNotExists'](../../ingestion-properties.md#ingestion-properties) was set
+* SingleBlob_IngestByTag: Single blob ingestion as ['ingest-by'](extents-overview.md#ingest-by-extent-tags) tag was set
+* SingleBlob_SizeUnknown: Single blob ingestion as blob size is unknown
+
+### Other
+
+* SystemFlush: System had to flush the data, for example due to cluster scaling or internal reset of system components
 
 ## Additional resources
 
