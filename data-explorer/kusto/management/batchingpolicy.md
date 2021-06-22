@@ -51,7 +51,7 @@ The `IngestionBatching` policy can be set on databases, or tables. Default value
 
 ## Batching types
 
-The following lists show all possible types of batch sealing. The batch is sealed and ingested when the first condition is met.
+The following lists show all possible types of triggers to batch sealing. The batch is sealed and ingested when the first condition is met.
 
 ### Defined by the batching policy
 
@@ -61,10 +61,10 @@ The following lists show all possible types of batch sealing. The batch is seale
 
 ### Single blob ingestion
 
-* SingleBlob_FlushImmediately: Single blob ingestion as ['FlushImmediately'](../api/netfx/kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) was set
-* SingleBlob_IngestIfNotExists: Single blob ingestion as ['IngestIfNotExists'](../../ingestion-properties.md#ingestion-properties) was set
-* SingleBlob_IngestByTag: Single blob ingestion as ['ingest-by'](extents-overview.md#ingest-by-extent-tags) tag was set
-* SingleBlob_SizeUnknown: Single blob ingestion as blob size is unknown
+* SingleBlob_FlushImmediately: Single blob ingestion because ['FlushImmediately'](../api/netfx/kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) was set
+* SingleBlob_IngestIfNotExists: Single blob ingestion because ['IngestIfNotExists'](../../ingestion-properties.md#ingestion-properties) was set
+* SingleBlob_IngestByTag: Single blob ingestion because ['ingest-by'](extents-overview.md#ingest-by-extent-tags) tag was set
+* SingleBlob_SizeUnknown: Single blob ingestion because blob size is unknown
 
 ### Other
 
