@@ -13,15 +13,15 @@ ms.date: 02/19/2020
 
 ## Overview
 
-During the ingestion process Kusto attempts to optimize for throughput by batching small
+During the ingestion process, Kusto attempts to optimize for throughput by batching small
 ingress data chunks together as they await ingestion.
 This sort of batching reduces the resources consumed by the ingestion
-process, as well as does not require post-ingestion resources to optimize the
+process, and doesn't require post-ingestion resources to optimize the
 small data shards produced by non-batched ingestion.
 
-There is a downside, however, to performing batching before ingestion, which is
+There is a downside, however, to doing batching before ingestion, which is
 the introduction of a forced delay, so that the end-to-end time from requesting
-the ingestion of data until it is ready for query is larger.
+the ingestion of data until it's ready for query is larger.
 
 To allow control of this trade-off, one may use the [`IngestionBatching`](batching-policy.md) policy.
 This policy gets applied to queued ingestion only, and provides the maximum
@@ -29,10 +29,10 @@ forced delay to allow when batching small blobs together.
 
 ## Details
 
-As explained above, there is an optimal size of data to be ingested in bulk.
+As explained above, there's an optimal size of data to be ingested in bulk.
 Currently that size is about 1 GB of uncompressed data. Ingestion that is done
 in blobs that hold much less data than the optimal size is non-optimal, and
-therefore in queued ingestion Kusto will batch such small blobs together.
+so in queued ingestion Kusto will batch such small blobs together.
 
 Batches are sealed when the first condition is met:
 
@@ -70,7 +70,7 @@ The following lists show all possible types of triggers to batch sealing. The ba
 
 * SystemFlush: System had to flush the data, for example due to cluster scaling or internal reset of system components
 
-## Additional resources
+## Other resources
 
 * [IngestionBatching policy commands reference](../management/batching-policy.md)
 * [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)
