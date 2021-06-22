@@ -22,6 +22,8 @@ The capacity policy is made of:
 * [ExtentsPurgeRebuildCapacity](#extents-purge-rebuild-capacity)
 * [ExportCapacity](#export-capacity)
 * [ExtentsPartitionCapacity](#extents-partition-capacity)
+* [MaterializedViewsCapacity](#materialized-views-capacity-policy)
+* [StoredQueryResultsCapacity](#stored-query-results-capacity)
 
 ## Ingestion capacity
 
@@ -134,6 +136,17 @@ Maximum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * `Ma
 * The `ExtentsRebuildCapacity` policy serves as an upper limit only. The actual value used is dynamically determined by the system, based on current cluster's conditions (memory, CPU) and an estimation of the amount of resources required by the rebuild operation. In practice, concurrency can be much lower than the value specified in capacity policy.
     * The `MaterializedViewExtentsRebuild` metric provides information about how many extents were rebuilt in each materialization cycle. For more information, see [materialized views monitoring](materialized-views/materialized-view-overview.md#materialized-views-monitoring).
 
+## Stored query results capacity
+
+|Property       |Type    |Description    |
+|-----------------------------------|--------|-----------------------------------------------------------------------------------------|
+|MaximumConcurrentOperationsPerDbAdmin |long    | The maximum number of concurrent ingestion operations in a cluster admin node.               |
+|CoreUtilizationCoefficient         |double  |A coefficient for the percentage of cores to use when calculating the stored query results creation capacity. |
+
+The cluster's total stored query resuls creation capacity, as shown by [`.show capacity`](../management/diagnostics.md#show-capacity), is calculated by:
+
+`Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`)
+
 ## Defaults
 
 The default capacity policy has the following JSON representation:
@@ -158,6 +171,17 @@ The default capacity policy has the following JSON representation:
   "ExtentsPartitionCapacity": {
     "ClusterMinimumConcurrentOperations": 1,
     "ClusterMaximumConcurrentOperations": 32
+  },
+  "MaterializedViewsCapacity": {
+    "ClusterMaximumConcurrentOperations": 1,
+    "ExtentsRebuildCapacity": {
+      "ClusterMaximumConcurrentOperations": 50,
+      "MaximumConcurrentOperationsPerNode": 5
+    }
+  },
+  "StoredQueryResultsCapacity": {
+    "MaximumConcurrentOperationsPerDbAdmin": 250,
+    "CoreUtilizationCoefficient": 0.75
   }
 }
 ```
