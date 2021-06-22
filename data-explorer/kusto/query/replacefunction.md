@@ -18,17 +18,17 @@ Replace all regex matches with another string.
 
 ## Syntax
 
-`replace(`*regex*`,` *rewrite*`,` *text*`)`
+`replace(`*regex*`,` *rewrite*`,` *source*`)`
 
 ## Arguments
 
-* *regex*: The [regular expression](https://github.com/google/re2/wiki/Syntax) to search *text*. It can contain capture groups in '('parentheses')'. 
+* *regex*: The [regular expression](https://github.com/google/re2/wiki/Syntax) to search *source*. It can contain capture groups in '('parentheses')'. 
 * *rewrite*: The replacement regex for any match made by *matchingRegex*. Use `\0` to refer to the whole match, `\1` for the first capture group, `\2` and so on for subsequent capture groups.
-* *text*: A string.
+* *source*: A string.
 
 ## Returns
 
-*text* after replacing all matches of *regex* with evaluations of *rewrite*. Matches do not overlap.
+*source* after replacing all matches of *regex* with evaluations of *rewrite*. Matches do not overlap.
 
 ## Example
 

@@ -47,7 +47,7 @@ let data = datatable(arr: dynamic)
 ];
 data 
 | project arr, 
-          fill_forward = series_fill_backward(arr)
+          fill_backward = series_fill_backward(arr)
 
 ```
 

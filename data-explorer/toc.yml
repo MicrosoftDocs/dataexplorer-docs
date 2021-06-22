@@ -221,7 +221,7 @@ items:
       href: power-apps-connector.md
     - name: Debug KQL inline Python
       href: debug-inline-python.md
-    - name: using SDKs
+    - name: Using SDKs
       items:
       - name: Python
         href: python-query-data.md
@@ -354,6 +354,8 @@ items:
       items:
       - name: Manage database permissions
         href: manage-database-permissions.md
+      - name: Configure a database using a Kusto Query Language script
+        href: database-script.md
       - name: Add database principal
         items:
           - name: C#
