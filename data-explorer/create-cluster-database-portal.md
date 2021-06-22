@@ -7,24 +7,24 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
+ms.custom: mode-portal
 ms.localizationpriority: high 
 adobe-target: true
 
 #Customer intent: As a database administrator, I want to create an Azure Data Explorer cluster and database so that I can understand whether Azure Data Explorer is suitable for my analytics projects.
 ---
 
-
 # Quickstart: Create an Azure Data Explorer cluster and database
 
 > [!div class="op_single_selector"]
-> * [Portal](create-cluster-database-portal.md)
-> * [CLI](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
-> * [C#](create-cluster-database-csharp.md)
-> * [Python](create-cluster-database-python.md)
-> * [Go](create-cluster-database-go.md)
-> * [ARM template](create-cluster-database-resource-manager.md)
-
+>
+> - [Portal](create-cluster-database-portal.md)
+> - [CLI](create-cluster-database-cli.md)
+> - [PowerShell](create-cluster-database-powershell.md)
+> - [C#](create-cluster-database-csharp.md)
+> - [Python](create-cluster-database-python.md)
+> - [Go](create-cluster-database-go.md)
+> - [ARM template](create-cluster-database-resource-manager.md)
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a database so that you can run queries against it. In this quickstart, you create a cluster and a database.
 
@@ -48,7 +48,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. Fill out the basic cluster details with the following information.
 
-   ![Create cluster form](media/create-cluster-database-portal/create-cluster-form2.png)
+    ![Create cluster form](media/create-cluster-database-portal/create-cluster-form2.png)
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -67,8 +67,8 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
     ![Go to resource](media/create-cluster-database-portal/notification-resource.png)
 
 > [!NOTE]
-> If the deployment fails with the error "SubscriptionNotRegistered", retry the operation. 
-> 
+> If the deployment fails with the error "SubscriptionNotRegistered", retry the operation.
+>
 > Deployment fails when the Kusto resource provider isn't registered on the subscription described in [Azure resource providers and types](/azure/azure-resource-manager/management/resource-providers-and-types). When the deployment fails, the Kusto resource provider registers itself on the subscription, and the retry can then succeed.
 
 ## Create a database
@@ -133,5 +133,3 @@ If you plan to follow other quickstarts and tutorials, keep the resources you cr
 
 > [!div class="nextstepaction"]
 > [Quickstart: Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md)
-
-

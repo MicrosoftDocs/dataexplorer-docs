@@ -7,6 +7,7 @@ ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 02/09/2021
+ms.custom: mode-portal
 ms.localizationpriority: high
 
 #Customer intent: As a user of Azure Data Explorer, I want to query data in the Web UI and share data. This will allow me to understand my data and share analysis with colleagues.
@@ -14,7 +15,7 @@ ms.localizationpriority: high
 
 # Quickstart: Query data in Azure Data Explorer Web UI
 
-Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data. Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share Kusto Query Language commands and queries. The web experience is available in the Azure portal and as a stand-alone web application, the [Azure Data Explorer Web UI](https://dataexplorer.azure.com). 
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data. Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share Kusto Query Language commands and queries. The web experience is available in the Azure portal and as a stand-alone web application, the [Azure Data Explorer Web UI](https://dataexplorer.azure.com).
 The Azure Data Explorer Web UI can also be hosted by other web portals in an HTML iframe. For more information on how to host the Web UI and the Monaco editor used, see [Monaco IDE integration](kusto/api/monaco/monaco-kusto.md).
 In this quickstart, you'll be working in the stand-alone Azure Data Explorer Web UI.
 
@@ -22,8 +23,8 @@ In this quickstart, you'll be working in the stand-alone Azure Data Explorer Web
 
 ## Prerequisites
 
-* An Azure subscription. If you don’t have one, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* Cluster and database with data. [Create your own cluster](create-cluster-database-portal.md) or use the Azure Data Explorer help cluster.
+- An Azure subscription. If you don’t have one, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+- Cluster and database with data. [Create your own cluster](create-cluster-database-portal.md) or use the Azure Data Explorer help cluster.
 
 ## Sign in to the application
 
@@ -41,13 +42,13 @@ You must add a connection to a cluster before you can start running queries. In 
 
 1. In the upper left of the application, select **Add Cluster**.
 
-1. In the **Add cluster** dialog box, enter the URI https://help.kusto.windows.net, then select **Add**.
-   
+1. In the **Add cluster** dialog box, enter the URI `https://help.kusto.windows.net`, then select **Add**.
+
 1. In the left pane, you should now see the **help** cluster. Expand the **Samples** database and open the **Tables** folder to see the sample tables that you have access to.
 
     :::image type="content" source="media/web-query-data/help-cluster.png" alt-text="Find table in the help cluster":::
 
-We use the **StormEvents** table later in this quickstart, and in other Azure Data Explorer articles. 
+We use the **StormEvents** table later in this quickstart, and in other Azure Data Explorer articles.
 
 ### Add your cluster
 
@@ -58,7 +59,7 @@ Now add the test cluster you created.
 1. In the **Add Cluster** dialog box, enter your test cluster URL in the form `https://<ClusterName>.<Region>.kusto.windows.net/`, then select **Add**. For example, `https://mydataexplorercluster.westus.kusto.windows.net` as in the following image:
 
     :::image type="content" source="media/web-query-data/server-uri.png" alt-text="Enter test cluster URL":::
-    
+
 1. In the example below, you see the **help** cluster and a new cluster, **docscluster.westus** (full URL is `https://docscluster.westus.kusto.windows.net/`).
 
     ![Test cluster](media/web-query-data/test-cluster.png)
@@ -76,7 +77,7 @@ You can now run queries on both clusters (assuming you have data in your test cl
     | sort by StartTime desc
     | take 10
     ```
-    
+
     This query returns the 10 newest records in the **StormEvents** table. The result should look like the following table.
 
     :::image type="content" source="media/web-query-data/result-set-take-10.png" alt-text="Screenshot of a table that lists data for 10 storm events." border="false":::
@@ -120,16 +121,17 @@ You can now run queries on both clusters (assuming you have data in your test cl
 
     > [!NOTE]
     > Blank lines in the query expression can affect which part of the query is executed.
-    > * If no text selected, it's assumed that the query or command is separated by empty lines.
-    > * If text is selected, the selected text is run.
+    >
+    > - If no text selected, it's assumed that the query or command is separated by empty lines.
+    > - If text is selected, the selected text is run.
 
 ## Work with the table grid
 
-Now that you've seen how basic queries work, you can use the table grid to customize results and do further analysis. 
+Now that you've seen how basic queries work, you can use the table grid to customize results and do further analysis.
 
 ### Expand a cell
 
-Expanding cells is useful to view long strings or dynamic fields such as JSON. 
+Expanding cells is useful to view long strings or dynamic fields such as JSON.
 
 1. Double-click a cell to open an expanded view. This view allows you to read long strings, and provides a JSON formatting for dynamic data.
 
@@ -141,7 +143,7 @@ Expanding cells is useful to view long strings or dynamic fields such as JSON.
 
 ### Expand a row
 
-When working with a table with dozens of columns, expand the entire row to be able to easily see an overview of the different columns and their content. 
+When working with a table with dozens of columns, expand the entire row to be able to easily see an overview of the different columns and their content.
 
 1. Click on the arrow **>** to the left of the row you want to expand.
 
@@ -154,7 +156,7 @@ When working with a table with dozens of columns, expand the entire row to be ab
 Within the results, you can group results by any column.
 
 1. Run the following query:
-     
+
     ```kusto
     StormEvents
     | sort by StartTime desc
@@ -190,8 +192,8 @@ You can use one or more operators to filter the results of a column.
 1. Select the filter icon.
 1. In the filter builder, select the desired operator.
 1. Type in the expression you wish to filter the column on. Results are filtered as you type.
-    
-    > [!NOTE] 
+
+    > [!NOTE]
     > The filter isn't case sensitive.
 
 1. To create a multi-condition filter, select a boolean operator to add another condition
@@ -213,15 +215,16 @@ You can use one or more operators to filter the results of a column.
 
 1. In the results grid, select a few of the numerical cells. The table grid allows you to select multiple rows, columns, and cells and calculate aggregations on them. The Web UI currently supports the following functions for numeric values: **Average**, **Count**, **Min**, **Max**, and **Sum**.
 
-    :::image type="content" source="media/web-query-data/select-stats.png" alt-text="select functions"::: 
+    :::image type="content" source="media/web-query-data/select-stats.png" alt-text="select functions":::
 
 ### Filter to query from grid
 
 Another easy way to filter the grid is to add a filter operator to the query directly from the grid.
 
 1. Select a cell with content you wish to create a query filter for.
+
 1. Right-click to open the cell actions menu. Select **Add selection as filter**.
-    
+
     :::image type="content" source="media/web-query-data/add-selection-filter.png" alt-text="Add selection as filter to query from the grid results in Azure Data Explorer WebUI":::
 
 1. A query clause will be added to your query in the query editor:
@@ -268,20 +271,21 @@ You can look for a specific expression within a result table.
 
 ## Share queries
 
-Many times, you want to share the queries you create. 
+Many times, you want to share the queries you create.
 
 1. In the query window, select the first query you copied in.
 
-1. At the top of the query window, select **Share**. 
+1. At the top of the query window, select **Share**.
 
     :::image type="content" source="media/web-query-data/share-menu.png" alt-text="Share menu":::
 
 The following options are available in the drop-down:
-* Link to clipboard
-* [Link query to clipboard](#provide-a-deep-link)
-* Link, query, results to clipboard
-* [Pin to dashboard](#pin-to-dashboard)
-* [Query to Power BI](power-bi-imported-query.md)
+
+- Link to clipboard
+- [Link query to clipboard](#provide-a-deep-link)
+- Link, query, results to clipboard
+- [Pin to dashboard](#pin-to-dashboard)
+- [Query to Power BI](power-bi-imported-query.md)
 
 ### Provide a deep link
 
@@ -297,7 +301,7 @@ You can provide a deep link so that other users with access to the cluster can r
 
 ### Pin to dashboard
 
-When you complete data exploration using queries in the Web UI and find the data you need, you can pin it to a dashboard for continuous monitoring. 
+When you complete data exploration using queries in the Web UI and find the data you need, you can pin it to a dashboard for continuous monitoring.
 
 To pin a query:
 
@@ -325,10 +329,10 @@ To export the query results to a CSV file, select **File** > **Export to CSV**.
 
 In the **Settings** tab you can:
 
-* [Export environment settings](#export-environment-settings)
-* [Import environment settings](#import-environment-settings)
-* [Highlight error levels](#highlight-error-levels)
-* [Clear local state](#clean-up-resources)
+- [Export environment settings](#export-environment-settings)
+- [Import environment settings](#import-environment-settings)
+- [Highlight error levels](#highlight-error-levels)
+- [Clear local state](#clean-up-resources)
 
 Select the settings icon :::image type="icon" source="media/web-query-data/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
 
@@ -361,14 +365,14 @@ The export and import actions help you protect your work environment and relocat
 
 ### Highlight error levels
 
-Kusto tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does this by matching the distinct values of each column with a set of known patterns ("Warning", "Error", and so on). 
+Kusto tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does this by matching the distinct values of each column with a set of known patterns ("Warning", "Error", and so on).
 
 #### Enable error level highlighting
 
 To enable the error level highlighting:
 
 1. Select the **Settings** icon next to your user name.
-1. Select the **Appearance** tab and toggle the **Enable error level highlighting** option to the right. 
+1. Select the **Appearance** tab and toggle the **Enable error level highlighting** option to the right.
 
     :::image type="content" source="media/web-query-data/enable-error-highlighting.gif" alt-text="Animated GIF showing how to enable error-level highlighting in the settings":::
 
@@ -378,20 +382,20 @@ Error level color scheme in **Light** mode | Error level color scheme in **Dark*
 
 #### Column requirements for highlighting
 
-For highlighted error levels, the column must be of type int, long, or string. 
+For highlighted error levels, the column must be of type int, long, or string.
 
-* If the column is of type `long` or `int`:
-   * The column name must be *Level*
-   * Values may only include numbers between 1 and 5.
-* If the column is of type `string`: 
-   * Column name can optionally be *Level* to improve performance. 
-   * The column can only include the following values:
-	   * critical, crit, fatal, assert, high
-	   * error, e
-	   * warning, w, monitor
-	   * information
-	   * verbose, verb, d
-   
+- If the column is of type `long` or `int`:
+  - The column name must be *Level*
+  - Values may only include numbers between 1 and 5.
+- If the column is of type `string`:
+  - The column name can optionally be *Level* to improve performance.
+  - The column can only include the following values:
+    - critical, crit, fatal, assert, high
+    - error, e
+    - warning, w, monitor
+    - information
+    - verbose, verb, d
+
 ## Provide feedback
 
 1. In the upper right of the application, select the feedback icon :::image type="icon" source="media/web-query-data/icon-feedback.png" border="false":::.
