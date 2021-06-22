@@ -7,6 +7,7 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 08/12/2019
+ms.custom: mode-portal
 ms.localizationpriority: high
 ---
 
@@ -36,6 +37,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
     ```Kusto
     .create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)
     ```
+
 1. Paste in the following command, and select **Run** to ingest data into StormEvents table.
 
     ```Kusto
@@ -49,6 +51,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
     | sort by StartTime desc
     | take 10
     ```
+
     The query returns the following results from the ingested sample data.
 
     ![Query results](media/ingest-sample-data/query-results.png)
