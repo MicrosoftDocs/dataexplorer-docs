@@ -78,7 +78,12 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 
     :::image type="content" source="media/ingest-data-streaming/define-streaming-ingestion-policy.png" alt-text="Define the streaming ingestion policy in Azure Data Explorer":::
 
-[!INCLUDE [ingest-data-streaming-use](includes/ingest-data-streaming-types.md)]
+## Use streaming ingestion to ingest data to your cluster
+
+Two streaming ingestion types are supported:
+
+* [**Event Hub**](../ingest-data-event-hub.md) or [**IoT Hub**](../ingest-data-iot-hub.md), which is used as a data source.
+* **Custom ingestion** requires you to write an application that uses one of the Azure Data Explorer [client libraries](../kusto/api/client-libraries.md). See the following streaming ingestion examples and the [C# streaming ingestion sample application](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample).
 
 ### [Go](#tab/go)
 
@@ -188,6 +193,15 @@ byte_sequence = b"56,56,56"
 bytes_stream = io.BytesIO(byte_sequence)
 client.ingest_from_stream(bytes_stream, ingestion_properties=ingestion_properties)
 ```
+
+---
+
+### Choose the appropriate streaming ingestion type
+
+|Criterion|Event Hub|Custom Ingestion|
+|---------|---------|---------|
+|Data delay between ingestion initiation and the data available for query | Longer delay | Shorter delay  |
+|Development overhead | Fast and easy setup, no development overhead | High development overhead for application to handle errors and ensure data consistency |
 
 [!INCLUDE [ingest-data-streaming-disable](includes/ingest-data-streaming-disable.md)]
 
