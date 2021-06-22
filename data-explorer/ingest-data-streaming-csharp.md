@@ -14,10 +14,6 @@ ms.date: 07/13/2020
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-streaming.md)
 > * [C#](ingest-data-streaming-csharp.md)
-> * [Python](ingest-data-streaming-python.md)
-> * [Node](ingest-data-streaming-node.md)
-> * [Go](ingest-data-streaming-go.md)
-> * [Java](ingest-data-streaming-java.md)
 
 [!INCLUDE [ingest-data-streaming-intro](includes/ingest-data-streaming-intro.md)]
 
