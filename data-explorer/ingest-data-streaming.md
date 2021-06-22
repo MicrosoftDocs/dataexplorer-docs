@@ -82,22 +82,80 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 
 ### [Go](#tab/go)
 
+```go
+// Creates a Kusto Authorizer using your client identity, secret and tenant identity.
+// You may also uses other forms of authorization, see GoDoc > Authorization type.
+// auth package is: "github.com/Azure/go-autorest/autorest/azure/auth"
+authorizer := kusto.Authorization{
+  Config: auth.NewClientCredentialsConfig(clientID, clientSecret, tenantID),
+}
+
+database, table :=
+    "StreamingTestDb", // Your database
+    "TestTable" // Your table
+
+// Create a client
+client, err := kusto.New("https://<CLUSTER_NAME>.kusto.windows.net", authorizer)
+if err != nil {
+    panic("add error handling")
+}
+
+// Setup is quite simple
+// Pass a *kusto.Client, the name of the database and table you wish to ingest into.
+in, err := ingest.New(client, database, table)
+if err != nil {
+  panic("add error handling")
+}
+
+// Ingestion from a stream commits blocks of fully formed data encodes (JSON, AVRO, ...) into Kusto:
+if err := in.Stream(client, jsonEncodedData, ingest.JSON, "mappingName"); err != nil {
+  panic("add error handling")
+}
+```
+
 ### [Java](#tab/java)
+
+```java
+// Build connection string and initialize
+ConnectionStringBuilder csb =
+    ConnectionStringBuilder.createWithAadApplicationCredentials(System.getProperty("clusterPath"),
+            System.getProperty("appId"),
+            System.getProperty("appKey"),
+            System.getProperty("appTenant"));
+
+// Initialize client and it's properties
+IngestClient client = IngestClientFactory.createClient(csb);
+IngestionProperties ingestionProperties =
+    new IngestionProperties(
+        System.getProperty("dbName"),
+        System.getProperty("tableName")
+    );
+
+// Create Source info
+InputStream inputStream = new ByteArrayInputStream(Charset.forName("UTF-8").encode(data).array());
+StreamSourceInfo streamSourceInfo = new StreamSourceInfo(inputStream);
+
+// If the data is compressed
+streamSourceInfo.setIsCompressed(true);
+
+// Ingest from stream
+OperationStatus status = streamingIngestClient.ingestFromStream(streamSourceInfo, ingestionProperties).getIngestionStatusCollection().get(0).status;
+```
 
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
 // Streaming ingest client 
 const props = new IngestionProps({
-database: "<YOUR DB HERE>",
-table: "<YOUR TABLE HERE>",
+database: "StreamingTestDb", // Your database
+table: "TestTable", // Your table
 format: DataFormat.JSON,
 ingestionMappingReference: "Pre-defined mapping name" // For json format mapping is required
 });
 // Init with engine endpoint
 const streamingIngestClient = new StreamingIngestClient(
 KustoConnectionStringBuilder.withAadApplicationKeyAuthentication(
-`https://<YOUR CLUSTER HERE>.kusto.windows.net`, <YOUR APP ID>, <YOUR APP KEY>, <YOUR AUTHORITY ID>
+`https://<CLUSTER_NAME>.kusto.windows.net`, <APP_ID>, <APP_KEY>, <AUTHORITY_ID>
 ),
 props
 );
