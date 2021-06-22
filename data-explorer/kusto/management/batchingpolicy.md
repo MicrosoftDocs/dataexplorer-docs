@@ -23,8 +23,8 @@ There is a downside, however, to doing batching before ingestion, which is
 the introduction of a forced delay, so that the end-to-end time from requesting
 the ingestion of data until it's ready for query is larger.
 
-To allow control of this trade-off, one may use the [`IngestionBatching`](batching-policy.md) policy.
-This policy gets applied to queued ingestion only, and provides the maximum
+To allow control of this trade-off, use the [`IngestionBatching`](batching-policy.md) policy.
+This policy is applied to queued ingestion only, and provides the maximum
 forced delay to allow when batching small blobs together.
 
 ## Details
@@ -42,7 +42,7 @@ Batches are sealed when the first condition is met:
 
 The `IngestionBatching` policy can be set on databases, or tables. Default values are as follows: **5 minutes** maximum delay time, **1000** items, total size of **1G**.
 
-> [!WARNING]
+> [!IMPORTANT]
 > The impact of setting this policy to very small values is
 > an increase in the COGS (cost of goods sold) of the cluster and reduced performance. Additionally,
 > reducing batching policy values might actually result in **increased** effective
