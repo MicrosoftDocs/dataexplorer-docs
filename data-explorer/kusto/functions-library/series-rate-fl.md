@@ -105,7 +105,7 @@ demo_prometheus
 
 ---
 
-:::image type="content" source="images/series-rate-fl/all-disks-write-rate-2-bins.png" alt-text="Graph showing rate per second of disk write metric for all disks" border="false":::
+:::image type="content" source="images/series-rate-fl/all-disks-write-rate-2-bins.png" alt-text="Graph showing rate per second of disk write metric for all disks." border="false":::
 
 ## Example
 
@@ -117,4 +117,4 @@ series_rate_fl(series_metric_fl(demo_prometheus, 'TimeStamp', 'Name', 'Labels', 
 | render timechart with(series=labels)
 ```
     
-:::image type="content" source="images/series-rate-fl/main-disks-write-rate-10-bins.png" alt-text="Graph showing rate per second of main disk write metric in the last two hours with 10 bins gap" border="false":::
+:::image type="content" source="images/series-rate-fl/main-disks-write-rate-10-bins.png" alt-text="Graph showing rate per second of main disk write metric in the last two hours with 10 bins gap." border="false":::

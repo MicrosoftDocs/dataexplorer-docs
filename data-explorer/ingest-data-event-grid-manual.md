@@ -38,11 +38,11 @@ In this article, you learn how to create manually the resources needed for Event
 1. In the Azure portal, go to your storage account.
 1. In the left menu, select **Events** > **Event Subscription**.
 
-     :::image type="content" source="media/eventgrid/create-event-grid-subscription-1.png" alt-text="Create event grid subscription":::
+     :::image type="content" source="media/eventgrid/create-event-grid-subscription-1.png" alt-text="Create event grid subscription.":::
 
 1. In the **Create Event Subscription** window within the **Basic** tab, provide the following values:
 
-    :::image type="content" source="media/eventgrid/create-event-grid-subscription-2.png" alt-text="Create event subscription values to enter":::
+    :::image type="content" source="media/eventgrid/create-event-grid-subscription-2.png" alt-text="Create event subscription values to enter.":::
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
@@ -55,13 +55,13 @@ In this article, you learn how to create manually the resources needed for Event
 
 1. In **ENDPOINT DETAILS**, select **Event Hubs**.
 
-    :::image type="content" source="media/eventgrid/endpoint-details.png" alt-text="Pick an event handler to receive your events - Event Hub - Azure Data Explorer":::
+    :::image type="content" source="media/eventgrid/endpoint-details.png" alt-text="Pick an event handler to receive your events - Event Hub - Azure Data Explorer.":::
 
 1. Click **Select an endpoint** and fill in the Event Hub you created, for example *test-hub*.
     
 1. Select the **Filters** tab if you want to track specific subjects. Set the filters for the notifications as follows:
    
-    :::image type="content" source="media/eventgrid/filters-tab.png" alt-text="Filters tab event grid":::
+    :::image type="content" source="media/eventgrid/filters-tab.png" alt-text="Filters tab event grid.":::
 
    1. Select **Enable subject filtering**
    1. **Subject Begins With** field is the *literal* prefix of the subject. Since the pattern applied is *startswith*, it can span multiple containers, folders, or blobs. No wildcards are allowed.

@@ -40,4 +40,4 @@ Show a random continent that has a population of 300 to 600 million.
 Continents | summarize anyif(Continent, Population between (300000000 .. 600000000))
 ```
 
-:::image type="content" source="images/aggfunction/any1.png" alt-text="Any 1":::
+:::image type="content" source="images/aggfunction/any1.png" alt-text="Any 1.":::

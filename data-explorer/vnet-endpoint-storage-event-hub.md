@@ -60,11 +60,11 @@ This section shows you how to use Azure portal to add a virtual network service 
 1. Enable access from **Selected networks**.
 1. Under **Virtual Networks**, select **+ Add existing virtual network**. 
 
-    :::image type="content" source="media/vnet-private-link-storage-event-hub/storage-add-existing-vnet.png" alt-text="Add existing VNet connection Azure Storage to Azure Data Explorer":::
+    :::image type="content" source="media/vnet-private-link-storage-event-hub/storage-add-existing-vnet.png" alt-text="Add existing VNet connection Azure Storage to Azure Data Explorer.":::
 
 ### Add networks pane
 
-:::image type="content" source="media/vnet-private-link-storage-event-hub/storage-add-networks.png" alt-text="Add virtual network to Azure Storage Account to connect to Azure Data Explorer":::
+:::image type="content" source="media/vnet-private-link-storage-event-hub/storage-add-networks.png" alt-text="Add virtual network to Azure Storage Account to connect to Azure Data Explorer.":::
 
 1. In the right-hand **Add networks** pane, select your Azure subscription.
 
@@ -79,7 +79,7 @@ This section shows you how to use Azure portal to add a virtual network service 
 
 1. Select **Save** on the toolbar to save the settings. 
 
-    :::image type="content" source="media/vnet-private-link-storage-event-hub/storage-virtual-network.png" alt-text="Vnet to connect storage account to Azure Data Explorer":::
+    :::image type="content" source="media/vnet-private-link-storage-event-hub/storage-virtual-network.png" alt-text="Vnet to connect storage account to Azure Data Explorer.":::
 
     Wait for a few minutes for confirmation to appear on the portal notifications.
 
@@ -96,16 +96,16 @@ This section shows you how to use Azure portal to add a virtual network service 
 1. On the left-hand menu, select **Networking**. This tab appears only in **standard** or **dedicated** namespaces.
 1. Select the **Firewalls and virtual networks** tab. 
 
-    :::image type="content" source="media/vnet-private-link-storage-event-hub/networking.png" alt-text="Networking in Event Hub":::
+    :::image type="content" source="media/vnet-private-link-storage-event-hub/networking.png" alt-text="Networking in Event Hub.":::
 
 1. Enable access from **Selected Networks**.
 1. Under **Virtual Networks**, select **+ Add existing virtual network**. 
 
-    :::image type="content" source="media/vnet-private-link-storage-event-hub/event-hub-add-existing-vnet.png" alt-text="Add existing virtual network in Azure Data Explorer":::
+    :::image type="content" source="media/vnet-private-link-storage-event-hub/event-hub-add-existing-vnet.png" alt-text="Add existing virtual network in Azure Data Explorer.":::
 
 ### Add networks pane
 
-:::image type="content" source="media/vnet-private-link-storage-event-hub/add-networks.png" alt-text="Add networks fields to connect VNet to Azure Data Explorer":::  
+:::image type="content" source="media/vnet-private-link-storage-event-hub/add-networks.png" alt-text="Add networks fields to connect VNet to Azure Data Explorer.":::  
 
 1. In the right-hand **Add networks** pane, select your Azure subscription.
 
@@ -118,7 +118,7 @@ This section shows you how to use Azure portal to add a virtual network service 
 
 1. Select **Save** on the toolbar to save the settings. Wait for a few minutes for the confirmation to appear on the portal notifications
     
-    :::image type="content" source="media/vnet-private-link-storage-event-hub/event-hub-firewalls-and-vnet.png" alt-text="Add virtual network and subnet in Event Hub to connect to Azure Data Explorer"::: 
+    :::image type="content" source="media/vnet-private-link-storage-event-hub/event-hub-firewalls-and-vnet.png" alt-text="Add virtual network and subnet in Event Hub to connect to Azure Data Explorer."::: 
 
 ---
 

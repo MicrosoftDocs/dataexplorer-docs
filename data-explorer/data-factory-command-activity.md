@@ -28,7 +28,7 @@ ms.date: 09/15/2019
 1. Select the **Author** pencil tool. 
 1. Create a new pipeline by selecting **+** and then select **Pipeline** from the drop-down.
 
-   ![create new pipeline](media/data-factory-command-activity/create-pipeline.png)
+   ![create new pipeline.](media/data-factory-command-activity/create-pipeline.png)
 
 ## Create a Lookup activity
 
@@ -36,11 +36,11 @@ A [lookup activity](/azure/data-factory/control-flow-lookup-activity) can retrie
 
 1. In the **Activities** pane, under **General**, select the **Lookup** activity. Drag and drop it into the main canvas on the right.
  
-    ![select lookup activity](media/data-factory-command-activity/select-activity.png)
+    ![select lookup activity.](media/data-factory-command-activity/select-activity.png)
 
 1. The canvas now contains the Lookup activity you created. Use the tabs below the canvas to change any relevant parameters. In **General**, rename the activity. 
 
-    ![edit lookup activity](media/data-factory-command-activity/edit-lookup-activity.png)
+    ![edit lookup activity.](media/data-factory-command-activity/edit-lookup-activity.png)
 
     > [!TIP]
     > Click on the empty canvas area to view the pipeline properties. Use the **General** tab to rename the pipeline. Our pipeline is named *pipeline-4-docs*.
@@ -49,26 +49,26 @@ A [lookup activity](/azure/data-factory/control-flow-lookup-activity) can retrie
 
 1. In **Settings**, select your pre-created Azure Data Explorer **Source dataset**, or select **+ New** to create a new dataset.
  
-    ![add dataset in lookup settings](media/data-factory-command-activity/lookup-settings.png)
+    ![add dataset in lookup settings.](media/data-factory-command-activity/lookup-settings.png)
 
 1. Select the **Azure Data Explorer (Kusto)** dataset from **New Dataset** window. Select **Continue** to add the new dataset.
 
-   ![select new dataset](media/data-factory-command-activity/select-new-dataset.png) 
+   ![select new dataset.](media/data-factory-command-activity/select-new-dataset.png) 
 
 1. The new Azure Data Explorer dataset parameters are visible in **Settings**. To update the parameters, select **Edit**.
 
-    ![lookup settings with Azure Data Explorer dataset](media/data-factory-command-activity/lookup-settings-with-adx-dataset.png)
+    ![lookup settings with Azure Data Explorer dataset.](media/data-factory-command-activity/lookup-settings-with-adx-dataset.png)
 
 1. The **AzureDataExplorerTable** new tab opens in the main canvas. 
     * Select **General** and edit the dataset name. 
     * Select **Connection** to edit the dataset properties. 
     * Select the **Linked service** from the drop-down, or select **+ New** to create a new linked service.
 
-    ![Edit Azure Data Explorer dataset properties](media/data-factory-command-activity/adx-dataset-properties-edit-connections.png)
+    ![Edit Azure Data Explorer dataset properties.](media/data-factory-command-activity/adx-dataset-properties-edit-connections.png)
 
 1. When creating a new linked service, the **New Linked Service (Azure Data Explorer)** page opens:
 
-    ![ADX new linked service](media/data-factory-command-activity/adx-new-linked-service.png)
+    ![ADX new linked service.](media/data-factory-command-activity/adx-new-linked-service.png)
 
    * Select **Name** for Azure Data Explorer linked service. Add **Description** if needed.
    * In **Connect via integration runtime**, change current settings, if needed. 
@@ -98,7 +98,7 @@ A [lookup activity](/azure/data-factory/control-flow-lookup-activity) can retrie
 
 1. Change the **Query timeout** or **No truncation** and **First row only** properties, as needed. In this flow, we keep the default **Query timeout** and uncheck the checkboxes. 
 
-    ![Final settings of lookup activity](media/data-factory-command-activity/lookup-activity-final-settings.png)
+    ![Final settings of lookup activity.](media/data-factory-command-activity/lookup-activity-final-settings.png)
 
 ## Create a For-Each activity 
 
@@ -108,7 +108,7 @@ The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is u
     * In the **Activities** pane, under **Iteration & Conditionals**, select the **ForEach** activity and drag and drop it into the canvas.
     * Draw a line between the output of the Lookup activity and the input of the ForEach activity in the canvas to connect them.
 
-        ![ForEach activity](media/data-factory-command-activity/for-each-activity.png)
+        ![ForEach activity.](media/data-factory-command-activity/for-each-activity.png)
 
 1. Select the ForEach activity in the canvas. In the **Settings** tab below:
     * Check the **Sequential** checkbox for a sequential processing of the Lookup results, or leave it unchecked to create parallel processing.
@@ -116,18 +116,18 @@ The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is u
     * In **Items**, provide the following reference to the output value:
     *@activity('Lookup1').output.value*
 
-       ![ForEach activity settings](media/data-factory-command-activity/for-each-activity-settings.png)
+       ![ForEach activity settings.](media/data-factory-command-activity/for-each-activity-settings.png)
 
 ## Create an Azure Data Explorer Command activity within the ForEach activity
 
 1. Double-click the ForEach activity in the canvas to open it in a new canvas to specify the activities within ForEach.
 1. In the **Activities** pane, under **Azure Data Explorer**, select the **Azure Data Explorer Command** activity and drag and drop it into the canvas.
 
-    ![Azure Data Explorer command activity](media/data-factory-command-activity/adx-command-activity.png)
+    ![Azure Data Explorer command activity.](media/data-factory-command-activity/adx-command-activity.png)
 
 1. In the **Connection** tab, select the same Linked Service previously created.
 
-    ![azure data explorer command activity connection tab](media/data-factory-command-activity/adx-command-activity-connection-tab.png)
+    ![azure data explorer command activity connection tab.](media/data-factory-command-activity/adx-command-activity-connection-tab.png)
 
 1. In the **Command** tab, provide the following command:
 
@@ -144,7 +144,7 @@ The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is u
     The **Command** instructs Azure Data Explorer to export the results of a given query into a blob storage, in a compressed format. It runs asynchronously (using the async modifier).
     The query addresses the database column of each row in the Lookup activity result. The **Command timeout** can be left unchanged.
 
-    ![command activity](media/data-factory-command-activity/command.png)   
+    ![command activity.](media/data-factory-command-activity/command.png)   
 
     > [!NOTE]
     > The command activity has the following limits:
@@ -154,11 +154,11 @@ The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is u
 
 1. Now the pipeline is ready. You can go back to the main pipeline view by clicking the pipeline name.
 
-    ![Azure Data Explorer command pipeline](media/data-factory-command-activity/adx-command-pipeline.png)
+    ![Azure Data Explorer command pipeline.](media/data-factory-command-activity/adx-command-pipeline.png)
 
 1. Select **Debug** before publishing the pipeline. The pipeline progress can be monitored in the **Output** tab.
 
-    ![azure data explorer command activity output](media/data-factory-command-activity/command-activity-output.png)
+    ![azure data explorer command activity output.](media/data-factory-command-activity/command-activity-output.png)
 
 1. You can **Publish All** and then **Add trigger** to run the pipeline. 
 

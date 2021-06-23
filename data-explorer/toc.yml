@@ -86,7 +86,7 @@ items:
     items:
     - name: Create table
       href: one-click-table.md
-    - name: Create external table
+    - name: External table creation wizard
       displayName: one-click
       href: external-table.md
   - name: Ingest data

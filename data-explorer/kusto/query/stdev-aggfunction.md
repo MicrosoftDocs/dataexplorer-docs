@@ -15,7 +15,7 @@ Calculates the standard deviation of *Expr* across the group, considering the gr
 
 * Used formula:
 
-:::image type="content" source="images/stdev-aggfunction/stdev-sample.png" alt-text="Stdev sample":::
+:::image type="content" source="images/stdev-aggfunction/stdev-sample.png" alt-text="Stdev sample.":::
 
 * Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
 

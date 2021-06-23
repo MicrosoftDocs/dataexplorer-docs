@@ -343,7 +343,7 @@ In this section, you learn to attach a database to an existing cluster by using 
 
 You can deploy the Azure Resource Manager template by [using the Azure portal](https://portal.azure.com) or using PowerShell.
 
-   ![template deployment](media/follower/template-deployment.png)
+   ![template deployment.](media/follower/template-deployment.png)
 
 |**Setting**  |**Description**  | **Example** |
 |---------|---------|---|
@@ -371,14 +371,14 @@ To verify that the database was successfully attached, find your attached databa
 1. Navigate to the follower cluster and select **Databases**
 1. Search for new Read-only databases in the database list.
 
-    ![Read-only follower database](media/follower/read-only-follower-database.png)
+    ![Read-only follower database.](media/follower/read-only-follower-database.png)
 
 ### Check your leader cluster
 
 1. Navigate to the leader cluster and select **Databases**
 1. Check that the relevant databases are marked as **SHARED WITH OTHERS** > **Yes**
 
-    ![Read and write attached databases](media/follower/read-write-databases-shared.png)
+    ![Read and write attached databases.](media/follower/read-write-databases-shared.png)
 
 ## Detach the follower database  
 

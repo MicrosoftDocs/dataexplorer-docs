@@ -39,7 +39,7 @@ demo_make_series2
 | render timechart with(title='Web app. traffic of a month, decomposition', ysplit=panels)
 ```
 
-![Time series decomposition](media/anomaly-detection/series-decompose-timechart.png)
+![Time series decomposition.](media/anomaly-detection/series-decompose-timechart.png)
 
 * The original time series is labeled **num** (in red). 
 * The process starts by auto detection of the seasonality by using the function [`series_periods_detect()`](kusto/query/series-periods-detectfunction.md) and extracts the **seasonal** pattern (in purple).
@@ -66,7 +66,7 @@ demo_make_series2
 | render anomalychart with(anomalycolumns=anomalies, title='Web app. traffic of a month, anomalies') //use "| render anomalychart with anomalycolumns=anomalies" to render the anomalies as bold points on the series charts.
 ```
 
-![Time series anomaly detection](media/anomaly-detection/series-anomaly-detection.png)
+![Time series anomaly detection.](media/anomaly-detection/series-anomaly-detection.png)
 
 * The original time series (in red). 
 * The baseline (seasonal + trend) component (in blue).
@@ -92,7 +92,7 @@ demo_make_series2
 | render timechart with(title='Web app. traffic of a month, forecasting the next week by Time Series Decomposition')
 ```
 
-![Time series forecasting](media/anomaly-detection/series-forecasting.png)
+![Time series forecasting.](media/anomaly-detection/series-forecasting.png)
 
 * Original metric (in red). Future values are missing and set to 0, by default.
 * Extrapolate the baseline component (in blue) to predict next week's values.
@@ -118,7 +118,7 @@ demo_make_series2
 | render timechart with(title='Web app. traffic of a month, forecasting the next week for 3 time series')
 ```
 
-![Time series scalability](media/anomaly-detection/series-scalability.png)
+![Time series scalability.](media/anomaly-detection/series-scalability.png)
 
 ## Summary
 

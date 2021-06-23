@@ -97,7 +97,7 @@ coordinates
 
 Storm events in California. The events are filtered by a California state polygon and aggregated by event type and hash.
 
-:::image type="content" source="images/geo-point-in-polygon-function/california-storm-events.png" alt-text="Storm events in California":::
+:::image type="content" source="images/geo-point-in-polygon-function/california-storm-events.png" alt-text="Storm events in California.":::
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
