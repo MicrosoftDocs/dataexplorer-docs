@@ -18,7 +18,7 @@ LightIngest is most useful when you want to ingest a large amount of data, becau
 
 * LightIngest - download it as part of the [Microsoft.Azure.Kusto.Tools NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)
 
-    :::image type="content" source="media/lightingest/lightingest-download-area.png" alt-text="Lightingest download":::
+    :::image type="content" source="media/lightingest/lightingest-download-area.png" alt-text="Lightingest download.":::
 
 * WinRAR - download it from [www.win-rar.com/download.html](http://www.win-rar.com/download.html)
 
@@ -32,7 +32,7 @@ LightIngest is most useful when you want to ingest a large amount of data, becau
 1. Navigate to the extracted *tools* directory on your computer.
 1. Delete the existing location information from the location bar.
 
-    :::image type="content" source="media/lightingest/lightingest-locationbar.png" alt-text="Delete existing location information for LightIngest in Azure Data Explorer":::
+    :::image type="content" source="media/lightingest/lightingest-locationbar.png" alt-text="Delete existing location information for LightIngest in Azure Data Explorer.":::
 
 
 1. Enter `cmd` and press **Enter**.
@@ -41,7 +41,7 @@ LightIngest is most useful when you want to ingest a large amount of data, becau
     > [!Tip]
     > For a list of supported command-line arguments, enter `LightIngest.exe /help`.
     >
-    > :::image type="content" source="media/lightingest/lightingest-cmd-line-help.png" alt-text="Command line help for LightIngest":::
+    > :::image type="content" source="media/lightingest/lightingest-cmd-line-help.png" alt-text="Command line help for LightIngest.":::
 
 1. Enter `ingest-` followed by the connection string to the Azure Data Explorer cluster that will manage the ingestion.
     Enclose the connection string in double quotes and follow the [Kusto connection strings specification](kusto/api/connection-strings/kusto.md).

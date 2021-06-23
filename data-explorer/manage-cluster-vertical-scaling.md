@@ -28,7 +28,7 @@ This article explains the vertical scaling workflow:
 
 1. In the **Scale up** window, you will see a list of available SKUs for your cluster. For example, in the following figure, only four SKUs are available.
 
-    ![Scale up](media/manage-cluster-vertical-scaling/scale-up.png)
+    ![Scale up.](media/manage-cluster-vertical-scaling/scale-up.png)
 
     The SKUs are disabled because they're the current SKU, or they aren't available in the region where the cluster is located.
 

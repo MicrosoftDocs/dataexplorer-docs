@@ -30,7 +30,7 @@ By using horizontal scaling, you can scale the instance count automatically, bas
 
 Manual scale is the default setting during cluster creation. The cluster has a static capacity that doesn't change automatically. You select the static capacity by using the **Instance count** bar. The cluster's scaling remains at that setting until you make another change.
 
-   ![Manual scale method](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
+   ![Manual scale method.](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
 ### Optimized autoscale
 
@@ -42,7 +42,7 @@ Optimized autoscale is the recommended autoscale method. This method optimizes c
 
 1. Select **Save**.
 
-   ![Optimized autoscale method](media/manage-cluster-horizontal-scaling/optimized-autoscale-method.png)
+   ![Optimized autoscale method.](media/manage-cluster-horizontal-scaling/optimized-autoscale-method.png)
 
 Optimized autoscale starts working. Its actions are now visible in the Azure activity log of the cluster.
 
@@ -79,7 +79,7 @@ By using custom autoscale, you can scale your cluster dynamically based on metri
 
 1. In the **Autoscale setting name** box, enter a name, such as *Scale-out: cache utilization*. 
 
-   ![Scale rule](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
+   ![Scale rule.](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
 2. For **Scale mode**, select **Scale based on a metric**. This mode provides dynamic scaling. You can also select **Scale to a specific instance count**.
 

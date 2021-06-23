@@ -29,7 +29,7 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 
 1. In the left menu of the [Web UI](https://dataexplorer.azure.com/), right-click a *database* or *table* and select **Ingest new data**. 
 
-:::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-web-ui.png" alt-text="Select one-click ingestion in the web UI":::
+:::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-web-ui.png" alt-text="Select one-click ingestion in the web UI.":::
 
 The **Ingest new data** window opens with the **Source** tab selected.
 
@@ -48,7 +48,7 @@ The **Ingest new data** window opens with the **Source** tab selected.
 
 1. Under **Data Connection**, fill in the following fields:
 
-    :::image type="content" source="media/one-click-event-hub/project-details.png" alt-text="Screenshot of source tab with project details fields to be filled in - ingest new data to Azure Data Explorer with Event Hub in the one click experience":::
+    :::image type="content" source="media/one-click-event-hub/project-details.png" alt-text="Screenshot of source tab with project details fields to be filled in - ingest new data to Azure Data Explorer with Event Hub in the one click experience.":::
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -67,7 +67,7 @@ The **Ingest new data** window opens with the **Source** tab selected.
 For information on schema mapping with JSON-formatted data, see [Edit the schema](one-click-ingestion-existing-table.md#edit-the-schema).
 For information on schema mapping with CSV-formatted data, see [Edit the schema](one-click-ingestion-new-table.md#edit-the-schema).
 
-:::image type="content" source="media/one-click-event-hub/schema-tab.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hub in the one click experience":::
+:::image type="content" source="media/one-click-event-hub/schema-tab.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hub in the one click experience.":::
 
 1. If the data you see in the preview window is not complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your Event Hub:
     * **Discard and fetch new data**: discards the data presented and searches for new events.
@@ -82,7 +82,7 @@ For information on schema mapping with CSV-formatted data, see [Edit the schema]
 
 In the **Data ingestion completed** window, all steps will be marked with green check marks when data ingestion finishes successfully. The cards below these steps give you options to explore your data with **Quick queries**, undo changes made using **Tools**, or **Monitor** the Event Hub connections and data.
 
-:::image type="content" source="media/one-click-event-hub/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hub with the one click experience":::
+:::image type="content" source="media/one-click-event-hub/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hub with the one click experience.":::
 
 ## Next steps
 

@@ -64,7 +64,7 @@ demo_make_series1
 
 In the table above, we have three partitions. We can create a separate time series: Windows 10 (red), 7 (blue) and 8.1 (green) for each OS version as seen in the graph:
 
-![Time series partition](media/time-series-analysis/time-series-partition.png)
+![Time series partition.](media/time-series-analysis/time-series-partition.png)
 
 ## Time series analysis functions
 
@@ -90,7 +90,7 @@ demo_make_series1
 | render timechart
 ```
 
-![Time series filtering](media/time-series-analysis/time-series-filtering.png)
+![Time series filtering.](media/time-series-analysis/time-series-filtering.png)
 
 ### Regression analysis
 
@@ -108,7 +108,7 @@ demo_series2
 | render linechart with(xcolumn=x)
 ```
 
-![Time series regression](media/time-series-analysis/time-series-regression.png)
+![Time series regression.](media/time-series-analysis/time-series-regression.png)
 
 - Blue: original time series
 - Green: fitted line
@@ -130,7 +130,7 @@ demo_series3
 | render timechart 
 ```
 
-![Time series seasonality](media/time-series-analysis/time-series-seasonality.png)
+![Time series seasonality.](media/time-series-analysis/time-series-seasonality.png)
 
 - Use [series_periods_detect()](kusto/query/series-periods-detectfunction.md) to automatically detect the periods in the time series. 
 - Use [series_periods_validate()](kusto/query/series-periods-validatefunction.md) if we know that a metric should have specific distinct period(s) and we want to verify that they exist.
@@ -171,7 +171,7 @@ demo_make_series1
 | render timechart
 ```
 
-![Time series operations](media/time-series-analysis/time-series-operations.png)
+![Time series operations.](media/time-series-analysis/time-series-operations.png)
 
 - Blue: original time series
 - Red: smoothed time series
@@ -220,7 +220,7 @@ demo_many_series1
 | render timechart with(ymin=0) 
 ```
 
-![Time series at scale](media/time-series-analysis/time-series-at-scale.png)
+![Time series at scale.](media/time-series-analysis/time-series-at-scale.png)
 
 The above behavior is misleading, since the single normal time series is aggregated from thousands of different instances that may have abnormal patterns. Therefore, we create a time series per instance. An instance is defined by Loc (location), anonOp (operation), and DB (specific machine).
 
@@ -252,7 +252,7 @@ demo_many_series1
 | render timechart with(title='Service Traffic Outage for 2 instances (out of 18339)')
 ```
 
-![Time series top two](media/time-series-analysis/time-series-top-2.png)
+![Time series top two.](media/time-series-analysis/time-series-top-2.png)
 
 Display the instances:
 

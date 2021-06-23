@@ -42,13 +42,13 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. Search for *Azure Data Explorer*.
 
-   ![Search resources](media/create-cluster-database-portal/search-resources.png)
+   ![Search resources.](media/create-cluster-database-portal/search-resources.png)
 
 1. Under **Azure Data Explorer**, at the bottom of the screen, select **Create**.
 
 1. Fill out the basic cluster details with the following information.
 
-    ![Create cluster form](media/create-cluster-database-portal/create-cluster-form2.png)
+    ![Create cluster form.](media/create-cluster-database-portal/create-cluster-form2.png)
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -64,7 +64,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. When the deployment is complete, select **Go to resource**.
 
-    ![Go to resource](media/create-cluster-database-portal/notification-resource.png)
+    ![Go to resource.](media/create-cluster-database-portal/notification-resource.png)
 
 > [!NOTE]
 > If the deployment fails with the error "SubscriptionNotRegistered", retry the operation.
@@ -77,11 +77,11 @@ You're now ready for the second step in the process: database creation.
 
 1. On the **Overview** tab, select **Create database**.
 
-    ![Step 2: create a database](media/create-cluster-database-portal/database-creation.png)
+    ![Step 2: create a database.](media/create-cluster-database-portal/database-creation.png)
 
 1. Fill out the form with the following information.
 
-    ![Create database form](media/create-cluster-database-portal/create-database.png)
+    ![Create database form.](media/create-cluster-database-portal/create-database.png)
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -98,7 +98,7 @@ Now that you have a cluster and database, you can run queries and commands. You 
 
 1. Under your cluster, select **Query**. Paste the command `.show databases` into the query window, then select **Run**.
 
-    ![Show databases command](media/create-cluster-database-portal/show-databases.png)
+    ![Show databases command.](media/create-cluster-database-portal/show-databases.png)
 
     The result set shows **TestDatabase**, the only database in the cluster.
 
@@ -112,7 +112,7 @@ You can stop and restart a cluster depending on business needs.
 
 1. To stop the cluster, at the top of the **Overview** tab, select **Stop**.
 
-    :::image type="content" source="media/create-cluster-database-portal/stop-button.png" alt-text="The stop button":::
+    :::image type="content" source="media/create-cluster-database-portal/stop-button.png" alt-text="The stop button.":::
 
     > [!NOTE]
     > When the cluster is stopped, data is not available for queries, and you can't ingest new data.

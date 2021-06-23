@@ -68,12 +68,12 @@ Diagnostic logs are disabled by default. To enable diagnostic logs, do the follo
 1. In the [Azure portal](https://portal.azure.com), select the Azure Data Explorer cluster resource that you want to monitor.
 1. Under **Monitoring**, select **Diagnostic settings**.
   
-    ![Add diagnostics logs](media/using-diagnostic-logs/add-diagnostic-logs.png)
+    ![Add diagnostics logs.](media/using-diagnostic-logs/add-diagnostic-logs.png)
 
 1. Select **Add diagnostic setting**.
 1. In the **Diagnostic settings** window:
 
-    :::image type="content" source="media/using-diagnostic-logs/configure-diagnostics-settings.png" alt-text="Configure diagnostics settings":::
+    :::image type="content" source="media/using-diagnostic-logs/configure-diagnostics-settings.png" alt-text="Configure diagnostics settings.":::
 
     1. Enter a **Diagnostic setting name**.
     1. Select one or more targets: a Log Analytics workspace, a storage account, or an Event Hub.

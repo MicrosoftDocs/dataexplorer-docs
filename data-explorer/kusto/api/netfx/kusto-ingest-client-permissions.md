@@ -27,7 +27,7 @@ Ingestion permission mode is defined in [IKustoQueuedIngestClient](kusto-ingest-
 
 The diagram outlines the queued ingestion client interaction with Kusto.
 
-:::image type="content" source="../images/kusto-ingest-client-permissions/queued-ingest.png" alt-text="Queued ingestion":::
+:::image type="content" source="../images/kusto-ingest-client-permissions/queued-ingest.png" alt-text="Queued ingestion.":::
 
 ### Permissions on the Engine Service
 

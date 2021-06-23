@@ -54,7 +54,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
     The query returns the following results from the ingested sample data.
 
-    ![Query results](media/ingest-sample-data/query-results.png)
+    ![Query results.](media/ingest-sample-data/query-results.png)
 
 ## Next steps
 
