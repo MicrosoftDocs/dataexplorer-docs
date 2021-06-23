@@ -93,9 +93,9 @@ items:
       href: show-external-tables.md
     - name: .show external table schema
       href: show-external-table-schema.md
-    - name: Create and alter external tables in Azure Storage or Azure Data Lake
+    - name: Create and alter external tables based on Azure Storage or Azure Data Lake
       href: external-tables-azurestorage-azuredatalake.md
-    - name: Create and alter external SQL tables
+    - name: Create and alter external tables based on SQL tables
       href: external-sql-tables.md
   - name: Materialized views
     items:
