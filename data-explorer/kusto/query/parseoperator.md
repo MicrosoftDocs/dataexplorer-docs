@@ -81,7 +81,7 @@ provided to the operator.
 The `parse` operator provides a streamlined way to `extend` a table by using multiple `extract` applications on the same `string` expression. This result is useful, when the table has a `string` column that contains several values that you want to break into individual columns. For example, a column that was produced by a developer trace ("`printf`"/"`Console.WriteLine`") statement.
 
 In the example below, assume that the column `EventText` of table `Traces` contains
-strings of the form `Event: NotifySliceRelease (resourceName={0}, totalSlices= {1}, sliceNumber={2}, lockTime={3}, releaseTime={4}, previousLockTime={5})`.
+strings of the form `Event: NotifySliceRelease (resourceName={0}, totalSlices={1}, sliceNumber={2}, lockTime={3}, releaseTime={4}, previousLockTime={5})`.
 The operation will extend the table with six columns: `resourceName`, `totalSlices`, `sliceNumber`, `lockTime `, `releaseTime`, and `previousLockTime`. 
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
