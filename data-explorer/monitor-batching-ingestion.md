@@ -1,0 +1,268 @@
+---
+title: Monitor batching ingestion in Azure Data Explorer
+description: Learn how to use Azure Data Explorer (ADX) metrics to monitor batching ingestion to ADX in Azure Portal.
+author: orspod
+ms.author: orspodek
+ms.reviewer: gabil
+ms.service: data-explorer
+ms.topic: how-to
+ms.date: 05/28/2021
+ms.custom: contperf-fy21q1
+---
+
+# Monitoring batching ingestion
+
+In the *batching ingestion* process, Azure Data Explorer (ADX) optimizes [data ingestion](ingest-data-overview.md) for high throughput by batching the incoming data into small chunks based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md). The small batches of incoming data are then merged and optimized for fast query results. These optimizations make batching ingestion the most performant of the [methods for ingesting data](ingest-data-overview.md#batching-vs-streaming-ingestion) used by ADX.
+
+Batching ingestion occurs in stages, and each stage is governed by an ingestion *component*:
+
+1. Prior to ingestion, as the data is retrieved from Event Grid, Event Hub, or IoT Hub, the *Data Connection* component performs initial data rearrangement.
+2. The *Batching Manager* optimizes the ingestion throughput by batching the small ingress data chunks that it receives based on the ingestion batching policy.
+3. The *Ingestion Manager* starts the data ingestion by sending the ingestion command to the *ADX Storage Engine*.
+4. The *ADX Storage Engine* stores the ingested data, making it available for query.
+
+ADX provides a set of [ingestion metrics](using-metrics.md#ingestion-metrics) in the Azure Monitor metrics explorer in the Microsoft Azure portal so that you can monitor your data across all the stages and components of the batching ingestion process.
+
+The ADX ingestion metrics give you detailed information about:
+
+* The result of the batching ingestion.
+* The amount of ingested data and how it was batched.
+* The latency of the batching ingestion and where it occurs.
+* The batching process itself and how the data was batched.
+* The events sent from the data connection and received by ADX.
+
+In this article you'll learn how to use ingestion metrics to monitor batching ingestion to ADX in Azure portal.
+
+## Prerequisites
+
+* An Azure subscription. If you don't have one, you can create a [free Azure account](https://azure.microsoft.com/free/).
+* A [cluster and database](create-cluster-database-portal.md).
+
+## Create metric charts with Azure Monitor metrics explorer
+
+Use the following steps to create metric charts with the [Azure Monitor metrics explorer](/azure/azure-monitor/essentials/metrics-getting-started) in Azure portal:
+
+1. Sign in to the [Azure portal](https://portal.azure.com/) and navigate to the overview page for your ADX cluster.
+1. Select **Monitor** from the left-hand navigation bar and select **Metrics** to open the metrics pane.
+1. Select a **Scope** and a **Metric Namespace**.
+
+   For the examples in this article, use the following values:
+
+   * Set **Scope** to the name of your ADX cluster.
+   * Set **Metric Namespace** to *Kusto Cluster standard metrics*. This is the namespace that contains the ADX ingestion metrics.
+
+   :::image type="content" source="media/monitor-batching-ingestion/metrics-settings-selector.png" alt-text="Screenshot showing how to select settings for a metric in Azure portal.":::
+
+1. Select the **Metric** value and the relevant **Aggregation** value. For example, in this article we'll use the **Aggregation** values *sum* and *avg*.
+1. Open the **time picker** panel at the top right of the metrics pane and change the **Time range** to *Last 48 hours*. In this article we are analyzing data ingestion to ADX during the last 48 hours.
+
+For some examples in this article, we'll select **Add Filter** and **Apply Splitting** for metrics that have dimensions. We'll also use **Add metric** to plot additional metrics in the same chart and **+ New chart** to see multiple charts in one view.
+
+> [!NOTE]
+> To learn more about how to use metrics to monitor ADX in general and how to work with the metrics pane, see [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md).
+
+To begin analysis of a batching ingestion operation to your ADX cluster in the metrics pane of Azure portal, select specific metrics to track, choose how to aggregate your data, and create metric charts to view on your dashboard.
+
+## View the ingestion result
+
+The **Ingestion result** metric provides information about the total number of sources that were successfully ingested and those that failed to be ingested.
+
+In this example, we'll use this metric to view the result of our ingestion attempts and use the detailed status information to help troubleshoot any failed attempts.
+
+1. In the **Metrics** pane in Azure Monitor, select **Add Metric**.
+1. Select *Ingestion result* as the **Metric** value and *Sum* as the **Aggregation** value. This shows you the ingestion operations over time in one chart line.
+1. Select the **Apply splitting** button above the chart and choose *Status* to segment your chart by the status of the ingestion operations. After selecting the splitting values, click away from the split selector to close it.
+
+Now the metric information is split by status, and we can see information about the status of the ingestion operations split into three lines:
+
+1. Blue for successful ingestion operations.
+2. Orange for ingestion operations that failed due to *Entity not found*.
+3. Purple for ingestion operations that failed due to *Bad request*.
+
+:::image type="content" source="media/monitor-batching-ingestion/ingestion-result-by-status-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of ingestion results aggregated by sum and split by status.":::
+
+Consider the following when looking at the chart of ingestion results:
+
+* When using Event Hub ingestion, there is an event pre-aggregation in the *Data connection component*. During this stage of ingestion, events are treated as a single source to be ingested. Therefore, a few events appear as a single ingestion result after pre-aggregation.
+* Transient failures are retried internally in a limited number of attempts. Each transient failure is reported as a transient ingestion result. Therefore, a single ingestion may lead to more than one ingestion result.
+* Ingestion errors in the chart are listed by the category of the error code. To see the full list of ingestion error codes by categories and try to better understand the possible error reason, see [Ingestion error codes in Azure Data Explorer](error-codes.md).
+* To get more details on an ingestion error, you can set [failed ingestion diagnostic logs.](using-diagnostic-logs.md?tabs=ingestion#failed-ingestion-operation-log). However, it's important to consider that generating logs results in the creation of additional resources, and therefore costs money.
+
+## View the amount of ingested data
+
+The **Blobs Processed**, **Blobs Received** and **Blobs Dropped** metrics provide information about the number of blobs that are processed by the ingestion components during the stages of batching ingestion.
+
+In this example, we'll use these metrics to see how much data passed through the ingestion pipeline, how much data was received by the ingestion components, and how much data was dropped.
+
+### Blobs Processed
+
+1. In the **Metrics** pane in Azure Monitor, select **Add Metric**.
+1. Select *Blobs Processed* as the **Metric** value and *Sum* as the **Aggregation** value.
+1. Select the **Apply splitting** button and choose *Component Type* to segment the chart by the different ingestion components.
+1. To focus on a specific database in your cluster, select the **Add filter** button above the chart and then choose which database values to include when plotting the chart. In this example, we filter on the blobs sent to the *GitHub* database by selecting *Database* as the **Property**, *=* as the **Operator**, and *GitHub* in the **Values** drop-down. After selecting the filter values, click away from the filter selector to close it.
+
+Now the chart shows how many blobs sent to the *GitHub* database were processed at each of the ingestion components over time.
+
+:::image type="content" source="media/monitor-batching-ingestion/blobs-processed-by-component-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of blobs processed from the github database, aggregated by sum and split by component type.":::
+
+* Notice that on February 13 there is a decrease in the number of blobs that were ingested to the *GitHub* database over time. Also, notice that the number of blobs that were processed at each of the components is similar, meaning that approximately all data processed in the *Data Connection* component was also processed successfully by the *Batching Manager*, *Ingestion Manager*, and *ADX Storage Engine* components. Therefore, this data is ready for query.
+
+### Blobs Received
+
+To better understand the relation between the number of blobs that were received at each component and the number of blobs that were processed successfully at each component, we'll add a new chart:
+
+1. Select **+ New chart**.
+1. Leave the **Scope**, **Metric Namespace**, and **Aggregation** values the same, and select the *Blobs Received* metric.
+1. Select the **Apply splitting** button and choose *Component Type* to split the *Blobs Received* metric by component type.
+1. Select the **Add filter** button and set the same values as before to filter only the blobs sent to the *GitHub* database.
+
+:::image type="content" source="media/monitor-batching-ingestion/blobs-received-and-processed-by-component-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing charts of blobs processed and blobs received from the github database aggregated by sum and split by component type.":::
+
+* Comparing the charts, notice that the number of blobs received by each component closely matches the number of blobs that were processed by each component. This indicates that no blobs were dropped during ingestion.
+
+### Blobs Dropped
+
+To determine conclusively that no blobs were dropped during ingestion, you should analyze the **Blobs Dropped** metric. This metric shows how many blobs were dropped during ingestion and helps you detect whether there is a problem in processing at a specific ingestion component. For each dropped blob you will also get an **Ingestion Result** metric with more information about the reason for failure.
+
+## View the ingestion latency
+
+The metrics **Stage Latency** and **Discovery Latency** monitor latency in the ingestion process and tell you whether any long latency is occurring in ADX or before data arrives to ADX for ingestion.
+
+* **Stage Latency** indicates the time span from when a message is discovered by ADX until its content is received by an ingestion component for processing.
+* **Discovery Latency** is used for ingestion pipelines with data connections (such as Event Hub, IoT Hub, and Event Grid). This metric gives information about the time span from data enqueue until discovery by ADX data connections. This time span is upstream to ADX, so it is not included in the **Stage Latency** metric that only measures the latency in ADX.
+
+> [!NOTE]
+> According to the default [batching policy](kusto/management/batchingpolicy.md), the default batching time is 5 minutes. Therefore, the expected latency is at least 5 minutes when using the default batching policy.
+
+When you see a long latency until data is ready for query, analyzing **Stage Latency** and **Discovery Latency** can help you understand whether the long latency is due to long latency in ADX, or is upstream to ADX. You can also detect the specific component responsible for the long latency.
+
+### Stage Latency
+
+Let's first look at the stage latency of our batching ingestion:
+
+1. In the **Metrics** pane in Azure Monitor, select **Add Metric**.
+1. Select *Stage Latency* as the **Metric** value and *Avg* as the **Aggregation** value.
+1. Select the **Apply splitting** button and choose *Component Type* to segment the chart by the different ingestion components.
+1. Select the **Add filter** button, and filter on the blobs sent to the *GitHub* database. After selecting the filter values, click away from the filter selector to close it.
+
+Now the chart shows the latency of ingestion operations that are sent to GitHub database at each of the components through ingestion over time:
+
+:::image type="content" source="media/monitor-batching-ingestion/stage-latency-by-component-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of stage latency for ingestion from the github database aggregated by avg and split by component type.":::
+
+We can tell the following information from this chart:
+
+* The latency at the *Data Connection* component is approximately 0 seconds. This makes sense, because **Stage Latency** only measures latency from when a message is discovered by ADX.
+* The longest time in the ingestion process (approximately 5 minutes) passes from when the *Batching Manager* component received data to when the *Ingestion Manager* component received data. In this example, we use the default batching policy for the *GitHub* database. As noted, the latency time for the default batching policy is 5 minutes, so this indicates that nearly all the latency time for the batching ingestion was due to the default latency.
+* The storage engine latency in the chart represents the latency when data is received by the *ADX Storage Engine* component. You can see that the average total latency from the time of data discovery by ADX until its ready for query is 5.2 minutes.
+
+### Discovery Latency
+
+If you use ingestion with data connections, you may want to estimate the latency upstream to ADX over time as long latency may also occur before ADX gets the data for ingestion. For that purpose, you can use the **Discovery Latency** metric.
+
+1. Select **+ New chart**.
+1. Select *Discovery Latency* as the **Metric** value and *Avg* as the **Aggregation** value.
+1. Select the **Apply splitting** button and choose *Component Type* to segment the chart by the different ingestion components. After selecting the splitting values, click away from the split selector to close it.
+
+:::image type="content" source="media/monitor-batching-ingestion/discovery-latency-by-component-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of discovery latency for ingestion from the github database aggregated by avg and split by component type.":::
+
+* You can see that for most of the duration the discovery latency is close to 0 seconds, indicating that ADX got data immediately after data enqueue. The highest peak of around 300 milliseconds is around February 13 at 14:00 AM, indicating that at this time the ADX cluster got the data around 300 milliseconds after data enqueue.
+
+## Understand the batching process
+
+In the second stage of the batching ingestion flow, the *Batching Manager* component optimizes the ingestion throughput by batching the data it receives based on the ingestion batching policy.
+
+The following set of metrics helps you understand how your cluster is being batched during ingestion:
+
+* **Batches Processed**: The number of batches completed for ingestion.
+* **Batch Size**: The expected size of uncompressed data in a batch aggregated for ingestion.
+* **Batch Duration**: The duration of the batching phase in the ingestion flow.
+* **Batch Blob Count**: The number of blobs in a completed batch for ingestion.
+
+### Batches processed
+
+Let's start with an overall view of the batching process by looking at the **Batches processed** metric.
+
+1. In the **Metrics** pane in Azure Monitor, select **Add Metric**.
+1. Select *Batches Processed* as the **Metric** value and *Sum* as the **Aggregation** value.
+1. Select the **Apply splitting** button and choose *Batching Type* to segment the chart based on the reason the batch was sealed. Batches are sealed when the batch reaches the limits set in the batching policy for batching time, data size, or number of files.
+1. Select the **Add filter** button and filter on the blobs sent to the *GitHub* database. After selecting the filter values, click away from the filter selector to close it.
+
+The chart shows the number of sealed batches with data sent to the *GitHub* database over time, split by the *Batching Type*.
+
+:::image type="content" source="media/monitor-batching-ingestion/batches-processed-by-batching-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of batches processed for ingestion from the github database aggregated by sum and split by batching type.":::
+
+* Notice that there are 2-4 batches per time unit over time, and all batches are split by time as estimated in the [Stage Latency](#stage-latency) section where you can see that it takes around 5 minutes to batch data based on the default batching policy.
+
+### Batch duration, size, and blob count
+
+Now let's look in more detail at the speed, size, and efficiency of the how the batches are being processed.
+
+1. Select the **+ Add Chart** button to create additional charts for the **Metric** values *Batch Duration*, *Batch Size*, and *Batch Blob Count*.
+1. Use *Avg* as the **Aggregation** value for each and use the **Apply splitting** button to split each metric by *Batching Type*.
+1. As in the previous example, select the **Add filter** button, and filter on the blobs sent to the *GitHub* database.
+
+:::image type="content" source="media/monitor-batching-ingestion/batch-count-duration-size-charts.png" alt-text="Screenshot of the Metrics pane in Azure portal showing charts of Batch blob count, Batch duration and Batch size metrics, for ingestion from the github database aggregated by avg and split by batching type.":::
+
+From the *Batch Duration*, *Batch Size*, and *Batch Blob Count* charts we can conclude some insights: 
+
+* The average batch duration is 5 minutes. Since the default batching time defined in the batching policy is 5 minutes, it may significantly affect the ingestion latency. On the other hand, a batching time that is too short may cause ingestion commands to include a data size that is too small. This will reduce ingestion efficiency and require post-ingestion resources to optimize the small data shards produced by non-batched ingestion.
+
+* The average number of blobs in the batches is around 160 blobs over time, then it decreases to 60-120 blobs. As we saw in the [Blobs Processed chart](#view-the-amount-of-ingested-data), we have around 280 processed blobs over time for the February 14 time frame in the *Batching Manager* component, so this pattern makes sense. The graph also shows 3 processed batches over time. Based on the default batching policy, a batch can seal when the blob count is 1000 blobs. As we don’t arrive at this number, we don’t see batches sealed by count.
+
+* In the *Batch Size* chart, you can see that the average size of batches is around 200-500 MB over time. The optimal size of data to be ingested in bulk, as defined in the default batching policy, is 1 GB of uncompressed data. This size is also defined as a seal reason by the default batching policy. As there is no 1 GB of data to be batched over time, we don't see any batches sealed by size. When looking at the size, you should consider the same tradeoff between latency and efficiency as for the batch duration.
+
+## Compare events received to events sent for ingestion
+
+When applying Event Hub, IoT Hub, or Event Grid ingestion, it is important to compare the number of events received by ADX to the number of events sent from the eventing source to ADX. The metrics **Events Received**, **Events Processed** and **Events Dropped** allow you to make this comparison.
+
+### Events Received
+
+1. In the **Metrics** pane in Azure Monitor, select **Add Metric**.
+1. Select *Events Received* as the **Metric** value and *Sum* as the **Aggregation** value.
+1. Select the **Add filter** button above the chart and choose the **Property** value *Component Name* to filter the events received by a specific data connection defined on your cluster. In this example, we filter on the *GitHubStreamingEvents* data connection. After selecting the filter values, click away from the filter selector to close it.
+
+Now the chart shows the number of events received by the selected data connection over time:
+
+:::image type="content" source="media/monitor-batching-ingestion/events-received-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of the events received during ingestion from the github database aggregated over time.":::
+
+* In this chart, the *GitHubStreamingEvents* data connection receives around 200-500 events over time.
+
+### Events Processed and Events Dropped
+
+To see if any events were dropped by ADX, use the **Events Processed** and **Events Dropped** metrics.
+
+1. On the chart you have already created, select **Add metric**.
+1. Select *Events Processed* as the **Metric** value and *Sum* as the **Aggregation** value.
+1. Select **Add metric** again and select *Events Dropped* as the **Metric** value and *Sum* as the **Aggregation** value.
+
+The chart now shows the number of Events that were received, processed, and dropped by the *GitHubStreamingEvents* data connection over time.
+
+:::image type="content" source="media/monitor-batching-ingestion/events-received-processed-dropped-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart with graphs of the events received, processed, and dropped during ingestion from the github database aggregated over time.":::
+
+* Almost all the received events were processed successfully by the data connection. There is 1 dropped event, which is compatible with the failed ingestion result due to bad request that we saw when [viewing the ingestion result metric](#view-the-ingestion-result).
+
+### Compare Events Received and Outgoing Messages
+
+You may also want to compare the number of events received to the number of events that were sent from Event Hub to ADX, by comparing the **Events Received** and **Outgoing Messages** metrics.
+
+1. On the chart you have already created for **Events Received**, select **Add metric**.
+1. Select **Scope** and in the **Select a scope** dialog, browse for and select the namespace of the Event Hub that sends data to your data connection.
+
+:::image type="content" source="media/monitor-batching-ingestion/select-a-scope.png" alt-text="Screenshot of the Select a scope dialog in the Azure portal, showing a search for the github4demo in the list of Event Hubs Namespaces.":::
+
+1. Select **Apply**
+1. Select *Outgoing Messages* as the **Metric** value and *Sum* as the **Aggregation** value.
+
+Click away from the settings to get the full chart that compares the number of events processed by the ADX data connection to the number of events sent from the Event Hub.
+
+:::image type="content" source="media/monitor-batching-ingestion/all-event-metrics-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart with graphs for all of the events received, processed, dropped and during ingestion from the github database aggregated over time.":::
+
+* Notice that all the events that were sent from Event Hub were processed successfully by the ADX data connection.
+* If you have more than one Event Hub in the Event Hub namespace, you should filter the **Outgoing Messages** metric by the **Entity Name** dimension to get only data from the desired Event hub in your Event Hub namespace.
+* There is no option to monitor outgoing message per consumer group. The **Outgoing Messages** metric counts the total number of messages that where consumed by all consumer groups. Therefore, if you have a few consumer groups in your Event Hub, you may get a larger number of **Outgoing Messages** than **Events Received**.
+
+## Next Steps
+
+* [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md)
+* [Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md?tabs=ingestion)
+* [Use Azure Monitor Insights](/azure/azure-monitor/insights/data-explorer)
