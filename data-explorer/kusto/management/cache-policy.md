@@ -25,27 +25,23 @@ commands:
 ## Altering the cache policy
 
 ```kusto
-.alter <entity_type> <database_or_table_or_materialized-view_name> policy caching hot = <timespan>
+.alter <entity_type> <database_or_table_or_materialized-view_name> policy caching 
+      hot = <timespan> 
+      [, hot_window = datetime(*from*) .. datetime(*to*)] 
+      [, hot_window = datetime(*from*) .. datetime(*to*)] 
+      ...
 ```
 
 Altering cache policy for multiple tables (in the same database context):
 
 ```kusto
-.alter tables (table_name [, ...]) policy caching hot = <timespan>
+.alter tables (table_name [, ...]) policy caching 
+      hot = <timespan> 
+      [, hot_window = datetime(*from*) .. datetime(*to*)] 
+      [, hot_window = datetime(*from*) .. datetime(*to*)] 
 ```
 
-Cache policy:
-
-```kusto
-{
-  "DataHotSpan": {
-    "Value": "3.00:00:00"
-  },
-  "IndexHotSpan": {
-    "Value": "3.00:00:00"
-  }
-}
-```
+Arguments:
 
 * `entity_type` : table, materialized view, database, or cluster
 * `database_or_table_or_materialized-view`: if entity is table or database, its name should be specified in the command as follows - 
@@ -56,43 +52,87 @@ Cache policy:
 ## Deleting the cache policy
 
 ```kusto
-.delete <entity_type> <database_or_table_name> policy caching
+.delete <entity_type> <database_or_table_or_materialized-view_name> policy caching
 ```
 
-**Examples**
+## Examples
 
-Show cache policy for table `MyTable` in database `MyDatabase`:
+### Show cache policy for  table `MyTable` in database `MyDatabase`
 
 ```kusto
 .show table MyDatabase.MyTable policy caching 
 ```
 
-Setting cache policy of table `MyTable` (in database context) to 3 days:
+### Setting cache policy of a table
+
+Command sets caching policy to include last 30 days.
 
 ```kusto
-.alter table MyTable policy caching hot = 3d
-.alter materialized-view MyMaterializedView policy caching hot = 3d
+.alter table MyTable policy caching hot = 30d
 ```
 
-Setting policy for multiple tables (in database context), to 3 days:
+### Setting cache policy of table with additional hot-cache windows
+
+Command sets caching policy to include last 30 days and additional data from January and April 2021.
 
 ```kusto
-.alter tables (MyTable1, MyTable2, MyTable3) policy caching hot = 3d
+.alter table MyTable policy caching 
+        hot = 30d,
+        hot_window = datetime(2021-01-01) .. datetime(2021-02-01),
+        hot_window = datetime(2021-04-01) .. datetime(2021-05-01)
 ```
 
-Deleting a policy set on a table:
+### Setting cache policy of a materialized-view
+
+Command sets caching policy to include last 30 days.
+
+```kusto
+.alter materialized-view MyMaterializedView policy caching hot = 30d
+```
+
+### Setting cache policy of a materialized-view with additional hot-cache windows
+
+Command sets caching policy to include last 30 days and additional data from January and April 2021.
+
+```kusto
+.alter materialized-view MyMaterializedView policy caching 
+        hot = 30d,
+        hot_window = datetime(2021-01-01) .. datetime(2021-02-01),
+        hot_window = datetime(2021-04-01) .. datetime(2021-05-01)
+```
+
+### Setting policy for multiple tables 
+
+Command sets caching policy to include last 30 days and additional data from January and April 2021 for several tables in the database.
+
+```kusto
+.alter tables (MyTable1, MyTable2, MyTable3) policy caching 
+        hot = 30d,
+        hot_window = datetime(2021-01-01) .. datetime(2021-02-01),
+        hot_window = datetime(2021-04-01) .. datetime(2021-05-01)
+```
+
+### Setting policy for multiple tables with additional hot-cache windows
+
+Command sets caching policy to include last 30 days for several tables in the database.
+
+```kusto
+.alter tables (MyTable1, MyTable2, MyTable3) policy caching hot = 30d
+```
+
+### Deleting a policy set on a table
 
 ```kusto
 .delete table MyTable policy caching
 ```
 
-Deleting a policy set on a materialized view:
+### Deleting a policy set on a materialized view
 
 ```kusto
 .delete materialized-view MyMaterializedView policy caching
 ```
 
-Deleting a policy set on a database:
+### Deleting a policy set on a database
 
 ```kusto
 .delete database MyDatabase policy caching
