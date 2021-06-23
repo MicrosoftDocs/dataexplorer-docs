@@ -15,7 +15,7 @@ K2Bridge (Kibana-Kusto Bridge) lets you use Azure Data Explorer as a data source
 
 K2Bridge translates Kibana queries to Kusto Query Language (KQL) and sends the Azure Data Explorer results back to Kibana.
 
-   ![Kibana connection with Azure Data Explorer via K2Bridge](media/k2bridge/k2bridge-chart.png)
+   ![Kibana connection with Azure Data Explorer via K2Bridge.](media/k2bridge/k2bridge-chart.png)
 
 K2Bridge supports Kibana's **Discover** tab, where you can:
 
@@ -27,7 +27,7 @@ K2Bridge supports Kibana's **Discover** tab, where you can:
 
 The following image shows a Kibana instance bound to Azure Data Explorer by K2Bridge. The user experience in Kibana is unchanged.
 
-   [![Kibana page bound to Azure Data Explorer](media/k2bridge/k2bridge-kibana-page.png)](media/k2bridge/k2bridge-kibana-page.png#lightbox)
+   [![Kibana page bound to Azure Data Explorer.](media/k2bridge/k2bridge-kibana-page.png)](media/k2bridge/k2bridge-kibana-page.png#lightbox)
 
 ## Prerequisites
 
@@ -152,19 +152,19 @@ When Azure Data Explorer is configured as a data source for Kibana, you can use 
 
 1. From the leftmost drop-down list box, select an index pattern. The pattern defines the data source you want to explore. In this case, the index pattern is an Azure Data Explorer table.
 
-   ![Selecting an index pattern](media/k2bridge/k2bridge-select-an-index-pattern.png)
+   ![Selecting an index pattern.](media/k2bridge/k2bridge-select-an-index-pattern.png)
 
 1. If your data has a time-filter field, you can specify the time range. At the upper right of the **Discover** page, select a time filter. By default, the page shows data for the last 15 minutes.
 
-   ![Selecting a time filter](media/k2bridge/k2bridge-time-filter.png)
+   ![Selecting a time filter.](media/k2bridge/k2bridge-time-filter.png)
 
 1. The results table shows the first 500 records. You can expand a document to examine its field data in either JSON or table format.
 
-   ![An expanded record](media/k2bridge/k2bridge-expand-record.png)
+   ![An expanded record.](media/k2bridge/k2bridge-expand-record.png)
 
 1. By default, the results table includes the **_source** column. It also includes the **Time** column if the time field exists. You can add specific columns to the results table by selecting **add** next to the field name in the leftmost pane.
 
-   ![Specific columns with the add button highlighted](media/k2bridge/k2bridge-specific-columns.png)
+   ![Specific columns with the add button highlighted.](media/k2bridge/k2bridge-specific-columns.png)
 
 1. In the query bar, you can search the data by:
 
@@ -175,7 +175,7 @@ When Azure Data Explorer is configured as a data source for Kibana, you can use 
     * Using the logical operators **AND**, **OR**, and **NOT**.
     * Using the asterisk (\*) and question mark (?) wildcard characters. For example, the query "destination_city: L*" matches records where the destination-city value starts with "L" or "l". (K2Bridge isn't case-sensitive.)
 
-    ![Running a query](media/k2bridge/k2bridge-run-query.png)
+    ![Running a query.](media/k2bridge/k2bridge-run-query.png)
 
     > [!Tip]
     > In [Searching](https://github.com/microsoft/K2Bridge/blob/master/docs/searching.md), you can find more search rules and logic.
@@ -189,12 +189,12 @@ When Azure Data Explorer is configured as a data source for Kibana, you can use 
     >[!Tip]
     > Use the magnifying glass to find all records that have a specific value.
 
-    ![A field list with the magnifying glass highlighted](media/k2bridge/k2bridge-field-list.png)
+    ![A field list with the magnifying glass highlighted.](media/k2bridge/k2bridge-field-list.png)
 
     You can also use the magnifying glass to filter results and see the results table-format view of each record in the results table.
 
-     ![A table list with the magnifying glass highlighted](media/k2bridge/k2bridge-table-list.png)
+     ![A table list with the magnifying glass highlighted.](media/k2bridge/k2bridge-table-list.png)
 
 1. Select either **Save** or **Share** for your search.
 
-     ![Highlighted buttons to save or share the search](media/k2bridge/k2bridge-save-search.png)
+     ![Highlighted buttons to save or share the search.](media/k2bridge/k2bridge-save-search.png)

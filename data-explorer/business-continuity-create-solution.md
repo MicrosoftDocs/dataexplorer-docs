@@ -28,7 +28,7 @@ Make sure that at least two of these clusters are created in [Azure paired regio
 
 The following image shows replicas, three clusters in three different regions. 
 
-:::image type="content" source="media/business-continuity-create-solution/independent-clusters.png" alt-text="Create independent clusters":::
+:::image type="content" source="media/business-continuity-create-solution/independent-clusters.png" alt-text="Create independent clusters.":::
 
 ### Replicate management activities
 
@@ -42,7 +42,7 @@ Replicate the management activities to have the same cluster configuration in ev
 
 1. Manage the [authentication and authorization](kusto/management/security-roles.md) on each replica.
 
-    :::image type="content" source="media/business-continuity-create-solution/regional-duplicate-management.png" alt-text="Duplicate management activities":::    
+    :::image type="content" source="media/business-continuity-create-solution/regional-duplicate-management.png" alt-text="Duplicate management activities.":::    
 
 ### Configure data ingestion
 
@@ -65,11 +65,11 @@ The following example uses ingestion via Event Hub. A [failover flow](/azure/eve
 > [!NOTE] 
 > Ingestion via Event Hub/IoT Hub/Storage is robust. If a cluster isn't available for a period of time, it will catch up at a later time and insert any pending messages or blobs. This process relies on [checkpointing](/azure/event-hubs/event-hubs-features#checkpointing).
 
-:::image type="content" source="media/business-continuity-create-solution/event-hub-management-scheme.png" alt-text="Ingest via Event Hub":::
+:::image type="content" source="media/business-continuity-create-solution/event-hub-management-scheme.png" alt-text="Ingest via Event Hub.":::
 
 As shown in the diagram below, your data sources produce events to the failover-configured Event Hub, and each Azure Data Explorer replica consumes the events. Data visualization components like Power BI, Grafana, or SDK powered WebApps can query one of the replicas.
 
-:::image type="content" source="media/business-continuity-create-solution/data-sources-visualization.png" alt-text="Data sources to data visualization":::
+:::image type="content" source="media/business-continuity-create-solution/data-sources-visualization.png" alt-text="Data sources to data visualization.":::
 
 ## Optimize costs
 
@@ -87,7 +87,7 @@ In an active-hot standby configuration, cost optimization has been implemented b
 
 In the image below, only one cluster is ingesting data from the Event Hub. The primary cluster in Region A performs [continuous data export](kusto/management/data-export/continuous-data-export.md) of all data to a storage account. The secondary replicas have access to the data using [external tables](kusto/query/schema-entities/externaltables.md).
 
-:::image type="content" source="media/business-continuity-create-solution/active-hot-standby-scheme.png" alt-text="architecture for an active/hot standby":::
+:::image type="content" source="media/business-continuity-create-solution/active-hot-standby-scheme.png" alt-text="architecture for an active/hot standby.":::
 
 ### Start and stop the replicas 
 
@@ -109,7 +109,7 @@ az kusto cluster stop --name=<clusterName> --resource-group=<rgName> --subscript
 
 This section shows you how to create an [Azure App Service](https://azure.microsoft.com/services/app-service/) that supports a connection to a single primary and multiple secondary Azure Data Explorer clusters. The following image illustrates the Azure App Service setup.
 
-:::image type="content" source="media/business-continuity-create-solution/app-service-setup.png" alt-text="Create an Azure App Service":::
+:::image type="content" source="media/business-continuity-create-solution/app-service-setup.png" alt-text="Create an Azure App Service.":::
 
 > [!TIP]
 > Having multiple connections between replicas in the same service gives you increased availability. This setup isn't only useful in instances of regional outages.  
@@ -122,11 +122,11 @@ This section shows you how to create an [Azure App Service](https://azure.micros
 
 We ran a test using multiple Azure Data Explorer replicas. After a simulated outage of primary and secondary clusters, you can see that the app service BCDR client is behaving as intended.
 
-:::image type="content" source="media/business-continuity-create-solution/simulation-verify-service.png" alt-text="Verify app service BCDR client":::
+:::image type="content" source="media/business-continuity-create-solution/simulation-verify-service.png" alt-text="Verify app service BCDR client.":::
 
 The Azure Data Explorer clusters are distributed across West Europe (2xD14v2 primary), South East Asia, and East US (2xD11v2). 
 
-:::image type="content" source="media/business-continuity-create-solution/performance-test-query-time.png" alt-text="Cross planet query response time":::
+:::image type="content" source="media/business-continuity-create-solution/performance-test-query-time.png" alt-text="Cross planet query response time.":::
 
 > [!NOTE]
 > Slower response times are due to different SKUs and cross planet queries.

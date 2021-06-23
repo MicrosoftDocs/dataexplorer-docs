@@ -66,7 +66,7 @@ StormEvents
 | limit 10
 ```
 
-:::image type="content" source="images/kusto-explorer-using/basic-query.png" alt-text="Kusto Explorer basic query":::
+:::image type="content" source="images/kusto-explorer-using/basic-query.png" alt-text="Kusto Explorer basic query.":::
 
 Learn more about [Kusto Query Language](../query/index.md).
 
@@ -89,24 +89,24 @@ If you use the same value in multiple queries or in multiple tabs, it's highly i
 
 The script editor highlights query parameters:
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-1.png" alt-text="Parametrized query 1":::
+:::image type="content" source="images/kusto-explorer-using/parametrized-query-1.png" alt-text="Parametrized query 1.":::
 
 You can easily define and edit existing query parameters:
 
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-2.png" alt-text="Edit parametrized query 2":::
+:::image type="content" source="images/kusto-explorer-using/parametrized-query-2.png" alt-text="Edit parametrized query 2.":::
 
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-3.png" alt-text="Edit parametrized query 3":::
+:::image type="content" source="images/kusto-explorer-using/parametrized-query-3.png" alt-text="Edit parametrized query 3.":::
 
 The script editor also has IntelliSense for query parameters that are already defined:
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-4.png" alt-text="Paramaterized query IntelliSense":::
+:::image type="content" source="images/kusto-explorer-using/parametrized-query-4.png" alt-text="Paramaterized query IntelliSense.":::
 
 You can have multiple sets of parameters (listed in the **Parameters Set** combo box).
 Select **Add new** or **Delete current** to manipulate the list of parameter sets.
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-5.png" alt-text="List of parameter sets":::
+:::image type="content" source="images/kusto-explorer-using/parametrized-query-5.png" alt-text="List of parameter sets.":::
 
 ## Share queries and results
 
@@ -119,7 +119,7 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 1. [Run your query](#basic-queries) in Kusto.Explorer.
 1. In the Home tab, in the Share section, select **Export to Clipboard** (or press Ctrl+Shift+C).
 
-    :::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard":::
+    :::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard.":::
 
     Kusto.Explorer pastes the following to the clipboard:
      * Your query
@@ -129,7 +129,7 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 
 1. Paste the contents of the clipboard into a new email message.
 
-    :::image type="content" source="images/kusto-explorer-using/share-results-2.png" alt-text="Share results in email":::
+    :::image type="content" source="images/kusto-explorer-using/share-results-2.png" alt-text="Share results in email.":::
 
 ### Deep-linking queries
 
@@ -236,19 +236,19 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 
 Right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Cluster Authorized Principals**. (You can also select this option from the Management Menu.)
 
-:::image type="content" source="images/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Manage authorized principals":::
+:::image type="content" source="images/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Manage authorized principals.":::
 
-:::image type="content" source="images/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="Manage authorized principals window":::
+:::image type="content" source="images/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="Manage authorized principals window.":::
 
 * To add a new authorized principal, select **Add principal**, provide the principal details, and confirm the action.
     
-    :::image type="content" source="images/kusto-explorer-using/add-authorized-principals-window.png" alt-text="Add authorized principal":::
+    :::image type="content" source="images/kusto-explorer-using/add-authorized-principals-window.png" alt-text="Add authorized principal.":::
 
-    :::image type="content" source="images/kusto-explorer-using/confirm-add-authorized-principals.png" alt-text="Confirm add authorized principal":::
+    :::image type="content" source="images/kusto-explorer-using/confirm-add-authorized-principals.png" alt-text="Confirm add authorized principal.":::
 
 * To drop an existing authorized principal, select **Drop principal** and confirm the action.
 
-    :::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Confirm drop authorized principal":::
+    :::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Confirm drop authorized principal.":::
 
 
 ## Next steps

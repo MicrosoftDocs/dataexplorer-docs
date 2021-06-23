@@ -26,7 +26,7 @@ For more information about Azure Metrics Explorer, see [Metrics Explorer](/azure
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 1. In the left-hand pane of your Azure Data Explorer cluster, search for *metrics*.
 1. Select **Metrics** to open the metrics pane and begin analysis on your cluster.
-    :::image type="content" source="media/using-metrics/select-metrics.gif" alt-text="Search and select metrics in the Azure portal":::
+    :::image type="content" source="media/using-metrics/select-metrics.gif" alt-text="Search and select metrics in the Azure portal.":::
 
 ## Work in the metrics pane
 
@@ -34,7 +34,7 @@ In the metrics pane, select specific metrics to track, choose how to aggregate y
 
 The **Resource** and **Metric Namespace** pickers are pre-selected for your Azure Data Explorer cluster. The numbers in the following image correspond to the numbered list below. They guide you through different options in setting up and viewing your metrics.
 
-![Metrics pane](media/using-metrics/metrics-pane.png)
+![Metrics pane.](media/using-metrics/metrics-pane.png)
 
 1. To create a metric chart, select **Metric** name and relevant **Aggregation** per metric. For more information about different metrics, see [supported Azure Data Explorer metrics](#supported-azure-data-explorer-metrics).
 1. Select **Add metric** to see multiple metrics plotted in the same chart.
@@ -107,7 +107,7 @@ Ingestion metrics track the general health and performance of ingestion operatio
 | Events dropped    | Count | Sum, Max, Min | Number of events permanently dropped by data connections. | Component Type, Component Name | 
 | Events processed (for Event/IoT Hubs) | Count | Max, Min, Sum | Total number of events read from Event Hubs and processed by the cluster. These events are split into two groups: events rejected, and events accepted by the cluster engine. | Status |
 | Ingestion latency | Seconds | Avg, Max, Min | Latency of data ingested, from the time the data was received in the cluster until it's ready for query. The ingestion latency period depends on the ingestion scenario. | None |
-| Ingestion result  | Count | Sum | Total number of ingest operations that either failed or succeeded. <br> <br> Use **apply splitting** to create buckets of success and failure results and analyze the dimensions (**Value** > **Status**). <br>For more information about possible fail results, see [Ingestion error codes in Azure Data Explorer](error-codes.md)| Status |
+| Ingestion result  | Count | Sum | Total number of sources that either failed or succeeded ingestion.<br> <br> Use **apply splitting** to create buckets of success and failure results and analyze the failures categories (**Value** > **Status**). <br>For more information about possible fail categories, see [Ingestion error codes in Azure Data Explorer](error-codes.md). <br><br>**Note:**<br><ul><li> Event Hub or IoT Hub ingestion events are pre-aggregated into one blob, and then treated as a single source to be ingested. Therefore, pre-aggregated events appear as a single ingestion result after pre-aggregation. </li><br><li>Transient failures are retried internally to a limited number of attempts. Each transient failure is reported as a transient ingestion result. Therefore, a single ingestion may result with more than one ingestion result. </li></ul> | Status |
 | Ingestion volume (in MB) | Count | Max, Sum | The total size of data ingested to the cluster (in MB) before compression. | Database |
 | Queue length | Count | Avg | Number of pending messages in a component's input queue. | Component Type |
 | Queue oldest message | Seconds | Avg | Time in seconds from when the oldest message in a component's input queue has been inserted. | Component Type | 

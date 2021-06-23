@@ -150,7 +150,7 @@ demo_make_series1
 
 ---
 
-:::image type="content" source="images/series-rolling-fl/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements" border="false":::
+:::image type="content" source="images/series-rolling-fl/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements." border="false":::
 
 ## Additional examples
 
@@ -189,5 +189,5 @@ The following examples assume the function is already installed:
     | render linechart
     ```
     
-    :::image type="content" source="images/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean" border="false":::
+    :::image type="content" source="images/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean." border="false":::
     

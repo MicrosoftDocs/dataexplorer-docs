@@ -68,3 +68,7 @@ The core functionalities of these methods are:
 |[geo_point_to_h3cell()](geo-point-to-h3cell-function.md)|
 |[geo_h3cell_to_central_point()](geo-h3cell-to-central-point-function.md)|
 |[geo_h3cell_to_polygon()](geo-h3cell-to-polygon-function.md)|
+
+## Next steps
+
+* [Geospatial data processing and analytics](/azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure)

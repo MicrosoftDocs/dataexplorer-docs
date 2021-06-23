@@ -98,7 +98,7 @@ You can use any of the following options in your M query:
 
 Kusto queries return, by default, up to 500,000 rows or 64 MB, as described in [query limits](kusto/concepts/querylimits.md). You can override these defaults by using **Advanced options** in the  **Azure Data Explorer (Kusto)** connection window:
 
-![advanced options](media/power-bi-best-practices/advanced-options.png)
+![advanced options.](media/power-bi-best-practices/advanced-options.png)
 
 These options issue [set statements](kusto/query/setstatement.md) with your query to change the default query limits:
 
@@ -170,7 +170,7 @@ In **Edit Queries** window, **Home** > **Advanced Editor**
 
 You can use a query parameter in any query step that supports it. For example, filter the results based on the value of a parameter.
 
-![filter results using a parameter](media/power-bi-best-practices/filter-using-parameter.png)
+![filter results using a parameter.](media/power-bi-best-practices/filter-using-parameter.png)
 
 ### Use Value.NativeQuery for Azure Data Explorer features
 

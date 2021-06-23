@@ -31,7 +31,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 Azure Data Explorer integrates with other major services to provide an end-to-end solution that includes data collection, ingestion, storage, indexing, querying, and visualization. It has a pivotal role in the data warehousing flow by executing the **EXPLORE** step of the flow on terabytes of diverse raw data.
 
-![Data warehouse diagram](media/data-explorer-overview/data-warehouse.png)
+![Data warehouse diagram.](media/data-explorer-overview/data-warehouse.png)
 
 Azure Data Explorer supports several ingestion methods, including connectors to common services like Event Hub, programmatic ingestion using SDKs, such as .NET and Python, and direct access to the engine for exploration purposes. Azure Data Explorer integrates with analytics and modeling services for additional analysis and visualization of data.
 
@@ -39,7 +39,7 @@ Azure Data Explorer supports several ingestion methods, including connectors to 
 
 The following diagram shows the different aspects of working with Azure Data Explorer.
 
-![Azure Data Explorer flow](media/data-explorer-overview/workflow.png)
+![Azure Data Explorer flow.](media/data-explorer-overview/workflow.png)
 
 Work in Azure Data Explorer generally follows this pattern:
 

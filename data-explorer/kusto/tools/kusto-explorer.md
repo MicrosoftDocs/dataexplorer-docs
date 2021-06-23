@@ -45,7 +45,7 @@ The Kusto.Explorer user interface is designed with a layout based on tabs and pa
 3. Create scripts to run in the script panel
 4. View the results of the scripts in the results panel
 
-:::image type="content" source="images/kusto-explorer/ke-start.png" alt-text="Kusto Explorer start":::
+:::image type="content" source="images/kusto-explorer/ke-start.png" alt-text="Kusto Explorer start.":::
 
 ## Menu panel
 
@@ -62,7 +62,7 @@ Kusto.Explorer Menu panel includes the following tabs:
 
 ### Home tab
 
-:::image type="content" source="images/kusto-explorer/home-tab.png" alt-text="Kusto Explorer home tab":::
+:::image type="content" source="images/kusto-explorer/home-tab.png" alt-text="Kusto Explorer home tab.":::
 
 The Home tab shows the most recently used functions, divided into sections:
 
@@ -74,7 +74,7 @@ The Home tab shows the most recently used functions, divided into sections:
 
 ### Query section
 
-:::image type="content" source="images/kusto-explorer/home-query-menu.png" alt-text="Query menu Kusto Explorer":::
+:::image type="content" source="images/kusto-explorer/home-query-menu.png" alt-text="Query menu Kusto Explorer.":::
 
 |Menu|    Behavior|
 |----|----------|
@@ -83,7 +83,7 @@ The Home tab shows the most recently used functions, divided into sections:
 
 ### Share section
 
-:::image type="content" source="images/kusto-explorer/home-share-menu.png" alt-text="Kusto Explorer share menu":::
+:::image type="content" source="images/kusto-explorer/home-share-menu.png" alt-text="Kusto Explorer share menu.":::
 
 |Menu|    Behavior|
 |----|----------|
@@ -93,7 +93,7 @@ The Home tab shows the most recently used functions, divided into sections:
 
 ### Visualizations section
 
-:::image type="content" source="images/kusto-explorer/home-visualizations-menu.png" alt-text="Kusto Explorer menu visualizations":::
+:::image type="content" source="images/kusto-explorer/home-visualizations-menu.png" alt-text="Kusto Explorer menu visualizations.":::
 
 |Menu         | Behavior|
 |-------------|---------|
@@ -119,7 +119,7 @@ The Home tab shows the most recently used functions, divided into sections:
 
 ### View section
 
-:::image type="content" source="images/kusto-explorer/home-view-menu.png" alt-text="Kusto Explorer view menu":::
+:::image type="content" source="images/kusto-explorer/home-view-menu.png" alt-text="Kusto Explorer view menu.":::
 
 |Menu           | Behavior|
 |---------------|---------|
@@ -137,7 +137,7 @@ The Home tab shows the most recently used functions, divided into sections:
 
 ## File tab
 
-:::image type="content" source="images/kusto-explorer/file-tab.png" alt-text="Kusto Explorer file tab":::
+:::image type="content" source="images/kusto-explorer/file-tab.png" alt-text="Kusto Explorer file tab.":::
 
 |Menu| Behavior|
 |---------------|---------|
@@ -165,7 +165,7 @@ The Home tab shows the most recently used functions, divided into sections:
 
 ## Connections tab
 
-:::image type="content" source="images/kusto-explorer/connections-tab.png" alt-text="Kusto Explorer connections tab":::
+:::image type="content" source="images/kusto-explorer/connections-tab.png" alt-text="Kusto Explorer connections tab.":::
 
 |Menu|Behavior|
 |----|----------|
@@ -190,7 +190,7 @@ The Home tab shows the most recently used functions, divided into sections:
 
 ## View tab
 
-:::image type="content" source="images/kusto-explorer/view-tab.png" alt-text="Kusto Explorer view tab":::
+:::image type="content" source="images/kusto-explorer/view-tab.png" alt-text="Kusto Explorer view tab.":::
 
 |Menu|Behavior|
 |----|----------|
@@ -219,7 +219,7 @@ The Home tab shows the most recently used functions, divided into sections:
 
 ## Tools tab
 
-:::image type="content" source="images/kusto-explorer/tools-tab.png" alt-text="Kusto Explorer tools tab":::
+:::image type="content" source="images/kusto-explorer/tools-tab.png" alt-text="Kusto Explorer tools tab.":::
 
 |Menu|Behavior|
 |----|----------|
@@ -239,7 +239,7 @@ The Home tab shows the most recently used functions, divided into sections:
 
 ## Monitoring tab
 
-:::image type="content" source="images/kusto-explorer/monitoring-tab.png" alt-text="Kusto Explorer monitoring tab":::
+:::image type="content" source="images/kusto-explorer/monitoring-tab.png" alt-text="Kusto Explorer monitoring tab.":::
 
 |Menu             | Behavior|
 |-----------------|---------| 
@@ -250,7 +250,7 @@ The Home tab shows the most recently used functions, divided into sections:
 
 ## Management tab
 
-:::image type="content" source="images/kusto-explorer/management-tab.png" alt-text="Kusto Explorer management tab":::
+:::image type="content" source="images/kusto-explorer/management-tab.png" alt-text="Kusto Explorer management tab.":::
 
 |Menu             | Behavior|
 |-----------------|---------|
@@ -262,7 +262,7 @@ The Home tab shows the most recently used functions, divided into sections:
 
 ## Help tab
 
-:::image type="content" source="images/kusto-explorer/help-tab.png" alt-text="Kusto Explorer help tab":::
+:::image type="content" source="images/kusto-explorer/help-tab.png" alt-text="Kusto Explorer help tab.":::
 
 |Menu             | Behavior|
 |-----------------|---------|
@@ -275,7 +275,7 @@ The Home tab shows the most recently used functions, divided into sections:
 
 ## Connections panel
 
-:::image type="content" source="images/kusto-explorer/connections-panel.png" alt-text="Kusto Explorer connections panel":::
+:::image type="content" source="images/kusto-explorer/connections-panel.png" alt-text="Kusto Explorer connections panel.":::
 
 The Connections pane shows all the configured cluster connections. For each cluster the databases, tables, and attributes (columns) 
 that they store are shown. Select items (which sets an implicit context
@@ -320,7 +320,7 @@ Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME
 >[!NOTE]
 > The domain name of the user is not necessarily the same as that of the tenant hosting the cluster.
 
-:::image type="content" source="images/kusto-explorer/advanced-connection-string.png" alt-text="Kusto Explorer advanced connection string":::
+:::image type="content" source="images/kusto-explorer/advanced-connection-string.png" alt-text="Kusto Explorer advanced connection string.":::
 
 ## Keyboard shortcuts
 
@@ -332,12 +332,12 @@ Kusto.Explorer tries to interpret the severity or verbosity level of each row in
 
 To modify the output color scheme, or turn this behavior off, from the **Tools** menu, select **Options** > **Results Viewer** > **Verbosity color scheme**.
 
-:::image type="content" source="images/kusto-explorer/ke-color-scheme.png" alt-text="Kusto Explorer color scheme modification":::
+:::image type="content" source="images/kusto-explorer/ke-color-scheme.png" alt-text="Kusto Explorer color scheme modification.":::
 
 
 **Excel** color scheme legend| **Vivid** color scheme legend
 |---|---
-| :::image type="content" source="images/kusto-explorer/excel-color-scheme.png" alt-text="Screen shot of the Excel color scheme legend in Kusto Explorer" border="false"::: |:::image type="content" source="images/kusto-explorer/vivid-color-scheme.png" alt-text="Screen shot vivid color scheme legend in Kusto Explorer" border="false":::
+| :::image type="content" source="images/kusto-explorer/excel-color-scheme.png" alt-text="Screen shot of the Excel color scheme legend in Kusto Explorer." border="false"::: |:::image type="content" source="images/kusto-explorer/vivid-color-scheme.png" alt-text="Screen shot vivid color scheme legend in Kusto Explorer." border="false":::
 
 ## Next steps
 
