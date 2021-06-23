@@ -83,20 +83,20 @@ For more information, see [connector usage](https://github.com/Azure/azure-kusto
 
 1. Configure the following Spark cluster settings, based on Azure Databricks cluster using Spark 2.4.4 and Scala 2.11 or Spark 3.0.1 and Scala 2.12:
 
-    ![Databricks cluster settings](media/spark-connector/databricks-cluster.png)
+    ![Databricks cluster settings.](media/spark-connector/databricks-cluster.png)
 
 1. Install the latest spark-kusto-connector library from Maven:
 
-    ![Import libraries](media/spark-connector/db-libraries-view.png)
-    ![Select Spark-Kusto-Connector](media/spark-connector/db-dependencies.png)
+    ![Import libraries.](media/spark-connector/db-libraries-view.png)
+    ![Select Spark-Kusto-Connector.](media/spark-connector/db-dependencies.png)
 
 1. Verify that all required libraries are installed:
 
-    ![Verify libraries installed](media/spark-connector/db-libraries-view.png)
+    ![Verify libraries installed.](media/spark-connector/db-libraries-view.png)
 
 1. For installation using a JAR file, verify that additional dependencies were installed:
 
-    ![Add dependencies](media/spark-connector/db-not-maven.png)
+    ![Add dependencies.](media/spark-connector/db-not-maven.png)
 
 ## Authentication
 

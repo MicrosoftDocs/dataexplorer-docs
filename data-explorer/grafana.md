@@ -39,17 +39,17 @@ With the service principal assigned to the *viewers* role, you now specify prope
 
 1. In Grafana, on the left menu, select the gear icon then **Data Sources**.
 
-    ![Data sources](media/grafana/data-sources.png)
+    ![Data sources.](media/grafana/data-sources.png)
 
 1. Select **Add data source**.
 
 1. On the **Data Sources / New** page, enter a name for the data source, then select the type **Azure Data Explorer Datasource**.
 
-    ![Connection name and type](media/grafana/connection-name-type.png)
+    ![Connection name and type.](media/grafana/connection-name-type.png)
 
 1. In **Settings** > **Connection details**, enter the name of your cluster in the form https://{ClusterName}.{Region}.kusto.windows.net. Enter the other values from the Azure portal or CLI. See the table below the following image for a mapping.
 
-    ![Connection properties](media/grafana/connection-properties.png)
+    ![Connection properties.](media/grafana/connection-properties.png)
 
     | Grafana UI | Azure portal | Azure CLI |
     | --- | --- | --- |
@@ -71,7 +71,7 @@ There are two features that can be used for query optimization:
 
 To perform the optimization, in **Data Sources** > **Settings** > **Query Optimizations**, make the needed changes.
 
-:::image type="content" source="media/grafana/query-optimization.PNG" alt-text="Query optimization pane":::
+:::image type="content" source="media/grafana/query-optimization.PNG" alt-text="Query optimization pane.":::
 
 #### Optimize dashboard query rendering performance using query results caching 
 
@@ -94,19 +94,19 @@ Now you've finished configuring Azure Data Explorer as a data source for Grafana
 
 1. In Grafana, on the left menu, select the plus icon then **Dashboard**.
 
-    ![Create dashboard](media/grafana/create-dashboard.png)
+    ![Create dashboard.](media/grafana/create-dashboard.png)
 
 1. Under the **Add** tab, select **Add new panel**.
 
-    ![Add graph](media/grafana/add-graph.png)
+    ![Add graph.](media/grafana/add-graph.png)
 
 1. On the graph panel, select **Panel Title** then **Edit**.
 
-    ![Edit panel](media/grafana/edit-panel.png)
+    ![Edit panel.](media/grafana/edit-panel.png)
 
 1. At the bottom of the panel, select **Data Source** then select the data source that you configured.
 
-    ![Select data source](media/grafana/select-data-source.png)
+    ![Select data source.](media/grafana/select-data-source.png)
 
 ### Query builder mode
 
@@ -115,7 +115,7 @@ The query editor has two modes. The query builder mode and raw mode. Use the que
 1. Below the data source, select **Database** and choose your database from the drop-down. 
 1. Select **From** and choose your table from the drop-down.
 
-    :::image type="content" source="media/grafana/query-builder-from-table.png" alt-text="Select table in query builder":::    
+    :::image type="content" source="media/grafana/query-builder-from-table.png" alt-text="Select table in query builder.":::    
 
 1. Once the table is defined, filter the data, select the values to present, and define the grouping of those values.
 
@@ -135,14 +135,14 @@ The query editor has two modes. The query builder mode and raw mode. Use the que
 
 1. To execute the query, select **Run query**.
 
-    :::image type="content" source="media/grafana/query-builder-all-values.png" alt-text="Query builder with all values complete":::
+    :::image type="content" source="media/grafana/query-builder-all-values.png" alt-text="Query builder with all values complete.":::
 
     > [!TIP]
     > While finalizing the settings in the query builder, a Kusto query language query is created. This query shows the logic you constructed with the graphical query editor. 
 
 1. Select **Edit KQL** to move to raw mode and edit your query using the flexibility and power of the Kusto query language.
 
-:::image type="content" source="media/grafana/query-builder-with-raw-query.png" alt-text="Query builder with raw query":::
+:::image type="content" source="media/grafana/query-builder-with-raw-query.png" alt-text="Query builder with raw query.":::
 
 ### Raw mode
 
@@ -155,44 +155,44 @@ Use raw mode to edit your query.
     | summarize event_count=count() by bin(StartTime, 1d)
     ```
 
-    ![Run query](media/grafana/run-query.png)
+    ![Run query.](media/grafana/run-query.png)
 
 1. The graph doesn't show any results because it's scoped by default to data from the last six hours. On the top menu, select **Last 6 hours**.
 
-    ![Last six hours](media/grafana/last-six-hours.png)
+    ![Last six hours.](media/grafana/last-six-hours.png)
 
 1. Specify a custom range that covers 2007, the year included in our StormEvents sample data set. Select **Apply**.
 
-    ![Custom date range](media/grafana/custom-date-range.png)
+    ![Custom date range.](media/grafana/custom-date-range.png)
 
     Now the graph shows the data from 2007, bucketed by day.
 
-    ![Finished graph](media/grafana/finished-graph.png)
+    ![Finished graph.](media/grafana/finished-graph.png)
 
-1. On the top menu, select the save icon: ![Save icon](media/grafana/save-icon.png).
+1. On the top menu, select the save icon: ![Save icon.](media/grafana/save-icon.png).
 
 > [!IMPORTANT]
 > To switch to the query builder mode, select **Switch to builder**. Grafana will convert the query to the available logic in the Query builder. The query builder logic is limited and therefore you may lose manual changes done to the query.
 
-:::image type="content" source="media/grafana/raw-mode.png" alt-text="Move to builder from raw mode":::
+:::image type="content" source="media/grafana/raw-mode.png" alt-text="Move to builder from raw mode.":::
 
 ## Create Alerts
 
 1. In Home Dashboard, select **Alerting** > **Notification channels** to create a new notification channel
 
-    ![create notification channel](media/grafana/create-notification-channel.png)
+    ![create notification channel.](media/grafana/create-notification-channel.png)
 
 1. Create a new **Notification channel**, then **Save**.
 
-    ![Create new notification channel](media/grafana/new-notification-channel-adx.png)
+    ![Create new notification channel.](media/grafana/new-notification-channel-adx.png)
 
 1. On the **Dashboard**, select **Edit** from the dropdown.
 
-    ![select edit in dashboard](media/grafana/edit-panel-4-alert.png)
+    ![select edit in dashboard.](media/grafana/edit-panel-4-alert.png)
 
 1. Select the alert bell icon to open the **Alert** pane. Select **Create Alert**. Complete the following properties in the **Alert** pane.
 
-    ![alert properties](media/grafana/alert-properties.png)
+    ![alert properties.](media/grafana/alert-properties.png)
 
 1. Select the **Save dashboard** icon to save your changes.
 

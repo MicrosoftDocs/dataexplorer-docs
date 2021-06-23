@@ -33,7 +33,7 @@ Do the following steps to enable language extensions on your cluster:
 1. In the **Configurations** pane, select **On** to enable a language extension.
 1. Select **Save**.
  
-    ![language extension on](media/language-extensions/configurations-enable-extension.png)
+    ![language extension on.](media/language-extensions/configurations-enable-extension.png)
 
 > [!NOTE]
 > Enabling the language extension process can take up to a few minutes. During that time, your cluster may be unavailable.
@@ -55,7 +55,7 @@ Do the following steps to disable language extensions on your cluster:
 1. In the **Configurations** pane, select **Off** to disable a language extension.
 1. Select **Save**.
 
-    ![Language extension off](media/language-extensions/configurations-disable-extension.png)
+    ![Language extension off.](media/language-extensions/configurations-disable-extension.png)
 
 ## Limitations
 

@@ -22,7 +22,7 @@ This extension includes 3 basic tasks:
 * Azure Data Explorer Query - Run Queries against an Azure Data Explorer cluster and parse the results
 * Azure Data Explorer Query Server Gate - Agentless task to Gate releases depending on the query outcome
 
-    ![Task Types](media/devops/extension-task-types.png)
+    ![Task Types.](media/devops/extension-task-types.png)
 
 This document describes a simple example on the use of the **Azure Data Explorer - Pipeline Tools** task to deploy your schema changes to your database. For complete CI/CD pipelines, refer to [Azure DevOps documentation](/azure/devops/user-guide/what-is-azure-devops#vsts).
 
@@ -41,31 +41,31 @@ This document describes a simple example on the use of the **Azure Data Explorer
 * Extension Installation:
     * If you are the Azure DevOps instance owner, install the extension from the [Marketplace](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX).
 
-        ![Get extension in the Marketplace](media/devops/get-extension.png)
-        ![Install extension](media/devops/extension-install.png)
+        ![Get extension in the Marketplace.](media/devops/get-extension.png)
+        ![Install extension.](media/devops/extension-install.png)
     * If you are NOT the Azure DevOps instance owner, contact your [owner](/azure/devops/organizations/security/lookup-organization-owner-admin?view=azure-devops&tabs=preview-page#look-up-the-organization-owner&preserve-view=true) and ask them to install it.
 
 ## Prepare your content for release
 
 The are three ways to run admin commands against cluster in a task.
 
-![Command source control options](media/devops/source-control-options.png)
+![Command source control options.](media/devops/source-control-options.png)
 
 * Use a search pattern to get multiple command files from a local agent folder (Build sources or Release artifacts)
 
-    ![Local folder option](media/devops/local-folder-option.png)
+    ![Local folder option.](media/devops/local-folder-option.png)
 
 * Write commands inline
 
-    ![Inline command option](media/devops/inline-option.png)
+    ![Inline command option.](media/devops/inline-option.png)
 
 * Specify a file path to get command files directly from git source control (recommended)
 
-    ![Git files option](media/devops/git-option.png)
+    ![Git files option.](media/devops/git-option.png)
 
     Create the following sample folders (*Functions*, *Policies*, *Tables*) in your Git repository. Copy the files from [here](https://github.com/Azure/azure-kusto-docs-samples/tree/master/DevOps_release_pipeline) into the respective folders as seen below and commit the changes. The sample files are provided to execute the following workflow.
 
-    ![Create folders for repo](media/devops/create-folders.png)
+    ![Create folders for repo.](media/devops/create-folders.png)
 
     > [!TIP]
     > When creating your own workflow, we recommend making your code idempotent. For example, use [`.create-merge table`](kusto/management/create-merge-table-command.md) instead of [`.create table`](kusto/management/create-table-command.md), and use [`.create-or-alter`](kusto/management/create-alter-function.md) function instead of [`.create`](kusto/management/create-function.md) function.
@@ -76,37 +76,37 @@ The are three ways to run admin commands against cluster in a task.
 1. Sign in to your [Azure DevOps organization](https://dev.azure.com/).
 1. Select **Pipelines** > **Releases** from left-hand menu and select **New pipeline**.
 
-    ![New pipeline](media/devops/new-pipeline.png)
+    ![New pipeline.](media/devops/new-pipeline.png)
 
 1. The **New release pipeline** window opens. In the **Pipelines** tab, in the **Select a template** pane, select **Empty job**.
 
-    ![Select a template](media/devops/select-template.png)
+    ![Select a template.](media/devops/select-template.png)
 
 1. Select **Stage** button. In **Stage** pane, add the **Stage name**. Select **Save** to save your pipeline.
 
-    ![Name the stage](media/devops/stage-name.png)
+    ![Name the stage.](media/devops/stage-name.png)
 
 1. Select **Add an artifact** button. In the **Add an artifact** pane, select the repository where your code exists, fill out relevant information, and click **Add**. Select **Save** to save your pipeline.
 
-    ![Add an artifact](media/devops/add-artifact.png)
+    ![Add an artifact.](media/devops/add-artifact.png)
 
 1. In the **Variables** tab, select **+ Add** to create a variable for **Endpoint URL** that will be used in the task. Write the **Name** and the **Value** of the endpoint. Select **Save** to save your pipeline.
 
-    ![Create variable](media/devops/create-variable.png)
+    ![Create variable.](media/devops/create-variable.png)
 
     To find your Endpoint_URL, the overview page of your **Azure Data Explorer Cluster** in the Azure portal contains the Azure Data Explorer cluster URI. Construct the URI in the following format `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`.  For example, https:\//kustodocs.westus.kusto.windows.net?DatabaseName=SampleDB
 
-    ![Azure Data Explorer cluster URI](media/devops/adx-cluster-uri.png)
+    ![Azure Data Explorer cluster URI.](media/devops/adx-cluster-uri.png)
 
 ### Create tasks to deploy the folders
 
 1. In the **Pipeline** tab, click on **1 job, 0 task** to add tasks.
 
-    ![Add tasks](media/devops/add-task.png)
+    ![Add tasks.](media/devops/add-task.png)
 
 1. Repeat the following steps to create command tasks to deploy files from the **Tables**, **Functions**, and **Policies** folders:
 
-    ![Add admin commands](media/devops/add-admin-commands.png)
+    ![Add admin commands.](media/devops/add-admin-commands.png)
 
     1. In the **Tasks** tab, select **+** by **Agent job** and search for **Azure Data Explorer**.
     1. Under **Run Azure Data Explorer Command**, select **Add**.
@@ -127,11 +127,11 @@ The are three ways to run admin commands against cluster in a task.
 
         Select **Allow all pipelines to use this connection** checkbox and then select **OK**.
 
-        ![Add service connection](media/devops/add-service-endpoint.png)
+        ![Add service connection.](media/devops/add-service-endpoint.png)
 
 1. Select **Save** and then in the **Tasks** tab, verify that there are three tasks: **Deploy Tables**, **Deploy Functions**, and **Deploy Policies**.
 
-    ![Deploy all folders](media/devops/deploy-all-folders.png)
+    ![Deploy all folders.](media/devops/deploy-all-folders.png)
 
 ### Create a Query task
 
@@ -149,17 +149,17 @@ If required, create a task to run a query against the cluster. Running queries i
     * **Use Service Endpoint**: Select this option.
     * **Service Endpoint**: Select a service endpoint.
 
-    ![Query task](media/devops/query-task.png)
+    ![Query task.](media/devops/query-task.png)
 
 1. Under Task Results, select the task's success criteria based on the results of your query, as follows:
 
     * If your query returns rows, select **Row Count** and provide the criteria you require.
 
-        ![Query task row count](media/devops/row-count.png)
+        ![Query task row count.](media/devops/row-count.png)
 
     * If your query returns a value, select **Single Value** and provide the expected result.
 
-        ![Query task single value](media/devops/single-value.png)
+        ![Query task single value.](media/devops/single-value.png)
 
 ### Create a Query Server Gate task
 
@@ -170,7 +170,7 @@ If required, create a task to run a query against a cluster and gate the release
 1. Under **Run Azure Data Explorer Query Server Gate**, select **Add**.
 1. Select **Kusto Query Server Gate** and then select **Server Gate Test**.
 
-    ![Select Server Gate Task](media/devops/query-gate-add.png)
+    ![Select Server Gate Task.](media/devops/query-gate-add.png)
 
 1. Configure the task providing the following information:
 
@@ -181,22 +181,22 @@ If required, create a task to run a query against a cluster and gate the release
     * **Query**: Enter the query you want to run.
     * **Maximum threshold**: Specify the maximum row count for the query's success criteria.
 
-    ![Configure Server Gate Task](media/devops/query-gate.png)
+    ![Configure Server Gate Task.](media/devops/query-gate.png)
 
 > [!NOTE]
 > You should see results like the following When running the release.
 >
-> ![Query Gate Task](media/devops/query-gate-look.png)
+> ![Query Gate Task.](media/devops/query-gate-look.png)
 
 ### Run the release
 
 1. Select **+ Release** > **Create release** to create a release.
 
-    ![Create a release](media/devops/create-release.png)
+    ![Create a release.](media/devops/create-release.png)
 
 1. In the **Logs** tab, check the deployment status is successful.
 
-    ![Deployment is successful](media/devops/deployment-successful.png)
+    ![Deployment is successful.](media/devops/deployment-successful.png)
 
 You have now completed creation of a release pipeline for deployment to pre-production.
 

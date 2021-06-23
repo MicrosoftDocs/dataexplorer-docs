@@ -16,7 +16,7 @@ Data ingestion is the process used to load data records from one or more sources
 
 The diagram below shows the end-to-end flow for working in Azure Data Explorer and shows different ingestion methods.
 
-:::image type="content" source="media/data-ingestion-overview/data-management-and-ingestion-overview.png" alt-text="Overview scheme of data ingestion and management":::
+:::image type="content" source="media/data-ingestion-overview/data-management-and-ingestion-overview.png" alt-text="Overview scheme of data ingestion and management.":::
 
 The Azure Data Explorer data management service, which is responsible for data ingestion, implements the following process:
 

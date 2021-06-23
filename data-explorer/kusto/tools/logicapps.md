@@ -24,7 +24,7 @@ Logic App and :::no-loc text="Power Automate"::: are built on the same connector
 
 1. Select **+Add**.
 
-    ![Add logic app](./Images/logicapps/logicapp-add.png)
+    ![Add logic app.](./Images/logicapps/logicapp-add.png)
 
 1. Enter the required details of the form:
     * Subscription
@@ -35,19 +35,19 @@ Logic App and :::no-loc text="Power Automate"::: are built on the same connector
     * Log analysis on or off
 1. Select **Review + create**.
 
-    ![Create logic app](./Images/logicapps/logicapp-create-new.png)
+    ![Create logic app.](./Images/logicapps/logicapp-create-new.png)
 
 1. When the Logic App is created, select **Edit**.
 
-    ![Edit logic app designer](./Images/logicapps/logicapp-editdesigner.png "logicapp-editdesigner")
+    ![Edit logic app designer.](./Images/logicapps/logicapp-editdesigner.png "logicapp-editdesigner")
 
 1. Create a blank Logic App.
 
-    ![Logic app blank template](./Images/logicapps/logicapp-blanktemplate.png "logicapp-blanktemplate")
+    ![Logic app blank template.](./Images/logicapps/logicapp-blanktemplate.png "logicapp-blanktemplate")
 
 1. Add recurrence action and select **Azure Kusto**.
 
-    ![Logic app Kusto Flow connector](./Images/logicapps/logicapp-kustoconnector.png "logicapp-kustoconnector")
+    ![Logic app Kusto Flow connector.](./Images/logicapps/logicapp-kustoconnector.png "logicapp-kustoconnector")
 
 ## Next steps
 

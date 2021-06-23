@@ -53,7 +53,7 @@ Show Random Continent:
 Continents | summarize any(Continent)
 ```
 
-:::image type="content" source="images/aggfunction/any1.png" alt-text="Any 1":::
+:::image type="content" source="images/aggfunction/any1.png" alt-text="Any 1.":::
 
 Show all the details for a random record:
 
@@ -61,7 +61,7 @@ Show all the details for a random record:
 Continents | summarize any(*)
 ```
 
-:::image type="content" source="images/aggfunction/any2.png" alt-text="Any 2":::
+:::image type="content" source="images/aggfunction/any2.png" alt-text="Any 2.":::
 
 Show all the details for each random continent:
 
@@ -69,4 +69,4 @@ Show all the details for each random continent:
 Continents | summarize any(*) by Continent
 ```
 
-:::image type="content" source="images/aggfunction/any3.png" alt-text="Any 3":::
+:::image type="content" source="images/aggfunction/any3.png" alt-text="Any 3.":::

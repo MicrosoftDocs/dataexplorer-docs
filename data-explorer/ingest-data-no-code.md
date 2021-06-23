@@ -199,7 +199,7 @@ Setting up an Azure Data Explorer pipeline involves several steps, such as [tabl
 
 In your Azure Data Explorer *TestDatabase* database, select **Query** to open the Azure Data Explorer Web UI.
 
-![Query page](media/ingest-data-no-code/query-database.png)
+![Query page.](media/ingest-data-no-code/query-database.png)
 
 ### Create the target tables
 
@@ -218,7 +218,7 @@ Use the Azure Data Explorer Web UI to create the target tables in the Azure Data
 
 1. Select **Run** to create the table.
 
-    ![Run query](media/ingest-data-no-code/run-query.png)
+    ![Run query.](media/ingest-data-no-code/run-query.png)
 
 1. Create the intermediate data table named *DiagnosticRawRecords* in the *TestDatabase* database for data manipulation using the following query. Select **Run** to create the table.
 
@@ -400,11 +400,11 @@ Azure diagnostic settings enable exporting metrics and logs to a storage account
 
 1. Create an event hub by using an Azure Resource Manager template in the Azure portal. To follow the rest of the steps in this article, right-click the **Deploy to Azure** button, and then select **Open in new window**. The **Deploy to Azure** button takes you to the Azure portal.
 
-    [![Deploy to Azure button](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Deploy to Azure button.](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
 1. Create an Event Hubs namespace and an event hub for the diagnostic logs.
 
-    ![Event hub creation](media/ingest-data-no-code/event-hub.png)
+    ![Event hub creation.](media/ingest-data-no-code/event-hub.png)
 
 1. Fill out the form with the following information. For any settings not listed in the following table, use the default values.
 
@@ -430,7 +430,7 @@ Select a resource from which to export metrics. Several resource types support e
 1. Select your Kusto cluster in the Azure portal.
 1. Select **Diagnostic settings**, and then select the **Turn on diagnostics** link. 
 
-    ![Diagnostic settings](media/ingest-data-no-code/diagnostic-settings.png)
+    ![Diagnostic settings.](media/ingest-data-no-code/diagnostic-settings.png)
 
 1. The **Diagnostics settings** pane opens. Take the following steps:
    1. Give your diagnostics log data the name *ADXExportedData*.
@@ -439,7 +439,7 @@ Select a resource from which to export metrics. Several resource types support e
    1. Select the **Stream to an event hub** check box.
    1. Select **Configure**.
 
-      ![Diagnostics settings pane](media/ingest-data-no-code/diagnostic-settings-window.png)
+      ![Diagnostics settings pane.](media/ingest-data-no-code/diagnostic-settings-window.png)
 
 1. In the **Select event hub** pane, configure how to export data from diagnostic logs to the event hub you created:
     1. In the **Select event hub namespace** list, select *AzureMonitoringData*.
@@ -455,7 +455,7 @@ Select a resource from which to export metrics. Several resource types support e
 1. In the left menu of the Azure portal, select **Activity log**.
 1. The **Activity log** window opens. Select **Diagnostics settings**.
 
-    ![Activity log window](media/ingest-data-no-code/activity-log.png)
+    ![Activity log window.](media/ingest-data-no-code/activity-log.png)
 
 1. The **Diagnostics settings** window opens. Select **+ Add diagnostic setting**.
 
@@ -463,7 +463,7 @@ Select a resource from which to export metrics. Several resource types support e
 
 1. A new **Diagnostic setting** window opens. 
 
-    :::image type="content" source="media/ingest-data-no-code/export-activity-log.PNG" alt-text="Diagnostic settings window with fields to fill out - Azure Data Explorer portal":::
+    :::image type="content" source="media/ingest-data-no-code/export-activity-log.PNG" alt-text="Diagnostic settings window with fields to fill out - Azure Data Explorer portal.":::
 
     Do the following steps:
     1. Enter a name in the **Diagnostic setting name** field.  
@@ -483,11 +483,11 @@ Select a resource from which to export metrics. Several resource types support e
 
 1. Wait a few minutes until the connection is defined, and the activity-log export to the event hub is finished. Go to your Event Hubs namespace to see the event hubs you created.
 
-    ![Event hubs created](media/ingest-data-no-code/event-hubs-created.png)
+    ![Event hubs created.](media/ingest-data-no-code/event-hubs-created.png)
 
 1. See data flowing to your event hub:
 
-    ![Event hub's data](media/ingest-data-no-code/event-hubs-data.png)
+    ![Event hub's data.](media/ingest-data-no-code/event-hubs-data.png)
 
 ## Connect an event hub to Azure Data Explorer
 
@@ -501,7 +501,7 @@ Now you need to create the data connections for your diagnostic metrics and logs
 1. In the **Data ingestion** window, click **+ Add Data Connection**.
 1. In the **Data connection** window, enter the following information:
 
-    ![Event hub data connection](media/ingest-data-no-code/event-hub-data-connection.png)
+    ![Event hub data connection.](media/ingest-data-no-code/event-hub-data-connection.png)
 
 # [Diagnostic metrics / Diagnostic logs](#tab/diagnostic-metrics+diagnostic-logs) 
 

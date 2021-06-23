@@ -42,7 +42,7 @@ Azure Data Explorer (Kusto) supports both individual record deletion and purging
 1. In the **Configurations** pane, select **On** to enable **Enable Purge**.
 1. Select **Save**.
  
-    ![Enable purge on](media/data-purge-portal/enable-purge-on.png)
+    ![Enable purge on.](media/data-purge-portal/enable-purge-on.png)
 
 ## Disable data purge on your cluster
 
@@ -51,7 +51,7 @@ Azure Data Explorer (Kusto) supports both individual record deletion and purging
 1. In the **Configurations** pane, select **Off** to disable **Enable purge**.
 1. Select **Save**.
 
-    ![Enable purge off](media/data-purge-portal/enable-purge-off.png)
+    ![Enable purge off.](media/data-purge-portal/enable-purge-off.png)
 
 ## Limitations
 

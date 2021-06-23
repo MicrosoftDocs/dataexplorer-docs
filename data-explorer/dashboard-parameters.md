@@ -25,19 +25,19 @@ Parameters are used as building blocks for dashboard filters in Azure Data Explo
 
 Select the **Parameters** button at the top of the dashboard to view the list of all dashboard parameters.
 
-:::image type="content" source="media/dashboard-parameters/dashboard-icons.png" alt-text="parameters button top of dashboard":::
+:::image type="content" source="media/dashboard-parameters/dashboard-icons.png" alt-text="parameters button top of dashboard.":::
 
 ## Create a parameter
 
 To create a parameter, select the **New parameter** button at the top of the right pane.
 
-:::image type="content" source="media/dashboard-parameters/new-parameter-button.png" alt-text="New parameters button":::
+:::image type="content" source="media/dashboard-parameters/new-parameter-button.png" alt-text="New parameters button.":::
 
 ### Properties
 
 1. In the **Add parameter** pane, configure the properties detailed below.
 
-:::image type="content" source="media/dashboard-parameters/properties.png" alt-text="add parameter properties":::
+:::image type="content" source="media/dashboard-parameters/properties.png" alt-text="add parameter properties.":::
 
 |Field  |Description |
 |---------|---------|
@@ -59,13 +59,13 @@ The following indicators can be viewed in the parameter card:
 * Number of queries in which the parameter was used
 * Pin/unpin state in the dashboard
 
-:::image type="content" source="media/dashboard-parameters/modify-parameter.png" alt-text="Modify parameters":::
+:::image type="content" source="media/dashboard-parameters/modify-parameter.png" alt-text="Modify parameters.":::
 
 ## Use parameters in your query
 
 A parameter must be used in the query to make the filter applicable for that query visual. Once defined, you can see the parameters in the **Query** page > filter top bar and in the query intellisense.
 
-:::image type="content" source="media/dashboard-parameters/query-intellisense.png" alt-text="See parameters in top bar and intellisense":::
+:::image type="content" source="media/dashboard-parameters/query-intellisense.png" alt-text="See parameters in top bar and intellisense.":::
 
 > [!NOTE]
 > If the parameter isn't used in the query, the filter remains disabled. Once the parameter is added to the query, the filter becomes active.
@@ -88,7 +88,7 @@ EventsAll
 
 Once saved, the time range filter shows up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard by selecting from the drop-down: **Time range** (last x minutes/hours/days) or a **Custom time range**.
 
-:::image type="content" source="media/dashboard-parameters/time-range.png" alt-text="filter using custom time range":::
+:::image type="content" source="media/dashboard-parameters/time-range.png" alt-text="filter using custom time range.":::
 
 ### Use the single selection fixed value parameter
 
@@ -124,7 +124,7 @@ Fixed value parameters are based on predefined values specified by the user. The
 
 The parameters can be seen in the **Parameters** side pane, but aren't currently being used in any visuals.
 
-:::image type="content" source="media/dashboard-parameters/start-end-side-pane.png" alt-text="start time end time parameters in side pane":::
+:::image type="content" source="media/dashboard-parameters/start-end-side-pane.png" alt-text="start time end time parameters in side pane.":::
 
 #### Use the parameter
 
@@ -143,7 +143,7 @@ The parameters can be seen in the **Parameters** side pane, but aren't currently
 
 1. Select different values to update the visuals.
 
-    :::image type="content" source="media/dashboard-parameters/top-five-repos.png" alt-text="top five repos result":::
+    :::image type="content" source="media/dashboard-parameters/top-five-repos.png" alt-text="top five repos result.":::
 
 ### Use the multiple-selection fixed-value parameters
 
@@ -163,7 +163,7 @@ Fixed value parameters are based on predefined values specified by the user. The
 
 The new parameters can be seen in the **Parameters** side pane, but aren't currently being used in any visuals.
 
-:::image type="content" source="media/dashboard-parameters/companies-side-pane.png" alt-text="companies side pane":::
+:::image type="content" source="media/dashboard-parameters/companies-side-pane.png" alt-text="companies side pane.":::
 
 #### Use the parameters 
 
@@ -183,7 +183,7 @@ The new parameters can be seen in the **Parameters** side pane, but aren't curre
 
 1. Select one or more different values to update the visuals.
 
-    :::image type="content" source="media/dashboard-parameters/select-companies.png" alt-text="select companies":::
+    :::image type="content" source="media/dashboard-parameters/select-companies.png" alt-text="select companies.":::
 
 ### Use the single selection query-based parameter
 

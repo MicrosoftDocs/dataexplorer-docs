@@ -35,15 +35,15 @@ You typically use the native query language with Azure Data Explorer, but it als
 
 1. In Power BI Desktop, on the **Home** tab, select **Get Data** then **More**.
 
-    ![Get data](media/power-bi-sql-query/get-data-more.png)
+    ![Get data.](media/power-bi-sql-query/get-data-more.png)
 
 1. Search for *Azure SQL Database*, select **Azure SQL Database** then **Connect**.
 
-    ![Search and get data](media/power-bi-sql-query/search-get-data.png)
+    ![Search and get data.](media/power-bi-sql-query/search-get-data.png)
 
 1. On the **SQL Server database** screen, fill out the form with the following information.
 
-    ![Database, table, query options](media/power-bi-sql-query/database-table-query.png)
+    ![Database, table, query options.](media/power-bi-sql-query/database-table-query.png)
 
     **Setting** | **Value** | **Field description**
     |---|---|---|
@@ -63,11 +63,11 @@ You typically use the native query language with Azure Data Explorer, but it als
 
 1. If you don't already have a connection to the help cluster, sign in. Sign in with a Microsoft account, then select **Connect**.
 
-    ![Sign in](media/power-bi-sql-query/sign-in.png)
+    ![Sign in.](media/power-bi-sql-query/sign-in.png)
 
 1. On the **help.kusto.windows.net: Samples** screen, select **Load**.
 
-    ![Load data](media/power-bi-sql-query/load-data.png)
+    ![Load data.](media/power-bi-sql-query/load-data.png)
 
     The table opens in the main Power BI window, in report view, where you can create reports based on the sample data.
 

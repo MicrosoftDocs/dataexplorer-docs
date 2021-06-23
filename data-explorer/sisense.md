@@ -46,23 +46,23 @@ You need the following to complete this article:
 1. Open **Sisense** app.
 1. Select **Data** tab and select **+ElastiCube** to create a new ElastiCube model.
 
-    ![Select ElastiCube](media/sisense/data-select-elasticube.png)
+    ![Select ElastiCube.](media/sisense/data-select-elasticube.png)
 
 1. In **Add new ElastiCube Model**, name the ElastiCube model and **Save**.
 
-    ![Add new ElastiCube model](media/sisense/add-new-elasticube-model.png)
+    ![Add new ElastiCube model.](media/sisense/add-new-elasticube-model.png)
 
 1. Select **+ Data**.
 
-    ![Select data button](media/sisense/select-data.png)
+    ![Select data button.](media/sisense/select-data.png)
 
 1. In **Select Connector** tab, select **Generic JDBC** connector.
 
-    ![Choose JDBC connector](media/sisense/select-connector.png)
+    ![Choose JDBC connector.](media/sisense/select-connector.png)
 
 1. In the **Connect** tab, complete the following fields for the **Generic JDBC** connector and select **Next**.
 
-    ![JDBC connector settings](media/sisense/jdbc-connector.png)
+    ![JDBC connector settings.](media/sisense/jdbc-connector.png)
 
     |Field |Description |
     |---------|---------|
@@ -74,46 +74,46 @@ You need the following to complete this article:
 
 1. In the **Select Data** tab, search **Select Database** to select the relevant database to which you have permissions. In this example, select *test1*.
 
-    ![select database](media/sisense/select-database.png)
+    ![select database.](media/sisense/select-database.png)
 
 1. In *test* (database name) pane:
     1. Select the table name to preview the table and see the table column names. You can remove unnecessary columns.
     1. Select the check box of the relevant table to select that table.
     1. Select **Done**.
 
-    ![select table](media/sisense/select-table-see-columns.png)
+    ![select table.](media/sisense/select-table-see-columns.png)
 
 1. Select **Build** to build your dataset.
 
     * In the **Build** window, select **Build**.
 
-      ![Build window](media/sisense/build-window.png)
+      ![Build window.](media/sisense/build-window.png)
 
     * Wait until build process is complete and then select **Build Succeeded**.
 
-      ![Build succeeded](media/sisense/build-succeeded.png)
+      ![Build succeeded.](media/sisense/build-succeeded.png)
 
 ## Create Sisense dashboards
 
 1. In **Analytics** tab, select **+** > **New Dashboard** to create dashboards on this dataset.
 
-    ![New dashboard](media/sisense/new-dashboard.png)
+    ![New dashboard.](media/sisense/new-dashboard.png)
 
 1. Pick a dashboard and select **Create**.
 
-    ![Create dashboard](media/sisense/create-dashboard.png)
+    ![Create dashboard.](media/sisense/create-dashboard.png)
 
 1. Under **New Widget**, select **+ Select Data** to create a new widget.
 
-    ![Add fields to StormEvents dashboard](media/sisense/storm-dashboard-add-field.png)
+    ![Add fields to StormEvents dashboard.](media/sisense/storm-dashboard-add-field.png)
 
 1. Select **+ Add More Data** to add additional columns to your graph.
 
-    ![Add more data to graph](media/sisense/add-more-data.png)
+    ![Add more data to graph.](media/sisense/add-more-data.png)
 
 1. Select **+ Widget** to create another widget. Drag and drop widgets to rearrange your dashboard.
 
-    ![Storm dashboard](media/sisense/final-dashboard.png)
+    ![Storm dashboard.](media/sisense/final-dashboard.png)
 
 You can now explore your data with visual analytics, build additional dashboards, and
 transform data into actionable insights to make an impact on your business.

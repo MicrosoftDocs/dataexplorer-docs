@@ -26,7 +26,7 @@ For more information about Azure Metrics Explorer, see [Metrics Explorer](/azure
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 1. In the left-hand pane of your Azure Data Explorer cluster, search for *metrics*.
 1. Select **Metrics** to open the metrics pane and begin analysis on your cluster.
-    :::image type="content" source="media/using-metrics/select-metrics.gif" alt-text="Search and select metrics in the Azure portal":::
+    :::image type="content" source="media/using-metrics/select-metrics.gif" alt-text="Search and select metrics in the Azure portal.":::
 
 ## Work in the metrics pane
 
@@ -34,7 +34,7 @@ In the metrics pane, select specific metrics to track, choose how to aggregate y
 
 The **Resource** and **Metric Namespace** pickers are pre-selected for your Azure Data Explorer cluster. The numbers in the following image correspond to the numbered list below. They guide you through different options in setting up and viewing your metrics.
 
-![Metrics pane](media/using-metrics/metrics-pane.png)
+![Metrics pane.](media/using-metrics/metrics-pane.png)
 
 1. To create a metric chart, select **Metric** name and relevant **Aggregation** per metric. For more information about different metrics, see [supported Azure Data Explorer metrics](#supported-azure-data-explorer-metrics).
 1. Select **Add metric** to see multiple metrics plotted in the same chart.

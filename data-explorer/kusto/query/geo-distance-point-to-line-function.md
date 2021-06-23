@@ -50,7 +50,7 @@ dynamic({"type": "MultiLineString","coordinates": [ [ line_1, line_2 ,..., line_
 
 The following example finds the shortest distance between North Las Vegas Airport and a nearby road.
 
-:::image type="content" source="images/geo-distance-point-to-line-function/distance-point-to-line.png" alt-text="Distance between North Las Vegas Airport and road":::
+:::image type="content" source="images/geo-distance-point-to-line-function/distance-point-to-line.png" alt-text="Distance between North Las Vegas Airport and road.":::
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -63,7 +63,7 @@ print distance_in_meters = geo_distance_point_to_line(-115.199625, 36.210419, dy
 
 Storm events in south coast US. The events are filtered by a maximum distance of 5 km from the defined shore line.
 
-:::image type="content" source="images/geo-distance-point-to-line-function/us-south-coast-storm-events.png" alt-text="Storm events in the US south coast":::
+:::image type="content" source="images/geo-distance-point-to-line-function/us-south-coast-storm-events.png" alt-text="Storm events in the US south coast.":::
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -76,7 +76,7 @@ StormEvents
 
 NY taxi pickups. Pickups are filtered by maximum distance of 0.1 meters from the defined multiline.
 
-:::image type="content" source="images/geo-distance-point-to-line-function/madison-ave-road.png" alt-text="NYC taxi pickups on Madison Ave":::
+:::image type="content" source="images/geo-distance-point-to-line-function/madison-ave-road.png" alt-text="NYC taxi pickups on Madison Ave.":::
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -90,7 +90,7 @@ nyc_taxi
 
 The following example folds many lines into one multiline and queries this multiline. The query finds all taxi pickups that happened 10km away from all roads in Manhattan.
 
-:::image type="content" source="images/geo-distance-point-to-line-function/lines-folding.png" alt-text="Lines folding":::
+:::image type="content" source="images/geo-distance-point-to-line-function/lines-folding.png" alt-text="Lines folding.":::
 
 ```kusto
 let ManhattanRoads =

@@ -45,7 +45,7 @@ In this article, you use the Data Factory Copy Data tool to load data from Amazo
 
 1. In the left pane, select **Create a resource** > **Analytics** > **Data Factory**.
 
-   ![Create a data factory in the Azure portal](media/data-factory-load-data/create-adf.png)
+   ![Create a data factory in the Azure portal.](media/data-factory-load-data/create-adf.png)
 
 1. In the **New data factory** pane, provide values for the fields in the following table:
 
@@ -65,7 +65,7 @@ In this article, you use the Data Factory Copy Data tool to load data from Amazo
    
    The **Data Factory** pane opens.
 
-   ![The Data Factory pane](media/data-factory-load-data/data-factory-home-page.png)
+   ![The Data Factory pane.](media/data-factory-load-data/data-factory-home-page.png)
 
 1. To open the application in a separate pane, select the **Author & Monitor** tile.
 
@@ -82,11 +82,11 @@ You can load your data in either of the following ways:
 
 1. In the **Let's get started** pane, open the Copy Data tool by selecting **Copy Data**.
 
-   ![The Copy Data tool button](media/data-factory-load-data/copy-data-tool-tile.png)
+   ![The Copy Data tool button.](media/data-factory-load-data/copy-data-tool-tile.png)
 
 1. In the **Properties** pane, in the **Task name** box, enter a name, and then select **Next**.
 
-    ![The Copy Data Properties pane](media/data-factory-load-data/copy-from-source.png)
+    ![The Copy Data Properties pane.](media/data-factory-load-data/copy-from-source.png)
 
 1. In the **Source data store** pane, select **Create new connection**.
 
@@ -94,11 +94,11 @@ You can load your data in either of the following ways:
 
 1. Select **Amazon S3**, and then select **Continue**.
 
-    ![The New Linked Service pane](media/data-factory-load-data/amazons3-select-new-linked-service.png)
+    ![The New Linked Service pane.](media/data-factory-load-data/amazons3-select-new-linked-service.png)
 
 1. In the **New Linked Service (Amazon S3)** pane, do the following:
 
-    ![Specify Amazon S3 linked service](media/data-factory-load-data/amazons3-new-linked-service-properties.png)
+    ![Specify Amazon S3 linked service.](media/data-factory-load-data/amazons3-new-linked-service-properties.png)
 
     a. In the **Name** box, enter the name of your new linked service.
 
@@ -119,7 +119,7 @@ You can load your data in either of the following ways:
 
 1. Select **Next**.
 
-   ![Source data store created connection](media/data-factory-load-data/source-data-store-created-connection.png)
+   ![Source data store created connection.](media/data-factory-load-data/source-data-store-created-connection.png)
 
 1. In the **Choose the input file or folder** pane, do the following steps:
 
@@ -129,7 +129,7 @@ You can load your data in either of the following ways:
 
     c. Select **Next**.
 
-    ![Choose input file or folder](media/data-factory-load-data/source-choose-input-file.png)
+    ![Choose input file or folder.](media/data-factory-load-data/source-choose-input-file.png)
 
 1. In the **File format settings** pane, select the relevant settings for your file. and then select **Next**.
 
@@ -148,15 +148,15 @@ To create the Azure Data Explorer linked service, do the following steps:
 
 1. To use an existing data store connection or specify a new data store, in the **Destination data store** pane, select **Create new connection**.
 
-    ![Destination data store pane](media/data-factory-load-data/destination-create-connection.png)
+    ![Destination data store pane.](media/data-factory-load-data/destination-create-connection.png)
 
 1. In the **New Linked Service** pane, select **Azure Data Explorer**, and then select **Continue**.
 
-    ![The New linked service pane](media/data-factory-load-data/adx-select-new-linked-service.png)
+    ![The New linked service pane.](media/data-factory-load-data/adx-select-new-linked-service.png)
 
 1. In the **New Linked Service (Azure Data Explorer)** pane, do the following steps:
 
-    ![The Azure Data Explorer New Linked Service pane](media/data-factory-load-data/adx-new-linked-service.png)
+    ![The Azure Data Explorer New Linked Service pane.](media/data-factory-load-data/adx-new-linked-service.png)
 
    a. In the **Name** box, enter a name for the Azure Data Explorer linked service.
 

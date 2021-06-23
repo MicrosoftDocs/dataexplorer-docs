@@ -95,7 +95,7 @@ demo_make_series1
 ---
 
 The time series downsampled by 4:
-:::image type="content" source="images/series-downsample-fl/downsampling-demo.png" alt-text="Graph showing downsampling of a time series" border="false":::
+:::image type="content" source="images/series-downsample-fl/downsampling-demo.png" alt-text="Graph showing downsampling of a time series." border="false":::
 
 For reference, here is the original time series (before downsampling):
 <!-- csl: https://help.kusto.windows.net/Samples -->
