@@ -219,7 +219,7 @@ Log JSON strings include elements listed in the following table:
 | Timestamp            | The time of the batching reporting |
 | Database             | Name of the database holding the target table |
 | Table                | Name of the target table into which the data is ingested |
-| BatchingType         | Type of batching. If the batch reached batching time, the value will be `Time`. For data size or number of files, the value will be `Size`. If the system had to flush the data, for example due to cluster scaling or internal reset of system components, the value will be `SystemFlush`. For a full list, see [Batching types](kusto/management/batchingpolicy.md#batching-types).|
+| BatchingType         | The trigger for sealing a batch. For a complete list of batching types, see [Batching types](kusto/management/batchingpolicy.md#batching-types). |
 | SourceCreationTime   | Minimal time (UTC) at which blobs in this batch were created |
 | BatchTimeSeconds     | Total batching time of this batch (seconds) |
 | BatchSizeBytes       | Total uncompressed size of data in this batch (bytes) |

@@ -36,7 +36,7 @@ so in queued ingestion Kusto will batch such small blobs together.
 
 Batches are sealed when the first condition is met:
 
-1. The total size of the batched data reaches the optimal size
+1. The total size of the batched data reaches the size set by the `IngestionBatching` policy.
 1. The maximum delay time is reached
 1. The number of blobs set by the `IngestionBatching` policy is reached
 
