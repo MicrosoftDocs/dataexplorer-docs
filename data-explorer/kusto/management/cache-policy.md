@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 06/23/2021
 ---
 # cache policy command
 
 This article describes commands used for creation and altering [cache policy](cachepolicy.md) 
 
-## Displaying the cache policy
+## Display the cache policy
 
 The policy can be set on a database, a table or a [materialized view](materialized-views/materialized-view-overview.md), and is displayed by using one of the following
 commands:
@@ -22,7 +22,7 @@ commands:
 * `.show` `table` *TableName* `policy` `caching`
 * `.show` `materialized-view` *MaterializedViewName* `policy` `caching`
 
-## Altering the cache policy
+## Alter the cache policy
 
 ```kusto
 .alter <entity_type> <database_or_table_or_materialized-view_name> policy caching 
@@ -45,11 +45,11 @@ Arguments:
 
 * `entity_type` : table, materialized view, database, or cluster
 * `database_or_table_or_materialized-view`: if entity is table or database, its name should be specified in the command as follows - 
-  - `database_name` or 
-  - `database_name.table_name` or 
-  - `table_name` (when running in the specific database's context)
+  * `database_name` or 
+  * `database_name.table_name` or 
+  * `table_name` (when running in the specific database's context)
 
-## Deleting the cache policy
+## Delete the cache policy
 
 ```kusto
 .delete <entity_type> <database_or_table_or_materialized-view_name> policy caching
@@ -63,17 +63,17 @@ Arguments:
 .show table MyDatabase.MyTable policy caching 
 ```
 
-### Setting cache policy of a table
+### Set cache policy of a table
 
-Command sets caching policy to include last 30 days.
+This command sets the caching policy to include the last 30 days.
 
 ```kusto
 .alter table MyTable policy caching hot = 30d
 ```
 
-### Setting cache policy of table with additional hot-cache windows
+### Set the cache policy of table with additional hot-cache windows
 
-Command sets caching policy to include last 30 days and additional data from January and April 2021.
+This command sets the caching policy to include the last 30 days and additional data from January and April 2021.
 
 ```kusto
 .alter table MyTable policy caching 
@@ -82,17 +82,17 @@ Command sets caching policy to include last 30 days and additional data from Jan
         hot_window = datetime(2021-04-01) .. datetime(2021-05-01)
 ```
 
-### Setting cache policy of a materialized-view
+### Set the cache policy of a materialized-view
 
-Command sets caching policy to include last 30 days.
+This command sets the caching policy to include last 30 days.
 
 ```kusto
 .alter materialized-view MyMaterializedView policy caching hot = 30d
 ```
 
-### Setting cache policy of a materialized-view with additional hot-cache windows
+### Set the cache policy of a materialized-view with additional hot-cache windows
 
-Command sets caching policy to include last 30 days and additional data from January and April 2021.
+This command sets the caching policy to include last 30 days and additional data from January and April 2021.
 
 ```kusto
 .alter materialized-view MyMaterializedView policy caching 
@@ -101,9 +101,9 @@ Command sets caching policy to include last 30 days and additional data from Jan
         hot_window = datetime(2021-04-01) .. datetime(2021-05-01)
 ```
 
-### Setting policy for multiple tables 
+### Set the caching policy for multiple tables 
 
-Command sets caching policy to include last 30 days and additional data from January and April 2021 for several tables in the database.
+This command sets the caching policy to include last 30 days and additional data from January and April 2021 for several tables in the database.
 
 ```kusto
 .alter tables (MyTable1, MyTable2, MyTable3) policy caching 
@@ -112,27 +112,27 @@ Command sets caching policy to include last 30 days and additional data from Jan
         hot_window = datetime(2021-04-01) .. datetime(2021-05-01)
 ```
 
-### Setting policy for multiple tables with additional hot-cache windows
+### Set the caching policy for multiple tables with additional hot-cache windows
 
-Command sets caching policy to include last 30 days for several tables in the database.
+This command sets the caching policy to include last 30 days for several tables in the database.
 
 ```kusto
 .alter tables (MyTable1, MyTable2, MyTable3) policy caching hot = 30d
 ```
 
-### Deleting a policy set on a table
+### Delete a policy set on a table
 
 ```kusto
 .delete table MyTable policy caching
 ```
 
-### Deleting a policy set on a materialized view
+### Delete a policy set on a materialized view
 
 ```kusto
 .delete materialized-view MyMaterializedView policy caching
 ```
 
-### Deleting a policy set on a database
+### Delete a policy set on a database
 
 ```kusto
 .delete database MyDatabase policy caching
