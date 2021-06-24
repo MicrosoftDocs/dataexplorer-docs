@@ -100,7 +100,7 @@ database, table :=
     "TestTable" // Your table
 
 // Create a client
-client, err := kusto.New("https://<CLUSTER_NAME>.kusto.windows.net", authorizer)
+client, err := kusto.New("https://<clusterName>.kusto.windows.net", authorizer)
 if err != nil {
     panic("add error handling")
 }
@@ -123,10 +123,12 @@ if err := in.Stream(client, jsonEncodedData, ingest.JSON, "mappingName"); err !=
 ```java
 // Build connection string and initialize
 ConnectionStringBuilder csb =
-    ConnectionStringBuilder.createWithAadApplicationCredentials(System.getProperty("clusterPath"),
-            System.getProperty("appId"),
-            System.getProperty("appKey"),
-            System.getProperty("appTenant"));
+    ConnectionStringBuilder.createWithAadApplicationCredentials(
+        System.getProperty("clusterPath"),
+        System.getProperty("appId"),
+        System.getProperty("appKey"),
+        System.getProperty("appTenant")
+    );
 
 // Initialize client and it's properties
 IngestClient client = IngestClientFactory.createClient(csb);
@@ -137,7 +139,9 @@ IngestionProperties ingestionProperties =
     );
 
 // Create Source info
-InputStream inputStream = new ByteArrayInputStream(Charset.forName("UTF-8").encode(data).array());
+InputStream inputStream = new ByteArrayInputStream(
+    Charset.forName("UTF-8").encode(data).array()
+);
 StreamSourceInfo streamSourceInfo = new StreamSourceInfo(inputStream);
 
 // If the data is compressed
@@ -152,18 +156,20 @@ OperationStatus status = streamingIngestClient.ingestFromStream(streamSourceInfo
 ```nodejs
 // Streaming ingest client 
 const props = new IngestionProps({
-database: "StreamingTestDb", // Your database
-table: "TestTable", // Your table
-format: DataFormat.JSON,
-ingestionMappingReference: "Pre-defined mapping name" // For json format mapping is required
+    database: "StreamingTestDb", // Your database
+    table: "TestTable", // Your table
+    format: DataFormat.JSON,
+    ingestionMappingReference: "Pre-defined mapping name" // For json format mapping is required
 });
+
 // Init with engine endpoint
 const streamingIngestClient = new StreamingIngestClient(
-KustoConnectionStringBuilder.withAadApplicationKeyAuthentication(
-`https://<CLUSTER_NAME>.kusto.windows.net`, <APP_ID>, <APP_KEY>, <AUTHORITY_ID>
-),
-props
+    KustoConnectionStringBuilder.withAadApplicationKeyAuthentication(
+        `https://<clusterName>.kusto.windows.net`, <appId>, <appKey>, <authorityId>
+    ),
+    props
 );
+
 await streamingIngestClient.ingestFromFile("file.json", props);
 ```
 
