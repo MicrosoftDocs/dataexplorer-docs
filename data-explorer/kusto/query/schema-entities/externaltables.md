@@ -13,15 +13,25 @@ ms.date: 01/22/2020
 
 An **external table** is a Kusto schema entity that references data stored outside the Azure Data Explorer database.
 
-Similar to [tables](tables.md), an external table has a well-defined schema (an ordered list of column name and data type pairs). Unlike tables, data is stored and managed outside the cluster. Most commonly the data is stored in some standard format such as CSV, Parquet, Avro, and isn't ingested by Azure Data Explorer.
+Similar to [tables](tables.md), an external table has a well-defined schema (an ordered list of column name and data type pairs). Unlike tables where data is ingested into ADX cluster, external tables operate on data stored and managed outside ADX cluster. 
 
-An **external table** is created once. See the following commands for external table creation:
-* [External table general control commands](../../management/show-external-tables.md)
-* [Create and alter external SQL tables](../../management/external-sql-tables.md)
-* [Create and alter tables in Azure Storage or Azure Data Lake](../../management/external-tables-azurestorage-azuredatalake.md)
-* [Create an external table](../../../external-table.md)
+Supported external data stores are:
 
-An **external table** can be referenced by its name using the [external_table()](../../query/externaltablefunction.md) function. 
+* Files stored in Azure Blob Storage or in Azure Data Lake. Most commonly the data is stored in some standard format such as CSV, JSON, Parquet, AVRO, etc. For the list of supported formats, please refer to [supported formats](../../../ingestion-supported-formats.md).
+* SQL Server table.
+
+See the following ways of creating external tables:
+
+* [Create and alter external tables based on Azure Blob Storage or Azure Data Lake](../../management/external-tables-azurestorage-azuredatalake.md)
+* [Create and alter external tables based on SQL Server tables](../../management/external-sql-tables.md)
+* [Create external table using Web UI Wizard](../../../external-table.md)
+
+An **external table** can be referenced by its name using the [external_table()](../../query/externaltablefunction.md) function.
+
+Use the following commands to manage external tables:
+* [`.drop external table`](../../management/drop-external-table.md) 
+* [`.show external tables`](../../management/show-external-tables.md) 
+* [`.show external table schema`](../../management/show-external-table-schema.md) 
 
 **Notes**
 

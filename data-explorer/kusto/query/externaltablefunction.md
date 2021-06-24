@@ -37,6 +37,6 @@ external_table('StormEvent')
 
 ## Next steps
 
-* [External table general control commands](../management/show-external-tables.md)
-* [Create and alter external tables in Azure Storage or Azure Data Lake](../management/external-tables-azurestorage-azuredatalake.md)
-* [Create and alter external SQL tables](../management/external-sql-tables.md)
+* [External tables overview](schema-entities/externaltables.md)
+* [Create and alter external tables based on Azure Blob Storage or Azure Data Lake](../management/external-tables-azurestorage-azuredatalake.md)
+* [Create and alter external tables based on SQL Server tables](../management/external-sql-tables.md)

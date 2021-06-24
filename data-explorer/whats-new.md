@@ -153,7 +153,7 @@ Article title | Description
 ---|---
 [.create table based-on](kusto/management/create-table-based-on-command.md)  | New article. Creates a new empty table based on existing table.
 [Stored query results (Preview)](kusto/management/stored-query-results.md) | New article. Stored query results is a mechanism that temporarily stores the result of a query on the service.
-[Create and alter external tables in Azure Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md) | Updated article. Document `filesPreview` and `dryRun` external table definition options
+[Create and alter external tables based on Azure Blob Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md) | Updated article. Document `filesPreview` and `dryRun` external table definition options
 [Export data to an external table](./kusto/management/data-export/export-data-to-an-external-table.md) | Updated article. New external table syntax in export docs
 
 ### Functions library
@@ -338,7 +338,7 @@ This section lists the major changes to docs during August 2020.
 [Show continuous export](./kusto/management/data-export/show-continuous-export.md) | New article. Returns the continuous export properties of *ContinuousExport Name*.
 [Show continuous export failures](./kusto/management/data-export/show-continuous-failures.md) | New article. Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest.
 | [Row Level Security](kusto/management/rowlevelsecuritypolicy.md) | Updated article. How to produce error for unauthorized access.
-|[Create and alter external tables in Azure Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md) <br> <br> [Create and alter external SQL tables](./kusto/management/external-sql-tables.md) | Updated articles. New command option `.create-or-alter`.
+|[Create and alter external tables based on Azure Blob Storage or Azure Data Lake](./kusto/management/external-tables-azurestorage-azuredatalake.md) <br> <br> [Create and alter external tables based on SQL Server tables](./kusto/management/external-sql-tables.md) | Updated articles. New command option `.create-or-alter`.
 
 ## Next steps
 
