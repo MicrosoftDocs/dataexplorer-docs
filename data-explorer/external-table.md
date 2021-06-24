@@ -1,5 +1,5 @@
 ---
-title: Create an external table using Web UI Wizard
+title: Create an external table using the Web UI Wizard in Azure Data Explorer
 description: Use the one-click experience to create an external table.
 author: orspod
 ms.author: orspodek
