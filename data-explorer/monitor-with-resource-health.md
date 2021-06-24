@@ -25,7 +25,7 @@ Resource Health determines the health of your Azure Data Explorer resource by ex
 1. The resulting table lists all the resources in the chosen subscription. Each resource will have a health state icon indicating the resource health.
 1. Select your resource to view its [resource health status](#resource-health-status) and recommendations.
 
-    ![Overview](media/monitor-with-resource-health/resource-health-overview.png)
+    ![Overview.](media/monitor-with-resource-health/resource-health-overview.png)
 
 ## Resource health status
 
@@ -59,7 +59,7 @@ A health status of **Unknown** indicates that **Resource Health** hasn't receive
 
 In **Resource Health** pane > **Health history**, access up to four weeks of resource health status information. Select the arrow for additional information on the health event issues reported in this pane. 
 
-![History](media/monitor-with-resource-health/healthhistory.png)
+![History.](media/monitor-with-resource-health/healthhistory.png)
 
 ## Next steps
 

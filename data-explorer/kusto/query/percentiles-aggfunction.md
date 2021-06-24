@@ -87,7 +87,7 @@ A customer has a set of latency values in milliseconds:
 To reduce bandwidth and storage, do pre-aggregation to the
 following buckets: `{ 10, 20, 30, 40, 50, 100 }`. Count the number of events in each bucket to produce the following  table:
 
-:::image type="content" source="images/percentiles-aggfunction/percentilesw-table.png" alt-text="Percentilesw table":::
+:::image type="content" source="images/percentiles-aggfunction/percentilesw-table.png" alt-text="Percentilesw table.":::
 
 The table displays:
  * Eight events in the 10-ms bucket (corresponding to subset `{ 1, 1, 2, 2, 2, 5, 7, 7 }`)
@@ -111,13 +111,13 @@ datatable (ReqCount:long, LatencyBucket:long)
 
 The result for the above query is:
 
-:::image type="content" source="images/percentiles-aggfunction/percentilesw-result.png" alt-text="Percentilesw result" border="false":::
+:::image type="content" source="images/percentiles-aggfunction/percentilesw-result.png" alt-text="Percentilesw result." border="false":::
 
 
 The above query corresponds to the function
 `percentiles(LatencyBucket, 50, 75, 99.9)`, if the data was expanded to the following form:
 
-:::image type="content" source="images/percentiles-aggfunction/percentilesw-rawtable.png" alt-text="Percentilesw raw table":::
+:::image type="content" source="images/percentiles-aggfunction/percentilesw-rawtable.png" alt-text="Percentilesw raw table.":::
 
 ## Getting multiple percentiles in an array
 
@@ -128,7 +128,7 @@ CallDetailRecords
 | summarize percentiles_array(Duration, 5, 25, 50, 75, 95), avg(Duration)
 ```
 
-:::image type="content" source="images/percentiles-aggfunction/percentiles-array-result.png" alt-text="Percentiles array result":::
+:::image type="content" source="images/percentiles-aggfunction/percentiles-array-result.png" alt-text="Percentiles array result.":::
 
 Similarly, weighted percentiles can be returned as a dynamic array using `percentilesw_array`.
 

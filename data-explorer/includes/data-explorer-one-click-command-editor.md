@@ -9,4 +9,4 @@ ms.author: orspodek
 
  Above the **Editor** pane, select the **v** button to open the editor. In the editor, you can view and copy the automatic commands generated from your inputs. 
 
-:::image type="content" source="media/data-explorer-one-click-command-editor/edit-view.png" alt-text="One click ingestion edit view":::
+:::image type="content" source="media/data-explorer-one-click-command-editor/edit-view.png" alt-text="One click ingestion edit view.":::

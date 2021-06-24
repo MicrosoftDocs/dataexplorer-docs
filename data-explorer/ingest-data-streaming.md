@@ -30,7 +30,7 @@ You can enable streaming ingestion while creating a new Azure Data Explorer clus
 
 In the **Configurations** tab, select **Streaming ingestion** > **On**.
 
-:::image type="content" source="media/ingest-data-streaming/cluster-creation-enable-streaming.png" alt-text="Enable streaming ingestion while creating a cluster in Azure Data Explorer":::
+:::image type="content" source="media/ingest-data-streaming/cluster-creation-enable-streaming.png" alt-text="Enable streaming ingestion while creating a cluster in Azure Data Explorer.":::
 
 ### Enable streaming ingestion on an existing cluster in the Azure portal
 
@@ -39,7 +39,7 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 1. In the **Configurations** pane, select **On** to enable **Streaming ingestion**.
 1. Select **Save**.
 
-    :::image type="content" source="media/ingest-data-streaming/streaming-ingestion-on.png" alt-text="Turn on streaming ingestion in Azure Data Explorer":::
+    :::image type="content" source="media/ingest-data-streaming/streaming-ingestion-on.png" alt-text="Turn on streaming ingestion in Azure Data Explorer.":::
 
 > [!WARNING]
 > Review the [limitations](#limitations) prior to enabling steaming ingestion.
@@ -49,7 +49,7 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 1. In the Azure portal, navigate to your cluster.
 1. Select **Query**.
 
-    :::image type="content" source="media/ingest-data-streaming/cluster-select-query-tab.png" alt-text="Select query in the Azure Data Explorer portal to enable streaming ingestion":::
+    :::image type="content" source="media/ingest-data-streaming/cluster-select-query-tab.png" alt-text="Select query in the Azure Data Explorer portal to enable streaming ingestion.":::
 
 1. To create the table that will receive the data via streaming ingestion, copy the following command into the **Query pane** and select **Run**.
 
@@ -57,7 +57,7 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
     ```
 
-    :::image type="content" source="media/ingest-data-streaming/create-table.png" alt-text="Create a table for streaming ingestion into Azure Data Explorer":::
+    :::image type="content" source="media/ingest-data-streaming/create-table.png" alt-text="Create a table for streaming ingestion into Azure Data Explorer.":::
 
 1. Define the [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) on the table you've created or on the database that contains this table.
 
@@ -76,7 +76,7 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
     .alter database StreamingTestDb policy streamingingestion enable
     ```
 
-    :::image type="content" source="media/ingest-data-streaming/define-streaming-ingestion-policy.png" alt-text="Define the streaming ingestion policy in Azure Data Explorer":::
+    :::image type="content" source="media/ingest-data-streaming/define-streaming-ingestion-policy.png" alt-text="Define the streaming ingestion policy in Azure Data Explorer.":::
 
 ## Use streaming ingestion to ingest data to your cluster
 
@@ -214,13 +214,13 @@ client.ingest_from_stream(bytes_stream, ingestion_properties=ingestion_propertie
     .delete table TestTable policy streamingingestion
     ```
 
-    :::image type="content" source="media/ingest-data-streaming/delete-streaming-ingestion-policy.png" alt-text="Delete streaming ingestion policy in Azure Data Explorer":::
+    :::image type="content" source="media/ingest-data-streaming/delete-streaming-ingestion-policy.png" alt-text="Delete streaming ingestion policy in Azure Data Explorer.":::
 
 1. In **Settings**, select **Configurations**.
 1. In the **Configurations** pane, select **Off** to disable **Streaming ingestion**.
 1. Select **Save**.
 
-    :::image type="content" source="media/ingest-data-streaming/streaming-ingestion-off.png" alt-text="Turn off streaming ingestion in Azure Data Explorer":::
+    :::image type="content" source="media/ingest-data-streaming/streaming-ingestion-off.png" alt-text="Turn off streaming ingestion in Azure Data Explorer.":::
 
 [!INCLUDE [ingest-data-streaming-limitations](includes/ingest-data-streaming-limitations.md)]
 

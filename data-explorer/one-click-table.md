@@ -23,7 +23,7 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
 1. In the left menu of the Web UI, right-click on your database name and select **Create table**.
 
-    :::image type="content" source="./media/one-click-table/create-table.png" alt-text="Create a table in the Azure Data Explorer Web UI":::
+    :::image type="content" source="./media/one-click-table/create-table.png" alt-text="Create a table in the Azure Data Explorer Web UI.":::
 
 The **Create table** window opens with the **Source** tab selected.
 1. The **Database** field is auto-populated with your database. You may select a different database from the drop-down menu.
@@ -41,12 +41,12 @@ The **Create table** window opens with the **Source** tab selected.
         * Filter your files using the **File Filters**. 
         * Select a file that will be used in the next step to define the schema.
 
-        :::image type="content" source="media/one-click-table/storage.png" alt-text="Create table using blob to create schema mapping":::
+        :::image type="content" source="media/one-click-table/storage.png" alt-text="Create table using blob to create schema mapping.":::
     
     * If you're using a **local file**:
         * Select **Browse** to locate the file, or drag the file into the field.
 
-        :::image type="content" source="./media/one-click-table/data-from-file.png" alt-text="Create a table based on data from a local file ":::
+        :::image type="content" source="./media/one-click-table/data-from-file.png" alt-text="Create a table based on data from a local file .":::
 
     * If you're using a **blob**:
         * In the **Link to storage** field, add the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of the container and optionally enter the sample size. 
@@ -60,7 +60,7 @@ In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats)
    * If your data format is JSON, you must also select JSON levels, from 1 to 10. The levels determine the table column data division.
    * If your data format is CSV, select the check box **Includes column names** to ignore the heading row of the file.
 
-        :::image type="content" source="./media/one-click-table/schema-tab.png" alt-text="Edit schema tab in create table in one-click experience in Azure Data Explorer":::
+        :::image type="content" source="./media/one-click-table/schema-tab.png" alt-text="Edit schema tab in create table in one-click experience in Azure Data Explorer.":::
  
 1. In **Mapping**, enter a name for this table's schema mapping. 
     > [!TIP]
@@ -74,7 +74,7 @@ In the **Create table completed** window, both steps will be marked with green c
 * Select **View command** to open the editor for each step. 
     * In the editor, you can view and copy the automatic commands generated from your inputs.
     
-    :::image type="content" source="./media/one-click-table/table-completed.png" alt-text="Table creation completed in create a table in one click experience - Azure Data Explorer":::
+    :::image type="content" source="./media/one-click-table/table-completed.png" alt-text="Table creation completed in create a table in one click experience - Azure Data Explorer.":::
  
 In the tiles below the **Create table** progress, explore **Quick queries** or **Tools**:
 

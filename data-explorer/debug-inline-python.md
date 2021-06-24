@@ -32,7 +32,7 @@ Kusto query language tools aren't convenient for developing and debugging Python
     * Kusto Web UI: 
         1. Download and save *debug_python.py*, *df.txt*, and *kargs.txt*. In window, select **Allow**. **Save** files in selected directory. 
 
-            ![Web UI downloads the inline python files](media/debug-inline-python/webui-inline-python.png)
+            ![Web UI downloads the inline python files.](media/debug-inline-python/webui-inline-python.png)
 
         1. Right-click *debug_python.py* and open with VS code. 
         The *debug_python.py* script contains the inline Python code, from the KQL query, prefixed by the template code to initialize the input dataframe from *df.txt* and the dictionary of parameters from *kargs.txt*.    
@@ -82,11 +82,11 @@ Kusto query language tools aren't convenient for developing and debugging Python
 
 1. VS Code is launched:
 
-    ![launch VS code](media/debug-inline-python/launch-vs-code.png)
+    ![launch VS code.](media/debug-inline-python/launch-vs-code.png)
 
 1. VS Code debugs and prints 'result' dataframe in the debug console:
 
-    ![VS code debug](media/debug-inline-python/debug-vs-code.png)
+    ![VS code debug.](media/debug-inline-python/debug-vs-code.png)
 
 > [!NOTE]
 > There may be differences between the Python sandbox image and your local installation. [Check the sandbox image for specific packages by querying the plugin](https://github.com/Azure/azure-kusto-analytics-lib/blob/master/Utils/functions/get_modules_version.csl).
