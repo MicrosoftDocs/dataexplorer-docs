@@ -22,8 +22,8 @@ Supported external data stores are:
 
 See the following ways of creating external tables:
 
-* [Create and alter external tables based on Azure Blob Storage or Azure Data Lake](../../management/external-tables-azurestorage-azuredatalake.md)
-* [Create and alter external tables based on SQL Server tables](../../management/external-sql-tables.md)
+* [Create and alter Azure Storage external tables](../../management/external-tables-azurestorage-azuredatalake.md)
+* [Create and alter SQL Server external tables](../../management/external-sql-tables.md)
 * [Create external table using Web UI Wizard](../../../external-table.md)
 
 An **external table** can be referenced by its name using the [external_table()](../../query/externaltablefunction.md) function.

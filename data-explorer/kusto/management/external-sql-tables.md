@@ -1,5 +1,5 @@
 ---
-title: Create and alter external tables based on SQL Server tables - Azure Data Explorer
+title: Create and alter SQL Server external tables - Azure Data Explorer
 description: This article describes how to create and alter external tables based on SQL Server tables.
 services: data-explorer
 author: orspod
@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 03/24/2020
 ---
 
-# Create and alter external tables based on SQL Server tables
+# Create and alter SQL Server external tables
 
 Creates or alters an external SQL table in the database in which the command is executed.  
 
@@ -99,4 +99,4 @@ When an SQL query can be optimized in T-SQL, use the [sql_request plugin](../que
 ## Next steps
 
 * [External tables overview](../query/schema-entities/externaltables.md)
-* [Create and alter external tables based on Azure Blob Storage or Azure Data Lake](external-tables-azurestorage-azuredatalake.md)
+* [Create and alter Azure Storage external tables](external-tables-azurestorage-azuredatalake.md)
