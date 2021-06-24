@@ -102,7 +102,7 @@ Use the following settings:
 |**Setting**  |**Description**  |
 |---------|---------|
 | Location | The location of the Azure Data Explorer cluster |
-|Script URL     |  The URL of the blob, for example https://myaccount.blob.core.windows.net/mycontainer/myblob. |
+|Script URL     |  The URL of the blob, for example 'https://myaccount.blob.core.windows.net/mycontainer/myblob'. |
 |Script URL SaS Token   |  The [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview).    |
 | Force Update Tag   |  A unique string. If changed, the script will be applied again.  |
 |Continue On Errors    |   A flag that indicates whether to continue if one of the commands fails. Default is false.     |
