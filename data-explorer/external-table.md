@@ -9,7 +9,7 @@ ms.topic: how-to
 ms.date: 04/28/2021
 ---
 
-# Create an external table using Web UI Wizard
+# Create an external table using the Web UI Wizard
 
 An external table is a schema entity that references data stored outside the Azure Data Explorer database. Azure Data Explorer Web UI can create external tables by taking sample files from a storage container and creating schema based on these samples. You can then analyze and query data in external tables without ingestion into Azure Data Explorer. For information about different ways to create external tables, see [create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md).
 
