@@ -15,13 +15,13 @@ Data ingestion is the process by which data is added to a table and is made avai
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
-|ApacheAvro|`.avro`    |An [Avro](https://avro.apache.org/docs/current/) format with support for [logical types](https://avro.apache.org/docs/current/spec.html#Logical+Types) and for `snappy` compression codec.|
-|Avro     |`.avro`     |A legacy implementation for [Avro container file](https://avro.apache.org/docs/current/). The following codes are supported: `null`, `deflate` (for `snappy` - use `apacheavro` file format).|
+|ApacheAvro|`.avro`    |An [AVRO](https://avro.apache.org/docs/current/) format with support for [logical types](https://avro.apache.org/docs/current/spec.html#Logical+Types). The following compression codecs are supported: `null`, `deflate` and `snappy`. Reader implementation for `apacheavro` format is based on official [Apache Avro library](https://github.com/apache/avro).|
+|Avro     |`.avro`     |A legacy implementation for [AVRO](https://avro.apache.org/docs/current/) format based on [.NET library](https://www.nuget.org/packages/Microsoft.Hadoop.Avro). The following compression codecs are supported: `null`, `deflate` (for `snappy` - use `ApacheAvro` data format).|
 |CSV      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
 |JSON     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
 |MultiJSON|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace, `\n` or `\r\n`. Each property bag can be spread on multiple lines. This format is preferred over `JSON`, unless the data is non-property bags.|
-|ORC      |`.orc`      |An [Orc file](https://en.wikipedia.org/wiki/Apache_ORC).|
-|Parquet  |`.parquet`  |A [Parquet file](https://en.wikipedia.org/wiki/Apache_Parquet).|
+|ORC      |`.orc`      |An [ORC file](https://en.wikipedia.org/wiki/Apache_ORC).|
+|Parquet  |`.parquet`  |A [Parquet file](https://en.wikipedia.org/wiki/Apache_Parquet). |
 |PSV      |`.psv`      |A text file with pipe-separated values (<code>&#124;</code>).|
 |RAW      |`.raw`      |A text file whose entire contents is a single string value.|
 |SCsv     |`.scsv`     |A text file with semicolon-separated values (`;`).|
@@ -31,8 +31,6 @@ Data ingestion is the process by which data is added to a table and is made avai
 |TXT      |`.txt`      |A text file with lines delimited by `\n`. Empty lines are skipped.|
 |W3CLOGFILE |`.log`    |[Web log file](https://www.w3.org/TR/WD-logfile.html) format standardised by the W3C.|
 
-> [!NOTE]
-> Internally, strings are encoded in [UTF-8](https://en.wikipedia.org/wiki/UTF-8).
 
 ## Supported data compression formats
 
@@ -53,10 +51,8 @@ Blob or file names that don't include the format extensions but just compression
 must be specified as an ingestion property because it cannot be inferred.
 
 > [!NOTE]
-> Some compression formats keep track of the original file extension as part
-> of the compressed stream. This extension is generally ignored for
-> determining the file format. If the file format can't be determined from the (compressed)
-> blob or file name, it must be specified through the `format` ingestion property.
+> * Some compression formats keep track of the original file extension as part of the compressed stream. This extension is generally ignored for determining the file format. If the file format can't be determined from the (compressed) blob or file name, it must be specified through the `format` ingestion property.
+> * Not to be confused with internal (chunk level) compression codec used by `Parquet`, `AVRO` and `ORC` formats. Internal compression name is usually added to a file name before file format extension, for example: `file1.gz.parquet`, `file1.snappy.avro`, etc.
 
 ## Next steps
 
