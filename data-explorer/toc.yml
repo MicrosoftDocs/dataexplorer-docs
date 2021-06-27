@@ -101,9 +101,7 @@ items:
   - name: Monitor
     items: 
     - name: Batching ingestion
-      items:
-      - name: Monitor batching ingestion 
-        href: monitor-batching-ingestion.md
+      href: monitor-batching-ingestion.md
     - name: Streaming ingestion
       items:
       - name: Azure portal
