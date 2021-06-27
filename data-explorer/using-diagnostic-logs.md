@@ -182,7 +182,7 @@ Log JSON strings include elements listed in the following table:
 |RootActivityId     |Activity ID
 |Details            |Detailed description of the failure and error message
 |ErrorCode          |[Ingestion error code](error-codes.md)
-|FailureStatus      |`Permanent` or `Transient`. Retry of a transient failure may succeed.
+|FailureStatus      |`Permanent` or `RetryAttemptsExceeded` indicates that operation has exceeded the retry attempts limit or timespan limit following a recurring transient error.
 |OriginatesFromUpdatePolicy|True if failure originates from an update policy
 |ShouldRetry        |True if retry may succeed
 
