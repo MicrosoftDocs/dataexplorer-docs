@@ -18,7 +18,6 @@ blob container) need to be provided.
 
 Kusto supports the following storage providers:
 
-
 * Azure Storage Blob storage provider
 * Azure Data Lake Storage storage provider
 
@@ -26,6 +25,9 @@ Each kind of a storage provider defines a connection string format
 used to describe the storage resources and how to access them.
 Kusto uses a URI format to describe these storage resources and the properties
 necessary to access them (such as security credentials).
+
+> [!TIP]
+> The easiest way to generate a SAS link is described in [Get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container). If this does not suit your use case, use the following template.
 
 |Provider                     |Scheme    |URI template                          |
 |-----------------------------|----------|--------------------------------------|
@@ -55,7 +57,6 @@ the account key or SAS):
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;<storage_account_key_text, ends with '=='>"`
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"` 
 
-To learn how to generate a SAS link, see [Get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
 
 ## Azure Data Lake Store
 
