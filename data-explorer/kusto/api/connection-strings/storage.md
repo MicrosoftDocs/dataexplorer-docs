@@ -27,7 +27,7 @@ Kusto uses a URI format to describe these storage resources and the properties
 necessary to access them (such as security credentials).
 
 > [!TIP]
-> The easiest way to generate a SAS link is described in [Get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container). If this does not suit your use case, use the following template.
+> The easiest way to generate an Azure Storage SAS link is described in [Get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container). If this does not suit your use case, use the following template.
 
 |Provider                     |Scheme    |URI template                          |
 |-----------------------------|----------|--------------------------------------|
