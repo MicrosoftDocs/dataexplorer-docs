@@ -12,26 +12,25 @@ ms.custom: contperf-fy21q1
 
 # Monitoring batching ingestion
 
-In the *batching ingestion* process, Azure Data Explorer optimizes [data ingestion](ingest-data-overview.md) for high throughput by batching the incoming data into small chunks based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md). The batching policy allows you to set the trigger conditions for sealing and ingesting a batch (data size, number of blobs, or time passed). These small batches of incoming data are then merged and optimized for fast query results.  These optimizations make batching ingestion the most performant of the [methods for ingesting data](ingest-data-overview.md#batching-vs-streaming-ingestion) used by Azure Data Explorer.
+In the *batching ingestion* process, Azure Data Explorer optimizes [data ingestion](ingest-data-overview.md) for high throughput by batching incoming small chunks of data into batches based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md). The batching policy allows you to set the trigger conditions for sealing and ingesting a batch (data size, number of blobs, or time passed). These batches are then optimally ingested for fast query results.
 
 ## Batching stages
 
 Batching ingestion occurs in stages, and each stage is governed by an ingestion *component*:
 
-1. Before ingestion, as the data is retrieved from Event Grid, Event Hub, or IoT Hub, the *Data Connection* component does initial data rearrangement.
+1. For Event Grid, Event Hub and IoT Hub ingestion, there is a *Data Connection* that gets the data from external sources and performs initial data rearrangement.
 2. The *Batching Manager* optimizes the ingestion throughput by batching the small ingress data chunks that it receives based on the ingestion batching policy.
-3. The *Ingestion Manager* starts the data ingestion by sending the ingestion command to the *Azure Data Explorer Storage Engine*.
+3. The *Ingestion Manager* sends the ingestion commands to the *Azure Data Explorer Storage Engine*.
 4. The *Azure Data Explorer Storage Engine* stores the ingested data, making it available for query.
 
-Azure Data Explorer provides a set of [ingestion metrics](using-metrics.md#ingestion-metrics) in the Azure Monitor metrics explorer in the Microsoft Azure portal so that you can monitor your data across all the stages and components of the batching ingestion process.
-
+Azure Data Explorer provides a set of Azure Monitor [ingestion metrics](using-metrics.md#ingestion-metrics) so that you can monitor your data across all the stages and components of the batching ingestion process.
 The Azure Data Explorer ingestion metrics give you detailed information about:
 
 * The result of the batching ingestion.
 * The amount of ingested data and how it was batched.
 * The latency of the batching ingestion and where it occurs.
-* The batching process itself and how the data was batched.
-* The events sent from the data connection and received by Azure Data Explorer.
+* The batching process itself.
+* The number of events received, when ingesting with Event Hub, Event Grid, or IoT Hub.
 
 In this article, you'll learn how to use ingestion metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
 
@@ -39,32 +38,33 @@ In this article, you'll learn how to use ingestion metrics to monitor batching i
 
 * An Azure subscription. If you don't have one, you can create a [free Azure account](https://azure.microsoft.com/free/).
 * A [cluster and database](create-cluster-database-portal.md).
-* A data connection to [Event Hub](ingest-data-event-hub-overview.md), [IoT Hub](ingest-data-iot-hub-overview.md), or [Event Grid](ingest-data-event-grid-overview.md).
+* A data connection to [Event Hub](ingest-data-event-hub-overview.md), [IoT Hub](ingest-data-iot-hub-overview.md), or [Event Grid](ingest-data-event-grid-overview.md) or another form of batching ingestion.
 
 ## Create metric charts with Azure Monitor metrics explorer
 
+The following is a general explanation of how to use the Azure Monitor metrics that will be implemented in subsequent sections.
 Use the following steps to create metric charts with the [Azure Monitor metrics explorer](/azure/azure-monitor/essentials/metrics-getting-started) in Azure portal:
 
 1. Sign in to the [Azure portal](https://portal.azure.com/) and navigate to the overview page for your Azure Data Explorer cluster.
-1. Select **Monitor** from the left-hand navigation bar and select **Metrics** to open the metrics pane.
+1. Select **Metrics** from the left-hand navigation bar to open the metrics pane.
 1. Select a **Scope** and a **Metric Namespace**.
 
    For the examples in this article, use the following values:
 
-   * Set **Scope** to the name of your Azure Data Explorer cluster.
+   * Set **Scope** to the name of your Azure Data Explorer cluster. In the following example, we will use a cluster named *demo11*.
    * Set **Metric Namespace** to *Kusto Cluster standard metrics*. This is the namespace that contains the Azure Data Explorer ingestion metrics.
 
    :::image type="content" source="media/monitor-batching-ingestion/metrics-settings-selector.png" alt-text="Screenshot showing how to select settings for a metric in Azure portal.":::
 
-1. Select the **Metric** value and the relevant **Aggregation** value. For example, in this article we'll use the **Aggregation** values *sum* and *avg*.
-1. Open the **time picker** panel at the top right of the metrics pane and change the **Time range** to *Last 48 hours*. In this article, we're analyzing data ingestion to Azure Data Explorer during the last 48 hours.
+1. Select the **Metric** name and the relevant **Aggregation** value.
+1. Open the **time picker** panel at the top right of the metrics pane and change the **Time range** to the time you want to analyze. In this article, we're analyzing data ingestion to Azure Data Explorer during the last 48 hours.
 
 For some examples in this article, we'll select **Add Filter** and **Apply Splitting** for metrics that have dimensions. We'll also use **Add metric** to plot other metrics in the same chart and **+ New chart** to see multiple charts in one view.
 
 > [!NOTE]
 > To learn more about how to use metrics to monitor Azure Data Explorer in general and how to work with the metrics pane, see [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md).
 
-To begin analysis of a batching ingestion operation to your Azure Data Explorer cluster in the metrics pane of Azure portal, select specific metrics to track, choose how to aggregate your data, and create metric charts to view on your dashboard.
+In this article, you'll learn which metrics can be used to track batching ingestion, and how to use these metrics.
 
 ## View the ingestion result
 
