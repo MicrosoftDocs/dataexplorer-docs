@@ -28,22 +28,24 @@ necessary to access them (such as security credentials).
 
 ## Generate a SAS for Azure Storage blob container
 
-To generate a SAS link from your Azure Storage account, use the following flow:
+To generate a SAS link from your Azure Storage account, follow the following steps:
+
 
 1. In the Azure portal, open Storage Explorer.
 1. From the left menu, select **Containers**.
 1. Right-click on the desired container.
-1. From the context menu, select **Generate SAS**. 
-    
-    :::image type="content" source="storage/generate-sas-storage-account.png" alt-text="Screenshot of Azure portal with Containers selected. Specific container is right-clicked and a menu opens. Generate SAS is selected from this menu.":::
+1. From the context menu, select **Generate SAS**.
+
+   :::image type="content" source="storage/generate-sas-storage-account.png" alt-text="Screenshot of Azure portal with Containers selected. Specific container is right-clicked and a menu opens. Generate SAS is selected from this menu.":::
+
 1. In the Shared Access Signature dialog, specify the policy, start and expiration dates, time zone, and access levels you want for the resource.
-    
-    :::image type="content" source="storage/generate-sas-token-and-url.png" alt-text="Screen shot of the Generate SAS dialog with information filled in and "Generate SAS token and URL" selected.":::
+
+    :::image type="content" source="storage/generate-sas-token-and-url.png" alt-text="Screen shot of the Generate SAS dialog with information filled in and Generate SAS token and URL selected.":::
 
 1. Select **Generate SAS token and URL**.
 1. A new section will then display at the bottom of the dialog, listing the blob SAS token and the blob SAS URL. Select the copy icon to the right of the blob SAS URL.
 
-    :::image type="content" source="storage/copy-sas-token-and-url.png" alt-text="Screenshot of Azure portal with blob SAS URL generated.":::
+   :::image type="content" source="storage/copy-sas-token-and-url.png" alt-text="Screenshot of Azure portal with blob SAS URL generated.":::
 
 Azure Storage SAS links can also be generated as described in [URI templates](#uri-templates).
 
