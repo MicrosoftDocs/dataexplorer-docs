@@ -1,6 +1,6 @@
 ---
-title: Create and alter external tables in Azure Storage or Azure Data Lake - Azure Data Explorer
-description: This article describes how to create and alter external tables in Azure Storage or Azure Data Lake
+title: Create and alter Azure Storage external tables - Azure Data Explorer
+description: This article describes how to create and alter external tables based on Azure Blob Storage or Azure Data Lake
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 03/24/2020
 ---
 
-# Create and alter external tables in Azure Storage or Azure Data Lake
+# Create and alter Azure Storage external tables
 
 The following command describes how to create an external table located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2. 
 
@@ -393,6 +393,7 @@ Drops the mapping from the database.
 ```kusto
 .drop external table MyExternalTable mapping "Mapping1" 
 ```
+
 ## Next steps
 
 * [Query external tables](../../data-lake-query-data.md).
