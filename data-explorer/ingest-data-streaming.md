@@ -88,74 +88,102 @@ Two streaming ingestion types are supported:
 ### [Go](#tab/go)
 
 ```go
-// Creates a Kusto Authorizer using your client identity, secret and tenant identity.
-// You may also uses other forms of authorization, see GoDoc > Authorization type.
-// auth package is: "github.com/Azure/go-autorest/autorest/azure/auth"
-authorizer := kusto.Authorization{
-  Config: auth.NewClientCredentialsConfig(clientID, clientSecret, tenantID),
-}
+import (
+    "context"
+    "github.com/Azure/azure-kusto-go/kusto"
+    "github.com/Azure/azure-kusto-go/kusto/ingest"
+    "github.com/Azure/go-autorest/autorest/azure/auth"
+)
 
-database, table :=
-    "StreamingTestDb", // Your database
-    "TestTable" // Your table
+func wew() {
+    // Creates a Kusto Authorizer using your client identity, secret and tenant identity.
+    // You may also uses other forms of authorization, see GoDoc > Authorization type.
+    // auth package is: "github.com/Azure/go-autorest/autorest/azure/auth"
+    authorizer := kusto.Authorization{
+        Config: auth.NewClientCredentialsConfig(clientID, clientSecret, tenantID),
+    }
 
-// Create a client
-client, err := kusto.New("https://<clusterName>.kusto.windows.net", authorizer)
-if err != nil {
-    panic("add error handling")
-}
+    database, table :=
+        "StreamingTestDb", // Your database
+        "TestTable" // Your table
 
-// Setup is quite simple
-// Pass a *kusto.Client, the name of the database and table you wish to ingest into.
-in, err := ingest.New(client, database, table)
-if err != nil {
-  panic("add error handling")
-}
+    // Create a client
+    client, err := kusto.New("https://<clusterName>.kusto.windows.net", authorizer)
+    if err != nil {
+        panic("add error handling")
+    }
 
-// Ingestion from a stream commits blocks of fully formed data encodes (JSON, AVRO, ...) into Kusto:
-if err := in.Stream(client, jsonEncodedData, ingest.JSON, "mappingName"); err != nil {
-  panic("add error handling")
+    // Setup is quite simple
+    // Pass a *kusto.Client, the name of the database and table you wish to ingest into.
+    in, err := ingest.New(client, database, table)
+    if err != nil {
+        panic("add error handling")
+    }
+    jsonEncodedData := []byte("{\"a\":  1, \"b\":  10}\n{\"a\":  2, \"b\":  20}")
+
+    // Ingestion from a stream commits blocks of fully formed data encodes (JSON, AVRO, ...) into Kusto:
+    if err := in.Stream(context.Background(), jsonEncodedData, ingest.JSON, "mappingName"); err != nil {
+        panic("add error handling")
+    }
 }
 ```
 
 ### [Java](#tab/java)
 
 ```java
-// Build connection string and initialize
-ConnectionStringBuilder csb =
-    ConnectionStringBuilder.createWithAadApplicationCredentials(
-        System.getProperty("clusterPath"),
-        System.getProperty("appId"),
-        System.getProperty("appKey"),
-        System.getProperty("appTenant")
-    );
+import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
+import com.microsoft.azure.kusto.ingest.IngestClient;
+import com.microsoft.azure.kusto.ingest.IngestClientFactory;
+import com.microsoft.azure.kusto.ingest.IngestionProperties;
+import com.microsoft.azure.kusto.ingest.result.OperationStatus;
+import com.microsoft.azure.kusto.ingest.source.CompressionType;
+import com.microsoft.azure.kusto.ingest.source.StreamSourceInfo;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
-// Initialize client and it's properties
-IngestClient client = IngestClientFactory.createClient(csb);
-IngestionProperties ingestionProperties =
-    new IngestionProperties(
-        System.getProperty("dbName"),
-        System.getProperty("tableName")
-    );
-
-// Create Source info
-InputStream inputStream = new ByteArrayInputStream(
-    Charset.forName("UTF-8").encode(data).array()
-);
-StreamSourceInfo streamSourceInfo = new StreamSourceInfo(inputStream);
-
-// If the data is compressed
-streamSourceInfo.setIsCompressed(true);
-
-// Ingest from stream
-OperationStatus status = streamingIngestClient.ingestFromStream(streamSourceInfo, ingestionProperties).getIngestionStatusCollection().get(0).status;
+public class FileIngestion {
+    public static void main(String[] args) throws Exception {
+        // Build connection string and initialize
+        ConnectionStringBuilder csb =
+            ConnectionStringBuilder.createWithAadApplicationCredentials(
+                System.getProperty("clusterPath"),
+                System.getProperty("appId"),
+                System.getProperty("appKey"),
+                System.getProperty("appTenant")
+            );
+        // Initialize client and it's properties
+        IngestClient client = IngestClientFactory.createClient(csb);
+        IngestionProperties ingestionProperties =
+            new IngestionProperties(
+                System.getProperty("dbName"),
+                System.getProperty("tableName")
+            );
+        // Create Source info
+        InputStream inputStream = new FileInputStream("MyFile.gz");
+        StreamSourceInfo streamSourceInfo = new StreamSourceInfo(inputStream);
+        // If the data is compressed
+        streamSourceInfo.setCompressionType(CompressionType.gz);
+        // Ingest from stream
+        OperationStatus status = client.ingestFromStream(streamSourceInfo, ingestionProperties).getIngestionStatusCollection().get(0).status;
+    }
+}
 ```
 
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
-// Streaming ingest client 
-const props = new IngestionProps({
+// ES6 module style:
+import { DataFormat, IngestionProperties, StreamingIngestClient } from "azure-kusto-ingest";
+import { KustoConnectionStringBuilder } from "azure-kusto-data";
+
+// Or old NodeJs style:
+// const IngestionProperties = require("azure-kusto-ingest").IngestionProperties;
+// const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+// const {DataFormat} = require("azure-kusto-ingest").IngestionPropertiesEnums;
+// const StreamingIngestClient = require("azure-kusto-ingest").StreamingIngestClient;
+
+// Streaming ingest client
+const props = new IngestionProperties({
     database: "StreamingTestDb", // Your database
     table: "TestTable", // Your table
     format: DataFormat.JSON,
@@ -165,8 +193,7 @@ const props = new IngestionProps({
 // Init with engine endpoint
 const streamingIngestClient = new StreamingIngestClient(
     KustoConnectionStringBuilder.withAadApplicationKeyAuthentication(
-        `https://<clusterName>.kusto.windows.net`, <appId>, <appKey>, <authorityId>
-    ),
+        `https://<clusterName>.kusto.windows.net`, '<appId>', '<appKey>', '<authorityId>',
     props
 );
 
@@ -188,11 +215,13 @@ from azure.kusto.ingest import (
 # Please note that if you choose this option, you'll need to authenticate for every new instance that is initialized.
 # It is highly recommended to create one instance and use it for all of your queries.
 
-cluster = "https://{cluster_name}.kusto.windows.net"
+cluster = "https://{clusterName}.kusto.windows.net"
 kcsb = KustoConnectionStringBuilder.with_aad_device_authentication(cluster)
 client = KustoStreamingIngestClient(kcsb)
 
-ingestion_properties = IngestionProperties(database="{database_name}", table="{table_name}", data_format=DataFormat.CSV)
+ingestion_properties = IngestionProperties(
+    database="{dbName}", table="{tableName}", data_format=DataFormat.CSV
+)
 
 # ingest from stream
 byte_sequence = b"56,56,56"
