@@ -1,5 +1,5 @@
 ---
-title: Create an external table with Azure Data Explorer
+title: Create an external table using the Web UI Wizard in Azure Data Explorer
 description: Use the one-click experience to create an external table.
 author: orspod
 ms.author: orspodek
@@ -9,9 +9,9 @@ ms.topic: how-to
 ms.date: 04/28/2021
 ---
 
-# Create an external table
+# Create an external table using the Web UI wizard
 
-An external table is a schema entity that references data stored outside the Azure Data Explorer database. Azure Data Explorer Web UI can create external tables by taking sample files from a storage container and creating schema based on these samples. You can then analyze and query data in external tables without ingestion into Azure Data Explorer. For information about different ways to create external tables, see [create and alter external tables in Azure Storage or Azure Data Lake](kusto/management/external-tables-azurestorage-azuredatalake.md).
+An external table is a schema entity that references data stored outside the Azure Data Explorer database. Azure Data Explorer Web UI can create external tables by taking sample files from a storage container and creating schema based on these samples. You can then analyze and query data in external tables without ingestion into Azure Data Explorer. For information about different ways to create external tables, see [create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md).
 
 This article shows you how to create an external table using the one-click experience.
 
@@ -102,7 +102,7 @@ The resulting table includes data from all the files that fit the criteria defin
 
 ## Next steps
 
-* [Create and alter external tables in Azure Storage or Azure Data Lake](kusto/management/external-tables-azurestorage-azuredatalake.md)
-* [External tables schema entities](kusto/query/schema-entities/externaltables.md)
+* [Create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md)
+* [External tables overview](kusto/query/schema-entities/externaltables.md)
 * [external_table() function](kusto/query/externaltablefunction.md)
 * [Write queries for Azure Data Explorer](write-queries.md)
