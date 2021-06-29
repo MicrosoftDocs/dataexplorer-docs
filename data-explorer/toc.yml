@@ -278,6 +278,8 @@ items:
       href: isolated-compute.md
     - name: Network isolation (VNet)
       items:
+        - name: Secure outbound network dependencies in your VNet firewall
+          href: vnet-deploy-secure-outbound-traffic-firewall.md
         - name: Create a cluster in your VNet - Portal
           href: vnet-create-cluster-portal.md
         - name: Deploy your cluster to your VNet
