@@ -12,7 +12,6 @@ ms.date: 08/05/2020
 # dynamic_to_json()
 
 Converts `dynamic` input to a string representation.
-If the input is a property bag, the output string prints its content sorted by the keys, recursively. Otherwise, the output is similar to the `tostring` function output.
 
 ## Syntax
 
@@ -25,6 +24,10 @@ If the input is a property bag, the output string prints its content sorted by t
 ## Returns
 
 Returns a string representation of the `dynamic` input. If the input is a property bag, the output string prints its content sorted by the keys, recursively.
+
+ >[!NOTE]
+ >_If the input is a property bag, the output string prints its content sorted by the keys, recursively. Otherwise, the output is similar to the `tostring` function output._
+ > Scalar data types that cannot be supported by JSON (such as datetime, timespan, decimal, etc) are not valid input and will result in error.
 
 ## Examples
 
