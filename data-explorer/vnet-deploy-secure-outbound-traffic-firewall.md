@@ -9,7 +9,9 @@ ms.topic: how-to
 ms.date: 10/31/2019
 ---
 
-## Securing outbound traffic with firewall
+# Securing outbound traffic with a firewall from your Azure Data Explorer cluster in your Virtual Network
+
+## Fully Qualified Domain Names (FQDN) to secure in your outbound firewall
 
 If you want to secure outbound traffic using [Azure Firewall](/azure/firewall/overview) or any virtual appliance to limit domain names, the following Fully Qualified Domain Names (FQDN) must be allowed in the firewall.
 
@@ -44,7 +46,7 @@ crl3.digicert.com:80
 > If you're using [Azure Firewall](/azure/firewall/overview), add **Network Rule** with the following properties: <br>
 > **Protocol**: TCP <br> **Source Type**: IP Address <br> **Source**: * <br> **Service Tags**: AzureMonitor <br> **Destination Ports**: 443
 
-You also need to define the [route table](/azure/virtual-network/virtual-networks-udr-overview) on the subnet with the [management addresses](#azure-data-explorer-management-ip-addresses) and [health monitoring addresses](#health-monitoring-addresses) with next hop *Internet* to prevent asymmetric routes issues.
+You also need to define the [route table](/azure/virtual-network/virtual-networks-udr-overview) on the subnet with the [management addresses](vnet-deployment.md#azure-data-explorer-management-ip-addresses) and [health monitoring addresses](vnet-deployment.md#health-monitoring-addresses) with next hop *Internet* to prevent asymmetric routes issues.
 
 For example, for **West US** region, the following UDRs must be defined:
 
