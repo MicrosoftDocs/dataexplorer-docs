@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 06/30/2021
 ---
 
 # Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer
@@ -31,7 +31,7 @@ In the left menu of the Web UI, right-click a *database* or *table* and select *
  
 ## Select an ingestion type
 
-1. In the **Ingest new data** window, the **Source** tab is selected.
+1. In the **Ingest new data** window, the **Destination** tab is selected.
 
 1. If the **Cluster** and **Database** fields aren't automatically filled, select an existing cluster and database name from the drop-down menu.
     
@@ -39,16 +39,21 @@ In the left menu of the Web UI, right-click a *database* or *table* and select *
 
 1. If the **Table** field isn't automatically filled, select an existing table name from the drop-down menu.
 
+1. Select **Next: Source**
+
+### Source tab
+
 1. Under **Source type**, do the following steps:
 
    1. Select **from file**  
    1. Select **Browse** to locate up to 10 files, or drag the files into the field. The schema-defining file can be chosen using the blue star.
+   1. Select **Next: Schema**
     
       :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="One-click ingestion from file.":::
 
 ## Edit the schema
 
-Select **Edit schema** to view and edit your table column configuration. In the **Schema** tab:
+The **Schema** tab opens.
 
    * **Compression type** will be selected automatically by the source file name. In this case, the compression type is **JSON**
         
@@ -92,7 +97,7 @@ To add columns from JSON levels that are different than the main **Nested levels
 
 ## Start ingestion
 
-Select **Start ingestion** to create a table and mapping and to begin data ingestion.
+Select **Next: Summary** to begin data ingestion.
 
 :::image type="content" source="media/one-click-ingestion-existing-table/start-ingestion.png" alt-text="Start ingestion.":::
 
