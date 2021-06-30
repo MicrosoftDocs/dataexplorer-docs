@@ -33,14 +33,20 @@ There are two ways to access the creation wizard:
 
     :::image type="content" source="media/external-table/access-wizard.png" alt-text="Screenshot of how to access the wizard to create an external table in the Azure Data Explorer WebUI.":::
 
-The **Create external table** window opens with the **Source** tab selected.
+The **Create external table** window opens with the **Destination** tab selected.
 
-### Source tab
+### Destination tab
 
 1. The **Database** field is autopopulated with your cluster and database. You may select a different database from the drop-down menu.
 1. In **Table name**, enter a name for your table.
     > [!TIP]
     >  Table names can be up to 1024 characters including alphanumeric, hyphens, and underscores. Special characters aren't supported.
+1. Select **Next: Source**
+
+:::image type="content" source="media/external-table/destination-tab.png" alt-text="Screen capture of the Destination tab with Cluster, Database, and Table name fields.":::
+
+### Source tab
+
 1. In **Link to source**, enter the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of your source container. You can add up to 10 sources. 
     The first source container will display files below the **File filters**. In a later step, you will use one of these files to generate the table schema.
 
@@ -51,7 +57,7 @@ The **Create external table** window opens with the **Source** tab selected.
     :::image type="content" source="media/external-table/schema-defining.png" alt-text="Screenshot of selecting schema-defining file.":::
 
 1. Choose the schema-defining file by selecting the circle to the left of the file. This file will be used to generate the table schema.
-1. Select **Edit schema**. The **Schema** tab opens.
+1. Select **Next: schema**. The **Schema** tab opens.
 
 ### Schema tab
 
@@ -88,7 +94,7 @@ In the right-hand side of the tab, you can preview your data. On the left-hand s
     
     :::image type="content" source="media/external-table/schema.png" alt-text="Screen shot of schema external table Azure Data Explorer.":::
 
-1. Select **Create table**. When the table is created, an **External table successfully created** window opens.
+1. Select **Next: Create table**. When the table is created, an **External table successfully created** window opens.
 1. To view the command used to create the table, select **View command**.
 
     :::image type="content" source="media/external-table/successfully-created.png" alt-text="Screen shot of successful creation of external table in Azure Data Explorer.":::
