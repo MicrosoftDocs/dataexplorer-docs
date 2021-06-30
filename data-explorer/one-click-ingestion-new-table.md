@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 06/30/2021
 ---
 
 # Ingest data from a container/ADLS into Azure Data Explorer
@@ -38,11 +38,11 @@ For information about ingesting data into an existing table in Azure Data Explor
 
     :::image type="content" source="media/one-click-ingestion-new-table/one-click-ingestion-in-web-ui.png" alt-text="Ingest new data.":::
 
-1. In the **Ingest new data** window, the **Source** tab is selected. The **Cluster** and **Database** fields are automatically populated.
+1. In the **Ingest new data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 
     [!INCLUDE [one-click-cluster](includes/one-click-cluster.md)]
 
-1. Select **Table** > **Create new** and enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
+1. In **Table**, check **Create new table** and enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
     > [!NOTE]
     > Table names must be between 1 and 1024 characters.
@@ -98,9 +98,9 @@ If you get the following error message when ingesting from a storage account:
 
     :::image type="content" source="media/ingest-data-one-click/subscription-dropdown.png" alt-text="Screenshot of Directory + subscription pane with subscription dropdown highlighted by a red box.":::
 
-## Sample data
+## Filter data
 
-A sample of the data appears. If you want to, filter the data to ingest only files that begin end with specific characters. When you adjust the filters, the preview automatically updates.
+If you want to, filter the data to ingest only files that begin end with specific characters.
 
 For example, filter for all files that begin with the word *.csv* extension.
 
@@ -110,7 +110,7 @@ The system will select one of the files at random and the schema will be generat
 
 ## Edit the schema
 
-Select **Edit schema** to view and edit your table column configuration.  By looking at the name of the source, the service automatically identifies if it is compressed or not.
+Select **Next: Schema** to view and edit your table column configuration.  By looking at the name of the source, the service automatically identifies if it is compressed or not.
 
 In the **Schema** tab:
 
@@ -121,13 +121,11 @@ In the **Schema** tab:
         > [!TIP]
         > If you want to use **JSON** files, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#edit-the-schema).
 
-   1. You can select the check box **Include column names** to ignore the heading row of the file.
+   1. You can select the check box **Ignore the first record** to ignore the heading row of the file.
 
         :::image type="content" source="media/one-click-ingestion-new-table/non-json-format.png" alt-text="Select include column names.":::
 
-In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
-
-:::image type="content" source="media/one-click-ingestion-new-table/table-mapping.png" alt-text="Table-mapping name One-click Ingestion.":::
+1. In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
 
 ### Edit the table
 
@@ -142,7 +140,7 @@ When ingesting to a new table, alter various aspects of the table when creating 
 
 ## Start ingestion
 
-Select **Start ingestion** to create a table and mapping and to begin data ingestion.
+Select **Next: Summary** to create a table and mapping and to begin data ingestion.
 
 :::image type="content" source="media/one-click-ingestion-new-table/start-ingestion.png" alt-text="Start ingestion One Click Ingestion.":::
 
@@ -162,9 +160,28 @@ Continuous ingestion enables you to create an Event Grid that listens for new fi
     
     :::image type="content" source="media/one-click-ingestion-new-table/continuous-button.png" alt-text="continuous ingestion button.":::
 
-1. Select **Create** to create a data connection that will listen for any changes, updates, or new data in that container. 
+### Data connection: Basics
 
-    :::image type="content" source="media/one-click-ingestion-new-table/event-hub-create.png" alt-text="Create Event Hub connection.":::
+1. The **Data connection** blade opens with the **Basics** tab selected. 
+1. Enter the **Storage account**.
+1. Choose the **Event type** that will trigger ingestion.
+1. Select **Next: Ingest properties**
+
+:::image type="content" source="media/one-click-ingestion-new-table/data-connection-basics-tab.png" alt-text="Screen shot of Data connection blade with Basics tab selected. Fields that should be selected are highlighted by a red box.":::
+
+### Ingest properties
+
+The **Ingest properties** tab opens with pre-filled routing settings. The target table name, format, and mapping name are taken from the table created above.
+
+:::image type="content" source="media/one-click-ingestion-new-table/ingest-properties.png" alt-text="Screen shot of Ingest properties blade.":::
+
+Select **Next: Review + create**
+
+### Review + create
+
+Review the auto-created resources, and select **Create**.
+
+:::image type="content" source="media/one-click-ingestion-new-table/review-create.png" alt-text="Screen shot of review and create blade.":::
 
 ## Next steps
 
