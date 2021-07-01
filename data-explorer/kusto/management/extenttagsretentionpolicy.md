@@ -32,6 +32,23 @@ The extent tags retention policy is an array of policy objects, each includes th
     * The duration for which it's guaranteed that the tags aren't dropped.
 	* Measured starting from the extent's creation time.
 
+### Example
+
+The following policy will have any `drop-by:` tags older than 7 days and any `ingest-by:` tags older than one day automatically dropped:
+
+```json
+[
+    {
+    	"TaxPrefix": "drop-by:",
+	"RetentionPeriod": "7.00:00:00"
+    },
+    {
+    	"TaxPrefix": "ingest-by:",
+	"RetentionPeriod": "1.00:00:00"
+    }
+]
+```
+
 ## Defaults
 
 By default, when the policy isn't defined, extent tags of any kind are retained as long as the extent isn't dropped.
