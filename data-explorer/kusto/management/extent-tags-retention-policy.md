@@ -63,7 +63,7 @@ Delete the extent tags retention policy for the table named `MyTable`:
 For table T1, set an extent tags retention policy so that any `drop-by` tags that are older than a week ago, and any `ingest-by` tags that are older than a day ago will be automatically dropped.
 
 ```kusto
-.alter table T1 policy retention ```[
+.alter table T1 policy extent_tags_retention ```[
 	{
 		"TagPrefix": "drop-by:",
 		"RetentionPeriod": "7.00:00:00"
