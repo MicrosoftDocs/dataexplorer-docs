@@ -125,6 +125,7 @@ For example:
 >   * It shouldn't be used for replacing record-level data, and it relies on the fact that the data tagged in this manner is bulky.
 >   * Attempting to give a unique tag for each record, small number of records, or file - might result with severe impact to performance.
 > * If `drop-by` tags aren't needed for a period of time after data is ingested, we recommend that you [drop the tags](#drop-by-extent-tags).
+>   * To have that done automatically, you can set an [extent tags retention policy](extenttagsretentionpolicy.md).
 
 ### 'ingest-by:' extent tags
 
@@ -153,3 +154,4 @@ The following example ingests data only once. The 2nd and 3rd commands do nothin
 > * If the pipeline feeding Kusto is known to have data duplications, we recommend that you solve these duplications as much as possible, before ingesting the data into Kusto.
 > * Attempting to set a unique `ingest-by` tag for each ingestion call might result with severe impact on performance.
 > * If such tags aren't required for some period of time after the data is ingested, we recommend that you [drop extent tags](drop-extent-tags.md).
+>   * To have that done automatically, you can set an [extent tags retention policy](extenttagsretentionpolicy.md).
