@@ -25,7 +25,7 @@ This article shows you how to create an external table using the one-click exper
 
 There are two ways to access the creation wizard:
 
-* In the left blade of the Web UI, select **Data**. In the **Create external table** card, select **Create**.
+* In the left menu of the Web UI, select **Data**. In the **Create external table** card, select **Create**.
 
      :::image type="content" source="media/external-table/data-blade.png" alt-text="Screenshot of data blade in Azure Data Explorer Web UI with create external table highlighted. .":::
 
@@ -47,7 +47,7 @@ The **Create external table** window opens with the **Destination** tab selected
 
 ### Source tab
 
-1. In **Link to source**, enter the [SAS URL](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) of your source container. You can add up to 10 sources. 
+1. In **Link to source**, enter the [SAS URL](kusto/api/connection-strings/storage.md#generate-a-sas-for-azure-storage-blob-container) of your source container. You can add up to 10 sources. 
     The first source container will display files below the **File filters**. In a later step, you will use one of these files to generate the table schema.
 
     :::image type="content" source="media/external-table/source-tab.png" alt-text="Screen shot of create external table source tab in Azure Data Explorer.":::

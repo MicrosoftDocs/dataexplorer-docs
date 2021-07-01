@@ -49,6 +49,8 @@ For information about ingesting data into an existing table in Azure Data Explor
 
     :::image type="content" source="media/one-click-ingestion-new-table/create-new-table.png" alt-text="Create a new table one-click ingestion.":::
 
+1. Select **Next: Source**
+
 ## Select an ingestion type
 
 Under **Source type**, do the following steps:
@@ -114,7 +116,7 @@ Select **Next: Schema** to view and edit your table column configuration.  By lo
 
 In the **Schema** tab:
 
-   1. Select **Data format**:
+   1. Confirm the format selected in **Data format**:
 
         In this case, the data format is **CSV**
 
@@ -138,11 +140,7 @@ When ingesting to a new table, alter various aspects of the table when creating 
 
 [!INCLUDE [data-explorer-one-click-command-editor](includes/data-explorer-one-click-command-editor.md)]
 
-## Start ingestion
-
 Select **Next: Summary** to create a table and mapping and to begin data ingestion.
-
-:::image type="content" source="media/one-click-ingestion-new-table/start-ingestion.png" alt-text="Start ingestion One Click Ingestion.":::
 
 ## Complete data ingestion
 
