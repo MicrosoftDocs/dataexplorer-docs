@@ -60,7 +60,7 @@ Delete the extent tags retention policy for the table named `MyTable`:
 
 **Example**
 
-1. For table T1, set a policy to retain `drop-by:` tags that are newer than a week ago, and `ingest-by:` tags that are newer than a day ago.
+For table T1, set a policy to retain `drop-by:` tags that are newer than a week ago, and `ingest-by:` tags that are newer than a day ago.
 Any `drop-by` tags that are older than a week ago, and any `ingest-by` tags that are older than a day ago will be automatically dropped.
 
 ```kusto
