@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 06/30/2021
+ms.date: 07/01/2021
 ---
 
 # Ingest data from a container/ADLS into Azure Data Explorer

@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/06/2020
+ms.date: 07/01/2021
 ---
 
 # Create a table in Azure Data Explorer
@@ -97,3 +97,4 @@ In the tiles below the **Create table** progress, explore **Quick queries** or *
 * [Data ingestion overview](ingest-data-overview.md)
 * [One-click ingestion](ingest-data-one-click.md)
 * [Write queries for Azure Data Explorer](write-queries.md)  
+

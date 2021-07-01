@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 07/01/2021
 ---
 # Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer
 
@@ -27,7 +27,7 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 
 ## Ingest new data
 
-1. In the left menu of the [Web UI](https://dataexplorer.azure.com/), select the **Data tab**. 
+1. In the left menu of the [Web UI](https://dataexplorer.azure.com/), select the **Data** tab. 
 
     :::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-web-ui.png" alt-text="Select one-click ingestion in the web UI.":::
 
