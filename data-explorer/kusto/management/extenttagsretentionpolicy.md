@@ -35,7 +35,7 @@ The extent tags retention policy is an array of policy objects, each includes th
 
 ### Example
 
-The following policy will have any `drop-by:` tags older than 7 days and any `ingest-by:` tags older than one day automatically dropped:
+The following policy will have any `drop-by:` tags older than one week and any `ingest-by:` tags older than one day automatically dropped:
 
 ```json
 [
