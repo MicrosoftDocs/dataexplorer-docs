@@ -27,24 +27,30 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 
 ## Ingest new data
 
-1. In the left menu of the [Web UI](https://dataexplorer.azure.com/), right-click a *database* or *table* and select **Ingest new data**. 
+1. In the left menu of the [Web UI](https://dataexplorer.azure.com/), select the **Data tab**. 
 
-:::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-web-ui.png" alt-text="Select one-click ingestion in the web UI.":::
+    :::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-web-ui.png" alt-text="Select one-click ingestion in the web UI.":::
 
-The **Ingest new data** window opens with the **Source** tab selected.
+1. In the **Ingest data from reference to Event Hub** card, select **Ingest**. 
 
-:::image type="content" source="media/one-click-event-hub/reference-to-event-hub.png" alt-text="Screenshot of source tab in ingest new data to Azure Data Explorer with source = reference to Event Hub":::
+The **Ingest new data** window opens with the **Destination** tab selected.
 
-1. The **Database** field is auto-populated with your database. You may select a different database from the drop-down menu.
+### Destination tab
+ 
+:::image type="content" source="media/one-click-event-hub/destination-tab.png" alt-text="Screen shot of destination tab. Cluster, Database, and Table fields must be filled out before proceeding to Next-Source.":::
 
-1. Under **Table**, select **Create new** and enter a name for the new table, or use an existing table. 
+1. The **Cluster** and **Database** fields are auto-populated. You may select a different database from the drop-down menu.
+
+1. Under **Table**, select **Create new table** and enter a name for the new table. Alternatively, use an existing table. 
 
     > [!NOTE]
     > Table names must be between 1 and 1024 characters. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
-1. Under **Source type**, select **Reference to Event Hub**. The data connect selection will appear.
+1. Select **Next: Source**.
 
-## Data connection
+### Source tab
+
+1. Under **Source type**, select **Reference to Event Hub**. 
 
 1. Under **Data Connection**, fill in the following fields:
 
@@ -60,7 +66,7 @@ The **Ingest new data** window opens with the **Source** tab selected.
     | Data format | | Data is read from the Event Hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects. Supported formats are CSV, JSON, PSV, SCsv, SOHsv TSV, and TSVE. |
     | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
 
-1. Select **Edit schema**.
+1. Select **Next: Schema**.
 
 ## Schema tab
 
@@ -76,7 +82,7 @@ For information on schema mapping with CSV-formatted data, see [Edit the schema]
     > [!NOTE]
     > To see a preview of your data, your Event Hub must be sending events.
         
-1. Select **Start ingestion**.
+1. Select **Next: Summary**.
 
 ## Complete data ingestion
 
