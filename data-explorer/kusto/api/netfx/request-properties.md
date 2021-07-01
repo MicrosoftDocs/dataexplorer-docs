@@ -113,6 +113,11 @@ The following example shows sample client code for using request properties:
             "maxmemoryconsumptionperiterator": 68719476736,
             "max_memory_consumption_per_query_per_node": 68719476736,
             "servertimeout": "50m"
+        },
+        "Parameters": {
+            "xIntValue": 111,
+            "xStrValue": "abc",
+            "xDoubleValue": 11.1
         }
     }
 }
