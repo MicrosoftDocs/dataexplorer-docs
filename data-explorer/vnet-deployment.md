@@ -325,7 +325,7 @@ The [ARMClient](https://chocolatey.org/packages/ARMClient) is used to demonstrat
    }
     ```
 
-The outbound dependencies cover categories such as "Azure Active Directory", "Azure Monitor", "Certificate Authority" and "Azure Storage". In each category there is a list of domain names and ports which are needed to run the service. They can be used to programmatically configure the firewall appliance of choice.
+The outbound dependencies cover categories such as "Azure Active Directory", "Azure Monitor", "Certificate Authority", and "Azure Storage". In each category there is a list of domain names and ports which are needed to run the service. They can be used to programmatically configure the firewall appliance of choice.
 
 ## Deploy Azure Data Explorer cluster into your VNet using an Azure Resource Manager template
 
