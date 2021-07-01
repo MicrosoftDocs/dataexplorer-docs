@@ -29,12 +29,12 @@ The extent tags retention policy is an array of policy objects, each includes th
 	* The prefix must include a colon (`:`) as its final character, and may only include one colon.
     * Examples: `drop-by:`, `ingest-by:`, `custom_prefix:`.
 * **RetentionPeriod**: `timespan`
-    * The duration for which it's guaranteed that the tags are not dropped.
+    * The duration for which it's guaranteed that the tags aren't dropped.
 	* Measured starting from the extent's creation time.
 
 ## Defaults
 
-By default, when a the policy is not defined, extent tags of any kind are retained as long as the extent isn't dropped.
+By default, when the policy isn't defined, extent tags of any kind are retained as long as the extent isn't dropped.
 
 ## Control commands
 
