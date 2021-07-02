@@ -129,7 +129,7 @@ override the extents' creation times.
 
 ## The policy object
 
-By default, a table's data partitioning policy is `null`, in which case data in the table won't be re-partitioned after its ingested.
+By default, a table's data partitioning policy is `null`, in which case data in the table won't be re-partitioned after it's ingested.
 
 The data partitioning policy has the following main properties:
 
