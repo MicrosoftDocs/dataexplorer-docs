@@ -40,12 +40,12 @@ The following policy will have any `drop-by:` tags older than one week and any `
 ```json
 [
     {
-    	"TaxPrefix": "drop-by:",
-	"RetentionPeriod": "7.00:00:00"
+        "TaxPrefix": "drop-by:",
+        "RetentionPeriod": "7.00:00:00"
     },
     {
-    	"TaxPrefix": "ingest-by:",
-	"RetentionPeriod": "1.00:00:00"
+        "TaxPrefix": "ingest-by:",
+        "RetentionPeriod": "1.00:00:00"
     }
 ]
 ```
