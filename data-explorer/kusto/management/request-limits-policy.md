@@ -37,8 +37,12 @@ The following limits are configurable:
 
 * A limit that isn't defined, or is defined as `null`, is taken from the `default` workload group's request limits policy.
 * When altering the policy for the `default` workload group, a limit must be defined and have a non-`null` value.
-* For backwards compatibility: For export commands or ingest-from-query commands (such as `.set-or-append` and `.set-or-replace`) that are classified to the `default` workload group, requests limits are disabled, and limits set in the policy don't apply.
-  * However, if these commands are classified to a non-default workload group, the limits in the policy do apply.
+* Backwards compatibility:
+  * Requests limits are disabled, and limits set in the policy don't apply for the following types of commands, when they are classified to the `default` workload group:
+    * `.export` commands.
+    * Commands that ingest from a query (such as `.set-or-append` or `.set-or-replace`).
+  * If these commands are classified to a non-default workload group, the request limits in the policy apply.
+* Some client applications and client libraries may set some client reuqest properties (such as `servertimeout`) by default. If the limit set in the policy is configured with `IsRelaxable` = `true`, requests made by such applications will override the limit by default.
 
 ### Example
 
