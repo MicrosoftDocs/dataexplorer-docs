@@ -12,7 +12,7 @@ ms.date: 04/23/2021
 
 # Materialized views policies
 
-This article includes information about policies that can be set on a materialized views.
+This article includes information about policies that can be set on materialized views.
 
 ## Retention and caching policy
 
@@ -25,7 +25,7 @@ The retention policy of the materialized view is unrelated to the retention poli
 > [!NOTE]
 > Zero retention policy on the source table isn't supported.
 
-The retention and caching policies both depend on [Extent Creation time](../extents-overview.md#extent-creation-time). The extent creation time in the case of materialized views is determined by the last update for a record.
+The retention and caching policies both depend on [Extent Creation time](../extents-overview.md#extent-creation-time). The extent creation time for a materialized view is determined by the last update for a record.
 
 > [!NOTE]
 > The materialization process attempts to minimize the amount of updates to the [materialized part of the view](materialized-view-overview.md#how-materialized-views-work). In cases where a record doesn't _have_ to be updated in the view, it won't be updated. For example, when the materialized view is an `any(*)` aggregation, new records of same group-by keys won't be re-ingested into the view, and therefore the retention policy would be by earliest record ingested.
@@ -36,7 +36,7 @@ A [partitioning policy](../partitioningpolicy.md) can be applied on a materializ
 
 For the commands to alter a materialized view's partitioning policy, see [partitioning policy commands](../partitioning-policy.md#alter-and-alter-merge-policy).
 
-Adding a partitioning policy on a materialized views will increase the number of extents in the materialized view, and will create more "work" for the materialization process. For more information on why this happens, see the extents rebuild process mentioned in [how materialized views work](materialized-view-overview.md#how-materialized-views-work)). In [EngineV3](../../../engine-v3.md) clusters, this process is much more efficient than in V2. Therefore, we recommend to only add a partitioning policy on a materialized view only if the cluster is a V3 cluster.
+Adding a partitioning policy on a materialized view will increase the number of extents in the materialized view, and will create more "work" for the materialization process. For more information on why this happens, see the extents rebuild process mentioned in [how materialized views work](materialized-view-overview.md#how-materialized-views-work)). In [EngineV3](../../../engine-v3.md) clusters, this process is much more efficient than in V2. Therefore, we recommend to only add a partitioning policy on a materialized view only if the cluster is a V3 cluster.
 
 ## Row level security policy
 
