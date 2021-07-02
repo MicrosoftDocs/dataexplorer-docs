@@ -32,7 +32,7 @@ The retention and caching policies both depend on [Extent Creation time](../exte
 
 ## Partitioning policy
 
-A [partitioning policy](../partitioningpolicy.md) can be applied on a materialized view. We recommend configuring a partitioning policy on a materialized view when most or all of the view queries filter by one of the materialized view's group-by keys. This is common in multi-tenant solutions, where one of the materialized view's group-by keys is the tenant's identifer (for example, `tenantId`, `customerId`). For more information, see the first use case described in the [partitioning policy common scenarios](../partitioningpolicy.md#common-scenarios) page.
+A [partitioning policy](../partitioningpolicy.md) can be applied on a materialized view. We recommend configuring a partitioning policy on a materialized view only when most or all of the view queries filter by one of the materialized view's group-by keys. This is common in multi-tenant solutions, where one of the materialized view's group-by keys is the tenant's identifer (for example, `tenantId`, `customerId`). For more information, see the first use case described in the [partitioning policy supported scenarios](../partitioningpolicy.md#supported-scenarios) page.
 
 For the commands to alter a materialized view's partitioning policy, see [partitioning policy commands](../partitioning-policy.md#alter-and-alter-merge-policy).
 
