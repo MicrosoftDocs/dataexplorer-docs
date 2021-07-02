@@ -42,7 +42,9 @@ The following limits are configurable:
     * `.export` commands.
     * Commands that ingest from a query (such as `.set-or-append` or `.set-or-replace`).
   * If these commands are classified to a non-default workload group, the request limits in the policy apply.
-* Some client applications and client libraries may set some client reuqest properties (such as `servertimeout`) by default. If the limit set in the policy is configured with `IsRelaxable` = `true`, requests made by such applications will override the limit by default.
+* Some client applications and client libraries may set some client request properties by default for each request.
+  * For example: `servertimeout` for queries is set to 4 minutes, and `servertimeout` for commands is set to 10 minutes.
+  * If the limit set in the policy is configured with `IsRelaxable` = `true`, requests made by such applications will override the limit by default.
 
 ### Example
 
