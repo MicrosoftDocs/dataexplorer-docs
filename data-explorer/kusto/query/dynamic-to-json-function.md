@@ -11,7 +11,7 @@ ms.date: 08/05/2020
 ---
 # dynamic_to_json()
 
-Converts `dynamic` input to a string representation.
+Converts a scalar value of type `dynamic` to a canonical `string` representation.
 
 ## Syntax
 
@@ -23,11 +23,20 @@ Converts `dynamic` input to a string representation.
 
 ## Returns
 
-Returns a string representation of the `dynamic` input. If the input is a property bag, the output string prints its content sorted by the keys, recursively.
+Returns a canonical representation of the input as a value of type `string`,
+according to the following rules:
 
- >[!NOTE]
- >If the input is a property bag, the output string prints its content sorted by the keys, recursively. Otherwise, the output is similar to the `tostring` function output.
- > Scalar data types that cannot be supported by JSON (such as datetime, timespan, decimal, etc) are not valid input and will result in error.
+1. If the input is a scalar value of type other than `dynamic`,
+   the output is the application of `tostring()` to that value.
+
+1. If the input in an array of values, the output is composed of the
+   characters `[`, `,`, and `]` interspersed with the canonical representation
+   described here of each array element.
+
+1. If the input is a property bag, the output is composed of the characters
+   `{`, `,`, and `}` interspersed with the colon (`:`)-delimited name/value pairs
+   of the properties, where the pairs are sorted by the names, and the values
+   are in the canonical representation described here of each array element.
 
 ## Examples
 
