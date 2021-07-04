@@ -12,7 +12,7 @@ ms.custom: contperf-fy21q1
 
 # Monitoring batching ingestion
 
-In the *batching ingestion* process, Azure Data Explorer optimizes [data ingestion](ingest-data-overview.md) for high throughput by batching incoming small chunks of data into batches based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md). The batching policy allows you to set the trigger conditions for sealing and ingesting a batch (data size, number of blobs, or time passed). These batches are then optimally ingested for fast query results.
+In the *batching ingestion* process, Azure Data Explorer optimizes [data ingestion](ingest-data-overview.md) for high throughput by batching incoming small chunks of data into batches based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md). The batching policy allows you to set the trigger conditions for sealing a batch (data size, number of blobs, or time passed). These batches are then optimally ingested for fast query results.
 
 ## Batching stages
 
@@ -23,7 +23,7 @@ Batching ingestion occurs in stages, and each stage is governed by an ingestion 
 3. The *Ingestion Manager* sends the ingestion commands to the *Azure Data Explorer Storage Engine*.
 4. The *Azure Data Explorer Storage Engine* stores the ingested data, making it available for query.
 
-Azure Data Explorer provides a set of Azure Monitor [ingestion metrics](using-metrics.md#ingestion-metrics) so that you can monitor your data across all the stages and components of the batching ingestion process.
+Azure Data Explorer provides a set of Azure Monitor [ingestion metrics](using-metrics.md#ingestion-metrics) so that you can monitor your data ingestion across all the stages and components of the batching ingestion process.
 The Azure Data Explorer ingestion metrics give you detailed information about:
 
 * The result of the batching ingestion.
@@ -47,12 +47,9 @@ Use the following steps to create metric charts with the [Azure Monitor metrics 
 
 1. Sign in to the [Azure portal](https://portal.azure.com/) and navigate to the overview page for your Azure Data Explorer cluster.
 1. Select **Metrics** from the left-hand navigation bar to open the metrics pane.
-1. Select a **Scope** and a **Metric Namespace**.
-
-   For the examples in this article, use the following values:
-
-   * Set **Scope** to the name of your Azure Data Explorer cluster. In the following example, we will use a cluster named *demo11*.
-   * Set **Metric Namespace** to *Kusto Cluster standard metrics*. This is the namespace that contains the Azure Data Explorer ingestion metrics.
+1. Select a **Scope** and a **Metric Namespace**:
+   * The **Scope** is the name of your Azure Data Explorer cluster. In the following example, we will use a cluster named *demo11*.
+   * The **Metric Namespace** should be set to *Kusto Cluster standard metrics*. This is the namespace that contains the Azure Data Explorer metrics.
 
    :::image type="content" source="media/monitor-batching-ingestion/metrics-settings-selector.png" alt-text="Screenshot showing how to select settings for a metric in Azure portal.":::
 
@@ -70,13 +67,13 @@ In this article, you'll learn which metrics can be used to track batching ingest
 
 The **Ingestion result** metric provides information about the total number of sources that were successfully ingested and those that failed to be ingested.
 
-In this example, we'll use this metric to view the result of our ingestion attempts and use the detailed status information to help troubleshoot any failed attempts.
+In this example, we'll use this metric to view the result of our ingestion attempts and use the status information to help troubleshoot any failed attempts.
 
 1. In the **Metrics** pane in Azure Monitor, select **Add Metric**.
-1. Select *Ingestion result* as the **Metric** value and *Sum* as the **Aggregation** value. This selection shows you the ingestion operations over time in one chart line.
-1. Select the **Apply splitting** button above the chart and choose *Status* to segment your chart by the status of the ingestion operations. After selecting the splitting values, click away from the split selector to close it.
+1. Select *Ingestion result* as the **Metric** value and *Sum* as the **Aggregation** value. This selection shows you the ingestion results over time in one chart line.
+1. Select the **Apply splitting** button above the chart and choose *Status* to segment your chart by the status of the ingestion results. After selecting the splitting values, click away from the split selector to close it.
 
-Now the metric information is split by status, and we can see information about the status of the ingestion operations split into three lines:
+Now the metric information is split by status, and we can see information about the status of the ingestion results split into three lines:
 
 1. Blue for successful ingestion operations.
 2. Orange for ingestion operations that failed because of *Entity not found*.
@@ -86,14 +83,14 @@ Now the metric information is split by status, and we can see information about 
 
 Consider the following when looking at the chart of ingestion results:
 
-* When using Event Hub ingestion, there is an event pre-aggregation in the *Data connection component*. During this stage of ingestion, events are treated as a single source to be ingested. Therefore, a few events appear as a single ingestion result after pre-aggregation.
+* When using Event Hub or IoT Hub ingestion, there is an event pre-aggregation in the *Data connection component*. During this stage of ingestion, events are treated as a single source to be ingested. Therefore, a few events appear as a single ingestion result after pre-aggregation.
 * Transient failures are retried internally in a limited number of attempts. Each transient failure is reported as a transient ingestion result. That's why a single ingestion may lead to more than one ingestion result.
 * Ingestion errors in the chart are listed by the category of the error code. To see the full list of ingestion error codes by categories and try to better understand the possible error reason, see [Ingestion error codes in Azure Data Explorer](error-codes.md).
 * To get more details on an ingestion error, you can set [failed ingestion diagnostic logs.](using-diagnostic-logs.md?tabs=ingestion#failed-ingestion-operation-log). However, it's important to consider that generating logs results in the creation of extra resources, and therefore an increase in the COGS (cost of goods sold).
 
 ## View the amount of ingested data
 
-The **Blobs Processed**, **Blobs Received**, and **Blobs Dropped** metrics provide information about the number of blobs that are processed by the ingestion components during the stages of batching ingestion.
+The **Blobs Processed**, **Blobs Received**, and **Blobs Dropped** metrics provide information about the number of blobs that are processed, received, and dropped by the ingestion components during the stages of batching ingestion.
 
 In this example, we'll use these metrics to see how much data passed through the ingestion pipeline, how much data was received by the ingestion components, and how much data was dropped.
 
@@ -104,7 +101,7 @@ In this example, we'll use these metrics to see how much data passed through the
 1. Select the **Apply splitting** button and choose *Component Type* to segment the chart by the different ingestion components.
 1. To focus on a specific database in your cluster, select the **Add filter** button above the chart and then choose which database values to include when plotting the chart. In this example, we filter on the blobs sent to the *GitHub* database by selecting *Database* as the **Property**, *=* as the **Operator**, and *GitHub* in the **Values** drop-down. After selecting the filter values, click away from the filter selector to close it.
 
-Now the chart shows how many blobs sent to the *GitHub* database were processed at each of the ingestion components over time.
+Now the chart shows how many blobs that were sent to the *GitHub* database were processed at each of the ingestion components over time.
 
 :::image type="content" source="media/monitor-batching-ingestion/blobs-processed-by-component-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of blobs processed from the github database, aggregated by sum and split by component type.":::
 
@@ -125,7 +122,7 @@ To better understand the relation between the number of blobs that were received
 
 ### Blobs Dropped
 
-To determine conclusively that no blobs were dropped during ingestion, you should analyze the **Blobs Dropped** metric. This metric shows how many blobs were dropped during ingestion and helps you detect whether there is a problem in processing at a specific ingestion component. For each dropped blob, you will also get an **Ingestion Result** metric with more information about the reason for failure.
+To determine whether there are blobs that were dropped during ingestion, you should analyze the **Blobs Dropped** metric. This metric shows how many blobs were dropped during ingestion and helps you detect whether there is a problem in processing at a specific ingestion component. For each dropped blob, you will also get an **Ingestion Result** metric with more information about the reason for failure.
 
 ## View the ingestion latency
 
