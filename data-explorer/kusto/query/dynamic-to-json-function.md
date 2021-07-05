@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: elgevork
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 07/05/2021
 ---
 # dynamic_to_json()
 
@@ -35,7 +35,7 @@ according to the following rules:
 
 1. If the input is a property bag, the output is composed of the characters
    `{`, `,`, and `}` interspersed with the colon (`:`)-delimited name/value pairs
-   of the properties, where the pairs are sorted by the names, and the values
+   of the properties. The pairs are sorted by the names, and the values
    are in the canonical representation described here of each array element.
 
 ## Examples
