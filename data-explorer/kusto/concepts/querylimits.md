@@ -233,3 +233,7 @@ For this specific case, rewrite the query using the [`in()`](../query/inoperator
 T 
 | where Column in ("value1", "value2".... "valueN")
 ```
+
+## Next steps
+
+* [Optimize for high concurrency with Azure Data Explorer](../../high-concurrency.md)
