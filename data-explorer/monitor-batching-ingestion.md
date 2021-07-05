@@ -30,7 +30,7 @@ The Azure Data Explorer ingestion metrics give you detailed information about:
 * The amount of ingested data and how it was batched.
 * The latency of the batching ingestion and where it occurs.
 * The batching process itself.
-* The number of events received, when ingesting with Event Hub, Event Grid, or IoT Hub.
+* For Event Hub, Event Grid and IoT Hub ingestion: The number of events received.
 
 In this article, you'll learn how to use ingestion metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
 
@@ -38,7 +38,7 @@ In this article, you'll learn how to use ingestion metrics to monitor batching i
 
 * An Azure subscription. If you don't have one, you can create a [free Azure account](https://azure.microsoft.com/free/).
 * A [cluster and database](create-cluster-database-portal.md).
-* A data connection to [Event Hub](ingest-data-event-hub-overview.md), [IoT Hub](ingest-data-iot-hub-overview.md), or [Event Grid](ingest-data-event-grid-overview.md) or another form of batching ingestion.
+* An active batching ingestion ([Event Hub](ingest-data-event-hub-overview.md), [IoT Hub](ingest-data-iot-hub-overview.md), [Event Grid](ingest-data-event-grid-overview.md) or any other form of batching ingestion).
 
 ## Create metric charts with Azure Monitor metrics explorer
 
