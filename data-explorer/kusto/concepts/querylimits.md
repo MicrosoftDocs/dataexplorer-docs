@@ -26,6 +26,8 @@ in the form of default query limits. If you're considering removing these limits
   * For example, for a cluster that's set-up on D14v2 SKU, where each machine has 16 vCores, the default limit is `16 cores x10 = 160`.
 * The default value can be changed by configuring the [request rate limit policy](../management/request-rate-limit-policy.md) of the `default` workload group.
   * The actual number of requests that can run concurrently on a cluster depends on various factors. The most dominant factors are cluster SKU, cluster's available resources, and usage patterns. The policy can be configured based on load tests performed on production-like usage patterns.
+ 
+ For more information, see [Optimize for high concurrency with Azure Data Explorer](../../high-concurrency.md).
 
 ## Limit on result set size (result truncation)
 
