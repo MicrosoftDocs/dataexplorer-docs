@@ -26,14 +26,14 @@ Converts a scalar value of type `dynamic` to a canonical `string` representation
 Returns a canonical representation of the input as a value of type `string`,
 according to the following rules:
 
-1. If the input is a scalar value of type other than `dynamic`,
+* If the input is a scalar value of type other than `dynamic`,
    the output is the application of `tostring()` to that value.
 
-1. If the input in an array of values, the output is composed of the
+* If the input in an array of values, the output is composed of the
    characters `[`, `,`, and `]` interspersed with the canonical representation
    described here of each array element.
 
-1. If the input is a property bag, the output is composed of the characters
+* If the input is a property bag, the output is composed of the characters
    `{`, `,`, and `}` interspersed with the colon (`:`)-delimited name/value pairs
    of the properties. The pairs are sorted by the names, and the values
    are in the canonical representation described here of each array element.
