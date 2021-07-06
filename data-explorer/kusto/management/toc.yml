@@ -220,8 +220,8 @@ items:
       href: extent-tags-retention-policy.md
     - name: .show extent tags retention policy
       href: show-extent-tags-retention-policy.md
-    - name: .drop extent tags retention policy
-      href: drop-extent-tags-retention-policy.md
+    - name: .delete extent tags retention policy
+      href: delete-extent-tags-retention-policy.md
     - name: .alter extent tags retention policy
       href: alter-extent-tags-retention-policy.md
   - name: Restricted view access
