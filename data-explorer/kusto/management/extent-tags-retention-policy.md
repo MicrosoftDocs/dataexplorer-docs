@@ -1,6 +1,6 @@
 ---
-title: Kusto extent tags retention policy management - Azure Data Explorer
-description: This article describes extent tags retention policy management in Azure Data Explorer.
+title: Extent tags retention policy - Azure Data Explorer
+description: This article describes extent tags retention policies in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,68 +9,49 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/01/2021
 ---
-# Extent tags retention policy commands
+# Extent tags retention policy
 
-This article describes control commands used for creating and altering [extent tags retention policy](extenttagsretentionpolicy.md).
+The extent tags retention policy controls the mechanism that automatically removes [extent tags](extents-overview.md#extent-tagging) from tables, based on the age of the extents.
 
-## Show extent tags retention policy
+It's recommended to remove any tags that are no longer helpful, or were used temporarily as part of an ingestion pipeline, and may limit the system from reaching optimal performance.  
+For example: old `drop-by:` tags, which prevent merging extents together.
 
-Shows a table-level or database-level extent tags retention policy
+The policy can be set at the table-level, or at the database-level. A database-level policy applies to all tables in the database that don't override the policy.
 
-```kusto
-.show table table_name policy extent_tags_retention
+> [!NOTE]
+> The deletion time is imprecise. The system guarantees that tags won't be deleted before the limit is exceeded, but deletion isn't immediate following that point.
 
-.show database database_name policy extent_tags_retention
-```
+## The policy object
 
-**Example**
+The extent tags retention policy is an array of policy objects. Each object includes the following properties:
 
-Show the extent tags retention policy for the database named `MyDatabase`:
+Property name | Type | Description | Example
+|---|---|---|---|
+| **TagPrefix**|  `string` | The prefix of the tags to be automatically deleted, once `RetentionPeriod` is exceeded. The prefix must include a colon (`:`) as its final character, and may only include one colon. | `drop-by:`, `ingest-by:`, `custom_prefix:`|
+| **RetentionPeriod** | `timespan`| The duration for which it's guaranteed that the tags aren't dropped. This period is measured starting from the extent's creation time. | 5.00:00:00 |
 
-```kusto
-.show database MyDatabase policy extent_tags_retention
-```
+### Example
 
-## Delete extent tags retention policy
+The following policy will have any `drop-by:` tags older than one week and any `ingest-by:` tags older than one day automatically dropped:
 
-Deletes a table-level or database-level extent tags retention policy.
-
-```kusto
-.delete table table_name policy extent_tags_retention
-
-.delete database database_name policy extent_tags_retention
-```
-
-**Example**
-
-Delete the extent tags retention policy for the table named `MyTable`:
-
-```kusto
-.delete table MyTable policy extent_tags_retention
-```
-
-
-## Alter extent tags retention policy
-
-```kusto
-.alter table table_name policy extent_tags_retention ```<serialized policy>```
-
-.alter database database_name policy extent_tags_retention ```<serialized policy>```
-```
-
-**Example**
-
-For table T1, set an extent tags retention policy so that any `drop-by` tags that are older than a week ago, and any `ingest-by` tags that are older than a day ago will be automatically dropped.
-
-```kusto
-.alter table T1 policy extent_tags_retention ```[
-	{
-		"TagPrefix": "drop-by:",
-		"RetentionPeriod": "7.00:00:00"
-	},
-	{
-		"TagPrefix": "ingest-by:",
-		"RetentionPeriod": "1.00:00:00"
-	}
+```json
+[
+    {
+        "TagPrefix": "drop-by:",
+        "RetentionPeriod": "7.00:00:00"
+    },
+    {
+        "TagPrefix": "ingest-by:",
+        "RetentionPeriod": "1.00:00:00"
+    }
 ]
 ```
+
+## Defaults
+
+By default, when the policy isn't defined, extent tags of any kind are retained as long as the extent isn't dropped.
+
+## Control commands
+
+The following control commands can be used  for managing the extent tags retention policy.
+
