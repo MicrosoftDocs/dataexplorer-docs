@@ -103,6 +103,27 @@ In the REST API, query parameters appear in the same JSON-encoded string as the 
 
 The following example shows sample client code for using request properties:
 
+#### Json body
+```json
+{
+    "db": "databaseName",
+    "csl": "QueryHistory | where Duration > 4m and ClientActivityId contains 'unspecified'",
+    "properties": {
+        "Options": {
+            "maxmemoryconsumptionperiterator": 68719476736,
+            "max_memory_consumption_per_query_per_node": 68719476736,
+            "servertimeout": "50m"
+        },
+        "Parameters": {
+            "xIntValue": 111,
+            "xStrValue": "abc",
+            "xDoubleValue": 11.1
+        }
+    }
+}
+```
+
+#### Csharp client
 ```csharp
 public static System.Data.IDataReader QueryKusto(
     Kusto.Data.Common.ICslQueryProvider queryProvider,
