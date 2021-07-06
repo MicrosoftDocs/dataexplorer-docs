@@ -129,6 +129,11 @@
       "source_path": "data-explorer/kusto/management/external-table-commands.md",
       "redirect_url": "/azure/data-explorer/kusto/management/show-external-tables",
       "redirect_document_id": false
-    }
+    },
+    {
+      "source_path": "data-explorer/kusto/management/merge-extents.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/extents-overview",
+      "redirect_document_id": false
+    },
   ]
 }
