@@ -362,8 +362,6 @@ items:
         href: drop-extents.md
       - name: .drop extent tags
         href: drop-extent-tags.md
-      - name: .merge extents
-        href: merge-extents.md
       - name: .move extents
         href: move-extents.md
       - name: .replace extents
