@@ -31,7 +31,7 @@ The following limits are configurable:
 | MaxFanoutNodesPercentage   | `int`     | The percentage of nodes on the cluster to fan out query execution to. Functions in a similar manner to `MaxFanoutThreadsPercentage`.    | [`1`, `100`]                              |  `query_fanout_nodes_percent`               |
 | MaxResultRecords           | `long`     | maximum number of records a request is allowed to return to the caller, above which the results are truncated.    | [`1`, `9223372036854775807`]   | `truncationmaxrecords`  |
 | MaxResultBytes     | `long`           | The maximum data size (in bytes) a request is allowed to return to the caller, above which the results are truncated.  | [`1`, `9223372036854775807`]    | `truncationmaxsize`    |
-| MaxExecutionTime     | `timespan`   | The maximum duration the request may run for. Note: timeout processing isn't at the resolution of *seconds*, rather it's designed to prevent a query from running for *minutes*.  | (`00:01:00`, `01:00:00`]   | `servertimeout`    |
+| MaxExecutionTime     | `timespan`   | The maximum duration the request may run for.<br/>Notes:<br/>1) This can be used to reduce the [*default* limits on execution time](../concepts/querylimits#limit-execution-timeout), but not extend them.<br/>2) Timeout processing isn't at the resolution of *seconds*, rather it's designed to prevent a query from running for *minutes*.  | (`00:01:00`, `01:00:00`]   | `servertimeout`    |
 
 ### Notes
 
@@ -42,9 +42,6 @@ The following limits are configurable:
     * `.export` commands.
     * Commands that ingest from a query (such as `.set-or-append` or `.set-or-replace`).
   * If these commands are classified to a non-default workload group, the request limits in the policy apply.
-* Some client applications and client libraries may set some client request properties by default for each request.
-  * For example: `servertimeout` for queries is set to 4 minutes, and `servertimeout` for commands is set to 10 minutes.
-  * If the limit set in the policy is configured with `IsRelaxable` = `true`, requests made by such applications will override the limit by default.
 
 ### Example
 
