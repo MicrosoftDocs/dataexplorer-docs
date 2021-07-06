@@ -91,7 +91,7 @@ The update policy will behave like regular ingestion when the following conditio
 
 ## Zero retention on source table
 
-Sometimes data is ingested to a source table only as a stepping stone to the target table, and you don't want to keep the raw data in the source table. Set a soft-delete period of 0 in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: 
+Sometimes data is ingested to a source table only as a stepping stone to the target table, and you don't want to keep the raw data in the source table. Set a soft-delete period of `0sec` (or `00:00:00`) in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: 
 
 * The source data isn't queryable from the source table. 
 * The source data isn't persisted to durable storage as part of the ingestion operation. 

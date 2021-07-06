@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: guregini
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/07/2021
+ms.date: 06/21/2021
 ---
 
 # Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs
@@ -38,7 +38,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 
 * **Successful ingestion operations**: These logs have information about successfully completed ingestion operations.
 * **Failed ingestion operations**: These logs have detailed information about failed ingestion operations including error details. 
-* **Ingestion batching operations**: These logs have detailed statistics of batches ready for ingestion (duration, batch size and blobs count).
+* **Ingestion batching operations**: These logs have detailed statistics of batches ready for ingestion (duration, batch size, blobs count, and [batching types](kusto/management/batchingpolicy.md#batching-types)).
 
 # [Commands and Queries](#tab/commands-and-queries)
 
@@ -50,7 +50,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
     
 # [Tables](#tab/tables)
 
-* **TableUsageStatistics**: These logs have detailed information about usage of commands and queries that have reached a final state.
+* **TableUsageStatistics**: These logs have detailed information about the tables whose extents were scanned during query execution.
 
     > [!NOTE]
     > The `TableUsageStatistics` log data doesn't contain the command or query text.
@@ -182,7 +182,7 @@ Log JSON strings include elements listed in the following table:
 |RootActivityId     |Activity ID
 |Details            |Detailed description of the failure and error message
 |ErrorCode          |[Ingestion error code](error-codes.md)
-|FailureStatus      |`Permanent` or `Transient`. Retry of a transient failure may succeed.
+|FailureStatus      |`Permanent` or `RetryAttemptsExceeded` indicates that operation has exceeded the retry attempts limit or timespan limit following a recurring transient error.
 |OriginatesFromUpdatePolicy|True if failure originates from an update policy
 |ShouldRetry        |True if retry may succeed
 
@@ -219,7 +219,7 @@ Log JSON strings include elements listed in the following table:
 | Timestamp            | The time of the batching reporting |
 | Database             | Name of the database holding the target table |
 | Table                | Name of the target table into which the data is ingested |
-| BatchingType         | Type of batching. If the batch reached batching time, the value will be `Time`. For data size or number of files, the value will be `Size`. If the system had to flush the data, for example due to cluster scaling or internal reset of system components, the value will be `SystemFlush`. |
+| BatchingType         | The trigger for sealing a batch. For a complete list of batching types, see [Batching types](kusto/management/batchingpolicy.md#batching-types). |
 | SourceCreationTime   | Minimal time (UTC) at which blobs in this batch were created |
 | BatchTimeSeconds     | Total batching time of this batch (seconds) |
 | BatchSizeBytes       | Total uncompressed size of data in this batch (bytes) |

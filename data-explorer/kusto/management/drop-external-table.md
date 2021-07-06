@@ -23,7 +23,7 @@ This command is relevant to any external table of any type. For an overview of e
 
 ## Output
 
-Returns the properties of the dropped table. For more information, see [`.show external tables`](show-external-tables.md).
+Returns the properties of the dropped external table. For more information, see [`.show external tables`](show-external-tables.md).
 
 ## Examples
 
