@@ -19,7 +19,7 @@ A request rate limit policy has the following properties:
 
 | Name                     | Supported values                            | Default value | Description                                   |
 |--------------------------|---------------------------------------------|----------------|-----------------------------------------------|
-| QueriesEnforcementLevel  | `Cluster`, `Database`, `QueryHead`          | `QueryHead`   | Indicates the enforcement level for queries.  |
+| QueriesEnforcementLevel  | `Cluster`, `QueryHead`                      | `QueryHead`   | Indicates the enforcement level for queries.  |
 | CommandsEnforcementLevel | `Cluster`, `Database`                       | `Database`    | Indicates the enforcement level for commands. |
 
 ### Request rate limits enforcement level
