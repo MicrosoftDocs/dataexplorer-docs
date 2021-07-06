@@ -50,7 +50,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
     
 # [Tables](#tab/tables)
 
-* **TableUsageStatistics**: These logs have detailed information about tables that were accessed during queries execution (details of tables whose extents were scanned).
+* **TableUsageStatistics**: These logs have detailed information about the tables whose extents were scanned during query execution.
 
     > [!NOTE]
     > The `TableUsageStatistics` log data doesn't contain the command or query text.
