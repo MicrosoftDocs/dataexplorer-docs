@@ -11,7 +11,7 @@ ms.date: 07/01/2021
 ---
 # .show extent tags retention policy
 
-Shows a table-level or database-level extent tags retention policy. For more information, see [extent tags retention policy](extenttagsretentionpolicy.md).
+Shows a table-level or database-level extent tags retention policy. For more information, see [extent tags retention policy](extent-tags-retention-policy.md).
 
 ## Syntax
 

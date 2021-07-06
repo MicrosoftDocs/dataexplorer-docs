@@ -217,9 +217,13 @@ items:
   - name: Extent tags retention
     items:
     - name: Extent tags retention policy
-      href: extenttagsretentionpolicy.md
-    - name: Extent tags retention policy commands
       href: extent-tags-retention-policy.md
+    - name: .show extent tags retention policy
+      href: show-extent-tags-retention-policy.md
+    - name: .drop extent tags retention policy
+      href: drop-extent-tags-retention-policy.md
+    - name: .alter extent tags retention policy
+      href: alter-extent-tags-retention-policy.md
   - name: Restricted view access
     items:
     - name: Restricted view access policy

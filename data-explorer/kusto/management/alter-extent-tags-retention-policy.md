@@ -11,7 +11,7 @@ ms.date: 07/01/2021
 ---
 # .alter extent tags retention policy
 
-Alters a table-level or database-level extent tags retention policy. For more information, see [extent tags retention policy](extenttagsretentionpolicy.md).
+Alters a table-level or database-level extent tags retention policy. For more information, see [extent tags retention policy](extent-tags-retention-policy.md).
 
 ## Syntax
 
