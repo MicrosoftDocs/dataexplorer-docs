@@ -29,13 +29,6 @@ Using the plugin, you can reason across data in both Azure Digital Twins and any
 
 The azure_digital_twins_query_request plugin uses the Azure AD account of the user running the query to authenticate. To run a query, a user must at least be granted the **Azure Digital Twins Data Reader** role. Information on how to assign this role can be found in [**Security for Azure Digital Twins solutions**](/azure/digital-twins/concepts-security#authorization-azure-roles-for-azure-digital-twins).
 
-## Setup
-
-This plugin is disabled by default. To enable the plugin on your cluster, run the following command:
-`.enable plugin azure_digital_twins_query_request`. This command requires the **All Databases admin** permission.
-
-For more information on this command, see [**.enable plugin | Azure Data Explorer documentation**](../management/enable-plugin.md). For more information on role-based authorization in Kusto, see [**Role-based Authorization in Kusto | Azure Data Explorer documentation**](../management/access-control/role-based-authorization.md).
-
 ## Examples
 
 The following examples show how you can run various Azure Digital Twins queries, including queries that use additional Kusto expressions.
