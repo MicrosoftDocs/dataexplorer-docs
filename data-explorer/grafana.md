@@ -25,7 +25,7 @@ You need the following to complete this article:
 
 * [Grafana version 5.3.0 or later](https://docs.grafana.org/installation/) for your operating system
 
-* The [Azure Data Explorer plugin](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) for Grafana. Plugin version 3.0.5 or later is required to use Grafana query builder.
+* The [Azure Data Explorer plugin](https://grafana.com/grafana/plugins/grafana-azure-data-explorer-datasource/) for Grafana. Plugin version 3.0.5 or later is required to use Grafana query builder.
 
 * A cluster that includes the StormEvents sample data. For  more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
 
