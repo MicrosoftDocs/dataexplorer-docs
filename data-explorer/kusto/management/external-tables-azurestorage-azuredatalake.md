@@ -167,7 +167,7 @@ dataformat=csv
 ) 
 ```
 
-An external table partitioned by date. Date files are expected to be placed in directories of default datetime format `yyyy/MM/dd`:
+An external table partitioned by date. Data files are expected to be placed under directories of the default datetime format `yyyy/MM/dd`:
 
 ```kusto
 .create external table ExternalTable (Timestamp:datetime, x:long, s:string) 
@@ -236,8 +236,8 @@ external_table("ExternalTable")
 <a name="virtual-columns"></a>
 **Virtual columns**
 
-When data is exported from Spark, partition columns (that are specified in dataframe writer's `partitionBy` method) are not written to data files. 
-This process avoids data duplication because the data already present in "folder" names. For example, `column1=<value>/column2=<value>/`, and Spark can recognize it upon read.
+When data is exported from Spark, partition columns (that are provided to the dataframe writer's `partitionBy` method) are not written to data files. 
+This process avoids data duplication because the data is already present in the folder names (for example, `column1=<value>/column2=<value>/`), and Spark can recognize it upon read.
 
 External tables support the following syntax for specifying virtual columns:
 
@@ -263,11 +263,11 @@ external_table("ExternalTable")
 <a name="file-filtering"></a>
 **File filtering logic**
 
-When querying an external table, the query engine improves performance by filtering out irrelevant external storage files. The process of iterating on files and deciding whether a file should be processed is described below.
+When querying an external table, the query engine improves performance by filtering out irrelevant external storage files. The process of iterating files and deciding whether a file should be processed is as follows:
 
 1. Build a URI pattern that represents a place where files are found. Initially, the URI pattern equals a connection string provided as part of the external table definition. If there are any partitions defined, they are rendered using *[PathFormat](#path-format)*, then appended to the URI pattern.
 
-2. For all files found under the URI patterns(s) created, check:
+2. For all files found under the URI patterns(s) created, check that:
 
    * Partition values match predicates used in a query.
    * Blob name starts with `NamePrefix`, if such a property is defined.
@@ -300,7 +300,7 @@ where *MaxResults* is an optional parameter, which can be set to limit the numbe
 | Partition        | dynamic | Dynamic object describing file partitions for partitioned external table |
 
 > [!TIP]
-> Iterating on all files referenced by an external table can be quite costly, depending on the number of files. Make sure to use `limit` parameter if you just want to see some URI examples.
+> Iterating over all files referenced by an external table can be quite costly, depending on the number of files. Make sure to use `limit` parameter if you just want to see some URI examples.
 
 **Examples:**
 
