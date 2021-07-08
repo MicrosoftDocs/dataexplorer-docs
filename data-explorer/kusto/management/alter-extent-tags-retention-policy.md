@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/01/2021
+ms.date: 07/08/2021
 ---
 # .alter extent tags retention policy
 
@@ -20,8 +20,6 @@ Alters a table-level or database-level extent tags retention policy. For more in
 
 .alter database database_name policy extent_tags_retention ```<serialized policy>```
 ```
-
-## Returns
 
 ## Example
 

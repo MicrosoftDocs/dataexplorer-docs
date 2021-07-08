@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/01/2021
+ms.date: 07/08/2021
 ---
 # .show extent tags retention policy
 
@@ -20,8 +20,6 @@ Shows a table-level or database-level extent tags retention policy. For more inf
 
 .show database database_name policy extent_tags_retention
 ```
-
-## Returns
 
 ## Example
 
