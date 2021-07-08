@@ -57,7 +57,7 @@ where *ColumnName* adheres to [entity naming](../query/schema-entities/entity-na
 <a name="partitions"></a>
 *Partitions*
 
-Comma-separated list of columns by which an external table is partitioned. Partition column can exist in the data file itself, or sa part of the file path (read more on [virtual columns](#virtual-columns)).
+Comma-separated list of columns by which an external table is partitioned. Partition column can exist in the data file itself, or as part of the file path (read more on [virtual columns](#virtual-columns)).
 
 Partitions list is any combination of partition columns, specified using one of the following forms:
 
