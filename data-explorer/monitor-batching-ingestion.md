@@ -132,9 +132,9 @@ The metrics **Stage Latency** and **Discovery Latency** monitor latency in the i
 * **Discovery Latency** is used for ingestion pipelines with data connections (such as Event Hub, IoT Hub, and Event Grid). This metric gives information about the time span from data enqueue until discovery by Azure Data Explorer data connections. This time span is upstream to Azure Data Explorer, so it is not included in the **Stage Latency** metric that only measures the latency in Azure Data Explorer.
 
 > [!NOTE]
-> According to the default [batching policy](kusto/management/batchingpolicy.md), the default batching time is 5 minutes. Therefore, the expected latency is at least 5 minutes when using the default batching policy.
+> According to the default [batching policy](kusto/management/batchingpolicy.md), the default batching time is five minutes. Therefore, if the batch isn't sealed by other triggers, the batch will be sealed after five minutes. 
 
-When you see a long latency until data is ready for query, analyzing **Stage Latency** and **Discovery Latency** can help you understand whether the long latency is because of long latency in Azure Data Explorer, or is upstream to Azure Data Explorer. You can also detect the specific component responsible for the long latency.
+When you see a long latency until data is ready for query, analyzing **Stage Latency** and **Discovery Latency** can help you understand whether the long latency is because of long latency in Azure Data Explorer, or is upstream to Azure Data Explorer. When the latency is in Azure Data Explorer itself, you can also detect the specific component responsible for the long latency.
 
 ### Stage Latency
 
@@ -152,8 +152,8 @@ Now the chart shows the latency of ingestion operations that are sent to GitHub 
 
 We can tell the following information from this chart:
 
-* The latency at the *Data Connection* component is approximately 0 seconds. This makes sense, because **Stage Latency** only measures latency from when a message is discovered by Azure Data Explorer.
-* The longest time in the ingestion process (approximately 5 minutes) passes from when the *Batching Manager* component received data to when the *Ingestion Manager* component received data. In this example, we use the default batching policy for the *GitHub* database. As noted, the latency time for the default batching policy is 5 minutes, so this indicates that nearly all the latency time for the batching ingestion was due to the default latency.
+* The latency at the *Event Hub Data Connection* component is approximately 0 seconds. This makes sense, because **Stage Latency** only measures latency from when a message is discovered by Azure Data Explorer.
+* The longest time in the ingestion process (approximately 5 minutes) passes from when the *Batching Manager* component received data to when the *Ingestion Manager* component received data. In this example, we use the default batching policy for the *GitHub* database. As noted, the latency time for the default batching policy is 5 minutes, so this indicates that nearly all the data was batched by time, and most of the latency time for the batching ingestion was due to the batching itself.
 * The storage engine latency in the chart represents the latency when data is received by the *Azure Data Explorer Storage Engine* component. You can see that the average total latency from the time of data discovery by Azure Data Explorer until it's ready for query is 5.2 minutes.
 
 ### Discovery Latency
