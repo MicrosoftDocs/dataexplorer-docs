@@ -33,9 +33,10 @@ Request rate limits can be enforced at one of the following levels:
   * If there are multiple database admin nodes, the configured rate limit is effectively multiplied by the number of database admin nodes.
 * `QueryHead`:
   * Rate limits for *queries* are enforced by the query head node that the query was routed to.
-  * This option affects queries that are sent with [weak consistency](../concepts/queryconsistency.md). For those queries, the configured rate limit
-    is effectively multiplied by the number of query head nodes.
-  * This option can't be applied to *control commands*.
+  * This option affects queries that are sent with either strong or weak [query consistency](../concepts/queryconsistency.md).
+    * Strongly consistent queries run on the database admin node, and the configured rate limit is effectively multiplied by the number of database admin nodes.
+    * For weakly consistent queries, the configured rate limit is effectively multiplied by the number of query head nodes.
+  * This option doesn't apply to *control commands*.
 
 > [!NOTE]
 > * If the policy is undefined (`null`), the default enforcement level applies to both commands and queries.
