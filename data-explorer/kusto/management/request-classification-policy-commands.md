@@ -39,7 +39,7 @@ Changes the cluster's request classification policy.
 #### Set a policy with a single workload group
 
 ```kusto
-.alter cluster policy request_classification '{"IsEnabled":false}' <|
+.alter cluster policy request_classification '{"IsEnabled":true}' <|
     iff(request_properties.current_application == "Kusto.Explorer" and request_properties.request_type == "Query",
         "Ad-hoc queries",
         "default")
