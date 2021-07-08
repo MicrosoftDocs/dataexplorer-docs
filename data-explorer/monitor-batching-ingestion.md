@@ -79,7 +79,7 @@ Now the metric information is split by status, and we can see information about 
 2. Orange for ingestion operations that failed because of *Entity not found*.
 3. Purple for ingestion operations that failed because of *Bad request*.
 
-:::image type="content" source="media/monitor-batching-ingestion/ingestion-result-by-status-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of ingestion results aggregated by sum and split by status." lightbox="media/monitor-batching-ingestion/ingestion-result-by-status-chart.png":::
+:::image type="content" source="media/monitor-batching-ingestion/ingestion-result-by-status-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of ingestion results aggregated by sum and split by status." lightbox="media/monitor-batching-ingestion/ingestion-result-by-status-chart-big.png":::
 
 Consider the following when looking at the chart of ingestion results:
 
@@ -103,7 +103,7 @@ In this example, we'll use these metrics to see how much data passed through the
 
 Now the chart shows how many blobs that were sent to the *GitHub* database were processed at each of the ingestion components over time.
 
-:::image type="content" source="media/monitor-batching-ingestion/blobs-processed-by-component-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of blobs processed from the github database, aggregated by sum and split by component type." lightbox="media/monitor-batching-ingestion/blobs-processed-by-component-type-chart.png":::
+:::image type="content" source="media/monitor-batching-ingestion/blobs-processed-by-component-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of blobs processed from the github database, aggregated by sum and split by component type." lightbox="media/monitor-batching-ingestion/blobs-processed-by-component-type-chart-big.png":::
 
 * Notice that on February 13 there's a decrease in the number of blobs that were ingested to the *GitHub* database over time. Also, notice that the number of blobs that were processed at each of the components is similar, meaning that approximately all data processed in the *Data Connection* component was also processed successfully by the *Batching Manager*, *Ingestion Manager*, and *Azure Data Explorer Storage Engine* components. This data is ready for query.
 
