@@ -35,5 +35,5 @@ For table T1, set an extent tags retention policy so that any `drop-by` tags tha
 		"TagPrefix": "ingest-by:",
 		"RetentionPeriod": "1.00:00:00"
 	}
-]
+]```
 ```
