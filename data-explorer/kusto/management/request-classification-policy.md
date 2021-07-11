@@ -35,6 +35,11 @@ The user-defined function has the following characteristics and behaviors:
     * The function fails for any reason.
 * Only one user-defined function can be designated at any given time.
 
+> [!IMPORTANT]
+> The request classification function will be evaluated for each request that runs on the cluster.
+> It is recommended to keep it as lightweight as possible, and not include heavy computations in it.
+> For example: Avoid having to evaluate many regular expressions as part of its execution.
+
 ### Requirements and limitations
 
 A classification function:

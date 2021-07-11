@@ -57,7 +57,7 @@ Shows all policies of the given entity type (database or table) if the given nam
 #### 2. Setting all properties of the policy explicitly, at database level:
 
 ```kusto
-.alter database [database_name] policy merge ``
+.alter database [database_name] policy merge ```
 {
   "RowCountUpperBoundForMerge": 16000000,
   "OriginalSizeMBUpperBoundForMerge": 0,
@@ -84,7 +84,7 @@ Shows all policies of the given entity type (database or table) if the given nam
 .alter-merge database [database_name] policy merge ```
 {
     "MaxRangeInHours": 24
-}`````
+}```
 ```
 
 #### 5. Altering a single property of the policy at table level, keeping all other properties as-is:
