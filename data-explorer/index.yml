@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: orspod
   ms.author: orspodek
-  ms.date: 06/17/2021
+  ms.date: 06/30/2021
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -171,6 +171,8 @@ landingContent:
         links:
           - text: Big data analytics with Azure Data Explorer
             url: /azure/architecture/solution-ideas/articles/big-data-azure-data-explorer
+          - text: Content Delivery Network analytics
+            url: /azure/architecture/solution-ideas/articles/content-delivery-network-azure-data-explorer
           - text: Azure Data Explorer monitoring
             url: /azure/architecture/solution-ideas/articles/monitor-azure-data-explorer
           - text: Azure Data Explorer interactive analytics

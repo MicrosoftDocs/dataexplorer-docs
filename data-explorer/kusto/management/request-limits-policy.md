@@ -31,14 +31,17 @@ The following limits are configurable:
 | MaxFanoutNodesPercentage   | `int`     | The percentage of nodes on the cluster to fan out query execution to. Functions in a similar manner to `MaxFanoutThreadsPercentage`.    | [`1`, `100`]                              |  `query_fanout_nodes_percent`               |
 | MaxResultRecords           | `long`     | maximum number of records a request is allowed to return to the caller, above which the results are truncated.    | [`1`, `9223372036854775807`]   | `truncationmaxrecords`  |
 | MaxResultBytes     | `long`           | The maximum data size (in bytes) a request is allowed to return to the caller, above which the results are truncated.  | [`1`, `9223372036854775807`]    | `truncationmaxsize`    |
-| MaxExecutionTime     | `timespan`   | The maximum duration the request may run for. Note: timeout processing isn't at the resolution of *seconds*, rather it's designed to prevent a query from running for *minutes*.  | (`00:01:00`, `01:00:00`]   | `servertimeout`    |
+| MaxExecutionTime     | `timespan`   | The maximum duration the request may run for.<br/>Notes:<br/>1) This can be used to place an additional limit on top of the [*default* limits on execution time](../concepts/querylimits.md#limit-execution-timeout), but not extend them.<br/>2) Timeout processing isn't at the resolution of *seconds*, rather it's designed to prevent a query from running for *minutes*.  | (`00:01:00`, `01:00:00`]   | `servertimeout`    |
 
 ### Notes
 
 * A limit that isn't defined, or is defined as `null`, is taken from the `default` workload group's request limits policy.
 * When altering the policy for the `default` workload group, a limit must be defined and have a non-`null` value.
-* For backwards compatibility: For export commands or ingest-from-query commands (such as `.set-or-append` and `.set-or-replace`) that are classified to the `default` workload group, requests limits are disabled, and limits set in the policy don't apply.
-  * However, if these commands are classified to a non-default workload group, the limits in the policy do apply.
+* Backwards compatibility:
+  * Requests limits are disabled, and limits set in the policy don't apply for the following types of commands, when they are classified to the `default` workload group:
+    * `.export` commands.
+    * Commands that ingest from a query (such as `.set-or-append` or `.set-or-replace`).
+  * If these commands are classified to a non-default workload group, the request limits in the policy apply.
 
 ### Example
 

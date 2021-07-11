@@ -154,4 +154,4 @@ If the cluster's subnet has force-tunneling set up to firewall (subnet with a [r
 
 ### Check firewall rules
 
-If you force tunnel subnet outbound traffic to a firewall, make sure all dependencies FQDN (for example, *.blob.core.windows.net*) are allowed in the firewall configuration as described in [securing outbound traffic with firewall](vnet-deployment.md#securing-outbound-traffic-with-firewall).
+If you force tunnel subnet outbound traffic to a firewall, make sure all dependencies FQDN (for example, *.blob.core.windows.net*) are allowed in the firewall configuration as described in [securing outbound traffic with firewall](vnet-deployment.md#securing-outbound-traffic-with-a-firewall).
