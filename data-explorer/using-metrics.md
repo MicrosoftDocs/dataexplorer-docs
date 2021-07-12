@@ -87,7 +87,7 @@ Export utilization |	Percent	| Max	| Export capacity used, out of the total expo
 ## Ingestion metrics
 
 Ingestion metrics track the general health and performance of ingestion operations like latency, results, and volume.
-While analyzing information using metrics you can: 
+To refine your analysis: 
 * [Apply filters to charts](/azure/azure-monitor/platform/metrics-charts#apply-filters-to-charts) to plot partial data by dimensions. For example, explore ingestion to a specific `Database`.
 * [Apply splitting to a chart](/azure/azure-monitor/platform/metrics-charts#apply-splitting-to-a-chart) to visualize data by different components. This process is useful for analyzing metrics that are reported by each step of the ingestion pipeline, for example `Blobs received`.
 
