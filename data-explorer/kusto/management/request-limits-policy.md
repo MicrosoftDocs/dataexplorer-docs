@@ -32,6 +32,7 @@ The following limits are configurable:
 | MaxResultRecords           | `long`     | maximum number of records a request is allowed to return to the caller, above which the results are truncated.    | [`1`, `9223372036854775807`]   | `truncationmaxrecords`  |
 | MaxResultBytes     | `long`           | The maximum data size (in bytes) a request is allowed to return to the caller, above which the results are truncated.  | [`1`, `9223372036854775807`]    | `truncationmaxsize`    |
 | MaxExecutionTime     | `timespan`   | The maximum duration the request may run for.<br/>Notes:<br/>1) This can be used to place an additional limit on top of the [*default* limits on execution time](../concepts/querylimits.md#limit-execution-timeout), but not extend them.<br/>2) Timeout processing isn't at the resolution of *seconds*, rather it's designed to prevent a query from running for *minutes*.  | (`00:01:00`, `01:00:00`]   | `servertimeout`    |
+| QueryResultsCacheMaxAge     | `timespan`   | The maximum age of [cached query results](../query/query-results-cache.md) which can be returned. | Positive `timespan`   | `query_results_cache_max_age`    |
 
 ### Notes
 
@@ -78,6 +79,10 @@ The following limits are configurable:
   "MaxExecutiontime": {
     "IsRelaxable": true,
     "Value": "00:01:00"
+  },
+  "QueryResultsCacheMaxAge": {
+    "IsRelaxable": true,
+    "Value": "00:05:00"
   }
 }
 ```
@@ -119,7 +124,8 @@ The `default` workload group has the following policy defined by default. This p
   "MaxExecutiontime": {
     "IsRelaxable": true,
     "Value": "00:04:00"
-  }
+  },
+  "QueryResultsCacheMaxAge": null
 }
 ```
 
