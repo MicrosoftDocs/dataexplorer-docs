@@ -22,7 +22,7 @@ This section lists the major changes to docs during June  2021.
 |--|--|
 [Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md)  [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md)| Updated articles. Document batching types.
 
-## Query
+### Query
 
 | Article title | Description |
 |--|--|
@@ -30,7 +30,7 @@ This section lists the major changes to docs during June  2021.
 | [has_any_ipv4()](kusto/query/has-any-ipv4-function.md) | New article. Returns a value indicating whether one of specified IPv4 addresses appears in a text.
 | [has_any_ipv4_prefix()](kusto/query/has-any-ipv4-prefix-function.md) | New article. Returns a value indicating whether one of specified IPv4 address prefixes appears in a text.
 
-## Management
+### Management
 
 | Article title | Description |
 |--|--|
@@ -44,7 +44,7 @@ This section lists the major changes to docs during May 2021.
 
 | Article title | Description |
 |--|--|
-| [Use follower databases](follower.md) | Add table level sharing. | 
+| [Use follower databases](follower.md) | Updated article. Add table level sharing. | 
 
 ## April 2021
 
