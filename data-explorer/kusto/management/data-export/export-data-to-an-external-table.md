@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 07/14/2021
 ---
 # Export data to an external table
 
@@ -27,9 +27,9 @@ The command requires [table admin or database admin permission](../access-contro
 * *ExternalTableName*: the name of the external table to export to.
 * *Query*: export query.
 * *Properties*: the following properties are supported as part of the export to external table command: 
-    * `sizeLimit`, `parquetRowGroupSize`, `distributed` - see the [export to storage](export-data-to-storage.md) section for details about these properties.
-    * `spread`, `concurrency` - properties to decrease/increase the concurrency of write operations. See [partition operator](../../query/partitionoperator.md) for details. These properties are only relevant when exporting to an external table which is partitioned by a _string_ partition. By default, the number of nodes exporting concurrently will be the minimum between 64 and number of cluster nodes.
-
+      * `spread`, `concurrency` - properties to decrease/increase the concurrency of write operations. See [partition operator](../../query/partitionoperator.md) for details. These properties are only relevant when exporting to an external table which is partitioned by a _string_ partition. By default, the number of nodes exporting concurrently will be the minimum between 64 and number of cluster nodes.
+    
+    [!INCLUDE [data-export-properties](../../../includes/data-export-properties.md)]
 
 ## Output
 
