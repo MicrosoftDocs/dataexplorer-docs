@@ -81,7 +81,6 @@ It is recommended to use the main syntax of make-series and not the alternate sy
 
 |Function|Description|
 |--------|-----------|
-|[any()](any-aggfunction.md)|Returns a random non-empty value for the group|
 |[avg()](avg-aggfunction.md)|Returns an average value across the group|
 |[avgif()](avgif-aggfunction.md)|Returns an average with the predicate of the group|
 |[count()](count-aggfunction.md)|Returns a count of the group|
@@ -93,6 +92,7 @@ It is recommended to use the main syntax of make-series and not the alternate sy
 |[min()](min-aggfunction.md)|Returns the minimum value across the group|
 |[minif()](minif-aggfunction.md)|Returns the minimum value with the predicate of the group|
 |[percentile()](percentiles-aggfunction.md)|Returns the percentile value across the group|
+|[take_any()](take-any-aggfunction.md)|Returns a random non-empty value for the group|
 |[stdev()](stdev-aggfunction.md)|Returns the standard deviation across the group|
 |[sum()](sum-aggfunction.md)|Returns the sum of the elements within the group|
 |[sumif()](sumif-aggfunction.md)|Returns the sum of the elements with the predicate of the group|
