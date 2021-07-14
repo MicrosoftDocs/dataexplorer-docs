@@ -34,10 +34,11 @@ Creates or alters a continuous export job.
 
 | Property           | Type     | Description   |
 |----------------------|----------|---------------------------------------|
-| intervalBetweenRuns  | Timespan | The time span between continuous export executions. Must be greater than 1 minute.   |
-| forcedLatency        | Timespan | An optional period of time to limit the query to records that were ingested only prior to this period (relative to current time). This property is useful if, for example, the query performs some aggregations/joins and you would like to make sure all relevant records have already been ingested before running the export.
-[!INCLUDE [data-export-properties](../../../includes/data-export-properties.md)]
-
+| `intervalBetweenRuns`  | Timespan | The time span between continuous export executions. Must be greater than 1 minute.   |
+| `forcedLatency`        | Timespan | An optional period of time to limit the query to records that were ingested only prior to this period (relative to current time). This property is useful if, for example, the query performs some aggregations/joins and you would like to make sure all relevant records have already been ingested before running the export.
+|`sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100MB (default) to 1GB.|
+|`parquetRowGroupSize`|`int`  |Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100000 records.|
+|`distributed`   |`bool`  |Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true.
 
 ## Example
 

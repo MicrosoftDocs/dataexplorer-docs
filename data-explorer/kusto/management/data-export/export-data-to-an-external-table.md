@@ -29,7 +29,11 @@ The command requires [table admin or database admin permission](../access-contro
 * *Properties*: the following properties are supported as part of the export to external table command: 
       * `spread`, `concurrency` - properties to decrease/increase the concurrency of write operations. See [partition operator](../../query/partitionoperator.md) for details. These properties are only relevant when exporting to an external table which is partitioned by a _string_ partition. By default, the number of nodes exporting concurrently will be the minimum between 64 and number of cluster nodes.
     
-    [!INCLUDE [data-export-properties](../../../includes/data-export-properties.md)]
+    | Property | Type | Description|
+    |---|---|---|
+    |`sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100MB (default) to 1GB.|
+    |`parquetRowGroupSize`|`int`  |Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100000 records.|
+    |`distributed`   |`bool`  |Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true.
 
 ## Output
 

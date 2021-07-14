@@ -57,7 +57,9 @@ external storage, specified by a [storage connection string](../../api/connectio
 |`compressionType`|`string`|Indicates the type of compression to use. Possible values are `gzip` or `snappy`. Default is `gzip`. `snappy` can (optionally) be used for `parquet` format. |
 |`distribution`   |`string`  |Distribution hint (`single`, `per_node`, `per_shard`). If value equals `single`, a single thread will write to storage. Otherwise, export will write from all nodes executing the query in parallel. See [evaluate plugin operator](../../query/evaluateoperator.md). Defaults to `per_shard`.
 |`persistDetails`|`bool`  |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller does not require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
-[!INCLUDE [data-export-properties](../../../includes/data-export-properties.md)]
+|`sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100MB (default) to 1GB.|
+|`parquetRowGroupSize`|`int`  |Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100000 records.|
+|`distributed`   |`bool`  |Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true.
 
 **Results**
 
