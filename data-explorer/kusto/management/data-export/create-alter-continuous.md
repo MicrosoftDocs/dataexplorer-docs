@@ -32,9 +32,12 @@ Creates or alters a continuous export job.
 
 ## Properties
 
-[!INCLUDE [data-export-properties](../../../includes/data-export-properties.md)]
+| Property           | Type     | Description   |
+|----------------------|----------|---------------------------------------|
 | intervalBetweenRuns  | Timespan | The time span between continuous export executions. Must be greater than 1 minute.   |
 | forcedLatency        | Timespan | An optional period of time to limit the query to records that were ingested only prior to this period (relative to current time). This property is useful if, for example, the query performs some aggregations/joins and you would like to make sure all relevant records have already been ingested before running the export.
+[!INCLUDE [data-export-properties](../../../includes/data-export-properties.md)]
+
 
 ## Example
 
