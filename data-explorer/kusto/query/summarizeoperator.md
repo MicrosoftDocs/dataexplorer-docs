@@ -118,7 +118,7 @@ Operator       |Default value
 
 ## Examples
 
-:::image type="content" source="images/summarizeoperator/summarize-price-by-supplier.png" alt-text="Summarize price by fruit and supplier":::
+:::image type="content" source="images/summarizeoperator/summarize-price-by-supplier.png" alt-text="Summarize price by fruit and supplier.":::
 
 ## Example: Unique combination
 

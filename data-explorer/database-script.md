@@ -1,5 +1,5 @@
 ---
-title: Configure a database using a Kusto Query Language script in Azure Data Explorer
+title: Configure a database using a Kusto Query Language script in Azure Data Explorer - Preview
 description: Learn about how to use database script to run a Kusto Query Language script in Azure Data Explorer
 author: orspod
 ms.author: orspodek
@@ -8,7 +8,7 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/25/2021
 ---
-# Configure a database using a Kusto Query Language script
+# Configure a database using a Kusto Query Language script - Preview
 
 You can run a Kusto Query Language script to configure your database during ARM template deployment. A Kusto Query Language script is a list of one or more [control commands](kusto/management/index.md), each separated by **exactly** one line break, and is created as a resource that will be accessed with the ARM template.
 
@@ -102,7 +102,7 @@ Use the following settings:
 |**Setting**  |**Description**  |
 |---------|---------|
 | Location | The location of the Azure Data Explorer cluster |
-|Script URL     |  The URL of the blob, for example https://myaccount.blob.core.windows.net/mycontainer/myblob. |
+|Script URL     |  The URL of the blob, for example 'https://myaccount.blob.core.windows.net/mycontainer/myblob'. |
 |Script URL SaS Token   |  The [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview).    |
 | Force Update Tag   |  A unique string. If changed, the script will be applied again.  |
 |Continue On Errors    |   A flag that indicates whether to continue if one of the commands fails. Default is false.     |
@@ -175,7 +175,7 @@ In this method, you run a Kusto Query Language script by using an [Azure Resourc
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2021-01-01",
             "name": "[parameters('storageAccountName')]",
-            "location": "eastus2",
+            "location": "[parameters('location')]",
             "sku": {
                 "name": "Standard_LRS",
                 "tier": "Standard"

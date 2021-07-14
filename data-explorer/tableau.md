@@ -31,23 +31,23 @@ Once you've finished configuring ODBC, you can bring sample data into Tableau.
 
 1. In Tableau Desktop, in the left menu, select **Other Databases (ODBC)**.
 
-    ![Connect with ODBC](media/tableau/connect-odbc.png)
+    ![Connect with ODBC.](media/tableau/connect-odbc.png)
 
 1. For **DSN**, select the data source you created for ODBC, then select **Sign In**.
 
-    ![ODBC sign-in](media/tableau/odbc-sign-in.png)
+    ![ODBC sign-in.](media/tableau/odbc-sign-in.png)
 
 1. For **Database**, select the database on your sample cluster, such as *TestDatabase*. For **Schema**, select *dbo*, and for **Table**, select the *StormEvents* sample table.
 
-    ![Select database and table](media/tableau/select-database-table.png)
+    ![Select database and table.](media/tableau/select-database-table.png)
 
 1. Tableau now shows the schema for the sample data. Select **Update Now** to bring the data into Tableau.
 
-    ![Update data](media/tableau/update-data.png)
+    ![Update data.](media/tableau/update-data.png)
 
     When the data is imported, Tableau shows rows of data similar to the following image.
 
-    ![Result set](media/tableau/result-set.png)
+    ![Result set.](media/tableau/result-set.png)
 
 1. Now you can create visualizations in Tableau based on the data you brought in from Azure Data Explorer. For more information, see [Tableau Learning](https://www.tableau.com/learn).
 

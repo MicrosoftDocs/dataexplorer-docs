@@ -258,6 +258,8 @@ items:
     href: materializefunction.md
   - name: materialized_view()
     href: materialized-view-function.md
+  - name: Query results cache 
+    href: query-results-cache.md
   - name: table()
     href: tablefunction.md
   - name: toscalar()

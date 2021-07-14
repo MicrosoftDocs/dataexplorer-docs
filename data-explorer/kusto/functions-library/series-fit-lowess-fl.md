@@ -148,7 +148,7 @@ demo_make_series1
 
 ---
 
-:::image type="content" source="images/series-fit-lowess-fl/lowess-regular-time-series.png" alt-text="Graph showing nine points LOWESS fit to a regular time series" border="false":::
+:::image type="content" source="images/series-fit-lowess-fl/lowess-regular-time-series.png" alt-text="Graph showing nine points LOWESS fit to a regular time series." border="false":::
 
 ## Examples
 
@@ -172,7 +172,7 @@ demo_make_series1
 | render timechart 
 ```
 
-:::image type="content" source="images/series-fit-lowess-fl/lowess-irregular-time-series.png" alt-text="Graph showing nine points LOWESS fit to an irregular time series" border="false":::
+:::image type="content" source="images/series-fit-lowess-fl/lowess-irregular-time-series.png" alt-text="Graph showing nine points LOWESS fit to an irregular time series." border="false":::
 
 Compare LOWESS versus polynomial fit
 

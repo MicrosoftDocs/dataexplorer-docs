@@ -86,7 +86,7 @@ items:
     items:
     - name: Create table
       href: one-click-table.md
-    - name: Create external table
+    - name: External table creation wizard
       displayName: one-click
       href: external-table.md
   - name: Ingest data
@@ -215,7 +215,7 @@ items:
       href: power-apps-connector.md
     - name: Debug KQL inline Python
       href: debug-inline-python.md
-    - name: using SDKs
+    - name: Using SDKs
       items:
       - name: Python
         href: python-query-data.md

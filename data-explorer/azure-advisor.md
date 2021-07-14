@@ -23,7 +23,7 @@ There are two ways to access the Azure Advisor recommendations.
 1. In the Azure portal, go to your Azure Data Explorer cluster page. 
 1. In the left-hand menu, under **Monitoring**, select **Advisor recommendations**. A list of recommendations opens for that cluster.
 
-    :::image type="content" source="media/azure-advisor/resource-group-advisor-recommendations.png" alt-text="Azure Advisor recommendations for your Azure Data Explorer cluster"::: 
+    :::image type="content" source="media/azure-advisor/resource-group-advisor-recommendations.png" alt-text="Azure Advisor recommendations for your Azure Data Explorer cluster."::: 
 
 ### View Azure Advisor recommendations for all clusters in your subscription
 
@@ -31,7 +31,7 @@ There are two ways to access the Azure Advisor recommendations.
 1. In **Overview**, select the subscription(s) for which you want recommendations. 
 1. Select **Azure Data Explorer Clusters** and **Azure Data Explorer Databases** in the second drop-down.
  
-    :::image type="content" source="media/azure-advisor/advisor-resource.png" alt-text="Azure Advisor resource":::
+    :::image type="content" source="media/azure-advisor/advisor-resource.png" alt-text="Azure Advisor resource.":::
 
 ## Use the Azure Advisor recommendations
 
@@ -39,15 +39,15 @@ There are various Azure Advisor recommendation types. Use the relevant recommend
 
 1. In **Advisor**, under **Recommendations**, select **Cost** for cost recommendations.
 
-    :::image type="content" source="media/azure-advisor/select-recommendation-type.png" alt-text="Select recommendation type":::
+    :::image type="content" source="media/azure-advisor/select-recommendation-type.png" alt-text="Select recommendation type.":::
 
 1. Select a recommendation from the list. 
 
-    :::image type="content" source="media/azure-advisor/select-recommendation.png" alt-text="Select recommendation":::
+    :::image type="content" source="media/azure-advisor/select-recommendation.png" alt-text="Select recommendation.":::
 
 1. The following window contains a list of clusters to which the recommendation is relevant. The recommendation details are different for every cluster and include the recommended action.
 
-    :::image type="content" source="media/azure-advisor/clusters-with-recommendations.png" alt-text="List of clusters with recommendations":::
+    :::image type="content" source="media/azure-advisor/clusters-with-recommendations.png" alt-text="List of clusters with recommendations.":::
 
 ## Recommendation types
 

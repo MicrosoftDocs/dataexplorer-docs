@@ -39,7 +39,7 @@ Assign a system-assigned identity that is tied to your cluster, and is deleted i
 1. In the **Security** tab > **System assigned identity**, select **On**. To remove the system assigned identity, select **Off**.
 1. Select **Next : Tags >** or **Review + create** to create the cluster.
 
-    ![Add system assigned identity to new cluster](media/managed-identities/system-assigned-identity-new-cluster.png)
+    ![Add system assigned identity to new cluster.](media/managed-identities/system-assigned-identity-new-cluster.png)
 
 #### Existing Azure Data Explorer cluster
 
@@ -50,13 +50,13 @@ Assign a system-assigned identity that is tied to your cluster, and is deleted i
    1. Select **Save**
    1. In the pop-up window, select **Yes**
 
-    ![Add system assigned identity](media/managed-identities/turn-system-assigned-identity-on.png)
+    ![Add system assigned identity.](media/managed-identities/turn-system-assigned-identity-on.png)
 
 1. After a few minutes, the screen shows:
     * **Object ID** - Used for customer-managed keys
     * **Permissions** - Select relevant role assignments
 
-    ![System assigned identity on](media/managed-identities/system-assigned-identity-on.png)
+    ![System assigned identity on.](media/managed-identities/system-assigned-identity-on.png)
 
 # [C#](#tab/c-sharp)
 
@@ -177,7 +177,7 @@ Removing a system-assigned identity will also delete it from Azure AD. System-as
     1. Select **Save**
     1. In the pop-up window, select **Yes** to disable the system-assigned identity. The **Identity** pane reverts to same condition as before the addition of the system-assigned identity.
 
-    ![System assigned identity off](media/managed-identities/system-assigned-identity.png)
+    ![System assigned identity off.](media/managed-identities/system-assigned-identity.png)
 
 # [C#](#tab/c-sharp)
 
@@ -223,7 +223,7 @@ Assign a user-assigned managed identity to your cluster. A cluster can have more
 1. In the **User assigned** tab, select **Add**.
 1. Search for the identity you created earlier and select it. Select **Add**.
 
-    ![Add user assigned identity](media/managed-identities/user-assigned-identity-select.png)
+    ![Add user assigned identity.](media/managed-identities/user-assigned-identity-select.png)
 
 # [C#](#tab/c-sharp)
 
@@ -359,7 +359,7 @@ Remove the user-assigned identity using the Azure portal, C#, or Resource Manage
 1. Select the **User assigned** tab.
 1. Search for the identity you created earlier and select it. Select **Remove**.
 
-    ![Remove user assigned identity](media/managed-identities/user-assigned-identity-remove.png)
+    ![Remove user assigned identity.](media/managed-identities/user-assigned-identity-remove.png)
 
 1. In the pop-up window, select **Yes** to remove the user-assigned identity. The **Identity** pane reverts to same condition as before the addition of the user-assigned identity.
 

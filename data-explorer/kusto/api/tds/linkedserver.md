@@ -20,11 +20,11 @@ The SQL Server on-premises service needs to use an active directory account (not
 1. Prepare the DSN-less connection string for the ODBC driver, for a specific Azure Data Explorer cluster and database: `Driver={ODBC Driver 17 for SQL Server};Server=<cluster>.kusto.windows.net;Database=<database>;Authentication=ActiveDirectoryIntegrated;Language=any@MaxStringSize:4000`. The language option is added to tune Azure Data Explorer to encode strings as NVARCHAR(4000). For more information about this workaround, see [ODBC](./clients.md#odbc).
 1. Create the Linked Server with the settings pointed to by the red arrows.
 
-:::image type="content" source="../images/linkedserverconnection.png" alt-text="linked server connection":::
+:::image type="content" source="../images/linkedserverconnection.png" alt-text="linked server connection.":::
 
 1. Define the Security with the setting pointed to by the red arrow. 
 
-:::image type="content" source="../images/linkedserverlogin.png" alt-text="linked server login":::
+:::image type="content" source="../images/linkedserverlogin.png" alt-text="linked server login.":::
 
 To query data from Kusto:
 
