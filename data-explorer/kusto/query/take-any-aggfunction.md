@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/07/2021
+ms.date: 07/14/2021
 ---
 # take_any() (aggregation function)
 
@@ -94,4 +94,3 @@ StormEvents
 |AMERICAN SAMOA|2007-12-07 14:00:00.0000000|13183|Flash Flood|
 |ARKANSAS|2007-12-09 16:00:00.0000000|11319|Lightning|
 |ALABAMA|2007-12-15 18:00:00.0000000|12580|Heavy Rain|
-
