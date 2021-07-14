@@ -22,11 +22,14 @@ The command requires [table admin or database admin permission](../access-contro
 `.export` [`async`] `to` `table` *ExternalTableName* <br>
 [`with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <| *Query*
 
-**Arguments**
+## Arguments
 
 * *ExternalTableName*: the name of the external table to export to.
 * *Query*: export query.
-* *Properties*: the following properties are supported as part of the export to external table command:  
+
+## Properties
+
+The following properties are supported as part of the export to external table command:  
 
 | Property | Type | Description| Default
 |---|---|---|---|
@@ -37,7 +40,7 @@ The command requires [table admin or database admin permission](../access-contro
 |`hint.spread`|*Number*|Hints the system how to distribute the partitions among cluster nodes. For example, if there are N partitions and the spread hint is set to P, then the N partitions will be processed by P different cluster nodes equally in parallel/sequentially depending on the concurrency hint.  **See note below.**| The default value is 1. |
 
 >[!NOTE]
-> `spread` and `concurrency` are properties used to decrease/increase the concurrency of write operations. For more details, see [partition operator](../../query/partitionoperator.md). These properties are only relevant when exporting to an external table which is partitioned by a string partition. By default, the number of nodes exporting concurrently will be the minimum value between 64 and number of cluster nodes.
+> `spread` and `concurrency` are properties used to decrease/increase the concurrency of write operations. For more details, see [partition operator](../../query/partitionoperator.md). These properties are only relevant when exporting to an external table which is partitioned by a string partition. By default, the number of nodes exporting concurrently will be the minimum value between 64 and the number of cluster nodes.
 
 ## Output
 
