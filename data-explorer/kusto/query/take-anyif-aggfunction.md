@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/07/2021
+ms.date: 07/14/2021
 ---
 # take_anyif() (aggregation function)
 
