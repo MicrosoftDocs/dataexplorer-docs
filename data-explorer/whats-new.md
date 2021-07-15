@@ -6,11 +6,45 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/03/2021
+ms.date: 07/13/2021
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## June 2021
+
+This section lists the major changes to docs during June  2021.
+
+### General
+
+| Article title | Description |
+|--|--|
+[Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md), [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md)| Updated articles. Document batching types.
+
+### Query
+
+| Article title | Description |
+|--|--|
+| [rows_near() plugin](kusto/query/rows-near-plugin.md) | New article. Finds rows near a specified condition.
+| [has_any_ipv4()](kusto/query/has-any-ipv4-function.md) | New article. Returns a value indicating whether one of specified IPv4 addresses appears in a text.
+| [has_any_ipv4_prefix()](kusto/query/has-any-ipv4-prefix-function.md) | New article. Returns a value indicating whether one of specified IPv4 address prefixes appears in a text.
+
+### Management
+
+| Article title | Description |
+|--|--|
+| [IngestionBatching policy](kusto/management/batchingpolicy.md) | Updated article. Document batching types
+
+## May 2021
+
+This section lists the major changes to docs during May 2021.
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Use follower databases](follower.md) | Updated article. Add table level sharing. | 
 
 ## April 2021
 

@@ -38,7 +38,7 @@ By investing resources (data storage, background CPU cycles) for materialized vi
 The following are common scenarios that can be addressed by using a materialized view:
 
 * Query last record per entity using [`arg_max()` (aggregation function)](../../query/arg-max-aggfunction.md).
-* De-duplicate records in a table using [`any()` (aggregation function)](../../query/any-aggfunction.md).
+* De-duplicate records in a table using [`take_any()` (aggregation function)](../../query/take-any-aggfunction.md).
 * Reduce the resolution of data by calculating periodic statistics over the raw data. Use various [aggregation functions](materialized-view-create.md#supported-aggregation-functions) by period of time.
     * For example, use `T | summarize dcount(User) by bin(Timestamp, 1d)` to maintain an up-to-date snapshot of distinct users per day.
 
