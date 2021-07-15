@@ -1049,6 +1049,8 @@ items:
       href: ./kusto/query/repeatfunction.md
     - name: replace()
       href: ./kusto/query/replacefunction.md
+    - name: replace_string()
+      href: ./kusto/query/replacestringfunction.md
     - name: reverse()
       href: ./kusto/query/reversefunction.md
     - name: round()
