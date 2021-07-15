@@ -261,7 +261,7 @@ ms.date: 05/27/2020
 |[parse_url()](parseurlfunction.md)|Parses an absolute URL string and returns a dynamic object contains all parts of the URL.|
 |[parse_urlquery()](parseurlqueryfunction.md)|Parses a url query string and returns a dynamic object contains the Query parameters.|
 |[parse_version()](parse-versionfunction.md)|Converts input string representation of version to a comparable decimal number.|
-|[replace()](replacefunction.md)|Replace all regex matches with another string.|
+|[replace()](replace-regex-function.md)|Replace all regex matches with another string.|
 |[reverse()](reversefunction.md)|Function makes reverse of input string.|
 |[split()](splitfunction.md)|Splits a given string according to a given delimiter and returns a string array with the contained substrings.|
 |[strcat()](strcatfunction.md)|Concatenates between 1 and 64 arguments.|

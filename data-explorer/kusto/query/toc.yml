@@ -614,7 +614,7 @@ items:
   - name: repeat()
     href: repeatfunction.md
   - name: replace()
-    href: replacefunction.md
+    href: replace-regex-function.md
   - name: reverse()
     href: reversefunction.md
   - name: round()
