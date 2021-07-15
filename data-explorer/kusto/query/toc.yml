@@ -615,6 +615,8 @@ items:
     href: repeatfunction.md
   - name: replace()
     href: replacefunction.md
+  - name: replace_string()
+    href: replace-string-function.md
   - name: reverse()
     href: reversefunction.md
   - name: round()
