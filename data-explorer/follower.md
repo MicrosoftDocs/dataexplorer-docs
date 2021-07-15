@@ -212,8 +212,8 @@ New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
 	-ClusterResourceId $LeaderClusterResourceid `
 	-DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind `
 	-Location $Location `
-    -TableLevelSharingPropertyTablesToInclude "table1", "table2", "table3" `
-    -TableLevelSharingPropertyExternalTablesToExclude "Logs*"
+	-TableLevelSharingPropertyTablesToInclude "table1", "table2", "table3" `
+	-TableLevelSharingPropertyExternalTablesToExclude "Logs*" `
 	-ErrorAction Stop 
 ```
 
@@ -535,7 +535,7 @@ $DatabaseName = "sanjn"  ## Can be specific database name or * for all databases
 $confignameraw = (Get-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -ResourceGroupName $FollowerResourceGroupName -SubscriptionId $FollowerClusterSubscriptionID) | Where-Object {$_.DatabaseName -eq $DatabaseName }
 $configname =$confignameraw.Name.Split("/")[1]
 
-Remove-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -Name $configname -ResourceGroupName $FollowerResourceGroupName
+Remove-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -Name $configname -ResourceGroupName $FollowerResourceGroupName -SubscriptionId $FollowerClusterSubscriptionID
 ```
 
 # [Resource Manager Template](#tab/azure-resource-manager)
