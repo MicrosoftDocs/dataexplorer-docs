@@ -68,8 +68,6 @@ To summarize over ranges of numeric values, use `bin()` to reduce ranges to disc
 
 |Function|Description|
 |--------|-----------|
-|[any()](any-aggfunction.md)|Returns a random non-empty value for the group|
-|[anyif()](anyif-aggfunction.md)|Returns a random non-empty value for the group (with predicate)|
 |[arg_max()](arg-max-aggfunction.md)|Returns one or more expressions when the argument is maximized|
 |[arg_min()](arg-min-aggfunction.md)|Returns one or more expressions when the argument is minimized|
 |[avg()](avg-aggfunction.md)|Returns an average value across the group|
@@ -101,6 +99,8 @@ To summarize over ranges of numeric values, use `bin()` to reduce ranges to disc
 |[stdevif()](stdevif-aggfunction.md)|Returns the standard deviation across the group (with predicate)|
 |[sum()](sum-aggfunction.md)|Returns the sum of the elements within the group|
 |[sumif()](sumif-aggfunction.md)|Returns the sum of the elements within the group (with predicate)|
+|[take_any()](take-any-aggfunction.md)|Returns a random non-empty value for the group|
+|[take_anyif()](take-anyif-aggfunction.md)|Returns a random non-empty value for the group (with predicate)|
 |[variance()](variance-aggfunction.md)|Returns the variance across the group|
 |[varianceif()](varianceif-aggfunction.md)|Returns the variance across the group (with predicate)|
 
@@ -118,7 +118,7 @@ Operator       |Default value
 
 ## Examples
 
-:::image type="content" source="images/summarizeoperator/summarize-price-by-supplier.png" alt-text="Summarize price by fruit and supplier":::
+:::image type="content" source="images/summarizeoperator/summarize-price-by-supplier.png" alt-text="Summarize price by fruit and supplier.":::
 
 ## Example: Unique combination
 

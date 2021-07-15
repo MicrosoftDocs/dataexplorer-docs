@@ -44,7 +44,7 @@ print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([2,5,6,
 | render timechart
 ```
  
-:::image type="content" source="images/series-fit-line/series-fit-line.png" alt-text="Series fit line":::
+:::image type="content" source="images/series-fit-line/series-fit-line.png" alt-text="Series fit line.":::
 
 | RSquare | Slope | Variance | RVariance | Interception | LineFit                                                                                     |
 |---------|-------|----------|-----------|--------------|---------------------------------------------------------------------------------------------|

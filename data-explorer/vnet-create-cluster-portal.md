@@ -29,7 +29,7 @@ To create the virtual network and subnet:
 1. Under **Virtual Network**, at the bottom of the screen, select **Create**.
 1. In the **Create virtual network** window, complete the following information.
 
-   ![Create virtual network form](media/vnet-create-cluster-portal/vnet-blade.png)
+   ![Create virtual network form.](media/vnet-create-cluster-portal/vnet-blade.png)
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -47,13 +47,13 @@ To create the virtual network and subnet:
 1. When the deployment is complete, select **Go to resource**.
 1. Go to **Subnets** blade and select the **default** subnet.
     
-    ![Subnets blade](media/vnet-create-cluster-portal/subnets.png)
+    ![Subnets blade.](media/vnet-create-cluster-portal/subnets.png)
 
 1. In your **default** subnet window:
     1. Select **Microsoft.Kusto/clusters** from the subnet delegation drop-down menu.
     1. Select **Save**.
     
-    ![Configure subnet](media/vnet-create-cluster-portal/vnet-delegate-subnet.png)
+    ![Configure subnet.](media/vnet-create-cluster-portal/vnet-delegate-subnet.png)
 
 ## Create a cluster
 
@@ -61,7 +61,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. Prior to finalizing cluster creation, in the **Create an Azure Data Explorer cluster** window, select the **Network** tab to provide virtual network details using the resources created in the previous tabs:
 
-   ![Create cluster vnet form](media/vnet-create-cluster-portal/create-cluster-form-vnet.png)
+   ![Create cluster vnet form.](media/vnet-create-cluster-portal/create-cluster-form-vnet.png)
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -73,7 +73,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
     1. Select **Create new**
     1. In **Create Public IP** window, provide the following details:
     
-    ![Create cluster vnet form public IP](media/vnet-create-cluster-portal/vnet-create-public-ip.png)
+    ![Create cluster vnet form public IP.](media/vnet-create-cluster-portal/vnet-create-public-ip.png)
 
     | **Setting** | **Suggested value** | **Field description** |
     |---|---|---|

@@ -24,6 +24,7 @@ The function `binomial_test_fl()` performs the [binomial test](https://en.wikipe
 
 * *successes*: The name of the column containing the number of success results.
 * *trials*: The name of the column containing the total number of trials.
+* *p_value*: The name of the column to store the results.
 * *success_prob*: The success probability, default is 0.5.
 * *alt_hypotheis*: The alternative hypothesis can be either 'two-sided', 'greater', or 'less'. The default is 'two-sided'.
 

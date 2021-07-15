@@ -12,7 +12,7 @@ ms.date: 04/23/2021
 
 # Materialized views policies
 
-This article includes information about policies that can be set on a materialized views.
+This article includes information about policies that can be set on materialized views.
 
 ## Retention and caching policy
 
@@ -25,28 +25,28 @@ The retention policy of the materialized view is unrelated to the retention poli
 > [!NOTE]
 > Zero retention policy on the source table isn't supported.
 
-The retention and caching policies both depend on [Extent Creation time](../extents-overview.md#extent-creation-time). The extent creation time in the case of materialized views is determined by the last update for a record.
+The retention and caching policies both depend on [Extent Creation time](../extents-overview.md#extent-creation-time). The extent creation time for a materialized view is determined by the last update for a record.
 
 > [!NOTE]
 > The materialization process attempts to minimize the amount of updates to the [materialized part of the view](materialized-view-overview.md#how-materialized-views-work). In cases where a record doesn't _have_ to be updated in the view, it won't be updated. For example, when the materialized view is an `any(*)` aggregation, new records of same group-by keys won't be re-ingested into the view, and therefore the retention policy would be by earliest record ingested.
 
 ## Partitioning policy
 
-A [partitioning policy](../partitioningpolicy.md) can be applied on a materialized view. We recommend configuring a partitioning policy on a materialized view when most or all of the view queries filter by one of the materialized view's group-by keys. This is common in multi-tenant solutions, where one of the materialized view's group-by keys is the tenant's identifer (for example, `tenantId`, `customerId`). For more information, see the first use case described in the [partitioning policy common scenarios](../partitioningpolicy.md#common-scenarios) page.
+A [partitioning policy](../partitioningpolicy.md) can be applied on a materialized view. We recommend configuring a partitioning policy on a materialized view only when most or all of the view queries filter by one of the materialized view's group-by keys. This is common in multi-tenant solutions, where one of the materialized view's group-by keys is the tenant's identifer (for example, `tenantId`, `customerId`). For more information, see the first use case described in the [partitioning policy supported scenarios](../partitioningpolicy.md#supported-scenarios) page.
 
 For the commands to alter a materialized view's partitioning policy, see [partitioning policy commands](../partitioning-policy.md#alter-and-alter-merge-policy).
 
-Adding a partitioning policy on a materialized views will increase the number of extents in the materialized view, and will create more "work" for the materialization process. For more information on why this happens, see the extents rebuild process mentioned in [how materialized views work](materialized-view-overview.md#how-materialized-views-work)). In [EngineV3](../../../engine-v3.md) clusters, this process is much more efficient than in V2. Therefore, we recommend to only add a partitioning policy on a materialized view only if the cluster is a V3 cluster.
+Adding a partitioning policy on a materialized view will increase the number of extents in the materialized view, and will create more "work" for the materialization process. For more information on why this happens, see the extents rebuild process mentioned in [how materialized views work](materialized-view-overview.md#how-materialized-views-work)). In [EngineV3](../../../engine-v3.md) clusters, this process is much more efficient than in V2. Therefore, we recommend to only add a partitioning policy on a materialized view only if the cluster is a V3 cluster.
 
 ## Row level security policy
 
 A [row level security](../rowlevelsecuritypolicy.md) can be applied on a materialized view, with several limitations:
 
-* The policy can be applied only to materialized views with [arg_max()](../../query/arg-max-aggfunction.md)/[arg_min()](../../query/arg-min-aggfunction.md)/[any()](../../query/any-aggfunction.md) aggregation functions.
+* The policy can be applied only to materialized views with [arg_max()](../../query/arg-max-aggfunction.md)/[arg_min()](../../query/arg-min-aggfunction.md)/[take_any()](../../query/take-any-aggfunction.md) aggregation functions.
 * The policy is applied to the [materialized part](materialized-view-overview.md#how-materialized-views-work) of the view only.
   * If the same row level security policy is not defined on the source table of the materialized view, then querying the materialized view may return records that should be hidden by the policy. This happens because [querying the materialized view](materialized-view-overview.md#materialized-views-queries) queries the source table as well.
   * We recommend defining the same row level security policy both on the source table and the materialized view if the view is an [arg_max()](../../query/arg-max-aggfunction.md) or [arg_min()](../../query/arg-min-aggfunction.md)/[any()](../../query/any-aggfunction.md).
-* When defining a row level security policy on the source table of an [arg_max()](../../query/arg-max-aggfunction.md) or [arg_min()](../../query/arg-min-aggfunction.md)/[any()](../../query/any-aggfunction.md) materialized view, the command will fail if there is no row level security policy defined on the materialized view itself. The purpose of the failure is to alert the user of a potential data leak, since the materialized view may expose information. To mitigate this error, do one of the following actions:
+* When defining a row level security policy on the source table of an [arg_max()](../../query/arg-max-aggfunction.md) or [arg_min()](../../query/arg-min-aggfunction.md)/[take_any()](../../query/take-any-aggfunction.md) materialized view, the command will fail if there is no row level security policy defined on the materialized view itself. The purpose of the failure is to alert the user of a potential data leak, since the materialized view may expose information. To mitigate this error, do one of the following actions:
   * Define the row level security policy over the materialized view.
   * Choose to ignore the error by adding `allowMaterializedViewsWithoutRowLevelSecurity` property to the alter policy command. For example:
 

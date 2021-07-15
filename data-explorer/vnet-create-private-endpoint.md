@@ -31,11 +31,11 @@ To securely link to all services on your cluster, you need to create the [Privat
 1. Search for *Private Link service*.
 1. Under **Private Link service**, select **Create**.
 
-    :::image type="content" source="media/vnet-create-private-endpoint/create-service.gif" alt-text="Gif that shows you the first three steps of creating a private link service in Azure Data Explorer Portal":::
+    :::image type="content" source="media/vnet-create-private-endpoint/create-service.gif" alt-text="Gif that shows you the first three steps of creating a private link service in Azure Data Explorer Portal.":::
 
 1. In the **Create private link service** pane, fill out the following fields:
 
-    :::image type="content" source="media/vnet-create-private-endpoint/private-link-basics.png" alt-text="Tab 1 in create private link service - Basics":::
+    :::image type="content" source="media/vnet-create-private-endpoint/private-link-basics.png" alt-text="Tab 1 in create private link service - Basics.":::
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -46,7 +46,7 @@ To securely link to all services on your cluster, you need to create the [Privat
 
 1. In the **Outbound settings** pane, fill out the following fields:
 
-    :::image type="content" source="media/vnet-create-private-endpoint/private-link-outbound.png" alt-text="Private link tab 2 - Outbound settings":::
+    :::image type="content" source="media/vnet-create-private-endpoint/private-link-outbound.png" alt-text="Private link tab 2 - Outbound settings.":::
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -67,7 +67,7 @@ To securely link to all services on your cluster, you need to create the [Privat
 1. Under **Private Endpoint**, select **Create**.
 1. In the **Create a Private Endpoint** pane, fill out the following fields:
 
-    :::image type="content" source="media/vnet-create-private-endpoint/step-one-basics.png" alt-text="Create Private Endpoint form step 1 - basics":::
+    :::image type="content" source="media/vnet-create-private-endpoint/step-one-basics.png" alt-text="Create Private Endpoint form step 1 - basics.":::
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -78,7 +78,7 @@ To securely link to all services on your cluster, you need to create the [Privat
     
 1. In the **Resource** pane, fill out the following fields:
 
-    :::image type="content" source="media/vnet-create-private-endpoint/step-two-resource.png" alt-text="Create virtual network form step 2- Resource":::
+    :::image type="content" source="media/vnet-create-private-endpoint/step-two-resource.png" alt-text="Create virtual network form step 2- Resource.":::
 
     **Setting** | **Value**
     |---|---|
@@ -100,7 +100,7 @@ To securely link to all services on your cluster, you need to create the [Privat
 1. In your Private Link service, choose **Private Endpoint connections** under settings.
 1. Choose your Private Endpoint from the connections list, and select **Approve**.
 
-:::image type="content" source="media/vnet-create-private-endpoint/private-link-approve.png" alt-text="Approval step to create Private Endpoint"::: 
+:::image type="content" source="media/vnet-create-private-endpoint/private-link-approve.png" alt-text="Approval step to create Private Endpoint."::: 
 
 ## Set DNS configuration
 

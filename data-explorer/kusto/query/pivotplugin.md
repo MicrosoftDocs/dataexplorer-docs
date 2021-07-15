@@ -29,7 +29,7 @@ T | evaluate pivot(PivotColumn)
 ## Arguments
 
 * *pivotColumn*: The column to rotate. each unique value from this column will be a column in the output table.
-* *aggregation function*: (optional) aggregates multiple rows in the input table to a single row in the output table. Currently supported functions: `min()`, `max()`, `any()`, `sum()`, `dcount()`, `avg()`, `stdev()`, `variance()`, `make_list()`, `make_bag()`, `make_set()`, `count()` (default is `count()`).
+* *aggregation function*: (optional) aggregates multiple rows in the input table to a single row in the output table. Currently supported functions: `min()`, `max()`, `take_any()`, `sum()`, `dcount()`, `avg()`, `stdev()`, `variance()`, `make_list()`, `make_bag()`, `make_set()`, `count()` (default is `count()`).
 * *column1*, *column2*, ...: (optional) column names. The output table will contain an additional column per each specified column. default: all columns other than the pivoted column and the aggregation column.
 
 ## Returns

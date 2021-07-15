@@ -37,7 +37,7 @@ Returns an estimate of the number of distinct values of *`Expr`* in the group.
 PageViewLog | summarize countries=dcount(country) by continent
 ```
 
-:::image type="content" source="images/dcount-aggfunction/dcount.png" alt-text="D count":::
+:::image type="content" source="images/dcount-aggfunction/dcount.png" alt-text="D count.":::
 
 Get an exact count of distinct values of `V` grouped by `G`.
 
@@ -78,4 +78,4 @@ The error bound is probabilistic, not a theoretical bound. The value is the stan
 The following image shows the probability distribution function of the relative
 estimation error, in percentages, for all supported accuracy settings:
 
-:::image type="content" border="false" source="images/dcount-aggfunction/hll-error-distribution.png" alt-text="hll error distribution":::
+:::image type="content" border="false" source="images/dcount-aggfunction/hll-error-distribution.png" alt-text="hll error distribution.":::

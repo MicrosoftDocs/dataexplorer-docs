@@ -258,6 +258,8 @@ items:
     href: materializefunction.md
   - name: materialized_view()
     href: materialized-view-function.md
+  - name: Query results cache 
+    href: query-results-cache.md
   - name: table()
     href: tablefunction.md
   - name: toscalar()
@@ -725,11 +727,8 @@ items:
   - name: zlib_decompress_from_base64_string()
     href: zlib-base64-decompress.md
 - name: Aggregation functions
+  displayName: aggregation
   items:
-  - name: any()
-    href: any-aggfunction.md
-  - name: anyif()
-    href: anyif-aggfunction.md
   - name: arg_max()
     href: arg-max-aggfunction.md
   - name: arg_min()
@@ -793,6 +792,12 @@ items:
     href: sum-aggfunction.md
   - name: sumif()
     href: sumif-aggfunction.md
+  - name: take_any(), any()
+    displayName: any()
+    href: take-any-aggfunction.md
+  - name: take_anyif(), anyif()
+    displayNae: anyif()
+    href: take-anyif-aggfunction.md        
   - name: tdigest()
     href: tdigest-aggfunction.md
   - name: tdigest_merge()

@@ -43,7 +43,7 @@ To enable isolated compute in Azure Data Explorer, follow one of these processes
 1. In search box, search for *Standard_E64i_v3* and click on the SKU name or select the **Standard_E64i_v3** SKU from the SKU list.
 1. Select **Apply** to update your SKU. 
 
-:::image type="content" source="media/isolated-compute/select-isolated-compute-sku.png" alt-text="Select the isolated compute SKU":::
+:::image type="content" source="media/isolated-compute/select-isolated-compute-sku.png" alt-text="Select the isolated compute SKU.":::
 
 > [!TIP]
 > The scale up process may take a few minutes.

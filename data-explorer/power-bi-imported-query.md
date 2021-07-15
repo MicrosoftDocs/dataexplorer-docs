@@ -45,29 +45,29 @@ First, you create a query in the Azure Data Explorer desktop app and export it f
 
     The first few rows of the result set should look similar to the following image.
 
-    ![Query results](media/power-bi-imported-query/query-results.png)
+    ![Query results.](media/power-bi-imported-query/query-results.png)
 
 1. On the **Tools** tab, select **Query to Power BI** then **OK**.
 
-    ![Export query](media/power-bi-imported-query/export-query.png)
+    ![Export query.](media/power-bi-imported-query/export-query.png)
 
 1. In Power BI Desktop, on the **Home** tab, select **Get Data** then **Blank query**.
 
-    ![Get data](media/power-bi-imported-query/get-data.png)
+    ![Get data.](media/power-bi-imported-query/get-data.png)
 
 1. In the Power Query Editor, on the **Home** tab, select **Advanced editor**.
 
 1. In the **Advanced editor** window, paste the query you exported then select **Done**.
 
-    ![Paste query](media/power-bi-imported-query/paste-query.png)
+    ![Paste query.](media/power-bi-imported-query/paste-query.png)
 
 1. In the main Power Query Editor window, select **Edit credentials**. Select **Organizational account**, sign in, then select **Connect**.
 
-    ![Edit credentials](media/power-bi-imported-query/edit-credentials.png)
+    ![Edit credentials.](media/power-bi-imported-query/edit-credentials.png)
 
 1. On the **Home** tab, select **Close & Apply**.
 
-    ![Close and apply](media/power-bi-imported-query/close-apply.png)
+    ![Close and apply.](media/power-bi-imported-query/close-apply.png)
 
 ## Visualize data in a report
 

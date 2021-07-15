@@ -22,7 +22,7 @@ Azure Data Explorer dashboards provide three main advantages:
 
 The following image depicts an Azure Data Explorer dashboard.
 
-:::image type="content" source="media/adx-dashboards/dash.png" alt-text="Final dashboard":::
+:::image type="content" source="media/adx-dashboards/dash.png" alt-text="Final dashboard.":::
 
 > [!IMPORTANT]
 > Your data is secure. Dashboards and dashboard-related metadata about users is encrypted at rest.
@@ -31,11 +31,11 @@ The following image depicts an Azure Data Explorer dashboard.
 
 1. In the navigation bar, select **Dashboards** and select **New dashboard**.
 
-    :::image type="content" source="media/adx-dashboards/new-dashboard.png" alt-text="New dashboard":::
+    :::image type="content" source="media/adx-dashboards/new-dashboard.png" alt-text="New dashboard.":::
 
 1. Select a dashboard name and **Create**.
 
-    :::image type="content" source="media/adx-dashboards/new-dashboard-popup.png" alt-text="Create a dashboard":::
+    :::image type="content" source="media/adx-dashboards/new-dashboard-popup.png" alt-text="Create a dashboard.":::
 
 ## Add data source
 
@@ -43,7 +43,7 @@ Add the required data sources for the dashboards.
 
 1. Select **Data sources** menu item on the top bar. Select the **+ New data source** button in the **Data sources** pane.
 
-    :::image type="content" source="media/adx-dashboards/data-source.png" alt-text="Data source":::
+    :::image type="content" source="media/adx-dashboards/data-source.png" alt-text="Data source.":::
 
 1. In the **Create new data source** pane:
     1. Enter the **Cluster URI** or partial name including region and select **Connect**. 
@@ -51,7 +51,7 @@ Add the required data sources for the dashboards.
     1. Use the default or modify the **Data source name**, if needed. 
     1. Select **Apply**.
 
-    :::image type="content" source="media/adx-dashboards/data-source-pane.png" alt-text="Data source pane":::
+    :::image type="content" source="media/adx-dashboards/data-source-pane.png" alt-text="Data source pane.":::
 
 ## Use Parameters
 
@@ -59,11 +59,11 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
 1. Select **Parameters** on the top bar. Select the **+ New parameter** button in the **Parameters** pane.
 
-    :::image type="content" source="media/adx-dashboards/parameters.png" alt-text="Select new parameter":::
+    :::image type="content" source="media/adx-dashboards/parameters.png" alt-text="Select new parameter.":::
 
 1. Enter values for all the mandatory fields and select **Done**.
 
-    :::image type="content" source="media/adx-dashboards/parameter-pane.png" alt-text="Parameter pane":::
+    :::image type="content" source="media/adx-dashboards/parameter-pane.png" alt-text="Parameter pane.":::
 
 |Field  |Description |
 |---------|---------|
@@ -81,23 +81,23 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 
 1. Select **Add Query** from the dashboard canvas or the top menu bar.
 
-    :::image type="content" source="media/adx-dashboards/empty-dashboard-new-query.png" alt-text="New query":::
+    :::image type="content" source="media/adx-dashboards/empty-dashboard-new-query.png" alt-text="New query.":::
 
 1. In the **Query** pane, 
     1. Select the data source from the drop-down
     1. Type the query, and select **Run** 
     1. Select **+ Add visual**
 
-    :::image type="content" source="media/adx-dashboards/initial-query.png" alt-text="Execute query":::
+    :::image type="content" source="media/adx-dashboards/initial-query.png" alt-text="Execute query.":::
 
 1. In the **Visual formatting** pane, select **Chart type** to choose the type of visual. 
 1. Name the visual and select **Apply changes** to pin the visual to the dashboard.
 
-    :::image type="content" source="media/adx-dashboards/add-visual.png" alt-text="Add visual to query":::
+    :::image type="content" source="media/adx-dashboards/add-visual.png" alt-text="Add visual to query.":::
 
 1. You can resize the visual and **Save changes** to save the dashboard.
 
-    :::image type="content" source="media/adx-dashboards/save-dashboard.png" alt-text="save dashboard":::
+    :::image type="content" source="media/adx-dashboards/save-dashboard.png" alt-text="save dashboard.":::
 
 ## Share dashboards
 
@@ -112,7 +112,7 @@ Use the share menu to [grant permissions](#grant-permissions) for an Azure Activ
 1. Select the **Share** menu item in the top bar of the dashboard.
 1. Select **Manage permissions** from the drop-down. 
 
-    :::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="Share dashboard drop-down":::
+    :::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="Share dashboard drop-down.":::
 
 ### Grant permissions
 
@@ -120,7 +120,7 @@ To grant permissions to a user in the **Dashboard permissions** pane:
 1. Write the user's name or email in **Add new members** box.
 1. Select the **Permission** level as **Can view** or **Can edit** and then click **Add**.
 
-:::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="Manage dashboard permissions":::
+:::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="Manage dashboard permissions.":::
 
 ### Change a user permission level
 
@@ -140,12 +140,12 @@ Or
 1. Select **Edit** in dashboard menu to switch to edit mode.
 1. Select **Auto refresh**. 
  
-    :::image type="content" source="media/adx-dashboards/auto-refresh.png" alt-text="Select auto refresh":::
+    :::image type="content" source="media/adx-dashboards/auto-refresh.png" alt-text="Select auto refresh.":::
 
 1. Toggle the option so auto refresh is **Enabled**. 
 1. Select values for **Minimum time interval** and **Default refresh rate**. 
 
-    :::image type="content" source="media/adx-dashboards/auto-refresh-toggle.png" alt-text="Enable auto refresh":::
+    :::image type="content" source="media/adx-dashboards/auto-refresh-toggle.png" alt-text="Enable auto refresh.":::
 
 1. Select **Apply** and **Save** the dashboard.
 

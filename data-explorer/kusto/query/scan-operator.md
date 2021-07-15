@@ -29,9 +29,6 @@ T
 )
 ```
 
-> [!NOTE]
-> This feature is only available on [EngineV3](../../engine-v3.md) clusters.
-
 ## Syntax
 
 *T* `| scan` [ `with_match_id` `=` *MatchIdColumnName* ] [ `declare` `(` *ColumnDeclarations* `)` ] `with` `(` *StepDefinitions* `)`

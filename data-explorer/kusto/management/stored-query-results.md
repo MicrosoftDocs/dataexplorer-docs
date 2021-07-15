@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mispecto
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/3/2020
+ms.date: 07/15/2021
 ---
 
 # Stored query results
@@ -24,6 +24,7 @@ Stored query results can be useful in the following scenarios:
 
 > [!NOTE]
 > This feature is only available when [EngineV3](../../engine-v3.md) is enabled.
+> Above 500 columns, an error is obtained and the results aren't stored.
 
 Stored query results can be accessed for up to 24 hours from the moment of creation. Updates to security policies (for example, database access, row level security, and so on) aren't propagated to stored query results. Use [`.drop stored_query_results`](#drop-stored_query_results) if there is user permission revocation. A stored query result can only be accessed by the same principal identity that created the stored query. 
 

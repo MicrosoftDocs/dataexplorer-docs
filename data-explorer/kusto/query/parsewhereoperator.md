@@ -84,7 +84,7 @@ The `parse-where` operator provides a streamlined way to `extend` a table by usi
 
 ### Using `parse`
 
-In the example below, the column `EventText` of table `Traces` contains strings of the form `Event: NotifySliceRelease (resourceName={0}, totalSlices= {1}, sliceNumber={2}, lockTime={3}, releaseTime={4}, previousLockTime={5})`. The operation below will extend the table with six columns: `resourceName` , `totalSlices`, `sliceNumber`, `lockTime `, `releaseTime`, `previouLockTime`, `Month`, and `Day`. 
+In the example below, the column `EventText` of table `Traces` contains strings of the form `Event: NotifySliceRelease (resourceName={0}, totalSlices= {1}, sliceNumber={2}, lockTime={3}, releaseTime={4}, previousLockTime={5})`. The operation below will extend the table with six columns: `resourceName` , `totalSlices`, `sliceNumber`, `lockTime `, `releaseTime`, `previousLockTime`, `Month`, and `Day`. 
 
 A few of the strings don't have a full match.
 
