@@ -34,7 +34,9 @@ The following list contains error codes you may come across during [ingestion](i
 
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
-|BadRequest_EmptyBlob                              |Blob is empty.                                                               |Permanent           |
+|BadRequest_EmptyBlob                              |Blob is empty.                                                               |
+|BadRequest_NoRecordsOrWrongFormat                 |Blob is empty or specified [ingestion format](ingestion-supported-formats.md) does not match blob content (for example, `JSON` format used instead of `MULTIJSON`).                                                               |
+Permanent           |
 |BadRequest_EmptyBlobUri                           |Blob Uri is empty.                                                           |Permanent           |
 |BadRequest_DuplicateMapping                       |Ingestion properties include both ingestionMapping and ingestionMappingReference, which isn't valid.              |Permanent          |
 |BadRequest_InvalidOrEmptyTableName                |Table name is empty or invalid.<br>For more information about Azure Data Explorer naming convention, see [Entity names](./kusto/query/schema-entities/entity-names.md).    |Permanent          |
