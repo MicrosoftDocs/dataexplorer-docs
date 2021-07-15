@@ -1,30 +1,30 @@
 ---
-title: replace() - Azure Data Explorer | Microsoft Docs
-description: This article describes replace() in Azure Data Explorer.
+title: replace_regex() - Azure Data Explorer
+description: This article describes replace_regex() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 07/15/2021
 ---
-# replace()
+# replace_regex()
 
-Replace all regex matches with another string. 
+Replaces all regex matches with another string.
 
 > [!NOTE]
 > If you do not need regex matching, use [translate()](translatefunction.md).
 
 ## Syntax
 
-`replace(`*regex*`,` *rewrite*`,` *source*`)`
+`replace_regex(`*text*`,`*regex*`,` *rewrite*`)`
 
 ## Arguments
 
-* *regex*: The [regular expression](https://github.com/google/re2/wiki/Syntax) to search *source*. It can contain capture groups in '('parentheses')'. 
+* *text*: A string.
+* *regex*: The [regular expression](https://github.com/google/re2/wiki/Syntax) to search *text*. The expression can contain capture groups in '('parentheses')'.
 * *rewrite*: The replacement regex for any match made by *matchingRegex*. Use `\0` to refer to the whole match, `\1` for the first capture group, `\2` and so on for subsequent capture groups.
-* *source*: A string.
 
 ## Returns
 
@@ -32,15 +32,13 @@ Replace all regex matches with another string.
 
 ## Example
 
-This statement:
-
 ```kusto
 range x from 1 to 5 step 1
 | extend str=strcat('Number is ', tostring(x))
-| extend replaced=replace(@'is (\d+)', @'was: \1', str)
+| extend replaced=replace_regex(str, @'is (\d+)', @'was: \1')
 ```
 
-Has the following results:
+**Output:**
 
 | x    | str | replaced|
 |---|---|---|
