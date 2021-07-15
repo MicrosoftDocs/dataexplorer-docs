@@ -1,5 +1,5 @@
 ---
-title: replace_string() - Azure Data Explorer | Microsoft Docs
+title: replace_string() - Azure Data Explorer
 description: This article describes replace_string() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 15/07/2021
 ---
 # replace_string()
 
-Replace all string matches with another string. 
+Replaces all string matches with another string. 
 
 ## Syntax
 
@@ -20,8 +20,8 @@ Replace all string matches with another string.
 ## Arguments
 
 * *text*: A string.
-* *lookup*: A string to replace.
-* *rewrite*: A string to replace with.
+* *lookup*: A string to be replaced.
+* *rewrite*: A replacement string.
 
 ## Returns
 
@@ -29,7 +29,6 @@ Replace all string matches with another string.
 
 ## Example
 
-This statement:
 
 ```kusto
 range x from 1 to 5 step 1
@@ -37,7 +36,7 @@ range x from 1 to 5 step 1
 | extend replaced=replace_string(str, 'is', 'was')
 ```
 
-Has the following results:
+**Output:**
 
 | x    | str | replaced|
 |---|---|---|
