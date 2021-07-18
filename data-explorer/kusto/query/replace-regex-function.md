@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/15/2021
+ms.date: 07/18/2021
 ---
 # replace_regex()
 
@@ -23,7 +23,7 @@ Replaces all regex matches with another string.
 ## Arguments
 
 * *text*: A string.
-* *regex*: The [regular expression](https://github.com/google/re2/wiki/Syntax) to search *text*. The expression can contain capture groups in '('parentheses')'.
+* *regex*: The [regular expression](https://github.com/google/re2/wiki/Syntax) to search *text*. The expression can contain capture groups in parentheses.
 * *rewrite*: The replacement regex for any match made by *matchingRegex*. Use `\0` to refer to the whole match, `\1` for the first capture group, `\2` and so on for subsequent capture groups.
 
 ## Returns
