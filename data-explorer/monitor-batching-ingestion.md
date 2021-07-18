@@ -144,8 +144,7 @@ Let's first look at the stage latency of our batching ingestion:
 1. In the **Metrics** pane in Azure Monitor, select **Add Metric**.
 1. Select *Stage Latency* as the **Metric** value and *Avg* as the **Aggregation** value.
 1. Select the **Apply splitting** button and choose *Component Type* to segment the chart by the different ingestion components.
-1. Select the **Add filter** button, and filter on the blobs sent to the *GitHub* database. After selecting the filter values, click away from the filter selector to close it.
-
+1. Select the **Add filter** button, and filter on the data sent to the *GitHub* database. After selecting the filter values, click away from the filter selector to close it.
 Now the chart shows the latency of ingestion operations that are sent to GitHub database at each of the components through ingestion over time:
 
 :::image type="content" source="media/monitor-batching-ingestion/stage-latency-by-component-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of stage latency for ingestion from the github database aggregated by avg and split by component type." lightbox="media/monitor-batching-ingestion/stage-latency-by-component-chart.png":::
@@ -153,7 +152,7 @@ Now the chart shows the latency of ingestion operations that are sent to GitHub 
 We can tell the following information from this chart:
 
 * The latency at the *Event Hub Data Connection* component is approximately 0 seconds. This makes sense, because **Stage Latency** only measures latency from when a message is discovered by Azure Data Explorer.
-* The longest time in the ingestion process (approximately 5 minutes) passes from when the *Batching Manager* component received data to when the *Ingestion Manager* component received data. In this example, we use the default batching policy for the *GitHub* database. As noted, the latency time for the default batching policy is 5 minutes, so this indicates that nearly all the data was batched by time, and most of the latency time for the batching ingestion was due to the batching itself.
+* The longest time in the ingestion process (approximately 5 minutes) passes from when the *Batching Manager* component received data to when the *Ingestion Manager* component received data. In this example, we use the default batching policy for the *GitHub* database. As noted, the latency time limit for the default batching policy is 5 minutes, so this most likely indicates that nearly all the data was batched by time, and most of the latency time for the batching ingestion was due to the batching itself.
 * The storage engine latency in the chart represents the latency when data is received by the *Azure Data Explorer Storage Engine* component. You can see that the average total latency from the time of data discovery by Azure Data Explorer until it's ready for query is 5.2 minutes.
 
 ### Discovery Latency
@@ -162,7 +161,7 @@ If you use ingestion with data connections, you may want to estimate the latency
 
 1. Select **+ New chart**.
 1. Select *Discovery Latency* as the **Metric** value and *Avg* as the **Aggregation** value.
-1. Select the **Apply splitting** button and choose *Component Type* to segment the chart by the different ingestion components. After selecting the splitting values, click away from the split selector to close it.
+1. Select the **Apply splitting** button and choose *Component Type* to segment the chart by the different data connection components. After selecting the splitting values, click away from the split selector to close it.
 
 :::image type="content" source="media/monitor-batching-ingestion/discovery-latency-by-component-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of discovery latency for ingestion from the github database aggregated by avg and split by component type." lightbox="media/monitor-batching-ingestion/discovery-latency-by-component-type-chart.png":::
 
@@ -185,28 +184,27 @@ Let's start with an overall view of the batching process by looking at the **Bat
 
 1. In the **Metrics** pane in Azure Monitor, select **Add Metric**.
 1. Select *Batches Processed* as the **Metric** value and *Sum* as the **Aggregation** value.
-1. Select the **Apply splitting** button and choose *Batching Type* to segment the chart based on the reason the batch was sealed. Batches are sealed when the batch reaches the limits set in the batching policy for batching time, data size, or number of files.
-1. Select the **Add filter** button and filter on the blobs sent to the *GitHub* database. After selecting the filter values, click away from the filter selector to close it.
+1. Select the **Apply splitting** button and choose *Batching Type* to segment the chart based on the reason the batch was sealed. For a complete list of batching types, see [Batching types](kusto/management/batchingpolicy#batching-types).
+1. Select the **Add filter** button and filter on the batches sent to the *GitHub* database. After selecting the filter values, click away from the filter selector to close it.
 
 The chart shows the number of sealed batches with data sent to the *GitHub* database over time, split by the *Batching Type*.
 
 :::image type="content" source="media/monitor-batching-ingestion/batches-processed-by-batching-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of batches processed for ingestion from the github database aggregated by sum and split by batching type." lightbox="media/monitor-batching-ingestion/batches-processed-by-batching-type-chart.png":::
 
-* Notice that there are 2-4 batches per time unit over time, and all batches are split by time as estimated in the [Stage Latency](#stage-latency) section where you can see that it takes around 5 minutes to batch data based on the default batching policy.
+* Notice that there are 2-4 batches per time unit over time, and all batches are sealed by time as estimated in the [Stage Latency](#stage-latency) section where you can see that it takes around 5 minutes to batch data based on the default batching policy.
 
 ### Batch duration, size, and blob count
 
-Now let's look in more detail at the speed, size, and efficiency of the how the batches are being processed.
-
+Now let's further characterize the processed batches.
 1. Select the **+ Add Chart** button to create more charts for the **Metric** values *Batch Duration*, *Batch Size*, and *Batch Blob Count*.
-1. Use *Avg* as the **Aggregation** value for each and use the **Apply splitting** button to split each metric by *Batching Type*.
-1. As in the previous example, select the **Add filter** button, and filter on the blobs sent to the *GitHub* database.
+1. Use *Avg* as the **Aggregation** value.
+1. As in the previous example, select the **Add filter** button, and filter on the data sent to the *GitHub* database.
 
 :::image type="content" source="media/monitor-batching-ingestion/batch-count-duration-size-charts.png" alt-text="Screenshot of the Metrics pane in Azure portal showing charts of Batch blob count, Batch duration and Batch size metrics, for ingestion from the github database aggregated by avg and split by batching type." lightbox="media/monitor-batching-ingestion/batch-count-duration-size-charts.png":::
 
 From the *Batch Duration*, *Batch Size*, and *Batch Blob Count* charts we can conclude some insights: 
 
-* The average batch duration is 5 minutes. Since the default batching time defined in the batching policy is 5 minutes, it may significantly affect the ingestion latency. On the other hand, a batching time that is too short may cause ingestion commands to include a data size that is too small. These small batches will reduce ingestion efficiency and require post-ingestion resources to optimize the small data shards produced by non-batched ingestion.
+* The average batch duration is 5 minutes. Since the default batching time defined in the batching policy is 5 minutes, it may significantly affect the ingestion latency. On the other hand, if you use a batching time that is too short and you don't have enough data, it may cause ingestion commands to include a data size that is too small. These small batches will reduce ingestion efficiency and require post-ingestion resources to optimize the small data shards that were created.
 
 * The average number of blobs in the batches is around 160 blobs over time, then it decreases to 60-120 blobs. As we saw in the [Blobs Processed chart](#view-the-amount-of-ingested-data), we have around 280 processed blobs over time for the February 14 time frame in the *Batching Manager* component, so this pattern makes sense. The graph also shows three processed batches over time. Based on the default batching policy, a batch can seal when the blob count is 1000 blobs. As we don’t arrive at this number, we don’t see batches sealed by count.
 
