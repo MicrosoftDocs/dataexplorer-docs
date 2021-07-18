@@ -19,7 +19,7 @@ In the *batching ingestion* process, Azure Data Explorer optimizes [data ingesti
 Batching ingestion occurs in stages, and each stage is governed by an ingestion *component*:
 
 1. For Event Grid, Event Hub and IoT Hub ingestion, there is a *Data Connection* that gets the data from external sources and performs initial data rearrangement.
-2. The *Batching Manager* optimizes the ingestion throughput by batching the small ingress data chunks that it receives based on the ingestion batching policy.
+2. The *Batching Manager* optimizes the ingestion throughput by taking the small ingress data chunks that it receives and batching them based on the ingestion batching policy.
 3. The *Ingestion Manager* sends the ingestion commands to the *Azure Data Explorer Storage Engine*.
 4. The *Azure Data Explorer Storage Engine* stores the ingested data, making it available for query.
 
@@ -32,7 +32,7 @@ The Azure Data Explorer ingestion metrics give you detailed information about:
 * The batching process itself.
 * For Event Hub, Event Grid and IoT Hub ingestion: The number of events received.
 
-In this article, you'll learn how to use ingestion metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
+In this article, you'll learn how to use ingestion metrics in the Azure portal to monitor batching ingestion to Azure Data Explorer.
 
 ## Prerequisites
 
@@ -42,7 +42,7 @@ In this article, you'll learn how to use ingestion metrics to monitor batching i
 
 ## Create metric charts with Azure Monitor metrics explorer
 
-The following is a general explanation of how to use the Azure Monitor metrics that will be implemented in subsequent sections.
+The following is a general explanation of how to use the Azure Monitor metrics that will then be implemented in subsequent sections.
 Use the following steps to create metric charts with the [Azure Monitor metrics explorer](/azure/azure-monitor/essentials/metrics-getting-started) in Azure portal:
 
 1. Sign in to the [Azure portal](https://portal.azure.com/) and navigate to the overview page for your Azure Data Explorer cluster.
@@ -122,11 +122,11 @@ To better understand the relation between the number of blobs that were received
 
 ### Blobs Dropped
 
-To determine whether there are blobs that were dropped during ingestion, you should analyze the **Blobs Dropped** metric. This metric shows how many blobs were dropped during ingestion and helps you detect whether there is a problem in processing at a specific ingestion component. For each dropped blob, you will also get an **Ingestion Result** metric with more information about the reason for failure.
+To determine whether there are blobs that were dropped during ingestion, you should analyze the **Blobs Dropped** metric. This metric shows how many blobs were dropped during ingestion and helps you detect whether there is a problem in processing at a specific ingestion component. For each dropped blob, you will also get an [**Ingestion Result**](#view-the-ingestion-result) metric with more information about the reason for failure.
 
 ## View the ingestion latency
 
-The metrics **Stage Latency** and **Discovery Latency** monitor latency in the ingestion process and tell you whether any long latency is occurring in Azure Data Explorer or before data arrives to Azure Data Explorer for ingestion.
+The metrics **Stage Latency** and **Discovery Latency** monitor latency in the ingestion process, and tell you if there are any long latencies occurring either in Azure Data Explorer, or before data arrives to Azure Data Explorer for ingestion.
 
 * **Stage Latency** indicates the time span from when a message is discovered by Azure Data Explorer until its content is received by an ingestion component for processing.
 * **Discovery Latency** is used for ingestion pipelines with data connections (such as Event Hub, IoT Hub, and Event Grid). This metric gives information about the time span from data enqueue until discovery by Azure Data Explorer data connections. This time span is upstream to Azure Data Explorer, so it is not included in the **Stage Latency** metric that only measures the latency in Azure Data Explorer.
@@ -157,7 +157,7 @@ We can tell the following information from this chart:
 
 ### Discovery Latency
 
-If you use ingestion with data connections, you may want to estimate the latency upstream to Azure Data Explorer over time as long latency may also occur before Azure Data Explorer gets the data for ingestion. For that purpose, you can use the **Discovery Latency** metric.
+If you use ingestion with data connections, you may want to estimate the latency upstream to Azure Data Explorer over time, as long latency may also occur before Azure Data Explorer gets the data for ingestion. For that purpose, you can use the **Discovery Latency** metric.
 
 1. Select **+ New chart**.
 1. Select *Discovery Latency* as the **Metric** value and *Avg* as the **Aggregation** value.
