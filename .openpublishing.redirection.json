@@ -144,6 +144,11 @@
       "source_path": "data-explorer/kusto/management/merge-extents.md",
       "redirect_url": "/azure/data-explorer/kusto/management/extents-overview",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/replacefunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/replace-regex-function",
+      "redirect_document_id": true
     }
   ]
 }

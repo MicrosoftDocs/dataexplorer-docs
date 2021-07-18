@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/03/2020
+ms.date: 07/14/2021
 ---
 # Create or alter continuous export
 
@@ -21,18 +21,24 @@ Creates or alters a continuous export job.
 [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]<br>
 \<| *Query*
 
-## Properties
+## Arguments
 
-| Property             | Type     | Description   |
+| Argument           | Type     | Description   |
 |----------------------|----------|---------------------------------------|
 | ContinuousExportName | String   | Name of continuous export. Name must be unique within the database and is used to periodically run the continuous export.      |
 | ExternalTableName    | String   | Name of [external table](../../query/schema-entities/externaltables.md) to export to.  |
 | Query                | String   | Query to export.  |
 | over (T1, T2)        | String   | An optional comma-separated list of fact tables in the query. If not specified, all tables referenced in the query are assumed to be fact tables. If specified, tables *not* in this list are treated as dimension tables and will not be scoped (all records will participate in all exports). See [continuous data export overview](continuous-data-export.md) for details. |
-| intervalBetweenRuns  | Timespan | The time span between continuous export executions. Must be greater than 1 minute.   |
-| forcedLatency        | Timespan | An optional period of time to limit the query to records that were ingested only prior to this period (relative to current time). This property is useful if, for example, the query performs some aggregations/joins and you would like to make sure all relevant records have already been ingested before running the export.
 
-In addition to the above, all properties supported in [export to external table command](export-data-to-an-external-table.md) are supported in the continuous export create command. 
+## Properties
+
+| Property           | Type     | Description   |
+|----------------------|----------|---------------------------------------|
+| `intervalBetweenRuns`  | Timespan | The time span between continuous export executions. Must be greater than 1 minute.   |
+| `forcedLatency`        | Timespan | An optional period of time to limit the query to records that were ingested only prior to this period (relative to current time). This property is useful if, for example, the query performs some aggregations/joins and you would like to make sure all relevant records have already been ingested before running the export.
+|`sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100MB (default) to 1GB.|
+|`parquetRowGroupSize`|`int`  |Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100000 records.|
+|`distributed`   |`bool`  |Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true.
 
 ## Example
 

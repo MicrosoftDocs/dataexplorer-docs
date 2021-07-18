@@ -28,19 +28,23 @@ T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)
 * *TimelineColumn*: column reference representing timeline, must be present in the source expression.
 * *Start*: scalar constant value of the analysis start period.
 * *End*: scalar constant value of the analysis end period.
-* *Step*: scalar constant value of the analysis step period (bin).
+* *BinSize*: scalar constant value of the analysis window (bin) size, each window is analyzed separately.
 * *StateColumn*: column reference representing the state, must be present in the source expression.
 * *Sequence*: a constant dynamic array with the sequence values (values are looked up in `StateColumn`).
-* *MaxSequenceStepWindows*: scalar constant dynamic array with the values of the max allowed timespan between the first and last sequential steps in the sequence. Each Window (period) in the array generates a funnel analysis result.
+* *MaxSequenceStepPeriods*: scalar constant dynamic array with the values of the max allowed timespan between the first and last sequential steps in the sequence. Each period in the array generates a funnel analysis result.
 
 ## Returns
 
 Returns a single table useful for constructing a funnel diagram for the analyzed sequence:
 
-* `TimelineColumn`: the analyzed time window
+* `TimelineColumn`: the analyzed time window (bin), each bin in the analysis timeframe (*Start* to *End*) generates a funnel analysis separately.
 * `StateColumn`: the state of the sequence.
-* `Period`: the maximal period (window) allowed for completing steps in the funnel sequence measured from the first step in the sequence. Each value in *MaxSequenceStepWindows* generates a funnel analysis with a separate period. 
+* `Period`: the maximal period allowed for completing steps in the funnel sequence measured from the first step in the sequence. Each value in *MaxSequenceStepPeriods* generates a funnel analysis with a separate period. 
 * `dcount`: distinct count of `IdColumn` in time window that transitioned from first sequence state to the value of `StateColumn`.
+
+## See also
+
+* [scan operator](scan-operator.md)
 
 ## Examples
 
