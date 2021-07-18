@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 07/14/2021
 ---
 # Export data to an external table
 
@@ -22,14 +22,25 @@ The command requires [table admin or database admin permission](../access-contro
 `.export` [`async`] `to` `table` *ExternalTableName* <br>
 [`with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <| *Query*
 
-**Arguments**
+## Arguments
 
 * *ExternalTableName*: the name of the external table to export to.
 * *Query*: export query.
-* *Properties*: the following properties are supported as part of the export to external table command: 
-    * `sizeLimit`, `parquetRowGroupSize`, `distributed` - see the [export to storage](export-data-to-storage.md) section for details about these properties.
-    * `spread`, `concurrency` - properties to decrease/increase the concurrency of write operations. See [partition operator](../../query/partitionoperator.md) for details. These properties are only relevant when exporting to an external table which is partitioned by a _string_ partition. By default, the number of nodes exporting concurrently will be the minimum between 64 and number of cluster nodes.
 
+## Properties
+
+The following properties are supported as part of the export to external table command:  
+
+| Property | Type | Description| Default
+|---|---|---|---|
+| `sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100MB (default) to 1GB.|
+|`parquetRowGroupSize`|`int`  |Relevant only when data format is Parquet. Controls the row group size in the exported files. | Default row group size is 100000 records.|
+|`distributed`   |`bool`  |Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. | Default is true.
+|`hint.concurrency`|*Number*|Hints the system how many partitions to run in parallel. **See note below.**| The default value is 16. |
+|`hint.spread`|*Number*|Hints the system how to distribute the partitions among cluster nodes. For example, if there are N partitions and the spread hint is set to P, then the N partitions will be processed by P different cluster nodes equally in parallel/sequentially depending on the concurrency hint.  **See note below.**| The default value is 1. |
+
+>[!NOTE]
+> `spread` and `concurrency` are properties used to decrease/increase the concurrency of write operations. For more details, see [partition operator](../../query/partitionoperator.md). These properties are only relevant when exporting to an external table which is partitioned by a string partition. By default, the number of nodes exporting concurrently will be the minimum value between 64 and the number of cluster nodes.
 
 ## Output
 
