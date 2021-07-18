@@ -208,11 +208,11 @@ From the *Batch Duration*, *Batch Size*, and *Batch Blob Count* charts we can co
 
 * The average number of blobs in the batches is around 160 blobs over time, then it decreases to 60-120 blobs. As we saw in the [Blobs Processed chart](#view-the-amount-of-ingested-data), we have around 280 processed blobs over time for the February 14 time frame in the *Batching Manager* component, so this pattern makes sense. The graph also shows three processed batches over time. Based on the default batching policy, a batch can seal when the blob count is 1000 blobs. As we don’t arrive at this number, we don’t see batches sealed by count.
 
-* In the *Batch Size* chart, you can see that the average size of batches is around 200-500 MB over time. The optimal size of data to be ingested in bulk, as defined in the default batching policy, is 1 GB of uncompressed data. This size is also defined as a seal reason by the default batching policy. As there's no 1 GB of data to be batched over time, we don't see any batches sealed by size. When looking at the size, you should consider the same tradeoff between latency and efficiency as for the batch duration.
+* In the *Batch Size* chart, you can see that the average size of batches is around 200-500 MB over time. The optimal size of data to be ingested is 1 GB of uncompressed data. This size is also defined as a seal reason by the default batching policy. As there's no 1 GB of data to be batched over time, we don't see any batches sealed by size. When looking at the size, you should consider the same tradeoff between latency and efficiency as for the batch duration.
 
 ## Compare events received to events sent for ingestion
 
-When applying Event Hub, IoT Hub, or Event Grid ingestion, it is important to compare the number of events received by Azure Data Explorer to the number of events sent from the eventing source to Azure Data Explorer. The metrics **Events Received**, **Events Processed**, and **Events Dropped** allow you to make this comparison.
+When applying Event Hub, IoT Hub, or Event Grid ingestion, it can be useful to compare the number of events received by Azure Data Explorer to the number of events sent from the eventing source to Azure Data Explorer. The metrics **Events Received**, **Events Processed**, and **Events Dropped** allow you to make this comparison.
 
 ### Events Received
 
@@ -224,7 +224,7 @@ Now the chart shows the number of events received by the selected data connectio
 
 :::image type="content" source="media/monitor-batching-ingestion/events-received-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of the events received during ingestion from the github database aggregated over time." lightbox="media/monitor-batching-ingestion/events-received-chart.png":::
 
-* In this chart, the *GitHubStreamingEvents* data connection receives around 200-500 events over time.
+* In this chart, the *GitHubStreamingEvents* data connection receives around 200-500 events per time unit over time.
 
 ### Events Processed and Events Dropped
 
