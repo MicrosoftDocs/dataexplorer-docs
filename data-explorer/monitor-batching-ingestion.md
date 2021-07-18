@@ -51,7 +51,7 @@ Use the following steps to create metric charts with the [Azure Monitor metrics 
    * The **Scope** is the name of your Azure Data Explorer cluster. In the following example, we will use a cluster named *demo11*.
    * The **Metric Namespace** should be set to *Kusto Cluster standard metrics*. This is the namespace that contains the Azure Data Explorer metrics.
 
-   :::image type="content" source="media/monitor-batching-ingestion/metrics-settings-selector.png" alt-text="Screenshot showing how to select settings for a metric in Azure portal.":::
+   :::image type="content" source="media/monitor-batching-ingestion/metrics-settings-selector.png" alt-text="Screenshot showing how to select settings for a metric in Azure portal." lightbox="media/monitor-batching-ingestion/metrics-settings-selector.png":::
 
 1. Select the **Metric** name and the relevant **Aggregation** value.
 1. Open the **time picker** panel at the top right of the metrics pane and change the **Time range** to the time you want to analyze. In this article, we're analyzing data ingestion to Azure Data Explorer during the last 48 hours.
@@ -79,7 +79,7 @@ Now the metric information is split by status, and we can see information about 
 2. Orange for ingestion operations that failed because of *Entity not found*.
 3. Purple for ingestion operations that failed because of *Bad request*.
 
-:::image type="content" source="media/monitor-batching-ingestion/ingestion-result-by-status-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of ingestion results aggregated by sum and split by status.":::
+:::image type="content" source="media/monitor-batching-ingestion/ingestion-result-by-status-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of ingestion results aggregated by sum and split by status." lightbox="media/monitor-batching-ingestion/ingestion-result-by-status-chart.png":::
 
 Consider the following when looking at the chart of ingestion results:
 
@@ -103,7 +103,7 @@ In this example, we'll use these metrics to see how much data passed through the
 
 Now the chart shows how many blobs that were sent to the *GitHub* database were processed at each of the ingestion components over time.
 
-:::image type="content" source="media/monitor-batching-ingestion/blobs-processed-by-component-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of blobs processed from the github database, aggregated by sum and split by component type.":::
+:::image type="content" source="media/monitor-batching-ingestion/blobs-processed-by-component-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of blobs processed from the github database, aggregated by sum and split by component type." lightbox="media/monitor-batching-ingestion/blobs-processed-by-component-type-chart.png":::
 
 * Notice that on February 13 there's a decrease in the number of blobs that were ingested to the *GitHub* database over time. Also, notice that the number of blobs that were processed at each of the components is similar, meaning that approximately all data processed in the *Data Connection* component was also processed successfully by the *Batching Manager*, *Ingestion Manager*, and *Azure Data Explorer Storage Engine* components. This data is ready for query.
 
