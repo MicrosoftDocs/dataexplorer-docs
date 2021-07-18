@@ -616,6 +616,8 @@ items:
   - name: replace_regex()
     displayName: replace()
     href: replace-regex-function.md
+  - name: replace_string()
+    href: replace-string-function.md
   - name: reverse()
     href: reversefunction.md
   - name: round()
