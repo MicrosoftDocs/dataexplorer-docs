@@ -116,7 +116,7 @@ To better understand the relation between the number of blobs that were received
 1. Select the **Apply splitting** button and choose *Component Type* to split the *Blobs Received* metric by component type.
 1. Select the **Add filter** button and set the same values as before to filter only the blobs sent to the *GitHub* database.
 
-:::image type="content" source="media/monitor-batching-ingestion/blobs-received-and-processed-by-component-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing charts of blobs processed and blobs received from the github database aggregated by sum and split by component type.":::
+:::image type="content" source="media/monitor-batching-ingestion/blobs-received-and-processed-by-component-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing charts of blobs processed and blobs received from the github database aggregated by sum and split by component type." lightbox="media/monitor-batching-ingestion/blobs-received-and-processed-by-component-type-chart.png":::
 
 * Comparing the charts, notice that the number of blobs received by each component closely matches the number of blobs that were processed by each component. This comparision indicates that no blobs were dropped during ingestion.
 
@@ -147,7 +147,7 @@ Let's first look at the stage latency of our batching ingestion:
 1. Select the **Add filter** button, and filter on the data sent to the *GitHub* database. After selecting the filter values, click away from the filter selector to close it.
 Now the chart shows the latency of ingestion operations that are sent to GitHub database at each of the components through ingestion over time:
 
-:::image type="content" source="media/monitor-batching-ingestion/stage-latency-by-component-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of stage latency for ingestion from the github database aggregated by avg and split by component type.":::
+:::image type="content" source="media/monitor-batching-ingestion/stage-latency-by-component-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of stage latency for ingestion from the github database aggregated by avg and split by component type." lightbox="media/monitor-batching-ingestion/stage-latency-by-component-chart.png":::
 
 We can tell the following information from this chart:
 
@@ -163,7 +163,7 @@ If you use ingestion with data connections, you may want to estimate the latency
 1. Select *Discovery Latency* as the **Metric** value and *Avg* as the **Aggregation** value.
 1. Select the **Apply splitting** button and choose *Component Type* to segment the chart by the different data connection components. After selecting the splitting values, click away from the split selector to close it.
 
-:::image type="content" source="media/monitor-batching-ingestion/discovery-latency-by-component-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of discovery latency for ingestion from the github database aggregated by avg and split by component type.":::
+:::image type="content" source="media/monitor-batching-ingestion/discovery-latency-by-component-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of discovery latency for ingestion from the github database aggregated by avg and split by component type." lightbox="media/monitor-batching-ingestion/discovery-latency-by-component-type-chart.png":::
 
 * You can see that for most of the duration the discovery latency is close to 0 seconds, indicating that Azure Data Explorer got data immediately after data enqueue. The highest peak of around 300 milliseconds is around February 13 at 14:00 AM, indicating that at this time the Azure Data Explorer cluster received the data around 300 milliseconds after data enqueue.
 
@@ -189,7 +189,7 @@ Let's start with an overall view of the batching process by looking at the **Bat
 
 The chart shows the number of sealed batches with data sent to the *GitHub* database over time, split by the *Batching Type*.
 
-:::image type="content" source="media/monitor-batching-ingestion/batches-processed-by-batching-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of batches processed for ingestion from the github database aggregated by sum and split by batching type.":::
+:::image type="content" source="media/monitor-batching-ingestion/batches-processed-by-batching-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of batches processed for ingestion from the github database aggregated by sum and split by batching type." lightbox="media/monitor-batching-ingestion/batches-processed-by-batching-type-chart.png":::
 
 * Notice that there are 2-4 batches per time unit over time, and all batches are sealed by time as estimated in the [Stage Latency](#stage-latency) section where you can see that it takes around 5 minutes to batch data based on the default batching policy.
 
@@ -200,7 +200,7 @@ Now let's further characterize the processed batches.
 1. Use *Avg* as the **Aggregation** value.
 1. As in the previous example, select the **Add filter** button, and filter on the data sent to the *GitHub* database.
 
-:::image type="content" source="media/monitor-batching-ingestion/batch-count-duration-size-charts.png" alt-text="Screenshot of the Metrics pane in Azure portal showing charts of Batch blob count, Batch duration and Batch size metrics, for ingestion from the github database aggregated by avg and split by batching type.":::
+:::image type="content" source="media/monitor-batching-ingestion/batch-count-duration-size-charts.png" alt-text="Screenshot of the Metrics pane in Azure portal showing charts of Batch blob count, Batch duration and Batch size metrics, for ingestion from the github database aggregated by avg and split by batching type." lightbox="media/monitor-batching-ingestion/batch-count-duration-size-charts.png":::
 
 From the *Batch Duration*, *Batch Size*, and *Batch Blob Count* charts we can conclude some insights: 
 
@@ -222,7 +222,7 @@ When applying Event Hub, IoT Hub, or Event Grid ingestion, it can be useful to c
 
 Now the chart shows the number of events received by the selected data connection over time:
 
-:::image type="content" source="media/monitor-batching-ingestion/events-received-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of the events received during ingestion from the github database aggregated over time.":::
+:::image type="content" source="media/monitor-batching-ingestion/events-received-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of the events received during ingestion from the github database aggregated over time." lightbox="media/monitor-batching-ingestion/events-received-chart.png":::
 
 * In this chart, the *GitHubStreamingEvents* data connection receives around 200-500 events per time unit over time.
 
@@ -236,7 +236,7 @@ To see if any events were dropped by Azure Data Explorer, use the **Events Proce
 
 The chart now shows the number of Events that were received, processed, and dropped by the *GitHubStreamingEvents* data connection over time.
 
-:::image type="content" source="media/monitor-batching-ingestion/events-received-processed-dropped-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart with graphs of the events received, processed, and dropped during ingestion from the github database aggregated over time.":::
+:::image type="content" source="media/monitor-batching-ingestion/events-received-processed-dropped-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart with graphs of the events received, processed, and dropped during ingestion from the github database aggregated over time." lightbox="media/monitor-batching-ingestion/events-received-processed-dropped-chart.png":::
 
 * Almost all the received events were processed successfully by the data connection. There is one dropped event, which is compatible with the failed ingestion result due to bad request that we saw when [viewing the ingestion result metric](#view-the-ingestion-result).
 
@@ -247,14 +247,14 @@ You may also want to compare the number of events received to the number of even
 1. On the chart you have already created for **Events Received**, select **Add metric**.
 1. Select **Scope** and in the **Select a scope** dialog, browse for, and select the namespace of the Event Hub that sends data to your data connection.
 
-:::image type="content" source="media/monitor-batching-ingestion/select-a-scope.png" alt-text="Screenshot of the Select a scope dialog in the Azure portal, showing a search for the github4demo in the list of Event Hubs Namespaces.":::
+:::image type="content" source="media/monitor-batching-ingestion/select-a-scope.png" alt-text="Screenshot of the Select a scope dialog in the Azure portal, showing a search for the github4demo in the list of Event Hubs Namespaces." lightbox="media/monitor-batching-ingestion/select-a-scope.png":::
 
 1. Select **Apply**
 1. Select *Outgoing Messages* as the **Metric** value and *Sum* as the **Aggregation** value.
 
 Click away from the settings to get the full chart that compares the number of events processed by the Azure Data Explorer data connection to the number of events sent from the Event Hub.
 
-:::image type="content" source="media/monitor-batching-ingestion/all-event-metrics-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart with graphs for all of the events received, processed, dropped and during ingestion from the github database aggregated over time.":::
+:::image type="content" source="media/monitor-batching-ingestion/all-event-metrics-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart with graphs for all of the events received, processed, dropped and during ingestion from the github database aggregated over time." lightbox="media/monitor-batching-ingestion/all-event-metrics-chart.png":::
 
 * Notice that all the events that were sent from Event Hub were processed successfully by the Azure Data Explorer data connection.
 * If you have more than one Event Hub in the Event Hub namespace, you should filter the **Outgoing Messages** metric by the **Entity Name** dimension to get only data from the desired Event hub in your Event Hub namespace.
