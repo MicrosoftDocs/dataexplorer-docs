@@ -268,6 +268,8 @@ items:
       href: updatepolicy.md
     - name: update policy commands
       href: update-policy.md
+  - name: Query weak consistency
+    href: queryweakconsistency.md
 - name: Security roles
   href: security-roles.md
 - name: Data ingestion
