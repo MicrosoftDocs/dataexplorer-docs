@@ -83,7 +83,7 @@ Update policies take effect when data is ingested or moved to (extents are creat
 > [!WARNING]
 > * When the update policy is invoked as part of a  `.set-or-replace` command, the default behavior is that data in derived table(s) is replaced in the same way as in the source table. 
 >   * This might lead to loss of data in all tables that have an update policy relationship to that table, if the `replace` part takes place.
-> * Consider using `.set-or-append` instead, if this behavior isn't desired.
+>   * Consider using `.set-or-append` instead, if this behavior isn't desired.
 
 ## Regular ingestion using update policy
 
