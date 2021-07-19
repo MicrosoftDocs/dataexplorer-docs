@@ -3,7 +3,7 @@ title: .alter cluster policy query_weak_consistency - Azure Data Explorer
 description: This article describes '.alter cluster policy query_weak_consistency' in Azure Data Explorer.
 services: data-explorer
 author: yahav
-ms.author: yahavx-ms
+ms.author: yabenyaa
 ms.reviewer: a
 ms.service: data-explorer
 ms.topic: reference
