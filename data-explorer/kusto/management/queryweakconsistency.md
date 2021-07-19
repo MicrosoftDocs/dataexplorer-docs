@@ -9,7 +9,6 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/19/2021
 ---
-
 # Query weak consistency policy
 
 The query weak consistency policy is a cluster-level policy object to configure the weak consistency service.
