@@ -81,8 +81,9 @@ Update policies take effect when data is ingested or moved to (extents are creat
   * The `PropagateIngestionProperties` command only takes effect in ingestion operations. When the update policy is triggered as part of a `.move extents` or `.replace extents` command, this option has no effect.
 
 > [!WARNING]
-> When the update policy is invoked as part of a  `.set-or-replace` command, the default behavior is that data in derived table(s) is replaced in the same way as in the source table. Consider using `.set-or-append` instead, if this behavior isn't desired.
-
+> * When the update policy is invoked as part of a  `.set-or-replace` command, the default behavior is that data in derived table(s) is replaced in the same way as in the source table. 
+>   * This might lead to loss of data in all tables that have an update policy relationship to that table, if the `replace` part takes place.
+>   * Consider using `.set-or-append` instead, if this behavior isn't desired.
 
 ## Regular ingestion using update policy
 
