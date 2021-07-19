@@ -4,7 +4,7 @@ description: This article describes '.alter cluster policy query_weak_consistenc
 services: data-explorer
 author: yahav
 ms.author: yahavx-ms
-ms.reviewer: ?
+ms.reviewer: a
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/19/2021
