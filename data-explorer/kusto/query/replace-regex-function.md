@@ -13,9 +13,6 @@ ms.date: 07/18/2021
 
 Replaces all regex matches with another string.
 
-> [!NOTE]
-> If you do not need regex matching, use [translate()](translatefunction.md).
-
 ## Syntax
 
 `replace_regex(`*text*`,`*regex*`,` *rewrite*`)`
@@ -29,6 +26,11 @@ Replaces all regex matches with another string.
 ## Returns
 
 *source* after replacing all matches of *regex* with evaluations of *rewrite*. Matches do not overlap.
+
+## See also
+
+* For string matching, see [replace_string()](replace-string-function.md).
+* For replacing a set of characters, see [translate()](translatefunction.md).
 
 ## Example
 
