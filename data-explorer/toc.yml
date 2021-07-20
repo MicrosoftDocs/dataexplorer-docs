@@ -109,10 +109,10 @@ items:
     - name: LightIngest
       items: 
       - name: Using LightIngest
-      displayName: ingest data, ingestion
-      href: lightingest.md
-      - name: Auto-generate a LightIngest command
-      href: generate-lightingest-command.md
+        displayName: ingest data, ingestion
+        href: lightingest.md
+      - name: Generate a LightIngest command
+        href: generate-lightingest-command.md
     - name: Event Hub
       items:
       - name: Event Hub data connection
