@@ -19,7 +19,7 @@ The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://e
 
 ## Syntax
 
-`T | invoke two_sample_t_test_fl(`*data1*`,` *data2*`,` *equal_var*`)`
+`T | invoke two_sample_t_test_fl(`*data1*`,` *data2*`,` *test_statistic*`,`*p_value*`,` *equal_var*`)`
 
 ## Arguments
 
