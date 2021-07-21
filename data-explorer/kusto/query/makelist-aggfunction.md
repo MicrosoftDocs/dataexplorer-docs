@@ -85,7 +85,7 @@ shapes
 | summarize mylist = make_list(name) by isEvenSideCount = sideCount % 2 == 0
 ```
 
-|mylist|isEvenSideCount|
+|isEvenSideCount| mylist|
 |---|---|
 |false|["triangle","pentagon","heptagon","nonagon"]|
 |true|["square","rectangle","hexagon","octogon","decagon"]|
