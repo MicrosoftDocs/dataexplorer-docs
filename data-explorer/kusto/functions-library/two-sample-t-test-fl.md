@@ -1,8 +1,8 @@
 ---
 title: two_sample_t_test_fl() - Azure Data Explorer
 description: This article describes the two_sample_t_test_fl() user-defined function in Azure Data Explorer.
-author: t-mgoenka
-ms.author: t-mgoenka
+author: orspod
+ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
@@ -15,7 +15,7 @@ The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://e
 > [!NOTE]
 > * `two_sample_t_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 > * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
-> * If the assumption is different variances, we suggest the use of welch_test()[Two-Sample T-Test](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/welch-testfunction).
+> * If the assumption is different variances, we suggest using the welch_test()[Two-Sample T-Test](../query/welch-testfunction).
 
 ## Syntax
 
@@ -27,7 +27,7 @@ The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://e
 * *data2*: The name of the column containing the second set of data to be used for the test.
 * *test_statistic*: The name of the column to store test statistic value for the results.
 * *p_value*: The name of the column to store p-value for the results.
-* *equal_var*: If True (default), performs a standard independent 2 sample test that assumes equal population variances. If False, performs Welch’s t-test, which does not assume equal population variance.
+* *equal_var*: If `True` (default), performs a standard independent 2 sample test that assumes equal population variances. If `False`, performs Welch’s t-test, which does not assume equal population variance.
 
 
 ## Usage
