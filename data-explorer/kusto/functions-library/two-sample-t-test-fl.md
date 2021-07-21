@@ -27,7 +27,7 @@ The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://e
 * *data2*: The name of the column containing the second set of data to be used for the test.
 * *test_statistic*: The name of the column to store test statistic value for the results.
 * *p_value*: The name of the column to store p-value for the results.
-* *equal_var*: If `True` (default), performs a standard independent 2 sample test that assumes equal population variances. If `False`, performs Welch’s t-test, which does not assume equal population variance.
+* *equal_var*: If `true` (default), performs a standard independent 2 sample test that assumes equal population variances. If `false`, performs Welch’s t-test, which does not assume equal population variance. As mentioned above, consider using the native [welch_test()](../query/welch-testfunction.md).
 
 
 ## Usage
