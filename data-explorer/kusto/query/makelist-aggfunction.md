@@ -18,11 +18,10 @@ Returns a `dynamic` (JSON) array of all the values of *Expr* in the group.
 
 ## Syntax
 
-`summarize` *ListName* = `make_list(`*Expr* [`,` *MaxSize*]`)`
+`summarize` `make_list(`*Expr* [`,` *MaxSize*]`)`
 
 ## Arguments
 
-* *ListName*: Name of dynamic array created.
 * *Expr*: Expression that will be used for aggregation calculation.
 * *MaxSize* is an optional integer limit on the maximum number of elements returned (default is *1048576*). MaxSize value cannot exceed 1048576.
 
