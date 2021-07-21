@@ -122,7 +122,7 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
-id  sample1  sample2  test_stat p_val
+id             sample1                    sample2                test_stat          p_val
 Test #1, [23.64, 20.57, 20.42], [27.1, 22.12, 33.56], -1.7415675457565645, 0.15655096653487446
 Test #2, [20.85, 21.89, 23.41], [35.09, 30.02, 26.52], -3.2711673491022579, 0.030755331219276136
 Test #3, [20.13, 20.5, 21.7, 22.02], [32.2, 32.79, 33.9, 34.22], -18.5515946201742, 1.5823717131966134E-06
