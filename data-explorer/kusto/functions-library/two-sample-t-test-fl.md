@@ -15,7 +15,7 @@ The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://e
 > [!NOTE]
 > * `two_sample_t_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 > * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
-> * If the assumption is that the two datasets to be compared have different variances, we suggest using the welch_test()[Two-Sample T-Test](../query/welch-testfunction).
+> * If the assumption is that the two datasets to be compared have different variances, we suggest using the native [welch_test()](../query/welch-testfunction.md).
 
 ## Syntax
 
