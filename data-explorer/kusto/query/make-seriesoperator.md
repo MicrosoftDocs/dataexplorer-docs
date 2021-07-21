@@ -31,7 +31,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 * *Column:* Optional name for a result column. Defaults to a name derived from the expression.
 * *DefaultValue:* Default value that will be used instead of absent values. If there is no row with specific values of *AxisColumn* and *GroupExpression*, then in the results the corresponding element of the array will be assigned a *DefaultValue*. If *DefaultValue* is omitted, then 0 is assumed. 
 * *Aggregation:* A call to an [aggregation function](make-seriesoperator.md#list-of-aggregation-functions) such as `count()` or `avg()`, with column names as arguments. See the [list of aggregation functions](make-seriesoperator.md#list-of-aggregation-functions). Only aggregation functions that return numeric results can be used with the `make-series` operator.
-* *AxisColumn:* A column on which the series will be ordered. It could be considered as timeline. All numeric types except `datetime` are accepted.
+* AxisColumn: A column on which the series will be ordered, usually of type `datetime` or `timespan`, but all numeric types are also accepted.
 * *start*: (optional) The low bound value of the *AxisColumn* for each of the series to be built. *start*, *end*, and *step* are used to build an array of *AxisColumn* values within a given range and using specified *step*. All *Aggregation* values are ordered respectively to this array. This *AxisColumn* array is also the last output column in the output that has the same name as *AxisColumn*. If a *start* value is not specified, the start is the first bin (step) which has data in each series.
 * *end*: (optional) The high bound (non-inclusive) value of the *AxisColumn*. The last index of the time series is smaller than this value (and will be *start* plus integer multiple of *step* that is smaller than *end*). If *end* value is not provided, it will be the upper bound of the last bin (step) which has data per each series.
 * *step*: The difference between two consecutive elements of the *AxisColumn* array (that is, the bin size).
@@ -54,7 +54,6 @@ This intermediate result has as many rows as there are distinct combinations of 
 
 Finally the rows from the intermediate result arranged into groups having the same values of the `by` expressions and all aggregated values are arranged into arrays (values of `dynamic` type). For each aggregation, there is one column containing its array with the same name. The last column in the output of the range function with all *AxisColumn* values. Its value is repeated for all rows. 
 
-Due to filling missing bins by default value, the resulting pivot table has the same number of bins (that is, aggregated values) for all series.  
 
 **Note**
 
