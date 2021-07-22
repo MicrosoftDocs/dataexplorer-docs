@@ -13,13 +13,14 @@ ms.date: 07/20/2021
 LightIngest is a command-line utility for ad-hoc data ingestion into Azure Data Explorer. 
 To learn more about LightIngest, see [Use LightIngest to ingest data to Azure Data Explorer](lightingest.md).
 
-This article shows you how to create a LightIngest command to ingest a from a blob container into a new or existing table. 
+This article shows you how to create a table and schema mapping, and generate a LightIngest command to ingest a list of blobs from a container into a new or existing table.
 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * [A cluster and database](create-cluster-database-portal.md).
 * [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+* LightIngest - download it as part of the [Microsoft.Azure.Kusto.Tools NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/). For installation instructions, see [Install LightIngest](lightingest.md#install-lightingest).
 
 ## Destination tab
 
@@ -41,7 +42,7 @@ This article shows you how to create a LightIngest command to ingest a from a bl
 
 :::image type="content" source="media/generate-lightingest-command/source-tab-lightingest.png" alt-text="Screenshot of Source tab in Ingest new table window. ":::
 
-  1. Under **Source type**, select **From blob container** (blob container, ADLS Gen2 container). You can ingest up to 5000 blobs from a single container.
+  1. Under **Source type**, select **From blob container** (blob container, ADLS Gen2 container). 
   1. Select **Ingestion type**>**Historical data**.
   1. You can either **Add URL** manually by copying the Account Key/SAS URL to source, or **Select container** from your storage account.
       > [!NOTE]
@@ -52,9 +53,7 @@ This article shows you how to create a LightIngest command to ingest a from a bl
 
 ## Filter data
 
-If you want to, filter the data to ingest only files that begin end with specific characters.
-
-For example, filter for all files with a *.csv* extension.
+If you want to, filter the data to ingest only files in a specific folder path or with a particular file extension.
 
 :::image type="content" source="media/generate-lightingest-command/filter-data-lightingest.png" alt-text="Screenshot of filtering data in the source tab of the Ingest new data screen.":::
 
@@ -71,8 +70,10 @@ In the **Schema** tab:
 
      In this case, the data format is **CSV**
 
-1. You can select the check box **Ignore the first record** to ignore the heading row of the file.
+1. On tabular data, you can select the check box **Ignore the first record** to ignore the heading row of the file.
 1. In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
+
+    When using an existing table, you can **Keep current table schema** if the table schema matches the selected format.
 
 :::image type="content" source="media/generate-lightingest-command/schema-tab-lightingest.png" alt-text="Screenshot of the schema tab in the Ingest new data dialog in Azure Data Explorer WebUI.":::
 
@@ -97,7 +98,7 @@ In the tiles below the ingestion progress, you can download the LightIngest tool
 
 :::image type="content" source="media/generate-lightingest-command/summary-tab-copy-command.png" alt-text="Screenshot of Summary tab with command generated. You can copy the command using the copy icon above the generated command box." lightbox="media/generate-lightingest-command/summary-tab-copy-command.png":::
 
-
 ## Next steps
 
+* [Run LightIngest](lightingest.md#run-lightingest)
 * [Query data in Azure Data Explorer](web-query-data.md)
