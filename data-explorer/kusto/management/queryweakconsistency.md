@@ -1,5 +1,5 @@
 ---
-title: .alter cluster policy query_weak_consistency - Azure Data Explorer
+title: Kusto query weak consistency policy management
 description: This article describes '.alter cluster policy query_weak_consistency' in Azure Data Explorer.
 services: data-explorer
 author: yahav
