@@ -51,7 +51,7 @@ This command returns a table with the following columns:
 |MinimumNumberOfNodes |`int`|Minimum number of nodes which execute the weak consistency service. If `PercentageOfNodes`*`#OfNodesInCluster` is smaller than that, this will determine the number of nodes. The number is 0 or greater, or -1 for default value (currently 0).
 |EnableMetadataPrefetch |`bool`|True means database metadata will be pre-loaded when the cluster comes up on all weak consistency nodes. This way the first weak consistency query doesn’t wait until the the database metadata is loaded. Default value is false. **WARNING**: Prefetch operation requires pulling all databases metadata from Azure storage every few minutes in all weak consistency nodes, this puts load on the underlying storage resources and has impact on cluster performance.
 |MaximumLagAllowedInMinutes|`int`|The maximum duration that weak consistent metadata is allowed to lag behind. If metadata is older than this value, a cache miss will occur. The number is between 1 to 60, or -1 for default value (currently 5 minutes).
-|RefreshPeriodInSeconds|`int`|The refresh period (in seconds) to update a database MD on each weak consistency node. The number is between 30 to 1800, or -1 for default value (currently 120 seconds).
+|RefreshPeriodInSeconds|`int`|The refresh period (in seconds) to update a database metadata on each weak consistency node. The number is between 30 to 1800, or -1 for default value (currently 120 seconds).
 
 ## .alter cluster policy query_weak_consistency
 
