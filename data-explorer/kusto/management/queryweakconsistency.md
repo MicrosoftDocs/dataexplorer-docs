@@ -66,7 +66,7 @@ This command sets the query weak consistency policy.
 
 **Returns**
 
-The command sets the cluster query weak consistency policy object (overriding any current
+The command sets the cluster query weak consistency policy (overriding any current
 policy defined, if any) and then returns the output of the corresponding 
 [.show cluster policy query_weak_consistency](#show-cluster-policy-query_weak_consistency)
 command.
