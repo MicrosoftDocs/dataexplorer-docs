@@ -473,6 +473,9 @@ items:
     - name: perm_fl()
       displayName: functions library
       href: kusto/functions-library/perm-fl.md
+    - name: kolmogorov_smirnov_test_fl()
+      displayName: functions library
+      href: kusto/functions-library/kolmogorov_smirnov_test_fl.md
     - name: predict_fl()
       displayName: functions library
       href: kusto/functions-library/predict-fl.md
