@@ -19,6 +19,9 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
 * Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
+> [!NOTE]
+> To enable access between a cluster and a storage account in different subnets of the same VNET, see [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md).
+
 ## Create a table
 
 1. In the left menu of the Web UI, right-click on your database name and select **Create table**.
