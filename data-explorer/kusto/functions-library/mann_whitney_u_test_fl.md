@@ -8,7 +8,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/20/2021
 ---
-# 
+# mann_whitney_u_test_fl()
 
 The function `mann_whitney_u_test_fl()` performs the [Mann-Whitney U Test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test).
 
