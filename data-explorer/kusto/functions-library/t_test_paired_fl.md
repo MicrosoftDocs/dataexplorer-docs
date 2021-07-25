@@ -8,7 +8,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/20/2021
 ---
-# 
+# t_test_paired_fl()
 
 The function `t_test_paired_fl()` performs the [Paired t-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Unpaired_and_paired_two-sample_t-tests).
 
