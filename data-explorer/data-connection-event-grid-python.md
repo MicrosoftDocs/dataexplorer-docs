@@ -21,6 +21,8 @@ ms.date: 07/26/2021
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
 In this article, you create an Event Grid data connection for Azure Data Explorer by using Python.
 
+For the Microsoft Azure Kusto Management Client Library, see [Microsoft Azure SDK for python](https://github.com/Azure/azure-sdk-for-python/tree/c8291ac6cb0dbd865da03a88dd2bcb9279e2c4a6/sdk/kusto/azure-mgmt-kusto).
+
 ## Prerequisites
 
 * An Azure account with an active subscription. [Create one for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
@@ -40,7 +42,6 @@ In this article, you create an Event Grid data connection for Azure Data Explore
 ## Add an Event Grid data connection
 
 The following example shows you how to add an Event Grid data connection programmatically. See [create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer) for adding an Event Grid data connection using the Azure portal.
-
 
 ```Python
 from azure.mgmt.kusto import KustoManagementClient
