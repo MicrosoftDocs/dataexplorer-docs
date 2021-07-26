@@ -6,14 +6,14 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 07/20/2021
+ms.date: 07/26/2021
 ---
-# Generate a LightIngest command
+# Auto-generate LightIngest command and create table infrastructure
 
 LightIngest is a command-line utility for ad-hoc data ingestion into Azure Data Explorer. 
 To learn more about LightIngest, see [Use LightIngest to ingest data to Azure Data Explorer](lightingest.md).
 
-This article shows you how to create a table and schema mapping, and generate a LightIngest command to ingest a list of blobs from a container into a new or existing table.
+This article shows you how to create table infrastructure and auto-generate a command for one-time ingestion with LightIngest.
 
 ## Prerequisites
 
@@ -22,13 +22,22 @@ This article shows you how to create a table and schema mapping, and generate a 
 * [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 * LightIngest - download it as part of the [Microsoft.Azure.Kusto.Tools NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/). For installation instructions, see [Install LightIngest](lightingest.md#install-lightingest).
 
-## Destination tab
+## Access the wizard
 
-1. In the left menu of the Web UI, right-click a *database* and select **Ingest new data**.
+The wizard can be accessed either from the **Data** tab, or from the **Query** tab.
+
+1. In the **Data** tab, select **Ingest new data**>**Ingest**
+
+    :::image type="content" source="media/generate-lightingest-command/data-tab.png" alt-text="Screenshot of the Data tab of the Azure Data Explorer WebUI with red boxes around the fields to follow.":::
+
+1. In the **Query tab**, right-click a *database* and select **Ingest new data**.
 
    :::image type="content" source="media/one-click-ingestion-new-table/one-click-ingestion-in-web-ui.png" alt-text="Ingest new data.":::
 
-1. In the **Ingest new data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
+In the **Ingest new data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
+
+## Destination tab
+
 1. In **Table**, check either **Existing table** or **Create new table**. When creating a new table, enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
     > [!NOTE]
@@ -46,7 +55,7 @@ This article shows you how to create a table and schema mapping, and generate a 
   1. Select **Ingestion type**>**Historical data**.
   1. You can either **Add URL** manually by copying the Account Key/SAS URL to source, or **Select container** from your storage account.
       > [!NOTE]
-      > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage.md). 
+      > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage.md).
   1. When selecting from your storage account, select your **Storage subscription**, **Storage account**, and **Container** from the dropdown menus.
 
 :::image type="content" source="media/generate-lightingest-command/source-tab-container-from-subscription.png" alt-text="Screenshot of dialog box for selecting container from storage subscription and account.":::

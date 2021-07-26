@@ -111,7 +111,7 @@ items:
       - name: Using LightIngest
         displayName: ingest data, ingestion
         href: lightingest.md
-      - name: Generate a LightIngest command
+      - name: Auto-generate LightIngest command and create table infrastructure
         href: generate-lightingest-command.md
     - name: Event Hub
       items:
