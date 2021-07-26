@@ -42,7 +42,7 @@ A query weak consistency policy includes the following properties:
 ## Control commands
 
 * Use [`.show cluster policy query_weak_consistency`](./queryweakconsistency-policy.md#show-query-weak-consistency-policy) to show the current query weak consistency policy of the cluster.
-* Use [`.alter cluster policy query_weak_consistency`](./queryweakconsistency-policy.md) to change the current query weak consistency policy of the cluster.
+* Use [`.alter cluster policy query_weak_consistency`](./queryweakconsistency-policy.md#alter-query-weak-consistency-policy) to change the current query weak consistency policy of the cluster.
 
 ## Default policy
 
