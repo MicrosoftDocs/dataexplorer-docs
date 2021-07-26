@@ -23,6 +23,13 @@ This command returns the query weak consistency policy of the cluster.
 
 This command returns a table with the following columns:
 
+
+### Output
+
+|Policy name | Entity name | Policy | Child entities | Entity type
+|---|---|---|---|---
+|QueryWeakConsistencyPolicy | <Empty> | JSON serialization of the policy object | null | Cluster
+
 |Column    |Type    |Description
 |---|---|---
 |PolicyName|`string`|The policy name - QueryWeakConsistencyPolicy
