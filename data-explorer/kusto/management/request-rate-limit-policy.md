@@ -70,7 +70,7 @@ A request rate limit of kind `ResourceUtilization` includes the following proper
 | Name           | Type           | Description     | Supported Values      |
 |----------------|----------------|----------------|--------------|
 | ResourceKind   | `ResourceKind` | The resource to limit. **Note:** when `ResourceKind` is `TotalCpuSeconds`, the limit is enforced based on **post-facto** reports of CPU utilization of *completed* requests: Requests whose execution will *begin after* `MaxUtilization` has been reached within the defined `TimeWindow` (based on reporting of *completed* requests) will fail. | `RequestCount`, `TotalCpuSeconds` |
-| MaxUtilization | `long`         | The maximum of the resource that can be utilized.    | [`1`, `9223372036854775807`]      |
+| MaxUtilization | `long`         | The maximum of the resource that can be utilized.    | [`1`, `10000000000`]      |
 | TimeWindow     | `timespan`     | The sliding time window during which the limit is applied.     | [`00:01:00`, `1.00:00:00`]        |
 
 When a request exceeds the limit on resources utilization:
