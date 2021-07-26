@@ -40,8 +40,9 @@ This command returns a table with the following columns:
 |---|---|---|---|---|
 |QueryWeakConsistencyPolicy||{"PercentageOfNodes": 20,"EnableMetadataPrefetch": false}
 
-## .alter cluster policy query_weak_consistency
+## Alter query weak consistency policy 
 
+.alter cluster policy query_weak_consistency
 This command sets the query weak consistency policy.
 
 **Syntax**
