@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 07/26/2021
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer by using Python
@@ -29,6 +29,9 @@ In this article, you create an Event Grid data connection for Azure Data Explore
 * [Table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
 * [Database and table policies](database-table-policies-csharp.md) (optional).
 * [A storage account with an Event Grid subscription](ingest-data-event-grid.md).
+
+> [!NOTE]
+> You must have at least [Reader and Data Access](/azure/role-based-access-control/built-in-roles#reader-and-data-access) role-based authorization on the storage account to set up the Event Grid connection.
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](includes/data-explorer-data-connection-install-package-python.md)]
 
@@ -75,11 +78,15 @@ data_format = "csv"
 blob_storage_event_type = "Microsoft.Storage.BlobCreated"
 
 #Returns an instance of LROPoller, check https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
-poller = kusto_management_client.data_connections.create_or_update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name, data_connection_name=data_connection_name,
+poller = kusto_management_client.data_connections.begin_create_or_update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name, data_connection_name=data_connection_name,
                                             parameters=EventGridDataConnection(storage_account_resource_id=storage_account_resource_id, event_hub_resource_id=event_hub_resource_id, 
                                                                                 consumer_group=consumer_group, table_name=table_name, location=location, mapping_rule_name=mapping_rule_name, data_format=data_format,
                                                                                 blob_storage_event_type=blob_storage_event_type))
+# The creation of the connection is async. Validation errors are only visible if you wait for the results.
+poller.wait()
+print(poller.result())
 ```
+
 |**Setting** | **Suggested value** | **Field description**|
 |---|---|---|
 | tenant_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Your tenant ID. Also known as directory ID.|
