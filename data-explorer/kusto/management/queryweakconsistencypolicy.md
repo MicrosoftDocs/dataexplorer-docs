@@ -15,10 +15,10 @@ The query weak consistency policy is a cluster-level policy object to configure 
 
 ## The policy object
 
-A retention policy includes the following properties:
+A query weak consistency policy includes the following properties:
 * **PercentageOfNodes**:
     * The percentage of nodes in the cluster which execute the weak consistency queries.
-    * An integer between `1` to `100`, or `-1` for default value (currently `20%`).
+    * The number is between `1` to `100`, or `-1` for default value (currently `20%`).
     * Defaults to `-1.
 * **MinimumNumberOfNodes**:
     * Minimum number of nodes which execute the weak consistency service (will determine the number of nodes in case `PercentageOfNodes`*`#NodesInCluster` is smaller).
@@ -33,11 +33,11 @@ A retention policy includes the following properties:
 * **MaximumLagAllowedInMinutes**:
     * The maximum duration (in minutes) that weakly consistent metadata is allowed to lag behind. 
     * If metadata is older than this value, the most up-to-date metadata will be pulled from storage (triggered when there is a query to the database, or periodically if `EnableMetadataPrefech` is enabled.
-    * An integer between `1` to `60`, or `-1` for default value (currently `5` minutes).
+    * The number is between `1` to `60`, or `-1` for default value (currently `5` minutes).
     * Defaults to `-1`.
 * **RefreshPeriodInSeconds**:
     * The refresh period (in seconds) to update a database metadata on each weak consistency node
-    * The number is between `30` to `1800`, or -1 for default value (currently 120 seconds).
+    * The number is between `30` to `1800`, or `-1` for default value (currently `120` seconds).
     
 ## .alter cluster policy query_weak_consistency
 
