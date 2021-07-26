@@ -27,7 +27,7 @@ This command returns a table with the following columns:
 |---|---|---
 |PolicyName|`string`|The policy name - QueryWeakConsistencyPolicy
 |EntityName|`string`|Empty                         
-|Policy    |`string`|A JSON object that defines the query weak consistency policy, formatted as [query weak consistency policy object](./queryweakconsistencypolicy#the-policy-object)
+|Policy    |`string`|A JSON object that defines the query weak consistency policy, formatted as [query weak consistency policy object](./queryweakconsistencypolicy.md#the-policy-object)
 
 **Example**
 
