@@ -43,3 +43,17 @@ A query weak consistency policy includes the following properties:
 
 * Use [`.show cluster policy query_weak_consistency`](./queryweakconsistency-policy.md) to show the current query weak consistency policy of the cluster.
 * Use [`.alter cluster policy query_weak_consistency`](./queryweakconsistency-policy.md) to change the current query weak consistency policy of the cluster.
+
+## Default policy
+
+The following example shows the default policy:
+
+```json
+{
+  "PercentageOfNodes": -1,
+  "MinimumNumberOfNodes": -1,
+  "EnableMetadataPrefetch": true,
+  "MaximumLagAllowedInMinutes": -1,
+  "RefreshPeriodInSeconds": -1
+}
+```
