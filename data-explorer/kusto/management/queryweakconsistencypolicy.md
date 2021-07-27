@@ -1,6 +1,6 @@
 ---
-title: Kusto query weak consistency policy management
-description: This article describes query weak consistency policy management in Azure Data Explorer.
+title: Kusto query weak consistency policy
+description: This article describes query weak consistency policy in Azure Data Explorer.
 services: data-explorer
 author: yahav
 ms.author: yabenyaa
