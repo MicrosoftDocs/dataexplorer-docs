@@ -15,7 +15,7 @@ The query weak consistency policy is a cluster-level policy object that configur
 
 ## The policy object
 
-A query weak consistency policy includes the following properties:
+The query weak consistency policy includes the following properties:
 * **PercentageOfNodes**:
     * The percentage of nodes in the cluster which execute the query weak consistency service (the selected nodes will execute the weakly consistent queries).
     * The number is between `1` to `100`, or `-1` for default value (currently `20%`).
