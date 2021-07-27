@@ -491,6 +491,8 @@ items:
     href: md5hashfunction.md
   - name: hash_sha256()
     href: sha256hashfunction.md
+  - name: hash_sha1()
+    href: sha1hashfunction.md
   - name: hll_merge()
     href: hllmergefunction.md
   - name: hourofday()

@@ -343,3 +343,4 @@ ms.date: 05/27/2020
 |[hash_many()](hash_manyfunction.md)|Returns a combined hash value of multiple values.|
 |[hash_md5()](md5hashfunction.md)|Returns a MD5 hash value for the input value.|
 |[hash_sha256()](sha256hashfunction.md)|Returns a SHA256 hash value for the input value.|
+|[hash_sha1()](sha1hashfunction.md)|Returns a SHA1 hash value for the input value.|
