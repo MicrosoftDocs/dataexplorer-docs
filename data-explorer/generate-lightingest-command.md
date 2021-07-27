@@ -6,14 +6,16 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 07/26/2021
+ms.date: 07/27/2021
 ---
-# Auto-generate LightIngest command and create table infrastructure
+# Use ingestion wizard for one-time ingestion of historical data with LightIngest
 
 LightIngest is a command-line utility for ad-hoc data ingestion into Azure Data Explorer. 
 To learn more about LightIngest, see [Use LightIngest to ingest data to Azure Data Explorer](lightingest.md).
 
-This article shows you how to create table infrastructure and auto-generate a command for one-time ingestion with LightIngest.
+LightIngest can be particularly useful to load historical data from an existing storage system to Azure Data Explorer. While you can build your own command using the list of [Command-line arguments](lightingest.md#command-line-arguments), this article shows you how to auto-generate this command through an ingestion wizard. In addition to creating the command, you can use this process to create a new table, and create schema mapping. This tool infers schema mapping from your data set, which can be an advantage over building the command yourself.
+
+This article shows you how to create a new table, create schema mapping, and generate a LightIngest command for one-time ingestion using the LightIngest tool.
 
 ## Prerequisites
 
@@ -24,7 +26,7 @@ This article shows you how to create table infrastructure and auto-generate a co
 
 ## Access the wizard
 
-The wizard can be accessed either from the **Data** tab, or from the **Query** tab.
+The wizard can be accessed either from the **Data** tab, or from the **Query** tab of the [Azure Data Explorer WebUI](https://dataexplorer.azure.com/).
 
 1. In the **Data** tab, select **Ingest new data**>**Ingest**
 
@@ -106,6 +108,8 @@ Copy the generated LightIngest command by clicking on the **copy** icon to the t
 In the tiles below the ingestion progress, you can download the LightIngest tool.
 
 :::image type="content" source="media/generate-lightingest-command/summary-tab-copy-command.png" alt-text="Screenshot of Summary tab with command generated. You can copy the command using the copy icon above the generated command box." lightbox="media/generate-lightingest-command/summary-tab-copy-command.png":::
+
+To complete the ingestion process, you must [run LightIngest](lightingest.md#run-lightingest) using this copied command.
 
 ## Next steps
 
