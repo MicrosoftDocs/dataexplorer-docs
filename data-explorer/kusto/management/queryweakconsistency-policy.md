@@ -47,8 +47,8 @@ This command returns the query weak consistency policy of the cluster.
 .alter-merge cluster policy query_weak_consistency <query weak consistency policy JSON representation>
 ```	
 	
-The command sets the cluster query weak consistency policy object (overriding any current
-policy defined, if any) and then returns the updated policy (which is returned by the [show command](#show-query-weak-consistency-policy)).
+The command sets the cluster query weak consistency policy object (overriding the current
+policy defined) and then returns the updated policy (which is returned by the [show command](#show-query-weak-consistency-policy)).
 
 **Examples**
 
