@@ -26,7 +26,7 @@ This command returns the query weak consistency policy of the cluster.
 
 |Policy name | Entity name | Policy | Child entities | Entity type
 |---|---|---|---|---
-|QueryWeakConsistencyPolicy | <Empty> | JSON serialization of the [query weak consistency policy object](./queryweakconsistencypolicy.md#the-policy-object) | null | Cluster
+|QueryWeakConsistencyPolicy | <Empty> | JSON serialization of the [query weak consistency policy object](./queryweakconsistencypolicy.md#the-policy-object) | List of the databases in the cluster | Cluster
 
 **Example**
 
@@ -37,7 +37,7 @@ This command returns the query weak consistency policy of the cluster.
 
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
-|QueryWeakConsistencyPolicy||{"PercentageOfNodes": -1, "MinimumNumberOfNodes": -1, "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": -1, "RefreshPeriodInSeconds": -1}
+|QueryWeakConsistencyPolicy||{"PercentageOfNodes": -1, "MinimumNumberOfNodes": -1, "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": -1, "RefreshPeriodInSeconds": -1}|["Database1", "Database2"...] |Cluster
 
 ## Alter query weak consistency policy 
 
@@ -48,8 +48,11 @@ This command returns the query weak consistency policy of the cluster.
 ```	
 	
 The command sets the cluster query weak consistency policy object (overriding the current
-policy defined) and then returns the updated policy (which is returned by the [show command](#show-query-weak-consistency-policy)).
+policy) and then returns the updated policy (which is returned by the [show command](#show-query-weak-consistency-policy)). If not altered, the [default policy](./queryweakconsistencypolicy.md#default-policy) applies.
 
+### Output
+Same as in the [show command](#show-query-weak-consistency-policy).
+	
 **Examples**
 
 <!-- csl -->
