@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 07/27/2021
 ---
 
-# query weak consistency policy commands
+# Query weak consistency policy commands
 
 This article describes control commands used for creating and altering query weak consistncy policy.
 
