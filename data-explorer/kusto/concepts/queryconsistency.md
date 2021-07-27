@@ -18,8 +18,7 @@ If you send a control command and receive acknowledgment that the command has co
 
 Weakly consistent queries that must be explicitly enabled by the client,
 don't have that guarantee. Clients making queries might observe some latency
-(usually 1-2 minutes) between changes and queries reflecting those changes.
-
+(usually 1-2 minutes) between changes and queries reflecting those changes. To change the latency, and control other parameters regarding the weak consistency service, see [query weak consistency policy](../management/queryweakconsistencypolicy.md).
 The advantage of weakly consistent queries, is that it reduces the load on the cluster node that handles database changes. In general, we recommend that you first try the strongly consistent model. Switch to using weakly consistent queries only if necessary.
 
 To switch to weakly consistent queries, set the `queryconsistency` property when making a [REST API call](../api/rest/request.md). Users of the
