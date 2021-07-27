@@ -11,30 +11,17 @@ This article describes control commands used for creating and altering query wea
 
 ## Show query weak consistency policy
 
-This command returns the query weak consistency policy of the cluster.
-
-**Syntax**
-
 ```kusto
 .show cluster policy query_weak_consistency
 ```
 
-**Returns**
-
-This command returns a table with the following columns:
-
+This command returns the query weak consistency policy of the cluster.
 
 ### Output
 
 |Policy name | Entity name | Policy | Child entities | Entity type
 |---|---|---|---|---
-|QueryWeakConsistencyPolicy | <Empty> | JSON serialization of the policy object | null | Cluster
-
-|Column    |Type    |Description
-|---|---|---
-|PolicyName|`string`|The policy name - QueryWeakConsistencyPolicy
-|EntityName|`string`|Empty                         
-|Policy    |`string`|A JSON object that defines the query weak consistency policy, formatted as [query weak consistency policy object](./queryweakconsistencypolicy.md#the-policy-object)
+|QueryWeakConsistencyPolicy | <Empty> | JSON serialization of the [query weak consistency policy object](./queryweakconsistencypolicy.md#the-policy-object) | null | Cluster
 
 **Example**
 
@@ -45,10 +32,14 @@ This command returns a table with the following columns:
 
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
-|QueryWeakConsistencyPolicy||{"PercentageOfNodes": 20,"EnableMetadataPrefetch": false}
+|QueryWeakConsistencyPolicy||{"PercentageOfNodes": -1, "MinimumNumberOfNodes": -1, "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": -1, "RefreshPeriodInSeconds": -1}
 
 ## Alter query weak consistency policy 
 
+```kusto
+.alter cluster policy query_weak_consistency
+```	
+	
 .alter cluster policy query_weak_consistency
 This command sets the query weak consistency policy.
 
