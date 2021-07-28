@@ -271,9 +271,9 @@ items:
   - name: Query weak consistency
     items:
     - name: Query weak consistency policy
-      href: queryweakconsistencypolicy.md
+      href: query-weak-consistency-policy.md
     - name: Query weak consistency policy commands
-      href: queryweakconsistency-policy.md
+      href: query-weak-consistency-policy-commands.md
 - name: Security roles
   href: security-roles.md
 - name: Data ingestion

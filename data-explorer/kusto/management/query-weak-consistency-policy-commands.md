@@ -7,7 +7,7 @@ ms.author: yabenyaa
 ms.reviewer: a
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/27/2021
+ms.date: 07/28/2021
 ---
 
 # Query weak consistency policy commands
@@ -26,9 +26,9 @@ This command returns the query weak consistency policy of the cluster.
 
 |Policy name | Entity name | Policy | Child entities | Entity type
 |---|---|---|---|---
-|QueryWeakConsistencyPolicy | <Empty> | JSON serialization of the [query weak consistency policy object](./queryweakconsistencypolicy.md#the-policy-object) | List of the databases in the cluster | Cluster
+|QueryWeakConsistencyPolicy | <Empty> | JSON serialization of the [query weak consistency policy object](./query-weak-consistency-policy.md#the-policy-object) | List of the databases in the cluster | Cluster
 
-**Example**
+### Example
 
 <!-- csl -->
 ```
@@ -39,21 +39,22 @@ This command returns the query weak consistency policy of the cluster.
 |---|---|---|---|---|
 |QueryWeakConsistencyPolicy||{"PercentageOfNodes": -1, "MinimumNumberOfNodes": -1, "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": -1, "RefreshPeriodInSeconds": -1}|["Database1", "Database2"...] |Cluster
 
-## Alter query weak consistency policy 
+## Alter query weak consistency policy
 
 ```kusto
 .alter cluster policy query_weak_consistency <query weak consistency policy JSON representation>
 	
 .alter-merge cluster policy query_weak_consistency <query weak consistency policy JSON representation>
 ```	
-	
+
 The command sets the cluster query weak consistency policy object (overriding the current
-policy) and then returns the updated policy (which is returned by the [show command](#show-query-weak-consistency-policy)). If not altered, the [default policy](./queryweakconsistencypolicy.md#default-policy) applies.
+policy) and then returns the updated policy (which is returned by the [show command](#show-query-weak-consistency-policy)). If not altered, the [default policy](./query-weak-consistency-policy.md#default-policy) applies.
 
 ### Output
+
 Same as in the [show command](#show-query-weak-consistency-policy).
 	
-**Examples**
+### Examples
 
 <!-- csl -->
 ```
