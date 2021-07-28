@@ -11,7 +11,7 @@ ms.date: 02/13/2020
 ---
 # stdevp() (aggregation function)
 
-For a large data set that is representative of the population, calculates the standard deviation of *Expr* across the group, considering the group as a [population](https://en.wikipedia.org/wiki/Statistical_population). 
+Calculates the standard deviation of *Expr* across the group, considering the group as a [population](https://en.wikipedia.org/wiki/Statistical_population) for a large data set that is representative of the population. 
 
 For a small data set that is just a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29), to use [Bessel's correction](https://en.wikipedia.org/wiki/Bessel's_correction), use [stdev() (aggregation function)](stdev-aggfunction.md). 
 
