@@ -111,7 +111,7 @@ items:
       - name: Using LightIngest
         displayName: ingest data, ingestion
         href: lightingest.md
-      - name: Use ingestion wizard for one-time ingestion of historical data with LightIngest
+      - name: Use wizard for one-time ingestion of historical data with LightIngest
         href: generate-lightingest-command.md
     - name: Event Hub
       items:

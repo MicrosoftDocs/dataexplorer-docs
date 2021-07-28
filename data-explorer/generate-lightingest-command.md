@@ -8,7 +8,7 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 07/27/2021
 ---
-# Use ingestion wizard for one-time ingestion of historical data with LightIngest
+# Use wizard for one-time ingestion of historical data with LightIngest
 
 LightIngest is a command-line utility for ad-hoc data ingestion into Azure Data Explorer. 
 To learn more about LightIngest, see [Use LightIngest to ingest data to Azure Data Explorer](lightingest.md).
