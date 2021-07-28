@@ -494,7 +494,7 @@ items:
   - name: hash_md5()
     href: md5hashfunction.md
   - name: hash_sha1()
-    href: sha1hashfunction.md
+    href: sha1-hash-function.md
   - name: hash_sha256()
     href: sha256hashfunction.md
   - name: hll_merge()

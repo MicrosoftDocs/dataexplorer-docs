@@ -2,12 +2,12 @@
 title: hash_sha1() - Azure Data Explorer
 description: This article describes hash_sha1() in Azure Data Explorer.
 services: data-explorer
-author: atefsawaed
-ms.author: atefsawaed
-ms.reviewer: slneimer
+author: orspod
+ms.author: orspodek
+ms.reviewer: atefsawaed
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/27/2021
+ms.date: 07/28/2021
 ---
 # hash_sha1()
 
@@ -19,7 +19,7 @@ Returns a sha1 hash value for the input value.
 
 ## Arguments
 
-* *source*: The value to be hashed.
+*source*: The value to be hashed.
 
 ## Returns
 
@@ -29,9 +29,8 @@ and 255).
 
 > [!WARNING]
 > The algorithm used by this function (SHA1) is guaranteed
-> to not be modified in the future, but is very complex to calculate. Users that
-> need a "lightweight" hash function for the duration of a single query are advised
-> to use the function [hash()](./hashfunction.md) instead.
+> to not be modified in the future, but is very complex to calculate. If you
+> need a "lightweight" hash function for the duration of a single query, consider using [hash()](./hashfunction.md).
 
 ## Examples
 
