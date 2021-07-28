@@ -20,7 +20,7 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 * Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 > [!NOTE]
-> To enable access between a cluster and a storage account in different subnets of the same VNET, see [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md).
+> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint) in different subnets of the same VNET, see [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md).
 
 ## Create a table
 
@@ -100,4 +100,3 @@ In the tiles below the **Create table** progress, explore **Quick queries** or *
 * [Data ingestion overview](ingest-data-overview.md)
 * [One-click ingestion](ingest-data-one-click.md)
 * [Write queries for Azure Data Explorer](write-queries.md)  
-

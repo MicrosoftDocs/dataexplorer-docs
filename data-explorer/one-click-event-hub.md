@@ -26,7 +26,7 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 * [Event Hub with data for ingestion](ingest-data-event-hub.md#create-an-event-hub).
 
 > [!NOTE]
-> To enable access between a cluster and a storage account in different subnets of the same VNET, see [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md).
+> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint) in different subnets of the same VNET, see [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md).
 
 ## Ingest new data
 
