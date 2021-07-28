@@ -45,7 +45,7 @@ When attaching the database all tables, external tables and materialized views a
 
 #### Examples
 
-1. Include all tables (no '*' is needed, since all tables are followed by default):
+1. Include all tables. No '*' is needed, since all tables are followed by default:
   
    ```kusto
     tablesToInclude = []
