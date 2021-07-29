@@ -23,7 +23,7 @@ For more information, see the [underlying algorithm (*H*yper*L*og*L*og) and esti
 
 ## Arguments
 
-* `*Expr*`: Expression that will be used for the aggregation calculation.
+* *Expr*: Expression that will be used for the aggregation calculation.
 
 ## Returns
 

@@ -21,8 +21,8 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accu
 
 ## Arguments
 
-* *`Expr`*: Expression that will be used for aggregation calculation. 
-* *`Accuracy`*, if specified, controls the balance between speed and accuracy.
+* *Expr*: Expression that will be used for aggregation calculation. 
+* *Accuracy*, if specified, controls the balance between speed and accuracy.
 
   |Accuracy Value |Accuracy  |Speed  |Error  |
   |---------|---------|---------|---------|

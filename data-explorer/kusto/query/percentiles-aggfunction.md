@@ -38,10 +38,10 @@ The accuracy depends on the density of population in the region of the percentil
 
 ## Arguments
 
-* `*Expr*`: Expression that will be used for aggregation calculation.
-* `*WeightExpr*`: Expression that will be used as the weight of values for aggregation calculation.
-* `*Percentile*`: A double constant that specifies the percentile.
-* `*Dynamic array*`: list of percentiles in a dynamic array of integer or floating point numbers.
+* *Expr*: Expression that will be used for aggregation calculation.
+* *WeightExpr*: Expression that will be used as the weight of values for aggregation calculation.
+* *Percentile*: A double constant that specifies the percentile.
+* *Dynamic array*: list of percentiles in a dynamic array of integer or floating point numbers.
 
 ## Returns
 
