@@ -138,7 +138,7 @@ The metrics **Stage Latency** and **Discovery Latency** monitor latency in the i
 
 When you see a long latency until data is ready for query, analyzing **Stage Latency** and **Discovery Latency** can help you understand whether the long latency is because of long latency in Azure Data Explorer, or is upstream to Azure Data Explorer. When the latency is in Azure Data Explorer itself, you can also detect the specific component responsible for the long latency.
 
-### Stage Latency
+### Stage Latency (preview)
 
 Let's first look at the stage latency of our batching ingestion.
 For an explanation of each stage, see [Batching stages](#batching-stages).
