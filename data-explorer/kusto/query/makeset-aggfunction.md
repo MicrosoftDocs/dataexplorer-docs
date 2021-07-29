@@ -17,7 +17,7 @@ Returns a `dynamic` (JSON) array of the set of distinct values that *Expr* takes
 
 ## Syntax
 
-`summarize` `make_set(`*Expr* [`,` *MaxSize*]`)`
+ `make_set(`*Expr* [`,` *MaxSize*]`)`
 
 ## Arguments
 

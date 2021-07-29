@@ -19,7 +19,7 @@ Returns an estimate for the number of distinct values that are taken by a scalar
 
 ## Syntax
 
-... `|` `summarize` `dcount` `(`*`Expr`*[, *`Accuracy`*]`)` ...
+`dcount` `(`*`Expr`*[, *`Accuracy`*]`)`
 
 ## Arguments
 

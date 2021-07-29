@@ -21,7 +21,7 @@ This function is useful when you want to get a sample value of one column per va
 
 ## Syntax
 
-`summarize` `take_anyif` `(` *Expr*, *Predicate* `)`
+`take_anyif` `(` *Expr*, *Predicate* `)`
 
 ## Arguments
 

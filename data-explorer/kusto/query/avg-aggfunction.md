@@ -17,7 +17,7 @@ Calculates the average (arithmetic mean) of *Expr* across the group.
 
 ## Syntax
 
-summarize `avg(`*Expr*`)`
+`avg(`*Expr*`)`
 
 ## Arguments
 

@@ -24,7 +24,7 @@ For a small data set that is a [sample](https://en.wikipedia.org/wiki/Sample_%28
 
 ## Syntax
 
-summarize `stdevp(`*Expr*`)`
+`stdevp(`*Expr*`)`
 
 ## Arguments
 
