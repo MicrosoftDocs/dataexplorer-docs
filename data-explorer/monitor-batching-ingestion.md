@@ -193,7 +193,7 @@ The chart shows the number of sealed batches with data sent to the *GitHub* data
 
 :::image type="content" source="media/monitor-batching-ingestion/batches-processed-by-batching-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of batches processed for ingestion from the github database aggregated by sum and split by batching type." lightbox="media/monitor-batching-ingestion/batches-processed-by-batching-type-chart.png":::
 
-* Notice that there are 2-4 batches per time unit over time, and all batches are sealed by time as estimated in the [Stage Latency](#stage-latency) section where you can see that it takes around 5 minutes to batch data based on the default batching policy.
+* Notice that there are 2-4 batches per time unit over time, and all batches are sealed by time as estimated in the [Stage Latency](#stage-latency-preview) section where you can see that it takes around 5 minutes to batch data based on the default batching policy.
 
 ### Batch duration, size, and blob count
 
