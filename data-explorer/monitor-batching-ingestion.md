@@ -10,7 +10,7 @@ ms.date: 07/18/2021
 ms.custom: contperf-fy21q1
 ---
 
-# Monitoring batching ingestion
+# Monitoring batching ingestion with metrics
 
 In the *batching ingestion* process, Azure Data Explorer optimizes [data ingestion](ingest-data-overview.md) for high throughput by batching incoming small chunks of data into batches based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md). The batching policy allows you to set the trigger conditions for sealing a batch (data size, number of blobs, or time passed). These batches are then optimally ingested for fast query results.
 
@@ -27,7 +27,7 @@ Azure Data Explorer provides a set of Azure Monitor [ingestion metrics](using-me
 The Azure Data Explorer ingestion metrics give you detailed information about:
 
 * The result of the batching ingestion.
-* The amount of ingested data and how it was batched.
+* The amount of ingested data.
 * The latency of the batching ingestion and where it occurs.
 * The batching process itself.
 * For Event Hub, Event Grid and IoT Hub ingestion: The number of events received.
@@ -47,6 +47,7 @@ Use the following steps to create metric charts with the [Azure Monitor metrics 
 
 1. Sign in to the [Azure portal](https://portal.azure.com/) and navigate to the overview page for your Azure Data Explorer cluster.
 1. Select **Metrics** from the left-hand navigation bar to open the metrics pane.
+1. Open the **time picker** panel at the top right of the metrics pane and change the **Time range** to the time you want to analyze. In this article, we're analyzing data ingestion to Azure Data Explorer during the last 48 hours.
 1. Select a **Scope** and a **Metric Namespace**:
    * The **Scope** is the name of your Azure Data Explorer cluster. In the following example, we will use a cluster named *demo11*.
    * The **Metric Namespace** should be set to *Kusto Cluster standard metrics*. This is the namespace that contains the Azure Data Explorer metrics.
@@ -54,9 +55,10 @@ Use the following steps to create metric charts with the [Azure Monitor metrics 
    :::image type="content" source="media/monitor-batching-ingestion/metrics-settings-selector.png" alt-text="Screenshot showing how to select settings for a metric in Azure portal." lightbox="media/monitor-batching-ingestion/metrics-settings-selector.png":::
 
 1. Select the **Metric** name and the relevant **Aggregation** value.
-1. Open the **time picker** panel at the top right of the metrics pane and change the **Time range** to the time you want to analyze. In this article, we're analyzing data ingestion to Azure Data Explorer during the last 48 hours.
 
 For some examples in this article, we'll select **Add Filter** and **Apply Splitting** for metrics that have dimensions. We'll also use **Add metric** to plot other metrics in the same chart and **+ New chart** to see multiple charts in one view.
+
+Each time you add a new metric, you'll repeat steps four and five.
 
 > [!NOTE]
 > To learn more about how to use metrics to monitor Azure Data Explorer in general and how to work with the metrics pane, see [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md).
@@ -86,11 +88,11 @@ Consider the following when looking at the chart of ingestion results:
 * When using Event Hub or IoT Hub ingestion, there is an event pre-aggregation in the *Data connection component*. During this stage of ingestion, events are treated as a single source to be ingested. Therefore, a few events appear as a single ingestion result after pre-aggregation.
 * Transient failures are retried internally in a limited number of attempts. Each transient failure is reported as a transient ingestion result. That's why a single ingestion may lead to more than one ingestion result.
 * Ingestion errors in the chart are listed by the category of the error code. To see the full list of ingestion error codes by categories and try to better understand the possible error reason, see [Ingestion error codes in Azure Data Explorer](error-codes.md).
-* To get more details on an ingestion error, you can set [failed ingestion diagnostic logs.](using-diagnostic-logs.md?tabs=ingestion#failed-ingestion-operation-log). However, it's important to consider that generating logs results in the creation of extra resources, and therefore an increase in the COGS (cost of goods sold).
+* To get more details on an ingestion error, you can set [failed ingestion diagnostic logs](using-diagnostic-logs.md?tabs=ingestion#failed-ingestion-operation-log). However, it's important to consider that generating logs results in the creation of extra resources, and therefore an increase in the COGS (cost of goods sold).
 
 ## View the amount of ingested data
 
-The **Blobs Processed**, **Blobs Received**, and **Blobs Dropped** metrics provide information about the number of blobs that are processed, received, and dropped by the ingestion components during the stages of batching ingestion.
+The **Blobs Processed**, **Blobs Received**, and **Blobs Dropped** metrics provide information about the number of blobs that are processed, received, and dropped by the [ingestion components](#batching-stages) during the stages of batching ingestion.
 
 In this example, we'll use these metrics to see how much data passed through the ingestion pipeline, how much data was received by the ingestion components, and how much data was dropped.
 
@@ -112,7 +114,7 @@ Now the chart shows how many blobs that were sent to the *GitHub* database were 
 To better understand the relation between the number of blobs that were received at each component and the number of blobs that were processed successfully at each component, we'll add a new chart:
 
 1. Select **+ New chart**.
-1. Leave the **Scope**, **Metric Namespace**, and **Aggregation** values the same, and select the *Blobs Received* metric.
+1. Choose the same values as above for **Scope**, **Metric Namespace**, and **Aggregation**, and select the *Blobs Received* metric.
 1. Select the **Apply splitting** button and choose *Component Type* to split the *Blobs Received* metric by component type.
 1. Select the **Add filter** button and set the same values as before to filter only the blobs sent to the *GitHub* database.
 
@@ -129,7 +131,7 @@ To determine whether there are blobs that were dropped during ingestion, you sho
 The metrics **Stage Latency** and **Discovery Latency** monitor latency in the ingestion process, and tell you if there are any long latencies occurring either in Azure Data Explorer, or before data arrives to Azure Data Explorer for ingestion.
 
 * **Stage Latency** indicates the time span from when a message is discovered by Azure Data Explorer until its content is received by an ingestion component for processing.
-* **Discovery Latency** is used for ingestion pipelines with data connections (such as Event Hub, IoT Hub, and Event Grid). This metric gives information about the time span from data enqueue until discovery by Azure Data Explorer data connections. This time span is upstream to Azure Data Explorer, so it is not included in the **Stage Latency** metric that only measures the latency in Azure Data Explorer.
+* **Discovery Latency** is used for ingestion pipelines with data connections (such as Event Hub, IoT Hub, and Event Grid). This metric gives information about the time span from data enqueue until discovery by Azure Data Explorer data connections. This time span is upstream to Azure Data Explorer, so it's not included in the **Stage Latency** metric that only measures the latency in Azure Data Explorer.
 
 > [!NOTE]
 > According to the default [batching policy](kusto/management/batchingpolicy.md), the default batching time is five minutes. Therefore, if the batch isn't sealed by other triggers, the batch will be sealed after five minutes. 
@@ -138,8 +140,8 @@ When you see a long latency until data is ready for query, analyzing **Stage Lat
 
 ### Stage Latency
 
+Let's first look at the stage latency of our batching ingestion.
 For an explanation of each stage, see [Batching stages](#batching-stages).
-Let's first look at the stage latency of our batching ingestion:
 
 1. In the **Metrics** pane in Azure Monitor, select **Add Metric**.
 1. Select *Stage Latency* as the **Metric** value and *Avg* as the **Aggregation** value.
@@ -153,7 +155,7 @@ We can tell the following information from this chart:
 
 * The latency at the *Event Hub Data Connection* component is approximately 0 seconds. This makes sense, because **Stage Latency** only measures latency from when a message is discovered by Azure Data Explorer.
 * The longest time in the ingestion process (approximately 5 minutes) passes from when the *Batching Manager* component received data to when the *Ingestion Manager* component received data. In this example, we use the default batching policy for the *GitHub* database. As noted, the latency time limit for the default batching policy is 5 minutes, so this most likely indicates that nearly all the data was batched by time, and most of the latency time for the batching ingestion was due to the batching itself.
-* The storage engine latency in the chart represents the latency when data is received by the *Azure Data Explorer Storage Engine* component. You can see that the average total latency from the time of data discovery by Azure Data Explorer until it's ready for query is 5.2 minutes.
+* The storage engine latency in the chart represents the latency until data is stored in the *Azure Data Explorer Storage Engine* and is ready for query. You can see that the average total latency from the time of data discovery by Azure Data Explorer until it's ready for query is 5.2 minutes.
 
 ### Discovery Latency
 
@@ -161,21 +163,21 @@ If you use ingestion with data connections, you may want to estimate the latency
 
 1. Select **+ New chart**.
 1. Select *Discovery Latency* as the **Metric** value and *Avg* as the **Aggregation** value.
-1. Select the **Apply splitting** button and choose *Component Type* to segment the chart by the different data connection components. After selecting the splitting values, click away from the split selector to close it.
+1. Select the **Apply splitting** button and choose *Component Type* to segment the chart by the different data connection component types. After selecting the splitting values, click away from the split selector to close it.
 
 :::image type="content" source="media/monitor-batching-ingestion/discovery-latency-by-component-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart of discovery latency for ingestion from the github database aggregated by avg and split by component type." lightbox="media/monitor-batching-ingestion/discovery-latency-by-component-type-chart.png":::
 
-* You can see that for most of the duration the discovery latency is close to 0 seconds, indicating that Azure Data Explorer got data immediately after data enqueue. The highest peak of around 300 milliseconds is around February 13 at 14:00 AM, indicating that at this time the Azure Data Explorer cluster received the data around 300 milliseconds after data enqueue.
+* You can see that for most of the duration the discovery latency is close to 0 seconds, indicating that Azure Data Explorer got data just after data enqueue. The highest peak of around 300 milliseconds is around February 13 at 14:00, indicating that at this time the Azure Data Explorer cluster received the data around 300 milliseconds after data enqueue.
 
 ## Understand the batching process
 
 In the second stage of the batching ingestion flow, the *Batching Manager* component optimizes the ingestion throughput by batching the data it receives based on the ingestion [batching policy](kusto/management/batchingpolicy.md).
 
-The following set of metrics helps you understand how your cluster is being batched during ingestion:
+The following set of metrics helps you understand how your data is being batched during ingestion:
 
 * **Batches Processed**: The number of batches completed for ingestion.
-* **Batch Size**: The expected size of uncompressed data in a batch aggregated for ingestion.
-* **Batch Duration**: The duration of the batching phase in the ingestion flow.
+* **Batch Size**: The estimated size of uncompressed data in a batch aggregated for ingestion.
+* **Batch Duration**: The duration of each individual batch from the moment the batch is opened until batch sealing.
 * **Batch Blob Count**: The number of blobs in a completed batch for ingestion.
 
 ### Batches processed
@@ -196,7 +198,7 @@ The chart shows the number of sealed batches with data sent to the *GitHub* data
 ### Batch duration, size, and blob count
 
 Now let's further characterize the processed batches.
-1. Select the **+ Add Chart** button to create more charts for the **Metric** values *Batch Duration*, *Batch Size*, and *Batch Blob Count*.
+1. Select the **+ Add Chart** button for each chart to create more charts for the **Metric** values *Batch Duration*, *Batch Size*, and *Batch Blob Count*.  
 1. Use *Avg* as the **Aggregation** value.
 1. As in the previous example, select the **Add filter** button, and filter on the data sent to the *GitHub* database.
 
@@ -204,11 +206,11 @@ Now let's further characterize the processed batches.
 
 From the *Batch Duration*, *Batch Size*, and *Batch Blob Count* charts we can conclude some insights: 
 
-* The average batch duration is 5 minutes. Since the default batching time defined in the batching policy is 5 minutes, it may significantly affect the ingestion latency. On the other hand, if you use a batching time that is too short and you don't have enough data, it may cause ingestion commands to include a data size that is too small. These small batches will reduce ingestion efficiency and require post-ingestion resources to optimize the small data shards that were created.
+* The average batch duration is five minutes (according to the default batching policy). You should take this into account when looking at the total ingestion latency.
 
-* In the *Batch Size* chart, you can see that the average size of batches is around 200-500 MB over time. The optimal size of data to be ingested is 1 GB of uncompressed data, and this size is also defined as a seal condition by the default batching policy. As there's not 1 GB of data to be batched over time, we don't see any batches sealed by size. When looking at the size, you should consider the same tradeoff between latency and efficiency as for the batch duration.
+* In the *Batch Size* chart, you can see that the average size of batches is around 200-500 MB over time. The optimal size of data to be ingested is 1 GB of uncompressed data, and this size is also defined as a seal condition by the default batching policy. As there's not 1 GB of data to be batched over time, we don't see any batches sealed by size. 
 
-* The average number of blobs in the batches is around 160 blobs over time, which then decreases to 60-120 blobs. As we saw in the [Blobs Processed chart](#view-the-amount-of-ingested-data), we have around 280 processed blobs over time for the February 14 time frame in the *Batching Manager* component, so this pattern makes sense. The graph also shows three processed batches over time. Based on the default batching policy, a batch can seal when the blob count is 1000 blobs. As we don’t arrive at this number, we don’t see batches sealed by count.
+* The average number of blobs in the batches is around 160 blobs over time, which then decreases to 60-120 blobs. Based on the default batching policy, a batch can seal when the blob count is 1000 blobs. As we don’t arrive at this number, we don’t see batches sealed by count.
 
 ## Compare events received to events sent for ingestion
 
@@ -240,7 +242,7 @@ The chart now shows the number of Events that were received, processed, and drop
 
 * Almost all the received events were processed successfully by the data connection. There is one dropped event, which is compatible with the failed ingestion result due to bad request that we saw when [viewing the ingestion result metric](#view-the-ingestion-result).
 
-### Compare Events Received and Outgoing Messages
+### Compare Events Received in Azure Data Explorer to Outgoing Messages from Event Hub
 
 You may also want to compare the number of events received to the number of events that were sent from Event Hub to Azure Data Explorer, by comparing the **Events Received** and **Outgoing Messages** metrics.
 
@@ -257,7 +259,7 @@ Click away from the settings to get the full chart that compares the number of e
 :::image type="content" source="media/monitor-batching-ingestion/all-event-metrics-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart with graphs for all of the events received, processed, dropped and during ingestion from the github database aggregated over time." lightbox="media/monitor-batching-ingestion/all-event-metrics-chart.png":::
 
 * Notice that all the events that were sent from Event Hub were processed successfully by the Azure Data Explorer data connection.
-* If you have more than one Event Hub in the Event Hub namespace, you should filter the **Outgoing Messages** metric by the **Entity Name** dimension to get only data from the desired Event hub in your Event Hub namespace.
+* If you have more than one Event Hub in the Event Hub namespace, you should filter the **Outgoing Messages** metric by the **Entity Name** dimension to get only data from the desired Event Hub in your Event Hub namespace.
 
 > [!NOTE]
 > There's no option to monitor outgoing message per consumer group. The **Outgoing Messages** metric counts the total number of messages that were consumed by all consumer groups. So, if you have a few consumer groups in your Event Hub, you may get a larger number of **Outgoing Messages** than **Events Received**.
