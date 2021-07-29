@@ -120,7 +120,7 @@ To better understand the relation between the number of blobs that were received
 
 :::image type="content" source="media/monitor-batching-ingestion/blobs-received-and-processed-by-component-type-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing charts of blobs processed and blobs received from the github database aggregated by sum and split by component type." lightbox="media/monitor-batching-ingestion/blobs-received-and-processed-by-component-type-chart.png":::
 
-* Comparing the charts, notice that the number of blobs received by each component closely matches the number of blobs that were processed by each component. This comparision indicates that no blobs were dropped during ingestion.
+* Comparing the charts, notice that the number of blobs received by each component closely matches the number of blobs that were processed by each component. This comparison indicates that no blobs were dropped during ingestion.
 
 ### Blobs Dropped
 
@@ -249,7 +249,7 @@ You may also want to compare the number of events received to the number of even
 1. On the chart you have already created for **Events Received**, select **Add metric**.
 1. Select **Scope** and in the **Select a scope** dialog, browse for, and select the namespace of the Event Hub that sends data to your data connection.
 
-:::image type="content" source="media/monitor-batching-ingestion/select-a-scope.png" alt-text="Screenshot of the Select a scope dialog in the Azure portal, showing a search for the github4demo in the list of Event Hubs Namespaces." lightbox="media/monitor-batching-ingestion/select-a-scope.png":::
+   :::image type="content" source="media/monitor-batching-ingestion/select-a-scope.png" alt-text="Screenshot of the Select a scope dialog in the Azure portal, showing a search for the github4demo in the list of Event Hubs Namespaces." lightbox="media/monitor-batching-ingestion/select-a-scope.png":::
 
 1. Select **Apply**
 1. Select *Outgoing Messages* as the **Metric** value and *Sum* as the **Aggregation** value.
