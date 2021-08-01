@@ -36,23 +36,21 @@ The function `normality_test_fl()` performs the [Normality Test](https://en.wiki
 For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+~~~kusto
 let normality_test_fl = (tbl:(*), data:string, test_statistic:string, p_value:string)
 {
     let kwargs = pack('data', data, 'test_statistic', test_statistic, 'p_value', p_value);
-    let code =
-        'from scipy import stats\n'
-        '\n'
-        'data = kargs["data"]\n'
-        'test_statistic = kargs["test_statistic"]\n'
-        'p_value = kargs["p_value"]\n'
-        '\n'
-        'def func(row):\n'
-        '    statistics = stats.normaltest(row[data])\n'
-        '    return statistics[0], statistics[1]\n'
-        'result = df\n'
-        'result[[test_statistic, p_value]]  = df.apply(func, axis=1, result_type = "expand")\n'
-    ;
+    let code = ```if 1:
+        from scipy import stats
+        data = kargs["data"]
+        test_statistic = kargs["test_statistic"]
+        p_value = kargs["p_value"]
+        def func(row):
+            statistics = stats.normaltest(row[data])
+            return statistics[0], statistics[1]
+        result = df
+        result[[test_statistic, p_value]]  = df.apply(func, axis=1, result_type = "expand")
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 }
@@ -64,7 +62,7 @@ datatable(id:string, sample1:dynamic) [
 ]
 | extend test_stat= 0.0, p_val = 0.0
 | invoke normality_test_fl('sample1', 'test_stat', 'p_val')
-```
+~~~
 
 # [Persistent](#tab/persistent)
 
@@ -73,28 +71,27 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 ### One-time installation
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+~~~kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Normality Test")
 normality_test_fl(tbl:(*), data:string, test_statistic:string, p_value:string)
 {
     let kwargs = pack('data', data, 'test_statistic', test_statistic, 'p_value', p_value);
-    let code =
-        'from scipy import stats\n'
-        '\n'
-        'data = kargs["data"]\n'
-        'test_statistic = kargs["test_statistic"]\n'
-        'p_value = kargs["p_value"]\n'
-        '\n'
-        'def func(row):\n'
-        '    statistics = stats.normaltest(row[data])\n'
-        '    return statistics[0], statistics[1]\n'
-        'result = df\n'
-        'result[[test_statistic, p_value]]  = df.apply(func, axis=1, result_type = "expand")\n'
-    ;
+    let code = ```if 1:
+        from scipy import stats
+        data = kargs["data"]
+        test_statistic = kargs["test_statistic"]
+        p_value = kargs["p_value"]
+        def func(row):
+            statistics = stats.normaltest(row[data])
+            return statistics[0], statistics[1]
+        result = df
+        result[[test_statistic, p_value]]  = df.apply(func, axis=1, result_type = "expand")
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 }
-```
+}
+~~~
 
 ### Usage
 
