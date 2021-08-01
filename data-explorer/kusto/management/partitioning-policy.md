@@ -61,6 +61,7 @@ Changes to the policy could take up to 1 hour to take effect.
       "Properties": {
         "Function": "XxHash64",
         "MaxPartitionCount": 128,
+        "PartitionAssignmentMode": "Uniform"
       }
     }
   ]
@@ -98,6 +99,7 @@ Changes to the policy could take up to 1 hour to take effect.
       "Properties": {
         "Function": "XxHash64",
         "MaxPartitionCount": 128,
+        "PartitionAssignmentMode": "Uniform"
       }
     },
     {
