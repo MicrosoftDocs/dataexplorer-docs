@@ -388,6 +388,8 @@ items:
       href: monitor-with-resource-health.md
     - name: Use Azure Monitor insights
       href: /azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
+    - name: Monitor batching ingestion with metrics
+      href: monitor-batching-ingestion.md
   - name: Share data
     items:
       - name: Use Azure Data Share
@@ -476,6 +478,9 @@ items:
     - name: perm_fl()
       displayName: functions library
       href: kusto/functions-library/perm-fl.md
+    - name: two_sample_t_test_fl()
+      displayName: functions library
+      href: kusto/functions-library/two-sample-t-test-fl.md
     - name: predict_fl()
       displayName: functions library
       href: kusto/functions-library/predict-fl.md

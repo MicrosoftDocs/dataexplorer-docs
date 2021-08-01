@@ -2,7 +2,7 @@
 title: 'Query data in Azure Monitor with Azure Data Explorer (Preview)'
 description: 'In this topic, query data in Azure Monitor (Application Insights and Log Analytics) by creating an Azure Data Explorer cross product queries.'
 services: data-explorer
-author: orspod
+author: osalzberg
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
@@ -145,5 +145,4 @@ The following syntax options are available when calling the Application Insights
 |Cluster that contains only the defined resource in this subscription      |    cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
 
 ## Next steps
-
 [Write queries](write-queries.md)
