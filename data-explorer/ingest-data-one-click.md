@@ -31,6 +31,9 @@ One-click ingestion is particularly useful when ingesting data for the first tim
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
 * Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
+> [!NOTE]
+> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint) in different subnets of the same VNET, see [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md).
+
 ## Access the one-click wizard
 
 The one-click ingestion wizard guides you through the one-click ingestion process.
