@@ -45,6 +45,11 @@ When attaching the database all tables, external tables and materialized views a
 
 #### Examples
 
+1. Include all tables. No '*' is needed, since all tables are followed by default:
+  
+   ```kusto
+    tablesToInclude = []
+    ```
 1. Include all tables with names that start with "Logs":
   
    ```kusto
