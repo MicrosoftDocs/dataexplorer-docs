@@ -56,4 +56,5 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 |[comb_fl()](comb-fl.md)|Calculate *C(n, k)*, the number of combinations for selection of k items out of n. |
 |[factorial_fl()](factorial-fl.md)|Calculate *n!*, the factorial of n. |
 |[perm_fl()](perm-fl.md)|Calculate *P(n, k)*, the number of permutations for selection of k items out of n. |
+|[two_sample_t_test_fl()](two-sample-t-test-fl.md)| Perform the two sample t-test. |
 |[wilcoxon_test_fl()](wilcoxon_test_fl.md)| Perform the Wilcoxon Test. | 
