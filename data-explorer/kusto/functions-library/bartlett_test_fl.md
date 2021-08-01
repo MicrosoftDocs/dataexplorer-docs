@@ -37,24 +37,22 @@ The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipe
 For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+~~~kusto
 let bartlett_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string)
 {
     let kwargs = pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value);
-    let code =
-        'from scipy import stats\n'
-        '\n'
-        'data1 = kargs["data1"]\n'
-        'data2 = kargs["data2"]\n'
-        'test_statistic = kargs["test_statistic"]\n'
-        'p_value = kargs["p_value"]\n'
-        '\n'
-        'def func(row):\n'
-        '    statistics = stats.bartlett(row[data1], row[data2])\n'
-        '    return statistics[0], statistics[1]\n'
-        'result = df\n'
-        'result[[test_statistic, p_value]]  = df.apply(func, axis=1, result_type = "expand")\n'
-    ;
+    let code = ```if 1:
+        from scipy import stats
+        data1 = kargs["data1"]
+        data2 = kargs["data2"]
+        test_statistic = kargs["test_statistic"]
+        p_value = kargs["p_value"]
+        def func(row):
+            statistics = stats.bartlett(row[data1], row[data2])
+            return statistics[0], statistics[1]
+        result = df
+        result[[test_statistic, p_value]]  = df.apply(func, axis=1, result_type = "expand")
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 }
@@ -66,7 +64,7 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 ]
 | extend test_stat= 0.0, p_val = 0.0
 | invoke bartlett_test_fl('sample1', 'sample2', 'test_stat', 'p_val')
-```
+~~~
 
 # [Persistent](#tab/persistent)
 
@@ -75,34 +73,32 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 ### One-time installation
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+~~~kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Bartlett Test")
 bartlett_test_fl(tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string)
 {
     let kwargs = pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value);
-    let code =
-        'from scipy import stats\n'
-        '\n'
-        'data1 = kargs["data1"]\n'
-        'data2 = kargs["data2"]\n'
-        'test_statistic = kargs["test_statistic"]\n'
-        'p_value = kargs["p_value"]\n'
-        '\n'
-        'def func(row):\n'
-        '    statistics = stats.bartlett(row[data1], row[data2])\n'
-        '    return statistics[0], statistics[1]\n'
-        'result = df\n'
-        'result[[test_statistic, p_value]]  = df.apply(func, axis=1, result_type = "expand")\n'
-    ;
+    let code = ```if 1:
+        from scipy import stats
+        data1 = kargs["data1"]
+        data2 = kargs["data2"]
+        test_statistic = kargs["test_statistic"]
+        p_value = kargs["p_value"]
+        def func(row):
+            statistics = stats.bartlett(row[data1], row[data2])
+            return statistics[0], statistics[1]
+        result = df
+        result[[test_statistic, p_value]]  = df.apply(func, axis=1, result_type = "expand")
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 }
-```
+~~~
 
 ### Usage
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+~~~kusto
 datatable(id:string, sample1:dynamic, sample2:dynamic) [
 'Test #1', dynamic([23.64, 20.57, 20.42]), dynamic([27.1, 22.12, 33.56]),
 'Test #2', dynamic([20.85, 21.89, 23.41]), dynamic([35.09, 30.02, 26.52]),
@@ -110,14 +106,14 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 ]
 | extend test_stat= 0.0, p_val = 0.0
 | invoke bartlett_test_fl('sample1', 'sample2', 'test_stat', 'p_val')
-```
+~~~
 
 ---
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+~~~kusto
 id             sample1                    sample2                test_stat          p_val
 Test #1, [23.64, 20.57, 20.42], [27.1, 22.12, 33.56], 1.7660796224425723, 0.183868001738637
 Test #2, [20.85, 21.89, 23.41], [35.09, 30.02, 26.52], 1.9211710616896014, 0.16572762069132516
 Test #3, [20.13, 20.5, 21.7, 22.02], [32.2, 32.79, 33.9, 34.22], 0.0026985713829234454, 0.958570306268548
-```
+~~~
