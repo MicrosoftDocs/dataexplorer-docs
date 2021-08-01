@@ -1,6 +1,6 @@
 ---
 title: Monitor batching ingestion in Azure Data Explorer
-description: Learn how to use Azure Data Explorer (Azure Data Explorer) metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
+description: Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
 author: orspod
 ms.author: orspodek
 ms.reviewer: tzviagt
@@ -13,6 +13,8 @@ ms.custom: contperf-fy21q1
 # Monitor batching ingestion with metrics
 
 In the *batching ingestion* process, Azure Data Explorer optimizes [data ingestion](ingest-data-overview.md) for high throughput by batching incoming small chunks of data into batches based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md). The batching policy allows you to set the trigger conditions for sealing a batch (data size, number of blobs, or time passed). These batches are then optimally ingested for fast query results.
+
+In this article, you will learn how to use metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
 
 ## Batching stages
 
