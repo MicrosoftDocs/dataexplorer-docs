@@ -17,7 +17,7 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accu
 
 ## Syntax
 
-`hll`(`*`Expr`* `[,` *`Accuracy`*`])
+`hll(`*Expr* `[,` *Accuracy*`])`
 
 ## Arguments
 
