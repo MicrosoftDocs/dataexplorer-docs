@@ -472,6 +472,9 @@ items:
     - name: kmeans_fl()
       displayName: functions library
       href: kusto/functions-library/kmeans-fl.md
+    - name: normality_test_fl()
+      displayName: functions library
+      href: kusto/functions-library/normality_test_fl.md
     - name: perm_fl()
       displayName: functions library
       href: kusto/functions-library/perm-fl.md
