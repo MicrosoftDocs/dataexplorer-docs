@@ -1,13 +1,13 @@
 ---
-title: Kusto query weak consistency policy
-description: This article describes query weak consistency policy in Azure Data Explorer.
+title: Query weak consistency policy
+description: This article describes the query weak consistency policy in Azure Data Explorer.
 services: data-explorer
-author: yahav
-ms.author: yabenyaa
-ms.reviewer: a
+author: orspod
+ms.author: orspodek
+ms.reviewer: yabenyaa
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/28/2021
+ms.date: 08/01/2021
 ---
 # Query weak consistency policy
 
@@ -15,8 +15,8 @@ The query weak consistency policy is a cluster-level policy object that configur
 
 ## Control commands
 
-* Use [`.show cluster policy query_weak_consistency`](./query-weak-consistency-policy-commands.md#show-query-weak-consistency-policy) to show the current query weak consistency policy of the cluster.
-* Use [`.alter cluster policy query_weak_consistency`](./query-weak-consistency-policy-commands.md#alter-query-weak-consistency-policy) to change the current query weak consistency policy of the cluster.
+* Use [`.show cluster policy query_weak_consistency`](show-query-weak-consistency-policy.md) to show the current query weak consistency policy of the cluster.
+* Use [`.alter cluster policy query_weak_consistency`](alter-query-weak-consistency-policy.md) to change the current query weak consistency policy of the cluster.
 
 ## The policy object
 
