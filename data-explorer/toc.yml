@@ -470,12 +470,12 @@ items:
     - name: kmeans_fl()
       displayName: functions library
       href: kusto/functions-library/kmeans-fl.md
-    - name: perm_fl()
-      displayName: functions library
-      href: kusto/functions-library/perm-fl.md
     - name: mann_whitney_u_test_fl()
       displayName: functions library
       href: kusto/functions-library/mann_whitney_u_test_fl.md
+    - name: perm_fl()
+      displayName: functions library
+      href: kusto/functions-library/perm-fl.md
     - name: predict_fl()
       displayName: functions library
       href: kusto/functions-library/predict-fl.md
