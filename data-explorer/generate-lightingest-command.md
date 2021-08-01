@@ -1,5 +1,5 @@
 ---
-title: Generate a LightIngest command to ingest data to Azure Data Explorer.
+title: Generate a LightIngest command to ingest data to Azure Data Explorer (preview).
 description: Learn about how to auto-generate an ingest command for LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
 author: orspod
 ms.author: orspodek
@@ -8,7 +8,7 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 07/27/2021
 ---
-# Use wizard for one-time ingestion of historical data with LightIngest
+# Use wizard for one-time ingestion of historical data with LightIngest (preview)
 
 LightIngest is a command-line utility for ad-hoc data ingestion into Azure Data Explorer. 
 To learn more about LightIngest, see [Use LightIngest to ingest data to Azure Data Explorer](lightingest.md).
