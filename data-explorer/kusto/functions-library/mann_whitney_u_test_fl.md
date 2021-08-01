@@ -38,7 +38,7 @@ The function `mann_whitney_u_test_fl()` performs the [Mann-Whitney U Test](https
 For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+~~~kusto
 let mann_whitney_u_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string, use_continuity:bool=true)
 {
     let kwargs = pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value, 'use_continuity', use_continuity);
@@ -66,7 +66,7 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 ]
 | extend test_stat= 0.0, p_val = 0.0
 | invoke mann_whitney_u_test_fl('sample1', 'sample2', 'test_stat', 'p_val')
-```
+~~~
 
 # [Persistent](#tab/persistent)
 
@@ -75,7 +75,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 ### One-time installation
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+~~~kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Mann-Whitney U Test")
 mann_whitney_u_test_fl(tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string, use_continuity:bool=true)
 {
@@ -96,7 +96,7 @@ mann_whitney_u_test_fl(tbl:(*), data1:string, data2:string, test_statistic:strin
     tbl
     | evaluate python(typeof(*), code, kwargs)
 }
-```
+~~~
 
 ### Usage
 
