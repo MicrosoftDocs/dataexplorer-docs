@@ -55,5 +55,6 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 |[binomial_test_fl()](binomial-test-fl.md)|Perform the binomial test. |
 |[comb_fl()](comb-fl.md)|Calculate *C(n, k)*, the number of combinations for selection of k items out of n. |
 |[factorial_fl()](factorial-fl.md)|Calculate *n!*, the factorial of n. |
+|[kolmogorov_smirnov_test_fl()](kolmogorov_smirnov_test_fl.md)| Perform the Kolmogorov Smirnov test. |
 |[perm_fl()](perm-fl.md)|Calculate *P(n, k)*, the number of permutations for selection of k items out of n. |
-|[kolmogorov_smirnov_test_fl()](kolmogorov_smirnov_test_fl.md)| Perform the Kolmogorov Smirnov test. | 
+|[two_sample_t_test_fl()](two-sample-t-test-fl.md)| Perform the two sample t-test. |

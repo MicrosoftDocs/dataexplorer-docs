@@ -86,7 +86,7 @@ It's recommended to use [optimized autoscale configuration](manage-cluster-horiz
 
 #### Reduce cache for Azure Data Explorer tables
 
-The **reduce Azure Data Explorer table cache period for cluster cost optimization** recommendation is given for a cluster that can reduce its table's [cache policy](kusto/management/cachepolicy.md). This recommendation is based on the queries look-back period during the past 30 days. You see the top 10 tables with potential cache savings. 
+The **reduce Azure Data Explorer table cache period for cluster cost optimization** recommendation is given for a cluster that can reduce its table's [cache policy](kusto/management/cachepolicy.md). This recommendation is based on the queries look-back period during the past 30 days. You see the top 40 tables per database, by potential cache savings. 
 This recommendation is only offered if the cluster can scale-in or scale-down following the cache policy change. Advisor checks if the cluster is "bounded by data" meaning the cluster has low CPU and low ingestion utilization, but because of high data capacity the cluster couldn't scale-in or scale-down.
 
 #### Delete unused storage artifacts
@@ -115,7 +115,7 @@ It's recommended to use [optimized autoscale configuration](manage-cluster-horiz
 
 #### Update cache policy for Azure Data Explorer tables
 
-The **review Azure Data Explorer table cache-period (policy) for better performance** recommendation is given for a cluster that requires a different look-back period (time filter) or a greater [cache policy](kusto/management/cachepolicy.md). This recommendation is based on the queries look-back period during the past 30 days. Most of the queries that ran in the past 30 days accessed data that wasn't in the cache, which may increase your query run-time.  You see the top 10 tables that accessed out-of-cache data ordered by query percentage.
+The **review Azure Data Explorer table cache-period (policy) for better performance** recommendation is given for a cluster that requires a different look-back period (time filter) or a greater [cache policy](kusto/management/cachepolicy.md). This recommendation is based on the queries look-back period during the past 30 days. Most of the queries that ran in the past 30 days accessed data that wasn't in the cache, which may increase your query run-time. You see the top 40 tables (per database) that accessed out-of-cache data ordered by query percentage.
 
 ## Next steps
 

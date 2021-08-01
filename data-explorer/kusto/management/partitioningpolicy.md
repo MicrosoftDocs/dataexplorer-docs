@@ -84,7 +84,7 @@ It uses the `XxHash64` hash function, with `MaxPartitionCount` set to the recomm
     "Function": "XxHash64",
     "MaxPartitionCount": 128,
     "Seed": 1,
-    "PartitionAssignmentMode": "Default"
+    "PartitionAssignmentMode": "Uniform"
   }
 }
 ```
@@ -171,7 +171,7 @@ Data partitioning policy object with two partition keys.
         "Function": "XxHash64",
         "MaxPartitionCount": 128,
         "Seed": 1,
-        "PartitionAssignmentMode": "Default"
+        "PartitionAssignmentMode": "Uniform"
       }
     },
     {
