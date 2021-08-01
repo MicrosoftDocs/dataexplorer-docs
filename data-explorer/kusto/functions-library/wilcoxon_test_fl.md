@@ -95,7 +95,7 @@ wilcoxon_test_fl(tbl:(*), data:string, test_statistic:string, p_value:string)
 ### Usage
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+~~~kusto
 datatable(id:string, sample1:dynamic) [
 'Test #1', dynamic([23.64, 20.57, 20.42]),
 'Test #2', dynamic([20.85, 21.89, 23.41]),
@@ -103,14 +103,14 @@ datatable(id:string, sample1:dynamic) [
 ]
 | extend test_stat= 0.0, p_val = 0.0
 | invoke wilcoxon_test_fl('sample1', 'test_stat', 'p_val')
-```
+~~~
 
 ---
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+~~~kusto
 id             sample1        test_stat        p_val
 Test #1, [23.64, 20.57, 20.42], 0, 0.10880943004054568
 Test #2, [20.85, 21.89, 23.41], 0, 0.10880943004054568
 Test #3, [20.13, 20.5, 21.7, 22.02], 0, 0.06788915486182899
-```
+~~~
