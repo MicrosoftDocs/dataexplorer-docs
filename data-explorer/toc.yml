@@ -472,7 +472,7 @@ items:
     - name: kmeans_fl()
       displayName: functions library
       href: kusto/functions-library/kmeans-fl.md
-    - name: kolmogorov_smirnov_test_fl()
+    - name: ks_test_fl()
       displayName: functions library
       href: kusto/functions-library/kolmogorov_smirnov_test_fl.md
     - name: perm_fl()
