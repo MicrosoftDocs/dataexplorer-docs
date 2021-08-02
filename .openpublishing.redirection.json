@@ -149,6 +149,11 @@
       "source_path": "data-explorer/kusto/query/replacefunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/replace-regex-function",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/normality_test_fl.md",
+      "redirect_url": "/azure/data-explorer/kusto/functions-library/normality-test-fl",
+      "redirect_document_id": true
     }
   ]
 }
