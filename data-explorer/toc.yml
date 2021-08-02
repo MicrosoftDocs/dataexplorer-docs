@@ -477,7 +477,7 @@ items:
       href: kusto/functions-library/kmeans-fl.md
     - name: ks_test_fl()
       displayName: functions library
-      href: kusto/functions-library/kolmogorov-smirnov-test-fl.md
+      href: kusto/functions-library/ks-test-fl.md
     - name: normality_test_fl()
       displayName: functions library
       href: kusto/functions-library/normality-test-fl.md
