@@ -47,7 +47,7 @@ The **Create external table** window opens with the **Destination** tab selected
 
 ### Source tab
 
-1. In **Link to source**, enter the [SAS URL](kusto/api/connection-strings/storage.md#generate-a-sas-for-azure-storage-blob-container) of your source container. You can add up to 10 sources. 
+1. In **Link to source**, enter an [account key or SAS URL](kusto/api/connection-strings/storage.md#generate-a-sas-for-azure-storage-blob-container) to your source container with read and list permissions. You can add up to 10 sources. 
     The first source container will display files below the **File filters**. In a later step, you will use one of these files to generate the table schema.
 
     :::image type="content" source="media/external-table/source-tab.png" alt-text="Screen shot of create external table source tab in Azure Data Explorer.":::
