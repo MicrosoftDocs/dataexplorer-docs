@@ -484,9 +484,6 @@ items:
     - name: levene_test_fl()
       displayName: functions library
       href: kusto/functions-library/levene-test-fl.md
-    - name: ks_test_fl()
-      displayName: functions library
-      href: kusto/functions-library/ks-test-fl.md
     - name: mann-whitney-u-test-fl()
       displayName: functions library
       href: kusto/functions-library/mann-whitney-u-test-fl.md
