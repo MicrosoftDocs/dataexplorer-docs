@@ -462,7 +462,7 @@ items:
       href: kusto/functions-library/functions-library.md
     - name: bartlett_test_fl()
       displayName: functions library
-      href: kusto/functions-library/bartlett_test_fl.md
+      href: kusto/functions-library/bartlett-test-fl.md
     - name: binomial_test_fl()
       displayName: functions library
       href: kusto/functions-library/binomial-test-fl.md

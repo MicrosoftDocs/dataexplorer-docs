@@ -52,7 +52,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[bartlett_test_fl()](bartlett_test_fl.md)| Perform the Bartlett test. | 
+|[bartlett_test_fl()](bartlett-test-fl.md)| Perform the Bartlett test. | 
 |[binomial_test_fl()](binomial-test-fl.md)|Perform the binomial test. |
 |[comb_fl()](comb-fl.md)|Calculate *C(n, k)*, the number of combinations for selection of k items out of n. |
 |[factorial_fl()](factorial-fl.md)|Calculate *n!*, the factorial of n. |
