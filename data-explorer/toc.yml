@@ -475,6 +475,9 @@ items:
     - name: normality_test_fl()
       displayName: functions library
       href: kusto/functions-library/normality_test_fl.md
+    - name: levene_test_fl()
+      displayName: functions library
+      href: kusto/functions-library/levene_test_fl.md
     - name: perm_fl()
       displayName: functions library
       href: kusto/functions-library/perm-fl.md
