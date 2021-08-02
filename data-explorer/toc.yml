@@ -484,6 +484,9 @@ items:
     - name: ks_test_fl()
       displayName: functions library
       href: kusto/functions-library/ks_test_fl.md
+    - name: mann_whitney_u_test_fl()
+      displayName: functions library
+      href: kusto/functions-library/mann_whitney_u_test_fl.md
     - name: perm_fl()
       displayName: functions library
       href: kusto/functions-library/perm-fl.md

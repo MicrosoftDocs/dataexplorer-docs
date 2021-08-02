@@ -60,3 +60,6 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 |[perm_fl()](perm-fl.md)|Calculate *P(n, k)*, the number of permutations for selection of k items out of n. |
 |[two_sample_t_test_fl()](two-sample-t-test-fl.md)| Perform the two sample t-test. |
 |[t_test_unpaired_fl()](t_test_unpaired_fl.md)| Perform the unpaired t-test. | 
+|[mann_whitney_u_test_fl()](mann_whitney_u_test_fl.md)| Perform a Mann-Whitney U Test. | 
+|[perm_fl()](perm-fl.md)|Calculate *P(n, k)*, the number of permutations for selection of k items out of n. |
+|[two_sample_t_test_fl()](two-sample-t-test-fl.md)| Perform the two sample t-test. |
