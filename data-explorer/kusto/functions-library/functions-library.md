@@ -62,4 +62,5 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 |[mann_whitney_u_test_fl()](mann-whitney-u-test-fl.md)| Perform a Mann-Whitney U Test. | 
 |[perm_fl()](perm-fl.md)|Calculate *P(n, k)*, the number of permutations for selection of k items out of n. |
 |[t_test_paired_fl()](t_test_paired_fl.md)| Perform the paired t-test. | 
+|[two_sample_t_test_fl()](two-sample-t-test-fl.md)| Perform the two sample t-test. |
 |[wilcoxon_test_fl()](wilcoxon_test_fl.md)| Perform the Wilcoxon Test. |
