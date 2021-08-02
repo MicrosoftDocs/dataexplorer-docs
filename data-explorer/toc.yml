@@ -490,6 +490,9 @@ items:
     - name: two_sample_t_test_fl()
       displayName: functions library
       href: kusto/functions-library/two-sample-t-test-fl.md
+    - name: t_test_unpaired_fl()
+      displayName: functions library
+      href: kusto/functions-library/t_test_unpaired_fl.md
     - name: predict_fl()
       displayName: functions library
       href: kusto/functions-library/predict-fl.md
