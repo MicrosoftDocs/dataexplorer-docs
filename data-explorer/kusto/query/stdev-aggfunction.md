@@ -23,7 +23,7 @@ For a large data set that is representative of the population, use [stdev() (agg
 
 ## Syntax
 
-`stdev(`*Expr*`)`
+`stdev` `(`*Expr*`)`
 
 ## Arguments
 
