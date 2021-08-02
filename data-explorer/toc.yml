@@ -480,22 +480,19 @@ items:
       href: kusto/functions-library/kolmogorov_smirnov_test_fl.md
     - name: normality_test_fl()
       displayName: functions library
-      href: kusto/functions-library/normality_test_fl.md
+      href: kusto/functions-library/normality-test-fl.md
     - name: levene_test_fl()
       displayName: functions library
-      href: kusto/functions-library/levene_test_fl.md
+      href: kusto/functions-library/levene-test-fl.md
     - name: ks_test_fl()
       displayName: functions library
-      href: kusto/functions-library/ks_test_fl.md
-    - name: mann_whitney_u_test_fl()
+      href: kusto/functions-library/ks-test-fl.md
+    - name: mann-whitney-u-test-fl()
       displayName: functions library
-      href: kusto/functions-library/mann_whitney_u_test_fl.md
+      href: kusto/functions-library/mann-whitney-u-test-fl.md
     - name: perm_fl()
       displayName: functions library
       href: kusto/functions-library/perm-fl.md
-    - name: t_test_paired_fl()
-      displayName: functions library
-      href: kusto/functions-library/t_test_paired_fl.md
     - name: predict_fl()
       displayName: functions library
       href: kusto/functions-library/predict-fl.md
@@ -543,7 +540,7 @@ items:
       href: kusto/functions-library/time-weighted-avg-fl.md
     - name: wilcoxon_test_fl()
       displayName: functions library
-      href: kusto/functions-library/wilcoxon_test_fl.md
+      href: kusto/functions-library/wilcoxon-test-fl.md
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions
     href: ./policy-reference.md
