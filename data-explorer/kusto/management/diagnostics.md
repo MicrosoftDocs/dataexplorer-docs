@@ -120,12 +120,13 @@ Returns the results of a calculation for an estimated cluster capacity for each 
 |Total |Int64 |The total amount of resources, of type 'Resource', that are available. For example, the number of concurrent ingestions
 |Consumed |Int64 |The amount of resources of type 'Resource' consumed right now
 |Remaining |Int64 |The amount of remaining resources of type 'Resource'
+|Origin |Int64 |The origin of the limit on concurrent requests ([capacity policy](capacitypolicy.md) or [request rate limit policy](request-rate-limit-policy.md))
  
 **Example**
 
-|Resource |Total |Consumed |Remaining
-|---|---|---|---
-|ingestions |576 |1 |575
+|Resource |Total |Consumed |Remaining|Origin
+|---|---|---|---|---
+|ingestions |576 |1 |575|CapacityPolicy/Ingestion
 
 ## .show operations
 
