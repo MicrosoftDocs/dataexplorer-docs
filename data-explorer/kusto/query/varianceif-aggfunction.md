@@ -17,7 +17,7 @@ Calculates the [variance](variance-aggfunction.md) of *Expr* across the group fo
 
 ## Syntax
 
-`varianceif(`*Expr*`, `*Predicate*`)`
+`varianceif` `(`*Expr*`, `*Predicate*`)`
 
 ## Arguments
 

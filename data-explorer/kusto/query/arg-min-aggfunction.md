@@ -17,7 +17,7 @@ Finds a row in the group that minimizes *ExprToMinimize*, and returns the value 
 
 ## Syntax
 
-`arg_min` `(`*ExprToMinimize*, `*` | *ExprToReturn*  [`,` ...]`)`
+`arg_min` `(`*ExprToMinimize*`,` *\** | *ExprToReturn*  [`,` ...]`)`
 
 ## Arguments
 

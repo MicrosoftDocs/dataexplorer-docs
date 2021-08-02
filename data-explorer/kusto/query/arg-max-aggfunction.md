@@ -17,7 +17,7 @@ Finds a row in the group that maximizes *ExprToMaximize*, and returns the value 
 
 ## Syntax
 
-`arg_max` `(`*ExprToMaximize*, `*` | *ExprToReturn*  [`,` ...]`)`
+`arg_max` `(`*ExprToMaximize*`,` *\** | *ExprToReturn*  [`,` ...]`)`
 
 ## Arguments
 

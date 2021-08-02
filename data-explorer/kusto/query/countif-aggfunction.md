@@ -15,7 +15,7 @@ Returns a count of rows for which *Predicate* evaluates to `true`. Can only be u
 
 ## Syntax
 
-`countif(`*Predicate*`)`
+`countif` `(`*Predicate*`)`
 
 ## Arguments
 

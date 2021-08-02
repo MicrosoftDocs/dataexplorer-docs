@@ -19,7 +19,7 @@ and returns the value of one or more expressions over each such record.
 
 ## Syntax
 
-`take_any` `(` (*Expr* [`,` *Expr2* ...]) | `*` `)`
+`take_any` `(` (*Expr* [`,` *Expr2* ...]) | *\** `)`
 
 ## Arguments
 

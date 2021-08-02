@@ -21,7 +21,7 @@ Calculates the variance of *Expr* across the group, considering the group as a [
 
 ## Syntax
 
- `variance(`*Expr*`)`
+ `variance` `(`*Expr*`)`
 
 ## Arguments
 

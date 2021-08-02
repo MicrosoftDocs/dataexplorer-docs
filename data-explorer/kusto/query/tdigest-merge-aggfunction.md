@@ -17,9 +17,9 @@ For more information about the underlying algorithm (T-Digest) and the estimated
 
 ## Syntax
 
-`tdigest_merge(`*Expr*`)`.
+`tdigest_merge` `(`*Expr*`)`
 
-`merge_tdigests(`*Expr*`)` - An alias.
+`merge_tdigests` `(`*Expr*`)` 
 
 ## Arguments
 

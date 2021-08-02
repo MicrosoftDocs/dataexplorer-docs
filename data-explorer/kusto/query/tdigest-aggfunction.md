@@ -20,7 +20,7 @@ For more information, see the [underlying algorithm (T-Digest) and the estimated
 
 ## Syntax
 
- `tdigest`(*`Expr`* [`,` *`WeightExpr`*])
+ `tdigest` `(`*Expr* [`,` *WeightExpr*]`)`
 
 ## Arguments
 

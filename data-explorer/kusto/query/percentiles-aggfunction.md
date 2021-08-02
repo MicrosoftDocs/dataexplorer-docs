@@ -20,21 +20,21 @@ The accuracy depends on the density of population in the region of the percentil
 
 ## Syntax
 
- `percentile(`*Expr*`,` *Percentile*`)`
+ `percentile` `(`*Expr*`,` *Percentile*`)`
 
- `percentiles(`*Expr*`,` *Percentile1* [`,` *Percentile2*]`)`
+ `percentiles` `(`*Expr*`,` *Percentile1* [`,` *Percentile2*]`)`
 
- `percentiles_array(`*Expr*`,` *Percentile1* [`,` *Percentile2*]`)`
+ `percentiles_array` `(`*Expr*`,` *Percentile1* [`,` *Percentile2*]`)`
 
-`percentiles_array(`*Expr*`,` *Dynamic array*`)`
+`percentiles_array` `(`*Expr*`,` *Dynamic array*`)`
 
-`percentilew(`*Expr*`,` *WeightExpr*`,` *Percentile*`)`
+`percentilew` `(`*Expr*`,` *WeightExpr*`,` *Percentile*`)`
 
- `percentilesw(`*Expr*`,` *WeightExpr*`,` *Percentile1* [`,` *Percentile2*]`)`
+ `percentilesw` `(`*Expr*`,` *WeightExpr*`,` *Percentile1* [`,` *Percentile2*]`)`
 
- `percentilesw_array(`*Expr*`,` *WeightExpr*`,` *Percentile1* [`,` *Percentile2*]`)`
+ `percentilesw_array` `(`*Expr*`,` *WeightExpr*`,` *Percentile1* [`,` *Percentile2*]`)`
 
- `percentilesw_array(`*Expr*`,` *WeightExpr*`,` *Dynamic array*`)`
+ `percentilesw_array` `(`*Expr*`,` *WeightExpr*`,` *Dynamic array*`)`
 
 ## Arguments
 

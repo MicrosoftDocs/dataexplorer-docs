@@ -19,7 +19,7 @@ For more information, see the [underlying algorithm (*H*yper*L*og*L*og) and esti
 
 ## Syntax
 
-`hll_merge(`*Expr*`)`
+`hll_merge` `(`*Expr*`)`
 
 ## Arguments
 
