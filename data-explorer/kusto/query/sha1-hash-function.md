@@ -43,7 +43,7 @@ h2=hash_sha1(datetime(2020-01-01))
 
 |h1|h2|
 |---|---|
-|70c07ec18ef89c5309bbb0937f3a6342411e1fdd|70c07ec18ef89c5309bbb0937f3a6342411e1fdd|
+|70c07ec18ef89c5309bbb0937f3a6342411e1fdd|e903e533f4d636b4fc0dcf3cf81e7b7f330de776|
 
 The following example uses the `hash_sha1()` function to aggregate StormEvents based on State's SHA1 hash value. 
 
