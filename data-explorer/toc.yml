@@ -478,6 +478,9 @@ items:
     - name: levene_test_fl()
       displayName: functions library
       href: kusto/functions-library/levene_test_fl.md
+    - name: ks_test_fl()
+      displayName: functions library
+      href: kusto/functions-library/ks_test_fl.md
     - name: perm_fl()
       displayName: functions library
       href: kusto/functions-library/perm-fl.md
