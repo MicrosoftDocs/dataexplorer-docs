@@ -59,3 +59,4 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 |[levene_test_fl()n](levene_test_fl.md)| Perform a Levene test. | 
 |[perm_fl()](perm-fl.md)|Calculate *P(n, k)*, the number of permutations for selection of k items out of n. |
 |[two_sample_t_test_fl()](two-sample-t-test-fl.md)| Perform the two sample t-test. |
+|[wilcoxon_test_fl()](wilcoxon_test_fl.md)| Perform the Wilcoxon Test. |

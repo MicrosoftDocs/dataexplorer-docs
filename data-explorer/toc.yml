@@ -529,6 +529,9 @@ items:
     - name: time_weighted_avg_fl()
       displayName: functions library
       href: kusto/functions-library/time-weighted-avg-fl.md
+    - name: wilcoxon_test_fl()
+      displayName: functions library
+      href: kusto/functions-library/wilcoxon_test_fl.md
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions
     href: ./policy-reference.md
