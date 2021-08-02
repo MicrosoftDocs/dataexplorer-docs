@@ -27,7 +27,7 @@ The following are the only scenarios in which setting a data partitioning policy
   * Set the [hash partition key](#hash-partition-key) to be the string column column, and set the [`PartitionAssigmentMode` property](#partition-properties) to `uniform`.
 * **Frequent aggregations or joins on a high cardinality string column**:
   * For example, IoT information from many different sensors, or academic records of many different students. 
-  * High cardinality is defined as more than 10M distinct values, where the distribution of values in the column is approximately even.
+  * High cardinality is at least 1,000,000 distinct values, where the distribution of values in the column is approximately even.
   * In this case, set the [hash partition key](#hash-partition-key) to be the column frequently grouped-by or joined-on, and set the [`PartitionAssigmentMode` property](#partition-properties) to `default`.
 * **Out-of-order data ingestion**:
   * Data ingested into a table might not be ordered and partitioned into extents (shards) according to a specific `datetime` column that represents the data creation time and is commonly used to filter data. This could be due to a backfill from heterogeneous source files that include datetime values over a large time span. 
@@ -36,8 +36,9 @@ The following are the only scenarios in which setting a data partitioning policy
 
 > [!CAUTION]
 > * There are no hard-coded limits set on the number of tables with the partitioning policy defined.
-> * However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used.
-> * For more information, see [monitoring](#monitor-partitioning) and [capacity](#partitioning-capacity).
+>   * However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used.
+>   * For more information, see [monitoring](#monitor-partitioning) and [capacity](#partitioning-capacity).
+> * It isn't recommended to set a partitioning policy if the compressed size of data per partition is expected to be less than 1GB.
 > * Before applying a partitioning policy on a materialized view, review the recommendations for [materialized views partitioning policy](materialized-views/materialized-view-policies.md#partitioning-policy).
 
 ## Partition keys
