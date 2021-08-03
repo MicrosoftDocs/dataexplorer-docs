@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/27/2020
+ms.date: 07/18/2021
 ---
 # Scalar function types
 
@@ -261,7 +261,7 @@ ms.date: 05/27/2020
 |[parse_url()](parseurlfunction.md)|Parses an absolute URL string and returns a dynamic object contains all parts of the URL.|
 |[parse_urlquery()](parseurlqueryfunction.md)|Parses a url query string and returns a dynamic object contains the Query parameters.|
 |[parse_version()](parse-versionfunction.md)|Converts input string representation of version to a comparable decimal number.|
-|[replace()](replacefunction.md)|Replace all regex matches with another string.|
+|[replace_regex()](replace-regex-function.md)|Replace all regex matches with another string.|
 |[reverse()](reversefunction.md)|Function makes reverse of input string.|
 |[split()](splitfunction.md)|Splits a given string according to a given delimiter and returns a string array with the contained substrings.|
 |[strcat()](strcatfunction.md)|Concatenates between 1 and 64 arguments.|
@@ -342,4 +342,5 @@ ms.date: 05/27/2020
 |[hash_combine()](hash_combinefunction.md)|Combines two or more hash values.|
 |[hash_many()](hash_manyfunction.md)|Returns a combined hash value of multiple values.|
 |[hash_md5()](md5hashfunction.md)|Returns a MD5 hash value for the input value.|
+|[hash_sha1()](sha1-hash-function.md)|Returns a SHA1 hash value for the input value.|
 |[hash_sha256()](sha256hashfunction.md)|Returns a SHA256 hash value for the input value.|

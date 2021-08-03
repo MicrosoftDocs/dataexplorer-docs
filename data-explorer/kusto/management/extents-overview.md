@@ -108,11 +108,27 @@ format *prefix* *suffix*, where *prefix* is one of:
 ### 'drop-by:' extent tags
 
 Tags that start with a `drop-by:` prefix can be used to control which other
-extents to merge with. Extents that have a given `drop-by:` tag can be merged
-together, but they won't be merged with other extents. 
-You can then issue a command to drop extents according to their `drop-by:` tag.
+extents to merge with. Extents that have the same set of `drop-by:` tags can be merged
+together, but they won't be merged with other extents, if those have a different set of 
+`drop-by:` tags.
 
-For example:
+#### Examples
+
+**1. Which extents can be merged together?**
+
+If:
+- Extent 1 has the following tags: `drop-by:blue`, `drop-by:red`, `green`.
+- Extent 2 has the following tags: `drop-by:red`, `yellow`.
+- Extent 3 has the following tags: `purple`, `drop-by:red`, `drop-by:blue`.
+
+Then:
+- Extents 1 and 2 won't be merged together, as they have a different set of `drop-by` tags.
+- Extents 2 and 3 won't be merged together, as they have a different set of `drop-by` tags.
+- Extents 1 and 3 can be merged together, as they have the same set of `drop-by` tags.
+
+**2. Using `drop-by` tags as part of extent-level operations**
+
+You can issue a command to drop extents according to their `drop-by:` tag.
 
 ```kusto
 .ingest ... with @'{"tags":"[\"drop-by:2016-02-17\"]"}'

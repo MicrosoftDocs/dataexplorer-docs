@@ -101,7 +101,7 @@ output {
             app_tenant => "<tenant id>"
             database => "<database name>"
             table => "<target table>" # logs as defined above
-            mapping => "<mapping name>" # basicmsg as defined above
+            json_mapping => "<mapping name>" # basicmsg as defined above
     }
 }
 ```
@@ -113,7 +113,7 @@ output {
 | **app_id**,  **app_key**, and **app_tenant**| Credentials required to connect to Azure Data Explorer. Be sure to use an application with ingest privileges. |
 | **database**| Database name to place events. |
 | **table** | Target table name to place events. |
-| **mapping** | Mapping is used to map an incoming event json string into the correct row format (defines which property goes into which column). |
+| **json_mapping** | Mapping is used to map an incoming event json string into the correct row format (defines which property goes into which column). |
 
 ## Run Logstash
 
