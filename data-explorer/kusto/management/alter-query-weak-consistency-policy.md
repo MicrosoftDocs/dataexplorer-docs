@@ -26,7 +26,7 @@ policy (if it exists), and then returns the updated policy. The updated policy c
 
 |Policy name | Entity name | Policy | Child entities | Entity type
 |---|---|---|---|---
-|QueryWeakConsistencyPolicy | <Empty> | JSON serialization of the updated [query weak consistency policy object](./query-weak-consistency-policy.md#the-policy-object) | List of the databases in the cluster | Cluster
+|QueryWeakConsistencyPolicy |  | JSON serialization of the updated [query weak consistency policy object](./query-weak-consistency-policy.md#the-policy-object) | List of the databases in the cluster | Cluster
 
 ## Examples
 
