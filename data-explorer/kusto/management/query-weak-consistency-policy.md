@@ -35,7 +35,7 @@ The query weak consistency policy includes the following properties:
 
 ## Default policy
 
-The following example shows the default policy:
+The default policy is:
 
 ```json
 {
