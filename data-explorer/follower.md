@@ -38,7 +38,7 @@ To attach a database, you must have user, group, service principal, or managed i
 
 When attaching the database all tables, external tables and materialized views are followed as well. You can share specific tables/external tables/materialized views by configuring the '*TableLevelSharingProperties*'. 
 
-'*TableLevelSharingProperties*' contains six arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, and `materializedViewsToExclude`. 
+'*TableLevelSharingProperties*' contains six arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, and `materializedViewsToExclude`. The maximum number of enteries in all the arrays together is 100.  
 
 > [!NOTE]
 > When materialized views are included, their source tables are included as well.
