@@ -17,15 +17,13 @@ Finds a row in the group that minimizes *ExprToMinimize*, and returns the value 
 
 ## Syntax
 
-`summarize` [`(`*NameExprToMinimize* `,` *NameExprToReturn* [`,` ...] `)=`] `arg_min` `(`*ExprToMinimize*, `*` | *ExprToReturn*  [`,` ...]`)`
+`arg_min` `(`*ExprToMinimize*`,` *\** | *ExprToReturn*  [`,` ...]`)`
 
 ## Arguments
 
 * *ExprToMinimize*: Expression that will be used for aggregation calculation. 
 * *ExprToReturn*: Expression that will be used for returning the value when *ExprToMinimize* is
   minimum. Expression to return may be a wildcard (*) to return all columns of the input table.
-* *NameExprToMinimize*: An optional name for the result column representing *ExprToMinimize*.
-* *NameExprToReturn*: Additional optional names for the result columns representing *ExprToReturn*.
 
 ## Returns
 
