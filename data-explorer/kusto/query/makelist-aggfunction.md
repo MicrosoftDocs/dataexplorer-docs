@@ -18,7 +18,7 @@ Returns a `dynamic` (JSON) array of all the values of *Expr* in the group.
 
 ## Syntax
 
-`summarize` `make_list(`*Expr* [`,` *MaxSize*]`)`
+`make_list` `(`*Expr* [`,` *MaxSize*]`)`
 
 ## Arguments
 

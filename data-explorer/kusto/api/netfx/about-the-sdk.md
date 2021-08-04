@@ -15,7 +15,7 @@ adobe-target: true
 The Azure Data Explorer .NET SDK is a set of libraries that .NET applications can use to communicate with the Azure Data Explorer service.
 
 The Azure Data Explorer .NET SDK is available from [NuGet Gallery](https://www.nuget.org/).
-Each package provides .NET Framework 4.6.2 and .NET Core 2.0 libraries.
+The packages target .NETFramework 4.7.2, .NETCoreApp 2.1, and .NETStandard 2.1.
 
 |Package                                                                                             |Description        |
 |----------------------------------------------------------------------------------------------------|-------------------|
@@ -24,4 +24,3 @@ Each package provides .NET Framework 4.6.2 and .NET Core 2.0 libraries.
 |[Microsoft.Azure.Management.Kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)|Management Library |
 |[Microsoft.Azure.Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/)    |Language service   |
 |[Microsoft.Azure.Kusto.Tools](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)          |Command-line tools |
-
