@@ -21,6 +21,11 @@ For more information about the underlying algorithm (T-Digest) and the estimated
 
 `merge_tdigests` `(`*Expr*`)` 
 
+
+> [!NOTE]
+> `merge-tdigests` is an alias of `tdigest_merge`. 
+
+
 ## Arguments
 
 *Expr*: Expression that will be used for aggregation calculation. 
