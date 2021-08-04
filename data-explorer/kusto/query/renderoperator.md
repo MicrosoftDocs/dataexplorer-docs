@@ -53,7 +53,7 @@ Where:
 | `timepivot`        | Interactive navigation over the events time-line (pivoting on time axis)|  |
 
 > [!NOTE]
-> * The ladderchart, pivotchart, and timepivot visualizations are not available in the Azure Data Explorer Web UI.
+> The ladderchart, pivotchart, and timepivot visualizations are not available in the Azure Data Explorer Web UI.
 
 ::: zone-end
 
