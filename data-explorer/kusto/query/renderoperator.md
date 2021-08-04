@@ -53,7 +53,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 | `timepivot`        | Interactive navigation over the events time-line (pivoting on time axis)|  |
 
 > [!NOTE]
-> The ladderchart, pivotchart, and timepivot visualizations can be used in Kusto Explorer but are not available in the Azure Data Explorer Web UI.
+> The ladderchart, pivotchart, and timepivot visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer Web UI.
 
 ::: zone-end
 
