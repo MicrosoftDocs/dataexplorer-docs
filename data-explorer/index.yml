@@ -108,6 +108,8 @@ landingContent:
             url: kql-quick-reference.md
           - text: Kusto Query Language
             url: kusto/query/index.md
+          - text: SQL to Kusto cheat sheet
+            url: kusto/query/sqlcheatsheet.md
 
   # Card
   - title: Visualize data
