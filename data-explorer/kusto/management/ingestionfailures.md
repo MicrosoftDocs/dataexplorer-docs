@@ -54,6 +54,7 @@ This command returns a result set that includes any ingestion failures that occu
 |User                       |Int      |The user who performed the ingestion  
 |IngestionProperties        |Int      |The ingestion properties that were sent for the ingestion operation
 |NumberOfSources            |Int      |The number if ingestion sources represented by this failure record  
+|ShouldRetry | Boolean | For internal use
  
 **Example**
  
