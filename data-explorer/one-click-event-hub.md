@@ -34,7 +34,7 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 
     :::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-web-ui.png" alt-text="Select one-click ingestion in the web UI.":::
 
-1. In the **Ingest data from reference to Event Hub** card, select **Ingest**. 
+1. In the **Ingest data from Event Hub** card, select **Ingest**. 
 
 The **Ingest new data** window opens with the **Destination** tab selected.
 
@@ -53,7 +53,7 @@ The **Ingest new data** window opens with the **Destination** tab selected.
 
 ### Source tab
 
-1. Under **Source type**, select **Reference to Event Hub**. 
+1. Under **Source type**, select **Event Hub**. 
 
 1. Under **Data Connection**, fill in the following fields:
 
@@ -90,9 +90,9 @@ For information on schema mapping with CSV-formatted data, see [Edit the schema]
         
 1. Select **Next: Summary**.
 
-## Complete data ingestion
+## Continuous ingestion from Event Hub
 
-In the **Data ingestion completed** window, all steps will be marked with green check marks when data ingestion finishes successfully. The cards below these steps give you options to explore your data with **Quick queries**, undo changes made using **Tools**, or **Monitor** the Event Hub connections and data.
+In the **Continuous ingestion from Event Hub established** window, all steps will be marked with green check marks when establishment finishes successfully. The cards below these steps give you options to explore your data with **Quick queries**, undo changes made using **Tools**, or **Monitor** the Event Hub connections and data.
 
 :::image type="content" source="media/one-click-event-hub/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hub with the one click experience.":::
 
