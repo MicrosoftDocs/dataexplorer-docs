@@ -7,11 +7,13 @@ ms.author: orspodek
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/08/2021
+ms.date: 08/08/2021
 ---
 # .alter materialized-view docstring
 
 Alters the DocString value of an existing materialized view.
+
+`DocString` is free text that you can attach to a table/function/column describing the entity. This string is presented in various UX settings next to the entity names.
 
 `.alter` `materialized-view` *MaterializedViewName* `docstring` *Documentation*
 
