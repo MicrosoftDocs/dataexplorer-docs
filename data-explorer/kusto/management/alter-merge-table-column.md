@@ -7,12 +7,14 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 08/05/2021
 ---
 # .alter-merge table column-docstrings
 
 Sets the `docstring` property of one or more columns of the specified table. 
 Columns not explicitly set **retain** their existing value for this property, if they have one.
+
+`DocString` is free text that you can attach to a table/function/column describing the entity. This string is presented in various UX settings next to the entity names.
 
 For alter table column-docstring, see [below](#alter-table-column-docstrings).
 
