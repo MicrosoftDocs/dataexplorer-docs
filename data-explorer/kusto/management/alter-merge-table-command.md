@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/08/2020
+ms.date: 08/05/2021
 ---
 # .alter-merge table
  
@@ -17,6 +17,8 @@ The `.alter-merge table` command:
 * Adds new columns, `docstring`, and folder, to an existing table
 * Must run in the context of a specific database that scopes the table name
 * Requires [Table Admin permission](../management/access-control/role-based-authorization.md)
+
+`DocString` is free text that you can attach to a table/function/column describing the entity. This string is presented in various UX settings next to the entity names.
 
 > [!WARNING]
 > Using the `.alter-merge` command incorrectly may lead to data loss.
