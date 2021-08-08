@@ -7,11 +7,13 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 08/05/2021
 ---
 # .alter function docstring
 
 Alters the `DocString` value of an existing function.
+
+`DocString` is free text that you can attach to a table/function/column describing the entity. This string is presented in various UX settings next to the entity names.
 
 `.alter` `function` *FunctionName* `docstring` *Documentation*
 
