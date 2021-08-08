@@ -67,7 +67,7 @@ DeviceEventsAll
 
 ### Solution #3: Use materialized views to deduplicate
 
-[Materialized views](kusto/management/materialized-views/materialized-view-overview.md) can be used for deduplication, by using the [any()](kusto/query/any-aggfunction.md)/[arg_min()](kusto/query/arg-min-aggfunction.md)/[arg_max()](kusto/query/arg-max-aggfunction.md) aggregation functions (see example #4 in [materialized view create command](kusto/management/materialized-views/materialized-view-create.md#examples)). 
+[Materialized views](kusto/management/materialized-views/materialized-view-overview.md) can be used for deduplication, by using the [any()](./kusto/query/take-any-aggfunction.md)/[arg_min()](kusto/query/arg-min-aggfunction.md)/[arg_max()](kusto/query/arg-max-aggfunction.md) aggregation functions (see example #4 in [materialized view create command](kusto/management/materialized-views/materialized-view-create.md#examples)). 
 
 > [!NOTE]
 > Materialized views come with a cost of consuming cluster's resources, which may not be negligible. For more information, see materialized views [performance considerations](kusto/management/materialized-views/materialized-view-overview.md#performance-considerations).
