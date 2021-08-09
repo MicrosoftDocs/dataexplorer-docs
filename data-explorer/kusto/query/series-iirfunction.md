@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/20/2019
+ms.date: 08/09/2021
 ---
 # series_iir()
 
@@ -26,9 +26,9 @@ The function takes as input the column containing the dynamic array and two stat
 
 ## Arguments
 
-* *x*: Dynamic array cell that is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators.
-* *b*: A constant expression containing the numerator coefficients of the filter (stored as a dynamic array of numeric values).
-* *a*: A constant expression, like *b*. Containing the denominator coefficients of the filter.
+* *x*: Dynamic array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators.
+* *b*: Dynamic array of numeric values, containing the numerator coefficients of the filter.
+* *a*: Dynamic array of numeric values, containing the denominator coefficients of the filter.
 
 > [!IMPORTANT]
 > The first element of `a` (that is, `a[0]`) mustn't be zero, to avoid division by 0. See the [formula below](#the-filters-recursive-formula).
