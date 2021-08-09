@@ -24,6 +24,8 @@ ms.date: 08/09/2021
 
 ## Enable streaming ingestion on your cluster
 
+<!-- TODO: Need a sentence here. Also, (1) Captures on first option don't match capture in Prereq create cluster and db, (2) Add instruction on prereq to point to option 1 here. -->
+
 ### Enable streaming ingestion while creating a new cluster in the Azure portal
 
 You can enable streaming ingestion while creating a new Azure Data Explorer cluster.
@@ -60,6 +62,8 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
     :::image type="content" source="media/ingest-data-streaming/create-table.png" alt-text="Create a table for streaming ingestion into Azure Data Explorer.":::
 
 1. Define the [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) on the table you've created or on the database that contains this table.
+
+    <!-- TODO: Merge with next step -->
 
     > [!TIP]
     > A policy that is defined at the database level applies to all existing and future tables in the database.
@@ -100,11 +104,11 @@ func ingest() {
     appId := "<appId>"
     appKey := "<appKey>"
     appTenant := "<appTenant>"
-    database := "<dbName>"
-    table := "<tableName>"
+    dbName := "<dbName>"
+    tableName := "<tableName>"
     mappingName := "<mappingName>" // Optional, can be nil
 
-    // Creates a Kusto Authorizer using your client identity, secret and tenant identity.
+    // Creates a Kusto Authorizer using your client identity, secret, and tenant identity.
     // You may also uses other forms of authorization, see GoDoc > Authorization type.
     // auth package is: "github.com/Azure/go-autorest/autorest/azure/auth"
     authorizer := kusto.Authorization{
@@ -117,14 +121,14 @@ func ingest() {
         panic("add error handling")
     }
 
-    // Setup is quite simple
-    // Pass a *kusto.Client, the name of the database and table you wish to ingest into.
-    in, err := ingest.New(client, database, table)
+    // Create an ingestion instance
+    // Pass the client, the name of the database, and the name of table you wish to ingest into.
+    in, err := ingest.New(client, dbName, tableName)
     if err != nil {
         panic("add error handling")
     }
 
-    // Go currently only supports streaming from a byte array with a maximum size of 4mb.
+    // Go currently only supports streaming from a byte array with a maximum size of 4 MB.
     jsonEncodedData := []byte("{\"a\":  1, \"b\":  10}\n{\"a\":  2, \"b\":  20}")
 
     // Ingestion from a stream commits blocks of fully formed data encodes (JSON, AVRO, ...) into Kusto:
@@ -158,22 +162,22 @@ public class FileIngestion {
 
         // Build connection string and initialize
         ConnectionStringBuilder csb =
-                ConnectionStringBuilder.createWithAadApplicationCredentials(
-                        clusterPath,
-                        appId,
-                        appKey,
-                        appTenant
-                );
+            ConnectionStringBuilder.createWithAadApplicationCredentials(
+                clusterPath,
+                appId,
+                appKey,
+                appTenant
+            );
+
         // Initialize client and it's properties
         IngestClient client = IngestClientFactory.createClient(csb);
         IngestionProperties ingestionProperties =
-                new IngestionProperties(
-                        dbName,
-                        tableName
-                );
+            new IngestionProperties(
+                dbName,
+                tableName
+            );
 
-        // Ingest from a compressed file:
-
+        // Ingest from a compressed file
         // Create Source info
         InputStream zipInputStream = new FileInputStream("MyFile.gz");
         StreamSourceInfo zipStreamSourceInfo = new StreamSourceInfo(zipInputStream);
@@ -188,11 +192,11 @@ public class FileIngestion {
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
-// ES6 module style:
+// Load modules using ES6 import statements:
 import { DataFormat, IngestionProperties, StreamingIngestClient } from "azure-kusto-ingest";
 import { KustoConnectionStringBuilder } from "azure-kusto-data";
 
-// Or old NodeJs style:
+// For earlier version, load modules using require statements:
 // const IngestionProperties = require("azure-kusto-ingest").IngestionProperties;
 // const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
 // const {DataFormat} = require("azure-kusto-ingest").IngestionPropertiesEnums;
@@ -204,21 +208,26 @@ const appKey = "<appKey>";
 const appTenant = "<appTenant>";
 const dbName = "<dbName>";
 const tableName = "<tableName>";
+const mappingName = "<mappingName>"; // Required for JSON formatted files
 
 // Streaming ingest client
 const props = new IngestionProperties({
     database: dbName, // Your database
     table: tableName, // Your table
     format: DataFormat.JSON,
-    ingestionMappingReference: "Pre-defined mapping name" // For json format mapping is required
+    ingestionMappingReference: mappingName
 });
 
 // Init with engine endpoint
 const streamingIngestClient = new StreamingIngestClient(
     KustoConnectionStringBuilder.withAadApplicationKeyAuthentication(
-        clusterPath,appId, appKey, appTenant),
-        props
-    );
+        clusterPath,
+        appId,
+        appKey,
+        appTenant
+    ),
+    props
+);
 
 await streamingIngestClient.ingestFromFile("MyFile.gz", props); // Automatically detects gz format
 ```
@@ -234,18 +243,25 @@ from azure.kusto.ingest import (
     KustoStreamingIngestClient
 )
 
-cluster = "https://<clusterName>.kusto.windows.net"
-app_id = "<appId>"
-app_key = "<appKey>"
-app_tenant = "<appTenant>"
+clusterPath = "https://<clusterName>.kusto.windows.net"
+appId = "<appId>"
+appKey = "<appKey>"
+appTenant = "<appTenant>"
 dbName = "<dbName>"
 tableName = "<tableName>"
 
-kcsb = KustoConnectionStringBuilder.with_aad_application_key_authentication(cluster, app_id, app_key, app_tenant)
-client = KustoStreamingIngestClient(kcsb)
+csb = KustoConnectionStringBuilder.with_aad_application_key_authentication(
+    clusterPath,
+    appId,
+    appKey,
+    appTenant
+)
+client = KustoStreamingIngestClient(csb)
 
 ingestion_properties = IngestionProperties(
-    database=dbName, table=tableName, data_format=DataFormat.CSV
+    database=dbName,
+    table=tableName,
+    data_format=DataFormat.CSV
 )
 
 # ingest from file
