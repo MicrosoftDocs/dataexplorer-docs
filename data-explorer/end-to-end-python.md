@@ -52,7 +52,7 @@ from azure.mgmt.resource import ResourceManagementClient
 from azure.mgmt.resource.resources.models import DeploymentMode
 import os.path
 import json
-from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
+from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
 from azure.mgmt.eventgrid import EventGridManagementClient
 from azure.mgmt.kusto import KustoManagementClient
 from azure.mgmt.kusto.models import EventGridDataConnection
