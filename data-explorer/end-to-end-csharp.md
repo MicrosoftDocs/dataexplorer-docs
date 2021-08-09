@@ -14,9 +14,6 @@ ms.date: 05/19/2020
 > [!div class="op_single_selector"]
 > * [C#](end-to-end-csharp.md)
 > * [Python](end-to-end-python.md)
-> * [Node](end-to-end-node.md)
-> * [Go](end-to-end-go.md)
-> * [Java](end-to-end-java.md)
 
 Azure Data Explorer is a fast and scalable data exploration service for log and telemetry data. This article gives you an end-to-end example of how to ingest data from Azure Blob storage into Azure Data Explorer. 
 
