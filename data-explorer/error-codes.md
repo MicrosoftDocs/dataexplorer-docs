@@ -132,6 +132,12 @@ The following list contains error codes you may come across during [ingestion](i
 |---|---|---|
 |General_RetryAttemptsExceeded                 |Operation has exceeded the retry attempts limit or timespan limit following a recurring transient error.                                  |Permanent          |
 
+## Category: BlobAlreadyReceived
+
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
+|BlobAlreadyReceived_BlobAlreadyFoundInBatch   |Azure Data Explorer already detected the same blob in the same batch for ingestion. In such case, only one copy of the blob will be taken for ingestion. In case of many errors from this type, it may indicate that the ingestion configuration is suboptimal (e.g. defining two Event Grid data connections on the same storage)                                  |Permanent          |
+
 ## Category: Unknown
 
 |Error message                                 |Description                                           |Permanent/Transient|
