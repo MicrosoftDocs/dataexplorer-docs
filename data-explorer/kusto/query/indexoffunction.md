@@ -35,7 +35,7 @@ Zero-based index position of *lookup*.
 
 Returns -1 if the string isn't found in the input.
 
-If irrelevant (less than 0) *start_index*, *occurrence*, or (less than -1) *length* parameter - returns *null*.
+For irrelevant inputs (*occurrence* < 0 or  *length* < -1) - returns *null*.
 
 ## Examples
 ```kusto
