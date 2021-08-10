@@ -28,7 +28,7 @@ Before you can use streaming ingestion, you must enable the capability on your c
 
 You can enable streaming ingestion while creating a new cluster using the Azure portal or programmatically in C\#.
 
-#### [Portal](#tab/go+java+nodejs+python)
+#### [Go / Java / Node.js / Python](#tab/go+java+nodejs+python)
 
 While creating a cluster using the steps in [Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md), in the **Configurations** tab, select **Streaming ingestion** > **On**.
 
@@ -48,7 +48,7 @@ var cluster = new Cluster(location, sku, enableStreamingIngest:true);
 
 If you have an existing cluster, you can enable streaming ingestion using the Azure portal or programmatically in C\#.
 
-#### [Portal](#tab/go+java+nodejs+python)
+#### [Go / Java / Node.js / Python](#tab/go+java+nodejs+python)
 
 1. In the Azure portal, go to your Azure Data Explorer cluster.
 1. In **Settings**, select **Configurations**.
@@ -90,7 +90,7 @@ You can enable streaming ingestion while creating a new Azure Data Explorer clus
 
 Next, create a table to receive the streaming ingestion data and define its related policy.
 
-### [Portal](#tab/go+java+nodejs+python)
+### [Go / Java / Node.js / Python](#tab/go+java+nodejs+python)
 
 1. In the Azure portal, navigate to your cluster.
 1. Select **Query**.
@@ -360,7 +360,7 @@ client.ingest_from_file("MyFile.gz", ingestion_properties=ingestion_properties) 
 
 You can drop the streaming ingestion policy using the Azure portal or programmatically in C\#.
 
-#### [Portal](#tab/go+java+nodejs+python)
+#### [Go / Java / Node.js / Python](#tab/go+java+nodejs+python)
 
 1. In the Azure portal, go to your Azure Data Explorer cluster and select **Query**.
 1. To drop the streaming ingestion policy from the table, copy the following command into **Query pane** and select **Run**.
