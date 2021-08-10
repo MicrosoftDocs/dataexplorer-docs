@@ -140,7 +140,6 @@ Regardless of which disaster recovery configuration is chosen, follow these best
 
 * All database objects, policies, and configurations should be persisted in source control so they can be released to the cluster from your release automation tool. For more information, see [Azure DevOps support for Azure Data Explorer](devops.md). 
 * Design, develop, and implement validation routines to ensure all clusters are in-sync from a data perspective. Azure Data Explorer supports [cross cluster joins](kusto/query/cross-cluster-or-database-queries.md?pivots=azuredataexplorer). A simple count or rows across tables can help validate.
-* Use [continuous export](kusto/management/data-export/continuous-data-export.md) capability and export data within Azure Data Explorer tables to an Azure Data Lake store. Ensure selection of GRS for the highest resilience.
 * Release procedures should involve governance checks and balances that ensure mirroring of the clusters.
 * Be fully cognizant of what it takes to build a cluster from scratch.
 * Create a checklist of deployment units. Your list will be unique to your needs, but should include: deployment scripts, ingestion connections, BI tools, and other important configurations. 
