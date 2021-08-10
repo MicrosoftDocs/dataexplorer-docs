@@ -20,21 +20,39 @@ ms.date: 08/09/2021
 ## Prerequisites
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
 
 ## Enable streaming ingestion on your cluster
 
-<!-- TODO: Need a sentence here. Also, (1) Captures on first option don't match capture in Prereq create cluster and db, (2) Add instruction on prereq to point to option 1 here. -->
+Before you can use streaming ingestion, you must enable the capability on your cluster. You can enable the capability when [creating the cluster](#enable-streaming-ingestion-while-creating-a-new-cluster), or [add it to an existing cluster](#enable-streaming-ingestion-on-an-existing-cluster). Use the following sections to enable the capability using the Azure portal or programmatically in C\#.
 
-### Enable streaming ingestion while creating a new cluster in the Azure portal
+> [!WARNING]
+> Review the [limitations](#limitations) prior to enabling streaming ingestion.
 
-You can enable streaming ingestion while creating a new Azure Data Explorer cluster.
+### Enable streaming ingestion while creating a new cluster
 
-In the **Configurations** tab, select **Streaming ingestion** > **On**.
+You can enable streaming ingestion while creating a new cluster using the Azure portal or programmatically in C\#.
+
+#### [Portal](#tab/azure-portal)
+
+While creating a cluster using the steps in [Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md), in the **Configurations** tab, select **Streaming ingestion** > **On**.
 
 :::image type="content" source="media/ingest-data-streaming/cluster-creation-enable-streaming.png" alt-text="Enable streaming ingestion while creating a cluster in Azure Data Explorer.":::
 
-### Enable streaming ingestion on an existing cluster in the Azure portal
+#### [C#](#tab/csharp)
+
+To enable streaming ingestion while creating a new Azure Data Explorer cluster, run the following code:
+
+```csharp
+var cluster = new Cluster(location, sku, enableStreamingIngest:true);
+```
+
+---
+
+### Enable streaming ingestion on an existing cluster
+
+If you have an existing cluster, you can enable streaming ingestion using the Azure portal or programmatically in C\#.
+
+#### [Portal](#tab/azure-portal)
 
 1. In the Azure portal, go to your Azure Data Explorer cluster.
 1. In **Settings**, select **Configurations**.
@@ -43,10 +61,40 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 
     :::image type="content" source="media/ingest-data-streaming/streaming-ingestion-on.png" alt-text="Turn on streaming ingestion in Azure Data Explorer.":::
 
-> [!WARNING]
-> Review the [limitations](#limitations) prior to enabling steaming ingestion.
+#### [C#](#tab/csharp)
 
-## Create a target table and define the policy in the Azure portal
+You can enable streaming ingestion while creating a new Azure Data Explorer cluster.
+
+```csharp
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+    var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+    var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+    var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
+    var credential = new ClientCredential(clientId, clientSecret);
+    var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
+
+    var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
+
+    var kustoManagementClient = new KustoManagementClient(credentials)
+    {
+        SubscriptionId = subscriptionId
+    };
+
+    var resourceGroupName = "testrg";
+    var clusterName = "mystreamingcluster";
+    var clusterUpdateParameters = new ClusterUpdate(enableStreamingIngest: true);
+
+    await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdateParameters);
+```
+
+---
+
+## Create a target table and define the policy
+
+Next, create a table to receive the streaming ingestion data and define its related policy.
+
+### [Portal](#tab/azure-portal)
 
 1. In the Azure portal, navigate to your cluster.
 1. Select **Query**.
@@ -61,26 +109,59 @@ In the **Configurations** tab, select **Streaming ingestion** > **On**.
 
     :::image type="content" source="media/ingest-data-streaming/create-table.png" alt-text="Create a table for streaming ingestion into Azure Data Explorer.":::
 
-1. Define the [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) on the table you've created or on the database that contains this table.
-
-    <!-- TODO: Merge with next step -->
+1. Copy one of the following commands into the **Query pane** and select **Run**. This defines the [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) on the table you created or on the database that contains the table.
 
     > [!TIP]
     > A policy that is defined at the database level applies to all existing and future tables in the database.
 
-1. Copy one of the following commands into the **Query pane** and select **Run**.
+    * To define the policy on the table you created, use:
 
-    ```kusto
-    .alter table TestTable policy streamingingestion enable
-    ```
+        ```kusto
+        .alter table TestTable policy streamingingestion enable
+        ```
 
-    or
+    * To define the policy on the database containing the table you created, use:
 
-    ```kusto
-    .alter database StreamingTestDb policy streamingingestion enable
-    ```
+        ```kusto
+        .alter database StreamingTestDb policy streamingingestion enable
+        ```
 
     :::image type="content" source="media/ingest-data-streaming/define-streaming-ingestion-policy.png" alt-text="Define the streaming ingestion policy in Azure Data Explorer.":::
+
+### [C#](#tab/csharp)
+
+To create a table and define a streaming ingestion policy for it, run the following code:
+
+```csharp
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+    var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+    var databaseName = "StreamingTestDb";
+    var tableName = "TestTable";
+    var kcsb = new KustoConnectionStringBuilder("https://mystreamingcluster.westcentralus.kusto.windows.net", databaseName);
+    kcsb = kcsb.WithAadApplicationKeyAuthentication(clientId, clientSecret, tenantId);
+
+    var tableSchema = new TableSchema(
+        tableName,
+        new ColumnSchema[]
+        {
+            new ColumnSchema("TimeStamp", "System.DateTime"),
+            new ColumnSchema("Name",      "System.String"),
+            new ColumnSchema("Metric",    "System.int"),
+            new ColumnSchema("Source",    "System.String"),
+        });
+
+    var tableCreateCommand = CslCommandGenerator.GenerateTableCreateCommand(tableSchema);
+    var tablePolicyAlterCommand = CslCommandGenerator.GenerateTableAlterStreamingIngestionPolicyCommand(tableName, isEnabled: true);
+    using (var client = KustoClientFactory.CreateCslAdminProvider(kcsb))
+    {
+        client.ExecuteControlCommand(tableCreateCommand);
+
+        client.ExecuteControlCommand(tablePolicyAlterCommand);
+    }
+```
+
+---
 
 ## Use streaming ingestion to ingest data to your cluster
 
@@ -88,6 +169,13 @@ Two streaming ingestion types are supported:
 
 * [**Event Hub**](ingest-data-event-hub.md) or [**IoT Hub**](ingest-data-iot-hub.md), which is used as a data source.
 * **Custom ingestion** requires you to write an application that uses one of the Azure Data Explorer [client libraries](kusto/api/client-libraries.md). See the following streaming ingestion examples and the [C# streaming ingestion sample application](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample).
+
+### Choose the appropriate streaming ingestion type
+
+|Criterion|Event Hub|Custom Ingestion|
+|---------|---------|---------|
+|Data delay between ingestion initiation and the data available for query | Longer delay | Shorter delay  |
+|Development overhead | Fast and easy setup, no development overhead | High development overhead for application to handle errors and ensure data consistency |
 
 ### [Go](#tab/go)
 
@@ -270,16 +358,13 @@ client.ingest_from_file("MyFile.gz", ingestion_properties=ingestion_properties) 
 
 ---
 
-### Choose the appropriate streaming ingestion type
-
-|Criterion|Event Hub|Custom Ingestion|
-|---------|---------|---------|
-|Data delay between ingestion initiation and the data available for query | Longer delay | Shorter delay  |
-|Development overhead | Fast and easy setup, no development overhead | High development overhead for application to handle errors and ensure data consistency |
-
 [!INCLUDE [ingest-data-streaming-disable](includes/ingest-data-streaming-disable.md)]
 
 ## Drop the streaming ingestion policy in the Azure portal
+
+You can drop the streaming ingestion policy using the Azure portal or programmatically in C\#.
+
+#### [Portal](#tab/azure-portal)
 
 1. In the Azure portal, go to your Azure Data Explorer cluster and select **Query**.
 1. To drop the streaming ingestion policy from the table, copy the following command into **Query pane** and select **Run**.
@@ -295,6 +380,53 @@ client.ingest_from_file("MyFile.gz", ingestion_properties=ingestion_properties) 
 1. Select **Save**.
 
     :::image type="content" source="media/ingest-data-streaming/streaming-ingestion-off.png" alt-text="Turn off streaming ingestion in Azure Data Explorer.":::
+
+#### [C#](#tab/csharp)
+
+To drop the streaming ingestion policy from the table, run the following code:
+
+```csharp
+        var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+        var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+        var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+        var databaseName = "StreamingTestDb";
+        var tableName = "TestTable";
+        var kcsb = new KustoConnectionStringBuilder("https://mystreamingcluster.westcentralus.kusto.windows.net", databaseName);
+        kcsb = kcsb.WithAadApplicationKeyAuthentication(clientId, clientSecret, tenantId);
+
+        var tablePolicyDropCommand = CslCommandGenerator.GenerateTableStreamingIngestionPolicyDropCommand(databaseName, tableName);
+        using (var client = KustoClientFactory.CreateCslAdminProvider(kcsb))
+        {
+            client.ExecuteControlCommand(tablePolicyDropCommand);
+        }
+```
+
+To disable streaming ingestion on your cluster, run the following code:
+
+```csharp
+        var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+        var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+        var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+        var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+        var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
+        var credential = new ClientCredential(clientId, clientSecret);
+        var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
+
+        var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
+
+        var kustoManagementClient = new KustoManagementClient(credentials)
+        {
+            SubscriptionId = subscriptionId
+        };
+
+        var resourceGroupName = "testrg";
+        var clusterName = "mystreamingcluster";
+        var clusterUpdateParameters = new ClusterUpdate(enableStreamingIngest: false);
+
+        await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdateParameters);
+```
+
+---
 
 [!INCLUDE [ingest-data-streaming-limitations](includes/ingest-data-streaming-limitations.md)]
 
