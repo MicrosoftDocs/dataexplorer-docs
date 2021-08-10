@@ -11,10 +11,6 @@ ms.date: 08/09/2021
 
 # Configure streaming ingestion on your Azure Data Explorer cluster using the Azure portal
 
-> [!div class="op_single_selector"]
-> * [Portal](ingest-data-streaming.md)
-> * [C#](ingest-data-streaming-csharp.md)
-
 [!INCLUDE [ingest-data-streaming-intro](includes/ingest-data-streaming-intro.md)]
 
 ## Prerequisites
@@ -23,7 +19,7 @@ ms.date: 08/09/2021
 
 ## Enable streaming ingestion on your cluster
 
-Before you can use streaming ingestion, you must enable the capability on your cluster. You can enable the capability when [creating the cluster](#enable-streaming-ingestion-while-creating-a-new-cluster), or [add it to an existing cluster](#enable-streaming-ingestion-on-an-existing-cluster). Use the following sections to enable the capability using the Azure portal or programmatically in C\#.
+Before you can use streaming ingestion, you must enable the capability on your cluster. You can enable it when [creating the cluster](#enable-streaming-ingestion-while-creating-a-new-cluster), or [add it to an existing cluster](#enable-streaming-ingestion-on-an-existing-cluster). Use the following sections to enable the capability using the Azure portal or programmatically in C\#.
 
 > [!WARNING]
 > Review the [limitations](#limitations) prior to enabling streaming ingestion.
