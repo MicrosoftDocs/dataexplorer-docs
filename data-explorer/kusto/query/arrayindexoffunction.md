@@ -33,6 +33,7 @@ Returns -1 if the value isn't found in the array.
 For irrelevant inputs (*start_index* < 0, *occurrence* < 0 or  *length* < -1) - returns *null*.
 
 ## Example
+
 ```
 let arr=dynamic(["this", "is", "an", "example", "an", "example"]);
 print
