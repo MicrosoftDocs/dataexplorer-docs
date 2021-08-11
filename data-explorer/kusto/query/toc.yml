@@ -738,6 +738,8 @@ items:
 - name: Aggregation functions
   displayName: aggregation
   items:
+  - name: Aggregation function types
+    href: aggregation-functions.md
   - name: arg_max()
     href: arg-max-aggfunction.md
   - name: arg_min()
@@ -788,7 +790,7 @@ items:
     href: min-aggfunction.md
   - name: minif()
     href: minif-aggfunction.md
-  - name: percentiles(), percentile()
+  - name: percentile(), percentiles()
     displayName: percentiles_array(), percentilew(), percentilesw(), percentilesw_array()
     href: percentiles-aggfunction.md
   - name: stdev()
@@ -805,7 +807,7 @@ items:
     displayName: any()
     href: take-any-aggfunction.md
   - name: take_anyif(), anyif()
-    displayNae: anyif()
+    displayName: anyif()
     href: take-anyif-aggfunction.md        
   - name: tdigest()
     href: tdigest-aggfunction.md
