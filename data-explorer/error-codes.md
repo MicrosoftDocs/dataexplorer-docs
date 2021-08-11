@@ -136,7 +136,7 @@ The following list contains error codes you may come across during [ingestion](i
 
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
-|BlobAlreadyReceived_BlobAlreadyFoundInBatch   |Azure Data Explorer detected the same blob in the same specific batch for ingestion. In such case, only one copy of the blob will be taken for ingestion. In case of many errors from this type, it may indicate that the ingestion configuration is suboptimal (e.g. defining two Event Grid data connections on the same storage)                                |Permanent          |
+|BlobAlreadyReceived_BlobAlreadyFoundInBatch   |Azure Data Explorer detected the same blob in the same specific batch for ingestion. In this case, only one copy of the blob will be used for ingestion. Many errors of this type may indicate that the ingestion configuration is suboptimal. For example, defining two Event Grid data connections on the same storage.                              |Permanent          |
 
 ## Category: Unknown
 
