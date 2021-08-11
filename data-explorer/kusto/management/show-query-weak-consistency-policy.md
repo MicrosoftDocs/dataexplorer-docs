@@ -23,7 +23,7 @@ This article describes the show control command used for the [query weak consist
 
 |Policy name | Entity name | Policy | Child entities | Entity type
 |---|---|---|---|---
-|QueryWeakConsistencyPolicy |  | JSON serialization of the [query weak consistency policy object](./query-weak-consistency-policy.md#the-policy-object) | List of the databases in the cluster | Cluster
+|QueryWeakConsistencyPolicy |  | JSON serialization of the [query weak consistency policy object](./query-weak-consistency-policy.md#the-policy-object) | | Cluster
 
 ## Example
 
