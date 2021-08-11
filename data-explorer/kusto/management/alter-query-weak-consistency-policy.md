@@ -26,7 +26,7 @@ policy (if it exists), and then returns the updated policy. The updated policy c
 
 |Policy name | Entity name | Policy | Child entities | Entity type
 |---|---|---|---|---
-|QueryWeakConsistencyPolicy |  | JSON serialization of the updated [query weak consistency policy object](./query-weak-consistency-policy.md#the-policy-object) | List of the databases in the cluster | Cluster
+|QueryWeakConsistencyPolicy |  | JSON serialization of the updated [query weak consistency policy object](./query-weak-consistency-policy.md#the-policy-object) | | Cluster
 
 ## Examples
 
@@ -37,7 +37,7 @@ policy (if it exists), and then returns the updated policy. The updated policy c
 
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
-|QueryWeakConsistencyPolicy||{"PercentageOfNodes": 10, "MinimumNumberOfNodes": 2 "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 10, "RefreshPeriodInSeconds": 300}| ["Database1", "Database2"...] |Cluster
+|QueryWeakConsistencyPolicy||{"PercentageOfNodes": 10, "MinimumNumberOfNodes": 2 "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 10, "RefreshPeriodInSeconds": 300}| |Cluster
 
 <!-- csl -->
 ```
@@ -46,4 +46,4 @@ policy (if it exists), and then returns the updated policy. The updated policy c
 
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
-|QueryWeakConsistencyPolicy||{"PercentageOfNodes": 40, "MinimumNumberOfNodes": 2 "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 10, "RefreshPeriodInSeconds": 300}| ["Database1", "Database2"...] |Cluster
+|QueryWeakConsistencyPolicy||{"PercentageOfNodes": 40, "MinimumNumberOfNodes": 2 "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 10, "RefreshPeriodInSeconds": 300}| |Cluster
