@@ -37,7 +37,7 @@ For ad hoc usage, embed its code using a [let statement](../query/letstatement.m
 ```kusto
 let factorial_fl=(n:int)
 {
-    tolong(gamma(n+1))
+    gamma(n+1)
 }
 ;
 range x from 1 to 10 step 3
@@ -55,7 +55,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Calculate factorial")
 factorial_fl(n:int)
 {
-    tolong(gamma(n+1))
+    gamma(n+1)
 }
 ```
 
