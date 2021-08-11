@@ -173,6 +173,144 @@ Two streaming ingestion types are supported:
 |Data delay between ingestion initiation and the data available for query | Longer delay | Shorter delay  |
 |Development overhead | Fast and easy setup, no development overhead | High development overhead for application to handle errors and ensure data consistency |
 
+### [C#](#tab/csharp)
+
+```csharp
+using Kusto.Cloud.Platform.Utils;
+using Kusto.Data;
+using Kusto.Data.Common;
+using Kusto.Data.Net.Client;
+using Kusto.Ingest;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+namespace StreamIngestion
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string clusterPath = "https://<clusterName>.kusto.windows.net";
+            string appId = "<appId>";
+            string appKey = "<appKey>";
+            string appTenant = "<appTenant>";
+            string dbName = "<dbName>";
+            string tableName = "<tableName>";
+
+            // Create Kusto connection string with App Authentication
+            var csb =
+              new KustoConnectionStringBuilder(clusterPath)
+                  .WithAadApplicationKeyAuthentication(
+                      applicationClientId: appId,
+                      applicationKey: appKey,
+                      authority: appTenant
+                  );
+
+            // Create a disposable client that will execute the ingestion
+            using (IKustoIngestClient client = KustoIngestFactory.CreateDirectIngestClient(csb))
+            {
+                // Initialize client properties
+                var ingestionProperties =
+                    new KustoIngestionProperties(
+                        databaseName: dbName,
+                        tableName: tableName
+                    );
+
+                // Ingest from a compressed file
+                // Create Source info
+                FileStream fileStream = File.Open("MyFile.gz", FileMode.Open);
+                GZipStream gzipStream = new GZipStream(fileStream, CompressionMode.Decompress);
+                // Ingest from stream
+                client.IngestFromStreamAsync(gzipStream, ingestionProperties: ingestionProperties).GetAwaiter().GetResult();
+            }
+        }
+    }
+}
+```
+
+### [Python](#tab/python)
+
+```python
+from azure.kusto.data import KustoConnectionStringBuilder
+
+from azure.kusto.ingest import (
+    IngestionProperties,
+    DataFormat,
+    KustoStreamingIngestClient
+)
+
+clusterPath = "https://<clusterName>.kusto.windows.net"
+appId = "<appId>"
+appKey = "<appKey>"
+appTenant = "<appTenant>"
+dbName = "<dbName>"
+tableName = "<tableName>"
+
+csb = KustoConnectionStringBuilder.with_aad_application_key_authentication(
+    clusterPath,
+    appId,
+    appKey,
+    appTenant
+)
+client = KustoStreamingIngestClient(csb)
+
+ingestionProperties = IngestionProperties(
+    database=dbName,
+    table=tableName,
+    data_format=DataFormat.CSV
+)
+
+# Ingest from file
+# Automatically detects gz format
+client.ingest_from_file("MyFile.gz", ingestion_properties=ingestionProperties) 
+```
+
+### [Node.js](#tab/nodejs)
+
+```nodejs
+// Load modules using ES6 import statements:
+import { DataFormat, IngestionProperties, StreamingIngestClient } from "azure-kusto-ingest";
+import { KustoConnectionStringBuilder } from "azure-kusto-data";
+
+// For earlier version, load modules using require statements:
+// const IngestionProperties = require("azure-kusto-ingest").IngestionProperties;
+// const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+// const {DataFormat} = require("azure-kusto-ingest").IngestionPropertiesEnums;
+// const StreamingIngestClient = require("azure-kusto-ingest").StreamingIngestClient;
+
+const clusterPath = "https://<clusterName>.kusto.windows.net";
+const appId = "<appId>";
+const appKey = "<appKey>";
+const appTenant = "<appTenant>";
+const dbName = "<dbName>";
+const tableName = "<tableName>";
+const mappingName = "<mappingName>"; // Required for JSON formatted files
+
+const ingestionProperties = new IngestionProperties({
+    database: dbName, // Your database
+    table: tableName, // Your table
+    format: DataFormat.JSON,
+    ingestionMappingReference: mappingName
+});
+
+// Initialize client with engine endpoint
+const client = new StreamingIngestClient(
+    KustoConnectionStringBuilder.withAadApplicationKeyAuthentication(
+        clusterPath,
+        appId,
+        appKey,
+        appTenant
+    ),
+    ingestionProperties
+);
+
+// Automatically detects gz format
+await client.ingestFromFile("MyFile.gz", ingestionProperties);
+```
+
 ### [Go](#tab/go)
 
 ```go
@@ -253,7 +391,7 @@ public class FileIngestion {
                 appTenant
             );
 
-        // Initialize client and it's properties
+        // Initialize client and its properties
         IngestClient client = IngestClientFactory.createClient(csb);
         IngestionProperties ingestionProperties =
             new IngestionProperties(
@@ -271,85 +409,6 @@ public class FileIngestion {
         OperationStatus status = client.ingestFromStream(zipStreamSourceInfo, ingestionProperties).getIngestionStatusCollection().get(0).status;
     }
 }
-```
-
-### [Node.js](#tab/nodejs)
-
-```nodejs
-// Load modules using ES6 import statements:
-import { DataFormat, IngestionProperties, StreamingIngestClient } from "azure-kusto-ingest";
-import { KustoConnectionStringBuilder } from "azure-kusto-data";
-
-// For earlier version, load modules using require statements:
-// const IngestionProperties = require("azure-kusto-ingest").IngestionProperties;
-// const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
-// const {DataFormat} = require("azure-kusto-ingest").IngestionPropertiesEnums;
-// const StreamingIngestClient = require("azure-kusto-ingest").StreamingIngestClient;
-
-const clusterPath = "https://<clusterName>.kusto.windows.net";
-const appId = "<appId>";
-const appKey = "<appKey>";
-const appTenant = "<appTenant>";
-const dbName = "<dbName>";
-const tableName = "<tableName>";
-const mappingName = "<mappingName>"; // Required for JSON formatted files
-
-// Streaming ingest client
-const props = new IngestionProperties({
-    database: dbName, // Your database
-    table: tableName, // Your table
-    format: DataFormat.JSON,
-    ingestionMappingReference: mappingName
-});
-
-// Init with engine endpoint
-const streamingIngestClient = new StreamingIngestClient(
-    KustoConnectionStringBuilder.withAadApplicationKeyAuthentication(
-        clusterPath,
-        appId,
-        appKey,
-        appTenant
-    ),
-    props
-);
-
-await streamingIngestClient.ingestFromFile("MyFile.gz", props); // Automatically detects gz format
-```
-
-### [Python](#tab/python)
-
-```python
-from azure.kusto.data import KustoConnectionStringBuilder
-
-from azure.kusto.ingest import (
-    IngestionProperties,
-    DataFormat,
-    KustoStreamingIngestClient
-)
-
-clusterPath = "https://<clusterName>.kusto.windows.net"
-appId = "<appId>"
-appKey = "<appKey>"
-appTenant = "<appTenant>"
-dbName = "<dbName>"
-tableName = "<tableName>"
-
-csb = KustoConnectionStringBuilder.with_aad_application_key_authentication(
-    clusterPath,
-    appId,
-    appKey,
-    appTenant
-)
-client = KustoStreamingIngestClient(csb)
-
-ingestion_properties = IngestionProperties(
-    database=dbName,
-    table=tableName,
-    data_format=DataFormat.CSV
-)
-
-# ingest from file
-client.ingest_from_file("MyFile.gz", ingestion_properties=ingestion_properties)  # Automatically detects gz format
 ```
 
 ---
