@@ -9,6 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/08/2021
 ---
+
 # Aggregation function types
 
 An aggregation function performs a calculation on a set of values, and returns a single value. This article lists all available aggregation functions grouped by type. For scalar functions, see [Scalar function types](scalarfunctions.md).
