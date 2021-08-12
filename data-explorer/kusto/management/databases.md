@@ -18,5 +18,11 @@ This topic describes the following database control commands:
 |[`.show databases`](show-databases.md) |Returns a table in which every record corresponds to a database in the cluster that the user has access to|
 |[`.show database`](show-database.md) |Returns a table showing the properties of the context database |
 |[`.show cluster databases`](show-cluster-database.md) |Returns a table showing all databases attached to the cluster and to which the user invoking the command has access |
-|[`.alter database`](alter-database.md) |Alters a database's pretty (friendly) name |
+|[`.alter database prettyname`](alter-database.md) |Alters a database's pretty (friendly) name |
 |[`.show database schema`](show-schema-database.md) |Returns a flat list of the structure of the selected databases with all their tables and columns in a single table or JSON object |
+|[`.execute database script`](execute-database-script.md) | Executes batch of control commands in scope of a single database.
+
+ |
+
+
+
