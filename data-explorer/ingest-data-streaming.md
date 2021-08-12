@@ -37,7 +37,7 @@ While creating a cluster using the steps in [Create an Azure Data Explorer clust
 
 :::image type="content" source="media/ingest-data-streaming/cluster-creation-enable-streaming.png" alt-text="Enable streaming ingestion while creating a cluster in Azure Data Explorer.":::
 
-#### [C#](#tab/csharp)
+#### [C#](#tab/azure-csharp)
 
 To enable streaming ingestion while creating a new Azure Data Explorer cluster, run the following code:
 
@@ -60,7 +60,7 @@ If you have an existing cluster, you can enable streaming ingestion using the Az
 
     :::image type="content" source="media/ingest-data-streaming/streaming-ingestion-on.png" alt-text="Turn on streaming ingestion in Azure Data Explorer.":::
 
-#### [C#](#tab/csharp)
+#### [C#](#tab/azure-csharp)
 
 You can enable streaming ingestion while creating a new Azure Data Explorer cluster.
 
@@ -127,7 +127,7 @@ Next, create a table to receive the streaming ingestion data and define its rela
 
     :::image type="content" source="media/ingest-data-streaming/define-streaming-ingestion-policy.png" alt-text="Define the streaming ingestion policy in Azure Data Explorer.":::
 
-### [C#](#tab/csharp)
+### [C#](#tab/azure-csharp)
 
 To create a table and define a streaming ingestion policy for it, run the following code:
 
@@ -436,7 +436,7 @@ You can drop the streaming ingestion policy using the Azure portal or programmat
 
     :::image type="content" source="media/ingest-data-streaming/streaming-ingestion-off.png" alt-text="Turn off streaming ingestion in Azure Data Explorer.":::
 
-#### [C#](#tab/csharp)
+#### [C#](#tab/azure-csharp)
 
 To drop the streaming ingestion policy from the table, run the following code:
 
