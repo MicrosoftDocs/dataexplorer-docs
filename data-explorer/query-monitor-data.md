@@ -1,5 +1,5 @@
 ---
-title: 'Query data in Azure Monitor with Azure Data Explorer (Preview)'
+title: 'Query data in Azure Monitor with Azure Data Explorer'
 description: 'In this topic, query data in Azure Monitor (Application Insights and Log Analytics) by creating an Azure Data Explorer cross product queries.'
 services: data-explorer
 author: osalzberg
@@ -13,18 +13,13 @@ ms.localizationpriority: high
 #Customer intent: I want to query data in Azure Monitor using Azure Data Explorer.
 ---
 
-# Query data in Azure Monitor using Azure Data Explorer (Preview)
+# Query data in Azure Monitor using Azure Data Explorer
 
 The Azure Data Explorer supports cross-service queries between Azure Data Explorer, [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview), and [Log Analytics (LA)](/azure/azure-monitor/platform/data-platform-logs). You can query your Log Analytics or Application Insights workspace using Azure Data Explorer query tools and in a cross-service query. The article shows you how to create a cross-service query and add the Log Analytics or Application Insights workspace to the Azure Data Explorer Web UI.
 
 The Azure Data Explorer cross-service queries flow:
 
 ![Azure Data Explorer proxy flow](media/query-monitor-data/query-monitor-workflow.png)
-
-> [!NOTE]
-> * The ability to query Azure Monitor data from Azure Data Explorer, either directly using Azure Data Explorer client tools, or indirectly by running a query on an Azure Data Explorer cluster, is in preview mode.
->* For assistance, contact the [Cross service query team](mailto:adxproxy@microsoft.com).
-
 
 ## Add a Log Analytics/Application Insights workspace to Azure Data Explorer client tools
 
