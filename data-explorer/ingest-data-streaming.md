@@ -6,12 +6,15 @@ ms.author: orspodek
 ms.reviewer: alexefro
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 08/11/2021
+ms.date: 08/12/2021
 ---
 
 # Configure streaming ingestion on your Azure Data Explorer cluster using the Azure portal
 
 [!INCLUDE [ingest-data-streaming-intro](includes/ingest-data-streaming-intro.md)]
+
+> [!NOTE]
+> The steps before and after the [ingestion section](#use-streaming-ingestion-to-ingest-data-to-your-cluster) can be performed using the Azure portal or programmatically in C\#. If you are using C\# for your streaming ingestion, you may find it more convenient using the programmatic approach.
 
 ## Prerequisites
 
@@ -19,7 +22,7 @@ If you don't have an Azure subscription, create a [free Azure account](https://a
 
 ## Enable streaming ingestion on your cluster
 
-Before you can use streaming ingestion, you must enable the capability on your cluster. You can enable it when [creating the cluster](#enable-streaming-ingestion-while-creating-a-new-cluster), or [add it to an existing cluster](#enable-streaming-ingestion-on-an-existing-cluster). Use the following sections to enable the capability using the Azure portal or programmatically in C\#.
+Before you can use streaming ingestion, you must enable the capability on your cluster. You can enable it when [creating the cluster](#enable-streaming-ingestion-while-creating-a-new-cluster), or [add it to an existing cluster](#enable-streaming-ingestion-on-an-existing-cluster).
 
 > [!WARNING]
 > Review the [limitations](#limitations) prior to enabling streaming ingestion.
@@ -176,18 +179,12 @@ Two streaming ingestion types are supported:
 ### [C#](#tab/csharp)
 
 ```csharp
-using Kusto.Cloud.Platform.Utils;
 using Kusto.Data;
-using Kusto.Data.Common;
-using Kusto.Data.Net.Client;
 using Kusto.Ingest;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
+using Kusto.Data.Common;
 
-namespace StreamIngestion
+namespace StreamingIngestion
 {
     class Program
     {
@@ -202,15 +199,15 @@ namespace StreamIngestion
 
             // Create Kusto connection string with App Authentication
             var csb =
-              new KustoConnectionStringBuilder(clusterPath)
-                  .WithAadApplicationKeyAuthentication(
-                      applicationClientId: appId,
-                      applicationKey: appKey,
-                      authority: appTenant
-                  );
+                new KustoConnectionStringBuilder(clusterPath)
+                    .WithAadApplicationKeyAuthentication(
+                        applicationClientId: appId,
+                        applicationKey: appKey,
+                        authority: appTenant
+                    );
 
             // Create a disposable client that will execute the ingestion
-            using (IKustoIngestClient client = KustoIngestFactory.CreateDirectIngestClient(csb))
+            using (IKustoIngestClient client = KustoIngestFactory.CreateStreamingIngestClient(csb))
             {
                 // Initialize client properties
                 var ingestionProperties =
@@ -220,11 +217,14 @@ namespace StreamIngestion
                     );
 
                 // Ingest from a compressed file
-                // Create Source info
-                FileStream fileStream = File.Open("MyFile.gz", FileMode.Open);
-                GZipStream gzipStream = new GZipStream(fileStream, CompressionMode.Decompress);
+                var fileStream = File.Open("MyFile.gz", FileMode.Open);
+                // Create source options
+                var sourceOptions = new StreamSourceOptions()
+                {
+                    CompressionType = DataSourceCompressionType.GZip,
+                };
                 // Ingest from stream
-                client.IngestFromStreamAsync(gzipStream, ingestionProperties: ingestionProperties).GetAwaiter().GetResult();
+                var status = client.IngestFromStreamAsync(fileStream, ingestionProperties, sourceOptions).GetAwaiter().GetResult();
             }
         }
     }
