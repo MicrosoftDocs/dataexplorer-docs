@@ -91,7 +91,7 @@ You can enable streaming ingestion while creating a new Azure Data Explorer clus
 
 ## Create a target table and define the policy
 
-Next, create a table to receive the streaming ingestion data and define its related policy.
+Create a table to receive the streaming ingestion data and define its related policy.
 
 ### [Portal](#tab/azure-portal)
 
