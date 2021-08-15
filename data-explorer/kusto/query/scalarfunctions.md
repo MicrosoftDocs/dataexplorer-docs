@@ -1,5 +1,5 @@
 ---
-title: Scalar Functions - Azure Data Explorer | Microsoft Docs
+title: Scalar Functions - Azure Data Explorer 
 description: This article describes Scalar Functions in Azure Data Explorer.
 services: data-explorer
 author: orspod
