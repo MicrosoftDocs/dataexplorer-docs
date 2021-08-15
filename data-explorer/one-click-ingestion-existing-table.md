@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 06/30/2021
 ---
 
 # Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer
@@ -23,6 +23,9 @@ This document describes using the intuitive one-click wizard in a specific use c
 For an overview of one-click ingestion and a list of prerequisites, see [One-click ingestion](ingest-data-one-click.md).
 For different types or sources of data, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md).
 
+> [!NOTE]
+> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint) in different subnets of the same VNET, see [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md).
+
 ## Ingest new data
 
 In the left menu of the Web UI, right-click a *database* or *table* and select **Ingest new data**.
@@ -31,33 +34,43 @@ In the left menu of the Web UI, right-click a *database* or *table* and select *
  
 ## Select an ingestion type
 
-1. In the **Ingest new data** window, the **Source** tab is selected.
+1. In the **Ingest new data** window, the **Destination** tab is selected.
 
-1. If the **Cluster** and **Database** fields aren't automatically filled, select an existing cluster and database name from the drop-down menu.
+1. The **Cluster** and **Database** fields are auto-populated. You can change by select an existing cluster and database name from the drop-down menu.
     
     [!INCLUDE [one-click-cluster](includes/one-click-cluster.md)]
 
 1. If the **Table** field isn't automatically filled, select an existing table name from the drop-down menu.
 
+1. Select **Next: Source**
+
+### Source tab
+
 1. Under **Source type**, do the following steps:
 
    1. Select **from file**  
    1. Select **Browse** to locate up to 10 files, or drag the files into the field. The schema-defining file can be chosen using the blue star.
+   1. Select **Next: Schema**
     
       :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="One-click ingestion from file.":::
 
 ## Edit the schema
 
-Select **Edit schema** to view and edit your table column configuration. In the **Schema** tab:
+The **Schema** tab opens.
 
    * **Compression type** will be selected automatically by the source file name. In this case, the compression type is **JSON**
         
-   * When you select  **JSON**, you must also select **Nested levels**, from 1 to 10. The levels determine the table column data division.
+   * When you select  **JSON**, you must also select **Nested levels**, from 1 to 100. The levels determine the table column data division.
 
         :::image type="content" source="media/one-click-ingestion-existing-table/json-levels.png" alt-text="Select Nested levels.":::
     
        > [!TIP]
        > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
+
+* For tabular formats, you can select **Keep current table schema**.  
+Tabular data doesn't necessarily include the column names which are used to map source data to the existing columns. When this option is checked, mapping is done by-order, and the table schema will remain the same. If this option is unchecked, new columns will be created for incoming data, regardless of data structure.
+
+    :::image type="content" source="media/one-click-ingestion-existing-table/keep-table-schema.png" alt-text="Screen shot showing the 'keep current table schema' option checked when using tabular data format.":::
 
 ### Add nested JSON data 
 
@@ -92,7 +105,7 @@ To add columns from JSON levels that are different than the main **Nested levels
 
 ## Start ingestion
 
-Select **Start ingestion** to create a table and mapping and to begin data ingestion.
+Select **Next: Summary** to begin data ingestion.
 
 :::image type="content" source="media/one-click-ingestion-existing-table/start-ingestion.png" alt-text="Start ingestion.":::
 

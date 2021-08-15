@@ -103,7 +103,7 @@ Each element in the list describes a mapping for a specific column, and may cont
   {"Column": "source_uri",      "Properties": {"Transform": "SourceLocation"}}, 
   {"Column": "source_line",     "Properties": {"Transform": "SourceLineNumber"}}, 
   {"Column": "event_time",      "Properties": {"Path": "$.Timestamp", "Transform": "DateTimeFromUnixMilliseconds"}}, 
-  {"Column": "ingestion_time", "Properties": {"ConstValue": "2021-01-01T10:32:00"}}, 
+  {"Column": "ingestion_time",  "Properties": {"ConstValue": "2021-01-01T10:32:00"}}, 
   {"Column": "full_record",     "Properties": {"Path": "$"}}
 ]
 ```

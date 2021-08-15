@@ -1,5 +1,5 @@
 ---
-title: Kusto update policy for data added to a source - Azure Data Explorer
+title: Kusto update policy - Azure Data Explorer
 description: This article describes Update policy in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -76,10 +76,14 @@ Update policies take effect when data is ingested or moved to (extents are creat
 * [.ingest (pull)](../management/data-ingestion/ingest-from-storage.md)
 * [.ingest (inline)](../management/data-ingestion/ingest-inline.md)
 * [.set | .append | .set-or-append | .set-or-replace](../management/data-ingestion/ingest-from-query.md)
-  * When the update policy is invoked as part of a  `.set-or-replace` command, the default behavior is that data in derived table(s) is replaced in the same way as in the source table.
 * [.move extents](./move-extents.md)
 * [.replace extents](./replace-extents.md)
   * The `PropagateIngestionProperties` command only takes effect in ingestion operations. When the update policy is triggered as part of a `.move extents` or `.replace extents` command, this option has no effect.
+
+> [!WARNING]
+> * When the update policy is invoked as part of a  `.set-or-replace` command, the default behavior is that data in derived table(s) is replaced in the same way as in the source table. 
+>   * This might lead to loss of data in all tables that have an update policy relationship to that table, if the `replace` part takes place.
+>   * Consider using `.set-or-append` instead, if this behavior isn't desired.
 
 ## Regular ingestion using update policy
 

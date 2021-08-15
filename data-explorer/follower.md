@@ -38,13 +38,18 @@ To attach a database, you must have user, group, service principal, or managed i
 
 When attaching the database all tables, external tables and materialized views are followed as well. You can share specific tables/external tables/materialized views by configuring the '*TableLevelSharingProperties*'. 
 
-'*TableLevelSharingProperties*' contains six arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, and `materializedViewsToExclude`. 
+'*TableLevelSharingProperties*' contains six arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, and `materializedViewsToExclude`. The maximum number of enteries in all the arrays together is 100.  
 
 > [!NOTE]
 > When materialized views are included, their source tables are included as well.
 
 #### Examples
 
+1. Include all tables. No '*' is needed, since all tables are followed by default:
+  
+   ```kusto
+    tablesToInclude = []
+    ```
 1. Include all tables with names that start with "Logs":
   
    ```kusto
@@ -212,8 +217,8 @@ New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
 	-ClusterResourceId $LeaderClusterResourceid `
 	-DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind `
 	-Location $Location `
-    -TableLevelSharingPropertyTablesToInclude "table1", "table2", "table3" `
-    -TableLevelSharingPropertyExternalTablesToExclude "Logs*"
+	-TableLevelSharingPropertyTablesToInclude "table1", "table2", "table3" `
+	-TableLevelSharingPropertyExternalTablesToExclude "Logs*" `
 	-ErrorAction Stop 
 ```
 
@@ -535,7 +540,7 @@ $DatabaseName = "sanjn"  ## Can be specific database name or * for all databases
 $confignameraw = (Get-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -ResourceGroupName $FollowerResourceGroupName -SubscriptionId $FollowerClusterSubscriptionID) | Where-Object {$_.DatabaseName -eq $DatabaseName }
 $configname =$confignameraw.Name.Split("/")[1]
 
-Remove-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -Name $configname -ResourceGroupName $FollowerResourceGroupName
+Remove-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -Name $configname -ResourceGroupName $FollowerResourceGroupName -SubscriptionId $FollowerClusterSubscriptionID
 ```
 
 # [Resource Manager Template](#tab/azure-resource-manager)

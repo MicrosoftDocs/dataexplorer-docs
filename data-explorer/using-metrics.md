@@ -87,10 +87,9 @@ Export utilization |	Percent	| Max	| Export capacity used, out of the total expo
 ## Ingestion metrics
 
 Ingestion metrics track the general health and performance of ingestion operations like latency, results, and volume.
-
-> [!NOTE]
-> * [Apply filters to charts](/azure/azure-monitor/platform/metrics-charts#apply-filters-to-charts) to plot partial data by dimensions. For example, explore ingestion to a specific `Database`.
-> * [Apply splitting to a chart](/azure/azure-monitor/platform/metrics-charts#apply-splitting-to-a-chart) to visualize data by different components. This process is useful for analyzing metrics that are reported by each step of the ingestion pipeline, for example `Blobs received`.
+To refine your analysis: 
+* [Apply filters to charts](/azure/azure-monitor/platform/metrics-charts#apply-filters-to-charts) to plot partial data by dimensions. For example, explore ingestion to a specific `Database`.
+* [Apply splitting to a chart](/azure/azure-monitor/platform/metrics-charts#apply-splitting-to-a-chart) to visualize data by different components. This process is useful for analyzing metrics that are reported by each step of the ingestion pipeline, for example `Blobs received`.
 
 |**Metric** | **Unit** | **Aggregation** | **Metric description** | **Dimensions** |
 |---|---|---|---|---|
@@ -107,7 +106,7 @@ Ingestion metrics track the general health and performance of ingestion operatio
 | Events dropped    | Count | Sum, Max, Min | Number of events permanently dropped by data connections. | Component Type, Component Name | 
 | Events processed (for Event/IoT Hubs) | Count | Max, Min, Sum | Total number of events read from Event Hubs and processed by the cluster. These events are split into two groups: events rejected, and events accepted by the cluster engine. | Status |
 | Ingestion latency | Seconds | Avg, Max, Min | Latency of data ingested, from the time the data was received in the cluster until it's ready for query. The ingestion latency period depends on the ingestion scenario. | None |
-| Ingestion result  | Count | Sum | Total number of sources that either failed or succeeded ingestion.<br> <br> Use **apply splitting** to create buckets of success and failure results and analyze the failures categories (**Value** > **Status**). <br>For more information about possible fail categories, see [Ingestion error codes in Azure Data Explorer](error-codes.md). <br><br>**Note:**<br><ul><li> Event Hub or IoT Hub ingestion events are pre-aggregated into one blob, and then treated as a single source to be ingested. Therefore, pre-aggregated events appear as a single ingestion result after pre-aggregation. </li><br><li>Transient failures are retried internally to a limited number of attempts. Each transient failure is reported as a transient ingestion result. Therefore, a single ingestion may result with more than one ingestion result. </li></ul> | Status |
+| Ingestion result  | Count | Sum | Total number of sources that either failed or succeeded to be ingested.<br> `Status`: **Success** for successful ingestion or the failure category for failures. For a complete list of possible failure categories see [Ingestion error codes in Azure Data Explorer](error-codes.md). <br> `Failure Status Type`: Whether the failure is permanent or transient. For successful ingestion, this dimension is `None`.<br><br>**Note:**<br><ul><li> Event Hub and IoT Hub ingestion events are pre-aggregated into one blob, and then treated as a single source to be ingested. Therefore, pre-aggregated events appear as a single ingestion result after pre-aggregation.</li><br><li>Transient failures are retried internally to a limited number of attempts. Each transient failure is reported as a transient ingestion result. Therefore, a single ingestion may result with more than one ingestion result. </li></ul> | Status, Failure Status Type |
 | Ingestion volume (in MB) | Count | Max, Sum | The total size of data ingested to the cluster (in MB) before compression. | Database |
 | Queue length | Count | Avg | Number of pending messages in a component's input queue. | Component Type |
 | Queue oldest message | Seconds | Avg | Time in seconds from when the oldest message in a component's input queue has been inserted. | Component Type | 

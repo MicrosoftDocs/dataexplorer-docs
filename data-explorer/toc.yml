@@ -385,6 +385,8 @@ items:
       href: monitor-with-resource-health.md
     - name: Use Azure Monitor insights
       href: /azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
+    - name: Monitor batching ingestion with metrics
+      href: monitor-batching-ingestion.md
   - name: Share data
     items:
       - name: Use Azure Data Share
@@ -455,6 +457,9 @@ items:
     - name: List of functions
       displayName: functions library
       href: kusto/functions-library/functions-library.md
+    - name: bartlett_test_fl()
+      displayName: functions library
+      href: kusto/functions-library/bartlett-test-fl.md
     - name: binomial_test_fl()
       displayName: functions library
       href: kusto/functions-library/binomial-test-fl.md
@@ -467,6 +472,18 @@ items:
     - name: kmeans_fl()
       displayName: functions library
       href: kusto/functions-library/kmeans-fl.md
+    - name: ks_test_fl()
+      displayName: functions library
+      href: kusto/functions-library/ks-test-fl.md
+    - name: normality_test_fl()
+      displayName: functions library
+      href: kusto/functions-library/normality-test-fl.md
+    - name: levene_test_fl()
+      displayName: functions library
+      href: kusto/functions-library/levene-test-fl.md
+    - name: mann-whitney-u-test-fl()
+      displayName: functions library
+      href: kusto/functions-library/mann-whitney-u-test-fl.md
     - name: perm_fl()
       displayName: functions library
       href: kusto/functions-library/perm-fl.md
@@ -515,6 +532,12 @@ items:
     - name: time_weighted_avg_fl()
       displayName: functions library
       href: kusto/functions-library/time-weighted-avg-fl.md
+    - name: two_sample_t_test_fl()
+      displayName: functions library
+      href: kusto/functions-library/two-sample-t-test-fl.md
+    - name: wilcoxon_test_fl()
+      displayName: functions library
+      href: kusto/functions-library/wilcoxon-test-fl.md
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions
     href: ./policy-reference.md

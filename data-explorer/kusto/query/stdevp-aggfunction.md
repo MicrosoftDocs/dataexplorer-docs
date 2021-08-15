@@ -11,7 +11,10 @@ ms.date: 02/13/2020
 ---
 # stdevp() (aggregation function)
 
-Calculates the standard deviation of *Expr* across the group, considering the group as a [population](https://en.wikipedia.org/wiki/Statistical_population). 
+Calculates the standard deviation of *Expr* across the group, considering the group as a [population](https://en.wikipedia.org/wiki/Statistical_population) for a large data set that is representative of the population. 
+
+For a small data set that is a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29), use [stdev() (aggregation function)](stdev-aggfunction.md). 
+
 
 * Used formula:
 
@@ -21,7 +24,7 @@ Calculates the standard deviation of *Expr* across the group, considering the gr
 
 ## Syntax
 
-summarize `stdevp(`*Expr*`)`
+`stdevp` `(`*Expr*`)`
 
 ## Arguments
 

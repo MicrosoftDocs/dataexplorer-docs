@@ -62,7 +62,7 @@ The merge policy contains the following properties:
 * **Lookback**:
     * Defines the timespan during which extents are considered for rebuild/merge.
 	* Supported values: 
-	  * `Default` - The system-managed default. This is the recommended and default value.
+	  * `Default` - The system-managed default. This is the recommended and default value, whose period is currently set to 14 days.
 	  * `All` - All extents, hot and cold, are included.
 	  * `HotCache` - Only hot extents are included.
       * `Custom` - Only extents whose age is under the provided `CustomPeriod` are included. `CustomPeriod` is a timespan value.

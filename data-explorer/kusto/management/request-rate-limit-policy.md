@@ -69,8 +69,8 @@ A request rate limit of kind `ResourceUtilization` includes the following proper
 
 | Name           | Type           | Description     | Supported Values      |
 |----------------|----------------|----------------|--------------|
-| ResourceKind   | `ResourceKind` | The resource to limit. **Note:** when `ResourceKind` is `TotalCpuSeconds`, the limit is enforced based on **post-facto** reports of CPU utilization of *completed* requests: Requests whose execution will *begin after* `MaxUtilization` has been reached within the defined `TimeWindow` (based on reporting of *completed* requests) will fail. | `RequestCount`, `TotalCpuSeconds` |
-| MaxUtilization | `long`         | The maximum of the resource that can be utilized.    | [`1`, `9223372036854775807`]      |
+| ResourceKind   | `ResourceKind` | The resource to limit. **Note:** when `ResourceKind` is `TotalCpuSeconds`, the limit is enforced based on **post-facto** reports of CPU utilization of *completed* requests: Requests whose execution will *begin after* `MaxUtilization` has been reached within the defined `TimeWindow` (based on reporting of *completed* requests) will fail. Requests that report utilization of 0.005 seconds of CPU or lower are not counted. | `RequestCount`, `TotalCpuSeconds` |
+| MaxUtilization | `long`         | The maximum of the resource that can be utilized.    | RequestCount: [`1`, `1000000000`]; TotalCpuSeconds: [`1`, `828000`]      |
 | TimeWindow     | `timespan`     | The sliding time window during which the limit is applied.     | [`00:01:00`, `1.00:00:00`]        |
 
 When a request exceeds the limit on resources utilization:
@@ -78,16 +78,16 @@ When a request exceeds the limit on resources utilization:
   * The error message will include the the *origin* of the throttling and the *quota* that's been exceeded. For example:
     * Examples:
   
-      1. A throttled request, that was classified to a workload group named `Automated Requests`, which has a limit of 10000 requests per day at the scope of a principal:
+      1. A throttled request, that was classified to a workload group named `Automated Requests`, which has a limit of 1000 requests per hour at the scope of a principal:
 
          ```
-         The request was denied due to exceeding quota limitations. Resource: 'RequestCount', Quota: '10000', TimeWindow: '1.00:00:00', Origin: 'RequestRateLimitPolicy/WorkloadGroup/Automated Requests/Principal/aadapp=9e04c4f5-1abd-48d4-a3d2-9f58615b4724;6ccf3fe8-6343-4be5-96c3-29a128dd9570'.
+         The request was denied due to exceeding quota limitations. Resource: 'RequestCount', Quota: '1000', TimeWindow: '01:00:00', Origin: 'RequestRateLimitPolicy/WorkloadGroup/Automated Requests/Principal/aadapp=9e04c4f5-1abd-48d4-a3d2-9f58615b4724;6ccf3fe8-6343-4be5-96c3-29a128dd9570'.
          ```
          
-      1. A throttled request, that was classified to a workload group named `Automated Requests`, which has a limit of 20000 total CPU seconds per day at the scope of the workload group:
+      1. A throttled request, that was classified to a workload group named `Automated Requests`, which has a limit of 2000 total CPU seconds per hour at the scope of the workload group:
 
          ```
-         The request was denied due to exceeding quota limitations. Resource: 'TotalCpuSeconds', Quota: '20000', TimeWindow: '1.00:00:00', Origin: 'RequestRateLimitPolicy/WorkloadGroup/Automated Requests'.
+         The request was denied due to exceeding quota limitations. Resource: 'TotalCpuSeconds', Quota: '2000', TimeWindow: '01:00:00', Origin: 'RequestRateLimitPolicy/WorkloadGroup/Automated Requests'.
          ```
          
   * The HTTP response code will be `429`. The subcode will be `TooManyRequests`.

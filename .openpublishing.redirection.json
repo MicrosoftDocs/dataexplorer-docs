@@ -131,9 +131,29 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "data-explorer/kusto/query/any-aggfunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/take-any-aggfunction",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/anyif-aggfunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/take-anyif-aggfunction",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "data-explorer/kusto/management/merge-extents.md",
       "redirect_url": "/azure/data-explorer/kusto/management/extents-overview",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/replacefunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/replace-regex-function",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/normality_test_fl.md",
+      "redirect_url": "/azure/data-explorer/kusto/functions-library/normality-test-fl",
+      "redirect_document_id": true
     }
   ]
 }

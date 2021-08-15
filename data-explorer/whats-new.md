@@ -6,11 +6,83 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/03/2021
+ms.date: 07/13/2021
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## July 2021
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
+| [Create an external table using the Web UI wizard](external-table.md) | Updated article. New UI
+| [Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. New UI.
+| [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md) | Updated article. New UI
+| [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md) | Updated article. New UI
+| [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. New UI
+
+### Query
+
+| Article title | Description |
+|--|--|
+| [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string. 
+| [take_any() (aggregation function)](kusto/query/take-any-aggfunction.md) | New article. Replaces any().
+| [take_anyif() (aggregation function)](kusto/query/take-anyif-aggfunction.md) | New article. Replaces anyif().
+| [replace_regex()](kusto/query/replace-regex-function.md) | Updated article. Replace() function changed to replace_regex().
+
+### Management
+
+| Article title | Description |
+|--|--|
+| [.alter extent tags retention policy](kusto/management/alter-extent-tags-retention-policy.md) | New article.
+| [.delete extent tags retention policy](kusto/management/delete-extent-tags-retention-policy.md) | New article.
+| [Extent tags retention policy](kusto/management/extent-tags-retention-policy.md) | New article. The extent tags retention policy controls the mechanism that automatically removes [extent tags](kusto/management/extents-overview.md#extent-tagging) from tables, based on the age of the extents.
+| [.show extent tags retention policy](kusto/management/show-extent-tags-retention-policy.md) | New article.
+| [Stored query results](kusto/management/stored-query-results.md) | Updated article. General Availability.
+
+### Functions library
+
+| Article title | Description |
+|--|--|
+ [two_sample_t_test_fl()](kusto/functions-library/two-sample-t-test-fl.md) | New article. The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test). |
+
+## June 2021
+
+This section lists the major changes to docs during June  2021.
+
+### General
+
+| Article title | Description |
+|--|--|
+[Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md), [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md)| Updated articles. Document batching types.
+
+### Query
+
+| Article title | Description |
+|--|--|
+| [rows_near() plugin](kusto/query/rows-near-plugin.md) | New article. Finds rows near a specified condition.
+| [has_any_ipv4()](kusto/query/has-any-ipv4-function.md) | New article. Returns a value indicating whether one of specified IPv4 addresses appears in a text.
+| [has_any_ipv4_prefix()](kusto/query/has-any-ipv4-prefix-function.md) | New article. Returns a value indicating whether one of specified IPv4 address prefixes appears in a text.
+
+### Management
+
+| Article title | Description |
+|--|--|
+| [IngestionBatching policy](kusto/management/batchingpolicy.md) | Updated article. Document batching types
+
+## May 2021
+
+This section lists the major changes to docs during May 2021.
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Use follower databases](follower.md) | Updated article. Add table level sharing. | 
 
 ## April 2021
 

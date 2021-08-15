@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/17/2021
+ms.date: 06/16/2021
 ---
 
 # .create materialized-view
@@ -196,8 +196,8 @@ The following aggregation functions are supported:
 * [`sumif`](../../query/sumif-aggfunction.md)
 * [`arg_max`](../../query/arg-max-aggfunction.md)
 * [`arg_min`](../../query/arg-min-aggfunction.md)
-* [`any`](../../query/any-aggfunction.md)
-* [`anyif`](../../query/anyif-aggfunction.md)
+* [`take_any`](../../query/take-any-aggfunction.md)
+* [`take_anyif`](../../query/take-anyif-aggfunction.md)
 * [`hll`](../../query/hll-aggfunction.md)
 * [`make_set`](../../query/makeset-aggfunction.md)
 * [`make_list`](../../query/makelist-aggfunction.md)
@@ -337,6 +337,8 @@ When creating a materialized view with the `backfill` property, the materialized
 * A materialized view can't be created:
     * On top of another materialized view.
     * On [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.  Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader.
+    * On [external tables](../../query/schema-entities/externaltables.md).
+
 * A materialized view only processes new records ingested into the source table. Records which are removed from the source table, either by running [data purge](../../concepts/data-purge.md)/[drop extents](../drop-extents.md), or due to [retention policy](../retentionpolicy.md) or any other reason, have no impact on the materialized view. The materialized view has its own [retention policy](materialized-view-policies.md#retention-and-caching-policy), which is independent of the retention policy of the source table. The materialized view might include records which are not present in the source table.
 * The source table of a materialized view:
     * Must be a table that is being ingested to directly, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md).
