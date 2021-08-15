@@ -897,6 +897,8 @@ items:
     href: series-periods-detectfunction.md
   - name: series_periods_validate()
     href: series-periods-validatefunction.md
+  - name: series_pow()
+    href: series-powfunction.md  
   - name: series_seasonal()
     href: series-seasonalfunction.md
   - name: series_stats()
