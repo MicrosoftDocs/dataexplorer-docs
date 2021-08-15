@@ -415,7 +415,7 @@ public class FileIngestion {
 
 [!INCLUDE [ingest-data-streaming-disable](includes/ingest-data-streaming-disable.md)]
 
-## Drop the streaming ingestion policy in the Azure portal
+## Drop the streaming ingestion policy
 
 You can drop the streaming ingestion policy using the Azure portal or programmatically in C\#.
 
