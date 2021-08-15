@@ -1,6 +1,6 @@
 ---
-title: Configure streaming ingestion on your Azure Data Explorer cluster using the Azure portal
-description: Learn how to configure your Azure Data Explorer cluster and start loading data with streaming ingestion  using Azure portal.
+title: Configure streaming ingestion on your Azure Data Explorer cluster
+description: Learn how to configure your Azure Data Explorer cluster and start loading data with streaming ingestion.
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexefro
@@ -11,7 +11,11 @@ ms.date: 08/12/2021
 
 # Configure streaming ingestion on your Azure Data Explorer cluster
 
-[!INCLUDE [ingest-data-streaming-intro](includes/ingest-data-streaming-intro.md)]
+Use streaming ingestion to load data when you need low latency between ingestion and query. The streaming ingestion operation completes in under 10 seconds, and your data is immediately available for query after completion. This ingestion method is suitable for ingesting a high volume of data, such as thousands of records per second, spread over thousands of tables. Each table receives a relatively low volume of data, such as a few records per second.
+
+Use bulk ingestion instead of streaming ingestion when the amount of data ingested exceeds 4 GB per hour per table.
+
+To learn more about different ingestion methods, see [data ingestion overview](ingest-data-overview.md).
 
 > [!NOTE]
 > The steps before and after the [ingestion section](#use-streaming-ingestion-to-ingest-data-to-your-cluster) can be performed using the Azure portal or programmatically in C\#. If you are using C\# for your streaming ingestion, you may find it more convenient using the programmatic approach.
@@ -91,7 +95,7 @@ You can enable streaming ingestion while creating a new Azure Data Explorer clus
 
 ## Create a target table and define the policy
 
-Create a table to receive the streaming ingestion data and define its related policy.
+Create a table to receive the streaming ingestion data and define its related policy using the Azure portal or programmatically in C\#.
 
 ### [Portal](#tab/azure-portal)
 
@@ -128,8 +132,6 @@ Create a table to receive the streaming ingestion data and define its related po
     :::image type="content" source="media/ingest-data-streaming/define-streaming-ingestion-policy.png" alt-text="Define the streaming ingestion policy in Azure Data Explorer.":::
 
 ### [C#](#tab/azure-csharp)
-
-To create a table and define a streaming ingestion policy for it, run the following code:
 
 ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -413,9 +415,14 @@ public class FileIngestion {
 
 ---
 
-[!INCLUDE [ingest-data-streaming-disable](includes/ingest-data-streaming-disable.md)]
+## Disable streaming ingestion on your cluster
 
-## Drop the streaming ingestion policy
+> [!WARNING]
+> Disabling streaming ingestion may take a few hours.
+
+Before disabling streaming ingestion on your Azure Data Explorer cluster, drop the [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) from all relevant tables and databases. The removal of the streaming ingestion policy triggers data rearrangement inside your Azure Data Explorer cluster. The streaming ingestion data is moved from the initial storage to permanent storage in the column store (extents or shards). This process can take between a few seconds to a few hours, depending on the amount of data in the initial storage.
+
+### Drop the streaming ingestion policy
 
 You can drop the streaming ingestion policy using the Azure portal or programmatically in C\#.
 
@@ -483,7 +490,17 @@ To disable streaming ingestion on your cluster, run the following code:
 
 ---
 
-[!INCLUDE [ingest-data-streaming-limitations](includes/ingest-data-streaming-limitations.md)]
+## Limitations
+
+* [Database cursors](kusto/management/databasecursor.md) aren't supported for a database if the database itself or any of its tables have the [Streaming ingestion policy](kusto/management/streamingingestionpolicy.md) defined and enabled.
+* [Data mappings](kusto/management/mappings.md) must be [pre-created](kusto/management/create-ingestion-mapping-command.md) for use in streaming ingestion. Individual streaming ingestion requests don't accommodate inline data mappings.
+* Streaming ingestion performance and capacity scales with increased VM and cluster sizes. The number of concurrent ingestion requests is limited to six per core. For example, for 16 core SKUs, such as D14 and L16, the maximal supported load is 96 concurrent ingestion requests. For two core SKUs, such as D11, the maximal supported load is 12 concurrent ingestion requests.
+* The data size limit for streaming ingestion request is 4 MB.
+* Schema updates, such as creation and modification of tables and ingestion mappings, may take up to five minutes for the streaming ingestion service. For more information see [Streaming ingestion and schema changes](kusto/management/data-ingestion/streaming-ingestion-schema-changes.md).
+* Enabling streaming ingestion on a cluster, even when data isn't ingested via streaming, uses part of the local SSD disk of the cluster machines for streaming ingestion data and reduces the storage available for hot cache.
+* [Extent tags](kusto/management/extents-overview.md#extent-tagging) can't be set on the streaming ingestion data.
+* [Update policy](kusto/management/updatepolicy.md). The update policy can reference only the newly-ingested data in the source table and not any other data or tables in the database.
+* If streaming ingestion is used on any of the tables of the database, this database cannot be used as leader for [follower databases](follower.md) or as a [data provider](data-share.md#data-provider---share-data) for Azure Data Share.
 
 ## Next steps
 
