@@ -9,7 +9,7 @@ ms.topic: how-to
 ms.date: 08/12/2021
 ---
 
-# Configure streaming ingestion on your Azure Data Explorer cluster using the Azure portal
+# Configure streaming ingestion on your Azure Data Explorer cluster
 
 [!INCLUDE [ingest-data-streaming-intro](includes/ingest-data-streaming-intro.md)]
 
@@ -91,7 +91,7 @@ You can enable streaming ingestion while creating a new Azure Data Explorer clus
 
 ## Create a target table and define the policy
 
-Next, create a table to receive the streaming ingestion data and define its related policy.
+Create a table to receive the streaming ingestion data and define its related policy.
 
 ### [Portal](#tab/azure-portal)
 
@@ -415,7 +415,7 @@ public class FileIngestion {
 
 [!INCLUDE [ingest-data-streaming-disable](includes/ingest-data-streaming-disable.md)]
 
-## Drop the streaming ingestion policy in the Azure portal
+## Drop the streaming ingestion policy
 
 You can drop the streaming ingestion policy using the Azure portal or programmatically in C\#.
 
