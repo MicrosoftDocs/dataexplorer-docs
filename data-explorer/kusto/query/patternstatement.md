@@ -11,9 +11,27 @@ ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
-# pattern statement
 
-::: zone pivot="azuredataexplorer"
+# pattern statement
+A `pattern` is a named construct similar to a view (representing a query result set) that maps predefined string tuples to parameterless functions. Patterns are invoked with a syntax similar to scoped table references. Patterns have a controlled, close-ended, set of argument values that can be mapped by Kusto. If a pattern is declared but not defined, Kusto identifies and flags all invocations to the pattern as errors. This identification makes it possible to resolve these patterns with a middle-tier application.
+
+## Syntax
+
+`declare` `pattern` *PatternName* `=` `(`*ArgName* `:` *ArgType* [`,` ... ]`)` [`[` *PathName* `:` *PathArgType* `]`]
+`{` 
+`(` *ArgValue1* [`,` *ArgValue2* ... ] `)` [ `.[` *PathValue `]` ] `=` `{`  *expression*  `};`
+ [ `(` *ArgValue1_2* [`,` *ArgValue2_2* ... ] `)` [ `.[` *PathValue_2* `]` ] `=` `{`  *expression_2*  `}``;` ... ]
+`}`
+
+* *PatternName*: Name of the pattern keyword. Syntax that defines keyword only is allowed: for detecting all pattern references with a specified keyword.
+* *ArgName*: Name of the pattern argument. Patterns allow one or more argument names.
+* *ArgType*: Type of the pattern argument (currently only `string` is allowed)
+* *PathName*: Name of the path argument. Patterns allow zero or one path name.
+* *PathType*: Type of the path argument (currently only `string` is allowed)
+* *ArgValue1*, *ArgValue2*, ...: Values of the pattern arguments (currently only `string` literals are allowed)
+* *PathValue*: Value of the pattern path (currently only `string` literals are allowed)
+* *expression*: A tabular expression (for example, `Logs | where Timestamp > ago(1h)`),
+  or a lambda expression that references a function.
 
 A **pattern** is a named view-like construct that maps predefined
 string tuples to parameterless function bodies. Patterns are unique

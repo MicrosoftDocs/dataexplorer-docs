@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 08/08/2021
 ---
 
-# Aggregation function types
+# Aggregation function types at a glance
 
 An aggregation function performs a calculation on a set of values, and returns a single value. This article lists all available aggregation functions grouped by type. For scalar functions, see [Scalar function types](scalarfunctions.md).
 
@@ -58,7 +58,7 @@ An aggregation function performs a calculation on a set of values, and returns a
 |[percentiles_array()](percentiles-aggfunction.md)|Returns the percentile approximates of the array.|
 |[percentilesw()](percentiles-aggfunction.md)|Returns the weighted percentile approximate of the group.|
 |[percentilesw_array()](percentiles-aggfunction.md)|Returns the weighted percentile approximate of the array.|
-|[stdev(), [stdevif()](stdevif-aggfunction.md)](stdev-aggfunction.md)|Returns the standard deviation across the group for a population that is considered a sample without/with a predicate.|
+|[stdev()](stdev-aggfunction.md), [stdevif()](stdevif-aggfunction.md)|Returns the standard deviation across the group for a population that is considered a sample without/with a predicate.|
 |[stdevp()](stdevp-aggfunction.md)|Returns the standard deviation across the group for a population that is considered representative.|
 |[sum()](sum-aggfunction.md), [sumif()](sumif-aggfunction.md)|Returns the sum of the elements within the group without/with a predicate.|
 |[tdigest()](tdigest-aggfunction.md)|Returns an intermediate result for the percentiles approximation, the weighted percentile approximate of the group.|
