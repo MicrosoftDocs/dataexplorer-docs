@@ -268,6 +268,14 @@ items:
       href: updatepolicy.md
     - name: update policy commands
       href: update-policy.md
+  - name: Query weak consistency
+    items:
+    - name: Query weak consistency policy
+      href: query-weak-consistency-policy.md
+    - name: .alter query weak consistency policy
+      href: alter-query-weak-consistency-policy.md
+    - name: .show query weak consistency policy
+      href: show-query-weak-consistency-policy.md
 - name: Security roles
   href: security-roles.md
 - name: Data ingestion
