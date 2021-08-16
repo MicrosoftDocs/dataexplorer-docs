@@ -17,8 +17,24 @@ Use bulk ingestion instead of streaming ingestion when the amount of data ingest
 
 To learn more about different ingestion methods, see [data ingestion overview](ingest-data-overview.md).
 
+## Choose the appropriate streaming ingestion type
+
+Two streaming ingestion types are supported:
+
+| Ingestion type | Description |
+| -- | -- |
+| **Event Hub** or **IoT Hub** | Hubs are configured as table streaming data sources.<br />For information about setting these up, see [**Event Hub**](ingest-data-event-hub.md) or [**IoT Hub**](ingest-data-iot-hub.md) data ingestion methods. |
+| **Custom ingestion** | Custom ingestion requires you to write an application that uses one of the Azure Data Explorer [client libraries](kusto/api/client-libraries.md).<br />Use the information in this topic to configure custom ingestion. You may also find the [C# streaming ingestion sample application](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) helpful. |
+
+Use the following table to help you choose the ingestion type that's appropriate for your environment:
+
+|Criterion|Event Hub / IoT Hub|Custom Ingestion|
+|---------|---------|---------|
+|Data delay between ingestion initiation and the data available for query | Longer delay | Shorter delay  |
+|Development overhead | Fast and easy setup, no development overhead | High development overhead to create an application ingest the data, handle errors, and ensure data consistency |
+
 > [!NOTE]
-> The steps before and after the [ingestion section](#use-streaming-ingestion-to-ingest-data-to-your-cluster) can be performed using the Azure portal or programmatically in C\#. If you are using C\# for your streaming ingestion, you may find it more convenient using the programmatic approach.
+> You can manage the process to [enable](#enable-streaming-ingestion-on-your-cluster) and [disable](#disable-streaming-ingestion-on-your-cluster) streaming ingestion on your cluster using the Azure portal or programmatically in C\#. If you are using C\# for your [custom application](#create-a-streaming-ingestion-application-to-ingest-data-to-your-cluster), you may find it more convenient using the programmatic approach.
 
 ## Prerequisites
 
@@ -26,7 +42,7 @@ If you don't have an Azure subscription, create a [free Azure account](https://a
 
 ## Enable streaming ingestion on your cluster
 
-Before you can use streaming ingestion, you must enable the capability on your cluster. You can enable it when [creating the cluster](#enable-streaming-ingestion-while-creating-a-new-cluster), or [add it to an existing cluster](#enable-streaming-ingestion-on-an-existing-cluster).
+Before you can use streaming ingestion, you must enable the capability on your cluster and define a [streaming ingestion policy](kusto/management/streamingingestionpolicy.md). You can enable the capability when [creating the cluster](#enable-streaming-ingestion-while-creating-a-new-cluster), or [add it to an existing cluster](#enable-streaming-ingestion-on-an-existing-cluster).
 
 > [!WARNING]
 > Review the [limitations](#limitations) prior to enabling streaming ingestion.
@@ -69,35 +85,35 @@ If you have an existing cluster, you can enable streaming ingestion using the Az
 You can enable streaming ingestion while creating a new Azure Data Explorer cluster.
 
 ```csharp
-    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-    var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
-    var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-    var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
-    var credential = new ClientCredential(clientId, clientSecret);
-    var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
+string appId = "<appId>";
+string appKey = "<appKey>";
+string appTenant = "<appTenant>";
+string clusterName = "<clusterName>";
+string resourceGroupName = "<resourceGroupName>";
+string subscriptionId = "<subscriptionId>";
 
-    var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
+var authenticationContext = new AuthenticationContext($"https://login.windows.net/{appTenant}");
+var credential = new ClientCredential(appId, appKey);
+var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
 
-    var kustoManagementClient = new KustoManagementClient(credentials)
-    {
-        SubscriptionId = subscriptionId
-    };
+var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
+var kustoManagementClient = new KustoManagementClient(credentials)
+{
+    SubscriptionId = subscriptionId
+};
 
-    var resourceGroupName = "testrg";
-    var clusterName = "mystreamingcluster";
-    var clusterUpdateParameters = new ClusterUpdate(enableStreamingIngest: true);
+var clusterUpdateParameters = new ClusterUpdate(enableStreamingIngest: true);
 
-    await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdateParameters);
+await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdateParameters);
 ```
 
 ---
 
-## Create a target table and define the policy
+### Create a target table and define the policy
 
 Create a table to receive the streaming ingestion data and define its related policy using the Azure portal or programmatically in C\#.
 
-### [Portal](#tab/azure-portal)
+#### [Portal](#tab/azure-portal)
 
 1. In the Azure portal, navigate to your cluster.
 1. Select **Query**.
@@ -131,52 +147,52 @@ Create a table to receive the streaming ingestion data and define its related po
 
     :::image type="content" source="media/ingest-data-streaming/define-streaming-ingestion-policy.png" alt-text="Define the streaming ingestion policy in Azure Data Explorer.":::
 
-### [C#](#tab/azure-csharp)
+#### [C#](#tab/azure-csharp)
 
 ```csharp
-    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-    var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
-    var databaseName = "StreamingTestDb";
-    var tableName = "TestTable";
-    var kcsb = new KustoConnectionStringBuilder("https://mystreamingcluster.westcentralus.kusto.windows.net", databaseName);
-    kcsb = kcsb.WithAadApplicationKeyAuthentication(clientId, clientSecret, tenantId);
+string clusterPath = "https://<clusterName>.kusto.windows.net";
+string appId = "<appId>";
+string appKey = "<appKey>";
+string appTenant = "<appTenant>";
+string dbName = "<dbName>";
+string tableName = "<tableName>";
 
-    var tableSchema = new TableSchema(
-        tableName,
-        new ColumnSchema[]
-        {
-            new ColumnSchema("TimeStamp", "System.DateTime"),
-            new ColumnSchema("Name",      "System.String"),
-            new ColumnSchema("Metric",    "System.int"),
-            new ColumnSchema("Source",    "System.String"),
-        });
+// Create Kusto connection string with App Authentication
+var csb =
+    new KustoConnectionStringBuilder(clusterPath)
+        .WithAadApplicationKeyAuthentication(
+            applicationClientId: appId,
+            applicationKey: appKey,
+            authority: appTenant
+        );
 
-    var tableCreateCommand = CslCommandGenerator.GenerateTableCreateCommand(tableSchema);
-    var tablePolicyAlterCommand = CslCommandGenerator.GenerateTableAlterStreamingIngestionPolicyCommand(tableName, isEnabled: true);
-    using (var client = KustoClientFactory.CreateCslAdminProvider(kcsb))
+var tableSchema = new TableSchema(
+    tableName,
+    new ColumnSchema[]
     {
-        client.ExecuteControlCommand(tableCreateCommand);
+        new ColumnSchema("TimeStamp", "System.DateTime"),
+        new ColumnSchema("Name",      "System.String"),
+        new ColumnSchema("Metric",    "System.int"),
+        new ColumnSchema("Source",    "System.String"),
+    });
 
-        client.ExecuteControlCommand(tablePolicyAlterCommand);
-    }
+var tableCreateCommand = CslCommandGenerator.GenerateTableCreateCommand(tableSchema);
+var tablePolicyAlterCommand = CslCommandGenerator.GenerateTableAlterStreamingIngestionPolicyCommand(tableName, isEnabled: true);
+
+using (var client = KustoClientFactory.CreateCslAdminProvider(csb))
+{
+    client.ExecuteControlCommand(tableCreateCommand);
+    client.ExecuteControlCommand(tablePolicyAlterCommand);
+}
 ```
 
 ---
 
-## Use streaming ingestion to ingest data to your cluster
+## Create a streaming ingestion application to ingest data to your cluster
 
-Two streaming ingestion types are supported:
+Create your application for ingesting data to your cluster using your preferred language.
 
-* [**Event Hub**](ingest-data-event-hub.md) or [**IoT Hub**](ingest-data-iot-hub.md), which is used as a data source.
-* **Custom ingestion** requires you to write an application that uses one of the Azure Data Explorer [client libraries](kusto/api/client-libraries.md). See the following streaming ingestion examples and the [C# streaming ingestion sample application](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample).
-
-### Choose the appropriate streaming ingestion type
-
-|Criterion|Event Hub|Custom Ingestion|
-|---------|---------|---------|
-|Data delay between ingestion initiation and the data available for query | Longer delay | Shorter delay  |
-|Development overhead | Fast and easy setup, no development overhead | High development overhead for application to handle errors and ensure data consistency |
+Select from the following
 
 ### [C#](#tab/csharp)
 
@@ -448,44 +464,52 @@ You can drop the streaming ingestion policy using the Azure portal or programmat
 To drop the streaming ingestion policy from the table, run the following code:
 
 ```csharp
-        var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-        var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-        var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
-        var databaseName = "StreamingTestDb";
-        var tableName = "TestTable";
-        var kcsb = new KustoConnectionStringBuilder("https://mystreamingcluster.westcentralus.kusto.windows.net", databaseName);
-        kcsb = kcsb.WithAadApplicationKeyAuthentication(clientId, clientSecret, tenantId);
+string clusterPath = "https://<clusterName>.kusto.windows.net";
+string appId = "<appId>";
+string appKey = "<appKey>";
+string appTenant = "<appTenant>";
+string dbName = "<dbName>";
+string tableName = "<tableName>";
 
-        var tablePolicyDropCommand = CslCommandGenerator.GenerateTableStreamingIngestionPolicyDropCommand(databaseName, tableName);
-        using (var client = KustoClientFactory.CreateCslAdminProvider(kcsb))
-        {
-            client.ExecuteControlCommand(tablePolicyDropCommand);
-        }
+// Create Kusto connection string with App Authentication
+var csb =
+    new KustoConnectionStringBuilder(clusterPath)
+        .WithAadApplicationKeyAuthentication(
+            applicationClientId: appId,
+            applicationKey: appKey,
+            authority: appTenant
+        );
+
+var tablePolicyDropCommand = CslCommandGenerator.GenerateTableStreamingIngestionPolicyDropCommand(dbName, tableName);
+using (var client = KustoClientFactory.CreateCslAdminProvider(csb))
+{
+    client.ExecuteControlCommand(tablePolicyDropCommand);
+}
 ```
 
 To disable streaming ingestion on your cluster, run the following code:
 
 ```csharp
-        var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-        var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-        var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
-        var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-        var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
-        var credential = new ClientCredential(clientId, clientSecret);
-        var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
+string appId = "<appId>";
+string appKey = "<appKey>";
+string appTenant = "<appTenant>";
+string clusterName = "<clusterName>";
+string resourceGroupName = "<resourceGroupName>";
+string subscriptionId = "<subscriptionId>";
 
-        var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
+var authenticationContext = new AuthenticationContext($"https://login.windows.net/{appTenant}");
+var credential = new ClientCredential(appId, appKey);
+var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
 
-        var kustoManagementClient = new KustoManagementClient(credentials)
-        {
-            SubscriptionId = subscriptionId
-        };
+var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
+var kustoManagementClient = new KustoManagementClient(credentials)
+{
+    SubscriptionId = subscriptionId
+};
 
-        var resourceGroupName = "testrg";
-        var clusterName = "mystreamingcluster";
-        var clusterUpdateParameters = new ClusterUpdate(enableStreamingIngest: false);
+var clusterUpdateParameters = new ClusterUpdate(enableStreamingIngest: false);
 
-        await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdateParameters);
+await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdateParameters);
 ```
 
 ---
