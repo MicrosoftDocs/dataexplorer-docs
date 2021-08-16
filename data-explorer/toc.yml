@@ -106,9 +106,13 @@ items:
       - name: C#
         displayName: ingest data, ingestion
         href: ingest-data-streaming-csharp.md
-    - name: Using LightIngest
-      displayName: ingest data, ingestion
-      href: lightingest.md
+    - name: LightIngest
+      items: 
+      - name: Using LightIngest
+        displayName: ingest data, ingestion
+        href: lightingest.md
+      - name: Use wizard for one-time ingestion of historical data with LightIngest
+        href: generate-lightingest-command.md
     - name: Event Hub
       items:
       - name: Event Hub data connection
