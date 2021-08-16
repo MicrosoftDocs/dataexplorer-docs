@@ -171,7 +171,6 @@ Two streaming ingestion types are supported:
 * [**Event Hub**](ingest-data-event-hub.md) or [**IoT Hub**](ingest-data-iot-hub.md), which is used as a data source.
 * **Custom ingestion** requires you to write an application that uses one of the Azure Data Explorer [client libraries](kusto/api/client-libraries.md). See the following streaming ingestion examples and the [C# streaming ingestion sample application](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample).
 
-### Choose the appropriate streaming ingestion type
 
 |Criterion|Event Hub|Custom Ingestion|
 |---------|---------|---------|
