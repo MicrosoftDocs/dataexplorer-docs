@@ -207,6 +207,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[series_less_equals()](series-less-equalsfunction.md)|Calculates the element-wise less or equal (`<=`) logic operation of two numeric series inputs.|
 |[series_multiply()](series-multiplyfunction.md)|Calculates the element-wise multiplication of two numeric series inputs.|
 |[series_not_equals()](series-not-equalsfunction.md)|Calculates the element-wise not equals (`!=`) logic operation of two numeric series inputs.|
+|[series_pow()](series-powfunction.md)|Calculates the element-wise power of two numeric series inputs.|
 |[series_subtract()](series-subtractfunction.md)|Calculates the element-wise subtraction of two numeric series inputs.|
 
 ## Series processing functions
