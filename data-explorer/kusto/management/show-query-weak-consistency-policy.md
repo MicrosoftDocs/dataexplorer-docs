@@ -1,5 +1,5 @@
 ---
-title: Show query weak consistency policy management
+title: Show query weak consistency policy management - Azure Data Explorer
 description: This article describes the `.show query weak consistency policy` command in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yabenyaa
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/01/2021
+ms.date: 08/16/2021
 ---
 # .show query weak consistency policy
 
