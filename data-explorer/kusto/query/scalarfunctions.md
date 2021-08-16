@@ -1,5 +1,5 @@
 ---
-title: Scalar Functions - Azure Data Explorer | Microsoft Docs
+title: Scalar Functions - Azure Data Explorer 
 description: This article describes Scalar Functions in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -9,7 +9,9 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/18/2021
 ---
-# Scalar function types
+# Scalar function types at a glance
+
+This article lists all available scalar functions grouped by type. For aggregation functions, see [Aggregation function types](aggregation-functions.md).
 
 ## Binary functions
 
