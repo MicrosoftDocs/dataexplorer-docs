@@ -192,8 +192,6 @@ using (var client = KustoClientFactory.CreateCslAdminProvider(csb))
 
 Create your application for ingesting data to your cluster using your preferred language.
 
-Select from the following
-
 ### [C#](#tab/csharp)
 
 ```csharp
