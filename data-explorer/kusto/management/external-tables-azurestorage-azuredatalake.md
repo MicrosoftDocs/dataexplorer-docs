@@ -54,6 +54,11 @@ where *ColumnName* adheres to [entity naming](../query/schema-entities/entity-na
 > [!TIP]
 > If the external data schema is unknown, use the [infer\_storage\_schema](../query/inferstorageschemaplugin.md) plug-in, which helps infer the schema based on external file contents.
 
+<a name="kind"></a>
+*Kind*
+
+The type of the external table. Either `blob` for Blob Azure Storage or for Azure Data Lake Gen 2 Storage, or `adl` for Azure Data Lake Gen 1 Storage.
+
 <a name="partitions"></a>
 *Partitions*
 
@@ -127,8 +132,9 @@ The data format, any of the [ingestion formats](../../ingestion-supported-format
 <a name="connection-string"></a>
 *StorageConnectionString*
 
-One or more paths to Azure Blob Storage blob containers or Azure Data Lake Store file systems (virtual directories or folders), including credentials.
-See [storage connection strings](../api/connection-strings/storage.md) for details.
+One or more paths to Azure Blob Storage blob containers, Azure Data Lake Gen 2 filesystems or Azure Data Lake Gen 1 containers, including credentials.
+The external table storage type is determined by the provided connection strings.
+See [storage connection strings](../api/connection-strings/storage.md) for details. 
 
 > [!TIP]
 > Provide more than a single storage account to avoid storage throttling while [exporting](data-export/export-data-to-an-external-table.md) large amounts of data to the external table. Export will distribute the writes between all accounts provided. 
