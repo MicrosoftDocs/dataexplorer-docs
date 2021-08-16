@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: alexefro
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 08/12/2021
+ms.date: 08/16/2021
 ---
 
 # Configure streaming ingestion on your Azure Data Explorer cluster
