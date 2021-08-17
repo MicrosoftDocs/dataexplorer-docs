@@ -62,10 +62,6 @@ Create a workload group with a full definition of its request limits policy:
     "MaxExecutionTime": {
       "IsRelaxable": true,
       "Value": "00:04:00"
-    },
-    "QueryResultsCacheMaxAge": {
-      "IsRelaxable": true,
-      "Value": "00:05:00"
     }
   }
 }```
@@ -110,10 +106,6 @@ Create a workload group with a full definition of its request limits policy and 
     "MaxExecutionTime": {
       "IsRelaxable": true,
       "Value": "00:04:00"
-    },
-    "QueryResultsCacheMaxAge": {
-      "IsRelaxable": true,
-      "Value": "00:05:00"
     }
   },
   "RequestRateLimitPolicies": [
