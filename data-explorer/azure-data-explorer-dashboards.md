@@ -73,13 +73,14 @@ Parameters significantly improve dashboard rendering performance, and enable you
 
 |Field  |Description |
 |---------|---------|
-|**Parameter display name**    |   The name of the parameter shown on the dashboard or the edit card.      |
 |**Parameter type**    |One of the following:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.</li></ul>  The parameter type you select will affect the way you write any query that is based on this parameter.  |
 |**Variable name**     |   The name of the parameter to be used in the query.      |
 |**Data type**    |    The data type of the parameter values.     |
 |**Pin as dashboard filter**   |   Pin the parameter-based filter to the dashboard or unpin from the dashboard.       |
 |**Source**     |    The source of the parameter values: <ul><li>**Fixed values**: Manually introduced static filter values. </li><li>**Query**: Dynamically introduced values using a KQL query.  </li></ul>    |
 |**Add a “Select all” value**    |   Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values.      |
+|**Display name**    |   The name of the parameter shown on the dashboard or the edit card.      |
+| **Default value** | The default parameter value. |
 
 ### Parameter query
 
@@ -88,7 +89,9 @@ The query associated with our example is as follows:
 :::image type="content" source="media/adx-dashboards/parameter-query.png" alt-text="Screenshot of query used to generate parameters.":::
 
 1. Select the source data from the dropdown bar. 
-1. When you have entered and tested your query, select **Apply changes**. 
+1. Enter your query and select **Run**.
+
+1. Select **Apply changes**. 
 
 > [!NOTE]
 > The parameter query is used to generate dynamically introduced values using a KQL query. It is not the query used for generating the dashboard visual. 
@@ -106,11 +109,12 @@ For more information about generating parameter queries, see [Create a parameter
 1. In the **Query** pane, 
     1. Select the data source from the drop-down menu.
     1. Type the query, and select **Run**. For more information about generating queries that use paramaters, see [Use parameters in your query](dashboard-parameters.md#use-parameters-in-your-query).
+
     1. Select **Visual**.
 
     :::image type="content" source="media/adx-dashboards/initial-query.png" alt-text="Execute query.":::
 
-1. In the **Visual formatting** pane, select **Chart type** to choose the type of visual. 
+1. In the **Visual formatting** pane, select **Visual type** to choose the type of visual.
 1. Select **Apply changes** to pin the visual to the dashboard.
 
     :::image type="content" source="media/adx-dashboards/add-visual.png" alt-text="Add visual to query.":::
