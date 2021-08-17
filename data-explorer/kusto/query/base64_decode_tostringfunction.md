@@ -26,7 +26,7 @@ Decodes a base64 string to a UTF-8 string.
 Returns UTF-8 string decoded from base64 string.
 
 * To decode base64 strings to an array of long values, see [base64_decode_toarray()](base64_decode_toarrayfunction.md)
-* To decode strings to base64 string, see [base64_encode_tostring()](base64_encode_tostringfunction.md)
+* To encode strings to base64 string, see [base64_encode_tostring()](base64_encode_tostringfunction.md)
 
 ## Example
 
