@@ -154,6 +154,11 @@
       "source_path": "data-explorer/kusto/functions-library/normality_test_fl.md",
       "redirect_url": "/azure/data-explorer/kusto/functions-library/normality-test-fl",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/policies.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/index",
+      "redirect_document_id": false
     }
   ]
 }
