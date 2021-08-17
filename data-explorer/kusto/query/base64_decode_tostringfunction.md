@@ -19,7 +19,7 @@ Decodes a base64 string to a UTF-8 string.
 
 ## Arguments
 
-* *String*: Input string to be decoded from base64 to UTF8-8 string.
+* *String*: Input string to be decoded from base64 to UTF-8 string.
 
 ## Returns
 
