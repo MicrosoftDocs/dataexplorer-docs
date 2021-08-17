@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 08/16/2021
 ms.localizationpriority: high 
 ---
 
@@ -26,6 +26,12 @@ The following image depicts an Azure Data Explorer dashboard.
 
 > [!IMPORTANT]
 > Your data is secure. Dashboards and dashboard-related metadata about users is encrypted at rest.
+
+## Prerequisites
+
+* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+* Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
+* Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 ## Create a dashboard
 
@@ -75,11 +81,11 @@ Parameters enable using dashboard filters. Parameters significantly improve dash
 |**Source**     |    The source of the parameter values: <ul><li>**Fixed values**: Manually introduced static filter values. </li><li>**Query**: Dynamically introduced values using a KQL query.  </li></ul>    |
 |**Add a “Select all” value**    |   Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values.      |
 
-## Add Query
+## Add tile
 
-**Add Query** uses Kusto query language snippets to retrieve data and render visuals. Each query can support a single visual.
+**Add tile** uses Kusto query language snippets to retrieve data and render visuals. Each tile/query can support a single visual.
 
-1. Select **Add Query** from the dashboard canvas or the top menu bar.
+1. Select **Add tile** from the dashboard canvas or the top menu bar.
 
     :::image type="content" source="media/adx-dashboards/empty-dashboard-new-query.png" alt-text="New query.":::
 
