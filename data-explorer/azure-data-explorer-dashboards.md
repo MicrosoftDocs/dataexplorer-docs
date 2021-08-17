@@ -94,7 +94,7 @@ The query associated with our example is as follows:
 1. Select **Apply changes**. 
 
 > [!NOTE]
-> The parameter query is used to generate dynamically introduced values using a KQL query. It is not the query used for generating the dashboard visual. 
+> The parameter query is used to generate dynamically introduced values as parameters using a KQL query. It is not the query used for generating the dashboard visual.
 
 For more information about generating parameter queries, see [Create a parameter](dashboard-parameters.md#create-a-parameter).
 
@@ -108,7 +108,7 @@ For more information about generating parameter queries, see [Create a parameter
 
 1. In the **Query** pane, 
     1. Select the data source from the drop-down menu.
-    1. Type the query, and select **Run**. For more information about generating queries that use paramaters, see [Use parameters in your query](dashboard-parameters.md#use-parameters-in-your-query).
+    1. Type the query, and select **Run**. For more information about generating queries that use parameters, see [Use parameters in your query](dashboard-parameters.md#use-parameters-in-your-query).
 
     1. Select **Visual**.
 
