@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 08/16/2021
+ms.date: 08/18/2021
 ms.localizationpriority: high 
 ---
 
@@ -52,7 +52,7 @@ Add a data source for the dashboard.
     :::image type="content" source="media/adx-dashboards/data-source.png" alt-text="Data source.":::
 
 1. In the **Create new data source** pane:
-    1. Use the default or modify the **Data source name**, if needed. 
+    1. Enter a **Data source name**. 
     1. Enter the **Cluster URI** or partial name including region and select **Connect**.
     1. Select the **Database** from the drop-down list.
     1. Select **Apply**.
@@ -73,7 +73,7 @@ Parameters significantly improve dashboard rendering performance, and enable you
 
 |Field  |Description |
 |---------|---------|
-|**Parameter type**    |One of the following:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.</li></ul>  The parameter type you select will affect the way you write any query that is based on this parameter.  |
+|**Parameter type**    |One of the following:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.</li></ul>  The parameter type you select will affect the way you write any query that's based on this parameter.  |
 |**Variable name**     |   The name of the parameter to be used in the query.      |
 |**Data type**    |    The data type of the parameter values.     |
 |**Pin as dashboard filter**   |   Pin the parameter-based filter to the dashboard or unpin from the dashboard.       |
@@ -94,7 +94,7 @@ The query associated with our example is as follows:
 1. Select **Apply changes**. 
 
 > [!NOTE]
-> The parameter query is used to generate dynamically introduced values as parameters using a KQL query. It is not the query used for generating the dashboard visual.
+> The parameter query is used to generate dynamically introduced values as parameters using a KQL query. It's not the query used for generating the dashboard visual.
 
 For more information about generating parameter queries, see [Create a parameter](dashboard-parameters.md#create-a-parameter).
 
@@ -110,7 +110,7 @@ For more information about generating parameter queries, see [Create a parameter
     1. Select the data source from the drop-down menu.
     1. Type the query, and select **Run**. For more information about generating queries that use parameters, see [Use parameters in your query](dashboard-parameters.md#use-parameters-in-your-query).
 
-    1. Select **Visual**.
+    1. Select **+ Add visual**.
 
     :::image type="content" source="media/adx-dashboards/initial-query.png" alt-text="Execute query.":::
 
