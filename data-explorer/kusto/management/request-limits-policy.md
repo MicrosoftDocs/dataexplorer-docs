@@ -37,6 +37,7 @@ The following limits are configurable:
 
 * A limit that isn't defined, or is defined as `null`, is taken from the `default` workload group's request limits policy.
 * When altering the policy for the `default` workload group, a limit must be defined and have a non-`null` value.
+* The truncation limits `MaxResultRecords` and `MaxResultBytes` affect the final result of the query, as delivered back to the client. They do not apply to intermediates results of sub-queries, such as those that result from having cross-cluster references.
 * Backwards compatibility:
   * Requests limits are disabled, and limits set in the policy don't apply for the following types of commands, when they are classified to the `default` workload group:
     * `.export` commands.
