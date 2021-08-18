@@ -156,6 +156,22 @@ Shows information on active stored query results.
 | ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
 | c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
 
+### .show stored_query_result schema
+
+Shows schema of active stored query result.
+
+#### Syntax
+
+`.show` `stored_query_result` *StoredQueryResultName* `schema`
+
+`Database Viewer` permission is required for invoking this command.
+
+#### Returns
+
+| StoredQueryResult | Schema |
+| ------------------- | ---- |
+| Events | [{"Column":"ID","Type":"guid"},{"Column":"EventName","Type":"string"},{"Column":"Time","Type":"datetime"}] |
+
 ### .drop stored_query_result
 
 Deletes an active stored query result created in the current database by the current principal.
