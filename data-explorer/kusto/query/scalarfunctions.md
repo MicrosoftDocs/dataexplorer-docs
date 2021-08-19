@@ -246,6 +246,7 @@ ms.date: 07/18/2021
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
 |[extract_all()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
 |[extractjson()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
+|[has_any_index()](hasanyindexfunction.md)|Returns a value indicating the position of the first value found from a specified list that appears withing the input string.|
 |[indexof()](indexoffunction.md)|Function reports the zero-based index of the first occurrence of a specified string within input string.|
 |[isempty()](isemptyfunction.md)|Returns true if the argument is an empty string or is null.|
 |[isnotempty()](isnotemptyfunction.md)|Returns true if the argument isn't an empty string or a null.|
