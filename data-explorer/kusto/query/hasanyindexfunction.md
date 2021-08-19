@@ -7,25 +7,25 @@ ms.author: orspodek
 ms.reviewer: atefsawaed
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 19/08/2021
+ms.date: 08/19/2021
 ---
 # has_any_index()
 
-Returns the index of the first value found from a specified list that appears withing the input string.
+Returns the index of the first value found from a specified list that appears within the input string.
 
 ## Syntax
 
-`has_any_index(`*str*,*arr*`)`
+`has_any_index(`*str*, *arr*`)`
 
 ## Arguments
 
 * *str*: Input string to search.
-* *arr*: List of values to search for.
+* *array*: List of values to search for.
 
 ## Returns
 
-The index of the first element in the array *arr* that the string *str* has matched.
-Returns -1 if none of the values were found in the string or if *arr* is null or empty.
+The index of the first element in *array* that the string *str* has matched.
+Returns -1 if none of the values were found or if *array* is empty.
 
 ## Example
 
