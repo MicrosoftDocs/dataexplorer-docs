@@ -1,0 +1,132 @@
+---
+title: startswith and notstartswith operators - Azure Data Explorer
+description: This article describes startswith and notstartswith operators in Azure Data Explorer.
+services: data-explorer
+author: orspod
+ms.author: orspodek
+ms.reviewer: alexans
+ms.service: data-explorer
+ms.topic: reference
+ms.date: 03/18/2019
+ms.localizationpriority: high
+---
+# startswith and !startswith operators
+
+Filters a record set based on the provided value with a search that is not case sensitive. The value represents a starting sequence of the string found in the searched column.
+
+```kusto
+Table1 | where col startswith ('value1')
+```
+ 
+## Syntax
+
+### Case insensitive syntax
+
+*T* `|` `where` *col* `startswith` `(`*expression*`)`   
+ 
+*T* `|` `where` *col* `!startswith` `(`*expression*`)`   
+
+## Arguments
+
+* *T* - The tabular input whose records are to be filtered.
+* *col* - The column to filter.
+* *expression* - Scalar or literal expression.
+
+## Returns
+
+Rows in *T* for which the predicate is `true`.
+
+## Examples  
+
+### Use 'startswith' operator
+
+```kusto
+StormEvents
+    | summarize event_count=count() by State
+    | where State startswith "Lo"
+    | where event_count > 10
+    | project State, event_count
+    | render table
+```
+
+|State|event_count|
+|-----|-----------|
+|LOUISIANA|463|  
+
+### Use '!startswith' operator
+
+```kusto
+StormEvents
+    | summarize event_count=count() by State
+    | where State !startswith "i"
+    | where event_count > 2000
+    | project State, event_count
+    | render table
+```
+
+|State|event_count|
+|-----|-----------|
+|TEXAS|4701|
+|KANSAS|3166|
+|MISSOURI|2016| 
+
+# startswith_cs and !startswith_cs operators
+
+Filters a record set based on a value using a search that is case sensitive. The value represents a starting sequence of the string found in the searched column.
+
+```kusto
+Table1 | where col startswith_cs ('value1')
+```
+ 
+## Syntax
+
+### Case-sensitive syntax
+
+*T* `|` `where` *col* `startswith_cs` `(`*expression*`)`   
+
+*T* `|` `where` *col* `!startswith_cs` `(`*expression*`)`  
+
+## Arguments
+
+* *T* - The tabular input whose records are to be filtered.
+* *col* - The column to filter.
+* *expression* - Scalar or literal expression.
+
+## Returns
+
+Rows in *T* for which the predicate is `true`.
+
+## Examples  
+
+### Use 'startswith_cs' operator
+
+```kusto
+StormEvents
+    | summarize event_count=count() by State
+    | where State startswith_cs "I"
+    | where event_count > 2000
+    | project State, event_count
+    | render table
+```
+
+|State|event_count|
+|-----|-----------|
+|IOWA|2337|
+|ILLINOIS|2022| 
+
+### Use '!startswith_cs' operator
+
+```kusto
+StormEvents
+    | summarize event_count=count() by State
+    | where State !startswith_cs "I"
+    | where event_count > 2000
+    | project State, event_count
+    | render table
+```
+
+|State|event_count|
+|-----|-----------|
+|TEXAS|4701|
+|KANSAS|3166|
+|MISSOURI|2016| 
