@@ -6,7 +6,7 @@ author: urishapira
 ms.author: urishapira
 ms.reviewer: alexans
 ms.service: data-explorer
-ms.topic: reference
+ms.topic: reference 
 ms.date: 08/22/2021
 ---
 # base64_decode_toguid()
