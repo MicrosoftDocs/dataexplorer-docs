@@ -11,8 +11,7 @@ ms.date: 06/28/2021
 ---
 # Storage connection strings
 
-A few Kusto commands instruct Kusto to interact with external storage services. For example, Kusto can be told to [create an Azure Storage external tables](../../
-management/external-tables-azurestorage-azuredatalake.md).
+A few Kusto commands instruct Kusto to interact with external storage services. For example, Kusto can be told to [create an Azure Storage external tables](../../management/external-tables-azurestorage-azuredatalake.md).
 
 Kusto supports the following storage providers:
 
