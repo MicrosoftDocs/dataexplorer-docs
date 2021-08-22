@@ -13,6 +13,12 @@ ms.date: 03/19/2020
 
 Data ingestion is the process by which data is added to a table and is made available for query in Azure Data Explorer. For all ingestion methods, other than ingest-from-query, the data must be in one of the supported formats. The following table lists and describes the formats that Azure Data Explorer supports for data ingestion.
 
+> [!NOTE]
+> Before you ingest data, ensure that your data is formatted in a valid manner. You can use a validator to check the data. For example, the following validators are available to check CSV and JSON:
+> * CSV: http://csvlint.io/
+> * Json: https://jsonlint.com/?code= 
+> Also check that the data is organized as expected, if your query expects two columns of data and you only have one column of data, you will receive an error. If your data query is arriving empty, check the format validity.
+
 |Format   |Extension   |Description|Validator Site |
 |---------|------------|-----------|---------------|
 |ApacheAvro|`.avro`    |An [AVRO](https://avro.apache.org/docs/current/) format with support for [logical types](https://avro.apache.org/docs/current/spec.html#Logical+Types). The following compression codecs are supported: `null`, `deflate`, and `snappy`. Reader implementation of the `apacheavro` format is based on the official [Apache Avro library](https://github.com/apache/avro).|To validate files use the [avro validator](https://pypi.org/project/avro-validator/)|
