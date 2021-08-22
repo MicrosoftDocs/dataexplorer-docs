@@ -11,7 +11,8 @@ ms.date: 06/28/2021
 ---
 # Storage connection strings
 
-A few Kusto commands instruct Kusto to interact with external storage services. For example, Kusto can be told to export data to an Azure Blob Storage.
+A few Kusto commands instruct Kusto to interact with external storage services. For example, Kusto can be told to [create an Azure Storage external tables](../../
+management/external-tables-azurestorage-azuredatalake.md).
 
 Kusto supports the following storage providers:
 
@@ -67,11 +68,11 @@ The format of the URI is:
 
 `https://`*StorageAccountName*`.blob.core.windows.net/`*Container*[`/`*BlobName*][*CallerCredentials*]
 
-Where *CallerCredentials* indicates the credentials used to access the service and can be one of the following:
+Where *CallerCredentials* indicates the credentials used to access the storage and can be one of the following:
 * Shared Access (SAS) key, using the Azure Blob Storage's standard query (`:?sig=...`). Use this method when Kusto needs to access the
   resource for a limited time.
 * Storage account key (`;ljkAkl...==`). Use this method when Kusto needs to access the resource on an ongoing basis.
-* A base-64 encoded AAD access token (`;token=AadToken`). Make sure the token is for the resource https://storage.azure.com/.
+* A base-64 encoded AAD access token (`;token=AadToken`). Make sure the token is for the resource `https://storage.azure.com/`.
 
 Examples (note that this is showing obfuscated string literals, so as not to expose the account key, SAS or token):
 
@@ -87,7 +88,9 @@ Azure Data Lake Storage Gen2 is a set of capabilities dedicated to big data anal
 The format of the URI is:
 
 `abfss://` *Filesystem* `@` *StorageAccountName* `.dfs.core.windows.net` [`/` *Path* ][*CallerCredentials*]
+
 or
+
 `https://` *StorageAccountName* `.dfs.core.windows.net/` *Filesystem* [`/` *Path*][*CallerCredentials*]
 
 Where:
