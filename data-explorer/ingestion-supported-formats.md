@@ -16,7 +16,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 > [!NOTE]
 > Before you ingest data, ensure that your data is formatted in a valid manner. You can use a validator to check the data. For example, the following validators are available to check CSV and JSON:
 > * CSV: http://csvlint.io/
-> * JSON: https://jsonlint.com/ 
+> * JSON: https://jsonlint.com/
 >
 > Ensure that you check that the data is organized as expected, if your query expects two columns of data and you only have one column of data, you will receive an error. If your data query is arriving empty, check the format validity.
 
