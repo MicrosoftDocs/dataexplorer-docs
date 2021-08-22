@@ -53,7 +53,7 @@ Azure Storage SAS links can also be generated as described in [URI templates](#u
 |------------------------------|----------|--------------------------------------|
 |Azure Blob Storage            |`https://`|`https://`*StorageAccountName*`.blob.core.windows.net/`*Container*[`/`*BlobName*][*CallerCredentials*]|
 |Azure Data Lake Storage Gen2  |`https://`|`https://`*StorageAccountName*`.dfs.core.windows.net/`*Filesystem*[`/`*PathToDirectoryOrFile*][*CallerCredentials*]|
-|Azure Data Lake Storage Gen2  |`abfss://`|`abfss://`*Filesystem*`@`*StorageAccountName*`.dfs.core.windows.net/`*PathToDirectoryOrFile*[*CallerCredentials*]|
+|Azure Data Lake Storage Gen2  |`abfss://`|`abfss://`*Filesystem*`@`*StorageAccountName*`.dfs.core.windows.net/`[*PathToDirectoryOrFile*][*CallerCredentials*]|
 |Azure Data Lake Storage Gen1  |`adl://`  |`adl://`*StorageAccountName*.azuredatalakestore.net/*PathToDirectoryOrFile*[*CallerCredentials*]|
 
 > [!TIP]
@@ -68,7 +68,7 @@ The format of the URI is:
 `https://`*StorageAccountName*`.blob.core.windows.net/`*Container*[`/`*BlobName*][*CallerCredentials*]
 
 Where *CallerCredentials* indicates the credentials used to access the storage and can be one of the following:
-* Shared Access (SAS) key, using the Azure Blob Storage's standard query (`:?sig=...`). Use this method when Kusto needs to access the
+* Shared Access (SAS) key, using the Azure Blob Storage's standard query (`?sig=...`). Use this method when Kusto needs to access the
   resource for a limited time.
 * Storage account key (`;ljkAkl...==`). Use this method when Kusto needs to access the resource on an ongoing basis.
 * A base-64 encoded AAD access token (`;token=AadToken`). Make sure the token is for the resource `https://storage.azure.com/`.
