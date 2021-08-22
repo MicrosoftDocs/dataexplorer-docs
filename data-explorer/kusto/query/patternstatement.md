@@ -11,113 +11,79 @@ ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
-# pattern statement
+
+# Pattern statement
 
 ::: zone pivot="azuredataexplorer"
 
-A **pattern** is a named view-like construct that maps predefined
-string tuples to parameterless function bodies. Patterns are unique
-in two aspects:
+A `pattern` is a construct used to query and define data based on a set of string parameters. Patterns can contain a set of argument values that Azure Data Explorer maps. If a pattern is declared but is empty, Azure Data Explorer identifies and flags any subsequent pattern invocation as an error. 
 
-* Patterns are "invoked" by using a syntax that resembles scoped table references.
-* Patterns have a controlled, close-ended, set of argument values that
-  can be mapped, and the mapping process is done by Kusto. If a pattern is declared but not defined, Kusto identifies and flags all invocations to the pattern as errors. This identification makes it possible to "resolve" these patterns by a middle-tier application.
+The pattern statement can be used with middle-tier applications that accept user queries, and then send these queries to Azure Data Explorer. Such applications often prefix such user queries with a logical schema model. The model is a set of [let statements](letstatement.md), possibly suffixed by a [restrict statement](restrictstatement.md). 
 
-## Pattern declaration
+Applications may use references that are defined in a logical schema constructed by the application, for example, a table of IP addresses associated with latitude and longitude. However, the number of potential entities might be too large to be predefined in the logical schema, or the references are not known ahead of time, for example. When an application sends a query, the application might not have enough information to construct the full definition. Pattern statements solve this problem. 
 
-The pattern statement is used to declare or define a pattern.
-For example, a pattern statement that declares `app`
-to be a pattern.
+The middle-tier application can send a query to Azure Data Explorer with a relevant pattern declared, but not defined with the exact information. When Azure Data Explorer then parses the query, if the pattern was invoked, Azure Data Explorer returns an error to the middle-tier application addressing any invocation. The middle-tier application can then resolve each of the references and rerun the query, prefixing it with the full pattern definition.
 
-```kusto
-declare pattern app;
-```
-
-This statement tells Kusto that `app` is a pattern, but doesn't
-tell Kusto how to resolve the pattern. As a result, any attempt to
-invoke this pattern in the query will result in a specific error, and will 
-list all such invocations. For example:
-
-```kusto
-declare pattern app;
-app("ApplicationX").StartEvents
-| join kind=inner app("ApplicationX").StopEvents on CorrelationId
-| count
-```
-
-This query will generate an error from Kusto, indicating that the next
-pattern invocations can't be resolved: `app("ApplicationX")["StartEvents"]`
-and `app("ApplicationX")["StopEvents"]`.
-
-## Syntax of pattern declaration
-
-`declare` `pattern` *PatternName*
-
-## Pattern definition
-
-The pattern statement can also be used to define a pattern. In a pattern
-definition, all possible invocations of the pattern are explicitly laid
-out, and the corresponding tabular expression given. When Kusto then executes
-the query, it replaces each pattern invocation with the corresponding pattern body. For example:
-
-```kusto
-declare pattern app = (applicationId:string)[eventType:string]
-{
-    ("ApplicationX").["StopEvents"] = { database("AppX").Events | where EventType == "StopEvent" };
-    ("ApplicationX").["StartEvents"] = { database("AppX").Events | where EventType == "StartEvents" } ;
-};
-app("ApplicationX").StartEvents
-| join kind=inner app("ApplicationX").StopEvents on CorrelationId
-| count
-```
-
-The expression that is provided for each pattern that is matched, is either a table name or a reference to a [let statement](letstatement.md).
-
-## Syntax of pattern definition
+## Syntax
 
 `declare` `pattern` *PatternName* = `(`*ArgName* `:` *ArgType* [`,` ... ]`)` [`[` *PathName* `:` *PathArgType* `]`]
+
 `{`
-&nbsp;&nbsp;&nbsp;&nbsp; `(` *ArgValue1* [`,` *ArgValue2* ... ] `)` [ `.[` *PathValue `]` ] `=` `{`  *expression*  `};`
-&nbsp;&nbsp;&nbsp;&nbsp; [
-&nbsp;&nbsp;&nbsp;&nbsp; `(` *ArgValue1_2* [`,` *ArgValue2_2* ... ] `)` [ `.[` *PathValue_2* `]` ] `=` `{`  *expression_2*  `};`
-&nbsp;&nbsp;&nbsp;&nbsp; ...
+
+&nbsp;&nbsp;&nbsp;&nbsp; `(` *ArgValue1* [`,` *ArgValue2* ... ] `)` [ `.[` *PathValue `]` ] `=` `{`  *expression*  `}``;`
+
+&nbsp;&nbsp;&nbsp;&nbsp; [ `(` *ArgValue3* [`,` *ArgValue4* ... ] `)` [ `.[` *PathValue5* `]` ] `=` `{`  *expression6*  `}``;` ...
 &nbsp;&nbsp;&nbsp;&nbsp; ]
+
 `}`
 
-* *PatternName*: Name of the pattern keyword. Syntax that defines keyword only is allowed: for detecting all pattern references with a specified keyword.
-* *ArgName*: Name of the pattern argument. Patterns allow one or more argument names.
-* *ArgType*: Type of the pattern argument (currently only `string` is allowed)
-* *PathName*: Name of the path argument. Patterns allow zero or one path name.
-* *PathType*: Type of the path argument (currently only `string` is allowed)
-* *ArgValue1*, *ArgValue2*, ... - values of the pattern arguments (currently only `string` literals are allowed)
-* *PathValue* - value of the pattern path (currently only `string` literals are allowed)
-* *expression*: The *expression* - a tabular expression (for example, `Logs | where Timestamp > ago(1h)`),
-  or a lambda expression that references a function.
-
-## Pattern invocation
-
-The pattern invocation syntax is similar to the scoped table reference syntax.
+The syntax for invoking a pattern is as follows:
 
 * *PatternName* `(` *ArgValue1* [`,` *ArgValue2* ...] `).`*PathValue*
 * *PatternName* `(` *ArgValue1* [`,` *ArgValue2* ...] `).["`*PathValue*`"]`
 
-## Notes
+## Arguments
 
-**Scenario**
+* *PatternName*: Name of pattern. Use the pattern syntax for all pattern references associated with the keyword.
+* *ArgName*: Name of argument. Patterns can have one or more arguments.
+* *ArgType*: Type of argument, `string`.
+* *PathName*: Name of a path argument. Patterns can have no path or one path.
+* *PathArgType*: Type of the path argument, `string`.
+* *ArgValue*: Value of an argument, a `string` literal.
+* *PathValue*: Value of the path, of type `string`.
+* *expression*: A tabular expression (for example, `Logs | where Timestamp > ago(1h)`),
+  or a lambda expression that references a function.
 
-The pattern statement is designed for middle-tier applications that accept user queries and then send these queries to Kusto. Such applications often prefix those user queries with a logical schema model. The model is a set of [let statements](letstatement.md), possibly suffixed by a [restrict statement](restrictstatement.md).
+## Examples
 
-Some applications need a syntax that they can provide users. The syntax is used to reference entities that are defined in the logical schema that the applications construct. However, sometimes entities aren't known ahead of time, or the number of potential entities is too large to be pre-defined in the logical schema.
+### Defining simple patterns
 
-Pattern solves this scenario in the following way. The middle-tier application sends
-the query to Kusto with all patterns declared, but not defined. Kusto then parses the
-query. If there are one or more pattern invocations, Kusto returns an error to
-the middle-tier application with all such invocations explicitly listed. The middle-tier application can then resolve each of these references, and rerun the query. This time, prefixing it with the fully elaborated pattern definition.
+In each of the following examples, a pattern is defined and then used:
 
-**Normalizations**
+```kusto
+declare pattern country = (name:string)[state:string]
+{
+  ("USA").["New York"] = { print Capital = "New York City" };
+  ("USA").["Washington"] = { print Capital = "Seattle" };
+  ("Canada").["Alberta"] = { print Capital = "Edmonton" };
+};
+country("Canada").Alberta
+```
 
-Kusto automatically normalizes the pattern. For example, the following are all
-invocations of the same pattern, and a single one is reported back.
+```kusto
+declare pattern App = (applicationId:string)[scope:string]  
+{
+    ('a1').['Data']    = { range x from 1 to 5 step 1 | project App = "App #1", Data    = x };
+    ('a1').['Metrics'] = { range x from 1 to 5 step 1 | project App = "App #1", Metrics = rand() };
+    ('a2').['Data']    = { range x from 1 to 5 step 1 | project App = "App #2", Data    = 10 - x };
+    ('a3').['Metrics'] = { range x from 1 to 5 step 1 | project App = "App #3", Metrics = rand() };
+};
+union (App('a2').Data), (App('a1').Metrics)
+```
+
+### Normalization
+
+Azure Data Explorer accepts variations of syntax as the same for pattern invocation. For example, the following are all invocations of the same pattern. This means that you can't define them together, since they are considered to be the same, so this would produce an error.
 
 ```kusto
 declare pattern app;
@@ -128,13 +94,10 @@ union
   app("ApplicationX").["StartEvent"]
 ```
 
-This also means that you can't define them together, since they're considered
-to be the same.
+### No wildcards
 
-**Wildcards**
-
-Kusto doesn't treat wildcards in a pattern in any special way. For example,
-in the following query.
+Azure Data Explorer does not count wildcards in a pattern. For example,
+in the following query, Azure Data Explorer will report a single missing pattern invocation: `app("ApplicationX").["*"]`.
 
 ```kusto
 declare pattern app;
@@ -142,62 +105,35 @@ union app("ApplicationX").*
 | count
 ```
 
-Kusto will report a single missing pattern invocation: `app("ApplicationX").["*"]`.
+### Working with middle-tier applications
 
-## Examples
+In the following example, a middle-tier application uses an internal service to map IP addresses to longitude/latitude locations. The middle-tier app declares a pattern called `map_ip_to_longlat`. Suppose it gets the following query from the user:
 
-Queries over more than a single pattern invocation.
+`map_ip_to_longlat` `(`"10.10.10.10"`)`
+
+The middle-tier application does not parse this query to determine the IP address that was requested (`10.10.10.10`). But it also cannot send Azure Data Explorer its entire database of IP addresses. So it sends Azure Data Explorer the user query, pre-pended with an empty pattern declaration:
 
 ```kusto
-declare pattern A
+declare pattern map_ip_to_longlat;
+map_ip_to_longlat("10.10.10.10")
+```
+
+Azure Data Explorer runs this query and provides the following error: `One or more pattern references were not declared. Detected pattern references: ["map_ip_to_longlat('10.10.10.10')"]`
+
+The middle-tier application can then inspect the error, determine that the error code (SEM0036) indicates a missing pattern reference, and retrieve the missing IP address from the error `map_ip_to_longlat('10.10.10.10')`. The middle-tier application then look up this IP address and re-runs the query, this time providing the pattern references as part of the pattern declaration, so that Azure Data Explorer knows the exact value of the latitude and longitude:
+
+```kusto
+declare pattern map_ip_to_longlat = (address:string)
 {
-    // ...
+  ("10.10.10.10") = { print Lat=37.405992, Long=-122.078515 }
 };
-union (A('a1').Text), (A('a2').Text)
+map_ip_to_longlat("10.10.10.10")
 ```
-
-|App|SomeText|
-|---|---|
-|App #1|This is a free text: 1|
-|App #1|This is a free text: 2|
-|App #1|This is a free text: 3|
-|App #1|This is a free text: 4|
-|App #1|This is a free text: 5|
-|App #2|This is a free text: 9|
-|App #2|This is a free text: 8|
-|App #2|This is a free text: 7|
-|App #2|This is a free text: 6|
-|App #2|This is a free text: 5|
-
-```kusto
-declare pattern App;
-union (App('a1').Text), (App('a2').Text)
-```
-
-**Semantic error**:
-
-> SEM0036: One or more pattern references weren't declared. Detected pattern references: ["App('a1').['Text']","App('a2').['Text']"].
-
-```kusto
-declare pattern App;
-declare pattern App = (applicationId:string)[scope:string]  
-{
-    ('a1').['Data']    = { range x from 1 to 5 step 1 | project App = "App #1", Data    = x };
-    ('a1').['Metrics'] = { range x from 1 to 5 step 1 | project App = "App #1", Metrics = rand() };
-    ('a2').['Data']    = { range x from 1 to 5 step 1 | project App = "App #2", Data    = 10 - x };
-    ('a3').['Metrics'] = { range x from 1 to 5 step 1 | project App = "App #3", Metrics = rand() };
-};
-union (App('a2').Metrics), (App('a3').Metrics) 
-```
-
-**Semantic error returned**:
-
-> SEM0036: One or more pattern references weren't declared. Detected pattern references: ["App('a2').['Metrics']","App('a3').['Metrics']"].
 
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
 
-This capability isn't supported in Azure Monitor
+Not supported in Azure Monitor.
 
 ::: zone-end
