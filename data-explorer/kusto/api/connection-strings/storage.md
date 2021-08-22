@@ -11,15 +11,13 @@ ms.date: 06/28/2021
 ---
 # Storage connection strings
 
-A few Kusto commands instruct Kusto to interact with external
-storage services. For example, Kusto can be told to export data to an Azure Blob Storage, in which case the specific parameters (such as storage account name or
-blob container) need to be provided.
+A few Kusto commands instruct Kusto to interact with external storage services. For example, Kusto can be told to export data to an Azure Blob Storage.
 
 Kusto supports the following storage providers:
 
 * Azure Blob Storage provider
-* Azure Data Lake Storage Gen1 provider
 * Azure Data Lake Storage Gen2 provider
+* Azure Data Lake Storage Gen1 provider
 
 Each kind of a storage provider defines connection string formats
 used to describe the storage resources and how to access them.
@@ -51,12 +49,12 @@ Azure Storage SAS links can also be generated as described in [URI templates](#u
 
 ## URI templates
 
-|Provider                       |Scheme    |URI template                          |
-|-------------------------------|----------|--------------------------------------|
-|Azure Blob Storage             |`https://`|`https://`*Account*`.blob.core.windows.net/`*Container*[`/`*BlobName*][*CallerCredentials*]|
-|Azure Data Lake Storage Gen 2  |`https://`|`https://`*Account*`.dfs.core.windows.net/`*Filesystem*[`/`*PathToDirectoryOrFile*][*CallerCredentials*]|
-|Azure Data Lake Storage Gen 2  |`abfss://`|`abfss://`*Filesystem*`@`*Account*`.dfs.core.windows.net/`*PathToDirectoryOrFile*[*CallerCredentials*]|
-|Azure Data Lake Storage Gen 1  |`adl://`  |`adl://`*Account*.azuredatalakestore.net/*PathToDirectoryOrFile*[*CallerCredentials*]|
+|Provider                      |Scheme    |URI template                          |
+|------------------------------|----------|--------------------------------------|
+|Azure Blob Storage            |`https://`|`https://`*StorageAccountName*`.blob.core.windows.net/`*Container*[`/`*BlobName*][*CallerCredentials*]|
+|Azure Data Lake Storage Gen2  |`https://`|`https://`*StorageAccountName*`.dfs.core.windows.net/`*Filesystem*[`/`*PathToDirectoryOrFile*][*CallerCredentials*]|
+|Azure Data Lake Storage Gen2  |`abfss://`|`abfss://`*Filesystem*`@`*StorageAccountName*`.dfs.core.windows.net/`*PathToDirectoryOrFile*[*CallerCredentials*]|
+|Azure Data Lake Storage Gen1  |`adl://`  |`adl://`*StorageAccountName*.azuredatalakestore.net/*PathToDirectoryOrFile*[*CallerCredentials*]|
 
 > [!TIP]
 > When using impersonation or when using a [user delegation SAS token](/rest/api/storageservices/create-user-delegation-sas) in the connection string, the AAD principal which the operation is executed on-behalf-of must be assigned (minimally) the [Storage Blob Data Reader role](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) for read operations, or [Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) for write (for example, export) operations.
@@ -67,7 +65,7 @@ This provider supports accessing data in Azure Blob Storage. This provider is th
 
 The format of the URI is:
 
-`https://`*Account*`.blob.core.windows.net/`*Container*[`/`*BlobName*][*CallerCredentials*]
+`https://`*StorageAccountName*`.blob.core.windows.net/`*Container*[`/`*BlobName*][*CallerCredentials*]
 
 Where *CallerCredentials* indicates the credentials used to access the service and can be one of the following:
 * Shared Access (SAS) key, using the Azure Blob Storage's standard query (`:?sig=...`). Use this method when Kusto needs to access the
@@ -88,7 +86,7 @@ Azure Data Lake Storage Gen2 is a set of capabilities dedicated to big data anal
 
 The format of the URI is:
 
-`abfss://` *Filesystem* `@` *StorageAccountName* `.dfs.core.windows.net` [/` *Path* ][*CallerCredentials*]
+`abfss://` *Filesystem* `@` *StorageAccountName* `.dfs.core.windows.net` [`/` *Path* ][*CallerCredentials*]
 or
 `https://` *StorageAccountName* `.dfs.core.windows.net/` *Filesystem* [`/` *Path*][*CallerCredentials*]
 
