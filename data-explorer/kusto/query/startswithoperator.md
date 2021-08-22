@@ -26,6 +26,12 @@ Table1 | where col startswith ('value1')
  
 *T* `|` `where` *col* `!startswith` `(`*expression*`)`   
 
+### Case-sensitive syntax
+
+*T* `|` `where` *col* `startswith_cs` `(`*expression*`)`   
+
+*T* `|` `where` *col* `!startswith_cs` `(`*expression*`)`  
+
 ## Arguments
 
 * *T* - The tabular input whose records are to be filtered.
@@ -69,34 +75,6 @@ StormEvents
 |TEXAS|4701|
 |KANSAS|3166|
 |MISSOURI|2016| 
-
-# startswith_cs and !startswith_cs operators
-
-Filters a record set based on a value using a search that is case sensitive. The value represents a starting sequence of the string found in the searched column.
-
-```kusto
-Table1 | where col startswith_cs ('value1')
-```
- 
-## Syntax
-
-### Case-sensitive syntax
-
-*T* `|` `where` *col* `startswith_cs` `(`*expression*`)`   
-
-*T* `|` `where` *col* `!startswith_cs` `(`*expression*`)`  
-
-## Arguments
-
-* *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
-
-## Returns
-
-Rows in *T* for which the predicate is `true`.
-
-## Examples  
 
 ### Use 'startswith_cs' operator
 

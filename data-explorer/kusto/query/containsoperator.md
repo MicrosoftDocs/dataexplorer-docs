@@ -26,6 +26,12 @@ Table1 | where col contains ('value1')
  
 *T* `|` `where` *col* `!contains` `(`*expression*`)`   
 
+### Case-sensitive syntax
+
+*T* `|` `where` *col* `contains_cs` `(`*expression*`)`   
+
+*T* `|` `where` *col* `!contains_cs` `(`*expression*`)` 
+
 ## Arguments
 
 * *T* - The tabular input whose records are to be filtered.
@@ -68,34 +74,6 @@ StormEvents
 |State|event_count|
 |-----|-----------|
 |KANSAS|3,166| 
-
-# contains_cs and !contains_cs operators
-
-Filters a record set based on a value using a search that is case sensitive. The value represents a string contained in the searched column.
-
-```kusto
-Table1 | where col contains_cs ('value1')
-```
- 
-## Syntax
-
-### Case-sensitive syntax
-
-*T* `|` `where` *col* `contains_cs` `(`*expression*`)`   
-
-*T* `|` `where` *col* `!contains_cs` `(`*expression*`)`  
-
-## Arguments
-
-* *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
-
-## Returns
-
-Rows in *T* for which the predicate is `true`.
-
-## Examples  
 
 ### Use 'contains_cs' operator
 

@@ -26,6 +26,12 @@ Table1 | where col endswith ('value1')
  
 *T* `|` `where` *col* `!endswith` `(`*expression*`)`   
 
+### Case-sensitive syntax
+
+*T* `|` `where` *col* `endswith_cs` `(`*expression*`)`   
+
+*T* `|` `where` *col* `!endswith_cs` `(`*expression*`)`  
+
 ## Arguments
 
 * *T* - The tabular input whose records are to be filtered.
@@ -71,34 +77,6 @@ StormEvents
 |KANSAS|3166|
 |IOWA|2337|
 |MISSOURI|2016| 
-
-# endswith_cs and !endswith_cs operators
-
-Filters a record set based on a value using a search that is case sensitive. The value represents an ending sequence of the string found in the searched column.
-
-```kusto
-Table1 | where col endswith_cs ('value1')
-```
- 
-## Syntax
-
-### Case-sensitive syntax
-
-*T* `|` `where` *col* `endswith_cs` `(`*expression*`)`   
-
-*T* `|` `where` *col* `!endswith_cs` `(`*expression*`)`  
-
-## Arguments
-
-* *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
-
-## Returns
-
-Rows in *T* for which the predicate is `true`.
-
-## Examples  
 
 ### Use 'endswith_cs' operator
 

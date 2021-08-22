@@ -26,6 +26,12 @@ Table1 | where col has ('value1')
  
 *T* `|` `where` *col* `!has` `(`*expression*`)`   
 
+### Case-sensitive syntax
+
+*T* `|` `where` *col* `has_cs` `(`*expression*`)`   
+
+*T* `|` `where` *col* `!has_cs` `(`*expression*`)`  
+
 ## Arguments
 
 * *T* - The tabular input whose records are to be filtered.
@@ -71,34 +77,6 @@ StormEvents
 |-----|-----------|
 |TEXAS|4,701|
 |KANSAS|3,166| 
-
-# has_cs and !has_cs operators
-
-Filters a record set based on a value using a search that is case sensitive. The value represents a term found in the searched column.
-
-```kusto
-Table1 | where col has_cs ('value1')
-```
- 
-## Syntax
-
-### Case-sensitive syntax
-
-*T* `|` `where` *col* `has_cs` `(`*expression*`)`   
-
-*T* `|` `where` *col* `!has_cs` `(`*expression*`)`  
-
-## Arguments
-
-* *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
-
-## Returns
-
-Rows in *T* for which the predicate is `true`.
-
-## Examples  
 
 ### Use 'has_cs' operator
 

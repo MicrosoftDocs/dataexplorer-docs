@@ -26,6 +26,12 @@ Table1 | where col hasprefix ('value1')
  
 *T* `|` `where` *col* `!hasprefix` `(`*expression*`)`   
 
+### Case-sensitive syntax
+
+*T* `|` `where` *col* `hasprefix_cs` `(`*expression*`)`   
+
+*T* `|` `where` *col* `!hasprefix_cs` `(`*expression*`)`  
+
 ## Arguments
 
 * *T* - The tabular input whose records are to be filtered.
@@ -75,34 +81,6 @@ StormEvents
 |IOWA|2337|
 |ILLINOIS|2022|
 |MISSOURI|2016|
-
-# hasprefix_cs and !hasprefix_cs operators
-
-Filters a record set based on a value using a search that is case sensitive. The value represents a term prefix found in the searched column.
-
-```kusto
-Table1 | where col hasprefix_cs ('value1')
-```
- 
-## Syntax
-
-### Case-sensitive syntax
-
-*T* `|` `where` *col* `hasprefix_cs` `(`*expression*`)`   
-
-*T* `|` `where` *col* `!hasprefix_cs` `(`*expression*`)`  
-
-## Arguments
-
-* *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
-
-## Returns
-
-Rows in *T* for which the predicate is `true`.
-
-## Examples  
 
 ### Use 'hasprefix_cs' operator
 
