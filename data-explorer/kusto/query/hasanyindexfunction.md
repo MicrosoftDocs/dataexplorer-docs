@@ -11,7 +11,7 @@ ms.date: 08/19/2021
 ---
 # has_any_index()
 
-Returns the index of the first value found from a specified list that appears within the input string.
+Searches the string for items specified in the array and returns the position of the first item found in the string.
 
 ## Syntax
 
