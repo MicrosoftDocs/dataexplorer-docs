@@ -77,23 +77,23 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 
 | **Use**   | **From**   | **To**   | **Protocol**   |
 | --- | --- | --- | --- |
-| Management  |[ADX management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement(ServiceTag) | ADX subnet:443  | TCP  |
-| Health monitoring  | [ADX health monitoring addresses](#health-monitoring-addresses)  | ADX subnet:443  | TCP  |
-| ADX internal communication  | ADX subnet: All ports  | ADX subnet:All ports  | All  |
-| Allow Azure load balancer inbound (health probe)  | AzureLoadBalancer  | ADX subnet:80,443  | TCP  |
+| Management  |[Azure Data Explorer management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement(ServiceTag) | Azure Data Explorer subnet:443  | TCP  |
+| Health monitoring  | [Azure Data Explorer health monitoring addresses](#health-monitoring-addresses)  | Azure Data Explorer subnet:443  | TCP  |
+| Azure Data Explorer internal communication  | Azure Data Explorer subnet: All ports  | Azure Data Explorer subnet:All ports  | All  |
+| Allow Azure load balancer inbound (health probe)  | AzureLoadBalancer  | Azure Data Explorer subnet:80,443  | TCP  |
 
 #### Outbound NSG configuration
 
 | **Use**   | **From**   | **To**   | **Protocol**   |
 | --- | --- | --- | --- |
-| Dependency on Azure Storage  | ADX subnet  | Storage:443  | TCP  |
-| Dependency on Azure Data Lake  | ADX subnet  | AzureDataLake:443  | TCP  |
-| EventHub ingestion and service monitoring  | ADX subnet  | EventHub:443,5671  | TCP  |
-| Publish Metrics  | ADX subnet  | AzureMonitor:443 | TCP  |
-| Active Directory (if applicable) | ADX subnet | AzureActiveDirectory:443 | TCP |
-| Certificate authority | ADX subnet | Internet:80 | TCP |
-| Internal communication  | ADX subnet  | ADX Subnet:All Ports  | All  |
-| Ports that are used for `sql\_request` and `http\_request` plugins  | ADX subnet  | Internet:Custom  | TCP  |
+| Dependency on Azure Storage  | Azure Data Explorer subnet  | Storage:443  | TCP  |
+| Dependency on Azure Data Lake  | Azure Data Explorer subnet  | AzureDataLake:443  | TCP  |
+| EventHub ingestion and service monitoring  | Azure Data Explorer subnet  | EventHub:443,5671  | TCP  |
+| Publish Metrics  | Azure Data Explorer subnet  | AzureMonitor:443 | TCP  |
+| Active Directory (if applicable) | Azure Data Explorer subnet | AzureActiveDirectory:443 | TCP |
+| Certificate authority | Azure Data Explorer subnet | Internet:80 | TCP |
+| Internal communication  | Azure Data Explorer subnet  | Azure Data Explorer Subnet:All Ports  | All  |
+| Ports that are used for `sql\_request` and `http\_request` plugins  | Azure Data Explorer subnet  | Internet:Custom  | TCP  |
 
 ### Relevant IP addresses
 
