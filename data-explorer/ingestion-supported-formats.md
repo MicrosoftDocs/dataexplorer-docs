@@ -18,7 +18,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 > * CSV: http://csvlint.io/
 > * JSON: https://jsonlint.com/
 >
-> Ensure that you check that the data is organized as expected, for example if your query expects two columns of data and you only have one column of data, you will receive an error. If your data query is arriving empty, check the format validity.
+> Once you've confirmed that the data is properly formatted, make sure that the data is organized as expected. For example, if your query expects two columns of data and make sure that the file you are ingesting has two columns, you will receive an error. If your data query returns not results, check the format validity.
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
