@@ -11,21 +11,21 @@ ms.date: 08/19/2021
 ---
 # has_any_index()
 
-Returns the index of the first value found from a specified list that appears within the input string.
+Searches the string for items specified in the array and returns the position of the first item found in the string.
 
 ## Syntax
 
-`has_any_index(`*str*, *arr*`)`
+'has_any_index' '('*string*',' *lookup_array*')'
 
 ## Arguments
 
-* *str*: Input string to search.
+* *string*: Input string to search.
 * *array*: List of values to search for.
 
 ## Returns
 
-The index of the first element in *array* that the string *str* has matched.
-Returns -1 if none of the values were found or if *array* is empty.
+Zero-based index position of the first item in *lookup_array* that is found in *string*.
+Returns -1 if none of the array items were found in the string or if *lookup_array* is empty.
 
 ## Example
 
@@ -40,4 +40,4 @@ print
 
 |idx1|idx2|idx3|idx4|idx5|
 |----|----|----|----|----|
-|0   |3   |-1  |1  | -1  |
+| 0  | 1 | -1 |1 | -1 |

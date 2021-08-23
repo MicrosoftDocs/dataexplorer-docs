@@ -478,7 +478,7 @@ items:
   - name: gzip_decompress_from_base64_string()
     href: gzip-base64-decompress.md
   - name: has_any_index()
-    href: hasanyindexfunction.md
+    href: has-any-index-function.md
   - name: has_any_ipv4()
     href: has-any-ipv4-function.md
   - name: has_ipv4()
