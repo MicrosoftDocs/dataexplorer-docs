@@ -19,7 +19,7 @@ Azure Data Explorer doesn't support automatic protection against the outage of a
 
 1. [Create two or more independent clusters](#create-multiple-independent-clusters) in two Azure paired regions.
 1. [Replicate all management activities](#replicate-management-activities) such as creating new tables or managing user roles on each cluster.
-1. Ingest data to each cluster in parallel.
+1. Ingest data into each cluster in parallel.
 
 ### Create multiple independent clusters
 

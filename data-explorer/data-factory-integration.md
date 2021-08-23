@@ -45,7 +45,7 @@ The [Copy in bulk from a database to Azure Data Explorer by using the Azure Data
 
 ### Mapping data flows 
 
-[Azure Data Factory mapping data flows](/azure/data-factory/concepts-data-flow-overview) are visually designed data transformations that allow data engineers to develop graphical data transformation logic without writing code. To create a data flow and ingest data to Azure Data Explorer, use the following method:
+[Azure Data Factory mapping data flows](/azure/data-factory/concepts-data-flow-overview) are visually designed data transformations that allow data engineers to develop graphical data transformation logic without writing code. To create a data flow and ingest data into Azure Data Explorer, use the following method:
 
 1. Create the [mapping data flow](/azure/data-factory/data-flow-create).
 1. [Export the data into Azure Blob](/azure/data-factory/data-flow-sink). 
