@@ -14,11 +14,11 @@ ms.date: 03/19/2020
 Data ingestion is the process by which data is added to a table and is made available for query in Azure Data Explorer. For all ingestion methods, other than ingest-from-query, the data must be in one of the supported formats. The following table lists and describes the formats that Azure Data Explorer supports for data ingestion.
 
 > [!NOTE]
-> Before you ingest data, ensure that your data is formatted in a valid manner. You can use a validator to check the data. For example, the following validators are available to check CSV and JSON:
+> Before you ingest data, make sure that your data is properly formatted and defines the expected fields. We recommend using your preferred validator to confirm the format is valid. For example, you may find the following validators useful to check CSV or JSON files:
 > * CSV: http://csvlint.io/
 > * JSON: https://jsonlint.com/
 >
-> Ensure that you check that the data is organized as expected, for example if you try to ingest two columns of data but you only have one column of data, you will receive an error.
+> Once you've confirmed that the data is properly formatted, make sure that the data is organized as expected. For example, if you try to ingest two columns of data but only have one column of data, an error might be generated.
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
