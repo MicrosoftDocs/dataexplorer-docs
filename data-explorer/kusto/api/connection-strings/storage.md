@@ -82,7 +82,7 @@ Examples (note that this is showing obfuscated string literals, so as not to exp
 
 ### Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 is a set of capabilities dedicated to big data analytics, built on Azure Blob Storage. Turning on hierarchical namespace on Azure Blob Storage makes these capabilities accessible.
+Azure Data Lake Storage Gen2 is a set of capabilities dedicated to big data analytics, built on Azure Blob Storage. Turning on hierarchical namespace on Azure Blob Storage makes these capabilities accessible, so the storage can be treated also as an Azure Data Lake Storage Gen2.
 
 The format of  Azure Data Lake Storage Gen2 URI is:
 
