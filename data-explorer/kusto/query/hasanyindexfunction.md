@@ -25,7 +25,7 @@ Searches the string for items specified in the array and returns the position of
 ## Returns
 
 Zero-based index position of the first item in *lookup_array* that is found in *string*.
-Returns -1 if none of the values were found or if *array* is empty.
+Returns -1 if none of the array items were found in the string or if *lookup_array* is empty.
 
 ## Example
 
