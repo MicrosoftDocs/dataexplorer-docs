@@ -33,10 +33,6 @@ Table1 | where col has_any ('value1', 'value2')
 
 Rows in *T* for which the predicate is `true`
 
-## See also
-
-Use [`has_any_index()`](hasanyindexfunction.md) to find the index of the first value found from a specified list that appears withing the input string.
-
 **Notes**
 
 * The expression list can produce up to `10,000` values.    
