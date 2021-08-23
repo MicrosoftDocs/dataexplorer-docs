@@ -18,7 +18,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 > * CSV: http://csvlint.io/
 > * JSON: https://jsonlint.com/
 >
-> Once you've confirmed that the data is properly formatted, make sure that the data is organized as expected. For example, if you try to ingest two columns of data but only have one column of data, the data might fail to be ingested.
+>  you've confirmed that the data is properly formatted, make sure that the data is organized as expected. For example, if you try to ingest two columns of data but only have one column of data, the data might fail to be ingested.
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
