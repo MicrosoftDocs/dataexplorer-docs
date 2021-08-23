@@ -17,10 +17,11 @@ Azure Data Explorer provides two options for connecting to data in Excel: use th
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 * An organizational email account that is a member of Azure Active directory, so you can connect to the [Azure Data Explorer help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples) 
 <br>or</br>
-* Create [a test cluster and database](create-cluster-database-portal.md) and sign in to [the Azure Data Explorer Web UI application](https://dataexplorer.azure.com/).
+* Sign in to [the Azure Data Explorer Web UI application](https://dataexplorer.azure.com/).
 
 ## Define Kusto query as an Excel data source
 

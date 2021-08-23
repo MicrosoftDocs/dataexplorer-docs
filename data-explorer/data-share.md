@@ -33,9 +33,9 @@ The data provider can share the data at the database level or at the cluster lev
 
 ## Prerequisites
 
-1. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
-1. [Create provider cluster and DB](create-cluster-database-portal.md) for the leader and follower.
-1. [Ingest data](ingest-sample-data.md) to leader database using one of various methods discussed in [ingestion overview](ingest-data-overview.md).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md) for the leader and follower.
+* [Ingest data](ingest-sample-data.md) to leader database using one of various methods discussed in [ingestion overview](ingest-data-overview.md).
 
 ## Data provider - share data
 
