@@ -19,7 +19,7 @@ Searches the string for items specified in the array and returns the position of
 
 ## Arguments
 
-* *str*: Input string to search.
+* *string*: Input string to search.
 * *array*: List of values to search for.
 
 ## Returns
