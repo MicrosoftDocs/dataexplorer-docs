@@ -96,8 +96,7 @@ union
 
 ### No wildcards
 
-Azure Data Explorer does not count wildcards in a pattern. For example,
-in the following query, Azure Data Explorer will report a single missing pattern invocation: `app("ApplicationX").["*"]`.
+Azure Data Explorer does not count wildcards in a pattern. For example, in the following query, Azure Data Explorer will report a single missing pattern invocation: `app("ApplicationX").["*"]`.
 
 ```kusto
 declare pattern app;
