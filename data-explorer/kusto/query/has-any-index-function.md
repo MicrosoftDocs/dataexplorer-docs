@@ -22,8 +22,6 @@ Searches the string for items specified in the array and returns the position of
 * *string*: Input string to search.
 * *array*: Comma separated list of scalar or literal expressions
 
-
-
 ## Returns
 
 Zero-based index position of the first item in *lookup_array* that is found in *string*.
