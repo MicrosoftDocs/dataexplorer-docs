@@ -31,7 +31,7 @@ For general information about ingesting into Azure Data Explorer from Event Hub,
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * [A test cluster and database](create-cluster-database-portal.md).
-* An existing [user assigned managed identity](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity) or [system assigned managed identity](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) (optional).
+* We recommend using a [user assigned managed identity](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity) or [system assigned managed identity](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) for the data connection (optional).
 * [A sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an Event Hub. Download the sample app to your system.
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) to run the sample app.
 
@@ -132,6 +132,9 @@ Fill out the form with the following information:
 | Compression | *None* | The compression type of the Event Hub messages payload. Supported compression types: *None, Gzip*.|
 | Managed Identity | System assigned | The managed identity used by the Data Explorer cluster for access to read from the Event Hub. The selected managed identity must have the *Azure Event Hubs Data Receiver* permission to read from the Event Hub, and must be added to your Data Explorer cluster. If you chose **System-assigned** managed identity and it doesn't exist, it will be created. Optionally, you can manually perform the steps to create a managed identity. |
 
+> [!NOTE]
+> If you have an existing data connection that is not using managed identities, we recommend updating it to use managed identities.
+
 #### Target table
 
 There are two options for routing the ingested data: *static* and *dynamic*.
@@ -214,6 +217,7 @@ With the app generating data, you can now see the flow of that data from the Eve
     ![Message result set](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
+    >
     > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of 1G, or 1000 blobs. Therefore, you may experience a latency. For more information see [batching policy](kusto/management/batchingpolicy.md).
     > * Event Hub ingestion includes Event Hub response time of 10 seconds or 1 MB.
     > * To reduce response time lag, configure your table to support streaming. See [streaming policy](kusto/management/streamingingestionpolicy.md).
