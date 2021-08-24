@@ -70,6 +70,10 @@ declare pattern country = (name:string)[state:string]
 country("Canada").Alberta
 ```
 
+|Capital|
+|-------|
+|Edmonton|
+
 ```kusto
 declare pattern App = (applicationId:string)[scope:string]  
 {
@@ -81,9 +85,22 @@ declare pattern App = (applicationId:string)[scope:string]
 union (App('a2').Data), (App('a1').Metrics)
 ```
 
+|App|Data|Metrics|
+|---|----|-------|
+|App #2|9| |
+|App #2|8| |
+|App #2|7| |
+|App #2|6| |
+||App #2|5| |
+|App #1| |0.53674122855537532|
+|App #1| |0.78304713305654439|
+|App #1| |0.20168860732346555|
+|App #1| |0.13249123867679469|
+|App #1| |0.19388305330563443|
+
 ### Normalization
 
-Azure Data Explorer accepts variations of syntax as the same for pattern invocation. For example, the following are all invocations of the same pattern. This means that you can't define them together, since they are considered to be the same, so this would produce an error.
+Azure Data Explorer accepts variations of syntax as the same for pattern invocation. For example, the following are all invocations of the same pattern. This means that you can't define them together, since they are considered to be the same, so this definition produces an error.
 
 ```kusto
 declare pattern app;
@@ -94,15 +111,29 @@ union
   app("ApplicationX").["StartEvent"]
 ```
 
+Error 
+
+ One or more pattern references were not declared. Detected pattern references: ["app('ApplicationX').['StartEvent']"]
+
 ### No wildcards
 
-Azure Data Explorer does not count wildcards in a pattern. For example, in the following query, Azure Data Explorer will report a single missing pattern invocation: `app("ApplicationX").["*"]`.
+Azure Data Explorer does not count wildcards in a pattern. For example, in the following query, Azure Data Explorer will report an error.
 
 ```kusto
-declare pattern app;
-union app("ApplicationX").*
-| count
+declare pattern App = (applicationId:string)[scope:string]  
+{
+    ('a1').['Data']    = { range x from 1 to 5 step 1 | project App = "App #1", Data    = x };
+    ('a1').['Metrics'] = { range x from 1 to 5 step 1 | project App = "App #1", Metrics = rand() };
+    ('a2').['Data']    = { range x from 1 to 5 step 1 | project App = "App #2", Data    = 10 - x };
+    ('a3').['Metrics'] = { range x from 1 to 5 step 1 | project App = "App #3", Metrics = rand() };
+};
+union (App('a2').'*'), (App('a1').'*')
 ```
+
+Syntax Error 
+
+ A recognition error occurred. 
+ Token: '*' 
 
 ### Working with middle-tier applications
 
@@ -117,9 +148,13 @@ declare pattern map_ip_to_longlat;
 map_ip_to_longlat("10.10.10.10")
 ```
 
-Azure Data Explorer runs this query and provides the following error: `One or more pattern references were not declared. Detected pattern references: ["map_ip_to_longlat('10.10.10.10')"]`
+Error 
 
-The middle-tier application can then inspect the error, determine that the error code (SEM0036) indicates a missing pattern reference, and retrieve the missing IP address from the error `map_ip_to_longlat('10.10.10.10')`. The middle-tier application then look up this IP address and re-runs the query, this time providing the pattern references as part of the pattern declaration, so that Azure Data Explorer knows the exact value of the latitude and longitude:
+ One or more pattern references were not declared. Detected pattern references: ["map_ip_to_longlat('10.10.10.10')"]
+
+The middle-tier application can then inspect the error, determine that the error indicates a missing pattern reference, and retrieve the missing IP address from the error `map_ip_to_longlat('10.10.10.10')`. 
+
+The middle-tier application can then look up this IP address and re-run the query, this time providing the pattern references as part of the pattern declaration, so that Azure Data Explorer is provided the exact value of the latitude and longitude:
 
 ```kusto
 declare pattern map_ip_to_longlat = (address:string)
@@ -128,6 +163,10 @@ declare pattern map_ip_to_longlat = (address:string)
 };
 map_ip_to_longlat("10.10.10.10")
 ```
+
+|Lat|Long|
+|---|---|
+|37.405992|-122.078515|
 
 ::: zone-end
 
