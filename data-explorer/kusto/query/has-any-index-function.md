@@ -20,7 +20,9 @@ Searches the string for items specified in the array and returns the position of
 ## Arguments
 
 * *string*: Input string to search.
-* *array*: List of values to search for.
+* *array*: Comma separated list of scalar or literal expressions
+
+
 
 ## Returns
 
