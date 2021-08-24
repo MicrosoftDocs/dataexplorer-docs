@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # The dynamic data type
 
-The `dynamic` scalar data type is special in that it can take on any value
+The `dynamic` scalar data type is special in that it can take on any value 
 of other scalar data types from the list below, as well as arrays and property bags. Specifically,
 a `dynamic` value can be:
 
@@ -207,3 +207,12 @@ For a complete list of scalar dynamic/array functions, see [dynamic/array functi
 |[`summarize make_list_if(`column,predicate`)` ](../makelistif-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array (with predicate).
 |[`summarize make_list_with_nulls(`column`)` ](../make-list-with-nulls-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array, including null values.
 |[`summarize make_set(`column`)`](../makeset-aggfunction.md) | Flattens groups of rows and puts the values of the column in an array, without duplication.
+
+## Indexing for dynamic data
+
+Every field is indexed during data ingestion. The scope of the index is a single data shard.
+
+For dynamic columns, to index a dynamic field, the ingestion process enumerates all “atomic” elements within the dynamic value 
+(property names, values, array elements) and forwards them to the index builder. Other than that, dynamic fields have the same inverted term index as the string fields.
+
+For information about indexing, see the section [dynamic data type](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-explorer/Azure_Data_Explorer_white_paper.pdf)
