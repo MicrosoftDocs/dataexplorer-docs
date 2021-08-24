@@ -243,7 +243,7 @@ When you run the sample code as is, the following actions are performed:
     deleted DB barADXTestDB from cluster fooADXTestCluster
 
     waiting for cluster deletion to complete - fooADXTestCluster
-    deleted ADX cluster fooADXTestCluster from resource group <your resource group>
+    deleted Azure Data Explorer cluster fooADXTestCluster from resource group <your resource group>
     ```
 
 ## Clean up resources
