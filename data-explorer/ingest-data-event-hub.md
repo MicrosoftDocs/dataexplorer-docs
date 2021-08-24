@@ -39,25 +39,6 @@ For general information about ingesting into Azure Data Explorer from Event Hub,
 
 Sign in to the [Azure portal](https://portal.azure.com/).
 
-## Enable managed identity on Azure Data Explorer cluster (optional)
-
-You can limit access by using a [managed identity](/azure/active-directory/managed-identities-azure-resources/overview) to connect to your Event Hub. This step is optional.
-
-The first step is to enable the managed identity on your Azure Data Explorer cluster. The managed identity can be either system assigned or user assigned.
-
-1. In the Azure portal, browse to your Azure Data Explorer cluster.
-1. Select **Identity**.
-1. For a system assigned identity, toggle the status to **On**.
-
-    :::image type="content" source="media/ingest-data-event-hub/system-assigned.png" alt-text="Screen shot of system assigned identity in Azure portal.":::
-
-1. For a user assigned identity, select the **User assigned** tab.
-    1. Select **Add**.
-    1. Choose the appropriate **Subscription**, and select your existing user assigned identity.
-    1. Select **Add**.
-
-    :::image type="content" source="media/ingest-data-event-hub/user-assigned-identity.png" alt-text="Screen shot in Azure portal for adding user assigned identity":::
- 
 ## Create an Event Hub
 
 Create an Event Hub by using an Azure Resource Manager template in the Azure portal.
@@ -98,25 +79,6 @@ Create an Event Hub by using an Azure Resource Manager template in the Azure por
 
     ![Notifications icon](media/ingest-data-event-hub/notifications.png)
 
-## Provide the managed identity with role and scope
-
-If you have chosen to use [managed identities](#enable-managed-identity-on-azure-data-explorer-cluster-optional), you must grant role and scope to the managed identity associated with your Azure Data Explorer cluster. This step lets you receive events from your new Event Hub when using managed identities.
-
-1. Browse to the Event Hub namespace resource created in [Create an Event Hub](#create-an-event-hub).
-    
-    :::image type="content" source="media/ingest-data-event-hub/access-control-role-assignment.png" alt-text="Screen shot of Access control IAM in Event Hub - Azure Data Explorer":::
-
-1. Select **Access control (IAM)** on the left-hand side.
-1. Select the **Role assignments** tab.
-1. Select **Add** > **Add role assignment**.
-1. On the right-hand side, select the role **Azure Event Hubs Data Receiver**. Assign access to either the **User assigned managed identity** or the appropriate **System assigned managed identity**.
-
-    User-managed identity | System-managed identity 
-    |---|---
-    | :::image type="content" source="media/ingest-data-event-hub/add-role-assignment.png" alt-text="Screen shot of Add role assignment to user-managed identity in the right pane in Event Hub - Azure Data Explorer"::: | :::image type="content" source="media/ingest-data-event-hub/add-role-assignment-system.png" alt-text="Screen shot of Add role assignment to system-managed identity right pane in Event Hub - Azure Data Explorer"::: 
-
-1. Select **Save**.
-
 ## Create a target table in Azure Data Explorer
 
 Now you create a table in Azure Data Explorer, to which Event Hubs will send data. You create the table in the cluster and database provisioned in **Prerequisites**.
@@ -149,7 +111,7 @@ Now you connect to the Event Hub from Azure Data Explorer. When this connection 
 
     ![Select test database](media/ingest-data-event-hub/select-test-database.png)
 
-1. Select **Data ingestion** and **Add data connection**. 
+1. Select **Data ingestion** and **Add data connection**.
 
     :::image type="content" source="media/ingest-data-event-hub/event-hub-connection.png" alt-text="Select data ingestion and Add data connection in Event Hub - Azure Data Explorer":::
 
@@ -168,7 +130,7 @@ Fill out the form with the following information:
 | Consumer group | *test-group* | The consumer group defined in the Event Hub you created. |
 | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first record. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
 | Compression | *None* | The compression type of the Event Hub messages payload. Supported compression types: *None, Gzip*.|
-| Managed Identity | System assigned | The managed identity you provided with permissions to read from the Event Hub you created.|
+| Managed Identity | System assigned | The managed identity used by the Data Explorer cluster for access to read from the Event Hub. The selected managed identity must have the *Azure Event Hubs Data Receiver* permission to read from the Event Hub, and must be added to your Data Explorer cluster. If you chose **System-assigned** managed identity and it doesn't exist, it will be created. Optionally, you can manually perform the steps to create a managed identity. |
 
 #### Target table
 
@@ -176,20 +138,21 @@ There are two options for routing the ingested data: *static* and *dynamic*.
 For this article, you use static routing, where you specify the table name, data format, and mapping as default values. If the Event Hub message includes data routing information, this routing information will override the default settings.
 
 1. Fill out the following routing settings:
-  
-   :::image type="content" source="media/ingest-data-event-hub/default-routing-settings.png" alt-text="Default routing settings for ingesting data to Event Hub - Azure Data Explorer":::
 
-   |**Setting** | **Suggested value** | **Field description**
-   |---|---|---|
-   | Table name | *TestTable* | The table you created in **TestDatabase**. |
-   | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, and W3CLOG. |
-   | Mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **TestDatabase**, which maps incoming data to the column names and data types of **TestTable**. Required for JSON, MULTILINE JSON and AVRO, and optional for other formats.|
+    :::image type="content" source="media/ingest-data-event-hub/default-routing-settings.png" alt-text="Default routing settings for ingesting data to Event Hub - Azure Data Explorer":::
 
-   > [!NOTE]
-   > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
-   > * Only events enqueued after you create the data connection are ingested.
+    |**Setting** | **Suggested value** | **Field description**
+    |---|---|---|
+    | Table name | *TestTable* | The table you created in **TestDatabase**. |
+    | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, and W3CLOG. |
+    | Mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **TestDatabase**, which maps incoming data to the column names and data types of **TestTable**. Required for JSON, MULTILINE JSON and AVRO, and optional for other formats.|
 
-1. Select **Create**. 
+    > [!NOTE]
+    >
+    > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
+    > * Only events enqueued after you create the data connection are ingested.
+
+1. Select **Create**.
 
 ### Event system properties mapping
 
@@ -251,15 +214,15 @@ With the app generating data, you can now see the flow of that data from the Eve
     ![Message result set](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of 1G, or 1000 blobs. Therefore, you may experience a latency. For more information see [batching policy](kusto/management/batchingpolicy.md). 
-    > * Event Hub ingestion includes Event Hub response time of 10 seconds or 1 MB. 
-    > * To reduce response time lag, configure your table to support streaming. See [streaming policy](kusto/management/streamingingestionpolicy.md). 
+    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of 1G, or 1000 blobs. Therefore, you may experience a latency. For more information see [batching policy](kusto/management/batchingpolicy.md).
+    > * Event Hub ingestion includes Event Hub response time of 10 seconds or 1 MB.
+    > * To reduce response time lag, configure your table to support streaming. See [streaming policy](kusto/management/streamingingestionpolicy.md).
 
 ## Clean up resources
 
 If you don't plan to use your Event Hub again, clean up **test-hub-rg**, to avoid incurring costs.
 
-1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group you created.  
+1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group you created.
 
     If the left menu is collapsed, select ![Expand button](media/ingest-data-event-hub/expand.png) to expand it.
 
