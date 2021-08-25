@@ -19,7 +19,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 > * JSON: https://jsonlint.com/
 >
 > Once you've confirmed that the data is properly formatted, make sure that the data is organized as expected. For example, if you try to ingest two columns of data but only have one column of data, the data might fail to be ingested.
-> For more information about why ingestion might fail, see [Ingestion failures](kusto/management/ingestionfailures.md) and[Ingestion error codes in Azure Data Explorer](error-codes.md).
+> For more information about why ingestion might fail, see [Ingestion failures](kusto/management/ingestionfailures.md) and [Ingestion error codes in Azure Data Explorer](error-codes.md).
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
