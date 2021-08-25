@@ -40,7 +40,7 @@ Rows in *T* for which the predicate is `true`
 
 **Examples:**  
 
-**A simple usage of `has_any` operator:**  
+**A simple usage of has_any operator:**  
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -79,3 +79,7 @@ StormEvents
 |NORTH DAKOTA|905|
 |ATLANTIC SOUTH|193|
 |ATLANTIC NORTH|188|
+
+## Performance tips
+
+For better performance, see [Query best practices](best-practices.md).

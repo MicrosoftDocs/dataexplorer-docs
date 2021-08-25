@@ -44,7 +44,7 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples  
 
-### Use 'contains' operator
+### Use contains operator
 
 ```kusto
 StormEvents
@@ -60,7 +60,7 @@ StormEvents
 |PENNSYLVANIA|1687|
 |TENNESSEE|1125|
 
-### Use '!contains' operator
+### Use !contains operator
 
 ```kusto
 StormEvents
@@ -75,7 +75,7 @@ StormEvents
 |-----|-----------|
 |KANSAS|3,166| 
 
-### Use 'contains_cs' operator
+### Use contains_cs operator
 
 ```kusto
 StormEvents
@@ -88,7 +88,7 @@ StormEvents
 |-----|
 |8|
 
-### Use '!contains_cs' operator
+### Use !contains_cs operator
 
 ```kusto
 StormEvents
@@ -100,3 +100,13 @@ StormEvents
 |Count|
 |-----|
 |59|
+
+## Performance tips
+
+For better performance, when there are two operators that do the same task, use the case-sensitive one.
+For example, instead of `contains`, use `contains_cs`
+
+For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
+`has` works faster than `contains`, `startswith`, or `endswith`.
+
+For more information, see [Query best practices](best-practices.md).

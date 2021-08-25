@@ -44,7 +44,7 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples  
 
-### Use 'endswith' operator
+### Use endswith operator
 
 ```kusto
 StormEvents
@@ -60,7 +60,7 @@ StormEvents
 |KANSAS|3166|
 |ARKANSAS|1028|  
 
-### Use '!endswith' operator
+### Use !endswith operator
 
 ```kusto
 StormEvents
@@ -78,7 +78,7 @@ StormEvents
 |IOWA|2337|
 |MISSOURI|2016| 
 
-### Use 'endswith_cs' operator
+### Use endswith_cs operator
 
 ```kusto
 StormEvents
@@ -91,7 +91,7 @@ StormEvents
 |-----|
 |1|
 
-### Use '!endswith_cs' operator
+### Use !endswith_cs operator
 
 ```kusto
 StormEvents
@@ -103,3 +103,17 @@ StormEvents
 |Count|
 |-----|
 |66|
+
+## Performance tips
+
+For better performance, when there are two operators that do the same task, use the case-sensitive one.
+For example:
+
+* instead of `endswith`, use `endswith_cs`
+* instead of `in~`, use `in`
+* instead of `contains`, use `contains_cs`
+
+For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
+`has` works faster than `contains`, `startswith`, or `endswith`.
+
+For more information, see [Query best practices](best-practices.md).

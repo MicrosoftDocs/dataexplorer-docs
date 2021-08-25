@@ -36,7 +36,7 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples  
 
-### Use 'matches regex' operator
+### Use matches regex operator
 
 ```kusto
 StormEvents
@@ -53,3 +53,7 @@ StormEvents
 |ARKANSAS|1028|
 |LAKE SUPERIOR|34|
 |LAKE ST CLAIR|32|  
+
+## Performance tips
+
+For better performance, see [Query best practices](best-practices.md).

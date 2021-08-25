@@ -39,7 +39,7 @@ Rows in *T* for which the predicate is `true`
 
 ## Examples
 
-### Simple usage of the `has_all` operator
+### Simple usage of the has_all operator
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -74,3 +74,6 @@ StormEvents
 |Hail|392|
 |Flash Flood|24|
 
+## Performance tips
+
+For better performance, see [Query best practices](best-practices.md).

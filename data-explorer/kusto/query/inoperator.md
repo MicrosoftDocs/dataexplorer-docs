@@ -55,7 +55,7 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples  
 
-### Use 'in' operator
+### Use in operator
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -68,7 +68,7 @@ StormEvents
 |---|
 |4775|  
 
-### Use 'in~' operator  
+### Use in~ operator  
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -81,7 +81,7 @@ StormEvents
 |---|
 |4775|  
 
-### Use '!in' operator
+### Use !in operator
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -183,3 +183,17 @@ The function definition.
 |Name|Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
 |InterestingStates|()|{ dynamic(["WASHINGTON", "FLORIDA", "GEORGIA", "NEW YORK"]) }
+
+## Performance tips
+
+For better performance, when there are two operators that do the same task, use the case-sensitive one.
+For example:
+
+* instead of `=~`, use `==`
+* instead of `in~`, use `in`
+* instead of `contains`, use `contains_cs`
+
+For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
+`has` works faster than `contains`, `startswith`, or `endswith`.
+
+For more information, see [Query best practices](best-practices.md).

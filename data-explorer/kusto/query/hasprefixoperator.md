@@ -44,7 +44,7 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples  
 
-### Use 'hasprefix' operator
+### Use hasprefix operator
 
 ```kusto
 StormEvents
@@ -63,7 +63,7 @@ StormEvents
 |LAKE ERIE|27|
 |LAKE ONTARIO|8|
 
-### Use '!hasprefix' operator
+### Use !hasprefix operator
 
 ```kusto
 StormEvents
@@ -82,7 +82,7 @@ StormEvents
 |ILLINOIS|2022|
 |MISSOURI|2016|
 
-### Use 'hasprefix_cs' operator
+### Use hasprefix_cs operator
 
 ```kusto
 StormEvents
@@ -109,7 +109,7 @@ StormEvents
 |PUERTO RICO|192|
 |E PACIFIC|10|
 
-### Use '!hasprefix_cs' operator
+### Use !hasprefix_cs operator
 
 ```kusto
 StormEvents
@@ -121,3 +121,17 @@ StormEvents
 |Count|
 |-----|
 |64|
+
+## Performance tips
+
+For better performance, when there are two operators that do the same task, use the case-sensitive one.
+For example:
+
+* instead of `hasprefix`, use `hasprefix_cs`
+* instead of `in~`, use `in`
+* instead of `contains`, use `contains_cs`
+
+For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
+`has` works faster than `hasprefix`, `startswith`, or `endswith`.
+
+For more information, see [Query best practices](best-practices.md).
