@@ -20,7 +20,7 @@ Searches the string for items specified in the array and returns the position of
 ## Arguments
 
 * *string*: Input string to search.
-* *array*: Comma separated list of scalar or literal expressions
+* *lookup_array*: Array of scalar or literal expressions to lookup. The value should be of type long, integer, double, decimal, string, or guid.
 
 ## Returns
 
