@@ -49,7 +49,7 @@ Kusto builds a term index consisting of all terms that are *three characters or 
 |-----------|--------------|----------------|-------------------------|
 |[`==`](equalsoperator.md)|Equals |Yes|`"aBc" == "aBc"`|
 |[`!=`](equalsoperator.md)|Not equals |Yes |`"abc" != "ABC"`|
-|[`=~`](equalsoperator.md) Equals |No |`"abc" =~ "ABC"`|
+|[`=~`](equalsoperator.md) |Equals |No |`"abc" =~ "ABC"`|
 |[`!~`](equalsoperator.md) |Not equals |No |`"aBc" !~ "xyz"`|
 |[`has``](hasoperator.md) |Right-hand-side (RHS) is a whole term in left-hand-side (LHS) |No |`"North America" has "america"`|
 |[`!has`](hasoperator.md) |RHS isn't a full term in LHS |No |`"North America" !has "amer"`|
