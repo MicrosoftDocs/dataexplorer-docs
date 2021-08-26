@@ -1,6 +1,6 @@
 ---
-title: hasprefix and nothasprefix operators - Azure Data Explorer
-description: This article describes hasprefix and nothasprefix operators in Azure Data Explorer.
+title: `hasprefix` and `nothasprefix` operators - Azure Data Explorer
+description: This article describes `hasprefix` and `nothasprefix` operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek

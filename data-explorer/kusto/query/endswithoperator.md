@@ -1,6 +1,6 @@
 ---
-title: endswith and notendswith operators - Azure Data Explorer
-description: This article describes endswith and notendswith operators in Azure Data Explorer.
+title: `endswith` and `notendswith` operators - Azure Data Explorer
+description: This article describes `endswith` and `notendswith` operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -17,7 +17,7 @@ Filters a record set based on the provided value with a search that is not case 
 ```kusto
 Table1 | where col endswith ('value1')
 ```
- 
+
 ## Syntax
 
 ### Case insensitive syntax
@@ -74,7 +74,7 @@ StormEvents
 |TEXAS|4701|
 |KANSAS|3166|
 |IOWA|2337|
-|MISSOURI|2016| 
+|MISSOURI|2016|
 
 ### Use endswith_cs operator
 

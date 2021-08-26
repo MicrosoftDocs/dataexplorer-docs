@@ -1,6 +1,6 @@
 ---
-title: startswith and notstartswith operators - Azure Data Explorer
-description: This article describes startswith and notstartswith operators in Azure Data Explorer.
+title: `startswith` and `notstartswith` operators - Azure Data Explorer
+description: This article describes `startswith` and `notstartswith` operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek

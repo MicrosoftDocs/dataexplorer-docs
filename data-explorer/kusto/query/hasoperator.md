@@ -1,6 +1,6 @@
 ---
-title: has and nothas operators - Azure Data Explorer
-description: This article describes has and nothas operators in Azure Data Explorer.
+title: `has` and `nothas` operators - Azure Data Explorer
+description: This article describes `has` and `nothas` operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek

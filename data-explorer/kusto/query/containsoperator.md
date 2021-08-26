@@ -1,6 +1,6 @@
 ---
-title: contains and notcontains operators - Azure Data Explorer
-description: This article describes contains and notcontains operators in Azure Data Explorer.
+title: `contains` and `notcontains` operators - Azure Data Explorer
+description: This article describes `contains` and `notcontains` operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek

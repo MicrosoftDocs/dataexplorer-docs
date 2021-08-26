@@ -1,6 +1,6 @@
 ---
-title: hassuffix and nothassuffix operators - Azure Data Explorer
-description: This article describes hassuffix and nothassuffix operators in Azure Data Explorer.
+title: `hassuffix` and `nothassuffix` operators - Azure Data Explorer
+description: This article describes `hassuffix` and `nothassuffix` operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
