@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # hasprefix and !hasprefix operators
 
-Filters a record set based on the provided value with a search that is not case sensitive. The value represents a term prefix found in the searched column.
+Filters a record set based on the provided value with a search that isn't case-sensitive. The value represents a term prefix found in the searched column.
 
 ```kusto
 Table1 | where col hasprefix ('value1')
@@ -26,7 +26,7 @@ Table1 | where col hasprefix ('value1')
  
 *T* `|` `where` *col* `!hasprefix` `(`*expression*`)`   
 
-### Case sensitive syntax
+### Case-sensitive syntax
 
 *T* `|` `where` *col* `hasprefix_cs` `(`*expression*`)`   
 
@@ -121,8 +121,7 @@ StormEvents
 
 ## Performance tips
 
-For better performance, when there are two operators that do the same task, use the case-sensitive one.
-For example use `hasprefix_cs`, not `hasprefix`.
+For better performance, when there are two operators that do the same task, use the case-sensitive one. For example, use `hasprefix_cs`, not `hasprefix`.
 
-For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. `has` works faster than `hasprefix`.
+For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`; `has` works faster than `hasprefix`.
 For more information, see [Query best practices](best-practices.md).

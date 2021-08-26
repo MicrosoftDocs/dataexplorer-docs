@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # startswith and !startswith operators
 
-Filters a record set based on the provided value with a search that is not case sensitive. The value represents a starting sequence of the string found in the searched column.
+Filters a record set based on the provided value with a search that isn't case-sensitive. The value represents a starting sequence of the string found in the searched column.
 
 ```kusto
 Table1 | where col startswith ('value1')
@@ -26,7 +26,7 @@ Table1 | where col startswith ('value1')
 
 *T* `|` `where` *col* `!startswith` `(`*expression*`)`
 
-### Case sensitive syntax
+### Case-sensitive syntax
 
 *T* `|` `where` *col* `startswith_cs` `(`*expression*`)`
 
@@ -110,4 +110,5 @@ StormEvents
 For better performance, when there are two operators that do the same task, use the case-sensitive one.
 For example, use `startswith_cs`, not `startswith`.
 
-For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. `has` works faster than `startswith`. For more information, see [Query best practices](best-practices.md).
+For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`; `has` works faster than `startswith`. 
+For more information, see [Query best practices](best-practices.md).

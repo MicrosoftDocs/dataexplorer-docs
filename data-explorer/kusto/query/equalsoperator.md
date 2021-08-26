@@ -23,7 +23,7 @@ Table1 | where col == ('value1')
  
 ## Syntax
 
-### Case sensitive syntax
+### Case-sensitive syntax
 
 *T* `|` `where` *col* `==` `(`*expressions`)`   
  
@@ -99,12 +99,7 @@ StormEvents
 
 ## Performance tips
 
-For better performance, when there are two operators that do the same task, use the case-sensitive one.
-For example:
+For better performance, when there are two operators that do the same task, use the case-sensitive one. For example, use `==`, not `=~`.
 
-* Use `==`, not `=~`
-* Use `in`, not `in~`
-* Use `contains_cs`, not `contains`
-
-For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. `has` works faster than `contains`, `startswith`, or `endswith`. 
+For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
 For more information, see [Query best practices](best-practices.md).
