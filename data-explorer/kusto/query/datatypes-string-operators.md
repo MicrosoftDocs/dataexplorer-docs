@@ -45,43 +45,46 @@ Kusto builds a term index consisting of all terms that are *three characters or 
 > Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
 
-|Operator |Description |Case-Sensitive |Example (yields `true`)  |
-|---------|------------|---------------|-------------------------|
-|[==](equalsoperator.md)|Equals |Yes|`"aBc" == "aBc"`|
-|[!=](equalsoperator.md)|Not equals |Yes |`"abc" != "ABC"`|
-|[=~](equalsoperator.md) |Equals |No |`"abc" =~ "ABC"`|
-|[!~](equalsoperator.md) |Not equals |No |`"aBc" !~ "xyz"`|
-|[has](hasoperator.md) |Right-hand-side (RHS) is a whole term in left-hand-side (LHS) |No |`"North America" has "america"`|
-|[!has](hasoperator.md) |RHS isn't a full term in LHS |No |`"North America" !has "amer"`|
-|[has_all](has-all-operator.md) |Same as `has` but works on all of the elements |No |`"North and South America" has_all("south", "north")`|
-|[has_any](has-anyoperator.md) |Same as `has` but works on any of the elements |No |`"North America" has_any("south", "north")`|
-|[has_cs](hasoperator.md) |RHS is a whole term in LHS |Yes |`"North America" has_cs "America"`|
-|[!has_cs](hasoperator.md) |RHS isn't a full term in LHS |Yes |`"North America" !has_cs "amer"`|
-|[hasprefix](hasprefixoperator.md) |RHS is a term prefix in LHS |No |`"North America" hasprefix "ame"`|
-|[!hasprefix](hasprefixoperator.md) |RHS isn't a term prefix in LHS |No |`"North America" !hasprefix "mer"`|
-|[hasprefix_cs](hasprefixoperator.md) |RHS is a term prefix in LHS |Yes |`"North America" hasprefix_cs "Ame"`|
-|[!hasprefix_cs](hasprefixoperator.md) |RHS isn't a term prefix in LHS |Yes |`"North America" !hasprefix_cs "CA"`|
-|[hassuffix](hassuffixoperator.md) |RHS is a term suffix in LHS |No |`"North America" hassuffix "ica"`|
-|[!hassuffix](hassuffixoperator.md) |RHS isn't a term suffix in LHS |No |`"North America" !hassuffix "americ"`|
-|[hassuffix_cs](hassuffixoperator.md)  |RHS is a term suffix in LHS |Yes |`"North America" hassuffix_cs "ica"`|
-|[!hassuffix_cs](hassuffixoperator.md) |RHS isn't a term suffix in LHS |Yes |`"North America" !hassuffix_cs "icA"`|
-|[contains](containsoperator.md) |RHS occurs as a subsequence of LHS |No |`"FabriKam" contains "BRik"`|
-|[!contains](containsoperator.md) |RHS doesn't occur in LHS |No |`"Fabrikam" !contains "xyz"`|
-|[contains_cs](containsoperator.md) |RHS occurs as a subsequence of LHS |Yes |`"FabriKam" contains_cs "Kam"`|
-|[!contains_cs](containsoperator.md)   |RHS doesn't occur in LHS |Yes |`"Fabrikam" !contains_cs "Kam"`|
-|[startswith](containsoperator.md) |RHS is an initial subsequence of LHS |No |`"Fabrikam" startswith "fab"`|
-|[!startswith](containsoperator.md) |RHS isn't an initial subsequence of LHS |No |`"Fabrikam" !startswith "kam"`|
-|[startswith_cs](containsoperator.md)  |RHS is an initial subsequence of LHS |Yes |`"Fabrikam" startswith_cs "Fab"`|
-|[!startswith_cs](containsoperator.md) |RHS isn't an initial subsequence of LHS |Yes |`"Fabrikam" !startswith_cs "fab"`|
-|[endswith](endswithoperator.md) |RHS is a closing subsequence of LHS |No |`"Fabrikam" endswith "Kam"`|
-|[!endswith](endswithoperator.md) |RHS isn't a closing subsequence of LHS |No |`"Fabrikam" !endswith "brik"`|
-|[endswith_cs](endswithoperator.md) |RHS is a closing subsequence of LHS |Yes |`"Fabrikam" endswith_cs "kam"`|
-|[!endswith_cs](endswithoperator.md) |RHS isn't a closing subsequence of LHS |Yes |`"Fabrikam" !endswith_cs "brik"`|
-|[matches regex](regexoperator.md) |LHS contains a match for RHS |Yes |`"Fabrikam" matches regex "b.*k"`|
-|[in](inoperator.md) |Equals to one of the elements |Yes |`"abc" in ("123", "345", "abc")`|
-|[!in](inoperator.md) |Not equals to any of the elements |Yes |`"bca" !in ("123", "345", "abc")`|
-|[in~](inoperator.md) |Equals to one of the elements | No|`"abc" in~ ("123", "abc", "aabc")`  |
-|[!in~](inoperator.md) |Not equals to any of the elements |No |`"bca" !in~ ("123", "345", "ABC")`|
+|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
+|-----------|--------------|----------------|-------------------------|
+|[`==`](equalsoperator.md)|Equals |Yes|`"aBc" == "aBc"`|
+|[`!=`](equalsoperator.md)|Not equals |Yes |`"abc" != "ABC"`|
+|[`=~`](equalsoperator.md) |Equals |No |`"abc" =~ "ABC"`|
+|[`!~`](equalsoperator.md) |Not equals |No |`"aBc" !~ "xyz"`|
+|[`contains`](containsoperator.md) |RHS occurs as a subsequence of LHS |No |`"FabriKam" contains "BRik"`|
+|[`!contains`](containsoperator.md) |RHS doesn't occur in LHS |No |`"Fabrikam" !contains "xyz"`|
+|[`contains_cs`](containsoperator.md) |RHS occurs as a subsequence of LHS |Yes |`"FabriKam" contains_cs "Kam"`|
+|[`!contains_cs`](containsoperator.md)   |RHS doesn't occur in LHS |Yes |`"Fabrikam" !contains_cs "Kam"`|
+|[`endswith`](endswithoperator.md) |RHS is a closing subsequence of LHS |No |`"Fabrikam" endswith "Kam"`|
+|[`!endswith`](endswithoperator.md) |RHS isn't a closing subsequence of LHS |No |`"Fabrikam" !endswith "brik"`|
+|[`endswith_cs`](endswithoperator.md) |RHS is a closing subsequence of LHS |Yes |`"Fabrikam" endswith_cs "kam"`|
+|[`!endswith_cs`](endswithoperator.md) |RHS isn't a closing subsequence of LHS |Yes |`"Fabrikam" !endswith_cs "brik"`|
+|[`has`](hasoperator.md) |Right-hand-side (RHS) is a whole term in left-hand-side (LHS) |No |`"North America" has "america"`|
+|[`!has`](hasoperator.md) |RHS isn't a full term in LHS |No |`"North America" !has "amer"`|
+|[`has_all`](has-all-operator.md) |Same as `has` but works on all of the elements |No |`"North and South America" has_all("south", "north")`|
+|[`has_any`](has-anyoperator.md) |Same as `has` but works on any of the elements |No |`"North America" has_any("south", "north")`|
+|[`has_cs`](hasoperator.md) |RHS is a whole term in LHS |Yes |`"North America" has_cs "America"`|
+|[`!has_cs`](hasoperator.md) |RHS isn't a full term in LHS |Yes |`"North America" !has_cs "amer"`|
+|[`hasprefix`](hasprefixoperator.md) |RHS is a term prefix in LHS |No |`"North America" hasprefix "ame"`|
+|[`!hasprefix`](hasprefixoperator.md) |RHS isn't a term prefix in LHS |No |`"North America" !hasprefix "mer"`|
+|[`hasprefix_cs`](hasprefixoperator.md) |RHS is a term prefix in LHS |Yes |`"North America" hasprefix_cs "Ame"`|
+|[`!hasprefix_cs`](hasprefixoperator.md) |RHS isn't a term prefix in LHS |Yes |`"North America" !hasprefix_cs "CA"`|
+|[`hassuffix`](hassuffixoperator.md) |RHS is a term suffix in LHS |No |`"North America" hassuffix "ica"`|
+|[`!hassuffix`](hassuffixoperator.md) |RHS isn't a term suffix in LHS |No |`"North America" !hassuffix "americ"`|
+|[`hassuffix_cs`](hassuffixoperator.md)  |RHS is a term suffix in LHS |Yes |`"North America" hassuffix_cs "ica"`|
+|[`!hassuffix_cs`](hassuffixoperator.md) |RHS isn't a term suffix in LHS |Yes |`"North America" !hassuffix_cs "icA"`|
+|[`in`](inoperator.md) |Equals to one of the elements |Yes |`"abc" in ("123", "345", "abc")`|
+|[`!in`](inoperator.md) |Not equals to any of the elements |Yes |`"bca" !in ("123", "345", "abc")`|
+|in~|Equals to one of the elements |No  |`"abc" in~ ("123", "abc", "aabcc")` |
+|!in~|Not equals to any of the elements |No |`"bca" !in~ ("123", "345", "ABC")`|
+|[`matches regex`](regexoperator.md) |LHS contains a match for RHS |Yes |`"Fabrikam" matches regex "b.*k"`|
+|[`startswith`](containsoperator.md) |RHS is an initial subsequence of LHS |No |`"Fabrikam" startswith "fab"`|
+|[`!startswith`](containsoperator.md) |RHS isn't an initial subsequence of LHS |No |`"Fabrikam" !startswith "kam"`|
+|[`startswith_cs`](containsoperator.md)  |RHS is an initial subsequence of LHS |Yes |`"Fabrikam" startswith_cs "Fab"`|
+|[`!startswith_cs`](containsoperator.md) |RHS isn't an initial subsequence of LHS |Yes |`"Fabrikam" !startswith_cs "fab"`|
+
+
+
 
 > [!TIP]
 > All operators containing `has` search on indexed *terms* of four or more characters, and not on substring matches. A term is created by breaking up the string into sequences of ASCII alphanumeric characters. See [understanding string terms](#understanding-string-terms).
