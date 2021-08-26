@@ -44,7 +44,6 @@ StormEvents
     | where State matches regex "K.*S"
     | where event_count > 10
     | project State, event_count
-    | render table
 ```
 
 |State|event_count|

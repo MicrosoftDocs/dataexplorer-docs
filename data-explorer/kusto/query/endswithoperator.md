@@ -52,7 +52,6 @@ StormEvents
     | where State endswith "sas"
     | where event_count > 10
     | project State, event_count
-    | render table
 ```
 
 |State|event_count|
@@ -68,7 +67,6 @@ StormEvents
     | where State !endswith "is"
     | where event_count > 2000
     | project State, event_count
-    | render table
 ```
 
 |State|event_count|
@@ -109,9 +107,9 @@ StormEvents
 For better performance, when there are two operators that do the same task, use the case-sensitive one.
 For example:
 
-* instead of `endswith`, use `endswith_cs`
-* instead of `in~`, use `in`
-* instead of `contains`, use `contains_cs`
+* Use `endswith_cs`, not `endswith`
+* Use `in`, not `in~`
+* Use `contains_cs`, not `contains`
 
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
 `has` works faster than `contains`, `startswith`, or `endswith`.

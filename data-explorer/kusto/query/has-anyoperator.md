@@ -33,14 +33,14 @@ Table1 | where col has_any ('value1', 'value2')
 
 Rows in *T* for which the predicate is `true`
 
-**Notes**
+## Notes
 
 * The expression list can produce up to `10,000` values.    
 * For tabular expressions, the first column of the result set is selected.   
 
-**Examples:**  
+## Examples 
 
-**A simple usage of has_any operator:**  
+### A simple usage of has_any operator:  
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -61,7 +61,7 @@ StormEvents
 |NEW HAMPSHIRE|394|
 
 
-**Using dynamic array:**
+### Using dynamic array:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

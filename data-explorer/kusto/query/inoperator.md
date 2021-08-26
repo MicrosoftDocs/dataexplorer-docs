@@ -189,9 +189,9 @@ The function definition.
 For better performance, when there are two operators that do the same task, use the case-sensitive one.
 For example:
 
-* instead of `=~`, use `==`
-* instead of `in~`, use `in`
-* instead of `contains`, use `contains_cs`
+* Use `==`, not `=~`
+* Use `in`, not `in~`
+* Use `contains_cs`, not `contains`
 
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
 `has` works faster than `contains`, `startswith`, or `endswith`.

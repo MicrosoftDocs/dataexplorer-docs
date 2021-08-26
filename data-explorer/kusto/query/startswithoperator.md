@@ -52,7 +52,6 @@ StormEvents
     | where State startswith "Lo"
     | where event_count > 10
     | project State, event_count
-    | render table
 ```
 
 |State|event_count|
@@ -67,7 +66,6 @@ StormEvents
     | where State !startswith "i"
     | where event_count > 2000
     | project State, event_count
-    | render table
 ```
 
 |State|event_count|
@@ -84,7 +82,6 @@ StormEvents
     | where State startswith_cs "I"
     | where event_count > 2000
     | project State, event_count
-    | render table
 ```
 
 |State|event_count|
@@ -100,7 +97,6 @@ StormEvents
     | where State !startswith_cs "I"
     | where event_count > 2000
     | project State, event_count
-    | render table
 ```
 
 |State|event_count|
@@ -112,7 +108,7 @@ StormEvents
 ## Performance tips
 
 For better performance, when there are two operators that do the same task, use the case-sensitive one.
-For example, instead of `startswith`, use `startswith_cs`.
+For example, use `startswith_cs`, noy `startswith`.
 
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
 `has` works faster than `contains`, `startswith`, or `endswith`.

@@ -78,7 +78,6 @@ StormEvents
     | summarize event_count=count() by State
     | where (State != "FLORIDA") and (event_count > 4000)
     | project State, event_count
-    | render table
 ```
 
 |State|event_count|
@@ -92,7 +91,6 @@ StormEvents
     | summarize event_count=count() by State
     | where (State !~ "texas") and (event_count > 3000)
     | project State, event_count
-    | render table
 ```
 
 |State|event_count|
@@ -104,9 +102,9 @@ StormEvents
 For better performance, when there are two operators that do the same task, use the case-sensitive one.
 For example:
 
-* instead of `=~`, use `==`
-* instead of `in~`, use `in`
-* instead of `contains`, use `contains_cs`
+* Use `==`, not `=~`
+* Use `in`, not `in~`
+* Use `contains_cs`, not `contains`
 
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
 `has` works faster than `contains`, `startswith`, or `endswith`.
