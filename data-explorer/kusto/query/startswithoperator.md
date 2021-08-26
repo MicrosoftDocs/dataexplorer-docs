@@ -87,7 +87,7 @@ StormEvents
 |State|event_count|
 |-----|-----------|
 |IOWA|2337|
-|ILLINOIS|2022| 
+|ILLINOIS|2022|
 
 ### Use !startswith_cs operator
 
@@ -103,12 +103,12 @@ StormEvents
 |-----|-----------|
 |TEXAS|4701|
 |KANSAS|3166|
-|MISSOURI|2016| 
+|MISSOURI|2016|
 
 ## Performance tips
 
 For better performance, when there are two operators that do the same task, use the case-sensitive one.
-For example, use `startswith_cs`, noy `startswith`.
+For example, use `startswith_cs`, not `startswith`.
 
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
 `has` works faster than `contains`, `startswith`, or `endswith`.
