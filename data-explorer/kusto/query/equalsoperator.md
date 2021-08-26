@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # equals and !equals operators
 
-Filters a record set based on the provided value.
+Filters a record set based on the provided search term.
 
 ```kusto
 Table1 | where col == ('value1')

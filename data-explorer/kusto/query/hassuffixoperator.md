@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # hassuffix and !suffix operators
 
-Filters a record set based on the provided value with a search that isn't case-sensitive. The value represents a term suffix found in the searched column.
+Filters a record set based on a search value. The value represents a suffix for a term found in the searched column.
 
 ```kusto
 Table1 | where col hassuffix ('value1')

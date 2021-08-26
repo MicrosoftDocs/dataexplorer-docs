@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # has and !has operators
 
-Filters a record set based on the provided value with a search that isn't case sensitive. The value represents a term found in the searched column.
+Filters a record set based on the provided value. The value represents a term found in the searched column.
 
 ```kusto
 Table1 | where col has ('value1')

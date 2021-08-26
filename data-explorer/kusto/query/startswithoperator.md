@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # startswith and !startswith operators
 
-Filters a record set based on the provided value with a search that isn't case-sensitive. The value represents a starting sequence of the string found in the searched column.
+Filters a record set based on a search value. The value represents a starting sequence for the string found in the searched column.
 
 ```kusto
 Table1 | where col startswith ('value1')

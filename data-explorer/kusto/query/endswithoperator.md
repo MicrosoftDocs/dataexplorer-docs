@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # endswith and !endswith operators
 
-Filters a record set based on a provided value using a search that isn't case-sensitive. The value represents an ending sequence found in the searched column.
+Filters a record set based on a search value. The value represents an ending sequence found in the searched column.
 
 ```kusto
 Table1 | where col endswith ('value1')
