@@ -44,6 +44,7 @@ Kusto builds a term index consisting of all terms that are *three characters or 
 > [!NOTE]
 > Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
+
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
 |[`==`](equalsoperator.md)|Equals |Yes|`"aBc" == "aBc"`|
@@ -81,6 +82,7 @@ Kusto builds a term index consisting of all terms that are *three characters or 
 |[`!in`](inoperator.md) |Not equals to any of the elements |Yes |`"bca" !in ("123", "345", "abc")`|
 |[`in~`](inoperator.md) |Equals to one of the elements |No |`"abc" in~ ("123", "345", "ABC")`|
 |[`!in~`](inoperator.md) |Not equals to any of the elements |No |`"bca" !in~ ("123", "345", "ABC")`|
+
 
 > [!TIP]
 > All operators containing `has` search on indexed *terms* of four or more characters, and not on substring matches. A term is created by breaking up the string into sequences of ASCII alphanumeric characters. See [understanding string terms](#understanding-string-terms).
