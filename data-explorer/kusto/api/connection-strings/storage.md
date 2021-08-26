@@ -13,13 +13,13 @@ ms.date: 06/28/2021
 
 A few Kusto commands instruct Kusto to interact with external storage services. For example, Kusto can be told to [create an Azure Storage external tables](../../management/external-tables-azurestorage-azuredatalake.md).
 
-Kusto supports the following storage kinds:
+Kusto supports the following types of storage:
 
 * Azure Blob Storage
 * Azure Data Lake Storage Gen2
 * Azure Data Lake Storage Gen1
 
-Each kind of a storage has connection string formats
+Each type of a storage has connection string formats
 used to describe the storage resources and how to access them.
 Kusto uses a URI format to describe these storage resources and the properties
 necessary to access them (such as security credentials).
@@ -49,7 +49,7 @@ Azure Storage SAS links can also be generated as described in [URI templates](#u
 
 ## URI templates
 
-|Storage Kind                  |Scheme    |URI template                          |
+|Storage Type                  |Scheme    |URI template                          |
 |------------------------------|----------|--------------------------------------|
 |Azure Blob Storage            |`https://`|`https://`*StorageAccountName*`.blob.core.windows.net/`*Container*[`/`*BlobName*][*CallerCredentials*]|
 |Azure Data Lake Storage Gen2  |`https://`|`https://`*StorageAccountName*`.dfs.core.windows.net/`*Filesystem*[`/`*PathToDirectoryOrFile*][*CallerCredentials*]|
@@ -84,7 +84,7 @@ Examples (note that this is showing obfuscated string literals, so as not to exp
 
 Azure Data Lake Storage Gen2 is a set of capabilities dedicated to big data analytics, built on Azure Blob Storage. Turning on hierarchical namespace on Azure Blob Storage makes these capabilities accessible, so the storage can be treated also as an Azure Data Lake Storage Gen2.
 
-The format of  Azure Data Lake Storage Gen2 URI is:
+The format for the Azure Data Lake Storage Gen2 URI is:
 
 `abfss://` *Filesystem* `@` *StorageAccountName* `.dfs.core.windows.net` [`/` *Path* ][*CallerCredentials*]
 
