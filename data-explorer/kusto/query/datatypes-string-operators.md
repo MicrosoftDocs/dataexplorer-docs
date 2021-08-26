@@ -46,41 +46,41 @@ Kusto builds a term index consisting of all terms that are *three characters or 
 
 Operator        |Description                                                       |Case-Sensitive|Example (yields `true`)
 ----------------|------------------------------------------------------------------|--------------|-----------------------
-`==`            |Equals                                                            |Yes           |`"aBc" == "aBc"`
-`!=`            |Not equals                                                        |Yes           |`"abc" != "ABC"`
-`=~`            |Equals                                                            |No            |`"abc" =~ "ABC"`
-`!~`            |Not equals                                                        |No            |`"aBc" !~ "xyz"`
-`has`           |Right-hand-side (RHS) is a whole term in left-hand-side (LHS)     |No            |`"North America" has "america"`
-`!has`          |RHS isn't a full term in LHS                                     |No            |`"North America" !has "amer"` 
+[`==`](equalsoperator.md)            |Equals                                                            |Yes           |`"aBc" == "aBc"`
+[`!=`](equalsoperator.md)            |Not equals                                                        |Yes           |`"abc" != "ABC"`
+[`=~`](equalsoperator.md)            |Equals                                                            |No            |`"abc" =~ "ABC"`
+[`!~`](equalsoperator.md)            |Not equals                                                        |No            |`"aBc" !~ "xyz"`
+[`has``](hasoperator.md)           |Right-hand-side (RHS) is a whole term in left-hand-side (LHS)     |No            |`"North America" has "america"`
+[`!has`](hasoperator.md)          |RHS isn't a full term in LHS                                     |No            |`"North America" !has "amer"` 
 [`has_all`](has-all-operator.md)       |Same as `has` but works on all of the elements                    |No            |`"North and South America" has_all("south", "north")`
 [`has_any`](has-anyoperator.md)       |Same as `has` but works on any of the elements                    |No            |`"North America" has_any("south", "north")`
-`has_cs`        |RHS is a whole term in LHS                                        |Yes           |`"North America" has_cs "America"`
-`!has_cs`       |RHS isn't a full term in LHS                                     |Yes           |`"North America" !has_cs "amer"` 
-`hasprefix`     |RHS is a term prefix in LHS                                       |No            |`"North America" hasprefix "ame"`
-`!hasprefix`    |RHS isn't a term prefix in LHS                                   |No            |`"North America" !hasprefix "mer"` 
-`hasprefix_cs`  |RHS is a term prefix in LHS                                       |Yes           |`"North America" hasprefix_cs "Ame"`
-`!hasprefix_cs` |RHS isn't a term prefix in LHS                                   |Yes           |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`     |RHS is a term suffix in LHS                                       |No            |`"North America" hassuffix "ica"`
-`!hassuffix`    |RHS isn't a term suffix in LHS                                   |No            |`"North America" !hassuffix "americ"`
-`hassuffix_cs`  |RHS is a term suffix in LHS                                       |Yes           |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs` |RHS isn't a term suffix in LHS                                   |Yes           |`"North America" !hassuffix_cs "icA"`
-`contains`      |RHS occurs as a subsequence of LHS                                |No            |`"FabriKam" contains "BRik"`
-`!contains`     |RHS doesn't occur in LHS                                         |No            |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |RHS occurs as a subsequence of LHS                                |Yes           |`"FabriKam" contains_cs "Kam"`
-`!contains_cs`  |RHS doesn't occur in LHS                                         |Yes           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`    |RHS is an initial subsequence of LHS                              |No            |`"Fabrikam" startswith "fab"`
-`!startswith`   |RHS isn't an initial subsequence of LHS                          |No            |`"Fabrikam" !startswith "kam"`
-`startswith_cs` |RHS is an initial subsequence of LHS                              |Yes           |`"Fabrikam" startswith_cs "Fab"`
-`!startswith_cs`|RHS isn't an initial subsequence of LHS                          |Yes           |`"Fabrikam" !startswith_cs "fab"`
-`endswith`      |RHS is a closing subsequence of LHS                               |No            |`"Fabrikam" endswith "Kam"`
-`!endswith`     |RHS isn't a closing subsequence of LHS                           |No            |`"Fabrikam" !endswith "brik"`
-`endswith_cs`   |RHS is a closing subsequence of LHS                               |Yes           |`"Fabrikam" endswith_cs "kam"`
-`!endswith_cs`  |RHS isn't a closing subsequence of LHS                           |Yes           |`"Fabrikam" !endswith_cs "brik"`
-`matches regex` |LHS contains a match for RHS                                      |Yes           |`"Fabrikam" matches regex "b.*k"`
+[`has_cs`](hasoperator.md)        |RHS is a whole term in LHS                                        |Yes           |`"North America" has_cs "America"`
+[`!has_cs`](hasoperator.md)       |RHS isn't a full term in LHS                                     |Yes           |`"North America" !has_cs "amer"` 
+[`hasprefix`](hasprefixoperator.md)     |RHS is a term prefix in LHS                                       |No            |`"North America" hasprefix "ame"`
+[`!hasprefix`](hasprefixoperator.md)    |RHS isn't a term prefix in LHS                                   |No            |`"North America" !hasprefix "mer"` 
+[`hasprefix_cs`](hasprefixoperator.md)   |RHS is a term prefix in LHS                                       |Yes           |`"North America" hasprefix_cs "Ame"`
+[`!hasprefix_cs`](hasprefixoperator.md)  |RHS isn't a term prefix in LHS                                   |Yes           |`"North America" !hasprefix_cs "CA"` 
+[`hassuffix`](hassuffixoperator.md)     |RHS is a term suffix in LHS                                       |No            |`"North America" hassuffix "ica"`
+[`!hassuffix`](hassuffixoperator.md)    |RHS isn't a term suffix in LHS                                   |No            |`"North America" !hassuffix "americ"`
+[`hassuffix_cs`](hassuffixoperator.md)  |RHS is a term suffix in LHS                                       |Yes           |`"North America" hassuffix_cs "ica"`
+[`!hassuffix_cs`](hassuffixoperator.md) |RHS isn't a term suffix in LHS                                   |Yes           |`"North America" !hassuffix_cs "icA"`
+[`contains`](containsoperator.md)      |RHS occurs as a subsequence of LHS                                |No            |`"FabriKam" contains "BRik"`
+[`!contains`](containsoperator.md)      |RHS doesn't occur in LHS                                         |No            |`"Fabrikam" !contains "xyz"`
+[`contains_cs`](containsoperator.md)    |RHS occurs as a subsequence of LHS                                |Yes           |`"FabriKam" contains_cs "Kam"`
+[`!contains_cs`](containsoperator.md)   |RHS doesn't occur in LHS                                         |Yes           |`"Fabrikam" !contains_cs "Kam"`
+[`startswith`](containsoperator.md)    |RHS is an initial subsequence of LHS                              |No            |`"Fabrikam" startswith "fab"`
+[`!startswith`](containsoperator.md)    |RHS isn't an initial subsequence of LHS                          |No            |`"Fabrikam" !startswith "kam"`
+[`startswith_cs`](containsoperator.md)  |RHS is an initial subsequence of LHS                              |Yes           |`"Fabrikam" startswith_cs "Fab"`
+[`!startswith_cs`](containsoperator.md) |RHS isn't an initial subsequence of LHS                          |Yes           |`"Fabrikam" !startswith_cs "fab"`
+[`endswith`](endswithoperator.md)      |RHS is a closing subsequence of LHS                               |No            |`"Fabrikam" endswith "Kam"`
+[`!endswith`](endswithoperator.md)      |RHS isn't a closing subsequence of LHS                           |No            |`"Fabrikam" !endswith "brik"`
+[`endswith_cs`](endswithoperator.md)    |RHS is a closing subsequence of LHS                               |Yes           |`"Fabrikam" endswith_cs "kam"`
+[`!endswith_cs`](endswithoperator.md)   |RHS isn't a closing subsequence of LHS                           |Yes           |`"Fabrikam" !endswith_cs "brik"`
+[`matches regex`](regexoperator.md) |LHS contains a match for RHS                                      |Yes           |`"Fabrikam" matches regex "b.*k"`
 [`in`](inoperator.md)            |Equals to one of the elements                                     |Yes           |`"abc" in ("123", "345", "abc")`
 [`!in`](inoperator.md)           |Not equals to any of the elements                                 |Yes           |`"bca" !in ("123", "345", "abc")`
-`in~`           |Equals to one of the elements                                     |No            |`"abc" in~ ("123", "345", "ABC")`
-`!in~`          |Not equals to any of the elements                                 |No            |`"bca" !in~ ("123", "345", "ABC")`
+[`in~`](inoperator.md)            |Equals to one of the elements                                     |No            |`"abc" in~ ("123", "345", "ABC")`
+[`!in~`](inoperator.md)           |Not equals to any of the elements                                 |No            |`"bca" !in~ ("123", "345", "ABC")`
 
 
 > [!TIP]
@@ -91,9 +91,9 @@ Operator        |Description                                                    
 For better performance, when there are two operators that do the same task, use the case-sensitive one.
 For example:
 
-* instead of `=~`, use `==`
-* instead of `in~`, use `in`
-* instead of `contains`, use `contains_cs`
+* Use `==`, not `=~`
+* Use `in`, not `in~`
+* Use `contains_cs`, not `contains`
 
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
 `has` works faster than `contains`, `startswith`, or `endswith`.
@@ -106,3 +106,4 @@ For example, the first of these queries will run faster:
 EventLog | where continent has "North" | count;
 EventLog | where continent contains "nor" | count
 ```
+For more information, see [Query best practices](best-practices.md).
