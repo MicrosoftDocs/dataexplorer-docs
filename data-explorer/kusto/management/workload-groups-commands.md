@@ -193,9 +193,30 @@ and request rate limit policies unchanged:
 }```
 ```
 
+#### Alter the request consistency policy
+
+Set the request consistency for the `default` workload group, while keeping its request limits policy
+and request rate limit policies unchanged:
+
+```kusto
+.alter-merge workload_group default ```
+{
+  "RequestConsistencyPolicy": {
+      "RequestConsistency": {
+          "IsRelaxable": true,
+          "Value": "Weak"
+      },
+      "CachedResultsMaxAge": {
+          "IsRelaxable": true,
+          "Value": "05:00:00"
+      }
+  }
+}```
+```
+
 #### Alter the request rate limits enforcement policy
 
-Enable request rate limits enforcement policy for the `default` workload group,
+Set the request rate limits enforcement policy for the `default` workload group,
 while keeping all of its other policies unchanged:
 
 ```kusto
