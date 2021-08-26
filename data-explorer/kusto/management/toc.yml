@@ -20,6 +20,8 @@ items:
     href: request-rate-limit-policy.md
   - name: Request rate limits enforcement policy
     href: request-rate-limits-enforcement-policy.md
+  - name: Request consistency policy
+    href: request-consistency-policy.md
   - name: Request queuing policy
     href: request-queuing-policy.md
 - name: Schema
