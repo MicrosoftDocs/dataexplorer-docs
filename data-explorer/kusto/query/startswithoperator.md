@@ -1,6 +1,6 @@
 ---
-title: `startswith` and `notstartswith` operators - Azure Data Explorer
-description: This article describes `startswith` and `notstartswith` operators in Azure Data Explorer.
+title: startswith operators - Azure Data Explorer
+description: This article describes startswith operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -17,18 +17,18 @@ Filters a record set based on the provided value with a search that is not case 
 ```kusto
 Table1 | where col startswith ('value1')
 ```
- 
+
 ## Syntax
 
 ### Case insensitive syntax
 
-*T* `|` `where` *col* `startswith` `(`*expression*`)`   
- 
-*T* `|` `where` *col* `!startswith` `(`*expression*`)`   
+*T* `|` `where` *col* `startswith` `(`*expression*`)`
 
-### Case-sensitive syntax
+*T* `|` `where` *col* `!startswith` `(`*expression*`)`
 
-*T* `|` `where` *col* `startswith_cs` `(`*expression*`)`   
+### Case sensitive syntax
+
+*T* `|` `where` *col* `startswith_cs` `(`*expression*`)`
 
 *T* `|` `where` *col* `!startswith_cs` `(`*expression*`)`  
 
@@ -72,7 +72,7 @@ StormEvents
 |-----|-----------|
 |TEXAS|4701|
 |KANSAS|3166|
-|MISSOURI|2016| 
+|MISSOURI|2016|
 
 ### Use startswith_cs operator
 
@@ -110,7 +110,4 @@ StormEvents
 For better performance, when there are two operators that do the same task, use the case-sensitive one.
 For example, use `startswith_cs`, not `startswith`.
 
-For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
-`has` works faster than `contains`, `startswith`, or `endswith`.
-
-For more information, see [Query best practices](best-practices.md).
+For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. `has` works faster than `contains`, `startswith`, or `endswith`. For more information, see [Query best practices](best-practices.md).

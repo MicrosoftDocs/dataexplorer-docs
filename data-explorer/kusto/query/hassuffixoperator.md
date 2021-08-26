@@ -1,6 +1,6 @@
 ---
-title: `hassuffix` and `nothassuffix` operators - Azure Data Explorer
-description: This article describes `hassuffix` and `nothassuffix` operators in Azure Data Explorer.
+title: hassuffix operators - Azure Data Explorer
+description: This article describes hassuffix operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -121,7 +121,5 @@ For example:
 * Use `in`, not `in~`
 * Use `contains_cs`, not `contains`
 
-For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
-`has` works faster than `contains`, `startswith`, or `endswith`.
-
+For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. `has` works faster than `contains`, `startswith`, or `endswith`.
 For more information, see [Query best practices](best-practices.md).

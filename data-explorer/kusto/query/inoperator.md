@@ -1,6 +1,6 @@
 ---
-title: in and notin operators - Azure Data Explorer
-description: This article describes in and notin operators in Azure Data Explorer.
+title: in operators - Azure Data Explorer
+description: This article describes in operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -26,7 +26,7 @@ Table1 | where col in ('value1', 'value2')
  
 ## Syntax
 
-### Case-sensitive syntax
+### Case sensitive syntax
 
 *T* `|` `where` *col* `in` `(`*list of scalar expressions*`)`   
 *T* `|` `where` *col* `in` `(`*tabular expression*`)`   
@@ -195,5 +195,4 @@ For example:
 
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
 `has` works faster than `contains`, `startswith`, or `endswith`.
-
 For more information, see [Query best practices](best-practices.md).

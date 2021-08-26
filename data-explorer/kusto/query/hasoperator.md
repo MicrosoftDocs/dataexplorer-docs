@@ -1,6 +1,6 @@
 ---
-title: `has` and `nothas` operators - Azure Data Explorer
-description: This article describes `has` and `nothas` operators in Azure Data Explorer.
+title: has operators - Azure Data Explorer
+description: This article describes has operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -26,7 +26,7 @@ Table1 | where col has ('value1')
  
 *T* `|` `where` *col* `!has` `(`*expression*`)`   
 
-### Case-sensitive syntax
+### Case sensitive syntax
 
 *T* `|` `where` *col* `has_cs` `(`*expression*`)`   
 
@@ -111,7 +111,4 @@ For example:
 * Use `in`, not `in~`
 * Use `contains_cs`, not `contains`
 
-For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
-`has` works faster than `contains`, `startswith`, or `endswith`.
-
-For more information, see [Query best practices](best-practices.md).
+For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. `has` works faster than `contains`, `startswith`, or `endswith`. For more information, see [Query best practices](best-practices.md).

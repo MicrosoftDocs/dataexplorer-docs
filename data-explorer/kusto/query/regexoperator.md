@@ -1,6 +1,6 @@
 ---
-title: matches regex operator - Azure Data Explorer
-description: This article describes the matches regex operator in Azure Data Explorer.
+title: regex operator - Azure Data Explorer
+description: This article describes the regex operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -20,7 +20,7 @@ Table1 | where col matches regex ('value1')
  
 ## Syntax
 
-### Case insensitive syntax
+### Case sensitive syntax
 
 *T* `|` `where` *col* `matches` `regex` `(`*expression*`)`   
 
