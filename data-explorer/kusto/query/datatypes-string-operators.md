@@ -51,7 +51,7 @@ Kusto builds a term index consisting of all terms that are *three characters or 
 |[`!=`](equalsoperator.md)|Not equals |Yes |`"abc" != "ABC"`|
 |[`=~`](equalsoperator.md) |Equals |No |`"abc" =~ "ABC"`|
 |[`!~`](equalsoperator.md) |Not equals |No |`"aBc" !~ "xyz"`|
-|[`has``](hasoperator.md) |Right-hand-side (RHS) is a whole term in left-hand-side (LHS) |No |`"North America" has "america"`|
+|[`has`](hasoperator.md) |Right-hand-side (RHS) is a whole term in left-hand-side (LHS) |No |`"North America" has "america"`|
 |[`!has`](hasoperator.md) |RHS isn't a full term in LHS |No |`"North America" !has "amer"`|
 |[`has_all`](has-all-operator.md) |Same as `has` but works on all of the elements |No |`"North and South America" has_all("south", "north")`|
 |[`has_any`](has-anyoperator.md) |Same as `has` but works on any of the elements |No |`"North America" has_any("south", "north")`|
@@ -80,7 +80,7 @@ Kusto builds a term index consisting of all terms that are *three characters or 
 |[`matches regex`](regexoperator.md) |LHS contains a match for RHS |Yes |`"Fabrikam" matches regex "b.*k"`|
 |[`in`](inoperator.md) |Equals to one of the elements |Yes |`"abc" in ("123", "345", "abc")`|
 |[`!in`](inoperator.md) |Not equals to any of the elements |Yes |`"bca" !in ("123", "345", "abc")`|
-|[`in~`](inoperator.md) |Equals to one of the elements |No |`"abc" in~ ("123", "345", "ABC")`|
+|[`in~`](inoperator.md) |Equals to one of the elements |No  | `"abc" in~ ("123", "abc", "aabcc")` |
 |[`!in~`](inoperator.md) |Not equals to any of the elements |No |`"bca" !in~ ("123", "345", "ABC")`|
 
 
