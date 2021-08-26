@@ -44,7 +44,7 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples  
 
-### Use endswith operator
+### Use case insensitive operator
 
 ```kusto
 StormEvents
@@ -58,8 +58,6 @@ StormEvents
 |-----|-----------|
 |KANSAS|3166|
 |ARKANSAS|1028|  
-
-### Use !endswith operator
 
 ```kusto
 StormEvents
@@ -76,7 +74,7 @@ StormEvents
 |IOWA|2337|
 |MISSOURI|2016|
 
-### Use endswith_cs operator
+### Use case-sensitive operators
 
 ```kusto
 StormEvents
@@ -88,8 +86,6 @@ StormEvents
 |Count|
 |-----|
 |1|
-
-### Use !endswith_cs operator
 
 ```kusto
 StormEvents

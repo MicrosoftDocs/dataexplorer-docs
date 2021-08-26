@@ -44,7 +44,7 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples  
 
-### Use startswith operator
+### Use case insensitive operators
 
 ```kusto
 StormEvents
@@ -57,8 +57,6 @@ StormEvents
 |State|event_count|
 |-----|-----------|
 |LOUISIANA|463|  
-
-### Use !startswith operator
 
 ```kusto
 StormEvents
@@ -74,7 +72,7 @@ StormEvents
 |KANSAS|3166|
 |MISSOURI|2016|
 
-### Use startswith_cs operator
+### case sensitive operators
 
 ```kusto
 StormEvents
@@ -88,8 +86,6 @@ StormEvents
 |-----|-----------|
 |IOWA|2337|
 |ILLINOIS|2022|
-
-### Use !startswith_cs operator
 
 ```kusto
 StormEvents
