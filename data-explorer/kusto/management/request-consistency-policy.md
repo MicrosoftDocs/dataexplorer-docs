@@ -1,6 +1,6 @@
 ---
-title: Request consistency policy - Azure Data Explorer
-description: This article describes the request consistency policy in Azure Data Explorer.
+title: Query consistency policy - Azure Data Explorer
+description: This article describes the query consistency policy in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,9 +9,9 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/01/2021
 ---
-# Request consistency policy
+# Query consistency policy
 
-A workload group's request consistency policy allows specifying options that control the consistency of requests.
+A workload group's query consistency policy allows specifying options that control the consistency of queries.
 
 ## The policy object
 
@@ -24,7 +24,7 @@ The following limits are configurable:
 
 | Name                   | Type                 | Description                                                                                      | Supported values                           | Default value | Matching client request property |
 |------------------------|----------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------|---------------|----------------------------------|
-| RequestConsistency     | `RequestConsistency` | The [consistency](../concepts/queryconsistency.md) to use.                                       | `Strong`, `Weak`, or `WeakAffinitized`     | `Strong`      | `queryconsistency`               |
+| QueryConsistency     | `QueryConsistency` | The [consistency](../concepts/queryconsistency.md) to use.                                       | `Strong`, `Weak`, or `WeakAffinitized`     | `Strong`      | `queryconsistency`               |
 | CachedResultsMaxAge    | `timespan`           | The maximum age of [cached query results](../query/query-results-cache.md) that can be returned. | A non-negative `timespan`                  | `null`        | `query_results_cache_max_age`    |
 
 ### Notes
@@ -38,7 +38,7 @@ The following limits are configurable:
 
 ```json
 {
-  "RequestConsistency": {
+  "QueryConsistency": {
     "IsRelaxable": true,
     "Value": "Weak"
   },
@@ -51,4 +51,4 @@ The following limits are configurable:
 
 ## Control commands
 
-Manage the workload group's request consistency policy with [Workload groups control commands](workload-groups-commands.md).
+Manage the workload group's query consistency policy with [Workload groups control commands](workload-groups-commands.md).
