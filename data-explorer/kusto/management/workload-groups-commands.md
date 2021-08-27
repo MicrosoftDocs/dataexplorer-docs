@@ -160,8 +160,7 @@ while keeping previously defined limits unchanged:
 
 #### Alter the request rate limit policies
 
-Alter the request rate limit policies of the `default` workload group,
-while keeping all of its other policies unchanged:
+Alter the request rate limit policies of the `default` workload group, while keeping its other policies unchanged:
 
 ```kusto
 .alter-merge workload_group default ```
@@ -181,8 +180,7 @@ while keeping all of its other policies unchanged:
 
 #### Alter the request queuing policy
 
-Enable request queuing for the `default` workload group, while keeping its request limits policy
-and request rate limit policies unchanged:
+Enable request queuing for the `default` workload group, while keeping its other policies unchanged:
 
 ```kusto
 .alter-merge workload_group default ```
@@ -195,14 +193,13 @@ and request rate limit policies unchanged:
 
 #### Alter the request consistency policy
 
-Set the request consistency for the `default` workload group, while keeping its request limits policy
-and request rate limit policies unchanged:
+Set the query consistency policy for the `default` workload group, while keeping its other policies unchanged:
 
 ```kusto
 .alter-merge workload_group default ```
 {
-  "RequestConsistencyPolicy": {
-      "RequestConsistency": {
+  "QueryConsistencyPolicy": {
+      "QueryConsistency": {
           "IsRelaxable": true,
           "Value": "Weak"
       },
