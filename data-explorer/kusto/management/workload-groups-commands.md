@@ -191,7 +191,7 @@ Enable request queuing for the `default` workload group, while keeping its other
 }```
 ```
 
-#### Alter the request consistency policy
+#### Alter the query consistency policy
 
 Set the query consistency policy for the `default` workload group, while keeping its other policies unchanged:
 
