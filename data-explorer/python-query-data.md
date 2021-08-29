@@ -19,9 +19,8 @@ Azure Data Explorer provides a [data client library for Python](https://github.c
 
 ## Prerequisites
 
-* [Python 3.4+](https://www.python.org/downloads/)
-
-* An organizational email account that is a member of Azure Active Directory (AAD)
+* [Python 3.4+](https://www.python.org/downloads/).
+* An organizational email account that is a member of Azure Active Directory (AAD).
 
 ## Install the data library
 

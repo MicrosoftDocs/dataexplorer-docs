@@ -21,15 +21,11 @@ Instead you can [configure the data source](#configure-the-data-source) and [vis
 
 ## Prerequisites
 
-You need the following to complete this article:
-
 * [Grafana version 5.3.0 or later](https://docs.grafana.org/installation/) for your operating system
-
 * The [Azure Data Explorer plugin](https://grafana.com/grafana/plugins/grafana-azure-data-explorer-datasource/) for Grafana. Plugin version 3.0.5 or later is required to use Grafana query builder.
-
 * A cluster that includes the StormEvents sample data. For  more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
 
-    [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
+[!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
 [!INCLUDE [data-explorer-configure-data-source](includes/data-explorer-configure-data-source.md)]
 

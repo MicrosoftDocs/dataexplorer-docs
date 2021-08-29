@@ -24,7 +24,7 @@ Azure Data Explorer has the following roles:
 |Database admin             |Can do anything in the scope of a particular database.|
 |Database user              |Can read all data and metadata in the database. Additionally, they can create tables (becoming the table admin for that table) and functions in the database.|
 |Database viewer            |Can read all data and metadata in the database.|
-|Database ingestor          |Can ingest data to all existing tables in the database, but not query the data.|
+|Database ingestor          |Can ingest data into all existing tables in the database, but not query the data.|
 |Database monitor           |Can execute '.show ...' commands in the context of the database and its child entities.|
 |Table admin                |Can do anything in the scope of a particular table. |
 |Table ingestor             |Can ingest data in the scope of a particular table, but not query the data.|

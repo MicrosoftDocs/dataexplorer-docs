@@ -38,7 +38,7 @@ existing or nonexistent tables and data.
   ingestion in the background. The results of the command will include
   an `OperationId` value that can then be used with the `.show operations`
   command, to retrieve the ingestion completion status and results.
-* *TableName*: The name of the table to ingest data to.
+* *TableName*: The name of the table to ingest data into.
   The table name is always related to the database in context.
 * *PropertyName*, *PropertyValue*: Any number of ingestion properties that affect the ingestion process.
 
