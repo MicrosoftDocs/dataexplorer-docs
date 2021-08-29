@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/18/2019
+ms.date: 08/29/2021
 ms.localizationpriority: high
 ---
 # hasprefix and !hasprefix operators

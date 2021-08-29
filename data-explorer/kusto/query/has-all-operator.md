@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/11/2021
+ms.date: 08/29/2021
 ---
 # has_all operator
 

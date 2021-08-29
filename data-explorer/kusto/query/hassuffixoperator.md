@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/18/2019
+ms.date: 08/29/2021
 ms.localizationpriority: high
 ---
 # hassuffix and !suffix operators
@@ -114,7 +114,7 @@ StormEvents
 
 ## Performance tips
 
-For better performance, when there are two operators that do the same task, use the case-sensitive one. For example use `hassuffix_cs`, not `hassuffix.
+For better performance, when there are two operators that do the same task, use the case-sensitive one. For example use `hassuffix_cs`, not `hassuffix`.
 
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`.
 For more information, see [Query best practices](best-practices.md).

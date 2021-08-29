@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/19/2020
+ms.date: 08/29/2021
 ms.localizationpriority: high 
 ---
 # String operators
