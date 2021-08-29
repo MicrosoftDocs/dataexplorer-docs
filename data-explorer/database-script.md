@@ -25,8 +25,8 @@ There are various methods you can use to configure a database with Kusto Query L
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
-* [Create a cluster and database](create-cluster-database-portal.md).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Upload Kusto Query Language script
 

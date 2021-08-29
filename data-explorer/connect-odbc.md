@@ -25,8 +25,6 @@ In the article, you learn how to use the SQL Server ODBC driver, so you can conn
 
 ## Prerequisites
 
-You need the following:
-
 * [Microsoft ODBC Driver for SQL Server version 17.2.0.1 or later](/sql/connect/odbc/download-odbc-driver-for-sql-server) for your operating system.
 
 ## Configure the ODBC data source

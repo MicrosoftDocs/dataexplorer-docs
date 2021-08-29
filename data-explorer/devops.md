@@ -28,19 +28,18 @@ This document describes a simple example on the use of the **Azure Data Explorer
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 * Azure Data Explorer Cluster setup:
-    * An [Azure Data Explorer cluster and database](create-cluster-database-portal.md).
     * Create Azure Active Directory (Azure AD) app by [provisioning an Azure AD application](./provision-azure-ad-app.md).
     * Grant access to your Azure AD App on your Azure Data Explorer database by [managing Azure Data Explorer database permissions](manage-database-permissions.md).
 * Azure DevOps setup:
-    * [Sign up for a free organization](/azure/devops/user-guide/sign-up-invite-teammates)
-    * [Create an organization](/azure/devops/organizations/accounts/create-organization)
-    * [Create a project in Azure DevOps](/azure/devops/organizations/projects/create-project)
-    * [Code with Git](/azure/devops/user-guide/code-with-git)
+    * [Sign up for a free organization](/azure/devops/user-guide/sign-up-invite-teammates).
+    * [Create an organization](/azure/devops/organizations/accounts/create-organization).
+    * [Create a project in Azure DevOps](/azure/devops/organizations/projects/create-project).
+    * [Code with Git](/azure/devops/user-guide/code-with-git).
 * Extension Installation:
     * If you are the Azure DevOps instance owner, install the extension from the [Marketplace](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX).
-
         ![Get extension in the Marketplace.](media/devops/get-extension.png)
         ![Install extension.](media/devops/extension-install.png)
     * If you are NOT the Azure DevOps instance owner, contact your [owner](/azure/devops/organizations/security/lookup-organization-owner-admin?view=azure-devops&tabs=preview-page#look-up-the-organization-owner&preserve-view=true) and ask them to install it.

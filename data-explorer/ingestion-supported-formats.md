@@ -6,12 +6,20 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 08/29/2021
 ---
 
 # Data formats supported by Azure Data Explorer for ingestion
 
 Data ingestion is the process by which data is added to a table and is made available for query in Azure Data Explorer. For all ingestion methods, other than ingest-from-query, the data must be in one of the supported formats. The following table lists and describes the formats that Azure Data Explorer supports for data ingestion.
+
+> [!NOTE]
+> Before you ingest data, make sure that your data is properly formatted and defines the expected fields. We recommend using your preferred validator to confirm the format is valid. For example, you may find the following validators useful to check CSV or JSON files:
+>
+> * CSV: http://csvlint.io/
+> * JSON: https://jsonlint.com/
+>
+> For more information about why ingestion might fail, see [Ingestion failures](kusto/management/ingestionfailures.md) and  [Ingestion error codes in Azure Data Explorer](error-codes.md).
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
@@ -29,7 +37,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 |TSV      |`.tsv`      |A text file with tab-separated values (`\t`).|
 |TSVE     |`.tsv`      |A text file with tab-separated values (`\t`). A backslash character (`\`) is used for escaping.|
 |TXT      |`.txt`      |A text file with lines delimited by `\n`. Empty lines are skipped.|
-|W3CLOGFILE |`.log`    |[Web log file](https://www.w3.org/TR/WD-logfile.html) format standardised by the W3C.|
+|W3CLOGFILE |`.log`    |[Web log file](https://www.w3.org/TR/WD-logfile.html) format standardized by the W3C. |
 
 
 ## Supported data compression formats

@@ -17,7 +17,7 @@ Azure Data Explorer supports deploying a cluster into a subnet in your virtual n
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Sign in to the [Azure portal](https://portal.azure.com/).
 
 ## Create Virtual Network and subnet
