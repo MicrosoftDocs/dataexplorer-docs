@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 08/29/2021
 ---
 
 # Data formats supported by Azure Data Explorer for ingestion
@@ -15,6 +15,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 
 > [!NOTE]
 > Before you ingest data, make sure that your data is properly formatted and defines the expected fields. We recommend using your preferred validator to confirm the format is valid. For example, you may find the following validators useful to check CSV or JSON files:
+>
 > * CSV: http://csvlint.io/
 > * JSON: https://jsonlint.com/
 >
