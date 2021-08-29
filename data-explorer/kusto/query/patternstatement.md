@@ -137,7 +137,7 @@ Syntax Error
 
 ### Working with middle-tier applications
 
-In the following example, a middle-tier application uses an internal service to map IP addresses to longitude/latitude locations. The middle-tier app declares a pattern called `map_ip_to_longlat`. Suppose it gets the following query from the user:
+In the following example, a middle-tier application provides the ability to enrich Azure Data Explorer queries with longitude/latitude locations. The application uses an internal service to map IP addresses to longitude/latitude locations. The middle-tier application provides a function called `map_ip_to_longlat` for users to implement with Azure Data Explorer. Suppose it gets the following query from the user:
 
 `map_ip_to_longlat` `(`"10.10.10.10"`)`
 
@@ -148,11 +148,11 @@ declare pattern map_ip_to_longlat;
 map_ip_to_longlat("10.10.10.10")
 ```
 
-Error 
+The following error is produced: 
 
- One or more pattern references were not declared. Detected pattern references: ["map_ip_to_longlat('10.10.10.10')"]
+One or more pattern references were not declared. Detected pattern references: ["map_ip_to_longlat('10.10.10.10')"]
 
-The middle-tier application can then inspect the error, determine that the error indicates a missing pattern reference, and retrieve the missing IP address from the error `map_ip_to_longlat('10.10.10.10')`. 
+The middle-tier application can then inspect the error, determine that the error indicates a missing pattern reference, and retrieve the missing IP address from the error `map_ip_to_longlat('10.10.10.10')`.
 
 The middle-tier application can then look up this IP address and re-run the query, this time providing the pattern references as part of the pattern declaration, so that Azure Data Explorer is provided the exact value of the latitude and longitude:
 
