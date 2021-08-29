@@ -25,8 +25,8 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* [Try it in a cloud shell](includes/cloud-shell-try-it.md)
 * If you choose to install and use the Azure CLI locally, this article requires the Azure CLI version 2.0.4 or later. Run `az --version` to check your version. If you need to install or upgrade, see [Install the Azure CLI](/cli/azure/install-azure-cli).
+* If needed, try code [in a cloud shell](includes/cloud-shell-try-it.md).
 
 ## Configure the CLI parameters
 
