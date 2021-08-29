@@ -21,8 +21,8 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 
 ## Prerequisites
 
-* An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* [A cluster and database](create-cluster-database-portal.md).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 * [Event Hub with data for ingestion](ingest-data-event-hub.md#create-an-event-hub).
 
 > [!NOTE]

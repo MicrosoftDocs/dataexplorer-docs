@@ -20,7 +20,8 @@ This article shows you how to ingest (load) sample data into an Azure Data Explo
 
 ## Prerequisites
 
-[A test cluster and database](create-cluster-database-portal.md)
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Ingest data
 
