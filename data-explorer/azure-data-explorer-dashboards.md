@@ -47,7 +47,7 @@ The following image depicts an Azure Data Explorer dashboard.
 
 Add a data source for the dashboard.
 
-1. Select **Data sources** menu item on the top bar. Select the **+ New data source** button in the **Data sources** pane.
+1. Select **Data sources** and then in the **Data sources** pane, select **New data source**.
 
     :::image type="content" source="media/adx-dashboards/data-source.png" alt-text="Data source.":::
 
@@ -73,22 +73,22 @@ Parameters significantly improve dashboard rendering performance, and enable you
 
 |Field  |Description |
 |---------|---------|
-|**Parameter type**    |One of the following:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.</li></ul>  The parameter type you select will affect the way you write any query that's based on this parameter.  |
+|**Parameter type**    |One of the following:<ul><li>**Single Selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple Selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time Range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.</li></ul>  The parameter type you select will affect the way you write any query that's based on this parameter.  |
 |**Variable name**     |   The name of the parameter to be used in the query.      |
 |**Data type**    |    The data type of the parameter values.     |
-|**Pin as dashboard filter**   |   Pin the parameter-based filter to the dashboard or unpin from the dashboard.       |
+|**Pin as dashboard filter**   |   The option to pin the parameter-based filter to the dashboard .       |
 |**Source**     |    The source of the parameter values: <ul><li>**Fixed values**: Manually introduced static filter values. </li><li>**Query**: Dynamically introduced values using a KQL query.  </li></ul>    |
-|**Add a “Select all” value**    |   Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values.      |
+|**Add empty "Select all" value**    |   Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values.      |
 |**Display name**    |   The name of the parameter shown on the dashboard or the edit card.      |
 | **Default value** | The default parameter value. |
 
 ### Parameter query
 
-The query associated with our example is as follows:
+The following is an example of a query using the parameter defined in [Use parameters](azure-data-explorer-dashboards.md#use-parameters).
 
 :::image type="content" source="media/adx-dashboards/parameter-query.png" alt-text="Screenshot of query used to generate parameters.":::
 
-1. Select the source data from the dropdown bar. 
+1. Select the source data from the drop-down bar. 
 1. Enter your query and select **Run**.
 
 1. Select **Apply changes**. 
