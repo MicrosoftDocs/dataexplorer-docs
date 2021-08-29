@@ -72,7 +72,7 @@ StormEvents
 |KANSAS|3166|
 |MISSOURI|2016|
 
-### case sensitive operators
+### Use case-sensitive operators
 
 ```kusto
 StormEvents
