@@ -37,7 +37,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 |TSV      |`.tsv`      |A text file with tab-separated values (`\t`).|
 |TSVE     |`.tsv`      |A text file with tab-separated values (`\t`). A backslash character (`\`) is used for escaping.|
 |TXT      |`.txt`      |A text file with lines delimited by `\n`. Empty lines are skipped.|
-|W3CLOGFILE |`.log`    |[Web log file](https://www.w3.org/TR/WD-logfile.html) format standardised by the W3C. |
+|W3CLOGFILE |`.log`    |[Web log file](https://www.w3.org/TR/WD-logfile.html) format standardized by the W3C. |
 
 
 ## Supported data compression formats
