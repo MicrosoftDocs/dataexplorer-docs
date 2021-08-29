@@ -16,6 +16,9 @@ In this article, you learn how to use the query language in Azure Data Explorer 
 
 ## Prerequisites
 
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
+
 You can run the queries in this article in one of two ways:
 
 - On the Azure Data Explorer *help cluster* that we have set up to aid learning.

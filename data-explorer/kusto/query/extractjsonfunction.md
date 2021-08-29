@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 08/29/2021
 ---
 # extractjson()
 
@@ -55,6 +55,8 @@ T
 
 *(We don't currently implement wildcards, recursion, union, or slices.)*
 
+> [!NOTE]
+> JSON paths that include special characters should be escaped as [\'Property Name\'].
 
 **Performance tips**
 

@@ -22,7 +22,7 @@ You'll learn how to programmatically create a resource group, a storage account 
 
 ## Prerequisites
 
-If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 
 ## Install the Python package
 

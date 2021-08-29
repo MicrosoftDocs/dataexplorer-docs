@@ -27,11 +27,9 @@ First, create a table and data mapping in a cluster. You then queue ingestion to
 
 ## Prerequisites
 
-* An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 * [Python 3.4+](https://www.python.org/downloads/).
-
-* [A cluster and database](create-cluster-database-portal.md).
 
 ## Install the data and ingest libraries
 

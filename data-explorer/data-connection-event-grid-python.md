@@ -25,9 +25,9 @@ For the Microsoft Azure Kusto Management Client Library, see [Microsoft Azure SD
 
 ## Prerequisites
 
-* An Azure account with an active subscription. [Create one for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 * [Python 3.4+](https://www.python.org/downloads/).
-* [A cluster and database](create-cluster-database-python.md).
 * [Table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
 * [Database and table policies](database-table-policies-csharp.md) (optional).
 * [A storage account with an Event Grid subscription](ingest-data-event-grid.md).

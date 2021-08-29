@@ -15,13 +15,11 @@ ms.date: 06/03/2019
 
 ## Prerequisites
 
-You need the following to complete this article:
-
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 * [Connect to Azure Data Explorer with ODBC](connect-odbc.md) using the SQL Server ODBC driver, to connect to Azure Data Explorer from Tableau. 
-
 * Tableau Desktop, full, or [trial](https://www.tableau.com/products/desktop/download) version.
-
-* A cluster that includes the StormEvents sample data. For more information, see [Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
+* Use the cluster that includes the StormEvents sample data. For more information, see [Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 

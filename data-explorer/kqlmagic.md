@@ -46,7 +46,7 @@ Use the following command to connect to the *Samples* database hosted on the *He
 ```
 
 > [!Note]
-> If you are using your own ADX cluster, you must include the region in the connection string as follows:   
+> If you are using your own Azure Data Explorer cluster, you must include the region in the connection string as follows:   
    ```%kql azuredataexplorer://tenant="yourcompany.com";code;cluster='mycluster.westus';database='mykustodb'```
 
 ## Query and visualize

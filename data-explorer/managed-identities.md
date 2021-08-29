@@ -66,7 +66,7 @@ Assign a system-assigned identity that is tied to your cluster, and is deleted i
 
 To set up a managed identity using the Azure Data Explorer C# client:
 
-* Install the [Azure Data Explorer (Kusto) NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Install the [Azure Data Explorer NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Install the [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet package](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) for authentication.
 * [Create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You add role assignment at the subscription scope and get the required `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
@@ -233,7 +233,7 @@ Assign a user-assigned managed identity to your cluster. A cluster can have more
 
 To set up a managed identity using the Azure Data Explorer C# client:
 
-* Install the [Azure Data Explorer (Kusto) NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Install the [Azure Data Explorer NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Install the [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet package](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) for authentication.
 * [Create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You add role assignment at the subscription scope and get the required `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
