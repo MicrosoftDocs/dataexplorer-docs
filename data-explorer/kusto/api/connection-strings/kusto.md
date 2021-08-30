@@ -200,6 +200,28 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
 // Equivalent Kusto connection string: $"Data Source={serviceUri};Database=NetDefaultDB;Fed=True;AppClientId={applicationClientId};AppKey={applicationKey};Authority Id={authority}"
 ```
 
+**Using System-assigned Managed Identity**
+
+```csharp
+var serviceUri = "Service URI, typically of the form https://cluster.region.kusto.windows.net";
+var managedIdentity = "<managed identity>"; // For system-assigned identity use "system"
+
+// Recommended syntax
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
+    .WithAadSystemManagedIdentity(managedIdentity);
+```
+
+**Using User-assigned Managed Identity**
+
+```csharp
+var serviceUri = "Service URI, typically of the form https://cluster.region.kusto.windows.net";
+var managedIdentity = "<managed identity>"; // For system-assigned identity use "system"
+
+// Recommended syntax
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
+    .WithAadUserManagedIdentity(managedIdentity);
+```
+
 **AAD Federated authentication using user / application token**
 
 ```csharp
@@ -251,24 +273,6 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
 {
     FederatedSecurity = true,
     TokenProviderCallback = () => Task.FromResult(tokenProviderCallback()),
-};
-```
-
-**Using Managed Identity**
-
-```csharp
-var serviceUri = "Service URI, typically of the form https://cluster.region.kusto.windows.net";
-var managedIdentity = "<managed identity>"; // For system-assigned identity use "system"
-
-// Recommended syntax
-var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
-    .WithAadManagedIdentity(managedIdentity);
-
-// Legacy syntax
-var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
-{
-    FederatedSecurity = true,
-    EmbeddedManagedIdentity = managedIdentity,
 };
 ```
 
