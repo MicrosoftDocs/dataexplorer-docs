@@ -218,7 +218,7 @@ var managedIdentityClientId = "<managed identity client id>";
 
 // Recommended syntax
 var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
-    .WithAadUserManagedIdentity(managedIdentity);
+    .WithAadUserManagedIdentity(managedIdentityClientId);
 ```
 
 **AAD Federated authentication using user / application token**
