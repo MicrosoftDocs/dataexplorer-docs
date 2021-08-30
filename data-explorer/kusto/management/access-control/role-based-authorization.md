@@ -23,7 +23,7 @@ The **Kusto Engine** service has the following roles:
 |Database user              |Can read all data and metadata of the database. Additionally, can create tables and become the table admin for those tables, and create functions in the database.|
 |All Databases viewer       |Can read all data and metadata of any database                                                                                                               |
 |Database viewer            |Can read all data and metadata of a particular database                                                                                                       |
-|Database ingestor          |Can ingest data to all existing tables in the database, but can't query the data                                                                             |
+|Database ingestor          |Can ingest data into all existing tables in the database, but can't query the data                                                                             |
 |Database unrestrictedviewer|Can query all tables in the database that have the [RestrictedViewAccess policy](../restrictedviewaccess-policy.md) enabled                                |
 |Database monitor           |Can execute `.show` commands in the context of the database and its child entities                                                                           |
 |Function admin             |Can alter function, delete function, or grant admin permissions to another principal                                                                         |

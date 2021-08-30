@@ -26,7 +26,7 @@ Table1 | where col has_any ('value1', 'value2')
 
 * *T* - Tabular input whose records are to be filtered.
 * *col* - Column to filter.
-* *list of expressions* - Comma separated list of tabular, scalar, or literal expressions  
+* *list of expressions* - Comma separated list of scalar or literal expressions
 * *tabular expression* - Tabular expression that has a set of values (if expression has multiple columns, the first column is used)
 
 ## Returns

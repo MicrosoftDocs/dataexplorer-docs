@@ -21,7 +21,7 @@ Searches the array for the specified item, and returns its position.
 
 * *array*: Input array to search.
 * *lookup*: Value to lookup. The value should be of type long, integer, double, datetime, timespan, decimal, string, or guid.
-* *start_index*: Search start position. Optional.
+* *start_index*: Search start position. A negative value will offset the starting search value from the end of the array by this many steps: abs(start_index). Optional.
 * *length*: Number of values to examine. A value of -1 means unlimited length. Optional.
 * *occurrence*: The number of the occurrence. Default 1. Optional.
 
@@ -30,7 +30,7 @@ Searches the array for the specified item, and returns its position.
 Zero-based index position of lookup.
 Returns -1 if the value isn't found in the array.
 
-For irrelevant inputs (*start_index* < 0, *occurrence* < 0 or  *length* < -1) - returns *null*.
+For irrelevant inputs (*occurrence* < 0 or  *length* < -1) - returns *null*.
 
 ## Example
 
@@ -44,11 +44,13 @@ print
  , idx5 = array_index_of(arr,"example",2,-1)  // lookup found
  , idx6 = array_index_of(arr, "an", 1, -1, 2)   // second occurrence found in input range
  , idx7 = array_index_of(arr, "an", 1, -1, 3)   // no third occurrence in input array
+ , idx8 = array_index_of(arr, "an", -3)   // negative start index will look at last 3 elements
+ , idx9 = array_index_of(arr, "is", -4)   // negative start index will look at last 3 elements
 ```
 
-|idx1|idx2|idx3|idx4|idx5|idx6|idx7|
-|----|----|----|----|----|----|----|
-|2   |3   |-1  |-1   |3   |4   |-1  |
+|idx1|idx2|idx3|idx4|idx5|idx6|idx7|idx8|idx9|
+|----|----|----|----|----|----|----|----|----|
+|2   |3   |-1  |-1   |3   |4   |-1  |4  |-1  |
 
 ## See also
 

@@ -24,10 +24,10 @@ Attaching a database to a different cluster using the follower capability is use
 
 ## Prerequisites
 
-1. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
-1. [Create cluster and DB](create-cluster-database-portal.md) for the leader.
-1. [Create cluster](create-cluster-database-portal.md) for the follower.
-1. [Ingest data](ingest-sample-data.md) to the leader database using one of various methods discussed in [ingestion overview](./ingest-data-overview.md).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md) for the leader.
+* Create [a cluster and database](create-cluster-database-portal.md) for the follower.
+* [Ingest data](ingest-sample-data.md) to the leader database using one of various methods discussed in [ingestion overview](./ingest-data-overview.md).
 
 ## Attach a database
 
@@ -38,7 +38,7 @@ To attach a database, you must have user, group, service principal, or managed i
 
 When attaching the database all tables, external tables and materialized views are followed as well. You can share specific tables/external tables/materialized views by configuring the '*TableLevelSharingProperties*'. 
 
-'*TableLevelSharingProperties*' contains six arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, and `materializedViewsToExclude`. The maximum number of enteries in all the arrays together is 100.  
+'*TableLevelSharingProperties*' contains six arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, and `materializedViewsToExclude`. The maximum number of entries in all arrays together is 100.  
 
 > [!NOTE]
 > When materialized views are included, their source tables are included as well.

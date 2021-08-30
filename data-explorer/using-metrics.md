@@ -18,8 +18,8 @@ For more information about Azure Metrics Explorer, see [Metrics Explorer](/azure
 
 ## Prerequisites
 
-* An Azure subscription. If you don't have one, you can create a [free Azure account](https://azure.microsoft.com/free/).
-* A [cluster and database](create-cluster-database-portal.md).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Use metrics to monitor your Azure Data Explorer resources
 
@@ -111,7 +111,7 @@ To refine your analysis:
 | Queue length | Count | Avg | Number of pending messages in a component's input queue. | Component Type |
 | Queue oldest message | Seconds | Avg | Time in seconds from when the oldest message in a component's input queue has been inserted. | Component Type | 
 | Received data size bytes | Bytes | Avg, Sum | Size of data received by data connections from input stream. | Component Type, Component Name |
-| Stage latency | Seconds | Avg | Time from when a message is discovered by Azure Data Explorer, until its content is received by an ingestion component for processing. <br> <br> Use **apply filters** and select **Component Type > EngineStorage** to show the total ingestion latency.| Database, Component Type | 
+| Stage latency | Seconds | Avg | Time from when a message is accepted by Azure Data Explorer, until its content is received by an ingestion component for processing. <br> <br> Use **apply filters** and select **Component Type > EngineStorage** to show the total ingestion latency.| Database, Component Type | 
 
 ## Streaming ingest metrics
 

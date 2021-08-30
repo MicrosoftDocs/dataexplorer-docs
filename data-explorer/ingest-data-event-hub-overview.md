@@ -128,6 +128,6 @@ Azure Data Explorer doesn't support `Alias` Event Hub namespaces. To implement t
 ## Next steps
 
 * [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md)
-* [Create an Event Hub data connection for Azure Data Explorer by using C#](data-connection-event-hub-csharp.md)
-* [Create an Event Hub data connection for Azure Data Explorer by using Python](data-connection-event-hub-python.md)
-* [Create an Event Hub data connection for Azure Data Explorer by using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
+* [Create an Event Hub data connection for Azure Data Explorer using C#](data-connection-event-hub-csharp.md)
+* [Create an Event Hub data connection for Azure Data Explorer using Python](data-connection-event-hub-python.md)
+* [Create an Event Hub data connection for Azure Data Explorer using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
