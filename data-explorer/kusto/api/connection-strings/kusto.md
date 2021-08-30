@@ -204,7 +204,6 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
 
 ```csharp
 var serviceUri = "Service URI, typically of the form https://cluster.region.kusto.windows.net";
-var managedIdentity = "<managed identity>"; // For system-assigned identity use "system"
 
 // Recommended syntax
 var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
