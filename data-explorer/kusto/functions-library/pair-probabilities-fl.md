@@ -19,11 +19,11 @@ The function `pair_probabilities_fl()`calculates the following probabilities and
 - P(B|A) is the conditional probability of *B=b* given *A=a*
 - P(A&#8746;B) is the union probability (*A=a* or *B=b*)
 - P(A&#8745;B) is the intersection probability (*A=a* and *B=b*)
-- The <a id="lift">**lift metric**</a> is calculated as P(A&#8745;B)/P(A)*P(B). 
+- The <a id="lift">**lift metric**</a> is calculated as P(A&#8745;B)/P(A)*P(B). For more information, see [lift metric](https://en.wikipedia.org/wiki/Lift_(data_mining)).
     - A lift near 1 means that the joint probability of two values is similar to what is expected in case that both variables are independent.
     - Lift >> 1 means that values cooccur more often than expected under independence assumption.
     - Lift << 1 means that values are less likely to cooccur than expected under independence assumption.
-- The <a id="jaccard">**Jaccard similarity coefficient**</a> is calculated as P(A&#8745;B)/P(A&#8746;B). 
+- The <a id="jaccard">**Jaccard similarity coefficient**</a> is calculated as P(A&#8745;B)/P(A&#8746;B). For more information, see [Jaccard coefficient](https://en.wikipedia.org/wiki/Jaccard_index).
     - A high Jaccard coefficient, close to 1, means that the values tend to occur together. 
     - A low Jaccard coefficient, close to 0, means that the values tend to stay apart.
 
