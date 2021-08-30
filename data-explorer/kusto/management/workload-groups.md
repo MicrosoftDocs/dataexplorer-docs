@@ -71,7 +71,8 @@ The following policies can be defined per workload group:
 * [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md)
 * [Request queuing policy](request-queuing-policy.md)
 * [Query consistency policy](query-consistency-policy.md)
-* 
+
+
 ## Monitoring
 
 [System commands](systeminfo.md) indicate which workload group requests were classified into.
