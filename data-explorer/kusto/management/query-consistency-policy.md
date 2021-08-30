@@ -27,12 +27,11 @@ The following limits are configurable:
 | QueryConsistency     | `QueryConsistency` | The [consistency](../concepts/queryconsistency.md) to use.                                       | `Strong`, `Weak`, or `WeakAffinitized`     | `Strong`      | `queryconsistency`               |
 | CachedResultsMaxAge    | `timespan`           | The maximum age of [cached query results](../query/query-results-cache.md) that can be returned. | A non-negative `timespan`                  | `null`        | `query_results_cache_max_age`    |
 
-### Notes
-
-* The default value applies in the following cases:
-  * The policy isn't defined, and the client request option isn't set.
-  * The policy is defined, the option isn't defined, and the client request option isn't set.
-  * The policy is defined, the option is defined with `null` as its `Value`, and the client request option isn't set.
+> [!NOTE]
+> The default value applies in the following cases:
+>  * The policy isn't defined, and the client request option isn't set.
+>  * The policy is defined, the option isn't defined, and the client request option isn't set.
+>  * The policy is defined, the option is defined with `null` as its `Value`, and the client request option isn't set.
 
 ### Example
 
