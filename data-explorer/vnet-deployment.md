@@ -73,6 +73,9 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 
 [Network Security Groups (NSG)](/azure/virtual-network/security-overview) provide the ability to control network access within a VNet. Azure Data Explorer automatically applies the following required network security rules. For Azure Data Explorer to operate using the [subnet delegation](/azure/virtual-network/subnet-delegation-overview) mechanism, before creating the cluster in the subnet, you must delegate the subnet to **Microsoft.Kusto/clusters** .
 
+ > [!NOTE]
+ > Enabling subnet delegation on the ADX subnet relieves you from the responsibility to create the NSG configuration mentioned in the following sections. This will be handled by network intent policies.
+
 #### Inbound NSG configuration
 
 | **Use**   | **From**   | **To**   | **Protocol**   |
@@ -338,3 +341,8 @@ The outbound dependencies cover categories such as "Azure Active Directory", "Az
 To deploy Azure Data Explorer cluster into your virtual network, use the [Deploy Azure Data Explorer cluster into your VNet](https://azure.microsoft.com/resources/templates/kusto-vnet/) Azure Resource Manager template.
 
 This template creates the cluster, virtual network, subnet, network security group, and public IP addresses.
+
+## Known limitations
+
+* Resource move of the virtual network which has been used for the injection is not supported
+* Resource move of the Public IP for the engine and the datamanagement is not supported
