@@ -38,8 +38,8 @@ In this article, you'll learn how to use ingestion metrics in the Azure portal t
 
 ## Prerequisites
 
-* An Azure subscription. If you don't have one, you can create a [free Azure account](https://azure.microsoft.com/free/).
-* A [cluster and database](create-cluster-database-portal.md).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 * An active batching ingestion ([Event Hub](ingest-data-event-hub-overview.md), [IoT Hub](ingest-data-iot-hub-overview.md), [Event Grid](ingest-data-event-grid-overview.md) or any other form of batching ingestion).
 
 ## Create metric charts with Azure Monitor metrics explorer

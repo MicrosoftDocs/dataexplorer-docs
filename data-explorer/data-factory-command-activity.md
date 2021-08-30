@@ -18,10 +18,10 @@ ms.date: 09/15/2019
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* [An Azure Data Explorer cluster and database](create-cluster-database-portal.md)
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 * A source of data.
-* [A data factory](data-factory-load-data.md#create-a-data-factory)
+* [A data factory](data-factory-load-data.md#create-a-data-factory).
 
 ## Create a new pipeline
 
