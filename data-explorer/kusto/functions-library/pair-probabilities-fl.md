@@ -36,7 +36,7 @@ The function `pair_probabilities_fl()`calculates the following probabilities and
   
 ## Arguments
 
-* None
+None
 
 ## Usage
 
@@ -164,9 +164,9 @@ dancePairs
 
 ## Analysis
 
-Let's look at list of pairs of people dancing at two dance classes supposedly at random to find out if anything looks anomalous (for example, not random). We'll start by looking at each class by itself.
+Let's look at list of pairs of people dancing at two dance classes supposedly at random to find out if anything looks anomalous (meaning, not random). We'll start by looking at each class by itself.
 
-The Michael-Patricia pair has a [**lift metric**](#lift) of 2.375, which is significantly above 1. This metric means that they're seen together much more often that what would be expected if this pairing was random. Their [**Jaccard coefficient**](#jaccard) is 0.75, which is close to 1. When the pair dances, they prefer to dance together.
+The Michael-Patricia pair has a [**lift metric**](#lift) of 2.375, which is significantly above 1. This value means that they're seen together much more often that what would be expected if this pairing was random. Their [**Jaccard coefficient**](#jaccard) is 0.75, which is close to 1. When the pair dances, they prefer to dance together.
 
 
 ```
