@@ -207,7 +207,7 @@ var serviceUri = "Service URI, typically of the form https://cluster.region.kust
 
 // Recommended syntax
 var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
-    .WithAadSystemManagedIdentity(managedIdentity);
+    .WithAadSystemManagedIdentity();
 ```
 
 **Using User-assigned Managed Identity**
