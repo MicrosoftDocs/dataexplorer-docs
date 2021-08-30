@@ -34,11 +34,11 @@ Requires [Database monitor permission](../management/access-control/role-based-a
 ## Examples
 
 ```kusto
-.show external table T schema as JSON
+.show external table T schema as json
 ```
 
 ```kusto
-.show external table T schema as CSL
+.show external table T schema as csl
 .show external table T cslschema
 ```
 
