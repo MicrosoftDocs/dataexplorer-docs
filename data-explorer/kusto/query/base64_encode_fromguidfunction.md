@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference 
 ms.date: 08/31/2021
 ---
-# base64_decode_toguid()
+# base64_encode_fromguid()
 
 Encodes a GUID to abase64 string.
 
