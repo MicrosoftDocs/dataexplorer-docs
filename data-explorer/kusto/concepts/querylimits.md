@@ -239,7 +239,7 @@ T
 | where Column in ("value1", "value2".... "valueN")
 ```
 
-* a query which has a union operator which is running too wide schema analysis especially that the default of union is to return “outer” union schema (meaning – that output will include all columns of the underlying table).
+* a query which has a union operator that is running too wide schema analysis especially that the default flavor of union is to return “outer” union schema (meaning – that output will include all columns of the underlying table).
 
 The suggestion in this case is to review the query and reduce the columns being used by the query.
 
