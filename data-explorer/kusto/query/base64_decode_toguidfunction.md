@@ -25,8 +25,7 @@ Decodes a base64 string to a GUID.
 
 Returns a GUID decoded from a base64 string.
 
-* To decode base64 strings to a UTF-8 string, see [base64_decode_tostring()](base64_decode_tostringfunction.md)
-* To encode strings to a base64 string, see [base64_encode_tostring()](base64_encode_tostringfunction.md)
+* To encode a GUID to a base64 string, see [base64_encode_fromguid()](base64_encode_fromguidfunction.md)
 
 ## Example
 
