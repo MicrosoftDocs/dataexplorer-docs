@@ -491,6 +491,9 @@ items:
     - name: mann-whitney-u-test-fl()
       displayName: functions library
       href: kusto/functions-library/mann-whitney-u-test-fl.md
+    - name: pair_probabilities_fl()
+      displayName: functions library, Jaccard, jaccard, lift
+      href: kusto/functions-library/pair-probabilities-fl.md
     - name: perm_fl()
       displayName: functions library
       href: kusto/functions-library/perm-fl.md
