@@ -72,7 +72,7 @@ Displays the current capacity policy for the cluster.
 .alter-merge cluster policy capacity ```
 {
   "ExtentsPartitionCapacity": {
-    "MaximumConcurrentOperationsPerNode": 4
+    "ClusterMaximumConcurrentOperations": 4
   }
 }```
 ```
