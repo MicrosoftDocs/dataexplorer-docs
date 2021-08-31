@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 08/18/2021
+ms.date: 08/31/2021
 ms.localizationpriority: high 
 ---
 
@@ -35,11 +35,11 @@ The following image depicts an Azure Data Explorer dashboard.
 
 ## Create a dashboard
 
-1. In the navigation bar, select **Dashboards (Preview)** and select **New dashboard**.
+1. In the navigation bar, select **Dashboards (Preview)** and then select **New dashboard**.
 
     :::image type="content" source="media/adx-dashboards/new-dashboard.png" alt-text="New dashboard.":::
 
-1. Enter a dashboard name and select **Create**.
+1. Enter a dashboard name and then select **Create**.
 
     :::image type="content" source="media/adx-dashboards/new-dashboard-popup.png" alt-text="Create a dashboard.":::
 
@@ -47,13 +47,14 @@ The following image depicts an Azure Data Explorer dashboard.
 
 Add a data source for the dashboard.
 
-1. Select **Data sources** and then in the **Data sources** pane, select **New data source**.
+1. Select **Data sources**.
+1. In the **Data sources** pane, select **New data source**.
 
     :::image type="content" source="media/adx-dashboards/data-source.png" alt-text="Data source.":::
 
 1. In the **Create new data source** pane:
     1. Enter a **Data source name**. 
-    1. Enter the **Cluster URI** or partial name including region and select **Connect**.
+    1. Enter the **Cluster URI** region and then select **Connect**.
     1. Select the **Database** from the drop-down list.
     1. Select **Apply**.
 
@@ -63,7 +64,8 @@ Add a data source for the dashboard.
 
 Parameters significantly improve dashboard rendering performance, and enable you to use filter values as early as possible in the query. Filtering is enabled when the parameter is included in the query associated with your tile(s).  For more information about how to set up and use different kinds of parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
 
-1. Select **Parameters** on the top bar. Select the **+ New parameter** button in the **Parameters** pane.
+1. Select **Parameters** on the top bar.
+1. Select the **+ New parameter** button in the **Parameters** pane.
 
     :::image type="content" source="media/adx-dashboards/parameters.png" alt-text="Select new parameter.":::
 
@@ -78,6 +80,8 @@ Parameters significantly improve dashboard rendering performance, and enable you
 |**Data type**    |    The data type of the parameter values.     |
 |**Pin as dashboard filter**   |   The option to pin the parameter-based filter to the dashboard .       |
 |**Source**     |    The source of the parameter values: <ul><li>**Fixed values**: Manually introduced static filter values. </li><li>**Query**: Dynamically introduced values using a KQL query.  </li></ul>    |
+| **Value column** | Results column to be used as parameter values. Only applicable for query-based parameters.
+| **Label column** | Results column to be used for parameter labels. Only applicable for query-based parameters.
 |**Add empty "Select all" value**    |   Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values.      |
 |**Display name**    |   The name of the parameter shown on the dashboard or the edit card.      |
 | **Default value** | The default parameter value. |
@@ -88,10 +92,10 @@ The following is an example of a query using the parameter defined in [Use param
 
 :::image type="content" source="media/adx-dashboards/parameter-query.png" alt-text="Screenshot of query used to generate parameters.":::
 
-1. Select the source data from the drop-down bar. 
-1. Enter your query and select **Run**.
+1. Select the source data from the drop-down bar.
+1. Enter your query and then select **Run**.
 
-1. Select **Apply changes**. 
+1. Select **Apply changes**.
 
 > [!NOTE]
 > The parameter query is used to generate dynamically introduced values as parameters using a KQL query. It's not the query used for generating the dashboard visual.
@@ -108,7 +112,7 @@ For more information about generating parameter queries, see [Create a parameter
 
 1. In the **Query** pane, 
     1. Select the data source from the drop-down menu.
-    1. Type the query, and select **Run**. For more information about generating queries that use parameters, see [Use parameters in your query](dashboard-parameters.md#use-parameters-in-your-query).
+    1. Type the query, and the select **Run**. For more information about generating queries that use parameters, see [Use parameters in your query](dashboard-parameters.md#use-parameters-in-your-query).
 
     1. Select **+ Add visual**.
 
@@ -119,7 +123,7 @@ For more information about generating parameter queries, see [Create a parameter
 
     :::image type="content" source="media/adx-dashboards/add-visual.png" alt-text="Add visual to query.":::
 
-1. You can resize the visual and **Save changes** to save the dashboard.
+1. You can resize the visual and then **Save changes** to save the dashboard.
 
     :::image type="content" source="media/adx-dashboards/save-dashboard.png" alt-text="save dashboard.":::
 
@@ -142,20 +146,21 @@ Use the share menu to [grant permissions](#grant-permissions) for an Azure Activ
 
 To grant permissions to a user in the **Dashboard permissions** pane:
 1. Write the user's name or email in **Add new members** box.
-1. Select the **Permission** level as **Can view** or **Can edit** and then click **Add**.
+1. In the **Permission** level, select one of the following values: **Can view** or **Can edit**.
+1. Select **Add**.
 
 :::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="Manage dashboard permissions.":::
 
 ### Change a user permission level
 
 To change a user permission level in the **Dashboard permissions** pane:
-1. Use the search box or scroll the user list to find the user.
+1. Either use the search box or scroll the user list to find the user.
 1. Change the **Permission** level as needed.
 
 ### Share the dashboard link
 
 To share the dashboard link:
-* Select **Share** drop-down and then select **Copy link**
+* Select **Share** and then select **Copy link**
 Or
 * In the **Dashboard permissions** window, select **Copy link**. 
 
@@ -171,7 +176,7 @@ Or
 
     :::image type="content" source="media/adx-dashboards/auto-refresh-toggle.png" alt-text="Enable auto refresh.":::
 
-1. Select **Apply** and **Save** the dashboard.
+1. Select **Apply** and then **Save** the dashboard.
 
 > [!NOTE]
 > * Select the smallest minimum time interval to reduce unnecessary load on the cluster. 
