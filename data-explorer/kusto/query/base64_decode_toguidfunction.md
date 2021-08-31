@@ -11,7 +11,7 @@ ms.date: 08/31/2021
 ---
 # base64_decode_toguid()
 
-Decodes a base64 string to a GUID.
+Decodes a base64 string to a [GUID](./scalar-data-types/guid.md).
 
 ## Syntax
 
@@ -19,13 +19,13 @@ Decodes a base64 string to a GUID.
 
 ## Arguments
 
-* *String*: Input string to be decoded from base64 to a GUID. 
+* *String*: Input string to be decoded from base64 to a [GUID](./scalar-data-types/guid.md). 
 
 ## Returns
 
-Returns a GUID decoded from a base64 string.
+Returns a [GUID](./scalar-data-types/guid.md) decoded from a base64 string.
 
-* To encode a GUID to a base64 string, see [base64_encode_fromguid()](base64_encode_fromguidfunction.md)
+* To encode a [GUID](./scalar-data-types/guid.md) to a base64 string, see [base64_encode_fromguid()](base64_encode_fromguidfunction.md)
 
 ## Example
 
