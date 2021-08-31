@@ -19,7 +19,7 @@ Decodes a base64 string to a GUID.
 
 ## Arguments
 
-* *String*: Input string to be decoded from base64 to a GUID.
+* *String*: Input string to be decoded from base64 to a GUID. 
 
 ## Returns
 
