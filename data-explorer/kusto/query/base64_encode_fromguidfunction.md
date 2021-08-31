@@ -11,7 +11,7 @@ ms.date: 08/31/2021
 ---
 # base64_encode_fromguid()
 
-Encodes a GUID to abase64 string.
+Encodes a [GUID](./scalar-data-types/guid.md) to a base64 string.
 
 ## Syntax
 
@@ -19,13 +19,14 @@ Encodes a GUID to abase64 string.
 
 ## Arguments
 
-* *GUID*: Input GUID to be encoded to a base64 string. 
+* *GUID*: Input [GUID](./scalar-data-types/guid.md) to be encoded to a base64 string. 
 
 ## Returns
 
 Returns a base64 string encoded from a GUID.
 
-* To decode base64 strings to a GUID, see [base64_decode_toguid()](base64_decode_toguidfunction.md)
+* To decode a base64 string to a [GUID](./scalar-data-types/guid.md), see [base64_decode_toguid()](base64_decode_toguidfunction.md)
+* To create a [GUID](./scalar-data-types/guid.md) from a string see [toguid()](toguidfunction.md)
 
 
 ## Example
@@ -40,7 +41,7 @@ print Quine=base64_encode_fromguid(toguid("ae3133f2-6e22-49ae-b06a-16e6a9b212eb"
 |-----|
 |8jMxriJurkmwahbmqbIS6w==|
 
-If you try to decode anything that is not a GUID as below, an error will be thrown:
+If you try to decode anything that is not a [GUID](./scalar-data-types/guid.md) as below, an error will be thrown:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
