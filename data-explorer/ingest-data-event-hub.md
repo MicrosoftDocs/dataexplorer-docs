@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 03/21/2021
+ms.date: 08/31/2021
 ms.localizationpriority: high
 
 # Customer intent: As a database administrator, I want to ingest data into Azure Data Explorer from an Event Hub, so I can analyze streaming data.
@@ -130,7 +130,7 @@ Fill out the form with the following information, and then select **Create**.
 | Consumer group | *test-group* | The consumer group defined in the Event Hub you created. |
 | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first record. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
 | Compression | *None* | The compression type of the Event Hub messages payload. Supported compression types: *None, Gzip*.|
-| Managed Identity (optional) | System-assigned | The managed identity used by the Data Explorer cluster for access to read from the Event Hub. We recommend using managed identities to control access to your Event Hub. If you select *System-assigned* and it doesn't exist, it will be created automatically.<br /><br />**Note**: When the data connection is created, the managed identity is automatically assigned the *Azure Event Hubs Data Receiver* role and is added to your Data Explorer cluster. We recommend verifying that the role was assigned and that the identity was added to the cluster. |
+| Managed Identity (recommended) | System-assigned | The managed identity used by the Data Explorer cluster for access to read from the Event Hub. We recommend using managed identities to control access to your Event Hub.<br /><br />**Note**:<br />When the data connection is created:<br/>\* *System-assigned* identities are automatically created if they don't exist<br />\* The managed identity is automatically assigned the *Azure Event Hubs Data Receiver* role and is added to your Data Explorer cluster. We recommend verifying that the role was assigned and that the identity was added to the cluster. |
 
 > [!NOTE]
 > If you have an existing data connection that is not using managed identities, we recommend updating it to use managed identities.
