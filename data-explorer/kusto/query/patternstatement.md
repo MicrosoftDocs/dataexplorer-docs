@@ -16,13 +16,13 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-A `pattern` is a construct used to query and define data based on a set of string parameters. Patterns can contain a set of argument values that Azure Data Explorer maps. If a pattern is declared but is empty, Azure Data Explorer identifies and flags any subsequent pattern invocation as an error. 
+A `pattern` is a construct used to query and define data based on a set of string parameters. Patterns can contain a set of argument values that Azure Data Explorer maps. If a pattern is not defined, Azure Data Explorer will flag any attempt to invoke the pattern and return an error.
 
-The pattern statement can be used with middle-tier applications that accept user queries, and then send these queries to Azure Data Explorer. Such applications often prefix such user queries with a logical schema model. The model is a set of [let statements](letstatement.md), possibly suffixed by a [restrict statement](restrictstatement.md). 
+Middle-tier applications can use a pattern statement as part of a process to enrich Azure Data Explorer query results with further data. When a user creates a query with the middle-tier application, the application does not parse Azure Data Explorer queries itself. Instead it usually passes the queries from users to Azure Data Explorer as a pattern.
 
-Applications may use references that are defined in a logical schema constructed by the application, for example, a table of IP addresses associated with latitude and longitude. However, the number of potential entities might be too large to be predefined in the logical schema, or the references are not known ahead of time, for example. When an application sends a query, the application might not have enough information to construct the full definition. Pattern statements solve this problem. 
+The application might prefix user queries with a logical schema model. The model is a set of [let statements](letstatement.md), that might be suffixed by a [restrict statement](restrictstatement.md). Applications can add references that are defined in the schema. But there may be too much lookup information to be predefined in a logical schema, or the references might not be known in advance, as the application does not parse the user's query. For similar reasons, a middle-tier application can send the query to Azure Data Explorer with a pattern declared, but not defined. 
 
-The middle-tier application can send a query to Azure Data Explorer with a relevant pattern declared, but not defined with the exact information. When Azure Data Explorer then parses the query, if the pattern was invoked, Azure Data Explorer returns an error to the middle-tier application addressing any invocation. The middle-tier application can then resolve each of the references and rerun the query, prefixing it with the full pattern definition.
+Azure Data Explorer checks the pattern statement, but since no pattern was defined, replies with error information. The application can then look up the missing data and rerun the query with the full pattern definition. The application can also enrich the data results with its own lookup data. 
 
 ## Syntax
 
@@ -100,7 +100,7 @@ union (App('a2').Data), (App('a1').Metrics)
 
 ### Normalization
 
-Azure Data Explorer accepts variations of syntax as the same for pattern invocation. For example, the following are all invocations of the same pattern. This means that you can't define them together, since they are considered to be the same, so this definition produces an error.
+Azure Data Explorer allows variations of syntax when invoking patterns. For example, the following all invoke the same pattern. You can't create a union of these invocations, since they are all the same. 
 
 ```kusto
 declare pattern app;
@@ -111,13 +111,12 @@ union
   app("ApplicationX").["StartEvent"]
 ```
 
-Error 
-
- One or more pattern references were not declared. Detected pattern references: ["app('ApplicationX').['StartEvent']"]
+The following error is returned:  
+`One or more pattern references were not declared. Detected pattern references: ["app('ApplicationX').['StartEvent']"]`
 
 ### No wildcards
 
-Azure Data Explorer does not count wildcards in a pattern. For example, in the following query, Azure Data Explorer will report an error.
+Azure Data Explorer does not count wildcards in a pattern. For example, the following query would create an error.
 
 ```kusto
 declare pattern App = (applicationId:string)[scope:string]  
@@ -130,18 +129,16 @@ declare pattern App = (applicationId:string)[scope:string]
 union (App('a2').'*'), (App('a1').'*')
 ```
 
-Syntax Error 
-
- A recognition error occurred. 
- Token: '*' 
+The following error is returned:
+`Syntax Error: A recognition error occurred.  Token: '*'` 
 
 ### Working with middle-tier applications
 
-In the following example, a middle-tier application provides the ability to enrich Azure Data Explorer queries with longitude/latitude locations. The application uses an internal service to map IP addresses to longitude/latitude locations. The middle-tier application provides a function called `map_ip_to_longlat` for users to implement with Azure Data Explorer. Suppose it gets the following query from the user:
+In the following example, a middle-tier application provides the ability to enrich Azure Data Explorer queries with longitude/latitude locations. The application uses an internal service to map IP addresses to longitude/latitude locations, and provides a function called `map_ip_to_longlat` for this purpose. Let's suppose the application gets the following query from the user:
 
 `map_ip_to_longlat` `(`"10.10.10.10"`)`
 
-The middle-tier application does not parse this query to determine the IP address that was requested (`10.10.10.10`). But it also cannot send Azure Data Explorer its entire database of IP addresses. So it sends Azure Data Explorer the user query, pre-pended with an empty pattern declaration:
+The application does not parse this query so it does not know which IP address was requested (`10.10.10.10`). But it also cannot send Azure Data Explorer its entire database of IP addresses. So it sends Azure Data Explorer the user query, pre-pended with an empty pattern declaration:
 
 ```kusto
 declare pattern map_ip_to_longlat;
@@ -149,12 +146,11 @@ map_ip_to_longlat("10.10.10.10")
 ```
 
 The following error is produced: 
+`One or more pattern references were not declared. Detected pattern references: ["map_ip_to_longlat('10.10.10.10')"]`
 
-One or more pattern references were not declared. Detected pattern references: ["map_ip_to_longlat('10.10.10.10')"]
+The application inspects the error, determines that the error indicates a missing pattern reference, and retrieves the missing IP address from the error `('10.10.10.10')`.
 
-The middle-tier application can then inspect the error, determine that the error indicates a missing pattern reference, and retrieve the missing IP address from the error `map_ip_to_longlat('10.10.10.10')`.
-
-The middle-tier application can then look up this IP address and re-run the query, this time providing the pattern references as part of the pattern declaration, so that Azure Data Explorer is provided the exact value of the latitude and longitude:
+The application can then look up this IP address and re-run the query, this time providing the pattern references as part of the pattern declaration, so that Azure Data Explorer is provided the exact value of the latitude and longitude:
 
 ```kusto
 declare pattern map_ip_to_longlat = (address:string)
