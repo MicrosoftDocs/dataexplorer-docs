@@ -26,7 +26,7 @@ Encodes a [GUID](./scalar-data-types/guid.md) to a base64 string.
 Returns a base64 string encoded from a GUID.
 
 * To decode a base64 string to a [GUID](./scalar-data-types/guid.md), see [base64_decode_toguid()](base64_decode_toguidfunction.md)
-* To create a [GUID](./scalar-data-types/guid.md) from a string see [toguid()](toguidfunction.md)
+* To create a [GUID](./scalar-data-types/guid.md) from a string, see [toguid()](toguidfunction.md)
 
 
 ## Example
@@ -41,7 +41,7 @@ print Quine=base64_encode_fromguid(toguid("ae3133f2-6e22-49ae-b06a-16e6a9b212eb"
 |-----|
 |8jMxriJurkmwahbmqbIS6w==|
 
-If you try to decode anything that is not a [GUID](./scalar-data-types/guid.md) as below, an error will be thrown:
+If you try to decode anything that isn't a [GUID](./scalar-data-types/guid.md) as below, an error will be thrown:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
