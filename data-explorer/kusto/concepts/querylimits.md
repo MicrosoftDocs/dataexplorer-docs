@@ -220,7 +220,7 @@ If `query_fanout_nodes_percent` or `query_fanout_threads_percent` are set multip
 During query execution, the query text is transformed into a tree of relational operators representing the query.
 If the tree depth exceeds an internal threshold, the query is considered too complex for processing, and will fail with an error code. The failure indicates that the relational operators tree exceeds its limits.
 
-These are the most common query patterns may cause the query to exceed this limit and fail:
+The following examples show common query patterns that can cause the query to exceed this limit and fail:
 
 * a long lists of binary operators that are chained together. For example:
 
