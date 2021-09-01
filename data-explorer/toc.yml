@@ -22,8 +22,6 @@ items:
     href: write-queries.md
   - name: E2E programmatic Blob ingestion
     items:
-      - name: All
-        href: end-to-end.md
       - name: C#
         href: end-to-end-csharp.md
       - name: Python
