@@ -348,13 +348,13 @@ items:
   - name: base64_decode_tostring()
     href: base64_decode_tostringfunction.md
   - name: base64_decode_toguid()
-    href: base64_decode_toguidfunction.md
+    href: base64-decode-toguid-function.md
   - name: base64_encode_fromarray()
     href: base64_encode_fromarrayfunction.md
   - name: base64_encode_tostring()
     href: base64_encode_tostringfunction.md
   - name: base64_encode_fromguid()
-    href: base64_encode_fromguidfunction.md
+    href: base64-encode-fromguid-function.md
   - name: beta_cdf()
     href: beta-cdffunction.md
   - name: beta_inv()
