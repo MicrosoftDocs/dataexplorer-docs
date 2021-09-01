@@ -25,7 +25,7 @@ Encodes a [GUID](./scalar-data-types/guid.md) to a base64 string.
 
 Returns a base64 string encoded from a GUID.
 
-* To decode a base64 string to a [GUID](./scalar-data-types/guid.md), see [base64_decode_toguid()](base64_decode_toguidfunction.md)
+* To decode a base64 string to a [GUID](./scalar-data-types/guid.md), see [base64_decode_toguid()](base64-decode-toguid-function.md)
 * To create a [GUID](./scalar-data-types/guid.md) from a string, see [toguid()](toguidfunction.md)
 
 ## Example
