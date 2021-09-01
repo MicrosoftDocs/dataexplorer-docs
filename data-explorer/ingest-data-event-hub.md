@@ -169,11 +169,11 @@ When you run the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet
 
 1. Under the Event Hub namespace you created, select **Shared access policies**, then **RootManageSharedAccessKey**.
 
-    ![Shared access policies](media/ingest-data-event-hub/shared-access-policies.png)
+    ![Shared access policies.](media/ingest-data-event-hub/shared-access-policies.png)
 
 1. Copy **Connection string - primary key**. You paste it in the next section.
 
-    ![Connection string](media/ingest-data-event-hub/connection-string.png)
+    ![Connection string.](media/ingest-data-event-hub/connection-string.png)
 
 ## Generate sample data
 
@@ -197,7 +197,7 @@ With the app generating data, you can now see the flow of that data from the Eve
 
 1. In the Azure portal, under your Event Hub, you see the spike in activity while the app is running.
 
-    ![Event hub graph](media/ingest-data-event-hub/event-hub-graph.png)
+    ![Event hub graph.](media/ingest-data-event-hub/event-hub-graph.png)
 
 1. To check how many messages have made it to the database so far, run the following query in your test database.
 
@@ -214,7 +214,7 @@ With the app generating data, you can now see the flow of that data from the Eve
 
     The result set should look like the following image:
 
-    ![Message result set](media/ingest-data-event-hub/message-result-set.png)
+    ![Message result set.](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
     >
@@ -228,9 +228,9 @@ If you don't plan to use your Event Hub again, clean up **test-hub-rg**, to avoi
 
 1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group you created.
 
-    If the left menu is collapsed, select ![Expand button](media/ingest-data-event-hub/expand.png) to expand it.
+    If the left menu is collapsed, select ![Expand button.](media/ingest-data-event-hub/expand.png) to expand it.
 
-   ![Select resource group to delete](media/ingest-data-event-hub/delete-resources-select.png)
+   ![Select resource group to delete.](media/ingest-data-event-hub/delete-resources-select.png)
 
 1. Under **test-resource-group**, select **Delete resource group**.
 
