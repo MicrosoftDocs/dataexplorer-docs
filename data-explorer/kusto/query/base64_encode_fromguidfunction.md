@@ -28,13 +28,11 @@ Returns a base64 string encoded from a GUID.
 * To decode a base64 string to a [GUID](./scalar-data-types/guid.md), see [base64_decode_toguid()](base64_decode_toguidfunction.md)
 * To create a [GUID](./scalar-data-types/guid.md) from a string, see [toguid()](toguidfunction.md)
 
-
 ## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print Quine=base64_encode_fromguid(toguid("ae3133f2-6e22-49ae-b06a-16e6a9b212eb"))  
-// 'K', 'u', 's', 't', 'o'
 ```
 
 |Quine|
