@@ -242,8 +242,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[base64_encode_tostring()](base64_encode_fromguidfunction.md)|Encodes a string as base64 string.|
-|[base64_encode_fromguid()](base64_encode_tostringfunction.md)|Encodes a GUID as base64 string.|
+|[base64_encode_tostring()](base64_encode_tostringfunction.md)|Encodes a string as base64 string.|
+|[base64_encode_fromguid()](base64_encode_fromguidfunction.md)|Encodes a GUID as base64 string.|
 |[base64_decode_tostring()](base64_decode_tostringfunction.md)|Decodes a base64 string to a UTF-8 string.|
 |[base64_decode_toarray()](base64_decode_toarrayfunction.md)|Decodes a base64 string to an array of long values.|
 |[base64_decode_toguid()](base64_decode_toguidfunction.md)|Decodes a base64 string to a GUID.|
