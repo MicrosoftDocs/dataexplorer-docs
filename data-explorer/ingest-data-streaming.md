@@ -38,7 +38,7 @@ Use the following table to help you choose the ingestion type that's appropriate
 
 ## Prerequisites
 
-If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 
 ## Enable streaming ingestion on your cluster
 

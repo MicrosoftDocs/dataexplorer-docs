@@ -45,7 +45,7 @@ If table creation is required, `Database User` or a higher access role must also
 |`Database Ingestor`  |Azure AD Application |`Test App (app id: 2a904276-1234-5678-9012-66fc53add60b)`
 |`Table Ingestor`     |Azure AD Application |`Test App (app id: 2a904276-1234-5678-9012-66fc53add60b)`
 
->`KustoIngestion` service principal, the Kusto internal ingestion app, is immutably mapped to the `Cluster Admin` role. It is thus authorized to ingest data to any table. This is what's happening on the Kusto-managed ingestion pipelines.
+>`KustoIngestion` service principal, the Kusto internal ingestion app, is immutably mapped to the `Cluster Admin` role. It is thus authorized to ingest data into any table. This is what's happening on the Kusto-managed ingestion pipelines.
 
 Granting required permissions on database `DB1` or table `T1` to Azure AD App `Test App (2a904276-1234-5678-9012-66fc53add60b in Azure AD tenant microsoft.com)` would look like this:
 

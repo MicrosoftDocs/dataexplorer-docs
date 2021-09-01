@@ -1,5 +1,5 @@
 ---
-title: Scalar Functions - Azure Data Explorer | Microsoft Docs
+title: Scalar Functions - Azure Data Explorer 
 description: This article describes Scalar Functions in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -9,7 +9,9 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/18/2021
 ---
-# Scalar function types
+# Scalar function types at a glance
+
+This article lists all available scalar functions grouped by type. For aggregation functions, see [Aggregation function types](aggregation-functions.md).
 
 ## Binary functions
 
@@ -205,6 +207,7 @@ ms.date: 07/18/2021
 |[series_less_equals()](series-less-equalsfunction.md)|Calculates the element-wise less or equal (`<=`) logic operation of two numeric series inputs.|
 |[series_multiply()](series-multiplyfunction.md)|Calculates the element-wise multiplication of two numeric series inputs.|
 |[series_not_equals()](series-not-equalsfunction.md)|Calculates the element-wise not equals (`!=`) logic operation of two numeric series inputs.|
+|[series_pow()](series-powfunction.md)|Calculates the element-wise power of two numeric series inputs.|
 |[series_subtract()](series-subtractfunction.md)|Calculates the element-wise subtraction of two numeric series inputs.|
 
 ## Series processing functions
@@ -246,6 +249,7 @@ ms.date: 07/18/2021
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
 |[extract_all()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
 |[extractjson()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
+|[has_any_index()](has-any-index-function.md)|Searches the string for items specified in the array and returns the position of the first item found in the string.|
 |[indexof()](indexoffunction.md)|Function reports the zero-based index of the first occurrence of a specified string within input string.|
 |[isempty()](isemptyfunction.md)|Returns true if the argument is an empty string or is null.|
 |[isnotempty()](isnotemptyfunction.md)|Returns true if the argument isn't an empty string or a null.|

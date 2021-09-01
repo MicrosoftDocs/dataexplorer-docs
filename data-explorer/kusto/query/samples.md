@@ -57,7 +57,6 @@ Example:
 
 ```kusto
 let Events = MyLogTable | where ... ;
-
 Events
 | where Name == "Start"
 | project Name, City, SessionId, StartTime=timestamp

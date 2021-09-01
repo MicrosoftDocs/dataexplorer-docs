@@ -64,6 +64,7 @@ You can use the following keyboard shortcuts with the query editor or when the c
 |`Ctrl`+`J`|Toggles appearance of the result panel|
 |`Ctrl`+`E`|Toggles appearance of the query editor and result panel in cycle of: `Query Editor and Results` -> `Query Editor` -> `Query Editor and Results` -> `Results` |
 |`Ctrl`+`Shift`+`E`|Toggles appearance of the query editor and result panel in cycle of: `Query Editor and Results` -> `Results` -> `Query Editor and Results` -> `Query Editor` |
+|`F6`|Toggles focus of the main application panel in cycle of: `Connections panel` -> `Query Editor` -> `Results`  |
 |`Ctrl`+`Shift`+`R` | Focuses on Results panel |
 |`Ctrl`+`Shift`+`T` | Focuses on Connections panel |
 |`Ctrl`+`Shift`+`Y` | Focuses on Query editor |
@@ -95,7 +96,6 @@ The following keyboard shortcuts can be used when editing a query in the query e
 |`F5`|Run currently selected query|
 |`Shift`+`Enter`|Run currently selected query|
 |`F8`|Fetch query results from the local cache. If results aren't present - run currently selected query|
-|`F6`|Run currently selected query in `Progressive Results` mode|
 |`Ctrl`+`F5` | Preview results of the selected query (shows few results and total count)|
 |`Ctrl`+`Shift`+`Space`| Insert data cell selections as filters into the query|
 |`Ctrl`+`Space`| Force IntelliSense rules check. Possible options will be shown in any rule matched |

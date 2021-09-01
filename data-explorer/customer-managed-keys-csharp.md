@@ -28,9 +28,8 @@ This section shows you how to configure customer-managed keys encryption using t
 
 ### Prerequisites
 
-* If you don't have Visual Studio 2019 installed, you can download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Make sure that you enable **Azure development** during the Visual Studio setup.
-
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+* Visual Studio 2019, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 
 ### Install C# NuGet
 

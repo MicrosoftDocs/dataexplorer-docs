@@ -30,11 +30,10 @@ In this tutorial, you learn how to:
 
 In addition to Azure and Power BI subscriptions, you need the following to complete this tutorial:
 
-* [A test cluster and database](create-cluster-database-portal.md)
-
-* [The StormEvents sample data](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
-
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**)
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
+* [The StormEvents sample data](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)].
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**).
 
 ## Render visuals in Azure Data Explorer
 

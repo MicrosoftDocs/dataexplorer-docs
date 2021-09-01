@@ -22,11 +22,11 @@ In this article, you create an IoT Hub data connection for Azure Data Explorer b
 
 ## Prerequisites
 
-* If you don't have Visual Studio 2019 installed, you can download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Make sure that you enable **Azure development** during the Visual Studio setup.
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* Create [a cluster and database](create-cluster-database-csharp.md)
-* Create [table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster)
-* Set [database and table policies](database-table-policies-csharp.md) (optional)
+* Visual Studio 2019, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
+* Create [table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
+* Set [database and table policies](database-table-policies-csharp.md) (optional).
 * Create an [IoT Hub with a shared access policy configured](ingest-data-iot-hub.md#create-an-iot-hub).
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](includes/data-explorer-data-connection-install-nuget-csharp.md)]

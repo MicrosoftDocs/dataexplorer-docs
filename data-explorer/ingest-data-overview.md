@@ -20,7 +20,7 @@ The diagram below shows the end-to-end flow for working in Azure Data Explorer a
 
 The Azure Data Explorer data management service, which is responsible for data ingestion, implements the following process:
 
-Azure Data Explorer pulls data from an external source and reads requests from a pending Azure queue. Data is batched or streamed to the Data Manager. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Data is persisted in storage according to the set retention policy. The Data Manager then commits the data ingest to the engine, where it's available for query. 
+Azure Data Explorer pulls data from an external source and reads requests from a pending Azure queue. Data is batched or streamed to the Data Manager. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Data is persisted in storage according to the set retention policy. The Data Manager then commits the data ingest into the engine, where it's available for query. 
 
 ## Supported data formats, properties, and permissions
 

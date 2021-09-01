@@ -29,10 +29,10 @@ You create the *Bulk Copy from Database to Azure Data Explorer* template by usin
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* [An Azure Data Explorer cluster and database](create-cluster-database-portal.md).
-* [Create a data factory](data-factory-load-data.md#create-a-data-factory).
-* A source of data in a database.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
+* Create [a data factory](data-factory-load-data.md#create-a-data-factory).
+* A source of data.
 
 ## Create ControlTableDataset
 

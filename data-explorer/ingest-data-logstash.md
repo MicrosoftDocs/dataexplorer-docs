@@ -20,9 +20,9 @@ ms.date: 11/26/2020
 
 ## Prerequisites
 
-* An Azure subscription. If you don't have one, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* An Azure Data Explorer [test cluster and database](create-cluster-database-portal.md)
-* Logstash version 6+ [Installation instructions](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html)
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
+* Logstash version 6+ [Installation instructions](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html).
 
 ## Create a table
 
