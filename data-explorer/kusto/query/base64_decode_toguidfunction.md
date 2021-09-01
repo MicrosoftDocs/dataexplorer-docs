@@ -32,7 +32,6 @@ Returns a [GUID](./scalar-data-types/guid.md) decoded from a base64 string.
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print Quine=base64_decode_toguid("JpbpECu8dUy7Pv5gbeJXAA==")  
-// 'K', 'u', 's', 't', 'o'
 ```
 
 |Quine|
