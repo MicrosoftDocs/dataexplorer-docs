@@ -52,3 +52,22 @@ In this case, the result will be:
 |Count|
 |-----|
 |   23|
+
+## Control commands
+
+In contrast to Kusto queries, [Control commands](../management/index.md) are requests to Kusto to process and potentially modify data or metadata. For example, the following control command creates a new Kusto table with two columns, `Level` and `Text`:
+
+```kusto
+.create table Logs (Level:string, Text:string)
+```
+
+Control commands have their own syntax, which isn't part of the Kusto Query Language syntax, although the two share many concepts. In particular, control commands are distinguished from queries by having the first character in the text of the command be the dot (`.`) character (which can't start a query).
+This distinction prevents many kinds of security attacks, simply because it prevents embedding control commands inside queries.
+
+Not all control commands modify data or metadata. The large class of commands that start with `.show`, are used to display metadata or data. For example, the `.show tables` command returns a list of all tables in the current database.
+
+## Next steps
+
+* [Tutorial: Use Kusto queries](../query/tutorial.md)
+* [Samples for Kusto Queries](../query/samples.md)
+* [KQL quick reference](../../kql-quick-reference.md)
