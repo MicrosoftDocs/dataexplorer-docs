@@ -1,5 +1,5 @@
 items:
-- name: Kusto Query overview
+- name: Kusto query overview
   href: index.md
 - name: Quick reference guide
   href: ../../kql-quick-reference.md

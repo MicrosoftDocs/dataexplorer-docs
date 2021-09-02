@@ -17,7 +17,7 @@ zone_pivot_groups: kql-flavors-2
 
 ::: zone pivot="azuredataexplorer, synapse"
 
-This article identifies common query needs in Azure Data Explorer and how you can use the Kusto Query Language to meet them.
+This article identifies common queries and how you can use the Kusto Query Language to meet them.
 
 ## Display a column chart
 

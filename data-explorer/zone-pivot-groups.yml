@@ -18,6 +18,6 @@ groups:
   - id: azuremonitor
     title: Azure Monitor
   - id: synapse
-    title: Synapse
+    title: Azure Synapse Analytics
   
   

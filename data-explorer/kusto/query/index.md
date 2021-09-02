@@ -11,7 +11,7 @@ ms.date: 03/07/2019
 ms.localizationpriority: high 
 adobe-target: true
 ---
-# Kusto Query overview
+# Kusto query overview
 
 A Kusto query is a read-only request to process data and return results.
 The request is stated in plain text, using a data-flow model designed to
