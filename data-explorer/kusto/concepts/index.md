@@ -13,7 +13,7 @@ adobe-target: true
 ---
 # Getting started with Kusto Query Language
 
-A query is a read-only request to process data and return the results of this processing, without modifying the data or metadata. Kusto queries can use the [SQL language](../api/tds/t-sql.md), or the [Kusto Query Language](../query/index.md). As an example for the latter, the following query counts how many rows in the `Logs` table have a value in the `Level` column equal to the string `Critical`:
+A query is a read-only request to process data and return the results of this processing, without modifying the data or metadata. Kusto queries can use the [SQL language](../api/tds/t-sql.md), or the [Kusto Query Language](../query/index.md) (KQL). As an example for the latter, the following query counts how many rows in the `Logs` table have a value in the `Level` column equal to the string `Critical`:
 
 ```kusto
 Logs
@@ -41,3 +41,4 @@ Not all control commands modify data or metadata. The large class of commands th
 
 * [Tutorial: Use Kusto queries](../query/tutorial.md)
 * [Samples for Kusto Queries](../query/samples.md)
+* [KQL quick reference](../../kql-quick-reference.md)
