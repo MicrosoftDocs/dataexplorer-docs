@@ -113,8 +113,9 @@ union
   app("ApplicationX").["StartEvent"]
 ```
 
-The following error is returned:  
-`One or more pattern references were not declared. Detected pattern references: ["app('ApplicationX').['StartEvent']"]`
+**Semantic error**
+
+> One or more pattern references were not declared. Detected pattern references: ["app('ApplicationX').['StartEvent']"]
 
 ### No wildcards
 
@@ -131,8 +132,8 @@ declare pattern App = (applicationId:string)[scope:string]
 union (App('a2').['*']), (App('a1').['*'])
 ```
 
-The following error is returned:
-`One or more pattern references were not declared. Detected pattern references: ["App('a2').['*']","App('a1').['*']"]`
+**Semantic error**
+> One or more pattern references were not declared. Detected pattern references: ["App('a2').['*']","App('a1').['*']"]
 
 ## Working with middle-tier applications
 
@@ -155,8 +156,8 @@ declare pattern map_ip_to_longlat;
 map_ip_to_longlat("10.10.10.10")
 ```
 
-The following error is produced: 
-`One or more pattern references were not declared. Detected pattern references: ["map_ip_to_longlat('10.10.10.10')"]`
+**Semantic error**
+> One or more pattern references were not declared. Detected pattern references: ["map_ip_to_longlat('10.10.10.10')"]
 
 The application inspects the error, determines that the error indicates a missing pattern reference, and retrieves the missing IP address from the error `('10.10.10.10')`.
 
