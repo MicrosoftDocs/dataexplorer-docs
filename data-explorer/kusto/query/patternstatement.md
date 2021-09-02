@@ -16,23 +16,25 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-A `pattern` is a construct used to query and define data based on a set of string parameters. Patterns can contain a set of argument values that Azure Data Explorer maps. If a pattern is not defined, Azure Data Explorer will flag any attempt to invoke the pattern and return an error.
+A `pattern` is a construct used to define data based on string tuples. Patterns are defined with a set of close-ended argument values that are mapped by Azure Data Explorer. Patterns can be used to map tuples to parameterless functions. After patterns are declared and defined, they can be invoked.
 
-Middle-tier applications can use a pattern statement as part of a process to enrich Azure Data Explorer query results with further data. When a user creates a query with the middle-tier application, the application does not parse Azure Data Explorer queries itself. Instead it usually passes the queries from users to Azure Data Explorer as a pattern.
-
-The application might prefix user queries with a logical schema model. The model is a set of [let statements](letstatement.md), that might be suffixed by a [restrict statement](restrictstatement.md). Applications can add references that are defined in the schema. But there may be too much lookup information to be predefined in a logical schema, or the references might not be known in advance, as the application does not parse the user's query. For similar reasons, a middle-tier application can send the query to Azure Data Explorer with a pattern declared, but not defined. 
-
-Azure Data Explorer checks the pattern statement, but since no pattern was defined, replies with error information. The application can then look up the missing data and rerun the query with the full pattern definition. The application can also enrich the data results with its own lookup data. 
+If a pattern is not defined, Azure Data Explorer will flag pattern invocations and return error details with HTTP header data. Identifying the pattern and the invocation error makes it possible for middle-tier applications to look up related data and then define these patterns. Middle-tier applications that offer functions to support user Azure Data Explorer queries can use a pattern statement as part of a process to enrich Azure Data Explorer query results with further data.
 
 ## Syntax
+
+The syntax for declaring a pattern is as follows:
+
+`declare` `pattern` *PatternName*
+
+The syntax for declaring and defining a pattern is as follows:
 
 `declare` `pattern` *PatternName* = `(`*ArgName* `:` *ArgType* [`,` ... ]`)` [`[` *PathName* `:` *PathArgType* `]`]
 
 `{`
 
-&nbsp;&nbsp;&nbsp;&nbsp; `(` *ArgValue1* [`,` *ArgValue2* ... ] `)` [ `.[` *PathValue `]` ] `=` `{`  *expression*  `}``;`
+&nbsp;&nbsp;&nbsp;&nbsp; `(` *ArgValue1* [`,` *ArgValue2* ... ] `)` [ `.[` *PathValue `]` ] `=` `{`  *expression*  `}` `;`
 
-&nbsp;&nbsp;&nbsp;&nbsp; [ `(` *ArgValue3* [`,` *ArgValue4* ... ] `)` [ `.[` *PathValue5* `]` ] `=` `{`  *expression6*  `}``;` ...
+&nbsp;&nbsp;&nbsp;&nbsp; [ `(` *ArgValue3* [`,` *ArgValue4* ... ] `)` [ `.[` *PathValue5* `]` ] `=` `{`  *expression6*  `}` `;` ...
 &nbsp;&nbsp;&nbsp;&nbsp; ]
 
 `}`
@@ -126,13 +128,21 @@ declare pattern App = (applicationId:string)[scope:string]
     ('a2').['Data']    = { range x from 1 to 5 step 1 | project App = "App #2", Data    = 10 - x };
     ('a3').['Metrics'] = { range x from 1 to 5 step 1 | project App = "App #3", Metrics = rand() };
 };
-union (App('a2').'*'), (App('a1').'*')
+union (App('a2').['*']), (App('a1').['*'])
 ```
 
 The following error is returned:
-`Syntax Error: A recognition error occurred.  Token: '*'` 
+`One or more pattern references were not declared. Detected pattern references: ["App('a2').['*']","App('a1').['*']"]`
 
-### Working with middle-tier applications
+## Working with middle-tier applications
+
+Middle-tier applications can use a pattern statement as part of a process to enrich Azure Data Explorer query results with further data. When a user creates a query with a middle-tier application, the application does not parse Azure Data Explorer queries itself. Instead it usually passes the queries from users to Azure Data Explorer as a pattern.
+
+The application might prefix user queries with a logical schema model. The model is a set of [let statements](letstatement.md), that might be suffixed by a [restrict statement](restrictstatement.md). Applications can add references that are defined in the schema. But there may be too much lookup information to be predefined in a logical schema, or the references might not be known in advance, as the application does not parse the user's query. For similar reasons, a middle-tier application can send the query to Azure Data Explorer with a pattern declared, but not defined. 
+
+Azure Data Explorer checks the pattern statement, but since no pattern was defined, replies with error information. The application can then look up the missing data and rerun the query with the full pattern definition. The application can also enrich the data results with its own lookup data.
+
+### Example of working with middle-tier application
 
 In the following example, a middle-tier application provides the ability to enrich Azure Data Explorer queries with longitude/latitude locations. The application uses an internal service to map IP addresses to longitude/latitude locations, and provides a function called `map_ip_to_longlat` for this purpose. Let's suppose the application gets the following query from the user:
 
