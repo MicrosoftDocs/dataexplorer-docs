@@ -152,8 +152,9 @@ The `default` workload group has the following policy defined by default. This p
 #### Notes
 
 * Rate limits are enforced at the level defined by the workload group's [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md).
-* The limit on maximum concurrent requests for the `default` workload group depends on the SKU of the cluster, and is calculated as: `Cores-Per-Node x 10`.
+* The default limit on maximum concurrent requests depends on the SKU of the cluster, and is calculated as: `Cores-Per-Node x 10`.
     * For example: A cluster that's set-up with Azure D14_v2 nodes, where each node has 16 vCores, will have a default limit of `16` x `10` = `160`.
+    * This default limits applies to the `default` workload group, and any newly created workload group that doesn't have request rate limit policies speficied at the time of its creation.
 * If a workload group has no limit on maximum concurrent requests defined, then the maximum allowed value of `10000` applies.
 * When altering the policy for the `default` workload group, a limit must be defined for the workload group's max concurrent requests.
 * The cluster's [capacity policy](capacitypolicy.md) may also limit the request rate of requests that fall under a specific category, for example *ingestions*.
