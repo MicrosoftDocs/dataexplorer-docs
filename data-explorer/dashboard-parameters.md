@@ -7,12 +7,12 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 08/17/2021
 ---
 
 # Use parameters in Azure Data Explorer dashboards
 
-Parameters are used as building blocks for dashboard filters in Azure Data Explorer dashboards. They're managed in the dashboard scope, and can be added to queries to filter the data presented by the underlying visual. A query can use one or more parameters. This document describes the creation and use of parameters and linked filters in Azure Data Explorer dashboards. 
+Parameters are used as building blocks for dashboard filters in Azure Data Explorer dashboards. They're managed in the dashboard scope, and can be added to queries to filter the data presented by the underlying visual. A query can use one or more parameters. This document describes the creation and use of parameters and linked filters in Azure Data Explorer dashboards.
 
 > [!NOTE]
 > Parameter management is available in edit mode to dashboard editors.
