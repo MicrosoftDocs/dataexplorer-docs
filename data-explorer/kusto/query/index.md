@@ -1,6 +1,6 @@
 ---
-title: Overview - Azure Data Explorer
-description: This article describes Overview in Azure Data Explorer.
+title: Kusto Query overview- Azure Data Explorer
+description: This article is a general overview of the Kusto Query Language in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -11,7 +11,7 @@ ms.date: 03/07/2019
 ms.localizationpriority: high 
 adobe-target: true
 ---
-# Overview
+# Kusto Query overview
 
 A Kusto query is a read-only request to process data and return results.
 The request is stated in plain text, using a data-flow model designed to
