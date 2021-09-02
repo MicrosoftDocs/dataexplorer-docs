@@ -1,16 +1,14 @@
 items:
-- name: Getting started with Kusto
-  href: ../concepts/index.md
+- name: Kusto query overview
+  href: index.md
+- name: Quick reference guide
+  href: ../../kql-quick-reference.md
 - name: Tutorial
   href: tutorial.md
 - name: Samples
   href: samples.md
-- name: Queries
-  items:
-  - name: Overview of queries
-    href: index.md
-  - name: Query best practices
-    href: best-practices.md
+- name: Query best practices
+  href: best-practices.md
 - name: Cross-cluster queries
   items:
   - name: Cross-cluster queries and schema changes

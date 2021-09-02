@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Kusto queries in Azure Data Explorer & Azure Monitor'
-description: This tutorial describes how to use queries in the Kusto Query Language to meet common query needs in Azure Data Explorer and Azure Monitor.
+title: 'Tutorial: Kusto queries'
+description: This tutorial describes how to use queries in the Kusto Query Language to meet common query needs.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/08/2020
 ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-2
 ---
 
-# Tutorial: Use Kusto queries in Azure Data Explorer and Azure Monitor
+# Tutorial: Use Kusto queries
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, synapse"
 
 The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
 
