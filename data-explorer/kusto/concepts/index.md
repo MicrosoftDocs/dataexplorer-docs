@@ -36,3 +36,8 @@ Control commands have their own syntax, which isn't part of the Kusto Query Lang
 This distinction prevents many kinds of security attacks, simply because it prevents embedding control commands inside queries.
 
 Not all control commands modify data or metadata. The large class of commands that start with `.show`, are used to display metadata or data. For example, the `.show tables` command returns a list of all tables in the current database.
+
+## Next steps
+
+* [Tutorial: Use Kusto queries](../query/tutorial.md)
+* [Samples for Kusto Queries](../query/samples.md)
