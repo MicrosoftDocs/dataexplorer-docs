@@ -1,42 +1,19 @@
 ---
-title: Getting started with Kusto
-description: This article describes Getting started with Kusto.
+title: Getting started with Kusto Query Language
+description: This article describes Getting started with Kusto Query Language.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 09/02/2021
 ms.localizationpriority: high 
 adobe-target: true
 ---
-# Getting started with Kusto
+# Getting started with Kusto Query Language
 
-Azure Data Explorer is a service for storing and running interactive analytics on big data.
-
-It's based on relational database management systems, and supports entities such as databases, tables, and columns. Complex analytical queries are made using the Kusto Query Language. Some query operators include:
-* calculated columns
-* searching and filtering on rows
-* group by-aggregates
-* join functions
-
-The service offers excellent data ingestion and query performance: 
-* It sacrifices the ability to do in-place updates of individual rows and cross-table constraints or transactions. 
-* The service supplements, rather than replaces, traditional RDBMS systems for scenarios such as OLTP and data warehousing.
-* Structured, semi-structured (for example, JSON-like nested types), and unstructured (free text) data are handled equally well.
-
-## Interacting with Azure Data Explorer
-
-The main way for users to interact with Azure Data Explorer (Kusto):
-* Use one of the [query tools](../../tools-integrations-overview.md#azure-data-explorer-query-tools). 
-* [SQL queries](../api/tds/t-sql.md).
-*  [Kusto query language](../query/index.md) is primary means of interaction. KQL allows you to send data queries, and use [control commands](../management/index.md) to manage entities, discover metadata, and so on.
-Both queries and control commands are short textual "programs".
-
-## Kusto queries
-
-A query is a read-only request to process data and return the results of this processing, without modifying the data or metadata. Kusto queries can use the [SQL language](../api/tds/t-sql.md), or the [Kusto query language](../query/index.md). As an example for the latter, the following query counts how many rows in the `Logs` table have a value in the `Level` column equal to the string `Critical`:
+A query is a read-only request to process data and return the results of this processing, without modifying the data or metadata. Kusto queries can use the [SQL language](../api/tds/t-sql.md), or the [Kusto Query Language](../query/index.md). As an example for the latter, the following query counts how many rows in the `Logs` table have a value in the `Level` column equal to the string `Critical`:
 
 ```kusto
 Logs
@@ -49,7 +26,7 @@ Logs
 
 ## Control commands
 
-Control commands are requests to Kusto to process and potentially modify data or metadata. For example, the following control command creates a new Kusto table with two columns, `Level` and `Text`:
+[Control commands](../management/index.md) are requests to Kusto to process and potentially modify data or metadata. For example, the following control command creates a new Kusto table with two columns, `Level` and `Text`:
 
 ```kusto
 .create table Logs (Level:string, Text:string)

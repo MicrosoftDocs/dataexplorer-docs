@@ -1,6 +1,8 @@
 items:
-- name: Getting started with Kusto
+- name: Getting started with Kusto Query Language
   href: ../concepts/index.md
+- name: Quick reference guide
+  href: ../../kql-quick-reference.md
 - name: Tutorial
   href: tutorial.md
 - name: Samples

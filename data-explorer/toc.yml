@@ -44,10 +44,6 @@ items:
     - name: Formats for data ingestion
       displayName: supported data formats
       href: ingestion-supported-formats.md
-  - name: Kusto Query Language
-    items:
-    - name: Quick reference guide
-      href: kql-quick-reference.md
   - name: Data visualization overview
     href: viz-overview.md
   - name: Security
@@ -453,10 +449,10 @@ items:
       href: troubleshoot-database-table.md
 - name: Kusto Query Language
   href: kusto/query/toc.yml
+- name: Management commands
+  href: kusto/management/toc.yml
 - name: Reference
   items:
-  - name: Management
-    href: kusto/management/toc.yml
   - name: API
     href: kusto/api/toc.yml
   - name: Functions library
