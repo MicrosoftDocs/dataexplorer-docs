@@ -47,14 +47,14 @@ Kusto builds a term index consisting of all terms that are *three characters or 
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
-|[`==`](equalsoperator.md)|Equals |Yes|`"aBc" == "aBc"`|
-|[`!=`](equalsoperator.md)|Not equals |Yes |`"abc" != "ABC"`|
-|[`=~`](equalsoperator.md) |Equals |No |`"abc" =~ "ABC"`|
-|[`!~`](equalsoperator.md) |Not equals |No |`"aBc" !~ "xyz"`|
-|[`contains`](containsoperator.md) |RHS occurs as a subsequence of LHS |No |`"FabriKam" contains "BRik"`|
-|[`!contains`](containsoperator.md) |RHS doesn't occur in LHS |No |`"Fabrikam" !contains "xyz"`|
-|[`contains_cs`](containsoperator.md) |RHS occurs as a subsequence of LHS |Yes |`"FabriKam" contains_cs "Kam"`|
-|[`!contains_cs`](containsoperator.md)   |RHS doesn't occur in LHS |Yes |`"Fabrikam" !contains_cs "Kam"`|
+|[`==`](equals-cs-operator.md)|Equals |Yes|`"aBc" == "aBc"`|
+|[`!=`](not-equals-cs-operator.md)|Not equals |Yes |`"abc" != "ABC"`|
+|[`=~`](equals-operator.md) |Equals |No |`"abc" =~ "ABC"`|
+|[`!~`](not-equals-operator.md) |Not equals |No |`"aBc" !~ "xyz"`|
+|[`contains`](contains-operator.md) |RHS occurs as a subsequence of LHS |No |`"FabriKam" contains "BRik"`|
+|[`!contains`](not-contains-operator.md) |RHS doesn't occur in LHS |No |`"Fabrikam" !contains "xyz"`|
+|[`contains_cs`](contains-cs-operator.md) |RHS occurs as a subsequence of LHS |Yes |`"FabriKam" contains_cs "Kam"`|
+|[`!contains_cs`](not-contains-cs-operator.md)   |RHS doesn't occur in LHS |Yes |`"Fabrikam" !contains_cs "Kam"`|
 |[`endswith`](endswithoperator.md) |RHS is a closing subsequence of LHS |No |`"Fabrikam" endswith "Kam"`|
 |[`!endswith`](endswithoperator.md) |RHS isn't a closing subsequence of LHS |No |`"Fabrikam" !endswith "brik"`|
 |[`endswith_cs`](endswithoperator.md) |RHS is a closing subsequence of LHS |Yes |`"Fabrikam" endswith_cs "kam"`|
