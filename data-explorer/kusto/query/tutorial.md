@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 10/08/2020
 ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-2
 ---
 
 # Tutorial: Use Kusto queries
