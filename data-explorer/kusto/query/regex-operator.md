@@ -7,16 +7,22 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/29/2021
+ms.date: 09/02/2021
 ms.localizationpriority: high
 ---
 # matches regex operator
 
 Filters a record set based on the provided regex value. 
 
-```kusto
-Table1 | where col matches regex ('value1')
-```
+The following table provides a description of the `regex` operator. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+
+> [!NOTE]
+> The following abbreviation is used in the table below:
+> LHS = left hand side of the expression
+
+|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
+|-----------|--------------|----------------|-------------------------|
+|[`startswith`](containsoperator.md) |RHS is an initial subsequence of LHS |No |`"Fabrikam" startswith "fab"`|
 
 ## Performance tips
 

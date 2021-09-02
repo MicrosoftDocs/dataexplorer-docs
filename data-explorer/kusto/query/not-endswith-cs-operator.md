@@ -14,9 +14,24 @@ ms.localizationpriority: high
 
 Filters a record set based on a search value with a search that is case-sensitive. Data that does not end with the sequence is retrieved from the searched column.
 
-```kusto
-Table1 | where col !endswith_cs ('value1')
-```
+Operators with an `_cs` suffix are case-sensitive.
+
+> [!NOTE]
+> Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
+
+The following table provides a comparison of the `endswith` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+> [!NOTE]
+> The following abbreviations are used in the table below:
+>
+> * RHS = right hand side of the expression
+> * LHS = left hand side of the expression
+
+|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
+|-----------|--------------|----------------|-------------------------|
+|[`endswith`](endswithoperator.md) |RHS is a closing subsequence of LHS |No |`"Fabrikam" endswith "Kam"`|
+|[`!endswith`](endswithoperator.md) |RHS isn't a closing subsequence of LHS |No |`"Fabrikam" !endswith "brik"`|
+|[`endswith_cs`](endswithoperator.md) |RHS is a closing subsequence of LHS |Yes |`"Fabrikam" endswith_cs "kam"`|
+|[`!endswith_cs`](endswithoperator.md) |RHS isn't a closing subsequence of LHS |Yes |`"Fabrikam" !endswith_cs "brik"`|
 
 ## Performance tips
 

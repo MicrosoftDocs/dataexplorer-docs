@@ -7,33 +7,33 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/29/2021
+ms.date: 09/02/2021
 ms.localizationpriority: high
 ---
 # == operators
 
 Filters a record set based on the provided search term with a case-sensitive search.
 
-```kusto
-Table1 | where col == ('value1')
-```
-
 > [!NOTE]
-> * Adding '~' to the operator makes values' search case-insensitive: `col =~ (expression)` or `col !~ (expression)`.
- 
+>
+> * Adding `~` to the operator makes values' search case-insensitive: `col =~ (expression)` or `col !~ (expression)`.
+> * Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
+
+The following table provides a comparison of the `==` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+
+|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
+|-----------|--------------|----------------|-------------------------|
+|[`==`](equalsoperator.md)|Equals |Yes|`"aBc" == "aBc"`|
+|[`!=`](equalsoperator.md)|Not equals |Yes |`"abc" != "ABC"`|
+|[`=~`](equalsoperator.md) |Equals |No |`"abc" =~ "ABC"`|
+|[`!~`](equalsoperator.md) |Not equals |No |`"aBc" !~ "xyz"`|
+
+
 ## Performance tips
 
 For better performance, when there are two operators that do the same task, use the case-sensitive one. For example, use `==`, not `=~`.
 
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
-
-For example, the first of these queries will run faster:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents | where State has "North" | count;
-StormEvents | where State contains "nor" | count
-```
 
 For more information, see [Query best practices](best-practices.md).
 
@@ -41,7 +41,7 @@ For more information, see [Query best practices](best-practices.md).
 
 ### Case-sensitive syntax
 
-*T* `|` `where` *col* `==` `(`*expressions`)`   
+*T* `|` `where` *col* `==` `(`*expressions`)`
 
 ## Arguments
 

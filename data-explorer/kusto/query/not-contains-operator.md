@@ -15,9 +15,20 @@ ms.localizationpriority: high
 
 Filters a record set based on the provided value. Data that does not contain the string is retrieved from the searched column.
 
-```kusto
-Table1 | where col !contains ('value1')
-```
+The following table provides a comparison of the `contains` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+
+> [!NOTE]
+> The following abbreviations are used in the table below:
+>
+> * RHS = right hand side of the expression
+> * LHS = left hand side of the expression
+
+|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
+|-----------|--------------|----------------|-------------------------|
+|[`contains`](containsoperator.md) |RHS occurs as a subsequence of LHS |No |`"FabriKam" contains "BRik"`|
+|[`!contains`](containsoperator.md) |RHS doesn't occur in LHS |No |`"Fabrikam" !contains "xyz"`|
+|[`contains_cs`](containsoperator.md) |RHS occurs as a subsequence of LHS |Yes |`"FabriKam" contains_cs "Kam"`|
+|[`!contains_cs`](containsoperator.md)   |RHS doesn't occur in LHS |Yes |`"Fabrikam" !contains_cs "Kam"`|
 
 ## Performance tips
 
@@ -28,12 +39,6 @@ For faster results, if you're testing for the presence of a symbol or alphanumer
 `has` works faster than `contains`, `startswith`, or `endswith`.
 
 For example, the first of these queries will run faster:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents | where State has "North" | count;
-StormEvents | where State contains "nor" | count
-```
 
 For more information, see [Query best practices](best-practices.md).
 

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/29/2021
+ms.date: 09/02/2021
 ms.localizationpriority: high 
 ---
 # String operators
@@ -73,10 +73,10 @@ Kusto builds a term index consisting of all terms that are *three characters or 
 |[`!hassuffix`](hassuffixoperator.md) |RHS isn't a term suffix in LHS |No |`"North America" !hassuffix "americ"`|
 |[`hassuffix_cs`](hassuffixoperator.md)  |RHS is a term suffix in LHS |Yes |`"North America" hassuffix_cs "ica"`|
 |[`!hassuffix_cs`](hassuffixoperator.md) |RHS isn't a term suffix in LHS |Yes |`"North America" !hassuffix_cs "icA"`|
-|[`in`](inoperator.md) |Equals to one of the elements |Yes |`"abc" in ("123", "345", "abc")`|
-|[`!in`](inoperator.md) |Not equals to any of the elements |Yes |`"bca" !in ("123", "345", "abc")`|
-|in~|Equals to one of the elements |No  |`"abc" in~ ("123", "abc", "aabcc")` |
-|!in~|Not equals to any of the elements |No |`"bca" !in~ ("123", "345", "ABC")`|
+|[`in`](in-operator.md) |Equals to one of the elements |Yes |`"abc" in ("123", "345", "abc")`|
+|[`!in`](not-in-cs-operator.md) |Not equals to any of the elements |Yes | `"bca" !in ("123", "345", "abc")` |
+|[`in~`](in-operator.md) |Equals to any of the elements |Yes | `"abc" !in ("123", "345", "abc")` |
+|[`!in~`](not-in-operator.md) |Not equals to any of the elements |Yes | `"bca" !in ("123", "345", "ABC")` |
 |[`matches regex`](regexoperator.md) |LHS contains a match for RHS |Yes |`"Fabrikam" matches regex "b.*k"`|
 |[`startswith`](containsoperator.md) |RHS is an initial subsequence of LHS |No |`"Fabrikam" startswith "fab"`|
 |[`!startswith`](containsoperator.md) |RHS isn't an initial subsequence of LHS |No |`"Fabrikam" !startswith "kam"`|
@@ -102,6 +102,7 @@ For more information, see [Query best practices](best-practices.md).
 
 For example, the first of these queries will run faster:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 EventLog | where continent has "North" | count;
 EventLog | where continent contains "nor" | count

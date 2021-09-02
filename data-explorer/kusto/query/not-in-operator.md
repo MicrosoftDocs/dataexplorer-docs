@@ -7,22 +7,28 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/31/2021
+ms.date: 09/02/2021
 ms.localizationpriority: high
 ---
 # !in~ operators
 
 Filters a record set based on the provided set of values. Data that does not match the string is retrieved from the searched column.
 
-```kusto
-Table1 | where col !in~ ('value1', 'value2')
-```
-
 > [!NOTE]
+>
 > * Adding '~' to the operator makes values' search case-insensitive: `x in~ (expression)` or `x !in~ (expression)`.
 > * In tabular expressions, the first column of the result set is selected.
 > * The expression list can produce up to `1,000,000` values.
 > * Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
+
+The following table provides a comparison of the `has` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+
+|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
+|-----------|--------------|----------------|-------------------------|
+|[`in`](in-operator.md) |Equals to one of the elements |Yes |`"abc" in ("123", "345", "abc")`|
+|[`!in`](not-in-cs-operator.md) |Not equals to any of the elements |Yes | `"bca" !in ("123", "345", "abc")` |
+|[`in~`](in-operator.md) |Equals to any of the elements |Yes | `"abc" !in ("123", "345", "abc")` |
+|[`!in~`](not-in-operator.md) |Not equals to any of the elements |Yes | `"bca" !in ("123", "345", "ABC")` |
 
 ## Performance tips
 

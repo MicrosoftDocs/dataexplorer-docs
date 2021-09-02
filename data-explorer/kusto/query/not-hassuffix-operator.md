@@ -7,16 +7,39 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/31/2021
+ms.date: 09/02/2021
 ms.localizationpriority: high
 ---
 # !hassuffix operators
 
 Filters a record set based on a search value. Data that does not contain the suffix is retrieved.
 
-```kusto
-Table1 | where col !hassuffix ('value1')
-```
+The following table provides a comparison of the `has` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+
+> [!NOTE]
+> The following abbreviations are used in the table below:
+>
+> * RHS = right hand side of the expression
+> * LHS = left hand side of the expression
+> 
+> Operators with an `_cs` suffix are case sensitive.
+
+|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
+|-----------|--------------|----------------|-------------------------|
+|[`has`](hasoperator.md) |Right-hand-side (RHS) is a whole term in left-hand-side (LHS) |No |`"North America" has "america"`|
+|[`!has`](hasoperator.md) |RHS isn't a full term in LHS |No |`"North America" !has "amer"`|
+|[`has_all`](has-all-operator.md) |Same as `has` but works on all of the elements |No |`"North and South America" has_all("south", "north")`|
+|[`has_any`](has-anyoperator.md) |Same as `has` but works on any of the elements |No |`"North America" has_any("south", "north")`|
+|[`has_cs`](hasoperator.md) |RHS is a whole term in LHS |Yes |`"North America" has_cs "America"`|
+|[`!has_cs`](hasoperator.md) |RHS isn't a full term in LHS |Yes |`"North America" !has_cs "amer"`|
+|[`hasprefix`](hasprefixoperator.md) |RHS is a term prefix in LHS |No |`"North America" hasprefix "ame"`|
+|[`!hasprefix`](hasprefixoperator.md) |RHS isn't a term prefix in LHS |No |`"North America" !hasprefix "mer"`|
+|[`hasprefix_cs`](hasprefixoperator.md) |RHS is a term prefix in LHS |Yes |`"North America" hasprefix_cs "Ame"`|
+|[`!hasprefix_cs`](hasprefixoperator.md) |RHS isn't a term prefix in LHS |Yes |`"North America" !hasprefix_cs "CA"`|
+|[`hassuffix`](hassuffixoperator.md) |RHS is a term suffix in LHS |No |`"North America" hassuffix "ica"`|
+|[`!hassuffix`](hassuffixoperator.md) |RHS isn't a term suffix in LHS |No |`"North America" !hassuffix "americ"`|
+|[`hassuffix_cs`](hassuffixoperator.md)  |RHS is a term suffix in LHS |Yes |`"North America" hassuffix_cs "ica"`|
+|[`!hassuffix_cs`](hassuffixoperator.md) |RHS isn't a term suffix in LHS |Yes |`"North America" !hassuffix_cs "icA"`|
 
 ## Performance tips
 
@@ -45,6 +68,7 @@ Rows in *T* for which the predicate is `true`.
 
 ### Use !hassuffix operator
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
     | summarize event_count=count() by State

@@ -14,13 +14,21 @@ ms.localizationpriority: high
 
 Filters a record set based on the provided search term. Data that does not match the string is retrieved from the searched column.
 
-```kusto
-Table1 | where col !~ ('value1')
-```
 
 > [!NOTE]
+>
 > * Adding '~' to the operator makes values' search case-insensitive: `col =~ (expression)` or `col !~ (expression)`.
- 
+> * Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
+
+The following table provides a comparison of the `==` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+
+|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
+|-----------|--------------|----------------|-------------------------|
+|[`==`](equalsoperator.md)|Equals |Yes|`"aBc" == "aBc"`|
+|[`!=`](equalsoperator.md)|Not equals |Yes |`"abc" != "ABC"`|
+|[`=~`](equalsoperator.md) |Equals |No |`"abc" =~ "ABC"`|
+|[`!~`](equalsoperator.md) |Not equals |No |`"aBc" !~ "xyz"`|
+
 ## Performance tips
 
 For better performance, when there are two operators that do the same task, use the case-sensitive one. For example, use `==`, not `=~`.

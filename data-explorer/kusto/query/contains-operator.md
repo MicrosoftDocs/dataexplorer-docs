@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/29/2021
+ms.date: 09/02/2021
 ms.localizationpriority: high
 ---
 
@@ -15,25 +15,28 @@ ms.localizationpriority: high
 
 Filters a record set based on the provided value. The value represents a string contained in the searched column.
 
-```kusto
-Table1 | where col contains ('value1')
-```
+The following table provides a comparison of the `contains` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+
+> [!NOTE]
+> The following abbreviations are used in the table below:
+>
+> * RHS = right hand side of the expression
+> * LHS = left hand side of the expression
+
+|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
+|-----------|--------------|----------------|-------------------------|
+|[`contains`](containsoperator.md) |RHS occurs as a subsequence of LHS |No |`"FabriKam" contains "BRik"`|
+|[`!contains`](containsoperator.md) |RHS doesn't occur in LHS |No |`"Fabrikam" !contains "xyz"`|
+|[`contains_cs`](containsoperator.md) |RHS occurs as a subsequence of LHS |Yes |`"FabriKam" contains_cs "Kam"`|
+|[`!contains_cs`](containsoperator.md)   |RHS doesn't occur in LHS |Yes |`"Fabrikam" !contains_cs "Kam"`|
 
 ## Performance tips
 
 For better performance, when there are two operators that do the same task, use the case-sensitive one.
-For example, use [`contains_cs`](contains_cs_operator.md), not `contains`.
+For example, use `contains_cs`, not `contains`.
 
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
 `has` works faster than `contains`, `startswith`, or `endswith`.
-
-For example, the first of these queries will run faster:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents | where State has "North" | count;
-StormEvents | where State contains "nor" | count
-```
 
 For more information, see [Query best practices](best-practices.md).
 

@@ -7,16 +7,32 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/30/2021
+ms.date: 09/02/2021
+
 ms.localizationpriority: high
 ---
-# endswith and !endswith operators
+# endswith_cs_ operators
 
 Filters a record set based on a search value using a case-sensitive search. The value represents an ending sequence found in the searched column.
 
-```kusto
-Table1 | where col endswith ('value1')
-```
+Operators with an `_cs` suffix are case-sensitive.
+
+> [!NOTE]
+> Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
+
+The following table provides a comparison of the `endswith` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+> [!NOTE]
+> The following abbreviations are used in the table below:
+>
+> * RHS = right hand side of the expression
+> * LHS = left hand side of the expression
+
+|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
+|-----------|--------------|----------------|-------------------------|
+|[`endswith`](endswithoperator.md) |RHS is a closing subsequence of LHS |No |`"Fabrikam" endswith "Kam"`|
+|[`!endswith`](endswithoperator.md) |RHS isn't a closing subsequence of LHS |No |`"Fabrikam" !endswith "brik"`|
+|[`endswith_cs`](endswithoperator.md) |RHS is a closing subsequence of LHS |Yes |`"Fabrikam" endswith_cs "kam"`|
+|[`!endswith_cs`](endswithoperator.md) |RHS isn't a closing subsequence of LHS |Yes |`"Fabrikam" !endswith_cs "brik"`|
 
 ## Performance tips
 
@@ -25,21 +41,13 @@ For example, use `endswith_cs`, not `endswith`.
 
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`;`has` works faster than `endswith`. 
 
-For example, the first of these queries will run faster:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents | where State has "North" | count;
-StormEvents | where State contains "nor" | count
-```
-
 For more information, see [Query best practices](best-practices.md).
 
 ## Syntax
 
 ### Case-sensitive syntax
 
-*T* `|` `where` *col* `endswith_cs` `(`*expression*`)`     
+*T* `|` `where` *col* `endswith_cs` `(`*expression*`)`
 
 ## Arguments
 
