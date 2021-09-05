@@ -19,7 +19,6 @@ A **pattern** is a named view-like construct that maps predefined
 string tuples to parameterless function bodies. Patterns are unique
 in two aspects:
 
-<<<<<<< Updated upstream
 * Patterns are "invoked" by using a syntax that resembles scoped table references.
 * Patterns have a controlled, close-ended, set of argument values that
   can be mapped, and the mapping process is done by Kusto. If a pattern is declared but not defined, Kusto identifies and flags all invocations to the pattern as errors. This identification makes it possible to "resolve" these patterns by a middle-tier application.
@@ -29,11 +28,6 @@ in two aspects:
 The pattern statement is used to declare or define a pattern.
 For example, a pattern statement that declares `app`
 to be a pattern.
-=======
-Middle-tier applications can use the pattern statement as part of a process to enrich Azure Data Explorer query results with further data. When a user creates a query with the middle-tier application, the application does not parse Azure Data Explorer queries itself. Instead it usually passes the queries from users to Azure Data Explorer as a pattern, with an empty declaration statement. Azure Data Explorer checks the pattern statement and responds with error information, and the application can then lookup the missing data, create a query with the appropriate pattern definition, and enrich the data results with its own lookup data.
-
-The application might prefix user queries with a logical schema model. The model is a set of [let statements](letstatement.md), possibly suffixed by a [restrict statement](restrictstatement.md). Applications can add references that are defined in the schema. However, the amount of lookup information might be too large to be predefined in a logical schema, or the references might not be determined in advance, as the application does not parse the user's query. For similar reasons, a middle-tier application can send the query to Azure Data Explorer with a pattern declared, but not defined. When Azure Data Explorer then parses the query, Azure Data Explorer returns an error to the middle-tier application addressing any invocation of the pattern, which is actually the user query. The middle-tier application can then resolve references and rerun the query, prefixing it with the full pattern definition.
->>>>>>> Stashed changes
 
 ```kusto
 declare pattern app;

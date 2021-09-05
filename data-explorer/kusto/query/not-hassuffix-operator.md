@@ -1,6 +1,6 @@
 ---
 title: The !hassuffix operators - Azure Data Explorer
-description: This article describes the !hassuffix operators in Azure Data Explorer.
+description: This article describes !hassuffix operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -12,9 +12,9 @@ ms.localizationpriority: high
 ---
 # !hassuffix operators
 
-Filters a record set based on a search value. Data that does not contain the suffix is retrieved.
+Filters a record set based on a term suffix. Any data that doesn't contain a term with the suffix is retrieved from the searched column.
 
-The following table provides a comparison of the `has` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+The following table provides a comparison of the `has` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 > [!NOTE]
 > The following abbreviations are used in the table below:
@@ -56,7 +56,7 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples  
 
-### Use !hassuffix operator
+### Use case-insensitive operator
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

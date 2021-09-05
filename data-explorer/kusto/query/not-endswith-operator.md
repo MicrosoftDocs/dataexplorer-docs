@@ -1,6 +1,6 @@
 ---
 title: The !endswith operators - Azure Data Explorer
-description: This article describes the !endswith operator in Azure Data Explorer.
+description: This article describes !endswith operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -12,9 +12,9 @@ ms.localizationpriority: high
 ---
 # !endswith operators
 
-Filters a record set based on a search value. Data that does not end with the sequence is retrieved from the searched column.
+Filters a record set based on an ending sequence. Records that don't have this ending sequence are retrieved from the searched column.
 
-The following table provides a comparison of the `endswith` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+The following table provides a comparison of the `endswith` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 > [!NOTE]
 > The following abbreviations are used in the table below:
@@ -56,7 +56,7 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples  
 
-### Use !endswith operator
+### Use case-insensitive operator
  
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
