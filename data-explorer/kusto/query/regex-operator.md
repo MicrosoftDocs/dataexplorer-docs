@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # matches regex operator
 
-Filters a record set based on the provided regex value. 
+Filters a record set based on the provided regex value with a case-sensitive search. 
 
 For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
@@ -21,8 +21,6 @@ For further information about other operators and to determine which operator is
 For better performance, see [Query best practices](best-practices.md).
 
 ## Syntax
-
-### Case sensitive syntax
 
 *T* `|` `where` *col* `matches` `regex` `(`*expression*`)`   
 

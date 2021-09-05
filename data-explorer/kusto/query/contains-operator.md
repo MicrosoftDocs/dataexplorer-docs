@@ -13,9 +13,9 @@ ms.localizationpriority: high
 
 # contains operators
 
-Filters a record set based on the provided value. The value represents a string contained in the searched column.
+Filters a record set based on the provided value with a case-insensitive search. The value represents a string contained in the searched column.
 
-The following table provides a comparison of the `contains` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+The following table provides a comparison of the `contains` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 > [!NOTE]
 > The following abbreviations are used in the table below:
@@ -30,6 +30,9 @@ The following table provides a comparison of the `contains` operators. For furth
 |[`contains_cs`](contains-cs-operator.md) |RHS occurs as a subsequence of LHS |Yes |`"FabriKam" contains_cs "Kam"`|
 |[`!contains_cs`](not-contains-cs-operator.md)   |RHS doesn't occur in LHS |Yes |`"Fabrikam" !contains_cs "Kam"`|
 
+> [!NOTE]
+> Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
+
 ## Performance tips
 
 For better performance, when there are two operators that do the same task, use the case-sensitive one.
@@ -41,8 +44,6 @@ For faster results, if you're testing for the presence of a symbol or alphanumer
 For more information, see [Query best practices](best-practices.md).
 
 ## Syntax
-
-### Case insensitive syntax
 
 *T* `|` `where` *col* `contains` `(`*expression*`)`   
 

@@ -7,12 +7,12 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 09/05/2021
 ms.localizationpriority: high
 ---
 # in~ operators
 
-Filters a record set based on the provided set of values.
+Filters a record set based on the provided set of values with a case-insensitive search.
 
 > [!NOTE]
 >
@@ -20,6 +20,7 @@ Filters a record set based on the provided set of values.
 > * In tabular expressions, the first column of the result set is selected.
 > * The expression list can produce up to `1,000,000` values.
 > * Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
+> Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
 The following table provides a comparison of the `in` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
@@ -44,8 +45,6 @@ For faster results, if you're testing for the presence of a symbol or alphanumer
 For more information, see [Query best practices](best-practices.md).
 
 ## Syntax
-
-### Case-insensitive syntax
 
 *T* `|` `where` *col* `in~` `(` *list of scalar expressions* `)`
 *T* `|` `where` *col* `in~` `(` *tabular expression* `)`

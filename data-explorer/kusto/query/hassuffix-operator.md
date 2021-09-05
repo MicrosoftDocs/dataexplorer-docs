@@ -7,14 +7,14 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/29/2021
+ms.date: 09/05/2021
 ms.localizationpriority: high
 ---
 # hassuffix operators
 
-Filters a record set based on a search value. The value represents a suffix for a term found in the searched column.
+Filters a record set based on a search value with a case-insensitive search. The value represents a suffix for a term found in the searched column.
 
-The following table provides a comparison of the `has` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+The following table provides a comparison of the `has` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 > [!NOTE]
 > The following abbreviations are used in the table below:
@@ -22,7 +22,7 @@ The following table provides a comparison of the `has` operators. For further in
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
 > 
-> Operators with an `_cs` suffix are case sensitive.
+> Operators with an `_cs` suffix are case-sensitive.
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
@@ -30,6 +30,9 @@ The following table provides a comparison of the `has` operators. For further in
 |[`!hassuffix`](not-hassuffix-operator.md) |RHS isn't a term suffix in LHS |No |`"North America" !hassuffix "americ"`|
 |[`hassuffix_cs`](hassuffix-cs-operator.md)  |RHS is a term suffix in LHS |Yes |`"North America" hassuffix_cs "ica"`|
 |[`!hassuffix_cs`](not-hassuffix-cs-operator.md) |RHS isn't a term suffix in LHS |Yes |`"North America" !hassuffix_cs "icA"`|
+
+> [!NOTE]
+> Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
 ## Performance tips
 
@@ -40,9 +43,7 @@ For more information, see [Query best practices](best-practices.md).
 
 ## Syntax
 
-### Case insensitive syntax
-
-*T* `|` `where` *col* `hassuffix` `(`*expression*`)`   
+*T* `|` `where` *col* `hassuffix` `(`*expression*`)`
 
 ## Arguments
 

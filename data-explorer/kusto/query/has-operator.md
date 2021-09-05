@@ -7,14 +7,14 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 09/05/2021
 ms.localizationpriority: high
 ---
 # has operators
 
-Filters a record set based on the provided value. The value represents a term found in the searched column.
+Filters a record set based on the provided value with a case-insensitive search. The value represents a term found in the searched column.
 
-The following table provides a comparison of the `has` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+The following table provides a comparison of the `has` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 > [!NOTE]
 > The following abbreviations are used in the table below:
@@ -22,7 +22,7 @@ The following table provides a comparison of the `has` operators. For further in
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
 > 
-> Operators with an `_cs` suffix are case sensitive.
+> Operators with an `_cs` suffix are case-sensitive.
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
@@ -30,6 +30,9 @@ The following table provides a comparison of the `has` operators. For further in
 |[`!has`](not-has-operator.md) |RHS isn't a full term in LHS |No |`"North America" !has "amer"`|
 |[`has_cs`](has-cs-operator.md) |RHS is a whole term in LHS |Yes |`"North America" has_cs "America"`|
 |[`!has_cs`](not-has-cs-operator.md) |RHS isn't a full term in LHS |Yes |`"North America" !has_cs "amer"`|
+
+> [!NOTE]
+> Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
 ## Performance tips
 
@@ -46,9 +49,7 @@ For more information, see [Query best practices](best-practices.md).
 
 ## Syntax
 
-### Case insensitive syntax
-
-*T* `|` `where` *col* `has` `(`*expression*`)`   
+*T* `|` `where` *col* `has` `(`*expression*`)`
 
 ## Arguments
 

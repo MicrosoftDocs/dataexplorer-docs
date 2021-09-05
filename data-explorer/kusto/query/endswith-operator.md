@@ -7,14 +7,14 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 09/05/2021
 ms.localizationpriority: high
 ---
 # endswith operators
 
 Filters a record set based on a search value. The value represents an ending sequence found in the searched column.
 
-The following table provides a comparison of the `endswith` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+The following table provides a comparison of the `endswith` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 > [!NOTE]
 > The following abbreviations are used in the table below:
@@ -29,6 +29,9 @@ The following table provides a comparison of the `endswith` operators. For furth
 |[`endswith_cs`](endswith-cs-operator.md) |RHS is a closing subsequence of LHS |Yes |`"Fabrikam" endswith_cs "kam"`|
 |[`!endswith_cs`](not-endswith-cs-operator.md) |RHS isn't a closing subsequence of LHS |Yes |`"Fabrikam" !endswith_cs "brik"`|
 
+> [!NOTE]
+> Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
+
 ## Performance tips
 
 For better performance, when there are two operators that do the same task, use the case-sensitive one.
@@ -39,8 +42,6 @@ For faster results, if you're testing for the presence of a symbol or alphanumer
 For more information, see [Query best practices](best-practices.md).
 
 ## Syntax
-
-### Case insensitive syntax
 
 *T* `|` `where` *col* `endswith` `(`*expression*`)`   
 

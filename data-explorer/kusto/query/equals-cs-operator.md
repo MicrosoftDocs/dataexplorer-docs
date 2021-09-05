@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 09/05/2021
 ms.localizationpriority: high
 ---
 # == operators
@@ -19,7 +19,7 @@ Filters a record set based on the provided search term with a case-sensitive sea
 > * Adding `~` to the operator makes values' search case-insensitive: `col =~ (expression)` or `col !~ (expression)`.
 > * Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
-The following table provides a comparison of the `==` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+The following table provides a comparison of the `==` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
@@ -27,7 +27,6 @@ The following table provides a comparison of the `==` operators. For further inf
 |[`!=`](not-equals-cs-operator.md)|Not equals |Yes |`"abc" != "ABC"`|
 |[`=~`](equals-operator.md) |Equals |No |`"abc" =~ "ABC"`|
 |[`!~`](not-equals-operator.md) |Not equals |No |`"aBc" !~ "xyz"`|
-
 
 ## Performance tips
 
@@ -38,8 +37,6 @@ For faster results, if you're testing for the presence of a symbol or alphanumer
 For more information, see [Query best practices](best-practices.md).
 
 ## Syntax
-
-### Case-sensitive syntax
 
 *T* `|` `where` *col* `==` `(`*expressions`)`
 

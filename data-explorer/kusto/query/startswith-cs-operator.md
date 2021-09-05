@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 09/05/2021
 ms.localizationpriority: high
 ---
 # startswith_cs operators
@@ -16,10 +16,7 @@ Filters a record set based on a search value with a case-sensitive search. Data 
 
 Operators with an `_cs` suffix are case-sensitive.
 
-> [!NOTE]
-> Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
-
-The following table provides a comparison of the `startswith` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+The following table provides a comparison of the `startswith` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 > [!NOTE]
 > The following abbreviations are used in the table below:
@@ -46,8 +43,6 @@ For example, the first of these queries will run faster:
 For more information, see [Query best practices](best-practices.md).
 
 ## Syntax
-
-### Case-sensitive syntax
 
 *T* `|` `where` *col* `startswith_cs` `(`*expression*`)`  
 
