@@ -20,7 +20,7 @@ with the following requirements:
 * The result of the function must be tabular (for example, it cannot be a scalar value).
 * The function must take no arguments.
 
-Views can be based on either [stored functions](./stored-functions.md) or defined as part of the query using a [let statement](../letstatement.md)).
+Views can be based on either [stored functions](./stored-functions.md) or defined as part of the query using a [let statement](../letstatement.md).
 
 > [!NOTE]
 > Views are not technically schema entities. However, all functions that comply
