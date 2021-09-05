@@ -31,6 +31,8 @@ items:
     href: schema-entities/columns.md
   - name: Stored functions
     href: schema-entities/stored-functions.md
+  - name: Views
+    href: schema-entities/views.md
   - name: External tables
     href: schema-entities/externaltables.md
   - name: Fact and dimension tables
