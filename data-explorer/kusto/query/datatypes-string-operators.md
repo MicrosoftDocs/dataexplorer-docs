@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 09/05/2021
 ms.localizationpriority: high 
 ---
 # String operators
@@ -104,7 +104,6 @@ For example, the first of these queries will run faster:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-EventLog | where continent has "North" | count;
-EventLog | where continent contains "nor" | count
+StormEvents | where State has "North" | count;
+StormEvents | where State contains "nor" | count;
 ```
-For more information, see [Query best practices](best-practices.md).
