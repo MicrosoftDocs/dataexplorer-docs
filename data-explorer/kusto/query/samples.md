@@ -1,6 +1,6 @@
 ---
-title: Samples for Kusto Queries - Azure Data Explorer, Synapse, Azure Monitor
-description: This article describes common queries and examples that use the Kusto Query Language for Azure Data Explorer, Synapse and Azure Monitor.
+title: Samples for Kusto Queries - Azure Data Explorer
+description: This article describes common queries and examples that use the Kusto Query Language.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/02/2021
 ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-2
+zone_pivot_groups: kql-flavors
 ---
 
 # Samples for Kusto Queries
 
-::: zone pivot="azuredataexplorer, synapse"
+::: zone pivot="azuredataexplorer"
 
 This article identifies common queries and how you can use the Kusto Query Language to meet them.
 

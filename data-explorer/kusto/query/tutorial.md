@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/08/2020
 ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-2
+zone_pivot_groups: kql-flavors
 ---
 
 # Tutorial: Use Kusto queries
 
-::: zone pivot="azuredataexplorer, synapse"
+::: zone pivot="azuredataexplorer"
 
 The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
 

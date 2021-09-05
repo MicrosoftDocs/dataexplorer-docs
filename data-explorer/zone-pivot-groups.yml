@@ -9,15 +9,6 @@ groups:
     title: Azure Data Explorer
   - id: azuremonitor
     title: Azure Monitor
-- id: kql-flavors-2
-  title: Kusto query language flavors
-  prompt: Select your Azure service
-  pivots:
-  - id: azuredataexplorer
-    title: Azure Data Explorer
-  - id: azuremonitor
-    title: Azure Monitor
-  - id: synapse
-    title: Azure Synapse Analytics
+  
   
   
