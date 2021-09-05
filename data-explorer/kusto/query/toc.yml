@@ -288,9 +288,9 @@ items:
     - name: has operator
       href: has-operator.md
     - name: hasprefix operator
-      href: hasprefixoperator.md
+      href: hasprefix-operator.md
     - name: hassuffix operator
-      href: hassuffixoperator.md
+      href: hassuffix-operator.md
     - name: in operator
       href: inoperator.md
     - name: has_all operator
