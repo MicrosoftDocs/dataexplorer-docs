@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 09/02/2021
 ms.localizationpriority: high
 ---
-# +~ operators
+# =~ operators
 
 Filters a record set based on the provided search term.
 
