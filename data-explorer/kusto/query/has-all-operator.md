@@ -45,11 +45,7 @@ Rows in *T* for which the predicate is `true`
 
 ## Examples
 
-<<<<<<< HEAD
 ### Use has_all operator
-=======
-### Use the has_all operator
->>>>>>> 9270df4231c9a0b8cfcde32d4312e297fcf52563
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
