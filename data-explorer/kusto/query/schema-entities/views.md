@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: zivc
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/01/2021
+ms.date: 09/05/2021
 ---
 # Views
 
