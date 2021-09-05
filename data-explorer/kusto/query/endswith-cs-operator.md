@@ -8,7 +8,6 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/02/2021
-
 ms.localizationpriority: high
 ---
 # endswith_cs operators
@@ -21,6 +20,7 @@ Operators with an `_cs` suffix are case-sensitive.
 > Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
 The following table provides a comparison of the `endswith` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+
 > [!NOTE]
 > The following abbreviations are used in the table below:
 >

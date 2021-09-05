@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 09/02/2021
 ms.localizationpriority: high
 ---
-# +~ operators
+# =~ operators
 
 Filters a record set based on the provided search term.
 
@@ -27,7 +27,7 @@ The following table provides a comparison of the `==` operators. For further inf
 |[`!=`](not-equals-cs-operator.md)|Not equals |Yes |`"abc" != "ABC"`|
 |[`=~`](equals-operator.md) |Equals |No |`"abc" =~ "ABC"`|
 |[`!~`](not-equals-operator.md) |Not equals |No |`"aBc" !~ "xyz"`|
- 
+
 ## Performance tips
 
 For better performance, when there are two operators that do the same task, use the case-sensitive one. For example, use `==`, not `=~`.
