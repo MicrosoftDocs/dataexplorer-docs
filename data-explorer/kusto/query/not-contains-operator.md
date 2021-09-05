@@ -25,10 +25,10 @@ The following table provides a comparison of the `contains` operators. For furth
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
-|[`contains`](containsoperator.md) |RHS occurs as a subsequence of LHS |No |`"FabriKam" contains "BRik"`|
-|[`!contains`](containsoperator.md) |RHS doesn't occur in LHS |No |`"Fabrikam" !contains "xyz"`|
-|[`contains_cs`](containsoperator.md) |RHS occurs as a subsequence of LHS |Yes |`"FabriKam" contains_cs "Kam"`|
-|[`!contains_cs`](containsoperator.md)   |RHS doesn't occur in LHS |Yes |`"Fabrikam" !contains_cs "Kam"`|
+|[`contains`](contains-operator.md) |RHS occurs as a subsequence of LHS |No |`"FabriKam" contains "BRik"`|
+|[`!contains`](not-contains-operator.md) |RHS doesn't occur in LHS |No |`"Fabrikam" !contains "xyz"`|
+|[`contains_cs`](contains-cs-operator.md) |RHS occurs as a subsequence of LHS |Yes |`"FabriKam" contains_cs "Kam"`|
+|[`!contains_cs`](not-contains-cs-operator.md)   |RHS doesn't occur in LHS |Yes |`"Fabrikam" !contains_cs "Kam"`|
 
 ## Performance tips
 

@@ -1,6 +1,6 @@
 ---
 title: endswith operators - Azure Data Explorer
-description: This article describes the endswith operatorsin Azure Data Explorer.
+description: This article describes the endswith operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek

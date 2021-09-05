@@ -25,9 +25,9 @@ The following table provides a comparison of the `has` operators. For further in
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
-|[`in`](in-operator.md) |Equals to one of the elements |Yes |`"abc" in ("123", "345", "abc")`|
+|[`in`](in-cs-operator.md) |Equals to one of the elements |Yes |`"abc" in ("123", "345", "abc")`|
 |[`!in`](not-in-cs-operator.md) |Not equals to any of the elements |Yes | `"bca" !in ("123", "345", "abc")` |
-|[`in~`](in-operator.md) |Equals to any of the elements |Yes | `"abc" !in ("123", "345", "abc")` |
+|[`in~`](inoperator.md) |Equals to any of the elements |Yes | `"abc" !in ("123", "345", "abc")` |
 |[`!in~`](not-in-operator.md) |Not equals to any of the elements |Yes | `"bca" !in ("123", "345", "ABC")` |
 
 ## Performance tips

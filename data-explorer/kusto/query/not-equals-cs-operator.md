@@ -23,10 +23,10 @@ The following table provides a comparison of the `==` operators. For further inf
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
-|[`==`](equalsoperator.md)|Equals |Yes|`"aBc" == "aBc"`|
-|[`!=`](equalsoperator.md)|Not equals |Yes |`"abc" != "ABC"`|
-|[`=~`](equalsoperator.md) |Equals |No |`"abc" =~ "ABC"`|
-|[`!~`](equalsoperator.md) |Not equals |No |`"aBc" !~ "xyz"`|
+|[`==`](equals-cs-operator.md)|Equals |Yes|`"aBc" == "aBc"`|
+|[`!=`](not-equals-cs-operator.md)|Not equals |Yes |`"abc" != "ABC"`|
+|[`=~`](equals-operator.md) |Equals |No |`"abc" =~ "ABC"`|
+|[`!~`](not-equals-operator.md) |Not equals |No |`"aBc" !~ "xyz"`|
 
 ## Syntax
 
