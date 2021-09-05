@@ -113,13 +113,13 @@ Now you connect to the Event Hub from Azure Data Explorer. When this connection 
 
 1. Select **Data ingestion** and **Add data connection**.
 
-    :::image type="content" source="media/ingest-data-event-hub/event-hub-connection.png" alt-text="Select data ingestion and Add data connection in Event Hub - Azure Data Explorer":::
+    :::image type="content" source="media/ingest-data-event-hub/event-hub-connection.png" alt-text="Select data ingestion and Add data connection in Event Hub - Azure Data Explorer.":::
 
 ### Create a data connection
 
 Fill out the form with the following information, and then select **Create**.
 
-:::image type="content" source="media/ingest-data-event-hub/data-connection-pane.png" alt-text="Data connection pane Event Hub - Azure Data Explorer":::
+:::image type="content" source="media/ingest-data-event-hub/data-connection-pane.png" alt-text="Data connection pane Event Hub - Azure Data Explorer.":::
 
 **Setting** | **Suggested value** | **Field description**
 |---|---|---|
@@ -142,7 +142,7 @@ For this article, you use static routing, where you specify the table name, data
 
 1. Fill out the following routing settings:
 
-    :::image type="content" source="media/ingest-data-event-hub/default-routing-settings.png" alt-text="Default routing settings for ingesting data to Event Hub - Azure Data Explorer":::
+    :::image type="content" source="media/ingest-data-event-hub/default-routing-settings.png" alt-text="Default routing settings for ingesting data to Event Hub - Azure Data Explorer.":::
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
