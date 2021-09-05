@@ -279,28 +279,28 @@ items:
     - name: String operators overview
       displayName: has, contains
       href: datatypes-string-operators.md
-    - name: contains and !contains operators
-      href: containsoperator.md
-    - name: endswith and !endswith operators
-      href: endswithoperator.md
-    - name: euqals and !equals operators
-      href: equalsoperator.md
-    - name: has and !has operators
-      href: hasoperator.md
-    - name: hasprefix and !hasprefix operators
+    - name: contains operator
+      href: contains-operator.md
+    - name: endswith operator
+      href: endswith-operator.md
+    - name: == operator
+      href: equals-operator.md
+    - name: has operator
+      href: has-operator.md
+    - name: hasprefix operator
       href: hasprefixoperator.md
-    - name: hassuffix and !hassuffix operators
+    - name: hassuffix operator
       href: hassuffixoperator.md
-    - name: in and !in operators
+    - name: in operator
       href: inoperator.md
     - name: has_all operator
       href: has-all-operator.md
     - name: has_any operator
       href: has-anyoperator.md
-    - name: matches regex operator
-      href: regexoperator.md
-    - name: startswith and !startswith operators
-      href: startswithoperator.md
+    - name: regex operator
+      href: regex-operator.md
+    - name: startswith operator
+      href: startswith-operator.md
   - name: between operator
     href: betweenoperator.md
   - name: not-between operator (!between)

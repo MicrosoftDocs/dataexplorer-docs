@@ -1,5 +1,5 @@
 ---
-title: The !startswith_cs operators - Azure Data Explorer
+title: The `!startswith_cs` operators - Azure Data Explorer
 description: This article describes the !startswith_cs operators in Azure Data Explorer.
 services: data-explorer
 author: orspod

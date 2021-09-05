@@ -1,6 +1,6 @@
 ---
-title: The !startswith_cs operators - Azure Data Explorer
-description: This article describes the !startswith_cs operators in Azure Data Explorer.
+title: The startswith_cs operators - Azure Data Explorer
+description: This article describes the startswith_cs operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,9 +10,9 @@ ms.topic: reference
 ms.date: 09/02/2021
 ms.localizationpriority: high
 ---
-# !startswith_cs operators
+# startswith_cs operators
 
-Filters a record set based on a search value with a case-sensitive search. Data that does not start with the search value is retrieved from the searched column.
+Filters a record set based on a search value with a case-sensitive search. Data that starts with the search value is retrieved from the searched column.
 
 Operators with an `_cs` suffix are case-sensitive.
 
@@ -31,7 +31,7 @@ The following table provides a comparison of the `startswith` operators. For fur
 |[`startswith`](startswith-operator.md) |RHS is an initial subsequence of LHS |No |`"Fabrikam" startswith "fab"`|
 |[`!startswith`](not-startswith-operator.md) |RHS isn't an initial subsequence of LHS |No |`"Fabrikam" !startswith "kam"`|
 |[`startswith_cs`](startswith-cs-operator.md)  |RHS is an initial subsequence of LHS |Yes |`"Fabrikam" startswith_cs "Fab"`|
-|[`!startswith_cs`](not-startwith-cs-operator.md) |RHS isn't an initial subsequence of LHS |Yes |`"Fabrikam" !startswith_cs "fab"`|
+|[`!startswith_cs`](not-startswith-cs-operator.md) |RHS isn't an initial subsequence of LHS |Yes |`"Fabrikam" !startswith_cs "fab"`|
 
 ## Performance tips
 
@@ -49,7 +49,7 @@ For more information, see [Query best practices](best-practices.md).
 
 ### Case-sensitive syntax
 
-*T* `|` `where` *col* `!startswith_cs` `(`*expression*`)`  
+*T* `|` `where` *col* `startswith_cs` `(`*expression*`)`  
 
 ## Arguments
 
@@ -69,13 +69,12 @@ Rows in *T* for which the predicate is `true`.
 ```kusto
 StormEvents
     | summarize event_count=count() by State
-    | where State !startswith_cs "I"
+    | where State startswith_cs "I"
     | where event_count > 2000
     | project State, event_count
 ```
 
 |State|event_count|
 |-----|-----------|
-|TEXAS|4701|
-|KANSAS|3166|
-|MISSOURI|2016|
+|IOWA|2337|
+|ILLINOIS|2022|

@@ -33,7 +33,7 @@ The following table provides a comparison of the `contains` operators. For furth
 ## Performance tips
 
 For better performance, when there are two operators that do the same task, use the case-sensitive one.
-For example, use [`contains_cs`](contains_cs_operator.md), not `contains`.
+For example, use `contains_cs`], not `contains`.
 
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
 `has` works faster than `contains`, `startswith`, or `endswith`.
