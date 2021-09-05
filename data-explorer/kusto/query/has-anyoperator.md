@@ -46,7 +46,7 @@ Rows in *T* for which the predicate is `true`
 
 ## Examples 
 
-### A simple usage of has_any operator:  
+### Use has_any operator 
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -67,7 +67,7 @@ StormEvents
 |NEW HAMPSHIRE|394|
 
 
-### Using dynamic array:
+### Use dynamic array
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

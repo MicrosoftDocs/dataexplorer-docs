@@ -45,7 +45,7 @@ Rows in *T* for which the predicate is `true`
 
 ## Examples
 
-### Simple usage of the has_all operator
+### Use has_all operator
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -61,7 +61,7 @@ StormEvents
 |Hail|392|
 |Flash Flood|24|
 
-### Using a dynamic array
+### Use a dynamic array
 
 The same result can be achieved using a dynamic array notation:
 
