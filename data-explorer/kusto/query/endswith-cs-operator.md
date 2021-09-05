@@ -18,6 +18,7 @@ Operators with an `_cs` suffix are case-sensitive.
 
 The following table provides a comparison of the `endswith` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
+
 > [!NOTE]
 > The following abbreviations are used in the table below:
 >
