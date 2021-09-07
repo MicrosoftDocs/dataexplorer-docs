@@ -143,7 +143,7 @@ Maximum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * `Ma
 |MaximumConcurrentOperationsPerDbAdmin |long    | The maximum number of concurrent ingestion operations in a cluster admin node.               |
 |CoreUtilizationCoefficient         |double  |A coefficient for the percentage of cores to use when calculating the stored query results creation capacity. |
 
-The cluster's total stored query resuls creation capacity, as shown by [`.show capacity`](../management/diagnostics.md#show-capacity), is calculated by:
+The cluster's total stored query results creation capacity, as shown by [`.show capacity`](../management/diagnostics.md#show-capacity), is calculated by:
 
 `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`)
 
