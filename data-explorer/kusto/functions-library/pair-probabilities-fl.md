@@ -32,7 +32,7 @@ The function `pair_probabilities_fl()`calculates the following probabilities and
 
 ## Syntax
 
-`pair_probabilities_fl``(`*A*, *B*, *Scope*`)`
+`pair_probabilities_fl(`*A*, *B*, *Scope*`)`
 
 ## Arguments
 
