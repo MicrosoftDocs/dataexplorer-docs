@@ -93,7 +93,7 @@ For example:
 
 * Use `==`, not `=~`
 * Use `in`, not `in~`
-* Use `contains_cs`, not `contains`
+* Use `hassuffix_cs`, not `hassuffix`
 
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
 `has` works faster than `contains`, `startswith`, or `endswith`.
