@@ -40,8 +40,6 @@ For more information, see [Query best practices](best-practices.md).
 
 ## Syntax
 
-### Case insensitive syntax
-
 *T* `|` `where` *col* `!hasprefix` `(`*expression*`)`   
 
 ## Arguments
@@ -54,9 +52,7 @@ For more information, see [Query best practices](best-practices.md).
 
 Rows in *T* for which the predicate is `true`.
 
-## Examples  
-
-### Use case-insensitive operator
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

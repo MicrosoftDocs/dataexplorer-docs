@@ -104,6 +104,6 @@ For example, the first of these queries will run faster:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-StormEvents | where State has "North" | count;
-StormEvents | where State contains "nor" | count;
+StormEvents | where State has "North" | count
+StormEvents | where State contains "nor" | count
 ```

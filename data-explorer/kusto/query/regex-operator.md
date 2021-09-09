@@ -34,9 +34,7 @@ For better performance, see [Query best practices](best-practices.md).
 
 Rows in *T* for which the predicate is `true`.
 
-## Examples  
-
-### Use regex operator
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

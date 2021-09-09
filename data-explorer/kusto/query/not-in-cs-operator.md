@@ -45,8 +45,6 @@ For more information, see [Query best practices](best-practices.md).
 
 ## Syntax
 
-### Case sensitive syntax
-
 *T* `|` `where` *col* `!in` `(`*list of scalar expressions*`)`
 *T* `|` `where` *col* `!in` `(`*tabular expression*`)`
 
@@ -61,9 +59,7 @@ For more information, see [Query best practices](best-practices.md).
 
 Rows in *T* for which the predicate is `true`.
 
-## Examples  
-
-### Use !in operator
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

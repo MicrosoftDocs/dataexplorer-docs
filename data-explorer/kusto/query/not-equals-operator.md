@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 08/31/2021
 ms.localizationpriority: high
 ---
-# !~ operators
+# !~ (not equals) operators
 
 Filters a record set based on the provided search term. Data that does not match the string is retrieved from the searched column.
 
@@ -38,8 +38,6 @@ For more information, see [Query best practices](best-practices.md).
 
 ## Syntax
 
-### Case insensitive syntax
-
 *T* `|` `where` *col* `!~` `(`*expression*`)`   
 
 ## Arguments
@@ -52,9 +50,7 @@ For more information, see [Query best practices](best-practices.md).
 
 Rows in *T* for which the predicate is `true`.
 
-## Examples  
-
-### Use !~ operator
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

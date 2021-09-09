@@ -42,7 +42,6 @@ For faster results, if you're testing for the presence of a symbol or alphanumer
 
 For more information, see [Query best practices](best-practices.md).
 
-
 ## Syntax
 
 *T* `|` `where` *col* `startswith` `(`*expression*`)`
@@ -57,9 +56,7 @@ For more information, see [Query best practices](best-practices.md).
 
 Rows in *T* for which the predicate is `true`.
 
-## Examples  
-
-### Use startswith operators
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

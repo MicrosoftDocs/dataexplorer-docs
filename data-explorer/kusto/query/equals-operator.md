@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 09/05/2021
 ms.localizationpriority: high
 ---
-# =~ operators
+# =~ (equals) operators
 
 Filters a record set based on the provided search term with a case-insensitive search.
 
@@ -50,9 +50,7 @@ For more information, see [Query best practices](best-practices.md).
 
 Rows in *T* for which the predicate is `true`.
 
-## Examples  
-
-### Use =~ operator  
+## Example  
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

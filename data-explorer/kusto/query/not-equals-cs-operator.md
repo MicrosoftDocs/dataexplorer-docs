@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 08/31/2021
 ms.localizationpriority: high
 ---
-# != operators
+# != (not equals_cs) operators
 
 Filters a record set based on the provided search term with a case-sensitive search. Data that does not match the string is retrieved from the searched column.
 
@@ -30,8 +30,6 @@ The following table provides a comparison of the `==` operators. For further inf
 
 ## Syntax
 
-### Case-sensitive syntax
-
 *T* `|` `where` *col* `!=` `(`*list of scalar expressions*`)`
 
 ## Arguments
@@ -44,9 +42,7 @@ The following table provides a comparison of the `==` operators. For further inf
 
 Rows in *T* for which the predicate is `true`.
 
-## Examples  
-
-### Use != operator
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

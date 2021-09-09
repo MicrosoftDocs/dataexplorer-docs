@@ -38,8 +38,6 @@ For example, use `contains_cs`], not `contains`.
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
 `has` works faster than `contains`, `startswith`, or `endswith`.
 
-For example, the first of these queries will run faster:
-
 For more information, see [Query best practices](best-practices.md).
 
 ## Syntax
@@ -58,9 +56,7 @@ For more information, see [Query best practices](best-practices.md).
 
 Rows in *T* for which the predicate is `true`.
 
-## Examples  
-
-### Use !contains operator
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
