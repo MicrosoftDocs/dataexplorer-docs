@@ -153,4 +153,4 @@ await kustoManagementClient.Databases.AddPrincipalsAsync(resourceGroupName, clus
 ```
 ## Next steps
 
-* [Read more about database and table policies](kusto/management/policies.md)
+* [Read more about database and table policies](./kusto/management/index.md)
