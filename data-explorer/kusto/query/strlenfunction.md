@@ -27,9 +27,7 @@ Returns the length, in characters, of the input string.
 
 **Notes**
 
-This function counts UTF-8 [code points](https://en.wikipedia.org/wiki/Code_point).
-That means that grapheme clusters are counted by the number of code points required
-to represent them.
+This function counts Unicode [code points](https://en.wikipedia.org/wiki/Code_point).
 
 ## Examples
 
@@ -50,7 +48,8 @@ print length = strlen("⒦⒰⒮⒯⒪")
 |5|
 
 ```kusto
-print strlen('Çedilla') // the first character is grapheme cluster
+print strlen('Çedilla') // the first character is a grapheme cluster
+                        // that requires 2 code points to represent
 ```
 
 |length|
