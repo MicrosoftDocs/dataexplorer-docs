@@ -12,7 +12,7 @@ ms.date: 02/19/2020
 # Cache policy (hot and cold cache) 
 
 Azure Data Explorer stores its ingested data in reliable storage (most commonly Azure Blob Storage),
-away from its actual processing (such as Azure Compute) nodes. To speed up queries on that data, Azure Data Explorer caches it, or parts of it, on its processing nodes, SSD, or even in RAM. Azure Data Explorer includes a sophisticated cache mechanism designed to intelligently decide which data objects to cache. The cache enables Azure Data Explorer to describe the data artifacts that it uses, so that more important data can take priority. For example, column indexes and column data shards,
+away from its actual processing (such as Azure Compute) nodes. To speed up queries on that data, Azure Data Explorer caches it, or parts of it, on its processing nodes, SSD, or even in RAM. Azure Data Explorer includes a sophisticated cache mechanism designed to intelligently decide which data objects to cache. The cache enables Azure Data Explorer to describe the data artifacts that it uses, so that more important data can take priority. For example, column indexes and column data shards.
 
 The best query performance is achieved when all ingested data is cached. Sometimes, certain data doesn't justify the cost of keeping it "warm" in local SSD storage.
 For example, many teams consider that rarely accessed older log records are of lesser importance.
