@@ -38,7 +38,7 @@ Replicate the management activities to have the same cluster configuration in ev
     * Databases: You can use the [Azure portal](create-cluster-database-portal.md#create-a-database) or one of our [SDKs](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/kusto/Microsoft.Azure.Management.Kusto) to create a new database.
     * [Tables](kusto/management/create-table-command.md)
     * [Mappings](kusto/management/create-ingestion-mapping-command.md)
-    * [Policies](kusto/management/policies.md)
+    * [Policies](./kusto/management/index.md)
 
 1. Manage the [authentication and authorization](kusto/management/security-roles.md) on each replica.
 
