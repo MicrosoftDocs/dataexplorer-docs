@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: andkar
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ---
 # pair_probabilities_fl()
 
@@ -32,11 +32,13 @@ The function `pair_probabilities_fl()`calculates the following probabilities and
 
 ## Syntax
 
-`pair_probabilities_fl()`
-  
+`pair_probabilities_fl(`*A*, *B*, *Scope*`)`
+
 ## Arguments
 
-None
+*	*A*: First categorical variable.
+*	*B*: Second categorical variable.
+*	*Scope*: Field that contains the scope, so that the probabilities for variables A and B are calculated independently for each scope value.
 
 ## Usage
 
