@@ -279,7 +279,6 @@ items:
     - name: String operators overview
       displayName: has, contains
       href: datatypes-string-operators.md
-    
       - name: between operator
         href: betweenoperator.md
       - name: &!between operator 
