@@ -38,7 +38,7 @@ A **pattern** is a construct that maps string tuples to tabular expressions. Eac
 
     `}`
 
-* Invoking a pattern:
+* Invoke a pattern:
 
     * *PatternName* `(` *ArgValue1* [`,` *ArgValue2* ...] `).`*PathValue*
     * *PatternName* `(` *ArgValue1* [`,` *ArgValue2* ...] `).["`*PathValue*`"]`
