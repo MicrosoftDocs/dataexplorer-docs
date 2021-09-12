@@ -151,6 +151,7 @@ In the following example, a middle-tier application provides the ability to enri
 
 ```kusto
 map_ip_to_longlat("10.10.10.10")
+```
 
 The application does not parse this query and hence does not know which IP address (*10.10.10.10*) was passed to the pattern. So it prepends the user query with an empty `map_ip_to_longlat` pattern declaration and sends it for processing:
 
