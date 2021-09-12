@@ -279,8 +279,7 @@ items:
     - name: String operators overview
       displayName: has, contains
       href: datatypes-string-operators.md
-    - name: String operator definitions
-      items:
+    
       - name: between operator
         href: betweenoperator.md
       - name: &!between operator 
@@ -302,12 +301,13 @@ items:
       - name: &!endswith_cs operator 
         href: not-endswith-cs-operator.md
       - name: &== (equals) operator 
+        displayName: equals
         href: equals-cs-operator.md
-      - name: &!= (equals) operator 
+      - name: &!= (not equals) operator
         href: not-equals-cs-operator.md
       - name: &=~ (equals) operator 
         href: equals-operator.md
-      - name: &!~ (equals) operator 
+      - name: &!~ (not equals) operator 
         href: not-equals-operator.md
       - name: has operator
         href: has-operator.md
