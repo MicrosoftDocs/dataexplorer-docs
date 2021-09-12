@@ -52,7 +52,7 @@ A **pattern** is a construct that maps string tuples to tabular expressions. Eac
 | *ArgType* | string | &check; | Type of *ArgName* parameter. Possible values: `string` |
 | *PathName* | string | | Name of path argument. Patterns can have no path or one path. |
 | *PathArgType* | string | | Type of the *PathArgType* parameter. Possible values: `string` |
-| *ArgValue* | string | &check; | A value to map for *ArgName*. |
+| *ArgValue* | string | &check; | *ArgName* and optional *PathName* tuple values to be mapped to an *expression*.  |
 | *PathValue* | string | | A value to map for *PathName*. |
 | *expression* | string | &check; | A tabular expression or a lambda expression that references a function. For example: `Logs | where Timestamp > ago(1h)` |
 
