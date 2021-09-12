@@ -60,7 +60,7 @@ A **pattern** is a construct that maps string tuples to tabular expressions. Eac
 
 In each of the following examples, a pattern is declared, defined, and then invoked.
 
-### Defining simple patterns
+### Define simple patterns
 
 The following example defines a pattern that maps states to an expression that returns its capital city.
 
