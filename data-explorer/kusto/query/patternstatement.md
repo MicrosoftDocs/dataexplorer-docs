@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/09/2021
+ms.date: 09/12/2021
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -57,7 +57,6 @@ A **pattern** is a construct that maps string tuples to tabular expressions. Eac
 | *expression* | string | &check; | A tabular expression or a lambda expression that references a function. For example: `Logs | where Timestamp > ago(1h)` |
 
 ## Examples
-
 
 In each of the following examples, a pattern is declared, defined, and then invoked.
 
