@@ -16,7 +16,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-A **pattern** is a construct that maps string tuples to parameterless function bodies. Each pattern must declare a pattern name and optionally define a pattern mapping. Patterns that define a mapping return a tabular expression when invoked.
+A **pattern** is a construct that maps string tuples to tabular expressions. Each pattern must ***declare*** a pattern name and optionally ***define*** a pattern mapping. Patterns that define a mapping return a tabular expression when invoked.
 
 Empty patterns are patterns that are declared but don't define a mapping. When invoked, they return error *SEM0036* along with the details of the missing pattern definitions in the HTTP header. Middle-tier applications that provide a KQL experience can use this information to as part of a process to enrich KQL query results. For more information, see [Working with middle-tier applications](#working-with-middle-tier-applications).
 
