@@ -80,6 +80,9 @@ country("Canada").Alberta
 |-------|
 |Edmonton|
 
+
+The following example defines a pattern that defines some scoped application data.
+
 ```kusto
 declare pattern App = (applicationId:string)[scope:string]  
 {
