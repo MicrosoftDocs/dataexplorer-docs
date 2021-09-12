@@ -1,6 +1,6 @@
 ---
-title: The startswith_cs operators - Azure Data Explorer
-description: This article describes the startswith_cs operators in Azure Data Explorer.
+title: The case-sensitive startswith string operator - Azure Data Explorer
+description: This article describes the case-sensitive startswith string operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,9 +10,9 @@ ms.topic: reference
 ms.date: 09/05/2021
 ms.localizationpriority: high
 ---
-# startswith_cs operators
+# startswith_cs operator
 
-Filters a record set based on a search value with a case-sensitive search. Data that starts with the search value is retrieved from the searched column.
+Filters a record set based on a case-sensitive string starting sequence.
 
 Operators with an `_cs` suffix are case-sensitive.
 
@@ -32,8 +32,7 @@ The following table provides a comparison of the `startswith` operators. For mor
 
 ## Performance tips
 
-For better performance, when there are two operators that do the same task, use the case-sensitive one.
-For example, use `startswith_cs`, not `startswith`.
+For better performance, when there are two operators that do the same task, use the case-sensitive one. For example, use `startswith_cs`, not `startswith`.
 
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
 `has` works faster than `contains`, `startswith`, or `endswith`.
@@ -56,9 +55,7 @@ For more information, see [Query best practices](best-practices.md).
 
 Rows in *T* for which the predicate is `true`.
 
-## Examples  
-
-### Use case-sensitive operators
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

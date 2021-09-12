@@ -1,6 +1,6 @@
 ---
-title: regex operator - Azure Data Explorer
-description: This article describes the regex operator in Azure Data Explorer.
+title: regex string operator - Azure Data Explorer
+description: This article describes the regex string operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,9 +10,9 @@ ms.topic: reference
 ms.date: 09/02/2021
 ms.localizationpriority: high
 ---
-# matches regex operator
+# regex operator
 
-Filters a record set based on the provided regex value with a case-sensitive search. 
+Filters a record set based on a case-sensitive regex value. 
 
 For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 

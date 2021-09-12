@@ -1,6 +1,6 @@
 ---
-title: startswith operators - Azure Data Explorer
-description: This article describes startswith operators in Azure Data Explorer.
+title: The case-insensitive startswith string operator - Azure Data Explorer
+description: This article describes the case-insensitive startswith string operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,9 +10,9 @@ ms.topic: reference
 ms.date: 09/05/2021
 ms.localizationpriority: high
 ---
-# startswith operators
+# startswith operator
 
-Filters a record set based on a search value with a case-insensitive search. The value represents a starting sequence for the string found in the searched column.
+Filters a record set based on a case-insensitive string starting sequence.
 
 > [!NOTE]
 > Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
@@ -34,8 +34,7 @@ The following table provides a comparison of the `startswith` operators. For mor
 
 ## Performance tips
 
-For better performance, when there are two operators that do the same task, use the case-sensitive one.
-For example, use `startswith_cs`, not `startswith`.
+For better performance, when there are two operators that do the same task, use the case-sensitive one. For example, use `startswith_cs`, not `startswith`.
 
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
 `has` works faster than `contains`, `startswith`, or `endswith`.
