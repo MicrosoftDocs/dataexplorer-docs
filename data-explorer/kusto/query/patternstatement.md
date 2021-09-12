@@ -163,7 +163,7 @@ map_ip_to_longlat("10.10.10.10")
 The application receives the following error in response.
 > One or more pattern references were not declared. Detected pattern references: ["map_ip_to_longlat('10.10.10.10')"]
 
-The application inspects the error, determines that the error indicates a missing pattern reference, and retrieves the missing IP address (*10.10.10.10*) from the error. It then uses IP address to look up enrichment data in its internal service and builds a new pattern, this time defining the mapping of the IP address to the longitude and latitude data. The new pattern is prepended to the user's query and re-run, this time succeeded as the enrichment data is now declared in the query:
+The application inspects the error, determines that the error indicates a missing pattern reference, and retrieves the missing IP address (*10.10.10.10*). It uses the IP address to look up the enrichment data in its internal service and builds a new pattern defining the mapping of the IP address to the corresponding longitude and latitude data. The new pattern is prepended to the user's query and run again. This time the query succeeds because the enrichment data is now declared in the query, and the result is sent to the user.
 
 ```kusto
 declare pattern map_ip_to_longlat = (address:string)
