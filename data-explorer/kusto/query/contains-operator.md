@@ -1,19 +1,19 @@
 ---
-title: contains operator - Azure Data Explorer
-description: This article describes the contains operator in Azure Data Explorer.
+title: The contains operator - Azure Data Explorer
+description: This article describes the case-insensitive contains operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 09/12/2021
 ms.localizationpriority: high
 ---
 
-# contains operators
+# contains operator
 
-Filters a record set based on the provided value with a case-insensitive search. The value represents a string contained in the searched column.
+Filters a record set for data containing a case-insensitive string.
 
 The following table provides a comparison of the `contains` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 

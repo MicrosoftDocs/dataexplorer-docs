@@ -1,18 +1,18 @@
 ---
-title: The !hasprefix_cs operators - Azure Data Explorer
-description: This article describes the !hasprefix_cs operators in Azure Data Explorer.
+title: The !hasprefix_cs operator - Azure Data Explorer
+description: This article describes the case-sensitive !hasprefix_cs operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 09/12/2021
 ms.localizationpriority: high
 ---
-# !hasprefix_cs operators
+# !hasprefix_cs operator
 
-Filters a record set based on the provided value with a case-sensitive search. Data that does not contain the prefix is retrieved from the searched column.
+Filters a record set for terms that do not contain a matching case-sensitive starting string
 
 The following table provides a comparison of the `has` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 

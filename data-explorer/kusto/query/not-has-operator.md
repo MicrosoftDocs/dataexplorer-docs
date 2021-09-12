@@ -1,18 +1,18 @@
 ---
 title: The !has operators - Azure Data Explorer
-description: This article describes the !has operators in Azure Data Explorer.
+description: This article describes the case-insensitive !has operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 09/12/2021
 ms.localizationpriority: high
 ---
-# !has operators
+# !has operator
 
-Filters a record set based on the provided value. Data that does not contain the term is retrieved from the searched column.
+Filters a record set for records that do not contain a matching case-insensitive string.
 
 The following table provides a comparison of the `has` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 

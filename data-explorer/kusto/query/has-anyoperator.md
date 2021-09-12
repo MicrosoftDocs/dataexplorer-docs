@@ -1,17 +1,17 @@
 ---
-title: has_any operator - Azure Data Explorer
-description: This article describes has_any operator in Azure Data Explorer.
+title: The has_any operator - Azure Data Explorer
+description: This article describes the case-insensitive has_any operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/05/2021
+ms.date: 09/12/2021
 ---
 # has_any operator
 
-`has_any` operator filters based on the provided set of values.
+Filters a record set for a match to any of a set of case-insensitive strings.
 
 For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
@@ -65,7 +65,6 @@ StormEvents
 |NORTH DAKOTA|905|
 |NEW MEXICO|527|
 |NEW HAMPSHIRE|394|
-
 
 ### Use dynamic array
 

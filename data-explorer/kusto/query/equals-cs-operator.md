@@ -1,18 +1,18 @@
 ---
-title: The == (equals) operators - Azure Data Explorer
-description: This article describes the == (equals) operator in Azure Data Explorer.
+title: The == (equals) operator - Azure Data Explorer
+description: This article describes the case-sensitive == (equals) operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/05/2021
+ms.date: 09/12/2021
 ms.localizationpriority: high
 ---
-# == (equals_cs) operators
+# == (equals) operator
 
-Filters a record set based on the provided search term with a case-sensitive search.
+Filters a record set for data matching a case-sensitive string.
 
 > [!NOTE]
 >

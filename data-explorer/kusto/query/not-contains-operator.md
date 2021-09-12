@@ -1,19 +1,19 @@
 ---
-title: The !contains operators - Azure Data Explorer
-description: This article describes the !contains operator in Azure Data Explorer.
+title: The !contains operator - Azure Data Explorer
+description: This article describes the case-insensitive !contains operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/31/2021
-ms.localizationpriority: high
+ms.date: 09/12/2021
+ms.localizationpriority: high 
 ---
 
-# !contains operators
+# !contains operator
 
-Filters a record set based on the provided value. Data that does not contain the string is retrieved from the searched column.
+Filters a record set for records that do not include a matching case-sensitive string.
 
 The following table provides a comparison of the `contains` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 

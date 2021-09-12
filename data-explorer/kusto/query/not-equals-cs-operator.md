@@ -1,18 +1,18 @@
 ---
-title: The != operator - Azure Data Explorer
-description: This article describes the != operator in Azure Data Explorer.
+title: The != (not equals) operator - Azure Data Explorer
+description: This article describes the case-sensitive != (not equals) operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/31/2021
+ms.date: 09/12/2021
 ms.localizationpriority: high
 ---
-# != (not equals_cs) operators
+# != (not equals) operator
 
-Filters a record set based on the provided search term with a case-sensitive search. Data that does not match the string is retrieved from the searched column.
+Filters a record set for records that do not match a case-sensitive string.
 
 > [!NOTE]
 >

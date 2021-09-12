@@ -1,18 +1,18 @@
 ---
-title: The !endswith_cs operators - Azure Data Explorer
-description: This article describes the !endswith_cs operator in Azure Data Explorer.
+title: The !endswith_cs operator - Azure Data Explorer
+description: This article describes the case-sensitive !endswith_cs operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: orspodek
+ms.author: orspodek 
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/31/2021
+ms.date: 09/12/2021
 ms.localizationpriority: high
 ---
-# !endswith_cs operators
+# !endswith_cs operator
 
-Filters a record set based on a search value with a search that is case-sensitive. Data that does not end with the sequence is retrieved from the searched column.
+Filters a record set for terms that do not contain a matching case-insensitive ending string.
 
 Operators with an `_cs` suffix are case-sensitive.
 

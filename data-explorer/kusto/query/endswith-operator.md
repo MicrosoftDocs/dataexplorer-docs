@@ -1,18 +1,18 @@
 ---
-title: endswith operators - Azure Data Explorer
-description: This article describes the endswith operators in Azure Data Explorer.
+title: The endswith operator - Azure Data Explorer
+description: This article describes the case-insensitive endswith operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/05/2021
+ms.date: 09/12/2021
 ms.localizationpriority: high
 ---
-# endswith operators
+# endswith operator
 
-Filters a record set based on a search value. The value represents an ending sequence found in the searched column.
+Filters a record set for data with a case-insensitive ending string.
 
 The following table provides a comparison of the `endswith` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 

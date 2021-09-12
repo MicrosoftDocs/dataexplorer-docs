@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # !hasprefix operators
 
-Filters a record set based on the provided value. Data that does not contain the prefix is retrieved from the searched column.
+Filters a record set for terms that do not contain a matching case-insensitive starting string
 
 The following table provides a comparison of the `has` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 

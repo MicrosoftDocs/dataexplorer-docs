@@ -1,6 +1,6 @@
 ---
-title: in operators - Azure Data Explorer
-description: This article describes the in operators Azure Data Explorer.
+title: The in operator - Azure Data Explorer
+description: This article describes the case-sensitive in operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # in operators
 
-Filters a record set based on the provided set of values with a case-sensitive search.
+Filters a record set for data that contains a case-sensitive element.
 
 > [!NOTE]
 >

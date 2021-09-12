@@ -1,19 +1,19 @@
 ---
-title: contains_cs operator - Azure Data Explorer
-description: This article describes the contains_cs operator in Azure Data Explorer.
+title: The contains_cs operator - Azure Data Explorer
+description: This article describes the case-sensitive contains_cs operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/05/2021
+ms.date: 09/12/2021
 ms.localizationpriority: high
 ---
 
-# contains_cs operators
+# contains_cs operator
 
-Filters a record set based on the provided value with a case-sensitive search. The value represents a string contained in the searched column.
+Filters a record set for data containing a case-sensitive string.
 
 Operators with an `_cs` suffix are case-sensitive.
 

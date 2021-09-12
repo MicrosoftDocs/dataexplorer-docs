@@ -1,18 +1,18 @@
 ---
-title: in~ operators - Azure Data Explorer
-description: This article describes the in~ operators in Azure Data Explorer.
+title: The in~ operators - Azure Data Explorer
+description: This article describes the case-insensitive in~ operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/05/2021
+ms.date: 09/12/2021
 ms.localizationpriority: high
 ---
-# in~ operators
+# in~ operator
 
-Filters a record set based on the provided set of values with a case-insensitive search.
+Filters a record set for data that contains a matching case-insensitive element.
 
 > [!NOTE]
 >
@@ -61,8 +61,6 @@ For more information, see [Query best practices](best-practices.md).
 Rows in *T* for which the predicate is `true`.
 
 ## Examples  
-
-### Use in~ operator
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

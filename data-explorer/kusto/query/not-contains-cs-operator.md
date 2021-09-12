@@ -1,19 +1,19 @@
 ---
 title: The !contains_cs operator - Azure Data Explorer
-description: This article describes the !contains_cs operator in Azure Data Explorer.
+description: This article describes the case-sensitive !contains_cs operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 09/12/2021
 ms.localizationpriority: high
 ---
 
 # !contains_cs operator
 
-Filters a record set based on excluding the provided value using a case sensitive search. Data that does not contain the searched string is retrieved from the searched column.
+Filters a record set for terms that do not include a matching case-sensitive string.
 
 Operators with an `_cs` suffix are case-sensitive.
 

@@ -1,17 +1,17 @@
 ---
-title: has_all operator - Azure Data Explorer
-description: This article describes the has_all operator in Azure Data Explorer.
+title: The has_all operator - Azure Data Explorer
+description: This article describes the case-insensitive has_all operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/05/2021
+ms.date: 09/12/2021
 ---
 # has_all operator
 
-The `has_all` operator filters a searched column for matching records based on the provided set of values (all values must be present).
+Filters a record set for data containing one or more case-insensitive search strings.
 
 For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
@@ -45,8 +45,6 @@ Rows in *T* for which the predicate is `true`
 > * For tabular expressions, the first column of the result set is selected.   
 
 ## Examples
-
-### Use has_all operator
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

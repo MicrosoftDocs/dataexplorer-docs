@@ -1,18 +1,18 @@
 ---
-title: hassuffix_cs operators - Azure Data Explorer
-description: This article describes the hassuffix_cs operators in Azure Data Explorer.
+title: The hassuffix_cs operator - Azure Data Explorer
+description: This article describes the hassuffix_cs case-sensitive operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/05/2021
+ms.date: 09/12/2021
 ms.localizationpriority: high
 ---
-# hassuffix_cs operators
+# hassuffix_cs operator
 
-Filters a record set based on a search value using a case-sensitive search. The value represents a suffix for a term found in the searched column.
+Filters a record set for data containing a case-sensitive ending string.
 
 The following table provides a comparison of the `has` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
@@ -53,8 +53,6 @@ For more information, see [Query best practices](best-practices.md).
 Rows in *T* for which the predicate is `true`.
 
 ## Examples  
-
-### Use hassuffix_cs operator
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
