@@ -149,7 +149,8 @@ To this end, the application provides their users with a pattern statement that 
 
 In the following example, a middle-tier application provides the ability to enrich queries with longitude/latitude locations. The application uses an internal service to map IP addresses to longitude/latitude locations, and provides a pattern called `map_ip_to_longlat` for this purpose. Let's suppose the application gets the following query from the user:
 
-`map_ip_to_longlat` `(`"10.10.10.10"`)`
+```kusto
+map_ip_to_longlat("10.10.10.10")
 
 The application does not parse this query and hence does not know which IP address (*10.10.10.10*) was passed to the pattern. So it prepends the user query with an empty `map_ip_to_longlat` pattern declaration and sends it for processing:
 
