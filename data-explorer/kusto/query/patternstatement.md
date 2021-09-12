@@ -22,7 +22,7 @@ A **pattern** is a construct that maps string tuples to tabular expressions. Eac
 
 ## Syntax
 
-* Declaring an empty pattern:
+* Declare an empty pattern:
 
     `declare` `pattern` *PatternName*
 
