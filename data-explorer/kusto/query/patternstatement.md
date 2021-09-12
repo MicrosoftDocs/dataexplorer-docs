@@ -18,7 +18,7 @@ zone_pivot_groups: kql-flavors
 
 A **pattern** is a construct that maps string tuples to tabular expressions. Each pattern must *declare* a pattern name and optionally *define* a pattern mapping. Patterns that define a mapping return a tabular expression when invoked.
 
-*Empty patterns* are patterns that are declared but don't define a mapping. When invoked, they return error *SEM0036* along with the details of the missing pattern definitions in the HTTP header. Middle-tier applications that provide a Kusto Query Language (KQL) experience can use the returned details to as part of their process to enrich KQL query results. For more information, see [Working with middle-tier applications](#working-with-middle-tier-applications).
+*Empty patterns* are patterns that are declared but don't define a mapping. When invoked, they return error *SEM0036* along with the details of the missing pattern definitions in the HTTP header. Middle-tier applications that provide a Kusto Query Language (KQL) experience can use the returned details to as part of their process to enrich KQL query results. For more information, see [Working with middle-tier applications](#work-with-middle-tier-applications).
 
 ## Syntax
 
@@ -139,7 +139,7 @@ union app("ApplicationX").["*"]
 **Returns semantic error**
 > One or more pattern references were not declared. Detected pattern references: ["app('ApplicationX').['*']"]
 
-## Working with middle-tier applications
+## Work with middle-tier applications
 
 A middle-tier application provides its users with the ability to use KQL and wants to enhance the experience by enriching the query results with augmented data from its internal service.
 
