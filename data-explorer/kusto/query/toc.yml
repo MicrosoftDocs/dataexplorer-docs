@@ -268,7 +268,7 @@ items:
   items:
   - name: between operator
     href: betweenoperator.md
-  - name: \\!between operator 
+  - name: !between operator 
     href: notbetweenoperator.md
   - name: Bitwise (binary) operators
     href: binoperators.md
