@@ -143,7 +143,9 @@ union app("ApplicationX").["*"]
 
 ## Working with middle-tier applications
 
-Middle-tier applications can use a pattern statement as part of a process to enrich query results with augmented data. To this end, the application provides their users with a pattern statement that returns tabular data to use in their queries. The provided pattern arguments are the keys the application will use to retrieve the enrichment data. When the user runs the query, the application does not parse the query itself but instead prepends the query with the empty pattern declaration and sends it to Azure Data Explorer for processing, leveraging the expected semantic error to retrieve the vales of missing pattern arguments. The application uses the these values to look up the enrichment data and builds a new declaration that defines the appropriate data mapping. Finally, the application prepends the new definition to the user's query, resends it for processing, and returns the result to the user.
+A middle-tier application provides its users with the ability to use KQL and wants to enhance the experience by enriching the query results with augmented data from its internal service.
+
+To this end, the application provides their users with a pattern statement that returns tabular data that their users can use in their queries. The pattern's arguments are the keys the application will use to retrieve the enrichment data. When the user runs the query, the application does not parse the query itself but instead plans to leverage the error returned by an empty pattern to retrieve the keys it requires. So it prepends the query with the empty pattern declaration, sends it to Azure Data Explorer for processing, and then parses the returned HTTP header to retrieve the values of missing pattern arguments. The application uses the these values to look up the enrichment data and builds a new declaration that defines the appropriate enrichment data mapping. Finally, the application prepends the new definition to the user's query, resends it for processing, and returns the result it receives to the user.
 
 ### Example
 
