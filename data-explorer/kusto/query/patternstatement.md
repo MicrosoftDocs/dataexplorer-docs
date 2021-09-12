@@ -26,7 +26,7 @@ A **pattern** is a construct that maps string tuples to tabular expressions. Eac
 
     `declare` `pattern` *PatternName*
 
-* Declaring and defining a pattern:
+* Declare and define a pattern:
 
     `declare` `pattern` *PatternName* = `(`*ArgName* `:` *ArgType* [`,` ... ]`)` [`[` *PathName* `:` *PathArgType* `]`]
 
