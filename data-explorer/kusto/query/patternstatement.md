@@ -49,7 +49,7 @@ A **pattern** is a construct that maps string tuples to tabular expressions. Eac
 | -- | -- | -- | -- |
 | *PatternName* | string | &check; | Name of pattern. Use the pattern syntax for all pattern references associated with the keyword. |
 | *ArgName* | string | &check; | Name of argument. Patterns can have one or more arguments. |
-| *ArgType* | string | &check; | Type of argument. Possible values: `string` |
+| *ArgType* | string | &check; | Type of *ArgName* parameter. Possible values: `string` |
 | *PathName* | string | | Name of path argument. Patterns can have no path or one path. |
 | *PathArgType* | string | | Type of the *PathArgType* parameter. Possible values: `string` |
 | *ArgValue* | string | &check; | A value to map for *ArgName*. |
