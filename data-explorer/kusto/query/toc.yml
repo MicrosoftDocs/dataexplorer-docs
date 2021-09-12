@@ -279,32 +279,82 @@ items:
     - name: String operators overview
       displayName: has, contains
       href: datatypes-string-operators.md
-    - name: contains operator
-      href: contains-operator.md
-    - name: endswith operator
-      href: endswith-operator.md
-    - name: == operator
-      href: equals-operator.md
-    - name: has operator
-      href: has-operator.md
-    - name: hasprefix operator
-      href: hasprefix-operator.md
-    - name: hassuffix operator
-      href: hassuffix-operator.md
-    - name: in operator
-      href: inoperator.md
-    - name: has_all operator
-      href: has-all-operator.md
-    - name: has_any operator
-      href: has-anyoperator.md
-    - name: regex operator
-      href: regex-operator.md
-    - name: startswith operator
-      href: startswith-operator.md
-  - name: between operator
-    href: betweenoperator.md
-  - name: not-between operator (!between)
-    href: notbetweenoperator.md
+      name: String operator
+      items:
+      - name: between operator
+        href: betweenoperator.md
+      - name: not-between operator (!between)
+        href: notbetweenoperator.md
+      - name: contains operator
+        href: contains-operator.md
+      - name: not contains operator (!contains)
+        href: not-contains-operator.md
+      - name: contains_cs operator
+        href: contains-cs-operator.md
+      - name: not contains_cs operator (!contains_cs)
+        href: not-contains-cs-operator.md
+      - name: endswith operator
+        href: endswith-operator.md
+      - name: not endswith operator (!endswith)
+        href: not-endswith-operator.md
+      - name: endswith_cs operator
+        href: endswith-cs-operator.md
+      - name: not endswith_cs operator (!endswith_cs)
+        href: not-endswith-cs-operator.md
+      - name: case-sensitive equals operator (==)
+        href: equals-cs-operator.md
+      - name: not case-sensitive equals operator (!=)
+        href: not-equals-cs-operator.md
+      - name: case-insensitive equals operator (=~)
+        href: equals-operator.md
+      - name: not case-insensitive equals operator (!~)
+        href: not-equals-operator.md
+      - name: has operator
+        href: has-operator.md
+      - name: not has operator (!has)
+        href: not-has-operator.md
+      - name: has_cs operator
+        href: has-cs-operator.md
+      - name: not has_cs operator (!has_cs)
+        href: not-has-cs-operator.md
+      - name: hasprefix operator
+        href: hasprefix-operator.md
+      - name: not hasprefix operator (!hasprefix)
+        href: not-hasprefix-operator.md
+      - name: hasprefix_cs operator
+        href: hasprefix-cs-operator.md
+      - name: not hasprefix_cs operator (!hasprefix_cs)
+        href: not-hasprefix-cs-operator.md
+      - name: hassuffix operator
+        href: hassuffix-operator.md
+      - name: not hassuffix operator (!hassuffix)
+        href: not-hassuffix-operator.md
+      - name: hassuffix_cs operator
+        href: hassuffix-cs-operator.md
+      - name: not hassuffix_cs operator (!hassuffix_cs)
+        href: not-hassuffix-cs-operator.md
+      - name: case-sensitive in operator (in)
+        href: inoperator-cs.md
+      - name: case-sensitive not in operator (!in)
+        href: not-inoperator-cs.md
+      - name: case-insensitive in operator (in~)
+        href: inoperator.md
+      - name: not case-insensitive in operator (!~)
+        href: not-inoperator.md
+      - name: has_all operator
+        href: has-all-operator.md
+      - name: has_any operator
+        href: has-anyoperator.md
+      - name: regex operator
+        href: regex-operator.md
+      - name: startswith operator
+        href: startswith-operator.md
+      - name: not startswith operator (!startswith)
+        href: not-startswith-operator.md
+      - name: startswith_cs operator
+        href: startswith-cs-operator.md
+      - name: not startswith_cs operator (!startswith_cs)
+        href: not-startswith-cs-operator.md
 - name: Scalar functions
   items:
   - name: Scalar function types
