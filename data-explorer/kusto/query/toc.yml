@@ -334,13 +334,13 @@ items:
       - name: not hassuffix_cs operator (!hassuffix_cs)
         href: not-hassuffix-cs-operator.md
       - name: case-sensitive in operator (in)
-        href: inoperator-cs.md
+        href: in-cs-operator.md
       - name: case-sensitive not in operator (!in)
-        href: not-inoperator-cs.md
+        href: not-in-cs-operator.md
       - name: case-insensitive in operator (in~)
         href: inoperator.md
       - name: not case-insensitive in operator (!~)
-        href: not-inoperator.md
+        href: not-in-operator.md
       - name: has_all operator
         href: has-all-operator.md
       - name: has_any operator
