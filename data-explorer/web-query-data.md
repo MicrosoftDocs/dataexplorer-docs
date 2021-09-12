@@ -6,20 +6,19 @@ ms.author: orspodek
 ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 02/09/2021
+ms.date: 09/12/2021
 ms.custom: mode-portal
 ms.localizationpriority: high
 
 #Customer intent: As a user of Azure Data Explorer, I want to query data in the Web UI and share data. This will allow me to understand my data and share analysis with colleagues.
 ---
-
 # Quickstart: Query data in Azure Data Explorer Web UI
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data. Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share Kusto Query Language commands and queries. The web experience is available in the Azure portal and as a stand-alone web application, the [Azure Data Explorer Web UI](https://dataexplorer.azure.com).
 The Azure Data Explorer Web UI can also be hosted by other web portals in an HTML iframe. For more information on how to host the Web UI and the Monaco editor used, see [Monaco IDE integration](kusto/api/monaco/monaco-kusto.md).
 In this quickstart, you'll be working in the stand-alone Azure Data Explorer Web UI.
 
-:::image type="content" source="media/web-query-data/walkthrough.gif" alt-text="Walkthrough of the Kusto Web Explorer experience.":::
+:::image type="content" source="media/web-query-data/walkthrough.gif" alt-text="Walkthrough of the Kusto Web Explorer experience in Azure Data Explorer web UI.":::
 
 ## Prerequisites
 
@@ -46,7 +45,7 @@ You must add a connection to a cluster before you can start running queries. In 
 
 1. In the left pane, you should now see the **help** cluster. Expand the **Samples** database and open the **Tables** folder to see the sample tables that you have access to.
 
-    :::image type="content" source="media/web-query-data/help-cluster.png" alt-text="Find table in the help cluster.":::
+    :::image type="content" source="media/web-query-data/help-cluster.png" alt-text="Find table in the help cluster in Azure Data Explorer web UI.":::
 
 We use the **StormEvents** table later in this quickstart, and in other Azure Data Explorer articles.
 
@@ -58,7 +57,7 @@ Now add the test cluster you created.
 
 1. In the **Add Cluster** dialog box, enter your test cluster URL in the form `https://<ClusterName>.<Region>.kusto.windows.net/`, then select **Add**. For example, `https://mydataexplorercluster.westus.kusto.windows.net` as in the following image:
 
-    :::image type="content" source="media/web-query-data/server-uri.png" alt-text="Enter test cluster URL.":::
+    :::image type="content" source="media/web-query-data/server-uri.png" alt-text="Enter test cluster URL in Azure Data Explorer web UI.":::
 
 1. In the example below, you see the **help** cluster and a new cluster, **docscluster.westus** (full URL is `https://docscluster.westus.kusto.windows.net/`).
 
@@ -80,11 +79,11 @@ You can now run queries on both clusters (assuming you have data in your test cl
 
     This query returns the 10 newest records in the **StormEvents** table. The result should look like the following table.
 
-    :::image type="content" source="media/web-query-data/result-set-take-10.png" alt-text="Screenshot of a table that lists data for 10 storm events." border="false":::
+    :::image type="content" source="media/web-query-data/result-set-take-10.png" alt-text="Screenshot of a table that lists data for 10 storm events in Azure Data Explorer web UI." border="false":::
 
     The following image shows the state of the application, with the cluster added, and a query with results.
 
-    :::image type="content" source="media/web-query-data/webui-take10.png" alt-text="full screen.":::
+    :::image type="content" source="media/web-query-data/webui-take10.png" alt-text="full screen in Azure Data Explorer web UI.":::
 
 1. Copy and paste the following query into the query window, below the first query. Notice how it isn't formatted on separate lines like the first query.
 
@@ -99,7 +98,7 @@ You can now run queries on both clusters (assuming you have data in your test cl
 
 1. Select **Run** or press *Shift+Enter* to run a query. This query returns the same records as the first one, but includes only the columns specified in the `project` statement. The result should look like the following table.
 
-    :::image type="content" source="media/web-query-data/result-set-project.png" alt-text="Screenshot of a table that lists the start time, end time, state, event type, damage property, and episode narrative for 10 storm events." border="false":::
+    :::image type="content" source="media/web-query-data/result-set-project.png" alt-text="Screenshot of a table that lists the start time, end time, state, event type, damage property, and episode narrative for 10 storm events in Azure Data Explorer web UI." border="false":::
 
     > [!TIP]
     > Select **Recall** at the top of the query window to show the result set from the first query without having to rerun the query. Often during analysis, you run multiple queries, and **Recall** allows you to retrieve the results of previous queries.
@@ -125,9 +124,9 @@ You can now run queries on both clusters (assuming you have data in your test cl
     > - If no text selected, it's assumed that the query or command is separated by empty lines.
     > - If text is selected, the selected text is run.
 
-## Work with the table grid
+## Work with the results grid
 
-Now that you've seen how basic queries work, you can use the table grid to customize results and do further analysis.
+Now that you've seen how basic queries work, you can use the results grid to customize results and do further analysis.
 
 ### Expand a cell
 
@@ -169,7 +168,7 @@ Within the results, you can group results by any column.
 
 1. In the grid, double-click on **California** to expand and see records for that state. This type of grouping can be helpful when doing exploratory analysis.
 
-    :::image type="content" source="media/web-query-data/group-expanded.png" alt-text="Screenshot of a query results grid with California group expanded." border="false":::
+    :::image type="content" source="media/web-query-data/group-expanded.png" alt-text="Screenshot of a query results grid with California group expanded in Azure Data Explorer web UI." border="false":::
 
 1. Mouse-over the **Group** column, then select **Reset columns**. This setting returns the grid to its original state.
 
@@ -182,7 +181,13 @@ After you have grouped by a column, you can then use the value aggregation funct
 1. Select the menu for the column you want to evaluate.
 1. Select **Value Aggregation**, and then select the type of function you want to do on this column.
 
-    :::image type="content" source="media/web-query-data/aggregate.png" alt-text="Aggregate results when grouping column by results. .":::
+    :::image type="content" source="media/web-query-data/aggregate.png" alt-text="Aggregate results when grouping column by results in Azure Data Explorer web UI .":::
+
+### Hide empty columns
+
+You can hide/unhide empty columns by toggling the **eye** icon on the results grid menu.
+
+:::image type="content" source="media/web-query-data/hide-empty-columns.png" alt-text="Screenshot of eye icon to hide results grid in Azure Data Explorer web UI.":::
 
 ### Filter columns
 
@@ -249,7 +254,7 @@ Pivoting allows you to take a columns value and turn them into columns. For exam
 
     ![Pivot table.](media/web-query-data/pivot-table.png)
 
-## Search in the results table
+### Search in the results grid
 
 You can look for a specific expression within a result table.
 
