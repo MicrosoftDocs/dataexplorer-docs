@@ -1,18 +1,18 @@
 ---
-title: The !startswith operators - Azure Data Explorer
-description: This article describes the !startswith operators in Azure Data Explorer.
+title: The case-insensitive !startswith string operators - Azure Data Explorer
+description: This article describes the case-insensitive !startswith string operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 09/12/2021
 ms.localizationpriority: high
 ---
-# !startswith operators
+# !startswith operator
 
-Filters a record set based on a search value. The value represents a starting sequence for the string found in the searched column.
+Filters a record set retrieving data that does not contain a case-insensitive starting string.
 
 Operators with an `_cs` suffix are case-sensitive.
 

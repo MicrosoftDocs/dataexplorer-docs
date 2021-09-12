@@ -1,18 +1,18 @@
 ---
-title: The !in~ operator - Azure Data Explorer
-description: This article describes the case-insensitive !in~ operator in Azure Data Explorer.
+title: The case-insensitive !in~ string operator - Azure Data Explorer
+description: This article describes the case-insensitive !in~ string operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 09/12/2021
 ms.localizationpriority: high
 ---
 # !in~ operator
 
-Filters a record set to find data that does not include a matching case-insensitive element.
+Filters a record set for data that does not include a matching case-insensitive string.
 
 > [!NOTE]
 >

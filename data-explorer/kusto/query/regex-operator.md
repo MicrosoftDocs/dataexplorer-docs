@@ -1,6 +1,6 @@
 ---
-title: regex string operator - Azure Data Explorer
-description: This article describes the regex string operator in Azure Data Explorer.
+title: The case-sensitive regex string operator - Azure Data Explorer
+description: This article describes the case-sensitive regex string operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek

@@ -1,6 +1,6 @@
 ---
-title: The !endswith operator - Azure Data Explorer
-description: This article describes the case-insensitive !endswith operator in Azure Data Explorer.
+title: The case-insensitive !endswith string operator - Azure Data Explorer
+description: This article describes the case-insensitive !endswith string operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek

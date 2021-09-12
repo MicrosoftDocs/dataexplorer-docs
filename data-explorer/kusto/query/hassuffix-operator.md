@@ -1,6 +1,6 @@
 ---
-title: The hassuffix operator - Azure Data Explorer
-description: This article describes the case-insensitive hassuffix operator in Azure Data Explorer.
+title: The case-insensitive hassuffix string operator - Azure Data Explorer
+description: This article describes the case-insensitive hassuffix string operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek

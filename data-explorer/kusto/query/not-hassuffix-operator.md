@@ -1,18 +1,18 @@
 ---
-title: The !hassuffix operator - Azure Data Explorer
-description: This article describes the case-insensitive !hassuffix operator in Azure Data Explorer.
+title: The case-insensitive !hassuffix string operator - Azure Data Explorer
+description: This article describes the case-insensitive !hassuffix string operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 09/12/2021
 ms.localizationpriority: high
 ---
 # !hassuffix operator
 
-Filters a record set for terms that do not contain a matching case-insensitive ending string.
+Filters a record set for data that does not contain a case-insensitive ending string.
 
 The following table provides a comparison of the `has` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 

@@ -1,6 +1,6 @@
 ---
-title: The has_all operator - Azure Data Explorer
-description: This article describes the case-insensitive has_all operator in Azure Data Explorer.
+title: The case-insensitive has_all string operator - Azure Data Explorer
+description: This article describes the case-insensitive has_all string operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek

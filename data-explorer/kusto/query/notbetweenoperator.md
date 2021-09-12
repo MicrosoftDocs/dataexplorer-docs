@@ -1,6 +1,6 @@
 ---
-title: notbetween operator - Azure Data Explorer
-description: This article describes notbetween operator in Azure Data Explorer.
+title: The notbetween operator - Azure Data Explorer
+description: This article describes the notbetween operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek

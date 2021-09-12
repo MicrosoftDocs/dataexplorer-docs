@@ -1,6 +1,6 @@
 ---
-title: The !has operators - Azure Data Explorer
-description: This article describes the case-insensitive !has operator in Azure Data Explorer.
+title: The case-insensitive !has string operators - Azure Data Explorer
+description: This article describes the case-insensitive !has string operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
