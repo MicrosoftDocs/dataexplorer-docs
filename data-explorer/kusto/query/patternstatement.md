@@ -62,6 +62,10 @@ A **pattern** is a construct that maps string tuples to tabular expressions. Eac
 
 In each of the following examples, a pattern is defined and then used:
 
+### Defining simple patterns
+
+The following example defines a pattern that maps states to an expression that returns its capital city.
+
 ```kusto
 declare pattern country = (name:string)[state:string]
 {
