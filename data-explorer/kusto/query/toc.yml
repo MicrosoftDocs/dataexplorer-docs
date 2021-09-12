@@ -269,7 +269,8 @@ items:
   - name: between operator
     href: betweenoperator.md
   - name: /!between operator 
-    href: notbetweenoperator.md- name: Bitwise (binary) operators
+    href: notbetweenoperator.md
+  - name: Bitwise (binary) operators
     href: binoperators.md
   - name: Datetime/timespan arithmetic
     href: datetime-timespan-arithmetic.md
