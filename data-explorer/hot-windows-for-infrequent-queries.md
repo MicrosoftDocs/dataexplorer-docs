@@ -21,7 +21,7 @@ What happens when we query cold data and what are the most efficient way to do i
 
 When we query cold data, Azure Data Explorer needs to load the relevant cold data after applying the applicable filters into the compute nodes disks and process the query.  This loading step requires accessing the storage tier which has much higher latency than local disk. The impact on the query duration depends on the data size that needs to be pulled from storage and could be significant.
 
-When the query is limited to a small time window, often called “Point-in-time” queries, the amount of data that needs to be retrieved from the storage tier can usually be relatively small and the query will likely complete very fast. An example of this scenario would be forensic analysis that query telemetry on a given day in the past.
+When the query is limited to a small time window, often called "Point-in-time" queries, the amount of data that needs to be retrieved from the storage tier can usually be relatively small and the query will likely complete very fast. An example of this scenario would be forensic analysis that query telemetry on a given day in the past.
 
 Subsequent queries on the same data may perform similarly to queries that run on the hot cache because there is a specific portion of the disk that is allocated for caching the cold data that was used in queries.  
 
