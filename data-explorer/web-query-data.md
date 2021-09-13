@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/12/2021
+ms.date: 09/13/2021
 ms.custom: mode-portal
 ms.localizationpriority: high
 
@@ -39,6 +39,7 @@ You must add a connection to a cluster before you can start running queries. In 
 
 ### Add help cluster
 
+1. On the left menu, select **Query**.
 1. In the upper left of the application, select **Add Cluster**.
 
 1. In the **Add cluster** dialog box, enter the URI `https://help.kusto.windows.net`, then select **Add**.
@@ -338,6 +339,7 @@ In the **Settings** tab you can:
 - [Import environment settings](#import-environment-settings)
 - [Highlight error levels](#highlight-error-levels)
 - [Clear local state](#clean-up-resources)
+- [Change datetime to specific time zone](#change-datetime-to-specific-time-zone)
 
 Select the settings icon :::image type="icon" source="media/web-query-data/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
 
@@ -400,6 +402,19 @@ For highlighted error levels, the column must be of type int, long, or string.
     - warning, w, monitor
     - information
     - verbose, verb, d
+
+### Change datetime to specific time zone
+
+You can change the displayed datetime values to reflect a specific time zone. This change affects the display only, and does not change the underlying data in Azure Data Explorer.
+
+1. Select the **Settings** icon next to your user name.
+1. Select the **General** tab, and select a time zone from the dropdown menu.
+
+    :::image type="content" source="media/web-query-data/time-zone.png" alt-text="Screen shot of general tab on settings blade to change time zone in Azure Data Explorer WebUI.":::
+
+These changes will then be visible in the results grid menu bar, where the time zone changes can also be accessed.
+
+:::image type="content" source="media/web-query-data/query-time-utc.png" alt-text="Query time changed to UTC in results grid menu.":::
 
 ## Provide feedback
 
