@@ -45,5 +45,5 @@ Now the user can expect optimal performance for the duration of the investigatio
 
 ### Summary
 
-Hot windows provide an effective tool to ensure that cold data can be utilized with minimal effort. They  remove the need to invest effort in defining export process to the data lake and creating external tables or using Spark tools for this scenario.
+Hot windows provide an effective tool to ensure that cold data can be utilized with minimal effort. They remove the need to invest effort in defining export process to the data lake and creating external tables or using other tools for this scenario.
 
