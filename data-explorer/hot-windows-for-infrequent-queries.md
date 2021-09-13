@@ -39,7 +39,7 @@ For example, consider a security solution where the queries usually examine the 
         hot_window = datetime(2021-01-01) .. datetime(2021-02-01),
         hot_window = datetime(2021-04-01) .. datetime(2021-05-01)      ...
 ```
-Once changing the caching policy, the cluster automatically cache the relevant data on its disks, thus it is important to ensure that the cluster is scaled to accommodate the extra disk needed for the new cache definition. For this it is highly recommended to configure the cluster to use the [optimize autoscale]( manage-cluster-horizontal-scaling.md) settings. 
+After changing the caching policy, the cluster will automatically cache the relevant data on its disks, thus it is important to ensure that the cluster is scaled to accommodate the extra disk needed for the new cache definition. For this it is highly recommended to configure the cluster to use the [optimize autoscale]( manage-cluster-horizontal-scaling.md) settings. 
 
 Now the user can expect optimal performance for the duration of the investigation, when its done, the caching policy can be altered to the original setting and assuming that optimized autoscale is configured for that cluster, the cluster will shrink to its original size.
 
