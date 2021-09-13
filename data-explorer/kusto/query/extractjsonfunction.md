@@ -27,6 +27,7 @@ extractjson("$.hosts[1].AvailableMB", EventText, typeof(int))
 
 * *jsonPath*: JsonPath string that defines an accessor into the JSON document.
 * *dataSource*:  A JSON document.
+* *typeLiteral*: An optional type literal (e.g., typeof(int)). If provided, the extracted value is converted to this type.
 
 ## Returns
 
