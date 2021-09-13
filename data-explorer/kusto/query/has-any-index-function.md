@@ -15,7 +15,7 @@ Searches the string for items specified in the array and returns the position of
 
 ## Syntax
 
-'has_any_index' '('*string*',' *lookup_array*')'
+`has_any_index` `(`*string*`,` *lookup_array*`)`
 
 ## Arguments
 
