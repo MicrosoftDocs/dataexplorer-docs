@@ -266,10 +266,6 @@ items:
     href: toscalarfunction.md
 - name: Scalar operators
   items:
-  - name: between operator 
-    href: betweenoperator.md
-  - name: not between (!between) operator 
-    href: notbetweenoperator.md
   - name: Bitwise (binary) operators
     href: binoperators.md
   - name: Datetime/timespan arithmetic
@@ -278,6 +274,10 @@ items:
     href: logicaloperators.md
   - name: Numerical operators
     href: numoperators.md
+  - name: between operator 
+    href: betweenoperator.md
+  - name: not between (!between) operator 
+    href: notbetweenoperator.md
   - name: String operators
     items:
     - name: String operators overview
