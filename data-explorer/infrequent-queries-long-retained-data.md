@@ -1,62 +1,47 @@
 ---
-title: Infrequent queries over long retained data in Azure Data Explorer
+title: Using hot windows for infrequent queries over long retained data
 description: In this article, you learn how to efficiently query long retained data in Azure Data Explorer.
 author: vplauzon
 ms.author: vplauzon
-ms.reviewer: '???'
+ms.reviewer: 'avnera'
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/09/2021
 ---
 
-# Infrequent queries over long retained data in Azure Data Explorer
+# Using hot windows for infrequent queries over long retained data
 
-Azure Data Explorer stores ingested data in reliable long-term storage and caches a portion of it on its processing nodes.  This provides low-latency access for queries on the cached data.
+Azure Data Explorer stores its data in reliable long-term storage and caches a portion of it on the cluster engine nodes. [Cache policy](/azure/data-explorer/kusto/management/cachepolicy) governs which data is cached and it is advised to cache the data that is used most frequently to achieve the best performance while minimizing cost.
 
-[Cache policy](/azure/data-explorer/kusto/management/cachepolicy) governs which data is cached on processing nodes.  This allows frequent queries to run with low-latency while keeping the cost under control by not caching the entire data.
-
-By default, the cache policy is configured to cache the latest ingested data only.
-
-The cached data is said to be **hot** while the uncached data is said to be **cold**.  Caching is done at the [extent](/azure/data-explorer/kusto/management/extents-overview) level.
+By default, the cache policy applies to the latest ingested data by specifying the last number of days to be cached. The cached data is said to be **hot** while the rest of the data is said to be **cold**.  
 
 What happens when we query cold data and what are the most efficient way to do it?
 
-## Querying old data
+## Querying cold data
 
-When we query cold data, Azure Data Explorer needs to load the cold extents into hot cache (i.e. on processing nodes) and then go through that data.  This loading step requires accessing cold storage which has higher latency than hot cache.  Depending on the amount of extents, this could be significantly slower than an hot cache query.
+When we query cold data, Azure Data Explorer needs to load the relevant cold data after applying the applicable filters into the compute nodes disks and process the query.  This loading step requires accessing the storage tier which has much higher latency than local disk. The impact on the query duration depends on the data size that needs to be pulled from storage and could be significant.
 
-## Point-in-time queries
+When the query is limited to a small time window, often called “Point-in-time” queries, the amount of data that needs to be retrieved from the storage tier can usually be relatively small and the query will likely complete very fast. An example of this scenario would be forensic analysis that query telemetry on a given day in the past.
 
-An important case to differentiate is the Point-in-time query scenario.  This is when we do a query with a filter on a [datetime](/azure/data-explorer/kusto/query/scalar-data-types/datetime) column limiting the query to one or *few* cold extents.  An example of this scenario would be to query telemetry on a given day in the past (e.g. forensic analysis).
+Subsequent queries on the same data may perform similarly to queries that run on the hot cache because there is a specific portion of the disk that is allocated for caching the cold data that was used in queries.  
 
-The query execution will require loading one or a few extents which will impact the performance but may well be acceptable in terms of user experience.  A query that would be sub-seconds in hot cache might take a few seconds to execute for instance.
-
-The data now being loaded in cache, subsequent queries on the same extents (i.e. similar time filter) will be performed against hot cache with low latency performance.  This should be the case until the cache is invalidated.
-
-For that scenario, querying old data might therefore yield acceptable performance without changing any cache configuration.
+For other scenarios such as scanning large amount of data, the performance of queries may not be sufficient, and this is where hot windows can help. 
 
 ## Hot Windows
-
-Wider time ranges wouldn't be considered a point-in-time query.
-
-For example, a log table could cache the last two weeks of data for frequent queries but an incident investigation might require to analyze correlation over a given 3 months period (e.g. a year ago).
-
-For such investigation scenario, an efficient solution would be to define *hot windows* for the cache.  Indeed the [.alter policy caching command](/azure/data-explorer/kusto/management/cachepolicy#alter-the-cache-policy) defines a time window in the past for the hot cache, but also allow (optionally) to define hot windows:
+For the scenario where the data size in the cold is large and the relevant data can be from any time in the past, hot windows is the ideal solution.Hot windows are defined in the caching policy and spans any time span in the past. The caching policy can be easily altered to add/remove these windows and it usually takes up to an hour to fully update the cluster disk cache based on the updated caching poliy definition.
+   
+For example, consider a security solution where the queries usually examine the last 14 days of data while the data is kept for three years. An investigation that spans a specific couple of months last year can **add** *hot windows* for these months using [.alter policy caching command](/azure/data-explorer/kusto/management/cachepolicy#alter-the-cache-policy):
 
 ```kusto
-.alter <entity_type> <database_or_table_or_materialized-view_name> policy caching 
-      hot = <timespan> 
-      [, hot_window = datetime(*from*) .. datetime(*to*)] 
-      [, hot_window = datetime(*from*) .. datetime(*to*)] 
-      ...
+.alter table MyTable policy caching 
+        hot = 14d,
+        hot_window = datetime(2021-01-01) .. datetime(2021-02-01),
+        hot_window = datetime(2021-04-01) .. datetime(2021-05-01)      ...
 ```
+Once changing the caching policy, the cluster automatically cache the relevant data on its disks, thus it is important to ensure that the cluster is scaled to accommodate the extra disk needed for the new cache definition. For this it is highly recommended to configure the cluster to use the [optimize autoscale]( manage-cluster-horizontal-scaling.md) settings. 
 
-In our example, we could define the hot cache as 2 weeks and an hot window as the specified 3 months.  Queries done with time filters within that hot window would hit the hot cache with low latency.
+Now the user can expect optimal performance for the duration of the investigation, when its done, the caching policy can be altered to the original setting and assuming that optimized autoscale is configured for that cluster, the cluster will shrink to its original size.
 
-Hot windows are therefore a good mechanism to extend the cache of a table / database and enable efficient queries onto specific time windows in long retained data.
+### Summary
+Hot windows provide an effective tool to ensure that cold data can be utilized with minimal effort. They  remove the need to invest effort in defining export process to the data lake and creating external tables or using Spark tools for this scenario.
 
-### Time to take effect
-
-???
-Do we want to get into the expected time for the cache policy to be "effective", i.e. the expected time extents would be loaded in hot cache?
-???
