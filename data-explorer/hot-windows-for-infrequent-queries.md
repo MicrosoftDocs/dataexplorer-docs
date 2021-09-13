@@ -37,7 +37,7 @@ For example, consider a security solution where the queries usually examine the 
 .alter table MyTable policy caching 
         hot = 14d,
         hot_window = datetime(2021-01-01) .. datetime(2021-02-01),
-        hot_window = datetime(2021-04-01) .. datetime(2021-05-01)      ...
+        hot_window = datetime(2021-04-01) .. datetime(2021-05-01)
 ```
 After changing the caching policy, the cluster will automatically cache the relevant data on its disks, thus it is important to ensure that the cluster is scaled to accommodate the extra disk needed for the new cache definition. For this it is highly recommended to configure the cluster to use the [optimize autoscale]( manage-cluster-horizontal-scaling.md) settings. 
 
