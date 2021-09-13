@@ -29,7 +29,7 @@ For other scenarios such as scanning large amount of data, the performance of qu
 
 ## Hot Windows
 
-For the scenario where the data size in the cold is large and the relevant data can be from any time in the past, hot windows is the ideal solution.Hot windows are defined in the caching policy and spans any time span in the past. The caching policy can be easily altered to add/remove these windows and it usually takes up to an hour to fully update the cluster disk cache based on the updated caching poliy definition.
+For the scenario where the data size in the cold is large and the relevant data can be from any time in the past, hot windows is the ideal solution. Hot windows are defined in the caching policy and spans any time span in the past. The caching policy can be easily altered to add/remove these windows and it usually takes up to an hour to fully update the cluster disk cache based on the updated caching policy definition.
    
 For example, consider a security solution where the queries usually examine the last 14 days of data while the data is kept for three years. An investigation that spans a specific couple of months last year can **add** *hot windows* for these months using [.alter policy caching command](/azure/data-explorer/kusto/management/cachepolicy#alter-the-cache-policy):
 
