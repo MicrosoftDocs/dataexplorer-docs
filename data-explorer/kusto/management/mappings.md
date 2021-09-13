@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/19/2020
+ms.date: 09/13/2021
 ---
 
 # Data mappings
@@ -85,7 +85,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 When the source file is in JSON format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the JSON mapping must exist in the table unless a datatype is specified for all the non-existing columns.
 
-Each element in the list describes a mapping for a specific column, and may contain the following properties: 
+Each element in the list describes a mapping for a specific column, and may contain the following properties:
 
 |Property|Description|
 |----|--|
@@ -136,7 +136,25 @@ Each element in the list describes a mapping for a specific column, and may cont
         ingestionMappingReference = "Mapping_Name"
     )
 ```
-    
+
+### Copy JSON mapping
+
+You can copy JSON mapping of an existing table and create a new table with the same mapping using the following process:
+
+1. Run the following command on the table whose mapping you want to copy:
+
+    ```kusto
+    .show table TABLENAME ingestion json mappings 
+    | extend formatted_mapping = strcat("'",replace_string(Mapping, "'", "\\'"),"'") 
+    | project formatted_mapping
+    ```
+
+1. Use the output of the above command to create a new table with the same mapping:
+
+    ```kusto  
+    .create table TABLENAME ingestion json mapping "TABLENAME_Mapping" RESULT_OF_ABOVE_CMD
+    ```
+
 ## AVRO mapping
 
 When the source file is in AVRO format, the AVRO file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. 
