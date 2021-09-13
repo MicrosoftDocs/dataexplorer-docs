@@ -412,7 +412,7 @@ You can change the displayed datetime values to reflect a specific time zone. Th
 
     :::image type="content" source="media/web-query-data/time-zone.png" alt-text="Screen shot of general tab on settings blade to change time zone in Azure Data Explorer WebUI.":::
 
-These changes will then be visible in the results grid menu bar, where the time zone changes can also be accessed.
+The selected time zone will then be visible in the results grid menu bar.
 
 :::image type="content" source="media/web-query-data/query-time-utc.png" alt-text="Query time changed to UTC in results grid menu.":::
 
