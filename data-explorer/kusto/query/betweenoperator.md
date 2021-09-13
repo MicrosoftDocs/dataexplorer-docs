@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # between operator
 
-Filters records by matching the values in an inclusive range.
+Filters a record set for data matching the values in an inclusive range.
 
 `between` can operate on any numeric, datetime, or timespan expression.
  
