@@ -266,9 +266,9 @@ items:
     href: toscalarfunction.md
 - name: Scalar operators
   items:
-  - name: Between operator 
+  - name: between operator 
     href: betweenoperator.md
-  - name: Not between (!between) operator 
+  - name: not between (!between) operator 
     href: notbetweenoperator.md
   - name: Bitwise (binary) operators
     href: binoperators.md
