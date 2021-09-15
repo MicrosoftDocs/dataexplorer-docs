@@ -113,11 +113,18 @@ Use [`.show queries`](../management/queries.md), to evaluate resource usage (CPU
 * The `Query` property of the update policy calls a function named `MyFunction()`.
 
 ```kusto
-.show table MySourceTable extents;
-// The following line provides the extent ID for the not-yet-merged extent in the source table which has the most records
-let extentId = $command_results | where MaxCreatedOn > ago(1hr) and MinCreatedOn == MaxCreatedOn | top 1 by RowCount desc | project ExtentId;
-let MySourceTable = MySourceTable | where extent_id() == toscalar(extentId);
-MyFunction()
+// '_extentId' is the ID of a recently created extent, that likely hasn't been merged yet.
+let _extentId = toscalar(
+    MySourceTable
+    | project ExtentId = extent_id(), IngestionTime = ingestion_time()
+    | where IngestionTime > ago(10m)
+    | top 1 by IngestionTime desc
+    | project ExtentId
+);
+let MySourceTable = 
+    MySourceTable
+    | where ingestion_time() > ago(10m) and extent_id() == _extentId;
+MyFunction
 ```
 
 ## Failures
