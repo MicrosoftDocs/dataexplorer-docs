@@ -19,7 +19,7 @@ Calculates the element-wise absolute value of the numeric series input.
 
 ## Arguments
 
-* *series*: Input numeric array, on which the absolute value function is applied. The result is a dynamic array. The argument must be a dynamic array. 
+* *series*: Input numeric array, on which the absolute value function is applied. The argument must be a dynamic array. 
 
 ## Returns
 

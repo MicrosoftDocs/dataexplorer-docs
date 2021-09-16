@@ -19,7 +19,7 @@ Calculates the element-wise base-e exponential function (e^x) of the numeric ser
 
 ## Arguments
 
-* *series*: Input numeric array whose elementes are applied as the exponent in the exponential function. The result is a dynamic array. The argument must be a dynamic array. 
+* *series*: Input numeric array whose elements are applied as the exponent in the exponential function. The argument must be a dynamic array. 
 
 ## Returns
 

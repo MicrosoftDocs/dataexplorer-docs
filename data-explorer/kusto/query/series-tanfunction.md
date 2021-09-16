@@ -19,7 +19,7 @@ Calculates the element-wise tangent function of the numeric series input.
 
 ## Arguments
 
-* *series*: Input numeric array, on which the tangent function is applied. The result is a dynamic array. The argument must be a dynamic array. 
+* *series*: Input numeric array, on which the tangent function is applied. The argument must be a dynamic array. 
 
 ## Returns
 
