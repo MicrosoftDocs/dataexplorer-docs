@@ -15,7 +15,7 @@ Calculates the percentile result from the `tdigest` results (which was generated
 
 ## Syntax
 
-`percentile_tdigest(`*`Expr`*`,` *Percentile1* [`,` *typeLiteral*]`)`
+`percentile_tdigest(`*`Expr`*`,` *Percentile1* `,` *typeLiteral*`)`
 
 ## Arguments
 
