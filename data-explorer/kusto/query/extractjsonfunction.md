@@ -21,12 +21,13 @@ extractjson("$.hosts[1].AvailableMB", EventText, typeof(int))
 
 ## Syntax
 
-`extractjson(`*jsonPath*`,` *dataSource*`)` 
+`extractjson(`*jsonPath*`,` *dataSource*`, ` *type*`)` 
 
 ## Arguments
 
 * *jsonPath*: JsonPath string that defines an accessor into the JSON document.
-* *dataSource*:  A JSON document.
+* *dataSource*: A JSON document.
+* *type*: An optional type literal (e.g., typeof(long)). If provided, the extracted value is converted to this type.
 
 ## Returns
 
