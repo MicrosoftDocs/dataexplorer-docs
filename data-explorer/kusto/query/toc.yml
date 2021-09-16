@@ -857,6 +857,8 @@ items:
     href: series-asinfunction.md 
   - name: series_atan()
     href: series-atanfunction.md 
+  - name: series_cos()
+    href: series-cosfunction.md  
   - name: series_decompose()
     href: series-decomposefunction.md
   - name: series_decompose_anomalies()
