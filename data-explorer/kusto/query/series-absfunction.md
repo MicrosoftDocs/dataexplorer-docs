@@ -15,7 +15,7 @@ Calculates the element-wise absolute value of the numeric series input.
 
 ## Syntax
 
-`series_exp(`*series*`)`
+`series_abs(`*series*`)`
 
 ## Arguments
 
