@@ -11,7 +11,7 @@ ms.date: 11/10/2021
 ---
 # series_exp()
 
-Calculates the element-wise exponential function (e^x) of the numeric series input.
+Calculates the element-wise base-e exponential function (e^x) of the numeric series input.
 
 ## Syntax
 
@@ -19,7 +19,7 @@ Calculates the element-wise exponential function (e^x) of the numeric series inp
 
 ## Arguments
 
-* *series*: Input numeric array to be used as as the exponent in the exponential function. The result is a dynamic array. The argument must be a dynamic array. 
+* *series*: Input numeric array whose elementes are applied as the exponent in the exponential function. The result is a dynamic array. The argument must be a dynamic array. 
 
 ## Returns
 
