@@ -23,7 +23,7 @@ Calculates the element-wise sign of the numeric series input.
 
 ## Returns
 
-Dynamic array of calculated sign function values. Any non-numeric element yields a `null` element value.
+Dynamic array of calculated sign function values (-1 for negative, 0 for 0, and 1 for positive). Any non-numeric element yields a `null` element value.
 
 ## Example
 
