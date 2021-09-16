@@ -21,20 +21,21 @@ extractjson("$.hosts[1].AvailableMB", EventText, typeof(int))
 
 ## Syntax
 
-`extractjson(`*jsonPath*`,` *dataSource*`)` 
+`extractjson(`*jsonPath*`,` *dataSource*`, ` *type*`)` 
 
 ## Arguments
 
 * *jsonPath*: JsonPath string that defines an accessor into the JSON document.
-* *dataSource*:  A JSON document.
+* *dataSource*: A JSON document.
+* *type*: An optional type literal (for example, typeof(long)). If provided, the extracted value is converted to this type.
 
 ## Returns
 
-This function performs a JsonPath query into dataSource which contains a valid JSON string, optionally converting that value to another type depending on the third argument.
+This function performs a JsonPath query into dataSource, which contains a valid JSON string, optionally converting that value to another type depending on the third argument.
 
 ## Example
 
-The `[`bracket`]` notatation and dot (`.`) notation are equivalent:
+The `[`bracket`]` notation and dot (`.`) notation are equivalent:
 
 ```kusto
 T 
