@@ -607,6 +607,8 @@ items:
     href: parse-xmlfunction.md
   - name: percentile_tdigest()
     href: percentile-tdigestfunction.md
+  - name: percentile_array_tdigest()
+    href: percentile-array-tdigestfunction.md
   - name: percentrank_tdigest()
     href: percentrank-tdigestfunction.md
   - name: pi()
