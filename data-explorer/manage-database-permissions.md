@@ -22,7 +22,7 @@ This article describes the available roles and how to assign principals to those
 
 1. Navigate to your Azure Data Explorer cluster.
 
-1. In the **Overview** section, select the database where you want to manage permissions. For adding roles that affect more then one database (e.i. "All Databases" roles), skip this phase and go directly to the next
+1. In the **Overview** section, select the database where you want to manage permissions. For roles that apply to all databases, skip this phase and go directly to the next step.
 
     ![Select database.](media/manage-database-permissions/select-database.png)
 
