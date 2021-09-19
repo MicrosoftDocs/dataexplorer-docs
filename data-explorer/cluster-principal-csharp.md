@@ -52,7 +52,7 @@ var resourceGroupName = "testrg";
 var clusterName = "mykustocluster";
 string principalAssignmentName = "clusterPrincipalAssignment1";
 string principalId = "xxxxxxxx";//User email, application ID, or security group name
-string role = "AllDatabasesAdmin";//AllDatabasesAdmin or AllDatabasesViewer
+string role = "AllDatabasesAdmin";//AllDatabasesAdmin, AllDatabasesMonitor or AllDatabasesViewer
 string tenantIdForPrincipal = tenantId;
 string principalType = "App";//User, App, or Group
 
@@ -70,7 +70,7 @@ await kustoManagementClient.ClusterPrincipalAssignments.CreateOrUpdateAsync(reso
 | clusterName | *mykustocluster* | The name of your cluster.|
 | principalAssignmentName | *clusterPrincipalAssignment1* | The name of your cluster principal resource.|
 | principalId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The principal ID, which can be user email, application ID, or security group name.|
-| role | *AllDatabasesAdmin* | The role of your cluster principal, which can be 'AllDatabasesAdmin' or 'AllDatabasesViewer'.|
+| role | *AllDatabasesAdmin* | The role of your cluster principal, which can be 'AllDatabasesAdmin', 'AllDatabasesMonitor' or 'AllDatabasesViewer'.|
 | tenantIdForPrincipal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The tenant ID of the principal.|
 | principalType | *App* | The type of the principal, which can be 'User', 'App', or 'Group'|
 

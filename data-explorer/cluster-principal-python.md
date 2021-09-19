@@ -63,7 +63,7 @@ cluster_name = "mykustocluster"
 principal_assignment_name = "clusterPrincipalAssignment1"
 #User email, application ID, or security group name
 principal_id = "xxxxxxxx"
-#AllDatabasesAdmin or AllDatabasesViewer
+#AllDatabasesAdmin, AllDatabasesMonitor or AllDatabasesViewer
 role = "AllDatabasesAdmin"
 tenant_id_for_principal = tenantId
 #User, App, or Group
@@ -83,7 +83,7 @@ poller = kusto_management_client.cluster_principal_assignments.create_or_update(
 | cluster_name | *mykustocluster* | The name of your cluster.|
 | principal_assignment_name | *clusterPrincipalAssignment1* | The name of your cluster principal resource.|
 | principal_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The principal ID, which can be user email, application ID, or security group name.|
-| role | *AllDatabasesAdmin* | The role of your cluster principal, which can be 'AllDatabasesAdmin' or 'AllDatabasesViewer'.|
+| role | *AllDatabasesAdmin* | The role of your cluster principal, which can be 'AllDatabasesAdmin', 'AllDatabasesMonitor' or 'AllDatabasesViewer'.|
 | tenant_id_for_principal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The tenant ID of the principal.|
 | principal_type | *App* | The type of the principal, which can be 'User', 'App', or 'Group'|
 
