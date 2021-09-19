@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 09/19/2021
 
 # Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
 ---
@@ -56,9 +56,21 @@ Create a table in Azure Data Explorer where Event Hubs will send data. Create th
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.TimeStamp"},{"column":"Value","path":"$.Value"},{"column":"Source","path":"$.Source"}]'
     ```
 
-## Create an Event Grid data connection in Azure Data Explorer
+## Create an Event Grid data connection
 
-Now connect the storage account to Azure Data Explorer, so that data flowing into the storage is streamed to the test table. 
+Now connect the storage account to Azure Data Explorer, so that data flowing into the storage is streamed to the test table. This connection can be created in the [Azure portal](#create-an-event-grid-data-connection-in-the-azure-portal) under the storage account itself, or in [Azure Data Explorer](#create-an-event-grid-data-connection-in-azure-data-explorer).
+
+### Create an Event Grid data connection in the Azure portal
+
+:::image type="content" source="media/ingest-data-event-grid/storage-account.png" alt-text="Screenshot of Azure portal storage account access to Event Grid connection.":::
+
+:::image type="content" source="media/ingest-data-event-grid/portal-basics-tab.png" alt-text="Screenshot of basics tab for Event Grid ingestion in storage account of Azure portal.":::
+
+:::image type="content" source="media/ingest-data-event-grid/portal-ingestion-tab.png" alt-text="Screenshot of Ingest properties tab for Event Grid ingestion in storage account of Azure portal.":::
+
+:::image type="content" source="media/ingest-data-event-grid/portal-review-create.png" alt-text="Screenshot of review and create tab for Event Grid ingestion in storage account of Azure portal.":::
+
+### Create an Event Grid data connection in Azure Data Explorer
 
 1. Under the cluster you created, select **Databases** > **TestDatabase**.
 
@@ -68,7 +80,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
     :::image type="content" source="media/ingest-data-event-grid/data-ingestion-create.png" alt-text="Add data connection for data ingestion.":::
 
-### Data connection - Basics tab
+#### Data connection - Basics tab
 
 1. Select the connection type: **Blob storage**.
 
@@ -96,7 +108,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Select **Next: Ingest properties**.
 
-### Data connection - Ingest properties tab
+#### Data connection - Ingest properties tab
 
 1. Fill out the form with the following information. Table and mapping names are case-sensitive:
 
@@ -115,7 +127,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
    > You don't have to specify all **Default routing settings**. Partial settings are also accepted.
 1. Select **Next: Review + Create**
 
-### Data connection - Review + Create tab
+#### Data connection - Review + Create tab
 
 1. Review the resources that were auto created for you and select **Create**.
 
