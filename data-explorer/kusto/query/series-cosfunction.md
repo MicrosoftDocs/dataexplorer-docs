@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/10/2021
+ms.date: 10/11/2021
 ---
 # series_cos()
 
