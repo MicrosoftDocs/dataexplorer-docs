@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/12/2021
+ms.date: 09/19/2021
 ms.localizationpriority: high
 ---
 
@@ -15,18 +15,7 @@ ms.localizationpriority: high
 
 Filters a record set for data containing a case-sensitive string.
 
-Operators with an `_cs` suffix are case-sensitive.
-
-> [!NOTE]
-> Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
-
-The following table provides a comparison of the `contains` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
-
-> [!NOTE]
-> The following abbreviations are used in the table below:
->
-> * RHS = right hand side of the expression
-> * LHS = left hand side of the expression
+The following table provides a comparison of the `contains` operators:
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
@@ -35,15 +24,21 @@ The following table provides a comparison of the `contains` operators. For more 
 |[`contains_cs`](contains-cs-operator.md) |RHS occurs as a subsequence of LHS |Yes |`"FabriKam" contains_cs "Kam"`|
 |[`!contains_cs`](not-contains-cs-operator.md)   |RHS doesn't occur in LHS |Yes |`"Fabrikam" !contains_cs "Kam"`|
 
+> [!NOTE]
+> The following abbreviations are used in the table above:
+>
+> * RHS = right hand side of the expression
+> * LHS = left hand side of the expression
+
+For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+
 ## Performance tips
 
-For better performance, when there are two operators that do the same task, use the case-sensitive one.
-For example, use `contains_cs`, not `contains`.
+For faster results, use the case-sensitive version of an operator, for example, `contains_cs`, not `contains`.
 
-For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
-`has` works faster than `contains`, `startswith`, or `endswith`.
+If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. Also, `has` works faster than `contains`, `startswith`, or `endswith`, however it is not as precise and could provide unwanted records.
 
-For more information, see [Query best practices](best-practices.md).
+For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 

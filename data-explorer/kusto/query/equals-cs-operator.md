@@ -7,19 +7,14 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/12/2021
+ms.date: 09/19/2021
 ms.localizationpriority: high
 ---
 # == (equals) operator
 
 Filters a record set for data matching a case-sensitive string.
 
-> [!NOTE]
->
-> * Adding `~` to the operator makes values' search case-insensitive: `col =~ (expression)` or `col !~ (expression)`.
-> * Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
-
-The following table provides a comparison of the `==` operators. For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+The following table provides a comparison of the `==` operators:
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
@@ -28,13 +23,15 @@ The following table provides a comparison of the `==` operators. For more inform
 |[`=~`](equals-operator.md) |Equals |No |`"abc" =~ "ABC"`|
 |[`!~`](not-equals-operator.md) |Not equals |No |`"aBc" !~ "xyz"`|
 
+For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+
 ## Performance tips
 
-For better performance, when there are two operators that do the same task, use the case-sensitive one. For example, use `==`, not `=~`.
+For faster results, use the case-sensitive version of an operator, for example, `==`, not `=~`.
 
-For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
+If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. 
 
-For more information, see [Query best practices](best-practices.md).
+For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 

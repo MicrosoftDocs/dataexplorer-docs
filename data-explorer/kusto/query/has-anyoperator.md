@@ -7,21 +7,21 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/12/2021
+ms.date: 09/19/2021
 ---
 # has_any operator
 
-Filters a record set for a match to any of a set of case-insensitive strings.
+Filters a record set for data with any of a set of case-insensitive strings.
 
 For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 ## Performance tips
 
-For better performance, when there are two operators that do the same task, use the case-sensitive one. For example, use `has_cs`, not `has`.
+For faster results, use the case-sensitive version of an operator, for example, `has_cs`, not `has`.
 
-For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
+If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. 
 
-For more information, see [Query best practices](best-practices.md).
+For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 
@@ -46,7 +46,7 @@ Rows in *T* for which the predicate is `true`
 
 ## Examples 
 
-### Use has_any operator 
+### Use has_any operator with a list 
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -66,7 +66,7 @@ StormEvents
 |NEW MEXICO|527|
 |NEW HAMPSHIRE|394|
 
-### Use dynamic array
+### Use has_any operator with a dynamic array
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

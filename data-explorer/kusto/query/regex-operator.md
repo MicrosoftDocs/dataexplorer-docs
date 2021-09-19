@@ -18,7 +18,7 @@ For further information about other operators and to determine which operator is
 
 ## Performance tips
 
-For better performance, see [Query best practices](best-practices.md).
+For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 

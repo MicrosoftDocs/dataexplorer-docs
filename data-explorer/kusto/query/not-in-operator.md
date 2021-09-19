@@ -7,40 +7,39 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/12/2021
+ms.date: 09/19/2021
 ms.localizationpriority: high
 ---
 # !in~ operator
 
-Filters a record set for data that does not include a matching case-insensitive string.
+Filters a record set for data without a case-insensitive string.
 
-> [!NOTE]
->
-> * Adding '~' to the operator makes values' search case-insensitive: `x in~ (expression)` or `x !in~ (expression)`.
-> * In tabular expressions, the first column of the result set is selected.
-> * The expression list can produce up to `1,000,000` values.
-> * Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
-
-The following table provides a comparison of the `has` operators. For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+The following table provides a comparison of the `has` operators:.
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
 |[`in`](in-cs-operator.md) |Equals to one of the elements |Yes |`"abc" in ("123", "345", "abc")`|
 |[`!in`](not-in-cs-operator.md) |Not equals to any of the elements |Yes | `"bca" !in ("123", "345", "abc")` |
-|[`in~`](inoperator.md) |Equals to any of the elements |Yes | `"abc" !in ("123", "345", "abc")` |
-|[`!in~`](not-in-operator.md) |Not equals to any of the elements |Yes | `"bca" !in ("123", "345", "ABC")` |
+|[`in~`](inoperator.md) |Equals to any of the elements |No | `"Abc" in~ ("123", "345", "abc")` |
+|[`!in~`](not-in-operator.md) |Not equals to any of the elements |No | `"bCa" !in~ ("123", "345", "ABC")` |
+
+> [!NOTE]
+>
+> * In tabular expressions, the first column of the result set is selected.
+> * The expression list can produce up to `1,000,000` values.
+> * Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
+
+For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+
+Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
 ## Performance tips
 
-For better performance, when there are two operators that do the same task, use the case-sensitive one.
-For example:
+For faster results, use the case-sensitive version of an operator, for example, `in`, not `in~`. 
 
-* Use `==`, not `=~`
-* Use `in`, not `in~`
-* Use `contains_cs`, not `contains`
+If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. 
 
-For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
-For more information, see [Query best practices](best-practices.md).
+For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 

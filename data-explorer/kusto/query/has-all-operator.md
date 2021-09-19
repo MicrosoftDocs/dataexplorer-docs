@@ -7,21 +7,21 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/12/2021
+ms.date: 09/19/2021
 ---
 # has_all operator
 
-Filters a record set for data containing one or more case-insensitive search strings.
+Filters a record set for data with one or more case-insensitive search strings.
 
 For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 ## Performance tips
 
-For better performance, when there are two operators that do the same task, use the case-sensitive one. For example, use `==`, not `=~`.
+For faster results, use the case-sensitive version of an operator, for example, `has_cs`, not `has`.
 
-For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
+If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. 
 
-For more information, see [Query best practices](best-practices.md).
+For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 
@@ -46,6 +46,8 @@ Rows in *T* for which the predicate is `true`
 
 ## Examples
 
+### Use has_all operator with a list 
+
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
@@ -60,7 +62,7 @@ StormEvents
 |Hail|392|
 |Flash Flood|24|
 
-### Use a dynamic array
+### Use has_all operator with a dynamic array
 
 The same result can be achieved using a dynamic array notation:
 
