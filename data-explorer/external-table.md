@@ -48,18 +48,18 @@ The **Create external table** window opens with the **Destination** tab selected
 ### Source tab
 
 1. In **Link to containers**, There are two ways to add a container:
-   1.1  * Click on **Select container** button
+   1.1  Click on **Select container** button
           ![image](https://user-images.githubusercontent.com/86649275/133929346-a43efc2f-eac9-4245-9e7c-1ec8f2d9ae93.png)
    
-         * Choose relavant Subscription and Storage account which your container associated with
+         Choose relavant Subscription and Storage account which your container associated with
          ![image](https://user-images.githubusercontent.com/86649275/133929658-9469dbb4-eb5e-4342-8054-746256d9cacc.png)
 
-         * Click on add button
+         Click on add button
    
-   1.2 * Click on **Add URL** button
+   1.2 Click on **Add URL** button
         ![image](https://user-images.githubusercontent.com/86649275/133929701-8763d82c-c24d-4cb8-ba9e-92aba3e957b8.png)
 
-       * Enter an [account key or SAS URL](kusto/api/connection-strings/storage.md#generate-a-sas-for-azure-storage-blob-container) to your source container with read and list permissions.
+       Enter an [account key or SAS URL](kusto/api/connection-strings/storage.md#generate-a-sas-for-azure-storage-blob-container) to your source container with read and list permissions.
         
        ![image](https://user-images.githubusercontent.com/86649275/133929248-28cfa79d-0245-4ff9-90d4-0f3dc1b58066.png)
    
