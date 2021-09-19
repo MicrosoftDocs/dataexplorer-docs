@@ -21,13 +21,13 @@ Cluster owners can protect their cluster from queries and commands from other te
 
 **Define specific tenants**
 
-`trustedExternalTenants``: [ {"`*value*`": "`*tenantId1*`" }, { "`*value*`": "`*tenantId2*`" }, ... ]`
+`trustedExternalTenants: [ {"`*value*`": "`*tenantId1*`" }, { "`*value*`": "`*tenantId2*`" }, ... ]`
 
 **Allow all tenants**
 
 The trustedExternalTenants array supports also all-tenants star ('*') notation, which allows queries and commands from all tenants. 
 
-`trustedExternalTenants``: [ { "`*value*`": "`*`" }]`
+`trustedExternalTenants: [ { "`*value*`": "`*`" }]`
 
 > [!NOTE]
 > The default value for `trustedExternalTenants` is all tenants: `[ { "value": "*" }]`. If the external tenants array was not defined on cluster creation, it can be overridden with a cluster update operation. An empty array isn't accepted.
@@ -44,13 +44,13 @@ PATCH https://management.azure.com/subscriptions/12345678-1234-1234-1234-1234567
 
 ```json
 {
-              "properties": { 
-                           "trustedExternalTenants": [
-                                         { "value": "tenantId1" }, 
-                                         { "value": "tenantId2" }, 
-                                         ...
-                           ]
-              }
+    "properties": { 
+        "trustedExternalTenants": [
+            { "value": "tenantId1" }, 
+            { "value": "tenantId2" }, 
+            ...
+        ]
+    }
 }
 ```
 
@@ -58,11 +58,10 @@ PATCH https://management.azure.com/subscriptions/12345678-1234-1234-1234-1234567
 
 ```json
 {
-              "properties": { 
-                           "trustedExternalTenants": [  { "value": "*" }  ]
-              }
+    "properties": { 
+        "trustedExternalTenants": [  { "value": "*" }  ]
+    }
 }
-
 ```
 
 ## Add Principals  
