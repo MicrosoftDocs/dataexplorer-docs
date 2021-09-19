@@ -117,6 +117,22 @@ It's recommended to use [optimized autoscale configuration](manage-cluster-horiz
 
 The **review Azure Data Explorer table cache-period (policy) for better performance** recommendation is given for a cluster that requires a different look-back period (time filter) or a greater [cache policy](kusto/management/cachepolicy.md). This recommendation is based on the queries look-back period during the past 30 days. Most of the queries that ran in the past 30 days accessed data that wasn't in the cache, which may increase your query run-time. You see the top 40 tables (per database) that accessed out-of-cache data ordered by query percentage.
 
+You may also get a performance recommendation to reduce the cache policy. It can happen if the cluster is data bound (the size of data to be cached, according to the caching policy, is larger that the total size of cache on the cluster). Reducing cache policy for data-bound clusters will reduce the number of cache misses and will potentially improve the performance.
+
+### Operational Excellence recommendations
+
+The **Operational Excellence** recommendations "best practice" recommendations that implementing them would not improve cost or performance immediately but could benefit the cluster in the future. 
+Operational Excellence recommendations include:
+* [Reduce table cache policy to match usage patterns](#reduce-table-cache-policy-to-match-usage-patterns)
+
+#### Reduce table cache policy to match usage patterns
+
+You can think about the **Reduce table cache policy to match usage patterns** recommendation as a “cleanup”/”best practice” recommendation. It shows recommendations about:
+
+Unused tables – for example, the table “ExampleTable” (DB: ExampleDatabase) is not being used (0 queries run on this table). Therefore, you might want to delete or reduce the cache policy of this table. For this table (and others with 0 GB), the hot data saving is not significant, (~ 0 GB saving), so implementing this recommendation won't result in an immediate cost reduction for the cluster. The idea is to help you identify unused tables – so you can delete them or reduce the cache policy.
+
+Tables with redundant cache policy –  It means that your table's actual query lookbacks (usage patterns) are lower than the configured cache policy, but, reducing the cache policy won’t result in an immediate cost saving, since the cluster is not data bound.(==the cluster won’t scale in, even if you remove data from the hot cache).
+
 ## Next steps
 
 * [Manage cluster horizontal scaling (scale out) in Azure Data Explorer to accommodate changing demand](manage-cluster-horizontal-scaling.md)
