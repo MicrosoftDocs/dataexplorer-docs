@@ -33,7 +33,7 @@ use of the pipe (`|`) delimiter.
 
 For example, the following Kusto query has a single statement, which is a
 tabular expression statement. The statement starts with a reference to a table
-called `StormEvents` (the database that host this table is implicit here, and part
+called `StormEvents` (the database that hosts this table is implicit here, and part
 of the connection information). The data (rows) for that table are then filtered
 by the value of the `StartTime` column, and then filtered by the value of the
 `State` column. The query then returns the count of "surviving" rows.
