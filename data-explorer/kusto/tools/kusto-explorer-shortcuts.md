@@ -31,6 +31,7 @@ The following keyboard shortcuts can be used from any context:
 |`Ctrl`+`S` |Saves query into a file|
 |`Shift`+`F3` | Opens Analytical Report Gallery|
 |`Shift`+`F12`| Toggles Light/Dark theme of the application|
+|`Ctrl`+`F12`| Toggles Extended Accessibility events of the application (requires restart to take effect)|
 |`Ctrl`+`Shift`+`O`|Opens Kusto.Explorer options and settings dialog|
 |`Esc`|Cancel running query|
 |`Shift`+`F5`|Cancel running query|
@@ -47,7 +48,7 @@ You can use the following keyboard shortcuts with the query editor or when the c
 |`Alt`+`Shift`+`M` |Copies query and deep-link the clipboard in Markdown format|
 |`Ctrl`+`~` |Copies query and data to the clipboard in markdown format |
 |`Ctrl`+`Shift`+`D`|Toggles mode of hiding duplicate rows in the data view|
-|`Ctrl`+`Shift`+`H`|Toggles mode of hiding empty columns in the data view|
+|`Alt`+`Shift`+`H`|Toggles mode of hiding empty columns in the data view|
 |`Ctrl`+`Shift`+`J`|Toggles mode of collapsing columns with single value in the data view|
 |`Ctrl`+`Shift`+`A`|Opens a Query Analyzer tool in a new query panel|
 |`Alt`+`C`  |Renders Column chart over existing data|
@@ -104,7 +105,10 @@ The following keyboard shortcuts can be used when editing a query in the query e
 |`Ctrl`+`Y`| Redo |
 |`Ctrl`+`L`| Deletes current line|
 |`Ctrl`+`D`| Deletes current line| 
-|`Ctrl`+`F`| Opens `Find and Replace` dialog |
+|`Ctrl`+`F`| Opens `Find` dialog |
+|`Ctrl`+`Shift`+`F`| Opens `Find` dialog (all tabs lookup) |
+|`Ctrl`+`H`| Opens `Replace` dialog |
+|`Ctrl`+`Shift`+`H`| Opens `Replace` dialog (all tabs lookup) |
 |`Ctrl`+`G`| Opens `Go-to line` dialog |
 |`Ctrl`+`F8` | Show my queries past 3 days |
 |`Ctrl`+ bracket | When cursor is at bracket symbols: `(` , `)` , `[` , `]` , `{` , `}` - moves cursor to the matching opening or closing bracket |
@@ -117,7 +121,7 @@ The following keyboard shortcuts can be used when editing a query in the query e
 |`F2`| Open current line / selected text in editor dialog |
 |`Ctrl`+`F6`| Runs KQL static query analysis to detect common issues |
 |`F12`| Navigate to the definition of the symbol |
-|`Ctrl`+`F12`| Find all references of the current symbol |
+|`Alt`+`F12`| Find all references of the current symbol |
 |`Alt`+`Home`| Navigate to the definition of the symbol |
 |`Alt`+`Ctrl`+`M`| Extract currently selected literal or tabular expression as let statement |
 |`Ctrl`+`.`| Extract currently selected literal or tabular expression as let statement |
