@@ -8,12 +8,30 @@ items:
     href: workload-groups.md
   - name: Workload groups management
     href: workload-groups-commands.md
+  - name: Workload group commands
+    items:
+    - name: Alter-merge workload group command
+      href: alter-merge-workload-group-command.md
+    - name: Create or alter workload group command
+      href: create-or-alter-workload-group-command.md
+    - name: Drop workload group command
+      href: drop-workload-group-command.md
   - name: Request classification policy
     items:
     - name: Request classification policy
       href: request-classification-policy.md
     - name: Request classification policy commands
       href: request-classification-policy-commands.md
+    - name: Alter cluster request classification policy commands
+      href: alter-cluster-policy-request-classification-command.md
+    - name: Alter-merge cluster request classification policy commands
+      href: alter-merge-cluster-policy-request-classification-command.md
+    - name: Request classification policy commands
+      href: request-classification-policy-commands.md
+    - name: Delete cluster request classification policy commands
+      href: delete-cluster-policy-request-classification-command.md
+    - name: Show cluster request classification policy commands
+      href: show-cluster-policy-request-classification-command.md
   - name: Request limits policy
     href: request-limits-policy.md
   - name: Request rate limit policy
@@ -168,14 +186,32 @@ items:
     items:
     - name: Auto delete policy
       href: auto-delete-policy.md
-    - name: auto delete policy command
+    - name: auto delete policy commands
       href: auto-delete-policy-command.md
+    - name: alter auto delete policy command
+      href: alter-auto-delete-policy-command.md
+    - name: delete auto delete policy command
+      href: delete-auto-delete-policy-command.md
+    - name: show auto delete policy command
+      href: show-auto-delete-policy-command.md
   - name: Ingestion batching
     items:
     - name: Ingestionbatching policy
       href: batchingpolicy.md
     - name: ingestionbatching policy command
       href: batching-policy.md
+    - name: alter database ingestionbatching policy command
+      href: alter-database-ingestion-batching-policy.md
+    - name: alter table ingestionbatching policy command
+      href: alter-table-ingestion-batching-policy.md
+    - name: delete database ingestionbatching policy command
+      href: delete-database-ingestion-batching-policy.md
+    - name: delete table ingestionbatching policy command
+      href: delete-table-ingestion-batching-policy.md
+    - name: show database ingestionbatching policy command
+      href: show-database-ingestion-batching-policy.md
+    - name: show table ingestionbatching policy command
+      href: show-table-ingestion-batching-policy.md
   - name: Cache
     items:
     - name: Cache policy (hot and cold cache)
