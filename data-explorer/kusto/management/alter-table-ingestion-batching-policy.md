@@ -20,7 +20,7 @@ Change the table ingestion batching policy. The [ingestionBatching policy](batch
 
 ## Examples
 
-The following examples changes the table IngestionBatching policy:
+The following example changes the table IngestionBatching policy:
 
 ```kusto
 // Set IngestionBatching policy on multiple tables (in database context) to batch ingress data by 1 minute, 20 files, or 300MB (whatever comes first)
