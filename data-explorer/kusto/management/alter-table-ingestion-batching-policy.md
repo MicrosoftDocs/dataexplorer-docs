@@ -15,7 +15,12 @@ Change the table ingestion batching policy. The [ingestionBatching policy](batch
 
 ## Syntax
 
-* `.alter` `table` *DatabaseName*`.`*TableName* `policy` `ingestionbatching`
+* `.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `ingestionbatching`
+
+## Arguments
+
+*DatabaseName* - Specify the name of the database.
+*TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
 
 ## Examples
 

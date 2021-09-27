@@ -17,6 +17,10 @@ Delete the database ingestion batching policy. The [ingestionBatching policy](ba
 
 * `.delete` `database` *DatabaseName* `policy` `ingestionbatching`
 
+## Arguments
+
+*DatabaseName* - Specify the name of the database.
+
 ## Example
 
 The following example deletes the database IngestionBatching policy:

@@ -17,6 +17,10 @@ Display the database ingestion batching policy. The [ingestionBatching policy](b
 
 * `.show` `database` *DatabaseName* `policy` `ingestionbatching`
 
+## Arguments
+
+*DatabaseName* - Specify the name of the database.
+
 ## Example
 
 The following example shows the IngestionBatching policy:
