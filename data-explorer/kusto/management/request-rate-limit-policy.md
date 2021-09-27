@@ -32,7 +32,7 @@ A request rate limit of kind `ConcurrentRequests` includes the following propert
 
 | Name                  | Type | Description                                | Supported Values |
 |-----------------------|------|--------------------------------------------|------------------|
-| MaxConcurrentRequests | int  | The maximum number of concurrent requests. | [`1`, `10000`]   |
+| MaxConcurrentRequests | int  | The maximum number of concurrent requests. | [`0`, `10000`]   |
 
 When a request exceeds the limit on maximum number of concurrent requests:
   * The request's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
@@ -93,9 +93,9 @@ When a request exceeds the limit on resources utilization:
   * The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
   * The exception type will be `QuotaExceededException`.
 
-### Example
+### Examples
 
-The following policies allow up to:
+1. The following policies allow up to:
 
 * 500 concurrent requests for the workload group.
 * 25 concurrent requests per principal.
@@ -129,6 +129,21 @@ The following policies allow up to:
       "TimeWindow": "01:00:00"
     }
   }
+]
+```
+
+2. The following policies will block all requests classified to the workload group:
+
+```json
+[
+  {
+    "IsEnabled": true,
+    "Scope": "WorkloadGroup",
+    "LimitKind": "ConcurrentRequests",
+    "Properties": {
+      "MaxConcurrentRequests": 0
+    }
+  },
 ]
 ```
 
