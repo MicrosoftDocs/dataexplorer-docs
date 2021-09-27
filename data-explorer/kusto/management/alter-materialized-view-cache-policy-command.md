@@ -11,7 +11,7 @@ ms.date: 09/27/2021
 ---
 # .alter materialized view cache policy
 
-Change the materialized view cache policy.  To speed up queries on data, Azure Data Explorer caches it, or parts of it, on its processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) enables Azure Data Explorer to describe the data artifacts that it uses, so that more important data can take priority. 
+Change the materialized view cache policy. To speed up queries on data, Azure Data Explorer caches it on its processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority. 
 
 ## Cache policy vs retention policy
 
@@ -31,15 +31,15 @@ Cache policy is independent of [retention policy](./retentionpolicy.md):
 
 ### Set the cache policy of a materialized-view
 
-This command sets the caching policy to include last 30 days.
+Set the caching policy to include last 30 days.
 
 ```kusto
 .alter materialized-view MyMaterializedView policy caching hot = 30d
 ```
 
-### Set the cache policy of a materialized-view with additional hot-cache windows
+### Set the cache policy of a materialized-view with extra hot-cache windows
 
-This command sets the caching policy to include last 30 days and additional data from January and April 2021.
+Set the caching policy to include last 30 days and data from January and April 2021.
 
 ```kusto
 .alter materialized-view MyMaterializedView policy caching 
