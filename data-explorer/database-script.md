@@ -92,7 +92,7 @@ In this section, you'll see how to run a Kusto Query Language script with an [Az
             "name": "[concat(concat(parameters('clusterName'), '/'), concat(parameters('databaseName'), '/'), parameters('scriptName'))]",
             "properties": {          
                 "scriptUrl": "[parameters('scriptUrl')]",
-                "scriptUrlSasToken": "[parameters('scriptUrlSasToken')",
+                "scriptUrlSasToken": "[parameters('scriptUrlSasToken')]",
                 "continueOnErrors": "[parameters('continueOnErrors')]",
                 "forceUpdateTag": "[parameters('forceUpdateTag')]"
             }
