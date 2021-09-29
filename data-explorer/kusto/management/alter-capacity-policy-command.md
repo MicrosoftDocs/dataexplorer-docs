@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/27/2021
+ms.date: 09/29/2021
 ---
 # .alter capacity policy
 
-Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy is used for controlling the compute resources of data management operations on the cluster.
+Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy is used for controlling the compute resources of data management operations on the cluster. This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
 
 > [!NOTE]
 > Changes to the cluster capacity policy could take up to 1 hour to take effect.
