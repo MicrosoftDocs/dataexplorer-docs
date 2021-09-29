@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/19/2021
+ms.date: 09/29/2021
 
 # Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
 ---
@@ -119,7 +119,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
     | Table name | *TestTable* | The table you created in **TestDatabase**. |
-    | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, RAW, and W3CLOG. Supported compression options are Zip and GZip. |
+    | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, RAW, and W3CLOG. Supported compression options are Zip and Gzip. |
     | Mapping | *TestMapping* | The mapping you created in **TestDatabase**, which maps incoming JSON data to the column names and data types of **TestTable**.|
     | Advanced settings | *My data has headers* | Ignores headers. Supported for *SV type files.|
 
@@ -187,7 +187,7 @@ Save the data into a file and upload it with this script:
 
 ### Rename blob
 
-If you are ingesting data from ADLSv2 storage and have defined *Blob renamed* as the event type for the data connection, the trigger for blob ingestion is blob renaming. To rename a blob, navigate to the blob in Azure portal, right click on the blob and select **Rename**:
+If you're ingesting data from ADLSv2 storage and have defined *Blob renamed* as the event type for the data connection, the trigger for blob ingestion is blob renaming. To rename a blob, navigate to the blob in Azure portal, right-click on the blob and select **Rename**:
 
    :::image type="content" source="media/ingest-data-event-grid/rename-blob-in-the-portal.png" alt-text="Rename blob in Azure portal.":::
 
@@ -230,7 +230,7 @@ You can specify the [ingestion properties](ingest-data-event-grid-overview.md#in
 
 ## Clean up resources
 
-If you don't plan to use your event grid again, clean up the Event Grid Subscription, Event Hub namespace, and Event Hub that were auto-created for you, to avoid incurring costs.
+If you don't plan to use your event grid again, clean up the Event Grid Subscription, Event Hub namespace, and Event Hub that were autocreated for you, to avoid incurring costs.
 
 1. In Azure portal, go to the left menu and select **All resources**.
 
