@@ -10,7 +10,6 @@ ms.topic: reference
 ms.date: 09/19/2021
 ms.localizationpriority: high
 ---
-
 # contains_cs operator
 
 Filters a record set for data containing a case-sensitive string.
