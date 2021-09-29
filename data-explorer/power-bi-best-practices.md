@@ -90,6 +90,7 @@ You can use any of the following options in your M query:
 | CaseInsensitive | `[CaseInsensitive=true]` | Makes the connector generate queries that are case insensitive - queries will use the `=~` operator instead of the `==` operator when comparing values.
 | ForceUseContains | `[ForceUseContains=true]` | Makes the connector generate queries that use `contains` instead of the default `has` when working with text fields. While `has` is much more performant, it doesn't handle substrings. For more information about the difference between the two operators, see [string operators](./kusto/query/datatypes-string-operators.md).
 | Timeout | `[Timeout=#duration(0,10,0,0)]` | Configures both the client and server timeout of the query to the provided duration.
+| ClientRequestIdPrefix  | `[ClientRequestIdPrefix="MyReport"]` | Configures a ClientRequestId prefix for all queries sent by the connector. This allows the queries to be identifiable in the cluster as coming from a specific report and/or data source.
 
 > [!NOTE]
 > You can combine multiple options together to reach the desired behavior: `[NoTruncate=true, CaseInsensitive=true]`
