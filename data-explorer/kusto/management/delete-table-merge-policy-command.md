@@ -23,5 +23,5 @@ Delete a table's [merge policy](mergepolicy.md). The merge policy defines if and
 Delete the policy at the table level:
 
 ```kusto
-.delete table database_name policy merge 
+.delete table MyTable policy merge 
 ```
