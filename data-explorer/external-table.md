@@ -49,9 +49,7 @@ The **Create external table** window opens with the **Destination** tab selected
 
 In **Link to containers**, there are two ways to add a container: [Add a container with the **Select container** button](#add-a-container-with-the-select-container-button) and [Add a container with the **Add URL or Add container** button](#add-a-container-with-the-add-url-or-add-container-button).
 
-You can add up to 10 source containers in total. The first source container will display files below [**File filters**](#file-filters). In a later step, you will use one of these files to generate the table [schema](#schema-tab).
-
-:::image type="content" source="media/external-table/schema-defining-file.png" alt-text="Screen shot of create external table source tab in Azure Data Explorer.":::
+You can add up to 10 source containers.
 
 #### Add a container with the **Select container** button
 
@@ -66,8 +64,6 @@ You can add up to 10 source containers in total. The first source container will
 1. Select the **Add** button. When verification has completed, a green check will appear to the right of the container link.
 
     :::image type="content" source="media/external-table/container-verified.png" alt-text="Screenshot of verified container link.":::
-
-1. Continue to [File filters](#file-filters).
 
 #### Add a container with the **Add URL or Add container** button
 
@@ -84,6 +80,12 @@ You can add up to 10 source containers in total. The first source container will
 Use **File filters** to filter the files that the table should include. Files can be filtered according to folder path, file begins with, or file extension.
 
 :::image type="content" source="media/external-table/file-filters.png" alt-text="Screenshot of selecting schema-defining file.":::
+
+#### Schema-defining file
+
+The first source container will display files below **File filters**.
+
+:::image type="content" source="media/external-table/schema-defining-file.png" alt-text="Screen shot of create external table source tab in Azure Data Explorer.":::
 
 1. Choose the schema-defining file by selecting the circle to the left of the file. This file will be used to generate the table schema.
 1. Select **Next: schema**. The **Schema** tab opens.
