@@ -344,5 +344,5 @@ This template creates the cluster, virtual network, subnet, network security gro
 
 ## Known limitations
 
-* Resource move of the virtual network which has been used for the injection is not supported
+* Virtual network resources with deployed clusters do not support the [move to a new resource group or subscription](/azure/azure-resource-manager/management/move-resource-group-and-subscription) operation.
 * Resource move of the Public IP for the engine and the datamanagement is not supported
