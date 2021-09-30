@@ -137,6 +137,10 @@ After setting this DNS configuration, you can reach the query (Engine) inside yo
 
 To reach ingestion (data management) privately, register the record for your ingestion (data management) with an A record and the ingestion Private Endpoint IP.
 
+## Limitations
+
+Suspending a cluster deployed into a virtual network configured with Private Endpoints and Private Link Services, results in an error state. To avoid this error, delete the Private Endpoints and Private Link Services connected to the internal load balancers *before* suspending the cluster. If you want to resume the same configuration, restart the cluster and then recreate the Private Endpoints and Private Link Services.
+
 ## Next steps
 
 * [Deploy Azure Data Explorer cluster into your Virtual Network](vnet-deployment.md)

@@ -44,30 +44,20 @@ Replicate the management activities to have the same cluster configuration in ev
 
     :::image type="content" source="media/business-continuity-create-solution/regional-duplicate-management.png" alt-text="Duplicate management activities.":::    
 
-### Configure data ingestion
-
-Configure data ingestion consistently on every cluster. The following ingestion methods use the following advanced business continuity features.
-
-|Ingestion method  |Disaster recovery feature  |
-|---------|---------|
-|[Iot Hub](/azure/iot-hub/iot-hub-ha-dr#cross-region-dr)  |[Microsoft-initiated failover and manual failover](/azure/iot-hub/iot-hub-ha-dr#cross-region-dr) |
-|[Event Hub](ingest-data-event-hub.md) | Metadata disaster recovery using [primary and secondary disaster recovery namespaces](/azure/event-hubs/event-hubs-geo-dr)     |
-|[Ingest from storage using Event Grid subscription](ingest-data-event-grid.md) |  Implement a [geo-disaster recovery](/azure/event-hubs/event-hubs-geo-dr) for the blob-created messages that are sent to Event Hub and the [disaster recovery and account failover strategy](/azure/storage/common/storage-disaster-recovery-guidance)       |
-
 ## Disaster recovery solution using Event Hub ingestion
 
-Once you've completed [Prepare for Azure regional outage to protect your data](#prepare-for-azure-regional-outage-to-protect-your-data), your data and management are distributed to multiple regions. If there's an outage in one region, Azure Data Explorer will be able to use the other replicas. 
+Once you've completed [Prepare for Azure regional outage to protect your data](#prepare-for-azure-regional-outage-to-protect-your-data), your data and management are distributed to multiple regions. If there's an outage in one region, Azure Data Explorer will be able to use the other replicas.
 
 ### Set up ingestion using Event Hub
 
-The following example uses ingestion via Event Hub. A [failover flow](/azure/event-hubs/event-hubs-geo-dr#setup-and-failover-flow) has been set up, and Azure Data Explorer ingests data from the alias. [Ingest data from Event Hub](ingest-data-event-hub.md) using a unique consumer group per cluster replica. Otherwise, you'll end up distributing the traffic instead of replicating it.
+To ingest data from [Azure Event Hubs](/azure/event-hubs/event-hubs-about) into each region's Azure Data Explorer cluster, first replicate your Event Hubs setup in each region. Then configure each region's Azure Data Explorer replica to [ingest data from its corresponding Event Hubs](ingest-data-event-hub.md).
 
 > [!NOTE] 
 > Ingestion via Event Hub/IoT Hub/Storage is robust. If a cluster isn't available for a period of time, it will catch up at a later time and insert any pending messages or blobs. This process relies on [checkpointing](/azure/event-hubs/event-hubs-features#checkpointing).
 
 :::image type="content" source="media/business-continuity-create-solution/event-hub-management-scheme.png" alt-text="Ingest via Event Hub.":::
 
-As shown in the diagram below, your data sources produce events to the failover-configured Event Hub, and each Azure Data Explorer replica consumes the events. Data visualization components like Power BI, Grafana, or SDK powered WebApps can query one of the replicas.
+As shown in the diagram below, your data sources produce events to Event Hubs in all regions, and each Azure Data Explorer replica consumes the events. Data visualization components like Power BI, Grafana, or SDK powered WebApps can query one of the replicas.
 
 :::image type="content" source="media/business-continuity-create-solution/data-sources-visualization.png" alt-text="Data sources to data visualization.":::
 
