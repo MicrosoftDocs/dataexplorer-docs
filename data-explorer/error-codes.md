@@ -56,7 +56,6 @@ The following list contains error codes you may come across during [ingestion](i
 |BadRequest_MalformedIngestionProperty              |Ingestion property is malformed.    |Permanent           |
 | BadRequest_IngestionPropertyNotSupportedInThisContext | Ingestion property isn't supported in this context.| Permanent |
 | BadRequest_InvalidBlobUri                        | Blob URI is invalid.      | Permanent          |
-| BadRequest_DuplicationInTheSameBatch             | Duplication in the same ingestion batch is not supported.   | Permanent          |
 
 ## Category: DataAccessNotAuthorized
 
