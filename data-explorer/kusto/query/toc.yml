@@ -507,6 +507,8 @@ items:
     href: hllmergefunction.md
   - name: hourofday()
     href: hourofdayfunction.md
+  - name: iff()
+    href: ifffunction.md
   - name: iif()
     href: iiffunction.md
   - name: indexof()
