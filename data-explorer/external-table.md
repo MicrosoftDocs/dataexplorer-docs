@@ -67,6 +67,8 @@ You can add up to 10 source containers in total. The first source container will
 
     :::image type="content" source="media/external-table/container-verified.png" alt-text="Screenshot of verified container link.":::
 
+1. Continue to [File filters](#file-filters).
+
 #### Add a container with the **Add URL or Add container** button
 
 1. Select the **Add URL** or **Add container** button.
