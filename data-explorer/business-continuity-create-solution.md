@@ -57,7 +57,7 @@ To ingest data from [Azure Event Hubs](/azure/event-hubs/event-hubs-about) into 
 
 :::image type="content" source="media/business-continuity-create-solution/event-hub-management-scheme.png" alt-text="Ingest via Event Hub":::
 
-As shown in the diagram below, your data sources produce events to all Event Hubs, and each Azure Data Explorer replica consumes the events. Data visualization components like Power BI, Grafana, or SDK powered WebApps can query one of the replicas.
+As shown in the diagram below, your data sources produce events to Event Hubs in all regions, and each Azure Data Explorer replica consumes the events. Data visualization components like Power BI, Grafana, or SDK powered WebApps can query one of the replicas.
 
 :::image type="content" source="media/business-continuity-create-solution/data-sources-visualization.png" alt-text="Data sources to data visualization":::
 
