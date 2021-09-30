@@ -139,7 +139,7 @@ To reach ingestion (data management) privately, register the record for your ing
 
 ## Limitations
 
-Suspending a virtual network injected cluster with a manual Private Endpoint / Private Link Service setup results in an error state. Prior to suspending the Azure Data Explorer cluster you must delete the Private Link Service(s) which is connect to the internal load balancers.
+Suspending a cluster deployed into a virtual network configured with Private Endpoints and Private Link Services, results in an error state. To avoid this error, delete the Private Endpoints and Private Link Services connected to the internal load balancers *before* suspending the cluster. If you want to resume the same configuration, restart the cluster and then recreate the Private Endpounts and Private Link Services.
 
 ## Next steps
 
