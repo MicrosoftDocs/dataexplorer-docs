@@ -49,13 +49,15 @@ The **Create external table** window opens with the **Destination** tab selected
 
 In **Link to containers**, there are two ways to add a container: [Add a container with the **Select container** button](#add-a-container-with-the-select-container-button) and [Add a container with the **Add URL or Add container** button](#add-a-container-with-the-add-url-or-add-container-button).
 
-You can add up to 10 sources in total. The first source container will display files below the **File filters**. In a later step, you will use one of these files to generate the table schema.
+You can add up to 10 sources in total. The first source container will display files below [**File filters**](#file-filters). In a later step, you will use one of these files to generate the table schema.
 
-:::image type="content" source="media/external-table/source-tab.png" alt-text="Screen shot of create external table source tab in Azure Data Explorer.":::
+:::image type="content" source="media/external-table/schema-defining-file.png" alt-text="Screen shot of create external table source tab in Azure Data Explorer.":::
 
 #### Add a container with the **Select container** button
 
-:::image type="content" source="media/external-table/select-container.png" alt-text="Screen shot of select container button in source tab.":::
+1. Click **Select container**.
+
+    :::image type="content" source="media/external-table/select-container.png" alt-text="Screen shot of select container button in source tab.":::
 
 1. Choose the relevant subscription and storage account associated with your container.
 
@@ -67,17 +69,19 @@ You can add up to 10 sources in total. The first source container will display f
 
 #### Add a container with the **Add URL or Add container** button
 
-:::image type="content" source="media/external-table/add-url-button.png" alt-text="Screenshot of add URL button.":::
+1. Select the **Add URL** or **Add container** button.
+
+    :::image type="content" source="media/external-table/add-url-button.png" alt-text="Screenshot of add URL button.":::
 
 1. Enter an [account key or SAS URL](kusto/api/connection-strings/storage.md#generate-a-sas-for-azure-storage-blob-container) to your source container with read and list permissions.
 
-:::image type="content" source="media/external-table/add-sas-url.png" alt-text="Screen shot of adding SAS URL.":::
+    :::image type="content" source="media/external-table/add-sas-url.png" alt-text="Screen shot of adding SAS URL.":::
 
 #### File filters
 
 Use **File filters** to filter the files that the table should include. Files can be filtered according to folder path, file begins with, or file extension.
 
-:::image type="content" source="media/external-table/schema-defining.png" alt-text="Screenshot of selecting schema-defining file.":::
+:::image type="content" source="media/external-table/file-filters.png" alt-text="Screenshot of selecting schema-defining file.":::
 
 1. Choose the schema-defining file by selecting the circle to the left of the file. This file will be used to generate the table schema.
 1. Select **Next: schema**. The **Schema** tab opens.
