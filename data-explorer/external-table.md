@@ -54,9 +54,10 @@ The **Create external table** window opens with the **Destination** tab selected
          Choose relavant Subscription and Storage account which your container associated with
          ![image](https://user-images.githubusercontent.com/86649275/133929658-9469dbb4-eb5e-4342-8054-746256d9cacc.png)
 
-         Click on add button
-   
-   1.2 Click on **Add URL** button
+         Click on add button and Wait until verfication end successfully
+         ![image](https://user-images.githubusercontent.com/86649275/135404835-291391bb-adfe-4bf1-927e-55db281371b2.png)
+
+   1.2 Click on **Add URL or Add container** button
         ![image](https://user-images.githubusercontent.com/86649275/133929701-8763d82c-c24d-4cb8-ba9e-92aba3e957b8.png)
 
        Enter an [account key or SAS URL](kusto/api/connection-strings/storage.md#generate-a-sas-for-azure-storage-blob-container) to your source container with read and list permissions.
@@ -68,12 +69,12 @@ The **Create external table** window opens with the **Destination** tab selected
 
     :::image type="content" source="media/external-table/source-tab.png" alt-text="Screen shot of create external table source tab in Azure Data Explorer.":::
 
-1. Use **File filters** to filter the files that the table should include. Files can be filtered according to folder path, file begins with, or file extension.
+2. Use **File filters** to filter the files that the table should include. Files can be filtered according to folder path, file begins with, or file extension.
 
     :::image type="content" source="media/external-table/schema-defining.png" alt-text="Screenshot of selecting schema-defining file.":::
 
-1. Choose the schema-defining file by selecting the circle to the left of the file. This file will be used to generate the table schema.
-1. Select **Next: schema**. The **Schema** tab opens.
+3. Choose the schema-defining file by selecting the circle to the left of the file. This file will be used to generate the table schema.
+4. Select **Next: schema**. The **Schema** tab opens.
 
 ### Schema tab
 
