@@ -59,7 +59,7 @@ The following steps are not required if you're running commands in Azure Cloud S
 1. Create your cluster by using the following command:
 
     ```azurepowershell-interactive
-     New-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Location 'Central US' -Sku D13_v2 -Capacity 10
+     New-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Location westus2 -SkuTier Standard -SkuCapacity 2 -SkuName 'Standard_D11_v2'
     ```
 
    |**Setting** | **Suggested value** | **Field description**|
