@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 09/30/2021
 ---
 # .alter capacity policy
 
@@ -20,7 +20,11 @@ Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy is 
 
 `.alter` `cluster` `policy` `capacity` `"`*Serialized policy*`"`
 
-## Examples
+## Returns
+
+Returns a JSON representation of the policy.
+
+## Example
 
 ```kusto
 .alter cluster policy capacity ```
@@ -28,9 +32,23 @@ Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy is 
   "IngestionCapacity": {
     "ClusterMaximumConcurrentOperations": 512,
     "CoreUtilizationCoefficient": 0.75
+  }
+}```
+```
+
+**Output**
+
+```kusto
+"PolicyName": CapacityPolicy,
+"EntityName": ,
+"Policy": {
+  "IngestionCapacity": {
+    "ClusterMaximumConcurrentOperations": 512,
+    "CoreUtilizationCoefficient": 0.75
   },
   "ExtentsMergeCapacity": {
-    "MaximumConcurrentOperationsPerNode": 1
+    "MinimumConcurrentOperationsPerNode": 1,
+    "MaximumConcurrentOperationsPerNode": 5
   },
   "ExtentsPurgeRebuildCapacity": {
     "MaximumConcurrentOperationsPerNode": 1
@@ -40,7 +58,30 @@ Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy is 
     "CoreUtilizationCoefficient": 0.25
   },
   "ExtentsPartitionCapacity": {
-    "ClusterMaximumConcurrentOperations": 4
+    "ClusterMinimumConcurrentOperations": 1,
+    "ClusterMaximumConcurrentOperations": 32
+  },
+  "StreamingIngestionPostProcessingCapacity": {
+    "MaximumConcurrentOperationsPerNode": 4
+  },
+  "MaterializedViewsCapacity": {
+    "ClusterMaximumConcurrentOperations": 1,
+    "ExtentsRebuildCapacity": {
+      "ClusterMaximumConcurrentOperations": 50,
+      "MaximumConcurrentOperationsPerNode": 5
+    }
+  },
+  "StoredQueryResultsCapacity": {
+    "MaximumConcurrentOperationsPerDbAdmin": 250,
+    "CoreUtilizationCoefficient": 0.75
+  },
+  "PurgeStorageArtifactsCleanupCapacity": {
+    "MaximumConcurrentOperationsPerCluster": 1
+  },
+  "PeriodicStorageArtifactsCleanupCapacity": {
+    "MaximumConcurrentOperationsPerCluster": 1
   }
-}```
+},
+"ChildEntities": ,
+"EntityType": ,
 ```

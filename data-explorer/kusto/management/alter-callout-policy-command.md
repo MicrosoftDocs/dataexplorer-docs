@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/27/2021
+ms.date: 09/30/2021
 ---
 # .alter callout policy
 
@@ -17,6 +17,10 @@ Change the cluster [callout policy](calloutpolicy.md). Azure Data Explorer clust
 
 `.alter` `cluster` `policy` `callout` `"`*Serialized partial policy*`"`
 
+## Returns
+
+Returns a JSON representation of the policy.
+
 ## Example
 
 Define permitted callouts for the cluster callout policy.
@@ -24,3 +28,9 @@ Define permitted callouts for the cluster callout policy.
 ```kusto
 .alter cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname.database.azure.com","CanCall": true}]'
 ```
+
+**Output**
+
+|PolicyName|EntityName|Policy|ChildEntities|EntityType|
+|---|---|---|---|---|
+|AutoCalloutPolicy| | { "CalloutType": "sql", "CalloutUriRegex": "sqlname.database.azure.com", "CanCall": true } | | |

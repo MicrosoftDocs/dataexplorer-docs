@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2021
+ms.date: 09/30/2021
 ---
 # .alter auto delete policy
 
@@ -15,22 +15,22 @@ Alters the auto delete policy that is applied to a table. For more information, 
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `auto_delete`
+`.alter` `table` *TableName* `policy` `auto_delete` *policy object, serialized as JSON*
 
-## Examples
+## Returns
 
-### Change the auto delete policy
+Returns a JSON representation of the policy.
 
-Changes the auto delete policy that is applied on the table.
-
-```kusto
-.alter table [table_name] policy auto_delete 'policy object, serialized as JSON'
-```
-
-### Change table expiration
+## Example
 
 The following example sets the expiry of a table `T` to `2021-02-01`. The table will be deleted even if there are records in it (noted by `DeleteIfNotEmpty`).
 
 ```kusto
-.alter table T policy auto_delete @'{ "ExpiryDate" : "2021-02-01", "DeleteIfNotEmpty": true }'
+.alter table StormEvents policy auto_delete @'{ "ExpiryDate" : "2021-12-01", "DeleteIfNotEmpty": true }'
 ```
+
+**Output**
+
+|PolicyName|EntityName|Policy|ChildEntities|EntityType|
+|---|---|---|---|---|
+|AutoDeletePolicy|[database].[StormEvents]|{ "ExpiryDate": "2021-12-01T00:00:00" "DeleteIfNotEmpty": true }| |Table|

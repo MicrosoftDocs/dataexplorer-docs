@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/27/2021
+ms.date: 09/30/2021
 ---
 # .alter cluster cache policy
 
@@ -15,16 +15,22 @@ Change the cluster cache policy. To speed up queries on data, Azure Data Explore
 
 ## Syntax
 
-`.alter` `cluster` *ClusterName* `policy` `caching`
+`.alter` `cluster` `policy` `caching`
 
-## Arguments
+## Returns
 
-*ClusterName* - Specify the name of the cluster.
+Returns a JSON representation of the policy.
 
 ## Example
 
 The following example sets the caching policy to include the last 30 days.
 
 ```kusto
-.alter cluster MyCluster policy caching hot = 30d
+.alter cluster policy caching hot = 30d
 ```
+
+**Output**
+
+|PolicyName|EntityName|Policy|ChildEntities|EntityType|
+|---|---|---|---|---|
+|AutoCalloutPolicy| |{"DataHotSpan": { "Value": "30.00:00:00" }, "IndexHotSpan": { "Value": "30.00:00:00"}}| |

@@ -17,9 +17,9 @@ Change the database cache policy.  To speed up queries on data, Azure Data Explo
 
 `.alter` `database` *DatabaseName* `policy` `caching`
 
-## Arguments
+## Returns
 
-*DatabaseName* - Specify the name of the database.
+Returns a JSON representation of the policy.
 
 ## Example
 
@@ -28,3 +28,9 @@ The following example sets the caching policy to include the last 30 days.
 ```kusto
 .alter database MyDatabase policy caching hot = 30d
 ```
+
+**Output**
+
+|PolicyName|EntityName|Policy|ChildEntities|EntityType|
+|---|---|---|---|---|
+|ClusterRequestClassificationPolicy| database1 |{"DataHotSpan": {"Value": "30.00:00:00"},"IndexHotSpan": { "Value": "30.00:00:00" }} | | |
