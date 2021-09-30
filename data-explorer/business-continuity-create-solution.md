@@ -50,7 +50,7 @@ Once you've completed [Prepare for Azure regional outage to protect your data](#
 
 ### Set up ingestion using Event Hub
 
-The following example uses ingestion via Event Hub. An replicated ingestion from N [Azure Event Hubs](/azure/event-hubs/event-hubs-about) has been set up and Azure Data Explorer [ingests data from the corresponding Event Hub](ingest-data-event-hub.md) in the region.
+To ingest data from [Azure Event Hubs](/azure/event-hubs/event-hubs-about) into each region's Azure Data Explorer cluster, first replicate your Event Hubs setup in each region. Then configure each region's Azure Data Explorer replica to [ingest data from its corresponding Event Hubs](ingest-data-event-hub.md).
 
 > [!NOTE] 
 > Ingestion via Event Hub/IoT Hub/Storage is robust. If a cluster isn't available for a period of time, it will catch up at a later time and insert any pending messages or blobs. This process relies on [checkpointing](/azure/event-hubs/event-hubs-features#checkpointing).
