@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/19/2021
+ms.date: 09/30/2021
 ms.localizationpriority: high
 ---
 # !~ (not equals) operator
@@ -28,6 +28,9 @@ For further information about other operators and to determine which operator is
 Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
 ## Performance tips
+
+> [!NOTE]
+> Performance depends on the type of search and the structure of the data.
 
 For faster results, use the case-sensitive version of an operator, for example, `==`, not `=~`.
 
@@ -58,6 +61,8 @@ StormEvents
     | where (State !~ "texas") and (event_count > 3000)
     | project State, event_count
 ```
+
+**Output**
 
 |State|event_count|
 |-----|-----------|

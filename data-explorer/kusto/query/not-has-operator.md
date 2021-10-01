@@ -35,9 +35,12 @@ Case-insensitive operators are currently supported only for ASCII-text. For non-
 
 ## Performance tips
 
+> [!NOTE]
+> Performance depends on the type of search and the structure of the data.
+
 For faster results, use the case-sensitive version of an operator, for example, `has_cs`, not `has`.
 
-If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. Also, `has` works faster than `contains`, `startswith`, or `endswith`, however it is not as precise and could provide unwanted records.
+If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. 
 
 For best practices, see [Query best practices](best-practices.md).
 
@@ -65,6 +68,8 @@ StormEvents
     | where event_count > 3000
     | project State, event_count
 ```
+
+**Output**
 
 |State|event_count|
 |-----|-----------|

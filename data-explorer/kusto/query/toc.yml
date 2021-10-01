@@ -343,7 +343,7 @@ items:
       href: not-in-cs-operator.md
     - name: "!in~ operator" 
       href: not-in-operator.md 
-    - name: regex operator
+    - name: match regex operator
       href: regex-operator.md
     - name: startswith operator
       href: startswith-operator.md

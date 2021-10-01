@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/19/2021
+ms.date: 09/30/2021
 ms.localizationpriority: high
 ---
 # !has_cs operator
@@ -33,9 +33,12 @@ For further information about other operators and to determine which operator is
 
 ## Performance tips
 
+> [!NOTE]
+> Performance depends on the type of search and the structure of the data.
+
 For faster results, use the case-sensitive version of an operator, for example, `has_cs`, not `has`.
 
-If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. Also, `has` works faster than `contains`, `startswith`, or `endswith`, however it is not as precise and could provide unwanted records.
+If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. 
 
 For best practices, see [Query best practices](best-practices.md).
 
@@ -62,6 +65,8 @@ StormEvents
     | where State !has_cs "new"
     | count
 ```
+
+**Output**
 
 |Count|
 |-----|

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/19/2021
+ms.date: 09/30/2021
 ms.localizationpriority: high
 ---
 # !hasprefix_cs operator
@@ -31,11 +31,10 @@ For further information about other operators and to determine which operator is
 
 ## Performance tips
 
-For faster results, use the case-sensitive version of an operator, for example, `hasprefix_cs`, not `hasprefix`.
+> [!NOTE]
+> Performance depends on the type of search and the structure of the data.
 
-If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. 
-
-For best practices, see [Query best practices](best-practices.md).
+For faster results, use the case-sensitive version of an operator, for example, `hasprefix_cs`, not `hasprefix`. For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 
@@ -60,6 +59,8 @@ StormEvents
     | where State !hasprefix_cs "P"
     | count
 ```
+
+**Output**
 
 |Count|
 |-----|

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/19/2021
+ms.date: 09/30/2021
 ms.localizationpriority: high
 ---
 # != (not equals) operator
@@ -26,6 +26,9 @@ The following table provides a comparison of the `==` (equals) operators:
 For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
 
 ## Performance tips
+
+> [!NOTE]
+> Performance depends on the type of search and the structure of the data.
 
 For faster results, use the case-sensitive version of an operator, for example, `==`, not `=~`.
 
@@ -56,6 +59,8 @@ StormEvents
     | where (State != "FLORIDA") and (event_count > 4000)
     | project State, event_count
 ```
+
+**Output**
 
 |State|event_count|
 |-----|-----------|

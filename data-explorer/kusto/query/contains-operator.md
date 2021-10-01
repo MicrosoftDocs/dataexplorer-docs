@@ -23,6 +23,7 @@ The following table provides a comparison of the `contains` operators:
 |[`contains_cs`](contains-cs-operator.md) |RHS occurs as a subsequence of LHS |Yes |`"FabriKam" contains_cs "Kam"`|
 |[`!contains_cs`](not-contains-cs-operator.md)   |RHS doesn't occur in LHS |Yes |`"Fabrikam" !contains_cs "Kam"`|
 
+> [!NOTE]
 > The following abbreviations are used in the table above:
 >
 > * RHS = right hand side of the expression
@@ -34,9 +35,12 @@ Case-insensitive operators are currently supported only for ASCII-text. For non-
 
 ## Performance tips
 
-For faster results, use the case-sensitive version of an operator, for example, `contains_cs`, not `contains`.
+> [!NOTE]
+> Performance depends on the type of search and the structure of the data.
 
-If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. Also, `has` works faster than `contains`, `startswith`, or `endswith`, however it is not as precise and could provide unwanted records.
+For better performance, try the case-sensitive version of an operator, for example, `contains_cs`, not `contains`. 
+
+If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for better performance, try `has` or `in`. Also, `has` works faster than `contains`, `startswith`, or `endswith`, however it is not as precise and could provide unwanted records.
 
 For best practices, see [Query best practices](best-practices.md).
 
@@ -65,6 +69,8 @@ StormEvents
     | project State, event_count
     | render table
 ```
+
+**Output**
 
 |State|event_count|
 |-----|-----------|
