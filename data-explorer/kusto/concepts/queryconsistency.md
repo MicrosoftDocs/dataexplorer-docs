@@ -22,5 +22,7 @@ don't have that guarantee. Clients making queries might observe some latency
 
 The advantage of weakly consistent queries, is that it reduces the load on the cluster node that handles database changes. In general, we recommend that you first try the strongly consistent model. Switch to using weakly consistent queries only if necessary.
 
-To switch to weakly consistent queries, set the `queryconsistency` property when making a [REST API call](../api/rest/request.md). Users of the
+Switch to weakly consistent queries can be done by the client, by setting the `queryconsistency` property when making a [REST API call](../api/rest/request.md). Users of the
 .NET client can also set it in the [Kusto connection string](../api/connection-strings/kusto.md) or as a flag in the [client request properties](../api/netfx/request-properties.md).
+
+Alternatively, query consistency can be controlled by setting a workload group's [Query consistency policy](../management/query-consistency-policy.md).
