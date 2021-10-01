@@ -38,13 +38,17 @@ Sign in to the [Azure portal](https://portal.azure.com/).
 
 Create an Azure Data Explorer cluster with a defined set of compute and storage resources in an Azure resource group.
 
-1. Select the **+ Create a resource** button in the upper-left corner of the portal.
+1. Select the **+ Create a resource** button in the **Azure Services**.
 
-1. Search for *Azure Data Explorer*.
+   ![Search resources.](media/create-cluster-database-portal/create-resource.PNG)
+
+1. Search for *Azure Data Explorer* and choose Azure Data Explorer from the options.
 
    ![Search resources.](media/create-cluster-database-portal/search-resources.png)
 
-1. Under **Azure Data Explorer**, at the bottom of the screen, select **Create**.
+1. On **Azure Data Explorer** screen, select **Create**.
+
+   ![Search resources.](media/create-cluster-database-portal/create-click.png)
 
 1. Fill out the basic cluster details with the following information.
 
@@ -61,7 +65,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
     | Availability zones | *1*, *2*, and/or *3* | Place the cluster instances in various availability zones in the same region (optional). [Azure Availability Zones](/azure/availability-zones/az-overview) are unique physical locations within the same Azure region. They protect an Azure Data Explorer cluster and data from partial region failure. The cluster nodes are created, by default, in the same data center. By selecting several availability zones you can eliminate a single point of failure and ensure high availability. **Deployment to availability zones is possible only during cluster creation and can't be modified at a later date.**
     | | | |
 
-1. Select **Review + create** to review your cluster details, and **Create** to provision the cluster. Provisioning typically takes about 10 minutes.
+1. Select **Review + create** to review your cluster details, and click **Create** on the next screen to provision the cluster. Provisioning typically takes about 10 minutes.
 
 1. When the deployment is complete, select **Go to resource**.
 
@@ -86,6 +90,7 @@ You're now ready for the second step in the process: database creation.
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
+    | Admin | *Default selected* | The admin field is disabled. New admins can be added after database creation.
     | Database name | *TestDatabase* | The database name must be unique within the cluster.
     | Retention period | *3650* | The time span (in days) for which it's guaranteed that the data is kept available to query. The time span is measured from the time that data is ingested.
     | Cache period | *31* | The time span (in days) for which to keep frequently queried data available in SSD storage or RAM, rather than in longer-term storage.
