@@ -22,6 +22,8 @@ items:
     href: request-rate-limits-enforcement-policy.md
   - name: Request queuing policy
     href: request-queuing-policy.md
+  - name: Query consistency policy
+    href: query-consistency-policy.md
 - name: Schema
   items:
   - name: Best practices for schema management
