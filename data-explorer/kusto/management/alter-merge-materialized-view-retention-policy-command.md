@@ -12,7 +12,6 @@ ms.date: 10/03/2021
 # .alter-merge materialized-view retention policy
 
 Change a materialized-view's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It is used to remove data whose relevance is age-based. 
- 
 
 ## Syntax
 
