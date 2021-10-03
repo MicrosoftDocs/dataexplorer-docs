@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 10/03/2021
 ---
 # Cache policy (hot and cold cache) 
 
@@ -89,3 +89,6 @@ In the example, the last 28 days of data will be on the cluster SSD and the
 additional 28 days of data will be stored in Azure blob storage.
 You can run queries on the full 56 days of data.
  
+## See also
+
+* [Hot windows for infrequent queries over cold data](../../hot-windows.md)
