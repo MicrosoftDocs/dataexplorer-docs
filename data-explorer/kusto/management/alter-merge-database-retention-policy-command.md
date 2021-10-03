@@ -11,7 +11,7 @@ ms.date: 10/03/2021
 ---
 # .alter-merge database retention policy
 
-Change a database's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It's used to remove data whose relevance is age-based. 
+Change a database's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It is used to remove data whose relevance is age-based. 
  
 
 ## Syntax
