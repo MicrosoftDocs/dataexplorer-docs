@@ -24,6 +24,7 @@ The following table provides a comparison of the `contains` operators:
 |[`contains_cs`](contains-cs-operator.md) |RHS occurs as a subsequence of LHS |Yes |`"FabriKam" contains_cs "Kam"`|
 |[`!contains_cs`](not-contains-cs-operator.md)   |RHS doesn't occur in LHS |Yes |`"Fabrikam" !contains_cs "Kam"`|
 
+> [!NOTE]
 > The following abbreviations are used in the table above:
 >
 > * RHS = right hand side of the expression

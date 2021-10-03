@@ -23,6 +23,7 @@ The following table provides a comparison of the `endswith` operators:
 |[`endswith_cs`](endswith-cs-operator.md) |RHS is a closing subsequence of LHS |Yes |`"Fabrikam" endswith_cs "kam"`|
 |[`!endswith_cs`](not-endswith-cs-operator.md) |RHS isn't a closing subsequence of LHS |Yes |`"Fabrikam" !endswith_cs "brik"`|
 
+> [!NOTE]
 > The following abbreviations are used in the table above:
 >
 > * RHS = right hand side of the expression
