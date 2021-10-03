@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/31/2021
+ms.date: 09/30/2021
 ---
 # has_any_ipv4()
 
