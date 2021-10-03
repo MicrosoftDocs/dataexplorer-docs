@@ -59,7 +59,8 @@ where *ColumnName* adheres to [entity naming](../query/schema-entities/entity-na
 
 The type of the external table. In thise case, `storage` should to be used (rather than `sql`).
 
-Deprecated: `blob` for either Blob Azure Storage or Azure Data Lake Gen 2 Storage, or `adl` for Azure Data Lake Gen 1 Storage.
+>[!NOTE]
+> Deprecated terms:  `blob` for Blob Azure Storage or Azure Data Lake Gen 2 Storage, `adl` for Azure Data Lake Gen 1 Storage.
 
 <a name="partitions"></a>
 *Partitions*
