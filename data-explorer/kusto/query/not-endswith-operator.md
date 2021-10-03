@@ -7,12 +7,12 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/30/2021
+ms.date: 10/03/2021
 ms.localizationpriority: high
 ---
 # !endswith operator
 
-Filters a record set for data that does not contain a case-insensitive ending string.
+Filters a record set for data that excludes a case-insensitive ending string.
 
 The following table provides a comparison of the `endswith` operators:
 
@@ -29,7 +29,7 @@ The following table provides a comparison of the `endswith` operators:
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
 
 Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
