@@ -21,7 +21,7 @@ For an introduction to the external Azure Storage tables feature, see [Query dat
 **Syntax**
 
 (`.create` `|` `.alter` `|` `.create-or-alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
-`kind` `=` (`blob` `|` `adl`)  
+`kind` `=` `storage`  
 [`partition` `by` `(` *[Partitions](#partitions)* `)` [`pathformat` `=` `(` *[PathFormat](#path-format)* `)`]]  
 `dataformat` `=` *[Format](#format)*  
 `(` *[StorageConnectionString](#connection-string)* [`,` ...] `)`   
@@ -57,7 +57,9 @@ where *ColumnName* adheres to [entity naming](../query/schema-entities/entity-na
 <a name="kind"></a>
 *Kind*
 
-The type of the external table. Either `blob` for Blob Azure Storage or for Azure Data Lake Gen 2 Storage, or `adl` for Azure Data Lake Gen 1 Storage.
+The type of the external table. In thise case, `storage` should to be used (rather than `sql`).
+
+Deprecated: `blob` for either Blob Azure Storage or Azure Data Lake Gen 2 Storage, or `adl` for Azure Data Lake Gen 1 Storage.
 
 <a name="partitions"></a>
 *Partitions*
