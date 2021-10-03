@@ -199,8 +199,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[series_abs()](series-absfunction.md)|Calculates the element-wise absolute value of the numeric series input.|
-|[series_add()](series-addfunction.md)|Calculates the element-wise addition of two numeric series inputs.|
 |[series_acos()](series-acosfunction.md)|Calculates the element-wise arccosine function of the numeric series input.|
+|[series_add()](series-addfunction.md)|Calculates the element-wise addition of two numeric series inputs.|
 |[series_asin()](series-asinfunction.md)|Calculates the element-wise arcsine function of the numeric series input.|
 |[series_atan()](series-atanfunction.md)|Calculates the element-wise arctangent function of the numeric series input.|
 |[series_cos()](series-cosfunction.md)|Calculates the element-wise cosine function of the numeric series input.|
