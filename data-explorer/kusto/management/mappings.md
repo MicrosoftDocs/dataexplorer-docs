@@ -137,7 +137,7 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
-### Example to copy JSON mapping
+### Example copying JSON mapping
 
 You can copy JSON mapping of an existing table and create a new table with the same mapping using the following process:
 
