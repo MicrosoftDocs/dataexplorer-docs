@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 10/03/2021
 ---
 # .alter table partitioning policy
 
@@ -22,5 +22,5 @@ Change a materialized view [partitioning policy](partitioningpolicy.md). The par
 Change the policy at the materialized-view level:
 
 ```kusto
-.alter materialized-view MyMaterializeView policy partitioning '{"EffectiveDateTime":"2023-01-01"}'
+.alter materialized-view MyMaterializedView policy partitioning '{"EffectiveDateTime":"2023-01-01"}'
 ```
