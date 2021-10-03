@@ -37,7 +37,7 @@ To enable continuous data export, [create an external table](../external-tables-
 
 ## Exactly once export
 
-To guarantee "exactly once" export, continuous export uses [database cursors](../databasecursor.md). The continuous export query *shouldn't* include a timestamp filter - the database cursors mechanism ensures that records aren't processed more than once. Adding a timestamp filter in the query can lead to missing data in exported data.
+To guarantee "exactly once" export, continuous export uses [database cursors](../databasecursor.md). The continuous export query shouldn't include a timestamp filter - the database cursors mechanism ensures that records aren't processed more than once. Adding a timestamp filter in the query can lead to missing data in exported data.
 
 [IngestionTime policy](../ingestiontime-policy.md) must be enabled on all tables referenced in the query that should be processed "exactly once" in the export. The policy is enabled by default on all newly created tables.
 
