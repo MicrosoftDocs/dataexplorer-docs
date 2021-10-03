@@ -29,14 +29,10 @@ Dynamic array of calculated exponential function. Any non-numeric element yields
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-range x from 1 to 4 step 3
-| extend y = x + 1
-| extend z = y + 1
-| project s = pack_array(x,y,z)
+print s = dynamic([1,2,3])
 | extend s_exp = series_exp(s)
 ```
 
 |s|s_exp|
 |---|---|
 |[1,2,3]|[2.7182818284590451,7.38905609893065,20.085536923187668]|
-|[4,5,6]|[54.598150033144236,148.4131591025766,403.42879349273511]|
