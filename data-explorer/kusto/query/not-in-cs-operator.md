@@ -1,6 +1,6 @@
 ---
-title: The case-insensitive in~ string operator - Azure Data Explorer
-description: This article describes the case-insensitive in~ string operator in Azure Data Explorer.
+title: The case-sensitive !in string operator - Azure Data Explorer
+description: This article describes the case-sensitive !in string operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,11 +10,11 @@ ms.topic: reference
 ms.date: 09/19/2021
 ms.localizationpriority: high
 ---
-# in~ operator
+# !in operator
 
-Filters a record set for data with a case-insensitive string.
+Filters a record set for data without a case-sensitive string.
 
-The following table provides a comparison of the `in` operators:
+The following table provides a comparison of the `has` operators:
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
@@ -31,8 +31,6 @@ The following table provides a comparison of the `in` operators:
 
 For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
 
-Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
-
 ## Performance tips
 
 > [!NOTE]
@@ -46,8 +44,8 @@ For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 
-*T* `|` `where` *col* `in~` `(` *list of scalar expressions* `)`
-*T* `|` `where` *col* `in~` `(` *tabular expression* `)`
+*T* `|` `where` *col* `!in` `(`*list of scalar expressions*`)`
+*T* `|` `where` *col* `!in` `(`*tabular expression*`)`
 
 ## Arguments
 
@@ -60,12 +58,12 @@ For best practices, see [Query best practices](best-practices.md).
 
 Rows in *T* for which the predicate is `true`.
 
-## Examples  
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
-| where State in~ ("FLORIDA", "georgia", "NEW YORK") 
+| where State !in ("FLORIDA", "GEORGIA", "NEW YORK") 
 | count
 ```
 
@@ -73,4 +71,4 @@ StormEvents
 
 |Count|
 |---|
-|4775|  
+|54291|

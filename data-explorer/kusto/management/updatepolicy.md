@@ -15,7 +15,8 @@ The [update policy](update-policy.md) instructs Kusto to automatically append da
 
 :::image type="content" source="images/updatepolicy/update-policy-overview.png" alt-text="Overview of the update policy in Azure Data Explorer.":::
 
-For example, the policy lets the creation of one table be the filtered view of another table. The new table can have a different schema, retention policy, and so on. 
+An update policy is useful when one table is the filtered view of another table. For example, the source table can be a high-rate trace table with interesting data formatted as a free-text column. The target table can include only specific kind of trace lines, with a well-structured schema that is a transformation of the
+original free-text data by using the [parse operator](../query/parseoperator.md). The target table can have a different schema, retention policy, and so on.
 
 The update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out with the size of the cluster, and works more efficiently if ingestions are done in large bulks.
 
@@ -84,14 +85,6 @@ Update policies take effect when data is ingested or moved to (extents are creat
 > * When the update policy is invoked as part of a  `.set-or-replace` command, the default behavior is that data in derived table(s) is replaced in the same way as in the source table. 
 >   * This might lead to loss of data in all tables that have an update policy relationship to that table, if the `replace` part takes place.
 >   * Consider using `.set-or-append` instead, if this behavior isn't desired.
-
-## Regular ingestion using update policy
-
-The update policy will behave like regular ingestion when the following conditions are met:
-
-* The source table is a high-rate trace table with interesting data formatted as a free-text column. 
-* The target table on which the update policy is defined accepts only specific trace lines.
-* The table has a well-structured schema that is a transformation of the original free-text data created by the [parse operator](../query/parseoperator.md).
 
 ## Zero retention on source table
 
