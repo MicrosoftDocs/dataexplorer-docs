@@ -64,7 +64,7 @@ database_name = "mykustodatabase"
 principal_assignment_name = "clusterPrincipalAssignment1"
 #User email, application ID, or security group name
 principal_id = "xxxxxxxx"
-#AllDatabasesAdmin or AllDatabasesViewer
+#AllDatabasesAdmin, AllDatabasesMonitor or AllDatabasesViewer
 role = "AllDatabasesAdmin"
 tenant_id_for_principal = tenantId
 #User, App, or Group
