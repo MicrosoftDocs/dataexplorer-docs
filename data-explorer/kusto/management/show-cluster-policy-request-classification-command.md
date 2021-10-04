@@ -16,3 +16,15 @@ Shows the cluster's request classification policy. For more information, see [Re
 ## Syntax
 
 `.show` `cluster` `policy` `request_classification`
+
+## Returns
+
+Returns a JSON representation of the policy.
+
+### Example
+
+Display the cluster's request classification policy.
+
+```kusto
+.show cluster policy request_classification
+```

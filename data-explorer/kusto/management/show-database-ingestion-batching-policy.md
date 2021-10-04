@@ -21,6 +21,10 @@ Display the database ingestion batching policy. The [ingestionBatching policy](b
 
 *DatabaseName* - Specify the name of the database.
 
+## Returns
+
+Returns a JSON representation of the policy.
+
 ## Example
 
 The following example shows the IngestionBatching policy:

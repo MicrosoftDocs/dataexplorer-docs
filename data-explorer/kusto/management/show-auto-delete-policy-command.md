@@ -17,6 +17,10 @@ Shows the auto delete policy that is applied to a table. For more information, s
 
 `.show` `table` *TableName* `policy` `auto_delete`
 
+## Returns
+
+Returns a JSON representation of the policy.
+
 ## Example
 
 Displays the auto delete policy that is applied on the table.

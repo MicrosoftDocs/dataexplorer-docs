@@ -19,6 +19,14 @@ For more information about running queries on the row level security policy, see
 
 `.display` `materialized-view` *MaterializedViewName* `policy` `row-level-security` [`enable` | `disable`]
 
+## Arguments
+
+*MaterializedViewName* - Specify the name of the materialized view.
+
+## Returns
+
+Returns a JSON representation of the policy.
+
 ### Example
 
 Display the policy at the materialized-view level:

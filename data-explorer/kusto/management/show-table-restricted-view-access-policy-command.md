@@ -27,6 +27,10 @@ Display the policy for all tables:
 
 *TableName* - Specify the name of the table. 
 
+## Returns
+
+Returns a JSON representation of the policy.
+
 ## Example
 
 Display the policy for a table:

@@ -17,6 +17,14 @@ Displays a table [partitioning policy](partitioningpolicy.md). The partitioning 
 
 `.show` `table` *TableName* `policy` `partitioning` 
 
+## Arguments
+
+*TableName* - Specify the name of the table. 
+
+## Returns
+
+Returns a JSON representation of the policy.
+
 ### Example
 
 Display the policy at the table level:

@@ -17,6 +17,14 @@ Show the materialized view cache policy. To speed up queries on data, Azure Data
 
 `.show` `materialized-view` *MaterializedViewName* `policy` `caching`
 
+## Arguments
+
+*MaterializedViewName* - Specify the name of the materialized view.
+
+## Returns
+
+Returns a JSON representation of the policy.
+
 ## Example
 
 The following example shows the table caching policy:

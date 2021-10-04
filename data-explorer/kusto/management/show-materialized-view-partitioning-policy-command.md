@@ -17,6 +17,14 @@ Displays a materialized view [partitioning policy](partitioningpolicy.md). The p
 
 `.show` `materialized-view` *MaterializedViewName* `policy` `partitioning` 
 
+## Arguments
+
+*MaterializedViewName* - Specify the name of the materialized view.
+
+## Returns
+
+Returns a JSON representation of the policy.
+
 ### Example
 
 Delete the policy at the materialized-view level:

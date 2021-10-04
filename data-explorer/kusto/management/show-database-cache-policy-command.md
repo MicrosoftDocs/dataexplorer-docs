@@ -21,6 +21,10 @@ Show the database cache policy. To speed up queries on data, Azure Data Explorer
 
 *DatabaseName* - Specify the name of the database.
 
+## Returns
+
+Returns a JSON representation of the policy.
+
 ## Example
 
 The following example shows the table caching policy:

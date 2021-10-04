@@ -22,6 +22,10 @@ Display the table ingestion batching policy. The [ingestionBatching policy](batc
 *DatabaseName* - Specify the name of the database.
 *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
 
+## Returns
+
+Returns a JSON representation of the policy.
+
 ## Example
 
 The following example shows the IngestionBatching policy:

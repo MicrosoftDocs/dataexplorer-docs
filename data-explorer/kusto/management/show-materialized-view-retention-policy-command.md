@@ -17,6 +17,14 @@ Display a materialized-view's [retention policy](retentionpolicy.md). The retent
 
 `.show` `materialized-view` *DatabaseName* `policy` `retention` 
 
+## Arguments
+
+*MaterializedViewName* - Specify the name of the materialized view.
+
+## Returns
+
+Returns a JSON representation of the policy.
+
 ### Example
 
 Displays a retention policy:

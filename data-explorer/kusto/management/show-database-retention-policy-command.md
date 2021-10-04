@@ -18,6 +18,14 @@ Display a database's [retention policy](retentionpolicy.md). The retention polic
 
 `.show` `database` *DatabaseName* `policy` `retention` 
 
+## Arguments
+
+*DatabaseName* - Specify the name of the database.
+
+## Returns
+
+Returns a JSON representation of the policy.
+
 ### Example
 
 Display a retention policy:

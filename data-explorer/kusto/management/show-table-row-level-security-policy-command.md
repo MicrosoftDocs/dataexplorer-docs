@@ -17,7 +17,15 @@ Display a table's [row_level_security policy](rowlevelsecuritypolicy.md). The Ro
 
 `.alter` `table` *TableName* `policy` `row-level-security` 
 
-### Examples
+## Arguments
+
+*TableName* - Specify the name of the table. 
+
+## Returns
+
+Returns a JSON representation of the policy.
+
+### Example
 
 Display the policy at the table level:
 
