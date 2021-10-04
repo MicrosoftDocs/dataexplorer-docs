@@ -56,7 +56,7 @@ The following example shows an Azure Resource Manager template for adding a clus
             "type": "string",
 			"defaultValue": "AllDatabasesViewer",
             "metadata": {
-                "description": "Specifies the cluster principal role. It can be 'AllDatabasesAdmin', 'AllDatabasesViewer'"
+                "description": "Specifies the cluster principal role. It can be 'AllDatabasesAdmin', 'AllDatabasesMonitor' or 'AllDatabasesViewer'"
             }
         },
 		"tenantIdForClusterPrincipal": {
