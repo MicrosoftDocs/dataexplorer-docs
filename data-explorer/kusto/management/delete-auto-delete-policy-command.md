@@ -17,6 +17,10 @@ Deletes the auto delete policy of a table. For more information, see [auto delet
 
 `.delete` `table` *TableName* `policy` `auto_delete`
 
+## Arguments
+
+*TableName* - Specify the name of the table. 
+
 ## Example
 
 ```kusto

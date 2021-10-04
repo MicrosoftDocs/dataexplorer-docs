@@ -17,6 +17,10 @@ Changes a table [partitioning policy](partitioningpolicy.md). The partitioning p
 
 `.alter` `table` *TableName* `policy` `partitioning` 
 
+## Arguments
+
+*TableName* - Specify the name of the table.  
+
 ### Example
 
 Set a policy with a hash partition key:

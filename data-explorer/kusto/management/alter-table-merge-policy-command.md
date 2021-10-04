@@ -12,11 +12,14 @@ ms.date: 09/29/2021
 # .alter table merge policy
 
 Change a table's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged. 
- 
 
 ## Syntax
 
 `.alter` `table` *TableName* `policy` `merge` 
+
+## Arguments
+
+*TableName* - Specify the name of the table. 
 
 ### Example
 
