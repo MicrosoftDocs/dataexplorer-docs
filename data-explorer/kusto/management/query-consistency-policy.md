@@ -22,10 +22,10 @@ Each option consists of:
 
 The following limits are configurable:
 
-| Name                   | Type                 | Description                                                                                      | Supported values                           | Default value | Matching client request property |
-|------------------------|----------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------|---------------|----------------------------------|
-| QueryConsistency     | `QueryConsistency` | The [consistency model](../concepts/queryconsistency.md) to use.                                     | `Strong`, `Weak`, or `WeakAffinitized`     | `Strong`      | `queryconsistency`               |
-| CachedResultsMaxAge    | `timespan`           | The maximum age of [cached query results](../query/query-results-cache.md) that can be returned. | A non-negative `timespan`                  | `null`        | `query_results_cache_max_age`    |
+| Name                   | Type                 | Description                                                                                      | Supported values                                                               | Default value | Matching client request property |
+|------------------------|----------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|---------------|----------------------------------|
+| QueryConsistency       | `QueryConsistency`   | The [consistency model](../concepts/queryconsistency.md) to use.                                 | `Strong`, `Weak`, or `WeakAffinitizedByQuery`, `WeakAffinitizedByDatabase`     | `Strong`      | `queryconsistency`               |
+| CachedResultsMaxAge    | `timespan`           | The maximum age of [cached query results](../query/query-results-cache.md) that can be returned. | A non-negative `timespan`                                                      | `null`        | `query_results_cache_max_age`    |
 
 > [!NOTE]
 > The default value applies in the following cases:
