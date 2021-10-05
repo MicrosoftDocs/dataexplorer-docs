@@ -21,7 +21,7 @@ If you send a control command and receive acknowledgment that the command has co
 * The advantage of weakly consistent queries, is that it reduces the load on the cluster node that handles database changes.
 * Weakly consistent queries can be affinitized to a specific query head by the query text or by the context database name.
   * The advantage of using affinity by query text is when also using the [query results cache](../query/query-results-cache.md).
-  * The advantage of using affinity by context database name is to not overload tail nodes with having to frequently load very large database metadatas.
+  * The advantage of using affinity by context database name is to not overload tail nodes with having to frequently load very large database metadata.
  
 In general, we recommend that you first try the strongly consistent model. Switch to using weakly consistent queries only if necessary.
 
