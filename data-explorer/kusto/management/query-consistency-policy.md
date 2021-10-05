@@ -11,7 +11,7 @@ ms.date: 09/01/2021
 ---
 # Query consistency policy
 
-A workload group's query consistency policy allows specifying options that control the consistency of queries.
+A workload group's query consistency policy allows specifying options that control the [consistency model](../concepts/queryconsistency.md) of queries.
 
 ## The policy object
 
@@ -24,7 +24,7 @@ The following limits are configurable:
 
 | Name                   | Type                 | Description                                                                                      | Supported values                           | Default value | Matching client request property |
 |------------------------|----------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------|---------------|----------------------------------|
-| QueryConsistency     | `QueryConsistency` | The [consistency](../concepts/queryconsistency.md) to use.                                       | `Strong`, `Weak`, or `WeakAffinitized`     | `Strong`      | `queryconsistency`               |
+| QueryConsistency     | `QueryConsistency` | The [consistency model](../concepts/queryconsistency.md) to use.                                     | `Strong`, `Weak`, or `WeakAffinitized`     | `Strong`      | `queryconsistency`               |
 | CachedResultsMaxAge    | `timespan`           | The maximum age of [cached query results](../query/query-results-cache.md) that can be returned. | A non-negative `timespan`                  | `null`        | `query_results_cache_max_age`    |
 
 > [!NOTE]
