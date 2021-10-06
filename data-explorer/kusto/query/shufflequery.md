@@ -15,33 +15,44 @@ ms.date: 10/06/2021
 
 Operators that support shuffling in Azure Data Explorer are [join](joinoperator.md), [summarize](summarizeoperator.md), [make-series](make-seriesoperator.md) and [partition](partitionoperator.md).
 
-Set `shuffle` query mode using the query parameter `hint.strategy = shuffle` or `hint.shufflekey = <key>`.
-
+Set to `shuffle` query mode using the query parameter `hint.strategy = shuffle` or `hint.shufflekey = <key>`. 
 This mode will share the load on all cluster nodes, where each node will process one partition of the data.
-It is useful to use the shuffle query mode when the key (`join` key, `summarize` key, `make-series` key or `partition` key) has a high cardinality and the regular query mode hits query limits.
+It is useful to use the shuffle query mode when the key (a `join` key, `summarize` key, `make-series` key or `partition` key) has a high cardinality and the regular operator query hits query limits.
 
-When you use `hint.strategy=shuffle`, the shuffled operator will be shuffled by all the keys.
+In a `shuffle` query, the default partitions number is the cluster nodes number. When you use `hint.strategy=shuffle`, the shuffled operator will be shuffled by all the keys. If the compound key is too unique but each key is not unique enough, use `hint` to shuffle the data using all the keys of the shuffled operator.
 
-If the compound key is too unique but each key is not unique enough, use `hint` to shuffle the data using all the keys of the shuffled operator.
+The partition number can be overridden by using the syntax `hint.num_partitions = total_partitions`, which will control the number of partitions. This is useful when the cluster has a small number of cluster nodes where the default partitions number will be too small and the query still fails or takes long execution time.
 
-In some cases, the `hint.strategy=shuffle` will be ignored, and the query will not run in `shuffle` mode. Example scenarios are:
+> [!Note]
+> Having many partitions may consume more cluster resources and degrade performance. Choose the partition number carefully by starting with the `hint.strategy = shuffle` and start increasing the partitions gradually.
+
+In some cases, the `hint.strategy=shuffle` will be ignored, and the query will not run in `shuffle` mode. Example scenarios are: 
+
 * The `join` has another `shuffle`-compatible operator (`join`, `summarize`, `make-series` or `partition`) on the left side or the right side.
 * The `summarize` appears after another `shuffle`-compatible operator (`join`, `summarize`, `make-series` or `partition`) in the query.
 
-In a `shuffle` query, the default partitions number is the cluster nodes number. This number can be overridden by using the syntax `hint.num_partitions = total_partitions`, which will control the number of partitions. This is useful when the cluster has a small number of cluster nodes where the default partitions number will be small too and the query still fails or takes long execution time.
-
-> [!Note]
-> Having many partitions may consume more cluster resources and degrade performance. Instead, choose the partition number carefully by starting with the `hint.strategy = shuffle` and start increasing the partitions gradually.
 
 ## Syntax
 
-*T* `|` *DataExpression* `|` `join`  [`hint.strategy` = `shuffle` | `hint.shufflekey` = *key*] `(` *DataExpression* `)`
+With `hint.strategy` = `shuffle'
 
-*T* `|` `summarize` [`hint.strategy` = `shuffle` | `hint.shufflekey` = *key*] *DataExpression* 
+*T* `|` *DataExpression* `|` `join`  `hint.strategy` = `shuffle` `(` *DataExpression* `)`
 
-*T* `|` `make-series`  [`hint.strategy` = `shuffle` | `hint.shufflekey` = *key*] *DataExpression* 
+*T* `|` `summarize` `hint.strategy` = `shuffle` *DataExpression* 
 
-*T* `|` *Query* `|` partition [`hint.strategy` = `shuffle` | `hint.shufflekey` = *key*] `(` *SubQuery* `)`
+*T* `|` `make-series`  `hint.strategy` = `shuffle` *DataExpression* 
+
+*T* `|` *Query* `|` partition `hint.strategy` = `shuffle`  `(` *SubQuery* `)`
+
+With `hint.shufflekey` = *key*
+
+*T* `|` *DataExpression* `|` `join`  `hint.shufflekey` = *key* `(` *DataExpression* `)`
+
+*T* `|` `summarize` `hint.shufflekey` = *key* *DataExpression* 
+
+*T* `|` `make-series` `hint.shufflekey` = *key* *DataExpression* 
+
+*T* `|` *Query* `|` partition  `hint.shufflekey` = *key* `(` *SubQuery* `)`
 
 ## Arguments
 
@@ -56,7 +67,6 @@ In a `shuffle` query, the default partitions number is the cluster nodes number.
 ## Use summarize with shuffle
 
 The `shuffle` mode query with `summarize` operator will share the load on all cluster nodes, where each node will process one partition of the data.
-It is useful to use the shuffle query strategy when the key (`join` key, `summarize` key, `make-series` key or `partition` key) has a high cardinality and the regular query strategy hits query limits.
 
 ```kusto
 T
