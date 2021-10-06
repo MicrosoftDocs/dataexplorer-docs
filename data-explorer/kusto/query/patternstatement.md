@@ -24,7 +24,7 @@ A **pattern** is a construct that maps string tuples to tabular expressions. Eac
 
 * Declare an empty pattern:
 
-    `declare` `pattern` *PatternName*
+    `declare` `pattern` *PatternName* `;`
 
 * Declare and define a pattern:
 
@@ -36,7 +36,7 @@ A **pattern** is a construct that maps string tuples to tabular expressions. Eac
 
     &nbsp;&nbsp;&nbsp;&nbsp;[ `(` *ArgValue1_2* [`,` *ArgValue2_2*`,` ... ] `)` [ `.[` *PathValue_2* `]` ] `=` `{` *expression2* `}` `;` ... ]
 
-    `}`
+    `}` `;`
 
 * Invoke a pattern:
 
@@ -47,14 +47,14 @@ A **pattern** is a construct that maps string tuples to tabular expressions. Eac
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *PatternName* | string | &check; | Name of pattern. Use the pattern syntax for all pattern references associated with the keyword. |
-| *ArgName* | string | &check; | Name of argument. Patterns can have one or more arguments. |
-| *ArgType* | string | &check; | Type of *ArgName* parameter. Possible values: `string` |
-| *PathName* | string | | Name of path argument. Patterns can have no path or one path. |
+| *PatternName* | string | &check; | The name of the pattern. Use the pattern syntax for all pattern references associated with the keyword. |
+| *ArgName* | string | &check; | The name of the argument. Patterns can have one or more arguments. |
+| *ArgType* | string | &check; | The scalar data type of the *ArgName* parameter. Possible values: `string` |
+| *PathName* | string | | The name of the path argument. Patterns can have no path or one path. |
 | *PathArgType* | string | | Type of the *PathArgType* parameter. Possible values: `string` |
 | *ArgValue* | string | &check; | *ArgName* and optional *PathName* tuple values to be mapped to an *expression*.  |
 | *PathValue* | string | | A value to map for *PathName*. |
-| *expression* | string | &check; | A tabular expression or a lambda expression that references a function. For example: `Logs | where Timestamp > ago(1h)` |
+| *expression* | string | &check; | Either a tabular expression, or a lambda expression that references a function returning tabular data. For example: `Logs | where Timestamp > ago(1h)` |
 
 ## Examples
 
@@ -74,6 +74,8 @@ declare pattern country = (name:string)[state:string]
 country("Canada").Alberta
 ```
 
+**Output** 
+
 |Capital|
 |-------|
 |Edmonton|
@@ -91,6 +93,8 @@ declare pattern App = (applicationId:string)[scope:string]
 };
 union App('a2').Data, App('a1').Metrics
 ```
+
+**Output**
 
 |App|Data|Metrics|
 |---|----|-------|
@@ -172,6 +176,8 @@ declare pattern map_ip_to_longlat = (address:string)
 };
 map_ip_to_longlat("10.10.10.10")
 ```
+
+**Output**
 
 |Lat|Long|
 |---|---|
