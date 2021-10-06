@@ -13,11 +13,11 @@ ms.date: 10/06/2021
 
 The partition operator partitions the records of its input table into multiple subtables according to values in a key column, runs a subquery on each subtable, and produces a single output table that is the union of the results of all subqueries.
 
-The partition operator supports several modes of subquery operation: 
+The partition operator supports several strategies, or modes, of subquery operation: 
 
-* Native mode - use with an implicit data source with thousands of key partition values.
-* Shuffle mode - use with an implicit source with millions of key partition values.
-* Legacy mode - use with an implicit or explicit source for 64 or less key partition values.
+* Native - use with an implicit data source with thousands of key partition values.
+* Shuffle - use with an implicit source with millions of key partition values.
+* Legacy - use with an implicit or explicit source for 64 or less key partition values.
 
 **Native mode**
 
