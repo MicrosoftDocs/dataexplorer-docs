@@ -40,8 +40,6 @@ With `hint.strategy` = `shuffle'
 
 *T* `|` `summarize` `hint.strategy` = `shuffle` *DataExpression* 
 
-*T* `|` `make-series`  `hint.strategy` = `shuffle` *DataExpression* 
-
 *T* `|` *Query* `|` partition `hint.strategy` = `shuffle`  `(` *SubQuery* `)`
 
 With `hint.shufflekey` = *key*
@@ -69,19 +67,36 @@ With `hint.shufflekey` = *key*
 The `shuffle` mode query with `summarize` operator will share the load on all cluster nodes, where each node will process one partition of the data.
 
 ```kusto
-T
-| summarize hint.strategy = shuffle count(), avg(price) by supplier
+StormEvents
+| summarize hint.strategy = shuffle count(), avg(InjuriesIndirect) by State
+| count 
 ```
+
+**Output** 
+
+|Count|
+|---|
+|67|
 
 ## Use join with shuffle
 
 ```kusto
-T | where Event=="Start" | project ActivityId, Started=Timestamp
-| join hint.strategy = shuffle (T | where Event=="End" | project ActivityId, Ended=Timestamp)
-  on ActivityId
-| extend Duration=Ended - Started
-| summarize avg(Duration)
+StormEvents
+| where State contains "West"
+| where EventType contains "Flood"
+| join hint.strategy=shuffle 
+( StormEvents
+    | where EventType contains "Hail"
+    | project EpisodeId, State, DamageProperty
+)   on State
+| count
 ```
+
+**Output** 
+
+|Count|
+|---|
+|103|
 
 ## Use make-series with shuffle
 
@@ -99,7 +114,14 @@ StormEvents
     top 3 by DamageProperty
     | project EpisodeId, State, DamageProperty
 )
+| count
 ```
+
+**Output** 
+
+|Count|
+|---|
+|22345|
 
 ### Compare hint.strategy=shuffle and hint.shufflekey=key
 

@@ -122,27 +122,19 @@ Use `hint.strategy=shuffle` for this mode. See the following example:
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| where State contains 'North'
-| partition hint.strategy=shuffle by InjuriesDirect (summarize Events=count(), Injuries=sum(InjuriesDirect) by State);
+| partition hint.strategy=shuffle by EpisodeId
+(
+    top 3 by DamageProperty
+    | project EpisodeId, State, DamageProperty
+)
+| count
 ```
 
 **Output** 
 
-|State|Events|Injuries|
-|---|---|---|
-|NORTH CAROLINA	2	2|
-|NORTH DAKOTA|1|1|
-|NORTH CAROLINA|1715|0|
-|NORTH DAKOTA|902|0|
-|ATLANTIC NORTH|185|0|
-|NORTH CAROLINA|1|8|
-|NORTH DAKOTA|1|18|
-|ATLANTIC NORTH|1|7|
-|NORTH DAKOTA|1|4|
-|NORTH CAROLINA|1|4|
-|NORTH CAROLINA|2|6|
-|ATLANTIC NORTH|1|3|
-|ATLANTIC NORTH|1|5|
+|Count|
+|---|
+|22345|
 
 ### Legacy mode with implicit source
 
