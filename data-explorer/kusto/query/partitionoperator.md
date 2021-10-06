@@ -14,17 +14,18 @@ ms.date: 10/06/2021
 The partition operator partitions the records of its input table into multiple subtables according to values in a key column, runs a subquery on each subtable, and produces a single output table that is the union of the results of all subqueries.
 
 The partition operator supports several modes of subquery operation: 
+
 * Native mode - use with an implicit data source with thousands of key partition values.
 * Shuffle mode - use with an implicit source with millions of key partition values.
 * Legacy mode - use with an implicit or explicit source for 64 or less key partition values.
 
 **Native mode**
 
-The subquery is a tabular transformation that doesn't specify a tabular source. The source is implicit and is assigned according to the subtable partitions. It should be applied when the number of distinct values of the partition key is not large, roughly in the thousand. Use `hint.strategy=native` for this strategy. There is no restriction on the number of partitions.
+This subquery is a tabular transformation that doesn't specify a tabular source. The source is implicit and is assigned according to the subtable partitions. It should be applied when the number of distinct values of the partition key is not large, roughly in the thousand. Use `hint.strategy=native` for this strategy. There is no restriction on the number of partitions.
 
 **Shuffle mode**
 
-The subquery is a tabular transformation that doesn't specify a tabular source. The source is implicit and will be assigned according to the subtable partitions. The strategy applies when the number of distinct values of the partition key is large, in the millions. Use `hint.strategy=shuffle` for this strategy. There is no restriction on the number of partitions.
+This subquery is a tabular transformation that doesn't specify a tabular source. The source is implicit and will be assigned according to the subtable partitions. The strategy applies when the number of distinct values of the partition key is large, in the millions. Use `hint.strategy=shuffle` for this strategy. There is no restriction on the number of partitions. For more information about shuffle mode and performance, see [shuffle](shufflequery.md).
 
 **Native and shuffle mode operators**
 
@@ -49,7 +50,6 @@ Any additional reference to the source is taken to mean the entire input table, 
 
 > [!NOTE]
 > The legacy partition operator is currently limited by the number of partitions.
-> Up to 64 distinct partitions may be created.
 > The operator will yield an error if the partition column (*Column*) has more than 64 distinct values.
 
 **All modes**
@@ -90,7 +90,8 @@ The operator returns a union of the results of the individual subqueries.
 
 Use `hint.strategy=native` for this strategy. See the following example:
 
-  ```kusto
+```kusto
+Grades
 | partition hint.strategy=native by Subject (top 3 by Grade)
   ```
 

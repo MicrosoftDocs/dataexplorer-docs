@@ -149,7 +149,7 @@ on ActivityId, numeric_column
 
 In this example, using the `summarize` operator with `shuffle` mode improves performance. The source table has 150M records and the cardinality of the group by key is 10M, which is spread over 10 cluster nodes. 
 
-Using `summarize` without `shuffle` mode, the query ends after 1:08 and the memory usage peak is ~3 GB:
+Using `summarize` operator without `shuffle` mode, the query ends after 1:08 and the memory usage peak is ~3 GB:
 
 ```kusto
 orders
