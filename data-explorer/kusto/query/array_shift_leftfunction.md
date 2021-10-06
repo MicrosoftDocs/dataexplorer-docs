@@ -19,7 +19,7 @@ Shifts the values inside a `dynamic` array to the left.
 
 ## Arguments
 
-* *array*: Input array to split, must be dynamic array.
+* *array*: Input array to shift, must be dynamic array.
 * *shift_count*: Integer specifying the number of positions that array elements will be shifted to the left. If the value is negative, the elements will be shifted to the right.
 * *fill_value*: Scalar value that is used for inserting elements instead of the ones that were shifted and removed. Default: null value or empty string (depending on the *array* type).
 
