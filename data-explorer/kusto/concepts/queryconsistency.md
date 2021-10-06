@@ -25,7 +25,7 @@ If you send a control command and receive acknowledgment that the command has co
  
 In general, we recommend that you first try the strongly consistent model. Switch to using weakly consistent queries only if necessary.
 
-## Controlling query consistency
+## Control query consistency
 
 * Switching to weakly consistent queries can be done by the client, by setting the `queryconsistency` property when making a [REST API call](../api/rest/request.md).
   * Users of the .NET client can also set it in the [Kusto connection string](../api/connection-strings/kusto.md), or as a flag in the [client request properties](../api/netfx/request-properties.md).
