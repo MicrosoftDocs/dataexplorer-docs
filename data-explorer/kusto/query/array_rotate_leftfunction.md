@@ -19,7 +19,7 @@ Rotates values inside a `dynamic` array to the left.
 
 ## Arguments
 
-* *array*: Input array to split, must be dynamic array.
+* *array*: Input array to rotate, must be dynamic array.
 * *rotate_count*: Integer specifying the number of positions that array elements will be rotated to the left. If the value is negative, the elements will be rotated to the right.
 
 ## Returns
