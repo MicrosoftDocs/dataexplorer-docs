@@ -18,7 +18,7 @@ If you send a control command and receive acknowledgment that the command has co
 
 *Weakly consistent queries* don't have that guarantee. Clients making queries might observe some latency
 (usually 1-2 minutes) between changes and queries reflecting those changes. To change the latency, and control other parameters of the query weak consistency service, see [query weak consistency policy](../management/query-weak-consistency-policy.md).
-* The advantage of weakly consistent queries, is that it reduces the load on the cluster node that handles database changes.
+* The advantage of running queries with weak consistency is that it reduces the load on the cluster node that handles database changes.
 * Weakly consistent queries can be affinitized to a specific query head, either by the query text or by the context database name.
   * The advantage of using affinity by query text is when also using the [query results cache](../query/query-results-cache.md).
   * The advantage of using affinity by context database name is to not overload tail nodes with having to frequently load large database metadata.
