@@ -27,7 +27,7 @@ In general, we recommend that you first try the strongly consistent model. Switc
 
 ## Control query consistency
 
-* Switching to weakly consistent queries can be done by the client, by setting the `queryconsistency` property when making a [REST API call](../api/rest/request.md).
+* Switching to weakly consistent queries can be done per-query, by setting the `queryconsistency` property when making a [REST API call](../api/rest/request.md).
   * Users of the .NET client can also set it in the [Kusto connection string](../api/connection-strings/kusto.md), or as a flag in the [client request properties](../api/netfx/request-properties.md).
   * Supported values for the client request property are: `strongconsistency`, `weakconsistency`, `affinitizedweakconsistency`, `databaseaffinitizedweakconsistency`.
 * Alternatively, query consistency can be controlled by setting a workload group's [Query consistency policy](../management/query-consistency-policy.md).
