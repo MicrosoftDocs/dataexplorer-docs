@@ -90,38 +90,94 @@ The operator returns a union of the results of the individual subqueries.
 
 Use `hint.strategy=native` for this mode. See the following example:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-Grades
-| partition hint.strategy=native by Subject (top 3 by Grade)
-  ```
+StormEvents
+| where State startswith 'W'
+| partition hint.strategy=native by InjuriesDirect (summarize Events=count(), Injuries=sum(InjuriesDirect) by State);
+```
+
+**Output** 
+
+|State|Events|Injuries|
+|---|---|---|
+|WISCONSIN|4|4|
+|WYOMING|5|5|
+|WEST VIRGINIA|1|1|
+|WASHINGTON|2|2|
+|WEST VIRGINIA|756|0|
+|WYOMING|390|0|
+|WASHINGTON|256|0|
+|WISCONSIN|1845|0|
+|WYOMING|1|4|
+|WASHINGTON|1|5|
+|WISCONSIN|1|2|
+|WASHINGTON|1|2|
+|WASHINGTON|1|10|
 
 ### Shuffle mode
 
 Use `hint.strategy=shuffle` for this mode. See the following example:
 
-  ```kusto
-  Grades
-  | partition hint.strategy=shuffle by StudentId (top 2 by Grade)
-  ```
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents
+| where State contains 'North'
+| partition hint.strategy=shuffle by InjuriesDirect (summarize Events=count(), Injuries=sum(InjuriesDirect) by State);
+```
+
+**Output** 
+
+|State|Events|Injuries|
+|---|---|---|
+|NORTH CAROLINA	2	2|
+|NORTH DAKOTA|1|1|
+|NORTH CAROLINA|1715|0|
+|NORTH DAKOTA|902|0|
+|ATLANTIC NORTH|185|0|
+|NORTH CAROLINA|1|8|
+|NORTH DAKOTA|1|18|
+|ATLANTIC NORTH|1|7|
+|NORTH DAKOTA|1|4|
+|NORTH CAROLINA|1|4|
+|NORTH CAROLINA|2|6|
+|ATLANTIC NORTH|1|3|
+|ATLANTIC NORTH|1|5|
 
 ### Legacy mode with implicit source
 
 This subquery type is used for legacy purposes only, and indicated by the use of `hint.strategy=legacy`  or by not including any mode indication. See the following example:
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-Grades
-| partition hint.strategy=legacy by StudentId (top 2 by Grade)
+StormEvents
+| where State contains "West"
+| partition hint.strategy=legacy by InjuriesIndirect (summarize Events=count(), Damage=sum(DeathsDirect) by State);
 ```
+
+**Output** 
+
+|State|Events|Damage|
+|---|---|---|
+|WEST VIRGINIA|1|10000|
+|WEST|VIRGINIA|756|4342000|
 
 ### Legacy mode with explicit source
 
 This mode is for legacy purposes only, and indicated by the use of `hint.strategy=legacy` or by not including a mode indication at all. See the following example:
 
-  ```kusto
-  range x from 1 to 2 step 1
-  | partition hint.strategy=legacy by x
-      { U | extend y=toscalar(x)}
-  ```
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+range x from 1 to 2 step 1
+| partition hint.strategy=legacy by x { StormEvents | where x == InjuriesIndirect}
+| count 
+```
+
+**Output** 
+
+|Count|
+|---|
+|113|
 
 ### Top-nested case
 
@@ -136,7 +192,6 @@ StormEvents
     summarize Events=count(), Injuries=sum(InjuriesDirect) by EventType, State
     | top 3 by Events 
 ) 
-
 ```
 
 **Output** 
