@@ -101,9 +101,18 @@ StormEvents
 ## Use make-series with shuffle
 
 ```kusto
-T
-| make-series hint.shufflekey = Fruit PriceAvg=avg(Price) default=0  on Purchase from datetime(2016-09-10) to datetime(2016-09-13) step 1d by Supplier, Fruit
+StormEvents
+| where State contains "North"
+| make-series hint.shufflekey = State sum(DamageProperty) default = 0 on StartTime in range(datetime(2007-01-01 00:00:00.0000000), datetime(2007-01-31 23:59:00.0000000), 15d) by State
 ```
+
+**Output** 
+
+|State|sum_DamageProperty|StartTime|
+|---|---|---|---|
+|NORTH DAKOTA|[60000,0,0]|["2006-12-31T00:00:00.0000000Z","2007-01-15T00:00:00.0000000Z","2007-01-30T00:00:00.0000000Z"]|
+|NORTH CAROLINA|[20000,0,1000]|["2006-12-31T00:00:00.0000000Z","2007-01-15T00:00:00.0000000Z","2007-01-30T00:00:00.0000000Z"]|
+|ATLANTIC NORTH|[0,0,0]|["2006-12-31T00:00:00.0000000Z","2007-01-15T00:00:00.0000000Z","2007-01-30T00:00:00.0000000Z"]|
 
 ### Use partition with shuffle
 
