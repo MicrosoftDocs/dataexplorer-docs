@@ -1,5 +1,5 @@
 ---
-title: pattern statement - Azure Data Explorer
+title: Pattern statement - Azure Data Explorer
 description: This article describes the pattern statement in Azure Data Explorer.
 services: data-explorer
 author: orspod
