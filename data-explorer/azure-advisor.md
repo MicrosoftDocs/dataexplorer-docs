@@ -10,7 +10,7 @@ ms.topic: how-to
 ms.date: 09/14/2020
 ---
 
-# Use Azure Advisor recommendations to optimize your Azure Data Explorer cluster (Preview)
+# Use Azure Advisor recommendations to optimize your Azure Data Explorer cluster
 
 Azure Advisor analyzes the Azure Data Explorer cluster configurations and usage telemetry and offers personalized and actionable recommendations to help you optimize your cluster.
 
