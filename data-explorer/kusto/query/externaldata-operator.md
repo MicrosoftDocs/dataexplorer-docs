@@ -24,6 +24,7 @@ Azure Blob Storage or a file in Azure Data Lake Storage.
 
 > [!NOTE]
 > `externaldata` operator usage in Azure Monitor should be limited to small reference tables. It is not designed for large data volumes. If large volumes are needed, it is better to ingest them as custom logs.
+> This operator isn’t supported when running queries over a private link or otherwise reaching to customer-owned storage accounts.
 
 ::: zone-end
 
