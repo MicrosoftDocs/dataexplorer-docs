@@ -30,7 +30,7 @@ For general information about ingesting into Azure Data Explorer from IoT Hub, s
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Create [a cluster and database](create-cluster-database-portal.md).
 * [A sample app](https://github.com/Azure-Samples/azure-iot-samples-csharp) and documentation for simulating a device.
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) to run the sample app.
+* [.NET SDK](https://dotnet.microsoft.com/download) to compile and run the sample app.
 
 ## Create an Iot Hub
 
@@ -127,7 +127,7 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 The simulated device application connects to a device-specific endpoint on your IoT hub and sends simulated temperature and humidity telemetry.
 
-1. Download the sample C# project from https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip and extract the ZIP archive.
+1. Download the sample C# project from https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/refs/heads/main.zip and extract the ZIP archive.
 
 1. In a local terminal window, navigate to the root folder of the sample C# project. Then navigate to the **iot-hub\Quickstarts\SimulatedDevice** folder.
 

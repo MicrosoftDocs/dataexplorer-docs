@@ -19,7 +19,7 @@ Decodes a base64 string to a [GUID](./scalar-data-types/guid.md).
 
 ## Arguments
 
-*String*: Input string to be decoded from base64 to a [GUID](./scalar-data-types/guid.md). 
+* *String*: Input string to be decoded from base64 to a [GUID](./scalar-data-types/guid.md). 
 
 ## Returns
 
@@ -31,7 +31,7 @@ Returns a [GUID](./scalar-data-types/guid.md) decoded from a base64 string.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-print Quine=base64_decode_toguid("JpbpECu8dUy7Pv5gbeJXAA==")  
+print Quine = base64_decode_toguid("JpbpECu8dUy7Pv5gbeJXAA==")  
 ```
 
 |Quine|
@@ -42,7 +42,7 @@ If you try to decode an invalid base64 string, "null" will be returned:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-print Empty=base64_decode_toarray("abcd1231")
+print Empty = base64_decode_toarray("abcd1231")
 ```
 
 |Empty|

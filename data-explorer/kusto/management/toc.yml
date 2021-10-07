@@ -22,6 +22,8 @@ items:
     href: request-rate-limits-enforcement-policy.md
   - name: Request queuing policy
     href: request-queuing-policy.md
+  - name: Query consistency policy
+    href: query-consistency-policy.md
 - name: Schema
   items:
   - name: Best practices for schema management
@@ -281,10 +283,13 @@ items:
 - name: Data ingestion
   items:
   - name: Ingest from storage
+    displayName:  .ingest into, pull data, pulling ingestion
     href: data-ingestion/ingest-from-storage.md
   - name: Ingest from query
+    displayName:  .set, .append, .set-or-append, .set-or-replace
     href: data-ingestion/ingest-from-query.md
   - name: Inline ingestion
+    displayName:  .ingest inline
     href: data-ingestion/ingest-inline.md
   - name: Streaming ingestion
     items:
