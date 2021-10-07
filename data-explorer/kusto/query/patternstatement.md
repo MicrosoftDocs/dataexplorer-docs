@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/27/2021
+ms.date: 10/06/2021
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -43,18 +43,18 @@ A **pattern** is a construct that maps string tuples to tabular expressions. Eac
     * *PatternName* `(` *ArgValue1* [`,` *ArgValue2* ...] `).`*PathValue*
     * *PatternName* `(` *ArgValue1* [`,` *ArgValue2* ...] `).["`*PathValue*`"]`
 
-## Parameters
+## Arguments
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *PatternName* | string | &check; | The name of the pattern. Use the pattern syntax for all pattern references associated with the keyword. |
+| *PatternName* | string | &check; | The name of the pattern. |
 | *ArgName* | string | &check; | The name of the argument. Patterns can have one or more arguments. |
-| *ArgType* | string | &check; | The scalar data type of the *ArgName* parameter. Possible values: `string` |
+| *ArgType* | string | &check; | The scalar data type of the *ArgName* argument. Possible values: `string` |
 | *PathName* | string | | The name of the path argument. Patterns can have no path or one path. |
-| *PathArgType* | string | | Type of the *PathArgType* parameter. Possible values: `string` |
-| *ArgValue* | string | &check; | *ArgName* and optional *PathName* tuple values to be mapped to an *expression*.  |
-| *PathValue* | string | | A value to map for *PathName*. |
-| *expression* | string | &check; | Either a tabular expression, or a lambda expression that references a function returning tabular data. For example: `Logs | where Timestamp > ago(1h)` |
+| *PathArgType* | string | | The type of the *PathArgType* argument. Possible values: `string` |
+| *ArgValue* | string | &check; | The *ArgName* and optional *PathName* tuple values to be mapped to an *expression*.  |
+| *PathValue* | string | | The value to map for *PathName*. |
+| *expression* | string | &check; | A tabular or lambda expression that references a function returning tabular data. For example: `Logs | where Timestamp > ago(1h)` |
 
 ## Examples
 
