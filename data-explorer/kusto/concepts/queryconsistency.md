@@ -11,6 +11,8 @@ ms.date: 01/20/2019
 ---
 # Query consistency
 
+## Consistency models
+
 Kusto supports two query consistency models: **strong** and **weak**.
 
 *Strongly consistent queries* (default) have a "read-my-changes" guarantee. 
