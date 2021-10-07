@@ -21,6 +21,9 @@ By analyzing structured, semi-structured, and unstructured data across time seri
 
 Azure Data Explorer capabilities are extended by other services built on its powerful query language, including [Azure Monitor logs](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/), and [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint).
 
+The following image shows a schematic overview of Azure Data Explorer architecture: 
+
+:::image type="content" source="media/data-explorer-overview/overview-architecture.png" alt-text="Schematic image of Azure Data Explorer architecture.":::
 
 ## What makes Azure Data Explorer unique?
 
@@ -59,13 +62,15 @@ Generally speaking, when you interact with Azure Data Explorer, you're going to 
 > [!NOTE]
 > Work with Azure Data Explorer is done through interaction with the cluster. You can access these resources either in the [Web UI](web-query-data.md) or by using [SDKs](kusto/api/index.md).
 
-1. **Create database:** Create a *cluster* and then create one or more *databases* in that cluster. [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
+1. **Create database:** Create a *cluster* and then create one or more *databases* in that cluster. Each Azure Data Explorer cluster can hold up to 10,000 databases and each database up to 10,000 tables. The data in each table is stored in data shards also called “extents”. All data is automatically indexed and partitioned based on the ingestion time. Unlike a relational database, there are no primary foreign key constraints or any other constraints, such as uniqueness. This means you can store a lot of varied data and because of the way it's stored, you get fast access to querying it. [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
 
-1. **Ingest data:** Load data into database tables so that you can run queries against it. Azure Data Explorer supports several ingestion methods, each with its own target scenarios. These methods include ingestion tools, connectors and plugins to diverse services, managed pipelines, programmatic ingestion using SDKs, and direct access to ingestion. [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
+1. **Ingest data:** Load data into database tables so that you can run queries against it. Azure Data Explorer supports several ingestion methods, each with its own target scenarios. These methods include ingestion tools, connectors and plugins to diverse services, managed pipelines, programmatic ingestion using SDKs, and direct access to ingestion. For more information, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md). Get started with [one-click ingestion](ingest-data-one-click.md).
 
-1. **Query database:** Use our web application to run, review, and share queries and results. It's available in the Azure portal and as a stand-alone application. You can also send queries programmatically (using an SDK) or to a REST API endpoint. [Quickstart: Query data in Azure Data Explorer](web-query-data.md)
+1. **Query database:** Use the web application to run, review, and share queries and results. You can also send queries programmatically (using an SDK) or to a REST API endpoint. [Quickstart: Query data in Azure Data Explorer](web-query-data.md)
 
-    [Kusto Query Language](kusto/query/index.md) is an expressive, intuitive, and highly productive query language. It offers a smooth transition from simple one-liners to complex data processing scripts, and supports querying structured, semi-structured, and unstructured (text search) data. There's a wide variety of query language operators and functions ([aggregation](kusto/query/aggregation-functions.md), filtering, time series functions, geospatial functions, [joins](kusto/query/joinoperator.md), [unions](kusto/query/unionoperator.md), and more) in the language. KQL supports [cross-cluster and cross-database queries](kusto/query/cross-cluster-or-database-queries.md), and is feature rich from a parsing (json, XML, and more) perspective. The language also natively supports advanced analytics.
+    Azure Data Explorer uses the [Kusto Query Language](kusto/query/index.md), which is an expressive, intuitive, and highly productive query language. It offers a smooth transition from simple one-liners to complex data processing scripts, and supports querying structured, semi-structured, and unstructured (text search) data. There's a wide variety of query language operators and functions ([aggregation](kusto/query/aggregation-functions.md), filtering, time series functions, geospatial functions, [joins](kusto/query/joinoperator.md), [unions](kusto/query/unionoperator.md), and more) in the language. KQL supports [cross-cluster and cross-database queries](kusto/query/cross-cluster-or-database-queries.md), and is feature rich from a parsing (json, XML, and more) perspective. The language also natively supports advanced analytics.
+
+1. **Visualize results:**  Use different visual displays of your data in the native Azure Data Explorer [Dashboards](azure-data-explorer-dashboards.md). You can also display your results using native connectors to some of the leading visualization services available today, such as [Power BI](power-bi-connector.md) and [Grafana](grafana.md). Azure Data Explorer also has [ODBC](connect-odbc.md) and JDBC connector support to tools such as Tableau and Qlik.
 
 ## How to provide feedback
 
