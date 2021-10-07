@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/07/2021
 ---
-# Shuffle query
+# shuffle query
 
 `Shuffle` query is a semantic-preserving transformation for a set of operators that support `shuffle` mode. Depending on the actual data, this query can yield considerably better performance.
 
