@@ -40,19 +40,19 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. Select the **+ Create a resource** button in the upper-left corner of the portal.
 
-   ![Search resources.](media/create-cluster-database-portal/create-resource.png)
+   ![Create resource.](media/create-cluster-database-portal/create-resource.png)
 
 1. Search for *Azure Data Explorer*.
 
-   ![Search resources.](media/create-cluster-database-portal/search-resources.png)
+   ![Search Azure Data Explorer.](media/create-cluster-database-portal/search-resources.png)
 
 1. Under **Azure Data Explorer**, select **Create**.
 
-   ![Search resources.](media/create-cluster-database-portal/create-click.png)
+   ![Create.](media/create-cluster-database-portal/create-click.png)
 
 1. Fill out the basic cluster details with the following information.
 
-    ![Create cluster form.](media/create-cluster-database-portal/create-cluster-form2.png)
+    ![Fill in cluster form.](media/create-cluster-database-portal/create-cluster-form-2.png)
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
