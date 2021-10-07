@@ -13,30 +13,30 @@ ms.date: 10/06/2021
 
 The partition operator partitions the records of its input table into multiple subtables according to values in a key column, runs a subquery on each subtable, and produces a single output table that is the union of the results of all subqueries.
 
-The partition operator supports several strategies, or modes, of subquery operation: 
+The partition operator supports several strategies of subquery operation: 
 
-* Native - use with an implicit data source with thousands of key partition values.
-* Shuffle - use with an implicit source with millions of key partition values.
-* Legacy - use with an implicit or explicit source for 64 or less key partition values.
+* [Native](#native-strategy) - use with an implicit data source with thousands of key partition values.
+* [Shuffle](#shuffle-strategy) - use with an implicit source with millions of key partition values.
+* [Legacy](#legacy-strategy) - use with an implicit or explicit source for 64 or less key partition values.
 
-**Native mode**
+## Native strategy
 
-This subquery is a tabular transformation that doesn't specify a tabular source. The source is implicit and is assigned according to the subtable partitions. It should be applied when the number of distinct values of the partition key is not large, roughly in the thousand. Use `hint.strategy=native` for this mode. There is no restriction on the number of partitions.
+This subquery is a tabular transformation that doesn't specify a tabular source. The source is implicit and is assigned according to the subtable partitions. It should be applied when the number of distinct values of the partition key is not large, roughly in the thousand. Use `hint.strategy=native` for this strategy. There is no restriction on the number of partitions.
 
-**Shuffle mode**
+## Shuffle strategy
 
-This subquery is a tabular transformation that doesn't specify a tabular source. The source is implicit and will be assigned according to the subtable partitions. The mode applies when the number of distinct values of the partition key is large, in the millions. Use `hint.strategy=shuffle` for this mode. There is no restriction on the number of partitions. For more information about shuffle mode and performance, see [shuffle](shufflequery.md).
+This subquery is a tabular transformation that doesn't specify a tabular source. The source is implicit and will be assigned according to the subtable partitions. The strategy applies when the number of distinct values of the partition key is large, in the millions. Use `hint.strategy=shuffle` for this strategy. There is no restriction on the number of partitions. For more information about shuffle strategy and performance, see [shuffle](shufflequery.md).
 
-**Native and shuffle mode operators**
+## Native and shuffle strategy operators
 
-The difference between `hint.strategy=native` and `hint.strategy=shuffle` is mainly to allow the caller to indicate the cardinality and execution mode of the sub-query, and can affect the execution time. There is no other semantic difference
+The difference between `hint.strategy=native` and `hint.strategy=shuffle` is mainly to allow the caller to indicate the cardinality and execution strategy of the sub-query, and can affect the execution time. There is no other semantic difference
 between the two.
 
-For `native` and `shuffle` mode, the source of the sub-query is implicit, and cannot be referenced by the sub-query. This mode supports a limited set of operators: `project`, `sort`, `summarize`, `take`, `top`, `order`, `mv-expand`, `mv-apply`, `make-series`, `limit`, `extend`, `distinct`, `count`, `project-away`, `project-keep`, `project-rename`, `project-reorder`, `parse`, `parse-where`, `reduce`, `sample`, `sample-distinct`, `scan`, `search`, `serialize`, `top-nested`, `top-hitters` and `where`.
+For `native` and `shuffle` strategy, the source of the sub-query is implicit, and cannot be referenced by the sub-query. This stategy supports a limited set of operators: `project`, `sort`, `summarize`, `take`, `top`, `order`, `mv-expand`, `mv-apply`, `make-series`, `limit`, `extend`, `distinct`, `count`, `project-away`, `project-keep`, `project-rename`, `project-reorder`, `parse`, `parse-where`, `reduce`, `sample`, `sample-distinct`, `scan`, `search`, `serialize`, `top-nested`, `top-hitters` and `where`.
 
 Operators like `join`, `union`, `external_data`, `plugins`, or any other operator that involves table source that is not the subtable partitions, are not allowed.
 
-**Legacy mode**
+## Legacy strategy
 
 Legacy subqueries can use the following sources:
 
@@ -44,7 +44,7 @@ Legacy subqueries can use the following sources:
 
 * Explicit - The subquery must include a tabular source explicitly. Only the key column of the input table is available in the subquery, and referenced by using its name in the `toscalar()` function.
 
-For both implicit and explicit sources, the subquery type is used for legacy purposes only, and indicated by the use of `hint.strategy=legacy`, or by not including any mode indication. 
+For both implicit and explicit sources, the subquery type is used for legacy purposes only, and indicated by the use of `hint.strategy=legacy`, or by not including any stategy indication. 
 
 Any additional reference to the source is taken to mean the entire input table, for example, by using the [as operator](asoperator.md) and calling up the value again.
 
@@ -52,30 +52,30 @@ Any additional reference to the source is taken to mean the entire input table, 
 > The legacy partition operator is currently limited by the number of partitions.
 > The operator will yield an error if the partition column (*Column*) has more than 64 distinct values.
 
-**All modes**
+## All strategies
 
 For native, shuffle and legacy subqueries, the result must be a single tabular result. Multiple tabular results and the use of the `fork` operator are not supported. A subquery cannot include additional statements, for example, it can't have a `let` statement.
 
 ## Syntax
 
-*T* `|` `partition` [`hint.strategy=` *Mode*] [*PartitionParameters*] `by` *Column* `(` *TransformationSubQuery* `)`
+*T* `|` `partition` [`hint.strategy=` *strategy*] [*PartitionParameters*] `by` *Column* `(` *TransformationSubQuery* `)`
 
 *T* `|` `partition` [*PartitionParameters*] `by` *Column* `{` *ContextFreeSubQuery* `}`
 
 ## Arguments
 
 * *T*: The tabular source whose data is to be processed by the operator.
-* *Mode*: The partition mode, `native`, `shuffle` or `legacy`. `native` mode is used with an implicit source with thousands of key partition values. `shuffle` mode is used with an implicit source with millions of key partition values. `native` mode is used with an explicit or implicit source with 64 or less key partition values. 
+* *strategy*: The partition strategy, `native`, `shuffle` or `legacy`. `native` strategy is used with an implicit source with thousands of key partition values. `shuffle` strategy is used with an implicit source with millions of key partition values. `native` strategy is used with an explicit or implicit source with 64 or less key partition values. 
 * *Column*: The name of a column in *T* whose values determine how the input table   is to be partitioned. See **Notes** below.
 * *TransformationSubQuery*: A tabular transformation expression, whose source is implicitly the subtables produced by partitioning the records of *T*, each subtable being homogenous on the value of *Column*.
 * *ContextFreeSubQuery*: A tabular expression that includes its own tabular source, such as a table reference. The expression can reference a single column from *T*, being the key column *Column* using the syntax `toscalar(`*Column*`)`.
 * *PartitionParameters*: Zero or more (space-separated) parameters in the form of: <br>
   *Name* `=` *Value* that control the behavior of the operator. The following parameters are supported:
 
-  |Name               |Values         |Description|Native/Shuffle/Legacy Mode|
+  |Name               |Values         |Description|Native/Shuffle/Legacy strategy|
   |-------------------|---------------|-----------|----------|
-  |`hint.strategy`|`legacy`, `shuffle`, `native`|Defines the execution mode of the partition operator.|Native, Shuffle, Legacy|
-  |`hint.shufflekey`|the partition key|Runs the partition operator in shuffle mode where the shuffle key is the specified partition key.|Shuffle|
+  |`hint.strategy`|`legacy`, `shuffle`, `native`|Defines the execution strategy of the partition operator.|Native, Shuffle, Legacy|
+  |`hint.shufflekey`|the partition key|Runs the partition operator in shuffle strategy where the shuffle key is the specified partition key.|Shuffle|
   |`hint.materialized`|`true`,`false` |If set to `true`, will materialize the source of the `partition` operator. The default value is `false`. |Legacy|
   |`hint.concurrency`|*Number*|Hints the system how many partitions to run in parallel. The default value is 16.|Legacy|
   |`hint.spread`|*Number*|Hints the system how to distribute the partitions among cluster nodes. For example, if there are N partitions and the spread hint is set to P, then the N partitions will be processed by P different cluster nodes equally in parallel/sequentially depending on the concurrency hint. The default value is 1.|Legacy|
@@ -86,9 +86,9 @@ The operator returns a union of the results of the individual subqueries.
 
 ## Examples
 
-### Native mode
+### Native strategy
 
-Use `hint.strategy=native` for this mode. See the following example:
+Use `hint.strategy=native` for this strategy. See the following example:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -115,9 +115,9 @@ StormEvents
 |WASHINGTON|1|2|
 |WASHINGTON|1|10|
 
-### Shuffle mode
+### Shuffle strategy
 
-Use `hint.strategy=shuffle` for this mode. See the following example:
+Use `hint.strategy=shuffle` for this strategy. See the following example:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -136,9 +136,9 @@ StormEvents
 |---|
 |22345|
 
-### Legacy mode with implicit source
+### Legacy strategy with implicit source
 
-This subquery type is used for legacy purposes only, and indicated by the use of `hint.strategy=legacy`  or by not including any mode indication. See the following example:
+This subquery type is used for legacy purposes only, and indicated by the use of `hint.strategy=legacy`  or by not including any strategy indication. See the following example:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -154,9 +154,9 @@ StormEvents
 |WEST VIRGINIA|1|10000|
 |WEST VIRGINIA|756|4342000|
 
-### Legacy mode with explicit source
+### Legacy strategy with explicit source
 
-This mode is for legacy purposes only, and indicated by the use of `hint.strategy=legacy` or by not including a mode indication at all. See the following example:
+This strategy is for legacy purposes only, and indicated by the use of `hint.strategy=legacy` or by not including a strategy indication at all. See the following example:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
