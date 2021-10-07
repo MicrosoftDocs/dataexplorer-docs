@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/06/2021
+ms.date: 10/07/2021
 ---
 # Shuffle query
 
@@ -134,68 +134,67 @@ StormEvents
 
 ### Compare hint.strategy=shuffle and hint.shufflekey=key
 
-When you use `hint.strategy=shuffle`, the shuffled operator will be shuffled by all the keys. In the following example, the hash function that shuffles the data will use both `ActivityId` and `ProcessId` as keys:
+When you use `hint.strategy=shuffle`, the shuffled operator will be shuffled by all the keys. In the following example, the query shuffles the data using both `EpisodeId` and `EventId` as keys:
 
 ```kusto
-T | where Event=="Start" | project ActivityId, Started=Timestamp
-| join hint.strategy = shuffle (T | where Event=="End" | project ActivityId, Ended=Timestamp)
-  on ActivityId, ProcessId
-| extend Duration=Ended - Started
-| summarize avg(Duration)
+StormEvents
+| where StartTime > datetime(2007-01-01 00:00:00.0000000)
+| join kind = inner hint.strategy=shuffle (StormEvents | where DamageCrops > 62000000) on EpisodeId, EventId
+| count
 ```
+
+**Output** 
+
+|Count|
+|---|
+|14|
 
 The following query uses `hint.shufflekey = key`. The query above is equivalent to this query.
 
 ```kusto
-T | where Event=="Start" | project ActivityId, Started=Timestamp
-| join hint.shufflekey = ActivityId hint.shufflekey = ProcessId (T | where Event=="End" | project ActivityId, Ended=Timestamp)
-  on ActivityId, ProcessId
-| extend Duration=Ended - Started
-| summarize avg(Duration)
+StormEvents
+| where StartTime > datetime(2007-01-01 00:00:00.0000000)
+| join kind = inner hint.shufflekey = EpisodeId hint.shufflekey = EventId (StormEvents | where DamageCrops > 62000000) on EpisodeId, EventId
 ```
+
+**Output** 
+
+|Count|
+|---|
+|14|
 
 ### Shuffle the data with multiple keys
 
 In some cases, the `hint.strategy=shuffle` will be ignored, and the query will not run in shuffle strategy. For example, in the following example, the join has summarize on its left side, so using `hint.strategy=shuffle` will not apply shuffle strategy to the query:
 
 ```kusto
-T
-| where Event=="Start"
-| project ActivityId, Started=Timestamp, numeric_column
-| summarize count(), numeric_column = any(numeric_column) by ActivityId
-| join
-    hint.strategy = shuffle (T
-    | where Event=="End"
-    | project ActivityId, Ended=Timestamp, numeric_column
-)
-on ActivityId, numeric_column
-| extend Duration=Ended - Started
-| summarize avg(Duration)
-```
+StormEvents
+| where StartTime > datetime(2007-01-01 00:00:00.0000000)
+| summarize count() by EpisodeId, EventId
+| join kind = inner hint.strategy=shuffle (StormEvents | where DamageCrops > 62000000) on EpisodeId, EventId
 
-To overcome this issue and run in shuffle mode, choose the key which is common for the `summarize` and `join` operations. In this case, this key is `ActivityId`. Use the hint `hint.shufflekey` to specify the shuffle key on the `join` to `hint.shufflekey = ActivityId`:
-
-```kusto
-T
-| where Event=="Start"
-| project ActivityId, Started=Timestamp, numeric_column
-| summarize count(), numeric_column = any(numeric_column) by ActivityId
-| join
-    hint.shufflekey = ActivityId (T
-    | where Event=="End"
-    | project ActivityId, Ended=Timestamp, numeric_column
-)
-on ActivityId, numeric_column
-| extend Duration=Ended - Started
-| summarize avg(Duration)
 ```
 
 **Output** 
 
-|ActivityId|NumericColumn|hash_by_key|
-|---|---|---|
-|activity1|2|56|
-|activity1|1|65|
+|Count|
+|---|
+|14|
+
+To overcome this issue and run in shuffle mode, choose the key which is common for the `summarize` and `join` operations. In this case, this key is `ActivityId`. Use the hint `hint.shufflekey` to specify the shuffle key on the `join` to `hint.shufflekey = ActivityId`:
+
+```kusto
+StormEvents
+| where StartTime > datetime(2007-01-01 00:00:00.0000000)
+| summarize count() by EpisodeId, EventId
+| join kind = inner hint.shufflekey=EpisodeId (StormEvents | where DamageCrops > 62000000) on EpisodeId, EventId
+```
+
+**Output** 
+
+|Count|
+|---|
+|14|
 
 ### Use summarize with shuffle to improve performance
 
