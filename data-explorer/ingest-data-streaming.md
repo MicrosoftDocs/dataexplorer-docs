@@ -11,11 +11,23 @@ ms.date: 09/01/2021
 
 # Configure streaming ingestion on your Azure Data Explorer cluster
 
-Use streaming ingestion to load data when you need low latency between ingestion and query. The streaming ingestion operation completes in under 10 seconds, and your data is immediately available for query after completion. This ingestion method is suitable for ingesting a high volume of data, such as thousands of records per second, spread over thousands of tables. Each table receives a relatively low volume of data, such as a few records per second.
+Streaming ingestion is useful for loading data when you need low latency between ingestion and query. Consider using streaming ingestion in the following scenarios:
 
-Use bulk ingestion instead of streaming ingestion when the amount of data ingested exceeds 4 GB per hour per table.
+* Latency of less than a second is required.
+* To optimize operational processing of many tables where the stream of data into each table is relatively small (a few records per second), but the overall data ingestion volume is high (thousands of records per second).
+
+If the stream of data into each table is high, consider using [batch ingestion](kusto/management/batchingpolicy.md).
 
 To learn more about different ingestion methods, see [data ingestion overview](ingest-data-overview.md).
+
+## Performance and operational considerations
+
+The main contributors that can impact streaming ingestion are:
+
+* **VM and cluster size**: Streaming ingestion performance and capacity scales with increased VM and cluster sizes. The number of concurrent ingestion requests is limited to six per core. For example, for 16 core SKUs, such as D14 and L16, the maximal supported load is 96 concurrent ingestion requests. For two core SKUs, such as D11, the maximal supported load is 12 concurrent ingestion requests.
+* **Data size limit**: The data size limit for a streaming ingestion request is 4 MB.
+* **Schema updates**: Schema updates, such as creation and modification of tables and ingestion mappings, may take up to five minutes for the streaming ingestion service. For more information see [Streaming ingestion and schema changes](kusto/management/data-ingestion/streaming-ingestion-schema-changes.md).
+* **SSD capacity**: Enabling streaming ingestion on a cluster, even when data isn't ingested via streaming, uses part of the local SSD disk of the cluster machines for streaming ingestion data and reduces the storage available for hot cache.
 
 ## Choose the appropriate streaming ingestion type
 
@@ -602,10 +614,6 @@ namespace StreamingIngestion
 
 * [Database cursors](kusto/management/databasecursor.md) aren't supported for a database if the database itself or any of its tables have the [Streaming ingestion policy](kusto/management/streamingingestionpolicy.md) defined and enabled.
 * [Data mappings](kusto/management/mappings.md) must be [pre-created](kusto/management/create-ingestion-mapping-command.md) for use in streaming ingestion. Individual streaming ingestion requests don't accommodate inline data mappings.
-* Streaming ingestion performance and capacity scales with increased VM and cluster sizes. The number of concurrent ingestion requests is limited to six per core. For example, for 16 core SKUs, such as D14 and L16, the maximal supported load is 96 concurrent ingestion requests. For two core SKUs, such as D11, the maximal supported load is 12 concurrent ingestion requests.
-* The data size limit for streaming ingestion request is 4 MB.
-* Schema updates, such as creation and modification of tables and ingestion mappings, may take up to five minutes for the streaming ingestion service. For more information see [Streaming ingestion and schema changes](kusto/management/data-ingestion/streaming-ingestion-schema-changes.md).
-* Enabling streaming ingestion on a cluster, even when data isn't ingested via streaming, uses part of the local SSD disk of the cluster machines for streaming ingestion data and reduces the storage available for hot cache.
 * [Extent tags](kusto/management/extents-overview.md#extent-tagging) can't be set on the streaming ingestion data.
 * [Update policy](kusto/management/updatepolicy.md). The update policy can reference only the newly-ingested data in the source table and not any other data or tables in the database.
 * If streaming ingestion is used on any of the tables of the database, this database cannot be used as leader for [follower databases](follower.md) or as a [data provider](data-share.md#data-provider---share-data) for Azure Data Share.
