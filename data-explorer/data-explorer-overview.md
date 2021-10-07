@@ -26,11 +26,11 @@ Azure Data Explorer capabilities are extended by other services built on its pow
 
 ### Data velocity, variety, and volume
 
-Azure Data Explorer can ingest terabytes of data in minutes in batch or streaming mode, and petabytes of data can be queried with results returned within milliseconds to seconds. This allows for high velocity (millions of events per second), low latency (seconds), and linear scale ingestion of raw data. Data can be ingested in different formats and structures. It can flow in from various pipelines and sources.
+Azure Data Explorer can ingest terabytes of data in minutes in batch or streaming mode. Petabytes of data can be queried with results returned within milliseconds to seconds. Azure Data Explorer provides high velocity (millions of events per second), low latency (seconds), and linear scale ingestion of raw data. Data can be ingested in different formats and structures. It can flow in from various pipelines and sources.
 
 ### User-friendly query language
 
-Azure Data explorer uses the [Kusto Query Language (KQL)](kusto/query/index.md), an open-source language initially invented by the team. The language is simple to understand and learn, and highly productive. You can use simple operators as well as advanced analytics.
+Azure Data explorer uses the [Kusto Query Language (KQL)](kusto/query/index.md), an open-source language initially invented by the team. The language is simple to understand and learn, and highly productive. You can use simple operators and advanced analytics.
 
 ### Advanced analytics
 
@@ -38,7 +38,7 @@ Use Azure Data Explorer for time series analysis with a large set of functions; 
 
 ### Easy-to-use wizard
 
-The [ingestion wizard](ingest-data-one-click.md) makes the data ingestion process easy, fast, and intuitive. The [web UI](web-query-data.md) provides an intuitive and guided experience that helps customers ramp-up quickly to start ingesting data, creating database tables, and mapping structures. It enables one time or a continuous ingestion from various sources and in a variety of data formats. Table mappings and schema are auto suggested and easy to modify.
+The [ingestion wizard](ingest-data-one-click.md) makes the data ingestion process easy, fast, and intuitive. The [web UI](web-query-data.md) provides an intuitive and guided experience that helps customers ramp-up quickly to start ingesting data, creating database tables, and mapping structures. It enables one time or a continuous ingestion from various sources and in various data formats. Table mappings and schema are auto suggested and easy to modify.
 
 ### Versatile data visualization
 
@@ -46,7 +46,7 @@ Data visualization helps you gain important insights. Azure Data Explorer offers
 
 ### Automatic ingest, process, and export
 
-Azure Data Explorer supports server-side stored functions, continuous ingest, and continuous export to Azure Data Lake store. It also supports ingestion time mapping transformations on the server side, update policies, and precomputed scheduled aggregates with materialized views.
+Azure Data Explorer supports server-side stored functions, continuous ingest, and continuous export to Azure Data Lake store. It also supports ingestion time-mapping transformations on the server side, update policies, and precomputed scheduled aggregates with materialized views.
 
 ## Azure Data Explorer flow
 
@@ -65,7 +65,7 @@ Generally speaking, when you interact with Azure Data Explorer, you're going to 
 
 1. **Query database:** Use our web application to run, review, and share queries and results. It's available in the Azure portal and as a stand-alone application. You can also send queries programmatically (using an SDK) or to a REST API endpoint. [Quickstart: Query data in Azure Data Explorer](web-query-data.md)
 
-    [Kusto Query Language](kusto/query/index.md) is an expressive, intuitive, and highly productive query language. It offers a smooth transition from simple one-liners to complex data processing scripts, and supports querying structured, semi-structured, and unstructured (text search) data. There is a wide variety of query language operators and functions ([aggregation](kusto/query/aggregation-functions.md), filtering, time series functions, geospatial functions, [joins](kusto/query/joinoperator.md), [unions](kusto/query/unionoperator.md), and more) in the language. KQL supports [cross-cluster and cross-database queries](kusto/query/cross-cluster-or-database-queries.md), and is feature rich from a parsing (json, XML etc.) perspective. In addition, the language natively supports advanced analytics.
+    [Kusto Query Language](kusto/query/index.md) is an expressive, intuitive, and highly productive query language. It offers a smooth transition from simple one-liners to complex data processing scripts, and supports querying structured, semi-structured, and unstructured (text search) data. There's a wide variety of query language operators and functions ([aggregation](kusto/query/aggregation-functions.md), filtering, time series functions, geospatial functions, [joins](kusto/query/joinoperator.md), [unions](kusto/query/unionoperator.md), and more) in the language. KQL supports [cross-cluster and cross-database queries](kusto/query/cross-cluster-or-database-queries.md), and is feature rich from a parsing (json, XML, and more) perspective. The language also natively supports advanced analytics.
 
 ## How to provide feedback
 
