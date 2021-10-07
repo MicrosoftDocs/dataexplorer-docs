@@ -152,7 +152,7 @@ StormEvents
 |State|Events|Damage|
 |---|---|---|
 |WEST VIRGINIA|1|10000|
-|WEST|VIRGINIA|756|4342000|
+|WEST VIRGINIA|756|4342000|
 
 ### Legacy mode with explicit source
 
