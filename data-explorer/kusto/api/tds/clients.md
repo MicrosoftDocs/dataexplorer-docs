@@ -80,7 +80,7 @@ If the ODBC application can accept a connection string instead of, or in additio
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
 ```
 
-Some ODBC applications don't work well with the `NVARCHAR(MAX)` type. For more information, see [https://docs.microsoft.com/sql/relational-databases/native-client/features/using-large-value-types#sql-server-native-client-odbc-driver](/sql/relational-databases/native-client/features/using-large-value-types).
+Some ODBC applications don't work well with the `NVARCHAR(MAX)` type. For more information, see [Using Large Value Types in SQL Server Native Client](/sql/relational-databases/native-client/features/using-large-value-types).
 
 The common workaround, is to cast the returned data to *NVARCHAR(n)*, with some value for n. For example, *NVARCHAR(4000)*. Such a workaround, however, won't work for Azure Data Explorer, since Azure Data Explorer has only one string type and for SQL clients it's encoded as *NVARCHAR(MAX)*.
 
@@ -181,8 +181,8 @@ Create a connection to the Azure Data Explorer database.
 1. Specify the host. For example, *mykusto.kusto.windows.net*.
 1. Specify the database. For example, *mydatabase*.
 
-> [!WARNING]
-> Don't use *master* as the database name. Azure Data Explorer requires a connection to a specific database.
+   > [!WARNING]
+   > Don't use *master* as the database name. Azure Data Explorer requires a connection to a specific database.
 
 1. Set **Active Directory - Password** for *Authentication*.
 1. Specify the credentials of the active directory user. For example, *myname@contoso.com*, and set the corresponding password for this user.
@@ -199,9 +199,9 @@ Create a connection to the Azure Data Explorer database.
 1. The window displays a tree view with all the available databases. Select one, to connect to the database.
 1. Another possibility, is to select **default** under **Connect to database**, and then select **Connect**. The object Explorer will display all the databases.
 
-> [!NOTE]
-> Browsing database objects via SSMS is not supported yet, since SSMS uses correlate subqueries to browse database schema.
-> Correlated subqueries are not supported by Azure Data Explorer. For more information, see [correlated subqueries](./sqlknownissues.md#correlated-sub-queries).
+   > [!NOTE]
+   > Browsing database objects via SSMS is not supported yet, since SSMS uses correlate subqueries to browse database schema.
+   > Correlated subqueries are not supported by Azure Data Explorer. For more information, see [correlated subqueries](./sqlknownissues.md#correlated-sub-queries).
 
 1. Select **New Query** to open the query window and set your database.
 
@@ -213,64 +213,64 @@ Add the required JAR-files to the front of MATLAB's static classpath by creating
 
 1. Run the following command in Matlab's command window.
 
-```java
-edit(fullfile(prefdir,'javaclasspath.txt'))
-```
+   ```java
+   edit(fullfile(prefdir,'javaclasspath.txt'))
+   ```
 
 1. Add the full paths to the required JAR-files.
 
-```java
-<before>
-c:\full\path\to\accessors-smart-1.2.jar
-c:\full\path\to\activation-1.1.jar
-c:\full\path\to\adal4j-1.6.3.jar
-c:\full\path\to\asm-5.0.4.jar
-c:\full\path\to\commons-codec-1.11.jar
-c:\full\path\to\commons-lang3-3.5.jar
-c:\full\path\to\gson-2.8.0.jar
-c:\full\path\to\javax.mail-1.6.1.jar
-c:\full\path\to\jcip-annotations-1.0-1.jar
-c:\full\path\to\json-smart-2.3.jar
-c:\full\path\to\lang-tag-1.4.4.jar
-c:\full\path\to\mssql-jdbc-7.0.0.jre8.jar
-c:\full\path\to\nimbus-jose-jwt-6.5.jar
-c:\full\path\to\oauth2-oidc-sdk-5.64.4.jar
-c:\full\path\to\slf4j-api-1.7.21.jar
-```
+   ```java
+   <before>
+   c:\full\path\to\accessors-smart-1.2.jar
+   c:\full\path\to\activation-1.1.jar
+   c:\full\path\to\adal4j-1.6.3.jar
+   c:\full\path\to\asm-5.0.4.jar
+   c:\full\path\to\commons-codec-1.11.jar
+   c:\full\path\to\commons-lang3-3.5.jar
+   c:\full\path\to\gson-2.8.0.jar
+   c:\full\path\to\javax.mail-1.6.1.jar
+   c:\full\path\to\jcip-annotations-1.0-1.jar
+   c:\full\path\to\json-smart-2.3.jar
+   c:\full\path\to\lang-tag-1.4.4.jar
+   c:\full\path\to\mssql-jdbc-7.0.0.jre8.jar
+   c:\full\path\to\nimbus-jose-jwt-6.5.jar
+   c:\full\path\to\oauth2-oidc-sdk-5.64.4.jar
+   c:\full\path\to\slf4j-api-1.7.21.jar
+   ```
 
-> [!NOTE]
-> You need the <**before**> at the top, so that these files are added to the front of the classpath. Also, replace *c:\full\path\to* with the actual full paths to these files.
+   > [!NOTE]
+   > You need the <**before**> at the top, so that these files are added to the front of the classpath. Also, replace *c:\full\path\to* with the actual full paths to these files.
 
 1. Restart MATLAB to make sure that these classes are loaded.
 
 1. Before trying to connect, run the following command (MATLAB command window).
 
-```java
-java.lang.System.clearProperty('javax.xml.transform.TransformerFactory')
-```
+   ```java
+   java.lang.System.clearProperty('javax.xml.transform.TransformerFactory')
+   ```
 
-> [!NOTE]
-> This resets the **TransformerFactory** to the default (MATLAB usually overloads this with **Saxon**, but this is incompatible with **ADAL4J**).
+   > [!NOTE]
+   > This resets the **TransformerFactory** to the default (MATLAB usually overloads this with **Saxon**, but this is incompatible with **ADAL4J**).
 
 1. Connect to the Azure Data Explorer TDS endpoint with the following command (MATLAB command window).
 
-```java
-conn = database('<<KUSTO_DATABASE>>','<<AAD_USER>>','<<USER_PWD>>','com.microsoft.sqlserver.jdbc.SQLServerDriver',['jdbc:sqlserver://<<MYCLUSTER>>.kusto.windows.net:1433;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword;database='])
- ```
+   ```java
+   conn = database('<<KUSTO_DATABASE>>','<<AAD_USER>>','<<USER_PWD>>','com.microsoft.sqlserver.jdbc.SQLServerDriver',    ['jdbc:sqlserver://<<MYCLUSTER>>.kusto.windows.net:1433;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authenti cation=ActiveDirectoryPassword;database='])
+   ```
 
-> [!NOTE]
-> It's OK to end with **"database="** and then no value. The *database* function will automatically append the first input, the database name, to this string.
-> If you want to use Azure Active Directory integrated authentication mode, then replace *ActiveDirectoryPassword* with *ActiveDirectoryIntegrated*.
+   > [!NOTE]
+   > It's OK to end with **"database="** and then no value. The *database* function will automatically append the first input, the database name, to this string.
+   > If you want to use Azure Active Directory integrated authentication mode, then replace *ActiveDirectoryPassword* with *ActiveDirectoryIntegrated*.
 
 1. Test the connection and run a sample query. Submit the following commands (MATLAB command window).
 
-```java
-data = select(conn, 'SELECT * FROM <<KUSTO_TABLE>>')
-data
-```
+   ```java
+   data = select(conn, 'SELECT * FROM <<KUSTO_TABLE>>')
+   data
+   ```
 
-> [!NOTE]
-> Replace *KUSTO_TABLE* with an existing table in Azure Data Explorer.
+   > [!NOTE]
+   > Replace *KUSTO_TABLE* with an existing table in Azure Data Explorer.
 
 ## Sending T-SQL queries over the REST API
 
