@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/10/2021
 ---
-# .alter table sharding policy
+# .alter-merge table sharding policy
 
 Change the table sharding policy. Use the [sharding policy](../management/shardingpolicy.md) to manage data sharding for databases and tables.  
 
@@ -32,6 +32,6 @@ Returns a JSON representation of the policy.
 The following command changes a single property for the sharding policy for a table:
 
 ```kusto
-.alter table MyTable policy sharding 
+.alter-merge table MyTable policy sharding 
 @'{ "MaxExtentSizeInMb": 1024}'
 ```
