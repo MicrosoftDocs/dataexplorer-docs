@@ -11,30 +11,31 @@ ms.date: 10/07/2021
 ---
 # shuffle query
 
-`Shuffle` query is a semantic-preserving transformation for a set of operators that support `shuffle` mode. Depending on the actual data, this query can yield considerably better performance.
+The `shuffle` query is a semantic-preserving transformation used with a set of operators that support the `shuffle` strategy. Depending on the data involved, querying with the `shuffle` strategy can yield better performance. It is better to use the shuffle query strategy when the `shuffle` key (a `join` key, `summarize` key, `make-series` key or `partition` key) has a high cardinality and the regular operator query hits query limits.
 
-Operators that support shuffling in Azure Data Explorer are [join](joinoperator.md), [summarize](summarizeoperator.md), [make-series](make-seriesoperator.md) and [partition](partitionoperator.md).
+You can use the following operators with the shuffle command:
+* [join](joinoperator.md)
+* [summarize](summarizeoperator.md)
+* [make-series](make-seriesoperator.md) 
+* [partition](partitionoperator.md)
 
-Set to `shuffle` query mode using the query parameter `hint.strategy = shuffle` or `hint.shufflekey = <key>`. 
-This mode will share the load on all cluster nodes, where each node will process one partition of the data.
-It is useful to use the shuffle query mode when the key (a `join` key, `summarize` key, `make-series` key or `partition` key) has a high cardinality and the regular operator query hits query limits.
+To use the `shuffle` query strategy, add the expression `hint.strategy = shuffle` or `hint.shufflekey = <key>`. When you use `hint.strategy=shuffle`, the operator data will be shuffled by all the keys. Use this expression when the compound key is unique but each key is not unique enough, so you will shuffle the data using all the keys of the shuffled operator.
 
-In a `shuffle` query, the default partitions number is the cluster nodes number. When you use `hint.strategy=shuffle`, the shuffled operator will be shuffled by all the keys. If the compound key is too unique but each key is not unique enough, use `hint` to shuffle the data using all the keys of the shuffled operator.
+When partitioning data with the shuffle strategy, the data load is shared on all cluster nodes. Each node  processes one partition of the data. The default number of partitions is equal to the number of cluster nodes. 
 
-The partition number can be overridden by using the syntax `hint.num_partitions = total_partitions`, which will control the number of partitions. This is useful when the cluster has a small number of cluster nodes where the default partitions number will be too small and the query still fails or takes long execution time.
+The partition number can be overridden by using the syntax `hint.num_partitions = total_partitions`, which will control the number of partitions. This is useful when the cluster has a small number of cluster nodes and the default partitions number will be small, and the query fails or takes a long execution time.
 
 > [!Note]
-> Having many partitions may consume more cluster resources and degrade performance. Choose the partition number carefully by starting with the `hint.strategy = shuffle` and start increasing the partitions gradually.
+> Using many partitions may consume more cluster resources and degrade performance. Choose the partition number carefully by starting with the `hint.strategy = shuffle` and start increasing the partitions gradually.
 
-In some cases, the `hint.strategy=shuffle` will be ignored, and the query will not run in `shuffle` mode. Example scenarios are: 
+In some cases, the `hint.strategy=shuffle` will be ignored, and the query will not run in `shuffle` strategy. This can happen when: 
 
-* The `join` has another `shuffle`-compatible operator (`join`, `summarize`, `make-series` or `partition`) on the left side or the right side.
-* The `summarize` appears after another `shuffle`-compatible operator (`join`, `summarize`, `make-series` or `partition`) in the query.
-
+* The `join` operator has another `shuffle`-compatible operator (`join`, `summarize`, `make-series` or `partition`) on the left side or the right side.
+* The `summarize` operator appears after another `shuffle`-compatible operator (`join`, `summarize`, `make-series` or `partition`) in the query.
 
 ## Syntax
 
-With `hint.strategy` = `shuffle'
+### With `hint.strategy` = `shuffle'
 
 *T* `|` *DataExpression* `|` `join`  `hint.strategy` = `shuffle` `(` *DataExpression* `)`
 
@@ -42,7 +43,7 @@ With `hint.strategy` = `shuffle'
 
 *T* `|` *Query* `|` partition `hint.strategy` = `shuffle`  `(` *SubQuery* `)`
 
-With `hint.shufflekey` = *key*
+### With `hint.shufflekey` = *key*
 
 *T* `|` *DataExpression* `|` `join`  `hint.shufflekey` = *key* `(` *DataExpression* `)`
 
@@ -64,7 +65,7 @@ With `hint.shufflekey` = *key*
 
 ## Use summarize with shuffle
 
-The `shuffle` mode query with `summarize` operator will share the load on all cluster nodes, where each node will process one partition of the data.
+The `shuffle` strategy query with `summarize` operator will share the load on all cluster nodes, where each node will process one partition of the data.
 
 ```kusto
 StormEvents
@@ -181,7 +182,7 @@ StormEvents
 |---|
 |14|
 
-To overcome this issue and run in shuffle mode, choose the key which is common for the `summarize` and `join` operations. In this case, this key is `ActivityId`. Use the hint `hint.shufflekey` to specify the shuffle key on the `join` to `hint.shufflekey = ActivityId`:
+To overcome this issue and run in shuffle strategy, choose the key which is common for the `summarize` and `join` operations. In this case, this key is `ActivityId`. Use the hint `hint.shufflekey` to specify the shuffle key on the `join` to `hint.shufflekey = ActivityId`:
 
 ```kusto
 StormEvents
@@ -198,9 +199,9 @@ StormEvents
 
 ### Use summarize with shuffle to improve performance
 
-In this example, using the `summarize` operator with `shuffle` mode improves performance. The source table has 150M records and the cardinality of the group by key is 10M, which is spread over 10 cluster nodes. 
+In this example, using the `summarize` operator with `shuffle` strategy improves performance. The source table has 150M records and the cardinality of the group by key is 10M, which is spread over 10 cluster nodes. 
 
-Using `summarize` operator without `shuffle` mode, the query ends after 1:08 and the memory usage peak is ~3 GB:
+Using `summarize` operator without `shuffle` strategy, the query ends after 1:08 and the memory usage peak is ~3 GB:
 
 ```kusto
 orders
@@ -215,7 +216,7 @@ orders
 |---|
 |1086|
 
-While using `shuffle` mode with `summarize`, the query ends after ~7 seconds and the memory usage peak is 0.43 GB:
+While using `shuffle` strategy with `summarize`, the query ends after ~7 seconds and the memory usage peak is 0.43 GB:
 
 ```kusto
 orders
@@ -250,7 +251,7 @@ lineitem
 
 ## Use join with shuffle to improve performance
 
-The following example shows how using `shuffle` mode with the `join` operator improves performance.
+The following example shows how using `shuffle` strategy with the `join` operator improves performance.
 
 The examples were sampled on a cluster with 10 nodes where the data is spread over all these nodes.
 
@@ -264,7 +265,7 @@ on $left.c_custkey == $right.o_custkey
 | summarize sum(c_acctbal) by c_nationkey
 ```
 
-When using `shuffle` mode with a `join` operator, the query ends after ~4 seconds and the memory usage peak is 0.3 GB:
+When using `shuffle` strategy with a `join` operator, the query ends after ~4 seconds and the memory usage peak is 0.3 GB:
 
 ```kusto
 customer
@@ -278,7 +279,7 @@ In another example, we try the same queries on a larger dataset with the followi
 * Left-side source of the `join` is 150M and the cardinality of the key is 148M. 
 * Right-side source of the `join` is 1.5B, and the cardinality of the key is ~100M.
 
-The query with just the `join` operator hits Azure Data Explorer limits and times-out after 4 mins. However, when using `shuffle` mode with the `join` operator, the query ends after ~34 seconds and the memory usage peak is 1.23 GB.
+The query with just the `join` operator hits Azure Data Explorer limits and times-out after 4 mins. However, when using `shuffle` strategy with the `join` operator, the query ends after ~34 seconds and the memory usage peak is 1.23 GB.
 
 The following example shows the improvement on a cluster that has two cluster nodes, with a table of 60M records, where the cardinality of the `join` key is 2M.
 Running the query without `hint.num_partitions` will use only two partitions (as cluster nodes number) and the following query will take ~1:10 mins:
