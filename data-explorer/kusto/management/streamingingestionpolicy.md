@@ -18,7 +18,7 @@ Streaming ingestion should be used for the following scenarios:
 * Latency of less than a second is required.
 * To optimize operational processing of many tables where the stream of data into each table is relatively small (a few records per second), but the overall data ingestion volume is high (thousands of records per second).
 
-If the stream of data into each table is high, consider using [batch ingestion](batchingpolicy.md).
+If the stream of data into each table is high (over 4 GB per hour), consider using [batch ingestion](batchingpolicy.md).
 
 * To learn how to implement this feature and about its limitations, see [streaming ingestion](../../ingest-data-streaming.md).
 * For information about streaming ingestion control commands, see [Control commands used for managing the streaming ingestion policy](streamingingestion-policy.md).
