@@ -79,7 +79,7 @@ A cluster is considered unused if it has:
 * Low CPU usage during the past two days
 * No followers during the past day
 
-When recommended to **consider deleting empty / unused clusters**, the suggested action is to delete the cluster.
+When recommended to **consider deleting empty / unused clusters**, the recommended action is to delete the cluster.
 
 #### Azure Data Explorer clusters containing data with low activity
 
