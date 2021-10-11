@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/14/2020
+ms.date: 10/11/2021
 ---
 # .execute database script
 
@@ -51,6 +51,10 @@ Each command appearing in the script will be reported as a separate record in th
 >* Default behavior of the command - fail on the first error, it can be changed using property argument.
 >* Read-only control commands (`.show` commands) aren't executed and are reported with status `Skipped`.
 
+>[!Tip]
+>* This command is useful if you want to "clone"/"duplicate" an existing database. You can use the [`.show database schema command`](show-schema-database.md) on the existing database (the source database), and use its output as the *Control-commands-script* of ".execute database script".
+>* If you want to "clone"/"duplicate" the cluster, you can use export its [ARM template](/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource) and recreate the resource. 
+
 ## Example
 
 ```kusto
@@ -74,4 +78,4 @@ Each command appearing in the script will be reported as a separate record in th
 |---|---|---|---|---|
 |1d28531b-58c8-4023-a5d3-16fa73c06cfa|TableCreate|.create-merge table T(a:string, b:string)|Completed||
 |67d0ea69-baa4-419a-93d3-234c03834360|RetentionPolicyAlter|.alter-merge table T policy retention softdelete = 10d|Completed||
-|0b0e8769-d4e8-4ff9-adae-071e52a650c7|FunctionCreateOrAlter|.create-or-alter function<br>with (skipvalidation = "true")<br>SampleT1(myLimit: long) {<br>T1 \| limit myLimit<br>}|Completed||
+|0b0e8769-d4e8-4ff9-adae-071e52a650c7|FunctionCreateOrAlter|.create-or-alter function  with (skipvalidation = "true")SampleT1(myLimit: long) {T1 \| limit myLimit}|Completed||

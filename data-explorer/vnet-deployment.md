@@ -73,27 +73,30 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 
 [Network Security Groups (NSG)](/azure/virtual-network/security-overview) provide the ability to control network access within a VNet. Azure Data Explorer automatically applies the following required network security rules. For Azure Data Explorer to operate using the [subnet delegation](/azure/virtual-network/subnet-delegation-overview) mechanism, before creating the cluster in the subnet, you must delegate the subnet to **Microsoft.Kusto/clusters** .
 
+ > [!NOTE]
+ > By enabling subnet delegation on the Azure Data Explorer cluster's subnet, you enable the service to define its pre-conditions for deployment in the form of Network Intent Policies. When creating the cluster in the subnet, the NSG configurations mentioned in the following sections are automatically created for you.
+
 #### Inbound NSG configuration
 
 | **Use**   | **From**   | **To**   | **Protocol**   |
 | --- | --- | --- | --- |
-| Management  |[ADX management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement(ServiceTag) | ADX subnet:443  | TCP  |
-| Health monitoring  | [ADX health monitoring addresses](#health-monitoring-addresses)  | ADX subnet:443  | TCP  |
-| ADX internal communication  | ADX subnet: All ports  | ADX subnet:All ports  | All  |
-| Allow Azure load balancer inbound (health probe)  | AzureLoadBalancer  | ADX subnet:80,443  | TCP  |
+| Management  |[Azure Data Explorer management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement(ServiceTag) | Azure Data Explorer subnet:443  | TCP  |
+| Health monitoring  | [Azure Data Explorer health monitoring addresses](#health-monitoring-addresses)  | Azure Data Explorer subnet:443  | TCP  |
+| Azure Data Explorer internal communication  | Azure Data Explorer subnet: All ports  | Azure Data Explorer subnet:All ports  | All  |
+| Allow Azure load balancer inbound (health probe)  | AzureLoadBalancer  | Azure Data Explorer subnet:80,443  | TCP  |
 
 #### Outbound NSG configuration
 
 | **Use**   | **From**   | **To**   | **Protocol**   |
 | --- | --- | --- | --- |
-| Dependency on Azure Storage  | ADX subnet  | Storage:443  | TCP  |
-| Dependency on Azure Data Lake  | ADX subnet  | AzureDataLake:443  | TCP  |
-| EventHub ingestion and service monitoring  | ADX subnet  | EventHub:443,5671  | TCP  |
-| Publish Metrics  | ADX subnet  | AzureMonitor:443 | TCP  |
-| Active Directory (if applicable) | ADX subnet | AzureActiveDirectory:443 | TCP |
-| Certificate authority | ADX subnet | Internet:80 | TCP |
-| Internal communication  | ADX subnet  | ADX Subnet:All Ports  | All  |
-| Ports that are used for `sql\_request` and `http\_request` plugins  | ADX subnet  | Internet:Custom  | TCP  |
+| Dependency on Azure Storage  | Azure Data Explorer subnet  | Storage:443  | TCP  |
+| Dependency on Azure Data Lake  | Azure Data Explorer subnet  | AzureDataLake:443  | TCP  |
+| EventHub ingestion and service monitoring  | Azure Data Explorer subnet  | EventHub:443,5671  | TCP  |
+| Publish Metrics  | Azure Data Explorer subnet  | AzureMonitor:443 | TCP  |
+| Active Directory (if applicable) | Azure Data Explorer subnet | AzureActiveDirectory:443 | TCP |
+| Certificate authority | Azure Data Explorer subnet | Internet:80 | TCP |
+| Internal communication  | Azure Data Explorer subnet  | Azure Data Explorer Subnet:All Ports  | All  |
+| Ports that are used for `sql\_request` and `http\_request` plugins  | Azure Data Explorer subnet  | Internet:Custom  | TCP  |
 
 ### Relevant IP addresses
 
@@ -338,3 +341,8 @@ The outbound dependencies cover categories such as "Azure Active Directory", "Az
 To deploy Azure Data Explorer cluster into your virtual network, use the [Deploy Azure Data Explorer cluster into your VNet](https://azure.microsoft.com/resources/templates/kusto-vnet/) Azure Resource Manager template.
 
 This template creates the cluster, virtual network, subnet, network security group, and public IP addresses.
+
+## Known limitations
+
+* Virtual network resources with deployed clusters do not support the [move to a new resource group or subscription](/azure/azure-resource-manager/management/move-resource-group-and-subscription) operation.
+* Public IP address resources used for the cluster engine or the data management service do not support the move to a new resource group or subscription operation.

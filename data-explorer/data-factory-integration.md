@@ -36,7 +36,7 @@ In addition to the response size limit of 5,000 rows and 2 MB, the activity also
 
 ### Command activity
 
-The Command activity allows the execution of Azure Data Explorer [control commands](kusto/concepts/index.md#control-commands). Unlike queries, the control commands can potentially modify data or metadata. Some of the control commands are targeted to ingest data into Azure Data Explorer, using commands such as `.ingest`or `.set-or-append`) or copy data from Azure Data Explorer to external data stores using commands such as `.export`.
+The Command activity allows the execution of Azure Data Explorer [control commands](./kusto/query/index.md#control-commands). Unlike queries, the control commands can potentially modify data or metadata. Some of the control commands are targeted to ingest data into Azure Data Explorer, using commands such as `.ingest`or `.set-or-append`) or copy data from Azure Data Explorer to external data stores using commands such as `.export`.
 For a detailed walk-through of the command activity, see [use Azure Data Factory command activity to run Azure Data Explorer control commands](data-factory-command-activity.md).  Using a control command to copy data can, at times, be a faster and cheaper option than the Copy activity. To determine when to use the Command activity versus the Copy activity, see [select between Copy and Command activities when copying data](#select-between-copy-and-azure-data-explorer-command-activities-when-copy-data).
 
 ### Copy in bulk from a database template
@@ -45,7 +45,7 @@ The [Copy in bulk from a database to Azure Data Explorer by using the Azure Data
 
 ### Mapping data flows 
 
-[Azure Data Factory mapping data flows](/azure/data-factory/concepts-data-flow-overview) are visually designed data transformations that allow data engineers to develop graphical data transformation logic without writing code. To create a data flow and ingest data to Azure Data Explorer, use the following method:
+[Azure Data Factory mapping data flows](/azure/data-factory/concepts-data-flow-overview) are visually designed data transformations that allow data engineers to develop graphical data transformation logic without writing code. To create a data flow and ingest data into Azure Data Explorer, use the following method:
 
 1. Create the [mapping data flow](/azure/data-factory/data-flow-create).
 1. [Export the data into Azure Blob](/azure/data-factory/data-flow-sink). 
@@ -83,7 +83,7 @@ See the following table for a comparison of the Copy activity, and ingestion com
 
 | | Copy activity | Ingest from query<br> `.set-or-append` / `.set-or-replace` / `.set` / `.replace` | Ingest from storage <br> `.ingest` |
 |---|---|---|---|
-| **Flow description** | ADF gets the data from the source data store, converts it into a tabular format, and does the required schema-mapping changes. ADF then uploads the data to Azure blobs, splits it into chunks, then downloads the blobs to ingest them into the ADX table. <br> (**Source data store > ADF > Azure blobs > ADX**) | These commands can execute a query or a `.show` command, and ingest the results of the query into a table (**ADX > ADX**). | This command ingests data into a table by "pulling" the data from one or more cloud storage artifacts. |
+| **Flow description** | ADF gets the data from the source data store, converts it into a tabular format, and does the required schema-mapping changes. ADF then uploads the data to Azure blobs, splits it into chunks, then downloads the blobs to ingest them into the Azure Data Explorer table. <br> (**Source data store > ADF > Azure blobs > ADX**) | These commands can execute a query or a `.show` command, and ingest the results of the query into a table (**ADX > ADX**). | This command ingests data into a table by "pulling" the data from one or more cloud storage artifacts. |
 | **Supported source data stores** |  [variety of options](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2, Azure Blob, SQL (using the [sql_request() plugin](kusto/query/sqlrequestplugin.md)), Cosmos (using the [cosmosdb_sql_request plugin](kusto/query/mysqlrequest-plugin.md)), and any other data store that provides HTTP or Python APIs. | Filesystem, Azure Blob Storage, ADLS Gen 1, ADLS Gen 2 |
 | **Performance** | Ingestions are queued and managed, which ensures small-size ingestions and assures high availability by providing load balancing, retries and error handling. | <ul><li>Those commands weren't designed for high volume data importing.</li><li>Works as expected and cheaper. But for production scenarios and when traffic rates and data sizes are large, use the Copy activity.</li></ul> |
 | **Server Limits** | <ul><li>No size limit.</li><li>Max timeout limit: 1 hour per ingested blob. |<ul><li>There's only a size limit on the query part, which can be skipped by specifying `noTruncation=true`.</li><li>Max timeout limit: 1 hour.</li></ul> | <ul><li>No size limit.</li><li>Max timeout limit: 1 hour.</li></ul>|
@@ -102,7 +102,7 @@ The following table lists the required permissions for various steps in the inte
 | | Test Connection | *database monitor* or *table ingestor* <br>Service principal should be authorized to execute database level `.show` commands or table level ingestion. | <ul><li>TestConnection verifies the connection to the cluster, and not to the database. It can succeed even if the database doesn't exist.</li><li>Table admin permissions aren't sufficient.</li></ul>|
 | **Creating a Dataset** | Table navigation | *database monitor* <br>The logged in user using ADF, must be authorized to execute database level `.show` commands. | User can provide table name manually.|
 | **Creating a Dataset** or **Copy Activity** | Preview data | *database viewer* <br>Service principal must be authorized to read database metadata. | | 
-|   | Import schema | *database viewer* <br>Service principal must be authorized to read database metadata. | When ADX is the source of a tabular-to-tabular copy, ADF will import schema automatically, even if the user didn't import schema explicitly. |
+|   | Import schema | *database viewer* <br>Service principal must be authorized to read database metadata. | When Azure Data Explorer is the source of a tabular-to-tabular copy, ADF will import schema automatically, even if the user didn't import schema explicitly. |
 | **ADX as Sink** | Create a by-name column mapping | *database monitor* <br>Service principal must be authorized to execute database level `.show` commands. | <ul><li>All mandatory operations will work with *table ingestor*.</li><li> Some optional operations can fail.</li></ul> |
 |   | <ul><li>Create a CSV mapping on the table</li><li>Drop the mapping</li></ul>| *table ingestor* or *database admin* <br>Service principal must be authorized to make changes to a table. | |
 |   | Ingest data | *table ingestor* or *database admin* <br>Service principal must be authorized to make changes to a table. | | 
@@ -117,10 +117,10 @@ This section addresses the use of copy activity where Azure Data Explorer is the
 
 | Parameter | Notes |
 |---|---|
-| **Components geographical proximity** | Place all components in the same region:<ul><li>source and sink data stores.</li><li>ADF integration runtime.</li><li>Your ADX cluster.</li></ul>Make sure that at least your integration runtime is in the same region as your ADX cluster. |
+| **Components geographical proximity** | Place all components in the same region:<ul><li>source and sink data stores.</li><li>ADF integration runtime.</li><li>Your Azure Data Explorer cluster.</li></ul>Make sure that at least your integration runtime is in the same region as your Azure Data Explorer cluster. |
 | **Number of DIUs** | 1 VM for every 4 DIUs used by ADF. <br>Increasing the DIUs will help only if your source is a file-based store with multiple files. Each VM will then process a different file in parallel. Therefore, copying a single large file will have a higher latency than copying multiple smaller files.|
-|**Amount and SKU of your ADX cluster** | High number of ADX nodes will boost ingestion processing time. Use of dev SKUs will severely limit performance|
-| **Parallelism** |    To copy a very large amount of data from a database, partition your data and then use a ForEach loop that copies each partition in parallel or use the [Bulk Copy from Database to Azure Data Explorer Template](data-factory-template.md). Note: **Settings** > **Degree of Parallelism** in the Copy activity isn't relevant to ADX. |
+|**Amount and SKU of your ADX cluster** | High number of Azure Data Explorer nodes will boost ingestion processing time. Use of dev SKUs will severely limit performance|
+| **Parallelism** |    To copy a very large amount of data from a database, partition your data and then use a ForEach loop that copies each partition in parallel or use the [Bulk Copy from Database to Azure Data Explorer Template](data-factory-template.md). Note: **Settings** > **Degree of Parallelism** in the Copy activity isn't relevant to Azure Data Explorer. |
 | **Data processing complexity** | Latency varies according to source file format, column mapping, and compression.|
 | **The VM running your integration runtime** | <ul><li>For Azure copy, ADF VMs and machine SKUs can't be changed.</li><li> For on-prem to Azure copy, determine that the VM hosting your self-hosted IR is strong enough.</li></ul>|
 
@@ -219,6 +219,3 @@ The printed value:
 * Learn about using [Azure Data Factory template for bulk copy from database to Azure Data Explorer](data-factory-template.md).
 * Learn about using [Azure Data Factory command activity to run Azure Data Explorer control commands](data-factory-command-activity.md).
 * Learn about [Azure Data Explorer queries](web-query-data.md) for data querying.
-
-
-

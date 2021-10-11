@@ -20,9 +20,9 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* [A test cluster and database](create-cluster-database-python.md)
-* [A test table](python-ingest-data.md#create-a-table-on-your-cluster)
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
+* [A test table](python-ingest-data.md#create-a-table-on-your-cluster).
 
 ## Install the data libraries
 
@@ -163,4 +163,4 @@ kustoManagementClient.databases.add_principals(resource_group_name=resource_grou
 
 ## Next steps
 
-* [Read more about database and table policies](kusto/management/policies.md)
+* [Read more about database and table policies](./kusto/management/index.md)

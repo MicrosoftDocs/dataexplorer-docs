@@ -6,14 +6,14 @@ ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 04/07/2019
+ms.date: 10/11/2021
 ms.localizationpriority: high
 ---
 # Time series analysis in Azure Data Explorer
 
 Azure Data Explorer (ADX) performs on-going collection of telemetry data from cloud services or IoT devices. This data can be analyzed for various insights such as monitoring service health, physical production processes, and usage trends. Analysis is done on time series of selected metrics to find a deviation in the pattern compared to its typical baseline pattern.
 ADX contains native support for creation, manipulation, and analysis of multiple time series. 
-In this topic, learn how ADX is used to create and analyze **thousands of time series in seconds**, enabling near real-time monitoring solutions and workflows.
+In this topic, learn how Azure Data Explorer is used to create and analyze **thousands of time series in seconds**, enabling near real-time monitoring solutions and workflows.
 
 ## Time series creation
 
@@ -69,7 +69,7 @@ In the table above, we have three partitions. We can create a separate time seri
 ## Time series analysis functions
 
 In this section, we'll perform typical series processing functions.
-Once a set of time series is created, ADX supports a growing list of functions to process and analyze them which can be found in the [time series documentation](kusto/query/machine-learning-and-tsa.md). We will describe a few representative functions for processing and analyzing time series.
+Once a set of time series is created, Azure Data Explorer supports a growing list of functions to process and analyze them which can be found in the [time series documentation](kusto/query/machine-learning-and-tsa.md). We will describe a few representative functions for processing and analyzing time series.
 
 ### Filtering
 
@@ -273,9 +273,9 @@ demo_many_series1
 | Loc 15 | 37 | 1151 | -102743.910227889 |
 | Loc 13 | 37 | 1249 | -86303.2334644601 |
 
-In less than two minutes, ADX analyzed close to 20,000 time series and detected two abnormal time series in which the read count suddenly dropped.
+In less than two minutes, Azure Data Explorer analyzed close to 20,000 time series and detected two abnormal time series in which the read count suddenly dropped.
 
-These advanced capabilities combined with ADX fast performance supply a unique and powerful solution for time series analysis.
+These advanced capabilities combined with Azure Data Explorer fast performance supply a unique and powerful solution for time series analysis.
 
 ## Next steps
 

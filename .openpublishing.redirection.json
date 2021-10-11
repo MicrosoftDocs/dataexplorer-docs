@@ -61,6 +61,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "data-explorer/ingest-data-streaming-csharp.md",
+      "redirect_url": "/azure/data-explorer/ingest-data-streaming",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "data-explorer/manage-cluster-security.md",
       "redirect_url": "/azure/data-explorer/cluster-disk-encryption",
       "redirect_document_id": true
@@ -153,6 +158,16 @@
     {
       "source_path": "data-explorer/kusto/functions-library/normality_test_fl.md",
       "redirect_url": "/azure/data-explorer/kusto/functions-library/normality-test-fl",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/policies.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/index",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/concepts/index.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/index",
       "redirect_document_id": true
     }
   ]

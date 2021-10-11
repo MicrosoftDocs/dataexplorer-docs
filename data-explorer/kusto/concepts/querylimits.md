@@ -218,8 +218,11 @@ If `query_fanout_nodes_percent` or `query_fanout_threads_percent` are set multip
 ## Limit on query complexity
 
 During query execution, the query text is transformed into a tree of relational operators representing the query.
-If the tree depth exceeds an internal threshold of several thousand levels, the query is considered too complex for processing, and will fail with an error code. The failure indicates that the relational operators tree exceeds its limits.
-Limits are exceeded because of queries with long lists of binary operators that are chained together. For example:
+If the tree depth exceeds an internal threshold, the query is considered too complex for processing, and will fail with an error code. The failure indicates that the relational operators tree exceeds its limits.
+
+The following examples show common query patterns that can cause the query to exceed this limit and fail:
+
+* a long lists of binary operators that are chained together. For example:
 
 ```kusto
 T 
@@ -235,6 +238,10 @@ For this specific case, rewrite the query using the [`in()`](../query/inoperator
 T 
 | where Column in ("value1", "value2".... "valueN")
 ```
+
+* a query which has a union operator that is running too wide schema analysis especially that the default flavor of union is to return “outer” union schema (meaning – that output will include all columns of the underlying table).
+
+The suggestion in this case is to review the query and reduce the columns being used by the query.
 
 ## Next steps
 

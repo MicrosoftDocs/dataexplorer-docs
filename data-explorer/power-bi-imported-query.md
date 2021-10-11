@@ -24,10 +24,8 @@ If you don't have an Azure subscription, create a [free Azure account](https://a
 You need the following to complete this article:
 
 * An organizational email account that is a member of Azure Active directory, so you can connect to the [Azure Data Explorer help cluster](https://dataexplorer.azure.com/clusters/help/databases/samples).
-
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**)
-
-* [Azure Data Explorer desktop app](kusto/tools/kusto-explorer.md)
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**).
+* [Azure Data Explorer desktop app](kusto/tools/kusto-explorer.md).
 
 ## Get data from Azure Data Explorer
 

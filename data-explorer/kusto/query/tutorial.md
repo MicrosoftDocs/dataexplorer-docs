@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Kusto queries in Azure Data Explorer & Azure Monitor'
-description: This tutorial describes how to use queries in the Kusto Query Language to meet common query needs in Azure Data Explorer and Azure Monitor.
+title: 'Tutorial: Kusto queries'
+description: This tutorial describes how to use queries in the Kusto Query Language to meet common query needs.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -13,7 +13,7 @@ zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 
-# Tutorial: Use Kusto queries in Azure Data Explorer and Azure Monitor
+# Tutorial: Use Kusto queries
 
 ::: zone pivot="azuredataexplorer"
 

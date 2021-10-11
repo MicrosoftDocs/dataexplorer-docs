@@ -21,7 +21,7 @@ For an introduction to the external Azure Storage tables feature, see [Query dat
 **Syntax**
 
 (`.create` `|` `.alter` `|` `.create-or-alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
-`kind` `=` (`blob` `|` `adl`)  
+`kind` `=` `storage`  
 [`partition` `by` `(` *[Partitions](#partitions)* `)` [`pathformat` `=` `(` *[PathFormat](#path-format)* `)`]]  
 `dataformat` `=` *[Format](#format)*  
 `(` *[StorageConnectionString](#connection-string)* [`,` ...] `)`   
@@ -31,7 +31,7 @@ Creates or alters a new external table in the database in which the command is e
 
 > [!NOTE]
 > * If the table exists, `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
-> * Altering the schema, format, or the partition definition of an external blob table isn't supported. 
+> * The external table is not accessed during creation time. It will only be accessed during query / export. You can use the `validateNotEmpty` (optional) property during creation time to make sure the external table definition is valid and that the underlying storage is accessible.
 > * The operation requires [database user permission](../management/access-control/role-based-authorization.md) for `.create` and [table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. 
 
 **Parameters**
@@ -53,6 +53,14 @@ where *ColumnName* adheres to [entity naming](../query/schema-entities/entity-na
 
 > [!TIP]
 > If the external data schema is unknown, use the [infer\_storage\_schema](../query/inferstorageschemaplugin.md) plug-in, which helps infer the schema based on external file contents.
+
+<a name="kind"></a>
+*Kind*
+
+The type of the external table. In thise case, `storage` should to be used (rather than `sql`).
+
+>[!NOTE]
+> Deprecated terms:  `blob` for Blob Azure Storage or Azure Data Lake Gen 2 Storage, `adl` for Azure Data Lake Gen 1 Storage.
 
 <a name="partitions"></a>
 *Partitions*
@@ -127,8 +135,9 @@ The data format, any of the [ingestion formats](../../ingestion-supported-format
 <a name="connection-string"></a>
 *StorageConnectionString*
 
-One or more paths to Azure Blob Storage blob containers or Azure Data Lake Store file systems (virtual directories or folders), including credentials.
-See [storage connection strings](../api/connection-strings/storage.md) for details.
+One or more paths to Azure Blob Storage blob containers, Azure Data Lake Gen 2 filesystems or Azure Data Lake Gen 1 containers, including credentials.
+The external table storage type is determined by the provided connection strings.
+See [storage connection strings](../api/connection-strings/storage.md) for details. 
 
 > [!TIP]
 > Provide more than a single storage account to avoid storage throttling while [exporting](data-export/export-data-to-an-external-table.md) large amounts of data to the external table. Export will distribute the writes between all accounts provided. 

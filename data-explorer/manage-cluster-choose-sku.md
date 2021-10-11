@@ -88,33 +88,33 @@ Because the number of instances per cluster for the small SKUs is limited, it's 
 
 The technical specifications for the Azure Data Explorer cluster VMs are described in the following table:
 
-|**Name**| **Category** | **SSD size** | **Cores** | **RAM** | **Premium storage disks (1&nbsp;TB)**| **Minimum instance count per cluster** | **Maximum instance count per cluster**
+|**Name**| **Category** | **SSD size** | **Cores** | **RAM** | **Premium storage disks (1&nbsp;TB)**| **Minimum instance count per cluster** | **Maximum instance count per cluster** | **Supports ephemeral OS disk**
 |---|---|---|---|---|---|---|---
-|Dev(No SLA) Standard_D11_v2| compute-optimized | 80&nbsp;GB    | 1 | 14&nbsp;GB | 0 | 1 | 1
-|Dev(No SLA) Standard_E2a_v4| compute-optimized | 24&nbsp;GB    | 1 | 16&nbsp;GB | 0 | 1 | 1
-|Standard_D11_v2| compute-optimized | 80&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 2 | 8 
-|Standard_D12_v2| compute-optimized | 160&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16
-|Standard_D13_v2| compute-optimized | 317&nbsp;GB   | 8 | 56&nbsp;GB | 0 | 2 | 1,000
-|Standard_D14_v2| compute-optimized | 628&nbsp;GB   | 16| 112&nbsp;GB | 0 | 2 | 1,000
-|Standard_E2a_v4| heavy compute | 24&nbsp;GB    | 2 | 16&nbsp;GB | 0 | 2 | 8 
-|Standard_E4a_v4| heavy compute | 60&nbsp;GB   | 4 | 32&nbsp;GB | 0 | 2 | 16
-|Standard_E8a_v4| heavy compute | 137&nbsp;GB   | 8 | 64&nbsp;GB | 0 | 2 | 1,000
-|Standard_E16a_v4| heavy compute | 273&nbsp;GB   | 16| 128&nbsp;GB | 0 | 2 | 1,000
-|Standard_DS13_v2 + 1&nbsp;TB&nbsp;PS| storage-optimized | 1&nbsp;TB | 8 | 56&nbsp;GB | 1 | 2 | 1,000
-|Standard_DS13_v2 + 2&nbsp;TB&nbsp;PS| storage-optimized | 2&nbsp;TB | 8 | 56&nbsp;GB | 2 | 2 | 1,000
-|Standard_DS14_v2 + 3&nbsp;TB&nbsp;PS| storage-optimized | 3&nbsp;TB | 16 | 112&nbsp;GB | 2 | 2 | 1,000
-|Standard_DS14_v2 + 4&nbsp;TB&nbsp;PS| storage-optimized | 4&nbsp;TB | 16 | 112&nbsp;GB | 4 | 2 | 1,000
-|Standard_E8as_v4 + 1&nbsp;TB&nbsp;PS| storage-optimized | 1&nbsp;TB | 8 | 64&nbsp;GB | 1 | 2 | 1,000
-|Standard_E8as_v4 + 2&nbsp;TB&nbsp;PS| storage-optimized | 2&nbsp;TB | 8 | 64&nbsp;GB | 2 | 2 | 1,000
-|Standard_E16as_v4 + 3&nbsp;TB&nbsp;PS| storage-optimized | 3&nbsp;TB | 16 | 128&nbsp;GB | 3 | 2 | 1,000
-|Standard_E16as_v4 + 4&nbsp;TB&nbsp;PS| storage-optimized | 4&nbsp;TB | 16 | 128&nbsp;GB | 4 | 2 | 1,000
-|Standard_L4s| storage-optimized | 650&nbsp;GB | 4 | 32&nbsp;GB | 0 | 2 | 16
-|Standard_L8s| storage-optimized | 1.3&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1,000
-|Standard_L16s| storage-optimized | 2.6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
-|Standard_L8s_v2| storage-optimized | 1.7&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1,000
-|Standard_L16s_v2| storage-optimized | 3.5&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
-|Standard_E64i_v3| isolated compute | 1.1&nbsp;TB | 64 | 432&nbsp;GB | 0 | 2 | 1,000
-|Standard_E80ids_v4| isolated compute | 1.8&nbsp;TB | 80 | 504&nbsp;GB | 0 | 2 | 1,000
+|Dev(No SLA) Standard_D11_v2| compute-optimized | 80&nbsp;GB    | 1 | 14&nbsp;GB | 0 | 1 | 1 | No
+|Dev(No SLA) Standard_E2a_v4| compute-optimized | 24&nbsp;GB    | 1 | 16&nbsp;GB | 0 | 1 | 1 | No
+|Standard_D11_v2| compute-optimized | 80&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 2 | 8 | No 
+|Standard_D12_v2| compute-optimized | 160&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16 | No
+|Standard_D13_v2| compute-optimized | 317&nbsp;GB   | 8 | 56&nbsp;GB | 0 | 2 | 1,000 | No
+|Standard_D14_v2| compute-optimized | 628&nbsp;GB   | 16| 112&nbsp;GB | 0 | 2 | 1,000 | No
+|Standard_E2a_v4| heavy compute | 24&nbsp;GB    | 2 | 16&nbsp;GB | 0 | 2 | 8 | No 
+|Standard_E4a_v4| heavy compute | 60&nbsp;GB   | 4 | 32&nbsp;GB | 0 | 2 | 16 | No
+|Standard_E8a_v4| heavy compute | 137&nbsp;GB   | 8 | 64&nbsp;GB | 0 | 2 | 1,000 | No
+|Standard_E16a_v4| heavy compute | 273&nbsp;GB   | 16| 128&nbsp;GB | 0 | 2 | 1,000 | No
+|Standard_DS13_v2 + 1&nbsp;TB&nbsp;PS| storage-optimized | 1&nbsp;TB | 8 | 56&nbsp;GB | 1 | 2 | 1,000 | Yes
+|Standard_DS13_v2 + 2&nbsp;TB&nbsp;PS| storage-optimized | 2&nbsp;TB | 8 | 56&nbsp;GB | 2 | 2 | 1,000 | Yes
+|Standard_DS14_v2 + 3&nbsp;TB&nbsp;PS| storage-optimized | 3&nbsp;TB | 16 | 112&nbsp;GB | 2 | 2 | 1,000 | Yes
+|Standard_DS14_v2 + 4&nbsp;TB&nbsp;PS| storage-optimized | 4&nbsp;TB | 16 | 112&nbsp;GB | 4 | 2 | 1,000 | Yes
+|Standard_E8as_v4 + 1&nbsp;TB&nbsp;PS| storage-optimized | 1&nbsp;TB | 8 | 64&nbsp;GB | 1 | 2 | 1,000 | Yes
+|Standard_E8as_v4 + 2&nbsp;TB&nbsp;PS| storage-optimized | 2&nbsp;TB | 8 | 64&nbsp;GB | 2 | 2 | 1,000 | Yes
+|Standard_E16as_v4 + 3&nbsp;TB&nbsp;PS| storage-optimized | 3&nbsp;TB | 16 | 128&nbsp;GB | 3 | 2 | 1,000 | Yes
+|Standard_E16as_v4 + 4&nbsp;TB&nbsp;PS| storage-optimized | 4&nbsp;TB | 16 | 128&nbsp;GB | 4 | 2 | 1,000 | Yes
+|Standard_L4s| storage-optimized | 650&nbsp;GB | 4 | 32&nbsp;GB | 0 | 2 | 16 | No
+|Standard_L8s| storage-optimized | 1.3&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1,000 | No
+|Standard_L16s| storage-optimized | 2.6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000 | No
+|Standard_L8s_v2| storage-optimized | 1.7&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1,000 | No
+|Standard_L16s_v2| storage-optimized | 3.5&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000 | No
+|Standard_E64i_v3| isolated compute | 1.1&nbsp;TB | 64 | 432&nbsp;GB | 0 | 2 | 1,000 | No
+|Standard_E80ids_v4| isolated compute | 1.8&nbsp;TB | 80 | 504&nbsp;GB | 0 | 2 | 1,000 | Yes
 
 * You can view the updated compute SKU list per region by using the Azure Data Explorer [ListSkus API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus). 
 * Learn more about the [various SKUs](/azure/virtual-machines/windows/sizes). 

@@ -27,11 +27,11 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 
 [!INCLUDE [updated-for-az](includes/updated-for-az.md)]
 
-If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 
 [!INCLUDE [cloud-shell-try-it.md](includes/cloud-shell-try-it.md)]
 
-If you choose to install and use the Azure CLI locally, this article requires the Azure CLI version 2.0.4 or later. Run `az --version` to check your version. If you need to install or upgrade, see [Install the Azure CLI](/cli/azure/install-azure-cli).
+* If you choose to install and use the Azure CLI locally, this article requires the Azure CLI version 2.0.4 or later. Run `az --version` to check your version. To install or upgrade, see [Install the Azure CLI](/cli/azure/install-azure-cli).
 
 ## Configure parameters
 
@@ -59,7 +59,7 @@ The following steps are not required if you're running commands in Azure Cloud S
 1. Create your cluster by using the following command:
 
     ```azurepowershell-interactive
-     New-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Location 'Central US' -Sku D13_v2 -Capacity 10
+     New-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Location westus2 -SkuTier Standard -SkuCapacity 2 -SkuName 'Standard_D11_v2'
     ```
 
    |**Setting** | **Suggested value** | **Field description**|

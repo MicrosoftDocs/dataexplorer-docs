@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 09/19/2021
 
 # Customer intent: I want to ingest monitoring data to Azure Data Explorer without one line of code, so that I can explore and analyze my data by using queries.
 ---
@@ -29,8 +29,8 @@ In this tutorial, you'll learn how to:
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* [An Azure Data Explorer cluster and database](create-cluster-database-portal.md). In this tutorial, the database name is *TestDatabase*.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md). In this tutorial, the database name is *TestDatabase*.
 
 ## Azure Monitor data provider: diagnostic metrics and logs and activity logs
 
@@ -279,7 +279,7 @@ Use the Azure Data Explorer Web UI to create the target tables in the Azure Data
 
 ### Create table mappings
 
- Because the data format is `json`, data mapping is required. The `json` mapping maps each json path to a table column name.
+ Because the data format is `json`, data mapping is required. The `json` mapping maps each json path to a table column name. JSON paths that include special characters should be escaped as [\'Property Name\'].
 
 # [Diagnostic metrics / Diagnostic logs](#tab/diagnostic-metrics+diagnostic-logs) 
 #### Map diagnostic metrics and logs to the table
@@ -400,7 +400,7 @@ Azure diagnostic settings enable exporting metrics and logs to a storage account
 
 1. Create an event hub by using an Azure Resource Manager template in the Azure portal. To follow the rest of the steps in this article, right-click the **Deploy to Azure** button, and then select **Open in new window**. The **Deploy to Azure** button takes you to the Azure portal.
 
-    [![Deploy to Azure button.](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Deploy to Azure button.](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.eventhub%2Feventhubs-create-namespace-and-eventhub%2Fazuredeploy.json)
 
 1. Create an Event Hubs namespace and an event hub for the diagnostic logs.
 

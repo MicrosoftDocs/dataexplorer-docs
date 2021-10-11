@@ -1,5 +1,5 @@
 ---
-title: Scalar Functions - Azure Data Explorer | Microsoft Docs
+title: Scalar Functions - Azure Data Explorer 
 description: This article describes Scalar Functions in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -9,7 +9,9 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/18/2021
 ---
-# Scalar function types
+# Scalar function types at a glance
+
+This article lists all available scalar functions grouped by type. For aggregation functions, see [Aggregation function types](aggregation-functions.md).
 
 ## Binary functions
 
@@ -196,16 +198,26 @@ ms.date: 07/18/2021
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
+|[series_abs()](series-absfunction.md)|Calculates the element-wise absolute value of the numeric series input.|
+|[series_acos()](series-acosfunction.md)|Calculates the element-wise arccosine function of the numeric series input.|
 |[series_add()](series-addfunction.md)|Calculates the element-wise addition of two numeric series inputs.|
+|[series_asin()](series-asinfunction.md)|Calculates the element-wise arcsine function of the numeric series input.|
+|[series_atan()](series-atanfunction.md)|Calculates the element-wise arctangent function of the numeric series input.|
+|[series_cos()](series-cosfunction.md)|Calculates the element-wise cosine function of the numeric series input.|
 |[series_divide()](series-dividefunction.md)|Calculates the element-wise division of two numeric series inputs.|
 |[series_equals()](series-equalsfunction.md)|Calculates the element-wise equals (`==`) logic operation of two numeric series inputs.|
+|[series_exp()](series-expfunction.md)|Calculates the element-wise base-e exponential function (e^x) of the numeric series input.|
 |[series_greater()](series-greaterfunction.md)|Calculates the element-wise greater (`>`) logic operation of two numeric series inputs.|
 |[series_greater_equals()](series-greater-equalsfunction.md)|Calculates the element-wise greater or equals (`>=`) logic operation of two numeric series inputs.|
 |[series_less()](series-lessfunction.md)|Calculates the element-wise less (`<`) logic operation of two numeric series inputs.|
 |[series_less_equals()](series-less-equalsfunction.md)|Calculates the element-wise less or equal (`<=`) logic operation of two numeric series inputs.|
 |[series_multiply()](series-multiplyfunction.md)|Calculates the element-wise multiplication of two numeric series inputs.|
 |[series_not_equals()](series-not-equalsfunction.md)|Calculates the element-wise not equals (`!=`) logic operation of two numeric series inputs.|
+|[series_pow()](series-powfunction.md)|Calculates the element-wise power of two numeric series inputs.|
+|[series_sign()](series-signfunction.md)|Calculates the element-wise sign of the numeric series input.|
+|[series_sin()](series-sinfunction.md)|Calculates the element-wise sine function of the numeric series input.|
 |[series_subtract()](series-subtractfunction.md)|Calculates the element-wise subtraction of two numeric series inputs.|
+|[series_tan()](series-tanfunction.md)|Calculates the element-wise tangent function of the numeric series input.|
 
 ## Series processing functions
 
@@ -240,12 +252,15 @@ ms.date: 07/18/2021
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[base64_encode_tostring()](base64_encode_tostringfunction.md)|Encodes a string as base64 string.|
+|[base64_encode_fromguid()](base64-encode-fromguid-function.md)|Encodes a GUID as base64 string.|
 |[base64_decode_tostring()](base64_decode_tostringfunction.md)|Decodes a base64 string to a UTF-8 string.|
 |[base64_decode_toarray()](base64_decode_toarrayfunction.md)|Decodes a base64 string to an array of long values.|
+|[base64_decode_toguid()](base64-decode-toguid-function.md)|Decodes a base64 string to a GUID.|
 |[countof()](countoffunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.|
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
 |[extract_all()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
 |[extractjson()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
+|[has_any_index()](has-any-index-function.md)|Searches the string for items specified in the array and returns the position of the first item found in the string.|
 |[indexof()](indexoffunction.md)|Function reports the zero-based index of the first occurrence of a specified string within input string.|
 |[isempty()](isemptyfunction.md)|Returns true if the argument is an empty string or is null.|
 |[isnotempty()](isnotemptyfunction.md)|Returns true if the argument isn't an empty string or a null.|
@@ -309,6 +324,7 @@ ms.date: 07/18/2021
 |[dcount_hll()](dcount-hllfunction.md)|Calculates the dcount from hll results (which was generated by hll or hll-merge).|
 |[hll_merge()](hllmergefunction.md)|Merges hll results (scalar version of the aggregate version hll-merge()).|
 |[percentile_tdigest()](percentile-tdigestfunction.md)|Calculates the percentile result from tdigest results (which was generated by tdigest or merge-tdigests).|
+|[percentile_array_tdigest()](percentile-array-tdigestfunction.md)|Calculates the percentile array result from tdigest results (which was generated by tdigest or merge-tdigests).|
 |[percentrank_tdigest()](percentrank-tdigestfunction.md)|Calculates the percentage ranking of a value in a dataset.|
 |[rank_tdigest()](rank-tdigest.md)|Calculates relative rank of a value in a set.|
 |[tdigest_merge()](tdigest-mergefunction.md)|Merges tdigest results (scalar version of the aggregate version tdigest-merge()).|

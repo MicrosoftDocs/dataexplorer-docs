@@ -38,7 +38,7 @@ existing or nonexistent tables and data.
   ingestion in the background. The results of the command will include
   an `OperationId` value that can then be used with the `.show operations`
   command, to retrieve the ingestion completion status and results.
-* *TableName*: The name of the table to ingest data to.
+* *TableName*: The name of the table to ingest data into.
   The table name is always related to the database in context.
 * *PropertyName*, *PropertyValue*: Any number of ingestion properties that affect the ingestion process.
 
@@ -91,10 +91,10 @@ Create a new table called :::no-loc text="RecentErrors"::: in the database that 
    | where Level == "Error" and Timestamp > now() - time(1h)
 ```
 
-Create a new table called "OldExtents" in the database that has a single column, "ExtentId", and holds the extent IDs of all extents in the database that has been created more than 30 days earlier. The database has an existing table named "MyExtents".
+Create a new table called "OldExtents" in the database that has a single column, "ExtentId", and holds the extent IDs of all extents in the database that has been created more than 30 days earlier. The database has an existing table named "MyExtents". Since the dataset is expected to be bigger than 1GB (more than ~1 million rows) use the *distributed* flag 
 
 ```kusto
-.set async OldExtents <|
+.set async OldExtents with(distributed=true) <|
    MyExtents 
    | where CreatedOn < now() - time(30d)
    | project ExtentId

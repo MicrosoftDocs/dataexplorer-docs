@@ -41,7 +41,9 @@ Valid user-defined function names must follow the same [identifier naming rules]
 The name must also be unique in its scope of definition.
 
 > [!NOTE]
-> If a stored function and a table both have the same name, the stored function overrides when querying the table/function name.
+> If a stored function and a table both have the same name, then any reference to that name
+> resolves to the stored function, not the table name. Use the [table function](../tablefunction.md)
+> to reference the table instead.
 
 ## Input arguments
 

@@ -6,11 +6,11 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 10/10/2021
 ms.localizationpriority: high
 ---
 
-# Azure Data Explorer data ingestion overview 
+# Azure Data Explorer data ingestion overview
 
 Data ingestion is the process used to load data records from one or more sources to import data into a table in Azure Data Explorer. Once ingested, the data becomes available for query.
 
@@ -20,11 +20,11 @@ The diagram below shows the end-to-end flow for working in Azure Data Explorer a
 
 The Azure Data Explorer data management service, which is responsible for data ingestion, implements the following process:
 
-Azure Data Explorer pulls data from an external source and reads requests from a pending Azure queue. Data is batched or streamed to the Data Manager. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Data is persisted in storage according to the set retention policy. The Data Manager then commits the data ingest to the engine, where it's available for query. 
+Azure Data Explorer pulls data from an external source and reads requests from a pending Azure queue. Data is batched or streamed to the Data Manager. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Data is persisted in storage according to the set retention policy. The Data Manager then commits the data ingest into the engine, where it's available for query.
 
 ## Supported data formats, properties, and permissions
 
-* **[Supported data formats](ingestion-supported-formats.md)** 
+* **[Supported data formats](ingestion-supported-formats.md)**
 
 * **[Ingestion properties](ingestion-properties.md)**: The properties that affect how the data will be ingested (for example, tagging, mapping, creation time).
 
@@ -32,9 +32,9 @@ Azure Data Explorer pulls data from an external source and reads requests from a
 
 ## Batching vs streaming ingestion
 
-* Batching ingestion does data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. The [ingestion batching](kusto/management/batchingpolicy.md) policy can be set on databases or tables. By default, the maximum batching value is 5 minutes, 1000 items, or a total size of 1 GB.
+* Batching ingestion does data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. The [ingestion batching](kusto/management/batchingpolicy.md) policy can be set on databases or tables. By default, the maximum batching value is 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a batch ingestion command is 4 GB.
 
-* [Streaming ingestion](ingest-data-streaming.md) is ongoing data ingestion from a streaming source. Streaming ingestion allows near real-time latency for small sets of data per table. Data is initially ingested to row store, then moved to column store extents. Streaming ingestion can be done using an Azure Data Explorer client library or one of the supported data pipelines. 
+* [Streaming ingestion](ingest-data-streaming.md) is ongoing data ingestion from a streaming source. Streaming ingestion allows near real-time latency for small sets of data per table. Data is initially ingested to row store, then moved to column store extents. Streaming ingestion can be done using an Azure Data Explorer client library or one of the supported data pipelines.
 
 ## Ingestion methods and tools
 
@@ -50,11 +50,11 @@ For organizations who wish to have management (throttling, retries, monitors, al
 
 * **[IoT Hub](https://azure.microsoft.com/services/iot-hub/)**: A pipeline that is used for the transfer of data from supported IoT devices to Azure Data Explorer. For more information, see [Ingest from IoT Hub](ingest-data-iot-hub.md).
 
-* **Azure Data Factory (ADF)**: A fully managed data integration service for analytic workloads in Azure. Azure Data Factory connects with over 90 supported sources to provide efficient and resilient data transfer. ADF prepares, transforms, and enriches data to give insights that can be monitored in different kinds of ways. This service can be used as a one-time solution, on a periodic timeline, or triggered by specific events. 
-  * [Integrate Azure Data Explorer with Azure Data Factory](data-factory-integration.md).
-  * [Use Azure Data Factory to copy data from supported sources to Azure Data Explorer](./data-factory-load-data.md).
-  * [Copy in bulk from a database to Azure Data Explorer by using the Azure Data Factory template](data-factory-template.md).
-  * [Use Azure Data Factory command activity to run Azure Data Explorer control commands](data-factory-command-activity.md).
+* **Azure Data Factory (ADF)**: A fully managed data integration service for analytic workloads in Azure. Azure Data Factory connects with over 90 supported sources to provide efficient and resilient data transfer. ADF prepares, transforms, and enriches data to give insights that can be monitored in different kinds of ways. This service can be used as a one-time solution, on a periodic timeline, or triggered by specific events.
+    * [Integrate Azure Data Explorer with Azure Data Factory](data-factory-integration.md).
+    * [Use Azure Data Factory to copy data from supported sources to Azure Data Explorer](./data-factory-load-data.md).
+    * [Copy in bulk from a database to Azure Data Explorer by using the Azure Data Factory template](data-factory-template.md).
+    * [Use Azure Data Factory command activity to run Azure Data Explorer control commands](data-factory-command-activity.md).
 
 ### Ingestion using connectors and plugins
 
@@ -75,13 +75,9 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 * [Python SDK](kusto/api/python/kusto-python-client-library.md)
 
 * [.NET SDK](kusto/api/netfx/about-the-sdk.md)
-
 * [Java SDK](kusto/api/java/kusto-java-client-library.md)
-
 * [Node SDK](kusto/api/node/kusto-node-client-library.md)
-
 * [REST API](kusto/api/netfx/kusto-ingest-client-rest.md)
-
 * [GO SDK](kusto/api/golang/kusto-golang-client-library.md)
 
 ### Tools
@@ -94,11 +90,11 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 
 There are a number of methods by which data can be ingested directly to the engine by Kusto Query Language (KQL) commands. Because this method bypasses the Data Management services, it's only appropriate for exploration and prototyping. Don't use this method in production or high-volume scenarios.
 
-  * **Inline ingestion**:  A control command [.ingest inline](kusto/management/data-ingestion/ingest-inline.md) is sent to the engine, with the data to be ingested being a part of the command text itself. This method is intended for improvised testing purposes.
+* **Inline ingestion**:  A control command [.ingest inline](kusto/management/data-ingestion/ingest-inline.md) is sent to the engine, with the data to be ingested being a part of the command text itself. This method is intended for improvised testing purposes.
 
-  * **Ingest from query**: A control command [.set, .append, .set-or-append, or .set-or-replace](kusto/management/data-ingestion/ingest-from-query.md) is sent to the engine, with the data specified indirectly as the results of a query or a command.
+* **Ingest from query**: A control command [.set, .append, .set-or-append, or .set-or-replace](kusto/management/data-ingestion/ingest-from-query.md) is sent to the engine, with the data specified indirectly as the results of a query or a command.
 
-  * **Ingest from storage (pull)**: A control command [.ingest into](kusto/management/data-ingestion/ingest-from-storage.md) is sent to the engine, with the data stored in some external storage (for example, Azure Blob Storage) accessible by the engine and pointed-to by the command.
+* **Ingest from storage (pull)**: A control command [.ingest into](kusto/management/data-ingestion/ingest-from-storage.md) is sent to the engine, with the data stored in some external storage (for example, Azure Blob Storage) accessible by the engine and pointed-to by the command.
 
 ## Comparing ingestion methods and tools
 
@@ -121,7 +117,7 @@ There are a number of methods by which data can be ingested directly to the engi
 | [**REST**](kusto/api/netfx/kusto-ingest-client-rest.md) | All formats supported | 1 GB uncompressed (see note) | Batching, streaming, direct| Write your own code according to organizational needs |
 | [**Go**](kusto/api/golang/kusto-golang-client-library.md) | All formats supported | 1 GB uncompressed (see note) | Batching, streaming, direct | Write your own code according to organizational needs |
 
-> [!Note] 
+> [!Note]
 > When referenced in the above table, ingestion supports a maximum file size of 4 GB. The recommendation is to ingest files between 100 MB and 1 GB.
 
 ## Ingestion process
@@ -131,14 +127,15 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
 1. **Set retention policy**
 
     Data ingested into a table in Azure Data Explorer is subject to the table's effective retention policy. Unless set on a table explicitly, the effective retention policy is derived from the database's retention policy. Hot retention is a function of cluster size and your retention policy. Ingesting more data than you have available space will force the first in data to cold retention.
-    
-    Make sure that the database's retention policy is appropriate for your needs. If not, explicitly override it at the table level. For more information, see [retention policy](kusto/management/retentionpolicy.md). 
-    
+
+    Make sure that the database's retention policy is appropriate for your needs. If not, explicitly override it at the table level. For more information, see [retention policy](kusto/management/retentionpolicy.md).
+
 1. **Create a table**
 
     In order to ingest data, a table needs to be created beforehand. Use one of the following options:
-   * Create a table [with a command](kusto/management/create-table-command.md). 
-   * Create a table using [One Click Ingestion](one-click-ingestion-new-table.md).
+
+    * Create a table [with a command](kusto/management/create-table-command.md).
+    * Create a table using [One Click Ingestion](one-click-ingestion-new-table.md).
 
     > [!Note]
     > If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.
@@ -150,8 +147,6 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
 1. **Set update policy** (optional)
 
    Some of the data format mappings (Parquet, JSON, and Avro) support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time, use update policy, which allows for lightweight processing using Kusto Query Language commands. The update policy automatically runs extractions and transformations on ingested data on the original table, and ingests the resulting data into one or more destination tables. Set your [update policy](kusto/management/update-policy.md).
-
-
 
 ## Next steps
 

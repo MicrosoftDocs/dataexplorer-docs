@@ -32,7 +32,7 @@ A request rate limit of kind `ConcurrentRequests` includes the following propert
 
 | Name                  | Type | Description                                | Supported Values |
 |-----------------------|------|--------------------------------------------|------------------|
-| MaxConcurrentRequests | int  | The maximum number of concurrent requests. | [`1`, `10000`]   |
+| MaxConcurrentRequests | int  | The maximum number of concurrent requests. | [`0`, `10000`]   |
 
 When a request exceeds the limit on maximum number of concurrent requests:
   * The request's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
@@ -93,9 +93,9 @@ When a request exceeds the limit on resources utilization:
   * The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
   * The exception type will be `QuotaExceededException`.
 
-### Example
+### Examples
 
-The following policies allow up to:
+1. The following policies allow up to:
 
 * 500 concurrent requests for the workload group.
 * 25 concurrent requests per principal.
@@ -132,6 +132,21 @@ The following policies allow up to:
 ]
 ```
 
+2. The following policies will block all requests classified to the workload group:
+
+```json
+[
+  {
+    "IsEnabled": true,
+    "Scope": "WorkloadGroup",
+    "LimitKind": "ConcurrentRequests",
+    "Properties": {
+      "MaxConcurrentRequests": 0
+    }
+  },
+]
+```
+
 ### The `default` workload group
 
 The `default` workload group has the following policy defined by default. This policy can be altered.
@@ -152,8 +167,9 @@ The `default` workload group has the following policy defined by default. This p
 #### Notes
 
 * Rate limits are enforced at the level defined by the workload group's [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md).
-* The limit on maximum concurrent requests for the `default` workload group depends on the SKU of the cluster, and is calculated as: `Cores-Per-Node x 10`.
+* The default limit on maximum concurrent requests depends on the SKU of the cluster, and is calculated as: `Cores-Per-Node x 10`.
     * For example: A cluster that's set-up with Azure D14_v2 nodes, where each node has 16 vCores, will have a default limit of `16` x `10` = `160`.
+    * This default limits applies to the `default` workload group, and any newly created workload group that doesn't have request rate limit policies speficied at the time of its creation.
 * If a workload group has no limit on maximum concurrent requests defined, then the maximum allowed value of `10000` applies.
 * When altering the policy for the `default` workload group, a limit must be defined for the workload group's max concurrent requests.
 * The cluster's [capacity policy](capacitypolicy.md) may also limit the request rate of requests that fall under a specific category, for example *ingestions*.

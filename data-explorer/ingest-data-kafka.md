@@ -20,10 +20,10 @@ For more information, see the connector [Git repo](https://github.com/Azure/kafk
 
 ## Prerequisites
 
-* Create a [Microsoft Azure account](/azure/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md) using default cache and retention policies.
 * Install [Azure CLI](/cli/azure/install-azure-cli).
 * Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install).
-* [Create an Azure Data Explorer cluster and database in the Azure portal](create-cluster-database-portal.md) using default cache and retention policies.
 
 ## Create an Azure Active Directory service principal
 

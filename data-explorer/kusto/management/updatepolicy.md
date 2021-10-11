@@ -15,7 +15,8 @@ The [update policy](update-policy.md) instructs Azure Data Explorer to automatic
 
 :::image type="content" source="images/updatepolicy/update-policy-overview.png" alt-text="Overview of the update policy in Azure Data Explorer.":::
 
-For example, the policy lets the creation of one table be the filtered view of another table. The new table can have a different schema, retention policy, and so on. 
+An update policy is useful when one table is the filtered view of another table. For example, the source table can be a high-rate trace table with interesting data formatted as a free-text column. The target table can include only specific kind of trace lines, with a well-structured schema that is a transformation of the
+original free-text data by using the [parse operator](../query/parseoperator.md). The target table can have a different schema, retention policy, and so on.
 
 The update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out with the size of the cluster, and works more efficiently if ingestions are done in large bulks.
 
@@ -85,14 +86,6 @@ Update policies take effect when data is ingested or moved to (extents are creat
 >   * This might lead to loss of data in all tables that have an update policy relationship to that table, if the `replace` part takes place.
 >   * Consider using `.set-or-append` instead, if this behavior isn't desired.
 
-## Regular ingestion using update policy
-
-The update policy will behave like regular ingestion when the following conditions are met:
-
-* The source table is a high-rate trace table with interesting data formatted as a free-text column. 
-* The target table on which the update policy is defined accepts only specific trace lines.
-* The table has a well-structured schema that is a transformation of the original free-text data created by the [parse operator](../query/parseoperator.md).
-
 ## Zero retention on source table
 
 Sometimes data is ingested to a source table only as a stepping stone to the target table, and you don't want to keep the raw data in the source table. Set a soft-delete period of `0sec` (or `00:00:00`) in the source table's [retention policy](retentionpolicy.md), and set the update policy as transactional. In this situation: 
@@ -113,11 +106,18 @@ Use [`.show queries`](../management/queries.md), to evaluate resource usage (CPU
 * The `Query` property of the update policy calls a function named `MyFunction()`.
 
 ```kusto
-.show table MySourceTable extents;
-// The following line provides the extent ID for the not-yet-merged extent in the source table which has the most records
-let extentId = $command_results | where MaxCreatedOn > ago(1hr) and MinCreatedOn == MaxCreatedOn | top 1 by RowCount desc | project ExtentId;
-let MySourceTable = MySourceTable | where extent_id() == toscalar(extentId);
-MyFunction()
+// '_extentId' is the ID of a recently created extent, that likely hasn't been merged yet.
+let _extentId = toscalar(
+    MySourceTable
+    | project ExtentId = extent_id(), IngestionTime = ingestion_time()
+    | where IngestionTime > ago(10m)
+    | top 1 by IngestionTime desc
+    | project ExtentId
+);
+let MySourceTable = 
+    MySourceTable
+    | where ingestion_time() > ago(10m) and extent_id() == _extentId;
+MyFunction
 ```
 
 ## Failures

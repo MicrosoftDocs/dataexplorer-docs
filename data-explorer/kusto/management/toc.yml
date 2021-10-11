@@ -40,6 +40,8 @@ items:
     href: request-rate-limits-enforcement-policy.md
   - name: Request queuing policy
     href: request-queuing-policy.md
+  - name: Query consistency policy
+    href: query-consistency-policy.md
 - name: Schema
   items:
   - name: Best practices for schema management
@@ -464,15 +466,26 @@ items:
       href: delete-table-update-policy-policy-command.md
     - name: show table update policy policy command
       href: show-table-update-policy-policy-command.md
+  - name: Query weak consistency
+    items:
+    - name: Query weak consistency policy
+      href: query-weak-consistency-policy.md
+    - name: .alter query weak consistency policy
+      href: alter-query-weak-consistency-policy.md
+    - name: .show query weak consistency policy
+      href: show-query-weak-consistency-policy.md
 - name: Security roles
   href: security-roles.md
 - name: Data ingestion
   items:
   - name: Ingest from storage
+    displayName:  .ingest into, pull data, pulling ingestion
     href: data-ingestion/ingest-from-storage.md
   - name: Ingest from query
+    displayName:  .set, .append, .set-or-append, .set-or-replace
     href: data-ingestion/ingest-from-query.md
   - name: Inline ingestion
+    displayName:  .ingest inline
     href: data-ingestion/ingest-inline.md
   - name: Streaming ingestion
     items:
