@@ -21,7 +21,7 @@ By analyzing structured, semi-structured, and unstructured data across time seri
 
 Azure Data Explorer capabilities are extended by other services built on its powerful query language, including [Azure Monitor logs](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/), and [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint).
 
-The following image shows a schematic overview of Azure Data Explorer architecture: 
+The following image shows a schematic overview of the Azure Data Explorer architecture: 
 
 :::image type="content" source="media/data-explorer-overview/overview-architecture.png" alt-text="Schematic image of Azure Data Explorer architecture.":::
 
@@ -37,15 +37,15 @@ Azure Data explorer uses the [Kusto Query Language (KQL)](kusto/query/index.md),
 
 ### Advanced analytics
 
-Use Azure Data Explorer for time series analysis with a large set of functions; adding, subtracting time series, filtering, regression, seasonality detection, geospatial analysis, anomaly detection, scanning, and forecasting. Time series functions are optimized for processing thousands of time series in seconds. Pattern detection is made easy with cluster plugins that can diagnose anomalies and do root cause analysis. You can also extend Azure Data Explorer capabilities by [embedding python code](kusto/query/pythonplugin.md) in KQL queries.
+Use Azure Data Explorer for time series analysis with a large set of functions including: adding and subtracting time series, filtering, regression, seasonality detection, geospatial analysis, anomaly detection, scanning, and forecasting. Time series functions are optimized for processing thousands of time series in seconds. Pattern detection is made easy with cluster plugins that can diagnose anomalies and do root cause analysis. You can also extend Azure Data Explorer capabilities by [embedding python code](kusto/query/pythonplugin.md) in KQL queries.
 
 ### Easy-to-use wizard
 
-The [ingestion wizard](ingest-data-one-click.md) makes the data ingestion process easy, fast, and intuitive. The [web UI](web-query-data.md) provides an intuitive and guided experience that helps customers ramp-up quickly to start ingesting data, creating database tables, and mapping structures. It enables one time or a continuous ingestion from various sources and in various data formats. Table mappings and schema are auto suggested and easy to modify.
+The [ingestion wizard](ingest-data-one-click.md) makes the data ingestion process easy, fast, and intuitive. The [web UI](web-query-data.md) provides an intuitive and guided experience that helps you ramp-up quickly to start ingesting data, creating database tables, and mapping structures. It enables one time or a continuous ingestion from various sources and in various data formats. Table mappings and schema are auto suggested and easy to modify.
 
 ### Versatile data visualization
 
-Data visualization helps you gain important insights. Azure Data Explorer offers built-in visualization and [dashboarding](azure-data-explorer-dashboards.md) out of the box, with support for various charts and visualizations. It has native integration with [Power BI](power-bi-connector.md), native connectors for [Grafana](grafana.md), [Kibana](k2bridge.md) and Databricks, ODBC support for [Tableau](tableau.md), [Sisense](sisense.md), Qlik and more.
+Data visualization helps you gain important insights. Azure Data Explorer offers built-in visualization and [dashboarding](azure-data-explorer-dashboards.md) out of the box, with support for various charts and visualizations. It has native integration with [Power BI](power-bi-connector.md), native connectors for [Grafana](grafana.md), [Kibana](k2bridge.md) and Databricks, ODBC support for [Tableau](tableau.md), [Sisense](sisense.md), Qlik, and more.
 
 ### Automatic ingest, process, and export
 
