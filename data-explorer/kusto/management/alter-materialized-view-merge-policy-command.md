@@ -1,6 +1,6 @@
 ---
-title: .alter materialized view retention policy command- Azure Data Explorer
-description: This article describes the .alter materialized view retention policy command in Azure Data Explorer.
+title: .alter materialized view merge policy command- Azure Data Explorer
+description: This article describes the .alter materialized view merge policy command in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,19 +9,18 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/03/2021
 ---
-# .alter materialized view retention policy
+# .alter materialized view merge policy
 
-Change a materialized view's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It's used to remove data whose relevance is age-based. 
- 
+Change a merge view's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged. 
 
 ## Syntax
 
-`.alter` `materialized-view` *MaterializedViewName* `policy` `retention` 
+`.alter` `materialized-view` *MaterializedViewName* `policy` `merge` 
 
 ### Example
 
-Sets a retention policy with a 10 day soft-delete period, and enable data recoverability:
+Sets a merge policy with a 10 day soft-delete period, and enable data recoverability:
 
 ```kusto
-.alter materialized-view View1 policy retention "{\"SoftDeletePeriod\": \"10.00:00:00\", \"Recoverability\": \"Enabled\"}"
+.alter materialized-view View1 policy merge "{\"SoftDeletePeriod\": \"10.00:00:00\", \"Recoverability\": \"Enabled\"}"
 ```

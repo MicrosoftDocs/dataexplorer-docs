@@ -210,16 +210,12 @@ items:
       href: alter-materialized-view-cache-policy-command.md
     - name: alter table cache policy command
       href: alter-table-cache-policy-command.md
-    - name: delete cluster cache policy command
-      href: delete-cluster-cache-policy-command.md
     - name: delete database cache policy command
       href: delete-database-cache-policy-command.md
     - name: delete materialized view cache policy command
       href: delete-materialized-view-cache-policy-command.md
     - name: delete table cache policy command
       href: delete-table-cache-policy-command.md
-    - name: show cluster cache policy command
-      href: show-cluster-cache-policy-command.md
     - name: show database cache policy command
       href: show-database-cache-policy-command.md
     - name: show materialized view cache policy command
@@ -246,18 +242,18 @@ items:
       href: batchingpolicy.md
     - name: ingestionbatching policy command
       href: batching-policy.md
-    - name: alter database ingestionbatching policy command
-      href: alter-database-ingestion-batching-policy-command.md
-    - name: alter table ingestionbatching policy command
-      href: alter-table-ingestion-batching-policy-command.md
-    - name: delete database ingestionbatching policy command
-      href: delete-database-ingestion-batching-policy-command.md
-    - name: delete table ingestionbatching policy command
-      href: delete-table-ingestion-batching-policy-command.md
-    - name: show database ingestionbatching policy command
-      href: show-database-ingestion-batching-policy-command.md
-    - name: show table ingestionbatching policy command
-      href: show-table-ingestion-batching-policy-command.md
+    - name: alter database ingestion batching policy command
+      href: alter-database-ingestion-batching-policy.md
+    - name: alter table ingestion batching policy command
+      href: alter-table-ingestion-batching-policy.md
+    - name: delete database ingestion batching policy command
+      href: delete-database-ingestion-batching-policy.md
+    - name: delete table ingestion batching policy command
+      href: delete-table-ingestion-batching-policy.md
+    - name: show database ingestion batching policy command
+      href: show-database-ingestion-batching-policy.md
+    - name: show table ingestion batching policy command
+      href: show-table-ingestion-batching-policy.md
   - name: Ingestiontime
     items:
     - name: Ingestiontime policy
@@ -283,7 +279,7 @@ items:
     - name: alter-merge database merge policy command
       href: alter-merge-database-merge-policy-command.md
     - name: alter-merge table merge policy command
-      href: alter-merge table-merge-policy-command.md
+      href: alter-merge-table-merge-policy-command.md
     - name: delete database merge policy command
       href: delete-database-merge-policy-command.md
     - name: delete table merge policy command
@@ -305,7 +301,7 @@ items:
     - name: alter-merge materialized view partitioning policy command
       href: alter-merge-materialized-view-partitioning-policy-command.md
     - name: alter-merge table partitioning policy command
-      href: alter-merge table-partitioning-policy-command.md
+      href: alter-merge-table-partitioning-policy-command.md
     - name: delete materialized view partitioning policy command
       href: delete-materialized-view-partitioning-policy-command.md
     - name: delete table partitioning policy command
@@ -331,7 +327,7 @@ items:
     - name: alter-merge materialized view retention policy command
       href: alter-merge-materialized-view-retention-policy-command.md
     - name: alter-merge table retention policy command
-      href: alter-merge table-retention-policy-command.md
+      href: alter-merge-table-retention-policy-command.md
     - name: delete database retention policy command
       href: delete-database-retention-policy-command.md
     - name: delete materialized view retention policy command
@@ -361,11 +357,11 @@ items:
     - name: restricted_view_access policy command
       href: restrictedviewaccess-policy.md    
     - name: .alter table restricted view access policy
-      href: alter-restricted-view-accesspolicy-command.md
+      href: alter-table-restricted-view-access-policy-command.md
     - name: .delete table restricted view access policy
-      href: delete-table-restricted-view-access-policy.md
+      href: delete-table-restricted-view-access-policy-command.md
     - name: .show table restricted view access policy
-      href: show-table-restricted-view-access-policy.md
+      href: show-table-restricted-view-access-policy-command.md
   - name: Row level security
     items:
     - name: Row level security policy
@@ -421,7 +417,7 @@ items:
     - name: alter-merge database sharding policy command
       href: alter-merge-database-sharding-policy-command.md
     - name: alter-merge table sharding policy command
-      href: alter-merge table-sharding-policy-command.md
+      href: alter-merge-table-sharding-policy-command.md
     - name: delete database sharding policy command
       href: delete-database-sharding-policy-command.md
     - name: delete table sharding policy command
@@ -443,7 +439,7 @@ items:
     - name: alter-merge database streaming ingestion policy command
       href: alter-merge-database-streaming-ingestion-policy-command.md
     - name: alter-merge table streaming ingestion policy command
-      href: alter-merge table-streaming-ingestion-policy-command.md
+      href: alter-merge-table-streaming-ingestion-policy-command.md
     - name: delete database streaming ingestion policy command
       href: delete-database-streaming-ingestion-policy-command.md
     - name: delete table streaming ingestion policy command
@@ -458,14 +454,14 @@ items:
       href: updatepolicy.md
     - name: update policy commands
       href: update-policy.md
-    - name: alter table update policy policy command
-      href: alter-table-update-policy-policy-command.md
+    - name: alter table update policy command
+      href: alter-table-update-policy-command.md
     - name: alter-merge table update policy policy command
-      href: alter-merge table-update-policy-policy-command.md
-    - name: delete table update policy policy command
-      href: delete-table-update-policy-policy-command.md
-    - name: show table update policy policy command
-      href: show-table-update-policy-policy-command.md
+      href: alter-merge table-update-policy-command.md
+    - name: delete table update policy command
+      href: delete-table-update-policy-command.md
+    - name: show table update policy command
+      href: show-table-update-policy-command.md
   - name: Query weak consistency
     items:
     - name: Query weak consistency policy
