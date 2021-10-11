@@ -29,11 +29,11 @@ The following image shows a schematic overview of the Azure Data Explorer archit
 
 ### Data velocity, variety, and volume
 
-Azure Data Explorer can ingest terabytes of data in minutes in batch or streaming mode. Petabytes of data can be queried with results returned within milliseconds to seconds. Azure Data Explorer provides high velocity (millions of events per second), low latency (seconds), and linear scale ingestion of raw data. Data can be ingested in different formats and structures. It can flow in from various pipelines and sources.
+With Azure Data Explorer, you can ingest terabytes of data in minutes in batch or streaming mode. You can query petabytes of data, with results returned within milliseconds to seconds. Azure Data Explorer provides high velocity (millions of events per second), low latency (seconds), and linear scale ingestion of raw data. Ingest your data in different formats and structures, flowing from various pipelines and sources.
 
 ### User-friendly query language
 
-Azure Data explorer uses the [Kusto Query Language (KQL)](kusto/query/index.md), an open-source language initially invented by the team. The language is simple to understand and learn, and highly productive. You can use simple operators and advanced analytics.
+Query Azure Data explorer with the [Kusto Query Language (KQL)](kusto/query/index.md), an open-source language initially invented by the team. The language is simple to understand and learn, and highly productive. You can use simple operators and advanced analytics.
 
 ### Advanced analytics
 
