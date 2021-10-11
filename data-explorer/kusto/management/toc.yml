@@ -457,7 +457,7 @@ items:
     - name: alter table update policy command
       href: alter-table-update-policy-command.md
     - name: alter-merge table update policy policy command
-      href: alter-merge table-update-policy-command.md
+      href: alter-merge-table-update-policy-command.md
     - name: delete table update policy command
       href: delete-table-update-policy-command.md
     - name: show table update policy command
