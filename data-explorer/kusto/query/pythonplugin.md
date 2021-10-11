@@ -15,7 +15,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The Python plugin runs a user-defined-function (UDF) using a Python script. The Python script gets tabular data as its input, and is expected to produce a tabular output.
+The Python plugin runs a user-defined function (UDF) using a Python script. The Python script gets tabular data as its input, and produces tabular output.
 The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running on the cluster's nodes.
 
 ## Syntax
@@ -43,7 +43,7 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
 
 ## Reserved Python variables
 
-The following variables are reserved for interaction between Kusto query language and the Python code.
+The following variables are reserved for interaction between Kusto Query Language and the Python code.
 
 * `df`: The input tabular data (the values of `T` above), as a `pandas` DataFrame.
 * `kargs`: The value of the *script_parameters* argument, as a Python dictionary.
@@ -210,9 +210,9 @@ download the package and its dependencies.
     pip wheel [-w download-dir] package-name.
     ```
 
-1. Create a zip file, that contains the required package and its dependencies.
+1. Create a zip file that contains the required package and its dependencies.
 
-    * For private packages: zip the folder of the package and the folders of its dependencies.
+    * For private packages, zip the folder of the package and the folders of its dependencies.
     * For public packages, zip the files that were downloaded in the previous step.
     
     > [!NOTE]
