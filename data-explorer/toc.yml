@@ -546,14 +546,12 @@ items:
     href: ./policy-reference.md
 - name: Resources
   items:
-  - name: Blog
-    href: https://azure.microsoft.com/blog/tag/azure-data-explorer/
   - name: Forums
     items:
     - name: Stack Overflow
       href: https://stackoverflow.com/questions/tagged/azure-data-explorer
     - name: Microsoft Tech Community
-      href: https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto
+      href: https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/AzureDataExplorer
     - name: Microsoft Q&A
       href: /answers/topics/azure-data-explorer.html
   - name: Product feedback
