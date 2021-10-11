@@ -915,8 +915,18 @@ items:
     href: machine-learning-and-tsa.md
   - name: make-series operator
     href: make-seriesoperator.md
+  - name: series_abs()
+    href: series-absfunction.md
+  - name: series_acos()
+    href: series-acosfunction.md  
   - name: series_add()
     href: series-addfunction.md
+  - name: series_asin()
+    href: series-asinfunction.md 
+  - name: series_atan()
+    href: series-atanfunction.md 
+  - name: series_cos()
+    href: series-cosfunction.md  
   - name: series_decompose()
     href: series-decomposefunction.md
   - name: series_decompose_anomalies()
@@ -927,6 +937,8 @@ items:
     href: series-dividefunction.md
   - name: series_equals()
     href: series-equalsfunction.md
+  - name: series_exp()
+    href: series-expfunction.md
   - name: series_fft()
     href: series-fft-function.md
   - name: series_fill_backward()
@@ -977,12 +989,18 @@ items:
     href: series-powfunction.md  
   - name: series_seasonal()
     href: series-seasonalfunction.md
+  - name: series_sign()
+    href: series-signfunction.md
+  - name: series_sin()
+    href: series-sinfunction.md    
   - name: series_stats()
     href: series-statsfunction.md
   - name: series_stats_dynamic()
     href: series-stats-dynamicfunction.md
   - name: series_subtract()
     href: series-subtractfunction.md
+  - name: series_tan()
+    href: series-tanfunction.md   
 - name: Machine Learning
   items:
   - name: autocluster plugin

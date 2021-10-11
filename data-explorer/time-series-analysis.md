@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 04/07/2019
+ms.date: 10/11/2021
 ms.localizationpriority: high
 ---
 # Time series analysis in Azure Data Explorer

@@ -7,9 +7,10 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 10/11/2021
 ---
 # Kusto.Ingest errors and exceptions
+
 Any error during the ingestion handling on the client side is indicated by a C# exception.
 
 ## Failures
@@ -48,15 +49,16 @@ While using a DataReader source, the data to post to the queue is saved to a tem
 In the `IngestFromDataReader` and `IngestFromDataReaderAsync` methods, the `retainCsvOnFailure` flag, whose default value is `false`, determines whether the files should be kept after a failed ingestion. If this flag is set to `false`, data that fails the ingestion won't be persisted, making it hard to understand what went wrong.
 
 ### Common Failures
+
 |Error                         |Reason           |Mitigation                                   |
 |------------------------------|-----------------|---------------------------------------------|
-|Database <database name> name doesn't exist| The database doesn't exist|Check the database name at `kustoIngestionProperties`/Create the database |
+|Database \<database name> name doesn't exist| The database doesn't exist|Check the database name at `kustoIngestionProperties`/Create the database |
 |Entity 'table name that doesn't exist' of kind 'Table' wasn't found.|The table doesn't exist and there's no CSV mapping.| Add CSV mapping / create the required table |
-|Blob <blob path> excluded for reason: JSON pattern must be ingested with jsonMapping parameter| JSON ingestion when no JSON mapping is provided.|Provide a JSON mapping |
+|Blob \<blob path> excluded for reason: JSON pattern must be ingested with jsonMapping parameter| JSON ingestion when no JSON mapping is provided.|Provide a JSON mapping |
 |Failed to download blob: 'The remote server returned an error: (404) Not Found.'| The blob doesn't exist.|Verify that the blob exists. If it exists, retry and contact the Kusto team |
 |JSON column mapping isn't valid: Two or more mapping elements point to the same column.| JSON mapping has 2 columns with different paths|Fix JSON mapping |
-|EngineError - [UtilsException] `IngestionDownloader.Download`: One or more files failed to download (search KustoLogs for ActivityID:<GUID1>, RootActivityId:<GUID2>)| One or more files failed to download. |Retry |
-|Failed to parse: Stream with ID '<stream name>' has a malformed CSV format, failing per ValidationOptions policy |Malformed CSV file (such as, not having the same number of columns on every line). Fails only when validation policy is set to `ValidationOptions`. ValidateCsvInputConstantColumns |Check your CSV files. This message applies only to CSV/TSV files |
+|EngineError - [UtilsException] `IngestionDownloader.Download`: One or more files failed to download (search KustoLogs for ActivityID:\<GUID1>, RootActivityId:\<GUID2>)| One or more files failed to download. |Retry |
+|Failed to parse: Stream with ID '\<stream name>' has a malformed CSV format, failing per ValidationOptions policy |Malformed CSV file (such as, not having the same number of columns on every line). Fails only when validation policy is set to `ValidationOptions`. ValidateCsvInputConstantColumns |Check your CSV files. This message applies only to CSV/TSV files |
 |`IngestClientAggregateException` with error message 'Missing mandatory parameters for valid Shared Access Signature' |The SAS being used is of the service, and not of the storage account |Use the SAS of the storage account |
 
 ### Ingestion error codes
@@ -104,7 +106,7 @@ Base Class: [Exception](/dotnet/api/system.exception)
 |Field Name   |Type     |Meaning       
 |-------------|---------|------------------------------------|
 |PropertyName | String  | The name of the duplicate property
-                            
+
 ### PostMessageToQueueFailedException
 
 Raised when posting a message to the queue fails
@@ -187,7 +189,7 @@ Base Class: [AggregateException](/dotnet/api/system.aggregateexception)
 
 |Field Name      |Type                             |Meaning       
 |----------------|---------------------------------|-----------------------|
-|IngestionErrors | IList<IngestClientException>    | The errors that occur while attempting to ingest, and the sources related to them
+|IngestionErrors | IList\<IngestClientException>    | The errors that occur while attempting to ingest, and the sources related to them
 |IsGlobalError   | bool                            | Indicates whether the exception occurred for all sources
 
 
