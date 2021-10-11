@@ -97,13 +97,8 @@ items:
         displayName: ingest data, ingestion, one click
         href: one-click-ingestion-existing-table.md
     - name: Streaming ingestion
-      items:
-      - name: Azure portal
-        displayName: ingest data, ingestion
-        href: ingest-data-streaming.md
-      - name: C#
-        displayName: ingest data, ingestion
-        href: ingest-data-streaming-csharp.md
+      displayName: ingest data, ingestion
+      href: ingest-data-streaming.md
     - name: LightIngest
       items: 
       - name: Using LightIngest
