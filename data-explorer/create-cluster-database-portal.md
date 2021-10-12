@@ -52,7 +52,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. Fill out the basic cluster details with the following information.
 
-    ![Fill in cluster form.](media/create-cluster-database-portal/create-cluster-form-2.png)
+    ![Fill in cluster form.](media/create-cluster-database-portal/create-cluster-form.png)
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -86,7 +86,7 @@ You're now ready for the second step in the process: database creation.
 
 1. Fill out the form with the following information.
 
-    ![Create database form.](media/create-cluster-database-portal/create-database.png)
+    ![Create database form.](media/create-cluster-database-portal/create-test-database.png)
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
