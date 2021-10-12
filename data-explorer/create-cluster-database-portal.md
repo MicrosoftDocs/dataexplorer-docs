@@ -40,7 +40,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. Select the **+ Create a resource** button in the upper-left corner of the portal.
 
-    :::image type="content" source="media/create-cluster-database-portal/create-resource.png" alt-text="Create a resource."::: 
+    :::image type="content" source="media/create-cluster-database-portal/create-resource.png" alt-text="Screenshot of the Create a resource button."::: 
 
 1. Search for *Azure Data Explorer*.
 
@@ -48,12 +48,12 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. Under **Azure Data Explorer**, select **Create**.
 
-    :::image type="content" source="media/create-cluster-database-portal/create-click.png" alt-text="Create a cluster":::
+    :::image type="content" source="media/create-cluster-database-portal/create-click.png" alt-text="Screenshot of the Create a cluster window":::
 
 
 1. Fill out the basic cluster details with the following information.
 
-    :::image type="content" source="media/create-cluster-database-portal/create-cluster-form.png" alt-text="Fill in cluster form.":::
+    :::image type="content" source="media/create-cluster-database-portal/create-cluster-form.png" alt-text="Screenshot of the cluster form.":::
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -70,7 +70,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. When the deployment is complete, select **Go to resource**.
 
-    :::image type="content" source="media/create-cluster-database-portal/notification-resource.png" alt-text="Got to resource.":::
+    :::image type="content" source="media/create-cluster-database-portal/notification-resource.png" alt-text="Screenshot of the Go to resource button.":::
 
 > [!NOTE]
 > If the deployment fails with the error "SubscriptionNotRegistered", retry the operation.
@@ -83,7 +83,7 @@ You're now ready for the second step in the process: database creation.
 
 1. On the **Overview** tab, select **Create database**.
 
-    :::image type="content" source="media/create-cluster-database-portal/database-creation.png" alt-text="Create a database."::: 
+    :::image type="content" source="media/create-cluster-database-portal/database-creation.png" alt-text="Screenshot of the Create a database window."::: 
 
 1. Fill out the form with the following information.
 
@@ -119,7 +119,7 @@ You can stop and restart a cluster depending on business needs.
 
 1. To stop the cluster, at the top of the **Overview** tab, select **Stop**.
 
-    :::image type="content" source="media/create-cluster-database-portal/stop-button.png" alt-text="The stop button.":::
+    :::image type="content" source="media/create-cluster-database-portal/stop-button.png" alt-text="Screenshot of the Azure portal and cluster stop button.":::
 
     > [!NOTE]
     > When the cluster is stopped, data is not available for queries, and you can't ingest new data.
