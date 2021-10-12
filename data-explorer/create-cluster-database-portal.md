@@ -40,19 +40,20 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. Select the **+ Create a resource** button in the upper-left corner of the portal.
 
-   ![Create resource.](media/create-cluster-database-portal/create-resource.png)
+    :::image type="content" source="media/create-cluster-database-portal/create-resource.png" alt-text="Create a resource."::: 
 
 1. Search for *Azure Data Explorer*.
 
-   ![Search Azure Data Explorer.](media/create-cluster-database-portal/search-resources.png)
+    :::image type="content" source="media/create-cluster-database-portal/search-resources.png" alt-text="Search Azure Data Explorer":::
 
 1. Under **Azure Data Explorer**, select **Create**.
 
-   ![Create.](media/create-cluster-database-portal/create-click.png)
+    :::image type="content" source="media/create-cluster-database-portal/create-click.png" alt-text="Create a cluster":::
+
 
 1. Fill out the basic cluster details with the following information.
 
-    ![Fill in cluster form.](media/create-cluster-database-portal/create-cluster-form.png)
+    :::image type="content" source="media/create-cluster-database-portal/create-cluster-form.png" alt-text="Fill in cluster form.":::
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -69,7 +70,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. When the deployment is complete, select **Go to resource**.
 
-    ![Go to resource.](media/create-cluster-database-portal/notification-resource.png)
+    :::image type="content" source="media/create-cluster-database-portal/notification-resource.png" alt-text="Got to resource.":::
 
 > [!NOTE]
 > If the deployment fails with the error "SubscriptionNotRegistered", retry the operation.
@@ -82,11 +83,11 @@ You're now ready for the second step in the process: database creation.
 
 1. On the **Overview** tab, select **Create database**.
 
-    ![Step 2: create a database.](media/create-cluster-database-portal/database-creation.png)
+    :::image type="content" source="media/create-cluster-database-portal/database-creation.png" alt-text="Create a database."::: 
 
 1. Fill out the form with the following information.
 
-    ![Create database form.](media/create-cluster-database-portal/create-test-database.png)
+    :::image type="content" source="media/create-cluster-database-portal/create-test-database.png" alt-text="Create database form."::: 
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -104,7 +105,7 @@ After you created the cluster and database, you can run queries and commands. Th
 
 1. Under your cluster, select **Query**. Paste the command `.show databases` into the query window, then select **Run**.
 
-    ![Show databases command.](media/create-cluster-database-portal/show-databases.png)
+    :::image type="content" source="media/create-cluster-database-portal/show-databases.png" alt-text="Show databases command.":::
 
     The result set shows **TestDatabase**, the only database in the cluster.
 
