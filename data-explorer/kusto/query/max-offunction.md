@@ -46,7 +46,7 @@ print result = max_of(10, 1, -3, 17)
 |---|
 |17|
 
-Find the maximum value in a data-table. Non-null values take precendence over null values:
+Find the maximum value in a data-table. Non-null values take precedence over null values:
 
 <!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto

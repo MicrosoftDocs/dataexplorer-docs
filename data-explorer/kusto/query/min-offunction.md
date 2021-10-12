@@ -46,7 +46,7 @@ print result=min_of(10, 1, -3, 17)
 |---|
 |-3|
 
-Find the minimum value in a data-table. Non-null values take precendence over null values:
+Find the minimum value in a data-table. Non-null values take precedence over null values:
 
 <!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto
