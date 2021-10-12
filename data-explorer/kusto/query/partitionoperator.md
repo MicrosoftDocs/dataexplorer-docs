@@ -49,6 +49,7 @@ For both implicit and explicit sources, the subquery type is used for legacy pur
 Any additional reference to the source is taken to mean the entire input table, for example, by using the [as operator](asoperator.md) and calling up the value again.
 
 > [!NOTE]
+> It is recommended to use the native or shuffle strategies rather than the legacy strategy, since the legacy strategy is limited to 64 partitions and is less efficient.
 > The legacy partition operator is currently limited by the number of partitions.
 > The operator will yield an error if the partition column (*Column*) has more than 64 distinct values.
 
