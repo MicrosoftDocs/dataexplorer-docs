@@ -51,7 +51,7 @@ Find the minimum value in a data-table. Non-null values take precendence over nu
 <!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto
 datatable (A:int, B:int)
-[ 5, 2,
+[5, 2,
 10, 1,
 int(null), 3,
 1, int(null),

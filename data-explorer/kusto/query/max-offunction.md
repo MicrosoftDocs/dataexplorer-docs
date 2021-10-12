@@ -51,7 +51,7 @@ Find the maximum value in a data-table. Non-null values take precendence over nu
 <!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto
 datatable (A:int, B:int)
-[ 1, 6,
+[1, 6,
 8, 1,
 int(null), 2,
 1, int(null),
