@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 10/04/2021
+ms.date: 10/13/2021
 
 # Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
 ---
@@ -58,9 +58,9 @@ Create a table in Azure Data Explorer where Event Hubs will send data. Create th
 
 ## Create an Event Grid data connection
 
-Now connect the storage account to Azure Data Explorer, so that data flowing into the storage is streamed to the test table. This connection can be created in the [Azure portal](#create-an-event-grid-data-connection-in-the-azure-portal) under the storage account itself, or in [Azure Data Explorer](#create-an-event-grid-data-connection-in-azure-data-explorer).
+Now connect the storage account to Azure Data Explorer, so that data flowing into the storage is streamed to the test table. This connection can be created in the Azure portal under the storage account itself, Azure Portal under Azure Data Explorer, or in Azure Data Explorer.
 
-### Create an Event Grid data connection in the Azure portal
+### [Azure portal - Storage](#tab/portal-1)
 
 1. Browse to the storage account in the Azure portal. On the left menu, select **Events**
 1. In the main pane, select the **Azure Data Explorer** tab.
@@ -111,7 +111,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
     :::image type="content" source="media/ingest-data-event-grid/portal-review-create.png" alt-text="Screenshot of review and create tab for Event Grid ingestion in storage account of Azure portal.":::
 
-### Create an Event Grid data connection in Azure Data Explorer
+### [Azure Data Explorer](#tab/adx)
 
 1. Under the cluster you created, select **Databases** > **TestDatabase**.
 
@@ -173,6 +173,8 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 1. Review the resources that were auto created for you and select **Create**.
 
     :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="Review and create data connection for event grid.":::
+
+---
 
 ### Deployment
 
