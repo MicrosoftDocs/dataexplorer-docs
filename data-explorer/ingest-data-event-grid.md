@@ -57,7 +57,7 @@ Create a table in Azure Data Explorer where Event Hubs will send data. Create th
 
 ## Create an Event Grid data connection
 
-Now connect the storage account to Azure Data Explorer, so that data flowing into the storage is streamed to the test table. This connection can be created in the [Azure portal under the storage account itself](#azure-portal---storagetabportal-1), or in the [Azure Portal under Azure Data Explorer](#azure-portal---azure-data-explorertabadx).
+Now connect the storage account to Azure Data Explorer, so that data flowing into the storage is streamed to the test table. This connection can be created in the Azure portal under the storage account itself, or in the Azure Portal under Azure Data Explorer.
 
 ### [Azure portal - Storage](#tab/portal-1)
 
