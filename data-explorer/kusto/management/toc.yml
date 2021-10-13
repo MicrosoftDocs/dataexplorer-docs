@@ -16,6 +16,8 @@ items:
       href: create-or-alter-workload-group-command.md
     - name: Drop workload group command
       href: drop-workload-group-command.md
+    - name: Show workload group command
+      href: show-workload-group-command.md
   - name: Request classification policy
     items:
     - name: Request classification policy
@@ -223,7 +225,17 @@ items:
     - name: show table cache policy command
       href: show-table-cache-policy-command.md
   - name: Callout
-    href: calloutpolicy.md
+    items:
+    - name: Callout policy
+      href: calloutpolicy.md
+    - name: alter callout policy command
+      href: alter-callout-policy-command.md
+    - name: alter-merge callout policy command
+      href: alter-merge-callout-policy-command.md
+    - name: delete callout policy command
+      href: delete-callout-policy-command.md
+    - name: show callout policy command
+      href: show-cluster-callout-policy-command.md
   - name: Capacity
     items:
     - name: Capacity policy
@@ -274,6 +286,8 @@ items:
       href: merge-policy.md
     - name: alter database merge policy command
       href: alter-database-merge-policy-command.md
+    - name: alter materialized view merge policy command
+      href: alter-materialized-view-merge-policy-command.md
     - name: alter table merge policy command
       href: alter-table-merge-policy-command.md
     - name: alter-merge database merge policy command
