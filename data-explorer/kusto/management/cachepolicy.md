@@ -75,7 +75,7 @@ T | union U | join (T datascope=all | where Timestamp < ago(365d)) on X
 ## Cache policy vs retention policy
 
 Cache policy is independent of [retention policy](./retentionpolicy.md): 
-- Cache policy defines how to prioritize resources. Queries over important data will be faster and resistant to the impact of queries over less important data.
+- Cache policy defines how to prioritize resources. Queries for important data are faster.
 - Retention policy defines the extent of the queryable data in a table/database (specifically, `SoftDeletePeriod`).
 
 Configure this policy to achieve the optimal balance 
