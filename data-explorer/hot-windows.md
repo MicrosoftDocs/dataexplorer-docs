@@ -8,7 +8,7 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/13/2021
 ---
-# Hot windows for queries over cold data
+# Query cold data with hot windows
 
 Hot windows let you efficiently query cold data without the need to export data or use other tools.
 
@@ -24,7 +24,7 @@ When the query is limited to a small time window, often called "point-in-time" q
 
 Later queries on the same data may perform similarly to queries that run on the hot cache, because a specific portion of the disk is allocated for caching the cold data that was used in queries.  
 
-However, if you're scanning a large amount of cold data, query performance may not be sufficient. In this scenario, try using [hot windows](#hot-windows).
+However, if you're scanning a large amount of cold data, query performance may not be sufficient, and you may benefit from using hot windows.
 
 ## Hot windows
 
