@@ -21,6 +21,10 @@ Shows a table-level or database-level extent tags retention policy. For more inf
 .show database database_name policy extent_tags_retention
 ```
 
+## Returns
+
+Returns a JSON representation of the policy.
+
 ## Example
 
 Show the extent tags retention policy for the database named `MyDatabase`:

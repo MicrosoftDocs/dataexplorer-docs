@@ -11,7 +11,7 @@ ms.date: 08/04/2020
 ---
 # Update policy overview
 
-The [update policy](update-policy.md) instructs Kusto to automatically append data to a target table whenever new data is inserted into the source table, based on a transformation query that runs on the data inserted into the source table.
+The [update policy](update-policy.md) instructs Azure Data Explorer to automatically append data to a target table whenever new data is inserted into the source table, based on a transformation query that runs on the data inserted into the source table.
 
 :::image type="content" source="images/updatepolicy/update-policy-overview.png" alt-text="Overview of the update policy in Azure Data Explorer.":::
 
