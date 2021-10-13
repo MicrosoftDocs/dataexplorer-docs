@@ -24,7 +24,7 @@ Show all ingestion mappings from all mapping types:
 Show all ingestion mappings on a database:
 
 * `.show` `database` *DatabaseName* `ingestion` *MappingKind* `mappings`
- 
+
 **Example** 
  
 ```kusto
