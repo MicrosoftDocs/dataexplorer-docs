@@ -22,9 +22,7 @@ To query cold data, Azure Data Explorer applies applicable filters into the comp
 
 When the query is limited to a small time window, often called "point-in-time" queries, the amount of data that needs to be retrieved will usually be small, and the query will complete quickly. For example,  forensic analyses that query telemetry on a given day in the past fall under this category.
 
-Later queries on the same data may perform similarly to queries that run on the hot cache, because a specific portion of the disk is allocated for caching the cold data that was used in queries.  
-
-However, if you're scanning a large amount of cold data, query performance may not be sufficient, and you may benefit from using hot windows.
+Later queries on the same data may perform similarly to queries that run on the hot cache, because a specific portion of the disk is allocated for caching the cold data that was used in queries. However, if you're scanning a large amount of cold data, query performance may not be sufficient. Try using hot windows.
 
 ## Hot windows
 
@@ -33,7 +31,11 @@ Use hot windows when the cold data size is large and the relevant data is from a
 > [!NOTE]
 > It can take up to an hour to fully update the cluster disk cache based on the updated caching policy definition.
 
-### Example
+## Syntax
+
+## Arguments
+
+## Example
 
 The following queries examine the last 14 days of data, on data that is kept for three years. An investigation that spans a specific couple of months last year uses hot windows for these months. The hot windows are set with the [`.alter policy caching` command](/azure/data-explorer/kusto/management/cachepolicy#alter-the-cache-policy):
 
