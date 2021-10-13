@@ -33,7 +33,6 @@ For general information about ingesting into Azure Data Explorer from Event Grid
 * Create [a storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 * Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
 
-
 ## Create a target table in Azure Data Explorer
 
 Create a table in Azure Data Explorer where Event Hubs will send data. Create the table in the cluster and database prepared in the prerequisites.
@@ -58,7 +57,7 @@ Create a table in Azure Data Explorer where Event Hubs will send data. Create th
 
 ## Create an Event Grid data connection
 
-Now connect the storage account to Azure Data Explorer, so that data flowing into the storage is streamed to the test table. This connection can be created in the Azure portal under the storage account itself, Azure Portal under Azure Data Explorer, or in Azure Data Explorer.
+Now connect the storage account to Azure Data Explorer, so that data flowing into the storage is streamed to the test table. This connection can be created in the [Azure portal under the storage account itself](#azure-portal---storagetabportal-1), or in the [Azure Portal under Azure Data Explorer](#azure-portal---azure-data-explorertabadx).
 
 ### [Azure portal - Storage](#tab/portal-1)
 
@@ -111,7 +110,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
     :::image type="content" source="media/ingest-data-event-grid/portal-review-create.png" alt-text="Screenshot of review and create tab for Event Grid ingestion in storage account of Azure portal.":::
 
-### [Azure Data Explorer](#tab/adx)
+### [Azure portal - Azure Data Explorer](#tab/adx)
 
 1. Under the cluster you created, select **Databases** > **TestDatabase**.
 
