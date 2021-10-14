@@ -47,8 +47,8 @@ Hot windows are part of the [cache policy commands syntax](kusto/management/cach
 
 ## Arguments
 
-* `from`:  Start time of the hot window
-* `to`:  End time of the hot window
+* `from`:  Start time of the hot window (datetime)
+* `to`:  End time of the hot window (datetime)
 
 ## Example
 
