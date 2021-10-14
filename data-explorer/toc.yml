@@ -210,6 +210,8 @@ items:
       href: query-monitor-data.md
     - name: Query data in Power Apps application
       href: power-apps-connector.md
+    - name: Query cold data with hot windows
+      href: hot-windows.md
     - name: Debug KQL inline Python
       href: debug-inline-python.md
     - name: Using SDKs
