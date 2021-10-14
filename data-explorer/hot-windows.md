@@ -29,7 +29,7 @@ Later queries on the same data may perform similarly to queries running on hot c
 Use hot windows when the cold data size is large and the relevant data is from any time in the past. Hot windows are defined in the cache policy and span any time span in the past. Alter the cache policy using the [syntax](#syntax) below to add/remove these windows.  Several hot windows may be defined for a single database or table.
 After changing the cache policy, the cluster automatically caches the relevant data on its disks. You'll probably need to scale the cluster to accommodate the extra disk needed for the new cache definition. We recommend configuring the cluster to use the [optimize autoscale](manage-cluster-horizontal-scaling.md) settings.
 
-Now you can expect optimal performance during the investigation. After you're done querying the hot windoes, revert the cache policy to the original settings. If you've configured optimized autoscale for that cluster, the cluster will shrink to its original size.
+Now you can expect optimal performance during the investigation. After you're done querying the hot windows, revert the cache policy to the original settings. If you've configured optimized autoscale for that cluster, the cluster will shrink to its original size.
 > [!NOTE]
 > It can take up to an hour to fully update the cluster disk cache based on the updated cache policy definition.
 
