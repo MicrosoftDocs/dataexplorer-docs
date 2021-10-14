@@ -165,7 +165,7 @@ items:
     - name: .alter column docstrings
       href: alter-column-docstrings.md
     - name: .alter-merge column docstrings
-      href: alter-merge-column-docstrings.md
+      href: alter-merge-table-column.md
   - name: Data mappings
     href: mappings.md
   - name: Functions
