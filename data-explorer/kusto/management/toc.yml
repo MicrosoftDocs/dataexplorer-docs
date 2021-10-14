@@ -158,12 +158,14 @@ items:
       href: columns.md
     - name: .alter column
       href: alter-column.md
-    - name: .alter-merge table column-docstrings
-      href: alter-merge-table-column.md
     - name: .drop column
       href: drop-column.md
-    - name: .rename column(s)
+    - name: .rename column
       href: rename-column.md
+    - name: .alter column docstrings
+      href: alter-column-docstrings.md
+    - name: .alter-merge column docstrings
+      href: alter-merge-column-docstrings.md
   - name: Data mappings
     href: mappings.md
   - name: Functions
