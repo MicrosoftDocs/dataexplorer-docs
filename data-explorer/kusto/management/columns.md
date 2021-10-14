@@ -19,4 +19,4 @@ This section describes the following control commands used for managing table co
 |[.alter-merge column docstrings](alter-merge-table-column.md) and [.alter column docstrings](alter-column-docstrings.md#alter-table-column-docstrings) | Sets the `docstring` property of one or more columns of the specified table
 |[`.alter table`](alter-table-command.md), [`.alter-merge table`](alter-table-command.md) | Modify the schema of a table (add/remove columns) |
 |[drop column and drop table columns](drop-column.md) |Removes one or multiple columns from a table |
-|[rename column or columns](rename-column.md) |Changes the name of an existing or multiple table columns |
+|[rename column or columns](rename-column.md) |Changes the name of an existing or multiple table columns | 
