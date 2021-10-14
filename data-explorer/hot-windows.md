@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: vplauzon
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/13/2021
 ---
 # Query cold data with hot windows
