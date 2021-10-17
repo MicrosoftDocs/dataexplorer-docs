@@ -106,7 +106,7 @@ var location = "North Central US";
 TableLevelSharingProperties tls;
 if (databaseName == "*")
 {
-    // Table level sharing properties is not supported when using '*' all databses notion.
+    // Table level sharing properties are not supported when using '*' all databases notation.
     tls = null;
 }
 else
