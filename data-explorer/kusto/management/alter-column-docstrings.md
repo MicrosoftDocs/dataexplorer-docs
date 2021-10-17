@@ -1,6 +1,6 @@
 ---
-title: .alter column docstrings - Azure Data Explorer | Microsoft Docs
-description: This article describes .alter column docstrings in Azure Data Explorer.
+title: ".alter column docstring - Azure Data Explorer | Microsoft Docs"
+description: "This article describes .alter column docstring in Azure Data Explorer."
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/14/2021
 ---
-# .alter column docstrings
+# .alter column docstring
 
 Sets the `docstring` property of one or more columns of the specified table.  Columns not explicitly set will have this property removed.
 
@@ -22,5 +22,5 @@ Sets the `docstring` property of one or more columns of the specified table.  Co
 ## Example 
 
 ```kusto
-.alter table Table1 column-docstrings (Column1:"DocString1", Column2:"DocString2")
+.alter table Table1 column-docstring (Column1:"DocString1", Column2:"DocString2")
 ```
