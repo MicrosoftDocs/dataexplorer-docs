@@ -41,7 +41,7 @@ When attaching the database all tables, external tables and materialized views a
 '*TableLevelSharingProperties*' contains six arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, and `materializedViewsToExclude`. The maximum number of entries in all arrays together is 100.  
 
 > [!NOTE]
-> Table level sharing is not supported when using '*' all databases notion. 
+> Table level sharing is not supported when using '*' all databases notation. 
 
 > [!NOTE]
 > When materialized views are included, their source tables are included as well.
