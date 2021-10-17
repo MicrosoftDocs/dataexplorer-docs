@@ -1,5 +1,5 @@
 ---
-title: .alter-merge column docstrings - Azure Data Explorer | Microsoft Docs
+title: .alter-merge column docstrings - Azure Data Explorer
 description: This article describes .alter-merge column docstrings in Azure Data Explorer.
 services: data-explorer
 author: orspod
