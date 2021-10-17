@@ -1,6 +1,6 @@
 ---
-title: .alter callout policy command - Azure Data Explorer
-description: This article describes the .alter callout policy command in Azure Data Explorer.
+title: ".alter callout policy command - Azure Data Explorer"
+description: "This article describes the .alter callout policy command in Azure Data Explorer."
 services: data-explorer
 author: orspod
 ms.author: orspodek

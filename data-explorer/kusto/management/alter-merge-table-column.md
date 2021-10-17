@@ -1,6 +1,6 @@
 ---
-title: .alter-merge column docstrings - Azure Data Explorer | Microsoft Docs
-description: This article describes .alter-merge column docstrings in Azure Data Explorer.
+title: ".alter-merge column docstring - Azure Data Explorer | Microsoft Docs"
+description: "This article describes .alter-merge column docstring in Azure Data Explorer."
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,11 +9,11 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/14/2021
 ---
-# .alter-merge column docstrings
+# .alter-merge column-docstring
 
-Sets the `docstring` property of one or more columns of the specified table. Columns not explicitly set retain their existing value for this property, if they have one.
+Sets the `docstring` property for one or more columns of a specified table. Columns not explicitly defined will keep any previous definition for this property, if it exists.
 
-`DocString` is free text that you can attach to a table/function/column describing the entity. This string is presented in various UX settings next to the entity names.
+`DocString` is free descriptive text that you can attach to a table/function/column. This string is presented in various UX settings next to the entity name.
 
 ## Syntax
 
@@ -22,5 +22,5 @@ Sets the `docstring` property of one or more columns of the specified table. Col
 ## Example 
 
 ```kusto
-.alter-merge table Table1 column-docstrings (Column1:"DocString1", Column2:"DocString2")
+.alter-merge table Table1 column-docstring (Column1:"DocString1", Column2:"DocString2")
 ```
