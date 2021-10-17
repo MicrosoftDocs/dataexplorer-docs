@@ -75,7 +75,21 @@ Followed by:
 <| T | where cursor_before_or_at("636751928823156645")
 ```
 
-## Resource consumption
+## Continuous export monitoring
+
+You can monitor the health of your continuous export jobs using the [export metrics](../../../using-metrics.md#export-metrics):
+
+* `Continuous export max lateness` - shows the max lateness (in minutes) of continuous export jobs in the cluster. This is the time between now and the min `ExportedTo` time of all continuous export jobs in cluster (see [show continuous export](show-continuous-export.md) command).
+* `Continuous export result` - shows the success/failure result of each continuous export execution. Metric can be split by job name.
+
+Use the [show continuous export failures](show-continuous-failures.md) command to analyze the failures of a continuous export job.
+
+> [!WARNING]
+> If a continuous export fails for over 7 days due to a permanent failure, it will be automatically disabled by the system.
+> Permanent errors include: external table not found, mismatch between schema of continuous export query and external table schema, storage account is not accessible.
+> If the error has been fixed, the continuous export can be re-enabled using the [enable continuous export](disable-enable-continuous.md) command.
+
+### Resource consumption
 
 * The impact of the continuous export on the cluster depends on the query the continuous export is running. Most resources, such as CPU and memory, are consumed by the query execution. 
 * The number of export operations that can run concurrently is limited by the cluster's data export capacity. For more information, see [Control commands throttling](../../management/capacitypolicy.md#control-commands-throttling). If the cluster doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind.
