@@ -32,6 +32,7 @@ Requires [Database  admin permission](../management/access-control/role-based-au
   *OldName*.
 > * If `ifexists` is specified, it modifies the behavior of the command to
   ignore renaming parts of non-existent tables.
+> * If the table being renamed is a source table of a materialized view, please refer to [rename source table of a materialized view](materialized-views/materialized-view-rename-source-table.md).
 
 **Remarks**
 
