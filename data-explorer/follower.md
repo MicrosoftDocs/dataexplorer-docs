@@ -227,7 +227,7 @@ if($DatabaseName -eq '*')  {
 else {
         $configname = $DatabaseName   
      }
-##Table level sharing is not supported when using '*' all databases notion. If you use the all database notion please remove all table level sharing lines from the powershell command.
+##Table level sharing is not supported when using '*' all databases notation. If you use the all database notation please remove all table level sharing lines from the powershell command.
 New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
 	-Name $configname `
 	-ResourceGroupName $FollowerResourceGroupName `
