@@ -20,7 +20,7 @@ To query cold data, Azure Data Explorer process a loading step that requires acc
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
-* Ingest data in your cluster with one of the methods described in the [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
+* Ingest data in your cluster with one of the methods that are described in the [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
 ## Configure autoscale on cluster
 
@@ -30,7 +30,7 @@ After changing the cache policy, the cluster automatically caches the relevant d
 
 1. In the **Scale out** window, select **Optimized autoscale**.
 
-1. Select a minimum instance count and a maximum instance count. The cluster auto-scaling ranges between those two numbers, based on load.
+1. Select a minimum instance count and a maximum instance count. The cluster autoscaling ranges between those two numbers, based on load.
 
 1. Select **Save**.
 
@@ -65,7 +65,7 @@ Hot windows are part of the [cache policy commands syntax](kusto/management/cach
     * `from`:  Start time of the hot window (datetime)
     * `to`:  End time of the hot window (datetime)
     
-    For example, queries performed under the following settings will examine the last 14 days of data, on data that is kept for three years.
+    For example, queries run under the following settings will examine the last 14 days of data, on data that is kept for three years.
     
     ```kusto
     .alter table MyTable policy caching 
