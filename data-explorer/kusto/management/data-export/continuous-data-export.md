@@ -77,17 +77,17 @@ Followed by:
 
 ## Continuous export monitoring
 
-You can monitor the health of your continuous export jobs using the [export metrics](../../../using-metrics.md#export-metrics):
+Monitor the health of your continuous export jobs using the following [export metrics](../../../using-metrics.md#export-metrics):
 
-* `Continuous export max lateness` - shows the max lateness (in minutes) of continuous export jobs in the cluster. This is the time between now and the min `ExportedTo` time of all continuous export jobs in cluster (see [show continuous export](show-continuous-export.md) command).
-* `Continuous export result` - shows the success/failure result of each continuous export execution. Metric can be split by job name.
+* `Continuous export max lateness` - Max lateness (in minutes) of continuous export jobs in the cluster. This is the time between now and the min `ExportedTo` time of all continuous export jobs in cluster. For more information, see [`.show continuous export`](show-continuous-export.md) command.
+* `Continuous export result` - Success/failure result of each continuous export execution. This metric can be split by the continuous export name.
 
-Use the [show continuous export failures](show-continuous-failures.md) command to analyze the failures of a continuous export job.
+Use the [`.show continuous export failures`](show-continuous-failures.md) command to see the specific failures of a continuous export job.
 
 > [!WARNING]
 > If a continuous export fails for over 7 days due to a permanent failure, it will be automatically disabled by the system.
 > Permanent errors include: external table not found, mismatch between schema of continuous export query and external table schema, storage account is not accessible.
-> If the error has been fixed, the continuous export can be re-enabled using the [enable continuous export](disable-enable-continuous.md) command.
+> After the error has been fixed, you can re-enable the continuous export using the [`.enable continuous export`](disable-enable-continuous.md) command.
 
 ### Resource consumption
 
