@@ -32,7 +32,7 @@ This subquery is a tabular transformation that doesn't specify a tabular source.
 The difference between `hint.strategy=native` and `hint.strategy=shuffle` is mainly to allow the caller to indicate the cardinality and execution strategy of the sub-query, and can affect the execution time. There is no other semantic difference
 between the two.
 
-For `native` and `shuffle` strategy, the source of the sub-query is implicit, and cannot be referenced by the sub-query. This stategy supports a limited set of operators: `project`, `sort`, `summarize`, `take`, `top`, `order`, `mv-expand`, `mv-apply`, `make-series`, `limit`, `extend`, `distinct`, `count`, `project-away`, `project-keep`, `project-rename`, `project-reorder`, `parse`, `parse-where`, `reduce`, `sample`, `sample-distinct`, `scan`, `search`, `serialize`, `top-nested`, `top-hitters` and `where`.
+For `native` and `shuffle` strategy, the source of the sub-query is implicit, and cannot be referenced by the sub-query. This strategy supports a limited set of operators: `project`, `sort`, `summarize`, `take`, `top`, `order`, `mv-expand`, `mv-apply`, `make-series`, `limit`, `extend`, `distinct`, `count`, `project-away`, `project-keep`, `project-rename`, `project-reorder`, `parse`, `parse-where`, `reduce`, `sample`, `sample-distinct`, `scan`, `search`, `serialize`, `top-nested`, `top-hitters` and `where`.
 
 Operators like `join`, `union`, `external_data`, `plugins`, or any other operator that involves table source that is not the subtable partitions, are not allowed.
 
@@ -44,7 +44,7 @@ Legacy subqueries can use the following sources:
 
 * Explicit - The subquery must include a tabular source explicitly. Only the key column of the input table is available in the subquery, and referenced by using its name in the `toscalar()` function.
 
-For both implicit and explicit sources, the subquery type is used for legacy purposes only, and indicated by the use of `hint.strategy=legacy`, or by not including any stategy indication. 
+For both implicit and explicit sources, the subquery type is used for legacy purposes only, and indicated by the use of `hint.strategy=legacy`, or by not including any strategy indication. 
 
 Any additional reference to the source is taken to mean the entire input table, for example, by using the [as operator](asoperator.md) and calling up the value again.
 
