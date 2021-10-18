@@ -171,24 +171,6 @@ StormEvents
 
 ### Legacy Strategy Examples
 
-#### Legacy strategy with implicit source
-
-This subquery type is used for legacy purposes only, and indicated by the use of `hint.strategy=legacy`  or by not including any strategy indication. See the following example:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| where State contains "West"
-| partition hint.strategy=legacy by InjuriesIndirect (summarize Events=count(), Damage=sum(DeathsDirect) by State);
-```
-
-**Output** 
-
-|State|Events|Damage|
-|---|---|---|
-|WEST VIRGINIA|1|10000|
-|WEST VIRGINIA|756|4342000|
-
 #### Legacy strategy with explicit source
 
 This strategy is for legacy purposes only, and indicated by the use of `hint.strategy=legacy` or by not including a strategy indication at all. See the following example:
@@ -206,55 +188,6 @@ range x from 1 to 2 step 1
 |---|
 |113|
 
-#### Query non-overlapping data partitions
-
-It can be useful performance-wise to run a complex subquery over non-overlapping data partitions in a map/reduce style. The following example shows how to create a manual distribution of aggregation over 10 partitions. This approach is only relevant to the legacy strategy.
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| extend p = hash(EventId, 10)
-| partition by p
-(
-    summarize Count=count() by Source 
-)
-| summarize Count=sum(Count) by Source
-| top 5 by Count
-```
-
-**Output**
-
-|Source|Count|
-|---|---|
-|Trained Spotter|12770|
-|Law Enforcement|8570|
-|Public|6157|
-|Emergency Manager|4900|
-|COOP Observer|3039|
-
-#### Query-time partitioning
-
-The following example shows how query can be partitioned into N=10 partitions, where each partition calculates its own Count, and all later summarized into TotalCount. This approach is only relevant to the legacy strategy.
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-let N = 10;                 // Number of query-partitions
-range p from 0 to N-1 step 1  // 
-| partition by p            // Run the sub-query partitioned 
-{
-    StormEvents 
-    | where hash(EventId, N) == toscalar(p) // Use toscalar() to fetch partition key value
-    | summarize Count = count()
-}
-| summarize TotalCount=sum(Count) 
-```
-
-**Output**
-
-|TotalCount|
-|---|
-|59066|
-
 #### Partition-reference
 
 The following example shows how to use the [as operator](asoperator.md) to give a "name" to each data partition and then reuse that name within the subquery. This approach is only relevant to the legacy strategy.
@@ -267,34 +200,3 @@ T
     | extend MetricPct = Metric * 100.0 / toscalar(Partition | summarize sum(Metric))
 )
 ```
-
-#### Complex subquery hidden by a function call
-
-The same technique can be applied with much more complex subqueries. To simplify the syntax, you can wrap the subquery in a function call. This approach is only relevant to the legacy strategy.
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-let partition_function = (T:(Source:string)) 
-{
-    T
-    | summarize Count=count() by Source
-};
-StormEvents
-| extend p = hash(EventId, 10)
-| partition by p
-(
-    invoke partition_function()
-)
-| summarize Count=sum(Count) by Source
-| top 5 by Count
-```
-
-**Output**
-
-|Source|Count|
-|---|---|
-|Trained Spotter|12770|
-|Law Enforcement|8570|
-|Public|6157|
-|Emergency Manager|4900|
-|COOP Observer|3039|
