@@ -16,6 +16,8 @@ Azure Data Explorer stores its data in reliable long-term storage and caches a p
 
 To query cold data, Azure Data Explorer process a loading step that requires accessing a storage tier with much higher latency than the local disk. The impact on the query duration depends on the size of data that is pulled from storage, and can be significant. If you're scanning a large amount of cold data, query performance could benefit from using hot windows.
 
+This document shows you how to use hot windows to query cold data.
+
 ## Prerequisites
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
