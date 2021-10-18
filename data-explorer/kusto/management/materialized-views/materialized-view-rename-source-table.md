@@ -21,4 +21,4 @@ To rename a table, and update all materialized views referencing the table in a 
 All materialized views referencing *OldName* will be updated to point to *NewName*, as part of the  [`.rename table`](../rename-table-command.md) command.
 
 > [!NOTE]
-> The command will only work if the source table is referenced directly in the materialized view query. If it is referenced from a stored function invoked by the view query, the command will fail, since it cannot update the stored function.
+> The command will only work if the source table is referenced directly in the materialized view query. If the source table is referenced from a stored function invoked by the view query, the command will fail, since the command cannot update the stored function.
