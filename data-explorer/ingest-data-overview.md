@@ -102,11 +102,12 @@ There are a number of methods by which data can be ingested directly to the engi
 | --- | --- | --- | --- | --- | --- |
 | [**One click ingestion**](ingest-data-one-click.md) | *sv, JSON | 1 GB uncompressed (see note)| Batching to container, local file and blob in direct ingestion | One-off, create table schema, definition of continuous ingestion with event grid, bulk ingestion with container (up to 10,000 blobs) | 10,000 blobs are randomly selected from container|
 | [**LightIngest**](lightingest.md) | All formats supported | 1 GB uncompressed (see note) | Batching via DM or direct ingestion to engine |  Data migration, historical data with adjusted ingestion timestamps, bulk ingestion (no size restriction)| Case-sensitive, space-sensitive |
-| [**ADX Kafka**](ingest-data-kafka.md) | | | | |
-| [**ADX to Apache Spark**](spark-connector.md) | | | | |
-| [**LogStash**](ingest-data-logstash.md) | | | | |
-| [**Azure Data Factory (ADF)**](./data-factory-integration.md) | [Supported data formats](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | unlimited *(per ADF restrictions) | Batching or per ADF trigger | Supports formats that are usually unsupported, large files, can copy from over 90 sources, from on perm to cloud | This method takes relatively more time until data is ingested. ADF uploads all data to memory and then begins ingestion. |
-|[ **Power Automate**](./flow.md) | | | | Ingestion commands as part of flow| Must have high-performing response time |
+| [**ADX Kafka**](ingest-data-kafka.md) |All formats supported | N/A | Batching/Streaming | Existing pipeline.|
+| [**ADX to Apache Spark**](spark-connector.md) | ** CHECK**  | ** CHECK** | Batching /Streaming| Move data across Azure Data Explorer and Spark clusters. |
+| [**LogStash**](ingest-data-logstash.md) |All formats supported | N/A| Batching/Streaming |  Existing pipeline.|
+| [**Azure Data Factory (ADF)**](./data-factory-integration.md) | [Supported data formats](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | Unlimited *(per ADF restrictions) | Batching or per ADF trigger | Supports formats that are usually unsupported, large files, can copy from over 90 sources, from on perm to cloud | This method takes relatively more time until data is ingested. ADF uploads all data to memory and then begins ingestion. |
+|[ **Power Automate**](./flow.md) | All formats supported| 1 GB uncompressed (see note) | Batching | Ingestion commands as part of flow. Used to automate pipelines. |
+| [**Logic Apps**](kusto/tools/logicapps.md)| All formats supported | 1 GB uncompressed (see note) | Batching | Used to automate pipelines. |
 | [**IoT Hub**](ingest-data-iot-hub-overview.md) | [Supported data formats](ingest-data-iot-hub-overview.md#data-format)  | N/A | Batching, streaming | IoT messages, IoT events, IoT properties | |
 | [**Event Hub**](ingest-data-event-hub-overview.md) | [Supported data formats](ingest-data-event-hub-overview.md#data-format) | N/A | Batching, streaming | Messages, events | |
 | [**Event Grid**](ingest-data-event-grid-overview.md) | [Supported data formats](ingest-data-event-grid-overview.md#data-format) | 1 GB uncompressed | Batching | Continuous ingestion from Azure storage, external data in Azure storage | Ingestion can be triggered by blob renaming or blob creation actions. |
