@@ -404,7 +404,7 @@ Azure diagnostic settings enable exporting metrics and logs to a storage account
 
 1. Use the following link to create an Event Hub namespace and an Event Hub for the diagnostic logs.
    
-    [Event hub namespace and Event Hub creation](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-create)
+    [Event hub namespace and Event Hub creation](/azure/event-hubs/event-hubs-create)
 
 1. Fill out the form with the following information. For any settings not listed in the following table, use the default values.
 
