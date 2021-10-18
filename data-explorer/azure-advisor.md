@@ -144,7 +144,7 @@ The **Operational Excellence** or "best practice" recommendations are recommenda
 
 You can think about the **Reduce table cache policy to match usage patterns** recommendation as a 'best practice for cleanup' recommendation. The recommendation shows suggestions for:
 
-* Unused tables – for example, let's say the table `ExampleTable` in database `ExampleDatabase` is not being used, with 0 queries run on this table. Since the table is not being used, you might want to delete or reduce the cache policy of this table. For this table and others with 0 GB, the hot data saving is not significant, about 0 GB savings, so implementing this recommendation won't result in an immediate cost reduction for the cluster. The idea is to help you identify unused tables, so you can delete them or reduce the cache policy.
+* Unused tables – for example, let's say the table `ExampleTable` in database `ExampleDatabase` is not being used, with 0 queries run on this table. Since the table is not being used, you might want to delete or reduce the cache policy of this table. If the hot data saving is not significant, implementing this recommendation won't result in an immediate cost reduction for the cluster. The idea is to help you identify unused tables, so you can delete them or reduce the cache policy.
 
 * Tables with redundant cache policy –  which means that your table's actual query look-backs, or usage patterns, are lower than the configured cache policy. However, reducing the cache policy won’t result in an immediate cost saving, since the cluster is not data-bound. The cluster won’t scale in, even if you remove data from the hot cache.
 
