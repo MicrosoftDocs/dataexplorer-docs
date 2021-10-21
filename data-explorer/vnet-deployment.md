@@ -82,7 +82,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | --- | --- | --- | --- |
 | Management  |[Azure Data Explorer management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement(ServiceTag) | Azure Data Explorer subnet:443  | TCP  |
 | Health monitoring  | [Azure Data Explorer health monitoring addresses](#health-monitoring-addresses)  | Azure Data Explorer subnet:443  | TCP  |
-| Synthetics monitoring  | [Azure Data Explorer health monitoring addresses](#Synthetics-monitoring-addresses)  | Azure Data Explorer subnet:443  | TCP  |
+| Synthetics monitoring  | [Azure Data Explorer Synthetics monitoring addresses](#Synthetics-monitoring-addresses)  | Azure Data Explorer subnet:443  | TCP  |
 | Azure Data Explorer internal communication  | Azure Data Explorer subnet: All ports  | Azure Data Explorer subnet:All ports  | All  |
 | Allow Azure load balancer inbound (health probe)  | AzureLoadBalancer  | Azure Data Explorer subnet:80,443  | TCP  |
 
