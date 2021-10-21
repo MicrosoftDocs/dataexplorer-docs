@@ -82,7 +82,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | --- | --- | --- | --- |
 | Management  |[Azure Data Explorer management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement(ServiceTag) | Azure Data Explorer subnet:443  | TCP  |
 | Health monitoring  | [Azure Data Explorer health monitoring addresses](#health-monitoring-addresses)  | Azure Data Explorer subnet:443  | TCP  |
-| Synthetics monitoring  | [Azure Data Explorer health monitoring addresses](#synthetics-monitoring-addresses)  | Azure Data Explorer subnet:443  | TCP  |
+| Synthetics monitoring  | [Azure Data Explorer health monitoring addresses](#Synthetics-monitoring-addresses)  | Azure Data Explorer subnet:443  | TCP  |
 | Azure Data Explorer internal communication  | Azure Data Explorer subnet: All ports  | Azure Data Explorer subnet:All ports  | All  |
 | Allow Azure load balancer inbound (health probe)  | AzureLoadBalancer  | Azure Data Explorer subnet:80,443  | TCP  |
 
@@ -208,9 +208,9 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 #### Synthetics monitoring addresses
 
 | Region | Addresses |
-| --- | ------------ |																												
+| --- | --- |																												
 | USWest | 40.80.156.205,  40.80.152.218,  104.42.156.123,  104.42.216.21,  40.78.63.47,  40.80.156.103,  40.78.62.97,  40.80.153.6 |
-| AustraliaSouthEast | 13.77.50.98,52.189.213.18,52.243.76.73,52.189.194.173,13.77.43.81,52.189.213.33,52.189.216.81,52.189.233.66,52.189.212.69,52.189.248.147
+| AustraliaSouthEast | 13.77.50.98,52.189.213.18,52.243.76.73,52.189.194.173,13.77.43.81,52.189.213.33,52.189.216.81,52.189.233.66,52.189.212.69,52.189.248.147 |
 | AsiaEast | 13.75.34.175,  168.63.220.81,  207.46.136.220,  168.63.210.90,  23.101.15.21,  23.101.7.253,  207.46.136.152,  65.52.180.140,  23.101.13.231,  23.101.3.51 |
 | AustraliaSouthEast,  13.77.50.98,  52.189.213.18,  52.243.76.73,  52.189.194.173,  13.77.43.81,  52.189.213.33,  52.189.216.81,  52.189.233.66,  52.189.212.69,  52.189.248.147 |
 | CanadaCentral | 52.228.121.143,  52.228.121.146,  52.228.121.147,  52.228.121.149,  52.228.121.150,  52.228.121.151,  20.39.136.152,  20.39.136.155,  20.39.136.180,  20.39.136.185,  20.39.136.187,  20.39.136.193,  52.228.121.152,  52.228.121.153,  52.228.121.31,  52.228.118.139,  20.48.136.29,  52.228.119.222,  52.228.121.123 |
