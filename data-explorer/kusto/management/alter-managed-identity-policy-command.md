@@ -1,0 +1,81 @@
+---
+title: ".alter managed_identity policy command - Azure Data Explorer"
+description: This article describes the .alter managed_identity policy command in Azure Data Explorer.
+services: data-explorer
+author: orspod
+ms.author: slneimer
+ms.reviewer: rkarlin
+ms.service: data-explorer
+ms.topic: reference
+ms.date: 10/24/2021
+---
+# .alter managed_identity policy
+
+This command sets the Managed Identity policy of the cluster or the specified database.
+
+## Syntax
+
+* `.alter` `cluster` `policy` `managed_identity` *ArrayOfManagedIdentityPolicyObjects*
+* `.alter` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfManagedIdentityPolicyObjects*
+
+*ArrayOfManagedIdentityPolicyObjects* is a JSON array that has zero or more objects, each containing two properties: `ObjectId` and `AllowedUsages`. The other properties of the managed identity will be automatically filled by Azure Data Explorer, based on the actual properties of the managed identity, with the specified `ObjectId`.
+
+* `ObjectId` can be either the actual ObjectId of the managed identity (in the form of a guid), or the reserved keyword `system` to reference the System Managed Identity of the Azure Data Explorer cluster on which the command runs.
+* `AllowedUsages` is a comma-separated list of allowed usages for the managed identity. The allowed usages are:
+  * "DataConnection" - Data connections to an EventHub or an EventGrid can be created, and Azure Data Explorer will authenticate using a managed identity.
+  * "NativeIngestion" - Native ingestion (using Azure Data Explorer SDK) can be done from an external source (for example, Blob), and Azure Data Explorer will authenticate using a managed identity.
+  * "ExternalTable" - External tables can be configured such that the connection strings will have a managed identity, which Azure Data Explorer will use to authenticate.
+  * "All" - all current and future usages are allowed
+
+## Returns
+
+The command sets the cluster's or database's Managed Identity policy object, overriding any current policy,
+and then returns the output of the corresponding [.show managed identity policy](#show-managed-identity-policy) command.
+
+## Example
+
+~~~kusto
+.alter database db policy managed_identity ```
+[
+  {
+    "ObjectId": "d9989846-1715-42f9-a97f-78e077b693ea",
+    "AllowedUsages": "NativeIngestion, ExternalTable"
+  }
+]
+```
+~~~
+
+# .alter-merge policy managed_identity
+
+To add more Managed Identity policy objects to the existing policy, use the .alter-merge command.
+
+## Syntax
+
+* `.alter-merge` `cluster` `policy` `managed_identity` *ArrayOfManagedIdentityPolicyObjects*
+* `.alter-merge` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfManagedIdentityPolicyObjects*
+
+*ArrayOfManagedIdentityPolicyObjects* is a JSON array that has zero or more Managed Identity policy objects defined.
+
+> [!NOTE]
+>
+> For every item in `ArrayOfManagedIdentityPolicyObjects`:
+>
+> * If the ObjectId *doesn't exist* in the Managed Identity policy, the item will be added to the policy.
+> * If the ObjectId *already exists* in the Managed Identity policy, the item's AllowedUsages will be added to the relevant item in the Managed Identity policy. For example, if the current Managed Identity policy has AllowedUsages="NativeIngestion" for a certain managed identity, then if `ArrayOfManagedIdentityPolicyObjects` has an item for this managed identity with AllowedUsages="ExternalTables", then the AllowedUsages for this managed identity in the Managed Identity policy will become "NativeIngestion, ExternalTables".
+
+## Returns
+
+The command updates the cluster's or database's Managed Identity policy, and then returns the output of the corresponding [.show managed identity policy](#show-managed-identity-policy) command.
+
+## Example
+
+~~~kusto
+.alter-merge database db policy managed_identity ```
+[
+  {
+    "ObjectId": "d9989846-1715-42f9-a97f-78e077b693ea",
+    "AllowedUsages": "NativeIngestion, ExternalTable"
+  }
+]
+```
+~~~
