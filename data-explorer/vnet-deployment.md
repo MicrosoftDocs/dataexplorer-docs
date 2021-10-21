@@ -208,8 +208,9 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 #### Synthetics monitoring addresses
 
 | Region | Addresses |
-| --- | --- |																											
-| USWest | 40.80.156.205,  40.80.152.218,  104.42.156.123,  104.42.216.21,  40.78.63.47,  40.80.156.103,  40.78.62.97,  40.80.153.6 |
+| --- | --- |
+| Australia Central | 52.163.244.128 |																										
+
 
 ## Disable access to Azure Data Explorer from the public IP
 
