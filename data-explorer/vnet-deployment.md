@@ -82,7 +82,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | --- | --- | --- | --- |
 | Management  |[Azure Data Explorer management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement(ServiceTag) | Azure Data Explorer subnet:443  | TCP  |
 | Health monitoring  | [Azure Data Explorer health monitoring addresses](#health-monitoring-addresses)  | Azure Data Explorer subnet:443  | TCP  |
-| Synthetics monitoring  | [Azure Data Explorer health monitoring addresses](#Synthetics-monitoring-addresses)  | Azure Data Explorer subnet:443  | TCP  |
+| Synthetics monitoring  | [Azure Data Explorer health monitoring addresses](#synthetics-monitoring-addresses)  | Azure Data Explorer subnet:443  | TCP  |
 | Azure Data Explorer internal communication  | Azure Data Explorer subnet: All ports  | Azure Data Explorer subnet:All ports  | All  |
 | Allow Azure load balancer inbound (health probe)  | AzureLoadBalancer  | Azure Data Explorer subnet:80,443  | TCP  |
 
@@ -318,7 +318,7 @@ crl3.digicert.com:80
 > **Service Tags**: AzureMonitor  
 > **Destination Ports**: 443
 
-You also need to define the [route table](/azure/virtual-network/virtual-networks-udr-overview) on the subnet with the [management addresses](vnet-deployment.md#azure-data-explorer-management-ip-addresses), [health monitoring addresses](vnet-deployment.md#health-monitoring-addresses) and [Synthetics monitoring addresses](vnet-deployment.md#Synthetics-monitoring-addresses) with next hop *Internet* to prevent asymmetric routes issues.
+You also need to define the [route table](/azure/virtual-network/virtual-networks-udr-overview) on the subnet with the [management addresses](vnet-deployment.md#azure-data-explorer-management-ip-addresses), [health monitoring addresses](vnet-deployment.md#health-monitoring-addresses) and [Synthetics monitoring addresses](vnet-deployment.md#synthetics-monitoring-addresses) with next hop *Internet* to prevent asymmetric routes issues.
 
 For example, for **West US** region, the following UDRs must be defined:
 
