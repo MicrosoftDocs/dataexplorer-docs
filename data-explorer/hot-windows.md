@@ -44,7 +44,7 @@ Now you can expect optimal performance during the use of hot windows.
 
 ## Set hot windows
 
-Hot windows are part of the [cache policy commands syntax](kusto/management/cache-policy.md) and are set with the [`.alter policy caching` command](./kusto/management/cachepolicy.md#alter-the-cache-policy).
+Hot windows are part of the [cache policy commands syntax](kusto/management/cache-policy.md) and are set with the [`.alter policy caching` command](./kusto/management/cachepolicy.md).
 
 > [!NOTE]
 > It can take up to an hour to fully update the cluster disk cache based on the updated cache policy definition.
