@@ -498,7 +498,7 @@ Log JSON strings include elements listed in the following table:
 |---                |---
 |RootActivityId |The root activity ID
 |TableName        |The name of the table
-|DatabaseName           |he name of the database
+|DatabaseName           |The name of the database
 |TotalExtentSize              |The total original size of data in the table (in bytes)
 |HotExtentSize  |The total size in bytes of extents (compressed size and index size) in the table, stored in the hot cache.
 |RetentionPolicyOrigin |Retention policy origin entity (table/database/cluster)
