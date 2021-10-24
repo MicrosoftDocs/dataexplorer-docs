@@ -399,6 +399,8 @@ items:
     href: ../concepts/data-purge.md
 - name: Errors and failures
   items:
+  - name: Ingestion FAQ
+    href: Ingestion-FAQ.yml
   - name: Ingestion error codes
     href: ../../error-codes.md
   - name: Ingestion failures
