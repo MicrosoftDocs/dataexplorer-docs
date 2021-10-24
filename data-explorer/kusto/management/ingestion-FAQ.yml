@@ -1,0 +1,57 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Data Explorer Ingestion FAQ 
+  description: "Get answers to common questions about Azure Data Explorer ingestion."
+  ms.date: 10/21/2021
+title: Common questions about Azure Data Explorer ingestion
+summary: This article answers commonly asked questions about Azure Data Explorer ingestion.
+sections:
+  - name: Where is my data
+    questions:
+      - question: How does batching effect my data?
+        answer: |
+          A central component of the ingestion service is the batching manager, that buffers and batches ingress data based on the ingestion settings in the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy sets batch limits according to three limiting factors, according to whichever is first reached: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. The default batching settings are 5 minutes / 1 GB / 1000 blobs, meaning there will be at least a 5 minute delay queueing sample data for ingestion. Latencies that are part of the ingestion process can be [monitored](../../monitor-batching-ingestion.md).
+          It is recommended to define a batching policy before experimenting with batch ingestion. When ingesting via SDK, it is not recommended to set the ‘Flush Immediately' ingestion property to skip the batching for large scale ingestion, as it can lead to poor performance.
+      - question: What causes batching latency?
+        answer: |
+          Ingestion latency can result from the [ingestion batching policy](batchingpolicy.md) settings, or a data backlog buildup. To address this, adjust the [batching policy settings](batching-policy.md).
+      - question: How can I check and improve ingestion latency?
+        answer: |
+          To view ingestion latency metrics, see [monitoring ingestion latency](../../monitor-batching-ingestion.md##view-the-ingestion-latency).
+          Latency can result from: 
+          - Data latency matching the time-based ingestion policy, so not enough data is fed to the table to pass the data-size or item-count limit and trigger the batch to be ingested. Try reducing the time.
+          - Inefficient batching - if you ingest a large number of very small files, it could slow down ingestion and reduce performance. Try increasing the size of the source files. If you use Kusto Kafka Sink, configure it to send data to Kusto in ~100KB chunks or higher. Additionally, in the case of many small files, try increasing the number of files in each batch (up to 2000) by altering the database or table ingestion policy.  
+          - Batching a large amount of uncompressed data can degrade performance - Azure Data Explorer is optimized to ingest 1GB or uncompressed data in each batch. If you send compressed data using an SDK, consider setting the Raw Data Size in the ingestion source options parameter. Ingestion jobs with a very large uncompressed data size are also common when ingesting Parquet files. Incrementally decrease the size of data ingested in the table or database batching policy towards 250MB and check for improvement.
+  - name: Ingestion Performance
+    questions:
+      - question: How can I improve ingestion performance?
+        answer: |
+          Here are some suggestions to get you started:
+          ...         
+      - question: What are best practices to ingest large files?
+        answer: |
+          Here are some suggestions to get you started:
+          - Between 1-5 GB:
+          - Between 5-10 GB:
+          - 10 GB and up:
+      - question: How can I adjust ingestion resources?
+        answer: |
+          - ...
+      - question: How can I prevent duplication?
+        answer: |
+          - ...For information about ...
+      - question: How much data can I ingress to my cluster, databases, and tables?
+        answer: |
+          - ...
+      - question: What are the benefits and tradeoffs for the `at-least-once`, `at-most-once`, and `exactly once` ingestion settings?
+        answer: |
+          - ...
+      - question: How does data locality and fragmentation effect ingestion latency and batching effectiveness?
+        answer: |
+          - ...
+      - question: What alerts can I define to track ingestion?
+        answer: |
+          - ...
+additionalContent: |
+  ## Additional Content
+  ....
