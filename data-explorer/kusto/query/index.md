@@ -1,5 +1,5 @@
 ---
-title: Kusto Query overview- Azure Data Explorer
+title: Kusto Query Language (KQL) overview- Azure Data Explorer
 description: This article is a general overview of the Kusto Query Language in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -7,36 +7,31 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/07/2019
+ms.date: 10/24/2021
 ms.localizationpriority: high 
 adobe-target: true
 ---
-# Kusto query overview
+# Kusto Query Language (KQL) overview
 
-A Kusto query is a read-only request to process data and return results.
-The request is stated in plain text, using a data-flow model designed to
-make the syntax easy to read, author, and automate. The query uses schema
-entities that are organized in a hierarchy similar to SQL's: databases, tables,
-and columns.
+Kusto Query language is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, and more. The query uses schema entities that are organized in a hierarchy similar to SQL's: databases, tables, and columns.
 
-The query consists of a sequence of query statements, delimited by a semicolon
-(`;`), with at least one statement being a [tabular expression statement](tabularexpressionstatements.md)
-which is a statement that produces data arranged in a table-like mesh of
-columns and rows. The query's tabular expression statements produce the results of the
-query.
+## What is a Kusto query?
 
-The syntax of the tabular expression statement has tabular data flow from one
-tabular query operator to another, starting with data source (e.g. a table
-in a database, or an operator that produces data) and then flowing through
-a set of data transformation operators that are bound together through the
-use of the pipe (`|`) delimiter.
+A Kusto query is a read-only request to process data and return results. The request is stated in plain text, using a data-flow model that is easy to read, author, and automate. Kusto queries are made of one or more query statements.
 
-For example, the following Kusto query has a single statement, which is a
-tabular expression statement. The statement starts with a reference to a table
-called `StormEvents` (the database that hosts this table is implicit here, and part
-of the connection information). The data (rows) for that table are then filtered
-by the value of the `StartTime` column, and then filtered by the value of the
-`State` column. The query then returns the count of "surviving" rows.
+## What is a query statement?
+
+There are three kinds of user [query statements](statements.md):
+
+* A [let statement](letstatement.md) defines a binding between a name and an expression. Let statements can be used to break a long query into small named parts that are easier to understand.
+* A [set statement](setstatement.md) sets a query option that affects how the query is processed and its results returned.
+* A [tabular expression statement](tabularexpressionstatements.md), the most important and common kind of query statement, returns the "interesting" data as results. Tabular statements can contain one more operators. Each query operator starts with a tabular input, and returns a tabular output. Data flows from one operator to the next, being filtered or manipulated at each step and then fed into the following step. Operators are sequenced by a `|` (pipe).
+
+Query Statements are separated by a `;` (semicolon), and only affect the query at hand.
+
+## Query example
+
+For example, the following Kusto query has a single statement, which is a tabular expression statement. The statement starts with a reference to a table called `StormEvents` (the database that hosts this table is implicit here, and part of the connection information). The data (rows) for that table are then filtered by the value of the `StartTime` column, and afterwards filtered by the value of the `State` column. The query then returns the count of "surviving" rows.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -53,9 +48,12 @@ to see the result:
 |-----|
 |   23|
 
+> [!NOTE]
+> KQL is case-sensitive for everything – table names, table column names, operators, functions, and so on.
+
 ## Control commands
 
-In contrast to Kusto queries, [Control commands](../management/index.md) are requests to Kusto to process and potentially modify data or metadata. For example, the following control command creates a new Kusto table with two columns, `Level` and `Text`:
+In contrast to Kusto queries, [Control commands](../management/index.md) are requests to Kusto to process or modify data or metadata. For example, the following control command creates a new Kusto table with two columns, `Level` and `Text`:
 
 ```kusto
 .create table Logs (Level:string, Text:string)
@@ -71,3 +69,5 @@ Not all control commands modify data or metadata. The large class of commands th
 * [Tutorial: Use Kusto queries](../query/tutorial.md)
 * [Samples for Kusto Queries](../query/samples.md)
 * [KQL quick reference](../../kql-quick-reference.md)
+* [SQL to Kusto cheat sheet](sqlcheatsheet.md)
+* [Query best practices](best-practices.md)
