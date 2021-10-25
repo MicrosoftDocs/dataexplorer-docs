@@ -60,4 +60,4 @@ Returns:
 | |555-555-3456 | 74 | {"SourceNumber":"", "TargetNumber":"555-555-3456", "CharsCount": 74} | {"TargetNumber":"555-555-3456", "CharsCount": 74}
 
 > [!NOTE]
-> There is difference between the *Packed* and the *PackedIgnoreNullEmpty* columns only on the last two rows, because these rows included some empty values that were ignored by *pack_all(true)*.   
+> There is a difference between the *Packed* and the *PackedIgnoreNullEmpty* columns only on the last two rows, because these rows included some empty values that were ignored by *pack_all(true)*.   
