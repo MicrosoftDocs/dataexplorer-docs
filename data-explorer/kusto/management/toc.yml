@@ -144,9 +144,7 @@ items:
     - name: .clear materialized-view data
       href: materialized-views/materialized-view-clear-data.md
     - name: .disable | .enable materialized-view
-      href: materialized-views/materialized-view-enable-disable.md
-    - name: Rename source table of materialized views
-      href: materialized-views/materialized-view-rename-source-table.md
+      href: materialized-views/materialized-view-enable-disable.md    
     - name: Materialized views policies
       href: materialized-views/materialized-view-policies.md
     - name: Materialized views data purge

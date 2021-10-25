@@ -32,7 +32,6 @@ Requires [Database  admin permission](../management/access-control/role-based-au
   *OldName*.
 > * If `ifexists` is specified, it modifies the behavior of the command to
   ignore renaming parts of non-existent tables.
-> * If the table being renamed is a source table of a materialized view, see [rename source table of a materialized view](materialized-views/materialized-view-rename-source-table.md).
 
 **Remarks**
 
@@ -74,3 +73,14 @@ The following sequence of commands:
 // Drop the temporary table (which used to be Table) if it exists
 .drop table TempTable ifexists
 ```
+
+## Rename source table of a materialized view
+
+If the table being renamed is the source table of a [materialized view](materialized-views/materialized-view-overview.md), you can specify the following property as part of the `.rename` command:
+
+`.rename` `table` *OldName* `to` *NewName* `with (updateMaterializedViews=true)`
+
+The table will be renamed and all materialized views referencing *OldName* will be updated to point to *NewName*, in a transactional way.
+
+> [!NOTE]
+> The command will only work if the source table is referenced directly in the materialized view query. If the source table is referenced from a stored function invoked by the view query, the command will fail, since the command cannot update the stored function.
