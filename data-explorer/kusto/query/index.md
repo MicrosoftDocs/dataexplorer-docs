@@ -34,7 +34,7 @@ Query Statements are separated by a `;` (semicolon), and only affect the query a
 
 ## Query example
 
-For example, the following Kusto query has a single statement, which is a tabular expression statement. The statement starts with a reference to a table called `StormEvents` (the database that hosts this table is implicit, and part of the connection information). The statement contains several operators, separated by pipes. The data (rows) for that table are filtered by the value of the `StartTime` column, and afterwards filtered by the value of the `State` column. The query then returns the count of "surviving" rows.
+For example, the following Kusto query has a single statement, which is a tabular expression statement. The statement starts with a reference to a table called `StormEvents` (the database that hosts this table is implicit, and part of the connection information) and contains several operators, each separated by a pipe. The data (rows) for the source table is filtered by the value of the `StartTime` column, and afterwards filtered by the value of the `State` column. The query then returns the count of "surviving" rows.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
