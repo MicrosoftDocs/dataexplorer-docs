@@ -23,15 +23,18 @@ A Kusto query is a read-only request to process data and return results. The req
 
 There are three kinds of user [query statements](statements.md):
 
+* A [tabular expression statement](tabularexpressionstatements.md), the most important and common kind of query statement, returns "interesting" data as results. Tabular statements can contain one more operator. Each query operator starts with a tabular input, and returns a tabular output. Data flows from one operator to the next, being filtered or manipulated at each step, and then fed into the following step. Operators are sequenced by a `|` (pipe).
 * A [let statement](letstatement.md) defines a binding between a name and an expression. Let statements can be used to break a long query into small named parts that are easier to understand.
 * A [set statement](setstatement.md) sets a query option that affects how the query is processed and its results returned.
-* A [tabular expression statement](tabularexpressionstatements.md), the most important and common kind of query statement, returns the "interesting" data as results. Tabular statements can contain one more operators. Each query operator starts with a tabular input, and returns a tabular output. Data flows from one operator to the next, being filtered or manipulated at each step and then fed into the following step. Operators are sequenced by a `|` (pipe).
 
 Query Statements are separated by a `;` (semicolon), and only affect the query at hand.
 
+>[!NOTE]
+> For information about application query statements, see [Application query statements](statements.md#application-query-statements).
+
 ## Query example
 
-For example, the following Kusto query has a single statement, which is a tabular expression statement. The statement starts with a reference to a table called `StormEvents` (the database that hosts this table is implicit here, and part of the connection information). The data (rows) for that table are then filtered by the value of the `StartTime` column, and afterwards filtered by the value of the `State` column. The query then returns the count of "surviving" rows.
+For example, the following Kusto query has a single statement, which is a tabular expression statement. The statement starts with a reference to a table called `StormEvents` (the database that hosts this table is implicit, and part of the connection information). The statement contains several operators, separated by pipes. The data (rows) for that table are filtered by the value of the `StartTime` column, and afterwards filtered by the value of the `State` column. The query then returns the count of "surviving" rows.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
