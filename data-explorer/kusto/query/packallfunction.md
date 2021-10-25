@@ -22,7 +22,7 @@ Creates a `dynamic` object (property bag) from all the columns of the tabular ex
 
 ## Arguments
 
-* *ignore_null_empty*: A `bool` indicating whether to ignore null/empty columns and exclude them from the resulting property bag. Default: `false`.
+* *ignore_null_empty*: An optional `bool` indicating whether to ignore null/empty columns and exclude them from the resulting property bag. Default: `false`.
 
 ## Examples
 
@@ -60,4 +60,4 @@ Returns:
 | |555-555-3456 | 74 | {"SourceNumber":"", "TargetNumber":"555-555-3456", "CharsCount": 74} | {"TargetNumber":"555-555-3456", "CharsCount": 74}
 
 > [!NOTE]
-> There is a difference between the *Packed* and the *PackedIgnoreNullEmpty* columns only on the last two rows, because these rows included some empty values that were ignored by *pack_all(true)*.   
+> There is a difference between the *Packed* and the *PackedIgnoreNullEmpty* columns in the last two rows of the above example. These two rows included empty values that were ignored by *pack_all(true)*.   
