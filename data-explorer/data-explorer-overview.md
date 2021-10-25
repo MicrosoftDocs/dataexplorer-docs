@@ -29,23 +29,23 @@ Use the following decision tree to help you decide if Azure Data Explorer is rig
 
 ### Data velocity, variety, and volume
 
-Azure Data Explorer can ingest terabytes of data in minutes in batch or streaming mode. Petabytes of data can be queried with results returned within milliseconds to seconds. Azure Data Explorer provides high velocity (millions of events per second), low latency (seconds), and linear scale ingestion of raw data. Data can be ingested in different formats and structures. It can flow in from various pipelines and sources.
+With Azure Data Explorer, you can ingest terabytes of data in minutes in batch or streaming mode. You can query petabytes of data, with results returned within milliseconds to seconds. Azure Data Explorer provides high velocity (millions of events per second), low latency (seconds), and linear scale ingestion of raw data. Ingest your data in different formats and structures, flowing from various pipelines and sources.
 
 ### User-friendly query language
 
-Azure Data explorer uses the [Kusto Query Language (KQL)](kusto/query/index.md), an open-source language initially invented by the team. The language is simple to understand and learn, and highly productive. You can use simple operators and advanced analytics.
+Query Azure Data explorer with the [Kusto Query Language (KQL)](kusto/query/index.md), an open-source language initially invented by the team. The language is simple to understand and learn, and highly productive. You can use simple operators and advanced analytics.
 
 ### Advanced analytics
 
-Use Azure Data Explorer for time series analysis with a large set of functions; adding, subtracting time series, filtering, regression, seasonality detection, geospatial analysis, anomaly detection, scanning, and forecasting. Time series functions are optimized for processing thousands of time series in seconds. Pattern detection is made easy with cluster plugins that can diagnose anomalies and do root cause analysis. You can also extend Azure Data Explorer capabilities by [embedding python code](kusto/query/pythonplugin.md) in KQL queries.
+Use Azure Data Explorer for time series analysis with a large set of functions including: adding and subtracting time series, filtering, regression, seasonality detection, geospatial analysis, anomaly detection, scanning, and forecasting. Time series functions are optimized for processing thousands of time series in seconds. Pattern detection is made easy with cluster plugins that can diagnose anomalies and do root cause analysis. You can also extend Azure Data Explorer capabilities by [embedding python code](kusto/query/pythonplugin.md) in KQL queries.
 
 ### Easy-to-use wizard
 
-The [ingestion wizard](ingest-data-one-click.md) makes the data ingestion process easy, fast, and intuitive. The [web UI](web-query-data.md) provides an intuitive and guided experience that helps customers ramp-up quickly to start ingesting data, creating database tables, and mapping structures. It enables one time or a continuous ingestion from various sources and in various data formats. Table mappings and schema are auto suggested and easy to modify.
+The [ingestion wizard](ingest-data-one-click.md) makes the data ingestion process easy, fast, and intuitive. The [web UI](web-query-data.md) provides an intuitive and guided experience that helps you ramp-up quickly to start ingesting data, creating database tables, and mapping structures. It enables one time or a continuous ingestion from various sources and in various data formats. Table mappings and schema are auto suggested and easy to modify.
 
 ### Versatile data visualization
 
-Data visualization helps you gain important insights. Azure Data Explorer offers built-in visualization and [dashboarding](azure-data-explorer-dashboards.md) out of the box, with support for various charts and visualizations. It has native integration with [Power BI](power-bi-connector.md), native connectors for [Grafana](grafana.md), [Kibana](k2bridge.md) and Databricks, ODBC support for [Tableau](tableau.md), [Sisense](sisense.md), Qlik and more.
+Data visualization helps you gain important insights. Azure Data Explorer offers built-in visualization and [dashboarding](azure-data-explorer-dashboards.md) out of the box, with support for various charts and visualizations. It has native integration with [Power BI](power-bi-connector.md), native connectors for [Grafana](grafana.md), [Kibana](k2bridge.md) and Databricks, ODBC support for [Tableau](tableau.md), [Sisense](sisense.md), Qlik, and more.
 
 ### Automatic ingest, process, and export
 
