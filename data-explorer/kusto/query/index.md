@@ -13,7 +13,7 @@ adobe-target: true
 ---
 # Kusto Query Language (KQL) overview
 
-Kusto Query language is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, and more. The query uses schema entities that are organized in a hierarchy similar to SQL's: databases, tables, and columns.
+Kusto Query Language is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, and more. The query uses schema entities that are organized in a hierarchy similar to SQL's: databases, tables, and columns.
 
 ## What is a Kusto query?
 

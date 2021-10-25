@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/09/2020
+ms.date: 10/25/2021
 ms.localizationpriority: high
 ---
 # Let statement
@@ -98,7 +98,7 @@ T | where Time > start_time and Time < end_time | ...
 
 ## Examples
 
-### Use let function to define constants
+### Example: Use let function to define constants
 
 The following example binds the name `x` to the scalar literal `1`, and then uses it in a tabular expression statement.
 
@@ -114,7 +114,7 @@ let ['x'] = 1;
 range y from x to x step x
 ```
 
-### Use let for scalar values
+### Example: Use let for scalar values
 
 ```kusto
 let n = 10;  // number
@@ -126,7 +126,7 @@ Events
 | take n
 ```
 
-### Use let statement with arguments for scalar calculation
+### Example: Use let statement with arguments for scalar calculation
 
 This example uses the let statement with arguments for scalar calculation. The query defines function `MultiplyByN` for multiplying two numbers.
 
@@ -164,7 +164,7 @@ range x from 10 to 15 step 1
 |15|5|
 
 
-### Use multiple let statements
+### Example: Use multiple let statements
 
 This example defines two let statements where one statement (`foo2`) uses another (`foo1`).
 
@@ -176,7 +176,7 @@ foo2(2) | count
 // Result: 50
 ```
 
-### Use the `view` keyword in a let statement
+### Example: Use the `view` keyword in a let statement
 
 This example shows you how to use let statement with the `view` keyword.
 
@@ -193,7 +193,7 @@ search MyColumn == 5
 |Range20|5|
 
 
-### Use materialize function
+### Example: Use materialize function
 
 The [`materialize`](materializefunction.md) function lets you cache subquery results during the time of query execution. 
 
