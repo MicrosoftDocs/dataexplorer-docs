@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/29/2021
+ms.date: 10/25/2021
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -17,28 +17,13 @@ zone_pivot_groups: kql-flavors
 
 Checks group membership or principal identity of the current principal running the query.
 
-```kusto
-print current_principal_is_member_of(
-    'aaduser=user1@fabrikam.com', 
-    'aadgroup=group1@fabrikam.com',
-    'aadapp=66ad1332-3a94-4a69-9fa2-17732f093664;72f988bf-86f1-41af-91ab-2d7cd011db47'
-    )
-```
-
 ## Syntax
 
 `current_principal_is_member_of`(`*list of string literals*`)
 
 ## Arguments
 
-* *list of expressions* - a comma-separated list of string literals, where each literal is a principal fully qualified name (FQN) string formed as:  
-*PrinciplaType*`=`*PrincipalId*`;`*TenantId*
-
-| PrincipalType   | FQN Prefix  |
-|-----------------|-------------|
-| AAD User        | `aaduser=`  |
-| AAD Group       | `aadgroup=` |
-| AAD Application | `aadapp=`   |
+* *list of expressions* - a comma-separated list of string literals, where each literal represents an AAD principal. See [examples for AAD principals](../management/access-control/principals-and-identity-providers#aad-tenants.md).
 
 ## Returns
   
@@ -52,7 +37,6 @@ The function returns:
 > 
 > * `where current_principal_is_member_of('non-existing-group')`
 > * `where current_principal_is_member_of('non-existing-group') != false` 
-
 
 ## Example
 
