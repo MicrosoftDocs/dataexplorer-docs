@@ -23,7 +23,7 @@ Checks group membership or principal identity of the current principal running t
 
 ## Arguments
 
-* *list of expressions* - a comma-separated list of string literals, where each literal represents an AAD principal. See [examples for AAD principals](../management/access-control/principals-and-identity-providers#aad-tenants.md).
+* *list of expressions* - a comma-separated list of string literals, where each literal represents an AAD principal. See [examples for AAD principals](../management/access-control/principals-and-identity-providers.md#aad-tenants).
 
 ## Returns
   
