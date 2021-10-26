@@ -39,7 +39,7 @@ sections:
         answer: |
           When ingesting via SDK, you can use the ‘Flush Immediately' ingestion property to skip the batching, but this is not recommended for large scale ingestion, as it can lead to poor performance. 
           If you send compressed data Azure Data Explorer SDK, consider passing the Raw Data Size in the ingestion source options parameter to avoid a wrong estimation. Try incrementally decreasing the size of data ingested in the table of DB batching policy towards 250MB and see if there is an improvement.
-          - question: How can I tune Kusto Kafka Sink for better ingestion performance?
+      - question: How can I tune Kusto Kafka Sink for better ingestion performance?
         answer: |
           - Kusto Kafka Sink users should tune their connector to work together with the ingestion batching policy. There will be two batching policies running, and their batching size should be up to 1G, where the combined batching time should address your needs.
           - Try tuning the size limit `flush.size.bytes` starting from 1MB, moving up or down in increments of 10 or 100.
