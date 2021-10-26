@@ -6,22 +6,39 @@ metadata:
 title: Common questions about Azure Data Explorer ingestion
 summary: This article answers commonly asked questions about Azure Data Explorer ingestion.
 sections:
-  - name: Where is my data
+  - name: Batching and data latencies
     questions:
       - question: How does batching effect my data?
         answer: |
-          A central component of the ingestion service is the batching manager, that buffers and batches ingress data based on the ingestion settings in the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy sets batch limits according to three limiting factors, according to whichever is first reached: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. The default batching settings are 5 minutes / 1 GB / 1000 blobs, meaning there will be at least a 5 minute delay queueing sample data for ingestion. Latencies that are part of the ingestion process can be [monitored](../../monitor-batching-ingestion.md).
-          It is recommended to define a batching policy before experimenting with batch ingestion. When ingesting via SDK, it is not recommended to set the ‘Flush Immediately' ingestion property to skip the batching for large scale ingestion, as it can lead to poor performance.
+          A central component of the ingestion service is the batching manager, that buffers and batches ingress data based on the ingestion settings in the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy sets batch limits according to three limiting factors, whichever is first reached: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. The default batching settings are 5 minutes / 1 GB / 1000 blobs, meaning there will be at least a 5 minute delay when queueing sample data for ingestion.
+      - question: Do I need to change the batching policy?
+        answer: |
+          You should define an [ingestion batching policy](batchingpolicy.md) before you start experimenting with ingestion, and to adjust it accordingly. You should also update settings when you scale up ingestion. When you change batching policy settings, it can take up to 5 minutes to take effect. 
       - question: What causes batching latency?
         answer: |
           Ingestion latency can result from the [ingestion batching policy](batchingpolicy.md) settings, or a data backlog buildup. To address this, adjust the [batching policy settings](batching-policy.md).
-      - question: How can I check and improve ingestion latency?
+          Latencies that are part of the ingestion process can be [monitored](../../monitor-batching-ingestion.md).      
+      - question: Where can I view batching latency metrics?
         answer: |
           To view ingestion latency metrics, see [monitoring ingestion latency](../../monitor-batching-ingestion.md#view-the-ingestion-latency).
-          Latency can result from: 
+      - question: How can I shorten batching latencies?
+        answer: |
+          Latencies can result from: 
           - Data latency matching the time-based ingestion policy, so not enough data is fed to the table to pass the data-size or item-count limit and trigger the batch to be ingested. Try reducing the time.
           - Inefficient batching - if you ingest a large number of very small files, it could slow down ingestion and reduce performance. Try increasing the size of the source files. If you use Kusto Kafka Sink, configure it to send data to Kusto in ~100KB chunks or higher. Additionally, in the case of many small files, try increasing the number of files in each batch (up to 2000) by altering the database or table ingestion policy.  
-          - Batching a large amount of uncompressed data can degrade performance - Azure Data Explorer is optimized to ingest 1GB or uncompressed data in each batch. If you send compressed data using an SDK, consider setting the Raw Data Size in the ingestion source options parameter. Ingestion jobs with a very large uncompressed data size are also common when ingesting Parquet files. Incrementally decrease the size of data ingested in the table or database batching policy towards 250MB and check for improvement.
+          - Batching a large amount of uncompressed data can degrade performance - Azure Data Explorer is optimized to ingest 1GB or uncompressed data in each batch. 
+          - Ingestion jobs with a very large uncompressed data size are common when ingesting Parquet files. Incrementally decrease the size of data ingested in the table or database batching policy towards 250MB and check for improvement.
+          - Ingestion backlog can occur if the cluster is under-scaled for the amount of data it takes in. Consider accepting any Azure advisor suggestions to scale aside or up your cluster.Alternatively, manually scale your cluster to see if the backlog is closed.	If these options do not work, contact Azure Data Explorer support for assistance.
+      - question: How is the batching data size computed?
+        answer: |
+          The batching policy data size is for uncompressed data. When ingesting compressed data, the uncompressed data size if deduced as follows in descending order of accuracy:
+          -	If the uncompressed size is provided in the ingestion source options, that value is used.
+          -	When ingesting local files using SDKs, Azure Data Explorer may inspect zip archives and gzip streams an assess their raw size.
+          -	Lastly, if previous options do not provide a data size, a factor is applied to the compressed data size to estimate the uncompressed data size.
+      - question: What issues might I have when ingesting with SDK?
+        answer: |
+          When ingesting via SDK, you can use the ‘Flush Immediately' ingestion property to skip the batching, but this is not recommended for large scale ingestion, as it can lead to poor performance. 
+          If you send compressed data Azure Data Explorer SDK, consider passing the Raw Data Size in the ingestion source options parameter to avoid a wrong estimation. Try incrementally decreasing the size of data ingested in the table of DB batching policy towards 250MB and see if there is an improvement. 
   - name: Ingestion Performance
     questions:
       - question: How can I improve ingestion performance?
