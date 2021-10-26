@@ -46,3 +46,36 @@ sections:
           - For the batching policy, set the time limit to the highest number of seconds you can accept, and the number of items to at least 1000. Set batching size at 1G and increase by 100MB increments if needed.
           - Try increasing the Kafka Sink batching time if not enough data accumulates in each batch. 
           - You can scale using more instances and more partitions. Increase `tasks.max` to the number of partitions. You will want to increase partitions as long as you have enough data and produce blobs the size of the 'flush.size.bytes'. If blobs are smaller than this size, you will be flushing batches with the time limit, meaning this partition doesn't receive enough throughput. Be aware that a large number of partitions means more processing overhead.
+  - name: Ingestion Performance
+    questions:
+      - question: How can I improve ingestion performance?
+        answer: |
+          Here are some suggestions to get you started:
+          ...         
+      - question: What are best practices to ingest large files?
+        answer: |
+          Here are some suggestions to get you started:
+          - Between 1-5 GB:
+          - Between 5-10 GB:
+          - 10 GB and up:
+      - question: How can I adjust ingestion resources?
+        answer: |
+          - ...
+      - question: How can I prevent duplication?
+        answer: |
+          - ...For information about ...
+      - question: How much data can I ingress to my cluster, databases, and tables?
+        answer: |
+          - ...
+      - question: What are the benefits and tradeoffs for the `at-least-once`, `at-most-once`, and `exactly once` ingestion settings?
+        answer: |
+          - ...
+      - question: How does data locality and fragmentation effect ingestion latency and batching effectiveness?
+        answer: |
+          - ...
+      - question: What alerts can I define to track ingestion?
+        answer: |
+          - ...
+additionalContent: |
+  ## Additional Content
+  ....
