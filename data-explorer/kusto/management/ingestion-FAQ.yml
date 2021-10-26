@@ -35,10 +35,17 @@ sections:
           -	If the uncompressed size is provided in the ingestion source options, that value is used.
           -	When ingesting local files using SDKs, Azure Data Explorer may inspect zip archives and gzip streams an assess their raw size.
           -	Lastly, if previous options do not provide a data size, a factor is applied to the compressed data size to estimate the uncompressed data size.
-      - question: What issues might I have when ingesting with SDK?
+      - question: How can I improve ingestion with SDK?
         answer: |
           When ingesting via SDK, you can use the ‘Flush Immediately' ingestion property to skip the batching, but this is not recommended for large scale ingestion, as it can lead to poor performance. 
-          If you send compressed data Azure Data Explorer SDK, consider passing the Raw Data Size in the ingestion source options parameter to avoid a wrong estimation. Try incrementally decreasing the size of data ingested in the table of DB batching policy towards 250MB and see if there is an improvement. 
+          If you send compressed data Azure Data Explorer SDK, consider passing the Raw Data Size in the ingestion source options parameter to avoid a wrong estimation. Try incrementally decreasing the size of data ingested in the table of DB batching policy towards 250MB and see if there is an improvement.
+          - question: How can I tune Kusto Kafka Sink for better ingestion performance?
+        answer: |
+          - Kusto Kafka Sink users should tune their connector to work together with the ingestion batching policy. There will be two batching policies running, and their batching size should be up to 1G, where the combined batching time should address your needs.
+          - Try tuning the size limit `flush.size.bytes` starting from 1MB, moving up or down in increments of 10 or 100.
+          - For the batching policy, set the time limit to the highest number of seconds you can accept, and the number of items to at least 1000. Set batching size at 1G and increase by 100MB increments if needed.
+          - Try increasing the Kafka Sink batching time if not enough data accumulates in each batch. 
+          - You can scale using more instances and more partitions. Increase `tasks.max` to the number of partitions. You will want to increase partitions as long as you have enough data and produce blobs the size of the 'flush.size.bytes'. If blobs are smaller than this size, you will be flushing batches with the time limit, meaning this partition doesn't receive enough throughput. Be aware that a large number of partitions means more processing overhead.
   - name: Ingestion Performance
     questions:
       - question: How can I improve ingestion performance?
