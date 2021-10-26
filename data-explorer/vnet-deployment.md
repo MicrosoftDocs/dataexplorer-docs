@@ -57,7 +57,7 @@ The total number of IP addresses:
 Deploying Azure Data Explorer cluster into your subnet allows you to setup data connections with [Event Hub](/azure/event-hubs/event-hubs-about) or [Event Grid](/azure/event-grid/overview) while restricting the underlying resources for Azure Data Explorer subnet.
 
 > [!NOTE]
-> When using EventGrid setup with [Storage](/azure/storage/common/storage-introduction) and [Event Hub](/azure/event-hubs/event-hubs-about), the storage account used in the subscription can be locked with service endpoints to Azure Data Explorer's subnet while allowing trusted Azure platform services in the [firewall configuration](/azure/storage/common/storage-network-security), but the Event Hub can't enable Service Endpoint since it doesn't support trusted [Azure platform services](/azure/event-hubs/event-hubs-service-endpoints).
+> When using Event Grid setup with [Storage](/azure/storage/common/storage-introduction) and [Event Hub](/azure/event-hubs/event-hubs-about), the storage account used in the subscription can be locked with service endpoints to Azure Data Explorer's subnet while allowing trusted Azure platform services in the [firewall configuration](/azure/storage/common/storage-network-security), but the Event Hub can't enable Service Endpoint since it doesn't support trusted [Azure platform services](/azure/event-hubs/event-hubs-service-endpoints).
 
 ## Private Endpoints
 
@@ -91,7 +91,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | --- | --- | --- | --- |
 | Dependency on Azure Storage  | Azure Data Explorer subnet  | Storage:443  | TCP  |
 | Dependency on Azure Data Lake  | Azure Data Explorer subnet  | AzureDataLake:443  | TCP  |
-| EventHub ingestion and service monitoring  | Azure Data Explorer subnet  | EventHub:443,5671  | TCP  |
+| Event Hub ingestion and service monitoring  | Azure Data Explorer subnet  | EventHub:443,5671  | TCP  |
 | Publish Metrics  | Azure Data Explorer subnet  | AzureMonitor:443 | TCP  |
 | Active Directory (if applicable) | Azure Data Explorer subnet | AzureActiveDirectory:443 | TCP |
 | Certificate authority | Azure Data Explorer subnet | Internet:80 | TCP |
