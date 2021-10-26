@@ -395,7 +395,7 @@ items:
 - name: Errors and failures
   items:
   - name: Ingestion FAQ
-    href: Ingestion-FAQ.yml
+    href: Ingestion-faq.yml
   - name: Ingestion error codes
     href: ../../error-codes.md
   - name: Ingestion failures
