@@ -74,7 +74,7 @@ The following sequence of commands:
 .drop table TempTable ifexists
 ```
 
-## Rename source table of a materialized view
+**Rename source table of a materialized view**
 
 If the table being renamed is the source table of a [materialized view](materialized-views/materialized-view-overview.md), you can specify the following property as part of the `.rename` command:
 
