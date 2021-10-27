@@ -124,6 +124,10 @@ There are a number of methods by which data can be ingested directly to the engi
 
 Once you have chosen the most suitable ingestion method for your needs, do the following steps:
 
+1. **Set batching policy - if relevant**
+
+     A central component of the ingestion service is the batching manager, that buffers and batches ingress data based on the ingestion settings in the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy sets batch limits according to three limiting factors, whichever is first reached: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. The default batching settings are 5 minutes / 1 GB / 1000 blobs, meaning there will be at least a 5 minute delay when queueing sample data for ingestion. You should [define a batching policy](kusto/management/batching-policy.md) before you start experimenting with ingestion, and adjust it accordingly. See [ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput). When you change batching policy settings, it can take up to 5 minutes to take effect.
+
 1. **Set retention policy**
 
     Data ingested into a table in Azure Data Explorer is subject to the table's effective retention policy. Unless set on a table explicitly, the effective retention policy is derived from the database's retention policy. Hot retention is a function of cluster size and your retention policy. Ingesting more data than you have available space will force the first in data to cold retention.
