@@ -46,20 +46,38 @@ The following lists show all possible types of triggers to batch sealing. The ba
 
 ### Defined by the batching policy
 
-* Size: Batch size limit defined by the batching policy reached
-* Count: Batch files number limit defined by the batching policy reached
-* Time: Batching time defined by the batching policy has expired
+* `Size`: Batch size limit defined by the batching policy reached
+* `Count`: Batch files number limit defined by the batching policy reached
+* `Time`: Batching time defined by the batching policy has expired
 
 ### Single blob ingestion
 
-* SingleBlob_FlushImmediately: Single blob ingestion because ['FlushImmediately'](../api/netfx/kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) was set
-* SingleBlob_IngestIfNotExists: Single blob ingestion because ['IngestIfNotExists'](../../ingestion-properties.md#ingestion-properties) was set
-* SingleBlob_IngestByTag: Single blob ingestion because ['ingest-by'](extents-overview.md#ingest-by-extent-tags) tag was set
-* SingleBlob_SizeUnknown: Single blob ingestion because blob size is unknown
+* `SingleBlob_FlushImmediately`: Single blob ingestion because ['FlushImmediately'](../api/netfx/kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) was set
+* `SingleBlob_IngestIfNotExists`: Single blob ingestion because ['IngestIfNotExists'](../../ingestion-properties.md#ingestion-properties) was set
+* `SingleBlob_IngestByTag`: Single blob ingestion because ['ingest-by'](extents-overview.md#ingest-by-extent-tags) tag was set
+* `SingleBlob_SizeUnknown`: Single blob ingestion because blob size is unknown
 
 ### Other
 
-* SystemFlush: System had to flush the data, for example due to cluster scaling or internal reset of system components
+`SystemFlush`: System had to flush the data, for example due to cluster scaling or internal reset of system components
+
+## Batching data size
+
+The batching policy data size is set for uncompressed data. When ingesting compressed data, the uncompressed data size if deduced as follows in descending order of accuracy:
+          -
+* If the uncompressed size is provided in the ingestion source options, that value is used.
+* When ingesting local files using SDKs, Azure Data Explorer may inspect zip archives and gzip streams to assess their raw size.
+* Lastly, if previous options do not provide a data size, a factor is applied to the compressed data size to estimate the uncompressed data size.
+
+## Batching latencies
+
+Latencies can result from: 
+
+* Data latency matching the time-based ingestion policy, so not enough data is fed to the table to pass the data-size or item-count limit and trigger the batch to be ingested. Try reducing the time.
+* Inefficient batching - if you ingest a large number of very small files, it could slow down ingestion and reduce performance. Try increasing the size of the source files. If you use Kusto Kafka Sink, configure it to send data to Kusto in ~100KB chunks or higher. Additionally, in the case of many small files, try increasing the number of files in each batch (up to 2000) by altering the database or table ingestion policy.  
+* Batching a large amount of uncompressed data can degrade performance - Azure Data Explorer is optimized to ingest 1GB of uncompressed data in each batch. 
+* Ingestion jobs with a very large uncompressed data size are common when ingesting Parquet files. Incrementally decrease the size of data ingested in the table or database batching policy towards 250MB and check for improvement.
+* Ingestion backlog can occur if the cluster is under-scaled for the amount of data it takes in. Consider accepting any Azure advisor suggestions to scale aside or scale up your cluster. Alternatively, manually scale your cluster to see if the backlog is closed. If these options do not work, contact Azure Data Explorer support for assistance.
 
 ## Other resources
 
