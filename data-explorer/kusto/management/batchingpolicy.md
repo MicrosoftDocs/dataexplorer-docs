@@ -13,26 +13,17 @@ ms.date: 02/19/2020
 
 ## Overview
 
-During the ingestion process, Kusto attempts to optimize for throughput by batching small
-ingress data chunks together as they await ingestion.
-This sort of batching reduces the resources consumed by the ingestion
-process, and doesn't require post-ingestion resources to optimize the
-small data shards produced by non-batched ingestion.
+During the ingestion process, Azure Data Explorer attempts to optimize for throughput by batching small ingress data chunks together as they await ingestion.
+This sort of batching reduces the resources consumed by the ingestion process, and doesn't require post-ingestion resources to optimize the small data shards produced by non-batched ingestion.
 
-There is a downside, however, to doing batching before ingestion, which is
-the introduction of a forced delay, so that the end-to-end time from requesting
-the ingestion of data until it's ready for query is larger.
+There is a downside, however, to doing batching before ingestion, which is the introduction of a forced delay, so that the end-to-end time from requesting the ingestion of data until it's ready for query is larger.
 
 To allow control of this trade-off, use the [`IngestionBatching`](batching-policy.md) policy.
-This policy is applied to queued ingestion only, and provides the maximum
-forced delay to allow when batching small blobs together.
+This policy is applied to queued ingestion only, and provides the maximum forced delay to allow when batching small blobs together.
 
 ## Details
 
-As explained above, there's an optimal size of data to be ingested in bulk.
-Currently that size is about 1 GB of uncompressed data. Ingestion that is done
-in blobs that hold much less data than the optimal size is non-optimal, and
-so in queued ingestion Kusto will batch such small blobs together.
+When ingesting data in bulk, there's an optimal size, which is about 1 GB of uncompressed data. Ingestion that is done in blobs that hold much less data is non-optimal, and so in queued ingestion Azure Data Explorer will batch small blobs together.
 
 Batches are sealed when the first condition is met:
 
