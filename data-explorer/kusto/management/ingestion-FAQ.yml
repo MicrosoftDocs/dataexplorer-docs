@@ -13,7 +13,7 @@ sections:
           A central component of the ingestion service is the batching manager, that buffers and batches ingress data based on the ingestion settings in the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy sets batch limits according to three limiting factors, whichever is first reached: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. The default batching settings are 5 minutes / 1 GB / 1000 blobs, meaning there will be at least a 5 minute delay when queueing sample data for ingestion.
       - question: Do I need to change the batching policy?
         answer: |
-          You should define an [ingestion batching policy](batchingpolicy.md) before you start experimenting with ingestion, and adjust it accordingly. You should also update settings when you scale up ingestion. When you change batching policy settings, it can take up to 5 minutes to take effect. 
+          You should define an [ingestion batching policy](batchingpolicy.md) before you start experimenting with ingestion, and adjust it accordingly. See also [ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput. You should also update settings when you scale up ingestion. When you change batching policy settings, it can take up to 5 minutes to take effect. 
       - question: What causes batching latency?
         answer: |
           Ingestion latency can result from the [ingestion batching policy](batchingpolicy.md) settings, or a data backlog buildup. To address this, adjust the [batching policy settings](batching-policy.md).
@@ -43,7 +43,7 @@ sections:
       - question: How can I tune Kusto Kafka Sink for better ingestion performance?
         answer: |
           - Kusto Kafka Sink users should tune their connector to work together with the ingestion batching policy. 
-          - There will be two batching policies running, and their batching size should be up to 1G. Ensure that the combined batching times suits your ingestion needs.
+          - There will be two batching policies running, and the batching size should be set to up to 1G. Ensure that the combined batching times suits your ingestion needs.
           - Try tuning the Kafka Sink size limit `flush.size.bytes` starting from 1MB, moving up or down in increments of 10 or 100.
           - For the batching policy, set the time limit to the highest number of seconds you can accept, and the number of items to at least 1000. Set batching size at 1G and increase by 100MB increments if needed.
           - Try increasing the Kafka Sink batching time if not enough data accumulates in each batch. 
