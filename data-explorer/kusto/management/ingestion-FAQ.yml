@@ -24,7 +24,8 @@ sections:
       - question: How can I shorten batching latencies?
         answer: |
           Latencies can result from [several causes that can be addressed](batchingpolicy.md#batching-latencies).
-        answer: |
+      - question: How is batching data size calculated?
+          answer: |
           The batching policy data size is set for uncompressed data. When ingesting compressed data, the [uncompressed data size is calculated](batchingpolicy.md#batching-data-size).
       - question: How can I improve ingestion with SDK?
         answer: |
