@@ -33,9 +33,4 @@ sections:
           Try incrementally decreasing the size of data ingested in the table or database batching policy down towards 250MB and check if there is an improvement.
       - question: How can I tune Kusto Kafka Sink for better ingestion performance?
         answer: |
-          - Kusto Kafka Sink users should tune their connector to work together with the ingestion batching policy. 
-          - There will be two batching policies running, and the batching size should be set to up to 1G. Ensure that the combined batching times suits your ingestion needs.
-          - Try tuning the Kafka Sink size limit `flush.size.bytes` starting from 1MB, moving up or down in increments of 10 or 100.
-          - For the batching policy, set the time limit to the highest number of seconds you can accept, and the number of items to at least 1000. Set batching size at 1G and increase by 100MB increments if needed.
-          - Try increasing the Kafka Sink batching time if not enough data accumulates in each batch. 
-          - You can scale by adding instances and partitions. Increase `tasks.max` to the number of partitions. You will want to increase partitions as long as you have enough data so that you produce blobs the size of the `flush.size.bytes` settings. If blobs are smaller than this size, batches are processed according to the batching time limit, meaning that the partition isn't receiving enough throughput. Be aware, however, that a large number of partitions means more processing overhead.
+          [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) users should [tune the connector](../../ingest-data-kafka.md) to work together with the [ingestion batching policy](batchingpolicy.md). 

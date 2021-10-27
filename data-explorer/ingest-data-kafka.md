@@ -352,6 +352,16 @@ az kusto cluster delete -n <cluster name> -g <resource group name>
 az kusto database delete -n <database name> --cluster-name <cluster name> -g <resource group name>
 ```
 
+## Tuning Kafka Sink connectors
+
+* The [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) connector should be tuned to work together with the [ingestion batching policy](kusto/management/batchingpolicy.md). 
+* There will be two batching policies running, and the batching size should be set to up to 1G. Ensure that the combined batching times suits your ingestion needs.
+* Try tuning the Kafka Sink size limit `flush.size.bytes` starting from 1MB, moving up or down in increments of 10 or 100.
+* For the ingestion batching policy, set the time limit to the highest number of seconds you can accept, and the number of items to at least 1000. Set batching size at 1G and increase by 100MB increments if needed.
+* Try increasing the Kafka Sink batching time if not enough data accumulates in each batch. 
+* You can scale by adding instances and partitions. Increase `tasks.max` to the number of partitions. You will want to increase partitions as long as you have enough data so that you produce blobs the size of the `flush.size.bytes` settings. If blobs are smaller than this size, batches are processed according to the batching time limit, meaning that the partition isn't receiving enough throughput. Be aware, however, that a large number of partitions means more processing overhead.
+
+
 ## Next Steps
 
 * Learn more about [Big data architecture](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer).
