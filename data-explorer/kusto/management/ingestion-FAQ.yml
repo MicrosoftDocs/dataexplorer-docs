@@ -8,7 +8,7 @@ summary: This article answers commonly asked questions about Azure Data Explorer
 sections:
   - name: Batching and data latencies
     questions:
-      - question: How does batching effect my data?
+      - question: How does batching affect my data?
         answer: |
           The batching manager buffers and batches ingress data based on the ingestion settings in the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy sets batch limits according to three limiting factors, whichever is first reached: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. The default batching settings are 5 minutes / 1 GB / 1000 blobs, meaning there will be at least a 5 minute delay when queueing sample data for ingestion.
       - question: Do I need to change the batching policy?
