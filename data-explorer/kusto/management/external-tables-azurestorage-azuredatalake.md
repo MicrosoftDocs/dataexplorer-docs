@@ -169,7 +169,7 @@ A non-partitioned external table. Data files are expected to be placed directly 
 
 ```kusto
 .create external table ExternalTable (x:long, s:string)  
-kind=blob 
+kind=storage 
 dataformat=csv 
 ( 
    h@'https://storageaccount.blob.core.windows.net/container1;secretKey' 
@@ -180,7 +180,7 @@ An external table partitioned by date. Data files are expected to be placed unde
 
 ```kusto
 .create external table ExternalTable (Timestamp:datetime, x:long, s:string) 
-kind=adl
+kind=storage
 partition by (Date:datetime = bin(Timestamp, 1d)) 
 dataformat=csv 
 ( 
@@ -192,7 +192,7 @@ An external table partitioned by month, with a directory format of `year=yyyy/mo
 
 ```kusto
 .create external table ExternalTable (Timestamp:datetime, x:long, s:string) 
-kind=blob 
+kind=storage 
 partition by (Month:datetime = startofmonth(Timestamp)) 
 pathformat = (datetime_pattern("'year='yyyy'/month='MM", Month)) 
 dataformat=csv 
@@ -205,7 +205,7 @@ An external table partitioned first by customer name, then by date. Expected dir
 
 ```kusto
 .create external table ExternalTable (Timestamp:datetime, CustomerName:string) 
-kind=blob 
+kind=storage 
 partition by (CustomerNamePart:string = CustomerName, Date:datetime = startofday(Timestamp)) 
 pathformat = ("customer_name=" CustomerNamePart "/" Date)
 dataformat=csv 
@@ -218,7 +218,7 @@ An external table partitioned first by customer name hash (modulo ten), then by 
 
 ```kusto
 .create external table ExternalTable (Timestamp:datetime, CustomerName:string) 
-kind=blob 
+kind=storage 
 partition by (CustomerId:long = hash(CustomerName, 10), Date:datetime = startofday(Timestamp)) 
 pathformat = ("customer_id=" CustomerId "/dt=" datetime_pattern("yyyyMMdd", Date)) 
 dataformat=csv 
@@ -252,7 +252,7 @@ External tables support the following syntax for specifying virtual columns:
 
 ```kusto
 .create external table ExternalTable (EventName:string, Revenue:double)  
-kind=blob  
+kind=storage  
 partition by (CustomerName:string, Date:datetime)  
 pathformat = ("customer=" CustomerName "/date=" datetime_pattern("yyyyMMdd", Date))  
 dataformat=parquet
