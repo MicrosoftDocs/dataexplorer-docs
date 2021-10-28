@@ -35,24 +35,24 @@ The function `kmeans_fl()` clusterizes a dataset using the [k-means algorithm](h
 For ad hoc usage, embed the code using the [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
+~~~kusto
 let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
 {
     let kwargs = pack('k', k, 'features', features, 'cluster_col', cluster_col);
-    let code =
-        '\n'
-        'from sklearn.cluster import KMeans\n'
-        '\n'
-        'k = kargs["k"]\n'
-        'features = kargs["features"]\n'
-        'cluster_col = kargs["cluster_col"]\n'
-        '\n'
-        'km = KMeans(n_clusters=k)\n'
-        'df1 = df[features]\n'
-        'km.fit(df1)\n'
-        'result = df\n'
-        'result[cluster_col] = km.labels_\n'
-        ;
+    let code = ```if 1:
+        
+        from sklearn.cluster import KMeans
+        
+        k = kargs["k"]
+        features = kargs["features"]
+        cluster_col = kargs["cluster_col"]
+        
+        km = KMeans(n_clusters=k)
+        df1 = df[features]
+        km.fit(df1)
+        result = df
+        result[cluster_col] = km.labels_
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 };
@@ -66,7 +66,7 @@ OccupancyDetection
 | extend cluster_id=double(null)
 | invoke kmeans_fl(5, pack_array("Temperature", "Humidity", "Light", "CO2", "HumidityRatio"), "cluster_id")
 | sample 10
-```
+~~~
 
 # [Persistent](#tab/persistent)
 
@@ -75,29 +75,29 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 ### One-time installation
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
+~~~kusto
 .create function with (folder = "Packages\\ML", docstring = "K-Means clustering")
 kmeans_fl(tbl:(*), k:int, features:dynamic, cluster_col:string)
 {
     let kwargs = pack('k', k, 'features', features, 'cluster_col', cluster_col);
-    let code =
-        '\n'
-        'from sklearn.cluster import KMeans\n'
-        '\n'
-        'k = kargs["k"]\n'
-        'features = kargs["features"]\n'
-        'cluster_col = kargs["cluster_col"]\n'
-        '\n'
-        'km = KMeans(n_clusters=k)\n'
-        'df1 = df[features]\n'
-        'km.fit(df1)\n'
-        'result = df\n'
-        'result[cluster_col] = km.labels_\n'
-        ;
+    let code = ```if 1:
+        
+        from sklearn.cluster import KMeans
+        
+        k = kargs["k"]
+        features = kargs["features"]
+        cluster_col = kargs["cluster_col"]
+        
+        km = KMeans(n_clusters=k)
+        df1 = df[features]
+        km.fit(df1)
+        result = df
+        result[cluster_col] = km.labels_
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 }
-```
+~~~
 
 ### Usage
 

@@ -69,6 +69,7 @@ Cost recommendations include:
 * [Correctly size Azure Data Explorer cluster to optimize cost](#correctly-size-azure-data-explorer-clusters-to-optimize-cost)
 * [Reduce cache for Azure Data Explorer tables](#reduce-cache-for-azure-data-explorer-tables)
 * [Run a cleanup command to delete unused storage artifacts](#delete-unused-storage-artifacts)
+* [Enable Optimized autoscale](#enable-optimized-autoscale)
 
 #### Azure Data Explorer unused cluster
 
@@ -113,6 +114,12 @@ The recommended action is to run the [clean databases extentcontainers](kusto/ma
 
 > [!IMPORTANT]
 > Data recoverability will be reset to the cleanup time and will not be available on data that was created before running the cleanup.
+
+#### Enable Optimized autoscale
+
+
+The recommendation **enable Optimized autoscale** is given when enabling [Optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale) would have reduced the instance count on a cluster. This recommendation is based on usage patterns, cache utilization, ingestion utilization, and CPU. To make sure you don't exceed your planned budget, add a maximum instance count when you enable Optimized autoscale.
+
 
 ### Performance recommendations
 
