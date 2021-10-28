@@ -13,6 +13,9 @@ ms.date: 10/24/2021
 
 Deletes the Managed Identity policy of the cluster or the specified database.
 
+> [!WARNING]
+> Be careful when deleting the Managed Identity policy, as doing so will cause failures in all flows that rely on this policy. For example, if the policy allowed accessing Azure Storage via External Tables by authenticating via a managed identity, then deleting this policy will cause failures for queries that involve this external table, and also for operations that export to this external table.
+
 ## Syntax
 
 * `.delete` `cluster` `policy` `managed_identity`

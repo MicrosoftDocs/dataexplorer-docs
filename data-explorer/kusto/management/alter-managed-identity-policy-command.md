@@ -11,7 +11,10 @@ ms.date: 10/24/2021
 ---
 # .alter managed_identity policy
 
-This command sets the Managed Identity policy of the cluster or the specified database.
+This command sets the Managed Identity policy of the cluster or the specified database, **overriding the existing policy**.
+
+> [!NOTE]
+> Managed identities should be assigned to the ADX cluster (see [instructions](../../managed-identities.md)), before you can assign them to the Managed Identity policy.
 
 ## Syntax
 
@@ -27,10 +30,16 @@ This command sets the Managed Identity policy of the cluster or the specified da
   * "ExternalTable" - External tables can be configured such that the connection strings will have a managed identity, which Azure Data Explorer will use to authenticate.
   * "All" - all current and future usages are allowed
 
+Here is how to find the ObjectId in Azure Portal:
+
+:::image type="content" source="images/managed-identity-policy\azure-portal.png" alt-text="Look for 'Object (principal) ID.":::
+
 ## Returns
 
 The command sets the cluster's or database's Managed Identity policy object, overriding any current policy,
 and then returns the output of the corresponding [.show managed identity policy](#show-managed-identity-policy) command.
+
+If any of the specified managed identities is not assigned to the cluster, an error will be returned, and the Managed Identity policy will not be modified.
 
 ## Example
 

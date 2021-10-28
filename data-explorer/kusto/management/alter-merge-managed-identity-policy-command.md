@@ -13,6 +13,9 @@ ms.date: 10/24/2021
 
 To add more Managed Identity policy objects to the existing policy, use the .alter-merge command.
 
+> [!NOTE]
+> Managed identities should be assigned to the ADX cluster (see [instructions](../../managed-identities.md)), before you can assign them to the Managed Identity policy.
+
 ## Syntax
 
 * `.alter-merge` `cluster` `policy` `managed_identity` *ArrayOfManagedIdentityPolicyObjects*
@@ -34,9 +37,15 @@ To add more Managed Identity policy objects to the existing policy, use the .alt
 > * If the ObjectId *doesn't exist* in the Managed Identity policy, the item will be added to the policy.
 > * If the ObjectId *already exists* in the Managed Identity policy, the item's AllowedUsages will be added to the relevant item in the Managed Identity policy. For example, if the current Managed Identity policy has AllowedUsages="NativeIngestion" for a certain managed identity, then if `ArrayOfManagedIdentityPolicyObjects` has an item for this managed identity with AllowedUsages="ExternalTables", then the AllowedUsages for this managed identity in the Managed Identity policy will become "NativeIngestion, ExternalTables".
 
+Here is how to find the ObjectId in Azure Portal:
+
+:::image type="content" source="images/managed-identity-policy\azure-portal.png" alt-text="Look for 'Object (principal) ID.":::
+
 ## Returns
 
 The command updates the cluster's or database's Managed Identity policy, and then returns the output of the corresponding [.show managed identity policy](#show-managed-identity-policy) command.
+
+If any of the specified managed identities is not assigned to the cluster, an error will be returned, and the Managed Identity policy will not be modified.
 
 ## Example
 
