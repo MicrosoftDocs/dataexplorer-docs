@@ -37,7 +37,7 @@ Here is how to find the ObjectId in Azure Portal:
 ## Returns
 
 The command sets the cluster's or database's Managed Identity policy object, overriding any current policy,
-and then returns the output of the corresponding [.show managed identity policy](#show-managed-identity-policy) command.
+and then returns the output of the corresponding [.show managed identity policy](show-managed-identity-policy-command.md) command.
 
 If any of the specified managed identities is not assigned to the cluster, an error will be returned, and the Managed Identity policy will not be modified.
 
@@ -45,41 +45,6 @@ If any of the specified managed identities is not assigned to the cluster, an er
 
 ~~~kusto
 .alter database db policy managed_identity ```
-[
-  {
-    "ObjectId": "d9989846-1715-42f9-a97f-78e077b693ea",
-    "AllowedUsages": "NativeIngestion, ExternalTable"
-  }
-]
-```
-~~~
-
-# .alter-merge policy managed_identity
-
-To add more Managed Identity policy objects to the existing policy, use the .alter-merge command.
-
-## Syntax
-
-* `.alter-merge` `cluster` `policy` `managed_identity` *ArrayOfManagedIdentityPolicyObjects*
-* `.alter-merge` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfManagedIdentityPolicyObjects*
-
-*ArrayOfManagedIdentityPolicyObjects* is a JSON array that has zero or more Managed Identity policy objects defined.
-
-> [!NOTE]
->
-> For every item in `ArrayOfManagedIdentityPolicyObjects`:
->
-> * If the ObjectId *doesn't exist* in the Managed Identity policy, the item will be added to the policy.
-> * If the ObjectId *already exists* in the Managed Identity policy, the item's AllowedUsages will be added to the relevant item in the Managed Identity policy. For example, if the current Managed Identity policy has AllowedUsages="NativeIngestion" for a certain managed identity, then if `ArrayOfManagedIdentityPolicyObjects` has an item for this managed identity with AllowedUsages="ExternalTables", then the AllowedUsages for this managed identity in the Managed Identity policy will become "NativeIngestion, ExternalTables".
-
-## Returns
-
-The command updates the cluster's or database's Managed Identity policy, and then returns the output of the corresponding [.show managed identity policy](#show-managed-identity-policy) command.
-
-## Example
-
-~~~kusto
-.alter-merge database db policy managed_identity ```
 [
   {
     "ObjectId": "d9989846-1715-42f9-a97f-78e077b693ea",

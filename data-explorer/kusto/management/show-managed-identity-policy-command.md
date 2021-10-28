@@ -25,7 +25,7 @@ This command returns a table that has a single record.
 | Column     | Type     | Description       |
 |------------|----------|----------------------------------------------------------------------------------------------------------|
 | EntityName | `string` | The name of the entity the Managed Identity policy is defined on (or empty, if showing the cluster level policy) |
-| Policies   | `string` | A JSON array indicating all Managed Identity policies defined for the entity, formatted as [Managed Identity policy object](updatepolicy.md#the-managed-identity-policy-object)|
+| Policies   | `string` | A JSON array indicating all Managed Identity policies defined for the entity, formatted as [Managed Identity policy object](managed-identity-policy.md#the-managed-identity-policy-object)|
 
 ## Example
 

@@ -31,5 +31,3 @@ Each such object is represented as a JSON property bag, with the following prope
 
 > [!NOTE]
 > When providing a managed identity object to `.alter` command, only the `ObjectId` and `AllowedUsages` properties have to be provided. The other properties should not be provided, and will be automatically filled by Azure Data Explorer, based on the actual properties of the managed identity, with the specified `ObjectId`.
-
-For more information, see the control commands for managing the [ManagedIdentity policy](./managed-identity-policy-commands.md).

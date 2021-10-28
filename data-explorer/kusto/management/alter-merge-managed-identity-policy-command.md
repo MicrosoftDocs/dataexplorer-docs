@@ -43,7 +43,7 @@ Here is how to find the ObjectId in Azure Portal:
 
 ## Returns
 
-The command updates the cluster's or database's Managed Identity policy, and then returns the output of the corresponding [.show managed identity policy](#show-managed-identity-policy) command.
+The command updates the cluster's or database's Managed Identity policy, and then returns the output of the corresponding [.show managed identity policy](show-managed-identity-policy-command.md) command.
 
 If any of the specified managed identities is not assigned to the cluster, an error will be returned, and the Managed Identity policy will not be modified.
 

@@ -23,7 +23,7 @@ Deletes the Managed Identity policy of the cluster or the specified database.
 
 ## Returns
 
-The command deletes the cluster's or database's Managed Identity policy, and then returns the output of the corresponding [.show managed identity policy](#show-managed-identity-policy) command.
+The command deletes the cluster's or database's Managed Identity policy, and then returns the output of the corresponding [.show managed identity policy](show-managed-identity-policy-command.md) command.
 
 ## Example
 
