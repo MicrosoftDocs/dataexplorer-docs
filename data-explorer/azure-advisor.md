@@ -116,7 +116,7 @@ The recommended action is to run the [clean databases extentcontainers](kusto/ma
 > Data recoverability will be reset to the cleanup time and will not be available on data that was created before running the cleanup.
 
 #### Enable Optimized autoscale
-The recommendation **enable Optimized autoscale** is given for a cluster that could have automatically scaled in and reduce costs (based on the usage patterns, cache utilization, ingestion utilization, and CPU) by enabling [Optimized autoscale] (https://docs.microsoft.com/azure/data-explorer/manage-cluster-horizontal-scaling#optimized-autoscale). To make sure you don't exceed your planned budget, add a maximum instance count when you enable Optimized autoscale.
+The recommendation **enable Optimized autoscale** is given when enabling [Optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale) would have reduced the instance count on a cluster. This recommendation is based on usage patterns, cache utilization, ingestion utilization, and CPU. To make sure you don't exceed your planned budget, add a maximum instance count when you enable Optimized autoscale.
 
 
 ### Performance recommendations
