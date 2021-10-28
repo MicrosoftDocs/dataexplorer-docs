@@ -69,7 +69,7 @@ Cost recommendations include:
 * [Correctly size Azure Data Explorer cluster to optimize cost](#correctly-size-azure-data-explorer-clusters-to-optimize-cost)
 * [Reduce cache for Azure Data Explorer tables](#reduce-cache-for-azure-data-explorer-tables)
 * [Run a cleanup command to delete unused storage artifacts](#delete-unused-storage-artifacts)
-* [Enable Optimized autoscale](#enabled-optimized-autoscale)
+* [Enable Optimized autoscale](#enable-optimized-autoscale)
 
 #### Azure Data Explorer unused cluster
 
