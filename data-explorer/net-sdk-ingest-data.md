@@ -183,6 +183,9 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 }
 ```
 
+
+When defining the ingestion batching policy, can use the ‘Flush Immediately' ingestion property to skip the batching, but this is not recommended for large scale ingestion, as it can lead to poor performance. If you send compressed data Azure Data Explorer SDK, consider passing the Raw Data Size in the ingestion source options parameter to avoid a wrong estimation. Try incrementally decreasing the size of data ingested in the table or database batching policy down towards 250MB and check if there is an improvement.
+
 ## Queue a message for ingestion
 
 Queue a message to pull data from blob storage and ingest that data into Azure Data Explorer. A connection is established to the data ingestion endpoint of the Azure Data Explorer cluster, and another client is created to work with that endpoint. 
