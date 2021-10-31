@@ -41,7 +41,7 @@ For the Microsoft Azure Kusto Management Client Library, see [Microsoft Azure SD
 
 ## Add an Event Grid data connection
 
-The following example shows you how to add an Event Grid data connection programmatically. See [create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md#create-an-event-grid-data-connection-in-azure-data-explorer) for adding an Event Grid data connection using the Azure portal.
+The following example shows you how to add an Event Grid data connection programmatically. See [create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md) for adding an Event Grid data connection using the Azure portal.
 
 ```Python
 from azure.mgmt.kusto import KustoManagementClient

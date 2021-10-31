@@ -15,7 +15,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The Python plugin runs a user-defined-function (UDF) using a Python script. The Python script gets tabular data as its input, and is expected to produce a tabular output.
+The Python plugin runs a user-defined function (UDF) using a Python script. The Python script gets tabular data as its input, and produces tabular output.
 The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running on the cluster's nodes.
 
 ## Syntax
@@ -43,7 +43,7 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
 
 ## Reserved Python variables
 
-The following variables are reserved for interaction between Kusto query language and the Python code.
+The following variables are reserved for interaction between Kusto Query Language and the Python code.
 
 * `df`: The input tabular data (the values of `T` above), as a `pandas` DataFrame.
 * `kargs`: The value of the *script_parameters* argument, as a Python dictionary.
@@ -77,44 +77,44 @@ The following variables are reserved for interaction between Kusto query languag
 
 ## Examples
 
-```kusto
+~~~kusto
 range x from 1 to 360 step 1
 | evaluate python(
 //
 typeof(*, fx:double),               //  Output schema: append a new fx column to original table 
-//
-'result = df\n'                     //  The Python decorated script
-'n = df.shape[0]\n'
-'g = kargs["gain"]\n'
-'f = kargs["cycles"]\n'
-'result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)\n'
-//
+```
+result = df
+n = df.shape[0]
+g = kargs["gain"]
+f = kargs["cycles"]
+result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
+```
 , pack('gain', 100, 'cycles', 4)    //  dictionary of parameters
 )
 | render linechart 
-```
+~~~
 
 :::image type="content" source="images/plugin/sine-demo.png" alt-text="sine demo." border="false":::
 
-```kusto
+~~~kusto
 print "This is an example for using 'external_artifacts'"
 | evaluate python(
-    typeof(File:string, Size:string),
-    "import os\n"
-    "result = pd.DataFrame(columns=['File','Size'])\n"
-    "sizes = []\n"
-    "path = '.\\\\Temp'\n"
-    "files = os.listdir(path)\n"
-    "result['File']=files\n"
-    "for file in files:\n"
-    "    sizes.append(os.path.getsize(path + '\\\\' + file))\n"
-    "result['Size'] = sizes\n"
-    "\n",
+    typeof(File:string, Size:string), ```if 1:
+    import os
+    result = pd.DataFrame(columns=['File','Size'])
+    sizes = []
+    path = '.\\\\Temp'
+    files = os.listdir(path)
+    result['File']=files
+    for file in files:
+        sizes.append(os.path.getsize(path + '\\\\' + file))
+    result['Size'] = sizes
+    ```,
     external_artifacts = 
         dynamic({"this_is_my_first_file":"https://kustoscriptsamples.blob.core.windows.net/samples/R/sample_script.r",
                  "this_is_a_script":"https://kustoscriptsamples.blob.core.windows.net/samples/python/sample_script.py"})
 )
-```
+~~~
 
 | File                  | Size |
 |-----------------------|------|
@@ -129,20 +129,6 @@ print "This is an example for using 'external_artifacts'"
 * Use `hint.distribution = per_node` whenever the logic in your script is distributable.
     * You can also use the [partition operator](partitionoperator.md) for partitioning the input data set.
 * Use Kusto's query language whenever possible, to implement the logic of your Python script.
-
-    ### Example
-
-    ```kusto    
-    .show operations
-    | where StartedOn > ago(7d) // Filtering out irrelevant records before invoking the plugin
-    | project d_seconds = Duration / 1s // Projecting only a subset of the necessary columns
-    | evaluate hint.distribution = per_node python( // Using per_node distribution, as the script's logic allows it
-        typeof(*, _2d:double),
-        'result = df\n'
-        'result["_2d"] = 2 * df["d_seconds"]\n' // Negative example: this logic should have been written using Kusto's query language
-      )
-    | summarize avg = avg(_2d)
-    ```
 
 ## Usage tips
 
@@ -210,9 +196,9 @@ download the package and its dependencies.
     pip wheel [-w download-dir] package-name.
     ```
 
-1. Create a zip file, that contains the required package and its dependencies.
+1. Create a zip file that contains the required package and its dependencies.
 
-    * For private packages: zip the folder of the package and the folders of its dependencies.
+    * For private packages, zip the folder of the package and the folders of its dependencies.
     * For public packages, zip the files that were downloaded in the previous step.
     
     > [!NOTE]
@@ -230,19 +216,20 @@ download the package and its dependencies.
 
 Install the [Faker](https://pypi.org/project/Faker/) package that generates fake data.
 
-```kusto
+~~~kusto
 range ID from 1 to 3 step 1 
 | extend Name=''
-| evaluate python(typeof(*),
-    'from sandbox_utils import Zipackage\n'
-    'Zipackage.install("Faker.zip")\n'
-    'from faker import Faker\n'
-    'fake = Faker()\n'
-    'result = df\n'
-    'for i in range(df.shape[0]):\n'
-    '    result.loc[i, "Name"] = fake.name()\n',
+| evaluate python(typeof(*), ```if 1:
+    from sandbox_utils import Zipackage
+    Zipackage.install("Faker.zip")
+    from faker import Faker
+    fake = Faker()
+    result = df
+    for i in range(df.shape[0]):
+        result.loc[i, "Name"] = fake.name()
+    ```,
     external_artifacts=pack('faker.zip', 'https://artifacts.blob.core.windows.net/kusto/Faker.zip?*** REPLACE WITH YOUR SAS TOKEN ***'))
-```
+~~~
 
 | ID | Name         |
 |----|--------------|

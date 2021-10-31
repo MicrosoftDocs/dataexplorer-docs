@@ -13,7 +13,7 @@ ms.date: 06/23/2021
 
 This article describes commands used for creation and altering [cache policy](cachepolicy.md) 
 
-## Display the cache policy
+## Display the cache policy 
 
 The policy can be set on a database, a table or a [materialized view](materialized-views/materialized-view-overview.md), and is displayed by using one of the following
 commands:
@@ -27,8 +27,8 @@ commands:
 ```kusto
 .alter <entity_type> <database_or_table_or_materialized-view_name> policy caching 
       hot = <timespan> 
-      [, hot_window = datetime(*from*) .. datetime(*to*)] 
-      [, hot_window = datetime(*from*) .. datetime(*to*)] 
+      [, hot_window = datetime(from) .. datetime(to)] 
+      [, hot_window = datetime(from) .. datetime(to)] 
       ...
 ```
 
@@ -37,8 +37,8 @@ Altering cache policy for multiple tables (in the same database context):
 ```kusto
 .alter tables (table_name [, ...]) policy caching 
       hot = <timespan> 
-      [, hot_window = datetime(*from*) .. datetime(*to*)] 
-      [, hot_window = datetime(*from*) .. datetime(*to*)] 
+      [, hot_window = datetime(from) .. datetime(to)] 
+      [, hot_window = datetime(from) .. datetime(to)] 
 ```
 
 Arguments:
