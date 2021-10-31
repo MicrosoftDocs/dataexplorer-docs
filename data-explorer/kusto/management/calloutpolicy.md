@@ -33,16 +33,18 @@ Callout policy is composed of the following.
 
 The table shows a set of predefined callout policies that are preconfigured on all Azure Data Explorer clusters to enable callouts to select services.
 
-|Service      |Cloud        |Designation  |Permitted domains |
-|-------------|-------------|-------------|-------------|
-|Kusto |`Public Azure` |Cross cluster queries |`[a-z0-9]{3,22}\\.(\\w+\\.)?kusto\\.windows\\.net/?$` <br> `[a-z0-9]{3,22}\\.(\\w+\\.)?kustomfa\\.windows\\.net/?$` |
-|Kusto |`Black Forest` |Cross cluster queries |`[a-z0-9]{3,22}\\.(\\w+\\.)?kusto\\.cloudapi\\.de/?$` <br> `[a-z0-9]{3,22}\\.(\\w+\\.)?kustomfa\\.cloudapi\\.de/?$` |
-|Kusto |`Fairfax` |Cross cluster queries |`[a-z0-9]{3,22}\\.(\\w+\\.)?kusto\\.usgovcloudapi\\.net/?$` <br> `[a-z0-9]{3,22}\\.(\\w+\\.)?kustomfa\\.usgovcloudapi\\.net/?$` |
-|Kusto |`Mooncake` |Cross cluster queries |`[a-z0-9]{3,22}\\.(\\w+\\.)?.kusto\\.chinacloudapi\\.cn/?$` <br> `[a-z0-9]{3,22}\\.(\\w+\\.)?kustomfa\\.chinacloudapi\\.cn/?$` |
-|Azure DB |`Public Azure` |SQL requests |`[a-z0-9][a-z0-9\\-]{0,61}[a-z0-9]?\\.database\\.windows\\.net/?$`|
-|Azure DB |`Black Forest` |SQL requests |`[a-z0-9][a-z0-9\\-]{0,61}[a-z0-9]?\\.database\\.cloudapi\\.de/?$`|
-|Azure DB |`Fairfax` |SQL requests |`[a-z0-9][a-z0-9\\-]{0,61}[a-z0-9]?\\.database\\.usgovcloudapi\\.net/?$`|
-|Azure DB |`Mooncake` |SQL requests |`[a-z0-9][a-z0-9\\-]{0,61}[a-z0-9]?\\.database\\.chinacloudapi\\.cn/?$`|
+|Service      |Designation  |Permitted domains |
+|-------------|-------------|-------------|
+|Kusto |Cross cluster queries |`[a-z0-9]{3,22}\\.(\\w+\\.)?kusto\\.windows\\.net/?$` <br> `[a-z0-9]{3,22}\\.(\\w+\\.)?kustomfa\\.windows\\.net/?$` |
+|Azure DB |SQL requests |`[a-z0-9][a-z0-9\\-]{0,61}[a-z0-9]?\\.database\\.windows\\.net/?$`|
+
+More predefined policies may be observed with next query:
+
+```kusto
+.show cluster policy callout 
+| where EntityType == 'Cluster immutable policy'
+| project Policy
+```
 
 ## Control commands
 
