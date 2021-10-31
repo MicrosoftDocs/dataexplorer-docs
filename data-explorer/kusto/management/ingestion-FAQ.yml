@@ -21,11 +21,7 @@ sections:
       - question: Where can I view batching latency metrics?
         answer: |
           To view ingestion latency metrics, see [monitoring ingestion latency](../../monitor-batching-ingestion.md#view-the-ingestion-latency). The metrics `Stage Latency` and `Discovery Latency` show latencies in the ingestion process, and reveal if there are any long latencies.
-<<<<<<< HEAD
       - question: How can I shorten batching latencies? 
-=======
-      - question: How can I shorten batching latencies?
->>>>>>> 906feda5735ec507e198033d4741bfe07450b864
         answer: |
           Latencies can result from [several causes that can be addressed](batchingpolicy.md#batching-latencies), such as data backlogs, inefficient batching, batching very large amounts of uncompressed data, or ingesting very small amounts of data. 
       - question: How is batching data size calculated?
@@ -33,12 +29,7 @@ sections:
           The batching policy data size is set for uncompressed data. When ingesting compressed data, the [uncompressed data size is calculated](batchingpolicy.md#batching-data-size) from ingestion batching parameters, data about zip files, or rough calculations.
       - question: How can I improve ingestion with SDK?
         answer: |
-<<<<<<< HEAD
           When ingesting via SDK, you can use the ingestion [batching policy settings to improve performance](net-sdk-ingest-data.md). 
-=======
-          When ingesting via SDK, you can use the ‘Flush Immediately' ingestion property to skip the batching, but this is not recommended for large scale ingestion, as it can lead to poor performance. 
-          If you send compressed data Azure Data Explorer SDK, consider passing the Raw Data Size in the ingestion source options parameter to avoid a wrong estimation. 
->>>>>>> 906feda5735ec507e198033d4741bfe07450b864
           Try incrementally decreasing the size of data ingested in the table or database batching policy down towards 250MB and check if there is an improvement.
       - question: How can I tune Kusto Kafka Sink for better ingestion performance?
         answer: |
