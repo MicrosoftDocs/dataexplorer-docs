@@ -186,11 +186,6 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "data-explorer/kusto/management/batching-policy.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/show-batching-policy-command",
-      "redirect_document_id": false
-    },
-    {
       "source_path": "data-explorer/kusto/management/cache-policy.md",
       "redirect_url": "/azure/data-explorer/kusto/management/show-table-cache-policy-command",
       "redirect_document_id": false
