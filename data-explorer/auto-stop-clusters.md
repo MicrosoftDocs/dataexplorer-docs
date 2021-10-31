@@ -8,7 +8,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/11/2021
 ---
-# Automatic stop inactive Azure Data Explorer clusters (Preview) 
+# Automatic stop inactive Azure Data Explorer clusters 
 
 Azure Data Explorer clusters which have been *inactive* for a several days would be automatically stopped.
 
@@ -38,7 +38,26 @@ Azure Data Explorer clusters are created with `enableAutoStop = true` cluster pr
 This property can be set either on cluster creation or post creation.
 The value for this property can be set using [ARM Templates](/azure/templates/microsoft.kusto/clusters?tabs=json#trustedexternaltenant-object), [AZ CLI](/cli/azure/kusto/cluster?view=azure-cli-latest#az_kusto_cluster_update-optional-parameters), [PowerShell](/powershell/module/az.kusto/new-azkustocluster), or the [Azure Resource Explorer](https://resources.azure.com/). For more information, see [Azure Data Explorer cluster request body](/rest/api/azurerekusto/clusters/createorupdate#request-body). 
 
-## Azure portal - TODO!!!
+## Azure portal
+
+You can enable/disable automatic stop cluster while creating a new cluster.
+While creating a cluster using the steps in [Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md), in the **Configurations** tab, select **Auto-Stop cluster** > **On**.
+
+![Configurations.](media/auto-stop-clusters/auto-stop-cluster-creation.png)
+
+You can enable/disable Auto-Stop cluster after cluster was created:
+1. In the Azure portal, go to your Azure Data Explorer cluster.
+1. In **Settings**, select **Configurations**.
+1. In the **Configurations** pane, select **On**/**Off** to enable/disable **Auto-Stop cluster**.
+1. Select **Save**.
+
+![Configurations.](media/auto-stop-clusters/auto-stop-cluster-update.png)
+
+## Activity log (how I verify if my cluster was automatically stopped ) 
+When cluster is automatically stopped an Activity log is sent.
+To verify when and how the cluster was stopped, go to your Azure Data Explorer cluster in Azure portal, click on **Activity log** pane, 
+choose a timespan and search for **Stop Clusters** operation name.
+![Configurations.](media/auto-stop-clusters/auto-stop-cluster-activity-log.png)
 
 ## REST Example
 
@@ -67,7 +86,3 @@ PATCH https://management.azure.com/subscriptions/12345678-1234-1234-1234-1234567
   }
 }
 ```
-
-## Add Principals  
-
-After updating the `trustedExternalTenants` property, you will need to give cluster access to principals from the approved tenant(s) using the `.add` KQL command. For more information, see [Identities - AAD Tenants](./kusto/management/access-control/principals-and-identity-providers.md#aad-tenants).
