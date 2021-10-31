@@ -21,7 +21,7 @@ sections:
       - question: Where can I view batching latency metrics?
         answer: |
           To view ingestion latency metrics, see [monitoring ingestion latency](../../monitor-batching-ingestion.md#view-the-ingestion-latency). The metrics `Stage Latency` and `Discovery Latency` show latencies in the ingestion process, and reveal if there are any long latencies.
-      - question: How can I shorten batching latencies?
+      - question: How can I shorten batching latencies? 
         answer: |
           Latencies can result from [several causes that can be addressed](batchingpolicy.md#batching-latencies), such as data backlogs, inefficient batching, batching very large amounts of uncompressed data, or ingesting very small amounts of data. 
       - question: How is batching data size calculated?
