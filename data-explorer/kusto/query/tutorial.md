@@ -422,7 +422,7 @@ The query removes zero count entries:
 
 What ranges of durations do we find in different percentages of storms?
 
-To get this information, use the preceding query, but replace `render` with:
+To get this information, use the preceding query from [Plot a distribution](#plot-a-distribution), but replace `render` with:
 
 ```kusto
 | summarize percentiles(duration, 5, 20, 50, 80, 95)
