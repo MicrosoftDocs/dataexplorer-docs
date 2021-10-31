@@ -16,14 +16,16 @@ Cluster admins can manage the authorized domains for external calls, by updating
 
 Callout policies are being managed at cluster-level and are classified into the following types.
 * `kusto` - Controls Azure Data Explorer cross-cluster queries.
-* `sql` - Controls the [SQL plugin](../query/sqlrequestplugin.md) and the [mysql_request plugin](../query/mysqlrequest-plugin.md).
+* `sql` - Controls the [SQL plugin](../query/sqlrequestplugin.md).
+* `mysql` - Controls the [MySQL plugin](../query/mysqlrequest-plugin.md).
+* `azure_digital_twins` - Controls the [Azure Digital Twin plugin](../query/azure-digital-twins-query-request-plugin.md).
 * `cosmosdb` - Controls the [CosmosDB plugin](../query/cosmosdb-plugin.md).
 * `sandbox_artifacts` - Controls sandboxed plugins ([python](../query/pythonplugin.md) | [R](../query/rplugin.md)).
 * `external_data` - Controls access to external data through [external tables](../query/schema-entities/externaltables.md) or [externaldata](../query/externaldata-operator.md) operator.
 
 Callout policy is composed of the following.
 
-* **CalloutType** - Defines the type of the callout, and can be `kusto` or `sql`.
+* **CalloutType** - Defines the type of the callout, and can be one of above listed types.
 * **CalloutUriRegex** - Specifies the permitted Regex of the callout's domain
 * **CanCall** - Indicates whether the callout is permitted external calls.
 
@@ -33,15 +35,14 @@ The table shows a set of predefined callout policies that are preconfigured on a
 
 |Service      |Cloud        |Designation  |Permitted domains |
 |-------------|-------------|-------------|-------------|
-|Kusto |`Public Azure` |Cross cluster queries |`^[^.]*\.kusto\.windows\.net$` <br> `^[^.]*\.kustomfa\.windows\.net$` |
-|Kusto |`Black Forest` |Cross cluster queries |`^[^.]*\.kusto\.cloudapi\.de$` <br> `^[^.]*\.kustomfa\.cloudapi\.de$` |
-|Kusto |`Fairfax` |Cross cluster queries |`^[^.]*\.kusto\.usgovcloudapi\.net$` <br> `^[^.]*\.kustomfa\.usgovcloudapi\.net$` |
-|Kusto |`Mooncake` |Cross cluster queries |`^[^.]*\.kusto\.chinacloudapi\.cn$` <br> `^[^.]*\.kustomfa\.chinacloudapi\.cn$` |
-|Azure DB |`Public Azure` |SQL requests |`^[^.]*\.database\.windows\.net$` <br> `^[^.]*\.databasemfa\.windows\.net$` |
-|Azure DB |`Black Forest` |SQL requests |`^[^.]*\.database\.cloudapi\.de$` <br> `^[^.]*\.databasemfa\.cloudapi\.de$` |
-|Azure DB |`Fairfax` |SQL requests |`^[^.]*\.database\.usgovcloudapi\.net$` <br> `^[^.]*\.databasemfa\.usgovcloudapi\.net$` |
-|Azure DB |`Mooncake` |SQL requests |`^[^.]*\.database\.chinacloudapi\.cn$` <br> `^[^.]*\.databasemfa\.chinacloudapi\.cn$` |
-|Baselining service |Public Azure |Baselining requests |`baseliningsvc-int.azurewebsites.net` <br> `baseliningsvc-ppe.azurewebsites.net` <br> `baseliningsvc-prod.azurewebsites.net` |
+|Kusto |`Public Azure` |Cross cluster queries |`[a-z0-9]{3,22}\\.(\\w+\\.)?kusto\\.windows\\.net/?$` <br> `[a-z0-9]{3,22}\\.(\\w+\\.)?kustomfa\\.windows\\.net/?$` |
+|Kusto |`Black Forest` |Cross cluster queries |`[a-z0-9]{3,22}\\.(\\w+\\.)?kusto\\.cloudapi\\.de/?$` <br> `[a-z0-9]{3,22}\\.(\\w+\\.)?kustomfa\\.cloudapi\\.de/?$` |
+|Kusto |`Fairfax` |Cross cluster queries |`[a-z0-9]{3,22}\\.(\\w+\\.)?kusto\\.usgovcloudapi\\.net/?$` <br> `[a-z0-9]{3,22}\\.(\\w+\\.)?kustomfa\\.usgovcloudapi\\.net/?$` |
+|Kusto |`Mooncake` |Cross cluster queries |`[a-z0-9]{3,22}\\.(\\w+\\.)?.kusto\\.chinacloudapi\\.cn/?$` <br> `[a-z0-9]{3,22}\\.(\\w+\\.)?kustomfa\\.chinacloudapi\\.cn/?$` |
+|Azure DB |`Public Azure` |SQL requests |`[a-z0-9][a-z0-9\\-]{0,61}[a-z0-9]?\\.database\\.windows\\.net/?$`|
+|Azure DB |`Black Forest` |SQL requests |`[a-z0-9][a-z0-9\\-]{0,61}[a-z0-9]?\\.database\\.cloudapi\\.de/?$`|
+|Azure DB |`Fairfax` |SQL requests |`[a-z0-9][a-z0-9\\-]{0,61}[a-z0-9]?\\.database\\.usgovcloudapi\\.net/?$`|
+|Azure DB |`Mooncake` |SQL requests |`[a-z0-9][a-z0-9\\-]{0,61}[a-z0-9]?\\.database\\.chinacloudapi\\.cn/?$`|
 
 ## Control commands
 
@@ -56,13 +57,13 @@ The commands require [AllDatabasesAdmin](access-control/role-based-authorization
 **Alter callout policies**
 
 ```kusto
-.alter cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname.database.azure.com","CanCall": true}]'
+.alter cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname\\.database\\.azure\\.com/?$","CanCall": true}]'
 ```
 
 **Add a set of permitted callouts**
 
 ```kusto
-.alter-merge cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname.database.azure.com","CanCall": true}]'
+.alter-merge cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname\\.database\\.azure\\.com/?$","CanCall": true}]'
 ```
 
 **Delete all non-immutable callout policies**
