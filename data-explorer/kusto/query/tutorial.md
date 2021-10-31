@@ -396,18 +396,27 @@ Or, you can use `| render columnchart`:
 
 ## Percentages
 
-What is percentage of storms create injuries greater than a predetermined limit?
+What is the percentage of storm-related direct injuries from all injuries?
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| extend  duration = EndTime - StartTime
-| where duration > 0s
-| where duration < 3h
-| summarize event_count = count()
-| extend Percentage = round(100.0 * (duration) / toscalar(T | summarize sum(count)), 2)
-| render timechart
+| where (InjuriesDirect > 0) and (InjuriesIndirect > 0) 
+| extend Percentage = (  100 * InjuriesDirect / (InjuriesDirect + InjuriesIndirect) )
+| project Percentage, InjuriesDirect, InjuriesIndirect
 ```
+
+The query removes zero count entries:
+
+|Percentage|InjuriesDirect|InjuriesIndirect|
+|---|---|---|
+|50|1|1|
+|24|7|22|
+|77|7|2|
+|60|3|2|
+|50|3|3|
+|50|1|1|
+|80|4|1|
 
 ## Percentiles
 
