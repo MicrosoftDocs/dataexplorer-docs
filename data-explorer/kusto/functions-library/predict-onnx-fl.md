@@ -39,34 +39,34 @@ The function `predict_onnx_fl()` predicts using an existing trained machine lear
 For ad hoc usage, embed the code using the [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
+~~~kusto
 let predict_onnx_fl=(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
     let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
     let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
-    let code =
-    '\n'
-    'import binascii\n'
-    '\n'
-    'smodel = kargs["smodel"]\n'
-    'features_cols = kargs["features_cols"]\n'
-    'pred_col = kargs["pred_col"]\n'
-    'bmodel = binascii.unhexlify(smodel)\n'
-    '\n'
-    'features_cols = kargs["features_cols"]\n'
-    'pred_col = kargs["pred_col"]\n'
-    '\n'
-    'import onnxruntime as rt\n'
-    'sess = rt.InferenceSession(bmodel)\n'
-    'input_name = sess.get_inputs()[0].name\n'
-    'label_name = sess.get_outputs()[0].name\n'
-    'df1 = df[features_cols]\n'
-    'predictions = sess.run([label_name], {input_name: df1.values.astype(np.float32)})[0]\n'
-    '\n'
-    'result = df\n'
-    'result[pred_col] = pd.DataFrame(predictions, columns=[pred_col])'
-    '\n'
-    ;
+    let code = ```if 1:
+    
+    import binascii
+    
+    smodel = kargs["smodel"]
+    features_cols = kargs["features_cols"]
+    pred_col = kargs["pred_col"]
+    bmodel = binascii.unhexlify(smodel)
+    
+    features_cols = kargs["features_cols"]
+    pred_col = kargs["pred_col"]
+    
+    import onnxruntime as rt
+    sess = rt.InferenceSession(bmodel)
+    input_name = sess.get_inputs()[0].name
+    label_name = sess.get_outputs()[0].name
+    df1 = df[features_cols]
+    predictions = sess.run([label_name], {input_name: df1.values.astype(np.float32)})[0]
+    
+    result = df
+    result[pred_col] = pd.DataFrame(predictions, columns=[pred_col])
+    
+    ```;
     samples | evaluate python(typeof(*), code, kwargs)
 };
 //
@@ -81,7 +81,7 @@ OccupancyDetection
 | extend pred_Occupancy=bool(0)
 | invoke predict_onnx_fl(ML_Models, 'ONNX-Occupancy', pack_array('Temperature', 'Humidity', 'Light', 'CO2', 'HumidityRatio'), 'pred_Occupancy')
 | summarize n=count() by Occupancy, pred_Occupancy
-```
+~~~
 
 # [Persistent](#tab/persistent)
 
@@ -90,38 +90,38 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 ### One-time installation
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
+~~~kusto
 .create-or-alter function with (folder = "Packages\\ML", docstring = "Predict using ONNX model")
 predict_onnx_fl(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
     let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
     let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
-    let code =
-    '\n'
-    'import binascii\n'
-    '\n'
-    'smodel = kargs["smodel"]\n'
-    'features_cols = kargs["features_cols"]\n'
-    'pred_col = kargs["pred_col"]\n'
-    'bmodel = binascii.unhexlify(smodel)\n'
-    '\n'
-    'features_cols = kargs["features_cols"]\n'
-    'pred_col = kargs["pred_col"]\n'
-    '\n'
-    'import onnxruntime as rt\n'
-    'sess = rt.InferenceSession(bmodel)\n'
-    'input_name = sess.get_inputs()[0].name\n'
-    'label_name = sess.get_outputs()[0].name\n'
-    'df1 = df[features_cols]\n'
-    'predictions = sess.run([label_name], {input_name: df1.values.astype(np.float32)})[0]\n'
-    '\n'
-    'result = df\n'
-    'result[pred_col] = pd.DataFrame(predictions, columns=[pred_col])'
-    '\n'
-    ;
+    let code = ```if 1:
+    
+    import binascii
+    
+    smodel = kargs["smodel"]
+    features_cols = kargs["features_cols"]
+    pred_col = kargs["pred_col"]
+    bmodel = binascii.unhexlify(smodel)
+    
+    features_cols = kargs["features_cols"]
+    pred_col = kargs["pred_col"]
+    
+    import onnxruntime as rt
+    sess = rt.InferenceSession(bmodel)
+    input_name = sess.get_inputs()[0].name
+    label_name = sess.get_outputs()[0].name
+    df1 = df[features_cols]
+    predictions = sess.run([label_name], {input_name: df1.values.astype(np.float32)})[0]
+    
+    result = df
+    result[pred_col] = pd.DataFrame(predictions, columns=[pred_col])
+    
+    ```;
     samples | evaluate python(typeof(*), code, kwargs)
 }
-```
+~~~
 
 ### Usage
 
