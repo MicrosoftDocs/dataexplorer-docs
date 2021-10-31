@@ -26,7 +26,7 @@ Returns a JSON representation of the policy.
 Define permitted callouts for the cluster callout policy.
 
 ```kusto
-.alter cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname\\.database\\.azure.com/?$","CanCall": true}]'
+.alter cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname\\.database\\.azure\\.com/?$","CanCall": true}]'
 ```
 
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
