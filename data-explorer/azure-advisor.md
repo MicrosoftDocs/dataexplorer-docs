@@ -77,7 +77,7 @@ A cluster is considered unused if it has:
 
 * Small amount of data
 * No queries and ingestion events during the last 30 days
-* Low CPU usage during the last two days
+* Low CPU usage during the last 30 days
 * No followers
 
 When recommended to **consider deleting empty / unused clusters**, the recommended action is to delete the cluster.
@@ -89,7 +89,7 @@ The recommendation **stop Azure Data Explorer clusters to reduce cost and keep i
 Low activity is based on:
 
 * No queries and ingestion events during the last 5 days
-* Low CPU usage during the last two days
+* Low CPU usage during the last 5 days
 
 The recommendation is to stop the cluster to reduce cost but still preserve the data. If the data isn't needed, consider deleting the cluster to increase your savings.
 
