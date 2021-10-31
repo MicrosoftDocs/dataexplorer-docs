@@ -394,30 +394,6 @@ Or, you can use `| render columnchart`:
 
 :::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="Screenshot of a column chart for event count timechart by duration.":::
 
-## Percentages
-
-What is the percentage of storm-related direct injuries from all injuries?
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| where (InjuriesDirect > 0) and (InjuriesIndirect > 0) 
-| extend Percentage = (  100 * InjuriesDirect / (InjuriesDirect + InjuriesIndirect) )
-| project Percentage, InjuriesDirect, InjuriesIndirect
-```
-
-The query removes zero count entries:
-
-|Percentage|InjuriesDirect|InjuriesIndirect|
-|---|---|---|
-|50|1|1|
-|24|7|22|
-|77|7|2|
-|60|3|2|
-|50|3|3|
-|50|1|1|
-|80|4|1|
-
 ## Percentiles
 
 What ranges of durations do we find in different percentages of storms?
@@ -453,6 +429,30 @@ StormEvents
 ```
 
 :::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state.":::
+
+## Percentages
+
+What is the percentage of storm-related direct injuries from all injuries?
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents
+| where (InjuriesDirect > 0) and (InjuriesIndirect > 0) 
+| extend Percentage = (  100 * InjuriesDirect / (InjuriesDirect + InjuriesIndirect) )
+| project Percentage, InjuriesDirect, InjuriesIndirect
+```
+
+The query removes zero count entries:
+
+|Percentage|InjuriesDirect|InjuriesIndirect|
+|---|---|---|
+|50|1|1|
+|24|7|22|
+|77|7|2|
+|60|3|2|
+|50|3|3|
+|50|1|1|
+|80|4|1|
 
 ## Assign a result to a variable: *let*
 
