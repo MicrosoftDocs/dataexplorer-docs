@@ -72,13 +72,17 @@ Where *CallerCredentials* indicates the credentials used to access the storage a
   resource for a limited time.
 * Append the Storage account key (`;ljkAkl...==`). Use this method when Kusto needs to access the resource on an ongoing basis.
 * Append a base-64 encoded AAD access token (`;token=AadToken`). Make sure the token is for the resource `https://storage.azure.com/`.
-* Append `;impersonate` to the URI. Kusto will use the requestor's principal identity and impersonate it to access the resource. Principal needs to have the appropriate RBAC role assignments to be able to perform the read/write operations, as documented [here](/azure/storage/blobs/data-lake-storage-access-control). (For example, for read operations assign `Storage Blob Data Reader` role).
+* Append `;impersonate` to the URI. Kusto will use the requestor's principal identity and impersonate it to access the resource. Principal needs to have the appropriate RBAC role assignments to be able to perform the read/write operations, as documented [here](/azure/storage/blobs/data-lake-storage-access-control).
 
 Examples (note that this is showing obfuscated string literals, so as not to expose the account key, SAS or token):
 
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;<storage_account_key_text, ends with '=='>"`
+
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"` 
+
 `h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;token=<aad_token>"` 
+
+`h"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;impersonate"` 
 
 
 ### Azure Data Lake Storage Gen2
