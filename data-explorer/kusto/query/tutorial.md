@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/08/2020
+ms.date: 11/01/2021
 ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
@@ -430,7 +430,7 @@ StormEvents
 
 :::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state.":::
 
-## Percentage
+## Percentages
 
 Using the StormEvents table, we can calculate the percentage of direct injuries from all injuries.
 
@@ -439,9 +439,9 @@ Using the StormEvents table, we can calculate the percentage of direct injuries 
 StormEvents
 | where (InjuriesDirect > 0) and (InjuriesIndirect > 0) 
 | extend Percentage = (  100 * InjuriesDirect / (InjuriesDirect + InjuriesIndirect) )
-| project Percentage, InjuriesDirect, InjuriesIndirect
+| project StartTime, InjuriesDirect, InjuriesIndirect, Percentage
 ```
-
+ 
 The query removes zero count entries:
 
 |StartTime|InjuriesDirect|InjuriesIndirect|Percentage
