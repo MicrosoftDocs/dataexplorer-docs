@@ -15,7 +15,7 @@ Display a table's [row_level_security policy](rowlevelsecuritypolicy.md). The Ro
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `row-level-security` 
+`.show` `table` *TableName* `policy` `row-level-security` 
 
 ## Arguments
 
