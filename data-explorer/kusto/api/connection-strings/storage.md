@@ -68,10 +68,11 @@ The format of the URI is:
 `https://`*StorageAccountName*`.blob.core.windows.net/`*Container*[`/`*BlobName*][*CallerCredentials*]
 
 Where *CallerCredentials* indicates the credentials used to access the storage and can be one of the following:
-* Shared Access (SAS) key, using the Azure Blob Storage's standard query (`?sig=...`). Use this method when Kusto needs to access the
+* Append the Shared Access (SAS) key, using the Azure Blob Storage's standard query (`?sig=...`). Use this method when Kusto needs to access the
   resource for a limited time.
-* Storage account key (`;ljkAkl...==`). Use this method when Kusto needs to access the resource on an ongoing basis.
-* A base-64 encoded AAD access token (`;token=AadToken`). Make sure the token is for the resource `https://storage.azure.com/`.
+* Append the Storage account key (`;ljkAkl...==`). Use this method when Kusto needs to access the resource on an ongoing basis.
+* Append a base-64 encoded AAD access token (`;token=AadToken`). Make sure the token is for the resource `https://storage.azure.com/`.
+* Append `;impersonate` to the URI. Kusto will use the requestor's principal identity and impersonate it to access the resource. Principal needs to have the appropriate RBAC role assignments to be able to perform the read/write operations, as documented [here](/azure/storage/blobs/data-lake-storage-access-control). (For example, for read operations assign `Storage Blob Data Reader` role).
 
 Examples (note that this is showing obfuscated string literals, so as not to expose the account key, SAS or token):
 
