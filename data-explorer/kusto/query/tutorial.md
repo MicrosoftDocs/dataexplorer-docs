@@ -430,9 +430,9 @@ StormEvents
 
 :::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state.":::
 
-## Percentages
+## Percentage
 
-What is the percentage of storm-related direct injuries from all injuries?
+Using the StormEvents table, we can calculate the percentage of direct injuries from all injuries.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -444,15 +444,15 @@ StormEvents
 
 The query removes zero count entries:
 
-|Percentage|InjuriesDirect|InjuriesIndirect|
-|---|---|---|
-|50|1|1|
-|24|7|22|
-|77|7|2|
-|60|3|2|
-|50|3|3|
-|50|1|1|
-|80|4|1|
+|StartTime|InjuriesDirect|InjuriesIndirect|Percentage
+|---|---|---|---|
+|2007-05-01T16:50:00Z|1|1|50|
+|2007-08-10T21:25:00Z|7|2|77|
+|2007-08-23T12:05:00Z|7|22|24|
+|2007-08-23T14:20:00Z|3|2|60|
+|2007-09-10T13:45:00Z|4|1|80|
+|2007-12-06T08:30:00Z|3|3|50|
+|2007-12-08T12:00:00Z|1|1|50|
 
 ## Assign a result to a variable: *let*
 
