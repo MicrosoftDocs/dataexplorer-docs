@@ -17,7 +17,7 @@ For more information about running queries on the row level security policy, see
 
 ## Syntax
 
-`.display` `materialized-view` *MaterializedViewName* `policy` `row_level_security`
+`.show` `materialized-view` *MaterializedViewName* `policy` `row_level_security`
 
 ## Arguments
 
