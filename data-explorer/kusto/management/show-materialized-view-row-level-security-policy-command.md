@@ -17,7 +17,7 @@ For more information about running queries on the row level security policy, see
 
 ## Syntax
 
-`.display` `materialized-view` *MaterializedViewName* `policy` `row-level-security` [`enable` | `disable`]
+`.show` `materialized-view` *MaterializedViewName* `policy` `row_level_security`
 
 ## Arguments
 
@@ -32,5 +32,5 @@ Returns a JSON representation of the policy.
 Display the policy at the materialized-view level:
 
 ```kusto
-.show materialized-view MyMaterializeView policy row-level-security
+.show materialized-view MyMaterializedView policy row_level_security
 ```
