@@ -32,5 +32,5 @@ Returns a JSON representation of the policy.
 Display the policy at the materialized-view level:
 
 ```kusto
-.show materialized-view MyMaterializeView policy row_level_security
+.show materialized-view MyMaterializedView policy row_level_security
 ```
