@@ -31,14 +31,14 @@ Callout policy is composed of the following.
 
 ## Predefined callout policies
 
-The table shows a set of predefined callout policies that are preconfigured on all Azure Data Explorer clusters to enable callouts to select services.
+The table shows a set of predefined callout policies that are preconfigured on Azure Data Explorer clusters to enable callouts to selected services.
 
 |Service      |Designation  |Permitted domains |
 |-------------|-------------|-------------|
 |Kusto |Cross cluster queries |`[a-z0-9]{3,22}\\.(\\w+\\.)?kusto\\.windows\\.net/?$` <br> `[a-z0-9]{3,22}\\.(\\w+\\.)?kustomfa\\.windows\\.net/?$` |
 |Azure DB |SQL requests |`[a-z0-9][a-z0-9\\-]{0,61}[a-z0-9]?\\.database\\.windows\\.net/?$`|
 
-More predefined policies may be observed with next query:
+More predefined policies on your cluster may be observed with next query:
 
 ```kusto
 .show cluster policy callout 
