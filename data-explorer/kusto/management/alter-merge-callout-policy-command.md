@@ -20,5 +20,5 @@ Enables or disables a cluster's [callout policy](calloutpolicy.md). Azure Data E
 ### Examples
 
 ```kusto
-.alter-merge cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname.database.azure.com","CanCall": true}]'
+.alter-merge cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname\\.database\\.azure\\.com/?$","CanCall": true}]'
 ```
