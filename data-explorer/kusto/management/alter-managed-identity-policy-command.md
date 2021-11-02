@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: slneimer
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/31/2021
+ms.date: 11/03/2021
 ---
 # .alter managed_identity policy
 
-This command sets the ManagedIdentity policy of the cluster or the specified database, overriding the existing policy.
+The command sets the ManagedIdentity policy of the cluster or the specified database, overriding the existing policy.
 
 > [!NOTE]
 > Managed identities should be assigned to the cluster (see [instructions](../../managed-identities.md)) before you can assign them to the ManagedIdentity policy.
@@ -34,7 +34,7 @@ Each ManagedIdentity policy object defines two properties. Other properties are 
 
 ~~~kusto
 {
-  "ObjectId": "",
+  "ObjectId": "d99c9846-1615-a2f9-a96f-78e136ba93eb",
   "AllowedUsages": "NativeIngestion, ExternalTable"
 }
 ~~~
@@ -43,8 +43,8 @@ Where:
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *ObjectId* | GUID | &check; | Either the actual object ID of the managed identity or the reserved keyword `system` to reference the System Managed Identity of the cluster on which the command is run. |
-| *AllowedUsages* | string | &check; | List of comma-separated allowed usages for the managed identity. Possible values include:<br />- "DataConnection": Data connections to an Event Hub or an Event Grid can be created authenticated using the specified managed identity<br />- "NativeIngestion": Native ingestions from an external source (for example, Blob) using Data Explorer's SDK and authenticated using the specified managed identity<br />- "ExternalTable": External tables using connection strings configued with a managed identity. Data Explorer uses the configured managed identity to authenticate<br />- "All": All current and future usages are allowed |
+| *ObjectId* | string | &check; | Either the actual object ID of the managed identity or the reserved keyword `system` to reference the System Managed Identity of the cluster on which the command is run. |
+| *AllowedUsages* | string | &check; | List of comma-separated allowed usages for the managed identity. Possible values are:<br />- "DataConnection": Data connections to an Event Hub or an Event Grid can be created authenticated using the specified managed identity<br />- "NativeIngestion": Native ingestions from an external source (for example, Blob) using Data Explorer's SDK and authenticated using the specified managed identity<br />- "ExternalTable": External tables using connection strings configured with a managed identity. Data Explorer uses the configured managed identity to authenticate<br />- "All": All current and future usages are allowed |
 
 ### Getting the managed identity object ID
 
@@ -65,7 +65,7 @@ If any of the specified managed identities is not assigned to the cluster, an er
 .alter database db policy managed_identity ```
 [
   {
-    "ObjectId": "d9989846-1715-42f9-a97f-78e077b693ea",
+    "ObjectId": "d99c9846-1615-a2f9-a96f-78e136ba93eb",
     "AllowedUsages": "NativeIngestion, ExternalTable"
   }
 ]
