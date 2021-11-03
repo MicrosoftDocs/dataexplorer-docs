@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/13/2021
+ms.date: 11/02/2021
 ---
 # What's new in Azure Data Explorer documentation
 
@@ -21,37 +21,25 @@ This section lists the major changes to docs during October 2021.
 | Article title | Description |
 |--|--|
 | [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
-| [Create an external table using the Web UI wizard](external-table.md) | Updated article. New UI
-| [Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. New UI.
-| [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md) | Updated article. New UI
-| [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md) | Updated article. New UI
-| [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. New UI
 
 ### Query
 
 | Article title | Description |
 |--|--|
 | [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string. 
-| [take_any() (aggregation function)](kusto/query/take-any-aggfunction.md) | New article. Replaces any().
-| [take_anyif() (aggregation function)](kusto/query/take-anyif-aggfunction.md) | New article. Replaces anyif().
-| [replace_regex()](kusto/query/replace-regex-function.md) | Updated article. Replace() function changed to replace_regex().
 
 ### Management
 
 | Article title | Description |
 |--|--|
 | [.alter extent tags retention policy](kusto/management/alter-extent-tags-retention-policy.md) | New article.
-| [.delete extent tags retention policy](kusto/management/delete-extent-tags-retention-policy.md) | New article.
-| [Extent tags retention policy](kusto/management/extent-tags-retention-policy.md) | New article. The extent tags retention policy controls the mechanism that automatically removes [extent tags](kusto/management/extents-overview.md#extent-tagging) from tables, based on the age of the extents.
-| [.show extent tags retention policy](kusto/management/show-extent-tags-retention-policy.md) | New article.
-| [Stored query results](kusto/management/stored-query-results.md) | Updated article. General Availability.
+
 
 ### Functions library
 
 | Article title | Description |
 |--|--|
- [two_sample_t_test_fl()](kusto/functions-library/two-sample-t-test-fl.md) | New article. The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test). |
-
+|[two_sample_t_test_fl()](kusto/functions-library/two-sample-t-test-fl.md) | New article. The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test]
 
 ## September 2021
 
@@ -62,20 +50,12 @@ This section lists the major changes to docs during September 2021.
 | Article title | Description |
 |--|--|
 | [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
-| [Create an external table using the Web UI wizard](external-table.md) | Updated article. New UI
-| [Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. New UI.
-| [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md) | Updated article. New UI
-| [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md) | Updated article. New UI
-| [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. New UI
 
 ### Query
 
 | Article title | Description |
 |--|--|
 | [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string. 
-| [take_any() (aggregation function)](kusto/query/take-any-aggfunction.md) | New article. Replaces any().
-| [take_anyif() (aggregation function)](kusto/query/take-anyif-aggfunction.md) | New article. Replaces anyif().
-| [replace_regex()](kusto/query/replace-regex-function.md) | Updated article. Replace() function changed to replace_regex().
 
 ### Management
 
@@ -83,16 +63,12 @@ This section lists the major changes to docs during September 2021.
 |--|--|
 | [.alter extent tags retention policy](kusto/management/alter-extent-tags-retention-policy.md) | New article.
 | [.delete extent tags retention policy](kusto/management/delete-extent-tags-retention-policy.md) | New article.
-| [Extent tags retention policy](kusto/management/extent-tags-retention-policy.md) | New article. The extent tags retention policy controls the mechanism that automatically removes [extent tags](kusto/management/extents-overview.md#extent-tagging) from tables, based on the age of the extents.
-| [.show extent tags retention policy](kusto/management/show-extent-tags-retention-policy.md) | New article.
-| [Stored query results](kusto/management/stored-query-results.md) | Updated article. General Availability.
 
 ### Functions library
 
 | Article title | Description |
 |--|--|
- [two_sample_t_test_fl()](kusto/functions-library/two-sample-t-test-fl.md) | New article. The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test). |
-
+| [two_sample_t_test_fl()](kusto/functions-library/two-sample-t-test-fl.md) | New article. The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test). 
 
 ## August 2021
 
@@ -110,27 +86,29 @@ This section lists the major changes to docs during August 2021.
 
 | Article title | Description |
 |--|--|
-| [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string. 
-| [take_any() (aggregation function)](kusto/query/take-any-aggfunction.md) | New article. Replaces any().
-| [take_anyif() (aggregation function)](kusto/query/take-anyif-aggfunction.md) | New article. Replaces anyif().
-| [replace_regex()](kusto/query/replace-regex-function.md) | Updated article. Replace() function changed to replace_regex().
+| [series_pow()](/azure/data-explorer/kusto/query/series-powfunction.md)| New article. Calculates the element-wise power of two numeric series inputs. 
+| [Aggregation function types at a glance](/azure/data-explorer/kusto/query/aggregation-functions.md) | New article. Lists aggregation functions, which perform a calculation on a set of values and return a single value.
+| [Scalar function types at a glance](/azure/data-explorer/kusto/query/scalarfunctions.md) | Updated article. Updated aggregation function and added series_pow.
+| [materialized_view() function](/azure/data-explorer/kusto/query/materialized-view-function.md) | Updated article. Updated aggregation function.
 
 ### Management
 
 | Article title | Description |
 |--|--|
-| [.alter extent tags retention policy](kusto/management/alter-extent-tags-retention-policy.md) | New article.
-| [.delete extent tags retention policy](kusto/management/delete-extent-tags-retention-policy.md) | New article.
-| [Extent tags retention policy](kusto/management/extent-tags-retention-policy.md) | New article. The extent tags retention policy controls the mechanism that automatically removes [extent tags](kusto/management/extents-overview.md#extent-tagging) from tables, based on the age of the extents.
-| [.show extent tags retention policy](kusto/management/show-extent-tags-retention-policy.md) | New article.
-| [Stored query results](kusto/management/stored-query-results.md) | Updated article. General Availability.
+| [.alter query weak consistency policy](/azure/data-explorer/kusto/management/alter-query-weak-consistency-policy.md) | New article.
+| [Query weak consistency policy](/azure/data-explorer/kusto/management/query-weak-consistency-policy.md) | New article.
+| [.show query weak consistency policy](/azure/data-explorer/kusto/management/show-query-weak-consistency-policy.md) | New article.
 
 ### Functions library
 
 | Article title | Description |
 |--|--|
-| [pair_probabilities_fl()](/azure/data-explorer/kusto/functions-library/pair-probabilities-fl.md) | New article. The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test). |
-
+| [pair_probabilities_fl()](/azure/data-explorer/kusto/functions-library/pair-probabilities-fl.md) | New article. The function `pair_probabilities_fl()`calculates probabilities and metrics.
+| [bartlett_test_fl()](/azure/data-explorer/kusto/functions-library/bartlett-test-fl.md) | New article. The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
+| [levene_test_fl()](/azure/data-explorer/kusto/functions-library/levene-test-fl.md) | New article. The function `levene_test_fl()` performs the [Levene Test](https://en.wikipedia.org/wiki/Levene%27s_test).
+| [mann_whitney_u_test_fl()](/azure/data-explorer/kusto/functions-library/mann-whitney-u-test-fl.md) | New article. The function `mann_whitney_u_test_fl()` performs the [Mann-Whitney U Test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test).
+| [wilcoxon_test_fl()](/azure/data-explorer/kusto/functions-library/wilcoxon-test-fl.md) | New article. The function `wilcoxon_test_fl()` performs the [Wilcoxon Test](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test).
+| [Functions library](/azure/data-explorer/kusto/functions-library/functions-library.md) | Updated article. Added [pair_probabilities_fl()](pair-probabilities-fl.md), [normality_test_fl](kusto/functions-library/normality-test-fl.md).
 
 ## July 2021
 
@@ -443,94 +421,6 @@ Article title | Description
 ---|---
 [kmeans_fl()](./kusto/functions-library/kmeans-fl.md) | New article.  The function `kmeans_fl()` clusterizes a dataset using the [k-means algorithm](https://en.wikipedia.org/wiki/K-means_clustering).
 [series_dot_product_fl()](./kusto/functions-library/series-dot-product-fl.md) | New article. Calculates the dot product of two numerical vectors.
-
-## September 2020
-
-This section lists the major changes to docs during September 2020.
-
-### General
-
- Article title | Description
----|---
-[Create a table in Azure Data Explorer (preview)](one-click-table.md) | New article.  The following article shows how to create a table and schema mapping quickly and easily using the Azure Data Explorer Web UI.
-[Enable isolated compute on your Azure Data Explorer cluster](isolated-compute.md) | New article. Isolated compute virtual machines (VMs) enable customers to run their workload in a hardware isolated environment dedicated to single customer.
-[Use Azure Advisor recommendations to optimize your Azure Data Explorer cluster (Preview)](azure-advisor.md) | New article.  Azure Advisor analyzes the Azure Data Explorer cluster configurations and usage telemetry and offers personalized and actionable recommendations to help you optimize your cluster.
-[Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md) |New article. This document details the different visual types and describes various options that are available to dashboard users to customize their visuals.
-| [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network (preview)](vnet-create-private-endpoint.md) | Updated article. General availability (GA).
-| [Visualize data from Azure Data Explorer in Grafana](grafana.md) | Updated article. Updated with new capabilities.
-| [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md) <br> [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) | Updated articles. Updated with new capabilities.
-
-### Query
-
- Article title | Description
----|---
-[zlib_compress_to_base64_string()](./kusto/query/zlib-base64-compress.md) | New article.  Performs zlib compression and encodes the result to base64.
-[zlib_decompress_from_base64_string()](./kusto/query/zlib-base64-decompress.md) |New article.  Decodes the input string from base64 and performs zlib decompression.
-[cosmosdb_sql_request plugin](./kusto/query/cosmosdb-plugin.md) | New article. The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network endpoint and returns the results of the query.
-[materialized_view() function](./kusto/query/materialized-view-function.md) |New article.  References the materialized part of a [materialized view](kusto/management/materialized-views/materialized-view-overview.md).
-| [geo_distance_point_to_line()](./kusto/query/geo-distance-point-to-line-function.md) | Updated article. Add multiline support docs.
-|[geo_line_densify()](./kusto/query/geo-line-densify-function.md)| Updated article. Add multiline support docs. |
-
-### Management
-
- Article title | Description
----|---
-[.create materialized-view](./kusto/management/materialized-views/materialized-view-create.md) | New article.  A [materialized view](kusto/management/materialized-views/materialized-view-overview.md) is an aggregation query over a source table, representing a single summarize statement.
-[Materialized views (preview)](./kusto/management/materialized-views/materialized-view-overview.md) | New article.  [Materialized views](kusto/query/materialized-view-function.md) expose an *aggregation* query over a source table.
-[.alter materialized-view](./kusto/management/materialized-views/materialized-view-alter.md) | New article. Altering the [materialized view](kusto/management/materialized-views/materialized-view-overview.md) can be used for changing the query of a materialized view, while preserving the existing data in the view.
-[.disable .enable materialized-view](./kusto/management/materialized-views/materialized-view-enable-disable.md) | New article. Describes how to disable a materialized view.
-[.drop materialized-view](./kusto/management/materialized-views/materialized-view-drop.md) | New article. Drops a materialized view.
-[.show materialized-views commands](./kusto/management/materialized-views/materialized-view-show-commands.md) | New article. The following show commands display information about [materialized views](kusto/management/materialized-views/materialized-view-overview.md).
-
-### Functions library
-
- Article title | Description
----|---
-[Functions library](./kusto/functions-library/functions-library.md) | New article. The following article contains a categorized list of [UDF (user-defined functions)](kusto/query/functions/user-defined-functions.md).
-
-### API
-
- Article title | Description
----|---
-[Azure Data Explorer Golang SDK](./kusto/api/golang/kusto-golang-client-library.md) | New article. Azure Data Explorer Go Client library provides the capability to query, control, and ingest into Azure Data Explorer clusters using Go.
-[Ingestion without Kusto.Ingest Library](./kusto/api/netfx/kusto-ingest-client-rest.md) | New article. The Kusto.Ingest library is preferred for ingesting data to Azure Data Explorer. However, you can still achieve almost the same functionality, without being dependent on the Kusto.Ingest package.
-
-## August 2020
-
-This section lists the major changes to docs during August 2020.
-
-### General
-
- Article title | Description
----|---
-[Enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer](double-encryption.md) | New article. If you require a higher level of assurance that your data is secure, you can also enable [Azure Storage infrastructure level encryption](/azure/storage/common/infrastructure-encryption-enable), also known as double encryption.
-[Ingest data using the Azure Data Explorer Go SDK](go-ingest-data.md) | New article. You can use the [Go SDK](https://github.com/Azure/azure-kusto-go) to ingest, control, and query data in Azure Data Explorer clusters.
-[Business continuity and disaster recovery overview](business-continuity-overview.md) | New article. Business continuity and disaster recovery in Azure Data Explorer enables your business to continue operating in the face of a disruption.
-[Connect to Event Grid](ingest-data-event-grid-overview.md) | New article. Event Grid ingestion is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur.
-[Create business continuity and disaster recovery solutions with Azure Data Explorer](business-continuity-create-solution.md) | New article. This article details how you can prepare for an Azure regional outage by replicating your Azure Data Explorer resources, management, and ingestion in different Azure regions.
-
-### Query
-
- Article title | Description
----|---
-[series_fft()](./kusto/query/series-fft-function.md) | New article. Applies the Fast Fourier Transform (FFT) on a series.
-[series_ifft()](./kusto/query/series-ifft-function.md) | New article. Applies the Inverse Fast Fourier Transform (IFFT) on a series.
-[dynamic_to_json()](./kusto/query/dynamic-to-json-function.md) | New article. Converts `dynamic` input to a string representation.
-[format_ipv4()](./kusto/query/format-ipv4-function.md) | New article. Parses input with a netmask and returns string representing IPv4 address.
-[format_ipv4_mask()](./kusto/query/format-ipv4-mask-function.md) | New article. Parses input with a netmask and returns string representing IPv4 address as CIDR notation.
-
-### Management
-
- Article title | Description
----|----
-[Create or alter continuous export](./kusto/management/data-export/create-alter-continuous.md) | New article. Creates or alters a continuous export job.
-[Disable or enable continuous export](./kusto/management/data-export/disable-enable-continuous.md) | New article. Disables or enables the continuous-export job.
-[Drop continuous export](./kusto/management/data-export/drop-continuous-export.md) | New article. Drops a continuous-export job.
-[Show continuous export artifacts](./kusto/management/data-export/show-continuous-artifacts.md) | New article. Returns all artifacts exported by the continuous-export in all runs. Filter the results by the Timestamp column in the command to view only records of interest.
-[Show continuous export](./kusto/management/data-export/show-continuous-export.md) | New article. Returns the continuous export properties of *ContinuousExport Name*.
-[Show continuous export failures](./kusto/management/data-export/show-continuous-failures.md) | New article. Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest.
-| [Row Level Security](kusto/management/rowlevelsecuritypolicy.md) | Updated article. How to produce error for unauthorized access.
-|[Create and alter Azure Storage external tables](./kusto/management/external-tables-azurestorage-azuredatalake.md) <br> <br> [Create and alter SQL Server external tables](./kusto/management/external-sql-tables.md) | Updated articles. New command option `.create-or-alter`.
 
 ## Next steps
 
