@@ -1,5 +1,5 @@
 ---
-title: Automatic stop Azure Data Explorer
+title: Automatic stop of inactive clusters in Azure Data Explorer
 description: Learn when your cluster will be stopped using the Automatic stop feature, and how to enable/disable the Automatic stop.
 author: orspod
 ms.author: orspodek
@@ -8,17 +8,17 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 11/03/2021
 ---
-# Automatic stop for inactive Azure Data Explorer clusters
+# Automatic stop of inactive Azure Data Explorer clusters
 
-Azure Data Explorer clusters which have been *inactive* for a specified time interval are automatically stopped. Inactivity is defined by having no data ingestion or queries, or cluster average CPU below a certain threshold.
+Azure Data Explorer clusters that have been *inactive* for a specified time interval are automatically stopped. Inactivity is defined by having no data ingestion or queries, or cluster average CPU below a certain threshold.
 
 Automatic stop (Auto-Stop) happens on the following schedule:
 
-First, you will receive X days of recommendations to stop the cluster through Azure Advisor. For more information about these recommendations, see [Cost recommendations](azure-advisor.md#cost-recommendations).
+First, you'll receive X days of recommendations to stop the cluster through Azure Advisor. For more information about these recommendations, see [Cost recommendations](azure-advisor.md#cost-recommendations).
 * If the inactive cluster has a small amount or no data, it's stopped after five days.
 * If the inactive cluster has data ingested, it's stopped after 10 days.
 
-Cluster behavior is not automatically resumed. To restart the cluster, do so manually.
+Cluster behavior isn't automatically resumed. To restart the cluster, do so manually.
 
 > [!NOTE]
 > Leader clusters aren't automatically stopped. For more information, see [follower databases](follower.md).
