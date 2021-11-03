@@ -5,7 +5,7 @@ metadata:
   ms.date: 10/21/2021
 title: Common questions about Azure Data Explorer ingestion
 summary: This article answers commonly asked questions about Azure Data Explorer ingestion.
-sections:
+sections: 
   - name: Batching and data latencies
     questions:
       - question: How does batching affect my data?

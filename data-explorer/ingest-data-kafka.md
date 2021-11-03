@@ -354,13 +354,11 @@ az kusto database delete -n <database name> --cluster-name <cluster name> -g <re
 
 ## Tuning Kafka Sink connectors
 
-* The [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) connector should be tuned to work together with the [ingestion batching policy](kusto/management/batchingpolicy.md). 
-* There will be two batching policies running, and the batching size should be set to up to 1G. Ensure that the combined batching times suits your ingestion needs.
-* Try tuning the Kafka Sink size limit `flush.size.bytes` starting from 1MB, moving up or down in increments of 10 or 100.
-* For the ingestion batching policy, set the time limit to the highest number of seconds you can accept, and the number of items to at least 1000. Set batching size at 1G and increase by 100MB increments if needed.
-* Try increasing the Kafka Sink batching time if not enough data accumulates in each batch. 
-* You can scale by adding instances and partitions. Increase `tasks.max` to the number of partitions. You will want to increase partitions as long as you have enough data so that you produce blobs the size of the `flush.size.bytes` settings. If blobs are smaller than this size, batches are processed according to the batching time limit, meaning that the partition isn't receiving enough throughput. Be aware, however, that a large number of partitions means more processing overhead.
+Tune the [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) connector to work with the [ingestion batching policy](kusto/management/batchingpolicy.md):
 
+* Tune the Kafka Sink `flush.size.bytes` size limit starting from 1MB, with increments up or down of 10 or 100. 
+* When using Kafka Sink, two batching policies run. Ensure that the combined batching time is adequate. Increase batching time if not enough data accumulates per batch. Set the item number to 1000 or more. Set batching size at 1G and increase by 100MB increments as needed.
+* You can scale by adding instances and partitions. Increase `tasks.max` to the number of partitions. Create a partition if you have enough data to produce a blob the size of the `flush.size.bytes` setting. If the blob is smaller, the batch is processed when it reaches the time limit, so the partition will not receive enough throughput. A large number of partitions means more processing overhead.
 
 ## Next Steps
 

@@ -19,7 +19,10 @@ This sort of batching reduces the resources consumed by the ingestion process, a
 There is a downside, however, to doing batching before ingestion, which is the introduction of a forced delay, so that the end-to-end time from requesting the ingestion of data until it's ready for query is larger.
 
 To allow control of this trade-off, use the [`IngestionBatching`](batching-policy.md) policy.
-This policy is applied to queued ingestion only, and provides the maximum forced delay to allow when batching small blobs together.
+This policy is applied to queued ingestion only, and provides the maximum forced delay to allow when batching small blobs together. See also:
+
+* [IngestionBatching policy commands reference](../management/batching-policy.md)
+* [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)
 
 ## Details
 
@@ -57,7 +60,7 @@ The following lists show all possible types of triggers to batch sealing. The ba
 * `SingleBlob_IngestByTag`: Single blob ingestion because ['ingest-by'](extents-overview.md#ingest-by-extent-tags) tag was set
 * `SingleBlob_SizeUnknown`: Single blob ingestion because blob size is unknown
 
-### Other
+### System flush
 
 `SystemFlush`: System had to flush the data, for example due to cluster scaling or internal reset of system components
 
@@ -71,15 +74,12 @@ The batching policy data size is set for uncompressed data. When ingesting compr
 
 ## Batching latencies
 
-Latencies can result from: 
+Latencies can result from a number of causes that can be addressed using batching policy settings. 
 
-* Data latency matching the time-based ingestion policy, so not enough data is fed to the table to pass the data-size or item-count limit and trigger the batch to be ingested. Try reducing the time.
-* Inefficient batching - if you ingest a large number of very small files, it could slow down ingestion and reduce performance. Try increasing the size of the source files. If you use Kusto Kafka Sink, configure it to send data to Kusto in ~100KB chunks or higher. Additionally, in the case of many small files, try increasing the number of files in each batch (up to 2000) by altering the database or table ingestion policy.  
-* Batching a large amount of uncompressed data can degrade performance - Azure Data Explorer is optimized to ingest 1GB of uncompressed data in each batch. 
-* Ingestion jobs with a very large uncompressed data size are common when ingesting Parquet files. Incrementally decrease the size of data ingested in the table or database batching policy towards 250MB and check for improvement.
-* Ingestion backlog can occur if the cluster is under-scaled for the amount of data it takes in. Consider accepting any Azure advisor suggestions to scale aside or scale up your cluster. Alternatively, manually scale your cluster to see if the backlog is closed. If these options do not work, contact Azure Data Explorer support for assistance.
+| Cause | Solution |
+| --- | --- |
+| Data latency matches time limit setting and too little data for the data-size limit or item-count limit | Reduce the time limit |
+| Inefficient batching due to a large number of very small files | Increase the size of the source files. If using Kusto Kafka Sink, configure it to send data in ~100KB chunks or higher. If you have many small files, increase the number of files (up to 2000) in the database or table ingestion policy. |
+| Batching a large amount of uncompressed data | This is common when ingesting Parquet files. Incrementally decrease the size of data ingested in the table or database batching policy towards 250MB and check for improvement. |
+| Backlog because cluster is under-scaled | Accept any Azure advisor suggestions to scale aside or scale up your cluster. Alternatively, manually scale your cluster to see if the backlog is closed. If these options do not work, contact Azure Data Explorer support for assistance. |
 
-## Other resources
-
-* [IngestionBatching policy commands reference](../management/batching-policy.md)
-* [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)
