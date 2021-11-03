@@ -28,23 +28,8 @@ The command sets the ManagedIdentity policy of the cluster or the specified data
 | *ArrayOfManagedIdentityPolicyObjects* | array | &check; | An array with zero or more ManagedIdentity policy objects defined. |
 | *DatabaseName* | string | &check; | The name of the database. |
 
-ManagedIdentity policy object:
-
-Each ManagedIdentity policy object defines two properties. Other properties are obtained from the managed identity associated with the specified ObjectId.
-
-~~~kusto
-{
-  "ObjectId": "d99c9846-1615-a2f9-a96f-78e136ba93eb",
-  "AllowedUsages": "NativeIngestion, ExternalTable"
-}
-~~~
-
-Where:
-
-| Name | Type | Required | Description |
-| -- | -- | -- | -- |
-| *ObjectId* | string | &check; | Either the actual object ID of the managed identity or the reserved keyword `system` to reference the System Managed Identity of the cluster on which the command is run. |
-| *AllowedUsages* | string | &check; | List of comma-separated allowed usages for the managed identity. Possible values are:<br />- "DataConnection": Data connections to an Event Hub or an Event Grid can be created authenticated using the specified managed identity<br />- "NativeIngestion": Native ingestions from an external source (for example, Blob) using Data Explorer's SDK and authenticated using the specified managed identity<br />- "ExternalTable": External tables using connection strings configured with a managed identity. Data Explorer uses the configured managed identity to authenticate<br />- "All": All current and future usages are allowed |
+> [!NOTE]
+> Policy objects must define the *ObjectId* and *AllowedUdages* properties. Other properties are automatically populated. For a description of policy objects, see [The ManagedIdentity policy object](managed-identity-policy.md#the-managedidentity-policy-object).
 
 ### Getting the managed identity object ID
 
