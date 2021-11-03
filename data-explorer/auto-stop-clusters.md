@@ -37,7 +37,7 @@ For more information, see [Azure Data Explorer cluster request body](/rest/api/a
 
 ## Azure portal
 
-### Create a new cluster
+### Set Auto-Stop settings while creating a new cluster
 
 1. Follow the steps in [Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
 1. In the **Configurations** tab, select **Auto-Stop cluster** > **On**.
