@@ -11,7 +11,7 @@ ms.date: 11/03/2021
 ---
 # .alter-merge managed_identity policy
 
-The command updates the ManagedIdentity policy of the cluster or the specified database, adding new managed identities, or adding usages to existing managed identities.
+The command updates the ManagedIdentity policy of the cluster or the specified database, adding new managed identities or adding usages to existing managed identities.
 
 > [!NOTE]
 > Managed identities should be assigned to the cluster (see [instructions](../../managed-identities.md)) before you can assign them to the ManagedIdentity policy.
@@ -61,9 +61,9 @@ The object ID is available in the Azure portal on the managed identity's overvie
 
 ## Returns
 
-The command updates the ManagedIdentity policy of the cluster or the specified database, adding new managed identities, or adding usages to existing managed identities, and then returns the output of the corresponding [.show managed identity policy](show-managed-identity-policy-command.md) command.
+The command updates the ManagedIdentity policy of the cluster or the specified database, adding new managed identities or adding usages to existing managed identities, and then returns the output of the corresponding [.show managed identity policy](show-managed-identity-policy-command.md) command.
 
-If any of the specified managed identities is not assigned to the cluster, an error will be returned, and the ManagedIdentity policy will not be modified.
+If any of the specified managed identities is not assigned to the cluster, an error will be returned and the ManagedIdentity policy will not be modified.
 
 ## Example
 
