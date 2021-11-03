@@ -12,6 +12,126 @@ ms.date: 07/13/2021
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
+## October 2021
+
+This section lists the major changes to docs during October 2021.
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
+| [Create an external table using the Web UI wizard](external-table.md) | Updated article. New UI
+| [Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. New UI.
+| [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md) | Updated article. New UI
+| [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md) | Updated article. New UI
+| [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. New UI
+
+### Query
+
+| Article title | Description |
+|--|--|
+| [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string. 
+| [take_any() (aggregation function)](kusto/query/take-any-aggfunction.md) | New article. Replaces any().
+| [take_anyif() (aggregation function)](kusto/query/take-anyif-aggfunction.md) | New article. Replaces anyif().
+| [replace_regex()](kusto/query/replace-regex-function.md) | Updated article. Replace() function changed to replace_regex().
+
+### Management
+
+| Article title | Description |
+|--|--|
+| [.alter extent tags retention policy](kusto/management/alter-extent-tags-retention-policy.md) | New article.
+| [.delete extent tags retention policy](kusto/management/delete-extent-tags-retention-policy.md) | New article.
+| [Extent tags retention policy](kusto/management/extent-tags-retention-policy.md) | New article. The extent tags retention policy controls the mechanism that automatically removes [extent tags](kusto/management/extents-overview.md#extent-tagging) from tables, based on the age of the extents.
+| [.show extent tags retention policy](kusto/management/show-extent-tags-retention-policy.md) | New article.
+| [Stored query results](kusto/management/stored-query-results.md) | Updated article. General Availability.
+
+### Functions library
+
+| Article title | Description |
+|--|--|
+ [two_sample_t_test_fl()](kusto/functions-library/two-sample-t-test-fl.md) | New article. The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test). |
+
+
+## September 2021
+
+This section lists the major changes to docs during September 2021.
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
+| [Create an external table using the Web UI wizard](external-table.md) | Updated article. New UI
+| [Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. New UI.
+| [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md) | Updated article. New UI
+| [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md) | Updated article. New UI
+| [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. New UI
+
+### Query
+
+| Article title | Description |
+|--|--|
+| [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string. 
+| [take_any() (aggregation function)](kusto/query/take-any-aggfunction.md) | New article. Replaces any().
+| [take_anyif() (aggregation function)](kusto/query/take-anyif-aggfunction.md) | New article. Replaces anyif().
+| [replace_regex()](kusto/query/replace-regex-function.md) | Updated article. Replace() function changed to replace_regex().
+
+### Management
+
+| Article title | Description |
+|--|--|
+| [.alter extent tags retention policy](kusto/management/alter-extent-tags-retention-policy.md) | New article.
+| [.delete extent tags retention policy](kusto/management/delete-extent-tags-retention-policy.md) | New article.
+| [Extent tags retention policy](kusto/management/extent-tags-retention-policy.md) | New article. The extent tags retention policy controls the mechanism that automatically removes [extent tags](kusto/management/extents-overview.md#extent-tagging) from tables, based on the age of the extents.
+| [.show extent tags retention policy](kusto/management/show-extent-tags-retention-policy.md) | New article.
+| [Stored query results](kusto/management/stored-query-results.md) | Updated article. General Availability.
+
+### Functions library
+
+| Article title | Description |
+|--|--|
+ [two_sample_t_test_fl()](kusto/functions-library/two-sample-t-test-fl.md) | New article. The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test). |
+
+
+## August 2021
+
+This section lists the major changes to docs during August 2021.
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Use wizard for ingestion with LightIngest (preview)](generate-lightingest-command.md) | New article. Learn how to use a wizard for one-time ingestion of historical data with LightIngest.
+| [Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. One click Event Hub experience. 
+| [Use LightIngest to ingest data into Azure Data Explorer](lightingest.md)| Updated article. Generate LightIngest commands - one click experience.
+
+### Query
+
+| Article title | Description |
+|--|--|
+| [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string. 
+| [take_any() (aggregation function)](kusto/query/take-any-aggfunction.md) | New article. Replaces any().
+| [take_anyif() (aggregation function)](kusto/query/take-anyif-aggfunction.md) | New article. Replaces anyif().
+| [replace_regex()](kusto/query/replace-regex-function.md) | Updated article. Replace() function changed to replace_regex().
+
+### Management
+
+| Article title | Description |
+|--|--|
+| [.alter extent tags retention policy](kusto/management/alter-extent-tags-retention-policy.md) | New article.
+| [.delete extent tags retention policy](kusto/management/delete-extent-tags-retention-policy.md) | New article.
+| [Extent tags retention policy](kusto/management/extent-tags-retention-policy.md) | New article. The extent tags retention policy controls the mechanism that automatically removes [extent tags](kusto/management/extents-overview.md#extent-tagging) from tables, based on the age of the extents.
+| [.show extent tags retention policy](kusto/management/show-extent-tags-retention-policy.md) | New article.
+| [Stored query results](kusto/management/stored-query-results.md) | Updated article. General Availability.
+
+### Functions library
+
+| Article title | Description |
+|--|--|
+| [pair_probabilities_fl()](/azure/data-explorer/kusto/functions-library/pair-probabilities-fl.md) | New article. The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test). |
+
+
 ## July 2021
 
 ### General
