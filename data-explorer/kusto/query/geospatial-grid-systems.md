@@ -37,6 +37,9 @@ The core functionalities of these methods are:
 | Noticeable feature | Common prefixes indicate points proximity. | 31 hierarchy levels. | Cell shape is hexagonal. |
 | Performance | Superb | Superb | Fast |
 | Cover polygon with cells | Not supported | Supported | Not supported |
+| Cell parent | Not supported | Not Supported | Supported |
+| Cell children | Not supported | Not Supported | Supported |
+| Cell rings\neighbours | Not supported | Not Supported | Supported |
 
 > [!TIP]
 > If there is no preference for a specific tool, use the [S2 Cell](#s2-cell-functions).
@@ -68,6 +71,9 @@ The core functionalities of these methods are:
 |[geo_point_to_h3cell()](geo-point-to-h3cell-function.md)|
 |[geo_h3cell_to_central_point()](geo-h3cell-to-central-point-function.md)|
 |[geo_h3cell_to_polygon()](geo-h3cell-to-polygon-function.md)|
+|[geo_h3cell_parent()](geo-h3cell-parent-function.md)|
+|[geo_h3cell_children()](geo-h3cell-children-function.md)|
+|[geo_h3cell_rings()](geo-h3cell-rings-function.md)|
 
 ## Next steps
 
