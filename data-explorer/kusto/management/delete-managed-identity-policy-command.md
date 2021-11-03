@@ -3,11 +3,11 @@ title: ".delete managed_identity policy command - Azure Data Explorer"
 description: This article describes the .delete managed_identity policy command in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: slneimer
-ms.reviewer: rkarlin
+ms.author: orspodek
+ms.reviewer: slneimer
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/24/2021
+ms.date: 11/03/2021
 ---
 # .delete managed_identity policy
 
