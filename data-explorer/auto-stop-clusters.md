@@ -48,7 +48,7 @@ For more information, see [Azure Data Explorer cluster request body](/rest/api/a
 
 To enable/disable Auto-Stop cluster after cluster was created:
 
-1. Open the [Azure portal](https://ms.portal.azure.com/).
+1. Sign into the [Azure portal](https://ms.portal.azure.com/).
 1. Browse to your Azure Data Explorer cluster.
 1. In **Settings**, select **Configurations**.
 1. In the **Configurations** pane, select **On**/**Off** to enable/disable **Auto-Stop cluster**.
@@ -60,7 +60,7 @@ To enable/disable Auto-Stop cluster after cluster was created:
 
 When a cluster is automatically stopped, an Activity log is sent. To verify when and how the cluster was stopped, use the following steps:
 
-1. Open the [Azure portal](https://ms.portal.azure.com/).
+1. Sign into the [Azure portal](https://ms.portal.azure.com/).
 1. Browse to Azure Data Explorer cluster.
 1. On the left pane, select **Activity log**.
 1. Choose a timespan
