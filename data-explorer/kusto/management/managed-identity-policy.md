@@ -11,23 +11,20 @@ ms.date: 11/03/2021
 ---
 # Managed Identity policy
 
-*ManagedIdentity* is a policy that controls which managed identities can be used for what purposes. For example, one can configure that a specific managed identity can be used in order to access a storage account for ingestion purposes.
+*ManagedIdentity* is a policy that controls which managed identities can be used for what purposes. For example, you can configure a policy that allows a specific managed identity to be used for accessing a storage account for ingestion purposes.
 
-This policy can be enabled on the cluster level, and on the database level. The policy is additive, meaning that for every operation that involves a managed identity, Azure Data Explorer will allow the operation if the usage is allowed on the cluster level, or the database level (and not necessarily both).
+This policy can be enabled at the cluster oand database levels. The policy is additive, meaning that for every operation that involves a managed identity, Azure Data Explorer will allow the operation if the usage is allowed at either the cluster or database level.
 
-## The Managed Identity policy object
+## The ManagedIdentity policy object
 
-A cluster or database may have zero, one, or more Managed Identity policy objects associated with it.
-Each such object is represented as a JSON property bag, with the following properties defined.
+A cluster or database may have zero or more ManagedIdentity policy objects associated with it.
+Each ManagedIdentity policy object defines two user-definable properties. Other properties are automatically populated from the managed identity associated with the specified ObjectId and displayed for convenience.
 
-| Property      | Type     | Description                                                                   |
-|---------------|----------|-------------------------------------------------------------------------------|
-| ObjectId      | `string` | ObjectId of the managed identity                                              |
-| ClientId      | `string` | ClientId of the managed identity, displayed for convenience only              |
-| TenantId      | `string` | TenantId of the managed identity, displayed for convenience only              |
-| DisplayName   | `string` | DisplayName of the managed identity, displayed for convenience only           |
-| IsSystem      | `bool`   | An indicator whether the managed identity is a System Managed Identity or not |
-| AllowedUsages | `string` | A comma-separated list of allowed usages for the managed identity             |
-
-> [!NOTE]
-> When providing a managed identity object to `.alter` command, only the `ObjectId` and `AllowedUsages` properties have to be provided. The other properties should not be provided, and will be automatically filled by Azure Data Explorer, based on the actual properties of the managed identity, with the specified `ObjectId`.
+| Property      | Type   | Required | Description                                                                   |
+|---------------|--------|----------|-------------------------------------------------------------------------------|
+| ObjectId      | string | &check;  | Either the actual object ID of the managed identity or the reserved keyword `system` to reference the System Managed Identity of the cluster on which the command is run. |
+| ClientId      | string | Not applicable | The client ID of the managed identity. |
+| TenantId      | string | Not applicable | The tenant ID of the managed identity. |
+| DisplayName   | string | Not applicable | The display name of the managed identity. |
+| IsSystem      | bool   | Not applicable | A Boolean value indicating true if the identity is a System Managed Identity; false if otherwise. |
+| AllowedUsages | string | &check;  | A list of comma-separated allowed usages for the managed identity. Possible values are:<br />- "DataConnection": Data connections to an Event Hub or an Event Grid can be created authenticated using the specified managed identity<br />- "NativeIngestion": Native ingestions from an external source (for example, Blob) using Data Explorer's SDK and authenticated using the specified managed identity<br />- "ExternalTable": External tables using connection strings configured with a managed identity. Data Explorer uses the configured managed identity to authenticate<br />- "All": All current and future usages are allowed |
