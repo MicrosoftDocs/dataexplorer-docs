@@ -22,7 +22,7 @@ Read more about [H3 Cell](https://eng.uber.com/h3/).
 ## Arguments
 
 * *h3cell*: H3 Cell token string value as it was calculated by [geo_point_to_h3cell()](geo-point-to-h3cell-function.md).
-* *resolution*: An optional `int` that defines the requested children cells resolution. Supported values are in the range [1, 15]. If unspecified, an immidiate children tokens will be calculated.
+* *resolution*: An optional `int` that defines the requested children cells resolution. Supported values are in the range [1, 15]. If unspecified, an immediate children tokens will be calculated.
 
 ## Returns
 
