@@ -1,65 +1,76 @@
 ---
 title: Automatic stop Azure Data Explorer
-description: Feature overview, how to manage (enable/disable) that logic
+description: Learn when your cluster will be stopped using the Automatic stop feature, and how to enable/disable the Automatic stop.
 author: orspod
 ms.author: orspodek
 ms.reviewer: orhasban
 ms.service: data-explorer
-ms.topic: reference
-ms.date: 11/11/2021
+ms.topic: how-to
+ms.date: 11/03/2021
 ---
-# Automatic stop inactive Azure Data Explorer clusters 
+# Automatic stop for inactive Azure Data Explorer clusters
 
-Azure Data Explorer clusters which have been *inactive* for a several days would be automatically stopped.
+Azure Data Explorer clusters which have been *inactive* for a specified time interval are automatically stopped. Inactivity is defined by having no data ingestion or queries, or cluster average CPU below a certain threshold.
 
-**Inactivity** means that neither queries nor ingestion were done in a certain time period.
+Automatic stop (Auto-Stop) happens on the following schedule:
 
-An *inactive* cluster would be stopped after:
-1. 5 days - if cluster has no data (or a very small amount of data).
-2. 10 day - if cluster has data ingested.
+First, you will receive X days of recommendations to stop the cluster through Azure Advisor. For more information about these recommendations, see [Cost recommendations](azure-advisor.md#cost-recommendations).
+* If the inactive cluster has a small amount or no data, it's stopped after five days.
+* If the inactive cluster has data ingested, it's stopped after 10 days.
 
-> [!NOTE]
-> There is no automatically resume cluster behavior. Cluster owners would have to resume the cluster by themselves. 
-
-> [!NOTE]
-> Leader clusters won't be automatically stopped. More info on follower/leader clusters [here](./follower.md).
+Cluster behavior is not automatically resumed. To restart the cluster, do so manually.
 
 > [!NOTE]
-> Cluster Avg. CPU, above a certain threshold, could also lead to consider cluster as active. 
+> Leader clusters aren't automatically stopped. For more information, see [follower databases](follower.md).
 
-## Recommendations and automatic stop
+## Manage Automatic stop behavior on your cluster
 
-Azure Data Explorer clusters would be stopped only after several days of recommendations to stop the cluster. 
-Those recommendations are populated through Azure Advisor service. More info about Azure Data Explorer cost recommendations [here](./azure-advisor.md#cost-recommendations).  
+Azure Data Explorer clusters are created by default with the cluster property of `enableAutoStop = true`. This property can be set or altered either on cluster creation or post creation.
 
-## Manage Automatic stop behavior on your cluster (how do I disable automatic stop experience?)
+Set this property using one of the following methods, our using the [Azure portal](#azure-portal):
+* [ARM Templates](/azure/templates/microsoft.kusto/clusters?tabs=json#trustedexternaltenant-object)
+* [Azure CLI](/cli/azure/kusto/cluster?view=azure-cli-latest#az_kusto_cluster_update-optional-parameters)
+* [PowerShell](/powershell/module/az.kusto/new-azkustocluster)
+* [Azure Resource Explorer](https://resources.azure.com/). 
 
-Azure Data Explorer clusters are created with `enableAutoStop = true` cluster property. 
-This property can be set either on cluster creation or post creation.
-The value for this property can be set using [ARM Templates](/azure/templates/microsoft.kusto/clusters?tabs=json#trustedexternaltenant-object), [AZ CLI](/cli/azure/kusto/cluster?view=azure-cli-latest#az_kusto_cluster_update-optional-parameters), [PowerShell](/powershell/module/az.kusto/new-azkustocluster), or the [Azure Resource Explorer](https://resources.azure.com/). For more information, see [Azure Data Explorer cluster request body](/rest/api/azurerekusto/clusters/createorupdate#request-body). 
+For more information, see [Azure Data Explorer cluster request body](/rest/api/azurerekusto/clusters/createorupdate#request-body). 
 
 ## Azure portal
 
-You can enable/disable automatic stop cluster while creating a new cluster.
-While creating a cluster using the steps in [Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md), in the **Configurations** tab, select **Auto-Stop cluster** > **On**.
+### Create a new cluster
 
-![Configurations.](media/auto-stop-clusters/auto-stop-cluster-creation.png)
+1. Follow the steps in [Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
+1. In the **Configurations** tab, select **Auto-Stop cluster** > **On**.
 
-You can enable/disable Auto-Stop cluster after cluster was created:
-1. In the Azure portal, go to your Azure Data Explorer cluster.
+:::image type="content" source="media/auto-stop-clusters/auto-stop-cluster-creation.png" alt-text="Screenshot of auto-stop configuration.":::
+
+### Modify settings on an existing cluster
+
+To enable/disable Auto-Stop cluster after cluster was created:
+
+1. Open the [Azure portal](https://ms.portal.azure.com/).
+1. Browse to your Azure Data Explorer cluster.
 1. In **Settings**, select **Configurations**.
 1. In the **Configurations** pane, select **On**/**Off** to enable/disable **Auto-Stop cluster**.
 1. Select **Save**.
 
-![Configurations.](media/auto-stop-clusters/auto-stop-cluster-update.png)
+:::image type="content" source="media/auto-stop-clusters/auto-stop-cluster-update.png" alt-text="Screenshot of auto-stop configuration in Azure portal.":::
 
-## Activity log (how I verify if my cluster was automatically stopped ) 
-When cluster is automatically stopped an Activity log is sent.
-To verify when and how the cluster was stopped, go to your Azure Data Explorer cluster in Azure portal, click on **Activity log** pane, 
-choose a timespan and search for **Stop Clusters** operation name.
-![Configurations.](media/auto-stop-clusters/auto-stop-cluster-activity-log.png)
+## Verify Auto-Stop using the Activity log
 
-## REST Example
+When a cluster is automatically stopped, an Activity log is sent. To verify when and how the cluster was stopped, use the following steps:
+
+1. Open the [Azure portal](https://ms.portal.azure.com/).
+1. Browse to Azure Data Explorer cluster.
+1. On the left pane, select **Activity log**.
+1. Choose a timespan
+1. Under **Operation name**, look for **Stop Clusters**.
+
+:::image type="content" source="media/auto-stop-clusters/auto-stop-cluster-activity-log.png" alt-text="Screenshot of activity log.":::
+
+## Examples
+
+### REST example
 
 Update the cluster using the following operation:
 
@@ -67,7 +78,7 @@ Update the cluster using the following operation:
 PATCH https://management.azure.com/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorgtest/providers/Microsoft.Kusto/clusters/kustoclustertest?api-version=2021-08-27
 ```
 
-### Request body for disabling automatic stop experience
+#### Request body to disable Auto-Stop
 
 ```json
 {
@@ -77,7 +88,7 @@ PATCH https://management.azure.com/subscriptions/12345678-1234-1234-1234-1234567
 }
 ```
 
-### Request body for enabling automatic stop experience
+#### Request body to enable Auto-Stop
 
 ```json
 {
