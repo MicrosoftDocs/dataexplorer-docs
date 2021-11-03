@@ -30,7 +30,7 @@ The command updates the ManagedIdentity policy of the cluster or the specified d
 
 > [!NOTE]
 >
-> * Policy objects must define the *ObjectId* and *AllowedUdages* properties. Other properties are automatically populated. For a description of policy objects, see [The ManagedIdentity policy object](managed-identity-policy.md#the-managedidentity-policy-object).
+> * Policy objects must define the *ObjectId* and *AllowedUsages* properties. Other properties are automatically populated. For a description of policy objects, see [The ManagedIdentity policy object](managed-identity-policy.md#the-managedidentity-policy-object).
 >
 > * For every item in `ArrayOfManagedIdentityPolicyObjects`:
 >
