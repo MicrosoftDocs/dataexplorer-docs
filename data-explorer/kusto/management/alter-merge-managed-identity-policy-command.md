@@ -28,30 +28,14 @@ The command updates the ManagedIdentity policy of the cluster or the specified d
 | *ArrayOfManagedIdentityPolicyObjects* | array | &check; | An array with zero or more ManagedIdentity policy objects defined. |
 | *DatabaseName* | string | &check; | The name of the database. |
 
-ManagedIdentity policy object:
-
-Each ManagedIdentity policy object defines two properties. Other properties are obtained from the managed identity associated with the specified ObjectId.
-
-~~~kusto
-{
-  "ObjectId": "d99c9846-1615-a2f9-a96f-78e136ba93eb",
-  "AllowedUsages": "NativeIngestion, ExternalTable"
-}
-~~~
-
-Where:
-
-| Name | Type | Required | Description |
-| -- | -- | -- | -- |
-| *ObjectId* | string | &check; | Either the actual object ID of the managed identity or the reserved keyword `system` to reference the System Managed Identity of the cluster on which the command is run. |
-| *AllowedUsages* | string | &check; | List of comma-separated allowed usages for the managed identity. Possible values are:<br />- "DataConnection": Data connections to an Event Hub or an Event Grid can be created authenticated using the specified managed identity<br />- "NativeIngestion": Native ingestions from an external source (for example, Blob) using Data Explorer's SDK and authenticated using the specified managed identity<br />- "ExternalTable": External tables using connection strings configured with a managed identity. Data Explorer uses the configured managed identity to authenticate<br />- "All": All current and future usages are allowed |
-
 > [!NOTE]
 >
-> For every item in `ArrayOfManagedIdentityPolicyObjects`:
+> * Policy objects must define the *ObjectId* and *AllowedUdages* properties. Other properties are automatically populated. For a description of policy objects, see [The ManagedIdentity policy object](managed-identity-policy.md#the-managedidentity-policy-object).
 >
-> * If the ObjectId *doesn't exist* in the Managed Identity policy, the item will be added to the policy.
-> * If the ObjectId *already exists* in the Managed Identity policy, the item's AllowedUsages will be added to the relevant item in the Managed Identity policy. For example, if the current Managed Identity policy has AllowedUsages="NativeIngestion" for a certain managed identity, then if `ArrayOfManagedIdentityPolicyObjects` has an item for this managed identity with AllowedUsages="ExternalTables", then the AllowedUsages for this managed identity in the Managed Identity policy will become "NativeIngestion, ExternalTables".
+> * For every item in `ArrayOfManagedIdentityPolicyObjects`:
+>
+>   * If the ObjectId *doesn't exist* in the ManagedIdentity policy, the item will be added to the policy.
+>   * If the ObjectId *already exists* in the ManagedIdentity policy, the identity's AllowedUsages propoerty will be added to the relevant item in the policy. For example, if the current policy has AllowedUsages="NativeIngestion" for a specific managed identity, then if `ArrayOfManagedIdentityPolicyObjects` has an item for this managed identity with AllowedUsages="ExternalTables", then the AllowedUsages for this managed identity in the Managed Identity policy will become "NativeIngestion, ExternalTables".
 
 ### Getting the managed identity object ID
 
