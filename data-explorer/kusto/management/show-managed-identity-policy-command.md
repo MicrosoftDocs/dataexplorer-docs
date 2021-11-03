@@ -3,15 +3,21 @@ title: ".show managed_identity policy command - Azure Data Explorer"
 description: This article describes the .show managed_identity policy command in Azure Data Explorer.
 services: data-explorer
 author: orspod
-ms.author: slneimer
-ms.reviewer: rkarlin
+ms.author: orspodek
+ms.reviewer: slneimer
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/24/2021
+ms.date: 11/03/2021
 ---
 # .show managed_identity policy
 
-This command returns the Managed Identity policy of the cluster or the specified database.
+This command returns the ManagedIdentity policy of the cluster or the specified database.
+
+## Arguments
+
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *DatabaseName* | string | &check; | The name of the database. |
 
 ## Syntax
 
@@ -24,8 +30,8 @@ This command returns a table that has a single record.
 
 | Column     | Type     | Description       |
 |------------|----------|----------------------------------------------------------------------------------------------------------|
-| EntityName | `string` | The name of the entity the Managed Identity policy is defined on (or empty, if showing the cluster level policy) |
-| Policies   | `string` | A JSON array indicating all Managed Identity policies defined for the entity, formatted as [Managed Identity policy object](managed-identity-policy.md#the-managed-identity-policy-object)|
+| EntityName | `string` | The name of the entity the ManagedIdentity policy is defined on (or empty, if showing the cluster level policy) |
+| Policies   | `string` | A JSON array indicating all ManagedIdentity policies defined for the entity, formatted as [Managed Identity policy object](managed-identity-policy.md#the-managed-identity-policy-object)|
 
 ## Example
 
