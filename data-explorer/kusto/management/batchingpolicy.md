@@ -26,7 +26,7 @@ This policy is applied to queued ingestion only, and provides the maximum forced
 
 ## Details
 
-When ingesting data in bulk, there's an optimal size, which is about 1 GB of uncompressed data. Ingestion that is done in blobs that hold much less data is non-optimal, and so in queued ingestion Azure Data Explorer will batch small blobs together.
+When ingesting data in bulk, there's an optimal size of about 1 GB of uncompressed data. Ingestion of blobs with much less data is non-optimal, so in queued ingestion the service will batch small blobs together.
 
 Batches are sealed when the first condition is met:
 
