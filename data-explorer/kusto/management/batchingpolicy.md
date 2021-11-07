@@ -14,7 +14,7 @@ ms.date: 02/19/2020
 ## Overview
 
 During the ingestion process, Azure Data Explorer attempts to optimize for throughput by batching small ingress data chunks together as they await ingestion.
-This sort of batching reduces the resources consumed by the ingestion process, and doesn't require post-ingestion resources to optimize the small data shards produced by non-batched ingestion.
+This batching reduces the resources consumed by the ingestion process, and doesn't require post-ingestion resources to optimize the small data shards produced by non-batched ingestion.
 
 The downside to doing batching before ingestion, is the forced delay. Therefore, the end-to-end time from requesting the data ingestion until the data ready for query is larger.
 
