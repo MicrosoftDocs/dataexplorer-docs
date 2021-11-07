@@ -16,7 +16,7 @@ ms.date: 02/19/2020
 During the ingestion process, Azure Data Explorer attempts to optimize for throughput by batching small ingress data chunks together as they await ingestion.
 This sort of batching reduces the resources consumed by the ingestion process, and doesn't require post-ingestion resources to optimize the small data shards produced by non-batched ingestion.
 
-There is a downside, however, to doing batching before ingestion, which is the introduction of a forced delay, so that the end-to-end time from requesting the ingestion of data until it's ready for query is larger.
+The downside to doing batching before ingestion, is the forced delay. Therefore, the end-to-end time from requesting the data ingestion until the data ready for query is larger.
 
 To allow control of this trade-off, use the [`IngestionBatching`](batching-policy.md) policy.
 This policy is applied to queued ingestion only, and provides the maximum forced delay to allow when batching small blobs together. See also:
