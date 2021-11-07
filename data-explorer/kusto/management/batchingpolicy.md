@@ -77,7 +77,7 @@ Latencies can result from a number of causes that can be addressed using batchin
 
 | Cause | Solution |
 | --- | --- |
-| Data latency matches time limit setting and too little data for the data-size limit or item-count limit | Reduce the time limit |
-| Inefficient batching due to a large number of very small files | Increase the size of the source files. If using Kafka Sink, configure it to send data in ~100KB chunks or higher. If you have many small files, increase the number of files (up to 2000) in the database or table ingestion policy. |
-| Batching a large amount of uncompressed data | This is common when ingesting Parquet files. Incrementally decrease the size of data ingested in the table or database batching policy towards 250MB and check for improvement. |
+| Data latency matches the `time` setting, with too little data to reach the `size` or `count` limit | Reduce the `time` limit |
+| Inefficient batching due to a large number of very small files | Increase the size of the source files. If using Kafka Sink, configure it to send data in ~100KB chunks or higher. If you have many small files, increase the `count` (up to 2000) in the database or table ingestion policy. |
+| Batching a large amount of uncompressed data | This is common when ingesting Parquet files. Incrementally decrease `size` for the table or database batching policy towards 250MB and check for improvement. |
 | Backlog because cluster is under-scaled | Accept any Azure advisor suggestions to scale aside or scale up your cluster. Alternatively, manually scale your cluster to see if the backlog is closed. If these options do not work, contact Azure Data Explorer support for assistance. |
