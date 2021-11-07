@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 10/10/2021
+ms.date: 11/07/2021
 ms.localizationpriority: high
 ---
 
@@ -124,9 +124,9 @@ You can use commends to ingest data data directly to the engine. Because this me
 
 Once you have chosen the most suitable ingestion method for your needs, do the following steps:
 
-1. **Set batching policy - if relevant**
+1. **Set batching policy**
 
-     The batching manager batches ingestion data based on the [ingestion batching policy](kusto/management/batchingpolicy.md). Define a batching policy before you start experimenting with ingestion. See [ingestion best practices - optimizing for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput). Batching policy changes can take 5 minutes to take effect. The policy sets batch limits according to three factors: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. By default, settings are 5 minutes / 1 GB / 1000 blobs, with the limit first reached taking effect, so there is usually a 5 minute delay when queueing sample data for ingestion. 
+     The batching manager batches ingestion data based on the [ingestion batching policy](kusto/management/batchingpolicy.md). If relevant, define a batching policy before you start experimenting with ingestion. See [ingestion best practices - optimizing for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput). Batching policy changes can take 5 minutes to take effect. The policy sets batch limits according to three factors: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. By default, settings are 5 minutes / 1 GB / 1000 blobs, with the limit first reached taking effect, so there is usually a 5 minute delay when queueing sample data for ingestion. 
 
 1. **Set retention policy**
 
