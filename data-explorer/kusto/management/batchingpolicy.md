@@ -13,20 +13,20 @@ ms.date: 02/19/2020
 
 ## Overview
 
-During the ingestion process, Azure Data Explorer attempts to optimize for throughput by batching small ingress data chunks together as they await ingestion.
-This sort of batching reduces the resources consumed by the ingestion process, and doesn't require post-ingestion resources to optimize the small data shards produced by non-batched ingestion.
+During the ingestion process, the service optimizes for throughput by batching small ingress data chunks together before ingestion.
+This batching reduces the resources consumed by the ingestion process, and doesn't require post-ingestion resources to optimize the small data shards produced by non-batched ingestion.
 
-There is a downside, however, to doing batching before ingestion, which is the introduction of a forced delay, so that the end-to-end time from requesting the ingestion of data until it's ready for query is larger.
+The downside to doing batching before ingestion, is the forced delay. Therefore, the end-to-end time from requesting the data ingestion until the data ready for query is larger.
 
 To allow control of this trade-off, use the [`IngestionBatching`](batching-policy.md) policy.
-This policy is applied to queued ingestion only, and provides the maximum forced delay to allow when batching small blobs together. See also:
+This policy is applied only to queued ingestion. It provides the maximum forced delay allowed when batching small blobs together. See also:
 
 * [IngestionBatching policy commands reference](../management/batching-policy.md)
 * [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)
 
 ## Details
 
-When ingesting data in bulk, there's an optimal size, which is about 1 GB of uncompressed data. Ingestion that is done in blobs that hold much less data is non-optimal, and so in queued ingestion Azure Data Explorer will batch small blobs together.
+When ingesting data in bulk, there's an optimal size of about 1 GB of uncompressed data. Ingestion of blobs with much less data is non-optimal, so in queued ingestion the service will batch small blobs together. 
 
 Batches are sealed when the first condition is met:
 
