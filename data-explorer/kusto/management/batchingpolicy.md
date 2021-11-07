@@ -66,7 +66,7 @@ The following lists show all possible types of triggers to batch sealing. The ba
 
 ## Batching data size
 
-The batching policy data size is set for uncompressed data. When ingesting compressed data, the uncompressed data size if deduced as follows in descending order of accuracy:
+The batching policy data size is set for uncompressed data. When ingesting compressed data, the uncompressed data size is evaluated as follows in descending order of accuracy:
           -
 * If the uncompressed size is provided in the ingestion source options, that value is used.
 * When ingesting local files using SDKs, Azure Data Explorer may inspect zip archives and gzip streams to assess their raw size.
