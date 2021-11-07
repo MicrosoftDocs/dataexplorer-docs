@@ -88,7 +88,7 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 
 ### Ingest control commands
 
-You can use commends to ingest data data directly to the engine. Because this method bypasses the Data Management services, it's only appropriate for exploration and prototyping. Don't use this method in production or high-volume scenarios.
+Use commands to ingest data data directly to the engine. This method bypasses the Data Management services, and therefore should be used only for exploration and prototyping. Don't use this method in production or high-volume scenarios.
 
 * **Inline ingestion**:  A control command [.ingest inline](kusto/management/data-ingestion/ingest-inline.md) is sent to the engine, with the data to be ingested being a part of the command text itself. This method is intended for improvised testing purposes.
 
