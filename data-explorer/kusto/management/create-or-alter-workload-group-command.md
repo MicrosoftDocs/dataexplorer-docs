@@ -17,12 +17,13 @@ For more information, see [Workload groups](workload-groups.md).
 
 ## Syntax
 
-`.create-or-alter` `workload_group` *WorkloadGroupName*  { *PolicyParameter*:*value* [, *PolicyParameter*:*value*, ...] }
+`.create-or-alter` `workload_group` *WorkloadGroupName*  { *PolicyName*: [*parameter*:*value* [, *parameter*:*value*, ...] } }
 
 ## Argument
 
 *WorkloadGroupName* - Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName'].
-*PolicyParameter* - Name of policy parameter.
+*PolicyName* - Name of policy.
+*parameter* - Name of policy parameter.
 *value* - Value of policy parameter, in accordance with parameter type.
 
 ## Examples
