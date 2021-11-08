@@ -37,11 +37,11 @@ For more information about running queries on the row level security policy, see
 Enable the policy at the table level:
 
 ```kusto
-.alter table MyTable policy row-level-security enable AnonymizeSensitiveData
+.alter table MyTable policy row-level-security enable "AnonymizeSensitiveData"
 ```
 
 Disable the policy at the table level:
 
 ```kusto
-.alter table MyTable policy row-level-security disable AnonymizeSensitiveData
+.alter table MyTable policy row-level-security disable "AnonymizeSensitiveData"
 ```
