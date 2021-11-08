@@ -17,12 +17,13 @@ For more information, see [Workload groups](workload-groups.md).
 
 ## Syntax
 
-`.alter-merge` `workload_group` *WorkloadGroupName* @'[{ *SerializedJSONpolicy* }]'
+`.alter-merge` `workload_group` *WorkloadGroupName* { *PolicyParameter*:*value*, *PolicyParameter*:*value*... }
 
 ## Argument
 
 *WorkloadGroupName* - Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName'].
-*SerializedJSONpolicy* - JSON serialization of policy parameters and the values to which they are set.
+*PolicyParameter* - Name of policy parameter.
+*value* - Value of policy parameter, in accordance with parameter type.
 
 ## Examples
 
