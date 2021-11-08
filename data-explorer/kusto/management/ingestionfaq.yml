@@ -10,7 +10,7 @@ sections:
     questions:
       - question: How does batching affect my data?
         answer: |
-          The batching manager buffers and batches ingress data based on the ingestion settings in the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy sets batch limits according to three limiting factors, whichever is first reached: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. The default batching settings are 5 minutes / 1 GB / 1000 blobs, meaning there will be at least a 5 minute delay when queueing sample data for ingestion.
+          The batching manager buffers and batches ingress data based on the ingestion settings in the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy sets batch limits according to three limiting factors, whichever is first reached: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. The default batching settings are 5 minutes / 1 GB / 1000 blobs, meaning there will be at least a 5 minute delay when queueing a sample data for ingestion.
       - question: Do I need to change the batching policy?
         answer: |
           You should define an [ingestion batching policy](batchingpolicy.md) before you start experimenting with ingestion, and adjust it accordingly. See also [ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput). You should also update settings when you scale up ingestion. When you change batching policy settings, it can take up to 5 minutes to take effect. 

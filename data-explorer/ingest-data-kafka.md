@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: ankhanol
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/08/2021
  
 #Customer intent: As an integration developer, I want to build integration pipelines from Kafka into Azure Data Explorer, so I can make data available for near real time analytics.
 ---
@@ -356,8 +356,8 @@ az kusto database delete -n <database name> --cluster-name <cluster name> -g <re
 
 Tune the [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) connector to work with the [ingestion batching policy](kusto/management/batchingpolicy.md):
 
-* Tune the Kafka Sink `flush.size.bytes` size limit starting from 1MB, with increments up or down of 10 or 100. 
-* When using Kafka Sink, two batching policies run. Ensure that the combined batching time is adequate. Increase batching time if not enough data accumulates per batch. Set the item number to 1000 or more. Set batching size at 1G and increase by 100MB increments as needed.
+* Tune the Kafka Sink `flush.size.bytes` size limit starting from 1MB, with increments or decrements of 10 or 100. 
+* When using Kafka Sink, data is aggregated twice. On the connector side data is aggregated according to flush settings, and on the service side according to the batching policy. Ensure that the combined batching time is adequate. Increase batching time if not enough data accumulates per batch. Set batching size at 1G and increase or decrease by 100MB increments as needed.
 * You can scale by adding instances and partitions. Increase `tasks.max` to the number of partitions. Create a partition if you have enough data to produce a blob the size of the `flush.size.bytes` setting. If the blob is smaller, the batch is processed when it reaches the time limit, so the partition will not receive enough throughput. A large number of partitions means more processing overhead.
 
 ## Next Steps
