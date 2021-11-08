@@ -122,7 +122,7 @@ Use commands to ingest data data directly to the engine. This method bypasses th
 
 ## Ingestion process
 
-Once you have chosen the most suitable ingestion method for your needs, do the following steps:
+Once you have chosen the most suitable ingestion method for your needs, do the following steps: 
 
 1. **Set batching policy**
 
