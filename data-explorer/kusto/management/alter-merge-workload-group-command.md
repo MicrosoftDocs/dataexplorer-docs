@@ -17,7 +17,7 @@ For more information, see [Workload groups](workload-groups.md).
 
 ## Syntax
 
-`.alter-merge` `workload_group` *WorkloadGroupName* { *PolicyParameter*:*value*, *PolicyParameter*:*value*... }
+`.alter-merge` `workload_group` *WorkloadGroupName* { *PolicyParameter*:*value* [, *PolicyParameter*:*value*, ...] }
 
 ## Argument
 

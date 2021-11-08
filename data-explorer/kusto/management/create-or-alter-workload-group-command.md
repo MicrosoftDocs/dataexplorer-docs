@@ -17,7 +17,7 @@ For more information, see [Workload groups](workload-groups.md).
 
 ## Syntax
 
-`.create-or-alter` `workload_group` *WorkloadGroupName*  { *PolicyParameter*:*value*, *PolicyParameter*:*value*... }
+`.create-or-alter` `workload_group` *WorkloadGroupName*  { *PolicyParameter*:*value* [, *PolicyParameter*:*value*, ...] }
 
 ## Argument
 
