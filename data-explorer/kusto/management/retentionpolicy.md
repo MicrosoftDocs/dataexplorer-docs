@@ -103,8 +103,8 @@ Set all tables in the database to have a soft-delete period of seven days and di
 
 ### Soft-delete period of seven days and recoverability enabled
 
-* Set tables `MyTable1` and `MyTable2` to have a soft-delete period of seven days and recoverability enabled.
-* Set `MySpecialTable` to have a soft-delete period of 14 days and recoverability disabled.
+* Set tables `MyTable1` and `MyTable2` to have a soft-delete period of seven days and recoverability disabled.
+* Set `MySpecialTable` to have a soft-delete period of 14 days and recoverability enabled.
 
 * *Option 1 (Recommended)*: Set a database-level retention policy, and set a table-level retention policy.
 

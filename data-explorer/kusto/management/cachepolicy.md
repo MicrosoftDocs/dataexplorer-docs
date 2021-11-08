@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 10/03/2021
 ---
 # Cache policy (hot and cold cache) 
 
@@ -75,7 +75,7 @@ T | union U | join (T datascope=all | where Timestamp < ago(365d)) on X
 ## Cache policy vs retention policy
 
 Cache policy is independent of [retention policy](./retentionpolicy.md): 
-- Cache policy defines how to prioritize resources. Queries over important data will be faster and resistant to the impact of queries over less important data.
+- Cache policy defines how to prioritize resources. Queries for important data are faster.
 - Retention policy defines the extent of the queryable data in a table/database (specifically, `SoftDeletePeriod`).
 
 Configure this policy to achieve the optimal balance 
@@ -89,3 +89,6 @@ In the example, the last 28 days of data will be on the cluster SSD and the
 additional 28 days of data will be stored in Azure blob storage.
 You can run queries on the full 56 days of data.
  
+## See also
+
+* [Hot windows for infrequent queries over cold data](../../hot-windows.md)
