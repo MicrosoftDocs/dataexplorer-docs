@@ -120,6 +120,59 @@ let MySourceTable =
 MyFunction
 ```
 
+## Using the update policy for ETL
+
+We can set an update policy in conjunction with ingestion to help perform ETL efficiently. To speed up ingestion, it is usually recommended that your data be formatted to begin with, with CSV being the preferred choice because of the well defined format and for performance at ingestion time. 
+
+In some cases, however, you have no control over the format of the data, but you still want to store it an efficient manner. In other cases, you may want to enrich the data as it gets ingested into Azure Data Explorer (e.g. by joining the new records with a static dimension table which is already in your database). In such cases, using an update policy to handle ingestion is a very common and useful practice.
+
+We use an update policy in conjunction with a simple function to perform ETL in this example. First, we create two tables:
+ 
+* The source table - This table will have a single string-typed column, into which I will ingest source data, as-is.
+* The target table - This table will have my desired schema. This is the table I define the update policy on.
+
+Let's create the source table:
+
+```kusto
+.create table MySourceTable (OriginalRecord:string) 
+```
+
+Next, create the target table:
+
+```kusto
+.create table MyTargetTable (Timestamp:datetime, ThreadId:int, ProcessId:int, TimeSinceStartup:timespan, Message:string)
+```
+
+Then create a function to extract data:
+
+```kusto
+.create function
+ with (docstring = 'Used in the update policy blog post', folder = 'UpdatePolicyFunctions')
+ ExtractMyLogs()  
+{
+    MySourceTable
+    | parse OriginalRecord with "[" Timestamp:datetime "] [ThreadId:" ThreadId:int "] [ProcessId:" ProcessId:int "] TimeSinceStartup: " TimeSinceStartup:timespan " Message: " Message:string
+    | project-away OriginalRecord
+}
+```
+
+Now, we will set the update policy to use the source table that we created and move data using the function that we created:
+
+```kusto
+.alter table MyTargetTable policy update 
+@'[{ "IsEnabled": true, "Source": "MySourceTable", "Query": "ExtractMyLogs()", "IsTransactional": false, "PropagateIngestionProperties": false}]'
+```
+
+We defined the update policy as non-trasactional. Defining your update policy as transactional (by having IsTransactional set to true) will help in guaranteeing consistency between the data in the source table and in the target table. Doing so, however, comes with a risk that if your policy is defined incorrectly, data will not be ingested neither to the source table nor to the target table. An example for such a case can be a mismatch between the output schema of your query and the target table, caused, for example, by dropping (accidentally, or not) a column from the target table, or by altering the function so that its output schema is altered as well.
+
+In some cases, depending on which purpose your update policy serves, you may want to retain the data in its original format for other use cases. If you have different flows with different requirements consuming the data in both tables, you may want to consider setting retention policies and/or caching policies on both the source and target tables, and define them according to your use case.
+
+We can define the retention policy on the source table to have 0s as its `SoftDeletePeriod`. This can be achieved by running the following command:
+
+```kusto
+ .alter-merge table MySourceTable policy retention softdelete = 0s
+```
+
 ## Failures
 
 By default, failure to run the update policy doesn't affect the ingestion of data to the source table. However, if the update policy is defined as `IsTransactional`:true, failure to run the policy forces the ingestion of data into the source table to fail. In some cases, ingestion of data into the source table succeeds, but the update policy fails during ingestion to the target table.

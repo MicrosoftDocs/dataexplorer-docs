@@ -69,15 +69,16 @@ Cost recommendations include:
 * [Correctly size Azure Data Explorer cluster to optimize cost](#correctly-size-azure-data-explorer-clusters-to-optimize-cost)
 * [Reduce cache for Azure Data Explorer tables](#reduce-cache-for-azure-data-explorer-tables)
 * [Run a cleanup command to delete unused storage artifacts](#delete-unused-storage-artifacts)
+* [Enable Optimized autoscale](#enable-optimized-autoscale)
 
 #### Azure Data Explorer unused cluster
 
 A cluster is considered unused if it has:
 
 * Small amount of data
-* Few queries and ingestion events during the last 30 days
-* Low CPU usage during the last two days
-* No followers during the last day
+* No queries and ingestion events during the last 30 days
+* Low CPU usage during the last 30 days
+* No followers
 
 When recommended to **consider deleting empty / unused clusters**, the recommended action is to delete the cluster.
 
@@ -87,9 +88,8 @@ The recommendation **stop Azure Data Explorer clusters to reduce cost and keep i
 
 Low activity is based on:
 
-* Few queries and ingestion events during the last 30 days
-* Low CPU usage during the last two days
-* No followers during the last day
+* No queries and ingestion events during the last 5 days
+* Low CPU usage during the last 5 days
 
 The recommendation is to stop the cluster to reduce cost but still preserve the data. If the data isn't needed, consider deleting the cluster to increase your savings.
 
@@ -113,6 +113,12 @@ The recommended action is to run the [clean databases extentcontainers](kusto/ma
 
 > [!IMPORTANT]
 > Data recoverability will be reset to the cleanup time and will not be available on data that was created before running the cleanup.
+
+#### Enable Optimized autoscale
+
+
+The recommendation **enable Optimized autoscale** is given when enabling [Optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale) would have reduced the instance count on a cluster. This recommendation is based on usage patterns, cache utilization, ingestion utilization, and CPU. To make sure you don't exceed your planned budget, add a maximum instance count when you enable Optimized autoscale.
+
 
 ### Performance recommendations
 
