@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2021
+ms.date: 11/08/2021
 ---
 # .create-or-alter workload_group
 
@@ -17,7 +17,12 @@ For more information, see [Workload groups](workload-groups.md).
 
 ## Syntax
 
-`.create-or-alter` `workload_group` *WorkloadGroupName* `"`*Serialized workload group and policies*`"`
+`.create-or-alter` `workload_group` *WorkloadGroupName*  @'[{ *SerializedJSONpolicy* }]'
+
+## Argument
+
+*WorkloadGroupName* - Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName'].
+*SerializedJSONpolicy* - JSON serialization of policy parameters and the values to which they are set.
 
 ## Examples
 
@@ -26,7 +31,7 @@ For more information, see [Workload groups](workload-groups.md).
 Create a workload group with a full definition of its request limits policy:
 
 ```kusto
-.create-or-alter workload_group MyWorkloadGroup ```
+.create-or-alter workload_group MyWorkloadGroup @'[
 {
   "RequestLimitsPolicy": {
     "DataScope": {
@@ -66,7 +71,7 @@ Create a workload group with a full definition of its request limits policy:
       "Value": "00:05:00"
     }
   }
-}```
+}]'
 ```
 
 ### Full definition of request limits policy and request rate limits policies
@@ -74,7 +79,7 @@ Create a workload group with a full definition of its request limits policy:
 Create a workload group with a full definition of its request limits policy and request rate limits policies:
 
 ```kusto
-.create-or-alter workload_group ['My Workload Group'] ```
+.create-or-alter workload_group ['My Workload Group'] @'[
 {
   "RequestLimitsPolicy": {
     "DataScope": {
@@ -132,5 +137,5 @@ Create a workload group with a full definition of its request limits policy and 
       }
     }
   ]
-}```
+}]'
 ```

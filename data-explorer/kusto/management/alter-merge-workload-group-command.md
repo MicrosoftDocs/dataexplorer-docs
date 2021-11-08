@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2021
+ms.date: 11/08/2021
 ---
 # .alter-merge workload_group
 
@@ -17,7 +17,12 @@ For more information, see [Workload groups](workload-groups.md).
 
 ## Syntax
 
-`.alter-merge` `workload_group` *WorkloadGroupName* `"`*Serialized partial workload group and policies*`"`
+`.alter-merge` `workload_group` *WorkloadGroupName* @'[{ *SerializedJSONpolicy* }]'
+
+## Argument
+
+*WorkloadGroupName* - Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName'].
+*SerializedJSONpolicy* - JSON serialization of policy parameters and the values to which they are set.
 
 ## Examples
 
@@ -27,7 +32,7 @@ Alter specific limits in the request limits policy of the `default` workload gro
 while keeping previously defined limits unchanged:
 
 ```kusto
-.alter-merge workload_group default ```
+.alter-merge workload_group default @'[
 {
   "RequestLimitsPolicy": {
     "DataScope": {
@@ -39,7 +44,7 @@ while keeping previously defined limits unchanged:
       "Value": "00:01:00"
     }
   }
-}``
+}]'
 ```
 
 ### Alter the request rate limit policies
@@ -48,7 +53,7 @@ Alter the request rate limit policies of the `default` workload group,
 while keeping all of its other policies unchanged:
 
 ```kusto
-.alter-merge workload_group default ```
+.alter-merge workload_group default @'[
 {
   "RequestRateLimitPolicies": [
     {
@@ -60,7 +65,7 @@ while keeping all of its other policies unchanged:
       }
     }
   ]
-}```
+}]'
 ```
 
 ### Alter the request queuing policy
@@ -69,12 +74,12 @@ Enable request queuing for the `default` workload group, while keeping its reque
 and request rate limit policies unchanged:
 
 ```kusto
-.alter-merge workload_group default ```
+.alter-merge workload_group default @'[
 {
   "RequestQueuingPolicy": {
       "IsEnabled": true
   }
-}```
+}]'
 ```
 
 ### Alter the request rate limits enforcement policy
@@ -83,11 +88,11 @@ Enable request rate limits enforcement policy for the `default` workload group,
 while keeping all of its other policies unchanged:
 
 ```kusto
-.alter-merge workload_group default ```
+.alter-merge workload_group default @'[
 {
   "RequestRateLimitsEnforcementpolicy": {
       "QueriesEnforcementLevel": "QueryHead",
       "CommandsEnforcementLevel": "Cluster"
   }
-}```
+}]'
 ```
