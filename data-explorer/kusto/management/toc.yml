@@ -55,15 +55,9 @@ items:
       href: show-database.md
     - name: ".show cluster databases"
       href: show-cluster-database.md
-<<<<<<< HEAD
     - name: ".alter database prettyname"
       href: alter-database.md
     - name: ".show database(s) schema"
-=======
-    - name: .alter database 
-      href: alter-database.md
-    - name: .show database schema
->>>>>>> 133366ee993f8e43b96cec7c22cc1d7028acc3d5
       href: show-schema-database.md
     - name: .execute database script"
       href: execute-database-script.md
