@@ -24,10 +24,10 @@ For more information, see [Workload groups](workload-groups.md). To show the cur
 
 ## Argument
 
-*WorkloadGroupName* - Name of the workload group. Can be escaped with bracket notation ['WorkLoadGroupName'].
-*PolicyName* - Name of policy.
-*parameter* - Name of policy parameter.
-*value* - Value of policy parameter.
+- *WorkloadGroupName* - Name of the workload group. Can be escaped with bracket notation ['WorkLoadGroupName'].
+- *PolicyName* - Name of policy.
+- *parameter* - Name of policy parameter.
+- *value* - Value of policy parameter.
 
 ## Examples
 
