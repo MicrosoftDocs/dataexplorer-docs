@@ -137,6 +137,8 @@ items:
       href: materialized-views/materialized-view-alter-autoUpdateSchema.md
     - name: .show materialized-view commands
       href: materialized-views/materialized-view-show-commands.md
+    - name: .show materialized-view details
+      href: materialized-views/materialized-view-show-details-command.md
     - name: .drop materialized-view
       href: materialized-views/materialized-view-drop.md
     - name: .clear materialized-view data
