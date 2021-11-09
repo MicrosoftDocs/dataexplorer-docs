@@ -72,7 +72,7 @@ Where *CallerCredentials* indicates the credentials used to access the storage a
   resource for a limited time.
 * Append the Storage account key (`;ljkAkl...==`). Use this method when Kusto needs to access the resource on an ongoing basis.
 * Append a base-64 encoded AAD access token (`;token=AadToken`). Make sure the token is for the resource `https://storage.azure.com/`.
-* Append `;impersonate` to the URI. Kusto will use the requestor's principal identity and impersonate it to access the resource. Principal needs to have the appropriate RBAC role assignments to be able to perform the read/write operations, as documented [here](/azure/storage/blobs/data-lake-storage-access-control).
+* Append `;impersonate` to the URI. Kusto will use the requestor's principal identity and impersonate this identity to access the resource. The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. For more information, see [blob access control](https://docs.microsoft.com/en-us/azure/storage/common/authorization-resource-provider?toc=/azure/storage/blobs/toc.json#assign-management-permissions-with-azure-role-based-access-control-azure-rbac).
 
 Examples (note that this is showing obfuscated string literals, so as not to expose the account key, SAS or token):
 
@@ -106,7 +106,7 @@ Where:
 * _CallerCredentials_ indicates the credentials used to access the Azure Data Lake Storage Gen2. The following options are available: 
   
    * Append `;sharedkey=`*AccountKey* to the URI, with _AccountKey_ being the storage account key
-   * Append `;impersonate` to the URI. Kusto will use the requestor's principal identity and impersonate it to access the resource. Principal needs to have the appropriate RBAC role assignments to be able to perform the read/write operations, as documented [here](/azure/storage/blobs/data-lake-storage-access-control). (For example, for read operations assign `Storage Blob Data Reader` role).
+   * Append `;impersonate` to the URI. Kusto will use the requestor's principal identity and impersonate this identity to access the resource. The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. For more information, see [data lake access control](/azure/storage/blobs/data-lake-storage-access-control).
    * Append `;token=`*AadToken* to the URI, with _AadToken_ being a base-64 encoded AAD access token (make sure the token is for the resource `https://storage.azure.com/`).
    * Append a Shared Access (SAS) key, using the Azure Data Lake Storage Gen2's standard query (`?sig=...`). Use this method when Kusto needs to access the resource for a limited time.
 
