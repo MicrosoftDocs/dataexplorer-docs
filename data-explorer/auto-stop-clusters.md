@@ -63,7 +63,7 @@ When a cluster is automatically stopped, an Activity log is sent. To verify when
 1. Sign into the [Azure portal](https://ms.portal.azure.com/).
 1. Browse to Azure Data Explorer cluster.
 1. On the left pane, select **Activity log**.
-1. Choose a timespan
+1. Choose a timespan.
 1. Under **Operation name**, look for **Stop Clusters**.
 
 :::image type="content" source="media/auto-stop-clusters/auto-stop-cluster-activity-log.png" alt-text="Screenshot of activity log.":::
