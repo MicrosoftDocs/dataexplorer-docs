@@ -94,7 +94,7 @@ This section lists the major changes to docs during August 2021.
 | [levene_test_fl()](/azure/data-explorer/kusto/functions-library/levene-test-fl.md) | New article. The function `levene_test_fl()` performs the [Levene Test](https://en.wikipedia.org/wiki/Levene%27s_test).
 | [mann_whitney_u_test_fl()](/azure/data-explorer/kusto/functions-library/mann-whitney-u-test-fl.md) | New article. The function `mann_whitney_u_test_fl()` performs the [Mann-Whitney U Test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test).
 | [wilcoxon_test_fl()](/azure/data-explorer/kusto/functions-library/wilcoxon-test-fl.md) | New article. The function `wilcoxon_test_fl()` performs the [Wilcoxon Test](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test).
-| [Functions library](/azure/data-explorer/kusto/functions-library/functions-library.md) | Updated article. Added [pair_probabilities_fl()](pair-probabilities-fl.md), [normality_test_fl](kusto/functions-library/normality-test-fl.md).
+| [Functions library](/azure/data-explorer/kusto/functions-library/functions-library.md) | Updated article. Added [pair_probabilities_fl()](kusto/functions-library/functions-library.md), [normality_test_fl](kusto/functions-library/normality-test-fl.md).
 
 ## July 2021
 
