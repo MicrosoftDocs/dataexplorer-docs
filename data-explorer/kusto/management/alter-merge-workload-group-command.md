@@ -13,21 +13,21 @@ ms.date: 11/08/2021
 
 Alters a workload group. This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
 
-For more information, see [Workload groups](workload-groups.md).
+For more information, see [Workload groups](workload-groups.md). To show the current workload group settings, use the [`.show` command](show-workload-group-command.md).
 
 ## Syntax
 
 `.alter-merge` `workload_group` *WorkloadGroupName* 
-{ *PolicyName*: {*parameter*:*value* [, *parameter*:*value*, ...] }, 
-[ *PolicyName*: {*parameter*:*value* [, *parameter*:*value*, ...] }, ... ] 
-} 
+{ *PolicyName* `:` {*parameter* `:` *value* [`,` *parameter* `:` *value* `,` ...] } `,` 
+[ *PolicyName* `:` {*parameter* `:` *value* [`,` *parameter* `:` *value* `,` ...] } `,` ... ] 
+} - serialized workload group and policies
 
 ## Argument
 
-*WorkloadGroupName* - Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName'].
+*WorkloadGroupName* - Name of the workload group. Can be escaped with bracket notation ['WorkLoadGroupName'].
 *PolicyName* - Name of policy.
 *parameter* - Name of policy parameter.
-*value* - Value of policy parameter, in accordance with parameter type.
+*value* - Value of policy parameter.
 
 ## Examples
 
