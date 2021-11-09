@@ -17,7 +17,10 @@ For more information, see [Workload groups](workload-groups.md).
 
 ## Syntax
 
-`.alter-merge` `workload_group` *WorkloadGroupName* { *PolicyName*: [*parameter*:*value* [, *parameter*:*value*, ...] } }
+`.alter-merge` `workload_group` *WorkloadGroupName* 
+{ *PolicyName*: {*parameter*:*value* [, *parameter*:*value*, ...] }, 
+[ *PolicyName*: {*parameter*:*value* [, *parameter*:*value*, ...] }, ... ] 
+} 
 
 ## Argument
 
@@ -33,8 +36,8 @@ For more information, see [Workload groups](workload-groups.md).
 Alter specific limits in the request limits policy of the `default` workload group,
 while keeping previously defined limits unchanged:
 
-```kusto
-.alter-merge workload_group default @'[
+~~~kusto
+.alter-merge workload_group default ```
 {
   "RequestLimitsPolicy": {
     "DataScope": {
@@ -46,16 +49,16 @@ while keeping previously defined limits unchanged:
       "Value": "00:01:00"
     }
   }
-}]'
-```
+} ```
+~~~
 
 ### Alter the request rate limit policies
 
 Alter the request rate limit policies of the `default` workload group,
 while keeping all of its other policies unchanged:
 
-```kusto
-.alter-merge workload_group default @'[
+~~~kusto
+.alter-merge workload_group default ```
 {
   "RequestRateLimitPolicies": [
     {
@@ -67,34 +70,34 @@ while keeping all of its other policies unchanged:
       }
     }
   ]
-}]'
-```
+} ```
+~~~
 
 ### Alter the request queuing policy
 
 Enable request queuing for the `default` workload group, while keeping its request limits policy
 and request rate limit policies unchanged:
 
-```kusto
-.alter-merge workload_group default @'[
+~~~kusto
+.alter-merge workload_group default ```
 {
   "RequestQueuingPolicy": {
       "IsEnabled": true
   }
-}]'
-```
+} ```
+~~~
 
 ### Alter the request rate limits enforcement policy
 
 Enable request rate limits enforcement policy for the `default` workload group,
 while keeping all of its other policies unchanged:
 
-```kusto
-.alter-merge workload_group default @'[
+~~~kusto
+.alter-merge workload_group default ```
 {
   "RequestRateLimitsEnforcementpolicy": {
       "QueriesEnforcementLevel": "QueryHead",
       "CommandsEnforcementLevel": "Cluster"
   }
-}]'
-```
+} ```
+~~~

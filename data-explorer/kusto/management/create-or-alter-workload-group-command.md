@@ -17,7 +17,10 @@ For more information, see [Workload groups](workload-groups.md).
 
 ## Syntax
 
-`.create-or-alter` `workload_group` *WorkloadGroupName*  { *PolicyName*: [*parameter*:*value* [, *parameter*:*value*, ...] } }
+`.create-or-alter` `workload_group` *WorkloadGroupName*  
+{ *PolicyName*: {*parameter*:*value* [, *parameter*:*value*, ...] }, 
+[ *PolicyName*: {*parameter*:*value* [, *parameter*:*value*, ...] }, ... ] 
+} 
 
 ## Argument
 
@@ -32,8 +35,8 @@ For more information, see [Workload groups](workload-groups.md).
 
 Create a workload group with a full definition of its request limits policy:
 
-```kusto
-.create-or-alter workload_group MyWorkloadGroup 
+~~~kusto
+.create-or-alter workload_group MyWorkloadGroup ```
 {
   "RequestLimitsPolicy": {
     "DataScope": {
@@ -73,15 +76,15 @@ Create a workload group with a full definition of its request limits policy:
       "Value": "00:05:00"
     }
   }
-}
-```
+} ```
+~~~
 
 ### Full definition of request limits policy and request rate limits policies
 
 Create a workload group with a full definition of its request limits policy and request rate limits policies:
 
-```kusto
-.create-or-alter workload_group ['My Workload Group'] 
+~~~kusto
+.create-or-alter workload_group ['My Workload Group'] ```
 {
   "RequestLimitsPolicy": {
     "DataScope": {
@@ -139,5 +142,5 @@ Create a workload group with a full definition of its request limits policy and 
       }
     }
   ]
-}
-```
+} ```
+~~~
