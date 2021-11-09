@@ -22,6 +22,10 @@ For more information, see [Workload groups](workload-groups.md).
 
 `.drop` `workload_group` *WorkloadGroupName*
 
+## Argument
+
+*WorkloadGroupName* - Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName'].
+
 ## Examples
 
 ```kusto
