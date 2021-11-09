@@ -394,6 +394,21 @@ Or, you can use `| render columnchart`:
 
 :::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="Screenshot of a column chart for event count timechart by duration.":::
 
+## Percentages
+
+What is percentage of storms create injuries greater than a predetermined limit?
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents
+| extend  duration = EndTime - StartTime
+| where duration > 0s
+| where duration < 3h
+| summarize event_count = count()
+| extend Percentage = round(100.0 * (duration) / toscalar(T | summarize sum(count)), 2)
+| render timechart
+```
+
 ## Percentiles
 
 What ranges of durations do we find in different percentages of storms?
