@@ -89,7 +89,7 @@ This section lists the major changes to docs during August 2021.
 
 | Article title | Description |
 |--|--|
-| [pair_probabilities_fl()](/azure/data-explorer/kusto/functions-library/pair-probabilities-fl.md) | New article. The function `pair_probabilities_fl()`calculates probabilities and metrics.
+| [pair_probabilities_fl()](kusto/functions-library/functions-library.md)] | New article. The function `pair_probabilities_fl()`calculates probabilities and metrics.
 | [bartlett_test_fl()](/azure/data-explorer/kusto/functions-library/bartlett-test-fl.md) | New article. The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
 | [levene_test_fl()](/azure/data-explorer/kusto/functions-library/levene-test-fl.md) | New article. The function `levene_test_fl()` performs the [Levene Test](https://en.wikipedia.org/wiki/Levene%27s_test).
 | [mann_whitney_u_test_fl()](/azure/data-explorer/kusto/functions-library/mann-whitney-u-test-fl.md) | New article. The function `mann_whitney_u_test_fl()` performs the [Mann-Whitney U Test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test).
