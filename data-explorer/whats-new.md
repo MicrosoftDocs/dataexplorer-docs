@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/02/2021
+ms.date: 11/09/2021
 ---
 # What's new in Azure Data Explorer documentation
 
@@ -20,26 +20,24 @@ This section lists the major changes to docs during October 2021.
 
 | Article title | Description |
 |--|--|
-| [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
-
-### Query
-
-| Article title | Description |
-|--|--|
-| [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string. 
+| [Create an Event Grid data connection for Azure Data Explorer by using C#](data-connection-event-grid-csharp.md) | Updated article. Add Event Grid data connection from Azure Portal.
+| [Create an Event Grid data connection for Azure Data Explorer by using Python](data-connection-event-grid-python.md) | Updated article. 
+| [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)  | Updated article. Add Event Grid data connection from Azure Portal. 
+| [Event Grid data connection](ingest-data-event-grid-overview.md) | Updated article. Add Event Grid data connection from Azure Portal. 
+| [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated article. Add Event Grid data connection from Azure Portal. 
+| [Add cluster principals for Azure Data Explorer by using C#](cluster-principal-csharp.md) | Updated article. Add AllDatabasesMonitor role
+| [Add cluster principals for Azure Data Explorer by using Python](cluster-principal-python.md)  | Updated article. Add AllDatabasesMonitor role
+| [Add cluster principals for Azure Data Explorer by using an Azure Resource Manager template](cluster-principal-resource-manager.md) | Updated article. Add AllDatabasesMonitor role
+| [Add database principals for Azure Data Explorer by using Python](database-principal-python.md) | Updated article. Add AllDatabasesMonitor role
+| [Manage Azure Data Explorer database permissions](manage-database-permissions.md) | Updated article. Add AllDatabasesMonitor role
 
 ### Management
 
 | Article title | Description |
 |--|--|
-| [.alter extent tags retention policy](kusto/management/alter-extent-tags-retention-policy.md) | New article.
-
-
-### Functions library
-
-| Article title | Description |
-|--|--|
-|[two_sample_t_test_fl()](kusto/functions-library/two-sample-t-test-fl.md) | New article. The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test]
+| [Role-based Authorization in Kusto](/azure/data-explorer/kusto/management/access-control/role-based-authorization.md) | Updated article. Materialized views rename source table.
+| [Cache policy (hot and cold cache)](/azure/data-explorer/kusto/management/cachepolicy.md) | Updated article. Caching with long storage.
+| [Role-based Authorization in Kusto](/azure/data-explorer/kusto/management/access-control/role-based-authorization.md)| Updated article. Using the AllDatabasesMonitor role.
 
 ## September 2021
 
@@ -49,26 +47,14 @@ This section lists the major changes to docs during September 2021.
 
 | Article title | Description |
 |--|--|
-| [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
+| [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated article. Learn how to connect event hub with managed identity.
 
 ### Query
 
 | Article title | Description |
 |--|--|
-| [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string. 
-
-### Management
-
-| Article title | Description |
-|--|--|
-| [.alter extent tags retention policy](kusto/management/alter-extent-tags-retention-policy.md) | New article.
-| [.delete extent tags retention policy](kusto/management/delete-extent-tags-retention-policy.md) | New article.
-
-### Functions library
-
-| Article title | Description |
-|--|--|
-| [two_sample_t_test_fl()](kusto/functions-library/two-sample-t-test-fl.md) | New article. The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test). 
+| [Views](/azure/data-explorer/kusto/query/schema-entities/views.md)| New article. Learn how to use views, which are virtual tables based on the result-set of a query.
+| [Entity types](/azure/data-explorer/kusto/query/schema-entities/index.md)| Updated article. Added information on how to use views.
 
 ## August 2021
 
@@ -377,51 +363,3 @@ Article title | Description
 ---|---
 [series_downsample_fl()](./kusto/functions-library/series-downsample-fl.md) | The function `series_downsample_fl()` [downsamples a time series by an integer factor](https://en.wikipedia.org/wiki/Downsampling_(signal_processing)#Downsampling_by_an_integer_factor).
 [series_exp_smoothing_fl()](./kusto/functions-library/series-exp-smoothing-fl.md) | Applies a basic exponential smoothing filter on a series.
-
-## October 2020
-
-This section lists the major changes to docs during October 2020.
-
-### General
-
- Article title | Description
----|---
-[Ingest data using the Azure Data Explorer Java SDK](java-ingest-data.md) | New article.  In this article, learn how to ingest data using the Azure Data Explorer Java library.
-[Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md) | New article. In this article, you learn how to create manually the resources needed for Event Grid Ingestion: Event Grid subscription, Event Hub  namespace, and Event Hub.
-[Create a private or service endpoint to Event Hub and Azure Storage](vnet-endpoint-storage-event-hub.md) | New article. A [Private Endpoint](/azure/private-link/private-endpoint-overview) uses an IP address from your VNet's address space for the Azure service to securely connect between Azure Data Explorer and Azure services such as Azure Storage and Event Hub.
-[EngineV3 - preview](engine-v3.md) | New article. Kusto EngineV3 is Azure Data Explorer's next generation storage and query engine.
-[Create an Azure Data Explorer cluster and database using Go](create-cluster-database-go.md) |  New article. In this article, you create an Azure Data Explorer cluster and database using [Go](https://golang.org/).
-[Create Power Apps application to query data in Azure Data Explorer (preview)](power-apps-connector.md) | New article. In this article, you will create a Power Apps application to query Azure Data Explorer data.
-|[Microsoft Logic App and Azure Data Explorer ](kusto/tools/logicapps.md) |Updated article. General availability (GA).
-| [Use Azure Advisor recommendations to optimize your Azure Data Explorer cluster](azure-advisor.md) | Updated article. Azure advisor new recommendation.
-| [Use follower database to attach databases in Azure Data Explorer](follower.md) | Updated article. Use PowerShell to attach and detach follower databases.
-
-### Query
-
-Article title | Description
----|---
-[project-keep operator](./kusto/query/project-keep-operator.md) | New article. Select what columns from the input to keep in the output.
-[bag_remove_keys()](./kusto/query/bag-remove-keys-function.md) | New article. Removes keys and associated values from a `dynamic` property-bag.
-[series_fit_poly()](./kusto/query/series-fit-poly-function.md) | New article. Applies a polynomial regression from an independent variable (x_series) to a dependent variable (y_series).
-[array_sort_asc()](./kusto/query/arraysortascfunction.md) | New article. Receives one or more arrays. Sorts the first array in ascending order. Orders the remaining arrays to match the reordered first array.
-[array_sort_desc()](./kusto/query/arraysortdescfunction.md) | New article. Receives one or more arrays. Sorts the first array in descending order. Orders the remaining arrays to match the reordered first array.
-
-### Management
-
- Article title | Description
----|---
-[Query throttling policy commands](./kusto/management/workload-groups-commands.md) | New article. The [query throttling policy](./kusto/management/request-rate-limit-policy.md) is a cluster-level policy to restrict query concurrency in the cluster.
-[Query throttling policy](./kusto/management/request-rate-limit-policy.md) | New article. Define the query throttling policy to limit the number of concurrent queries the cluster can execute at the same time.
-[.clear table data](./kusto/management/clear-table-data-command.md) | New article. Clears the data of an existing table, including streaming ingestion data.
-|  [row_level_security policy command](kusto/management/row-level-security-policy.md) <br> [Row Level Security](kusto/management/rowlevelsecuritypolicy.md) |Updated articles. General availability (GA).
-
-### Functions library
-
- Article title | Description
----|---
-[kmeans_fl()](./kusto/functions-library/kmeans-fl.md) | New article.  The function `kmeans_fl()` clusterizes a dataset using the [k-means algorithm](https://en.wikipedia.org/wiki/K-means_clustering).
-[series_dot_product_fl()](./kusto/functions-library/series-dot-product-fl.md) | New article. Calculates the dot product of two numerical vectors.
-
-## Next steps
-
-To contribute to the Azure Data Explorer docs, see the [Docs contributor guide](/contribute/).
