@@ -14,7 +14,7 @@ Azure Data Explorer clusters that have been *inactive* for a specified time inte
 
 Automatic stop (Auto-Stop) happens on the following schedule:
 
-First, you'll receive X days of recommendations to stop the cluster through Azure Advisor. For more information about these recommendations, see [Cost recommendations](azure-advisor.md#cost-recommendations).
+First, you'll receive several days of recommendations to stop the cluster through Azure Advisor. For more information about these recommendations, see [Cost recommendations](azure-advisor.md#cost-recommendations).
 * If the inactive cluster has a small amount or no data, it's stopped after five days.
 * If the inactive cluster has data ingested, it's stopped after 10 days.
 
