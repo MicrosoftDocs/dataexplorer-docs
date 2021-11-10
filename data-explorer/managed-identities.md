@@ -408,11 +408,14 @@ Run the following to remove the user-assigned identity:
 ---
 ## Configure Managed Identity policy
 
-For managed identity to be used it needs to be allowed by the managed identity policy. See instructions [here](/some-link).
+In order to use managed identity with your cluster it needs to be permitted by the managed identity policy. In order to configure a managed identity usage in the managed identity policy follow instructions [here](/some-link).
 
-## Use
+## Supported Flows
 
-Authenticate using managed identities by specifying `;managed_identity=` in the connection strings, see [kusto storage connection strings]().
+After assigning the managed identity to your cluster and configuring the relevant managed identity policy, you can start using managed identity authentication in the following flows:
+* External Tables - create an external table with managed identity authentication stated in the connection string (see [storage connection string docs](/azure/data-explorer/kusto/api/connection-strings/storage#azure-blob-storage) for examples) to make Azure Data Explorer authenticate with that managed identity during querying and exporting.
+* Native Injestion - TBD
+* Data Connection - TBD
 
 ## Next steps
 
