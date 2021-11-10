@@ -170,7 +170,7 @@ When the cluster is created, it has the following additional properties:
 
 ---
 
-## Remove a system-assigned identity
+### Remove a system-assigned identity
 
 Removing a system-assigned identity will also delete it from Azure AD. System-assigned identities are also automatically removed from Azure AD when the cluster resource is deleted. A system-assigned identity can be removed by disabling the feature. Remove the system-assigned identity using the Azure portal, C#, or Resource Manager template as detailed below.
 
@@ -216,7 +216,7 @@ Run the following to remove the system-assigned identity:
 
 ---
 
-## Add a user-assigned identity
+### Add a user-assigned identity
 
 Assign a user-assigned managed identity to your cluster. A cluster can have more than one user-assigned identity. Creating a cluster with a user-assigned identity requires an additional property to be set on the cluster. Add the user-assigned identity using the Azure portal, C#, or Resource Manager template as detailed below.
 
@@ -354,7 +354,7 @@ The `PrincipalId` is a unique identifier for the identity that's used for Azure 
 
 ---
 
-## Remove a user-assigned managed identity from a cluster
+### Remove a user-assigned managed identity from a cluster
 
 Remove the user-assigned identity using the Azure portal, C#, or Resource Manager template as detailed below.
 
