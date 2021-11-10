@@ -23,9 +23,9 @@ Deletes the ManagedIdentity policy of the cluster or the specified database.
 
 ## Arguments
 
-| Name | Type | Required | Description |
-| -- | -- | -- | -- |
-| *DatabaseName* | string | &check; | The name of the database. |
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string |&check;|The name of the database.|
 
 ## Returns
 
