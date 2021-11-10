@@ -1,5 +1,5 @@
 ---
-title: How to configure managed identities for Azure Data Explorer cluster
+title: How to authenticate using managed identities in Azure Data Explorer
 description: Learn how to configure managed identities for Azure Data Explorer cluster.
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.topic: how-to
 ms.date: 11/25/2020
 ---
 
-# Configure managed identities for your Azure Data Explorer cluster
+# Authenticate using managed identities in your Azure Data Explorer cluster
 
 A [managed identity from Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) allows your cluster to easily access other Azure AD-protected resources such as Azure Key Vault. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets. Managed identity configuration is currently supported only to [enable customer-managed keys for your cluster](security.md#customer-managed-keys-with-azure-key-vault).
 
@@ -22,6 +22,12 @@ This article shows you how to add and remove system-assigned and user-assigned m
 
 > [!Note]
 > Managed identities for Azure Data Explorer won't behave as expected if your Azure Data Explorer cluster is migrated across subscriptions or tenants. The app will need to obtain a new identity, which can be done by [disabling](#remove-a-system-assigned-identity) and [re-enabling](#add-a-system-assigned-identity) the feature. Access policies of downstream resources will also need to be updated to use the new identity.
+
+## Steps in order to authenticate with managed identities
+
+1. [Configure managed identieis for your cluster]()
+2. [Configure managed identity policy]()
+3. [Execute commands/queries]()
 
 ## Add a system-assigned identity
 
@@ -400,6 +406,13 @@ Run the following to remove the user-assigned identity:
 > * If the cluster had both system-assigned and user-assigned identities at the same time, the `type` property would be `SystemAssigned,UserAssigned` with the identities to remove, or `SystemAssigned` to remove all user-assigned identities.
 
 ---
+## Configure Managed Identity policy
+
+For managed identity to be used it needs to be allowed by the managed identity policy. See instructions [here](/some-link).
+
+## Use
+
+Authenticate using managed identities by specifying `;managed_identity=` in the connection strings, see [kusto storage connection strings]().
 
 ## Next steps
 
