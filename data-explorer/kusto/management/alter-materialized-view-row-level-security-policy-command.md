@@ -31,11 +31,11 @@ For more information about running queries on the row level security policy, see
 Enable the policy at the materialized-view level:
 
 ```kusto
-.alter materialized-view MyMaterializeView policy row-level-security enable AnonymizeSensitiveData
+.alter materialized-view MyMaterializeView policy row-level-security enable "AnonymizeSensitiveData"
 ```
 
 Disable the policy at the materialized-view level:
 
 ```kusto
-.alter materialized-view MyMaterializeView policy row-level-security disable AnonymizeSensitiveData
+.alter materialized-view MyMaterializeView policy row-level-security disable "AnonymizeSensitiveData"
 ```
