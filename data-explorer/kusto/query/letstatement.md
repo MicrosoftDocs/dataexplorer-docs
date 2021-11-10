@@ -31,47 +31,40 @@ Use the `let` statement to set a variable name equal to a function or valid expr
 
 `let` *Name* `=` *TabularExpression* 
 
-`let` *Name* `=` *FunctionDefinitionExpression*
+`let` *Name* `=` *UserDefinedFunction*
 
-|Field  |Definition  |Example  |
-|---------|---------|---------|
-|*Name*   | The variable name, must be a valid entity name. |Escaping the entity name, such as `["Name with spaces"]`, is permitted. |
-|*ScalarExpression* | An expression with a scalar result.| `let one=1;`  |
-|*TabularExpression*  | An expression with a tabular result. | `Logs | where Timestamp > ago(1h)`    |
-|*FunctionDefinitionExpression* | An expression that yields a user defined function, an anonymous function declaration. |  `let f=(a:int, b:string) { strcat(b, ":", a) }`  |
+**Syntax of UserDefinedFunction**
 
-### User defined function
+[`view`] `(` [ *TabularArguments* ]  [`,`] [ *ScalarArguments* ] `)` `{` *FunctionBody* `}`
 
-[`view`] `(` [ *TabularArguments* ] [`,`] [ *ScalarArguments* ] `)` `{` *FunctionBody* `}`
+**Syntax of TabularArguments**
 
-where *TabularArguments*`* is:
+ [*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ]`)`] [`,` ... ][`,`]
 
- [*TabularArgName* `:` `(`[*AtrName* `:` *AtrType*] [`,` ... ]`)`] [`,` ... ][`,`]
+[*TabularArgName* `:` `(` `*` `)`] 
 
- or:
-
- [*TabularArgName* `:` `(` `*` `)`] - indicating tabular expressions with variable and unknown columns
-
-and where *ScalarArguments* is:
+**Syntax of ScalarArguments**
 
  [*ArgName* `:` *ArgType*] [`,` ... ]
 
-
 |Field  |Definition  |Example  |
 |---------|---------|---------|
-| *view* | Appears only in a parameterless `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views. |  |
-| *TabularArgName*| The name of the tabular argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. ||
-| *AtrName*| The name of the attribute. Part of the table schema definition, which includes a list of attributes with their types. | AtrName : AtrType |
-| *AtrType*| The type of the attribute. Part of the table schema definition, which includes a list of attributes with their types. | AtrName : AtrType |
-|*ArgName* | The name of the scalar argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked.  |
-|*ArgType* | The type of the scalar argument. | Currently the following are supported for user defined functions: `bool`, `string`, `long`, `datetime`, `timespan`, `real`, and `dynamic` (and aliases to these types).
+|*Name*   | The variable name, must be a valid entity name. | You can escape the name, for example `["Name with spaces"]` |
+|*ScalarExpression* | An expression with a scalar result.| `let one=1;`  |
+|*TabularExpression*  | An expression with a tabular result. |  `Logs  \| where Timestamp > ago(1h)`  |
+|*UserDefinedFunction* | An expression that yields a user defined function, an anonymous function declaration. |  `let f=(a:int, b:string) { strcat(b, ":", a) }`  |
+| *view* | Appears only in a parameterless `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views. | |
+| *TabularArgName*| The name of the tabular argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. | |
+| *AttributeName* : *AttributeType*| The name and type of the attribute. Part of the table schema definition, which includes a set of attributes with their types. |  |
+|*ArgName* | The name of the scalar argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked.  | |
+|*ArgType* | The type of the scalar argument. Currently the following are supported for user defined functions: `bool`, `string`, `long`, `datetime`, `timespan`, `real`, and `dynamic` (and aliases to these types).| |
 
 > [!NOTE]
 >
-> * The tabular expression for a user defined function should include all relevant attributes and attribute types.
-> * The tabular expression can be `(*)`.
-> * Any tabular expression can be used in a user defined function invocation. However, columns cannot be accessed in the user defined function expression. 
-> * Tabular arguments should appear before scalar arguments.
+> * You can use `(*)` for the tabular expression.
+> * When using a tabular expression as part of a user defined function, the columns can't be accessed as part of the function. 
+> * Tabular arguments appear before scalar arguments.
+
 
 ## Examples
 
