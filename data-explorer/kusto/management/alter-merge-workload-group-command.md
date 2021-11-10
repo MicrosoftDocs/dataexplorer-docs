@@ -17,17 +17,17 @@ For more information, see [Workload groups](workload-groups.md). To show the cur
 
 ## Syntax
 
-`.alter-merge` `workload_group` *WorkloadGroupName* 
-{ *PolicyName* `:` {*parameter* `:` *value* [`,` *parameter* `:` *value* `,` ...] } `,` 
-[ *PolicyName* `:` {*parameter* `:` *value* [`,` *parameter* `:` *value* `,` ...] } `,` ... ] 
-} - serialized workload group and policies
+`.alter-merge` `workload_group` *WorkloadGroupName* *SerializedArrayOfPolicyObjects*
 
-## Argument
+## Arguments
 
-*WorkloadGroupName* - Name of the workload group. Can be escaped with bracket notation ['WorkLoadGroupName'].
-*PolicyName* - Name of policy.
-*parameter* - Name of policy parameter.
-*value* - Value of policy parameter.
+- *WorkloadGroupName* - Name of the workload group. Can be escaped with bracket notation ['WorkLoadGroupName'].
+- *SerializedArrayOfPolicyObjects* - An array with one or more policy objects defined. The following policies apply to workload groups:   
+  
+  * [request classification](request-classification-policy.md)
+  * [request limits](request-limits-policy.md)
+  * [request rate limit](request-rate-limit-policy.md)
+  * [request rate limits enforcement](request-rate-limits-enforcement-policy.md).
 
 ## Examples
 
