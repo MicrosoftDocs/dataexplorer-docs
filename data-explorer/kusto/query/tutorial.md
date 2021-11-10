@@ -393,7 +393,7 @@ StormEvents
 Or, you can use `| render columnchart`:
 
 :::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="Screenshot of a column chart for event count timechart by duration.":::
-
+ 
 ## Percentiles
 
 What ranges of durations do we find in different percentages of storms?
