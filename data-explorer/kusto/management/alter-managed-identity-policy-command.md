@@ -23,10 +23,10 @@ The command sets the ManagedIdentity policy of the cluster or the specified data
 
 ## Arguments
 
-| Name | Type | Required | Description |
-| -- | -- | -- | -- |
-| *ArrayOfManagedIdentityPolicyObjects* | array | &check; | An array with zero or more ManagedIdentity policy objects defined. |
-| *DatabaseName* | string | &check; | The name of the database. |
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*ArrayOfManagedIdentityPolicyObjects*|array|&check;|An array with zero or more ManagedIdentity policy objects defined.|
+|*DatabaseName*|string|&check;|The name of the database.|
 
 > [!NOTE]
 > Policy objects must define the *ObjectId* and *AllowedUsages* properties. Other properties are automatically populated. For a description of policy objects, see [The ManagedIdentity policy object](managed-identity-policy.md#the-managedidentity-policy-object).
