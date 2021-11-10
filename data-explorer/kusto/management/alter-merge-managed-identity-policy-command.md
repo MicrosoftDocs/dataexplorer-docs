@@ -23,10 +23,10 @@ The command updates the ManagedIdentity policy of the cluster or the specified d
 
 ## Arguments
 
-| Name | Type | Required | Description |
-| -- | -- | -- | -- |
-| *ArrayOfManagedIdentityPolicyObjects* | array | &check; | An array with zero or more ManagedIdentity policy objects defined. |
-| *DatabaseName* | string | &check; | The name of the database. |
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*ArrayOfManagedIdentityPolicyObjects*|array|&check;|An array with zero or more ManagedIdentity policy objects defined.|
+|*DatabaseName*|string|&check;|The name of the database.|
 
 > [!NOTE]
 >
