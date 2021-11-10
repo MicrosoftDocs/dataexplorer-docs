@@ -15,9 +15,9 @@ This command returns the ManagedIdentity policy of the cluster or the specified 
 
 ## Arguments
 
-| Name | Type | Required | Description |
-| -- | -- | -- | -- |
-| *DatabaseName* | string | &check; | The name of the database. |
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database.|
 
 ## Syntax
 
