@@ -25,11 +25,13 @@ This article shows you how to add and remove system-assigned and user-assigned m
 
 ## Steps in order to authenticate with managed identities
 
-1. [Configure managed identieis for your cluster]()
-2. [Configure managed identity policy]()
-3. [Execute commands/queries]()
+1. [Configure managed identities for your cluster](azure/data-explorer/managed-identities?tabs=portal#configure-managed-identities-for-your-cluster)
+2. [Configure managed identity policy](azure/data-explorer/managed-identities?tabs=portal#configure-managed-identity-policy)
+3. [Execute queries](azure/data-explorer/managed-identities?tabs=portal#execute-queries)
 
-## Add a system-assigned identity
+## Configure managed identities for your cluster
+
+### Add a system-assigned identity
 
 Assign a system-assigned identity that is tied to your cluster, and is deleted if your cluster is deleted. A cluster can only have one system-assigned identity. Creating a cluster with a system-assigned identity requires an additional property to be set on the cluster. Add the system-assigned identity using the Azure portal, C#, or Resource Manager template as detailed below.
 
@@ -410,7 +412,7 @@ Run the following to remove the user-assigned identity:
 
 In order to use managed identity with your cluster it needs to be permitted by the managed identity policy. In order to configure a managed identity usage in the managed identity policy follow instructions [here](/some-link).
 
-## Supported Flows
+## Execute queries
 
 After assigning the managed identity to your cluster and configuring the relevant managed identity policy, you can start using managed identity authentication in the following flows:
 * External Tables - create an external table with managed identity authentication stated in the connection string (see [storage connection string docs](/azure/data-explorer/kusto/api/connection-strings/storage#azure-blob-storage) for examples) to make Azure Data Explorer authenticate with that managed identity during querying and exporting.
