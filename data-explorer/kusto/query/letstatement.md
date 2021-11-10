@@ -49,7 +49,7 @@ Use the `let` statement to set a variable name equal to a function or valid expr
 
 |Field  |Definition  |Example  |
 |---------|---------|---------|
-|*Name*   | The variable name, must be a valid entity name. | You can escape the name, for example `["Name with spaces"]` |
+|*Name*   | The variable name, must be valid. | You can escape the name, for example `["Name with spaces"]` |
 |*ScalarExpression* | An expression with a scalar result.| `let one=1;`  |
 |*TabularExpression*  | An expression with a tabular result. |  `Logs  \| where Timestamp > ago(1h)`  |
 |*UserDefinedFunction* | An expression that yields a user defined function, an anonymous function declaration. |  `let f=(a:int, b:string) { strcat(b, ":", a) }`  |
