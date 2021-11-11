@@ -12,21 +12,18 @@ ms.localizationpriority: high
 ---
 # Let statement
 
-Let statements bind names to expressions. 
-For the rest of the scope, where the let statement appears, the name can be used to refer to its bound value. The let statement may be within a global scope or a function body scope.
-If that name was previously bound to another value, the "innermost" let statement binding is used.
+Use the `let` statement to set a variable name equal to a function or valid expression. When the variable appears thereafter, it represents the defined function or expression. The `let` statement can be used within a function or query. If the variable previously represented another value, for example in nested statements, the innermost `let` statement applies. 
 
-Let statements improve modularity and reuse, since they let you break a potentially complex expression into multiple parts.
-Each part is bound to a name through the let statement, and together they compose the whole. 
-They can also be used to create user-defined functions and views. The views are expressions over tables whose results look like a new table.
+`Let` statements let you break up a potentially complex expression into multiple parts, each represented by a variable. The `let` statement can also be used to create user-defined functions and [views](schema-entities/views.md). 
 
 > [!NOTE]
-> Names bound by let statements must be valid entity names.
+> You must use a valid name for the `let` statement.
 
-Expressions bound by let statements can be:
+`Let` statements can include: 
+ 
 * Scalar types
 * Tabular types
-* User-defined functions (lambdas)
+* User-defined functions 
 
 ## Syntax
 
@@ -48,7 +45,7 @@ Expressions bound by let statements can be:
 
 **Syntax of ScalarArguments**
 
-`ScalarArguments` - [*ArgName* `:` *ArgType*] [`,` ... ]
+ [*ArgName* `:` *ArgType*] [`,` ... ]
 
 |Field  |Definition  |Example  |
 |---------|---------|---------|
@@ -63,70 +60,45 @@ Expressions bound by let statements can be:
 |*ArgType* | The type of the scalar argument. Currently the following are supported for user defined functions: `bool`, `string`, `long`, `datetime`, `timespan`, `real`, and `dynamic` (and aliases to these types).| |
 
 > [!NOTE]
->The tabular expression that is used in the lambda invocation must include (but is not limited to) all the attributes with the matching types.
->
->`(*)` can be used as the tabular expression. 
->
-> Any tabular expression can be used in the lambda invocation and none of its columns can be accessed in the lambda expression. 
 >
 > * You can use `(*)` for the tabular expression.
 > * When using a tabular expression as part of a user defined function, the columns can't be accessed as part of the function. 
 > * Tabular arguments appear before scalar arguments.
 
 
-## Multiple and nested let statements
-
-Multiple let statements can be used with the semicolon, `;`, delimiter between them, like in the following example.
-
-> [!NOTE]
-> The last statement must be a valid query expression. 
-
-```kusto
-let start = ago(5h); 
-let period = 2h; 
-T | where Time > start and Time < start + period | ...
-```
-
-Nested let statements are permitted, and can be used inside a lambda expression.
-Let statements and arguments are visible in the current and inner scope of the function body.
-
-```kusto
-let start_time = ago(5h); 
-let end_time = start_time + 2h; 
-T | where Time > start_time and Time < end_time | ...
-```
-
 ## Examples
 
-### Use let function to define constants
-
-The following example binds the name `x` to the scalar literal `1`, and then uses it in a tabular expression statement.
-
-```kusto
-let x = 1;
-range y from x to x step x
-```
-
-This example is similar to the previous one, only the name of the let statement is given using the `['name']` notion.
-
-```kusto
-let ['x'] = 1;
-range y from x to x step x
-```
-
-### Use let for scalar values
+### Define scalar values
 
 ```kusto
 let n = 10;  // number
 let place = "Dallas";  // string
-let cutoff = ago(62d); // datetime
+let cutoff = ago(62d); // datetime 
 Events 
 | where timestamp > cutoff 
     and city == place 
 | take n
 ```
 
-### Use let statement with arguments for scalar calculation
+### Define scalar constant
+
+The following example binds the name `x` to the scalar literal `1`, and then uses it in a tabular expression statement.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let x = 20;
+range y from 0 to x step 5
+```
+
+This example is similar to the previous one, only the name of the let statement is given using the `['name']` notion.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let ['x'] = 20;
+range y from 0 to x step 5
+```
+
+### Create user defined function with scalar calculation
 
 This example uses the let statement with arguments for scalar calculation. The query defines function `MultiplyByN` for multiplying two numbers.
 
@@ -137,6 +109,8 @@ range x from 1 to 5 step 1
 | extend result = MultiplyByN(x, 5)
 ```
 
+**Output**
+
 |x|result|
 |---|---|
 |1|5|
@@ -145,7 +119,9 @@ range x from 1 to 5 step 1
 |4|20|
 |5|25|
 
-The following example removes leading/trailing ones (`1`) from the input.
+### Create user defined function that trims input
+
+The following example removes leading and trailing ones from the input.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -153,6 +129,8 @@ let TrimOnes = (s:string) { trim("1", s) };
 range x from 10 to 15 step 1 
 | extend result = TrimOnes(tostring(x))
 ```
+
+**Output**
 
 |x|result|
 |---|---|
@@ -163,7 +141,6 @@ range x from 10 to 15 step 1
 |14|4|
 |15|5|
 
-
 ### Use multiple let statements
 
 This example defines two let statements where one statement (`foo2`) uses another (`foo1`).
@@ -173,12 +150,17 @@ This example defines two let statements where one statement (`foo2`) uses anothe
 let foo1 = (_start:long, _end:long, _step:long) { range x from _start to _end step _step};
 let foo2 = (_step:long) { foo1(1, 100, _step)};
 foo2(2) | count
-// Result: 50
 ```
 
-### Use the `view` keyword in a let statement
+**Output**
 
-This example shows you how to use let statement with the `view` keyword.
+|result|
+|---|
+|20|
+
+### Use a view 
+
+This example shows you how to use a let statement with the [`view`](schema-entities/views.md) keyword to create other tables.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -187,15 +169,16 @@ let Range20 = view () { range MyColumn from 1 to 20 step 1 };
 search MyColumn == 5
 ```
 
+**Output**
+
 |$table|MyColumn|
 |---|---|
 |Range10|5|
 |Range20|5|
 
+### Use a materialize function
 
-### Use materialize function
-
-The [`materialize`](materializefunction.md) function lets you cache subquery results during the time of query execution. 
+The [`materialize()`](materializefunction.md) function lets you cache subquery results during the time of query execution. When you use the `materialize()` function, the data is cached and any subsequent invocation of the result uses cached data.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -221,8 +204,33 @@ on $left.Day1 == $right.Day
 | project Day1, Day2, Percentage = count_*100.0/count_1
 ```
 
+**Output**
+
 |Day1|Day2|Percentage|
 |---|---|---|
 |2016-05-01 00:00:00.0000000|2016-05-02 00:00:00.0000000|34.0645725975255|
 |2016-05-01 00:00:00.0000000|2016-05-03 00:00:00.0000000|16.618368960101|
 |2016-05-02 00:00:00.0000000|2016-05-03 00:00:00.0000000|14.6291376489636|
+
+### Multiple let statements
+
+Multiple let statements can be used with the semicolon, `;`, delimiter between them, like in the following example.
+
+> [!NOTE]
+> The last statement must be a valid query expression. 
+
+```kusto
+let start = ago(5h); 
+let period = 2h; 
+T | where Time > start and Time < start + period | ...
+```
+
+### Nested let statements
+
+Nested let statements are permitted, including within a user defined function expression. Let statements and arguments apply in both the current and inner scope of the function body.
+
+```kusto
+let start_time = ago(5h); 
+let end_time = start_time + 2h; 
+T | where Time > start_time and Time < end_time | ...
+```
