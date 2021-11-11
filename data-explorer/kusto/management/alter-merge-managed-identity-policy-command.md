@@ -25,17 +25,17 @@ The command updates the ManagedIdentity policy of the cluster or the specified d
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ArrayOfManagedIdentityPolicyObjects*|array|&check;|An array with zero or more ManagedIdentity policy objects defined.|
+|*ArrayOfManagedIdentityPolicyObjects*|array|&check;|An array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects defined.|
 |*DatabaseName*|string|&check;|The name of the database.|
 
 > [!NOTE]
 >
-> * Policy objects must define the *ObjectId* and *AllowedUsages* properties. Other properties are automatically populated. For a description of policy objects, see [The ManagedIdentity policy object](managed-identity-policy.md#the-managedidentity-policy-object).
+> * Policy objects must define the *ObjectId* and *AllowedUsages* properties. Other properties are automatically populated.
 >
 > * For every item in `ArrayOfManagedIdentityPolicyObjects`:
 >
 >   * If the ObjectId *doesn't exist* in the ManagedIdentity policy, the item will be added to the policy.
->   * If the ObjectId *already exists* in the ManagedIdentity policy, the identity's AllowedUsages propoerty will be added to the relevant item in the policy. For example, if the current policy has AllowedUsages="NativeIngestion" for a specific managed identity, then if `ArrayOfManagedIdentityPolicyObjects` has an item for this managed identity with AllowedUsages="ExternalTables", then the AllowedUsages for this managed identity in the Managed Identity policy will become "NativeIngestion, ExternalTables".
+>   * If the ObjectId *already exists* in the ManagedIdentity policy, the identity's AllowedUsages property will be added to the relevant item in the policy. For example, if the current policy has AllowedUsages="NativeIngestion" for a specific managed identity, then if `ArrayOfManagedIdentityPolicyObjects` has an item for this managed identity with AllowedUsages="ExternalTables", then the AllowedUsages for this managed identity in the Managed Identity policy will become "NativeIngestion, ExternalTables".
 
 ### Getting the managed identity object ID
 
