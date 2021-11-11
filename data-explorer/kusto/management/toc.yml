@@ -272,13 +272,13 @@ items:
     items:
     - name: ManagedIdentity policy
       href: managed-identity-policy.md
-    - name: alter managed identity policy command
+    - name: .alter managed identity policy command
       href: alter-managed-identity-policy-command.md
-    - name: alter-merge managed identity policy command
+    - name: .alter-merge managed identity policy command
       href: alter-merge-managed-identity-policy-command.md
-    - name: delete managed identity policy command
+    - name: .delete managed identity policy command
       href: delete-managed-identity-policy-command.md
-    - name: show managed identity policy command
+    - name: .show managed identity policy command
       href: show-managed-identity-policy-command.md
   - name: Merge
     items:
