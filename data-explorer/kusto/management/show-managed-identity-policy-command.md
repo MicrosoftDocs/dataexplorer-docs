@@ -31,7 +31,7 @@ This command returns a table that has a single record.
 | Column     | Type     | Description       |
 |------------|----------|----------------------------------------------------------------------------------------------------------|
 | EntityName | `string` | The name of the entity the ManagedIdentity policy is defined on (or empty, if showing the cluster level policy) |
-| Policies   | `string` | A JSON array indicating all ManagedIdentity policies defined for the entity, formatted as [ManagedIdentity policy objects](managed-identity-policy.md#the-managedidentity-policy-object)|
+| Policies   | `string` | A JSON array indicating all ManagedIdentity policies defined for the entity, formatted as [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects|
 
 ## Example
 
