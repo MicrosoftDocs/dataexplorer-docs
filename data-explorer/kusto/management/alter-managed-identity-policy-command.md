@@ -25,11 +25,11 @@ The command sets the ManagedIdentity policy of the cluster or the specified data
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ArrayOfManagedIdentityPolicyObjects*|array|&check;|An array with zero or more ManagedIdentity policy objects defined.|
+|*ArrayOfManagedIdentityPolicyObjects*|array|&check;|An array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects defined.|
 |*DatabaseName*|string|&check;|The name of the database.|
 
 > [!NOTE]
-> Policy objects must define the *ObjectId* and *AllowedUsages* properties. Other properties are automatically populated. For a description of policy objects, see [The ManagedIdentity policy object](managed-identity-policy.md#the-managedidentity-policy-object).
+> Policy objects must define the *ObjectId* and *AllowedUsages* properties. Other properties are automatically populated.
 
 ### Getting the managed identity object ID
 
