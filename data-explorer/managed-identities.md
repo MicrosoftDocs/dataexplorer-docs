@@ -25,9 +25,9 @@ This article shows you how to add and remove system-assigned and user-assigned m
 
 ## Steps in order to authenticate with managed identities
 
-1. [Configure managed identities for your cluster](azure/data-explorer/managed-identities?tabs=portal#configure-managed-identities-for-your-cluster)
-2. [Configure managed identity policy](azure/data-explorer/managed-identities?tabs=portal#configure-managed-identity-policy)
-3. [Execute queries](azure/data-explorer/managed-identities?tabs=portal#execute-queries)
+1. [Configure managed identities for your cluster](managed-identities.md#configure-managed-identities-for-your-cluster)
+1. [Configure managed identity policy](managed-identities.md#configure-managed-identity-policy)
+1. [Execute queries](managed-identities.md#execute-queries)
 
 ## Configure managed identities for your cluster
 
