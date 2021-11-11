@@ -9,9 +9,9 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/11/2021
 ---
-# Using Kusto Query Language (KQL) queries over TDS
+# Executing queries over TDS
 
-In this topic, you'll learn how to use Tabular Data Stream (TDS) endpoints to execute stored functions and queries authored using the [Kusto Query Language](../../query/index.md).
+In this topic, you'll learn how to use Tabular Data Stream (TDS) endpoints to execute stored functions and queries authored using the [Kusto Query Language (KQL)](../../query/index.md).
 
 ## Executing stored functions
 
