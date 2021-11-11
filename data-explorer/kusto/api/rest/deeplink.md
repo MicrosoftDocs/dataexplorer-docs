@@ -83,10 +83,13 @@ and execute a query against that cluster.
 
 This REST API performs redirection to Kusto.WebExplorer, a web application.
 
-* Path: `/` [*DatabaseName*`]
+* Path: `/` clusters/<ClusterName>/databases/<DatabaseName>
 * Verb: `GET`
-* Query string: `web=1`
-
+* Query string parameters: 
+  `web=1`
+  `tenant=`<TenantGuid>
+  `login_hint`=<Login>
+  
 ## Specifying the query or control command in the URI
 
 When the URI query string parameter `query` is specified, it must be encoded
