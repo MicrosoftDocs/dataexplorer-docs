@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 08/12/2019
+ms.date: 11/11/2021
 ms.custom: mode-portal
 ms.localizationpriority: high
 ---
@@ -29,7 +29,9 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
 1. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
 
-1. In the upper-left of the application, select **Add cluster**.
+# [Ingest with query](#tab/ingest-query)
+
+1. Select **Query** in the left pane. In the upper-left of the application, select **Add cluster**.
 
 1. In the **Add cluster** dialog box, enter your cluster URL in the form `https://<ClusterName>.<Region>.kusto.windows.net/`, then select **Add**.
 
@@ -56,6 +58,43 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
     The query returns the following results from the ingested sample data.
 
     ![Query results.](media/ingest-sample-data/query-results.png)
+
+# [Ingest with wizard](#tab/one-click-ingest)
+
+1. Select **Data** in the left pane. In the **Data Management** page, select **Ingest data from blob**, and then **Ingest**. 
+      
+      :::image type="content" source="media/ingest-data-one-click/data-management.png" alt-text="Ingest data from the data management window of the WebUI interface - Azure Data Explorer." lightbox="media/ingest-data-one-click/data-management.png":::
+   
+     * Right-click the **database** or **table** row in the left menu of the Azure Data Explorer web UI and select **Ingest new data**.
+
+1. Select **Query** in the left pane. In the upper-left of the application, select **Add cluster**.
+
+1. In the **Add cluster** dialog box, enter your cluster URL in the form `https://<ClusterName>.<Region>.kusto.windows.net/`, then select **Add**.
+
+1. Paste in the following command, and select **Run** to create a StormEvents table.
+
+    ```Kusto
+    .create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)
+    ```
+
+1. Paste in the following command, and select **Run** to ingest data into StormEvents table.
+
+    ```Kusto
+    .ingest into table StormEvents 'https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D' with (ignoreFirstRecord=true)
+    ```
+
+1. After ingestion completes, paste in the following query, select the query in the window, and select **Run**.
+
+    ```Kusto
+    StormEvents
+    | sort by StartTime desc
+    | take 10
+    ```
+
+    The query returns the following results from the ingested sample data.
+
+    ![Query results.](media/ingest-sample-data/query-results.png)
+```
 
 ## Next steps
 
