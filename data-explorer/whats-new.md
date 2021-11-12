@@ -20,7 +20,7 @@ This section lists the major changes to docs during October 2021.
 
 | Article title | Description |
 |--|--|
-| [Create an Event Grid data connection for Azure Data Explorer by using C#](data-connection-event-grid-csharp.md) | Updated article. Add Event Grid data connection from Azure Portal.
+| [Create an Event Grid data connection for Azure Data Explorer by using C#](data-connection-event-grid-csharp.md) | Updated article. Add Event Grid data connection from Azure portal.
 | [Create an Event Grid data connection for Azure Data Explorer by using Python](data-connection-event-grid-python.md) | Updated article. 
 | [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)  | Updated article. Add Event Grid data connection from Azure Portal. 
 | [Event Grid data connection](ingest-data-event-grid-overview.md) | Updated article. Add Event Grid data connection from Azure Portal. 
