@@ -69,7 +69,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
     :::image type="content" source="media/ingest-sample-data/select-ingestion-cluster.png" alt-text="Select ingestion cluster and  database and select an existing or new table name. Specify table name.":::
 
-    | **Setting** | **Field description** |
+     **Setting** | **Field description** 
     |---|---|
     | Cluster | A unique cluster name | Select your cluster. |
     | Database | Select the database that best meets your needs. |
@@ -79,7 +79,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
     :::image type="content" source="media/ingest-sample-data/specify-ingestion-source.png" alt-text="Select source for ingestion and provide list of source URIs or containers.":::
 
-    | **Setting** | **Field description** |
+     **Setting** | **Field description** 
     |---|---|
     | Source type | Select the data source to ingest. To ingest from a blob, select *From blob* |
     | Link to source | Add a blob URI with a SAS token or Account key. You can add up to 10 items of up to 1GB uncompressed size each. For this example, enter https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D. |
@@ -89,7 +89,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
     :::image type="content" source="media/ingest-sample-data/define-ingestion-schema.png" alt-text="Define schema for ingestion, whether data is uncompressed, and structure of table.":::
 
-    | **Setting** | **Field description** |
+     **Setting** | **Field description** 
     |---|---|
     | Compression type | Compression type is taken from the file extension. |
     | Data format | Confirm the format selected in **Data format**. In this case, the data format is **CSV**.  | 
