@@ -71,9 +71,10 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
     | Setting | Field description|
     |---|---|
-    | Cluster | A unique cluster name | Select your cluster. |
-    | Database | Select the database that best meets your needs. |
-    | Table | Create a new table. For this example, you can name it *StormEvents*. |
+    |Cluster | Select your cluster. |
+    |Database | Select the database that best meets your needs. |
+    |Table | Create a new table. For this example, you can name it *StormEvents*. |
+
     
 1. Specify out the source details with the following information.
 
