@@ -73,7 +73,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
     |---|---|
     |Cluster | Select your cluster. |
     |Database | Select the database that best meets your needs. |
-    |Table | Create a new table. For this example, you can name it *StormEvents*. |
+    |Table | Create a new table. For this example, name it *StormEvents*. |
 
     
 1. Specify out the source details with the following information.
@@ -82,8 +82,8 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
     | Setting | Field description|
     |---|---|
-    | Source type | Select the data source to ingest. To ingest from a blob, select *From blob* |
-    | Link to source | Add a blob URI with a SAS token or Account key. You can add up to 10 items of up to 1GB uncompressed size each. For this example, enter https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D. |
+    | Source type | Select the data source to ingest. In this example, *From blob* is already selected. |
+    | Link to source | Add a blob URI with a SAS token or Account key. For this example, enter https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D. |
    
 
 1. Confirm the schema details.
@@ -92,10 +92,10 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
     | Setting | Field description|
     |---|---|
-    | Compression type | Compression type is taken from the file extension. |
-    | Data format | Confirm the format selected in **Data format**. In this case, the data format is **CSV**.  | 
-    | Ignore the first record | If the source table includes column names, ignore the first record during ingestion.  | 
-    | Mapping | A mapping name is assigned. | 
+    | Compression type | Compression type has been taken from the file extension. |
+    | Data format | The data format, **CSV**, is already specified. | 
+    | Ignore the first record | If the source table includes column names, the first record is ignored during ingestion.  | 
+    | Mapping | A mapping name has been assigned. | 
 
 1. After ingestion completes, paste in the following query, select the query in the window, and select **Run**.
 
