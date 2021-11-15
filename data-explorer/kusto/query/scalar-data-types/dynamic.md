@@ -213,6 +213,6 @@ For a complete list of scalar dynamic/array functions, see [dynamic/array functi
 Every field is indexed during data ingestion. The scope of the index is a single data shard.
 
 For dynamic columns, to index a dynamic field, the ingestion process enumerates all “atomic” elements within the dynamic value 
-(property names, values, array elements) and forwards them to the index builder. Other than that, dynamic fields have the same inverted term index as the string fields.
+(property names, values, array elements) and forwards them to the index builder. Otherwise, dynamic fields have the same inverted term index as string fields.
 
-For information about indexing, see the section [dynamic data type](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-explorer/Azure_Data_Explorer_white_paper.pdf)
+For information about indexing, see [dynamic data type](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-explorer/Azure_Data_Explorer_white_paper.pdf).

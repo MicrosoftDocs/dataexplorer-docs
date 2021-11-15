@@ -59,7 +59,7 @@ items:
       href: alter-database.md
     - name: ".show database(s) schema"
       href: show-schema-database.md
-    - name: .execute database script"
+    - name: ".execute database script"
       href: execute-database-script.md
   - name: Tables
     items:

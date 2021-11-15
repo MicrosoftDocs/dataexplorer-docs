@@ -185,7 +185,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 We recommend defining a `Raw Data Size` value for ingested data and incrementally decreasing the size towards 250MB, while checking if performance improves.
 
-You can use the `Flush Immediately` property to skip batching, although this is not recommended for large scale ingestion, as it can cause poor performance. 
+You can use the `Flush Immediately` property to skip batching, although this is not recommended for large-scale ingestion as it can cause poor performance. 
 
 ## Queue a message for ingestion
 

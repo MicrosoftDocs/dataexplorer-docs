@@ -352,7 +352,7 @@ az kusto cluster delete -n <cluster name> -g <resource group name>
 az kusto database delete -n <database name> --cluster-name <cluster name> -g <resource group name>
 ```
 
-## Tuning Kafka Sink connectors
+## Tuning the Kafka Sink connector
 
 Tune the [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) connector to work with the [ingestion batching policy](kusto/management/batchingpolicy.md):
 
