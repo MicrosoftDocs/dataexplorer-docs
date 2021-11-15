@@ -160,7 +160,7 @@ Now, we will set the update policy to use the source table that we created and m
 
 ```kusto
 .alter table MyTargetTable policy update 
-@'[{ "IsEnabled": true, "Source": "MySourceTable", "Query": "ExtractMyLogs()", "IsTransactional": false, "PropagateIngestionProperties": false}]'
+@'[{ "IsEnabled": true, "Source": "MySourceTable", "Query": "ExtractMyLogs()", "IsTransactional": true, "PropagateIngestionProperties": false}]'
 ```
 
 We defined the update policy as non-trasactional. Defining your update policy as transactional (by having IsTransactional set to true) will help in guaranteeing consistency between the data in the source table and in the target table. Doing so, however, comes with a risk that if your policy is defined incorrectly, data will not be ingested neither to the source table nor to the target table. An example for such a case can be a mismatch between the output schema of your query and the target table, caused, for example, by dropping (accidentally, or not) a column from the target table, or by altering the function so that its output schema is altered as well.
