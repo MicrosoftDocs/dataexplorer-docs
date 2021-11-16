@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 08/17/2021
+ms.date: 11/16/2021
 ---
 
 # Use parameters in Azure Data Explorer dashboards
@@ -41,22 +41,23 @@ To create a parameter, select the **New parameter** button at the top of the rig
 
 |Field  |Description |
 |---------|---------|
-|**Label**    |   The name of the parameter shown on the dashboard or the edit card.      |
-|**Parameter type**    |One of the following parameters:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.</li><li>**Free text**: Doesn't have any values populated in the filter. The user can type a value or copy/paste a value to the text field. The filter keeps the recent values used.</li></ul>    |
-|**Variable name**     |   The name of the parameter to be used in the query.      |
-|**Data type**    |    The data type of the parameter values.     |
-|**Show on pages**   |   Select the pages where this parameter will be displayed. Select all shows the paramter on all pages.       |
-|**Source**     |    The source of the parameter values: <ul><li>**Fixed values**: Manually introduced static filter values. </li><li>**Query**: Dynamically introduced values using a KQL query.  </li></ul>    |
-|**Default value**    |  The default value of the filter. The filter will start always with the default value upon initial rendering of the dashboard.         |
-|**Add a “Select all” value**    |   Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values. This value should be built into the query to provide the functionality. See [Use the multiple-selection query-based parameter](#use-the-multiple-selection-query-based-parameter) for more examples on building such queries.     |
+|**Label**|The name of the parameter shown on the dashboard or the edit card.|
+|**Parameter type**|One of the following parameters:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.</li><li>**Free text**: Doesn't have any values populated in the filter. The user can type a value or copy/paste a value to the text field. The filter keeps the recent values used.</li></ul>|
+|**Variable name**|The name of the parameter to be used in the query.|
+|**Data type**|The data type of the parameter values.|
+|**Show on pages**|Select the pages where this parameter will be displayed. The **Select all** option shows the parameter on all pages.|
+|**Source**|The source of the parameter values: <ul><li>**Fixed values**: Manually introduced static filter values. </li><li>**Query**: Dynamically introduced values using a KQL query.</li></ul>|
+|**Default value**|The default value of the filter. The filter will start always with the default value upon initial rendering of the dashboard.
+|**Add a "Select all" value**|Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values. This value should be built into the query to provide the functionality. See [Use the multiple-selection query-based parameter](#use-the-multiple-selection-query-based-parameter) for more examples on building such queries.|
 
 ## Manage parameters in parameter card
 
-In the three dots menu in the parameter card, select **Edit**, **Duplicate parameter**, **Delete**, or **Move to >**.
+In the three dots menu in the parameter card, select **Edit**, **Duplicate parameter**, **Delete**, or **Move to**.
 
 The following indicators can be viewed in the parameter card:
-* Parameter display name 
-* Variable names 
+
+* Parameter display name
+* Variable names
 * Number of queries in which the parameter was used
 * Pages the parameter is pinned to
 
@@ -75,7 +76,7 @@ A parameter must be used in the query to make the filter applicable for that que
 
 ## Use different parameter types
 
-Several dashboard parameter types are supported. The following examples describe how to use parameters in a query for various parameter types. 
+Several dashboard parameter types are supported. The following examples describe how to use parameters in a query for various parameter types.
 
 ### Use the default Time range parameter
 
@@ -97,7 +98,7 @@ Once saved, the time range filter shows up on the dashboard. Now it can be used 
 
 Fixed value parameters are based on predefined values specified by the user. The following example shows you how to create a single selection fixed value parameter.
 
-#### Create the parameter
+#### Create a fixed value parameter
 
 1. Select **Parameters** to open the **Parameters** pane and select **New parameter**.
 
@@ -109,9 +110,9 @@ Fixed value parameters are based on predefined values specified by the user. The
     * **Data type**: String
     * **Pin as dashboard filter**: checked
     * **Source**: Fixed values
-    
+
     In this example, use the following values:
-    
+
     | Value      | Parameter display name |
     |------------|------------------------|
     | google/    | Google                 |
@@ -119,7 +120,7 @@ Fixed value parameters are based on predefined values specified by the user. The
     | facebook/  | Facebook               |
     | aws/       | AWS                    |
     | uber/      | Uber                   |
-    
+
     * Add a **Select all** value: Unchecked
     * Default value: Microsoft
 
@@ -168,7 +169,7 @@ The new parameters can be seen in the **Parameters** side pane, but aren't curre
 
 :::image type="content" source="media/dashboard-parameters/companies-side-pane.png" alt-text="companies side pane.":::
 
-#### Use the parameters 
+#### Use the parameters
 
 1. Run a sample query using the new *companies* parameter by using the `_companies` variable.
 
@@ -182,7 +183,7 @@ The new parameters can be seen in the **Parameters** side pane, but aren't curre
     | top 5 by WatchEvents
     ```
 
-    The new parameter shows up in the parameter list at the top of the dashboard.  
+    The new parameter shows up in the parameter list at the top of the dashboard.
 
 1. Select one or more different values to update the visuals.
 
@@ -192,11 +193,11 @@ The new parameters can be seen in the **Parameters** side pane, but aren't curre
 
 Query-based parameter values are retrieved during dashboard loading by executing the parameter query. The following example shows you how to create and use a single selection query-based parameter.
 
-#### Create the parameter
+#### Create a single selection parameter
 
 1. Select **Parameters** to open the **Parameters** pane and select **New parameter**.
 
-2. Fill in the details as mentioned in [Use the single selection fixed value parameter](#use-the-single-selection-fixed-value-parameter) with the following changes:
+1. Fill in the details as mentioned in [Use the single selection fixed value parameter](#use-the-single-selection-fixed-value-parameter) with the following changes:
 
     * **Parameter display name**: Event
     * **Variable name**: `_event`
@@ -226,7 +227,7 @@ Query-based parameter values are retrieved during dashboard loading by executing
     | summarize count(Id) by Type, bin(CreatedAt,7d)
     ```
 
-    The new parameter shows up in the parameter list at the top of the dashboard. 
+    The new parameter shows up in the parameter list at the top of the dashboard.
 
 1. Select different values to update the visuals.
 
@@ -234,7 +235,7 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 Query-based parameter values are derived at dashboard load time by executing the user specified query. The following example shows how to can create a multiple-selection query-based parameter:
 
-#### Create a parameter
+#### Create a query-based parameter
 
 1. Select **Parameters** to open the **Parameters** pane and select **New parameter**.
 
@@ -246,7 +247,7 @@ Query-based parameter values are derived at dashboard load time by executing the
 
 1. Click **Done** to create the parameter.
 
-#### Use parameters in the query
+#### Use the parameters in the query
 
 1. The following sample query uses the new *Events* parameter by using the `_events` variable.
 
@@ -259,7 +260,7 @@ Query-based parameter values are derived at dashboard load time by executing the
     > [!NOTE]
     > This sample uses the **Select All** option by checking for empty values with the `isempty()` function.
 
-    The new parameter shows up in the parameter list at the top of the dashboard. 
+    The new parameter shows up in the parameter list at the top of the dashboard.
 
 1. Select one or more different values to update the visuals.
 
@@ -267,7 +268,7 @@ Query-based parameter values are derived at dashboard load time by executing the
 
 Free text parameters don't contain any values. They allow you to introduce your own value.
 
-#### Create the parameter
+#### Create a free text parameter
 
 1. Select **Parameters** to open the **Parameters pane** and select **New parameter**.
 1. Fill in the details as follows:
@@ -300,4 +301,4 @@ In single and multiple selection filters, type the value that you want. The filt
 ## Next Steps
 
 * [Customize dashboard visuals](dashboard-customize-visuals.md)
-* [Query data in Azure Data Explorer](web-query-data.md) 
+* [Query data in Azure Data Explorer](web-query-data.md)
