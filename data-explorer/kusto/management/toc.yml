@@ -585,6 +585,8 @@ items:
     href: cluster-follower.md
   - name: Data purge
     href: ../concepts/data-purge.md
+  - name: Data soft delete
+    href: ../concepts/data-soft-delete.md
 - name: Errors and failures
   items:
   - name: Ingestion error codes
