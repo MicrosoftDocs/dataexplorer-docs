@@ -51,7 +51,7 @@ Each such object is represented as a JSON property bag, with the following prope
 |Source                        |`string`|Name of the table that triggers update policy to be invoked                                                                                                                                 |
 |Query                         |`string`|A Kusto CSL query that is used to produce the data for the update                                                                                                                           |
 |IsTransactional               |`bool`  |States if the update policy is transactional or not (defaults to false). Failure to run a transactional update policy results in the source table not being updated with new data   |
-|PropagateIngestionProperties  |`bool`  |States if ingestion properties (extent tags and creation time) specified during the ingestion into the source table, should also apply to the ones in the derived table.                 |
+|PropagateIngestionProperties  |`bool`  |States if ingestion properties (extent tags and creation time) specified during the ingestion into the source table, should also apply to the ones in the derived table. This property is ignored in Streaming Ingestion.                |
 
 > [!NOTE]
 > In production systems, set the *IsTransactional* property to *true* to ensure that the target table doesn't lose data in transient failures.  
