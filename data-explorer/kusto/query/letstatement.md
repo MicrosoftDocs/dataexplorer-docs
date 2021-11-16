@@ -12,18 +12,21 @@ ms.localizationpriority: high
 ---
 # Let statement
 
-Use the `let` statement to set a variable name equal to a function or valid expression. When the variable appears thereafter, it represents the defined function or expression. The `let` statement can be used within a function or query. If the variable previously represented another value, for example in nested statements, the innermost `let` statement applies. 
+Use the `let` statement to set a variable name equal to an expression or a function, or to create [views](schema-entities/views.md). 
 
-`Let` statements let you break up a potentially complex expression into multiple parts, each represented by a variable. The `let` statement can also be used to create user-defined functions and [views](schema-entities/views.md). 
+`let` statements are useful for:
 
-> [!NOTE]
-> You must use a valid name for the `let` statement.
+* Breaking up a complex expression into multiple parts, each represented by a variable. 
+* Defining constants outside of the query body for readability.
+* Defining a variable once and using it multiple times within a query. 
 
-`Let` statements can include: 
+`let` definitions can include: 
  
-* Scalar types
-* Tabular types
+* Scalar expressions
+* Tabular expressions
 * User-defined functions 
+
+If the variable previously represented another value, for example in nested statements, the innermost `let` statement applies. 
 
 ## Syntax
 
@@ -33,19 +36,11 @@ Use the `let` statement to set a variable name equal to a function or valid expr
 
 `let` *Name* `=` *UserDefinedFunction*
 
-**Syntax of UserDefinedFunction**
+**Syntax of view or function**
 
-[`view`] `(` [ *TabularArguments* ]  [`,`] [ *ScalarArguments* ] `)` `{` *FunctionBody* `}`
+`let` *Name* `=` [`view`] `(` [*TabularArgName* `:` `(` `*` `)`]  [`,`] [  [*ArgName* `:` *ArgType*] [`,` ... ] ] `)` `{` *FunctionBody* `}`
 
-**Syntax of TabularArguments**
-
- [*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ]`)`] [`,` ... ][`,`]
-
-[*TabularArgName* `:` `(` `*` `)`] 
-
-**Syntax of ScalarArguments**
-
- [*ArgName* `:` *ArgType*] [`,` ... ]
+`let` *Name* `=` [`view`] `(` [  [*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ]`)`] [`,` ... ][`,`] ]  [`,`] [  [*ArgName* `:` *ArgType*] [`,` ... ] ] `)` `{` *FunctionBody* `}`
 
 |Field  |Definition  |Example  |
 |---------|---------|---------|
@@ -53,7 +48,7 @@ Use the `let` statement to set a variable name equal to a function or valid expr
 |*ScalarExpression* | An expression with a scalar result.| `let one=1;`  |
 |*TabularExpression*  | An expression with a tabular result. |  `Logs  \| where Timestamp > ago(1h)`  |
 |*UserDefinedFunction* | An expression that yields a user defined function, an anonymous function declaration. |  `let f=(a:int, b:string) { strcat(b, ":", a) }`  |
-| *view* | Appears only in a parameterless `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views. | |
+|*view* | Appears only in a parameterless `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views. | |
 | *TabularArgName*| The name of the tabular argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. | |
 | *AttributeName* : *AttributeType*| The name and type of the attribute. Part of the table schema definition, which includes a set of attributes with their types. |  |
 |*ArgName* | The name of the scalar argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked.  | |
@@ -82,15 +77,7 @@ Events
 
 ### Define scalar constant
 
-The following example binds the name `x` to the scalar literal `1`, and then uses it in a tabular expression statement.
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-let x = 20;
-range y from 0 to x step 5
-```
-
-This example is similar to the previous one, only the name of the let statement is given using the `['name']` notion.
+The following example binds the name `x` using the `['name']` notion, and then uses it in a tabular expression statement.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
