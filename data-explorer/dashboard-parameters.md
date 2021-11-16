@@ -35,7 +35,7 @@ To create a parameter, select the **New parameter** button at the top of the rig
 
 ### Properties
 
-1. In the **Add parameter** pane, configure the properties detailed below.
+In the **Add parameter** pane, configure the properties detailed below.
 
 :::image type="content" source="media/dashboard-parameters/properties.png" alt-text="add parameter properties.":::
 
