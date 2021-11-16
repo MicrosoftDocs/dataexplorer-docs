@@ -45,6 +45,14 @@ You can delete all rows in a table or just a specific extent.
     .drop extent e9fac0d2-b6d5-4ce3-bdb4-dea052d13b42
     ```
 
-## Delete individual rows using purge
+## Delete individual rows
 
-[Data purge](kusto/concepts/data-purge.md) can be used for deleting individuals rows. Deletion isn't immediate and requires significant system resources. As such, it's only advised for compliance scenarios.
+Both purge and soft-delete can be used for deleting individuals rows, but they are designed for completely different scenarios.
+
+### Purge
+
+With [purge](kusto/concepts/data-purge.md), Azure Data Explorer will delete all storage artifacts that have the "poison" data. Deletion isn't immediate and requires significant system resources. As such, it's only advised for compliance scenarios.
+
+### Soft-delete
+
+With [soft-delete](kusto/concepts/data-soft-delete.md), Azure Data Explorer won't necessarily delete the data from the storage artifacts, and as such, it cannot be used for compliance scenarios. Deletion is immediate and doesn't require significant system resources.
