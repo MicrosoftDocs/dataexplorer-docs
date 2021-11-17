@@ -177,9 +177,9 @@ The default capacity policy has the following JSON representation:
 > [!WARNING]
 > Consult with the Azure Data Explorer team before altering a capacity policy.
 
-* Use [`.show cluster policy capacity`](capacity-policy.md#show-cluster-policy-capacity) to show the current capacity policy of the cluster.
+* Use [`.show cluster policy capacity`](./show-cluster-capacity-policy-command.md#show-cluster-policy-capacity) to show the current capacity policy of the cluster.
 
-* Use [`.alter cluster policy capacity`](capacity-policy.md#alter-cluster-policy-capacity) to alter the capacity policy of the cluster.
+* Use [`.alter cluster policy capacity`](./show-cluster-capacity-policy-command.md#alter-cluster-policy-capacity) to alter the capacity policy of the cluster.
 
 ## Control commands throttling
 

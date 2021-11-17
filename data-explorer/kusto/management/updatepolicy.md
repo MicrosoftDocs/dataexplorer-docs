@@ -11,7 +11,7 @@ ms.date: 08/04/2020
 ---
 # Update policy overview
 
-The [update policy](update-policy.md) instructs Azure Data Explorer to automatically append data to a target table whenever new data is inserted into the source table, based on a transformation query that runs on the data inserted into the source table.
+The [update policy](./show-table-update-policy-command.md) instructs Azure Data Explorer to automatically append data to a target table whenever new data is inserted into the source table, based on a transformation query that runs on the data inserted into the source table.
 
 :::image type="content" source="images/updatepolicy/update-policy-overview.png" alt-text="Overview of the update policy in Azure Data Explorer.":::
 
@@ -65,10 +65,10 @@ Each such object is represented as a JSON property bag, with the following prope
 
 Commands to control the update policy include:
 
-* [`.show table *TableName* policy update`](update-policy.md#show-update-policy) shows the current update policy of a table.
-* [`.alter table *TableName* policy update`](update-policy.md#alter-update-policy) sets the current update policy of a table.
-* [`.alter-merge table *TableName* policy update`](update-policy.md#alter-merge-table-tablename-policy-update) appends to the current update policy of a table.
-* [`.delete table *TableName* policy update`](update-policy.md#delete-table-tablename-policy-update) deletes the current update policy of a table.
+* [`.show table *TableName* policy update`](./show-table-update-policy-command.md#show-update-policy) shows the current update policy of a table.
+* [`.alter table *TableName* policy update`](./show-table-update-policy-command.md#alter-update-policy) sets the current update policy of a table.
+* [`.alter-merge table *TableName* policy update`](./show-table-update-policy-command.md#alter-merge-table-tablename-policy-update) appends to the current update policy of a table.
+* [`.delete table *TableName* policy update`](./show-table-update-policy-command.md#delete-table-tablename-policy-update) deletes the current update policy of a table.
 
 ## Update policy is initiated following ingestion
 

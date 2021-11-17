@@ -35,9 +35,9 @@ This section lists the major changes to docs during October 2021.
 
 | Article title | Description |
 |--|--|
-| [Role-based Authorization in Kusto](/azure/data-explorer/kusto/management/access-control/role-based-authorization.md) | Updated article. Materialized views rename source table.
-| [Cache policy (hot and cold cache)](/azure/data-explorer/kusto/management/cachepolicy.md) | Updated article. Caching with long storage.
-| [Role-based Authorization in Kusto](/azure/data-explorer/kusto/management/access-control/role-based-authorization.md)| Updated article. Using the AllDatabasesMonitor role.
+| [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md) | Updated article. Materialized views rename source table.
+| [Cache policy (hot and cold cache)](./kusto/management/cachepolicy.md) | Updated article. Caching with long storage.
+| [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md)| Updated article. Using the AllDatabasesMonitor role.
 
 ## September 2021
 
@@ -53,8 +53,8 @@ This section lists the major changes to docs during September 2021.
 
 | Article title | Description |
 |--|--|
-| [Views](/azure/data-explorer/kusto/query/schema-entities/views.md)| New article. Learn how to use views, which are virtual tables based on the result-set of a query.
-| [Entity types](/azure/data-explorer/kusto/query/schema-entities/index.md)| Updated article. Added information on how to use views.
+| [Views](./kusto/query/schema-entities/views.md)| New article. Learn how to use views, which are virtual tables based on the result-set of a query.
+| [Entity types](./kusto/query/schema-entities/index.md)| Updated article. Added information on how to use views.
 
 ## August 2021
 
@@ -72,29 +72,29 @@ This section lists the major changes to docs during August 2021.
 
 | Article title | Description |
 |--|--|
-| [series_pow()](/azure/data-explorer/kusto/query/series-powfunction.md)| New article. Calculates the element-wise power of two numeric series inputs. 
-| [Aggregation function types at a glance](/azure/data-explorer/kusto/query/aggregation-functions.md) | New article. Lists aggregation functions, which perform a calculation on a set of values and return a single value.
-| [Scalar function types at a glance](/azure/data-explorer/kusto/query/scalarfunctions.md) | Updated article. Updated aggregation function and added series_pow.
-| [materialized_view() function](/azure/data-explorer/kusto/query/materialized-view-function.md) | Updated article. Updated aggregation function.
+| [series_pow()](./kusto/query/series-powfunction.md)| New article. Calculates the element-wise power of two numeric series inputs. 
+| [Aggregation function types at a glance](./kusto/query/aggregation-functions.md) | New article. Lists aggregation functions, which perform a calculation on a set of values and return a single value.
+| [Scalar function types at a glance](./kusto/query/scalarfunctions.md) | Updated article. Updated aggregation function and added series_pow.
+| [materialized_view() function](./kusto/query/materialized-view-function.md) | Updated article. Updated aggregation function.
 
 ### Management
 
 | Article title | Description |
 |--|--|
-| [.alter query weak consistency policy](/azure/data-explorer/kusto/management/alter-query-weak-consistency-policy.md) | New article.
-| [Query weak consistency policy](/azure/data-explorer/kusto/management/query-weak-consistency-policy.md) | New article.
-| [.show query weak consistency policy](/azure/data-explorer/kusto/management/show-query-weak-consistency-policy.md) | New article.
+| [.alter query weak consistency policy](./kusto/management/alter-query-weak-consistency-policy.md) | New article.
+| [Query weak consistency policy](./kusto/management/query-weak-consistency-policy.md) | New article.
+| [.show query weak consistency policy](./kusto/management/show-query-weak-consistency-policy.md) | New article.
 
 ### Functions library
 
 | Article title | Description |
 |--|--|
 | [pair_probabilities_fl()](kusto/functions-library/functions-library.md)] | New article. The function `pair_probabilities_fl()`calculates probabilities and metrics.
-| [bartlett_test_fl()](/azure/data-explorer/kusto/functions-library/bartlett-test-fl.md) | New article. The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
-| [levene_test_fl()](/azure/data-explorer/kusto/functions-library/levene-test-fl.md) | New article. The function `levene_test_fl()` performs the [Levene Test](https://en.wikipedia.org/wiki/Levene%27s_test).
-| [mann_whitney_u_test_fl()](/azure/data-explorer/kusto/functions-library/mann-whitney-u-test-fl.md) | New article. The function `mann_whitney_u_test_fl()` performs the [Mann-Whitney U Test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test).
-| [wilcoxon_test_fl()](/azure/data-explorer/kusto/functions-library/wilcoxon-test-fl.md) | New article. The function `wilcoxon_test_fl()` performs the [Wilcoxon Test](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test).
-| [Functions library](/azure/data-explorer/kusto/functions-library/functions-library.md) | Updated article. Added [pair_probabilities_fl()](kusto/functions-library/functions-library.md), [normality_test_fl](kusto/functions-library/normality-test-fl.md).
+| [bartlett_test_fl()](./kusto/functions-library/bartlett-test-fl.md) | New article. The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
+| [levene_test_fl()](./kusto/functions-library/levene-test-fl.md) | New article. The function `levene_test_fl()` performs the [Levene Test](https://en.wikipedia.org/wiki/Levene%27s_test).
+| [mann_whitney_u_test_fl()](./kusto/functions-library/mann-whitney-u-test-fl.md) | New article. The function `mann_whitney_u_test_fl()` performs the [Mann-Whitney U Test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test).
+| [wilcoxon_test_fl()](./kusto/functions-library/wilcoxon-test-fl.md) | New article. The function `wilcoxon_test_fl()` performs the [Wilcoxon Test](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test).
+| [Functions library](./kusto/functions-library/functions-library.md) | Updated article. Added [pair_probabilities_fl()](kusto/functions-library/functions-library.md), [normality_test_fl](kusto/functions-library/normality-test-fl.md).
 
 ## July 2021
 
@@ -187,7 +187,7 @@ This section lists the major changes to docs during April 2021.
 
 | Article title | Description |
 |--|--|
-[Workload groups - Control commands](kusto/management/workload-groups-commands.md)  | Updated article. General Availability (GA).
+[Workload groups - Control commands](./kusto/management/show-workload-group-command.md)  | Updated article. General Availability (GA).
 [Workload groups](kusto/management/workload-groups.md)  | Updated article. General Availability (GA).
 [Materialized views](kusto/management/materialized-views/materialized-view-overview.md)  | Updated article. General Availability (GA).
 [Materialized views policies](kusto/management/materialized-views/materialized-view-policies.md)  | Updated article. General Availability (GA).
@@ -218,7 +218,7 @@ This section lists the major changes to docs during March 2021.
 
 | Article title | Description |
 |--|--|
-| [Auto delete policy command](kusto/management/auto-delete-policy-command.md), [Auto delete policy](kusto/management/auto-delete-policy.md) | New articles. An auto delete policy on a table sets an expiry date for the table. |
+| [Auto delete policy command](./kusto/management/show-auto-delete-policy-command.md), [Auto delete policy](kusto/management/auto-delete-policy.md) | New articles. An auto delete policy on a table sets an expiry date for the table. |
 | [Stored query results (Preview)](kusto/management/stored-query-results.md) | Updated article. Added async mode. |
 
 ### Functions library
@@ -287,10 +287,10 @@ Article title | Description
 Article title | Description
 ---|---
 [Clean extent containers commands](kusto/management/clean-extent-containers.md) | New article. This article describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands in Azure Data Explorer.
-[Request classification policy (Preview)](kusto/management/request-classification-policy.md)  <br>[Request classification policy (Preview) - Control commands](kusto/management/request-classification-policy-commands.md) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
+[Request classification policy (Preview)](kusto/management/request-classification-policy.md)  <br>[Request classification policy (Preview) - Control commands](./kusto/management/show-cluster-policy-request-classification-command.md) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
 [Request limits policy (Preview)](kusto/management/request-limits-policy.md) | New article. A workload group's request limits policy allows limiting the resources used by the request during its execution.
 [Request rate limit policy (Preview)](kusto/management/request-rate-limit-policy.md) | New article. The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group.
-[Workload groups (Preview)](kusto/management/workload-groups.md)  <br> [Workload groups (Preview) - Control commands](kusto/management/workload-groups-commands.md) | New articles. A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
+[Workload groups (Preview)](kusto/management/workload-groups.md)  <br> [Workload groups (Preview) - Control commands](./kusto/management/show-workload-group-command.md) | New articles. A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
 [Queries management](kusto/management/queries.md) | Updated article. Syntax updated
 
 ## December 2020

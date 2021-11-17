@@ -79,4 +79,4 @@ The effective rate limits for the `default` workload group are:
 
 ## Control commands
 
-Manage the workload group's request concurrency policy with [Workload groups control commands](workload-groups-commands.md).
+Manage the workload group's request concurrency policy with [Workload groups control commands](./show-workload-group-command.md).
