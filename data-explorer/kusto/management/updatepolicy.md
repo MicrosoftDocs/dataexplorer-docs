@@ -65,10 +65,10 @@ Each such object is represented as a JSON property bag, with the following prope
 
 Commands to control the update policy include:
 
-* [`.show table *TableName* policy update`](./show-table-update-policy-command.md#show-update-policy) shows the current update policy of a table.
-* [`.alter table *TableName* policy update`](./show-table-update-policy-command.md#alter-update-policy) sets the current update policy of a table.
-* [`.alter-merge table *TableName* policy update`](./show-table-update-policy-command.md#alter-merge-table-tablename-policy-update) appends to the current update policy of a table.
-* [`.delete table *TableName* policy update`](./show-table-update-policy-command.md#delete-table-tablename-policy-update) deletes the current update policy of a table.
+* [`.show table *TableName* policy update`](./show-table-update-policy-command.md) shows the current update policy of a table.
+* [`.alter table *TableName* policy update`](./show-table-update-policy-command.md) sets the current update policy of a table.
+* [`.alter-merge table *TableName* policy update`](./show-table-update-policy-command.md) appends to the current update policy of a table.
+* [`.delete table *TableName* policy update`](./show-table-update-policy-command.md) deletes the current update policy of a table.
 
 ## Update policy is initiated following ingestion
 
