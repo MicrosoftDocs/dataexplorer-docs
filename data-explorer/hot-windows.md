@@ -85,7 +85,7 @@ Run the query or queries you want over the time period specified in the hot wind
 ## Revert settings
 
 1. Use the original cache settings retrieved above in [Set hot windows](#set-hot-windows).
-1. Revert the cache policy to the original settings with the [`.alter policy caching` command](./kusto/management/show-table-cache-policy-command.md#alter-the-cache-policy).
+1. Revert the cache policy to the original settings with the [`.alter policy caching` command](./kusto/management/show-table-cache-policy-command.md).
 
 Since you've configured optimized autoscale for that cluster, the cluster will shrink to its original size.
 
