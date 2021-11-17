@@ -20,11 +20,6 @@ Use the `let` statement to set a variable name equal to an expression or a funct
 * Defining constants outside of the query body for readability.
 * Defining a variable once and using it multiple times within a query. 
 
-`let` definitions can include: 
- 
-* Scalar expressions
-* Tabular expressions
-* User-defined functions 
 
 If the variable previously represented another value, for example in nested statements, the innermost `let` statement applies. 
 
@@ -34,25 +29,26 @@ If the variable previously represented another value, for example in nested stat
 
 `let` *Name* `=` *TabularExpression* 
 
-`let` *Name* `=` *UserDefinedFunction*
-
-**Syntax of view or function**
-
-`let` *Name* `=` [`view`] `(` [*TabularArgName* `:` `(` `*` `)`]  [`,`] [  [*ArgName* `:` *ArgType*] [`,` ... ] ] `)` `{` *FunctionBody* `}`
-
-`let` *Name* `=` [`view`] `(` [  [*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ]`)`] [`,` ... ][`,`] ]  [`,`] [  [*ArgName* `:` *ArgType*] [`,` ... ] ] `)` `{` *FunctionBody* `}`
-
 |Field  |Definition  |Example  |
 |---------|---------|---------|
 |*Name*   | The variable name, must be valid. | You can escape the name, for example `["Name with spaces"]` |
 |*ScalarExpression* | An expression with a scalar result.| `let one=1;`  |
 |*TabularExpression*  | An expression with a tabular result. |  `Logs  \| where Timestamp > ago(1h)`  |
-|*UserDefinedFunction* | An expression that yields a user defined function, an anonymous function declaration. |  `let f=(a:int, b:string) { strcat(b, ":", a) }`  |
-|*view* | Appears only in a parameterless `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views. | |
+
+**Syntax of view or function**
+
+`let` *Name* `=` [`view`] `(` [*TabularArgName* `:` `(` `*` `)`]  [`,`] [  [*ArgName* `:` *ArgType*] [`,` ... ] ] `)` `{` *FunctionBody* `}`
+
+`let` *Name* `=` [`view`] `(` [  [*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ]`)`] [`,` ... ][`,`] ]  [`,`] [  [*ArgName* `:` *ArgType*] [`,` ... ] ] `)` `{` *FunctionBody* `}
+
+|Field  |Definition  |Example  |
+|---------|---------|---------|
+|*FunctionBody* | An expression that yields a user defined function, an anonymous function declaration. |  `let f=(a:int, b:string) { strcat(b, ":", a) }`  |
+|*view* | Appears only in a parameterless `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views. |  let Ex1 = view () { range x from 1 to 20 step 1 } |
 | *TabularArgName*| The name of the tabular argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. | |
 | *AttributeName* : *AttributeType*| The name and type of the attribute. Part of the table schema definition, which includes a set of attributes with their types. |  |
-|*ArgName* | The name of the scalar argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked.  | |
-|*ArgType* | The type of the scalar argument. Currently the following are supported for user defined functions: `bool`, `string`, `long`, `datetime`, `timespan`, `real`, and `dynamic` (and aliases to these types).| |
+|*ArgName* | The name of the scalar argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked.  | let foo1 = (_start:long, _end:long, _step:long) { range x from _start to _end step _step} |
+|*ArgType* | The type of the scalar argument. Currently the following are supported for user defined functions: `bool`, `string`, `long`, `datetime`, `timespan`, `real`, and `dynamic` (and aliases to these types).|  let TrimOnes = (s:string) { trim("1", s)|
 
 > [!NOTE]
 >
@@ -65,7 +61,11 @@ If the variable previously represented another value, for example in nested stat
 
 ### Define scalar values
 
+
+The following example uses a scalar expression statement.
+
 ```kusto
+
 let n = 10;  // number
 let place = "Dallas";  // string
 let cutoff = ago(62d); // datetime 
@@ -75,14 +75,12 @@ Events
 | take n
 ```
 
-### Define scalar constant
-
 The following example binds the name `x` using the `['name']` notion, and then uses it in a tabular expression statement.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-let ['x'] = 20;
-range y from 0 to x step 5
+let ['some number'] = 20;
+range y from 0 to ['some number'] step 5
 ```
 
 ### Create user defined function with scalar calculation
@@ -145,9 +143,9 @@ foo2(2) | count
 |---|
 |20|
 
-### Use a view 
+### Create a view or virtual table 
 
-This example shows you how to use a let statement with the [`view`](schema-entities/views.md) keyword to create other tables.
+This example shows you how to use a let statement to create a [`view` or virtual table](schema-entities/views.md).
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -199,20 +197,7 @@ on $left.Day1 == $right.Day
 |2016-05-01 00:00:00.0000000|2016-05-03 00:00:00.0000000|16.618368960101|
 |2016-05-02 00:00:00.0000000|2016-05-03 00:00:00.0000000|14.6291376489636|
 
-### Multiple let statements
-
-Multiple let statements can be used with the semicolon, `;`, delimiter between them, like in the following example.
-
-> [!NOTE]
-> The last statement must be a valid query expression. 
-
-```kusto
-let start = ago(5h); 
-let period = 2h; 
-T | where Time > start and Time < start + period | ...
-```
-
-### Nested let statements
+### Using nested let statements
 
 Nested let statements are permitted, including within a user defined function expression. Let statements and arguments apply in both the current and inner scope of the function body.
 
