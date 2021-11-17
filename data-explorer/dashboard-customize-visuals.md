@@ -98,8 +98,8 @@ An anomaly chart visual is similar to [time chart](#time-chart), but highlights 
 To render the map visual, you must first select the type of location you're going to use.
 Under **Define location by**, you can choose from the following options:
 
-- Use 2 columns - Latitude and Longitude
-- Use 1 column - Geospatial coordinates
+- Use 2 columns: Latitude and Longitude
+- Use 1 column: Geospatial coordinates
 
 In addition, you can specify the following options:
 
