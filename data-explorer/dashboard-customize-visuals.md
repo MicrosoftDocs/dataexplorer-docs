@@ -95,7 +95,7 @@ An anomaly chart visual is similar to [time chart](#time-chart), but highlights 
 
 :::image type="content" source="media/dashboard-customize-visuals/map.png" alt-text="map visual type.":::
 
-To render the map visual, you first need to select the type of location you're going to use.
+To render the map visual, you must first select the type of location you're going to use.
 there are 2 options:
 Use 2 columns - Latitude and Logitude
 USe 1 column - Geo point
