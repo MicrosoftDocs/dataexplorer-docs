@@ -34,7 +34,7 @@ The retention and caching policies both depend on [Extent Creation time](../exte
 
 A [partitioning policy](../partitioningpolicy.md) can be applied on a materialized view. We recommend configuring a partitioning policy on a materialized view only when most or all of the view queries filter by one of the materialized view's group-by keys. This is common in multi-tenant solutions, where one of the materialized view's group-by keys is the tenant's identifer (for example, `tenantId`, `customerId`). For more information, see the first use case described in the [partitioning policy supported scenarios](../partitioningpolicy.md#supported-scenarios) page.
 
-For the commands to alter a materialized view's partitioning policy, see [partitioning policy commands](../show-table-partitioning-policy-command.md#alter-and-alter-merge-policy).
+For the commands to alter a materialized view's partitioning policy, see [partitioning policy commands](../show-table-partitioning-policy-command.md).
 
 Adding a partitioning policy on a materialized view will increase the number of extents in the materialized view, and will create more "work" for the materialization process. For more information on why this happens, see the extents rebuild process mentioned in [how materialized views work](materialized-view-overview.md#how-materialized-views-work)). In [EngineV3](../../../engine-v3.md) clusters, this process is much more efficient than in V2. Therefore, we recommend to only add a partitioning policy on a materialized view only if the cluster is a V3 cluster.
 
