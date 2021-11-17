@@ -90,7 +90,7 @@ If you don't already have one, [Create an Iot Hub](ingest-data-iot-hub.md#create
 > [!Note]
 > * The `device-to-cloud partitions` count is not changeable, so you should consider long-term scale when setting partition count.
 > * Consumer group must be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection. Find your resource in the Azure portal and go to `Built-in endpoints` to add a new consumer group.
-> * The Data Connection uses IoT Hub `Built-in endpoints`. If you configure any other `Message routing endpoint`, message routing to the `Built-in endpoint` will be prevented. To configure multiple routing endpoints, create an EventHub custom endpoint. Use this custom endpoint to create the Data Connection, instead of using the IoT Hub directly.
+> * The Data Connection uses IoT Hub `Built-in endpoint`. If you configure any other `Message routing endpoint`, messages stop flowing to the `Built-in endpoint` unless a route is created to that endpoint. To ensure messages continues to flow to the built-in-endpoint if a new route is added, configure a route to the `events` endpoint. For more information see [IoT Hub Troubleshooting Message Routing](/azure/iot-hub/troubleshoot-message-routing#was-a-new-route-created).
 
 ## Sending events
 
