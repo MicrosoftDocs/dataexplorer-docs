@@ -22,7 +22,7 @@ An update policy is subject to the same restrictions and best practices as regul
 > The source and target table must be in the same database.
 > The update policy function schema and the target table schema must match in their column names, types, and order.
 
-Ingesting formatted data improves performance, and CSV is preferred because of its well defined format. Sometimes, however, you have no control over the format of the data, or you may want to enrich ingested data, for example by joining records with a static dimension table in your database.  
+Ingesting formatted data improves performance, and CSV is preferred because of it's a well-defined format. Sometimes, however, you have no control over the format of the data, or you may want to enrich ingested data, for example by joining records with a static dimension table in your database.  
 
 ## Update policy query
 
