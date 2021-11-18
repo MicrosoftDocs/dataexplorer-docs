@@ -174,7 +174,7 @@ In this example, use an update policy in conjunction with a simple function to p
 
     ```kusto
     .create function
-     with (docstring = 'Used in the update policy blog post', folder = 'UpdatePolicyFunctions')
+     with (docstring = 'Parses raw records into strongly-typed columns', folder = 'UpdatePolicyFunctions')
          ExtractMyLogs()  
         {
         MySourceTable
