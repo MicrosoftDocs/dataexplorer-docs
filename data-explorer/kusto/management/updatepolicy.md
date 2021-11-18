@@ -183,7 +183,7 @@ In this example, use an update policy in conjunction with a simple function to p
     }
     ```
 
-1. Now, set the update policy to move data using the function that we created:
+1. Now, set the update policy to invoke the function that we created:
 
     ```kusto
     .alter table MyTargetTable policy update 
