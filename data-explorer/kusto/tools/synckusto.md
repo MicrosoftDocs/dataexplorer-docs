@@ -17,7 +17,7 @@ system, an Azure Data Explorer database, and Azure Dev Ops repos.
 
 Sync Kusto is available [on GitHub](https://github.com/microsoft/synckusto).
 
-# Delta Kusto
+## Delta Kusto
 
 A closely-related tool is Delta Kusto, which is a command-line tool to enable continuous integration/continuous deployment (CI/CD)
 automation with Azure Data Explorer objects such as tables, functions, policies, etc.
