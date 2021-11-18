@@ -7,81 +7,78 @@ ms.author: orspodek
 ms.reviewer: slneimer
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 21/11/2021
+ms.date: 11/21/2021
 ---
 # Data soft-delete (Public Preview)
 
-As a data platform, Azure Data Explorer supports the ability to delete individual records. There are two common ways to do this:
+As a data platform, Azure Data Explorer supports the ability to delete individual records. This is commonly acheived using one of the following methods:
 
-* To delete records for compliance purposes (e.g. GDPR), use [.purge](./data-purge.md) - this will delete all the relevant data from the storage artifacts, and there will be no way to recover the deleted data.
-* To delete records for any other purpose, use `.delete` described in this document - this will internally mark the records as deleted, but won't necessarily delete the data from the storage artifacts. This deletion method is much faster than purge.
+* To delete records for compliance purposes, such as GDPR, use [.purge](./data-purge.md) - This method deletes all relevant data from storage artifacts and, once completed, there is no way to recover the deleted data.
+* To delete records for any other purpose, use `.delete` as described in this topic - This marks records as deleted but does not necessarily delete the data from storage artifacts. This deletion method is much faster than purge.
 
 > [!WARNING]
-> Data deletion through the `.delete` command is designed to be used to delete **small amounts** of data, and is intended to be called **infrequently**. Abuse may have a significant performance impact on the service.
+> The `.delete` command is designed for deleting **small amounts** of data and is intended to be used **infrequently**. Frequent use of the command may have a significant impact on the performance of your service.
 >
-> To delete large amounts of data, you should consider other options, like [dropping extents](../management/drop-extents.md).
+> To delete large amounts of data, consider using other methods such as [dropping extents](../management/drop-extents.md).
 
 > [!NOTE]
-> Data deletion through the `.delete` command is only available on clusters running Engine V3.
+> The `.delete` command is only available on clusters running Engine V3.
 
 ## Use cases
 
-This deletion method should only be used for unplanned deletion of individual records. For example, if you found out that a certain IOT device was reporting corrupted telemetry for a certain period of time, then it's a valid use-case for using this deletion method.
+This deletion method should only be used for unplanned deletion of individual records. For example, if you discover that an IOT device is reporting corrupt telemetry for some time, you should consider using this method to delete the data.
 
-However, if you want to do periodic cleanup by regularly deleting duplicate records, or deleting old records per entity, then you should use [Materialized Views](../management/materialized-views/materialized-view-overview.md) instead.
+However, if you want to do a periodic cleanup by regularly deleting duplicate records, or deleting old records per entity, then you should use [Materialized Views](../management/materialized-views/materialized-view-overview.md) instead.
 
 ## Deletion process
 
-The process of selectively deleting data from Azure Data Explorer consists of two phases:
+The process of selectively deleting data is achieved using the following steps:
 
-1. Phase 1:
-   Given an input with a table name and a per-record predicate, indicating which records to delete, Kusto scans the table looking to identify data extents that would participate in the data deletion. The extents identified are those having one or more records for which the predicate returns true.
-1. Phase 2:
-   Kusto replaces each data extent in the table (identified in step (1)) with a new one, which will point to the original data blobs, and will also contain a new hidden column of type `bool`, indicating per record whether it was deleted or not. If new data is not being ingested into the table, then by the end of this phase, queries will no longer return data for which the predicate returns true.
+1. **Predicate run**: The specified predictate that indicates which records to delete is run on each table record. The table is scanned to identify data extents with one or more records that match the predicate.
+1. **Extents replacement**: In the table, the identified extents are replaced with new extents that point to the original data blobs. The new extents have a new hidden column of type `bool` per record that indicates whether it was deleted or not. Once completed, if no new data is ingested, queries will no longer return data for which the predicate returns true.
 
 ## Limitations and considerations
 
-* The deletion process is final and irreversible. It isn't possible to undo this process or recover data that has been deleted (even though the storage artifacts are not necessarily deleted following the operation).
+* The deletion process is final and irreversible. It isn't possible to undo this process or recover data that has been deleted, even though the storage artifacts are not necessarily deleted following the operation.
 
 * Soft-delete is only available on clusters running Engine V3.
 
-* Soft-delete is only supported for native Kusto tables, and is not supported for External Tables and Materialized Views.
+* Soft-delete is only supported for native Data Explorer tables and is not supported for external tables or materialized views.
 
 * Before running soft-delete, verify the predicate by running a query and checking that the results match the expected outcome. You can also run the command in `whatif` mode, that returns the number of records that are expected to be deleted.
 
-* You should not run multiple parallel soft-delete operations on the same table, as this may result in failures of some or all the commands. However, it's possible to run multiple parallel soft-delete operations on different tables.
+* Do not run multiple parallel soft-delete operations on the same table, as this may result in failures of some or all the commands. However, it's possible to run multiple parallel soft-delete operations on different tables.
 
-* You should not run soft-delete and purge commands on the same table in parallel, you should first wait for one command to complete, and only then run the other command.
+* Do not run soft-delete and purge commands on the same table in parallel. First wait for one command to complete and only then run the other command.
 
-* Soft-delete is executed against the Engine endpoint: `https://[YourClusterName].[region].kusto.windows.net`. The command requires [database admin](../management/access-control/role-based-authorization.md) permissions on the relevant database.
+* Soft-delete is executed against your engine endpoint: `https://[YourClusterName].[region].kusto.windows.net`. The command requires [database admin](../management/access-control/role-based-authorization.md) permissions on the relevant database.
 
-* Effect on Materialized Views that are based on a table in which records are deleted: Every materialization cycle looks at the previous snapshot of the Materialized View, and combines it with the new data that landed in the table after the previous materialization cycle. So if you delete records that have been ingested after the previous materialization cycle, before a new cycle started, the new records (that you then deleted) won't be used for the materialization process. Otherwise, deleting records won't have any effect on the Materialized View.
+* Soft-delete can affect materialized views based on a table in which he command deletes records. This can happen because every materialization cycle adds newly ingested data to its existing snapshot, and if the command deletes newly ingested records before a new cycle begins, those records will not be added to the view. Otherwise, deleting records won't affect the materialized view.
 
 ## Deletion performance
 
-As described [above](#deletion-process), the deletion process consists of two phases:
+The main considerations that can impact the [deletion process](#deletion-process) performance are:
 
-* The first phase runs the predicate. The performance of this phase is very similar to the performance of the predicate itself (it might be slightly faster or slightly slower, depending on the predicate, but the difference is expected to be insignificant).
-* The second phase replaces extents that contain records that should be deleted, with new extents in which the relevant records are marked as deleted. The performance of this phase depends on the following parameters:
-  * Record distribution across the data extents in the cluster
-  * The number of nodes in the cluster  
-  * Several other factors
+* **Predicate run**: The performance of this step is very similar to the performance of the predicate itself. It might be slightly faster or slightly slower, depending on the predicate, but the difference is expected to be insignificant.
+* **Extents replacement**: The performance of this step depends on the following:
+    * Record distribution across the data extents in the cluster
+    * The number of nodes in the cluster
 
-Unlike `.purge`, the `.delete` command does not reingest the data (it just adds a hidden column of type `bool` indicating whether the records are deleted or not), and is hence much faster.
+Unlike `.purge`, the `.delete` command does not reingest the data. It just marks records that match the predicate as deleted and is therefore much faster.
 
 ## Query performance after deletion
 
-Query performance is not expected to noticeably degrade following deletion of records, as all that happens when a query runs, is that an implicit condition is automatically added on all queries, checking the values in the hidden column of type `bool`, that indicates per record whether it was deleted or not.
+When queries run, an implicit condition is automatically added that checks the column indicating whether a record is deleted. Therefore, you should notice any degradation in perforamce when running queries after a soft deletion. 
 
-On the other hand, it is not guaranteed that query performance will improve either, following deletion of records. While this may happen for some types of queries, it may not happen for some others. For improved query performance, Azure Data Explorer may periodically compact extents in which the majority of the records are deleted, by replacing them with new extents that only contain the records that haven't been deleted.
+After a deletion, you may notice that the performance of some queries improves, but this is not guaranteed. For improved query performance, data extenta are periodically compacted and where the majority of the records in an extent are deleted, the extent is replaced with new a extent that only contain the records that haven't been deleted.
 
 ## Impact on COGS (cost of goods sold)
 
-Deletion of records won't result in change of COGS, in most cases:
+Deletion of records won't result in change of COGS. In most cases:
 
-* There will be no decrease, because no records are actually deleted, they are only marked as deleted in a hidden column of type `bool` (the size of which is negligible).
-* In most cases, there will be no increase, because the `.delete` operation does not require provisioning of extra resources.
-* In some cases, Azure Data Explorer may periodically compact extents in which the majority of the records are deleted, by replacing them with new extents that only contain the records that haven't been deleted. This will cause deletion of the old storage artifacts (that contain a large amount of deleted records). The new extents will be smaller, and will therefore consume less space in both the Storage account, and in the hot-cache. However, in most cases, the effect of this on COGS is negligible.
+* There will be no decrease, because no records are actually deleted. Records are only marked as deleted using a hidden column of type `bool`, the size of which is negligible.
+* There will be no increase, because the `.delete` operation does not require provisioning of extra resources.
+* There will be negligible effect on COGS by data extent compaction. This is true even though the compaction causes the deletion of the old storage artifacts that may contain a large amount of deleted records. The replacement extents will be smaller and will therefore consume less space in both the Storage account and in the hot-cache.
 
 ## Triggering the deletion process
 
@@ -93,11 +90,11 @@ Deletion of records won't result in change of COGS, in most cases:
 
 ### Arguments
 
-* `async`: If specified, indicates that the command runs in asynchronous mode.
-
-* *TableName*: The name of the table from which records should be deleted.
-
-* *Predicate*: The predicate (in the form of a query) that returns records that should be deleted
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*async*|string||If specified, indicates that the command runs in asynchronous mode.|
+|*TableName*|string|&check;|The name of the table from which to delete records.|
+|*Predicate*|string|&check;|The predicate that returns records to delete. Specified as a query.|
 
 > [!NOTE]
 > The following restrictions apply to the *Predicate*:
@@ -116,7 +113,7 @@ To delete all the records which contain data of a given user:
 
 > [!NOTE]
 >
-> To only see how many records would be deleted by the operation (but without deleting anything), look at the sum of the values in the RecordsMatchPredicate column in the result of the following command:
+> To determine the number of records that would be deleted by the operation without actually deleting them, check the value in the RecordsMatchPredicate column when running the command in `whatif` mode:
 >
 > ```kusto
 > .delete table MyTable records with (whatif=true) <| MyTable | where UserId == 'X'
@@ -124,4 +121,4 @@ To delete all the records which contain data of a given user:
 
 ### Output
 
-The output of the command contains information on which extents were replaced.
+The output of the command contains information about which extents were replaced.
