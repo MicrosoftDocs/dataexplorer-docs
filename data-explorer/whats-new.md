@@ -36,8 +36,8 @@ This section lists the major changes to docs during October 2021.
 | Article title | Description |
 |--|--|
 | [Role-based Authorization in Kusto](/azure/data-explorer/kusto/management/access-control/role-based-authorization.md) | Updated article. Materialized views rename source table.
-| [Cache policy (hot and cold cache)](/azure/data-explorer/kusto/management/cachepolicy.md) | Updated article. Caching with long storage.
-| [Role-based Authorization in Kusto](/azure/data-explorer/kusto/management/access-control/role-based-authorization.md)| Updated article. Using the AllDatabasesMonitor role.
+| [Cache policy (hot and cold cache)](./kusto/management/cachepolicy.md) | Updated article. Caching with long storage.
+| [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md)| Updated article. Using the AllDatabasesMonitor role.
 
 ## September 2021
 
@@ -53,8 +53,8 @@ This section lists the major changes to docs during September 2021.
 
 | Article title | Description |
 |--|--|
-| [Views](/azure/data-explorer/kusto/query/schema-entities/views.md)| New article. Learn how to use views, which are virtual tables based on the result-set of a query.
-| [Entity types](/azure/data-explorer/kusto/query/schema-entities/index.md)| Updated article. Added information on how to use views.
+| [Views](./kusto/query/schema-entities/views.md)| New article. Learn how to use views, which are virtual tables based on the result-set of a query.
+| [Entity types](./kusto/query/schema-entities/index.md)| Updated article. Added information on how to use views.
 
 ## August 2021
 
@@ -72,29 +72,29 @@ This section lists the major changes to docs during August 2021.
 
 | Article title | Description |
 |--|--|
-| [series_pow()](/azure/data-explorer/kusto/query/series-powfunction.md)| New article. Calculates the element-wise power of two numeric series inputs. 
-| [Aggregation function types at a glance](/azure/data-explorer/kusto/query/aggregation-functions.md) | New article. Lists aggregation functions, which perform a calculation on a set of values and return a single value.
-| [Scalar function types at a glance](/azure/data-explorer/kusto/query/scalarfunctions.md) | Updated article. Updated aggregation function and added series_pow.
-| [materialized_view() function](/azure/data-explorer/kusto/query/materialized-view-function.md) | Updated article. Updated aggregation function.
+| [series_pow()](./kusto/query/series-powfunction.md)| New article. Calculates the element-wise power of two numeric series inputs. 
+| [Aggregation function types at a glance](./kusto/query/aggregation-functions.md) | New article. Lists aggregation functions, which perform a calculation on a set of values and return a single value.
+| [Scalar function types at a glance](./kusto/query/scalarfunctions.md) | Updated article. Updated aggregation function and added series_pow.
+| [materialized_view() function](./kusto/query/materialized-view-function.md) | Updated article. Updated aggregation function.
 
 ### Management
 
 | Article title | Description |
 |--|--|
-| [.alter query weak consistency policy](/azure/data-explorer/kusto/management/alter-query-weak-consistency-policy.md) | New article.
-| [Query weak consistency policy](/azure/data-explorer/kusto/management/query-weak-consistency-policy.md) | New article.
-| [.show query weak consistency policy](/azure/data-explorer/kusto/management/show-query-weak-consistency-policy.md) | New article.
+| [.alter query weak consistency policy](./kusto/management/alter-query-weak-consistency-policy.md) | New article.
+| [Query weak consistency policy](./kusto/management/query-weak-consistency-policy.md) | New article.
+| [.show query weak consistency policy](./kusto/management/show-query-weak-consistency-policy.md) | New article.
 
 ### Functions library
 
 | Article title | Description |
 |--|--|
 | [pair_probabilities_fl()](kusto/functions-library/functions-library.md)] | New article. The function `pair_probabilities_fl()`calculates probabilities and metrics.
-| [bartlett_test_fl()](/azure/data-explorer/kusto/functions-library/bartlett-test-fl.md) | New article. The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
-| [levene_test_fl()](/azure/data-explorer/kusto/functions-library/levene-test-fl.md) | New article. The function `levene_test_fl()` performs the [Levene Test](https://en.wikipedia.org/wiki/Levene%27s_test).
-| [mann_whitney_u_test_fl()](/azure/data-explorer/kusto/functions-library/mann-whitney-u-test-fl.md) | New article. The function `mann_whitney_u_test_fl()` performs the [Mann-Whitney U Test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test).
-| [wilcoxon_test_fl()](/azure/data-explorer/kusto/functions-library/wilcoxon-test-fl.md) | New article. The function `wilcoxon_test_fl()` performs the [Wilcoxon Test](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test).
-| [Functions library](/azure/data-explorer/kusto/functions-library/functions-library.md) | Updated article. Added [pair_probabilities_fl()](kusto/functions-library/functions-library.md), [normality_test_fl](kusto/functions-library/normality-test-fl.md).
+| [bartlett_test_fl()](./kusto/functions-library/bartlett-test-fl.md) | New article. The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
+| [levene_test_fl()](./kusto/functions-library/levene-test-fl.md) | New article. The function `levene_test_fl()` performs the [Levene Test](https://en.wikipedia.org/wiki/Levene%27s_test).
+| [mann_whitney_u_test_fl()](./kusto/functions-library/mann-whitney-u-test-fl.md) | New article. The function `mann_whitney_u_test_fl()` performs the [Mann-Whitney U Test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test).
+| [wilcoxon_test_fl()](./kusto/functions-library/wilcoxon-test-fl.md) | New article. The function `wilcoxon_test_fl()` performs the [Wilcoxon Test](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test).
+| [Functions library](./kusto/functions-library/functions-library.md) | Updated article. Added [pair_probabilities_fl()](kusto/functions-library/functions-library.md), [normality_test_fl](kusto/functions-library/normality-test-fl.md).
 
 ## July 2021
 
