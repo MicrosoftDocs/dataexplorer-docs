@@ -7,16 +7,16 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/04/2020
+ms.date: 11/18/2021
 ---
 # Update policy overview
 
 When you trigger an [update policy](update-policy.md) with a command that adds data to a source table, data also appends to a target table. The target table can have a different schema, retention policy, and other policies from the source table.
-For example, a high-rate trace source table can contain data formatted as a free-text column. The target table can include specific trace lines, with a well-structured schema generated from a transformation of the source table's free-text data using the [parse operator](../query/parseoperator.md). 
+For example, a high-rate trace source table can contain data formatted as a free-text column. The target table can include specific trace lines, with a well-structured schema generated from a transformation of the source table's free-text data using the [parse operator](../query/parseoperator.md).
 
 :::image type="content" source="images/updatepolicy/update-policy-overview.png" alt-text="Shows and overview of the update policy in Azure Data Explorer.":::
 
-An update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out according to the cluster size, and is more efficient wjen handling bulk ingestion.
+An update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out according to the cluster size, and is more efficient when handling bulk ingestion.
 
 > [!NOTE]
 > The source and target table must be in the same database.
@@ -26,16 +26,16 @@ Ingesting formatted data improves performance, and CSV is preferred because of i
 
 ## Update policy query
 
-If the update policy is defined on the target table, multiple queries can run on data ingested into a source table. If there are multiple update policies, the order of execution is not necessarily known. 
+If the update policy is defined on the target table, multiple queries can run on data ingested into a source table. If there are multiple update policies, the order of execution is not necessarily known.
 
-### Query limitations 
+### Query limitations
 
-* The policy-related query can invoke stored functions, but can't include cross-database or cross-cluster queries. 
+* The policy-related query can invoke stored functions, but can't include cross-database or cross-cluster queries.
 * The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled or with a [Row Level Security policy](rowlevelsecuritypolicy.md) enabled.
 * When referencing the `Source` table in the `Query` part of the policy, or in functions referenced by the `Query` part:
-   * Don't use the qualified name of the table. Instead, use `TableName`. 
-   * Don't use `database("DatabaseName").TableName` or `cluster("ClusterName").database("DatabaseName").TableName`.
-* For update policy limitations in streaming ingestion, see [streaming ingestion limitations](../../ingest-data-streaming.md#limitations). 
+    * Don't use the qualified name of the table. Instead, use `TableName`.
+    * Don't use `database("DatabaseName").TableName` or `cluster("ClusterName").database("DatabaseName").TableName`.
+* For update policy limitations in streaming ingestion, see [streaming ingestion limitations](../../ingest-data-streaming.md#limitations).
 
 > [!WARNING]
 > An incorrect query might prevent data ingestion into the source table.
@@ -82,17 +82,17 @@ Update policies take effect when data is ingested or moved to a source table, or
   * The `PropagateIngestionProperties` command only takes effect in ingestion operations. When the update policy is triggered as part of a `.move extents` or `.replace extents` command, this option has no effect.
 
 > [!WARNING]
-> When the update policy is invoked as part of a  `.set-or-replace` command, by default data in derived tables is replaced in the same way as in the source table. 
+> When the update policy is invoked as part of a  `.set-or-replace` command, by default data in derived tables is replaced in the same way as in the source table.
 > Data may be lost in all tables with an update policy relationship if the `replace` command is invoked.
 > Consider using `.set-or-append` instead.
 
 ## Remove data from source table
 
-After ingesting data to the target table, you may want to remove it from the source table. Set a soft-delete period of `0sec` (or `00:00:00`) in the source table's [retention policy](retentionpolicy.md), and the update policy as transactional. The following conditions apply: 
+After ingesting data to the target table, you may want to remove it from the source table. Set a soft-delete period of `0sec` (or `00:00:00`) in the source table's [retention policy](retentionpolicy.md), and the update policy as transactional. The following conditions apply:
 
 * The source data isn't queryable from the source table
 * The source data doesn't persist in durable storage as part of the ingestion operation
-* Operational performance improves. Post-ingestion resources are reduced for background grooming operations on [extents](../management/extents-overview.md) in the source table. 
+* Operational performance improves. Post-ingestion resources are reduced for background grooming operations on [extents](../management/extents-overview.md) in the source table.
 
 ## Performance impact
 
@@ -101,6 +101,7 @@ Update policies can affect cluster performance, and ingestion for data extents i
 ### Evaluate resource usage
 
 Use [`.show queries`](../management/queries.md), to evaluate resource usage (CPU, memory, and so on) with the following parameters:
+
 * Set the `Source` property, the source table name, as `MySourceTable`
 * Set the `Query` property to call a function named `MyFunction()`
 
@@ -126,7 +127,7 @@ With the default setting of `IsTransactional`:*false*, data can still be ingeste
 Setting `IsTransactional`:*true* guarantees consistency between data in the source and target table. However, if the policy conditions fail, data isn't ingested to the source table. Alternatively, depending on conditions, sometimes data is ingested to the source table, but not to the target table. However, if your policy is defined incorrectly, or there is a schema mismatch, data will not be ingested to the source or target table. For example, a mismatch between the query output schema and the target table could be caused by dropping a column from the target table.
 
 You can view failures using the [`.show ingestion failures` command](../management/ingestionfailures.md).
- 
+
 ```kusto
 .show ingestion failures 
 | where FailedOn > ago(1hr) and OriginatesFromUpdatePolicy == true
@@ -134,14 +135,15 @@ You can view failures using the [`.show ingestion failures` command](../manageme
 
 ### Treatment of failures
 
-#### Non-transactional policy 
+#### Non-transactional policy
 
-When set to `IsTransactional`:*false*, any failure to run the policy is ignored. Ingestion is not automatically retried. You can manually retry ingestion. 
+When set to `IsTransactional`:*false*, any failure to run the policy is ignored. Ingestion is not automatically retried. You can manually retry ingestion.
 
 #### Transactional policy
 
 When set to `IsTransactional`:*true*, if the ingestion method is `pull`, the Data Management service is involved, and ingestion is automatically retried according to the following conditions:
-* Retries are performed until one of following configurable limit settings is met: `DataImporterMaximumRetryPeriod` or `DataImporterMaximumRetryAttempts` 
+
+* Retries are performed until one of following configurable limit settings is met: `DataImporterMaximumRetryPeriod` or `DataImporterMaximumRetryAttempts`
 * By default the `DataImporterMaximumRetryPeriod` setting is 2 days, and `DataImporterMaximumRetryAttempts`is 10
 * The backoff period starts at 2 minutes, and doubles. So the wait starts with 2 min, then increases to 4 min, to 8 min, to 16 min and so on.
 
@@ -149,10 +151,10 @@ In any other case, you can manually retry ingestion.
 
 ## Example of extract, transform, load
 
-You can use update policy settings to perform extract, transform, load (ETL). 
+You can use update policy settings to perform extract, transform, load (ETL).
 
 In this example, use an update policy in conjunction with a simple function to perform ETL. First, we create two tables:
- 
+
 * The source table - Contains a single string-typed column into which data is ingested.
 * The target table - Contains the desired schema. The update policy is defined on this table.
 
@@ -188,7 +190,7 @@ In this example, use an update policy in conjunction with a simple function to p
     @'[{ "IsEnabled": true, "Source": "MySourceTable", "Query": "ExtractMyLogs()", "IsTransactional": false, "PropagateIngestionProperties": false}]'
     ```
 
-1. To empty the source table after data is ingested into the target table, define the retention policy on the source table to have 0s as its `SoftDeletePeriod`. 
+1. To empty the source table after data is ingested into the target table, define the retention policy on the source table to have 0s as its `SoftDeletePeriod`.
 
     ```kusto
      .alter-merge table MySourceTable policy retention softdelete = 0s ```

@@ -66,7 +66,7 @@ For native, shuffle and legacy subqueries, the result must be a single tabular r
 ## Arguments
 
 * *T*: The tabular source whose data is to be processed by the operator.
-* *strategy*: The partition strategy, `native`, `shuffle` or `legacy`. `native` strategy is used with an implicit source with thousands of key partition values. `shuffle` strategy is used with an implicit source with millions of key partition values. `native` strategy is used with an explicit or implicit source with 64 or less key partition values. 
+* *strategy*: The partition strategy, `native`, `shuffle` or `legacy`. `native` strategy is used with an implicit source with thousands of key partition values. `shuffle` strategy is used with an implicit source with millions of key partition values. `legacy` strategy is used with an explicit or implicit source with 64 or less key partition values. 
 * *Column*: The name of a column in *T* whose values determine how the input table   is to be partitioned. See **Notes** below.
 * *TransformationSubQuery*: A tabular transformation expression, whose source is implicitly the subtables produced by partitioning the records of *T*, each subtable being homogenous on the value of *Column*.
 * *ContextFreeSubQuery*: A tabular expression that includes its own tabular source, such as a table reference. The expression can reference a single column from *T*, being the key column *Column* using the syntax `toscalar(`*Column*`)`.
