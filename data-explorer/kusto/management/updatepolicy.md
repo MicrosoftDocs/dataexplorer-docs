@@ -52,7 +52,7 @@ Each such object is represented as a JSON property bag, with the following prope
 |IsEnabled  |`bool` |States if update policy is *true* - enabled, or *false* - disabled|
 |Source |`string` |Name of the table that triggers invocation of the update policy |
 |Query |`string` |A query used to produce data for the update |
-|IsTransactional |`bool` |States if the update policy is transactional or not, default is *false*). If transactional and the update policy is not run, the source table is not updated. |
+|IsTransactional |`bool` |States if the update policy is transactional or not, default is *false*). If transactional and the update policy fails, the source table is not updated. |
 |PropagateIngestionProperties  |`bool`|States if properties specified during ingestion to the source table, such as extent tags and creation time, apply to the target table. |
 
 > [!NOTE]
