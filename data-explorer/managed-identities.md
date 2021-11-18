@@ -416,7 +416,7 @@ In order to use managed identity with your cluster it needs to be permitted by t
 
 After assigning the managed identity to your cluster and configuring the relevant managed identity policy, you can start using managed identity authentication in the following flows:
 * External Tables - create an external table with managed identity authentication stated in the connection string (see [storage connection string docs](/azure/data-explorer/kusto/api/connection-strings/storage#azure-blob-storage) for examples) to make Azure Data Explorer authenticate with that managed identity during querying and exporting.
-* Native Injestion - TBD
+* Native Injestion - see [here](azure/data-explorer/ingest-data-event-hub)
 * Data Connection - TBD
 
 ## Next steps

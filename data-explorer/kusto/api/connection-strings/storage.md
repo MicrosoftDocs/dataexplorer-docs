@@ -75,6 +75,8 @@ Where *CallerCredentials* indicates the credentials used to access the storage a
 * Append `;impersonate` to the URI. Kusto will use the requestor's principal identity and impersonate this identity to access the resource. The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. For more information, see [blob access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac).
 * Append `;managed_identity=...` to the URI. Kusto will use the managed identity (either system or user-assigned) in order to make requests and access resources. For system assigned managed identity, append `;managed_identity=system`. For user-assigned, append the object id of the user-assigned managed identity, as such: `;managed_identity={object_id}`. The managed identity must be assigned to the cluster [as described here](/some_link), and allowed by the managed identity policy, [see](/some_link).
 The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. For more information, see [blob access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac). 
+[Note!] Managed Identity is only supported in specific Kusto flows. For more information, click [here](/managed-identities.md). 
+
 
 Examples (note that this is showing obfuscated string literals, so as not to expose the account key, SAS or token):
 
@@ -116,6 +118,7 @@ Where:
    * Append a Shared Access (SAS) key, using the Azure Data Lake Storage Gen2's standard query (`?sig=...`). Use this method when Kusto needs to access the resource for a limited time.
    * Append `;managed_identity=...` to the URI. Kusto will use the managed identity (either system or user-assigned) in order to make requests and access resources. For system assigned managed identity, append `;managed_identity=system`. For user-assigned, append the object id of the user-assigned managed identity, as such: `;managed_identity={object_id}`. The managed identity must be assigned to the cluster [as described here](/some_link), and allowed by the managed identity policy, [see](/some_link).
 The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. For more information, see [data lake access control](/azure/storage/blobs/data-lake-storage-access-control). 
+[Note!] Managed Identity is only supported in specific Kusto flows. For more information, click [here](/managed-identities.md). 
 
 
 ### Azure Data Lake Storage Gen1
@@ -130,3 +133,4 @@ supported:
   encoded AAD access token (make sure the token is for the resource `https://management.azure.com/`).
 * Append `;managed_identity=...` to the URI. Kusto will use the managed identity (either system or user-assigned) in order to make requests and access resources. For system assigned managed identity, append `;managed_identity=system`. For user-assigned, append the object id of the user-assigned managed identity, as such: `;managed_identity={object_id}`. The managed identity must be assigned to the cluster [as described here](/some_link), and allowed by the managed identity policy, [see](/some_link).
 The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. For more information, see [data lake access control](azure/data-lake-store/data-lake-store-access-control). 
+[Note!] Managed Identity is only supported in specific Kusto flows. For more information, click [here](/managed-identities.md). 
