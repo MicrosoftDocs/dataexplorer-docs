@@ -25,6 +25,8 @@ If the variable previously represented another value, for example in nested stat
 
 ## Syntax
 
+**Syntax for scalar or tabular expressions**
+
 `let` *Name* `=` *ScalarExpression* 
 
 `let` *Name* `=` *TabularExpression* 
@@ -33,22 +35,22 @@ If the variable previously represented another value, for example in nested stat
 |---------|---------|---------|
 |*Name*   | The variable name, must be valid. | You can escape the name, for example `["Name with spaces"]` |
 |*ScalarExpression* | An expression with a scalar result.| `let one=1;`  |
-|*TabularExpression*  | An expression with a tabular result. |  `Logs  \| where Timestamp > ago(1h)`  |
+|*TabularExpression*  | An expression with a tabular result. |  `let RecentLog = Logs  \| where Timestamp > ago(1h)`  |
 
 **Syntax of view or function**
 
-`let` *Name* `=` [`view`] `(` [*TabularArgName* `:` `(` `*` `)`]  [`,`] [  [*ArgName* `:` *ArgType*] [`,` ... ] ] `)` `{` *FunctionBody* `}`
+`let` *Name* `=` [`view`] `(` [*TabularArgName* `:` `(` `*` `)` `,`   [*ArgName* `:` *ArgType* ]`,` ... ]  `)` `{` *FunctionBody* `}`
 
-`let` *Name* `=` [`view`] `(` [  [*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ]`)`] [`,` ... ][`,`] ]  [`,`] [  [*ArgName* `:` *ArgType*] [`,` ... ] ] `)` `{` *FunctionBody* `}
+`let` *Name* `=` [`view`] `(` [  [*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ] `)` ] `,` [  [*ArgName* `:` *ArgType* , ...]  ] `)` `{` *FunctionBody* `}
 
-|Field  |Definition  |Example  |
-|---------|---------|---------|
-|*FunctionBody* | An expression that yields a user defined function, an anonymous function declaration. |  `let f=(a:int, b:string) { strcat(b, ":", a) }`  |
-|*view* | Appears only in a parameterless `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views. |  let Ex1 = view () { range x from 1 to 20 step 1 } |
-| *TabularArgName*| The name of the tabular argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. | |
-| *AttributeName* : *AttributeType*| The name and type of the attribute. Part of the table schema definition, which includes a set of attributes with their types. |  |
-|*ArgName* | The name of the scalar argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked.  | let foo1 = (_start:long, _end:long, _step:long) { range x from _start to _end step _step} |
-|*ArgType* | The type of the scalar argument. Currently the following are supported for user defined functions: `bool`, `string`, `long`, `datetime`, `timespan`, `real`, and `dynamic` (and aliases to these types).|  let TrimOnes = (s:string) { trim("1", s)|
+|Field  |Definition  |
+|---------|---------|
+|*FunctionBody* | An expression that yields a user defined function, an anonymous function declaration. | 
+|*view* | Appears only in a parameterless `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views. | 
+| *TabularArgName*| The name of the tabular argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. | 
+| *AttributeName* : *AttributeType*| The name and type of the attribute. Part of the table schema definition, which includes a set of attributes with their types. |  
+|*ArgName* | The name of the scalar argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked.  | 
+|*ArgType* | The type of the scalar argument. Currently the following are supported for user defined functions: `bool`, `string`, `long`, `datetime`, `timespan`, `real`, and `dynamic` (and aliases to these types).|  
 
 > [!NOTE]
 >
