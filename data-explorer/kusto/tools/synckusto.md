@@ -16,3 +16,10 @@ Sync Kusto is a tool that enables users to synchronize various Kusto schema enti
 system, an Azure Data Explorer database, and Azure Dev Ops repos.
 
 Sync Kusto is available [on GitHub](https://github.com/microsoft/synckusto).
+
+# Delta Kusto
+
+A closely-related tool is Delta Kusto, which is a command-line tool to enable continuous integration/continuous deployment (CI/CD)
+automation with Azure Data Explorer objects such as tables, functions, policies, etc.
+
+Delta Kusto is available [on GitHub](https://github.com/microsoft/delta-kusto).
