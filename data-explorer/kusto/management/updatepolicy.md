@@ -190,7 +190,7 @@ In this example, use an update policy in conjunction with a simple function to p
     @'[{ "IsEnabled": true, "Source": "MySourceTable", "Query": "ExtractMyLogs()", "IsTransactional": false, "PropagateIngestionProperties": false}]'
     ```
 
-1. To empty the source table after data moves to the target table, define the retention policy on the source table to have 0s as its `SoftDeletePeriod`. 
+1. To empty the source table after data is ingested into the target table, define the retention policy on the source table to have 0s as its `SoftDeletePeriod`. 
 
     ```kusto
      .alter-merge table MySourceTable policy retention softdelete = 0s ```
