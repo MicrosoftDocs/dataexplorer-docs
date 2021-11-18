@@ -11,7 +11,7 @@ ms.date: 08/04/2020
 ---
 # Update policy overview
 
-When you trigger an [update policy](update-policy.md) with a query that adds data to a source table, data also appends to a target table. The target table can have a different schema, retention policy, and other policies from the source table.
+When you trigger an [update policy](update-policy.md) with a command that adds data to a source table, data also appends to a target table. The target table can have a different schema, retention policy, and other policies from the source table.
 For example, a high-rate trace source table can contain data formatted as a free-text column. The target table can include specific trace lines, with a well-structured schema generated from a transformation of the source table's free-text data using the [parse operator](../query/parseoperator.md). 
 
 :::image type="content" source="images/updatepolicy/update-policy-overview.png" alt-text="Overview of the update policy in Azure Data Explorer.":::
@@ -25,8 +25,6 @@ An update policy is subject to the same restrictions and best practices as regul
 Ingesting formatted data improves performance, and CSV is preferred because of it's a well-defined format. Sometimes, however, you have no control over the format of the data, or you may want to enrich ingested data, for example by joining records with a static dimension table in your database.  
 
 ## Update policy query
-
-The update policy query is automatically scoped to just cover newly ingested records. You cannot query data already ingested in the source table. However, data ingested with transactional update policies is available for a query in a single transaction. 
 
 If the update policy is defined on the target table, multiple queries can run on data ingested into a source table. If there are multiple update policies, the order of execution is not necessarily known. 
 
