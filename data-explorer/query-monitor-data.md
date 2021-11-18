@@ -116,6 +116,7 @@ If the Azure Data Explorer resource is in Tenant 'A' and Log Analytics workspace
 Kusto Explorer automatically signs you into the tenant to which the user account originally belongs. To access resources in other tenants with the same user account, the `tenantId` has to be explicitly specified in the connection string:
 `Data Source=https://adx.monitor.azure.com/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=`**TenantId**
 
+
 ## Function supportability
 
 The Azure Data Explorer cross-service queries support functions for both Application Insights and Log Analytics.
