@@ -77,7 +77,6 @@ You can run queries on your Log Analytics or Application Insights workspaces fro
 ```kusto
 Perf | take 10 // Demonstrate cross-service query on the Log Analytics workspace
 ```
-
 ![Query Log Analytics workspace.](media/query-monitor-data/query-la.png)
 
 ### Cross query of your Log Analytics or Application Insights workspace and the Azure Data Explorer native cluster
