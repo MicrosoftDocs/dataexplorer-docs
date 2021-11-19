@@ -23,7 +23,7 @@ There is a downside, however, to doing batching before ingestion, which is
 the introduction of a forced delay, so that the end-to-end time from requesting
 the ingestion of data until it's ready for query is larger.
 
-To allow control of this trade-off, use the [`IngestionBatching`](batching-policy.md) policy.
+To allow control of this trade-off, use the [`IngestionBatching`](./show-table-ingestion-batching-policy.md) policy.
 This policy is applied to queued ingestion only, and provides the maximum
 forced delay to allow when batching small blobs together.
 
@@ -72,5 +72,5 @@ The following lists show all possible types of triggers to batch sealing. The ba
 
 ## Other resources
 
-* [IngestionBatching policy commands reference](../management/batching-policy.md)
+* [IngestionBatching policy commands reference](./show-table-ingestion-batching-policy.md)
 * [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)

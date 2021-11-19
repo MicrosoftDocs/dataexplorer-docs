@@ -89,4 +89,4 @@ case(current_principal_is_member_of('aadgroup=somesecuritygroup@contoso.com'), "
 
 ## Control commands
 
-Use these [control commands](request-classification-policy-commands.md) to manage a cluster's request classification.
+Use these [control commands](./show-cluster-policy-request-classification-command.md) to manage a cluster's request classification.

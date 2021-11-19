@@ -82,4 +82,4 @@ The same information can also be viewed and analyzed in [Azure Monitor insights]
 
 ## Control commands
 
-Managing workload groups and their policies is done using [workload groups control commands](workload-groups-commands.md).
+Managing workload groups and their policies is done using [workload groups control commands](./show-workload-group-command.md).
