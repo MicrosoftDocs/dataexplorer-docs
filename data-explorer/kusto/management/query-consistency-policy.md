@@ -50,4 +50,4 @@ The following limits are configurable:
 
 ## Control commands
 
-Manage the workload group's query consistency policy with [Workload groups control commands](workload-groups-commands.md).
+Manage the workload group's query consistency policy with [Workload groups control commands](./show-workload-group-command.md).

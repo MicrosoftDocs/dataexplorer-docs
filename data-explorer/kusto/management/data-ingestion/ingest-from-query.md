@@ -51,7 +51,7 @@ existing or nonexistent tables and data.
 |`recreate_schema`  | A Boolean value that. If specified, describes if the command may recreate the schema of the table. Default is "false". This option applies only to the *set-or-replace* command. This option takes precedence over the extend_schema property if both are set|
 |`folder`         | The folder to assign to the table. If the table already exists, this property will overwrite the table's folder.|
 |`ingestIfNotExists`   | A string value that. If specified, prevents ingestion from succeeding if the table already has data tagged with an `ingest-by:` tag with the same value|
-|`policy_ingestiontime`   | A Boolean value. If specified, describes if to enable the [Ingestion Time Policy](../../management/ingestiontime-policy.md) on a table that is created by this command. The default is "true"|
+|`policy_ingestiontime`   | A Boolean value. If specified, describes if to enable the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) on a table that is created by this command. The default is "true"|
 |`tags`   | A JSON string that indicates which validations to run during ingestion|
 |`docstring`   | A string documenting the table|
 
