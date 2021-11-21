@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/04/2020
+ms.date: 11/21/2021
 ---
 # bag_remove_keys()
 
@@ -27,9 +27,9 @@ You can specify keys on the nested levels using JsonPath notation.
 
 Returns a `dynamic` property-bag without specified keys and their values.
 
-
 ### JSON Path expressions
-When removing of a inner (nested) properties: use JsonPath notation:
+
+When removing inner (nested) properties, use JsonPath notation. Wildcards, recursion, union, and slices aren't supported.
 
 |Path expression|Description|
 |---|---|
@@ -37,8 +37,6 @@ When removing of a inner (nested) properties: use JsonPath notation:
 |`@`|Current object|
 |`.` or `[ ]` | Child|
 |`[ ]`|Array subscript|
-
-*(We don't currently implement wildcards, recursion, union, or slices.)*
 
 > [!NOTE]
 > JSON paths that include special characters should be escaped as [\'Property Name\'].
@@ -60,7 +58,7 @@ datatable(input:dynamic)
 |{<br>  "key1": 123,<br>  "key2": "abc"<br>}|{<br>  "key1": 123<br>}|
 |{<br>  "key1": "value",<br>  "key3": 42.0<br>}|{<br>  "key1": "value",<br>  "key3": 42.0<br>}|
 
-Following example shows how to remove inner properties of the dynamic values using JsonPath notation.
+### Remove inner properties of dynamic values using JsonPath notation
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
