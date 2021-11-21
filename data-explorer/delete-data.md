@@ -55,4 +55,4 @@ With [purge](kusto/concepts/data-purge.md), all storage artifacts that have "poi
 
 ### Soft-delete
 
-With [soft-delete](kusto/concepts/data-soft-delete.md), Azure Data Explorer won't necessarily delete the data from the storage artifacts, and as such, it cannot be used for compliance scenarios. Deletion is immediate and doesn't require significant system resources.
+With [soft-delete](kusto/concepts/data-soft-delete.md), data is not necessarily deleted from storage artifacts and, as such, it cannot be used for compliance scenarios. The deletion is immediate and doesn't require significant system resources.
