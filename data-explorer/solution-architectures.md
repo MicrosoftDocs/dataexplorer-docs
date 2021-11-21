@@ -12,7 +12,7 @@ ms.date: 10/11/2021
 
 Azure Data Explorer is a fully managed, high-performance, big data analytics platform that makes it easy to analyze high volumes of data in near real time. It can be used together with other Azure offerings to create end-to-end solutions for various use cases. 
 
-Use the [Azure Architecture Center](/azure/architecture/) to design architectures that are tailored to your use case. The Azure Architecture Center provides reusable patterns for building architectures, along with sample customer stories that can help you make decisions about how best to leverage the services.
+Use the [Azure Architecture Center](/azure/architecture/) to find architectures suitable for your needs. The Azure Architecture Center provides reusable patterns for building architectures and sample customer stories that can help you make decisions about how best to use the services.
 
 This document refers you to all architectures that include Azure Data Explorer.
 
@@ -45,7 +45,7 @@ Hybrid end-to-end monitoring solution integrated with Azure Sentinel and Azure M
 
 ## Azure Data Explorer interactive analytics
 
-Interactive analytics with Azure Data Explorer to explore data with ad hoc, interactive, and lightning fast queries over small to extremely large volumes of data. This data exploration can be done using native Azure Data Explorer tools or alternative tools of your choice. This solution focuses on the integration of Azure Data Explorer with rest of the data platform ecosystem.
+Interactive analytics with Azure Data Explorer to explore data with improvised, interactive, and lightning fast queries over small to large volumes of data. This data exploration can be done using native Azure Data Explorer tools or alternative tools of your choice. This solution focuses on the integration of Azure Data Explorer with rest of the data platform ecosystem.
 
 > [!div class="nextstepaction"]
 > [Azure Data Explorer interactive analytics](/azure/architecture/solution-ideas/articles/interactive-azure-data-explorer)
