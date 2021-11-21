@@ -10,9 +10,9 @@ ms.date: 10/11/2021
 ---
 # Solution architectures
 
-Azure Data Explorer is a fully managed, high-performance, big data analytics platform that makes it easy to analyze high volumes of data in near real time. It can be used together with other Azure offerings to create end-to-end solutions for various use cases. 
+Azure Data Explorer is a fully managed, high-performance, big data analytics platform that makes it easy to analyze high volumes of data in near real time. Azure Data Explorer can be used with other Azure offerings to create end-to-end solutions for various use cases.
 
-Use the [Azure Architecture Center](/azure/architecture/) to find architectures suitable for your needs. The Azure Architecture Center provides reusable patterns for building architectures and sample customer stories that can help you make decisions about how best to use the services.
+Use the [Azure Architecture Center](/azure/architecture/) to find architectures suitable for your needs. The Azure Architecture Center provides reusable patterns for building architectures and sample customer stories that can help you make decisions about how best to use Azure services.
 
 This document refers you to all architectures that include Azure Data Explorer.
 
@@ -22,19 +22,6 @@ Azure Data Explorer and Azure Synapse Analytics work together for near real-time
 
 > [!div class="nextstepaction"]
 > [Big data analytics with Azure Data Explorer](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer)
-
-## Content Delivery Network analytics
-
-Low-latency high throughput ingestion for large volumes of Content Delivery Network (CDN) logs for building near real-time analytics dashboards.
-
-This solution also uses the following services:
-
-* Azure Data Lake Storage
-* Logic Apps
-* Dashboarding
-
-> [!div class="nextstepaction"]
-> [Content Delivery Network analytics](/azure/architecture/solution-ideas/articles/content-delivery-network-azure-data-explorer)
 
 ## Azure Data Explorer monitoring
 
@@ -82,3 +69,16 @@ Solution for long-term retention of security logs. At the core of the architectu
 
 > [!div class="nextstepaction"]
 > [Long-term security log retention with Azure Data Explorer](/azure/architecture/example-scenario/security/security-log-retention-azure-data-explorer)
+
+## Content Delivery Network analytics
+
+Low-latency high throughput ingestion for large volumes of Content Delivery Network (CDN) logs for building near real-time analytics dashboards.
+
+This solution also uses the following services:
+
+* Azure Data Lake Storage
+* Logic Apps
+* Dashboarding
+
+> [!div class="nextstepaction"]
+> [Content Delivery Network analytics](/azure/architecture/solution-ideas/articles/content-delivery-network-azure-data-explorer)
