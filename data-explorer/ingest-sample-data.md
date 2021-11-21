@@ -97,10 +97,10 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
     | Ignore the first record | If the source table includes column names, the first record is ignored during ingestion.  | 
     | Mapping | A mapping name has been assigned. | 
 
-1. After ingestion completes, paste in the following query, select the query in the window, and select **Run**.
+1. After ingestion completes, select **Query** in the left pane. Paste in the following query, select the query in the window, and select **Run**.
 
     ```Kusto
-    TestTable
+    StormEvents
     | sort by StartTime desc
     | take 10
     ```
