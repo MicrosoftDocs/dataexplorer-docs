@@ -7,11 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-<<<<<<< HEAD
-ms.date: 10/25/2021
-=======
 ms.date: 11/09/2021
->>>>>>> dd1758bd7cfc650922ba485d0b040c057f5c5179
 ms.localizationpriority: high
 ---
 # Let statement
@@ -65,24 +61,12 @@ If the variable previously represented another value, for example in nested stat
 
 ## Examples
 
-<<<<<<< HEAD
-### Example: Use let function to define constants
-=======
 ### Define scalar values
->>>>>>> dd1758bd7cfc650922ba485d0b040c057f5c5179
 
 
 The following example uses a scalar expression statement.
 
 ```kusto
-<<<<<<< HEAD
-let ['x'] = 1;
-range y from x to x step x
-```
-
-### Example: Use let for scalar values
-=======
->>>>>>> dd1758bd7cfc650922ba485d0b040c057f5c5179
 
 let n = 10;  // number
 let place = "Dallas";  // string
@@ -93,9 +77,6 @@ Events
 | take n
 ```
 
-<<<<<<< HEAD
-### Example: Use let statement with arguments for scalar calculation
-=======
 The following example binds the name `x` using the `['name']` notion, and then uses it in a tabular expression statement.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -105,7 +86,6 @@ range y from 0 to ['some number'] step 5
 ```
 
 ### Create user defined function with scalar calculation
->>>>>>> dd1758bd7cfc650922ba485d0b040c057f5c5179
 
 This example uses the let statement with arguments for scalar calculation. The query defines function `MultiplyByN` for multiplying two numbers.
 
@@ -148,12 +128,7 @@ range x from 10 to 15 step 1
 |14|4|
 |15|5|
 
-<<<<<<< HEAD
-
-### Example: Use multiple let statements
-=======
 ### Use multiple let statements
->>>>>>> dd1758bd7cfc650922ba485d0b040c057f5c5179
 
 This example defines two let statements where one statement (`foo2`) uses another (`foo1`).
 
@@ -164,15 +139,11 @@ let foo2 = (_step:long) { foo1(1, 100, _step)};
 foo2(2) | count
 ```
 
-<<<<<<< HEAD
-### Example: Use the `view` keyword in a let statement
-=======
 **Output**
 
 |result|
 |---|
 |20|
->>>>>>> dd1758bd7cfc650922ba485d0b040c057f5c5179
 
 ### Create a view or virtual table 
 
@@ -194,13 +165,7 @@ search MyColumn == 5
 
 ### Use a materialize function
 
-<<<<<<< HEAD
-### Example: Use materialize function
-
-The [`materialize`](materializefunction.md) function lets you cache subquery results during the time of query execution. 
-=======
 The [`materialize()`](materializefunction.md) function lets you cache subquery results during the time of query execution. When you use the `materialize()` function, the data is cached and any subsequent invocation of the result uses cached data.
->>>>>>> dd1758bd7cfc650922ba485d0b040c057f5c5179
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
