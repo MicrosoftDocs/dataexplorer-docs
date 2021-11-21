@@ -51,7 +51,7 @@ Both purge and soft-delete can be used for deleting individuals rows, but they a
 
 ### Purge
 
-With [purge](kusto/concepts/data-purge.md), Azure Data Explorer will delete all storage artifacts that have the "poison" data. Deletion isn't immediate and requires significant system resources. As such, it's only advised for compliance scenarios.
+With [purge](kusto/concepts/data-purge.md), all storage artifacts that have "poison" data is deleted. The deletion isn't immediate and requires significant system resources. As such, it's only recommended for compliance scenarios.
 
 ### Soft-delete
 
