@@ -1,6 +1,6 @@
 ---
-title: .alter callout policy command - Azure Data Explorer
-description: This article describes the .alter callout policy command in Azure Data Explorer.
+title: ".alter callout policy command - Azure Data Explorer"
+description: "This article describes the .alter callout policy command in Azure Data Explorer."
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -26,11 +26,9 @@ Returns a JSON representation of the policy.
 Define permitted callouts for the cluster callout policy.
 
 ```kusto
-.alter cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname.database.azure.com","CanCall": true}]'
+.alter cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname\\.database\\.azure\\.com/?$","CanCall": true}]'
 ```
-
-**Output**
 
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
-|AutoCalloutPolicy| | { "CalloutType": "sql", "CalloutUriRegex": "sqlname.database.azure.com", "CanCall": true } | | |
+|CalloutPolicy||[{<br>"CalloutType": "sql",<br>"CalloutUriRegex": "sqlname\\\\.database\\\\.azure\\\\.com/?$",<br>"CanCall": true<br>}]|||

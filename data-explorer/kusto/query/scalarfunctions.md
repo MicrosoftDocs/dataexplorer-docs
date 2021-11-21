@@ -259,7 +259,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[countof()](countoffunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.|
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
 |[extract_all()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
-|[extractjson()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
+|[extract_json()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
 |[has_any_index()](has-any-index-function.md)|Searches the string for items specified in the array and returns the position of the first item found in the string.|
 |[indexof()](indexoffunction.md)|Function reports the zero-based index of the first occurrence of a specified string within input string.|
 |[isempty()](isemptyfunction.md)|Returns true if the argument is an empty string or is null.|
@@ -346,6 +346,10 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[geo_point_to_h3cell()](geo-point-to-h3cell-function.md)|Calculates the H3 Cell token string value for a geographic location.|
 |[geo_h3cell_to_central_point()](geo-h3cell-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of an H3 Cell.|
 |[geo_h3cell_to_polygon()](geo-h3cell-to-polygon-function.md)|Calculates the polygon that represents the H3 Cell rectangular area.|
+|[geo_h3cell_parent()](geo-h3cell-parent-function.md)|Calculates the H3 cell parent.|
+|[geo_h3cell_children()](geo-h3cell-children-function.md)|Calculates the H3 cell children.|
+|[geo_h3cell_level()](geo-h3cell-level-function.md)|Calculates the H3 cell resolution.|
+|[geo_h3cell_rings()](geo-h3cell-rings-function.md)|Calculates the H3 cell Rings.|
 |[geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md)|Calculates S2 Cell tokens that cover a polygon or multipolygon on Earth. Useful geospatial join tool.|
 |[geo_line_densify()](geo-line-densify-function.md)|Converts planar line edges to geodesics by adding intermediate points.|
 |[geo_polygon_densify()](geo-polygon-densify-function.md)|Converts polygon or multipolygon planar edges to geodesics by adding intermediate points.|

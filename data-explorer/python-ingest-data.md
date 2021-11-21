@@ -95,7 +95,7 @@ from azure.kusto.ingest import QueuedIngestClient, IngestionProperties, FileDesc
 
 CONTAINER = "samplefiles"
 ACCOUNT_NAME = "kustosamplefiles"
-SAS_TOKEN = "?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D"
+SAS_TOKEN = "?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D"
 FILE_PATH = "StormEvents.csv"
 FILE_SIZE = 64158321    # in bytes
 

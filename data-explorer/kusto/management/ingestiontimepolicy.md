@@ -41,4 +41,4 @@ The IngestionTime policy is designed for two main scenarios:
 * To support [Database Cursors](../management/databasecursor.md) that let users 
   issue consecutive queries, the query is limited to the data that was ingested since the previous query.
 
-For more information. see the [control commands for managing the IngestionTime policy](../management/ingestiontime-policy.md).
+For more information. see the [control commands for managing the IngestionTime policy](./show-table-ingestion-time-policy-command.md).

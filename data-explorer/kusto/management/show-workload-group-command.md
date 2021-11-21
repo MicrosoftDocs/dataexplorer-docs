@@ -21,12 +21,16 @@ For more information, see [Workload groups](workload-groups.md).
 
 `.show` `workload_groups`
 
+## Argument
+
+*WorkloadGroupName* - Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName'].
+
 ## Example
 
 ```kusto
 .show workload_group MyWorkloadGroup
 ```
 
-| WorkloadGroupName  | WorkloadGroup                                                                                                                                                 |
-|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| WorkloadGroupName  | WorkloadGroup  |
+|--------------------|------_---------|
 | MyWorkloadGroup    | {"RequestRateLimitPolicies": [{"IsEnabled": true, "Scope": "WorkloadGroup", "LimitKind": "ConcurrentRequests", "Properties": {"MaxConcurrentRequests": 30}}]} |

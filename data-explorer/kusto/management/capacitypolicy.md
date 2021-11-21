@@ -94,32 +94,18 @@ partitioning operations is 90% or higher.
 
 ## Materialized views capacity policy
 
-The policy can be used to change concurrency settings for materialized views. This change may be required when there's more than a single materialized view defined on a cluster, and the cluster can't keep up with the materialization of all views. By default, concurrency settings are relatively low to ensure that materialization doesn't impact cluster's performance.
+The policy can be used to change concurrency settings for [materialized views](materialized-views/materialized-view-overview.md). Changing the materialized views capacity policy may be useful when there's more than a single materialized view defined on a cluster.
+
+|Property                           |Type    |Description                                                                                         |
+|-----------------------------------|--------|----------------------------------------------------------------------------------------------------|
+|ClusterMinimumConcurrentOperations |long    |A minimal value for the number of concurrent materialization operations in a cluster. Default: 1  |
+|ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent materialization operations in a cluster. Default: 10 |
+
+The effective value for `concurrent operations` is automatically adjusted by the system in the range
+[`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], based on the number of materialized views in the cluster and the cluster's CPU.
 
 > [!WARNING]
-> The materialized view capacity policy should only be increased if the cluster's resources are well (low CPU, available memory). Increasing these values when resources are limited may result in resources exhaustion and will badly impact the cluster's performance.
-
-The materialized views capacity policy is part of the cluster's [capacity policy](#capacity-policy), and has the following JSON representation:
-
-<!-- csl -->
-``` 
-{
-   "MaterializedViewsCapacity": {
-    "ClusterMaximumConcurrentOperations": 1,
-    "ExtentsRebuildCapacity": {
-      "ClusterMaximumConcurrentOperations": 50,
-      "MaximumConcurrentOperationsPerNode": 5
-    }
-  }
-}
-```
-
-### Properties
-
-Property | Description
-|---|---|
-|`ClusterMaximumConcurrentOperations` | The maximum number of materialized views that the cluster can materialize concurrently. This value is 1 by default, while materialization itself (of a single individual view) may run many concurrent operations. If there's more than a single materialized view defined on the cluster, and if the cluster's resources are in good state, it's recommended to increase this value. |
-| `ExtentsRebuildCapacity`|  Determines the number of concurrent extents rebuild operations, executed for all materialized views during the materialization process. If several views are executing concurrently, since `ClusterMaximumConcurrentOperation` is greater than 1, they'll share the quota defined by this property. The maximum number of concurrent extents rebuild operations won't exceed this value. |
+> The `ClusterMinimumConcurrentOperations` should only be increased if the cluster's resources are well (low CPU, available memory). Increasing these values when resources are limited may result in resources exhaustion and will badly impact the cluster's performance.
 
 ### Extents rebuild capacity
 
@@ -191,9 +177,9 @@ The default capacity policy has the following JSON representation:
 > [!WARNING]
 > Consult with the Azure Data Explorer team before altering a capacity policy.
 
-* Use [`.show cluster policy capacity`](capacity-policy.md#show-cluster-policy-capacity) to show the current capacity policy of the cluster.
+* Use [`.show cluster policy capacity`](./show-cluster-capacity-policy-command.md) to show the current capacity policy of the cluster.
 
-* Use [`.alter cluster policy capacity`](capacity-policy.md#alter-cluster-policy-capacity) to alter the capacity policy of the cluster.
+* Use [`.alter cluster policy capacity`](./show-cluster-capacity-policy-command.md) to alter the capacity policy of the cluster.
 
 ## Control commands throttling
 

@@ -39,7 +39,7 @@ To enable continuous data export, [create an external table](../external-tables-
 
 To guarantee "exactly once" export, continuous export uses [database cursors](../databasecursor.md). The continuous export query shouldn't include a timestamp filter - the database cursors mechanism ensures that records aren't processed more than once. Adding a timestamp filter in the query can lead to missing data in exported data.
 
-[IngestionTime policy](../ingestiontime-policy.md) must be enabled on all tables referenced in the query that should be processed "exactly once" in the export. The policy is enabled by default on all newly created tables.
+[IngestionTime policy](../show-table-ingestion-time-policy-command.md) must be enabled on all tables referenced in the query that should be processed "exactly once" in the export. The policy is enabled by default on all newly created tables.
 
 The guarantee for "exactly once" export is only for files reported in the [show exported artifacts command](show-continuous-artifacts.md). Continuous export doesn't guarantee that each record will be written only once to the external table. If a failure occurs after export has begun and some of the artifacts were already written to the external table, the external table may contain duplicates. If a write operation was aborted before completion, the external table may contain corrupted files. In such cases, artifacts aren't deleted from the external table, but they won't be reported in the [show exported artifacts command](show-continuous-artifacts.md). Consuming the exported files using the `show exported artifacts command` guarantees no duplications and no corruptions.
 
@@ -75,7 +75,21 @@ Followed by:
 <| T | where cursor_before_or_at("636751928823156645")
 ```
 
-## Resource consumption
+## Continuous export monitoring
+
+Monitor the health of your continuous export jobs using the following [export metrics](../../../using-metrics.md#export-metrics):
+
+* `Continuous export max lateness` - Max lateness (in minutes) of continuous exports in the cluster. This is the time between now and the min `ExportedTo` time of all continuous export jobs in cluster. For more information, see [`.show continuous export`](show-continuous-export.md) command.
+* `Continuous export result` - Success/failure result of each continuous export execution. This metric can be split by the continuous export name.
+
+Use the [`.show continuous export failures`](show-continuous-failures.md) command to see the specific failures of a continuous export job.
+
+> [!WARNING]
+> If a continuous export fails for over 7 days due to a permanent failure, the export will be automatically disabled by the system.
+> Permanent errors include: external table not found, mismatch between schema of continuous export query and external table schema, storage account is not accessible.
+> After the error has been fixed, you can re-enable the continuous export using the [`.enable continuous export`](disable-enable-continuous.md) command.
+
+### Resource consumption
 
 * The impact of the continuous export on the cluster depends on the query the continuous export is running. Most resources, such as CPU and memory, are consumed by the query execution. 
 * The number of export operations that can run concurrently is limited by the cluster's data export capacity. For more information, see [Control commands throttling](../../management/capacitypolicy.md#control-commands-throttling). If the cluster doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind.

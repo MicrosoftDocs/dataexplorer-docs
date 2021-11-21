@@ -210,6 +210,8 @@ items:
       href: query-monitor-data.md
     - name: Query data in Power Apps application
       href: power-apps-connector.md
+    - name: Query cold data with hot windows
+      href: hot-windows.md
     - name: Debug KQL inline Python
       href: debug-inline-python.md
     - name: Using SDKs
@@ -321,6 +323,8 @@ items:
         href: azure-advisor.md
       - name: Select cluster VM SKU
         href: manage-cluster-choose-sku.md
+      - name: Automatic stop of inactive clusters
+        href: auto-stop-clusters.md
       - name: Manage cluster horizontal scaling
         href: manage-cluster-horizontal-scaling.md
       - name: Manage cluster vertical scaling

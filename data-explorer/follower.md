@@ -41,6 +41,9 @@ When attaching the database all tables, external tables and materialized views a
 '*TableLevelSharingProperties*' contains six arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, and `materializedViewsToExclude`. The maximum number of entries in all arrays together is 100.  
 
 > [!NOTE]
+> Table level sharing is not supported when using '*' all databases notation. 
+
+> [!NOTE]
 > When materialized views are included, their source tables are included as well.
 
 #### Examples
@@ -98,18 +101,30 @@ var attachedDatabaseConfigurationName = "uniqueNameForAttachedDatabaseConfigurat
 var databaseName = "db"; // Can be specific database name or * for all databases
 var defaultPrincipalsModificationKind = "Union"; 
 var location = "North Central US";
-var tablesToInclude = new List<string>
-{
-    "table1",
-    "table2",
-    "table3"
-};
-var externalTablesToExclude = new List<string>
-{
-    "Logs*"
-};
 
-var tls = new TableLevelSharingProperties(tablesToInclude: tablesToInclude, externalTablesToExclude: externalTablesToExclude);
+
+TableLevelSharingProperties tls;
+if (databaseName == "*")
+{
+    // Table level sharing properties are not supported when using '*' all databases notation.
+    tls = null;
+}
+else
+{
+    // Set up the table level sharing properties - the following is just an example.
+    var tablesToInclude = new List<string>
+    {
+        "table1",
+        "table2",
+        "table3"
+    };
+    var externalTablesToExclude = new List<string>
+    {
+        "Logs*"
+    };
+    var tls = new TableLevelSharingProperties(tablesToInclude: tablesToInclude, externalTablesToExclude: externalTablesToExclude);
+}
+
 
 AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new AttachedDatabaseConfiguration()
 {
@@ -166,9 +181,12 @@ database_name  = "db" # Can be specific database name or * for all databases
 default_principals_modification_kind  = "Union"
 location = "North Central US"
 cluster_resource_id = "/subscriptions/" + leader_subscription_id + "/resourceGroups/" + leader_resouce_group_name + "/providers/Microsoft.Kusto/Clusters/" + leader_cluster_name
-tables_to_include = ["table1", "table2", "table3"]
-external_tables_to_exclude =  ["Logs*"]
-table_level_sharing_properties = TableLevelSharingProperties(tables_to_include = tables_to_include, external_tables_to_exclude = external_tables_to_exclude)
+table_level_sharing_properties = None
+if (database_name != "*"):
+    #Set up the table level sharing properties - the following is just an example.
+    tables_to_include = ["table1", "table2", "table3"]
+    external_tables_to_exclude =  ["Logs*"]
+    table_level_sharing_properties = TableLevelSharingProperties(tables_to_include = tables_to_include, external_tables_to_exclude = external_tables_to_exclude)
 
 
 attached_database_configuration_properties = AttachedDatabaseConfiguration(cluster_resource_id = cluster_resource_id, database_name = database_name, default_principals_modification_kind = default_principals_modification_kind, location = location, table_level_sharing_properties = table_level_sharing_properties)
@@ -209,6 +227,7 @@ if($DatabaseName -eq '*')  {
 else {
         $configname = $DatabaseName   
      }
+##Table level sharing is not supported when using '*' all databases notation. If you use the all database notation please remove all table level sharing lines from the powershell command.
 New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
 	-Name $configname `
 	-ResourceGroupName $FollowerResourceGroupName `
@@ -272,42 +291,42 @@ In this section, you learn to attach a database to an existing cluster by using 
             "type": "array",
             "defaultValue": [],
             "metadata": {
-                "description": "The list of tables to include"
+                "description": "The list of tables to include. Not supported when following all databases."
             }
         },
         "tablesToExclude": {
             "type": "array",
             "defaultValue": [],
             "metadata": {
-                "description": "The list of tables to exclude"
+                "description": "The list of tables to exclude. Not supported when following all databases."
             }
         },
         "externalTablesToInclude": {
             "type": "array",
             "defaultValue": [],
             "metadata": {
-                "description": "The list of external tables to include"
+                "description": "The list of external tables to include. Not supported when following all databases."
             }
         },
         "externalTablesToExclude": {
             "type": "array",
             "defaultValue": [],
             "metadata": {
-                "description": "The list of external tables to exclude"
+                "description": "The list of external tables to exclude. Not supported when following all databases."
             }
         },
         "materializedViewsToInclude": {
             "type": "array",
             "defaultValue": [],
             "metadata": {
-                "description": "The list of materialized views to include"
+                "description": "The list of materialized views to include. Not supported when following all databases."
             }
         },
         "materializedViewsToExclude": {
             "type": "array",
             "defaultValue": [],
             "metadata": {
-                "description": "The list of materialized views to exclude"
+                "description": "The list of materialized views to exclude. Not supported when following all databases."
             }
         },
         "location": {
@@ -569,7 +588,7 @@ Managing read-only database permission is the same as for all database types. Se
 
 ### Configure caching policy
 
-The follower database administrator can modify the [caching policy](kusto/management/cache-policy.md) of the attached database or any of its tables on the hosting cluster. The default is keeping the leader database collection of database and table-level caching policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using control commands to configure the caching policy on the follower database or table, see [Control commands for managing a follower cluster](kusto/management/cluster-follower.md).
+The follower database administrator can modify the [caching policy](./kusto/management/show-table-cache-policy-command.md) of the attached database or any of its tables on the hosting cluster. The default is keeping the leader database collection of database and table-level caching policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using control commands to configure the caching policy on the follower database or table, see [Control commands for managing a follower cluster](kusto/management/cluster-follower.md).
 
 ## Notes
 
@@ -586,6 +605,7 @@ The follower database administrator can modify the [caching policy](kusto/manage
 * Data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) isn't supported on both leader and follower clusters. 
 * You can't delete a database that is attached to a different cluster before detaching it.
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
+* Table level sharing properties are not supported when following all database.
 
 ## Next steps
 

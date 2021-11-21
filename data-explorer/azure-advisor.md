@@ -69,15 +69,16 @@ Cost recommendations include:
 * [Correctly size Azure Data Explorer cluster to optimize cost](#correctly-size-azure-data-explorer-clusters-to-optimize-cost)
 * [Reduce cache for Azure Data Explorer tables](#reduce-cache-for-azure-data-explorer-tables)
 * [Run a cleanup command to delete unused storage artifacts](#delete-unused-storage-artifacts)
+* [Enable Optimized autoscale](#enable-optimized-autoscale)
 
 #### Azure Data Explorer unused cluster
 
 A cluster is considered unused if it has:
 
 * Small amount of data
-* Few queries and ingestion events during the last 30 days
-* Low CPU usage during the last two days
-* No followers during the last day
+* No queries and ingestion events during the last 30 days
+* Low CPU usage during the last 30 days
+* No followers
 
 When recommended to **consider deleting empty / unused clusters**, the recommended action is to delete the cluster.
 
@@ -87,9 +88,8 @@ The recommendation **stop Azure Data Explorer clusters to reduce cost and keep i
 
 Low activity is based on:
 
-* Few queries and ingestion events during the last 30 days
-* Low CPU usage during the last two days
-* No followers during the last day
+* No queries and ingestion events during the last 5 days
+* Low CPU usage during the last 5 days
 
 The recommendation is to stop the cluster to reduce cost but still preserve the data. If the data isn't needed, consider deleting the cluster to increase your savings.
 
@@ -113,6 +113,12 @@ The recommended action is to run the [clean databases extentcontainers](kusto/ma
 
 > [!IMPORTANT]
 > Data recoverability will be reset to the cleanup time and will not be available on data that was created before running the cleanup.
+
+#### Enable Optimized autoscale
+
+
+The recommendation **enable Optimized autoscale** is given when enabling [Optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale) would have reduced the instance count on a cluster. This recommendation is based on usage patterns, cache utilization, ingestion utilization, and CPU. To make sure you don't exceed your planned budget, add a maximum instance count when you enable Optimized autoscale.
+
 
 ### Performance recommendations
 
@@ -144,7 +150,7 @@ The **Operational Excellence** or "best practice" recommendations are recommenda
 
 You can think about the **Reduce table cache policy to match usage patterns** recommendation as a 'best practice for cleanup' recommendation. The recommendation shows suggestions for:
 
-* Unused tables – for example, let's say the table `ExampleTable` in database `ExampleDatabase` is not being used, with 0 queries run on this table. Since the table is not being used, you might want to delete or reduce the cache policy of this table. For this table and others with 0 GB, the hot data saving is not significant, about 0 GB savings, so implementing this recommendation won't result in an immediate cost reduction for the cluster. The idea is to help you identify unused tables, so you can delete them or reduce the cache policy.
+* Unused tables – for example, let's say the table `ExampleTable` in database `ExampleDatabase` is not being used, with 0 queries run on this table. Since the table is not being used, you might want to delete or reduce the cache policy of this table. If the hot data saving is not significant, implementing this recommendation won't result in an immediate cost reduction for the cluster. The idea is to help you identify unused tables, so you can delete them or reduce the cache policy.
 
 * Tables with redundant cache policy –  which means that your table's actual query look-backs, or usage patterns, are lower than the configured cache policy. However, reducing the cache policy won’t result in an immediate cost saving, since the cluster is not data-bound. The cluster won’t scale in, even if you remove data from the hot cache.
 
