@@ -55,7 +55,7 @@ Kusto.Cloud.Platform.Utils.Anchor.Tweaks.SetProgrammaticAppSwitch(
     );
 ```
 
-## Enable the Kusto client libraries tracing
+## Enable Kusto client libraries tracing
 
 To enable tracing out of the Kusto client libraries, enable .NET tracing
 in your application's *app.config file*. For example, assume that the application
@@ -81,7 +81,6 @@ The subdirectory is located in the process' directory.
 > [!NOTE]
 > Any .NET-compatible trace listener class may be used as well
 
-## Enable the Azure AD client libraries (ADAL) tracing
+## Enable MSAL (Microsoft Authentication Library) tracing
 
-Once tracing for the Kusto client libraries is enabled, so is the tracing by the Azure AD 
-client libraries. The Kusto client libraries automatically configure ADAL tracing.
+Once tracing for Kusto client libraries is enabled, tracing for [MSAL (Microsoft Authentication Library)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) is enabled automaticlly.
