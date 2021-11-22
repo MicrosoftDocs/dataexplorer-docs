@@ -1,0 +1,114 @@
+---
+title: How to authenticate using managed identities with External Tables in Azure Data Explorer
+description: Learn how to use managed identities with External Tables in Azure Data Explorer cluster.
+author: orspod
+ms.author: orspodek
+ms.reviewer: itsagui
+ms.service: data-explorer
+ms.topic: how-to
+ms.date: 11/25/2020
+---
+
+# External tables with Managed Identities
+
+An [external table](azure/data-explorer/kusto/query/schema-entities/externaltables) is a Kusto schema entity that references data stored outside the Azure Data Explorer database.
+External tables can authenticate to storage/sql using managed identities. This article will demonstrate how to create external table that authenticates to Azure Storage with a managed identity and query it.
+
+> [!Note] This guide demonstrates external table flows over Azure Blob Storage. Managed Identities could be used similarly with other storage and sql external table types, using the relevant connection strings as stated in [Kusto storage connection string](/storage) and [Kusto sql connection strings](/some-link).
+
+In order to use managed identities with your external table, please follow these steps:
+
+1. [Assign managed identity to our cluster]()
+2. [Create managed identity policy]()
+3. [Create the external table]()
+4. [Export data the external table]()
+5. [Query the external table]()
+
+## Assign managed identity to our cluster
+
+In order to use managed identities with your cluster, you first need to assign it. For instructions please follow this [guide](/some-link)
+
+## Create managed identity policy
+
+For using external tables with managed identities, we must first define the [managed identity policy](azure/data-explorer/kusto/management/alter-managed-identity-policy-command) for the `ExternalTable` usage.
+
+The policy can either be defined in the cluster level, and therefore will be available for all databases in the cluster, or in a specific database level.
+
+The following is a policy alter command for the database level:
+~~~
+.alter database db policy managed_identity ```
+[
+  {
+    "ObjectId": "802bada6-4d21-44b2-9d15-e66b29e4d63e",
+    "AllowedUsages": "ExternalTable"
+  },
+]
+```
+~~~
+
+in order to define it in the cluster level, replace `database db` with `cluster`.
+
+## Create the external table
+
+External table's authentication method is listed as part of the `connection string` provided in the command.
+
+for user-assigned managed identities, attach `;managed_identity=[managed-identity-object-id]` to the end of the connection string:
+`https://StorageAccountName.blob.core.windows.net/Container;managed_identity=[/managedIdentityObjectId]`
+
+for system-assigned managed identities, one could choose to use the shortcut `system` instead:
+
+`https://StorageAccountName.blob.core.windows.net/Container[/BlobName];managed_identity=system`
+
+We end up with the following create command:
+
+~~~
+.create external table tableName (col_a: string, col_b: string)
+kind = storage 
+dataformat = csv (
+'https://StorageAccountName.blob.core.windows.net/Container;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e'
+)
+~~~
+
+## Export data the external table
+
+Now that we have defined the external table, we can 
+~~~
+.export to table tableName <| datatable(col_a: string, col_b: string) ["a", "b"]
+~~~
+
+## Query the external table
+
+Now we can query the data and see our exported data:
+~~~
+external_table('tableName')
+~~~
+
+**Output:**
+
+| col_a | col_b |
+|-------| ---- |
+| `a` | `b`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
