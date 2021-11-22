@@ -61,7 +61,8 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
 # [Ingest with wizard](#tab/one-click-ingest)
 
-1. Select **Data** in the left pane. In the **Data Management** page, select **Ingest data from blob**, and then **Ingest**. 
+1. In the left menu, select **Data**.
+1. In the **Ingest data from blob** card, select **Ingest**. 
       
       :::image type="content" source="media/ingest-sample-data/select-ingestion-wizard.png" alt-text="Ingest data from the data management window of the WebUI interface - Azure Data Explorer." lightbox="media/ingest-sample-data/select-ingestion-wizard.png":::
 
