@@ -17,7 +17,7 @@ As a data platform, Azure Data Explorer supports the ability to delete individua
 * To delete records for any other purpose, use `.delete` as described in this topic - This marks records as deleted but does not necessarily delete the data from storage artifacts. This deletion method is much faster than purge.
 
 > [!WARNING]
-> The `.delete` command is designed for deleting **small amounts** of data and is intended to be used **infrequently**. Frequent use of the command may have a significant impact on the performance of your service.
+> The `.delete` command is designed for deleting **small amounts** of data and is intended to be used **infrequently**. Frequent use of the command may have a significant impact on the performance of your cluster.
 >
 > To delete large amounts of data, consider using other methods such as [dropping extents](../management/drop-extents.md).
 
