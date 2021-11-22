@@ -74,7 +74,7 @@ However, query performance is also not guaranteed to improve. While this may hap
 
 ## Impact on COGS (cost of goods sold)
 
-Deletion of records won't result in change of COGS. In most cases:
+In most cases, the deletion of records won't result in a change of COGS.
 
 * There will be no decrease, because no records are actually deleted. Records are only marked as deleted using a hidden column of type `bool`, the size of which is negligible.
 * In some cases, there will be no increase because the `.delete` operation does not require the provisioning of extra resources.
