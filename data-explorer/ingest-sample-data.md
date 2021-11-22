@@ -80,7 +80,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
     :::image type="content" source="media/ingest-sample-data/specify-ingestion-source.png" alt-text="Select source for ingestion and provide list of source URIs or containers.":::
 
-    | Setting | Field description|
+    | Setting | Description|
     |---|---|
     | Source type | Select the data source to ingest. In this example, *From blob* is already selected. |
     | Link to source | Add a blob URI with a SAS token or Account key. For this example, enter https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D. |
