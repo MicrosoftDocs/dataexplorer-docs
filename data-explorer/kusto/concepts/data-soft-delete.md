@@ -21,7 +21,6 @@ As a data platform, Azure Data Explorer supports the ability to delete individua
 >
 > To delete large amounts of data, consider using other methods such as [dropping extents](../management/drop-extents.md).
 
-> [!NOTE]
 > The `.delete` command is only available on clusters running Engine V3.
 
 ## Use cases
