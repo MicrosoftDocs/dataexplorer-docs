@@ -95,7 +95,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
     | Compression type | Compression type has been taken from the file extension. |
     | Data format | The data format, **CSV**, is already specified. | 
     | Ignore the first record | If the source table includes column names, the first record is ignored during ingestion.  | 
-    | Mapping | A mapping name has been assigned. | 
+    | Mapping | Schema mapping name. | 
 
 1. After ingestion completes, select **Query** in the left pane. Paste in the following query, select the query in the window, and select **Run**.
 
