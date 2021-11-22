@@ -75,7 +75,7 @@ After a deletion, you may notice that the performance of some queries improves, 
 Deletion of records won't result in change of COGS. In most cases:
 
 * There will be no decrease, because no records are actually deleted. Records are only marked as deleted using a hidden column of type `bool`, the size of which is negligible.
-* There will be no increase, because the `.delete` operation does not require provisioning of extra resources.
+* In some cases, there will be no increase because the `.delete` operation does not require the provisioning of extra resources.
 * There will be negligible effect on COGS by data extent compaction. This is true even though the compaction causes the deletion of the old storage artifacts that may contain a large amount of deleted records. The replacement extents will be smaller and will therefore consume less space in both the Storage account and in the hot-cache.
 
 ## Triggering the deletion process
