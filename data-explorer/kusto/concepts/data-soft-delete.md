@@ -20,7 +20,6 @@ As a data platform, Azure Data Explorer supports the ability to delete individua
 > The `.delete` command is designed for deleting **small amounts** of data and is intended to be used **infrequently**. Frequent use of the command may have a significant impact on the performance of your service.
 >
 > To delete large amounts of data, consider using other methods such as [dropping extents](../management/drop-extents.md).
-> The `.delete` command is only available on clusters running Engine V3.
 
 ## Use cases
 
