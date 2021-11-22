@@ -61,7 +61,7 @@ The main considerations that can impact the [deletion process](#deletion-process
     * Record distribution across the data extents in the cluster
     * The number of nodes in the cluster
 
-Unlike `.purge`, the `.delete` command does not reingest the data. It just marks records that match the predicate as deleted and is therefore much faster.
+Unlike `.purge`, the `.delete` command does not reingest the data. It just marks records that are returned by the predicate query as deleted and is therefore much faster.
 
 ## Query performance after deletion
 
