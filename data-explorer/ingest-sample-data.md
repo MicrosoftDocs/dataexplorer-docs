@@ -76,7 +76,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
     |Table | Create a new table. For this example, name it *StormEvents*. |
 
     
-1. Specify out the source details with the following information.
+1. Fill out the source tab with the following information:
 
     :::image type="content" source="media/ingest-sample-data/specify-ingestion-source.png" alt-text="Select source for ingestion and provide list of source URIs or containers.":::
 
