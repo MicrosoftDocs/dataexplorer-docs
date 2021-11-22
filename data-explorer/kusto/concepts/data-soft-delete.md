@@ -65,7 +65,6 @@ Unlike `.purge`, the `.delete` command does not reingest the data. It just marks
 
 ## Query performance after deletion
 
-When queries run, an implicit condition is automatically added that checks the column indicating whether a record is deleted. Therefore, you should not notice any degradation in performance when running queries after a soft deletion. 
 
 Query performance is not expected to noticeably change following the deletion of records.
 
