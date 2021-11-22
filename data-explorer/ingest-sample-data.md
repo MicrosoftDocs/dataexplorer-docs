@@ -78,7 +78,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
     | Setting | Description|
     |---|---|
     |Cluster | Select your cluster. |
-    |Database | Select the database that best meets your needs. |
+    |Database | Choose a database. |
     |Table | Create a new table. For this example, name it *StormEvents*. |
 
     
@@ -101,7 +101,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
     | Compression type | THe compression type is inferred from the file extension. |
     | Data format | The data format, **CSV**, is already specified. | 
     | Ignore the first record | If the source table includes column names, the first record is ignored during ingestion.  | 
-    | Mapping | A mapping name has been assigned. | 
+    | Mapping | Schema mapping name. | 
 
 1. After ingestion completes, select **Query** in the left pane. 
 
