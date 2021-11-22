@@ -69,7 +69,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
     :::image type="content" source="media/ingest-sample-data/select-ingestion-cluster.png" alt-text="Select ingestion cluster and  database and select an existing or new table name. Specify table name.":::
 
-    | Setting | Field description|
+    | Setting | Description|
     |---|---|
     |Cluster | Select your cluster. |
     |Database | Select the database that best meets your needs. |
