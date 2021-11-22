@@ -68,7 +68,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
     :::image type="content" source="media/ingest-sample-data/select-data.png" alt-text="Select the data pane from the menu.":::
 
 1. In the **Data Management** page, select **Ingest data from blob**, and then **Ingest**. 
-      
+
       :::image type="content" source="media/ingest-sample-data/select-ingestion-wizard.png" alt-text="Ingest data from the data management window of the WebUI interface - Azure Data Explorer." lightbox="media/ingest-sample-data/select-ingestion-wizard.png":::
 
 1. In the **Destination** tab, fill out the following information:
@@ -81,7 +81,6 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
     |Database | Choose a database. |
     |Table | Create a new table. For this example, name it *StormEvents*. |
 
-    
 1. Fill out the **Source** tab with the following information:
 
     :::image type="content" source="media/ingest-sample-data/specify-ingestion-source.png" alt-text="Select source for ingestion and provide list of source URIs or containers.":::
@@ -90,7 +89,6 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
     |---|---|
     | Source type | Select the data source to ingest. In this example, *From blob* is already selected. |
     | Link to source | Use the following link: https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D. |
-   
 
 1. Confirm the schema details.
 
