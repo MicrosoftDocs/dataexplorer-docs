@@ -11,7 +11,7 @@ ms.date: 11/21/2021
 ---
 # Data soft-delete (Public Preview)
 
-As a data platform, Azure Data Explorer supports the ability to delete individual records. This is commonly acheived using one of the following methods:
+As a data platform, Azure Data Explorer supports the ability to delete individual records. This is commonly achieved using one of the following methods:
 
 * To delete records for compliance purposes, such as GDPR, use [.purge](./data-purge.md) - This method deletes all relevant data from storage artifacts and, once completed, there is no way to recover the deleted data.
 * To delete records for any other purpose, use `.delete` as described in this topic - This marks records as deleted but does not necessarily delete the data from storage artifacts. This deletion method is much faster than purge.
