@@ -65,7 +65,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
       
       :::image type="content" source="media/ingest-sample-data/select-ingestion-wizard.png" alt-text="Ingest data from the data management window of the WebUI interface - Azure Data Explorer." lightbox="media/ingest-sample-data/select-ingestion-wizard.png":::
 
-1. Fill out the basic cluster details with the following information.
+1. Fill out the **Destination** tab with the following information:
 
     :::image type="content" source="media/ingest-sample-data/select-ingestion-cluster.png" alt-text="Select ingestion cluster and  database and select an existing or new table name. Specify table name.":::
 
