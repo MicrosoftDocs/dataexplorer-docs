@@ -67,8 +67,8 @@ The following example defines a pattern that maps states to an expression that r
 ```kusto
 declare pattern country = (name:string)[state:string]
 {
-  ("USA").["New York"] = { print Capital = "New York City" };
-  ("USA").["Washington"] = { print Capital = "Seattle" };
+  ("USA").["New York"] = { print Capital = "Albany" };
+  ("USA").["Washington"] = { print Capital = "Olympia" };
   ("Canada").["Alberta"] = { print Capital = "Edmonton" };
 };
 country("Canada").Alberta
