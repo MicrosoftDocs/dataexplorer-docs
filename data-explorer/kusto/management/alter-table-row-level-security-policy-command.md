@@ -24,7 +24,7 @@ For more information about running queries on the row level security policy, see
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `row-level-security` [`enable` | `disable`] *Query*
+`.alter` `table` *TableName* `policy` `row_level_security` [`enable` | `disable`] *Query*
 
 
 ## Arguments
@@ -37,11 +37,11 @@ For more information about running queries on the row level security policy, see
 Enable the policy at the table level:
 
 ```kusto
-.alter table MyTable policy row-level-security enable "AnonymizeSensitiveData"
+.alter table MyTable policy row_level_security enable "AnonymizeSensitiveData"
 ```
 
 Disable the policy at the table level:
 
 ```kusto
-.alter table MyTable policy row-level-security disable "AnonymizeSensitiveData"
+.alter table MyTable policy row_level_security disable "AnonymizeSensitiveData"
 ```
