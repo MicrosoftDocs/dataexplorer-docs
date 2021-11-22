@@ -70,7 +70,7 @@ Query performance is not expected to noticeably change following the deletion of
 
 Performance degradation is not expected because the filter that is automatically added on all queries that filter out records that were deleted is very efficient.
 
-However, query performance is not guaranteed to improve. While this may happen for some types of queries, it may not happen for some others. In order to improve query performance, extents in which the majority of the records are deleted are periodically compacted by replacing them with new extents that only contain the records that haven't been deleted.
+However, query performance is also not guaranteed to improve. While this may happen for some types of queries, it may not happen for some others. In order to improve query performance, extents in which the majority of the records are deleted are periodically compacted by replacing them with new extents that only contain the records that haven't been deleted.
 
 ## Impact on COGS (cost of goods sold)
 
