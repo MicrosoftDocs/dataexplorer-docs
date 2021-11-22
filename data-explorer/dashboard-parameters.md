@@ -294,6 +294,25 @@ Free text parameters don't contain any values. They allow you to introduce your 
 
 The new parameter is now visible in the parameter list at the top of the dashboard.
 
+## Use cross filters
+
+Cross filters are visual controls to filter the dashboard page data.
+Using cross filter achieves the same result as selecting the equivalent value in the filter pill control on the top of the dashboard screen.
+
+### Define cross filters
+
+Cross filters can be defined in the tile edit page (in edit mode), by selecting the "Visual" tab on the bottom of the screen and then selecting the "Interactions" tab in the right pane.
+//screenshot - Interactions_tab
+To create a cross filter you first need to enable it and set column from which the cross filter will be pulling the data and the parameters to which it will be feeding it.
+The column and parameter should be of the same data type.
+
+## Interact with your data using cross filters
+
+You can select data points in tiles with cross filter assigned and use their values to filter the current dashboard page using the mouse left click or for table visuals by right clicking the relevant cell and selecting "cross filter" from the action menu item list.
+//screenshot - Table_cross filter_right click menu
+Once a cross filter in a tile has been used you can reset the operation by clicking the reset button on the top of the tile.
+//screenshot - Cross_filter_reset
+
 ## Use filter search for single and multiple selection filters
 
 In single and multiple selection filters, type the value that you want. The filter search will present only the recently retrieved values that match the search term.
