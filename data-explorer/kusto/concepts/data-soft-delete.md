@@ -41,7 +41,7 @@ The process of selectively deleting data is achieved using the following steps:
 
 * Soft-delete is only available on clusters running Engine V3.
 
-* Soft-delete is only supported for native Data Explorer tables and is not supported for external tables or materialized views.
+* Soft-delete is only supported for native tables and is not supported for external tables or materialized views.
 
 * Before running soft-delete, verify the predicate by running a query and checking that the results match the expected outcome. You can also run the command in `whatif` mode, that returns the number of records that are expected to be deleted.
 
