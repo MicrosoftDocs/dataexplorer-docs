@@ -57,7 +57,7 @@ The process of selectively deleting data is achieved using the following steps:
 
 The main considerations that can impact the [deletion process](#deletion-process) performance are:
 
-* **Predicate run**: The performance of this step is very similar to the performance of the predicate itself. It might be slightly faster or slightly slower, depending on the predicate, but the difference is expected to be insignificant.
+* **Run predicate query**: The performance of this step is very similar to the performance of the predicate itself. It might be slightly faster or slightly slower, depending on the predicate, but the difference is expected to be insignificant.
 * **Extents replacement**: The performance of this step depends on the following:
     * Record distribution across the data extents in the cluster
     * The number of nodes in the cluster
