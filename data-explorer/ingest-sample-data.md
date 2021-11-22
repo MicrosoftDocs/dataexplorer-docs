@@ -90,7 +90,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
     :::image type="content" source="media/ingest-sample-data/define-ingestion-schema.png" alt-text="Define schema for ingestion, whether data is uncompressed, and structure of table.":::
 
-    | Setting | Field description|
+    | Setting | Description|
     |---|---|
     | Compression type | Compression type has been taken from the file extension. |
     | Data format | The data format, **CSV**, is already specified. | 
