@@ -35,7 +35,7 @@ However, if you want to do a periodic cleanup by regularly deleting duplicate re
 The process of selectively deleting data is achieved using the following steps:
 
 1. **Run predicate query**: The table is scanned to identify data extents that contain records to be deleted. The extents identified are those with one or more records returned by the predicate query.
-1. **Extents replacement**: In the table, the identified extents are replaced with new extents that point to the original data blobs. The new extents have a new hidden column of type `bool` per record that indicates whether it was deleted or not. Once completed, if no new data is ingested, queries will no longer return data for which the predicate returns true.
+1. **Extents replacement**: The identified extents are replaced with new extents that point to the original data blobs, and also have a new hidden column of type `bool` that indicates per record whether it was deleted or not. Once completed, if no new data is ingested, the predicate query will not return any records if run again.
 
 ## Limitations and considerations
 
