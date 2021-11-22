@@ -31,7 +31,9 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
 # [Ingest with query](#tab/ingest-query)
 
-1. Select **Query** in the left pane. In the upper-left of the application, select **Add cluster**.
+1. In the left menu, select **Query**. In the upper-left of the application, select **Add cluster**.
+
+    :::image type="content" source="media/ingest-sample-data/add-cluster.png" alt-text="Select the query pane and dd a new cluster in the Query pane.":::
 
 1. In the **Add cluster** dialog box, enter your cluster URL in the form `https://<ClusterName>.<Region>.kusto.windows.net/`, then select **Add**.
 
@@ -57,47 +59,55 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
     The query returns the following results from the ingested sample data.
 
-    ![Query results.](media/ingest-sample-data/query-results.png)
+    :::image type="content" source="media/ingest-sample-data/query-results.png" alt-text="Show the query results for the ingested sample data.":::
 
 # [Ingest with wizard](#tab/one-click-ingest)
 
-1. Select **Data** in the left pane. In the **Data Management** page, select **Ingest data from blob**, and then **Ingest**. 
+1. In the left menu, select **Data**. 
+
+    :::image type="content" source="media/ingest-sample-data/select-data.png" alt-text="Select the data pane from the menu.":::
+
+1. In the **Data Management** page, select **Ingest data from blob**, and then **Ingest**. 
       
       :::image type="content" source="media/ingest-sample-data/select-ingestion-wizard.png" alt-text="Ingest data from the data management window of the WebUI interface - Azure Data Explorer." lightbox="media/ingest-sample-data/select-ingestion-wizard.png":::
 
-1. Fill out the basic cluster details with the following information.
+1. In the **Destination** tab, fill out the following information:
 
     :::image type="content" source="media/ingest-sample-data/select-ingestion-cluster.png" alt-text="Select ingestion cluster and  database and select an existing or new table name. Specify table name.":::
 
-    | Setting | Field description|
+    | Setting | Description|
     |---|---|
     |Cluster | Select your cluster. |
     |Database | Select the database that best meets your needs. |
     |Table | Create a new table. For this example, name it *StormEvents*. |
 
     
-1. Specify out the source details with the following information.
+1. Fill out the **Source** tab with the following information:
 
     :::image type="content" source="media/ingest-sample-data/specify-ingestion-source.png" alt-text="Select source for ingestion and provide list of source URIs or containers.":::
 
-    | Setting | Field description|
+    | Setting | Description|
     |---|---|
     | Source type | Select the data source to ingest. In this example, *From blob* is already selected. |
-    | Link to source | Add a blob URI with a SAS token or Account key. For this example, enter https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D. |
+    | Link to source | Use the following link: https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D. |
    
 
 1. Confirm the schema details.
 
     :::image type="content" source="media/ingest-sample-data/define-ingestion-schema.png" alt-text="Define schema for ingestion, whether data is uncompressed, and structure of table.":::
 
-    | Setting | Field description|
+    | Setting | Description|
     |---|---|
-    | Compression type | Compression type has been taken from the file extension. |
+    | Compression type | THe compression type is inferred from the file extension. |
     | Data format | The data format, **CSV**, is already specified. | 
     | Ignore the first record | If the source table includes column names, the first record is ignored during ingestion.  | 
     | Mapping | A mapping name has been assigned. | 
 
-1. After ingestion completes, select **Query** in the left pane. Paste in the following query, select the query in the window, and select **Run**.
+1. After ingestion completes, select **Query** in the left pane. 
+
+    :::image type="content" source="media/ingest-sample-data/select-query.png" alt-text="Select the data pane from the menu.":::
+
+1. Paste in the following query, select the query in the window, and select **Run**.
 
     ```Kusto
     StormEvents
@@ -107,7 +117,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
     The query returns the following results from the ingested sample data.
 
-    ![Query results.](media/ingest-sample-data/query-results.png)
+    :::image type="content" source="media/ingest-sample-data/query-results.png" alt-text="Show the query results for the ingested sample data.":::
 ---
 
 ## Next steps
