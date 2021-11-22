@@ -92,7 +92,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
     | Setting | Description|
     |---|---|
-    | Compression type | Compression type has been taken from the file extension. |
+    | Compression type | The compression type is inferred from the file extension. |
     | Data format | The data format, **CSV**, is already specified. | 
     | Ignore the first record | If the source table includes column names, the first record is ignored during ingestion.  | 
     | Mapping | Schema mapping name. | 
