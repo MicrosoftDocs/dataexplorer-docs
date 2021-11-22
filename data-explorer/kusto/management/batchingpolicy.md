@@ -17,10 +17,9 @@ During the ingestion process, the service optimizes for throughput by batching s
 
 The downside to doing batching before ingestion is the forced delay. Therefore, the end-to-end time from requesting the data ingestion until the data ready for query is larger.
 
-To control this trade-off, use the [`IngestionBatching`](batching-policy.md) policy.
-This policy is applied only to queued ingestion. It defines the maximum forced delay allowed when batching small blobs together. See also:
+When you define the [`IngestionBatching`](batching-policy.md) policy, you will need to find a balance between optimizing for throughput and time delay. This policy applies to queued ingestion. It defines the maximum forced delay allowed when batching small blobs together. To learn more about using batching policy commands, and optimizing for throughput, see:
 
-* [IngestionBatching policy commands reference](../management/batching-policy.md)
+* [Ingestion batching policy command reference](../management/batching-policy.md)
 * [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)
 
 ## Details
@@ -33,7 +32,7 @@ Batches are sealed when the first condition is met:
 1. The maximum delay time is reached
 1. The number of blobs set by the `IngestionBatching` policy is reached
 
-The `IngestionBatching` policy can be set on databases, or tables. Default values are as follows: **5 minutes** maximum delay time, **1000** items, total size of **1G**.
+The `IngestionBatching` policy can be set on databases or tables. Default values are as follows: **5 minutes** maximum delay time, **1000** items, total size of **1G**.
 
 > [!IMPORTANT]
 > The impact of setting this policy to very small values is
@@ -42,28 +41,25 @@ The `IngestionBatching` policy can be set on databases, or tables. Default value
 > end-to-end ingestion latency, due to the overhead of managing multiple ingestion
 > processes in parallel.
 
-## Triggers to seal batch
+## Sealing a batch
 
-The following lists show all the triggers to seal batches. A batch is sealed and ingested when the first condition is met.
-
-### Triggered by the batching policy
+The following list shows the basic batching policy triggers to seal a batch. A batch is sealed and ingested when the first condition is met:
 
 * `Size`: Batch size limit reached or exceeded
 * `Count`: Batch file number limit reached
 * `Time`: Batching time has expired
 
-### Triggers for single blob ingestion
+The following list shows conditions to seal batches related to single blob ingestion. A batch is sealed and ingested when the conditions are met:
 
 * `SingleBlob_FlushImmediately`: Ingest a single blob because ['FlushImmediately'](../api/netfx/kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) was set
-* `SingleBlob_IngestIfNotExists`: Ingest a single blob because ['IngestIfNotExists'](../../ingestion-properties.md#ingestion-properties) was set
+* `SingleBlob_IngestIfNotExists`: Ingest a single blob because 
+['IngestIfNotExists'](../../ingestion-properties.md#ingestion-properties) was set
 * `SingleBlob_IngestByTag`: Ingest a single blob because ['ingest-by'](extents-overview.md#ingest-by-extent-tags) was set
 * `SingleBlob_SizeUnknown`: Ingest a single blob because blob size is unknown
 
-### Triggered by system flush
+If the `SystemFlush` condition is set, a batch will be sealed when a system flush is triggered. With the `SystemFlush` parameter set, the system flushes the data, for example due to cluster scaling or internal reset of system components.
 
-`SystemFlush`: System flushes the data, for example due to cluster scaling or internal reset of system components
-
-## Batching data size
+## Batch data size
 
 The batching policy data size is set for uncompressed data. When ingesting compressed data, the uncompressed data size is evaluated as follows in descending order of accuracy:
           -

@@ -12,18 +12,14 @@ ms.localizationpriority: high
 ---
 # The dynamic data type
 
-The `dynamic` scalar data type is special in that it can take on any value 
-of other scalar data types from the list below, as well as arrays and property bags. Specifically,
-a `dynamic` value can be:
+The `dynamic` scalar data type is special in that it can take on any value  of other scalar data types from the list below, as well as arrays and property bags. Specifically, a `dynamic` value can be:
 
 * Null.
 * A value of any of the primitive scalar data types:
   `bool`, `datetime`, `guid`, `int`, `long`, `real`, `string`, and `timespan`.
-* An array of `dynamic` values, holding zero or more values with zero-based
-  indexing.
+* An array of `dynamic` values, holding zero or more values with zero-based   indexing.
 * A property bag that maps unique `string` values to `dynamic` values.
-  The property bag has zero or more such mappings (called "slots"),
-  indexed by the unique `string` values. The slots are unordered.
+  The property bag has zero or more such mappings (called "slots"), indexed by the unique `string` values. The slots are unordered.
 
 > [!NOTE]
 > * Values of type `dynamic` are limited to 1MB (2^20).
@@ -210,9 +206,6 @@ For a complete list of scalar dynamic/array functions, see [dynamic/array functi
 
 ## Indexing for dynamic data
 
-Every field is indexed during data ingestion. The scope of the index is a single data shard.
+Every field is indexed during data ingestion. The scope of the index is a single data shard. 
 
-For dynamic columns, to index a dynamic field, the ingestion process enumerates all “atomic” elements within the dynamic value 
-(property names, values, array elements) and forwards them to the index builder. Otherwise, dynamic fields have the same inverted term index as string fields.
-
-For information about indexing, see [dynamic data type](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-explorer/Azure_Data_Explorer_white_paper.pdf).
+To index dynamic columns, the ingestion process enumerates all “atomic” elements within the dynamic value (property names, values, array elements) and forwards them to the index builder. Otherwise, dynamic fields have the same inverted term index as string fields.
