@@ -57,7 +57,7 @@ External table's authentication method is listed as part of the `connection stri
 In order to specify managed identity authentication for your external table, you need to add the managed identity authentication suffix.
 
 for user-assigned managed identities, attach `;managed_identity=[managed-identity-object-id]` to the end of the connection string:
-`https://StorageAccountName.blob.core.windows.net/Container;managed_identity=[/managedIdentityObjectId]`
+`https://StorageAccountName.blob.core.windows.net/Container;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e`
 
 for system-assigned managed identities, one could choose to use the reserved word `system` instead:
 
