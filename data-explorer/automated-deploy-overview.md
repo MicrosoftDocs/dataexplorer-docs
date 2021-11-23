@@ -31,7 +31,7 @@ ARM templates can also be used to deploy [command scripts](https://docs.microsof
 
 [Azure Quickstart Templates](https://azure.microsoft.com/en-us/resources/templates/) also contains multiple samples.
 
-# Terraform
+## Terraform
 
 Terraform is an open-source infrastructure as code software tool  providing a consistent CLI workflow to manage cloud services.  Terraform codifies cloud APIs into declarative configuration files.
 
