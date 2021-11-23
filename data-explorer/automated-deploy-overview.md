@@ -21,7 +21,7 @@ Automated deployment is a critical part of DevOps / DataOps and enables us to:
 
 In this article, we will look at different facets of deployment with Azure Data Explorer, from the infrastructure to the schema entities to the data preparation.
 
-# ARM Templates
+## ARM Templates
 
 Azure Resource Manager Templates (ARM Templates) are [JSON files](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview) or [Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview) defining the infrastructure and configuration of a deployment.
 
