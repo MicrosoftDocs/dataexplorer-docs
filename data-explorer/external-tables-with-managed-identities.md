@@ -12,7 +12,7 @@ ms.date: 11/25/2020
 # External tables with Managed Identities
 
 An [external table](azure/data-explorer/kusto/query/schema-entities/externaltables) is a Kusto schema entity that references data stored outside the Azure Data Explorer database.
-External tables can authenticate to storage/sql using managed identities. This article will demonstrate how to create external table that authenticates to Azure Storage with a managed identity, export new data to it and query it.
+External tables can be defined to reference data in Azure Storage or SQL Server. Authentication is done using a secret (e.g. a SAS URI in the case of Azure Storage, and a username and password in the case of SQL Server), or using a Managed Identity. This article demonstrates how to create external tables that authenticate to Azure Storage with a Managed Identity.
 
 > [!Note] This guide demonstrates external table flows over Azure Blob Storage. Managed Identities could be used similarly with other storage and sql external table types, using the relevant connection strings as stated in [Kusto storage connection string](/storage) and [Kusto sql connection strings](/some-link).
 
