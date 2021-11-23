@@ -2,7 +2,7 @@
 title: Automated deployments in Azure Data Explorer
 description: This article is a map to different articles on automated deployments for Azure Data Explorer
 services: data-explorer
-author: vplauzon
+author: orspod
 ms.author: vplauzon
 ms.reviewer: 
 ms.service: data-explorer
