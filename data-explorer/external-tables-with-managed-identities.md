@@ -24,7 +24,7 @@ In order to use managed identities with your external table, please follow these
 4. [Export data the external table]()
 5. [Query the external table]()
 
-## Assign managed identity to our cluster
+## Assign managed identity to your cluster
 
 In order to use managed identities with your cluster, you first need to assign it to your cluster. This will provide the cluster with permissions to act on behalf of the assigned managed identity. For instructions please follow this [guide](/some-link)
 
