@@ -38,7 +38,7 @@ The policy can either be defined in the cluster level, and therefore will be ena
 
 The following is a policy alter command for the database level:
 ~~~
-.alter database db policy managed_identity ```
+.alter database DatabaseName policy managed_identity ```
 [
   {
     "ObjectId": "802bada6-4d21-44b2-9d15-e66b29e4d63e",
