@@ -18,7 +18,7 @@ External tables can be defined to reference data in Azure Storage or SQL Server.
 
 In order to use managed identities with your external table, please follow these steps:
 
-1. [Assign managed identity to our cluster]()
+1. [Assign managed identity to your cluster]()
 2. [Create managed identity policy]()
 3. [Create the external table]()
 4. [Export data the external table]()
