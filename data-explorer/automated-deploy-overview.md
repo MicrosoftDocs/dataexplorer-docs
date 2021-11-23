@@ -12,7 +12,7 @@ ms.date:
 
 # Automated deployments in Azure Data Explorer
 
-This article provides an overview of the different mechanisms and tools for automated deployment in Azure Data Explorer, from the infrastructure to the schema entities to the data preparation.
+This article provides an overview of the different mechanisms and tools for automating deployments in Azure Data Explorer, from the infrastructure to the schema entities to the data preparation.
 
 Automated deployment is a way of provisioning resources without human intervention as opposed to using the Azure Portal.
 
@@ -24,6 +24,10 @@ A critical part of DevOps / DataOps, Automated deployment enables us to:
 *   Shorten development lifecycle
 *   Implement Continuous Integration / Continuous Deployment (CI / CD)
 *   Facilitates automated testing
+
+## Infrastructure
+
+Infrastructure deployment pertains to the deployment of Azure resources:  clusters, databases, data connections, etc.  .
 
 ## ARM Templates
 
@@ -58,7 +62,7 @@ Infrastructure can also be created imperatively using different platforms:
 
 ## Deploying Schema Entities
 
-Kusto Schema Entities can be created / updated by running Kusto scripts consisting of [Control Commands](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/).
+Kusto Schema Entities deployment is about deployment Kusto tables, functions, policies, permissions, etc.  .  Entities can be created / updated by running Kusto scripts consisting of [Control Commands](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/).
 
 There are many ways to automate this:
 
@@ -69,9 +73,12 @@ There are many ways to automate this:
     * [Java SDK](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/java/kusto-java-client-library)
     * [Node SDK](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/node/kusto-node-client-library)
     * [Go SDK](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/golang/kusto-golang-client-library)
+* [ARM Templates](https://docs.microsoft.com/en-us/azure/templates/microsoft.kusto/clusters/databases/scripts?tabs=json)
+* [Terraform scripts](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kusto_script)
 * Tools
   * [Sync Kusto](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/synckusto)
   * [Delta Kusto](https://github.com/microsoft/delta-kusto)
+  * [Azure DevOps Task](https://docs.microsoft.com/en-us/azure/data-explorer/devops) for Azure Data Explorer
 
 [Sync Kusto](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/synckusto) is an interactive developer tool.  In the context of automated deployment, it can extract the schema / control commands script of an ADX Database (this step is manual).  That script could then be deployed automatically.
 
@@ -79,7 +86,7 @@ There are many ways to automate this:
 
 ## Ingesting Data
 
-After deploying Azure Data Explorer infrastructure & its schema entities, we often need to deploy data in its databases (e.g. to run tests or recreate an environment).
+Finally, after deploying Azure Data Explorer infrastructure & its schema entities, we often need to ingest data in its databases, e.g. to run tests or recreate an environment.
 
 This can be automated in many ways:
 
@@ -91,3 +98,8 @@ This can be automated in many ways:
     * [Go SDK](https://docs.microsoft.com/en-us/azure/data-explorer/go-ingest-data)
 * [LightIngest](https://docs.microsoft.com/en-us/azure/data-explorer/lightingest) (CLI tool)
 * Triggering an [Azure Data Factory Pipeline](https://docs.microsoft.com/en-us/azure/data-explorer/data-factory-integration)
+
+## Next steps
+
+* Create an Azure Data Explorer [cluster and database by using an Azure Resource Manager template](https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-resource-manager)
+* Configure a database using a [Kusto Query Language script](https://docs.microsoft.com/en-us/azure/data-explorer/database-script)
