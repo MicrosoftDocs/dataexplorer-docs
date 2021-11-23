@@ -38,9 +38,22 @@ By investing resources (data storage, background CPU cycles) for materialized vi
 The following are common scenarios that can be addressed by using a materialized view:
 
 * Update data by returning the last record per entity using [`arg_max()` (aggregation function)](../../query/arg-max-aggfunction.md).
-* De-duplicate records in a table using [`take_any()` (aggregation function)](../../query/take-any-aggfunction.md).
+
 * Reduce the resolution of data by calculating periodic statistics over the raw data. Use various [aggregation functions](materialized-view-create.md#supported-aggregation-functions) by period of time.
-    * For example, use `T | summarize dcount(User) by bin(Timestamp, 1d)` to maintain an up-to-date snapshot of distinct users per day.
+  * For example, use `T | summarize dcount(User) by bin(Timestamp, 1d)` to maintain an up-to-date snapshot of distinct users per day.
+
+* De-duplicate records in a table using [`take_any()` (aggregation function)](../../query/take-any-aggfunction.md).
+  * In deduplication scenarios, it might sometimes be useful to "hide" the source table with the materialized view, such that callers querying the table will query the deduplicated materialized view instead.
+  * You can achieve this by creating a function with same name as the source table, that will reference the view instead of the source table. Since [functions override tables with same name](../../query/schema-entities/tables.md), users calling the "table" will actually query the materialized view.
+  * When doing so, the materialized view definition must reference the source table using the [table()](../../query/tablefunction.md) function, to avoid cyclic references in the view definition:
+    <!-- csl -->
+    ```kusto
+    .create materialized-view MV on table T
+    {
+        table('T')
+        | summarize take_any(*) by EventId
+    } 
+    ```
 
 For examples of all use cases, see [materialized view create command](materialized-view-create.md#examples).
 
@@ -56,35 +69,69 @@ The [monitoring](#materialized-views-monitoring) section explains how to trouble
 
 ## Materialized views queries
 
-* The primary way of querying a materialized view is by its name, like querying a table reference. When the materialized view is queried, it combines the materialized part of the view with the records in the source table that haven't been materialized yet (the `delta`). Querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. For more information about the _materialized_ vs. _non-materialized_ parts in materialized view, see [how materialized views work](#how-materialized-views-work).
+There are 2 ways to query a materialized view:
 
-  * Combining the materialized part with the `delta` during query time includes aggregating the `delta` and joining it with the materialized part.
-  * Azure Data Explorer's query optimizer chooses summarize/join strategies that are expected to improve query performance. For example, the decision on whether to [shuffle](../../query/shufflequery.md) the query is based on number of records in `delta` part. The following [client request properties](../../api/netfx/request-properties.md) provide some control over the optimizations applied. You can test these properties with your materialized view queries and evaluate their impact on queries performance.
+* **Query the entire view**: when you query the materialized view by its name, similarly to querying a table, the materialized view query _comines_ the materialized part of the view with the records in the source table that haven't been materialized yet (the `delta`). 
+  * Querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. For more information about the _materialized_ vs. _non-materialized_ parts in materialized view, see [how materialized views work](#how-materialized-views-work).
+  * This option will might not perform great as it needs to materialize the `delta` part during query time. Performance in this case depends on the view's age and the filters applied in the query. The [materialized view query optimizer](#materialized-view-query-optimizer) lists possible ways to improve query performance when querying the entire view.
+
+* **Query the materialized part only**: another way of querying the view is by using the [`materialized_view()` function](../../query/materialized-view-function.md). This option supports querying only the materialized part of the view, while specifying the max latency the user is willing to tolerate.
+  * This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. 
+  * This function is useful for scenarios in which you're willing to sacrifice some freshness for performance, for example for telemetry dashboards.
+
+> [!TIP]
+> Queries over the materialized part only will always perform better than querying the entire view. Always use the `materialized_view()` function when applicable for your use case.
+
+* Materialized views participate in cross-cluster or cross-database queries, but aren't included in wildcard unions or searches.
+  * The following examples will all **include** materialized views by the name `ViewName`:
+   <!-- csl -->
+    ```kusto
+    cluster('cluster1').database('db').ViewName
+    cluster('cluster1').database('*').ViewName
+    database('*').ViewName
+    database('DB*').ViewName
+    database('*').materialized_view('ViewName')
+    database('DB*').materialized_view('ViewName')
+    ```
+
+  * The following examples will **not** include records from materialized views:
+   <!-- csl -->
+    ```kusto
+    cluster('cluster1').database('db').*
+    database('*').View*
+    search in (*)
+    search * 
+    ```
+
+### Materialized view query optimizer
+
+When querying the entire view, the materialized part is combined with the `delta` during query time. This includes aggregating the `delta` and joining it with the materialized part.
+
+* Querying the entire view will perform better if the query includes filters on the group by keys of the materialized view query. See more tips about how to create your materialized view, based on your query pattern, in the [.create materialized-view performance tips](materialized-view-create.md#performance-tips).
+* Azure Data Explorer's query optimizer chooses summarize/join strategies that are expected to improve query performance. For example, the decision on whether to [shuffle](../../query/shufflequery.md) the query is based on number of records in `delta` part. The following [client request properties](../../api/netfx/request-properties.md) provide some control over the optimizations applied. You can test these properties with your materialized view queries and evaluate their impact on queries performance.
 
 |Client request property name|Type|Description|
 |------------------------|-------|-------------------|
 |`materialized_view_query_optimization_costbased_enabled`|bool|If set to `false`, disables  summarize/join optimizations in materialized view queries. Will use default strategies. Default is `true`.|
 |`materialized_view_shuffle`|dynamic|Force shuffling of the materialized view query, and (optionally) provide specific keys to shuffle by. See [examples](#examples) below.|
 
-* Another way of querying the view is by using the [`materialized_view()` function](../../query/materialized-view-function.md). This option supports querying only the materialized part of the view, while specifying the max latency the user is willing to tolerate. This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. This function is useful for scenarios in which you're willing to sacrifice some freshness for performance, for example for telemetry dashboards.
-
-* Materialized views can participate in cross-cluster or cross-database queries, but aren't included in wildcard unions or searches.
-
-* See more tips about how to create your materialized view, based on your query pattern, in the [.create materialized-view performance tips](materialized-view-create.md#performance-tips).
-
 ### Examples
 
-1. Query the entire view. The most recent records in source table are included:
-    
+1. Query the entire view. The most recent records in source table are included:  
     <!-- csl -->
     ```kusto
     ViewName
     ```
 
+1. Query the materialized part of the view only, regardless of when it was last materialized.
+    <!-- csl -->
+    ```kusto
+    materialized_view("ViewName")
+    ```
+
 1. Query the entire view, and provide a "hint" to use `shuffle` strategy. The most recent records in source table are included:
 
     * **Example #1**: shuffle based on the `Id` column (similarly to using `hint.shufflekey=Id`):
-    
     <!-- csl -->
     ```kusto
     set materialized_view_shuffle = dynamic([{"Name" : "ViewName", "Keys" : [ "Id" ] }]);
@@ -92,18 +139,10 @@ The [monitoring](#materialized-views-monitoring) section explains how to trouble
     ```
 
     * **Example #2**: shuffle based on all keys (similarly to using `hint.strategy=shuffle`):
-    
     <!-- csl -->
     ```kusto
     set materialized_view_shuffle = dynamic([{"Name" : "ViewName" }]);
     ViewName
-    ```
-
-1. Query the materialized part of the view only, regardless of when it was last materialized. 
-
-    <!-- csl -->
-    ```kusto
-    materialized_view("ViewName")
     ```
   
 ## Performance considerations
@@ -126,6 +165,7 @@ The main contributors that can impact a materialized view health are:
 Monitor the materialized view's health in the following ways:
 
 * Monitor [materialized view metrics](../../../using-metrics.md#materialized-view-metrics) in the Azure portal.
+  * The materialized view age metric (`MaterializedViewAgeSeconds`) can be used to monitor the freshness of the view. This should be the primary metric to monitor.
 * Monitor the `IsHealthy` property returned from [`.show materialized-view`](materialized-view-show-commands.md#show-materialized-view).
 * Check for failures using [`.show materialized-view failures`](materialized-view-show-commands.md#show-materialized-view-failures).
 
@@ -134,7 +174,7 @@ Monitor the materialized view's health in the following ways:
 
 ### Troubleshooting unhealthy materialized views
 
-The `MaterializedViewHealth` metric indicates whether a materialized view is healthy. Before a materialized view becomes unhealthy, its age, noted by the `MaterializedViewAgeMinutes` metric, will gradually increase.
+The `MaterializedViewHealth` metric indicates whether a materialized view is healthy. Before a materialized view becomes unhealthy, its age, noted by the `MaterializedViewAgeSeconds` metric, will gradually increase.
 
 A materialized view can become unhealthy for any or all of the following reasons:
 
