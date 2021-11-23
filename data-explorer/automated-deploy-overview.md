@@ -39,7 +39,7 @@ Terraform offers the same capabilities as ARM templates with Azure Data Explorer
 
 Terraform can also be used to deploy [command scripts](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kusto_script).
 
-## Imperative deployment
+## Deploying infratructure imperatively
 
 ARM & Terraform are the two main declarative ways to deploy Azure Data Explorer infrastructure (cluster, databases, etc.).
 
@@ -51,6 +51,8 @@ Infrastructure can also be created imperatively using different platforms:
   * [.NET SDK](https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-csharp)
   * [Python SDK](https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-python)
   * [Go SDK](https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-go)
+
+## Deploying Schema Entities
 
 Kusto Schema Entities can be created / updated by running Kusto scripts consisting of [Control Commands](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/).
 
@@ -71,7 +73,7 @@ There are many ways to automate this:
 
 [Delta Kusto](https://github.com/microsoft/delta-kusto) is a Command Line Interface (CLI) tool designed to be invoked in a CI/CD pipeline.  It can compare two sources (a control commands script or an ADX database) and compute a *delta* script, i.e. a script of control commands that would bring one source structurally identical to the other.  It can also push that script to an ADX database.
 
-## Data
+## Ingesting Data
 
 After deploying Azure Data Explorer infrastructure & its schema entities, we often need to deploy data in its databases (e.g. to run tests or recreate an environment).
 
