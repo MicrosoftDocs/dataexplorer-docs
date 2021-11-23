@@ -39,7 +39,7 @@ Terraform offers the same capabilities as ARM templates with Azure Data Explorer
 
 Terraform can also be used to deploy [command scripts](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kusto_script).
 
-# Imperative deployment
+## Imperative deployment
 
 ARM & Terraform are the two main declarative ways to deploy Azure Data Explorer infrastructure (cluster, databases, etc.).
 
