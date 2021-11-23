@@ -174,7 +174,7 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
         | summarize arg_max(Timestamp, *) by User 
     }
     
-    .create materialized-view with (dimensionTables = ["DimUsers"]) EnrichedArgMax on table T 
+    .create materialized-view with (dimensionTables = dynamic(["DimUsers"])) EnrichedArgMax on table T 
     {
         DimUsers | project User, Age, Address
         | join kind=rightouter hint.strategy=broadcast T on User
