@@ -151,11 +151,7 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
 
 1. **Set update policy** (optional)
 
-<<<<<<< HEAD
    Some of the data format mappings (Parquet, JSON, and Avro) support simple and useful ingest-time transformations. If the scenario requires more complex processing at ingestion, adjust the [update policy](kusto/management/update-policy.md), which supports lightweight processing using query commands. The update policy automatically runs extractions and transformations on ingested data on the original table, and ingests the resulting data into one or more destination tables.
-=======
-   Some of the data format mappings (Parquet, JSON, and Avro) support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time, use update policy, which allows for lightweight processing using Kusto Query Language commands. The update policy automatically runs extractions and transformations on ingested data on the original table, and ingests the resulting data into one or more destination tables. Set your [update policy](./kusto/management/show-table-update-policy-command.md).
->>>>>>> 68f1433fcf3a6d28e1c90dadf3493c1b06cafbc7
 
 ## Next steps
 

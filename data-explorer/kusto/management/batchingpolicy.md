@@ -17,13 +17,7 @@ During the ingestion process, the service optimizes for throughput by batching s
 
 The downside to doing batching before ingestion is the forced delay. Therefore, the end-to-end time from requesting the data ingestion until the data ready for query is larger.
 
-<<<<<<< HEAD
 When you define the [`IngestionBatching`](batching-policy.md) policy, you will need to find a balance between optimizing for throughput and time delay. This policy applies to queued ingestion. It defines the maximum forced delay allowed when batching small blobs together. To learn more about using batching policy commands, and optimizing for throughput, see:
-=======
-To allow control of this trade-off, use the [`IngestionBatching`](./show-table-ingestion-batching-policy.md) policy.
-This policy is applied to queued ingestion only, and provides the maximum
-forced delay to allow when batching small blobs together.
->>>>>>> 68f1433fcf3a6d28e1c90dadf3493c1b06cafbc7
 
 * [Ingestion batching policy command reference](../management/batching-policy.md)
 * [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)
@@ -69,16 +63,9 @@ The batching policy data size is set for uncompressed data. For Parquet, AVRO, a
 
 Latencies can result from a number of causes that can be addressed using batching policy settings. 
 
-<<<<<<< HEAD
 | Cause | Solution |
 | --- | --- |
 | Data latency matches the `time` setting, with too little data to reach the `size` or `count` limit | Reduce the `time` limit |
 | Inefficient batching due to a large number of very small files | Increase the size of the source files. If using Kafka Sink, configure it to send data in ~100KB chunks or higher. If you have many small files, increase the `count` (up to 2000) in the database or table ingestion policy. |
 | Batching a large amount of uncompressed data | This is common when ingesting Parquet files. Incrementally decrease `size` for the table or database batching policy towards 250MB and check for improvement. |
 | Backlog because the cluster is under scaled | Accept any Azure advisor suggestions to scale aside or scale up your cluster. Alternatively, manually scale your cluster to see if the backlog is closed. If these options do not work, contact Azure Data Explorer support for assistance. |
-=======
-## Other resources
-
-* [IngestionBatching policy commands reference](./show-table-ingestion-batching-policy.md)
-* [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)
->>>>>>> 68f1433fcf3a6d28e1c90dadf3493c1b06cafbc7
