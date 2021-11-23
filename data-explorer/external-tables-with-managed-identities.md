@@ -43,7 +43,7 @@ The following is a policy alter command for the database level:
   {
     "ObjectId": "802bada6-4d21-44b2-9d15-e66b29e4d63e",
     "AllowedUsages": "ExternalTable"
-  },
+  }
 ]
 ```
 ~~~
