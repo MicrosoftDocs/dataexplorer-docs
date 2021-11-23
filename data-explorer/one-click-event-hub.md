@@ -29,7 +29,7 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 > To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint) in different subnets of the same VNET, see [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md).
 
 > [!NOTE]
-> ADX cluster and Event-Hub should be associated with the same tenants, for different tenants please use [ADX SDKs](https://docs.microsoft.com/azure/data-explorer/data-connection-event-hub-csharp)
+> ADX cluster and Event-Hub should be associated with the same tenants, for different tenants please use [ADX SDKs](./data-connection-event-hub-csharp.md)
 
 ## Ingest new data
 

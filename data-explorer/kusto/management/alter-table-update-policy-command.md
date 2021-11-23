@@ -36,5 +36,5 @@ Returns a JSON representation of the policy.
 Change the update policy for a table:
 
 ```kusto
-.alter table MyDatabase.MyTable policy update @'[{"IsEnabled": true, "Source": "MyTableX", "Query": "MyOtherTable", "IsTransactional": false, "PropagateIngestionProperties": false}]'
+.alter table MyDatabase.MyTable policy update @'[{"IsEnabled": true, "Source": "MyTableX", "Query": "MyOtherTable", "IsTransactional": true, "PropagateIngestionProperties": false}]'
 ```

@@ -32,4 +32,4 @@ process, and as more columns are added - the effective return diminishes.
 >   * In the scenarios mentioned above, it is recommended to set up to 2 sort keys in the policy.
 
 
-Control commands for managing Row Order policies can be found [here](../management/roworder-policy.md)
+Control commands for managing Row Order policies can be found [here](./show-table-row-order-policy-command.md)

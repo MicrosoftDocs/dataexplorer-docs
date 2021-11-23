@@ -31,5 +31,5 @@ The following example shows the IngestionBatching policy:
 
 ```kusto
 // Show IngestionBatching policy for table database `MyDatabase`
-.show MyDatabase policy ingestionbatching 
+.show database MyDatabase policy ingestionbatching 
 ```

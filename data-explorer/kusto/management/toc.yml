@@ -23,7 +23,7 @@ items:
     - name: Request classification commands
       items:
       - name: Request classification policy commands
-        href: request-classification-policy-commands.md
+        href: ./show-cluster-policy-request-classification-command.md
       - name: .alter cluster request classification policy commands
         href: alter-cluster-policy-request-classification-command.md
       - name: .alter-merge cluster request classification policy commands
@@ -268,6 +268,18 @@ items:
       href: delete-ingestion-time-policy-command.md
     - name: .show ingestion time policy command
       href: show-table-ingestion-time-policy-command.md
+  - name: ManagedIdentity
+    items:
+    - name: ManagedIdentity policy
+      href: managed-identity-policy.md
+    - name: .alter managed identity policy command
+      href: alter-managed-identity-policy-command.md
+    - name: .alter-merge managed identity policy command
+      href: alter-merge-managed-identity-policy-command.md
+    - name: .delete managed identity policy command
+      href: delete-managed-identity-policy-command.md
+    - name: .show managed identity policy command
+      href: show-managed-identity-policy-command.md
   - name: Merge
     items:
     - name: Merge policy

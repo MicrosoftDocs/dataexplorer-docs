@@ -1,29 +1,27 @@
 ---
-title: KQL over TDS - Azure Data Explorer | Microsoft Docs
-description: This article describes KQL over TDS in Azure Data Explorer.
+title: Kusto Query Language over TDS - Azure Data Explorer | Microsoft Docs
+description: This article describes using the Kusto Query Language (KQL) over TDS in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: yosefd
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/09/2019
+ms.date: 11/11/2021
 ---
-# KQL over TDS
+# Executing queries over TDS
 
-Kusto enables TDS endpoints to execute queries authored in the native [KQL](../../query/index.md) query language. This ability enables smoother migration towards Kusto. For example, you can create SSIS jobs to query Kusto with a KQL query.
+In this topic, you'll learn how to use Tabular Data Stream (TDS) endpoints to execute stored functions and queries authored using the [Kusto Query Language (KQL)](../../query/index.md).
 
-## Executing Kusto stored functions
+## Executing stored functions
 
-Kusto permits [stored functions](../../query/schema-entities/stored-functions.md) to run, like calling SQL stored procedures.
+You can create and execute [stored functions](../../query/schema-entities/stored-functions.md) in a similar way to SQL stored procedures.
 
-For example, the stored function MyFunction:
+For example, if you have a stored function as described in the table, you can execute it using the following code:
 
 |Name |Parameters|Body|Folder|DocString
 |---|---|---|---|---|
 |MyFunction |(myLimit: long)| {StormEvents &#124; limit myLimit}|MyFolder|Demo function with parameter|
-
-can be called like this:
 
 ```csharp
   using (var connection = new SqlConnection(csb.ToString()))
@@ -44,22 +42,21 @@ can be called like this:
 ```
 
 > [!NOTE]
-> Call stored functions with an explicit schema named `kusto`, to distinguish between Kusto stored functions and emulated
-> SQL system stored procedures.
+> To distinguish between stored functions and emulated SQL system stored procedures, make sure you execute stored functions with an explicit reference to the `kusto` schema. In the example, the stored function is executed using `kusto.Myfunction`.
 
-You can also call Kusto stored functions from T-SQL, like SQL tabular functions:
+You can also call stored functions from Transact-SQL (T-SQL) in a similar way to SQL stored procedures. Creating optimized Kusto Query Language queries and encapsulating them in stored functions, helps you to minimizes your T-SQL code.
+
+For example, you can call *MyFunction* using the following code:
 
 ```sql
 SELECT * FROM kusto.MyFunction(10)
 ```
 
-Create optimized KQL queries and encapsulate them in stored functions, making the T-SQL query code minimal.
+## Executing queries
 
-## Executing KQL query
+The SQL stored procedure `sp_execute_kql` can be used to execute [Kusto QueryLanguage](../../query/index.md) queries, including parameterized queries. The procedure is similar to the `sp_executesql` stored procedure.
 
-The stored procedure `sp_execute_kql` executes [KQL](../../query/index.md) queries (including parameterized queries). This procedure is similar to SQL server `sp_executesql`.
-
-The first parameter of `sp_execute_kql` is the KQL query. You can introduce additional parameters, and they'll act like [query parameters](../../query/queryparametersstatement.md).
+The first parameter of `sp_execute_kql` is the Kusto QueryLanguage query. Additional parameters are treated as [query parameters](../../query/queryparametersstatement.md).
 
 For example:
 
@@ -85,4 +82,4 @@ For example:
 ```
 
 > [!NOTE]
-> There is no need to declare parameters when calling via TDS, since parameter types are set via protocol.
+> When calling `sp_execute_kql` via TDS, parameter types are set by the protocol and don't need to be declared.
