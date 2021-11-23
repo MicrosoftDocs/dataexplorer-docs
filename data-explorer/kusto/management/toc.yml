@@ -49,61 +49,61 @@ items:
   - name: Databases
     href: databases.md
     items:
-    - name: .show databases
+    - name: ".show databases"
       href: show-databases.md
-    - name: .show database
+    - name: ".show database"
       href: show-database.md
-    - name: .show cluster databases
+    - name: ".show cluster databases"
       href: show-cluster-database.md
-    - name: .alter database 
+    - name: ".alter database prettyname"
       href: alter-database.md
-    - name: .show database schema
+    - name: ".show database(s) schema"
       href: show-schema-database.md
-    - name: .execute database script
+    - name: ".execute database script"
       href: execute-database-script.md
   - name: Tables
     items:
     - name: Tables management
       href: tables.md
-    - name: .alter-merge table
+    - name: ".alter-merge table"
       href: alter-merge-table-command.md
-    - name: .alter table
+    - name: ".alter table"
       href: alter-table-command.md
-    - name: .alter table docstring
+    - name: ".alter table docstring"
       href: alter-table-docstring-command.md
-    - name: .alter table folder
+    - name: ".alter table folder"
       href: alter-table-folder-command.md
-    - name: .alter ingestion mapping
+    - name: ".alter ingestion mapping"
       href: alter-ingestion-mapping-command.md
-    - name: .create ingestion mapping
+    - name: ".create ingestion mapping"
       href: create-ingestion-mapping-command.md
-    - name: .drop ingestion mapping
+    - name: ".drop ingestion mapping"
       href: drop-ingestion-mapping-command.md
-    - name: .show ingestion mapping
+    - name: ".show ingestion mapping"
       href: show-ingestion-mapping-command.md
-    - name: .create table
+    - name: ".create table"
       href: create-table-command.md
-    - name: .create table based-on
+    - name: ".create table based-on"
       href: create-table-based-on-command.md
-    - name: .create tables
+    - name: ".create tables"
       href: create-tables-command.md
-    - name: .create-merge table
+    - name: ".create-merge table"
       href: create-merge-table-command.md
-    - name: .create-merge tables
+    - name: ".create-merge tables"
       href: create-merge-tables-command.md
-    - name: .drop table(s)
+    - name: ".drop tables"
       href: drop-table-command.md
-    - name: .rename table(s)
+    - name: ".rename tables"
       href: rename-table-command.md
-    - name: .show tables
+    - name: ".show tables"
       href: show-tables-command.md
-    - name: .undo drop table
+    - name: ".undo drop table"
       href: undo-drop-table-command.md
-    - name: .show table details
+    - name: ".show table details"
       href: show-table-details-command.md
-    - name: .show table schema
+    - name: ".show table schema"
       href: show-table-schema-command.md
-    - name: .clear table data
+    - name: ".clear table data"
       href: clear-table-data-command.md
   - name: External tables
     items:
@@ -585,8 +585,12 @@ items:
     href: cluster-follower.md
   - name: Data purge
     href: ../concepts/data-purge.md
+  - name: Data soft delete
+    href: ../concepts/data-soft-delete.md
 - name: Errors and failures
   items:
+  - name: Ingestion FAQ
+    href: Ingestion-faq.yml
   - name: Ingestion error codes
     href: ../../error-codes.md
   - name: Ingestion failures
