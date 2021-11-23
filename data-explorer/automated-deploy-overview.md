@@ -4,7 +4,7 @@ description: This article is a map to different articles on automated deployment
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: 
+ms.reviewer: vplauzon
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 
