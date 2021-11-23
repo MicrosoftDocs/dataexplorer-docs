@@ -71,7 +71,7 @@ There are many ways to automate this:
 
 [Delta Kusto](https://github.com/microsoft/delta-kusto) is a Command Line Interface (CLI) tool designed to be invoked in a CI/CD pipeline.  It can compare two sources (a control commands script or an ADX database) and compute a *delta* script, i.e. a script of control commands that would bring one source structurally identical to the other.  It can also push that script to an ADX database.
 
-# Data
+## Data
 
 After deploying Azure Data Explorer infrastructure & its schema entities, we often need to deploy data in its databases (e.g. to run tests or recreate an environment).
 
