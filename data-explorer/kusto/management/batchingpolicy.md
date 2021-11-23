@@ -22,15 +22,15 @@ When you define the [`IngestionBatching`](batching-policy.md) policy, you will n
 * [Ingestion batching policy command reference](../management/batching-policy.md)
 * [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)
 
-## Details
+## Sealing a batch
 
 When ingesting data in bulk, there's an optimal size of about 1 GB of uncompressed data. Ingestion of blobs with much less data is sub-optimal, so in queued ingestion the service will batch small blobs together. 
 
-Batches are sealed when the first condition is met:
+The following list shows the basic batching policy triggers to seal a batch. A batch is sealed and ingested when the first condition is met:
 
-1. The total size of the batched data reaches the size set by the `IngestionBatching` policy.
-1. The maximum delay time is reached
-1. The number of blobs set by the `IngestionBatching` policy is reached
+* `Size`: Batch size limit reached or exceeded
+* `Count`: Batch file number limit reached
+* `Time`: Batching time has expired
 
 The `IngestionBatching` policy can be set on databases or tables. Default values are as follows: **5 minutes** maximum delay time, **1000** items, total size of **1G**.
 
@@ -40,14 +40,6 @@ The `IngestionBatching` policy can be set on databases or tables. Default values
 > reducing batching policy values might actually result in **increased** effective
 > end-to-end ingestion latency, due to the overhead of managing multiple ingestion
 > processes in parallel.
-
-## Sealing a batch
-
-The following list shows the basic batching policy triggers to seal a batch. A batch is sealed and ingested when the first condition is met:
-
-* `Size`: Batch size limit reached or exceeded
-* `Count`: Batch file number limit reached
-* `Time`: Batching time has expired
 
 The following list shows conditions to seal batches related to single blob ingestion. A batch is sealed and ingested when the conditions are met:
 
@@ -61,11 +53,11 @@ If the `SystemFlush` condition is set, a batch will be sealed when a system flus
 
 ## Batch data size
 
-The batching policy data size is set for uncompressed data. When ingesting compressed data, the uncompressed data size is evaluated as follows in descending order of accuracy:
+The batching policy data size is set for uncompressed data. For Parquet, AVRO, and ORC files, an estimation is calculated based on file size. When ingesting compressed data, the uncompressed data size is evaluated as follows in descending order of accuracy:
           -
 1. If the uncompressed size is provided in the ingestion source options, that value is used.
-1. When ingesting local files using SDKs, zip archives and gzip streams are inspected to assess their raw size.
-1. If previous options do not provide a data size, a factor is applied to the compressed data size to estimate the uncompressed data size.
+1. When ingesting local files using SDKs, zip archives and gzip streams are inspected to assess their raw size. 
+1. If previous options do not provide a data size, a factor is applied to the compressed data size to estimate the uncompressed data size. 
 
 ## Batching latencies
 
