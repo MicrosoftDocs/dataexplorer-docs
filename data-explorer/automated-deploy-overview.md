@@ -10,6 +10,8 @@ ms.topic: how-to
 ms.date: 
 ---
 
+# Automated deployments in Azure Data Explorer
+
 Automated deployment is a critical part of DevOps / DataOps and enables us to:
 
 *   Easily maintain multiple [environments](https://en.wikipedia.org/wiki/Deployment_environment)
