@@ -192,7 +192,7 @@ For a complete list of scalar dynamic/array functions, see [dynamic/array functi
 |[`array_length(`array`)`](../arraylengthfunction.md)| Null if it isn't an array
 |[`bag_keys(`bag`)`](../bagkeysfunction.md)| Enumerates all the root keys in a dynamic property-bag object.
 |[`bag_merge(`bag1,...,bagN`)`](../bag-merge-function.md)| Merges dynamic property-bags into a dynamic property-bag with all properties merged.
-|[`extract_json(`path,object`)`](../extractjsonfunction.md)|Uses path to navigate into object.
+|[`extractjson(`path,object`)`](../extractjsonfunction.md)|Uses path to navigate into object.
 |[`parse_json(`source`)`](../parsejsonfunction.md)| Turns a JSON string into a dynamic object.
 |[`range(`from,to,step`)`](../rangefunction.md)| An array of values
 |[`mv-expand` listColumn](../mvexpandoperator.md) | Replicates a row for each value in a list in a specified cell.
