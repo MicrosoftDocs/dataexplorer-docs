@@ -15,7 +15,7 @@ ms.date: 01/20/2019
 
 
 This command returns a result set that includes any ingestion failures that occur when the
-[data ingestion control commands](../../ingest-data-overview.md#kusto-query-language-ingest-control-commands) run.
+[data ingestion control commands](../../ingest-data-overview.md#ingest-control-commands) run.
 
 
 > [!NOTE]
