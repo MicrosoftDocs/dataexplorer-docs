@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # todynamic(), parse_json()
 
-Interprets a `string` as a JSON value and returns the value as `dynamic`. If possible, the value is converted into appropriate [data types](scalar-data-types.md).  For strict parsing with no data type conversion, use [extract()](extractfunction.md) or [extractjson()](extractjsonfunction.md) functions.
+Interprets a `string` as a JSON value and returns the value as `dynamic`. If possible, the value is converted into relevant [data types](./scalar-data-types.md).  For strict parsing with no data type conversion, use [extract()](extractfunction.md) or [extractjson()](extractjsonfunction.md) functions.
 
 > [!NOTE]
 > The `todynamic()` and `parse_json()` functions are interpreted equivalently.
