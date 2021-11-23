@@ -12,7 +12,11 @@ ms.date:
 
 # Automated deployments in Azure Data Explorer
 
-Automated deployment is a critical part of DevOps / DataOps and enables us to:
+This article provides an overview of the different mechanisms and tools for automated deployment in Azure Data Explorer, from the infrastructure to the schema entities to the data preparation.
+
+Automated deployment is a way of provisioning resources without human intervention as opposed to using the Azure Portal.
+
+A critical part of DevOps / DataOps, Automated deployment enables us to:
 
 *   Easily maintain multiple [environments](https://en.wikipedia.org/wiki/Deployment_environment)
 *   Keep traces of deployments in source control
@@ -20,8 +24,6 @@ Automated deployment is a critical part of DevOps / DataOps and enables us to:
 *   Shorten development lifecycle
 *   Implement Continuous Integration / Continuous Deployment (CI / CD)
 *   Facilitates automated testing
-
-In this article, we will look at different facets of deployment with Azure Data Explorer, from the infrastructure to the schema entities to the data preparation.
 
 ## ARM Templates
 
