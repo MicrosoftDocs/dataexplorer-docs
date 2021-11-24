@@ -360,7 +360,7 @@ The backfill by move extents option can be useful in 2 main scenarios:
 
 * When you already have a table that includes the deduplicated source data for the materialized view, and these records are not needed in this table after view creation, since only the materialized view will be used.
 
-* When the source table of the materialized view is very large and backfilling the view based on the source table doesn't work well due to limitations mentioned above. In this case, you can orchestrate the backfill process yourself into a temp table using [ingest from query commands](../data-ingestion/ingest-from-query.md) and either of the [orchestration tools](../../../tools-integrations-overview.md#orchestration). When the temp table includes all records for the backfill, create the materialized view based on the temp table.
+* When the source table of the materialized view is very large and backfilling the view based on the source table doesn't work well due to limitations mentioned above. In this case, you can orchestrate the backfill process yourself into a temp table using [ingest from query commands](../data-ingestion/ingest-from-query.md) and one of the [recommended orchestration tools](../../../tools-integrations-overview.md#orchestration). When the temp table includes all records for the backfill, create the materialized view based on the temp table.
 
 **Examples:**
 
