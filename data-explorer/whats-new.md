@@ -35,7 +35,7 @@ This section lists the major changes to docs during October 2021.
 
 | Article title | Description |
 |--|--|
-| [Role-based Authorization in Kusto](/azure/data-explorer/kusto/management/access-control/role-based-authorization.md) | Updated article. Materialized views rename source table.
+| [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md) | Updated article. Materialized views rename source table.
 | [Cache policy (hot and cold cache)](./kusto/management/cachepolicy.md) | Updated article. Caching with long storage.
 | [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md)| Updated article. Using the AllDatabasesMonitor role.
 
