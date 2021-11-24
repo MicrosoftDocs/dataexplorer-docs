@@ -22,7 +22,7 @@ Requires [Database viewer permission](../management/access-control/role-based-au
 
 ## Output
 
-Properties that describe policies or extents refer to the [materialized part of the view](materialized-views/materialized-view-overview.md#how-materialized-views-work).
+Properties that describe policies or extents refer to the [materialized part of the view](materialized-view-overview.md#how-materialized-views-work).
 
 | Column name           | Type     | Description                                                                                     |
 |----------------------------|----------|-------------------------------------------------------------------------------------------------|
