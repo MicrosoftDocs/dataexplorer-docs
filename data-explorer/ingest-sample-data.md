@@ -63,11 +63,11 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
 # [Ingest with wizard](#tab/one-click-ingest)
 
-1. In the left menu, select **Data**. 
+1. In the left menu, select **Data**.
 
-    :::image type="content" source="media/ingest-sample-data/select-data.png" alt-text="Select the data pane from the menu.":::
+    :::image type="content" source="media/ingest-sample-data/select-data.png" alt-text="Select the Data pane from the menu.":::
 
-1. In the **Data Management** page, select **Ingest data from blob**, and then **Ingest**. 
+1. In the **Data Management** page, select **Ingest data from blob**, and then **Ingest**.
 
       :::image type="content" source="media/ingest-sample-data/select-ingestion-wizard.png" alt-text="Ingest data from the data management window of the WebUI interface - Azure Data Explorer." lightbox="media/ingest-sample-data/select-ingestion-wizard.png":::
 
@@ -97,13 +97,13 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
     | Setting | Description|
     |---|---|
     | Compression type | THe compression type is inferred from the file extension. |
-    | Data format | The data format, **CSV**, is already specified. | 
-    | Ignore the first record | If the source table includes column names, the first record is ignored during ingestion.  | 
-    | Mapping | Schema mapping name. | 
+    | Data format | The data format, **CSV**, is already specified. |
+    | Ignore the first record | If the source table includes column names, the first record is ignored during ingestion.  |
+    | Mapping | Schema mapping name. |
 
-1. After ingestion completes, select **Query** in the left pane. 
+1. After ingestion completes, select **Query** in the left pane.
 
-    :::image type="content" source="media/ingest-sample-data/select-query.png" alt-text="Select the data pane from the menu.":::
+    :::image type="content" source="media/ingest-sample-data/select-query.png" alt-text="Select the Query pane from the menu.":::
 
 1. Paste in the following query, select the query in the window, and select **Run**.
 
