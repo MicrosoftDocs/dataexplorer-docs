@@ -292,7 +292,7 @@ The following aggregation functions are supported:
 When creating a materialized view with the `backfill` property, the materialized view will be created based on the records available in the source table (or a subset of those records, if `effectiveDateTime` is used).
 
 * Behind the scenes, the backfill process splits the data to backfill into multiple batches and executes several ingest operations to backfill the view.
-* The process might take a very long while to complete when the number of records in source table is large (duration depends on cluster size). You can track the progress of the backfill using the [.show operations](../operations.md#show-operations) command.
+* The process might take a very long while to complete when the number of records in source table is large. The process duration depends on cluster size. Track the progress of the backfill using the [`.show operations`](../operations.md#show-operations) command.
 * Transient failures that occur as part of the backfill process are retried, but if all retries are exhausted, the command will fail and a manual re-execution of the create command is required.
 * Considering the above, it is not recommended to use backfill when number of records in source table exceeds `number-of-nodes X 200 million` (sometimes even less, depending on the complexity of the query). As an alternative, see the [backfill by move extents](#backfill-by-move-extents) option.
 
