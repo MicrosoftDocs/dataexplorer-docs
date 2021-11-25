@@ -27,7 +27,7 @@ There are two possible ways to create a materialized view, noted by the *backfil
 * You can cancel the backfill process with the [`.cancel operation`](#cancel-materialized-view-creation) command.
 
 > [!IMPORTANT]
-> Using the backfill option may take a long time to complete for large source tables. If this process transiently fails while running, it will not be automatically retried, and a re-execution of the create command is required. See [backfill a materialized view](#backfill-a-materialized-view) for more details.
+> On large source tables, the backfill option may take a long time to complete. If this process transiently fails while running, it will not be automatically retried. You must then re-execute the create command is required. For more information, see [backfill a materialized view](#backfill-a-materialized-view).
 
 The create operation requires [Database Admin](../access-control/role-based-authorization.md) permissions. The creator of the materialized view becomes the Admin of it.
 
