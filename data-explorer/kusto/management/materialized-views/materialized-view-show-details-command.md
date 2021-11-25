@@ -1,6 +1,6 @@
 ---
 title: .show materialized view details - Azure Data Explorer | Microsoft Docs
-description: This article describes .show materialized view details in Azure Data Explorer.
+description: This article describes .show materialized view command in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
