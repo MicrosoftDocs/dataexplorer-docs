@@ -21,8 +21,6 @@ In order to use managed identities with your external table, please follow these
 1. [Assign managed identity to your cluster]()
 2. [Create managed identity policy]()
 3. [Create the external table]()
-4. [Export data the external table]()
-5. [Query the external table]()
 
 ## Assign managed identity to your cluster
 
@@ -73,25 +71,4 @@ dataformat = csv (
 )
 ~~~
 
-## Export data the external table
-
-After creating the external table, we can start using it.
-If we wish to export new data into the table, we need to use the data export command.
-
-The following is an example of such command:
-~~~
-.export to table tableName <| datatable(col_a: string, col_b: string) ["a", "b"]
-~~~
-
-## Query the external table
-
-We can query the data and see our exported data:
-~~~
-external_table('tableName')
-~~~
-
-**Output:**
-
-| col_a | col_b |
-|-------| ---- |
-| `a` | `b`
+At this stage you have configured everything, and you can query the external table ([see example]()), export data into it ([see example]()), or configure a continuous export of data into it ([see example]())
