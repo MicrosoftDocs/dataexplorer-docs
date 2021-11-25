@@ -24,8 +24,7 @@ There are two possible ways to create a materialized view, noted by the *backfil
 
 * Creation may take a long while to complete, depending on the number of records in the source table. The view won't be available for queries until backfill is complete.
 * When using this option, the create command must be `async` and execution can be monitored using the [.show operations](../operations.md#show-operations) command.
-
-* Canceling the backfill process is possible using the [.cancel operation](#cancel-materialized-view-creation) command.
+* You can cancel the backfill process with the [`.cancel operation`](#cancel-materialized-view-creation) command.
 
 > [!IMPORTANT]
 > Using the backfill option may take a long time to complete for large source tables. If this process transiently fails while running, it will not be automatically retried, and a re-execution of the create command is required. See [backfill a materialized view](#backfill-a-materialized-view) for more details.
