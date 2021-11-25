@@ -11,7 +11,8 @@ ms.date: 08/03/2020
 ---
 # Show continuous export failures
 
-Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest. 
+Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest.
+The command will not return any results if executed on a [follower database](../../../follower.md), it must be executed against the leader database.
 
 ## Syntax
 
