@@ -19,7 +19,9 @@ Your Azure Data Explorer cluster can be granted two types of identities:
 * **User-assigned identity**: Standalone Azure resource that can be assigned to 
 your cluster. A cluster can have multiple user-assigned identities.
 
-You can now use Managed Identities authentication with Kusto in various supported flows.
+Managed identity authentication can be used in Azure Data Explorer for various supported flows.
+
+---
 
 ## Authenticate with managed identities
 
@@ -41,12 +43,4 @@ In order to use managed identity in various flows it needs to be permitted by th
 
 After assigning the managed identity to your cluster and configuring the relevant managed identity policy usage, you can start using managed identity authentication in the following flows:
 * External Tables - create an external table with managed identity authentication.The authentication is stated as part of the connection string (see [storage connection string](/azure/data-explorer/kusto/api/connection-strings/storage#azure-blob-storage) for example). For a step-by-step instructions on using external tables with managed identity authentication please follow this [guide](data-explorer\external-tables-with-managed-identities.md).
-* Native Injestion - see [here](azure/data-explorer/ingest-data-event-hub)
-* Data Connection - TBD
-
-## Next steps
-
-* [Secure Azure Data Explorer clusters in Azure](security.md)
-* [Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal](cluster-disk-encryption.md) by enabling encryption at rest.
-* [Configure customer-managed-keys using C#](customer-managed-keys-csharp.md)
-* [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md)
+* Native Injestion - Event hub native injestion can be done using managed identity authentication. See [the official docs](azure/data-explorer/ingest-data-event-hub)
