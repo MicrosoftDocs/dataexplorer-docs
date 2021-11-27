@@ -3,7 +3,7 @@ title: 'Query data in Azure Monitor with Azure Data Explorer'
 description: 'In this topic, query data in Azure Monitor (Application Insights and Log Analytics) by creating an Azure Data Explorer cross product queries.'
 services: data-explorer
 author: osalzberg
-ms.author: orspodek
+ms.author: orens
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
