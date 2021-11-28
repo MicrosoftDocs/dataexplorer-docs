@@ -43,18 +43,17 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
       
       :::image type="content" source="media/ingest-data-one-click/select-data-pane.png" alt-text="Screenshot of options to ingest data from the data management window of the WebUI interface - Azure Data Explorer." lightbox="media/ingest-data-one-click/select-data-pane.png":::
    
-     * Right-click the **database** or **table** row in the left menu of the Azure Data Explorer web UI and select **Ingest new data**.
+     * Select **Query** in the left pane. Right-click the *database* or *table* and select **Ingest new data**.
         
-        :::image type="content" source="media/ingest-data-one-click/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI.":::
+        :::image type="content" source="media/ingest-data-one-click/ingest-new-data-database-menu.png" alt-text="Screenshot of selection of one-click ingestion in the Azure Data Explorer web UI.":::
 
 * To access the one-click ingestion wizard from the **Welcome to Azure Data Explorer** home screen in your cluster, complete the first two steps ([cluster creation and database creation](#prerequisites)) and then select **Ingest new data**.
 
     :::image type="content" source="media/ingest-data-one-click/welcome-ingestion.png" alt-text="Ingest new data from welcome to Azure Data Explorer.":::
 
-
 * To access the wizard from the Azure portal, select **Query** from the left menu, right-click on the **database** or **table**, and select **Ingest new data**.
 
-    :::image type="content" source="media/ingest-data-one-click/access-from-portal.png" alt-text="Access the one click ingestion wizard from Azure portal.":::
+    :::image type="content" source="media/ingest-data-one-click/ingest-from-portal.png" alt-text="Access the one click ingestion wizard from Azure portal.":::
 
 ## One-click ingestion wizard
 
