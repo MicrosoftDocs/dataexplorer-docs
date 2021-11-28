@@ -357,7 +357,7 @@ This option backfills the materialized view based on an existing table, which is
 
 #### Use cases
 
-The backfill by move extents option can be useful in two main scenarios:
+The backfill-by-move-extents option can be useful in two main scenarios:
 
 * When you already have a table that includes the deduplicated source data for the materialized view, and these records are not needed in this table after view creation, since only the materialized view will be used.
 
