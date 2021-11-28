@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 03/29/2020
+ms.date: 11/28/2021
 ---
 
 # What is one-click ingestion?
@@ -39,7 +39,7 @@ One-click ingestion is particularly useful when ingesting data for the first tim
 The one-click ingestion wizard guides you through the one-click ingestion process.
 
 * To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), use one of the following methods:
-    * Select **Data** in the left pane. Within the **Data Management** page, select a type of ingestion and click **Ingest**. 
+    * Select **Data** in the left pane. Within the **Data Management** page, select a type of ingestion and click **Ingest**.
       
       :::image type="content" source="media/ingest-data-one-click/select-data-pane.png" alt-text="Screenshot of options to ingest data from the data management window of the WebUI interface - Azure Data Explorer." lightbox="media/ingest-data-one-click/select-data-pane.png":::
    
@@ -62,7 +62,7 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 >
 > For sample scenarios, see:
 > * Ingest into [a new table from a container in CSV format](one-click-ingestion-new-table.md)
-> * Ingest into an [existing table from a local file in JSON format](one-click-ingestion-existing-table.md) 
+> * Ingest into an [existing table from a local file in JSON format](one-click-ingestion-existing-table.md)
 
 The wizard guides you through the following options:
    * Ingest into an [existing table](one-click-ingestion-existing-table.md)
