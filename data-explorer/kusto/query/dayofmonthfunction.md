@@ -4,7 +4,7 @@ description: This article describes dayofmonth() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,14 +17,14 @@ Returns the integer number representing the day number of the given month
 dayofmonth(datetime(2015-12-14)) == 14
 ```
 
-**Syntax**
+## Syntax
 
 `dayofmonth(`*a_date*`)`
 
-**Arguments**
+## Arguments
 
 * `a_date`: A `datetime`.
 
-**Returns**
+## Returns
 
 `day number` of the given month.

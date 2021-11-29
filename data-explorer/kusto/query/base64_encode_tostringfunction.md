@@ -4,7 +4,7 @@ description: This article describes base64_encode_tostring() in Azure Data Explo
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/22/2019
@@ -13,25 +13,25 @@ ms.date: 06/22/2019
 
 Encodes a string as base64 string.
 
-**Syntax**
+## Syntax
 
 `base64_encode_tostring(`*String*`)`
 
-**Arguments**
+## Arguments
 
 * *String*: Input string to be encoded as base64 string.
 
-**Returns**
+## Returns
 
 Returns the string encoded as base64 string.
 
-* For decoding base64 strings to a UTF-8 string see [base64_decode_tostring()](base64_decode_tostringfunction.md)
-* For decoding base64 strings to an array of long values see [base64_decode_toarray()](base64_decode_toarrayfunction.md)
+* To decode base64 strings to UTF-8 strings, see [base64_decode_tostring()](base64_decode_tostringfunction.md)
+* To decode base64 strings to an array of long values, see [base64_decode_toarray()](base64_decode_toarrayfunction.md)
 
 
-**Example**
+## Example
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print Quine=base64_encode_tostring("Kusto")
 ```
@@ -39,3 +39,4 @@ print Quine=base64_encode_tostring("Kusto")
 |Quine   |
 |--------|
 |S3VzdG8=|
+

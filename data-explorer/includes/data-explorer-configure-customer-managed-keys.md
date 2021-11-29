@@ -21,4 +21,4 @@ To configure customer-managed keys with Azure Data Explorer, you must [set two p
 
 ## Assign an identity to the cluster
 
-To enable customer-managed keys for your cluster, first assign a system-assigned managed identity to the cluster. You'll use this managed identity to grant the cluster permissions to access the key vault. To configure system-assigned managed identities, see [managed identities](../managed-identities.md).
+To enable customer-managed keys for your cluster, first assign either a system-assigned or user-assigned managed identity to the cluster. You'll use this managed identity to grant the cluster permissions to access the key vault. To configure managed identities, see [managed identities](../managed-identities.md).

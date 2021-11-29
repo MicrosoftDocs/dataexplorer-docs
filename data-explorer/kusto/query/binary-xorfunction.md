@@ -4,7 +4,7 @@ description: This article describes binary_xor() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,14 +17,14 @@ Returns a result of the bitwise `xor` operation of the two values.
 binary_xor(x,y)
 ```
 
-**Syntax**
+## Syntax
 
 `binary_xor(`*num1*`,` *num2* `)`
 
-**Arguments**
+## Arguments
 
 * *num1*, *num2*: long numbers.
 
-**Returns**
+## Returns
 
 Returns logical XOR operation on a pair of numbers: num1 ^ num2.

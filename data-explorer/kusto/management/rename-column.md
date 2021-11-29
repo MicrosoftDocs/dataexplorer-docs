@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/11/2020
 ---
-# rename column
+# .rename column
 
 Changes the name of an existing table column.
 To change the name of multiple columns, see [below](#rename-columns).

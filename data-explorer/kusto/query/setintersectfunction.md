@@ -4,30 +4,30 @@ description: This article describes set_intersect() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/02/2019
 ---
 # set_intersect()
 
-Returns a `dynamic` (JSON) array of the set of all distinct values that are in all arrays - (arr1 ∩ arr2 ∩ ...).
+Returns a `dynamic` array of the set of all distinct values that are in all arrays - (arr1 ∩ arr2 ∩ ...).
 
-**Syntax**
+## Syntax
 
 `set_intersect(`*arr1*`, `*arr2*`[`,` *arr3*, ...])`
 
-**Arguments**
+## Arguments
 
-* *arr1...arrN*: Input arrays to create a intersect set (at least two arrays). All arguments must be dynamic arrays (see [pack_array](packarrayfunction.md)). 
+* *arr1...arrN*: Input arrays to create an intersect set (at least two arrays). All arguments must be dynamic arrays. For more information, see [pack_array](packarrayfunction.md). 
 
-**Returns**
+## Returns
 
 Returns a dynamic array of the set of all distinct values that are in all arrays. See [`set_union()`](setunionfunction.md) and [`set_difference()`](setdifferencefunction.md).
 
-**Example**
+## Example
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range x from 1 to 3 step 1
 | extend y = x * 2
@@ -43,7 +43,7 @@ range x from 1 to 3 step 1
 |[2]|
 |[3]|
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print arr = set_intersect(dynamic([1, 2, 3]), dynamic([4,5]))
 ```

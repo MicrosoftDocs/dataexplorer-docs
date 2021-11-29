@@ -4,7 +4,7 @@ description: This article describes tan() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
@@ -13,14 +13,14 @@ ms.date: 10/23/2018
 
 Returns the tangent function.
 
-**Syntax**
+## Syntax
 
 `tan(`*x*`)`
 
-**Arguments**
+## Arguments
 
 * *x*: A real number.
 
-**Returns**
+## Returns
 
 * The result of `tan(x)`

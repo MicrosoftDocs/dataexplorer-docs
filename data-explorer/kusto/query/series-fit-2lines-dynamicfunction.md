@@ -4,7 +4,7 @@ description: This article describes series_fit_2lines_dynamic() in Azure Data Ex
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
@@ -33,20 +33,20 @@ Takes an expression containing dynamic numerical array as input and applies [two
 
 This operator is similar to [series_fit_2lines](series-fit-2linesfunction.md). Unlike `series-fit-2lines`, it returns a dynamic bag.
 
-**Syntax**
+## Syntax
 
 `series_fit_2lines_dynamic(`*x*`)`
 
-**Arguments**
+## Arguments
 
 * *x*: Dynamic array of numeric values.  
 
 > [!TIP]
 > The most convenient way of using this function is applying it to the results of the [make-series](make-seriesoperator.md) operator.
 
-**Example**
+## Example
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([1,2.2, 2.5, 4.7, 5.0, 12, 10.3, 10.3, 9, 8.3, 6.2])
 | extend LineFit=series_fit_line_dynamic(y).line_fit, LineFit2=series_fit_2lines_dynamic(y).line_fit
@@ -54,4 +54,4 @@ print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([1,2.2,
 | render timechart
 ```
 
-:::image type="content" source="images/series-fit-2lines/series-fit-2lines.png" alt-text="Series fit 2 lines":::
+:::image type="content" source="images/series-fit-2lines/series-fit-2lines.png" alt-text="Series fit 2 lines.":::

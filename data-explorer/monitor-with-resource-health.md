@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: prvavill
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/31/2020
 
 ---
@@ -25,7 +25,7 @@ Resource Health determines the health of your Azure Data Explorer resource by ex
 1. The resulting table lists all the resources in the chosen subscription. Each resource will have a health state icon indicating the resource health.
 1. Select your resource to view its [resource health status](#resource-health-status) and recommendations.
 
-    ![Overview](media/monitor-with-resource-health/resource-health-overview.png)
+    ![Overview.](media/monitor-with-resource-health/resource-health-overview.png)
 
 ## Resource health status
 
@@ -35,13 +35,16 @@ The health of a resource is displayed with one of the following statuses, availa
 
 A health status of **Available** indicates that your Azure Data Explorer resource is healthy and doesn't have any issues.
 
-![Available](media/monitor-with-resource-health/available.png)
+:::image type="content" source="media/monitor-with-resource-health/available.png" alt-text="Screenshot of a Resource health page for an Azure Data Explorer resource. The status is listed as available and is highlighted." border="false":::
 
 ### Unavailable
 
 A health status of **Unavailable** indicates that there's an ongoing problem with your Azure Data Explorer resource that causes it to be unavailable for queries and ingestion. For example, nodes in your Azure Data Explorer resource may have rebooted unexpectedly. If your Azure Data Explorer resource remains in this state for an extended period of time, contact [support]().
 
-![Unavailable](media/monitor-with-resource-health/unavailable.png)
+:::image type="content" source="media/monitor-with-resource-health/unavailable.png" alt-text="Screenshot of a Resource health page for an Azure Data Explorer resource, with a highlighted unavailable status and links for support and information." border="false":::
+
+> [!TIP]
+> You can use the [system information commands](kusto/management/systeminfo.md) to find the source of the problem.
 
 ### Unknown
 
@@ -50,16 +53,16 @@ A health status of **Unknown** indicates that **Resource Health** hasn't receive
 > [!TIP]
 > The Azure Data Explorer cluster resource health will be **Unknown** if it's in a stopped state.
 
-![Unknown](media/monitor-with-resource-health/unknown.png)
+:::image type="content" source="media/monitor-with-resource-health/unknown.png" alt-text="Screenshot of a Resource health page for an Azure Data Explorer resource, with a highlighted status of unknown and links for support and information." border="false":::
 
 ## Historical information
 
 In **Resource Health** pane > **Health history**, access up to four weeks of resource health status information. Select the arrow for additional information on the health event issues reported in this pane. 
 
-![History](media/monitor-with-resource-health/healthhistory.png)
+![History.](media/monitor-with-resource-health/healthhistory.png)
 
 ## Next steps
 
-* [Configuring Resource Health alerts](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)
+* [Configuring Resource Health alerts](/azure/service-health/resource-health-alert-arm-template-guide)
 * [Tutorial: Ingest and query monitoring data in Azure Data Explorer](ingest-data-no-code.md)
 * [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md)

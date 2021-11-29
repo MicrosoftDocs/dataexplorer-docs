@@ -1,25 +1,28 @@
 ---
 title: 'Ingest data from Logstash to Azure Data Explorer'
 description: 'In this article, you learn how to ingest (load) data into Azure Data Explorer from Logstash'
-author: tamirkamara
-ms.author: takamara
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: takamara
 ms.service: data-explorer
-ms.topic: conceptual
-ms.date: 06/03/2019
+ms.topic: how-to
+ms.date: 11/26/2020
 
 #Customer intent: As a DevOps engineer, I want to use Logstash to pipeline logs and ingest into Azure Data Explorer so that I can analyze them later.
 ---
 
 # Ingest data from Logstash to Azure Data Explorer
 
-[Logstash](https://www.elastic.co/products/logstash) is an open source, server-side data processing pipeline that ingests data from many sources simultaneously, transforms the data, and then sends the data to your favorite "stash". In this article, you'll send that data to Azure Data Explorer, which is a fast and highly scalable data exploration service for log and telemetry data. You'll initially create a table and data mapping in a test cluster,and then direct Logstash to send data into the table and validate the results.
+[Logstash](https://www.elastic.co/products/logstash) is an open source, server-side data processing pipeline that ingests data from many sources simultaneously, transforms the data, and then sends the data to your favorite "stash". In this article, you'll send that data to Azure Data Explorer, which is a fast and highly scalable data exploration service for log and telemetry data. You'll initially create a table and data mapping in a test cluster, and then direct Logstash to send data into the table and validate the results.
+
+> [!NOTE]
+> This connector currently supports only json data format.
 
 ## Prerequisites
 
-* An Azure subscription. If you don't have one, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* An Azure Data Explorer [test cluster and database](create-cluster-database-portal.md)
-* Logstash version 6+ [Installation instructions](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html)
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
+* Logstash version 6+ [Installation instructions](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html).
 
 ## Create a table
 
@@ -86,7 +89,7 @@ This configuration also includes the `stdin` input plugin that will enable you t
 
 ## Configure Logstash to send data to Azure Data Explorer
 
-Paste the following settings into the same config file used in the previous step. Replace all the placeholders with the relevant values for your setup. For more information, see [Creating an AAD Application](kusto/management/access-control/how-to-provision-aad-app.md). 
+Paste the following settings into the same config file used in the previous step. Replace all the placeholders with the relevant values for your setup. For more information, see [Creating an AAD Application](./provision-azure-ad-app.md). 
 
 ```ruby
 output {
@@ -98,7 +101,7 @@ output {
             app_tenant => "<tenant id>"
             database => "<database name>"
             table => "<target table>" # logs as defined above
-            mapping => "<mapping name>" # basicmsg as defined above
+            json_mapping => "<mapping name>" # basicmsg as defined above
     }
 }
 ```
@@ -110,7 +113,7 @@ output {
 | **app_id**,  **app_key**, and **app_tenant**| Credentials required to connect to Azure Data Explorer. Be sure to use an application with ingest privileges. |
 | **database**| Database name to place events. |
 | **table** | Target table name to place events. |
-| **mapping** | Mapping is used to map an incoming event json string into the correct row format (defines which property goes into which column). |
+| **json_mapping** | Mapping is used to map an incoming event json string into the correct row format (defines which property goes into which column). |
 
 ## Run Logstash
 

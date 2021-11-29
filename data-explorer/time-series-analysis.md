@@ -5,15 +5,15 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
-ms.topic: conceptual
-ms.date: 04/07/2019
+ms.topic: how-to
+ms.date: 10/11/2021
+ms.localizationpriority: high
 ---
-
 # Time series analysis in Azure Data Explorer
 
 Azure Data Explorer (ADX) performs on-going collection of telemetry data from cloud services or IoT devices. This data can be analyzed for various insights such as monitoring service health, physical production processes, and usage trends. Analysis is done on time series of selected metrics to find a deviation in the pattern compared to its typical baseline pattern.
 ADX contains native support for creation, manipulation, and analysis of multiple time series. 
-In this topic, learn how ADX is used to create and analyze **thousands of time series in seconds**, enabling near real-time monitoring solutions and workflows.
+In this topic, learn how Azure Data Explorer is used to create and analyze **thousands of time series in seconds**, enabling near real-time monitoring solutions and workflows.
 
 ## Time series creation
 
@@ -30,19 +30,18 @@ demo_make_series1 | take 10
 
 The resulting table contains a timestamp column, three contextual dimensions columns, and no metrics:
 
-|   |   |   |   |   |
-| --- | --- | --- | --- | --- |
-|   | TimeStamp | BrowserVer | OsVer | Country/Region |
-|   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | United Kingdom |
-|   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
-|   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | United Kingdom |
-|   | 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | United Kingdom |
-|   | 2016-08-25 09:12:46.5570000 | Chrome 52.0 | Windows 10 | Republic of Lithuania |
-|   | 2016-08-25 09:12:47.0470000 | Chrome 52.0 | Windows 8.1 | India |
-|   | 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | United Kingdom |
-|   | 2016-08-25 09:12:51.6930000 | Chrome 52.0 | Windows 7 | Netherlands |
-|   | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | United Kingdom |
-|   | 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | India |
+| TimeStamp | BrowserVer | OsVer | Country/Region |
+| --- | --- | --- | --- |
+| 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | United Kingdom |
+| 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
+| 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | United Kingdom |
+| 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | United Kingdom |
+| 2016-08-25 09:12:46.5570000 | Chrome 52.0 | Windows 10 | Republic of Lithuania |
+| 2016-08-25 09:12:47.0470000 | Chrome 52.0 | Windows 8.1 | India |
+| 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | United Kingdom |
+| 2016-08-25 09:12:51.6930000 | Chrome 52.0 | Windows 7 | Netherlands |
+| 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | United Kingdom |
+| 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | India |
 
 Since there are no metrics, we can only build a set of time series representing the traffic count itself, partitioned by OS using the following query:
 
@@ -65,12 +64,12 @@ demo_make_series1
 
 In the table above, we have three partitions. We can create a separate time series: Windows 10 (red), 7 (blue) and 8.1 (green) for each OS version as seen in the graph:
 
-![Time series partition](media/time-series-analysis/time-series-partition.png)
+![Time series partition.](media/time-series-analysis/time-series-partition.png)
 
 ## Time series analysis functions
 
 In this section, we'll perform typical series processing functions.
-Once a set of time series is created, ADX supports a growing list of functions to process and analyze them which can be found in the [time series documentation](kusto/query/machine-learning-and-tsa.md). We will describe a few representative functions for processing and analyzing time series.
+Once a set of time series is created, Azure Data Explorer supports a growing list of functions to process and analyze them which can be found in the [time series documentation](kusto/query/machine-learning-and-tsa.md). We will describe a few representative functions for processing and analyzing time series.
 
 ### Filtering
 
@@ -91,7 +90,7 @@ demo_make_series1
 | render timechart
 ```
 
-![Time series filtering](media/time-series-analysis/time-series-filtering.png)
+![Time series filtering.](media/time-series-analysis/time-series-filtering.png)
 
 ### Regression analysis
 
@@ -109,7 +108,7 @@ demo_series2
 | render linechart with(xcolumn=x)
 ```
 
-![Time series regression](media/time-series-analysis/time-series-regression.png)
+![Time series regression.](media/time-series-analysis/time-series-regression.png)
 
 - Blue: original time series
 - Green: fitted line
@@ -131,7 +130,7 @@ demo_series3
 | render timechart 
 ```
 
-![Time series seasonality](media/time-series-analysis/time-series-seasonality.png)
+![Time series seasonality.](media/time-series-analysis/time-series-seasonality.png)
 
 - Use [series_periods_detect()](kusto/query/series-periods-detectfunction.md) to automatically detect the periods in the time series. 
 - Use [series_periods_validate()](kusto/query/series-periods-validatefunction.md) if we know that a metric should have specific distinct period(s) and we want to verify that they exist.
@@ -148,11 +147,10 @@ demo_series3
 | extend days=2h*todouble(periods)/1d
 ```
 
-|   |   |   |   |
-| --- | --- | --- | --- |
-|   | periods | scores | days |
-|   | 84 | 0.820622786055595 | 7 |
-|   | 12 | 0.764601405803502 | 1 |
+| periods | scores | days |
+| --- | --- | --- |
+| 84 | 0.820622786055595 | 7 |
+| 12 | 0.764601405803502 | 1 |
 
 The function detects daily and weekly seasonality. The daily scores less than the weekly because weekend days are different from weekdays.
 
@@ -173,7 +171,7 @@ demo_make_series1
 | render timechart
 ```
 
-![Time series operations](media/time-series-analysis/time-series-operations.png)
+![Time series operations.](media/time-series-analysis/time-series-operations.png)
 
 - Blue: original time series
 - Red: smoothed time series
@@ -190,13 +188,12 @@ demo_many_series1
 | take 4 
 ```
 
-|   |   |   |   |   |   |
-| --- | --- | --- | --- | --- | --- |
-|   | TIMESTAMP | Loc | anonOp | DB | DataRead |
-|   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 262 | 0 |
-|   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 241 | 0 |
-|   | 2016-09-11 21:00:00.0000000 | Loc 9 | -865998331941149874 | 262 | 279862 |
-|   | 2016-09-11 21:00:00.0000000 | Loc 9 | 371921734563783410 | 255 | 0 |
+| TIMESTAMP | Loc | anonOp | DB | DataRead |
+| --- | --- | --- | --- | --- |
+| 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 262 | 0 |
+| 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 241 | 0 |
+| 2016-09-11 21:00:00.0000000 | Loc 9 | -865998331941149874 | 262 | 279862 |
+| 2016-09-11 21:00:00.0000000 | Loc 9 | 371921734563783410 | 255 | 0 |
 
 And simple statistics:
 
@@ -207,10 +204,9 @@ demo_many_series1
 | summarize num=count(), min_t=min(TIMESTAMP), max_t=max(TIMESTAMP) 
 ```
 
-|   |   |   |   |
-| --- | --- | --- | --- |
-|   | num | min\_t | max\_t |
-|   | 2177472 | 2016-09-08 00:00:00.0000000 | 2016-09-11 23:00:00.0000000 |
+| num | min\_t | max\_t |
+| --- | --- | --- |
+| 2177472 | 2016-09-08 00:00:00.0000000 | 2016-09-11 23:00:00.0000000 |
 
 Building a time series in 1-hour bins of the read metric (total four days * 24 hours = 96 points), results in normal pattern fluctuation:
 
@@ -224,7 +220,7 @@ demo_many_series1
 | render timechart with(ymin=0) 
 ```
 
-![Time series at scale](media/time-series-analysis/time-series-at-scale.png)
+![Time series at scale.](media/time-series-analysis/time-series-at-scale.png)
 
 The above behavior is misleading, since the single normal time series is aggregated from thousands of different instances that may have abnormal patterns. Therefore, we create a time series per instance. An instance is defined by Loc (location), anonOp (operation), and DB (specific machine).
 
@@ -238,10 +234,9 @@ demo_many_series1
 | count
 ```
 
-|   |   |
-| --- | --- |
-|   | Count |
-|   | 18339 |
+| Count |
+| --- |
+| 18339 |
 
 Now, we're going to create a set of 18339 time series of the read count metric. We add the `by` clause to the make-series statement, apply linear regression, and select the top two time series that had the most significant decreasing trend:
 
@@ -257,7 +252,7 @@ demo_many_series1
 | render timechart with(title='Service Traffic Outage for 2 instances (out of 18339)')
 ```
 
-![Time series top two](media/time-series-analysis/time-series-top-2.png)
+![Time series top two.](media/time-series-analysis/time-series-top-2.png)
 
 Display the instances:
 
@@ -273,15 +268,14 @@ demo_many_series1
 | project Loc, Op, DB, slope 
 ```
 
-|   |   |   |   |   |
-| --- | --- | --- | --- | --- |
-|   | Loc | Op | DB | slope |
-|   | Loc 15 | 37 | 1151 | -102743.910227889 |
-|   | Loc 13 | 37 | 1249 | -86303.2334644601 |
+| Loc | Op | DB | slope |
+| --- | --- | --- | --- |
+| Loc 15 | 37 | 1151 | -102743.910227889 |
+| Loc 13 | 37 | 1249 | -86303.2334644601 |
 
-In less than two minutes, ADX analyzed close to 20,000 time series and detected two abnormal time series in which the read count suddenly dropped.
+In less than two minutes, Azure Data Explorer analyzed close to 20,000 time series and detected two abnormal time series in which the read count suddenly dropped.
 
-These advanced capabilities combined with ADX fast performance supply a unique and powerful solution for time series analysis.
+These advanced capabilities combined with Azure Data Explorer fast performance supply a unique and powerful solution for time series analysis.
 
 ## Next steps
 

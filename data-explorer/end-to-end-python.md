@@ -1,11 +1,11 @@
 ---
 title: 'End-to-end blob ingestion into Azure Data Explorer through Python'
 description: In this article, you learn how to ingest blobs into Azure Data Explorer with an end-to-end example that uses Python.
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 02/03/2020
 ---
 
@@ -16,13 +16,13 @@ ms.date: 02/03/2020
 > * [Python](end-to-end-python.md)
 >
 
-Azure Data Explorer is a fast and scalable data exploration service for log and telemetry data. This article gives you an end-to-end example of how to ingest data from Azure Blob storage into Azure Data Explorer. 
+Azure Data Explorer is a fast and scalable data exploration service for log and telemetry data. This article gives you an end-to-end example of how to ingest data from Azure Blob storage into Azure Data Explorer.
 
 You'll learn how to programmatically create a resource group, a storage account and container, an event hub, and an Azure Data Explorer cluster and database. You'll also learn how to programmatically configure Azure Data Explorer to ingest data from the new storage account.
 
 ## Prerequisites
 
-If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 
 ## Install the Python package
 
@@ -36,13 +36,14 @@ pip install azure-mgmt-eventgrid
 pip install azure-kusto-data
 pip install azure-storage-blob
 ```
+
 [!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
 [!INCLUDE [data-explorer-e2e-event-grid-resource-template](includes/data-explorer-e2e-event-grid-resource-template.md)]
 
-## Code example 
+## Code example
 
-The following code example gives you a step-by-step process that results in data ingestion into Azure Data Explorer. 
+The following code example gives you a step-by-step process that results in data ingestion into Azure Data Explorer.
 
 You first create a resource group. You also create Azure resources such as a storage account and container, an event hub, and an Azure Data Explorer cluster and database, and add principals. You then create an Azure Event Grid subscription, along with a table and column mapping, in the Azure Data Explorer database. Finally, you create the data connection to configure Azure Data Explorer to ingest data from the new storage account.
 
@@ -52,7 +53,7 @@ from azure.mgmt.resource import ResourceManagementClient
 from azure.mgmt.resource.resources.models import DeploymentMode
 import os.path
 import json
-from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
+from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
 from azure.mgmt.eventgrid import EventGridManagementClient
 from azure.mgmt.kusto import KustoManagementClient
 from azure.mgmt.kusto.models import EventGridDataConnection
@@ -185,6 +186,7 @@ poller = data_connections.create_or_update(resource_group_name=resource_group_na
                                                                               event_hub_resource_id=event_hub_resource_id, consumer_group="$Default", location=location, table_name=kusto_table_name, mapping_rule_name=kusto_column_mapping_name, data_format="csv"))
 poller.wait()
 ```
+
 |**Setting** | **Field description**|
 |---|---|---|
 | tenant_id | Your tenant ID. It's also known as a directory ID.|
@@ -204,6 +206,7 @@ poller.wait()
     2007-01-01 00:00:00.0000000,4171,Winter Storm"""
     block_blob_service.create_blob_from_text(container_name=storage_container_name, blob_name=blob_name, text=blob_content)
     ```
+
     |**Setting** | **Field description**|
     |---|---|---|
     | account_key | The access key of the programmatically created storage account.|
@@ -231,7 +234,7 @@ poller.wait()
 
 ## Next steps
 
-*  To learn about other ways to create a cluster and database, see [Create an Azure Data Explorer cluster and database](create-cluster-database-python.md).
+* To learn about other ways to create a cluster and database, see [Create an Azure Data Explorer cluster and database](create-cluster-database-python.md).
 * To learn more about ingestion methods, see [Azure Data Explorer data ingestion](ingest-data-overview.md).
 * To learn about the web application, see [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md).
 * [Write queries](write-queries.md) with Kusto Query Language.

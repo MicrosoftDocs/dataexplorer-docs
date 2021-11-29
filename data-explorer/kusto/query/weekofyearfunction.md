@@ -4,7 +4,7 @@ description: This article describes week_of_year() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/18/2020
@@ -17,19 +17,19 @@ Returns an integer which represents the week number. The week number is calculat
 week_of_year(datetime("2015-12-14"))
 ```
 
-**Syntax**
+## Syntax
 
 `week_of_year(`*a_date*`)`
 
-**Arguments**
+## Arguments
 
 * `a_date`: A `datetime`.
 
-**Returns**
+## Returns
 
 `week number` - The week number that contains the given date.
 
-**Examples**
+## Examples
 
 |Input                                    |Output|
 |-----------------------------------------|------|

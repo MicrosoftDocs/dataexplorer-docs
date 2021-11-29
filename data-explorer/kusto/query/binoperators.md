@@ -4,12 +4,12 @@ description: This article describes Bitwise (Binary) Operators in Azure Data Exp
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
 ---
-# Bitwise (Binary) Operators
+# Bitwise (binary) operators
 
 Kusto supports a number of bitwise (binary) operators between integers:
 

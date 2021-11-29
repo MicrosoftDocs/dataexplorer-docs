@@ -4,7 +4,7 @@ description: This article describes pow() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
@@ -13,15 +13,15 @@ ms.date: 10/23/2018
 
 Returns a result of raising to power
 
-**Syntax**
+## Syntax
 
 `pow(`*base*`,` *exponent* `)`
 
-**Arguments**
+## Arguments
 
 * *base*: Base value.
 * *exponent*: Exponent value.
 
-**Returns**
+## Returns
 
 Returns base raised to the power exponent: base ^ exponent.

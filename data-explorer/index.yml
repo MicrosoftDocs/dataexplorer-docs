@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: orspod
   ms.author: orspodek
-  ms.date: 03/19/2020
+  ms.date: 11/23/2021
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -26,9 +26,18 @@ landingContent:
         links:
           - text: What is Azure Data Explorer? (19:47)
             url: https://youtu.be/D_AJk2lAepw
-          - text: "Pluralsight: Kusto Query Language (KQL) from Scratch"
-            url: https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch
 
+  # Card
+  - title: Training
+    linkLists: 
+      - linkListType: learn
+        links:
+          - text: "Free Pluralsight training: Azure Data Explorer"
+            url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer          
+          - text: "Learn module: Introduction to Azure Data Explorer"
+            url:  /learn/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+          - text: "Learn module: Write your first query with Kusto Query Language"
+            url: /learn/modules/write-first-query-kusto-query-language/
   # Card
   - title: Create cluster and database
     linkLists:
@@ -100,6 +109,8 @@ landingContent:
             url: kql-quick-reference.md
           - text: Kusto Query Language
             url: kusto/query/index.md
+          - text: SQL to Kusto cheat sheet
+            url: kusto/query/sqlcheatsheet.md
 
   # Card
   - title: Visualize data
@@ -156,7 +167,23 @@ landingContent:
             url: using-metrics.md
           - text: Use diagnostic logs to monitor ingestion
             url: using-diagnostic-logs.md
-
+# Card
+  - title: Architecture
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Big data analytics with Azure Data Explorer
+            url: /azure/architecture/solution-ideas/articles/big-data-azure-data-explorer
+          - text: Content Delivery Network analytics
+            url: /azure/architecture/solution-ideas/articles/content-delivery-network-azure-data-explorer
+          - text: Azure Data Explorer monitoring
+            url: /azure/architecture/solution-ideas/articles/monitor-azure-data-explorer
+          - text: Azure Data Explorer interactive analytics
+            url: /azure/architecture/solution-ideas/articles/interactive-azure-data-explorer
+          - text: IoT analytics with Azure Data Explorer
+            url: /azure/architecture/solution-ideas/articles/iot-azure-data-explorer
+          - text: Geospatial data processing and analytics 
+            url: /azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure   
   # Card
   - title: Reference
     linkLists:

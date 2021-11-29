@@ -1,5 +1,5 @@
 ---
-title: Query consistency - Azure Data Explorer | Microsoft Docs
+title: Query consistency - Azure Data Explorer
 description: This article describes Query consistency in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,22 +11,27 @@ ms.date: 01/20/2019
 ---
 # Query consistency
 
+## Consistency models
+
 Kusto supports two query consistency models: **strong** and **weak**.
 
-Strongly-consistent queries (default) have a "read-my-changes"
-guarantee. A client that sends a control command and receives a positive
-acknowledgement that the command has completed successfully will be guaranteed
-that any query immediately following will observe the results of the command.
+*Strongly consistent queries* (default) have a "read-my-changes" guarantee. 
+If you send a control command and receive acknowledgment that the command has completed successfully, then you'll be guaranteed any query immediately following will observe the results of the command.
 
-Weakly-consistent queries (must be explicitly enabled by the client)
-do not make the guarantee. Clients making queries might observe some latency
-(usually 1-2 minutes) between changes and queries reflecting
-those changes.
+*Weakly consistent queries* don't have that guarantee. Clients making queries might observe some latency
+(usually 1-2 minutes) between changes and queries reflecting those changes. To change the latency, and control other parameters of the query weak consistency service, see [query weak consistency policy](../management/query-weak-consistency-policy.md).
+* The advantage of running queries with weak consistency is that it reduces the load on the cluster node that handles database changes.
+* Weakly consistent queries execute on a cluster node that is other than the one managing the database. This can be any "random" node in the cluster (the default), or affinitized according to either the query text ("query-affinitized weakly consistent queries"), or the database-in-scope of the query ("database-affinitized weakly consistent queries").
+  * The advantage of using affinity by query text is when also using the [query results cache](../query/query-results-cache.md).
+  * The advantage of using affinity by context database name is to not overload tail nodes with having to frequently load large database metadata.
+ 
+In general, we recommend that you first try the strongly consistent model. Switch to using weakly consistent queries only if necessary.
 
-The advantage of weakly consistent queries is that it reduces the load on the cluster node that handles database changes. In general, it is recommended that customers first try the strongly consistent model and switch to using
-weak consistency if absolutely required.
+## Control query consistency
 
-Switching to weakly consistent queries is done by setting the `queryconsistency`
-property when making a [REST API call](../api/rest/request.md). Users of the
-Kusto .NET client can also set it in the [Kusto connection string](../api/connection-strings/kusto.md)
-or as a flag in the [client request properties](../api/netfx/request-properties.md).
+* Switching to weakly consistent queries can be done per-query, by setting the `queryconsistency` property when making a [REST API call](../api/rest/request.md).
+  * Users of the .NET client can also set it in the [Kusto connection string](../api/connection-strings/kusto.md), or as a flag in the [client request properties](../api/netfx/request-properties.md).
+  * Supported values for the client request property are: `strongconsistency`, `weakconsistency`, `affinitizedweakconsistency`, `databaseaffinitizedweakconsistency`.
+* Alternatively, query consistency can be controlled by setting a workload group's [Query consistency policy](../management/query-consistency-policy.md).
+  * Supported values for the policy setting are: `Strong`, `Weak`, `WeakAffinitizedByQuery`, `WeakAffinitizedByDatabase`.
+

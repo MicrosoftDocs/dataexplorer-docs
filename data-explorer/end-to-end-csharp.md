@@ -1,20 +1,19 @@
 ---
-title: 'End-to-end blob ingestion into Azure Data Explorer through C#'
-description: In this article, you learn how to ingest blobs into Azure Data Explorer with an end-to-end example that uses C#.
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+title: 'End-to-end blob ingestion into Azure Data Explorer using C#'
+description: In this article, you learn how to ingest blobs into Azure Data Explorer with an end-to-end example using C#.
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
-ms.date: 02/03/2020
+ms.topic: tutorial
+ms.date: 05/19/2020
 ---
 
-# End-to-end blob ingestion into Azure Data Explorer through C#
+# End-to-end blob ingestion into Azure Data Explorer using C\#
 
 > [!div class="op_single_selector"]
 > * [C#](end-to-end-csharp.md)
 > * [Python](end-to-end-python.md)
->
 
 Azure Data Explorer is a fast and scalable data exploration service for log and telemetry data. This article gives you an end-to-end example of how to ingest data from Azure Blob storage into Azure Data Explorer. 
 
@@ -22,7 +21,7 @@ You'll learn how to programmatically create a resource group, a storage account 
 
 ## Prerequisites
 
-If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 
 ## Install C# NuGet
 
@@ -148,14 +147,14 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
     kustoClient.ExecuteControlCommand(command);
 
-    command = CslCommandGenerator.GenerateTableCsvMappingCreateCommand(
+    command = CslCommandGenerator.GenerateTableMappingCreateCommand(
+        Data.Ingestion.IngestionMappingKind.Csv,
         kustoTableName,
         kustoColumnMappingName,
-        new[]
-        {
-            new CsvColumnMapping { ColumnName = "EventTime", CslDataType="dateTime", Ordinal = 0 },
-            new CsvColumnMapping { ColumnName = "EventId", CslDataType="int", Ordinal = 1 },
-            new CsvColumnMapping { ColumnName = "EventSummary", CslDataType="string", Ordinal = 2 },
+        new ColumnMapping[] {
+            new ColumnMapping() { ColumnName = "EventTime", ColumnType = "dateTime", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "0" } } },
+            new ColumnMapping() { ColumnName = "EventId", ColumnType = "int", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "1" } } },
+            new ColumnMapping() { ColumnName = "EventSummary", ColumnType = "string", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "2" } } },
         });
     kustoClient.ExecuteControlCommand(command);
 }

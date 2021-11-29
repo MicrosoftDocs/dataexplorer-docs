@@ -4,7 +4,7 @@ description: This article describes sort operator  in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -21,18 +21,18 @@ T | sort by strlen(country) asc, price desc
 
 `order`
 
-**Syntax**
+## Syntax
 
 *T* `| sort by` *expression* [`asc` | `desc`] [`nulls first` | `nulls last`] [`,` ...]
 
-**Arguments**
+## Arguments
 
 * *T*: The table input to sort.
 * *expression*: A scalar expression by which to sort. The type of the values must be numeric, date, time or string.
 * `asc` Sort by into ascending order, low to high. The default is `desc`, descending high to low.
 * `nulls first` (the default for `asc` order) will place the null values at the beginning and `nulls last` (the default for `desc` order) will place the null values at the end.
 
-**Example**
+## Example
 
 ```kusto
 Traces

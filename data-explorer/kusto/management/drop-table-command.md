@@ -1,5 +1,5 @@
 ---
-title: .drop table and .drop tables - Azure Data Explorer | Microsoft Docs
+title: .drop table and .drop tables - Azure Data Explorer
 description: This article describes .drop table and .drop tables in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -11,15 +11,12 @@ ms.date: 03/18/2020
 ---
 # .drop table and .drop tables
 
-Removes a table (or multiple tables) from the database.
+Removes a table or multiple tables from the database.
 
 Requires [table admin permission](../management/access-control/role-based-authorization.md).
 
 > [!NOTE]
-> The `.drop` `table` command only soft deletes the data (i.e. data cannot be queried,
-but is still recoverable from persistent storage). The underlying storage artifacts are hard-deleted
-according to the `recoverability` property in the [retention policy](../management/retentionpolicy.md)
-that was in effect at the time the data was ingested into the table.
+> The `.drop` `table` command only soft deletes the data. That is, data can't be queried, but is still recoverable from persistent storage. The underlying storage artifacts are hard-deleted according to the `recoverability` property in the [retention policy](../management/retentionpolicy.md) that was in effect at the time the data was ingested into the table.
 
 **Syntax**
 
@@ -39,7 +36,7 @@ that was in effect at the time the data was ingested into the table.
 
 **Returns**
 
-This command returns a list of the remaining tables in the database. 
+This command returns a list of the remaining tables in the database.
 
 | Output parameter | Type   | Description                             |
 |------------------|--------|-----------------------------------------|

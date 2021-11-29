@@ -4,7 +4,7 @@ description: This article describes activity_counts_metrics plugin in Azure Data
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,11 +17,11 @@ Calculates useful activity metrics for each time window compared/aggregated to *
 T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
 ```
 
-**Syntax**
+## Syntax
 
 *T* `| evaluate` `activity_counts_metrics(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Window* [`,` *Cohort*] [`,` *dim1*`,` *dim2*`,` ...] [`,` *Lookback*] `)`
 
-**Arguments**
+## Arguments
 
 * *T*: The input tabular expression.
 * *IdColumn*: The name of the column with ID values that represent user activity. 
@@ -31,15 +31,15 @@ T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), 
 * *Window*: Scalar with value of the analysis window period. Can be either a numeric/datetime/timestamp value, or a string that is one of `week`/`month`/`year`, in which case all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md) or [startofyear](startofyearfunction.md). 
 * *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the activity metrics calculation.
 
-**Returns**
+## Returns
 
 Returns a table that has: total count values, distinct count values, distinct count of new values, and aggregated distinct count for each time window.
 
 Output table schema is:
 
-|`TimelineColumn`|`dim1`|...|`dim_n`|`count`|`dcount`|`new_dcount`|`aggregated_dcount`
-|---|---|---|---|---|---|---|---|---|
-|type: as of *`TimelineColumn`*|..|..|..|long|long|long|long|long
+|`TimelineColumn`|`dim1`|...|`dim_n`|`count`|`dcount`|`new_dcount`|`aggregated_dcount`|
+|---|---|---|---|---|---|---|---|
+|type: as of *`TimelineColumn`*|..|..|..|long|long|long|long|
 
 
 * *`TimelineColumn`*: The time window start time.
@@ -48,13 +48,13 @@ Output table schema is:
 * *`new_dcount`*: The distinct ID values in the time window and *dim(s)* compared to all previous time windows. 
 * *`aggregated_dcount`*: The total aggregated distinct ID values of *dim(s)* from first-time window to current (inclusive).
 
-**Examples**
+## Examples
 
 ### Daily activity counts 
 
 The next query calculates daily activity counts for the provided input table
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let start=datetime(2017-08-01);
 let end=datetime(2017-08-04);

@@ -4,7 +4,7 @@ description: This article describes hash_many() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/06/2020
@@ -13,19 +13,19 @@ ms.date: 03/06/2020
 
 Returns a combined hash value of multiple values.
 
-**Syntax**
+## Syntax
 
 `hash_many(`*s1* `,` *s2* [`,` *s3* ...]`)`
 
-**Arguments**
+## Arguments
 
 * *s1*, *s2*, ..., *sN*: input values that will be hashed together.
 
-**Returns**
+## Returns
 
 The combined hash value of the given scalars.
 
-**Examples**
+## Examples
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

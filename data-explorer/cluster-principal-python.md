@@ -1,11 +1,11 @@
 ---
 title: 'Add cluster principals for Azure Data Explorer by using Python'
 description: In this article, you learn how to add cluster principals for Azure Data Explorer by using Python.
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ---
 
@@ -20,8 +20,8 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* [Create a cluster](create-cluster-database-python.md).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Install Python package
 
@@ -63,7 +63,7 @@ cluster_name = "mykustocluster"
 principal_assignment_name = "clusterPrincipalAssignment1"
 #User email, application ID, or security group name
 principal_id = "xxxxxxxx"
-#AllDatabasesAdmin or AllDatabasesViewer
+#AllDatabasesAdmin, AllDatabasesMonitor or AllDatabasesViewer
 role = "AllDatabasesAdmin"
 tenant_id_for_principal = tenantId
 #User, App, or Group
@@ -83,7 +83,7 @@ poller = kusto_management_client.cluster_principal_assignments.create_or_update(
 | cluster_name | *mykustocluster* | The name of your cluster.|
 | principal_assignment_name | *clusterPrincipalAssignment1* | The name of your cluster principal resource.|
 | principal_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The principal ID, which can be user email, application ID, or security group name.|
-| role | *AllDatabasesAdmin* | The role of your cluster principal, which can be 'AllDatabasesAdmin' or 'AllDatabasesViewer'.|
+| role | *AllDatabasesAdmin* | The role of your cluster principal, which can be 'AllDatabasesAdmin', 'AllDatabasesMonitor', or 'AllDatabasesViewer'.|
 | tenant_id_for_principal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The tenant ID of the principal.|
 | principal_type | *App* | The type of the principal, which can be 'User', 'App', or 'Group'|
 

@@ -4,10 +4,11 @@ description: This article describes union operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
+ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -19,7 +20,7 @@ Takes two or more tables and returns the rows of all of them.
 Table1 | union Table2, Table3
 ```
 
-**Syntax**
+## Syntax
 
 *T* `| union` [*UnionParameters*] [`kind=` `inner`|`outer`] [`withsource=`*ColumnName*] [`isfuzzy=` `true`|`false`] *Table* [`,` *Table*]...  
 
@@ -27,13 +28,13 @@ Alternative form with no piped input:
 
 `union` [*UnionParameters*] [`kind=` `inner`|`outer`] [`withsource=`*ColumnName*] [`isfuzzy=` `true`|`false`] *Table* [`,` *Table*]...  
 
-**Arguments**
+## Arguments
 
 ::: zone pivot="azuredataexplorer"
 
 * `Table`:
     *  The name of a table, such as `Events`; or
-    *  A query expression that must be enclosed with parenthesis, such as `(Events | where id==42)` or `(cluster("https://help.kusto.windows.net:443").database("Samples").table("*"))`; or
+    *  A query expression that must be enclosed with parenthesis, such as `(Events | where id==42)` or `(cluster("https://help.kusto.windows.net").database("Samples").table("*"))`; or
     *  A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin `E`.
 * `kind`: 
     * `inner` - The result has the subset of columns that are common to all of the input tables.
@@ -61,6 +62,10 @@ The default is `isfuzzy=` `false`.
     *  The name of a table, such as `Events`
     *  A query expression that must be enclosed with parenthesis, such as `(Events | where id==42)`
     *  A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin `E`.
+
+> [!NOTE]
+> Whenever the list of tables is known, refrain from using wildcards. Some workspaces contains very large number of tables that would lead to inefficient execution. Tables may also be added over time leading to unpredicted results.
+    
 * `kind`: 
     * `inner` - The result has the subset of columns that are common to all of the input tables.
     * `outer` - (default). The result has all the columns that occur in any of the inputs. Cells that weren't defined by an input row are set to `null`.
@@ -73,7 +78,7 @@ The default is `isfuzzy=false`.
 
 ::: zone-end
 
-**Returns**
+## Returns
 
 A table with as many rows as there are in all the input tables.
 
@@ -84,9 +89,10 @@ A table with as many rows as there are in all the input tables.
 1. `union` scope can include [let statements](./letstatement.md) if those are 
 attributed with [view keyword](./letstatement.md)
 2. `union` scope will not include [functions](../management/functions.md). To include a function in the union scope, define a [let statement](./letstatement.md) with [view keyword](./letstatement.md)
-3. If the `union` input is [tables](../management/tables.md) (as oppose to [tabular expressions](./tabularexpressionstatements.md)), and the `union` is followed by a [where operator](./whereoperator.md), for better performance, consider replacing both with [find](./findoperator.md). Note the different [output schema](./findoperator.md#output-schema) produced by the `find` operator. 
+3. If the `union` input is [tables](../management/tables.md) (as opposed to [tabular expressions](./tabularexpressionstatements.md)), and the `union` is followed by a [where operator](./whereoperator.md), for better performance, consider replacing both with [find](./findoperator.md). Note the different [output schema](./findoperator.md#output-schema) produced by the `find` operator. 
 4. `isfuzzy=true` only applies to the `union` sources resolution phase. Once the set of source tables is determined, possible additional query failures will not be suppressed.
 5. When using `outer union`, the result has all the columns that occur in any of the inputs, one column for each name and type occurrences. This means that if a column appears in multiple tables and has multiple types, it will have a corresponding column for each type in the `union`'s result. This column name will be suffixed with a '_' followed by the origin column [type](./scalar-data-types/index.md).
+6. There is no guarantee of the order in which the union legs will appear (but if each leg has an `order by` operator, then each leg will be sorted).
 
 ::: zone-end
 
@@ -104,7 +110,7 @@ with [view keyword](./letstatement.md)
 ::: zone-end
 
 
-**Example**
+## Example: Tables with string in name or column
 
 ```kusto
 union K* | where * has "Kusto"
@@ -112,7 +118,7 @@ union K* | where * has "Kusto"
 
 Rows from all tables in the database whose name starts with `K`, and in which any column includes the word `Kusto`.
 
-**Example**
+## Example: Distinct count
 
 ```kusto
 union withsource=SourceTable kind=outer Query, Command

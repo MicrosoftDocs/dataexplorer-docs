@@ -1,17 +1,30 @@
 ---
 title: search operator - Azure Data Explorer | Microsoft Docs
-description: This article describes search operator in Azure Data Explorer.
+description: This article describes search operators in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
 ---
 # search operator
 
-The search operator provides a multi-table/multi-column search experience.
+The `search` operator provides a multi-table/multi-column search experience.
+
+::: zone pivot="azuredataexplorer"
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+> [!NOTE]
+> `search` operator is substantially less efficient than table-specific and column-specific text filtering. Whenever the tables or columns are known, it is recommended to use the [union operator](unionoperator.md) and [where operator](whereoperator.md). Search will not function well when the workspace contains large number of tables and columns and the data volume that is being scanned is high and the time range of the query is high.
+
+::: zone-end
 
 ## Syntax
 
@@ -79,7 +92,7 @@ and views of the database in scope.
   | 5|`search "err*"`                        |`where * hasprefix "err"`              ||
   | 6|`search "*err"`                        |`where * hassuffix "err"`              ||
   | 7|`search "*err*"`                       |`where * contains "err"`               ||
-  | 8|`search "Lab*PC"`                      |`where * matches regex @"\bLab\w*PC\b"`||
+  | 8|`search "Lab*PC"`                      |`where * matches regex @"\bLab.*PC\b"`||
   | 9|`search *`                             |`where 0==0`                           ||
   |10|`search col matches regex "..."`       |`where col matches regex "..."`        ||
   |11|`search kind=case_sensitive`           |                                       |All string comparisons are case-sensitive|
@@ -127,5 +140,5 @@ union C*, TF | search "billg" or "davec" or "steveb"
 
   |# |Tip                                                                                  |Prefer                                        |Over                                                                    |
   |--|-------------------------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------|
-  | 1| Prefer to use a single `search` operator over several consecutive `search` operators|`search "billg" and ("steveb" or "satyan")`   |<code>search "billg" &#124; search "steveb" or "satyan"<code>           ||
-  | 2| Prefer to filter inside the `search` operator                                       |`search "billg" and "steveb"`                 |<code>search * &#124; where * has "billg" and * has "steveb"<code>      ||
+  | 1| Prefer to use a single `search` operator over several consecutive `search` operators|`search "billg" and ("steveb" or "satyan")`   |<code>search "billg" &#124; search "steveb" or "satyan"<code>           |
+  | 2| Prefer to filter inside the `search` operator                                       |`search "billg" and "steveb"`                 |<code>search * &#124; where * has "billg" and * has "steveb"<code>      |

@@ -1,11 +1,11 @@
 ---
 title: 'Add cluster principals for Azure Data Explorer by using an Azure Resource Manager template'
 description: In this article, you learn how to add cluster principals for Azure Data Explorer by using an Azure Resource Manager template.
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ---
 
@@ -20,8 +20,8 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* [Create a cluster](create-cluster-database-portal.md).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Azure Resource Manager template for adding a cluster principal
 
@@ -56,7 +56,7 @@ The following example shows an Azure Resource Manager template for adding a clus
             "type": "string",
 			"defaultValue": "AllDatabasesViewer",
             "metadata": {
-                "description": "Specifies the cluster principal role. It can be 'AllDatabasesAdmin', 'AllDatabasesViewer'"
+                "description": "Specifies the cluster principal role. It can be 'AllDatabasesAdmin', 'AllDatabasesMonitor' or 'AllDatabasesViewer'"
             }
         },
 		"tenantIdForClusterPrincipal": {

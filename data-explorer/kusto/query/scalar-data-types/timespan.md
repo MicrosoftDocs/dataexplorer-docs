@@ -18,7 +18,7 @@ The `timespan` (`time`) data type represents a  time interval.
 Literals of type `timespan` have the syntax `timespan(`*value*`)`, where a number of formats 
 are supported for *value*, as indicated by the following table:
 
-|||
+|Value|Length of time|
 ---|---
 `2d`|2 days
 `1.5h`|1.5 hour
@@ -49,4 +49,12 @@ print
     result1 = 1d / 1s,
     result2 = time(1d) / time(1s),
     result3 = 24 * 60 * time(00:01:00) / time(1s)
+```
+
+This example converts the number of seconds in a day (represented by an integer value) to a timespan unit:
+
+```kusto
+print 
+    seconds = 86400
+| extend t = seconds * 1s
 ```

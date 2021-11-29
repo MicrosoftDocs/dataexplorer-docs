@@ -1,17 +1,17 @@
 ---
-title: Azure Data Explorer REST API - Azure Data Explorer
-description: This article describes Azure Data Explorer REST API in Azure Data Explorer.
+title: RESTful web API overview - Azure Data Explorer
+description: This article describes how to use the RESTful web API for Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/29/2019
+ms.date: 07/04/2021
 ---
-# Azure Data Explorer REST API
+# Azure Data Explorer REST API overview
 
-This article describes how to interact with Kusto over HTTPS.
+This article describes how to interact with Azure Data Explorer over HTTPS.
 
 ## Supported actions
 
@@ -37,9 +37,12 @@ to interact with the service.
 ## Next steps
 
 For more information on the HTTP request and response of the query and management actions, see:
- * [Query management HTTP request](./request.md)
- * [Query management HTTP response](./response.md)
- * [Query v2 HTTP response](./response2.md)
+
+* [Azure Data Explorer REST API reference](/rest/api/azurerekusto/)
+* [Query management HTTP request](request.md)
+* [Query management HTTP response](response.md)
+* [Query v2 HTTP response](response2.md)
 
 For more information on the UI action, see:
- * [UI deep link](./deeplink.md)
+
+* [UI deep link](deeplink.md)

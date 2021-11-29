@@ -4,7 +4,7 @@ description: This article describes Set statement in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -27,11 +27,11 @@ statements that trail them in the program order.
 * Query options are not formally a part of the Kusto language, and may be
   modified without being considered as a breaking language change.
 
-**Syntax**
+## Syntax
 
 `set` *OptionName* [`=` *OptionValue*]
 
-**Example**
+## Example
 
 ```kusto
 set querytrace;

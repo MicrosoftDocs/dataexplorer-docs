@@ -7,6 +7,8 @@ ms.reviewer:
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/19/2020
+ms.localizationpriority: high
+adobe-target: true
 ---
 
 # KQL quick reference
@@ -30,6 +32,9 @@ This article shows you a list of functions and their descriptions to help get yo
 | [print](kusto/query/printoperator.md)                      | Outputs a single row with one or more scalar expressions | `print [ColumnName =] ScalarExpression [',' ...]` |
 | [project](kusto/query/projectoperator.md)                  | Selects the columns to include in the order specified | `T | project ColumnName [= Expression] [, ...]` <br> Or <br> `T | project [ColumnName | (ColumnName[,]) =] Expression [, ...]` |
 | [project-away](kusto/query/projectawayoperator.md)         | Selects the columns to exclude from the output | `T | project-away ColumnNameOrPattern [, ...]` |
+| [project-keep](kusto/query/project-keep-operator.md)         | Selects the columns to keep in the output | `T | project-keep ColumnNameOrPattern [, ...]` |
+| [project-rename](kusto/query/projectrenameoperator.md)     | Renames columns in the result output | `T | project-rename new_column_name = column_name` |
+| [project-reorder](kusto/query/projectreorderoperator.md)   | Reorders columns in the result output | `T | project-reorder Col2, Col1, Col* asc` |
 | [extend](kusto/query/extendoperator.md)                    | Creates a calculated column and adds it to the result set | `T | extend [ColumnName | (ColumnName[, ...]) =] Expression [, ...]` |
 | **Sort and Aggregate Dataset**                 |**_Restructure the data by sorting or grouping them in meaningful ways_**|                  |
 | [sort](kusto/query/sortoperator.md)                        | Sorts the rows of the input table by one or more columns in ascending or descending order | `T | sort by expression1 [asc|desc], expression2 [asc|desc], …` |

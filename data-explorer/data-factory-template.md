@@ -6,7 +6,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/08/2019
 
 #Customer intent: I want to use Azure Data Factory template to copy large amounts of data from a database to Azure Data Explorer.
@@ -29,10 +29,10 @@ You create the *Bulk Copy from Database to Azure Data Explorer* template by usin
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* [An Azure Data Explorer cluster and database](create-cluster-database-portal.md).
-* [Create a data factory](data-factory-load-data.md#create-a-data-factory).
-* A source of data in a database.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
+* Create [a data factory](data-factory-load-data.md#create-a-data-factory).
+* A source of data.
 
 ## Create ControlTableDataset
 
@@ -82,7 +82,7 @@ If your ControlTableDataset is in a different format, create a comparable Contro
 
 1. Select an area in the canvas, outside the activities, to access the template pipeline. Select the **Parameters** tab to enter the parameters for the table, including **Name** (control table name) and **Default value** (column names).
 
-    ![Pipeline parameters](media/data-factory-template/pipeline-parameters.png)
+    ![Pipeline parameters.](media/data-factory-template/pipeline-parameters.png)
 
 1.	Under **Lookup**, select **GetPartitionList** to view the default settings. The query is automatically created.
 1.	Select the Command activity, **ForEachPartition**, select the **Settings** tab, and then do the following:
@@ -91,14 +91,14 @@ If your ControlTableDataset is in a different format, create a comparable Contro
 
     b. To ensure that the pipeline batches run in parallel, *do not* select the **Sequential** check box.
 
-    ![ForEachPartition settings](media/data-factory-template/foreach-partition-settings.png)
+    ![ForEachPartition settings.](media/data-factory-template/foreach-partition-settings.png)
 
     > [!TIP]
     > The best practice is to run many pipelines in parallel so that your data can be copied more quickly. To increase efficiency, partition the data in the source table and allocate one partition per pipeline, according to date and table.
 
 1. Select **Validate All** to validate the Azure Data Factory pipeline, and then view the result in the **Pipeline Validation Output** pane.
 
-    ![Validate template pipelines](media/data-factory-template/validate-template-pipelines.png)
+    ![Validate template pipelines.](media/data-factory-template/validate-template-pipelines.png)
 
 1. If necessary, select **Debug**, and then select **Add trigger** to run the pipeline.
 

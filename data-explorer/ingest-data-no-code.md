@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 01/29/2020
+ms.date: 09/19/2021
 
 # Customer intent: I want to ingest monitoring data to Azure Data Explorer without one line of code, so that I can explore and analyze my data by using queries.
 ---
@@ -29,8 +29,8 @@ In this tutorial, you'll learn how to:
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* [An Azure Data Explorer cluster and database](create-cluster-database-portal.md). In this tutorial, the database name is *TestDatabase*.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md). In this tutorial, the database name is *TestDatabase*.
 
 ## Azure Monitor data provider: diagnostic metrics and logs and activity logs
 
@@ -199,7 +199,7 @@ Setting up an Azure Data Explorer pipeline involves several steps, such as [tabl
 
 In your Azure Data Explorer *TestDatabase* database, select **Query** to open the Azure Data Explorer Web UI.
 
-![Query page](media/ingest-data-no-code/query-database.png)
+![Query page.](media/ingest-data-no-code/query-database.png)
 
 ### Create the target tables
 
@@ -218,7 +218,7 @@ Use the Azure Data Explorer Web UI to create the target tables in the Azure Data
 
 1. Select **Run** to create the table.
 
-    ![Run query](media/ingest-data-no-code/run-query.png)
+    ![Run query.](media/ingest-data-no-code/run-query.png)
 
 1. Create the intermediate data table named *DiagnosticRawRecords* in the *TestDatabase* database for data manipulation using the following query. Select **Run** to create the table.
 
@@ -226,7 +226,7 @@ Use the Azure Data Explorer Web UI to create the target tables in the Azure Data
     .create table DiagnosticRawRecords (Records:dynamic)
     ```
 
-1. Set zero [retention policy](kusto/management/retention-policy.md) for the intermediate table:
+1. Set zero [retention policy](./kusto/management/show-table-retention-policy-command.md) for the intermediate table:
 
     ```kusto
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
@@ -249,7 +249,7 @@ Use the Azure Data Explorer Web UI to create the target tables in the Azure Data
     .create table DiagnosticRawRecords (Records:dynamic)
     ```
 
-1. Set zero [retention policy](kusto/management/retention-policy.md) for the intermediate table:
+1. Set zero [retention policy](./kusto/management/show-table-retention-policy-command.md) for the intermediate table:
 
     ```kusto
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
@@ -270,7 +270,7 @@ Use the Azure Data Explorer Web UI to create the target tables in the Azure Data
     .create table ActivityLogsRawRecords (Records:dynamic)
     ```
 
-1. Set zero [retention policy](kusto/management/retention-policy.md) for the intermediate table:
+1. Set zero [retention policy](./kusto/management/show-table-retention-policy-command.md) for the intermediate table:
 
     ```kusto
     .alter-merge table ActivityLogsRawRecords policy retention softdelete = 0d
@@ -279,7 +279,7 @@ Use the Azure Data Explorer Web UI to create the target tables in the Azure Data
 
 ### Create table mappings
 
- Because the data format is `json`, data mapping is required. The `json` mapping maps each json path to a table column name.
+ Because the data format is `json`, data mapping is required. The `json` mapping maps each json path to a table column name. JSON paths that include special characters should be escaped as [\'Property Name\'].
 
 # [Diagnostic metrics / Diagnostic logs](#tab/diagnostic-metrics+diagnostic-logs) 
 #### Map diagnostic metrics and logs to the table
@@ -287,7 +287,7 @@ Use the Azure Data Explorer Web UI to create the target tables in the Azure Data
 To map the diagnostic metric and log data to the table, use the following query:
 
 ```kusto
-.create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
+.create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","Properties":{"path":"$.records"}}]'
 ```
 
 # [Activity logs](#tab/activity-logs)
@@ -296,7 +296,7 @@ To map the diagnostic metric and log data to the table, use the following query:
 To map the activity log data to the table, use the following query:
 
 ```kusto
-.create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
+.create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","Properties":{"path":"$.records"}}]'
 ```
 ---
 
@@ -400,11 +400,9 @@ Azure diagnostic settings enable exporting metrics and logs to a storage account
 
 1. Create an event hub by using an Azure Resource Manager template in the Azure portal. To follow the rest of the steps in this article, right-click the **Deploy to Azure** button, and then select **Open in new window**. The **Deploy to Azure** button takes you to the Azure portal.
 
-    [![Deploy to Azure button](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Deploy to Azure button.](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.eventhub%2Feventhubs-create-namespace-and-eventhub%2Fazuredeploy.json)
 
-1. Create an Event Hubs namespace and an event hub for the diagnostic logs.
-
-    ![Event hub creation](media/ingest-data-no-code/event-hub.png)
+1. Create an Event Hubs namespace and an event hub for the diagnostic logs. Learn how to [create an Event Hubs namespace](/azure/event-hubs/event-hubs-create).
 
 1. Fill out the form with the following information. For any settings not listed in the following table, use the default values.
 
@@ -430,7 +428,7 @@ Select a resource from which to export metrics. Several resource types support e
 1. Select your Kusto cluster in the Azure portal.
 1. Select **Diagnostic settings**, and then select the **Turn on diagnostics** link. 
 
-    ![Diagnostic settings](media/ingest-data-no-code/diagnostic-settings.png)
+    ![Diagnostic settings.](media/ingest-data-no-code/diagnostic-settings.png)
 
 1. The **Diagnostics settings** pane opens. Take the following steps:
    1. Give your diagnostics log data the name *ADXExportedData*.
@@ -439,7 +437,7 @@ Select a resource from which to export metrics. Several resource types support e
    1. Select the **Stream to an event hub** check box.
    1. Select **Configure**.
 
-      ![Diagnostics settings pane](media/ingest-data-no-code/diagnostic-settings-window.png)
+      ![Diagnostics settings pane.](media/ingest-data-no-code/diagnostic-settings-window.png)
 
 1. In the **Select event hub** pane, configure how to export data from diagnostic logs to the event hub you created:
     1. In the **Select event hub namespace** list, select *AzureMonitoringData*.
@@ -453,36 +451,41 @@ Select a resource from which to export metrics. Several resource types support e
 ### Connect activity logs to your event hub
 
 1. In the left menu of the Azure portal, select **Activity log**.
-1. The **Activity log** window opens. Select **Export to Event Hub**.
+1. The **Activity log** window opens. Select **Diagnostics settings**.
 
-    ![Activity log window](media/ingest-data-no-code/activity-log.png)
+    ![Activity log window.](media/ingest-data-no-code/activity-log.png)
 
-1. The **Export activity log** window opens:
- 
-    ![Export activity log window](media/ingest-data-no-code/export-activity-log.png)
+1. The **Diagnostics settings** window opens. Select **+ Add diagnostic setting**.
 
-1. In the **Export activity log** window, take the following steps:
-      1. Select your subscription.
-      1. In the **Regions** list, choose **Select all**.
-      1. Select the **Export to an event hub** check box.
-      1. Choose **Select a service bus namespace** to open the **Select event hub** pane.
-      1. In the **Select event hub** pane, select your subscription.
-      1. In the **Select event hub namespace** list, select *AzureMonitoringData*.
-      1. In the **Select event hub policy name** list, select the default event hub policy name.
-      1. Select **OK**.
-      1. In the upper-left corner of the window, select **Save**.
-   An event hub with the name *insights-operational-logs* will be created.
+    :::image type="content" source="media/ingest-data-no-code/add-diagnosting-setting.png" alt-text="Add diagnostic setting in Diagnostic settings window, Azure Data Explorer portal":::
+
+1. A new **Diagnostic setting** window opens. 
+
+    :::image type="content" source="media/ingest-data-no-code/export-activity-log.PNG" alt-text="Diagnostic settings window with fields to fill out - Azure Data Explorer portal.":::
+
+    Do the following steps:
+    1. Enter a name in the **Diagnostic setting name** field.  
+    1. On the left-hand side of check boxes, select the platform log(s) you wish to collect from a subscription.
+    1. Select the **Stream to an event hub** check box.
+    1. Select your subscription.
+    1. In the **Event hub namespace** list, select *AzureMonitoringData*.
+    1. Optionally, select your **Event hub name**.
+    1. In the **Event hub policy name** list, select the default event hub policy name.
+    1. In the upper-left corner of the window, select **Save**. An event hub with the name *insights-operational-logs* will be created (unless you have selected an Event hub name above).
+      
+    
+
 ---
 
 ### See data flowing to your event hubs
 
 1. Wait a few minutes until the connection is defined, and the activity-log export to the event hub is finished. Go to your Event Hubs namespace to see the event hubs you created.
 
-    ![Event hubs created](media/ingest-data-no-code/event-hubs-created.png)
+    ![Event hubs created.](media/ingest-data-no-code/event-hubs-created.png)
 
 1. See data flowing to your event hub:
 
-    ![Event hub's data](media/ingest-data-no-code/event-hubs-data.png)
+    ![Event hub's data.](media/ingest-data-no-code/event-hubs-data.png)
 
 ## Connect an event hub to Azure Data Explorer
 
@@ -496,7 +499,7 @@ Now you need to create the data connections for your diagnostic metrics and logs
 1. In the **Data ingestion** window, click **+ Add Data Connection**.
 1. In the **Data connection** window, enter the following information:
 
-    ![Event hub data connection](media/ingest-data-no-code/event-hub-data-connection.png)
+    ![Event hub data connection.](media/ingest-data-no-code/event-hub-data-connection.png)
 
 # [Diagnostic metrics / Diagnostic logs](#tab/diagnostic-metrics+diagnostic-logs) 
 
@@ -570,11 +573,9 @@ DiagnosticMetrics
 
 Query results:
 
-|   |   |
-| --- | --- |
-|   |  avg_Average |
-|   | 00:06.156 |
-| | |
+| avg_Average |
+| --- |
+| 00:06.156 |
 
 # [Diagnostic logs](#tab/diagnostic-logs)
 ### Query the diagnostic logs table
@@ -590,11 +591,9 @@ DiagnosticLogs
 
 Query results:
 
-|   |   |
-| --- | --- |
-|   |  count_ | any_Database | any_Table | any_IngestionSourcePath
-|   | 00:06.156 | TestDatabase | DiagnosticRawRecords | `https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip`
-| | |
+| count_ | any_Database | any_Table | any_IngestionSourcePath |
+| --- | --- | --- | --- |
+| 00:06.156 | TestDatabase | DiagnosticRawRecords | `https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip` |
 
 # [Activity logs](#tab/activity-logs)
 ### Query the activity logs table
@@ -610,11 +609,9 @@ ActivityLogs
 
 Query results:
 
-|   |   |
-| --- | --- |
-|   |  avg(DurationMs) |
-|   | 768.333 |
-| | |
+| avg(DurationMs) |
+| --- |
+| 768.333 |
 
 ---
 

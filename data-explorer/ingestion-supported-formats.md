@@ -6,22 +6,30 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 08/29/2021
 ---
 
 # Data formats supported by Azure Data Explorer for ingestion
 
 Data ingestion is the process by which data is added to a table and is made available for query in Azure Data Explorer. For all ingestion methods, other than ingest-from-query, the data must be in one of the supported formats. The following table lists and describes the formats that Azure Data Explorer supports for data ingestion.
 
+> [!NOTE]
+> Before you ingest data, make sure that your data is properly formatted and defines the expected fields. We recommend using your preferred validator to confirm the format is valid. For example, you may find the following validators useful to check CSV or JSON files:
+>
+> * CSV: http://csvlint.io/
+> * JSON: https://jsonlint.com/
+>
+> For more information about why ingestion might fail, see [Ingestion failures](kusto/management/ingestionfailures.md) and  [Ingestion error codes in Azure Data Explorer](error-codes.md).
+
 |Format   |Extension   |Description|
 |---------|------------|-----------|
-|Avro     |`.avro`     |An [Avro container file](https://avro.apache.org/docs/current/). The following codes are supported: `null`, `deflate` (`snappy` is currently not supported).|
-|ApacheAvro|`.avro`    |Experimental native implementation for [Avro](https://avro.apache.org/docs/current/) format with support for [logical types](https://avro.apache.org/docs/current/spec.html#Logical+Types) and for `snappy` compression codec.|
+|ApacheAvro|`.avro`    |An [AVRO](https://avro.apache.org/docs/current/) format with support for [logical types](https://avro.apache.org/docs/current/spec.html#Logical+Types). The following compression codecs are supported: `null`, `deflate`, and `snappy`. Reader implementation of the `apacheavro` format is based on the official [Apache Avro library](https://github.com/apache/avro).|
+|Avro     |`.avro`     |A legacy implementation for [AVRO](https://avro.apache.org/docs/current/) format based on [.NET library](https://www.nuget.org/packages/Microsoft.Hadoop.Avro). The following compression codecs are supported: `null`, `deflate` (for `snappy` - use `ApacheAvro` data format).|
 |CSV      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
 |JSON     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
 |MultiJSON|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace, `\n` or `\r\n`. Each property bag can be spread on multiple lines. This format is preferred over `JSON`, unless the data is non-property bags.|
-|ORC      |`.orc`      |An [Orc file](https://en.wikipedia.org/wiki/Apache_ORC).|
-|Parquet  |`.parquet`  |A [Parquet file](https://en.wikipedia.org/wiki/Apache_Parquet).|
+|ORC      |`.orc`      |An [ORC file](https://en.wikipedia.org/wiki/Apache_ORC).|
+|Parquet  |`.parquet`  |A [Parquet file](https://en.wikipedia.org/wiki/Apache_Parquet). |
 |PSV      |`.psv`      |A text file with pipe-separated values (<code>&#124;</code>).|
 |RAW      |`.raw`      |A text file whose entire contents is a single string value.|
 |SCsv     |`.scsv`     |A text file with semicolon-separated values (`;`).|
@@ -29,7 +37,8 @@ Data ingestion is the process by which data is added to a table and is made avai
 |TSV      |`.tsv`      |A text file with tab-separated values (`\t`).|
 |TSVE     |`.tsv`      |A text file with tab-separated values (`\t`). A backslash character (`\`) is used for escaping.|
 |TXT      |`.txt`      |A text file with lines delimited by `\n`. Empty lines are skipped.|
-|W3CLOGFILE |`.log`    |[Web log file](https://www.w3.org/TR/WD-logfile.html) format standardised by the W3C.|
+|W3CLOGFILE |`.log`    |[Web log file](https://www.w3.org/TR/WD-logfile.html) format standardized by the W3C. |
+
 
 ## Supported data compression formats
 
@@ -44,16 +53,14 @@ Indicate compression by appending the extension to the name of the blob or file.
 
 For example:
 * `MyData.csv.zip` indicates a blob or a file formatted as CSV, compressed with ZIP (archive or a single file)
-* `MyData.csv.gz` indicates a blob or a file formatted as CSV, compressed with GZip
+* `MyData.json.gz` indicates a blob or a file formatted as JSON, compressed with GZip.
 
 Blob or file names that don't include the format extensions but just compression (for example, `MyData.zip`) is also supported. In this case, the file format
 must be specified as an ingestion property because it cannot be inferred.
 
 > [!NOTE]
-> Some compression formats keep track of the original file extension as part
-> of the compressed stream. This extension is generally ignored for
-> determining the file format. If the file format can't be determined from the (compressed)
-> blob or file name, it must be specified through the `format` ingestion property.
+> * Some compression formats keep track of the original file extension as part of the compressed stream. This extension is generally ignored for determining the file format. If the file format can't be determined from the (compressed) blob or file name, it must be specified through the `format` ingestion property.
+> * Not to be confused with internal (chunk level) compression codec used by `Parquet`, `AVRO` and `ORC` formats. Internal compression name is usually added to a file name before file format extension, for example: `file1.gz.parquet`, `file1.snappy.avro`, etc.
 
 ## Next steps
 

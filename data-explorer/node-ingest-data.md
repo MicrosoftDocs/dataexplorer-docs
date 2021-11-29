@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2019
 
 # Customer intent: As a Node.js developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
@@ -13,16 +13,21 @@ ms.date: 06/03/2019
 
 # Ingest data using the Azure Data Explorer Node library
 
+> [!div class="op_single_selector"]
+> * [.NET](net-sdk-ingest-data.md)
+> * [Python](python-ingest-data.md)
+> * [Node](node-ingest-data.md)
+> * [Go](go-ingest-data.md)
+> * [Java](java-ingest-data.md)
+
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides two client libraries for Node: an [ingest library](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) and [a data library](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). These libraries enable you to ingest (load) data into a cluster and query data from your code. In this article, you first create a table and data mapping in a test cluster. You then queue ingestion to the cluster and validate the results.
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 
 ## Prerequisites
 
-In addition to an Azure subscription, you need the following to complete this article:
-
-* [A test cluster and database](create-cluster-database-portal.md)
-
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 * [Node.js](https://nodejs.org/en/download/) installed on your development computer
 
 ## Install the data and ingest libraries
@@ -39,15 +44,19 @@ Import classes from the libraries
 
 ```javascript
 
-const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
-const KustoClient = require("azure-kusto-data").Client;
-const KustoIngestClient = require("azure-kusto-ingest").IngestClient;
-const IngestionProperties = require("azure-kusto-ingest").IngestionProperties;
-const { DataFormat } = require("azure-kusto-ingest").IngestionPropertiesEnums;
-const { BlobDescriptor } = require("azure-kusto-ingest").IngestionDescriptors;
+import { Client as KustoClient, KustoConnectionStringBuilder } from 'azure-kusto-data';
+import {
+    IngestClient as KustoIngestClient,
+    IngestionProperties,
+    IngestionDescriptors,
+    IngestionPropertiesEnums
+} from "azure-kusto-ingest";
+
+const { BlobDescriptor } = IngestionDescriptors;
+const { DataFormat } = IngestionPropertiesEnums;
 
 ```
-To authenticate an application, Azure Data Explorer uses your Azure Active Directory tenant ID. To find your tenant ID, follow [Find your Office 365 tenant ID](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id).
+To authenticate an application, Azure Data Explorer uses your Azure Active Directory tenant ID. To find your tenant ID, follow [Find your Microsoft 365 tenant ID](/onedrive/find-your-office-365-tenant-id).
 
 Set the values for `authorityId`, `kustoUri`, `kustoIngestUri` and `kustoDatabase` before running this code.
 
@@ -55,8 +64,8 @@ Set the values for `authorityId`, `kustoUri`, `kustoIngestUri` and `kustoDatabas
 const cluster = "MyCluster";
 const region = "westus";
 const authorityId = "microsoft.com";
-const kustoUri = `https://${cluster}.${region}.kusto.windows.net:443`;
-const kustoIngestUri = `https://ingest-${cluster}.${region}.kusto.windows.net:443`;
+const kustoUri = `https://${cluster}.${region}.kusto.windows.net`;
+const kustoIngestUri = `https://ingest-${cluster}.${region}.kusto.windows.net`;
 const kustoDatabase  = "Weather";
 ```
 
@@ -91,9 +100,8 @@ Create a table that matches the schema of the data in the `StormEvents.csv` file
 const kustoClient = new KustoClient(kcsbData);
 const createTableCommand = `.create table ${destTable} (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)`;
 
-kustoClient.executeMgmt(kustoDatabase, createTableCommand, (err, results) => {
-	console.log(results.primaryResults[0][0].toString());
-});
+const createTableResults = await kustoClient.executeMgmt(kustoDatabase, createTableCommand);
+console.log(createTableResults.primaryResults[0][0].toString());
 ```
 
 ## Define ingestion mapping
@@ -103,9 +111,8 @@ Map incoming CSV data to the column names and data types used when creating the 
 ```javascript
 const createMappingCommand = `.create table ${destTable} ingestion csv mapping '${destTableMapping}' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EpisodeId","datatype":"int","Ordinal":2},{"Name":"EventId","datatype":"int","Ordinal":3},{"Name":"State","datatype":"string","Ordinal":4},{"Name":"EventType","datatype":"string","Ordinal":5},{"Name":"InjuriesDirect","datatype":"int","Ordinal":6},{"Name":"InjuriesIndirect","datatype":"int","Ordinal":7},{"Name":"DeathsDirect","datatype":"int","Ordinal":8},{"Name":"DeathsIndirect","datatype":"int","Ordinal":9},{"Name":"DamageProperty","datatype":"int","Ordinal":10},{"Name":"DamageCrops","datatype":"int","Ordinal":11},{"Name":"Source","datatype":"string","Ordinal":12},{"Name":"BeginLocation","datatype":"string","Ordinal":13},{"Name":"EndLocation","datatype":"string","Ordinal":14},{"Name":"BeginLat","datatype":"real","Ordinal":16},{"Name":"BeginLon","datatype":"real","Ordinal":17},{"Name":"EndLat","datatype":"real","Ordinal":18},{"Name":"EndLon","datatype":"real","Ordinal":19},{"Name":"EpisodeNarrative","datatype":"string","Ordinal":20},{"Name":"EventNarrative","datatype":"string","Ordinal":21},{"Name":"StormSummary","datatype":"dynamic","Ordinal":22}]'`;
 
-kustoClient.executeMgmt(kustoDatabase, createMappingCommand, (err, results) => {
-	console.log(results.primaryResults[0][0].toString());
-});
+const mappingCommandResults = await kustoClient.executeMgmt(kustoDatabase, createMappingCommand);
+console.log(mappingCommandResults.primaryResults[0][0].toString());
 ```
 
 ## Queue a message for ingestion
@@ -118,9 +125,11 @@ const ingestClient = new KustoIngestClient(kcsbIngest, defaultProps);
 // All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
 
 const blobDesc = new BlobDescriptor(blobPath, 10);
-ingestClient.ingestFromBlob(blobDesc,null, (err) => {
-	if (err) throw new Error(err);
-});
+try {
+	const ingestionResult = await ingestClient.ingestFromBlob(blobDesc, null);
+} catch (err) {
+	// Handle errors
+}
 ```
 
 ## Validate that table contains data
@@ -130,10 +139,9 @@ Validate that the data was ingested into the table. Wait for five to ten minutes
 ```javascript
 const query = `${destTable} | count`;
 
-kustoClient.execute(kustoDatabase, query, (err, results) => {
-	if (err) throw new Error(err);	
-	console.log(results.primaryResults[0][0].toString());
-});
+var tableResults = await kustoClient.execute(kustoDatabase, query);
+console.log(tableResults.primaryResults[0][0].toString());
+
 ```
 
 ## Run troubleshooting queries

@@ -4,41 +4,65 @@ description: This article describes top-hitters operator in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
 # top-hitters operator
 
-Returns an approximation of the first *N* results (assuming skewed distribution of the input).
+Returns an approximation for the most popular distinct values, or the values
+with the largest sum, in the input.
 
 ```kusto
-T | top-hitters 25 of Page by Views 
+Events | top-hitters 5 of EventId
+
+PageViews | top-hitters 25 of Page by NumViews
 ```
 
-**Syntax**
+> [!NOTE]
+> `top-hitters` uses an approximation algorithm optimized for performance
+> when the input data is large.
+> The approximation is based on the [Count-Min-Sketch](https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch) algorithm.  
 
-*T* `| top-hitters` *NumberOfRows* `of` *sort_key* `[` `by` *expression* `]`
+## Syntax
 
-**Arguments**
+*T* `|` `top-hitters` *NumberOfValues* `of` *ValueExpression*
 
-* *NumberOfRows*: The number of rows of *T* to return. You can specify any numeric expression.
-* *sort_key*: The name of the column by which to sort the rows.
-* *expression*: (optional) An expression which will be used for the top-hitters estimation. 
-    * *expression*: top-hitters will return *NumberOfRows* rows which have an approximated maximum of sum(*expression*). Expression can be a column, or any other expression that evaluates to a number. 
-    *  If *expression* is not mentioned, top-hitters algorithm will count the occurrences of the *sort-key*.  
+*T* `|` `top-hitters` *NumberOfValues* `of` *ValueExpression* `by` *SummingExpression*
 
-**Notes**
+## Arguments
 
-`top-hitters` is an approximation algorithm and should be used when running with large data. 
-The approximation of the the top-hitters is based on the [Count-Min-Sketch](https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch) algorithm.  
+* *NumberOfValues*: The number of distinct values of *ValueExpression*.
+  Expressions of type `int`, `long`, and `real` are valid (rounded down).
 
-**Example**
+* *ValueExpression*: An expression over the input table *T* whose distinct
+  values are returned.
 
-## Getting top hitters (most frequent items) 
+* *SummingExpression*: If specified, a numeric expression over the input table *T*
+  whose sum per distinct value of *ValueExpression* establishes which values
+  to emit. If not specified, the count of each distinct value of *ValueExpression*
+  will be used instead.
 
-The next example shows how to find top-5  languages with most pages in Wikipedia (accessed after during April 2016). 
+## Remarks
+
+The first syntax (no *SummingExpression*) is conceptually equivalent to:
+
+*T*
+`|` `summarize` `C``=``count()` `by` *ValueExpression*
+`|` `top` *NumberOfValues* by `C` `desc`
+
+The second syntax (with *SummingExpression*) is conceptually equivalent to:
+
+*T*
+`|` `summarize` `S``=``sum(*SummingExpression*)` `by` *ValueExpression*
+`|` `top` *NumberOfValues* by `S` `desc`
+
+## Examples
+
+### Get most frequent items
+
+The next example shows how to find top-5 languages with most pages in Wikipedia (accessed after during April 2016).
 
 ```kusto
 PageViews
@@ -54,10 +78,10 @@ PageViews
 |ru|227003107|
 |fr|207943448|
 
-## Getting top hitters (based on column value) ***
+### Get top hitters based on column value
 
-The next example shows how to find most viewed English pages of Wikipedia of the year 2016. 
-The query uses 'Views' (integer number) to calculate page popularity (number of views). 
+The next example shows how to find most viewed English pages of Wikipedia of the year 2016.
+The query uses 'Views' (integer number) to calculate page popularity (number of views).
 
 ```kusto
 PageViews

@@ -4,7 +4,7 @@ description: This article describes unixtime_microseconds_todatetime() in Azure 
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/27/2019
@@ -13,25 +13,25 @@ ms.date: 11/27/2019
 
 Converts unix-epoch microseconds to UTC datetime.
 
-**Syntax**
+## Syntax
 
 `unixtime_microseconds_todatetime(*microseconds*)`
 
-**Arguments**
+## Arguments
 
 * *microseconds*: A real number represents epoch timestamp in microseconds. `Datetime` that occurs before the epoch time (1970-01-01 00:00:00) has a negative timestamp value.
 
-**Returns**
+## Returns
 
 If the conversion is successful, the result will be a [datetime](./scalar-data-types/datetime.md) value. If conversion is not successful, result will be null.
 
-**See also**
+## See also
 
 * Convert unix-epoch seconds to UTC datetime using [unixtime_seconds_todatetime()](unixtime-seconds-todatetimefunction.md).
 * Convert unix-epoch milliseconds to UTC datetime using [unixtime_milliseconds_todatetime()](unixtime-milliseconds-todatetimefunction.md).
 * Convert unix-epoch nanoseconds to UTC datetime using [unixtime_nanoseconds_todatetime()](unixtime-nanoseconds-todatetimefunction.md).
 
-**Example**
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto

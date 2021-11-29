@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: kedamari
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
 ---
 
@@ -15,7 +15,7 @@ ms.date: 05/12/2020
 
 Azure Data Explorer supports the ability to delete individual records. Data deletion through the `.purge` command protects personal data and shouldn't be used in other scenarios. It isn't designed to support frequent delete requests, or deletion of massive quantities of data, and may have a significant performance impact on the service.
 
-Executing a `.purge` command triggers a process that can take a few days to complete. If the "density" of records on which the `predicate` is applied is large, the process will reingest all the data in the table. This process has a significant impact on performance and COGS. For more information, see [Data purge in Azure Data Explorer](kusto/concepts/data-purge.md).
+Executing a `.purge` command triggers a process that can take a few days to complete. If the "density" of records on which the `predicate` is applied is large, the process will reingest all the data in the table. This process has a significant impact on performance and COGS (cost of goods sold). For more information, see [Data purge in Azure Data Explorer](kusto/concepts/data-purge.md).
 
 ## Methods of invoking purge operations 
 
@@ -42,7 +42,7 @@ Azure Data Explorer (Kusto) supports both individual record deletion and purging
 1. In the **Configurations** pane, select **On** to enable **Enable Purge**.
 1. Select **Save**.
  
-    ![Enable purge on](media/data-purge-portal/enable-purge-on.png)
+    ![Enable purge on.](media/data-purge-portal/enable-purge-on.png)
 
 ## Disable data purge on your cluster
 
@@ -51,7 +51,7 @@ Azure Data Explorer (Kusto) supports both individual record deletion and purging
 1. In the **Configurations** pane, select **Off** to disable **Enable purge**.
 1. Select **Save**.
 
-    ![Enable purge off](media/data-purge-portal/enable-purge-off.png)
+    ![Enable purge off.](media/data-purge-portal/enable-purge-off.png)
 
 ## Limitations
 

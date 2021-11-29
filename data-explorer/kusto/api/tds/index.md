@@ -1,6 +1,6 @@
 ---
-title: MS-TDS (T-SQL support) - Azure Data Explorer | Microsoft Docs
-description: This article describes MS-TDS (T-SQL support) in Azure Data Explorer.
+title: MS-TDS T-SQL support - Azure Data Explorer
+description: This article introduces MS-TDS T-SQL support in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,28 +9,24 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/06/2019
 ---
-# MS-TDS (T-SQL support)
+# MS-TDS T-SQL support
 
-Kusto supports a subset of the Microsoft SQL Server communication protocol (MS-TDS),
-with a subset of the T-SQL query language, so that existing tools that know how
-to query SQL Server can work with Kusto. Among supported clients are Microsoft Excel,
-Microsoft Power BI, and many others.
+Azure Data Explorer supports a subset of the Microsoft SQL Server communication protocol (MS-TDS),
+with a subset of the T-SQL query language. Microsoft Excel and Microsoft Power BI are only some of the many tools that can work with Azure Data Explorer. These Microsoft applications also know how to query SQL Server.
 
-Note that for a client tool to query Kusto through MS-TDS, the client must use
-Azure Active Directory integrated authentication.
+> [!NOTE]
+> Use Azure Active Directory (Azure AD) integrated authentication as the client tool to query Kusto through MS-TDS.
 
-See [T-SQL](./t-sql.md) for more details on the T-SQL query language as implemented
-by Kusto. 
+## Next steps
 
-See [MS-TDS clients and Kusto](./clients.md) for examples of how to
-use Kusto from some well-known clients using MS-TDS/T-SQL.
+* [T-SQL](./t-sql.md) - Learn about the T-SQL query language as implemented by Kusto. 
 
-See [Kusto as linked server to SQL server](./linkedserver.md) configuring Kusto cluster as linked server to SQL server on-premises.
+* [KQL over TDS](./tdskql.md) - Learn about executing native KQL queries via TDS endpoints.
 
-See [MS-TDS with Azure Active Directory](./aad.md) for more details on using AAD via TDS for connecting to Kusto.
+* [MS-TDS clients and Kusto](./clients.md) - Use Azure Data Explorer from well-known clients that use MS-TDS/T-SQL.
 
-See [KQL over TDS](./tdskql.md) for
-information about executing native KQL queries via TDS endpoint. 
+* [Azure Data Explorer as linked server to SQL server](./linkedserver.md) - Configure the cluster as a linked server to the SQL server on-premises. 
 
-Finally, see [this](./sqlknownissues.md) for some of the main differences between SQL Server's
-implementation of T-SQL and Kusto.
+* [MS-TDS with Azure Active Directory](./aad.md) - Use Azure AD via TDS, for connecting to Azure Data Explorer.
+
+* [SQL Known Issues](./sqlknownissues.md) - Learn about the main differences between SQL Server's implementation of T-SQL and Azure Data Explorer.

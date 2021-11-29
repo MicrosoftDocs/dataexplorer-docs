@@ -4,7 +4,7 @@ description: This article describes pack_array() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
@@ -13,21 +13,24 @@ ms.date: 10/23/2018
 
 Packs all input values into a dynamic array.
 
-**Syntax**
+## Syntax
 
 `pack_array(`*Expr1*`[`,` *Expr2*]`)`
 
-**Arguments**
+`pack_array(*)`
+
+## Arguments
 
 * *Expr1...N*: Input expressions to be packed into a dynamic array.
+* *The wildcard `*`*: providing the wildcard `*` will pack all input columns into a dynamic array.
 
-**Returns**
+## Returns
 
 Dynamic array which includes the values of Expr1, Expr2, ... , ExprN.
 
-**Example**
+## Example
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range x from 1 to 3 step 1
 | extend y = x * 2
@@ -41,7 +44,7 @@ range x from 1 to 3 step 1
 |[2,4,8]|
 |[3,6,12]|
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range x from 1 to 3 step 1
 | extend y = tostring(x * 2)

@@ -30,7 +30,7 @@ You can create the service principal in the [Azure portal](#azure-portal) or usi
 
 1. In the Azure portal, select **Subscriptions** then copy the ID for the subscription in which you created the service principal.
 
-    ![Subscription ID - portal](media/data-explorer-configure-data-source/subscription-id-portal.png)
+    ![Subscription ID - portal.](media/data-explorer-configure-data-source/subscription-id-portal.png)
 
 #### Azure CLI
 
@@ -64,7 +64,7 @@ You can create the service principal in the [Azure portal](#azure-portal) or usi
 
     Copy the appropriate subscription ID.
 
-    ![Subscription ID - CLI](media/data-explorer-configure-data-source/subscription-id-cli.png)
+    ![Subscription ID - CLI.](media/data-explorer-configure-data-source/subscription-id-cli.png)
 
 ### Add the service principal to the viewers role
 
@@ -76,29 +76,29 @@ Now that you have a service principal, you add it to the *viewers* role in the A
 
 1. In the **Overview** section, select the database with the StormEvents sample data.
 
-    ![Select database](media/data-explorer-configure-data-source/select-database.png)
+    ![Select database.](media/data-explorer-configure-data-source/select-database.png)
 
 1. Select **Permissions** then **Add**.
 
-    ![Database permissions](media/data-explorer-configure-data-source/database-permissions.png)
+    ![Database permissions.](media/data-explorer-configure-data-source/database-permissions.png)
 
 1. Under **Add database permissions**, select the **Viewer** role then **Select principals**.
 
-    ![Add database permissions](media/data-explorer-configure-data-source/add-permission.png)
+    ![Add database permissions.](media/data-explorer-configure-data-source/add-permission.png)
 
 1. Search for the service principal you created. Select the principal, then **Select**.
 
-    ![Manage permissions in the Azure portal](media/data-explorer-configure-data-source/new-principals.png)
+    :::image type="content" source="media/data-explorer-configure-data-source/new-principals.png" alt-text="Screenshot of the Azure portal New Principals pane. The Select button and two fields with indecipherable service principal properties are highlighted." border="false":::
 
 1. Select **Save**.
 
-    ![Manage permissions in the Azure portal](media/data-explorer-configure-data-source/save-permission.png)
+    :::image type="content" source="media/data-explorer-configure-data-source/save-permission.png" alt-text="Screenshot of the Add Database Permissions pane in the Azure portal. The Save button is highlighted." border="false":::
 
 #### Management command - Query
 
 1. In the Azure portal, go to your Azure Data Explorer cluster, and select **Query**.
 
-    ![Query](media/data-explorer-configure-data-source/query.png)
+    :::image type="content" source="media/data-explorer-configure-data-source/query.png" alt-text="Screenshot of an Azure Data Explorer cluster in the Azure portal. The Query item is highlighted." border="false":::
 
 1. Run the following command in the query window. Use the application ID and tenant ID from the Azure portal or CLI.
 
@@ -108,4 +108,4 @@ Now that you have a service principal, you add it to the *viewers* role in the A
 
     The command returns a result set like the following. In this example, the first row is for an existing user in the database, and the second row is for the service principal that was just added.
 
-    ![Result set](media/data-explorer-configure-data-source/result-set.png)
+    ![Result set.](media/data-explorer-configure-data-source/result-set.png)

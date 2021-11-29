@@ -1,11 +1,11 @@
 ---
 title: 'Create policies by using the Azure Data Explorer C# SDK'
 description: In this article, you will learn how to create policies by using C#.
-author: lucygoldbergmicrosoft 
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2019
 ---
 
@@ -20,10 +20,10 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Prerequisites
 
-* Visual Studio 2019. If you don't have Visual Studio 2019, you can download and use the *free* [Visual Studio Community 2019](https://www.visualstudio.com/downloads/). Be sure to select **Azure development** during the Visual Studio setup.
-* An Azure subscription. If you need to, you can create a [free Azure account](https://azure.microsoft.com/free/) before you start.
-* [A test cluster and database](create-cluster-database-csharp.md).
-* [A test table](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
+* Visual Studio 2019. Download and use the *free* [Visual Studio Community 2019](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
+* [A test table](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
 
 ## Install C# NuGet
 
@@ -32,7 +32,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 * Install the [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet package](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/), for authentication.
 
 ## Authentication
-To run the examples in this article, you need an Azure Active Directory (Azure AD) application and service principal that can access resources. You can use the same Azure AD application for authentication from [a test cluster and database](create-cluster-database-csharp.md#authentication). If you want to use a different Azure AD application, see [create an Azure AD application](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) to create a free Azure AD application and add role assignment at the subscription scope. This article also shows how to get the `Directory (tenant) ID`, `Application ID`, and `Client secret`. You might need to add the new Azure AD application as a principal in the database. For more information, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
+To run the examples in this article, you need an Azure Active Directory (Azure AD) application and service principal that can access resources. You can use the same Azure AD application for authentication from [a test cluster and database](create-cluster-database-csharp.md#authentication). If you want to use a different Azure AD application, see [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) to create a free Azure AD application and add role assignment at the subscription scope. This article also shows how to get the `Directory (tenant) ID`, `Application ID`, and `Client secret`. You might need to add the new Azure AD application as a principal in the database. For more information, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
 
 ## Alter database retention policy
 Sets a retention policy with a 10-day soft-delete period.
@@ -90,7 +90,7 @@ await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName
 Sets a cache policy for the table. The previous five days of data will be on the cluster SSD.
 
 ```csharp
-var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
+var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net/";
 var databaseName = "<DatabaseName>";
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
@@ -153,4 +153,4 @@ await kustoManagementClient.Databases.AddPrincipalsAsync(resourceGroupName, clus
 ```
 ## Next steps
 
-* [Read more about database and table policies](kusto/management/policies.md)
+* [Read more about database and table policies](./kusto/management/index.md)

@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2018
 
 #Customer intent: I want to learn how to deal with duplicate data.
@@ -65,52 +65,12 @@ DeviceEventsAll
 }
 ```
 
-### Solution #3: Filter duplicates during the ingestion process
+### Solution #3: Use materialized views to deduplicate
 
-Another solution is to filter duplicates during the ingestion process. The system ignores the duplicate data during ingestion into Kusto tables. Data is ingested into a staging table and copied into another table after removing duplicate rows. The advantage of this solution is that query performance improves dramatically as compared to the previous solution. The disadvantages include increased ingestion time and additional data storage costs. Additionaly, this solution works only if duplications aren't ingested concurrently. If there are multiple concurrent ingestions containing duplicate records, all may be ingested since the deduplication process will not find any existing matching records in the table.    
+[Materialized views](kusto/management/materialized-views/materialized-view-overview.md) can be used for deduplication, by using the [any()](./kusto/query/take-any-aggfunction.md)/[arg_min()](kusto/query/arg-min-aggfunction.md)/[arg_max()](kusto/query/arg-max-aggfunction.md) aggregation functions (see example #4 in [materialized view create command](kusto/management/materialized-views/materialized-view-create.md#examples)). 
 
-The following example depicts this method:
-
-1. Create another table with the same schema:
-
-    ```kusto
-    .create table DeviceEventsUnique (EventDateTime: datetime, DeviceId: int, EventId: int, StationId: int)
-    ```
-
-1. Create a function to filter out the duplicate records by anti-joining the new records with the previously ingested ones.
-
-    ```kusto
-    .create function RemoveDuplicateDeviceEvents()
-    {
-    DeviceEventsAll
-    | join hint.strategy=broadcast kind = anti
-        (
-        DeviceEventsUnique
-        | where EventDateTime > ago(7d)   // filter the data for certain time frame
-        | limit 1000000   //set some limitations (few million records) to avoid choking-up the system during outage recovery
-
-        ) on DeviceId, EventId, StationId
-    }
-    ```
-
-    > [!NOTE]
-    > Joins are CPU-bound operations and add an additional load on the system.
-
-1. Set [Update Policy](kusto/management/update-policy.md) on `DeviceEventsUnique` table. The update policy is activated when new data goes into the `DeviceEventsAll` table. The Kusto engine will automatically execute the function as new [extents](kusto/management/extents-overview.md) are created. The processing is scoped to the newly created data. The following command stitches the source table (`DeviceEventsAll`), destination table (`DeviceEventsUnique`), and the function `RemoveDuplicatesDeviceEvents` together to create the update policy.
-
-    ```kusto
-    .alter table DeviceEventsUnique policy update
-    @'[{"IsEnabled": true, "Source": "DeviceEventsAll", "Query": "RemoveDuplicateDeviceEvents()", "IsTransactional": true, "PropagateIngestionProperties": true}]'
-    ```
-
-    > [!NOTE]
-    > Update policy extends the duration of ingestion since the data is filtered during ingestion and then ingested twice (to the `DeviceEventsAll` table and to the `DeviceEventsUnique` table).
-
-1. (Optional) Set a lower data retention on the `DeviceEventsAll` table to avoid storing copies of the data. Choose the number of days depending on the data volume and the length of time you want to retain data for troubleshooting. You can set it to `0d` days retention to save COGS and improve performance, since the data isn't uploaded to storage.
-
-    ```kusto
-    .alter-merge table DeviceEventsAll policy retention softdelete = 1d
-    ```
+> [!NOTE]
+> Materialized views come with a cost of consuming cluster's resources, which may not be negligible. For more information, see materialized views [performance considerations](kusto/management/materialized-views/materialized-view-overview.md#performance-considerations).
 
 ## Summary
 

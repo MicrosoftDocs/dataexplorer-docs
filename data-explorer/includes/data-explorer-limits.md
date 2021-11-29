@@ -1,9 +1,9 @@
 ---
-author: ilayrn
+author: orspod
 ms.service: data-explorer
 ms.topic: include
 ms.date: 01/20/2020
-ms.author: ilayr
+ms.author: orspodek
 ---
 
 The following table describes the maximum limits for Azure Data Explorer clusters.
@@ -13,7 +13,7 @@ The following table describes the maximum limits for Azure Data Explorer cluster
 | Clusters per region per subscription | 20 |
 | Instances per cluster | 1000 | 
 | Number of databases in a cluster | 10,000 |
-| Number of attached database configurations in a cluster | 70 |
+| Number of attached database configurations in a cluster | 100 |
 
 The following table describes the limits on management operations performed on Azure Data Explorer clusters.
 

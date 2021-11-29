@@ -1,10 +1,10 @@
 ---
-title: strcat() - Azure Data Explorer | Microsoft Docs
+title: strcat() - Azure Data Explorer
 description: This article describes strcat() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -13,21 +13,21 @@ ms.date: 02/13/2020
 
 Concatenates between 1 and 64 arguments.
 
-* In case if arguments are not of string type, they will be forcibly converted to string.
+* If the arguments aren't of string type, they'll be forcibly converted to string.
 
-**Syntax**
+## Syntax
 
-`strcat(`*argument1*,*argument2* [, *argumentN*]`)`
+`strcat(`*argument1*, *argument2*[, *argumentN*]`)`
 
-**Arguments**
+## Arguments
 
-* *argument1* ... *argumentN* : expressions to be concatenated.
+* *argument1* ... *argumentN*: Expressions to be concatenated.
 
-**Returns**
+## Returns
 
 Arguments, concatenated to a single string.
 
-**Examples**
+## Examples
   
    ```kusto
 print str = strcat("hello", " ", "world")

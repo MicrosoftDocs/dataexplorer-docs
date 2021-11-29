@@ -76,17 +76,20 @@ and execute a query against that cluster.
 * Query string: `web=0`
 
 > [!NOTE]
-> See [Deep-linking with Kusto.Explorer](../../tools/kusto-explorer.md#deep-linking-queries)
+> See [Deep-linking with Kusto.Explorer](../../tools/kusto-explorer-using.md#deep-linking-queries) 
 > for a description of the redirect URI syntax for starting up Kusto.Explorer.
 
 ## Deep linking to Kusto.WebExplorer
 
 This REST API performs redirection to Kusto.WebExplorer, a web application.
 
-* Path: `/` [*DatabaseName*`]
+* Path: `/` clusters/<ClusterName>/databases/<DatabaseName>
 * Verb: `GET`
-* Query string: `web=1`
-
+* Query string parameters: 
+  `web=1`
+  `tenant=`<TenantGuid>
+  `login_hint`=<Login>
+  
 ## Specifying the query or control command in the URI
 
 When the URI query string parameter `query` is specified, it must be encoded
@@ -117,5 +120,4 @@ For example, this can be the URI for a file hosted by Azure Blob Storage.
 > Azure Storage SAS to the URI. CORS configuration can be done from the
 > [Azure portal](https://portal.azure.com/) or from
 > [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
-> See [CORS support in Azure Storage](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).
-
+> See [CORS support in Azure Storage](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).

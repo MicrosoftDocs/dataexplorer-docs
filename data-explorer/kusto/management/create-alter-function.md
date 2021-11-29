@@ -1,5 +1,5 @@
 ---
-title: .create-or-alter function - Azure Data Explorer | Microsoft Docs
+title: .create-or-alter function - Azure Data Explorer
 description: This article describes .create-or-alter function in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -17,7 +17,7 @@ Creates a stored function or alters an existing function and stores it inside th
 .create-or-alter function [with (docstring = '<description>', folder='<name>')] [FunctionName] ([paramName:paramType], ...) { CSL-statement }
 ```
 
-If function with the provided *FunctionName* doesn't exist in database metadata, the command creates a new function. If the function already exists, that function will be changed.
+If the function with the provided *FunctionName* doesn't exist in the database metadata, the command creates a new function. Else, that function will be changed.
 
 **Example**
 

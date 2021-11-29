@@ -1,11 +1,11 @@
 ---
 title: 'Create an IoT Hub data connection for Azure Data Explorer by using Azure Resource Manager template'
 description: In this article, you learn how to create an IoT Hub data connection for Azure Data Explorer by using Azure Resource Manager template.
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/28/2019
 ---
 
@@ -17,13 +17,14 @@ ms.date: 11/28/2019
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, and blobs written to blob containers. In this article, you create an IoT Hub data connection for Azure Data Explorer by using Azure Resource Manager template.
+[!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
+In this article, you create an IoT Hub data connection for Azure Data Explorer by using Azure Resource Manager template.
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* Create [a cluster and database](create-cluster-database-portal.md)
-* Create [a table and column mapping](ingest-data-iot-hub.md#create-a-target-table-in-azure-data-explorer)
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
+* Create [a table and column mapping](ingest-data-iot-hub.md#create-a-target-table-in-azure-data-explorer).
 * Create [an IoT Hub with a shared access policy configured](ingest-data-iot-hub.md#create-an-iot-hub).
 
 ## Azure Resource Manager template for adding an Iot Hub data connection

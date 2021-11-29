@@ -4,7 +4,7 @@ description: This article describes binary_and() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,14 +17,14 @@ Returns a result of the bitwise `and` operation between two values.
 binary_and(x,y)	
 ```
 
-**Syntax**
+## Syntax
 
 `binary_and(`*num1*`,` *num2* `)`
 
-**Arguments**
+## Arguments
 
 * *num1*, *num2*: long numbers.
 
-**Returns**
+## Returns
 
 Returns logical AND operation on a pair of numbers: num1 & num2.

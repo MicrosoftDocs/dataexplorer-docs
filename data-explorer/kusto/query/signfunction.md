@@ -4,7 +4,7 @@ description: This article describes sign() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -13,19 +13,19 @@ ms.date: 02/13/2020
 
 Sign of a numeric expression
 
-**Syntax**
+## Syntax
 
 `sign(`*x*`)`
 
-**Arguments**
+## Arguments
 
 * *x*: A real number.
 
-**Returns**
+## Returns
 
 * The positive (+1), zero (0), or negative (-1) sign of the specified expression. 
 
-**Examples**
+## Examples
 
 ```kusto
 print s1 = sign(-42), s2 = sign(0), s3 = sign(11.2)

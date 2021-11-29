@@ -1,9 +1,9 @@
 ---
 title: Prepay for Azure Data Explorer markup to save money
 description: Learn how to buy Azure Data Explorer reserved capacity to save on your Azure Data Explorer costs.
-author: avneraa
-ms.author: avnera
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: avnera
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
@@ -37,7 +37,7 @@ The size of reservation should be based on the total number of Azure Data Explor
 1. Select **Buy**
 1. Fill in the required fields. 
 
-    ![Purchase page](media/pricing-reserved-capacity/purchase-page.png)
+    ![Purchase page.](media/pricing-reserved-capacity/purchase-page.png)
 
 1. Review the cost of the Azure Data Explorer markup reserved capacity reservation in the **Costs** section.
 1. Select **Purchase**.
@@ -69,7 +69,7 @@ To learn more about Azure Reservations, see the following articles:
 * [Understand Azure Reservations discount](/azure/cost-management-billing/reservations/understand-reservation-charges)
 * [Understand reservation usage for your Pay-As-You-Go subscription](/azure/cost-management-billing/reservations/understand-reserved-instance-usage)
 * [Understand reservation usage for your Enterprise enrollment](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea)
-* [Azure Reservations in Partner Center Cloud Solution Provider (CSP) program](https://docs.microsoft.com/partner-center/azure-reservations)
+* [Azure Reservations in Partner Center Cloud Solution Provider (CSP) program](/partner-center/azure-reservations)
 
 ## Need help? Contact us
 

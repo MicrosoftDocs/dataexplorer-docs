@@ -1,9 +1,9 @@
 ---
-author: lugoldbemicrosoft
+author: orspod
 ms.service: data-explorer
 ms.topic: include
 ms.date: 02/03/2020
-ms.author: lugoldbe
+ms.author: orspodek
 ---
 
 ## Azure Resource Manager template
@@ -88,7 +88,8 @@ In this article, you use an Azure Resource Manager template to create a resource
             "type": "string",
             "defaultValue": "AllDatabasesViewer",
             "metadata": {
-                "description": "Specifies the cluster principal role. It can be 'AllDatabasesAdmin', 'AllDatabasesViewer'"
+                "description": "Specifies the cluster principal role. It can be 'AllDatabasesAdmin',
+                'AllDatabasesMonitor' or 'AllDatabasesViewer'"
             }
         },
         "tenantIdForClusterPrincipal": {

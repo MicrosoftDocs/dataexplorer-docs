@@ -4,7 +4,7 @@ description: This article describes format_timespan() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,16 +17,16 @@ Formats a timespan according to the provided format.
 format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') == "2:3:4.1234500"
 ```
 
-**Syntax**
+## Syntax
 
 `format_timespan(`*timespan* `,` *format*`)`
 
-**Arguments**
+## Arguments
 
 * `timespan`: value of a type `timespan`.
 * `format`: format specifier string, consisting of one or more [format elements](#supported-formats).
 
-**Returns**
+## Returns
 
 The string with the format result.
 
@@ -49,8 +49,6 @@ The string with the format result.
 |`FFFFF`	|If non-zero, the hundred thousandths of a second in the time interval. |15.13:45:30.6175400 -> 61754, 15.13:45:30.0000050 -> (no output)
 |`FFFFFF`	|If non-zero, the millionths of a second in the time interval. |15.13:45:30.6175420 -> 617542, 15.13:45:30.0000005 -> (no output)
 |`FFFFFFF`	|If non-zero, the ten millionths of a second in the time interval. |15.13:45:30.6175425 -> 6175425, 15.13:45:30.0001150 -> 000115
-|`h`	|The number of whole hours in the time interval that are not counted as part of days. Single-digit hours do not have a leading zero. |15.01:45:30 -> 1, 15.13:45:30 -> 1
-|`hh`	|The number of whole hours in the time interval that are not counted as part of days. Single-digit hours have a leading zero. |15.01:45:30 -> 01, 15.13:45:30 -> 01
 |`H`	|The hour, using a 24-hour clock from 0 to 23. |15.01:45:30 -> 1, 15.13:45:30 -> 13
 |`HH`	|The hour, using a 24-hour clock from 00 to 23. |15.01:45:30 -> 01, 15.13:45:30 -> 13
 |`m`	|The number of whole minutes in the time interval that are not included as part of hours or days. Single-digit minutes do not have a leading zero. |15.01:09:30 -> 9, 15.13:29:30 -> 29
@@ -74,7 +72,7 @@ Format specifier can include following delimeters characters:
 |`'['`||
 |`']'`||
 
-**Examples**
+## Examples
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

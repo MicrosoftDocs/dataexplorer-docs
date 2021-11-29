@@ -4,7 +4,7 @@ description: This article describes current_cluster_endpoint() in Azure Data Exp
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -13,16 +13,16 @@ ms.date: 02/13/2020
 
 Returns the network endpoint (DNS name) of the current cluster being queried.
 
-**Syntax**
+## Syntax
 
 `current_cluster_endpoint()`
 
-**Returns**
+## Returns
 
 The network endpoint (DNS name) of the current cluster being queried,
 as a value of type `string`.
 
-**Example**
+## Example
 
 ```kusto
 print strcat("This query executed on: ", current_cluster_endpoint())

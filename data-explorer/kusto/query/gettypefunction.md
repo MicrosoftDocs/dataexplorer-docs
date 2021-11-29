@@ -4,7 +4,7 @@ description: This article describes gettype() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
@@ -13,19 +13,17 @@ ms.date: 10/23/2018
 
 Returns the runtime type of its single argument.
 
-The runtime type may be different than the nominal (static) type for expressions
-whose nominal type is `dynamic`; in such cases `gettype()` can be useful to reveal
-thet type of the actual value (how the value is encoded in memory).
+The runtime type may be different than the nominal (static) type for expressions whose nominal type is `dynamic`; in such cases `gettype()` can be useful to reveal the type of the actual value (how the value is encoded in memory).
 
-**Syntax**
+## Syntax
 
 `gettype(`*Expr*`)`
 
-**Returns**
+## Returns
 
 A string representing the runtime type of its single argument.
 
-**Examples**
+## Examples
 
 |Expression                          |Returns      |
 |------------------------------------|-------------|

@@ -4,7 +4,7 @@ description: This article describes funnel_sequence plugin in Azure Data Explore
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
@@ -17,11 +17,11 @@ Calculates distinct count of users who have taken a sequence of states, and the 
 T | evaluate funnel_sequence(id, datetime_column, startofday(ago(30d)), startofday(now()), 10m, 1d, state_column, dynamic(['S1', 'S2', 'S3']))
 ```
 
-**Syntax**
+## Syntax
 
 *T* `| evaluate` `funnel_sequence(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *MaxSequenceStepWindow*, *Step*, *StateColumn*, *Sequence*`)`
 
-**Arguments**
+## Arguments
 
 * *T*: the input tabular expression.
 * *IdColum*: column reference, must be present in the source expression.
@@ -33,7 +33,7 @@ T | evaluate funnel_sequence(id, datetime_column, startofday(ago(30d)), startofd
 * *StateColumn*: column reference representing the state, must be present in the source expression.
 * *Sequence*: a constant dynamic array with the sequence values (values are looked up in `StateColumn`).
 
-**Returns**
+## Returns
 
 Returns three output tables, which are useful for constructing a sankey diagram for the analyzed sequence:
 
@@ -57,13 +57,13 @@ Returns three output tables, which are useful for constructing a sankey diagram 
     samples: an array of IDs (from `IdColumn`) corresponding to the row's sequence (a maximum of 128 IDs are returned). 
 
 
-**Examples**
+## Examples
 
 ### Exploring Storm Events 
 
 The following query looks at the table StormEvents (weather statistics for 2007) and shows which events happened before/after all Tornado events occurred in 2007.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 // Looking on StormEvents statistics: 
 // Q1: What happens before Tornado event?
@@ -160,7 +160,7 @@ Result includes three tables:
 Now, let's try to find out how the following sequence continues:  
 `Hail` -> `Tornado` -> `Thunderstorm Wind`
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | evaluate funnel_sequence(EpisodeId, StartTime, datetime(2007-01-01), datetime(2008-01-01), 1d,365d, EventType, 

@@ -5,7 +5,7 @@ author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ---
 
@@ -27,10 +27,10 @@ There are several factors that impact the health of an Azure Data Explorer clust
 
 1. Under **Monitoring**, select **Metrics**, then select **Keep Alive**, as shown in the following image. An output close to 1 means a healthy cluster.
 
-    ![Cluster Keep Alive metric](media/check-cluster-health/portal-metrics.png)
+    ![Cluster Keep Alive metric.](media/check-cluster-health/portal-metrics.png)
 
 1. It's possible to add other metrics to the chart. Select the chart then **Add metric**. Select another metric - this example shows **CPU**.
 
-    ![Add metric](media/check-cluster-health/add-metric.png)
+    ![Add metric.](media/check-cluster-health/add-metric.png)
 
 1. If you need assistance diagnosing issues with the health of a cluster, please open a support request in the [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

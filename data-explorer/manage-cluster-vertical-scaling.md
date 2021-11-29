@@ -1,11 +1,11 @@
 ---
 title: 'Manage cluster vertical scaling (scale up) to match demand in Azure Data Explorer'
 description: This article describes steps to scale up and scale down an Azure Data Explorer cluster based on changing demand.
-author: radennis
-ms.author: radennis
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: radennis
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/14/2019
 ---
 
@@ -28,7 +28,7 @@ This article explains the vertical scaling workflow:
 
 1. In the **Scale up** window, you will see a list of available SKUs for your cluster. For example, in the following figure, only four SKUs are available.
 
-    ![Scale up](media/manage-cluster-vertical-scaling/scale-up.png)
+    ![Scale up.](media/manage-cluster-vertical-scaling/scale-up.png)
 
     The SKUs are disabled because they're the current SKU, or they aren't available in the region where the cluster is located.
 

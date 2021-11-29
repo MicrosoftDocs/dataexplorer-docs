@@ -15,8 +15,8 @@ The sharding policy defines if and how [Extents (data shards)](../management/ext
 
 > [!NOTE]
 > The policy applies to all operations that create new extents,
-> such as commands for [data ingestion](../management/data-ingestion/index.md), and
-> [.merge and .rebuild commands](../management/extents-commands.md#merge-extents)
+> such as commands for [data ingestion](../../ingest-data-overview.md#ingest-control-commands), and
+> [extent merge operations](extents-overview.md)
 
 The data sharding policy contains the following properties:
 
@@ -40,5 +40,4 @@ The data sharding policy contains the following properties:
 
 When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
 
-Use the [sharding policy control commands](../management/sharding-policy.md)) to manage data sharding policies for databases and tables.
- 
+Use the [sharding policy control commands](./show-table-sharding-policy-command.md) to manage data sharding policies for databases and tables.

@@ -1,11 +1,11 @@
 ---
 title: 'Add cluster principals for Azure Data Explorer by using C#'
 description: In this article, you learn how to add cluster principals for Azure Data Explorer by using C#.
-author: lucygoldbergmicrosoft
-ms.author: lugoldbe
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: lugoldbe
 ms.service: data-explorer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ---
 
@@ -20,9 +20,9 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Prerequisites
 
-* If you don't have Visual Studio 2019 installed, you can download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Make sure that you enable **Azure development** during the Visual Studio setup.
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* [Create a cluster](create-cluster-database-csharp.md).
+* Visual Studio 2019, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Install C# NuGet
 
@@ -52,7 +52,7 @@ var resourceGroupName = "testrg";
 var clusterName = "mykustocluster";
 string principalAssignmentName = "clusterPrincipalAssignment1";
 string principalId = "xxxxxxxx";//User email, application ID, or security group name
-string role = "AllDatabasesAdmin";//AllDatabasesAdmin or AllDatabasesViewer
+string role = "AllDatabasesAdmin";//AllDatabasesAdmin, AllDatabasesMonitor or AllDatabasesViewer
 string tenantIdForPrincipal = tenantId;
 string principalType = "App";//User, App, or Group
 
@@ -70,7 +70,7 @@ await kustoManagementClient.ClusterPrincipalAssignments.CreateOrUpdateAsync(reso
 | clusterName | *mykustocluster* | The name of your cluster.|
 | principalAssignmentName | *clusterPrincipalAssignment1* | The name of your cluster principal resource.|
 | principalId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The principal ID, which can be user email, application ID, or security group name.|
-| role | *AllDatabasesAdmin* | The role of your cluster principal, which can be 'AllDatabasesAdmin' or 'AllDatabasesViewer'.|
+| role | *AllDatabasesAdmin* | The role of your cluster principal, which can be 'AllDatabasesAdmin', 'AllDatabasesMonitor', or 'AllDatabasesViewer'.|
 | tenantIdForPrincipal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The tenant ID of the principal.|
 | principalType | *App* | The type of the principal, which can be 'User', 'App', or 'Group'|
 
