@@ -300,11 +300,11 @@ items:
         href: double-encryption.md
     - name: Managed identities
       items:
-        name: Managed identities overview
-        href: managed-identities-overview
-        name: Configure managed identities on your cluster
+      - name: Managed identities overview
+        href: managed-identities-overview.md
+      - name: Configure managed identities on your cluster
         href: configure-managed-identites-cluster.md
-        name: Authenticate external tables with managed identities 
+      - name: Authenticate external tables with managed identities 
         href: external-tables-managed-identities.md
     - name: Configure customer-managed-keys
       items:

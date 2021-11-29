@@ -18,7 +18,7 @@ Your Azure Data Explorer cluster can be granted two types of identities:
 * **User-assigned identity**: A standalone Azure resource that can be assigned to 
 your cluster. A cluster can have multiple user-assigned identities.
 
-Managed identity authentication can be used in Azure Data Explorer for various supported flows. In order to authentication with managed identities, follow the following steps:
+Managed identity authentication can be used in Azure Data Explorer for various supported flows. To authentication with managed identities, follow the following steps:
 
 1. [Configure a managed identity for your cluster](#configure-a-managed-identity-for-your-cluster)
 1. [Configure the managed identity policy](#configure-the-managed-identity-policy)
@@ -30,11 +30,11 @@ Your cluster needs permissions to act on behalf of the given managed identity. T
 
 ## Configure the managed identity policy
 
-To use the managed identity you've configured, the next step is to configure the managed identity policy so that it allows this identity. For instructions, see [Managed Identity policy](kusto/management/managed-identity-policy.md).
+To use the managed identity, you need to configure the managed identity policy to allow this identity. For instructions, see [Managed Identity policy](kusto/management/managed-identity-policy.md).
 
 ## Use in supported workflows
 
 After assigning the managed identity to your cluster and configuring the relevant managed identity policy usage, you can start using managed identity authentication in the following workflows:
 
-* **External Tables**: Create an external table with managed identity authentication. The authentication is stated as part of the connection string. (see [storage connection string](/azure/data-explorer/kusto/api/connection-strings/storage#azure-blob-storage) for example). For a step-by-step instructions on using external tables with managed identity authentication, see [Authenticate external tables with managed identities](external-tables-managed-identities.md)
+* **External Tables**: Create an external table with managed identity authentication. The authentication is stated as part of the connection string. (see [storage connection string](/azure/data-explorer/kusto/api/connection-strings/storage#azure-blob-storage) for example). For instructions for using external tables with managed identity authentication, see [Authenticate external tables with managed identities](external-tables-managed-identities.md)
 * **Event Hub Native Ingestion**: Use a managed identity with Event Hub native ingestion. For more information, see [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md).

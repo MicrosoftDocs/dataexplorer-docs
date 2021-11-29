@@ -11,7 +11,7 @@ ms.date: 11/29/2020
 
 # Authenticate external tables with managed identities
 
-An [external table](azure/data-explorer/kusto/query/schema-entities/externaltables) is a schema entity that references data stored outside the Azure Data Explorer database.
+An [external table](kusto/query/schema-entities/externaltables) is a schema entity that references data stored outside the Azure Data Explorer database.
 
 External tables can be defined to reference data in Azure Storage or SQL Server. Authentication is done using a secret - a SAS URI for Azure Storage, or a username and password for of SQL Server - or using a Managed Identity. In this article, you'll learn how to create external tables that authenticate to Azure Storage with a user-assigned managed identity.
 
@@ -30,20 +30,20 @@ In this article, we will use a user-assigned managed identity with the object ID
 
 ## Create a managed identity policy
 
-Now that you've assigned a user-assigned managed identity to your cluster, define the [managed identity policy](azure/data-explorer/kusto/management/alter-managed-identity-policy-command), to allow the specific managed identity use the `ExternalTable`. The policy can either be defined in the cluster level or at a specific database level.
+Now that you've assigned a user-assigned managed identity to your cluster, define the [managed identity policy](kusto/management/alter-managed-identity-policy-command), to allow the specific managed identity use the `ExternalTable`. The policy can either be defined in the cluster level or at a specific database level.
 
 Enter the following policy alter command for the database level:
 
-    ~~~kusto
-    .alter database DatabaseName policy managed_identity ```
-    [
-      {
-        "ObjectId": "802bada6-4d21-44b2-9d15-e66b29e4d63e",
-        "AllowedUsages": "ExternalTable"
-      }
-    ]
-    ```
-    ~~~
+~~~kusto
+.alter database DatabaseName policy managed_identity ```
+[
+  {
+    "ObjectId": "802bada6-4d21-44b2-9d15-e66b29e4d63e",
+    "AllowedUsages": "ExternalTable"
+  }
+]
+```
+~~~
 
 > [!NOTE]
 > To define the policy at the cluster level, replace `database db` with `cluster`.

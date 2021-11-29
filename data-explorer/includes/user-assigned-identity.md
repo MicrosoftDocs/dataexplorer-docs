@@ -13,4 +13,4 @@ ms.topic: include
 1. In the **User assigned** tab, select **Add**.
 1. Search for the identity you created earlier and select it. Select **Add**.
 
-    ![Add user assigned identity.](media/managed-identities/user-assigned-identity-select.png)
+    ![Add user assigned identity.](../media/managed-identities/user-assigned-identity-select.png)
