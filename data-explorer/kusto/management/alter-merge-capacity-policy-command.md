@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2021
+ms.date: 11/29/2021
 ---
 # .alter-merge capacity policy
 
@@ -15,7 +15,11 @@ Enables or disables a cluster's [capacity policy](capacitypolicy.md). A capacity
 
 ## Syntax
 
-`.alter-merge` `cluster` `policy` `capacity` `"`*Serialized policy*`"`
+`.alter-merge` `cluster` `policy` `capacity` *SerializedArrayOfPolicyObjects*
+
+## Arguments
+
+*SerializedArrayOfPolicyObjects* - A serialized array with one or more JSON policy objects.
 
 ### Examples
 

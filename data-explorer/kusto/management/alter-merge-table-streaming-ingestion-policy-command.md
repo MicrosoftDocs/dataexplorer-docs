@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 11/29/2021
 ---
 # .alter-merge table streaming ingestion policy
 
@@ -21,11 +21,11 @@ Use the classic (bulk) ingestion instead of streaming ingestion when the amount 
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `policy` `streamingingestion`
+`.alter-merge` `table` *TableName* `policy` `streamingingestion` *ArrayOfPolicyObjects*
 
 ## Arguments
 
-*TableName* - Specify the name of the table. 
+*TableName* - Specify the name of the table.*ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
 
 ## Returns
 
