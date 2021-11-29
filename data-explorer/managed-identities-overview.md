@@ -18,7 +18,7 @@ Your Azure Data Explorer cluster can be granted two types of identities:
 * **User-assigned identity**: A standalone Azure resource that can be assigned to 
 your cluster. A cluster can have multiple user-assigned identities.
 
-Managed identity authentication can be used in Azure Data Explorer for various supported flows. To authentication with managed identities, follow the following steps:
+Managed identity authentication can be used in Azure Data Explorer for various supported flows. To authenticate with managed identities, follow these steps:
 
 1. [Configure a managed identity for your cluster](#configure-a-managed-identity-for-your-cluster)
 1. [Configure the managed identity policy](#configure-the-managed-identity-policy)
@@ -31,6 +31,12 @@ Your cluster needs permissions to act on behalf of the given managed identity. T
 ## Configure the managed identity policy
 
 To use the managed identity, you need to configure the managed identity policy to allow this identity. For instructions, see [Managed Identity policy](kusto/management/managed-identity-policy.md).
+
+The managed identity policy control commands are:
+* [.alter managed_identity policy](kusto/management/alter-managed-identity-policy-command.md)
+* [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md)
+* [.delete managed_identity policy](kusto/management/delete-managed-identity-policy-command.md)
+* [.show managed_identity policy](kusto/management/show-managed-identity-policy-command.md)
 
 ## Use in supported workflows
 
