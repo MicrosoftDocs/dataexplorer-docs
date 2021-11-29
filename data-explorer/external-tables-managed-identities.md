@@ -16,7 +16,7 @@ An [external table](kusto/query/schema-entities/externaltables.md) is a schema e
 External tables can be defined to reference data in Azure Storage or SQL Server. Authentication is done using a secret - a SAS URI for Azure Storage, or a username and password for of SQL Server - or using a Managed Identity. In this article, you'll learn how to create external tables that authenticate to Azure Storage with a user-assigned managed identity.
 
 > [!NOTE]
-> This article shows creates an external table using Azure Blob Storage. Managed identities can be used similarly with other types of Azure Storage resources, and with SQL Server. For more information about the connection strings used in these scenarios, see [Connection Strings](kusto/api/connection-strings/index.md).
+> This article shows how to create an external table over Azure Blob Storage. Managed identities can be used similarly with other types of Azure Storage resources, and with SQL Server. For more information about the connection strings used in these scenarios, see [Connection Strings](kusto/api/connection-strings/index.md).
 
 For more information on managed identities, see [Managed identities overview](managed-identities-overview.md).
 
@@ -51,7 +51,7 @@ Enter the following policy alter command for the database level:
 
 ## Create an external table
 
-The external table's authentication method is listed as part of the `connection string` provided in the command. To specify the managed identity authentication for your external table, add the appropriate managed identity authentication suffix: 
+The external table's authentication method is listed as part of the `connection string` provided in the command. To specify managed identity authentication for your external table, add the appropriate managed identity authentication suffix: 
 
  1. In this example, we're using user-assigned managed identities. Attach `;managed_identity=[managed-identity-object-id]` to the end of the connection string:
 
