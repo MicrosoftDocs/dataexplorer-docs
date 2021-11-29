@@ -1,6 +1,6 @@
 ---
-title: '.alter query weak consistency policy management - Azure Data Explorer'
-description: This article describes the `.alter query weak consistency policy` command in Azure Data Explorer.
+title: ".alter query weak consistency policy management - Azure Data Explorer"
+description: "This article describes the .alter query weak consistency policy command in Azure Data Explorer."
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -11,8 +11,7 @@ ms.date: 11/29/2021
 ---
 # .alter query weak consistency policy
 
-The command sets the cluster query weak consistency policy, overriding the current
-policy, and then returns the updated policy. The updated policy can be later viewed using the [show command](show-query-weak-consistency-policy.md). If not altered, the [default policy](./query-weak-consistency-policy.md#default-policy) applies.
+The command sets the cluster query weak consistency policy, overriding the current policy, and then returns the updated policy. The updated policy can be later viewed using the [show command](show-query-weak-consistency-policy.md). If not altered, the [default policy](./query-weak-consistency-policy.md#default-policy) applies.
 
 ## Syntax
 
