@@ -1,6 +1,6 @@
 ---
-title: '.alter query weak consistency policy management - Azure Data Explorer'
-description: This article describes the `.alter query weak consistency policy` command in Azure Data Explorer.
+title: '.alter-merge query weak consistency policy management - Azure Data Explorer'
+description: This article describes the `.alter-merge query weak consistency policy` command in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,14 +9,14 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/29/2021
 ---
-# .alter query weak consistency policy
+# .alter-merge query weak consistency policy
 
 The command sets the cluster query weak consistency policy, overriding the current
 policy, and then returns the updated policy. The updated policy can be later viewed using the [show command](show-query-weak-consistency-policy.md). If not altered, the [default policy](./query-weak-consistency-policy.md#default-policy) applies.
 
 ## Syntax
 
-`.alter` `cluster` `policy` `query_weak_consistency` *ArrayOfPolicyObjects* 
+`.alter-merge` `cluster` `policy` `query_weak_consistency` *ArrayOfPolicyObjects*
 
 ## Arguments
 
@@ -30,11 +30,10 @@ JSON serialization of the updated [query weak consistency policy object](./query
 
 <!-- csl -->
 ```
-.alter cluster policy query_weak_consistency @'{"PercentageOfNodes": 10, "MinimumNumberOfNodes": 2, "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 10, "RefreshPeriodInSeconds": 300}'
+.alter-merge cluster policy query_weak_consistency @'{"PercentageOfNodes": 40}'
 ```
-
 **Output**
 
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
-|QueryWeakConsistencyPolicy||{"PercentageOfNodes": 10, "MinimumNumberOfNodes": 2 "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 10, "RefreshPeriodInSeconds": 300}| |Cluster
+|QueryWeakConsistencyPolicy||{"PercentageOfNodes": 40, "MinimumNumberOfNodes": 2 "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 10, "RefreshPeriodInSeconds": 300}| |Cluster

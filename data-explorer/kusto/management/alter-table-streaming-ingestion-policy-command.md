@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 11/29/2021
 ---
 # .alter table streaming ingestion policy
 
@@ -21,11 +21,12 @@ Use the classic (bulk) ingestion instead of streaming ingestion when the amount 
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `streamingingestion`
+`.alter` `table` *TableName* `policy` `streamingingestion` *ArrayOfPolicyObjects*
 
 ## Arguments
 
-*TableName* - Specify the name of the table. 
+- *TableName* - Specify the name of the table. 
+- *ArrayOfPolicyObjects* - An array with one or more policy objects defined.
 
 ## Returns
 
@@ -36,6 +37,5 @@ Returns a JSON representation of the policy.
 The following command enables streaming ingestion and determines the suggestion allocated rate for the table:
 
 ```kusto
-.alter table MyTable policy streamingingestion 
-'{"IsEnabled": true, "HintAllocatedRate": 2.1}'
+.alter table StormEvents policy streamingingestion '{"IsEnabled": true, "HintAllocatedRate": 2.1}'
 ```

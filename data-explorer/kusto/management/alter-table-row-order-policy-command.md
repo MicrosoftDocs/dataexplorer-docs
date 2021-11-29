@@ -15,11 +15,12 @@ Change a table's [row order policy](roworderpolicy.md). The row order policy is 
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `roworder` 
+`.alter` `table` *TableName* `policy` `roworder` *PolicyObjects*
 
 ## Arguments
 
-*TableName* - Specify the name of the table.  
+- *TableName* - Specify the name of the table.  
+- *PolicyObjects* - Define one or more policy objects.
 
 ### Examples
 
