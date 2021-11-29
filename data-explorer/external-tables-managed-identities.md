@@ -53,7 +53,7 @@ Enter the following policy alter command for the database level:
 
 The external table's authentication method is listed as part of the `connection string` provided in the command. To specify managed identity authentication for your external table, add the appropriate managed identity authentication suffix: 
 
- 1. In this example, we're using user-assigned managed identities. Attach `;managed_identity=[managed-identity-object-id]` to the end of the connection string:
+In this example, we're using user-assigned managed identities. Attach `;managed_identity=[managed-identity-object-id]` to the end of the connection string:
 
     `https://StorageAccountName.blob.core.windows.net/Container;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e`
 
@@ -61,7 +61,7 @@ The external table's authentication method is listed as part of the `connection 
     > For system-assigned managed identities, you can use the reserved word `system` instead: <br>
     >`https://StorageAccountName.blob.core.windows.net/Container[/BlobName];managed_identity=system`
     
-1. This should give you the the following create external table command. Use this command to create the external table with your managed identity:
+This should give you the the following create external table command. Use this command to create the external table with your managed identity:
     
     ```kusto
     .create external table tableName (col_a: string, col_b: string)
