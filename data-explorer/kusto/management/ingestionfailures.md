@@ -15,7 +15,7 @@ ms.date: 01/20/2019
 
 
 This command returns a result set that includes any ingestion failures that occur when the
-[data ingestion control commands](../../ingest-data-overview.md#kusto-query-language-ingest-control-commands) run.
+[data ingestion control commands](../../ingest-data-overview.md#ingest-control-commands) run.
 
 
 > [!NOTE]
@@ -48,7 +48,7 @@ This command returns a result set that includes any ingestion failures that occu
 |FailureKind                |String   |Type of the failure (Permanent/Transient)
 |RootActivityId             |String   |Root Activity ID.
 |OperationKind              |String   |The ingestion operation type (phase) during which the failure was registered
-|OriginatesFromUpdatePolicy |Boolean  |Indicates whether the failure was registered while executing an [Update Policy](update-policy.md)
+|OriginatesFromUpdatePolicy |Boolean  |Indicates whether the failure was registered while executing an [Update Policy](./show-table-update-policy-command.md)
 |ErrorCode                  |String   |Ingestion error code  
 |Principal                  |Int      |The principal whosе credentials were used for the ingestion  
 |User                       |Int      |The user who performed the ingestion  

@@ -19,14 +19,15 @@ For more information, see [Workload groups](workload-groups.md). To show the cur
 
 `.alter-merge` `workload_group` *WorkloadGroupName* *SerializedArrayOfPolicyObjects*
 
-## Argument
+## Arguments
 
 - *WorkloadGroupName* - Name of the workload group. Can be escaped with bracket notation ['WorkLoadGroupName'].
-- *SerializedArrayOfPolicyObjects* - An array with one or more policy objects defined. The following policies apply to workload groups:
-    - [request classification](request-classification-policy.md)
-    - [request limits](request-limits-policy.md)
-    - [request rate limit](request-rate-limit-policy.md)
-    - [request rate limits enforcement](request-rate-limits-enforcement-policy.md)
+- *SerializedArrayOfPolicyObjects* - An array with one or more policy objects defined. The following policies apply to workload groups:   
+  
+  * [request classification](request-classification-policy.md)
+  * [request limits](request-limits-policy.md)
+  * [request rate limit](request-rate-limit-policy.md)
+  * [request rate limits enforcement](request-rate-limits-enforcement-policy.md).
 
 ## Examples
 
@@ -99,4 +100,21 @@ while keeping all of its other policies unchanged:
       "CommandsEnforcementLevel": "Cluster"
   }
 } ```
+~~~
+
+### Alter the query consistency policy
+
+Specify the appliable option for the query consistency model:
+
+~~~kusto
+.alter-merge workload_group default ```
+{
+  "QueryConsistencyPolicy": {
+     "QueryConsistency": {
+        "IsRelaxable": true,
+        "Value": "Weak"
+     }
+  }
+} ```
+
 ~~~

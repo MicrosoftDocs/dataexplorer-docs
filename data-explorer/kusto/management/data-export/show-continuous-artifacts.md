@@ -11,7 +11,8 @@ ms.date: 08/03/2020
 ---
 # Show continuous export artifacts
 
-Returns all artifacts exported by the continuous-export in all runs. Filter the results by the Timestamp column in the command to view only records of interest. The history of exported artifacts is retained for 14 days. 
+Returns all artifacts exported by the continuous-export in all runs. Filter the results by the Timestamp column in the command to view only records of interest. The history of exported artifacts is retained for 14 days.
+The command will not return any results if executed on a [follower database](../../../follower.md), it must be executed against the leader database.
 
 ## Syntax
 

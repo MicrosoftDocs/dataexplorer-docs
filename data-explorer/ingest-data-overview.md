@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 10/18/2021
+ms.date: 11/08/2021
 ms.localizationpriority: high
 ---
 
 # Azure Data Explorer data ingestion overview
 
-Data ingestion is the process used to load data records from one or more sources to import data into a table in Azure Data Explorer. Once ingested, the data becomes available for query.
+Data ingestion is the process used to load data records from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query.
 
 The diagram below shows the end-to-end flow for working in Azure Data Explorer and shows different ingestion methods.
 
@@ -24,7 +24,7 @@ Azure Data Explorer pulls data from an external source and reads requests from a
 
 ## Supported data formats, properties, and permissions
 
-* **[Supported data formats](ingestion-supported-formats.md)**
+* **[Supported data formats](ingestion-supported-formats.md)** 
 
 * **[Ingestion properties](ingestion-properties.md)**: The properties that affect how the data will be ingested (for example, tagging, mapping, creation time).
 
@@ -86,9 +86,9 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 
 * **[LightIngest](lightingest.md)**: A command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder or from an Azure blob storage container.
 
-### Kusto Query Language ingest control commands
+### Ingest control commands
 
-There are a number of methods by which data can be ingested directly to the engine by Kusto Query Language (KQL) commands. Because this method bypasses the Data Management services, it's only appropriate for exploration and prototyping. Don't use this method in production or high-volume scenarios.
+Use commands to ingest data directly to the engine. This method bypasses the Data Management services, and therefore should be used only for exploration and prototyping. Don't use this method in production or high-volume scenarios.
 
 * **Inline ingestion**:  A control command [.ingest inline](kusto/management/data-ingestion/ingest-inline.md) is sent to the engine, with the data to be ingested being a part of the command text itself. This method is intended for improvised testing purposes.
 
@@ -123,7 +123,11 @@ There are a number of methods by which data can be ingested directly to the engi
 
 ## Ingestion process
 
-Once you have chosen the most suitable ingestion method for your needs, do the following steps:
+Once you have chosen the most suitable ingestion method for your needs, do the following steps: 
+
+1. **Set batching policy** (optional)
+
+     The batching manager batches ingestion data based on the [ingestion batching policy](kusto/management/batchingpolicy.md). Define a batching policy before ingestion. See [ingestion best practices - optimizing for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput). Batching policy changes can require up to 5 minutes to take effect. The policy sets batch limits according to three factors: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. By default, settings are 5 minutes / 1000 blobs / 1 GB, with the limit first reached taking effect. Therefore there is usually a 5 minute delay when queueing sample data for ingestion.
 
 1. **Set retention policy**
 
@@ -147,7 +151,7 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
 
 1. **Set update policy** (optional)
 
-   Some of the data format mappings (Parquet, JSON, and Avro) support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time, use update policy, which allows for lightweight processing using Kusto Query Language commands. The update policy automatically runs extractions and transformations on ingested data on the original table, and ingests the resulting data into one or more destination tables. Set your [update policy](kusto/management/update-policy.md).
+   Some of the data format mappings (Parquet, JSON, and Avro) support simple and useful ingest-time transformations. If the scenario requires more complex processing at ingestion, adjust the [update policy](kusto/management/update-policy.md), which supports lightweight processing using query commands. The update policy automatically runs extractions and transformations on ingested data on the original table, and ingests the resulting data into one or more destination tables.
 
 ## Next steps
 

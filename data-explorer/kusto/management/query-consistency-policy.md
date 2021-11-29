@@ -18,7 +18,7 @@ A workload group's query consistency policy allows specifying options that contr
 Each option consists of:
 
 * A typed `Value` - the value of the limit.
-* `IsRelaxable` - a boolean value that defines if the option can be relaxed by the caller, as part of the request's [Client request properties](../api/netfx/request-properties.md).
+* `IsRelaxable` - a boolean value that defines if the option can be relaxed by the caller, as part of the request's [Client request properties](../api/netfx/request-properties.md). Default is `true`
 
 The following limits are configurable:
 
@@ -36,7 +36,7 @@ The following limits are configurable:
 ### Example
 
 ```json
-{
+"QueryConsistencyPolicy": {
   "QueryConsistency": {
     "IsRelaxable": true,
     "Value": "Weak"
@@ -48,6 +48,7 @@ The following limits are configurable:
 }
 ```
 
+
 ## Control commands
 
-Manage the workload group's query consistency policy with [Workload groups control commands](workload-groups-commands.md).
+Manage the workload group's query consistency policy with [Workload groups control commands](./show-workload-group-command.md).

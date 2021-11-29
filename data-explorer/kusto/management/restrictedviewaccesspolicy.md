@@ -23,4 +23,4 @@ Adding or removing principals can be done by a [DatabaseAdmin](../management/acc
 > [!NOTE]
 > RestrictedViewAccess policy can't be configured on a table on which a [Row Level Security policy](./rowlevelsecuritypolicy.md) is enabled.
 
-For more information, see the control commands for managing the [RestrictedViewAccess policy](../management/restrictedviewaccess-policy.md).
+For more information, see the control commands for managing the [RestrictedViewAccess policy](./show-table-restricted-view-access-policy-command.md).
