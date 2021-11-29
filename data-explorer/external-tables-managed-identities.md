@@ -55,21 +55,21 @@ The external table's authentication method is listed as part of the `connection 
 
 In this example, we're using user-assigned managed identities. Attach `;managed_identity=[managed-identity-object-id]` to the end of the connection string:
 
-    `https://StorageAccountName.blob.core.windows.net/Container;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e`
+`https://StorageAccountName.blob.core.windows.net/Container;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e`
 
-    > [!NOTE]
-    > For system-assigned managed identities, you can use the reserved word `system` instead: <br>
-    >`https://StorageAccountName.blob.core.windows.net/Container[/BlobName];managed_identity=system`
+> [!NOTE]
+> For system-assigned managed identities, you can use the reserved word `system` instead: <br>
+>`https://StorageAccountName.blob.core.windows.net/Container[/BlobName];managed_identity=system`
     
 This should give you the the following create external table command. Use this command to create the external table with your managed identity:
-    
-    ```kusto
-    .create external table tableName (col_a: string, col_b: string)
-    kind = storage 
-    dataformat = csv (
-    'https://StorageAccountName.blob.core.windows.net/Container;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e'
-    )
-    ```
+
+```kusto
+.create external table tableName (col_a: string, col_b: string)
+kind = storage 
+dataformat = csv (
+'https://StorageAccountName.blob.core.windows.net/Container;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e'
+)
+```
 
 ## Next steps
 
