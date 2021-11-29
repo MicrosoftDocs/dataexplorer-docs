@@ -24,10 +24,6 @@ The sharding policy defines if and how [Extents (data shards)](../management/ext
 *DatabaseName* - Specify the name of the database. 
 *ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
 
-## Arguments
-
-*DatabaseName* - Specify the name of the database. 
-
 ## Returns
 
 Returns a JSON representation of the policy.

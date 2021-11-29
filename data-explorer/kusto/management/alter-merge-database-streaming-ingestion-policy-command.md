@@ -28,10 +28,6 @@ Use the classic (bulk) ingestion instead of streaming ingestion when the amount 
 *DatabaseName* - Specify the name of the database. 
 *ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
 
-## Arguments
-
-*DatabaseName* - Specify the name of the database. 
-
 ## Returns
 
 Returns a JSON representation of the policy.
