@@ -13,7 +13,7 @@ ms.date: 11/29/2021
 
 Change the table streaming policy ingestion. Use the [streaming policy](../management/streamingingestionpolicy.md) to manage streaming ingestion for databases and tables.  
 
-Streaming ingestion targets scenarios requiring low latency, with an ingestion time of less than 10 seconds for varying volume data. Use the streaming policy to optimize operational processing when you have many tables in one or more databases, when there is a small data stream into each table but a large overall data ingestion volume. A small data stream could be a few records per second, whereas a high data ingestion volume could be thousands of records per second.
+Use in low latency scenarios, where ingestion time is less than 10 seconds for varying data volume. You can optimize processing for many tables in one or more databases, when tables receive a few records per second, whereas the ingestion volume is thousands of records per second.
 
 Use the classic bulk ingestion instead of streaming ingestion when the amount of data grows to more than 4 Gb per hour per table. 
 

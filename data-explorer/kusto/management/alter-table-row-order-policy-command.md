@@ -11,7 +11,7 @@ ms.date: 09/29/2021
 ---
 # .alter table row order policy
 
-Change a table's [row order policy](roworderpolicy.md). The row order policy is an optional policy for tables that defines the row order in a data shard. This policy is designed to improve performance for queries that are known to relate to a small subset of values that can be more rapidly located in ordered columns.
+Change a table's [row order policy](roworderpolicy.md). The row order policy is an optional table policy that defines the row order in a data shard. This policy can improve performance for queries that relate to a small set of values that can be ordered.
 
 ## Syntax
 
