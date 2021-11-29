@@ -22,10 +22,6 @@ Change the materialized view cache policy. To speed up queries on data, Azure Da
 *MaterializedViewName* - Specify the name of the materialized view. 
 *ArrayOfPolicyObjects* - An array with one or more policy objects defined.
 
-## Arguments
-
-*MaterializedViewName* - Specify the name of the materialized view.
-
 ## Example
 
 Set the caching policy to include the last 30 days.
