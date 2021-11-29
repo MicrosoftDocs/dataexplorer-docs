@@ -174,6 +174,8 @@ public static System.Data.IDataReader QueryKusto(
 <!-- The following text can be re-produced by running the Kusto.Cli.exe directive '#crp -doc' -->
 
 <!-- The following text can be re-produced by running the Kusto.Cli.exe directive '#crp -doc' -->
+* `best_effort`
+(*OptionBestEffort*): If set, allows fuzzy resolution and connectivity issues of union legs. It means that the set of union sources is reduced to the set of table references that exist and are accessible at the time. If at least one such table was found, any failure will yield a warning in the query status results, but will not prevent the query execution. [Boolean]
 
 * `debug_query_externaldata_projection_fusion_disabled` (*OptionDebugQueryDisableExternalDataProjectionFusion*): If set, don't fuse projection into ExternalData operator. [Boolean]
 * `debug_query_fanout_threads_percent_external_data` (*OptionDebugQueryFanoutThreadsPercentExternalData*): The percentage of threads to fanout execution to for external data nodes. [Int]
