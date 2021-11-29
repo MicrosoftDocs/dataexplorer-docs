@@ -61,7 +61,7 @@ The external table's authentication method is listed as part of the `connection 
     > For system-assigned managed identities, you can use the reserved word `system` instead: <br>
     >`https://StorageAccountName.blob.core.windows.net/Container[/BlobName];managed_identity=system`
     
-1. You should get the following create external table command:
+1. This should give you the the following create external table command. Use this command to create the external table with your managed identity:
     
     ```kusto
     .create external table tableName (col_a: string, col_b: string)
