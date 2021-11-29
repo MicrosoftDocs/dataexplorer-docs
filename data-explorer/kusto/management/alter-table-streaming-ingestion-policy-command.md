@@ -37,5 +37,5 @@ Returns a JSON representation of the policy.
 Enable streaming ingestion and determines the suggested allocation rate for the table:
 
 ```kusto
-.alter table StormEvents policy streamingingestion '{"IsEnabled": true, "HintAllocatedRate": 2.1}'
+.alter table Table1 policy streamingingestion '{"IsEnabled": true, "HintAllocatedRate": 2.1}'
 ```
