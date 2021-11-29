@@ -1,5 +1,5 @@
 ---
-title: How to configure managed identities for Azure Data Explorer cluster
+title: Configure managed identities for your Azure Data Explorer cluster
 description: Learn how to configure managed identities for Azure Data Explorer cluster.
 author: orspod
 ms.author: orspodek
@@ -8,10 +8,11 @@ ms.service: data-explorer
 ms.topic: how-to
 ms.date: 11/25/2020
 ---
-
 # Configure managed identities for your Azure Data Explorer cluster
 
 A [managed identity from Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) allows your cluster to easily access other Azure AD-protected resources such as Azure Key Vault. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets. Managed identity configuration is currently supported only to [enable customer-managed keys for your cluster](security.md#customer-managed-keys-with-azure-key-vault).
+
+For an overview of managed identities, see [Authenticate using managed identities in your Azure Data Explorer cluster](authenticate-with-managed-identities.md).
 
 Your Azure Data Explorer cluster can be granted two types of identities:
 
