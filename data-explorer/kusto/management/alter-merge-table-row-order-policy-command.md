@@ -1,6 +1,6 @@
 ---
-title: .alter-merge table row order policy command- Azure Data Explorer
-description: This article describes the .alter-merge table row order policy command in Azure Data Explorer.
+title: ".alter-merge table row order policy command- Azure Data Explorer"
+description: "This article describes the .alter-merge table row order policy command in Azure Data Explorer."
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -11,7 +11,7 @@ ms.date: 11/29/2021
 ---
 # .alter-merge table row order policy
 
-Change a table's [row order policy](roworderpolicy.md). The row order policy is an optional policy for tables, and suggests the preferred order for rows in a data shard. The aim is to improve performance for queries that are known to be narrowed down to a small subset of values in ordered columns.
+Change a table's [row order policy](roworderpolicy.md). The row order policy is an optional table policy that defines the row order in a data shard. This policy can improve performance for queries that relate to a small set of values that can be ordered.
 
 ## Syntax
 

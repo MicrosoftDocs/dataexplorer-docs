@@ -1,6 +1,6 @@
 ---
-title: .alter-merge cluster policy request classification command- Azure Data Explorer
-description: This article describes the .alter-merge cluster policy request classification command in Azure Data Explorer.
+title: ".alter-merge cluster policy request classification command- Azure Data Explorer"
+description: "This article describes the cluster's .alter-merge request classification policy command in Azure Data Explorer."
 services: data-explorer
 author: orspod
 ms.author: orspodek
