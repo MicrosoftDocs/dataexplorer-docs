@@ -25,3 +25,10 @@ The following example changes the database IngestionBatching policy:
 // Change the IngestionBatching policy on database `MyDatabase` to batch ingress data by 300MB 
 .alter database MyDatabase policy ingestionbatching @'{"MaximumRawDataSizeMB": 300}'
 ```
+
+The following example changes the database IngestionBatching policy, with all the batching policy triggers:
+
+```kusto
+// Change the IngestionBatching policy on database `MyDatabase` to batch ingress data by 300MB 
+.alter database MyDatabase policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:01:00", "MaximumNumberOfItems": 20, "MaximumRawDataSizeMB": 300}'
+```
