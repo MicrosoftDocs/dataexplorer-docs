@@ -144,4 +144,4 @@ timestamp	                   key      val
 2021-04-26 01:00:00.0000000    Device2	100
 ```
 
-The first value is (45m*100 + 15m*200)/60m = 125, the second value is (6m*200 + 54m*100)/60m = 110, and so on.
+The first value is (45m\*100 + 15m\*200)/60m = 125, the second value is (6m*200 + 54m*100)/60m = 110, and so on.
