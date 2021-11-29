@@ -48,7 +48,7 @@ Use the following table to help you choose the ingestion type that's appropriate
 The main contributors that can impact streaming ingestion are:
 
 * **VM and cluster size**: Streaming ingestion performance and capacity scales with increased VM and cluster sizes. The number of concurrent ingestion requests is limited to six per core. For example, for 16 core SKUs, such as D14 and L16, the maximal supported load is 96 concurrent ingestion requests. For two core SKUs, such as D11, the maximal supported load is 12 concurrent ingestion requests.
-* **Data size limit**: The data size limit for a streaming ingestion request is 4 MB.
+* **Data size limit**: The data size limit for a streaming ingestion request is 4 MB. This includes any data created for update policies during the ingestion.
 * **Schema updates**: Schema updates, such as creation and modification of tables and ingestion mappings, may take up to five minutes for the streaming ingestion service. For more information see [Streaming ingestion and schema changes](kusto/management/data-ingestion/streaming-ingestion-schema-changes.md).
 * **SSD capacity**: Enabling streaming ingestion on a cluster, even when data isn't ingested via streaming, uses part of the local SSD disk of the cluster machines for streaming ingestion data and reduces the storage available for hot cache.
 

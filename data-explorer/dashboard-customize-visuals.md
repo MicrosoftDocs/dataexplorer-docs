@@ -95,11 +95,16 @@ An anomaly chart visual is similar to [time chart](#time-chart), but highlights 
 
 :::image type="content" source="media/dashboard-customize-visuals/map.png" alt-text="map visual type.":::
 
-To render the map visual, four columns are needed in the query:
-* String (first column) used for hover label
-* Longitude (real)
-* Latitude (real)
-* Bubble size (int). This column can be constant one if different sizes aren't required.
+To render the map visual, you must first select the type of location you're going to use.
+Under **Define location by**, you can choose from the following options:
+
+- Use 2 columns: Latitude and Longitude
+- Use 1 column: Geospatial coordinates
+
+In addition, you can specify the following options:
+
+- Label column
+- Size column: The integer values in this column are used to set the size of bubbles. The visual calculates the min and max values in the selected size column and then organizes sets the bubble size for all the other values in between.
 
 Maps are useful to visualize data with geo coordinates. The Map visual also has a built-in zoom functionality.
 

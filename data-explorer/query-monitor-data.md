@@ -3,7 +3,7 @@ title: 'Query data in Azure Monitor with Azure Data Explorer'
 description: 'In this topic, query data in Azure Monitor (Application Insights and Log Analytics) by creating an Azure Data Explorer cross product queries.'
 services: data-explorer
 author: osalzberg
-ms.author: orspodek
+ms.author: orens
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
@@ -40,8 +40,11 @@ Add a Log Analytics or Application Insights workspace to Azure Data Explorer cli
 
     ![Add cluster.](media/query-monitor-data/add-cluster.png)
 
-    >[!TIP]
-    >If you add a connection to more than one Log Analytics or Application insights workspace, give each a different name. Otherwise they'll all have the same name in the left pane.
+  >[!NOTE]
+>* There are different endpoints for the following:
+>* Azure Government- `adx.monitor.azure.us/`
+>*  Azure China- `adx.monitor.azure.cn/`
+>* If you add a connection to more than one Log Analytics/Application insights workspace, give each a different name. Otherwise they'll all have the same name in the left pane.
 
 1. After the connection is established, your Log Analytics or Application Insights workspace will appear in the left pane with your native Azure Data Explorer cluster.
 
@@ -134,10 +137,12 @@ The following syntax options are available when calling the Application Insights
 
 |Syntax Description  |Application Insights  |Log Analytics  |
 |----------------|---------|---------|
-| Database within a cluster that contains only the defined resource in this subscription (**recommended for cross cluster queries**) |   cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>`) | cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`)     |
-| Cluster that contains all apps/workspaces in this subscription    |     cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>`)    |    cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>`)     |
-|Cluster that contains all apps/workspaces in the subscription and are members of this resource group    |   cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
-|Cluster that contains only the defined resource in this subscription      |    cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
+| Database within a cluster that contains only the defined resource in this subscription (**recommended for cross cluster queries**) |   cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>`) | cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`)     |
+| Cluster that contains all apps/workspaces in this subscription    |     cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>`)    |    cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>`)     |
+|Cluster that contains all apps/workspaces in the subscription and are members of this resource group    |   cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
+|Cluster that contains only the defined resource in this subscription      |    cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
+|For Endpoints in the UsGov      |    cluster(`https://adx.monitor.azure.us/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)|
+ |For Endpoints in the China 21Vianet      |    cluster(`https://adx.monitor.azure.cn/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`) |   |
 
 ## Next steps
 [Write queries](write-queries.md)

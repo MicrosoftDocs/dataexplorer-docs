@@ -19,13 +19,14 @@ Change the table update policy. The [update policy](updatepolicy.md) instructs A
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `update`
-`.alter` `table` *DatabaseName*`.`*TableName* `update` `sharding`
+`.alter` `table` *TableName* `policy` `update` *ArrayOfPolicyObjects*
+`.alter` `table` *DatabaseName*`.`*TableName* `update` *ArrayOfPolicyObjects*
 
 ## Arguments
 
 *DatabaseName* - Specify the name of the database.
 *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context. A wildcard (*) denotes all tables.
+*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
 
 ## Returns
 
@@ -36,5 +37,5 @@ Returns a JSON representation of the policy.
 Change the update policy for a table:
 
 ```kusto
-.alter table MyDatabase.MyTable policy update @'[{"IsEnabled": true, "Source": "MyTableX", "Query": "MyOtherTable", "IsTransactional": false, "PropagateIngestionProperties": false}]'
+.alter table MyDatabase.MyTable policy update @'[{"IsEnabled": true, "Source": "MyTableX", "Query": "MyOtherTable", "IsTransactional": true, "PropagateIngestionProperties": false}]'
 ```
