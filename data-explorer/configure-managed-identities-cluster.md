@@ -215,6 +215,8 @@ Assign a user-assigned managed identity to your cluster. A cluster can have more
 
 # [Azure portal](#tab/portal)
 
+### Add a user-assigned identity using the Azure portal
+
 [!INCLUDE [user-assigned-identity](includes/user-assigned-identity.md)]
 
 # [C#](#tab/c-sharp)

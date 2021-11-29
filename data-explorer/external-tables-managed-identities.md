@@ -25,6 +25,7 @@ For more information on managed identities, see [Managed identities overview](ma
 To use managed identities with your cluster, you first need to assign the managed identity to your cluster. This assignment provides the cluster with permissions to act on behalf of the assigned managed identity.
 
 In this article, we will use a user-assigned managed identity with the object ID: `802bada6-4d21-44b2-9d15-e66b29e4d63e`.
+### Add a user-assigned identity using the Azure portal
 
 [!INCLUDE [user-assigned-identity](includes/user-assigned-identity.md)]
 
