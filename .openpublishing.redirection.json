@@ -260,5 +260,10 @@
       "redirect_url": "/azure/data-explorer/kusto/management/show-table-update-policy-command",
       "redirect_document_id": false
     },
+    {
+      "source_path": "data-explorer/managed-identities.md",
+      "redirect_url": "/azure/data-explorer/configure-managed-identities-cluster",
+      "redirect_document_id": true
+    }
   ]
 }
