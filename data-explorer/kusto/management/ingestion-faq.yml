@@ -34,3 +34,8 @@ sections:
       - question: How can I tune Kusto Kafka Sink for better ingestion performance?
         answer: |
           [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) users should [tune the connector](../../ingest-data-kafka.md) to work together with the [ingestion batching policy](batchingpolicy.md) by tuning batching time, size, and item number. 
+      - question: How do I handle ingestion errors?
+        answer: |
+          Check [ingestionfailures.md](ingestionfailures.md) and [error codes](../../error-codes.md) to determine the type of error.
+          For example, if you receive an error for `max retry exceeded`, which can happen when there is too high an ingestion load, use a premium storage account or divide the ingested data over several storage accounts.
+          You can also enable diagnostic logs for failed ingestions, and check errors and the path of the failed blobs.

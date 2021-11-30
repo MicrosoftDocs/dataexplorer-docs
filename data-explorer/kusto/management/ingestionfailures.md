@@ -13,13 +13,11 @@ ms.date: 01/20/2019
 
 ## .show ingestion failures
 
-
 This command returns a result set that includes any ingestion failures that occur when the
 [data ingestion control commands](../../ingest-data-overview.md#ingest-control-commands) run.
 
-
 > [!NOTE]
-> Ingestion failures that occur during other parts of the ingestion flow will not appear in the result set of this command. Such a failure may occur, for example, before data ingestion control commands are sent to the Kusto Data Engine service. 
+> Ingestion failures that occur during other parts of the ingestion flow will not appear in the result set of this command. Such a failure may occur, for example, before data ingestion control commands are sent to the Kusto Data Engine service.
 > 
 > Ingestion failures should be monitored by [metrics](../../using-metrics.md), and optionally using ingestion logs. To set up ingestion logs, see [Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](../../using-diagnostic-logs.md).
 > 
