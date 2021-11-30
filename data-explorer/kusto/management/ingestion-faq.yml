@@ -38,4 +38,4 @@ sections:
         answer: |
           Check [ingestionfailures.md](ingestionfailures.md) and [error codes](../../error-codes.md) to determine the type of error.
           For example, if you receive an error for `max retry exceeded`, which can happen when there is too high an ingestion load, use a premium storage account or divide the ingested data over several storage accounts.
-          You can also [enable diagnostic logs](../../using-diagnostic-logs.md) for failed ingestions, and check errors and the path of the failed blobs.
+          You can also [enable diagnostic logs](../../using-diagnostic-logs.md) for failed ingestion, and check errors and the path of the failed blobs.
