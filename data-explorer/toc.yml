@@ -538,7 +538,7 @@ items:
       displayName: functions library
       href: kusto/functions-library/series-rate-fl.md
     - name: series_rolling_fl()
-      displayName: functions library, rolling
+      displayName: functions library, rolling, sliding
       href: kusto/functions-library/series-rolling-fl.md
     - name: time_weighted_avg_fl()
       displayName: functions library
