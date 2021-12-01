@@ -21,7 +21,7 @@ This type of rolling window calculation is required for use cases where the metr
 
 ## Syntax
 
-`T | invoke time_window_rolling_avg_fl(`*t_col*, *y_col*, *key_col*, *dt*`)`
+`T | invoke time_window_rolling_avg_fl(`*t_col*, *y_col*, *key_col*, *dt*, *direction*`)`
   
 ## Arguments
 
@@ -29,6 +29,7 @@ This type of rolling window calculation is required for use cases where the metr
 * *y_col*: The name of the column containing the metric value of the records.
 * *key_col*: The name of the column containing the partition key of the records.
 * *dt*: Duration of the rolling window.
+* *direction*: Aggregation direction. +1/-1: rolling window is set from current time forward/backward respectively. Default is -1, as backward rolling window is the only possible method for streaming scenarios.
 
 ## Usage
 
@@ -40,20 +41,22 @@ For ad hoc usage, embed its code using a [let statement](../query/letstatement.m
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-let time_window_rolling_avg_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, dt:timespan)
+let time_window_rolling_avg_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, dt:timespan, direction:int=int(-1))
 {
     let tbl_ex = tbl | extend timestamp = column_ifexists(t_col, datetime(null)), value = column_ifexists(y_col, 0.0), key = column_ifexists(key_col, '');
     tbl_ex 
     | partition hint.strategy=shuffle by key 
     (
-        extend timestamp=pack_array(timestamp, timestamp - dt), delta = dynamic([-1, 1])
+        extend timestamp=pack_array(timestamp, timestamp - direction*dt), delta = pack_array(-direction, direction)
         | mv-expand timestamp to typeof(datetime), delta to typeof(long)
         | sort by timestamp asc, delta desc    
-        | scan declare (cum_sum:double=0.0, cum_count:long=0, avg_value:double=0.0) with 
+        | scan declare (cum_sum:double=0.0, cum_count:long=0) with 
         (
-            step s: true => cum_count = s.cum_count + delta, cum_sum = s.cum_sum + delta * value, avg_value=s.cum_sum / s.cum_count;
+            step s: true => cum_count = s.cum_count + delta, 
+                            cum_sum = s.cum_sum + delta * value; 
         )
-        | where delta == -1    
+        | extend avg_value = iff(direction == 1, prev(cum_sum)/prev(cum_count), cum_sum/cum_count)
+        | where delta == -direction 
         | project timestamp, value, avg_value, key
     )
 }
@@ -83,20 +86,22 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Time based rolling average of a metric")
-time_window_rolling_avg_fl(tbl:(*), t_col:string, y_col:string, key_col:string, dt:timespan)
+time_window_rolling_avg_fl(tbl:(*), t_col:string, y_col:string, key_col:string, dt:timespan, direction:int=int(-1))
 {
     let tbl_ex = tbl | extend timestamp = column_ifexists(t_col, datetime(null)), value = column_ifexists(y_col, 0.0), key = column_ifexists(key_col, '');
     tbl_ex 
     | partition hint.strategy=shuffle by key 
     (
-        extend timestamp=pack_array(timestamp, timestamp - dt), delta = dynamic([-1, 1])
+        extend timestamp=pack_array(timestamp, timestamp - direction*dt), delta = pack_array(-direction, direction)
         | mv-expand timestamp to typeof(datetime), delta to typeof(long)
         | sort by timestamp asc, delta desc    
-        | scan declare (cum_sum:double=0.0, cum_count:long=0, avg_value:double=0.0) with 
+        | scan declare (cum_sum:double=0.0, cum_count:long=0) with 
         (
-            step s: true => cum_count = s.cum_count + delta, cum_sum = s.cum_sum + delta * value, avg_value=s.cum_sum / s.cum_count;
+            step s: true => cum_count = s.cum_count + delta, 
+                            cum_sum = s.cum_sum + delta * value; 
         )
-        | where delta == -1    
+        | extend avg_value = iff(direction == 1, prev(cum_sum)/prev(cum_count), cum_sum/cum_count)
+        | where delta == -direction 
         | project timestamp, value, avg_value, key
     )
 }
@@ -126,16 +131,16 @@ tbl
 
 ```kusto
 timestamp	                value	avg_value	key
-2021-11-29 08:05:00.0000000	10	    15	        Device2
-2021-11-29 08:09:00.0000000	20    	20        	Device2
+2021-11-29 08:05:00.0000000	10	    10	        Device2
+2021-11-29 08:09:00.0000000	20    	15        	Device2
 2021-11-29 09:05:00.0000000	30	    30        	Device2
-2021-11-29 08:00:00.0000000	1	    2	        Device1
-2021-11-29 08:01:00.0000000	2	    2.5        	Device1
-2021-11-29 08:05:00.0000000	3	    3        	Device1
+2021-11-29 08:00:00.0000000	1	    1	        Device1
+2021-11-29 08:01:00.0000000	2	    1.5        	Device1
+2021-11-29 08:05:00.0000000	3	    2        	Device1
 2021-11-29 08:40:00.0000000	4	    4        	Device1
-2021-11-29 09:00:00.0000000	5	    5.5        	Device1
-2021-11-29 09:01:00.0000000	6	    6	        Device1
+2021-11-29 09:00:00.0000000	5	    5        	Device1
+2021-11-29 09:01:00.0000000	6	    5.5	        Device1
 2021-11-29 09:50:00.0000000	7	    7	        Device1
 ```
 
-The first value 15 at 8:05 is the average of two samples at 8:05 and at 8:09, the second value contains only a single value 20 which fell in the 10-minute window starting at 8:09, etc.
+The first value (10) at 8:05 contains only a single value, which fell in the 10-minute backward window, the second value (15) is the average of two samples at 8:09 and at 8:05, etc.
