@@ -544,11 +544,14 @@ items:
       displayName: functions library
       href: kusto/functions-library/series-rate-fl.md
     - name: series_rolling_fl()
-      displayName: functions library
+      displayName: functions library, rolling, sliding
       href: kusto/functions-library/series-rolling-fl.md
     - name: time_weighted_avg_fl()
       displayName: functions library
       href: kusto/functions-library/time-weighted-avg-fl.md
+    - name: time_window_rolling_avg_fl()
+      displayName: functions library, rolling
+      href: kusto/functions-library/time-window-rolling-avg-fl.md
     - name: two_sample_t_test_fl()
       displayName: functions library
       href: kusto/functions-library/two-sample-t-test-fl.md
