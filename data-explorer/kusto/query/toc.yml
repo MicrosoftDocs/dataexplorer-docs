@@ -916,100 +916,146 @@ items:
   - name: make-series operator
     href: make-seriesoperator.md
   - name: series_abs()
+    displayName: element-wise, elementwise
     href: series-absfunction.md
   - name: series_acos()
+    displayName: element-wise, elementwise
     href: series-acosfunction.md  
   - name: series_add()
+    displayName: element-wise, elementwise
     href: series-addfunction.md
   - name: series_asin()
+    displayName: element-wise, elementwise
     href: series-asinfunction.md 
   - name: series_atan()
+    displayName: element-wise, elementwise
     href: series-atanfunction.md 
   - name: series_cos()
+    displayName: element-wise, elementwise
     href: series-cosfunction.md  
   - name: series_decompose()
+    displayName: seasonal, trend, baseline
     href: series-decomposefunction.md
   - name: series_decompose_anomalies()
+    displayName: seasonal, trend, baseline
     href: series-decompose-anomaliesfunction.md
   - name: series_decompose_forecast()
+    displayName: seasonal, trend, baseline
     href: series-decompose-forecastfunction.md
   - name: series_divide()
+    displayName: element-wise, elementwise
     href: series-dividefunction.md
   - name: series_equals()
+    displayName: element-wise, elementwise
     href: series-equalsfunction.md
   - name: series_exp()
+    displayName: element-wise, elementwise
     href: series-expfunction.md
   - name: series_fft()
+    displayName: spectral, frequency, seasonality, transform, Fourier
     href: series-fft-function.md
   - name: series_fill_backward()
+    displayName: missing values
     href: series-fill-backwardfunction.md
   - name: series_fill_const()
+    displayName: missing values
     href: series-fill-constfunction.md
   - name: series_fill_forward()
+    displayName: missing values
     href: series-fill-forwardfunction.md
   - name: series_fill_linear()
+    displayName: missing values
     href: series-fill-linearfunction.md
   - name: series_fir()
+    displayName: filter, finite impulse response
     href: series-firfunction.md
   - name: series_fit_2lines()
+    displayName: regression
     href: series-fit-2linesfunction.md
   - name: series_fit_2lines_dynamic()
+    displayName: regression
     href: series-fit-2lines-dynamicfunction.md
   - name: series_fit_line()
+    displayName: regression
     href: series-fit-linefunction.md
   - name: series_fit_line_dynamic()
+    displayName: regression
     href: series-fit-line-dynamicfunction.md
   - name: series_fit_poly()
+    displayName: regression, polynomial
     href: series-fit-poly-function.md
   - name: series_greater()
+    displayName: element-wise, elementwise
     href: series-greaterfunction.md
   - name: series_greater_equals()
+    displayName: element-wise, elementwise
     href: series-greater-equalsfunction.md
   - name: series_ifft()
+    displayName: spectral, frequency, seasonality, transform, Fourier
     href: series-ifft-function.md
   - name: series_iir()
+    displayName: filter, infinite impulse response
     href: series-iirfunction.md
   - name: series_less()
+    displayName: element-wise, elementwise
     href: series-lessfunction.md
   - name: series_less_equals()
+    displayName: element-wise, elementwise
     href: series-less-equalsfunction.md
   - name: series_multiply()
+    displayName: element-wise, elementwise
     href: series-multiplyfunction.md
   - name: series_not_equals()
+    displayName: element-wise, elementwise
     href: series-not-equalsfunction.md
   - name: series_outliers()
+    displayName: anomaly detection, Tukey
     href: series-outliersfunction.md
   - name: series_pearson_correlation()
     href: series-pearson-correlationfunction.md
   - name: series_periods_detect()
+    displayName: spectral, fft, frequency, seasonality
     href: series-periods-detectfunction.md
   - name: series_periods_validate()
+    displayName: spectral, fft, frequency, seasonality
     href: series-periods-validatefunction.md
   - name: series_pow()
+    displayName: element-wise, elementwise
     href: series-powfunction.md  
   - name: series_seasonal()
+    displayName: periods
     href: series-seasonalfunction.md
   - name: series_sign()
+    displayName: element-wise, elementwise
     href: series-signfunction.md
   - name: series_sin()
+    displayName: element-wise, elementwise
     href: series-sinfunction.md    
   - name: series_stats()
+    displayName: statistics, average, standard deviation, variance
     href: series-statsfunction.md
   - name: series_stats_dynamic()
+    displayName: statistics, average, standard deviation, variance
     href: series-stats-dynamicfunction.md
   - name: series_subtract()
+    displayName: element-wise, elementwise
     href: series-subtractfunction.md
   - name: series_tan()
+    displayName: element-wise, elementwise
     href: series-tanfunction.md   
 - name: Machine Learning
   items:
   - name: autocluster plugin
+    displayName: clustering, diagnostics, RCA, root cause
     href: autoclusterplugin.md
   - name: basket plugin
+    displayName: clustering, diagnostics, RCA, root cause
     href: basketplugin.md
   - name: diffpatterns plugin
+    displayName: clustering, diagnostics, RCA, root cause
     href: diffpatternsplugin.md
   - name: diffpatterns_text plugin
+    displayName: clustering, diagnostics, RCA, root cause
     href: diffpatterns-textplugin.md
 - name: Geospatial
   items:
