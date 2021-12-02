@@ -33,7 +33,7 @@ PowerShell script.
 ## Get the tool
 
 Kusto.Cli is part of the NuGet package `Microsoft.Azure.Kusto.Tools` that
- [you can download](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
+ you can download for [.Net](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/) or [.Net Core](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools.NETCore/).
 Once downloaded, extract the package's `tools` folder to the target
 folder. No additional installation is required since it's xcopy-installable.
 
