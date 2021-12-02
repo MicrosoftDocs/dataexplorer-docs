@@ -472,91 +472,91 @@ items:
       displayName: functions library
       href: kusto/functions-library/functions-library.md
     - name: bartlett_test_fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/bartlett-test-fl.md
     - name: binomial_test_fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/binomial-test-fl.md
     - name: comb_fl()
-      displayName: functions library
+      displayName: functions library, statistics
       href: kusto/functions-library/comb-fl.md
     - name: factorial_fl()
-      displayName: functions library
+      displayName: functions library, statistics
       href: kusto/functions-library/factorial-fl.md
     - name: kmeans_fl()
-      displayName: functions library
+      displayName: functions library, clustering, K-Means
       href: kusto/functions-library/kmeans-fl.md
     - name: ks_test_fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/ks-test-fl.md
     - name: normality_test_fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/normality-test-fl.md
     - name: levene_test_fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/levene-test-fl.md
     - name: mann-whitney-u-test-fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/mann-whitney-u-test-fl.md
     - name: pair_probabilities_fl()
-      displayName: functions library, Jaccard, jaccard, lift
+      displayName: functions library, jaccard, lift
       href: kusto/functions-library/pair-probabilities-fl.md
     - name: perm_fl()
-      displayName: functions library
+      displayName: functions library, statistics
       href: kusto/functions-library/perm-fl.md
     - name: predict_fl()
-      displayName: functions library
+      displayName: functions library, score, classify
       href: kusto/functions-library/predict-fl.md
     - name: predict_onnx_fl()
-      displayName: functions library
+      displayName: functions library, score, classify
       href: kusto/functions-library/predict-onnx-fl.md
     - name: quantize_fl()
-      displayName: functions library
+      displayName: functions library, binning
       href: kusto/functions-library/quantize-fl.md
     - name: series_dbl_exp_smoothing_fl()
-      displayName: functions library
+      displayName: functions library, exponential, filter, low-pass
       href: kusto/functions-library/series-dbl-exp-smoothing-fl.md
     - name: series_dot_product_fl()
-      displayName: functions library
+      displayName: functions library, inner product, scalar product
       href: kusto/functions-library/series-dot-product-fl.md
     - name: series_downsample_fl()
-      displayName: functions library
+      displayName: functions library, subsampling, sub-sampling
       href: kusto/functions-library/series-downsample-fl.md
     - name: series_exp_smoothing_fl()
-      displayName: functions library
+      displayName: functions library, exponential, filter, low-pass
       href: kusto/functions-library/series-exp-smoothing-fl.md
     - name: series_fit_lowess_fl()
-      displayName: functions library
+      displayName: functions library, filter, low-pass, smoothing, regression
       href: kusto/functions-library/series-fit-lowess-fl.md
     - name: series_fit_poly_fl()
-      displayName: functions library
+      displayName: functions library, filter, low-pass, smoothing, regression
       href: kusto/functions-library/series-fit-poly-fl.md
     - name: series_fbprophet_forecast_fl()
-      displayName: functions library, prophet algorithm, predict
+      displayName: functions library
       href: kusto/functions-library/series-fbprophet-forecast-fl.md
     - name: series_metric_fl()
-      displayName: functions library
+      displayName: functions library, PromQL, Prometheus
       href: kusto/functions-library/series-metric-fl.md
     - name: series_moving_avg_fl()
-      displayName: functions library
+      displayName: functions library, filter, low-pass, smoothing
       href: kusto/functions-library/series-moving-avg-fl.md
     - name: series_rate_fl()
-      displayName: functions library
+      displayName: functions library, PromQL, Prometheus
       href: kusto/functions-library/series-rate-fl.md
     - name: series_rolling_fl()
       displayName: functions library, rolling, sliding
       href: kusto/functions-library/series-rolling-fl.md
     - name: time_weighted_avg_fl()
-      displayName: functions library
+      displayName: functions library, binning
       href: kusto/functions-library/time-weighted-avg-fl.md
     - name: time_window_rolling_avg_fl()
-      displayName: functions library, rolling
+      displayName: functions library, rolling, sliding
       href: kusto/functions-library/time-window-rolling-avg-fl.md
     - name: two_sample_t_test_fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/two-sample-t-test-fl.md
     - name: wilcoxon_test_fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/wilcoxon-test-fl.md
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions
