@@ -1,13 +1,13 @@
 ---
-title: .alter database ingestion batching policy command - Azure Data Explorer
-description: This article describes the .alter database ingestion batching policy command in Azure Data Explorer.
+title: ".alter database ingestion batching policy command - Azure Data Explorer"
+description: "This article describes the .alter database ingestion batching policy command in Azure Data Explorer."
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2021
+ms.date: 11/29/2021
 ---
 # .alter database ingestion batching policy
 
@@ -15,18 +15,23 @@ Change the database ingestion batching policy. The [ingestionBatching policy](ba
 
 ## Syntax
 
-* `.alter` `database` *DatabaseName* `policy` `ingestionbatching`
+* `.alter` `database` *DatabaseName* `policy` `ingestionbatching` *ArrayOfPolicyObjects*
+
+## Arguments
+
+*DatabaseName* - Specify the name of the database.
+*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
 
 ## Example
 
-The following example changes the database IngestionBatching policy:
+The following example changes the database ingestion batching policy:
 
 ```kusto
 // Change the IngestionBatching policy on database `MyDatabase` to batch ingress data by 300MB 
 .alter database MyDatabase policy ingestionbatching @'{"MaximumRawDataSizeMB": 300}'
 ```
 
-The following example changes the database IngestionBatching policy, with all the batching policy triggers:
+The following example changes the database ingestion batching policy, with all the batching policy triggers:
 
 ```kusto
 // Change the IngestionBatching policy on database `MyDatabase` to batch ingress data by 300MB 
