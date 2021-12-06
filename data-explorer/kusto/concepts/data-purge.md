@@ -116,8 +116,8 @@ Purge command may be invoked in two ways for differing usage scenarios:
 > To connect to a cluster using the Azure Data Explorer Web UI, see [Add clusters](../../web-query-data.md#add-clusters).
 	 
   ```kusto
-	 // Connect to the Data Management service - this command only works in Kusto.Explorer
-	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
+	 // Connect to the Data Management service - this command only works in Kusto.Explorer without [database].
+	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net/[database]"
 	 
 	 // Step #1 - retrieve a verification token (no records will be purged until step #2 is executed)
 	 .purge table [TableName] records in database [DatabaseName] <| [Predicate]
