@@ -75,7 +75,7 @@ The query used in the materialized view argument is limited by the following rul
 
     * Records in the view's source table (the fact table) are materialized once only. Updates to the dimension tables do not have any impact on records that have already been processed from the fact table. 
     * A different ingestion latency between the fact table and the dimension table may impact the view results.
-    * **Example**: A view definition includes an inner join with a dimension table. At the time of materialization, the dimension record was not fully ingested, but was already ingested to the fact table. This record will be dropped from the view and never reprocessed again. 
+    * **Example**: A view definition includes an inner join with a dimension table. At the time of materialization, the dimension record was not fully ingested, but was already ingested to the fact table. This record will be dropped from the view and never reprocessed again.
 
         Similarly, if the join is an outer join, the record from fact table will be processed and added to view with a null value for the dimension table columns. Records that have already been added (with null values) to the view won't be processed again. Their values, in columns from the dimension table, will remain null.
 
@@ -85,7 +85,7 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 
 |Property|Type|Description |
 |----------------|-------|---|
-|backfill|bool|Whether to create the view based on all records currently in *SourceTable* (`true`), or to create it "from-now-on" (`false`). Default is `false`. For more information, see [backfill a materialized view](#backfill-a-materialized-view).| 
+|backfill|bool|Whether to create the view based on all records currently in *SourceTable* (`true`), or to create it "from-now-on" (`false`). Default is `false`. For more information, see [backfill a materialized view](#backfill-a-materialized-view).|
 |effectiveDateTime|datetime|Relevant only when using `backfill`. If set, creation only backfills with records ingested after the datetime. Backfill must also be set to true. Expects a datetime literal, for example, `effectiveDateTime=datetime(2019-05-01)`|
 |UpdateExtentsCreationTime|bool|Relevant only when using `backfill`. If true, [extent creation time](../extents-overview.md#extent-creation-time) is assigned based on datetime group-by key during the backfill process. For more information, see [backfill a materialized view](#backfill-a-materialized-view).
 |lookback|timespan| Valid only for `arg_max`/`arg_min`/`any` materialized views, and only if the engine is [EngineV3](../../../engine-v3.md). Limits the period of time in which duplicates are expected. For example, if a look-back of 6 hours is specified on an `arg_max` view, the de-duplication between newly ingested records and existing ones will only take into consideration records that were ingested up to 6 hours ago. Look-back is relative to `ingestion_time`. Defining the look-back period incorrectly may lead to duplicates in the materialized view. For example, if a record for a specific key is ingested 10 hours after a record for the same key was ingested, and the look-back is set to 6h, that key will be a duplicate in the view. The look-back period is applied both during [materialization time](materialized-view-overview.md#how-materialized-views-work) as well as during [query time](materialized-view-overview.md#materialized-views-queries).|
@@ -102,6 +102,15 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 > * Using `autoUpdateSchema` may lead to irreversible data loss when columns in the source table are dropped.
 > Monitor automatic disable of materialized views using the [MaterializedViewResult metric](materialized-view-overview.md#materializedviewresult-metric).  After fixing incompatibility issues, re-enable the view with the [enable materialized view](materialized-view-enable-disable.md) command.
 
+### Create materialized view over materialized view
+
+A materialized view over another materialized view can only be created when the source materialized view is of kind `any(*)` aggregation (deduplication). See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view) and [examples](#examples) below.
+
+**Syntax":**
+`.create` [`async`] [`ifnotexists`] `materialized-view` <br>
+[ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <br>
+*ViewName* `on materialized-view` *SourceMaterializedViewName* <br>
+`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
 
 ## Examples
 
@@ -147,6 +156,17 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
     {
         T
         | summarize any(*) by EventId
+    }
+    ```
+
+1. Create a down-sampling materialized view which is based on the previous `DedupedT` materialized view:
+
+    <!-- csl -->
+    ```
+    .create materialized-view DailyUsage on materialized-view DedupedT
+    {
+        DedupedT
+        | summarize count(), dcount(User) by Day=bin(Timestamp, 1d)
     }
     ```
 
