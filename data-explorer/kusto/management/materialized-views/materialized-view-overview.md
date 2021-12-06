@@ -165,10 +165,10 @@ The main contributors that can impact a materialized view health are:
 
 ## Materialized view over materialized view
 
-A materialized view can be created over another materialized view, only when the source materialized view is a deduplication view. Specifically, when the aggregation of the source materialized view is `any(*)` in order to deduplicate source records. The second materialized view can use any of the [supported aggregation functions](materialized-view-create.md#supported-aggregation-functions). See [`.create materialized-view` command](materialized-view-create.md#create-materialized-view-over-materialized-view) for how to create a materialized view over materialized view.
+A materialized view can be created over another materialized view if the source materialized view is a deduplication view. Specifically, the aggregation of the source materialized view must be `any(*)` in order to deduplicate source records. The second materialized view can use any [supported aggregation functions](materialized-view-create.md#supported-aggregation-functions). For specific information on how to create a materialized view over a materialized view, see [`.create materialized-view` command](materialized-view-create.md#create-materialized-view-over-materialized-view).
 
 > [!TIP]
-> When querying a materialized view which is defined over another materialized view, it is highly recommended to query the materialized part only, using the `materialized_view()` function. Querying the entire view will not be performant when both views aren't fully materialized. See [materialized views queries](#materialized-views-queries) for more details.
+> When querying a materialized view that is defined over another materialized view, we recommend querying the materialized part only using the `materialized_view()` function. Querying the entire view will not be performant when both views aren't fully materialized. For more information, see [materialized views queries](#materialized-views-queries).
 
 ## Materialized views monitoring
 
