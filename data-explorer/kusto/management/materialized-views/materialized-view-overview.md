@@ -163,7 +163,7 @@ The main contributors that can impact a materialized view health are:
 
 * **Materialized view definition**: The materialized view definition must be defined according to query best practices for best query performance. For more information, see [create command performance tips](materialized-view-create.md#performance-tips).
 
-## Materialized view over materialized view
+## Materialized view over materialized view (preview)
 
 A materialized view can be created over another materialized view, only when the source materialized view is a deduplication view. Specifically, when the aggregation of the source materialized view is `any(*)` in order to deduplicate source records. The second materialized view can use any of the [supported aggregation functions](materialized-view-create.md#supported-aggregation-functions). See [`.create materialized-view` command](materialized-view-create.md#create-materialized-view-over-materialized-view) for how to create a materialized view over materialized view.
 
