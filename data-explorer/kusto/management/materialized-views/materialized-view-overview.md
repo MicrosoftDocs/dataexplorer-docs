@@ -11,7 +11,7 @@ ms.date: 04/23/2021
 ---
 # Materialized views
 
-[Materialized views](../../query/materialized-view-function.md) expose an *aggregation* query over a source table, or over [another materialized view](#materialized-view-over-materialized-view).
+Materialized views expose an *aggregation* query over a source table, or over [another materialized view](#materialized-view-over-materialized-view).
 
 Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-views-queries) is more performant than running the aggregation directly over the source table.
 
