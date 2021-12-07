@@ -11,18 +11,18 @@ ms.date: 09/23/2019
 ---
 # Request properties and ClientRequestProperties
 
-When a request is made from Kusto through the .NET SDK, provide:
+When a request is made to Kusto, the caller is required to provide provide:
 
 * A connection string indicating the service endpoint to connect to, authentication parameters, and similar connection-related information. Programmatically, the connection string is represented via the `KustoConnectionStringBuilder`class.
 * The name of the database that is used to describe the "scope" of the request.
 * The text of the request (query or command) itself.
-* Additional properties that the client provides to the service, and that are applied to the request. Programmatically, these properties are held by a class called [`ClientRequestProperties`](#clientrequestproperties).
+* Optiona: Additional properties that the client provides to the service, and that are applied to the request. Programmatically, these properties are held by a class called [`ClientRequestProperties`](#clientrequestproperties).
 
 ## ClientRequestProperties
 
 Client request properties can affect what limits and policies get applied to the request.
 
-The `Kusto.Data.Common.ClientRequestProperties` class holds three kinds of data:
+The `Kusto.Data.Common.ClientRequestProperties` class in the .NET SDK holds three kinds of data:
 
 * [Named properties](#named-properties) - These properties make debugging easier. For example, the properties may provide correlation strings that are used to track client/service interactions. 
 * [ClientRequestProperties options](#clientrequestproperties-options) - A mapping of an option name to an option value.

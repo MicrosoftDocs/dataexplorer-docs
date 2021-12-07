@@ -17,7 +17,7 @@ Streaming ingestion is targeted for scenarios that require low latency, with an 
 
 Use the classic (bulk) ingestion instead of streaming ingestion when the amount of data grows to more than 4 Gb per hour per table. 
 
-* To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md).
+To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md). Streaming ingestion must be enabled on the cluster level before it can be used at the database level.
 
 ## Syntax
 
