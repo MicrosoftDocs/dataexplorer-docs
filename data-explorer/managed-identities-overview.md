@@ -10,7 +10,7 @@ ms.date: 11/25/2020
 ---
 # Managed identities overview
 
-A [managed identity from Azure Active Directory](/azure/active-directory/configure-configure-managed-identities-cluster-cluster-azure-resources/overview) allows your cluster to easily access other Azure AD-protected resources such as Azure Storage. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets. 
+A [managed identity from Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) allows your cluster to easily access other Azure AD-protected resources such as Azure Storage. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets. 
 
 Your Azure Data Explorer cluster can be granted two types of identities:
 
