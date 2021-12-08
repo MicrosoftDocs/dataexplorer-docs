@@ -1,6 +1,6 @@
 ---
-title: .alter cluster sandbox policy command - Azure Data Explorer
-description: This article describes the .alter cluster sandbox policy command in Azure Data Explorer.
+title: ".alter cluster sandbox policy command - Azure Data Explorer"
+description: "This article describes the .alter cluster sandbox policy command in Azure Data Explorer."
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -20,7 +20,11 @@ To alter the policies, you'll need [AllDatabasesAdmin](../management/access-cont
 
 ## Syntax
 
-`.alter` `cluster` `policy` `sandbox`
+`.alter` `cluster` `policy` `sandbox` *ArrayOfPolicyObjects*
+
+## Arguments
+
+*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
 
 ## Returns
 

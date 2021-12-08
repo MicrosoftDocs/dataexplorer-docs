@@ -1,13 +1,13 @@
 ---
 title: ".alter managed_identity policy command - Azure Data Explorer"
-description: This article describes the .alter managed_identity policy command in Azure Data Explorer.
+description: "This article describes the .alter managed_identity policy command in Azure Data Explorer."
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: slneimer
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/03/2021
+ms.date: 11/29/2021
 ---
 # .alter managed_identity policy
 
@@ -18,14 +18,14 @@ The command sets the ManagedIdentity policy of the cluster or the specified data
 
 ## Syntax
 
-* `.alter` `cluster` `policy` `managed_identity` *ArrayOfManagedIdentityPolicyObjects*
-* `.alter` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfManagedIdentityPolicyObjects*
+* `.alter` `cluster` `policy` `managed_identity` *ArrayOfPolicyObjects*
+* `.alter` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfPolicyObjects*
 
 ## Arguments
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ArrayOfManagedIdentityPolicyObjects*|array|&check;|An array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects defined.|
+|*ArrayOfPolicyObjects*|array|&check;|An array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects defined.|
 |*DatabaseName*|string|&check;|The name of the database.|
 
 > [!NOTE]
