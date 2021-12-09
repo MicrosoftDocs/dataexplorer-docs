@@ -25,7 +25,7 @@ Creates or alters an external SQL table in the database in which the command is 
 ## Parameters
 
 * *TableName* - External table name. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.
-* *SqlTableName* - The name of the SQL table.
+* *SqlTableName* - The name of the SQL table. Not including the database name (example: "MySqlTable" and not "db1.MySqlTable").
 * *SqlServerConnectionString* - The connection string to the SQL server. Can be one of the following methods: 
   * *AAD-integrated authentication* (`Authentication="Active Directory Integrated"`): 
 The user or application authenticates via AAD to Kusto, and the same token is then used to access the SQL Server network endpoint.
