@@ -51,12 +51,10 @@ sections:
           You can use in the portal's [Azure Monitor Insights](/azure/azure-monitor/insights/data-explorer). 
           This view is based on [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md) that 
           can be streamed to a [Log Analytics workspace.](/azure/azure-monitor/platform/data-platform-logs).  
-      - question: How can I see ingestion errors?
+      - question: Where do I check ingestion errors?
         answer: |
-          Failures from any part of the ingestion process appear in the metrics and diagnostic logs. 
+          Failures from the full ingestion process appear in ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md). 
           The [`.show ingestion failures`](ingestionfailures.md) command returns ingestion failures that occur only in the Kusto Data Engine. 
-          Ingestion failures that occur during other parts of the ingestion flow, such as failures that happen before data ingestion 
-          control commands are sent to the Kusto Data Engine service, do not appear in the results for this command. 
   - name: SDKs and connectors
     questions:     
       - question: How can I improve ingestion with SDKs?

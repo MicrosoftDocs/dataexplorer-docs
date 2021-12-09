@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/20/2019
+ms.date: 12/09/2021
 ---
 # Ingestion failures
 
@@ -15,6 +15,11 @@ ms.date: 01/20/2019
 
 This command returns a result set that includes any ingestion failures that occur when the
 [data ingestion control commands](../../ingest-data-overview.md#ingest-control-commands) run.
+The `.show ingestion failures` command returns ingestion failures that occur only in the Kusto Data Engine. 
+Ingestion failures that occur during other parts of the ingestion flow, such as failures that happen before data ingestion 
+control commands are sent to the Kusto Data Engine service, do not appear in the results for this command. 
+Failures from all parts of the ingestion process appear in the ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md).
+
 
 > [!NOTE]
 > Ingestion failures that occur during other parts of the ingestion flow will not appear in the result set of this command. Such a failure may occur, for example, before data ingestion control commands are sent to the Kusto Data Engine service.
