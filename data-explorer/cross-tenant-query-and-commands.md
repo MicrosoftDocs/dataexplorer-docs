@@ -27,7 +27,7 @@ Permissions can be set using the portal, the [ARM Templates](/azure/templates/mi
 
 1. Define the desired tenants permissions.
 
-:::image type="content" source="media/define-trusted-external-tenants/trustedExternalTenants.png" alt-text="Screenshot of the Security blade":::
+:::image type="content" source="media/define-trusted-external-tenants/trusted-external-tenants.png" alt-text="Screenshot of the Security blade" lightbox="media/define-trusted-external-tenants/trusted-external-tenants.png":::
 
 ## Define permissions using trustedExternalTenants command
 
