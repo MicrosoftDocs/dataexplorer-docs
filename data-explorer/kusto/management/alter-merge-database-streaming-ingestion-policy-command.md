@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 11/29/2021
 ---
 # .alter-merge database streaming ingestion policy
 
@@ -21,11 +21,12 @@ To learn how to implement streaming ingestion, see [streaming ingestion](../../i
 
 ## Syntax
 
-`.alter-merge` `database` *DatabaseName* `policy` `streamingingestion`
+`.alter-merge` `database` *DatabaseName* `policy` `streamingingestion` *ArrayOfPolicyObjects*
 
 ## Arguments
 
 *DatabaseName* - Specify the name of the database. 
+*ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
 
 ## Returns
 
