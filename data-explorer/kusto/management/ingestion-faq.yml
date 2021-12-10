@@ -30,10 +30,11 @@ sections:
       - question: How is batching data size calculated? 
         answer: |
           The batching policy data size is set for uncompressed data. When ingesting compressed data, the [uncompressed data size is calculated](batchingpolicy.md#batch-data-size) from ingestion batching parameters, zip files metadata, or factor over the compressed file size.
-      - question: What happens if you try to ingest too high a load?
+      - question: What happens if you try to ingest too large a load?
         answer: |
-          You might receive an error for `max retry exceeded`, which can happen when there is too high an ingestion load.  
-          Too solve this issue, use a premium storage account or divide the ingested data over several storage accounts.  
+          You might receive a large number of ingestion failures, or receive the error `MaxRetryExceeded` in the Event Grid ingestion flow, 
+          due to failures to access storage and get file information.  
+          To solve this, use a premium storage account or divide the ingested data over several storage accounts.  
   - name: Ingestion monitoring, metrics and errors
     questions: 
       - question: Where can I view ingestion metrics?
