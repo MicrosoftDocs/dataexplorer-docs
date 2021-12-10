@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/03/2021
+ms.date: 11/29/2021
 ---
 # .alter-merge materialized-view retention policy
 
@@ -15,7 +15,12 @@ Change a materialized-view's [retention policy](retentionpolicy.md). The retenti
 
 ## Syntax
 
-`.alter-merge` `materialized-view` *DatabaseName* `policy` `retention` 
+`.alter-merge` `materialized-view` *MaterializedViewName* `policy` `retention` *PolicyObjects*
+
+## Arguments
+
+*MaterializedViewName* - Specify the name of the materialized view. 
+*PolicyObjects* - Define one or more policy objects.
 
 ### Example
 

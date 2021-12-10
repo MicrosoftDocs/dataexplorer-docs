@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 11/29/2021
 ---
 # .alter-merge table update policy
 
@@ -19,14 +19,14 @@ Change the table update policy. The [update policy](updatepolicy.md) instructs A
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `policy` `update` *ArrayOfUpdatePolicyObjects*
-`.alter-merge` `table` *DatabaseName*`.`*TableName* `update` `sharding` *ArrayOfUpdatePolicyObjects*
+`.alter-merge` `table` *TableName* `policy` `update` *ArrayOfPolicyObjects*
+`.alter-merge` `table` *DatabaseName*`.`*TableName* `update` `sharding` *ArrayOfPolicyObjects*
 
 ## Arguments
 
-*ArrayOfUpdatePolicyObjects* - An array with one or more JSON policy objects.
 *DatabaseName* - Specify the name of the database.
 *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context. A wildcard (*) denotes all tables.
+*ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
 
 ## Returns
 
