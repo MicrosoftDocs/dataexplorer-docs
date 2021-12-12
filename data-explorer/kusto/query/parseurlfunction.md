@@ -24,7 +24,7 @@ Parses an absolute URL `string` and returns a `dynamic` object contains URL part
 
 ## Returns
 
-An object of type [dynamic](./scalar-data-types/dynamic.md) that included the URL components: Scheme, Host, Port, Path, Username, Password, Query Parameters, Fragment.
+An object of type [dynamic](./scalar-data-types/dynamic.md) that included the URL components: Scheme, Host, Port, Path, Username, Password, Query Parameters, Fragment. If there are multiple parameters with the same key, the last one is returned. 
 
 ## Example
 
