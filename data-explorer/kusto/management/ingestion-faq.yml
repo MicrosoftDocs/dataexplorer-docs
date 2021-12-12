@@ -30,10 +30,10 @@ sections:
       - question: How is batching data size calculated? 
         answer: |
           The batching policy data size is set for uncompressed data. When ingesting compressed data, the [uncompressed data size is calculated](batchingpolicy.md#batch-data-size) from ingestion batching parameters, zip files metadata, or factor over the compressed file size.
-      - question: What happens if you try to ingest too large a load?
+      - question: What happens if you try to ingest too high a throughput rate?
         answer: |
-          You might receive a large number of ingestion failures, or receive the error `MaxRetryExceeded` in the Event Grid ingestion flow, 
-          due to failures to access storage and get file information.  
+          Ingestion with a high throughput rate could create a large number of ingestion failures, and the error `MaxRetryExceeded` in the 
+          Event Grid ingestion flow, if Azure Data Explorer cannot adequately access storage.  
           To solve this, use a premium storage account or divide the ingested data over several storage accounts.  
   - name: Ingestion monitoring, metrics and errors
     questions: 
@@ -42,20 +42,20 @@ sections:
           To view ingestion metrics, see [monitoring ingestion metrics](../../using-metrics.md).
       - question: How can I monitor for ingestion failures?
         answer: |
-          Ingestion failures should be monitored [using metrics](../../using-metrics.md#ingestion-metrics), and by 
+          You can monitor ingestion [using metrics](../../using-metrics.md#ingestion-metrics), and by 
           [setting up and using ingestion diagnostic logs](../../using-diagnostic-logs.md)  
           for detailed table-level monitoring, viewing detailed ingestion error codes, and so on. 
           See also streaming [metrics](../../using-metrics.md#streaming-ingest-metrics) and  
           [batching metrics](../../monitor-batching-ingestion.md).
       - question: Where can I view insights about ingestion?
         answer: |
-          You can use in the portal's [Azure Monitor Insights](/azure/azure-monitor/insights/data-explorer). 
+          You can use the portal's [Azure Monitor Insights](/azure/azure-monitor/insights/data-explorer). 
           This view is based on [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md) that 
           can be streamed to a [Log Analytics workspace.](/azure/azure-monitor/platform/data-platform-logs).  
       - question: Where do I check ingestion errors?
         answer: |
-          Failures from the full ingestion process appear in ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md). 
-          The [`.show ingestion failures`](ingestionfailures.md) command returns ingestion failures that occur only in the Kusto Data Engine. 
+          The full ingestion process can be monitored using ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md). 
+          The [`.show ingestion failures`](ingestionfailures.md) command shows ingestion failures that occur only in the Kusto Data Engine. 
   - name: SDKs and connectors
     questions:     
       - question: How can I improve ingestion with SDKs?
