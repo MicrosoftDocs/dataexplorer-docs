@@ -40,6 +40,6 @@ Here are several best practices to follow to make your query run faster.
 |**Extract values on column with strings sharing the same format or pattern**|  Use the [parse operator](./parseoperator.md) | Don't use several `extract()` statements.  | For example, values like `"Time = <time>, ResourceId = <resourceId>, Duration = <duration>, ...."`
 |**[extract() function](./extractfunction.md)**| Use when parsed strings don't all follow the same format or pattern.| |Extract the required values by using a REGEX.|
 | **[materialize() function](./materializefunction.md)** | Push all possible operators that will reduce the materialized data set and still keep the semantics of the query. | |For example, filters, or project only required columns.
-| **Using materialized views** | You only wish to query the materialized part (and not the delta) of a materialized view `MV` | `MV` | `materialized_view('MV')` or `materialized_view('MV', 15m)` if you want to use the materialized part only if the last materialization happened at most 15 minutes ago |
+| **Use materialized views** | Use [materialized views](../management/materialized-views/materialized-view-overview.md) for storing commonly used aggregations. Prefer using the `materialized_view()` function to query materialized part only | | `materialized_view('MV')` |
 
 
