@@ -70,6 +70,8 @@ This distinction prevents many kinds of security attacks, simply because it prev
 
 Not all control commands modify data or metadata. The large class of commands that start with `.show`, are used to display metadata or data. For example, the `.show tables` command returns a list of all tables in the current database.
 
+For more information on control commands, see [Management (control commands) overview](../management/index.md).
+
 ## Next steps
 
 * [Tutorial: Use Kusto queries](tutorial.md)
