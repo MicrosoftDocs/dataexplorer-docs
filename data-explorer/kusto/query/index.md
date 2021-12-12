@@ -76,6 +76,6 @@ For more information on control commands, see [Management (control commands) ove
 
 * [Tutorial: Use Kusto queries](tutorial.md)
 * [Samples for Kusto Queries](samples.md)
-* [KQL quick reference](kql-quick-reference.md)
+* [KQL quick reference](../../kql-quick-reference.md)
 * [SQL to Kusto cheat sheet](sqlcheatsheet.md)
 * [Query best practices](best-practices.md)
