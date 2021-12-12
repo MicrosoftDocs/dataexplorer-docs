@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/24/2021
+ms.date: 12/12/2021
 ms.localizationpriority: high 
 adobe-target: true
 ---
@@ -23,36 +23,39 @@ A Kusto query is a read-only request to process data and return results. The req
 
 There are three kinds of user [query statements](statements.md):
 
-* A [tabular expression statement](tabularexpressionstatements.md), the most important and common kind of query statement, returns "interesting" data as results. Tabular statements can contain one more operator. Each query operator starts with a tabular input, and returns a tabular output. Data flows from one operator to the next, being filtered or manipulated at each step, and then fed into the following step. Operators are sequenced by a `|` (pipe).
-* A [let statement](letstatement.md) defines a binding between a name and an expression. Let statements can be used to break a long query into small named parts that are easier to understand.
-* A [set statement](setstatement.md) sets a query option that affects how the query is processed and its results returned.
+* A [tabular expression statement](tabularexpressionstatements.md)
+* A [let statement](letstatement.md) 
+* A [set statement](setstatement.md)
 
-Query Statements are separated by a `;` (semicolon), and only affect the query at hand.
+All query statements are separated by a `;` (semicolon), and only affect the query at hand.
 
 >[!NOTE]
 > For information about application query statements, see [Application query statements](statements.md#application-query-statements).
 
-## Query example
+The most common kind of query statement is a tabular expression **statement**, which means both its input and output consist of tables or tabular datasets. Tabular statements contain zero or more **operators**, each of which starts with a tabular input and returns a tabular output. Operators are sequenced by a `|` (pipe). Data flows, or is piped, from one operator to the next. The data is filtered or manipulated at each step and then fed into the following step. It's like a funnel, where you start out with an entire data table. Each time the data passes through another operator, it is filtered, rearranged, or summarized. Because the piping of information from one operator to another is sequential, the query operator order is important and can affect both results and performance. At the end of the funnel, you're left with a refined output.
 
-For example, the following Kusto query has a single statement, which is a tabular expression statement. The statement starts with a reference to a table called `StormEvents` (the database that hosts this table is implicit, and part of the connection information) and contains several operators, each separated by a pipe. The data (rows) for the source table is filtered by the value of the `StartTime` column, and afterwards filtered by the value of the `State` column. The query then returns the count of "surviving" rows.
+Let's look at an example query.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
-| where StartTime >= datetime(2007-11-01) and StartTime < datetime(2007-12-01)
+| where StartTime between (datetime(2007-11-01) .. datetime(2007-12-01))
 | where State == "FLORIDA"  
 | count 
 ```
 
-[Run this query](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksKgnJzE1VsLNVSEksSS0BsjWMDAzMdQ0NdQ0MNRUS81KQVNmgKzICKUIxryRVwdZWQcnNxz/I08VRSQFsW3J+aV6JAgAwMx4+hAAAAA==)
+> [!NOTE]
+> KQL is case-sensitive for everything – table names, table column names, operators, functions, and so on.
+
+This query has a single tabular expression statement. The statement begins with a reference to a table called *StormEvents* and contains several operators, [`where`](whereoperator.md) and [`count`](countoperator.md), each separated by a pipe. The data rows for the source table are filtered by the value of the *StartTime* column and then filtered by the value of the *State* column. In the last line, the query returns a table with a single column and a single row containing the count of the remaining rows.
+
+[Run this query](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKaCJG4HENZENKklVsLVVUHLz8Q/ydHFUUgDZkpxfmlcCAIItD6l6AAAA)
 to see the result:
 
 |Count|
 |-----|
 |   23|
 
-> [!NOTE]
-> KQL is case-sensitive for everything – table names, table column names, operators, functions, and so on.
+To try out some more Kusto queries, see [Tutorial: Use Kusto queries](tutorial.md).
 
 ## Control commands
 
@@ -69,8 +72,8 @@ Not all control commands modify data or metadata. The large class of commands th
 
 ## Next steps
 
-* [Tutorial: Use Kusto queries](../query/tutorial.md)
-* [Samples for Kusto Queries](../query/samples.md)
-* [KQL quick reference](../../kql-quick-reference.md)
+* [Tutorial: Use Kusto queries](tutorial.md)
+* [Samples for Kusto Queries](samples.md)
+* [KQL quick reference](kql-quick-reference.md)
 * [SQL to Kusto cheat sheet](sqlcheatsheet.md)
 * [Query best practices](best-practices.md)
