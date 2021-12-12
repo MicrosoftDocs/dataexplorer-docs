@@ -35,7 +35,7 @@ sections:
           You might receive a large number of ingestion failures, or receive the error `MaxRetryExceeded` in the Event Grid ingestion flow, 
           due to failures to access storage and get file information.  
           To solve this, use a premium storage account or divide the ingested data over several storage accounts.  
-  - name: Ingestion monitoring, metrics and errors
+  - name: Ingestion monitoring, metrics, and errors
     questions: 
       - question: Where can I view ingestion metrics?
         answer: |
