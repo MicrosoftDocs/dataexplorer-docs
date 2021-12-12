@@ -35,7 +35,7 @@ sections:
           Ingestion with a high throughput rate could create a large number of ingestion failures, and the error `MaxRetryExceeded` in the 
           Event Grid ingestion flow, if Azure Data Explorer cannot adequately access storage.  
           To solve this, use a premium storage account or divide the ingested data over several storage accounts.  
-  - name: Ingestion monitoring, metrics and errors
+  - name: Ingestion monitoring, metrics, and errors
     questions: 
       - question: Where can I view ingestion metrics?
         answer: |
