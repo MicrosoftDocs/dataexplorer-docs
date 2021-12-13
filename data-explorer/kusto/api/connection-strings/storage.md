@@ -76,9 +76,10 @@ Where *CallerCredentials* indicates the credentials used to access the storage a
 * Append `;managed_identity=...` to the URI. Kusto will use the managed identity, either system or user-assigned, to make requests and access resources. 
     * For a *system-assigned managed identity*, append `;managed_identity=system`.
     * For a *user-assigned managed identity*, append the object ID of the user-assigned managed identity, with the following format: `;managed_identity={object_id}`. 
-   For more information on how to use managed identities with your cluster, see [managed identities overview](/azure/data-explorer/managed-identities-overview).
-   The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. For more information on role-based access control, see [blob access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac). 
-> [Note!] Managed Identity is only supported in specific Kusto flows. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
+  For more information on how to use managed identities with your cluster, see [managed identities overview](/azure/data-explorer/managed-identities-overview).
+  The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. For more information on role-based access control, see [blob access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac). 
+> [!NOTE]
+> Managed Identity is only supported in specific Kusto flows. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
 
 Examples (note that this is showing obfuscated string literals, so as not to expose the account key, SAS or token):
 
@@ -123,7 +124,8 @@ Where:
     * For a *user-assigned managed identity*, append the object ID of the user-assigned managed identity, with the following format: `;managed_identity={object_id}`. 
   For more information on how to use managed identities with your cluster, see [managed identities overview](/azure/data-explorer/managed-identities-overview).
   The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. For more information on role-based access control, see [blob access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac). 
-> [Note!] Managed Identity is only supported in specific Kusto flows. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
+> [!NOTE]
+> Managed Identity is only supported in specific Kusto flows. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
 
 
 ### Azure Data Lake Storage Gen1
@@ -141,4 +143,5 @@ supported:
     * For a *user-assigned managed identity*, append the object ID  of the user-assigned managed identity using the folliwng format: `;managed_identity={object_id}`. 
   For more information on how to use managed identities with your cluster, see [managed identities overview](/azure/data-explorer/managed-identities-overview).
   The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. For more information, see [data lake access control](/azure/data-lake-store/data-lake-store-access-control). 
-> [Note!] Managed Identity is only supported in specific Kusto flows. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
+> [!NOTE]
+> Managed Identity is only supported in specific Kusto flows. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
