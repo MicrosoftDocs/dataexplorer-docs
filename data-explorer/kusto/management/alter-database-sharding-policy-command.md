@@ -1,13 +1,13 @@
 ---
-title: .alter database sharding policy command - Azure Data Explorer
-description: This article describes the .alter database sharding policy command in Azure Data Explorer.
+title: ".alter database sharding policy command - Azure Data Explorer"
+description: "This article describes the .alter database sharding policy command in Azure Data Explorer."
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 11/29/2021
 ---
 # .alter database sharding policy
 
@@ -17,11 +17,12 @@ The sharding policy defines if and how [Extents (data shards)](../management/ext
 
 ## Syntax
 
-`.alter` `database` *DatabaseName* `policy` `sharding`
+`.alter` `database` *DatabaseName* `policy` `sharding` *ArrayOfPolicyObjects*
 
 ## Arguments
 
-*databaseName* - Specify the name of the database. 
+*DatabaseName* - Specify the name of the database.
+*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
 
 ## Returns
 

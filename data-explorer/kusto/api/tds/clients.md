@@ -92,6 +92,12 @@ For example, the following connection string will instruct Azure Data Explorer t
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated;Language=any@MaxStringSize:8000"
 ```
 
+You can also use service principal authentication with ODBC. To do so, you must provide an Azure Active Directory tenant ID in the ODBC connection string. The tenant ID can be specified in the *Language* field using the following syntax:
+
+```odbc
+"Driver={ODBC Driver 17 for SQL Server};Server=<adx_cluster_name>.<region_name>.kusto.windows.net;Database=<adx_database_name>;Authentication=ActiveDirectoryServicePrincipal;Language=any@MaxStringSize:4000,AadAuthority:<aad_tenant_id>;UID=<aad_application_id>;PWD=<aad_application_secret>"
+```
+
 ### PowerShell
 
 Here is an example of the PowerShell script that uses the ODBC driver.
