@@ -32,7 +32,7 @@ sections:
           The batching policy data size is set for uncompressed data. When ingesting compressed data, the [uncompressed data size is calculated](batchingpolicy.md#batch-data-size) from ingestion batching parameters, zip files metadata, or factor over the compressed file size.
       - question: What happens if you try to ingest too high a throughput rate?
         answer: |
-          If the [throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput rate is so high that Azure Data Explorer cannot adequately access storage, a large number of ingestion 
+          If the [throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput) rate is so high that Azure Data Explorer cannot adequately access storage, a large number of ingestion 
           failures may be generated, with the error `MaxRetryExceeded` in the Event Grid ingestion flow.  
           To solve this, use a premium storage account or divide the ingested data over several storage accounts.  
   - name: Ingestion monitoring, metrics, and errors
