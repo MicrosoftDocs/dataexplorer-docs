@@ -19,17 +19,17 @@ sections:
           If default settings for the [ingestion batching policy](batchingpolicy.md) do not suit your needs, you can try lowering the batching policy `time`. See also [ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput). You should also update settings when you scale up ingestion. When you change batching policy settings, it can take up to 5 minutes to take effect. 
       - question: What causes batching latency?
         answer: |
-          Ingestion latency can result from the [ingestion batching policy](batchingpolicy.md) settings, or a data backlog buildup. To address this, adjust the [batching policy settings](batching-policy.md).
+          Ingestion latency can result from the [ingestion batching policy](batchingpolicy.md) settings, or a data backlog buildup. To address this, adjust the [batching policy settings](alter-database-batching-policy-command.md).
           Latencies that are part of the ingestion process can be [monitored](../../monitor-batching-ingestion.md).      
       - question: Where can I view batching latency metrics?
         answer: |
           To view ingestion latency metrics, see [monitoring ingestion latency](../../monitor-batching-ingestion.md#view-the-ingestion-latency). The metrics `Stage Latency` and `Discovery Latency` show latencies in the ingestion process, and reveal if there are any long latencies.
       - question: How can I shorten batching latencies? 
         answer: |
-          You can [change settings in the batching policy](batchingpolicy.md#batching-latencies) to address issues that cause latencies such as data backlogs, inefficient batching, batching very large amounts of uncompressed data, or ingesting very small amounts of data. 
+          You can [evaluate](batchingpolicy.md#batching-latencies) and [adjust settings in the batching policy](alter-databse-batching-policy-command.md) to address issues that cause latencies such as data backlogs, inefficient batching, batching very large amounts of uncompressed data, or ingesting very small amounts of data. 
       - question: How is batching data size calculated? 
         answer: |
-          The batching policy data size is set for uncompressed data. When ingesting compressed data, the [uncompressed data size is calculated](batchingpolicy.md#batch-data-size) from ingestion batching parameters, zip files metadata, or factor over the compressed file size.
+          The batching policy data size is set for uncompressed data. When ingesting compressed data, the uncompressed [data size is calculated](batchingpolicy.md#batch-data-size) from ingestion batching parameters, zip files metadata, or factor over the compressed file size.
       - question: What happens if you try to ingest too high a throughput rate?
         answer: |
           If the [throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput) rate is so high that Azure Data Explorer cannot adequately access storage, a large number of ingestion 
@@ -43,7 +43,7 @@ sections:
           You can select specific metrics to track, choose how to aggregate your results, and create metric charts to view on your dashboard. See more about [streaming metrics](../../using-metrics.md#streaming-ingest-metrics) and [batching metrics](../../monitor-batching-ingestion.md).
       - question: Where can I view insights about ingestion?
         answer: |
-          You can use the portal's [Azure Monitor Insights](/azure/azure-monitor/insights/data-explorer) to help you understand how Azure Data Explorer is performing and how it's being used.
+          You can use the portal's [Azure Monitor Insights](/azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json) to help you understand how Azure Data Explorer is performing and how it's being used.
           The Insight view is based on [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md) that can be streamed to a [Log Analytics workspace.](/azure/azure-monitor/platform/data-platform-logs).  
       - question: Where do I check ingestion errors?
         answer: |
