@@ -25,7 +25,7 @@ As a data platform, Azure Data Explorer supports the ability to delete individua
 
 This deletion method should only be used for the unplanned deletion of individual records. For example, if you discover that an IoT device is reporting corrupt telemetry for some time, you should consider using this method to delete the corrupt data.
 
-However, if you want to do a periodic cleanup by regularly deleting duplicate records, or deleting old records per entity, then you should use [Materialized Views](../management/materialized-views/materialized-view-overview.md) instead.
+However, if you need to constantly delete records from a table based on some aggregation function, then using [Materialized Views](../management/materialized-views/materialized-view-overview.md) could be a better approach. For example, if you have a table into which duplicate data is constantly ingested (and you have no control over the ingestion pipeline), then you should consider creating a Materialized View, which will have all the data from the original table, but without duplicates.
 
 ## Deletion process
 
