@@ -29,7 +29,12 @@ Creates or alters an external SQL table in the database in which the command is 
 * *SqlServerConnectionString* - The connection string to the SQL server. Can be one of the following methods: 
   * *AAD-integrated authentication* (`Authentication="Active Directory Integrated"`): 
 The user or application authenticates via AAD to Kusto, and the same token is then used to access the SQL Server network endpoint.
-  * *Username/Password authentication* (`User ID=...; Password=...;`). If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed by using this method. 
+  * *Username/Password authentication* (`User ID=...; Password=...;`). 
+  * *Managed identity authentication* can be used to access the SQL resource by adding (`Authentication="Active Directory Managed Identity"`) for a *system-assigned managed identity* or (`Authentication="Active Directory Managed Identity";User Id={object_id}`) for a *user-assigned managed identity* with its object ID.
+  In order to use managed identity please follow these [instructions](/azure/data-explorer/managed-identities-overview), and allow the relevant sql db permissions to the managed identity.
+
+> [!NOTE]
+> If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities. 
 
 > [!WARNING]
 > Connection strings and queries that include confidential information should be obfuscated so that they'll be omitted from any Kusto tracing. For more information, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals).
