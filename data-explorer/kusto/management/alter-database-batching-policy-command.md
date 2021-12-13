@@ -35,6 +35,7 @@ If the policy is set to `null`, default values are used. Default values are:
 ## Arguments
 
 *DatabaseName* - Specify the name of the database.
+
 *ArrayOfPolicyObjects* - An array with one or more policy objects defined.
 
 ## Example
