@@ -44,7 +44,7 @@ sections:
       - question: Where can I view insights about ingestion?
         answer: |
           You can use the portal's [Azure Monitor Insights](/azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json) to help you understand how Azure Data Explorer is performing and how it's being used.
-          The Insight view is based on [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md) that can be streamed to a [Log Analytics workspace.](/azure/azure-monitor/platform/data-platform-logs).  
+          The Insight view is based on [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md) that can be streamed to a Log Analytics workspace.  
       - question: Where do I check ingestion errors?
         answer: |
           The full ingestion process can be monitored using ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md). 
