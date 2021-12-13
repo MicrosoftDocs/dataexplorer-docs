@@ -11,12 +11,15 @@ ms.date: 04/23/2021
 ---
 # Materialized views
 
-[Materialized views](../../query/materialized-view-function.md) expose an *aggregation* query over a source table. Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-views-queries) is more performant than running the aggregation directly over the source table in each query.
+Materialized views expose an *aggregation* query over a source table, or over [another materialized view](#materialized-view-over-materialized-view-preview).
+
+Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-views-queries) is more performant than running the aggregation directly over the source table.
 
 > [!NOTE]
-> Materialized views have some [limitations](materialized-view-create.md#materialized-views-limitations-and-known-issues), and aren't guaranteed to work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
+> Materialized views have some [limitations](materialized-view-create.md#materialized-views-limitations-and-known-issues), and don't work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
 
 Use the following commands to manage materialized views:
+
 * [`.create materialized-view`](materialized-view-create.md)
 * [`.alter materialized-view`](materialized-view-alter.md)
 * [`.drop materialized-view`](materialized-view-drop.md)
@@ -107,7 +110,7 @@ There are 2 ways to query a materialized view:
 
 When querying the entire view, the materialized part is combined with the `delta` during query time. This includes aggregating the `delta` and joining it with the materialized part.
 
-* Querying the entire view will perform better if the query includes filters on the group by keys of the materialized view query. See more tips about how to create your materialized view, based on your query pattern, in the [`.create materialized-view` performance tips](materialized-view-create.md#performance-tips)section.
+* Querying the entire view will perform better if the query includes filters on the group by keys of the materialized view query. See more tips about how to create your materialized view, based on your query pattern, in the [`.create materialized-view` performance tips](materialized-view-create.md#performance-tips) section.
 * Azure Data Explorer's query optimizer chooses summarize/join strategies that are expected to improve query performance. For example, the decision on whether to [shuffle](../../query/shufflequery.md) the query is based on number of records in `delta` part. The following [client request properties](../../api/netfx/request-properties.md) provide some control over the optimizations applied. You can test these properties with your materialized view queries and evaluate their impact on queries performance.
 
 |Client request property name|Type|Description|
@@ -159,6 +162,13 @@ The main contributors that can impact a materialized view health are:
 * **Number of materialized views in cluster:** The above considerations apply to each individual materialized view defined in the cluster. Each view consumes its own resources, and many views will compete with each other on available resources. While there are no hard-coded limits to the number of materialized views in a cluster, the cluster may not be able to handle all materialized views, when there are many defined. The [capacity policy](../capacitypolicy.md#materialized-views-capacity-policy) can be adjusted if there is more than a single materialized view in the cluster. Increase the value of `ClusterMinimumConcurrentOperations` in the policy to run more materialized views concurrently.
 
 * **Materialized view definition**: The materialized view definition must be defined according to query best practices for best query performance. For more information, see [create command performance tips](materialized-view-create.md#performance-tips).
+
+## Materialized view over materialized view (preview)
+
+A materialized view can be created over another materialized view if the source materialized view is a deduplication view. Specifically, the aggregation of the source materialized view must be `take_any(*)` in order to deduplicate source records. The second materialized view can use any [supported aggregation functions](materialized-view-create.md#supported-aggregation-functions). For specific information on how to create a materialized view over a materialized view, see [`.create materialized-view` command](materialized-view-create.md#create-materialized-view-over-materialized-view-preview).
+
+> [!TIP]
+> When querying a materialized view that is defined over another materialized view, we recommend querying the materialized part only using the `materialized_view()` function. Querying the entire view will not be performant when both views aren't fully materialized. For more information, see [materialized views queries](#materialized-views-queries).
 
 ## Materialized views monitoring
 
