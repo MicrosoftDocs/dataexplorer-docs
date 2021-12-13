@@ -58,7 +58,7 @@ The query used in the materialized view argument is limited by the following rul
 
 * The query argument should reference a single fact table that is the source of the materialized view, include a single summarize operator, and one or more aggregation functions aggregated by one or more groups by expressions. The summarize operator must always be the last operator in the query.
 
-* A view is either an `arg_max`/`arg_min`/`any` view (those functions can be used together in same view) or any of the other supported functions, but not both in same materialized view. 
+* A view is either an `arg_max`/`arg_min`/`take_any` view (those functions can be used together in same view) or any of the other supported functions, but not both in same materialized view. 
     For example, `SourceTable | summarize arg_max(Timestamp, *), count() by Id` isn't supported. 
 
 * The query shouldn't include any operators that depend on `now()`. For example, the query shouldn't have `where Timestamp > ago(5d)`. Limit the period of time covered by the view using the retention policy on the materialized view.
@@ -75,7 +75,7 @@ The query used in the materialized view argument is limited by the following rul
 
     * Records in the view's source table (the fact table) are materialized once only. Updates to the dimension tables do not have any impact on records that have already been processed from the fact table. 
     * A different ingestion latency between the fact table and the dimension table may impact the view results.
-    * **Example**: A view definition includes an inner join with a dimension table. At the time of materialization, the dimension record was not fully ingested, but was already ingested to the fact table. This record will be dropped from the view and never reprocessed again. 
+    * **Example**: A view definition includes an inner join with a dimension table. At the time of materialization, the dimension record was not fully ingested, but was already ingested to the fact table. This record will be dropped from the view and never reprocessed again.
 
         Similarly, if the join is an outer join, the record from fact table will be processed and added to view with a null value for the dimension table columns. Records that have already been added (with null values) to the view won't be processed again. Their values, in columns from the dimension table, will remain null.
 
@@ -85,11 +85,11 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 
 |Property|Type|Description |
 |----------------|-------|---|
-|backfill|bool|Whether to create the view based on all records currently in *SourceTable* (`true`), or to create it "from-now-on" (`false`). Default is `false`. For more information, see [backfill a materialized view](#backfill-a-materialized-view).| 
+|backfill|bool|Whether to create the view based on all records currently in *SourceTable* (`true`), or to create it "from-now-on" (`false`). Default is `false`. For more information, see [backfill a materialized view](#backfill-a-materialized-view).|
 |effectiveDateTime|datetime|Relevant only when using `backfill`. If set, creation only backfills with records ingested after the datetime. Backfill must also be set to true. Expects a datetime literal, for example, `effectiveDateTime=datetime(2019-05-01)`|
 |UpdateExtentsCreationTime|bool|Relevant only when using `backfill`. If true, [extent creation time](../extents-overview.md#extent-creation-time) is assigned based on datetime group-by key during the backfill process. For more information, see [backfill a materialized view](#backfill-a-materialized-view).
-|lookback|timespan| Valid only for `arg_max`/`arg_min`/`any` materialized views, and only if the engine is [EngineV3](../../../engine-v3.md). Limits the period of time in which duplicates are expected. For example, if a look-back of 6 hours is specified on an `arg_max` view, the de-duplication between newly ingested records and existing ones will only take into consideration records that were ingested up to 6 hours ago. Look-back is relative to `ingestion_time`. Defining the look-back period incorrectly may lead to duplicates in the materialized view. For example, if a record for a specific key is ingested 10 hours after a record for the same key was ingested, and the look-back is set to 6h, that key will be a duplicate in the view. The look-back period is applied both during [materialization time](materialized-view-overview.md#how-materialized-views-work) as well as during [query time](materialized-view-overview.md#materialized-views-queries).|
-|autoUpdateSchema|bool|Whether to auto-update the view on source table changes. Default is `false`. This option is valid only for views of type `arg_max(Timestamp, *)` / `arg_min(Timestamp, *)` / `any(*)` (only when columns argument is `*`). If this option is set to true, changes to source table will be automatically reflected in the materialized view.
+|lookback|timespan| Valid only for `arg_max`/`arg_min`/`take_any` materialized views, and only if the engine is [EngineV3](../../../engine-v3.md). Limits the period of time in which duplicates are expected. For example, if a look-back of 6 hours is specified on an `arg_max` view, the de-duplication between newly ingested records and existing ones will only take into consideration records that were ingested up to 6 hours ago. Look-back is relative to `ingestion_time`. Defining the look-back period incorrectly may lead to duplicates in the materialized view. For example, if a record for a specific key is ingested 10 hours after a record for the same key was ingested, and the look-back is set to 6h, that key will be a duplicate in the view. The look-back period is applied both during [materialization time](materialized-view-overview.md#how-materialized-views-work) as well as during [query time](materialized-view-overview.md#materialized-views-queries).|
+|autoUpdateSchema|bool|Whether to auto-update the view on source table changes. Default is `false`. This option is valid only for views of type `arg_max(Timestamp, *)` / `arg_min(Timestamp, *)` / `take_any(*)` (only when columns argument is `*`). If this option is set to true, changes to source table will be automatically reflected in the materialized view.
 |dimensionTables|Array|A dynamic argument that includes an array of dimension tables in the view. See [Query argument](#query-argument)
 |folder|string|The materialized view's folder.|
 |docString|string|A string documenting the materialized view|
@@ -102,6 +102,15 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 > * Using `autoUpdateSchema` may lead to irreversible data loss when columns in the source table are dropped.
 > Monitor automatic disable of materialized views using the [MaterializedViewResult metric](materialized-view-overview.md#materializedviewresult-metric).  After fixing incompatibility issues, re-enable the view with the [enable materialized view](materialized-view-enable-disable.md) command.
 
+### Create materialized view over materialized view (preview)
+
+A materialized view over another materialized view can only be created when the source materialized view is of kind `take_any(*)` aggregation (deduplication). See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view-preview) and [examples](#examples) below.
+
+**Syntax":**
+`.create` [`async`] [`ifnotexists`] `materialized-view` <br>
+[ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <br>
+*ViewName* `on materialized-view` *SourceMaterializedViewName* <br>
+`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
 
 ## Examples
 
@@ -146,7 +155,18 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
     .create materialized-view with(lookback=6h) DedupedT on table T
     {
         T
-        | summarize any(*) by EventId
+        | summarize take_any(*) by EventId
+    }
+    ```
+
+1. Create a down-sampling materialized view which is based on the previous `DedupedT` materialized view:
+
+    <!-- csl -->
+    ```
+    .create materialized-view DailyUsage on materialized-view DedupedT
+    {
+        DedupedT
+        | summarize count(), dcount(User) by Day=bin(Timestamp, 1d)
     }
     ```
 
@@ -215,13 +235,13 @@ The following aggregation functions are supported:
     For example, in the following aggregation:
 
     ```kusto
-        SourceTable | summarize any(*) by EventId
+        SourceTable | summarize take_any(*) by EventId
     ``` 
     
     If an EventId always has the same Timestamp value, and therefore adding Timestamp does not change the semantics of the aggregation, it's better to define the view as:
     
     ```kusto
-        SourceTable | summarize any(*) by EventId, Timestamp
+        SourceTable | summarize take_any(*) by EventId, Timestamp
     ```
 
 * **Define a lookback period**: if applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [properties](#properties).  
