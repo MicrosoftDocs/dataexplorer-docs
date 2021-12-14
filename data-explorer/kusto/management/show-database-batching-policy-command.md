@@ -32,3 +32,7 @@ The following command will return the batching policy on a database.
 ```kusto
 .show database MyDatabase policy ingestionbatching
 ```
+
+## Next steps
+
+* [show table batching policy](show-table-batching-policy.md)

@@ -28,3 +28,7 @@ The following command deletes the batching policy on a database.
 ```kusto
 .delete database MyDatabase policy ingestionbatching
 ```
+
+## Next steps
+
+* [delete table batching policy](delete-table-batching-policy.md)

@@ -44,3 +44,7 @@ The following command sets a batch ingress data time of 30 seconds, for 500 file
 ```kusto
 .alter database MyDatabase policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:30", "MaximumNumberOfItems": 500, "MaximumRawDataSizeMB": 1024}'
 ```
+
+## Next steps
+
+* [alter table batching policy](alter-table-batching-policy.md)

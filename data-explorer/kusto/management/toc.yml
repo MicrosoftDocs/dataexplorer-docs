@@ -246,7 +246,7 @@ items:
       href: alter-merge-capacity-policy-command.md
     - name: .show capacity policy command
       href: show-cluster-capacity-policy-command.md
-  - name: Ingestion batching
+  - name: Ingestion batching 
     items:
     - name: Ingestion batching policy
       href: batchingpolicy.md
