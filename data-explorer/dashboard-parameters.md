@@ -12,7 +12,7 @@ ms.date: 11/16/2021
 
 # Use parameters in Azure Data Explorer dashboards
 
-Parameters are used as building blocks for dashboard filters in Azure Data Explorer dashboards. They're managed in the dashboard scope, and can be added to queries to filter the data presented by the underlying visual. A query can use one or more parameters. This document describes the creation and use of parameters and linked filters in Azure Data Explorer dashboards.
+Parameters are used as building blocks for dashboard filters in Azure Data Explorer dashboards. They're managed in the dashboard scope, and can be added to queries to filter the data presented by the underlying visual. A query can use one or more parameters. This document describes the creation and use of parameters and linked filters in Azure Data Explorer dashboards. Parameters can be used to slice and dice dashboard visuals either directly by selecting [parameter values in the filter bar](#use-parameters-in-your-query) or by using [cross-filters](#use-cross-filters-as-dashboard-parameters).
 
 > [!NOTE]
 > Parameter management is available in edit mode to dashboard editors.
@@ -294,24 +294,33 @@ Free text parameters don't contain any values. They allow you to introduce your 
 
 The new parameter is now visible in the parameter list at the top of the dashboard.
 
-## Use cross filters
+## Use cross-filters as dashboard parameters
 
-Cross filters are visual controls to filter the dashboard page data.
-Using cross filter achieves the same result as selecting the equivalent value in the filter pill control on the top of the dashboard screen.
+Cross-filters allow you to select a value in one visual and all dashboard visuals, such as line or scatter charts, are filtered to only show related data. Using cross-filters achieves the same result as selecting the equivalent value for the parameter in the parameter list at the top of the dashboard.
 
-### Define cross filters
+### Define cross-filters
 
-Cross filters can be defined in the tile edit page (in edit mode), by selecting the "Visual" tab on the bottom of the screen and then selecting the "Interactions" tab in the right pane.
-//screenshot - Interactions_tab
-To create a cross filter you first need to enable it and set column from which the cross filter will be pulling the data and the parameters to which it will be feeding it.
-The column and parameter should be of the same data type.
+To create a cross-filter, you must enable it in the visual and the specify the parameter that is used to filter the data.
 
-## Interact with your data using cross filters
+1. Edit the dashboard, and then edit the visual where you want to add cross-filters.
+1. Select **Visual**.
+1. In the right pane, select **Interactions**, and then turn on cross-filters.
+1. Specify the column that will be used to provide the value for a parameter used to filter the visual's query.
 
-You can select data points in tiles with cross filter assigned and use their values to filter the current dashboard page using the mouse left click or for table visuals by right clicking the relevant cell and selecting "cross filter" from the action menu item list.
-//screenshot - Table_cross filter_right click menu
-Once a cross filter in a tile has been used you can reset the operation by clicking the reset button on the top of the tile.
-//screenshot - Cross_filter_reset
+    > [!IMPORTANT]
+    > The column and parameter must be of the same data type.
+
+:::image type="content" source="media/dashboard-parameters/cross-filter-query.png" alt-text="Screenshot of the edit visual page, showing the interactions tab.":::
+
+## Interact with your data using cross-filter
+
+Once the cross-filter is defined, you can use it to interact with your data. In visuals where you've defined cross-filters, you can select data points and use their values to filter the current dashboard pages. For table visuals, select data points by right-clicking on the relevant cell and then in the context menu, select **Cross-filter**.
+
+:::image type="content" source="media/dashboard-parameters/cross-filter-query.png" alt-text="Screenshot of a table visual, showing the cross-filter context menu option.":::
+
+You can reset the cross-filter by selecting **Reset** at the top of the visual where it was selected.
+
+:::image type="content" source="media/dashboard-parameters/cross-filter-reset.png" alt-text="Screenshot of a table visual, showing the reset button.":::
 
 ## Use filter search for single and multiple selection filters
 
