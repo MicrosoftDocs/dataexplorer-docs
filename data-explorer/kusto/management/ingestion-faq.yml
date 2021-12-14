@@ -17,7 +17,7 @@ sections:
       - question: Do I need to change the batching policy?
         answer: |
           If default settings for the [ingestion batching policy](batchingpolicy.md) do not suit your needs, you can try lowering the batching policy `time`. See also [ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput). You should also update settings when you scale up ingestion. When you change batching policy settings, it can take up to 5 minutes to take effect. 
-      - question: What causes batching latency?
+      - question: What causes batching ingestion latency?
         answer: |
           Ingestion latency can result from the [ingestion batching policy](batchingpolicy.md) settings, or a data backlog buildup. To address this, adjust the [batching policy settings](batchingpolicy.md).
           Latencies that are part of the ingestion process can be [monitored](../../monitor-batching-ingestion.md).      
