@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/08/2021
+ms.date: 11/29/2021
 ---
 # .alter-merge workload_group
 
@@ -116,5 +116,4 @@ Specify the appliable option for the query consistency model:
      }
   }
 } ```
-
 ~~~
