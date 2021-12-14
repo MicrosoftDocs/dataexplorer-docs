@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 12/14/2021
 ---
 # time_window_rolling_avg_fl()
 
@@ -21,7 +21,7 @@ This type of rolling window calculation is required for use cases where the metr
 
 ## Syntax
 
-`T | invoke time_window_rolling_avg_fl(`*t_col*, *y_col*, *key_col*, *dt*, *direction*`)`
+`T | invoke time_window_rolling_avg_fl(`*t_col*, *y_col*, *key_col*, *dt* [, *direction* ]`)`
   
 ## Arguments
 
@@ -29,7 +29,7 @@ This type of rolling window calculation is required for use cases where the metr
 * *y_col*: The name of the column containing the metric value of the records.
 * *key_col*: The name of the column containing the partition key of the records.
 * *dt*: Duration of the rolling window.
-* *direction*: Aggregation direction. +1/-1: rolling window is set from current time forward/backward respectively. Default is -1, as backward rolling window is the only possible method for streaming scenarios.
+* *direction*: Aggregation direction (optional). +1/-1: rolling window is set from current time forward/backward respectively. Default is -1, as backward rolling window is the only possible method for streaming scenarios.
 
 ## Usage
 
