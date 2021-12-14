@@ -29,7 +29,7 @@ sections:
           You can [check information about latencies](batchingpolicy.md#batching-latencies) and [adjust settings in the batching policy](batchingpolicy.md) to address issues that cause latencies such as data backlogs, inefficient batching, batching very large amounts of uncompressed data, or ingesting very small amounts of data. 
       - question: How is batching data size calculated? 
         answer: |
-          The batching policy data size is set for uncompressed data. When ingesting compressed data, the uncompressed [data size is calculated](batchingpolicy.md#batch-data-size) from ingestion batching parameters, zip files metadata, or factor over the compressed file size.
+          The batching policy data size is set for uncompressed data. When ingesting compressed data, the uncompressed [data size is calculated](batchingpolicy.md#batch-data-size) using files metadata, or factor over the compressed file size.
       - question: What happens if you try to ingest too high a throughput rate?
         answer: |
           If the [throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput) rate is so high that Azure Data Explorer cannot adequately access storage, a large number of ingestion 
