@@ -40,7 +40,7 @@ sections:
       - question: How can I monitor ingestion issues?
         answer: |
           You can monitor ingestion [using metrics](../../using-metrics.md#ingestion-metrics), and by [setting up and using ingestion diagnostic logs](../../using-diagnostic-logs.md) for detailed table-level monitoring, viewing detailed ingestion error codes, and so on. 
-          You can select specific metrics to track, choose how to aggregate your results, and create metric charts to view on your dashboard. See more about [streaming metrics](../../using-metrics.md#streaming-ingest-metrics) and [batching metrics](../../monitor-batching-ingestion.md).
+          You can select specific metrics to track, choose how to aggregate your results, and create metric charts to view on your dashboard. See more about [streaming metrics](../../using-metrics.md#streaming-ingest-metrics) and [how to monitor batching ingestion](../../monitor-batching-ingestion.md).
       - question: Where can I view insights about ingestion?
         answer: |
           You can use the portal's [Azure Monitor Insights](/azure/azure-monitor/app/app-insights-overview) to help you understand how Azure Data Explorer is performing and how it's being used.
