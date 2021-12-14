@@ -43,7 +43,7 @@ sections:
           You can select specific metrics to track, choose how to aggregate your results, and create metric charts to view on your dashboard. See more about [streaming metrics](../../using-metrics.md#streaming-ingest-metrics) and [batching metrics](../../monitor-batching-ingestion.md).
       - question: Where can I view insights about ingestion?
         answer: |
-          You can use the portal's [Azure Monitor Insights](/azure/azure-monitor/app/app-insights-overview.md) to help you understand how Azure Data Explorer is performing and how it's being used.
+          You can use the portal's [Azure Monitor Insights](/azure/azure-monitor/app/app-insights-overview) to help you understand how Azure Data Explorer is performing and how it's being used.
           The Insight view is based on [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md) that can be streamed to a Log Analytics workspace.  
       - question: Where do I check ingestion errors?
         answer: |
