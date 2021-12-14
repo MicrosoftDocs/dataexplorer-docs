@@ -10,14 +10,19 @@ sections:
     questions:
       - question: How does batching affect my data?
         answer: |
-          The batching manager buffers and batches ingress data based on the ingestion settings in the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy sets batch limits according to three limiting factors, whichever is first reached: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. The default batching settings are 5 minutes / 1 GB / 1000 blobs, meaning there will be at least a 5 minute delay when queueing a sample data for ingestion.
+          The batching manager buffers and batches ingress data based on the ingestion settings in the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy sets batch limits according to three limiting factors, whichever is first reached: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. The default batching settings are 5 minutes / 1 GB / 1000 blobs, meaning there will be at least a 5-minute delay when queueing a sample data for ingestion.
       - question: Should I use batching or streaming ingestion?
         answer: |
-          Batching ingestion is optimized for high ingestion [throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput). Streaming ingestion is ongoing data ingestion from a streaming source. Learn more about [batching versus streaming ingestion](../../ingest-data-overview.md#batching-vs-streaming-ingestion).
+          Batching ingestion is optimized for high ingestion throughput, and is the preferred and most performant type of ingestion. 
+          In contrast, streaming ingestion is optimized for low ingestion latency. 
+          Learn more about [batching versus streaming ingestion](../../ingest-data-overview.md#batching-vs-streaming-ingestion).
       - question: Do I need to change the batching policy?
         answer: |
-          If default settings for the [ingestion batching policy](batchingpolicy.md) do not suit your needs, you can try lowering the batching policy `time`. See also [ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput). You should also update settings when you scale up ingestion. When you change batching policy settings, it can take up to 5 minutes to take effect. 
-      - question: What causes batching latency?
+          If default settings for the [ingestion batching policy](batchingpolicy.md) do not suit your needs, you can try lowering the batching policy `time`. 
+          See also [ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput).
+          You should also update settings when you scale up ingestion. 
+          When you change batching policy settings, it can take up to 5-minutes to take effect. 
+      - question: What causes batching ingestion latency?
         answer: |
           Ingestion latency can result from the [ingestion batching policy](batchingpolicy.md) settings, or a data backlog buildup. To address this, adjust the [batching policy settings](batchingpolicy.md).
           Latencies that are part of the ingestion process can be [monitored](../../monitor-batching-ingestion.md).      
@@ -26,15 +31,10 @@ sections:
           To view ingestion latency metrics, see [monitoring ingestion latency](../../monitor-batching-ingestion.md#view-the-ingestion-latency). The metrics `Stage Latency` and `Discovery Latency` show latencies in the ingestion process, and reveal if there are any long latencies.
       - question: How can I shorten batching latencies? 
         answer: |
-          You can [check information about latencies](batchingpolicy.md#batching-latencies) and [adjust settings in the batching policy](batchingpolicy.md) to address issues that cause latencies such as data backlogs, inefficient batching, batching very large amounts of uncompressed data, or ingesting very small amounts of data. 
+          You can [learn about latencies](batchingpolicy.md#batching-latencies) and [adjust settings in the batching policy](batchingpolicy.md) to address issues that cause latencies such as data backlogs, inefficient batching, batching large amounts of uncompressed data, or ingesting very small amounts of data. 
       - question: How is batching data size calculated? 
         answer: |
           The batching policy data size is set for uncompressed data. When ingesting compressed data, the uncompressed [data size is calculated](batchingpolicy.md#batch-data-size) from ingestion batching parameters, zip files metadata, or factor over the compressed file size.
-      - question: What happens if you try to ingest too high a throughput rate?
-        answer: |
-          If the [throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput) rate is so high that Azure Data Explorer cannot adequately access storage, a large number of ingestion 
-          failures may be generated, with the error `MaxRetryExceeded` in the Event Grid ingestion flow.  
-          To solve this, use a premium storage account or divide the ingested data over several storage accounts.  
   - name: Ingestion monitoring, metrics, and errors
     questions: 
       - question: How can I monitor ingestion issues?
@@ -48,8 +48,17 @@ sections:
       - question: Where do I check ingestion errors?
         answer: |
           The full ingestion process can be monitored using ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md). 
-          The [`.show ingestion failures`](ingestionfailures.md) command shows ingestion failures that occur specifically in the Kusto Data Engine. 
-  - name: SDKs and connectors
+          Ingestion failures can be monitored using the `IngestionResult` metric or the `FailedIngestion` diagnostic log.
+          The [`.show ingestion failures`](ingestionfailures.md) command shows ingestion failures that occur specifically in the Kusto Data Engine, and is not recommended for monitoring errors. 
+      - question: What can I do if I find many retry errors?
+          Metrics that include the "RetryAttemptsExceeded" metric status many times indicate that ingestion exceeded the retry attempt limit or time-span limit following a recurring transient error. 
+          If this error also appears in the diagnostic log with error code "General_RetryAttemptsExceeded" and the details "Failed to access storage and get information for the blob," this is a high load storage access issue.
+          During Event Grid ingestion, Azure Data Explorer requests blob details from the storage account.
+          When there is too high load on a storage account, storage access may fail, and information needed for ingestion cannot be retrieved.
+          If attempts pass the maximum amount of retries defined, Azure Data Explorer stops trying to ingest the failed blob.
+          To prevent a high load on a specific storage account, use a premium storage account or divide the ingested data over more storage accounts.
+          To discover related errors, check the FailedIngestion diagnostic logs for any error codes and to view the paths of the failed blobs.
+ - name: SDKs and connectors
     questions:     
       - question: How can I improve ingestion with SDKs?
         answer: |
