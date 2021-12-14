@@ -58,7 +58,7 @@ sections:
           If attempts pass the maximum amount of retries defined, Azure Data Explorer stops trying to ingest the failed blob.
           To prevent a high load on a specific storage account, use a premium storage account or divide the ingested data over more storage accounts.
           To discover related errors, check the FailedIngestion diagnostic logs for any error codes and to view the paths of the failed blobs.
- - name: SDKs and connectors
+  - name: SDKs and connectors
     questions:     
       - question: How can I improve ingestion with SDKs?
         answer: |
