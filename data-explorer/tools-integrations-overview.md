@@ -7,19 +7,19 @@ ms.author: orspodek
 ms.reviewer: olgolden
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 12/15/2021
 ---
 # Azure Data Explorer tools and integrations overview
 
-Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data streaming from applications, websites, IoT devices, and more. Azure Data Explorer collects, stores, and analyzes diverse data to improve products, enhance customer experiences, monitor devices, and boost operations. 
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data streaming from applications, websites, IoT devices, and more. Azure Data Explorer collects, stores, and analyzes diverse data to improve products, enhance customer experiences, monitor devices, and boost operations.
 
-Azure Data Explorer offers different tools and integrations to do data ingestion, queries, visualization, orchestration and more. In addition to its native services, Azure Data Explorer allows users to integrate easily with various products and platforms, enable various customer use cases, optimize the business process by streamlining workflows, and reducing costs. 
+Azure Data Explorer offers different tools and integrations to do data ingestion, queries, visualization, orchestration and more. In addition to its native services, Azure Data Explorer allows users to integrate easily with various products and platforms, enable various customer use cases, optimize the business process by streamlining workflows, and reducing costs.
 
 This article supplies you with a list of Azure Data Explorer tools, connectors, and integrations with links to relevant documents for additional information.
 
-## Ingest data 
+## Ingest data
 
-Data ingestion is the process used to load data records from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for query. Azure Data Explorer provides several tools and connectors for data ingestion. 
+Data ingestion is the process used to load data records from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for query. Azure Data Explorer provides several tools and connectors for data ingestion.
 
 ### Azure Data Explorer ingestion tools
 
@@ -57,7 +57,9 @@ There are several tools available for running queries in Azure Data Explorer.
 The following open source repositories contain the source code for the Kusto Query Lanuguage (KQL) parser and editor:
 
 * [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language) - A .NET core repository for the Kusto Query Language parser and semantic tree.
-* [Kusto Query Language plugin for the Monaco editor](https://github.com/Azure/monaco-kusto) - A Kusto Query Language editor that can be embedded in web and electron based applications. 
+* [Kusto Query Language setup and usage for the Monaco editor](/azure/data-explorer/kusto/api/monaco/monaco-kusto) - The Kusto Query Language editor that can be embedded in web and electron based applications.
+    * [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto) - Access the Kusto Query Language editor plugin.
+    * [Embedding the Web UI](/azure/data-explorer/kusto/api/monaco/host-web-ux-in-iframe) - The Web UI can be embedded in an iframe and hosted in third-party websites.
 
 ### Query integrations
 
@@ -95,4 +97,3 @@ The [visualization overview](viz-overview.md) details data visualization, dashbo
 * [Azure Pipelines](devops.md) 
 * [Sync Kusto](kusto/tools/synckusto.md) 
 * [Delta Kusto](https://github.com/microsoft/delta-kusto)
-
