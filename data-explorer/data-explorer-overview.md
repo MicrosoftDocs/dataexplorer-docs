@@ -21,9 +21,9 @@ By analyzing structured, semi-structured, and unstructured data across time seri
 
 Azure Data Explorer capabilities are extended by other services built on its powerful query language, including [Azure Monitor logs](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/), and [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint).
 
-Use the following decision tree to help you decide if Azure Data Explorer is right for you: 
+Use the following decision tree to help you decide if Azure Data Explorer is right for you:
 
-:::image type="content" source="media/data-explorer-overview/decision-tree.png" alt-text="Schematic image of Azure Data Explorer decision tree.":::
+:::image type="content" source="media/data-explorer-overview/decision-tree.png" alt-text="This image is a schematic workflow image of an Azure Data Explorer decision tree.":::
 
 ## What makes Azure Data Explorer unique?
 
