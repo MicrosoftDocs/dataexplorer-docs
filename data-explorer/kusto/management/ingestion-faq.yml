@@ -55,7 +55,7 @@ sections:
           [Metrics](../../using-metrics.md) that include the `RetryAttemptsExceeded` metric status many times indicate that ingestion exceeded the retry attempt limit or time-span limit following a recurring transient error. 
           If this error also appears in the diagnostic log with [error code](../../error-codes.md) `General_RetryAttemptsExceeded` and the details "Failed to access storage and get information for the blob," this indicates a high load storage access issue.
           During Event Grid ingestion, Azure Data Explorer requests blob details from the storage account.
-          When there is load is too high on a storage account, storage access may fail, and information needed for ingestion cannot be retrieved.
+          When the load is too high on a storage account, storage access may fail, and information needed for ingestion cannot be retrieved.
           If attempts pass the maximum amount of retries defined, Azure Data Explorer stops trying to ingest the failed blob.
           To prevent a load issue, use a premium storage account or divide the ingested data over more storage accounts.
           To discover related errors, check the `FailedIngestion` diagnostic logs for error codes and for the paths of any failed blobs.
