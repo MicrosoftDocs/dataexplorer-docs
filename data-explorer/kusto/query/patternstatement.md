@@ -117,13 +117,13 @@ Azure Data Explorer allows variations of syntax when invoking patterns. For exam
 declare pattern app = (applicationId:string)[eventType:string]
 {
     ("ApplicationX").["StopEvents"] = { database("AppX").Events | where EventType == "StopEvent" };
-    ("ApplicationX").["StartEvents"] = { database("AppX").Events | where EventType == "StartEvents" };
+    ("ApplicationX").["StartEvents"] = { database("AppX").Events | where EventType == "StartEvent" };
 };
 union
-  app("ApplicationX").StartEvent,
-  app('ApplicationX').StartEvent,
-  app("ApplicationX").['StartEvent'],
-  app("ApplicationX").["StartEvent"]
+  app("ApplicationX").StartEvents,
+  app('ApplicationX').StartEvents,
+  app("ApplicationX").['StartEvents'],
+  app("ApplicationX").["StartEvents"]
 ```
 
 ### No wildcards
@@ -134,7 +134,7 @@ Azure Data Explorer does not give special treatment to wildcards in a pattern. F
 declare pattern app = (applicationId:string)[eventType:string]
 {
     ("ApplicationX").["StopEvents"] = { database("AppX").Events | where EventType == "StopEvent" };
-    ("ApplicationX").["StartEvents"] = { database("AppX").Events | where EventType == "StartEvents" };
+    ("ApplicationX").["StartEvents"] = { database("AppX").Events | where EventType == "StartEvent" };
 };
 union app("ApplicationX").["*"]
 | count
