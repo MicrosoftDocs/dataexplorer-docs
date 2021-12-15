@@ -85,5 +85,5 @@ We would be thrilled to hear your feedback about Azure Data Explorer and the Kus
 ## Next steps
 
 * [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
-* [Quickstart: Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md)
+* [Quickstart: Ingest data from an event hub into Azure Data Explorer](ingest-data-event-hub.md)
 * [Quickstart: Query data in Azure Data Explorer](web-query-data.md)
