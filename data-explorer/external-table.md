@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: ohbitton
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/30/2021
+ms.date: 11/28/2021
 ---
 
 # Create an external table using the Web UI wizard
@@ -27,11 +27,11 @@ There are two ways to access the creation wizard:
 
 * In the left menu of the Web UI, select **Data**. In the **Create external table** card, select **Create**.
 
-     :::image type="content" source="media/external-table/data-blade.png" alt-text="Screenshot of data blade in Azure Data Explorer Web UI with create external table highlighted. .":::
+     :::image type="content" source="media/external-table/create-external-table.png" alt-text="Screenshot of data blade in Azure Data Explorer Web UI with create external table highlighted. .":::
 
-* In the left blade of the Web UI, select **Query**. In the left menu, right-click on your database name and select **Create external table**.
+* In the left pane of the Web UI, select **Query**. In the left menu, right-click on your database name and select **Create external table**.
 
-    :::image type="content" source="media/external-table/access-wizard.png" alt-text="Screenshot of how to access the wizard to create an external table in the Azure Data Explorer WebUI.":::
+    :::image type="content" source="media/external-table/ingest-new-data-database-menu.png" alt-text="Screenshot of how to access the wizard to create an external table in the Azure Data Explorer WebUI.":::
 
 The **Create external table** window opens with the **Destination** tab selected.
 
@@ -94,7 +94,7 @@ The first source container will display files below **File filters**.
 
 In the right-hand side of the tab, you can preview your data. On the left-hand side, you can add [partitions](kusto/management/partitioningpolicy.md) to your table definitions to access the source data more quickly and achieve better performance.
 
-> [!NOTE] 
+> [!NOTE]
 > Mappings are not part of the definition of an external table, and are not supported in this wizard. Mappings can be [configured later](kusto/management/external-tables-azurestorage-azuredatalake.md#create-external-table-mapping) if necessary. Some functionalities, such as deleting the last column in CSV files or changing column names in JSON files, require mappings in order to work correctly.
 
 1. Select **Add partition**.

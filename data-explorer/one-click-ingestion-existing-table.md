@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 06/30/2021
+ms.date: 11/28/2021
 ---
 
 # Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer
@@ -28,9 +28,11 @@ For different types or sources of data, see [Use one-click ingestion to ingest C
 
 ## Ingest new data
 
-In the left menu of the Web UI, right-click a *database* or *table* and select **Ingest new data**.
+1. In the left menu of the Web UI, select **Data**.
 
-   :::image type="content" source="media/one-click-ingestion-existing-table/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI.":::
+1. From the **Quick actions** section, select **Ingest new data**. Alternatively, from the **All actions** section, select **Ingest new data** and then **Ingest**.
+
+   :::image type="content" source="media/one-click-ingestion-existing-table/ingest-new-data.png" alt-text="Screenshot for the Web UI where you select one-click ingestion for a table.":::
  
 ## Select an ingestion type
 
