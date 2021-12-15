@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: mbrichko
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 14/11/2020
+ms.date: 11/14/2020
 ---
 # geo_distance_point_to_polygon()
 
