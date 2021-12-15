@@ -51,6 +51,7 @@ sections:
           Ingestion failures can be monitored using the `IngestionResult` metric or the `FailedIngestion` diagnostic log.
           The [`.show ingestion failures`](ingestionfailures.md) command shows ingestion failures that occur specifically in the Kusto Data Engine, and is not recommended for monitoring errors. 
       - question: What can I do if I find many retry errors?
+        answer: |
           Metrics that include the "RetryAttemptsExceeded" metric status many times indicate that ingestion exceeded the retry attempt limit or time-span limit following a recurring transient error. 
           If this error also appears in the diagnostic log with error code "General_RetryAttemptsExceeded" and the details "Failed to access storage and get information for the blob," this is a high load storage access issue.
           During Event Grid ingestion, Azure Data Explorer requests blob details from the storage account.
