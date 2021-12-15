@@ -15,7 +15,7 @@ The `string` data type represents a sequence of zero or more [Unicode](https://h
 characters.
 
 > [!NOTE]
-> * Internally, strings are encoded in [UTF-8](https://en.wikipedia.org/wiki/UTF-8).
+> * Internally, strings are encoded in [UTF-8](https://en.wikipedia.org/wiki/UTF-8). Any invalid (non-UTF8) characters are replaced with [U+FFFD](https://codepoints.net/U+FFFD) Unicode replacement character at ingestion time.
 > * Kusto has no data type that is equivalent to a single character. A single character
 > is represented as a string of length 1.
 > * While the `string` data type itself has no predefined limit on the length of the string,
