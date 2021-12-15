@@ -87,7 +87,7 @@ coordinates
 |-73.995|40.734|Greenwich Village|0|
 |-73.8743|40.7773|LaGuardia Airport|5702.15731467514|
 
-The following example finds all states that are withing 200 km distance, excluding state that contains the point.
+The following example finds all states that are within 200 km distance, excluding state that contains the point.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
