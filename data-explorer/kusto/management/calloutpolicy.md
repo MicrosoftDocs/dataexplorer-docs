@@ -18,7 +18,7 @@ Callout policies are being managed at cluster-level and are classified into the 
 * `kusto` - Controls Azure Data Explorer cross-cluster queries.
 * `sql` - Controls the [SQL plugin](../query/sqlrequestplugin.md).
 * `mysql` - Controls the [MySQL plugin](../query/mysqlrequest-plugin.md).
-* `azure_digital_twins` - Controls the [Azure Digital Twin plugin](../query/azure-digital-twins-query-request-plugin.md).
+* `azure_digital_twins` - Controls the [Azure Digital Twins plugin](../query/azure-digital-twins-query-request-plugin.md).
 * `cosmosdb` - Controls the [CosmosDB plugin](../query/cosmosdb-plugin.md).
 * `sandbox_artifacts` - Controls sandboxed plugins ([python](../query/pythonplugin.md) | [R](../query/rplugin.md)).
 * `external_data` - Controls access to external data through [external tables](../query/schema-entities/externaltables.md) or [externaldata](../query/externaldata-operator.md) operator.
