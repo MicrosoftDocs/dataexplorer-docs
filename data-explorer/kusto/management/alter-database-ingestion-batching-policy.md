@@ -48,4 +48,4 @@ The following command sets a batch ingress data time of 30 seconds, for 500 file
 
 ## Next steps
 
-* [alter table batching policy](alter-table-batching-policy-command.md)
+* [alter table batching policy](alter-table-ingestion-batching-policy.md)

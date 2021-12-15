@@ -35,4 +35,4 @@ The following command will return the batching policy on a database.
 
 ## Next steps
 
-* [show table batching policy](show-table-batching-policy-command.md)
+* [show table batching policy](show-table-ingestion-batching-policy.md)

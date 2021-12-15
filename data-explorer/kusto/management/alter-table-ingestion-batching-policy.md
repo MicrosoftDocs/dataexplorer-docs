@@ -60,5 +60,5 @@ The following command sets a batch ingress data time of 1 minute, for 20 files, 
 
 ## Next steps
 
-* [alter database batching policy](alter-database-batching-policy-command.md)
+* [alter database batching policy](alter-database-ingestion-batching-policy.md)
 ```

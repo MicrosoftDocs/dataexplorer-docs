@@ -31,4 +31,4 @@ The following command deletes the batching policy on a database.
 
 ## Next steps
 
-* [delete table batching policy](delete-table-batching-policy-command.md)
+* [delete table batching policy](delete-table-ingestion-batching-policy.md)
