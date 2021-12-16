@@ -140,7 +140,9 @@ Query
 This more efficient version produces the same result. It filters each table before creating the union.
 
 **Example: Using `isfuzzy=true`**
- 
+
+Statements must be separated by a semicolon, otherwise they will not be considered part of the same query.
+
 ```kusto     
 // Using union isfuzzy=true to access non-existing view:                                     
 let View_1 = view () { print x=1 };

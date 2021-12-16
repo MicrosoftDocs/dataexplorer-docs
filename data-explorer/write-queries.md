@@ -32,7 +32,7 @@ You can run the queries in this article in one of two ways:
 
 A query in Azure Data Explorer is a read-only request to process data and return results. The request is stated in plain text, using a data-flow model designed to make the syntax easy to read, author, and automate. The query uses schema entities that are organized in a hierarchy similar to SQL: databases, tables, and columns.
 
-The query consists of a sequence of query statements, delimited by a semicolon (`;`), with at least one statement being a tabular expression statement, which is a statement that produces data arranged in a table-like mesh of columns and rows. The query's tabular expression statements produce the results of the query.
+The query consists of a sequence of query statements, delimited by a semicolon (`;`), with at least one statement being a tabular expression statement, which is a statement that produces data arranged in a table-like mesh of columns and rows. The query's tabular expression statements produce the results of the query. Statements must be separated by a semicolon, otherwise they will not be considered part of the same query.
 
 The syntax of the tabular expression statement has tabular data flow from one tabular query operator to another, starting with data source (for example, a table in a database, or an operator that produces data) and then flowing through a set of data transformation operators that are bound together through the use of the pipe (`|`) delimiter.
 

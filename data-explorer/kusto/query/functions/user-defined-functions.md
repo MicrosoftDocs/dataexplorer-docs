@@ -172,6 +172,9 @@ range x from 1 to Test(10) step 1
 | count
 ```
 
+> [!NOTE]
+> Statements must be separated by a semicolon, otherwise they will not be considered part of the same query.
+
 **User-defined function that defines a default value for a parameter**
 
 The following example shows a function that accepts three arguments. The latter two have a default value and do not have to be present at the call site.
