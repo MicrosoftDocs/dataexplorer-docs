@@ -67,7 +67,7 @@ The following table describes the possible values for the result table's *State*
 |BadInput          |The operation didn't start executing as there was bad input|
 |Scheduled         |The operation is scheduled for execution|
 |Throttled         |The operation has been aborted due to throttling|
-|Cancelled         |The operation has been cancelled by the user|
+|Canceled         |The operation has been canceled by the user|
 |Skipped           |The operation was skipped (due to some logical condition provided as the operation input)|
 
 **Example**
