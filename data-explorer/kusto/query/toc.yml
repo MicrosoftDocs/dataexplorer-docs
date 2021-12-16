@@ -357,8 +357,8 @@ items:
 - name: Scalar functions
   items:
   - name: Scalar function types
-    href: scalarfunctions.md
     displayName: SQL stored procedure
+    href: scalarfunctions.md
   - name: abs()
     href: abs-function.md
   - name: acos()
