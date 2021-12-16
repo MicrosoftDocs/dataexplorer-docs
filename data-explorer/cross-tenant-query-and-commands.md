@@ -19,7 +19,7 @@ Permissions can be set using the portal, the [ARM Templates](/azure/templates/mi
 > [!NOTE]
 > The principal who will run queries or commands must also have a relevant database role. See also [role-based authorization](./kusto/management/access-control/role-based-authorization.md). Validation of correct roles takes place after validation of trusted external tenants.
 
-## Define permissions using the portal
+# [Define with portal](#tab/define-with-portal)
 
 1. In the Azure portal, go to your Azure Data Explorer cluster page.
 
@@ -29,9 +29,9 @@ Permissions can be set using the portal, the [ARM Templates](/azure/templates/mi
 
 :::image type="content" source="media/define-trusted-external-tenants/trusted-external-tenants.png" alt-text="Screenshot of the Security blade" lightbox="media/define-trusted-external-tenants/trusted-external-tenants.png":::
 
-## Define permissions using trustedExternalTenants command
+# [Define with command](#tab/define-with-command)
 
-### Syntax
+## Syntax
 
 **Allow specific tenants**
 
@@ -71,6 +71,8 @@ The following example allows all tenants to run queries on the cluster:
     }
 }
 ```
+
+---
 
 ## Update the cluster
 
