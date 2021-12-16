@@ -49,8 +49,23 @@ which were executed in the last two weeks. The command may run in two "modes":
 |StartedOn |DateTime |Date/time (in UTC) when the operation started
 |LastUpdatedOn |DateTime |Date/time (in UTC) when the operation last updated (can be either a step inside the operation, or a completion step)
 |Duration |DateTime |TimeSpan between LastUpdateOn and StartedOn
-|State |String |Command state - Can have values of "InProgress", "Completed", or "Failed"
+|State |String |Command state, as listed in the table below
 |Status |String |Additional help string that contains errors of failed operations
+
+The possible values of the State column are:
+
+|Value             |Description
+|------------------|-----------
+|InProgress        |The operation is still running
+|Completed         |The operation completed (successfully)
+|Failed            |The operation completed (unsuccessfully)
+|PartiallySucceeded|The operation completed (parts of it successfully and part of it not)
+|Abandoned         |The operation was abandoned before completion
+|BadInput          |The operation didn't start executing as there was bad input
+|Scheduled         |The operation is scheduled for execution
+|Throttled         |The operation has been aborted due to throttling
+|Cancelled         |The operation has been cancelled by the user
+|Skipped           |The operation was skipped (due to some logical condition provided as the operation input)
 
 **Example**
 
