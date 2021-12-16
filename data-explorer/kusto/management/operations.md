@@ -50,7 +50,7 @@ which were executed in the last two weeks. The command may run in two "modes":
 |StartedOn |DateTime |Date/time (in UTC) when the operation started|
 |LastUpdatedOn |DateTime |Date/time (in UTC) when the operation last updated (can be either a step inside the operation, or a completion step)|
 |Duration |DateTime |TimeSpan between LastUpdateOn and StartedOn|
-|State |String |Command state, as listed in the state table|
+|State |String |Command state, as listed in the **State table**|
 |Status |String |Additional help string that contains errors of failed operations|
 
 **State table**
