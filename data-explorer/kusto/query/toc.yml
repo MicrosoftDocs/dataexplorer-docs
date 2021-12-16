@@ -89,6 +89,7 @@ items:
   - name: Set statement
     href: setstatement.md
   - name: Tabular expression statements
+    displayName: SQL views
     href: tabularexpressionstatements.md
   - name: Batches
     href: batches.md
@@ -357,6 +358,7 @@ items:
   items:
   - name: Scalar function types
     href: scalarfunctions.md
+    displayName: SQL stored procedure
   - name: abs()
     href: abs-function.md
   - name: acos()
