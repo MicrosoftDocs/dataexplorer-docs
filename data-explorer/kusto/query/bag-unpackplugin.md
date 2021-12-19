@@ -73,12 +73,11 @@ datatable(d:dynamic)
 | evaluate bag_unpack(d)
 ```
 
-|Name  |Age|
-|------|---|
-|John  |20 |
-|Dave  |40 |
-|Jasmine|30 |
-
+|Age|Name   |
+|---|-------|
+|20 |John   |
+|40 |Dave   |
+|30 |Jasmine|
 
 ### Expand a bag with OutputColumnPrefix
 
@@ -95,11 +94,11 @@ datatable(d:dynamic)
 | evaluate bag_unpack(d, 'Property_')
 ```
 
-|Property_Name|Property_Age|
-|---|---|
-|John|20|
-|Dave|40|
-|Jasmine|30|
+|Property_Age|Property_Name|
+|------------|-------------|
+|20          |John         |
+|40          |Dave         |
+|30          |Jasmine      |
 
 ### Expand a bag with columnsConflict
 
@@ -116,11 +115,11 @@ datatable(Name:string, d:dynamic)
 | evaluate bag_unpack(d, columnsConflict='replace_source') // Use new name
 ```
 
-|Name|Age|
-|---|---|
-|John|20|
-|Dave|40|
-|Jasmine|30|
+|Age|Name   |
+|---|-------|
+|20 |John   |
+|40 |Dave   |
+|30 |Jasmine|
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -133,11 +132,11 @@ datatable(Name:string, d:dynamic)
 | evaluate bag_unpack(d, columnsConflict='keep_source') // Keep old name
 ```
 
-|Name|Age|
-|---|---|
-|Old_name|20|
-|Old_name|40|
-|Old_name|30|
+|Age|Name     |
+|---|---------|
+|20 |Old_name |
+|40 |Old_name |
+|30 |Old_name |
 
 ### Expand a bag with ignoredProperties
 
