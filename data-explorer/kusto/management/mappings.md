@@ -89,7 +89,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 
 |Property|Description|
 |----|--|
-|`Path`|If the value starts with `$`: JSON path to the field that will become the content of the column in the JSON document (JSON path that denotes the entire document is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\'].|
+|`Path`|If the value starts with `$`: JSON path to the field that will become the content of the column in the JSON document (JSON path that denotes the entire document is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. See [JsonPath support](kusto/query/jsonpath.md) for more information.|
 |`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside the JSON file.|
 |`Transform`|(Optional) Transformation that should be applied on the content with [mapping transformations](#mapping-transformations).|
 
@@ -165,7 +165,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 |Property|Description|
 |----|--|
 |`Field`|The name of the field in the AVRO record.|
-|`Path`|Alternative to using `Field` which allows taking the inner part of an AVRO record-field, if necessary. The value denotes a JSON-path from the root of the AVRO record (JSON path that denotes the entire AVRO record is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. See the Notes below for more information.|
+|`Path`|Alternative to using `Field` which allows taking the inner part of an AVRO record-field, if necessary. The value denotes a JSON path from the root of the AVRO record (JSON path that denotes the entire AVRO record is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. See [JsonPath support](kusto/query/jsonpath.md) and the Notes below for more information.|
 |`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside AVRO file.|
 |`Transform`|(Optional) Transformation that should be applied on the content with [supported transformations](#mapping-transformations).|
 
@@ -237,7 +237,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 |Property|Description|
 |----|--|
 |`Field`|The name of the field in the Parquet record.|
-|`Path`|Alternative to using `Field` which allows taking the inner part of an Parquet record-field, if necessary. The value denotes a JSON-path from the root of the Parquet record (JSON path that denotes the entire AVRO record is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. See the Notes below for more information.|
+|`Path`|Alternative to using `Field` which allows taking the inner part of an Parquet record-field, if necessary. The value denotes a JSON-path from the root of the Parquet record (JSON path that denotes the entire AVRO record is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. See [JsonPath support](kusto/query/jsonpath.md) and the Notes below for more information.|
 |`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside Parquet file.|
 |`Transform`|(Optional) [mapping transformations](#mapping-transformations) that should be applied on the content.|
 
@@ -307,7 +307,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 |Property|Description|
 |----|--|
 |`Field`|The name of the field in the ORC record.|
-|`Path`|Alternative to using `Field` which allows taking the inner part of an ORC record-field, if necessary. The value denotes a JSON-path from the root of the ORC record (JSON path that denotes the entire ORC record is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. See the Notes below for more information.|
+|`Path`|Alternative to using `Field` which allows taking the inner part of an ORC record-field, if necessary. The value denotes a JSON-path from the root of the ORC record (JSON path that denotes the entire ORC record is `$`). If the value does not start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. See [JsonPath support](kusto/query/jsonpath.md) and the Notes below for more information.|
 |`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside the ORC file.|
 |`Transform`|(Optional) [mapping transformations](#mapping-transformations) that should be applied on the content.|
 
