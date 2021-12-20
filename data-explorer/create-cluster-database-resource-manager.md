@@ -93,7 +93,7 @@ In this article, you use an [existing quickstart template](https://azure.microso
               },
               "enablePurge": false,
               "enableDoubleEncryption": false,
-              "engineType": "V3",
+              "engineType": "V3"
           }
       },
       {
