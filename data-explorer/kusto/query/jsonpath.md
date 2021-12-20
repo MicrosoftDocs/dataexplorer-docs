@@ -2,8 +2,8 @@
 title: JsonPath support - Azure Data Explorer | Microsoft Docs
 description: This article describes JsonPath expressions in Azure Data Explorer.
 services: data-explorer
-author: sigorbor
-ms.author: sigorbor
+author: igborodi
+ms.author: igborodi
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
@@ -13,7 +13,7 @@ ms.localizationpriority: high
 
 # JSON Path expressions
 
-JsonPath format is used in Kusto for specifying [data mappings](kusto/management/mappings.md), and there are a few functions in Kusto that use JsonPath notation for specifying fields when working with JSON.
+JsonPath format is used in Kusto for specifying [data mappings](../management/mappings.md), and there are a few functions in Kusto that use JsonPath notation for specifying fields when working with JSON.
 
 - [bag_remove_keys()](bag-remove-keys-function.md)
 - [extractjson()](extractjsonfunction.md)
