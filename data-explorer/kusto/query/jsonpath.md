@@ -8,15 +8,17 @@ ms.reviewer: igborodi
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/20/2021
-ms.localizationpriority: high
 ---
 
 # JSONPath expressions
 
-The JSONPath notation is used in Azure Data Explorer for specifying [data mappings](../management/mappings.md), and the following functions use the JSONPath notation for specifying fields when working with JSON.
+JSONPath notation describes the path to one or more elements in a JSON document.
 
-- [bag_remove_keys()](bag-remove-keys-function.md)
-- [extractjson()](extractjsonfunction.md)
+The JSONPath notation is used in the following scenarios:
+
+- To specify [data mappings for ingestion](../management/mappings.md)
+- To specify [data mappings for external tables](../management/external-tables-azurestorage-azuredatalake.md#create-external-table-mapping)
+- In KQL functions that process dynamic objects, like [bag_remove_keys()](bag-remove-keys-function.md) and [extractjson()](extractjsonfunction.md)
 
 The following subset of the JSONPath notation is supported:
 
