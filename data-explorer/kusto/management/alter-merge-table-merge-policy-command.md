@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 11/29/2021
 ---
 # .alter-merge table merge policy
 
@@ -16,7 +16,12 @@ Change a table's [merge policy](mergepolicy.md). The merge policy defines if and
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `policy` `merge` 
+`.alter-merge` `table` *TableName* `policy` `merge` *ArrayOfPolicyObjects*
+
+## Arguments
+
+*TableName* - Specify the name of the table. 
+*ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
 
 ### Example
 

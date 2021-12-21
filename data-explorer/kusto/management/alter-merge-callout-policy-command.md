@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2021
+ms.date: 11/29/2021
 ---
 # .alter-merge callout policy
 
@@ -15,7 +15,11 @@ Enables or disables a cluster's [callout policy](calloutpolicy.md). Azure Data E
 
 ## Syntax
 
-`.alter-merge` `cluster` `policy` `callout` `"`*Serialized partial policy*`"`
+`.alter-merge` `cluster` `policy` `callout` *SerializedArrayOfPolicyObjects*
+
+## Arguments
+
+*SerializedArrayOfPolicyObjects* - A serialized array with one or more JSON policy objects.
 
 ### Examples
 

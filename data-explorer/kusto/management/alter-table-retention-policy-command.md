@@ -15,16 +15,17 @@ Change a table's [retention policy](retentionpolicy.md). The retention policy co
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `retention` 
+`.alter` `table` *TableName* `policy` `retention` *PolicyObjects*
 
 ## Arguments
 
-*TableName* - Specify the name of the table.  
+- *TableName* - Specify the name of the table.  
+- *PolicyObjects* - Define one or more policy objects.
 
 ### Example
 
 Sets a retention policy with a 10 day soft-delete period, and enable data recoverability:
 
 ```kusto
-.alter table Table1 policy retention "{\"SoftDeletePeriod\": \"10.00:00:00\", \"Recoverability\": \"Enabled\"}"
+.alter table MySourceTable policy retention "{\"SoftDeletePeriod\": \"10.00:00:00\", \"Recoverability\": \"Enabled\"}"
 ```

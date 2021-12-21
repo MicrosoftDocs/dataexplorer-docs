@@ -1,32 +1,63 @@
 ---
-title: .alter table ingestion batching policy command - Azure Data Explorer
-description: This article describes the .alter table ingestion batching policy command in Azure Data Explorer.
+title: ".alter table ingestion batching policy command - Azure Data Explorer"
+description: "This article describes the .alter table ingestion batching policy command in Azure Data Explorer."
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/27/2021
+ms.date: 12/15/2021
 ---
 # .alter table ingestion batching policy
 
-Change the table ingestion batching policy. The [ingestionBatching policy](batchingpolicy.md) is a policy object that determines when data aggregation should stop during data ingestion according to specified settings.
+Set the table [ingestion batching policy](batchingpolicy.md) to determine when data aggregation stops and a batch is sealed and ingested. 
+
+If the policy is set to `null`, default values are used. Default values are:
+
+* Batch time of 5 minutes
+* 1000 items
+* Total size of 1 GB
+* Or default cluster settings
+
+## Ingestion batching limits
+
+| Type | Default | Minimum | Maximum
+|---|---|---|---|
+| Number of items | 1000 | 1 | 2000 |
+| Data size (MB) | 1000 | 100 | 1000 |
+| Time | 5 minutes | 10 seconds | 15 minutes |
 
 ## Syntax
 
-* `.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `ingestionbatching`
+`.alter` `table` *TableName* `policy` `ingestionbatching` *ArrayOfPolicyObjects*
+
+`.alter` `table` *DatabaseName*`.`*TableName* `policy` `ingestionbatching` *ArrayOfPolicyObjects*
+
+`.alter` `tables` `(`*Table1* `,` *Table2*  `,...` `)` `policy` `ingestionbatching` *ArrayOfPolicyObjects*
 
 ## Arguments
 
 *DatabaseName* - Specify the name of the database.
-*TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
 
-## Examples
+*TableName* - Specify the name of the table.
 
-The following example changes the table IngestionBatching policy:
+*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+
+## Example
+
+The following command sets a batch ingress data time of 30 seconds, for 500 files, or 1 GB, whichever comes first.
 
 ```kusto
-// Set IngestionBatching policy on multiple tables (in database context) to batch ingress data by 1 minute, 20 files, or 300MB (whatever comes first)
+.alter table MyDatabase.MyTable policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:30", "MaximumNumberOfItems": 500, "MaximumRawDataSizeMB": 1024}'
+```
+
+The following command sets a batch ingress data time of 1 minute, for 20 files, or 300 MB, whichever comes first.
+
+```kusto
 .alter tables (MyTable1, MyTable2, MyTable3) policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:01:00", "MaximumNumberOfItems": 20, "MaximumRawDataSizeMB": 300}'
 ```
+
+## Next steps
+
+* [alter database batching policy](alter-database-ingestion-batching-policy.md)

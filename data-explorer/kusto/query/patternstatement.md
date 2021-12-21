@@ -67,8 +67,8 @@ The following example defines a pattern that maps states to an expression that r
 ```kusto
 declare pattern country = (name:string)[state:string]
 {
-  ("USA").["New York"] = { print Capital = "New York City" };
-  ("USA").["Washington"] = { print Capital = "Seattle" };
+  ("USA").["New York"] = { print Capital = "Albany" };
+  ("USA").["Washington"] = { print Capital = "Olympia" };
   ("Canada").["Alberta"] = { print Capital = "Edmonton" };
 };
 country("Canada").Alberta
@@ -117,13 +117,13 @@ Azure Data Explorer allows variations of syntax when invoking patterns. For exam
 declare pattern app = (applicationId:string)[eventType:string]
 {
     ("ApplicationX").["StopEvents"] = { database("AppX").Events | where EventType == "StopEvent" };
-    ("ApplicationX").["StartEvents"] = { database("AppX").Events | where EventType == "StartEvents" };
+    ("ApplicationX").["StartEvents"] = { database("AppX").Events | where EventType == "StartEvent" };
 };
 union
-  app("ApplicationX").StartEvent,
-  app('ApplicationX').StartEvent,
-  app("ApplicationX").['StartEvent'],
-  app("ApplicationX").["StartEvent"]
+  app("ApplicationX").StartEvents,
+  app('ApplicationX').StartEvents,
+  app("ApplicationX").['StartEvents'],
+  app("ApplicationX").["StartEvents"]
 ```
 
 ### No wildcards
@@ -134,7 +134,7 @@ Azure Data Explorer does not give special treatment to wildcards in a pattern. F
 declare pattern app = (applicationId:string)[eventType:string]
 {
     ("ApplicationX").["StopEvents"] = { database("AppX").Events | where EventType == "StopEvent" };
-    ("ApplicationX").["StartEvents"] = { database("AppX").Events | where EventType == "StartEvents" };
+    ("ApplicationX").["StartEvents"] = { database("AppX").Events | where EventType == "StartEvent" };
 };
 union app("ApplicationX").["*"]
 | count

@@ -188,7 +188,7 @@ Let's start with an overall view of the batching process by looking at the **Bat
 
 1. In the **Metrics** pane in Azure Monitor, select **Add Metric**.
 1. Select *Batches Processed* as the **Metric** value and *Sum* as the **Aggregation** value.
-1. Select the **Apply splitting** button and choose *Batching Type* to segment the chart based on the reason the batch was sealed. For a complete list of batching types, see [Batching types](kusto/management/batchingpolicy.md#details).
+1. Select the **Apply splitting** button and choose *Batching Type* to segment the chart based on the reason the batch was sealed. For a complete list of batching types, see [Batching types](kusto/management/batchingpolicy.md#sealing-a-batch).
 1. Select the **Add filter** button and filter on the batches sent to the *GitHub* database. After selecting the filter values, click away from the filter selector to close it.
 
 The chart shows the number of sealed batches with data sent to the *GitHub* database over time, split by the *Batching Type*.

@@ -7,25 +7,35 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2021
+ms.date: 11/08/2021
 ---
 # .create-or-alter workload_group
 
 Creates a new workload group, or alters an existing workload group. This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
 
-For more information, see [Workload groups](workload-groups.md).
+For more information, see [Workload groups](workload-groups.md). To show the current workload group settings, use the [`.show` command](show-workload-group-command.md).
 
 ## Syntax
 
-`.create-or-alter` `workload_group` *WorkloadGroupName* `"`*Serialized workload group and policies*`"`
+`.create-or-alter` `workload_group` *WorkloadGroupName* *SerializedArrayOfPolicyObjects*
+
+## Arguments
+
+- *WorkloadGroupName* - Name of the workload group. Can be escaped with bracket notation ['WorkLoadGroupName'].
+- *SerializedArrayOfPolicyObjects* - An array with one or more policy objects defined. The following policies apply to workload groups:   
+  
+  * [request classification](request-classification-policy.md)
+  * [request limits](request-limits-policy.md)
+  * [request rate limit](request-rate-limit-policy.md)
+  * [request rate limits enforcement](request-rate-limits-enforcement-policy.md).
 
 ## Examples
 
-### Full definition of request limits policy
+### Define request limits policy
 
 Create a workload group with a full definition of its request limits policy:
 
-```kusto
+~~~kusto
 .create-or-alter workload_group MyWorkloadGroup ```
 {
   "RequestLimitsPolicy": {
@@ -66,14 +76,14 @@ Create a workload group with a full definition of its request limits policy:
       "Value": "00:05:00"
     }
   }
-}```
-```
+} ```
+~~~
 
-### Full definition of request limits policy and request rate limits policies
+### Define request limits policy and request rate limits policies
 
 Create a workload group with a full definition of its request limits policy and request rate limits policies:
 
-```kusto
+~~~kusto
 .create-or-alter workload_group ['My Workload Group'] ```
 {
   "RequestLimitsPolicy": {
@@ -132,5 +142,5 @@ Create a workload group with a full definition of its request limits policy and 
       }
     }
   ]
-}```
-```
+} ```
+~~~

@@ -23,7 +23,7 @@ T
 | sort by Timestamp asc
 | scan with 
 (
-    step s1: Event == "Start";
+    step s1 output=last: Event == "Start";
     step s2: Event != "Start" and Event != "Stop" and Timestamp - s1.Timestamp <= 5m;
     step s3: Event == "Stop"  and Ts - s1.Timestamp <= 5m;
 )
@@ -39,7 +39,7 @@ T
 
 ### *StepDefinition* syntax
 
-`step` *StepName* `:` *Condition* [ `=>` *Column* `=` *Assignment* [`,` ... ] ] `;`
+`step` *StepName* [ `output` = `all` | `last` | `none`] `:` *Condition* [ `=>` *Column* `=` *Assignment* [`,` ... ] ] `;`
 
 ## Arguments
 
@@ -48,6 +48,7 @@ T
 * *StepName*: Used to reference values in the state of scan for conditions and assignments. The step name must be unique.
 * *Condition*: A Boolean expression that defines which records from the input matches the step. A record matches the step when the condition is true with the step’s state or with the previous step’s state.
 * *Assignment*: A scalar expression that is assigned to the corresponding column when a record matches a step.
+* `output`: Controls the output logic of the step on repeated matches. `all` (default) outputs all records matching the step, `last` outputs only the last record in a series of repeating matches for the step, `none` does not output records matching the step.
 
 ## Returns
 
