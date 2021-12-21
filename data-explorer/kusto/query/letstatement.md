@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/16/2021
+ms.date: 12/21/2021
 ms.localizationpriority: high
 ---
 # Let statement
@@ -56,7 +56,7 @@ If the variable previously represented another value, for example in nested stat
 > * You can use `(*)` for the tabular expression.
 > * When using a tabular expression as part of a user defined function, the columns can't be accessed as part of the function.
 > * Tabular arguments appear before scalar arguments.
-> * Statements must be separated by a semicolon, otherwise they will not be considered part of the same query.
+> * Let, set, and tabular statements in the same query are separated by a semicolon, otherwise they will not be considered part of the same query.
 
 ## Examples
 

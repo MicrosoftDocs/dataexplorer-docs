@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/06/2021
+ms.date: 12/21/2021
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -62,7 +62,7 @@ In each of the following examples, a pattern is declared, defined, and then invo
 
 ### Define simple patterns
 
-The following example defines a pattern that maps states to an expression that returns its capital city.
+The following example defines a pattern that maps states to an expression that returns its capital city. Let, set, and tabular statements are strung together/separated by a semicolon, otherwise they will not be considered part of the same query.
 
 ```kusto
 declare pattern country = (name:string)[state:string]
