@@ -1,5 +1,5 @@
 ---
-title: bag_remove_keys() - Azure Data Explorer 
+title: bag_remove_keys() - Azure Data Explorer
 description: This article describes bag_remove_keys() in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -21,25 +21,11 @@ Removes keys and associated values from a `dynamic` property-bag.
 
 * *bag*: `dynamic` property-bag input.
 * *keys*: `dynamic` array includes keys to be removed from the input. Keys refer to the first level of the property bag.
-You can specify keys on the nested levels using JsonPath notation. 
+You can specify keys on the nested levels using [JSONPath](jsonpath.md) notation.
 
 ## Returns
 
 Returns a `dynamic` property-bag without specified keys and their values.
-
-### JSON Path expressions
-
-When removing inner (nested) properties, use JsonPath notation. Wildcards, recursion, union, and slices aren't supported.
-
-|Path expression|Description|
-|---|---|
-|`$`|Root object|
-|`@`|Current object|
-|`.` or `[ ]` | Child|
-|`[ ]`|Array subscript|
-
-> [!NOTE]
-> JSON paths that include special characters should be escaped as [\'Property Name\'].
 
 ## Example
 
@@ -58,7 +44,7 @@ datatable(input:dynamic)
 |{<br>  "key1": 123,<br>  "key2": "abc"<br>}|{<br>  "key1": 123<br>}|
 |{<br>  "key1": "value",<br>  "key3": 42.0<br>}|{<br>  "key1": "value",<br>  "key3": 42.0<br>}|
 
-### Remove inner properties of dynamic values using JsonPath notation
+### Remove inner properties of dynamic values using JSONPath notation
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
