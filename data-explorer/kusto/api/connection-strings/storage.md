@@ -148,3 +148,8 @@ supported:
   The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. For more information, see [data lake access control](/azure/data-lake-store/data-lake-store-access-control). 
 > [!NOTE]
 > Managed Identity is only supported in specific Kusto flows. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
+
+### Impersonation vs. Managed Identity recommendation
+When considering both Impersonation and Managed Identity for authenticating with external storage, we advise the following rule of thumb:
+1. Attended flows - use Impersonation authentication. In attended flows, impersonation allows for more elaborate access control over the external storage. Access to the external storage can be restricted in the user level, and therefore querying the external storage with Azure Data Explorer requires both the relevant cluster/database permissions, and external storage permissions.
+2. Unattended flows - use Managed Identities authentication. In unattended flows, no AAD principal can be derived in order to execute queries and commands, and therefore managed identities are the only viable authentication solution.
