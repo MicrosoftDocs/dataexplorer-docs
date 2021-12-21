@@ -557,7 +557,7 @@ Array data types are an ordered collection of values. Ingestion of a JSON array 
 
 ## Ingest JSON records containing dictionaries
 
-Dictionary structured JSON contains key-value pairs. Json records undergo ingestion mapping using logical expressions in the [JsonPath](kusto/query/jsonpath.md) format. You can ingest data with the following structure:
+Dictionary structured JSON contains key-value pairs. Json records undergo ingestion mapping using logical expressions in the [JSONPath](kusto/query/jsonpath.md) format. You can ingest data with the following structure:
 
 ```json
 {

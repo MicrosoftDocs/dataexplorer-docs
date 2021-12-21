@@ -1,6 +1,6 @@
 ---
-title: JsonPath syntax - Azure Data Explorer | Microsoft Docs
-description: This article describes JsonPath expressions in Azure Data Explorer.
+title: JSONPath syntax - Azure Data Explorer | Microsoft Docs
+description: This article describes JSONPath expressions in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -11,14 +11,14 @@ ms.date: 12/20/2021
 ms.localizationpriority: high
 ---
 
-# JsonPath expressions
+# JSONPath expressions
 
-The JsonPath notation is used in Azure Data Explorer for specifying [data mappings](../management/mappings.md), and the the following functions that use the JsonPath notation for specifying fields when working with JSON.
+The JSONPath notation is used in Azure Data Explorer for specifying [data mappings](../management/mappings.md), and the following functions use the JSONPath notation for specifying fields when working with JSON.
 
 - [bag_remove_keys()](bag-remove-keys-function.md)
 - [extractjson()](extractjsonfunction.md)
 
-The following subset if the JsonPath noatation is supported:
+The following subset of the JSONPath notation is supported:
 
 |Path expression|Description|
 |---|---|

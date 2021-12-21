@@ -25,13 +25,13 @@ extractjson("$.hosts[1].AvailableMB", EventText, typeof(int))
 
 ## Arguments
 
-* *jsonPath*: [JsonPath](jsonpath.md) string that defines an accessor into the JSON document.
+* *jsonPath*: [JSONPath](jsonpath.md) string that defines an accessor into the JSON document.
 * *dataSource*: A JSON document.
 * *type*: An optional type literal (for example, typeof(long)). If provided, the extracted value is converted to this type.
 
 ## Returns
 
-This function performs a [JsonPath](jsonpath.md) query into dataSource, which contains a valid JSON string, optionally converting that value to another type depending on the third argument.
+This function performs a [JSONPath](jsonpath.md) query into dataSource, which contains a valid JSON string, optionally converting that value to another type depending on the third argument.
 
 ## Example
 

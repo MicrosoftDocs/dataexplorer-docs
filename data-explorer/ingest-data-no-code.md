@@ -289,7 +289,7 @@ Use the Azure Data Explorer Web UI to create the target tables in the Azure Data
 
 ### Create table mappings
 
- Because the data format is `json`, data mapping is required. The `json` mapping maps each json path to a table column name. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JsonPath syntax](kusto/query/jsonpath.md).
+ Because the data format is `json`, data mapping is required. The `json` mapping maps each json path to a table column name. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](kusto/query/jsonpath.md).
 
 ### [Diagnostic metrics / Diagnostic logs](#tab/diagnostic-metrics+diagnostic-logs)
 
