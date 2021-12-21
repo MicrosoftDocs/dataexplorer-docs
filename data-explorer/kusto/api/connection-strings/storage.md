@@ -59,7 +59,9 @@ Azure Storage SAS links can also be generated as described in [URI templates](#u
 > [!TIP]
 > When using impersonation or when using a [user delegation SAS token](/rest/api/storageservices/create-user-delegation-sas) in the connection string, the AAD principal which the operation is executed on-behalf-of must be assigned (minimally) the [Storage Blob Data Reader role](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) for read operations, or [Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) for write (for example, export) operations.
 
-## Azure Blob Storage
+## External Storage Connection Strings
+
+### Azure Blob Storage
 
 Azure Blob Storage is the most commonly-used and is supported in all scenarios.
 
@@ -149,7 +151,7 @@ supported:
 > [!NOTE]
 > Managed Identity is only supported in specific Kusto flows. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
 
-### Impersonation vs. Managed Identity authentication recommendation 
+## Impersonation vs. Managed Identity authentication recommendation 
 When considering both Impersonation and Managed Identity for authenticating with external storage, we advise the following rule of thumb:
 1. Attended flows - use Impersonation authentication. In attended flows, impersonation allows for more elaborate access control over the external storage. Access to the external storage can be restricted in the user level, and therefore querying the external storage with Azure Data Explorer requires both the relevant cluster/database permissions, and external storage permissions.
 2. Unattended flows - use Managed Identities authentication. In unattended flows, no AAD principal can be derived in order to execute queries and commands, and therefore managed identities are the only viable authentication solution.
