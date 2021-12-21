@@ -11,7 +11,7 @@ ms.date: 08/29/2021
 ---
 # extractjson()
 
-Get a specified element out of a JSON text using a path expression. 
+Get a specified element out of a JSON text using a path expression.
 
 Optionally convert the extracted string to a specific type.
 
@@ -21,43 +21,29 @@ extractjson("$.hosts[1].AvailableMB", EventText, typeof(int))
 
 ## Syntax
 
-`extractjson(`*jsonPath*`,` *dataSource*`, ` *type*`)` 
+`extractjson(`*jsonPath*`,` *dataSource*`, ` *type*`)`
 
 ## Arguments
 
-* *jsonPath*: JsonPath string that defines an accessor into the JSON document.
+* *jsonPath*: [JSONPath](jsonpath.md) string that defines an accessor into the JSON document.
 * *dataSource*: A JSON document.
 * *type*: An optional type literal (for example, typeof(long)). If provided, the extracted value is converted to this type.
 
 ## Returns
 
-This function performs a JsonPath query into dataSource, which contains a valid JSON string, optionally converting that value to another type depending on the third argument.
+This function performs a [JSONPath](jsonpath.md) query into dataSource, which contains a valid JSON string, optionally converting that value to another type depending on the third argument.
 
 ## Example
 
 The `[`bracket`]` notation and dot (`.`) notation are equivalent:
 
 ```kusto
-T 
-| extend AvailableMB = extractjson("$.hosts[1].AvailableMB", EventText, typeof(int)) 
+T
+| extend AvailableMB = extractjson("$.hosts[1].AvailableMB", EventText, typeof(int))
 
 T
-| extend AvailableMD = extractjson("$['hosts'][1]['AvailableMB']", EventText, typeof(int)) 
+| extend AvailableMD = extractjson("$['hosts'][1]['AvailableMB']", EventText, typeof(int))
 ```
-
-### JSON Path expressions
-
-|Path expression|Description|
-|---|---|
-|`$`|Root object|
-|`@`|Current object|
-|`.` or `[ ]` | Child|
-|`[ ]`|Array subscript|
-
-*(We don't currently implement wildcards, recursion, union, or slices.)*
-
-> [!NOTE]
-> JSON paths that include special characters should be escaped as [\'Property Name\'].
 
 **Performance tips**
 
