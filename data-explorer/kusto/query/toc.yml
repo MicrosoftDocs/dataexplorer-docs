@@ -1149,7 +1149,10 @@ items:
     href: re2.md
   - name: RE2 library
     href: re2-library.md
-  - name: SQL to Kusto cheat sheet
+  - name: JSONPath syntax
+    href: jsonpath.md
+  - name: SQL to KQL cheat sheet
+    displayName: Kusto
     href: sqlcheatsheet.md
   - name: Splunk to Kusto cheat sheet
     href: splunk-cheat-sheet.md
