@@ -14,7 +14,7 @@ ms.date: 12/20/2021
 Authorization is the process of allowing or disallowing a security principal permission to carry out an action.
 Azure Data Explorer uses a role-based access control model, under which authenticated principals are mapped to roles, and get access according to the roles they're assigned.
 
-The Kusto Engine service has the following roles:
+The engine service has the following roles:
 
 |Role |Permissions |
 |---|---|
