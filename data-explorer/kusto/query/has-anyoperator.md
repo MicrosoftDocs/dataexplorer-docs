@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/01/2021
+ms.date: 12/21/2021
 ---
 # has_any operator
 
-Filters a record set for data with any of a set of case-insensitive strings.
+Filters a record set for data with any of a set of case-insensitive strings. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is 3 or more characters. If you look for a term that is less than three characters, the query will just scan the values in the column, which is slower than looking up the term in the term index.
 
 For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 

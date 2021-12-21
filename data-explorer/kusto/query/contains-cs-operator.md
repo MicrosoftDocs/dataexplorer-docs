@@ -7,12 +7,12 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/19/2021
+ms.date: 12/21/2021
 ms.localizationpriority: high
 ---
 # contains_cs operator
 
-Filters a record set for data containing a case-sensitive string.
+Filters a record set for data containing a case-sensitive string. `contains` searches for characters rather than [terms](datatypes-string-operators.md#what-is-a-term) of 3 or more characters. The query scans the values in the column, which is slower than looking up a term in a term index.
 
 The following table provides a comparison of the `contains` operators:
 
@@ -32,7 +32,6 @@ The following table provides a comparison of the `contains` operators:
 For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
 
 ## Performance tips
-
 
 > [!NOTE]
 > Performance depends on the type of search and the structure of the data.

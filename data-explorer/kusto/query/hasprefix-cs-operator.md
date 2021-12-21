@@ -7,12 +7,12 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/01/2021
+ms.date: 12/21/2021
 ms.localizationpriority: high
 ---
 # hasprefix_cs operator
 
-Filters a record set for data with a case-sensitive starting string.
+Filters a record set for data with a case-sensitive starting string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is 3 or more characters. If you look for a term that is less than three characters, the query will just scan the values in the column, which is slower than looking up the term in the term index.
 
 The following table provides a comparison of the `has` operators:
 
