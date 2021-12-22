@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # hassuffix_cs operator
 
-Filters a record set for data with a case-sensitive ending string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is 3 or more characters. If you look for a term that is less than three characters, the query will just scan the values in the column, which is slower than looking up the term in the term index.
+Filters a record set for data with a case-sensitive ending string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is 3 or more characters. If you look for a term that is less than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
 The following table provides a comparison of the `hassuffix` operators:
 
