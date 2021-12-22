@@ -14,7 +14,7 @@ ms.date: 12/15/2021
 
 The one-click sample app generator is a tool that allows you to create a working app to ingest and query your data in your preferred programming language. The generated code references the relevant SDK frameworks and is tailored to your cluster and data. The app is a *self-contained*, *executable** example that demonstrates how to connect to a cluster using authentication, administer, and ingest and query data using the SDK.
 
-You can use these generated code as a baseline to write your own apps, altering the code as you go, or you can copy sections of code into your own apps. The code includes comments with tips, best practices, links to reference material, and recommended TODO changes when adapting the code to your needs.
+You can use the generated code as a baseline to write your own apps, altering the code as you go, or you can copy sections of code into your own apps. The code includes comments with tips, best practices, links to reference material, and recommended TODO changes when adapting the code to your needs.
 
 ## Prerequisites
 
