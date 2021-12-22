@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # contains operator
 
-Filters a record set for data containing a case-insensitive string. `contains` searches for characters rather than [terms](datatypes-string-operators.md#what-is-a-term) of 3 or more characters. The query scans the values in the column, which is slower than looking up a term in a term index.
+Filters a record set for data containing a case-insensitive string. `contains` searches for characters rather than [terms](datatypes-string-operators.md#what-is-a-term) of three or more characters. The query scans the values in the column, which is slower than looking up a term in a term index.
 
 The following table provides a comparison of the `contains` operators:
 

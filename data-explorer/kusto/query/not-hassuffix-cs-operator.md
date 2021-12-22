@@ -1,6 +1,6 @@
 ---
-title: The case-sensitive !hassuffix_cs string operator - Azure Data Explorer
-description: This article describes the case-sensitive !hassuffix_cs string operator in Azure Data Explorer.
+title: "The case-sensitive !hassuffix_cs string operator - Azure Data Explorer"
+description: "This article describes the case-sensitive !hassuffix_cs string operator in Azure Data Explorer."
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # !hassuffix_cs operator
 
-Filters a record set for data that does not have a case-sensitive ending string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is 3 or more characters. If you look for a term that is less than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
+Filters a record set for data that does not have a case-sensitive ending string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
 The following table provides a comparison of the `hassuffix` operators:
 
@@ -44,13 +44,13 @@ For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 
-*T* `|` `where` *col* `!hassuffix_cs` `(`*expression*`)`  
+*T* `|` `where` *Column* `!hassuffix_cs` `(`*Expression*`)`  
 
 ## Arguments
 
 * *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
+* *Column* - The column to filter.
+* *Expression* - Scalar or literal expression.
 
 ## Returns
 

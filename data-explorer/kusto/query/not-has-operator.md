@@ -12,7 +12,7 @@ ms.localizationpriority: high
 ---
 # !has operator
 
-Filters a record set for data that does not have a matching case-insensitive string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is 3 or more characters. If you look for a term that is less than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
+Filters a record set for data that does not have a matching case-insensitive string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
 The following table provides a comparison of the `has` operators:
 
@@ -46,13 +46,13 @@ For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 
-*T* `|` `where` *col* `!has` `(`*expression*`)`   
+*T* `|` `where` *Column* `!has` `(`*Expression*`)`   
 
 ## Arguments
 
 * *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
+* *Column* - The column to filter.
+* *Expression* - Scalar or literal expression.
 
 ## Returns
 
