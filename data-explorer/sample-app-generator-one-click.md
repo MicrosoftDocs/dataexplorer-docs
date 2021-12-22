@@ -12,7 +12,7 @@ ms.date: 12/15/2021
 
 # Use the one-click sample app generator to create code to ingest and query your data
 
-The one-click sample app generator is a tool that allows you to create a working app to ingest and query your data in your preferred programming language. The generated code adds the relevant SDK frameworks and is tailored to your cluster and data. The app is a *self-contained*, *executable** example that demonstrates how to connect to a cluster using authentication, administer, and ingest and query data using the SDK.
+The one-click sample app generator is a tool that allows you to create a working app to ingest and query your data in your preferred programming language. The generated code references the relevant SDK frameworks and is tailored to your cluster and data. The app is a *self-contained*, *executable** example that demonstrates how to connect to a cluster using authentication, administer, and ingest and query data using the SDK.
 
 You can use these generated code as a baseline to write your own apps, altering the code as you go, or you can copy sections of code into your own apps. The code includes comments with tips, best practices, links to reference material, and recommended TODO changes when adapting the code to your needs.
 
@@ -108,4 +108,4 @@ Once you have completed schema mapping and column manipulations, the sample app 
 After code generation, the sample app project will be available for download as a ZIP file. Detailed instructions for running the project with the selected SDK will be shown both on the summary tab and inside the sample project file. In addition, the wizard gives you options to use **[Quick commands](one-click-ingestion-existing-table.md#explore-quick-queries-and-tools)** for initial exploration of your data.
 
 >[!NOTE]
-> If you specified a new table for the destination, for the Quick commands to work you must run the generated app at least once to ensure that the new table is created.
+> You may need to run the downloaded app for the Quick commands to work.
