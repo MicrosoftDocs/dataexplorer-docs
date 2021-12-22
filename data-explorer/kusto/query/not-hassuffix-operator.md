@@ -46,7 +46,7 @@ For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 
-*T* `|` `where` *col* `!hassuffix` `(`*expression*`)`   
+*T* `|` `where` *col* `!hassuffix` `(`*expression*`)`
 
 ## Arguments
 
