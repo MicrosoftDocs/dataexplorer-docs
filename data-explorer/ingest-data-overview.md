@@ -7,7 +7,6 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/08/2021
-ms.localizationpriority: high
 ---
 
 # Azure Data Explorer data ingestion overview
