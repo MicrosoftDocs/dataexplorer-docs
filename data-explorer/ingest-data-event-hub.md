@@ -7,7 +7,6 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/31/2021
-ms.localizationpriority: high
 
 # Customer intent: As a database administrator, I want to ingest data into Azure Data Explorer from an Event Hub, so I can analyze streaming data.
 ---
