@@ -8,7 +8,6 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/09/2021
-ms.localizationpriority: high
 ---
 # Let statement
 
