@@ -8,7 +8,6 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/11/2021
 ms.custom: mode-portal
-ms.localizationpriority: high
 ---
 
 # Quickstart: Ingest sample data into Azure Data Explorer

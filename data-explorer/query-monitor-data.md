@@ -8,7 +8,6 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 12/13/2020
-ms.localizationpriority: high
 
 #Customer intent: I want to query data in Azure Monitor using Azure Data Explorer.
 ---
