@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/27/2021
+ms.date: 11/29/2021
 ---
 # .alter table ingestion batching policy
 
@@ -15,12 +15,13 @@ Change the table ingestion batching policy. The [ingestionBatching policy](batch
 
 ## Syntax
 
-* `.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `ingestionbatching`
+* `.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `ingestionbatching` *ArrayOfPolicyObjects* 
 
 ## Arguments
 
-*DatabaseName* - Specify the name of the database.
-*TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
+- *DatabaseName* - Specify the name of the database.
+- *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
+- *ArrayOfPolicyObjects* - An array with one or more policy objects defined.
 
 ## Examples
 

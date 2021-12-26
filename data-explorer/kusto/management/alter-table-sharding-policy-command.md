@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 11/29/2021
 ---
 # .alter table sharding policy
 
@@ -17,11 +17,12 @@ The sharding policy defines if and how [Extents (data shards)](../management/ext
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `sharding`
+`.alter` `table` *TableName* `policy` `sharding` *ArrayOfPolicyObjects*
 
 ## Arguments
 
-*TableName* - Specify the name of the table. A wildcard (*) denotes all tables.
+- *TableName* - Specify the name of the table. A wildcard (*) denotes all tables.
+- *ArrayOfPolicyObjects* - An array with one or more policy objects defined.
 
 ## Returns
 
@@ -32,6 +33,5 @@ Returns a JSON representation of the policy.
 The following command  returns the updated extents sharding policy for the table:
 
 ```kusto
-.alter table MyTable policy sharding 
-@'{ "MaxRowCount": 750000, "MaxExtentSizeInMb": 1024, "MaxOriginalSizeInMb": 2048}'
+.alter table MyTable policy sharding @'{ "MaxRowCount": 750000, "MaxExtentSizeInMb": 1024, "MaxOriginalSizeInMb": 2048}'
 ```
