@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/08/2021
+ms.date: 11/29/2021
 ---
 # .alter-merge workload_group
 
@@ -98,6 +98,22 @@ while keeping all of its other policies unchanged:
   "RequestRateLimitsEnforcementpolicy": {
       "QueriesEnforcementLevel": "QueryHead",
       "CommandsEnforcementLevel": "Cluster"
+  }
+} ```
+~~~
+
+### Alter the query consistency policy
+
+Specify the appliable option for the query consistency model:
+
+~~~kusto
+.alter-merge workload_group default ```
+{
+  "QueryConsistencyPolicy": {
+     "QueryConsistency": {
+        "IsRelaxable": true,
+        "Value": "Weak"
+     }
   }
 } ```
 ~~~
