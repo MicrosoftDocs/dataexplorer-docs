@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/22/2020
+ms.date: 12/27/2021
 ms.localizationpriority: high 
 ---
 # SQL to Kusto cheat sheet
@@ -55,3 +55,41 @@ Union |<code>SELECT * FROM dependencies<br>UNION<br>SELECT * FROM exceptions</co
 Join |<code>SELECT * FROM dependencies <br>LEFT OUTER JOIN exception<br>ON dependencies.operation_Id = exceptions.operation_Id</code> |<code>dependencies<br>&#124; join kind = leftouter<br>&nbsp;&nbsp;(exceptions)<br>on $left.operation_Id == $right.operation_Id</code>
 Nested queries |<code>SELECT * FROM dependencies<br>WHERE resultCode == <br>(SELECT TOP 1 resultCode FROM dependencies<br>WHERE resultId = 7<br>ORDER BY timestamp DESC)</code> |<code>dependencies<br>&#124; where resultCode == toscalar(<br>&nbsp;&nbsp;dependencies<br>&nbsp;&nbsp;&#124; where resultId == 7<br>&nbsp;&nbsp;&#124; top 1 by timestamp desc<br>&nbsp;&nbsp;&#124; project resultCode)</code>
 Having |<code>SELECT COUNT(\*) FROM dependencies<br>GROUP BY name<br>HAVING COUNT(\*) > 3</code> |<code>dependencies<br>&#124; summarize Count = count() by name<br>&#124; where Count > 3</code>|
+
+## Examples
+
+Find the KQL equivalents in the examples below.
+
+Select distinct data from a column:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+EXPLAIN 
+SELECT DISTINCT States FROM StormEvents; 
+```
+
+|Query|
+|---|
+|StormEvents<br>\| project State<br>\| distinct *|
+
+Create a comparison:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+EXPLAIN SELECT EndTime FROM StormEvents WHERE EndTime < getdate()-1
+```
+
+|Query|
+|---|
+|StormEvents<br>\| where (EndTime < __sql_substract(now(), int(1)))<br>\| project EndTime|
+
+Create a union between columns:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+EXPLAIN SELECT EpisodeID FROM StormEvents UNION SELECT EventId FROM StormEvents
+```
+
+|Query|
+|---|
+|StormEvents<br>\| project EpisodeId<br>\| project-rename EpisodeID=EpisodeId<br>\| union <br> (StormEvents<br>\| project EventId<br>\| project-rename EpisodeID=EventId)<br>\| distinct *|
