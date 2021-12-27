@@ -1,6 +1,6 @@
 ---
-title: .alter capacity policy command - Azure Data Explorer
-description: This article describes the .alter capacity policy command in Azure Data Explorer.
+title: ".alter capacity policy command - Azure Data Explorer"
+description: "This article describes the .alter capacity policy command in Azure Data Explorer."
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -18,7 +18,11 @@ Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy is 
 
 ## Syntax
 
-`.alter` `cluster` `policy` `capacity` `"`*Serialized policy*`"`
+`.alter` `cluster` `policy` `capacity` *SerializedArrayOfPolicyObjects* 
+
+## Arguments
+
+*SerializedArrayOfPolicyObjects* - A serialized array with one or more JSON policy objects defined.
 
 ## Returns
 

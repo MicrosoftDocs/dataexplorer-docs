@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 03/29/2020
+ms.date: 11/28/2021
 ---
 
 # What is one-click ingestion?
@@ -39,22 +39,21 @@ One-click ingestion is particularly useful when ingesting data for the first tim
 The one-click ingestion wizard guides you through the one-click ingestion process.
 
 * To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), use one of the following methods:
-    * Select **Data** in the left pane. Within the **Data Management** page, select a type of ingestion and click **Ingest**. 
+    * Select **Data** in the left pane. Within the **Data Management** page, select a type of ingestion and click **Ingest**.
       
-      :::image type="content" source="media/ingest-data-one-click/data-management.png" alt-text="Ingest data from the data management window of the WebUI interface - Azure Data Explorer." lightbox="media/ingest-data-one-click/data-management.png":::
+      :::image type="content" source="media/ingest-data-one-click/select-data-pane.png" alt-text="Screenshot of options to ingest data from the data management window of the WebUI interface - Azure Data Explorer." lightbox="media/ingest-data-one-click/select-data-pane.png":::
    
-     * Right-click the **database** or **table** row in the left menu of the Azure Data Explorer web UI and select **Ingest new data**.
+     * Select **Query** in the left pane. Right-click the *database* or *table* and select **Ingest new data**.
         
-        :::image type="content" source="media/ingest-data-one-click/one-click-ingestion-in-webui.png" alt-text="Select one-click ingestion in the web UI.":::
+        :::image type="content" source="media/ingest-data-one-click/ingest-new-data-database-menu.png" alt-text="Screenshot of selection of one-click ingestion in the Azure Data Explorer web UI.":::
 
 * To access the one-click ingestion wizard from the **Welcome to Azure Data Explorer** home screen in your cluster, complete the first two steps ([cluster creation and database creation](#prerequisites)) and then select **Ingest new data**.
 
     :::image type="content" source="media/ingest-data-one-click/welcome-ingestion.png" alt-text="Ingest new data from welcome to Azure Data Explorer.":::
 
-
 * To access the wizard from the Azure portal, select **Query** from the left menu, right-click on the **database** or **table**, and select **Ingest new data**.
 
-    :::image type="content" source="media/ingest-data-one-click/access-from-portal.png" alt-text="Access the one click ingestion wizard from Azure portal.":::
+    :::image type="content" source="media/ingest-data-one-click/ingest-from-portal.png" alt-text="Access the one click ingestion wizard from Azure portal.":::
 
 ## One-click ingestion wizard
 
@@ -63,7 +62,7 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 >
 > For sample scenarios, see:
 > * Ingest into [a new table from a container in CSV format](one-click-ingestion-new-table.md)
-> * Ingest into an [existing table from a local file in JSON format](one-click-ingestion-existing-table.md) 
+> * Ingest into an [existing table from a local file in JSON format](one-click-ingestion-existing-table.md)
 
 The wizard guides you through the following options:
    * Ingest into an [existing table](one-click-ingestion-existing-table.md)
@@ -105,8 +104,6 @@ Mapping transformations can be performed on a column of **Type** string or datet
 * DateTimeFromUnixMicroseconds
 * DateTimeFromUnixNanoseconds
 
-For more information, see [mapping transformations](#mapping-transformations).
-
 ### Data ingestion
 
 Once you have completed schema mapping and column manipulations, the ingestion wizard will start the data ingestion process. 
@@ -121,7 +118,6 @@ Once you have completed schema mapping and column manipulations, the ingestion w
 ### Initial data exploration
    
 After ingestion, the wizard gives you options to use **[Quick commands](one-click-ingestion-existing-table.md#explore-quick-queries-and-tools)** for initial exploration of your data.
-
 
 ## Next steps
 

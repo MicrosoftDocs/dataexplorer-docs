@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 11/29/2021
 ---
 # .alter table partitioning policy
 
@@ -15,11 +15,12 @@ Changes a table [partitioning policy](partitioningpolicy.md). The partitioning p
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `partitioning` 
+`.alter` `table` *TableName* `policy` `partitioning` *ArrayOfPolicyObjects*
 
 ## Arguments
 
-*TableName* - Specify the name of the table.  
+- *TableName* - Specify the name of the table.  
+- *ArrayOfPolicyObjects* - An array with one or more policy objects defined.
 
 ### Example
 
