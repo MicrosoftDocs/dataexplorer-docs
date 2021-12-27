@@ -8,7 +8,6 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/11/2021
 ms.custom: mode-portal
-ms.localizationpriority: high
 ---
 
 # Quickstart: Ingest sample data into Azure Data Explorer
@@ -29,7 +28,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
 1. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
 
-# [Ingest with query](#tab/ingest-query)
+# [Ingest with command](#tab/ingest-comand)
 
 1. In the left menu, select **Query**. In the upper-left of the application, select **Add cluster**.
 
