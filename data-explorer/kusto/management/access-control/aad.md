@@ -44,12 +44,13 @@ that federates with AAD, such as ADFS), and gets back a security token that can 
 Kusto service. The Kusto service doesn't care how the security token was obtained, it cares about
 whether the token is valid and what information is put there by AAD (or the federated IdP).
 
-On the client side, Kusto supports both interactive authentication, in which the AAD client library
-ADAL or similar code requests the user to enter credentials. It also supports token-based
-authentication, in which the application using Kusto obtains a valid user token and presents
-it. Last, it supports a scenario in which the application using Kusto obtains a valid user token
+On the client side, Kusto supports both interactive authentication, where 
+[MSAL (Microsoft Authentication Library)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) or similar code
+requests the user to enter credentials and token-based authentication, where the application using
+Kusto obtains a valid user token and utilizes it to access Kusto.
+Additionally, scenario in which the application using Kusto obtains a valid user token
 for some other service (not Kusto), provided there's a trust relationship between that resource
-and Kusto.
+and Kusto is also supported.
 
 Please see [Kusto connection strings](../../api/connection-strings/kusto.md) for details on how
 to use the Kusto client libraries and authenticate by using AAD to Kusto.
@@ -81,24 +82,22 @@ permissions will be listed in the scope claim of the token that is issued
 to the AAD client application.
 
 
-
 The AAD client application is configured to request the "Access Kusto" permission
 from the user (which AAD calls "the resource owner").
 
-## Kusto Client SDK as an AAD Client Application
+## Kusto SDK as an AAD Client Application
 
-When the Kusto client libraries invoke ADAL (the AAD client library)
-to acquire a token for communicating with Kusto, it provides
-the following information:
+When the Kusto client libraries invoke MSAL (Microsoft Authentication Library)
+to acquire a token for communicating with Kusto, it provides the following information:
 
 1. The AAD Tenant, as received from the caller
 2. The AAD Client Application ID
 3. The AAD Client Resource ID
 4. The AAD ReplyUrl (the URL that the AAD service will redirect-to after authentication completes successfully;
-   ADAL then captures this redirect and extracts the authorization code from it).
+   MSAL then captures this redirect and extracts the authorization code from it).
 5. The Cluster URI ('https://Cluster-and-region.kusto.windows.net').
 
-The token returned by ADAL to the Kusto Client Library has the Kusto AAD Server Application
+The token returned to the Kusto SDK from a call to MSAL has the Kusto Service Application
 as the audience, and the "Access Kusto" permission as the scope.
 
 ## Authenticating with AAD Programmatically
