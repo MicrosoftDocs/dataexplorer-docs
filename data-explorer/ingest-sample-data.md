@@ -28,7 +28,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
 1. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
 
-# [Ingest with query](#tab/ingest-query)
+# [Ingest with command](#tab/ingest-comand)
 
 1. In the left menu, select **Query**. In the upper-left of the application, select **Add cluster**.
 
