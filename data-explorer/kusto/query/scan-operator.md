@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/19/2021
+ms.date: 12/28/2021
 ---
 # scan operator (preview)
 
@@ -197,9 +197,7 @@ Calculate a funnel completion of the sequence  `Hail` -> `Tornado` -> `Thunderst
 
 ```kusto
 StormEvents
-| where State !contains "ISLAND" and State !contains "LAKE" and State !startswith "DISTRICT" and State !startswith "GULF" and State !contains "WATERS"
-| where State !in ("AMERICAN SAMOA", "PUERTO RICO", "GUAM", "ATLANTIC SOUTH", "E PACIFIC")
-| partition by State 
+| partition hint.strategy=native by State 
 (
     sort by StartTime asc
     | scan with 
@@ -214,7 +212,7 @@ StormEvents
 
 |EventType|dcount_State|
 |---|---|
-|Hail|48|
+|Hail|50|
 |Tornado|34|
 |Thunderstorm Wind|32|
 
