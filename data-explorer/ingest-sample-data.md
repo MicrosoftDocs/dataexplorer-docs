@@ -27,7 +27,7 @@ This article shows you how to ingest (load) sample data into an Azure Data Explo
 
 The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
 
-First, sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com). Then follow the steps to load the ingest the sample data.
+First, sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com). Then follow the steps to ingest the sample data.
 
 # [Ingest with wizard](#tab/one-click-ingest)
 
