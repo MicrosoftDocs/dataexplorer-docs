@@ -29,38 +29,6 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
 1. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
 
-# [Ingest with command](#tab/ingest-comand)
-
-1. In the left menu, select **Query**. In the upper-left of the application, select **Add cluster**.
-
-    :::image type="content" source="media/ingest-sample-data/add-cluster.png" alt-text="Screenshot of Web UI where you select the query pane and add a new cluster in the Query pane.":::
-
-1. In the **Add cluster** dialog box, enter your cluster URL in the form `https://<ClusterName>.<Region>.kusto.windows.net/`, then select **Add**.
-
-1. Paste in the following command, and select **Run** to create a StormEvents table.
-
-    ```Kusto
-    .create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)
-    ```
-
-1. Paste in the following command, and select **Run** to ingest data into StormEvents table.
-
-    ```Kusto
-    .ingest into table StormEvents 'https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D' with (ignoreFirstRecord=true)
-    ```
-
-1. After ingestion completes, paste in the following query and select **Run**.
-
-    ```Kusto
-    StormEvents
-    | sort by StartTime desc
-    | take 10
-    ```
-
-    The query returns the following results from the ingested sample data.
-
-    :::image type="content" source="media/ingest-sample-data/query-results.png" alt-text="Screenshot of the Web UI where you see the query results for the ingested sample data.":::
-
 # [Ingest with wizard](#tab/one-click-ingest)
 
 1. In the left menu, select **Data**.
@@ -120,6 +88,38 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
     The query returns the following results from the ingested sample data.
 
     :::image type="content" source="media/ingest-sample-data/query-results.png" alt-text="Screenshot of the Web UI where you select the query results for the ingested sample data.":::
+
+# [Ingest with command](#tab/ingest-comand)
+
+1. In the left menu, select **Query**. In the upper-left of the application, select **Add cluster**.
+
+    :::image type="content" source="media/ingest-sample-data/add-cluster.png" alt-text="Screenshot of Web UI where you select the query pane and add a new cluster in the Query pane.":::
+
+1. In the **Add cluster** dialog box, enter your cluster URL in the form `https://<ClusterName>.<Region>.kusto.windows.net/`, then select **Add**.
+
+1. Paste in the following command, and select **Run** to create a StormEvents table.
+
+    ```Kusto
+    .create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)
+    ```
+
+1. Paste in the following command, and select **Run** to ingest data into StormEvents table.
+
+    ```Kusto
+    .ingest into table StormEvents 'https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D' with (ignoreFirstRecord=true)
+    ```
+
+1. After ingestion completes, paste in the following query and select **Run**.
+
+    ```Kusto
+    StormEvents
+    | sort by StartTime desc
+    | take 10
+    ```
+
+    The query returns the following results from the ingested sample data.
+
+    :::image type="content" source="media/ingest-sample-data/query-results.png" alt-text="Screenshot of the Web UI where you see the query results for the ingested sample data.":::
 ---
 
 ## Next steps
