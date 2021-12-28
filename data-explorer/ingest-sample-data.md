@@ -13,7 +13,7 @@ ms.localizationpriority: high
 
 # Quickstart: Ingest sample data into Azure Data Explorer
 
-This article shows you how to ingest (load) sample data into an Azure Data Explorer database. There are [several ways to ingest data](ingest-data-overview.md); this article focuses on a basic approach that is suitable for testing purposes.
+This article shows you how to ingest (load) sample data into an Azure Data Explorer database. There are [several ways to ingest data](ingest-data-overview.md). This article focuses on a basic approach that's suitable for testing purposes.
 
 > [!NOTE]
 > You already have this data if you completed [Ingest data using the Azure Data Explorer Python library](python-ingest-data.md).
@@ -27,7 +27,7 @@ This article shows you how to ingest (load) sample data into an Azure Data Explo
 
 The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
 
-1. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
+First, sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com). Then follow the steps to load the ingest the sample data.
 
 # [Ingest with wizard](#tab/one-click-ingest)
 
