@@ -21,7 +21,7 @@ Resource Health determines the health of your Azure Data Explorer resource by ex
 * High Ingestion latency
 * Degraded materialized views  
 * High latency for data connections
-* Data connection fauilres
+* Data connection failures
 
 
 ## Access Resource Health reporting
