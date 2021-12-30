@@ -32,8 +32,8 @@ toguid("70fc66f7-8279-44fc-9092-d364d70fce44") == guid("70fc66f7-8279-44fc-9092-
 
 The conversion process takes the first 32 characters of the input (hyphens are skipped, if they are located correctly), validates they are between 0-9 or a-f, and then converts the string into a [`guid`](./scalar-data-types/guid.md) scalar. The rest of the string is ignored.
 
-* If the conversion is successful, the result will be a [`guid`](./scalar-data-types/guid.md) scalar
-* Otherwise, the result will be `null`
+* If the conversion is successful, the result will be a [`guid`](./scalar-data-types/guid.md) scalar.
+* Otherwise, the result will be `null`.
 
 ## Examples
 
