@@ -11,7 +11,8 @@ ms.date: 12/21/2021
 ---
 # Tabular expression statements
 
-The tabular expression statement is what people usually have in mind when they talk about queries. This statement usually appears last in the statement list, and both its input and its output consists of tables or tabular data sets.
+The tabular expression statement is what people usually have in mind when they talk about queries. This statement usually appears last in the statement list, and both its input and its output consists of tables or tabular data sets. 
+Any two statements must be separated by a semicolon.
 
 Azure Data Explorer uses a data flow model for the tabular expression statement. The typical structure of a tabular expression statement is a composition of *tabular data sources*
 (such as Azure Data Explorer tables), *tabular data operators* (such as filters and projections), and potentially *rendering operators*. The composition is represented by the pipe character (`|`), giving the statement a very regular form that visually represents the flow of tabular data from left to right.
@@ -34,8 +35,6 @@ A tabular data source produces sets of records, to be further processed by tabul
 * The [print operator](printoperator.md).
 * An invocation of a function that returns a table.
 * A [table literal](datatableoperator.md) ("datatable").
-
-Let, set, and tabular statements are strung together/separated by a semicolon, otherwise they will not be considered part of the same query.
 
 ## Example
 

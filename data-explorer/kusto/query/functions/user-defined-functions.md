@@ -151,6 +151,7 @@ The function **body** includes:
 
 > [!NOTE]
 > Other kinds of [query statements](../statements.md) that are supported at the query "top level" aren't supported inside a function body.
+> Any two statements must be separated by a semicolon.
 
 ### Examples of user-defined functions
 
@@ -171,9 +172,6 @@ let Test = (id: int) {
 range x from 1 to Test(10) step 1
 | count
 ```
-
-> [!NOTE]
-> Statements must be separated by a semicolon, otherwise they will not be considered part of the same query.
 
 **User-defined function that defines a default value for a parameter**
 

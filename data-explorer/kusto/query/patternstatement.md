@@ -16,9 +16,10 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-A **pattern** is a construct that maps string tuples to tabular expressions. Each pattern must *declare* a pattern name and optionally *define* a pattern mapping. Patterns that define a mapping return a tabular expression when invoked.
+A **pattern** is a construct that maps string tuples to tabular expressions. Each pattern must *declare* a pattern name and optionally *define* a pattern mapping. Patterns that define a mapping return a tabular expression when invoked. Any two statements must be separated by a semicolon.
 
-*Empty patterns* are patterns that are declared but don't define a mapping. When invoked, they return error *SEM0036* along with the details of the missing pattern definitions in the HTTP header. Middle-tier applications that provide a Kusto Query Language (KQL) experience can use the returned details as part of their process to enrich KQL query results. For more information, see [Working with middle-tier applications](#work-with-middle-tier-applications).
+*Empty patterns* are patterns that are declared but don't define a mapping. When invoked, they return error *SEM0036* along with the details of the missing pattern definitions in the HTTP header. Middle-tier applications that provide a Kusto Query Language (KQL) experience can use the returned details as part of their process to enrich KQL query results. 
+For more information, see [Working with middle-tier applications](#work-with-middle-tier-applications).
 
 ## Syntax
 
@@ -62,7 +63,7 @@ In each of the following examples, a pattern is declared, defined, and then invo
 
 ### Define simple patterns
 
-The following example defines a pattern that maps states to an expression that returns its capital city. Let, set, and tabular statements are strung together/separated by a semicolon, otherwise they will not be considered part of the same query.
+The following example defines a pattern that maps states to an expression that returns its capital city. 
 
 ```kusto
 declare pattern country = (name:string)[state:string]

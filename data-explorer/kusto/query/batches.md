@@ -15,7 +15,7 @@ A query can include multiple tabular expression statements, as long as they're d
 
 Notes:
 * Prefer batching and [`materialize`](materializefunction.md) over using the [fork operator](forkoperator.md).
-* Let, set, and tabular statements are separated by a semicolon, otherwise they will not be considered part of the same query.
+* Any two statements must be separated by a semicolon.
 
 ## Examples
 

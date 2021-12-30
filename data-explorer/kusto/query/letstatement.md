@@ -56,7 +56,7 @@ If the variable previously represented another value, for example in nested stat
 > * You can use `(*)` for the tabular expression.
 > * When using a tabular expression as part of a user defined function, the columns can't be accessed as part of the function.
 > * Tabular arguments appear before scalar arguments.
-> * Let, set, and tabular statements in the same query are separated by a semicolon, otherwise they will not be considered part of the same query.
+> * Any two statements must be separated by a semicolon.
 
 ## Examples
 

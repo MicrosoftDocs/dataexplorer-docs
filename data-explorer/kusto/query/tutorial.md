@@ -473,7 +473,7 @@ LightningStorms
 
 > [!TIP]
 > In Kusto Explorer, to execute the entire query, don't add blank lines between parts of the query.
-> Statements must be separated by a semicolon, otherwise they will not be considered part of the same query.
+> Any two statements must be separated by a semicolon.
 
 ## Combine data from several databases in a query
 

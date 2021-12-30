@@ -17,7 +17,7 @@ This function is useful for queries that require staged calculations. For exampl
 calculate a total count of events, and then use the result to filter groups
 that exceed a certain percent of all events. 
 
-Statements must be separated by a semicolon, otherwise they will not be considered part of the same query.
+Any two statements must be separated by a semicolon.
 
 ## Syntax
 
