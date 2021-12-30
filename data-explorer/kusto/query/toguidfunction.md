@@ -34,3 +34,21 @@ The conversion process takes the first 32 characters of the input (hyphens are s
 
 * If the conversion is successful, the result will be a [`guid`](./scalar-data-types/guid.md) scalar
 * Otherwise, the result will be `null`
+
+## Examples
+
+```kusto
+datatable(str: string)
+[
+    "0123456789abcdef0123456789abcdef",
+    "0123456789ab-cdef-0123-456789abcdef",
+    "a string that is not a guid"
+]
+| extend guid = toguid(str)
+```
+
+|str|guid|
+|---|---|
+|0123456789abcdef0123456789abcdef|01234567-89ab-cdef-0123-456789abcdef|
+|0123456789ab-cdef-0123-456789abcdef|01234567-89ab-cdef-0123-456789abcdef|
+|a string that is not a guid||
