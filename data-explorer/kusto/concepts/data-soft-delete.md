@@ -16,16 +16,11 @@ As a data platform, Azure Data Explorer supports the ability to delete individua
 * To delete records for compliance purposes, use [.purge](./data-purge.md) - This method deletes all relevant data from storage artifacts and, once completed, there is no way to recover the deleted data.
 * To delete records for any other purpose, use `.delete` as described in this topic - This marks records as deleted but does not necessarily delete the data from storage artifacts. This deletion method is much faster than purge.
 
-> [!WARNING]
-> The `.delete` command is designed for deleting **small amounts** of data and is intended to be used **infrequently**. Frequent use of the command may have a significant impact on the performance of your cluster.
->
-> To delete large amounts of data, consider using other methods such as [dropping extents](../management/drop-extents.md).
-
 ## Use cases
 
 This deletion method should only be used for the unplanned deletion of individual records. For example, if you discover that an IoT device is reporting corrupt telemetry for some time, you should consider using this method to delete the corrupt data.
 
-However, if you want to do a periodic cleanup by regularly deleting duplicate records, or deleting old records per entity, then you should use [Materialized Views](../management/materialized-views/materialized-view-overview.md) instead.
+If you need to frequently delete records for deduplication or updates, we recommend that you use [Materialized Views](../management/materialized-views/materialized-view-overview.md).
 
 ## Deletion process
 

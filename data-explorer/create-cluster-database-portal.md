@@ -8,7 +8,6 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/04/2021
 ms.custom: mode-portal
-ms.localizationpriority: high 
 adobe-target: true
 
 # Customer intent: As a database administrator, I want to create an Azure Data Explorer cluster and database so that I can understand whether Azure Data Explorer is suitable for my analytics projects.

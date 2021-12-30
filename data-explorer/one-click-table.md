@@ -24,9 +24,11 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
 ## Create a table
 
-1. In the left menu of the Web UI, right-click on your database name and select **Create table**.
+1. In the left menu, select **Data**.
 
-    :::image type="content" source="./media/one-click-table/create-table.png" alt-text="Create a table in the Azure Data Explorer Web UI.":::
+    :::image type="content" source="media/one-click-table/select-create-new-table.png" alt-text="Screenshot of the Web UI where you select the Data pane from the menu and then select Create a new table." lightbox="media/ingest-sample-data/select-data.png":::
+
+1. From the **Quick actions** section, select **Create new table**. Alternatively, from the **All actions** section, select **Create new table** and then **Create**.
 
 ### Destination tab
 
@@ -74,6 +76,7 @@ In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats)
 1. In **Mapping**, enter a name for this table's schema mapping. 
     > [!TIP]
     >  Table names can include alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
+
 1. Select **Next: Create table**.
 
 ### Create table completed window

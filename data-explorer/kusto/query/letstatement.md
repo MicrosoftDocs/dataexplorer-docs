@@ -142,7 +142,7 @@ foo2(2) | count
 
 |result|
 |---|
-|20|
+|50|
 
 ### Create a view or virtual table 
 

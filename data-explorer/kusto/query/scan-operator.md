@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/19/2021
+ms.date: 12/28/2021
 ---
 # scan operator (preview)
 
@@ -23,7 +23,7 @@ T
 | sort by Timestamp asc
 | scan with 
 (
-    step s1: Event == "Start";
+    step s1 output=last: Event == "Start";
     step s2: Event != "Start" and Event != "Stop" and Timestamp - s1.Timestamp <= 5m;
     step s3: Event == "Stop"  and Ts - s1.Timestamp <= 5m;
 )
@@ -39,7 +39,7 @@ T
 
 ### *StepDefinition* syntax
 
-`step` *StepName* `:` *Condition* [ `=>` *Column* `=` *Assignment* [`,` ... ] ] `;`
+`step` *StepName* [ `output` = `all` | `last` | `none`] `:` *Condition* [ `=>` *Column* `=` *Assignment* [`,` ... ] ] `;`
 
 ## Arguments
 
@@ -48,6 +48,7 @@ T
 * *StepName*: Used to reference values in the state of scan for conditions and assignments. The step name must be unique.
 * *Condition*: A Boolean expression that defines which records from the input matches the step. A record matches the step when the condition is true with the step’s state or with the previous step’s state.
 * *Assignment*: A scalar expression that is assigned to the corresponding column when a record matches a step.
+* `output`: Controls the output logic of the step on repeated matches. `all` (default) outputs all records matching the step, `last` outputs only the last record in a series of repeating matches for the step, `none` does not output records matching the step.
 
 ## Returns
 
@@ -118,7 +119,7 @@ Events
 
 ### Sessions tagging 
 
-Divide the input into sessions: a session ends 30 minutes after the first event of the session, after which a new session starts.
+Divide the input into sessions: a session ends 30 minutes after the first event of the session, after which a new session starts. Note the use of `with_match_id` flag which assigns a unique value for each distinct match (session) of *scan*. Also note the special use of two *steps* in this example, `inSession` has `true` as condition so it captures and outputs all the records from the input while `endSession` captures records that happen more than 30m from the `sessionStart` value for the current match. The `endSession` step has `output=none` meaning it doesn't produce output records. The `endSession` step is used to advance the state of the current match from `inSession` to `endSession`, allowing a new match (session) to begin, starting from the current record.
 
 ```kusto
 let Events = datatable ( Ts: timespan, Event: string ) 
@@ -137,9 +138,8 @@ Events
 | scan with_match_id=session_id declare (sessionStart:timespan) with 
 (
     step inSession: true => sessionStart = iff(isnull(inSession.sessionStart), Ts, inSession.sessionStart);
-    step endSession: Ts - inSession.sessionStart > 30m => sessionStart = timespan(null);
+    step endSession output=none: Ts - inSession.sessionStart > 30m;
 )
-| where isnotnull(sessionStart)
 ```
 
 |Ts|Event|sessionStart|session_id|
@@ -196,9 +196,7 @@ Calculate a funnel completion of the sequence  `Hail` -> `Tornado` -> `Thunderst
 
 ```kusto
 StormEvents
-| where State !contains "ISLAND" and State !contains "LAKE" and State !startswith "DISTRICT" and State !startswith "GULF" and State !contains "WATERS"
-| where State !in ("AMERICAN SAMOA", "PUERTO RICO", "GUAM", "ATLANTIC SOUTH", "E PACIFIC")
-| partition by State 
+| partition hint.strategy=native by State 
 (
     sort by StartTime asc
     | scan with 
@@ -213,7 +211,7 @@ StormEvents
 
 |EventType|dcount_State|
 |---|---|
-|Hail|48|
+|Hail|50|
 |Tornado|34|
 |Thunderstorm Wind|32|
 

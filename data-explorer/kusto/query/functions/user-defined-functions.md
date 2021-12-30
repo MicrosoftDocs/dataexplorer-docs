@@ -8,7 +8,6 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/17/2021
-ms.localizationpriority: high
 ---
 # User-defined functions
 

@@ -8,7 +8,6 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/25/2021
-ms.localizationpriority: high
 ---
 # todynamic(), parse_json()
 

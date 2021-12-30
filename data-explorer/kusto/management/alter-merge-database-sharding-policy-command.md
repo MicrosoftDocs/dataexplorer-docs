@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 11/29/2021
 ---
 # .alter-merge database sharding policy
 
@@ -17,11 +17,12 @@ The sharding policy defines if and how [Extents (data shards)](../management/ext
 
 ## Syntax
 
-`.alter-merge` `database` *DatabaseName* `policy` `sharding`
+`.alter-merge` `database` *DatabaseName* `policy` `sharding` *ArrayOfPolicyObjects*
 
 ## Arguments
 
 *DatabaseName* - Specify the name of the database. 
+*ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
 
 ## Returns
 

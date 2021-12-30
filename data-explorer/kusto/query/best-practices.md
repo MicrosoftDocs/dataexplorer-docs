@@ -7,8 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/03/2020
-ms.localizationpriority: high
+ms.date: 12/12/2021
 adobe-target: true
 ---
 # Query best practices
@@ -40,4 +39,6 @@ Here are several best practices to follow to make your query run faster.
 |**Extract values on column with strings sharing the same format or pattern**|  Use the [parse operator](./parseoperator.md) | Don't use several `extract()` statements.  | For example, values like `"Time = <time>, ResourceId = <resourceId>, Duration = <duration>, ...."`
 |**[extract() function](./extractfunction.md)**| Use when parsed strings don't all follow the same format or pattern.| |Extract the required values by using a REGEX.|
 | **[materialize() function](./materializefunction.md)** | Push all possible operators that will reduce the materialized data set and still keep the semantics of the query. | |For example, filters, or project only required columns.
+| **Use materialized views** | Use [materialized views](../management/materialized-views/materialized-view-overview.md) for storing commonly used aggregations. Prefer using the `materialized_view()` function to query materialized part only | | `materialized_view('MV')` |
+
 
