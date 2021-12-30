@@ -47,6 +47,7 @@ Grouping, Aggregation |<code>SELECT name, AVG(duration) FROM dependencies<br>GRO
 Distinct |<code>SELECT DISTINCT name, type  FROM dependencies</code> |<code>dependencies<br>&#124; summarize by name, type</code>
   -- | <code>SELECT name, COUNT(DISTINCT type) <br> FROM dependencies <br> GROUP BY name</code> | <code> dependencies <br>&#124; summarize by name, type &#124; summarize count() by name <br> // or approximate for large sets <br> dependencies <br> &#124; summarize dcount(type) by name  </code>
 Column aliases, Extending |<code>SELECT operationName as Name, AVG(duration) as AvgD FROM dependencies<br>GROUP BY name</code> |<code>dependencies<br>&#124; summarize AvgD = avg(duration) by Name=operationName</code>
+-- |<code>SELECT DISTINCT State as Location FROM EventType = 'Flood'</code> |<code>StormEvents<br>&#124; where (EventType == "Flood")<br>&#124; project Location=State<br>&#124; distinct *</code>
 Ordering |<code>SELECT name, timestamp FROM dependencies<br>ORDER BY timestamp ASC</code> |<code>dependencies<br>&#124; project name, timestamp<br>&#124; order by timestamp asc nulls last</code>
 Top n by measure |<code>SELECT TOP 100 name, COUNT(*) as Count FROM dependencies<br>GROUP BY name<br>ORDER BY Count DESC</code> |<code>dependencies<br>&#124; summarize Count = count() by name<br>&#124; top 100 by Count desc</code>
 Union |<code>SELECT * FROM dependencies<br>UNION<br>SELECT * FROM exceptions</code> |<code>union dependencies, exceptions</code>
@@ -54,41 +55,3 @@ Union |<code>SELECT * FROM dependencies<br>UNION<br>SELECT * FROM exceptions</co
 Join |<code>SELECT * FROM dependencies <br>LEFT OUTER JOIN exception<br>ON dependencies.operation_Id = exceptions.operation_Id</code> |<code>dependencies<br>&#124; join kind = leftouter<br>&nbsp;&nbsp;(exceptions)<br>on $left.operation_Id == $right.operation_Id</code>
 Nested queries |<code>SELECT * FROM dependencies<br>WHERE resultCode == <br>(SELECT TOP 1 resultCode FROM dependencies<br>WHERE resultId = 7<br>ORDER BY timestamp DESC)</code> |<code>dependencies<br>&#124; where resultCode == toscalar(<br>&nbsp;&nbsp;dependencies<br>&nbsp;&nbsp;&#124; where resultId == 7<br>&nbsp;&nbsp;&#124; top 1 by timestamp desc<br>&nbsp;&nbsp;&#124; project resultCode)</code>
 Having |<code>SELECT COUNT(\*) FROM dependencies<br>GROUP BY name<br>HAVING COUNT(\*) > 3</code> |<code>dependencies<br>&#124; summarize Count = count() by name<br>&#124; where Count > 3</code>|
-
-## Examples
-
-Find the KQL equivalents in the examples below.
-
-Select distinct data from a column:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-EXPLAIN 
-SELECT DISTINCT States FROM StormEvents; 
-```
-
-|Query|
-|---|
-|StormEvents<br>\| project State<br>\| distinct *|
-
-Create a comparison:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-EXPLAIN SELECT EndTime FROM StormEvents WHERE EndTime < getdate()-1
-```
-
-|Query|
-|---|
-|StormEvents<br>\| where (EndTime < __sql_substract(now(), int(1)))<br>\| project EndTime|
-
-Create a union between columns:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-EXPLAIN SELECT EpisodeID FROM StormEvents UNION SELECT EventId FROM StormEvents
-```
-
-|Query|
-|---|
-|StormEvents<br>\| project EpisodeId<br>\| project-rename EpisodeID=EpisodeId<br>\| union <br> (StormEvents<br>\| project EventId<br>\| project-rename EpisodeID=EventId)<br>\| distinct *|
