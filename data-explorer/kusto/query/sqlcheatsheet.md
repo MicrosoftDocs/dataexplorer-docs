@@ -47,7 +47,7 @@ Grouping, Aggregation |<code>SELECT name, AVG(duration) FROM dependencies<br>GRO
 Distinct |<code>SELECT DISTINCT name, type  FROM dependencies</code> |<code>dependencies<br>&#124; summarize by name, type</code>
   -- | <code>SELECT name, COUNT(DISTINCT type) <br> FROM dependencies <br> GROUP BY name</code> | <code> dependencies <br>&#124; summarize by name, type &#124; summarize count() by name <br> // or approximate for large sets <br> dependencies <br> &#124; summarize dcount(type) by name  </code>
 Column aliases, Extending |<code>SELECT operationName as Name, AVG(duration) as AvgD FROM dependencies<br>GROUP BY name</code> |<code>dependencies<br>&#124; summarize AvgD = avg(duration) by Name=operationName</code>
--- |<code>SELECT DISTINCT State as Location FROM StormEvents WHERE EventType = 'Flood'</code> |<code>StormEvents<br>&#124; where (EventType == "Flood")<br>&#124; project Location=State<br>&#124; distinct *</code>
+-- |<code>SELECT conference, CONCAT(sessionid, ' ' , session_title) AS session FROM ConferenceSessions</code> |<code>ConferenceSessions<br>&#124; extend session=strcat(sessionid, " ", session_title)<br>&#124; project conference, session</code>
 Ordering |<code>SELECT name, timestamp FROM dependencies<br>ORDER BY timestamp ASC</code> |<code>dependencies<br>&#124; project name, timestamp<br>&#124; order by timestamp asc nulls last</code>
 Top n by measure |<code>SELECT TOP 100 name, COUNT(*) as Count FROM dependencies<br>GROUP BY name<br>ORDER BY Count DESC</code> |<code>dependencies<br>&#124; summarize Count = count() by name<br>&#124; top 100 by Count desc</code>
 Union |<code>SELECT * FROM dependencies<br>UNION<br>SELECT * FROM exceptions</code> |<code>union dependencies, exceptions</code>
