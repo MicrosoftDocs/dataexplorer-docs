@@ -18,7 +18,7 @@ toguid("70fc66f7-8279-44fc-9092-d364d70fce44") == guid("70fc66f7-8279-44fc-9092-
 ```
 
 > [!NOTE]
-> If you have a hard-coded guid, then the recommendation is to use [guid()](./scalar-data-types/guid.md).
+> If you have a hard-coded guid, we recommend using [guid()](./scalar-data-types/guid.md).
 
 ## Syntax
 
