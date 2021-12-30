@@ -8,7 +8,6 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/13/2021
 ms.custom: mode-portal
-ms.localizationpriority: high
 
 #Customer intent: As a user of Azure Data Explorer, I want to query data in the Web UI and share data. This will allow me to understand my data and share analysis with colleagues.
 ---
