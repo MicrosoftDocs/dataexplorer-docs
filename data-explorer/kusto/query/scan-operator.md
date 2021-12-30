@@ -119,7 +119,7 @@ Events
 
 ### Sessions tagging 
 
-Divide the input into sessions: a session ends 30 minutes after the first event of the session, after which a new session starts.
+Divide the input into sessions: a session ends 30 minutes after the first event of the session, after which a new session starts. Note the use of `with_match_id` flag which assigns a unique value for each distinct match (session) of *scan*. Also note the special use of two *steps* in this example, `inSession` has `true` as condition so it captures and outputs all the records from the input while `endSession` captures records that happen more than 30m from the `sessionStart` value for the current match. The `endSession` step has `output=none` meaning it doesn't produce output records. The `endSession` step is used to advance the state of the current match from `inSession` to `endSession`, allowing a new match (session) to begin, starting from the current record.
 
 ```kusto
 let Events = datatable ( Ts: timespan, Event: string ) 
@@ -138,9 +138,8 @@ Events
 | scan with_match_id=session_id declare (sessionStart:timespan) with 
 (
     step inSession: true => sessionStart = iff(isnull(inSession.sessionStart), Ts, inSession.sessionStart);
-    step endSession: Ts - inSession.sessionStart > 30m => sessionStart = timespan(null);
+    step endSession output=none: Ts - inSession.sessionStart > 30m;
 )
-| where isnotnull(sessionStart)
 ```
 
 |Ts|Event|sessionStart|session_id|
