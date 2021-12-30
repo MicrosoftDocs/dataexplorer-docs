@@ -171,8 +171,6 @@ items:
     items:
     - name: join operator
       href: joinoperator.md
-    - name: Shuffle query
-      href: shufflequery.md
     - name: Cross-cluster join
       href: joincrosscluster.md
     - name: Broadcast join
@@ -225,6 +223,9 @@ items:
     href: searchoperator.md
   - name: serialize operator
     href: serializeoperator.md
+  - name: shuffle query
+    displayName: hint.shufflekey, hint.strategy, shufflekey, hint
+    href: shufflequery.md
   - name: sort operator
     href: sortoperator.md
   - name: summarize operator
@@ -233,8 +234,6 @@ items:
       href: summarizeoperator.md
     - name: Using hll() and tdigest()
       href: usinghlltdigest.md
-    - name: shuffle
-      href: shufflequery.md
   - name: take operator
     href: takeoperator.md
   - name: top operator
