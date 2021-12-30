@@ -469,8 +469,10 @@ LightningStorms
 | join (AvalancheStorms) on State
 | distinct State
 ```
+
 > [!TIP]
 > In Kusto Explorer, to execute the entire query, don't add blank lines between parts of the query.
+> Any two statements must be separated by a semicolon.
 
 ## Combine data from several databases in a query
 
