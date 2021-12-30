@@ -46,7 +46,7 @@ A health status of **Available** indicates that your Azure Data Explorer resourc
 
 ### Degraded
 
-A health status of **Degraded** indicates that your Azure Data Explorer resource detected a loss in performance or potential data loss (for example low ingestion success rate), although it's still available for use.
+A health status of **Degraded** indicates that your Azure Data Explorer resource detected a loss in performance or potential data loss, for example low ingestion success rate. The cluster is still available for use.
 
 ### Unavailable
 
