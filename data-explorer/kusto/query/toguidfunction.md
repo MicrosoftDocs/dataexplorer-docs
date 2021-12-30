@@ -47,6 +47,8 @@ datatable(str: string)
 | extend guid = toguid(str)
 ```
 
+**Output**:
+
 |str|guid|
 |---|---|
 |0123456789abcdef0123456789abcdef|01234567-89ab-cdef-0123-456789abcdef|
