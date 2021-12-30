@@ -11,11 +11,7 @@ ms.date: 12/30/2021
 ---
 # toguid()
 
-Converts input to [`guid`](./scalar-data-types/guid.md) representation.
-
-```kusto
-toguid("70fc66f7-8279-44fc-9092-d364d70fce44") == guid("70fc66f7-8279-44fc-9092-d364d70fce44")
-```
+Converts a string to a [`guid`](./scalar-data-types/guid.md) scalar.
 
 > [!NOTE]
 > If you have a hard-coded guid, we recommend using [guid()](./scalar-data-types/guid.md).
