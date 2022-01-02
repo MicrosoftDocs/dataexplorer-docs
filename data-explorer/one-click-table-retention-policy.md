@@ -6,11 +6,11 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 12/28/2021
+ms.date: 01/02/2022
 ---
 # Use one-click to change a table's retention policy
 
-The [retention policy](retentionpolicy.md) controls the mechanism that automatically removes data from tables. It is used to remove data whose relevance is age-based. In this article, you can define and assign a retention policy for a table using the one-click experience.
+The [retention policy](kusto/management/retentionpolicy.md) controls the mechanism that automatically removes data from tables. It is used to remove data whose relevance is age-based. In this article, you can define and assign a retention policy for a table using the one-click experience.
 
 ## Prerequisites
 
