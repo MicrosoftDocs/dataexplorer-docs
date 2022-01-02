@@ -1,14 +1,14 @@
 ---
 title: Use the one-click table retention policy wizard to change the retention policy for a table in Azure Data Explorer.
 description: In this article, you learn how to change a table's retention policy using the one-click experience.
-author: orspod
+author: orspod+
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/02/2022
 ---
-# Use one-click to change a table's retention policy
+# Use one-click to update a table's retention policy
 
 The [retention policy](kusto/management/retentionpolicy.md) controls the mechanism that automatically removes data from tables. It is used to remove data whose relevance is age-based. In this article, you can define and assign a retention policy for a table using the one-click experience.
 
@@ -29,61 +29,38 @@ The **Table retention policy** window opens with the **Policy update** tab selec
 
 ### Policy update
  
-:::image type="content" source="media/one-click-event-hub/destination-tab.png" alt-text="Screen shot of destination tab. Cluster, Database, and Table fields must be filled out before proceeding to Next-Source.":::
+:::image type="content" source="media/one-click-table-policies/one-click-retention-policy-1.png" alt-text="Screen shot of table retention policy tab. Cluster, Database, Table and Policy fields must be filled out before proceeding to Update.":::
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus.
 
-1. Under **Table**, select **Create new table** and enter a name for the new table. Alternatively, use an existing table. 
+1. Under **Table**, select a table from the drop-down menus.  
 
-    > [!NOTE]
-    > Table names must be between 1 and 1024 characters. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
+1. Under **Retention policy**, select **On** to inherit the retention policy from the database. To create or update a table policy, select **Off**. 
 
-1. Select **Next: Source**.
-
-### Source tab
-
-1. Under **Source type**, select **Event Hub**. 
-
-1. Under **Data Connection**, fill in the following fields:
-
-    :::image type="content" source="media/one-click-event-hub/project-details.png" alt-text="Screenshot of source tab with project details fields to be filled in - ingest new data to Azure Data Explorer with Event Hub in the one click experience.":::
+1. If using a separate policy, fill in the following fields:
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
-    | Data connection name | *TestDataConnection*  | The name that identifies your data connection.
-    | Subscription |      | The subscription ID where the Event Hub resource is located.  |
-    | Event Hub namespace |  | The name that identifies your namespace. |
-    | Event Hub |  | The Event Hub you wish to use. |
-    | Consumer group |  | The consumer group defined in your Event Hub. |
-    | Event system properties | Select relevant properties | The [Event Hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
-
-1. Select **Next: Schema**.
-
-## Schema tab
-
-Data is read from the Event Hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects. Supported formats are CSV, JSON, PSV, SCsv, SOHsv TSV, TXT, and TSVE.
-
-For information on schema mapping with JSON-formatted data, see [Edit the schema](one-click-ingestion-existing-table.md#edit-the-schema).
-For information on schema mapping with CSV-formatted data, see [Edit the schema](one-click-ingestion-new-table.md#edit-the-schema).
+    | Recoverability | *Yes*  | Enable or disable data recoverability.
+    | Retention period (days) |  *365* | The time span (in days) for which it's guaranteed that the data is kept available to query. The time span is measured from the time that data is ingested.  |
 
 
+1. Under **Cache policy**, select **On** to inherit the caching policy from the database. To create or update a table policy, select **Off**. 
 
-:::image type="content" source="media/one-click-event-hub/schema-tab.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hub in the one click experience.":::
+1. If using a separate policy, fill in the following fields:
 
-1. If the data you see in the preview window is not complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your Event Hub:
-    * **Discard and fetch new data**: discards the data presented and searches for new events.
-    * **Fetch more data**: Searches for more events in addition to the events already found. 
-    
-    > [!NOTE]
-    > To see a preview of your data, your Event Hub must be sending events.
-        
-1. Select **Next: Summary**.
+    |**Setting** | **Suggested value** | **Field description**
+    |---|---|---|
+    | Data (days) | *31* | The time span (in days) for which to keep frequently queried data available in SSD storage or RAM, rather than in longer-term storage.
+    | Index (days) |  31    | The amount of time for indexed access to data stored in external storage.  |
 
-## Continuous ingestion from Event Hub
+1. Select **Update**.
 
-In the **Continuous ingestion from Event Hub established** window, all steps will be marked with green check marks when establishment finishes successfully. The cards below these steps give you options to explore your data with **Quick queries**, undo changes made using **Tools**, or **Monitor** the Event Hub connections and data.
+## Update table policy
 
-:::image type="content" source="media/one-click-event-hub/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hub with the one click experience.":::
+In the **Update table policy** window, all steps will be marked with green check marks when the update finishes successfully. The cards below these steps give you options to explore your data with **Quick queries**, or undo changes made using **Tools**.
+
+:::image type="content" source="media/one-click-table-policies/one-click-retention-policy-finished.png" alt-text="Screenshot of final screen in update table retention policy wizard for Azure Data Explorer with the one click experience.":::
 
 ## Next steps
 
