@@ -58,4 +58,5 @@ After you've managed the database, you can run queries and commands. If you crea
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Ingest data into Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-data-one-click)
+> [Ingest data into Azure Data Explorer](ingest-data-one-click.md)
+
