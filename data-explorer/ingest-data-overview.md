@@ -7,7 +7,6 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/08/2021
-ms.localizationpriority: high
 ---
 
 # Azure Data Explorer data ingestion overview
@@ -73,7 +72,6 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 **Available SDKs and open-source projects**
 
 * [Python SDK](kusto/api/python/kusto-python-client-library.md)
-
 * [.NET SDK](kusto/api/netfx/about-the-sdk.md)
 * [Java SDK](kusto/api/java/kusto-java-client-library.md)
 * [Node SDK](kusto/api/node/kusto-node-client-library.md)
@@ -123,7 +121,7 @@ Use commands to ingest data directly to the engine. This method bypasses the Dat
 
 ## Ingestion process
 
-Once you have chosen the most suitable ingestion method for your needs, do the following steps: 
+Once you have chosen the most suitable ingestion method for your needs, do the following steps:
 
 1. **Set batching policy** (optional)
 
@@ -152,6 +150,11 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
 1. **Set update policy** (optional)
 
    Some of the data format mappings (Parquet, JSON, and Avro) support simple and useful ingest-time transformations. If the scenario requires more complex processing at ingestion, adjust the [update policy](kusto/management/update-policy.md), which supports lightweight processing using query commands. The update policy automatically runs extractions and transformations on ingested data on the original table, and ingests the resulting data into one or more destination tables.
+
+1. **Ingest data** 
+
+    You can [ingest sample data](ingest-sample-data.md) into the table you created in your database using commands or the one-click wizard.
+    To ingest your own data, you can select from a range of options, including [ingestion tools](#comparing-ingestion-methods-and-tools), [connectors and plugins](#ingestion-using-connectors-and-plugins) to diverse services, [managed pipelines](#ingestion-using-managed-pipelines), [programmatic ingestion using SDKs](#programmatic-ingestion-using-sdks), and [direct access to ingestion](#ingest-control-commands).
 
 ## Next steps
 

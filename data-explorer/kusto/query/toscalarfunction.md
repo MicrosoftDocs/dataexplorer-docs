@@ -15,7 +15,9 @@ Returns a scalar constant value of the evaluated expression.
 
 This function is useful for queries that require staged calculations. For example,
 calculate a total count of events, and then use the result to filter groups
-that exceed a certain percent of all events.
+that exceed a certain percent of all events. 
+
+Any two statements must be separated by a semicolon.
 
 ## Syntax
 
@@ -59,7 +61,7 @@ range z from Start to End step Step | extend start=Start, end=End, step=Step
 
 The following example shows how `toscalar` can be used to "fix" an expression
 so that it'll be calculated precisely once. In this case, the expression being
-calculated returns a different value per evaluation.
+calculated returns a different value per evaluation. 
 
 ```kusto
 let g1 = toscalar(new_guid());

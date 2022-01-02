@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 07/12/2021
+ms.date: 11/28/2021
 ---
 
 # Ingest data from a container/ADLS into Azure Data Explorer
@@ -37,9 +37,11 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 ## Ingest new data
 
-1. In the left menu of the Web UI, right-click a *database* and select **Ingest new data**.
+1. In the left menu of the Web UI, select **Data**.
 
-    :::image type="content" source="media/one-click-ingestion-new-table/one-click-ingestion-in-web-ui.png" alt-text="Ingest new data.":::
+1. From the **Quick actions** section, select **Ingest new data**. Alternatively, from the **All actions** section, select **Ingest new data** and then **Ingest**.
+
+    :::image type="content" source="media/one-click-ingestion-new-table/ingest-new-data.png" alt-text="Screenshot for the Web UI where you select one-click ingestion for a table.":::
 
 1. In the **Ingest new data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 

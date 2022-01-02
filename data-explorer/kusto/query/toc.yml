@@ -89,6 +89,7 @@ items:
   - name: Set statement
     href: setstatement.md
   - name: Tabular expression statements
+    displayName: SQL views
     href: tabularexpressionstatements.md
   - name: Batches
     href: batches.md
@@ -356,6 +357,7 @@ items:
 - name: Scalar functions
   items:
   - name: Scalar function types
+    displayName: SQL stored procedures
     href: scalarfunctions.md
   - name: abs()
     href: abs-function.md
@@ -1065,7 +1067,9 @@ items:
   - name: geo_distance_2points()
     href: geo-distance-2points-function.md
   - name: geo_distance_point_to_line()
-    href: geo-distance-point-to-line-function.md   
+    href: geo-distance-point-to-line-function.md
+  - name: geo_distance_point_to_polygon()
+    href: geo-distance-point-to-polygon-function.md
   - name: geo_point_in_circle()
     href: geo-point-in-circle-function.md
   - name: geo_point_in_polygon()
@@ -1145,7 +1149,10 @@ items:
     href: re2.md
   - name: RE2 library
     href: re2-library.md
+  - name: JSONPath syntax
+    href: jsonpath.md
   - name: SQL to Kusto cheat sheet
+    displayName: Kusto
     href: sqlcheatsheet.md
   - name: Splunk to Kusto cheat sheet
     href: splunk-cheat-sheet.md
