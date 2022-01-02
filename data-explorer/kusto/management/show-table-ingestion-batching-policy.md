@@ -11,7 +11,7 @@ ms.date: 09/27/2021
 ---
 # .show table ingestion batching policy
 
-DDisplay the table [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
+Display the table [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
 
 ## Syntax
 
