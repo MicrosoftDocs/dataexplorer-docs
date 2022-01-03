@@ -38,7 +38,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 1. Under **Inherit values from database**, select **On** to inherit the retention policy from the database. To create or update a table policy, select **Off**. 
 
-1. If using a separate policy, fill in the following fields:
+1. If you are using a separate policy, fill in the following fields:
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
