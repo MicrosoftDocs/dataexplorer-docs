@@ -42,7 +42,7 @@ The **Table retention policy** window opens with the **Policy update** tab selec
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
     | Recoverability | *Yes*  | Enable or disable data recoverability. |
-    | Retention period (days) |  *365* | The time span (in days) for which it's guaranteed that the data is kept available to query. The time span is measured from the time that data is ingested.  |
+    | Retention period |  *365* | The number of days that data is stored in long-term storage before it's deleted. The period is measured from the time data is ingested.  |
 
 
 1. Under **Cache policy**, select **On** to inherit the caching policy from the database. To create or update a table policy, select **Off**. 
