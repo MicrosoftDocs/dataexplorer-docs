@@ -51,7 +51,7 @@ The **Table retention policy** window opens with the **Policy update** tab selec
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
-    | Data (days) | *31* | The number of days to keep frequently queried data available in SSD storage or RAM to optimize querying. |
+    | Data (days) | *31* | The number of days that frequently queried data is available in RAM or SSD storage where it can be rapidly accessed to optimize query performance. |
     | Index (days) |  *31*  | The amount of time for indexed access to data stored in external storage.  |
 
 1. Select **Update**.
