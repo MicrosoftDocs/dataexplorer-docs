@@ -1,5 +1,5 @@
 ---
-title: Use the one-click database wizard to create or update an Azure Data Explorer database.
+title: Use the one-click database wizard to create or update an Azure Data Explorer database
 description: In this article, you learn how to create or update an Azure Data Explorer database.
 author: orspod
 ms.author: orspodek
