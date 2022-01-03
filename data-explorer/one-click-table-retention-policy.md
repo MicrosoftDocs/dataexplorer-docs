@@ -37,7 +37,7 @@ The **Table retention policy** window opens with the **Policy update** tab selec
 
 1. Under **Retention policy**, select **On** to inherit the retention policy from the database. To create or update a table policy, select **Off**. 
 
-1. If using a separate policy, fill in the following fields:
+1. If you are using a separate policy, fill in the following fields:
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
