@@ -9,9 +9,11 @@ ms.topic: how-to
 ms.date: 01/02/2022
 ---
 
-# Quickstart: Create and update an Azure Data Explorer database
+# One-click database management
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest data into a database so that you can run queries against it.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest data into a database so that you can run queries against it.'
+
+In this article, you learn how to create or update a database using the one-click database management wizard.
 
 ## Prerequisites
 
@@ -20,26 +22,9 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Manage a database
 
-The one-click database wizard guides you through the one-click process to create or update a database.
+The one-click database management wizard guides you through the one-click process to create or update a database.
 
-1. In [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select **Data** in the left pane.
-
-1. On the **Database** card, select **Manage** to start the wizard.
-
-    :::image type="content" source="media/one-click-manage-database/select-manage-database.png" alt-text="Screenshot of data page, showing selection of manage database.":::
-
-1. Fill out the form with the following information.
-
-    :::image type="content" source="media/one-click-manage-database/create-new-database.png" alt-text="Screenshot of manage database page, showing create database properties.":::
-
-    **Setting** | **Suggested value** | **Field description**
-    |---|---|---|
-    | Cluster | *TestCluster* | The cluster in which to create or update the database. |
-    | Database name | *TestDatabase* | The name of database to create or update. The name must be unique within the cluster. |
-    | Retention period | *365* | The number of days that data is guaranteed to be kept available for querying. The period is measured from the time data is ingested. |
-    | Cache period | *31* | The number of days to keep frequently queried data available in SSD storage or RAM to optimize querying. |
-
-1. Select **Manage database** to create or update the database. The action typically takes less than a minute.
+[!INCLUDE [data-explorer-one-click-manage-database](includes/data-explorer-one-click-manage-database.md)]
 
 ## Run basic commands in the database
 
