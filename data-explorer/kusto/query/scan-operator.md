@@ -233,12 +233,12 @@ Each record from the input is evaluated against all of scan’s steps, starting 
 
 * If the record *r* satisfies the condition of *s_k* using the state of the previous step *s_(k-1)*, then the following happens:
     1. The state of *s_k* is deleted.
-    1. The state of *s_(k-1)* becomes the state of *s_k*, and the state of *s_(k-1)* becomes empty.
+    1. The state of *s_(k-1)* becomes ("promoted" to be) the state of *s_k*, and the state of *s_(k-1)* becomes empty.
     1. All the assignments of *s_k* are calculated and extend *r*.
-    1. The extended *r* is added to the output and to the state of *s_k*.
+    1. The extended *r* is added to the output (if *s_k* is defined as `output=all`) and to the state of *s_k*.
 * If *r* doesn't satisfy the condition of *s_k* with the state of *s_(k-1)*, *r* is then checked with the state of *s_k*. If *r* satisfies the condition of *s_k* with the state of *s_k*, the following happens:
     1. The record *r* is extended with the assignments of *s_k*.
-    1. The extended record r is added to the output.
+    1. If *s_k* is defined as `output=all`, the extended record r is added to the output.
     1. The last record in the state of *s_k* (which represents *s_k* itself in the state) is replaced by the extended record *r*.
     1. Whenever the first step is matched while its state is empty, a new match begins and the match ID is increased by `1`. This only affects the output when `with_match_id` is used.
 * If r doesn't satisfy the condition *s_k* with the state *s_k*, evaluate *r* against condition *s_k-1* and repeat the logic above.
