@@ -99,4 +99,4 @@ The following example shows an Azure Resource Manager template for adding a data
 
 ## Next steps
 
-* [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md)
+* [Ingest data from an event hub into Azure Data Explorer](ingest-data-event-hub.md)
