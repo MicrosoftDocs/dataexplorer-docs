@@ -17,8 +17,8 @@ ms.author: orspodek
     |---|---|---|
     | Cluster | *TestCluster* | The cluster in which to create or update the database. |
     | Database name | *TestDatabase* | The name of database to create or update. The name must be unique within the cluster. |
-    | Retention period | *365* | The number of days that data is guaranteed to be kept available for querying. The period is measured from the time data is ingested. |
-    | Cache period | *31* | The number of days to keep frequently queried data available in SSD storage or RAM to optimize querying. |
+    | Retention period | *365* | The number of days that data is stored in long-term storage before it's deleted. The period is measured from the time data is ingested. |
+    | Cache period | *31* | The number of days that frequently queried data is available in RAM or SSD storage where it can be rapidly accessed to optimize query performance. |
 
     :::image type="content" source="../media/one-click-manage-database/create-new-database.png" alt-text="Screenshot of manage database page, showing create database properties.":::
 

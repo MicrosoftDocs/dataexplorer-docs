@@ -112,25 +112,25 @@ items:
         href: lightingest.md
       - name: Use wizard for one-time ingestion of historical data with LightIngest
         href: generate-lightingest-command.md
-    - name: Event Hub
+    - name: Event hub
       items:
-      - name: Event Hub data connection
+      - name: Event hub data connection
         displayName: ingest, ingestion
         href: ingest-data-event-hub-overview.md
       - name: Azure portal
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: ingest-data-event-hub.md
       - name: One-click
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: one-click-event-hub.md
       - name: C#
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: data-connection-event-hub-csharp.md
       - name: Python
-        displayName: Event Hub, ingest
+        displayName: Event hub, ingest
         href: data-connection-event-hub-python.md
       - name: Azure Resource Manager template
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: data-connection-event-hub-resource-manager.md
     - name: Event Grid
       items:
@@ -292,7 +292,7 @@ items:
         - name: Create Private Endpoint for your VNet cluster - Portal
           href: vnet-create-private-endpoint.md
         - name: Create a private or service endpoint to resources used by data connections
-          displayName: VNet, private endpoint, Azure Storage, Event Hub
+          displayName: VNet, private endpoint, Azure Storage, event hub
           href: vnet-endpoint-storage-event-hub.md
     - name: Encryption
       items:
