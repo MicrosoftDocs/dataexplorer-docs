@@ -84,7 +84,7 @@ You're now ready for the second step in the process: database creation.
 
 [!INCLUDE [data-explorer-one-click-manage-database](includes/data-explorer-one-click-manage-database.md)]
 
-### [Create with portal](#tab/one-click-create-database)
+### [Create with portal](#tab/portal-create-database)
 
 1. On the **Overview** tab, select **Create database**.
 
