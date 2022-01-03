@@ -26,7 +26,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 1. In the **Table batching policy** card, select **Update**. 
 
-The **Table batching policy** window opens with the **Policy update** tab selected.
+    The **Table batching policy** window opens with the **Policy update** tab selected.
 
 ### Policy update
  
