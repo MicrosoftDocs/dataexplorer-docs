@@ -24,7 +24,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
     :::image type="content" source="media/one-click-table-policies/one-click-batch-policy-start.png" alt-text="Select one-click table batching ingestion policy update in the web UI.":::
 
-1. In the **Table batching policy** card, select **Update**. 
+1. In the **Table batching policy** tile, select **Update**. 
 
     The **Table batching policy** window opens with the **Policy update** tab selected.
 
