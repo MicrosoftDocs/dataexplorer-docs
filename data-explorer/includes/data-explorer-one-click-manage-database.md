@@ -7,7 +7,7 @@ ms.author: orspodek
 ---
 1. In [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select **Data** in the left pane.
 
-1. On the **Database** tile, select **Manage** to start the wizard.
+1. In the **Database** tile, select **Manage** to start the wizard.
 
     :::image type="content" source="../media/one-click-manage-database/select-manage-database.png" alt-text="Screenshot of data page, showing selection of manage database.":::
 
