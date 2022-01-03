@@ -50,7 +50,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 ## Update table policy
 
-In the **Update table policy** window, all steps will be marked with green check marks when the update finishes successfully. The cards below these steps give you options to explore your data with **Quick queries**, or undo changes made using **Tools**.
+In the **Update table policy** window, all steps will be marked with green check marks when the update finishes successfully. The tiles below these steps give you options to explore your data with **Quick queries**, or undo changes made using **Tools**.
 
 :::image type="content" source="media/one-click-table-policies/batch-policy-success.png" alt-text="Screenshot of final screen in update table retention policy wizard for Azure Data Explorer with the one click experience.":::
 
