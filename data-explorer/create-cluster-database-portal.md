@@ -92,14 +92,14 @@ You're now ready for the second step in the process: database creation.
 
 1. Fill out the form with the following information.
 
-    :::image type="content" source="media/create-cluster-database-portal/create-test-database.png" alt-text="Create database form."::: 
-
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
     | Admin | *Default selected* | The admin field is disabled. New admins can be added after database creation. |
     | Database name | *TestDatabase* | The name of database to create. The name must be unique within the cluster. |
     | Retention period | *365* | The number of days that data is guaranteed to be kept available for querying. The period is measured from the time data is ingested. |
     | Cache period | *31* | The number of days to keep frequently queried data available in SSD storage or RAM to optimize querying. |
+
+    :::image type="content" source="media/create-cluster-database-portal/create-test-database.png" alt-text="Create database form."::: 
 
 1. Select **Create** to create the database. Creation typically takes less than a minute. When the process is complete, you're back on the cluster **Overview** tab.
 
