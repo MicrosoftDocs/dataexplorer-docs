@@ -97,3 +97,11 @@ Some examples on how to specify connection strings with authentication infromati
 
 > [!Note]
 > Use `h` in the beggining of the connection string to obfuscate it: `h"https://...."
+
+## Storage access control
+
+When using `impersonation`, `SAS key` and `managed identity` authentication methods, the principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations.
+
+See guides for the different storage type:
+* [Azure Blob Storage/Azure Data Lake Storage Gen2 access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac)
+* [Azure Data Lake Storage Gen1 access control](/azure/storage/blobs/data-lake-storage-access-control)
