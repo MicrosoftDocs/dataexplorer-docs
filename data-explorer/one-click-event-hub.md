@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/03/2022
+ms.date: 01/04/2022
 ---
 # Use one-click ingestion to create an event hub data connection for Azure Data Explorer
 
@@ -37,12 +37,12 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 
     :::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-web-ui.png" alt-text="Select one-click ingestion in the web UI.":::
 
-1. In the **Ingest data from event hub** card, select **Ingest**. 
+1. In the **Ingest data from event hub** card, select **Ingest**.
 
 The **Ingest new data** window opens with the **Destination** tab selected.
 
 ### Destination tab
- 
+
 :::image type="content" source="media/one-click-event-hub/destination-tab.png" alt-text="Screen shot of destination tab. Cluster, Database, and Table fields must be filled out before proceeding to Next-Source.":::
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus.
@@ -56,7 +56,7 @@ The **Ingest new data** window opens with the **Destination** tab selected.
 
 ### Source tab
 
-1. Under **Source type**, select **Event Hub**. 
+1. Under **Source type**, select **Event Hub**.
 
 1. Under **Data Connection**, fill in the following fields:
 
@@ -80,9 +80,12 @@ Data is read from the event hub in form of [EventData](/dotnet/api/microsoft.ser
 For information on schema mapping with JSON-formatted data, see [Edit the schema](one-click-ingestion-existing-table.md#edit-the-schema).
 For information on schema mapping with CSV-formatted data, see [Edit the schema](one-click-ingestion-new-table.md#edit-the-schema).
 
+:::image type="content" source="media/one-click-event-hub/event-hub-schema.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with event hub in the one click experience.":::
 
-
-:::image type="content" source="media/one-click-event-hub/schema-tab.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with event hub in the one click experience.":::
+> [!NOTE]
+>
+> * If [streaming](kusto/management/streamingingestionpolicy.md) is enabled for the cluster, the option to select **Streaming ingestion** appears.
+> * If streaming is not enabled for the cluster, the option to select **Batching time** appears. For event hubs, the recommended default [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
 
 1. If the data you see in the preview window is not complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
     * **Discard and fetch new data**: discards the data presented and searches for new events.
