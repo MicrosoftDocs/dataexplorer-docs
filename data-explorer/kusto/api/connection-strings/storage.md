@@ -31,18 +31,18 @@ Authentication Type | Access Key | Shared Access (SAS) Key | Token | Impersonati
 --- | --- | --- | --- | --- | --- 
 **Azure Blob Storage** | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:| :heavy_check_mark:| :heavy_check_mark:
 **Azure Data Lake Storage Gen2** | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:| :heavy_check_mark:| :heavy_check_mark:
-**Azure Data Lake Storage Gen1** | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:| :heavy_check_mark:| :heavy_check_mark:
+**Azure Data Lake Storage Gen1** | :x: | :x: | :heavy_check_mark:| :heavy_check_mark:| :heavy_check_mark:
 
 ## Access Key
-For Azure Blob Storage, append the Storage account key to the connection string `;{key}` (for example: `;ljkAkl...==`).
+For Azure Blob Storage, append the storage account key to the connection string `;{key}` (for example: `;ljkAkl...==`).
 
-For Azure Data Lake Storage Gen2, append `sharedkey={key}` with the Storage account key to the connection string. For example: `;sharedkey=ljkAkl...==`.
+For Azure Data Lake Storage Gen2, append `;sharedkey={key}` with the storage account key to the connection string. For example: `;sharedkey=ljkAkl...==`.
 
 ### When should you use this method?
 Access Key could be used to access resources on an ongoing basis. 
 
 ## Shared Access (SAS) Key
-Append the Shared Access (SAS) key to the end of the connection string `?sig=...`.
+Append the Shared Access (SAS) key `?sig=...` to the end of the connection string.
 
 ### When should you use this method?
 SAS Keys have an expiration time and therefore should be used when accessing storage for a limited time.
@@ -50,7 +50,7 @@ SAS Keys have an expiration time and therefore should be used when accessing sto
 For help generating SAS keys, click [here](TODO).
 
 ## Token
-Append a base-64 encoded AAD access token `;token=AadToken`. Make sure the token is for the resource https://storage.azure.com/.
+Append a base-64 encoded AAD access token `;token=AadToken` to the connection string. Make sure the token is for the resource https://storage.azure.com/.
 
 ### When should you use this method?
 AAD token have an expiration time, and therefore should be used when accessing storage for a limited time.
@@ -73,6 +73,7 @@ In unattended flows, no AAD principal can be derived in order to execute queries
 For more information on how to use managed identities with your cluster, see [managed identities overview](/azure/data-explorer/managed-identities-overview).
 The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations.
 
+>[!Note]
 > Managed Identity is only supported in specific Azure Data Explorer flows. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
 
 # Storage connection strings
@@ -105,4 +106,5 @@ Some examples on how to specify connection strings with authentication infromati
 
 
 
+> [!Note]
 > Use `h` in the beggining of the connection string to obfuscate it: `h"https://...."
