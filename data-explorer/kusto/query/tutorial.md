@@ -8,7 +8,6 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/01/2021
-ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -470,8 +469,10 @@ LightningStorms
 | join (AvalancheStorms) on State
 | distinct State
 ```
+
 > [!TIP]
 > In Kusto Explorer, to execute the entire query, don't add blank lines between parts of the query.
+> Any two statements must be separated by a semicolon.
 
 ## Combine data from several databases in a query
 

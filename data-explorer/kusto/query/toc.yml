@@ -171,8 +171,6 @@ items:
     items:
     - name: join operator
       href: joinoperator.md
-    - name: Shuffle query
-      href: shufflequery.md
     - name: Cross-cluster join
       href: joincrosscluster.md
     - name: Broadcast join
@@ -225,6 +223,9 @@ items:
     href: searchoperator.md
   - name: serialize operator
     href: serializeoperator.md
+  - name: shuffle query
+    displayName: hint.shufflekey, hint.strategy, shufflekey, hint
+    href: shufflequery.md
   - name: sort operator
     href: sortoperator.md
   - name: summarize operator
@@ -233,8 +234,6 @@ items:
       href: summarizeoperator.md
     - name: Using hll() and tdigest()
       href: usinghlltdigest.md
-    - name: shuffle
-      href: shufflequery.md
   - name: take operator
     href: takeoperator.md
   - name: top operator
@@ -259,7 +258,7 @@ items:
     href: materializefunction.md
   - name: materialized_view()
     href: materialized-view-function.md
-  - name: Query results cache 
+  - name: Query results cache
     href: query-results-cache.md
   - name: table()
     href: tablefunction.md
@@ -287,50 +286,50 @@ items:
       href: contains-operator.md
     - name: contains_cs operator
       href: contains-cs-operator.md
-    - name: "!contains operator" 
+    - name: !contains operator 
       href: not-contains-operator.md
-    - name: "!contains_cs operator" 
+    - name: !contains_cs operator 
       href: not-contains-cs-operator.md 
     - name: endswith operator
       href: endswith-operator.md
     - name: endswith_cs operator
       href: endswith-cs-operator.md
-    - name: "!endswith operator"
+    - name: !endswith operator
       href: not-endswith-operator.md
-    - name: "!endswith_cs operator"
+    - name: !endswith_cs operator
       href: not-endswith-cs-operator.md
     - name: == (equals) operator 
       displayName: equals
       href: equals-cs-operator.md
     - name: =~ (equals) operator 
       href: equals-operator.md
-    - name: "!= (not equals) operator"
+    - name: != (not equals) operator
       href: not-equals-cs-operator.md
-    - name: "!~ (not equals) operator"
+    - name: !~ (not equals) operator
       href: not-equals-operator.md    
     - name: has operator
       href: has-operator.md
     - name: has_cs operator
       href: has-cs-operator.md
-    - name: "!has operator"
+    - name: !has operator
       href: not-has-operator.md
-    - name: "!has_cs operator" 
+    - name: !has_cs operator 
       href: not-has-cs-operator.md  
     - name: hasprefix operator
       href: hasprefix-operator.md
     - name: hasprefix_cs operator
       href: hasprefix-cs-operator.md
-    - name: "!hasprefix operator"
+    - name: !hasprefix operator
       href: not-hasprefix-operator.md
-    - name: "!hasprefix_cs operator" 
+    - name: !hasprefix_cs operator 
       href: not-hasprefix-cs-operator.md    
     - name: hassuffix operator
       href: hassuffix-operator.md
     - name: hassuffix_cs operator
       href: hassuffix-cs-operator.md
-    - name: "!hassuffix operator" 
+    - name: !hassuffix operator 
       href: not-hassuffix-operator.md
-    - name: "!hassuffix_cs operator" 
+    - name: !hassuffix_cs operator 
       href: not-hassuffix-cs-operator.md 
     - name: has_all operator
       href: has-all-operator.md
@@ -340,9 +339,9 @@ items:
       href: in-cs-operator.md
     - name: in~ operator 
       href: inoperator.md
-    - name: "!in operator"
+    - name: !in operator
       href: not-in-cs-operator.md
-    - name: "!in~ operator" 
+    - name: !in~ operator 
       href: not-in-operator.md 
     - name: match regex operator
       href: regex-operator.md
@@ -350,9 +349,9 @@ items:
       href: startswith-operator.md
     - name: startswith_cs operator
       href: startswith-cs-operator.md
-    - name: "!startswith operator" 
+    - name: !startswith operator 
       href: not-startswith-operator.md
-    - name: "!startswith_cs operator"
+    - name: !startswith_cs operator
       href: not-startswith-cs-operator.md  
 - name: Scalar functions
   items:
@@ -1061,7 +1060,7 @@ items:
     href: diffpatterns-textplugin.md
 - name: Geospatial
   items:
-  - name: Geospatial clustering overview 
+  - name: Geospatial clustering overview
     displayName: H3, S2, Geohash
     href: geospatial-grid-systems.md
   - name: geo_distance_2points()
@@ -1151,7 +1150,7 @@ items:
     href: re2-library.md
   - name: JSONPath syntax
     href: jsonpath.md
-  - name: SQL to KQL cheat sheet
+  - name: SQL to Kusto cheat sheet
     displayName: Kusto
     href: sqlcheatsheet.md
   - name: Splunk to Kusto cheat sheet

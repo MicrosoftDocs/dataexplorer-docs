@@ -8,7 +8,6 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/12/2021
-ms.localizationpriority: high
 adobe-target: true
 ---
 # Query best practices

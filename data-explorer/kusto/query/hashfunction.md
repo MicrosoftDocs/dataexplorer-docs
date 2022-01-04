@@ -20,7 +20,7 @@ Returns a hash value for the input value.
 ## Arguments
 
 * *source*: The value to be hashed.
-* *mod*: An optional module value to be applied to the hash result, so that
+* *mod*: An optional modulo value to be applied to the hash result, so that
   the output value is between `0` and *mod* - 1
 
 ## Returns
