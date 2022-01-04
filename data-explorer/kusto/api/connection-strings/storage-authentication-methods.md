@@ -76,18 +76,7 @@ The managed identity must have the appropriate role-based access control (RBAC) 
 >[!Note]
 > Managed Identity is only supported in specific Azure Data Explorer flows. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
 
-# Storage connection strings
-
-Each external storage connection string has a different format. 
-When specifying a connection string in Azure Data Explorer, please use the following template for each storage type:
-
-|Storage Type                  |Scheme    |URI template                          |
-|------------------------------|----------|--------------------------------------|
-|Azure Blob Storage            |`https://`|`https://`*StorageAccountName*`.blob.core.windows.net/`*Container*[`/`*BlobName*]{*Authentication Information*}|
-|Azure Data Lake Storage Gen2  |`https://`|`https://`*StorageAccountName*`.dfs.core.windows.net/`*Filesystem*[`/`*PathToDirectoryOrFile*]{*Authentication Information*}|
-|Azure Data Lake Storage Gen2  |`abfss://`|`abfss://`*Filesystem*`@`*StorageAccountName*`.dfs.core.windows.net/`[*PathToDirectoryOrFile*]{*Authentication Information*}|
-|Azure Data Lake Storage Gen1  |`adl://`  |`adl://`*StorageAccountName*.azuredatalakestore.net/[*PathToDirectoryOrFile*]{*Authentication Information*}|
-
+## Examples
 Some examples on how to specify connection strings with authentication infromation:
 
 `"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;ljkAkl...=="`
