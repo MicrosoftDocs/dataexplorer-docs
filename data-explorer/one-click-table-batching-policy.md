@@ -10,7 +10,7 @@ ms.date: 01/02/2022
 ---
 # Use one-click to change a table's ingestion batching policy
 
-During the ingestion process, the Kusto service optimizes throughput by batching small ingress data chunks together before ingestion. The  [ingestion batching policy](kusto/management/batchingpolicy.md) defines data aggregation for batching.
+During the ingestion process, throughput is optimized by batching small ingress data chunks together before ingestion. The  [ingestion batching policy](kusto/management/batchingpolicy.md) defines data aggregation for batching.
 In this article, you can define and assign an ingestion batching policy for a table using the one-click experience.
 
 ## Prerequisites
@@ -24,9 +24,9 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
     :::image type="content" source="media/one-click-table-policies/one-click-batch-policy-start.png" alt-text="Select one-click table batching ingestion policy update in the web UI.":::
 
-1. In the **Table batching policy** card, select **Update**. 
+1. In the **Table batching policy** tile, select **Update**. 
 
-The **Table batching policy** window opens with the **Policy update** tab selected.
+    The **Table batching policy** window opens with the **Policy update** tab selected.
 
 ### Policy update
  
@@ -38,7 +38,7 @@ The **Table batching policy** window opens with the **Policy update** tab select
 
 1. Under **Inherit values from database**, select **On** to inherit the retention policy from the database. To create or update a table policy, select **Off**. 
 
-1. If using a separate policy, fill in the following fields:
+1. If you are using a separate policy, fill in the following fields:
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -50,7 +50,7 @@ The **Table batching policy** window opens with the **Policy update** tab select
 
 ## Update table policy
 
-In the **Update table policy** window, all steps will be marked with green check marks when the update finishes successfully. The cards below these steps give you options to explore your data with **Quick queries**, or undo changes made using **Tools**.
+In the **Update table policy** window, all steps will be marked with green check marks when the update finishes successfully. The tiles below these steps give you options to explore your data with **Quick queries**, or undo changes made using **Tools**.
 
 :::image type="content" source="media/one-click-table-policies/batch-policy-success.png" alt-text="Screenshot of final screen in update table retention policy wizard for Azure Data Explorer with the one click experience.":::
 
