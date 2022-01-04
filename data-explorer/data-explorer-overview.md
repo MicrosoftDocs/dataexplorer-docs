@@ -7,7 +7,6 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 10/25/2021
-ms.localizationpriority: high
 adobe-target: true
 
 # Customer intent: As a data analyst, I want to understand Azure Data Explorer, so I can decide if it's suitable for my analytics workloads.
