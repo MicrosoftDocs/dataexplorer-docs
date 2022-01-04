@@ -47,7 +47,7 @@ Append the Shared Access (SAS) key `?sig=...` to the end of the connection strin
 ### When should you use this method?
 SAS Keys have an expiration time and therefore should be used when accessing storage for a limited time.
 
-For help generating SAS keys, click [here](TODO).
+For help generating SAS keys, click [here](../generate-sas-token).
 
 ## Token
 Append a base-64 encoded AAD access token `;token=AadToken` to the connection string. Make sure the token is for the resource https://storage.azure.com/.
