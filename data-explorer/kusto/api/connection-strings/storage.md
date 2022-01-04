@@ -35,7 +35,7 @@ Each storage type has a different connection string format. Below is a table des
 |Azure Data Lake Storage Gen2  |`abfss://`|`abfss://`*Filesystem*`@`*StorageAccountName*`.dfs.core.windows.net/`[*PathToDirectoryOrFile*][*CallerCredentials*]|
 |Azure Data Lake Storage Gen1  |`adl://`  |`adl://`*StorageAccountName*.azuredatalakestore.net/*PathToDirectoryOrFile*[*CallerCredentials*]|
 
-Please use the above formats when specifying external resources in Azure Data Explorer.
+Use the above formats when specifying external resources in Azure Data Explorer.
 
 ## Storage authentication
 

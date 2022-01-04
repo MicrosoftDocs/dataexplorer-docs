@@ -96,7 +96,7 @@ Some examples on how to specify connection strings with authentication infromati
 
 
 > [!Note]
-> Use `h` in the beggining of the connection string to obfuscate it: `h"https://...."
+> Use `h` in the beggining of the connection string to obfuscate it: `h"https://...."`
 
 ## Storage access control
 
