@@ -85,7 +85,7 @@ For information on schema mapping with CSV-formatted data, see [Edit the schema]
 > [!NOTE]
 >
 > * If [streaming](kusto/management/streamingingestionpolicy.md) is enabled for the cluster, the option to select **Streaming ingestion** appears.
-> * If streaming is not enabled for the cluster, the option to select **Batching time** appears. The recommended [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
+> * If streaming is not enabled for the cluster, the option to select **Batching time** appears. For event hubs, the recommended default [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
 
 1. If the data you see in the preview window is not complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
     * **Discard and fetch new data**: discards the data presented and searches for new events.
