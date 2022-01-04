@@ -1,6 +1,6 @@
 ---
 title: Generate a SAS token - Azure Data Explorer | Microsoft Docs
-description: This article describes Storage authentication methods used in connection strings in Azure Data Explorer.
+description: This article describes how to genereate a SAS token.
 services: data-explorer
 author: orspod
 ms.author: orspodek

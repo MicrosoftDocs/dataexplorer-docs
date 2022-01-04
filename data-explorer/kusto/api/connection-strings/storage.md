@@ -39,4 +39,4 @@ Use the above formats when specifying external resources in Azure Data Explorer.
 
 ## Storage authentication
 
-Each connection string requires authentication method specification that will be used to authenticate to the external resource. See [storage authentication methods](../storage-authentication-methods.md) for an elaborate explanation on the different authentication methods available, their respected authentication values and their support throughout the different storage types.
+Each connection string requires authentication method specification that will be used to authenticate to the external resource. See [storage authentication methods](/storage-authentication-methods.md) for an elaborate explanation on the different authentication methods available, their respected authentication values and their support throughout the different storage types.
