@@ -37,7 +37,7 @@ The following are the only scenarios in which setting a data partitioning policy
 > [!CAUTION]
 > * There are no hard-coded limits set on the number of tables with the partitioning policy defined.
 >   * However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used.
->   * For more information, see [monitoring](#monitor-partitioning) and [capacity](#partitioning-capacity).
+>   * For more information, see [capacity](#partitioning-capacity).
 > * It isn't recommended to set a partitioning policy if the compressed size of data per partition is expected to be less than 1GB.
 > * Before applying a partitioning policy on a materialized view, review the recommendations for [materialized views partitioning policy](materialized-views/materialized-view-policies.md#partitioning-policy).
 
@@ -195,8 +195,8 @@ The following properties can be defined as part of the policy. These properties 
 |Property | Description | Recommended value | Default value |
 |---|---|---|---|
 | **MinRowCountPerOperation** |  Minimum target for the sum of row count of the source extents of a single data partitioning operation. | | `0` |
-| **MaxRowCountPerOperation** |  Maximum target for the sum of the row count of the source extents of a single data partitioning operation. | Set a value lower than 5M if you see that the partitioning operations consume a large amount of memory or CPU per operation. For more information, see [monitoring](#monitor-partitioning). | `0`, with a default target of 5,000,000 records. |
-| **MaxOriginalSizePerOperation** |  Maximum target for the sum of the original size (in bytes) of the source extents of a single data partitioning operation. | If the partitioning operations consume a large amount of memory or CPU per operation, set a value lower than 5 GB. For more information, see [monitoring](#monitor-partitioning). | `0`, with a default target of 5,368,709,120 bytes (5 GB). |
+| **MaxRowCountPerOperation** |  Maximum target for the sum of the row count of the source extents of a single data partitioning operation. | Set a value lower than 5M if you see that the partitioning operations consume a large amount of memory or CPU per operation. | `0`, with a default target of 5,000,000 records. |
+| **MaxOriginalSizePerOperation** |  Maximum target for the sum of the original size (in bytes) of the source extents of a single data partitioning operation. | If the partitioning operations consume a large amount of memory or CPU per operation, set a value lower than 5 GB. | `0`, with a default target of 5,368,709,120 bytes (5 GB). |
 
 ## The data partitioning process
 
@@ -204,32 +204,6 @@ The following properties can be defined as part of the policy. These properties 
   * A table that is continuously ingested into is expected to always have a "tail" of data that is yet to be partitioned (non-homogeneous extents).
 * Data partitioning runs only on hot extents, regardless of the value of the `EffectiveDateTime` property in the policy.
   * If partitioning cold extents is required, you need to temporarily adjust the [caching policy](cachepolicy.md).
-
-### Monitor partitioning
-
-Use the [`.show diagnostics`](../management/diagnostics.md#show-diagnostics) command to monitor the progress or state of partitioning in a cluster.
-
-```kusto
-.show diagnostics
-| project MinPartitioningPercentageInSingleTable, TableWithMinPartitioningPercentage
-```
-
-The output includes:
-
-  * `MinPartitioningPercentageInSingleTable`: The minimal percentage of partitioned data across all tables that have a data partitioning policy in the cluster.
-    * If this percentage remains constantly under 90%, then evaluate the cluster's partitioning [capacity](partitioningpolicy.md#partitioning-capacity).
-  * `TableWithMinPartitioningPercentage`: The fully qualified name of the table whose partitioning percentage is shown above.
-
-Use [`.show commands`](commands.md) to monitor the partitioning commands and their resource use. For example:
-
-```kusto
-.show commands 
-| where StartedOn > ago(1d)
-| where CommandType == "ExtentsPartition"
-| parse Text with ".partition async table " TableName " extents" *
-| summarize count(), sum(TotalCpu), avg(tolong(ResourcesUtilization.MemoryPeak)) by TableName, bin(StartedOn, 15m)
-| render timechart with(ysplit = panels)
-```
 
 ### Partitioning capacity
 
