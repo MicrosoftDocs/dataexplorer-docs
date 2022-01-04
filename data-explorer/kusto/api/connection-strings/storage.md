@@ -11,7 +11,7 @@ ms.date: 06/28/2021
 ---
 # Storage authentication methods
 
-Azure Data Explorer can interact with external storage in different ways. One such example would be defining an [external table]() over an external storage which could then be queried or exported to.
+Azure Data Explorer can interact with external storage in different ways. One such example would be defining an [External Table](kusto/query/schema-entities/externaltables.md) over an external storage which could then be queried or exported to.
 All flows interacting with external storage require specifying the assosiateds storage's `connection string`, which defines the resource being accessed and its authentication information, so Azure Data Explorer will know how to authenticate to that external storage.
 
 All authentication methods and values are specified as part of the `connection string`. 
@@ -47,7 +47,7 @@ Append the Shared Access (SAS) key to the end of the connection string `?sig=...
 ### When should you use this method?
 SAS Keys have an expiration time and therefore should be used when accessing storage for a limited time.
 
-For help generating SAS keys, click [here]().
+For help generating SAS keys, click [here](TODO).
 
 ## Token
 Append a base-64 encoded AAD access token `;token=AadToken`. Make sure the token is for the resource https://storage.azure.com/.
@@ -82,7 +82,27 @@ When specifying a connection string in Azure Data Explorer, please use the follo
 
 |Storage Type                  |Scheme    |URI template                          |
 |------------------------------|----------|--------------------------------------|
-|Azure Blob Storage            |`https://`|`https://`*StorageAccountName*`.blob.core.windows.net/`*Container*[`/`*BlobName*][*CallerCredentials*]|
-|Azure Data Lake Storage Gen2  |`https://`|`https://`*StorageAccountName*`.dfs.core.windows.net/`*Filesystem*[`/`*PathToDirectoryOrFile*][*CallerCredentials*]|
-|Azure Data Lake Storage Gen2  |`abfss://`|`abfss://`*Filesystem*`@`*StorageAccountName*`.dfs.core.windows.net/`[*PathToDirectoryOrFile*][*CallerCredentials*]|
-|Azure Data Lake Storage Gen1  |`adl://`  |`adl://`*StorageAccountName*.azuredatalakestore.net/*PathToDirectoryOrFile*[*CallerCredentials*]|
+|Azure Blob Storage            |`https://`|`https://`*StorageAccountName*`.blob.core.windows.net/`*Container*[`/`*BlobName*]{*Authentication Information*}|
+|Azure Data Lake Storage Gen2  |`https://`|`https://`*StorageAccountName*`.dfs.core.windows.net/`*Filesystem*[`/`*PathToDirectoryOrFile*]{*Authentication Information*}|
+|Azure Data Lake Storage Gen2  |`abfss://`|`abfss://`*Filesystem*`@`*StorageAccountName*`.dfs.core.windows.net/`[*PathToDirectoryOrFile*]{*Authentication Information*}|
+|Azure Data Lake Storage Gen1  |`adl://`  |`adl://`*StorageAccountName*.azuredatalakestore.net/[*PathToDirectoryOrFile*]{*Authentication Information*}|
+
+Some examples on how to specify connection strings with authentication infromation:
+
+`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;ljkAkl...=="`
+
+`"abfss://fs@fabrikam.dfs.core.windows.net/path/to/file.csv;sharedkey=sv=...&sp=rwd"`
+
+`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"`
+
+`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;token={aad_token}"`
+
+`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;impersonate"`
+
+`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=system"`
+
+`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=9ca5bb85-1c1f-44c3-b33a-0dfcc7ec5f6b"`
+
+
+
+> Use `h` in the beggining of the connection string to obfuscate it: `h"https://...."
