@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 01/05/2022
 ---
 # .alter cluster cache policy
 
@@ -15,11 +15,11 @@ Change the cluster cache policy. To speed up queries on data, Azure Data Explore
 
 ## Syntax
 
-`.alter` `cluster` `policy` `caching` *PolicyObjects*  
+`.alter` `cluster` `policy` `caching` *PolicyParameter*  
 
 ## Arguments
 
-*PolicyObjects* - Definitions one or more policy objects.
+*PolicyParameter* - Define one or more policy parameters.
 
 ## Returns
 
@@ -37,4 +37,21 @@ The following example sets the caching policy to include the last 30 days.
 
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
-|AutoCalloutPolicy| |{"DataHotSpan": { "Value": "30.00:00:00" }, "IndexHotSpan": { "Value": "30.00:00:00"}}| |
+|CachingPolicy| |{"DataHotSpan": { "Value": "30.00:00:00" }, "IndexHotSpan": { "Value": "30.00:00:00"}}| |
+
+### Set the cache policy with additional hot-cache windows
+
+This command sets the caching policy to include the last 30 days and additional data from January and April 2021.
+
+```kusto
+.alter cluster policy caching 
+        hot = 30d,
+        hot_window = datetime(2021-01-01) .. datetime(2021-02-01),
+        hot_window = datetime(2021-04-01) .. datetime(2021-05-01)
+```
+
+**Output**
+
+|PolicyName|EntityName|Policy|ChildEntities|EntityType|
+|---|---|---|---|---|
+|CachingPolicy| |{"DataHotSpan": { "Value": "30.00:00:00" }, "IndexHotSpan": {    "Value": "30.00:00:00" },"HotWindows": [{ "MinValue": "2021-01-01T00:00:00Z", "MaxValue": "2021-02-01T00:00:00Z" }, { "MinValue": "2021-04-01T00:00:00Z", "MaxValue": "2021-05-01T00:00:00Z" }]}| |

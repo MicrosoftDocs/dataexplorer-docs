@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 01/05/2022
 ---
 # .alter table streaming ingestion policy
 
@@ -21,12 +21,12 @@ Use the classic bulk ingestion instead of streaming ingestion when the amount of
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `streamingingestion` *ArrayOfPolicyObjects*
+`.alter` `table` *TableName* `policy` `streamingingestion` *PolicyObject*
 
 ## Arguments
 
-- *TableName* - Specify the name of the table. 
-- *ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+*TableName* - Specify the name of the table. 
+*PolicyObject* - Define a policy object.
 
 ## Returns
 

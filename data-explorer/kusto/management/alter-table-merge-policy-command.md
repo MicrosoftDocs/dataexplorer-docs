@@ -15,12 +15,12 @@ Change a table's [merge policy](mergepolicy.md). The merge policy defines if and
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `merge` *ArrayOfPolicyObjects* 
+`.alter` `table` *TableName* `policy` `merge` *PolicyObject* 
 
 ## Arguments
 
-- *TableName* - Specify the name of the table. 
-- *ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+*TableName* - Specify the name of the table. 
+*PolicyObject* - Define a policy object.
 
 ### Example
 

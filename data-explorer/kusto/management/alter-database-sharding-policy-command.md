@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 01/05/2022
 ---
 # .alter database sharding policy
 
@@ -17,12 +17,12 @@ The sharding policy defines if and how [Extents (data shards)](../management/ext
 
 ## Syntax
 
-`.alter` `database` *DatabaseName* `policy` `sharding` *ArrayOfPolicyObjects*
+`.alter` `database` *DatabaseName* `policy` `sharding` *PolicyObject*
 
 ## Arguments
 
 *DatabaseName* - Specify the name of the database.
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+*PolicyObject* - Define a policy object.
 
 ## Returns
 

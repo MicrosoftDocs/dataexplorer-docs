@@ -15,12 +15,12 @@ Change a table's [retention policy](retentionpolicy.md). The retention policy co
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `retention` *PolicyObjects*
+`.alter` `table` *TableName* `policy` `retention` *PolicyObject*
 
 ## Arguments
 
-- *TableName* - Specify the name of the table.  
-- *PolicyObjects* - Define one or more policy objects.
+*TableName* - Specify the name of the table.  
+*PolicyObject* - Define a policy object.
 
 ### Example
 

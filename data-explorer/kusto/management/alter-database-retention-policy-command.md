@@ -15,12 +15,12 @@ Change a database's [retention policy](retentionpolicy.md). The retention policy
 
 ## Syntax
 
-`.alter` `database` *DatabaseName* `policy` `retention` *ArrayOfPolicyObjects*
+`.alter` `database` *DatabaseName* `policy` `retention` *PolicyObject*
 
 ## Arguments
 
 *DatabaseName* - Specify the name of the database.
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+*PolicyObject* - Define a policy object.
 
 ### Example
 

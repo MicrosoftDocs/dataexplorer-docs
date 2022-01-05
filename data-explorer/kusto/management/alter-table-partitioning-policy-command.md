@@ -15,12 +15,12 @@ Changes a table [partitioning policy](partitioningpolicy.md). The partitioning p
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `partitioning` *ArrayOfPolicyObjects*
+`.alter` `table` *TableName* `policy` `partitioning` *PolicyObject*
 
 ## Arguments
 
-- *TableName* - Specify the name of the table.  
-- *ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+*TableName* - Specify the name of the table.  
+*PolicyObject* - Define a policy object.
 
 ### Example
 

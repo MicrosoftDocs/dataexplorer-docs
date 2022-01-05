@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 01/05/2022
 ---
 # .alter database merge policy
 
@@ -15,12 +15,12 @@ Change a database's [merge policy](mergepolicy.md). The merge policy defines if 
 
 ## Syntax
 
-`.alter` `database` *DatabaseName* `policy` `merge` *ArrayOfPolicyObjects*
+`.alter` `database` *DatabaseName* `policy` `merge` *PolicyObject*
 
 ## Arguments
 
 *DatabaseName* - Specify the name of the database.
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+*PolicyObject* - Define a policy object.
 
 ### Examples
 

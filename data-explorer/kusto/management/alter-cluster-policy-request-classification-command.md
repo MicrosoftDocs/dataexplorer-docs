@@ -15,12 +15,12 @@ Alters cluster's request classification policy. For more information, see [Reque
 
 ## Syntax
 
-`.alter` `cluster` `policy` `request_classification` *SerializedArrayOfPolicyObjects*  `<|` *ClassificationFunctionBody*
+`.alter` `cluster` `policy` `request_classification` *SerializedPartialPolicy*  `<|` *ClassificationFunctionBody*
 
 ## Arguments
 
-*SerializedArrayOfPolicyObjects* - A serialized array with one or more JSON policy objects defined.
-*ClassificationFunctionBody* - An array with one or more classification functions defined.
+*SerializedPartialPolicy* - Define a serialized JSON policy.
+*ClassificationFunctionBody* - Define an array with one or more classification functions.
 
 ## Returns
 

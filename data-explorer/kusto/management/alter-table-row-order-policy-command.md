@@ -15,12 +15,12 @@ Change a table's [row order policy](roworderpolicy.md). The row order policy is 
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `roworder` *PolicyObjects*
+`.alter` `table` *TableName* `policy` `roworder` *PolicyParameter*
 
 ## Arguments
 
-- *TableName* - Specify the name of the table.  
-- *PolicyObjects* - Define one or more policy objects.
+*TableName* - Specify the name of the table.  
+*PolicyParameter - Define one or more policy parameters.
 
 ### Examples
 
@@ -35,3 +35,17 @@ Set the row order policy for several tables:
 ```kusto
 .alter tables (events1, events2, events3) policy roworder (TenantId asc, Timestamp desc)
 ```
+
+The following example sets the row order policy on the `TenantId` column (ascending) as a primary key, and on the `Timestamp` column (ascending) as the secondary key. The policy is then queried.
+
+```kusto
+.alter table events policy roworder (TenantId asc, Timestamp desc)
+
+.alter tables (events1, events2, events3) policy roworder (TenantId asc, Timestamp desc)
+
+.show table events policy roworder 
+```
+
+|TableName|RowOrderPolicy| 
+|---|---|
+|events|(TenantId asc, Timestamp desc)|

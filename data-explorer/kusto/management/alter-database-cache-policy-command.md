@@ -15,12 +15,12 @@ Change the database cache policy.  To speed up queries on data, Azure Data Explo
 
 ## Syntax
 
-`.alter` `database` *DatabaseName* `policy` `caching` *ArrayOfPolicyObjects*
+`.alter` `database` *DatabaseName* `policy` `caching` *PolicyParameter*
 
 ## Arguments
 
 *DatabaseName* - Specify the name of the database.
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+*PolicyParameter* - Define one or more policy parameters.
 
 ## Returns
 
@@ -39,3 +39,20 @@ The following example sets the caching policy to include the last 30 days.
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
 |ClusterRequestClassificationPolicy| database1 |{"DataHotSpan": {"Value": "30.00:00:00"},"IndexHotSpan": { "Value": "30.00:00:00" }} | | |
+
+### Set the cache policy with additional hot-cache windows
+
+This command sets the caching policy to include the last 30 days and additional data from January and April 2021.
+
+```kusto
+.alter database MyDatabase policy caching 
+        hot = 30d,
+        hot_window = datetime(2021-01-01) .. datetime(2021-02-01),
+        hot_window = datetime(2021-04-01) .. datetime(2021-05-01)
+```
+
+**Output**
+
+|PolicyName|EntityName|Policy|ChildEntities|EntityType|
+|---|---|---|---|---|
+|CachingPolicy| |{"DataHotSpan": { "Value": "30.00:00:00" }, "IndexHotSpan": {    "Value": "30.00:00:00" },"HotWindows": [{ "MinValue": "2021-01-01T00:00:00Z", "MaxValue": "2021-02-01T00:00:00Z" }, { "MinValue": "2021-04-01T00:00:00Z", "MaxValue": "2021-05-01T00:00:00Z" }]}| |

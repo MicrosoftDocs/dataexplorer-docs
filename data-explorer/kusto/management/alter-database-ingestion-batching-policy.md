@@ -30,13 +30,12 @@ If the policy is set to `null`, default values are used. Default values are:
 
 ## Syntax
 
-`.alter` `database` *DatabaseName* `policy` `ingestionbatching` *ArrayOfPolicyObjects*
+`.alter` `database` *DatabaseName* `policy` `ingestionbatching` *PolicyObject*
 
 ## Arguments
 
 *DatabaseName* - Specify the name of the database.
-
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+*PolicyObject* - Define a policy object.
 
 ## Example
 

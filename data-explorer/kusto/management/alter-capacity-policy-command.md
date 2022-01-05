@@ -18,11 +18,11 @@ Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy is 
 
 ## Syntax
 
-`.alter` `cluster` `policy` `capacity` *SerializedArrayOfPolicyObjects* 
+`.alter` `cluster` `policy` `capacity` *PolicyObject* 
 
 ## Arguments
 
-*SerializedArrayOfPolicyObjects* - A serialized array with one or more JSON policy objects defined.
+*PolicyObject* - Define a JSON policy object.
 
 ## Returns
 
