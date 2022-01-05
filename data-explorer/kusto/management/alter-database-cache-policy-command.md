@@ -1,5 +1,5 @@
 ---
-title: ".alter database cache policy command - Azure Data Explorer"
+title: Alter database cache policy command - Azure Data Explorer
 description: "This article describes the .alter database cache policy command in Azure Data Explorer."
 services: data-explorer
 author: orspod
@@ -11,7 +11,7 @@ ms.date: 11/29/2021
 ---
 # .alter database cache policy
 
-Change the database cache policy.  To speed up queries on data, Azure Data Explorer caches it, or parts of it, on its processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) enables Azure Data Explorer to describe the data artifacts that it uses, so that more important data can take priority. 
+Change the database cache policy. To speed up queries on data, Azure Data Explorer caches data on its processing nodes, SSD, or even in RAM. With the [cache policy](cachepolicy.md), Azure Data Explorer can describe data artifacts so that important data can take priority.  
 
 ## Syntax
 
@@ -40,7 +40,7 @@ The following example sets the caching policy to include the last 30 days.
 |---|---|---|---|---|
 |ClusterRequestClassificationPolicy| database1 |{"DataHotSpan": {"Value": "30.00:00:00"},"IndexHotSpan": { "Value": "30.00:00:00" }} | | |
 
-### Set the cache policy with additional hot-cache windows
+### Define hot-cache windows
 
 This command sets the caching policy to include the last 30 days and additional data from January and April 2021.
 

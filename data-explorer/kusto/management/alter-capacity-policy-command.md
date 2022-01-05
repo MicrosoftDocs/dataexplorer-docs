@@ -1,6 +1,6 @@
 ---
-title: ".alter capacity policy command - Azure Data Explorer"
-description: "This article describes the .alter capacity policy command in Azure Data Explorer."
+title: Alter capacity policy command - Azure Data Explorer
+description: This article describes the .alter capacity policy command in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -11,7 +11,7 @@ ms.date: 09/30/2021
 ---
 # .alter capacity policy
 
-Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy is used for controlling the compute resources of data management operations on the cluster. This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
+Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy controls the computational resources for data management operations on the cluster. This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
 
 > [!NOTE]
 > Changes to the cluster capacity policy could take up to 1 hour to take effect.
