@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 07/26/2021
+ms.date: 01/03/2022
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer by using Python
@@ -101,9 +101,9 @@ print(poller.result())
 | table_name | *StormEvents* | The name of the target table in the target database.|
 | mapping_rule_name | *StormEvents_CSV_Mapping* | The name of your column mapping related to the target table.|
 | data_format | *csv* | The data format of the message.|
-| event_hub_resource_id | *Resource ID* | The resource ID of your Event Hub where the Event Grid is configured to send events. |
+| event_hub_resource_id | *Resource ID* | The resource ID of your event hub where the Event Grid is configured to send events. |
 | storage_account_resource_id | *Resource ID* | The resource ID of your storage account that holds the data for ingestion. |
-| consumer_group | *$Default* | The consumer group of your Event Hub.|
+| consumer_group | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
 | blob_storage_event_type | *Microsoft.Storage.BlobCreated* | The type of event that triggers ingestion. Supported events are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage.|
 

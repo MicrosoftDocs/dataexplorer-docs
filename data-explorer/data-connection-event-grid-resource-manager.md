@@ -42,21 +42,21 @@ The following example shows an Azure Resource Manager template for adding an Eve
             "type": "string",
             "defaultValue": "eventhubns",
             "metadata": {
-                "description": "Specifies the Event Hub Namespace name."
+                "description": "Specifies the event hub namespace name."
             }
         },
         "EventHubs_eventhubdemo_name": {
             "type": "string",
             "defaultValue": "eventhubdemo",
             "metadata": {
-                "description": "Specifies the Event Hub name."
+                "description": "Specifies the event hub name."
             }
         },
         "consumergroup_default_name": {
             "type": "string",
             "defaultValue": "$Default",
             "metadata": {
-                "description": "Specifies the consumer group of the Event Hub."
+                "description": "Specifies the consumer group of the event hub."
             }
         },
         "StorageAccounts_storagedemo_name": {

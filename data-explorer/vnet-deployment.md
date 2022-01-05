@@ -19,7 +19,7 @@ Azure Data Explorer supports deploying a cluster into a subnet in your Virtual N
 
 * Enforce [Network Security Group](/azure/virtual-network/security-overview) (NSG) rules on your Azure Data Explorer cluster traffic.
 * Connect your on-premises network to Azure Data Explorer cluster's subnet.
-* Secure your data connection sources ([Event Hub](/azure/event-hubs/event-hubs-about) and [Event Grid](/azure/event-grid/overview)) with [service endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview).
+* Secure your data connection sources ([event hub](/azure/event-hubs/event-hubs-about) and [event grid](/azure/event-grid/overview)) with [service endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview).
 
 ## Access your Azure Data Explorer cluster in your VNet
 
@@ -54,15 +54,15 @@ The total number of IP addresses:
 ## Service endpoints for connecting to Azure Data Explorer
 
 [Azure Service Endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview) enables you to secure your Azure multi-tenant resources to your virtual network.
-Deploying Azure Data Explorer cluster into your subnet allows you to setup data connections with [Event Hub](/azure/event-hubs/event-hubs-about) or [Event Grid](/azure/event-grid/overview) while restricting the underlying resources for Azure Data Explorer subnet.
+Deploying Azure Data Explorer cluster into your subnet allows you to setup data connections with [event hub](/azure/event-hubs/event-hubs-about) or [Event Grid](/azure/event-grid/overview) while restricting the underlying resources for Azure Data Explorer subnet.
 
 > [!NOTE]
-> When using Event Grid setup with [Storage](/azure/storage/common/storage-introduction) and [Event Hub](/azure/event-hubs/event-hubs-about), the storage account used in the subscription can be locked with service endpoints to Azure Data Explorer's subnet while allowing trusted Azure platform services in the [firewall configuration](/azure/storage/common/storage-network-security), but the Event Hub can't enable Service Endpoint since it doesn't support trusted [Azure platform services](/azure/event-hubs/event-hubs-service-endpoints).
+> When using Event Grid setup with [Storage](/azure/storage/common/storage-introduction) and [event hub](/azure/event-hubs/event-hubs-about), the storage account used in the subscription can be locked with service endpoints to Azure Data Explorer's subnet while allowing trusted Azure platform services in the [firewall configuration](/azure/storage/common/storage-network-security), but the event hub can't enable Service Endpoint since it doesn't support trusted [Azure platform services](/azure/event-hubs/event-hubs-service-endpoints).
 
 ## Private Endpoints
 
-[Private Endpoints](/azure/private-link/private-endpoint-overview) allow private access to Azure resources (such as [Storage/Event Hub](vnet-endpoint-storage-event-hub.md)/Data Lake Gen 2), and use private IP from your Virtual Network, effectively bringing the resource into your VNet.
-Create a [private endpoint](/azure/private-link/private-endpoint-overview) to resources used by data connections, such as Event Hub and Storage, and external tables such as Storage, Data Lake Gen 2, and SQL Database from your VNet to access the underlying resources privately.
+[Private Endpoints](/azure/private-link/private-endpoint-overview) allow private access to Azure resources (such as [storage/event hub](vnet-endpoint-storage-event-hub.md)/Data Lake Gen 2), and use private IP from your Virtual Network, effectively bringing the resource into your VNet.
+Create a [private endpoint](/azure/private-link/private-endpoint-overview) to resources used by data connections, such as event hub and storage, and external tables such as Storage, Data Lake Gen 2, and SQL Database from your VNet to access the underlying resources privately.
 
  > [!NOTE]
  > Setting up Private Endpoint requires [configuring DNS](/azure/private-link/private-endpoint-dns), We support [Azure Private DNS zone](/azure/dns/private-dns-privatednszone) setup only. Custom DNS server isn't supported. 
@@ -91,7 +91,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | --- | --- | --- | --- |
 | Dependency on Azure Storage  | Azure Data Explorer subnet  | Storage:443  | TCP  |
 | Dependency on Azure Data Lake  | Azure Data Explorer subnet  | AzureDataLake:443  | TCP  |
-| Event Hub ingestion and service monitoring  | Azure Data Explorer subnet  | EventHub:443,5671  | TCP  |
+| Event hub ingestion and service monitoring  | Azure Data Explorer subnet  | EventHub:443,5671  | TCP  |
 | Publish Metrics  | Azure Data Explorer subnet  | AzureMonitor:443 | TCP  |
 | Active Directory (if applicable) | Azure Data Explorer subnet | AzureActiveDirectory:443 | TCP |
 | Certificate authority | Azure Data Explorer subnet | Internet:80 | TCP |
