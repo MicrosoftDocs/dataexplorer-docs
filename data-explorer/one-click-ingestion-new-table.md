@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/28/2021
+ms.date: 01/05/2022
 ---
 
 # Ingest data from a container/ADLS into Azure Data Explorer
@@ -73,7 +73,7 @@ Under **Source type**, do the following steps:
 
 ### Ingest from folder in a container
 
-To ingest from a specific folder within a container, [generate a string of the following format](kusto/api/connection-strings/storage.md#azure-data-lake-storage-gen2):
+To ingest from a specific folder within a container, [generate a string of the following format](kusto/api/connection-strings/storage.md#storage-connection-string-templates):
 
 *container_path*`/`*folder_path*`;`*access_key_1*
 
