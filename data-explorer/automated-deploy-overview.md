@@ -12,7 +12,7 @@ ms.date: 12/19/2021
 
 # Automated provisioning in Azure Data Explorer
 
-Automated provisioning is a process that allows you to quickly deploy and configure the resources you need to run your Azure Data Explorer cluster, optionally with data. It's a critical part of a DevOps or DataOps workflow. The provisioning process does not require you to manually configure the cluster, does not require human intervention, and is to easy set up.
+Automated provisioning is a process that allows you to quickly deploy and configure the resources you need to run your Azure Data Explorer cluster, optionally with data. It's a critical part of a DevOps or DataOps workflow. The provisioning process does not require you to manually configure the cluster, does not require human intervention, and is easy to set up.
 
 A common use case for automated provisioning is to deploy a pre-configured cluster with data as part of a CI/CD pipeline. Some of the key benefits of doing so include the ability to:
 
@@ -22,6 +22,8 @@ A common use case for automated provisioning is to deploy a pre-configured clust
 * Facilitates automated testing by provisioning dedicated test environments
 
 This article provides an overview of the different mechanisms for automating the provisioning of Azure Data Explorer environments, including infrastructure, schema entities, and data preparation. It also provides references to the different tools and techniques used to automate the provisioning process.
+
+![General flow](media/automated-deploy-overview/general-flow.png)
 
 ## Infrastructure
 
@@ -92,6 +94,18 @@ If you have data you need to ingest into your cluster, such as when you want to 
     * [Go SDK](/azure/data-explorer/go-ingest-data)
 * [LightIngest](/azure/data-explorer/lightingest) CLI tool
 * Triggering an [Azure Data Factory Pipeline](/azure/data-explorer/data-factory-integration)
+
+## Using in CI / CD pipeline
+
+We have reviewed the different tools for deploying infrastructure, schema entities and preparing data.  In this section we will put those together in a CI / CD pipeline.
+
+![General flow](media/automated-deploy-overview/flow-sample.png)
+
+For deploying a cluster and 2 databases (infrastructure), we will use ARM template.  For deploying tables & functions (schema entities) within those two databases, we will use the Kusto CLI.  Finally, in order to prepare data we will use the LightIngest CLI.
+
+The pipeline could have further steps, for instance, running automated tests on the created cluster.
+
+This is one example of a pipeline using a given set of tools.  Different tools could be used and a subset of steps (for instance, we might not ingest data for a prodution scenario).
 
 ## Next steps
 
