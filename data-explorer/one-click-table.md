@@ -60,7 +60,7 @@ The **Create table** window opens with the **Destination** tab selected.
         :::image type="content" source="./media/one-click-table/data-from-file.png" alt-text="Create a table based on data from a local file .":::
 
     * If you're using a **blob**:
-        * In the **Link to storage** field, add the [SAS URL](kusto/api/connection-strings/storage.md#generate-a-sas-for-azure-storage-blob-container) of the container and optionally enter the sample size.
+        * In the **Link to storage** field, add the [SAS URL](kusto/api/connection-strings/generate-sas-token.md) of the container and optionally enter the sample size.
 
 1. Select **Next: Schema** to continue to the **Schema** tab.
 

@@ -1,17 +1,19 @@
 ---
-title: Generate a SAS token - Azure Data Explorer | Microsoft Docs
-description: This article describes how to genereate a SAS token.
+title: Generate a SAS token - Azure Data Explorer
+description: This article describes how to generate a SAS token in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: shanisolomon
 ms.service: data-explorer
-ms.topic: reference
-ms.date: 06/28/2021
+ms.topic: how-to
+ms.date: 01/05/2022
 ---
-# Generate a SAS token 
+# Generate a SAS token
 
-This guide demonstrates how to generate a SAS token to a resource.
+This article shows you how to generate a SAS token to a resource.
+
+## Azure portal
 
 1. In the Azure portal, open Storage Explorer.
 1. From the left menu, select **Containers**.
@@ -28,3 +30,8 @@ This guide demonstrates how to generate a SAS token to a resource.
 1. A new section will then display at the bottom of the dialog, listing the blob SAS token and the blob SAS URL. Select the copy icon to the right of the blob SAS URL.
 
    :::image type="content" source="storage/copy-sas-token-and-url.png" alt-text="Screenshot of Azure portal with blob SAS URL generated.":::
+
+## Next Steps
+
+* [Storage authentication methods](storage-authentication-methods.md)
+* [Storage connection strings](storage.md)
