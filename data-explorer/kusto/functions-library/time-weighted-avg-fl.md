@@ -49,6 +49,7 @@ let time_weighted_avg_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, s
     | join kind=fullouter keys on dummy
     | project-away dummy, dummy1
     | union tbl_ex
+    | where timestamp between (stime..etime)
     | partition hint.strategy=native by key (
         order by timestamp asc, value nulls last
         | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(value), s.f_value, value);)    // fill forward null values
@@ -98,6 +99,7 @@ time_weighted_avg_fl(tbl:(*), t_col:string, y_col:string, key_col:string, stime:
     | join kind=fullouter keys on dummy
     | project-away dummy, dummy1
     | union tbl_ex
+    | where timestamp between (stime..etime)
     | partition hint.strategy=native by key (
         order by timestamp asc, value nulls last
         | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(value), s.f_value, value);)    // fill forward null values
