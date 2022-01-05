@@ -51,7 +51,7 @@ The default call without any options specified is equal to 'identity' option.
 |ShardingPolicy |String | The database's Sharding policy (serialized in JSON format).
 |StreamingIngestionPolicy |String | The database's Streaming Ingestion policy (serialized in JSON format).
 |IngestionBatchingPolicy |String | The database's Ingestion Batching policy (serialized in JSON format).
-|TotalSize |Real | The database's extents total size.
+|TotalSize |Real | The database's extents total size in bytes.
 |DatabaseId |Guid |The database's unique ID.
 
 **Output for 'policies' option**
