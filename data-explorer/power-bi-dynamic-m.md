@@ -1,6 +1,6 @@
 ---
 title: Use Dynamic M query parameters with Azure Data Explorer for Power BI
-description: 'In this article, you learn how to use one of the three options for visualizing data in Power BI: the Power BI connector for Azure Data Explorer.'
+description: In this article, you'll learn how to filter data in a dynamic M query linked to a KQL function.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -11,7 +11,7 @@ ms.date: 01/06/2022
 
 # Use Dynamic M query parameters with Azure Data Explorer for Power BI
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Power BI is a business analytics solution that lets you visualize your data and share the results across your organization. Using [Dynamic M parameters](/power-query/power-query-query-parameters), you can create Power BI reports that give viewers the ability to use filters or slicers to set values for KQL query parameters.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Power BI is a business analytics solution that lets you visualize your data and share the results across your organization. With [Dynamic M parameters](/power-query/power-query-query-parameters), you can create Power BI reports that give viewers the ability to use filters or slicers to set values for KQL query parameters.
 
 In this article, you'll start with a new Power BI project and use the sample data to create a report that uses a slicer to filter data in a dynamic M query linked to a KQL function.
 
@@ -52,12 +52,12 @@ First, [set up a connector for Power BI](power-bi-connector.md) setting the conn
 
 1. In the Power Query Editor, do the following:
     1. Select **Manage Parameters** > **New Parameter**.
-    1. Fill out the details with the following information, and then click **OK**.
+    1. Fill out the details with the following information, and then select **OK**.
 
         | Setting |Suggested value | Description |
         | --- | --- | --- |
         | Name | *Type_Param* | The name of the parameter. We recommend adding a suffix, such as *_Param*, that lets you easily recognize and differentiate it from other parameters you might create. |
-        | Type | *Text* | The type of the parameter. The type of the parameter must match the type declared in the KQL function. Note that Text in Power BI is equivalent to string in KQL. |
+        | Type | *Text* | The type of the parameter. The type of the parameter must match the type declared in the KQL function. Text in Power BI is equivalent to string in KQL. |
         | Current Value | *High Wind* | The value of the parameter. You must provide a default value for this field. |
 
     :::image type="content" source="media/power-bi-dynamic-m/new-parameter.png" alt-text="Screenshot of Manage Parameters screen, showing the creation of a new parameter.":::
@@ -66,7 +66,7 @@ First, [set up a connector for Power BI](power-bi-connector.md) setting the conn
 
     :::image type="content" source="media/power-bi-dynamic-m/replace-function-parameter.png" alt-text="Screenshot of Navigation screen, showing the replacement of the M function parameter.":::
 
-1. Optionally, repeat the steps above to create additional parameters and replace them in the Dynamic M query.
+1. Optionally, repeat the steps to create more parameters and replace them in the Dynamic M query.
 
 1. Create a table with values for the report slicer.
 
@@ -129,16 +129,16 @@ The report is now ready to be viewed. Notice that when selecting event type valu
 
 ### Accepting multiple parameter values
 
-If you want filter on multiple parameter values in the slicer, you can achieve this by adjusting the the properties of the **EventType** column and modifying the KQL query, as follows:
+If you want filter on multiple parameter values in the slicer, you can achieve this by adjusting the properties of the **EventType** column and modifying the KQL query, as follows:
 
 1. Adjust the properties of the **EventType** column in the **SlicerValues** table.
     1. Select the **Model** view on the left.
     1. In the **SlicerValues** table, select the **EventType** column.
     1. In the **Properties** pane, expand **Advanced**, and turn on the **Multi-select** setting.
 
-    :::image type="content" source="media/power-bi-dynamic-m/multile-select.png" alt-text="Screenshot of Model View, showing the multi-select setting.":::
+    :::image type="content" source="media/power-bi-dynamic-m/multiple-select.png" alt-text="Screenshot of Model View, showing the multi-select setting.":::
 
-1. Modify the KQL query, setting the parameter type to dynamic and changing the `where` condition to to check the list of parameter values.
+1. Modify the KQL query, setting the parameter type to dynamic and changing the `where` condition to check the list of parameter values.
 
     ```kusto
     .create-or-alter function EventsByStates (EventTypeParam:dynamic)
@@ -153,7 +153,7 @@ You can now head back to the report and select multiple event types in the slice
 
 ### Accepting all parameter values
 
-If you want filter on all parameter values in the slicer, you can achieve this by adjusting the the properties of the **EventType** column, modifying the KQL query, and updating the slicer control, as follows:
+If you want filter on all parameter values in the slicer, you can achieve this by adjusting the properties of the **EventType** column, modifying the KQL query, and updating the slicer control, as follows:
 
 1. Adjust the properties of the **EventType** column in the **SlicerValues** table.
     1. Select the **Model** view on the left.
@@ -168,7 +168,7 @@ If you want filter on all parameter values in the slicer, you can achieve this b
     1. Select the EventType slicer.
     1. In the **Visualizations** pane, select **Format**, expand **Selection controls**, and turn on the **Show "Select all" option** setting. The event type slicer shows the select all option at the top of the list.
 
-1. Modify the KQL query, setting the parameter type to dynamic and changing the `where` condition to to check for the *__SelectAll__* value or the list of parameter values.
+1. Modify the KQL query, setting the parameter type to dynamic and changing the `where` condition to check for the *__SelectAll__* value or the list of parameter values.
 
     ```kusto
     .create-or-alter function EventsByStates (EventTypeParam:dynamic)
@@ -192,7 +192,7 @@ There are some considerations and limitations to consider when using dynamic M q
 * The following parameter types are not supported:
     * Any
     * Duration
-    * True/False
+    * True / False
     * Binary
 * The following filters are not supported:
     * Relative time slicer or filter
