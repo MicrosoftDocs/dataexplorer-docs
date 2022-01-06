@@ -15,7 +15,7 @@ Azure Data Explorer can interact with external storage in different ways. For Az
 
 The following authentication methods are supported:
 * [Access key](#access-key)
-* [Shared Access (SAS) key](#shared-access-sas-key)
+* [Shared Access (SAS) key](#shared-access-sas-token)
 * [Token](#token)
 * [Impersonation](#impersonation)
 * [Managed identity](#managed-identity)
@@ -30,7 +30,7 @@ Different authentication methods are available for different external storage ty
 Authentication method | Available in Blob storage? | Available in Azure Data Lake Storage Gen 2? | Available in Azure Data Lake Storage Gen 1? | When should you use this method?|
 |---|---|---|---|---|
 |[Access key](#access-key) | :heavy_check_mark: |:heavy_check_mark: | :x: | An Access Key can be used to access resources on an ongoing basis.
-| [Shared Access (SAS) key](#shared-access-sas-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | SAS tokens have an expiration time, so use them when accessing storage for a limited time. 
+| [Shared Access (SAS) key](#shared-access-sas-token) | :heavy_check_mark: | :heavy_check_mark: | :x: | SAS tokens have an expiration time, so use them when accessing storage for a limited time. 
 | [Token](#token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | AAD tokens have an expiration time, so use them when accessing storage for a limited time.
 | [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | In attended flows, impersonation allows for an elaborate access control over the external storage. Access to the external storage can be restricted in the user level. 
 | [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | In unattended flows, no AAD principal can be derived in order to execute queries and commands. Managed identities are the only viable authentication solution.
