@@ -21,8 +21,8 @@ The sharding policy defines if and how [Extents (data shards)](../management/ext
 
 ## Arguments
 
-*DatabaseName* - Specify the name of the database.
-*PolicyObject* - Define a policy object. For more information, see the [sharding policy](../management/shardingpolicy.md).
+- *DatabaseName* - Specify the name of the database.
+- *PolicyObject* - Define a policy object. For more information, see the [sharding policy](../management/shardingpolicy.md).
 
 ## Returns
 

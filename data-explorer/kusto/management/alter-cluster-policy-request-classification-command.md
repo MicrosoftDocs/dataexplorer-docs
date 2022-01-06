@@ -19,8 +19,8 @@ Alters cluster's request classification policy. For more information, see [reque
 
 ## Arguments
 
-*SerializedPartialPolicy* - Define a serialized JSON policy. For policy properties, see [request classification policy](request-classification-policy.md)
-*ClassificationFunctionBody* - Define an array with one or more classification functions.
+- *SerializedPartialPolicy* - Define a serialized JSON policy. For policy properties, see [request classification policy](request-classification-policy.md)
+- *ClassificationFunctionBody* - Define an array with one or more classification functions.
 
 ## Returns
 
@@ -75,5 +75,5 @@ Returns a JSON representation of the policy.
 
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
-|ClusterRequestClassificationPolicy| |{"ClassificationProperties": ["current_application",  "request_type" ],"IsEnabled": true, "ClassificationFunction": "iff(request_properties.current_application == \"Kusto.Explorer\" and request_properties.request_type == \"Query\",\r\n        \"Ad-hoc queries\",\r\n        \"default\")"
+|ClusterRequestClassificationPolicy| |{"ClassificationProperties": ["current_application",  "request_type" ],"IsEnabled": true, "ClassificationFunction": "iff(request_properties.current_application == \"Kusto.Explorer\" and request_properties.request_type == \"Query\",\"Ad-hoc queries\",\"default\")"
 }| | |

@@ -19,8 +19,8 @@ Alters the auto delete policy that is applied to a table. For more information, 
 
 ## Arguments
 
-*TableName* - The name of the table.
-*SerializedPolicyObject* - One serialized JSON policy object defined.
+- *TableName* - The name of the table.
+- *SerializedPolicyObject* - One serialized JSON policy object defined.
 
 ## Returns
 

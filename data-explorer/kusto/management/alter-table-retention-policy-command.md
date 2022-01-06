@@ -19,8 +19,8 @@ Change a table's [retention policy](retentionpolicy.md). The retention policy co
 
 ## Arguments
 
-*TableName* - Specify the name of the table.  
-*PolicyObject* - Define a policy object.
+- *TableName* - Specify the name of the table.  
+- *PolicyObject* - Define a policy object. For more information, see [retention policy](retentionpolicy.md).
 
 ### Example
 

@@ -34,8 +34,8 @@ If the policy is set to `null`, default values are used. Default values are:
 
 ## Arguments
 
-*DatabaseName* - Specify the name of the database.
-*PolicyObject* - Define a policy object. For more information, see [ingestion batching policy](batchingpolicy.md).
+- *DatabaseName* - Specify the name of the database.
+- *PolicyObject* - Define a policy object. For more information, see [ingestion batching policy](batchingpolicy.md).
 
 ## Example
 

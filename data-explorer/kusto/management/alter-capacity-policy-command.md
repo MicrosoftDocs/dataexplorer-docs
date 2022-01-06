@@ -30,7 +30,7 @@ Returns a JSON representation of the policy.
 
 ## Example
 
-```kusto
+~~~kusto
 .alter cluster policy capacity ```
 {
   "IngestionCapacity": {
@@ -38,7 +38,7 @@ Returns a JSON representation of the policy.
     "CoreUtilizationCoefficient": 0.75
   }
 }```
-```
+~~~
 
 **Output**
 

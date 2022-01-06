@@ -15,9 +15,9 @@ Enables or disables a cluster's request classification policy. For more informat
 
 ## Syntax
 
-`.alter-merge` `cluster` `policy` `request_classification` `'{"IsEnabled":` [true|false] }'
+`.alter-merge` `cluster` `policy` `request_classification` `'{"IsEnabled":` [true|false] `}`
 
-### Examples
+## Examples
 
 ### Enable the policy
 

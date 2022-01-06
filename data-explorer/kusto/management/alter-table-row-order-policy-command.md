@@ -19,8 +19,8 @@ Change a table's [row order policy](roworderpolicy.md). The row order policy is 
 
 ## Arguments
 
-*TableName* - Specify the name of the table.  
-*PolicyParameter - Define one or more policy parameters.
+- *TableName* - Specify the name of the table.  
+- *PolicyParameter - Define one or more policy parameters. For more information, see [row order policy](roworderpolicy.md).
 
 ### Examples
 

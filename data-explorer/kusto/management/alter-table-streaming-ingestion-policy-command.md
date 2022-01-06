@@ -25,8 +25,8 @@ Use the classic bulk ingestion instead of streaming ingestion when the amount of
 
 ## Arguments
 
-*TableName* - Specify the name of the table. 
-*PolicyObject* - Define a policy object.
+- *TableName* - Specify the name of the table. 
+- *PolicyObject* - Define a policy object. For more information, see [streaming policy](../management/streamingingestionpolicy.md).
 
 ## Returns
 

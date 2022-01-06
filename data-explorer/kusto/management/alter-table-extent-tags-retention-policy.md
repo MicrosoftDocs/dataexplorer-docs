@@ -15,18 +15,18 @@ Alters a table-level extent tags retention policy. For more information, see [ex
 
 ## Syntax
 
-.alter table *TableName* policy extent_tags_retention *SerializedPolicyObject*
+`.alter` `table` *TableName* `policy` `extent_tags_retention` *SerializedPolicyObject* 
 
 ## Arguments
 
-*TableName* - Specify the name of the table.
-*SerializedPolicyObject* - Define a serialized policy object.
+- *TableName* - Specify the name of the table.
+- *SerializedPolicyObject* - Define a serialized policy object.
 
 ## Example
 
 For table T1, set an extent tags retention policy so that any `drop-by` tags that are older than 3 days, and any `ingest-by` tags that are older than two hours will be automatically dropped.
 
-```kusto
+~~~kusto
 .alter table T1 policy extent_tags_retention ```[
 	{
 		"TagPrefix": "drop-by:",
@@ -37,4 +37,11 @@ For table T1, set an extent tags retention policy so that any `drop-by` tags tha
 		"RetentionPeriod": "02:00:00"
 	}
 ]```
-```
+~~~
+
+## Next steps
+
+- See [.show extents](./show-extents.md)
+commands to see the tags associated with an extent.
+- See the [extent-tags()](../query/extenttagsfunction.md) 
+function to see the tags associated with records.
