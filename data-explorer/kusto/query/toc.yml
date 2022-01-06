@@ -463,8 +463,6 @@ items:
     href: countoffunction.md
   - name: current_cluster_endpoint()
     href: current-cluster-endpoint-function.md
-  - name: current_cursor()
-    href: cursorcurrent.md
   - name: current_database()
     href: current-database-function.md
   - name: current_principal()
@@ -478,6 +476,7 @@ items:
   - name: cursor_before_or_at()
     href: cursorbeforeoratfunction.md
   - name: cursor_current()
+    displayName: current_cursor()
     href: cursorcurrent.md
   - name: datetime_add()
     href: datetime-addfunction.md
