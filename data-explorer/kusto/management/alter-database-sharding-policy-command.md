@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/05/2022
+ms.date: 01/06/2022
 ---
 # .alter database sharding policy
 
@@ -22,7 +22,7 @@ The sharding policy defines if and how [Extents (data shards)](../management/ext
 ## Arguments
 
 *DatabaseName* - Specify the name of the database.
-*PolicyObject* - Define a policy object.
+*PolicyObject* - Define a policy object. For more information, see the [sharding policy](../management/shardingpolicy.md).
 
 ## Returns
 

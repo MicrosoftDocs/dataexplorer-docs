@@ -20,7 +20,7 @@ Change a database's [merge policy](mergepolicy.md). The merge policy defines if 
 ## Arguments
 
 *DatabaseName* - Specify the name of the database.
-*PolicyObject* - Define a policy object.
+*PolicyObject* - Define a policy object. For more information, see [merge policy](mergepolicy.md).
 
 ### Examples
 

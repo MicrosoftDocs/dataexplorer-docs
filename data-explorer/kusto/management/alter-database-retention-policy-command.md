@@ -20,7 +20,7 @@ Change a database's [retention policy](retentionpolicy.md). The retention policy
 ## Arguments
 
 *DatabaseName* - Specify the name of the database.
-*PolicyObject* - Define a policy object.
+*PolicyObject* - Define a policy object. For more information, see [retention policy](retentionpolicy.md).
 
 ### Example
 

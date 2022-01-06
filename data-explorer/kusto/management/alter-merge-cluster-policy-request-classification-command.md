@@ -7,19 +7,15 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 01/06/2022
 ---
 # .alter-merge cluster request classification policy
 
-Enables or disables a cluster's request classification policy. For more information, see [Request classification policy](request-classification-policy.md)).
+Enables or disables a cluster's request classification policy. For more information, see [request classification policy](request-classification-policy.md).
 
 ## Syntax
 
-`.alter-merge` `cluster` `policy` `request_classification` *SerializedArrayOfPolicyObjects*
-
-## Arguments
-
-*SerializedArrayOfPolicyObjects* - A serialized array with one or more JSON policy objects.`
+`.alter-merge` `cluster` `policy` `request_classification` `'{"IsEnabled":` [true|false] }'
 
 ### Examples
 

@@ -22,7 +22,7 @@ Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy con
 
 ## Arguments
 
-*PolicyObject* - Define a JSON policy object.
+*PolicyObject* - Define a JSON policy object. See [capacity policy](capacitypolicy.md) for policy properties. 
 
 ## Returns
 

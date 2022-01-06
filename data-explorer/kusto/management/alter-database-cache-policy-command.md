@@ -20,7 +20,7 @@ Change the database cache policy. To speed up queries on data, Azure Data Explor
 ## Arguments
 
 *DatabaseName* - Specify the name of the database.
-*PolicyParameter* - Define one or more policy parameters.
+*PolicyParameter* - Define one or more policy parameters. For parameters, see [cache policy](cachepolicy.md). 
 
 ## Returns
 

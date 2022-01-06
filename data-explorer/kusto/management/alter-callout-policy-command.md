@@ -19,7 +19,7 @@ Change the cluster [callout policy](calloutpolicy.md). Azure Data Explorer clust
 
 ## Arguments
 
-*SerializedArrayOfPolicyObjects* - A serialized array of JSON policy objects defined.
+*SerializedArrayOfPolicyObjects* - A serialized array of JSON policy objects defined. See [callout policy](calloutpolicy.md) for policy properties. 
 
 ## Returns
 

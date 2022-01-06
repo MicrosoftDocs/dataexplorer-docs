@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 01/06/2022
 ---
 # .alter cluster request classification policy
 
-Alters cluster's request classification policy. For more information, see [Request classification policy](request-classification-policy.md).
+Alters cluster's request classification policy. For more information, see [request classification policy](request-classification-policy.md).
 
 ## Syntax
 
@@ -19,7 +19,7 @@ Alters cluster's request classification policy. For more information, see [Reque
 
 ## Arguments
 
-*SerializedPartialPolicy* - Define a serialized JSON policy.
+*SerializedPartialPolicy* - Define a serialized JSON policy. For policy properties, see [request classification policy](request-classification-policy.md)
 *ClassificationFunctionBody* - Define an array with one or more classification functions.
 
 ## Returns

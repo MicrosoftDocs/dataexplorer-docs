@@ -26,7 +26,7 @@ To learn how to implement streaming ingestion, see [streaming ingestion](../../i
 ## Arguments
 
 *DatabaseName* - Specify the name of the database.
-*PolicyObject* - Define a policy object.
+*PolicyObject* - Define a policy object. For more information, see the [streaming policy](../management/streamingingestionpolicy.md).
 
 ## Returns
 
