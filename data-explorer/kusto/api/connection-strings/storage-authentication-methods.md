@@ -32,7 +32,7 @@ Authentication method | Available in Blob storage? | Available in Azure Data Lak
 |[Access key](#access-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | An Access Key can be used to access resources on an ongoing basis.
 | [Shared Access (SAS) key](#shared-access-sas-token) | :heavy_check_mark: | :heavy_check_mark: | :x: | SAS tokens have an expiration time. Use when accessing storage for a limited time. 
 | [Token](#token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | AAD tokens have an expiration time. Use when accessing storage for a limited time.
-| [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | In attended flows, allows for complex access control over the external storage. Restrict access at the user level.
+| [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | In attended flows, allows for complex access control over the external storage. For example, in continuous export flows. Can also restrict storage access at the user level.
 | [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | In unattended flows, no AAD principal can be derived to execute queries and commands. Managed identities are the only authentication solution.
 
 ## Access key
