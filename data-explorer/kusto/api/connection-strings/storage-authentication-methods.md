@@ -51,7 +51,7 @@ Authentication method | Available in Blob storage? | Available in Azure Data Lak
 ## Shared Access (SAS) token
 
 > [!NOTE]
-> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control.)
+> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control).
 
 Append the Shared Access (SAS) token `?sig=...` to the end of the connection string. For more information, see [Generate a SAS token](generate-sas-token.md).
 
@@ -70,7 +70,7 @@ Append a base-64 encoded AAD access token `;token=AadToken` to the connection st
 ## Impersonation
 
 > [!NOTE]
-> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control.)
+> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control).
 
 Append `;impersonate` to the connection string. Azure Data Explorer will use the requestor's principal identity and impersonate this identity to access the resource. 
 
@@ -81,7 +81,7 @@ Append `;impersonate` to the connection string. Azure Data Explorer will use the
 ## Managed identity
 
 > [!NOTE]
-> The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control.)
+> The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control).
 
 Append `;managed_identity=...` to the connection string. Azure Data Explorer will use the managed identity, either system or user-assigned, to make requests and access resources.
 * For a system-assigned managed identity, append `;managed_identity=system`.
@@ -90,7 +90,7 @@ Append `;managed_identity=...` to the connection string. Azure Data Explorer wil
 >[!NOTE]
 > Managed identity is only supported in specific Azure Data Explorer flows. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
 
-### Managed identity example
+### Managed identity examples
 
 `"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=system"`
 
