@@ -27,40 +27,35 @@ The following authentication methods are supported:
 
 Different authentication methods are available for different external storage types. The available methods are summarized in the following table:
 
-Authentication type | [Access key](#access-key) | [Shared Access (SAS) key](#shared-access-sas-key) | [Token](#token) | [Impersonation](#impersonation) | [Managed identity](#managed-identity)
---- | --- | --- | --- | --- | ---|
-**Azure Blob Storage** | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:| :heavy_check_mark:| :heavy_check_mark:
-**Azure Data Lake Storage Gen2** | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:| :heavy_check_mark:| :heavy_check_mark:
-**Azure Data Lake Storage Gen1** | :x: | :x: | :heavy_check_mark:| :heavy_check_mark:| :heavy_check_mark:
+Authentication method | Available in Blob storage? | Available in Azure Data Lake Storage Gen 2? | Available in Azure Data Lake Storage Gen 1? | When should you use this method?|
+|---|---|---|---|---|
+|[Access key](#access-key) | :heavy_check_mark: |:heavy_check_mark: | :x: | An Access Key can be used to access resources on an ongoing basis.
+| [Shared Access (SAS) key](#shared-access-sas-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | SAS tokens have an expiration time, so use them when accessing storage for a limited time. 
+| [Token](#token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | AAD tokens have an expiration time, so use them when accessing storage for a limited time.
+| [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | In attended flows, impersonation allows for an elaborate access control over the external storage. Access to the external storage can be restricted in the user level. 
+| [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | In unattended flows, no AAD principal can be derived in order to execute queries and commands. Managed identities are the only viable authentication solution.
 
 ## Access key
 
 **Azure Blob Storage**: Append the storage account key to the connection string `;{key}` 
 * Example: `;ljkAkl...==`
+
 **Azure Data Lake Storage Gen2**: Append `;sharedkey={key}` with the storage account key to the connection string. 
 * Example: `;sharedkey=ljkAkl...==`
 
-### When should you use this method?
-
-An Access Key can be used to access resources on an ongoing basis.
-
-### Access key example
+### Access key examples
 
 `"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;ljkAkl...=="`
+`"abfss://fs@fabrikam.dfs.core.windows.net/path/to/file.csv;sharedkey=sv=...&sp=rwd"`
 
 ## Shared Access (SAS) token
 
-Append the Shared Access (SAS) token `?sig=...` to the end of the connection string.
+> [!NOTE]
+> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control.)
 
-### When should you use this method?
-
-SAS tokens have an expiration time, so use them when accessing storage for a limited time.
-
-For more information, see [Generate a SAS token](generate-sas-token.md).
+Append the Shared Access (SAS) token `?sig=...` to the end of the connection string. For more information, see [Generate a SAS token](generate-sas-token.md).
 
 ### Shared Access (SAS) token example
-
-`"abfss://fs@fabrikam.dfs.core.windows.net/path/to/file.csv;sharedkey=sv=...&sp=rwd"`
 
 `"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"`
 
@@ -68,21 +63,16 @@ For more information, see [Generate a SAS token](generate-sas-token.md).
 
 Append a base-64 encoded AAD access token `;token=AadToken` to the connection string. Make sure the token is for the resource https://storage.azure.com/.
 
-### When should you use this method?
-
-AAD tokens have an expiration time, so use them when accessing storage for a limited time.
-
 ### Token example
 
 `"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;token={aad_token}"`
 
 ## Impersonation
 
-Append `;impersonate` to the connection string. Azure Data Explorer will use the requestor's principal identity and impersonate this identity to access the resource. The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations.
+> [!NOTE]
+> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control.)
 
-### When should you use this method?
-
-In attended flows, impersonation allows for an elaborate access control over the external storage. Access to the external storage can be restricted in the user level, and therefore querying the external storage with Azure Data Explorer requires both the relevant cluster/database permissions, and external storage permissions.
+Append `;impersonate` to the connection string. Azure Data Explorer will use the requestor's principal identity and impersonate this identity to access the resource. 
 
 ### Impersonation example
 
@@ -90,17 +80,12 @@ In attended flows, impersonation allows for an elaborate access control over the
 
 ## Managed identity
 
-Append `;managed_identity=...` to the connection string. Azure Data Explorer will use the managed identity, either system or user-assigned, to make requests and access resources.
+> [!NOTE]
+> The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control.)
 
+Append `;managed_identity=...` to the connection string. Azure Data Explorer will use the managed identity, either system or user-assigned, to make requests and access resources.
 * For a system-assigned managed identity, append `;managed_identity=system`.
 * For a user-assigned managed identity, append the object ID of the user-assigned managed identity, with the following format: `;managed_identity={object_id}`.
-
-### When should you use this method?
-
-In unattended flows, no AAD principal can be derived in order to execute queries and commands, and therefore managed identities are the only viable authentication solution.
-
-For more information on how to use managed identities with your cluster, see [managed identities overview](/azure/data-explorer/managed-identities-overview).
-The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations.
 
 >[!NOTE]
 > Managed identity is only supported in specific Azure Data Explorer flows. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
