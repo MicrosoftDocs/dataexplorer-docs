@@ -358,7 +358,7 @@ items:
     items:
     - name: Extent tags retention policy
       href: extent-tags-retention-policy.md
-    - name: ".alter databse extent tags retention policy"
+    - name: ".alter database extent tags retention policy"
       href: alter-extent-tags-retention-policy.md
     - name: ".alter table extent tags retention policy"
       href: alter-table-extent-tags-retention-policy.md
