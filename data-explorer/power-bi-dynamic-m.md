@@ -188,7 +188,6 @@ You can now head back to the report and select all event types in the slicer.
 There are some considerations and limitations to consider when using dynamic M query parameters:
 
 * A single parameter cannot be bound to multiple fields nor vice-versa.
-* [Aggregations](/power-bi/admin/aggregations-auto) are not supported with the feature
 * The following parameter types are not supported:
     * Any
     * Duration
