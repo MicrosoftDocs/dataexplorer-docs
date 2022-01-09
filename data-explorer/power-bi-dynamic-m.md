@@ -26,7 +26,54 @@ You need the following to complete this article:
 
 ## Add direct query connection to KQL function
 
-First, [set up a connector for Power BI](power-bi-connector.md) setting the connectivity mode to *DirectQuery* until the **Navigator** screen, and then continue using the following steps.
+First, set up a connector for Power BI.
+
+1. In Power BI Desktop, on the **Home** tab, select **Get Data** then **More**.
+
+    :::image type="content" source="media/power-bi-dynamic-m/get-data-more.png" alt-text="Screenshot of Get data menu, showing get more option.":::
+
+1. Search for *Azure Data Explorer*, select **Azure Data Explorer** then **Connect**.
+
+    :::image type="content" source="media/power-bi-dynamic-m/search-get-data.png" alt-text="Screenshot of search screen, showing the selection of the connector.":::
+
+1. On the connector screen, fill out the form with the following information.
+
+    :::image type="content" source="media/power-bi-dynamic-m/cluster-database-table.png" alt-text="Screenshot of the connect screen, showing the cluster, database, and table options.":::
+
+    | Setting | Value | Field description
+    |---|---|---
+    | Cluster | *https://help.kusto.windows.net* | The URL for the help cluster. For other clusters, the URL is in the form *https://\<ClusterName\>.\<Region\>.kusto.windows.net*. |
+    | Database | Leave blank | A database that is hosted on the cluster you're connecting to. We'll select this in a later step. |
+    | Table name | Leave blank | One of the tables in the database, or a query like `StormEvents | take 1000`. We'll select this in a later step. |
+    | Advanced options | Leave blank | Options for your queries, such as result set size.
+    | Data connectivity mode | *DirectQuery* | Determines whether Power BI imports the data or connects directly for Dynamic M queries. |
+
+    > [!NOTE]
+    > In **Import** mode, data is moved to Power BI. In **DirectQuery** mode, data is queried directly from your cluster.
+    >
+    > Use **Import** mode when:
+    >
+    > * Your data set is small.
+    > * You don't need near real-time data.
+    > * Your data is already aggregated or you perform [aggregation in Kusto](kusto/query/summarizeoperator.md#list-of-aggregation-functions)
+    >
+    > Use **DirectQuery** mode when:
+    >
+    > * Your data set is very large.
+    > * You need near real-time data.
+
+    **Advanced options**
+
+    | Setting | Sample value | Field description
+    |---|---|---
+    | Limit query result record number| `300000` | The maximum number of records to return in the result |
+    | Limit query result data size | `4194304` | The maximum data size in bytes to return in the result |
+    | Disable result set truncation | `true` | Enable/disable result truncation by using the notruncation request option |
+    | Additional set statements | `set query_datascope=hotcache` | Sets query options for the duration of the query. Query options control how a query executes and returns results. |
+
+1. If you don't already have a connection to the help cluster, sign in. Sign in with an organizational account, then select **Connect**.
+
+    :::image type="content" source="media/power-bi-dynamic-m/sign-in.png" alt-text="Screenshot of the authentication screen, showing the sign in option.":::
 
 1. On the **Navigator** screen, do the following:
     1. Expand the **Samples** database.
