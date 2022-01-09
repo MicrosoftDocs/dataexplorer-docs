@@ -108,43 +108,7 @@ items:
   - name: distinct operator
     href: distinctoperator.md
   - name: evaluate operator
-    items:
-    - name: evaluate operator plugins
-      href: evaluateoperator.md
-    - name: azure_digital_twins_query_request plugin
-      href: azure-digital-twins-query-request-plugin.md
-    - name: bag_unpack plugin
-      href: bag-unpackplugin.md
-    - name: cosmosdb_sql_request plugin
-      href: cosmosdb-plugin.md
-    - name: dcount_intersect plugin
-      href: dcount-intersect-plugin.md
-    - name: infer_storage_schema plugin
-      href: inferstorageschemaplugin.md
-    - name: ipv4_lookup plugin
-      href: ipv4-lookup-plugin.md
-    - name: mysql_request plugin
-      href: mysqlrequest-plugin.md
-    - name: narrow plugin
-      href: narrowplugin.md
-    - name: pivot plugin
-      href: pivotplugin.md
-    - name: preview plugin
-      href: previewplugin.md
-    - name: python plugin
-      href: pythonplugin.md
-    - name: R plugin
-      href: rplugin.md
-    - name: rolling_percentile plugin
-      href: rolling-percentile-plugin.md
-    - name: rows_near plugin
-      href: rows-near-plugin.md  
-    - name: schema_merge plugin
-      href: schemamergeplugin.md
-    - name: sql_request plugin
-      href: sqlrequestplugin.md
-    - name: sequence_detect plugin
-      href: sequence-detect-plugin.md
+    href: evaluateoperator.md
   - name: extend operator
     href: extendoperator.md
   - name: externaldata operator
@@ -175,8 +139,6 @@ items:
     href: limitoperator.md
   - name: lookup operator
     href: lookupoperator.md
-  - name: make-series operator
-    href: make-seriesoperator.md
   - name: mv-apply operator
     href: mv-applyoperator.md
   - name: mv-expand operator
@@ -1050,6 +1012,42 @@ items:
   - name: diffpatterns_text plugin
     displayName: clustering, diagnostics, RCA, root cause
     href: diffpatterns-textplugin.md
+- name: Plugins
+  items:
+  - name: azure_digital_twins_query_request plugin
+    href: azure-digital-twins-query-request-plugin.md
+  - name: bag_unpack plugin
+    href: bag-unpackplugin.md
+  - name: cosmosdb_sql_request plugin
+    href: cosmosdb-plugin.md
+  - name: dcount_intersect plugin
+    href: dcount-intersect-plugin.md
+  - name: infer_storage_schema plugin
+    href: inferstorageschemaplugin.md
+  - name: ipv4_lookup plugin
+    href: ipv4-lookup-plugin.md
+  - name: mysql_request plugin
+    href: mysqlrequest-plugin.md
+  - name: narrow plugin
+    href: narrowplugin.md
+  - name: pivot plugin
+    href: pivotplugin.md
+  - name: preview plugin
+    href: previewplugin.md
+  - name: python plugin
+    href: pythonplugin.md
+  - name: R plugin
+    href: rplugin.md
+  - name: rolling_percentile plugin
+    href: rolling-percentile-plugin.md
+  - name: rows_near plugin
+    href: rows-near-plugin.md  
+  - name: schema_merge plugin
+    href: schemamergeplugin.md
+  - name: sql_request plugin
+    href: sqlrequestplugin.md
+  - name: sequence_detect plugin
+    href: sequence-detect-plugin.md
 - name: Geospatial
   items:
   - name: Geospatial clustering overview 
