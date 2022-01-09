@@ -253,10 +253,10 @@ items:
       href: not-endswith-operator.md
     - name: "!endswith_cs operator"
       href: not-endswith-cs-operator.md
-    - name: == (equals) operator 
+    - name: "== (equals) operator"
       displayName: equals
       href: equals-cs-operator.md
-    - name: =~ (equals) operator 
+    - name: "=~ (equals) operator" 
       href: equals-operator.md
     - name: "!= (not equals) operator"
       href: not-equals-cs-operator.md
@@ -292,7 +292,7 @@ items:
       href: has-anyoperator.md
     - name: in operator 
       href: in-cs-operator.md
-    - name: in~ operator 
+    - name: "in~ operator" 
       href: inoperator.md
     - name: "!in operator"
       href: not-in-cs-operator.md
