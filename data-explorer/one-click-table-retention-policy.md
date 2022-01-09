@@ -12,7 +12,7 @@ ms.date: 01/02/2022
 
 The [retention policy](kusto/management/retentionpolicy.md) controls the mechanism that automatically removes data from tables. It is used to remove data whose relevance is age-based. 
 
-The [cache policy](cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority. The cache policy defines how much data will be available in a local SSD or RAM. Data is queried faster when it's in a local SSD, particularly for queries that scan large amounts of data. However, a local SSD can cost much more.
+The [cache policy](kusto/management/cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority. The cache policy defines how much data will be available in a local SSD or RAM. Data is queried faster when it's in a local SSD, particularly for queries that scan large amounts of data. However, a local SSD can cost much more.
 
 In this article, you can define and assign a retention policy and a cache policy for a table using the one-click experience.
 
