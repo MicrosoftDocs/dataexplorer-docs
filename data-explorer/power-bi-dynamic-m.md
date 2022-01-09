@@ -141,7 +141,7 @@ First, set up a connector for Power BI.
 1. On the **Home** tab, select **Close & Apply**.
 
     > [!NOTE]
-    > A dialog box warning about security risk will appear. Click **OK** to continue.
+    > A dialog box warning about security risk appears. Click **OK** to continue.
     > The reason the dialog appears is because Power BI is adding a second data source. For more information, see [Power BI Desktop privacy levels](/power-bi/admin/desktop-privacy-levels).  However, the way the data sources are used in this example is perfectly safe.
 
 1. Bind the **EventType** column in the **SlicerValues** table to the parameter.
@@ -151,7 +151,7 @@ First, set up a connector for Power BI.
     1. Under **Bind to Parameter**, select **Type_Param**. This binds the **EventType** column to the parameter.
 
     > [!NOTE]
-    > A dialog box warning about security risk will appear. Click **Continue** to continue.
+    > A dialog box warning about security risk appears. Click **Continue** to continue.
     > The reason the dialog appears is because Power BI is sending data from one source to another. For more information, see [Power BI Desktop privacy levels](/power-bi/admin/desktop-privacy-levels).  However, the way the parameter is used in this example is perfectly safe.
 
     :::image type="content" source="media/power-bi-dynamic-m/bind-parameter.png" alt-text="Screenshot of Model View, showing the binding of the EventType column to the parameter.":::
@@ -168,9 +168,9 @@ Now that you have data in Power BI Desktop, you can create reports based on that
     1. In the **Visualization** pane, select **Slicer**. A blank slicer is added to the report canvas.
     1. In the **Fields** pane, expand **SlicerValues**, and select **EventType**. You now have a slicer showing the event types.
 
-:::image type="content" source="media/power-bi-dynamic-m/report-single-select.png" alt-text="Screenshot of Report View, showing the table and related slicer.":::
+    :::image type="content" source="media/power-bi-dynamic-m/report-single-select.png" alt-text="Screenshot of Report View, showing the table and related slicer.":::
 
-The report is now ready to be viewed. Notice that when selecting event type values in the slicer, the table based on the M query is filtered by the event type that is bound to the M query's parameter.
+    The report is now ready to be viewed. Notice that when selecting event type values in the slicer, the table based on the M query is filtered by the event type that is bound to the M query's parameter.
 
 1. Save the report.
 
