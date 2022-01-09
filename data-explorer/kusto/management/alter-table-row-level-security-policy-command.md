@@ -26,11 +26,10 @@ For more information about running queries on the row level security policy, see
 
 `.alter` `table` *TableName* `policy` `row_level_security` [`enable` | `disable`] *Query*
 
-
 ## Arguments
 
-*TableName* - Specify the name of the table.  
-*Query* - Specify the query to be run. For more information about running queries on the row level security policy, see [row_level_security policy](rowlevelsecuritypolicy.md).
+- *TableName* - Specify the name of the table.  
+- *Query* - Specify the query to be run. For more information about running queries on the row level security policy, see [row_level_security policy](rowlevelsecuritypolicy.md).
 
 ### Examples
 
