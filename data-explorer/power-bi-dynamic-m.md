@@ -11,7 +11,7 @@ ms.date: 01/06/2022
 
 # Use Dynamic M query parameters with Azure Data Explorer for Power BI
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Power BI is a business analytics solution that lets you visualize your data and share the results across your organization. With [Dynamic M parameters](/power-query/power-query-query-parameters), you can create Power BI reports that give viewers the ability to use filters or slicers to set values for KQL query parameters.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Power BI is a business analytics solution that lets you visualize your data and share the results across your organization. With [Dynamic M parameters](/power-bi/connect-data/desktop-dynamic-m-query-parameters), you can create Power BI reports that give viewers the ability to use filters or slicers to set values for KQL query parameters.
 
 In this article, you'll start with a new Power BI project and use the sample data to create a report that uses a slicer to filter data in a dynamic M query linked to a KQL function.
 

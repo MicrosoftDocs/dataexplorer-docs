@@ -251,6 +251,9 @@ items:
       - name: Connector
         displayName: Power BI
         href: power-bi-connector.md
+      - name: Dynamic M query parameters
+        displayName: Power BI
+        href: power-bi-dynamic-m.md
       - name: Imported query
         displayName: Power BI
         href: power-bi-imported-query.md
