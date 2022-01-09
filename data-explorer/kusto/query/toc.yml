@@ -111,22 +111,14 @@ items:
     items:
     - name: evaluate operator plugins
       href: evaluateoperator.md
-    - name: autocluster plugin
-      href: autoclusterplugin.md
     - name: azure_digital_twins_query_request plugin
       href: azure-digital-twins-query-request-plugin.md
     - name: bag_unpack plugin
       href: bag-unpackplugin.md
-    - name: basket plugin
-      href: basketplugin.md
     - name: cosmosdb_sql_request plugin
       href: cosmosdb-plugin.md
     - name: dcount_intersect plugin
       href: dcount-intersect-plugin.md
-    - name: diffpatterns plugin
-      href: diffpatternsplugin.md
-    - name: diffpatterns_text plugin
-      href: diffpatterns-textplugin.md
     - name: infer_storage_schema plugin
       href: inferstorageschemaplugin.md
     - name: ipv4_lookup plugin
