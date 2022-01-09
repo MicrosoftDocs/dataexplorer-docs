@@ -129,7 +129,7 @@ The report is now ready to be viewed. Notice that when selecting event type valu
 
 ### Accepting multiple parameter values
 
-If you want filter on multiple parameter values in the slicer, you can achieve this by adjusting the properties of the **EventType** column and modifying the KQL query, as follows:
+If you want filter on multiple parameter values in the slicer, you can achieve this by adjusting the properties of the **EventType** column and modifying the KQL function, as follows:
 
 1. Adjust the properties of the **EventType** column in the **SlicerValues** table.
     1. Select the **Model** view on the left.
@@ -138,7 +138,7 @@ If you want filter on multiple parameter values in the slicer, you can achieve t
 
     :::image type="content" source="media/power-bi-dynamic-m/multiple-select.png" alt-text="Screenshot of Model View, showing the multi-select setting.":::
 
-1. Modify the KQL query, setting the parameter type to dynamic and changing the `where` condition to check the list of parameter values.
+1. Modify the KQL function, setting the parameter type to dynamic and changing the `where` condition to check the list of parameter values.
 
     ```kusto
     .create-or-alter function EventsByStates (EventTypeParam:dynamic)
@@ -153,7 +153,7 @@ You can now head back to the report and select multiple event types in the slice
 
 ### Accepting all parameter values
 
-If you want filter on all parameter values in the slicer, you can achieve this by adjusting the properties of the **EventType** column, modifying the KQL query, and updating the slicer control, as follows:
+If you want filter on all parameter values in the slicer, you can achieve this by adjusting the properties of the **EventType** column, modifying the KQL function, and updating the slicer control, as follows:
 
 1. Adjust the properties of the **EventType** column in the **SlicerValues** table.
     1. Select the **Model** view on the left.
@@ -168,7 +168,7 @@ If you want filter on all parameter values in the slicer, you can achieve this b
     1. Select the EventType slicer.
     1. In the **Visualizations** pane, select **Format**, expand **Selection controls**, and turn on the **Show "Select all" option** setting. The event type slicer shows the select all option at the top of the list.
 
-1. Modify the KQL query, setting the parameter type to dynamic and changing the `where` condition to check for the *__SelectAll__* value or the list of parameter values.
+1. Modify the KQL function, setting the parameter type to dynamic and changing the `where` condition to check for the *__SelectAll__* value or the list of parameter values.
 
     ```kusto
     .create-or-alter function EventsByStates (EventTypeParam:dynamic)
@@ -204,17 +204,6 @@ There are some considerations and limitations to consider when using dynamic M q
     * Drill-down filter
     * Cross drill filter
     * Top N filter
-* The following operations are not supported:
-    * And
-    * Contains
-    * Less than
-    * Greater than
-    * Starts with
-    * Does not start with
-    * Is not
-    * Does not contain
-    * Is blank
-    * Is not blank
 
 ## Clean up resources
 
