@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: vplauzon
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 12/19/2021
+ms.date: 01/10/2022
 ---
 
 # Automated provisioning in Azure Data Explorer
@@ -21,11 +21,11 @@ A common use case for automated provisioning is to deploy a pre-configured clust
 * More easily rollback to previous versions
 * Facilitates automated testing by provisioning dedicated test environments
 
-This article provides an overview of the different mechanisms for automating the provisioning of Azure Data Explorer environments, including infrastructure, schema entities, and data preparation. It also provides references to the different tools and techniques used to automate the provisioning process.
+This article provides an overview of the different mechanisms for automating the provisioning of Azure Data Explorer environments, including [infrastructure](#deploy-infrastructure), [schema entities](#deploy-schema-entities), and [data ingestion](#ingest-data). It also provides references to the different tools and techniques used to automate the provisioning process.
 
-![General flow](media/automated-deploy-overview/general-flow.png)
+:::image type="content" source="media/automated-deploy-overview/general-flow.png" alt-text="Image showing the deployment general flow.":::
 
-## Infrastructure
+## Deploy Infrastructure
 
 Infrastructure deployment pertains to the deployment of Azure resources including clusters, databases, data connections, and more. There are several different types of infrastructure deployments, including:
 
@@ -62,7 +62,7 @@ Infrastructure can also be deployed imperatively using any of the supported plat
   * [Python SDK](/azure/data-explorer/create-cluster-database-python)
   * [Go SDK](/azure/data-explorer/create-cluster-database-go)
 
-## Deploying schema entities
+## Deploy schema entities
 
 Schema entities provisioning pertains to deploying tables, functions, policies, permissions, and more. Entities can be created or updated by running scripts consisting of [control commands](kusto/management/management-best-practices.md).
 
@@ -82,7 +82,7 @@ You can automate schema entities deployment using the following methods:
     * [Delta Kusto](https://github.com/microsoft/delta-kusto) is a tool designed to be invoked in a CI/CD pipeline. It can compare two sources, such as database schema or control command script, and compute a *delta* control command script. The extracted content command script can then be used for automatic deployment.
     * [Azure DevOps Task](/azure/data-explorer/devops) for Azure Data Explorer
 
-## Ingesting Data
+## Ingest data
 
 If you have data you need to ingest into your cluster, such as when you want to run tests or recreate an environment, you can use the following methods:
 
@@ -95,17 +95,19 @@ If you have data you need to ingest into your cluster, such as when you want to 
 * [LightIngest](/azure/data-explorer/lightingest) CLI tool
 * Triggering an [Azure Data Factory Pipeline](/azure/data-explorer/data-factory-integration)
 
-## Using in CI / CD pipeline
+## Example deployment using a CI/CD pipeline
 
-We have reviewed the different tools for deploying infrastructure, schema entities and preparing data.  In this section we will put those together in a CI / CD pipeline.
+In the following example, you'll use a CI/CD pipeline running these tools to automate the deployment of infrastructure, schema entities, and data. You'll use the following tools:
 
-![General flow](media/automated-deploy-overview/flow-sample.png)
+|Deployment type|Tool|Task|
+|--|--|--|
+|Infrastructure|ARM Templates|Create a cluster and two databases|
+|Schema entities|Kusto CLI|Create tables and functions in both databases|
+|Data|LightIngest|Ingest data into both databases|
 
-For deploying a cluster and 2 databases (infrastructure), we will use ARM template.  For deploying tables & functions (schema entities) within those two databases, we will use the Kusto CLI.  Finally, in order to prepare data we will use the LightIngest CLI.
+:::image type="content" source="media/automated-deploy-overview/flow-sample.png" alt-text="png" alt-text="Image showing the deployment an example flow.":::
 
-The pipeline could have further steps, for instance, running automated tests on the created cluster.
-
-This is one example of a pipeline using a given set of tools.  Different tools could be used and a subset of steps (for instance, we might not ingest data for a prodution scenario).
+This is one example of a pipeline using a given set of tools. Other tools and steps can be used. For example, in a production environment you may want to create a pipeline that does not ingest data. You can aldo add further steps to the pipeline, such as running automated tests on the created cluster.
 
 ## Next steps
 
