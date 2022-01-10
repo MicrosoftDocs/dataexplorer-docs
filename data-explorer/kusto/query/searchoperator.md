@@ -52,7 +52,7 @@ The `search` operator provides a multi-table/multi-column search experience.
 
   **String matching extensions**: String literals that appear as terms in the *SearchPredicate* indicate a term
     match between all columns and the literal using `has`, `hasprefix`, `hassuffix`, and the inverted (`!`)
-    or case-sensitive (`sc`) versions of these operators. The decision whether to apply `has`, `hasprefix`,
+    or case-sensitive (`cs`) versions of these operators. The decision whether to apply `has`, `hasprefix`,
     or `hassuffix` depends on whether the literal starts or ends (or both) by an asterisk (`*`). Asterisks
     inside the literal are not allowed.
 
