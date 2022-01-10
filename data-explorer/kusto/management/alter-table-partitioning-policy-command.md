@@ -15,18 +15,18 @@ Changes a table [partitioning policy](partitioningpolicy.md). The partitioning p
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `partitioning` *ArrayOfPolicyObjects*
+`.alter` `table` *TableName* `policy` `partitioning` *PolicyObject*
 
 ## Arguments
 
 - *TableName* - Specify the name of the table.  
-- *ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+- *PolicyObject* - Define a policy object. For more information, see [partitioning policy](partitioningpolicy.md).
 
 ### Example
 
 Set a policy with a hash partition key:
 
-```kusto
+~~~kusto
 .alter table [table_name] policy partitioning ```
 {
   "PartitionKeys": [
@@ -41,11 +41,11 @@ Set a policy with a hash partition key:
     }
   ]
 }```
-```
+~~~
 
 Set a policy with a uniform range datetime partition key:
 
-```kusto
+~~~kusto
 .alter table [table_name] policy partitioning ```
 {
   "PartitionKeys": [
@@ -60,11 +60,11 @@ Set a policy with a uniform range datetime partition key:
     }
   ]
 }```
-```
+~~~
 
 Set a policy with two kinds of partition keys:
 
-```kusto
+~~~kusto
 .alter table [table_name] policy partitioning ```
 {
   "PartitionKeys": [
@@ -88,4 +88,4 @@ Set a policy with two kinds of partition keys:
     }
   ]
 }```
-```
+~~~

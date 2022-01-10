@@ -15,16 +15,16 @@ Change a table's [merge policy](mergepolicy.md). The merge policy defines if and
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `merge` *ArrayOfPolicyObjects* 
+`.alter` `table` *TableName* `policy` `merge` *PolicyObject* 
 
 ## Arguments
 
 - *TableName* - Specify the name of the table. 
-- *ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+- *PolicyObject* - Define a policy object. For more information, see  [merge policy](mergepolicy.md).
 
 ### Example
 
-```kusto
+~~~kusto
 .alter table [table_name] policy merge ```
 {
   "RowCountUpperBoundForMerge": 16000000,
@@ -38,4 +38,4 @@ Change a table's [merge policy](mergepolicy.md). The merge policy defines if and
     "Kind": "Default"
   }
 }```
-```
+~~~
