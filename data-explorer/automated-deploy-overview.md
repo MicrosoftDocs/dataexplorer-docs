@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: vplauzon
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 12/19/2021
+ms.date: 01/10/2022
 ---
 
 # Automated provisioning in Azure Data Explorer
@@ -21,7 +21,7 @@ A common use case for automated provisioning is to deploy a pre-configured clust
 * More easily rollback to previous versions
 * Facilitates automated testing by provisioning dedicated test environments
 
-This article provides an overview of the different mechanisms for automating the provisioning of Azure Data Explorer environments, including [infrastructure](#deploy-infrastructure), [schema entities](#deploy-schema-entities), and [data preparation](#prepare-data). It also provides references to the different tools and techniques used to automate the provisioning process.
+This article provides an overview of the different mechanisms for automating the provisioning of Azure Data Explorer environments, including [infrastructure](#deploy-infrastructure), [schema entities](#deploy-schema-entities), and [data ingestion](#ingest-data). It also provides references to the different tools and techniques used to automate the provisioning process.
 
 :::image type="content" source="media/automated-deploy-overview/general-flow.png" alt-text="Image showing the deployment general flow.":::
 
@@ -82,7 +82,7 @@ You can automate schema entities deployment using the following methods:
     * [Delta Kusto](https://github.com/microsoft/delta-kusto) is a tool designed to be invoked in a CI/CD pipeline. It can compare two sources, such as database schema or control command script, and compute a *delta* control command script. The extracted content command script can then be used for automatic deployment.
     * [Azure DevOps Task](/azure/data-explorer/devops) for Azure Data Explorer
 
-## Prepare data
+## Ingest data
 
 If you have data you need to ingest into your cluster, such as when you want to run tests or recreate an environment, you can use the following methods:
 
@@ -106,11 +106,6 @@ In the following example, you'll use a CI/CD pipeline running these tools to aut
 |Data|LightIngest|Ingest data into both databases|
 
 :::image type="content" source="media/automated-deploy-overview/flow-sample.png" alt-text="png" alt-text="Image showing the deployment an example flow.":::
-
-<!-- TODO:
-Can we add examples of each of the deployment types?
-i.e. Infrastructure, Schema entities, Data scripts and how they are added to the CI/CD pipeline?
--->
 
 This is one example of a pipeline using a given set of tools. Other tools and steps can be used. For example, in a production environment you may want to create a pipeline that does not ingest data. You can aldo add further steps to the pipeline, such as running automated tests on the created cluster.
 
