@@ -53,8 +53,10 @@ The default call without any options specified is equal to 'identity' option.
 |IngestionBatchingPolicy |String | The database's Ingestion Batching policy (serialized in JSON format).
 |TotalSize |Real | The database's extents total size in bytes.
 |DatabaseId |Guid |The database's unique ID.
-|NumberOfTables |Int64 |The database's number of tables (not including external tables).
+|NumberOfTables |Int64 |The database's number of tables (not including external tables or materialized views).
 |NumberOfExternalTables |Int64 |The database's number of external tables.
+|NumberOfMaterializedViews |Int64 |The database's number of materialized views.
+
 
 **Output for 'policies' option**
  
