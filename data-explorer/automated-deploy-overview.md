@@ -105,7 +105,7 @@ In the following example, you'll use a CI/CD pipeline running these tools to aut
 |Schema entities|Kusto CLI|Create tables and functions in both databases|
 |Data|LightIngest|Ingest data into both databases|
 
-:::image type="content" source="media/automated-deploy-overview/flow-sample.png" alt-text="png" alt-text="Image showing the deployment an example flow.":::
+:::image type="content" source="media/automated-deploy-overview/flow-sample.png" alt-text="Image showing the deployment an example flow.":::
 
 This is one example of a pipeline using a given set of tools. Other tools and steps can be used. For example, in a production environment you may want to create a pipeline that does not ingest data. You can aldo add further steps to the pipeline, such as running automated tests on the created cluster.
 
