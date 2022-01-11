@@ -20,7 +20,7 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
 
 ## Syntax
 
-*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `python(`*output_schema*`,` *script* [`,` *script_parameters*][`,` *external_artifacts*]`)`
+*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `python(`*output_schema*`,` *script* [`,` *script_parameters*][`,` *external_artifacts*][`,` *spill_to_disk*]`)`
 
 ## Arguments
 
@@ -40,6 +40,7 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
     * In a publicly available location, or provide the necessary credentials, as explained in [storage connection strings](../api/connection-strings/storage.md).
   * The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Examples](#examples).
   * For more information, see [Install packages for the Python plugin](#install-packages-for-the-python-plugin). 
+* *spill_to_disk*: An optional `boolean` literal specifying an alternative method for serializing the input table to the Python sandbox. For serializing big tables set it to True to speed up the serialization and significantly reduce the sandbox memory consumption. Default to False as this parameter is still  experimental.
 
 ## Reserved Python variables
 
