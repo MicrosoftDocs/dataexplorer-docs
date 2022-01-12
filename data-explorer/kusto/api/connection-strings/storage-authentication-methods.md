@@ -7,21 +7,22 @@ ms.author: orspodek
 ms.reviewer: shanisolomon
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/05/2022
+ms.date: 01/12/2022
 ---
 # Storage authentication methods
 
 Azure Data Explorer can interact with external storage in different ways. For Azure Data Explorer to interact with and authenticate to external storage, you must specify the storage's `connection string`. This `connection string` defines the resource being accessed and its authentication information.
 
+We recommend adding `h` to connection strings that contain secrets, so that the connection strings are hidden in the telemetry. 
+* You can add `h` to the beginning of the string, like this: `h"https://...."`
+* Or, you can split the connection string into location and secret, and add the `h` before the secret as follows: "https://fabrikam.blob.core.windows.net/container/path/to/file.csv;" h"ljkAkl...=="
+
 The following authentication methods are supported:
-* [Access key](#access-key)
-* [Shared Access (SAS) key](#shared-access-sas-token)
-* [Token](#token)
 * [Impersonation](#impersonation)
 * [Managed identity](#managed-identity)
-
-> [!NOTE]
-> All types of connection strings can be obfuscated by adding `h` to the beginning of the connection string as follows: `h"https://...."`
+* [Shared Access (SAS) key](#shared-access-sas-token)
+* [Token](#token)
+* [Access key](#access-key)
 
 ## Storage authentication availability
 
@@ -29,43 +30,12 @@ Different authentication methods are available for different external storage ty
 
 Authentication method | Available in Blob storage? | Available in Azure Data Lake Storage Gen 2? | Available in Azure Data Lake Storage Gen 1? | When should you use this method?|
 |---|---|---|---|---|
-|[Access key](#access-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | An Access Key can be used to access resources on an ongoing basis.
+| [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Use for attended flows when you need complex access control over the external storage. For example, in continuous export flows. Can also restrict storage access at the user level.
+| [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Use in unattended flows, where no AAD principal can be derived to execute queries and commands. Managed identities are the only authentication solution.
 | [Shared Access (SAS) key](#shared-access-sas-token) | :heavy_check_mark: | :heavy_check_mark: | :x: | SAS tokens have an expiration time. Use when accessing storage for a limited time. 
-| [Token](#token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | AAD tokens have an expiration time. Use when accessing storage for a limited time.
-| [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | In attended flows, allows for complex access control over the external storage. For example, in continuous export flows. Can also restrict storage access at the user level.
-| [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | In unattended flows, no AAD principal can be derived to execute queries and commands. Managed identities are the only authentication solution.
-
-## Access key
-
-**Azure Blob Storage**: Append the storage account key to the connection string `;{key}` 
-* Example: `;ljkAkl...==`
-
-**Azure Data Lake Storage Gen2**: Append `;sharedkey={key}` with the storage account key to the connection string. 
-* Example: `;sharedkey=ljkAkl...==`
-
-### Access key examples
-
-`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;ljkAkl...=="`
-`"abfss://fs@fabrikam.dfs.core.windows.net/path/to/file.csv;sharedkey=sv=...&sp=rwd"`
-
-## Shared Access (SAS) token
-
-> [!NOTE]
-> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control).
-
-Append the Shared Access (SAS) token `?sig=...` to the end of the connection string. For more information, see [Generate a SAS token](generate-sas-token.md).
-
-### Shared Access (SAS) token example
-
-`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"`
-
-## Token
-
-Append a base-64 encoded AAD access token `;token=AadToken` to the connection string. Make sure the token is for the resource https://storage.azure.com/.
-
-### Token example
-
-`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;token={aad_token}"`
+| [Token](#token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | AAD tokens have an expiration time. Use when accessing 
+| [Access key](#access-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | When you need to access resources on an ongoing basis.
+storage for a limited time.
 
 ## Impersonation
 
@@ -95,6 +65,39 @@ Append `;managed_identity=...` to the connection string. Azure Data Explorer wil
 `"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=system"`
 
 `"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=9ca5bb85-1c1f-44c3-b33a-0dfcc7ec5f6b"`
+
+## Shared Access (SAS) token
+
+> [!NOTE]
+> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control).
+
+Append the Shared Access (SAS) token `?sig=...` to the end of the connection string. For more information, see [Generate a SAS token](generate-sas-token.md).
+
+### Shared Access (SAS) token example
+
+`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"`
+
+## Token
+
+Append a base-64 encoded AAD access token `;token=AadToken` to the connection string. Make sure the token is for the resource https://storage.azure.com/. For more information on how to generate an AAD access token, see [get an access token for authorization](/azure/storage/common/identity-library-acquire-token).
+
+### Token example
+
+`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;token={aad_token}"`
+
+## Access key
+
+**Azure Blob Storage**: Append the storage account key to the connection string `;{key}` 
+* Example: `;ljkAkl...==`
+
+**Azure Data Lake Storage Gen2**: Append `;sharedkey={key}` with the storage account key to the connection string. 
+* Example: `;sharedkey=ljkAkl...==`
+
+### Access key examples
+
+`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;ljkAkl...=="`
+`"abfss://fs@fabrikam.dfs.core.windows.net/path/to/file.csv;sharedkey=sv=...&sp=rwd"`
+
 
 ## Storage access control
 
