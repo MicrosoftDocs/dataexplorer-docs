@@ -28,7 +28,7 @@ The following authentication methods are supported:
 
 Different authentication methods are available for different external storage types. The available methods are summarized in the following table:
 
-Authentication method | Available in Blob storage? | Available in Azure Data Lake Storage Gen 2? | Available in Azure Data Lake Storage Gen 1? | When should you use this method?|
+|Authentication method | Available in Blob storage? | Available in Azure Data Lake Storage Gen 2? | Available in Azure Data Lake Storage Gen 1? | When should you use this method?|
 |---|---|---|---|---|
 | [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Use for attended flows when you need complex access control over the external storage. For example, in continuous export flows. Can also restrict storage access at the user level.
 | [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Use in unattended flows, where no AAD principal can be derived to execute queries and commands. Managed identities are the only authentication solution.
