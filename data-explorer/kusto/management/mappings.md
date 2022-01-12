@@ -83,6 +83,17 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
+> [!NOTE]
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)):
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with
+    (
+        format="csv"
+    )
+```
+
 ## JSON mapping
 
 When the source file is in JSON format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the JSON mapping must exist in the table unless a datatype is specified for all the non-existing columns.
@@ -136,6 +147,17 @@ Each element in the list describes a mapping for a specific column, and may cont
     (
         format="json",
         ingestionMappingReference = "Mapping_Name"
+    )
+```
+
+> [!NOTE]
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)):
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with
+    (
+        format="json"
     )
 ```
 
@@ -229,6 +251,17 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
+> [!NOTE]
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)):
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with
+    (
+        format="AVRO"
+    )
+```
+
 ## Parquet mapping
 
 When the source file is in Parquet format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the Parquet mapping must exist in the table unless a datatype is specified for all the non-existing columns.
@@ -297,6 +330,17 @@ Each element in the list describes a mapping for a specific column, and may cont
     (
         format="parquet",
         ingestionMappingReference = "Mapping_Name"
+    )
+```
+
+> [!NOTE]
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)):
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with
+    (
+        format="parquet"
     )
 ```
 
@@ -371,6 +415,17 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
+> [!NOTE]
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)):
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with
+    (
+        format="orc"
+    )
+```
+
 ## W3CLOGFILE mapping
 
 When the source file is in W3CLOGFILE format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the W3CLOGFILE mapping must exist in the table unless a datatype is specified for all the non-existing columns.
@@ -429,6 +484,17 @@ Each element in the list describes a mapping for a specific column, and may cont
     (
         format="w3clogfile",
         ingestionMappingReference = "Mapping_Name"
+    )
+```
+
+> [!NOTE]
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)):
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with
+    (
+        format="w3clogfile"
     )
 ```
 
