@@ -22,7 +22,7 @@ ms.date: 01/13/2022
 
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
 
-In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection that sets an [Azure Event Grid](/azure/event-grid/overview) subscription. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hub. Then you'll see an example of the data flow throughout the system. 
+In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection that sets an [Azure Event Grid](/azure/event-grid/overview) subscription. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hubs. Then you'll see an example of the data flow throughout the system. 
 
 For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md). To create resources manually in the Azure portal, see [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md).
 
@@ -35,11 +35,11 @@ For general information about ingesting into Azure Data Explorer from Event Grid
 
 ## Create a target table in Azure Data Explorer
 
-Create a table in Azure Data Explorer where Event Hubs will send data. Create the table in the cluster and database prepared in the prerequisites.
+Create a table in Azure Data Explorer where Azure Event Hubs will send data. Create the table in the cluster and database prepared in the prerequisites.
 
 1. In the Azure portal, under your cluster, select **Query**.
 
-    :::image type="content" source="media/ingest-data-event-grid/azure-portal.png" alt-text="Screenshot of the Query option in the Azure Portal"::: 
+    :::image type="content" source="media/ingest-data-event-grid/azure-portal.png" alt-text="Screenshot of the Query option in the Azure portal."::: 
 
 1. Copy the following command into the window and select **Run** to create the table (TestTable) that will receive the ingested data.
 
@@ -83,7 +83,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Storage account subscription | Your subscription ID | The subscription ID where your storage account is.|
     | Storage account | *gridteststorage1* | The name of the storage account that you created previously.|
     | Event type | *Blob created* or *Blob renamed* | The type of event that triggers ingestion. *Blob renamed* is supported only for ADLSv2 storage. Supported types are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. |
-    | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace, and an Event Hub for you. To create resources manually, see [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)|
+    | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an event hub namespace, and an event hub for you. To create resources manually, see [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)|
 
 1. Select **Filter settings** if you want to track specific subjects. Set the filters for the notifications as follows:
     * **Prefix** field is the *literal* prefix of the subject. As the pattern applied is *startswith*, it can span multiple containers, folders, or blobs. No wildcards are allowed.
@@ -122,7 +122,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
     :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="Review and create data connection for event grid.":::
 
-### [Azure portal - Storage](#tab/portal-1)
+### [Azure portal - storage](#tab/portal-1)
 
 1. Browse to the storage account in the Azure portal. On the left menu, select **Events**
 1. In the main pane, select the **Azure Data Explorer** tab.
@@ -142,7 +142,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Data connection name | *test-grid-connection* | The name of the connection that you want to create in Azure Data Explorer.|
     | Storage account | *gridteststorage1* | The storage account from which you accessed this wizard. Autopopulated.|
     | Event type | *Blob created* or *Blob renamed* | The type of event that triggers ingestion. *Blob renamed* is supported only for ADLSv2 storage. Supported types are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. |
-    | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hub namespace, and an Event Hub for you. To create resources manually, see [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)|
+    | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an event hub namespace, and an event hub for you. To create resources manually, see [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)|
 
 1. Select **Next> Ingestion properties**.
 
@@ -271,17 +271,17 @@ You can specify the [ingestion properties](ingest-data-event-grid-overview.md#in
 
 ## Clean up resources
 
-If you don't plan to use your event grid again, clean up the Event Grid Subscription, Event Hub namespace, and Event Hub that were autocreated for you, to avoid incurring costs.
+If you don't plan to use your event grid again, clean up the Event Grid Subscription, event hub namespace, and event hub that were autocreated for you, to avoid incurring costs.
 
 1. In Azure portal, go to the left menu and select **All resources**.
 
     :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-all-resource.png" alt-text="Select all resources for event grid cleanup.":::    
 
-1. Search for your Event Hub Namespace and select **Delete** to delete it:
+1. Search for your event hub namespace and select **Delete** to delete it:
 
-    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-find-eventhub-namespace-delete.png" alt-text="Clean up Event Hub namespace.":::
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-find-eventhub-namespace-delete.png" alt-text="Clean up event hub namespace.":::
 
-1. In the Delete resources form, confirm the deletion to delete the Event Hub Namespace and Event Hub resources.
+1. In the Delete resources form, confirm the deletion to delete the event hub namespace and event hub resources.
 
 1. Go to your storage account. In the left menu, select **Events**:
 
