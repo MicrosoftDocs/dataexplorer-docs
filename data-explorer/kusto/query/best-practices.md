@@ -19,7 +19,7 @@ Here are several best practices to follow to make your query run faster.
 | **Time filters** | Use time filters first. ||Kusto is highly optimized to use time filters.| 
 |**String operators**      | Use the `has` operator     | Don't use `contains`     | When looking for full tokens, `has` works better, since it doesn't look for substrings.   |
 |**Case-sensitive operators**     |  Use `==`       | Don't use  `=~`       |  Use case-sensitive operators when possible.       |
-| | Use `in` | Don't use `in~` or leftsemi `join`|
+| | Use `in` | Don't use `in~`|
 |  | Use `contains_cs`         | Don't use `contains`        | If you can use `has`/`has_cs` and not use `contains`/`contains_cs`, that's even better. |
 | **Searching text**    |    Look in a specific column     |    Don't use  `*`    |   `*` does a full text search across all columns.    |
 | **Extract fields from [dynamic objects](./scalar-data-types/dynamic.md) across millions of rows**    |  Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows.      |         | This way, you'll only pay once for column extraction.    |
@@ -33,6 +33,7 @@ Here are several best practices to follow to make your query run faster.
 | | Use `T | where predicate(<expression>)` | Don't use `T | extend _value = <expression> | where predicate(_value)` ||
 | **summarize operator** |  Use the [hint.strategy=shuffle](./shufflequery.md) when the `group by keys` of the summarize operator are with high cardinality. | | High cardinality is ideally above 1 million.|
 |**[join operator](./joinoperator.md)** | Select the table with the fewer rows to be the first one (left-most in query). ||
+|| Use `in` instead of leftsemi `join` for filtering by a single column. ||
 | Join across clusters |Across clusters, run the query on the "right" side of the join, where most of the data is located. ||
 |Join when left side is small and right side is large | Use [hint.strategy=broadcast](./broadcastjoin.md) || Small refers to up to 100,000 records. |
 |Join when both sides are too large | Use [hint.strategy=shuffle](./shufflequery.md) || Use when the join key has high cardinality.|
