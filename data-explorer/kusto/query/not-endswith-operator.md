@@ -8,7 +8,6 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/03/2021
-ms.localizationpriority: high
 ---
 # !endswith operator
 
