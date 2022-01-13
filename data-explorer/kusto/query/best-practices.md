@@ -19,7 +19,7 @@ Here are several best practices to follow to make your query run faster.
 | **Time filters** | Use time filters first. ||Kusto is highly optimized to use time filters.| 
 |**String operators**      | Use the `has` operator     | Don't use `contains`     | When looking for full tokens, `has` works better, since it doesn't look for substrings.   |
 |**Case-sensitive operators**     |  Use `==`       | Don't use  `=~`       |  Use case-sensitive operators when possible.       |
-| | Use `in` | Don't use `in~`|
+| | Use `in` | Don't use `in~` or leftsemi `join`|
 |  | Use `contains_cs`         | Don't use `contains`        | If you can use `has`/`has_cs` and not use `contains`/`contains_cs`, that's even better. |
 | **Searching text**    |    Look in a specific column     |    Don't use  `*`    |   `*` does a full text search across all columns.    |
 | **Extract fields from [dynamic objects](./scalar-data-types/dynamic.md) across millions of rows**    |  Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows.      |         | This way, you'll only pay once for column extraction.    |
