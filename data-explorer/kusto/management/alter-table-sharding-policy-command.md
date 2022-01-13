@@ -17,12 +17,12 @@ The sharding policy defines if and how [Extents (data shards)](../management/ext
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `sharding` *ArrayOfPolicyObjects*
+`.alter` `table` *TableName* `policy` `sharding` *PolicyObject*
 
 ## Arguments
 
 - *TableName* - Specify the name of the table. A wildcard (*) denotes all tables.
-- *ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+- *PolicyObject* - Define a policy object, see also [sharding policy](../management/shardingpolicy.md).
 
 ## Returns
 
