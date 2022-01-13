@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/15/2021
+ms.date: 01/06/2022
 ---
 # .alter database ingestion batching policy
 
@@ -30,13 +30,12 @@ If the policy is set to `null`, default values are used. Default values are:
 
 ## Syntax
 
-`.alter` `database` *DatabaseName* `policy` `ingestionbatching` *ArrayOfPolicyObjects*
+`.alter` `database` *DatabaseName* `policy` `ingestionbatching` *PolicyObject*
 
 ## Arguments
 
-*DatabaseName* - Specify the name of the database.
-
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+- *DatabaseName* - Specify the name of the database.
+- *PolicyObject* - Define a policy object. For more information, see [ingestion batching policy](batchingpolicy.md).
 
 ## Example
 

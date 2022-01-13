@@ -34,7 +34,7 @@ If the policy is set to `null`, default values are used. Default values are:
 
 `.alter` `table` *DatabaseName*`.`*TableName* `policy` `ingestionbatching` *PolicyObject*
 
-`.alter` `tables` `(`*Table1* `,` *Table2*  `,...` `)` `policy` `ingestionbatching` *ArrayOfPolicyObjects*
+`.alter` `tables` `(`*Table1* `,` *Table2*  `,...` `)` `policy` `ingestionbatching` *PolicyObject*
 
 ## Arguments
 

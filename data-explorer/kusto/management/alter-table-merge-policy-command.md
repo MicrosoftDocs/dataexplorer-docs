@@ -24,7 +24,7 @@ Change a table's [merge policy](mergepolicy.md). The merge policy defines if and
 
 ### Example
 
-```kusto
+~~~kusto
 .alter table [table_name] policy merge ```
 {
   "RowCountUpperBoundForMerge": 16000000,
@@ -38,4 +38,4 @@ Change a table's [merge policy](mergepolicy.md). The merge policy defines if and
     "Kind": "Default"
   }
 }```
-```
+~~~

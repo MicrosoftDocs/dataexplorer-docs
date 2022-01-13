@@ -26,7 +26,7 @@ Changes a table [partitioning policy](partitioningpolicy.md). The partitioning p
 
 Set a policy with a hash partition key:
 
-```kusto
+~~~kusto
 .alter table [table_name] policy partitioning ```
 {
   "PartitionKeys": [
@@ -41,11 +41,11 @@ Set a policy with a hash partition key:
     }
   ]
 }```
-```
+~~~
 
 Set a policy with a uniform range datetime partition key:
 
-```kusto
+~~~kusto
 .alter table [table_name] policy partitioning ```
 {
   "PartitionKeys": [
@@ -60,11 +60,11 @@ Set a policy with a uniform range datetime partition key:
     }
   ]
 }```
-```
+~~~
 
 Set a policy with two kinds of partition keys:
 
-```kusto
+~~~kusto
 .alter table [table_name] policy partitioning ```
 {
   "PartitionKeys": [
@@ -88,4 +88,4 @@ Set a policy with two kinds of partition keys:
     }
   ]
 }```
-```
+~~~

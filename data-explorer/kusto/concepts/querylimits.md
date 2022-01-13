@@ -8,7 +8,6 @@ ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/16/2021
-ms.localizationpriority: high 
 ---
 # Query limits
 

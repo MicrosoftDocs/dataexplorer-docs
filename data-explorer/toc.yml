@@ -72,6 +72,8 @@ items:
   items:
   - name: Create cluster and database
     items:
+    - name: One-click database management
+      href: one-click-manage-database.md
     - name: Azure CLI
       href: create-cluster-database-cli.md
     - name: PowerShell
@@ -91,6 +93,14 @@ items:
     - name: External table creation wizard
       displayName: one-click
       href: external-table.md
+    - name: Create table policies
+      items:
+      - name: Create ingestion batching table policy
+        displayName: one-click
+        href: one-click-table-batching-policy.md
+      - name: Create retention table policy
+        displayName: one-click
+        href: one-click-table-retention-policy.md
   - name: Ingest data
     items:
     - name: One-click ingestion
@@ -110,25 +120,25 @@ items:
         href: lightingest.md
       - name: Use wizard for one-time ingestion of historical data with LightIngest
         href: generate-lightingest-command.md
-    - name: Event Hub
+    - name: Event hub
       items:
-      - name: Event Hub data connection
+      - name: Event hub data connection
         displayName: ingest, ingestion
         href: ingest-data-event-hub-overview.md
       - name: Azure portal
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: ingest-data-event-hub.md
       - name: One-click
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: one-click-event-hub.md
       - name: C#
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: data-connection-event-hub-csharp.md
       - name: Python
-        displayName: Event Hub, ingest
+        displayName: Event hub, ingest
         href: data-connection-event-hub-python.md
       - name: Azure Resource Manager template
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: data-connection-event-hub-resource-manager.md
     - name: Event Grid
       items:
@@ -249,6 +259,9 @@ items:
       - name: Connector
         displayName: Power BI
         href: power-bi-connector.md
+      - name: Dynamic M query parameters
+        displayName: Power BI
+        href: power-bi-dynamic-m.md
       - name: Imported query
         displayName: Power BI
         href: power-bi-imported-query.md
@@ -290,7 +303,7 @@ items:
         - name: Create Private Endpoint for your VNet cluster - Portal
           href: vnet-create-private-endpoint.md
         - name: Create a private or service endpoint to resources used by data connections
-          displayName: VNet, private endpoint, Azure Storage, Event Hub
+          displayName: VNet, private endpoint, Azure Storage, event hub
           href: vnet-endpoint-storage-event-hub.md
     - name: Encryption
       items:

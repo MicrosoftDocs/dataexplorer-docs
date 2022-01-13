@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 01/04/2022
 ---
 # .alter auto delete policy
 
@@ -15,12 +15,12 @@ Alters the auto delete policy that is applied to a table. For more information, 
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `auto_delete` *SerializedArrayOfPolicyObjects* 
+`.alter` `table` *TableName* `policy` `auto_delete` *SerializedPolicyObject* 
 
 ## Arguments
 
-*TableName* - The name of the table.
-*SerializedArrayOfPolicyObjects* - A serialized array with one or more JSON policy objects defined.
+- *TableName* - The name of the table.
+- *SerializedPolicyObject* - One serialized JSON policy object defined.
 
 ## Returns
 
