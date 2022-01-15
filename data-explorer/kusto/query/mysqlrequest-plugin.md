@@ -23,7 +23,7 @@ The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint 
 
 ## Syntax
 
-`evaluate` `mysql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters*] `)`
+`evaluate` `mysql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters*] `)` [`:` *OutputSchema*]
 
 ## Arguments
 
@@ -32,6 +32,9 @@ Name | Type | Description | Required/Optional |
 | *ConnectionString* | `string` literal | Indicates the connection string that points at the MySQL Server network endpoint. See [authentication](#username-and-password-authentication) and how to specify the [network endpoint](#specify-the-network-endpoint). | Required |
 | *SqlQuery* | `string` literal | Indicates the query that is to be executed against the SQL endpoint. Must return one or more rowsets, but only the first one is made available for the rest of the Kusto query. | Required|
 | *SqlParameters* | Constant value of type `dynamic` | Holds key-value pairs to pass as parameters along with the query. | Optional |
+| *OutputSchema* | An optional expected schema (column names and their types) of the sql_request output. 
+    * **Syntax**: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`
+    * There is a performance benefit of providing explicit schema at the query. If the schema is known at query planning, then different optimizations can utilize the schema without first needing to run the actual query to explore the schema. If the run-time schema is not matched to the the schema specified by *OutputSchema*, the query will yield an error indicating the mismatch. |
 
 ## Set callout policy
 
@@ -125,9 +128,9 @@ evaluate sql_request(
 | project Name
 ```
 
-### SQL query to Azure SQL DB with modifications
+### SQL query to Azure MySQL DB with modifications
 
-The following example sends a SQL query to an Azure SQL DB database
+The following example sends a SQL query to an Azure MySQL DB database
 retrieving all records from `[dbo].[Table]`, while appending another `datetime` column,
 and then processes the results on the Kusto side.
 It specifies a SQL parameter (`@param0`) to be used in the SQL query.
@@ -143,6 +146,23 @@ evaluate mysql_request(
 | where Id > 0
 | project Name
 ```
+
+## SQL query with query-defined output scehma
+
+The following example sends a SQL query to an Azure MySQL DB database
+retrieving all records from `[dbo].[Table]`, while selecting only specific columns.
+It uses explicit schema definition that allow various optimizations to be evaluated before the 
+actual query against SQL is run.
+
+```kusto
+evaluate sql_request(
+  'Server=contoso.mysql.database.azure.com; Port = 3306;'
+     'Database=Fabrikam;'
+    h'UID=USERNAME;'
+    h'Pwd=PASSWORD;', 
+  'select Id, Name') : (Id:long, Name:string)
+| where Id > 0
+| project Name
 
 ::: zone-end
 
