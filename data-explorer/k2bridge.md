@@ -11,19 +11,31 @@ ms.date: 03/12/2020
 
 # Visualize data from Azure Data Explorer in Kibana with the K2Bridge open-source connector
 
-K2Bridge (Kibana-Kusto Bridge) lets you use Azure Data Explorer as a data source and visualize that data in Kibana. K2Bridge is an [open-source](https://github.com/microsoft/K2Bridge), containerized application. It acts as a proxy between a Kibana instance and an Azure Data Explorer cluster. This article describes how to use K2Bridge to create that connection.
+K2Bridge (Kibana-Kusto Bridge) lets you use Azure Data Explorer as a data source and visualize that data in [Kibana](https://www.elastic.co/guide/en/kibana/current/kibana-concepts-analysts.html). K2Bridge is an [open-source](https://github.com/microsoft/K2Bridge), containerized application. It acts as a proxy between a Kibana instance and an Azure Data Explorer cluster. This article describes how to use K2Bridge to create that connection.
 
 K2Bridge translates Kibana queries to Kusto Query Language (KQL) and sends the Azure Data Explorer results back to Kibana.
 
    ![Kibana connection with Azure Data Explorer via K2Bridge.](media/k2bridge/k2bridge-chart.png)
 
-K2Bridge supports Kibana's **Discover** tab, where you can:
+K2Bridge supports Kibana's **Discover**, **Visualize** and **Dashboard** tabs.
+
+With the **Discover** tab you can:
 
 * Search and explore the data.
 * Filter results.
 * Add or remove fields in the results grid.
 * View record content.
 * Save and share searches.
+
+With the **Visualize** tab you can:
+
+* Create visualizations like: bar charts, pie charts, data tables, heat maps, and more.
+* Save a visualization
+
+With the **Dashboard** tab you can:
+
+* Create panels by using new or saved visualizations.
+* Save a dashboard.
 
 The following image shows a Kibana instance bound to Azure Data Explorer by K2Bridge. The user experience in Kibana is unchanged.
 
@@ -87,17 +99,17 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
         COLLECT_TELEMETRY=true
         ```
 
-    1. <a name="install-k2bridge-chart"></a>
-    Install the K2Bridge chart.
+    1. <a name="install-k2bridge-chart"></a> Install the K2Bridge chart. Visualizations and dashboards are supported with the Kibana 7.10 version only. The latest image tags are: 6.8_latest and 7.16_latest, which support Kibana 6.8 and Kibana 7.16 respectively. 
 
         ```bash
-        helm install k2bridge charts/k2bridge -n k2bridge --set image.repository=$REPOSITORY_NAME/$CONTAINER_NAME --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set settings.aadClientId="$ADX_CLIENT_ID" --set settings.aadClientSecret="$ADX_CLIENT_SECRET" --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=latest] [--set privateRegistry="$IMAGE_PULL_SECRET_NAME"] [--set settings.collectTelemetry=$COLLECT_TELEMETRY]
+        helm install k2bridge charts/k2bridge -n k2bridge --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set settings.aadClientId="$ADX_CLIENT_ID" --set settings.aadClientSecret="$ADX_CLIENT_SECRET" --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=6.8_latest/7.10_latest] 
+        [--set image.repository=$REPOSITORY_NAME/$CONTAINER_NAME] 
+        [--set privateRegistry="$IMAGE_PULL_SECRET_NAME"] [--set settings.collectTelemetry=$COLLECT_TELEMETRY]
         ```
 
         In [Configuration](https://github.com/microsoft/K2Bridge/blob/master/docs/configuration.md), you can find the complete set of configuration options.
 
-    1. <a name="install-kibana-service"></a>
-    The previous command's output suggests the next Helm command to deploy Kibana. Optionally, run this command:
+    1. <a name="install-kibana-service"></a> The previous command's output suggests the next Helm command to deploy Kibana. Optionally, run this command:
 
         ```bash
         helm install kibana elastic/kibana -n k2bridge --set image=docker.elastic.co/kibana/kibana-oss --set imageTag=6.8.5 --set elasticsearchHosts=http://k2bridge:8080
@@ -142,7 +154,7 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
 > [!Note]
 > To run K2Bridge on other Kubernetes providers, change the Elasticsearch **storageClassName** value in values.yaml to match the one suggested by the provider.
 
-## Visualize data
+## Discover data
 
 When Azure Data Explorer is configured as a data source for Kibana, you can use Kibana to explore the data.
 
@@ -173,6 +185,11 @@ When Azure Data Explorer is configured as a data source for Kibana, you can use 
     * Using the logical operators **AND**, **OR**, and **NOT**.
     * Using the asterisk (\*) and question mark (?) wildcard characters. For example, the query "destination_city: L*" matches records where the destination-city value starts with "L" or "l". (K2Bridge isn't case-sensitive.)
 
+    Make sure the 
+
+> [!NOTE]
+> Only kibana's Lucene query syntax is supported. Do not use the KQL option ("Kibana Query Language").
+
     ![Running a query.](media/k2bridge/k2bridge-run-query.png)
 
     > [!Tip]
@@ -196,3 +213,42 @@ When Azure Data Explorer is configured as a data source for Kibana, you can use 
 1. Select either **Save** or **Share** for your search.
 
      ![Highlighted buttons to save or share the search.](media/k2bridge/k2bridge-save-search.png)
+
+## Vizualize data
+
+You can create Visualizations by:
+
+1. Clicking on a field name in the **Availabe fields** side bar, and then clicking on the **Visualize** button below the top 5 values. This option creates a vertical bar visualization.
+
+After the vizulaization page opens, you can use the side-bar on the right-hand side of the page to edit the visualization. 
+
+1. Alternatively, by using the **Vizualize** tab. On the **Viszualize** tab, click **Create visualization**. 
+
+Then, select a visualization type from the **New Visualiztion** window.
+
+Use the right-hand side menu to select metric and up to one bucket aggregation.
+
+> [!NOTE]
+> K2Bridge supports up to 1 bucket aggregation. In addition some of the aggregations are not supported at all.
+
+Some of the aggregations support search options. Make sure you use the Lucene syntax (and not the "KQL" option, which stands for the Kibana Query Language syntax)
+
+> [!IMPORTANT]
+> K2Bridge supports the following visualizations:
+> Vertical bar, Area chart, Horizontal bar, Pie chart, Gauge, Data table, Heat map, Goal chart, and Metric chart.
+> The folowing metrics: Average, Count, Max, Median, Min, Percentiles, Sum, and Unique count.
+> Percentiles ranks and Top hits are not supported at the moment. 
+> Using bucket aggregations is optional. The following bucket aggregations are spported: no bucket aggregation, Date histogram, Filters, Range, Terms.
+> IPv4 Range and Significant terms are not supported at the moment.
+
+
+## Create dashboards
+
+To create a dashboard, go to the **dashboard** tab, and select **Create new dashboard**. 
+
+A new dashboard opens in edit mode. You can add a panel by clicking on **Create new** or use the **Add an existing** option to use saved visualizations.
+
+You can arrange panels, organize panels by priority, resize the panels, and more.
+In the toolbar, click **Edit**, then use the following options:
+To move, click and hold the panel header, then drag to the new location.
+To resize, click the resize control, then drag to the new dimensions.
