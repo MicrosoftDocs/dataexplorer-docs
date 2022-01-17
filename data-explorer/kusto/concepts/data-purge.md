@@ -61,7 +61,7 @@ Issuing a `.purge` command triggers this process, which takes a few days to comp
    minimal tables include relevant data, and batch commands per table to reduce the significant COGS impact of the
    purge process.
 * The `predicate` parameter of the [.purge](#purge-table-tablename-records-command) command is used to specify which records to purge.
-`Predicate` size is limited to 63 KB. When constructing the `predicate`:
+`Predicate` size is limited to 1 MB. When constructing the `predicate`:
 	* Use the ['in' operator](../query/inoperator.md), for example, `where [ColumnName] in ('Id1', 'Id2', .. , 'Id1000')`. 
 	* Note the limits of the ['in' operator](../query/inoperator.md) (list can contain up to `1,000,000` values).
 	* If the query size is large, use [`externaldata` operator](../query/externaldata-operator.md), for example `where UserId in (externaldata(UserId:string) ["https://...blob.core.windows.net/path/to/file?..."])`. The file stores the list of IDs to purge.
