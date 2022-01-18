@@ -64,8 +64,8 @@ permissions to perform this operation on the resource. This is called an
     |`users`     |Can view the securable object, and create new objects underneath it.|
     |`viewers`   |Can view the securable object.|
     |`unrestrictedviewers`|At the database level only, allows viewing of restricted tables (which are not exposed to "normal" `viewers` and `users`).|
-    |`ingestors` |At the database level only, allow data ingestion into all tables.|
-    |`monitors`  ||
+    |`ingestors` |At the database level only, allows data ingestion into all tables.|
+    |`monitors`  |At the specified scope (Database or AllDatabases) allows metadata (schemas, operations, permissiosn) view operations.|
 
 * *ListOfPrincipals* is an optional, comma-delimited list of security principal
   identifiers (values of type `string`).
