@@ -248,8 +248,8 @@ Use Kibana visualizations to get at-a-glance views of Azure Data Explorer data.
     :::image type="content" source="media/k2bridge/edit-metrics.png" alt-text="Screenshot of editing the metrics.":::
 
 > [!NOTE]
-> K2Bridge supports one bucket aggregation. 
-> Some aggregations support search options. 
+> K2Bridge supports one bucket aggregation.
+> Some aggregations support search options.
 > Use the Lucene syntax, not the KQL option, which stands for the Kibana Query Language syntax.
 
 > [!IMPORTANT]
@@ -275,7 +275,7 @@ ent" source="media/k2bridge/dashboard-tab.png" alt-text="Screenshot of selecting
 
     :::image type="content" source="media/k2bridge/add-existing-visualization.png" alt-text="Screenshot of adding an existing visualization to a dashboard.":::
 
-1.  To add a visualization you already created, click **Add an existing** and select a visualization.
+1. To add a visualization you already created, click **Add an existing** and select a visualization.
  
 1. To arrange panels, organize panels by priority, resize the panels, and more, click **Edit**, then use the following options:
 
