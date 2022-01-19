@@ -189,7 +189,7 @@ When Azure Data Explorer is configured as a data source for Kibana, you can use 
     * The number of records that contain the field.
     * The percentage of records that contain each value.
 
-    >[!Tip]
+    > [!Tip]
     > Use the magnifying glass to find all records that have a specific value.
 
     :::image type="content" source="media/k2bridge/k2bridge-field-list.png" alt-text="Screenshot of a field list with the magnifying glass highlighted.":::
