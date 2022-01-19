@@ -266,8 +266,7 @@ You can create dashboards with Kibana visualizations to summarize, compare, and 
 
 1. To create a dashboard, select the **Dashboard** tab, then click **Create new dashboard**.
 
-    :::image type="cont
-ent" source="media/k2bridge/dashboard-tab.png" alt-text="Screenshot of selecting the Dashboard tab.":::
+    :::image type="content" source="media/k2bridge/dashboard-tab.png" alt-text="Screenshot of selecting the Dashboard tab.":::
 
     The new dashboard opens in edit mode. 
 
