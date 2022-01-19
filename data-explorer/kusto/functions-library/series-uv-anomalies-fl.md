@@ -28,7 +28,7 @@ The function `series_uv_anomalies_fl()` detects anomalies in time series by call
 ## Arguments
 
 * *y_series*: The name of the input table column containing the values of the series to be anomaly detected.
-* *tsid*: The name of the input table column containing the time series id. Optional parameter, can be omitted if analyzing a single time series.
+* *tsid*: The name of the input table column containing the time series ID. Optional parameter, can be omitted if analyzing a single time series.
 * *sensitivity*: An integer in the range [0-100] specifying the anomaly detection sensitivity. 0 is the least sensitive detection, while 100 is the most sensitive one (that is, even a small deviation from the expected baseline would be tagged as anomaly). Optional parameter, default is 85.
 
 ## Usage
