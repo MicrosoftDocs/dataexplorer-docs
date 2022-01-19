@@ -278,7 +278,7 @@ You can create dashboards with Kibana visualizations to summarize, compare, and 
  
 1. To arrange panels, organize panels by priority, resize the panels, and more, click **Edit**, then use the following options:
 
-* To move, click and hold the panel header, then drag to the new location.
-* To resize, click the resize control, then drag to the new dimensions.
+* To move a panel, click and hold the panel header, then drag to the new location.
+* To resize a panel, click the resize control, then drag to the new dimensions.
 
     :::image type="content" source="media/k2bridge/dashboard-visualization-panels.png" alt-text="Screenshot of dashboards with visualizations of Azure Data Explorer data.":::
