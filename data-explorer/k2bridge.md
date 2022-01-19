@@ -253,12 +253,12 @@ Use Kibana visualizations to get at-a-glance views of Azure Data Explorer data.
 > Use the Lucene syntax, not the KQL option, which stands for the Kibana Query Language syntax.
 
 > [!IMPORTANT]
-> The following visualizations are supported:
-> Vertical bar, Area chart, Horizontal bar, Pie chart, Gauge, Data table, Heat map, Goal chart, and Metric chart.
-> The following metrics are supported: Average, Count, Max, Median, Min, Percentiles, Sum, and Unique count.
-> The metrics Percentiles ranks and Top hits are not supported.
-> Using bucket aggregations is optional. The following buckets are supported: No bucket aggregation, Date histogram, Filters, Range, Terms.
-> The buckets IPv4 Range and Significant terms are not supported.
+> * The following visualizations are supported: Vertical bar, Area chart, Horizontal bar, Pie chart, Gauge, Data table, Heat map, Goal chart, and Metric chart.
+> * The following metrics are supported: Average, Count, Max, Median, Min, Percentiles, Sum, and Unique count.
+> * The metrics Percentiles ranks and Top hits are not supported.
+> * Using bucket aggregations is optional. 
+> * The following buckets are supported: No bucket aggregation, Date histogram, Filters, Range, Terms.
+> * The buckets IPv4 Range and Significant terms are not supported.
 
 ## Create dashboards
 
