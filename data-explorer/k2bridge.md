@@ -164,7 +164,7 @@ When Azure Data Explorer is configured as a data source for Kibana, you can use 
 
 1. By default, the results table includes the **_source** column. It also includes the **Time** column if the time field exists. You can add specific columns to the results table by selecting **add** next to the field name in the leftmost pane.
 
-    :::image type="content" source="media/k2bridge/k2bridge-specific-columns.png" alt-text="Screenshot of specific columns with the Add button highlighted.":::
+    :::image type="content" source="media/k2bridge/k2bridge-specific-columns.png" alt-text="Screenshot of adding columns.":::
 
 1. In the query bar, you can search the data by:
 
@@ -175,7 +175,7 @@ When Azure Data Explorer is configured as a data source for Kibana, you can use 
     * Using the logical operators **AND**, **OR**, and **NOT**.
     * Using the asterisk (\*) and question mark (?) wildcard characters. For example, the query "destination_city: L*" matches records where the destination-city value starts with "L" or "l". (K2Bridge isn't case-sensitive.)
 
-    :::image type="content" source="media/k2bridge/k2bridge-run-query.png" alt-text="Screenshot of specific columns with the Add button highlighted.":::
+    :::image type="content" source="media/k2bridge/k2bridge-run-query.png" alt-text="Screenshot of running queries.":::
 
 > [!NOTE]
 > Only kibana's Lucene query syntax is supported. Do not use the KQL option "Kibana Query Language".
@@ -214,7 +214,7 @@ You can use Kibana visualizations to more easily explore and summarize Azure Dat
 
 1. Select a field name, then click **Visualize**.
 
-    :::image type="content" source="media/k2bridge/k2bridge-create-a-visualization.png" alt-text="Screenshot of editing the visualization in the Visualize tab.":::
+    :::image type="content" source="media/k2bridge/k2bridge-create-a-visualization.png" alt-text="Screenshot of creating a visualization and selecting the field.":::
 
 1. The **Visualize** tab opens and displays the visualization. You can use the Data section to edit the visualization.
 
@@ -260,7 +260,7 @@ You can create dashboards with Kibana visualizations to provide at-a-glance view
 
 1. To add a new visualization panel, click **Create new**.
 
-    :::image type="content" source="media/k2bridge/add-existing-visualization.png" alt-text="Screenshot of selecting to add a visualization.":::
+    :::image type="content" source="media/k2bridge/add-existing-visualization.png" alt-text="Screenshot of adding an existing visualization to a dashboard.":::
 
 1.  To add a visualization you already created, click **Add an existing** and select a visualization.
  
@@ -269,4 +269,4 @@ You can create dashboards with Kibana visualizations to provide at-a-glance view
 * To move, click and hold the panel header, then drag to the new location.
 * To resize, click the resize control, then drag to the new dimensions.
 
-    :::image type="content" source="media/k2bridge/dashboard-visualization-panels.png" alt-text="Screenshot of selecting to add a visualization.":::
+    :::image type="content" source="media/k2bridge/dashboard-visualization-panels.png" alt-text="Screenshot of dashboards with visualizations of Azure Data Explorer data.":::
