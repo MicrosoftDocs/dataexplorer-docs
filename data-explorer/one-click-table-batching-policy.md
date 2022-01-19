@@ -38,13 +38,13 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 1. Under **Inherit values from database**, toggle **On** to apply the batching policy values from the database to the table. To create or update a separate policy for the table, toggle to **Off**.
 
-1. If you selected **Off**, you can fill in the following fields to define the table batching policy:
+1. If you selected **Off**, you can fill in the following fields to define the table batching policy. The settings define the batch sealing limits. A batch will be sealed if any condition is met.
 
     |**Setting** | **Default value** | **Field description**
     |---|---|---|
-    | Number of items | *500*  | Batch file number limit. |
-    | Time (seconds) |  *10* | Batching time limit.  |
-    | Size (MB) |  *1024* | Batch size limit.  |
+    | Number of items | *500*  | The number of files defined as the limit after which a batch is sealed.  |
+    | Time |  *10* | The time limit in seconds after which a batch is sealed.  |
+    | Size |  *1024* | The size limit in MB after which a batch is sealed.  |
 
 1. Select **Update**.
 
