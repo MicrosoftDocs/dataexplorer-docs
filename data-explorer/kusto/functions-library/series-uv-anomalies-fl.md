@@ -10,14 +10,14 @@ ms.date: 01/18/2022
 ---
 # series_uv_anomalies_fl()
 
-The function `series_uv_anomalies_fl()` detects anomalies in time series by calling [the Univariate Anomaly Detection API](https://docs.microsoft.com/en-us/azure/cognitive-services/anomaly-detector/overview), part of [Azure Cognitive Services](https://docs.microsoft.com/en-us/azure/cognitive-services/what-are-cognitive-services). The function accepts a limited set of time series (as numerical dynamic arrays) and the required anomaly detection sensitivity level. It converts each time series to the required Json format and posts it to the Anomaly Detector service endpoint. The service response contains dynamic arrays of high/low/all anomalies, the modeled baseline time series, its normal high/low boundaries (a value above/below the high/low boundary is an anomaly) and the detected seasonality.
+The function `series_uv_anomalies_fl()` detects anomalies in time series by calling [the Univariate Anomaly Detection API](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/overview), part of [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/what-are-cognitive-services). The function accepts a limited set of time series (as numerical dynamic arrays) and the required anomaly detection sensitivity level. It converts each time series to the required Json format and posts it to the Anomaly Detector service endpoint. The service response contains dynamic arrays of high/low/all anomalies, the modeled baseline time series, its normal high/low boundaries (a value above/below the high/low boundary is an anomaly) and the detected seasonality.
 
 > [!NOTE]
 > * `series_uv_anomalies_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 > * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
 > * This function calls the anomaly detection service endpoint, thus requires:
 >    * Enabling the [http_request_post() plugin](https://kusto.azurewebsites.net/docs/kusto/query/httprequestplugin.html) on the cluster.
->    * Modify the callout policy of type webapi to whitelist the service endpoint as explained [here](https://kusto.azurewebsites.net/docs/kusto/management/calloutpolicy.html).
+>    * Modify the callout policy of type webapi to allow accessing the service endpoint as explained [here](https://kusto.azurewebsites.net/docs/kusto/management/calloutpolicy.html).
 > * A key is required to access the service, you can optain is [here](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector).
 > * Consider using the native function [series_decompose_anomalies()](../query/series-decompose-anomaliesfunction.md) which is more scalable and runs faster.
 
@@ -168,4 +168,4 @@ Anomalies detected by the Univariate Anomaly Detection API on TS1. You can selec
 :::image type="content" source="images\series-uv-anomalies-fl\uv-anomalies-example-2.png" alt-text="Graph showing anomalies using the Univariate API on a time series." border="false":::
 
 Anomalies detected by ADX native function on TS1
-:::image type="content" source="images\series-uv-anomalies-fl\adx-anomalies-example-2.png" alt-text="Graph showing anomalies using the Univariate API on a time series." border="false":::
+:::image type="content" source="images\series-uv-anomalies-fl\adx-anomalies-example-2.png" alt-text="Graph showing anomalies using ADX native function on a time series." border="false":::
