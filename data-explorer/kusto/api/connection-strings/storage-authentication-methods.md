@@ -43,7 +43,7 @@ Different authentication methods are available for different external storage ty
 To add impersonation, append `;impersonate` to the connection string. Azure Data Explorer will use the requestor's principal identity and impersonate this identity to access the resource.
 
 > [!NOTE]
-> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control). To manage the access controls for different storage types, see:
+> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see:
 >
 > * [Azure Blob Storage/Azure Data Lake Storage Gen2 access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac)
 > * [Azure Data Lake Storage Gen1 access control](/azure/storage/blobs/data-lake-storage-access-control)
