@@ -55,7 +55,7 @@ First, sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.co
     | Setting | Description|
     |---|---|
     | Source type | Select the data source to ingest. In this example, *From blob* is already selected. |
-    | Link to source | Use the following [storage URI](kusto/api/connection-strings/storage.md#generate-a-sas-for-azure-storage-blob-container) link: https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D. |
+    | Link to source | Use the following [storage URI](kusto/api/connection-strings/generate-sas-token.md) link: https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D. |
 
 1. Select **Next: Schema**.
 

@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/28/2021
+ms.date: 01/05/2022
 ---
 
 # Ingest data from a container/ADLS into Azure Data Explorer
@@ -61,7 +61,7 @@ For information about ingesting data into an existing table in Azure Data Explor
 Under **Source type**, do the following steps:
    
   1. Select **From blob container** (blob container, ADLS Gen2 container). You can ingest up to 5000 blobs from a single container.
-  1. In the **Link to storage** field, add the [blob URI with SAS token or Account key](kusto/api/connection-strings/storage.md#generate-a-sas-for-azure-storage-blob-container) of the container, and optionally enter the sample size. To ingest from a folder within this container, see [Ingest from folder in a container](#ingest-from-folder-in-a-container).
+  1. In the **Link to storage** field, add the [blob URI with SAS token or Account key](kusto/api/connection-strings/generate-sas-token.md) of the container, and optionally enter the sample size. To ingest from a folder within this container, see [Ingest from folder in a container](#ingest-from-folder-in-a-container).
   
   > [!NOTE]
   > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage.md). 
@@ -73,7 +73,7 @@ Under **Source type**, do the following steps:
 
 ### Ingest from folder in a container
 
-To ingest from a specific folder within a container, [generate a string of the following format](kusto/api/connection-strings/storage.md#azure-data-lake-storage-gen2):
+To ingest from a specific folder within a container, [generate a string of the following format](kusto/api/connection-strings/storage.md#storage-connection-string-templates):
 
 *container_path*`/`*folder_path*`;`*access_key_1*
 
