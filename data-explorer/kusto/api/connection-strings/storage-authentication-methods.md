@@ -43,7 +43,10 @@ Different authentication methods are available for different external storage ty
 To add impersonation, append `;impersonate` to the connection string. Azure Data Explorer will use the requestor's principal identity and impersonate this identity to access the resource.
 
 > [!NOTE]
-> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control).
+> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control). To manage the access controls for different storage types, see:
+>
+> * [Azure Blob Storage/Azure Data Lake Storage Gen2 access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac)
+> * [Azure Data Lake Storage Gen1 access control](/azure/storage/blobs/data-lake-storage-access-control)
 
 ### Impersonation example
 
@@ -58,7 +61,10 @@ To add a managed identity, append `;managed_identity=...` to the connection stri
 
 > [!NOTE]
 >
-> * The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control).
+> * The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see:
+>
+>     * [Azure Blob Storage/Azure Data Lake Storage Gen2 access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac)
+>     * [Azure Data Lake Storage Gen1 access control](/azure/storage/blobs/data-lake-storage-access-control)
 > * Managed identity is only supported in specific Azure Data Explorer flows. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
 
 ### Managed identity examples
@@ -72,7 +78,10 @@ To add a managed identity, append `;managed_identity=...` to the connection stri
 To add a Shared Access (SAS) token, append `?sig=...` to the connection string. For more information, see [Generate a SAS token](generate-sas-token.md).
 
 > [!NOTE]
-> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. See [Storage access control](#storage-access-control).
+> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see:
+>
+> * [Azure Blob Storage/Azure Data Lake Storage Gen2 access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac)
+> * [Azure Data Lake Storage Gen1 access control](/azure/storage/blobs/data-lake-storage-access-control)
 
 ### Shared Access (SAS) token example
 
@@ -98,8 +107,3 @@ To add a storage access key, append the key to the connection string, as follows
 `"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;ljkAkl...=="`
 
 `"abfss://fs@fabrikam.dfs.core.windows.net/path/to/file.csv;sharedkey=sv=...&sp=rwd"`
-
-To manage the access controls for different storage types, see:
-
-* [Azure Blob Storage/Azure Data Lake Storage Gen2 access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac)
-* [Azure Data Lake Storage Gen1 access control](/azure/storage/blobs/data-lake-storage-access-control)
