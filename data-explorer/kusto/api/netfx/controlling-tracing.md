@@ -75,4 +75,4 @@ The code will configure a trace listener that writes to CSV files in a subdirect
 
 ## Enable MSAL (Microsoft Authentication Library) tracing
 
-Once tracing for client libraries is enabled, tracing for [MSAL (Microsoft Authentication Library)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) is enabled automatically.
+Once tracing for client libraries is enabled, tracing for [MSAL (Microsoft Authentication Library)](/azure/active-directory/develop/msal-overview) is enabled automatically.
