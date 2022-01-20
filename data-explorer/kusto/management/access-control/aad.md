@@ -38,7 +38,7 @@ For guidance and examples, see [connection strings](../../api/connection-strings
 
 User authentication happens when the user presents credentials to Azure AD (or to some identity provide that federates with Azure AD, such as Active Directory Federation Services), and gets back a security token that can be presented to the Azure Data Explorer service. The service doesn't care how the security token was obtained, it cares about whether the token is valid and what information is put there by Azure AD (or the federated IdP).
 
-On the client side, Azure Data Explorer supports both interactive authentication, where [MSAL (Microsoft Authentication Library)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) or similar code requests the user to enter credentials and token-based authentication, where an application using Azure Data Explorer obtains a valid user token and utilizes it to access Azure Data Explorer.
+On the client side, Azure Data Explorer supports both interactive authentication, where [MSAL (Microsoft Authentication Library)](/azure/active-directory/develop/msal-overview) or similar code requests the user to enter credentials and token-based authentication, where an application using Azure Data Explorer obtains a valid user token and utilizes it to access Azure Data Explorer.
 Additionally, scenarios in which an application using Azure Data Explorer obtains a valid user token for some other service, provided there's a trust relationship between that resource and Azure Data Explorer is also supported
 
 For details on how to use the Azure Data Explorer client libraries and authenticate by using Azure AD, see [connection strings](../../api/connection-strings/kusto.md).
@@ -85,4 +85,4 @@ as the audience, and the "Access Kusto" permission as the scope.
 The following articles explain how to programmatically authenticate to Azure Data Explorer with Azure AD:
 
 * [How to provision an Azure AD Application](../../../provision-azure-ad-app.md)
-* [How to perform Azure AD Authentication](./how-to-authenticate-with-aad.md)
+* [How to perform Azure AD Authentication](how-to-authenticate-with-aad.md)
