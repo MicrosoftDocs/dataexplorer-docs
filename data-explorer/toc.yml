@@ -93,6 +93,14 @@ items:
     - name: External table creation wizard
       displayName: one-click
       href: external-table.md
+    - name: Create table policies
+      items:
+      - name: Create ingestion batching table policy
+        displayName: one-click
+        href: one-click-table-batching-policy.md
+      - name: Create retention table policy
+        displayName: one-click
+        href: one-click-table-retention-policy.md
   - name: Ingest data
     items:
     - name: One-click ingestion
@@ -251,6 +259,9 @@ items:
       - name: Connector
         displayName: Power BI
         href: power-bi-connector.md
+      - name: Dynamic M query parameters
+        displayName: Power BI
+        href: power-bi-dynamic-m.md
       - name: Imported query
         displayName: Power BI
         href: power-bi-imported-query.md
@@ -548,6 +559,9 @@ items:
     - name: series_rolling_fl()
       displayName: functions library, rolling, sliding
       href: kusto/functions-library/series-rolling-fl.md
+    - name: series_uv_anomalies_fl()
+      displayName: functions library, anomaly detection, cognitive service, univariate
+      href: kusto/functions-library/series-uv-anomalies-fl.md
     - name: time_weighted_avg_fl()
       displayName: functions library, binning
       href: kusto/functions-library/time-weighted-avg-fl.md

@@ -54,7 +54,7 @@ to see the result:
 
 |Count|
 |-----|
-|   23|
+|   28|
 
 To try out some more Kusto queries, see [Tutorial: Use Kusto queries](tutorial.md).
 

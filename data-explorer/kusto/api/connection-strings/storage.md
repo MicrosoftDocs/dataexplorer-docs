@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: shanisolomon
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/05/2022
+ms.date: 01/20/2022
 ---
 # Storage connection strings
 
@@ -24,7 +24,7 @@ Azure Data Explorer uses a URI format to describe these storage resources and th
 
 ## Storage connection string templates
 
-Each storage type has a different connection string format. See the below table for connection string templates for each storage type.
+Each storage type has a different connection string format. See the following table for connection string templates for each storage type.
 
 |Storage Type                  |Scheme    |URI template                          |
 |------------------------------|----------|--------------------------------------|
@@ -35,4 +35,4 @@ Each storage type has a different connection string format. See the below table 
 
 ## Storage authentication
 
-For Azure Data Explorer to interact with and authenticate to external storage, you must specify the storage's `connection string`. This `connection string` defines the resource being accessed and its authentication information. See [storage authentication methods](/storage-authentication-methods.md) for more information.
+For Azure Data Explorer to interact with and authenticate to external storage, you must specify the storage's `connection string`. This `connection string` defines the resource being accessed and its authentication information. For more information, see [storage authentication methods](/storage-authentication-methods.md).
