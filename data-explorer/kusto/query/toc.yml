@@ -1101,7 +1101,7 @@ items:
   - name: geo_polygon_area()
     href: geo-polygon-area-function.md
   - name: geo_polygon_centroid()
-    href: geo-polygon-dentroid-function.md
+    href: geo-polygon-centroid-function.md
   - name: geo_polygon_densify()
     href: geo-polygon-densify-function.md
 - name: User analytics
