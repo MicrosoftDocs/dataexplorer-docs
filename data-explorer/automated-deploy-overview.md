@@ -97,6 +97,8 @@ If you have data you need to ingest into your cluster, such as when you want to 
 
 ## Example deployment using a CI/CD pipeline
 
+**VP:  should we use the *you*?  Shouldn't we use *we* instead as this is an article, not a blog?**
+
 In the following example, you'll use a CI/CD pipeline running these tools to automate the deployment of infrastructure, schema entities, and data. You'll use the following tools:
 
 |Deployment type|Tool|Task|
@@ -108,6 +110,37 @@ In the following example, you'll use a CI/CD pipeline running these tools to aut
 :::image type="content" source="media/automated-deploy-overview/flow-sample.png" alt-text="Image showing the deployment an example flow.":::
 
 This is one example of a pipeline using a given set of tools. Other tools and steps can be used. For example, in a production environment you may want to create a pipeline that does not ingest data. You can aldo add further steps to the pipeline, such as running automated tests on the created cluster.
+
+Azure DevOps YAML file:  https://github.com/vplauzon/auto-kusto-article/blob/main/deploy-kusto.yaml
+
+We need to define a service connection (https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints) of type *Azure Resource Manager* pointing to the subscription & resource group we want to deploy our cluster to.
+
+This will create an Azure Service Principal that will be used to deploy the ARM template.  We can also use the same principal to deploy the schema entities & ingest data.  For those last two operations we need to explicitly pass the credentials to Kusto CLI & LightIngest tools.
+
+Variables needed to be defined:
+
+Variable Name|Description
+-|-
+clusterName|Name of Azure Data Explorer cluster
+serviceConnection|Name of Azure DevOps connection used to deploy ARM template
+appId|Client ID of the service principal used to interact with the cluster
+appSecret|Secret of the service principal
+appTenantId|Tenant ID of the service principal
+location|Azure region to deploy the cluster into, e.g. eastus
+
+ARM Template:  https://github.com/vplauzon/auto-kusto-article/blob/main/kusto-infra.json
+
+Schema entities:  https://github.com/vplauzon/auto-kusto-article/blob/main/MyDatabase.kql
+
+Data:  https://github.com/vplauzon/auto-kusto-article/blob/main/customers.csv
+
+:::image type="content" source="media/automated-deploy-overview/devops-job.png" alt-text="Image showing a Job run of the example flow.":::
+
+Since the cluster is created by the service principal, we do not have any permission.  We need to give ourselves permissions in order to query:  https://docs.microsoft.com/en-us/azure/data-explorer/manage-database-permissions.
+
+:::image type="content" source="media/automated-deploy-overview/deployed-database.png" alt-text="Image showing the deployed database with its two tables in Kusto Web UI.":::
+
+We can query the Customer table and see it has the three records defined in the CSV file.
 
 ## Next steps
 
