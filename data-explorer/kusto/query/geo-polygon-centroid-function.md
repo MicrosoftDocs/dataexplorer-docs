@@ -85,7 +85,7 @@ print polygons_union_centroid = geo_polygon_centroid(polygons)
 |---|
 |{<br>"type": "Point",<br>"coordinates": [-73.968569587829577, 40.776310752555119]<br>}|
 
-The following example visualize NYC Central Park centroid on a map
+The following example visualizes NYC Central Park centroid on a map
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
