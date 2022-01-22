@@ -73,7 +73,7 @@ centroid = geo_polygon_centroid(central_park)
 |---|
 |-73.9657356899076|
 
-The following example performs union of polygons in multipolygon and calculates centroid on the unified polygon.
+The following example performs union of polygons in multipolygon and calculates centroid of the unified polygon.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
