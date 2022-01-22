@@ -15,17 +15,28 @@ Change a merge view's [merge policy](mergepolicy.md). The merge policy defines i
 
 ## Syntax
 
-`.alter` `materialized-view` *MaterializedViewName* `policy` `merge` *ArrayOfPolicyObjects*
+`.alter` `materialized-view` *MaterializedViewName* `policy` `merge` *PolicyObject*
 
 ## Arguments
 
 *MaterializedViewName* - Specify the name of the materialized view.
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+*PolicyObject* - Define a policy object. For more information, see  [merge policy](mergepolicy.md).
 
 ### Example
 
 Sets a merge policy with a 10 day soft-delete period, and enable data recoverability:
 
-```kusto
-.alter materialized-view View1 policy merge "{\"SoftDeletePeriod\": \"10.00:00:00\", \"Recoverability\": \"Enabled\"}"
-```
+~~~kusto
+.alter materialized-view [materialized_view_name] policy merge ```
+{
+  "RowCountUpperBoundForMerge": 16000000,
+  "OriginalSizeMBUpperBoundForMerge": 0,
+  "MaxExtentsToMerge": 100,
+  "LoopPeriod": "01:00:00",
+  "MaxRangeInHours": 24,
+  "AllowRebuild": true,
+  "AllowMerge": true,
+  "Lookback": {
+    "Kind": "Default"
+  }
+}```
