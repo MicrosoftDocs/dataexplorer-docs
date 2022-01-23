@@ -40,3 +40,4 @@ Sets a merge policy with a 10 day soft-delete period, and enable data recoverabi
     "Kind": "Default"
   }
 }```
+~~~

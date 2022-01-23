@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/29/2021
 ---
-# .alter-merge table merge policy
+# .alter-merge materialized view merge policy
 
 Change a materialized view's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged. 
  
@@ -27,9 +27,9 @@ Change a materialized view's [merge policy](mergepolicy.md). The merge policy de
 
 Change a single property of the policy at the materialized view level, retaining all other properties as before:
 
-```kusto
+~~~kusto
 .alter-merge materialized-view [materialized_view_name] policy merge ```
 {
     "MaxRangeInHours": 24
 }```
-```
+~~~
