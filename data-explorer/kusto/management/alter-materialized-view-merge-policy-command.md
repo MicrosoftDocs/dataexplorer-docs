@@ -11,7 +11,7 @@ ms.date: 11/29/2021
 ---
 # .alter materialized view merge policy
 
-Change a merge view's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
+Change a materialized view's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
 
 ## Syntax
 
