@@ -24,8 +24,6 @@ Change a materialized view's [merge policy](mergepolicy.md). The merge policy de
 
 ### Example
 
-Sets a merge policy with a 10 day soft-delete period, and enable data recoverability:
-
 ~~~kusto
 .alter materialized-view [materialized_view_name] policy merge ```
 {
