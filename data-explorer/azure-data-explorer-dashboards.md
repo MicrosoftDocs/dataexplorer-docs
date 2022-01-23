@@ -135,7 +135,7 @@ Use the share menu to [grant permissions](#grant-permissions) for an Azure Activ
 > * Dashboard link for access
 > * Dashboard permissions
 > * Access to the underlying database in the Azure Data Explorer cluster  
-
+### Manage permissions
 1. Select the **Share** menu item in the top bar of the dashboard.
 1. Select **Manage permissions** from the drop-down. 
 
@@ -162,6 +162,65 @@ To share the dashboard link:
 * Select **Share** and then select **Copy link**
 Or
 * In the **Dashboard permissions** window, select **Copy link**. 
+
+### Export dashboard to a json file
+Exporting dashboard to a file can be used to achieve the following:
+* Dashboards’ version control 
+* Manual editing of dashboard
+* Use the file as template for dashboard creation 
+
+1.	In view more, select Share
+2.	In the Share menu select the Export to file.
+The Export downloads a json file to your “Downloads” directory.
+The file contains all of the dashboard data including the dashboard id, etag, title and tiles.
+"id": "xxxx-zzzz",
+	"eTag": "yyyy",
+	"title": "Dashboard_title",
+	"tiles": [
+		{
+}
+Each tile in the file contains the tile id, title, query, layout details, page, visual formatting configuration, parameters and additional attributes.
+"id": "cbbc5bd9-b0d3-41cb-a0d5-c58d7cf242f6",
+	"eTag": "Uaa2/rmHv15xlJ5m8piEWQ==",
+	"title": "GitHub",
+	"tiles": [
+		{}
+ ### ### Export dashboard to a json file
+Exporting dashboard to a file can be used to achieve the following:
+* Dashboards’ version control 
+* Manual editing of dashboard
+* Use the file as template for dashboard creation 
+
+1.	In view more, select Share
+2.	In the Share menu select the Export to file.
+The Export downloads a json file to your “Downloads” directory.
+The file contains all of the dashboard data including the dashboard id, etag, title and tiles.
+"id": "xxxx-zzzz",
+	"eTag": "yyyy",
+	"title": "Dashboard_title",
+	"tiles": [
+		{
+}
+Each tile in the file contains the tile id, title, query, layout details, page, visual formatting configuration, parameters and additional attributes.
+"id": "cbbc5bd9-b0d3-41cb-a0d5-c58d7cf242f6",
+	"eTag": "Uaa2/rmHv15xlJ5m8piEWQ==",
+	"title": "GitHub",
+	"tiles": [
+		{}
+### Modify existing dashboard
+Update and existing dashboard with a dashboard json file.
+In Edit mode, Select the Share menu item in the top bar of the dashboard.
+Select the Replace with file item.
+<Image>
+Select the file to update the dashboard and save.
+    
+### Create new dashboard from file
+It is also possible to use Import dashboard for file, to create new dashboards.
+To create a new dashboard from a file, select the drop-down arrow in the New dashboard control.
+Select Import dashboard from file.
+<Image>
+Select a file to import.
+Enter a dashboard name and then select Create.
 
 ## Enable auto refresh 
 
