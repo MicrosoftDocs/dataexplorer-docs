@@ -29,7 +29,7 @@ or [from a local file to an existing table](one-click-ingestion-existing-table.m
 
 ### Ingestion integrations
 
-* Event Hub: [Ingest from Event Hub overview](ingest-data-event-hub-overview.md) and using the [Azure portal](ingest-data-event-hub.md), [C#](data-connection-event-hub-csharp.md), [Python](data-connection-event-hub-python.md) or [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
+* Event hub: [Ingest from event hub overview](ingest-data-event-hub-overview.md) and using the [Azure portal](ingest-data-event-hub.md), [C#](data-connection-event-hub-csharp.md), [Python](data-connection-event-hub-python.md) or [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 * Event Grid: [Ingest from Event Grid overview](ingest-data-event-grid-overview.md) and using the [Azure portal](ingest-data-event-grid.md), [C#](data-connection-event-grid-csharp.md), [Python](data-connection-event-grid-python.md) or [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 * IoT Hub: [Ingest from IoT Hub overview](ingest-data-iot-hub-overview.md) and using the [Azure portal](ingest-data-iot-hub.md), [C#](data-connection-iot-hub-csharp.md), [Python](data-connection-iot-hub-python.md) or [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md)
 * [Logstash](ingest-data-logstash.md)

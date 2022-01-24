@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/24/2022
 ---
 # hash()
 
@@ -20,7 +20,7 @@ Returns a hash value for the input value.
 ## Arguments
 
 * *source*: The value to be hashed.
-* *mod*: An optional module value to be applied to the hash result, so that
+* *mod*: An optional modulo value to be applied to the hash result, so that
   the output value is between `0` and *mod* - 1
 
 ## Returns
@@ -28,12 +28,7 @@ Returns a hash value for the input value.
 The hash value of the given scalar, modulo the given mod value (if specified).
 
 > [!WARNING]
-> The algorithm used to calculate the hash is xxhash.
-> This algorithm might change in the future, and the only guarantee is that
-> within a single query all invocations of this method use the same algorithm.
-> Consequently, you are advised not to store the results of `hash()` in a
-> table. If persisting hash values is required, use
-> [hash_sha256()](./sha256hashfunction.md), [hash_sha1()](./sha1-hash-function.md) or [hash_md5()](./md5hashfunction.md) instead. Note that these functions are more complex to calculate than `hash()`).
+> The algorithm used to calculate the hash is xxhash64. This algorithm might change in the future, and the only guarantee is that within a single query all invocations of this method use the same algorithm. Consequently, you are advised not to store the results of `hash()` in a table. If persisting hash values is required, use [hash_sha256()](./sha256hashfunction.md), [hash_sha1()](./sha1-hash-function.md) or [hash_md5()](./md5hashfunction.md) instead. Note that these functions are more complex to calculate than `hash()`).
 
 ## Examples
 
