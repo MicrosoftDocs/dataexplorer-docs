@@ -23,7 +23,7 @@ Returns a combined hash value of multiple values.
 
 ## Returns
 
-The `hash()` function is applied to each of the specified scalars. The resulting hashes are combined into a single hash and returned.
+The [hash()](hashfunction.md) function is applied to each of the specified scalars. The resulting hashes are combined into a single hash and returned.
 
 > [!WARNING]
 > The function uses the *xxhash64* algorithm to calculate the hash for each scalar, but this may change. We therefore only recommend using this function within a single query where all invocations of the function will use the same algorithm.
