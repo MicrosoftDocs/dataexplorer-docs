@@ -68,6 +68,7 @@ StormEvents
 ```
 
 **Output**
+
 |SegmentId|Count|Percent|State|EventType|Damage|DamageCrops|
 |---|---|---|---|---|---|---|---|---|
 |0|4574|77.7|||NO|0
@@ -91,6 +92,7 @@ StormEvents
 ```
 
 **Output**
+
 |SegmentId|Count|Percent|State|EventType|Damage|DamageCrops|
 |---|---|---|---|---|---|---|---|---|
 |0|4574|77.7|\*|\*|NO|0

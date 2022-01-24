@@ -69,6 +69,7 @@ datatable(d:dynamic)
 ```
 
 **Output**
+
 |Age|Name   |
 |---|-------|
 |20 |John   |
@@ -91,6 +92,7 @@ datatable(d:dynamic)
 ```
 
 **Output**
+
 |Property_Age|Property_Name|
 |------------|-------------|
 |20          |John         |
@@ -113,6 +115,7 @@ datatable(Name:string, d:dynamic)
 ```
 
 **Output**
+
 |Age|Name   |
 |---|-------|
 |20 |John   |
@@ -131,6 +134,7 @@ datatable(Name:string, d:dynamic)
 ```
 
 **Output**
+
 |Age|Name     |
 |---|---------|
 |20 |Old_name |
@@ -154,6 +158,7 @@ datatable(d:dynamic)
 ```
 
 **Output**
+
 |Name|
 |---|
 |John|
