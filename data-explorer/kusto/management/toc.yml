@@ -298,6 +298,8 @@ items:
       href: alter-merge-database-merge-policy-command.md
     - name: .alter-merge table merge policy command
       href: alter-merge-table-merge-policy-command.md
+    - name: .alter-merge materialized-view merge policy command
+      href: alter-merge-materialized-view-merge-policy-command.md
     - name: .delete database merge policy command
       href: delete-database-merge-policy-command.md
     - name: .delete table merge policy command
