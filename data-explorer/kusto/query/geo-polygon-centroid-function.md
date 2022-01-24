@@ -57,7 +57,7 @@ print centroid = geo_polygon_centroid(central_park)
 
 |centroid|
 |---|
-|{<br>"type": "Point",<br>"coordinates": [-73.965735689907618, 40.782550538057812]<br>}|
+|{"type": "Point",<br>"coordinates": [-73.965735689907618, 40.782550538057812]}|
 
 The following example calculates NYC Central Park centroid longitude.
 
@@ -83,7 +83,7 @@ print polygons_union_centroid = geo_polygon_centroid(polygons)
 
 |polygons_union_centroid|
 |---|
-|{<br>"type": "Point",<br>"coordinates": [-73.968569587829577, 40.776310752555119]<br>}|
+|"type": "Point",<br>"coordinates": [-73.968569587829577, 40.776310752555119]}|
 
 The following example visualizes NYC Central Park centroid on a map
 
@@ -95,7 +95,7 @@ centroid = geo_polygon_centroid(central_park)
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="images/geo-polygon-centroid-function/nyc-central-park-centroid.png" alt-text="NYC Central park centroid.":::
+:::image type="content" source="images/geo-polygon-centroid-function/nyc-central-park-centroid.png" alt-text="Screenshot of N Y C Central park centroid.":::
 
 The following example returns True because of the invalid polygon.
 
