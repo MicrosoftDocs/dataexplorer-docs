@@ -7,15 +7,13 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/24/2022
 ---
 # session_count plugin
 
 Calculates sessions count based on ID column over a timeline.
 
-```kusto
-T | evaluate session_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 1min, 30min, dim1, dim2, dim3)
-```
+The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Syntax
 
