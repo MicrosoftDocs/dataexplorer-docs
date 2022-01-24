@@ -25,7 +25,7 @@ Returns a hash value for the input value.
 
 ## Returns
 
-The hash value of the specified scalar and, if specified, the modulo the specified mod value.
+The hash value of *source*. If *mod* is specified, the function returns the hash value modulo the value of *mod*.
 
 > [!WARNING]
 > The function uses the *xxhash64* algorithm to calculate the hash for each scalar, but this may change. We therefore only recommend using this function within a single query where all invocations of the function will use the same algorithm.
@@ -40,7 +40,7 @@ hash("World", 100)              // 51 (1846988464401551951 % 100)
 hash(datetime("2015-01-01"))    // 1380966698541616202
 ```
 
-The hash function can be useful for sampling the data when assuming the value is uniformly distributed , such as the StartTime in the following example that uses the hash function to run a query on 10% of the data.
+You can use the `hash()` function for sampling data if values in one its columns are uniformly distributed. In the following example, *StartTime* values are uniformly distributed and the function is used to run a query on 10% of the data.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
