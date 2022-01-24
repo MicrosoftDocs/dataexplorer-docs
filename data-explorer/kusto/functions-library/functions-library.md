@@ -46,7 +46,6 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 |[series_fbprophet_forecast_fl()](series-fbprophet-forecast-fl.md)|Forecast time series values using the Prophet algorithm. |
 |[series_moving_avg_fl()](series-moving-avg-fl.md)|Apply a moving average filter on a series. |
 |[series_rolling_fl()](series-rolling-fl.md)|Apply a rolling aggregation function on a series. |
-|[series_uv_anomalies_fl()](series-uv-anomalies-fl.md)|Detect anomalies in time series using the Univariate Anomaly Detection Cognitive Service API. |
 |[time_weighted_avg_fl()](time-weighted-avg-fl.md)|Calculates the time weighted average of a metric. |
 |[time_window_rolling_avg_fl()](time-window-rolling-avg-fl.md)|Calculates the rolling average of a metric over a constant duration time window. |
 
