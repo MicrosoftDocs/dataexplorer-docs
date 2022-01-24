@@ -40,7 +40,7 @@ hash("World", 100)              // 51 (1846988464401551951 % 100)
 hash(datetime("2015-01-01"))    // 1380966698541616202
 ```
 
-You can use the `hash()` function for sampling data if values in one its columns are uniformly distributed. In the following example, *StartTime* values are uniformly distributed and the function is used to run a query on 10% of the data.
+You can use the `hash()` function for sampling data if the values in one of its columns are uniformly distributed. In the following example, *StartTime* values are uniformly distributed and the function is used to run a query on 10% of the data.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
