@@ -57,7 +57,7 @@ print centroid = geo_polygon_centroid(central_park)
 
 |centroid|
 |---|
-|{"type": "Point",<br>"coordinates": [-73.965735689907618, 40.782550538057812]}|
+|{"type": "Point", "coordinates": [-73.965735689907618, 40.782550538057812]}|
 
 The following example calculates NYC Central Park centroid longitude.
 
@@ -83,7 +83,7 @@ print polygons_union_centroid = geo_polygon_centroid(polygons)
 
 |polygons_union_centroid|
 |---|
-|"type": "Point",<br>"coordinates": [-73.968569587829577, 40.776310752555119]}|
+|"type": "Point", "coordinates": [-73.968569587829577, 40.776310752555119]}|
 
 The following example visualizes NYC Central Park centroid on a map
 
