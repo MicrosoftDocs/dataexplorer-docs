@@ -30,11 +30,11 @@ If the policy is set to `null`, default values are used. Default values are:
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `ingestionbatching` *ArrayOfPolicyObjects*
+`.alter` `table` *TableName* `policy` `ingestionbatching` *PolicyObject*
 
-`.alter` `table` *DatabaseName*`.`*TableName* `policy` `ingestionbatching` *ArrayOfPolicyObjects*
+`.alter` `table` *DatabaseName*`.`*TableName* `policy` `ingestionbatching` *PolicyObject*
 
-`.alter` `tables` `(`*Table1* `,` *Table2*  `,...` `)` `policy` `ingestionbatching` *ArrayOfPolicyObjects*
+`.alter` `tables` `(`*Table1* `,` *Table2*  `,...` `)` `policy` `ingestionbatching` *PolicyObject*
 
 ## Arguments
 
@@ -42,7 +42,7 @@ If the policy is set to `null`, default values are used. Default values are:
 
 *TableName* - Specify the name of the table.
 
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+*PolicyObject* - Define a policy object.
 
 ## Example
 

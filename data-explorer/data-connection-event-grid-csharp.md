@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 01/03/2022
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer by using C#
@@ -87,9 +87,9 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | tableName | *StormEvents* | The name of the target table in the target database.|
 | mappingRuleName | *StormEvents_CSV_Mapping* | The name of your column mapping related to the target table.|
 | dataFormat | *csv* | The data format of the message.|
-| eventHubResourceId | *Resource ID* | The resource ID of your Event Hub where the Event Grid is configured to send events. |
+| eventHubResourceId | *Resource ID* | The resource ID of your event hub where the Event Grid is configured to send events. |
 | storageAccountResourceId | *Resource ID* | The resource ID of your storage account that holds the data for ingestion. |
-| consumerGroup | *$Default* | The consumer group of your Event Hub.|
+| consumerGroup | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
 | blobStorageEventType | *Microsoft.Storage.BlobCreated* | The type of event that triggers ingestion. Supported events are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage.|
 

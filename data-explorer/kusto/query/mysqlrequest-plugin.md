@@ -100,12 +100,12 @@ The following example sends a SQL query to an Azure MySQL DB database. It retrie
 > This example shouldn't be taken as a recommendation to filter or project data in this manner. SQL queries should be constructed to return the smallest data set possible, since the Kusto optimizer doesn't currently attempt to optimize queries between Kusto and SQL.
 
 ```kusto
-evaluate sql_request(
+evaluate mysql_request(
     'Server=contoso.mysql.database.azure.com; Port = 3306;'
     'Database=Fabrikam;'
     h'UID=USERNAME;'
     h'Pwd=PASSWORD;', 
-  'select * from [dbo].[Table]')
+    'select * from [dbo].[Table]')
 | where Id > 0
 | project Name
 ```
@@ -115,12 +115,12 @@ evaluate sql_request(
 The following example is identical to the previous one, but SQL authentication is done by username and password. For confidentiality, we use obfuscated strings.
 
 ```kusto
-evaluate sql_request(
-   'Server=contoso.mysql.database.azure.com; Port = 3306;'
+evaluate mysql_request(
+    'Server=contoso.mysql.database.azure.com; Port = 3306;'
     'Database=Fabrikam;'
     h'UID=USERNAME;'
     h'Pwd=PASSWORD;', 
-  'select * from [dbo].[Table]')
+    'select * from [dbo].[Table]')
 | where Id > 0
 | project Name
 ```
@@ -134,12 +134,12 @@ It specifies a SQL parameter (`@param0`) to be used in the SQL query.
 
 ```kusto
 evaluate mysql_request(
-  'Server=contoso.mysql.database.azure.com; Port = 3306;'
+    'Server=contoso.mysql.database.azure.com; Port = 3306;'
     'Database=Fabrikam;'
     h'UID=USERNAME;'
     h'Pwd=PASSWORD;', 
-  'select *, @param0 as dt from [dbo].[Table]',
-  dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)}))
+    'select *, @param0 as dt from [dbo].[Table]',
+    dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)}))
 | where Id > 0
 | project Name
 ```

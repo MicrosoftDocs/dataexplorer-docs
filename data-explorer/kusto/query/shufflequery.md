@@ -28,14 +28,14 @@ The partition number can be overridden by using the syntax `hint.num_partitions 
 > [!Note]
 > Using many partitions may consume more cluster resources and degrade performance. Choose the partition number carefully by starting with the `hint.strategy = shuffle` and start increasing the partitions gradually.
 
-In some cases, the `hint.strategy=shuffle` will be ignored, and the query will not run in `shuffle` strategy. This can happen when: 
+In some cases, the `hint.strategy = shuffle` will be ignored, and the query will not run in `shuffle` strategy. This can happen when:
 
 * The `join` operator has another `shuffle`-compatible operator (`join`, `summarize`, `make-series` or `partition`) on the left side or the right side.
 * The `summarize` operator appears after another `shuffle`-compatible operator (`join`, `summarize`, `make-series` or `partition`) in the query.
 
 ## Syntax
 
-### With `hint.strategy` = `shuffle'
+### With `hint.strategy` = `shuffle`
 
 *T* `|` *DataExpression* `|` `join`  `hint.strategy` = `shuffle` `(` *DataExpression* `)`
 
