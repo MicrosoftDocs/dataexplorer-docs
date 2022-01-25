@@ -6,60 +6,31 @@ ms.author: orspodek
 ms.reviewer: avneraa
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 01/25/2022
 ---
 
 # Delete data from Azure Data Explorer
 
-Azure Data Explorer supports various delete scenarios:
+Azure Data Explorer supports the following deletion scenarios:
 
-1. **Delete all data from a table**:
-   A command is provided to
-   delete all the data associated with a specific table.
-   This is the most efficient way to remove data.
-   The command does not impact other aspects of the table
-   (such as its schema and policy objects.)
+- **[Delete all data from a table](#delete-all-data-in-a-table)**:  
+Deletes all data from a table without impacting other aspects of the table, such as the schema and policy object. This is the most efficient way to remove data.
 
-1. **Delete aging data based on a retention policy**:
-   One can configure automatic deletion of data based on
-   its "age" (how long ago it was ingested) by using
-   the retention policy.
-   Deletion in this case is approximate (data is removed
-   some arbitrary time after it ages beyond the specified
-   policy) and very efficient.
+- **[Delete aging data based on a retention policy](#delete-data-using-the-retention-policy)**:  
+Deletes data that is older, based on how long ago it was ingested, than the retention [period configured in the policy](kusto/management/retentionpolicy.md). There is no specific guarantee as to when removal occurs. This is a very efficient and convenient way to remove data.
 
-1. **Delete specific data by dropping extents**:
-   A command is provided to delete all data based on the
-   specified data extents. The data extents to be deleted
-   can be specified by a number of ways (such as according
-   to extent tags). Note that the selectivity in this method
-   is coarse.
-   Deletion is very efficient.
+- **[Delete specific data by dropping extents](#delete-data-by-dropping-extents)**:  
+Deletes data by dropping extents. The data extents to be deleted can be specified in [several ways](kusto/management/drop-extents.md), such as using a query or extent tags. This is a very efficient way to remove data.
 
-1. **Delete individual data records by using soft-delete**:
-   A command is provided to delete all records in a table
-   based on a user-specified predicate.
-   Deletion happens by marking all matching records as
-   "soft-deleted", and a background process removes them
-   completely.
-   Deletion is inefficient (compared to the methods noted
-   above), and query performance might be impacted.
+- **[Delete individual data records by using soft-delete](#soft-delete)**:  
+Deletes all records in a table that match a user-specified predicate. This method initially marks all matching records as deleted and then a background process removes them. This method is inefficient relative to other methods and query performance may be impacted.
 
-1. **Delete individual data records by using purge**:
-   A command is provided to purge all records in a table
-   based on a user-specified predicate.
-   Purging data is provided for removing data as required
-   for compliance reasons, and purged data cannot be retrieved
-   regardless of any data recoverability policy set.
-   Deletion is inefficient (more so than any other method);
-   due to its inherent costs there are severe limits for
-   this method, and purge operations can take a whole day
-   to complete.
+- **[Delete individual data records by using purge](#purge)**:  
+Deletes all records in a table that match a user-specified predicate. This method permanently removes data and is only recommended for compliance scenarios. Purged data cannot be retrieved regardless of any configured data recoverability policies. This is the most inefficient way to remove data and can take a whole day to complete.
 
 ## Delete all data in a table
 
-To delete all data in a table, use the [.clear table data](kusto/management/clear-table-data-command.md) command.
-For example:
+To delete all data in a table, use the [.clear table data](kusto/management/clear-table-data-command.md) command. For example:
 
 ```kusto
 .clear table <TableName> data
@@ -67,7 +38,7 @@ For example:
 
 ## Delete data using the retention policy
 
-Azure Data Explorer automatically deletes data based on the [retention policy](kusto/management/retentionpolicy.md). This method is the most efficient and hassle-free way of deleting data. Set the retention policy at the database or table level.
+Automatically delete data based on the [retention policy](kusto/management/retentionpolicy.md). Set the retention policy at the database or table level.
 
 Consider a database or table that is set for 90 days of retention. If only 60 days of data are needed, delete the older data as follows:
 
@@ -85,13 +56,13 @@ Consider a database or table that is set for 90 days of retention. If only 60 da
 
 You can delete all rows in a table or just a specific extent.
 
-* Delete all rows in a table:
+- Delete all rows in a table:
 
     ```kusto
     .drop extents from TestTable
     ```
 
-* Delete a specific extent:
+- Delete a specific extent:
 
     ```kusto
     .drop extent e9fac0d2-b6d5-4ce3-bdb4-dea052d13b42
@@ -101,10 +72,10 @@ You can delete all rows in a table or just a specific extent.
 
 Both purge and soft-delete can be used for deleting individuals rows, but they are designed for completely different scenarios.
 
-### Purge
-
-With [purge](kusto/concepts/data-purge.md), all storage artifacts that have "poison" data is deleted. The deletion isn't immediate and requires significant system resources. As such, it's only recommended for compliance scenarios.
-
 ### Soft-delete
 
 With [soft-delete](kusto/concepts/data-soft-delete.md), data is not necessarily deleted from storage artifacts and, as such, it cannot be used for compliance scenarios. The deletion is immediate and doesn't require significant system resources.
+
+### Purge
+
+With [purge](kusto/concepts/data-purge.md), all storage artifacts that have "poison" data is deleted. The deletion isn't immediate and requires significant system resources. As such, it's only recommended for compliance scenarios.
