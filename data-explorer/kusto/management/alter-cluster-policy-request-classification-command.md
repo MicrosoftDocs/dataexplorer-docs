@@ -7,20 +7,20 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 01/06/2022
 ---
 # .alter cluster request classification policy
 
-Alters cluster's request classification policy. For more information, see [Request classification policy](request-classification-policy.md).
+Alters cluster's request classification policy. For more information, see [request classification policy](request-classification-policy.md).
 
 ## Syntax
 
-`.alter` `cluster` `policy` `request_classification` *SerializedArrayOfPolicyObjects*  `<|` *ClassificationFunctionBody*
+`.alter` `cluster` `policy` `request_classification` *SerializedPartialPolicy*  `<|` *ClassificationFunctionBody*
 
 ## Arguments
 
-*SerializedArrayOfPolicyObjects* - A serialized array with one or more JSON policy objects defined.
-*ClassificationFunctionBody* - An array with one or more classification functions defined.
+- *SerializedPartialPolicy* - Define a serialized JSON policy. For policy properties, see [request classification policy](request-classification-policy.md)
+- *ClassificationFunctionBody* - Define an array with one or more classification functions.
 
 ## Returns
 
@@ -75,5 +75,5 @@ Returns a JSON representation of the policy.
 
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
-|ClusterRequestClassificationPolicy| |{"ClassificationProperties": ["current_application",  "request_type" ],"IsEnabled": true, "ClassificationFunction": "iff(request_properties.current_application == \"Kusto.Explorer\" and request_properties.request_type == \"Query\",\r\n        \"Ad-hoc queries\",\r\n        \"default\")"
+|ClusterRequestClassificationPolicy| |{"ClassificationProperties": ["current_application",  "request_type" ],"IsEnabled": true, "ClassificationFunction": "iff(request_properties.current_application == \"Kusto.Explorer\" and request_properties.request_type == \"Query\",\"Ad-hoc queries\",\"default\")"
 }| | |
