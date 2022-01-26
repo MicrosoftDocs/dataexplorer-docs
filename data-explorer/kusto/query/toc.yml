@@ -108,51 +108,7 @@ items:
   - name: distinct operator
     href: distinctoperator.md
   - name: evaluate operator
-    items:
-    - name: evaluate operator plugins
-      href: evaluateoperator.md
-    - name: autocluster plugin
-      href: autoclusterplugin.md
-    - name: azure_digital_twins_query_request plugin
-      href: azure-digital-twins-query-request-plugin.md
-    - name: bag_unpack plugin
-      href: bag-unpackplugin.md
-    - name: basket plugin
-      href: basketplugin.md
-    - name: cosmosdb_sql_request plugin
-      href: cosmosdb-plugin.md
-    - name: dcount_intersect plugin
-      href: dcount-intersect-plugin.md
-    - name: diffpatterns plugin
-      href: diffpatternsplugin.md
-    - name: diffpatterns_text plugin
-      href: diffpatterns-textplugin.md
-    - name: infer_storage_schema plugin
-      href: inferstorageschemaplugin.md
-    - name: ipv4_lookup plugin
-      href: ipv4-lookup-plugin.md
-    - name: mysql_request plugin
-      href: mysqlrequest-plugin.md
-    - name: narrow plugin
-      href: narrowplugin.md
-    - name: pivot plugin
-      href: pivotplugin.md
-    - name: preview plugin
-      href: previewplugin.md
-    - name: python plugin
-      href: pythonplugin.md
-    - name: R plugin
-      href: rplugin.md
-    - name: rolling_percentile plugin
-      href: rolling-percentile-plugin.md
-    - name: rows_near plugin
-      href: rows-near-plugin.md  
-    - name: schema_merge plugin
-      href: schemamergeplugin.md
-    - name: sql_request plugin
-      href: sqlrequestplugin.md
-    - name: sequence_detect plugin
-      href: sequence-detect-plugin.md
+    href: evaluateoperator.md
   - name: extend operator
     href: extendoperator.md
   - name: externaldata operator
@@ -171,8 +127,6 @@ items:
     items:
     - name: join operator
       href: joinoperator.md
-    - name: Shuffle query
-      href: shufflequery.md
     - name: Cross-cluster join
       href: joincrosscluster.md
     - name: Broadcast join
@@ -183,8 +137,6 @@ items:
     href: limitoperator.md
   - name: lookup operator
     href: lookupoperator.md
-  - name: make-series operator
-    href: make-seriesoperator.md
   - name: mv-apply operator
     href: mv-applyoperator.md
   - name: mv-expand operator
@@ -225,6 +177,9 @@ items:
     href: searchoperator.md
   - name: serialize operator
     href: serializeoperator.md
+  - name: shuffle query
+    displayName: hint.shufflekey, hint.strategy, shufflekey, hint
+    href: shufflequery.md
   - name: sort operator
     href: sortoperator.md
   - name: summarize operator
@@ -233,8 +188,6 @@ items:
       href: summarizeoperator.md
     - name: Using hll() and tdigest()
       href: usinghlltdigest.md
-    - name: shuffle
-      href: shufflequery.md
   - name: take operator
     href: takeoperator.md
   - name: top operator
@@ -259,7 +212,7 @@ items:
     href: materializefunction.md
   - name: materialized_view()
     href: materialized-view-function.md
-  - name: Query results cache 
+  - name: Query results cache
     href: query-results-cache.md
   - name: table()
     href: tablefunction.md
@@ -287,7 +240,7 @@ items:
     href: numoperators.md
   - name: between operator 
     href: betweenoperator.md
-  - name: not between (!between) operator 
+  - name: "not between (!between) operator" 
     href: notbetweenoperator.md
   - name: String operators
     items:
@@ -297,7 +250,7 @@ items:
       href: contains-operator.md
     - name: contains_cs operator
       href: contains-cs-operator.md
-    - name: "!contains operator" 
+    - name: "!contains operator"
       href: not-contains-operator.md
     - name: "!contains_cs operator" 
       href: not-contains-cs-operator.md 
@@ -309,10 +262,10 @@ items:
       href: not-endswith-operator.md
     - name: "!endswith_cs operator"
       href: not-endswith-cs-operator.md
-    - name: == (equals) operator 
+    - name: "== (equals) operator"
       displayName: equals
       href: equals-cs-operator.md
-    - name: =~ (equals) operator 
+    - name: "=~ (equals) operator" 
       href: equals-operator.md
     - name: "!= (not equals) operator"
       href: not-equals-cs-operator.md
@@ -346,6 +299,14 @@ items:
       href: has-all-operator.md
     - name: has_any operator
       href: has-anyoperator.md
+    - name: in operator 
+      href: in-cs-operator.md
+    - name: "in~ operator" 
+      href: inoperator.md
+    - name: "!in operator"
+      href: not-in-cs-operator.md
+    - name: "!in~ operator" 
+      href: not-in-operator.md 
     - name: match regex operator
       href: regex-operator.md
     - name: startswith operator
@@ -465,8 +426,6 @@ items:
     href: countoffunction.md
   - name: current_cluster_endpoint()
     href: current-cluster-endpoint-function.md
-  - name: current_cursor()
-    href: cursorcurrent.md
   - name: current_database()
     href: current-database-function.md
   - name: current_principal()
@@ -480,6 +439,7 @@ items:
   - name: cursor_before_or_at()
     href: cursorbeforeoratfunction.md
   - name: cursor_current()
+    displayName: current_cursor()
     href: cursorcurrent.md
   - name: datetime_add()
     href: datetime-addfunction.md
@@ -1061,9 +1021,45 @@ items:
   - name: diffpatterns_text plugin
     displayName: clustering, diagnostics, RCA, root cause
     href: diffpatterns-textplugin.md
+- name: Plugins
+  items:
+  - name: azure_digital_twins_query_request plugin
+    href: azure-digital-twins-query-request-plugin.md
+  - name: bag_unpack plugin
+    href: bag-unpackplugin.md
+  - name: cosmosdb_sql_request plugin
+    href: cosmosdb-plugin.md
+  - name: dcount_intersect plugin
+    href: dcount-intersect-plugin.md
+  - name: infer_storage_schema plugin
+    href: inferstorageschemaplugin.md
+  - name: ipv4_lookup plugin
+    href: ipv4-lookup-plugin.md
+  - name: mysql_request plugin
+    href: mysqlrequest-plugin.md
+  - name: narrow plugin
+    href: narrowplugin.md
+  - name: pivot plugin
+    href: pivotplugin.md
+  - name: preview plugin
+    href: previewplugin.md
+  - name: python plugin
+    href: pythonplugin.md
+  - name: R plugin
+    href: rplugin.md
+  - name: rolling_percentile plugin
+    href: rolling-percentile-plugin.md
+  - name: rows_near plugin
+    href: rows-near-plugin.md  
+  - name: schema_merge plugin
+    href: schemamergeplugin.md
+  - name: sql_request plugin
+    href: sqlrequestplugin.md
+  - name: sequence_detect plugin
+    href: sequence-detect-plugin.md
 - name: Geospatial
   items:
-  - name: Geospatial clustering overview 
+  - name: Geospatial clustering overview
     displayName: H3, S2, Geohash
     href: geospatial-grid-systems.md
   - name: geo_distance_2points()
@@ -1072,6 +1068,12 @@ items:
     href: geo-distance-point-to-line-function.md
   - name: geo_distance_point_to_polygon()
     href: geo-distance-point-to-polygon-function.md
+  - name: geo_intersects_2lines()
+    href: geo-intersects-2lines-function.md
+  - name: geo_intersects_2polygons()
+    href: geo-intersects-2polygons-function.md
+  - name: geo_intersects_line_with_polygon()
+    href: geo-intersects-line-with-polygon-function.md
   - name: geo_point_in_circle()
     href: geo-point-in-circle-function.md
   - name: geo_point_in_polygon()
@@ -1106,6 +1108,10 @@ items:
     href: geo-polygon-to-s2cells-function.md
   - name: geo_line_densify()
     href: geo-line-densify-function.md 
+  - name: geo_polygon_area()
+    href: geo-polygon-area-function.md
+  - name: geo_polygon_centroid()
+    href: geo-polygon-centroid-function.md
   - name: geo_polygon_densify()
     href: geo-polygon-densify-function.md
 - name: User analytics
@@ -1153,7 +1159,7 @@ items:
     href: re2-library.md
   - name: JSONPath syntax
     href: jsonpath.md
-  - name: SQL to KQL cheat sheet
+  - name: SQL to Kusto cheat sheet
     displayName: Kusto
     href: sqlcheatsheet.md
   - name: Splunk to Kusto cheat sheet

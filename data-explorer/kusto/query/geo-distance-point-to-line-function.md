@@ -43,7 +43,7 @@ dynamic({"type": "MultiLineString","coordinates": [ [ line_1, line_2 ,..., line_
 * Edge length must be less than 180 degrees. The shortest edge between the two vertices will be chosen.
 
 > [!TIP]
-> * For better performance, use literal lines.
+> * Using literal LineString or a MultiLineString may result in better performance.
 > * If you want to know the shortest distance between one or more points to many lines, consider folding these lines into one multiline. See the [example](#examples) below.
 
 ## Examples
