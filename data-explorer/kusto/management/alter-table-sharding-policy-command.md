@@ -22,7 +22,7 @@ The sharding policy defines if and how [Extents (data shards)](../management/ext
 ## Arguments
 
 - *TableName* - Specify the name of the table. A wildcard (*) denotes all tables.
-- *PolicyObject* - Define a policy object. For more information, see [sharding policy](../management/shardingpolicy.md).
+- *PolicyObject* - Define a policy object, see also [sharding policy](../management/shardingpolicy.md).
 
 ## Returns
 
