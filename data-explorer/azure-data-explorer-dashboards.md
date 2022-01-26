@@ -248,7 +248,7 @@ You can update an existing dashboard, or restore a previous version, as follows:
 
 1. In the dashboard, select **File** > **Replace with file**.
 
-:::image type="content" source="media/adx-dashboards/replace-dashboard-file.png" alt-text="Screenshot of dashboard, showing the replace with file option.":::
+    :::image type="content" source="media/adx-dashboards/replace-dashboard-file.png" alt-text="Screenshot of dashboard, showing the replace with file option.":::
 
 1. Select the file to update the dashboard.
 1. Select **Save changes**.
