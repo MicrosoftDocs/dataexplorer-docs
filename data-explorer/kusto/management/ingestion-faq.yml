@@ -64,7 +64,7 @@ sections:
       - question: How can I ingest historical data and ensure good performance?
         answer: |
           [LightIngest](../../lightingest.md) is suggested as it helps you ingest a large amount of data, with no time constraint on ingestion duration. 
-          It's also useful if you want to query records [according to the time they were created](./../lightingest#how-to-ingest-data-using-creationtime),  not the time they were ingested.
+          It's also useful if you want to query records [according to the time they were created](../../lightingest#how-to-ingest-data-using-creationtime),  not the time they were ingested.
   - name: SDKs and connectors
     questions:     
       - question: How can I improve ingestion with SDKs?
