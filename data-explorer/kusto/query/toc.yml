@@ -267,12 +267,22 @@ items:
     href: toscalarfunction.md
 - name: Scalar operators
   items:
-  - name: Bitwise (binary) operators
+  - name: Bitwise binary operators
     href: binoperators.md
   - name: Datetime/timespan arithmetic
     href: datetime-timespan-arithmetic.md
-  - name: Logical (binary) operators
-    href: logicaloperators.md
+  - name: Logical or binary operators
+    items:
+    - name: Logical operators overview
+      href: logicaloperators.md
+    - name: in operator 
+      href: in-cs-operator.md
+    - name: in~ operator 
+      href: inoperator.md
+    - name: "!in operator"
+      href: not-in-cs-operator.md
+    - name: "!in~ operator" 
+      href: not-in-operator.md 
   - name: Numerical operators
     href: numoperators.md
   - name: between operator 
@@ -336,14 +346,6 @@ items:
       href: has-all-operator.md
     - name: has_any operator
       href: has-anyoperator.md
-    - name: in operator 
-      href: in-cs-operator.md
-    - name: in~ operator 
-      href: inoperator.md
-    - name: "!in operator"
-      href: not-in-cs-operator.md
-    - name: "!in~ operator" 
-      href: not-in-operator.md 
     - name: match regex operator
       href: regex-operator.md
     - name: startswith operator
