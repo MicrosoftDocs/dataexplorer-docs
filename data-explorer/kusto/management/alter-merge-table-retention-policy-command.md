@@ -15,12 +15,12 @@ Change a table's [retention policy](retentionpolicy.md). The retention policy co
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `policy` `retention` *PolicyObjects* 
+`.alter-merge` `table` *TableName* `policy` `retention` *PolicyParameters* 
 
 ## Arguments
 
 *TableName* - Specify the name of the table. 
-*PolicyObjects* - Define one or more policy objects.
+*PolicyParameters* - Define policy parameters, see also [retention policy](retentionpolicy.md).
 
 ### Example
 
