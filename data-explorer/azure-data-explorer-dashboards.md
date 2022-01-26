@@ -237,7 +237,7 @@ You can use a dashboard file to create a new dashboard, as follows:
 
 1. In the main dashboard page, select **New dashboard** > **Import from file**.
 
-:::image type="content" source="media/adx-dashboards/import-dashboard-file.png" alt-text="Screenshot of dashboard, showing the import from file option.":::
+    :::image type="content" source="media/adx-dashboards/import-dashboard-file.png" alt-text="Screenshot of dashboard, showing the import from file option.":::
 
 1. Select the file to import.
 1. Enter a dashboard name, and then select **Create**.
