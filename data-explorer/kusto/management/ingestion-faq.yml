@@ -59,6 +59,12 @@ sections:
           If attempts pass the maximum amount of retries defined, Azure Data Explorer stops trying to ingest the failed blob.
           To prevent a load issue, use a premium storage account or divide the ingested data over more storage accounts.
           To discover related errors, check the `FailedIngestion` diagnostic logs for error codes and for the paths of any failed blobs.
+  - name: Ingesting historical data
+    questions:
+      - question: How can I ingest historical data and ensure good performance?
+        answer: |
+          [LightIngest](../../lightingest.md) is suggested as it helps you ingest a large amount of data, with no time constraint on ingestion duration. 
+          It's also useful if you want to query records [according to the time they were created](./../lightingest#how-to-ingest-data-using-creationtime),  not the time they were ingested.
   - name: SDKs and connectors
     questions:     
       - question: How can I improve ingestion with SDKs?
