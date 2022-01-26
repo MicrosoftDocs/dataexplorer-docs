@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/15/2021
+ms.date: 01/13/2022
 ---
 # .alter table ingestion batching policy
 
@@ -42,7 +42,7 @@ If the policy is set to `null`, default values are used. Default values are:
 
 *TableName* - Specify the name of the table.
 
-*PolicyObject* - Define a policy object.
+*PolicyObject* - Define a policy object, see also [ingestion batching policy](batchingpolicy.md).
 
 ## Example
 

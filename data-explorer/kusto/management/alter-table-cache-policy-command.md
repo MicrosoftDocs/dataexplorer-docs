@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/06/2022
+ms.date: 01/13/2022
 ---
 # .alter table cache policy
 
@@ -15,13 +15,13 @@ Change the table cache policy. To speed up queries, Azure Data Explorer caches d
 
 ## Syntax
 
-`.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `caching` *PolicyParameter*
+`.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `caching` *PolicyParameters* 
 
 ## Arguments
 
 - *DatabaseName* - Specify the name of the database.
 - *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
-- *PolicyParameter* - Define one or more policy parameters. For parameters, see [cache policy](cachepolicy.md). 
+- *PolicyParameters* - Define policy parameters, see also [cache policy](cachepolicy.md).
 
 ## Example
 
