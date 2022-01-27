@@ -6,68 +6,36 @@ ms.author: orspodek
 ms.reviewer: avneraa
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 01/26/2022
 ---
 
 # Delete data from Azure Data Explorer
 
-Azure Data Explorer supports various delete scenarios:
+Azure Data Explorer supports several ways to delete data from a table. Use the following information to help you choose which deletion method is best for your use case.
 
-1. **Delete all data from a table**:
-   A command is provided to
-   delete all the data associated with a specific table.
-   This is the most efficient way to remove data.
-   The command does not impact other aspects of the table
-   (such as its schema and policy objects.)
+| Use case | Considerations | Method |
+|--|--|--|
+| Drop all data from a table | | [Use the `.clear table data` command](#delete-all-data-in-a-table) |
+| Routinely drop old data | Use if you need an automated deletion solution | [Use a retention policy](#delete-data-using-a-retention-policy) |
+| Bulk drop specific data by extents | Only use if you are an expert user | [Use the `.drop extents` command](#delete-data-by-dropping-extents) |
+| Drop a few records based on their contents | Frequent use of this method may have an impact on query performance | [Use soft delete](#soft-delete) |
+| Permanently drop records based on their contents | Dropped records can't be recovered, regardless of any retention or recoverability settings | [Use purge](#purge) |
 
-1. **Delete aging data based on a retention policy**:
-   One can configure automatic deletion of data based on
-   its "age" (how long ago it was ingested) by using
-   the retention policy.
-   Deletion in this case is approximate (data is removed
-   some arbitrary time after it ages beyond the specified
-   policy) and very efficient.
-
-1. **Delete specific data by dropping extents**:
-   A command is provided to delete all data based on the
-   specified data extents. The data extents to be deleted
-   can be specified by a number of ways (such as according
-   to extent tags). Note that the selectivity in this method
-   is coarse.
-   Deletion is very efficient.
-
-1. **Delete individual data records by using soft-delete**:
-   A command is provided to delete all records in a table
-   based on a user-specified predicate.
-   Deletion happens by marking all matching records as
-   "soft-deleted", and a background process removes them
-   completely.
-   Deletion is inefficient (compared to the methods noted
-   above), and query performance might be impacted.
-
-1. **Delete individual data records by using purge**:
-   A command is provided to purge all records in a table
-   based on a user-specified predicate.
-   Purging data is provided for removing data as required
-   for compliance reasons, and purged data cannot be retrieved
-   regardless of any data recoverability policy set.
-   Deletion is inefficient (more so than any other method);
-   due to its inherent costs there are severe limits for
-   this method, and purge operations can take a whole day
-   to complete.
+The following sections describe the different deletion methods.
 
 ## Delete all data in a table
 
-To delete all data in a table, use the [.clear table data](kusto/management/clear-table-data-command.md) command.
+To delete all data in a table, use the [.clear table data](kusto/management/clear-table-data-command.md) command. This is the most efficient way to remove all data from a table.
+
 For example:
 
 ```kusto
 .clear table <TableName> data
 ```
 
-## Delete data using the retention policy
+## Delete data using a retention policy
 
-Azure Data Explorer automatically deletes data based on the [retention policy](kusto/management/retentionpolicy.md). This method is the most efficient and hassle-free way of deleting data. Set the retention policy at the database or table level.
+Automatically delete data based on a [retention policy](kusto/management/retentionpolicy.md). You can set the retention policy at the database or table level. This is a very efficient and convenient way to remove old data, but there is no guarantee as to when the removal occurs.
 
 Consider a database or table that is set for 90 days of retention. If only 60 days of data are needed, delete the older data as follows:
 
@@ -85,13 +53,13 @@ Consider a database or table that is set for 90 days of retention. If only 60 da
 
 You can delete all rows in a table or just a specific extent.
 
-* Delete all rows in a table:
+- Delete all rows in a table:
 
     ```kusto
     .drop extents from TestTable
     ```
 
-* Delete a specific extent:
+- Delete a specific extent:
 
     ```kusto
     .drop extent e9fac0d2-b6d5-4ce3-bdb4-dea052d13b42
@@ -101,10 +69,10 @@ You can delete all rows in a table or just a specific extent.
 
 Both purge and soft-delete can be used for deleting individuals rows, but they are designed for completely different scenarios.
 
+### Soft delete
+
+With [soft delete](kusto/concepts/data-soft-delete.md), data is not necessarily deleted from storage artifacts and, as such, it cannot be used for compliance scenarios. This method initially marks all matching records as deleted and then a background process removes them. It doesn't require significant system resources but may have an impact on query performance. The deletion process is final and irreversible.
+
 ### Purge
 
-With [purge](kusto/concepts/data-purge.md), all storage artifacts that have "poison" data is deleted. The deletion isn't immediate and requires significant system resources. As such, it's only recommended for compliance scenarios.
-
-### Soft-delete
-
-With [soft-delete](kusto/concepts/data-soft-delete.md), data is not necessarily deleted from storage artifacts and, as such, it cannot be used for compliance scenarios. The deletion is immediate and doesn't require significant system resources.
+With [purge](kusto/concepts/data-purge.md), all storage artifacts that have "poison" data is deleted and is useful for removing corrupt data. The deletion isn't immediate, requires significant system resources, and can take a whole day to complete. This method prevents deleted records from being recovered, regardless of retention or recoverability settings. The deletion process is final and irreversible.
