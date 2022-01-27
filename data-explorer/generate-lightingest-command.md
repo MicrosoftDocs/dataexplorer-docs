@@ -62,6 +62,19 @@ In the **Ingest new data** window, the **Destination** tab is selected. The **Cl
 
 :::image type="content" source="media/generate-lightingest-command/source-tab-container-from-subscription.png" alt-text="Screenshot of dialog box for selecting container from storage subscription and account.":::
 
+## Advanced Settings
+
+You can click **Advanced settings** to define the following additional settings for the ingestion process using LightIngest.
+
+| Field | Description|
+|---|---|
+| Creation time pattern | Your tenant ID. Also known as directory ID.|
+| Blob name pattern | Specify the pattern used to identify the files that are to be ingested. Ingest all the files that match the blob name pattern in the given container.|
+| Tag | A GUID flag assigned to the ingested data.|
+| Limit amount of files | Specify if to further limit which files can be ingested. |
+| Don't wait for ingestion to complete | If set, will stop ingestion upon ?? If not set, LightIngest remains open and will poll the ingestion status until ingestion is complete.|
+| Display only selected items| List the files in the container, but do not ingest them.|
+
 ## Filter data
 
 If you want to, filter the data to ingest only files in a specific folder path or with a particular file extension.
