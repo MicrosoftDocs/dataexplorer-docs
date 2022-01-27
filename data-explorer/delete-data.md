@@ -71,7 +71,7 @@ Both purge and soft-delete can be used for deleting individuals rows, but they a
 
 ### Soft delete
 
-With [soft delete](kusto/concepts/data-soft-delete.md), data is not necessarily deleted from storage artifacts and, as such, it cannot be used for compliance scenarios. This method initially marks all matching records as deleted and then a background process removes them. It doesn't require significant system resources but may impact on query performance.
+With [soft delete](kusto/concepts/data-soft-delete.md), data is not necessarily deleted from storage artifacts and, as such, it cannot be used for compliance scenarios. This method initially marks all matching records as deleted and then a background process removes them. It doesn't require significant system resources but may have an impact on query performance. The deletion process is final and irreversible.
 
 ### Purge
 
