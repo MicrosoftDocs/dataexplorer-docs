@@ -31,11 +31,11 @@ To securely link to all services on your cluster, you need to create the [Privat
 1. Search for *Private Link service*.
 1. Under **Private Link service**, select **Create**.
 
-    :::image type="content" source="media/vnet-create-private-endpoint/create-service.gif" alt-text="Gif that shows you the first three steps of creating a private link service in Azure Data Explorer Portal":::
+    :::image type="content" source="media/vnet-create-private-endpoint/create-service.gif" alt-text="Gif that shows you the first three steps of creating a private link service in Azure Data Explorer Portal.":::
 
 1. In the **Create private link service** pane, fill out the following fields:
 
-    :::image type="content" source="media/vnet-create-private-endpoint/private-link-basics.png" alt-text="Tab 1 in create private link service - Basics":::
+    :::image type="content" source="media/vnet-create-private-endpoint/private-link-basics.png" alt-text="Tab 1 in create private link service - Basics.":::
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -46,13 +46,13 @@ To securely link to all services on your cluster, you need to create the [Privat
 
 1. In the **Outbound settings** pane, fill out the following fields:
 
-    :::image type="content" source="media/vnet-create-private-endpoint/private-link-outbound.png" alt-text="Private link tab 2 - Outbound settings":::
+    :::image type="content" source="media/vnet-create-private-endpoint/private-link-outbound.png" alt-text="Private link tab 2 - Outbound settings.":::
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
     | Load balancer | Your engine or *data management* Load balancer | Select the Load balancer that was created for your cluster engine. You can use either the external or internal Load balancer.  <br> **The Load balancer's engine name will be in the following format:** <br> External Load balancer: *kucompute-{clustername}-elb* <br> Internal Load balancer: *kucompute-{clustername}-ilb* <br> **The Load balancer's data management name will be in the following format:** <br> kudatamgmt-{clustername}-elb <br> kudatamgmt-{clustername}-ilb*|
     | Load balancer frontend IP address | Your engine or data management IP. | Select the Load balancer IP address. |
-    | Source NAT subnet | Cluster's subnet | Your subnet, where the cluster is deployed.
+    | Source NAT subnet | Cluster virtual network's subnet | One of the cluster virtual network's subnets.<br>**You can't choose a delegated subnet as the source NAT subnet.**
     
 1. In the **Access security** pane, choose the users who can request access to your private link service.
 1. Select **Review + create** to review your private link service configuration. Select **Create** to create the private link service.
@@ -67,7 +67,7 @@ To securely link to all services on your cluster, you need to create the [Privat
 1. Under **Private Endpoint**, select **Create**.
 1. In the **Create a Private Endpoint** pane, fill out the following fields:
 
-    :::image type="content" source="media/vnet-create-private-endpoint/step-one-basics.png" alt-text="Create Private Endpoint form step 1 - basics":::
+    :::image type="content" source="media/vnet-create-private-endpoint/step-one-basics.png" alt-text="Create Private Endpoint form step 1 - basics.":::
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -78,7 +78,7 @@ To securely link to all services on your cluster, you need to create the [Privat
     
 1. In the **Resource** pane, fill out the following fields:
 
-    :::image type="content" source="media/vnet-create-private-endpoint/step-two-resource.png" alt-text="Create virtual network form step 2- Resource":::
+    :::image type="content" source="media/vnet-create-private-endpoint/step-two-resource.png" alt-text="Create virtual network form step 2- Resource.":::
 
     **Setting** | **Value**
     |---|---|
@@ -100,7 +100,7 @@ To securely link to all services on your cluster, you need to create the [Privat
 1. In your Private Link service, choose **Private Endpoint connections** under settings.
 1. Choose your Private Endpoint from the connections list, and select **Approve**.
 
-:::image type="content" source="media/vnet-create-private-endpoint/private-link-approve.png" alt-text="Approval step to create Private Endpoint"::: 
+:::image type="content" source="media/vnet-create-private-endpoint/private-link-approve.png" alt-text="Approval step to create Private Endpoint."::: 
 
 ## Set DNS configuration
 
@@ -136,6 +136,10 @@ For example, the name resolution will be:
 After setting this DNS configuration, you can reach the query (Engine) inside your Virtual Network privately with the following URL: myadx.region.kusto.windows.net.
 
 To reach ingestion (data management) privately, register the record for your ingestion (data management) with an A record and the ingestion Private Endpoint IP.
+
+## Limitations
+
+Suspending a cluster deployed into a virtual network configured with Private Endpoints and Private Link Services, results in an error state. To avoid this error, delete the Private Endpoints and Private Link Services connected to the internal load balancers *before* suspending the cluster. If you want to resume the same configuration, restart the cluster and then recreate the Private Endpoints and Private Link Services.
 
 ## Next steps
 

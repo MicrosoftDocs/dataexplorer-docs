@@ -37,7 +37,7 @@ The size of reservation should be based on the total number of Azure Data Explor
 1. Select **Buy**
 1. Fill in the required fields. 
 
-    ![Purchase page](media/pricing-reserved-capacity/purchase-page.png)
+    ![Purchase page.](media/pricing-reserved-capacity/purchase-page.png)
 
 1. Review the cost of the Azure Data Explorer markup reserved capacity reservation in the **Costs** section.
 1. Select **Purchase**.

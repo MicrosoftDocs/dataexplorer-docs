@@ -26,10 +26,8 @@ If you don't have an Azure subscription, create a [free Azure account](https://a
 
 ## Prerequisites
 
-In addition to an Azure subscription, you need the following to complete this article:
-
-* [A test cluster and database](create-cluster-database-portal.md)
-
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 * [Node.js](https://nodejs.org/en/download/) installed on your development computer
 
 ## Install the data and ingest libraries
@@ -66,8 +64,8 @@ Set the values for `authorityId`, `kustoUri`, `kustoIngestUri` and `kustoDatabas
 const cluster = "MyCluster";
 const region = "westus";
 const authorityId = "microsoft.com";
-const kustoUri = `https://${cluster}.${region}.kusto.windows.net:443`;
-const kustoIngestUri = `https://ingest-${cluster}.${region}.kusto.windows.net:443`;
+const kustoUri = `https://${cluster}.${region}.kusto.windows.net`;
+const kustoIngestUri = `https://ingest-${cluster}.${region}.kusto.windows.net`;
 const kustoDatabase  = "Weather";
 ```
 
@@ -84,7 +82,7 @@ const destTableMapping = "StormEvents_CSV_Mapping";
 
 ## Set source file information
 
-Import additional classes and set constants for the data source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
+Import additional classes and set constants for the data source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncei.noaa.gov/).
 
 ```javascript
 const container = "samplefiles";

@@ -39,7 +39,7 @@ Data is added by using the system properties mapping. Run these commands:
     '['
     '    { "column" : "Timespan", "Properties":{"Path":"$.timestamp"}},'
     '    { "column" : "Metric", "Properties":{"Path":"$.metric"}},'
-    '    { "column" : "Value", "Properties":{"Path":"$.metric_value"}},'
+    '    { "column" : "Value", "Properties":{"Path":"$.value"}},'
     '    { "column" : "EventHubEnqueuedTime", "Properties":{"Path":"$.x-opt-enqueued-time"}},'
     '    { "column" : "EventHubOffset", "Properties":{"Path":"$.x-opt-offset"}}'
     ']'

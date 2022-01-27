@@ -34,7 +34,7 @@ The function `series_exp_smoothing_fl()` takes an expression containing a dynami
 
 For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let series_exp_smoothing_fl = (y_series:dynamic, alpha:double=0.5)
 {
@@ -54,7 +54,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Basic exponential smoothing for a series")
 series_exp_smoothing_fl(y_series:dynamic, alpha:double=0.5)
@@ -65,7 +65,7 @@ series_exp_smoothing_fl(y_series:dynamic, alpha:double=0.5)
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range x from 1 to 50 step 1
 | extend y = x % 10
@@ -76,4 +76,4 @@ range x from 1 to 50 step 1
 
 ---
 
-:::image type="content" source="images/series-exp-smoothing-fl/exp-smoothing-demo.png" alt-text="Graph showing exponential smoothing of artificial series" border="false":::
+:::image type="content" source="images/series-exp-smoothing-fl/exp-smoothing-demo.png" alt-text="Graph showing exponential smoothing of artificial series." border="false":::

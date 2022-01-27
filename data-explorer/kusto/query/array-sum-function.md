@@ -15,11 +15,11 @@ Calculates the sum of elements in a dynamic array.
 
 ## Syntax
 
-`array_sum`(*`arr`*)
+`array_sum`(*array*)
 
 ## Arguments
 
-* *`arr`*: Input array.
+* *array*: Input array.
 
 ## Returns
 
@@ -31,7 +31,7 @@ Double type value with the sum of the elements of the array.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print arr=dynamic([1,2,3,4]) 
 | extend arr_sum=array_sum(arr)

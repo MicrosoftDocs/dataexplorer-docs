@@ -7,25 +7,23 @@ ms.author: orspodek
 ms.reviewer: yifats
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/03/2020
+ms.date: 05/06/2021
 ---
 # Show continuous export
 
-Returns the continuous export properties of *ContinuousExportName*. 
+Returns the properties of a specified continuous export or all continuous exports in the database.
 
 ## Syntax
 
 `.show` `continuous-export` *ContinuousExportName*
+
+`.show` `continuous-exports`
 
 ## Properties
 
 | Property             | Type   | Description                |
 |----------------------|--------|----------------------------|
 | ContinuousExportName | String | Name of continuous export. |
-
-`.show` `continuous-exports`
-
-Returns all continuous exports in the database. 
 
 ## Output
 
@@ -44,4 +42,3 @@ Returns all continuous exports in the database.
 | Name                | String   | Name of the continuous export                                           |
 | Query               | String   | Export query                                                            |
 | StartCursor         | String   | Starting point of the first execution of this continuous export         |
-

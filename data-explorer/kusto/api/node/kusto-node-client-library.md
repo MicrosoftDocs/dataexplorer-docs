@@ -22,7 +22,7 @@ Azure Data Explorer Node SDK is compatible with Node LTS (currently v6.14) and b
 * [Data ingest sample](https://github.com/Azure/azure-kusto-node/blob/master/azure-kusto-ingest/example.js)
 
 * [GitHub Repository](https://github.com/Azure/azure-kusto-node)
-    [![alt text](https://travis-ci.org/Azure/azure-kusto-node.svg?branch=master "azure-kusto-node")](https://travis-ci.org/Azure/azure-kusto-node)
+    [![alt text](https://travis-ci.org/Azure/azure-kusto-node.svg?branch=master "azure-kusto-node."](https://travis-ci.org/Azure/azure-kusto-node)
 
 * NPM packages:
 

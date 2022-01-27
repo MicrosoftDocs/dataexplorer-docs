@@ -20,8 +20,8 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* [Create a cluster and database](create-cluster-database-python.md)
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Install Python package
 
@@ -64,7 +64,7 @@ database_name = "mykustodatabase"
 principal_assignment_name = "clusterPrincipalAssignment1"
 #User email, application ID, or security group name
 principal_id = "xxxxxxxx"
-#AllDatabasesAdmin or AllDatabasesViewer
+#AllDatabasesAdmin, AllDatabasesMonitor or AllDatabasesViewer
 role = "AllDatabasesAdmin"
 tenant_id_for_principal = tenantId
 #User, App, or Group

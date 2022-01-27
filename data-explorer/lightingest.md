@@ -1,24 +1,26 @@
 ---
-title: Use LightIngest to ingest data to Azure Data Explorer.
+title: Use LightIngest to ingest data into Azure Data Explorer.
 description: Learn about LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
 author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 06/28/2020
+ms.date: 07/27/2021
 ---
 
-# Use LightIngest to ingest data to Azure Data Explorer
+# Use LightIngest to ingest data into Azure Data Explorer
  
 LightIngest is a command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder or from an Azure blob storage container.
 LightIngest is most useful when you want to ingest a large amount of data, because there is no time constraint on ingestion duration. It's also useful when you want to later query records according to the time they were created, and not the time they were ingested.
+
+To auto-generate a LightIngest command, see [Use ingestion wizard for one-time ingestion of historical data with LightIngest](generate-lightingest-command.md).
 
 ## Prerequisites
 
 * LightIngest - download it as part of the [Microsoft.Azure.Kusto.Tools NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)
 
-    :::image type="content" source="media/lightingest/lightingest-download-area.png" alt-text="Lightingest download":::
+    :::image type="content" source="media/lightingest/lightingest-download-area.png" alt-text="Lightingest download.":::
 
 * WinRAR - download it from [www.win-rar.com/download.html](http://www.win-rar.com/download.html)
 
@@ -32,7 +34,7 @@ LightIngest is most useful when you want to ingest a large amount of data, becau
 1. Navigate to the extracted *tools* directory on your computer.
 1. Delete the existing location information from the location bar.
 
-    :::image type="content" source="media/lightingest/lightingest-locationbar.png" alt-text="Delete existing location information for LightIngest in Azure Data Explorer":::
+    :::image type="content" source="media/lightingest/lightingest-locationbar.png" alt-text="Delete existing location information for LightIngest in Azure Data Explorer.":::
 
 
 1. Enter `cmd` and press **Enter**.
@@ -41,7 +43,7 @@ LightIngest is most useful when you want to ingest a large amount of data, becau
     > [!Tip]
     > For a list of supported command-line arguments, enter `LightIngest.exe /help`.
     >
-    > :::image type="content" source="media/lightingest/lightingest-cmd-line-help.png" alt-text="Command line help for LightIngest":::
+    > :::image type="content" source="media/lightingest/lightingest-cmd-line-help.png" alt-text="Command line help for LightIngest.":::
 
 1. Enter `ingest-` followed by the connection string to the Azure Data Explorer cluster that will manage the ingestion.
     Enclose the connection string in double quotes and follow the [Kusto connection strings specification](kusto/api/connection-strings/kusto.md).

@@ -17,8 +17,8 @@ This command runs in the context of a specific database. It moves the specified 
 The command requires [Table admin permission](../management/access-control/role-based-authorization.md) for the source and destination tables.
 
 > [!NOTE]
-> Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
-> For more information on extents, see [Extents (data shards) overview](extents-overview.md).
+> * For more information on extents, see [Extents (data shards) overview](extents-overview.md).
+> * A `.move` command either completes or fails for all source extents. There are no partial outcomes.
 
 ## Syntax
 

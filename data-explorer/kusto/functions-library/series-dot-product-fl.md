@@ -34,7 +34,7 @@ The function `series_dot_product_fl()` takes an expression containing two dynami
 
 For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let series_dot_product_fl=(vec1:dynamic, vec2:dynamic)
 {
@@ -55,7 +55,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Calculate the dot product of 2 numerical arrays")
 series_dot_product_fl(vec1:dynamic, vec2:dynamic)
@@ -68,7 +68,7 @@ series_dot_product_fl(vec1:dynamic, vec2:dynamic)
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 union
 (print 1 | project v1=range(1, 3, 1), v2=range(4, 6, 1)),
@@ -78,4 +78,4 @@ union
 
 ---
 
-:::image type="content" source="images/series-dot-product-fl/dot-product-result.png" alt-text="Table showing the result of dot product of 2 vectors using user-defined function series_dot_product_fl in Azure Data Explorer" border="false":::
+:::image type="content" source="images/series-dot-product-fl/dot-product-result.png" alt-text="Table showing the result of dot product of 2 vectors using user-defined function series_dot_product_fl in Azure Data Explorer." border="false":::

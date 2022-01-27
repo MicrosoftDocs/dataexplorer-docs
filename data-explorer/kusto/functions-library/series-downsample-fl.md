@@ -36,7 +36,7 @@ The function `series_downsample_fl()` [downsamples a time series by an integer f
 
 For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let series_downsample_fl=(tbl:(*), t_col:string, y_col:string, ds_t_col:string, ds_y_col:string, sampling_factor:int)
 {
@@ -64,7 +64,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Downsampling a series by an integer factor")
 series_downsample_fl(tbl:(*), t_col:string, y_col:string, ds_t_col:string, ds_y_col:string, sampling_factor:int)
@@ -84,7 +84,7 @@ series_downsample_fl(tbl:(*), t_col:string, y_col:string, ds_t_col:string, ds_y_
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 demo_make_series1
 | make-series num=count() on TimeStamp step 1h by OsVer
@@ -95,10 +95,10 @@ demo_make_series1
 ---
 
 The time series downsampled by 4:
-:::image type="content" source="images/series-downsample-fl/downsampling-demo.png" alt-text="Graph showing downsampling of a time series" border="false":::
+:::image type="content" source="images/series-downsample-fl/downsampling-demo.png" alt-text="Graph showing downsampling of a time series." border="false":::
 
 For reference, here is the original time series (before downsampling):
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 demo_make_series1
 | make-series num=count() on TimeStamp step 1h by OsVer

@@ -42,7 +42,7 @@ The function `series_fit_poly_fl()` applies a polynomial regression on a series.
 
 For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let series_fit_poly_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
 {
@@ -97,7 +97,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Fit a polynomial of a specified degree to a series")
 series_fit_poly_fl(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=false)
@@ -140,7 +140,7 @@ series_fit_poly_fl(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:stri
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 //
 // Fit fifth order polynomial to a regular (evenly spaced) time series, created with make-series
@@ -155,7 +155,7 @@ demo_make_series1
 
 ---
 
-:::image type="content" source="images/series-fit-poly-fl/usage-example.png" alt-text="Graph showing fifth order polynomial fit to a regular time series" border="false":::
+:::image type="content" source="images/series-fit-poly-fl/usage-example.png" alt-text="Graph showing fifth order polynomial fit to a regular time series." border="false":::
 
 ## Additional examples
 
@@ -163,7 +163,7 @@ The following examples assume the function is already installed:
 
 1. Test irregular (unevenly spaced) time series
     
-    <!-- csl: https://help.kusto.windows.net:443/Samples -->
+    <!-- csl: https://help.kusto.windows.net/Samples -->
     ```kusto
     let max_t = datetime(2016-09-03);
     demo_make_series1
@@ -177,11 +177,11 @@ The following examples assume the function is already installed:
     | render timechart with(ycolumns=num, fnum)
     ```
     
-    :::image type="content" source="images/series-fit-poly-fl/irregular-time-series.png" alt-text="Graph showing eighth order polynomial fit to an irregular time series" border="false":::
+    :::image type="content" source="images/series-fit-poly-fl/irregular-time-series.png" alt-text="Graph showing eighth order polynomial fit to an irregular time series." border="false":::
 
 1. Fifth order polynomial with noise on x & y axes
 
-    <!-- csl: https://help.kusto.windows.net:443/Samples -->
+    <!-- csl: https://help.kusto.windows.net/Samples -->
     ```kusto
     range x from 1 to 200 step 1
     | project x = rand()*5 - 2.3
@@ -196,4 +196,4 @@ The following examples assume the function is already installed:
         
     :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise.png" alt-text="Graph of fit of fifth order polynomial with noise on x & y axes":::
        
-    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="Coefficients of fit of fifth order polynomial with noise" border="false":::
+    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="Coefficients of fit of fifth order polynomial with noise." border="false":::

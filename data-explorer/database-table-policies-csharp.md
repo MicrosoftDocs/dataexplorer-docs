@@ -20,9 +20,9 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Prerequisites
 
-* Visual Studio 2019. If you don't have Visual Studio 2019, you can download and use the *free* [Visual Studio Community 2019](https://www.visualstudio.com/downloads/). Be sure to select **Azure development** during the Visual Studio setup.
-* An Azure subscription. If you need to, you can create a [free Azure account](https://azure.microsoft.com/free/) before you start.
-* [A test cluster and database](create-cluster-database-csharp.md).
+* Visual Studio 2019. Download and use the *free* [Visual Studio Community 2019](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 * [A test table](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
 
 ## Install C# NuGet
@@ -90,7 +90,7 @@ await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName
 Sets a cache policy for the table. The previous five days of data will be on the cluster SSD.
 
 ```csharp
-var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
+var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net/";
 var databaseName = "<DatabaseName>";
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
@@ -153,4 +153,4 @@ await kustoManagementClient.Databases.AddPrincipalsAsync(resourceGroupName, clus
 ```
 ## Next steps
 
-* [Read more about database and table policies](kusto/management/policies.md)
+* [Read more about database and table policies](./kusto/management/index.md)

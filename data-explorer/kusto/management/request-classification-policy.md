@@ -7,9 +7,9 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/18/2021
+ms.date: 04/30/2021
 ---
-# Request classification policy (Preview)
+# Request classification policy
 
 The classification process assigns incoming requests to a workload group, based on the characteristics of the requests. Tailor the classification logic by writing a user-defined function, as part of a cluster-level request classification policy.
 
@@ -35,6 +35,11 @@ The user-defined function has the following characteristics and behaviors:
     * The function fails for any reason.
 * Only one user-defined function can be designated at any given time.
 
+> [!IMPORTANT]
+> The request classification function will be evaluated for each request that runs on the cluster.
+> It is recommended to keep it as lightweight as possible, and not include heavy computations in it.
+> For example: Avoid having to evaluate many regular expressions as part of its execution.
+
 ### Requirements and limitations
 
 A classification function:
@@ -56,7 +61,7 @@ A classification function:
     | current_principal   | `string` | The fully qualified name of the principal identity that sent the request.       | `"aaduser=1793eb1f-4a18-418c-be4c-728e310c86d3;83af1c0e-8c6d-4f09-b249-c67a2e8fda65"` |
     | query_consistency   | `string` | For queries: the consistency of the query - `strongconsistency` or `weakconsistency`. This property can be set by the caller as part of the request's [Client request properties](../api/netfx/request-properties.md): The client request property to set is: `queryconsistency`.   | `"strongconsistency"`      |
     | request_description | `string` | Custom text that the author of the request can include. The text can be set by the caller as part of the request's [Client request properties](../api/netfx/request-properties.md): The client request property to set is: `request_description`.     | `"Some custom description"`       |
-    | request_text        | `string` | The obfuscated text of the request. Obfuscated string literals included in the query text are replaced by multiple of star (`*`) characters.      | `".show version"`    |
+    | request_text        | `string` | The obfuscated text of the request. Obfuscated string literals included in the query text are replaced by multiple of star (`*`) characters. **Note:** only the leading 65,536 characters of the request text are evaluated.      | `".show version"`    |
     | request_type        | `string` | The type of the request - `Command` or `Query`.            | `"Command"`               |
 
 ### Examples
@@ -84,4 +89,4 @@ case(current_principal_is_member_of('aadgroup=somesecuritygroup@contoso.com'), "
 
 ## Control commands
 
-Use these [control commands](request-classification-policy-commands.md) to manage a cluster's request classification.
+Use these [control commands](./show-cluster-policy-request-classification-command.md) to manage a cluster's request classification.

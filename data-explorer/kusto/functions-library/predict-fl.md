@@ -38,29 +38,29 @@ The function `predict_fl()` predicts using an existing trained machine learning 
 
 For ad hoc usage, embed the code using the [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+<!-- csl: https://help.kusto.windows.net/Samples -->
+~~~kusto
 let predict_fl=(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
     let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
     let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
-    let code =
-    '\n'
-    'import pickle\n'
-    'import binascii\n'
-    '\n'
-    'smodel = kargs["smodel"]\n'
-    'features_cols = kargs["features_cols"]\n'
-    'pred_col = kargs["pred_col"]\n'
-    'bmodel = binascii.unhexlify(smodel)\n'
-    'clf1 = pickle.loads(bmodel)\n'
-    'df1 = df[features_cols]\n'
-    'predictions = clf1.predict(df1)\n'
-    '\n'
-    'result = df\n'
-    'result[pred_col] = pd.DataFrame(predictions, columns=[pred_col])'
-    '\n'
-    ;
+    let code = ```if 1:
+        
+        import pickle
+        import binascii
+        
+        smodel = kargs["smodel"]
+        features_cols = kargs["features_cols"]
+        pred_col = kargs["pred_col"]
+        bmodel = binascii.unhexlify(smodel)
+        clf1 = pickle.loads(bmodel)
+        df1 = df[features_cols]
+        predictions = clf1.predict(df1)
+        
+        result = df
+        result[pred_col] = pd.DataFrame(predictions, columns=[pred_col])
+        
+    ```;
     samples
     | evaluate python(typeof(*), code, kwargs)
 };
@@ -76,7 +76,7 @@ OccupancyDetection
 | extend pred_Occupancy=false
 | invoke predict_fl(ML_Models, 'Occupancy', pack_array('Temperature', 'Humidity', 'Light', 'CO2', 'HumidityRatio'), 'pred_Occupancy')
 | summarize n=count() by Occupancy, pred_Occupancy
-```
+~~~
 
 # [Persistent](#tab/persistent)
 
@@ -84,38 +84,38 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+<!-- csl: https://help.kusto.windows.net/Samples -->
+~~~kusto
 .create function with (folder = "Packages\\ML", docstring = "Predict using ML model, build by Scikit-learn")
 predict_fl(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
     let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
     let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
-    let code =
-    '\n'
-    'import pickle\n'
-    'import binascii\n'
-    '\n'
-    'smodel = kargs["smodel"]\n'
-    'features_cols = kargs["features_cols"]\n'
-    'pred_col = kargs["pred_col"]\n'
-    'bmodel = binascii.unhexlify(smodel)\n'
-    'clf1 = pickle.loads(bmodel)\n'
-    'df1 = df[features_cols]\n'
-    'predictions = clf1.predict(df1)\n'
-    '\n'
-    'result = df\n'
-    'result[pred_col] = pd.DataFrame(predictions, columns=[pred_col])'
-    '\n'
-    ;
+    let code = ```if 1:
+        
+        import pickle
+        import binascii
+        
+        smodel = kargs["smodel"]
+        features_cols = kargs["features_cols"]
+        pred_col = kargs["pred_col"]
+        bmodel = binascii.unhexlify(smodel)
+        clf1 = pickle.loads(bmodel)
+        df1 = df[features_cols]
+        predictions = clf1.predict(df1)
+        
+        result = df
+        result[pred_col] = pd.DataFrame(predictions, columns=[pred_col])
+        
+    ```;
     samples
     | evaluate python(typeof(*), code, kwargs)
 }
-```
+~~~
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 //
 // Predicts room occupancy from sensors measurements, and calculates the confusion matrix
@@ -134,7 +134,7 @@ OccupancyDetection
 ---
 
 Confusion matrix:
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 Occupancy	pred_Occupancy	n
 TRUE	    TRUE	        3006

@@ -46,12 +46,22 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 |[series_fbprophet_forecast_fl()](series-fbprophet-forecast-fl.md)|Forecast time series values using the Prophet algorithm. |
 |[series_moving_avg_fl()](series-moving-avg-fl.md)|Apply a moving average filter on a series. |
 |[series_rolling_fl()](series-rolling-fl.md)|Apply a rolling aggregation function on a series. |
+|[time_weighted_avg_fl()](time-weighted-avg-fl.md)|Calculates the time weighted average of a metric. |
+|[time_window_rolling_avg_fl()](time-window-rolling-avg-fl.md)|Calculates the rolling average of a metric over a constant duration time window. |
 
 ## Statistical and probability functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
+|[bartlett_test_fl()](bartlett-test-fl.md)| Perform the Bartlett test. | 
 |[binomial_test_fl()](binomial-test-fl.md)|Perform the binomial test. |
 |[comb_fl()](comb-fl.md)|Calculate *C(n, k)*, the number of combinations for selection of k items out of n. |
 |[factorial_fl()](factorial-fl.md)|Calculate *n!*, the factorial of n. |
+|[ks_test_fl()](ks-test-fl.md)| Perform a Kolmogorov Smirnov test. |
+|[levene_test_fl()n](levene-test-fl.md)| Perform a Levene test. | 
+|[normality_test_fl()](normality-test-fl.md) | Performs the Normality Test.|
+|[mann_whitney_u_test_fl()](mann-whitney-u-test-fl.md)| Perform a Mann-Whitney U Test. | 
+|[pair_probabilities_fl()](pair-probabilities-fl.md)|Calculate various probabilities and related metrics for a pair of categorical variables. |
 |[perm_fl()](perm-fl.md)|Calculate *P(n, k)*, the number of permutations for selection of k items out of n. |
+|[two_sample_t_test_fl()](two-sample-t-test-fl.md)| Perform the two sample t-test. |
+|[wilcoxon_test_fl()](wilcoxon-test-fl.md)| Perform the Wilcoxon Test. |

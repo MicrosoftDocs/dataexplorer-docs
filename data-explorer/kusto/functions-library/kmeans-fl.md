@@ -34,25 +34,25 @@ The function `kmeans_fl()` clusterizes a dataset using the [k-means algorithm](h
 
 For ad hoc usage, embed the code using the [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+<!-- csl: https://help.kusto.windows.net/Samples -->
+~~~kusto
 let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
 {
     let kwargs = pack('k', k, 'features', features, 'cluster_col', cluster_col);
-    let code =
-        '\n'
-        'from sklearn.cluster import KMeans\n'
-        '\n'
-        'k = kargs["k"]\n'
-        'features = kargs["features"]\n'
-        'cluster_col = kargs["cluster_col"]\n'
-        '\n'
-        'km = KMeans(n_clusters=k)\n'
-        'df1 = df[features]\n'
-        'km.fit(df1)\n'
-        'result = df\n'
-        'result[cluster_col] = km.labels_\n'
-        ;
+    let code = ```if 1:
+        
+        from sklearn.cluster import KMeans
+        
+        k = kargs["k"]
+        features = kargs["features"]
+        cluster_col = kargs["cluster_col"]
+        
+        km = KMeans(n_clusters=k)
+        df1 = df[features]
+        km.fit(df1)
+        result = df
+        result[cluster_col] = km.labels_
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 };
@@ -66,7 +66,7 @@ OccupancyDetection
 | extend cluster_id=double(null)
 | invoke kmeans_fl(5, pack_array("Temperature", "Humidity", "Light", "CO2", "HumidityRatio"), "cluster_id")
 | sample 10
-```
+~~~
 
 # [Persistent](#tab/persistent)
 
@@ -74,34 +74,34 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+<!-- csl: https://help.kusto.windows.net/Samples -->
+~~~kusto
 .create function with (folder = "Packages\\ML", docstring = "K-Means clustering")
 kmeans_fl(tbl:(*), k:int, features:dynamic, cluster_col:string)
 {
     let kwargs = pack('k', k, 'features', features, 'cluster_col', cluster_col);
-    let code =
-        '\n'
-        'from sklearn.cluster import KMeans\n'
-        '\n'
-        'k = kargs["k"]\n'
-        'features = kargs["features"]\n'
-        'cluster_col = kargs["cluster_col"]\n'
-        '\n'
-        'km = KMeans(n_clusters=k)\n'
-        'df1 = df[features]\n'
-        'km.fit(df1)\n'
-        'result = df\n'
-        'result[cluster_col] = km.labels_\n'
-        ;
+    let code = ```if 1:
+        
+        from sklearn.cluster import KMeans
+        
+        k = kargs["k"]
+        features = kargs["features"]
+        cluster_col = kargs["cluster_col"]
+        
+        km = KMeans(n_clusters=k)
+        df1 = df[features]
+        km.fit(df1)
+        result = df
+        result[cluster_col] = km.labels_
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 }
-```
+~~~
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 //
 // Clusterize room occupancy from sensors measurements.
@@ -117,7 +117,7 @@ OccupancyDetection
 
 ---
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 Timestamp	                Temperature Humidity	Light  CO2         HumidityRatio Occupancy Test	 cluster_id
 2015-02-02 14:38:00.0000000	23.64       27.1        473    908.8       0.00489763    TRUE	   TRUE  1
@@ -134,7 +134,7 @@ Timestamp	                Temperature Humidity	Light  CO2         HumidityRatio 
 
 Extract the centroids and size of each cluster, with the function already installed:
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 OccupancyDetection
 | extend cluster_id=double(null)
@@ -144,7 +144,7 @@ OccupancyDetection
 
 ```
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 cluster_id	Temperature        Humidity            Light            CO2                HumidityRatio        num
 0	        20.3507186863278   27.1521395395781    10.1995789883291	486.804272186974   0.00400132147662714	11124

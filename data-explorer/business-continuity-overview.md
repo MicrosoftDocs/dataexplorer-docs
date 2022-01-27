@@ -89,7 +89,7 @@ The following are popular disaster recovery configurations, and each is describe
 
 This configuration is also called "always-on". For critical application deployments with no tolerance for outages, you should use multiple Azure Data Explorer clusters across Azure paired regions. Set up ingestion, processing, and curation in parallel to all of the clusters. The cluster SKU must be the same across regions. Azure will ensure that updates are rolled out and staggered across Azure paired regions. An Azure region outage won't cause an application outage. You may experience some latency or performance degradation.
 
-:::image type="content" source="media/business-continuity-overview/active-active-active-n.png" alt-text="Active-active-active-n configuration":::
+:::image type="content" source="media/business-continuity-overview/active-active-active-n.png" alt-text="Active-active-active-n configuration.":::
 
 | **Configuration** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- |
@@ -99,7 +99,7 @@ This configuration is also called "always-on". For critical application deployme
 
 This configuration is identical to the [active-active-active configuration](#active-active-active-configuration), but only involves two Azure paired regions. Configure dual ingestion, processing, and curation. Users are routed to the nearest region. The cluster SKU must be the same across regions.
 
-:::image type="content" source="media/business-continuity-overview/active-active.png" alt-text="Active-active configuration":::
+:::image type="content" source="media/business-continuity-overview/active-active.png" alt-text="Active-active configuration.":::
 
 | **Configuration** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- |
@@ -109,7 +109,7 @@ This configuration is identical to the [active-active-active configuration](#act
 
 The Active-Hot configuration is similar to the [Active-Active configuration](#active-active-configuration) in dual ingest, processing, and curation. However, the standby cluster is offline to end users, and doesn't need to be in the same SKU as the primary. The hot standby cluster can also be of a smaller SKU and scale, and as such is less performant. In a disaster scenario, the standby cluster is brought online, and scaled up.
 
-:::image type="content" source="media/business-continuity-overview/active-hot-standby.png" alt-text="Active-hot standby configuration":::
+:::image type="content" source="media/business-continuity-overview/active-hot-standby.png" alt-text="Active-hot standby configuration.":::
 
 | **Configuration** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- |
@@ -119,7 +119,7 @@ The Active-Hot configuration is similar to the [Active-Active configuration](#ac
 
 This solution offers the least resiliency (highest RPO and RTO), is the lowest in cost and highest in effort. In this configuration, there's no data recovery cluster. Configure continuous export of curated data (unless raw and intermediate data is also required) to a storage account that is configured GRS (Geo Redundant Storage). A data recovery cluster is spun up if there is a disaster recovery scenario. At that time, DDLs, configuration, policies, and processes are applied. Data is ingested from storage with the ingestion property [kustoCreationTime](ingest-data-event-grid-overview.md) to over-ride the ingestion time that defaults to system time. 
 
-:::image type="content" source="media/business-continuity-overview/on-demand-data-recovery-cluster.png" alt-text="On-demand data recovery cluster configuration":::
+:::image type="content" source="media/business-continuity-overview/on-demand-data-recovery-cluster.png" alt-text="On-demand data recovery cluster configuration.":::
 
 | **Configuration** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- |
@@ -140,7 +140,6 @@ Regardless of which disaster recovery configuration is chosen, follow these best
 
 * All database objects, policies, and configurations should be persisted in source control so they can be released to the cluster from your release automation tool. For more information, see [Azure DevOps support for Azure Data Explorer](devops.md). 
 * Design, develop, and implement validation routines to ensure all clusters are in-sync from a data perspective. Azure Data Explorer supports [cross cluster joins](kusto/query/cross-cluster-or-database-queries.md?pivots=azuredataexplorer). A simple count or rows across tables can help validate.
-* Use [continuous export](kusto/management/data-export/continuous-data-export.md) capability and export data within Azure Data Explorer tables to an Azure Data Lake store. Ensure selection of GRS for the highest resilience.
 * Release procedures should involve governance checks and balances that ensure mirroring of the clusters.
 * Be fully cognizant of what it takes to build a cluster from scratch.
 * Create a checklist of deployment units. Your list will be unique to your needs, but should include: deployment scripts, ingestion connections, BI tools, and other important configurations. 

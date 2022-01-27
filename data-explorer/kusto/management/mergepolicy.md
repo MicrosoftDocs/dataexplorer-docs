@@ -62,7 +62,7 @@ The merge policy contains the following properties:
 * **Lookback**:
     * Defines the timespan during which extents are considered for rebuild/merge.
 	* Supported values: 
-	  * `Default` - The system-managed default. This is the recommended and default value.
+	  * `Default` - The system-managed default. This is the recommended and default value, whose period is currently set to 14 days.
 	  * `All` - All extents, hot and cold, are included.
 	  * `HotCache` - Only hot extents are included.
       * `Custom` - Only extents whose age is under the provided `CustomPeriod` are included. `CustomPeriod` is a timespan value.
@@ -104,4 +104,4 @@ The following example shows the default policy:
 
 When a database is created, it's set with the default merge policy values mentioned above. The policy is by default inherited by all tables created in the database, unless their policies are explicitly overridden at table-level.
 
-For more information, see [control commands that allow you to manage merge policies for databases or tables](../management/merge-policy.md).
+For more information, see [control commands that allow you to manage merge policies for databases or tables](./show-table-merge-policy-command.md).

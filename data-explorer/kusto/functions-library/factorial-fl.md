@@ -33,11 +33,11 @@ The function `factorial_fl()`calculates [factorial](https://en.wikipedia.org/wik
 
 For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let factorial_fl=(n:int)
 {
-    tolong(gamma(n+1))
+    gamma(n+1)
 }
 ;
 range x from 1 to 10 step 3
@@ -50,18 +50,18 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Calculate factorial")
 factorial_fl(n:int)
 {
-    tolong(gamma(n+1))
+    gamma(n+1)
 }
 ```
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range x from 1 to 10 step 3
 | extend fx = factorial_fl(x)

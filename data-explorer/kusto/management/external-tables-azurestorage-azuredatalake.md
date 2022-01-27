@@ -1,6 +1,6 @@
 ---
-title: Create and alter external tables in Azure Storage or Azure Data Lake - Azure Data Explorer
-description: This article describes how to create and alter external tables in Azure Storage or Azure Data Lake
+title: Create and alter Azure Storage external tables - Azure Data Explorer
+description: This article describes how to create and alter external tables based on Azure Blob Storage or Azure Data Lake
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 03/24/2020
 ---
 
-# Create and alter external tables in Azure Storage or Azure Data Lake
+# Create and alter Azure Storage external tables
 
 The following command describes how to create an external table located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2. 
 
@@ -21,7 +21,7 @@ For an introduction to the external Azure Storage tables feature, see [Query dat
 **Syntax**
 
 (`.create` `|` `.alter` `|` `.create-or-alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
-`kind` `=` (`blob` `|` `adl`)  
+`kind` `=` `storage`  
 [`partition` `by` `(` *[Partitions](#partitions)* `)` [`pathformat` `=` `(` *[PathFormat](#path-format)* `)`]]  
 `dataformat` `=` *[Format](#format)*  
 `(` *[StorageConnectionString](#connection-string)* [`,` ...] `)`   
@@ -31,7 +31,7 @@ Creates or alters a new external table in the database in which the command is e
 
 > [!NOTE]
 > * If the table exists, `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
-> * Altering the schema, format, or the partition definition of an external blob table isn't supported. 
+> * The external table is not accessed during creation time. It will only be accessed during query / export. You can use the `validateNotEmpty` (optional) property during creation time to make sure the external table definition is valid and that the underlying storage is accessible.
 > * The operation requires [database user permission](../management/access-control/role-based-authorization.md) for `.create` and [table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. 
 
 **Parameters**
@@ -54,10 +54,18 @@ where *ColumnName* adheres to [entity naming](../query/schema-entities/entity-na
 > [!TIP]
 > If the external data schema is unknown, use the [infer\_storage\_schema](../query/inferstorageschemaplugin.md) plug-in, which helps infer the schema based on external file contents.
 
+<a name="kind"></a>
+*Kind*
+
+The type of the external table. In thise case, `storage` should to be used (rather than `sql`).
+
+>[!NOTE]
+> Deprecated terms:  `blob` for Blob Azure Storage or Azure Data Lake Gen 2 Storage, `adl` for Azure Data Lake Gen 1 Storage.
+
 <a name="partitions"></a>
 *Partitions*
 
-Comma-separated list of columns by which an external table is partitioned. Partition column can exist in the data file itself, or sa part of the file path (read more on [virtual columns](#virtual-columns)).
+Comma-separated list of columns by which an external table is partitioned. Partition column can exist in the data file itself, or as part of the file path (read more on [virtual columns](#virtual-columns)).
 
 Partitions list is any combination of partition columns, specified using one of the following forms:
 
@@ -127,8 +135,9 @@ The data format, any of the [ingestion formats](../../ingestion-supported-format
 <a name="connection-string"></a>
 *StorageConnectionString*
 
-One or more paths to Azure Blob Storage blob containers or Azure Data Lake Store file systems (virtual directories or folders), including credentials.
-See [storage connection strings](../api/connection-strings/storage.md) for details.
+One or more paths to Azure Blob Storage blob containers, Azure Data Lake Gen 2 filesystems or Azure Data Lake Gen 1 containers, including credentials.
+The external table storage type is determined by the provided connection strings.
+See [storage connection strings](../api/connection-strings/storage.md) for details. 
 
 > [!TIP]
 > Provide more than a single storage account to avoid storage throttling while [exporting](data-export/export-data-to-an-external-table.md) large amounts of data to the external table. Export will distribute the writes between all accounts provided. 
@@ -160,18 +169,18 @@ A non-partitioned external table. Data files are expected to be placed directly 
 
 ```kusto
 .create external table ExternalTable (x:long, s:string)  
-kind=blob 
+kind=storage 
 dataformat=csv 
 ( 
    h@'https://storageaccount.blob.core.windows.net/container1;secretKey' 
 ) 
 ```
 
-An external table partitioned by date. Date files are expected to be placed in directories of default datetime format `yyyy/MM/dd`:
+An external table partitioned by date. Data files are expected to be placed under directories of the default datetime format `yyyy/MM/dd`:
 
 ```kusto
 .create external table ExternalTable (Timestamp:datetime, x:long, s:string) 
-kind=adl
+kind=storage
 partition by (Date:datetime = bin(Timestamp, 1d)) 
 dataformat=csv 
 ( 
@@ -183,7 +192,7 @@ An external table partitioned by month, with a directory format of `year=yyyy/mo
 
 ```kusto
 .create external table ExternalTable (Timestamp:datetime, x:long, s:string) 
-kind=blob 
+kind=storage 
 partition by (Month:datetime = startofmonth(Timestamp)) 
 pathformat = (datetime_pattern("'year='yyyy'/month='MM", Month)) 
 dataformat=csv 
@@ -196,7 +205,7 @@ An external table partitioned first by customer name, then by date. Expected dir
 
 ```kusto
 .create external table ExternalTable (Timestamp:datetime, CustomerName:string) 
-kind=blob 
+kind=storage 
 partition by (CustomerNamePart:string = CustomerName, Date:datetime = startofday(Timestamp)) 
 pathformat = ("customer_name=" CustomerNamePart "/" Date)
 dataformat=csv 
@@ -209,7 +218,7 @@ An external table partitioned first by customer name hash (modulo ten), then by 
 
 ```kusto
 .create external table ExternalTable (Timestamp:datetime, CustomerName:string) 
-kind=blob 
+kind=storage 
 partition by (CustomerId:long = hash(CustomerName, 10), Date:datetime = startofday(Timestamp)) 
 pathformat = ("customer_id=" CustomerId "/dt=" datetime_pattern("yyyyMMdd", Date)) 
 dataformat=csv 
@@ -236,14 +245,14 @@ external_table("ExternalTable")
 <a name="virtual-columns"></a>
 **Virtual columns**
 
-When data is exported from Spark, partition columns (that are specified in dataframe writer's `partitionBy` method) are not written to data files. 
-This process avoids data duplication because the data already present in "folder" names. For example, `column1=<value>/column2=<value>/`, and Spark can recognize it upon read.
+When data is exported from Spark, partition columns (that are provided to the dataframe writer's `partitionBy` method) are not written to data files. 
+This process avoids data duplication because the data is already present in the folder names (for example, `column1=<value>/column2=<value>/`), and Spark can recognize it upon read.
 
 External tables support the following syntax for specifying virtual columns:
 
 ```kusto
 .create external table ExternalTable (EventName:string, Revenue:double)  
-kind=blob  
+kind=storage  
 partition by (CustomerName:string, Date:datetime)  
 pathformat = ("customer=" CustomerName "/date=" datetime_pattern("yyyyMMdd", Date))  
 dataformat=parquet
@@ -263,11 +272,11 @@ external_table("ExternalTable")
 <a name="file-filtering"></a>
 **File filtering logic**
 
-When querying an external table, the query engine improves performance by filtering out irrelevant external storage files. The process of iterating on files and deciding whether a file should be processed is described below.
+When querying an external table, the query engine improves performance by filtering out irrelevant external storage files. The process of iterating files and deciding whether a file should be processed is as follows:
 
 1. Build a URI pattern that represents a place where files are found. Initially, the URI pattern equals a connection string provided as part of the external table definition. If there are any partitions defined, they are rendered using *[PathFormat](#path-format)*, then appended to the URI pattern.
 
-2. For all files found under the URI patterns(s) created, check:
+2. For all files found under the URI patterns(s) created, check that:
 
    * Partition values match predicates used in a query.
    * Blob name starts with `NamePrefix`, if such a property is defined.
@@ -300,7 +309,7 @@ where *MaxResults* is an optional parameter, which can be set to limit the numbe
 | Partition        | dynamic | Dynamic object describing file partitions for partitioned external table |
 
 > [!TIP]
-> Iterating on all files referenced by an external table can be quite costly, depending on the number of files. Make sure to use `limit` parameter if you just want to see some URI examples.
+> Iterating over all files referenced by an external table can be quite costly, depending on the number of files. Make sure to use `limit` parameter if you just want to see some URI examples.
 
 **Examples:**
 
@@ -393,6 +402,7 @@ Drops the mapping from the database.
 ```kusto
 .drop external table MyExternalTable mapping "Mapping1" 
 ```
+
 ## Next steps
 
 * [Query external tables](../../data-lake-query-data.md).

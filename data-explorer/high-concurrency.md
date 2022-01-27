@@ -16,7 +16,7 @@ Highly concurrent applications are needed in scenarios with a large user base, w
 Use cases include large-scale monitoring and alerting dashboards. Examples include Microsoft products and services such as [Azure Monitor](https://azure.microsoft.com/services/monitor/), [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/), and [Playfab](https://playfab.com/). All these services use Azure Data Explorer for serving high-concurrency workloads. Azure Data Explorer is a fast, fully managed big data analytics service for real-time analytics on large volumes of data streaming from applications, websites, IoT devices, and more.
 
 > [!NOTE]
-> The actual number of queries that can run concurrently on a cluster depends on factors such as cluster resources, data volumes, query complexity, and usage patterns.
+> The actual number of queries that can run concurrently on a cluster depends on factors such as cluster SKU, data volumes, query complexity, and usage patterns.
 
 To set up for high-concurrency applications, design the back-end architecture as follows:
 
@@ -79,6 +79,8 @@ To improve the performance of queries on the follower cluster, you can enable [p
 
 Use the following methods to optimize your queries for high concurrency.
 
+Follow [query best practices](kusto/query/best-practices.md) so that your queries are as efficient as possible.
+
 ### Use a query results cache
 
 When more than one user loads the same dashboard at a similar time, the dashboard to the second and following users can be served from the cache. This setup provides high performance with almost no CPU usage. Use the [query results cache](kusto/query/query-results-cache.md) feature, and send query results cache configuration with the query by using the `set` statement.
@@ -88,10 +90,6 @@ When more than one user loads the same dashboard at a similar time, the dashboar
 ### Configure query consistency
 
 There are two query consistency models: *strong* (the default) and *weak*. With strong consistency, only an up-to-date consistent state of data is seen, whatever compute node receives the query. With weak consistency, nodes periodically refresh their copy of the metadata, which leads to a latency of one to two minutes in the synchronization of metadata changes. With the weak model, you can reduce the load on the node that manages the metadata changes, which provides higher concurrency than the default strong consistency. Set this configuration in [client request properties](kusto/api/netfx/request-properties.md) and in the Grafana data source configurations.
-
-### Optimize queries
-
-Follow [query best practices](kusto/query/best-practices.md) so that your queries are as efficient as possible.
 
 ## Set cluster policies
 

@@ -30,7 +30,7 @@ without affecting existing records, and without modifying the table's schema.
   an `OperationId` value that can then be used with the `.show operation`
   command to retrieve the ingestion completion status and results.
   
-* *TableName*: The name of the table to ingest data to.
+* *TableName*: The name of the table to ingest data into.
   The table name is always relative to the database in context,
   and its schema is the schema that will be assumed for the data
   if no schema mapping object is provided.

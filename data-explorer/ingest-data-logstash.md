@@ -20,9 +20,9 @@ ms.date: 11/26/2020
 
 ## Prerequisites
 
-* An Azure subscription. If you don't have one, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* An Azure Data Explorer [test cluster and database](create-cluster-database-portal.md)
-* Logstash version 6+ [Installation instructions](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html)
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
+* Logstash version 6+ [Installation instructions](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html).
 
 ## Create a table
 
@@ -101,7 +101,7 @@ output {
             app_tenant => "<tenant id>"
             database => "<database name>"
             table => "<target table>" # logs as defined above
-            mapping => "<mapping name>" # basicmsg as defined above
+            json_mapping => "<mapping name>" # basicmsg as defined above
     }
 }
 ```
@@ -113,7 +113,7 @@ output {
 | **app_id**,  **app_key**, and **app_tenant**| Credentials required to connect to Azure Data Explorer. Be sure to use an application with ingest privileges. |
 | **database**| Database name to place events. |
 | **table** | Target table name to place events. |
-| **mapping** | Mapping is used to map an incoming event json string into the correct row format (defines which property goes into which column). |
+| **json_mapping** | Mapping is used to map an incoming event json string into the correct row format (defines which property goes into which column). |
 
 ## Run Logstash
 

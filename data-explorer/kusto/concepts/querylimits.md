@@ -7,8 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/12/2020
-ms.localizationpriority: high 
+ms.date: 06/16/2021
 ---
 # Query limits
 
@@ -26,6 +25,8 @@ in the form of default query limits. If you're considering removing these limits
   * For example, for a cluster that's set-up on D14v2 SKU, where each machine has 16 vCores, the default limit is `16 cores x10 = 160`.
 * The default value can be changed by configuring the [request rate limit policy](../management/request-rate-limit-policy.md) of the `default` workload group.
   * The actual number of requests that can run concurrently on a cluster depends on various factors. The most dominant factors are cluster SKU, cluster's available resources, and usage patterns. The policy can be configured based on load tests performed on production-like usage patterns.
+ 
+ For more information, see [Optimize for high concurrency with Azure Data Explorer](../../high-concurrency.md).
 
 ## Limit on result set size (result truncation)
 
@@ -56,7 +57,7 @@ There are several strategies for dealing with this error.
 Methods for reducing the result set size produced by the query include:
 
 * Use the [summarize operator](../query/summarizeoperator.md) group and aggregate over
-   similar records in the query output. Potentially sample some columns by using the [any aggregation function](../query/any-aggfunction.md).
+   similar records in the query output. Potentially sample some columns by using the [take_any aggregation function](../query/take-any-aggfunction.md).
 * Use a [take operator](../query/takeoperator.md) to sample the query output.
 * Use the [substring function](../query/substringfunction.md) to trim wide free-text columns.
 * Use the [project operator](../query/projectoperator.md) to drop any uninteresting column from the result set.
@@ -216,8 +217,11 @@ If `query_fanout_nodes_percent` or `query_fanout_threads_percent` are set multip
 ## Limit on query complexity
 
 During query execution, the query text is transformed into a tree of relational operators representing the query.
-If the tree depth exceeds an internal threshold of several thousand levels, the query is considered too complex for processing, and will fail with an error code. The failure indicates that the relational operators tree exceeds its limits.
-Limits are exceeded because of queries with long lists of binary operators that are chained together. For example:
+If the tree depth exceeds an internal threshold, the query is considered too complex for processing, and will fail with an error code. The failure indicates that the relational operators tree exceeds its limits.
+
+The following examples show common query patterns that can cause the query to exceed this limit and fail:
+
+* a long lists of binary operators that are chained together. For example:
 
 ```kusto
 T 
@@ -233,3 +237,11 @@ For this specific case, rewrite the query using the [`in()`](../query/inoperator
 T 
 | where Column in ("value1", "value2".... "valueN")
 ```
+
+* a query which has a union operator that is running too wide schema analysis especially that the default flavor of union is to return “outer” union schema (meaning – that output will include all columns of the underlying table).
+
+The suggestion in this case is to review the query and reduce the columns being used by the query.
+
+## Next steps
+
+* [Optimize for high concurrency with Azure Data Explorer](../../high-concurrency.md)

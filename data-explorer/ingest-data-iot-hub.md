@@ -27,10 +27,10 @@ For general information about ingesting into Azure Data Explorer from IoT Hub, s
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* Create [a test cluster and database](create-cluster-database-portal.md) with database name *testdb*.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 * [A sample app](https://github.com/Azure-Samples/azure-iot-samples-csharp) and documentation for simulating a device.
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) to run the sample app.
+* [.NET SDK](https://dotnet.microsoft.com/download) to compile and run the sample app.
 
 ## Create an Iot Hub
 
@@ -46,7 +46,7 @@ Now you create a table in Azure Data Explorer to which IoT Hubs will send data. 
 
 1. In the Azure portal, navigate to your cluster and select **Query**.
 
-    ![ADX query in portal](media/ingest-data-iot-hub/adx-initiate-query.png)
+    ![ADX query in portal.](media/ingest-data-iot-hub/adx-initiate-query.png)
 
 1. Copy the following command into the window and select **Run** to create the table (TestTable) which will receive the ingested data.
 
@@ -54,7 +54,7 @@ Now you create a table in Azure Data Explorer to which IoT Hubs will send data. 
     .create table TestTable (temperature: real, humidity: real)
     ```
     
-    ![Run create query](media/ingest-data-iot-hub/run-create-query.png)
+    ![Run create query.](media/ingest-data-iot-hub/run-create-query.png)
 
 1. Copy the following command into the window and select **Run** to map the incoming JSON data to the column names and data types of the table (TestTable).
 
@@ -70,17 +70,17 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
 
 1. Under the cluster you created, select **Databases** then select the database that you created **testdb**.
     
-    ![Select test database](media/ingest-data-iot-hub/select-database.png)
+    ![Select test database.](media/ingest-data-iot-hub/select-database.png)
 
 1. Select **Data ingestion** and **Add data connection**.
 
-    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-connection.png" alt-text="Create data connection to IoT Hub- Azure Data Explorer":::
+    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-connection.png" alt-text="Create data connection to IoT Hub- Azure Data Explorer.":::
 
 ### Create a data connection
 
 1. Fill out the form with the following information. 
     
-    :::image type="content" source="media/ingest-data-iot-hub/data-connection-pane.png" alt-text="Data connection pane in IoT Hub - Azure Data Explorer":::
+    :::image type="content" source="media/ingest-data-iot-hub/data-connection-pane.png" alt-text="Data connection pane in IoT Hub - Azure Data Explorer.":::
 
     |**Setting** | **Field description**|
     |---|---|
@@ -97,7 +97,7 @@ For this article, you use static routing, where you specify the table name, data
 
 1. Fill out the following routing settings:
     
-    :::image type="content" source="media/ingest-data-iot-hub/default-routing-settings.png" alt-text="Default routing properties - IoT Hub - Azure Data Explorer":::
+    :::image type="content" source="media/ingest-data-iot-hub/default-routing-settings.png" alt-text="Default routing properties - IoT Hub - Azure Data Explorer.":::
 
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -127,13 +127,13 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 The simulated device application connects to a device-specific endpoint on your IoT hub and sends simulated temperature and humidity telemetry.
 
-1. Download the sample C# project from https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip and extract the ZIP archive.
+1. Download the sample C# project from https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/refs/heads/main.zip and extract the ZIP archive.
 
-1. In a local terminal window, navigate to the root folder of the sample C# project. Then navigate to the **iot-hub\Quickstarts\simulated-device** folder.
+1. In a local terminal window, navigate to the root folder of the sample C# project. Then navigate to the **iot-hub\Quickstarts\SimulatedDevice** folder.
 
-1. Open the **SimulatedDevice.cs** file in a text editor of your choice.
+1. Open the **Program.cs** file in a text editor of your choice.
 
-    Replace the value of the `s_connectionString` variable with the device connection string from [Register a device to the IoT Hub](#register-a-device-to-the-iot-hub). Then save your changes to **SimulatedDevice.cs** file.
+    Replace the value of the `s_connectionString` variable with the device connection string from [Register a device to the IoT Hub](#register-a-device-to-the-iot-hub). Then save your changes to **Program.cs** file.
 
 1. In the local terminal window, run the following commands to install the required packages for simulated device application:
 
@@ -149,7 +149,7 @@ The simulated device application connects to a device-specific endpoint on your 
 
     The following screenshot shows the output as the simulated device application sends telemetry to your IoT hub:
 
-    ![Run the simulated device](media/ingest-data-iot-hub/simulated-device.png)
+    ![Run the simulated device.](media/ingest-data-iot-hub/simulated-device.png)
 
 ## Review the data flow
 
@@ -157,7 +157,7 @@ With the app generating data, you can now see the data flow from the IoT hub to 
 
 1. In the Azure portal, under your IoT hub, you see the spike in activity while the app is running.
 
-    ![IoT Hub metrics](media/ingest-data-iot-hub/iot-hub-metrics.png)
+    ![IoT Hub metrics.](media/ingest-data-iot-hub/iot-hub-metrics.png)
 
 1. To check how many messages have made it to the database so far, run the following query in your test database.
 
@@ -174,10 +174,10 @@ With the app generating data, you can now see the data flow from the IoT hub to 
 
     The result set:
     
-    ![Show ingested data results](media/ingest-data-iot-hub/show-ingested-data.png)
+    ![Show ingested data results.](media/ingest-data-iot-hub/show-ingested-data.png)
 
     > [!NOTE]
-    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes or 500 MB of data, by default, so you may experience a latency. See [batching policy](kusto/management/batchingpolicy.md) for aggregation options. 
+    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. See [batching policy](kusto/management/batchingpolicy.md) for aggregation options. 
     > * Configure your table to support streaming and remove the lag in response time. See [streaming policy](kusto/management/streamingingestionpolicy.md). 
 
 ## Clean up resources
@@ -186,9 +186,9 @@ If you don't plan to use your IoT Hub again, clean up your resource group to avo
 
 1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group you created.  
 
-    If the left menu is collapsed, select ![Expand button](media/ingest-data-event-hub/expand.png) to expand it.
+    If the left menu is collapsed, select ![Expand button.](media/ingest-data-event-hub/expand.png) to expand it.
 
-   ![Select resource group to delete](media/ingest-data-iot-hub/delete-resources-select.png)
+   ![Select resource group to delete.](media/ingest-data-iot-hub/delete-resources-select.png)
 
 1. Under **test-resource-group**, select **Delete resource group**.
 

@@ -13,7 +13,7 @@ ms.date: 12/03/2020
 
 # Visualize data using the Azure Data Explorer connector for Power BI
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Power BI is a business analytics solution that lets you visualize your data and share the results across your organization. Azure Data Explorer provides three options for connecting to data in Power BI: use the built-in connector, import a query from Azure Data Explorer, or use a SQL query. This article shows you how to use the built-in connector to get data and visualize it in a Power BI report. Using the Azure Data Explorer native connector for creating Power BI dashboards is straightforward. The Power BI connector supports [Import and Direct Query connectivity modes](/power-bi/desktop-directquery-about). You can build dashboards using **Import** or **DirectQuery** mode depending on the scenario, scale, and performance requirements. 
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Power BI is a business analytics solution that lets you visualize your data and share the results across your organization. Azure Data Explorer provides three options for connecting to data in Power BI: use the built-in connector, import a query from Azure Data Explorer, or use a SQL query. This article shows you how to use the built-in connector to get data and visualize it in a Power BI report. Using the Azure Data Explorer native connector for creating Power BI dashboards is straightforward. The Power BI connector supports [Import and Direct Query connectivity modes](/power-bi/desktop-directquery-about). You can build dashboards using **Import** or **DirectQuery** mode depending on the scenario, scale, and performance requirements. 
 
 ## Prerequisites
 
@@ -29,15 +29,15 @@ First, you connect to the Azure Data Explorer help cluster, then you bring in a 
 
 1. In Power BI Desktop, on the **Home** tab, select **Get Data** then **More**.
 
-    ![Get data](media/power-bi-connector/get-data-more.png)
+    ![Get data.](media/power-bi-connector/get-data-more.png)
 
 1. Search for *Azure Data Explorer*, select **Azure Data Explorer** then **Connect**.
 
-    ![Search and get data](media/power-bi-connector/search-get-data.png)
+    ![Search and get data.](media/power-bi-connector/search-get-data.png)
 
 1. On the **Azure Data Explorer (Kusto)** screen, fill out the form with the following information.
 
-    ![Cluster, database, table options](media/power-bi-connector/cluster-database-table.png)
+    ![Cluster, database, table options.](media/power-bi-connector/cluster-database-table.png)
 
     | Setting | Value | Field description
     |---|---|---
@@ -57,10 +57,11 @@ First, you connect to the Azure Data Explorer help cluster, then you bring in a 
     > * Your data is already aggregated or you perform [aggregation in Kusto](kusto/query/summarizeoperator.md#list-of-aggregation-functions)
     >
     > Use **DirectQuery** mode when:
+    >
     > * Your data set is very large.
     > * You need near real-time data.
 
-    ### Advanced options
+    **Advanced options**
 
     | Setting | Sample value | Field description
     |---|---|---
@@ -71,25 +72,25 @@ First, you connect to the Azure Data Explorer help cluster, then you bring in a 
 
 1. If you don't already have a connection to the help cluster, sign in. Sign in with an organizational account, then select **Connect**.
 
-    ![Sign in](media/power-bi-connector/sign-in.png)
+    ![Sign in.](media/power-bi-connector/sign-in.png)
 
 1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents** then **Transform Data**.
 
-    ![Select table](media/power-bi-connector/select-table.png)
+    ![Select table.](media/power-bi-connector/select-table.png)
 
     The table opens in Power Query Editor, where you can edit rows and columns before importing the data.
 
 1. In the Power Query Editor, select the arrow next to the **DamageCrops** column then **Sort descending**.
 
-    ![Sort DamageCrops descending](media/power-bi-connector/sort-descending.png)
+    ![Sort DamageCrops descending.](media/power-bi-connector/sort-descending.png)
 
 1. On the **Home** tab, select **Keep Rows** then **Keep Top Rows**. Enter a value of *1000* to bring in the top 1000 rows of the sorted table.
 
-    ![Keep top rows](media/power-bi-connector/keep-top-rows.png)
+    ![Keep top rows.](media/power-bi-connector/keep-top-rows.png)
 
 1. On the **Home** tab, select **Close & Apply**.
 
-    ![Close and apply](media/power-bi-connector/close-apply.png)
+    ![Close and apply.](media/power-bi-connector/close-apply.png)
 
 ## Visualize data in a report
 

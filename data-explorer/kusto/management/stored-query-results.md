@@ -1,5 +1,5 @@
 ---
-title: Stored query results (Preview) - Azure Data Explorer
+title: Stored query results - Azure Data Explorer
 description: This article describes how to create and use stored query results in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -7,10 +7,10 @@ ms.author: orspodek
 ms.reviewer: mispecto
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 12/3/2020
+ms.date: 07/15/2021
 ---
 
-# Stored query results (Preview)
+# Stored query results
 
 Stored query results is a mechanism that temporarily stores the result of a query on the service. You can reference this data in later queries.
 Create the stored query object with a command that uses the name of the created entity and the executed query.
@@ -23,8 +23,8 @@ Stored query results can be useful in the following scenarios:
   explored using other queries.
 
 > [!NOTE]
-> * The stored query results are in preview phase, and shouldn't be used for production scenarios. 
-> * This feature is only available when [EngineV3](../../engine-v3.md) is enabled.
+> This feature is only available when [EngineV3](../../engine-v3.md) is enabled.
+> Above 500 columns, an error is obtained and the results aren't stored.
 
 Stored query results can be accessed for up to 24 hours from the moment of creation. Updates to security policies (for example, database access, row level security, and so on) aren't propagated to stored query results. Use [`.drop stored_query_results`](#drop-stored_query_results) if there is user permission revocation. A stored query result can only be accessed by the same principal identity that created the stored query. 
 
@@ -155,6 +155,22 @@ Shows information on active stored query results.
 | StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
 | ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
 | c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
+
+### .show stored_query_result schema
+
+Shows schema of active stored query result.
+
+#### Syntax
+
+`.show` `stored_query_result` *StoredQueryResultName* `schema`
+
+`Database Viewer` permission is required for invoking this command.
+
+#### Returns
+
+| StoredQueryResult | Schema |
+| ------------------- | ---- |
+| Events | [{"Column":"ID","Type":"guid"},{"Column":"EventName","Type":"string"},{"Column":"Time","Type":"datetime"}] |
 
 ### .drop stored_query_result
 

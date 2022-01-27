@@ -24,6 +24,7 @@ The function `binomial_test_fl()` performs the [binomial test](https://en.wikipe
 
 * *successes*: The name of the column containing the number of success results.
 * *trials*: The name of the column containing the total number of trials.
+* *p_value*: The name of the column to store the results.
 * *success_prob*: The success probability, default is 0.5.
 * *alt_hypotheis*: The alternative hypothesis can be either 'two-sided', 'greater', or 'less'. The default is 'two-sided'.
 
@@ -35,26 +36,26 @@ The function `binomial_test_fl()` performs the [binomial test](https://en.wikipe
 
 For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let binomial_test_fl = (tbl:(*), successes:string, trials:string, p_value:string, success_prob:real=0.5, alt_hypotheis:string='two-sided')
 {
     let kwargs = pack('successes', successes, 'trials', trials, 'p_value', p_value, 'success_prob', success_prob, 'alt_hypotheis', alt_hypotheis);
-    let code =
-        'from scipy import stats\n'
-        '\n'
-        'successes = kargs["successes"]\n'
-        'trials = kargs["trials"]\n'
-        'p_value = kargs["p_value"]\n'
-        'success_prob = kargs["success_prob"]\n'
-        'alt_hypotheis = kargs["alt_hypotheis"]\n'
-        '\n'
-        'def func(row, prob, h1):\n'
-        '    pv = stats.binom_test(row[successes], row[trials], p=prob, alternative=h1)\n'
-        '    return pv\n'
-        'result = df\n'
-        'result[p_value] = df.apply(func, axis=1, args=(success_prob, alt_hypotheis), result_type="expand")\n'
-    ;
+    let code = ```if 1:
+        from scipy import stats
+        
+        successes = kargs["successes"]
+        trials = kargs["trials"]
+        p_value = kargs["p_value"]
+        success_prob = kargs["success_prob"]
+        alt_hypotheis = kargs["alt_hypotheis"]
+        
+        def func(row, prob, h1):
+            pv = stats.binom_test(row[successes], row[trials], p=prob, alternative=h1)
+            return pv
+        result = df
+        result[p_value] = df.apply(func, axis=1, args=(success_prob, alt_hypotheis), result_type="expand")
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 }
@@ -74,27 +75,27 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Binomial test")
 binomial_test_fl(tbl:(*), successes:string, trials:string, p_value:string, success_prob:real=0.5, alt_hypotheis:string='two-sided')
 {
     let kwargs = pack('successes', successes, 'trials', trials, 'p_value', p_value, 'success_prob', success_prob, 'alt_hypotheis', alt_hypotheis);
-    let code =
-        'from scipy import stats\n'
-        '\n'
-        'successes = kargs["successes"]\n'
-        'trials = kargs["trials"]\n'
-        'p_value = kargs["p_value"]\n'
-        'success_prob = kargs["success_prob"]\n'
-        'alt_hypotheis = kargs["alt_hypotheis"]\n'
-        '\n'
-        'def func(row, prob, h1):\n'
-        '    pv = stats.binom_test(row[successes], row[trials], p=prob, alternative=h1)\n'
-        '    return pv\n'
-        'result = df\n'
-        'result[p_value] = df.apply(func, axis=1, args=(success_prob, alt_hypotheis), result_type="expand")\n'
-    ;
+    let code = ```if 1:
+        from scipy import stats
+        
+        successes = kargs["successes"]
+        trials = kargs["trials"]
+        p_value = kargs["p_value"]
+        success_prob = kargs["success_prob"]
+        alt_hypotheis = kargs["alt_hypotheis"]
+        
+        def func(row, prob, h1):
+            pv = stats.binom_test(row[successes], row[trials], p=prob, alternative=h1)
+            return pv
+        result = df
+        result[p_value] = df.apply(func, axis=1, args=(success_prob, alt_hypotheis), result_type="expand")
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 }
@@ -102,7 +103,7 @@ binomial_test_fl(tbl:(*), successes:string, trials:string, p_value:string, succe
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(id:string, x:int, n:int) [
 'Test #1', 3, 5,
@@ -115,7 +116,7 @@ datatable(id:string, x:int, n:int) [
 
 ---
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 id	x	n	p_val
 Test #1	3	5	0.05792

@@ -1,7 +1,7 @@
 ---
 title: Azure Policy Regulatory Compliance controls for Azure Data Explorer
 description: Lists Azure Policy Regulatory Compliance controls available for Azure Data Explorer. These built-in policy definitions provide common approaches to managing the compliance of your Azure resources.
-ms.date: 03/10/2021
+ms.date: 04/21/2021
 ms.topic: sample
 author: orspod
 ms.author: orspodek
@@ -39,7 +39,7 @@ To review how the available Azure Policy built-ins for all Azure services map to
 standard, see
 [Azure Policy Regulatory Compliance - CMMC Level 3](/azure/governance/policy/samples/cmmc-l3). For
 more information about this compliance standard, see
-[Cybersecurity Maturity Model Certification (CMMC)](https://www.acq.osd.mil/cmmc/docs/CMMC_Model_Main_20200203.pdf).
+[Cybersecurity Maturity Model Certification (CMMC)](https://blogs.oracle.com/site/cloud-infrastructure/post/achieving-cybersecurity-maturity-model-certification-cmmc-on-oracle-cloud).
 
 |Domain |Control ID |Control title |Policy<br /><sub>(Azure portal)</sub> |Policy version<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|

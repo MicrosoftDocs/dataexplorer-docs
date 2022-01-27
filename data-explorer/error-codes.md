@@ -13,7 +13,7 @@ ms.date: 11/11/2020
 The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). When you enable failed ingestion [diagnostic logs](using-diagnostic-logs.md#ingestion-logs-schema) on your cluster, you can see error codes in the **Failed ingestion** operation log. You can also monitor the **Ingestion result** [metric](using-metrics.md#ingestion-metrics) to see the **Category** of ingestion errors, but not the specific error codes. Errors below are organized by these categories. 
 
 > [!NOTE]
-> If the error is transient, retrying the ingestion may succeed.
+> For transient errors or 'General_RetryAttemptsExceeded' error, retrying the ingestion may succeed.
 
 ## Category: BadFormat
 
@@ -34,7 +34,8 @@ The following list contains error codes you may come across during [ingestion](i
 
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
-|BadRequest_EmptyBlob                              |Blob is empty.                                                               |Permanent           |
+|BadRequest_EmptyBlob                              |Blob is empty.  |Permanent
+|BadRequest_NoRecordsOrWrongFormat                 |Blob is empty or specified [ingestion format](ingestion-supported-formats.md) does not match blob content (for example, `JSON` format used instead of `MULTIJSON`).  |Permanent
 |BadRequest_EmptyBlobUri                           |Blob Uri is empty.                                                           |Permanent           |
 |BadRequest_DuplicateMapping                       |Ingestion properties include both ingestionMapping and ingestionMappingReference, which isn't valid.              |Permanent          |
 |BadRequest_InvalidOrEmptyTableName                |Table name is empty or invalid.<br>For more information about Azure Data Explorer naming convention, see [Entity names](./kusto/query/schema-entities/entity-names.md).    |Permanent          |
@@ -98,7 +99,6 @@ The following list contains error codes you may come across during [ingestion](i
 |General_InternalServerError                       |Internal server error occurred.                     |Transient          |
 |General_TransientSchemaMismatch                   |Schema of target table when starting the ingestion doesn't match the schema when committing the ingestion.         |Transient           |
 |Timeout                                            |The operation has been aborted because of timeout.     |Transient           |
-|BadRequest_MessageExhausted                       |Failed to ingest data since ingestion reached the maximum retry attempts or the maximum retry period.<br>Retrying ingestion may succeed.   |Transient          |
 |OutOfMemory                                       |Ingestion operation ran out of memory.                  |Transient           |
 |Schema_PermanentUpdateFailure                     |Failed to update schema permanently.                    |Permanent           |
 
@@ -124,6 +124,18 @@ The following list contains error codes you may come across during [ingestion](i
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
 |General_ThrottledIngestion                    |Throttled ingestion.                                  |Transient          |
+
+## Category: RetryAttemptsExceeded
+
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
+|General_RetryAttemptsExceeded                 |Operation has exceeded the retry attempts limit or timespan limit following a recurring transient error.                                  |Permanent          |
+
+## Category: BlobAlreadyReceived
+
+|Error message                                 |Description                                           |Permanent/Transient|
+|---|---|---|
+|BlobAlreadyReceived_BlobAlreadyFoundInBatch   |Azure Data Explorer detected the same blob in the same specific batch for ingestion. In this case, only one copy of the blob will be used for ingestion. Many errors of this type may indicate that the ingestion configuration is suboptimal. For example, defining two Event Grid data connections on the same storage.                              |Permanent          |
 
 ## Category: Unknown
 

@@ -13,29 +13,33 @@ ms.date: 2/2/2021
 
 The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
-By default, extents are partitioned by their ingestion time. In most cases, there's no need to apply another partitioning policy.
+The main purpose of the partitioning policy is to improve performance of queries in [specific scenarios](#supported-scenarios).
 
-The main purpose of the partitioning policy is to improve performance of queries in [specific scenarios](#common-scenarios).
+By default, extents are partitioned by their ingestion time, and in most cases there's no need to set a data partitioning policy.
+
+## Supported scenarios
+
+The following are the only scenarios in which setting a data partitioning policy is recommended. In all other scenarios, setting the policy isn't advised.
+
+* **Frequent filters on a medium or high cardinality string column**:
+  * For example: multi-tenant solutions, or a metrics table where most or all queries filter on a column of type `string` such as the `TenantId` or the `MetricId`.
+  * Medium cardinality is at least 10,000 distinct values.
+  * Set the [hash partition key](#hash-partition-key) to be the string column column, and set the [`PartitionAssigmentMode` property](#partition-properties) to `uniform`.
+* **Frequent aggregations or joins on a high cardinality string column**:
+  * For example, IoT information from many different sensors, or academic records of many different students. 
+  * High cardinality is at least 1,000,000 distinct values, where the distribution of values in the column is approximately even.
+  * In this case, set the [hash partition key](#hash-partition-key) to be the column frequently grouped-by or joined-on, and set the [`PartitionAssigmentMode` property](#partition-properties) to `default`.
+* **Out-of-order data ingestion**:
+  * Data ingested into a table might not be ordered and partitioned into extents (shards) according to a specific `datetime` column that represents the data creation time and is commonly used to filter data. This could be due to a backfill from heterogeneous source files that include datetime values over a large time span. 
+  * In this case, set the [uniform range datetime partition key](#uniform-range-datetime-partition-key) to be the `datetime` column.
+  * If you need retention and caching policies to align with the datetime values in the column, instead of aligning with the time of ingestion, set the `OverrideCreationTime` property to `true`.
 
 > [!CAUTION]
 > * There are no hard-coded limits set on the number of tables with the partitioning policy defined.
-> * However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used.
-> * For more information, see [monitoring](#monitor-partitioning) and [capacity](#partitioning-capacity).
+>   * However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used.
+>   * For more information, see [capacity](#partitioning-capacity).
+> * It isn't recommended to set a partitioning policy if the compressed size of data per partition is expected to be less than 1GB.
 > * Before applying a partitioning policy on a materialized view, review the recommendations for [materialized views partitioning policy](materialized-views/materialized-view-policies.md#partitioning-policy).
-
-## Common scenarios
-
-The following are common scenarios that can be addressed by setting a data partitioning policy:
-
-* **Low cardinality partition key**: For example, multi-tenant solutions, or a metrics table where most or all queries filter on the partition key column of type `string` such as the `TenantId` or the `MetricId`.
-  * Low cardinality is defined as less than 10M distinct values. In the examples above, the cardinality is likely to be much lower than that. 
-  * Set the [hash partition key](#hash-partition-key) to be the ID column, and set the `PartitionAssigmentMode` [property](#partition-properties) to `uniform`.
-* **High cardinality partition key**: For example, IoT information from many different sensors, or academic records of many different students. 
-  * High cardinality is defined as more than 10M distinct values where the distribution of values in the column is approximately even.
-  * In this case, set the [hash partition key](#hash-partition-key) to be the column grouped-by or joined-on, and set the `PartitionAssigmentMode` [property](#partition-properties) to `default`.
-* **Unordered Data ingestion**: Data ingested into a table might not be ordered and partitioned into extents (shards) according to a specific `datetime` column that represents the data creation time and is commonly used to filter data. This could be due to a backfill from heterogeneous source files that include datetime values over a large time span. 
-  * In this case, set the [Uniform range datetime partition key](#uniform-range-datetime-partition-key) to be the `datetime` column.
-  * If you need retention and caching policies to align with the datetime values in the column, instead of aligning with the time of ingestion, set the `OverrideCreationTime` property to `true`.
 
 ## Partition keys
 
@@ -64,14 +68,14 @@ The following kinds of partition keys are supported.
 |Property | Description | Supported value(s)| Recommended value |
 |---|---|---|---|
 | `Function` | The name of a hash-modulo function to use.| `XxHash64` | |
-| `MaxPartitionCount` | The maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period. | In the range `(1,2048]`. <br>  Larger than five times the number of nodes in the cluster, and smaller than the cardinality of the column. |  Higher values lead to greater overhead of the data partitioning process on the cluster's nodes, and a higher number of extents for each time period. For clusters with fewer than 50 nodes, start with `256`. Adjust the value based on these considerations, or based on the benefit in query performance vs. the overhead of partitioning the data post-ingestion.
+| `MaxPartitionCount` | The maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period. | In the range `(1,2048]`. <br>  Larger than five times the number of nodes in the cluster, and smaller than the cardinality of the column. |  Higher values lead to greater overhead of the data partitioning process on the cluster's nodes, and a higher number of extents for each time period. For clusters with fewer than 20 nodes, start with `128`. For clusters with fewer than 50 nodes, start with `256`. Adjust the value based on these considerations, or based on the benefit in query performance vs. the overhead of partitioning the data post-ingestion.
 | `Seed` | Use for randomizing the hash value. | A positive integer. | `1`, which is also the default value. |
 | `PartitionAssignmentMode` | The mode used for assigning partitions to nodes in the cluster. | `Default`: All homogeneous (partitioned) extents that belong to the same partition are assigned to the same node. <br> `Uniform`: An extents' partition values are disregarded. Extents are assigned uniformly to the cluster's nodes. | If queries don't join or aggregate on the hash partition key, use `Uniform`. Otherwise, use `Default`. |
 
 #### Hash partition key example
 
 A hash partition key over a `string`-typed column named `tenant_id`.
-It uses the `XxHash64` hash function, with a `MaxPartitionCount` of `256`, and the default `Seed` of `1`.
+It uses the `XxHash64` hash function, with `MaxPartitionCount` set to the recommended value `128`, and the default `Seed` of `1`.
 
 ```json
 {
@@ -79,9 +83,9 @@ It uses the `XxHash64` hash function, with a `MaxPartitionCount` of `256`, and t
   "Kind": "Hash",
   "Properties": {
     "Function": "XxHash64",
-    "MaxPartitionCount": 256,
+    "MaxPartitionCount": 128,
     "Seed": 1,
-    "PartitionAssignmentMode": "Default"
+    "PartitionAssignmentMode": "Uniform"
   }
 }
 ```
@@ -109,7 +113,7 @@ The partition function used is [bin_at()](../query/binatfunction.md) and isn't c
 #### Uniform range datetime partition example
 
 The snippet shows a uniform datetime range partition key over a `datetime` typed column named `timestamp`.
-It uses `datetime(1970-01-01)` as its reference point, with a size of `1d` for each partition, and does not
+It uses `datetime(2021-01-01)` as its reference point, with a size of `7d` for each partition, and does not
 override the extents' creation times.
 
 ```json
@@ -117,8 +121,8 @@ override the extents' creation times.
   "ColumnName": "timestamp",
   "Kind": "UniformRange",
   "Properties": {
-    "Reference": "1970-01-01T00:00:00",
-    "RangeSize": "1.00:00:00",
+    "Reference": "2021-01-01T00:00:00",
+    "RangeSize": "7.00:00:00",
     "OverrideCreationTime": false
   }
 }
@@ -126,7 +130,7 @@ override the extents' creation times.
 
 ## The policy object
 
-By default, a table's data partitioning policy is `null`, in which case data in the table won't be partitioned.
+By default, a table's data partitioning policy is `null`, in which case data in the table won't be re-partitioned after it's ingested.
 
 The data partitioning policy has the following main properties:
 
@@ -144,8 +148,7 @@ The data partitioning policy has the following main properties:
 * **EffectiveDateTime**:
   * The UTC datetime from which the policy is effective.
   * This property is optional. If it isn't specified, the policy will take effect for data ingested after the policy was applied.
-  * Any non-homogeneous (non-partitioned) extents that may be dropped because of retention are ignored by the partitioning process. The extents are ignored because their creation time precedes 90% of the table's effective soft-delete period.
-	
+  	
 > [!CAUTION]
 > * You can set a datetime value in the past and partition already-ingested data. However, this practice may significantly increase resources used in the partitioning process.
 > * In most cases, it is recommended to only have newly ingested data partitioned, and to avoid partitioning large amounts of historical data.
@@ -155,9 +158,9 @@ The data partitioning policy has the following main properties:
 
 Data partitioning policy object with two partition keys.
 1. A hash partition key over a `string`-typed column named `tenant_id`.
-    * It uses the `XxHash64` hash function, with a `MaxPartitionCount` of 256, and the default `Seed` of `1`.
+    * It uses the `XxHash64` hash function, with `MaxPartitionCount` set to the recommended value `128`, and the default `Seed` of `1`.
 1. A uniform datetime range partition key over a `datetime` type column named `timestamp`.
-    * It uses `datetime(1970-01-01)` as its reference point, with a size of `1d` for each partition.
+    * It uses `datetime(2021-01-01)` as its reference point, with a size of `7d` for each partition.
 
 ```json
 {
@@ -167,17 +170,17 @@ Data partitioning policy object with two partition keys.
       "Kind": "Hash",
       "Properties": {
         "Function": "XxHash64",
-        "MaxPartitionCount": 256,
+        "MaxPartitionCount": 128,
         "Seed": 1,
-        "PartitionAssignmentMode": "Default"
+        "PartitionAssignmentMode": "Uniform"
       }
     },
     {
       "ColumnName": "timestamp",
       "Kind": "UniformRange",
       "Properties": {
-        "Reference": "1970-01-01T00:00:00",
-        "RangeSize": "1.00:00:00",
+        "Reference": "2021-01-01T00:00:00",
+        "RangeSize": "7.00:00:00",
         "OverrideCreationTime": false
       }
     }
@@ -192,7 +195,8 @@ The following properties can be defined as part of the policy. These properties 
 |Property | Description | Recommended value | Default value |
 |---|---|---|---|
 | **MinRowCountPerOperation** |  Minimum target for the sum of row count of the source extents of a single data partitioning operation. | | `0` |
-| **MaxRowCountPerOperation** |  Maximum target for the sum of the row count of the source extents of a single data partitioning operation. | Set a value lower than 5M if you see that the partitioning operations consume a large amount of memory or CPU per operation. For more information, see [monitoring](#monitor-partitioning). | `0`, with a default target of 5,000,000 records. |
+| **MaxRowCountPerOperation** |  Maximum target for the sum of the row count of the source extents of a single data partitioning operation. | Set a value lower than 5M if you see that the partitioning operations consume a large amount of memory or CPU per operation. | `0`, with a default target of 5,000,000 records. |
+| **MaxOriginalSizePerOperation** |  Maximum target for the sum of the original size (in bytes) of the source extents of a single data partitioning operation. | If the partitioning operations consume a large amount of memory or CPU per operation, set a value lower than 5 GB. | `0`, with a default target of 5,368,709,120 bytes (5 GB). |
 
 ## The data partitioning process
 
@@ -200,32 +204,6 @@ The following properties can be defined as part of the policy. These properties 
   * A table that is continuously ingested into is expected to always have a "tail" of data that is yet to be partitioned (non-homogeneous extents).
 * Data partitioning runs only on hot extents, regardless of the value of the `EffectiveDateTime` property in the policy.
   * If partitioning cold extents is required, you need to temporarily adjust the [caching policy](cachepolicy.md).
-
-### Monitor partitioning
-
-Use the [`.show diagnostics`](../management/diagnostics.md#show-diagnostics) command to monitor the progress or state of partitioning in a cluster.
-
-```kusto
-.show diagnostics
-| project MinPartitioningPercentageInSingleTable, TableWithMinPartitioningPercentage
-```
-
-The output includes:
-
-  * `MinPartitioningPercentageInSingleTable`: The minimal percentage of partitioned data across all tables that have a data partitioning policy in the cluster.
-    * If this percentage remains constantly under 90%, then evaluate the cluster's partitioning [capacity](partitioningpolicy.md#partitioning-capacity).
-  * `TableWithMinPartitioningPercentage`: The fully qualified name of the table whose partitioning percentage is shown above.
-
-Use [`.show commands`](commands.md) to monitor the partitioning commands and their resource use. For example:
-
-```kusto
-.show commands 
-| where StartedOn > ago(1d)
-| where CommandType == "ExtentsPartition"
-| parse Text with ".partition async table " TableName " extents" *
-| summarize count(), sum(TotalCpu), avg(tolong(ResourcesUtilization.MemoryPeak)) by TableName, bin(StartedOn, 15m)
-| render timechart with(ysplit = panels)
-```
 
 ### Partitioning capacity
 
@@ -251,4 +229,4 @@ In both of these cases, either "fix" the data, or filter out any irrelevant reco
 
 ## Next steps
 
-Use the [partitioning policy control commands](../management/partitioning-policy.md) to manage data partitioning policies for tables.
+Use the [partitioning policy control commands](./show-table-partitioning-policy-command.md) to manage data partitioning policies for tables.

@@ -13,11 +13,14 @@ ms.date: 03/24/2020
 
 # Create an Azure Data Explorer cluster in your virtual network
 
-Azure Data Explorer supports deploying a cluster into a subnet in your virtual network (VNet). This capability enables you to access the cluster privately from your Azure virtual network or on-premises, access resource such as Event Hub and Storage inside your virtual network, and restrict inbound and outbound traffic.
+Azure Data Explorer supports deploying a cluster into a subnet in your virtual network (VNet). This capability enables you to access the cluster privately from your Azure virtual network or on-premises, access resource such as event hub and storage inside your virtual network, and restrict inbound and outbound traffic.
+
+> [!Note]
+> Injecting a cluster into a virtual network enables you to manage all of its traffic. Therefore, you are responsible for ensuring that any connected services are able to communicate with each other, including Azure Event Hubs or Azure Storage accounts.
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Sign in to the [Azure portal](https://portal.azure.com/).
 
 ## Create Virtual Network and subnet
@@ -29,7 +32,7 @@ To create the virtual network and subnet:
 1. Under **Virtual Network**, at the bottom of the screen, select **Create**.
 1. In the **Create virtual network** window, complete the following information.
 
-   ![Create virtual network form](media/vnet-create-cluster-portal/vnet-blade.png)
+   ![Create virtual network form.](media/vnet-create-cluster-portal/vnet-blade.png)
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -47,13 +50,13 @@ To create the virtual network and subnet:
 1. When the deployment is complete, select **Go to resource**.
 1. Go to **Subnets** blade and select the **default** subnet.
     
-    ![Subnets blade](media/vnet-create-cluster-portal/subnets.png)
+    ![Subnets blade.](media/vnet-create-cluster-portal/subnets.png)
 
 1. In your **default** subnet window:
     1. Select **Microsoft.Kusto/clusters** from the subnet delegation drop-down menu.
     1. Select **Save**.
     
-    ![Configure subnet](media/vnet-create-cluster-portal/vnet-delegate-subnet.png)
+    ![Configure subnet.](media/vnet-create-cluster-portal/vnet-delegate-subnet.png)
 
 ## Create a cluster
 
@@ -61,7 +64,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. Prior to finalizing cluster creation, in the **Create an Azure Data Explorer cluster** window, select the **Network** tab to provide virtual network details using the resources created in the previous tabs:
 
-   ![Create cluster vnet form](media/vnet-create-cluster-portal/create-cluster-form-vnet.png)
+   ![Create cluster vnet form.](media/vnet-create-cluster-portal/create-cluster-form-vnet.png)
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -73,7 +76,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
     1. Select **Create new**
     1. In **Create Public IP** window, provide the following details:
     
-    ![Create cluster vnet form public IP](media/vnet-create-cluster-portal/vnet-create-public-ip.png)
+    ![Create cluster vnet form public IP.](media/vnet-create-cluster-portal/vnet-create-public-ip.png)
 
     | **Setting** | **Suggested value** | **Field description** |
     |---|---|---|
@@ -84,7 +87,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 1. Select **Review + create** to create your cluster.
 1. When the deployment is complete, select **Go to resource**.
 
-To deploy your Azure Data Explorer cluster into your virtual network, use the [Deploy Azure Data Explorer cluster into your VNet](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) Azure Resource Manager template.
+To deploy your Azure Data Explorer cluster into your virtual network, use the [Deploy Azure Data Explorer cluster into your VNet](https://azure.microsoft.com/resources/templates/kusto-vnet/) Azure Resource Manager template.
 
 ## Next steps
 

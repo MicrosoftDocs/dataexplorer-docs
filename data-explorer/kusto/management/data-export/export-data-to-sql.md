@@ -79,7 +79,7 @@ There are a number of limitations and restrictions when exporting data to a SQL 
 ## Azure DB AAD Integrated Authentication Documentation
 
 * [Use Azure Active Directory Authentication for authentication with SQL Database](/azure/sql-database/sql-database-aad-authentication)
-* [Azure AD authentication extensions for Azure SQL DB and SQL DW tools] (https://azure.microsoft.com/blog/azure-ad-authentication-extensions-for-azure-sql-db-and-sql-dw-tools/)
+* [Azure AD authentication extensions for Azure SQL DB and SQL DW tools](https://azure.microsoft.com/blog/azure-ad-authentication-extensions-for-azure-sql-db-and-sql-dw-tools/)
 
 **Examples** 
 

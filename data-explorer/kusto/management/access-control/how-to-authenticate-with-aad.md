@@ -8,7 +8,7 @@ ms.reviewer: vladikb
 ms.service: data-explorer
 ms.topic: reference
 ms.custom: has-adal-ref, devx-track-js
-ms.date: 09/13/2019
+ms.date: 04/28/2021
 ---
 # How-To Authenticate with AAD for Azure Data Explorer Access
 
@@ -95,7 +95,7 @@ AAD has many endpoints for authentication:
 ## AAD token cache
 
 When using the Azure Data Explorer SDK, the AAD tokens are stored on the local machine in a
-per-user token cache (a file called **%APPDATA%\Kusto\tokenCache.data** which can
+per-user token cache (a file called **%APPDATA%\Kusto\userTokenCache.data** which can
 only be accessed or decrypted by the signed-in user.) The cache is inspected
 for tokens before prompting the user for credentials, thus greatly reducing the
 number of times a user has to enter credentials.
@@ -181,8 +181,6 @@ It generally requires multiple configuration steps with AAD, and in some cases
 (depending on the AAD tenant configuration) might require special consent from
 the administrator of the AAD tenant.
 
-
-
 **Step 1: Establish trust relationship between your application and the Azure Data Explorer service**
 
 1. Open the [Azure portal](https://portal.azure.com/) and make sure that you are
@@ -207,8 +205,11 @@ the administrator of the AAD tenant.
 // Create Auth Context for AAD (common or tenant-specific endpoint):
 AuthenticationContext authContext = new AuthenticationContext("AAD Authority URL");
 
-// Exchange your token for a Kusto token.
-// You will need to provide your application's client ID and secret to authenticate your application
+// Exchange your token for a Kusto token
+// You will need to provide:
+// - your application's client ID (customerAadWebApplicationClientId),
+// - your application's secret to authenticate your application (customerAAdWebApplicationSecret),
+// - The token your web app receives for the logged in user (customerAadWebApplicationToken)
 var tokenForKusto = authContext.AcquireTokenAsync(
     "https://{serviceNameAndRegion}.kusto.windows.net",
     new ClientCredential(customerAadWebApplicationClientId, customerAAdWebApplicationSecret),
@@ -227,8 +228,6 @@ var queryResult = client.ExecuteQuery(databaseName, query, null);
 ```
 
 ## Web Client (JavaScript) authentication and authorization
-
-
 
 **AAD application configuration**
 

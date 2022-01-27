@@ -6,21 +6,21 @@ ms.author: orspodek
 ms.reviewer: guregini
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/07/2021
+ms.date: 06/21/2021
 ---
 
 # Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs
 
-Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. [Azure Monitor diagnostic logs](/azure/azure-monitor/platform/diagnostic-logs-overview) provide data about the operation of Azure resources. Azure Data Explorer uses diagnostic logs for insights on ingestion, commands, query, and tables. You can export operation logs to Azure Storage, Event Hub, or Log Analytics to monitor ingestion, commands, and query status. Logs from Azure Storage and Azure Event Hub can be routed to a table in your Azure Data Explorer cluster for further analysis.
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. [Azure Monitor diagnostic logs](/azure/azure-monitor/platform/diagnostic-logs-overview) provide data about the operation of Azure resources. Azure Data Explorer uses diagnostic logs for insights on ingestion, commands, query, and tables. You can export operation logs to Azure Storage, event hub, or Log Analytics to monitor ingestion, commands, and query status. Logs from Azure Storage and Azure Event Hubs can be routed to a table in your Azure Data Explorer cluster for further analysis.
 
 > [!IMPORTANT] 
 > Diagnostic log data may contain sensitive data. Restrict permissions of the logs destination according to your monitoring needs. 
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Sign in to the [Azure portal](https://portal.azure.com/).
-* Create a [cluster and database](create-cluster-database-portal.md).
+* Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Set up diagnostic logs for an Azure Data Explorer cluster
 
@@ -38,19 +38,19 @@ Diagnostic logs can be used to configure the collection of the following log dat
 
 * **Successful ingestion operations**: These logs have information about successfully completed ingestion operations.
 * **Failed ingestion operations**: These logs have detailed information about failed ingestion operations including error details. 
-* **Ingestion batching operations**: These logs have detailed statistics of batches ready for ingestion (duration, batch size and blobs count).
+* **Ingestion batching operations**: These logs have detailed statistics of batches ready for ingestion (duration, batch size, blobs count, and [batching types](kusto/management/batchingpolicy.md#sealing-a-batch)).
 
 # [Commands and Queries](#tab/commands-and-queries)
 
 * **Commands**: These logs have information about admin commands that have reached a final state.
-* **Queries**: These logs have detailed information about queries that have reached a final state. 
+* **Queries**: These logs have detailed information about queries that have reached a final state.
 
     > [!NOTE]
-    > The query log data doesn't contain the query text.
+    > The command and query log data contains the query text.
     
 # [Tables](#tab/tables)
 
-* **TableUsageStatistics**: These logs have detailed information about usage of commands and queries that have reached a final state.
+* **TableUsageStatistics**: These logs have detailed information about the tables whose extents were scanned during query execution.
 
     > [!NOTE]
     > The `TableUsageStatistics` log data doesn't contain the command or query text.
@@ -59,7 +59,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 
 ---
 
-The data is then archived into a Storage account, streamed to an Event Hub, or sent to Log Analytics, as per your specifications.
+The data is then archived into a Storage account, streamed to an event hub, or sent to Log Analytics, as per your specifications.
 
 ### Enable diagnostic logs
 
@@ -68,15 +68,15 @@ Diagnostic logs are disabled by default. To enable diagnostic logs, do the follo
 1. In the [Azure portal](https://portal.azure.com), select the Azure Data Explorer cluster resource that you want to monitor.
 1. Under **Monitoring**, select **Diagnostic settings**.
   
-    ![Add diagnostics logs](media/using-diagnostic-logs/add-diagnostic-logs.png)
+    ![Add diagnostics logs.](media/using-diagnostic-logs/add-diagnostic-logs.png)
 
 1. Select **Add diagnostic setting**.
 1. In the **Diagnostic settings** window:
 
-    :::image type="content" source="media/using-diagnostic-logs/configure-diagnostics-settings.png" alt-text="Configure diagnostics settings":::
+    :::image type="content" source="media/using-diagnostic-logs/configure-diagnostics-settings.png" alt-text="Configure diagnostics settings.":::
 
     1. Enter a **Diagnostic setting name**.
-    1. Select one or more targets: a Log Analytics workspace, a storage account, or an Event Hub.
+    1. Select one or more targets: a Log Analytics workspace, a storage account, or an event hub.
     1. Select logs to be collected: `SucceededIngestion`, `FailedIngestion`, `IngestionBatching`, `Command`, or `Query`, `TableUsageStatistics`, or `TableDetails`.
     1. Select [metrics](using-metrics.md#supported-azure-data-explorer-metrics) to be collected (optional).  
     1. Select **Save** to save the new diagnostic logs settings and metrics.
@@ -111,8 +111,8 @@ Log JSON strings include elements listed in the following table:
 
 ```json
 {
-    "time": "",
-    "resourceId": "",
+    "time": "2019-05-27 07:55:05.3693628",
+    "resourceId": "/SUBSCRIPTIONS/12534000-8109-4D84-83AD-576C0D5E1AAA/RESOURCEGROUPS/myResourceGroup/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/mycluster",
     "operationName": "MICROSOFT.KUSTO/CLUSTERS/INGEST/ACTION",
     "operationVersion": "1.0",
     "category": "SucceededIngestion",
@@ -146,8 +146,8 @@ Log JSON strings include elements listed in the following table:
 
 ```json
 {
-    "time": "",
-    "resourceId": "",
+    "time": "2019-05-27 08:57:05.4273524",
+    "resourceId": "/SUBSCRIPTIONS/12534000-8109-4D84-83AD-576C0D5E1AAA/RESOURCEGROUPS/myResourceGroup/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/mycluster",
     "operationName": "MICROSOFT.KUSTO/CLUSTERS/INGEST/ACTION",
     "operationVersion": "1.0",
     "category": "FailedIngestion",
@@ -181,8 +181,8 @@ Log JSON strings include elements listed in the following table:
 |IngestionSourcePath|Path of the ingestion data source or blob URI
 |RootActivityId     |Activity ID
 |Details            |Detailed description of the failure and error message
-|ErrorCode          |Error code 
-|FailureStatus      |`Permanent` or `Transient`. Retry of a transient failure may succeed.
+|ErrorCode          |[Ingestion error code](error-codes.md)
+|FailureStatus      |`Permanent` or `RetryAttemptsExceeded` indicates that operation has exceeded the retry attempts limit or timespan limit following a recurring transient error.
 |OriginatesFromUpdatePolicy|True if failure originates from an update policy
 |ShouldRetry        |True if retry may succeed
 
@@ -192,20 +192,21 @@ Log JSON strings include elements listed in the following table:
 
 ```json
 {
-  "resourceId": "/SUBSCRIPTIONS/12534EB3-8109-4D84-83AD-576C0D5E1D06/RESOURCEGROUPS/KEREN/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KERENEUS",
-  "time": "2020-05-27T07:55:05.3693628Z",
+  "resourceId": "/SUBSCRIPTIONS/12534000-8109-4D84-83AD-576C0D5E1AAA/RESOURCEGROUPS/myResourceGroup/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/mycluster",
+  "time": "2021-04-18T19:19:57.0211782Z",
   "operationVersion": "1.0",
   "operationName": "MICROSOFT.KUSTO/CLUSTERS/INGESTIONBATCHING/ACTION",
   "category": "IngestionBatching",
   "correlationId": "2bb51038-c7dc-4ebd-9d7f-b34ece4cb735",
   "properties": {
+    "Timestamp": "2021-04-18T19:19:57.0211782Z",
     "Database": "Samples",
     "Table": "StormEvents",
-    "BatchingType": "Size",
-    "SourceCreationTime": "2020-05-27 07:52:04.9623640",
-    "BatchTimeSeconds": 215.5,
-    "BatchSizeBytes": 2356425,
-    "DataSourcesInBatch": 4,
+    "BatchingType": "Time",
+    "SourceCreationTime": "2021-04-18T19:14:53.9543732Z",
+    "BatchTimeSeconds": 302.1449075,
+    "BatchSizeBytes": 3988,
+    "DataSourcesInBatch": 2,
     "RootActivityId": "2bb51038-c7dc-4ebd-9d7f-b34ece4cb735"
   }
 }
@@ -215,10 +216,10 @@ Log JSON strings include elements listed in the following table:
 
 |Name               |Description
 |---                   |---
-| TimeGenerated        | The time (UTC) at which this event was generated |
+| Timestamp            | The time of the batching reporting |
 | Database             | Name of the database holding the target table |
 | Table                | Name of the target table into which the data is ingested |
-| BatchingType         | Type of batching: whether the batch reached batching time, data size, or number of files limit set by batching policy |
+| BatchingType         | The trigger for sealing a batch. For a complete list of batching types, see [Batching types](kusto/management/batchingpolicy.md#sealing-a-batch). |
 | SourceCreationTime   | Minimal time (UTC) at which blobs in this batch were created |
 | BatchTimeSeconds     | Total batching time of this batch (seconds) |
 | BatchSizeBytes       | Total uncompressed size of data in this batch (bytes) |
@@ -266,7 +267,8 @@ Log JSON strings include elements listed in the following table:
         "ResourceUtilization": "{\"CacheStatistics\":{\"Memory\":{\"Hits\":0,\"Misses\":0},\"Disk\":{\"Hits\":0,\"Misses\":0},\"Shards\":{\"Hot\":{\"HitBytes\":0,\"MissBytes\":0,\"RetrieveBytes\":0},\"Cold\":{\"HitBytes\":0,\"MissBytes\":0,\"RetrieveBytes\":0},\"BypassBytes\":0}},\"TotalCpu\":\"00:00:00\",\"MemoryPeak\":0,\"ScannedExtentsStatistics\":{\"MinDataScannedTime\":null,\"MaxDataScannedTime\":null,\"TotalExtentsCount\":0,\"ScannedExtentsCount\":0,\"TotalRowsCount\":0,\"ScannedRowsCount\":0}}",
         "Duration": "00:03:30.1562500",
         "User": "AAD app id=0571b364-eeeb-4f28-ba74-90a8b4132b53",
-        "Principal": "aadapp=0571b364-eeeb-4f28-ba74-90a3b4136b53;5c443533-c927-4410-a5d6-4d6a5443b64f"
+        "Principal": "aadapp=0571b364-eeeb-4f28-ba74-90a3b4136b53;5c443533-c927-4410-a5d6-4d6a5443b64f",
+        "Text": ".show principal roles"
     }
 }
 ```
@@ -287,6 +289,7 @@ Log JSON strings include elements listed in the following table:
 |Duration     |Command duration
 |User     |The user that invoked the query
 |Principal     |The principal that invoked the query
+|Text     |The command text
 
 #### Query log
 
@@ -312,6 +315,7 @@ Log JSON strings include elements listed in the following table:
         "Duration": "00:00:00.0165122",
         "User": "AAD app id=0571b364-eeeb-4f28-ba74-90a8b4132b53",
         "Principal": "aadapp=0571b364-eeeb-4f28-ba74-90a8b4132b53;5c823e4d-c927-4010-a2d8-6dda2449b6cf",
+        "Text": "TestTable | take 10",
         "ScannedExtentsStatistics": {
             "MinDataScannedTime": "2020-07-27T08:34:35.3299941",
             "MaxDataScannedTime": "2020-07-27T08:34:41.991661",
@@ -401,6 +405,7 @@ Log JSON strings include elements listed in the following table:
 |TablesStatistics        |Contains result set table statistics
 |RowCount        | Result set table row count
 |TableSize        |Result set table row count
+|Text     |The query text
 
 
 # [Tables](#tab/tables)
@@ -493,7 +498,7 @@ Log JSON strings include elements listed in the following table:
 |---                |---
 |RootActivityId |The root activity ID
 |TableName        |The name of the table
-|DatabaseName           |he name of the database
+|DatabaseName           |The name of the database
 |TotalExtentSize              |The total original size of data in the table (in bytes)
 |HotExtentSize  |The total size in bytes of extents (compressed size and index size) in the table, stored in the hot cache.
 |RetentionPolicyOrigin |Retention policy origin entity (table/database/cluster)

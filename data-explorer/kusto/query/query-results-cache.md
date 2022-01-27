@@ -62,8 +62,8 @@ If a cached result satisfying the time constraints couldn't be found, or there i
 ## Results from the cache
 
 How does the service indicate that the query results are being served from the cache?
-When responding to a query, Kusto sends an additional [ExtendedProperties](../api/rest/response.md) response table that includes a `Key` column and a `Value` column.
-Cached query results will have an additional row appended to that table:
+When responding to a query, Kusto sends another [ExtendedProperties](../api/rest/response.md) response table that includes a `Key` column and a `Value` column.
+Cached query results will have another row appended to that table:
 * The row's `Key` column will contain the string `ServerCache`
 * The row's `Value` column will contain a property bag with two fields:
    * `OriginalClientRequestId` - Specifies the original request's [ClientRequestId](../api/netfx/request-properties.md#clientrequestid-x-ms-client-request-id).
@@ -71,7 +71,7 @@ Cached query results will have an additional row appended to that table:
 
 ## Distribution
 
-The cache is not shared by cluster nodes. Every node has a dedicated cache in its' own private storage. If two identical queries land on different nodes, the query will be executed and cached on both nodes. This process can happen if [weak consistency](../concepts/queryconsistency.md) is used.
+The cache is not shared by cluster nodes. Every node has a dedicated cache in its own private storage. If two identical queries land on different nodes, the query will be executed and cached on both nodes. This process can happen if [weak consistency](../concepts/queryconsistency.md) is used. By setting query consistency to `affinitizedweakconsistency`, you can have weakly consistency queries that are identical land on the same query head, and thus increase the cache hit rate.
 
 ## Management
 
@@ -84,3 +84,30 @@ The following management and observability commands are supported:
 
 The cache capacity is currently fixed at 1 GB per cluster node.
 The eviction policy is LRU.
+
+## Shard level query results cache
+
+The query results cache is effective when the exact same query is run multiple times in rapid succession and can tolerate returning slightly old data. However, some scenarios, like a live dashboard, require the most up-to-date results.
+
+For example, a query that runs every 10 seconds and spans the last 1 hour can benefit from caching intermediate query results at the storage (shard) level.
+
+> [!NOTE]
+> This feature is only available on EngineV3 clusters.
+
+The shard level query results cache is automatically enabled when the `Query results cache` is in use. Because it shares the same cache as `Query results cache`, the same capacity and eviction policies apply.
+
+### Syntax
+
+`set` `query_results_cache_per_shard`; *Query*
+
+> [!NOTE]
+> This option can be set in the query text or as a [client request property](../api/netfx/request-properties.md).
+
+### Example
+
+```kusto
+set query_results_cache_per_shard;
+GithubEvent
+| where CreatedAt > ago(180d)
+| summarize arg_max(CreatedAt, Type) by Id
+```

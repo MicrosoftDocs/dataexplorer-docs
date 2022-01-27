@@ -1,6 +1,6 @@
 ---
-title: 'Create an Event Hub data connection for Azure Data Explorer by using Azure Resource Manager template'
-description: In this article, you learn how to create an Event Hub data connection for Azure Data Explorer by using Azure Resource Manager template.
+title: 'Create an event hub data connection for Azure Data Explorer by using Azure Resource Manager template'
+description: In this article, you learn how to create an event hub data connection for Azure Data Explorer by using Azure Resource Manager template.
 author: orspod
 ms.author: orspodek
 ms.reviewer: lugoldbe
@@ -9,7 +9,7 @@ ms.topic: how-to
 ms.date: 11/28/2019
 ---
 
-# Create an Event Hub data connection for Azure Data Explorer by using Azure Resource Manager template
+# Create an event hub data connection for Azure Data Explorer by using Azure Resource Manager template
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
@@ -19,18 +19,18 @@ ms.date: 11/28/2019
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)] 
-In this article, you create an Event Hub data connection for Azure Data Explorer by using Azure Resource Manager template.
+In this article, you create an event hub data connection for Azure Data Explorer by using Azure Resource Manager template.
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* Create [a cluster and database](create-cluster-database-portal.md)
-* Create [a table and column mapping](ingest-data-event-hub.md#create-a-target-table-in-azure-data-explorer)
-* Create [an event hub](/azure/event-hubs/event-hubs-create)
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
+* Create [a table and column mapping](ingest-data-event-hub.md#create-a-target-table-in-azure-data-explorer).
+* Create [an event hub](/azure/event-hubs/event-hubs-create).
 
-## Azure Resource Manager template for adding an Event Hub data connection
+## Azure Resource Manager template for adding an event hub data connection
 
-The following example shows an Azure Resource Manager template for adding an Event Hub data connection.  You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) by using the form.
+The following example shows an Azure Resource Manager template for adding an event hub data connection.  You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) by using the form.
 
 ```json
 {
@@ -41,21 +41,21 @@ The following example shows an Azure Resource Manager template for adding an Eve
             "type": "string",
             "defaultValue": "eventhubns",
             "metadata": {
-                "description": "Specifies the Event Hub Namespace name."
+                "description": "Specifies the event hub Namespace name."
             }
         },
         "EventHubs_eventhubdemo_name": {
             "type": "string",
             "defaultValue": "eventhubdemo",
             "metadata": {
-                "description": "Specifies the Event Hub name."
+                "description": "Specifies the event hub name."
             }
         },
         "consumergroup_default_name": {
             "type": "string",
             "defaultValue": "$Default",
             "metadata": {
-                "description": "Specifies the consumer group of the Event Hub."
+                "description": "Specifies the consumer group of the event hub."
             }
         },
         "Clusters_kustocluster_name": {
@@ -104,14 +104,14 @@ The following example shows an Azure Resource Manager template for adding an Eve
             "type": "string",
             "defaultValue": "[subscription().subscriptionId]",
             "metadata": {
-                "description": "Specifies the subscriptionId of the Event Hub"
+                "description": "Specifies the subscriptionId of the event hub"
             }
         },
         "resourceGroup": {
             "type": "string",
             "defaultValue": "[resourceGroup().name]",
             "metadata": {
-                "description": "Specifies the resourceGroup of the Event Hub"
+                "description": "Specifies the resourceGroup of the event hub"
             }
         },
         "location": {
