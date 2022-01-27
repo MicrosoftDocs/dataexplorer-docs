@@ -75,4 +75,4 @@ With [soft delete](kusto/concepts/data-soft-delete.md), data is not necessarily 
 
 ### Purge
 
-With [purge](kusto/concepts/data-purge.md), all storage artifacts that have "poison" data is deleted and is useful for removing corrupt data. The deletion isn't immediate, requires significant system resources, and can take a whole day to complete. This method prevents deleted records from being recovered, regardless of retention or recoverability settings.
+With [purge](kusto/concepts/data-purge.md), all storage artifacts that have "poison" data is deleted and is useful for removing corrupt data. The deletion isn't immediate, requires significant system resources, and can take a whole day to complete. This method prevents deleted records from being recovered, regardless of retention or recoverability settings. The deletion process is final and irreversible.
