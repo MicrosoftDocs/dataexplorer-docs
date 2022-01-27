@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/16/2022
 ---
-# Data soft-delete
+# Data soft delete
 
 As a data platform, Azure Data Explorer supports the ability to delete individual records. This is commonly achieved using one of the following methods:
 
@@ -33,19 +33,19 @@ The soft delete process is performed using the following steps:
 
 * The deletion process is final and irreversible. It isn't possible to undo this process or recover data that has been deleted, even though the storage artifacts are not necessarily deleted following the operation.
 
-* Soft-delete is only available on clusters running Engine V3.
+* Soft delete is only available on clusters running Engine V3.
 
-* Soft-delete is only supported for native tables and is not supported for external tables or materialized views.
+* Soft delete is only supported for native tables and is not supported for external tables or materialized views.
 
-* Before running soft-delete, verify the predicate by running a query and checking that the results match the expected outcome. You can also run the command in `whatif` mode, that returns the number of records that are expected to be deleted.
+* Before running soft delete, verify the predicate by running a query and checking that the results match the expected outcome. You can also run the command in `whatif` mode, that returns the number of records that are expected to be deleted.
 
-* Do not run multiple parallel soft-delete operations on the same table, as this may result in failures of some or all the commands. However, it's possible to run multiple parallel soft-delete operations on different tables.
+* Do not run multiple parallel soft delete operations on the same table, as this may result in failures of some or all the commands. However, it's possible to run multiple parallel soft delete operations on different tables.
 
-* Do not run soft-delete and purge commands on the same table in parallel. First wait for one command to complete and only then run the other command.
+* Do not run soft delete and purge commands on the same table in parallel. First wait for one command to complete and only then run the other command.
 
-* Soft-delete is executed against your engine endpoint: `https://[YourClusterName].[region].kusto.windows.net`. The command requires [database admin](../management/access-control/role-based-authorization.md) permissions on the relevant database.
+* Soft delete is executed against your engine endpoint: `https://[YourClusterName].[region].kusto.windows.net`. The command requires [database admin](../management/access-control/role-based-authorization.md) permissions on the relevant database.
 
-* Soft-delete can affect materialized views based on a source table in which records are deleted. This can happen because every [materialization cycle](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work) adds newly ingested data to the materialized part from the previous cycle. Therefore, if the command deletes newly ingested records before a new cycle begins, those records will not be added to the materialized view. Otherwise, deleting records won't affect the materialized view.
+* Soft delete can affect materialized views based on a source table in which records are deleted. This can happen because every [materialization cycle](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work) adds newly ingested data to the materialized part from the previous cycle. Therefore, if the command deletes newly ingested records before a new cycle begins, those records will not be added to the materialized view. Otherwise, deleting records won't affect the materialized view.
 
 ## Deletion performance
 
