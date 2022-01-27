@@ -28,6 +28,9 @@ You can access your Azure Data Explorer cluster using the following IP addresses
 * **Private IP**: Used for accessing the cluster inside the VNet.
 * **Public IP**: Used for accessing the cluster from outside the VNet for management and monitoring, and as a source address for outbound connections started from the cluster.
 
+> [!IMPORTANT]
+> The default NSG rules will block access to the Public IP outside of Azure. In order to reach the Public Endpoint you need to add an exception in the NSG for your Public IP address or addresses.
+
 The following DNS records are created to access the service: 
 
 * `[clustername].[geo-region].kusto.windows.net` (engine) `ingest-[clustername].[geo-region].kusto.windows.net` (data management) are mapped to the public IP for each service. 
@@ -66,6 +69,9 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 
  > [!NOTE]
  > Setting up Private Endpoint requires [configuring DNS](/azure/private-link/private-endpoint-dns), We support [Azure Private DNS zone](/azure/dns/private-dns-privatednszone) setup only. Custom DNS server isn't supported. 
+
+ > [!NOTE]
+ > Setting up Private Endpoint requires is not supported on the Dev/Test sku of Azure Data Explorer. To utilize Private Endpoints you must provision ADX in a production sku.
 
 ## Dependencies for VNet deployment
 
