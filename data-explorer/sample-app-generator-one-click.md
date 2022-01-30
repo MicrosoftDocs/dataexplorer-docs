@@ -109,3 +109,7 @@ After code generation, the sample app project will be available for download as 
 
 >[!NOTE]
 > You may need to run the downloaded app for the Quick commands to work.
+
+## Next steps
+
+* [Azure Data Explorer API Overview](kusto/api/index.md)
