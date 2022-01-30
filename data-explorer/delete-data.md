@@ -18,7 +18,7 @@ Azure Data Explorer supports several ways to delete data from a table. Use the f
 | Drop all data from a table | | [Use the `.clear table data` command](#delete-all-data-in-a-table) |
 | Routinely drop old data | Use if you need an automated deletion solution | [Use a retention policy](#delete-data-using-a-retention-policy) |
 | Bulk drop specific data by extents | Only use if you are an expert user | [Use the `.drop extents` command](#delete-data-by-dropping-extents) |
-| Drop a few records based on their contents | Frequent use of this method may have an impact on query performance | [Use soft delete](#soft-delete) |
+| Drop a few records based on their contents | Storage artifacts that contain the deleted records aren't necessarily deleted, but deleted records can't be recovered (regardless of any retention or recoverability settings) | [Use soft delete](#soft-delete) |
 | Permanently drop records based on their contents | Dropped records can't be recovered, regardless of any retention or recoverability settings | [Use purge](#purge) |
 
 The following sections describe the different deletion methods.
@@ -71,7 +71,7 @@ Both purge and soft-delete can be used for deleting individuals rows, but they a
 
 ### Soft delete
 
-With [soft delete](kusto/concepts/data-soft-delete.md), data is not necessarily deleted from storage artifacts and, as such, it cannot be used for compliance scenarios. This method initially marks all matching records as deleted and then a background process removes them. It doesn't require significant system resources but may have an impact on query performance. The deletion process is final and irreversible.
+With [soft delete](kusto/concepts/data-soft-delete.md), data is not necessarily deleted from storage artifacts. This method marks all matching records as deleted, so that they can be filtered out by queries, and doesn't require significant system resources. The deletion process is final and irreversible.
 
 ### Purge
 
