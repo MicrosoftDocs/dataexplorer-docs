@@ -94,9 +94,7 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
         ADX_TENANT_ID=[SERVICE_PRINCIPAL_TENANT_ID]
         ```
 
-Note: When using managed identity, the ADX_CLIENT_ID value is the client id of the managed identity, and the ADX_CLIENT_ID is not needed.
-ADX_CLIENT_ID is reqored only if you use Azure Active Directory (Azure AD) service principal.
-
+        Note: When using managed identity, the ADX_CLIENT_ID value is the client id of the managed identity, and the ADX_CLIENT_ID is not needed.ADX_CLIENT_ID is reqored only if you use Azure Active Directory (Azure AD) service principal.
 
     1. Optionally, enable Application Insights telemetry. If you're using Application Insights for the first time, [create an Application Insights resource](/azure/azure-monitor/app/create-new-resource). [Copy the instrumentation key](/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) to a variable.
 
@@ -107,7 +105,7 @@ ADX_CLIENT_ID is reqored only if you use Azure Active Directory (Azure AD) servi
 
     1. <a name="install-k2bridge-chart"></a> Install the K2Bridge chart. Visualizations and dashboards are supported with the Kibana 7.10 version only. The latest image tags are: 6.8_latest and 7.16_latest, which support Kibana 6.8 and Kibana 7.10 respectively (the image of '7.16_latest' supports Kibana OSS 7.10.2 and its internal Elasticsearch instance is 7.16.2). 
 
-If Azure Active Directory (Azure AD) service principal was set:
+         If Azure Active Directory (Azure AD) service principal was set:
 
         ```bash
         helm install k2bridge charts/k2bridge -n k2bridge --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set settings.aadClientId="$ADX_CLIENT_ID" --set settings.aadClientSecret="$ADX_CLIENT_SECRET" --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=6.8_latest/7.10_latest] 
@@ -115,7 +113,7 @@ If Azure Active Directory (Azure AD) service principal was set:
         [--set privateRegistry="$IMAGE_PULL_SECRET_NAME"] [--set settings.collectTelemetry=$COLLECT_TELEMETRY]
         ```
 
-Or, if managed identity was set:
+         Or, if managed identity was set:
 
         ```bash
         helm install k2bridge charts/k2bridge -n k2bridge --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set       settings.aadClientId="$ADX_CLIENT_ID" --set settings.useManagedIdentity=true --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=7.16_latest] [--set  settings.collectTelemetry=$COLLECT_TELEMETRY]
