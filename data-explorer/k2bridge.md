@@ -48,7 +48,7 @@ Before you can visualize data from Azure Data Explorer in Kibana, have the follo
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An [Azure Data Explorer cluster and database](create-cluster-database-portal.md). You will need the cluster's URL and the database name.
 * [Helm v3](https://github.com/helm/helm#install), the Kubernetes package manager.
-* Azure Kubernetes Service (AKS) cluster or any other Kubernetes cluster. Versions 1.14 to 1.16 have been tested and verified. If you need an AKS cluster, see how to deploy an AKS cluster [using the Azure CLI](/azure/aks/kubernetes-walkthrough) or [using the Azure portal](/azure/aks/kubernetes-walkthrough-portal).
+* Azure Kubernetes Service (AKS) cluster or any other Kubernetes cluster. Use version 1.21.2 or newer, with a minimum of 3 node count. Version 1.21.2 has been tested and verified. If you need an AKS cluster, see how to deploy an AKS cluster [using the Azure CLI](/azure/aks/kubernetes-walkthrough) or [using the Azure portal](/azure/aks/kubernetes-walkthrough-portal).
 * An Azure Active Directory (Azure AD) service principal authorized to view data in Azure Data Explorer, including the client ID and client secret.
 
     We recommend a service principal with viewer permission and discourage you from using higher-level permissions. [Set the cluster's view permissions for the Azure AD service principal](manage-database-permissions.md#manage-permissions-in-the-azure-portal).
@@ -99,7 +99,7 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
         COLLECT_TELEMETRY=true
         ```
 
-    1. <a name="install-k2bridge-chart"></a> Install the K2Bridge chart. Visualizations and dashboards are supported with the Kibana 7.10 version only. The latest image tags are: 6.8_latest and 7.16_latest, which support Kibana 6.8 and Kibana 7.16 respectively. 
+    1. <a name="install-k2bridge-chart"></a> Install the K2Bridge chart. Visualizations and dashboards are supported with the Kibana 7.10 version only. The latest image tags are: 6.8_latest and 7.16_latest, which support Kibana 6.8 and Kibana 7.10 respectively (the image of '7.16_latest' supports Kibana OSS 7.10.2 and its internal Elasticsearch instance is 7.16.2). 
 
         ```bash
         helm install k2bridge charts/k2bridge -n k2bridge --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set settings.aadClientId="$ADX_CLIENT_ID" --set settings.aadClientSecret="$ADX_CLIENT_SECRET" --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=6.8_latest/7.10_latest] 
@@ -254,8 +254,8 @@ Use Kibana visualizations to get at-a-glance views of Azure Data Explorer data.
 
 > [!IMPORTANT]
 > * The following visualizations are supported: `Vertical bar`, `Area chart`, `Horizontal bar`, `Pie chart`, `Gauge`, `Data table`, `Heat map`, `Goal chart`, and `Metric chart`.
-> * The following metrics are supported: `Average`, `Count`, `Max`, `Median`, `Min`, `Percentiles`, `Sum`, and `Unique count`.
-> * The metrics `Percentiles ranks` and `Top hits` are not supported.
+> * The following metrics are supported: `Average`, `Count`, `Max`, `Median`, `Min`, `Percentiles`, `Standard deviation`, `Sum`, `Top hits` and `Unique count`.
+> * The metric `Percentiles ranks` is not supported.
 > * Using bucket aggregations is optional, you can visualize data without bucket aggregation.
 > * The following buckets are supported: `No bucket aggregation`, `Date histogram`, `Filters`, `Range`, and `Terms`.
 > * The buckets `IPv4 range` and `Significant terms` are not supported.
