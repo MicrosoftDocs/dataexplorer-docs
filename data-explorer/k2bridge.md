@@ -51,12 +51,10 @@ Before you can visualize data from Azure Data Explorer in Kibana, have the follo
 * Azure Kubernetes Service (AKS) cluster or any other Kubernetes cluster. Use version 1.21.2 or newer, with a minimum of three Azure Kubernetes Service nodes. Version 1.21.2 has been tested and verified. If you need an AKS cluster, see how to deploy an AKS cluster [using the Azure CLI](/azure/aks/kubernetes-walkthrough) or [using the Azure portal](/azure/aks/kubernetes-walkthrough-portal).
 * An Azure Active Directory (Azure AD) service principal authorized to view data in Azure Data Explorer, including the client ID and client secret. Alternativly, you can use a [system-assigned managed identity](/azure/aks/use-managed-identity).
 
-
 If you choose to use an Azure Active Directory (Azure AD) service principal, you will need to:
 * [Create an Azure AD service principal](/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application). For the installation, you will need the ClientID and a Secret.
 
     We recommend a service principal with viewer permission and discourage you from using higher-level permissions. [Set the cluster's view permissions for the Azure AD service principal](manage-database-permissions.md#manage-permissions-in-the-azure-portal).
-
 
 If you choose to use a sytem assigned identity, you will need to:
 * Get the agent pool managed identity **ClientID** (located in the generated "[_MC_xxxx_]" [resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks)) 
