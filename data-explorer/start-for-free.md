@@ -1,6 +1,6 @@
 ---
-title: Start using Azure Data Explorer for free.
-description: This topic shows you how to get started with a Azure Data Explorer cluster.
+title: Start for free using Azure Data Explorer.
+description: This article shows you how to get started with a free Azure Data Explorer cluster.
 author: orspod
 ms.author: orspodek
 ms.reviewer: avnera
@@ -9,7 +9,7 @@ ms.topic: how-to
 ms.date: 01/30/2022
 ---
 
-# Start using Azure Data Explorer for free
+# What is a "Start for free"?
 
 The "Start for free" cluster allows anyone with a Microsoft account or an Azure Active Directory user identity to create a free Azure Data Explorer cluster without needing an Azure subscription or a credit card.
 
@@ -17,7 +17,7 @@ A single, free cluster can be created and used for commercial or non-commercial 
 
 The cluster's trial period is for a year and isn't included in our service level agreements, though we may automatically extend the trial period. At any time, you can upgrade the cluster to a full Azure Data Explorer license.
 
-Start your journey by [creating you own free cluster](http://aka.ms/kustofree) and reviewing the [Microsoft Software License Terms](http://aka.ms/kustofreeeula).
+Start your journey by [creating you own free cluster](https://aka.ms/kustofree) and reviewing the [Microsoft Software License Terms](https://aka.ms/kustofreeeula).
 
 ## Specifications
 
