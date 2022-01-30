@@ -72,14 +72,14 @@ In the **Ingest new data** window, the **Destination** tab is selected. The **Cl
 
     :::image type="content" source="media/generate-lightingest-command/advanced-configuration-dialog.png" alt-text="Screenshot of of setting advanced options for the ingestion processing involving the tool LightIngest.":::
 
-    | Field | Description|
+    | Property | Description|
     |---|---|
-    | Creation time pattern | Specify to override the ingestion time property of the created extent. Use the pattern “YYYY/MM/dd/blobName.csv” to apply a date based on the folder structure of the container. For example, a pattern of “2021/01/27/blobName.csv” will create an ingestion time of (27-01-2021) instead of the exact time (2022-01-27 hh:mm:ss). See also [Creation time pattern](lightingest.md#how-to-ingest-data-using-creationtime). |
-    | Blob name pattern | Specify the pattern used to identify the files to be ingested. Ingest all the files that match the blob name pattern in the given container. Supports wildcards, for example, "`*.csv`" or "`blob*.csv`". Recommended to enclose in double quotes. |
-    | Tag | A [tag](kusto/management/extents-overview.md#extent-tagging) assigned to the ingested data. A tag can be any string, including `ingest-by:xxx, Drop-by:xxx` |
+    | Creation time pattern | Specify to override the ingestion time property of the created extent with a pattern, for example, to apply a date based on the folder structure of the container. See also [Creation time pattern](lightingest.md#how-to-ingest-data-using-creationtime). |
+    | Blob name pattern | Specify the pattern used to identify the files to be ingested. Ingest all the files that match the blob name pattern in the given container. Supports wildcards. Recommended to enclose in double quotes. |
+    | Tag | A [tag](kusto/management/extents-overview.md#extent-tagging) assigned to the ingested data. The tag can be any string. |
     | Limit amount of files | Specify the number of files that can be ingested. Ingests the first `n` files that match the blob name pattern, up to the number specified.  |
-    | Don't wait for ingestion to complete | If set, queue the blobs for ingestion without monitoring the ingestion process, so the tool will exit after done queueing, but the ingestion will keep running in the server. If not set, LightIngest continues to poll the ingestion status until ingestion is complete.|
-    | Display only selected items| List the files in the container, but do not ingest them. You can use this option to test the settings and to see if the blobs associated with your blob name pattern is as expected. |
+    | Don't wait for ingestion to complete | If set, queues the blobs for ingestion without monitoring the ingestion process. If not set, LightIngest continues to poll the ingestion status until ingestion is complete.|
+    | Display only selected items| List the files in the container, but does not ingest them.  |
 
 1. Enter values for relevant fields and select **Done** to return to the **Source** tab.
 
