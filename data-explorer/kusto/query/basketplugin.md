@@ -17,7 +17,7 @@ The `basket` plugin finds frequent patterns of attributes in the data. It return
 
 *T* | `evaluate` `basket` `(` [*Threshold*, *WeightColumn*, *MaxDimensions*, *CustomWildcard*, *CustomWildcard*, ...]`)`
 
-## Arguments 
+## Arguments
 
 All arguments are optional, but they must be ordered as above. To indicate that the default value should be used, use the string tilde value - '~'. See examples below.
 
