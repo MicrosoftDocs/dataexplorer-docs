@@ -9,9 +9,9 @@ ms.topic: how-to
 ms.date: 01/31/2022
 ---
 
-# What is a "Start for free" cluster?
+# What is a Start-for-free cluster?
 
-The "Start for free" cluster allows anyone with a Microsoft account or an Azure Active Directory user identity to create a free Azure Data Explorer cluster without needing an Azure subscription or a credit card.
+The Start-for-free cluster allows anyone with a Microsoft account or an Azure Active Directory user identity to create a free Azure Data Explorer cluster without needing an Azure subscription or a credit card.
 
 It's a frictionless way to create a free cluster that can be used for any purposes. It's the ideal solution for anyone who wants to get started quickly with Azure Data Explorer, and experience the incredible engine performance and enjoy the productive Kusto Query Language.
 
@@ -21,7 +21,7 @@ Start your journey by [creating you own free cluster](https://aka.ms/kustofree) 
 
 ## Specifications
 
-The following table describes specifications and quotas that for a free cluster.
+The following table describes specifications and quotas for a Start-for-free cluster.
 
 | Item | Value |
 |--|--|
@@ -33,9 +33,9 @@ The following table describes specifications and quotas that for a free cluster.
 
 ## Feature comparison
 
-Start for free is a subset of the full Azure Data Explorer cluster that provides a reduced set of functionality. The following table lists the features and their availability in both offering.
+The Start-for-free cluster is a subset of the full Azure Data Explorer cluster that provides a reduced set of functionality. The following table lists the features and their availability in both offering.
 
-| Feature | Full Azure Data Explorer cluster | Start for free cluster |
+| Feature | Full Azure Data Explorer cluster | Start-for-free cluster |
 |--|--|--|
 | Kusto Query Language | &check; | &check; |
 | Database objects (tables, columns, functions) | &check; | &check; |
