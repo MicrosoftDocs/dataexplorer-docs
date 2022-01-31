@@ -34,13 +34,21 @@ To achive a successful injection of Azure Data Explorer into a virtual network s
 
 A private endpoint is a network interface that uses private IP addresses from your virtual network. This network interface connects you privately and securely to Azure Data Explorer powered by Azure Private Link. By enabling a private endpoint, you're bringing the service into your virtual network.
 
-![Schematic private endpoint architecture.](media/security-network-overview/pe-diagram.PNG)
+![Schematic private endpoint based architecture.](media/security-network-private-endpoint/pe-diagram-detail.png)
 
 Besides the need for a set of private IP addresses for the private endpoint there are no other requirements for a successful deployment.
 
 Private endpoints are not supported for ADX cluster which have been injected into a virtual network.
 
-## Recommendation
+## Comparison and recommendation
+
+The following table shows how network security related features could be implemented based on an Azure Data Explorer cluster injected into a virtual netowrk or secured using a private endpoint.
+
+|   Feature	| Private Endpoint  	| Virtual Network Injection  	|
+|---	|---	|---	|
+| Inbound IP filtering | [Restrict public access](security-network-restrict-public-access.md) | [Create an inbound Network Security Group rule](/azure/virtual-network/network-security-groups-overview)  	|
+| Transitive access to other services (Storage, EventHub, etc) | [Create a managed private endpoint](security-network-managed-private-endpoint-create.md) | [Create a private endpoint to the resource](/azure/data-explorer/vnet-endpoint-storage-event-hub)  	|
+| Restricting outbound access | Use [Callout policies or the AllowedFQDNList](security-network-restrict-outbound-access.md)	| Use a [virtual appliance](/azure/firewall/tutorial-firewall-deploy-portal) to filter outgoing traffic of the subnet |
 
 It's recommended to use a private endpoint based approach to connect privately to your Azure Data Explorer cluster. Maintaining FQDN lists in firewalls or deploying public IP addresses in a restricted environment lead to a high maintenance effort for a virtual network injection based deployment.
 
