@@ -115,14 +115,14 @@ In the right-hand side of the tab, you can preview your data. On the left-hand s
 
     :::image type="content" source="media/external-table/add-partitions.png" alt-text="Screen shot add partitions to external table in Azure Data Explorer." lightbox="media/external-table/add-partitions.png":::
 
-    For example, the partition name *CustomerName* suggests that the value to partition by is in the customer name part of the URL. The above example declared two partitions: one partition over the customer name and one partition over the date embedded in the URL. 
+    For example, the partition name *CustomerName* suggests that the value to partition by is in the customer name part of the URL. The above example declared two partitions: one partition over the customer name and one partition over the date embedded in the URL.
 
     > [!NOTE]
     > Virtual columns appear as part of the schema as the columns data extracted from the file path, and this data can be used later in queries.
 
-1. Select **Add partition** to add another partition. 
+1. Select **Add partition** to add another partition.
 1. Select **Save**. The partitions you added now appear in the list of **Partitions** in the left pane. Partitioned columns can't be changed in preview.
-    
+
     :::image type="content" source="media/external-table/schema.png" alt-text="Screen shot of schema external table Azure Data Explorer.":::
 
 1. Select **Next: Create table**. When the table is created, an **External table successfully created** window opens.
