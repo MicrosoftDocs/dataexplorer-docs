@@ -21,12 +21,12 @@ To learn how to implement streaming ingestion, see [streaming ingestion](../../i
 
 ## Syntax
 
-`.alter` `database` *DatabaseName* `policy` `streamingingestion` *ArrayOfPolicyObjects*
+`.alter` `database` *DatabaseName* `policy` `streamingingestion` *PolicyObject*
 
 ## Arguments
 
-*DatabaseName* - Specify the name of the database.
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+- *DatabaseName* - Specify the name of the database.
+- *PolicyObject* - Define a policy object. For more information, see the [streaming policy](../management/streamingingestionpolicy.md).
 
 ## Returns
 

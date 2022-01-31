@@ -8,7 +8,6 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/04/2021
 ms.custom: mode-portal
-ms.localizationpriority: high 
 adobe-target: true
 
 # Customer intent: As a database administrator, I want to create an Azure Data Explorer cluster and database so that I can understand whether Azure Data Explorer is suitable for my analytics projects.
@@ -81,23 +80,30 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 You're now ready for the second step in the process: database creation.
 
+### [Create with one-click](#tab/one-click-create-database)
+
+[!INCLUDE [data-explorer-one-click-manage-database](includes/data-explorer-one-click-manage-database.md)]
+
+### [Create with portal](#tab/portal-create-database)
+
 1. On the **Overview** tab, select **Create database**.
 
     :::image type="content" source="media/create-cluster-database-portal/database-creation.png" alt-text="Screenshot of the Create a database window."::: 
 
 1. Fill out the form with the following information.
 
+    |**Setting** | **Suggested value** | **Field description**
+    |---|---|---|
+    | Admin | *Default selected* | The admin field is disabled. New admins can be added after database creation. |
+    | Database name | *TestDatabase* | The name of database to create. The name must be unique within the cluster. |
+    | Retention period | *365* | The number of days that data is guaranteed to be kept available for querying. The period is measured from the time data is ingested. |
+    | Cache period | *31* | The number of days to keep frequently queried data available in SSD storage or RAM to optimize querying. |
+
     :::image type="content" source="media/create-cluster-database-portal/create-test-database.png" alt-text="Create database form."::: 
 
-    **Setting** | **Suggested value** | **Field description**
-    |---|---|---|
-    | Admin | *Default selected* | The admin field is disabled. New admins can be added after database creation.
-    | Database name | *TestDatabase* | The database name must be unique within the cluster.
-    | Retention period | *365* | The time span (in days) for which it's guaranteed that the data is kept available to query. The time span is measured from the time that data is ingested.
-    | Cache period | *31* | The time span (in days) for which to keep frequently queried data available in SSD storage or RAM, rather than in longer-term storage.
-    | | | |
-
 1. Select **Create** to create the database. Creation typically takes less than a minute. When the process is complete, you're back on the cluster **Overview** tab.
+
+---
 
 ## Run basic commands in the database
 
