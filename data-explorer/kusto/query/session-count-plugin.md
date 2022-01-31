@@ -17,16 +17,16 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Syntax
 
-*T* `| evaluate` `session_count(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Bin*`,` *LookBackWindow* [`,` *dim1*`,` *dim2*`,` ...]`)`
+*TabularExpression* `| evaluate` `session_count(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Bin*`,` *LookBackWindow* [`,` *dim1*`,` *dim2*`,` ...]`)`
 
 ## Arguments
 
-* *T*: The input tabular expression.
-* *IdColumn*: The name of the column with ID values that represent user activity. 
+* *TabularExpression*: The tabular expression that serves as input.
+* *IdColumn*: The name of the column with ID values that represents user activity.
 * *TimelineColumn*: The name of the column that represents the timeline.
-* *Start*: Scalar with value of the analysis start period.
-* *End*: Scalar with value of the analysis end period.
-* *Bin*:  scalar constant value of session analysis step period.
+* *Start*: A scalar value that defines the start of the analysis period.
+* *End*: A scalar value that defines the end of the analysis period.
+* *Bin*: A constant scalar value that defines the session's analysis step period.
 * *LookBackWindow*: scalar constant value representing session lookback period. If the ID from `IdColumn` appears in a time window within `LookBackWindow`, the session is considered to be an existing one. If the ID doesn't appear, then the session is considered to be new.
 * *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the session count calculation.
 
@@ -44,8 +44,8 @@ Output table schema is:
 ## Examples
 
 For this example, the data is deterministic, and we use a table with two columns:
-- Timeline: a running number from 1 to 10,000
-- Id: Id of the user from 1 to 50
+- `Timeline`: a running number from 1 to 10,000
+- `Id`: ID of the user from 1 to 50
 
 `Id` appears at the specific `Timeline` slot if it's a divider of `Timeline` (Timeline % Id == 0).
 
@@ -91,7 +91,7 @@ _data
 
 Let's define a session in next terms: session considered to be active as long as user (`Id`) appears at least once at a timeframe of 100 time slots, while session look-back window is 41 time slots.
 
-The next query shows the count of active sessions according to the definition above.
+The next query shows the count of active sessions according to the above definition.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
