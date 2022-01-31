@@ -28,7 +28,7 @@ Detects sequence occurrences based on provided predicates. The plugin is invoked
 
 ## Returns
 
-Returns a single table where each row in the table represents a single sequence occurence:
+Returns a single table where each row in the table represents a single sequence occurrence:
 
 * *Dim1*, *Dim2*, ...: dimension columns that were used to correlate sequences.
 * *Expr1*_*TimelineColumn*, *Expr2*_*TimelineColumn*, ...: Columns with time values, representing the timeline of each sequence step.
