@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 01/24/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -15,8 +15,10 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results. The query may return more then one rowset, but only the first rowset is made available for the rest of the Kusto query.
+The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results. The query may return more then one rowset, but only the first rowset is made available for the rest of the Kusto query. 
 
+The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+ 
 > [!IMPORTANT]
 > The `mysql_request` plugin is in preview mode, and is disabled by default.
 > To enable the plugin, run the [`.enable plugin mysql_request` command](../management/enable-plugin.md). To see which plugins are enabled, use [`.show plugin` management commands](../management/show-plugins.md).

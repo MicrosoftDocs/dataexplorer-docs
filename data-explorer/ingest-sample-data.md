@@ -28,7 +28,7 @@ The **StormEvents** sample data set contains weather-related data from the [Nati
 
 First, sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com). Then follow the steps to ingest the sample data.
 
-# [Ingest with wizard](#tab/one-click-ingest)
+### [Ingest with wizard](#tab/one-click-ingest)
 
 1. In the left menu, select **Data**.
 
@@ -55,7 +55,7 @@ First, sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.co
     | Setting | Description|
     |---|---|
     | Source type | Select the data source to ingest. In this example, *From blob* is already selected. |
-    | Link to source | Use the following [storage URI](kusto/api/connection-strings/storage.md#generate-a-sas-for-azure-storage-blob-container) link: https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D. |
+    | Link to source | Use the following [storage URI](kusto/api/connection-strings/generate-sas-token.md) link: https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D. |
 
 1. Select **Next: Schema**.
 
@@ -88,7 +88,7 @@ First, sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.co
 
     :::image type="content" source="media/ingest-sample-data/query-results.png" alt-text="Screenshot of the Web UI where you select the query results for the ingested sample data.":::
 
-# [Ingest with command](#tab/ingest-comand)
+### [Ingest with command](#tab/ingest-comand)
 
 1. In the left menu, select **Query**. In the upper-left of the application, select **Add cluster**.
 
@@ -119,6 +119,7 @@ First, sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.co
     The query returns the following results from the ingested sample data.
 
     :::image type="content" source="media/ingest-sample-data/query-results.png" alt-text="Screenshot of the Web UI where you see the query results for the ingested sample data.":::
+
 ---
 
 ## Next steps
