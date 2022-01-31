@@ -6,22 +6,22 @@ ms.author: orspodek
 ms.reviewer: avnera
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/30/2022
+ms.date: 01/31/2022
 ---
 
-# What is a "Start for free"?
+# What is a "Start for free" cluster?
 
 The "Start for free" cluster allows anyone with a Microsoft account or an Azure Active Directory user identity to create a free Azure Data Explorer cluster without needing an Azure subscription or a credit card.
 
-A single, free cluster can be created and used for commercial or non-commercial purposes. It is intended to provide a frictionless cluster deployment for anyone who wants to experience and enjoy the incredible performance of our engine and our productive, easy-to-learn Kusto Query Language.
+It's a frictionless way to create a free cluster that can be used for any purposes. It's the ideal solution for anyone who wants to get started quickly with Azure Data Explorer, and experience the incredible engine performance and enjoy the productive Kusto Query Language.
 
-The cluster's trial period is for a year and isn't included in our service level agreements, though we may automatically extend the trial period. At any time, you can upgrade the cluster to a full Azure Data Explorer license.
+The cluster's trial period is for a year and may automatically be extended. The cluster is provided *as-is* and is not subject to the Azure Data Explorer service level agreement. At any time, you can upgrade the cluster to a full Azure Data Explorer cluster.
 
 Start your journey by [creating you own free cluster](https://aka.ms/kustofree) and reviewing the [Microsoft Software License Terms](https://aka.ms/kustofreeeula).
 
 ## Specifications
 
-The following table describes specifications and quotas that for a free cluster, though these may change.
+The following table describes specifications and quotas that for a free cluster.
 
 | Item | Value |
 |--|--|
@@ -33,7 +33,7 @@ The following table describes specifications and quotas that for a free cluster,
 
 ## Feature comparison
 
-Start for free is a subset of the full Azure Data Explorer license that provides a reduced set of functionality. The following table lists the features and their availability in a Start for free cluster.
+Start for free is a subset of the full Azure Data Explorer cluster that provides a reduced set of functionality. The following table lists the features and their availability in both offering.
 
 | Feature | Full Azure Data Explorer cluster | Start for free cluster |
 |--|--|--|
