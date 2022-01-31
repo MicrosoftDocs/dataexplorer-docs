@@ -421,7 +421,6 @@ If `effectiveDateTime` is specified along with `move_extents_from`, only extents
     * Must be a table that is being ingested to directly, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md).
         * Specifically, using [move extents](../move-extents.md) from other tables into the source table of the materialized view is not supported. Move extents may fail with the following error: `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
     * Must have [IngestionTime policy](../ingestiontimepolicy.md) enabled (the default is enabled).
-    * Can't be enabled for [streaming ingestion](../streamingingestionpolicy.md). Materialized views over streaming ingestion tables are supported in preview mode. Enabling this feature on your cluster requires [creating a support ticket](https://ms.portal.azure.com/#create/Microsoft.Support).
     * Can't be a table with [restricted view access policy](../restrictedviewaccesspolicy.md).
 * [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
 * Continuous export from a materialized view isn't supported.
