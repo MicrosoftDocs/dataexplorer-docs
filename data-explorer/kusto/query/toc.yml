@@ -220,18 +220,30 @@ items:
     href: toscalarfunction.md
 - name: Scalar operators
   items:
-  - name: Bitwise (binary) operators
+  - name: between operators  
+    items:  
+    - name: between operator 
+      href: betweenoperator.md
+    - name: "!between operator" 
+      href: notbetweenoperator.md
+  - name: Bitwise binary operators
     href: binoperators.md
   - name: Datetime/timespan arithmetic
     href: datetime-timespan-arithmetic.md
-  - name: Logical (binary) operators
+  - name: in operators  
+    items:
+    - name: in operator 
+      href: in-cs-operator.md
+    - name: in~ operator 
+      href: inoperator.md
+    - name: "!in operator"
+      href: not-in-cs-operator.md
+    - name: "!in~ operator" 
+      href: not-in-operator.md 
+  - name: Logical or binary operators
     href: logicaloperators.md
   - name: Numerical operators
     href: numoperators.md
-  - name: between operator 
-    href: betweenoperator.md
-  - name: "not between (!between) operator" 
-    href: notbetweenoperator.md
   - name: String operators
     items:
     - name: String operators overview
@@ -1058,6 +1070,12 @@ items:
     href: geo-distance-point-to-line-function.md
   - name: geo_distance_point_to_polygon()
     href: geo-distance-point-to-polygon-function.md
+  - name: geo_intersects_2lines()
+    href: geo-intersects-2lines-function.md
+  - name: geo_intersects_2polygons()
+    href: geo-intersects-2polygons-function.md
+  - name: geo_intersects_line_with_polygon()
+    href: geo-intersects-line-with-polygon-function.md
   - name: geo_point_in_circle()
     href: geo-point-in-circle-function.md
   - name: geo_point_in_polygon()
@@ -1092,6 +1110,10 @@ items:
     href: geo-polygon-to-s2cells-function.md
   - name: geo_line_densify()
     href: geo-line-densify-function.md 
+  - name: geo_polygon_area()
+    href: geo-polygon-area-function.md
+  - name: geo_polygon_centroid()
+    href: geo-polygon-centroid-function.md
   - name: geo_polygon_densify()
     href: geo-polygon-densify-function.md
 - name: User analytics

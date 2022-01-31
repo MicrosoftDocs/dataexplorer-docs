@@ -62,6 +62,27 @@ In the **Ingest new data** window, the **Destination** tab is selected. The **Cl
 
 :::image type="content" source="media/generate-lightingest-command/source-tab-container-from-subscription.png" alt-text="Screenshot of dialog box for selecting container from storage subscription and account.":::
 
+## Advanced settings
+
+1. To define additional settings for the ingestion process using LightIngest, select **Advanced settings**.
+
+    :::image type="content" source="media/generate-lightingest-command/source-tab-advanced-settings.png" alt-text="Screenshot of selecting advanced settings for the ingestion processing involving the tool LightIngest.":::
+
+1. In the **Advanced configuration** panel, define the following settings:
+
+    :::image type="content" source="media/generate-lightingest-command/advanced-configuration-dialog.png" alt-text="Screenshot of setting advanced options for the ingestion processing involving the tool LightIngest.":::
+
+    | Property | Description|
+    |---|---|
+    | Creation time pattern | Specify to override the ingestion time property of the created extent with a pattern, for example, to apply a date based on the folder structure of the container. See also [Creation time pattern](lightingest.md#how-to-ingest-data-using-creationtime). |
+    | Blob name pattern | Specify the pattern used to identify the files to be ingested. Ingest all the files that match the blob name pattern in the given container. Supports wildcards. Recommended to enclose in double quotes. |
+    | Tag | A [tag](kusto/management/extents-overview.md#extent-tagging) assigned to the ingested data. The tag can be any string. |
+    | Limit amount of files | Specify the number of files that can be ingested. Ingests the first `n` files that match the blob name pattern, up to the number specified.  |
+    | Don't wait for ingestion to complete | If set, queues the blobs for ingestion without monitoring the ingestion process. If not set, LightIngest continues to poll the ingestion status until ingestion is complete.|
+    | Display only selected items| List the files in the container, but does not ingest them.  |
+
+1. Enter values for relevant fields and select **Done** to return to the **Source** tab.
+
 ## Filter data
 
 If you want to, filter the data to ingest only files in a specific folder path or with a particular file extension.

@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 01/13/2022
 ---
 # .alter-merge table partitioning policy
 
@@ -15,12 +15,12 @@ Alters a table [partitioning policy](partitioningpolicy.md). The partitioning po
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `policy` `partitioning` *ArrayOfPolicyObjects*
+`.alter-merge` `table` *TableName* `policy` `partitioning` *PolicyObject*
 
 ## Arguments
 
-*TableName* - Specify the name of the table. 
-*ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
+*TableName* - Specify the name of the table.
+*PolicyObject* - Define a policy object, see also [partitioning policy](partitioningpolicy.md).
 
 ### Example
 
