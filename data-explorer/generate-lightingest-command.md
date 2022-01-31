@@ -64,13 +64,13 @@ In the **Ingest new data** window, the **Destination** tab is selected. The **Cl
 
 ## Advanced settings
 
-1. To define additional settings for the the ingestion process using LightIngest, click **Advanced settings**.
+1. To define additional settings for the the ingestion process using LightIngest, select **Advanced settings**.
 
-    :::image type="content" source="media/generate-lightingest-command/source-tab-advanced-settings.png" alt-text="Screenshot of of selecting advanced settings for the ingestion processing involving the tool LightIngest.":::
+    :::image type="content" source="media/generate-lightingest-command/source-tab-advanced-settings.png" alt-text="Screenshot of selecting advanced settings for the ingestion processing involving the tool LightIngest.":::
 
 1. In the **Advanced configuration** panel, define the following settings:
 
-    :::image type="content" source="media/generate-lightingest-command/advanced-configuration-dialog.png" alt-text="Screenshot of of setting advanced options for the ingestion processing involving the tool LightIngest.":::
+    :::image type="content" source="media/generate-lightingest-command/advanced-configuration-dialog.png" alt-text="Screenshot of setting advanced options for the ingestion processing involving the tool LightIngest.":::
 
     | Property | Description|
     |---|---|
