@@ -103,9 +103,9 @@ You'll use the following tools:
 
 |Deployment type|Tool|Task|
 |--|--|--|
-|Infrastructure|ARM Templates|Create a cluster and two databases|
-|Schema entities|Kusto CLI|Create tables and functions in both databases|
-|Data|LightIngest|Ingest data into both databases|
+|Infrastructure|ARM Templates|Create a cluster and a database|
+|Schema entities|Kusto CLI|Create tables in the database|
+|Data|LightIngest|Ingest data into one table|
 
 :::image type="content" source="media/automated-deploy-overview/flow-sample.png" alt-text="Image showing the deployment an example flow.":::
 
@@ -117,11 +117,9 @@ Define a [service connection](/azure/devops/pipelines/library/service-endpoints)
 
 ### Step 2: Create a pipeline
 
-Define the pipeline that will be used to deploy the cluster, create schema entities, and ingest data.
+Define the pipeline (*deploy-environ*) that will be used to deploy the cluster, create schema entities, and ingest data.
 
-// **VP: Where is this defined?**
-
-You'll need to create variables for the following:
+You'll want to [create secret variables](/azure/devops/pipelines/process/variables?view=azure-devops&tabs=classic%2Cbatch) for the following:
 
 | Variable Name | Description |
 |--|--|
@@ -166,7 +164,7 @@ stages:
         action: 'Create Or Update Resource Group'
         location: $(location)
         templateLocation: 'Linked artifact'
-        csmFile: kusto-infra.json
+        csmFile: deploy-infra.json
         overrideParameters: "-clusterName $(clusterName)"
         deploymentMode: 'Incremental'
     - bash: |
@@ -177,14 +175,13 @@ stages:
       displayName: Create Schema Entities
     - bash: |
         connectionString="https://ingest-$(CLUSTERNAME).$(location).kusto.windows.net/;Fed=true;AppClientId=$(appId);AppKey=$(appSecret);TenantId=$(appTenantId)"
-        # Execute a KQL ingestion script against the database
         kusto.tools/tools/LightIngest $connectionString -table:Customer -sourcePath:customers.csv -db:myDatabase -format:csv -ignoreFirst:true
       displayName: Ingest Data
 ```
 
 ### Step 3: Create an ARM template to deploy the cluster
 
-Define the ARM template that will be used to deploy the cluster to your subscription and resource group.
+Define the ARM template (*deploy-infra.json*) that will be used to deploy the cluster to your subscription and resource group.
 
 ```json
 {
@@ -232,9 +229,7 @@ Define the ARM template that will be used to deploy the cluster to your subscrip
 
 ### Step 4: Create a KQL script to create the schema entities
 
-Define the KQL script that will be used to create the tables in the databases.
-
-// **VP: How does this create tables in both databases?**
+Define the KQL script (*MyDatabase.kql*) that will be used to create the tables in the databases.
 
 ```kusto
 .create table Customer(CustomerName:string, CustomerAddress:string)
@@ -249,9 +244,7 @@ Define the KQL script that will be used to create the tables in the databases.
 
 ### Step 5: Create a KQL script to ingest data
 
-// **VP: Where is the ingest SQL script?**
-
-Sample data to ingest.
+Create the CSV data file (*customer.csv*) to ingest.
 
 ```text
 customerName,customerAddress
@@ -266,7 +259,7 @@ The cluster is created using the service principal credentials you specified in 
 
 :::image type="content" source="media/automated-deploy-overview/deployed-database.png" alt-text="Image showing the deployed database with its two tables in Kusto Web UI.":::
 
-You can verify the deployment by running a query against the *Customer* table. You should see the three records defined in the CSV file.
+You can verify the deployment by running a query against the *Customer* table. You should see the three records that were imported from the CSV file.
 
 ## Next steps
 
