@@ -30,4 +30,3 @@ This command requires `All Databases admin` permission.
 
 * [`.show plugins`](show-plugins.md)
 * [`.enable plugin`](enable-plugin.md)
-

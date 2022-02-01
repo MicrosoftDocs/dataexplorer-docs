@@ -24,6 +24,9 @@ Finds a row in the group that minimizes *ExprToMinimize*, and returns the value 
 * *ExprToMinimize*: Expression that will be used for aggregation calculation. 
 * *ExprToReturn*: Expression that will be used for returning the value when *ExprToMinimize* is
   minimum. Expression to return may be a wildcard (*) to return all columns of the input table.
+  
+## Null handling
+When *ExprToMinimize* is null for all rows in a group, one row in the group is picked. Otherwise, rows where *ExprToMinimize* is null are ignored.
 
 ## Returns
 
@@ -52,3 +55,23 @@ PageViewLog
 ```
 
 :::image type="content" source="images/arg-min-aggfunction/arg-min.png" alt-text="Arg min.":::
+
+Null handling example:
+
+```kusto
+datatable(Fruit: string, Color: string, Version: int) [
+    "Apple", "Red", 1,
+    "Apple", "Green", int(null),
+    "Banana", "Yellow", int(null),
+    "Banana", "Green", int(null),
+    "Pear", "Brown", 1,
+    "Pear", "Green", 2,
+]
+| summarize arg_min(Version, *) by Fruit
+```
+
+|Fruit|Version|Color|
+|---|---|---|
+|Apple|1|Red|
+|Banana||Yellow|
+|Pear|1|Brown|
