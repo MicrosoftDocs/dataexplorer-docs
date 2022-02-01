@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: vplauzon
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/10/2022
+ms.date: 02/01/2022
 ---
 
 # Automated provisioning in Azure Data Explorer
@@ -97,50 +97,169 @@ If you have data you need to ingest into your cluster, such as when you want to 
 
 ## Example deployment using a CI/CD pipeline
 
-**VP:  should we use the *you*?  Shouldn't we use *we* instead as this is an article, not a blog?**
+In the following example, you'll use a Azure DevOps CI/CD pipeline running tools to automate the deployment of infrastructure, schema entities, and data. This is one example of a pipeline using a given set of tools. Other tools and steps can be used. For example, in a production environment you may want to create a pipeline that doesn't ingest data. You can also add further steps to the pipeline, such as running automated tests on the created cluster.
 
-In the following example, you'll use a CI/CD pipeline running these tools to automate the deployment of infrastructure, schema entities, and data. You'll use the following tools:
+You'll use the following tools:
 
 |Deployment type|Tool|Task|
 |--|--|--|
-|Infrastructure|ARM Templates|Create a cluster and two databases|
-|Schema entities|Kusto CLI|Create tables and functions in both databases|
-|Data|LightIngest|Ingest data into both databases|
+|Infrastructure|ARM Templates|Create a cluster and a database|
+|Schema entities|Kusto CLI|Create tables in the database|
+|Data|LightIngest|Ingest data into one table|
 
 :::image type="content" source="media/automated-deploy-overview/flow-sample.png" alt-text="Image showing the deployment an example flow.":::
 
-This is one example of a pipeline using a given set of tools. Other tools and steps can be used. For example, in a production environment you may want to create a pipeline that does not ingest data. You can aldo add further steps to the pipeline, such as running automated tests on the created cluster.
+Use the following steps to create a pipeline.
 
-Azure DevOps YAML file:  https://github.com/vplauzon/auto-kusto-article/blob/main/deploy-kusto.yaml
+### Step 1: Create a service connection
 
-We need to define a service connection (https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints) of type *Azure Resource Manager* pointing to the subscription & resource group we want to deploy our cluster to.
+Define a [service connection](/azure/devops/pipelines/library/service-endpoints) of type *Azure Resource Manager* pointing to the subscription and resource group where you want to deploy our cluster to. This will create the Azure Service Principal that you'll use to deploy the ARM template. You can use the same principal to deploy the schema entities and ingest data, you must explicitly pass the credentials to Kusto CLI and LightIngest tools.
 
-This will create an Azure Service Principal that will be used to deploy the ARM template.  We can also use the same principal to deploy the schema entities & ingest data.  For those last two operations we need to explicitly pass the credentials to Kusto CLI & LightIngest tools.
+### Step 2: Create a pipeline
 
-Variables needed to be defined:
+Define the pipeline (*deploy-environ*) that will be used to deploy the cluster, create schema entities, and ingest data.
 
-Variable Name|Description
--|-
-clusterName|Name of Azure Data Explorer cluster
-serviceConnection|Name of Azure DevOps connection used to deploy ARM template
-appId|Client ID of the service principal used to interact with the cluster
-appSecret|Secret of the service principal
-appTenantId|Tenant ID of the service principal
-location|Azure region to deploy the cluster into, e.g. eastus
+You'll want to [create secret variables](/azure/devops/pipelines/process/variables?view=azure-devops&tabs=classic%2Cbatch&preserve-view=true) for the following:
 
-ARM Template:  https://github.com/vplauzon/auto-kusto-article/blob/main/kusto-infra.json
+| Variable Name | Description |
+|--|--|
+| clusterName | Name of Azure Data Explorer cluster |
+| serviceConnection | Name of Azure DevOps connection used to deploy the ARM template |
+| appId | Client ID of the service principal used to interact with the cluster |
+| appSecret | Secret of the service principal |
+| appTenantId | Tenant ID of the service principal |
+| location | Azure region where the cluster will be deployed. For example, `eastus` |
 
-Schema entities:  https://github.com/vplauzon/auto-kusto-article/blob/main/MyDatabase.kql
+```yml
+resources:
+- repo: self
 
-Data:  https://github.com/vplauzon/auto-kusto-article/blob/main/customers.csv
+stages:
+- stage: deploy_cluster
+  displayName: Deploy cluster
+  variables: []
+    clusterName: specifyClusterName
+    serviceConnection: specifyServiceConnection
+    appId: specifyAppId
+    appSecret: specifyAppSecret
+    appTenantId: specifyAppTenantId
+    location: specifyLocation
+  jobs:
+  - job: e2e_deploy
+    pool:
+      vmImage: windows-latest
+    variables: []
+    steps:
+    - bash: |
+        nuget install Microsoft.Azure.Kusto.Tools -Version 5.3.1
+        # Rename the folder (including the most recent version)
+        mv Microsoft.Azure.Kusto.Tools.* kusto.tools
+      displayName: Download required Kusto.Tools Nuget package
+    - task: AzureResourceManagerTemplateDeployment@3
+      displayName: Deploy Infrastructure
+      inputs:
+        deploymentScope: 'Resource Group'
+        # subscriptionId and resourceGroupName are specified in the serviceConnection
+        azureResourceManagerConnection: $(serviceConnection)
+        action: 'Create Or Update Resource Group'
+        location: $(location)
+        templateLocation: 'Linked artifact'
+        csmFile: deploy-infra.json
+        overrideParameters: "-clusterName $(clusterName)"
+        deploymentMode: 'Incremental'
+    - bash: |
+        # Define connection string to cluster's database, including service principal's credentials
+        connectionString="https://$(clusterName).$(location).kusto.windows.net/myDatabase;Fed=true;AppClientId=$(appId);AppKey=$(appSecret);TenantId=$(appTenantId)"
+        # Execute a KQL script against the database
+        kusto.tools/tools/Kusto.Cli $connectionString -script:MyDatabase.kql
+      displayName: Create Schema Entities
+    - bash: |
+        connectionString="https://ingest-$(CLUSTERNAME).$(location).kusto.windows.net/;Fed=true;AppClientId=$(appId);AppKey=$(appSecret);TenantId=$(appTenantId)"
+        kusto.tools/tools/LightIngest $connectionString -table:Customer -sourcePath:customers.csv -db:myDatabase -format:csv -ignoreFirst:true
+      displayName: Ingest Data
+```
+
+### Step 3: Create an ARM template to deploy the cluster
+
+Define the ARM template (*deploy-infra.json*) that will be used to deploy the cluster to your subscription and resource group.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "type": "string",
+            "minLength": 5
+        }
+    },
+    "variables": {
+    },
+    "resources": [
+        {
+            "name": "[parameters('clusterName')]",
+            "type": "Microsoft.Kusto/clusters",
+            "apiVersion": "2021-01-01",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Dev(No SLA)_Standard_E2a_v4",
+                "tier": "Basic",
+                "capacity": 1
+            },
+            "resources": [
+                {
+                    "name": "myDatabase",
+                    "type": "databases",
+                    "apiVersion": "2021-01-01",
+                    "location": "[resourceGroup().location]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Kusto/clusters', parameters('clusterName'))]"
+                    ],
+                    "kind": "ReadWrite",
+                    "properties": {
+                        "softDeletePeriodInDays": 365,
+                        "hotCachePeriodInDays": 31
+                    }
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Step 4: Create a KQL script to create the schema entities
+
+Define the KQL script (*MyDatabase.kql*) that will be used to create the tables in the databases.
+
+```kusto
+.create table Customer(CustomerName:string, CustomerAddress:string)
+
+//  Set the ingestion batching policy to trigger ingestion quickly
+//  This is to speedup reaction time for the sample
+//  Do not do this in production
+.alter table Customer policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:10", "MaximumNumberOfItems": 500, "MaximumRawDataSizeMB": 1024}'
+
+.create table CustomerLogs(CustomerName:string, Log:string)
+```
+
+### Step 5: Create a KQL script to ingest data
+
+Create the CSV data file (*customer.csv*) to ingest.
+
+```text
+customerName,customerAddress
+Contoso Ltd,Paris
+Datum Corporation,Seattle
+Fabrikam,NYC
+```
 
 :::image type="content" source="media/automated-deploy-overview/devops-job.png" alt-text="Image showing a Job run of the example flow.":::
 
-Since the cluster is created by the service principal, we do not have any permission.  We need to give ourselves permissions in order to query:  https://docs.microsoft.com/en-us/azure/data-explorer/manage-database-permissions.
+The cluster is created using the service principal credentials you specified in the pipeline. Use the steps in [Manage Azure Data Explorer database permissions](manage-database-permissions.md) to give permissions to your users.
 
 :::image type="content" source="media/automated-deploy-overview/deployed-database.png" alt-text="Image showing the deployed database with its two tables in Kusto Web UI.":::
 
-We can query the Customer table and see it has the three records defined in the CSV file.
+You can verify the deployment by running a query against the *Customer* table. You should see the three records that were imported from the CSV file.
 
 ## Next steps
 
