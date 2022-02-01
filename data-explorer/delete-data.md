@@ -67,7 +67,7 @@ You can delete all rows in a table or just a specific extent.
 
 ## Delete individual rows
 
-Both purge and soft delete can be used for deleting individual rows, but they are designed for completely different scenarios.
+Both purge and soft delete can be used for deleting individual rows, but they are designed for completely different scenarios. The methods prevent deleted records from being recovered, regardless of any retention or recoverability settings. The deletion process is final and irreversible.
 
 ### Soft delete
 
