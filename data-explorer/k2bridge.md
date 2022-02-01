@@ -49,7 +49,7 @@ Before you can visualize data from Azure Data Explorer in Kibana, have the follo
 * An [Azure Data Explorer cluster and database](create-cluster-database-portal.md). You will need the cluster's URL and the database name.
 * [Helm v3](https://github.com/helm/helm#install), the Kubernetes package manager.
 * Azure Kubernetes Service (AKS) cluster or any other Kubernetes cluster. Use version 1.21.2 or newer, with a minimum of three Azure Kubernetes Service nodes. Version 1.21.2 has been tested and verified. If you need an AKS cluster, see how to deploy an AKS cluster [using the Azure CLI](/azure/aks/kubernetes-walkthrough) or [using the Azure portal](/azure/aks/kubernetes-walkthrough-portal).
-* An Azure Active Directory (Azure AD) service principal authorized to view data in Azure Data Explorer, including the client ID and client secret. Alternativly, you can use a [system-assigned managed identity](/azure/aks/use-managed-identity).
+* An Azure Active Directory (Azure AD) service principal authorized to view data in Azure Data Explorer, including the client ID and client secret. Alternatively, you can use a [system-assigned managed identity](/azure/aks/use-managed-identity).
 
 If you choose to use an Azure Active Directory (Azure AD) service principal, you will need to [create an Azure AD service principal](/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application). For the installation, you will need the ClientID and a Secret.
 We recommend a service principal with viewer permission and discourage you from using higher-level permissions. [Set the cluster's view permissions for the Azure AD service principal](manage-database-permissions.md#manage-permissions-in-the-azure-portal).
@@ -94,7 +94,8 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
         ADX_TENANT_ID=[SERVICE_PRINCIPAL_TENANT_ID]
         ```
 
-        Note: When using managed identity, the ADX_CLIENT_ID value is the client id of the managed identity, and the ADX_CLIENT_ID is not needed.ADX_CLIENT_ID is reqored only if you use Azure Active Directory (Azure AD) service principal.
+        [!NOTE]
+        > When using a managed identity, the ADX_CLIENT_ID value is the client ID of the managed identity, and the ADX_CLIENT_ID is not needed. ADX_CLIENT_ID is only required if you use an Azure Active Directory (Azure AD) service principal.
 
     1. Optionally, enable Application Insights telemetry. If you're using Application Insights for the first time, [create an Application Insights resource](/azure/azure-monitor/app/create-new-resource). [Copy the instrumentation key](/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) to a variable.
 
@@ -103,9 +104,9 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
         COLLECT_TELEMETRY=true
         ```
 
-    1. <a name="install-k2bridge-chart"></a> Install the K2Bridge chart. Visualizations and dashboards are supported with the Kibana 7.10 version only. The latest image tags are: 6.8_latest and 7.16_latest, which support Kibana 6.8 and Kibana 7.10 respectively (the image of '7.16_latest' supports Kibana OSS 7.10.2 and its internal Elasticsearch instance is 7.16.2). 
+    1. <a name="install-k2bridge-chart"></a> Install the K2Bridge chart. Visualizations and dashboards are supported with the Kibana 7.10 version only. The latest image tags are: 6.8_latest and 7.16_latest, which support Kibana 6.8 and Kibana 7.10 respectively. The image of '7.16_latest' supports Kibana OSS 7.10.2, and its internal Elasticsearch instance is 7.16.2.
 
-         If Azure Active Directory (Azure AD) service principal was set:
+         If an Azure AD service principal was used:
 
         ```bash
         helm install k2bridge charts/k2bridge -n k2bridge --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set settings.aadClientId="$ADX_CLIENT_ID" --set settings.aadClientSecret="$ADX_CLIENT_SECRET" --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=6.8_latest/7.10_latest] 
@@ -113,7 +114,7 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
         [--set privateRegistry="$IMAGE_PULL_SECRET_NAME"] [--set settings.collectTelemetry=$COLLECT_TELEMETRY]
         ```
 
-         Or, if managed identity was set:
+         Or, if managed identity was used:
 
         ```bash
         helm install k2bridge charts/k2bridge -n k2bridge --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set       settings.aadClientId="$ADX_CLIENT_ID" --set settings.useManagedIdentity=true --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=7.16_latest] [--set  settings.collectTelemetry=$COLLECT_TELEMETRY]
