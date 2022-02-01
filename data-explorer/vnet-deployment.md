@@ -29,7 +29,7 @@ You can access your Azure Data Explorer cluster using the following IP addresses
 * **Public IP**: Used for accessing the cluster from outside the VNet for management and monitoring, and as a source address for outbound connections started from the cluster.
 
 > [!IMPORTANT]
-> The default NSG rules block access to Public IP addresses outside the VNet. In order to reach a public endpoint, you must add an exception for your Public IP addresses in the NSG.
+> The default NSG rules block access to public IP addresses outside the VNet. To reach a public endpoint, you must add an exception for your public IP addresses in the NSG.
 
 The following DNS records are created to access the service: 
 
