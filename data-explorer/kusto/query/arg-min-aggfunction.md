@@ -26,7 +26,7 @@ Finds a row in the group that minimizes *ExprToMinimize*, and returns the value 
   minimum. Expression to return may be a wildcard (*) to return all columns of the input table.
   
 ## Null handling
-When the value of the ExprToMinimize is null it will be ignored unless it is the only value, if it is the only value, one of rows will be picked.  
+When *ExprToMinimize* is null for all rows in a group, one row in the group is picked. Otherwise, rows where *ExprToMinimize* is null are ignored.
 
 ## Returns
 
