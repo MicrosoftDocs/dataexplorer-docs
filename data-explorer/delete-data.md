@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: avneraa
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/26/2022
+ms.date: 02/01/2022
 ---
 
 # Delete data from Azure Data Explorer
@@ -15,11 +15,11 @@ Azure Data Explorer supports several ways to delete data from a table. Use the f
 
 | Use case | Considerations | Method |
 |--|--|--|
-| Drop all data from a table | | [Use the `.clear table data` command](#delete-all-data-in-a-table) |
-| Routinely drop old data | Use if you need an automated deletion solution | [Use a retention policy](#delete-data-using-a-retention-policy) |
-| Bulk drop specific data by extents | Only use if you are an expert user | [Use the `.drop extents` command](#delete-data-by-dropping-extents) |
-| Drop a few records based on their contents | Storage artifacts that contain the deleted records aren't necessarily deleted, but deleted records can't be recovered (regardless of any retention or recoverability settings) | [Use soft delete](#soft-delete) |
-| Permanently drop records based on their contents | Dropped records can't be recovered, regardless of any retention or recoverability settings | [Use purge](#purge) |
+| Delete all data from a table | | [Use the `.clear table data` command](#delete-all-data-in-a-table) |
+| Routinely delete old data | Use if you need an automated deletion solution | [Use a retention policy](#delete-data-using-a-retention-policy) |
+| Bulk delete specific data by extents | Only use if you are an expert user | [Use the `.drop extents` command](#delete-data-by-dropping-extents) |
+| Delete a few records based on their contents | - Storage artifacts that contain the deleted records aren't necessarily deleted, but the deleted records can't be recovered (regardless of any retention or recoverability settings)<br />- You need a quick way to delete records | [Use soft delete](#soft-delete) |
+| Delete a few records based on their contents | - Deleted records can't be recovered (regardless of any retention or recoverability settings)<br />- Requires significant system resources and time to complete | [Use purge](#purge) |
 
 The following sections describe the different deletion methods.
 
