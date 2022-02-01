@@ -71,8 +71,8 @@ Both purge and soft delete can be used for deleting individual rows, but they ar
 
 ### Soft delete
 
-With [soft delete](kusto/concepts/data-soft-delete.md), data is not necessarily deleted from storage artifacts. This method marks all matching records as deleted, so that they can be filtered out by queries, and doesn't require significant system resources. This method prevents deleted records from being recovered, regardless of retention or recoverability settings. The deletion process is final and irreversible.
+With [soft delete](kusto/concepts/data-soft-delete.md), data is not necessarily deleted from storage artifacts. This method marks all matching records as deleted, so that they will be filtered out in queries, and doesn't require significant system resources.
 
 ### Purge
 
-With [purge](kusto/concepts/data-purge.md), all storage artifacts that have "poison" data is deleted and is useful for removing corrupt data. The deletion isn't immediate, requires significant system resources, and can take a whole day to complete. This method prevents deleted records from being recovered, regardless of retention or recoverability settings. The deletion process is final and irreversible.
+With [purge](kusto/concepts/data-purge.md), extents that have one or more records to be deleted, are replaced with new extents in which those records do not exist. This deletion process isn't immediate, requires significant system resources, and can take a whole day to complete.
