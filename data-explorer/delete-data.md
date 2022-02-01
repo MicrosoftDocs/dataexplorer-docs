@@ -27,7 +27,7 @@ The following sections describe the different deletion methods.
 
 To delete all data in a table, use the [.clear table data](kusto/management/clear-table-data-command.md) command. This is the most efficient way to remove all data from a table.
 
-For example:
+Syntax:
 
 ```kusto
 .clear table <TableName> data
