@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 07/01/2021
+ms.date: 02/01/2022
 ---
 
 # Deploy Azure Data Explorer cluster into your Virtual Network
@@ -29,7 +29,7 @@ You can access your Azure Data Explorer cluster using the following IP addresses
 * **Public IP**: Used for accessing the cluster from outside the VNet for management and monitoring, and as a source address for outbound connections started from the cluster.
 
 > [!IMPORTANT]
-> The default NSG rules will block access to the Public IP outside of Azure. In order to reach the Public Endpoint you need to add an exception in the NSG for your Public IP address or addresses.
+> The default NSG rules block access to Public IP addresses outside the VNet. In order to reach a public endpoint, you must add an exception for your Public IP addresses in the NSG.
 
 The following DNS records are created to access the service: 
 
@@ -68,10 +68,7 @@ Deploying Azure Data Explorer cluster into your subnet allows you to setup data 
 Create a [private endpoint](/azure/private-link/private-endpoint-overview) to resources used by data connections, such as event hub and storage, and external tables such as Storage, Data Lake Gen 2, and SQL Database from your VNet to access the underlying resources privately.
 
  > [!NOTE]
- > Setting up Private Endpoint requires [configuring DNS](/azure/private-link/private-endpoint-dns), We support [Azure Private DNS zone](/azure/dns/private-dns-privatednszone) setup only. Custom DNS server isn't supported. 
-
- > [!NOTE]
- > Setting up Private Endpoint requires is not supported on the Dev/Test sku of Azure Data Explorer. To utilize Private Endpoints you must provision ADX in a production sku.
+ > Setting up Private Endpoint requires [configuring DNS](/azure/private-link/private-endpoint-dns), We support [Azure Private DNS zone](/azure/dns/private-dns-privatednszone) setup only. Custom DNS server isn't supported.
 
 ## Dependencies for VNet deployment
 
