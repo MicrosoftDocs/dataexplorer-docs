@@ -119,7 +119,7 @@ Define a [service connection](/azure/devops/pipelines/library/service-endpoints)
 
 Define the pipeline (*deploy-environ*) that will be used to deploy the cluster, create schema entities, and ingest data.
 
-You'll want to [create secret variables](/azure/devops/pipelines/process/variables?view=azure-devops&tabs=classic%2Cbatch) for the following:
+You'll want to [create secret variables](/azure/devops/pipelines/process/variables?view=azure-devops&tabs=classic%2Cbatch&preserve-view=true) for the following:
 
 | Variable Name | Description |
 |--|--|
