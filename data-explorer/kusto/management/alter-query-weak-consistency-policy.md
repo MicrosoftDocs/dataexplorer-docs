@@ -57,11 +57,11 @@ For demonstrating the `alter-merge`, we will assume the following policy is set 
 `alter-merge` command:
 <!-- csl -->
 ```
-.alter-merge cluster policy query_weak_consistency @'{"PercentageOfNodes": 30, "EnableMetadataPrefetch": true}'
+.alter-merge cluster policy query_weak_consistency @'{"PercentageOfNodes": 30, "MaximumLagAllowedInMinutes": 15}'
 ```
 
 **Output**
 
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
-|QueryWeakConsistencyPolicy||{"PercentageOfNodes": 30, "MinimumNumberOfNodes": 10, "EnableMetadataPrefetch": true, "MaximumLagAllowedInMinutes": 5, "RefreshPeriodInSeconds": 30}| |Cluster
+|QueryWeakConsistencyPolicy||{"PercentageOfNodes": 30, "MinimumNumberOfNodes": 10, "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 15, "RefreshPeriodInSeconds": 30}| |Cluster
