@@ -84,6 +84,8 @@ items:
       href: create-cluster-database-python.md
     - name: Go
       href: create-cluster-database-go.md
+    - name: Automated provisioning
+      href: automated-deploy-overview.md
     - name: Azure Resource Manager template
       href: create-cluster-database-resource-manager.md
   - name: Create tables
