@@ -23,7 +23,7 @@ A common use case for automated provisioning is to deploy a pre-configured clust
 
 This article provides an overview of the different mechanisms for automating the provisioning of Azure Data Explorer environments, including [infrastructure](#deploy-infrastructure), [schema entities](#deploy-schema-entities), and [data ingestion](#ingest-data). It also provides references to the different tools and techniques used to automate the provisioning process.
 
-:::image type="content" source="media/automated-deploy-overview/general-flow.png" alt-text="Image showing the deployment general flow.":::
+:::image type="content" source="media/automated-deploy-overview/general-flow.png" alt-text="Image showing the deployment general flow." border="false":::
 
 ## Deploy Infrastructure
 
@@ -107,7 +107,7 @@ You'll use the following tools:
 |Schema entities|Kusto CLI|Create tables in the database|
 |Data|LightIngest|Ingest data into one table|
 
-:::image type="content" source="media/automated-deploy-overview/flow-sample.png" alt-text="Image showing the deployment an example flow.":::
+:::image type="content" source="media/automated-deploy-overview/flow-sample.png" alt-text="Image showing the deployment an example flow." border="false":::
 
 Use the following steps to create a pipeline.
 
