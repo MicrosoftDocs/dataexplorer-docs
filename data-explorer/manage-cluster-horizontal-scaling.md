@@ -11,7 +11,7 @@ ms.date: 12/09/2019
 
 # Manage cluster horizontal scaling (scale out) in Azure Data Explorer to accommodate changing demand
 
-Sizing a cluster appropriately is critical to the performance of Azure Data Explorer. A static cluster size can lead to under-utilization or over-utilization, neither of which is ideal. Because demand on a cluster can’t be predicted with absolute accuracy, it's better to *scale* a cluster, adding and removing capacity and CPU resources with changing demand. 
+Sizing a cluster appropriately is critical to the performance of Azure Data Explorer. A static cluster size can lead to underutilization or overutilization, neither of which is ideal. Because demand on a cluster can’t be predicted with absolute accuracy, it's better to *scale* a cluster, adding and removing capacity and CPU resources with changing demand. 
 
 There are two workflows for scaling an Azure Data Explorer cluster: 
 * Horizontal scaling, also called scaling in and out.
