@@ -18,7 +18,7 @@ Azure Data Explorer supports several ways to delete data from a table. Use the f
 | Delete all data from a table | | [Use the `.clear table data` command](#delete-all-data-in-a-table) |
 | Routinely delete old data | Use if you need an automated deletion solution | [Use a retention policy](#delete-data-using-a-retention-policy) |
 | Bulk delete specific data by extents | Only use if you are an expert user | [Use the `.drop extents` command](#delete-data-by-dropping-extents) |
-| Delete a few records based on their content | - Storage artifacts that contain the deleted records aren't necessarily deleted, but the deleted records can't be recovered (regardless of any retention or recoverability settings)<br />- Use if you need a quick way to delete records | [Use soft delete](#soft-delete) |
+| Delete records based on their content | - Storage artifacts that contain the deleted records aren't necessarily deleted<br /> - Deleted records can't be recovered (regardless of any retention or recoverability settings)<br />- Use if you need a quick way to delete records | [Use soft delete](#soft-delete) |
 | Delete a few records based on their content | - Storage artifacts that contain the deleted records are deleted. Deleted records can't be recovered (regardless of any retention or recoverability settings)<br />- Requires significant system resources and time to complete | [Use purge](#purge) |
 
 The following sections describe the different deletion methods.
