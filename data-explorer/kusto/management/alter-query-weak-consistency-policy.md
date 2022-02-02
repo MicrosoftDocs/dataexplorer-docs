@@ -23,7 +23,7 @@ The first flavor expects a complete JSON (that includes all policy properties), 
 
 ## Arguments
 
-*PolicyObject* - a JSON policy object, see the [query weak consistency policy](./query-weak-consistency-policy.md#the-policy-object) for policy properties (also shown in the example below).
+*PolicyObject* - a JSON policy object, see the [query weak consistency policy](./query-weak-consistency-policy.md#the-policy-object) for policy properties (also shown in the examples below).
 
 ## Result
 
