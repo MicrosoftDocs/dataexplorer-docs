@@ -11,7 +11,7 @@ ms.date: 01/13/2022
 ---
 # .alter query weak consistency policy
 
-The command sets the cluster [query weak consistency policy](./query-weak-consistency-policy.md#default-policy), overriding the current policy, and then returns the updated policy. The updated policy can be later viewed using the [show command](show-query-weak-consistency-policy.md). If not altered, the [default policy](./query-weak-consistency-policy.md#default-policy) applies.
+The command sets the cluster [query weak consistency policy](./query-weak-consistency-policy.md), overriding the current policy, and then returns the updated policy. The updated policy can be later viewed using the [show command](show-query-weak-consistency-policy.md). If not altered, the [default policy](./query-weak-consistency-policy.md#default-policy) applies.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ The first flavor expects a complete JSON (that includes all policy properties), 
 
 ## Arguments
 
-*PolicyObject* - a JSON policy object, see the [query weak consistency policy](./query-weak-consistency-policy.md#default-policy) for policy properties (also shown in the example below).
+*PolicyObject* - a JSON policy object, see the [query weak consistency policy](./query-weak-consistency-policy.md#the-policy-object) for policy properties (also shown in the example below).
 
 ## Result
 
@@ -65,3 +65,5 @@ For demonstrating the `alter-merge`, we will assume the following policy is set 
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
 |QueryWeakConsistencyPolicy||{"PercentageOfNodes": 30, "MinimumNumberOfNodes": 10, "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 15, "RefreshPeriodInSeconds": 30}| |Cluster
+
+As can be seen, only `PercentageOfNodes` and `MaximumLagAllowedInMinutes` were modified (whereas if the `alter` command was used instead, the remaining properties would be also modified, and set to their [defaults](./query-weak-consistency-policy.md#default-policy)).
