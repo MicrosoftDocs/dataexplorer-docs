@@ -70,6 +70,8 @@ items:
     href: tools-integrations-overview.md
 - name: How-to guides
   items:
+  - name: Automated provisioning
+    href: automated-deploy-overview.md
   - name: Create cluster and database
     items:
     - name: One-click database management
