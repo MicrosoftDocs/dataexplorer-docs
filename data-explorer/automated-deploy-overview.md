@@ -12,13 +12,13 @@ ms.date: 02/01/2022
 
 # Automated provisioning in Azure Data Explorer
 
-Automated provisioning is a process that allows you to quickly deploy and configure the resources you need to run your Azure Data Explorer cluster, optionally with data. It's a critical part of a DevOps or DataOps workflow. The provisioning process does not require you to manually configure the cluster, does not require human intervention, and is easy to set up.
+Automated provisioning is a process for quickly deploying and configuring the resources you need to run your Azure Data Explorer cluster, optionally with data. It's a critical part of a DevOps or DataOps workflow. The provisioning process doesn't require you to manually configure the cluster, does not require human intervention, and is easy to set up.
 
 A common use case for automated provisioning is to deploy a pre-configured cluster with data as part of a CI/CD pipeline. Some of the key benefits of doing so include the ability to:
 
 * Easily define and maintain multiple [environments](https://en.wikipedia.org/wiki/Deployment_environment)
 * Keep track of deployments in source control
-* More easily rollback to previous versions
+* More easily roll back to previous versions
 * Facilitates automated testing by provisioning dedicated test environments
 
 This article provides an overview of the different mechanisms for automating the provisioning of Azure Data Explorer environments, including [infrastructure](#deploy-infrastructure), [schema entities](#deploy-schema-entities), and [data ingestion](#ingest-data). It also provides references to the different tools and techniques used to automate the provisioning process.
@@ -78,13 +78,13 @@ You can automate schema entities deployment using the following methods:
     * [Node SDK](/azure/data-explorer/kusto/api/node/kusto-node-client-library)
     * [Go SDK](/azure/data-explorer/kusto/api/golang/kusto-golang-client-library)
 * Tools
-    * [Sync Kusto](/azure/data-explorer/kusto/tools/synckusto). This is an interactive developer tool that can be used to extract the database schema or control command script. The extracted content command script can then be used for automatic deployment.
-    * [Delta Kusto](https://github.com/microsoft/delta-kusto) is a tool designed to be invoked in a CI/CD pipeline. It can compare two sources, such as database schema or control command script, and compute a *delta* control command script. The extracted content command script can then be used for automatic deployment.
+    * [Sync Kusto](/azure/data-explorer/kusto/tools/synckusto). An interactive developer tool that can be used to extract the database schema or control command script. The extracted content command script can then be used for automatic deployment.
+    * [Delta Kusto](https://github.com/microsoft/delta-kusto): A tool designed to be invoked in a CI/CD pipeline. It can compare two sources, such as database schema or control command script, and compute a *delta* control command script. The extracted content command script can then be used for automatic deployment.
     * [Azure DevOps Task](/azure/data-explorer/devops) for Azure Data Explorer
 
 ## Ingest data
 
-If you have data you need to ingest into your cluster, such as when you want to run tests or recreate an environment, you can use the following methods:
+Sometimes you want to ingest data into your cluster. For example, you might want to ingest data to run tests or recreate an environment. You can use the following methods to ingest data:
 
 * SDKs
     * [.NET SDK](/azure/data-explorer/net-sdk-ingest-data)
@@ -97,7 +97,7 @@ If you have data you need to ingest into your cluster, such as when you want to 
 
 ## Example deployment using a CI/CD pipeline
 
-In the following example, you'll use a Azure DevOps CI/CD pipeline running tools to automate the deployment of infrastructure, schema entities, and data. This is one example of a pipeline using a given set of tools. Other tools and steps can be used. For example, in a production environment you may want to create a pipeline that doesn't ingest data. You can also add further steps to the pipeline, such as running automated tests on the created cluster.
+In the following example, you'll use an Azure DevOps CI/CD pipeline running tools to automate the deployment of infrastructure, schema entities, and data. This is one example of a pipeline using a given set of tools. Other tools and steps can be used. For example, in a production environment you may want to create a pipeline that doesn't ingest data. You can also add further steps to the pipeline, such as running automated tests on the created cluster.
 
 You'll use the following tools:
 
@@ -113,13 +113,13 @@ Use the following steps to create a pipeline.
 
 ### Step 1: Create a service connection
 
-Define a [service connection](/azure/devops/pipelines/library/service-endpoints) of type *Azure Resource Manager* pointing to the subscription and resource group where you want to deploy our cluster to. This will create the Azure Service Principal that you'll use to deploy the ARM template. You can use the same principal to deploy the schema entities and ingest data, you must explicitly pass the credentials to Kusto CLI and LightIngest tools.
+Define a [service connection](/azure/devops/pipelines/library/service-endpoints) of type *Azure Resource Manager* pointing to the subscription and resource group where you want to deploy our cluster to. An Azure Service Principal is created and you'll use it to deploy the ARM template. You can use the same principal to deploy the schema entities and ingest data, you must explicitly pass the credentials to Kusto CLI and LightIngest tools.
 
 ### Step 2: Create a pipeline
 
 Define the pipeline (*deploy-environ*) that will be used to deploy the cluster, create schema entities, and ingest data.
 
-You'll want to [create secret variables](/azure/devops/pipelines/process/variables?view=azure-devops&tabs=classic%2Cbatch&preserve-view=true) for the following:
+Before you can use the pipeline, you must create the following [secret variables](/azure/devops/pipelines/process/variables?view=azure-devops&tabs=classic%2Cbatch&preserve-view=true):
 
 | Variable Name | Description |
 |--|--|
