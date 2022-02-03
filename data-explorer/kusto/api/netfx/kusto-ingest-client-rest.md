@@ -16,7 +16,7 @@ The Kusto.Ingest library is preferred for ingesting data to Azure Data Explorer.
 This article shows you how, by using *Queued Ingestion* to Azure Data Explorer for production-grade pipelines.
 
 > [!NOTE]
-> The code below is written in C#, and makes use of the Azure Storage SDK, the ADAL Authentication library, and the NewtonSoft.JSON package, to simplify the sample code. If needed, the corresponding code can be replaced with appropriate [Azure Storage REST API](/rest/api/storageservices/blob-service-rest-api) calls, [non-.NET ADAL package](/azure/active-directory/develop/active-directory-authentication-libraries), and any available JSON handling package.
+> The code below is written in C#, and makes use of the Azure Storage SDK, the [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-overview), and the NewtonSoft.JSON package, to simplify the sample code. If needed, the corresponding code can be replaced with appropriate [Azure Storage REST API](/rest/api/storageservices/blob-service-rest-api) calls, [non-.NET MSAL package](/azure/active-directory/develop/msal-overview), and any available JSON handling package.
 
 This article deals with the recommended mode of ingestion. For the Kusto.Ingest library, its corresponding entity is the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) interface. Here, the client code interacts with the Azure Data Explorer service by posting ingestion notification messages to an Azure queue. References to the messages are obtained from the Kusto Data Management (also known as the Ingestion) service. Interaction with the service must be authenticated with Azure Active Directory (Azure AD).
 
@@ -104,13 +104,17 @@ ADAL is available on [non-Windows platforms](/azure/active-directory/develop/act
 // Authenticates the interactive user and retrieves Azure AD Access token for specified resource
 internal static string AuthenticateInteractiveUser(string resource)
 {
-    // Create Auth Context for MSFT Azure AD:
-    AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/{Azure AD Tenant ID or name}");
+    // Create an authentication client for Azure AD:
+    var authClient = PublicClientApplicationBuilder.Create("<your client app ID>")
+                .WithAuthority("https://login.microsoftonline.com/{Azure AD Tenant ID or name}")
+                .WithRedirectUri(@"<your client app redirect URI>")
+                .Build();
+
+    // Define scopes:
+    string[] scopes = new string[] { $"{resource}/.default" };
 
     // Acquire user token for the interactive user for Azure Data Explorer:
-    AuthenticationResult result =
-        authContext.AcquireTokenAsync(resource, "<your client app ID>", new Uri(@"<your client app URI>"),
-                                        new PlatformParameters(PromptBehavior.Auto), UserIdentifier.AnyUser, "prompt=select_account").Result;
+    AuthenticationResult result = authClient.AcquireTokenInteractive(scopes).ExecuteAsync().Result;
     return result.AccessToken;
 }
 ```
