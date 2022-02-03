@@ -19,7 +19,7 @@ The following types of external storage are supported:
 * Azure Data Lake Storage Gen2
 * Azure Data Lake Storage Gen1
 
-Each type of a storage has corresponding connection string formats used to describe the storage resources and how to access them.
+Each type of storage has corresponding connection string formats used to describe the storage resources and how to access them.
 Azure Data Explorer uses a URI format to describe these storage resources and the properties necessary to access them, such as security credentials.
 
 ## Storage connection string templates
