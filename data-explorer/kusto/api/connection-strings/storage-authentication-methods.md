@@ -93,7 +93,7 @@ To add a base-64 encoded Azure AD access token, append `;token={AadToken}` to th
 
 ### Token example
 
-`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;token={aad_token}"`
+`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im..."`
 
 ## Access key
 
