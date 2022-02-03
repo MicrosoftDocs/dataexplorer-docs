@@ -44,12 +44,8 @@ that federates with AAD, such as ADFS), and gets back a security token that can 
 Kusto service. The Kusto service doesn't care how the security token was obtained, it cares about
 whether the token is valid and what information is put there by AAD (or the federated IdP).
 
-On the client side, Kusto supports both interactive authentication, in which the AAD client library
-ADAL or similar code requests the user to enter credentials. It also supports token-based
-authentication, in which the application using Kusto obtains a valid user token and presents
-it. Last, it supports a scenario in which the application using Kusto obtains a valid user token
-for some other service (not Kusto), provided there's a trust relationship between that resource
-and Kusto.
+On the client side, Azure Data Explorer supports both interactive authentication, where [MSAL (Microsoft Authentication Library)](/azure/active-directory/develop/msal-overview) or similar code requests the user to enter credentials and token-based authentication, where an application using Azure Data Explorer obtains a valid user token and utilizes it to access Azure Data Explorer.
+Additionally, scenarios in which an application using Azure Data Explorer obtains a valid user token for some other service, provided there's a trust relationship between that resource and Azure Data Explorer is also supported
 
 Please see [Kusto connection strings](../../api/connection-strings/kusto.md) for details on how
 to use the Kusto client libraries and authenticate by using AAD to Kusto.
@@ -105,5 +101,5 @@ as the audience, and the "Access Kusto" permission as the scope.
 
 The following articles explain how to programmatically authenticate to Kusto with AAD:
 
-* [How to provision an AAD Application](../../../provision-azure-ad-app.md)
-* [How to perform AAD Authentication](./how-to-authenticate-with-aad.md)
+* [How to provision an Azure AD Application](../../../provision-azure-ad-app.md)
+* [How to perform Azure AD Authentication](how-to-authenticate-with-aad.md)

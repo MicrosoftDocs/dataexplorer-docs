@@ -8,7 +8,6 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/30/2020
-ms.localizationpriority: high 
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
 

@@ -43,26 +43,29 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
     > [!NOTE]
     > For 'equality by value', the column names *must* be qualified with the applicable owner table denoted by `$left` and `$right` notations.
 
-* *JoinParameters*: Zero or more space-separated parameters in the form of
-  *Name* `=` *Value* that control the behavior of the row-match operation and execution plan. The following parameters are supported:
+* *JoinParameters*: Zero or more space-separated parameters in the form of *Name* `=` *Value* that control the behavior of the row-match operation and execution plan. The following parameters are supported:
 
     ::: zone pivot="azuredataexplorer"
 
-    |Parameters name           |Values                                        |Description                                  |
-    |---------------|----------------------------------------------|---------------------------------------------|
-    |`kind`         |Join flavors|See [Join Flavors](#join-flavors)|
-    |`hint.remote`  |`auto`, `left`, `local`, `right`              |See [Cross-Cluster Join](joincrosscluster.md)|
-    |`hint.strategy`|Execution hints                               |See [Join hints](#join-hints)                |
+    |Parameters name |Values |Description  |
+    |---|---|---|
+    |`kind`|Join flavors|See [Join Flavors](#join-flavors)|
+    |`hint.remote`  |`auto`, `left`, `local`, `right` |See [Cross-Cluster Join](joincrosscluster.md)|
+    |`hint.strategy=broadcast` |Specifies the way to share the query load on cluster nodes. |See [broadcast join](broadcastjoin.md) |
+    |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shufflequery.md) |
+    |`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node will process one partition of the data. |See [shuffle query](shufflequery.md)  |
 
     ::: zone-end
 
     ::: zone pivot="azuremonitor"
 
-    |Name           |Values                                        |Description                                  |
-    |---------------|----------------------------------------------|---------------------------------------------|
+    |Name |Values |Description |
+    |---|---|---|
     |`kind`         |Join flavors|See [Join Flavors](#join-flavors)|
-    |`hint.remote`  |`auto`, `left`, `local`, `right`              |                                             |
-    |`hint.strategy`|Execution hints                               |See [Join hints](#join-hints)                |
+    |`hint.remote`  |`auto`, `left`, `local`, `right`   | |
+    |`hint.strategy=broadcast` |Specifies the way to share the query load on cluster nodes. |See [broadcast join](broadcastjoin.md) |
+    |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shufflequery.md) |
+    |`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node will process one partition of the data. |See [shuffle query](shufflequery.md)  |
 
     ::: zone-end
 
@@ -148,7 +151,7 @@ The exact flavor of the join operator is specified with the *kind* keyword. The 
 
 The default join flavor is an inner join with left side deduplication. Default join implementation is useful in typical log/trace analysis scenarios where you want to correlate two events, each matching some filtering criterion, under the same correlation ID. You want to get back all appearances of the phenomenon, and ignore multiple appearances of the contributing trace records.
 
-``` 
+```kusto
 X | join Y on Key
  
 X | join kind=innerunique Y on Key

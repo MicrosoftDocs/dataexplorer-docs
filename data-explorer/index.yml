@@ -77,7 +77,7 @@ landingContent:
             url: ingest-data-streaming.md
           - text: Python
             url: python-ingest-data.md
-          - text: Event Hub using Azure portal
+          - text: Event hub using Azure portal
             url: ingest-data-event-hub.md
           - text: Event Grid using Azure portal
             url: ingest-data-event-grid.md
