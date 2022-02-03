@@ -17,7 +17,7 @@ Sets the `docstring` property of one or more columns of the specified table.  Co
 
 ## Syntax
 
-`.alter` `table` *TableName* `column-docstring` `(` *Col1* `:` *Docstring1* [`,` *Col2* `:` *Docstring2*]... `)`
+`.alter` `table` *TableName* `column-docstrings` `(` *Col1* `:` *Docstring1* [`,` *Col2* `:` *Docstring2*]... `)`
 
 ## Example 
 
