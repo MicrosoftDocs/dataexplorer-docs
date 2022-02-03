@@ -35,7 +35,7 @@ a property bag specifying properties of the request:
 
 |Name                    |Required|Description|
 |------------------------|--------|-----------|
-|`StorageContainers`|Yes|List of [storage connection strings](../api/connection-strings/storage.md) that represent prefix URI for stored data artifacts|
+|`StorageContainers`|Yes|List of [storage connection strings](../api/connection-strings/storage-connection-strings.md) that represent prefix URI for stored data artifacts|
 |`DataFormat`|Yes|One of supported [data formats](../../ingestion-supported-formats.md).|
 |`FileExtension`|No|Only scan files ending with this file extension. It's not required, but specifying it may speed up the process (or eliminate data reading issues)|
 |`FileNamePrefix`|No|Only scan files starting with this prefix. It's not required, but specifying it may speed up the process|

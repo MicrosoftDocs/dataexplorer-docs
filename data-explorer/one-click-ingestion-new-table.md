@@ -64,7 +64,7 @@ Under **Source type**, do the following steps:
   1. In the **Link to storage** field, add the [blob URI with SAS token or Account key](kusto/api/connection-strings/generate-sas-token.md) of the container, and optionally enter the sample size. To ingest from a folder within this container, see [Ingest from folder in a container](#ingest-from-folder-in-a-container).
 
   > [!NOTE]
-  > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage.md).
+  > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage-connection-strings.md).
 
    :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container.":::
 
@@ -73,7 +73,7 @@ Under **Source type**, do the following steps:
 
 ### Ingest from folder in a container
 
-To ingest from a specific folder within a container, [generate a string of the following format](kusto/api/connection-strings/storage.md#storage-connection-string-templates):
+To ingest from a specific folder within a container, [generate a string of the following format](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates):
 
 *container_path*`/`*folder_path*`;`*access_key_1*
 

@@ -35,4 +35,4 @@ Each storage type has a different connection string format. See the following ta
 
 ## Storage authentication
 
-For Azure Data Explorer to interact with and authenticate to external storage, you must specify the storage's `connection string`. This `connection string` defines the resource being accessed and its authentication information. For more information, see [storage authentication methods](/storage-authentication-methods.md).
+For Azure Data Explorer to interact with and authenticate to external storage, you must specify the storage's `connection string`. This `connection string` defines the resource being accessed and its authentication information. For more information, see [Storage authentication methods](storage-authentication-methods.md).
