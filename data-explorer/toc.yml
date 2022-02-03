@@ -554,6 +554,9 @@ items:
     - name: series_metric_fl()
       displayName: functions library, PromQL, Prometheus
       href: kusto/functions-library/series-metric-fl.md
+    - name: series_lag_fl()
+      displayName: functions library, filter, time shift, delay
+      href: kusto/functions-library/series-lag-fl.md
     - name: series_moving_avg_fl()
       displayName: functions library, filter, low-pass, smoothing
       href: kusto/functions-library/series-moving-avg-fl.md
