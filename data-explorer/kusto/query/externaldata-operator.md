@@ -24,7 +24,7 @@ Azure Blob Storage or a file in Azure Data Lake Storage.
 
 > [!NOTE]
 > `externaldata` operator usage in Azure Monitor should be limited to small reference tables. It is not designed for large data volumes. If large volumes are needed, it is better to ingest them as custom logs.
-> This operator isn’t supported when running queries over a private link or otherwise reaching to customer-owned storage accounts.
+> This operator isn't supported when running queries over a private link or otherwise reaching to customer-owned storage accounts.
 
 ::: zone-end
 
@@ -40,7 +40,7 @@ Azure Blob Storage or a file in Azure Data Lake Storage.
 * *ColumnName*, *ColumnType*: The arguments define the schema of the table.
   The syntax is the same as the syntax used when defining a table in [`.create table`](../management/create-table-command.md).
 
-* *StorageConnectionString*: [Storage connection strings](../api/connection-strings/storage.md) that describe the storage artifacts holding the data to return.
+* *StorageConnectionString*: [Storage connection strings](../api/connection-strings/storage-connection-strings.md) that describe the storage artifacts holding the data to return.
 
 * *PropertyName*, *PropertyValue*, ...: Additional properties that describe how to interpret
   the data retrieved from storage, as listed under [ingestion properties](../../ingestion-properties.md).
