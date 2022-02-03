@@ -62,7 +62,7 @@
     },
     {
       "source_path": "data-explorer/kusto/api/connection-strings/storage.md",
-      "redirect_url": "/azure/data-explorer/kusto/api/connection-strings/storage-connection-string",
+      "redirect_url": "/azure/data-explorer/kusto/api/connection-strings/storage-connection-strings",
       "redirect_document_id": false
     },
     {
