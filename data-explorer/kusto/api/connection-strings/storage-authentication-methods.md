@@ -40,7 +40,7 @@ Different authentication methods are available for different external storage ty
 
 ## Impersonation
 
-To add impersonation, append `;impersonate` to the connection string. Azure Data Explorer will use the requestor's principal identity and impersonate this identity to access the resource.
+To use impersonation, append `;impersonate` to the connection string. Azure Data Explorer will use the requestor's principal identity and impersonate this identity to access the resource.
 
 > [!NOTE]
 > The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see:
