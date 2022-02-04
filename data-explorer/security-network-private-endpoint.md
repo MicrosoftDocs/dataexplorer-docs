@@ -54,8 +54,17 @@ To increase security, you also can disable the public access for the Azure Data 
 
 With the help of a managed private endpoint, you will enable the ADX cluster to securely access your event hub via its private endpoint. When you create an ADX cluser, Azure will provision an ADX managed virtual network in the microsoft backbone infrastructure. This Vnet is isolated and hidden to you as you just consume ADX as a PaaS resource. You can create a managed private endpoint via the REST API to provision a private endpoint in the same virtual network where the root service resources of the ADX cluster reside in. This will enable the service to access event hub privately.
 
+![Managed Private Endpoint schema.](media/security-network-private-endpoint/pe-mpe.png)
 
-![Disable public access.](media/security-network-private-endpoint/pe-mpe.png)
+### Supported services
+
+Azure Data Explorer supports creating Managed Private Endpoints to the following services:
+* [Azure Event Hubs](/azure/event-hubs/event-hubs-about)
+* [Azure Storage Account](/azure/storage/blobs/storage-blobs-overview)
+* [Azure Data Explorer](data-explorer-overview.md)
+* [Azure SQL](/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview)
+* [Azure Digital Twins](/azure/digital-twins/overview)
+* [Azure Monitor](/azure/azure-monitor/overview)
 
 ## Limitations
 

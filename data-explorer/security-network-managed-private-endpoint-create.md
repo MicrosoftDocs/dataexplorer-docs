@@ -12,7 +12,16 @@ ms.date: 01/21/2022
 # Create a Managed Private Endpoints for Azure Data Explorer (public preview)
 
 
-## Conceptual Overview
+## Prerequisites
+
+* [Create an Azure Data Explorer Cluster](create-cluster-database-portal.md) that is not injected in a virtual network
+* Create an [Azure Eventhub](/azure/event-hubs/event-hubs-about) or [Azure Storage](/azure/storage/blobs/storage-blobs-overview) service
+
+## Create a Managed Private Endpoint to an Azure Event Hubs service
+
+
+
+## Create a Managed Private Endpoint to an Azure Storage account
 
 
 ## Next steps
