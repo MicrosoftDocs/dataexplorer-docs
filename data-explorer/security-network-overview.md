@@ -54,5 +54,5 @@ It's recommended to use a private endpoint based approach to connect privately t
 
 ## Next steps
 
-> [!div class="nextstepaction"]
-> [Deploy Azure Data Explorer into your Virtual Network](vnet-deployment.md)
+* [Private Endpoints for Azure Data Explorer](secuurity-network-private-endpoint.md)
+* [Deploy Azure Data Explorer into your Virtual Network](vnet-deployment.md)

@@ -23,5 +23,4 @@ set to enabled -> the immutable callout policies will not be used and the allowe
 
 ## Next steps
 
-> [!div class="nextstepaction"]
-> [Deploy Azure Data Explorer into your Virtual Network](vnet-deployment.md)
+* [Troubleshooting Private Endpoints in Azure Data Explorer](security-network-private-endpoint-troubleshoot.md)

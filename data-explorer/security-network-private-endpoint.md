@@ -60,9 +60,10 @@ With the help of a managed private endpoint, you will enable the ADX cluster to 
 ## Limitations
 
 * Private endpoints are not supported for virtual network injected Azure Data Explorer clusters
-* Managed private endpoints are not supported for virtual network injected Azure Data Explorer clusters
 
 ## Next steps
 
-> [!div class="nextstepaction"]
-> [Deploy Azure Data Explorer into your Virtual Network](vnet-deployment.md)
+* [Create a Private Endpoints for Azure Data Explorer](security-network-private-endpoint-create.md)
+* [Create a Managed Private Endpoints for Azure Data Explorer](security-network-managed-private-endpoint-create.md)
+* [Howto restrict public access to Azure Data Explorer](security-network-restrict-public-access.md)
+* [Howto restrict outbound access from Azure Data Explorer](security-network-restrict-outbound-access.md)
