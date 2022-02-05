@@ -15,11 +15,19 @@ foo bar
 
 ## Callout policies
 
+![Immutable callout ppolicies](media/security-network-restrict-access/restrict-outbound-access.png)
+
 description + link
 
 ## restrictOutboundNetworkAccess and AllowedFQDNList
 
+![Immutable callout ppolicies](media/security-network-restrict-access/restrict-outbound-access-enabled.png)
+
+![Immutable callout ppolicies](media/security-network-restrict-access/restrict-outbound-access-enabled-errorDataplane.png)
+
 set to enabled -> the immutable callout policies will not be used and the allowedFQDN list will be used instead. Changing the callout policy through the data plane will not be possible. Only through ARM
+
+after setting the param in ARM
 
 ## Next steps
 
