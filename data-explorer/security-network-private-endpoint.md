@@ -32,6 +32,25 @@ ADX owners can manage consent requests and the private endpoints, through the 'P
 
 You can secure your ADX to only accept connections from your VNet, by configuring the ADX firewall to deny access through its public endpoint by default. You don't need a firewall rule to allow traffic from a VNet that has a private endpoint, since the ADX firewall only controls access through the public endpoint. Private endpoints instead rely on the consent flow for granting subnets access to the ADX.
 
+## Plan subnet size in your VNet
+
+The size of the subnet used to host an Private Endpoint for Azure Data Explorer cluster can't be altered after the subnet is deployed. The Private Endpoint consumes multiple IP addesses in your virtual network. In extreme scenarios (i.e. highend ingestion) the number of IP addresses being consumed by the Private Endpoint might grow. Planning the the size for the subnet is crucial for that purpose.
+
+The variable part of the consumed IP addresses is caused by transient storage accounts which are needed as staging accounts for ingestion into Azure Data Explorer.
+
+The total number of IP addresses consumed by the Private Endpoint:
+
+| Use | Number of addresses |
+| --- | --- |
+| Engine service | 1 |
+| Data management service | 1 |
+| Transient storage accounts | 6 |
+| Azure reserved addresses | 5 |
+| **Total** | **13** |
+
+> [!NOTE]
+> The absolute minimum size for the subnet must be **/28** (14 usable IP addresses)
+
 ## Connecting to a private endpoint
 
 Clients on a VNet using the private endpoint should use the same connection string for the ADX, as clients connecting to the public endpoint. We rely upon DNS resolution to automatically route the connections from the VNet to the ADX over a private link.

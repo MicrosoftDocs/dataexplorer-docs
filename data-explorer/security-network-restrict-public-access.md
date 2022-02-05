@@ -13,6 +13,8 @@ ms.date: 01/21/2022
 
 foo bar
 
+![Disable public access.](media/security-network-restrict-access/restrict-public-access.png)
+
 ## Next steps
 
 * [Troubleshooting Private Endpoints in Azure Data Explorer](security-network-private-endpoint-troubleshoot.md)
