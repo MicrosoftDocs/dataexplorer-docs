@@ -98,9 +98,9 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 | `kind=leftsemi`| Returns all the records from the left side that have matches from the right. |
 | `kind=rightsemi`| Returns all the records from the right side that have matches from the left. |
 | `kind=inner`| Contains a row in the output for every combination of matching rows from left and right. |
-| `kind=fullouter`| Contains a row in the output for every row on the left and right, even if it has no match. The unmatched output cells contain nulls. |
-| `kind=leftouter`| Contains a row in the output for all the rows on left side, even if they have no match, and all matching rows on the right side. |
-| `kind=rightouter`| Contains a row in the output for all the rows on the right side, even if they have no match, and all matching rows on the left side. |
+| `kind=fullouter`| Returns all the records for all the rows on the left and right. Unmatched cells contain nulls. |
+| `kind=leftouter`| Returns all the records from the left side and only matching records from the right side. |
+| `kind=rightouter`| Returns all the records from the right side and only matching records from the left side. |
 
 > [!TIP]
 >
