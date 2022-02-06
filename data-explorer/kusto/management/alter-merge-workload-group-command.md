@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 01/13/2022
 ---
 # .alter-merge workload_group
 
@@ -17,12 +17,12 @@ For more information, see [Workload groups](workload-groups.md). To show the cur
 
 ## Syntax
 
-`.alter-merge` `workload_group` *WorkloadGroupName* *SerializedArrayOfPolicyObjects*
+`.alter-merge` `workload_group` *WorkloadGroupName* *SerializedPolicyObject*
 
 ## Arguments
 
 - *WorkloadGroupName* - Name of the workload group. Can be escaped with bracket notation ['WorkLoadGroupName'].
-- *SerializedArrayOfPolicyObjects* - An array with one or more policy objects defined. The following policies apply to workload groups:   
+- *SerializedPolicyObject* - Define a policy object. The following policies apply to workload groups:   
   
   * [request classification](request-classification-policy.md)
   * [request limits](request-limits-policy.md)

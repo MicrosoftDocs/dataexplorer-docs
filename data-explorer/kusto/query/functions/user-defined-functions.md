@@ -8,7 +8,6 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/17/2021
-ms.localizationpriority: high
 ---
 # User-defined functions
 
@@ -151,6 +150,7 @@ The function **body** includes:
 
 > [!NOTE]
 > Other kinds of [query statements](../statements.md) that are supported at the query "top level" aren't supported inside a function body.
+> Any two statements must be separated by a semicolon.
 
 ### Examples of user-defined functions
 

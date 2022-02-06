@@ -7,11 +7,11 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/24/2022
 ---
 # funnel_sequence plugin
 
-Calculates distinct count of users who have taken a sequence of states, and the distribution of previous/next states that have led to/were followed by the sequence. 
+Calculates distinct count of users who have taken a sequence of states, and the distribution of previous/next states that have led to/were followed by the sequence. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ```kusto
 T | evaluate funnel_sequence(id, datetime_column, startofday(ago(30d)), startofday(now()), 10m, 1d, state_column, dynamic(['S1', 'S2', 'S3']))
