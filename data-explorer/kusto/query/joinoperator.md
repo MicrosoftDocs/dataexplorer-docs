@@ -82,25 +82,28 @@ Table1 | join (Table2) on CommonColumn, $left.Col1 == $right.Col2
 | `kind=rightanti`, `kind=rightsemi` | The result table contains columns from the right side only.|
 |  `kind=innerunique`, `kind=inner`, `kind=leftouter`, `kind=rightouter`, `kind=fullouter` |  A column for every column in each of the two tables, including the matching keys. The columns of the right side will be automatically renamed if there are name clashes. |
 |  `kind=innerunique`, `kind=inner`, `kind=leftouter`, `kind=rightouter`, `kind=fullouter` |  A column for every column in each of the two tables, including the matching keys. The columns of the right side will be automatically renamed if there are name clashes. |
-   
+
 **Output records depend on the join flavor:**
 
    > [!NOTE]
+   >
    > If there are several rows with the same values for those fields, you'll get rows for all the combinations.
    > A match is a row selected from one table that has the same value for all the `on` fields as a row in the other table.
 
 | Join flavor | Output records |
 |---|---|
-|`kind=leftanti`, `kind=leftantisemi`| Returns all the records from the left side that don't have matches from the right|
+| `kind=leftanti`, `kind=leftantisemi`| Returns all the records from the left side that don't have matches from the right|
 | `kind=rightanti`, `kind=rightantisemi`| Returns all the records from the right side that don't have matches from the left.|
 | `kind` unspecified, `kind=innerunique`| Only one row from the left side is matched for each value of the `on` key. The output contains a row for each match of this row with rows from the right.|
 | `kind=leftsemi`| Returns all the records from the left side that have matches from the right. |
 | `kind=rightsemi`| Returns all the records from the right side that have matches from the left. |
-|`kind=inner`| Contains a row in the output for every combination of matching rows from left and right. |
+| `kind=inner`| Contains a row in the output for every combination of matching rows from left and right. |
 | `kind=fullouter`| Contains a row in the output for every row on the left and right, even if it has no match. The unmatched output cells contain nulls. |
-| `kind=leftouter` or `kind=rightouter`| Contains a row in the output for all the rows on the relevant side, even if they have no match, and all matching rows on the opposite side. |
+| `kind=leftouter`| Contains a row in the output for all the rows on left side, even if they have no match, and all matching rows on the right side. |
+| `kind=rightouter`| Contains a row in the output for all the rows on the right side, even if they have no match, and all matching rows on the left side. |
 
 > [!TIP]
+>
 > For best performance, if one table is always smaller than the other, use it as the left (piped) side of the join.
 
 ## Example
@@ -357,11 +360,11 @@ X | join kind=leftouter Y on Key
 
 |Key|Value1|Key1|Value2|
 |---|---|---|---|
-|b|3|b|10|
+|a|1|||
 |b|2|b|10|
+|b|3|b|10|
 |c|4|c|20|
 |c|4|c|30|
-|a|1|||
 
 ### Right outer-join flavor
 
@@ -387,8 +390,8 @@ X | join kind=rightouter Y on Key
 
 |Key|Value1|Key1|Value2|
 |---|---|---|---|
-|b|3|b|10|
 |b|2|b|10|
+|b|3|b|10|
 |c|4|c|20|
 |c|4|c|30|
 |||d|40|
@@ -417,12 +420,12 @@ X | join kind=fullouter Y on Key
 
 |Key|Value1|Key1|Value2|
 |---|---|---|---|
-|b|3|b|10|
+|a|1|||
 |b|2|b|10|
+|b|3|b|10|
 |c|4|c|20|
 |c|4|c|30|
 |||d|40|
-|a|1|||
 
 ### Left anti-join flavor
 
@@ -506,8 +509,8 @@ X | join kind=leftsemi Y on Key
 
 |Key|Value1|
 |---|---|
-|b|3|
 |b|2|
+|b|3|
 |c|4|
 
 ### Right semi-join flavor
