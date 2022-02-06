@@ -12,10 +12,10 @@ ms.date: 03/18/2020
 ---
 # Kusto ingest client library 
 
-`Kusto.Ingest` library is a .NET 4.6.2 library for sending data to the Kusto service.
+`Microsoft.Azure.Kusto.Ingest` library is a .NET 4.7.2 library for ihgesing data to the Azure Data Explorer service.
 It takes dependencies on the following libraries and SDKs:
 
-* ADAL for Azure AD authentication
+* [MSAL (Microsoft Authentication Library)](/azure/active-directory/develop/msal-overview) for Azure AD authentication
 * Azure storage client
 
 The ingestion methods are defined by the [IKustoIngestClient](kusto-ingest-client-reference.md#interface-ikustoingestclient) interface.  The methods handle data ingestion from Stream, IDataReader, local files, and Azure blobs in both synchronous and asynchronous modes.
