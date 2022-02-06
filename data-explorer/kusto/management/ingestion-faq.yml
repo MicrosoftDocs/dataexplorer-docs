@@ -61,10 +61,12 @@ sections:
           To discover related errors, check the `FailedIngestion` diagnostic logs for error codes and for the paths of any failed blobs.
   - name: Ingesting historical data
     questions:
-      - question: How can I ingest historical data and ensure good performance?
+      - question: How can I ingest large amounts of historical data and ensure good performance?
         answer: |
-          [LightIngest](../../lightingest.md) is suggested as it helps you ingest a large amount of data, with no time constraint on ingestion duration. 
-          It's also useful if you want to query records [according to the time they were created](../../lightingest.md#how-to-ingest-data-using-creationtime), not the time they were ingested.
+          To efficiently ingest a large amount of historical data, use [LightIngest](../../lightingest.md). 
+          For ease of use, try the LightIngest [wizard](../../generate-lightingest-command.md). 
+          To improve ingestion performance when ingesting large amounts of data, you can adjust the [batching policy](batchingpolicy.md), change batching conditions and address [latencies](batchingpolicy.md#batching-latencies). 
+          Use the batching policy [wizard](../../one-click-table-batching-policy.md) to quickly change policy settings. 
   - name: SDKs and connectors
     questions:     
       - question: How can I improve ingestion with SDKs?
