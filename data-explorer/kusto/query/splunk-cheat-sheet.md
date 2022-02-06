@@ -127,13 +127,20 @@ Splunk doesn't appear to have an operator that's similar to `project-away`. You 
 
 ### Aggregation
 
-See the [list of aggregations functions](summarizeoperator.md#list-of-aggregation-functions) that are available.
+See the [list of summarize aggregations functions](summarizeoperator.md#list-of-aggregation-functions) that are available.
 
 | Product | Operator | Example |
 |:---|:---|:---|
 | Splunk | `stats` |  `search (Rule=120502.*)`<br />&#124; `stats count by OSEnv, Audience` |
 | Kusto | `summarize` | `Office_Hub_OHubBGTaskError`<br />&#124; `summarize count() by App_Platform, Release_Audience` |
 
+| Product | Operator | Example |
+|:---|:---|:---|
+| Splunk | `evenstats` |  `search (Rule=120502.*)`<br />&#124; `eventstats latest(on_time) AS LastPass` |
+| Kusto | `join` | ` T2` <br />&#124; `join kind=inner (T1) on _time` <br />&#124; `project _time, category, count_i, count_total`
+
+| eventstats latest(LastPass) AS LastPass, earliest(_time) AS mostRecentTestTime 
+BY testCaseId 
 
 ### Join
 
