@@ -6,14 +6,15 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 12/09/2019
+ms.date: 02/06/2022
 ---
 
 # Manage cluster horizontal scaling (scale out) in Azure Data Explorer to accommodate changing demand
 
-Sizing a cluster appropriately is critical to the performance of Azure Data Explorer. A static cluster size can lead to underutilization or overutilization, neither of which is ideal. Because demand on a cluster can’t be predicted with absolute accuracy, it's better to *scale* a cluster, adding and removing capacity and CPU resources with changing demand. 
+Sizing a cluster appropriately is critical to the performance of Azure Data Explorer. A static cluster size can lead to underutilization or overutilization, neither of which is ideal. Because demand on a cluster can't be predicted with absolute accuracy, it's better to *scale* a cluster, adding and removing capacity and CPU resources with changing demand.
 
-There are two workflows for scaling an Azure Data Explorer cluster: 
+There are two workflows for scaling an Azure Data Explorer cluster:
+
 * Horizontal scaling, also called scaling in and out.
 * [Vertical scaling](manage-cluster-vertical-scaling.md), also called scaling up and down.
 This article explains the horizontal scaling workflow.
@@ -22,7 +23,7 @@ This article explains the horizontal scaling workflow.
 
 By using horizontal scaling, you can scale the instance count automatically, based on predefined rules and schedules. To specify the autoscale settings for your cluster:
 
-1. In the Azure portal, go to your Azure Data Explorer cluster resource. Under **Settings**, select **Scale out**. 
+1. In the Azure portal, go to your Azure Data Explorer cluster resource. Under **Settings**, select **Scale out**.
 
 2. In the **Scale out** window, select the autoscale method that you want: **Manual scale**, **Optimized autoscale**, or **Custom autoscale**.
 
@@ -41,16 +42,16 @@ Optimized autoscale is the recommended scaling method. This method optimizes clu
 
 To configure optimized autoscale:
 
-1. Select **Optimized autoscale**. 
+1. Select **Optimized autoscale**.
 
 1. Specify a minimum and maximum instance count. The cluster autoscaling ranges between these values based on load.
 1. Select **Save**.
 
    ![Optimized autoscale method.](media/manage-cluster-horizontal-scaling/optimized-autoscale-method.png)
 
-Optimized autoscale starts working. Its actions can be viewed in the cluster’s activity log in Azure.
+Optimized autoscale starts working. Its actions can be viewed in the cluster's activity log in Azure.
 
-#### Logic of optimized autoscale 
+#### Logic of optimized autoscale
 
 Optimized autoscale is managed by either predictive or reactive logic.
 Predictive logic tracks the usage pattern of the cluster and when it identifies seasonality with high confidence, it manages the cluster's scaling.
@@ -69,7 +70,7 @@ Frequent cluster *scale out* and *scale in* operations are undesirable because t
 
 Predictive logic forecasts the clusters usage for the next day based on the cluster's usage pattern over the last few weeks. Based on this forecast, it creates a schedule of *scale in* or *scale out* operations to adjust the cluster size ahead of time, so the scaling will be ready in time for the predictecd load changes. This logic is especially effective for seasonal patterns, such as daily or weekly ingestion spikes.
 
-However, in scenarios where there is a unique spike in usage that exceeds the forecast, optimized autoscale will fall back on reactive logic. When this happens, *scale in* or *scale out* operations are performed ad hoc based on the latest level of resource usage. 
+However, in scenarios where there is a unique spike in usage that exceeds the forecast, optimized autoscale will fall back on reactive logic. When this happens, *scale in* or *scale out* operations are performed ad hoc based on the latest level of resource usage.
 
 ##### Reactive autoscale
 
@@ -88,11 +89,11 @@ When the cluster is underutilized, a *scale in* operation will take place to low
 To ensure that there's no overloading of resources, the following metrics are evaluated before *scale in* is performed:
 
 * Cache utilization isn't high
-* CPU is below average  
-* Ingestion utilization is below average 
+* CPU is below average
+* Ingestion utilization is below average
 * If streaming ingest is used, streaming ingest utilization isn't high
 * Keep alive metric is above a defined minimum, processed properly, and on time indicating that the cluster is responsive
-* There is no query throttling 
+* There is no query throttling
 * Number of failed queries are below a defined minimum
 
 > [!NOTE]
@@ -104,7 +105,7 @@ By using custom autoscale, you can scale your cluster dynamically based on metri
 
 ![Scale rule.](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
-1. In the **Autoscale setting name** box, enter a name, such as *Scale-out: cache utilization*. 
+1. In the **Autoscale setting name** box, enter a name, such as *Scale-out: cache utilization*.
 
 1. For **Scale mode**, select **Scale based on a metric**. This mode provides dynamic scaling. You can also select **Scale to a specific instance count**.
 1. Select **+ Add a rule**.
