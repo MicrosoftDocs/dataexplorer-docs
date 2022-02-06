@@ -414,13 +414,13 @@ To map the activity log data to the table, use the following query:
 
 ## Create an Azure Event Hubs namespace
 
-Azure diagnostic settings enable exporting metrics and logs to a storage account or to an event hub. In this tutorial, we'll route the metrics and logs via an event hub. You'll create an Event Hubs namespace and an event hub for the diagnostic metrics and logs in the following steps. Azure Monitor will create the event hub *insights-operational-logs* for the activity logs.
+Azure diagnostic settings enable exporting metrics and logs to a storage account or to an event hub. In this tutorial, we'll route the metrics and logs via an event hub. You'll create an event hub namespace and an event hub for the diagnostic metrics and logs in the following steps. Azure Monitor will create the event hub *insights-operational-logs* for the activity logs.
 
 1. Create an event hub by using an Azure Resource Manager template in the Azure portal. To follow the rest of the steps in this article, right-click the **Deploy to Azure** button, and then select **Open in new window**. The **Deploy to Azure** button takes you to the Azure portal.
 
     [![Deploy to Azure button.](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.eventhub%2Feventhubs-create-namespace-and-eventhub%2Fazuredeploy.json)
 
-1. Create an Event Hubs namespace and an event hub for the diagnostic logs. Learn how to [create an Event Hubs namespace](/azure/event-hubs/event-hubs-create).
+1. Create an event hubs namespace and an event hub for the diagnostic logs. Learn how to [create an event hubs namespace](/azure/event-hubs/event-hubs-create).
 
 1. Fill out the form with the following information. For any settings not listed in the following table, use the default values.
 
@@ -428,7 +428,7 @@ Azure diagnostic settings enable exporting metrics and logs to a storage account
     |---|---|---|
     | **Subscription** | *Your subscription* | Select the Azure subscription that you want to use for your event hub.|
     | **Resource group** | *test-resource-group* | Create a new resource group. |
-    | **Location** | Select the region that best meets your needs. | Create the Event Hubs namespace in the same location as other resources.
+    | **Location** | Select the region that best meets your needs. | Create the event hub namespace in the same location as other resources.
     | **Namespace name** | *AzureMonitoringData* | Choose a unique name that identifies your namespace.
     | **Event hub name** | *DiagnosticData* | The event hub sits under the namespace, which provides a unique scoping container. |
     | **Consumer group name** | *adxpipeline* | Create a consumer group name. Consumer groups enable multiple consuming applications to each have a separate view of the event stream. |
@@ -442,7 +442,7 @@ Now you need to connect your diagnostic metrics and logs and your activity logs 
 
 #### Connect diagnostic metrics and logs to your event hub
 
-Select a resource from which to export metrics. Several resource types support exporting diagnostic data, including Event Hubs namespace, Azure Key Vault, Azure IoT Hub, and Azure Data Explorer clusters. In this tutorial, we'll use an Azure Data Explorer cluster as our resource, we'll review query performance metrics and ingestion results logs.
+Select a resource from which to export metrics. Several resource types support exporting diagnostic data, including event hubs namespace, Azure Key Vault, Azure IoT Hub, and Azure Data Explorer clusters. In this tutorial, we'll use an Azure Data Explorer cluster as our resource, we'll review query performance metrics and ingestion results logs.
 
 1. Select your Kusto cluster in the Azure portal.
 1. Select **Diagnostic settings**, and then select the **Turn on diagnostics** link.
@@ -497,7 +497,7 @@ Select a resource from which to export metrics. Several resource types support e
 
 ### See data flowing to your event hubs
 
-1. Wait a few minutes until the connection is defined, and the activity-log export to the event hub is finished. Go to your Event Hubs namespace to see the event hubs you created.
+1. Wait a few minutes until the connection is defined, and the activity-log export to the event hub is finished. Go to your event hubs namespace to see the event hubs you created.
 
     ![Event hubs created.](media/ingest-data-no-code/event-hubs-created.png)
 

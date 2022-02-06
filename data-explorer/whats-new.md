@@ -47,7 +47,7 @@ This section lists the major changes to docs during September 2021.
 
 | Article title | Description |
 |--|--|
-| [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated article. Learn how to connect event hub with managed identity.
+| [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated article. Learn how to connect event hub with managed identity.
 
 ### Query
 
@@ -65,7 +65,7 @@ This section lists the major changes to docs during August 2021.
 | Article title | Description |
 |--|--|
 | [Use wizard for ingestion with LightIngest (preview)](generate-lightingest-command.md) | New article. Learn how to use a wizard for one-time ingestion of historical data with LightIngest.
-| [Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. One click Event Hub experience. 
+| [Use one-click ingestion to create an event hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. One click event hub experience. 
 | [Use LightIngest to ingest data into Azure Data Explorer](lightingest.md)| Updated article. Generate LightIngest commands - one click experience.
 
 ### Query
@@ -104,7 +104,7 @@ This section lists the major changes to docs during August 2021.
 |--|--|
 | [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
 | [Create an external table using the Web UI wizard](external-table.md) | Updated article. New UI
-| [Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. New UI.
+| [Use one-click ingestion to create an event hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. New UI.
 | [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md) | Updated article. New UI
 | [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md) | Updated article. New UI
 | [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. New UI
@@ -329,8 +329,8 @@ This section lists the major changes to docs during November 2020.
 Article title | Description
 ---|---
 [Azure Policy built-in definitions for Azure Data Explorer](policy-reference.md) | New article. Index of [Azure Policy](/azure/governance/policy/overview) built-in policy definitions for Azure Data Explorer.
-[Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md) | New article. Connect an Event Hub to a table in Azure Data Explorer using the [one-click ingestion](ingest-data-one-click.md) experience.
-| [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md) | Updated article. Supports both user-assigned managed identities and system-assigned managed identities
+[Use one-click ingestion to create an event hub data connection for Azure Data Explorer](one-click-event-hub.md) | New article. Connect an event hub to a table in Azure Data Explorer using the [one-click ingestion](ingest-data-one-click.md) experience.
+| [Configure managed identities for your Azure Data Explorer cluster](./configure-managed-identities-cluster.md) | Updated article. Supports both user-assigned managed identities and system-assigned managed identities
 | [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. General availability (GA). |
  | [Quickstart: Query data in Azure Data Explorer Web UI](web-query-data.md) | Updated article. New capabilities.
 |  [What is one-click ingestion?](ingest-data-one-click.md) | Updated article. Added ingestion from JSON nested levels. General availability (GA).

@@ -35,8 +35,7 @@ Use these libraries for Azure APIs and to programmatically invoke Azure Data Exp
 
 ## Tools and Integrations
 
-* LightIngest: [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/) 
-* One-click Ingestion kit: [GitHub](https://github.com/Azure/azure-kusto-ingestion-tools) 
-* Kafka: [GitHub](https://github.com/Azure/kafka-sink-azure-kusto)
+* LightIngest: [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)  
+* Kafka: [GitHub](https://github.com/Azure/kafka-sink-azure-kusto)  
 * Logstash: [GitHub](https://github.com/Azure/logstash-output-kusto) 
 * Spark: [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)

@@ -104,8 +104,6 @@ Mapping transformations can be performed on a column of **Type** string or datet
 * DateTimeFromUnixMicroseconds
 * DateTimeFromUnixNanoseconds
 
-For more information, see [mapping transformations](#mapping-transformations).
-
 ### Data ingestion
 
 Once you have completed schema mapping and column manipulations, the ingestion wizard will start the data ingestion process. 
@@ -120,7 +118,6 @@ Once you have completed schema mapping and column manipulations, the ingestion w
 ### Initial data exploration
    
 After ingestion, the wizard gives you options to use **[Quick commands](one-click-ingestion-existing-table.md#explore-quick-queries-and-tools)** for initial exploration of your data.
-
 
 ## Next steps
 

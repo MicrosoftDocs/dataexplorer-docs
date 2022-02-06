@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/03/2021
+ms.date: 01/13/2022
 ---
 # .alter table retention policy
 
@@ -15,12 +15,12 @@ Change a table's [retention policy](retentionpolicy.md). The retention policy co
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `retention` *PolicyObjects*
+`.alter` `table` *TableName* `policy` `retention` *PolicyObject*
 
 ## Arguments
 
 - *TableName* - Specify the name of the table.  
-- *PolicyObjects* - Define one or more policy objects.
+- *PolicyObject* - Define a policy object, see also  [retention policy](retentionpolicy.md).
 
 ### Example
 

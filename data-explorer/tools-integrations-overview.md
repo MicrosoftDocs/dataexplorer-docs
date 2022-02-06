@@ -29,7 +29,7 @@ or [from a local file to an existing table](one-click-ingestion-existing-table.m
 
 ### Ingestion integrations
 
-* Event Hub: [Ingest from Event Hub overview](ingest-data-event-hub-overview.md) and using the [Azure portal](ingest-data-event-hub.md), [C#](data-connection-event-hub-csharp.md), [Python](data-connection-event-hub-python.md) or [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
+* Event hub: [Ingest from event hub overview](ingest-data-event-hub-overview.md) and using the [Azure portal](ingest-data-event-hub.md), [C#](data-connection-event-hub-csharp.md), [Python](data-connection-event-hub-python.md) or [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 * Event Grid: [Ingest from Event Grid overview](ingest-data-event-grid-overview.md) and using the [Azure portal](ingest-data-event-grid.md), [C#](data-connection-event-grid-csharp.md), [Python](data-connection-event-grid-python.md) or [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 * IoT Hub: [Ingest from IoT Hub overview](ingest-data-iot-hub-overview.md) and using the [Azure portal](ingest-data-iot-hub.md), [C#](data-connection-iot-hub-csharp.md), [Python](data-connection-iot-hub-python.md) or [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md)
 * [Logstash](ingest-data-logstash.md)
@@ -57,9 +57,9 @@ There are several tools available for running queries in Azure Data Explorer.
 The following open source repositories contain the source code for the Kusto Query Lanuguage (KQL) parser and editor:
 
 * [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language) - A .NET core repository for the Kusto Query Language parser and semantic tree.
-* [Kusto Query Language setup and usage for the Monaco editor](/azure/data-explorer/kusto/api/monaco/monaco-kusto) - The Kusto Query Language editor that can be embedded in web and electron based applications.
+* [Kusto Query Language setup and usage for the Monaco editor](./kusto/api/monaco/monaco-kusto.md) - The Kusto Query Language editor that can be embedded in web and electron based applications.
     * [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto) - Access the Kusto Query Language editor plugin.
-    * [Embedding the Web UI](/azure/data-explorer/kusto/api/monaco/host-web-ux-in-iframe) - The Web UI can be embedded in an iframe and hosted in third-party websites.
+    * [Embedding the Web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) - The Web UI can be embedded in an iframe and hosted in third-party websites.
 
 ### Query integrations
 
