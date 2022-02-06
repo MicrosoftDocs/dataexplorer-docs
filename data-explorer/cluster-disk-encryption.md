@@ -6,12 +6,12 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 08/02/2020
+ms.date: 02/06/2022
 ---
 
 # Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal
 
-[Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) helps protect and safeguard your data to meet your organizational security and compliance commitments. It provides volume encryption for the OS and data disks of your cluster virtual machines. It also integrates with [Azure Key Vault](/azure/key-vault/), which allows us to control and manage the disk encryption keys and secrets, and ensure all data on the VM disks is encrypted.
+[Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) helps protect and safeguard your data to meet your organizational security and compliance commitments. It provides volume encryption for the OS and data disks of your cluster virtual machines. 
   
 ## Enable encryption at rest in the Azure portal
   
@@ -31,7 +31,13 @@ Encrypting the storage accounts with customer-managed keys and disk encryption a
 
 ## Azure Data Explorer stores data within a region
 
-Every Azure Data Explorer cluster runs on dedicated resources in a single region. All data is stored within the region. 
+Every Azure Data Explorer cluster runs on dedicated resources in the region specified during provisioning. All data is stored within that region.
+
+## Limitations
+
+The following limitations apply to [selected SKUs](kusto/concepts/sandboxes.md#virtual-machine-sizes) when enabling disk encryption:
+* Performance impact of up to a single digit
+* Cannot be used with sandboxes
 
 ## Next steps
 
