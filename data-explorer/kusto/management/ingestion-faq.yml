@@ -63,9 +63,9 @@ sections:
     questions:
       - question: How can I ingest large amounts of historical data and ensure good performance?
         answer: |
-          To efficiently ingest a large amount of historical data, use [LightIngest](../../lightingest.md). 
+          To efficiently ingest very large quantities of historical data, use [LightIngest](../../lightingest.md). 
           For ease of use, try the LightIngest [wizard](../../generate-lightingest-command.md). 
-          To improve ingestion performance when ingesting large amounts of data, you can adjust the [batching policy](batchingpolicy.md), change batching conditions and address [latencies](batchingpolicy.md#batching-latencies). 
+          To improve ingestion performance when ingesting extremely large amounts of data, you can adjust the [batching policy](batchingpolicy.md), change batching conditions and address [latencies](batchingpolicy.md#batching-latencies). 
           Use the batching policy [wizard](../../one-click-table-batching-policy.md) to quickly change policy settings. 
   - name: SDKs and connectors
     questions:     
