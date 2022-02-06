@@ -15,7 +15,7 @@ Sets the `docstrings` property of one or more columns of the specified table.  C
 
 ## Syntax
 
-`.alter` `table` *TableName* `column-docstrings` `(` *Col1* `:` *Docstring1* [`,` *Col2* `:` *Docstring2*]... `)`
+`.alter` `table` *TableName* `column-docstrings` `(` *Col1* `:` *DocString1* [`,` *Col2* `:` *DocString2*]... `)`
 
 ## Arguments
 

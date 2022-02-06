@@ -15,7 +15,7 @@ Sets the `docstrings` property for one or more columns of a specified table. Col
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `column-docstrings` `(` *Col1* `:` *Docstring1* [`,` *Col2* `:` *Docstring2*]... `)`
+`.alter-merge` `table` *TableName* `column-docstrings` `(` *Col1* `:` *DocString1* [`,` *Col2* `:` *DocString2*]... `)`
 
 ## Arguments
 
