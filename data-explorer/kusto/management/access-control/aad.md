@@ -7,7 +7,6 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.custom: has-adal-ref
 ms.date: 09/13/2019
 ---
 # Azure Active Directory (AAD) Authentication
@@ -87,15 +86,14 @@ When the Kusto client libraries invoke ADAL (the AAD client library)
 to acquire a token for communicating with Kusto, it provides
 the following information:
 
-1. The AAD Tenant, as received from the caller
-2. The AAD Client Application ID
-3. The AAD Client Resource ID
-4. The AAD ReplyUrl (the URL that the AAD service will redirect-to after authentication completes successfully;
-   ADAL then captures this redirect and extracts the authorization code from it).
-5. The Cluster URI ('https://Cluster-and-region.kusto.windows.net').
+1. Azure AD authority URI ('https://login.microsoftonline.com' in the public Azure) and the Azure AD Tenanat, as received from the caller
+2. Azure AD Client Application ID
+3. For application authentication - Azure AD Client Application credential (secret or certificate)
+4. For User authentication - Azure AD Client Application ReplyUrl (the URL that the AAD service will redirect-to after authentication completes successfully;
+   MSAL then captures this redirect and extracts the authorization code from it)
+5. The Cluster URI (typically 'https://cluster.region.kusto.windows.net' in the public Azure)
 
-The token returned by ADAL to the Kusto Client Library has the Kusto AAD Server Application
-as the audience, and the "Access Kusto" permission as the scope.
+The token returned by ADAL to the Kusto Client Library has the Azure Data Explorer Service as the audience.
 
 ## Authenticating with AAD Programmatically
 
