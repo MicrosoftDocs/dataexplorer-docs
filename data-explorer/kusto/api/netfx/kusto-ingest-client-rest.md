@@ -7,8 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.custom: has-adal-ref
-ms.date: 02/19/2020
+ms.date: 02/06/2022
 ---
 # Ingestion without Kusto.Ingest Library
 
