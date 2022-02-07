@@ -117,8 +117,7 @@ and set the `Federated Authentication` property of the Azure Data Explorer conne
 will be presented with a sign-in form to enter the AAD credentials, and on
 successful authentication the request will be sent.
 
-Applications that do not use the Azure Data Explorer SDK can still use the AAD client library
-(ADAL) instead of implementing the AAD service security protocol client. See [https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet]
+Applications that do not use the Azure Data Explorer SDK can still use the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) instead of implementing the AAD service security protocol client. See [https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet]
 for an example of doing so from a .NET application.
 
 If your application is intended to serve as front-end and authenticate users for an Azure Data Explorer cluster, the application must be granted delegated permissions on Azure Data Explorer.
@@ -150,11 +149,11 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 ## Application authentication
 
-The following brief code snippet demonstrates using ADAL to acquire an
-AAD application token to access Azure Data Explorer. In this flow no prompt is presented, and
+The following brief code snippet demonstrates using [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an
+Azure AD application token to access Azure Data Explorer. In this flow no prompt is presented, and
 the application must be registered with AAD and equipped with credentials needed
-to perform application authentication (such as an app key issued by AAD,
-or an X509v2 certificate that has been pre-registered with AAD).
+to perform application authentication (such as an app key issued by Azure AD,
+or an X509v2 certificate that has been pre-registered with Azure AD).
 
 ```csharp
 // Create an HTTP request
