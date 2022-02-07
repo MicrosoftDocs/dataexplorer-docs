@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: ohbitton
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/28/2021
+ms.date: 02/07/2022
 ---
 
 # Create an external table using the Web UI wizard

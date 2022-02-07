@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 07/01/2021
+ms.date: 02/07/2022
 ---
 
 # Create a table in Azure Data Explorer

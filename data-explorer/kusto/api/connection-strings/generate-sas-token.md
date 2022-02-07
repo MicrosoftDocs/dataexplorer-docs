@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: shanisolomon
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/20/2022
+ms.date: 02/07/2022
 ---
 # Generate a SAS token
 
