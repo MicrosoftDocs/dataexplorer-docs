@@ -16,7 +16,7 @@ ms.date: 02/06/2022
 ## Encryption options
 
 There are two options for encryption:
-- [Encryption at rest at the storage level](#enable-encryption-at-the-storage-level-in-azure-portal) - when you encrypt data in files or directories at the Operating System level, you can adequately protect data at rest. However, the storage system has no knowledge of database objects or structures.
+- [Encryption at rest at the storage level](#enabling-encryption-at-the-storage-level-in-azure-portal) - when you encrypt data in files or directories at the Operating System level, you can adequately protect data at rest. However, the storage system has no knowledge of database objects or structures.
 - Encryption at the virtual machine level/disk encryption - it is considered more secure to encrypt data at the level of volumes for data in use.
   
 ## Enabling encryption at the storage level in Azure portal
