@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/05/2022
+ms.date: 02/07/2022
 ---
 # Event Grid data connection
 

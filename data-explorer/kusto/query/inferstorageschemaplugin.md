@@ -7,22 +7,11 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 01/24/2022
 ---
 # infer_storage_schema plugin
 
-This plug-in infers schema of external data, and returns it as CSL schema string. The string can be used when [creating external tables](../management/external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table).
-
-```kusto
-let options = dynamic({
-  'StorageContainers': [
-    h@'https://storageaccount.blob.core.windows.net/container1;secretKey'
-  ],
-  'DataFormat': 'parquet',
-  'FileExtension': '.parquet'
-});
-evaluate infer_storage_schema(options)
-```
+This plug-in infers schema of external data, and returns it as CSL schema string. The string can be used when [creating external tables](../management/external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table). The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Syntax
 
