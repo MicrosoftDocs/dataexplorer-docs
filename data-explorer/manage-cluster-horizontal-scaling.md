@@ -64,11 +64,11 @@ The main metrics for both predictive and reactive flows are:
 * Ingestion utilization
 
 Both predictive and reactive logic are bound to the cluster's size boundaries, the min and max number of instances, as defined in the optimized autoscale configuration.
-Frequent cluster scale out and scale in operations are undesirable because of the impact on the cluster's resources and the required time for adding or removing instances, as well as rebalancing the hot cache across all nodes.
+Frequent cluster *scale out* and *scale in* operations are undesirable because of the impact on the cluster's resources and the required time for adding or removing instances, as well as rebalancing the hot cache across all nodes.
 
 ##### Predictive autoscale
 
-Predictive logic forecasts the cluster's usage for the next day based on its usage pattern over the last few weeks. Based on this forecast, it creates a schedule of scale in or scale out operations to adjust the cluster's size ahead of time. This way the cluster scaling and data rebalancing will complete in time when the load changes. This logic is especially effective for seasonal patterns, such as daily or weekly usage spikes.
+Predictive logic forecasts the cluster's usage for the next day based on its usage pattern over the last few weeks. The forecast is used to create a schedule of *scale in* or *scale out* operations to adjust the cluster's size ahead of time. This allows the cluster scaling and data rebalancing to complete in time for when the load changes. This logic is especially effective for seasonal patterns, such as daily or weekly usage spikes.
 
 However, in scenarios where there is a unique spike in usage that exceeds the forecast, optimized autoscale will fall back on reactive logic. When this happens, *scale in* or *scale out* operations are performed ad hoc based on the latest level of resource usage.
 
