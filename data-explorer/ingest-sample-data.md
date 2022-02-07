@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 11/11/2021
+ms.date: 02/07/2022
 ms.custom: mode-portal
 ---
 

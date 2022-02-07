@@ -12,7 +12,7 @@ ms.date: 07/14/2021
 # Export data to storage
 
 Executes a query and writes the first result set to an
-external storage, specified by a [storage connection string](../../api/connection-strings/storage.md).
+external storage, specified by a [storage connection string](../../api/connection-strings/storage-connection-strings.md).
 
 **Syntax**
 
@@ -33,7 +33,7 @@ external storage, specified by a [storage connection string](../../api/connectio
 * *OutputDataFormat*: Indicates the data format of the storage artifacts written
   by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`.
 
-* *StorageConnectionString*: Specifies one or more [storage connection strings](../../api/connection-strings/storage.md)
+* *StorageConnectionString*: Specifies one or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md)
   that indicate which storage to write the data to. (More than one storage
   connection string may be specified for scalable writes.) Each such connection 
   string must indicate the credentials to use when writing to storage.
@@ -145,7 +145,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
 
 ### Authorization failures
 
-Authentication or authorization failures during export commands can occur when the credentials provided in the storage connection string aren't permitted to write to storage. If you are using `impersonate` or a user-delegated SAS token for the export command, the [Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) role is required to write to the storage account. For more details, see [Storage connection strings](../../api/connection-strings/storage.md).
+Authentication or authorization failures during export commands can occur when the credentials provided in the storage connection string aren't permitted to write to storage. If you are using `impersonate` or a user-delegated SAS token for the export command, the [Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) role is required to write to the storage account. For more details, see [Storage connection strings](../../api/connection-strings/storage-connection-strings.md).
 
 ## Data types mapping
 

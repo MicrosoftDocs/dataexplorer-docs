@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: ohbitton
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/28/2021
+ms.date: 02/07/2022
 ---
 
 # Create an external table using the Web UI wizard
@@ -27,7 +27,7 @@ There are two ways to access the creation wizard:
 
 * In the left menu of the Web UI, select **Data**. In the **Create external table** card, select **Create**.
 
-     :::image type="content" source="media/external-table/create-external-table.png" alt-text="Screenshot of data blade in Azure Data Explorer Web UI with create external table highlighted. .":::
+     :::image type="content" source="media/external-table/create-external-table.png" alt-text="Screenshot of data blade in Azure Data Explorer Web UI with create external table highlighted.":::
 
 * In the left pane of the Web UI, select **Query**. In the left menu, right-click on your database name and select **Create external table**.
 
@@ -37,7 +37,7 @@ The **Create external table** window opens with the **Destination** tab selected
 
 ### Destination tab
 
-1. The **Cluster** and **Database** fields are auto-populated. You may select a different destination from the drop-down menu.
+1. The **Cluster** and **Database** fields are prepopulated. You may select a different destination from the drop-down menu.
 1. In **Table name**, enter a name for your table.
     > [!TIP]
     >  Table names can be up to 1024 characters including alphanumeric, hyphens, and underscores. Special characters aren't supported.
