@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/05/2022
+ms.date: 02/07/2022
 ---
 
 # Ingest data from a container/ADLS into Azure Data Explorer
@@ -18,7 +18,7 @@ ms.date: 01/05/2022
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 
-[One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.
+[One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, or as a one-time or continuous ingestion process.
 
 This document describes using the intuitive one-click wizard to ingest **CSV** data from a **container** into a **new table**. Ingestion can be done as a one-time operation, or as a continuous method by [setting up an Event Grid ingestion pipeline](#create-continuous-ingestion) that that responds to new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
 
@@ -64,7 +64,7 @@ Under **Source type**, do the following steps:
   1. In the **Link to storage** field, add the [blob URI with SAS token or Account key](kusto/api/connection-strings/generate-sas-token.md) of the container, and optionally enter the sample size. To ingest from a folder within this container, see [Ingest from folder in a container](#ingest-from-folder-in-a-container).
 
   > [!NOTE]
-  > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage.md).
+  > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage-connection-strings.md).
 
    :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container.":::
 
@@ -73,7 +73,7 @@ Under **Source type**, do the following steps:
 
 ### Ingest from folder in a container
 
-To ingest from a specific folder within a container, [generate a string of the following format](kusto/api/connection-strings/storage.md#storage-connection-string-templates):
+To ingest from a specific folder within a container, [generate a string of the following format](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates):
 
 *container_path*`/`*folder_path*`;`*access_key_1*
 
@@ -117,7 +117,7 @@ The system will select one of the files at random and the schema will be generat
 
 ## Edit the schema
 
-Select **Next: Schema** to view and edit your table column configuration.  By looking at the name of the source, the service automatically identifies if it is compressed or not.
+Select **Next: Schema** to view and edit your table column configuration. The service automatically identifies if the schema is compressed by looking at the name of the source.
 
 In the **Schema** tab:
 
@@ -159,7 +159,7 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 
 Continuous ingestion enables you to create an Event Grid that listens for new files in the source container. Any new file that meets the criteria of the pre-defined parameters (prefix, suffix, and so on) will be automatically ingested into the destination table.
 
-1. Select **Event Grid** in the **Continuous ingestion** tile to open the Azure portal. The data connection page opens with the event grid data connector opened and with source and target parameters already entered (source container, tables, and mappings).
+1. Select **Event Grid** in the **Continuous ingestion** tile to open the Azure portal. The data connection page opens with the Event Grid data connector opened and with source and target parameters already entered (source container, tables, and mappings).
 
     :::image type="content" source="media/one-click-ingestion-new-table/continuous-button.png" alt-text="continuous ingestion button.":::
 
@@ -182,7 +182,7 @@ Select **Next: Review + create**
 
 ### Review + create
 
-Review the auto-created resources, and select **Create**.
+Review the resources, and select **Create**.
 
 :::image type="content" source="media/one-click-ingestion-new-table/review-create.png" alt-text="Screen shot of review and create blade.":::
 

@@ -57,7 +57,7 @@ In the **Ingest new data** window, the **Destination** tab is selected. The **Cl
   1. Select **Ingestion type**>**Historical data**.
   1. You can either **Add URL** manually by copying the Account Key/SAS URL to source, or **Select container** from your storage account.
       > [!NOTE]
-      > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage.md).
+      > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage-connection-strings.md).
   1. When selecting from your storage account, select your **Storage subscription**, **Storage account**, and **Container** from the dropdown menus.
 
 :::image type="content" source="media/generate-lightingest-command/source-tab-container-from-subscription.png" alt-text="Screenshot of dialog box for selecting container from storage subscription and account.":::
@@ -116,7 +116,7 @@ When ingesting to a new table, alter various aspects of the table when creating 
 [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
 > [!NOTE]
-> For tabular formats, you can’t map a column twice. To map to an existing column, first delete the new column.
+> For tabular formats, you can't map a column twice. To map to an existing column, first delete the new column.
 
 Select **Next: Summary** to generate the LightIngest command.
 

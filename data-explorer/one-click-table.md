@@ -6,12 +6,12 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 07/01/2021
+ms.date: 02/07/2022
 ---
 
 # Create a table in Azure Data Explorer
 
-Creating a table is an important step in the process of [data ingestion](ingest-data-overview.md) and [query](write-queries.md) in Azure Data Explorer. After you have [created a cluster and database in Azure Data Explorer](create-cluster-database-portal.md), you can create a table. The following article shows how to create a table and schema mapping quickly and easily using the Azure Data Explorer Web UI.
+Creating a table is an important step in the process of [data ingestion](ingest-data-overview.md) and [query](write-queries.md) in Azure Data Explorer. After you've' [created a cluster and database in Azure Data Explorer](create-cluster-database-portal.md), you can create a table. The following article shows how to create a table and schema mapping quickly and easily using the Azure Data Explorer Web UI.
 
 ## Prerequisites
 
@@ -34,7 +34,7 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
 The **Create table** window opens with the **Destination** tab selected.
 
-1. The **Cluster** and **Database** fields are auto-populated. You may select different values from the drop-down menu.
+1. The **Cluster** and **Database** fields are prepopulated. You may select different values from the drop-down menu.
 1. In **Table name**, enter a name for your table.
     > [!TIP]
     >  Table names can be up to 1024 characters including alphanumeric, hyphens, and underscores. Special characters aren't supported.
@@ -56,7 +56,7 @@ The **Create table** window opens with the **Destination** tab selected.
     * If you're using a **local file**:
         * Select **Browse** to locate the file, or drag the file into the field.
 
-        :::image type="content" source="./media/one-click-table/data-from-file.png" alt-text="Create a table based on data from a local file .":::
+        :::image type="content" source="./media/one-click-table/data-from-file.png" alt-text="Create a table based on data from a local file.":::
 
     * If you're using a **blob**:
         * In the **Link to storage** field, add the [SAS URL](kusto/api/connection-strings/generate-sas-token.md) of the container and optionally enter the sample size.

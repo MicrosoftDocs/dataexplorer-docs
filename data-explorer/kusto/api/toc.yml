@@ -10,7 +10,7 @@ items:
   - name: Kusto connection strings
     href: connection-strings/kusto.md
   - name: Storage connection strings
-    href: connection-strings/storage.md
+    href: connection-strings/storage-connection-strings.md
   - name: Storage authentication methods
     href: connection-strings/storage-authentication-methods.md
   - name: Generate SAS token
