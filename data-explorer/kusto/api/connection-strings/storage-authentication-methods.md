@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: shanisolomon
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/20/2022
+ms.date: 02/07/2022
 ---
 # Storage authentication methods
 
@@ -40,7 +40,7 @@ Different authentication methods are available for different external storage ty
 
 ## Impersonation
 
-To add impersonation, append `;impersonate` to the connection string. Azure Data Explorer will use the requestor's principal identity and impersonate this identity to access the resource.
+To use impersonation, append `;impersonate` to the connection string. Azure Data Explorer will use the requestor's principal identity and impersonate this identity to access the resource.
 
 > [!NOTE]
 > The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see:
@@ -89,11 +89,11 @@ To add a Shared Access (SAS) token, append `?sig=...` to the connection string. 
 
 ## Token
 
-To add a base-64 encoded Azure AD access token, append `;token=AadToken` to the connection string. Make sure the token is for the resource https://storage.azure.com/. For more information on how to generate an Azure AD access token, see [get an access token for authorization](/azure/storage/common/identity-library-acquire-token).
+To add a base-64 encoded Azure AD access token, append `;token={AadToken}` to the connection string. Make sure the token is for the resource https://storage.azure.com/. For more information on how to generate an Azure AD access token, see [get an access token for authorization](/azure/storage/common/identity-library-acquire-token).
 
 ### Token example
 
-`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;token={aad_token}"`
+`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im..."`
 
 ## Access key
 
