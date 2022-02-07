@@ -11,6 +11,7 @@ ms.date: 01/21/2022
 
 # Create a Managed Private Endpoints for Azure Data Explorer (public preview)
 
+Managed Private Endpoints are necessary to connect to other Azure Platform services which are highly protected. They allow you to create a connection using a Private Endpoint.
 
 ## Prerequisites
 
@@ -20,7 +21,7 @@ ms.date: 01/21/2022
 
 ## Create a Managed Private Endpoint using the API
 
-### Prerequisites
+### Prerequisites for an API based creation
 
 * Install [choco](https://chocolatey.org/install)
 * Install ARMCLIENT
@@ -99,6 +100,8 @@ Result:
 
 ### How to check the progress
 
+Once you executed the API call using ARMCLIENT you can verify the progress of the Managed Private Endpoint migration.
+
 ```powershell
 #replace the <...> placeholders with the correct values
 armclient GET /subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/clusters/<clusterName>/managedPrivateEndpoints/<newMpeName>?api-version=2022-02-01
@@ -130,9 +133,15 @@ Result:
 
 ## Approve the Managed Private endpoint
 
+Regardless if you created the Managed Private Endpoint using the portal or the API you need to approve its creation on the target resource. The following picture showes the approval if a Managed Private Endpoint to an Azure Event Hubs service.
+
 ![Approve the Managed Private Endpoint to on the service (i.E. EventHubs).](media/security-network-private-endpoint/pe-create-mpe-approval.png)
 
+After clicking on "Approve" the Managed Private Endpoint will be usable.
+
 ![Approved Managed Private Endpoint.](media/security-network-private-endpoint/pe-create-mpe-approved.png)
+
+Now Azure Data Explorer can connect to the resource using a Private Endpoint connection.
 
 ## Next steps
 
