@@ -48,12 +48,14 @@ Before you can visualize data from Azure Data Explorer in Kibana, have the follo
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An [Azure Data Explorer cluster and database](create-cluster-database-portal.md). You will need the cluster's URL and the database name.
 * [Helm v3](https://github.com/helm/helm#install), the Kubernetes package manager.
-* Azure Kubernetes Service (AKS) cluster or any other Kubernetes cluster. Versions 1.14 to 1.16 have been tested and verified. If you need an AKS cluster, see how to deploy an AKS cluster [using the Azure CLI](/azure/aks/kubernetes-walkthrough) or [using the Azure portal](/azure/aks/kubernetes-walkthrough-portal).
-* An Azure Active Directory (Azure AD) service principal authorized to view data in Azure Data Explorer, including the client ID and client secret.
+* Azure Kubernetes Service (AKS) cluster or any other Kubernetes cluster. Use version 1.21.2 or newer, with a minimum of three Azure Kubernetes Service nodes. Version 1.21.2 has been tested and verified. If you need an AKS cluster, see how to deploy an AKS cluster [using the Azure CLI](/azure/aks/kubernetes-walkthrough) or [using the Azure portal](/azure/aks/kubernetes-walkthrough-portal).
+* An Azure Active Directory (Azure AD) service principal authorized to view data in Azure Data Explorer, including the client ID and client secret. Alternatively, you can use a [system-assigned managed identity](/azure/aks/use-managed-identity).
 
-    We recommend a service principal with viewer permission and discourage you from using higher-level permissions. [Set the cluster's view permissions for the Azure AD service principal](manage-database-permissions.md#manage-permissions-in-the-azure-portal).
+If you choose to use an Azure Active Directory (Azure AD) service principal, you will need to [create an Azure AD service principal](/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application). For the installation, you will need the ClientID and a Secret.
+We recommend a service principal with viewer permission and discourage you from using higher-level permissions. [Set the cluster's view permissions for the Azure AD service principal](manage-database-permissions.md#manage-permissions-in-the-azure-portal).
 
-    For more information about the Azure AD service principal, see [Create an Azure AD service principal](/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
+If you choose to use a sytem assigned identity, you will need to get the agent pool managed identity **ClientID** (located in the generated "[_MC_xxxx_]" [resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks)) 
+
 
 ## Run K2Bridge on Azure Kubernetes Service (AKS)
 
@@ -92,6 +94,9 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
         ADX_TENANT_ID=[SERVICE_PRINCIPAL_TENANT_ID]
         ```
 
+        [!NOTE]
+        > When using a managed identity, the ADX_CLIENT_ID value is the client ID of the managed identity, and the ADX_CLIENT_ID is not needed. ADX_CLIENT_ID is only required if you use an Azure Active Directory (Azure AD) service principal.
+
     1. Optionally, enable Application Insights telemetry. If you're using Application Insights for the first time, [create an Application Insights resource](/azure/azure-monitor/app/create-new-resource). [Copy the instrumentation key](/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) to a variable.
 
         ```bash
@@ -99,12 +104,20 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
         COLLECT_TELEMETRY=true
         ```
 
-    1. <a name="install-k2bridge-chart"></a> Install the K2Bridge chart. Visualizations and dashboards are supported with the Kibana 7.10 version only. The latest image tags are: 6.8_latest and 7.16_latest, which support Kibana 6.8 and Kibana 7.16 respectively. 
+    1. <a name="install-k2bridge-chart"></a> Install the K2Bridge chart. Visualizations and dashboards are supported with the Kibana 7.10 version only. The latest image tags are: 6.8_latest and 7.16_latest, which support Kibana 6.8 and Kibana 7.10 respectively. The image of '7.16_latest' supports Kibana OSS 7.10.2, and its internal Elasticsearch instance is 7.16.2.
+
+         If an Azure AD service principal was used:
 
         ```bash
-        helm install k2bridge charts/k2bridge -n k2bridge --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set settings.aadClientId="$ADX_CLIENT_ID" --set settings.aadClientSecret="$ADX_CLIENT_SECRET" --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=6.8_latest/7.10_latest] 
+        helm install k2bridge charts/k2bridge -n k2bridge --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set settings.aadClientId="$ADX_CLIENT_ID" --set settings.aadClientSecret="$ADX_CLIENT_SECRET" --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=6.8_latest/7.16_latest] 
         [--set image.repository=$REPOSITORY_NAME/$CONTAINER_NAME] 
         [--set privateRegistry="$IMAGE_PULL_SECRET_NAME"] [--set settings.collectTelemetry=$COLLECT_TELEMETRY]
+        ```
+
+         Or, if managed identity was used:
+
+        ```bash
+        helm install k2bridge charts/k2bridge -n k2bridge --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set       settings.aadClientId="$ADX_CLIENT_ID" --set settings.useManagedIdentity=true --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=7.16_latest] [--set  settings.collectTelemetry=$COLLECT_TELEMETRY]
         ```
 
         In [Configuration](https://github.com/microsoft/K2Bridge/blob/master/docs/configuration.md), you can find the complete set of configuration options.
@@ -112,7 +125,7 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
     1. <a name="install-kibana-service"></a> The previous command's output suggests the next Helm command to deploy Kibana. Optionally, run this command:
 
         ```bash
-        helm install kibana elastic/kibana -n k2bridge --set image=docker.elastic.co/kibana/kibana-oss --set imageTag=6.8.5 --set elasticsearchHosts=http://k2bridge:8080
+        helm install kibana elastic/kibana -n k2bridge --set image=docker.elastic.co/kibana/kibana-oss --set imageTag=7.10.2 --set elasticsearchHosts=http://k2bridge:8080
         ```
 
     1. Use port forwarding to access Kibana on localhost.
@@ -253,11 +266,11 @@ Use Kibana visualizations to get at-a-glance views of Azure Data Explorer data.
 > Use the Lucene syntax, not the KQL option, which stands for the Kibana Query Language syntax.
 
 > [!IMPORTANT]
-> * The following visualizations are supported: `Vertical bar`, `Area chart`, `Horizontal bar`, `Pie chart`, `Gauge`, `Data table`, `Heat map`, `Goal chart`, and `Metric chart`.
-> * The following metrics are supported: `Average`, `Count`, `Max`, `Median`, `Min`, `Percentiles`, `Sum`, and `Unique count`.
-> * The metrics `Percentiles ranks` and `Top hits` are not supported.
+> * The following visualizations are supported: `Vertical bar`, `Area chart`, `Line chart`, `Horizontal bar`, `Pie chart`, `Gauge`, `Data table`, `Heat map`, `Goal chart`, and `Metric chart`.
+> * The following metrics are supported: `Average`, `Count`, `Max`, `Median`, `Min`, `Percentiles`, `Standard deviation`, `Sum`, `Top hits` and `Unique count`.
+> * The metric `Percentiles ranks` is not supported.
 > * Using bucket aggregations is optional, you can visualize data without bucket aggregation.
-> * The following buckets are supported: `No bucket aggregation`, `Date histogram`, `Filters`, `Range`, and `Terms`.
+> * The following buckets are supported: `No bucket aggregation`, `Date histogram`, `Filters`, `Range`, `Date range`, `Histogram`,and `Terms`.
 > * The buckets `IPv4 range` and `Significant terms` are not supported.
 
 ## Create dashboards
