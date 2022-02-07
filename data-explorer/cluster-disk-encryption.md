@@ -12,10 +12,16 @@ ms.date: 02/06/2022
 # Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal
 
 [Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) helps protect and safeguard your data to meet your organizational security and compliance commitments. It provides volume encryption for the OS and data disks of your cluster virtual machines. 
+
+## Encryption options
+
+There are two options for encryption:
+- [Encryption at rest at the storage level](#enable-encryption-at-rest-in-the-azure-portal) - when you encrypt data in files or directories at the Operating System level, you can adequately protect data at rest. However, the storage system has no knowledge of database objects or structures.
+- Encryption at the virtual machine level/disk encryption - it is considered more secure to encrypt data at the level of volumes for data in use.
   
 ## Enable encryption at rest in the Azure portal
   
-Your cluster security settings allow you to enable disk encryption on your cluster. Encryption at rest and disk encryption are different. Enabling [encryption at rest](/azure/security/fundamentals/encryption-atrest) on your cluster provides data protection for stored data (at rest). The cluster encrypts data at rest utilizing Storage Service Encryption at the blob persistency layer. All underlying storage accounts are by default encrypted with MS-managed keys.
+Your cluster security settings allow you to enable disk encryption on your cluster. Enabling [encryption at rest](/azure/security/fundamentals/encryption-atrest) on your cluster provides data protection for stored data (at rest). The cluster encrypts data at rest utilizing Storage Service Encryption at the blob persistency layer. All underlying storage accounts are by default encrypted with MS-managed keys.
 Encrypting the storage accounts with customer-managed keys and disk encryption are optional and can be enabled on a cluster scope.
 
 1. In the Azure portal, go to your Azure Data Explorer cluster resource. Under the **Settings** heading, select **Security**. 
