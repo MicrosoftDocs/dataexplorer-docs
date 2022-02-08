@@ -1,29 +1,36 @@
 ---
 title: Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal
-description: This article describes how to secure your cluster using encryption in Azure Data Explorer within the Azure portal.
+description: This article describes how to secure your cluster using Disk Encryption in Azure Data Explorer within the Azure portal.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/08/2022
+ms.date: 08/02/2020
 ---
 
-# Securing your cluster with encryption in Azure Data Explorer - Azure portal
+# Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal
 
-[Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) helps protect and safeguard your data to meet your organizational security and compliance commitments. It provides volume encryption for the OS and data disks of your cluster virtual machines. 
+[Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) helps protect and safeguard your data to meet your organizational security and compliance commitments. It provides volume encryption for the OS and data disks of your cluster virtual machines. It also integrates with [Azure Key Vault](/azure/key-vault/), which allows us to control and manage the disk encryption keys and secrets, and ensure all data on the VM disks is encrypted. 
+  
+## Enable encryption at rest in the Azure portal
+  
+Your cluster security settings allow you to enable disk encryption on your cluster. Enabling [encryption at rest](/azure/security/fundamentals/encryption-atrest) on your cluster provides data protection for stored data (at rest). 
 
-When you create a cluster, its data storage is [automatically encrypted at the service level](/azure/storage/common/storage-service-encryption). If you require a higher level of assurance that your data is secure, you can also enable [infrastructure level encryption](/azure/storage/common/infrastructure-encryption-enable), also known as double encryption.
+1. In the Azure portal, go to your Azure Data Explorer cluster resource. Under the **Settings** heading, select **Security**. 
 
-When infrastructure encryption is enabled, data in the storage account is encrypted twice, once at the service level and once at the infrastructure level, using two different encryption algorithms and two different keys. Double encryption of Azure Storage data protects against a scenario where one of the encryption algorithms or keys may be compromised. In this scenario, the additional layer of encryption continues to protect your data.
+    ![Turn on encryption at rest.](media/manage-cluster-security/security-encryption-at-rest.png)
 
-See also:
-* [Enable storage encryption](setting-cluster-storage-encryption.md)
-* [Enable infrastructure encryption](double-encryption.md)
+1. In the **Security** window, select **On** for the **Disk encryption** security setting. 
+
+1. Select **Save**.
+ 
+> [!NOTE]
+> Select **Off** to disable the encryption after it has been enabled.
 
 ## Azure Data Explorer stores data within a region
 
-Every Azure Data Explorer cluster runs on dedicated resources in a single region. All data is stored within the region.
+Every Azure Data Explorer cluster runs on dedicated resources in a single region. All data is stored within the region. 
 
 ## Next steps
 
