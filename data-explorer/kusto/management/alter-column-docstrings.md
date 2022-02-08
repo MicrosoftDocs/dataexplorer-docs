@@ -11,7 +11,7 @@ ms.date: 02/03/2022
 ---
 # .alter column docstrings
 
-Sets the `docstrings` property of one or more columns of the specified table.  Columns not explicitly set will have this property removed.
+Sets the `DocString` property of one or more columns of the specified table.  Columns not explicitly set will have this property removed.
 
 ## Syntax
 

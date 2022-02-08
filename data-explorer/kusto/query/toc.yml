@@ -908,14 +908,22 @@ items:
     href: geo-h3cell-rings-function.md
   - name: geo_polygon_to_s2cells()
     href: geo-polygon-to-s2cells-function.md
+  - name: geo_line_centroid()
+    href: geo-line-centroid-function.md
   - name: geo_line_densify()
-    href: geo-line-densify-function.md 
+    href: geo-line-densify-function.md
+  - name: geo_line_length()
+    href: geo-line-length-function.md  
   - name: geo_polygon_area()
     href: geo-polygon-area-function.md
   - name: geo_polygon_centroid()
     href: geo-polygon-centroid-function.md
   - name: geo_polygon_densify()
     href: geo-polygon-densify-function.md
+  - name: geo_polygon_perimeter()
+    href: geo-polygon-perimeter-function.md
+  - name: geo_union_polygons_array()
+    href: geo-union-polygons-array-function.md
 - name: Time series analysis
   items:
   - name: Time series analysis overview
