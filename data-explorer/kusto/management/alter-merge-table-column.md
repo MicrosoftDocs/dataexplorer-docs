@@ -11,7 +11,7 @@ ms.date: 02/03/2022
 ---
 # .alter-merge column-docstrings
 
-Sets the `docstrings` property for one or more columns of a specified table. Columns not explicitly defined will keep any previous definition for this property, if it exists.
+Sets the `DocString` property for one or more columns of a specified table. Columns not explicitly defined will keep any previous definition for this property, if it exists.
 
 ## Syntax
 
