@@ -9,7 +9,7 @@ ms.topic: how-to
 ms.date: 02/08/2022
 ---
 
-# Securing your cluster with storage encryption in Azure Data Explorer - Azure portal
+# Enabling storage encryption for your cluster in Azure Data Explorer
   
 Your cluster security settings allow you to enable disk encryption on your cluster. Enabling [encryption at rest](/azure/security/fundamentals/encryption-atrest) on your cluster provides data protection for stored data (at rest).
 

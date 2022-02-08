@@ -294,9 +294,11 @@ items:
           href: vnet-endpoint-storage-event-hub.md
     - name: Encryption
       items:
-      - name: Cluster disk encryption - portal
+      - name: Cluster encryption overview
         href: cluster-disk-encryption.md
-      - name: Double Encryption
+      - name: Enabling storage level encryption
+        href: cluster-disk-encryption.md
+      - name: Enabling infrastructure level encryption
         href: double-encryption.md
     - name: Managed identities
       items:

@@ -9,7 +9,7 @@ ms.topic: how-to
 ms.date: 02/08/2022
 ---
 
-# Securing your cluster with infrastructure encryption in Azure Data Explorer
+# Enabling infrastructure encryption for your cluster in Azure Data Explorer
   
 When you create a cluster, its storage is [automatically encrypted](/azure/storage/common/storage-service-encryption) at the [service level](setting-cluster-storage-encryption.md). For greater data security, you can additionally enable [infrastructure level encryption](/azure/storage/common/infrastructure-encryption-enable), also known as double encryption.
 
@@ -106,6 +106,12 @@ Add the 'EnableDoubleEncryption' type to tell Azure to enable infrastructure enc
     }
 ```
 ---
+
+## Limitations when encrypting at the infrastructure level
+
+The following limitations apply to [selected volumes](kusto/concepts/sandboxes.md#virtual-machine-sizes) when enabling disk encryption:
+* Performance impact of up to a single digit
+* Cannot be used with sandboxes
 
 ## Next steps
 
