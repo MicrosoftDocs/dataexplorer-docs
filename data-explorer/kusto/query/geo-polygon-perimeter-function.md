@@ -47,7 +47,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 
 ## Examples
 
-The following example calculates NYC Central Park perimeter.
+The following example calculates NYC Central Park perimeter, in meters.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
