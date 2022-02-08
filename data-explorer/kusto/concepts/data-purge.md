@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: kedamari
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/12/2020
+ms.date: 02/07/2022
 ---
 # Data purge
 
@@ -123,7 +123,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 	 .purge table [TableName] records in database [DatabaseName] <| [Predicate]
 
 	 // Step #2 - input the verification token to execute purge
-	 .purge table [TableName] records in database [DatabaseName] with (verificationtoken='<verification token from step #1>') <| [Predicate]
+	 .purge table [TableName] records in database [DatabaseName] with (verificationtoken=h'<verification token from step #1>') <| [Predicate]
   ```
 
 To purge a materialized view, replace the `table` keyword with `materialized-view`, and replace *TableName* with the *MaterializedViewName*.
@@ -168,11 +168,11 @@ To complete a purge in a two-step activation scenario, use the verification toke
 
 ```kusto
 .purge table MyTable records in database MyDatabase
- with(verificationtoken='e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b')
+ with(verificationtoken=h'e43c7....')
 <| where CustomerId in ('X', 'Y')
 
 .purge materialized-view MyView records in database MyDatabase
- with(verificationtoken='e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b')
+ with(verificationtoken=h'e43c7....')
 <| where CustomerId in ('X', 'Y')
 ```
 
@@ -353,7 +353,7 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 	 .purge table [TableName] in database [DatabaseName] allrecords
 
 	 // Step #2 - input the verification token to execute purge
-	 .purge table [TableName] in database [DatabaseName] allrecords with (verificationtoken='<verification token from step #1>')
+	 .purge table [TableName] in database [DatabaseName] allrecords with (verificationtoken=h'<verification token from step #1>')
 	 ```
 
 	| Parameters  |Description  |
@@ -384,7 +384,7 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 
 	```kusto
 	.purge table MyTable in database MyDatabase allrecords 
-	with (verificationtoken='eyJTZXJ2aWNlTmFtZSI6IkVuZ2luZS1pdHNhZ3VpIiwiRGF0YWJhc2VOYW1lIjoiQXp1cmVTdG9yYWdlTG9ncyIsIlRhYmxlTmFtZSI6IkF6dXJlU3RvcmFnZUxvZ3MiLCJQcmVkaWNhdGUiOiIgd2hlcmUgU2VydmVyTGF0ZW5jeSA9PSAyNSJ9')
+	with (verificationtoken=h'eyJT.....')
 	```
 	
 	The output is the same as the '.show tables' command output (returned without the purged table).
