@@ -89,7 +89,7 @@ To add a Shared Access (SAS) token, append `?sig=...` to the connection string. 
 
 ## Token
 
-To add a base-64 encoded Azure AD access token, append `;token={AadToken}` to the connection string. Make sure the token is for the resource https://azure.microsoft.com/free/storage/. For more information on how to generate an Azure AD access token, see [get an access token for authorization](/azure/storage/common/identity-library-acquire-token).
+To add a base-64 encoded Azure AD access token, append `;token={AadToken}` to the connection string. Make sure the token is for the resource https://docs.microsoft.com/azure/storage/. For more information on how to generate an Azure AD access token, see [get an access token for authorization](/azure/storage/common/identity-library-acquire-token).
 
 ### Token example
 
