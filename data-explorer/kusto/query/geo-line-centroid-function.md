@@ -68,13 +68,15 @@ print centroid = geo_line_centroid(line)
 |---|
 |-73.9660675626837|
 
+The following example visualizes line centroid on a map.
+
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let line = dynamic({"type":"MultiLineString","coordinates":[[[-73.95798683166502,40.800556090021466],[-73.98193359375,40.76819171855746]],[[-73.94940376281738,40.79691751000055],[-73.97317886352539,40.76435634049001]]]});
 print centroid = geo_line_centroid(line)
 | render scatterchart with (kind = map)
 ```
-:::image type="content" source="images/geo-line-centroid-function/nyc-central-park-centroid.png" alt-text="Screenshot of N Y C Central park centroid.":::
+:::image type="content" source="images/geo-line-centroid-function/nyc-central-park-centroid.png" alt-text="Screenshot of N Y C Central park line centroid.":::
 
 The following example returns True because of the invalid line.
 
