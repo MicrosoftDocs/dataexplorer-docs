@@ -6,12 +6,14 @@ ms.author: orspodek
 ms.reviewer: toleibov
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 08/11/2020
+ms.date: 02/08/2022
 ---
 
-# Enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer
+# Securing your cluster with infrastructure encryption in Azure Data Explorer
   
-When you create a cluster, its storage is [automatically encrypted at the service level](/azure/storage/common/storage-service-encryption). If you require a higher level of assurance that your data is secure, you can also enable [Azure Storage infrastructure level encryption](/azure/storage/common/infrastructure-encryption-enable), also known as double encryption. When infrastructure encryption is enabled, data in the storage account is encrypted twice, once at the service level and once at the infrastructure level, using two different encryption algorithms and two different keys. Double encryption of Azure Storage data protects against a scenario where one of the encryption algorithms or keys may be compromised. In this scenario, the additional layer of encryption continues to protect your data.
+When you create a cluster, its storage is [automatically encrypted](/azure/storage/common/storage-service-encryption) at the [service level](setting-cluster-storage-encryption.md). For greater data security, you can additionally enable [infrastructure level encryption](/azure/storage/common/infrastructure-encryption-enable), also known as double encryption.
+
+When infrastructure encryption is enabled, data in the storage account is encrypted twice, once at the service level and once at the infrastructure level.
 
 > [!IMPORTANT]
 > * Enabling double encryption is only possible during cluster creation.
