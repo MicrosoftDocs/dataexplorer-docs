@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/06/2022
+ms.date: 02/08/2022
 ---
 
 # Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal
