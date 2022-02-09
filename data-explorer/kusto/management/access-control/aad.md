@@ -12,13 +12,13 @@ ms.date: 02/06/2022
 # Azure Active Directory Authentication
 
 Azure Active Directory is Azure preferred multi-tenant cloud directory service.
-It is capable of authenticating security principals or federating with other identity providers,
+It's capable of authenticating security principals or federating with other identity providers,
 such as Microsoft Active Directory.
 
 Azure AD allows application of various kinds, e.g., web application, Windows desktop application, and Universal and mobile applications to uniformly authenticate and use Azure Data Explorer services.
 
 Azure AD supports several of authentication scenarios.
-If there is a user present during the authentication, one should authenticate the user to Azure AD using interactive authentication.
+If there's a user present during the authentication, one should authenticate the user to Azure AD using interactive authentication.
 In some cases, one wants a service to use Kusto even when no user is interactively
 present. In such cases, one should authenticate the application through the use
 of an application secret, as described in Azure AD Application Authentication.
@@ -44,14 +44,14 @@ Kusto service. The Kusto service doesn't care how the security token was obtaine
 whether the token is valid and what information is put there by Azure AD (or the federated IdP).
 
 On the client side, Azure Data Explorer supports both interactive authentication, where [MSAL (Microsoft Authentication Library)](/azure/active-directory/develop/msal-overview) or similar code requests the user to enter credentials and token-based authentication, where an application using Azure Data Explorer obtains a valid user token and utilizes it to access Azure Data Explorer.
-Additionally, scenarios in which an application using Azure Data Explorer obtains a valid user token for some other service, provided there's a trust relationship between that resource and Azure Data Explorer is also supported
+Additionally, scenarios in which an application using Azure Data Explorer obtains a valid user token for some other service, provided there's a trust relationship between that resource and Azure Data Explorer is also supported.
 
 Please see [Kusto connection strings](../../api/connection-strings/kusto.md) for details on how
 to use the Kusto client libraries and authenticate by using Azure AD to Kusto.
 
 ## Application authentication
 
-When requests are not associated with a specific user, or there's no user available to enter
+When requests aren't associated with a specific user, or there's no user available to enter
 credentials, the Azure AD application authentication flow may be used. In this flow, the application
 authenticates to Azure AD (or the federated IdP) by presenting some secret information. The following
 scenarios are supported by the various Kusto clients:
@@ -85,12 +85,12 @@ from the user (which Azure AD calls "the resource owner").
 When the Kusto client library invoke [MSAL (Microsoft Authentication Library)](/azure/active-directory/develop/msal-overview)
 to acquire a token for communicating with Kusto, it provides the following information:
 
-1. Azure AD authority URI ('https://login.microsoftonline.com' in the public Azure) and the Azure AD Tenanat, as received from the caller
+1. Azure AD authority URI ('https://login.microsoftonline.com' in the global Azure) and the Azure AD Tenanat, as received from the caller
 2. Azure AD Client Application ID
 3. For application authentication - Azure AD Client Application credential (secret or certificate)
 4. For User authentication - Azure AD Client Application ReplyUrl (the URL that the Azure AD service will redirect-to after authentication completes successfully;
    MSAL then captures this redirect and extracts the authorization code from it)
-5. The Cluster URI (typically 'https://cluster.region.kusto.windows.net' in the public Azure)
+5. The Cluster URI (typically 'https://cluster.region.kusto.windows.net' in the global Azure)
 
 The token returned by ADAL to the Kusto Client Library has the Azure Data Explorer Service as the audience.
 
