@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 02/08/2022
 ---
 
-# Enabling infrastructure encryption for your cluster in Azure Data Explorer
+# Enabling double encryption for your cluster in Azure Data Explorer
   
-When you create a cluster, its storage is [automatically encrypted](/azure/storage/common/storage-service-encryption) at the [service level](setting-cluster-storage-encryption.md). For greater data security, you can additionally enable [infrastructure level encryption](/azure/storage/common/infrastructure-encryption-enable), also known as double encryption.
+When you create a cluster, data is [automatically encrypted](/azure/storage/common/storage-service-encryption) at the [service level](setting-cluster-storage-encryption.md). For greater data security, you can additionally enable [double encryption](/azure/storage/common/infrastructure-encryption-enable).
 
-When infrastructure encryption is enabled, data in the storage account is encrypted twice, once at the service level and once at the infrastructure level.
+When double encryption is enabled, data in the storage account is encrypted twice, using two different algorithms.
 
 > [!IMPORTANT]
 > * Enabling double encryption is only possible during cluster creation.
@@ -26,7 +26,6 @@ When infrastructure encryption is enabled, data in the storage account is encryp
 1. Select **Next:Network>** or **Review + create** to create the cluster.
 
     :::image type="content" source="media/double-encryption/double-encryption-portal.png" alt-text="double encryption new cluster.":::
-
 
 # [C#](#tab/c-sharp)
 
@@ -107,9 +106,9 @@ Add the 'EnableDoubleEncryption' type to tell Azure to enable infrastructure enc
 ```
 ---
 
-## Limitations when encrypting at the infrastructure level
+## Limitations 
 
-The following limitations apply to [selected volumes](kusto/concepts/sandboxes.md#virtual-machine-sizes) when enabling disk encryption:
+The following limitations apply to [selected volumes](kusto/concepts/sandboxes.md#virtual-machine-sizes) when enabling encryption:
 * Performance impact of up to a single digit
 * Cannot be used with sandboxes
 

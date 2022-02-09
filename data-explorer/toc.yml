@@ -296,9 +296,9 @@ items:
       items:
       - name: Cluster encryption overview
         href: cluster-disk-encryption.md
-      - name: Enabling storage level encryption
-        href: cluster-disk-encryption.md
-      - name: Enabling infrastructure level encryption
+      - name: Automatic storage level encryption
+        href: setting-cluster-styorage-encryption.md
+      - name: Enabling double encryption
         href: double-encryption.md
     - name: Managed identities
       items:
