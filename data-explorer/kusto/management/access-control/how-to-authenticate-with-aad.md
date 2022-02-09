@@ -190,7 +190,7 @@ the administrator of the Azure AD tenant.
 
 **Step 1: Establish trust relationship between your application and the Azure Data Explorer service**
 
-1. Open the [Azure portal](https://portal.azure.com/) and make sure that you are
+1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're
    signed-in to the correct tenant (see top/right corner for the identity
    used to sign in to the portal).
 
