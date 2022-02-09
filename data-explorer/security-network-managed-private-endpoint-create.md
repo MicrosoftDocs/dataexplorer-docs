@@ -6,7 +6,7 @@ ms.author: herauch
 ms.reviewer: eladb
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/21/2022
+ms.date: 02/09/2022
 ---
 
 # Create a Managed Private Endpoints for Azure Data Explorer (public preview)
@@ -18,17 +18,25 @@ Managed Private Endpoints are necessary to connect to other Azure Platform servi
 * [Create an Azure Data Explorer Cluster](create-cluster-database-portal.md) that is not injected in a virtual network
 * Create an [Azure Eventhub](/azure/event-hubs/event-hubs-about) or [Azure Storage](/azure/storage/blobs/storage-blobs-overview) service
 
+## Create a Managed Private Endpoint using the portal
+
+foo bar
 
 ## Create a Managed Private Endpoint using the API
+
+foo bar
 
 ### Prerequisites for an API based creation
 
 * Install [choco](https://chocolatey.org/install)
 * Install ARMCLIENT
+
    ```powerShell
    choco install armclient
    ```
-*  Log in with ARMClient
+
+* Log in with ARMClient
+
    ```powerShell
    armclient login
    ```
@@ -36,6 +44,7 @@ Managed Private Endpoints are necessary to connect to other Azure Platform servi
 ### Create a Managed Private Endpoint to an Azure Event Hubs service
 
 The REST API call to enable the managed private endpoint, in this case eventhub, is the following:
+
 ```powershell
 #replace the <...> placeholders with the correct values
 armclient PUT /subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/clusters/<clusterName>/managedPrivateEndpoints/<newMpeName>?api-version=2022-02-01 @"
@@ -50,6 +59,7 @@ armclient PUT /subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNa
 ```
 
 Result:
+
 ```javascript
 {
   "id": "/subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/Clusters/<clusterName>/ManagedPrivateEndpoints/<newMpeName>",
@@ -65,10 +75,10 @@ Result:
 }
 ```
 
-
 ### Create a Managed Private Endpoint to an Azure Storage account
 
 The REST API call to enable the managed private endpoint, in this case storage, is the following:
+
 ```powershell
 #replace the <...> placeholders with the correct values
 armclient PUT /subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/clusters/<clusterName>/managedPrivateEndpoints/<newMpeName>?api-version=2022-02-01 @"
@@ -83,6 +93,7 @@ armclient PUT /subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNa
 ```
 
 Result:
+
 ```javascript
 {
   "id": "/subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/Clusters/<clusterName>/ManagedPrivateEndpoints/<newMpeName>",
@@ -107,7 +118,8 @@ Once you executed the API call using ARMCLIENT you can verify the progress of th
 armclient GET /subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/clusters/<clusterName>/managedPrivateEndpoints/<newMpeName>?api-version=2022-02-01
 ```
 
-Result:
+**Result:**
+
 ```javascript
 {
   "id": "/subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/Clusters/<clusterName>/ManagedPrivateEndpoints/<newMpeName>",

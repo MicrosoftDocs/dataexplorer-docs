@@ -6,14 +6,15 @@ ms.author: herauch
 ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/21/2022
+ms.date: 02/09/2022
 ---
 
 # Network security for Azure Data Explorer
 
 Keeping your data secure in the cloud should be one of the most prioritized task of an IT department. Today, Azure Data Explorer is accessible through Internet-reachable URLs. Anyone with valid identity on the cluster can access it from any location. In some scenarios, it's necessary that Azure Data Explorer can only be accessed from the private virtual network. There are essentially two options to accomplish this connectivity:
-1.	Virtual Network Injection 
-2.	Private Endpoints
+
+1. Virtual Network Injection
+1. Private Endpoints
 
 This document provides an overview of those two options.
 
@@ -44,10 +45,10 @@ Private endpoints are not supported for ADX cluster which have been injected int
 
 The following table shows how network security related features could be implemented based on an Azure Data Explorer cluster injected into a virtual netowrk or secured using a private endpoint.
 
-|   Feature	| Private Endpoint  	| Virtual Network Injection  	|
-|---	|---	|---	|
-| Inbound IP filtering | [Restrict public access](security-network-restrict-public-access.md) | [Create an inbound Network Security Group rule](/azure/virtual-network/network-security-groups-overview)  	|
-| Transitive access to other services (Storage, EventHub, etc) | [Create a managed private endpoint](security-network-managed-private-endpoint-create.md) | [Create a private endpoint to the resource](/azure/data-explorer/vnet-endpoint-storage-event-hub)  	|
+|   Feature | Private Endpoint   | Virtual Network Injection   |
+|--- |--- |--- |
+| Inbound IP filtering | [Restrict public access](security-network-restrict-public-access.md) | [Create an inbound Network Security Group rule](/azure/virtual-network/network-security-groups-overview)   |
+| Transitive access to other services (Storage, EventHub, etc) | [Create a managed private endpoint](security-network-managed-private-endpoint-create.md) | [Create a private endpoint to the resource](/azure/data-explorer/vnet-endpoint-storage-event-hub)   |
 | Restricting outbound access | Use [Callout policies or the AllowedFQDNList](security-network-restrict-outbound-access.md)	| Use a [virtual appliance](/azure/firewall/tutorial-firewall-deploy-portal) to filter outgoing traffic of the subnet |
 
 It's recommended to use a private endpoint based approach to connect privately to your Azure Data Explorer cluster. Maintaining FQDN lists in firewalls or deploying public IP addresses in a restricted environment lead to a high maintenance effort for a virtual network injection based deployment.

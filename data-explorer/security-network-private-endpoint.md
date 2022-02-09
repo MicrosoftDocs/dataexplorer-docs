@@ -6,7 +6,7 @@ ms.author: herauch
 ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/21/2022
+ms.date: 02/09/2022
 ---
 
 # Private Endpoints for Azure Data Explorer (public preview)
@@ -14,6 +14,7 @@ ms.date: 01/21/2022
 You can use [private endpoints](/azure/private-link/private-endpoint-overview) for your Azure Data Explorer cluster to allow clients on a virtual network (VNet) to securely access data over a [Private Link](/azure/private-link/private-link-overview). The private endpoint uses IP addresses from the VNet address space for your Azure Data Explorer service. Network traffic between the clients on the VNet and the ADX cluster traverses over the VNet and a private link on the Microsoft backbone network, eliminating exposure from the public internet.
 
 Using private endpoints for your Azure Data Explorer cluster enables you to:
+
 * Secure your ADX cluster by configuring the firewall to block all connections on the public endpoint for the ADX.
 * Increase security for the virtual network (VNet), by enabling you to block exfiltration of data from the VNet.
 * Securely connect to ADX clusters from on-premises networks that connect to the VNet using [VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways) or [ExpressRoutes](/azure/expressroute/expressroute-locations) with private-peering.
@@ -57,7 +58,7 @@ Clients on a VNet using the private endpoint should use the same connection stri
 
 Important: Use the same connection string to connect ADX using private endpoints, as you'd use otherwise. Don't connect to the ADX using its privatelink subdomain URL.
 
-Azure Data Explorer creates a [private DNS zone](/azure/dns/private-dns-overview) attached to the VNet with the necessary updates for the private endpoints, by default. However, if you're using your own DNS server, you may need to make additional changes to your DNS configuration. 
+Azure Data Explorer creates a [private DNS zone](/azure/dns/private-dns-overview) attached to the VNet with the necessary updates for the private endpoints, by default. However, if you're using your own DNS server, you may need to make additional changes to your DNS configuration.
 
 ![DNS configuration of the private endpoint.](media/security-network-private-endpoint/pe-dns-config.png)
 
@@ -78,6 +79,7 @@ With the help of a managed private endpoint, you will enable the ADX cluster to 
 ### Supported services
 
 Azure Data Explorer supports creating Managed Private Endpoints to the following services:
+
 * [Azure Event Hubs](/azure/event-hubs/event-hubs-about)
 * [Azure Storage Account](/azure/storage/blobs/storage-blobs-overview)
 * [Azure Data Explorer](data-explorer-overview.md)
