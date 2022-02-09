@@ -89,7 +89,7 @@ You can start and stop the secondary replicas using one of the following methods
 
 * Azure CLI: 
 
-```kusto
+```azurecli
 az kusto cluster stop --name=<clusterName> --resource-group=<rgName> --subscription=<subscriptionId>” 
 ```
 
