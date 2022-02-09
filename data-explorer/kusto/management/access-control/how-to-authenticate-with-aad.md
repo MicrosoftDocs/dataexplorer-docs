@@ -10,10 +10,10 @@ ms.topic: reference
 ms.custom: devx-track-js
 ms.date: 02/07/2022
 ---
-# How-To Authenticate with Azure AD for Azure Data Explorer Access
+# How to authenticate with Azure Active Directory (Azure AD) for Azure Data Explorer access
 
 The recommended way to access Azure Data Explorer is by authenticating to the
-**Azure Active Directory** service (here and below **Azure AD**).
+**Azure Active Directory** service.
 Doing so guarantees that Azure Data Explorer never sees the accessing principal's
 directory credentials, by using a two-stage process:
 
@@ -54,7 +54,7 @@ The main authenticating scenarios are:
 
 ## Specifying the Azure AD resource for Azure Data Explorer
 
-When acquiring an access token from Azure AD, the client must indicate which **Azure AD resource**
+When acquiring an access token from Azure AD, the client must indicate which *Azure AD resource*
 the token should be issued to. The Azure AD resource of an Azure Data Explorer endpoint is the
 URI of the endpoint, barring the port information and the path. For example:
 
@@ -88,7 +88,7 @@ Azure AD has many endpoints for authentication:
   with the value `common`.
 
 > [!NOTE]
-> The Azure AD endpoint used for authentication is also called **Azure AD authority URL**
+> The Azure AD endpoint used for authentication is also called *Azure AD authority URL*
 > or simply **Azure AD authority**.
 
 ## Azure AD local token cache
@@ -261,7 +261,7 @@ Like in the native client flow, there should be  two Azure AD applications (Serv
 
 AdalJs requires getting an id_token before any access_token calls are made.
 
-Access token is obtained by calling the `AuthenticationContext.login()` method, and access_tokens are obtained by calling `Authenticationcontext.acquireToken()`.
+The access token is obtained by calling the `AuthenticationContext.login()` method, and access_tokens are obtained by calling `Authenticationcontext.acquireToken()`.
 
 * Create an AuthenticationContext with the right configuration:
 
