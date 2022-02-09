@@ -74,11 +74,11 @@ authorization token. As part of token acquisition, the user will be asked
 to authorize the Azure AD client application to be act on the user's behalf with
 authorization to have these permissions. Should the user approve, these
 permissions will be listed in the scope claim of the token that is issued
-to the AAD client application.
+to the Azure AD client application.
 
 
 The Azure AD client application is configured to request the "Access Kusto" permission
-from the user (which AAD calls "the resource owner").
+from the user (which Azure AD calls "the resource owner").
 
 ## Kusto Client SDK as an Azure AD Client Application
 
@@ -88,15 +88,15 @@ to acquire a token for communicating with Kusto, it provides the following infor
 1. Azure AD authority URI ('https://login.microsoftonline.com' in the public Azure) and the Azure AD Tenanat, as received from the caller
 2. Azure AD Client Application ID
 3. For application authentication - Azure AD Client Application credential (secret or certificate)
-4. For User authentication - Azure AD Client Application ReplyUrl (the URL that the AAD service will redirect-to after authentication completes successfully;
+4. For User authentication - Azure AD Client Application ReplyUrl (the URL that the Azure AD service will redirect-to after authentication completes successfully;
    MSAL then captures this redirect and extracts the authorization code from it)
 5. The Cluster URI (typically 'https://cluster.region.kusto.windows.net' in the public Azure)
 
 The token returned by ADAL to the Kusto Client Library has the Azure Data Explorer Service as the audience.
 
-## Authenticating with AAD Programmatically
+## Authenticating with Azure AD Programmatically
 
-The following articles explain how to programmatically authenticate to Kusto with AAD:
+The following articles explain how to programmatically authenticate to Kusto with Azure AD:
 
 * [How to provision an Azure AD Application](../../../provision-azure-ad-app.md)
 * [How to perform Azure AD Authentication](how-to-authenticate-with-aad.md)
