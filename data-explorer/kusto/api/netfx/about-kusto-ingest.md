@@ -7,8 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.custom: has-adal-ref 
-ms.date: 03/18/2020
+ms.date: 02/09/2022
 ---
 # Kusto ingest client library 
 
