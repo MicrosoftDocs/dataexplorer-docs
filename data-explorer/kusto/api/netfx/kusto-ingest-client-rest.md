@@ -96,8 +96,7 @@ public static void IngestSingleFile(string file, string db, string table, string
 
 ### Obtain authentication evidence from Azure AD
 
-Here we use ADAL to obtain an Azure AD token to access the Kusto Data Management service and ask for its input queues.
-ADAL is available on [non-Windows platforms](/azure/active-directory/develop/active-directory-authentication-libraries) if needed.
+Here we use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to obtain an Azure AD token to access the Kusto Data Management service and ask for its input queues. MSAL is available on multiple platforms.
 
 ```csharp
 // Authenticates the interactive user and retrieves Azure AD Access token for specified resource
