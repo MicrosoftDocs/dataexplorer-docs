@@ -320,7 +320,7 @@ The message that the Kusto Data Management service expects to read from the inpu
 
 ```JSON
 {
-    "Id" : "<Id>",
+    "Id" : "<ID>",
     "BlobPath" : "https://<AccountName>.blob.core.windows.net/<ContainerName>/<PathToBlob>?<SasToken>",
     "RawDataSize" : "<RawDataSizeInBytes>",
     "DatabaseName": "<DatabaseName>",
@@ -344,7 +344,7 @@ The message that the Kusto Data Management service expects to read from the inpu
 |FlushImmediately |If set to `true`, any aggregation will be skipped. Default is `false` |
 |ReportLevel |Success/Error reporting level: 0-Failures, 1-None, 2-All |
 |ReportMethod |Reporting mechanism: 0-Queue, 1-Table |
-|AdditionalProperties |Additional properties such as `format`, `tags`, and `creationTime`. For more information, see [data ingestion properties](../../../ingestion-properties.md).|
+|AdditionalProperties |Other properties such as `format`, `tags`, and `creationTime`. For more information, see [data ingestion properties](../../../ingestion-properties.md).|
 
 ### Ingestion failure message structure
 
