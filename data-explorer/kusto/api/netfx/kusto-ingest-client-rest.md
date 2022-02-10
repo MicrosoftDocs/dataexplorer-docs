@@ -96,8 +96,7 @@ public static void IngestSingleFile(string file, string db, string table, string
 
 ### Obtain authentication evidence from Azure AD
 
-Here we use ADAL to obtain an Azure AD token to access the Kusto Data Management service and ask for its input queues.
-ADAL is available on [non-Windows platforms](/azure/active-directory/develop/active-directory-authentication-libraries) if needed.
+Here we use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to obtain an Azure AD token to access the Kusto Data Management service and ask for its input queues. MSAL is available on multiple platforms.
 
 ```csharp
 // Authenticates the interactive user and retrieves Azure AD Access token for specified resource
@@ -321,7 +320,7 @@ The message that the Kusto Data Management service expects to read from the inpu
 
 ```JSON
 {
-    "Id" : "<Id>",
+    "Id" : "<ID>",
     "BlobPath" : "https://<AccountName>.blob.core.windows.net/<ContainerName>/<PathToBlob>?<SasToken>",
     "RawDataSize" : "<RawDataSizeInBytes>",
     "DatabaseName": "<DatabaseName>",
@@ -345,7 +344,7 @@ The message that the Kusto Data Management service expects to read from the inpu
 |FlushImmediately |If set to `true`, any aggregation will be skipped. Default is `false` |
 |ReportLevel |Success/Error reporting level: 0-Failures, 1-None, 2-All |
 |ReportMethod |Reporting mechanism: 0-Queue, 1-Table |
-|AdditionalProperties |Additional properties such as `format`, `tags`, and `creationTime`. For more information, see [data ingestion properties](../../../ingestion-properties.md).|
+|AdditionalProperties |Other properties such as `format`, `tags`, and `creationTime`. For more information, see [data ingestion properties](../../../ingestion-properties.md).|
 
 ### Ingestion failure message structure
 
