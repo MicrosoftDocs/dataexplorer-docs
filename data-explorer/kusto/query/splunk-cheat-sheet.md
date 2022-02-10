@@ -131,7 +131,7 @@ See the [list of summarize aggregations functions](summarizeoperator.md#list-of-
 | Splunk operator | Splunk example | Kusto operator | Kusto example |
 |:---|:---|:---|:---|
 | `stats` |  `search (Rule=120502.*)`<br />&#124; `stats count by OSEnv, Audience` |  `summarize` | `Office_Hub_OHubBGTaskError`<br />&#124; `summarize count() by App_Platform, Release_Audience`
-| `evenstats`  |  <br />&#124; `stats count_i by time, category` <br />&#124; `eventstats sum(count_i) AS count_total by _time_`  | `join` | ` T2` <br />&#124; `join kind=inner (T1) on _time` <br />&#124; `project _time, category, count_i, count_total`
+| `evenstats`  | <br />&#124; `stats count_i by time, category` <br />&#124; `eventstats sum(count_i) AS count_total by _time_`  | `join` | ` T2` <br />&#124; `join kind=inner (T1) on _time` <br />&#124; `project _time, category, count_i, count_total`
 
 ### Join
 
