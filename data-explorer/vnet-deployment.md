@@ -161,7 +161,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 #### Health monitoring addresses
 
 > [!NOTE]
-> If your subnet is delegated to Microsoft.Kusto/clusters, you can disregard the following list, since the IPs might be not up-to-date, we will automatically manage and assign the required NSG rules using the updated IPs. 
+> You can disregard the following list if your subnet is delegated to Microsoft.Kusto/clusters. In this scenario, IP addresses may be not up to date but will be automatically updated when the required NSG rules are assigned to the cluster.
 
 | Region | Addresses |
 | --- | --- |
