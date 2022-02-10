@@ -72,8 +72,6 @@ items:
   items:
   - name: Create cluster and database
     items:
-    - name: One-click database management
-      href: one-click-manage-database.md
     - name: Azure CLI
       href: create-cluster-database-cli.md
     - name: PowerShell
