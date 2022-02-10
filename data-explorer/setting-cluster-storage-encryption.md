@@ -11,7 +11,7 @@ ms.date: 02/08/2022
 
 # Storage encryption for your cluster in Azure Data Explorer
   
-Your cluster security settings allow you to enable disk encryption on your cluster. Enabling [encryption at rest](/azure/security/fundamentals/encryption-atrest) on your cluster provides data protection for stored data. Encryption can use a Microsoft Managed Key or [customer managed keys](/azure/key-vault/general/basic-concepts.md) stored in the [Azure Key Vault](/azure/key-vault/). 
+Your cluster security settings allow you to enable disk encryption on your cluster. Enabling [encryption at rest](/azure/security/fundamentals/encryption-atrest) on your cluster provides data protection for stored data. Encryption can use a Microsoft managed key or [customer managed keys](/azure/key-vault/general/basic-concepts.md) stored in the [Azure Key Vault](/azure/key-vault/). 
 
 1. In the Azure portal, go to your Azure Data Explorer cluster resource. Under the **Settings** heading, select **Security**. 
 
