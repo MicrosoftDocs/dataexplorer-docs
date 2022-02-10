@@ -163,6 +163,9 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 
 #### Health monitoring addresses
 
+> [!NOTE]
+> You can disregard the following list if your subnet is delegated to Microsoft.Kusto/clusters. In this scenario, IP addresses may be not up to date but will be automatically updated when the required NSG rules are assigned to the cluster.
+
 | Region | Addresses |
 | --- | --- |
 | Australia Central | 52.163.244.128, 20.36.43.207, 20.36.44.186, 20.36.45.105, 20.36.45.34, 20.36.44.177, 20.36.45.33, 20.36.45.9 |
