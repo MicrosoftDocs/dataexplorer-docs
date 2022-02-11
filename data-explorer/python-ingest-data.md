@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: vladikbr
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 06/03/2019
+ms.date: 02/07/2022
 
 # Customer intent: As a Python developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
@@ -94,8 +94,8 @@ Import additional classes and set constants for the data source file. This examp
 from azure.kusto.ingest import QueuedIngestClient, IngestionProperties, FileDescriptor, BlobDescriptor, DataFormat, ReportLevel, ReportMethod
 
 CONTAINER = "samplefiles"
-ACCOUNT_NAME = "kustosamplefiles"
-SAS_TOKEN = "?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D"
+ACCOUNT_NAME = "kustosamples"
+SAS_TOKEN = ""  # If relevant add SAS token
 FILE_PATH = "StormEvents.csv"
 FILE_SIZE = 64158321    # in bytes
 

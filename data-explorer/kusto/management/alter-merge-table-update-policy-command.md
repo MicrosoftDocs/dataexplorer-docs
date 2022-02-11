@@ -26,7 +26,7 @@ Change the table update policy. The [update policy](updatepolicy.md) instructs A
 
 *DatabaseName* - Specify the name of the database.
 *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context. A wildcard (*) denotes all tables.
-*ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
+*ArrayOfPolicyObjects* - Define policy objects, see also [update policy](updatepolicy.md).
 
 ## Returns
 

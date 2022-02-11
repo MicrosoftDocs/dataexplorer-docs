@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: yonil
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 01/13/2022
 ---
 # .alter table row order policy
 
@@ -15,12 +15,12 @@ Change a table's [row order policy](roworderpolicy.md). The row order policy is 
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `roworder` *PolicyParameter*
+`.alter` `table` *TableName* `policy` `roworder` *PolicyObject*
 
 ## Arguments
 
 - *TableName* - Specify the name of the table.  
-- *PolicyParameter* - Define one or more policy parameters. For more information, see [row order policy](roworderpolicy.md).
+- *PolicyObject* - Define a policy object, see also [row order policy](roworderpolicy.md).
 
 ### Examples
 

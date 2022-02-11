@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: abhishgu
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 02/07/2022
 
 # Customer intent: As a Go developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
@@ -173,7 +173,7 @@ The [Ingestion](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#I
     Failed to drop StormEvents table. Maybe it does not exist?
     Table StormEvents created in DB testkustodb
     Mapping StormEvents_CSV_Mapping created
-    Ingested file from - https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D
+    Ingested file from - https://kustosamples.blob.core.windows.net/samplefiles/StormEvents.csv
     ```
 
 ## Validate and troubleshoot

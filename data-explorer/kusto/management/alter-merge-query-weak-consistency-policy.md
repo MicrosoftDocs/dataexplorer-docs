@@ -16,11 +16,11 @@ policy, and then returns the updated policy. The updated policy can be later vie
 
 ## Syntax
 
-`.alter-merge` `cluster` `policy` `query_weak_consistency` *ArrayOfPolicyObjects*
+`.alter-merge` `cluster` `policy` `query_weak_consistency` *PolicyObject*
 
 ## Arguments
 
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+*PolicyObject* - Define a policy object, see also [show command](show-query-weak-consistency-policy.md).
 
 ## Result
 

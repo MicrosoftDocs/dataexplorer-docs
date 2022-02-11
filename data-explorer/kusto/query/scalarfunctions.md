@@ -334,7 +334,11 @@ This article lists all available scalar functions grouped by type. For aggregati
 |Function Name|Description|
 |--------------------------------------------------------------------------|--------------------------------------------------------|
 |[geo_distance_2points()](geo-distance-2points-function.md)|Calculates the shortest distance between two geospatial coordinates on Earth.|
-|[geo_distance_point_to_line()](geo-distance-point-to-line-function.md)|Calculates the shortest distance between a coordinate and a line on Earth.|
+|[geo_distance_point_to_line()](geo-distance-point-to-line-function.md)|Calculates the shortest distance between a coordinate and a line or multiline on Earth.|
+|[geo_distance_point_to_polygon()](geo-distance-point-to-polygon-function.md)|Calculates the shortest distance between a coordinate and a polygon or multipolygon on Earth.|
+|[geo_intersects_2lines()](geo-intersects-2lines-function.md)|Calculates whether the two lines or multilines intersects.|
+|[geo_intersects_2polygons()](geo-intersects-2polygons-function.md)|Calculates whether the two polygons or multipolygons intersects.|
+|[geo_intersects_line_with_polygon()](geo-intersects-line-with-polygon-function.md)|Calculates whether the lines or multiline intersects with polygon or a multipolygon.|
 |[geo_point_in_circle()](geo-point-in-circle-function.md)|Calculates whether the geospatial coordinates are inside a circle on Earth.|
 |[geo_point_in_polygon()](geo-point-in-polygon-function.md)|Calculates whether the geospatial coordinates are inside a polygon or a multipolygon on Earth.|
 |[geo_point_to_geohash()](geo-point-to-geohash-function.md)|Calculates the Geohash string value for a geographic location.|
@@ -351,8 +355,14 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[geo_h3cell_level()](geo-h3cell-level-function.md)|Calculates the H3 cell resolution.|
 |[geo_h3cell_rings()](geo-h3cell-rings-function.md)|Calculates the H3 cell Rings.|
 |[geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md)|Calculates S2 Cell tokens that cover a polygon or multipolygon on Earth. Useful geospatial join tool.|
+|[geo_line_centroid()](geo-line-centroid-function.md)|Calculates the centroid of line or a multiline on Earth.|
 |[geo_line_densify()](geo-line-densify-function.md)|Converts planar line edges to geodesics by adding intermediate points.|
+|[geo_line_length()](geo-line-length-function.md)|Calculates the total length of line or a multiline on Earth.|
+|[geo_polygon_area()](geo-polygon-area-function.md)|Calculates the area of polygon or a multipolygon on Earth.|
+|[geo_polygon_centroid()](geo-polygon-centroid-function.md)|Calculates the centroid of polygon or a multipolygon on Earth.|
 |[geo_polygon_densify()](geo-polygon-densify-function.md)|Converts polygon or multipolygon planar edges to geodesics by adding intermediate points.|
+|[geo_polygon_perimeter()](geo-polygon-perimeter-function.md)|Calculates the length of the boundary of polygon or a multipolygon on Earth.|
+|[geo_union_polygons_array()](geo-union-polygons-array-function.md)|Calculates the union of polygons or multipolygons on Earth.|
 
 ## Hash functions
 

@@ -44,9 +44,9 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 |[series_fit_lowess_fl()](series-fit-lowess-fl.md)|Fit a local polynomial to series using LOWESS method. |
 |[series_fit_poly_fl()](series-fit-poly-fl.md)|Fit a polynomial to series using regression analysis. |
 |[series_fbprophet_forecast_fl()](series-fbprophet-forecast-fl.md)|Forecast time series values using the Prophet algorithm. |
+|[series_lag_fl()](series-lag-fl.md)|Apply a lag filter on a series. |
 |[series_moving_avg_fl()](series-moving-avg-fl.md)|Apply a moving average filter on a series. |
 |[series_rolling_fl()](series-rolling-fl.md)|Apply a rolling aggregation function on a series. |
-|[series_uv_anomalies_fl()](series-uv-anomalies-fl.md)|Detect anomalies in time series using the Univariate Anomaly Detection Cognitive Service API. |
 |[time_weighted_avg_fl()](time-weighted-avg-fl.md)|Calculates the time weighted average of a metric. |
 |[time_window_rolling_avg_fl()](time-window-rolling-avg-fl.md)|Calculates the rolling average of a metric over a constant duration time window. |
 

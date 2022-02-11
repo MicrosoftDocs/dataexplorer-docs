@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: ohbitton
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/28/2021
+ms.date: 02/07/2022
 ---
 
 # Create an external table using the Web UI wizard
@@ -27,7 +27,7 @@ There are two ways to access the creation wizard:
 
 * In the left menu of the Web UI, select **Data**. In the **Create external table** card, select **Create**.
 
-     :::image type="content" source="media/external-table/create-external-table.png" alt-text="Screenshot of data blade in Azure Data Explorer Web UI with create external table highlighted. .":::
+     :::image type="content" source="media/external-table/create-external-table.png" alt-text="Screenshot of data blade in Azure Data Explorer Web UI with create external table highlighted.":::
 
 * In the left pane of the Web UI, select **Query**. In the left menu, right-click on your database name and select **Create external table**.
 
@@ -37,7 +37,7 @@ The **Create external table** window opens with the **Destination** tab selected
 
 ### Destination tab
 
-1. The **Cluster** and **Database** fields are auto-populated. You may select a different destination from the drop-down menu.
+1. The **Cluster** and **Database** fields are prepopulated. You may select a different destination from the drop-down menu.
 1. In **Table name**, enter a name for your table.
     > [!TIP]
     >  Table names can be up to 1024 characters including alphanumeric, hyphens, and underscores. Special characters aren't supported.
@@ -71,7 +71,7 @@ You can add up to 10 source containers.
 
     :::image type="content" source="media/external-table/add-url-button.png" alt-text="Screenshot of add URL button.":::
 
-1. Enter an [account key or SAS URL](kusto/api/connection-strings/storage.md#generate-a-sas-for-azure-storage-blob-container) to your source container with read and list permissions. When verification has completed, a green check will appear to the right of the container link.
+1. Enter an [account key or SAS URL](kusto/api/connection-strings/generate-sas-token.md) to your source container with read and list permissions. When verification has completed, a green check will appear to the right of the container link.
 
     :::image type="content" source="media/external-table/add-sas-url.png" alt-text="Screen shot of adding SAS URL.":::
 
@@ -115,14 +115,14 @@ In the right-hand side of the tab, you can preview your data. On the left-hand s
 
     :::image type="content" source="media/external-table/add-partitions.png" alt-text="Screen shot add partitions to external table in Azure Data Explorer." lightbox="media/external-table/add-partitions.png":::
 
-    For example, the partition name *CustomerName* suggests that the value to partition by is in the customer name part of the URL. The above example declared two partitions: one partition over the customer name and one partition over the date embedded in the URL. 
+    For example, the partition name *CustomerName* suggests that the value to partition by is in the customer name part of the URL. The above example declared two partitions: one partition over the customer name and one partition over the date embedded in the URL.
 
     > [!NOTE]
     > Virtual columns appear as part of the schema as the columns data extracted from the file path, and this data can be used later in queries.
 
-1. Select **Add partition** to add another partition. 
+1. Select **Add partition** to add another partition.
 1. Select **Save**. The partitions you added now appear in the list of **Partitions** in the left pane. Partitioned columns can't be changed in preview.
-    
+
     :::image type="content" source="media/external-table/schema.png" alt-text="Screen shot of schema external table Azure Data Explorer.":::
 
 1. Select **Next: Create table**. When the table is created, an **External table successfully created** window opens.
