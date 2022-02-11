@@ -44,7 +44,7 @@ This Howto focusses on creating an Azure Private Endpoint on an existing Azure D
     |---|---|---|
     | Subscription | Your subscription | Select the Azure subscription that you want to use for your Azure Private Endpoint|
     | Resource group | Your resource group | Use an existing resource group or create a new resource group. |
-    | Name | myNewPrivateEndpointForKusto | Choose a name that identifies your Private Endpoint in the resource group.|
+    | Name | myNewPrivateEndpoint | Choose a name that identifies your Private Endpoint in the resource group.|
     | Region | *(Europe) West Europe* | Select the region that best meets your needs.
     | | | |
 
@@ -69,7 +69,7 @@ This Howto focusses on creating an Azure Private Endpoint on an existing Azure D
     | Request message | "Please approve" | The resource owner sees this message while managing private endpoint connection.
     | | | |
 
-1. On the Virtual Network configurationt tab select the Virtual Network and Subnet where you want to deploy the private endpoint. Integration with the private DNS zone is needed to resolve the engine and data management endpoints including storage accounts required for ingestion / export related features. Click on "Next: Tags" to proceed.
+1. On the Virtual Network configuration tab select the Virtual Network and Subnet where you want to deploy the private endpoint and chose "Dynamically allocate IP address". Integration with the private DNS zone is needed to resolve the engine and data management endpoints including storage accounts required for ingestion / export related features. Click on "Next: Tags" to proceed.
 
     ![Virtual Network configuration.](media/security-network-private-endpoint/pe-create-4.png)
 
@@ -88,6 +88,12 @@ This Howto focusses on creating an Azure Private Endpoint on an existing Azure D
     You can see all Azure Private Endpoints which have been created for an Azure Data Explorer cluster by navigating to the resource in the portal and click on the "Networking" section on the left.
 
     ![See all private endpoints of an Azure Data Explorer cluster in the portal.](media/security-network-private-endpoint/pe-create-7.png)
+
+## Create a Private Endpoint during cluster creation
+
+The previous section focussed on creating a private endpoint to an existing Azure Data Explorer cluster. You can create a private endpoint to Azure Data Explorer Cluster during it's [creation phase](create-cluster-database-portal.md) as well. The relevant configuration can be specified in the "Network" tab.
+
+![Private Endpoint creation during deployment.](media/security-network-private-endpoint/pe-create-deployment.png)
 
 ## Next steps
 
