@@ -70,14 +70,14 @@ Now you're ready to optimize your replicas using some of the following methods:
 * [Implement a highly available application service](#implement-a-highly-available-application-service)
 * [Optimize cost in an active-active configuration](#optimize-cost-in-an-active-active-configuration)
 
-### Create an active-hot standby configuration
+### Creating an on-demand data recovery configuration
 
 Replicating and updating the Azure Data Explorer setup will linearly increase the cost with the number of replicas. To optimize cost, you can implement an architectural variant to balance time, failover, and cost.
-In an active-hot standby configuration, cost optimization has been implemented by introducing passive Azure Data Explorer replicas. These replicas are only turned on if there's a disaster in the primary region (for example, region A). The replicas in Regions B and C don't need to be active 24/7, reducing the cost significantly. However, in most cases, the performance of these replicas won't be as good as the primary cluster. For more information, see [Active-Hot standby configuration](business-continuity-overview.md#active-hot-standby-configuration).
+In an on-demand data recovery configuration, cost optimization has been implemented by introducing passive Azure Data Explorer replicas. These replicas are only turned on if there's a disaster in the primary region (for example, region A). The replicas in Regions B and C don't need to be active 24/7, reducing the cost significantly. However, in most cases, the performance of these replicas won't be as good as the primary cluster. For more information, see [On-demand data recovery configuration](business-continuity-overview.md#on-demand-data-recovery-configuration).
 
 In the image below, only one cluster is ingesting data from the event hub. The primary cluster in Region A performs [continuous data export](kusto/management/data-export/continuous-data-export.md) of all data to a storage account. The secondary replicas have access to the data using [external tables](kusto/query/schema-entities/externaltables.md).
 
-:::image type="content" source="media/business-continuity-create-solution/active-hot-standby-scheme.png" alt-text="architecture for an active/hot standby.":::
+:::image type="content" source="media/business-continuity-create-solution/active-hot-standby-scheme.png" alt-text="architecture for an on-demand data recovery configuration.":::
 
 ### Start and stop the replicas 
 
