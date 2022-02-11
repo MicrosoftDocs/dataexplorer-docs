@@ -81,6 +81,7 @@ With the help of a managed private endpoint, you will enable the ADX cluster to 
 Azure Data Explorer supports creating Managed Private Endpoints to the following services:
 
 * [Azure Event Hubs](/azure/event-hubs/event-hubs-about)
+* [Azure IoT Hubs](/azure/iot-hub/iot-concepts-and-iot-hub)
 * [Azure Storage Account](/azure/storage/blobs/storage-blobs-overview)
 * [Azure Data Explorer](data-explorer-overview.md)
 * [Azure SQL](/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview)

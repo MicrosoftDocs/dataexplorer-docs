@@ -20,11 +20,21 @@ Managed Private Endpoints are necessary to connect to other Azure Platform servi
 
 ## Create a Managed Private Endpoint using the portal
 
-foo bar
+![Start the creation of an Azure Private Endpoint.](media/security-network-private-endpoint/mpe-create-1.png)
+
+![Start the creation of an Azure Private Endpoint.](media/security-network-private-endpoint/mpe-create-2.png)
 
 ## Create a Managed Private Endpoint using the API
 
-foo bar
+Creating a Managed Private Endpoint using the API requires a single API call to the Kusto resource provider. You can establish a Managed Private Endpoint to the following resource types:
+
+* Microsoft.Storage/storageAccounts (sub-resource may be "blob" or "dfs")
+* Microsoft.EventHub/namespaces (sub-resource "namespace")
+* Microsoft.Devices/IoTHubs (sub-resource "iotHub")
+* Microsoft.KeyVault/vaults (sub-resource "vault")
+* Microsoft.Sql/servers (sub-resource "servers")
+* Microsoft.Kusto/clusters (sub-resource "cluster")
+* Microsoft.DigitalTwins/digitalTwinsInstance (sub-resource "digitaltwinsinstance")
 
 ### Prerequisites for an API based creation
 
