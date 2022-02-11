@@ -6,9 +6,9 @@ ms.author: herauch
 ms.reviewer: eladb
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/21/2022
+ms.date: 02/11/2022
 ---
 
 # Troubleshooting Private Endpoints in Azure Data Explorer (public preview)
 
-foo bar
+Please follow the [troubleshooting guide of Private Endpoints](/azure/private-link/troubleshoot-private-endpoint-connectivity) to diagnose connectivity problems to Private Endpoints for Azure Data Explorer.
