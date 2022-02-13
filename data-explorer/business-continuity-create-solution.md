@@ -65,7 +65,7 @@ As shown in the diagram below, your data sources produce events to event hubs in
 
 Now you're ready to optimize your replicas using some of the following methods:
 
-* [Create an active-hot standby configuration](#create-an-active-hot-standby-configuration)
+* [Create an on-demand data recovery configuration](#create-an-on-demand-data-recovery-configuration)
 * [Start and stop the replicas](#start-and-stop-the-replicas)
 * [Implement a highly available application service](#implement-a-highly-available-application-service)
 * [Optimize cost in an active-active configuration](#optimize-cost-in-an-active-active-configuration)
