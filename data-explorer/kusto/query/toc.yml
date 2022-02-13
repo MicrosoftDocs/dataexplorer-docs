@@ -521,7 +521,7 @@ items:
     href: extractfunction.md
   - name: extract_all()
     href: extractallfunction.md
-  - name: extractjson()
+  - name: extract_json(), extractjson()
     href: extractjsonfunction.md
   - name: floor()
     href: floorfunction.md
@@ -641,7 +641,7 @@ items:
     href: notfunction.md
   - name: now()
     href: nowfunction.md
-  - name: pack()
+  - name: bag_pack(), pack()
     href: packfunction.md
   - name: pack_all()
     href: packallfunction.md
