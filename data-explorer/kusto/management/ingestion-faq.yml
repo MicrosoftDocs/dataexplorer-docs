@@ -68,7 +68,7 @@ sections:
           To improve performance for large amounts of small files, you can adjust the [batching policy](batchingpolicy.md), change batching conditions and address [latencies](batchingpolicy.md#batching-latencies). 
           Use the batching policy [wizard](../../one-click-table-batching-policy.md) to quickly change policy settings. 
           To improve ingestion performance when ingesting extremely large data files, you can use the [Azure Data Factory](/azure/data-factory/) (ADF), a cloud-based data integration service. 
- - name: SDKs and connectors
+  - name: SDKs and connectors
     questions:     
       - question: How can I improve ingestion with SDKs?
         answer: |
