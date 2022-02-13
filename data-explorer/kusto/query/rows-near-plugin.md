@@ -7,15 +7,13 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/15/2021
+ms.date: 01/24/2022
 ---
 # rows_near() plugin
 
 Finds rows near a specified condition.
 
-```kusto
-T | evaluate rows_near(Condition, NumRows)
-```
+The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Syntax
 

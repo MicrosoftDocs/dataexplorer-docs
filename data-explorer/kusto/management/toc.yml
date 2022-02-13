@@ -164,9 +164,9 @@ items:
       href: drop-column.md
     - name: ".rename column"
       href: rename-column.md
-    - name: ".alter column docstrings"
+    - name: ".alter column-docstrings"
       href: alter-column-docstrings.md
-    - name: ".alter-merge column docstrings"
+    - name: ".alter-merge column-docstrings"
       href: alter-merge-table-column.md
   - name: Data mappings
     href: mappings.md
