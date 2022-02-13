@@ -24,7 +24,8 @@ extract_json("$.hosts[1].AvailableMB", EventText, typeof(int))
 
 ## Syntax
 
-`extract_json(`*jsonPath*`,` *dataSource*`, ` *type*`)`  
+`extract_json(`*jsonPath*`,` *dataSource*`, ` *type*`)` 
+ 
 `extractjson(`*jsonPath*`,` *dataSource*`, ` *type*`)`
 
 ## Arguments
