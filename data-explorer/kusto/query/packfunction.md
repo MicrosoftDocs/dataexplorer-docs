@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2022
 ---
-# bag_back(), pack()
+# bag_pack(), pack()
 
 Creates a `dynamic` object (property bag) from a list of names and values.
 
@@ -34,7 +34,7 @@ Alias to `pack_dictionary()` function.
 The following example returns `{"Level":"Information","ProcessID":1234,"Data":{"url":"www.bing.com"}}`:
 
 ```kusto
-bag_pack("Level", "Information", "ProcessID", 1234, "Data", pack("url", "www.bing.com"))
+bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url", "www.bing.com"))
 ```
 
 Lets take 2 tables, SmsMessages and MmsMessages:

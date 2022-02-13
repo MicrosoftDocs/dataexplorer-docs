@@ -19,12 +19,12 @@ Optionally convert the extracted string to a specific type.
 > The `extract_json()` and `extractjson()` functions are interpreted equivalently.
 
 ```kusto
-extractjson("$.hosts[1].AvailableMB", EventText, typeof(int))
+extract_json("$.hosts[1].AvailableMB", EventText, typeof(int))
 ```
 
 ## Syntax
 
-`extract_json(`*jsonPath*`,` *dataSource*`, ` *type*`)`
+`extract_json(`*jsonPath*`,` *dataSource*`, ` *type*`)`  
 `extractjson(`*jsonPath*`,` *dataSource*`, ` *type*`)`
 
 ## Arguments
