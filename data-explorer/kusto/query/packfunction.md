@@ -1,22 +1,26 @@
 ---
-title: pack() - Azure Data Explorer | Microsoft Docs
-description: This article describes pack() in Azure Data Explorer.
+title: bag_back(), pack() - Azure Data Explorer | Microsoft Docs
+description: This article describes bag_back() and pack() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/13/2022
 ---
-# pack()
+# bag_back(), pack()
 
 Creates a `dynamic` object (property bag) from a list of names and values.
 
 Alias to `pack_dictionary()` function.
 
+> [!NOTE]
+> The `bag_back()` and `pack()` functions are interpreted equivalently.
+
 ## Syntax
 
+`bag_back(`*key1*`,` *value1*`,` *key2*`,` *value2*`,... )`
 `pack(`*key1*`,` *value1*`,` *key2*`,` *value2*`,... )`
 
 ## Arguments
@@ -51,6 +55,7 @@ Table MmsMessages
 |555-555-1234 |555-555-1213 | 300 | png | Pic3
 
 The following query:
+
 ```kusto
 SmsMessages 
 | extend Packed=pack("CharsCount", CharsCount) 
