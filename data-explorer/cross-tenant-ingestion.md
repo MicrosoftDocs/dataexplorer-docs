@@ -41,25 +41,25 @@ If you want to ingest data from Azure Event Hubs to Azure Data Explorer, and the
 
 You'll need the `Get-AzCachedAccessToken` function to get the access token for *Tenant1*. The source code for the function can be found in the [PowerShell gallery](https://www.powershellgallery.com/packages/AzureSimpleREST/0.2.64/Content/internal%5Cfunctions%5CGet-AzCachedAccessToken.ps1). You can include this code in your personal PowerShell profile to make it easier to call, or you can run the following code and then use it in these steps.
 
-    ```PowerShell
-    function Get-AzCachedAccessToken()
-    {
-        $ErrorActionPreference = 'Stop'
-        if(-not (Get-Module Az.Accounts)) {
-            Import-Module Az.Accounts
-        }
-        $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
-        if(-not $azProfile.Accounts.Count) {
-            Write-Error "Ensure you have logged in before calling this function."
-        }
-        $currentAzureContext = Get-AzContext
-        $profileClient = New-Object Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient($azProfile)
-        Write-Debug ("Getting access token for tenant" + $currentAzureContext.Tenant.TenantId)
-        $token = $profileClient.AcquireAccessToken($currentAzureContext.Tenant.TenantId)
-        $token.AccessToken
+```PowerShell
+function Get-AzCachedAccessToken()
+{
+    $ErrorActionPreference = 'Stop'
+    if(-not (Get-Module Az.Accounts)) {
+        Import-Module Az.Accounts
     }
+    $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+    if(-not $azProfile.Accounts.Count) {
+        Write-Error "Ensure you have logged in before calling this function."
+    }
+    $currentAzureContext = Get-AzContext
+    $profileClient = New-Object Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient($azProfile)
+    Write-Debug ("Getting access token for tenant" + $currentAzureContext.Tenant.TenantId)
+    $token = $profileClient.AcquireAccessToken($currentAzureContext.Tenant.TenantId)
+    $token.AccessToken
+}
 
-    ```
+```
 
 1. Run the following command to connect to *Tenant1*:
 
