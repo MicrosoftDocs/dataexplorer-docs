@@ -1,6 +1,6 @@
 ---
-title: bag_back(), pack() - Azure Data Explorer | Microsoft Docs
-description: This article describes bag_back() and pack() in Azure Data Explorer.
+title: bag_pack(), pack() - Azure Data Explorer | Microsoft Docs
+description: This article describes bag_pack() and pack() in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,18 +9,18 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2022
 ---
-# bag_back(), pack()
+# bag_pack(), pack()
 
 Creates a `dynamic` object (property bag) from a list of names and values.
 
 Alias to `pack_dictionary()` function.
 
 > [!NOTE]
-> The `bag_back()` and `pack()` functions are interpreted equivalently.
+> The `bag_pack()` and `pack()` functions are interpreted equivalently.
 
 ## Syntax
 
-`bag_back(`*key1*`,` *value1*`,` *key2*`,` *value2*`,... )`
+`bag_pack(`*key1*`,` *value1*`,` *key2*`,` *value2*`,... )`  
 `pack(`*key1*`,` *value1*`,` *key2*`,` *value2*`,... )`
 
 ## Arguments
@@ -33,7 +33,7 @@ Alias to `pack_dictionary()` function.
 The following example returns `{"Level":"Information","ProcessID":1234,"Data":{"url":"www.bing.com"}}`:
 
 ```kusto
-pack("Level", "Information", "ProcessID", 1234, "Data", pack("url", "www.bing.com"))
+bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url", "www.bing.com"))
 ```
 
 Lets take 2 tables, SmsMessages and MmsMessages:
@@ -58,10 +58,10 @@ The following query:
 
 ```kusto
 SmsMessages 
-| extend Packed=pack("CharsCount", CharsCount) 
+| extend Packed=bag_pack("CharsCount", CharsCount) 
 | union withsource=TableName kind=inner 
 ( MmsMessages 
-  | extend Packed=pack("AttachmentSize", AttachmentSize, "AttachmentType", AttachmentType, "AttachmentName", AttachmentName))
+  | extend Packed=bag_pack("AttachmentSize", AttachmentSize, "AttachmentType", AttachmentType, "AttachmentName", AttachmentName))
 | where SourceNumber == "555-555-1234"
 ``` 
 
