@@ -24,7 +24,7 @@ For more information, see the following topics.
 * [Create an Azure Data Explorer cluster in your virtual network](vnet-create-cluster-portal.md)
 * [Deploy Azure Data Explorer cluster into your Virtual Network](vnet-deployment.md)
 * [Troubleshoot access, ingestion, and operation of your Azure Data Explorer cluster in your virtual network](vnet-deploy-troubleshoot.md)
-* [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network (preview)](vnet-create-private-endpoint.md)
+* [Create a Private Endpoints for Azure Data Explorer](security-network-private-endpoint-create.md)
 * [Create a private or service endpoint to Event Hub and Azure Storage](vnet-endpoint-storage-event-hub.md)
 
 ## Identity and access control

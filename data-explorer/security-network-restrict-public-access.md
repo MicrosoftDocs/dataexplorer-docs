@@ -1,7 +1,7 @@
 ---
 title: Restrict public access to Azure Data Explorer
 description: 'In this article you will learn how to public access to Azure Data Explorer.'
-author: herauch
+author: cosh
 ms.author: herauch
 ms.reviewer: eladb
 ms.service: data-explorer
@@ -15,7 +15,7 @@ Restricting public access to an Azure Data Explorer cluster allowes you to disab
 
 ![Disable public access.](media/security-network-restrict-access/restrict-public-access.png)
 
-Additionally the user is able to whitelist a set of IP address ranges which are allowed to access the public endpoint of an Azure Data explorer cluster.
+Additionally, the user is able to define a list of IP address ranges which are allowed to access the public endpoint of a cluster.
 
 ## Next steps
 

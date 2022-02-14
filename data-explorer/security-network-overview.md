@@ -1,7 +1,7 @@
 ---
 title: Network security for Azure Data Explorer
 description: 'In this article you will learn about the different options to secure your Azure Data Explorer cluster applying network security measures.'
-author: herauch
+author: cosh
 ms.author: herauch
 ms.reviewer: basaba
 ms.service: data-explorer
@@ -55,5 +55,5 @@ It's recommended to use a private endpoint based approach to connect privately t
 
 ## Next steps
 
-* [Private Endpoints for Azure Data Explorer](secuurity-network-private-endpoint.md)
+* [Private Endpoints for Azure Data Explorer](security-network-private-endpoint.md)
 * [Deploy Azure Data Explorer into your Virtual Network](vnet-deployment.md)
