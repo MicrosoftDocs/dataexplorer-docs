@@ -1,7 +1,7 @@
 ---
 title: Restrict outbound access from Azure Data Explorer
 description: 'In this article you will learn how to restrict the outbound access access from Azure Data Explorer to other services.'
-author: herauch
+author: cosh
 ms.author: herauch
 ms.reviewer: eladb
 ms.service: data-explorer
@@ -86,9 +86,9 @@ After you updated the "restrictOutboundNetworkAccess" cluster property, the immu
 
 ## Add FQDNs to the callouts under restricted conditions
 
-Once you enabled the "restrictOutboundNetworkAccess" cluster property, you will not be able to make changes to the cluster callout policies using the callout policy command. 
+Once you enabled the "restrictOutboundNetworkAccess" cluster property, you will not be able to make changes to the cluster callout policies using the callout policy command.
 
-![Immutable callout policies.](media/security-network-restrict-access/restrict-outbound-access-enabled-errorDataplane.png)
+![Immutable callout policies error.](media/security-network-restrict-access/restrict-outbound-access-enabled-errorDataplane.png)
 
 The only way to add a FQDN to the list of allowed callouts is modifying the "AllowedFQDNList" property of the Azure Data Explorer cluster.
 

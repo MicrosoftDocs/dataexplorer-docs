@@ -29,11 +29,11 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 > To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint) in different subnets of the same VNET, see [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md).
 
 > [!NOTE]
-> ADX cluster and Event-Hub should be associated with the same tenants, for different tenants please use [ADX SDKs](./data-connection-event-hub-csharp.md)
+> The cluster and event hub should be associated with the same tenants, for different tenants please use [SDKs](./data-connection-event-hub-csharp.md)
 
 ## Ingest new data
 
-1. In the left menu of the [Web UI](https://dataexplorer.azure.com/), select the **Data** tab. 
+1. In the left menu of the [Web UI](https://dataexplorer.azure.com/), select the **Data** tab.
 
     :::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-web-ui.png" alt-text="Select one-click ingestion in the web UI.":::
 
@@ -47,7 +47,7 @@ The **Ingest new data** window opens with the **Destination** tab selected.
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus.
 
-1. Under **Table**, select **Create new table** and enter a name for the new table. Alternatively, use an existing table. 
+1. Under **Table**, select **Create new table** and enter a name for the new table. Alternatively, use an existing table.
 
     > [!NOTE]
     > Table names must be between 1 and 1024 characters. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
@@ -89,11 +89,11 @@ For information on schema mapping with CSV-formatted data, see [Edit the schema]
 
 1. If the data you see in the preview window is not complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
     * **Discard and fetch new data**: discards the data presented and searches for new events.
-    * **Fetch more data**: Searches for more events in addition to the events already found. 
-    
+    * **Fetch more data**: Searches for more events in addition to the events already found.
+
     > [!NOTE]
     > To see a preview of your data, your event hub must be sending events.
-        
+
 1. Select **Next: Summary**.
 
 ## Continuous ingestion from event hub

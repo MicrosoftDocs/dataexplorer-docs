@@ -1,7 +1,7 @@
 ---
 title: Create a Managed Private Endpoints for Azure Data Explorer
 description: 'In this article you will learn how to create a managed private endpoint for Azure Data Explorer.'
-author: herauch
+author: cosh
 ms.author: herauch
 ms.reviewer: eladb
 ms.service: data-explorer
@@ -20,9 +20,9 @@ Managed Private Endpoints are necessary to connect to other Azure Platform servi
 
 ## Create a Managed Private Endpoint using the portal
 
-![Start the creation of an Azure Private Endpoint.](media/security-network-private-endpoint/mpe-create-1.png)
+![Start the creation of an Azure Private Endpoint - step 1.](media/security-network-private-endpoint/mpe-create-1.png)
 
-![Start the creation of an Azure Private Endpoint.](media/security-network-private-endpoint/mpe-create-2.png)
+![Start the creation of an Azure Private Endpoint - step 2.](media/security-network-private-endpoint/mpe-create-2.png)
 
 ## Create a Managed Private Endpoint using the API
 
