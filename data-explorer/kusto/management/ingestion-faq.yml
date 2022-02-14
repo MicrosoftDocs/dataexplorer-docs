@@ -3,6 +3,7 @@ metadata:
   title: Azure Data Explorer ingestion FAQ 
   description: "Get answers to common questions about Azure Data Explorer ingestion."
   ms.date: 12/09/2021
+  ms.topic: faq
 title: Common questions about Azure Data Explorer ingestion
 summary: This article answers commonly asked questions about Azure Data Explorer ingestion.
 sections: 
