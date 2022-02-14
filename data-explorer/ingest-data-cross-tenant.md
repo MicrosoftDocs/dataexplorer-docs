@@ -1,16 +1,18 @@
 ---
-title: Allow cross-tenant ingestion from event hub in Azure Data Explorer
-description: Learn how to allow ingestion to Azure Data Explorer from an event hub in a different tenant
-author: orspod
-ms.author: orspodek
+title: Create a cross-tenant data connection for Azure Data Explorer
+description: Learn how to create a cross-tenant data connection for an Azure Event Hubs or Azure Event Grid service in a different tenant
+author: shsagir
+ms.author: shsagir
 ms.reviewer: miwalia
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2022
+ms.date: 02/14/2022
 ---
-# Allow cross-tenant ingestion
+# Cross-tenant data connection
 
-If you want to ingest data from Azure Event Hubs to Azure Data Explorer, and the two services are in different tenants, this article will show you how. The process involves invoking [Kusto API](/rest/api/azurerekusto/dataconnections/createorupdate) through PowerShell to build a Kusto data connection. You'll use [auxiliary tokens](/azure/azure-resource-manager/management/authenticate-multi-tenant) to authenticate.
+When you need to create a data connection for an Azure Event Hubs or Azure Event Grid service in a different tenant, use our [API](/rest/api/azurerekusto/dataconnections/createorupdate) to build the connection.
+
+In the following example, you'll use PowerShell to create a cross-tenant Event Hubs data connection and [auxiliary tokens](/azure/azure-resource-manager/management/authenticate-multi-tenant) to authenticate.
 
 ## Prerequisites
 
@@ -111,7 +113,7 @@ function Get-AzCachedAccessToken()
     ```
 
 1. Add `acc1@domain1.com` as a contributor in the cluster.
-1. Invoke the folllowing web request which uses the previously defined variables.
+1. Invoke the following web request that uses the previously defined variables.
 
     ```PowerShell
     Invoke-WebRequest -Headers @{Authorization = $pat; 'x-ms-authorization-auxiliary' = $auxpat} -Uri $adxdcuri -Body $requestbody -Method PUT -ContentType 'application/json'
@@ -120,7 +122,7 @@ function Get-AzCachedAccessToken()
 You should now be able to see the newly created data connection in the Azure portal.
 
 > [!NOTE]
-> Access for account/app was used in this process to build the data connection. If this access is revoked on Event Hubs, make sure you delete the data connection. Otherwise, Azure Data Explorer will continue to ingest data even if access on Event Hubs is revoked.
+> If the access used to build the data connection is revoked on Event Hubs, make sure you delete the data connection. Otherwise, Azure Data Explorer will continue to ingest data even if access on Event Hubs is revoked.
 
 ## Next steps
 
