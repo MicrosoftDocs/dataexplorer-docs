@@ -36,7 +36,7 @@ The `Kusto.Data.Common.ClientRequestProperties` class in the .NET SDK holds thre
 
 ### ClientRequestId (x-ms-client-request-id)
 
-This named property has the client-specified identity of the request. Clients should specify 
+This named property has the client-specified identity of the request. Clients should specify
 a unique per-request value with each request they send.
 This value makes debugging failures easier to do, and it's required in
 some scenarios, such as for query cancellation.
@@ -54,6 +54,12 @@ However, we recommend that clients use:
 * *ApplicationName* identifies the client application that makes the request.
 * *ActivityName* identifies the kind of activity for which the client application issues the client request.
 * *UniqueId* identifies the specific request.
+
+> [!WARNING]
+> This property is recorded on the service side for diagnostics purposes.
+> Customers should avoid sending data such as personally identifiable information,
+> confidential information, etc. that should not be visible for troubleshooting
+> purposes.
 
 ### Application (x-ms-app)
 
