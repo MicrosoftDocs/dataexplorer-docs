@@ -22,6 +22,8 @@ There are various methods you can use to configure a database with Kusto Query L
 
 > [!NOTE]
 > Each cluster can have a maximum of 50 scripts.
+>
+> Kusto Query Language scripts don't support scripts stored in storage accounts with [Azure Storage firewall or Virtual Network rules](/azure/storage/common/storage-network-security?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal).
 
 ## Prerequisites
 
