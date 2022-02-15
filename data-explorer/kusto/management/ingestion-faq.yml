@@ -2,7 +2,7 @@
 metadata:
   title: Azure Data Explorer ingestion FAQ 
   description: "Get answers to common questions about Azure Data Explorer ingestion."
-  ms.date: 12/09/2021
+  ms.date: 02/13/2022
   ms.topic: faq
 title: Common questions about Azure Data Explorer ingestion
 summary: This article answers commonly asked questions about Azure Data Explorer ingestion.
@@ -64,10 +64,11 @@ sections:
     questions:
       - question: How can I ingest large amounts of historical data and ensure good performance?
         answer: |
-          To efficiently ingest very large quantities of historical data, use [LightIngest](../../lightingest.md). 
+          To efficiently ingest large quantities of historical data, use [LightIngest](../../lightingest.md). 
           For ease of use, try the LightIngest [wizard](../../generate-lightingest-command.md). 
-          To improve ingestion performance when ingesting extremely large amounts of data, you can adjust the [batching policy](batchingpolicy.md), change batching conditions and address [latencies](batchingpolicy.md#batching-latencies). 
+          To improve performance for many small files, adjust the [batching policy](batchingpolicy.md), change batching conditions and address [latencies](batchingpolicy.md#batching-latencies). 
           Use the batching policy [wizard](../../one-click-table-batching-policy.md) to quickly change policy settings. 
+          To improve ingestion performance when ingesting extremely large data files, use [Azure Data Factory](/azure/data-factory/) (ADF), a cloud-based data integration service. 
   - name: SDKs and connectors
     questions:     
       - question: How can I improve ingestion with SDKs?
