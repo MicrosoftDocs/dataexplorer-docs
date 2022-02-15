@@ -93,6 +93,13 @@ The following example shows an Azure Resource Manager template for adding an eve
                 "description": "Specifies the data format"
             }
         },
+        "databaseRouting_type": {
+            "type": "string????????",
+            "defaultValue": "Multi",
+            "metadata": {
+                "description": "Specifies the database routing type"
+            }
+        },
         "dataconnections_kustodc_name": {
             "type": "string",
             "defaultValue": "kustodc",
@@ -135,7 +142,8 @@ The following example shows an Azure Resource Manager template for adding an eve
                 "consumerGroup": "[parameters('consumergroup_default_name')]",
                 "tableName": "[parameters('tables_kustotable_name')]",
                 "mappingRuleName": "[parameters('mapping_kustomapping_name')]",
-                "dataFormat": "[parameters('dataformat_type')]"
+                "dataFormat": "[parameters('dataformat_type')]",
+                "databaseRouting": "[parameters('databaseRouting_type')]"
             }
         }
     ]
