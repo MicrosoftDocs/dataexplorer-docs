@@ -170,7 +170,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 Batching incoming data optimizes data shard size, which is controlled by the [ingestion batching policy](kusto/management/batchingpolicy.md) and can be modified by the [ingestion batching policy control command](./kusto/management/show-table-ingestion-batching-policy.md). Use this policy to reduce latency of slowly arriving data.
 
-```kusto
+```csharp
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
 {
     var command =
