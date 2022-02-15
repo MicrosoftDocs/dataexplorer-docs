@@ -23,7 +23,7 @@ There are various methods you can use to configure a database with Kusto Query L
 > [!NOTE]
 > Each cluster can have a maximum of 50 scripts.
 >
-> Kusto Query Language script isn't supported on [VNET-injected](https://docs.microsoft.com/en-us/azure/data-explorer/vnet-deployment) clusters.  It is supported on clusters using [private endpoint](https://docs.microsoft.com/en-us/azure/data-explorer/vnet-create-private-endpoint).
+> Kusto Query Language script doesn't support scripts stored in storage account having [Azure Storage firewall or Virtual Network rules](https://docs.microsoft.com/en-us/azure/storage/common/storage-network-security?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal).
 
 ## Prerequisites
 
