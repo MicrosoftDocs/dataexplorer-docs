@@ -24,7 +24,7 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
     > [!NOTE]
     > Event hub doesn't support the .raw format.
 
-* Data can be compressed using the `GZip` compression algorithm. You can specify `Compression` dynamicly using [ingestion properties](#ingestion-properties), or in the static Data Connection settings when creating the Data Connection.
+* Data can be compressed using the `GZip` compression algorithm. You can specify `Compression` dynamicly using [ingestion properties](#ingestion-properties), or in the static Data Connection settings.
     > [!NOTE]
     > Data compression isn't supported for compressed formats (Avro, Parquet, ORC, ApacheAvro and W3CLOGFILE).
     > Custom encoding and embedded [system properties](#event-system-properties-mapping) aren't supported on compressed data.
