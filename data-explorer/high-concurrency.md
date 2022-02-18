@@ -89,7 +89,9 @@ When more than one user loads the same dashboard at a similar time, the dashboar
 
 ### Configure query consistency
 
-There are two query consistency models: *strong* (the default) and *weak*. With strong consistency, only an up-to-date consistent state of data is seen, whatever compute node receives the query. With weak consistency, nodes periodically refresh their copy of the metadata, which leads to a latency of one to two minutes in the synchronization of metadata changes. With the weak model, you can reduce the load on the node that manages the metadata changes, which provides higher concurrency than the default strong consistency. Set this configuration in [client request properties](kusto/api/netfx/request-properties.md) and in the Grafana data source configurations.
+In the default *strong consistency* mode, the node that manages the metadata and ingestion of the cluster (the admin node) also manages the query execution. In high concurrency applications, it can be that the admin node is very busy managing the queries while the other nodes are less busy, thus it may appear that the cluster CPU is not high, while the number of concurrent queries cannot grow.  
+
+The *weak* consistency mode allows more nodes to manage queries, which allows **horizontally scaling** the number of concurrent queries. While with *strong* consistency mode, only an up-to-date consistent state of data is seen, with *weak* consistency, nodes periodically refresh their copy of the metadata, which leads to a latency of one to two minutes in the synchronization of metadata changes (including ingestion of new data). You can set the consistency mode in [client request properties](kusto/api/netfx/request-properties.md) and in the Grafana data source configurations.
 
 ## Set cluster policies
 
