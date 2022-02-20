@@ -40,7 +40,7 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 | Compression | Data compression, `None` (default), or `GZip` compression.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
 | Tags | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extents-overview.md#ingest-by-extent-tags) when using tags. |
-| Database | Name (case sensitive) of the target database. This property can be used if you want to send the data to a different database from the one that was used to create the connection. To route the data to multiple databases, you must first allow routing the data to multiple databases (set up the connection as a multi database connection.)  Please refer to the Events routing section below for more details. |
+| Database | Name (case sensitive) of the target database. This property can be used if you want to send the data to a different database from the one that was used to create the connection. To route the data to multiple databases, you must first allow routing the data to multiple databases (set up the connection as a multi database connection).  Please refer to the Events routing section below for more details. |
 
 > [!NOTE]
 > Only events enqueued after you create the data connection are ingested.
@@ -50,9 +50,9 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 When you set up an event hub connection to Azure Data Explorer cluster, you specify target table properties (table name, data format, compression, and mapping). The default routing for your data is also referred to as `static routing`.
 You can also specify target table properties for each event, using event properties. The connection will dynamically route the data as specified in the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
 
-An event hub data connection belongs to a specific database. In order to send the data to another database, you can use the "Database" ingestion property. To do so, you must first allow routing the data to multiple databases (set the connection as multi database data connection).
+An event hub data connection belongs to a specific database. Hence this database is the data connection's default database routing. In order to send the data to another database, you can use the "Database" ingestion property. To do so, you must first allow routing the data to multiple databases (set the connection as Multi database data connection).
 Routing data to another database is disabled by default (not allowed).
-Setting a database property that is different than the data connection's database, without allowing data routing to multiple databases (setting the connection as a multi database data connection), will cause the ingestion to fail.
+Setting a database property that is different than the data connection's database, without allowing data routing to multiple databases (setting the connection as a Multi database data connection), will cause the ingestion to fail.
 
 In the following example, set event hub details and send weather metric data to table `WeatherMetrics`.
 Data is in `json` format. `mapping1` is pre-defined on the table `WeatherMetrics`.
