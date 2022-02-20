@@ -66,10 +66,11 @@ var location = "Central US";
 //The table and column mapping are created as part of the Prerequisites
 var tableName = "StormEvents";
 var mappingRuleName = "StormEvents_CSV_Mapping";
-var dataFormat = DataFormat.CSV;
+var dataFormat = EventHubDataFormat.CSV;
 var compression = "None";
+var databaseRouting = "Multi";
 await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, dataConnectionName, 
-    new EventHubDataConnection(eventHubResourceId, consumerGroup, location: location, tableName: tableName, mappingRuleName: mappingRuleName, dataFormat: dataFormat, compression: compression));
+    new EventHubDataConnection(eventHubResourceId, consumerGroup, location: location, tableName: tableName, mappingRuleName: mappingRuleName, dataFormat: dataFormat, compression: compression, databaseRouting: databaseRouting));
 ```
 
 |**Setting** | **Suggested value** | **Field description**|
