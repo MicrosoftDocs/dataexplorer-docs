@@ -28,6 +28,16 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
     > [!NOTE]
     > Data compression isn't supported for compressed formats (Avro, Parquet, ORC, ApacheAvro and W3CLOGFILE).
     > Custom encoding and embedded [system properties](#event-system-properties-mapping) aren't supported on compressed data.
+
+# Events properties
+
+* ADX supports the following Event Hub properties:
+    > [!NOTE]
+    > A close set of [ingestion properties](#ingestion-properties), which helps to route the event to the relevant table.
+    > A close set of [event system properties mapping](#event-system-properties-mapping), which embed to data as a new column.
+
+* ADX doesn’t support ingesting [custom properties](/azure/event-hubs/add-custom-data-event) (free-form properties which may be used for associating metadata with
+the event) out-of-the-box. You can do some workaround to have this data by yourself, see [custom properties](#Custom-properties).
   
 ## Ingestion properties
 
@@ -40,7 +50,8 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 | IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | Compression | Data compression, `None` (default), or `GZip` compression.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
-| Tags | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extents-overview.md#ingest-by-extent-tags) when using tags. |
+| Tags | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as a 
+array string. There are [performance implications](kusto/management/extents-overview.md#ingest-by-extent-tags) when using tags. |
 
 > [!NOTE]
 > Only events enqueued after you create the data connection are ingested.
@@ -74,13 +85,11 @@ eventHubClient.Send(eventData);
 eventHubClient.Close();
 ```
 
-## Event system properties mapping
+## Event system properties
 
-System properties store properties that are set by the event hub service, at the time the event is enqueued. The Azure Data Explorer event hub connection will embed the selected properties into the data landing in your table.
+System properties store properties that are set by the event hub service, at the time the event is enqueued. The Azure Data Explorer event hub connection will embed the selected properties into the data landing in your table as a new column.
 
 [!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
-
-### System properties
 
 Event hub exposes the following system properties:
 
@@ -98,7 +107,16 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 [!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
 
-## Event hub connection
+## Custom properties
+ADX doesn't support ingesting free-form properties.
+
+To ingest custom properties to ADX, you can do one of the following:
+    > [!NOTE]
+    > Add this data to the event body, when creating the event.
+    > Use Azure Stream Analytics to read events from the event hub and embed the custom properties in the event data. From Azure Stream Analytics you can ingest the data natively via [Azure Data Explorer output connector from Azure Stream Analytics](/azure/stream-analytics/azure-database-explorer-output), or route it into another EH and from there to ADX. 
+    > Use Azure function to add the properties to the event.
+
+# Event hub connection
 
 > [!Note]
 > For best performance, create all resources in the same region as the Azure Data Explorer cluster.
