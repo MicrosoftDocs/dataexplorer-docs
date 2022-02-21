@@ -60,3 +60,8 @@ The Start-for-free cluster is a subset of the full Azure Data Explorer cluster t
 | Autoscale | &check; | |
 | Azure Monitor and Insights | &check; | |
 | Event Hub and Event Grid connectors | &check; | |
+
+## Next steps
+
+* [Learn more about Azure Data Explorer](data-explorer-overview.md)
+* [Learn more about Kusto Query Language](kusto/query/index.md)
