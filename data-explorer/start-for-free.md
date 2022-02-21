@@ -17,7 +17,7 @@ It's a frictionless way to create a free cluster that can be used for any purpos
 
 The cluster's trial period is for a year and may automatically be extended. The cluster is provided *as-is* and is not subject to the Azure Data Explorer service level agreement. At any time, you can upgrade the cluster to a full Azure Data Explorer cluster.
 
-Start your journey by [creating you own free cluster](https://aka.ms/kustofree) and reviewing the [Microsoft Software License Terms](https://aka.ms/kustofreeeula).
+Start your journey by [creating your own free cluster](https://aka.ms/kustofree) and reviewing the [Microsoft Software License Terms](https://aka.ms/kustofreeeula).
 
 ## Specifications
 
