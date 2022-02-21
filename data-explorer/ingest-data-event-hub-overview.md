@@ -29,15 +29,15 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
     > Data compression isn't supported for compressed formats (Avro, Parquet, ORC, ApacheAvro and W3CLOGFILE).
     > Custom encoding and embedded [system properties](#event-system-properties-mapping) aren't supported on compressed data.
 
-# Events properties
+# Event Hubs properties
 
-* ADX supports the following Event Hub properties:
-    > [!NOTE]
-    > A close set of [ingestion properties](#ingestion-properties), which helps to route the event to the relevant table.
-    > A close set of [event system properties mapping](#event-system-properties-mapping), which embed to data as a new column.
+ADX supports the following Event Hub properties:
 
-* ADX doesn’t support ingesting [custom properties](/azure/event-hubs/add-custom-data-event) (free-form properties which may be used for associating metadata with
-the event) out-of-the-box. You can do some workaround to have this data by yourself, see [custom properties](#Custom-properties).
+* A close set of [ingestion properties](#ingestion-properties), which helps to route the event to the relevant table.
+* A close set of [event system properties](#event-system-properties-embedding), which embed to data as a new column.
+
+> [!NOTE]
+> ADX doesn’t support ingesting [custom properties](/azure/event-hubs/add-custom-data-event) (free-form properties which may be used for associating metadata with the event) out-of-the-box. You can do some workaround to have this data by yourself, see [custom properties](#custom-properties).
   
 ## Ingestion properties
 
@@ -85,9 +85,10 @@ eventHubClient.Send(eventData);
 eventHubClient.Close();
 ```
 
-## Event system properties
+## Event system properties embedding
 
-System properties store properties that are set by the event hub service, at the time the event is enqueued. The Azure Data Explorer event hub connection will embed the selected properties into the data landing in your table as a new column.
+System properties store properties that are set by the event hub service, at the time the event is enqueued. 
+The Azure Data Explorer event hub connection will embed the selected properties into the data landing in your table as a new column.
 
 [!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
 
@@ -111,10 +112,10 @@ If you selected **Event system properties** in the **Data Source** section of th
 ADX doesn't support ingesting free-form properties.
 
 To ingest custom properties to ADX, you can do one of the following:
-    > [!NOTE]
-    > Add this data to the event body, when creating the event.
-    > Use Azure Stream Analytics to read events from the event hub and embed the custom properties in the event data. From Azure Stream Analytics you can ingest the data natively via [Azure Data Explorer output connector from Azure Stream Analytics](/azure/stream-analytics/azure-database-explorer-output), or route it into another EH and from there to ADX. 
-    > Use Azure function to add the properties to the event.
+
+* Add this data to the event body, when creating the event.
+* Use Azure Stream Analytics to read events from the event hub and embed the custom properties in the event data. From Azure Stream Analytics you can ingest the data natively via [Azure Data Explorer output connector from Azure Stream Analytics](/azure/stream-analytics/azure-database-explorer-output), or route it into another EH and from there to ADX. 
+* Use Azure function to add the properties to the event.
 
 # Event hub connection
 
