@@ -15,7 +15,7 @@ Delete the optional table [restricted view access policy](restrictedviewaccesspo
 
 ## Syntax
 
-`.delete` `table` *TableName* `policy` `restricted-view-access`
+`.delete` `table` *TableName* `policy` `restricted_view_access`
 
 ## Arguments
 
@@ -24,5 +24,5 @@ Delete the optional table [restricted view access policy](restrictedviewaccesspo
 ## Example
 
 ```kusto
-.delete table MyTable policy restricted-view-access
+.delete table MyTable policy restricted_view_access
 ```
