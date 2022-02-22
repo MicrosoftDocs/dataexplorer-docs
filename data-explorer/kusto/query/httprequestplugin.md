@@ -173,3 +173,11 @@ let options=dynamic({'Authentication':'Active Directory Integrated',
   'AadResourceId':'https://eniac.to.the.max.example.com/'});
 evaluate http_request_post(uri, headers, options)
 ```
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This capability isn't supported in Azure Monitor
+
+::: zone-end
