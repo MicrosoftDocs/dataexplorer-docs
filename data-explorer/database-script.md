@@ -10,13 +10,15 @@ ms.date: 05/25/2021
 ---
 # Configure a database using a Kusto Query Language script
 
-You can run a Kusto Query Language script to configure your database during ARM template deployment. A Kusto Query Language script is a list of one or more [control commands](kusto/management/index.md), each separated by **at least** one line break, and is created as a resource that will be accessed with the ARM template. The script can only run control commands that start with the following verbs:
+You can run a Kusto Query Language script to configure your database during ARM template deployment. A Kusto Query Language script is a list of one or more [control commands](kusto/management/index.md), each separated by one line break, and is created as a resource that will be accessed with the ARM template. The script can only run control commands that start with the following verbs:
 
 * `.create`
 * `.create-or-alter`
 * `.create-merge`
 * `.alter`
 * `.alter-merge`
+
+It is recommended to use idempotent versions of command so they can be executed multiple times without failure.  For example, it is recommended to use `.create-or-alter` vs `.create` for that reason.
 
 There are various methods you can use to configure a database with Kusto Query Language scripts. We'll focus on two main methods using ARM template deployment:
 
@@ -25,7 +27,8 @@ There are various methods you can use to configure a database with Kusto Query L
 
 > [!NOTE]
 > Each cluster can have a maximum of 50 scripts.
->
+
+> [!NOTE]
 > Kusto Query Language scripts don't support scripts stored in storage accounts with [Azure Storage firewall or Virtual Network rules](/azure/storage/common/storage-network-security?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal).  This is relevant only for the [*Storage Account* method](#upload-kusto-query-language-script).
 
 ## Prerequisites
@@ -33,16 +36,27 @@ There are various methods you can use to configure a database with Kusto Query L
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Create [a cluster and database](create-cluster-database-portal.md).
 
+## Security
+
+In order to deploy a script, a principal (e.g. a user or a service principal) needs to be both:
+
+1. [Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) on the cluster (control plane)
+1. [Admin](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/access-control/role-based-authorization) on the database (data plane)
+
+It is important to note the principal provisioning the cluster automatically gets `All Databases Admin` role on the cluster.
+
 ## Inline method
 
 This method assumes the Kusto Query Language script is going to be passed *inline* to the script resource.
 
 For example, the code below is a Kusto Query Language script creating two tables: *MyTable* and *MyTable2*.
 
-    ```kusto
-    .create table MyTable (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
-    .create table MyTable2 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
-    ```
+```kusto
+.create-or-alter table MyTable (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
+
+.create-or-alter table MyTable2 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
+```
+
 ### Run inline Kusto Query Language script using ARM template
 
 In this section, you'll see how to run a Kusto Query Language script with a [JSON Azure Resource Manager template](/azure/azure-resource-manager/templates/overview).
@@ -106,9 +120,14 @@ Use the following settings:
 
 ## Omitting update tag
 
-If the `forceUpdateTag` parameter of the script resource **is provided**, it is used to decide if the script is executed (regardless if `scriptContent` changes or not).  This is meant to limit the cluster resource consumption when ARM deployments are done at high frequency.
+It might not be desireable to run a KQL script every time the ARM template is deployed.  Running a KQL script consumes cluster resources.  For that reason, a KQL script **isn't executed** on the cluster if one of the following conditions is met for two consecutive deployments:
 
-If the `forceUpdateTag` parameter of the script resource **is not provided** (or is an empty string), the hash of `scriptContent` is computed and if the hash value changes, the script is executed.  This is meant to simplify usage by not forcing the maintenance of an update tag.
+* The same non-empty `forceUpdateTag` is specified
+* `forceUpdateTag` is not specified (or is empty) and the same script content is specified
+
+The best practice is to omit `forceUpdateTag`:  the script will then be executed when the script content changes between deployments.
+
+Use `forceUpdateTag` only to force the execution of the script.
 
 ## Script file with Bicep
 
@@ -180,51 +199,44 @@ In this section, you'll see how to run a Kusto Query Language script with an [Az
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-    "location":{
-      "defaultValue": "[resourceGroup().location]",
+        "kqlScript": {
+            "defaultValue": "",
             "type": "String"
-    },
-    "scriptUrl": {
-            "type": "String"
-    },
-    "scriptUrlSastoken": {
-            "type": "SecureString"
-    },
+        },
         "forceUpdateTag": {
             "defaultValue": "[utcNow()]",
             "type": "String"
         },
-    "continueOnErrors": {
+        "continueOnErrors": {
             "defaultValue": false,
             "type": "bool"
         },
-    "clusterName": {
+        "clusterName": {
             "type": "String"
-    },
-    "databaseName": {
+        },
+        "databaseName": {
             "type": "String"
-    },
-    "scriptName": {
+        },
+        "scriptName": {
             "type": "String"
-    }
+        }
     },
-  "variables":{
-  },
+    "variables": {
+    },
     "resources": [
-    {
+        {
             "type": "Microsoft.Kusto/Clusters/Databases/Scripts",
-            "apiVersion": "2021-01-01",
-            "name": "[concat(concat(parameters('clusterName'), '/'), concat(parameters('databaseName'), '/'), parameters('scriptName'))]",
-            "properties": {          
-                "scriptUrl": "[parameters('scriptUrl')]",
-                "scriptUrlSasToken": "[parameters('scriptUrlSasToken')]",
+            "apiVersion": "2022-02-01",
+            "name": "[concat(parameters('clusterName'), '/', parameters('databaseName'), '/', parameters('scriptName'))]",
+            "properties": {
+                "scriptContent": "[parameters('kqlScript')]",
                 "continueOnErrors": "[parameters('continueOnErrors')]",
                 "forceUpdateTag": "[parameters('forceUpdateTag')]"
             }
         }
     ],
     "outputs": {
-  }
+    }
 }
 ```
 
@@ -232,7 +244,6 @@ Use the following settings:
 
 |**Setting**  |**Description**  |
 |---------|---------|
-| Location | The location of the Azure Data Explorer cluster |
 |Script URL     |  The URL of the blob, for example 'https://myaccount.blob.core.windows.net/mycontainer/myblob'. |
 |Script URL SaS Token   |  The [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview).    |
 | Force Update Tag   |  A unique string. If changed, the script will be applied again.  |
