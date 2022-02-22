@@ -567,6 +567,12 @@ items:
     - name: series_rolling_fl()
       displayName: functions library, rolling, sliding
       href: kusto/functions-library/series-rolling-fl.md
+    - name: series_uv_anomalies_fl()
+      displayName: functions library, anomaly detection, univariate
+      href: kusto/functions-library/series-uv-anomalies-fl.md
+    - name: series_uv_change_points_fl()
+      displayName: functions library, anomaly detection, univariate, change point
+      href: kusto/functions-library/series-uv-change-points-fl.md
     - name: time_weighted_avg_fl()
       displayName: functions library, binning
       href: kusto/functions-library/time-weighted-avg-fl.md
