@@ -1,9 +1,21 @@
-> [!IMPORTANT]
-> The content below is Microsoft confidential(not available in the [public site](https://docs.microsoft.com/en-us/azure/data-explorer/))
-
+---
+title: http_request plugin - Azure Data Explorer
+description: This article describes http_request plugin in Azure Data Explorer.
+services: data-explorer
+author: orspod
+ms.author: orspodek
+ms.reviewer: alexans
+ms.service: data-explorer
+ms.topic: reference
+ms.date: 02/22/2022
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors
+---
 # http_request plugin / http_request_post plugin - Internal
 
-The http_request and http_request_post plugins send an HTTP request (GET and
+::: zone pivot="azuredataexplorer"
+
+The `http_request` and `http_request_post` plugins send an HTTP request (GET and
 POST, respectively) and convert the response into a Kusto table.
 
 > [!WARNING]

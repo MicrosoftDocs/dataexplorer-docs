@@ -1,6 +1,13 @@
-> [!IMPORTANT]
-> The content below is Microsoft confidential(not available in the [public site](https://docs.microsoft.com/en-us/azure/data-explorer/))
-
+---
+title: series_uv_anomalies_fl() - Azure Data Explorer
+description: This article describes the series_uv_anomalies_fl() user-defined function in Azure Data Explorer.
+author: orspod
+ms.author: orspodek
+ms.reviewer: adieldar
+ms.service: data-explorer
+ms.topic: reference
+ms.date: 02/22/2022
+---
 # series_uv_anomalies_fl()
 
 The function `series_uv_anomalies_fl()` detects anomalies in time series by calling [the Univariate Anomaly Detection API](/azure/cognitive-services/anomaly-detector/overview), part of [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services). The function accepts a limited set of time series (as numerical dynamic arrays) and the required anomaly detection sensitivity level. It converts each time series to the required Json format and posts it to the Anomaly Detector service endpoint. The service response contains dynamic arrays of high/low/all anomalies, the modeled baseline time series, its normal high/low boundaries (a value above/below the high/low boundary is an anomaly) and the detected seasonality.
