@@ -13,5 +13,5 @@ ms.author: orspodek
 > * Embedding system properties is not supported when a compression of Event Hub messages is set. In such scenarios, an appropriate error will be emitted and the data will not be ingested.
 > * For tabular data, system properties are supported only for single-record event messages.
 > * For json data, system properties are also supported for multiple-record event messages. In such cases, the system properties are added only to the first record of the event message.
-> * For `CSV` mapping, properties are added at the beginning of the record in the order listed in the [System properties](../ingest-data-event-hub-overview.md#event-system-properties-embedding) table.
-> * For `JSON` mapping, properties are added according to property names in the [System properties](../ingest-data-event-hub-overview.md#event-system-properties-embedding) table.
+> * For `CSV` mapping, properties are added at the beginning of the record in the order listed in the [System properties](../ingest-data-event-hub-overview.md#event-system-properties-mapping) table.
+> * For `JSON` mapping, properties are added according to property names in the [System properties](../ingest-data-event-hub-overview.md#event-system-properties-mapping) table.

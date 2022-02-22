@@ -160,7 +160,7 @@ For this article, you use static routing, where you specify the table name, data
 
 [!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
 
-If you selected **Event system properties** in the **Data Source** section of the table, you must include [system properties](ingest-data-event-hub-overview.md#event-system-properties-embedding) in the table schema and mapping.
+If you selected **Event system properties** in the **Data Source** section of the table, you must include [system properties](ingest-data-event-hub-overview.md#event-system-properties-mapping) in the table schema and mapping.
 
 ## Copy the connection string
 
