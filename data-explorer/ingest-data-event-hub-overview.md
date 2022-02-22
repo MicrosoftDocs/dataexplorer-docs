@@ -13,7 +13,7 @@ ms.date: 02/22/2022
 
 [Azure Event Hubs](/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer-managed Event Hubs.
 
-The Event Hubs ingestion pipeline transfers events to Azure Data Explorer in several steps. You first create an event hub in the Azure portal. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#ingestion-properties). The Event Hubs connection needs to know [events routing](#events-routing). Data may be embedded with selected properties according to the [event system properties](#event-system-properties). [Create a connection](#event-hubs-connection) to event hub to [create an event hub](#create-an-event-hub) and [send events](#send-events). This process can be managed through the [Azure portal](ingest-data-event-hub.md), programmatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
+The Event Hubs ingestion pipeline transfers events to Azure Data Explorer in several steps. You first create an event hub in the Azure portal. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#ingestion-properties). The Event Hubs connection needs to know [events routing](#events-routing). Data may be embedded with selected properties according to the [event system properties](#event-system-properties-embedding). [Create a connection](#event-hubs-connection) to event hub to [create an event hub](#create-an-event-hub) and [send events](#send-events). This process can be managed through the [Azure portal](ingest-data-event-hub.md), programmatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
@@ -27,14 +27,14 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 * Data can be compressed using the `GZip` compression algorithm. You can specify `Compression` dynamically using [ingestion properties](#ingestion-properties), or in the static Data Connection settings.
     > [!NOTE]
     > Data compression isn't supported for compressed formats (Avro, Parquet, ORC, ApacheAvro and W3CLOGFILE).
-    > Custom encoding and embedded [system properties](#event-system-properties) aren't supported on compressed data.
+    > Custom encoding and embedded [system properties](#event-system-properties-embedding) aren't supported on compressed data.
 
 ## Event Hubs properties
 
 Azure Data Explorer supports the following Event Hubs properties:
 
 * A closed set of [ingestion properties](#ingestion-properties), which helps to route the event to the relevant table.
-* A closed set of [event system properties](#event-system-properties), which can be embed in the data based on a given mapping.
+* A closed set of [event system properties](#event-system-properties-embedding), which can be embed in the data based on a given mapping.
 
 > [!NOTE]
 > Ingesting Event Hubs [custom properties](/azure/event-hubs/add-custom-data-event), used to associate metadata with events, isn't supported. If you need to ingest custom properties, send them in the body of the event data. For more information, see [Ingest custom properties](#ingest-custom-properties).
@@ -85,10 +85,10 @@ eventHubClient.Send(eventData);
 eventHubClient.Close();
 ```
 
-## Event system properties
+## Event system properties embedding
 
 System properties store properties that are set by the Event Hubs service, at the time the event is enqueued.
-The Event Hubs data connection to the event hub can embed a selected set of system properties into the data ingested into a table based on a given mapping.
+The data connection to the event hub can embed a selected set of system properties into the data ingested into a table based on a given mapping.
 
 [!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
 
@@ -102,7 +102,7 @@ Event Hubs service exposes the following system properties:
 | x-opt-publisher |string | The publisher name, if the message was sent to a publisher endpoint |
 | x-opt-partition-key |string |The partition key of the corresponding partition that stored the event |
 
-When you work with [IoT Central](https://azure.microsoft.com/services/iot-central/) event hubs, you can also embed IoT Hub system properties in the payload. For the complete list, see [IoT Hub system properties](ingest-data-iot-hub-overview.md#event-system-properties-mapping).
+When you work with [IoT Central](https://azure.microsoft.com/services/iot-central/) event hubs, you can also embed IoT Hub system properties in the payload. For the complete list, see [IoT Hub system properties](ingest-data-iot-hub-overview.md#event-system-properties-embedding-mapping).
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include the properties in the table schema and mapping.
 
@@ -116,26 +116,30 @@ The following example compares the events data object containing custom property
 
 :::row:::
    :::column span="":::
-      ```json
-        {
-          "body":{
-            "value": 42
-          },
-          "properties":{
-            "customProperty": "123456789"
-          }
-        }
-        ```
+
+```json
+{
+  "body":{
+    "value": 42
+  },
+  "properties":{
+    "customProperty": "123456789"
+  }
+}
+```
+
    :::column-end:::
    :::column span="":::
-      ```json
-        {
-          "body":{
-            "value": 42,
-            "customProperty": "123456789"
-          }
-        }
-        ```
+
+```json
+{
+  "body":{
+    "value": 42,
+    "customProperty": "123456789"
+  }
+}
+```
+
    :::column-end:::
 :::row-end:::
 
@@ -154,6 +158,7 @@ For best performance, create all the following resources in the same region as t
 If you don't already have one, [Create an event hub](/azure/event-hubs/event-hubs-create). Connecting to event hub can be managed through the [Azure portal](ingest-data-event-hub.md), programmatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
 
 > [!Note]
+>
 > * The partition count isn't changeable, so you should consider long-term scale when setting partition count.
 > * Consumer group *must* be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
 
