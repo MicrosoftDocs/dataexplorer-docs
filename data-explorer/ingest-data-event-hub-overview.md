@@ -50,7 +50,7 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 | IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | Compression | Data compression, `None` (default), or `GZip` compression.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
-| Tags | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as an 
+| Tags | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as an
 array string. There are [performance implications](kusto/management/extents-overview.md#ingest-by-extent-tags) when using tags. |
 
 > [!NOTE]
@@ -69,7 +69,7 @@ var eventHubNamespaceConnectionString=<connection_string>;
 var eventHubName=<event_hub>;
 
 // Create the data
-var metric = new Metric { Timestamp = DateTime.UtcNow, MetricName = "Temperature", Value = 32 }; 
+var metric = new Metric { Timestamp = DateTime.UtcNow, MetricName = "Temperature", Value = 32 };
 var data = JsonConvert.SerializeObject(metric);
 
 // Create the event and add optional "dynamic routing" properties
@@ -87,12 +87,12 @@ eventHubClient.Close();
 
 ## Event system properties
 
-System properties store properties that are set by the Event Hubs service, at the time the event is enqueued. 
-The Azure Data Explorer Event connection to the event hub can embed a selected set of system properties into the data ingested into a table based on a given mapping.
+System properties store properties that are set by the Event Hubs service, at the time the event is enqueued.
+The Event Hubs data connection to the event hub can embed a selected set of system properties into the data ingested into a table based on a given mapping.
 
 [!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
 
-Event Hubs exposes the following system properties:
+Event Hubs service exposes the following system properties:
 
 |Property |Data Type |Description|
 |---|---|---|
@@ -163,9 +163,9 @@ See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) 
 
 For an example of how to generate sample data, see [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md#generate-sample-data)
 
-### Set up Geo-disaster recovery solution
+## Set up Geo-disaster recovery solution
 
-Event hub offers a [Geo-disaster recovery](/azure/event-hubs/event-hubs-geo-dr) solution. 
+Event hub offers a [Geo-disaster recovery](/azure/event-hubs/event-hubs-geo-dr) solution.
 Azure Data Explorer doesn't support `Alias` event hub namespaces. To implement the Geo-disaster recovery in your solution, create two event hub data connections: one for the primary namespace and one for the secondary namespace. Azure Data Explorer will listen to both event hub connections.
 
 > [!NOTE]
