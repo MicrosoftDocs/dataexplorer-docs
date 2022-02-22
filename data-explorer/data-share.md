@@ -19,9 +19,10 @@ Azure Data Explorer decouples the storage and compute which allows customers to 
 
 ## Configure data sharing 
 
- Use [Azure Data Share](/azure/data-share/) to send and manage invitations and shares across the company or with external partners and customers. Azure Data Share uses a [follower database](follower.md) to create a symbolic link between the provider and consumer's Azure Data Explorer cluster. This option provides you with a single pane to view and manage all your data shares across Azure Data Explorer clusters and other data services. Azure Data Share also enables you to share data across organizations in different Azure Active Directory tenants.
+Use [Azure Data Share](/azure/data-share/) to send and manage invitations and shares across the company or with external partners and customers. Azure Data Share uses a [follower database](follower.md) to create a symbolic link between the provider and consumer's Azure Data Explorer cluster. This option provides you with a single pane to view and manage all your data shares across Azure Data Explorer clusters and other data services. Azure Data Share also enables you to share data across organizations in different Azure Active Directory tenants.
 
-"*" An Admin on both the clusters can directly configure the [follower database](follower.md) with various APIS. only for the scenarios where you need additional compute to scale out for reporting needs and .
+> [!Note]
+> An Admin on both the clusters can directly configure the [follower database](follower.md) with various APIS. This is usefull in scenarios where you need additional compute to scale out for reporting.
 
 You can configure data sharing on:
  
@@ -44,39 +45,41 @@ The data provider can share the data at the database level or at the cluster lev
 
 ## Data Share Flow
 1. Provider uses his data share resource to share his database (full database or specific table level sharing). 
-2. Email is sent to recipient
+2. Email is sent to recipient.
 3. Receiver opens email invite and selects his data share resource. 
 4. Receiver uses data share to select the appropriate ADX cluster to map to.  
 
-## <a id="provider"></a> Data provider - share data 
-- Full database:
+## Data provider - share data 
+
+### Full database:
 Follow the instructions in the video to create a data share account, add a dataset, and send an invitation.
 [![Data provider - share data.](https://img.youtube.com/vi/QmsTnr90_5o/0.jpg)](https://youtu.be/QmsTnr90_5o?&autoplay=1)
-- Table level sharing:
-  Currently this is only enabled with an [Azure Resource Manager template](/azure/azure-resource-manager/management/overview).
-  Set the appropriate parameters on the dataset, table restrictions and invite recipient.
+
+### Table level sharing:
+Currently this is only enabled with an [Azure Resource Manager template](/azure/azure-resource-manager/management/overview).
+Set the appropriate parameters on the dataset, table restrictions and invite recipient.
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "account_name": {
+    "accountName": {
       "type": "String"
     },
     "location": {
       "defaultValue": "[resourceGroup().location]",
       "type": "String"
     },
-    "share_name": {
+    "shareName": {
       "type": "String"
     },
-    "recpient_email": {
+    "recipientEmail": {
       "type": "String"
     },
-    "database_name": {
+    "databaseName": {
       "type": "String"
     },
-    "database_resource_id": {
+    "databaseResourceId": {
       "type": "String"
     },
     "externalTablesToExclude": {
@@ -99,13 +102,13 @@ Follow the instructions in the video to create a data share account, add a datas
     }
   },
   "variables": {
-    "invitation_suffix": "[replace(replace(parameters('recpient_email'),'@', '_'), '.', '_')]"
+    "invitationSuffix": "[replace(replace(parameters('recipientEmail'),'@', '_'), '.', '_')]"
   },
   "resources": [
     {
       "type": "Microsoft.DataShare/accounts",
       "apiVersion": "2021-08-01",
-      "name": "[parameters('account_name')]",
+      "name": "[parameters('accountName')]",
       "location": "[parameters('location')]",
       "identity": {
         "type": "SystemAssigned"
@@ -115,9 +118,9 @@ Follow the instructions in the video to create a data share account, add a datas
     {
       "type": "Microsoft.DataShare/accounts/shares",
       "apiVersion": "2021-08-01",
-      "name": "[concat(parameters('account_name'), '/' , parameters('share_name'))]",
+      "name": "[concat(parameters('accountName'), '/' , parameters('shareName'))]",
       "dependsOn": [
-        "[resourceId('Microsoft.DataShare/accounts', parameters('account_name'))]"
+        "[resourceId('Microsoft.DataShare/accounts', parameters('accountName'))]"
       ],
       "properties": {
         "shareKind": "InPlace"
@@ -126,22 +129,22 @@ Follow the instructions in the video to create a data share account, add a datas
     {
       "type": "Microsoft.DataShare/accounts/shares/invitations",
       "apiVersion": "2021-08-01",
-      "name": "[concat(parameters('account_name'), '/',  parameters('share_name'), '/', concat(parameters('share_name'), variables('invitation_suffix')))]",
+      "name": "[concat(parameters('accountName'), '/',  parameters('shareName'), '/', concat(parameters('shareName'), variables('invitationSuffix')))]",
       "dependsOn": [
-        "[resourceId('Microsoft.DataShare/accounts/shares', parameters('account_name'), parameters('share_name'))]",
-        "[resourceId('Microsoft.DataShare/accounts', parameters('account_name'))]"
+        "[resourceId('Microsoft.DataShare/accounts/shares', parameters('accountName'), parameters('shareName'))]",
+        "[resourceId('Microsoft.DataShare/accounts', parameters('accountName'))]"
       ],
       "properties": {
-        "targetEmail": "[parameters('recpient_email')]"
+        "targetEmail": "[parameters('recipientEmail')]"
       }
     },
     {
       "type": "Microsoft.DataShare/accounts/shares/dataSets",
       "apiVersion": "2021-08-01",
-      "name": "[concat(parameters('account_name'), '/', parameters('share_name'), '/', parameters('database_name'))]",
+      "name": "[concat(parameters('accountName'), '/', parameters('shareName'), '/', parameters('databaseName'))]",
       "dependsOn": [
-        "[resourceId('Microsoft.DataShare/accounts/shares', parameters('account_name'), parameters('share_name'))]",
-        "[resourceId('Microsoft.DataShare/accounts', parameters('account_name'))]"
+        "[resourceId('Microsoft.DataShare/accounts/shares', parameters('accountName'), parameters('shareName'))]",
+        "[resourceId('Microsoft.DataShare/accounts', parameters('accountName'))]"
       ],
       "kind": "KustoTable",
       "properties": {
@@ -159,6 +162,25 @@ Follow the instructions in the video to create a data share account, add a datas
   ]
 }
 ```
+Deploy the template
+You can deploy the Azure Resource Manager template using [Azure portal](https://ms.portal.azure.com/#create/Microsoft.Template) or using PowerShell.
+![template deployment.](media/follower/template-deployment-tls.png)
+
+|**Setting**                    |**Description**  | **Example** |
+|-------------------------------|-------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
+| Account Name                  | The name of the providers data share account.                                                                     |                                                          |
+| Location                      | The location of all the resources. The leader and the follower must be in the same location.                      |                                                          |
+| ShareName                     | The resource ID of the leader cluster.                                                                            |                                                          |
+| Recipient Email               | The email of the data share receivers email.                                                                      |                                                          |
+| Database Name                 | The name of providers database to share                                                                           |                                                          |
+| Database Resource Id          | The resource id of the providers database to share                                                                |                                                          |
+| Tables To Exclude             | The list of tables to exclude. To exclude all tables, use ["*"].                                                  | `["table1ToExclude", "table2ToExclude"]`                 |
+| Tables To Include             | The list of tables to include. To include all tables, use ["*"].                                                  | `["table1ToInclude", "table2ToInclude"]`                 |
+| External Tables To Include    | The list of external tables to include. To include all external tables starting with 'Logs', use ["Logs*"].       | `["ExternalTable1ToInclude", "ExternalTable2ToInclude"]` |
+| External Tables To Exclude    | The list of external tables to exclude. To exclude all external tables, use ["*"].                                | `["ExternalTable1ToExclude", "ExternalTable2ToExclude"]` |
+| Materialized Views To Include | The list of materialized views to include. To include all materialized views starting with 'Logs', use ["Logs*"]. | `["Mv1ToInclude", "Mv2ToInclude"]`                       |
+| Materialized Views To Exclude | The list of materialized views to exclude. To exclude all materialized views, use ["*"].                          | `["Mv11ToExclude", "Mv22ToExclude"]`                     |
+---
 
 ## Data consumer - receive data
 
