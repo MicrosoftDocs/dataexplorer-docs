@@ -4,7 +4,7 @@ description: This article describes http_request plugin in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: alexans
+ms.reviewer: zivc
 ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/22/2022
