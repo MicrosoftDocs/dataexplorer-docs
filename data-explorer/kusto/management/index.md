@@ -33,7 +33,7 @@ to queries.
 
 ## Combining queries and control commands
 
-Control commands can reference queries (but no vice-versa) or other control commands.
+Control commands can reference queries (but not vice-versa) or other control commands.
 There are several supported scenarios:
 
 1. **AdminThenQuery**: A control command is executed, and its result (represented
