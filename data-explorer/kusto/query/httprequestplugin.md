@@ -11,7 +11,7 @@ ms.date: 02/22/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
-# http_request plugin / http_request_post plugin - Internal
+# http_request plugin / http_request_post plugin
 
 ::: zone pivot="azuredataexplorer"
 
