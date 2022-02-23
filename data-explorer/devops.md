@@ -42,7 +42,7 @@ This document describes a simple example on the use of the **Azure Data Explorer
     * If you are the Azure DevOps instance owner, install the extension from the [Marketplace](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX).
         ![Get extension in the Marketplace.](media/devops/get-extension.png)
         ![Install extension.](media/devops/extension-install.png)
-    * If you are NOT the Azure DevOps instance owner, contact your [owner](/azure/devops/organizations/security/lookup-organization-owner-admin?view=azure-devops&tabs=preview-page#look-up-the-organization-owner&preserve-view=true) and ask them to install it.
+    * If you are NOT the Azure DevOps instance owner, contact your [owner](/azure/devops/organizations/security/request-changes-permissions#look-up-the-organization-owner&preserve-view=true) and ask them to install it.
 
 ## Prepare your content for release
 
