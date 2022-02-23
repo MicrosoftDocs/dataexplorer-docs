@@ -28,9 +28,6 @@ There are various methods you can use to configure a database with Kusto Query L
 > [!NOTE]
 > Each cluster can have a maximum of 50 scripts.
 
-> [!NOTE]
-> Kusto Query Language scripts don't support scripts stored in storage accounts with [Azure Storage firewall or Virtual Network rules](/azure/storage/common/storage-network-security?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal).  This is relevant only for the [*Storage Account* method](#upload-kusto-query-language-script).
-
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
@@ -52,9 +49,9 @@ This method assumes the Kusto Query Language script is going to be passed *inlin
 For example, the code below is a Kusto Query Language script creating two tables: *MyTable* and *MyTable2*.
 
 ```kusto
-.create-or-alter table MyTable (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
+.create-merge table MyTable (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
 
-.create-or-alter table MyTable2 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
+.create-merge table MyTable2 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
 ```
 
 ### Run inline Kusto Query Language script using ARM template
@@ -176,6 +173,9 @@ Use the following settings:
 
 This method assumes that you already have a blob in Azure storage account and you provide its details (url and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) directly.
 
+> [!NOTE]
+> Kusto Query Language scripts doesn't support scripts stored in storage accounts with [Azure Storage firewall or Virtual Network rules](/azure/storage/common/storage-network-security?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal).
+
 ### Create the script resource
 
 A Kusto Query Language script is one or more control commands separated by exactly one line break. The first step is to create this script and upload it to a storage account.
@@ -183,10 +183,11 @@ A Kusto Query Language script is one or more control commands separated by exact
 1. Create the script containing the control commands you want to use in your database. For example, the code below is a Kusto Query Language script that create two tables: *MyTable* and *MyTable2*.
 
     ```kusto
-    .create table MyTable (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
-    .create table MyTable2 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
+    .create-merge table MyTable (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
+    
+    .create-merge table MyTable2 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
     ```
-
+    
 1. Upload your Kusto Query Language script to an Azure storage account. You can create your storage account using [Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal), [PowerShell](/azure/storage/blobs/storage-quickstart-blobs-portal), or [CLI](/azure/storage/blobs/storage-quickstart-blobs-cli).
 1. Provide access to this file using [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview). You can do this with [PowerShell](/azure/storage/blobs/storage-blob-user-delegation-sas-create-powershell), [CLI](/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli), or [.NET](/azure/storage/blobs/storage-blob-user-delegation-sas-create-dotnet).
 
