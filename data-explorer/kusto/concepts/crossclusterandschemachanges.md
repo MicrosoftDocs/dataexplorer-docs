@@ -24,7 +24,7 @@ Sending the command can be expensive. Once retrieved, the schemas for remote ent
 Changes in the schema of the remote entity may result in unwanted effects. For example, added columns aren't recognized, or deleted columns cause a 'Partial Query Error' instead of a semantic error.
 
 To solve this problem, cached schemas expire one hour after retrieval, so that any query executed more than one hour after the change, will work with the up-to-date schema.
-Another option to refresh the schema is by using [Clear Cross Cluster Schema Cache](../../management/clear-cross-cluster-schema-cache.md).
+Another option to refresh the schema is by using [Clear Cross Cluster Schema Cache](../management/clear-cross-cluster-schema-cache.md).
 
 > [!IMPORTANT]
 > If the clusters are in different tenants, you may need to edit the `trustedExternalTenants` property. Non-trusted external tenants may get an **Unauthorized error (401)** failure. For more information, see [How to allow principals from another tenant to access your cluster](../../cross-tenant-query-and-commands.md).
