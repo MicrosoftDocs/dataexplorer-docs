@@ -198,7 +198,7 @@ Deletes active stored query results created in the current database by the speci
 
 #### Syntax
 
-`.drop` `stored_query_results` `created-by` *PrincipalName*
+`.drop` `stored_query_results` `by user` *PrincipalName*
 
 #### Returns
 
