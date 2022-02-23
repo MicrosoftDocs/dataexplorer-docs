@@ -15,7 +15,7 @@ ms.date: 03/13/2020
 
 Kusto is built to support tables with a huge number of records (rows)
 and large amounts of data. To handle such large tables, each table's data 
-is divided into smaller "tablets" called **data shards**
+is divided into smaller "chunks" called **data shards**
 or **extents** (the two terms are synonymous). The union of
 all the table's extents holds the table's data. Individual extents
 are kept smaller than a single node's capacity, and the extents
@@ -108,11 +108,27 @@ format *prefix* *suffix*, where *prefix* is one of:
 ### 'drop-by:' extent tags
 
 Tags that start with a `drop-by:` prefix can be used to control which other
-extents to merge with. Extents that have a given `drop-by:` tag can be merged
-together, but they won't be merged with other extents. 
-You can then issue a command to drop extents according to their `drop-by:` tag.
+extents to merge with. Extents that have the same set of `drop-by:` tags can be merged
+together, but they won't be merged with other extents, if those have a different set of 
+`drop-by:` tags.
 
-For example:
+#### Examples
+
+**1. Which extents can be merged together?**
+
+If:
+- Extent 1 has the following tags: `drop-by:blue`, `drop-by:red`, `green`.
+- Extent 2 has the following tags: `drop-by:red`, `yellow`.
+- Extent 3 has the following tags: `purple`, `drop-by:red`, `drop-by:blue`.
+
+Then:
+- Extents 1 and 2 won't be merged together, as they have a different set of `drop-by` tags.
+- Extents 2 and 3 won't be merged together, as they have a different set of `drop-by` tags.
+- Extents 1 and 3 can be merged together, as they have the same set of `drop-by` tags.
+
+**2. Using `drop-by` tags as part of extent-level operations**
+
+You can issue a command to drop extents according to their `drop-by:` tag.
 
 ```kusto
 .ingest ... with @'{"tags":"[\"drop-by:2016-02-17\"]"}'
@@ -120,11 +136,12 @@ For example:
 .drop extents <| .show table MyTable extents where tags has "drop-by:2016-02-17" 
 ```
 
-#### Performance notes
-
-* Don't overuse `drop-by` tags. Dropping data in the manner mentioned above is meant for rarely occurring events. It isn't for replacing record-level data, and it relies on the fact that the data tagged in this manner is bulky. Attempting to give a different tag for each record, or small number of records, might result in a severe impact on performance.
-* If `drop-by` tags aren't needed for a period of time after data is ingested,
-we recommend that you [drop the tags](#drop-by-extent-tags).
+> [!WARNING]
+> * Don't overuse `drop-by` tags. Dropping data in the manner mentioned above is meant for rarely occurring events.
+>   * It shouldn't be used for replacing record-level data, and it relies on the fact that the data tagged in this manner is bulky.
+>   * Attempting to give a unique tag for each record, small number of records, or file - might result with severe impact to performance.
+> * If `drop-by` tags aren't needed for a period of time after data is ingested, we recommend that you [drop the tags](#drop-by-extent-tags).
+>   * To drop the tags automatically, you can set an [extent tags retention policy](extent-tags-retention-policy.md).
 
 ### 'ingest-by:' extent tags
 
@@ -148,13 +165,9 @@ The following example ingests data only once. The 2nd and 3rd commands do nothin
 > both an `ingest-by:` tag and an `ingestIfNotExists` property,
 > set to the same value, as shown in the 3rd command above.
 
-#### Performance notes
-
-* Overusing `ingest-by` tags isn't recommended.
-If the pipeline feeding Kusto is known to have data duplications, we recommend
-that you solve these duplications as much as possible, before ingesting the data into Kusto. Also, use `ingest-by` tags in Kusto only when the part that ingests to Kusto
-might introduce duplicates by itself (for example, there's a retry mechanism that can overlap 
-with already-in-progress ingestion calls). Attempting to set a unique `ingest-by` tag
-for each ingestion call might result in a severe impact on performance.
-* If such tags aren't required for some period of time after the data is ingested,
-we recommend that you [drop extent tags](drop-extent-tags.md).
+> [!WARNING]
+> * Overusing `ingest-by` tags isn't recommended.
+> * If the pipeline feeding Kusto is known to have data duplications, we recommend that you solve these duplications as much as possible, before ingesting the data into Kusto.
+> * Attempting to set a unique `ingest-by` tag for each ingestion call might result with severe impact on performance.
+> * If such tags aren't required for some period of time after the data is ingested, we recommend that you [drop extent tags](drop-extent-tags.md).
+>   * To drop the tags automatically, you can set an [extent tags retention policy](extent-tags-retention-policy.md).

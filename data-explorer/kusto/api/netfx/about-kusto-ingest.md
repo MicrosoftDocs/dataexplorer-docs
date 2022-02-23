@@ -7,15 +7,14 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.custom: has-adal-ref 
-ms.date: 03/18/2020
+ms.date: 02/09/2022
 ---
 # Kusto ingest client library 
 
-`Kusto.Ingest` library is a .NET 4.6.2 library for sending data to the Kusto service.
+`Microsoft.Azure.Kusto.Ingest` library is a .NET 4.7.2 library for ingesting data to the Azure Data Explorer service.
 It takes dependencies on the following libraries and SDKs:
 
-* ADAL for Azure AD authentication
+* [MSAL (Microsoft Authentication Library)](/azure/active-directory/develop/msal-overview) for Azure AD authentication
 * Azure storage client
 
 The ingestion methods are defined by the [IKustoIngestClient](kusto-ingest-client-reference.md#interface-ikustoingestclient) interface.  The methods handle data ingestion from Stream, IDataReader, local files, and Azure blobs in both synchronous and asynchronous modes.
@@ -34,7 +33,7 @@ The Queued ingestion mode, defined by [IKustoQueuedIngestClient](kusto-ingest-cl
 * Lets ingestion requests to be persisted when the Kusto Engine (or Ingestion) service is unavailable
 * Improves performance by efficient and controllable aggregation of inbound data by the Ingestion service 
 * Lets the Kusto Ingestion service manage the ingestion load on the Kusto Engine service
-* Retries the Kusto Ingestion service, as needed, on transient ingestion failures, such as for XStore throttling
+* Retries the Kusto Ingestion service, as needed, on transient ingestion failures, such as for Azure Storage throttling
 * Provides a convenient mechanism to track the progress and outcome of every ingestion request
 
 The following diagram outlines the Queued ingestion client interaction with Kusto:

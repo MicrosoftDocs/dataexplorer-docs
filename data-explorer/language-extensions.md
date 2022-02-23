@@ -18,8 +18,8 @@ The language extensions feature allows you to use language extension plugins to 
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Enable language extensions on your cluster
 
@@ -33,10 +33,10 @@ Do the following steps to enable language extensions on your cluster:
 1. In the **Configurations** pane, select **On** to enable a language extension.
 1. Select **Save**.
  
-    ![language extension on](media/language-extensions/configurations-enable-extension.png)
+    ![language extension on.](media/language-extensions/configurations-enable-extension.png)
 
 > [!NOTE]
-> Enabling the language extension process can take a few minutes. During that time, your cluster will be suspended.
+> Enabling the language extension process can take up to a few minutes. During that time, your cluster may be unavailable.
  
 ## Run language extension-integrated queries
 
@@ -55,10 +55,9 @@ Do the following steps to disable language extensions on your cluster:
 1. In the **Configurations** pane, select **Off** to disable a language extension.
 1. Select **Save**.
 
-    ![Language extension off](media/language-extensions/configurations-disable-extension.png)
+    ![Language extension off.](media/language-extensions/configurations-disable-extension.png)
 
 ## Limitations
 
-* The language extensions feature doesn't support [Disk encryption](cluster-disk-encryption.md). 
-* The language extensions runtime sandbox allocates disk space even if no query runs in the scope of the relevant language.
-See [sandboxes](kusto/concepts/sandboxes.md) for more detailed limitations.
+* The language extensions feature supports [Disk encryption](cluster-disk-encryption.md) only for VM sizes that support both sandboxes and encryption features. For more detailed limitations, see [sandboxes](kusto/concepts/sandboxes.md).
+* The language extensions runtime sandbox allocates disk space even if no query runs in the scope of the relevant language. For more detailed limitations, see [sandboxes](kusto/concepts/sandboxes.md).

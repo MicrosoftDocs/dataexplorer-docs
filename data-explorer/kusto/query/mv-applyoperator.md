@@ -29,8 +29,7 @@ T | mv-apply Metric to typeof(real) on
 The `mv-apply` operator has the following
 processing steps:
 
-1. Uses the [`mv-expand`](./mvexpandoperator.md) operator to expand each record
-   in the input into subtables.
+1. Uses the [`mv-expand`](./mvexpandoperator.md) operator to expand each record in the input into subtables (order is preserved).
 1. Applies the subquery for each of the subtables.
 1. Adds zero or more columns to the resulting subtable. These columns contain the values of the source columns that aren't expanded, and are repeated where needed.
 1. Returns the union of the results.
@@ -109,11 +108,13 @@ and *SubQuery* has the same syntax of any query statement.
 **Notes**
 
 * Unlike the [`mv-expand`](./mvexpandoperator.md) operator, the `mv-apply` operator
-  supports array expansion only. There's no support for expanding property bags.
+  does not support `bagexpand=array` expansion. If the expression to be expanded
+  is a property bag and not an array, it is possible to use an inner `mv-expand`
+  operator (see example below).
 
 ## Examples
 
-## Getting the largest element from the array
+### Getting the largest element from the array
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -132,7 +133,7 @@ _data
 |1    |[1, 3, 5, 7]|7      |
 |0    |[2, 4, 6, 8]|8      |
 
-## Calculating the sum of the largest two elements in an array
+### Calculating the sum of the largest two elements in an array
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -152,7 +153,7 @@ _data
 |1    |[1,3,5,7]|12       |
 |0    |[2,4,6,8]|14       |
 
-## Using `with_itemindex` for working with a subset of the array
+### Using `with_itemindex` for working with a subset of the array
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -174,6 +175,35 @@ _data
 |4|9|
 |3|8|
 |4|10|
+
+### Applying mv-apply to a property bag
+
+In the following example, `mv-apply` is used in combination with an
+inner `mv-expand` to remove values that don't start with "555" from a property bag:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+datatable(SourceNumber:string,TargetNumber:string,CharsCount:long)
+[
+    '555-555-1234','555-555-1212',46,
+    '555-555-1212','',int(null)
+]
+| extend values = pack_all()
+| mv-apply removeProperties = values on 
+(
+    mv-expand kind = array values
+    | where values[1] !startswith "555"
+    | summarize propsToRemove = make_set(values[0])
+)
+| extend values = bag_remove_keys(values, propsToRemove)
+| project-away propsToRemove
+```
+
+|SourceNumber|TargetNumber|CharsCount|values
+|---|---|---|---|
+|555-555-1234|555-555-1212|46|{<br> "SourceNumber": "555-555-1234",<br>   "TargetNumber": "555-555-1212"<br> }|
+|555-555-1212|&nbsp;|&nbsp;|{<br> "SourceNumber": "555-555-1212"<br> }|
+
 
 ## See also
 

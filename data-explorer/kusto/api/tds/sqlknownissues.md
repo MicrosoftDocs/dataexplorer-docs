@@ -1,6 +1,6 @@
 ---
 title: Kusto MS-TDS/T-SQL differences with SQL Server - Azure Data Explorer
-description: This article describes MS-TDS/T-SQL Differences between Kusto Microsoft SQL Server in Azure Data Explorer.
+description: This article describes MS-TDS/T-SQL Differences between Kusto and Microsoft SQL Server in Azure Data Explorer.
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,7 +9,7 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/04/2019
 ---
-# MS-TDS/T-SQL Differences between Kusto Microsoft SQL Server
+# MS-TDS/T-SQL Differences between Kusto and Microsoft SQL Server
 
 Below is partial list of the main differences between Kusto and SQL Server's implementation of T-SQL.
 

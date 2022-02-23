@@ -20,8 +20,8 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* Create [a cluster and database](create-cluster-database-portal.md)
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Azure Resource Manager template for adding a database principal
 
@@ -99,4 +99,4 @@ The following example shows an Azure Resource Manager template for adding a data
 
 ## Next steps
 
-* [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md)
+* [Ingest data from an event hub into Azure Data Explorer](ingest-data-event-hub.md)

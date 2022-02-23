@@ -37,9 +37,9 @@ Returns a table that has: total count values, distinct count values, distinct co
 
 Output table schema is:
 
-|`TimelineColumn`|`dim1`|...|`dim_n`|`count`|`dcount`|`new_dcount`|`aggregated_dcount`
-|---|---|---|---|---|---|---|---|---|
-|type: as of *`TimelineColumn`*|..|..|..|long|long|long|long|long
+|`TimelineColumn`|`dim1`|...|`dim_n`|`count`|`dcount`|`new_dcount`|`aggregated_dcount`|
+|---|---|---|---|---|---|---|---|
+|type: as of *`TimelineColumn`*|..|..|..|long|long|long|long|
 
 
 * *`TimelineColumn`*: The time window start time.
@@ -54,7 +54,7 @@ Output table schema is:
 
 The next query calculates daily activity counts for the provided input table
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let start=datetime(2017-08-01);
 let end=datetime(2017-08-04);

@@ -3,15 +3,15 @@ title: Use the Azure Data Explorer connector for Apache Spark to move data betwe
 description: This topic shows you how to move data between Azure Data Explorer and Apache Spark clusters.
 author: orspod
 ms.author: orspodek
-ms.reviewer: maraheja
+ms.reviewer: ohbitton
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 7/29/2020
+ms.date: 04/19/2021
 ---
 
 # Azure Data Explorer Connector for Apache Spark
 
-[Apache Spark](https://spark.apache.org/) is a unified analytics engine for large-scale data processing. Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data. 
+[Apache Spark](https://spark.apache.org/) is a unified analytics engine for large-scale data processing. Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data.
 
 The Azure Data Explorer connector for Spark is an [open source project](https://github.com/Azure/azure-kusto-spark) that can run on any Spark cluster. It implements data source and data sink for moving data across Azure Data Explorer and Spark clusters. Using Azure Data Explorer and Apache Spark, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, Azure Data Explorer becomes a valid data store for standard Spark source and sink operations, such as write, read, and writeStream.
 
@@ -20,40 +20,44 @@ You can write to Azure Data Explorer in either batch or streaming mode. Reading 
 This topic describes how to install and configure the Azure Data Explorer Spark connector and move data between Azure Data Explorer and Apache Spark clusters.
 
 > [!NOTE]
-> Although some of the examples below refer to an [Azure Databricks](https://docs.azuredatabricks.net/) Spark cluster, Azure Data Explorer Spark connector does not take direct dependencies on Databricks or any other Spark distribution.
+> Although some of the examples below refer to an [Azure Databricks](/azure/databricks/) Spark cluster, Azure Data Explorer Spark connector does not take direct dependencies on Databricks or any other Spark distribution.
 
 ## Prerequisites
 
-* [Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) 
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 * Create a Spark cluster
 * Install Azure Data Explorer connector library:
-    * Pre-built libraries for [Spark 2.4, Scala 2.11](https://github.com/Azure/azure-kusto-spark/releases) 
+    * Pre-built libraries for [Spark 2.4+Scala 2.11 or Spark 3+scala 2.12](https://github.com/Azure/azure-kusto-spark/releases) 
     * [Maven repo](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)
 * [Maven 3.x](https://maven.apache.org/download.cgi) installed
 
 > [!TIP]
-> 2.3.x versions are also supported, but may require some changes in pom.xml dependencies.
+> Spark 2.3.x versions are also supported, but may require some changes in pom.xml dependencies.
 
 ## How to build the Spark connector
 
+Starting version 2.3.0 we introduce new artifact Ids replacing spark-kusto-connector: [kusto-spark_3.0_2.12](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-spark_3.0_2.12/2.3.0) targeting Spark 3.x and Scala 2.12 and [kusto-spark_2.4_2.11](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-spark_2.4_2.11/2.4.1) targeting Spark 2.4.x and scala 2.11.
+
 > [!NOTE]
-> This step is optional. If you are using pre-built libraries go to [Spark cluster setup](#spark-cluster-setup).
+> Versions prior to 2.5.1 do not work anymore for ingest to an existing table, please update to a later version.
+> This step is optional. If you are using pre-built libraries, for example, Maven, see [Spark cluster setup](#spark-cluster-setup).
 
 ### Build prerequisites
 
-1. Install the libraries listed in [dependencies](https://github.com/Azure/azure-kusto-spark#dependencies) including the following [Kusto Java SDK](kusto/api/java/kusto-java-client-library.md) libraries:
+1. If you are not using pre-built libraries, you need to install the libraries listed in [dependencies](https://github.com/Azure/azure-kusto-spark#dependencies) including the following [Kusto Java SDK](kusto/api/java/kusto-java-client-library.md) libraries. To find the right version to install, [look in the relevant release's pom](https://github.com/Azure/azure-kusto-spark/releases):
     * [Kusto Data Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Kusto Ingest Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 
 1. Refer to [this source](https://github.com/Azure/azure-kusto-spark) for building the Spark Connector.
 
 1. For Scala/Java applications using Maven project definitions, link your application with the following artifact (latest version may differ):
-    
+
     ```Maven
        <dependency>
          <groupId>com.microsoft.azure</groupId>
-         <artifactId>spark-kusto-connector</artifactId>
-         <version>1.1.0</version>
+         <artifactId>kusto-spark_3.0_2.12</artifactId>
+         <version>2.5.1</version>
        </dependency>
     ```
 
@@ -61,13 +65,13 @@ This topic describes how to install and configure the Azure Data Explorer Spark 
 
 To build jar and run all tests:
 
-```
+```Maven
 mvn clean package
 ```
 
 To build jar, run all tests, and install jar to your local Maven repository:
 
-```
+```Maven
 mvn clean install
 ```
 
@@ -78,41 +82,42 @@ For more information, see [connector usage](https://github.com/Azure/azure-kusto
 > [!NOTE]
 > It's recommended to use the latest Azure Data Explorer Spark connector release when performing the following steps.
 
-1. Configure the following Spark cluster settings, based on Azure Databricks cluster using Spark 2.4.4 and Scala 2.11:
+1. Configure the following Spark cluster settings, based on Azure Databricks cluster using Spark 2.4.4 and Scala 2.11 or Spark 3.0.1 and Scala 2.12:
 
-    ![Databricks cluster settings](media/spark-connector/databricks-cluster.png)
-    
+    ![Databricks cluster settings.](media/spark-connector/databricks-cluster.png)
+
 1. Install the latest spark-kusto-connector library from Maven:
-    
-    ![Import libraries](media/spark-connector/db-libraries-view.png)
-    ![Select Spark-Kusto-Connector](media/spark-connector/db-dependencies.png)
+
+    ![Import libraries.](media/spark-connector/db-libraries-view.png)
+    ![Select Spark-Kusto-Connector.](media/spark-connector/db-dependencies.png)
 
 1. Verify that all required libraries are installed:
 
-    ![Verify libraries installed](media/spark-connector/db-libraries-view.png)
+    ![Verify libraries installed.](media/spark-connector/db-libraries-view.png)
 
 1. For installation using a JAR file, verify that additional dependencies were installed:
 
-    ![Add dependencies](media/spark-connector/db-not-maven.png)
+    ![Add dependencies.](media/spark-connector/db-not-maven.png)
 
 ## Authentication
 
 Azure Data Explorer Spark connector enables you to authenticate with Azure Active Directory (Azure AD) using one of the following methods:
+
 * An [Azure AD application](#azure-ad-application-authentication)
 * An [Azure AD access token](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#direct-authentication-with-access-token)
 * [Device authentication](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#device-authentication) (for non-production scenarios)
-* An [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#key-vault) 
+* An [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#key-vault)
     To access the Key Vault resource, install the azure-keyvault package and provide application credentials.
 
 ### Azure AD application authentication
 
 Azure AD application authentication is the simplest and most common authentication method and is recommended for the Azure Data Explorer Spark connector.
 
-|Properties  |Option String  |Description  |
-|---------|---------|---------|
-|**KUSTO_AAD_APP_ID**     |kustoAadAppId     |   Azure AD application (client) identifier.      |
-|**KUSTO_AAD_AUTHORITY_ID**     |kustoAadAuthorityID     |  Azure AD authentication authority. Azure AD Directory (tenant) ID.        |
-|**KUSTO_AAD_APP_SECRET**    |kustoAadAppSecret     |    Azure AD application key for the client.     |
+| Properties | Option String | Description |
+|--|--|--|
+| **KUSTO_AAD_APP_ID** | kustoAadAppId | Azure AD application (client) identifier. |
+| **KUSTO_AAD_AUTHORITY_ID** | kustoAadAuthorityID | Azure AD authentication authority. Azure AD Directory (tenant) ID. |
+| **KUSTO_AAD_APP_SECRET** | kustoAadAppSecret | Azure AD application key for the client. |
 
 > [!NOTE]
 > Older API versions (less than 2.0.0) have the following naming: "kustoAADClientID", "kustoClientAADClientPassword", "kustoAADAuthorityID"
@@ -123,14 +128,14 @@ Grant the following privileges on an Azure Data Explorer cluster:
 
 * For reading (data source), the Azure AD identity must have *viewer* privileges on the target database, or *admin* privileges on the target table.
 * For writing (data sink), the Azure AD identity must have *ingestor* privileges on the target database. It must also have *user* privileges on the target database to create new tables. If the target table already exists, you must configure *admin* privileges on the target table.
- 
+
 For more information on Azure Data Explorer principal roles, see [role-based authorization](kusto/management/access-control/role-based-authorization.md). For managing security roles, see [security roles management](kusto/management/security-roles.md).
 
 ## Spark sink: writing to Azure Data Explorer
 
 1. Set up sink parameters:
 
-     ```scala
+    ```scala
     val KustoSparkTestAppId = dbutils.secrets.get(scope = "KustoDemos", key = "KustoSparkTestAppId")
     val KustoSparkTestAppKey = dbutils.secrets.get(scope = "KustoDemos", key = "KustoSparkTestAppKey")
  
@@ -160,20 +165,20 @@ For more information on Azure Data Explorer principal roles, see [role-based aut
       .mode(SaveMode.Append)
       .save()  
     ```
-    
+
    Or use the simplified syntax:
-   
+
     ```scala
-         import com.microsoft.kusto.spark.datasink.SparkIngestionProperties
-         import com.microsoft.kusto.spark.sql.extension.SparkExtension._
-         
-         val sparkIngestionProperties = Some(new SparkIngestionProperties()) // Optional, use None if not needed
-         df.write.kusto(cluster, database, table, conf, sparkIngestionProperties)
+    import com.microsoft.kusto.spark.datasink.SparkIngestionProperties
+    import com.microsoft.kusto.spark.sql.extension.SparkExtension._
+    
+    val sparkIngestionProperties = Some(new SparkIngestionProperties()) // Optional, use None if not needed
+    df.write.kusto(cluster, database, table, conf, sparkIngestionProperties)
     ```
-   
+
 1. Write streaming data:
 
-    ```scala    
+    ```scala
     import org.apache.spark.sql.streaming.Trigger
     import java.util.concurrent.TimeUnit
     import java.util.concurrent.TimeUnit
@@ -184,12 +189,11 @@ For more information on Azure Data Explorer principal roles, see [role-based aut
         
     // Write to a Kusto table from a streaming source
     val kustoQ = df
-          .writeStream
-          .format("com.microsoft.kusto.spark.datasink.KustoSinkProvider")
-          .options(conf) 
-          .option(KustoSinkOptions.KUSTO_WRITE_ENABLE_ASYNC, "true") // Optional, better for streaming, harder to handle errors
-          .trigger(Trigger.ProcessingTime(TimeUnit.SECONDS.toMillis(10))) // Sync this with the ingestionBatching policy of the database
-          .start()
+      .writeStream
+      .format("com.microsoft.kusto.spark.datasink.KustoSinkProvider")
+      .options(conf) 
+      .trigger(Trigger.ProcessingTime(TimeUnit.SECONDS.toMillis(10))) // Sync this with the ingestionBatching policy of the database
+      .start()
     ```
 
 ## Spark source: reading from Azure Data Explorer
@@ -223,8 +227,8 @@ For more information on Azure Data Explorer principal roles, see [role-based aut
     display(df2)
     ```
 
-1. Optional: If **you** provide the transient blob storage (and not Azure Data Explorer) the blobs are created are under the caller's responsibility. This includes provisioning the storage, rotating access keys, and deleting transient artifacts. 
-    The KustoBlobStorageUtils module contains helper functions for deleting blobs based on either account and container coordinates and account credentials, or a full SAS URL with write, read and list permissions. When the corresponding RDD is no longer needed, each transaction stores transient blob artifacts in a separate directory. This directory is captured as part of read-transaction information logs reported on the Spark Driver node.
+1. Optional: If **you** provide the transient blob storage (and not Azure Data Explorer) the blobs are created under the caller's responsibility. This includes provisioning the storage, rotating access keys, and deleting transient artifacts.
+    The KustoBlobStorageUtils module contains helper functions for deleting blobs based on either account and container coordinates and account credentials, or a full SAS URL with write, read, and list permissions. When the corresponding RDD is no longer needed, each transaction stores transient blob artifacts in a separate directory. This directory is captured as part of read-transaction information logs reported on the Spark Driver node.
 
     ```scala
     // Use either container/account-key/account name, or container SaS
@@ -257,8 +261,13 @@ For more information on Azure Data Explorer principal roles, see [role-based aut
         ```
 
     * If **Azure Data Explorer** provides the transient blob storage, read from Azure Data Explorer as follows:
-    
+
         ```scala
+        val conf3 = Map(
+          KustoSourceOptions.KUSTO_AAD_CLIENT_ID -> appId,
+          KustoSourceOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey)
+        val df2 = spark.read.kusto(cluster, database, "ReallyBigTable", conf3)
+        
         val dfFiltered = df2
           .where(df2.col("ColA").startsWith("row-2"))
           .filter("ColB > 12")
@@ -270,5 +279,5 @@ For more information on Azure Data Explorer principal roles, see [role-based aut
 
 ## Next steps
 
-* Learn more about the [Azure Data Explorer Spark Connector](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
-* [Sample code for Java and Python](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)
+* Learn to use more options of the [Azure Data Explorer Spark Connector](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
+* [Sample code for Scala and Python](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)

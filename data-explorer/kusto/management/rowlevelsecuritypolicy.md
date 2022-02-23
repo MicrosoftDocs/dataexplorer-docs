@@ -13,7 +13,7 @@ ms.date: 10/11/2020
 
 Use group membership or execution context to control access to rows in a database table.
 
-Row Level Security (RLS) simplifies the design and coding of security. It lets you apply restrictions on data row access in your application. For example, limit user access to rows relevant to their department, or restrict customer access to only the data relevant to their company.
+Row Level Security (RLS) simplifies the design and coding of security. It lets you apply restrictions on data row access in your application. For example, limit user access to rows relevant to their department, or restrict customer access to only the data relevant to their company. 
 
 The access restriction logic is located in the database tier, rather than away from the data in another application tier. The database system applies the access restrictions every time data access is attempted from any tier. This logic makes your security system more reliable and robust by reducing the surface area of your security system.
 
@@ -23,13 +23,17 @@ RLS lets you provide access to other applications and users, only to a certain p
 * Anonymize data in some of the columns
 * All of the above
 
-For more information, see [control commands for managing the Row Level Security policy](../management/row-level-security-policy.md).
+> [!NOTE]
+> When an RLS policy is enabled on a table, access is entirely replaced by the RLS query that's defined on the table. The access restriction applies to all users, including database admins and the RLS creator. The RLS query must explicitly include definitions for all types of users to whom you want to give access. 
+
+For more information, see [control commands for managing the Row Level Security policy](./show-table-row-level-security-policy-command.md).
 
 > [!TIP]
 > These functions are often useful for row_level_security queries:
 > * [current_principal()](../query/current-principalfunction.md)
 > * [current_principal_details()](../query/current-principal-detailsfunction.md)
 > * [current_principal_is_member_of()](../query/current-principal-ismemberoffunction.md)
+
 
 ## Limitations
 
@@ -39,6 +43,7 @@ The RLS policy can't be enabled on a table:
 * for which [continuous data export](../management/data-export/continuous-data-export.md) is configured.
 * referenced by a query of an [update policy](./updatepolicy.md).
 * on which [restricted view access policy](./restrictedviewaccesspolicy.md) is configured.
+* on which another row level security policy is enabled. 
 
 ## Examples
 
@@ -50,10 +55,10 @@ In a table named `Sales`, each row contains details about a sale. One of the col
 Sales | where SalesPersonAadUser == current_principal()
 ```
 
-You can also mask the credit card number:
+You can also mask the email address:
 
 ```kusto
-Sales | where SalesPersonAadUser == current_principal() | extend CreditCardNumber = "****"
+Sales | where SalesPersonAadUser == current_principal() | extend EmailAddress = "****"
 ```
 
 If you want every sales person to see all the sales of a specific country, you can define a query similar to:
@@ -75,7 +80,7 @@ let IsManager = current_principal_is_member_of('aadgroup=sales_managers@domain.c
 let AllData = Sales | where IsManager;
 let PartialData = Sales | where not(IsManager) and (SalesPersonAadUser == current_principal());
 union AllData, PartialData
-| extend CreditCardNumber = "****"
+| extend EmailAddress = "****"
 ```
 
 ### Expose different data to members of different Azure AD groups
@@ -137,15 +142,14 @@ For example:
 .create-or-alter function RLSForCustomersTables() {
     let IsProductionCluster = current_cluster_endpoint() == "mycluster.eastus.kusto.windows.net";
     let DataForProductionCluster = TempTable | where IsProductionCluster;
-    let DataForFollowerClusters = TempTable | where not(IsProductionCluster) | extend CreditCardNumber = "****";
+    let DataForFollowerClusters = TempTable | where not(IsProductionCluster) | extend EmailAddress = "****";
     union DataForProductionCluster, DataForFollowerClusters
 }
 ```
 
 ## More use cases
 
-* A call center support person may identify callers by several digits of their social security number or credit card number. Those numbers shouldn't be fully exposed to
-the support person. An RLS policy can be applied on the table to mask all but the last four digits of any social security or credit card number in the result set of any query.
+* A call center support person may identify callers by several digits of their social security number. This number shouldn't be fully exposed to the support person. An RLS policy can be applied on the table to mask all but the last four digits of the social security number in the result set of any query.
 * Set an RLS policy that masks personally identifiable information (PII), and enables developers to query production environments for troubleshooting purposes without violating compliance regulations.
 * A hospital can set an RLS policy that allows nurses to view data rows for their patients only.
 * A bank can set an RLS policy to restrict access to financial data rows based on an employee's business division or role.
@@ -153,7 +157,7 @@ the support person. An RLS policy can be applied on the table to mask all but th
 
 ## Performance impact on queries
 
-When an RLS policy is enabled on a table, there will be some performance impact on queries that access that table. Access to the table will actually be replaced by the RLS query that's defined on that table. The performance impact of an RLS query will normally consist of two parts:
+When an RLS policy is enabled on a table, there will be some performance impact on queries that access that table. Access to the table will be replaced by the RLS query that's defined on that table. The performance impact of an RLS query will normally consist of two parts:
 
 * Membership checks in Azure Active Directory
 * The filters applied on the data

@@ -51,7 +51,7 @@ Displays information about the materialized view's definition and its current st
 |Folder|string|The materialized view folder.
 |DocString|string|The materialized view doc string.
 |AutoUpdateSchema|bool|Whether the view is enabled for auto updates.
-|EffectiveDateTime|datetime|The effective date time of the view, determined during creation time (see [.create materialized-view](materialized-view-create.md#create-materialized-view)).
+|EffectiveDateTime|datetime|The effective date time of the view, determined during creation time (see [`.create materialized-view`](materialized-view-create.md#create-materialized-view)).
 
 ## .show materialized-view schema
 
@@ -79,7 +79,7 @@ Returns the schema of the materialized view in CSL/JSON.
 
 Returns the extents in the *materialized* part of the materialized view. For a definition of the *materialized* portion, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work).
 
-This command provides the same details as the [show table extents](../show-extents.md#table-level) command.
+This command provides the same details as the [show table extents](../show-extents.md#table-scope) command.
 
 ### Syntax
 

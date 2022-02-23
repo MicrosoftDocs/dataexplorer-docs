@@ -52,7 +52,7 @@ dataformat=csv
 
 The external table is now visible in the left pane of the Web UI:
 
-:::image type="content" source="media/data-lake-query-data/external-tables-web-ui.png" alt-text="External table in web UI":::
+:::image type="content" source="media/data-lake-query-data/external-tables-web-ui.png" alt-text="External table in web UI.":::
  
 ### External table permissions
  
@@ -194,7 +194,7 @@ This section shows the query used to create the *TaxiRides* external table in th
   dropoff_puma: string
 )
 kind=blob 
-partition by bin(pickup_datetime, 1d)
+partition by (Date:datetime = bin(pickup_datetime, 1d))   
 dataformat=csv
 ( 
     h@'https://storageaccount.blob.core.windows.net/container1;secretKey'
@@ -203,7 +203,7 @@ dataformat=csv
 
 You can find the created **TaxiRides** table by looking at the left pane of the Web UI:
 
-:::image type="content" source="media/data-lake-query-data/taxirides-external-table.png" alt-text="Taxi rides external table":::
+:::image type="content" source="media/data-lake-query-data/taxirides-external-table.png" alt-text="Taxi rides external table.":::
 
 ### Query *TaxiRides* external table data 
 
@@ -221,7 +221,7 @@ external_table("TaxiRides")
 
 This query shows the busiest day of the week. Since the data isn't partitioned, the query may take up to several minutes to return results.
 
-:::image type="content" source="media/data-lake-query-data/taxirides-no-partition.png" alt-text="render non-partitioned query":::
+:::image type="content" source="media/data-lake-query-data/taxirides-no-partition.png" alt-text="render non-partitioned query.":::
 
 #### Query TaxiRides external table with partitioning 
 
@@ -236,7 +236,7 @@ external_table("TaxiRides")
 
 This query uses partitioning, which optimizes query time and performance. The query filters on a partitioned column (pickup_datetime) and returns results in a few seconds.
 
-:::image type="content" source="media/data-lake-query-data/taxirides-with-partition.png" alt-text="Render partitioned query":::
+:::image type="content" source="media/data-lake-query-data/taxirides-with-partition.png" alt-text="Render partitioned query.":::
   
 You can write additional queries to run on the external table *TaxiRides* and learn more about the data. 
 

@@ -6,14 +6,13 @@ ms.author: orspodek
 ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 04/07/2019
+ms.date: 10/11/2021
 ---
-
 # Time series analysis in Azure Data Explorer
 
 Azure Data Explorer (ADX) performs on-going collection of telemetry data from cloud services or IoT devices. This data can be analyzed for various insights such as monitoring service health, physical production processes, and usage trends. Analysis is done on time series of selected metrics to find a deviation in the pattern compared to its typical baseline pattern.
 ADX contains native support for creation, manipulation, and analysis of multiple time series. 
-In this topic, learn how ADX is used to create and analyze **thousands of time series in seconds**, enabling near real-time monitoring solutions and workflows.
+In this topic, learn how Azure Data Explorer is used to create and analyze **thousands of time series in seconds**, enabling near real-time monitoring solutions and workflows.
 
 ## Time series creation
 
@@ -51,25 +50,25 @@ Since there are no metrics, we can only build a set of time series representing 
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
 let max_t = toscalar(demo_make_series1 | summarize max(TimeStamp));
 demo_make_series1
-| make-series num=count() default=0 on TimeStamp in range(min_t, max_t, 1h) by OsVer
+| make-series num=count() default=0 on TimeStamp from min_t to max_t step 1h by OsVer
 | render timechart 
 ```
 
 - Use the [`make-series`](kusto/query/make-seriesoperator.md) operator to create a set of three time series, where:
     - `num=count()`: time series of traffic
-    - `range(min_t, max_t, 1h)`: time series is created in 1-hour bins in the time range (oldest and newest timestamps of table records)
+    - `from min_t to max_t step 1h`: time series is created in 1-hour bins in the time range (oldest and newest timestamps of table records)
     - `default=0`: specify fill method for missing bins to create regular time series. Alternatively use [`series_fill_const()`](kusto/query/series-fill-constfunction.md), [`series_fill_forward()`](kusto/query/series-fill-forwardfunction.md), [`series_fill_backward()`](kusto/query/series-fill-backwardfunction.md) and [`series_fill_linear()`](kusto/query/series-fill-linearfunction.md) for changes
-    - `byOsVer`:  partition by OS
+    - `by OsVer`:  partition by OS
 - The actual time series data structure is a numeric array of the aggregated value per each time bin. We use `render timechart` for visualization.
 
 In the table above, we have three partitions. We can create a separate time series: Windows 10 (red), 7 (blue) and 8.1 (green) for each OS version as seen in the graph:
 
-![Time series partition](media/time-series-analysis/time-series-partition.png)
+![Time series partition.](media/time-series-analysis/time-series-partition.png)
 
 ## Time series analysis functions
 
 In this section, we'll perform typical series processing functions.
-Once a set of time series is created, ADX supports a growing list of functions to process and analyze them which can be found in the [time series documentation](kusto/query/machine-learning-and-tsa.md). We will describe a few representative functions for processing and analyzing time series.
+Once a set of time series is created, Azure Data Explorer supports a growing list of functions to process and analyze them which can be found in the [time series documentation](kusto/query/machine-learning-and-tsa.md). We will describe a few representative functions for processing and analyzing time series.
 
 ### Filtering
 
@@ -90,7 +89,7 @@ demo_make_series1
 | render timechart
 ```
 
-![Time series filtering](media/time-series-analysis/time-series-filtering.png)
+![Time series filtering.](media/time-series-analysis/time-series-filtering.png)
 
 ### Regression analysis
 
@@ -108,7 +107,7 @@ demo_series2
 | render linechart with(xcolumn=x)
 ```
 
-![Time series regression](media/time-series-analysis/time-series-regression.png)
+![Time series regression.](media/time-series-analysis/time-series-regression.png)
 
 - Blue: original time series
 - Green: fitted line
@@ -130,7 +129,7 @@ demo_series3
 | render timechart 
 ```
 
-![Time series seasonality](media/time-series-analysis/time-series-seasonality.png)
+![Time series seasonality.](media/time-series-analysis/time-series-seasonality.png)
 
 - Use [series_periods_detect()](kusto/query/series-periods-detectfunction.md) to automatically detect the periods in the time series. 
 - Use [series_periods_validate()](kusto/query/series-periods-validatefunction.md) if we know that a metric should have specific distinct period(s) and we want to verify that they exist.
@@ -171,7 +170,7 @@ demo_make_series1
 | render timechart
 ```
 
-![Time series operations](media/time-series-analysis/time-series-operations.png)
+![Time series operations.](media/time-series-analysis/time-series-operations.png)
 
 - Blue: original time series
 - Red: smoothed time series
@@ -220,7 +219,7 @@ demo_many_series1
 | render timechart with(ymin=0) 
 ```
 
-![Time series at scale](media/time-series-analysis/time-series-at-scale.png)
+![Time series at scale.](media/time-series-analysis/time-series-at-scale.png)
 
 The above behavior is misleading, since the single normal time series is aggregated from thousands of different instances that may have abnormal patterns. Therefore, we create a time series per instance. An instance is defined by Loc (location), anonOp (operation), and DB (specific machine).
 
@@ -252,7 +251,7 @@ demo_many_series1
 | render timechart with(title='Service Traffic Outage for 2 instances (out of 18339)')
 ```
 
-![Time series top two](media/time-series-analysis/time-series-top-2.png)
+![Time series top two.](media/time-series-analysis/time-series-top-2.png)
 
 Display the instances:
 
@@ -273,9 +272,9 @@ demo_many_series1
 | Loc 15 | 37 | 1151 | -102743.910227889 |
 | Loc 13 | 37 | 1249 | -86303.2334644601 |
 
-In less than two minutes, ADX analyzed close to 20,000 time series and detected two abnormal time series in which the read count suddenly dropped.
+In less than two minutes, Azure Data Explorer analyzed close to 20,000 time series and detected two abnormal time series in which the read count suddenly dropped.
 
-These advanced capabilities combined with ADX fast performance supply a unique and powerful solution for time series analysis.
+These advanced capabilities combined with Azure Data Explorer fast performance supply a unique and powerful solution for time series analysis.
 
 ## Next steps
 

@@ -90,7 +90,7 @@ It lists programmatic names (which is the name of the property in the
 |Application Name for Tracing                      |TraceAppName                              |ApplicationNameForTracing                     |A String value that reports to the service which application name to use when tracing the request internally|
 |Application Token                                 |AppToken                                  |ApplicationToken                              |A String value that instructs the client to perform application authenticating with the specified bearer token|
 |Authority Id                                      |TenantId                                  |Authority                                     |A String value that provides the name or ID of the tenant in which the application is registered|
-|                                                  |                                          |EmbeddedManagedIdentity                       |A String value that instructs the client which application identity to use with managed identity authentication; use `system` to indicate the system-assigned identity. This property cannot be set with a connection string, only programmatically.|ManagedServiceIdentity                        |TODO|
+|ManagedServiceIdentity                        |N/A|EmbeddedManagedIdentity                       |A String value that instructs the client which application identity to use with managed identity authentication; use `system` to indicate the system-assigned identity. This property cannot be set with a connection string, only programmatically.|
 |Application Certificate Subject Distinguished Name|Application Certificate Subject           |ApplicationCertificateSubjectDistinguishedName||
 |Application Certificate Issuer Distinguished Name |Application Certificate Issuer            |ApplicationCertificateIssuerDistinguishedName ||
 |Application Certificate Send Public Certificate   |Application Certificate SendX5c, SendX5c  |ApplicationCertificateSendPublicCertificate   ||
@@ -200,6 +200,27 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
 // Equivalent Kusto connection string: $"Data Source={serviceUri};Database=NetDefaultDB;Fed=True;AppClientId={applicationClientId};AppKey={applicationKey};Authority Id={authority}"
 ```
 
+**Using System-assigned Managed Identity**
+
+```csharp
+var serviceUri = "Service URI, typically of the form https://cluster.region.kusto.windows.net";
+
+// Recommended syntax
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
+    .WithAadSystemManagedIdentity();
+```
+
+**Using User-assigned Managed Identity**
+
+```csharp
+var serviceUri = "Service URI, typically of the form https://cluster.region.kusto.windows.net";
+var managedIdentityClientId = "<managed identity client id>";
+
+// Recommended syntax
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
+    .WithAadUserManagedIdentity(managedIdentityClientId);
+```
+
 **AAD Federated authentication using user / application token**
 
 ```csharp
@@ -251,24 +272,6 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
 {
     FederatedSecurity = true,
     TokenProviderCallback = () => Task.FromResult(tokenProviderCallback()),
-};
-```
-
-**Using Managed Identity**
-
-```csharp
-var serviceUri = "Service URI, typically of the form https://cluster.region.kusto.windows.net";
-var managedIdentity = "<managed identity>"; // For system-assigned identity use "system"
-
-// Recommended syntax
-var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
-    .WithAadManagedIdentity(managedIdentity);
-
-// Legacy syntax
-var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(serviceUri)
-{
-    FederatedSecurity = true,
-    EmbeddedManagedIdentity = managedIdentity,
 };
 ```
 

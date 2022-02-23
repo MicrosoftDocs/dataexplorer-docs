@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: vladikb
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/11/2020
+ms.date: 01/30/2022
 ---
 # Azure Data Explorer API Overview
 
@@ -21,7 +21,7 @@ The Azure Data Explorer service supports the following communication endpoints:
 
 ## REST API
 
-The primary means of communicating with any Azure Data Explorer service, is by using the service's REST API. 
+The primary means of communicating with any Azure Data Explorer service, is by using the service's [REST API](rest/index.md).
 With this fully documented endpoint, callers can:
 
 * Query data
@@ -30,18 +30,18 @@ With this fully documented endpoint, callers can:
 * Query the service health status
 * Manage resources
 
-The different Azure Data Explorer services communicate among themselves, via the same publicly available REST API.
+The different Azure Data Explorer services communicate among themselves, via the same [publicly available REST API](/rest/api/azurerekusto/).
 
 A number of [client libraries](client-libraries.md) are also available to use the service, without dealing with the REST API protocol.
 
 ## MS-TDS
 
-Azure Data Explorer also supports the Microsoft SQL Server communication protocol (MS-TDS), and includes a limited support for running T-SQL queries. 
+Azure Data Explorer also supports the Microsoft SQL Server communication protocol (MS-TDS), and includes a limited support for running T-SQL queries.
 This protocol enables users to run queries on Azure Data Explorer using a well-known query syntax (T-SQL) and database client tools such as LINQPad, sqlcmd, Tableau, Excel, and Power BI.
 
 For more information, see [MS-TDS](tds/index.md).
 
-## Client libraries 
+## Client libraries
 
 Azure Data Explorer provides a number of client libraries that make use of the above endpoints, to make programmatic access easy.
 
@@ -53,12 +53,15 @@ Azure Data Explorer provides a number of client libraries that make use of the a
 * Go SDK
 * PowerShell
 
+> [!TIP]
+> You can use the one-click sample app generator to create a working app, tailored to your cluster, to ingest and query your data in your preferred programming language. The generated code can be used as a baseline to write your own apps, altering the code as you go, or you can copy sections of code into your own apps. For more information, see [one-click sample app generator](../../sample-app-generator-one-click.md).
+
 ### .NET Framework Libraries
 
 .NET Framework Libraries are the recommended way to invoke Azure Data Explorer functionality programmatically.
 A number of different libraries are available.
 
-* [Kusto.Data (Kusto Client Library)](./netfx/about-kusto-data.md): Can be used to query data, query metadata, and alter it. 
+* [Kusto.Data (Kusto Client Library)](./netfx/about-kusto-data.md): Can be used to query data, query metadata, and alter it.
    It's built on top of the Kusto REST API, and sends HTTPS requests to the target Kusto cluster.
 * [Kusto.Ingest (Kusto Ingestion Library)](netfx/about-kusto-ingest.md): Uses `Kusto.Data` and extends it to ease data ingestion.
 
@@ -76,7 +79,7 @@ For more information, see [Azure Data Explorer R SDK](r/kusto-r-client-library.m
 
 ### Java SDK
 
-The Java client library provides the capability to query Azure Data Explorer clusters using Java. 
+The Java client library provides the capability to query Azure Data Explorer clusters using Java.
 For more information, see [Azure Data Explorer Java SDK](java/kusto-java-client-library.md).
 
 ### Node SDK
@@ -86,12 +89,12 @@ For more information, see [Azure Data Explorer Node SDK](node/kusto-node-client-
 
 ### Go SDK
 
-Azure Data Explorer Go Client library provides the capability to query, control and ingest into Azure Data Explorer clusters using Go. 
+Azure Data Explorer Go Client library provides the capability to query, control and ingest into Azure Data Explorer clusters using Go.
 For more information, see [Azure Data Explorer Golang SDK](golang/kusto-golang-client-library.md).
 
 ### PowerShell
 
-Azure Data Explorer .NET Framework Libraries can be used by PowerShell scripts. 
+Azure Data Explorer .NET Framework Libraries can be used by PowerShell scripts.
 For more information, see [Calling Azure Data Explorer from PowerShell](powershell/powershell.md).
 
 ## Monaco IDE integration

@@ -19,8 +19,12 @@ Show the ingestion mappings (all or the one specified by name).
 
 Show all ingestion mappings from all mapping types:
 
-* `.show` `table` *TableName* `ingestion`  `mapping`
- 
+* `.show` `table` *TableName* `ingestion`  `mappings`
+
+Show all ingestion mappings on a database:
+
+* `.show` `database` *DatabaseName* `ingestion` *MappingKind* `mappings`
+
 **Example** 
  
 ```kusto
@@ -29,6 +33,8 @@ Show all ingestion mappings from all mapping types:
 .show table MyTable ingestion csv mappings 
 
 .show table MyTable ingestion mappings 
+
+.show database MyDatabase ingestion csv mappings 
 ```
 
 **Sample output**

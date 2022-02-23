@@ -7,18 +7,20 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 08/05/2021
 ---
 # .alter table docstring
 
-Alters the DocString value of an existing table.
+Alters the `DocString` value of an existing table.
+
+`DocString` is free text that you can attach to a table/function/column describing the entity. This string is presented in various UX settings next to the entity names.
 
 `.alter` `table` *TableName* `docstring` *Documentation*
 
 > [!NOTE]
 > * Requires [database admin permission](../management/access-control/role-based-authorization.md)
 > * The [database user](../management/access-control/role-based-authorization.md) who originally created the table is permitted to modify it
-> * If the table doesn't exist, an error is returned. To create a new table, see [.create table](create-table-command.md)
+> * If the table doesn't exist, an error is returned. To create a new table, see [`.create table`](create-table-command.md)
 
 **Example** 
 

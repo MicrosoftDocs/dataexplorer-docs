@@ -6,12 +6,13 @@ ms.author: orspodek
 ms.reviewer: lugoldbe
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/28/2019
+ms.date: 04/21/2021
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template
 
 > [!div class="op_single_selector"]
+> * [One-click](one-click-ingestion-new-table.md)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
@@ -22,10 +23,10 @@ In this article, you create an Event Grid data connection for Azure Data Explore
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* Create [a cluster and database](create-cluster-database-portal.md)
-* Create [a table and column mapping](ingest-data-event-grid.md#create-a-target-table-in-azure-data-explorer)
-* Create [an event hub](/azure/event-hubs/event-hubs-create)
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
+* Create [a table and column mapping](ingest-data-event-grid.md#create-a-target-table-in-azure-data-explorer).
+* Create [an event hub](/azure/event-hubs/event-hubs-create).
 * Create [a storage account with an Event Grid subscription](ingest-data-event-grid.md).
 
 ## Azure Resource Manager template for adding an Event Grid data connection
@@ -41,21 +42,21 @@ The following example shows an Azure Resource Manager template for adding an Eve
             "type": "string",
             "defaultValue": "eventhubns",
             "metadata": {
-                "description": "Specifies the Event Hub Namespace name."
+                "description": "Specifies the event hub namespace name."
             }
         },
         "EventHubs_eventhubdemo_name": {
             "type": "string",
             "defaultValue": "eventhubdemo",
             "metadata": {
-                "description": "Specifies the Event Hub name."
+                "description": "Specifies the event hub name."
             }
         },
         "consumergroup_default_name": {
             "type": "string",
             "defaultValue": "$Default",
             "metadata": {
-                "description": "Specifies the consumer group of the Event Hub."
+                "description": "Specifies the consumer group of the event hub."
             }
         },
         "StorageAccounts_storagedemo_name": {

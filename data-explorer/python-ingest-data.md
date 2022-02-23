@@ -3,10 +3,10 @@ title: 'Ingest data using the Azure Data Explorer Python library'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Python.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: vladikbr
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 06/03/2019
+ms.date: 02/07/2022
 
 # Customer intent: As a Python developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
@@ -24,15 +24,12 @@ In this article, you ingest data using the Azure Data Explorer Python library. A
 
 First, create a table and data mapping in a cluster. You then queue ingestion to the cluster and validate the results.
 
-This article is also available as an [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb).
 
 ## Prerequisites
 
-* An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 * [Python 3.4+](https://www.python.org/downloads/).
-
-* [A cluster and database](create-cluster-database-portal.md).
 
 ## Install the data and ingest libraries
 
@@ -69,8 +66,8 @@ The tenant ID in this case is `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. Set the va
 
 ```python
 AAD_TENANT_ID = "<TenantId>"
-KUSTO_URI = "https://<ClusterName>.<Region>.kusto.windows.net:443/"
-KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/"
+KUSTO_URI = "https://<ClusterName>.<Region>.kusto.windows.net/"
+KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net/"
 KUSTO_DATABASE = "<DatabaseName>"
 ```
 
@@ -91,14 +88,14 @@ DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
 
 ## Set source file information
 
-Import additional classes and set constants for the data source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
+Import additional classes and set constants for the data source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncei.noaa.gov/).
 
 ```python
-from azure.kusto.ingest import KustoIngestClient, IngestionProperties, FileDescriptor, BlobDescriptor, DataFormat, ReportLevel, ReportMethod
+from azure.kusto.ingest import QueuedIngestClient, IngestionProperties, FileDescriptor, BlobDescriptor, DataFormat, ReportLevel, ReportMethod
 
 CONTAINER = "samplefiles"
-ACCOUNT_NAME = "kustosamplefiles"
-SAS_TOKEN = "?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D"
+ACCOUNT_NAME = "kustosamples"
+SAS_TOKEN = ""  # If relevant add SAS token
 FILE_PATH = "StormEvents.csv"
 FILE_SIZE = 64158321    # in bytes
 
@@ -136,11 +133,11 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 Queue a message to pull data from blob storage and ingest that data into Azure Data Explorer.
 
 ```python
-INGESTION_CLIENT = KustoIngestClient(KCSB_INGEST)
+INGESTION_CLIENT = QueuedIngestClient(KCSB_INGEST)
 
 # All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
-INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.CSV,
-                                           mappingReference=DESTINATION_TABLE_COLUMN_MAPPING, additionalProperties={'ignoreFirstRecord': 'true'})
+INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, data_format=DataFormat.CSV,
+                                           ingestion_mapping_reference=DESTINATION_TABLE_COLUMN_MAPPING, additional_properties={'ignoreFirstRecord': 'true'})
 # FILE_SIZE is the raw size of the data in bytes
 BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
 INGESTION_CLIENT.ingest_from_blob(

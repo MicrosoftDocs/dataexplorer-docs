@@ -38,15 +38,13 @@ Pretty names allow middle-tier applications to map automatically-create entity n
 
 ## Identifier naming rules
 
-<!-- TODO: This section should be reviewed and moved to its own page -->
-
 Identifiers are used to name various entities (entities or otherwise).
 Valid identifier names follow these rules:
 * They have between 1 and 1024 characters long.
 * They may contain letters, digits, underscores (`_`), spaces, dots (`.`), and dashes (`-`).
   * Identifiers consisting only of letters, digits, and underscores
     do not require quoting when the identifier is being referenced.
-  * Identifiers containing at last one of (spaces, dots, or dashes) do
+  * Identifiers containing at least one of (spaces, dots, or dashes) do
     require quoting (see below).
 * They are case-sensitive.
 
@@ -72,7 +70,7 @@ Alternatively, one might want to choose entity names that are guaranteed to neve
 "collide" with a Kusto keyword. The following guarantees are made:
 
 1. The Kusto query language will not define a keyword that starts with a capital letter (`A` to `Z`).
-2. The Kusto query language will not define a keyword that starts with a single underscore (`_`).us
+2. The Kusto query language will not define a keyword that starts with a single underscore (`_`).
 3. The Kusto query language will not define a keyword that ends with a single underscore (`_`).
 
 The Kusto query language reserves all identifiers that start or end with a

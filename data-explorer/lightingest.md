@@ -1,24 +1,26 @@
 ---
-title: Use LightIngest to ingest data to Azure Data Explorer.
+title: Use LightIngest to ingest data into Azure Data Explorer.
 description: Learn about LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
 author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 06/28/2020
+ms.date: 07/27/2021
 ---
 
-# Use LightIngest to ingest data to Azure Data Explorer
+# Use LightIngest to ingest data into Azure Data Explorer
  
 LightIngest is a command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder or from an Azure blob storage container.
 LightIngest is most useful when you want to ingest a large amount of data, because there is no time constraint on ingestion duration. It's also useful when you want to later query records according to the time they were created, and not the time they were ingested.
+
+To auto-generate a LightIngest command, see [Use ingestion wizard for one-time ingestion of historical data with LightIngest](generate-lightingest-command.md).
 
 ## Prerequisites
 
 * LightIngest - download it as part of the [Microsoft.Azure.Kusto.Tools NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)
 
-    :::image type="content" source="media/lightingest/lightingest-download-area.png" alt-text="Lightingest download":::
+    :::image type="content" source="media/lightingest/lightingest-download-area.png" alt-text="Lightingest download.":::
 
 * WinRAR - download it from [www.win-rar.com/download.html](http://www.win-rar.com/download.html)
 
@@ -32,7 +34,7 @@ LightIngest is most useful when you want to ingest a large amount of data, becau
 1. Navigate to the extracted *tools* directory on your computer.
 1. Delete the existing location information from the location bar.
 
-    :::image type="content" source="media/lightingest/lightingest-locationbar.png" alt-text="Delete existing location information for LightIngest in Azure Data Explorer":::
+    :::image type="content" source="media/lightingest/lightingest-locationbar.png" alt-text="Delete existing location information for LightIngest in Azure Data Explorer.":::
 
 
 1. Enter `cmd` and press **Enter**.
@@ -41,7 +43,7 @@ LightIngest is most useful when you want to ingest a large amount of data, becau
     > [!Tip]
     > For a list of supported command-line arguments, enter `LightIngest.exe /help`.
     >
-    > :::image type="content" source="media/lightingest/lightingest-cmd-line-help.png" alt-text="Command line help for LightIngest":::
+    > :::image type="content" source="media/lightingest/lightingest-cmd-line-help.png" alt-text="Command line help for LightIngest.":::
 
 1. Enter `ingest-` followed by the connection string to the Azure Data Explorer cluster that will manage the ingestion.
     Enclose the connection string in double quotes and follow the [Kusto connection strings specification](kusto/api/connection-strings/kusto.md).
@@ -99,40 +101,6 @@ When used with Azure blobs, LightIngest will use certain blob metadata propertie
 
 ## Usage examples
 
-<!-- Waiting for Tzvia or Vladik to rewrite the instructions for this example before publishing it
-
-### Ingesting a specific number of blobs in JSON format
-
-* Ingest two blobs under a specified storage account {Account}, in `JSON` format matching the pattern `.json`
-* Destination is the database {Database}, the table `SampleData`
-* Indicate that your data is compressed with the approximate ratio of 10.0
-* LightIngest won't wait for the ingestion to be completed
-
-To use the LightIngest command below:
-1. Create a table command and enter the table name into the LightIngest command, replacing `SampleData`.
-1. Create a mapping command and enter the IngestionMappingRef command, replacing `SampleData_mapping`.
-1. Copy your cluster name and enter it into the LightIngest command, replacing `{ClusterandRegion}`.
-1. Enter the database name into the LightIngest command, replacing `{Database name}`.
-1. Replace `{Account}` with your account name and replace `{ROOT_CONTAINER}?{SAS token}` with the appropriate information.
-
-    ```
-    LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"  
-        -db:{Database name} 
-        -table:SampleData 
-        -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER}?{SAS token}" 
-        -IngestionMappingRef:SampleData_mapping 
-        -pattern:"*.json" 
-        -format:JSON 
-        -limit:2 
-        -cr:10.0 
-        -dontWait:true
-    ```
-     
-1. In Azure Data Explorer, open query count.
-
-    ![Ingestion result in Azure Data Explorer](media/lightingest/lightingest-show-failure-count.png)
--->
-
 ### How to ingest data using CreationTime
 
 When you load historical data from existing system to Azure Data Explorer, all records receive the same the ingestion date. To enable partitioning your data by creation time and not ingestion time, you can use the `-creationTimePattern` argument. The `-creationTimePattern` argument extracts the `CreationTime` property from the file or blob path. The pattern doesn't need to reflect the entire item path, just the section enclosing the timestamp you want to use.
@@ -141,6 +109,9 @@ The argument values must include:
 * Constant text immediately preceding the timestamp format, enclosed in single quotes (prefix)
 * The timestamp format, in standard [.NET DateTime notation](/dotnet/standard/base-types/custom-date-and-time-format-strings)
 * Constant text immediately following the timestamp (suffix).
+
+> [!IMPORTANT]
+> When specifying that the creation time should be overridden, make sure the `Lookback` property in the target table's effective [Extents merge policy](kusto/management/mergepolicy.md) is aligned with the values in your file or blob paths.
 
 **Examples** 
 

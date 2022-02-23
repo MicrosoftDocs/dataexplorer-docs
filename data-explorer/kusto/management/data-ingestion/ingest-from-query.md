@@ -37,7 +37,7 @@ existing or nonexistent tables and data.
   ingestion in the background. The results of the command will include
   an `OperationId` value that can then be used with the `.show operations`
   command, to retrieve the ingestion completion status and results.
-* *TableName*: The name of the table to ingest data to.
+* *TableName*: The name of the table to ingest data into.
   The table name is always related to the database in context.
 * *PropertyName*, *PropertyValue*: Any number of ingestion properties that affect the ingestion process.
 
@@ -45,12 +45,12 @@ existing or nonexistent tables and data.
 
 |Property        |Description|
 |----------------|-----------------------------------------------------------------------------------------------------------------------------|
-|`creationTime`   | The datetime value, formatted as an ISO8601 string, to use at the creation time of the ingested data extents. If unspecified, the current value (`now()`) will be used|
+|`creationTime`   | The datetime value, formatted as an ISO8601 string, to use at the creation time of the ingested data extents. If unspecified, the current value (`now()`) will be used. When specified, make sure the `Lookback` property in the target table's effective [Extents merge policy](../mergepolicy.md) is aligned with the specified value|
 |`extend_schema`  | A Boolean value that, if specified, instructs the command to extend the schema of the table. Default is "false". This option applies only to `.append`, `.set-or-append`, and `set-or-replace` commands. The only permitted schema extensions have additional columns added to the table at the end|
 |`recreate_schema`  | A Boolean value that. If specified, describes if the command may recreate the schema of the table. Default is "false". This option applies only to the *set-or-replace* command. This option takes precedence over the extend_schema property if both are set|
 |`folder`         | The folder to assign to the table. If the table already exists, this property will overwrite the table's folder.|
 |`ingestIfNotExists`   | A string value that. If specified, prevents ingestion from succeeding if the table already has data tagged with an `ingest-by:` tag with the same value|
-|`policy_ingestiontime`   | A Boolean value. If specified, describes if to enable the [Ingestion Time Policy](../../management/ingestiontime-policy.md) on a table that is created by this command. The default is "true"|
+|`policy_ingestiontime`   | A Boolean value. If specified, describes if to enable the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) on a table that is created by this command. The default is "true"|
 |`tags`   | A JSON string that indicates which validations to run during ingestion|
 |`docstring`   | A string documenting the table|
 
@@ -82,7 +82,7 @@ existing or nonexistent tables and data.
 
 **Examples** 
 
-Create a new table called "RecentErrors" in the database that has the same schema as "LogsTable" and holds all the error records of the last hour.
+Create a new table called :::no-loc text="RecentErrors"::: in the database that has the same schema as :::no-loc text="LogsTable"::: and holds all the error records of the last hour.
 
 ```kusto
 .set RecentErrors <|
@@ -90,10 +90,10 @@ Create a new table called "RecentErrors" in the database that has the same schem
    | where Level == "Error" and Timestamp > now() - time(1h)
 ```
 
-Create a new table called "OldExtents" in the database that has a single column, "ExtentId", and holds the extent IDs of all extents in the database that has been created more than 30 days earlier. The database has an existing table named "MyExtents".
+Create a new table called "OldExtents" in the database that has a single column, "ExtentId", and holds the extent IDs of all extents in the database that has been created more than 30 days earlier. The database has an existing table named "MyExtents". Since the dataset is expected to be bigger than 1GB (more than ~1 million rows) use the *distributed* flag 
 
 ```kusto
-.set async OldExtents <|
+.set async OldExtents with(distributed=true) <|
    MyExtents 
    | where CreatedOn < now() - time(30d)
    | project ExtentId

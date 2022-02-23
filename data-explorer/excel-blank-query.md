@@ -17,10 +17,11 @@ Azure Data Explorer provides two options for connecting to data in Excel: use th
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md).
 * An organizational email account that is a member of Azure Active directory, so you can connect to the [Azure Data Explorer help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples) 
 <br>or</br>
-* Create [a test cluster and database](create-cluster-database-portal.md) and sign in to [the Azure Data Explorer Web UI application](https://dataexplorer.azure.com/).
+* Sign in to [the Azure Data Explorer Web UI application](https://dataexplorer.azure.com/).
 
 ## Define Kusto query as an Excel data source
 
@@ -28,43 +29,43 @@ Azure Data Explorer provides two options for connecting to data in Excel: use th
 
 1. Select the **Share** tab and select **Query to Power BI**.
 
-    ![Web UI query to Power BI](media/excel-blank-query/web-ui-query-to-powerbi.png)
+    ![Web UI query to Power BI.](media/excel-blank-query/web-ui-query-to-powerbi.png)
 
 1. A window appears with the following notification:
 
-    ![export query to clipboard](media/excel-blank-query/query-exported-to-clipboard.png)
+    ![export query to clipboard.](media/excel-blank-query/query-exported-to-clipboard.png)
 
 1. Open **Microsoft Excel**.
 
 1. In the **Data** tab, select **Get Data** > **From Other Sources** > **Blank Query**.
 
-    ![Get data and select blank query](media/excel-blank-query/get-data-blank-query.png)
+    ![Get data and select blank query.](media/excel-blank-query/get-data-blank-query.png)
 
 1. The **Power Query Editor** window opens. In the window, select **Advanced Editor**.
 
-    ![Power query editor window](media/excel-blank-query/power-query-editor.png)
+    ![Power query editor window.](media/excel-blank-query/power-query-editor.png)
 
 1. In the **Advanced Editor** window, paste the query you exported to the clipboard and select **Done**.
 
-    ![Advanced editor query](media/excel-blank-query/advanced-editor-query.png)    
+    ![Advanced editor query.](media/excel-blank-query/advanced-editor-query.png)    
 
 1. To authenticate, select **Edit Credentials**.
 
-    ![Edit credentials](media/excel-blank-query/edit-credentials.png)
+    ![Edit credentials.](media/excel-blank-query/edit-credentials.png)
 
 1. Select **Organizational account** and **Sign in**. Complete the sign-in process and then select **Connect**.
 
-    ![Complete sign-in](media/excel-blank-query/complete-sign-in.png)
+    ![Complete sign-in.](media/excel-blank-query/complete-sign-in.png)
 
     Repeat the previous steps to add more queries. You can rename the queries to more meaningful names.
 
 1. Select the **Close & Load** button to get your data into Excel.
 
-    ![Select close and load](media/excel-blank-query/close-and-load.png)
+    ![Select close and load.](media/excel-blank-query/close-and-load.png)
 
 1. Now your data is in Excel. Select the **Refresh** button to refresh the query.
 
-    ![View data in excel](media/excel-blank-query/data-in-excel.png)
+    ![View data in excel.](media/excel-blank-query/data-in-excel.png)
 
 ## Next steps
 

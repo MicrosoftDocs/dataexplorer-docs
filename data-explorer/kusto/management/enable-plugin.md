@@ -28,6 +28,6 @@ This command requires `All Databases admin` permission.
 
 ## Next steps
 
-* [.disable plugin](disable-plugin.md)
-* [.show plugins](show-plugins.md)
+* [`.disable plugin`](disable-plugin.md)
+* [`.show plugins`](show-plugins.md)
 

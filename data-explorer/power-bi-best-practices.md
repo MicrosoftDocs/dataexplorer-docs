@@ -6,7 +6,7 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/26/2019
+ms.date: 01/27/2022
 
 # Customer intent: As a data analyst, I want to visualize my data for additional insights using Power BI.
 ---
@@ -23,7 +23,7 @@ When working with terabytes of fresh raw data, follow these guidelines to keep P
 
 * **Composite model** - Use [composite model](/power-bi/desktop-composite-models) to combine aggregated data for top-level dashboards with filtered operational raw data. You can clearly define when to use raw data and when to use an aggregated view. 
 
-* **Import mode versus DirectQuery mode** - Use **Import** mode for interaction of smaller data sets. Use **DirectQuery** mode for large, frequently updated data sets. For example, create dimension tables using **Import** mode since they're small and don't change often. Set the refresh interval according to the expected rate of data updates. Create fact tables using **DirectQuery** mode since these tables are large and contain raw data. Use these tables to present filtered data using Power BI [drillthrough](/power-bi/desktop-drillthrough).
+* **Import mode versus [DirectQuery](/power-bi/connect-data/desktop-directquery-about) mode** - Use **Import** mode for interaction of smaller data sets. Use **DirectQuery** mode for large, frequently updated data sets. For example, create dimension tables using **Import** mode since they're small and don't change often. Set the refresh interval according to the expected rate of data updates. Create fact tables using **DirectQuery** mode since these tables are large and contain raw data. Use these tables to present filtered data using Power BI [drillthrough](/power-bi/desktop-drillthrough). When using **DirectQuery**, you can use [**Query Reduction**](/power-bi/connect-data/desktop-directquery-about#report-design-guidance) to prevent reports from loading data before you're ready.
 
 * **Parallelism** – Azure Data Explorer is a linearly scalable data platform, therefore, you can improve the performance of dashboard rendering by increasing the parallelism of the end-to-end flow as follows:
 
@@ -90,6 +90,7 @@ You can use any of the following options in your M query:
 | CaseInsensitive | `[CaseInsensitive=true]` | Makes the connector generate queries that are case insensitive - queries will use the `=~` operator instead of the `==` operator when comparing values.
 | ForceUseContains | `[ForceUseContains=true]` | Makes the connector generate queries that use `contains` instead of the default `has` when working with text fields. While `has` is much more performant, it doesn't handle substrings. For more information about the difference between the two operators, see [string operators](./kusto/query/datatypes-string-operators.md).
 | Timeout | `[Timeout=#duration(0,10,0,0)]` | Configures both the client and server timeout of the query to the provided duration.
+| ClientRequestIdPrefix  | `[ClientRequestIdPrefix="MyReport"]` | Configures a ClientRequestId prefix for all queries sent by the connector. This allows the queries to be identifiable in the cluster as coming from a specific report and/or data source.
 
 > [!NOTE]
 > You can combine multiple options together to reach the desired behavior: `[NoTruncate=true, CaseInsensitive=true]`
@@ -98,7 +99,7 @@ You can use any of the following options in your M query:
 
 Kusto queries return, by default, up to 500,000 rows or 64 MB, as described in [query limits](kusto/concepts/querylimits.md). You can override these defaults by using **Advanced options** in the  **Azure Data Explorer (Kusto)** connection window:
 
-![advanced options](media/power-bi-best-practices/advanced-options.png)
+![advanced options.](media/power-bi-best-practices/advanced-options.png)
 
 These options issue [set statements](kusto/query/setstatement.md) with your query to change the default query limits:
 
@@ -170,7 +171,7 @@ In **Edit Queries** window, **Home** > **Advanced Editor**
 
 You can use a query parameter in any query step that supports it. For example, filter the results based on the value of a parameter.
 
-![filter results using a parameter](media/power-bi-best-practices/filter-using-parameter.png)
+![filter results using a parameter.](media/power-bi-best-practices/filter-using-parameter.png)
 
 ### Use Value.NativeQuery for Azure Data Explorer features
 
@@ -190,15 +191,6 @@ in
 
 Power BI includes a data refresh scheduler that can periodically issue
 queries against a data source. This mechanism shouldn't be used to schedule control commands to Kusto because Power BI assumes all queries are read-only.
-
-### Power BI can send only short (&lt;2000 characters) queries to Kusto
-
-If running a query in Power BI results in the following error:
- _"DataSource.Error: Web.Contents failed to get contents from..."_
-the query is probably longer than 2000 characters. Power BI uses **PowerQuery** to query Kusto by issuing an HTTP GET request that encodes the query as part of the URI being retrieved. Therefore, Kusto queries issued by Power BI are limited to the maximum length of
-a request URI (2000 characters, minus small offset). As a workaround, you can
-define a [stored function](kusto/query/schema-entities/stored-functions.md) in Kusto,
-and have Power BI use that function in the query.
 
 ## Next steps
 

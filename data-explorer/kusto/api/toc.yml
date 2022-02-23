@@ -1,0 +1,120 @@
+items:
+- name: API overview
+  href: index.md
+- name: Client libraries
+  href: client-libraries.md
+- name: Connection strings
+  items:
+  - name: Connection strings overview
+    href: connection-strings/index.md
+  - name: Kusto connection strings
+    href: connection-strings/kusto.md
+  - name: Storage connection strings
+    href: connection-strings/storage-connection-strings.md
+  - name: Storage authentication methods
+    href: connection-strings/storage-authentication-methods.md
+  - name: Generate SAS token
+    href: connection-strings/generate-sas-token.md
+- name: REST API
+  items:
+  - name: REST API overview
+    href: rest/index.md
+  - name: Authentication
+    href: rest/authentication.md
+  - name: Query/management HTTP request
+    href: rest/request.md
+  - name: Query/management HTTP response
+    href: rest/response.md
+  - name: Query v2 HTTP response
+    href: rest/response2.md
+  - name: UI (Deep Links)
+    href: rest/deeplink.md
+  - name: Streaming ingest
+    href: rest/streaming-ingest.md
+- name: MS-TDS
+  displayName: SQL, ADO.NET, JDBC, ODBC
+  items:
+  - name: MS-TDS overview
+    displayName: SQL, ADO.NET, JDBC, ODBC
+    href: tds/index.md
+  - name: T-SQL
+    href: tds/t-sql.md
+  - name: KQL over TDS
+    href: tds/tdskql.md
+  - name: Clients
+    href: tds/clients.md
+  - name: Linked server
+    href: tds/linkedserver.md
+  - name: Azure Active Directory
+    displayName: AAD, Azure AD
+    href: tds/aad.md
+  - name: Known issues
+    href: tds/sqlknownissues.md
+- name: .NET SDK
+  items:
+  - name: General
+    items:
+    - name: About the SDK
+      href: netfx/about-the-sdk.md
+    - name: Controlling tracing
+      href: netfx/controlling-tracing.md
+  - name: Kusto.Data
+    items:
+    - name: Kusto.Data overview
+      href: netfx/about-kusto-data.md
+    - name: Request properties, ClientRequestProperties
+      href: netfx/request-properties.md
+  - name: Kusto.Ingest
+    items:
+    - name: Kusto.Ingest overview
+      href: netfx/about-kusto-ingest.md
+    - name: Permissions
+      displayName: Kusto.Ingest
+      href: netfx/kusto-ingest-client-permissions.md
+    - name: Client reference
+      displayName: Kusto.Ingest
+      href: netfx/kusto-ingest-client-reference.md
+    - name: Errors and exceptions
+      displayName: Kusto.Ingest
+      href: netfx/kusto-ingest-client-errors.md
+    - name: Operation status
+      displayName: Kusto.Ingest
+      href: netfx/kusto-ingest-client-status.md
+    - name: Kusto.Ingest best practices
+      href: netfx/kusto-ingest-best-practices.md
+    - name: Code samples
+      displayName: Kusto.Ingest
+      href: netfx/kusto-ingest-client-examples.md
+    - name: HowTo Data Ingestion with REST API
+      displayName: Kusto.Ingest
+      href: netfx/kusto-ingest-client-rest.md
+- name: Python SDK
+  items:
+  - name: azure-kusto-python
+    href: python/kusto-python-client-library.md
+- name: R SDK
+  items:
+  - name: azure-kusto-r
+    href: r/kusto-r-client-library.md
+- name: Java SDK
+  items:
+  - name: azure-kusto-java
+    href: java/kusto-java-client-library.md
+- name: Node SDK
+  items:
+  - name: azure-kusto-node
+    href: node/kusto-node-client-library.md
+- name: Go SDK
+  items:
+  - name: azure-kusto-go
+    href: golang/kusto-golang-client-library.md
+- name: PowerShell
+  items:
+  - name: Calling Kusto from PowerShell
+    href: powershell/powershell.md
+- name: Monaco IDE integration
+  items:
+  - name: monaco-kusto overview
+    href: monaco/monaco-kusto.md
+  - name: Embed web UX in an iFrame
+    href: monaco/host-web-ux-in-iframe.md

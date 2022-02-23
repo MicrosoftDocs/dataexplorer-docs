@@ -28,9 +28,8 @@ This section shows you how to configure customer-managed keys encryption using t
 
 ### Prerequisites
 
-* If you don't have Visual Studio 2019 installed, you can download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Make sure that you enable **Azure development** during the Visual Studio setup.
-
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+* Visual Studio 2019, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 
 ### Install C# NuGet
 
@@ -67,9 +66,10 @@ By default, Azure Data Explorer encryption uses Microsoft-managed keys. Configur
     var resourceGroupName = "testrg";
     var clusterName = "mykustocluster";
     var keyName = "myKey";
-    var keyVersion = "5b52b20e8d8a42e6bd7527211ae32654";
+    var keyVersion = "5b52b20e8d8a42e6bd7527211ae32654"; // Optional, leave as NULL for the latest version of the key.
     var keyVaultUri = "https://mykeyvault.vault.azure.net/";
-    var keyVaultProperties = new KeyVaultProperties (keyName, keyVersion, keyVaultUri);
+    var keyVaultIdentity = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/identityResourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"; // Use NULL if you want to use system assigned identity.
+    var keyVaultProperties = new KeyVaultProperties(keyName, keyVaultUri, keyVersion, keyVaultIdentity);
     var clusterUpdate = new ClusterUpdate(keyVaultProperties: keyVaultProperties);
     await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdate);
     ```
@@ -89,8 +89,6 @@ When you create a new version of a key, you'll need to update the cluster to use
 ## Next steps
 
 * [Secure Azure Data Explorer clusters in Azure](security.md)
-* [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md)
+* [Configure managed identities for your Azure Data Explorer cluster](./configure-managed-identities-cluster.md)
 * [Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal](cluster-disk-encryption.md) by enabling encryption at rest.
 * [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md)
-
-

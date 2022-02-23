@@ -19,7 +19,7 @@ Returns a count of the records per summarization group (or in total, if summariz
 
 ## Syntax
 
-summarize `count()`
+`count` `(` `)`
 
 ## Returns
 

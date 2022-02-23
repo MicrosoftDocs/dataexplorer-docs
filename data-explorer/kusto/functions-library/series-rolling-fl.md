@@ -14,8 +14,8 @@ ms.date: 09/08/2020
 The function `series_rolling_fl()` applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
 > [!NOTE]
-> * `series_rolling_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).
-> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage).
+> * `series_rolling_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
 
 ## Syntax
 
@@ -64,7 +64,7 @@ This function supports any aggregation function from [numpy](https://numpy.org/)
 
 For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
 {
@@ -102,11 +102,11 @@ demo_make_series1
 
 # [Persistent](#tab/persistent)
 
-For persistent usage, use [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Rolling window functions on a series")
 series_rolling_fl(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic, center:bool=true)
@@ -136,7 +136,7 @@ series_rolling_fl(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 //
 //  Calculate rolling median of 9 elements
@@ -150,7 +150,7 @@ demo_make_series1
 
 ---
 
-:::image type="content" source="images/series-rolling-fl/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements" border="false":::
+:::image type="content" source="images/series-rolling-fl/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements." border="false":::
 
 ## Additional examples
 
@@ -158,7 +158,7 @@ The following examples assume the function is already installed:
 
 1. Calculate rolling min, max & 75th percentile of 15 elements
     
-    <!-- csl: https://help.kusto.windows.net:443/Samples -->
+    <!-- csl: https://help.kusto.windows.net/Samples -->
     ```kusto
     //
     //  Calculate rolling min, max & 75th percentile of 15 elements
@@ -176,7 +176,7 @@ The following examples assume the function is already installed:
 
 1. Calculate rolling trimmed mean
         
-    <!-- csl: https://help.kusto.windows.net:443/Samples -->
+    <!-- csl: https://help.kusto.windows.net/Samples -->
     ```kusto
     //
     //  Calculate rolling trimmed mean
@@ -189,5 +189,5 @@ The following examples assume the function is already installed:
     | render linechart
     ```
     
-    :::image type="content" source="images/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean" border="false":::
+    :::image type="content" source="images/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean." border="false":::
     

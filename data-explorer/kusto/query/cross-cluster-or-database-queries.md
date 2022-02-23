@@ -37,8 +37,8 @@ cluster("<cluster name>").database("<database name>").<table name>
 
 *cluster name* is case-insensitive and can be of one of the following forms:
    * Well-formed URL, such as `http://contoso.kusto.windows.net:1234/`. Only HTTP and HTTPS schemes are supported.
-   * Fully qualified domain name (FQDN), such as `contoso.kusto.windows.net`. This string is equivalent to `https://`**`contoso.kusto.windows.net`**`:443/`.
-   * Short name (host name [and region] without the domain part), such as `contoso` or `contoso.westus`. These strings are interpreted as `https://`**`contoso`**`.kusto.windows.net:443/` and `https://`**`contoso.westus`**`.kusto.windows.net:443/`.
+   * Fully qualified domain name (FQDN), such as `contoso.kusto.windows.net`. This string is equivalent to `https://`**`contoso.kusto.windows.net`**`/`.
+   * Short name (host name [and region] without the domain part), such as `contoso` or `contoso.westus`. These strings are interpreted as `https://`**`contoso`**`.kusto.windows.net/` and `https://`**`contoso.westus`**`.kusto.windows.net/`.
 
 > [!NOTE]
 > Cross-database access is subject to the usual permission checks.
@@ -56,6 +56,9 @@ union Table1, cluster("OtherCluster").database("OtherDb").Table2 | project ...
 
 database("OtherDb1").Table1 | join cluster("OtherCluster").database("OtherDb2").Table2 on Key | join Table3 on Key | extend ...
 ```
+
+> [!IMPORTANT]
+> If the clusters are in different tenants, you may need to edit the `trustedExternalTenants` property. Non-trusted external tenants may get an **Unauthorized error (401)** failure. For more information, see [How to allow principals from another tenant to access your cluster](../../cross-tenant-query-and-commands.md).
 
 When *qualified name* appears as an operand of the [union operator](./unionoperator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in cluster names.
 

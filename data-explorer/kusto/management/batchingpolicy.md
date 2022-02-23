@@ -1,56 +1,71 @@
 ---
-title: Kusto IngestionBatching policy optimizes batching - Azure Data Explorer
-description: This article describes IngestionBatching policy in Azure Data Explorer.
+title: Kusto IngestionBatching policy optimizes batching in Azure Data Explorer
+description: This article describes IngestionBatching policy in Azure Data Explorer
 services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 11/07/2021
 ---
 # IngestionBatching policy
 
 ## Overview
 
-During the ingestion process Kusto attempts to optimize for throughput by batching small
-ingress data chunks together as they await ingestion.
-This sort of batching reduces the resources consumed by the ingestion
-process, as well as does not require post-ingestion resources to optimize the
-small data shards produced by non-batched ingestion.
+During the ingestion process, the service optimizes for throughput by batching small ingress data chunks together before ingestion. Batching reduces the resources consumed by the ingestion process and doesn't require post-ingestion resources to optimize the small data shards produced by non-batched ingestion.
 
-There is a downside, however, to performing batching before ingestion, which is
-the introduction of a forced delay, so that the end-to-end time from requesting
-the ingestion of data until it is ready for query is larger.
+The downside to doing batching before ingestion is the forced delay. Therefore, the end-to-end time from requesting the data ingestion until the data ready for query is larger.
 
-To allow control of this trade-off, one may use the `IngestionBatching` policy.
-This policy gets applied to queued ingestion only, and provides the maximum
-forced delay to allow when batching small blobs together.
+When you define the [`IngestionBatching`](./show-table-ingestion-batching-policy.md) policy, you will need to find a balance between optimizing for throughput and time delay. This policy applies to queued ingestion. It defines the maximum forced delay allowed when batching small blobs together. To learn more about using batching policy commands, and optimizing for throughput, see:
 
-## Details
+* [Ingestion batching policy command reference](./show-table-ingestion-batching-policy.md)
+* [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)
 
-As explained above, there is an optimal size of data to be ingested in bulk.
-Currently that size is about 1 GB of uncompressed data. Ingestion that is done
-in blobs that hold much less data than the optimal size is non-optimal, and
-therefore in queued ingestion Kusto will batch such small blobs together. Batching
-is done until the first condition becomes true:
+## Sealing a batch
 
-1. The total size of the batched data reaches the optimal size, or
-2. The maximum delay time, total size, or number of blobs allowed by 
-the `IngestionBatching` policy is reached
+When ingesting data in bulk, there's an optimal size of about 1 GB of uncompressed data. Ingestion of blobs with much less data is sub-optimal, so in queued ingestion the service will batch small blobs together. 
 
-The `IngestionBatching` policy can be set on databases, or tables. By default,
-if not policy is defined, Kusto will use a default value of **5 minutes** as the
-maximum delay time, **1000** items, total size of **1G** for batching.
+The following list shows the basic batching policy triggers to seal a batch. A batch is sealed and ingested when the first condition is met:
 
-> [!WARNING]
-> The impact of setting this policy to a very small value is
+* `Size`: Batch size limit reached or exceeded
+* `Count`: Batch file number limit reached
+* `Time`: Batching time has expired
+
+The `IngestionBatching` policy can be set on databases or tables. Default values are as follows: **5 minutes** maximum delay time, **1000** items, total size of **1G**.
+
+> [!IMPORTANT]
+> The impact of setting this policy to very small values is
 > an increase in the COGS (cost of goods sold) of the cluster and reduced performance. Additionally,
-> in the limit, reducing this value might actually result in **increased** effective
+> reducing batching policy values might actually result in **increased** effective
 > end-to-end ingestion latency, due to the overhead of managing multiple ingestion
 > processes in parallel.
 
-## Additional resources
+The following list shows conditions to seal batches related to single blob ingestion. A batch is sealed and ingested when the conditions are met:
 
-* [IngestionBatching policy commands reference](../management/batching-policy.md)
-* [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)
+* `SingleBlob_FlushImmediately`: Ingest a single blob because ['FlushImmediately'](../api/netfx/kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) was set
+* `SingleBlob_IngestIfNotExists`: Ingest a single blob because 
+['IngestIfNotExists'](../../ingestion-properties.md#ingestion-properties) was set
+* `SingleBlob_IngestByTag`: Ingest a single blob because ['ingest-by'](extents-overview.md#ingest-by-extent-tags) was set
+* `SingleBlob_SizeUnknown`: Ingest a single blob because blob size is unknown
+
+If the `SystemFlush` condition is set, a batch will be sealed when a system flush is triggered. With the `SystemFlush` parameter set, the system flushes the data, for example due to cluster scaling or internal reset of system components.
+
+## Batch data size
+
+The batching policy data size is set for uncompressed data. For Parquet, AVRO, and ORC files, an estimation is calculated based on file size. When ingesting compressed data, the uncompressed data size is evaluated as follows in descending order of accuracy:
+          -
+1. If the uncompressed size is provided in the ingestion source options, that value is used.
+1. When ingesting local files using SDKs, zip archives and gzip streams are inspected to assess their raw size. 
+1. If previous options do not provide a data size, a factor is applied to the compressed data size to estimate the uncompressed data size. 
+
+## Batching latencies
+
+Latencies can result from a number of causes that can be addressed using batching policy settings. 
+
+| Cause | Solution |
+| --- | --- |
+| Data latency matches the `time` setting, with too little data to reach the `size` or `count` limit | Reduce the `time` limit |
+| Inefficient batching due to a large number of very small files | Increase the size of the source files. If using Kafka Sink, configure it to send data in ~100KB chunks or higher. If you have many small files, increase the `count` (up to 2000) in the database or table ingestion policy. |
+| Batching a large amount of uncompressed data | This is common when ingesting Parquet files. Incrementally decrease `size` for the table or database batching policy towards 250MB and check for improvement. |
+| Backlog because the cluster is under scaled | Accept any Azure advisor suggestions to scale aside or scale up your cluster. Alternatively, manually scale your cluster to see if the backlog is closed. If these options do not work, contact Azure Data Explorer support for assistance. |

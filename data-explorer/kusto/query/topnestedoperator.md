@@ -29,7 +29,7 @@ figures, such as country, salesperson, and amount sold: what are the top five co
 
 ## Syntax
 
-*T* `|` `top-nested` *TopNestedClause2* [`,` *TopNestedClause2*...]
+*T* `|` `top-nested` *TopNestedClause* [`,` `top-nested` *TopNestedClause2*]...
 
 Where *TopNestedClause* has the following syntax:
 
@@ -104,11 +104,11 @@ cases.
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| top-nested 2 of State by sum(BeginLat),
-  top-nested 3 of Source by sum(BeginLat),
+| top-nested 2 of State       by sum(BeginLat),
+  top-nested 3 of Source      by sum(BeginLat),
   top-nested 1 of EndLocation by sum(BeginLat)
 ```
 
@@ -123,14 +123,12 @@ StormEvents
 
 Use the option 'with others':
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | top-nested 2 of State with others = "All Other States" by sum(BeginLat),
   top-nested 3 of Source by sum(BeginLat),
-  top-nested 1 of EndLocation with others = "All Other End Locations" by  sum(BeginLat)
-
-
+  top-nested 1 of EndLocation with others = "All Other End Locations" by sum(BeginLat)
 ```
 
 |State|aggregated_State|Source|aggregated_Source|EndLocation|aggregated_EndLocation|
@@ -153,7 +151,7 @@ StormEvents
 
 The following query shows the same results for the first level used in the example above.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
  StormEvents
  | where State !in ('TEXAS', 'KANSAS')
@@ -164,13 +162,15 @@ The following query shows the same results for the first level used in the examp
 |---|
 |1149279.5923|
 
-
 Request another column (EventType) to the top-nested result.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| top-nested 2 of State by sum(BeginLat),    top-nested 2 of Source by sum(BeginLat),    top-nested 1 of EndLocation by sum(BeginLat), top-nested of EventType  by tmp = max(1)
+| top-nested 2 of State       by sum(BeginLat),
+  top-nested 2 of Source      by sum(BeginLat),
+  top-nested 1 of EndLocation by sum(BeginLat),
+  top-nested   of EventType   by tmp = max(1)
 | project-away tmp
 ```
 
@@ -189,7 +189,7 @@ StormEvents
 
 Give an index sort order for each value in this level (per group) to sort the result by the last nested level (in this example by EndLocation):
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | top-nested 2 of State  by sum(BeginLat),    top-nested 2 of Source by sum(BeginLat),    top-nested 4 of EndLocation by  sum(BeginLat)
@@ -217,3 +217,20 @@ StormEvents
 |KANSAS|Public|ASHLAND|446.4218|1|
 |KANSAS|Public|PROTECTION|446.11|2|
 |KANSAS|Public|MEADE STATE PARK|371.1|3|
+
+The following example returns the two most-recent events
+for each US state, with some information per event.
+Note the use of the `max(1)` (which is then projected away)
+for columns which just require propagation through the operator
+without any selection logic.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents
+| top-nested of State by Ignore0=max(1),
+  top-nested 2 of StartTime by Ignore1=max(StartTime),
+  top-nested of EndTime by Ignore2=max(1),
+  top-nested of EpisodeId by Ignore3=max(1)
+| project-away Ignore*
+| order by State asc, StartTime desc
+```

@@ -37,13 +37,20 @@ with the cluster.
     az account set --subscription MyAzureSub
     ```
 
-1. Run the following command to set the new key.
+1. Run the following command to set the new key with the cluster's system assigned identity
+
     ```azurecli-interactive
     az kusto cluster update --cluster-name "mytestcluster" --resource-group "mytestrg" --key-vault-properties key-name="<key-name>" key-version="<key-version>" key-vault-uri="<key-vault-uri>"
     ```
+
+    Alternatively, set the new key with a user assigned identity.
+
+    ```azurecli-interactive
+    az kusto cluster update --cluster-name "mytestcluster" --resource-group "mytestrg" --key-vault-properties key-name="<key-name>" key-version="<key-version>" key-vault-uri="<key-vault-uri>" key-user-identity="<user-identity-resource-id>"
+    ```
+
 1. Run the following command and check the 'keyVaultProperties' property to verify the cluster updated successfully.
 
     ```azurecli-interactive
     az kusto cluster show --cluster-name "mytestcluster" --resource-group "mytestrg"
     ```
-

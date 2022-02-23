@@ -25,8 +25,6 @@ In the article, you learn how to use the SQL Server ODBC driver, so you can conn
 
 ## Prerequisites
 
-You need the following:
-
 * [Microsoft ODBC Driver for SQL Server version 17.2.0.1 or later](/sql/connect/odbc/download-odbc-driver-for-sql-server) for your operating system.
 
 ## Configure the ODBC data source
@@ -37,33 +35,33 @@ Follow these steps to configure an ODBC data source using the ODBC driver for SQ
 
 1. Select **Add**.
 
-    ![Add data source](media/connect-odbc/add-data-source.png)
+    ![Add data source.](media/connect-odbc/add-data-source.png)
 
 1. Select **ODBC Driver 17 for SQL Server** then **Finish**.
 
-    ![Select driver](media/connect-odbc/select-driver.png)
+    ![Select driver.](media/connect-odbc/select-driver.png)
 
 1. Enter a name and description for the connection and the cluster you want to connect to, then select **Next**. The cluster URL should be in the form *\<ClusterName\>.\<Region\>.kusto.windows.net*.
 
-    ![Select server](media/connect-odbc/select-server.png)
+    ![Select server.](media/connect-odbc/select-server.png)
 
 1. Select **Active Directory Integrated** then **Next**.
 
-    ![Active Directory Integrated](media/connect-odbc/active-directory-integrated.png)
+    ![Active Directory Integrated.](media/connect-odbc/active-directory-integrated.png)
 
 1. Select the database with the sample data then **Next**.
 
-    ![Change default database](media/connect-odbc/change-default-database.png)
+    ![Change default database.](media/connect-odbc/change-default-database.png)
 
 1. On the next screen, leave all options as defaults then select **Finish**.
 
 1. Select **Test Data Source**.
 
-    ![Test data source](media/connect-odbc/test-data-source.png)
+    ![Test data source.](media/connect-odbc/test-data-source.png)
 
 1. Verify that the test succeeded then select **OK**. If the test didn't succeed, check the values that you specified in previous steps, and ensure you have sufficient permissions to connect to the cluster.
 
-    ![Test succeeded](media/connect-odbc/test-succeeded.png)
+    ![Test succeeded.](media/connect-odbc/test-succeeded.png)
 
 ## Next steps
 

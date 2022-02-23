@@ -1,0 +1,37 @@
+---
+title: ".alter ingestion time policy command- Azure Data Explorer"
+description: "This article describes the .alter ingestion time policy command in Azure Data Explorer."
+services: data-explorer
+author: orspod
+ms.author: orspodek
+ms.reviewer: yonil
+ms.service: data-explorer
+ms.topic: reference
+ms.date: 11/29/2021
+---
+# .alter ingestion time policy
+
+Enable or disable a table's [ingestion time policy](ingestiontimepolicy.md). Azure Data Explorer can add an optional policy for tables to create a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column.
+
+## Syntax
+
+`.alter` `table` *TableName* `policy` `ingestiontime` [true|false]
+`.alter` `tables` (*TableName*, ...) `policy` `ingestiontime` [true|false]
+
+## Arguments
+
+*TableName* - Specify the name of the table.
+
+### Examples
+
+To enable the policy:
+
+```kusto
+.alter table table_name policy ingestiontime true
+```
+
+To disable the policies of multiple tables:
+
+```kusto
+.alter tables (table1, table2) policy ingestiontime false
+```

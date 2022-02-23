@@ -18,16 +18,18 @@ The main purpose of the policy is not to improve compression (although it is a p
 side-effect), but to improve performance of queries which are known to be narrowed to a
 small subset of values in the ordered columns.
 
-Applying the policy is appropriate when:
+Applying the policy is appropriate in the following scenarios:
 * The majority of queries filter on specific values of a specific large-dimension column 
   (such as an "application ID" or a "tenant ID")
 * The data ingested into the table is unlikely to be pre-ordered according to this column.
 
-While there are no hardcoded limits set on the amount of columns (sort keys) that can be
-defined as part of the policy, every additional column adds some overhead to the ingestion
-process, and as more columns are added - the effective return diminishes.
 
 > [!NOTE]
-> Once the policy is applied to a table, it will affect data ingested from that moment on.
+> * Once the policy is set on a table, it will affect data ingested from that moment on.
+> * While there are no hardcoded limits set on the amount of columns (sort keys) that can be
+defined as part of the policy, every additional column adds some overhead to the ingestion
+process, and as more columns are added - the effective return diminishes.
+>   * In the scenarios mentioned above, it is recommended to set up to 2 sort keys in the policy.
 
-Control commands for managing Row Order policies can be found [here](../management/roworder-policy.md)
+
+Control commands for managing Row Order policies can be found [here](./show-table-row-order-policy-command.md)

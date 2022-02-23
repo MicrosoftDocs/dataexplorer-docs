@@ -24,7 +24,7 @@ Azure Data Explorer provides support for isolated compute using SKU **Standard_E
 Isolated compute VMs, although highly priced, are the ideal SKU for running workloads that require server instance-level isolation. For more information about supported SKUs for Azure Data Explorer, see [select the correct VM SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md).
 
 > [!NOTE]
-> [Azure dedicated host](https://azure.microsoft.com/services/virtual-machines/dedicated-host/) isn't currently supported by Azure Data Explorer. 
+> [Azure Dedicated Host](https://azure.microsoft.com/services/virtual-machines/dedicated-host/) isn't currently supported by Azure Data Explorer. 
 
 ## Enable isolated compute on Azure Data Explorer cluster 
 
@@ -43,7 +43,7 @@ To enable isolated compute in Azure Data Explorer, follow one of these processes
 1. In search box, search for *Standard_E64i_v3* and click on the SKU name or select the **Standard_E64i_v3** SKU from the SKU list.
 1. Select **Apply** to update your SKU. 
 
-:::image type="content" source="media/isolated-compute/select-isolated-compute-sku.png" alt-text="Select the isolated compute SKU":::
+:::image type="content" source="media/isolated-compute/select-isolated-compute-sku.png" alt-text="Select the isolated compute SKU.":::
 
 > [!TIP]
 > The scale up process may take a few minutes.

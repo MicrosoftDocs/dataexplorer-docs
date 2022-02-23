@@ -14,8 +14,8 @@ ms.date: 09/08/2020
 The function `quantize_fl()` bins metric columns. It quantizes metric columns to categorical labels, based on the K-Means algorithm.
 
 > [!NOTE]
-> * `quantize_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md).
-> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. For more information, see [usage](#usage).
+> * `quantize_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
 
 ## Syntax
 
@@ -36,32 +36,32 @@ The function `quantize_fl()` bins metric columns. It quantizes metric columns to
 
 For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+<!-- csl: https://help.kusto.windows.net/Samples -->
+~~~kusto
 let quantize_fl=(tbl:(*), num_bins:int, in_cols:dynamic, out_cols:dynamic, labels:dynamic=dynamic(null))
 {
     let kwargs = pack('num_bins', num_bins, 'in_cols', in_cols, 'out_cols', out_cols, 'labels', labels);
-    let code =
-        '\n'
-        'from sklearn.preprocessing import KBinsDiscretizer\n'
-        '\n'
-        'num_bins = kargs["num_bins"]\n'
-        'in_cols = kargs["in_cols"]\n'
-        'out_cols = kargs["out_cols"]\n'
-        'labels = kargs["labels"]\n'
-        '\n'
-        'result = df\n'
-        'binner = KBinsDiscretizer(n_bins=num_bins, encode="ordinal", strategy="kmeans")\n'
-        'df_in = df[in_cols]\n'
-        'bdata = binner.fit_transform(df_in)\n'
-        'if labels is None:\n'
-        '    for i in range(len(out_cols)):    # loop on each column and convert it to binned labels\n'
-        '        ii = np.round(binner.bin_edges_[i], 3)\n'
-        '        labels = [str(ii[j-1]) + \'-\' + str(ii[j]) for j in range(1, num_bins+1)]\n'
-        '        result.loc[:,out_cols[i]] = np.take(labels, bdata[:, i].astype(int))\n'
-        'else:\n'
-        '    result[out_cols] = np.take(labels, bdata.astype(int))\n'
-        ;
+    let code = ```if 1:
+        
+        from sklearn.preprocessing import KBinsDiscretizer
+        
+        num_bins = kargs["num_bins"]
+        in_cols = kargs["in_cols"]
+        out_cols = kargs["out_cols"]
+        labels = kargs["labels"]
+        
+        result = df
+        binner = KBinsDiscretizer(n_bins=num_bins, encode="ordinal", strategy="kmeans")
+        df_in = df[in_cols]
+        bdata = binner.fit_transform(df_in)
+        if labels is None:
+            for i in range(len(out_cols)):    # loop on each column and convert it to binned labels
+                ii = np.round(binner.bin_edges_[i], 3)
+                labels = [str(ii[j-1]) + '-' + str(ii[j]) for j in range(1, num_bins+1)]
+                result.loc[:,out_cols[i]] = np.take(labels, bdata[:, i].astype(int))
+        else:
+            result[out_cols] = np.take(labels, bdata.astype(int))
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 };
@@ -73,49 +73,49 @@ union
 | extend x_label='', x_bin=''
 | invoke quantize_fl(3, pack_array('x'), pack_array('x_label'), pack_array('Low', 'Med', 'High'))
 | invoke quantize_fl(3, pack_array('x'), pack_array('x_bin'), dynamic(null))
-```
+~~~
 
 # [Persistent](#tab/persistent)
 
-For persistent usage, use [.create function](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
-```kusto
+<!-- csl: https://help.kusto.windows.net/Samples -->
+~~~kusto
 .create function with (folder = "Packages\\ML", docstring = "Binning metric columns")
 quantize_fl(tbl:(*), num_bins:int, in_cols:dynamic, out_cols:dynamic, labels:dynamic)
 {
     let kwargs = pack('num_bins', num_bins, 'in_cols', in_cols, 'out_cols', out_cols, 'labels', labels);
-    let code =
-        '\n'
-        'from sklearn.preprocessing import KBinsDiscretizer\n'
-        '\n'
-        'num_bins = kargs["num_bins"]\n'
-        'in_cols = kargs["in_cols"]\n'
-        'out_cols = kargs["out_cols"]\n'
-        'labels = kargs["labels"]\n'
-        '\n'
-        'result = df\n'
-        'binner = KBinsDiscretizer(n_bins=num_bins, encode="ordinal", strategy="kmeans")\n'
-        'df_in = df[in_cols]\n'
-        'bdata = binner.fit_transform(df_in)\n'
-        'if labels is None:\n'
-        '    for i in range(len(out_cols)):    # loop on each column and convert it to binned labels\n'
-        '        ii = np.round(binner.bin_edges_[i], 3)\n'
-        '        labels = [str(ii[j-1]) + \'-\' + str(ii[j]) for j in range(1, num_bins+1)]\n'
-        '        result.loc[:,out_cols[i]] = np.take(labels, bdata[:, i].astype(int))\n'
-        'else:\n'
-        '    result[out_cols] = np.take(labels, bdata.astype(int))\n'
-        ;
+    let code = ```if 1:
+        
+        from sklearn.preprocessing import KBinsDiscretizer
+        
+        num_bins = kargs["num_bins"]
+        in_cols = kargs["in_cols"]
+        out_cols = kargs["out_cols"]
+        labels = kargs["labels"]
+        
+        result = df
+        binner = KBinsDiscretizer(n_bins=num_bins, encode="ordinal", strategy="kmeans")
+        df_in = df[in_cols]
+        bdata = binner.fit_transform(df_in)
+        if labels is None:
+            for i in range(len(out_cols)):    # loop on each column and convert it to binned labels
+                ii = np.round(binner.bin_edges_[i], 3)
+                labels = [str(ii[j-1]) + '-' + str(ii[j]) for j in range(1, num_bins+1)]
+                result.loc[:,out_cols[i]] = np.take(labels, bdata[:, i].astype(int))
+        else:
+            result[out_cols] = np.take(labels, bdata.astype(int))
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 }
-```
+~~~
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 union 
 (range x from 1 to 5 step 1),
@@ -128,7 +128,7 @@ union
 
 ---
 
-<!-- csl: https://help.kusto.windows.net:443/Samples -->
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 x    x_label    x_bin
 1    Low        1.0-7.75

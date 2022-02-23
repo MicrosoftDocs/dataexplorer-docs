@@ -1,5 +1,5 @@
 ---
-title: Scalar Functions - Azure Data Explorer | Microsoft Docs
+title: Scalar Functions - Azure Data Explorer 
 description: This article describes Scalar Functions in Azure Data Explorer.
 services: data-explorer
 author: orspod
@@ -7,9 +7,11 @@ ms.author: orspodek
 ms.reviewer: alexans
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/27/2020
+ms.date: 07/18/2021
 ---
-# Scalar function types
+# Scalar function types at a glance
+
+This article lists all available scalar functions grouped by type. For aggregation functions, see [Aggregation function types](aggregation-functions.md).
 
 ## Binary functions
 
@@ -87,6 +89,7 @@ ms.date: 05/27/2020
 |[array_sort_asc()](arraysortascfunction.md)|Sorts a collection of arrays in ascending order.|
 |[array_sort_desc()](arraysortdescfunction.md)|Sorts a collection of arrays in descending order.|
 |[array_split()](arraysplitfunction.md)|Builds an array of arrays split from the input array.|
+|[array_sum()](array-sum-function.md)|Calculates the sum of a dynamic array.|
 |[bag_keys()](bagkeysfunction.md)|Enumerates all the root keys in a dynamic property-bag object.|
 |[bag_merge()](bag-merge-function.md)|Merges dynamic property-bags into a dynamic property-bag with all properties merged.|
 |[bag_remove_keys()](bag-remove-keys-function.md)|Removes keys and associated values from a dynamic property-bag.|
@@ -109,6 +112,7 @@ ms.date: 05/27/2020
 |[prev()](prevfunction.md)|For the serialized row set, returns a value of a specified column from the earlier row according to the offset.|
 |[row_cumsum()](rowcumsumfunction.md)|Calculates the cumulative sum of a column.|
 |[row_number()](rownumberfunction.md)|Returns a row's number in the serialized row set - consecutive numbers starting from a given index or from 1 by default.|
+|[row_rank()](rowrankfunction.md)|Returns a row's rank in the serialized row set.|
 
 ## Flow control functions
 
@@ -194,16 +198,26 @@ ms.date: 05/27/2020
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
+|[series_abs()](series-absfunction.md)|Calculates the element-wise absolute value of the numeric series input.|
+|[series_acos()](series-acosfunction.md)|Calculates the element-wise arccosine function of the numeric series input.|
 |[series_add()](series-addfunction.md)|Calculates the element-wise addition of two numeric series inputs.|
+|[series_asin()](series-asinfunction.md)|Calculates the element-wise arcsine function of the numeric series input.|
+|[series_atan()](series-atanfunction.md)|Calculates the element-wise arctangent function of the numeric series input.|
+|[series_cos()](series-cosfunction.md)|Calculates the element-wise cosine function of the numeric series input.|
 |[series_divide()](series-dividefunction.md)|Calculates the element-wise division of two numeric series inputs.|
 |[series_equals()](series-equalsfunction.md)|Calculates the element-wise equals (`==`) logic operation of two numeric series inputs.|
+|[series_exp()](series-expfunction.md)|Calculates the element-wise base-e exponential function (e^x) of the numeric series input.|
 |[series_greater()](series-greaterfunction.md)|Calculates the element-wise greater (`>`) logic operation of two numeric series inputs.|
 |[series_greater_equals()](series-greater-equalsfunction.md)|Calculates the element-wise greater or equals (`>=`) logic operation of two numeric series inputs.|
 |[series_less()](series-lessfunction.md)|Calculates the element-wise less (`<`) logic operation of two numeric series inputs.|
 |[series_less_equals()](series-less-equalsfunction.md)|Calculates the element-wise less or equal (`<=`) logic operation of two numeric series inputs.|
 |[series_multiply()](series-multiplyfunction.md)|Calculates the element-wise multiplication of two numeric series inputs.|
 |[series_not_equals()](series-not-equalsfunction.md)|Calculates the element-wise not equals (`!=`) logic operation of two numeric series inputs.|
+|[series_pow()](series-powfunction.md)|Calculates the element-wise power of two numeric series inputs.|
+|[series_sign()](series-signfunction.md)|Calculates the element-wise sign of the numeric series input.|
+|[series_sin()](series-sinfunction.md)|Calculates the element-wise sine function of the numeric series input.|
 |[series_subtract()](series-subtractfunction.md)|Calculates the element-wise subtraction of two numeric series inputs.|
+|[series_tan()](series-tanfunction.md)|Calculates the element-wise tangent function of the numeric series input.|
 
 ## Series processing functions
 
@@ -238,12 +252,15 @@ ms.date: 05/27/2020
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[base64_encode_tostring()](base64_encode_tostringfunction.md)|Encodes a string as base64 string.|
+|[base64_encode_fromguid()](base64-encode-fromguid-function.md)|Encodes a GUID as base64 string.|
 |[base64_decode_tostring()](base64_decode_tostringfunction.md)|Decodes a base64 string to a UTF-8 string.|
 |[base64_decode_toarray()](base64_decode_toarrayfunction.md)|Decodes a base64 string to an array of long values.|
+|[base64_decode_toguid()](base64-decode-toguid-function.md)|Decodes a base64 string to a GUID.|
 |[countof()](countoffunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.|
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
 |[extract_all()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
 |[extractjson()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
+|[has_any_index()](has-any-index-function.md)|Searches the string for items specified in the array and returns the position of the first item found in the string.|
 |[indexof()](indexoffunction.md)|Function reports the zero-based index of the first occurrence of a specified string within input string.|
 |[isempty()](isemptyfunction.md)|Returns true if the argument is an empty string or is null.|
 |[isnotempty()](isnotemptyfunction.md)|Returns true if the argument isn't an empty string or a null.|
@@ -259,7 +276,7 @@ ms.date: 05/27/2020
 |[parse_url()](parseurlfunction.md)|Parses an absolute URL string and returns a dynamic object contains all parts of the URL.|
 |[parse_urlquery()](parseurlqueryfunction.md)|Parses a url query string and returns a dynamic object contains the Query parameters.|
 |[parse_version()](parse-versionfunction.md)|Converts input string representation of version to a comparable decimal number.|
-|[replace()](replacefunction.md)|Replace all regex matches with another string.|
+|[replace_regex()](replace-regex-function.md)|Replace all regex matches with another string.|
 |[reverse()](reversefunction.md)|Function makes reverse of input string.|
 |[split()](splitfunction.md)|Splits a given string according to a given delimiter and returns a string array with the contained substrings.|
 |[strcat()](strcatfunction.md)|Concatenates between 1 and 64 arguments.|
@@ -281,7 +298,10 @@ ms.date: 05/27/2020
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[ipv4_compare()](ipv4-comparefunction.md)|Compares two IPv4 strings.|
+|[ipv4_is_in_range()](ipv4-is-in-range-function.md)|Checks if IPv4 string address is in IPv4-prefix notation range.|
 |[ipv4_is_match()](ipv4-is-matchfunction.md)|Matches two IPv4 strings.|
+|[ipv4_is_private()](ipv4-is-privatefunction.md)|Checks if IPv4 string address belongs to a set of private network IPs.|
+|[ipv4_netmask_suffix](ipv4-netmask-suffix-function.md)|Returns the value of the IPv4 netmask suffix from IPv4 string address.|
 |[parse_ipv4()](parse-ipv4function.md)|Converts input string to long (signed 64-bit) number representation.|
 |[parse_ipv4_mask()](parse-ipv4-maskfunction.md)|Converts input string and IP-prefix mask to long (signed 64-bit) number representation.|
 |[ipv6_compare()](ipv6-comparefunction.md)|Compares two IPv4 or IPv6 strings.|
@@ -304,6 +324,7 @@ ms.date: 05/27/2020
 |[dcount_hll()](dcount-hllfunction.md)|Calculates the dcount from hll results (which was generated by hll or hll-merge).|
 |[hll_merge()](hllmergefunction.md)|Merges hll results (scalar version of the aggregate version hll-merge()).|
 |[percentile_tdigest()](percentile-tdigestfunction.md)|Calculates the percentile result from tdigest results (which was generated by tdigest or merge-tdigests).|
+|[percentile_array_tdigest()](percentile-array-tdigestfunction.md)|Calculates the percentile array result from tdigest results (which was generated by tdigest or merge-tdigests).|
 |[percentrank_tdigest()](percentrank-tdigestfunction.md)|Calculates the percentage ranking of a value in a dataset.|
 |[rank_tdigest()](rank-tdigest.md)|Calculates relative rank of a value in a set.|
 |[tdigest_merge()](tdigest-mergefunction.md)|Merges tdigest results (scalar version of the aggregate version tdigest-merge()).|
@@ -313,16 +334,37 @@ ms.date: 05/27/2020
 |Function Name|Description|
 |--------------------------------------------------------------------------|--------------------------------------------------------|
 |[geo_distance_2points()](geo-distance-2points-function.md)|Calculates the shortest distance between two geospatial coordinates on Earth.|
-|[geo_distance_point_to_line()](geo-distance-point-to-line-function.md)|Calculates the shortest distance between a coordinate and a line on Earth.|
+|[geo_distance_point_to_line()](geo-distance-point-to-line-function.md)|Calculates the shortest distance between a coordinate and a line or multiline on Earth.|
+|[geo_distance_point_to_polygon()](geo-distance-point-to-polygon-function.md)|Calculates the shortest distance between a coordinate and a polygon or multipolygon on Earth.|
+|[geo_intersects_2lines()](geo-intersects-2lines-function.md)|Calculates whether the two lines or multilines intersects.|
+|[geo_intersects_2polygons()](geo-intersects-2polygons-function.md)|Calculates whether the two polygons or multipolygons intersects.|
+|[geo_intersects_line_with_polygon()](geo-intersects-line-with-polygon-function.md)|Calculates whether the lines or multiline intersects with polygon or a multipolygon.|
 |[geo_point_in_circle()](geo-point-in-circle-function.md)|Calculates whether the geospatial coordinates are inside a circle on Earth.|
 |[geo_point_in_polygon()](geo-point-in-polygon-function.md)|Calculates whether the geospatial coordinates are inside a polygon or a multipolygon on Earth.|
 |[geo_point_to_geohash()](geo-point-to-geohash-function.md)|Calculates the Geohash string value for a geographic location.|
 |[geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of a Geohash rectangular area.|
-|[geo_point_to_s2cell()](geo-point-to-s2cell-function.md)|Calculates the S2 cell token string value for a geographic location.|
-|[geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of an S2 cell.|
-|[geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md)|Calculates S2 cell tokens that cover a polygon or multipolygon on Earth. Useful geospatial join tool.|
+|[geo_geohash_to_polygon()](geo-geohash-to-polygon-function.md)|Calculates the polygon that represents the geohash rectangular area.|
+|[geo_point_to_s2cell()](geo-point-to-s2cell-function.md)|Calculates the S2 Cell token string value for a geographic location.|
+|[geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of an S2 Cell.|
+|[geo_s2cell_to_polygon()](geo-s2cell-to-polygon-function.md)|Calculates the polygon that represents the S2 Cell rectangular area.|
+|[geo_point_to_h3cell()](geo-point-to-h3cell-function.md)|Calculates the H3 Cell token string value for a geographic location.|
+|[geo_h3cell_to_central_point()](geo-h3cell-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of an H3 Cell.|
+|[geo_h3cell_to_polygon()](geo-h3cell-to-polygon-function.md)|Calculates the polygon that represents the H3 Cell rectangular area.|
+|[geo_h3cell_parent()](geo-h3cell-parent-function.md)|Calculates the H3 cell parent.|
+|[geo_h3cell_children()](geo-h3cell-children-function.md)|Calculates the H3 cell children.|
+|[geo_h3cell_level()](geo-h3cell-level-function.md)|Calculates the H3 cell resolution.|
+|[geo_h3cell_rings()](geo-h3cell-rings-function.md)|Calculates the H3 cell Rings.|
+|[geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md)|Calculates S2 Cell tokens that cover a polygon or multipolygon on Earth. Useful geospatial join tool.|
+|[geo_line_centroid()](geo-line-centroid-function.md)|Calculates the centroid of line or a multiline on Earth.|
 |[geo_line_densify()](geo-line-densify-function.md)|Converts planar line edges to geodesics by adding intermediate points.|
+|[geo_line_length()](geo-line-length-function.md)|Calculates the total length of line or a multiline on Earth.|
+|[geo_line_simplify()](geo-line-simplify-function.md)|Simplifies line or a multiline by replacing nearly straight chains of short edges with a single long edge on Earth.|
+|[geo_polygon_area()](geo-polygon-area-function.md)|Calculates the area of polygon or a multipolygon on Earth.|
+|[geo_polygon_centroid()](geo-polygon-centroid-function.md)|Calculates the centroid of polygon or a multipolygon on Earth.|
 |[geo_polygon_densify()](geo-polygon-densify-function.md)|Converts polygon or multipolygon planar edges to geodesics by adding intermediate points.|
+|[geo_polygon_perimeter()](geo-polygon-perimeter-function.md)|Calculates the length of the boundary of polygon or a multipolygon on Earth.|
+[[geo_union_lines_array()](geo-union-lines-array-function.md)|Calculates the union of lines or multilines on Earth.|
+|[geo_union_polygons_array()](geo-union-polygons-array-function.md)|Calculates the union of polygons or multipolygons on Earth.|
 
 ## Hash functions
 
@@ -332,4 +374,6 @@ ms.date: 05/27/2020
 |[hash_combine()](hash_combinefunction.md)|Combines two or more hash values.|
 |[hash_many()](hash_manyfunction.md)|Returns a combined hash value of multiple values.|
 |[hash_md5()](md5hashfunction.md)|Returns a MD5 hash value for the input value.|
+|[hash_sha1()](sha1-hash-function.md)|Returns a SHA1 hash value for the input value.|
 |[hash_sha256()](sha256hashfunction.md)|Returns a SHA256 hash value for the input value.|
+|[hash_xxhash64()](hash-xxhash64-function.md)|Returns an XXHASH64 hash value for the input value.|

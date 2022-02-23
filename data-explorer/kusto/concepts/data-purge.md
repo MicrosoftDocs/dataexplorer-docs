@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: kedamari
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/12/2020
+ms.date: 02/07/2022
 ---
 # Data purge
 
 [!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
-As a data platform, Azure Data Explorer supports the ability to delete individual records, through the use of Kusto `.purge` and related commands. You can also [purge an entire table](#purging-an-entire-table).  
+As a data platform, Azure Data Explorer supports the ability to delete individual records, through the use of Kusto `.purge` and related commands. You can also [purge an entire table](#purging-an-entire-table) or purge records in a [materialized view](../management/materialized-views/materialized-view-purge.md).
 
 > [!WARNING]
 > Data deletion through the `.purge` command is designed to be used to protect personal data and should not be used in other scenarios. It is not designed to support frequent delete requests, or deletion of massive quantities of data, and may have a significant performance impact on the service.
@@ -39,6 +39,7 @@ The process of selectively purging data from Azure Data Explorer happens in the 
 	 * The number of nodes in the cluster  
 	 * The spare capacity it has for purge operations
 	 * Several other factors
+	 
 	The duration of phase 2 can vary between a few seconds to many hours.
 1. Phase 3: (Hard Delete)
    Work back all storage artifacts that may have the "poison" data, and delete them from storage. This phase is done at least five days after the completion of the previous phase, but no longer than 30 days after the initial command. These timelines are set to follow data privacy requirements.
@@ -60,7 +61,7 @@ Issuing a `.purge` command triggers this process, which takes a few days to comp
    minimal tables include relevant data, and batch commands per table to reduce the significant COGS impact of the
    purge process.
 * The `predicate` parameter of the [.purge](#purge-table-tablename-records-command) command is used to specify which records to purge.
-`Predicate` size is limited to 63 KB. When constructing the `predicate`:
+`Predicate` size is limited to 1 MB. When constructing the `predicate`:
 	* Use the ['in' operator](../query/inoperator.md), for example, `where [ColumnName] in ('Id1', 'Id2', .. , 'Id1000')`. 
 	* Note the limits of the ['in' operator](../query/inoperator.md) (list can contain up to `1,000,000` values).
 	* If the query size is large, use [`externaldata` operator](../query/externaldata-operator.md), for example `where UserId in (externaldata(UserId:string) ["https://...blob.core.windows.net/path/to/file?..."])`. The file stores the list of IDs to purge.
@@ -76,7 +77,7 @@ To reduce purge execution time:
 * Adjust the [caching policy](../management/cachepolicy.md) since purge takes longer on cold data.
 * Scale out the cluster
 
-* Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../management/capacitypolicy.md#extents-purge-rebuild-capacity). Changing this parameter requires opening a [support ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../management/capacitypolicy.md#extents-purge-rebuild-capacity).
 
 ## Trigger the purge process
 
@@ -95,7 +96,11 @@ Purge command may be invoked in two ways for differing usage scenarios:
   // Connect to the Data Management service
   #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
  
+  // To purge table records
   .purge table [TableName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
+
+   // To purge materialized view records
+  .purge materialized-view [MaterializedViewName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
    ```
 
 * Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data.
@@ -103,30 +108,35 @@ Purge command may be invoked in two ways for differing usage scenarios:
  > [!NOTE]
  > The first step in the two-step invocation requires running a query on the entire data set, to identify records to be purged.
  > This query may time-out or fail on large tables, especially with significant amount of cold cache data. In case of failures,
- > please validate the predicate yourself and after verifying correctness use the single-step purge with the `noregrets` option.
+ > validate the predicate yourself and after verifying correctness use the single-step purge with the `noregrets` option.
 
 **Syntax**
 
+> [!NOTE]
+> To connect to a cluster using the Azure Data Explorer Web UI, see [Add clusters](../../web-query-data.md#add-clusters).
+	 
   ```kusto
-	 // Connect to the Data Management service
+	 // Connect to the Data Management service - this command only works in Kusto.Explorer
 	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
 	 
 	 // Step #1 - retrieve a verification token (no records will be purged until step #2 is executed)
 	 .purge table [TableName] records in database [DatabaseName] <| [Predicate]
 
 	 // Step #2 - input the verification token to execute purge
-	 .purge table [TableName] records in database [DatabaseName] with (verificationtoken='<verification token from step #1>') <| [Predicate]
+	 .purge table [TableName] records in database [DatabaseName] with (verificationtoken=h'<verification token from step #1>') <| [Predicate]
   ```
-	
+
+To purge a materialized view, replace the `table` keyword with `materialized-view`, and replace *TableName* with the *MaterializedViewName*.
+
 | Parameters  | Description  |
 |---------|---------|
 | `DatabaseName`   |   Name of the database      |
-| `TableName`     |     Name of the table    |
-| `Predicate`    |    Identifies the records to purge. See Purge predicate limitations below. | 
+| `TableName` / `MaterializedViewName`    |     Name of the table / materialized view to purge.  |
+| `Predicate`    |    Identifies the records to purge. See [purge predicate limitations](#purge-predicate-limitations). |
 | `noregrets`    |     If set, triggers a single-step activation.    |
 | `verificationtoken`     |  In the two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. Information about the purge will be returned with a token that should be passed back to the command to do step #2.   |
 
-**Purge predicate limitations**
+#### Purge predicate limitations
 
 * The predicate must be a simple selection (for example, *where [ColumnName] == 'X'* / *where [ColumnName] in ('X', 'Y', 'Z') and [OtherColumn] == 'A'*).
 * Multiple filters must be combined with an 'and', rather than separate `where` clauses (for example, `where [ColumnName] == 'X' and  OtherColumn] == 'Y'` and not `where [ColumnName] == 'X' | where [OtherColumn] == 'Y'`).
@@ -139,9 +149,11 @@ To start purge in a two-step activation scenario, run step #1 of the command:
 
  ```kusto
 	// Connect to the Data Management service
-	 #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
-	 
-	.purge table MyTable records in database MyDatabase <| where CustomerId in ('X', 'Y')
+    #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
+ 
+    .purge table MyTable records in database MyDatabase <| where CustomerId in ('X', 'Y')
+
+    .purge materialized-view MyView records in database MyDatabase <| where CustomerId in ('X', 'Y')
  ```
 
 **Output**
@@ -156,7 +168,11 @@ To complete a purge in a two-step activation scenario, use the verification toke
 
 ```kusto
 .purge table MyTable records in database MyDatabase
- with(verificationtoken='e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b')
+ with(verificationtoken=h'e43c7....')
+<| where CustomerId in ('X', 'Y')
+
+.purge materialized-view MyView records in database MyDatabase
+ with(verificationtoken=h'e43c7....')
 <| where CustomerId in ('X', 'Y')
 ```
 
@@ -175,6 +191,8 @@ To trigger a purge in a single-step activation scenario, run the following comma
  #connect "https://ingest-[YourClusterName].[region].kusto.windows.net" 
  
 .purge table MyTable records in database MyDatabase with (noregrets='true') <| where CustomerId in ('X', 'Y')
+
+.purge materialized-view MyView records in database MyDatabase with (noregrets='true') <| where CustomerId in ('X', 'Y')
 ```
 
 **Output**
@@ -193,10 +211,17 @@ If needed, you can cancel pending purge requests.
 **Syntax**
 
 ```kusto
+ // Cancel of a single purge operation
  .cancel purge <OperationId>
+ 
+  // Cancel of all pending purge requests in a database
+ .cancel all purges in database <DatabaseName>
+ 
+ // Cancel of all pending purge requests, for all databases
+ .cancel all purges
 ```
 
-**Example**
+#### Example: Cancel a single purge operation
 
 ```kusto
  .cancel purge aa894210-1c60-4657-9d21-adb2887993e1
@@ -205,11 +230,27 @@ If needed, you can cancel pending purge requests.
 **Output**
 
 The output of this command is the same as the 'show purges *OperationId*' command output, showing the updated status of the purge operation being canceled. 
-If the attempt is successful, the operation state is updated to `Abandoned`. Otherwise, the operation state isn't changed. 
+If the attempt is successful, the operation state is updated to `Canceled`. Otherwise, the operation state isn't changed. 
 
 |`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Abandoned | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
+|c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Canceled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
+
+#### Example: Cancel all pending purge operations in a database
+
+```kusto
+ .cancel all purges in database MyDatabase
+```
+
+**Output**
+
+The output of this command is the same as the [show purges](#show-purges-command) command output, showing all operations in the database with their updated status.
+Operations that were canceled successfully will have their status updated to `Canceled`. Otherwise, the operation state isn't changed. 
+
+|`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|5a34169e-8730-49f5-9694-7fde3a7a0139 |MyDatabase |MyTable |2021-03-03 05:07:29.7050198 |00:00:00.2971331 |2021-03-03 05:07:30.0021529 | |Canceled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
+|2fa7c04c-6364-4ce1-a5e5-1ab921f518f5 |MyDatabase |MyTable |2021-03-03 05:05:03.5035478 |00:00:00.1406211 |2021-03-03 05:05:03.6441689 | |InProgress | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
 
 ## Track purge operation status 
 
@@ -312,7 +353,7 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 	 .purge table [TableName] in database [DatabaseName] allrecords
 
 	 // Step #2 - input the verification token to execute purge
-	 .purge table [TableName] in database [DatabaseName] allrecords with (verificationtoken='<verification token from step #1>')
+	 .purge table [TableName] in database [DatabaseName] allrecords with (verificationtoken=h'<verification token from step #1>')
 	 ```
 
 	| Parameters  |Description  |
@@ -343,7 +384,7 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 
 	```kusto
 	.purge table MyTable in database MyDatabase allrecords 
-	with (verificationtoken='eyJTZXJ2aWNlTmFtZSI6IkVuZ2luZS1pdHNhZ3VpIiwiRGF0YWJhc2VOYW1lIjoiQXp1cmVTdG9yYWdlTG9ncyIsIlRhYmxlTmFtZSI6IkF6dXJlU3RvcmFnZUxvZ3MiLCJQcmVkaWNhdGUiOiIgd2hlcmUgU2VydmVyTGF0ZW5jeSA9PSAyNSJ9')
+	with (verificationtoken=h'eyJT.....')
 	```
 	
 	The output is the same as the '.show tables' command output (returned without the purged table).
@@ -373,4 +414,3 @@ The output is the same as the '.show tables' command output (returned without th
 |TableName|DatabaseName|Folder|DocString
 |---|---|---|---
 |OtherTable|MyDatabase|---|---
-

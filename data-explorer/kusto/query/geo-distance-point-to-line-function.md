@@ -25,7 +25,7 @@ Calculates the shortest distance between a coordinate and a line or multiline on
 
 ## Returns
 
-The shortest distance, in meters, between a coordinate and a line on Earth. If the coordinate or lineString are invalid, the query will produce a null result.
+The shortest distance, in meters, between a coordinate and a line or multiline on Earth. If the coordinate or lineString are invalid, the query will produce a null result.
 
 > [!NOTE]
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) coordinate reference system.
@@ -43,13 +43,14 @@ dynamic({"type": "MultiLineString","coordinates": [ [ line_1, line_2 ,..., line_
 * Edge length must be less than 180 degrees. The shortest edge between the two vertices will be chosen.
 
 > [!TIP]
-> For better performance, use literal lines.
+> * Using literal LineString or a MultiLineString may result in better performance.
+> * If you want to know the shortest distance between one or more points to many lines, consider folding these lines into one multiline. See the [example](#examples) below.
 
 ## Examples
 
 The following example finds the shortest distance between North Las Vegas Airport and a nearby road.
 
-:::image type="content" source="images/geo-distance-point-to-line-function/distance-point-to-line.png" alt-text="Distance between North Las Vegas Airport and road":::
+:::image type="content" source="images/geo-distance-point-to-line-function/distance-point-to-line.png" alt-text="Distance between North Las Vegas Airport and road.":::
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -62,7 +63,7 @@ print distance_in_meters = geo_distance_point_to_line(-115.199625, 36.210419, dy
 
 Storm events in south coast US. The events are filtered by a maximum distance of 5 km from the defined shore line.
 
-:::image type="content" source="images/geo-distance-point-to-line-function/us-south-coast-storm-events.png" alt-text="Storm events in the US south coast":::
+:::image type="content" source="images/geo-distance-point-to-line-function/us-south-coast-storm-events.png" alt-text="Storm events in the US south coast.":::
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -75,7 +76,7 @@ StormEvents
 
 NY taxi pickups. Pickups are filtered by maximum distance of 0.1 meters from the defined multiline.
 
-:::image type="content" source="images/geo-distance-point-to-line-function/madison-ave-road.png" alt-text="NYC taxi pickups on Madison Ave":::
+:::image type="content" source="images/geo-distance-point-to-line-function/madison-ave-road.png" alt-text="NYC taxi pickups on Madison Ave.":::
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -85,6 +86,32 @@ nyc_taxi
 | where geo_distance_point_to_line(pickup_longitude, pickup_latitude, MadisonAve) <= 0.1
 | take 100
 | render scatterchart with (kind=map) // map rendering available in Kusto Explorer desktop
+```
+
+The following example folds many lines into one multiline and queries this multiline. The query finds all taxi pickups that happened 10km away from all roads in Manhattan.
+
+:::image type="content" source="images/geo-distance-point-to-line-function/lines-folding.png" alt-text="Lines folding.":::
+
+```kusto
+let ManhattanRoads =
+    datatable(features:dynamic)
+    [
+        dynamic({"type":"Feature","properties":{"Label":"145thStreetBrg"},"geometry":{"type":"MultiLineString","coordinates":[[[-73.9322259,40.8194635],[-73.9323259,40.8194743],[-73.9323973,40.8194779]]]}}),
+        dynamic({"type":"Feature","properties":{"Label":"W120thSt"},"geometry":{"type":"MultiLineString","coordinates":[[[-73.9619541,40.8104844],[-73.9621542,40.8105725],[-73.9630542,40.8109455],[-73.9635902,40.8111714],[-73.9639492,40.8113174],[-73.9640502,40.8113705]]]}}),
+        dynamic({"type":"Feature","properties":{"Label":"1stAve"},"geometry":{"type":"MultiLineString","coordinates":[[[-73.9704124,40.748033],[-73.9702043,40.7480906],[-73.9696892,40.7487346],[-73.9695012,40.7491976],[-73.9694522,40.7493196]],[[-73.9699932,40.7488636],[-73.9694522,40.7493196]],[[-73.9694522,40.7493196],[-73.9693113,40.7494946],[-73.9688832,40.7501056],[-73.9686562,40.7504196],[-73.9684231,40.7507476],[-73.9679832,40.7513586],[-73.9678702,40.7514986]],[[-73.9676833,40.7520426],[-73.9675462,40.7522286],[-73.9673532,40.7524976],[-73.9672892,40.7525906],[-73.9672122,40.7526806]]]}})
+        // ... more roads ...
+    ];
+let allRoads=toscalar(
+    ManhattanRoads
+    | project road_coordinates=features.geometry.coordinates
+    | summarize make_list(road_coordinates)
+    | project multiline = pack("type","MultiLineString", "coordinates", list_road_coordinates));
+nyc_taxi
+| project pickup_longitude, pickup_latitude
+| where pickup_longitude != 0 and pickup_latitude != 0
+| where geo_distance_point_to_line(pickup_longitude, pickup_latitude, todynamic(allRoads)) > 10000
+| take 10
+| render scatterchart with (kind=map)
 ```
 
 The following example will return a null result because of the invalid LineString input.
