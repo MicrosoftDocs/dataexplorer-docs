@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/20/2019
+ms.date: 02/22/2022
 ---
 # Query consistency
 
-## Consistency models
+## Consistency modes
 
-Kusto supports two query consistency models: **strong** and **weak**.
+Azure Data Explorer supports two query consistency modes: **strong** and **weak**.
 
 *Strongly consistent queries* (default) have a "read-my-changes" guarantee.
 If you send a control command and receive acknowledgment that the command has completed successfully, then you'll be guaranteed any query immediately following will observe the results of the command.
@@ -27,18 +27,18 @@ If you send a control command and receive acknowledgment that the command has co
   * The advantage of using affinity by the query text is improved performance when also using the [query results cache](../query/query-results-cache.md).
   * The advantage of using affinity by the context database name is improved efficiency in the scenario of large clusters (>10 nodes) and many databases (>100).
 
-In general, we recommend that you first try the strongly consistent model. Switch to using weakly consistent queries only if necessary.
+In general, we recommend that you first try the strongly consistent mode. Switch to using weakly consistent queries only if necessary.
 
 ## Controlling query consistency
 
-Before a query starts actual execution, its consistency model is first determined.
+Before a query starts actual execution, its consistency mode is first determined.
 
-1. The consistency model can be controlled per-query, by setting the `queryconsistency` [client request property](../api/netfx/request-properties.md).
+1. The consistency mode can be controlled per-query, by setting the `queryconsistency` [client request property](../api/netfx/request-properties.md).
 
 1. Users of the .NET SDK can also set the query consistency through the [Kusto connection string](../api/connection-strings/kusto.md).
    Doing so affects all queries sent through that connection string (by setting the client request property automatically.)
 
-1. Alternatively, it is possible to control the consistency model by setting a [Query consistency policy](../management/query-consistency-policy.md).
+1. Alternatively, it is possible to control the consistency mode by setting a [Query consistency policy](../management/query-consistency-policy.md).
    Doing so affects all queries sent to the service which are associated with that workload group, so users don't need to specify it manually.
    (If both are specified, per-query settings take precedence.) This policy also lets the admin control the latency of weakly-consistent
    queries, and other control parameters; see [Query weak consistency policy](../management/query-weak-consistency-policy.md) for more details.
