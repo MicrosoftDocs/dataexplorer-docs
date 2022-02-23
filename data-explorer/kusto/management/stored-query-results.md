@@ -23,8 +23,9 @@ Stored query results can be useful in the following scenarios:
   explored using other queries.
 
 > [!NOTE]
-> This feature is only available when [EngineV3](../../engine-v3.md) is enabled.
-> Above 500 columns, an error is obtained and the results aren't stored.
+> * This feature is only available when [EngineV3](../../engine-v3.md) is enabled.
+> * Above 500 columns, an error is obtained and the results aren't stored.
+> * Query results are stored in a storage account associated with a cluster; the data is not cached in local SSD storage.
 
 Stored query results can be accessed for up to 24 hours from the moment of creation. Updates to security policies (for example, database access, row level security, and so on) aren't propagated to stored query results. Use [`.drop stored_query_results`](#drop-stored_query_results) if there is user permission revocation. A stored query result can only be accessed by the same principal identity that created the stored query. 
 
