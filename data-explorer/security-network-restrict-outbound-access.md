@@ -1,34 +1,48 @@
 ---
-title: Restrict outbound access from Azure Data Explorer
-description: 'In this article you will learn how to restrict the outbound access access from Azure Data Explorer to other services.'
-author: cosh
-ms.author: herauch
+title: Restrict outbound access from your Azure Data Explorer cluster
+description: In this article you will learn how to restrict the outbound access access from your Azure Data Explorer cluster to other services.
+author: shsagir
+ms.author: shsagir
 ms.reviewer: eladb
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/21/2022
+ms.date: 02/23/2022
 ---
 
-# Howto restrict outbound access from Azure Data Explorer (public preview)
+# Restrict outbound access from your Azure Data Explorer cluster (public preview)
 
-Restricting the outbound access of an Azure Data Explorer cluster is important to mitigate risks like data exfiltration. A malicious attacker could potentially create an external table to a storage account and extract large amounts of data. In order to control that risk Azure Data Explorer is able to define callout policies. Managing them allows to allow outbound access to certain SQL, Storage or other endpoints.
+Restricting outbound access of your cluster is important to mitigate risks like data exfiltration. A malicious actor could potentially create an external table to a storage account and extract large amounts of data. You can control outbound access at the cluster level by defining [callout policies](kusto/management/calloutpolicy.md). Managing callout policies enables you to allow outbound access to specified SQL, storage, or other endpoints.
 
-This HowTo covers an extension to callout policies which enables the user to restrict the callouts even more.
+In this article, you'll learn how about an extension to callout policies that enables you to further restrict call outs from your cluster.
 
-## Callout policies
+## Types of callout policies
 
-The callout policies can be devided into two parts:
+Callout policies can be divided, as follows:
 
-* Immutable callout policies. They can be considered the standard callout policies of an Azure Data Explorer cluster and they are configured by default and cannot be modified.
-* Cluster callout policies. They can be configured by the user using the callout policy commands.
+* **Immutable callout policies**: These are the standard policies of a cluster. They are preconfigured and cannot be modified.
+* **Cluster callout policies**: These are policies that you can modify using callout policy commands.
 
-Using the command in the screenshot you can inspect the callout policies on your cluster:
+## Prerequisites
 
-![Immutable callout policies.](media/security-network-restrict-access/restrict-outbound-access.png)
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Create [a cluster and database](create-cluster-database-portal.md), or use the Azure Data Explorer help cluster.
 
-Example of immutable callout policies:
+## Run callout policy commands
 
-```javascript
+1. Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/).
+
+1. On the left menu, select **Query**, and then connect to your cluster.
+1. In the query window, run the following query to inspect the list of immutable callout policies on your cluster:
+
+    ```kusto
+    .show cluster policy callout
+    ```
+
+    ![Immutable callout policies.](media/security-network-restrict-access/restrict-outbound-access.png)
+
+The following shows an example of immutable callout policies. Notice that in the list there are a few default rules that allow making calls out to other services, such as external data.
+
+```json
 [
    {
       "CalloutType":"kusto",
@@ -68,37 +82,37 @@ Example of immutable callout policies:
 ]
 ```
 
-You can see by the list of callouts that there are quite some default rules which allow making callouts (external tables, etc) to other services.
+## Empty the list of immutable callout policies
 
-## Create an empty list of immutable callout policies
+To restrict outbound access to from your cluster, you must empty the list of immutable callout policies. You can do this by running the following command using the Azure CLI or any other tools by calling the Azure Data Explorer APIs.
 
-To create an empty list of immutable callout policies on your Azure Data Explorer cluster, you need to make a configuration via the Azure CLI or other tools calling the Azure Data Explorer APIs (ARM, Powershell, etc.).
+1. Run the following command using the Azure CLI:
 
-Azure CLI call:
+    ```bash
+    az kusto cluster update --resource-group "restricted-rg" --name "restricted" --subscription "sid" --verbose  --set properties.restrictOutboundNetworkAccess="Enabled"
+    ```
 
-```bash
-az kusto cluster update --resource-group "restricted-rg" --name "restricted" --subscription "sid" --verbose  --set properties.restrictOutboundNetworkAccess="Enabled"
-```
+    Updating the `restrictOutboundNetworkAccess` cluster property removes all the immutable policies on your cluster. This prevents initiating call outs to other services as shown in the following example.
 
-After you updated the "restrictOutboundNetworkAccess" cluster property, the immutable policies will no longer exist on your cluster. This has the effect that no callouts to other services can be initiated
+    ![Immutable callout policies error.](media/security-network-restrict-access/restrict-outbound-access-enabled-errorDataplane.png)
 
-![Immutable callout policies](media/security-network-restrict-access/restrict-outbound-access-enabled.png)
+1. Run the following command again and verify that the list of immutable callout policies is empty:
+
+    ```kusto
+    .show cluster policy callout
+    ```
+
+    ![Immutable callout policies](media/security-network-restrict-access/restrict-outbound-access-enabled.png)
 
 ## Add FQDNs to the callouts under restricted conditions
 
-Once you enabled the "restrictOutboundNetworkAccess" cluster property, you will not be able to make changes to the cluster callout policies using the callout policy command.
-
-![Immutable callout policies error.](media/security-network-restrict-access/restrict-outbound-access-enabled-errorDataplane.png)
-
-The only way to add a FQDN to the list of allowed callouts is modifying the "AllowedFQDNList" property of the Azure Data Explorer cluster.
-
-Example of adding a SQL db as an allowed FQDN:
+If you want to allow outbound access to a specific FQDN, you can add it to the `AllowedFQDNList` list for your cluster. You can do this by running the following command using the Azure CLI or any other tools by calling the Azure Data Explorer APIs.
 
 ```bash
 az kusto cluster update --resource-group "restricted-rg" --name "restricted" --subscription "sid" --verbose  --addAllowedFQDN "adedicated.sql.azuresynapse.net"
 ```
 
-Once you executed this command the user will be able to make callouts to the respective FQDN.
+By adding the FQDN to the allowed list, you'll be able to make call outs to the specified FQDN.
 
 ## Next steps
 

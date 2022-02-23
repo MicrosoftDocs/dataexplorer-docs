@@ -1,32 +1,51 @@
 ---
 title: Create a Managed Private Endpoints for Azure Data Explorer
 description: 'In this article you will learn how to create a managed private endpoint for Azure Data Explorer.'
-author: cosh
-ms.author: herauch
+author: shsagir
+ms.author: shsagir
 ms.reviewer: eladb
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/09/2022
+ms.date: 02/23/2022
 ---
 
-# Create a Managed Private Endpoints for Azure Data Explorer (public preview)
+# Create a managed private endpoints for Azure Data Explorer (public preview)
 
-Managed Private Endpoints are necessary to connect to other Azure Platform services which are highly protected. They allow you to create a connection using a Private Endpoint.
+Managed private endpoints are required to connect to Azure resources that are highly protected. In this article you will learn how to create a managed private endpoint and connect it to your data source.
 
 ## Prerequisites
 
 * [Create an Azure Data Explorer Cluster](create-cluster-database-portal.md) that is not injected in a virtual network
-* Create an [Azure Eventhub](/azure/event-hubs/event-hubs-about) or [Azure Storage](/azure/storage/blobs/storage-blobs-overview) service
+* Create an [event hub](/azure/event-hubs/event-hubs-about) or a [Azure Storage](/azure/storage/blobs/storage-blobs-overview) blob
 
-## Create a Managed Private Endpoint using the portal
+## Create a managed private endpoint using the Azure portal
 
-![Start the creation of an Azure Private Endpoint - step 1.](media/security-network-private-endpoint/mpe-create-1.png)
+You can create a managed private endpoint using the portal for your cluster to use when accessing your storage.
 
-![Start the creation of an Azure Private Endpoint - step 2.](media/security-network-private-endpoint/mpe-create-2.png)
+1. In the Azure portal, navigate to your cluster and then select **Networking**.
 
-## Create a Managed Private Endpoint using the API
+1. Select **Managed private endpoints**, and then select **Add**.
 
-Creating a Managed Private Endpoint using the API requires a single API call to the Kusto resource provider. You can establish a Managed Private Endpoint to the following resource types:
+    ![Start the creation of an Azure Private Endpoint - step 1.](media/security-network-private-endpoint/mpe-create-1.png)
+
+1. On the **New managed private endpoint** pane, fill out the resource details with the following information, and then select **Next**.
+
+    ![Start the creation of an Azure Private Endpoint - step 2.](media/security-network-private-endpoint/mpe-create-2.png)
+
+    | **Setting** | **Suggested value** | **Field description** |
+    |---|---|---|
+    | Name | mpeToStorage | The name of the managed private endpoint |
+    | Subscription | Your subscription | Select the Azure subscription that you want to use for your cluster |
+    | Resource type | *Microsoft.Storage/storageAccounts* | Select the relevant resources type you want for you data source. |
+    | Resource name | *share* | Chose the Azure Data Explorer cluster which should be used as the destination for the new Azure Private Endpoint |
+    | Target sub-resource | *blob* | Select the relevant target for your data source. |
+    | | | |
+
+1. select **Create** to create the managed private endpoint resource.
+
+## Create a managed private endpoint using the REST API
+
+Creating a managed private endpoint requires a single API call to the *Kusto* resource provider. You can establish a managed private endpoint to the following resource types:
 
 * Microsoft.Storage/storageAccounts (sub-resource may be "blob" or "dfs")
 * Microsoft.EventHub/namespaces (sub-resource "namespace")
@@ -36,135 +55,147 @@ Creating a Managed Private Endpoint using the API requires a single API call to 
 * Microsoft.Kusto/clusters (sub-resource "cluster")
 * Microsoft.DigitalTwins/digitalTwinsInstance (sub-resource "digitaltwinsinstance")
 
-### Prerequisites for an API based creation
+In the following this example, you'll use the [ARMclient](https://chocolatey.org/packages/ARMClient) in PowerShell to create a managed private endpoint using the REST API.
 
-* Install [choco](https://chocolatey.org/install)
-* Install ARMCLIENT
+### Prerequisites for using the REST API
+
+1. Install [choco](https://chocolatey.org/install)
+1. Install *ARMClient*
 
    ```powerShell
    choco install armclient
    ```
 
-* Log in with ARMClient
+1. Log in with ARMClient
 
    ```powerShell
    armclient login
    ```
 
-### Create a Managed Private Endpoint to an Azure Event Hubs service
+### Create a managed private endpoint to Azure Event Hubs
 
-The REST API call to enable the managed private endpoint, in this case eventhub, is the following:
+Use the following REST API call to enable the managed private endpoint to an Event Hubs service:
 
-```powershell
-#replace the <...> placeholders with the correct values
-armclient PUT /subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/clusters/<clusterName>/managedPrivateEndpoints/<newMpeName>?api-version=2022-02-01 @"
-{
-    'properties': {
-        'privateLinkResourceId':'/subscriptions/<subscriptionIdEventHub>/resourceGroups/<resourceGroupNameEventHub>/providers/Microsoft.EventHub/namespaces/<EventHubNamespace>',
-        'groupId':'namespace',
-        'requestMessage':'Please Approve.'
+1. Run the following command to create a managed private endpoint to an Event Hubs service:
+
+    ```powershell
+    # Replace the <...> placeholders with the correct values
+    armclient PUT /subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/clusters/<clusterName>/managedPrivateEndpoints/<newMpeName>?api-version=2022-02-01 @"
+    {
+        'properties': {
+            'privateLinkResourceId':'/subscriptions/<subscriptionIdEventHub>/resourceGroups/<resourceGroupNameEventHub>/providers/Microsoft.EventHub/namespaces/<EventHubNamespace>',
+            'groupId':'namespace',
+            'requestMessage':'Please Approve.'
+        }
     }
-}
-"@
-```
+    "@
+    ```
 
-Result:
+1. Check the response.
 
-```javascript
-{
-  "id": "/subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/Clusters/<clusterName>/ManagedPrivateEndpoints/<newMpeName>",
-  "name": "<clusterName>/<newMpeName>",
-  "type": "Microsoft.Kusto/Clusters/ManagedPrivateEndpoints",
-  "location": "DummyLocation",
-  "properties": {
-    "privateLinkResourceId": "/subscriptions/<subscriptionIdEventHub>/resourceGroups/<resourceGroupNameEventHub>/providers/Microsoft.EventHub/namespaces/<EventHubNamespace>",
-    "groupId": "namespace",
-    "requestMessage": "Please Approve.",
-    "provisioningState": "Creating"
-  }
-}
-```
-
-### Create a Managed Private Endpoint to an Azure Storage account
-
-The REST API call to enable the managed private endpoint, in this case storage, is the following:
-
-```powershell
-#replace the <...> placeholders with the correct values
-armclient PUT /subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/clusters/<clusterName>/managedPrivateEndpoints/<newMpeName>?api-version=2022-02-01 @"
-{
-    'properties': {
-        'privateLinkResourceId':'/subscriptions/<subscriptionIdStorage>/resourceGroups/<resourceGroupNameStorage>/providers/Microsoft.Storage/storageAccounts/<storageAccountName>',
-        'groupId':'blob',
-        'requestMessage':'Please Approve.'
+    ```json
+    {
+      "id": "/subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/Clusters/<clusterName>/ManagedPrivateEndpoints/<newMpeName>",
+      "name": "<clusterName>/<newMpeName>",
+      "type": "Microsoft.Kusto/Clusters/ManagedPrivateEndpoints",
+      "location": "DummyLocation",
+      "properties": {
+        "privateLinkResourceId": "/subscriptions/<subscriptionIdEventHub>/resourceGroups/<resourceGroupNameEventHub>/providers/Microsoft.EventHub/namespaces/<EventHubNamespace>",
+        "groupId": "namespace",
+        "requestMessage": "Please Approve.",
+        "provisioningState": "Creating"
+      }
     }
-}
-"@
-```
+    ```
 
-Result:
+### Create a managed private endpoint to an Azure Storage account
 
-```javascript
-{
-  "id": "/subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/Clusters/<clusterName>/ManagedPrivateEndpoints/<newMpeName>",
-  "name": "<clusterName>/<newMpeName>",
-  "type": "Microsoft.Kusto/Clusters/ManagedPrivateEndpoints",
-  "location": "DummyLocation",
-  "properties": {
-    "privateLinkResourceId": "/subscriptions/<subscriptionIdStorage>/resourceGroups/<resourceGroupNameStorage>/providers/Microsoft.Storage/storageAccounts/<storageAccountName>",
-    "groupId": "blob",
-    "requestMessage": "Please Approve.",
-    "provisioningState": "Creating"
-  }
-}
-```
+Use the following REST API call to enable the managed private endpoint to an Azure Storage blob:
 
-### How to check the progress
+1. Run the following command to create a managed private endpoint to Event Hubs:
 
-Once you executed the API call using ARMCLIENT you can verify the progress of the Managed Private Endpoint migration.
+    ```powershell
+    #replace the <...> placeholders with the correct values
+    armclient PUT /subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/clusters/<clusterName>/managedPrivateEndpoints/<newMpeName>?api-version=2022-02-01 @"
+    {
+        'properties': {
+            'privateLinkResourceId':'/subscriptions/<subscriptionIdStorage>/resourceGroups/<resourceGroupNameStorage>/providers/Microsoft.Storage/storageAccounts/<storageAccountName>',
+            'groupId':'blob',
+            'requestMessage':'Please Approve.'
+        }
+    }
+    "@
+    ```
 
-```powershell
-#replace the <...> placeholders with the correct values
-armclient GET /subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/clusters/<clusterName>/managedPrivateEndpoints/<newMpeName>?api-version=2022-02-01
-```
+1. Check the response.
 
-**Result:**
+    ```json
+    {
+      "id": "/subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/Clusters/<clusterName>/ManagedPrivateEndpoints/<newMpeName>",
+      "name": "<clusterName>/<newMpeName>",
+      "type": "Microsoft.Kusto/Clusters/ManagedPrivateEndpoints",
+      "location": "DummyLocation",
+      "properties": {
+        "privateLinkResourceId": "/subscriptions/<subscriptionIdStorage>/resourceGroups/<resourceGroupNameStorage>/providers/Microsoft.Storage/storageAccounts/<storageAccountName>",
+        "groupId": "blob",
+        "requestMessage": "Please Approve.",
+        "provisioningState": "Creating"
+      }
+    }
+    ```
 
-```javascript
-{
-  "id": "/subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/Clusters/<clusterName>/ManagedPrivateEndpoints/<newMpeName>",
-  "name": "<clusterName>/<newMpeName>",
-  "type": "Microsoft.Kusto/Clusters/ManagedPrivateEndpoints",
-  "location": "DummyLocation",
-  "properties": {
-    "privateLinkResourceId": "/subscriptions/02de0e00-8c52-405c-9088-1342de78293d/resourceGroups/henning-iot/providers/Microsoft.<service>/<...>/<name>",
-    "groupId": "<groupId>",
-    "requestMessage": "Please Approve.",
-    "provisioningState": "Succeeded"
-  },
-  "systemData": {
-    "createdBy": "<UserName>",
-    "createdByType": "User",
-    "createdAt": "2022-02-05T08:29:54.2912851Z",
-    "lastModifiedBy": "chrisqpublic@contoso.com",
-    "lastModifiedByType": "User",
-    "lastModifiedAt": "2022-02-05T08:29:54.2912851Z"
-  }
-}
-```
+### How to check progress
 
-## Approve the Managed Private endpoint
+To check the progress of the managed private endpoint migration, use the following command:
 
-Regardless if you created the Managed Private Endpoint using the portal or the API you need to approve its creation on the target resource. The following picture showes the approval if a Managed Private Endpoint to an Azure Event Hubs service.
+1. Run the following command:
 
-![Approve the Managed Private Endpoint to on the service (i.E. EventHubs).](media/security-network-private-endpoint/pe-create-mpe-approval.png)
+    ```powershell
+    #replace the <...> placeholders with the correct values
+    armclient GET /subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/clusters/<clusterName>/managedPrivateEndpoints/<newMpeName>?api-version=2022-02-01
+    ```
 
-After clicking on "Approve" the Managed Private Endpoint will be usable.
+1. Check the response.
 
-![Approved Managed Private Endpoint.](media/security-network-private-endpoint/pe-create-mpe-approved.png)
+    ```json
+    {
+      "id": "/subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/Clusters/<clusterName>/ManagedPrivateEndpoints/<newMpeName>",
+      "name": "<clusterName>/<newMpeName>",
+      "type": "Microsoft.Kusto/Clusters/ManagedPrivateEndpoints",
+      "location": "DummyLocation",
+      "properties": {
+        "privateLinkResourceId": "/subscriptions/02de0e00-8c52-405c-9088-1342de78293d/resourceGroups/henning-iot/providers/Microsoft.<service>/<...>/<name>",
+        "groupId": "<groupId>",
+        "requestMessage": "Please Approve.",
+        "provisioningState": "Succeeded"
+      },
+      "systemData": {
+        "createdBy": "<UserName>",
+        "createdByType": "User",
+        "createdAt": "2022-02-05T08:29:54.2912851Z",
+        "lastModifiedBy": "chrisqpublic@contoso.com",
+        "lastModifiedByType": "User",
+        "lastModifiedAt": "2022-02-05T08:29:54.2912851Z"
+      }
+    }
+    ```
 
-Now Azure Data Explorer can connect to the resource using a Private Endpoint connection.
+## Approve the managed private endpoint
+
+Whichever method you used to create the managed private endpoint using, you must approve its creation on target resource. The following example shows the approval of a managed private endpoint to an Event Hubs service.
+
+1. In the Azure portal, navigate to your Event Hubs service and then select **Networking**.
+
+1. Select **Private endpoint connections**, select the managed private endpoint you created, and then select **Approve**.
+
+    ![Approve the Managed Private Endpoint to on the service (i.E. EventHubs).](media/security-network-private-endpoint/pe-create-mpe-approval.png)
+
+1. In the **Connection state** column, verify that the managed private endpoint is approved.
+
+    ![Approved Managed Private Endpoint.](media/security-network-private-endpoint/pe-create-mpe-approved.png)
+
+Your cluster can now connect to the resource using the managed private endpoint connection.
 
 ## Next steps
 
-* [Troubleshooting Private Endpoints in Azure Data Explorer](security-network-private-endpoint-troubleshoot.md)
+* [Troubleshooting private endpoints in Azure Data Explorer](security-network-private-endpoint-troubleshoot.md)

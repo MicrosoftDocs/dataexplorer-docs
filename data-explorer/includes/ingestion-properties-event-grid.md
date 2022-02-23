@@ -17,4 +17,4 @@ ms.custom: include file
 | `kustoIngestionMappingReference` |  Name of the existing ingestion mapping to be used. Overrides the `Column mapping` set on the `Data Connection` blade.|
 | `kustoIgnoreFirstRecord` | If set to `true`, Kusto ignores the first row of the blob. Use in tabular format data (CSV, TSV, or similar) to ignore headers. |
 | `kustoExtentTags` | String representing [tags](../kusto/management/extents-overview.md#extent-tagging) that will be attached to resulting extent. |
-| `kustoCreationTime` |  Overrides [$IngestionTime](../kusto/query/ingestiontimefunction.md?pivots=azuredataexplorer) for the blob, formatted as an ISO 8601 string. Use for backfilling. |
+| `kustoCreationTime` |  Overrides [Extent Creation time](../kusto/management/extents-overview.md#extent-creation-time) for the blob, formatted as an ISO 8601 string. Use for backfilling. |

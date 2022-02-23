@@ -485,7 +485,7 @@ items:
     href: extractfunction.md
   - name: extract_all()
     href: extractallfunction.md
-  - name: extractjson()
+  - name: extract_json(), extractjson()
     href: extractjsonfunction.md
   - name: floor()
     href: floorfunction.md
@@ -533,6 +533,8 @@ items:
     href: sha1-hash-function.md
   - name: hash_sha256()
     href: sha256hashfunction.md
+  - name: hash_xxhash64()
+    href: hash-xxhash64-function.md
   - name: hll_merge()
     href: hllmergefunction.md
   - name: hourofday()
@@ -605,7 +607,7 @@ items:
     href: notfunction.md
   - name: now()
     href: nowfunction.md
-  - name: pack()
+  - name: bag_pack(), pack()
     href: packfunction.md
   - name: pack_all()
     href: packallfunction.md
@@ -913,7 +915,9 @@ items:
   - name: geo_line_densify()
     href: geo-line-densify-function.md
   - name: geo_line_length()
-    href: geo-line-length-function.md  
+    href: geo-line-length-function.md
+  - name: geo_line_simplify()
+    href: geo-line-simplify-function.md  
   - name: geo_polygon_area()
     href: geo-polygon-area-function.md
   - name: geo_polygon_centroid()
@@ -922,6 +926,8 @@ items:
     href: geo-polygon-densify-function.md
   - name: geo_polygon_perimeter()
     href: geo-polygon-perimeter-function.md
+  - name: geo_union_lines_array()
+    href: geo-union-lines-array-function.md
   - name: geo_union_polygons_array()
     href: geo-union-polygons-array-function.md
 - name: Time series analysis
