@@ -6,7 +6,7 @@ ms.author: shsagir
 ms.reviewer: eladb
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/21/2022
+ms.date: 02/23/2022
 ---
 
 # Create a private endpoint for Azure Data Explorer (public preview)

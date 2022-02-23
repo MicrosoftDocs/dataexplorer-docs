@@ -6,7 +6,7 @@ ms.author: shsagir
 ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/20/2022
+ms.date: 02/23/2022
 ---
 
 # Network security for Azure Data Explorer

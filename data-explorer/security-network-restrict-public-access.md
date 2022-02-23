@@ -6,7 +6,7 @@ ms.author: shsagir
 ms.reviewer: eladb
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/21/2022
+ms.date: 02/23/2022
 ---
 
 # Restrict public access to your Azure Data Explorer cluster (public preview)

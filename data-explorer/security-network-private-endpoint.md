@@ -6,7 +6,7 @@ ms.author: shsagir
 ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/20/2022
+ms.date: 02/23/2022
 ---
 
 # Private Endpoints for Azure Data Explorer (public preview)
