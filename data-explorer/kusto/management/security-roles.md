@@ -174,7 +174,7 @@ Where:
 .add table TestTable admins ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
 
 // AAD SG on 'fabrikam.com' tenant
-.add table TestTable ingestors ('aadgroup=SGDisplayName;fabrikam.com') 'Test group @fabrikam.com (AAD)'
+.add table TestTable ingestors ('aadGroup=SGEmail@fabrikam.com')
 
 // AAD App on another tenant - by tenant guid
 .add table TestTable ingestors ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
