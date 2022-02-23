@@ -35,7 +35,7 @@ You can secure your ADX to only accept connections from your VNet, by configurin
 
 ## Plan subnet size in your VNet
 
-The size of the subnet used to host an Private Endpoint for Azure Data Explorer cluster can't be altered after the subnet is deployed. The Private Endpoint consumes multiple IP addesses in your virtual network. In extreme scenarios (i.e. highend ingestion) the number of IP addresses being consumed by the Private Endpoint might grow. Planning the the size for the subnet is crucial for that purpose.
+The size of the subnet used to host an Private Endpoint for Azure Data Explorer cluster can't be altered after the subnet is deployed. The Private Endpoint consumes multiple IP addresses in your virtual network. In extreme scenarios (i.e. highend ingestion) the number of IP addresses being consumed by the Private Endpoint might grow. Planning the the size for the subnet is crucial for that purpose.
 
 The variable part of the consumed IP addresses is caused by transient storage accounts which are needed as staging accounts for ingestion into Azure Data Explorer.
 
@@ -50,7 +50,9 @@ The total number of IP addresses consumed by the Private Endpoint:
 | **Total** | **13** |
 
 > [!NOTE]
-> The absolute minimum size for the subnet must be **/28** (14 usable IP addresses)
+> The absolute minimum size for the subnet must be **/28** (14 usable IP addresses). If you plan to create an Azure Data Explorer cluster for extreme ingestion workloads you are on the safe side with a **/24** netmask.
+
+In case you created a subnet which is too small, you can delete it and create a new one with a bigger address range. Once you recreated the subnet you can create a new Private Endpoint for Azure Data Explorer.
 
 ## Connecting to a private endpoint
 

@@ -69,7 +69,7 @@ This Howto focusses on creating an Azure Private Endpoint on an existing Azure D
     | Request message | "Please approve" | The resource owner sees this message while managing private endpoint connection.
     | | | |
 
-1. On the Virtual Network configuration tab select the Virtual Network and Subnet where you want to deploy the private endpoint and chose "Dynamically allocate IP address". Integration with the private DNS zone is needed to resolve the engine and data management endpoints including storage accounts required for ingestion / export related features. Click on "Next: Tags" to proceed.
+1. On the Virtual Network configuration tab select the Virtual Network and Subnet where you want to deploy the private endpoint and chose "Dynamically allocate IP address". The option of "Statically allocate IP address" is not supported. Integration with the private DNS zone is needed to resolve the engine and data management endpoints including storage accounts required for ingestion / export related features. Click on "Next: Tags" to proceed.
 
     ![Virtual Network configuration.](media/security-network-private-endpoint/pe-create-4.png)
 
@@ -94,6 +94,74 @@ This Howto focusses on creating an Azure Private Endpoint on an existing Azure D
 The previous section focussed on creating a private endpoint to an existing Azure Data Explorer cluster. You can create a private endpoint to Azure Data Explorer Cluster during it's [creation phase](create-cluster-database-portal.md) as well. The relevant configuration can be specified in the "Network" tab.
 
 ![Private Endpoint creation during deployment.](media/security-network-private-endpoint/pe-create-deployment.png)
+
+## Alternative to the integration with the private DNS zone
+
+In some situations it is required not to integrate with the private DNS zone of the Azure Virtual Network. Such a situation might be if you are using your own DNS server or you create DNS records using the host files on your virtual machines. This section describes a way to get to the DNS zones.
+
+* Install [choco](https://chocolatey.org/install)
+* Install ARMCLIENT
+
+   ```powerShell
+   choco install armclient
+   ```
+
+* Log in with ARMClient
+
+   ```powerShell
+   armclient login
+   ```
+
+* The REST API call to get the private DNS zones for a specific cluster is the following:
+
+    ```powershell
+    #replace the <...> placeholders with the correct values
+    armclient GET /subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/clusters/<clusterName>/privateLinkResources?api-version=2022-02-01
+    ```
+
+    Result:
+
+    ```javascript
+    {
+      "value": [
+        {
+          "id": "/subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/Clusters/<clusterName>/PrivateLinkResources/cluster",
+          "name": "<clusterName>/cluster",
+          "type": "Microsoft.Kusto/Clusters/PrivateLinkResources",
+          "location": "<the region of your cluster>",
+          "properties": {
+            "groupId": "cluster",
+            "requiredMembers": [
+              "Engine",
+              "DataManagement",
+              "blob-storageAccount1",
+              "queue-storageAccount1",
+              "table-storageAccount1",
+              "blob-storageAccount2",
+              "queue-storageAccount2",
+              "table-storageAccount2"
+            ],
+            "requiredZoneNames": [
+              "privatelink.<the region of your cluster>.kusto.windows.net",
+              "privatelink.blob.core.windows.net",
+              "privatelink.queue.core.windows.net",
+              "privatelink.table.core.windows.net"
+            ],
+            "provisioningState": "Succeeded"
+          }
+        }
+      ]
+    }
+    ```
+
+    The required DNS zones are in the "requiredZoneNames" array in the response of the result.
+
+* the required information about the mapping of IP address to DNS name can be found in the Private Endpoint which has been created.
+
+    ![DNS configuration of the private endpoint.](media/security-network-private-endpoint/pe-dns-config.png)
+
+> [!WARNING]
+> This information allows you to propagate your custom DNS server with the necessary records. We highly recommend to integrate with the private DNS Zones of the Azure Virtual Network and don't configure your own custom DNS server. The nature of private endpoints for Azure Data Explorer cluster is different than for other Azure PaaS services. In some situations (highend ingestion load) it might be necessary that the service scales  out the number of storage accounts which are accessible via the private endpoint in order to increase throughput. If you made the decision to propagate your own custom DNS server, then it is your responsibility to take care of updating the DNS records in such situations (and later remove records in cases the number of storage accounts was scaled back in).
 
 ## Next steps
 
