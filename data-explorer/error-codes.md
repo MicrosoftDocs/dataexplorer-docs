@@ -56,7 +56,7 @@ The following list contains error codes you may come across during [ingestion](i
 |BadRequest_MalformedIngestionProperty              |Ingestion property is malformed.    |Permanent           |
 | BadRequest_IngestionPropertyNotSupportedInThisContext | Ingestion property isn't supported in this context.| Permanent |
 | BadRequest_InvalidBlobUri                        | Blob URI is invalid.      | Permanent          |
-| BadRequest_DataCapacityLimitReached              | Storage data capacity has reached its limit.      | Permanent          |
+| BadRequest_DataCapacityLimitReached              | Storage account has reached its data capacity limit.      | Permanent          |
 
 ## Category: DataAccessNotAuthorized
 
