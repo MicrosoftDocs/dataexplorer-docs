@@ -1,57 +1,58 @@
 ---
-title: Network security for Azure Data Explorer
-description: 'In this article you will learn about the different options to secure your Azure Data Explorer cluster applying network security measures.'
-author: cosh
-ms.author: herauch
+title: Network security for Azure Data Explorer cluster
+description: 'Learn about the different options to secure your Azure Data Explorer cluster applying network security measures.'
+author: shsagir
+ms.author: shsagir
 ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/09/2022
+ms.date: 02/20/2022
 ---
 
 # Network security for Azure Data Explorer
 
-Keeping your data secure in the cloud should be one of the most prioritized task of an IT department. Today, Azure Data Explorer is accessible through Internet-reachable URLs. Anyone with valid identity on the cluster can access it from any location. In some scenarios, it's necessary that Azure Data Explorer can only be accessed from the private virtual network. There are essentially two options to accomplish this connectivity:
+Azure Data Explorer clusters are designed to be accessible using public URLs. Anyone with valid identity on a cluster can access it from any location. As an organization, securing data may be one your highest priority tasks. As such, you may want to limit and secure access to your cluster, or even only allow access to your cluster through your private virtual network. You can use one of the following options to achieve this goal:
 
-1. Virtual Network Injection
-1. Private Endpoints
+1. [Virtual network (VNet) injection](#virtual-network-injection)
+1. [Private endpoint (public preview)](#private-endpoint)
 
-This document provides an overview of those two options.
+The following section explains how to secure your cluster using Virtual Network Injection and Private Endpoints.
 
-## Virtual Network Injection
+## Virtual network injection
 
-Virtual Network Injection allows you to directly deploy Azure Data Explorer into a Virtual Network. The service can be privately accessed from within the virtual network and over VPN/ER from on-premises. Injecting a cluster into a virtual network enables you to manage all of its traffic. This includes the traffic to access the cluster and all of its data ingestions or exports. Additionally you are responsible to allow Microsoft to access the cluster for management and health monitoring.
+Virtual network injection allows you to directly deploy your cluster into a virtual network. The cluster can be privately accessed from within the virtual network and over a VPN gateway, or Azure ExpressRoute from on-premises networks. Injecting a cluster into a virtual network enables you to manage all of its traffic. This includes the traffic to access the cluster and all of its data ingestion or exports. Additionally, you're responsible to allow Microsoft to access the cluster for management and health monitoring.
 
-![Schematic virtual network injection architecture.](media/vnet-deployment/vnet-diagram.png)
+:::image type="content" source="media/vnet-deployment/vnet-diagram.png" alt-text="Schematic virtual network injection architecture.":::
 
-To achive a successful injection of Azure Data Explorer into a virtual network several requirements need to be in place
+To successfully inject your cluster into a virtual network, you must configure your virtual network to meet the following requirements:
 
-* You must delegate the subnet to Microsoft.Kusto/clusters to allow Microsoft to  enable the service to define its pre-conditions for deployment in the form of Network Intent Policies
-* The subnet needs to be well scaled to support future growth of the Azure Data Explorer usage
-* Two public IPs are needed in order to provide access for Microsoft to manage the cluster and ensure that its health is ok
-* In case you are using an additional firewall applicance to secure your network you must allow Azure Data Explorer to connect to a set of Fully Qualified Domain Names (FQDNs) for outgoing traffic
+* You must delegate the subnet to *Microsoft.Kusto/clusters* to enable the service and to define its preconditions for deployment in the form of *network intent policies*
+* The subnet needs to be well scaled to support future growth of the cluster's usage
+* Two public IP addresses are required to manage the cluster and ensure that it's healthy
+* Optionally, if you're using an additional firewall appliance to secure your network, you must allow your cluster to connect to a set of Fully Qualified Domain Names (FQDNs) for outgoing traffic
 
-## Private Endpoints (public preview)
+## Private endpoint
 
-A private endpoint is a network interface that uses private IP addresses from your virtual network. This network interface connects you privately and securely to Azure Data Explorer powered by Azure Private Link. By enabling a private endpoint, you're bringing the service into your virtual network.
+A private endpoint is a network interface that uses private IP addresses from your virtual network. This network interface connects you privately and securely to your cluster powered by Azure Private Link. By enabling a private endpoint, you're bringing the service into your virtual network.
 
-![Schematic private endpoint based architecture.](media/security-network-private-endpoint/pe-diagram-detail.png)
+:::image type="content" source="media/security-network-private-endpoint/pe-diagram-detail.png" alt-text="Schematic private endpoint based architecture.":::
 
-Besides the need for a set of private IP addresses for the private endpoint there are no other requirements for a successful deployment.
+To successfully deploy your cluster into a private endpoint, you only require a set of private IP addresses.
 
-Private endpoints are not supported for ADX cluster which have been injected into a virtual network.
+> [!NOTE]
+> Private endpoints aren't supported for a cluster that are injected into a virtual network.
 
 ## Comparison and recommendation
 
-The following table shows how network security related features could be implemented based on an Azure Data Explorer cluster injected into a virtual netowrk or secured using a private endpoint.
+The following table shows how network security related features could be implemented based on a cluster injected into a virtual network or secured using a private endpoint.
 
-|   Feature | Private Endpoint   | Virtual Network Injection   |
+|   Feature | Private endpoint   | Virtual network injection   |
 |--- |--- |--- |
-| Inbound IP filtering | [Restrict public access](security-network-restrict-public-access.md) | [Create an inbound Network Security Group rule](/azure/virtual-network/network-security-groups-overview)   |
-| Transitive access to other services (Storage, EventHub, etc) | [Create a managed private endpoint](security-network-managed-private-endpoint-create.md) | [Create a private endpoint to the resource](/azure/data-explorer/vnet-endpoint-storage-event-hub)   |
-| Restricting outbound access | Use [Callout policies or the AllowedFQDNList](security-network-restrict-outbound-access.md)	| Use a [virtual appliance](/azure/firewall/tutorial-firewall-deploy-portal) to filter outgoing traffic of the subnet |
+| Inbound IP address filtering | [Restrict public access](security-network-restrict-public-access.md) | [Create an inbound Network Security Group rule](/azure/virtual-network/network-security-groups-overview) |
+| Transitive access to other services (Storage, Event Hubs, etc.) | [Create a managed private endpoint](security-network-managed-private-endpoint-create.md) | [Create a private endpoint to the resource](/azure/data-explorer/vnet-endpoint-storage-event-hub) |
+| Restricting outbound access | Use [Callout policies or the AllowedFQDNList](security-network-restrict-outbound-access.md)	| Use a [virtual appliance](/azure/firewall/tutorial-firewall-deploy-portal) to the subnet's filter outgoing traffic |
 
-It's recommended to use a private endpoint based approach to connect privately to your Azure Data Explorer cluster. Maintaining FQDN lists in firewalls or deploying public IP addresses in a restricted environment lead to a high maintenance effort for a virtual network injection based deployment.
+Maintain FQDN lists in firewalls, or deploying public IP addresses in a restricted environment, for virtual network injection leads to a high maintenance overhead; hence, recommend using a private endpoint to connect to your cluster.
 
 ## Next steps
 

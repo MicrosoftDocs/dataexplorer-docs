@@ -24,7 +24,7 @@ The following are the only scenarios in which setting a data partitioning policy
 * **Frequent filters on a medium or high cardinality string column**:
   * For example: multi-tenant solutions, or a metrics table where most or all queries filter on a column of type `string` such as the `TenantId` or the `MetricId`.
   * Medium cardinality is at least 10,000 distinct values.
-  * Set the [hash partition key](#hash-partition-key) to be the string column column, and set the [`PartitionAssigmentMode` property](#partition-properties) to `uniform`.
+  * Set the [hash partition key](#hash-partition-key) to be the string column, and set the [`PartitionAssigmentMode` property](#partition-properties) to `uniform`.
 * **Frequent aggregations or joins on a high cardinality string column**:
   * For example, IoT information from many different sensors, or academic records of many different students. 
   * High cardinality is at least 1,000,000 distinct values, where the distribution of values in the column is approximately even.
