@@ -24,3 +24,4 @@ Sending the command can be expensive. Once retrieved, the schemas for remote ent
 Changes in the schema of the remote entity may result in unwanted effects. For example, added columns aren't recognized, or deleted columns cause a 'Partial Query Error' instead of a semantic error.
 
 To solve this problem, cached schemas expire one hour after retrieval, so that any query executed more than one hour after the change, will work with the up-to-date schema.
+Another option to refresh the schema is by using [Clear Cross Cluster Schema Cache](clear-cross-cluster-schema-cache.md).
