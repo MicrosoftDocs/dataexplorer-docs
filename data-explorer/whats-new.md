@@ -12,6 +12,16 @@ ms.date: 11/09/2021
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
+## February 2022
+
+This section lists the major changes to docs during February 2022.
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Configure a database using a Kusto Query Language script](database-script.md) | Updated article. Include script-inline capability.
+
 ## October 2021
 
 This section lists the major changes to docs during October 2021.
