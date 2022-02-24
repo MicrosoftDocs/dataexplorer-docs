@@ -9,34 +9,41 @@ ms.topic: how-to
 ms.date: 02/23/2022
 ---
 
-# Troubleshooting private endpoints for Azure Data Explorer
+# Troubleshoot private endpoints
 
-In this section you learn how to troubleshoot connectivity, operational, and cluster creation issues for an Azure Data Explorer cluster that is using Private Endpoints.
+This guide can help you troubleshoot connectivity, operational, and cluster creation issues for a cluster using private endpoints. If you are experiencing connectivity issues to private endpoints, use the following troubleshooting guidance.
 
-## Private Endpoint troubleshooting
+## Check the connection state
 
-Please follow the [troubleshooting guide of Private Endpoints](/azure/private-link/troubleshoot-private-endpoint-connectivity#diagnose-connectivity-problems) to diagnose connectivity problems to Private Endpoints for Azure Data Explorer. All Private Endpoints must be in state "Approved".
+Make sure that the private endpoint's connection state is set to approved.
 
-Additionally to the standard tests mentioned in the section above, make sure that the Private Endpoint shows the "Connection State" as "Approved" in the Networking blade of the Azure Data Explorer resource.
+1. In the Azure portal, navigate to your cluster and then select **Networking**
+
+1. Select **Private endpoint**. In the table, in the **Connection state** column, verify that the private endpoint is approved.
 
 :::image type="content" source="media/security-network-private-endpoint/pe-create-7.png" alt-text="See all private endpoints of an Azure Data Explorer cluster in the portal.":::
 
-## Additional checks
+## Run checks from within the virtual network
 
-Once you checked that all Private Endpoints are approved you can check if the name resolution is working properly. In order to do that it's recommended to deploy a virtual machine in the same virtual network, where you created the private endpoint. Once you logged into the machine you can execute the following tests.
+Use the following checks to investigate connectivity issues from within the same virtual network. We recommended deploying a virtual machine in the same virtual network where you created the private endpoint. Once you logged into the machine, you can run the following tests.
 
-Iterate over all FQDNs of the Private Endpoint DNS configuration and execute the tests using tools like "nslookup, Test-NetConnection, ..." to verify that each DNS matches the corresponding IP address.
+### Check name resolution
+
+Make sure that the name resolution is working properly.
+
+Iterate over all FQDNs of the private endpoint DNS configuration and run the tests using *nslookup*, *Test-NetConnection*, or other similar tools to verify that each DNS matches its corresponding IP address.
 
 :::image type="content" source="media/security-network-private-endpoint/pe-dns-config.png" alt-text="DNS configuration of the private endpoint.":::
 
-### DNS checks
+### Check DNS resolution
 
-Executing the following command will allow you to verify that the DNS name of one of the FQDNs matches the IP address.
+In addition, run the following command to verify that the DNS name of each FQDN matches its corresponding IP address.
 
 ```bash
 #replace the <...> placeholders with the correct values
-user@testVM:~$ nslookup kustope.westeurope.kusto.windows.net
+nslookup kustope.westeurope.kusto.windows.net
 
+#Results in the following output:
 Server:127.0.0.53
 Address:127.0.0.53#53
 
@@ -46,17 +53,17 @@ Name:kustope.privatelink.westeurope.kusto.windows.net
 Address: 10.1.1.12
 ```
 
-If you find a FQDN which is not matching its corresponding IP address then you need to fix your customer DNS server. If you are not using a custom DNS server, create a support ticket.
+If you find a FQDN that doesn't matching its corresponding IP address, you need to fix your custom DNS server. If you are not using a custom DNS server, create a support ticket.
 
 ### Connectivity checks
 
-After you ensured that the DNS resolution is working properly you should check if you can establish a TCP connection to the Azure Data Explorer endpoints. Run those tests on all FQDNs mentioned in the DNS configuration of the Private Endpoint.
+Check if you can establish a TCP connection every FQDN of the private endpoint DNS. Run the following tests on all FQDNs mentioned in the DNS configuration of the private endpoint.
 
 ```Powershell
 #replace the <...> placeholders with the correct values
 Test-NetConnection -ComputerName kustope.westeurope.kusto.windows.net -Port 443
 
-
+#Results in the following output:
 ComputerName     : kustope.westeurope.kusto.windows.net
 RemoteAddress    : 10.1.1.12
 RemotePort       : 443
@@ -65,11 +72,11 @@ SourceAddress    : 10.2.1.23
 TcpTestSucceeded : True
 ```
 
-A successful result returns a **TcpTestSucceeded : True** which means that the caller was able to establish a TCP connection to the Azure Data Explorer cluster successfully.
+A successful result returns **TcpTestSucceeded : True**, which means that the caller was able to establish a TCP connection to the cluster.
 
-### Checking the health of the Azure Data Explorer endpoints
+### Checking the health of the cluster
 
-The last step of the troubleshooting is to test the health of the Azure Data Explorer endpoints.
+The last step of the troubleshooting is to test the health of the cluster.
 
 ```Powershell
 #replace the <...> placeholders with the correct values
@@ -84,17 +91,27 @@ Pong! IP address: 'IPv6IPaddress2'
 
 A successful result must return **Pong!** and an IPv6 address.
 
-## Managed Private Endpoint troubleshooting
+### Other troubleshooting tips
 
-There is not a lot which can be checked for Managed Private Endpoints. You need to verify that the status of all Managed Private Endpoint connections is "Approved". Otherwise Azure Data Explorer will not be able to connect to the corresponding services.
+If after trying all these checks you are still experiencing an issue, try using the [private endpoint troubleshooting guide](/azure/private-link/troubleshoot-private-endpoint-connectivity#diagnose-connectivity-problems) to diagnose it.
+
+## Troubleshoot managed private endpoints
+
+For managed private endpoints, the only check you can do it to verify that the connection status of all managed private endpoint is **Approved**. Otherwise, the cluster won't be able to connect to the corresponding services.
+
+To verify that the managed private endpoint's connection state is set to approved, do the following:
+
+1. In the Azure portal, navigate to your cluster and then select **Networking**
+
+1. Select **Private endpoint connections**. In the table, in the **Connection state** column, verify that the managed private endpoint is approved.
 
 ## Other troubleshooting guidelines
 
-If all the checks mentioned above were successful and you are still not able to establish a connection to the cluster, then you should contact your corporate security team which is responsible for firewalls and networking in general.
+If all the checks were successful and you still aren't able to establish a connection to the cluster, then you should contact your corporate security team which is responsible for firewalls and networking in general.
 
-Potential reasons for failure:
+Potential reasons for failure include:
 
 * Misconfiguration of the firewall appliance
 * Misconfiguration of User Defined Routes in your Azure Virtual Network
-* A wrong proxy configuration on the client machine
-* A misconfigured proxy between the client and the Azure Data Explorer cluster
+* A misconfigured proxy on the client machine
+* A misconfigured proxy between the client and the cluster
