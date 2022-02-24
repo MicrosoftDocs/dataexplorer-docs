@@ -38,7 +38,7 @@ Callout policies can be divided, as follows:
     .show cluster policy callout
     ```
 
-    ![Immutable callout policies.](media/security-network-restrict-access/restrict-outbound-access.png)
+    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access.png" alt-text="Immutable callout policies.":::
 
 The following shows an example of immutable callout policies. Notice that in the list there are a few default rules that allow making calls out to other services, such as external data.
 
@@ -94,7 +94,7 @@ To restrict outbound access to from your cluster, you must empty the list of imm
 
     Updating the `restrictOutboundNetworkAccess` cluster property removes all the immutable policies on your cluster. This prevents initiating call outs to other services as shown in the following example.
 
-    ![Immutable callout policies error.](media/security-network-restrict-access/restrict-outbound-access-enabled-errorDataplane.png)
+    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access-enabled-errorDataplane.png" alt-text="Immutable callout policies error.":::
 
 1. Run the following command again and verify that the list of immutable callout policies is empty:
 
@@ -102,7 +102,7 @@ To restrict outbound access to from your cluster, you must empty the list of imm
     .show cluster policy callout
     ```
 
-    ![Immutable callout policies](media/security-network-restrict-access/restrict-outbound-access-enabled.png)
+    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access-enabled.png" alt-text="Immutable callout policies":::
 
 ## Add FQDNs to the callouts under restricted conditions
 
