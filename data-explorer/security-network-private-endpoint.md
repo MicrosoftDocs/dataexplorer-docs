@@ -2,14 +2,14 @@
 title: Private Endpoints for Azure Data Explorer
 description: 'In this article you'll learn about private endpoints for Azure Data Explorer.'
 author: shsagir
-ms.author: shsagir
+ms.author: herauch
 ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/23/2022
 ---
 
-# Private Endpoints for Azure Data Explorer (public preview)
+# Private Endpoints for Azure Data Explorer
 
 You can use [private endpoints](/azure/private-link/private-endpoint-overview) for your cluster to allow clients on a [virtual network (VNet)](/azure/virtual-network/virtual-networks-overview) to securely access data over a [private link](/azure/private-link/private-link-overview). Private endpoints use private IP addresses from your VNet address space to connect you privately to your cluster. Network traffic between clients on the VNet and the cluster, traverses over the VNet and a private link on the [Microsoft backbone network](/azure/networking/microsoft-global-network), eliminating exposure from the public internet.
 

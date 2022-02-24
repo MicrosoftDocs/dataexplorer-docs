@@ -2,14 +2,14 @@
 title: Troubleshooting Private Endpoints in Azure Data Explorer
 description: 'In this article you will learn how to troubleshoot Private Endpoints in Azure Data Explorer.'
 author: shsagir
-ms.author: shsagir
+ms.author: herauch
 ms.reviewer: eladb
 ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/23/2022
 ---
 
-# Troubleshooting private endpoints for Azure Data Explorer (public preview)
+# Troubleshooting private endpoints for Azure Data Explorer
 
 In this section you learn how to troubleshoot connectivity, operational, and cluster creation issues for an Azure Data Explorer cluster that is using Private Endpoints.
 
