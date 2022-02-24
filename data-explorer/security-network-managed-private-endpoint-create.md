@@ -164,7 +164,7 @@ To check the progress of the managed private endpoint migration, use the followi
       "type": "Microsoft.Kusto/Clusters/ManagedPrivateEndpoints",
       "location": "DummyLocation",
       "properties": {
-        "privateLinkResourceId": "/subscriptions/02de0e00-8c52-405c-9088-1342de78293d/resourceGroups/henning-iot/providers/Microsoft.<service>/<...>/<name>",
+        "privateLinkResourceId": "/subscriptions/02de0e00-8c52-405c-9088-1342de78293d/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.<service>/<...>/<name>",
         "groupId": "<groupId>",
         "requestMessage": "Please Approve.",
         "provisioningState": "Succeeded"
