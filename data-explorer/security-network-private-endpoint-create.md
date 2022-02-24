@@ -126,6 +126,8 @@ To see all the private endpoints created for your cluster:
 
     :::image type="content" source="media/security-network-private-endpoint/pe-create-7.png" alt-text="See all private endpoints of an Azure Data Explorer cluster in the portal.":::
 
+1. In the **Connection state** column, verify that the private endpoint is approved.
+
 ### Use a custom DNS server
 
 In some situations, you may not be able to integrate with the private DNS zone of the VNet. For example, you may be using your own DNS server or you create DNS records using the host files on your virtual machines. This section describes how to get to the DNS zones.
