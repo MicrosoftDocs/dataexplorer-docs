@@ -18,12 +18,12 @@ You can run a Kusto Query Language script to configure your database during ARM 
 * `.alter`
 * `.alter-merge`
 
-It is recommended to use idempotent versions of command so they can be executed multiple times without failure.  For example, it is recommended to use `.create-or-alter` vs `.create` for that reason.
+In general, we recommended using the idempotent version of commands so that if they are called more than once with the same input parameters, they have no additional effect. In other words, running the command multiple times has the same effect as running it once. For example, where possible, we recommend using the idempotent command `.create-or-alter` over the regular `.create` command.
 
 There are various methods you can use to configure a database with Kusto Query Language scripts. We'll focus on two main methods using ARM template deployment:
 
-1.  [*Inline* method](inline-method):  you provide a script **inline**
-1.  [*Storage Account* method](#storage-account-method):, you create a script as a blob in an Azure storage account, and provide its details (url and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) directly
+1. [*Inline*](#inline-script): You provide a script inline
+1. [*Storage Account*](#storage-account-script): You create a script as a blob in an Azure storage account, and provide its details (url and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview))
 
 > [!NOTE]
 > Each cluster can have a maximum of 50 scripts.
@@ -35,18 +35,19 @@ There are various methods you can use to configure a database with Kusto Query L
 
 ## Security
 
-In order to deploy a script, a principal (e.g. a user or a service principal) needs to be both:
+The principal, such as a user or service principal, used to deploy a script must have the following security roles:
 
-1. [Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) on the cluster (control plane)
-1. [Admin](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/access-control/role-based-authorization) on the database (data plane)
+1. [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role on the cluster
+1. [Admin](/azure/data-explorer/kusto/management/access-control/role-based-authorization) role on the database
 
-It is important to note the principal provisioning the cluster automatically gets `All Databases Admin` role on the cluster.
+> [!IMPORTANT]
+> The principal provisioning the cluster automatically gets the `All Databases Admin` role on the cluster.
 
-## Inline method
+## Inline script
 
-This method assumes the Kusto Query Language script is going to be passed *inline* to the script resource.
+In this method, the script is provided inline in the ARM template. A Kusto Query Language script is one or more control commands separated by *at least* one line break.
 
-For example, the code below is a Kusto Query Language script creating two tables: *MyTable* and *MyTable2*.
+For example, the code below is a Kusto Query Language script that creates two tables: *MyTable* and *MyTable2*.
 
 ```kusto
 .create-merge table MyTable (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
@@ -54,7 +55,7 @@ For example, the code below is a Kusto Query Language script creating two tables
 .create-merge table MyTable2 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
 ```
 
-### Run inline Kusto Query Language script using ARM template
+### Run inline script using an ARM template
 
 In this section, you'll see how to run a Kusto Query Language script with a [JSON Azure Resource Manager template](/azure/azure-resource-manager/templates/overview).
 
@@ -64,7 +65,7 @@ In this section, you'll see how to run a Kusto Query Language script with a [JSO
     "contentVersion": "1.0.0.0",
     "parameters": {
         "kqlScript": {
-            "defaultValue": "",
+            "defaultValue": "", // SCRIPT??
             "type": "String"
         },
         "forceUpdateTag": {
@@ -106,14 +107,14 @@ In this section, you'll see how to run a Kusto Query Language script with a [JSO
 
 Use the following settings:
 
-|**Setting**  |**Description**  |
-|---------|---------|
-|KQL Script|The inline Kusto Query Language script. a Kusto Query Language script is one or more control commands separated by **at least** one line break
-| Force Update Tag   |  A unique string. If changed, the script will be applied again.  |
-|Continue On Errors    |   A flag that indicates whether to continue if one of the commands fails. Default is false.
-|Cluster Name    |  The name of the cluster.
-|Database Name   |   The name of the database. The script will run under this database scope.
-|Script Name   |   The name of the script.
+| Setting | Description |
+|--|--|
+| KQL Script | The inline Kusto Query Language script. |
+| Force Update Tag | A unique string. If changed, the script will be applied again. |
+| Continue On Errors | A flag that indicates whether to continue if one of the commands fail. Default value: false. |
+| Cluster Name | The name of the cluster. |
+| Database Name | The name of the database under which the script will run. |
+| Script Name | The name of the script. |
 
 ## Omitting update tag
 
@@ -169,7 +170,7 @@ Use the following settings:
 |Database Name   |   The name of the database. The script will run under this database scope.
 |Script Name   |   The name of the script.
 
-## Storage Account method
+## Storage account script
 
 This method assumes that you already have a blob in Azure storage account and you provide its details (url and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) directly.
 
