@@ -70,7 +70,7 @@ When attaching the database all tables, external tables and materialized views a
     materializedViewsToExclude=["*"]
     ```
 
-# [C#](#tab/csharp)
+# [C#](#tab/csharp-attach)
 
 ### Attach a database using C#
 
@@ -408,7 +408,7 @@ To verify that the database was successfully attached, find your attached databa
 > [!NOTE]
 > To detach a database from the follower or leader side, you must have user, group, service principal, or managed identity with at least contributor role on the cluster from which you are detaching the database. In the example below, we use service principal.
 
-# [C#](#tab/csharp)
+# [C#](#tab/csharp-detach)
 
 ### Detach the attached follower database from the follower cluster using C#
 
