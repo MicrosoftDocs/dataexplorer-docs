@@ -19,7 +19,7 @@ Please follow the [troubleshooting guide of Private Endpoints](/azure/private-li
 
 Additionally to the standard tests mentioned in the section above, make sure that the Private Endpoint shows the "Connection State" as "Approved" in the Networking blade of the Azure Data Explorer resource.
 
-![See all private endpoints of an Azure Data Explorer cluster in the portal.](media/security-network-private-endpoint/pe-create-7.png)
+:::image type="content" source="media/security-network-private-endpoint/pe-create-7.png" alt-text="See all private endpoints of an Azure Data Explorer cluster in the portal.":::
 
 ## Additional checks
 
@@ -27,7 +27,7 @@ Once you checked that all Private Endpoints are approved you can check if the na
 
 Iterate over all FQDNs of the Private Endpoint DNS configuration and execute the tests using tools like "nslookup, Test-NetConnection, ..." to verify that each DNS matches the corresponding IP address.
 
-![DNS configuration of the private endpoint.](media/security-network-private-endpoint/pe-dns-config.png)
+:::image type="content" source="media/security-network-private-endpoint/pe-dns-config.png" alt-text="DNS configuration of the private endpoint.":::
 
 ### DNS checks
 
