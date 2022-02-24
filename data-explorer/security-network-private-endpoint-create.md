@@ -92,7 +92,7 @@ Use the following information to create a private endpoint on an existing cluste
     | | | |
 
 1. On the **Virtual Network** tab, under **Networking**, specify the **Virtual Network** and **Subnet** where you want to deploy the private endpoint.
-1. Under **Private IP configuration**, select **Dynamically allocate IP address**.
+1. Under **Private IP configuration**, select **Dynamically allocate IP address**. it is not supported to configure **Statically allocate IP address**.
 1. Under **Private DNS integration**, turn on the **Integration with the private DNS zone**. It's needed to resolve the engine and data management endpoints including the storage accounts required for ingestion and export related features.
 1. Select **Next**.
 
@@ -117,6 +117,74 @@ To see all the private endpoints created for your cluster:
 1. Select **Private endpoint**. In the table, you can see all private endpoints created for your cluster.
 
     :::image type="content" source="media/security-network-private-endpoint/pe-create-7.png" alt-text="See all private endpoints of an Azure Data Explorer cluster in the portal.":::
+
+## Alternative to the integration with the private DNS zone
+
+In some situations it is required not to integrate with the private DNS zone of the Azure Virtual Network. Such a situation might be if you are using your own DNS server or you create DNS records using the host files on your virtual machines. This section describes a way to get to the DNS zones.
+
+* Install [choco](https://chocolatey.org/install)
+* Install ARMCLIENT
+
+   ```powerShell
+   choco install armclient
+   ```
+
+* Log in with ARMClient
+
+   ```powerShell
+   armclient login
+   ```
+
+* The REST API call to get the private DNS zones for a specific cluster is the following:
+
+    ```powershell
+    #replace the <...> placeholders with the correct values
+    armclient GET /subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/clusters/<clusterName>/privateLinkResources?api-version=2022-02-01
+    ```
+
+    Result:
+
+    ```javascript
+    {
+      "value": [
+        {
+          "id": "/subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/Clusters/<clusterName>/PrivateLinkResources/cluster",
+          "name": "<clusterName>/cluster",
+          "type": "Microsoft.Kusto/Clusters/PrivateLinkResources",
+          "location": "<the region of your cluster>",
+          "properties": {
+            "groupId": "cluster",
+            "requiredMembers": [
+              "Engine",
+              "DataManagement",
+              "blob-storageAccount1",
+              "queue-storageAccount1",
+              "table-storageAccount1",
+              "blob-storageAccount2",
+              "queue-storageAccount2",
+              "table-storageAccount2"
+            ],
+            "requiredZoneNames": [
+              "privatelink.<the region of your cluster>.kusto.windows.net",
+              "privatelink.blob.core.windows.net",
+              "privatelink.queue.core.windows.net",
+              "privatelink.table.core.windows.net"
+            ],
+            "provisioningState": "Succeeded"
+          }
+        }
+      ]
+    }
+    ```
+
+    The required DNS zones are in the "requiredZoneNames" array in the response of the result.
+
+* the required information about the mapping of IP address to DNS name can be found in the Private Endpoint which has been created.
+
+    ![DNS configuration of the private endpoint.](media/security-network-private-endpoint/pe-dns-config.png)
+
+> [!WARNING]
+> This information allows you to propagate your custom DNS server with the necessary records. We highly recommend to integrate with the private DNS Zones of the Azure Virtual Network and don't configure your own custom DNS server. The nature of private endpoints for Azure Data Explorer cluster is different than for other Azure PaaS services. In some situations (highend ingestion load) it might be necessary that the service scales  out the number of storage accounts which are accessible via the private endpoint in order to increase throughput. If you made the decision to propagate your own custom DNS server, then it is your responsibility to take care of updating the DNS records in such situations (and later remove records in cases the number of storage accounts was scaled back in).
 
 ## Next steps
 
