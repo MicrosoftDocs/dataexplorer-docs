@@ -11,7 +11,7 @@ ms.date: 02/23/2022
 
 # Troubleshooting private endpoints for Azure Data Explorer (public preview)
 
-In this section you learn how to troubleshoot connectivity, operational, and cluster creation issues for an Azure Data Explorer cluster that is using (Managed) Private Endpoints.
+In this section you learn how to troubleshoot connectivity, operational, and cluster creation issues for an Azure Data Explorer cluster that is using Private Endpoints.
 
 ## Private Endpoint troubleshooting
 
@@ -23,7 +23,7 @@ Additionally to the standard tests mentioned in the section above, make sure tha
 
 ## Additional checks
 
-Once you checked that all (Managed) Private Endpoints are approved you can check if the name resolution is working properly. In order to do that it's recommended to deploy a virtual machine in the same virtual network, where you created the private endpoint. Once you logged into the machine you can execute the following tests.
+Once you checked that all Private Endpoints are approved you can check if the name resolution is working properly. In order to do that it's recommended to deploy a virtual machine in the same virtual network, where you created the private endpoint. Once you logged into the machine you can execute the following tests.
 
 Iterate over all FQDNs of the Private Endpoint DNS configuration and execute the tests using tools like "nslookup, Test-NetConnection, ..." to verify that each DNS matches the corresponding IP address.
 
@@ -83,6 +83,10 @@ Pong! IP address: 'IPv6IPaddress2'
 ```
 
 A successful result must return **Pong!** and an IPv6 address.
+
+## Managed Private Endpoint troubleshooting
+
+There is not a lot which can be checked for Managed Private Endpoints. You need to verify that the status of all Managed Private Endpoint connections is "Approved". Otherwise Azure Data Explorer will not be able to connect to the corresponding services.
 
 ## Other troubleshooting guidelines
 

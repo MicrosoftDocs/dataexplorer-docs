@@ -2,11 +2,11 @@
 title: Create a Private Endpoints for Azure Data Explorer
 description: 'In this article you will learn how to create a private endpoint for Azure Data Explorer.'
 author: shsagir
-ms.author: shsagir
+ms.author: herauch
 ms.reviewer: eladb
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/23/2022
+ms.date: 02/24/2022
 ---
 
 # Create a private endpoint for Azure Data Explorer (public preview)
@@ -93,7 +93,7 @@ Use the following information to create a private endpoint on an existing cluste
 
 1. On the **Virtual Network** tab, under **Networking**, specify the **Virtual Network** and **Subnet** where you want to deploy the private endpoint.
 1. Under **Private IP configuration**, select **Dynamically allocate IP address**. it is not supported to configure **Statically allocate IP address**.
-1. Under **Private DNS integration**, turn on the **Integration with the private DNS zone**. It's needed to resolve the engine and data management endpoints including the storage accounts required for ingestion and export related features.
+1. Under **Private DNS integration**, turn on the **Integration with the private DNS zone**. It's needed to resolve the engine and data management endpoints including the storage accounts required for ingestion and export related features. In case you decide against the integration with the private DNS zone please follow this [section](security-network-private-endpoint-create.md#alternative-to-the-integration-with-the-private-dns-zone).
 1. Select **Next**.
 
     :::image type="content" source="media/security-network-private-endpoint/pe-create-4.png" alt-text="Virtual Network configuration.":::

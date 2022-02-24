@@ -24,7 +24,7 @@ For an overview of one-click ingestion and a list of prerequisites, see [One-cli
 For different types or sources of data, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md).
 
 > [!NOTE]
-> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint) in different subnets of the same VNET, see [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md).
+> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
 
 ## Ingest new data
 
