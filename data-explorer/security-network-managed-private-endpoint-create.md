@@ -9,7 +9,7 @@ ms.topic: how-to
 ms.date: 02/23/2022
 ---
 
-# Create a managed private endpoints for Azure Data Explorer (public preview)
+# Create a managed private endpoints for Azure Data Explorer
 
 Managed private endpoints are required to connect to Azure resources that are highly protected. In this article you will learn how to create a managed private endpoint and connect it to your data source.
 
@@ -164,7 +164,7 @@ To check the progress of the managed private endpoint migration, use the followi
       "type": "Microsoft.Kusto/Clusters/ManagedPrivateEndpoints",
       "location": "DummyLocation",
       "properties": {
-        "privateLinkResourceId": "/subscriptions/02de0e00-8c52-405c-9088-1342de78293d/resourceGroups/henning-iot/providers/Microsoft.<service>/<...>/<name>",
+        "privateLinkResourceId": "/subscriptions/02de0e00-8c52-405c-9088-1342de78293d/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.<service>/<...>/<name>",
         "groupId": "<groupId>",
         "requestMessage": "Please Approve.",
         "provisioningState": "Succeeded"

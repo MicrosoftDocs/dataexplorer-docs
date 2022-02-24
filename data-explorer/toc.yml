@@ -319,8 +319,6 @@ items:
             href: vnet-create-cluster-portal.md
           - name: Deploy your cluster to your VNet
             href: vnet-deployment.md
-          - name: Create Private Endpoint for your VNet cluster - Portal
-            href: vnet-create-private-endpoint.md
           - name: Create a private or service endpoint to resources used by data connections
             displayName: VNet, private endpoint, Azure Storage, event hub
             href: vnet-endpoint-storage-event-hub.md

@@ -2,14 +2,14 @@
 title: Create a Private Endpoints for Azure Data Explorer
 description: 'In this article you will learn how to create a private endpoint for Azure Data Explorer.'
 author: shsagir
-ms.author: shsagir
+ms.author: herauch
 ms.reviewer: eladb
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/23/2022
+ms.date: 02/24/2022
 ---
 
-# Create a private endpoint for Azure Data Explorer (public preview)
+# Create a private endpoint for Azure Data Explorer
 
 Use an Azure [private endpoint](/azure/private-link/private-endpoint-overview) to connect to your cluster in your [Azure virtual network](/azure/virtual-network/virtual-networks-overview) (VNet).
 
