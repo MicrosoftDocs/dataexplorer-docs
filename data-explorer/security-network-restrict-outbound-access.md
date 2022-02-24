@@ -1,6 +1,6 @@
 ---
 title: Restrict outbound access from your Azure Data Explorer cluster
-description: In this article you will learn how to restrict the outbound access access from your Azure Data Explorer cluster to other services.
+description: In this article, you'll learn how to restrict the outbound access from your Azure Data Explorer cluster to other services.
 author: shsagir
 ms.author: shsagir
 ms.reviewer: eladb
@@ -19,7 +19,7 @@ In this article, you'll learn how about an extension to callout policies that en
 
 Callout policies can be divided, as follows:
 
-* **Immutable callout policies**: These are the standard policies of a cluster. They are preconfigured and cannot be modified.
+* **Immutable callout policies**: These are the standard policies of a cluster. They're preconfigured and can't be modified.
 * **Cluster callout policies**: These are policies that you can modify using callout policy commands.
 
 ## Prerequisites

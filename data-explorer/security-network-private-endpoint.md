@@ -1,6 +1,6 @@
 ---
 title: Private Endpoints for Azure Data Explorer
-description: In this article you'll learn about private endpoints for Azure Data Explorer.
+description: In this article, you'll learn about private endpoints for Azure Data Explorer.
 author: shsagir
 ms.author: shsagir
 ms.reviewer: basaba
@@ -48,7 +48,7 @@ Use the following information to help you determine the total number of IP addre
 > [!NOTE]
 > The absolute minimum size for the subnet must be **/28** (14 usable IP addresses). If you plan to create an Azure Data Explorer cluster for extreme ingestion workloads you are on the safe side with a **/24** netmask.
 
-In case you created a subnet which is too small, you can delete it and create a new one with a bigger address range. Once you recreated the subnet you can create a new Private Endpoint for Azure Data Explorer.
+If you created a subnet that is too small, you can delete it and create a new one with a larger address range. Once you've recreated the subnet, you can create a new private endpoint for the cluster.
 
 ## Connecting to a private endpoint
 
