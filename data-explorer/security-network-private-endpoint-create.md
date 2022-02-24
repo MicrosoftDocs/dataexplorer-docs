@@ -1,6 +1,6 @@
 ---
 title: Create a Private Endpoints for Azure Data Explorer
-description: 'In this article you will learn how to create a private endpoint for Azure Data Explorer.'
+description: In this article, you'll learn how to create a private endpoint for Azure Data Explorer.
 author: shsagir
 ms.author: herauch
 ms.reviewer: eladb
@@ -19,12 +19,12 @@ Private endpoints use private IP addresses from your VNet to connect you private
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Sign in to the [Azure portal](https://portal.azure.com/).
-* [Create a cluster](create-cluster-database-portal.md) that is not injected in a virtual network
+* [Create a cluster](create-cluster-database-portal.md) that isn't injected in a virtual network
 * [Create a virtual network](/azure/virtual-network/quick-create-portal)
 
 ## Create a private endpoint
 
-There are several ways to create a private endpoint for an cluster.
+There are several ways to create a private endpoint for a cluster.
 
 * During the deployment of your cluster in the portal
 * By [creating a private endpoint](/azure/private-link/create-private-endpoint-portal) resource directly
@@ -78,8 +78,8 @@ Use the following information to create a private endpoint on an existing cluste
     |---|---|---|
     | Subscription | Your subscription | Select the Azure subscription that you want to use for your cluster |
     | Resource type | Your resource group | Select "Microsoft.Kusto/clusters |
-    | Resource | contoso-adx | Chose the Azure Data Explorer cluster which should be used as the destination for the new Azure Private Endpoint |
-    | Target sub-resource | *cluster* | There is no other option |
+    | Resource | contoso-adx | Choose the cluster that should be used as the destination for the new Azure Private Endpoint |
+    | Target sub-resource | *cluster* | There's no other option |
     | | | |
 
     Alternatively, you can select **Connect to an Azure resource by resource ID or alias**. This enables you to create a private endpoint to a cluster in another tenant or if you don't have at least **Reader** access on the resource.
@@ -87,7 +87,7 @@ Use the following information to create a private endpoint on an existing cluste
     | **Setting** | **Suggested value** | **Field description** |
     |---|---|---|
     | ResourceId or alias | /subscriptions/... | The resource ID or alias that someone has shared with you. The easiest way to get the resource ID is to navigate to the cluster in the Azure portal and copy the Resource ID from the **Properties** sections |
-    | Tarrget sob-resource | *cluster* | There is no other option |
+    | Target sub-resource | *cluster* | There's no other option |
     | Request message | *Please approve* | The resource owner sees this message while managing private endpoint connection |
     | | | |
 
@@ -114,7 +114,7 @@ Use the following information to create a private endpoint on an existing cluste
 
 ### Verify the private endpoint creation
 
-Once the creation of the private endpoint is complete, you'll be able to access it in the Azure Portal.
+Once the creation of the private endpoint is complete, you'll be able to access it in the Azure portal.
 
 :::image type="content" source="media/security-network-private-endpoint/pe-create-6.png" alt-text="Private Endpoint creation result.":::
 

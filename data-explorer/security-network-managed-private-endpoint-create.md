@@ -1,6 +1,6 @@
 ---
 title: Create a Managed Private Endpoints for Azure Data Explorer
-description: 'In this article you will learn how to create a managed private endpoint for Azure Data Explorer.'
+description: In this article, you'll learn how to create a managed private endpoint for Azure Data Explorer.
 author: shsagir
 ms.author: shsagir
 ms.reviewer: eladb
@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 02/23/2022
 ---
 
-# Create a managed private endpoints for Azure Data Explorer
+# Create a managed private endpoint for Azure Data Explorer
 
-Managed private endpoints are required to connect to Azure resources that are highly protected. In this article you will learn how to create a managed private endpoint and connect it to your data source.
+Managed private endpoints are required to connect to Azure resources that are highly protected. In this article, you'll learn how to create a managed private endpoint and connect it to your data source.
 
 ## Prerequisites
 
-* [Create an Azure Data Explorer Cluster](create-cluster-database-portal.md) that is not injected in a virtual network
+* [Create an Azure Data Explorer Cluster](create-cluster-database-portal.md) that isn't injected in a virtual network
 * Create an [event hub](/azure/event-hubs/event-hubs-about) or a [Azure Storage](/azure/storage/blobs/storage-blobs-overview) blob
 
 ## Create a managed private endpoint using the Azure portal
@@ -36,8 +36,8 @@ You can create a managed private endpoint using the portal for your cluster to u
     |---|---|---|
     | Name | mpeToStorage | The name of the managed private endpoint |
     | Subscription | Your subscription | Select the Azure subscription that you want to use for your cluster |
-    | Resource type | *Microsoft.Storage/storageAccounts* | Select the relevant resources type you want for you data source. |
-    | Resource name | *share* | Chose the Azure Data Explorer cluster which should be used as the destination for the new Azure Private Endpoint |
+    | Resource type | *Microsoft.Storage/storageAccounts* | Select the relevant resources type you want for your data source. |
+    | Resource name | *share* | Choose the cluster that should be used as the destination for the new Azure Private Endpoint |
     | Target sub-resource | *blob* | Select the relevant target for your data source. |
     | | | |
 
@@ -188,7 +188,7 @@ Whichever method you used to create the managed private endpoint using, you must
 
 1. Select **Private endpoint connections**, select the managed private endpoint you created, and then select **Approve**.
 
-    :::image type="content" source="media/security-network-private-endpoint/pe-create-mpe-approval.png" alt-text="Approve the Managed Private Endpoint to on the service (i.E. EventHubs).":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-create-mpe-approval.png" alt-text="Approve the Managed Private Endpoint to on the Event Hubs service.":::
 
 1. In the **Connection state** column, verify that the managed private endpoint is approved.
 
