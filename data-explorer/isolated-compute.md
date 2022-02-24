@@ -35,7 +35,7 @@ To enable isolated compute in Azure Data Explorer, follow one of these processes
 ## Create a cluster with isolated compute SKU
 
 1. Follow the instructions to [create an Azure Data Explorer cluster and database in the Azure portal](create-cluster-database-portal.md)
-1. In [create a cluster](create-cluster-database-portal.md#create-a-cluster) within the **Basics** tab, select **Standard_E64i_v3** in **Compute specifications** drop-down.
+2. In [create a cluster](create-cluster-database-portal.md#create-a-cluster) within the **Basics** tab, select **Standard_E64i_v3** in **Compute specifications** drop-down.
 
 ## Select the isolated compute SKU on an existing cluster
 
