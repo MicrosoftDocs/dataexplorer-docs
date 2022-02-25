@@ -86,33 +86,101 @@ The following shows an example of immutable callout policies. Notice that in the
 
 To restrict outbound access to from your cluster, you must empty the list of immutable callout policies. You can do this by running the following command using the Azure CLI or any other tools by calling the Azure Data Explorer APIs.
 
-1. Run the following command using the Azure CLI:
+1. Trigger an ARM deployment using the Azure CLI with an updated ARM template:
+
+    Example ARM template file named "template.json" with the property **restrictOutboundNetworkAccess** set to **Enabled**:
+
+    ```javascript
+    {
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      ...
+      "resources": [
+          {
+              "type": "Microsoft.Kusto/Clusters",
+              "apiVersion": "2021-02-01",
+              ...
+              "properties": {
+                  ...
+                  "restrictOutboundNetworkAccess": "Enabled",
+                  ...
+              }
+          }
+          ...
+      ]
+    }
+    ```
+
+    Example call using the Azure CLI referring to the template above.
 
     ```bash
-    az kusto cluster update --resource-group "restricted-rg" --name "restricted" --subscription "sid" --verbose  --set properties.restrictOutboundNetworkAccess="Enabled"
+    # Replace the <...> placeholders with the correct values
+    az deployment group create   --name RestrictOutboundAccess   --resource-group <resource group>   --template-file ./template.json
     ```
 
     Updating the `restrictOutboundNetworkAccess` cluster property removes all the immutable policies on your cluster. This prevents initiating call outs to other services as shown in the following example.
 
     :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access-enabled-errorDataplane.png" alt-text="Immutable callout policies error.":::
 
-1. Run the following command again and verify that the list of immutable callout policies is empty:
+1. Run the following command again and verify that it returns an empty list:
 
     ```kusto
-    .show cluster policy callout
+    .show cluster policy callout 
+    | where EntityType == "Cluster immutable policy"
     ```
 
-    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access-enabled.png" alt-text="Immutable callout policies":::
+    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access-enabled-noImmutableCalloutPolicies.png" alt-text="No immutable callout policies.":::
 
 ## Add FQDNs to the callouts under restricted conditions
 
-If you want to allow outbound access to a specific FQDN, you can add it to the `AllowedFQDNList` list for your cluster. You can do this by running the following command using the Azure CLI or any other tools by calling the Azure Data Explorer APIs.
+If you want to allow outbound access to a specific FQDN, you can add it to the `allowedFqdnList` list for your cluster. You can do this by running by making changes to the ARM template of the Azure Data Explorer cluster.
 
-```bash
-az kusto cluster update --resource-group "restricted-rg" --name "restricted" --subscription "sid" --verbose  --addAllowedFQDN "adedicated.sql.azuresynapse.net"
-```
+1. Trigger an ARM deployment using the Azure CLI with an updated ARM template:
 
-By adding the FQDN to the allowed list, you'll be able to make call outs to the specified FQDN.
+    Example ARM template file named "template.json" with the property **allowedFqdnList** set to **["some.sql.azuresynapse.net", "..."]**:
+
+    ```javascript
+    {
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      ...
+      "resources": [
+          {
+              "type": "Microsoft.Kusto/Clusters",
+              "apiVersion": "2021-02-01",
+              ...
+              "properties": {
+                  ...
+                  "restrictOutboundNetworkAccess": "Enabled",
+                  "allowedFqdnList": ["some.sql.azuresynapse.net", "..."]
+                  ...
+              }
+          }
+          ...
+      ]
+    }
+    ```
+
+    Example call using the Azure CLI referring to the template above.
+
+    ```bash
+    # Replace the <...> placeholders with the correct values
+    az deployment group create   --name ConfigureAllowedFqdnList   --resource-group <resource group>   --template-file ./template.json
+    ```
+
+1. By adding the FQDN to the allowed list, you'll be able to make call outs to the specified FQDN. You can check the result of the deployment by executing the following command:
+
+    ```kusto
+    .show cluster policy callout 
+    | project Policy=todynamic(Policy)
+    | mv-expand Policy
+    | where Policy.CalloutType == "sql" 
+    ```
+
+    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access-enabled-allowedFQDNSet.png" alt-text="Callout policy configured.":::
+
+    > [!NOTE]
+    > There is a set of default policies set for Azure Data Explorer to communicate with its internal storage layer. They expose no risk for data exfiltration.
 
 ## Next steps
 
