@@ -20,7 +20,7 @@ As a data platform, Azure Data Explorer supports the ability to delete individua
 
 This deletion method should only be used for the unplanned deletion of individual records. For example, if you discover that an IoT device is reporting corrupt telemetry for some time, you should consider using this method to delete the corrupt data.
 
-If you need to frequently delete records for deduplication or updates, we recommend that you use [Materialized Views](../management/materialized-views/materialized-view-overview.md).
+If you need to frequently delete records for deduplication or updates, we recommend that you use [materialized views](../management/materialized-views/materialized-view-overview.md). See [materialized views vs. soft delete for deduplication](../../dealing-with-duplicates.md#materialized-views-vs-soft-delete-for-deduplication).
 
 ## Deletion process
 
@@ -59,7 +59,6 @@ The main considerations that can impact the [deletion process](#deletion-process
 Unlike `.purge`, the `.delete` command doesn't reingest the data. It just marks records that are returned by the predicate query as deleted and is therefore much faster.
 
 ## Query performance after deletion
-
 
 Query performance isn't expected to noticeably change following the deletion of records.
 

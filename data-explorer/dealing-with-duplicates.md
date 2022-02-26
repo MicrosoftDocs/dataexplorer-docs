@@ -59,18 +59,34 @@ This query can also be placed inside a function instead of directly querying the
 ```kusto
 .create function DeviceEventsView
 {
-DeviceEventsAll
-| where EventDateTime > ago(90d)
-| summarize arg_max(EventDateTime, *) by DeviceId, EventId, StationId
+    DeviceEventsAll
+    | where EventDateTime > ago(90d)
+    | summarize arg_max(EventDateTime, *) by DeviceId, EventId, StationId
 }
 ```
 
 ### Solution #3: Use materialized views to deduplicate
 
-[Materialized views](kusto/management/materialized-views/materialized-view-overview.md) can be used for deduplication, by using the [any()](./kusto/query/take-any-aggfunction.md)/[arg_min()](kusto/query/arg-min-aggfunction.md)/[arg_max()](kusto/query/arg-max-aggfunction.md) aggregation functions (see example #4 in [materialized view create command](kusto/management/materialized-views/materialized-view-create.md#examples)). 
+[Materialized views](kusto/management/materialized-views/materialized-view-overview.md) can be used for deduplication, by using the [take_any()](./kusto/query/take-any-aggfunction.md)/[arg_min()](kusto/query/arg-min-aggfunction.md)/[arg_max()](kusto/query/arg-max-aggfunction.md) aggregation functions (see example #4 in [materialized view create command](kusto/management/materialized-views/materialized-view-create.md#examples)).
 
 > [!NOTE]
 > Materialized views come with a cost of consuming cluster's resources, which may not be negligible. For more information, see materialized views [performance considerations](kusto/management/materialized-views/materialized-view-overview.md#performance-considerations).
+
+### Solution #4: Use soft delete to remove duplicates
+
+[Data soft delete](kusto/concepts/data-soft-delete.md) supports the ability to delete individual records, and can therefore be used to delete duplicates. This option is recommended only for infrequent deletes, and not if you constantly need to deduplicate all incoming records.
+
+#### Materialized views vs. soft delete for deduplication
+
+There are several considerations that can help you choose between using materialized views or soft delete for deduplication:
+
+* *Management and orchestration* - materialized views are a fully managed solution. The view is defined once, and the system handles deduplication of all incoming records. Soft delete requires orchestration and management. Therefore, if materialized views work for your use case, you should always choose this option.
+* *When are records deduped* - using soft delete, duplicates first enter the table and are then deleted. In between ingestion and soft delete process, the table contains duplicates. With materialized views, records in view will *always* be deduped, as they are deduped *before* entering the view.
+* *Frequency* - if the table constantly needs to be deduplicated, use materialized views. If duplicates are expected to be  infrequent, and you are able to identify them during ingestion time, then using soft delete operations is expected to perform better than materialized views. For example, if the table is not expected to have duplicates during "normal" ingestions, but in rare cases you ingest a stream which is known to contain duplicates. In this case, it's better to handle these duplicates using soft delete, then to define a materialized view that will constantly attempt to deduplicate *all* records.
+
+### Solution #5: `ingest-by` extent tags
+
+['ingest-by:' extent tags](kusto/management/extents-overview.md#ingest-by-extent-tags) can be used to prevent duplicates during ingestion time. This is relevant only in use cases where each ingestion batch is guaranteed to have no duplicates, and duplicates are only expected if same ingestion batch is ingested more than once. See more details in ['ingest-by:' extent tags](kusto/management/extents-overview.md#ingest-by-extent-tags) section. Pay special notice to the `Warning` in the document.
 
 ## Summary
 
