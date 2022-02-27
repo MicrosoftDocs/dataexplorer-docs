@@ -166,7 +166,7 @@ Deploy the template
 You can deploy the Azure Resource Manager template using [Azure portal](https://ms.portal.azure.com/#create/Microsoft.Template) or using PowerShell.
 ![template deployment.](media/follower/template-deployment-tls.png)
 
-|**Setting**                    |**Description**  | **Example** |
+|**Setting**                    |**Description**                                                                                                    | **Example** |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
 | Account Name                  | The name of the providers data share account.                                                                     |                                                          |
 | Location                      | The location of all the resources. The leader and the follower must be in the same location.                      |                                                          |
@@ -180,6 +180,7 @@ You can deploy the Azure Resource Manager template using [Azure portal](https://
 | External Tables To Exclude    | The list of external tables to exclude. To exclude all external tables, use ["*"].                                | `["ExternalTable1ToExclude", "ExternalTable2ToExclude"]` |
 | Materialized Views To Include | The list of materialized views to include. To include all materialized views starting with 'Logs', use ["Logs*"]. | `["Mv1ToInclude", "Mv2ToInclude"]`                       |
 | Materialized Views To Exclude | The list of materialized views to exclude. To exclude all materialized views, use ["*"].                          | `["Mv11ToExclude", "Mv22ToExclude"]`                     |
+
 ---
 
 ## Data consumer - receive data
