@@ -11,7 +11,7 @@ ms.date: 02/27/2022
 
 # Get started with your free Azure Data Explorer cluster
 
-Creating your own free cluster gives you the opportunity to explore some of the incredible capabilities of Azure Data Explorer. In particular, it's a great way to experience our fast and highly scalable data exploration service for log and and telemetry data, and use the powerful and intuitive Kusto Query Language to gain business insights into your data.
+Creating your own free cluster gives you the opportunity to explore some of the incredible capabilities of Azure Data Explorer. In particular, it's a great way to experience our fast and highly scalable data exploration service for log and telemetry data, and use the powerful and intuitive Kusto Query Language to gain business insights into your data.
 
 In this article, we'll show you how to create a free cluster, and get started with Azure Data Explorer.
 
@@ -60,9 +60,9 @@ Under quick actions, you can perform the following actions:
 1. **Query**: Run a query against your cluster. For more information, see [Run queries](web-query-data.md#run-queries).
 1. **Create**: Create a new database in your cluster.
     1. In the **Create new database** card, select **Create**.
-    1. On the **Create database** page, enter a name for the database, and then click **Create Database**.
+    1. On the **Create database** page, enter a name for the database, and then select **Create Database**.
 
-        :::image type="content" source="media/start-for-free-web-ui/start-for-free-create-database.png" alt-text="Screenshot of Create database page, showing the the details for the new database.":::
+        :::image type="content" source="media/start-for-free-web-ui/start-for-free-create-database.png" alt-text="Screenshot of Create database page, showing the details for the new database.":::
 
 ## Next steps
 
