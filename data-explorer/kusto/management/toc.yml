@@ -454,6 +454,10 @@ items:
       href: show-database-streaming-ingestion-policy-command.md
     - name: .show table streaming ingestion policy command
       href: show-table-streaming-ingestion-policy-command.md
+  - name: Cross Cluster Schema
+    items:
+    - name: Cross Cluster Schema Cache 
+      displayName: clear-cross-cluster-schema-cache.md
   - name: Update
     items:
     - name: Update policy
