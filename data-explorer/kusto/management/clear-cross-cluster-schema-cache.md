@@ -1,35 +1,44 @@
-# Clear schema cache for cross cluster queries
+---
+title: Clear schema cache for cross-cluster queries
+description: This article describes how to manually clear the cross-cluster query cache in Azure Data Explorer.
+services: data-explorer
+author: orspod
+ms.author: orspodek
+ms.reviewer: ziham1531991
+ms.service: data-explorer
+ms.topic: reference
+ms.date: 02/28/2022
+---
 
-When executing cross-cluster query, the cluster that is doing the initial query interpretation must have the schema of the entities referenced in the remote clusters.
+# Clear schema cache for cross-cluster queries
 
-Sending the command that retrieves the schema can be expensive and therefore the remote schemas are cached.
+When running a cross-cluster query, the cluster that performs the initial query interpretation must have the schema of the entities referenced on the remote clusters. Sending the command can be an expensive network operation and therefore the remote schema entities are cached.
 
-Changes in the schema of the remote entity may result in unwanted effects. For example, added columns aren't recognized, or deleted columns cause a 'Partial Query Error' instead of a semantic error. See [Cross Cluster Schema Changes](../concepts/crossclusterandschemachanges.md).
+Any changes to the schema of the remote entity may result in unwanted effects. For example, new columns aren't recognized or deleted columns may cause a 'Partial Query Error' instead of a semantic error. For more information, see [Cross-cluster queries and schema changes](../concepts/cross-cluster-and-schema-changes.md).
 
-This command can be used when there is a need to refresh the schema without waiting for the expiry time of the cache which is one hour.
+You can use the following command when you need to refresh the schema without waiting for the expiry time of the cache.
 
-**Syntax**
+## Syntax
 
-`.clear cache remote-schema cluster("cluster1").database("database1")`
+`.clear` `cache` `remote-schema` `cluster('`ClusterName`').database('`DatabaseName`')`
 
-**Returns**
+## Returns
 
-This command returns a table with the following columns:
+The command returns a table with the following columns:
 
-|Column    |Type    |Description
-|---|---|---
-|NodeId|`string`|Identifier of the cluster node
-|Status|`string`|Succeeded/Failed
+| Column | Type | Description |
+|--|--|--|
+| NodeId | `string` | Identifier of the cluster node |
+| Status | `string` | Succeeded/Failed |
 
-**Example**
+## Example
 
 ```kusto
-
 .clear cache remote-schema cluster("cluster1").database("database1")
-
 ```
+
+**Returns**
 
 |NodeId|Status|
 |---|---|
 |0|Cache cleared for database database1
-
