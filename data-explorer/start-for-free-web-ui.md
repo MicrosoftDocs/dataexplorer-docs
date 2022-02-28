@@ -23,7 +23,7 @@ An Azure subscription. Create a [free Azure account](https://azure.microsoft.com
 
 Start by creating your free cluster.
 
-1. Go to the [My Cluster](https://aka.ms/kustofree) page and select **Create cluster**.
+1. Go to [My Cluster](https://aka.ms/kustofree) and select **Create cluster**.
 
     :::image type="content" source="media/start-for-free-web-ui/start-for-free-create-cluster.png" alt-text="Screenshot of My Cluster page, showing the Create cluster option.":::
 
@@ -39,7 +39,7 @@ Start by creating your free cluster.
 
 1. Review the terms of service and accept them by selecting the corresponding checkbox.
 
-1. Select **Create** to provision the cluster. Provisioning typically takes a few minutes minutes.
+1. Select **Create** to provision the cluster. Provisioning typically takes a few minutes.
 
 ## Work with your free cluster
 
@@ -54,11 +54,13 @@ On your cluster's overview page, you'll see the following:
 
 ### Quick actions
 
-Under quick actions, you can perform the following actions:
+Quick actions make it easy to get started with your cluster. You can create a database, ingest data, or run a query.
 
-1. **Ingest**: Upload data to your cluster. For more information, see [One-click ingestion wizard](ingest-data-one-click.md#one-click-ingestion-wizard).
-1. **Query**: Run a query against your cluster. For more information, see [Run queries](web-query-data.md#run-queries).
-1. **Create**: Create a new database in your cluster.
+To start a quick action, under quick actions, select the action you want to perform:
+
+1. **Ingest**: Use this action to load data into your cluster. For more information, see [One-click ingestion wizard](ingest-data-one-click.md#one-click-ingestion-wizard).
+1. **Query**: Use this action to run a query against data in your cluster. For more information, see [Run queries](web-query-data.md#run-queries).
+1. **Create**: Use this action if you want to create a new database in your cluster.
     1. In the **Create new database** card, select **Create**.
     1. On the **Create database** page, enter a name for the database, and then select **Create Database**.
 
