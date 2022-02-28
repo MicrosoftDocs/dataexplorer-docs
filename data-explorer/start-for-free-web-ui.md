@@ -56,7 +56,7 @@ On your cluster's overview page, you'll see the following:
 
 Quick actions make it easy to get started with your cluster. You can create a database, ingest data, or run a query.
 
-To start a quick action, under quick actions, select the action you want to perform:
+To start a quick action, under **Actions**, select the action you want to perform:
 
 1. **Ingest**: Use this action to load data into your cluster. For more information, see [One-click ingestion wizard](ingest-data-one-click.md#one-click-ingestion-wizard).
 1. **Query**: Use this action to run a query against data in your cluster. For more information, see [Run queries](web-query-data.md#run-queries).
