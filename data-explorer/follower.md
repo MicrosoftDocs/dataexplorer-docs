@@ -70,7 +70,7 @@ When attaching the database all tables, external tables and materialized views a
     materializedViewsToExclude=["*"]
     ```
 
-# [C#](#tab/csharp)
+# [C#](#tab/csharp-attach)
 
 ### Attach a database using C#
 
@@ -369,20 +369,20 @@ You can deploy the Azure Resource Manager template by [using the Azure portal](h
 
    ![template deployment.](media/follower/template-deployment.png)
 
-|**Setting**  |**Description**  | **Example** |
-|---------|---------|---|
-|Follower Cluster Name     |  The name of the follower cluster; where the template will be deployed.  |
-|Attached Database Configurations Name    |    The name of the attached database configurations object. The name can be any string that is unique at the cluster level.     |
-|Database Name     |      The name of the database to be followed. To follow all the leader's databases, use '*'.   |
-|Leader Cluster Resource ID    |   The resource ID of the leader cluster.      |
-|Default Principals Modification Kind    |   The default principal modification kind. | Can be `Union`, `Replace`, or `None`. For more information about the default principal modification kind, see [principal modification kind control command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind).      |
-| Tables To Include | The list of tables to include. To include all tables starting with 'Logs', use ["Logs*"]. | `["table1ToInclude", "table2ToInclude"]`  |
-| Tables To Exclude | The list of tables to exclude. To exclude all tables, use ["*"].| `["table1ToExclude", "table2ToExclude"]`  |
-| External Tables To Include | The list of tables to include. To include all external tables starting with 'Logs', use ["Logs*"].| `["ExternalTable1ToInclude", "ExternalTable2ToInclude"]`  |
-| External Tables To Exclude | The list of tables to exclude. To exclude all external tables, use ["*"]. | `["ExternalTable1ToExclude", "ExternalTable2ToExclude"]` |
-| Materialized Views To Include | The list of materialized views to include. To include all materialized views starting with 'Logs', use ["Logs*"]. | `["Mv1ToInclude", "Mv2ToInclude"]`   |
-| Materialized Views To Exclude | The list of materialized views to exclude. To exclude all materialized views, use ["*"]. | `["Mv11ToExclude", "Mv22ToExclude"]` |
-|Location   |   The location of all the resources. The leader and the follower must be in the same location.       |
+|**Setting**                               |**Description**                                                                                                            | **Example** |
+|------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Follower Cluster Name                    | The name of the follower cluster; where the template will be deployed.                                                   |                                                                                                                                                                                                                                                              |
+| Attached Database Configurations Name    | The name of the attached database configurations object. The name can be any string that is unique at the cluster level. |                                                                                                                                                                                                                                                              |                              
+| Database Name                            | The name of the database to be followed. To follow all the leader's databases, use '*'.                                  |                                                                                                                                                                                                                                                              |
+| Leader Cluster Resource ID               | The resource ID of the leader cluster.                                                                                   |                                                                                                                                                                                                                                                              |
+| Default Principals Modification Kind     | The default principal modification kind.                                                                                 | Can be `Union`, `Replace`, or `None`. For more information about the default principal modification kind, see [principal modification kind control command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind).      |
+| Tables To Include                        | The list of tables to include. To include all tables starting with 'Logs', use ["Logs*"].                                | `["table1ToInclude", "table2ToInclude"]`                                                                                                                                                                                                                     |
+| Tables To Exclude                        | The list of tables to exclude. To exclude all tables, use ["*"].                                                         | `["table1ToExclude", "table2ToExclude"]`                                                                                                                                                                                                                     |
+| External Tables To Include               | The list of tables to include. To include all external tables starting with 'Logs', use ["Logs*"].                       | `["ExternalTable1ToInclude", "ExternalTable2ToInclude"]`                                                                                                                                                                                                     |
+| External Tables To Exclude               | The list of tables to exclude. To exclude all external tables, use ["*"].                                                | `["ExternalTable1ToExclude", "ExternalTable2ToExclude"]`                                                                                                                                                                                                     |
+| Materialized Views To Include            | The list of materialized views to include. To include all materialized views starting with 'Logs', use ["Logs*"].        | `["Mv1ToInclude", "Mv2ToInclude"]`                                                                                                                                                                                                                           |
+| Materialized Views To Exclude            | The list of materialized views to exclude. To exclude all materialized views, use ["*"].                                 | `["Mv11ToExclude", "Mv22ToExclude"]`                                                                                                                                                                                                                         |
+| Location                                 | The location of all the resources. The leader and the follower must be in the same location.                             |                                                                                                                                                                                                                                                              |
 
 ---
 
@@ -409,7 +409,7 @@ To verify that the database was successfully attached, find your attached databa
 > [!NOTE]
 > To detach a database from the follower or leader side, you must have user, group, service principal, or managed identity with at least contributor role on the cluster from which you are detaching the database. In the example below, we use service principal.
 
-# [C#](#tab/csharp)
+# [C#](#tab/csharp-detach)
 
 ### Detach the attached follower database from the follower cluster using C#
 
