@@ -500,6 +500,9 @@ items:
     - name: comb_fl()
       displayName: functions library, statistics
       href: kusto/functions-library/comb-fl.md
+    - name: dist_mv_fl()
+      displayName: functions library, multivariate, distance
+      href: kusto/functions-library/dist-mv-fl.md      
     - name: factorial_fl()
       displayName: functions library, statistics
       href: kusto/functions-library/factorial-fl.md
