@@ -541,7 +541,8 @@ items:
 - name: Cross Cluster Schema
   items:
   - name: .clear cache remote-schema command
-    displayName: clear-cross-cluster-schema-cache.md
+    displayName: clear query schema cache
+    href: clear-cross-cluster-schema-cache.md
 - name: System information
   href: systeminfo.md
   items:
