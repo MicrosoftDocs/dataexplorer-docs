@@ -105,7 +105,7 @@ First, sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.co
 1. Paste in the following command, and select **Run** to ingest data into StormEvents table.
 
     ```Kusto
-    .ingest into table StormEvents 'https://kustosamples.blob.core.windows.net/samplefiles/StormEvents.csv with (ignoreFirstRecord=true)
+    .ingest into table StormEvents 'https://kustosamples.blob.core.windows.net/samplefiles/StormEvents.csv' with (ignoreFirstRecord=true)
     ```
 
 1. After ingestion completes, paste in the following query and select **Run**.
