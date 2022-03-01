@@ -22,7 +22,8 @@ Show the table update policy. The [update policy](updatepolicy.md) instructs Azu
 **For a specified table**
 
 `.show` `table` *TableName* `policy` `update`
-`.show` `table` *DatabaseName*`.`*TableName* `update` `sharding`
+
+`.show` `table` *DatabaseName*`.`*TableName* `policy` `update`
 
 **For all tables**
 

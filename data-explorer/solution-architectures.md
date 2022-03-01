@@ -25,7 +25,7 @@ Azure Data Explorer and Azure Synapse Analytics work together for near real-time
 
 ## Azure Data Explorer monitoring
 
-Hybrid end-to-end monitoring solution integrated with Azure Sentinel and Azure Monitor for ingesting streamed and batched logs from diverse sources, on-premises, or any cloud, within an enterprise ecosystem.
+Hybrid end-to-end monitoring solution integrated with Microsoft Sentinel and Azure Monitor for ingesting streamed and batched logs from diverse sources, on-premises, or any cloud, within an enterprise ecosystem.
 
 > [!div class="nextstepaction"]
 > [Azure Data Explorer monitoring](/azure/architecture/solution-ideas/articles/monitor-azure-data-explorer)

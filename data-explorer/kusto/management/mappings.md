@@ -26,7 +26,7 @@ Each element in the mapping list is constructed from three properties:
 
 The mappings can be [pre-created](create-ingestion-mapping-command.md) and can be referenced from the ingest command using `ingestionMappingReference` parameters.
 
-Ingestion is possible without specifying a mapping, see [identity mapping](#identity-mapping)
+Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
 
 ## CSV mapping
 
@@ -84,7 +84,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 ```
 
 > [!NOTE]
-> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)):
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -151,7 +151,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 ```
 
 > [!NOTE]
-> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)):
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -252,7 +252,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 ```
 
 > [!NOTE]
-> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)):
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -334,7 +334,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 ```
 
 > [!NOTE]
-> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)):
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -416,7 +416,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 ```
 
 > [!NOTE]
-> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)):
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -488,7 +488,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 ```
 
 > [!NOTE]
-> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)):
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
