@@ -15,7 +15,7 @@ There are many traditional ways to share data, such as through file shares, FTP,
 
 [![Azure Friday Video.](https://img.youtube.com/vi/Q3MJv90PegE/0.jpg)](https://www.youtube.com/watch?v=Q3MJv90PegE?&autoplay=1)
 
-Azure Data Explorer decouples the storage and compute which allows customers to run multiple compute (read-only) instances on the same underlying storage. You can attach a database as a [follower database](follower.md), which is a read-only database on a remote cluster.
+Azure Data Explorer decouples storage and compute, which allows customers to run multiple compute (read-only) instances on the same underlying storage. You can attach a database as a [follower database](follower.md), which is a read-only database on a remote cluster.
 
 ## Configure data sharing
 
@@ -44,18 +44,18 @@ The data provider can share the data at the database level or at the cluster lev
 
 ## Data share flow
 
-1. The provider uses their Azure Data Share resource to share a full database or a specific table, as well as specify the receiver's email address.
+1. The provider uses their Azure Data Share resource to share a full database or a specific table, and specify the receiver's email address.
 1. Azure Data Share sends an email invite to the receiver.
 1. The receiver opens the email invite and selects their Azure Data Share resource.
 1. The receiver uses Azure Data Share to map the shared database or table to the appropriate cluster.
 
 ## Data provider - shares data
 
-The data provider can share a full database or a specific table with the data with the receiver.
+The data provider can share a full database or a specific table with the receiver.
 
 ### Sharing a full database
 
-Follow the instructions in the video to create aa Azure Data Share account, add a dataset, and send an invitation.
+Follow the instructions in the video to create an Azure Data Share account, add a dataset, and send an invitation.
 [![Data provider - share data.](https://img.youtube.com/vi/QmsTnr90_5o/0.jpg)](https://youtu.be/QmsTnr90_5o?&autoplay=1)
 
 ### Sharing tables
@@ -73,7 +73,7 @@ Use the following steps to share tables:
     | *shareName* | The resource ID of the leader cluster. |  |
     | *recipientEmail* | The email of the Azure Data Share receiver. |  |
     | *databaseName* | The name of provider's database. |  |
-    | *databaseResourceId* | The resource id of the provider's database. |  |
+    | *databaseResourceId* | The resource ID of the provider's database. |  |
     | *externalTablesToExcludeInclude* | The list of external tables to include. To include all external tables starting with 'Logs', use ["Logs*"]. | `["ExternalTable1ToInclude", "ExternalTable2ToInclude"]` |
     | *externalTablesToInclude* | The list of external tables to exclude. To exclude all external tables, use ["*"]. | `["ExternalTable1ToExclude", "ExternalTable2ToExclude"]` |
     | *materializedViewsToExclude* | The list of materialized views to exclude. To exclude all materialized views, use ["*"]. | `["Mv11ToExclude", "Mv22ToExclude"]` |

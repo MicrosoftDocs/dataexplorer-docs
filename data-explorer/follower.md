@@ -608,7 +608,7 @@ The follower database administrator can modify the [caching policy](./kusto/mana
 * Data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) isn't supported on both leader and follower clusters.
 * You can't delete a database that is attached to a different cluster before detaching it.
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
-* Table level sharing properties are not supported when following all database.
+* Table level sharing properties aren't supported when following all database.
 
 ## Next steps
 
