@@ -538,6 +538,11 @@ items:
   - name: Clear cache
     displayName: clear query results cache
     href: clear-query-results-cache-command.md
+- name: Cross-cluster schema
+  items:
+  - name: .clear cache remote-schema command
+    displayName: clear query schema cache
+    href: clear-cross-cluster-schema-cache.md
 - name: System information
   href: systeminfo.md
   items:
