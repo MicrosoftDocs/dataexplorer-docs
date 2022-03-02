@@ -258,10 +258,9 @@ crl3.digicert.com:80
 ```
 
 > [!NOTE]
-> To restrict access for dependencies with wildcard (*) use the [API below](vnet-deployment.md#how-to-discover-dependencies-automatically), 
-
-> [!NOTE]
-> If you're using [Azure Firewall](/azure/firewall/overview), add **Network Rule** with the following properties:
+>
+> * To restrict access for dependencies with a wildcard (*), use the API described in [How to discover dependencies automatically](vnet-deployment.md#how-to-discover-dependencies-automatically).
+> * If you're using [Azure Firewall](/azure/firewall/overview), add **Network Rule** with the following properties:
 >
 > **Protocol**: TCP  
 > **Source Type**: IP Address  
