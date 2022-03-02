@@ -20,10 +20,10 @@ You can run a Kusto Query Language script to configure your database during ARM 
 
 In general, we recommended using the idempotent version of commands so that if they are called more than once with the same input parameters, they have no additional effect. In other words, running the command multiple times has the same effect as running it once. For example, where possible, we recommend using the idempotent command `.create-or-alter` over the regular `.create` command.
 
-There are various methods you can use to configure a database with Kusto Query Language scripts. We'll focus on two main methods using ARM template deployments:
+There are various methods you can use to configure a database with Kusto Query Language scripts. We'll focus on the following methods using ARM template deployments:
 
-1. [*Inline script*](#inline-script): The script is provided inline as a parameter to the ARM template.
-1. [*Bicep script*](#bicep-script): The script is provided as a file used by Bicep to generate the ARM template.
+1. [*Inline script*](#inline-script): The script is provided inline as a parameter to a JSON ARM template.
+1. [*Bicep script*](#bicep-script): The script is provided as a separate file used by a Bicep ARM template.
 1. [*Storage Account*](#storage-account-script): The script is created as a blob in an Azure storage account and its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) provided as parameters to the ARM template.
 
 > [!NOTE]
@@ -38,6 +38,8 @@ We'll use the following example that shows a script that creates two tables: *My
 
 .create-merge table MyTable2 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
 ```
+
+Notice the two commands are idempotent:  on first execution they create the table while next executions won't have any effect.
 
 ## Prerequisites
 
@@ -67,7 +69,7 @@ In this section, you'll see how to run a Kusto Query Language script with a [JSO
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "kqlScript": { //VP-TODO: Please check if this is correct
+        "kqlScript": {
             "defaultValue": ".create-merge table MyTable (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)\n\n.create-merge table MyTable2 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)",
             "type": "String"
         },
@@ -85,7 +87,7 @@ In this section, you'll see how to run a Kusto Query Language script with a [JSO
         "databaseName": {
             "type": "String"
         },
-        "scriptName": { // VP-TOD): Why do we need this here? It's an inline script
+        "scriptName": {
             "type": "String"
         }
     },
@@ -117,7 +119,7 @@ Use the following settings:
 | *continueOnErrors* | A flag that indicates whether to continue if one of the commands fail. Default value: false. |
 | *clusterName* | The name of the cluster where the script will run. |
 | *databaseName* | The name of the database under which the script will run. |
-| *scriptName* | The name of the script when using an external file to supply the script. |
+| *scriptName* | The name of the script when using an external file to supply the script.  This is the name of the actual ARM resource of type *script*.|
 
 ### Omitting update tag
 
@@ -171,14 +173,19 @@ Use the following settings:
 | *databaseName* | The name of the database under which the script will run. |
 | *scriptName* | The name of the script when using an external file to supply the script. |
 
-// VP-TODO: Explain where the script is stored
-// VP-TODO: Add example of using Bicep to run inline script
+The Bicep template can be deployed using similar tools as JSON Template.  For instance, using the Azure CLI:
+
+```bash
+az deployment group create -n "deploy-$(uuidgen)" -g "MyResourceGroup" --template-file "json-sample.json" --parameters clusterName=MyCluster databaseName=MyDb
+```
+
+Bicep templates get transpiled into JSON template before being sent for deployment.  The script file gets embedded inline in the JSON template.  For more details, see [Bicep documentation](/azure/azure-resource-manager/bicep/overview).
 
 ## Storage account script
 
 This method assumes that you already have a blob in Azure storage account and you provide its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) directly.
 
-> [!NOTE] // VP-TODO: I don't understand this note
+> [!NOTE]
 > Kusto Query Language scripts doesn't support scripts stored in storage accounts with [Azure Storage firewall or Virtual Network rules](/azure/storage/common/storage-network-security?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal).
 
 ### Create the script resource
@@ -196,54 +203,54 @@ In this section, you'll learn how to run a script stored in Azure Storage with a
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "kqlScript": {
-            "defaultValue": "",
-            "type": "String"
-        },
-        "forceUpdateTag": {
-            "defaultValue": "[utcNow()]",
-            "type": "String"
-        },
-        "continueOnErrors": {
-            "defaultValue": false,
-            "type": "bool"
-        },
-        "clusterName": {
-            "type": "String"
-        },
-        "databaseName": {
-            "type": "String"
-        },
-        "scriptName": {
-            "type": "String"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "scriptUrl": {
+      "type": "String"
     },
-    "variables": {
+    "scriptUrlSastoken": {
+      "type": "SecureString"
     },
-    "resources": [
-        {
-            "type": "Microsoft.Kusto/Clusters/Databases/Scripts",
-            "apiVersion": "2022-02-01",
-            "name": "[concat(parameters('clusterName'), '/', parameters('databaseName'), '/', parameters('scriptName'))]",
-            "properties": {
-                "scriptContent": "[parameters('kqlScript')]",
-                "continueOnErrors": "[parameters('continueOnErrors')]",
-                "forceUpdateTag": "[parameters('forceUpdateTag')]"
-            }
-        }
-    ],
-    "outputs": {
+    "forceUpdateTag": {
+      "defaultValue": "[utcNow()]",
+      "type": "String"
+    },
+    "continueOnErrors": {
+      "defaultValue": false,
+      "type": "bool"
+    },
+    "clusterName": {
+      "type": "String"
+    },
+    "databaseName": {
+      "type": "String"
+    },
+    "scriptName": {
+      "type": "String"
     }
+  },
+  "variables": {
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Kusto/Clusters/Databases/Scripts",
+      "apiVersion": "2021-01-01",
+      "name": "[concat(concat(parameters('clusterName'), '/'), concat(parameters('databaseName'), '/'), parameters('scriptName'))]",
+      "properties": {
+        "scriptUrl": "[parameters('scriptUrl')]",
+        "scriptUrlSasToken": "[parameters('scriptUrlSasToken')]",
+        "continueOnErrors": "[parameters('continueOnErrors')]",
+        "forceUpdateTag": "[parameters('forceUpdateTag')]"
+      }
+    }
+  ],
+  "outputs": {
+  }
 }
 ```
 
 Use the following settings:
-
-// VP-TODO: I don't see the value in the template. Can you add it?
-// VP-TODO: I don't see all the parameters in the template. Can you add them?
 
 |**Setting**  |**Description**  |
 |---------|---------|
