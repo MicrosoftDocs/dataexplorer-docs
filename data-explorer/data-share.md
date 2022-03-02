@@ -146,7 +146,7 @@ Use the following steps to share tables:
           ],
           "kind": "KustoTable",
           "properties": {
-            "kustoDatabaseResourceId": "[parameters('database_resource_id')]",
+            "kustoDatabaseResourceId": "[parameters('databaseResourceId')]",
             "tableLevelSharingProperties": {
               "externalTablesToExclude": "[parameters('externalTablesToExclude')]",
               "externalTablesToInclude": "[parameters('externalTablesToInclude')]",
