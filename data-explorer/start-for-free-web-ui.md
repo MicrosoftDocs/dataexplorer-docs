@@ -1,5 +1,5 @@
 ---
-title: Get started with your free Azure Data Explorer cluster.
+title: Create a free Azure Data Explorer cluster.
 description: This article you'll learn how to create a free cluster, ingest data, and run queries to gain insights into your data using your start-for-free cluster.
 author: orspod
 ms.author: orspodek
@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 02/27/2022
 ---
 
-# Get started with your free Azure Data Explorer cluster
+# Create a free Azure Data Explorer cluster
 
 Creating your own free cluster gives you the opportunity to explore some of the incredible capabilities of Azure Data Explorer. In particular, it's a great way to experience our fast and highly scalable data exploration service for log and telemetry data, and use the powerful and intuitive Kusto Query Language to gain business insights into your data.
 
-In this article, we'll show you how to create a free cluster, and get started with Azure Data Explorer.
+In this article, we'll show you how to create a free cluster, ingest data,  and run queries using your start-for-free cluster.
 
 ## Prerequisites
 
