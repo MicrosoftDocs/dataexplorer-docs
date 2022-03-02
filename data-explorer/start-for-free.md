@@ -63,5 +63,6 @@ The Start-for-free cluster is a subset of the full Azure Data Explorer cluster t
 
 ## Next steps
 
+* [Get started with your free cluster](start-for-free-web-ui.md)
 * [Learn more about Azure Data Explorer](data-explorer-overview.md)
 * [Learn more about Kusto Query Language](kusto/query/index.md)
