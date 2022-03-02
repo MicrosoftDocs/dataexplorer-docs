@@ -72,6 +72,8 @@ items:
     href: tools-integrations-overview.md
 - name: How-to guides
   items:
+  - name: Create a start-for-free cluster
+    href: start-for-free-web-ui.md
   - name: Create cluster and database
     items:
     - name: Azure CLI
