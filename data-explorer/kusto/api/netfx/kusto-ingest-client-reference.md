@@ -349,7 +349,7 @@ KustoIngestionProperties class contains basic ingestion properties for fine cont
 |IngestionMapping|Holds either a reference to an exiting mapping or a list of column mappings|
 |AdditionalTags |Additional tags as needed |
 |IngestIfNotExists |List of tags that you don't want to ingest again (per table) |
-|ValidationPolicy |Data validation definitions. See [TODO] for details |
+|ValidationPolicy |Data validation definitions. |
 |Format |Format of the data being ingested |
 |AdditionalProperties | Other properties that will be passed as [ingestion properties](../../../ingestion-properties.md) to the ingestion command. The properties will be passed because not all of the ingestion properties are represented in a separate member of this class|
 

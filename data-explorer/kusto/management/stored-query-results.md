@@ -17,14 +17,17 @@ Create the stored query object with a command that uses the name of the created 
 This command returns a subset of the records produced by the query, referred to as the "preview", but stores all records.
 
 Stored query results can be useful in the following scenarios:
+
 * Paging through query results. The initial command runs the query and returns the first "page" of records.
   Later queries reference other "pages" without the need to rerun the query.
 * Drill-down scenarios, in which the results of an initial query are then
   explored using other queries.
 
 > [!NOTE]
-> This feature is only available when [EngineV3](../../engine-v3.md) is enabled.
-> Above 500 columns, an error is obtained and the results aren't stored.
+>
+> * This feature is only available when [EngineV3](../../engine-v3.md) is enabled.
+> * When you have more than 500 columns, an error is raised and the results aren't stored.
+> * Query results are stored in a storage account associated with the cluster; the data is not cached in local SSD storage.
 
 Stored query results can be accessed for up to 24 hours from the moment of creation. Updates to security policies (for example, database access, row level security, and so on) aren't propagated to stored query results. Use [`.drop stored_query_results`](#drop-stored_query_results) if there is user permission revocation. A stored query result can only be accessed by the same principal identity that created the stored query. 
 
