@@ -262,11 +262,11 @@ crl3.digicert.com:80
 > * To restrict access for dependencies with a wildcard (*), use the API described in [How to discover dependencies automatically](vnet-deployment.md#how-to-discover-dependencies-automatically).
 > * If you're using [Azure Firewall](/azure/firewall/overview), add **Network Rule** with the following properties:
 >
-> **Protocol**: TCP  
-> **Source Type**: IP Address  
-> **Source**: \*  
-> **Service Tags**: AzureMonitor  
-> **Destination Ports**: 443
+>     **Protocol**: TCP  
+>     **Source Type**: IP Address  
+>     **Source**: \*  
+>     **Service Tags**: AzureMonitor  
+>     **Destination Ports**: 443
 
 You also need to define the [route table](/azure/virtual-network/virtual-networks-udr-overview) on the subnet with the [management addresses](vnet-deployment.md#azure-data-explorer-management-ip-addresses) and [health monitoring addresses](vnet-deployment.md#health-monitoring-addresses) with next hop *Internet* to prevent asymmetric routes issues.
 
