@@ -20,13 +20,24 @@ You can run a Kusto Query Language script to configure your database during ARM 
 
 In general, we recommended using the idempotent version of commands so that if they are called more than once with the same input parameters, they have no additional effect. In other words, running the command multiple times has the same effect as running it once. For example, where possible, we recommend using the idempotent command `.create-or-alter` over the regular `.create` command.
 
-There are various methods you can use to configure a database with Kusto Query Language scripts. We'll focus on two main methods using ARM template deployment:
+There are various methods you can use to configure a database with Kusto Query Language scripts. We'll focus on two main methods using ARM template deployments:
 
-1. [*Inline*](#inline-script): You provide a script inline
-1. [*Storage Account*](#storage-account-script): You create a script as a blob in an Azure storage account, and provide its details (url and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview))
+1. [*Inline script*](#inline-script): The script is provided inline as a parameter to the ARM template.
+1. [*Bicep script*](#bicep-script): The script is provided as a file used by Bicep to generate the ARM template.
+1. [*Storage Account*](#storage-account-script): The script is created as a blob in an Azure storage account and its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) provided as parameters to the ARM template.
 
 > [!NOTE]
 > Each cluster can have a maximum of 50 scripts.
+
+## Example script with control commands
+
+We'll use the following example that shows a script that creates two tables: *MyTable* and *MyTable2*.
+
+```kusto
+.create-merge table MyTable (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
+
+.create-merge table MyTable2 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
+```
 
 ## Prerequisites
 
@@ -45,15 +56,7 @@ The principal, such as a user or service principal, used to deploy a script must
 
 ## Inline script
 
-In this method, the script is provided inline in the ARM template. A Kusto Query Language script is one or more control commands separated by *at least* one line break.
-
-For example, the code below is a Kusto Query Language script that creates two tables: *MyTable* and *MyTable2*.
-
-```kusto
-.create-merge table MyTable (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
-
-.create-merge table MyTable2 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
-```
+Use this method to create an ARM template with the script supplied as an inline template. If your script has one or more control commands, separate the commands by *at least* one line break.
 
 ### Run inline script using an ARM template
 
@@ -64,8 +67,8 @@ In this section, you'll see how to run a Kusto Query Language script with a [JSO
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "kqlScript": {
-            "defaultValue": "", // SCRIPT??
+        "kqlScript": { //VP-TODO: Please check if this is correct
+            "defaultValue": ".create-merge table MyTable (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)\n\n.create-merge table MyTable2 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)",
             "type": "String"
         },
         "forceUpdateTag": {
@@ -82,7 +85,7 @@ In this section, you'll see how to run a Kusto Query Language script with a [JSO
         "databaseName": {
             "type": "String"
         },
-        "scriptName": {
+        "scriptName": { // VP-TOD): Why do we need this here? It's an inline script
             "type": "String"
         }
     },
@@ -109,25 +112,23 @@ Use the following settings:
 
 | Setting | Description |
 |--|--|
-| KQL Script | The inline Kusto Query Language script. |
-| Force Update Tag | A unique string. If changed, the script will be applied again. |
-| Continue On Errors | A flag that indicates whether to continue if one of the commands fail. Default value: false. |
-| Cluster Name | The name of the cluster. |
-| Database Name | The name of the database under which the script will run. |
-| Script Name | The name of the script. |
+| *kqlScript* | The inline Kusto Query Language script. Use `\n` to add new line characters. |
+| *forceUpdateTag* | A unique string. If changed, the script will be applied again. |
+| *continueOnErrors* | A flag that indicates whether to continue if one of the commands fail. Default value: false. |
+| *clusterName* | The name of the cluster where the script will run. |
+| *databaseName* | The name of the database under which the script will run. |
+| *scriptName* | The name of the script when using an external file to supply the script. |
 
-## Omitting update tag
+### Omitting update tag
 
-It might not be desireable to run a KQL script every time the ARM template is deployed.  Running a KQL script consumes cluster resources.  For that reason, a KQL script **isn't executed** on the cluster if one of the following conditions is met for two consecutive deployments:
+Running a KQL script every time the ARM template is deployed is not recommended as it consumes cluster resources. You can prevent the running of the script in consecutive deployments using the following options:
 
-* The same non-empty `forceUpdateTag` is specified
-* `forceUpdateTag` is not specified (or is empty) and the same script content is specified
+* Specify the `forceUpdateTag` property and keeping the same value between deployments.
+* Omit the `forceUpdateTag` property, or leave it empty, and use the same script between deployments.
 
-The best practice is to omit `forceUpdateTag`:  the script will then be executed when the script content changes between deployments.
+The best practice is to omit the `forceUpdateTag` property, so that any script changes are run the next time the template is deployed. Only use the `forceUpdateTag` property if you need to force the script to run.
 
-Use `forceUpdateTag` only to force the execution of the script.
-
-## Script file with Bicep
+## Bicep script
 
 Passing a Kusto Query Language script in parameter to a template can be cumbersome.  [Bicep Azure Resource Manager template](/azure/azure-resource-manager/bicep/overview) enables you to keep and maintain the script in a separate file and load it into the template using the [loadTextContent](/azure/azure-resource-manager/bicep/bicep-functions#file-functions) Bicep function.
 
@@ -162,39 +163,36 @@ resource perfTestDbs 'Microsoft.Kusto/clusters/databases/scripts@2022-02-01' = {
 
 Use the following settings:
 
-|**Setting**  |**Description**  |
-|---------|---------|
-| Force Update Tag   |  A unique string. If changed, the script will be applied again.  |
-|Continue On Errors    |   A flag that indicates whether to continue if one of the commands fails. Default is false.
-|Cluster Name    |  The name of the cluster.
-|Database Name   |   The name of the database. The script will run under this database scope.
-|Script Name   |   The name of the script.
+| Setting | Description |
+|--|--|
+| *forceUpdateTag* | A unique string. If changed, the script will be applied again. |
+| *continueOnErrors* | A flag that indicates whether to continue if one of the commands fail. Default value: false. |
+| *clusterName* | The name of the cluster where the script will run. |
+| *databaseName* | The name of the database under which the script will run. |
+| *scriptName* | The name of the script when using an external file to supply the script. |
+
+// VP-TODO: Explain where the script is stored
+// VP-TODO: Add example of using Bicep to run inline script
 
 ## Storage account script
 
-This method assumes that you already have a blob in Azure storage account and you provide its details (url and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) directly.
+This method assumes that you already have a blob in Azure storage account and you provide its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) directly.
 
-> [!NOTE]
+> [!NOTE] // VP-TODO: I don't understand this note
 > Kusto Query Language scripts doesn't support scripts stored in storage accounts with [Azure Storage firewall or Virtual Network rules](/azure/storage/common/storage-network-security?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal).
 
 ### Create the script resource
 
-A Kusto Query Language script is one or more control commands separated by exactly one line break. The first step is to create this script and upload it to a storage account.
+A Kusto Query Language script is one or more control commands separated by one or more line breaks. The first step is to create this script and upload it to a storage account.
 
-1. Create the script containing the control commands you want to use in your database. For example, the code below is a Kusto Query Language script that create two tables: *MyTable* and *MyTable2*.
+1. Create the [script containing the control commands](#example-script-with-control-commands) you want to use in your database.
 
-    ```kusto
-    .create-merge table MyTable (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
-    
-    .create-merge table MyTable2 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
-    ```
-    
-1. Upload your Kusto Query Language script to an Azure storage account. You can create your storage account using [Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal), [PowerShell](/azure/storage/blobs/storage-quickstart-blobs-portal), or [CLI](/azure/storage/blobs/storage-quickstart-blobs-cli).
-1. Provide access to this file using [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview). You can do this with [PowerShell](/azure/storage/blobs/storage-blob-user-delegation-sas-create-powershell), [CLI](/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli), or [.NET](/azure/storage/blobs/storage-blob-user-delegation-sas-create-dotnet).
+1. Upload your script to an Azure Storage account. You can create your storage account using the [Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal), [PowerShell](/azure/storage/blobs/storage-quickstart-blobs-portal), or Azure [CLI](/azure/storage/blobs/storage-quickstart-blobs-cli).
+1. Provide access to this file using [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview). You can do this with [PowerShell](/azure/storage/blobs/storage-blob-user-delegation-sas-create-powershell), Azure [CLI](/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli), or [.NET](/azure/storage/blobs/storage-blob-user-delegation-sas-create-dotnet).
 
-### Run uploaded Kusto Query Language script using ARM template
+### Run the script using an ARM template
 
-In this section, you'll see how to run a Kusto Query Language script with an [Azure Resource Manager template](/azure/azure-resource-manager/management/overview).
+In this section, you'll learn how to run a script stored in Azure Storage with an [Azure Resource Manager template](/azure/azure-resource-manager/management/overview).
 
 ```json
 {
@@ -243,6 +241,9 @@ In this section, you'll see how to run a Kusto Query Language script with an [Az
 ```
 
 Use the following settings:
+
+// VP-TODO: I don't see the value in the template. Can you add it?
+// VP-TODO: I don't see all the parameters in the template. Can you add them?
 
 |**Setting**  |**Description**  |
 |---------|---------|
