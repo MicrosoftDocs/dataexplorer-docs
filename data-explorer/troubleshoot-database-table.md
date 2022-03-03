@@ -39,6 +39,8 @@ Ensure you have adequate permissions. To delete or rename a database, you must b
    .rename table <OldTableName> to <NewTableName>
     ```
 
+1. Ensure you use table and column names that are not reserved keywords or literals, such as `1day` or `2hours`. When you try to create a table using keywords or literals, you'll get a syntax error. Use [identifier quoting](/data-explorer/kusto/query/schema-entities/entity-names.md#identifier-quoting) around keywords and literals to resolve syntax errors.  
+
 ## Deleting or renaming a table
 
 Ensure you have adequate permissions. To delete or rename a table, you must be a member of the *database admin* or *table admin* role in the database. If necessary, work with your subscription or cluster administrator so they can add you to the appropriate role.
