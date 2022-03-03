@@ -57,7 +57,7 @@ For cluster level run:
 >
 > In order to secure the use of managed identities in Kusto, changing the above policies require `All Database Admin` permissions on the Kusto Database.
 
-## Ingest blobs using Kusto SDK
+## Ingest blobs with managed identity using Kusto SDK
 
 When ingesting the data using one of Kusto SDKs](net-sdk-ingest-data.md), instead of creating a blob URI with SAS or Account Key, append `;managed_identity={objectId}` to the unauthorized blob URI.
 If you ingest data with the System Assigned Managed Id of your Kusto cluster, you can simply append `;managed_identity=system` to the blob URI.
