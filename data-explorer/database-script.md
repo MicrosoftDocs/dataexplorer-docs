@@ -10,7 +10,7 @@ ms.date: 05/25/2021
 ---
 # Configure a database using a Kusto Query Language script
 
-You can run a Kusto Query Language script to configure your database during ARM template deployment. A Kusto Query Language script is a list of one or more [control commands](kusto/management/index.md), each separated by one line break, and is created as a resource that will be accessed with the ARM template. The script can only run control commands that start with the following verbs:
+You can run a Kusto Query Language script to configure your database during ARM template deployment. A script is a list of one or more [control commands](kusto/management/index.md), each separated by one line break, and is created as a resource that will be accessed with the ARM template. The script can only run control commands that start with the following verbs:
 
 * `.create`
 * `.create-or-alter`
@@ -20,7 +20,7 @@ You can run a Kusto Query Language script to configure your database during ARM 
 
 In general, we recommended using the idempotent version of commands so that if they are called more than once with the same input parameters, they have no additional effect. In other words, running the command multiple times has the same effect as running it once. For example, where possible, we recommend using the idempotent command `.create-or-alter` over the regular `.create` command.
 
-There are various methods you can use to configure a database with Kusto Query Language scripts. We'll focus on the following methods using ARM template deployments:
+There are various methods you can use to configure a database with scripts. We'll focus on the following methods using ARM template deployments:
 
 1. [*Inline script*](#inline-script): The script is provided inline as a parameter to a JSON ARM template.
 1. [*Bicep script*](#bicep-script): The script is provided as a separate file used by a Bicep ARM template.
@@ -31,7 +31,7 @@ There are various methods you can use to configure a database with Kusto Query L
 
 ## Example script with control commands
 
-We'll use the following example that shows a script that creates two tables: *MyTable* and *MyTable2*.
+We'll use the following example that shows a script with commands that create two tables: *MyTable* and *MyTable2*.
 
 ```kusto
 .create-merge table MyTable (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
@@ -39,7 +39,7 @@ We'll use the following example that shows a script that creates two tables: *My
 .create-merge table MyTable2 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)
 ```
 
-Notice the two commands are idempotent:  on first execution they create the table while next executions won't have any effect.
+Notice the two commands are idempotent. When first run, they create the tables, on subsequent runs they have no effect.
 
 ## Prerequisites
 
@@ -58,11 +58,11 @@ The principal, such as a user or service principal, used to deploy a script must
 
 ## Inline script
 
-Use this method to create an ARM template with the script supplied as an inline template. If your script has one or more control commands, separate the commands by *at least* one line break.
+Use this method to create an ARM template with the script defined as an inline parameter. If your script has one or more control commands, separate the commands by *at least* one line break.
 
 ### Run inline script using an ARM template
 
-In this section, you'll see how to run a Kusto Query Language script with a [JSON Azure Resource Manager template](/azure/azure-resource-manager/templates/overview).
+The following template shows how to run the script using a [JSON Azure Resource Manager template](/azure/azure-resource-manager/templates/overview).
 
 ```json
 {
@@ -123,7 +123,7 @@ Use the following settings:
 
 ### Omitting update tag
 
-Running a KQL script every time the ARM template is deployed is not recommended as it consumes cluster resources. You can prevent the running of the script in consecutive deployments using the following options:
+Running a KQL script every time the ARM template is deployed is not recommended as it consumes cluster resources. You can prevent the running of the script in consecutive deployments using the following methods:
 
 * Specify the `forceUpdateTag` property and keeping the same value between deployments.
 * Omit the `forceUpdateTag` property, or leave it empty, and use the same script between deployments.
@@ -132,7 +132,7 @@ The best practice is to omit the `forceUpdateTag` property, so that any script c
 
 ## Bicep script
 
-Passing a Kusto Query Language script in parameter to a template can be cumbersome.  [Bicep Azure Resource Manager template](/azure/azure-resource-manager/bicep/overview) enables you to keep and maintain the script in a separate file and load it into the template using the [loadTextContent](/azure/azure-resource-manager/bicep/bicep-functions#file-functions) Bicep function.
+Passing a script as parameter to a template can be cumbersome.  [Bicep Azure Resource Manager template](/azure/azure-resource-manager/bicep/overview) enables you to keep and maintain the script in a separate file and load it into the template using the [loadTextContent](/azure/azure-resource-manager/bicep/bicep-functions#file-functions) Bicep function.
 
 Assuming the script is stored in a file `script.kql` located in the same folder as the Bicep file, the following template will produce the same result as the previous example:
 
@@ -173,28 +173,28 @@ Use the following settings:
 | *databaseName* | The name of the database under which the script will run. |
 | *scriptName* | The name of the script when using an external file to supply the script. |
 
-The Bicep template can be deployed using similar tools as JSON Template.  For instance, using the Azure CLI:
+The Bicep template can be deployed using similar tools as the JSON ARM template. For example, you can use the following Azure CLI commands to deploy the template:
 
-```bash
+```azurecli
 az deployment group create -n "deploy-$(uuidgen)" -g "MyResourceGroup" --template-file "json-sample.json" --parameters clusterName=MyCluster databaseName=MyDb
 ```
 
-Bicep templates get transpiled into JSON template before being sent for deployment.  The script file gets embedded inline in the JSON template.  For more details, see [Bicep documentation](/azure/azure-resource-manager/bicep/overview).
+Bicep templates are transpiled into JSON ARM template before deployment. n our example, the script file is embedded inline in the JSON ARM template. For more information, see [Bicep overview](/azure/azure-resource-manager/bicep/overview).
 
 ## Storage account script
 
-This method assumes that you already have a blob in Azure storage account and you provide its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) directly.
+This method assumes that you already have a blob in a Azure Storage account and you provide its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) directly in the ARM template.
 
-> [!NOTE]
+> [!NOTE] // VP-TODO: Still don't understand this note
 > Kusto Query Language scripts doesn't support scripts stored in storage accounts with [Azure Storage firewall or Virtual Network rules](/azure/storage/common/storage-network-security?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal).
 
 ### Create the script resource
 
-A Kusto Query Language script is one or more control commands separated by one or more line breaks. The first step is to create this script and upload it to a storage account.
+The first step is to create a script and upload it to a storage account.
 
-1. Create the [script containing the control commands](#example-script-with-control-commands) you want to use in your database.
+1. Create a [script containing the control commands](#example-script-with-control-commands) you want to use to create the table in your database.
 
-1. Upload your script to an Azure Storage account. You can create your storage account using the [Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal), [PowerShell](/azure/storage/blobs/storage-quickstart-blobs-portal), or Azure [CLI](/azure/storage/blobs/storage-quickstart-blobs-cli).
+1. Upload your script to your Azure Storage account. You can create your storage account using the [Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal), [PowerShell](/azure/storage/blobs/storage-quickstart-blobs-portal), or Azure [CLI](/azure/storage/blobs/storage-quickstart-blobs-cli).
 1. Provide access to this file using [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview). You can do this with [PowerShell](/azure/storage/blobs/storage-blob-user-delegation-sas-create-powershell), Azure [CLI](/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli), or [.NET](/azure/storage/blobs/storage-blob-user-delegation-sas-create-dotnet).
 
 ### Run the script using an ARM template
@@ -252,15 +252,15 @@ In this section, you'll learn how to run a script stored in Azure Storage with a
 
 Use the following settings:
 
-|**Setting**  |**Description**  |
-|---------|---------|
-|Script URL     |  The URL of the blob, for example 'https://myaccount.blob.core.windows.net/mycontainer/myblob'. |
-|Script URL SaS Token   |  The [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview).    |
-| Force Update Tag   |  A unique string. If changed, the script will be applied again.  |
-|Continue On Errors    |   A flag that indicates whether to continue if one of the commands fails. Default is false.     |
-|Cluster Name    |  The name of the cluster.     |
-|Database Name   |   The name of the database. The script will run under this database scope.      |
-|Script Name   |   The name of the script.      |
+| **Setting** | **Description** |
+|--|--|
+| *scriptUrl* | The URL of the blob. For example 'https://myaccount.blob.core.windows.net/mycontainer/myblob'. |
+| *scriptUrlSastoken* | A string with the [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview). |
+| *forceUpdateTag* | A unique string. If changed, the script will be applied again. |
+| *continueOnErrors* | A flag that indicates whether to continue if one of the commands fail. Default value: false. |
+| *clusterName* | The name of the cluster where the script will run. |
+| *databaseName* | The name of the database under which the script will run. |
+| *scriptName* | The name of the script when using an external file to supply the script. |
 
 ## Next steps
 
