@@ -132,6 +132,9 @@ The data format, any of the [ingestion formats](../../ingestion-supported-format
 > [!NOTE]
 > Using external table for [export scenario](data-export/export-data-to-an-external-table.md) is limited to the following formats: `CSV`, `TSV`, `JSON` and `Parquet`.
 
+> [!TIP]
+> The recommended format is `Parquet` - queries and export over external tables over parquet files will usually be much faster than other over formats, unless you define virtual columns, or use json paths mapping, or the external table is over ADLS Gen1.
+
 <a name="connection-string"></a>
 *StorageConnectionString*
 
