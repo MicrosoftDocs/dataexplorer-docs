@@ -15,7 +15,7 @@ Creates or alters a continuous export job.
 [ `over` `(`*T1*, *T2* `)`] <br>
 `to` `table` *ExternalTableName* <br> 
 [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]<br>
-\<| *Query*
+`<|` *Query*
 
 ## Arguments
 
