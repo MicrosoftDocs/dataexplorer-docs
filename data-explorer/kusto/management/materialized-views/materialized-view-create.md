@@ -437,8 +437,8 @@ The backfill-by-move-extents option can be useful in two main scenarios:
     * Specifically, using [move extents](../move-extents.md) from other tables into the source table of the materialized view is not supported. Move extents may fail with one of the following errors:
         * `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
         * `Cannot move extents to 'TableName' since materialized view 'ViewName' will not process these extents (can lead to data loss in the materialized view)`.
-    * Must have [IngestionTime policy](../ingestiontimepolicy.md) enabled (the default is enabled).
-    * Can't be a table with [restricted view access policy](../restrictedviewaccesspolicy.md).
+* Must have [IngestionTime policy](../ingestiontimepolicy.md) enabled (the default is enabled).
+* Can't be a table with [restricted view access policy](../restrictedviewaccesspolicy.md).
 * [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
 * Continuous export from a materialized view isn't supported.
 
