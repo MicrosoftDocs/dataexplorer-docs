@@ -1,5 +1,5 @@
 ---
-title: .show tables - Azure Data Explorer | Microsoft Docs
+title: .show tables - Azure Data Explorer
 description: This article describes .show tables in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

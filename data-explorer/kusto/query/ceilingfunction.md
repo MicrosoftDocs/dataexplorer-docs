@@ -1,5 +1,5 @@
 ---
-title: ceiling() - Azure Data Explorer | Microsoft Docs
+title: ceiling() - Azure Data Explorer
 description: This article describes ceiling() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

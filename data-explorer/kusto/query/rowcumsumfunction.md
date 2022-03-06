@@ -1,5 +1,5 @@
 ---
-title: row_cumsum() - Azure Data Explorer | Microsoft Docs
+title: row_cumsum() - Azure Data Explorer
 description: This article describes row_cumsum() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

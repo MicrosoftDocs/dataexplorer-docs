@@ -1,5 +1,5 @@
 ---
-title: getyear() - Azure Data Explorer | Microsoft Docs
+title: getyear() - Azure Data Explorer
 description: This article describes getyear() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

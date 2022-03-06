@@ -1,5 +1,5 @@
 ---
-title: sqrt() - Azure Data Explorer | Microsoft Docs
+title: sqrt() - Azure Data Explorer
 description: This article describes sqrt() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

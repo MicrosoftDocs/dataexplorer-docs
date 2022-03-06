@@ -1,5 +1,5 @@
 ---
-title: Azure Data Explorer R SDK - Azure Data Explorer | Microsoft Docs
+title: Azure Data Explorer R SDK - Azure Data Explorer
 description: This article describes Azure Data Explorer R SDK in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

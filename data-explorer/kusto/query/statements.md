@@ -1,5 +1,5 @@
 ---
-title: Query statements - Azure Data Explorer | Microsoft Docs
+title: Query statements - Azure Data Explorer
 description: This article describes Query statements in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

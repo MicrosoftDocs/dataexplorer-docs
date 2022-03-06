@@ -1,5 +1,5 @@
 ---
-title: todouble()/toreal() - Azure Data Explorer | Microsoft Docs
+title: todouble()/toreal() - Azure Data Explorer
 description: This article describes todouble()/toreal() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

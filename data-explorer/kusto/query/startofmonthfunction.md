@@ -1,5 +1,5 @@
 ---
-title: startofmonth() - Azure Data Explorer | Microsoft Docs
+title: startofmonth() - Azure Data Explorer
 description: This article describes startofmonth() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

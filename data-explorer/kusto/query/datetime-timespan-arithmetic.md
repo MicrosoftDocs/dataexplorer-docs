@@ -1,5 +1,5 @@
 ---
-title: Datetime / timespan arithmetic - Azure Data Explorer | Microsoft Docs
+title: Datetime / timespan arithmetic - Azure Data Explorer
 description: This article describes Datetime / timespan arithmetic in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

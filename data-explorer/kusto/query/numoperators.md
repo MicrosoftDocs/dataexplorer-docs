@@ -1,5 +1,5 @@
 ---
-title: Numerical operators - Azure Data Explorer | Microsoft Docs
+title: Numerical operators - Azure Data Explorer
 description: This article describes Numerical operators in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

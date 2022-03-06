@@ -1,5 +1,5 @@
 ---
-title: extent_tags() - Azure Data Explorer | Microsoft Docs
+title: extent_tags() - Azure Data Explorer
 description: This article describes extent_tags() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

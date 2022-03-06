@@ -1,5 +1,5 @@
 ---
-title: beta_inv() - Azure Data Explorer | Microsoft Docs
+title: beta_inv() - Azure Data Explorer
 description: This article describes beta_inv() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

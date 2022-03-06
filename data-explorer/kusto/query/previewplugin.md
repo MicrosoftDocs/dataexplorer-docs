@@ -1,5 +1,5 @@
 ---
-title: preview plugin - Azure Data Explorer | Microsoft Docs
+title: preview plugin - Azure Data Explorer
 description: This article describes preview plugin in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

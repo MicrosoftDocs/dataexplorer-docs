@@ -1,5 +1,5 @@
 ---
-title: bin_auto() - Azure Data Explorer | Microsoft Docs
+title: bin_auto() - Azure Data Explorer
 description: This article describes bin_auto() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

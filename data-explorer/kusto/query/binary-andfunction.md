@@ -1,5 +1,5 @@
 ---
-title: binary_and() - Azure Data Explorer | Microsoft Docs
+title: binary_and() - Azure Data Explorer
 description: This article describes binary_and() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

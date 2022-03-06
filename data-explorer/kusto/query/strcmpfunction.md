@@ -1,5 +1,5 @@
 ---
-title: strcmp() - Azure Data Explorer | Microsoft Docs
+title: strcmp() - Azure Data Explorer
 description: This article describes strcmp() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

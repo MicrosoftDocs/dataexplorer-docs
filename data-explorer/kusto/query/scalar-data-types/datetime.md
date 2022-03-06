@@ -1,5 +1,5 @@
 ---
-title: The datetime data type - Azure Data Explorer | Microsoft Docs
+title: The datetime data type - Azure Data Explorer
 description: This article describes The datetime data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

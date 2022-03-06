@@ -1,5 +1,5 @@
 ---
-title: evaluate plugin operator - Azure Data Explorer | Microsoft Docs
+title: evaluate plugin operator - Azure Data Explorer
 description: This article describes evaluate plugin operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

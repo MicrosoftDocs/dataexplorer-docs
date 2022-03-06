@@ -1,5 +1,5 @@
 ---
-title: make_timespan() - Azure Data Explorer | Microsoft Docs
+title: make_timespan() - Azure Data Explorer
 description: This article describes make_timespan() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

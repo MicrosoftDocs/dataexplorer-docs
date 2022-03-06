@@ -1,5 +1,5 @@
 ---
-title: summarize operator - Azure Data Explorer | Microsoft Docs
+title: summarize operator - Azure Data Explorer
 description: This article describes summarize operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

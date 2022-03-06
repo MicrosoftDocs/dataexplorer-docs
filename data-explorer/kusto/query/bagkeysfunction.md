@@ -1,5 +1,5 @@
 ---
-title: bag_keys() - Azure Data Explorer | Microsoft Docs
+title: bag_keys() - Azure Data Explorer
 description: This article describes bag_keys() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

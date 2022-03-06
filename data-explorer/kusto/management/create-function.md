@@ -1,5 +1,5 @@
 ---
-title: .create function - Azure Data Explorer | Microsoft Docs
+title: .create function - Azure Data Explorer
 description: This article describes .create function in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

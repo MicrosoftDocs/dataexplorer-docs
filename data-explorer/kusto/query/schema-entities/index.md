@@ -1,5 +1,5 @@
 ---
-title: Entities - Azure Data Explorer | Microsoft Docs
+title: Entities - Azure Data Explorer
 description: This article describes Entities in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: .drop function - Azure Data Explorer | Microsoft Docs
+title: .drop function - Azure Data Explorer
 description: This article describes .drop function in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

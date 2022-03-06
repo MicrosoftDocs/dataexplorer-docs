@@ -1,5 +1,5 @@
 ---
-title: Ingest from IoT Hub - Azure Data Explorer | Microsoft Docs
+title: Ingest from IoT Hub - Azure Data Explorer
 description: This article describes Ingest from IoT Hub in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to

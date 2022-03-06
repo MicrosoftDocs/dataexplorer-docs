@@ -1,5 +1,5 @@
 ---
-title: Azure Data Explorer Node SDK - Azure Data Explorer | Microsoft Docs
+title: Azure Data Explorer Node SDK - Azure Data Explorer
 description: This article describes Azure Data Explorer Node SDK in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

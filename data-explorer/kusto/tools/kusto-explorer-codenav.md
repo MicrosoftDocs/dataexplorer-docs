@@ -1,5 +1,5 @@
 ---
-title: Kusto Explorer Code Navigation - Azure Data Explorer | Microsoft Docs
+title: Kusto Explorer Code Navigation - Azure Data Explorer
 description: This article describes Kusto Explorer Code Navigation in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: The real data type - Azure Data Explorer | Microsoft Docs
+title: The real data type - Azure Data Explorer
 description: This article describes The real data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

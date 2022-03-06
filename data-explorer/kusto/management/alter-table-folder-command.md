@@ -1,5 +1,5 @@
 ---
-title: .alter table folder - Azure Data Explorer | Microsoft Docs
+title: .alter table folder - Azure Data Explorer
 description: This article describes .alter table folder in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

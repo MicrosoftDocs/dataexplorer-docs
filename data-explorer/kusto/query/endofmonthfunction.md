@@ -1,5 +1,5 @@
 ---
-title: endofmonth() - Azure Data Explorer | Microsoft Docs
+title: endofmonth() - Azure Data Explorer
 description: This article describes endofmonth() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

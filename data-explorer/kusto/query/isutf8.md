@@ -1,5 +1,5 @@
 ---
-title: isutf8() - Azure Data Explorer | Microsoft Docs
+title: isutf8() - Azure Data Explorer
 description: This article describes isutf8() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

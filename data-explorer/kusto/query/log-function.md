@@ -1,5 +1,5 @@
 ---
-title: log() - Azure Data Explorer | Microsoft Docs
+title: log() - Azure Data Explorer
 description: This article describes log() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

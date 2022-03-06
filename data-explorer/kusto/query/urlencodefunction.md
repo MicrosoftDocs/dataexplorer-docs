@@ -1,5 +1,5 @@
 ---
-title: url_encode() - Azure Data Explorer | Microsoft Docs
+title: url_encode() - Azure Data Explorer
 description: This article describes url_encode() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: trim_start() - Azure Data Explorer | Microsoft Docs
+title: trim_start() - Azure Data Explorer
 description: This article describes trim_start() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

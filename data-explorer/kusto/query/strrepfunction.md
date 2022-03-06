@@ -1,5 +1,5 @@
 ---
-title: strrep() - Azure Data Explorer | Microsoft Docs
+title: strrep() - Azure Data Explorer
 description: This article describes strrep() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: facet operator - Azure Data Explorer | Microsoft Docs
+title: facet operator - Azure Data Explorer
 description: This article describes facet operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

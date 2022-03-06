@@ -1,5 +1,5 @@
 ---
-title: isempty() - Azure Data Explorer | Microsoft Docs
+title: isempty() - Azure Data Explorer
 description: This article describes isempty() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

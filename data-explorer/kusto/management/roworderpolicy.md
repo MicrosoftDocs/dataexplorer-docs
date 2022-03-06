@@ -1,5 +1,5 @@
 ---
-title: Row order policy - Azure Data Explorer | Microsoft Docs
+title: Row order policy - Azure Data Explorer
 description: This article describes Row order policy in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

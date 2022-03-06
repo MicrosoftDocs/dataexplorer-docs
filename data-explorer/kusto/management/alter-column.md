@@ -1,5 +1,5 @@
 ---
-title: .alter column - Azure Data Explorer | Microsoft Docs
+title: .alter column - Azure Data Explorer
 description: This article describes .alter column in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

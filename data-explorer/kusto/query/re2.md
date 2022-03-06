@@ -1,5 +1,5 @@
 ---
-title: Regular expressions - Azure Data Explorer | Microsoft Docs
+title: Regular expressions - Azure Data Explorer
 description: This article describes Regular expressions in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

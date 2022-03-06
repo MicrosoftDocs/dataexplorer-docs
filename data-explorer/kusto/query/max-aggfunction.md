@@ -1,5 +1,5 @@
 ---
-title: max() (aggregation function) - Azure Data Explorer | Microsoft Docs
+title: max() (aggregation function) - Azure Data Explorer
 description: This article describes max() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

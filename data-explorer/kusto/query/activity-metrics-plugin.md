@@ -1,5 +1,5 @@
 ---
-title: activity_metrics plugin - Azure Data Explorer | Microsoft Docs
+title: activity_metrics plugin - Azure Data Explorer
 description: This article describes activity_metrics plugin in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

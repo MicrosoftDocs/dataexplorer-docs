@@ -1,5 +1,5 @@
 ---
-title: tohex() - Azure Data Explorer | Microsoft Docs
+title: tohex() - Azure Data Explorer
 description: This article describes tohex() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

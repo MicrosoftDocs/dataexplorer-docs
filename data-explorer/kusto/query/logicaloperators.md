@@ -1,5 +1,5 @@
 ---
-title: Logical (binary) operators - Azure Data Explorer | Microsoft Docs
+title: Logical (binary) operators - Azure Data Explorer
 description: This article describes Logical (binary) operators in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

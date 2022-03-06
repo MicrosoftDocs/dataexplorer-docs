@@ -1,5 +1,5 @@
 ---
-title: acos() - Azure Data Explorer | Microsoft Docs
+title: acos() - Azure Data Explorer
 description: This article describes acos() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

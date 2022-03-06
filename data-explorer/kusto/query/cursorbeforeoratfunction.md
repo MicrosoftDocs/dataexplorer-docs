@@ -1,5 +1,5 @@
 ---
-title: cursor_before_or_at() - Azure Data Explorer | Microsoft Docs
+title: cursor_before_or_at() - Azure Data Explorer
 description: This article describes cursor_before_or_at() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

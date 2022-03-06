@@ -1,5 +1,5 @@
 ---
-title: Entity names - Azure Data Explorer | Microsoft Docs
+title: Entity names - Azure Data Explorer
 description: This article describes Entity names in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: endofyear() - Azure Data Explorer | Microsoft Docs
+title: endofyear() - Azure Data Explorer
 description: This article describes endofyear() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

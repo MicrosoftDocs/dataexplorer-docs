@@ -1,5 +1,5 @@
 ---
-title: array_length() - Azure Data Explorer | Microsoft Docs
+title: array_length() - Azure Data Explorer
 description: This article describes array_length() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

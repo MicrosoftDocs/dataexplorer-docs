@@ -1,5 +1,5 @@
 ---
-title: Unsupported scalar data types - Azure Data Explorer | Microsoft Docs
+title: Unsupported scalar data types - Azure Data Explorer
 description: This article describes Unsupported scalar data types in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

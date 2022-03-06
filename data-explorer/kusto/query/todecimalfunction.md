@@ -1,5 +1,5 @@
 ---
-title: todecimal() - Azure Data Explorer | Microsoft Docs
+title: todecimal() - Azure Data Explorer
 description: This article describes todecimal() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

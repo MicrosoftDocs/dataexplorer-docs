@@ -1,5 +1,5 @@
 ---
-title: dayofmonth() - Azure Data Explorer | Microsoft Docs
+title: dayofmonth() - Azure Data Explorer
 description: This article describes dayofmonth() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

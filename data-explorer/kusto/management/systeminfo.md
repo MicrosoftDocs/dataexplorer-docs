@@ -1,5 +1,5 @@
 ---
-title: System information - Azure Data Explorer | Microsoft Docs
+title: System information - Azure Data Explorer
 description: This article describes System information in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

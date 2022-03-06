@@ -1,5 +1,5 @@
 ---
-title: current_database() - Azure Data Explorer | Microsoft Docs
+title: current_database() - Azure Data Explorer
 description: This article describes current_database() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

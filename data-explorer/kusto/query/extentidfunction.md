@@ -1,5 +1,5 @@
 ---
-title: extent_id() - Azure Data Explorer | Microsoft Docs
+title: extent_id() - Azure Data Explorer
 description: This article describes extent_id() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

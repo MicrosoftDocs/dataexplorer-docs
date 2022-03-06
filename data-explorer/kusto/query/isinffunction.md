@@ -1,5 +1,5 @@
 ---
-title: isinf() - Azure Data Explorer | Microsoft Docs
+title: isinf() - Azure Data Explorer
 description: This article describes isinf() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

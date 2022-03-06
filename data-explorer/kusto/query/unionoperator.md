@@ -1,5 +1,5 @@
 ---
-title: union operator - Azure Data Explorer | Microsoft Docs
+title: union operator - Azure Data Explorer
 description: This article describes union operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: toupper() - Azure Data Explorer | Microsoft Docs
+title: toupper() - Azure Data Explorer
 description: This article describes toupper() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

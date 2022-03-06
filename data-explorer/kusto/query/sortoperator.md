@@ -1,5 +1,5 @@
 ---
-title: sort operator  - Azure Data Explorer | Microsoft Docs
+title: sort operator  - Azure Data Explorer
 description: This article describes sort operator  in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: The .delete auto delete policy command - Azure Data Explorer | Microsoft Docs
+title: The .delete auto delete policy command - Azure Data Explorer
 description: This article describes the .delete auto delete policy command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference

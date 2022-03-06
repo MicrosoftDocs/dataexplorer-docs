@@ -1,5 +1,5 @@
 ---
-title: strlen() - Azure Data Explorer | Microsoft Docs
+title: strlen() - Azure Data Explorer
 description: This article describes strlen() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

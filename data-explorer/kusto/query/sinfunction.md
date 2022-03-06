@@ -1,5 +1,5 @@
 ---
-title: sin() - Azure Data Explorer | Microsoft Docs
+title: sin() - Azure Data Explorer
 description: This article describes sin() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

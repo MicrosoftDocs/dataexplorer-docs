@@ -1,5 +1,5 @@
 ---
-title: ago() - Azure Data Explorer | Microsoft Docs
+title: ago() - Azure Data Explorer
 description: This article describes ago() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

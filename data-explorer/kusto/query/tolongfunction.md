@@ -1,5 +1,5 @@
 ---
-title: tolong() - Azure Data Explorer | Microsoft Docs
+title: tolong() - Azure Data Explorer
 description: This article describes tolong() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

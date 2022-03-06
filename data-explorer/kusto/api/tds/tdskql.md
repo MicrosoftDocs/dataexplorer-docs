@@ -1,5 +1,5 @@
 ---
-title: Kusto Query Language over TDS - Azure Data Explorer | Microsoft Docs
+title: Kusto Query Language over TDS - Azure Data Explorer
 description: This article describes using the Kusto Query Language (KQL) over TDS in Azure Data Explorer.
 ms.reviewer: yosefd
 ms.topic: reference

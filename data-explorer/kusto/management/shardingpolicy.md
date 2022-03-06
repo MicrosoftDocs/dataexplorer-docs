@@ -1,5 +1,5 @@
 ---
-title: Data sharding policy - Azure Data Explorer | Microsoft Docs
+title: Data sharding policy - Azure Data Explorer
 description: This article describes Data sharding policy in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

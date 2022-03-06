@@ -1,5 +1,5 @@
 ---
-title: startofyear() - Azure Data Explorer | Microsoft Docs
+title: startofyear() - Azure Data Explorer
 description: This article describes startofyear() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

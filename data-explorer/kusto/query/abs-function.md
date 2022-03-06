@@ -1,5 +1,5 @@
 ---
-title: abs() - Azure Data Explorer | Microsoft Docs
+title: abs() - Azure Data Explorer
 description: This article describes abs() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

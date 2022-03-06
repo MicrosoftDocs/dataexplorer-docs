@@ -1,5 +1,5 @@
 ---
-title: dayofweek() - Azure Data Explorer | Microsoft Docs
+title: dayofweek() - Azure Data Explorer
 description: This article describes dayofweek() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

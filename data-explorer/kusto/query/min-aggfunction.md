@@ -1,5 +1,5 @@
 ---
-title: min() (aggregation function) - Azure Data Explorer | Microsoft Docs
+title: min() (aggregation function) - Azure Data Explorer
 description: This article describes min() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

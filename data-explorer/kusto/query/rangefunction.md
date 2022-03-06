@@ -1,5 +1,5 @@
 ---
-title: range() - Azure Data Explorer | Microsoft Docs
+title: range() - Azure Data Explorer
 description: This article describes range() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

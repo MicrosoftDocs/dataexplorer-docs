@@ -1,5 +1,5 @@
 ---
-title: as operator - Azure Data Explorer | Microsoft Docs
+title: as operator - Azure Data Explorer
 description: This article describes as operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

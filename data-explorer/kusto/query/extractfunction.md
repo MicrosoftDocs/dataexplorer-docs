@@ -1,5 +1,5 @@
 ---
-title: extract() - Azure Data Explorer | Microsoft Docs
+title: extract() - Azure Data Explorer
 description: This article describes extract() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: dayofyear() - Azure Data Explorer | Microsoft Docs
+title: dayofyear() - Azure Data Explorer
 description: This article describes dayofyear() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

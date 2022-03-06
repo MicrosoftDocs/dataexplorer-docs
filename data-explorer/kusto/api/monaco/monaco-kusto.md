@@ -1,5 +1,5 @@
 ---
-title: Monaco-kusto - Azure Data Explorer | Microsoft Docs
+title: Monaco-kusto - Azure Data Explorer
 description: This article describes Monaco-kusto in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

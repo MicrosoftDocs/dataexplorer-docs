@@ -1,5 +1,5 @@
 ---
-title: bin() - Azure Data Explorer | Microsoft Docs
+title: bin() - Azure Data Explorer
 description: This article describes bin() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

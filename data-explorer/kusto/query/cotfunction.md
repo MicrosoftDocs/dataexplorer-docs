@@ -1,5 +1,5 @@
 ---
-title: cot() - Azure Data Explorer | Microsoft Docs
+title: cot() - Azure Data Explorer
 description: This article describes cot() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

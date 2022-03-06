@@ -1,5 +1,5 @@
 ---
-title: ﻿Kusto Explorer options - Azure Data Explorer | Microsoft Docs
+title: ﻿Kusto Explorer options - Azure Data Explorer
 description: This article describes ﻿Kusto Explorer options in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: Streaming ingestion policy - Azure Data Explorer | Microsoft Docs
+title: Streaming ingestion policy - Azure Data Explorer
 description: This article describes Streaming ingestion policy in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: pack_dictionary() - Azure Data Explorer | Microsoft Docs
+title: pack_dictionary() - Azure Data Explorer
 description: This article describes pack_dictionary() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

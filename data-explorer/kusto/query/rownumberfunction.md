@@ -1,5 +1,5 @@
 ---
-title: row_number() - Azure Data Explorer | Microsoft Docs
+title: row_number() - Azure Data Explorer
 description: This article describes row_number() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

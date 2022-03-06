@@ -1,5 +1,5 @@
 ---
-title: new_guid() - Azure Data Explorer | Microsoft Docs
+title: new_guid() - Azure Data Explorer
 description: This article describes new_guid() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

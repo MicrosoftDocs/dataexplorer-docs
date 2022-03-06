@@ -1,5 +1,5 @@
 ---
-title: split() - Azure Data Explorer | Microsoft Docs
+title: split() - Azure Data Explorer
 description: This article describes split() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: parse_xml() - Azure Data Explorer | Microsoft Docs
+title: parse_xml() - Azure Data Explorer
 description: This article describes parse_xml() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

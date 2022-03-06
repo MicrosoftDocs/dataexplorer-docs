@@ -1,5 +1,5 @@
 ---
-title: binary_xor() - Azure Data Explorer | Microsoft Docs
+title: binary_xor() - Azure Data Explorer
 description: This article describes binary_xor() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

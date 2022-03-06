@@ -1,5 +1,5 @@
 ---
-title: sumif() (aggregation function) - Azure Data Explorer | Microsoft Docs
+title: sumif() (aggregation function) - Azure Data Explorer
 description: This article describes sumif() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

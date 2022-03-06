@@ -1,5 +1,5 @@
 ---
-title: cursor_after() - Azure Data Explorer | Microsoft Docs
+title: cursor_after() - Azure Data Explorer
 description: This article describes cursor_after() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

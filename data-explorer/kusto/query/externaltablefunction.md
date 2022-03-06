@@ -1,5 +1,5 @@
 ---
-title: external_table() - Azure Data Explorer | Microsoft Docs
+title: external_table() - Azure Data Explorer
 description: This article describes external_table() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

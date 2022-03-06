@@ -1,5 +1,5 @@
 ---
-title: url_decode() - Azure Data Explorer | Microsoft Docs
+title: url_decode() - Azure Data Explorer
 description: This article describes url_decode() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

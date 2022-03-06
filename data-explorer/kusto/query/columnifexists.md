@@ -1,5 +1,5 @@
 ---
-title: column_ifexists() - Azure Data Explorer | Microsoft Docs
+title: column_ifexists() - Azure Data Explorer
 description: This article describes column_ifexists() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

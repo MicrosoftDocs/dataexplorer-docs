@@ -1,5 +1,5 @@
 ---
-title: endofweek() - Azure Data Explorer | Microsoft Docs
+title: endofweek() - Azure Data Explorer
 description: This article describes endofweek() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

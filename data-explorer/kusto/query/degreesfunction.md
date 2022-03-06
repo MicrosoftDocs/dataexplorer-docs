@@ -1,5 +1,5 @@
 ---
-title: degrees() - Azure Data Explorer | Microsoft Docs
+title: degrees() - Azure Data Explorer
 description: This article describes degrees() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

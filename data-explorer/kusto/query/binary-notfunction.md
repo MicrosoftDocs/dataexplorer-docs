@@ -1,5 +1,5 @@
 ---
-title: binary_not() - Azure Data Explorer | Microsoft Docs
+title: binary_not() - Azure Data Explorer
 description: This article describes binary_not() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

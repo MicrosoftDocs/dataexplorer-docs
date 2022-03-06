@@ -1,5 +1,5 @@
 ---
-title: to_utf8() - Azure Data Explorer | Microsoft Docs
+title: to_utf8() - Azure Data Explorer
 description: This article describes to_utf8() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

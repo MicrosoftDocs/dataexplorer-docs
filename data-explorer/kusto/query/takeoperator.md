@@ -1,5 +1,5 @@
 ---
-title: take operator - Azure Data Explorer | Microsoft Docs
+title: take operator - Azure Data Explorer
 description: This article describes take operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

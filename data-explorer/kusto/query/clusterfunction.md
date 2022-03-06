@@ -1,5 +1,5 @@
 ---
-title: cluster() (scope function) - Azure Data Explorer | Microsoft Docs
+title: cluster() (scope function) - Azure Data Explorer
 description: This article describes cluster() (scope function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

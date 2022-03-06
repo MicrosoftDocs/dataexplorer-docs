@@ -1,5 +1,5 @@
 ---
-title: UI deep links - Azure Data Explorer | Microsoft Docs
+title: UI deep links - Azure Data Explorer
 description: This article describes UI deep links in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

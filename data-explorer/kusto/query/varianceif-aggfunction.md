@@ -1,5 +1,5 @@
 ---
-title: varianceif() (aggregation function) - Azure Data Explorer | Microsoft Docs
+title: varianceif() (aggregation function) - Azure Data Explorer
 description: This article describes varianceif() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

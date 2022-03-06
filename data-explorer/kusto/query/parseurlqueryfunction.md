@@ -1,5 +1,5 @@
 ---
-title: parse_urlquery() - Azure Data Explorer | Microsoft Docs
+title: parse_urlquery() - Azure Data Explorer
 description: This article describes parse_urlquery() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

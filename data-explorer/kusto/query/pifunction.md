@@ -1,5 +1,5 @@
 ---
-title: pi() - Azure Data Explorer | Microsoft Docs
+title: pi() - Azure Data Explorer
 description: This article describes pi() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

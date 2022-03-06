@@ -1,5 +1,5 @@
 ---
-title: Databases - Azure Data Explorer | Microsoft Docs
+title: Databases - Azure Data Explorer
 description: This article describes Databases in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

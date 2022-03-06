@@ -1,5 +1,5 @@
 ---
-title: exp2() - Azure Data Explorer | Microsoft Docs
+title: exp2() - Azure Data Explorer
 description: This article describes exp2() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

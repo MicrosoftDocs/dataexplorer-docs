@@ -1,5 +1,5 @@
 ---
-title: Time Series Analysis  - Azure Data Explorer | Microsoft Docs
+title: Time Series Analysis  - Azure Data Explorer
 description: This article describes Time Series Analysis  in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

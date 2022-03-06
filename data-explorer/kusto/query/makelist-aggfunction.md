@@ -1,5 +1,5 @@
 ---
-title: make_list() (aggregation function) - Azure Data Explorer | Microsoft Docs
+title: make_list() (aggregation function) - Azure Data Explorer
 description: This article describes make_list() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

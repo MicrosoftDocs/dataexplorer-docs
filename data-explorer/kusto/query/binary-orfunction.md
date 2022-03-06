@@ -1,5 +1,5 @@
 ---
-title: binary_or() - Azure Data Explorer | Microsoft Docs
+title: binary_or() - Azure Data Explorer
 description: This article describes binary_or() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

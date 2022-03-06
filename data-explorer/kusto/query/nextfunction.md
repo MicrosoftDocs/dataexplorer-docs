@@ -1,5 +1,5 @@
 ---
-title: next() - Azure Data Explorer | Microsoft Docs
+title: next() - Azure Data Explorer
 description: This article describes next() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

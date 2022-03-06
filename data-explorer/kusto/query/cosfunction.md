@@ -1,5 +1,5 @@
 ---
-title: cos() - Azure Data Explorer | Microsoft Docs
+title: cos() - Azure Data Explorer
 description: This article describes cos() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

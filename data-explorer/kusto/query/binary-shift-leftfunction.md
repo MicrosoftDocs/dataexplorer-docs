@@ -1,5 +1,5 @@
 ---
-title: binary_shift_left() - Azure Data Explorer | Microsoft Docs
+title: binary_shift_left() - Azure Data Explorer
 description: This article describes binary_shift_left() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

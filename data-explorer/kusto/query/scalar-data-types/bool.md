@@ -1,5 +1,5 @@
 ---
-title: The bool data type - Azure Data Explorer | Microsoft Docs
+title: The bool data type - Azure Data Explorer
 description: This article describes The bool data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

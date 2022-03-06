@@ -1,5 +1,5 @@
 ---
-title: The timespan data type - Azure Data Explorer | Microsoft Docs
+title: The timespan data type - Azure Data Explorer
 description: This article describes The timespan data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

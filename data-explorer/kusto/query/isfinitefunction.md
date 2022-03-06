@@ -1,5 +1,5 @@
 ---
-title: isfinite() - Azure Data Explorer | Microsoft Docs
+title: isfinite() - Azure Data Explorer
 description: This article describes isfinite() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

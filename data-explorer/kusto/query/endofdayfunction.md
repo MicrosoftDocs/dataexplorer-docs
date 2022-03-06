@@ -1,5 +1,5 @@
 ---
-title: endofday() - Azure Data Explorer | Microsoft Docs
+title: endofday() - Azure Data Explorer
 description: This article describes endofday() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

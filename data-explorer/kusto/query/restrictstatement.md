@@ -1,5 +1,5 @@
 ---
-title: Restrict statement - Azure Data Explorer | Microsoft Docs
+title: Restrict statement - Azure Data Explorer
 description: This article describes Restrict statement in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

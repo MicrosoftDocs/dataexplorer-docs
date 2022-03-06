@@ -1,5 +1,5 @@
 ---
-title: stdevif() (aggregation function) - Azure Data Explorer | Microsoft Docs
+title: stdevif() (aggregation function) - Azure Data Explorer
 description: This article describes stdevif() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

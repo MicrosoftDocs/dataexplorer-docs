@@ -1,5 +1,5 @@
 ---
-title: isnan() - Azure Data Explorer | Microsoft Docs
+title: isnan() - Azure Data Explorer
 description: This article describes isnan() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

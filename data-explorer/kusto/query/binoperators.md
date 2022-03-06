@@ -1,5 +1,5 @@
 ---
-title: Bitwise (Binary) Operators - Azure Data Explorer | Microsoft Docs
+title: Bitwise (Binary) Operators - Azure Data Explorer
 description: This article describes Bitwise (Binary) Operators in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

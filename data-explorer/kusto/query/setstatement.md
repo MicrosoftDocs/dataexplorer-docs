@@ -1,5 +1,5 @@
 ---
-title: Set statement - Azure Data Explorer | Microsoft Docs
+title: Set statement - Azure Data Explorer
 description: This article describes Set statement in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

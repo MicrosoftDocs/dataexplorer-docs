@@ -1,5 +1,5 @@
 ---
-title: Cluster follower commands - Azure Data Explorer | Microsoft Docs
+title: Cluster follower commands - Azure Data Explorer
 description: This article describes Cluster follower commands in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: startofday() - Azure Data Explorer | Microsoft Docs
+title: startofday() - Azure Data Explorer
 description: This article describes startofday() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

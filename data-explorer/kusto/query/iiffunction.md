@@ -1,5 +1,5 @@
 ---
-title: iif() - Azure Data Explorer | Microsoft Docs
+title: iif() - Azure Data Explorer
 description: This article describes iif() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

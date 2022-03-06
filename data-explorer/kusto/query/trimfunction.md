@@ -1,5 +1,5 @@
 ---
-title: trim() - Azure Data Explorer | Microsoft Docs
+title: trim() - Azure Data Explorer
 description: This article describes trim() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

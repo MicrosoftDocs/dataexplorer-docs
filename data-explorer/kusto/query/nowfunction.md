@@ -1,5 +1,5 @@
 ---
-title: now() - Azure Data Explorer | Microsoft Docs
+title: now() - Azure Data Explorer
 description: This article describes now() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

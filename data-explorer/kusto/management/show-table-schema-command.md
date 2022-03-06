@@ -1,5 +1,5 @@
 ---
-title: .show table schema - Azure Data Explorer | Microsoft Docs
+title: .show table schema - Azure Data Explorer
 description: This article describes .show table schema in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

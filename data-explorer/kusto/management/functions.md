@@ -1,5 +1,5 @@
 ---
-title: Stored functions management overview - Azure Data Explorer | Microsoft Docs
+title: Stored functions management overview - Azure Data Explorer
 description: This article describes Stored functions management overview in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

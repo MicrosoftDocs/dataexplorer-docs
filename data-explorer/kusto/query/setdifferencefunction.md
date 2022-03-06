@@ -1,5 +1,5 @@
 ---
-title: set_difference() - Azure Data Explorer | Microsoft Docs
+title: set_difference() - Azure Data Explorer
 description: This article describes set_difference() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

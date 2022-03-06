@@ -1,5 +1,5 @@
 ---
-title: pow() - Azure Data Explorer | Microsoft Docs
+title: pow() - Azure Data Explorer
 description: This article describes pow() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

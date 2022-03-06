@@ -1,5 +1,5 @@
 ---
-title: fork operator - Azure Data Explorer | Microsoft Docs
+title: fork operator - Azure Data Explorer
 description: This article describes fork operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

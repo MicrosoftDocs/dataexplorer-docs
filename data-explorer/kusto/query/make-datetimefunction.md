@@ -1,5 +1,5 @@
 ---
-title: make_datetime() - Azure Data Explorer | Microsoft Docs
+title: make_datetime() - Azure Data Explorer
 description: This article describes make_datetime() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: monthofyear() - Azure Data Explorer | Microsoft Docs
+title: monthofyear() - Azure Data Explorer
 description: This article describes monthofyear() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

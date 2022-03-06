@@ -1,5 +1,5 @@
 ---
-title: MS-TDS with Azure Active Directory - Azure Data Explorer | Microsoft Docs
+title: MS-TDS with Azure Active Directory - Azure Data Explorer
 description: This article describes MS-TDS with Azure Active Directory in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

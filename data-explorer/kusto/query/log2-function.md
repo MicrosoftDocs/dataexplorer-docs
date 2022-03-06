@@ -1,5 +1,5 @@
 ---
-title: log2() - Azure Data Explorer | Microsoft Docs
+title: log2() - Azure Data Explorer
 description: This article describes log2() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

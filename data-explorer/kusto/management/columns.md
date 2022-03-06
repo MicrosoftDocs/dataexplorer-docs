@@ -1,5 +1,5 @@
 ---
-title: Columns management - Azure Data Explorer | Microsoft Docs
+title: Columns management - Azure Data Explorer
 description: This article describes Columns management in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

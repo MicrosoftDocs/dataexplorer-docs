@@ -1,5 +1,5 @@
 ---
-title: Kusto Explorer Code Refactoring - Azure Data Explorer | Microsoft Docs
+title: Kusto Explorer Code Refactoring - Azure Data Explorer
 description: This article describes Kusto Explorer Code Refactoring in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: Continuous data export - Azure Data Explorer | Microsoft Docs
+title: Continuous data export - Azure Data Explorer
 description: This article describes Continuous data export in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference

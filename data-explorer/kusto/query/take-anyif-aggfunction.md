@@ -1,5 +1,5 @@
 ---
-title: take-anyif() (aggregation function) - Azure Data Explorer | Microsoft Docs
+title: take-anyif() (aggregation function) - Azure Data Explorer
 description: This article describes take-anyif() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: gettype() - Azure Data Explorer | Microsoft Docs
+title: gettype() - Azure Data Explorer
 description: This article describes gettype() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

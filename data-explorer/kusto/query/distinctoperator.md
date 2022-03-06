@@ -1,5 +1,5 @@
 ---
-title: distinct operator - Azure Data Explorer | Microsoft Docs
+title: distinct operator - Azure Data Explorer
 description: This article describes distinct operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: make_list_with_nulls() (aggregation function) - Azure Data Explorer | Microsoft Docs
+title: make_list_with_nulls() (aggregation function) - Azure Data Explorer
 description: This article describes make_list_with_nulls() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

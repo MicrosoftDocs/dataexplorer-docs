@@ -1,5 +1,5 @@
 ---
-title: string_size() - Azure Data Explorer | Microsoft Docs
+title: string_size() - Azure Data Explorer
 description: This article describes string_size() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

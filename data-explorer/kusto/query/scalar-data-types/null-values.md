@@ -1,5 +1,5 @@
 ---
-title: Null Values - Azure Data Explorer | Microsoft Docs
+title: Null Values - Azure Data Explorer
 description: This article describes Null Values in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

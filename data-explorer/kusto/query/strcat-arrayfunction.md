@@ -1,5 +1,5 @@
 ---
-title: strcat_array() - Azure Data Explorer | Microsoft Docs
+title: strcat_array() - Azure Data Explorer
 description: This article describes strcat_array() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
