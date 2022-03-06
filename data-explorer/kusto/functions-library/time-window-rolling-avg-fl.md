@@ -1,10 +1,7 @@
 ---
 title: time_window_rolling_avg_fl() - Azure Data Explorer
 description: This article describes time_window_rolling_avg_fl() user-defined function in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/14/2021
 ---

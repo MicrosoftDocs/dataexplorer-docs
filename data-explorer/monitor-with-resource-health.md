@@ -1,10 +1,7 @@
 ---
 title: Monitor Azure Data Explorer using Resource Health
 description: Use Azure Resource Health to monitor Azure Data Explorer resources.
-author: orspod
-ms.author: orspodek
 ms.reviewer: prvavill
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/31/2020
 

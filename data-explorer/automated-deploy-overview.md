@@ -1,11 +1,7 @@
 ---
 title: Automated provisioning in Azure Data Explorer
 description: This article is a map to different articles for automating the provisioning of Azure Data Explorer
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: vplauzon
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/01/2022
 ---

@@ -1,11 +1,7 @@
 ---
 title: Create materialized view - Azure Data Explorer
 description: This article describes how to create materialized views in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yifats
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/16/2021
 ---

@@ -3,9 +3,6 @@ title: Azure Policy Regulatory Compliance controls for Azure Data Explorer
 description: Lists Azure Policy Regulatory Compliance controls available for Azure Data Explorer. These built-in policy definitions provide common approaches to managing the compliance of your Azure resources.
 ms.date: 04/21/2021
 ms.topic: sample
-author: orspod
-ms.author: orspodek
-ms.service: data-explorer
 ms.custom: subject-policy-compliancecontrols
 ---
 # Azure Policy Regulatory Compliance controls for Azure Data Explorer

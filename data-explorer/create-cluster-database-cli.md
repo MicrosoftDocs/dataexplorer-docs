@@ -1,10 +1,7 @@
 ---
 title: 'Create an Azure Data Explorer cluster & DB with Azure CLI'
 description: Learn how to create an Azure Data Explorer cluster and database by using the Azure CLI
-author: orspod
-ms.author: orspodek
 ms.reviewer: radennis
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/03/2019
 ---

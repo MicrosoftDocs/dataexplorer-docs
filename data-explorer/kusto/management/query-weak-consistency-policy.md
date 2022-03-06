@@ -1,11 +1,7 @@
 ---
 title: Query weak consistency policy - Azure Data Explorer
 description: This article describes the query weak consistency policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yabenyaa
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/16/2021
 ---

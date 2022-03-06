@@ -1,10 +1,7 @@
 ---
 title: Solution architectures in Azure
 description: Learn about solution architectures in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: 
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/11/2021
 ---

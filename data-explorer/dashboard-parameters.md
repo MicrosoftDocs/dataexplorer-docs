@@ -1,11 +1,7 @@
 ---
 title: Parameters in Azure Data Explorer dashboards
 description: Use parameters as a building block for dashboard filters.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabil
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 11/16/2021
 ---
