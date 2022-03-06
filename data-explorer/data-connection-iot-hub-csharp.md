@@ -1,10 +1,7 @@
 ---
 title: 'Create an IoT Hub data connection for Azure Data Explorer by using C#'
 description: In this article, you learn how to create an IoT Hub data connection for Azure Data Explorer by using C#.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/07/2019
 ---

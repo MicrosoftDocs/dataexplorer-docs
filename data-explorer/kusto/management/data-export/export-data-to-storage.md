@@ -1,11 +1,7 @@
 ---
 title: Export data to storage - Azure Data Explorer | Microsoft Docs
 description: This article describes Export data to storage in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 07/14/2021
 ---

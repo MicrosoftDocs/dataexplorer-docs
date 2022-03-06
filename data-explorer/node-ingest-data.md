@@ -1,10 +1,7 @@
 ---
 title: 'Ingest data using the Azure Data Explorer Node library'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Node.js.
-author: orspod
-ms.author: orspodek
 ms.reviewer: mblythe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/07/2022
 

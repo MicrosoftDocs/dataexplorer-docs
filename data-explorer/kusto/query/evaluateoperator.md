@@ -1,11 +1,7 @@
 ---
 title: evaluate plugin operator - Azure Data Explorer | Microsoft Docs
 description: This article describes evaluate plugin operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/09/2022
 ---

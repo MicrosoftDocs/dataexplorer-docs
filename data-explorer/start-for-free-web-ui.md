@@ -1,10 +1,7 @@
 ---
 title: Create a free Azure Data Explorer cluster.
 description: This article you'll learn how to create a free cluster, ingest data, and run queries to gain insights into your data using your start-for-free cluster.
-author: orspod
-ms.author: orspodek
 ms.reviewer: avnera
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/27/2022
 ---

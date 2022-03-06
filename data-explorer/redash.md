@@ -1,10 +1,7 @@
 ---
 title: Visualize Azure Data Explorer with Redash
 description: In this article, you learn how to visualize data in Azure Data Explorer with the Redash native connector. 
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabil
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 11/04/2019
 ---

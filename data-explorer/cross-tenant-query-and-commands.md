@@ -1,10 +1,7 @@
 ---
 title: Allow cross-tenant queries and commands in Azure Data Explorer
 description: Learn how to allow queries or commands from multiple tenants on Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: orhasban
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/06/2021
 ---
