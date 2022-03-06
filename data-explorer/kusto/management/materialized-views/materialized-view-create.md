@@ -22,6 +22,7 @@ There are two possible ways to create a materialized view, noted by the *backfil
 
 **Create the materialized view based on existing records in the source table:**
 
+* See [backfill a materialized view](#backfill-a-materialized-view).
 * Creation may take a long while to complete, depending on the number of records in the source table. The view won't be available for queries until backfill is complete.
 * When using this option, the create command must be `async`. You can monitor execution with the [`.show operations`](../operations.md#show-operations) command.
 * You can cancel the backfill process with the [`.cancel operation`](#cancel-materialized-view-creation) command.
@@ -56,10 +57,8 @@ The create operation requires [Database Admin](../access-control/role-based-auth
 
 The query used in the materialized view argument is limited by the following rules:
 
-* The query argument should reference a single fact table that is the source of the materialized view, include a single summarize operator, and one or more aggregation functions aggregated by one or more groups by expressions. The summarize operator must always be the last operator in the query.
-
-* A view is either an `arg_max`/`arg_min`/`take_any` view (those functions can be used together in same view) or any of the other supported functions, but not both in same materialized view. 
-    For example, `SourceTable | summarize arg_max(Timestamp, *), count() by Id` isn't supported. 
+* The query argument should reference a single fact table that is the source of the materialized view, include a single summarize operator, and one or more [aggregation functions](#supported-aggregation-functions) aggregated by one or more groups by expressions. The summarize operator must always be the last operator in the query.
+  * A materialized view which includes a single `arg_max`/`arg_min`/`take_any` aggregation only might perform better than a materialized view which includes these aggregations along with other aggregations (`count`/`dcount`/`avg` etc.). This is because some optimizations are relevant only to these kind of materialized views, and won't apply when the view includes "mixed" aggregation functions (_mixed_ are both `arg_max`/`arg_min`/`take_any` and others in same view).
 
 * The query shouldn't include any operators that depend on `now()`. For example, the query shouldn't have `where Timestamp > ago(5d)`. Limit the period of time covered by the view using the retention policy on the materialized view.
 
@@ -71,9 +70,11 @@ The query used in the materialized view argument is limited by the following rul
 
 * References to [external_table()](../../query/externaltablefunction.md) and [externaldata](../../query/externaldata-operator.md) aren't supported.
 
+* The materialized view query cannot include any callouts that require impersonation. Specifically, all [Query connectivity plugins](../../query/azure-digital-twins-query-request-plugin.md) which use impersonation are disallowed.
+
 * In addition to the source table of the view, it may also reference one or more [`dimension tables`](../../concepts/fact-and-dimension-tables.md). Dimension tables must be explicitly called out in the view properties. It is important to understand the behavior when joining with dimension tables:
 
-    * Records in the view's source table (the fact table) are materialized once only. Updates to the dimension tables do not have any impact on records that have already been processed from the fact table. 
+    * Records in the view's source table (the fact table) are materialized once only. Updates to the dimension tables do not have any impact on records that have already been processed from the fact table.
     * A different ingestion latency between the fact table and the dimension table may impact the view results.
     * **Example**: A view definition includes an inner join with a dimension table. At the time of materialization, the dimension record was not fully ingested, but was already ingested to the fact table. This record will be dropped from the view and never reprocessed again.
 
@@ -342,7 +343,7 @@ When creating a materialized view with the `backfill` property, the materialized
     } 
     ```
 
-* If the materialized view includes a datetime dimension, the backfill process supports overriding the [extent creation time](../extents-overview.md#extent-creation-time) based on the datetime column. This can be useful, for example, if you would like "older" records to be dropped before recent ones, since the [retention policy](../retentionpolicy.md) is based on the extents creation time. Using this property is only supported if the datetime dimension uses the [bin()](../../query/binfunction.md) function. For example, the following backfill will assign creation time based on the `Timestamp` group-by key: 
+* If the materialized view includes a datetime group-by key, the backfill process supports overriding the [extent creation time](../extents-overview.md#extent-creation-time) based on the datetime column. This can be useful, for example, if you would like "older" records to be dropped before recent ones, since the [retention policy](../retentionpolicy.md) is based on the extents creation time. Using this property is only supported if the datetime dimension uses the [bin()](../../query/binfunction.md) function. For example, the following backfill will assign creation time based on the `Timestamp` group-by key:
 
    <!-- csl -->
     ```kusto
@@ -369,13 +370,13 @@ This option backfills the materialized view based on an existing table, which is
     ```kusto
     T | summarize arg_max(Timestamp, *) by EventId
     ```
-    Then the records in the source table for the move extents operation are assumed to be already deduped by EventId.
+    Then the records in the source table for the move extents operation should already be deduped by EventId.
 
 * Since the operation uses [.move extents](../move-extents.md), the records will be **removed** from specified table during the backfill (moved, not copied).
 
 * The materialized view is backfilled *only* based on the specified table. Materialization of records in the source table of the view will start from view creation time, by default.
 
-* If there is continuous ingestion to the source table of the materialized view, creating the view by move extents might result in some data loss. This is because records ingested to the source table between the time of preparing the table to backfill-from and the time of view creation will not be included in the materialized view. To cover for this small gap, you can use property `source_ingestion_time_from` to set the start time of the view over the source table. See last example below.
+* If there is continuous ingestion to the source table of the materialized view, creating the view by move extents might result in some data loss. This is because records ingested to the source table between the time of preparing the table to backfill-from and the time of view creation will not be included in the materialized view. To cover for this small gap, you can use property `source_ingestion_time_from` to set the start time of the materialized view over the source table. See last example below.
 
 #### Use cases
 
@@ -387,54 +388,55 @@ The backfill-by-move-extents option can be useful in two main scenarios:
 
 **Examples:**
 
-In the example below, table `DedupedT` includes a single record per `EventId`, and will be used as the baseline for the materialized view. Only records in `T` that are ingested after view creation time will be included in the materialized view:
+1. In the example below, table `DedupedT` includes a single record per `EventId`, and will be used as the baseline for the materialized view. Only records in `T` that are ingested after view creation time will be included in the materialized view:
+    <!-- csl -->
+    ```kusto
+    .create async materialized-view with (move_extents_from=DedupedT) MV on table T
+    {
+        T
+        | summarize arg_max(Timestamp, *) by EventId
+    } 
+    ```
 
-<!-- csl -->
-```kusto
-.create async materialized-view with (move_extents_from=DedupedT) MV on table T
-{
-    T
-    | summarize arg_max(Timestamp, *) by EventId
-} 
-```
+1. If `effectiveDateTime` is specified along with `move_extents_from`, only extents in `DedupedT` whose `MaxCreatedOn` is greater than `effectiveDateTime` are included in the backfill (moved to the materialized view).
 
-If `effectiveDateTime` is specified along with `move_extents_from`, only extents in `DedupedT` whose `MaxCreatedOn` is greater than `effectiveDateTime` are included in the backfill (moved to the materialized view).
+    <!-- csl -->
+    ```kusto
+    .create async materialized-view with 
+        (move_extents_from=DedupedT, effectiveDateTime=datetime(2019-01-01)) 
+        MV on table T
+    {
+        T
+        | summarize arg_max(Timestamp, *) by EventId
+    } 
+    ```
 
-<!-- csl -->
-```kusto
-.create async materialized-view with 
-    (move_extents_from=DedupedT, effectiveDateTime=datetime(2019-01-01)) 
-    MV on table T
-{
-    T
-    | summarize arg_max(Timestamp, *) by EventId
-} 
-```
+1. This example demonstrates use of `source_ingestion_time_from` in the backfill-by-move-extents option. Assume current time is `2020-01-01 03:00`. In the example below, table `DedupedT` is a deduped table of `T`. It includes all historical data, deduplicated, until `2020-01-01 00:00`. The following create command will use `DedupedT` for backfilling the materialized view, using move extents, and will also include all records in `T` that were ingested since `2020-01-01`:
+    
+    <!-- csl -->
+    ```kusto
+    .create async materialized-view with (move_extents_from=DedupedT, source_ingestion_time_from=datetime(2020-01-01)) MV on table T
+    {
+        T
+        | summarize arg_max(Timestamp, *) by EventId
+    } 
+    ```
 
-Assume current time is `2020-01-01 03:00`. In the example below, table `DedupedT` is a deduped table of `T`. It includes all historical data, deduplicated until `2020-01-01`. The following create command will use `DedupedT` for backfilling the materialized view, using move extents, and will also include all records in `T` that were ingested since `2020-01-01`:
-
-<!-- csl -->
-```kusto
-.create async materialized-view with (move_extents_from=DedupedT, source_ingestion_time_from=datetime(2020-01-01)) MV on table T
-{
-    T
-    | summarize arg_max(Timestamp, *) by EventId
-} 
-```
-
-The purpose of using `source_ingestion_time_from` is only to cover for a small ingestion time period, that were ingested to the source table of the view, *after* the backfill-from table was prepared. Do not set this property to a time way long ago.
-
+    The purpose of using `source_ingestion_time_from` is only to cover a small ingestion time period, of all records that were ingested to the source table of the view, *after* the backfill-from table (`DedupedT`) was prepared. Do not set this property to a very old time, as this will start the materialized view with a significant lag that might be hard to catch up.
+    
 ## Materialized views limitations and known issues
 
 * A materialized view can't be created:
-    * On top of another materialized view.
+    * On top of another materialized view, unless the first materialized view is of type `take_any(*)` aggregation. See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view-preview).
     * On [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.  Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader.
     * On [external tables](../../query/schema-entities/externaltables.md).
 
 * A materialized view only processes new records ingested into the source table. Records which are removed from the source table, either by running [data purge](../../concepts/data-purge.md)/[drop extents](../drop-extents.md), or due to [retention policy](../retentionpolicy.md) or any other reason, have no impact on the materialized view. The materialized view has its own [retention policy](materialized-view-policies.md#retention-and-caching-policy), which is independent of the retention policy of the source table. The materialized view might include records which are not present in the source table.
 * The source table of a materialized view:
-    * Must be a table that is being ingested to directly, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md).
-        * Specifically, using [move extents](../move-extents.md) from other tables into the source table of the materialized view is not supported. Move extents may fail with the following error: `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
+  * Must be a table that is being ingested to directly, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md).
+    * Specifically, using [move extents](../move-extents.md) from other tables into the source table of the materialized view is not supported. Move extents may fail with one of the following errors:
+        * `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
+        * `Cannot move extents to 'TableName' since materialized view 'ViewName' will not process these extents (can lead to data loss in the materialized view)`.
     * Must have [IngestionTime policy](../ingestiontimepolicy.md) enabled (the default is enabled).
     * Can't be a table with [restricted view access policy](../restrictedviewaccesspolicy.md).
 * [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
