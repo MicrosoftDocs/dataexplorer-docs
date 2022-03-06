@@ -369,11 +369,13 @@ This option backfills the materialized view based on an existing table, which is
     ```kusto
     T | summarize arg_max(Timestamp, *) by EventId
     ```
-    Then the records in the source table for the move extents operation are assumed to be already deduped by EventId. This is not validated during the backfill process.
+    Then the records in the source table for the move extents operation are assumed to be already deduped by EventId.
 
 * Since the operation uses [.move extents](../move-extents.md), the records will be **removed** from specified table during the backfill (moved, not copied).
 
-* The materialized view is backfilled *only* based on the specified table. Materialization of records in the source table of the view will start from view creation time.
+* The materialized view is backfilled *only* based on the specified table. Materialization of records in the source table of the view will start from view creation time, by default.
+
+* If there is continuous ingestion to the source table of the materialized view, creating the view by move extents might result in some data loss. This is because records ingested to the source table between the time of preparing the table to backfill-from and the time of view creation will not be included in the materialized view. To cover for this small gap, you can use property `source_ingestion_time_from` to set the start time of the view over the source table. See last example below.
 
 #### Use cases
 
@@ -408,6 +410,19 @@ If `effectiveDateTime` is specified along with `move_extents_from`, only extents
     | summarize arg_max(Timestamp, *) by EventId
 } 
 ```
+
+Assume current time is `2020-01-01 03:00`. In the example below, table `DedupedT` is a deduped table of `T`. It includes all historical data, deduplicated until `2020-01-01`. The following create command will use `DedupedT` for backfilling the materialized view, using move extents, and will also include all records in `T` that were ingested since `2020-01-01`:
+
+<!-- csl -->
+```kusto
+.create async materialized-view with (move_extents_from=DedupedT, source_ingestion_time_from=datetime(2020-01-01)) MV on table T
+{
+    T
+    | summarize arg_max(Timestamp, *) by EventId
+} 
+```
+
+The purpose of using `source_ingestion_time_from` is only to cover for a small ingestion time period, that were ingested to the source table of the view, *after* the backfill-from table was prepared. Do not set this property to a time way long ago.
 
 ## Materialized views limitations and known issues
 
