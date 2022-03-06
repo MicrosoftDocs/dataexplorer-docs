@@ -185,8 +185,8 @@ Bicep templates are transpiled into JSON ARM template before deployment. n our e
 
 This method assumes that you already have a blob in a Azure Storage account and you provide its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) directly in the ARM template.
 
-> [!NOTE] // VP-TODO: Still don't understand this note
-> Kusto Query Language scripts doesn't support scripts stored in storage accounts with [Azure Storage firewall or Virtual Network rules](/azure/storage/common/storage-network-security?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal).
+> [!NOTE]
+> Scripts can't be loaded from storage accounts configured with an [Azure Storage firewall or Virtual Network rules](/azure/storage/common/storage-network-security?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal).
 
 ### Create the script resource
 
