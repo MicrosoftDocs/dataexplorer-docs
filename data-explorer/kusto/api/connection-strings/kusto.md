@@ -1,11 +1,7 @@
 ---
-title: Kusto connection strings - Azure Data Explorer | Microsoft Docs
+title: Kusto connection strings - Azure Data Explorer
 description: This article describes Kusto connection strings in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/24/2020
 ---

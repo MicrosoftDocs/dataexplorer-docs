@@ -1,6 +1,4 @@
 ---
-author: orspod
-ms.author: orspodek
 manager: carmonm
 ms.date: 04/17/2019
 ms.topic: include

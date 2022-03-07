@@ -1,11 +1,7 @@
 ---
 title: Copy data from Azure Data Factory to Azure Data Explorer
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer by using the Azure Data Factory copy tool.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: jasonh
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 04/15/2019
 

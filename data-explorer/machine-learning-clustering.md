@@ -1,10 +1,7 @@
 ---
 title: Machine learning capability in Azure Data Explorer
 description: Use machine learning clustering for Root Cause Analysis in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 04/29/2019
 ---

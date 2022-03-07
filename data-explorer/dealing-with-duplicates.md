@@ -1,10 +1,7 @@
 ---
 title: Handle duplicate data in Azure Data Explorer
 description: This topic will show you various approaches to deal with duplicate data when using Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: mblythe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 12/19/2018
 

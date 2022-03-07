@@ -1,10 +1,7 @@
 ---
 title: 'Ingest Azure Blobs into Azure Data Explorer'
 description: In this article, you learn how to send storage account data to Azure Data Explorer using an Event Grid subscription.
-author: orspod
-ms.author: orspodek
 ms.reviewer: tzgitlin
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/13/2022
 
