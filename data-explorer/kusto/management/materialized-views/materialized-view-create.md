@@ -58,7 +58,7 @@ The create operation requires [Database Admin](../access-control/role-based-auth
 The query used in the materialized view argument is limited by the following rules:
 
 * The query argument should reference a single fact table that is the source of the materialized view, include a single summarize operator, and one or more [aggregation functions](#supported-aggregation-functions) aggregated by one or more groups by expressions. The summarize operator must always be the last operator in the query.
-  * A materialized view that only includes a single `arg_max`/`arg_min`/`take_any` aggregation might perform better than a materialized view that includes these aggregations along with other aggregations (such as `count`/`dcount`/`avg`). This is because some optimizations are only relevant to these kinds of materialized views, and won't apply when the view includes "mixed" aggregation functions ( where *mixed* means both `arg_max`/`arg_min`/`take_any` and other aggregations in the same view).
+  * A materialized view that only includes a single `arg_max`/`arg_min`/`take_any` aggregation might perform better than a materialized view that includes these aggregations along with other aggregations (such as `count`/`dcount`/`avg`). This is because some optimizations are only relevant to these kinds of materialized views, and won't apply when the view includes "mixed" aggregation functions (where *mixed* means both `arg_max`/`arg_min`/`take_any` and other aggregations in the same view).
 
 * The query shouldn't include any operators that depend on `now()`. For example, the query shouldn't have `where Timestamp > ago(5d)`. Limit the period of time covered by the view using the retention policy on the materialized view.
 
