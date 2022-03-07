@@ -1,9 +1,6 @@
 ---
-author: orspod
-ms.service: data-explorer
 ms.topic: include
 ms.date: 06/30/2021
-ms.author: orspodek
 ---
 
 1. To add a new connection to a cluster, select **Add cluster connection** below the auto-populated cluster name.

@@ -1,10 +1,7 @@
 ---
 title: 'Create an Event Grid data connection for Azure Data Explorer by using Python'
 description: In this article, you learn how to create an Event Grid data connection for Azure Data Explorer by using Python.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/03/2022
 ---

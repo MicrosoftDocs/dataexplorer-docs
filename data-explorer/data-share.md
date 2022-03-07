@@ -1,10 +1,7 @@
 ---
 title: Use Azure Data Share to share data with Azure Data Explorer
 description: Learn about how to share your data with Azure Data Explorer and Azure Data Share.
-author: orspod
-ms.author: orspodek
 ms.reviewer: maraheja
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/28/2022
 ---
@@ -146,7 +143,7 @@ Use the following steps to share tables:
           ],
           "kind": "KustoTable",
           "properties": {
-            "kustoDatabaseResourceId": "[parameters('database_resource_id')]",
+            "kustoDatabaseResourceId": "[parameters('databaseResourceId')]",
             "tableLevelSharingProperties": {
               "externalTablesToExclude": "[parameters('externalTablesToExclude')]",
               "externalTablesToInclude": "[parameters('externalTablesToInclude')]",

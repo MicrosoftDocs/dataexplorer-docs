@@ -1,11 +1,7 @@
 ---
 title: .alter database prettyname - Azure Data Explorer
 description: This article describes the `.alter` database pretty name command.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/13/2020
 ---

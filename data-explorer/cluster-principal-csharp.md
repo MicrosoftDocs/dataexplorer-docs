@@ -1,10 +1,7 @@
 ---
 title: 'Add cluster principals for Azure Data Explorer by using C#'
 description: In this article, you learn how to add cluster principals for Azure Data Explorer by using C#.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/03/2020
 ---

@@ -1,10 +1,7 @@
 ---
 title: Use managed identities in Azure Data Explorer
 description: Learn how to configure managed identities for Azure Data Explorer scenarios.
-author: orspod
-ms.author: orspodek
 ms.reviewer: itsagui
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/25/2020
 ---
