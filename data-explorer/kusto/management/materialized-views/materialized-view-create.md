@@ -376,7 +376,7 @@ This option backfills the materialized view based on an existing table, which is
 
 * The materialized view is backfilled *only* based on the specified table. Materialization of records in the source table of the view will start from view creation time, by default.
 
-* If there is continuous ingestion to the source table of the materialized view, creating the view by move extents might result in some data loss. This is because records ingested to the source table between the time of preparing the table to backfill-from and the time of view creation will not be included in the materialized view. To cover for this small gap, you can use property `source_ingestion_time_from` to set the start time of the materialized view over the source table. See last example below.
+* If the source table of the materialized view is continuously ingesting data, creating the view by the *move extents* method might result in some data loss. This is because records ingested into the source table, in the short time between the time of preparing the table to backfill from and the time the view is created, will not be included in the materialized view. To handle this scenario, you can set the `source_ingestion_time_from` property to the start time of the materialized view over the source table. See the last example.
 
 #### Use cases
 
