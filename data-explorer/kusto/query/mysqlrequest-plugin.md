@@ -1,11 +1,7 @@
 ---
 title: mysql_request plugin - Azure Data Explorer
 description: This article describes mysql_request plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/01/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
@@ -15,8 +11,10 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results. The query may return more then one rowset, but only the first rowset is made available for the rest of the Kusto query.
+The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results. The query may return more then one rowset, but only the first rowset is made available for the rest of the Kusto query. 
 
+The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+ 
 > [!IMPORTANT]
 > The `mysql_request` plugin is disabled by default.
 > To enable the plugin, run the [`.enable plugin mysql_request` command](../management/enable-plugin.md). To see which plugins are enabled, use [`.show plugin` management commands](../management/show-plugins.md).
@@ -105,8 +103,8 @@ evaluate mysql_request(
     'Server=contoso.mysql.database.azure.com; Port = 3306;'
     'Database=Fabrikam;'
     h'UID=USERNAME;'
-    h'Pwd=PASSWORD;',
-  'select * from [dbo].[Table]')
+    h'Pwd=PASSWORD;', 
+    'select * from [dbo].[Table]')
 | where Id > 0
 | project Name
 ```
@@ -117,11 +115,11 @@ The following example is identical to the previous one, but authentication is by
 
 ```kusto
 evaluate mysql_request(
-   'Server=contoso.mysql.database.azure.com; Port = 3306;'
+    'Server=contoso.mysql.database.azure.com; Port = 3306;'
     'Database=Fabrikam;'
     h'UID=USERNAME;'
-    h'Pwd=PASSWORD;',
-  'select * from [dbo].[Table]')
+    h'Pwd=PASSWORD;', 
+    'select * from [dbo].[Table]')
 | where Id > 0
 | project Name
 ```
@@ -135,12 +133,12 @@ It specifies a SQL parameter (`@param0`) to be used in the SQL query.
 
 ```kusto
 evaluate mysql_request(
-  'Server=contoso.mysql.database.azure.com; Port = 3306;'
+    'Server=contoso.mysql.database.azure.com; Port = 3306;'
     'Database=Fabrikam;'
     h'UID=USERNAME;'
-    h'Pwd=PASSWORD;',
-  'select *, @param0 as dt from [dbo].[Table]',
-  dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)}))
+    h'Pwd=PASSWORD;', 
+    'select *, @param0 as dt from [dbo].[Table]',
+    dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)}))
 | where Id > 0
 | project Name
 ```

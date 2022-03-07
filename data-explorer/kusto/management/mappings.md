@@ -1,11 +1,7 @@
 ---
-title: Data mappings - Azure Data Explorer | Microsoft Docs
+title: Data mappings - Azure Data Explorer
 description: This article describes Data mappings in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/13/2021
 ---
@@ -26,7 +22,7 @@ Each element in the mapping list is constructed from three properties:
 
 The mappings can be [pre-created](create-ingestion-mapping-command.md) and can be referenced from the ingest command using `ingestionMappingReference` parameters.
 
-Ingestion is possible without specifying a mapping, see [identity mapping](#identity-mapping)
+Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
 
 ## CSV mapping
 
@@ -83,6 +79,17 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
+> [!NOTE]
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with
+    (
+        format="csv"
+    )
+```
+
 ## JSON mapping
 
 When the source file is in JSON format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the JSON mapping must exist in the table unless a datatype is specified for all the non-existing columns.
@@ -136,6 +143,17 @@ Each element in the list describes a mapping for a specific column, and may cont
     (
         format="json",
         ingestionMappingReference = "Mapping_Name"
+    )
+```
+
+> [!NOTE]
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with
+    (
+        format="json"
     )
 ```
 
@@ -229,6 +247,17 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
+> [!NOTE]
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with
+    (
+        format="AVRO"
+    )
+```
+
 ## Parquet mapping
 
 When the source file is in Parquet format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the Parquet mapping must exist in the table unless a datatype is specified for all the non-existing columns.
@@ -297,6 +326,17 @@ Each element in the list describes a mapping for a specific column, and may cont
     (
         format="parquet",
         ingestionMappingReference = "Mapping_Name"
+    )
+```
+
+> [!NOTE]
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with
+    (
+        format="parquet"
     )
 ```
 
@@ -371,6 +411,17 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
+> [!NOTE]
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with
+    (
+        format="orc"
+    )
+```
+
 ## W3CLOGFILE mapping
 
 When the source file is in W3CLOGFILE format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the W3CLOGFILE mapping must exist in the table unless a datatype is specified for all the non-existing columns.
@@ -432,6 +483,17 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
+> [!NOTE]
+> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
+
+```kusto
+.ingest into Table123 (@"source1", @"source2")
+    with
+    (
+        format="w3clogfile"
+    )
+```
+
 ## Mapping transformations
 
 Some of the data format mappings (Parquet, JSON and AVRO) support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time, use [Update policy](./show-table-update-policy-command.md), which allows defining lightweight processing using KQL expression.
@@ -452,8 +514,8 @@ Ingestion is possible without specifying `ingestionMapping` or `ingestionMapping
 
 |Format type|Format|Mapping logic|
 |---------|---------| ---------|
-|Tabular data formats with defined order of columns, such as delimiter-separated or single-line formats| `CSV`, `TSV`, `TSVe`, `PSV`, `SCSV`, `Txt`, `SOHsv`, `Raw`| All table schema columns are mapped in their respective order to data columns in order they appear in the data source. Column data type is taken from the table schema. |
-|Formats with named columns or records with named fields|`JSON`, `Parquet`, `Avro`, `ApacheAvro`, `Orc`, `W3CLOGFILE`| All  table schema columns are mapped to data columns or record fields having the same name (case-sensitive). Column data type is taken from the table schema. |
+|Tabular data formats with defined order of columns, such as delimiter-separated or single-line formats| `CSV`, `TSV`, `TSVe`, `PSV`, `SCSV`, `Txt`, `SOHsv`, `Raw`| All table columns are mapped in their respective order to data columns in order they appear in the data source. Column data type is taken from the table schema. |
+|Formats with named columns or records with named fields|`JSON`, `Parquet`, `Avro`, `ApacheAvro`, `Orc`, `W3CLOGFILE`| All table columns are mapped to data columns or record fields having the same name (case-sensitive). Column data type is taken from the table schema. |
 
-> [!NOTE]
+> [!WARNING]
 > Any mismatch between the table schema and the structure of data, such as column or field data types, column or field names or their number might result in empty or incorrect data ingested.

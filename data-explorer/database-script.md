@@ -1,10 +1,7 @@
 ---
 title: Configure a database using a Kusto Query Language script in Azure Data Explorer
 description: Learn about how to use database script to run a Kusto Query Language script in Azure Data Explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: docohe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/25/2021
 ---
@@ -22,6 +19,8 @@ There are various methods you can use to configure a database with Kusto Query L
 
 > [!NOTE]
 > Each cluster can have a maximum of 50 scripts.
+>
+> Kusto Query Language scripts don't support scripts stored in storage accounts with [Azure Storage firewall or Virtual Network rules](/azure/storage/common/storage-network-security?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal).
 
 ## Prerequisites
 

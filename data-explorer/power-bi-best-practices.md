@@ -1,12 +1,9 @@
 ---
 title: 'Best practices for using Power BI to query and visualize Azure Data Explorer data'
 description: 'In this article, you learn best practices for using Power BI to query and visualize Azure Data Explorer data.'
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabil
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/26/2019
+ms.date: 01/27/2022
 
 # Customer intent: As a data analyst, I want to visualize my data for additional insights using Power BI.
 ---
@@ -191,15 +188,6 @@ in
 
 Power BI includes a data refresh scheduler that can periodically issue
 queries against a data source. This mechanism shouldn't be used to schedule control commands to Kusto because Power BI assumes all queries are read-only.
-
-### Power BI can send only short (&lt;2000 characters) queries to Kusto
-
-If running a query in Power BI results in the following error:
- _"DataSource.Error: Web.Contents failed to get contents from..."_
-the query is probably longer than 2000 characters. Power BI uses **PowerQuery** to query Kusto by issuing an HTTP GET request that encodes the query as part of the URI being retrieved. Therefore, Kusto queries issued by Power BI are limited to the maximum length of
-a request URI (2000 characters, minus small offset). As a workaround, you can
-define a [stored function](kusto/query/schema-entities/stored-functions.md) in Kusto,
-and have Power BI use that function in the query.
 
 ## Next steps
 

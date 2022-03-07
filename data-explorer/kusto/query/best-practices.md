@@ -1,11 +1,7 @@
 ---
 title: Query best practices  - Azure Data Explorer
 description: This article describes Query best practices  in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/12/2021
 adobe-target: true
@@ -33,6 +29,7 @@ Here are several best practices to follow to make your query run faster.
 | | Use `T | where predicate(<expression>)` | Don't use `T | extend _value = <expression> | where predicate(_value)` ||
 | **summarize operator** |  Use the [hint.strategy=shuffle](./shufflequery.md) when the `group by keys` of the summarize operator are with high cardinality. | | High cardinality is ideally above 1 million.|
 |**[join operator](./joinoperator.md)** | Select the table with the fewer rows to be the first one (left-most in query). ||
+|| Use `in` instead of leftsemi `join` for filtering by a single column. ||
 | Join across clusters |Across clusters, run the query on the "right" side of the join, where most of the data is located. ||
 |Join when left side is small and right side is large | Use [hint.strategy=broadcast](./broadcastjoin.md) || Small refers to up to 100,000 records. |
 |Join when both sides are too large | Use [hint.strategy=shuffle](./shufflequery.md) || Use when the join key has high cardinality.|

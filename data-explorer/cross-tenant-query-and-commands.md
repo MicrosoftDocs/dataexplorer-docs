@@ -1,10 +1,7 @@
 ---
 title: Allow cross-tenant queries and commands in Azure Data Explorer
 description: Learn how to allow queries or commands from multiple tenants on Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: orhasban
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/06/2021
 ---
@@ -14,7 +11,7 @@ Multiple tenants can run queries and commands in a single Azure Data Explorer cl
 
 Cluster owners can protect their cluster from queries and commands from other tenants. You can define permissions at the cluster level using the portal, or use the `trustedExternalTenants` property to define which tenants are allowed to run queries and commands on the cluster. 
 
-Permissions can be set using the portal, the [ARM Templates](/azure/templates/microsoft.kusto/clusters?tabs=json#trustedexternaltenant-object), [AZ CLI](/cli/azure/kusto/cluster?view=azure-cli-latest#az_kusto_cluster_update-optional-parameters&preserve-view=true), [PowerShell](/powershell/module/az.kusto/new-azkustocluster), or the [Azure Resource Explorer](https://resources.azure.com/). See also [Azure Data Explorer cluster request body](/rest/api/azurerekusto/clusters/createorupdate#request-body).
+Permissions can be set using the portal, the [ARM Templates](/azure/templates/microsoft.kusto/clusters?tabs=json#trustedexternaltenant-object), [AZ CLI](/cli/azure/kusto/cluster#az_kusto_cluster_update-optional-parameters), [PowerShell](/powershell/module/az.kusto/new-azkustocluster), or the [Azure Resource Explorer](https://resources.azure.com/). See also [Azure Data Explorer cluster request body](/rest/api/azurerekusto/clusters/createorupdate#request-body).
 
 > [!NOTE]
 > The principal who will run queries or commands must also have a relevant database role. See also [role-based authorization](./kusto/management/access-control/role-based-authorization.md). Validation of correct roles takes place after validation of trusted external tenants.

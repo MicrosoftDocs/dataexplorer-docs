@@ -1,11 +1,7 @@
 ---
 title: Azure Data Explorer Java SDK - Azure Data Explorer
 description: This article describes Azure Data Explorer Java SDK.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: vladikbr
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/28/2020
 ---

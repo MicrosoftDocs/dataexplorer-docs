@@ -1,13 +1,9 @@
 ---
 title: .alter table partitioning policy command- Azure Data Explorer
 description: This article describes the .alter table partitioning policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 01/13/2022
 ---
 # .alter table partitioning policy
 
@@ -20,7 +16,7 @@ Changes a table [partitioning policy](partitioningpolicy.md). The partitioning p
 ## Arguments
 
 - *TableName* - Specify the name of the table.  
-- *PolicyObject* - Define a policy object. For more information, see [partitioning policy](partitioningpolicy.md).
+- *PolicyObject* - Define a policy object, see also [partitioning policy](partitioningpolicy.md).
 
 ### Example
 

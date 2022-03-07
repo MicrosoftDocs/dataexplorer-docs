@@ -1,10 +1,7 @@
 ---
 title: 'Azure Data Explorer data ingestion overview'
 description: 'Learn about the different ways you can ingest (load) data in Azure Data Explorer'
-author: orspod
-ms.author: orspodek
 ms.reviewer: tzgitlin
-ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/08/2021
 ---
@@ -149,7 +146,7 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
 
 1. **Set update policy** (optional)
 
-   Some of the data format mappings (Parquet, JSON, and Avro) support simple and useful ingest-time transformations. If the scenario requires more complex processing at ingestion, adjust the [update policy](kusto/management/update-policy.md), which supports lightweight processing using query commands. The update policy automatically runs extractions and transformations on ingested data on the original table, and ingests the resulting data into one or more destination tables.
+   Some of the data format mappings (Parquet, JSON, and Avro) support simple and useful ingest-time transformations. If the scenario requires more complex processing at ingestion, adjust the [update policy](./kusto/management/show-table-update-policy-command.md), which supports lightweight processing using query commands. The update policy automatically runs extractions and transformations on ingested data on the original table, and ingests the resulting data into one or more destination tables.
 
 1. **Ingest data** 
 

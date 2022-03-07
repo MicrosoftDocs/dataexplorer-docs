@@ -1,10 +1,7 @@
 ---
 title: Automatic stop of inactive clusters in Azure Data Explorer
 description: Learn when your cluster will be stopped using the Automatic stop feature, and how to enable/disable the Automatic stop.
-author: orspod
-ms.author: orspodek
 ms.reviewer: orhasban
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 11/03/2021
 ---
@@ -29,7 +26,7 @@ Azure Data Explorer clusters are created by default with the cluster property of
 
 Set this property using one of the following methods, our using the [Azure portal](#azure-portal):
 * [ARM Templates](/azure/templates/microsoft.kusto/clusters?tabs=json#trustedexternaltenant-object)
-* [Azure CLI](/cli/azure/kusto/cluster?view=azure-cli-latest#az_kusto_cluster_update-optional-parameters)
+* [Azure CLI](/cli/azure/kusto/cluster#az_kusto_cluster_update-optional-parameters)
 * [PowerShell](/powershell/module/az.kusto/new-azkustocluster)
 * [Azure Resource Explorer](https://resources.azure.com/). 
 

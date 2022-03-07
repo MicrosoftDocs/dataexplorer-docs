@@ -1,11 +1,7 @@
 ---
 title: Clean extent containers in Azure Data Explorer
 description: This article describes .clean extent containers commands in Azure Data Explorer
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: vrozov
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/17/2021
 ---

@@ -1,10 +1,7 @@
 ---
 title: Ingest JSON formatted data into Azure Data Explorer
 description: Learn about how to ingest JSON formatted data into Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: kerend
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/19/2020
 ---
@@ -197,7 +194,7 @@ Use Python to ingest data in raw [JSON format](#the-json-format).
     INGESTION_CLIENT = KustoIngestClient(KCSB_INGEST)
     BLOB_PATH = 'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json'
 
-    INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.json, mappingReference=MAPPING)
+    INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.JSON, ingestion_mapping_reference=MAPPING)
     BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
     INGESTION_CLIENT.ingest_from_blob(
         BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
@@ -326,7 +323,7 @@ In this example, you ingest JSON records data. Each JSON property is mapped to a
     ```python
     BLOB_PATH = 'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json'
 
-    INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.json, mappingReference=MAPPING)
+    INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.JSON, ingestion_mapping_reference=MAPPING)
     BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
     INGESTION_CLIENT.ingest_from_blob(
         BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
@@ -375,7 +372,7 @@ Ingest data into the `Events` table.
 ```python
 MAPPING = "FlatEventMapping"
 BLOB_PATH = 'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/multilined.json'
-INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.multijson, mappingReference=MAPPING)
+INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.MULTIJSON, ingestion_mapping_reference=MAPPING)
 BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
 INGESTION_CLIENT.ingest_from_blob(
     BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
@@ -545,7 +542,7 @@ Array data types are an ordered collection of values. Ingestion of a JSON array 
     TABLE = "RawEvents"
     MAPPING = "RawEventMapping"
     BLOB_PATH = 'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json'
-    INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.multijson, mappingReference=MAPPING)
+    INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.MULTIJSON, ingestion_mapping_reference=MAPPING)
     BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
     INGESTION_CLIENT.ingest_from_blob(
         BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)

@@ -1,12 +1,9 @@
 ---
 title: Optimize for high concurrency with Azure Data Explorer
 description: In this article, you learn to optimize your Azure Data Explorer setup for high concurrency.
-author: orspod
-ms.author: orspodek
 ms.reviewer: miwalia
-ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 02/22/2022
 ---
 
 # Optimize for high concurrency with Azure Data Explorer
@@ -89,7 +86,13 @@ When more than one user loads the same dashboard at a similar time, the dashboar
 
 ### Configure query consistency
 
-There are two query consistency models: *strong* (the default) and *weak*. With strong consistency, only an up-to-date consistent state of data is seen, whatever compute node receives the query. With weak consistency, nodes periodically refresh their copy of the metadata, which leads to a latency of one to two minutes in the synchronization of metadata changes. With the weak model, you can reduce the load on the node that manages the metadata changes, which provides higher concurrency than the default strong consistency. Set this configuration in [client request properties](kusto/api/netfx/request-properties.md) and in the Grafana data source configurations.
+The default [query consistency](kusto/concepts/queryconsistency.md) mode is **strong**. In this mode, an *admin* node manages metadata and ingestion for the cluster, as well as query planning and delegating execution to other nodes.
+
+In high-concurrency applications, managing queries may cause the *admin* node's CPU use to be high, whilst other nodes are less busy. This can cause a bottleneck where the number of concurrent queries can't grow. However, this may not be apparent in the cluster's CPU report (Azure portal > {your_cluster} > Metrics > CPU Metric) which shows the average CPU use for the cluster.
+
+For this scenario, we recommend using **weak** consistency mode. In this mode, more nodes are able to manage queries, which makes it possible to *horizontally scale* the number of concurrent queries. Nodes in this mode periodically refresh their copy of metadata and newly ingested data, which leads to a latency of typically less than a minute as the data is synchronized. However, this short latency is preferable to the bottleneck situation that can arise when using **strong** consistency mode.
+
+You can set the consistency mode in the [client request properties](kusto/api/netfx/request-properties.md) or in the Grafana data source configuration.
 
 ## Set cluster policies
 

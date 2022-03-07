@@ -1,26 +1,25 @@
 ---
-title: ".alter-merge column docstring - Azure Data Explorer | Microsoft Docs"
-description: "This article describes .alter-merge column docstring in Azure Data Explorer."
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+title: ".alter-merge column-docstrings - Azure Data Explorer"
+description: "This article describes .alter-merge column-docstrings in Azure Data Explorer."
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/14/2021
+ms.date: 02/10/2022
 ---
-# .alter-merge column-docstring
+# .alter-merge column-docstrings
 
-Sets the `docstring` property for one or more columns of a specified table. Columns not explicitly defined will keep any previous definition for this property, if it exists.
-
-`DocString` is free descriptive text that you can attach to a table/function/column. This string is presented in various UX settings next to the entity name.
+Sets the `DocString` property for one or more columns of a specified table. Columns not explicitly defined will keep any previous definition for this property, if it exists.
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `column-docstring` `(` *Col1* `:` *Docstring1* [`,` *Col2* `:` *Docstring2*]... `)`
+`.alter-merge` `table` *TableName* `column-docstrings` `(` *Col1* `:` *DocString1* [`,` *Col2* `:` *DocString2*]... `)`
 
+## Arguments
+
+- *DocString* - Free text that you can attach to a table/function/column to describe the entity. This string is presented in various UX settings next to the entity names.
+- *TableName* - Name of the table on which the operation is performed.
+- *Col* - Column on which the operation is performed.
 ## Example 
 
 ```kusto
-.alter-merge table Table1 column-docstring (Column1:"DocString1", Column2:"DocString2")
+.alter-merge table Table1 column-docstrings (Column1:"DocString1", Column2:"DocString2")
 ```

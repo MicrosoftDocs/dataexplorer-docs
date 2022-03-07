@@ -5,6 +5,8 @@ items:
   items:
   - name: What is Azure Data Explorer?
     href: data-explorer-overview.md
+  - name: Get started for free
+    href: start-for-free.md
   - name: What's new
     href: whats-new.md
   - name: Solution architectures
@@ -70,10 +72,10 @@ items:
     href: tools-integrations-overview.md
 - name: How-to guides
   items:
+  - name: Create a start-for-free cluster
+    href: start-for-free-web-ui.md
   - name: Create cluster and database
     items:
-    - name: One-click database management
-      href: one-click-manage-database.md
     - name: Azure CLI
       href: create-cluster-database-cli.md
     - name: PowerShell
@@ -84,6 +86,8 @@ items:
       href: create-cluster-database-python.md
     - name: Go
       href: create-cluster-database-go.md
+    - name: Automated provisioning
+      href: automated-deploy-overview.md
     - name: Azure Resource Manager template
       href: create-cluster-database-resource-manager.md
   - name: Create tables
@@ -110,6 +114,8 @@ items:
       - name: JSON data from local file to existing table
         displayName: ingest data, ingestion, one click
         href: one-click-ingestion-existing-table.md
+      - name: One-click sample app generator
+        href: sample-app-generator-one-click.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
@@ -120,6 +126,9 @@ items:
         href: lightingest.md
       - name: Use wizard for one-time ingestion of historical data with LightIngest
         href: generate-lightingest-command.md
+    - name: Cross-tenant data connection
+      displayName: event hub, event grid
+      href: ingest-data-cross-tenant.md
     - name: Event hub
       items:
       - name: Event hub data connection
@@ -550,6 +559,9 @@ items:
     - name: series_metric_fl()
       displayName: functions library, PromQL, Prometheus
       href: kusto/functions-library/series-metric-fl.md
+    - name: series_lag_fl()
+      displayName: functions library, filter, time shift, delay
+      href: kusto/functions-library/series-lag-fl.md
     - name: series_moving_avg_fl()
       displayName: functions library, filter, low-pass, smoothing
       href: kusto/functions-library/series-moving-avg-fl.md

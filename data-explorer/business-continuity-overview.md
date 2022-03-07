@@ -1,10 +1,7 @@
 ---
 title: Azure Data Explorer and business continuity disaster recovery
 description: This article describes Azure Data Explorer capabilities for recovering from disruptive events.
-author: orspod
-ms.author: orspodek
 ms.reviewer: ankhanol
-ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2020
 ---
@@ -113,7 +110,7 @@ The Active-Hot configuration is similar to the [Active-Active configuration](#ac
 
 | **Configuration** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- |
-| **Active-Hot Standby** | Low | Low | Medium | Medium |
+| **Active-Hot Standby** | 0 hours | Low | Medium | Medium |
 
 ### On-demand data recovery configuration
 
@@ -131,7 +128,7 @@ This solution offers the least resiliency (highest RPO and RTO), is the lowest i
 | --- | --- | --- | --- | --- | --- |
 | **Active-Active-Active-n** | Highest | 0 hours | 0 hours | Lower | Highest |
 | **Active-Active** | High | 0 hours | 0 hours | Lower | High |
-| **Active-Hot Standby** | Medium | Low | Low | Medium | Medium |
+| **Active-Hot Standby** | Medium | 0 hours | Low | Medium | Medium |
 | **On-demand data recovery cluster** | Lowest | Highest | Highest | Highest | Lowest |
 
 ## Best practices

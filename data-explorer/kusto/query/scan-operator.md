@@ -1,11 +1,7 @@
 ---
 title: scan operator (preview) - Azure Data Explorer
 description: This article describes the scan operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/28/2021
 ---
@@ -231,7 +227,7 @@ Referencing a value in the state is done in the form *StepName*.*ColumnName*. Fo
 
 Each record from the input is evaluated against all of scan’s steps, starting from last to first. When a record *r* is considered against some step *s_k*, the following logic is applied:
 
-* If the record *r* satisfies the condition of *s_k* using the state of the previous step *s_(k-1)*, then the following happens:
+* If the state of the previous step is not empty and the record *r* satisfies the condition of *s_k* using the state of the previous step *s_(k-1)*, then the following happens:
     1. The state of *s_k* is deleted.
     1. The state of *s_(k-1)* becomes ("promoted" to be) the state of *s_k*, and the state of *s_(k-1)* becomes empty.
     1. All the assignments of *s_k* are calculated and extend *r*.

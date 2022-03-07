@@ -1,10 +1,7 @@
 ---
 title: Ingestion error codes in Azure Data Explorer
 description: This topic lists ingestion error codes in Azure Data Explorer 
-author: orspod
-ms.author: orspodek
 ms.reviewer: vladikbr
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/11/2020
 ---
@@ -56,6 +53,7 @@ The following list contains error codes you may come across during [ingestion](i
 |BadRequest_MalformedIngestionProperty              |Ingestion property is malformed.    |Permanent           |
 | BadRequest_IngestionPropertyNotSupportedInThisContext | Ingestion property isn't supported in this context.| Permanent |
 | BadRequest_InvalidBlobUri                        | Blob URI is invalid.      | Permanent          |
+| BadRequest_DataCapacityLimitReached              | Storage account has reached its data capacity limit.      | Permanent          |
 
 ## Category: DataAccessNotAuthorized
 
@@ -110,7 +108,8 @@ The following list contains error codes you may come across during [ingestion](i
 |UpdatePolicy_FailedDescendantTransaction          |Failed to invoke update policy. Failed descendant transactional update policy.    |Transient           |
 |UpdatePolicy_IngestionError                       |Failed to invoke update policy. Ingestion Error occurred.<br>The error is reported on the source table of the update policy.     |Transient          |
 |UpdatePolicy_UnknownError                         |Failed to invoke update policy. Unknown error occurred.<br>The error is reported on the target table of update policy.    |Transient           |
-|UpdatePolicy_Cyclic_Update_Not_Allowed         |Failed to invoke update policy. Cyclic update isn't allowed.      |Permanent           |
+|UpdatePolicy_Cyclic_Update_Not_Allowed            |Failed to invoke update policy. Cyclic update isn't allowed.      |Permanent           |
+|UpdatePolicy_BadRequest                           |Failed to invoke update policy as a result of a bad request,<br>e.g. query semantic error.    |Permanent           |
 
 ## Category: UserAccessNotAuthorized
 

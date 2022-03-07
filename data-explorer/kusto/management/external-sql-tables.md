@@ -1,11 +1,7 @@
 ---
 title: Create and alter SQL Server external tables - Azure Data Explorer
 description: This article describes how to create and alter external tables based on SQL Server tables.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/24/2020
 ---
@@ -31,7 +27,7 @@ Creates or alters an external SQL table in the database in which the command is 
 The user or application authenticates via AAD to Kusto, and the same token is then used to access the SQL Server network endpoint.
   * *Username/Password authentication* (`User ID=...; Password=...;`). 
   * *Managed identity authentication* can be used to access the SQL resource by adding (`Authentication="Active Directory Managed Identity"`) for a *system-assigned managed identity* or (`Authentication="Active Directory Managed Identity";User Id={object_id}`) for a *user-assigned managed identity* with its object ID.
-  In order to use managed identity please follow these [instructions](/azure/data-explorer/managed-identities-overview), and allow the relevant sql db permissions to the managed identity.
+  In order to use managed identity please follow these [instructions](../../managed-identities-overview.md), and allow the relevant sql db permissions to the managed identity.
 
 > [!NOTE]
 > If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities. 

@@ -1,21 +1,15 @@
 ---
 title: rolling_percentile plugin - Azure Data Explorer
 description: This article describes rolling_percentile plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/24/2022
 ---
 # rolling_percentile() plugin
 
 Returns an estimate for the specified percentile of the *ValueColumn* population in a rolling (sliding) *BinsPerWindow* size window per *BinSize*.
 
-```kusto
-T | evaluate rolling_percentile(ValueColumn, Percentile, IndexColumn, BinSize, BinsPerWindow)
-```
+The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Syntax
 

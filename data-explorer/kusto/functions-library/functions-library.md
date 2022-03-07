@@ -1,10 +1,7 @@
 ---
 title: Functions library - Azure Data Explorer
 description: This article describes user-defined functions that extend Azure Data Explorer capabilities.
-author: orspod
-ms.author: orspodek
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/08/2020
 ---
@@ -44,6 +41,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 |[series_fit_lowess_fl()](series-fit-lowess-fl.md)|Fit a local polynomial to series using LOWESS method. |
 |[series_fit_poly_fl()](series-fit-poly-fl.md)|Fit a polynomial to series using regression analysis. |
 |[series_fbprophet_forecast_fl()](series-fbprophet-forecast-fl.md)|Forecast time series values using the Prophet algorithm. |
+|[series_lag_fl()](series-lag-fl.md)|Apply a lag filter on a series. |
 |[series_moving_avg_fl()](series-moving-avg-fl.md)|Apply a moving average filter on a series. |
 |[series_rolling_fl()](series-rolling-fl.md)|Apply a rolling aggregation function on a series. |
 |[time_weighted_avg_fl()](time-weighted-avg-fl.md)|Calculates the time weighted average of a metric. |

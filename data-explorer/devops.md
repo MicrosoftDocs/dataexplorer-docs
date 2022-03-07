@@ -1,11 +1,7 @@
 ---
 title: 'Azure DevOps task for Azure Data Explorer'
 description: 'In this topic, you learn to create a release pipeline and deploy'
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: shfeldma
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/05/2021
 
@@ -42,7 +38,7 @@ This document describes a simple example on the use of the **Azure Data Explorer
     * If you are the Azure DevOps instance owner, install the extension from the [Marketplace](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX).
         ![Get extension in the Marketplace.](media/devops/get-extension.png)
         ![Install extension.](media/devops/extension-install.png)
-    * If you are NOT the Azure DevOps instance owner, contact your [owner](/azure/devops/organizations/security/lookup-organization-owner-admin?view=azure-devops&tabs=preview-page#look-up-the-organization-owner&preserve-view=true) and ask them to install it.
+    * If you are NOT the Azure DevOps instance owner, contact your [owner](/azure/devops/organizations/security/look-up-organization-owner) and ask them to install it.
 
 ## Prepare your content for release
 
@@ -201,7 +197,7 @@ You have now completed creation of a release pipeline for deployment to pre-prod
 
 ## Yaml Pipeline configuration
 
-The tasks can be configured both via Azure DevOps Web UI (as shown above) and via Yaml code within the [pipeline schema](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema%2Cparameter-schema)
+The tasks can be configured both via Azure DevOps Web UI (as shown above) and via Yaml code within the [pipeline schema](/azure/devops/pipelines/yaml-schema)
 
 ### Admin Command Sample Usage
 

@@ -1,10 +1,7 @@
 ---
 title: Use managed identities in Azure Data Explorer
 description: Learn how to configure managed identities for Azure Data Explorer scenarios.
-author: orspod
-ms.author: orspodek
 ms.reviewer: itsagui
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/25/2020
 ---
@@ -42,5 +39,5 @@ The managed identity policy control commands are:
 
 After assigning the managed identity to your cluster and configuring the relevant managed identity policy usage, you can start using managed identity authentication in the following workflows:
 
-* **External Tables**: Create an external table with managed identity authentication. The authentication is stated as part of the connection string. (see [storage connection string](/azure/data-explorer/kusto/api/connection-strings/storage#azure-blob-storage) for example). For instructions for using external tables with managed identity authentication, see [Authenticate external tables with managed identities](external-tables-managed-identities.md)
+* **External Tables**: Create an external table with managed identity authentication. The authentication is stated as part of the connection string. (see [storage connection string](./kusto/api/connection-strings/storage-connection-strings.md) for example). For instructions for using external tables with managed identity authentication, see [Authenticate external tables with managed identities](external-tables-managed-identities.md)
 * **Event Hub Native Ingestion**: Use a managed identity with event hub native ingestion. For more information, see [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md).

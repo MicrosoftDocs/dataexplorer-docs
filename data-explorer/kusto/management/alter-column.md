@@ -1,11 +1,7 @@
 ---
-title: .alter column - Azure Data Explorer | Microsoft Docs
+title: .alter column - Azure Data Explorer
 description: This article describes .alter column in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/11/2020
 ---
@@ -14,13 +10,9 @@ ms.date: 02/11/2020
 Alters the data type of an existing table column.
 
 > [!WARNING]
-> When altering the data type of a column, any pre-existing data in that column
-> which is not of the new data type will be ignored in future queries and will be
-> replaced by a [null value](../query/scalar-data-types/null-values.md). After using `alter column`, that data
-> cannot be recovered, even through using another command
-> to alter the column type back to a previous value.
-> See [below](#changing-column-type-without-data-loss) for the recommended procedure for changing the type of a column
-> without losing data.
+> When altering the data type of a column, any pre-existing data in that column will return a [null value](../query/scalar-data-types/null-values.md) in future queries.
+> After using `.alter column`, that data cannot be recovered, even by using another command to alter the column type back to a previous value.
+> If you need to preserve pre-existing data, see our recommended [procedure for changing the type of a column without losing data](#changing-column-type-without-data-loss).
 
 **Syntax** 
 

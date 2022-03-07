@@ -1,21 +1,13 @@
 ---
 title: bag_unpack plugin - Azure Data Explorer
 description: This article describes bag_unpack plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/15/2020
+ms.date: 01/23/2022
 ---
 # bag_unpack plugin
 
-The `bag_unpack` plugin unpacks a single column of type `dynamic`, by treating each property bag top-level slot as a column.
-
-```kusto
-T | evaluate bag_unpack(col1)
-```
+The `bag_unpack` plugin unpacks a single column of type `dynamic`, by treating each property bag top-level slot as a column. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Syntax
 
@@ -61,7 +53,6 @@ The `bag_unpack` plugin returns a table with as many records as its tabular inpu
 
 ### Expand a bag
 
-
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(d:dynamic)
@@ -72,6 +63,8 @@ datatable(d:dynamic)
 ]
 | evaluate bag_unpack(d)
 ```
+
+**Output**
 
 |Age|Name   |
 |---|-------|
@@ -94,6 +87,8 @@ datatable(d:dynamic)
 | evaluate bag_unpack(d, 'Property_')
 ```
 
+**Output**
+
 |Property_Age|Property_Name|
 |------------|-------------|
 |20          |John         |
@@ -115,6 +110,8 @@ datatable(Name:string, d:dynamic)
 | evaluate bag_unpack(d, columnsConflict='replace_source') // Use new name
 ```
 
+**Output**
+
 |Age|Name   |
 |---|-------|
 |20 |John   |
@@ -131,6 +128,8 @@ datatable(Name:string, d:dynamic)
 ]
 | evaluate bag_unpack(d, columnsConflict='keep_source') // Keep old name
 ```
+
+**Output**
 
 |Age|Name     |
 |---|---------|
@@ -153,6 +152,8 @@ datatable(d:dynamic)
 // Ignore 'Age' and 'Address' properties
 | evaluate bag_unpack(d, ignoredProperties=dynamic(['Address', 'Age']))
 ```
+
+**Output**
 
 |Name|
 |---|
