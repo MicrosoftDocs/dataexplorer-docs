@@ -422,7 +422,7 @@ The backfill-by-move-extents option can be useful in two main scenarios:
     } 
     ```
 
-    The purpose of using `source_ingestion_time_from` is only to cover a small ingestion time period, of all records that were ingested to the source table of the view, *after* the backfill-from table (`DedupedT`) was prepared. Do not set this property to a very old time, as this will start the materialized view with a significant lag that might be hard to catch up.
+    The `source_ingestion_time_from` property should only be used to handle the possible data loss in the short time between preparing the table to backfill from (`DedupedT`) and the view is created. Don't set this property too far in the past as this will start the materialized view with a significant lag, which might be hard to catch up with.
     
 ## Materialized views limitations and known issues
 
