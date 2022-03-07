@@ -12,7 +12,7 @@ ms.date: 03/03/2022
 # Ingest data with managed identity authentication
 
 When queuing blobs for ingestion from customer owned storage accounts, Managed Identities can be used as an authentication method alternative to Storage SAS Tokens and Account Keys.
-This allows for a more secure way of ingesting data, as customer SAS Tokens and Account Keys are not shared with Kusto. Instead a managed identity assigned to the Kusto Cluster is granted read permissions over the customer storage accounts and is used to upload the data to Kusto. This permission can be revoked by the customer at any time.
+This allows for a more secure way of ingesting data, as customer SAS Tokens and Account Keys are not shared with Kusto. Instead, a managed identity assigned to the Kusto Cluster is granted read permissions over the customer storage accounts and is used to upload the data to Kusto. This permission can be revoked by the customer at any time.
 
 > [!NOTE]
 >
@@ -37,8 +37,8 @@ On Azure Portal, navigate to the storage account you wish to ingest from. Open t
 
 ## Set the managed identity policy in Azure Data Explorer
 
-In order to use the managed identity to ingest data into Kusto, the `NativeIngestion` policy must be allowed for the selected managed identity.
-The policy can be defined in the Cluster or Database level of the target Kusto cluster.
+In order to use the managed identity to ingest data into Kusto, the `NativeIngestion` usage must be allowed for the selected managed identity.
+The usage can be defined in the Cluster level or Database level Managed Identity policy of the target Kusto cluster.
 Replace `<Managed identity principal Id>` with the object id of the managed Id you with to use.
 
 For database level run:
@@ -78,4 +78,4 @@ A blob authorized by the system assigned managed identity:
 >
 > - When using Managed Identities to ingest data with the C# SDK, you must provide a blob size in `BlobSourceOptions`. If the size is not set, the SDK attempts to fill in the blob size by accessing the SA resulting in a failure.
 > - The size parameter should correspond to the raw (uncompressed) data size, and not necessarily to the blob size.
-> - If you do not know the size at the time of ingestion, you may provide a value of zero (0). Kusto service will attempt to discover the size for you using the managed identity for authentication. 
+> - If you do not know the size at the time of ingestion, you may provide a value of zero (0). Kusto service will attempt to discover the size for you using the managed identity for authentication.
