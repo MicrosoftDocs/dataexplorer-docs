@@ -262,6 +262,10 @@ Use the following settings:
 | *databaseName* | The name of the database under which the script will run. |
 | *scriptName* | The name of the script when using an external file to supply the script. |
 
+## Troubleshooting
+
+Commands ran by a script resource do not show with [.show commands-and-queries](/azure/data-explorer/kusto/management/commands-and-queries).  You can trace the script execution using  [.show journal](azure/data-explorer/kusto/management/journal).
+
 ## Next steps
 
 * [Management (control commands) overview](kusto/management/index.md)
