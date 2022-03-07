@@ -1,11 +1,7 @@
 ---
 title: Streaming ingestion and schema changes - Azure Data Explorer
 description: This article discusses options of handling schema changes with streaming ingestion in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/20/2020
 ---

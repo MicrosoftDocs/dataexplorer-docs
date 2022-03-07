@@ -1,10 +1,7 @@
 ---
 title: Create an Azure AD application in Azure Data Explorer
 description: Learn how to create an Azure AD application in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: herauch
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 04/01/2020
 ---

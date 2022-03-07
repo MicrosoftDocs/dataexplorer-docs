@@ -1,10 +1,7 @@
 ---
 title: 'Create an event hub data connection for Azure Data Explorer by using Azure Resource Manager template'
 description: In this article, you learn how to create an event hub data connection for Azure Data Explorer by using Azure Resource Manager template.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 11/28/2019
 ---

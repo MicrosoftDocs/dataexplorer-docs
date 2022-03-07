@@ -1,10 +1,7 @@
 ---
 title: Use the Azure Data Explorer connector for Apache Spark to move data between Azure Data Explorer and Spark clusters.
 description: This topic shows you how to move data between Azure Data Explorer and Apache Spark clusters.
-author: orspod
-ms.author: orspodek
 ms.reviewer: ohbitton
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 04/19/2021
 ---

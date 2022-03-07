@@ -1,11 +1,7 @@
 ---
 title: '.alter-merge query weak consistency policy management - Azure Data Explorer'
 description: This article describes the `.alter-merge query weak consistency policy` command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yabenyaa
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/29/2021
 ---

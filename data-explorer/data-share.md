@@ -1,10 +1,7 @@
 ---
 title: Use Azure Data Share to share data with Azure Data Explorer
 description: Learn about how to share your data with Azure Data Explorer and Azure Data Share.
-author: orspod
-ms.author: orspodek
 ms.reviewer: maraheja
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/28/2022
 ---
