@@ -156,7 +156,7 @@ The main contributors that can impact a materialized view health are:
 
 * **Overlap with materialized data:** During materialization, all new records ingested to the source table since the last materialization (the delta) are processed and materialized into the view. The higher the intersection between new records and already materialized records is, the worse the performance of the materialized view will be. A materialized view works best if the number of records being updated (for example, in `arg_max` view) is a small subset of the source table. If all or most of the materialized view records need to be updated in every materialization cycle, then the materialized view might not perform well.
 
-* **Engine V3:** Materialized views perform better on [Engine V3](../../../engine-v3.md) clusters, especially if amount of records to update in each iteration is high. If your cluster is not an [Engine V3](../../../engine-v3.md), you can [create a support ticket](https://ms.portal.azure.com/#create/Microsoft.Support) to request migration.
+* **Engine V3:** Materialized views perform better on [Engine V3](../../../engine-v3.md) clusters, especially if the number of records to update in each iteration is high. If your cluster is not an [Engine V3](../../../engine-v3.md), you can [create a support ticket](https://ms.portal.azure.com/#create/Microsoft.Support) to request migration.
 
 * **Ingestion rate:** There are no hard-coded limits on the data volume or ingestion rate in the source table of the materialized view. However, the recommended ingestion rate for materialized views is no more than 1-2GB/sec. Higher ingestion rates may still perform well. Performance depends on cluster size, available resources, and amount of intersection with existing data.
 
