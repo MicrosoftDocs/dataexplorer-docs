@@ -388,7 +388,7 @@ The backfill-by-move-extents option can be useful in two main scenarios:
 
 **Examples:**
 
-1. In the example below, table `DedupedT` includes a single record per `EventId`, and will be used as the baseline for the materialized view. Only records in `T` that are ingested after view creation time will be included in the materialized view:
+1. In the following example, table `DedupedT` includes a single record per `EventId`, and will be used as the baseline for the materialized view. Only records in `T` that are ingested after the view creation time will be included in the materialized view:
     <!-- csl -->
     ```kusto
     .create async materialized-view with (move_extents_from=DedupedT) MV on table T
