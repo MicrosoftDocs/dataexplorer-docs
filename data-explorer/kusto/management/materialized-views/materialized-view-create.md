@@ -70,7 +70,7 @@ The query used in the materialized view argument is limited by the following rul
 
 * References to [external_table()](../../query/externaltablefunction.md) and [externaldata](../../query/externaldata-operator.md) aren't supported.
 
-* The materialized view query cannot include any callouts that require impersonation. Specifically, all [Query connectivity plugins](../../query/azure-digital-twins-query-request-plugin.md) which use impersonation are disallowed.
+* The materialized view query cannot include any callouts that require impersonation. Specifically, all [query connectivity plugins](../../query/azure-digital-twins-query-request-plugin.md) that use impersonation aren't allowed.
 
 * In addition to the source table of the view, it may also reference one or more [`dimension tables`](../../concepts/fact-and-dimension-tables.md). Dimension tables must be explicitly called out in the view properties. It is important to understand the behavior when joining with dimension tables:
 
