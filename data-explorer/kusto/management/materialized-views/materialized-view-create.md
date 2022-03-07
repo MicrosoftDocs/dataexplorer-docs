@@ -398,7 +398,7 @@ The backfill-by-move-extents option can be useful in two main scenarios:
     } 
     ```
 
-1. If `effectiveDateTime` is specified along with `move_extents_from`, only extents in `DedupedT` whose `MaxCreatedOn` is greater than `effectiveDateTime` are included in the backfill (moved to the materialized view).
+1. If the `effectiveDateTime` property is specified along with the `move_extents_from` property, only extents in `DedupedT` whose `MaxCreatedOn` is greater than `effectiveDateTime` are included in the backfill (moved to the materialized view).
 
     <!-- csl -->
     ```kusto
