@@ -27,7 +27,7 @@ The recommended process for purging records from a materialized view is:
 > Data deletion through the `.purge` command is designed to be used to protect personal data and should not be used in other scenarios. It is not designed to support frequent delete requests, or deletion of massive quantities of data, and may have a significant performance impact on the service.
 
 >[!NOTE]
-> The materialized view will not perform materialization (see [how materialized views work](materialized-view-overview.md#how-materialized-views-work)) while purge is running on it. Materialization is disabled because the materialization process and the purge process conflict with each other, both trying to work on same [extents (data shards)](../extents-overview.md). Purge is always prioritized over materialization process. If purge takes a long while to complete, the materialized view might start lagging as a result. It is recommended to query only the [materialized part of the view](materialized-view-overview.md#materialized-views-queries) during this time.
+> While purge is running on a materialized view, materialization is not run. In this scenario, the materialization process is disabled because it conflicts with the purge process, both trying to work on the same [extents (data shards)](../extents-overview.md). The purge process is always prioritized over the materialization process. If the purge takes a long while to complete, the materialized view might start lagging. We recommend that you only query the [materialized part of the view](materialized-view-overview.md#materialized-views-queries) during this time. For more information, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work).
 
 **Limitations**
 
