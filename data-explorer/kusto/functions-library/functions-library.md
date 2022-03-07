@@ -1,10 +1,7 @@
 ---
 title: Functions library - Azure Data Explorer
 description: This article describes user-defined functions that extend Azure Data Explorer capabilities.
-author: orspod
-ms.author: orspodek
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/08/2020
 ---

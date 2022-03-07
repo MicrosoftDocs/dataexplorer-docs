@@ -1,10 +1,7 @@
 ---
 title: Analyze time series data using Azure Data Explorer
 description: Learn how to analyze time series data in the cloud using Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/11/2021
 ---

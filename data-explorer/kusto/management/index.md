@@ -1,11 +1,7 @@
 ---
-title: Management (control commands) overview - Azure Data Explorer | Microsoft Docs
+title: Management (control commands) overview - Azure Data Explorer
 description: This article describes Management (control commands) overview in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/13/2020
 ---
@@ -33,7 +29,7 @@ to queries.
 
 ## Combining queries and control commands
 
-Control commands can reference queries (but no vice-versa) or other control commands.
+Control commands can reference queries (but not vice-versa) or other control commands.
 There are several supported scenarios:
 
 1. **AdminThenQuery**: A control command is executed, and its result (represented

@@ -1,10 +1,7 @@
 ---
 title: How to authenticate using managed identities with External Tables in Azure Data Explorer
 description: Learn how to use managed identities with External Tables in Azure Data Explorer cluster.
-author: orspod
-ms.author: orspodek
 ms.reviewer: itsagui
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 11/29/2020
 ---

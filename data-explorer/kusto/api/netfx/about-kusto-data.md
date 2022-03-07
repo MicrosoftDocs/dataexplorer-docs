@@ -1,11 +1,7 @@
 ---
-title: Kusto client library - Azure Data Explorer | Microsoft Docs
+title: Kusto client library - Azure Data Explorer
 description: This article describes Kusto client library in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/15/2020
 adobe-target: true

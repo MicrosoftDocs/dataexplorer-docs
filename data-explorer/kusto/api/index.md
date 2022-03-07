@@ -1,11 +1,7 @@
 ---
 title: Azure Data Explorer API Overview - Azure Data Explorer
 description: This article describes API in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: vladikb
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/30/2022
 ---

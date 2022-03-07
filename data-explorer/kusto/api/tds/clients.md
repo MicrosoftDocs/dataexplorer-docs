@@ -1,11 +1,7 @@
 ---
 title: MS-TDS clients and Kusto - Azure Data Explorer
 description: This article describes MS-TDS clients and Kusto in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 10/30/2019

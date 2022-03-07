@@ -1,11 +1,7 @@
 ---
 title: Alter cluster cache policy command - Azure Data Explorer
 description: "This article describes the .alter cluster cache policy command in Azure Data Explorer."
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/05/2022
 ---
