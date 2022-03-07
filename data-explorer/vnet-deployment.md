@@ -1,10 +1,7 @@
 ---
 title: Deploy Azure Data Explorer into your Virtual Network
 description: Learn how to deploy Azure Data Explorer into your Virtual Network
-author: orspod
-ms.author: orspodek
 ms.reviewer: basaba
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/01/2022
 ---

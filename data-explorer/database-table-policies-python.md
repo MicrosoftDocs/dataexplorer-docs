@@ -1,10 +1,7 @@
 ---
 title: 'Create policies for Azure Data Explorer cluster and database using the Azure Data Explorer Python library '
 description: In this article, you learn how to create policies using Python.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/24/2019
 ---

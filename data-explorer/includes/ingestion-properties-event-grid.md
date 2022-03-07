@@ -1,11 +1,8 @@
 ---
 title: include file
 description: include file
-author: orspod
-ms.service: data-explorer
 ms.topic: include
 ms.date: 08/12/2020
-ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.custom: include file
 ---

@@ -1,10 +1,7 @@
 ---
 title: Use Dynamic M query parameters with Azure Data Explorer for Power BI
 description: In this article, you'll learn how to filter data in a dynamic M query linked to a KQL function.
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabil
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/06/2022
 ---

@@ -1,10 +1,7 @@
 ---
 title: Ingestion error codes in Azure Data Explorer
 description: This topic lists ingestion error codes in Azure Data Explorer 
-author: orspod
-ms.author: orspodek
 ms.reviewer: vladikbr
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/11/2020
 ---

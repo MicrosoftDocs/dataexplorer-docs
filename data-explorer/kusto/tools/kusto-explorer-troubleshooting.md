@@ -1,10 +1,7 @@
 ---
 title: Troubleshoot common problems in Kusto.Explorer
 description: Learn about common problems in installing and running Kusto.Explorer and their solutions
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/13/2020
 ---

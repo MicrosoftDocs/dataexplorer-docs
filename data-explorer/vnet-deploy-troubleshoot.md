@@ -1,10 +1,7 @@
 ---
 title: Troubleshoot access, ingestion, and operation of your Azure Data Explorer cluster in your virtual network
 description: Troubleshoot connectivity, ingestion, cluster creation, and operation of your Azure Data Explorer cluster in your virtual network
-author: orspod
-ms.author: orspodek
 ms.reviewer: basaba
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/24/2020
 ---
