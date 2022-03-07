@@ -388,7 +388,7 @@ The backfill-by-move-extents option can be useful in two main scenarios:
 
 **Examples:**
 
-1. In the following example, table `DedupedT` includes a single record per `EventId`, and will be used as the baseline for the materialized view. Only records in `T` that are ingested after the view creation time will be included in the materialized view:
+- In the following example, table `DedupedT` includes a single record per `EventId`, and will be used as the baseline for the materialized view. Only records in `T` that are ingested after the view creation time will be included in the materialized view:
     <!-- csl -->
     ```kusto
     .create async materialized-view with (move_extents_from=DedupedT) MV on table T
@@ -398,7 +398,7 @@ The backfill-by-move-extents option can be useful in two main scenarios:
     } 
     ```
 
-1. If the `effectiveDateTime` property is specified along with the `move_extents_from` property, only extents in `DedupedT` whose `MaxCreatedOn` is greater than `effectiveDateTime` are included in the backfill (moved to the materialized view).
+- If the `effectiveDateTime` property is specified along with the `move_extents_from` property, only extents in `DedupedT` whose `MaxCreatedOn` is greater than `effectiveDateTime` are included in the backfill (moved to the materialized view).
 
     <!-- csl -->
     ```kusto
@@ -411,7 +411,7 @@ The backfill-by-move-extents option can be useful in two main scenarios:
     } 
     ```
 
-1. The following example demonstrates the use of the `source_ingestion_time_from` property in the backfill-by-move-extents option. Using both `source_ingestion_time_from` and `move_extents_from` indicates the materialized view is backfilled from 2 different sources:
+- The following example demonstrates the use of the `source_ingestion_time_from` property in the backfill-by-move-extents option. Using both `source_ingestion_time_from` and `move_extents_from` indicates the materialized view is backfilled from 2 different sources:
    * **The `move_extents_from` table:** `DedupedT` in the example below. This table should include all historical data to backfill. You can optionally use `effectiveDateTime` property to include only extents in `DedupedT` whose `MaxCreatedOn` is greater than `effectiveDateTime`.
    * **The source table of the materialized view:** `T` in the example below. Backfill from this table only includes records whose [ingestion_time()](../../query/ingestiontimefunction.md) is greater than `source_ingestion_time_from`. The `source_ingestion_time_from` property should only be used to handle the possible data loss in the short time between preparing the table to backfill from (`DedupedT`) and the time the view is created. Don't set this property too far in the past as this will start the materialized view with a significant lag, which might be hard to catch up with.
 
