@@ -411,7 +411,11 @@ The backfill-by-move-extents option can be useful in two main scenarios:
     } 
     ```
 
-1. The following example demonstrates the use of the `source_ingestion_time_from` property in the backfill-by-move-extents option. Let's assume the current time is `2020-01-01 03:00`. In the example, table `DedupedT` is a deduped table of `T`. It includes all historical data, deduplicated until `2020-01-01 00:00`. The following `create` command uses `DedupedT` for backfilling the materialized view using the *move extents* method and will also include all records in `T` that were ingested since `2020-01-01`:
+1. The following example demonstrates the use of the `source_ingestion_time_from` property in the backfill-by-move-extents option. Using both `source_ingestion_time_from` and `move_extents_from` indicates the materialized view is backfilled from 2 different sources:
+   * **The `move_extents_from` table:** `DedupedT` in the example below. This table should include all historical data to backfill. You can optionally use `effectiveDateTime` property to include only extents in `DedupedT` whose `MaxCreatedOn` is greater than `effectiveDateTime`.
+   * **The source table of the materialized view:** `T` in the example below. Backfill from this table only includes records whose [ingestion_time()](../../query/ingestiontimefunction.md) is greater than `source_ingestion_time_from`. The `source_ingestion_time_from` property should only be used to handle the possible data loss in the short time between preparing the table to backfill from (`DedupedT`) and the time the view is created. Don't set this property too far in the past as this will start the materialized view with a significant lag, which might be hard to catch up with.
+
+   In the following example, let's assume the current time is `2020-01-01 03:00`. Table `DedupedT` is a deduped table of `T`. It includes all historical data, deduplicated until `2020-01-01 00:00`. The following `create` command uses `DedupedT` for backfilling the materialized view using the *move extents* method and will also include all records in `T` that were ingested since `2020-01-01`:
     
     <!-- csl -->
     ```kusto
@@ -422,8 +426,6 @@ The backfill-by-move-extents option can be useful in two main scenarios:
     } 
     ```
 
-    The `source_ingestion_time_from` property should only be used to handle the possible data loss in the short time between preparing the table to backfill from (`DedupedT`) and the view is created. Don't set this property too far in the past as this will start the materialized view with a significant lag, which might be hard to catch up with.
-    
 ## Materialized views limitations and known issues
 
 * A materialized view can't be created:
