@@ -38,6 +38,7 @@ JSON serialization of the updated [query weak consistency policy object](./query
    "EnableMetadataPrefetch": false,
    "MaximumLagAllowedInMinutes": 10,
    "RefreshPeriodInSeconds": 300}
+    ```
 ```
 
 **Output**
