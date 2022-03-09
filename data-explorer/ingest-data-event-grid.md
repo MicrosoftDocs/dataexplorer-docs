@@ -111,7 +111,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     | Advanced settings | *My data has headers* | Ignores headers. Supported for *SV type files.|
 
    > [!NOTE]
-   > You don't have to specify all **Default table routing settings**. Partial settings are also accepted.
+   > You don't have to specify all **Default routing settings**. Partial settings are also accepted.
 1. Select **Next: Review + Create**
 
 #### Data connection - Review + Create tab
