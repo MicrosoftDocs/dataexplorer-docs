@@ -64,9 +64,10 @@ var location = "Central US";
 var tableName = "StormEvents";
 var mappingRuleName = "StormEvents_CSV_Mapping";
 var dataFormat = DataFormat.CSV;
+var databaseRouting = "Multi";
 
 await kustoManagementClient.DataConnections.CreateOrUpdate(resourceGroupName, clusterName, databaseName, dataConnectionName,
-            new IotHubDataConnection(iotHubResourceId, consumerGroup, sharedAccessPolicyName, tableName: tableName, location: location, mappingRuleName: mappingRuleName, dataFormat: dataFormat));
+            new IotHubDataConnection(iotHubResourceId, consumerGroup, sharedAccessPolicyName, tableName: tableName, location: location, mappingRuleName: mappingRuleName, dataFormat: dataFormat, databaseRouting: databaseRouting));
 ```
 
 |**Setting** | **Suggested value** | **Field description**|
@@ -86,5 +87,6 @@ await kustoManagementClient.DataConnections.CreateOrUpdate(resourceGroupName, cl
 | sharedAccessPolicyName | *iothubforread* | The name of the shared access policy that defines the permissions for devices and services to connect to IoT Hub. |
 | consumerGroup | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
+| databaseRouting | *Multi* or *Single* | The default is *Single*. An event hub data connection belongs to a specific database. Hence this database is the data connection's default database routing. In order to send the data to another database, you can use the "Database" [ingestion property](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub-overview#ingestion-properties). To do so, you must first allow routing the data to multiple databases (set the databaseRouting as Multi). |
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]
