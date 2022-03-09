@@ -165,10 +165,10 @@ ts
 | render anomalychart with(series=sid, xcolumn=TimeStamp, ycolumns=num, baseline_adx, baseline_ama, lower_ama, upper_ama, anomalycolumns=ad_adx, ad_ama)
 ~~~
 
-The following shows anomalies detected by the Univariate Anomaly Detection API on TS1. You can also select TS2 or TS3 in the chart filter box.
+The following graph shows anomalies detected by the Univariate Anomaly Detection API on TS1. You can also select TS2 or TS3 in the chart filter box.
 
 ![Graph showing anomalies using the Univariate API on a time series.](images/series-uv-anomalies-fl/uv-anomalies-example-2.png)
 
-The following shows the anomalies detected by native function on TS1.
+The following graph shows the anomalies detected by native function on TS1.
 
 ![Graph showing anomalies using ADX native function on a time series.](images/series-uv-anomalies-fl/adx-anomalies-example-2.png)
