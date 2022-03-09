@@ -104,13 +104,14 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
+    | Allow routing the data to other databases (Multi database data connection) | Don't allow | An event hub data connection belongs to a specific database. Hence this database is the data connection's default database routing. You can override the default target database by using the "Database" ingestion property [https://docs.microsoft.com/en-us/azure/data-explorer/ingest-data-event-hub-overview#ingestion-properties] of the event. To do so, you must first **allow** routing the data to multiple databases (set the connection as Multi database data connection).  |
     | Table name | *TestTable* | The table you created in **TestDatabase**. |
     | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, RAW, and W3CLOG. Supported compression options are Zip and Gzip. |
     | Mapping | *TestMapping* | The mapping you created in **TestDatabase**, which maps incoming JSON data to the column names and data types of **TestTable**.|
     | Advanced settings | *My data has headers* | Ignores headers. Supported for *SV type files.|
 
    > [!NOTE]
-   > You don't have to specify all **Default routing settings**. Partial settings are also accepted.
+   > You don't have to specify all **Default table routing settings**. Partial settings are also accepted.
 1. Select **Next: Review + Create**
 
 #### Data connection - Review + Create tab
