@@ -17,7 +17,7 @@ The function `pairwise_dist_fl()`calculates multivariate distance between datapo
 - All numerical fields are considered numerical variables. They are normalized by transforming to z-scores and the distance is calculated as absolute value of the difference.
 The total multivariate distance between datapoints is calculated as the sum of distances between variables.
 
-[TBD]Suggested usage
+[TBD] Suggested usage XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 > [!NOTE]
 > This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
@@ -42,51 +42,51 @@ For ad hoc usage, embed its code using a [let statement](../query/letstatement.m
 ```kusto
 let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
 {
-let generic_dist = (value1:dynamic, value2:dynamic) 
-{
-// Calculates the distance between two values; treats all strings as nominal values and numbers as numerical,
-// can be extended to other data types or tweaked by adding weights or changing formulas.
-    iff(gettype(value1[0]) == "string", todouble(tostring(value1[0]) != tostring(value2[0])), abs(todouble(value1[0]) - todouble(value2[0])))
-};
-let T = (tbl | extend _entity = column_ifexists(id_col, ''), _partition = column_ifexists(partition_col, '') | project-reorder _entity, _partition);
-let sum_data = (
-// Calculates summary statistics to be used for normalization.
-T
-| project-reorder _entity
-| project _partition, p = pack_array(*)
-| mv-expand with_itemindex=idx p
-| summarize count(), avg(todouble(p)), stdev(todouble(p)) by _partition, idx
-| sort by _partition, idx asc
-| summarize make_list(avg_p), make_list(stdev_p) by _partition
-);
-let normalized_data = (
-// Performs normalization on numerical variables by substrcting mean and scaling by standard deviation. Other normalization techniques can be used
-// by adding metrics to previous function and using here.
-T
-| project _partition, p = pack_array(*)
-| join kind = leftouter (sum_data) on _partition
-| mv-apply p, list_avg_p, list_stdev_p on (
-    extend normalized = iff((not(isnan(todouble(list_avg_p))) and (list_stdev_p > 0)), pack_array((todouble(p) - todouble(list_avg_p))/todouble(list_stdev_p)), p)
-    | summarize a = make_list(normalized) by _partition
-)
-| project _partition, a
-);
-let dist_data = (
-// Calculates distances of included variables and sums them up to get a multivariate distance between all entities under the same partition.
-normalized_data
-| join kind = inner (normalized_data) on _partition
-| project entity = tostring(a[0]), entity1 = tostring(a1[0]), a = array_slice(a, 1, -1), a1 = array_slice(a1, 1, -1), _partition
-| mv-apply a, a1 on 
-(
-    project d = generic_dist(pack_array(a), pack_array(a1))
-    | summarize d = make_list(d)
-)
-| extend dist = floor(array_sum(d)-1.0, 0.0001) // -1 cancels the artefact distance calculated between entity names appearing in the bag
-| project-away d
-| where entity != entity1
-| sort by _partition asc, entity asc, dist asc
-);
-dist_data
+    let generic_dist = (value1:dynamic, value2:dynamic) 
+    {
+        // Calculates the distance between two values; treats all strings as nominal values and numbers as numerical,
+        // can be extended to other data types or tweaked by adding weights or changing formulas.
+            iff(gettype(value1[0]) == "string", todouble(tostring(value1[0]) != tostring(value2[0])), abs(todouble(value1[0]) - todouble(value2[0])))
+    };
+    let T = (tbl | extend _entity = column_ifexists(id_col, ''), _partition = column_ifexists(partition_col, '') | project-reorder _entity, _partition);
+    let sum_data = (
+        // Calculates summary statistics to be used for normalization.
+        T
+        | project-reorder _entity
+        | project _partition, p = pack_array(*)
+        | mv-expand with_itemindex=idx p
+        | summarize count(), avg(todouble(p)), stdev(todouble(p)) by _partition, idx
+        | sort by _partition, idx asc
+        | summarize make_list(avg_p), make_list(stdev_p) by _partition
+    );
+    let normalized_data = (
+        // Performs normalization on numerical variables by substrcting mean and scaling by standard deviation. Other normalization techniques can be used
+        // by adding metrics to previous function and using here.
+        T
+        | project _partition, p = pack_array(*)
+        | join kind = leftouter (sum_data) on _partition
+        | mv-apply p, list_avg_p, list_stdev_p on (
+            extend normalized = iff((not(isnan(todouble(list_avg_p))) and (list_stdev_p > 0)), pack_array((todouble(p) - todouble(list_avg_p))/todouble(list_stdev_p)), p)
+            | summarize a = make_list(normalized) by _partition
+        )
+        | project _partition, a
+    );
+    let dist_data = (
+        // Calculates distances of included variables and sums them up to get a multivariate distance between all entities under the same partition.
+        normalized_data
+        | join kind = inner (normalized_data) on _partition
+        | project entity = tostring(a[0]), entity1 = tostring(a1[0]), a = array_slice(a, 1, -1), a1 = array_slice(a1, 1, -1), _partition
+        | mv-apply a, a1 on 
+        (
+            project d = generic_dist(pack_array(a), pack_array(a1))
+            | summarize d = make_list(d)
+        )
+        | extend dist = floor(array_sum(d)-1.0, 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag
+        | project-away d
+        | where entity != entity1
+        | sort by _partition asc, entity asc, dist asc
+    );
+    dist_data
 };
 //
 let raw_data = datatable(name:string, gender: string, height:int, weight:int, limbs:int, accessory:string, type:string)[
@@ -130,51 +130,51 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Calculate distances between pairs of entites based on multiple nominal and numerical variables")
 let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
 {
-let generic_dist = (value1:dynamic, value2:dynamic) 
-{
-// Calculates the distance between two values; treats all strings as nominal values and numbers as numerical,
-// can be extended to other data types or tweaked by adding weights or changing formulas.
-    iff(gettype(value1[0]) == "string", todouble(tostring(value1[0]) != tostring(value2[0])), abs(todouble(value1[0]) - todouble(value2[0])))
-};
-let T = (tbl | extend _entity = column_ifexists(id_col, ''), _partition = column_ifexists(partition_col, '') | project-reorder _entity, _partition);
-let sum_data = (
-// Calculates summary statistics to be used for normalization.
-T
-| project-reorder _entity
-| project _partition, p = pack_array(*)
-| mv-expand with_itemindex=idx p
-| summarize count(), avg(todouble(p)), stdev(todouble(p)) by _partition, idx
-| sort by _partition, idx asc
-| summarize make_list(avg_p), make_list(stdev_p) by _partition
-);
-let normalized_data = (
-// Performs normalization on numerical variables by substrcting mean and scaling by standard deviation. Other normalization techniques can be used
-// by adding metrics to previous function and using here.
-T
-| project _partition, p = pack_array(*)
-| join kind = leftouter (sum_data) on _partition
-| mv-apply p, list_avg_p, list_stdev_p on (
-    extend normalized = iff((not(isnan(todouble(list_avg_p))) and (list_stdev_p > 0)), pack_array((todouble(p) - todouble(list_avg_p))/todouble(list_stdev_p)), p)
-    | summarize a = make_list(normalized) by _partition
-)
-| project _partition, a
-);
-let dist_data = (
-// Calculates distances of included variables and sums them up to get a multivariate distance between all entities under the same partition.
-normalized_data
-| join kind = inner (normalized_data) on _partition
-| project entity = tostring(a[0]), entity1 = tostring(a1[0]), a = array_slice(a, 1, -1), a1 = array_slice(a1, 1, -1), _partition
-| mv-apply a, a1 on 
-(
-    project d = generic_dist(pack_array(a), pack_array(a1))
-    | summarize d = make_list(d)
-)
-| extend dist = floor(array_sum(d)-1.0, 0.0001) // -1 cancels the artefact distance calculated between entity names appearing in the bag
-| project-away d
-| where entity != entity1
-| sort by _partition asc, entity asc, dist asc
-);
-dist_data
+    let generic_dist = (value1:dynamic, value2:dynamic) 
+    {
+        // Calculates the distance between two values; treats all strings as nominal values and numbers as numerical,
+        // can be extended to other data types or tweaked by adding weights or changing formulas.
+            iff(gettype(value1[0]) == "string", todouble(tostring(value1[0]) != tostring(value2[0])), abs(todouble(value1[0]) - todouble(value2[0])))
+    };
+    let T = (tbl | extend _entity = column_ifexists(id_col, ''), _partition = column_ifexists(partition_col, '') | project-reorder _entity, _partition);
+    let sum_data = (
+        // Calculates summary statistics to be used for normalization.
+        T
+        | project-reorder _entity
+        | project _partition, p = pack_array(*)
+        | mv-expand with_itemindex=idx p
+        | summarize count(), avg(todouble(p)), stdev(todouble(p)) by _partition, idx
+        | sort by _partition, idx asc
+        | summarize make_list(avg_p), make_list(stdev_p) by _partition
+    );
+    let normalized_data = (
+        // Performs normalization on numerical variables by substrcting mean and scaling by standard deviation. Other normalization techniques can be used
+        // by adding metrics to previous function and using here.
+        T
+        | project _partition, p = pack_array(*)
+        | join kind = leftouter (sum_data) on _partition
+        | mv-apply p, list_avg_p, list_stdev_p on (
+            extend normalized = iff((not(isnan(todouble(list_avg_p))) and (list_stdev_p > 0)), pack_array((todouble(p) - todouble(list_avg_p))/todouble(list_stdev_p)), p)
+            | summarize a = make_list(normalized) by _partition
+        )
+        | project _partition, a
+    );
+    let dist_data = (
+        // Calculates distances of included variables and sums them up to get a multivariate distance between all entities under the same partition.
+        normalized_data
+        | join kind = inner (normalized_data) on _partition
+        | project entity = tostring(a[0]), entity1 = tostring(a1[0]), a = array_slice(a, 1, -1), a1 = array_slice(a1, 1, -1), _partition
+        | mv-apply a, a1 on 
+        (
+            project d = generic_dist(pack_array(a), pack_array(a1))
+            | summarize d = make_list(d)
+        )
+        | extend dist = floor(array_sum(d)-1.0, 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag
+        | project-away d
+        | where entity != entity1
+        | sort by _partition asc, entity asc, dist asc
+    );
+    dist_data
 };
 ```
 
@@ -213,12 +213,6 @@ raw_data
 | where _partition == 'Person' | sort by entity asc, entity1 asc
 | evaluate pivot (entity, max(dist), entity1) | sort by entity1 asc
 ```
-
----
-
-Looking at entities of two different types, we would like to calculate distance between entities belonging to the same type, by taking into account both nominal variables (such as gender or preferred accessory) and numerical variables (such as number of limbs, height and weight). The numerical variables are on different scales and obviously need to be centralized and scaled - which is done automatically. The output is pairs of entities under the same partition with calculated multivariate distance. This could be analyzed directly, visualized as distance matrix or scatterplot, or used as input data for outlier detection (most straightforwardly, by calculating mean distance per entity, with entities with high values indicating global outliers).
-For example, when adding optional visualization using distance matrix as suggested above, we receive the table as in the sample shown below. From this sample we can learn that some pairs of entities have low distance and thus are similar (e.g. Betsy and Fanny) and some have high distance (e.g. Godzilla and Elmie). This output can further be used to calculate average distance per entity. High average distance might indicate global outliers. For example, we can see that Godzilla has high distance from others on the average, thus being a probable global outlier.
-
 ```kusto
 | entity1  | Andy   | Betsy  | Cindy   | Dan    | Elmie   | Fanny  | Godzilla | Hannie  |
 |----------|--------|--------|---------|--------|---------|--------|----------|---------| ...
@@ -235,4 +229,10 @@ For example, when adding optional visualization using distance matrix as suggest
 .
 .
 ```
+---
+
+Looking at entities of two different types, we would like to calculate distance between entities belonging to the same type, by taking into account both nominal variables (such as gender or preferred accessory) and numerical variables (such as number of limbs, height and weight). The numerical variables are on different scales and obviously need to be centralized and scaled - which is done automatically. The output is pairs of entities under the same partition with calculated multivariate distance. This could be analyzed directly, visualized as distance matrix or scatterplot, or used as input data for outlier detection (most straightforwardly, by calculating mean distance per entity, with entities with high values indicating global outliers).
+For example, when adding optional visualization using distance matrix as suggested above, we receive the table as in the sample shown below. From this sample we can learn that some pairs of entities have low distance and thus are similar (e.g. Betsy and Fanny) and some have high distance (e.g. Godzilla and Elmie). This output can further be used to calculate average distance per entity. High average distance might indicate global outliers. For example, we can see that Godzilla has high distance from others on the average, thus being a probable global outlier.
+
+
 ---

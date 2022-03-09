@@ -522,7 +522,7 @@ items:
       displayName: functions library, jaccard, lift
       href: kusto/functions-library/pair-probabilities-fl.md
     - name: pairwise_dist_fl()
-      displayName: functions library, multivariate, distance, anomaly
+      displayName: functions library, multivariate, distance, anomaly, pairwise
       href: kusto/functions-library/pairwise-dist-fl.md      
     - name: perm_fl()
       displayName: functions library, statistics
