@@ -43,6 +43,14 @@ Both plugins return a table that has a single record with the following dynamic 
 * *ResponseHeaders*: A property bag with the response header.
 * *ResponseBody*: The response body parsed as a value of type `dynamic`.
 
+## Prerequirements
+
+Before you use the `http_request` and `http_request_post` plugins, make sure that requests meet the following requirements:
+
+* The specified *Uri* value must be a destination that is enabled for `webapi` callout by the [Callout policy](../management/calloutpolicy.md). Otherwise, running the query results in an error.
+
+* If you are using authentication, you must use the HTTPS protocol. Attempts to use HTTP with authentication enabled results in an error.
+
 ## Authentication
 
 You can use the query arguments to specify authentication parameters for the `http_request` and `http_request_post` plugins. The following scenarios are supported:
@@ -59,14 +67,6 @@ You can use the query arguments to specify authentication parameters for the `ht
 > confidential information, make sure that the relevant parts of the
 > query text are obfuscated so that they'll be omitted from any tracing.
 > For more information, see [obfuscated string literals](./scalar-data-types/string.md#obfuscated-string-literals).
-
-## Prerequirements
-
-Before you use the `http_request` and `http_request_post` plugins, make sure that requests meet the following requirements:
-
-* The specified *Uri* value must be a destination that is enabled for `webapi` callout by the [Callout policy](../management/calloutpolicy.md). Otherwise, running the query results in an error.
-
-* If you are using authentication, you must use the HTTPS protocol. Attempts to use HTTP with authentication enabled results in an error.
 
 ## Headers
 

@@ -14,14 +14,6 @@ The function `series_uv_change_points_fl()` finds change points in time series b
 > * This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 > * Consider using the native function [series_decompose_anomalies()](../query/series-decompose-anomaliesfunction.md) which is more scalable and runs faster.
 
-## Prerequisites
-
-* This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
-* This function calls the anomaly detection service endpoint and requires:
-    * Enable the [http_request_post() plugin](https://kusto.azurewebsites.net/docs/kusto/query/httprequestplugin.html) on the cluster.
-    * Modify the [callout policy](../management/calloutpolicy.md) for type `webapi` to allow accessing the service endpoint.
-* You must [obtain a key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
-
 ## Syntax
 
 `T | invoke series_uv_change_points_fl(`*y_series* [`,` *score_threshold* [`,` *trend_window* [`,` *tsid*]]]`)`
@@ -39,8 +31,15 @@ The function `series_uv_change_points_fl()` finds change points in time series b
 
 `series_uv_change_points_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query (ad hoc) or you can define it as a stored function in your database (persistent).
 
-> [!NOTE]
-> In the following function, replace 'YOUR-KEY' in the 'Ocp-Apim-Subscription-Key' of the header with your key.
+### Prerequisites
+
+* This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
+* This function calls the anomaly detection service endpoint and requires:
+    * Enable the [http_request_post() plugin](https://kusto.azurewebsites.net/docs/kusto/query/httprequestplugin.html) on the cluster.
+    * Modify the [callout policy](../management/calloutpolicy.md) for type `webapi` to allow accessing the service endpoint.
+* You must [obtain a key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
+
+In the following function example, replace 'YOUR-KEY' in the 'Ocp-Apim-Subscription-Key' of the header with your key.
 
 ## [Ad hoc](#tab/adhoc)
 
