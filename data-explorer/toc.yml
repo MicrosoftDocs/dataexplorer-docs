@@ -500,9 +500,6 @@ items:
     - name: comb_fl()
       displayName: functions library, statistics
       href: kusto/functions-library/comb-fl.md
-    - name: dist_mv_fl()
-      displayName: functions library, multivariate, distance
-      href: kusto/functions-library/dist-mv-fl.md      
     - name: factorial_fl()
       displayName: functions library, statistics
       href: kusto/functions-library/factorial-fl.md
@@ -524,6 +521,9 @@ items:
     - name: pair_probabilities_fl()
       displayName: functions library, jaccard, lift
       href: kusto/functions-library/pair-probabilities-fl.md
+    - name: pairwise_dist_fl()
+      displayName: functions library, multivariate, distance, anomaly
+      href: kusto/functions-library/pairwise-dist-fl.md      
     - name: perm_fl()
       displayName: functions library, statistics
       href: kusto/functions-library/perm-fl.md

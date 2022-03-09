@@ -1,6 +1,6 @@
 ---
-title: dist_mv_fl() - Azure Data Explorer
-description: This article describes the dist_mv_fl() user-defined function in Azure Data Explorer.
+title: pairwise_dist_fl() - Azure Data Explorer
+description: This article describes the pairwise_dist_fl() user-defined function in Azure Data Explorer.
 author: orspod
 ms.author: orspodek
 ms.reviewer: andkar
@@ -8,21 +8,23 @@ ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/28/2022
 ---
-# dist_mv_fl()
+# pairwise_dist_fl()
 
 Calculate distances between pairs of entites based on multiple nominal and numerical variables.
 
-The function `dist_mv_fl()`calculates multivariate distance between datapoints belonging to the same scope, taking into account nominal and numerical variables. 
+The function `pairwise_dist_fl()`calculates multivariate distance between datapoints belonging to the same scope, taking into account nominal and numerical variables. 
 - All string fields are considered nominal variables; the distance is equal to 1 if the values are different, and 0 if they are the same.
 - All numerical fields are considered numerical variables. They are normalized by transforming to z-scores and the distance is calculated as absolute value of the difference.
 The total multivariate distance between datapoints is calculated as the sum of distances between variables.
+
+[TBD]Suggested usage
 
 > [!NOTE]
 > This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 
 ## Syntax
 
-`dist_mv_fl(entity, scope)`
+`pairwise_dist_fl(entity, scope)`
   
 ## Arguments
 
@@ -30,7 +32,7 @@ The total multivariate distance between datapoints is calculated as the sum of d
 * scope: column that contains the scope, so the distances will be calculated for all pairs of entities under the same scope
 ## Usage
 
-`dist_mv_fl` is a user-defined function. You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`pairwise_dist_fl` is a user-defined function. You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
 # [Ad hoc](#tab/adhoc)
 
@@ -38,7 +40,7 @@ For ad hoc usage, embed its code using a [let statement](../query/letstatement.m
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-let dist_mv_fl = (tbl:(*), id_col:string, scope_col:string)
+let pairwise_dist_fl = (tbl:(*), id_col:string, scope_col:string)
 {
 let genericDist = (value1:dynamic, value2:dynamic) 
 {
@@ -114,7 +116,7 @@ let rawData = datatable(name:string, gender: string, height:int, weight:int, lim
     'Xander',   'M',    50,     24,     4,  'Tail',     'Pet'
 ];
 rawData
-| invoke dist_mv_fl('name', 'type')
+| invoke pairwise_dist_fl('name', 'type')
 ```
 
 # [Persistent](#tab/persistent)
@@ -126,7 +128,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Calculate probabilities and related metrics for a pair of categorical variables")
-dist_mv_fl = (tbl:(*), id_col:string, scope_col:string)
+pairwise_dist_fl = (tbl:(*), id_col:string, scope_col:string)
 {
 let genericDist = (value1:dynamic, value2:dynamic) 
 {
@@ -207,7 +209,7 @@ let rawData = datatable(name:string, gender: string, height:int, weight:int, lim
     'Xander',   'M',    50,     24,     4,  'Tail',     'Pet'
 ];
 rawData
-| invoke dist_mv_fl('name', 'type')
+| invoke pairwise_dist_fl('name', 'type')
 // Optional visualization as distance matrix of entities under the same scope
 | where _scope == 'Person' | sort by entity asc, entity1 asc
 | evaluate pivot (entity, max(dist), entity1) | sort by entity1 asc

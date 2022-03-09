@@ -57,13 +57,13 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 |[bartlett_test_fl()](bartlett-test-fl.md)| Perform the Bartlett test. | 
 |[binomial_test_fl()](binomial-test-fl.md)|Perform the binomial test. |
 |[comb_fl()](comb-fl.md)|Calculate *C(n, k)*, the number of combinations for selection of k items out of n. |
-|[dist_mv_fl()](dist-mv-fl.md)|Calculate distances between pairs of entites based on multiple nominal and numerical variables. |
 |[factorial_fl()](factorial-fl.md)|Calculate *n!*, the factorial of n. |
 |[ks_test_fl()](ks-test-fl.md)| Perform a Kolmogorov Smirnov test. |
 |[levene_test_fl()n](levene-test-fl.md)| Perform a Levene test. | 
 |[normality_test_fl()](normality-test-fl.md) | Performs the Normality Test.|
 |[mann_whitney_u_test_fl()](mann-whitney-u-test-fl.md)| Perform a Mann-Whitney U Test. | 
 |[pair_probabilities_fl()](pair-probabilities-fl.md)|Calculate various probabilities and related metrics for a pair of categorical variables. |
+|[pairwise_dist_fl()](pairwise-dist-fl.md)|Calculate distances between pairs of entites based on multiple nominal and numerical variables. |
 |[perm_fl()](perm-fl.md)|Calculate *P(n, k)*, the number of permutations for selection of k items out of n. |
 |[two_sample_t_test_fl()](two-sample-t-test-fl.md)| Perform the two sample t-test. |
 |[wilcoxon_test_fl()](wilcoxon-test-fl.md)| Perform the Wilcoxon Test. |
