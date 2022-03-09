@@ -1,11 +1,7 @@
 ---
 title: Create an Event Grid subscription in your storage account - Azure Data Explorer
 description: This article describes how to create an Event Grid subscription in your storage account in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: kedamari
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/03/2022
 ---

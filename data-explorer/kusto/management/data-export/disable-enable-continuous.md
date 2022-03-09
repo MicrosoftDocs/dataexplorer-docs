@@ -1,11 +1,7 @@
 ---
 title: Enable or disable continuous data export - Azure Data Explorer
 description: This article describes how to disable or enable continuous data export in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yifats
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/03/2020
 ---

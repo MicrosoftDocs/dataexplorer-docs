@@ -1,9 +1,6 @@
 ---
-author: orspod
-ms.service: data-explorer
 ms.topic: include
 ms.date: 01/03/2022
-ms.author: orspodek
 ---
 1. In [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select **Data** in the left pane.
 

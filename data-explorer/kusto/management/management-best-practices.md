@@ -1,11 +1,7 @@
 ---
 title: Best practices for schema management - Azure Data Explorer
 description: This article describes Best practices for schema management in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/18/2020
 ---

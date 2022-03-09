@@ -1,10 +1,7 @@
 ---
 title: 'End-to-end blob ingestion into Azure Data Explorer through Python'
 description: In this article, you learn how to ingest blobs into Azure Data Explorer with an end-to-end example that uses Python.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 02/03/2020
 ---
