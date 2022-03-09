@@ -24,7 +24,7 @@ The command requires [Table admin permission](../management/access-control/role-
 
 `.move` [`async`] `extents` `to` `table` *DestinationTableName* <| *query*
 
-`async` (optional). Execute the command asynchronously. 
+`async` (optional). Execute the command asynchronously.
    * An Operation ID (Guid) is returned.
    * The operation's status can be monitored. Use the [.show operations](operations.md#show-operations) command.
    * The results of a successful execution can be retrieved. Use the [.show operation details](operations.md#show-operation-details) command.
