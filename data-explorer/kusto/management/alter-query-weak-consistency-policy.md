@@ -30,7 +30,14 @@ JSON serialization of the updated [query weak consistency policy object](./query
 `alter` command:
 <!-- csl -->
 ```
-.alter cluster policy query_weak_consistency @'{"PercentageOfNodes": 10, "MinimumNumberOfNodes": 2, "MaximumNumberOfNodes": 20, "SuperSlackerNumberOfNodesThreshold": 5, EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 10, "RefreshPeriodInSeconds": 300}'
+.alter cluster policy query_weak_consistency ```{
+   "PercentageOfNodes": 10,
+   "MinimumNumberOfNodes": 2,
+   "MaximumNumberOfNodes": 20,
+   "SuperSlackerNumberOfNodesThreshold": 5,
+   "EnableMetadataPrefetch": false,
+   "MaximumLagAllowedInMinutes": 10,
+   "RefreshPeriodInSeconds": 300}
 ```
 
 **Output**
