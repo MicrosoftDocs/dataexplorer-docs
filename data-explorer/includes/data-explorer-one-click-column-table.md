@@ -1,9 +1,6 @@
 ---
-author: orspod
-ms.service: data-explorer
 ms.topic: include
 ms.date: 06/11/2020
-ms.author: orspodek
 ---
 The changes you can make in a table depend on the following parameters:
 * **Table** type is new or existing

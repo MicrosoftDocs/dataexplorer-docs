@@ -1,10 +1,7 @@
 ---
 title: Deploy Azure Data Explorer into your Virtual Network
 description: Learn how to deploy Azure Data Explorer into your Virtual Network
-author: orspod
-ms.author: orspodek
 ms.reviewer: basaba
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/01/2022
 ---
@@ -59,9 +56,6 @@ The total number of IP addresses:
 [Azure Service Endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview) enables you to secure your Azure multi-tenant resources to your virtual network.
 Deploying Azure Data Explorer cluster into your subnet allows you to setup data connections with [event hub](/azure/event-hubs/event-hubs-about) or [Event Grid](/azure/event-grid/overview) while restricting the underlying resources for Azure Data Explorer subnet.
 
-> [!NOTE]
-> When using Event Grid setup with [Storage](/azure/storage/common/storage-introduction) and [event hub](/azure/event-hubs/event-hubs-about), the storage account used in the subscription can be locked with service endpoints to Azure Data Explorer's subnet while allowing trusted Azure platform services in the [firewall configuration](/azure/storage/common/storage-network-security), but the event hub can't enable Service Endpoint since it doesn't support trusted [Azure platform services](/azure/event-hubs/event-hubs-service-endpoints).
-
 ## Private Endpoints
 
 [Private Endpoints](/azure/private-link/private-endpoint-overview) allow private access to Azure resources (such as [storage/event hub](vnet-endpoint-storage-event-hub.md)/Data Lake Gen 2), and use private IP from your Virtual Network, effectively bringing the resource into your VNet.
@@ -97,6 +91,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | Event hub ingestion and service monitoring  | Azure Data Explorer subnet  | EventHub:443,5671  | TCP  |
 | Publish Metrics  | Azure Data Explorer subnet  | AzureMonitor:443 | TCP  |
 | Active Directory (if applicable) | Azure Data Explorer subnet | AzureActiveDirectory:443 | TCP |
+| Dependency on KeyVault | Azure Data Explorer subnet | AzureKeyVault:443 | TCP |
 | Certificate authority | Azure Data Explorer subnet | Internet:80 | TCP |
 | Internal communication  | Azure Data Explorer subnet  | Azure Data Explorer Subnet:All Ports  | All  |
 | Ports that are used for `sql\_request` and `http\_request` plugins  | Azure Data Explorer subnet  | Internet:Custom  | TCP  |
@@ -246,6 +241,7 @@ azureprofilerfrontdoor.cloudapp.net:443
 *.servicebus.windows.net:443,5671
 shoebox2.metrics.nsatc.net:443
 prod-dsts.dsts.core.windows.net:443
+*.vault.azure.net
 ocsp.msocsp.com:80
 *.windowsupdate.com:80
 ocsp.digicert.com:80
@@ -259,13 +255,15 @@ crl3.digicert.com:80
 ```
 
 > [!NOTE]
-> If you're using [Azure Firewall](/azure/firewall/overview), add **Network Rule** with the following properties:
 >
-> **Protocol**: TCP  
-> **Source Type**: IP Address  
-> **Source**: \*  
-> **Service Tags**: AzureMonitor  
-> **Destination Ports**: 443
+> * To restrict access for dependencies with a wildcard (*), use the API described in [How to discover dependencies automatically](vnet-deployment.md#how-to-discover-dependencies-automatically).
+> * If you're using [Azure Firewall](/azure/firewall/overview), add **Network Rule** with the following properties:
+>
+>     **Protocol**: TCP  
+>     **Source Type**: IP Address  
+>     **Source**: \*  
+>     **Service Tags**: AzureMonitor  
+>     **Destination Ports**: 443
 
 You also need to define the [route table](/azure/virtual-network/virtual-networks-udr-overview) on the subnet with the [management addresses](vnet-deployment.md#azure-data-explorer-management-ip-addresses) and [health monitoring addresses](vnet-deployment.md#health-monitoring-addresses) with next hop *Internet* to prevent asymmetric routes issues.
 

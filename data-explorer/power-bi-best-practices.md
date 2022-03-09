@@ -1,10 +1,7 @@
 ---
 title: 'Best practices for using Power BI to query and visualize Azure Data Explorer data'
 description: 'In this article, you learn best practices for using Power BI to query and visualize Azure Data Explorer data.'
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabil
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/27/2022
 

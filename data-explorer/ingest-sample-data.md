@@ -1,10 +1,7 @@
 ---
 title: Ingest sample data into Azure Data Explorer
 description: Learn about how to ingest (load) weather-related sample data into Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: mblythe
-ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 02/06/2022
 ms.custom: mode-portal
@@ -55,7 +52,7 @@ First, sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.co
     | Setting | Description|
     |---|---|
     | Source type | Select the data source to ingest. In this example, *From blob* is already selected. |
-    | Link to source | Use the following [storage URI](kusto/api/connection-strings/storage.md) link: https://kustosamples.blob.core.windows.net/samplefiles/StormEvents.csv. |
+    | Link to source | Use the following [storage URI](./kusto/api/connection-strings/storage-connection-strings.md) link: https://kustosamples.blob.core.windows.net/samplefiles/StormEvents.csv. |
 
 1. Select **Next: Schema**.
 
@@ -105,7 +102,7 @@ First, sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.co
 1. Paste in the following command, and select **Run** to ingest data into StormEvents table.
 
     ```Kusto
-    .ingest into table StormEvents 'https://kustosamples.blob.core.windows.net/samplefiles/StormEvents.csv with (ignoreFirstRecord=true)
+    .ingest into table StormEvents 'https://kustosamples.blob.core.windows.net/samplefiles/StormEvents.csv' with (ignoreFirstRecord=true)
     ```
 
 1. After ingestion completes, paste in the following query and select **Run**.

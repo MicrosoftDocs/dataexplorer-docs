@@ -1,10 +1,7 @@
 ---
 title: 'Ingest data with Azure Data Explorer .NET SDK'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using .NET SDK.
-author: orspod
-ms.author: orspodek
 ms.reviewer: vladikb
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 07/07/2020
 
@@ -170,7 +167,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 Batching incoming data optimizes data shard size, which is controlled by the [ingestion batching policy](kusto/management/batchingpolicy.md) and can be modified by the [ingestion batching policy control command](./kusto/management/show-table-ingestion-batching-policy.md). Use this policy to reduce latency of slowly arriving data.
 
-```kusto
+```csharp
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
 {
     var command =

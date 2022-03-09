@@ -1,11 +1,7 @@
 ---
 title: Automated provisioning in Azure Data Explorer
 description: This article is a map to different articles for automating the provisioning of Azure Data Explorer
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: vplauzon
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/01/2022
 ---
@@ -37,9 +33,9 @@ ARM templates and Terraform scripts are the two main declarative ways to deploy 
 
 ### ARM Template deployment
 
-Azure Resource Manager (ARM) Templates are [JSON](/azure/azure-resource-manager/templates/overview) or [Bicep](/azure/azure-resource-manager/bicep/overview) files defining the infrastructure and configuration of a deployment. They can be used to deploy [clusters](/azure/templates/microsoft.kusto/clusters?tabs=json), [databases](/azure/templates/microsoft.kusto/clusters/databases?tabs=json), [data connections](/azure/templates/microsoft.kusto/clusters/databases/dataconnections?tabs=json) and many other infrastructure components. For more information, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](/azure/data-explorer/create-cluster-database-resource-manager).
+Azure Resource Manager (ARM) Templates are [JSON](/azure/azure-resource-manager/templates/overview) or [Bicep](/azure/azure-resource-manager/bicep/overview) files defining the infrastructure and configuration of a deployment. They can be used to deploy [clusters](/azure/templates/microsoft.kusto/clusters?tabs=json), [databases](/azure/templates/microsoft.kusto/clusters/databases?tabs=json), [data connections](/azure/templates/microsoft.kusto/clusters/databases/dataconnections?tabs=json) and many other infrastructure components. For more information, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](./create-cluster-database-resource-manager.md).
 
-ARM templates can also be used to deploy [command scripts](/azure/templates/microsoft.kusto/clusters/databases/scripts?tabs=json) that can be used to create a database schema and define policies. For more information, see [Configure a database using a Kusto Query Language script](/azure/data-explorer/database-script).
+ARM templates can also be used to deploy [command scripts](/azure/templates/microsoft.kusto/clusters/databases/scripts?tabs=json) that can be used to create a database schema and define policies. For more information, see [Configure a database using a Kusto Query Language script](./database-script.md).
 
 You can find more example templates on the [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/) site.
 
@@ -55,12 +51,12 @@ Terraform can also be used to deploy [command scripts](https://registry.terrafor
 
 Infrastructure can also be deployed imperatively using any of the supported platforms:
 
-* [Azure CLI](/azure/data-explorer/create-cluster-database-cli)
-* [PowerShell](/azure/data-explorer/create-cluster-database-powershell)
+* [Azure CLI](./create-cluster-database-cli.md)
+* [PowerShell](./create-cluster-database-powershell.md)
 * SDKs
-  * [.NET SDK](/azure/data-explorer/create-cluster-database-csharp)
-  * [Python SDK](/azure/data-explorer/create-cluster-database-python)
-  * [Go SDK](/azure/data-explorer/create-cluster-database-go)
+  * [.NET SDK](./create-cluster-database-csharp.md)
+  * [Python SDK](./create-cluster-database-python.md)
+  * [Go SDK](./create-cluster-database-go.md)
 
 ## Deploy schema entities
 
@@ -70,30 +66,30 @@ You can automate schema entities deployment using the following methods:
 
 * [ARM Templates](/azure/templates/microsoft.kusto/clusters/databases/scripts?tabs=json)
 * [Terraform scripts](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kusto_script)
-* [Kusto CLI](/azure/data-explorer/kusto/tools/kusto-cli)
+* [Kusto CLI](./kusto/tools/kusto-cli.md)
 * SDKs
-    * [.NET SDK](/azure/data-explorer/kusto/api/netfx/about-kusto-data)
-    * [Python SDK](/azure/data-explorer/kusto/api/python/kusto-python-client-library)
-    * [Java SDK](/azure/data-explorer/kusto/api/java/kusto-java-client-library)
-    * [Node SDK](/azure/data-explorer/kusto/api/node/kusto-node-client-library)
-    * [Go SDK](/azure/data-explorer/kusto/api/golang/kusto-golang-client-library)
+    * [.NET SDK](./kusto/api/netfx/about-kusto-data.md)
+    * [Python SDK](./kusto/api/python/kusto-python-client-library.md)
+    * [Java SDK](./kusto/api/java/kusto-java-client-library.md)
+    * [Node SDK](./kusto/api/node/kusto-node-client-library.md)
+    * [Go SDK](./kusto/api/golang/kusto-golang-client-library.md)
 * Tools
-    * [Sync Kusto](/azure/data-explorer/kusto/tools/synckusto). An interactive developer tool that can be used to extract the database schema or control command script. The extracted content command script can then be used for automatic deployment.
+    * [Sync Kusto](./kusto/tools/synckusto.md). An interactive developer tool that can be used to extract the database schema or control command script. The extracted content command script can then be used for automatic deployment.
     * [Delta Kusto](https://github.com/microsoft/delta-kusto): A tool designed to be invoked in a CI/CD pipeline. It can compare two sources, such as database schema or control command script, and compute a *delta* control command script. The extracted content command script can then be used for automatic deployment.
-    * [Azure DevOps Task](/azure/data-explorer/devops) for Azure Data Explorer
+    * [Azure DevOps Task](./devops.md) for Azure Data Explorer
 
 ## Ingest data
 
 Sometimes you want to ingest data into your cluster. For example, you might want to ingest data to run tests or recreate an environment. You can use the following methods to ingest data:
 
 * SDKs
-    * [.NET SDK](/azure/data-explorer/net-sdk-ingest-data)
-    * [Python SDK](/azure/data-explorer/python-ingest-data)
-    * [Java SDK](/azure/data-explorer/java-ingest-data)
-    * [Node SDK](/azure/data-explorer/node-ingest-data)
-    * [Go SDK](/azure/data-explorer/go-ingest-data)
-* [LightIngest](/azure/data-explorer/lightingest) CLI tool
-* Triggering an [Azure Data Factory Pipeline](/azure/data-explorer/data-factory-integration)
+    * [.NET SDK](./net-sdk-ingest-data.md)
+    * [Python SDK](./python-ingest-data.md)
+    * [Java SDK](./java-ingest-data.md)
+    * [Node SDK](./node-ingest-data.md)
+    * [Go SDK](./go-ingest-data.md)
+* [LightIngest](./lightingest.md) CLI tool
+* Triggering an [Azure Data Factory Pipeline](./data-factory-integration.md)
 
 ## Example deployment using a CI/CD pipeline
 
@@ -263,5 +259,5 @@ You can verify the deployment by running a query against the *Customer* table. Y
 
 ## Next steps
 
-* Create a [cluster and database by using an Azure Resource Manager template](/azure/data-explorer/create-cluster-database-resource-manager)
-* Configure a database using a [KQL script](/azure/data-explorer/database-script)
+* Create a [cluster and database by using an Azure Resource Manager template](./create-cluster-database-resource-manager.md)
+* Configure a database using a [KQL script](./database-script.md)

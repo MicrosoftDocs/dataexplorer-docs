@@ -1,11 +1,7 @@
 ---
 title: .show table streaming ingestion policy command - Azure Data Explorer
 description: This article describes the .show table streaming ingestion policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/10/2021
 ---
@@ -29,7 +25,7 @@ Use the classic (bulk) ingestion instead of streaming ingestion when the amount 
 
 ## Example
 
-The following command deletes the streaming ingestion policy:
+The following command displays the streaming ingestion policy:
 
 ```kusto
 .show table MyTable policy streamingingestion 

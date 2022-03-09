@@ -1,11 +1,7 @@
 ---
 title: funnel_sequence_completion plugin - Azure Data Explorer
 description: This article describes funnel_sequence_completion plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/24/2022
 ---
@@ -19,7 +15,7 @@ T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)
 
 ## Syntax
 
-*T* `| evaluate` `funnel_sequence_completion(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Step*`,` *StateColumn*`,` *Sequence*`,` *MaxSequenceStepWindows*`)`
+*T* `| evaluate` `funnel_sequence_completion(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *BinSize*`,` *StateColumn*`,` *Sequence*`,` *MaxSequenceStepWindows*`)`
 
 ## Arguments
 

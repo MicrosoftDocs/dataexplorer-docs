@@ -1,10 +1,7 @@
 ---
 title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ---

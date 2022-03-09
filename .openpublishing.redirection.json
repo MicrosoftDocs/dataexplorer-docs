@@ -274,6 +274,11 @@
       "source_path": "data-explorer/one-click-manage-database.md      ",
       "redirect_url": "/azure/data-explorer/create-cluster-database-portal",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/concepts/crossclusterandschemachanges.md      ",
+      "redirect_url": "/azure/data-explorer/kusto/concepts/cross-cluster-and-schema-changes",
+      "redirect_document_id": true
     }
   ]
 }

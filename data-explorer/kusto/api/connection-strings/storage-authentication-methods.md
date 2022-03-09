@@ -1,11 +1,7 @@
 ---
 title: Storage authentication methods - Azure Data Explorer
 description: This article describes storage authentication methods used in connection strings in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: shanisolomon
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/07/2022
 ---
@@ -65,7 +61,7 @@ To add a managed identity, append `;managed_identity=...` to the connection stri
 >
 >     * [Azure Blob Storage/Azure Data Lake Storage Gen2 access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac)
 >     * [Azure Data Lake Storage Gen1 access control](/azure/storage/blobs/data-lake-storage-access-control)
-> * Managed identity is only supported in specific Azure Data Explorer flows. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
+> * Managed identity is only supported in specific Azure Data Explorer flows. For more information, see [Managed identities overview](../../../managed-identities-overview.md).
 
 ### Managed identity examples
 
