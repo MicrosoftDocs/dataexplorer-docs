@@ -1,12 +1,9 @@
 ---
 title: "Create an event hub data connection for Azure Data Explorer by using Python"
 description: In this article, you learn how to create an event hub data connection for Azure Data Explorer by using Python.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/03/2022
+ms.date: 03/03/2022
 ---
 
 # Create an event hub data connection for Azure Data Explorer by using Python
@@ -19,7 +16,7 @@ ms.date: 01/03/2022
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
-In this article, you create an event hub data connection for Azure Data Explorer by using Python. 
+In this article, you create an event hub data connection for Azure Data Explorer by using Python.
 
 ## Prerequisites
 
@@ -41,7 +38,7 @@ The following example shows you how to add an event hub data connection programm
 ```Python
 from azure.mgmt.kusto import KustoManagementClient
 from azure.mgmt.kusto.models import EventHubDataConnection
-from azure.common.credentials import ServicePrincipalCredentials
+from azure.identity import ClientSecretCredential
 
 #Directory (tenant) ID
 tenant_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
@@ -57,23 +54,36 @@ credentials = ServicePrincipalCredentials(
     )
 kusto_management_client = KustoManagementClient(credentials, subscription_id)
 
-resource_group_name = "testrg"
+resource_group_name = "myresourcegroup"
 #The cluster and database that are created as part of the Prerequisites
-cluster_name = "mykustocluster"
-database_name = "mykustodatabase"
+cluster_name = "mycluster"
+database_name = "mydatabase"
 data_connection_name = "myeventhubconnect"
 #The event hub that is created as part of the Prerequisites
-event_hub_resource_id = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.EventHub/namespaces/xxxxxx/eventhubs/xxxxxx";
+event_hub_resource_id = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/eventhubs/myeventhub"";
 consumer_group = "$Default"
 location = "Central US"
 #The table and column mapping that are created as part of the Prerequisites
-table_name = "StormEvents"
-mapping_rule_name = "StormEvents_CSV_Mapping"
+table_name = "mytable"
+mapping_rule_name = "mytablemappingrule"
 data_format = "csv"
 #Returns an instance of LROPoller, check https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
-poller = kusto_management_client.data_connections.create_or_update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name, data_connection_name=data_connection_name,
-                                        parameters=EventHubDataConnection(event_hub_resource_id=event_hub_resource_id, consumer_group=consumer_group, location=location,
-                                                                            table_name=table_name, mapping_rule_name=mapping_rule_name, data_format=data_format))
+poller = kusto_management_client.data_connections.create_or_update(
+            resource_group_name=resource_group_name, 
+            cluster_name=cluster_name,
+            database_name=database_name,
+            data_connection_name=data_connection_name,
+            parameters=EventHubDataConnection(
+                event_hub_resource_id=event_hub_resource_id,
+                consumer_group=consumer_group,
+                location=location,
+                table_name=table_name,
+                mapping_rule_name=mapping_rule_name,
+                data_format=data_format
+            )
+        )
+poller.wait()
+print(poller.result())
 ```
 
 |**Setting** | **Suggested value** | **Field description**|
@@ -82,12 +92,12 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The subscription ID that you use for resource creation.|
 | client_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The client ID of the application that can access resources in your tenant.|
 | client_secret | *xxxxxxxxxxxxxx* | The client secret of the application that can access resources in your tenant. |
-| resource_group_name | *testrg* | The name of the resource group containing your cluster.|
-| cluster_name | *mykustocluster* | The name of your cluster.|
-| database_name | *mykustodatabase* | The name of the target database in your cluster.|
+| resource_group_name | *myresourcegroup* | The name of the resource group containing your cluster.|
+| cluster_name | *mycluster* | The name of your cluster.|
+| database_name | *mydatabase* | The name of the target database in your cluster.|
 | data_connection_name | *myeventhubconnect* | The desired name of your data connection.|
-| table_name | *StormEvents* | The name of the target table in the target database.|
-| mapping_rule_name | *StormEvents_CSV_Mapping* | The name of your column mapping related to the target table.|
+| table_name | *mytable* | The name of the target table in the target database.|
+| mapping_rule_name | *mytablemappingrule* | The name of your column mapping related to the target table.|
 | data_format | *csv* | The data format of the message.|
 | event_hub_resource_id | *Resource ID* | The resource ID of your event hub that holds the data for ingestion. |
 | consumer_group | *$Default* | The consumer group of your event hub.|

@@ -5,6 +5,8 @@ items:
   items:
   - name: What is Azure Data Explorer?
     href: data-explorer-overview.md
+  - name: Get started for free
+    href: start-for-free.md
   - name: What's new
     href: whats-new.md
   - name: Solution architectures
@@ -70,6 +72,8 @@ items:
     href: tools-integrations-overview.md
 - name: How-to guides
   items:
+  - name: Create a start-for-free cluster
+    href: start-for-free-web-ui.md
   - name: Create cluster and database
     items:
     - name: Azure CLI
