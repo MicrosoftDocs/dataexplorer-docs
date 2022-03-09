@@ -1,39 +1,35 @@
 ---
-title: Ingest data with managed identity authentication
-description: Learn how to queue azure blobs for ingestion using managed identity instead of blob SAS or storage account key
-author: shsagir
-ms.author: shsagir
+title: Ingest data using managed identity authentication
+description: Learn how to queue Azure Storage blobs for ingestion using managed identity authentication.
 ms.reviewer: miwalia
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/03/2022
 ---
 
-# Ingest data with managed identity authentication
+# Ingest data using managed identity authentication
 
-When queuing blobs for ingestion from customer owned storage accounts, Managed Identities can be used as an authentication method alternative to Storage SAS Tokens and Account Keys.
-This allows for a more secure way of ingesting data, as customer SAS Tokens and Account Keys are not shared with Kusto. Instead, a managed identity assigned to the Kusto Cluster is granted read permissions over the customer storage accounts and is used to upload the data to Kusto. This permission can be revoked by the customer at any time.
+When queuing blobs for ingestion from your own storage accounts, Managed identities can be used as an alternative authentication method to [shared access signature (SAS)](/azure/storage/common/storage-sas-overview) tokens and [Shared Keys](/rest/api/storageservices/authorize-with-shared-key). Managed identities is a more secure way to ingest data as it doesn't require you to share your customer SAS Tokens or Shared Keys with our service. Instead, a managed identity is assigned to your cluster and is granted read permissions for the storage account that can be used to ingest data. This permission can be revoked by you at any time.
 
 > [!NOTE]
 >
-> This method of authentication is only possible for blobs residing in customer owned accounts. It does not apply to local files uploaded by Kusto SDK to the service staging accounts.
+> This method of authentication is only possible for blobs residing in storage accounts. It can't be used to ingest local files to the service staging accounts using our SDK.
 
 ## Assign a managed identity to your cluster
 
-Follow [Managed identities overview](managed-identities-overview.md) to add a System or User Assigned managed identity to your cluster.
-If your cluster already has the desired managed identity assigned to it, copy its object Id from the Azure Portal's MI overview page.
+Use the steps in [configure managed identities for your cluster](configure-managed-identities-cluster.md) to add a system assigned or user assigned managed identity to your cluster. If your cluster already has the required managed identity assigned to it, copy its object ID from the your Managed Identities overview page in the Azure portal.
 
-:::image type="content" source="media/ingest-data-with-managed-identity/system-mi-details.jpeg" alt-text="System MI Object Id":::
+:::image type="content" source="media/ingest-data-managed-identity/system-mi-details.jpeg" alt-text="Screenshot of the overview page, showing the system managed identity object ID":::
 
 ## Grant permissions to the managed identity
 
-On Azure Portal, navigate to the storage account you wish to ingest from. Open the in the 'Access Control' Blade Tab, click on '+Add' and choose 'Add Role Assignment', than grant the chosen managed Identity `Storage Blob Data Reader` permissions to the storage account.
+In the Azure portal, navigate to the storage account you wish to ingest from.
+Open the in the 'Access Control' Blade Tab, click on '+ Add' and choose 'Add Role Assignment', than grant the chosen managed Identity `Storage Blob Data Reader` permissions to the storage account.
 
 > [!IMPORTANT]
 >
 > Granting `Owner` or `Contributor` permissions is not sufficient, and will result in failed ingestion!
 
-:::image type="content" source="media/ingest-data-with-managed-identity/mi-permissions-on-sa.jpeg" alt-text="Image of SA Role assignment for ingestion with mi":::
+:::image type="content" source="media/ingest-data-managed-identity/mi-permissions-on-sa.jpeg" alt-text="Image of SA Role assignment for ingestion with mi":::
 
 ## Set the managed identity policy in Azure Data Explorer
 
