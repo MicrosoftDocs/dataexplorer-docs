@@ -151,4 +151,6 @@ ts
 
 ---
 
+The following graph shows change points on a time series.
+
 ![Graph showing change points on a time series.](images/series-uv-change-points-fl/uv-change-points-example-1.png)

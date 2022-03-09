@@ -49,7 +49,7 @@ Before you use the `http_request` and `http_request_post` plugins, make sure tha
 
 * The specified *Uri* value must be a destination that is enabled for `webapi` callout by the [Callout policy](../management/calloutpolicy.md). Otherwise, running the query results in an error.
 
-* If you are using authentication, you must use the HTTPS protocol. Attempts to use HTTP with authentication enabled results in an error.
+* If you're using authentication, you must use the HTTPS protocol. Attempts to use HTTP with authentication enabled results in an error.
 
 ## Authentication
 
@@ -59,7 +59,7 @@ You can use the query arguments to specify authentication parameters for the `ht
 |--|--|
 | *Uri* | The URI to authenticate with. |
 | *RequestHeaders* | Using the HTTP standard `Authorization` header or any custom header supported by the web service. |
-| *Options* | Using the HTTP standard `Authorization` header.<br />If you want to use Azure Active Directory (Azure AD) authentication, you must use an HTTPS URI for the request and set the following values:<br />* `azure_active_directory` to `Active Directory Integrated`<br />* `AadResourceId` to the AAD ResourceId value of the target web service. |
+| *Options* | Using the HTTP standard `Authorization` header.<br />If you want to use Azure Active Directory (Azure AD) authentication, you must use an HTTPS URI for the request and set the following values:<br />* `azure_active_directory` to `Active Directory Integrated`<br />* `AadResourceId` to the Azure AD ResourceId value of the target web service. |
 
 > [!WARNING]
 > Be extra careful not to send secret information, such as
@@ -78,7 +78,7 @@ custom headers:
 | Name | Description |
 |--|--|
 | `x-ms-client-request-id` | A correlation ID that identifies the request. Multiple invocations of the plugin in the same query will all have the same ID. |
-| `x-ms-readonly` | A flag indicating that the processor of this request should not make any persistent changes. |
+| `x-ms-readonly` | A flag indicating that the processor of this request shouldn't make any persistent changes. |
 
 > [!WARNING]
 > The `x-ms-readonly` flag is set for every HTTP request sent by the plugin
@@ -90,7 +90,7 @@ custom headers:
 
 ## Examples
 
-The following example retrieves the a canonical list of country codes:
+The following example retrieves the canonical list of country codes:
 
 <!-- csl -->
 ```kusto
