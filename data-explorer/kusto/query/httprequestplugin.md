@@ -43,7 +43,7 @@ Both plugins return a table that has a single record with the following dynamic 
 * *ResponseHeaders*: A property bag with the response header.
 * *ResponseBody*: The response body parsed as a value of type `dynamic`.
 
-## Prerequirements
+## Prerequisites
 
 Before you use the `http_request` and `http_request_post` plugins, make sure that requests meet the following requirements:
 

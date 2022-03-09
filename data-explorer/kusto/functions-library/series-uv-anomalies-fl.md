@@ -34,7 +34,7 @@ The function `series_uv_anomalies_fl()` detects anomalies in time series by call
 
 * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
 * This function calls the anomaly detection service endpoint and requires:
-    * Enable the [http_request_post() plugin](https://kusto.azurewebsites.net/docs/kusto/query/httprequestplugin.html) on the cluster.
+    * Enable the [http_request plugin / http_request_post plugin](../query/httprequestplugin.md) on the cluster.
     * Modify the [callout policy](../management/calloutpolicy.md) for type `webapi` to allow accessing the service endpoint.
 * You must [obtain a key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
 
