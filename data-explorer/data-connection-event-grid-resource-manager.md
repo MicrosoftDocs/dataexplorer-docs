@@ -98,6 +98,13 @@ The following example shows an Azure Resource Manager template for adding an Eve
                 "description": "Specifies the data format"
             }
         },
+             "databaseRouting_type": {
+            "type": "string",
+            "defaultValue": "Single",
+            "metadata": {
+                "description": "Specifies the database routing type: Single or Multi. The data connection belongs to a specific database. Hence this database is the data connection's default database routing. In order to send the data to another database, you can use the "Database" EventData property. To do so, you must first allow routing the data to multiple databases by setting the databaseRouting_type to Multi."
+            }
+        },
         "dataconnections_kustodc_name": {
             "type": "string",
             "defaultValue": "kustodc",
@@ -141,7 +148,8 @@ The following example shows an Azure Resource Manager template for adding an Eve
                 "consumerGroup": "[parameters('consumergroup_default_name')]",
                 "tableName": "[parameters('tables_kustotable_name')]",
                 "mappingRuleName": "[parameters('mapping_kustomapping_name')]",
-                "dataFormat": "[parameters('dataformat_type')]"
+                "dataFormat": "[parameters('dataformat_type')]",
+                "databaseRouting": "[parameters('databaseRouting_type')]"
             }
         }
     ]
