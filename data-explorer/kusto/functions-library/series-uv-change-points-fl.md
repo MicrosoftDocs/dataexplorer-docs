@@ -35,7 +35,7 @@ The function `series_uv_change_points_fl()` finds change points in time series b
 
 * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
 * This function calls the anomaly detection service endpoint and requires:
-    * Enable the [http_request plugin / http_request_post plugin](../query/httprequestplugin.md) on the cluster.
+    * Enable the [http_request plugin / http_request_post plugin](../query/http-request-plugin.md) on the cluster.
     * Modify the [callout policy](../management/calloutpolicy.md) for type `webapi` to allow accessing the service endpoint.
 * You must [obtain a key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
 

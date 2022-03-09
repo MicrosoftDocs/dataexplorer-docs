@@ -34,7 +34,7 @@ The function `series_uv_anomalies_fl()` detects anomalies in time series by call
 
 * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
 * This function calls the anomaly detection service endpoint and requires:
-    * Enable the [http_request plugin / http_request_post plugin](../query/httprequestplugin.md) on the cluster.
+    * Enable the [http_request plugin / http_request_post plugin](../query/http-request-plugin.md) on the cluster.
     * Modify the [callout policy](../management/calloutpolicy.md) for type `webapi` to allow accessing the service endpoint.
 * You must [obtain a key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
 
@@ -167,8 +167,8 @@ ts
 
 The following graph shows anomalies detected by the Univariate Anomaly Detection API on TS1. You can also select TS2 or TS3 in the chart filter box.
 
-![Graph showing anomalies using the Univariate API on a time series.](images/series-uv-anomalies-fl/uv-anomalies-example-2.png)
+![Graph showing anomalies using the Univariate A P I on a time series.](images/series-uv-anomalies-fl/uv-anomalies-example-2.png)
 
 The following graph shows the anomalies detected by native function on TS1.
 
-![Graph showing anomalies using ADX native function on a time series.](images/series-uv-anomalies-fl/adx-anomalies-example-2.png)
+![Graph showing anomalies using the native function on a time series.](images/series-uv-anomalies-fl/native-anomalies-example-2.png)
