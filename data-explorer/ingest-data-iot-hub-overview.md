@@ -28,6 +28,7 @@ Ingestion properties instruct the ingestion process where to route the data and 
 
 |Property |Description|
 |---|---|
+| Database | Name (case sensitive) of the target database. This property can be used if you want to send the data to a different database than the database the data connection was created on (the default database). To route the data to multiple databases, you must first set up the connection as a multi-database connection. Please refer to the Events routing section below for more details. |
 | Table | Name (case sensitive) of the existing target table. Overrides the `Table` set on the `Data Connection` pane. |
 | Format | Data format. Overrides the `Data format` set on the `Data Connection` pane. |
 | IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
@@ -43,6 +44,10 @@ You can also specify target table properties for each event, using event propert
 
 > [!Note]
 > If **My data includes routing info** selected, you must provide the necessary routing information as part of the events properties.
+
+An IoT hub data connection is created within the context of a specific database. Hence this database is the data connection's default database routing. To send the data to a different database, set the "Database" [ingestion property](#ingestion-properties) and set the data connection as a Multi database data connection.
+Routing data to another database is disabled by default (not allowed).
+Setting a database [ingestion properties](#ingestion-properties) that is different than the data connection's database, without allowing data routing to multiple databases (setting the connection as a Multi database data connection), will cause the ingestion to fail.
 
 ## Event system properties mapping
 
