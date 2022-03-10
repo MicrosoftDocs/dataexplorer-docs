@@ -87,6 +87,16 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     | Shared access policy | The name of the shared access policy. Must have read permissions |
     | Consumer group |  The consumer group defined in the IoT Hub built-in endpoint |
     | Event system properties | The [IoT Hub event system properties](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties.|
+    
+#### Target database (Multi database data connection)
+
+An IoT hub data connection belongs to a specific database. Hence this database is the data connection's default database routing. You can override the default target database by using the "Database" ingestion property [https://docs.microsoft.com/en-us/azure/data-explorer/ingest-data-event-hub-overview#ingestion-properties] of the event. To do so, you must first **allow** routing the data to multiple databases (set the connection as Multi database data connection). 
+To set the connection as Multi database data connection, you must be a user, group, service principal, or managed identity with at least **contributor** role on the cluster (which have write permission on the cluster).
+
+> [!NOTE]
+> Routing data to another database is disabled by default (not allowed). Setting a database property that is different than the data connection's database, without allowing data routing to multiple databases (setting the connection as a Multi database data connection), will cause the ingestion to fail.
+
+
 #### Target table
 
 There are two options for routing the ingested data: *static* and *dynamic*. 
