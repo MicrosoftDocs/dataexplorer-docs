@@ -12,12 +12,14 @@ ms.date: 02/28/2022
 
 Calculate distances between pairs of entites based on multiple nominal and numerical variables.
 
-The function `pairwise_dist_fl()`calculates multivariate distance between datapoints belonging to the same partition, taking into account nominal and numerical variables. 
-- All string fields are considered nominal variables; the distance is equal to 1 if the values are different, and 0 if they are the same.
+The function `pairwise_dist_fl()` calculates multivariate distance between datapoints belonging to the same partition, taking into account nominal and numerical variables. 
+- All string fields (besides entity and partition names) are considered nominal variables; the distance is equal to 1 if the values are different, and 0 if they are the same.
 - All numerical fields are considered numerical variables. They are normalized by transforming to z-scores and the distance is calculated as absolute value of the difference.
-The total multivariate distance between datapoints is calculated as the sum of distances between variables.
+The total multivariate distance between datapoints is calculated as the average of distances between variables.
 
-[TBD] Suggested usage XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Distance close to 0 means that the entities are very similar and distance above 1 means they are very different. In the same way, entity with average distance close to or above 1 indicates that it is different from many other entities in the partition - thus indicating potential outlier.
+
+The output of the function is pairwise distances between entities under the same partition. It can be used as is to look for similar or different pairs (e.g. entities with minimal distant share many common features), easily transoformed to a distance matrix (as shown in the usage sample below) or used as input for clustering or outlier detection algorithms.
 
 > [!NOTE]
 > This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
@@ -81,7 +83,7 @@ let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
             project d = generic_dist(pack_array(a), pack_array(a1))
             | summarize d = make_list(d)
         )
-        | extend dist = floor(array_sum(d)-1.0, 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag
+        | extend dist = floor((1.0*array_sum(d)-1.0)/array_length(d), 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag and normalizes by number of features        
         | project-away d
         | where entity != entity1
         | sort by _partition asc, entity asc, dist asc
@@ -169,7 +171,7 @@ let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
             project d = generic_dist(pack_array(a), pack_array(a1))
             | summarize d = make_list(d)
         )
-        | extend dist = floor(array_sum(d)-1.0, 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag
+        | extend dist = floor((1.0*array_sum(d)-1.0)/array_length(d), 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag and normalizes by number of features        
         | project-away d
         | where entity != entity1
         | sort by _partition asc, entity asc, dist asc
@@ -214,17 +216,16 @@ raw_data
 | evaluate pivot (entity, max(dist), entity1) | sort by entity1 asc
 ```
 ```kusto
-| entity1  | Andy   | Betsy  | Cindy   | Dan    | Elmie   | Fanny  | Godzilla | Hannie  |
-|----------|--------|--------|---------|--------|---------|--------|----------|---------| ...
-| Andy     |        | 2.4781 | 2.8875  | 1.321  | 3.3905  | 2.5914 | 8.461    | 4.3856  |
-| Betsy    | 2.4781 |        | 2.9124  | 3.2961 | 4.4154  | 0.1133 | 8.4361   | 3.4104  |
-| Cindy    | 2.8875 | 2.9124 |         | 4.2086 | 2.5029  | 2.7991 | 10.3486  | 1.498   |
-| Dan      | 1.321  | 3.2961 | 4.2086  |        | 4.7116  | 3.4094 | 7.1399   | 5.7066  |
-| Elmie    | 3.3905 | 4.4154 | 2.5029  | 4.7116 |         | 4.3021 | 10.8516  | 1.0956  |
-| Fanny    | 2.5914 | 0.1133 | 2.7991  | 3.4094 | 4.3021  |        | 8.5494   | 3.2971  |
-| Godzilla | 8.461  | 8.4361 | 10.3486 | 7.1399 | 10.8516 | 8.5494 |          | 10.8466 |
-| Hannie   | 4.3856 | 3.4104 | 1.498   | 5.7066 | 1.0956  | 3.2971 | 10.8466  |         |
-|----------|--------|--------|---------|--------|---------|--------|----------|---------| ...
+| entity1  | Andy   | Betsy  | Cindy  | Dan    | Elmie  | Fanny  | Godzilla | Hannie |
+|----------|--------|--------|--------|--------|--------|--------|----------|--------|...
+| Andy     |        | 0.354  | 0.4125 | 0.1887 | 0.4843 | 0.3702 | 1.2087   | 0.6265 |
+| Betsy    | 0.354  |        | 0.416  | 0.4708 | 0.6307 | 0.0161 | 1.2051   | 0.4872 |
+| Cindy    | 0.4125 | 0.416  |        | 0.6012 | 0.3575 | 0.3998 | 1.4783   | 0.214  |
+| Dan      | 0.1887 | 0.4708 | 0.6012 |        | 0.673  | 0.487  | 1.0199   | 0.8152 |
+| Elmie    | 0.4843 | 0.6307 | 0.3575 | 0.673  |        | 0.6145 | 1.5502   | 0.1565 |
+| Fanny    | 0.3702 | 0.0161 | 0.3998 | 0.487  | 0.6145 |        | 1.2213   | 0.471  |
+| Godzilla | 1.2087 | 1.2051 | 1.4783 | 1.0199 | 1.5502 | 1.2213 |          | 1.5495 |
+| Hannie   | 0.6265 | 0.4872 | 0.214  | 0.8152 | 0.1565 | 0.471  | 1.5495   |        |...
 .
 .
 .
@@ -232,7 +233,7 @@ raw_data
 ---
 
 Looking at entities of two different types, we would like to calculate distance between entities belonging to the same type, by taking into account both nominal variables (such as gender or preferred accessory) and numerical variables (such as number of limbs, height and weight). The numerical variables are on different scales and obviously need to be centralized and scaled - which is done automatically. The output is pairs of entities under the same partition with calculated multivariate distance. This could be analyzed directly, visualized as distance matrix or scatterplot, or used as input data for outlier detection (most straightforwardly, by calculating mean distance per entity, with entities with high values indicating global outliers).
-For example, when adding optional visualization using distance matrix as suggested above, we receive the table as in the sample shown below. From this sample we can learn that some pairs of entities have low distance and thus are similar (e.g. Betsy and Fanny) and some have high distance (e.g. Godzilla and Elmie). This output can further be used to calculate average distance per entity. High average distance might indicate global outliers. For example, we can see that Godzilla has high distance from others on the average, thus being a probable global outlier.
+For example, when adding optional visualization using distance matrix as suggested above, we receive the table as in the sample shown below. From this sample we can learn that some pairs of entities have low distance (close to 0) and thus are similar (e.g. Betsy and Fanny) and some have high distance (1 or above) and thus are very different (e.g. Godzilla and Elmie). This output can further be used to calculate average distance per entity. High average distance might indicate global outliers. For example, we can see that Godzilla has high distance from others on the average, thus being a probable global outlier.
 
 
 ---
