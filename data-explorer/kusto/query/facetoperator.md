@@ -24,7 +24,7 @@ An additional table can be created by using the `with` clause.
 
 Multiple tables: one for the `with` clause, and one for each column.
 
-## Example 
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
