@@ -32,14 +32,14 @@ Using this feature requires an Azure AD Premium license. To find the right licen
 
 1. Browse to **Azure Active Directory** > **Security** > **Conditional Access**.
 
-    :::image type="content" source="media/conditional-access/configure-select-conditional-access.png" alt-text="Select the isolated compute SKU.":::
+    :::image type="content" source="media/conditional-access/configure-select-conditional-access.png" alt-text="Screenshot of the Security page, showing the Conditional Access tab.":::
 
 1. Select **New policy**.
 1. Give your policy a name. We recommend that organizations create a meaningful standard for the names of their policies.
 1. Under **Assignments**, select **Users and groups**.
     1. Under **Include** > **Select users and groups**, select **Users and groups**, add the user or group you want to include for Conditional Access, and then select **Select**.
 
-    :::image type="content" source="media/conditional-access/configure-assign-user.png" alt-text="Select the isolated compute SKU.":::
+    :::image type="content" source="media/conditional-access/configure-assign-user.png" alt-text="Screenshot of the users and groups section, showing the assignment of users.":::
 
 1. Under **Cloud apps or actions**, select **Cloud apps**.
     1. Under **Include**, select **Select apps** to see a list of all apps available for Conditional Access. Select **Azure Data Explorer** > **Select**, and then select **Done**.
@@ -47,23 +47,23 @@ Using this feature requires an Azure AD Premium license. To find the right licen
     > [!TIP]
     > Please make sure you select the Azure Data Explorer app with the following GUID: .
 
-    :::image type="content" source="media/conditional-access/configure-select-apps.png" alt-text="Select the isolated compute SKU.":::
+    :::image type="content" source="media/conditional-access/configure-select-apps.png" alt-text="Screenshot of the cloud apps section, showing the selection of the Azure Data Explorer app.":::
 
 1. Under **Conditions**, set the conditions you want to apply for all device platforms. For more information, see [Azure Active Directory Conditional Access : Conditions](/azure/active-directory/conditional-access/concept-conditional-access-conditions).
 
-    :::image type="content" source="media/conditional-access/configure-select-conditions.png" alt-text="Select the isolated compute SKU.":::
+    :::image type="content" source="media/conditional-access/configure-select-conditions.png" alt-text="Screenshot of the conditions section, showing the assignment of conditions.":::
 
 1. Under **Access controls**, select **Grant**, select **Require multi-factor authentication**, and then select **Select**.
 
-    :::image type="content" source="media/conditional-access/configure-grant-access.png" alt-text="Select the isolated compute SKU.":::
+    :::image type="content" source="media/conditional-access/configure-grant-access.png" alt-text="Screenshot of the access controls section, showing the granting access requirements.":::
 
 1. Set **Enable policy** to **On**, and then select **Save**.
 
-    :::image type="content" source="media/conditional-access/configure-enforce-mfa.png" alt-text="Select the isolated compute SKU.":::
+    :::image type="content" source="media/conditional-access/configure-enforce-mfa.png" alt-text="Screenshot of the enable policy section, showing the policy being turned on.":::
 
 1. Verify the policy by asking an assigned user to access the [Web UI](https://dataexplorer.azure.com/). The user should be prompted for MFA.
 
-     :::image type="content" source="media/conditional-access/configure-test-policy.png" alt-text="Select the isolated compute SKU.":::
+     :::image type="content" source="media/conditional-access/configure-test-policy.png" alt-text="Screenshot of the Web U I, showing the M F A prompt.":::
 
 ## Next steps
 
