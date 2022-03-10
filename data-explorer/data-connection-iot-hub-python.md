@@ -67,11 +67,12 @@ location = "Central US"
 table_name = "StormEvents"
 mapping_rule_name = "StormEvents_CSV_Mapping"
 data_format = "csv"
+database_routing = "Multi"
 
 #Returns an instance of LROPoller, check https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.data_connections.create_or_update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name, data_connection_name=data_connection_name,
                                             parameters=IotHubDataConnection(iot_hub_resource_id=iot_hub_resource_id, shared_access_policy_name=shared_access_policy_name, 
-                                                                                consumer_group=consumer_group, table_name=table_name, location=location, mapping_rule_name=mapping_rule_name, data_format=data_format))
+                                                                                consumer_group=consumer_group, table_name=table_name, location=location, mapping_rule_name=mapping_rule_name, data_format=data_format, database_routing=database_routing))
 ```
 
 |**Setting** | **Suggested value** | **Field description**|
@@ -91,5 +92,6 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | shared_access_policy_name | *iothubforread* | The name of the shared access policy that defines the permissions for devices and services to connect to IoT Hub. |
 | consumer_group | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
+| database_routing | *Multi* or *Single* | The default is *Single*. An event hub data connection belongs to a specific database. Hence this database is the data connection's default database routing. In order to send the data to another database, you can use the "Database" [ingestion property](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub-overview#ingestion-properties). To do so, you must first allow routing the data to multiple databases (set the databaseRouting as Multi). |
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-python](includes/data-explorer-data-connection-clean-resources-python.md)]
