@@ -36,13 +36,11 @@ Using this feature requires an Azure AD Premium license. To find the right licen
 
 1. Select **New policy**.
 1. Give your policy a name. We recommend that organizations create a meaningful standard for the names of their policies.
-1. Under **Assignments**, select **Users and groups**.
-    1. Under **Include** > **Select users and groups**, select **Users and groups**, add the user or group you want to include for Conditional Access, and then select **Select**.
+1. Under **Assignments**, select **Users and groups**. Under **Include** > **Select users and groups**, select **Users and groups**, add the user or group you want to include for Conditional Access, and then select **Select**.
 
     :::image type="content" source="media/conditional-access/configure-assign-user.png" alt-text="Screenshot of the users and groups section, showing the assignment of users.":::
 
-1. Under **Cloud apps or actions**, select **Cloud apps**.
-    1. Under **Include**, select **Select apps** to see a list of all apps available for Conditional Access. Select **Azure Data Explorer** > **Select**, and then select **Done**.
+1. Under **Cloud apps or actions**, select **Cloud apps**. Under **Include**, select **Select apps** to see a list of all apps available for Conditional Access. Select **Azure Data Explorer** > **Select**, and then select **Done**.
 
     > [!TIP]
     > Please make sure you select the Azure Data Explorer app with the following GUID: .
