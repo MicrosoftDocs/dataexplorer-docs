@@ -63,10 +63,11 @@ var location = "Central US";
 //The table and column mapping are created as part of the Prerequisites
 var tableName = "StormEvents";
 var mappingRuleName = "StormEvents_CSV_Mapping";
-var dataFormat = DataFormat.CSV;
+var dataFormat = EventHubDataFormat.CSV;
 var compression = "None";
+var databaseRouting = "Multi";
 await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, dataConnectionName, 
-    new EventHubDataConnection(eventHubResourceId, consumerGroup, location: location, tableName: tableName, mappingRuleName: mappingRuleName, dataFormat: dataFormat, compression: compression));
+    new EventHubDataConnection(eventHubResourceId, consumerGroup, location: location, tableName: tableName, mappingRuleName: mappingRuleName, dataFormat: dataFormat, compression: compression, databaseRouting: databaseRouting));
 ```
 
 |**Setting** | **Suggested value** | **Field description**|
@@ -86,6 +87,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | consumerGroup | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
 | compression | *Gzip* or *None* | The type of data compression. |
+| databaseRouting | *Multi* or *Single* | The default is *Single*. An event hub data connection belongs to a specific database. Hence this database is the data connection's default database routing. In order to send the data to another database, you can use the "Database" [ingestion property](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub-overview#ingestion-properties). To do so, you must first allow routing the data to multiple databases (set the databaseRouting as Multi). |
 
 ## Generate data
 
