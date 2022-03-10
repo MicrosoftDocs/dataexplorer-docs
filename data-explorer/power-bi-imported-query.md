@@ -22,6 +22,7 @@ You need the following to complete this article:
 
 * An organizational email account that is a member of Azure Active directory, so you can connect to the [Azure Data Explorer help cluster](https://dataexplorer.azure.com/clusters/help/databases/samples).
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**).
+* [Power BI Desktop - Alternate Download Link](https://www.microsoft.com/download/details.aspx?id=58494).
 * [Azure Data Explorer desktop app](kusto/tools/kusto-explorer.md).
 
 ## Get data from Azure Data Explorer
