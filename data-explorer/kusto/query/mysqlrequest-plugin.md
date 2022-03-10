@@ -11,10 +11,10 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results. The query may return more then one rowset, but only the first rowset is made available for the rest of the Kusto query. 
+The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results. The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query.
 
 The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
- 
+
 > [!IMPORTANT]
 > The `mysql_request` plugin is disabled by default.
 > To enable the plugin, run the [`.enable plugin mysql_request` command](../management/enable-plugin.md). To see which plugins are enabled, use [`.show plugin` management commands](../management/show-plugins.md).
@@ -61,14 +61,14 @@ The following example shows an `.alter callout policy` command for `mysql` *Call
 
 ## Username and password authentication
 
-The `mysql_request` plugin only supports username and password authentication to the MySQL server endpoint and doesn't integrate with Azure Active Directory authentication. 
+The `mysql_request` plugin only supports username and password authentication to the MySQL server endpoint and doesn't integrate with Azure Active Directory authentication.
 
 The username and password are provided as part of the connections string using the following parameters:
 
 `User ID=...; Password=...;`
-    
+
 > [!WARNING]
-> Confidential or guarded information should be obfuscated from connection strings and queries so that they are omitted from any Kusto tracing. 
+> Confidential or guarded information should be obfuscated from connection strings and queries so that they are omitted from any Kusto tracing.
 > For more information, see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Encryption and server validation
@@ -90,7 +90,6 @@ Where:
 
 ## Examples
 
-
 ### SQL query to Azure MySQL DB
 
 The following example sends a SQL query to an Azure MySQL database. It retrieves all records from `[dbo].[Table]`, and then processes the results.
@@ -103,7 +102,7 @@ evaluate mysql_request(
     'Server=contoso.mysql.database.azure.com; Port = 3306;'
     'Database=Fabrikam;'
     h'UID=USERNAME;'
-    h'Pwd=PASSWORD;', 
+    h'Pwd=PASSWORD;',
     'select * from [dbo].[Table]')
 | where Id > 0
 | project Name
@@ -118,7 +117,7 @@ evaluate mysql_request(
     'Server=contoso.mysql.database.azure.com; Port = 3306;'
     'Database=Fabrikam;'
     h'UID=USERNAME;'
-    h'Pwd=PASSWORD;', 
+    h'Pwd=PASSWORD;',
     'select * from [dbo].[Table]')
 | where Id > 0
 | project Name
@@ -136,7 +135,7 @@ evaluate mysql_request(
     'Server=contoso.mysql.database.azure.com; Port = 3306;'
     'Database=Fabrikam;'
     h'UID=USERNAME;'
-    h'Pwd=PASSWORD;', 
+    h'Pwd=PASSWORD;',
     'select *, @param0 as dt from [dbo].[Table]',
     dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)}))
 | where Id > 0
@@ -147,8 +146,7 @@ evaluate mysql_request(
 
 The following example sends a SQL query to an Azure MySQL database
 retrieving all records from `[dbo].[Table]`, while selecting only specific columns.
-It uses an explicit schema definition that allow various optimizations to be evaluated before the 
-actual query against the server is run.
+It uses an explicit schema definition that allows various optimizations to be evaluated before the actual query against the server is run.
 
 ```kusto
 evaluate mysql_request(
