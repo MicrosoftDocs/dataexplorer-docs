@@ -24,7 +24,7 @@ Use [Azure Data Share](/azure/data-share/) to send and manage invitations and sh
 You can configure data sharing for the following:
 
 * The entire database (default).
-* Specific tables - [Table level sharing](follower.md#table-level-sharing).
+* Specific tables - [Table level sharing](#sharing-tables).
 
 > [!Note]
 > When the sharing relationship is established, Azure Data Share creates a symbolic link between the provider and consumer's Azure Data Explorer cluster. If the data provider revokes access, the symbolic link is deleted, and the shared database(s) are no longer available to the data consumer.
@@ -67,7 +67,7 @@ Use the following steps to share tables:
     |--|--|--|
     | *accountName* | The name of the provider's Azure Data Share account. |  |
     | *location* | The location of all the resources. The leader and the follower must be in the same location. |  |
-    | *shareName* | The resource ID of the leader cluster. |  |
+    | *shareName* | The name of the share that will be created on the data share account. |  |
     | *recipientEmail* | The email of the Azure Data Share receiver. |  |
     | *databaseName* | The name of provider's database. |  |
     | *databaseResourceId* | The resource ID of the provider's database. |  |
@@ -178,3 +178,4 @@ The data consumer can now go to their Azure Data Explorer cluster to grant user 
 
 * [Azure Data Share documentation](/azure/data-share/)
 * For information about follower cluster, see [follower cluster](follower.md)
+
