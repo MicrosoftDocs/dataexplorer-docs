@@ -42,7 +42,11 @@ When setting up a blob storage connection to Azure Data Explorer cluster, specif
 This setup is the default routing for your data, sometimes referred to as `static routing`.
 You can also specify target table properties for each blob, using blob metadata. The data will dynamically route, as specified by [ingestion properties](#ingestion-properties).
 
-The following example shows you how to set ingestion properties on the blob metadata before uploading it. Blobs are routed to different tables.
+The example below shows you how to set ingestion properties on the blob metadata before uploading it. Blobs are routed to different tables.
+
+In addition, you can specify the target database. An event grid data connection is created within the context of a specific database. Hence this database is the data connection's default database routing. To send the data to a different database, set the "KustoDatabase" ingestion property and set the data connection as a Multi database data connection.
+Routing data to another database is disabled by default (not allowed).
+Setting a database ingestion property that is different than the data connection's database, without allowing data routing to multiple databases (setting the connection as a Multi database data connection), will cause the ingestion to fail.
 
 For more information, see [upload blobs](#upload-blobs).
 
@@ -53,6 +57,7 @@ blob.Metadata.Add("rawSizeBytes", "4096"); // the uncompressed size is 4096 byte
 blob.Metadata.Add("kustoTable", "Events");
 blob.Metadata.Add("kustoDataFormat", "json");
 blob.Metadata.Add("kustoIngestionMappingReference", "EventsMapping");
+blob.Metadata.Add("KustoDatabase", "AnotherDB");
 blob.UploadFromFile(jsonCompressedLocalFileName);
 ```
 
