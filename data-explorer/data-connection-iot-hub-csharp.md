@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 10/07/2019
 ---
 
-# Create an IoT Hub data connection for Azure Data Explorer by using C# (Preview)
+# Create an IoT Hub data connection for Azure Data Explorer by using C\# (Preview)
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-iot-hub.md)
@@ -30,7 +30,7 @@ In this article, you create an IoT Hub data connection for Azure Data Explorer b
 
 [!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
-## Add an IoT Hub data connection 
+## Add an IoT Hub data connection
 
 The following example shows you how to add an IoT Hub data connection programmatically. See [connect Azure Data Explorer table to IoT Hub](ingest-data-iot-hub.md#connect-azure-data-explorer-table-to-iot-hub) for adding an Iot Hub data connection using the Azure portal.
 
@@ -87,6 +87,6 @@ await kustoManagementClient.DataConnections.CreateOrUpdate(resourceGroupName, cl
 | sharedAccessPolicyName | *iothubforread* | The name of the shared access policy that defines the permissions for devices and services to connect to IoT Hub. |
 | consumerGroup | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
-| databaseRouting | *Multi* or *Single* | The default is *Single*. An event hub data connection belongs to a specific database. Hence this database is the data connection's default database routing. In order to send the data to another database, you can use the "Database" [ingestion property](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub-overview#ingestion-properties). To do so, you must first allow routing the data to multiple databases (set the databaseRouting as Multi). |
+| databaseRouting | *Multi* or *Single* | The default is *Single*. An event hub data connection belongs to a specific database. Hence this database is the data connection's default database routing. In order to send the data to another database, you can use the "Database" [ingestion property](ingest-data-event-hub-overview.md#ingestion-properties). To do so, you must first allow routing the data to multiple databases (set the databaseRouting as Multi). |
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]

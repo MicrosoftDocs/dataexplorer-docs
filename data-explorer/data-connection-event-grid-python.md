@@ -98,7 +98,7 @@ print(poller.result())
 | data_connection_name | *myeventhubconnect* | The desired name of your data connection.|
 | table_name | *StormEvents* | The name of the target table in the target database.|
 | mapping_rule_name | *StormEvents_CSV_Mapping* | The name of your column mapping related to the target table.|
-| database_routing | *Multi* or *Single* | The default is *Single*. An event hub data connection belongs to a specific database. Hence this database is the data connection's default database routing. In order to send the data to another database, you can use the "Database" [ingestion property](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub-overview#ingestion-properties). To do so, you must first allow routing the data to multiple databases (set this database_routing property as Multi). |
+| database_routing | *Multi* or *Single* | The default is *Single*. An event hub data connection belongs to a specific database. Hence this database is the data connection's default database routing. In order to send the data to another database, you can use the "Database" [ingestion property](ingest-data-event-hub-overview.md#ingestion-properties). To do so, you must first allow routing the data to multiple databases (set this database_routing property as Multi). |
 | data_format | *csv* | The data format of the message.|
 | event_hub_resource_id | *Resource ID* | The resource ID of your event hub where the Event Grid is configured to send events. |
 | storage_account_resource_id | *Resource ID* | The resource ID of your storage account that holds the data for ingestion. |
