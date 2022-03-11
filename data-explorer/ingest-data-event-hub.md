@@ -3,7 +3,7 @@ title: 'Ingest data from event hub into Azure Data Explorer'
 description: 'In this article, you learn how to ingest (load) data into Azure Data Explorer from event hub.'
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 08/31/2021
+ms.date: 03/11/2022
 
 # Customer intent: As a database administrator, I want to ingest data into Azure Data Explorer from an event hub, so I can analyze streaming data.
 ---
@@ -131,13 +131,15 @@ Fill out the form with the following information, and then select **Create**.
 > [!NOTE]
 > If you have an existing data connection that is not using managed identities, we recommend updating it to use managed identities.
 
-#### Target database (Multi database data connection)
+#### Target database (multi-database data connection)
 
-An event hub data connection belongs to a specific database. Hence this database is the data connection's default database routing. You can override the default target database by using the "Database" ingestion property [https://docs.microsoft.com/en-us/azure/data-explorer/ingest-data-event-hub-overview#ingestion-properties] of the event. To do so, you must first **allow** routing the data to multiple databases (set the connection as Multi database data connection). 
-To set the connection as Multi database data connection, you must be a user, group, service principal, or managed identity with at least **contributor** role on the cluster (which have write permission on the cluster).
+Specifying a target database allows you to override the default configured in the data connection. For more information about database routing, see [Events routing](ingest-data-event-hub-overview.md#events-routing).
 
-> [!NOTE]
-> Routing data to another database is disabled by default (not allowed). Setting a database property that is different than the data connection's database, without allowing data routing to multiple databases (setting the connection as a Multi database data connection), will cause the ingestion to fail.
+Before you can set an alternate target database, you must first **allow** routing the data to multiple databases. Use the following steps to **allow** routing the data to alternate databases:
+
+1. In the Azure portal, browse to your cluster.
+1. Select **Databases** > **Data connections**.
+1. Create or edit a data connection and in the **Data connection** pane, under **Data routing settings**, turn on the allow routing data to other database (multi-database data connection) option.
 
 #### Target table
 

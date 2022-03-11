@@ -1,12 +1,12 @@
 ---
-title: 'Create an event hub data connection for Azure Data Explorer by using C#'
-description: In this article, you learn how to create an event hub data connection for Azure Data Explorer by using C#.
+title: 'Create an Event Hubs data connection for Azure Data Explorer by using C#'
+description: In this article, you learn how to create an Event Hubs data connection for Azure Data Explorer by using C#.
 ms.reviewer: lugoldbe
 ms.topic: how-to
 ms.date: 01/03/2022
 ---
 
-# Create an event hub data connection for Azure Data Explorer by using C#
+# Create an Event Hubs data connection for Azure Data Explorer by using C\#
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
@@ -16,7 +16,8 @@ ms.date: 01/03/2022
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
-In this article, you create an event hub data connection for Azure Data Explorer by using C#.
+
+In this article, you create an Event Hubs data connection for Azure Data Explorer by using C\#.
 
 ## Prerequisites
 
@@ -25,15 +26,15 @@ In this article, you create an event hub data connection for Azure Data Explorer
 * Create [a cluster and database](create-cluster-database-portal.md).
 * Create [table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
 * Set [database and table policies](database-table-policies-csharp.md) (optional).
-* Create an [event hub with data for ingestion](ingest-data-event-hub.md#create-an-event-hub). 
+* Create an [event hub with data for ingestion](ingest-data-event-hub.md#create-an-event-hub).
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
 [!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
-## Add an event hub data connection
+## Add an Event Hubs data connection
 
-The following example shows you how to add an event hub data connection programmatically. See [connect to the event hub](ingest-data-event-hub.md#connect-to-the-event-hub) for adding an event hub data connection using the Azure portal.
+The following example shows you how to add an Event Hubs data connection programmatically. See [connect to the event hub](ingest-data-event-hub.md#connect-to-the-event-hub) for adding an Event Hubs data connection using the Azure portal.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -53,8 +54,8 @@ var kustoManagementClient = new KustoManagementClient(credentials)
 
 var resourceGroupName = "testrg";
 //The cluster and database that are created as part of the Prerequisites
-var clusterName = "mykustocluster";
-var databaseName = "mykustodatabase";
+var clusterName = "mycluster";
+var databaseName = "mydatabase";
 var dataConnectionName = "myeventhubconnect";
 //The event hub that is created as part of the Prerequisites
 var eventHubResourceId = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.EventHub/namespaces/xxxxxx/eventhubs/xxxxxx";
@@ -66,7 +67,7 @@ var mappingRuleName = "StormEvents_CSV_Mapping";
 var dataFormat = EventHubDataFormat.CSV;
 var compression = "None";
 var databaseRouting = "Multi";
-await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, dataConnectionName, 
+await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, dataConnectionName,
     new EventHubDataConnection(eventHubResourceId, consumerGroup, location: location, tableName: tableName, mappingRuleName: mappingRuleName, dataFormat: dataFormat, compression: compression, databaseRouting: databaseRouting));
 ```
 
@@ -87,7 +88,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | consumerGroup | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
 | compression | *Gzip* or *None* | The type of data compression. |
-| databaseRouting | *Multi* or *Single* | The default is *Single*. An event hub data connection belongs to a specific database. Hence this database is the data connection's default database routing. In order to send the data to another database, you can use the "Database" [ingestion property](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub-overview#ingestion-properties). To do so, you must first allow routing the data to multiple databases (set the databaseRouting as Multi). |
+| databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set this to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set this to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-hub-overview.md#events-routing). |
 
 ## Generate data
 
@@ -105,7 +106,7 @@ var counter = 0;
 for (var i = 0; i < 10; i++)
 {
     // Create the data
-    var metric = new Metric { Timestamp = DateTime.UtcNow, MetricName = "Temperature", Value = rand.Next(-30, 50) }; 
+    var metric = new Metric { Timestamp = DateTime.UtcNow, MetricName = "Temperature", Value = rand.Next(-30, 50) };
     var data += JsonConvert.SerializeObject(metric) + Environment.NewLine;
     counter++;
 

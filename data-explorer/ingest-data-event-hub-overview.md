@@ -3,7 +3,7 @@ title: Ingest from event hub - Azure Data Explorer
 description: This article describes how to ingest data from Azure Event Hubs into Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 03/07/2022
+ms.date: 03/11/2022
 ---
 # Azure Event Hubs data connection
 
@@ -41,29 +41,36 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 
 |Property |Description|
 |---|---|
-| Table | Name (case sensitive) of the existing target table. Overrides the `Table` set on the `Data Connection` pane. |
+| Database | The case-sensitive name of the target database. By default, data is ingested into the target database configured in the data connection. Use this property override the default database and send data to a different database. To do so, you must first [set up the connection as a multi-database connection](#route-event-data-to-an-alternate-database). |
+| Table | The case-sensitive name of the existing target table. Overrides the `Table` set on the `Data Connection` pane. |
 | Format | Data format. Overrides the `Data format` set on the `Data Connection` pane. |
 | IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | Compression | Data compression, `None` (default), or `GZip` compression.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
 | Tags | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extents-overview.md#ingest-by-extent-tags) when using tags. |
-| Database | Name (case sensitive) of the target database. This property can be used if you want to send the data to a different database than the database the data connection was created on (the default database).
-To route the data to multiple databases, you must first set up the connection as a multi-database connection. Please refer to the Events routing section below for more details. |
 
 > [!NOTE]
 > Only events enqueued after you create the data connection are ingested.
 
 ## Events routing
 
-When you set up an event hub connection to Azure Data Explorer cluster, you specify target table properties (table name, data format, compression, and mapping). The default routing for your data is also referred to as `static routing`.
-You can also specify target table properties for each event, using event properties. The connection will dynamically route the data as specified in the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
+When you create a data connection to your cluster, you specify the the routing for where to send ingested data. The default routing is specified as a target database and table in the connection string. The default routing for your data is also referred to as *static routing*. You can specify a different routing for your data by using the event data properties.
 
-An event hub data connection is created within the context of a specific database. Hence this database is the data connection's default database routing. To send the data to a different database, set the "Database" [ingestion property](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub-overview#ingestion-properties) and set the data connection as a Multi database data connection.
-Routing data to another database is disabled by default (not allowed).
-Setting a database [ingestion property](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub-overview#ingestion-properties) that is different than the data connection's database, without allowing data routing to multiple databases (setting the connection as a Multi database data connection), will cause the ingestion to fail.
+### Route event data to an alternate database
 
-In the following example, set event hub details and send weather metric data to table `WeatherMetrics`.
-Data is in `json` format. `mapping1` is pre-defined on the table `WeatherMetrics`.
+Routing data to an alternate database is off by default. To send the data to a different database, you must first set the connection as a multi-database connection. You can do this in the [Azure portal](ingest-data-event-hub.md#target-database-multi-database-data-connection), [C#](data-connection-event-hub-csharp.md#add-an-event-hubs-data-connection), [Python](data-connection-event-hub-python.md#add-an-event-hub-data-connection), or an [ARM template](data-connection-event-hub-resource-manager.md#azure-resource-manager-template-for-adding-an-event-hub-data-connection). The user, group, service principal, or managed identity used to allow database routing must at least have the **contributor** role and write permissions on the cluster.
+
+To specify an alternate database, set the *Database* [ingestion property](#ingestion-properties).
+
+> [!WARNING]
+> Specifying an alternate database without setting the connection as a multi-database data connection will cause the ingestion to fail.
+
+### Route event data to an alternate table
+
+To specify an alternate table for each event, set the *Table*, *Format*, *Compression*, and mapping [ingestion properties](#ingestion-properties). The connection dynamically routes the ingested data as specified in the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
+
+The following example shows you how to set the event hub details and send weather metric data to alternate database (*MetricsDB*) and table (*WeatherMetrics*).
+The data is in JSON format and *mapping1* is pre-defined on table *WeatherMetrics*.
 
 ```csharp
 var eventHubNamespaceConnectionString=<connection_string>;
@@ -75,11 +82,11 @@ var data = JsonConvert.SerializeObject(metric);
 
 // Create the event and add optional "dynamic routing" properties
 var eventData = new EventData(Encoding.UTF8.GetBytes(data));
-eventData.Properties.Add("Database", "AnotherDB");
+eventData.Properties.Add("Database", "MetricsDB");
 eventData.Properties.Add("Table", "WeatherMetrics");
 eventData.Properties.Add("Format", "json");
 eventData.Properties.Add("IngestionMappingReference", "mapping1");
-eventData.Properties.Add("Tags", "['mydatatag']");
+eventData.Properties.Add("Tags", "['myDataTag']");
 
 // Send events
 var eventHubClient = EventHubClient.CreateFromConnectionString(eventHubNamespaceConnectionString, eventHubName);
