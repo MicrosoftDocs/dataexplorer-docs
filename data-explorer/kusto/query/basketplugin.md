@@ -52,8 +52,8 @@ The `basket` plugin returns frequent patterns that pass a ratio threshold. The d
 
 Each pattern is represented by a row in the results. The first column is the segment ID. The next two columns are the *count* and *percentage of rows*, from the original query that match the pattern. The remaining columns relate to the original query, with either a specific value from the column or a wildcard value, which is by default null, meaning a variable value.
 
-[!NOTE]
-The algorithm uses sampling to determine the initial frequent values, the results could slightly differ between multiple runs (values with frequency close to the threshold might be omitted)
+**Notes**
+The algorithm uses sampling to determine the initial frequent values, the results could slightly differ between multiple runs (values with frequency close to the threshold might be omitted).
 
 ## Example
 
