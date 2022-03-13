@@ -37,8 +37,8 @@ JSON serialization of the updated [query weak consistency policy object](./query
    "SuperSlackerNumberOfNodesThreshold": 5,
    "EnableMetadataPrefetch": false,
    "MaximumLagAllowedInMinutes": 10,
-   "RefreshPeriodInSeconds": 300}
-    ```
+   "RefreshPeriodInSeconds": 300
+   }```
 ```
 
 **Output**
