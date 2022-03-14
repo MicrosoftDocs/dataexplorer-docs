@@ -16,7 +16,7 @@ The total multivariate distance between data points is calculated as the average
 
 A distance close to 0 means that the entities are very similar and a distance above 1 means they're very different. Similarly, an entity with an average distance close to or above 1 indicates that it's different from many other entities in the partition, indicating a potential outlier.
 
-The output of the function is pairwise distances between entities under the same partition. It can be used as is to look for similar or different pairs (for example, entities with minimal distant share many common features), easily transformed to a distance matrix (as shown in the usage sample below) or used as input for clustering or outlier detection algorithms.
+The output of the function is pairwise distances between entities under the same partition. It can be used as-is to look for similar or different pairs. such as entities with minimal distances share many common features. It can also be easily transformed to a distance matrix (see the usage example) or used as input for clustering or outlier detection algorithms.
 
 > [!NOTE]
 > This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
