@@ -6,20 +6,20 @@ ms.author: orspodek
 ms.reviewer: andkar
 ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/28/2022
+ms.date: 03/03/2022
 ---
 # pairwise_dist_fl()
 
-Calculate distances between pairs of entites based on multiple nominal and numerical variables.
+Calculate pairwise distances between entities based on multiple nominal and numerical variables.
 
 The function `pairwise_dist_fl()` calculates multivariate distance between datapoints belonging to the same partition, taking into account nominal and numerical variables. 
-- All string fields (besides entity and partition names) are considered nominal variables; the distance is equal to 1 if the values are different, and 0 if they are the same.
-- All numerical fields are considered numerical variables. They are normalized by transforming to z-scores and the distance is calculated as absolute value of the difference.
+- All string fields (besides entity and partition names) are considered nominal variables; the distance is equal to 1 if the values are different, and 0 if they're the same.
+- All numerical fields are considered numerical variables. They're normalized by transforming to z-scores and the distance is calculated as absolute value of the difference.
 The total multivariate distance between datapoints is calculated as the average of distances between variables.
 
-Distance close to 0 means that the entities are very similar and distance above 1 means they are very different. In the same way, entity with average distance close to or above 1 indicates that it is different from many other entities in the partition - thus indicating potential outlier.
+Distance close to 0 means that the entities are very similar and distance above 1 means they're very different. In the same way, entity with average distance close to or above 1 indicates that it's different from many other entities in the partition - thus indicating potential outlier.
 
-The output of the function is pairwise distances between entities under the same partition. It can be used as is to look for similar or different pairs (e.g. entities with minimal distant share many common features), easily transoformed to a distance matrix (as shown in the usage sample below) or used as input for clustering or outlier detection algorithms.
+The output of the function is pairwise distances between entities under the same partition. It can be used as is to look for similar or different pairs (for example, entities with minimal distant share many common features), easily transformed to a distance matrix (as shown in the usage sample below) or used as input for clustering or outlier detection algorithms.
 
 > [!NOTE]
 > This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
@@ -30,8 +30,11 @@ The output of the function is pairwise distances between entities under the same
   
 ## Arguments
 
-* entity: column that contains the names or IDs of the entities for which the distances will be calculated
-* partition: column that contains the partition/scope, so the distances will be calculated for all pairs of entities under the same parition
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *entity* | string | &check; | The name of the input table column column containing the names or IDs of the entities for which the distances will be calculated. |
+| *partition* | string | &check; | The name of the input table column containing the partition/scope, so the distances will be calculated for all pairs of entities under the same partition. |
+
 ## Usage
 
 `pairwise_dist_fl` is a user-defined function. You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
@@ -215,6 +218,7 @@ raw_data
 | where _partition == 'Person' | sort by entity asc, entity1 asc
 | evaluate pivot (entity, max(dist), entity1) | sort by entity1 asc
 ```
+
 ```kusto
 | entity1  | Andy   | Betsy  | Cindy  | Dan    | Elmie  | Fanny  | Godzilla | Hannie |
 |----------|--------|--------|--------|--------|--------|--------|----------|--------|...
@@ -230,10 +234,10 @@ raw_data
 .
 .
 ```
+
 ---
 
 Looking at entities of two different types, we would like to calculate distance between entities belonging to the same type, by taking into account both nominal variables (such as gender or preferred accessory) and numerical variables (such as number of limbs, height and weight). The numerical variables are on different scales and obviously need to be centralized and scaled - which is done automatically. The output is pairs of entities under the same partition with calculated multivariate distance. This could be analyzed directly, visualized as distance matrix or scatterplot, or used as input data for outlier detection (most straightforwardly, by calculating mean distance per entity, with entities with high values indicating global outliers).
-For example, when adding optional visualization using distance matrix as suggested above, we receive the table as in the sample shown below. From this sample we can learn that some pairs of entities have low distance (close to 0) and thus are similar (e.g. Betsy and Fanny) and some have high distance (1 or above) and thus are very different (e.g. Godzilla and Elmie). This output can further be used to calculate average distance per entity. High average distance might indicate global outliers. For example, we can see that Godzilla has high distance from others on the average, thus being a probable global outlier.
-
+For example, when adding optional visualization using distance matrix as suggested above, we receive the table as in the sample shown below. From this sample we can learn that some pairs of entities have low distance (close to 0) and thus are similar (for example, Betsy and Fanny) and some have high distance (1 or above) and thus are very different (for example, Godzilla and Elmie). This output can further be used to calculate average distance per entity. High average distance might indicate global outliers. For example, we can see that Godzilla has high distance from others on the average, thus being a probable global outlier.
 
 ---

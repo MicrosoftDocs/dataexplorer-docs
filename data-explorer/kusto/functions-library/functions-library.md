@@ -61,7 +61,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [normality_test_fl()](normality-test-fl.md) | Performs the Normality Test. |
 | [mann_whitney_u_test_fl()](mann-whitney-u-test-fl.md) | Perform a Mann-Whitney U Test. |
 | [pair_probabilities_fl()](pair-probabilities-fl.md) | Calculate various probabilities and related metrics for a pair of categorical variables. |
-|[pairwise_dist_fl()](pairwise-dist-fl.md)| Calculate distances between pairs of entities based on multiple nominal and numerical variables. |
+|[pairwise_dist_fl()](pairwise-dist-fl.md)| Calculate pairwise distances between entities based on multiple nominal and numerical variables. |
 | [perm_fl()](perm-fl.md) | Calculate *P(n, k)*, the number of permutations for selection of k items out of n. |
 | [two_sample_t_test_fl()](two-sample-t-test-fl.md) | Perform the two sample t-test. |
 | [wilcoxon_test_fl()](wilcoxon-test-fl.md) | Perform the Wilcoxon Test. |
