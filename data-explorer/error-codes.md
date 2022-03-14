@@ -54,6 +54,7 @@ The following list contains error codes you may come across during [ingestion](i
 | BadRequest_IngestionPropertyNotSupportedInThisContext | Ingestion property isn't supported in this context.| Permanent |
 | BadRequest_InvalidBlobUri                        | Blob URI is invalid.      | Permanent          |
 | BadRequest_DataCapacityLimitReached              | Storage account has reached its data capacity limit.      | Permanent          |
+| BadRequest_InvalidManagedIdentity                | Managed Identity either doesn't exist or doesn't has the right permissions.      | Permanent          |
 
 ## Category: DataAccessNotAuthorized
 
