@@ -1,11 +1,7 @@
 ---
 title: 'Azure Data Explorer integration with Azure Data Factory'
 description: 'In this topic, integrate Azure Data Explorer with Azure Data Factory to use the copy, lookup, and command activities'
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: tomersh26
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/20/2020
 

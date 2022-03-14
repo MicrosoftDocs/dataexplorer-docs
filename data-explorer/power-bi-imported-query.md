@@ -1,10 +1,7 @@
 ---
 title: 'Visualize data from Azure Data Explorer with a Power BI imported query'
 description: 'In this article, you learn how to use one of the three options for visualizing data in Power BI: importing a query from Azure Data Explorer.'
-author: orspod
-ms.author: orspodek
 ms.reviewer: mblythe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 07/10/2019
 
@@ -25,6 +22,7 @@ You need the following to complete this article:
 
 * An organizational email account that is a member of Azure Active directory, so you can connect to the [Azure Data Explorer help cluster](https://dataexplorer.azure.com/clusters/help/databases/samples).
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**).
+* [Power BI Desktop - Alternate Download Link](https://www.microsoft.com/download/details.aspx?id=58494).
 * [Azure Data Explorer desktop app](kusto/tools/kusto-explorer.md).
 
 ## Get data from Azure Data Explorer

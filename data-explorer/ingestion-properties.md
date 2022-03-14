@@ -1,10 +1,7 @@
 ---
 title: Data ingestion properties for Azure Data Explorer
 description: Learn about the various data ingestion properties supported by Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: tzgitlin
-ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/19/2020
 ---

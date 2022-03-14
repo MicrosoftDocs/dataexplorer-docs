@@ -1,10 +1,7 @@
 ---
 title: Automatic stop of inactive clusters in Azure Data Explorer
 description: Learn when your cluster will be stopped using the Automatic stop feature, and how to enable/disable the Automatic stop.
-author: orspod
-ms.author: orspodek
 ms.reviewer: orhasban
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 11/03/2021
 ---

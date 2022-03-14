@@ -1,10 +1,7 @@
 ---
 title: series_fit_lowess_fl() - Azure Data Explorer
 description: This article describes the series_fit_lowess_fl() user-defined function in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/29/2020
 no-loc: LOWESS

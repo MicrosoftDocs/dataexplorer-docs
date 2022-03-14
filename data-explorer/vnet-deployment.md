@@ -1,10 +1,7 @@
 ---
 title: Deploy Azure Data Explorer into your Virtual Network
 description: Learn how to deploy Azure Data Explorer into your Virtual Network
-author: orspod
-ms.author: orspodek
 ms.reviewer: basaba
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/01/2022
 ---
@@ -94,6 +91,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | Event hub ingestion and service monitoring  | Azure Data Explorer subnet  | EventHub:443,5671  | TCP  |
 | Publish Metrics  | Azure Data Explorer subnet  | AzureMonitor:443 | TCP  |
 | Active Directory (if applicable) | Azure Data Explorer subnet | AzureActiveDirectory:443 | TCP |
+| Dependency on KeyVault | Azure Data Explorer subnet | AzureKeyVault:443 | TCP |
 | Certificate authority | Azure Data Explorer subnet | Internet:80 | TCP |
 | Internal communication  | Azure Data Explorer subnet  | Azure Data Explorer Subnet:All Ports  | All  |
 | Ports that are used for `sql\_request` and `http\_request` plugins  | Azure Data Explorer subnet  | Internet:Custom  | TCP  |
@@ -243,6 +241,7 @@ azureprofilerfrontdoor.cloudapp.net:443
 *.servicebus.windows.net:443,5671
 shoebox2.metrics.nsatc.net:443
 prod-dsts.dsts.core.windows.net:443
+*.vault.azure.net
 ocsp.msocsp.com:80
 *.windowsupdate.com:80
 ocsp.digicert.com:80
@@ -256,13 +255,15 @@ crl3.digicert.com:80
 ```
 
 > [!NOTE]
-> If you're using [Azure Firewall](/azure/firewall/overview), add **Network Rule** with the following properties:
 >
-> **Protocol**: TCP  
-> **Source Type**: IP Address  
-> **Source**: \*  
-> **Service Tags**: AzureMonitor  
-> **Destination Ports**: 443
+> * To restrict access for dependencies with a wildcard (*), use the API described in [How to discover dependencies automatically](vnet-deployment.md#how-to-discover-dependencies-automatically).
+> * If you're using [Azure Firewall](/azure/firewall/overview), add **Network Rule** with the following properties:
+>
+>     **Protocol**: TCP  
+>     **Source Type**: IP Address  
+>     **Source**: \*  
+>     **Service Tags**: AzureMonitor  
+>     **Destination Ports**: 443
 
 You also need to define the [route table](/azure/virtual-network/virtual-networks-udr-overview) on the subnet with the [management addresses](vnet-deployment.md#azure-data-explorer-management-ip-addresses) and [health monitoring addresses](vnet-deployment.md#health-monitoring-addresses) with next hop *Internet* to prevent asymmetric routes issues.
 
