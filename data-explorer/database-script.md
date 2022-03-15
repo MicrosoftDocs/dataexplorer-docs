@@ -264,7 +264,7 @@ Use the following settings:
 
 ## Troubleshooting
 
-Commands run by a script resource do not appear in the the results of the [.show commands-and-queries](/azure/data-explorer/kusto/management/commands-and-queries) command. You can trace the script execution using the [.show journal](azure/data-explorer/kusto/management/journal) command.
+Commands run by a script resource do not appear in the results of the [.show commands-and-queries](kusto/management/commands-and-queries.md) command. You can trace the script execution using the [.show journal](kusto/management/journal.md) command.
 
 ## Next steps
 
