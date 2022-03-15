@@ -243,4 +243,3 @@ For example, when adding an optional visualization using a distance matrix, you 
 
 The output can further be used to calculate the average distance per entity. A high average distance might indicate global outliers. For example, we can see that on average Godzilla has a high distance from the others indicating that it's a probable global outlier.
 
----
