@@ -3,7 +3,7 @@ title: Ingest from IoT Hub - Azure Data Explorer
 description: This article describes Ingest from IoT Hub in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 08/13/2020
+ms.date: 03/15/2022
 ---
 # IoT Hub data connection
 
@@ -39,15 +39,23 @@ Ingestion properties instruct the ingestion process where to route the data and 
 
 ## Events routing
 
-When setting up an IoT Hub connection to Azure Data Explorer cluster, you specify target table properties (table name, data format, and mapping). This setting is the default routing for your data, also referred to as static routing.
+When you create a data connection to your cluster, you specify the the routing for where to send ingested data. The default routing is to the target table specified in the connection string that is associated with the target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by using the event data properties.
+
+### Route event data to an alternate database
+
+Routing data to an alternate database is off by default. To send the data to a different database, you must first set the connection as a multi-database connection. You can do this in the Azure portal [Azure portal](ingest-data-iot-hub.md#target-database-multi-database-data-connection), [C#](data-connection-iot-hub-csharp.md#add-an-iot-hub-data-connection), [Python](data-connection-iot-hub-python.md#add-an-iot-hub-data-connection), or an [ARM template](data-connection-iot-hub-resource-manager.md#azure-resource-manager-template-for-adding-an-iot-hub-data-connection). The user, group, service principal, or managed identity used to allow database routing must at least have the **contributor** role and write permissions on the cluster.
+
+To specify an alternate database, set the *Database* [ingestion property](#ingestion-properties).
+
+> [!WARNING]
+> Specifying an alternate database without setting the connection as a multi-database data connection will cause the ingestion to fail.
+
+### Route event data to an alternate table
+
 You can also specify target table properties for each event, using event properties. The connection will dynamically route the data as specified in the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
 
 > [!Note]
 > If **My data includes routing info** selected, you must provide the necessary routing information as part of the events properties.
-
-An IoT hub data connection is created within the context of a specific database. Hence this database is the data connection's default database routing. To send the data to a different database, set the "Database" [ingestion property](#ingestion-properties) and set the data connection as a Multi database data connection.
-Routing data to another database is disabled by default (not allowed).
-Setting a database [ingestion properties](#ingestion-properties) that is different than the data connection's database, without allowing data routing to multiple databases (setting the connection as a Multi database data connection), will cause the ingestion to fail.
 
 ## Event system properties mapping
 

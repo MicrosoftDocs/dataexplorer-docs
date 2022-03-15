@@ -3,7 +3,7 @@ title: 'Ingest data from event hub into Azure Data Explorer'
 description: 'In this article, you learn how to ingest (load) data into Azure Data Explorer from event hub.'
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 03/11/2022
+ms.date: 03/15/2022
 
 # Customer intent: As a database administrator, I want to ingest data into Azure Data Explorer from an event hub, so I can analyze streaming data.
 ---

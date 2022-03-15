@@ -33,11 +33,11 @@ You can set the following properties:
 
 ## Events routing
 
-When you create a data connection to your cluster, you specify the the routing for where to send ingested data. The default routing is as target table in the connection string that is associated with a target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by using the event data properties.
+When you create a data connection to your cluster, you specify the the routing for where to send ingested data. The default routing is to the target table specified in the connection string that is associated with the target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by using the event data properties.
 
 ### Route event data to an alternate database
 
-Routing data to an alternate database is off by default. To send the data to a different database, you must first set the connection as a multi-database connection. You can do this in the Azure portal [Azure portal](ingest-data-event-hub.md#target-database-multi-database-data-connection), [C#](data-connection-event-hub-csharp.md#add-an-event-hubs-data-connection), [Python](data-connection-event-hubs-python.md#add-an-event-hub-data-connection), or an [ARM template](data-connection-event-hubs-resource-manager.md#azure-resource-manager-template-for-adding-an-event-hub-data-connection). The user, group, service principal, or managed identity used to allow database routing must at least have the **contributor** role and write permissions on the cluster.
+Routing data to an alternate database is off by default. To send the data to a different database, you must first set the connection as a multi-database connection. You can do this in the Azure portal [Azure portal](ingest-data-event-grid.md#create-an-event-grid-data-connection), [C#](data-connection-event-grid-csharp.md#add-an-event-grid-data-connection), [Python](data-connection-event-grid-python.md#add-an-event-grid-data-connection), or an [ARM template](data-connection-event-grid-resource-manager.md#azure-resource-manager-template-for-adding-an-event-grid-data-connection). The user, group, service principal, or managed identity used to allow database routing must at least have the **contributor** role and write permissions on the cluster.
 
 To specify an alternate database, set the *Database* [ingestion property](#ingestion-properties).
 

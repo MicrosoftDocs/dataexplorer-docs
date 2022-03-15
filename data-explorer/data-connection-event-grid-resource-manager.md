@@ -3,7 +3,7 @@ title: 'Create an Event Grid data connection for Azure Data Explorer by using Az
 description: In this article, you learn how to create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 03/15/2022
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template
