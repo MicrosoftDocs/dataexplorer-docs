@@ -9,8 +9,9 @@ ms.date: 03/03/2022
 
 Calculate pairwise distances between entities based on multiple nominal and numerical variables.
 
-The function `pairwise_dist_fl()` calculates the multivariate distance between data points belonging to the same partition, taking into account nominal and numerical variables. 
-- All string fields, besides entity and partition names, are considered nominal variables; the distance is equal to 1 if the values are different, and 0 if they're the same.
+The function `pairwise_dist_fl()` calculates the multivariate distance between data points belonging to the same partition, taking into account nominal and numerical variables.
+
+- All string fields, besides entity and partition names, are considered nominal variables. The distance is equal to 1 if the values are different, and 0 if they're the same.
 - All numerical fields are considered numerical variables. They're normalized by transforming to z-scores and the distance is calculated as absolute value of the difference.
 The total multivariate distance between data points is calculated as the average of the distances between variables.
 
@@ -29,7 +30,7 @@ The output of the function is pairwise distances between entities under the same
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *entity* | string | &check; | The name of the input table column column containing the names or IDs of the entities for which the distances will be calculated. |
+| *entity* | string | &check; | The name of the input table column containing the names or IDs of the entities for which the distances will be calculated. |
 | *partition* | string | &check; | The name of the input table column containing the partition or scope, so that the distances are calculated for all pairs of entities under the same partition. |
 
 ## Usage
@@ -234,7 +235,12 @@ raw_data
 
 ---
 
-Looking at entities of two different types, we would like to calculate distance between entities belonging to the same type, by taking into account both nominal variables (such as gender or preferred accessory) and numerical variables (such as the number of limbs, height, and weight). The numerical variables are on different scales and must be centralized and scaled, which is done automatically. The output is pairs of entities under the same partition with calculated multivariate distance. This can be analyzed directly, visualized as a distance matrix or scatterplot, or used as input data for outlier detection algorithm by simply calculating mean distance per entity, with entities with high values indicating global outliers.
-For example, when adding optional visualization using distance matrix as suggested above, we receive the table as in the sample shown below. From this sample we can learn that some pairs of entities have low distance (close to 0) and thus are similar (for example, Betsy and Fanny) and some have high distance (1 or above) and thus are very different (for example, Godzilla and Elmie). This output can further be used to calculate average distance per entity. High average distance might indicate global outliers. For example, we can see that Godzilla has high distance from others on the average, thus being a probable global outlier.
+Looking at entities of two different types, we would like to calculate distance between entities belonging to the same type, by taking into account both nominal variables (such as gender or preferred accessory) and numerical variables (such as the number of limbs, height, and weight). The numerical variables are on different scales and must be centralized and scaled, which is done automatically. The output is pairs of entities under the same partition with calculated multivariate distance. It can be analyzed directly, visualized as a distance matrix or scatterplot, or used as input data for outlier detection algorithm by calculating mean distance per entity, with entities with high values indicating global outliers.
+For example, when adding an optional visualization using a distance matrix, you get a table as shown in the sample. From the sample, you can see that:
+
+ * Some pairs of entities (Betsy and Fanny) have a low distance value (close to 0) indicating they are similar.
+ * Some pairs of entities (Godzilla and Elmie) have a high distance value (1 or above) indicating they are different.
+
+The output can further be used to calculate the average distance per entity. A high average distance might indicate global outliers. For example, we can see that on average Godzilla has a high distance from the others indicating that it's a probable global outlier.
 
 ---
