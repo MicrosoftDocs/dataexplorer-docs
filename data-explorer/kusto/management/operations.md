@@ -1,11 +1,7 @@
 ---
 title: Operations management - Azure Data Explorer
 description: This article describes Operations management in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 12/16/2021
 ---

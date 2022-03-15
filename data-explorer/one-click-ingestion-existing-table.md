@@ -1,10 +1,7 @@
 ---
 title: Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer
 description: Ingesting (loading) data into an existing Azure Data Explorer table simply, using one-click ingestion.
-author: orspod
-ms.author: orspodek
 ms.reviewer: tzgitlin
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 11/28/2021
 ---

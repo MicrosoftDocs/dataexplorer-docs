@@ -279,6 +279,11 @@
       "source_path": "vnet-create-private-endpoint.md",
       "redirect_url": "/azure/data-explorer/security-network-private-endpoint",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/concepts/crossclusterandschemachanges.md",
+      "redirect_url": "/azure/data-explorer/kusto/concepts/cross-cluster-and-schema-changes",
+      "redirect_document_id": true
     }
   ]
 }

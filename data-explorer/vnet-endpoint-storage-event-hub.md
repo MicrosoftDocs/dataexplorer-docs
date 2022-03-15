@@ -1,10 +1,7 @@
 ---
 title: Create a private or service endpoint to resources used by data connections, such as event hub and Azure Storage
 description: Learn how to enable a private or service endpoint to resources used by data connections, such as event hub and Storage
-author: orspod
-ms.author: orspodek
 ms.reviewer: gunjand
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/12/2020
 ---

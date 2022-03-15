@@ -1,10 +1,7 @@
 ---
 title: 'Quickstart: Query data in Azure Data Explorer Web UI'
 description: In this quickstart, you learn how to query and share data in Azure Data Explorer Web UI.
-author: orspod
-ms.author: orspodek
 ms.reviewer: olgolden
-ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/13/2021
 ms.custom: mode-portal

@@ -1,11 +1,7 @@
 ---
 title: Use one-click sample app generator to ingest and query data in Azure Data Explorer
 description: Overview of using the one-click sample app generator to create the code to ingest and query your data in your preferred programming language.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: talzamir
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/30/2022
 ---

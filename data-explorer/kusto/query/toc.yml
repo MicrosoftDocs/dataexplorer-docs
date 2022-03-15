@@ -12,7 +12,7 @@ items:
 - name: Cross-cluster queries
   items:
   - name: Cross-cluster queries and schema changes
-    href: ../concepts/crossclusterandschemachanges.md
+    href: ../concepts/cross-cluster-and-schema-changes.md
   - name: Cross-database and cross-cluster queries
     href: cross-cluster-or-database-queries.md
 - name: Entities
@@ -1112,6 +1112,10 @@ items:
       href: azure-digital-twins-query-request-plugin.md
     - name: cosmosdb_sql_request plugin
       href: cosmosdb-plugin.md
+    - name: http_request plugin
+      href: http-request-plugin.md
+    - name: http_request_post plugin
+      href: http-request-plugin.md
     - name: mysql_request plugin
       href: mysqlrequest-plugin.md
     - name: sql_request plugin
