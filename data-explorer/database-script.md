@@ -10,7 +10,7 @@ ms.date: 05/25/2021
 ---
 # Configure a database using a Kusto Query Language script
 
-You can run a Kusto Query Language script to configure your database during ARM template deployment. A script is a list of one or more [control commands](kusto/management/index.md), each separated by one line break, and is created as a resource that will be accessed with the ARM template. The script can only run control commands that start with the following verbs:
+You can run a Kusto Query Language script to configure your database during Azure Resource Management (ARM) template deployment. A script is a list of one or more [control commands](kusto/management/index.md), each separated by one line break, and is created as a resource that will be accessed with the ARM template. The script can only run control commands that start with the following verbs:
 
 * `.create`
 * `.create-or-alter`
@@ -18,7 +18,7 @@ You can run a Kusto Query Language script to configure your database during ARM 
 * `.alter`
 * `.alter-merge`
 
-In general, we recommended using the idempotent version of commands so that if they are called more than once with the same input parameters, they have no additional effect. In other words, running the command multiple times has the same effect as running it once. For example, where possible, we recommend using the idempotent command `.create-or-alter` over the regular `.create` command.
+In general, we recommended using the idempotent version of commands so that if they're called more than once with the same input parameters, they have no additional effect. In other words, running the command multiple times has the same effect as running it once. For example, where possible, we recommend using the idempotent command `.create-or-alter` over the regular `.create` command.
 
 There are various methods you can use to configure a database with scripts. We'll focus on the following methods using ARM template deployments:
 
@@ -50,8 +50,8 @@ Notice the two commands are idempotent. When first run, they create the tables, 
 
 The principal, such as a user or service principal, used to deploy a script must have the following security roles:
 
-1. [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role on the cluster
-1. [Admin](/azure/data-explorer/kusto/management/access-control/role-based-authorization) role on the database
+* [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role on the cluster
+* [Admin](/azure/data-explorer/kusto/management/access-control/role-based-authorization) role on the database
 
 > [!IMPORTANT]
 > The principal provisioning the cluster automatically gets the `All Databases Admin` role on the cluster.
@@ -116,14 +116,14 @@ Use the following settings:
 |--|--|
 | *kqlScript* | The inline Kusto Query Language script. Use `\n` to add new line characters. |
 | *forceUpdateTag* | A unique string. If changed, the script will be applied again. |
-| *continueOnErrors* | A flag that indicates whether to continue if one of the commands fail. Default value: false. |
+| *continueOnErrors* | A flag indicating whether to continue if one of the commands fails. Default value: false. |
 | *clusterName* | The name of the cluster where the script will run. |
 | *databaseName* | The name of the database under which the script will run. |
 | *scriptName* | The name of the script when using an external file to supply the script.  This is the name of the actual ARM resource of type *script*.|
 
-### Omitting update tag
+### Omit update tag
 
-Running a KQL script every time the ARM template is deployed is not recommended as it consumes cluster resources. You can prevent the running of the script in consecutive deployments using the following methods:
+Running a KQL script at every ARM template deployment isn't recommended as it consumes cluster resources. You can prevent the running of the script in consecutive deployments using the following methods:
 
 * Specify the `forceUpdateTag` property and keeping the same value between deployments.
 * Omit the `forceUpdateTag` property, or leave it empty, and use the same script between deployments.
@@ -168,7 +168,7 @@ Use the following settings:
 | Setting | Description |
 |--|--|
 | *forceUpdateTag* | A unique string. If changed, the script will be applied again. |
-| *continueOnErrors* | A flag that indicates whether to continue if one of the commands fail. Default value: false. |
+| *continueOnErrors* | A flag indicating to continue if one of the commands fails. Default value: false. |
 | *clusterName* | The name of the cluster where the script will run. |
 | *databaseName* | The name of the database under which the script will run. |
 | *scriptName* | The name of the script when using an external file to supply the script. |
@@ -183,7 +183,7 @@ Bicep templates are transpiled into JSON ARM template before deployment. n our e
 
 ## Storage account script
 
-This method assumes that you already have a blob in a Azure Storage account and you provide its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) directly in the ARM template.
+This method assumes that you already have a blob in an Azure Storage account and you provide its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) directly in the ARM template.
 
 > [!NOTE]
 > Scripts can't be loaded from storage accounts configured with an [Azure Storage firewall or Virtual Network rules](/azure/storage/common/storage-network-security?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal).
@@ -257,14 +257,14 @@ Use the following settings:
 | *scriptUrl* | The URL of the blob. For example 'https://myaccount.blob.core.windows.net/mycontainer/myblob'. |
 | *scriptUrlSastoken* | A string with the [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview). |
 | *forceUpdateTag* | A unique string. If changed, the script will be applied again. |
-| *continueOnErrors* | A flag that indicates whether to continue if one of the commands fail. Default value: false. |
+| *continueOnErrors* | A flag indicating whether to continue if one of the commands fails. Default value: false. |
 | *clusterName* | The name of the cluster where the script will run. |
 | *databaseName* | The name of the database under which the script will run. |
 | *scriptName* | The name of the script when using an external file to supply the script. |
 
 ## Troubleshooting
 
-Commands run by a script resource do not appear in the the results of the [.show commands-and-queries](/azure/data-explorer/kusto/management/commands-and-queries) command. You can trace the script execution using the [.show journal](azure/data-explorer/kusto/management/journal) command.
+Commands run by a script resource don't appear in the the results of the [.show commands-and-queries](/azure/data-explorer/kusto/management/commands-and-queries) command. You can trace the script execution using the [.show journal](azure/data-explorer/kusto/management/journal) command.
 
 ## Next steps
 
