@@ -12,7 +12,7 @@ Calculate pairwise distances between entities based on multiple nominal and nume
 The function `pairwise_dist_fl()` calculates the multivariate distance between data points belonging to the same partition, taking into account nominal and numerical variables.
 
 - All string fields, besides entity and partition names, are considered nominal variables. The distance is equal to 1 if the values are different, and 0 if they're the same.
-- All numerical fields are considered numerical variables. They're normalized by transforming to z-scores and the distance is calculated as absolute value of the difference.
+- All numerical fields are considered numerical variables. They're normalized by transforming to z-scores and the distance is calculated as the absolute value of the difference.
 The total multivariate distance between data points is calculated as the average of the distances between variables.
 
 A distance close to 0 means that the entities are very similar and a distance above 1 means they're very different. Similarly, an entity with an average distance close to or above 1 indicates that it's different from many other entities in the partition, indicating a potential outlier.
