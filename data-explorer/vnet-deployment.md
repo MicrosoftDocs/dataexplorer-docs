@@ -64,14 +64,22 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
  > [!NOTE]
  > Setting up Private Endpoint requires [configuring DNS](/azure/private-link/private-endpoint-dns), We support [Azure Private DNS zone](/azure/dns/private-dns-privatednszone) setup only. Custom DNS server isn't supported.
 
-## Dependencies for VNet deployment
+## Network Security Groups configuration
 
-### Network Security Groups configuration
+[Network Security Groups (NSG)](/azure/virtual-network/security-overview) provide the ability to control network access within a VNet. They must be configured for Azure Data Explorer to work.
 
-[Network Security Groups (NSG)](/azure/virtual-network/security-overview) provide the ability to control network access within a VNet. Azure Data Explorer automatically applies the following required network security rules. For Azure Data Explorer to operate using the [subnet delegation](/azure/virtual-network/subnet-delegation-overview) mechanism, before creating the cluster in the subnet, you must delegate the subnet to **Microsoft.Kusto/clusters** .
+### Configuration of Network Security Groups using Subnet delegation
 
- > [!NOTE]
- > By enabling subnet delegation on the Azure Data Explorer cluster's subnet, you enable the service to define its pre-conditions for deployment in the form of Network Intent Policies. When creating the cluster in the subnet, the NSG configurations mentioned in the following sections are automatically created for you.
+It's highly recommended for Azure Data Explorer to operate using the [subnet delegation](/azure/virtual-network/subnet-delegation-overview) mechanism. Before creating the cluster in the subnet, you must delegate the subnet to **Microsoft.Kusto/clusters**.
+
+By enabling subnet delegation on the Azure Data Explorer cluster's subnet, you enable the service to define its pre-conditions for deployment in the form of Network Intent Policies. When creating the cluster in the subnet, the NSG configurations mentioned in the following sections are automatically created for you.
+
+### Alternative: Manual configuration of network security groups
+
+The alternative to using subnet delegation is to manually configure the NSG. Per default, deploying an Azure Data Explorer into a virtual network enforces subnet delegation for "Microsoft.Kusto/clusters" to be configured. Opting out of this requirement is possible using the [Preview features blade](https://portal.azure.com/#blade/Microsoft_Azure_Resources/PreviewFeaturesBlade).
+
+ > [!WARNING]
+ > Setting up the NSG rules for ADX manually is not trivial and requires to constantly monitor this documentation page for changes. It is highly recommended to use subnet delegation with ADX or consider using a [Private Endpoint](security-network-private-endpoint.md) based solution.
 
 #### Inbound NSG configuration
 
@@ -96,7 +104,10 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | Internal communication  | Azure Data Explorer subnet  | Azure Data Explorer Subnet:All Ports  | All  |
 | Ports that are used for `sql\_request` and `http\_request` plugins  | Azure Data Explorer subnet  | Internet:Custom  | TCP  |
 
-### Relevant IP addresses
+The following sections list the relevant IP addresses for management and health monitoring.
+
+> [!NOTE]
+> You can disregard the following lists if your subnet is delegated to Microsoft.Kusto/clusters as described in the [section](vnet-deployment.md#configuration-of-network-security-groups-using-subnet-delegation) above. In this scenario, IP addresses may be not up to date but will be automatically updated when the required NSG rules are assigned to the cluster.
 
 #### Azure Data Explorer management IP addresses
 
@@ -158,9 +169,6 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 
 #### Health monitoring addresses
 
-> [!NOTE]
-> You can disregard the following list if your subnet is delegated to Microsoft.Kusto/clusters. In this scenario, IP addresses may be not up to date but will be automatically updated when the required NSG rules are assigned to the cluster.
-
 | Region | Addresses |
 | --- | --- |
 | Australia Central | 52.163.244.128, 20.36.43.207, 20.36.44.186, 20.36.45.105, 20.36.45.34, 20.36.44.177, 20.36.45.33, 20.36.45.9 |
@@ -205,18 +213,6 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 | West India | 52.163.244.128 |
 | West US | 13.88.13.50, 40.80.156.205, 40.80.152.218, 104.42.156.123, 104.42.216.21, 40.78.63.47, 40.80.156.103, 40.78.62.97, 40.80.153.6 |
 | West US 2 | 52.183.35.124, 40.64.73.23, 40.64.73.121, 40.64.75.111, 40.64.75.125, 40.64.75.227, 40.64.76.236, 40.64.76.240, 40.64.76.242, 40.64.77.87, 40.64.77.111, 40.64.77.122, 40.64.77.131, 40.91.83.189, 52.250.74.132, 52.250.76.69, 52.250.76.130, 52.250.76.137, 52.250.76.145, 52.250.76.146, 52.250.76.153, 52.250.76.177, 52.250.76.180, 52.250.76.191, 52.250.76.192, 40.64.77.143, 40.64.77.159, 40.64.77.195, 20.64.184.243, 20.64.184.249, 20.64.185.9, 20.42.128.97 |
-
-## Disable access to Azure Data Explorer from the public IP
-
-If you want to completely disable access to Azure Data Explorer via the public IP address, create another inbound rule in the NSG. This rule has to have a lower [priority](/azure/virtual-network/security-overview#security-rules) (a higher number). 
-
-| **Use**   | **Source** | **Source service tag** | **Source port ranges**  | **Destination** | **Destination port ranges** | **Protocol** | **Action** | **Priority** |
-| ---   | --- | --- | ---  | --- | --- | --- | --- | --- |
-| Disable access from the internet | Service Tag | Internet | *  | VirtualNetwork | * | Any | Deny | higher number than the rules above |
-
-This rule will allow you to connect to the Azure Data Explorer cluster only via the following DNS records (mapped to the private IP for each service):
-* `private-[clustername].[geo-region].kusto.windows.net` (engine)
-* `private-ingest-[clustername].[geo-region].kusto.windows.net` (data management)
 
 ## ExpressRoute setup
 
@@ -265,7 +261,22 @@ crl3.digicert.com:80
 >     **Service Tags**: AzureMonitor  
 >     **Destination Ports**: 443
 
-You also need to define the [route table](/azure/virtual-network/virtual-networks-udr-overview) on the subnet with the [management addresses](vnet-deployment.md#azure-data-explorer-management-ip-addresses) and [health monitoring addresses](vnet-deployment.md#health-monitoring-addresses) with next hop *Internet* to prevent asymmetric routes issues.
+### Route table configuration
+
+The configuration of the [route table](/azure/virtual-network/virtual-networks-udr-overview) for the Azure Data Explorer subnet with next hop *Internet* is needed to prevent asymmetric routes issues.
+
+#### Subnet delegation for configuration of the route table
+
+The default and recommended way to configure the route table is to use subnet delegation similarly to the [configuration of the NSG](#configuration-of-network-security-groups-using-subnet-delegation). Azure Data Explorer will configure and update the route table for you. No additional actions are needed.
+
+#### Alternative: Manual configuration of the route table
+
+The alternative to using subnet delegation is to manually configure the route table. Per default, deploying an Azure Data Explorer into a virtual network enforces subnet delegation for "Microsoft.Kusto/clusters" to be configured. Opting out of this requirement is possible using the [Preview features blade](https://portal.azure.com/#blade/Microsoft_Azure_Resources/PreviewFeaturesBlade).
+
+ > [!WARNING]
+ > Setting up the route table for ADX manually is not trivial and requires to constantly monitor this documentation page for changes. It is highly recommended to use subnet delegation with ADX or consider using a [Private Endpoint](security-network-private-endpoint.md) based solution.
+
+To configure the [route table](/azure/virtual-network/virtual-networks-udr-overview) manually you need to define it on the subnet. You need to add the [management addresses](vnet-deployment.md#azure-data-explorer-management-ip-addresses) and [health monitoring addresses](vnet-deployment.md#health-monitoring-addresses) with next hop *Internet*.
 
 For example, for **West US** region, the following UDRs must be defined:
 
