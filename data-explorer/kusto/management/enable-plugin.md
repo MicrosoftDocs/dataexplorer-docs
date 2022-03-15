@@ -11,6 +11,9 @@ Enables a plugin.
 
 This command requires `All Databases admin` permission.
 
+> ![NOTE]
+> To enable language extensions (`R`, `python`) follow [these instructions](../../language-extensions.md#enable-language-extensions-on-your-cluster).
+
 ## Syntax
 
 `.enable` `plugin` *PluginName*
