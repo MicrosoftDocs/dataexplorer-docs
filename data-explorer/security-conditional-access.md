@@ -10,7 +10,7 @@ ms.date: 03/10/2022
 
 ## What is Conditional Access?
 
-The modern security perimeter now extends beyond an organization's network to include user and device identity. Organizations can use identity-driven signals as part of their access control decisions. You can use [Azure Active Directory(Azure AD) Conditional Access](/azure/active-directory/conditional-access/overview) to bring signals together, to make decisions, and enforce organizational policies.
+The modern security perimeter extends beyond an organization's network to include user and device identity. Organizations can use identity-driven signals as part of their access control decisions. You can use [Azure Active Directory(Azure AD) Conditional Access](/azure/active-directory/conditional-access/overview) to bring signals together, to make decisions, and enforce organizational policies.
 
 Conditional Access policies at their simplest are like if-then statements. If a user wants to access a resource, then they must complete an action. For example, a data engineer wants to access Azure Data Explorer but is required to do multi-factor authentication (MFA) to access it.
 
