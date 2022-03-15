@@ -3,7 +3,7 @@ title: Ingest from storage using Event Grid subscription - Azure Data Explorer
 description: This article describes Ingest from storage using Event Grid subscription in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 02/07/2022
+ms.date: 03/15/2022
 ---
 # Event Grid data connection
 
@@ -33,13 +33,25 @@ You can set the following properties:
 
 ## Events routing
 
+When you create a data connection to your cluster, you specify the the routing for where to send ingested data. The default routing is as target table in the connection string that is associated with a target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by using the event data properties.
+
+### Route event data to an alternate database
+
+Routing data to an alternate database is off by default. To send the data to a different database, you must first set the connection as a multi-database connection. You can do this in the Azure portal [Azure portal](ingest-data-event-hub.md#target-database-multi-database-data-connection), [C#](data-connection-event-hub-csharp.md#add-an-event-hubs-data-connection), [Python](data-connection-event-hubs-python.md#add-an-event-hub-data-connection), or an [ARM template](data-connection-event-hubs-resource-manager.md#azure-resource-manager-template-for-adding-an-event-hub-data-connection). The user, group, service principal, or managed identity used to allow database routing must at least have the **contributor** role and write permissions on the cluster.
+
+To specify an alternate database, set the *Database* [ingestion property](#ingestion-properties).
+
+> [!WARNING]
+> Specifying an alternate database without setting the connection as a multi-database data connection will cause the ingestion to fail.
+
+### Route event data to an alternate table
+
 When setting up a blob storage connection to Azure Data Explorer cluster, specify target table properties:
 
 * table name
 * data format
 * mapping
 
-This setup is the default routing for your data, sometimes referred to as `static routing`.
 You can also specify target table properties for each blob, using blob metadata. The data will dynamically route, as specified by [ingestion properties](#ingestion-properties).
 
 The example below shows you how to set ingestion properties on the blob metadata before uploading it. Blobs are routed to different tables.

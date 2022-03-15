@@ -133,9 +133,9 @@ Fill out the form with the following information, and then select **Create**.
 
 #### Target database (multi-database data connection)
 
-Specifying a target database allows you to override the default configured in the data connection. For more information about database routing, see [Events routing](ingest-data-event-hub-overview.md#events-routing).
+Specifying a target database allows you to override the default associated with the data connection. For more information about database routing, see [Events routing](ingest-data-event-hub-overview.md#events-routing).
 
-Before you can set an alternate target database, you must first **allow** routing the data to multiple databases. Use the following steps to **allow** routing the data to alternate databases:
+Before you can set an alternate target database, you must first *allow* routing the data to multiple databases. Use the following steps to *allow* routing the data to alternate databases:
 
 1. In the Azure portal, browse to your cluster.
 1. Select **Databases** > **Data connections**.

@@ -3,7 +3,7 @@ title: 'Create an Event Grid data connection for Azure Data Explorer by using C#
 description: In this article, you learn how to create an Event Grid data connection for Azure Data Explorer by using C#.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 01/03/2022
+ms.date: 03/15/2022
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer by using C\#
@@ -90,7 +90,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | consumerGroup | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
 | blobStorageEventType | *Microsoft.Storage.BlobCreated* | The type of event that triggers ingestion. Supported events are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage.|
-| databaseRouting | *Multi* or *Single* | The default is *Single*. An event hub data connection belongs to a specific database. Hence this database is the data connection's default database routing. In order to send the data to another database, you can use the "Database" [ingestion property](ingest-data-event-hub-overview.md#ingestion-properties). To do so, you must first allow routing the data to multiple databases (set the databaseRouting as Multi). |
+| databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set this to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set this to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-grid-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-grid-overview.md#events-routing). |
 
 ## Generate sample data
 

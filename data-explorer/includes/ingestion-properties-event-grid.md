@@ -2,14 +2,14 @@
 title: include file
 description: include file
 ms.topic: include
-ms.date: 03/11/2022
+ms.date: 03/15/2022
 ms.reviewer: tzgitlin
 ms.custom: include file
 ---
 |Property | Description|
 |---|---|
 | `rawSizeBytes` | Size of the raw (uncompressed) data. For Avro/ORC/Parquet, that is the size before format-specific compression is applied. Provide the original data size by setting this property to the uncompressed data size in bytes.|
-| `kustoDatabase` | The case-sensitive name of the target database. By default, data is ingested into the target database configured in the data connection. Use this property override the default database and send data to a different database. To do so, you must first [set up the connection as a multi-database connection](#route-event-data-to-an-alternate-database). |
+| `kustoDatabase` | The case-sensitive name of the target database. By default, data is ingested into the target database associated with the data connection. Use this property to override the default database and send data to a different database. To do so, you must first [set up the connection as a multi-database connection](#route-event-data-to-an-alternate-database). |
 | `kustoTable` | The case-sensitive name of the existing target table. Overrides the `Table` set on the `Data Connection` pane. |
 | `kustoDataFormat` |  Data format. Overrides the `Data format` set on the `Data Connection` pane. |
 | `kustoIngestionMappingReference` | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|

@@ -3,7 +3,7 @@ title: 'Ingest Azure Blobs into Azure Data Explorer'
 description: In this article, you learn how to send storage account data to Azure Data Explorer using an Event Grid subscription.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 01/13/2022
+ms.date: 03/15/2022
 
 # Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
 ---
@@ -19,7 +19,7 @@ ms.date: 01/13/2022
 
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
 
-In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection that sets an [Azure Event Grid](/azure/event-grid/overview) subscription. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hubs. Then you'll see an example of the data flow throughout the system. 
+In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection that sets an [Azure Event Grid](/azure/event-grid/overview) subscription. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hubs. Then you'll see an example of the data flow throughout the system.
 
 For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md). To create resources manually in the Azure portal, see [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md).
 
@@ -36,7 +36,7 @@ Create a table in Azure Data Explorer where Azure Event Hubs will send data. Cre
 
 1. In the Azure portal, under your cluster, select **Query**.
 
-    :::image type="content" source="media/ingest-data-event-grid/azure-portal.png" alt-text="Screenshot of the Query option in the Azure portal."::: 
+    :::image type="content" source="media/ingest-data-event-grid/azure-portal.png" alt-text="Screenshot of the Query option in the Azure portal.":::
 
 1. Copy the following command into the window and select **Run** to create the table (TestTable) that will receive the ingested data.
 
@@ -89,8 +89,8 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     * **Suffix** field is the *literal* suffix of the blob. No wildcards are allowed.
     * **Case-Sensitive** field indicates whether the prefix and suffix filters are case-sensitive
     * For more information about filtering events, see [Blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events).
-    
-    :::image type="content" source="media/ingest-data-event-grid/filter-settings.png" alt-text="Filter settings Event Grid.":::    
+
+    :::image type="content" source="media/ingest-data-event-grid/filter-settings.png" alt-text="Filter settings Event Grid.":::
 
 1. Select **Next: Ingest properties**.
 
@@ -104,14 +104,15 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
-    | Allow routing the data to other databases (Multi database data connection) | Don't allow | An Event Grid data connection belongs to a specific database. Hence this database is the data connection's default database routing. You can override the default target database by using the "Database" ingestion property [https://docs.microsoft.com/en-us/azure/data-explorer/ingest-data-event-hub-overview#ingestion-properties] of the event. To do so, you must first **allow** routing the data to multiple databases (set the connection as Multi database data connection).  |
+    | Allow routing the data to other databases (Multi database data connection) | Don't allow | Turn on this option if you want to override the default target database associated with the data connection. For more information about database routing, see [Events routing](ingest-data-event-grid-overview.md#events-routing). |
     | Table name | *TestTable* | The table you created in **TestDatabase**. |
     | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, RAW, and W3CLOG. Supported compression options are Zip and Gzip. |
     | Mapping | *TestMapping* | The mapping you created in **TestDatabase**, which maps incoming JSON data to the column names and data types of **TestTable**.|
     | Advanced settings | *My data has headers* | Ignores headers. Supported for *SV type files.|
 
-   > [!NOTE]
-   > You don't have to specify all **Default routing settings**. Partial settings are also accepted.
+    > [!NOTE]
+    > You don't have to specify all **Default routing settings**. Partial settings are also accepted.
+
 1. Select **Next: Review + Create**
 
 #### Data connection - Review + Create tab
@@ -127,7 +128,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
     :::image type="content" source="media/ingest-data-event-grid/storage-account.png" alt-text="Screenshot of Azure portal storage account access to Event Grid connection.":::
 
-1. The **Data connection** pane opens with the **Basics** tab selected. 
+1. The **Data connection** pane opens with the **Basics** tab selected.
 
 #### Data connection- Basics tab
 
@@ -152,10 +153,10 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
-    | Subscription |  | Your Azure Data Explorer subscription. 
+    | Subscription |  | Your Azure Data Explorer subscription.
     | Cluster Name | *TestCluster* | The name of the cluster in which you want to ingest data.
     | Database Name | *TestDatabase* | The target database you created in **TestCluster**.
-    | Allow routing the data to other databases (Multi database data connection)| Don't allow | An Event Grid data connection belongs to a specific database. Hence this database is the data connection's default database routing. This database is specified in the **Database Name** field. You can override the default target database by using the "Database" ingestion property [https://docs.microsoft.com/en-us/azure/data-explorer/ingest-data-event-hub-overview#ingestion-properties] of the event. To do so, you must first **allow** routing the data to multiple databases (set the connection as Multi database data connection). | 
+    | Allow routing the data to other databases (Multi database data connection) | Don't allow | Turn on this option if you want to override the default target database associated with the data connection. For more information about database routing, see [Events routing](ingest-data-event-grid-overview.md#events-routing). |
     | Table name | *TestTable* | The target table you created in **TestDatabase**. |
     | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, RAW, and W3CLOG. Supported compression options are Zip and Gzip. |
     | Mapping | *TestMapping* | The mapping you created in **TestDatabase**, which maps incoming JSON data to the column names and data types of **TestTable**.|
@@ -185,10 +186,10 @@ Now that Azure Data Explorer and the storage account are connected, you can crea
 
 ### Upload blob to the storage container
 
-We'll work with a small shell script that issues a few basic Azure CLI commands to interact with Azure Storage resources. This script does the following actions: 
+We'll work with a small shell script that issues a few basic Azure CLI commands to interact with Azure Storage resources. This script does the following actions:
 1. Creates a new container in your storage account.
 1. Uploads an existing file (as a blob) to that container.
-1. Lists the blobs in the container. 
+1. Lists the blobs in the container.
 
 You can use [Azure Cloud Shell](/azure/cloud-shell/overview) to execute the script directly in the portal.
 
@@ -233,12 +234,12 @@ If you're ingesting data from ADLSv2 storage and have defined *Blob renamed* as 
 
 ### Ingestion properties
 
-You can specify the [ingestion properties](ingest-data-event-grid-overview.md#ingestion-properties) of the blob ingestion via the blob metadata. 
+You can specify the [ingestion properties](ingest-data-event-grid-overview.md#ingestion-properties) of the blob ingestion via the blob metadata.
 
 > [!NOTE]
 > Azure Data Explorer won't delete the blobs post ingestion.
 > Retain the blobs for three to five days.
-> Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion. 
+> Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion.
 
 ## Review the data flow
 
@@ -274,7 +275,7 @@ If you don't plan to use your event grid again, clean up the Event Grid Subscrip
 
 1. In Azure portal, go to the left menu and select **All resources**.
 
-    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-all-resource.png" alt-text="Select all resources for event grid cleanup.":::    
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-all-resource.png" alt-text="Select all resources for event grid cleanup.":::
 
 1. Search for your event hub namespace and select **Delete** to delete it:
 
