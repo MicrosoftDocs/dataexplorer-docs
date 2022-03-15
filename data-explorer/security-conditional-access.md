@@ -10,7 +10,7 @@ ms.date: 03/10/2022
 
 ## What is Conditional Access?
 
-Security perimeters often extend beyond an organization's network to include user and device identity. Organizations can use identity-driven signals as part of their access control decisions. You can use [Azure Active Directory(Azure AD) Conditional Access](/azure/active-directory/conditional-access/overview) to bring signals together, to make decisions, and enforce organizational policies.
+The modern security perimeter now extends beyond an organization's network to include user and device identity. Organizations can use identity-driven signals as part of their access control decisions. You can use [Azure Active Directory(Azure AD) Conditional Access](/azure/active-directory/conditional-access/overview) to bring signals together, to make decisions, and enforce organizational policies.
 
 Conditional Access policies at their simplest are like if-then statements. If a user wants to access a resource, then they must complete an action. For example, a data engineer wants to access Azure Data Explorer but is required to do multi-factor authentication (MFA) to access it.
 
@@ -40,10 +40,10 @@ Using this feature requires an Azure AD Premium license. To find the right licen
 
     :::image type="content" source="media/conditional-access/configure-assign-user.png" alt-text="Screenshot of the users and groups section, showing the assignment of users.":::
 
-1. Under **Cloud apps or actions**, select **Cloud apps**. Under **Include**, select **Select apps** to see a list of all apps available for Conditional Access. Select **Azure Data Explorer** > **Select**, and then select **Done**.
+1. Under **Cloud apps or actions**, select **Cloud apps**. Under **Include**, select **Select apps** to see a list of all apps available for Conditional Access. Select **Azure Data Explorer** > **Select**.
 
     > [!TIP]
-    > Please make sure you select the Azure Data Explorer app with the following GUID: .
+    > Please make sure you select the Azure Data Explorer app with the following GUID: 2746ea77-4702-4b45-80ca-3c97e680e8b7.
 
     :::image type="content" source="media/conditional-access/configure-select-apps.png" alt-text="Screenshot of the cloud apps section, showing the selection of the Azure Data Explorer app.":::
 
@@ -65,4 +65,4 @@ Using this feature requires an Azure AD Premium license. To find the right licen
 
 ## Next steps
 
-* [Azure Data Explorer: Zero Trust Security with Conditional Access ](<!--<<link to the blog-->>>)
+* [Azure Data Explorer: Zero Trust Security with Conditional Access ](https://aka.ms/kusto.conditional.access.blog)
