@@ -98,7 +98,7 @@ print(poller.result())
 | data_connection_name | *myeventhubconnect* | The desired name of your data connection.|
 | table_name | *StormEvents* | The name of the target table in the target database.|
 | mapping_rule_name | *StormEvents_CSV_Mapping* | The name of your column mapping related to the target table.|
-| database_routing | *Multi* or *Single* | The database routing for the connection. If you set this to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set this to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-grid-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-grid-overview.md#events-routing). |
+| database_routing | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-grid-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-grid-overview.md#events-routing). |
 | data_format | *csv* | The data format of the message.|
 | event_hub_resource_id | *Resource ID* | The resource ID of your event hub where the Event Grid is configured to send events. |
 | storage_account_resource_id | *Resource ID* | The resource ID of your storage account that holds the data for ingestion. |

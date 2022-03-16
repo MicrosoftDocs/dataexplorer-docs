@@ -28,7 +28,7 @@ Ingestion properties instruct the ingestion process where to route the data and 
 
 |Property |Description|
 |---|---|
-| Database | Name (case sensitive) of the target database. This property can be used if you want to send the data to a different database than the database the data connection was created on (the default database). To route the data to multiple databases, you must first set up the connection as a multi-database connection. Please refer to the Events routing section below for more details. |
+| Database | Name (case sensitive) of the target database. This property can be used if you want to send the data to a different database than the database the data connection was created on (the default database). To route the data to multiple databases, you must first set up the connection as a multi-database connection. For more information, see [Events routing](#events-routing). |
 | Table | Name (case sensitive) of the existing target table. Overrides the `Table` set on the `Data Connection` pane. |
 | Format | Data format. Overrides the `Data format` set on the `Data Connection` pane. |
 | IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
@@ -39,7 +39,7 @@ Ingestion properties instruct the ingestion process where to route the data and 
 
 ## Events routing
 
-When you create a data connection to your cluster, you specify the the routing for where to send ingested data. The default routing is to the target table specified in the connection string that is associated with the target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by using the event data properties.
+When you create a data connection to your cluster, you specify the routing for where to send ingested data. The default routing is to the target table specified in the connection string that is associated with the target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by using the event data properties.
 
 ### Route event data to an alternate database
 
@@ -99,7 +99,7 @@ If you don't already have one, [Create an Iot Hub](ingest-data-iot-hub.md#create
 > [!Note]
 > * The `device-to-cloud partitions` count is not changeable, so you should consider long-term scale when setting partition count.
 > * Consumer group must be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection. Find your resource in the Azure portal and go to `Built-in endpoints` to add a new consumer group.
-> * The Data Connection uses IoT Hub `Built-in endpoint`. If you configure any other `Message routing endpoint`, messages stop flowing to the `Built-in endpoint` unless a route is created to that endpoint. To ensure messages continues to flow to the built-in-endpoint if a new route is added, configure a route to the `events` endpoint. For more information see [IoT Hub Troubleshooting Message Routing](/azure/iot-hub/troubleshoot-message-routing#was-a-new-route-created).
+> * The Data Connection uses IoT Hub `Built-in endpoint`. If you configure any other `Message routing endpoint`, messages stop flowing to the `Built-in endpoint` unless a route is created to that endpoint. To ensure messages continues to flow to the built-in-endpoint if a new route is added, configure a route to the `events` endpoint. For more information, see [IoT Hub Troubleshooting Message Routing](/azure/iot-hub/troubleshoot-message-routing#was-a-new-route-created).
 
 ## Sending events
 

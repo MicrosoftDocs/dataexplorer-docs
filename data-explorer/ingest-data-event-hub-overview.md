@@ -30,7 +30,7 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 Azure Data Explorer supports the following Event Hubs properties:
 
 * A closed set of [ingestion properties](#ingestion-properties), which helps to route the event to the relevant table.
-* A closed set of [event system properties](#event-system-properties-mapping), which can be embed in the data based on a given mapping.
+* A closed set of [event system properties](#event-system-properties-mapping), which can be embeded in the data based on a given mapping.
 
 > [!NOTE]
 > Ingesting Event Hubs [custom properties](/azure/event-hubs/add-custom-data-event), used to associate metadata with events, isn't supported. If you need to ingest custom properties, send them in the body of the event data. For more information, see [Ingest custom properties](#ingest-custom-properties).
@@ -54,7 +54,7 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 
 ## Events routing
 
-When you create a data connection to your cluster, you specify the the routing for where to send ingested data. The default routing is to the target table specified in the connection string that is associated with the target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by using the event data properties.
+When you create a data connection to your cluster, you specify the routing for where to send ingested data. The default routing is to the target table specified in the connection string that is associated with the target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by using the event data properties.
 
 ### Route event data to an alternate database
 
@@ -121,7 +121,7 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 When ingesting events from Event Hubs, data is taken from the `body` section of the event data object. However, Event Hubs [custom properties](/azure/event-hubs/add-custom-data-event) are defined in the `properties` section of the object and are not ingested. To ingest customer properties, you must embed them into the data in `body` section of the object.
 
-The following example compares the events data object containing custom property `customProperty` as *defined* by Event Hubs (left) to the *embeded* property required for ingestion (right).
+The following example compares the events data object containing custom property `customProperty` as *defined* by Event Hubs (left) with the *embeded* property required for ingestion (right).
 
 :::row:::
    :::column span="":::

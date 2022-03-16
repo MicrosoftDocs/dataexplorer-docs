@@ -33,7 +33,7 @@ You can set the following properties:
 
 ## Events routing
 
-When you create a data connection to your cluster, you specify the the routing for where to send ingested data. The default routing is to the target table specified in the connection string that is associated with the target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by using the event data properties.
+When you create a data connection to your cluster, you specify the routing for where to send ingested data. The default routing is to the target table specified in the connection string that is associated with the target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by using the event data properties.
 
 ### Route event data to an alternate database
 
@@ -56,7 +56,7 @@ You can also specify target table properties for each blob, using blob metadata.
 
 The example below shows you how to set ingestion properties on the blob metadata before uploading it. Blobs are routed to different tables.
 
-In addition, you can specify the target database. An event grid data connection is created within the context of a specific database. Hence this database is the data connection's default database routing. To send the data to a different database, set the "KustoDatabase" ingestion property and set the data connection as a Multi database data connection.
+In addition, you can specify the target database. An Event Grid data connection is created within the context of a specific database. Hence this database is the data connection's default database routing. To send the data to a different database, set the "KustoDatabase" ingestion property and set the data connection as a Multi database data connection.
 Routing data to another database is disabled by default (not allowed).
 Setting a database ingestion property that is different than the data connection's database, without allowing data routing to multiple databases (setting the connection as a Multi database data connection), will cause the ingestion to fail.
 
