@@ -98,6 +98,8 @@ Before you can set an alternate target database, you must first *allow* routing 
 1. Select **Databases** > **Data connections**.
 1. Create or edit a data connection and in the **Data connection** pane, under **Data routing settings**, turn on the allow routing data to other database (multi-database data connection) option.
 
+    :::image type="content" source="media/ingest-data-iot-hub/data-connection-allow-multi-database.png" alt-text="Allow multi-database routing - IoT Hub - Azure Data Explorer.":::
+
 #### Target table
 
 There are two options for routing the ingested data: *static* and *dynamic*.
