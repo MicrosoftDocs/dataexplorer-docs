@@ -3,7 +3,7 @@ title: 'Ingest data from event hub into Azure Data Explorer'
 description: 'In this article, you learn how to ingest (load) data into Azure Data Explorer from event hub.'
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 08/31/2021
+ms.date: 03/15/2022
 
 # Customer intent: As a database administrator, I want to ingest data into Azure Data Explorer from an event hub, so I can analyze streaming data.
 ---
@@ -130,6 +130,18 @@ Fill out the form with the following information, and then select **Create**.
 
 > [!NOTE]
 > If you have an existing data connection that is not using managed identities, we recommend updating it to use managed identities.
+
+#### Target database (multi-database data connection)
+
+Specifying a target database allows you to override the default associated with the data connection. For more information about database routing, see [Events routing](ingest-data-event-hub-overview.md#events-routing).
+
+Before you can set an alternate target database, you must first *allow* routing the data to multiple databases. Use the following steps to *allow* routing the data to alternate databases:
+
+1. In the Azure portal, browse to your cluster.
+1. Select **Databases** > **Data connections**.
+1. Create or edit a data connection and in the **Data connection** pane, under **Data routing settings**, turn on the allow routing data to other database (multi-database data connection) option.
+
+    :::image type="content" source="media/ingest-data-event-hub/data-connection-allow-multi-database.png" alt-text="Allow multi-database routing - IoT Hub - Azure Data Explorer.":::
 
 #### Target table
 
