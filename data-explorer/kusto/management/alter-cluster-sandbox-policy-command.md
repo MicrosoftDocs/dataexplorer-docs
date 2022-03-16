@@ -31,22 +31,22 @@ Returns a JSON representation of the policy.
 Modifies the collection of sandbox policies at the cluster level.
 
 ```kusto
-.alter cluster policy sandbox ```['
-  '{'
-    '"SandboxKind": "PythonExecution",'
-    '"IsEnabled": true,'
-    '"InitializeOnStartup": false,'
-    '"TargetCountPerNode": 4,'
-    '"MaxCpuRatePerSandbox": 50,'
-    '"MaxMemoryMbPerSandbox": 10240'
-  '},'
-  '{'
-    '"SandboxKind": "RExecution",'
-    '"IsEnabled": true,'
-    '"InitializeOnStartup": false,'
-    '"TargetCountPerNode": 4,'
-    '"MaxCpuRatePerSandbox": 50,'
-    '"MaxMemoryMbPerSandbox": 10240'
-  '}'
-']```
+.alter cluster policy sandbox ```[
+  {
+    "SandboxKind": "PythonExecution",
+    "IsEnabled": true,
+    "InitializeOnStartup": false,
+    "TargetCountPerNode": 4,
+    "MaxCpuRatePerSandbox": 50,
+    "MaxMemoryMbPerSandbox": 10240
+  },
+  {
+    "SandboxKind": "RExecution",
+    "IsEnabled": true,
+    "InitializeOnStartup": false,
+    "TargetCountPerNode": 4,
+    "MaxCpuRatePerSandbox": 50,
+    "MaxMemoryMbPerSandbox": 10240
+  }
+]```
 ```
