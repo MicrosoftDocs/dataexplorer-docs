@@ -120,6 +120,8 @@ let raw_data = datatable(name:string, gender: string, height:int, weight:int, li
 ];
 raw_data
 | invoke pairwise_dist_fl('name', 'type')
+| where _partition == 'Person' | sort by entity asc, entity1 asc
+| evaluate pivot (entity, max(dist), entity1) | sort by entity1 asc
 ```
 
 # [Persistent](#tab/persistent)
@@ -217,6 +219,11 @@ raw_data
 | evaluate pivot (entity, max(dist), entity1) | sort by entity1 asc
 ```
 
+
+---
+
+## Analysis
+
 ```kusto
 | entity1  | Andy   | Betsy  | Cindy  | Dan    | Elmie  | Fanny  | Godzilla | Hannie |
 |----------|--------|--------|--------|--------|--------|--------|----------|--------|...
@@ -232,8 +239,6 @@ raw_data
 .
 .
 ```
-
----
 
 Looking at entities of two different types, we would like to calculate distance between entities belonging to the same type, by taking into account both nominal variables (such as gender or preferred accessory) and numerical variables (such as the number of limbs, height, and weight). The numerical variables are on different scales and must be centralized and scaled, which is done automatically. The output is pairs of entities under the same partition with calculated multivariate distance. It can be analyzed directly, visualized as a distance matrix or scatterplot, or used as input data for outlier detection algorithm by calculating mean distance per entity, with entities with high values indicating global outliers.
 For example, when adding an optional visualization using a distance matrix, you get a table as shown in the sample. From the sample, you can see that:
