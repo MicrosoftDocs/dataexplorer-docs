@@ -222,7 +222,7 @@ raw_data
 
 ---
 
-# Analysis
+## Analysis
 
 ```kusto
 | entity1  | Andy   | Betsy  | Cindy  | Dan    | Elmie  | Fanny  | Godzilla | Hannie |
