@@ -31,7 +31,7 @@ Returns a JSON representation of the policy.
 Modifies the collection of sandbox policies at the cluster level.
 
 ```kusto
-.alter cluster policy sandbox @'['
+.alter cluster policy sandbox ```['
   '{'
     '"SandboxKind": "PythonExecution",'
     '"IsEnabled": true,'
@@ -48,5 +48,5 @@ Modifies the collection of sandbox policies at the cluster level.
     '"MaxCpuRatePerSandbox": 50,'
     '"MaxMemoryMbPerSandbox": 10240'
   '}'
-']'
+']```
 ```
