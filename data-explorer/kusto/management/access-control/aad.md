@@ -7,7 +7,7 @@ ms.date: 02/06/2022
 ---
 # Azure Active Directory authentication
 
-Azure Active Directory (Azure AD) is a multi-tenant cloud directory service. It's capable of authenticating security principals or federating with other identity providers, such as Microsoft Active Directory.
+Azure Active Directory (Azure AD) is a multitenant cloud directory service. It's capable of authenticating security principals or federating with other identity providers, such as Microsoft Active Directory.
 
 Azure AD allows applications of various kinds to uniformly authenticate and use Azure Data Explorer services.
 
@@ -47,13 +47,11 @@ credentials, you can use the Azure AD application authentication process instead
 
 Generally, an Azure AD service application can define multiple permissions, such as read-only or read-write. The Azure AD client application can decide which permissions it needs when it requests an authorization token. As part of acquiring the token, the user is asked to authorize the Azure AD client application to act on the user's behalf, with authorization to have these permissions. If the user approves, these permissions are listed in the scope claim of the token issued to the Azure AD client application.
 
-The Azure AD client application is configured to request the **Access Kusto** permission
-from the user. Note that Azure AD refers to the user as the *resource owner*.
+The Azure AD client application is configured to request the **Access Kusto** permission from the user. Note that Azure AD refers to the user as the *resource owner*.
 
 ## Kusto client SDK as an Azure AD client application
 
-When the Kusto client library invokes [MSAL](/azure/active-directory/develop/msal-overview)
-to acquire a token for communicating with Kusto, it provides the following information:
+When the Kusto client library invokes [MSAL](/azure/active-directory/develop/msal-overview) to acquire a token for communicating with Kusto, it provides the following information:
 
 - The Azure AD authority URI (`https://login.microsoftonline.com` in the global Azure), and the Azure AD tenant, as received from the caller.
 - The Azure AD client application ID.

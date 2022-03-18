@@ -12,7 +12,7 @@ ms.date: 02/01/2022
 
 You might use automated provisioning to deploy a preconfigured cluster with data, as part of a continuous integration and continuous delivery (CI/CD) pipeline. Some of the key benefits of doing so include the ability to:
 
-* Easily define and maintain multiple [environments](https://en.wikipedia.org/wiki/Deployment_environment).
+* Define and maintain multiple [environments](https://en.wikipedia.org/wiki/Deployment_environment).
 * Keep track of deployments in source control.
 * More easily roll back to previous versions.
 * Facilitate automated testing by provisioning dedicated test environments.
