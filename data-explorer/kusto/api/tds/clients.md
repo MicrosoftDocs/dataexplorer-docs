@@ -94,6 +94,26 @@ You can also use service principal authentication with ODBC. To do so, you must 
 "Driver={ODBC Driver 17 for SQL Server};Server=<adx_cluster_name>.<region_name>.kusto.windows.net;Database=<adx_database_name>;Authentication=ActiveDirectoryServicePrincipal;Language=any@MaxStringSize:4000,AadAuthority:<aad_tenant_id>;UID=<aad_application_id>;PWD=<aad_application_secret>"
 ```
 
+Changing *Language* field is also possible with ODBC data source (aka DSN). Add *Language* value in DNS registry, e.g.:
+
+```odbc
+[HKEY_CURRENT_USER\SOFTWARE\ODBC\ODBC.INI\MyUserDSN]
+"Language"="any@AadAuthority:<aad_tenant_id>"
+```
+
+On Linux and macOS edit odbc.ini file, e.g.:
+
+```odbc
+# [DSN name]
+[MSSQLTest]  
+Driver = ODBC Driver 17 for SQL Server  
+# Server = [protocol:]server[,port]  
+Server = tcp:localhost,1433
+Language = any@AadAuthority:<aad_tenant_id>
+```
+
+AAD tenant id for SQL clients can also be configured for entire cluster. If configured, there is no need to specify AAD tenant id on client. To change AAD tenant id, apply to support for configuring *SecuritySettings.TdsEndpointDefaultAuthority* with specific AAD tenant id.
+
 ### PowerShell
 
 Here is an example of the PowerShell script that uses the ODBC driver.
