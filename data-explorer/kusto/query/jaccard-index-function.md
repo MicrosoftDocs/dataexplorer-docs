@@ -18,7 +18,8 @@ Calculates the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) of t
 * *set1*: Input array representing the first set for the calculation.
 * *set2*: Input array representing the second set for the calculation.
 
-Note: duplicate values in the input arrays are ignored.
+> [!NOTE]
+> Duplicate values in the input arrays are ignored.
 
 ## Returns
 
