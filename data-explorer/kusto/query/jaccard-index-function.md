@@ -16,7 +16,7 @@ Calculates the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) of t
 ## Arguments
 
 * *set1*: Input array representing the first set for the calculation.
-* *set1*: Input array representing the second set for the calculation.
+* *set2*: Input array representing the second set for the calculation.
 
 Note: duplicate values in the input arrays are ignored.
 
@@ -32,5 +32,5 @@ print set1=dynamic([1,2,3]), set2=dynamic([1,2,3,4])
 | extend jaccard=jaccard_index(set1, set2)
 ```
 |`set1`|`set2`|`jaccard`|
-|---|---|
+|---|---|---|
 |[1,2,3]|[1,2,3,4]|0.75|
