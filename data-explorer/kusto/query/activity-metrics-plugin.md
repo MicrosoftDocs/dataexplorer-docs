@@ -7,8 +7,7 @@ ms.date: 02/13/2020
 ---
 # activity_metrics plugin
 
-Calculates useful activity metrics (distinct count values, distinct count of new values, retention rate, and churn rate) based on the current period window vs. previous period window
-(unlike [activity_counts_metrics plugin](activity-counts-metrics-plugin.md) in which every time window is compared to *all* previous time windows).
+Calculates useful activity metrics based on the current period window compared to the previous period window. The metrics include distinct count values, distinct count of new values, retention rate, and churn rate. This plugin is different from [activity_counts_metrics plugin](activity-counts-metrics-plugin.md) in which every time window is compared to *all* previous time windows.
 
 ```kusto
 T | evaluate activity_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
@@ -22,15 +21,15 @@ T | evaluate activity_metrics(id, datetime_column, startofday(ago(30d)), startof
 
 * *T*: The input tabular expression.
 * *IdColumn*: The name of the column with ID values that represent user activity.
-* *TimelineColumn*: The name of the column that represent timeline.
+* *TimelineColumn*: The name of the column that represents timeline.
 * *Start*: (optional) Scalar with value of the analysis start period.
 * *End*: (optional) Scalar with value of the analysis end period.
-* *Window*: Scalar with value of the analysis window period. Can be either a numeric/datetime/timestamp value, or a string which is one of `week`/`month`/`year`, in which case all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md) accordingly.
+* *Window*: Scalar with value of the analysis window period. Can be either a numeric, datetime, timestamp, or string value. Strings are either `week`, `month`, `year`, in which case all periods will be [startofweek](startofweekfunction.md), [startofmonth](startofmonthfunction.md), [startofyear](startofyearfunction.md) respectively.
 * *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the activity metrics calculation.
 
 ## Returns
 
-Returns a table that has the distinct count values, distinct count of new values, retention rate, and churn rate for each timeline period and for each existing dimensions combination.
+The plugin returns a table with the distinct count values, distinct count of new values, retention rate, and churn rate for each timeline period, and for each existing dimensions combination.
 
 Output table schema is:
 
@@ -55,7 +54,7 @@ where the `# of customers returned during the period` is defined as:
 > *number of new customers acquired during the period*
 
 `Retention Rate` can vary from 0.0 to 1.0
-The higher score means the larger amount of returning users.
+The higher score means the larger number of returning users.
 
 ***Churn Rate Definition***
 
@@ -72,17 +71,17 @@ where the `# of customer lost in the period` is defined as:
 > *number of customers at the end of the period*
 
 `Churn Rate` can vary from 0.0 to 1.0
-The higher score means the larger amount of users are NOT returning to the service.
+The higher score means the larger number of users are NOT returning to the service.
 
 ***Churn vs. Retention Rate***
 
-Derived from the definition of `Churn Rate` and `Retention Rate`, the following is always true:
+Derived from the definition of `Churn Rate` and `Retention Rate`, the following calculation is always true:
 
 > [`Retention Rate`] = 100.0% - [`Churn Rate`]
 
 ## Examples
 
-### Weekly retention rate, and churn rate
+### Weekly retention rate and churn rate
 
 The next query calculates retention and churn rate for week-over-week window.
 
@@ -131,7 +130,7 @@ range _day from _start to _end  step 1d
 
 ### Distinct values and distinct 'new' values
 
-The next query calculates distinct values and 'new' values (ids that didn't appear in previous time window) for week-over-week window.
+The next query calculates distinct values and 'new' values (IDs that didn't appear in previous time window) for week-over-week window.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
