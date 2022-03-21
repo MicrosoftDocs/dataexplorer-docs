@@ -22,6 +22,7 @@ Stored query results can be useful in the following scenarios:
 > [!NOTE]
 >
 > * This feature is only available when [EngineV3](../../engine-v3.md) is enabled.
+> * If the stored-query-result name exists, .set command will fail with an error. Use .set-or-replace to modify existing stored-query-results.
 > * When you have more than 500 columns, an error is raised and the results aren't stored.
 > * Query results are stored in a storage account associated with the cluster; the data is not cached in local SSD storage.
 
@@ -35,7 +36,7 @@ Using stored query results requires `Database Viewer` or higher access role.
 
 **Syntax**
 
-`.set` [`async`] `stored_query_result` *StoredQueryResultName* 
+(`.set` `|` `.set-or-replace`) [`async`] `stored_query_result` *StoredQueryResultName* 
 [`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`]
 <| *Query*
 
