@@ -44,8 +44,8 @@ An aggregation function performs a calculation on a set of values, and returns a
 | [avgif()](avgif-aggfunction.md) | Returns an average value across the group (with predicate). |
 | [count()](count-aggfunction.md), [countif()](countif-aggfunction.md) | Returns a count of the group without/with a predicate. |
 | [dcount()](dcount-aggfunction.md), [dcountif()](dcountif-aggfunction.md) | Returns an approximate distinct count of the group elements without/with a predicate. |
-| [hll()](hll-aggfunction.md) | Returns the hyper log log (hll) results of the group elements, an intermediate value of the `dcount` approximation. |
-| [hll_merge()](hll-merge-aggfunction.md) | Returns a value for merged hll results. |
+| [hll()](hll-aggfunction.md) | Returns the HyperLogLog (HLL) results of the group elements, an intermediate value of the `dcount` approximation. |
+| [hll_merge()](hll-merge-aggfunction.md) | Returns a value for merged HLL results. |
 | [max()](max-aggfunction.md), [maxif()](maxif-aggfunction.md) | Returns the maximum value across the group without/with a predicate. |
 | [merge_tdigest()](tdigest-merge-aggfunction.md) | Returns the merged `tdigest` value across the group, is an alias of `tdigest_merge`. |
 | [min()](min-aggfunction.md), [minif()](minif-aggfunction.md) | Returns the minimum value across the group without/with a predicate. |
