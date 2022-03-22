@@ -22,7 +22,7 @@ Stored query results can be useful in the following scenarios:
 > [!NOTE]
 >
 > * This feature is only available when [EngineV3](../../engine-v3.md) is enabled.
-> * If the stored-query-result name exists, `.set` will fail with an error. `.set-or-replace`, on the other hand, will delete the existing stored-query-result if exists, and then create a new one with the same name.
+> * If the stored-query-result name exists, `.set` will fail with an error. In contrast, `.set-or-replace` will delete the existing stored-query-result if it exists and then create a new one with the same name.
 > * When you have more than 500 columns, an error is raised and the results aren't stored.
 > * Query results are stored in a storage account associated with the cluster; the data is not cached in local SSD storage.
 
