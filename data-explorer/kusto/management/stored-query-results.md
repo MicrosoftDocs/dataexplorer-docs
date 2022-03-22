@@ -37,7 +37,6 @@ Using stored query results requires `Database Viewer` or higher access role.
 **Syntax**
 
 `.set` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`] <| *Query*
-[`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`]
 `.set-or-replace` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`] <| *Query*
 
 **Arguments**
