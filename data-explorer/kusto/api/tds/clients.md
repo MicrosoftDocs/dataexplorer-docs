@@ -94,14 +94,14 @@ You can also use service principal authentication with ODBC. To do so, you must 
 "Driver={ODBC Driver 17 for SQL Server};Server=<adx_cluster_name>.<region_name>.kusto.windows.net;Database=<adx_database_name>;Authentication=ActiveDirectoryServicePrincipal;Language=any@MaxStringSize:4000,AadAuthority:<aad_tenant_id>;UID=<aad_application_id>;PWD=<aad_application_secret>"
 ```
 
-Changing *Language* field is also possible with ODBC data source (aka DSN). Add *Language* value in DNS registry, e.g.:
+You can also change the *Language* field in the ODBC data source (DSN). To do so, add the *Language* value in the DSN registry, as shown in the following example:
 
 ```odbc
 [HKEY_CURRENT_USER\SOFTWARE\ODBC\ODBC.INI\MyUserDSN]
 "Language"="any@AadAuthority:<aad_tenant_id>"
 ```
 
-On Linux and macOS edit odbc.ini file, e.g.:
+For Linux and macOS, edit the odbc.ini file, as follows:
 
 ```odbc
 # [DSN name]
@@ -112,7 +112,7 @@ Server = tcp:localhost,1433
 Language = any@AadAuthority:<aad_tenant_id>
 ```
 
-AAD tenant id for SQL clients can also be configured for entire cluster. If configured, there is no need to specify AAD tenant id on client. To change AAD tenant id, apply to support for configuring *SecuritySettings.TdsEndpointDefaultAuthority* with specific AAD tenant id.
+The Azure AD tenant ID for SQL clients can also be configured for the entire cluster. If configured, you don't need to specify the ID on client. To change the Azure AD tenant ID, contact support about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with a specific ID.
 
 ### PowerShell
 
