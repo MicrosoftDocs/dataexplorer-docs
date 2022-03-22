@@ -112,7 +112,7 @@ Server = tcp:localhost,1433
 Language = any@AadAuthority:<aad_tenant_id>
 ```
 
-The Azure AD tenant ID for SQL clients can also be configured for the entire cluster. If configured, you don't need to specify the ID on client. To change the Azure AD tenant ID, contact support about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with a specific ID.
+The Azure AD tenant ID for SQL clients can also be configured at the cluster level. If configured, you don't need to specify the ID on client. To change the tenant ID at the cluster level, pleae open a support request in the [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
 
 ### PowerShell
 
