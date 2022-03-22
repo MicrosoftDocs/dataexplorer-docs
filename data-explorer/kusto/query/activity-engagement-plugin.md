@@ -23,7 +23,7 @@ T | evaluate activity_engagement(id, datetime_column, 1d, 30d)
 
 * *T*: The input tabular expression.
 * *IdColumn*: The name of the column with ID values that represent user activity.
-* *TimelineColumn*: The name of the column that represent timeline.
+* *TimelineColumn*: The name of the column that represents timeline.
 * *Start*: (optional) Scalar with value of the analysis start period.
 * *End*: (optional) Scalar with value of the analysis end period.
 * *InnerActivityWindow*: Scalar with value of the inner-scope analysis window period.
@@ -32,7 +32,7 @@ T | evaluate activity_engagement(id, datetime_column, 1d, 30d)
 
 ## Returns
 
-Returns a table that has (distinct count of ID values inside inner-scope window, distinct count of ID values inside outer-scope window, and the activity ratio)for each inner-scope window period and for each existing dimensions combination.
+Returns a table that has a distinct count of ID values inside an inner-scope window, a distinct count of ID values inside an outer-scope window, and the activity ratio for each inner-scope window period, and for each existing dimensions combination.
 
 Output table schema is:
 
