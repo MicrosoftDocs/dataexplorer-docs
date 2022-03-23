@@ -108,11 +108,11 @@ For Linux and macOS, edit the odbc.ini file, as follows:
 [MSSQLTest]  
 Driver = ODBC Driver 17 for SQL Server  
 # Server = [protocol:]server[,port]  
-Server = tcp:localhost,1433
+Server = tcp:<adx_cluster_name>.<region_name>.kusto.windows.net,1433
 Language = any@AadAuthority:<aad_tenant_id>
 ```
 
-The Azure AD tenant ID for SQL clients can also be configured at the cluster level. If configured, you don't need to specify the ID on client. To change the tenant ID at the cluster level, pleae open a support request in the [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
+The Azure AD tenant ID for SQL clients can also be configured at the cluster level. If configured, you don't need to specify the ID on client. To change the tenant ID at the cluster level, please open a support request in the [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
 
 ### PowerShell
 
