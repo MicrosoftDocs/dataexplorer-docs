@@ -110,7 +110,7 @@ let _extentId = toscalar(
     | top 1 by IngestionTime desc
     | project ExtentId
 );
-let MySourceTable = 
+let MyFunction = 
     MySourceTable
     | where ingestion_time() > ago(10m) and extent_id() == _extentId;
 MyFunction
