@@ -108,7 +108,7 @@ For Linux and macOS, edit the odbc.ini file, as follows:
 [MSSQLTest]  
 Driver = ODBC Driver 17 for SQL Server  
 # Server = [protocol:]server[,port]  
-Server = tcp:localhost,1433
+Server = tcp:<adx_cluster_name>.<region_name>.kusto.windows.net,1433
 Language = any@AadAuthority:<aad_tenant_id>
 ```
 
