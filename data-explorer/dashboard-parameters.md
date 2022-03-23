@@ -215,7 +215,7 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 #### Use a parameter in the query
 
-1. The following sample query with the new Event parameter uses the `_ event` variable:
+1. The following sample query with the new Event parameter uses the `_event` variable:
 
     ``` kusto
     EventsAll
