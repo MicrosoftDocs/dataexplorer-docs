@@ -26,7 +26,7 @@ Azure Data Explorer clusters are created by default with the cluster property of
 
 Set this property using one of the following methods, our using the [Azure portal](#azure-portal):
 * [ARM Templates](/azure/templates/microsoft.kusto/clusters?tabs=json#trustedexternaltenant-object)
-* [Azure CLI](/cli/azure/kusto/cluster#az_kusto_cluster_update-optional-parameters)
+* [Azure CLI](/cli/azure/kusto/cluster#az-kusto-cluster-update-optional-parameters)
 * [PowerShell](/powershell/module/az.kusto/new-azkustocluster)
 * [Azure Resource Explorer](https://resources.azure.com/). 
 
