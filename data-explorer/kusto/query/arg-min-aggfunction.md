@@ -51,7 +51,7 @@ PageViewLog
     by continent
 ```
 
-:::image type="content" source="images/arg-min-aggfunction/arg-min.png" alt-text="Arg min.":::
+:::image type="content" source="images/arg-min-aggfunction/arg-min.png" alt-text="Table displaying the southernmost city as specified in the query.":::
 
 Null handling example:
 
