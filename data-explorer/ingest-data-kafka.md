@@ -342,7 +342,7 @@ To reset, do the following steps:
 
 ## Clean up resources
 
-To delete the Azure Data Explorer resources, use [az cluster delete](/cli/azure/kusto/cluster#az_kusto_cluster_delete) or [az Kusto database delete](/cli/azure/kusto/database#az_kusto_database_delete):
+To delete the Azure Data Explorer resources, use [az cluster delete](/cli/azure/kusto/cluster#az-kusto-cluster-delete) or [az Kusto database delete](/cli/azure/kusto/database#az-kusto-database-delete):
 
 ```azurecli-interactive
 az kusto cluster delete -n <cluster name> -g <resource group name>

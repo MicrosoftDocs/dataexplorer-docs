@@ -347,6 +347,8 @@ items:
           href: customer-managed-keys-powershell.md
     - name: Create Azure AD app
       href: provision-azure-ad-app.md
+    - name: Conditional Access
+      href: security-conditional-access.md
   - name: Manage
     items:
     - name: Cluster
