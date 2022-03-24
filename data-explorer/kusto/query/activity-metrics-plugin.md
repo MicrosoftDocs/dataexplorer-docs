@@ -126,7 +126,7 @@ range _day from _start to _end  step 1d
 |2017-05-22 00:00:00.0000000|0.199122325836533|0.800877674163467|
 |2017-05-29 00:00:00.0000000|0.063468992248062|0.936531007751938|
 
-:::image type="content" source="images/activity-metrics-plugin/activity-metrics-churn-and-retention.png" border="false" alt-text="Activity metrics churn and retention.":::
+:::image type="content" source="images/activity-metrics-plugin/activity-metrics-churn-and-retention.png" border="false" alt-text="Table displaying the retention and churn rates specified in the query.":::
 
 ### Distinct values and distinct 'new' values
 
@@ -173,4 +173,4 @@ range _day from _start to _end  step 1d
 | 2017-05-22 00:00:00.0000000 | 1740 | 1017 |
 | 2017-05-29 00:00:00.0000000 | 960 | 756 |
 
-:::image type="content" source="images/activity-metrics-plugin/activity-metrics-dcount-and-dcount-newvalues.png" border="false" alt-text="Activity metrics dcount and dcount new values.":::
+:::image type="content" source="images/activity-metrics-plugin/activity-metrics-dcount-and-dcount-newvalues.png" border="false" alt-text="Table displaying the distinct values and 'new' values that didn't appear in previous time window specified in the query.":::
