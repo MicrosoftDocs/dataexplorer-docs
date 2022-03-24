@@ -16,7 +16,7 @@ Cluster behavior isn't automatically resumed. To restart the cluster, do so manu
 >
 > * Leader clusters. For more information, see [follower databases](follower.md).
 > Clusters deployed in a Virtual Network </br>
-> [Start-for-free](start-for-free.md) clusters </br>
+> * [Start-for-free](start-for-free.md) clusters
 > Clusters whose [Auto-Stop settings](auto-stop-clusters.md#set-auto-stop-settings-while-creating-a-new-cluster) is turned off </br>
 > Synapse Data Explorer pools </br>
 
