@@ -31,10 +31,10 @@ Using this feature requires an Azure AD Premium license. To find the right licen
 1. Sign in to the Azure portal as a global administrator, security administrator, or Conditional Access administrator.
 
 1. Browse to **Azure Active Directory** > **Security** > **Conditional Access**.
+1. Select **New policy**.
 
     :::image type="content" source="media/conditional-access/configure-select-conditional-access.png" alt-text="Screenshot of the Security page, showing the Conditional Access tab.":::
 
-1. Select **New policy**.
 1. Give your policy a name. We recommend that organizations create a meaningful standard for the names of their policies.
 1. Under **Assignments**, select **Users and groups**. Under **Include** > **Select users and groups**, select **Users and groups**, add the user or group you want to include for Conditional Access, and then select **Select**.
 
@@ -47,7 +47,7 @@ Using this feature requires an Azure AD Premium license. To find the right licen
 
     :::image type="content" source="media/conditional-access/configure-select-apps.png" alt-text="Screenshot of the cloud apps section, showing the selection of the Azure Data Explorer app.":::
 
-1. Under **Conditions**, set the conditions you want to apply for all device platforms. For more information, see [Azure Active Directory Conditional Access : Conditions](/azure/active-directory/conditional-access/concept-conditional-access-conditions).
+1. Under **Conditions**, set the conditions you want to apply for all device platforms and then select **Done**. For more information, see [Azure Active Directory Conditional Access : Conditions](/azure/active-directory/conditional-access/concept-conditional-access-conditions).
 
     :::image type="content" source="media/conditional-access/configure-select-conditions.png" alt-text="Screenshot of the conditions section, showing the assignment of conditions.":::
 
