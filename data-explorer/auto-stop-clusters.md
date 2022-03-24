@@ -15,7 +15,7 @@ Cluster behavior isn't automatically resumed. To restart the cluster, do so manu
 > Cluster types listed below are not automatically stopped: </br>
 >
 > * Leader clusters. For more information, see [follower databases](follower.md).
-> Clusters deployed in a Virtual Network </br>
+> * Clusters deployed in a Virtual Network
 > * [Start-for-free](start-for-free.md) clusters
 > * Clusters where the [Auto-Stop setting](auto-stop-clusters.md#set-auto-stop-settings-while-creating-a-new-cluster) is turned off
 > * Azure Synapse Data Explorer pools
