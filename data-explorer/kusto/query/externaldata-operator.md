@@ -38,6 +38,9 @@ Azure Blob Storage or a file in Azure Data Lake Storage.
 
 * *StorageConnectionString*: [Storage connection strings](../api/connection-strings/storage-connection-strings.md) that describe the storage artifacts holding the data to return.
 
+> [!NOTE]
+> `externaldata` operator supports sas key, account key and token authentication methods. See [Storage authentication methods](../api/connection-strings/storage-authentication-methods.md).
+
 * *PropertyName*, *PropertyValue*, ...: Additional properties that describe how to interpret
   the data retrieved from storage, as listed under [ingestion properties](../../ingestion-properties.md).
 
