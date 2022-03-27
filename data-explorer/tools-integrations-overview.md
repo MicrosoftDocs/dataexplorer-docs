@@ -33,6 +33,7 @@ or [from a local file to an existing table](one-click-ingestion-existing-table.m
 * [Azure Synapse Apache Spark](/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
 * [Apache Spark](spark-connector.md)
 * [Apache Kafka](ingest-data-kafka.md)
+* [Telegraf](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer)
 * [Cosmos DB](https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration)
 * [Power Automate](flow.md)
 
