@@ -11,6 +11,7 @@ ms.date: 03/15/2022
 # Ingest data from IoT Hub into Azure Data Explorer
 
 > [!div class="op_single_selector"]
+
 > * [Portal](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
@@ -75,14 +76,14 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
 
 ### Create a data connection
 
-1. Fill out the form with the following information.
+* Fill out the form with the following information.
 
     :::image type="content" source="media/ingest-data-iot-hub/data-connection-pane.png" alt-text="Data connection pane in IoT Hub - Azure Data Explorer.":::
 
     |**Setting** | **Field description**|
     |---|---|
     | Data connection name | The name of the connection you want to create in Azure Data Explorer|
-    | Subscription |  The subscription ID where the Event Hub resource is located.  |
+    | Subscription |  The subscription ID where the Event Hubs resource is located.  |
     | IoT Hub | IoT Hub name |
     | Shared access policy | The name of the shared access policy. Must have read permissions |
     | Consumer group |  The consumer group defined in the IoT Hub built-in endpoint |
@@ -98,12 +99,12 @@ Before you can set an alternate target database, you must first *allow* routing 
 1. Select **Databases** > **Data connections**.
 1. Create or edit a data connection and in the **Data connection** pane, under **Data routing settings**, turn on the allow routing data to other database (multi-database data connection) option.
 
-    :::image type="content" source="media/ingest-data-iot-hub/data-connection-allow-multi-database.png" alt-text="Allow multi-database routing - IoT Hub - Azure Data Explorer.":::
+    :::image type="content" source="media/ingest-data-iot-hub/data-connection-allow-multi-database.png" alt-text="Screenshot of Data routing settings to allow routing data to other databases using multi-database routing.":::
 
 #### Target table
 
 There are two options for routing the ingested data: *static* and *dynamic*.
-For this article, you use static routing, where you specify the table name, data format, and mapping. If the Event Hub message includes data routing information, this routing information will override the default settings.
+For this article, you use static routing, where you specify the table name, data format, and mapping. If the Event Hubs message includes data routing information, this routing information will override the default settings.
 
 1. Fill out the following routing settings:
 
@@ -120,6 +121,7 @@ For this article, you use static routing, where you specify the table name, data
     > In case of a [manual failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover), you must recreate the data connection.
 
     > [!NOTE]
+    >
     > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
     > * Only events enqueued after you create the data connection are ingested.
 
@@ -128,6 +130,7 @@ For this article, you use static routing, where you specify the table name, data
 ### Event system properties mapping
 
 > [!Note]
+>
 > * System properties are supported for single-record events.
 > * For `csv` mapping, properties are added at the beginning of the record. For `json` mapping, properties are added according to the name that appears in the drop-down list.
 
@@ -137,7 +140,7 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 The simulated device application connects to a device-specific endpoint on your IoT hub and sends simulated temperature and humidity telemetry.
 
-1. Download the sample C# project from https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/refs/heads/main.zip and extract the ZIP archive.
+1. Download the sample C# project from [GitHub](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/refs/heads/main.zip) and extract the ZIP archive.
 
 1. In a local terminal window, navigate to the root folder of the sample C# project. Then navigate to the **iot-hub\Quickstarts\SimulatedDevice** folder.
 
@@ -187,6 +190,7 @@ With the app generating data, you can now see the data flow from the IoT hub to 
     ![Show ingested data results.](media/ingest-data-iot-hub/show-ingested-data.png)
 
     > [!NOTE]
+    >
     > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. See [batching policy](kusto/management/batchingpolicy.md) for aggregation options.
     > * Configure your table to support streaming and remove the lag in response time. See [streaming policy](kusto/management/streamingingestionpolicy.md).
 
