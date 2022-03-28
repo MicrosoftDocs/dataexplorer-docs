@@ -22,7 +22,7 @@ T | evaluate activity_engagement(id, datetime_column, 1d, 30d)
 ## Arguments
 
 * *T*: The input tabular expression.
-* *IdColumn*: The name of the column with ID values that represent user activity. 
+* *IdColumn*: The name of the column with ID values that represent user activity.
 * *TimelineColumn*: The name of the column that represent timeline.
 * *Start*: (optional) Scalar with value of the analysis start period.
 * *End*: (optional) Scalar with value of the analysis end period.
@@ -39,7 +39,6 @@ Output table schema is:
 |TimelineColumn|dcount_activities_inner|dcount_activities_outer|activity_ratio|dim1|..|dim_n|
 |---|---|---|---|--|--|--|--|--|--|
 |type: as of *TimelineColumn*|long|long|double|..|..|..|
-
 
 ## Examples
 

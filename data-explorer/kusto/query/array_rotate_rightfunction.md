@@ -34,10 +34,10 @@ Dynamic array containing the same amount of the elements as in the original arra
 
     <!-- csl: https://help.kusto.windows.net/Samples -->
     ```kusto
-    print arr=dynamic([1,2,3,4,5]) 
+    print arr=dynamic([1,2,3,4,5])
     | extend arr_rotated=array_rotate_right(arr, 2)
     ```
-    
+
     |arr|arr_rotated|
     |---|---|
     |[1,2,3,4,5]|[4,5,1,2,3]|
@@ -46,10 +46,10 @@ Dynamic array containing the same amount of the elements as in the original arra
 
     <!-- csl: https://help.kusto.windows.net/Samples -->
     ```kusto
-    print arr=dynamic([1,2,3,4,5]) 
+    print arr=dynamic([1,2,3,4,5])
     | extend arr_rotated=array_rotate_right(arr, -2)
     ```
-    
+
     |arr|arr_rotated|
     |---|---|
     |[1,2,3,4,5]|[3,4,5,1,2]|
