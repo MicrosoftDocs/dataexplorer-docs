@@ -11,11 +11,11 @@ Concatenates a number of dynamic arrays to a single array.
 
 ## Syntax
 
-`array_concat(`*arr1*`[`,` *arr2*, ...]`)`
+`array_concat(`*arr1*`[`,`*arr2*, ...]`)`
 
 ## Arguments
 
-* *arr1...arrN*: Input arrays to be concatenated into a dynamic array. All arguments must be dynamic arrays (see [pack_array](packarrayfunction.md)). 
+* *arr1...arrN*: Input arrays to be concatenated into a dynamic array. All arguments must be dynamic arrays (see [pack_array](packarrayfunction.md)).
 
 ## Returns
 
