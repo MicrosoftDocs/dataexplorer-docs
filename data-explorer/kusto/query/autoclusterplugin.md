@@ -7,7 +7,7 @@ ms.date: 01/23/2022
 ---
 # autocluster plugin
 
-`autocluster` finds common patterns of discrete attributes (dimensions) in the data. It then reduces the results of the original query, whether it's 100 or 100k rows, to a small number of patterns. The plugin was developed to help analyze failures (such as exceptions or crashes) but can potentially work on any filtered data set. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+`autocluster` finds common patterns of discrete attributes (dimensions) in the data. It then reduces the results of the original query, whether it's 100 or 100,000 rows, to a few patterns. The plugin was developed to help analyze failures (such as exceptions or crashes) but can potentially work on any filtered data set. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 > [!NOTE]
 > `autocluster` is largely based on the Seed-Expand algorithm from the following paper: [Algorithms for Telemetry Data Mining using Discrete Attributes](https://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=d5kcrO+cpEU=&t=1).
@@ -32,7 +32,7 @@ All arguments are optional, but they must be ordered as above. To indicate that 
 
 ## Returns
 
-The `autocluster` plugin returns a (usually small) set of patterns. The patterns capture portions of the data with shared common values across multiple discrete attributes. Each pattern in the results is represented by a row.
+The `autocluster` plugin usually returns a small set of patterns. The patterns capture portions of the data with shared common values across multiple discrete attributes. Each pattern in the results is represented by a row.
 
 The first column is the segment ID. The next two columns are the count and percentage of rows out of the original query that are captured by the pattern. The remaining columns are from the original query. Their value is either a specific value from the column, or a wildcard value (which are by default null) meaning variable values.
 

@@ -28,7 +28,7 @@ Checks for a condition. If the condition is false, outputs error messages and fa
 
 ## Examples
 
-The following query defines a function `checkLength()` that checks input string length, and uses `assert` to validate input length parameter (checks that it is greater than zero).
+The following query defines a function `checkLength()` that checks input string length, and uses `assert` to validate input length parameter (checks that it's greater than zero).
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
