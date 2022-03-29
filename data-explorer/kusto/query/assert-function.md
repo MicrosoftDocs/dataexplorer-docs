@@ -34,7 +34,7 @@ The following query defines a function `checkLength()` that checks input string 
 ```kusto
 let checkLength = (len:long, s:string)
 {
-    assert(len > 0, "Length must be greater than zero") and 
+    assert(len > 0, "Length must be greater than zero") and
     strlen(s) > len
 };
 datatable(input:string)
@@ -45,9 +45,8 @@ datatable(input:string)
 | where checkLength(len=long(-1), input)
 ```
 
-Running this query yields an error:  
+Running this query yields an error:
 `assert() has failed with message: 'Length must be greater than zero'`
-
 
 Example of running with valid `len` input:
 
