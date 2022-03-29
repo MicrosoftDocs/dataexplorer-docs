@@ -19,7 +19,7 @@ Calculates the number of elements in a dynamic array.
 
 ## Returns
 
-The number of elements in *array*, or `null` if *array* is not an array.
+The number of elements in *array*, or `null` if *array* isn't an array.
 
 ## Examples
 
