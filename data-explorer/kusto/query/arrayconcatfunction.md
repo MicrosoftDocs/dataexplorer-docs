@@ -7,7 +7,7 @@ ms.date: 10/23/2018
 ---
 # array_concat()
 
-Concatenates a number of dynamic arrays to a single array.
+Concatenates many dynamic arrays to a single array.
 
 ## Syntax
 

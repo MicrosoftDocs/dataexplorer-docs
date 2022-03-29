@@ -7,7 +7,7 @@ ms.date: 10/23/2018
 ---
 # asin()
 
-Returns the angle whose sine is the specified number (the inverse operation of [`sin()`](sinfunction.md)) .
+Returns the angle whose sine is the specified number (the inverse operation of [`sin()`](sinfunction.md)).
 
 ## Syntax
 
