@@ -12,7 +12,7 @@ Here are several best practices to follow to make your query run faster.
 
 |Action  |Use  |Don't use  |Notes  |
 |---------|---------|---------|---------|
-| **Time filters** | Use time filters first. ||Kusto is highly optimized to use time filters.| 
+| **Time filters** | Use time filters first. ||Kusto is highly optimized to use time filters.|
 |**String operators**      | Use the `has` operator     | Don't use `contains`     | When looking for full tokens, `has` works better, since it doesn't look for substrings.   |
 |**Case-sensitive operators**     |  Use `==`       | Don't use  `=~`       |  Use case-sensitive operators when possible.       |
 | | Use `in` | Don't use `in~`|
@@ -37,5 +37,3 @@ Here are several best practices to follow to make your query run faster.
 |**[extract() function](./extractfunction.md)**| Use when parsed strings don't all follow the same format or pattern.| |Extract the required values by using a REGEX.|
 | **[materialize() function](./materializefunction.md)** | Push all possible operators that will reduce the materialized data set and still keep the semantics of the query. | |For example, filters, or project only required columns.
 | **Use materialized views** | Use [materialized views](../management/materialized-views/materialized-view-overview.md) for storing commonly used aggregations. Prefer using the `materialized_view()` function to query materialized part only | | `materialized_view('MV')` |
-
-
