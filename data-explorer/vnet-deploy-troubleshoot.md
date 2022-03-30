@@ -66,7 +66,7 @@ Check that the [cluster ingestion metrics](using-metrics.md#ingestion-metrics) i
 
 ### Check security rules on data source resources
 
-If the metrics indicate that no events were processed from the data source (*Events processed* metric for Event/IoT Hubs), make sure that the data source resources (Event Hub or Storage) allow access from cluster's subnet in the firewall rules or service endpoints.
+If the metrics indicate that no events were processed from the data source (*Events processed* metric for Event/IoT Hubs), make sure that the data source resources (Event Hubs or Storage) allow access from cluster's subnet in the firewall rules or service endpoints.
 
 ### Check security rules configured on cluster's subnet
 
@@ -78,13 +78,13 @@ If you're experiencing cluster creation or operation issues and you suspect it's
 
 ### Check the "DNS servers" configuration
 
-Setting up Private Endpoint requires configuring DNS, We support Azure Private DNS zone setup only. Custom DNS server setup is not support, check that the records that were created as part of private endpoint are registered to Azure Private DNS zone.
+Setting up Private Endpoint requires configuring DNS, We support Azure Private DNS zone setup only. Custom DNS server setup isn't support, check that the records that were created as part of private endpoint are registered to Azure Private DNS zone.
 
 ### Diagnose the virtual network with the REST API
 
 The [ARMClient](https://chocolatey.org/packages/ARMClient) is used to call the REST API using PowerShell.
 
-1. Log in with ARMClient
+1. Sign in with ARMClient
 
     ```powerShell
     armclient login

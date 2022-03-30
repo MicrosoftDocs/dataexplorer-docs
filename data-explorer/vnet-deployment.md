@@ -16,7 +16,7 @@ Azure Data Explorer supports deploying a cluster into a subnet in your Virtual N
 
 * Enforce [Network Security Group](/azure/virtual-network/security-overview) (NSG) rules on your Azure Data Explorer cluster traffic.
 * Connect your on-premises network to Azure Data Explorer cluster's subnet.
-* Secure your data connection sources ([event hub](/azure/event-hubs/event-hubs-about) and [event grid](/azure/event-grid/overview)) with [service endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview).
+* Secure your data connection sources ([Event Hubs](/azure/event-hubs/event-hubs-about) and [Event Grid](/azure/event-grid/overview)) with [service endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview).
 
 ## Access your Azure Data Explorer cluster in your VNet
 
@@ -54,7 +54,7 @@ The total number of IP addresses:
 ## Service endpoints for connecting to Azure Data Explorer
 
 [Azure Service Endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview) enables you to secure your Azure multi-tenant resources to your virtual network.
-Deploying Azure Data Explorer cluster into your subnet allows you to setup data connections with [event hub](/azure/event-hubs/event-hubs-about) or [Event Grid](/azure/event-grid/overview) while restricting the underlying resources for Azure Data Explorer subnet.
+Deploying the cluster into your subnet allows you to set up data connections with [Event Hubs](/azure/event-hubs/event-hubs-about) or [Event Grid](/azure/event-grid/overview) while restricting the underlying resources for Azure Data Explorer subnet.
 
 ## Private Endpoints
 
@@ -85,24 +85,24 @@ Alternatively, you can manually configure your NSG. By default, deploying a clus
 
 | **Use** | **From** | **To** | **Protocol** |
 |--|--|--|--|
-| Management | [Azure Data Explorer management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement(ServiceTag) | Azure Data Explorer subnet:443 | TCP |
-| Health monitoring | [Azure Data Explorer health monitoring addresses](#health-monitoring-addresses) | Azure Data Explorer subnet:443 | TCP |
-| Azure Data Explorer internal communication | Azure Data Explorer subnet: All ports | Azure Data Explorer subnet:All ports | All |
-| Allow Azure load balancer inbound (health probe) | AzureLoadBalancer | Azure Data Explorer subnet:80,443 | TCP |
+| Management | [Azure Data Explorer management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement(ServiceTag) | *YourAzureDataExplorerSubnet*:443 | TCP |
+| Health monitoring | [Azure Data Explorer health monitoring addresses](#health-monitoring-addresses) | *YourAzureDataExplorerSubnet*:443 | TCP |
+| Azure Data Explorer internal communication | *YourAzureDataExplorerSubnet*: All ports | *YourAzureDataExplorerSubnet*:All ports | All |
+| Allow Azure load balancer inbound (health probe) | AzureLoadBalancer | *YourAzureDataExplorerSubnet*:80,443 | TCP |
 
 #### Outbound NSG configuration
 
 | **Use** | **From** | **To** | **Protocol** |
 |--|--|--|--|
-| Dependency on Azure Storage | Azure Data Explorer subnet | Storage:443 | TCP |
-| Dependency on Azure Data Lake | Azure Data Explorer subnet | AzureDataLake:443 | TCP |
-| Event hub ingestion and service monitoring | Azure Data Explorer subnet | EventHub:443,5671 | TCP |
-| Publish Metrics | Azure Data Explorer subnet | AzureMonitor:443 | TCP |
-| Active Directory (if applicable) | Azure Data Explorer subnet | AzureActiveDirectory:443 | TCP |
-| Dependency on KeyVault | Azure Data Explorer subnet | AzureKeyVault:443 | TCP |
-| Certificate authority | Azure Data Explorer subnet | Internet:80 | TCP |
-| Internal communication | Azure Data Explorer subnet | Azure Data Explorer Subnet:All Ports | All |
-| Ports that are used for `sql\_request` and `http\_request` plugins | Azure Data Explorer subnet | Internet:Custom | TCP |
+| Dependency on Azure Storage | *YourAzureDataExplorerSubnet* | Storage:443 | TCP |
+| Dependency on Azure Data Lake | *YourAzureDataExplorerSubnet* | AzureDataLake:443 | TCP |
+| Event Hubs ingestion and service monitoring | *YourAzureDataExplorerSubnet* | EventHub:443,5671 | TCP |
+| Publish Metrics | *YourAzureDataExplorerSubnet* | AzureMonitor:443 | TCP |
+| Active Directory (if applicable) | *YourAzureDataExplorerSubnet* | AzureActiveDirectory:443 | TCP |
+| Dependency on KeyVault | *YourAzureDataExplorerSubnet* | AzureKeyVault:443 | TCP |
+| Certificate authority | *YourAzureDataExplorerSubnet* | Internet:80 | TCP |
+| Internal communication | *YourAzureDataExplorerSubnet* | Azure Data Explorer Subnet:All Ports | All |
+| Ports that are used for `sql\_request` and `http\_request` plugins | *YourAzureDataExplorerSubnet* | Internet:Custom | TCP |
 
 The following sections list the relevant IP addresses for management and health monitoring.
 
@@ -296,11 +296,11 @@ For example, for **West US** region, the following UDRs must be defined:
 ## How to discover dependencies automatically
 
 Azure Data Explorer provides an API that allows customers to discover all external outbound dependencies (FQDNs) programmatically.
-These outbound dependencies will allow customers to setup a Firewall at their end to allow management traffic through the dependent FQDNs. Customers can have these firewall appliances either in Azure or on-premises. The latter might cause additional latency and might impact the service performance. Service teams will need to test out this scenario to evaluate impact on the service performance.
+These outbound dependencies will allow customers to set up a Firewall at their end to allow management traffic through the dependent FQDNs. Customers can have these firewall appliances either in Azure or on-premises. The latter might cause additional latency and might impact the service performance. Service teams will need to test out this scenario to evaluate impact on the service performance.
 
 The [ARMClient](https://chocolatey.org/packages/ARMClient) is used to demonstrate the REST API using PowerShell.
 
-1. Log in with ARMClient
+1. Sign in with ARMClient
 
    ```powerShell
    armclient login
@@ -358,7 +358,7 @@ The [ARMClient](https://chocolatey.org/packages/ARMClient) is used to demonstrat
    }
     ```
 
-The outbound dependencies cover categories such as "Azure Active Directory", "Azure Monitor", "Certificate Authority", and "Azure Storage". In each category there is a list of domain names and ports which are needed to run the service. They can be used to programmatically configure the firewall appliance of choice.
+The outbound dependencies cover categories such as "Azure Active Directory", "Azure Monitor", "Certificate Authority", and "Azure Storage". In each category, there's a list of domain names and ports that are needed to run the service. They can be used to programmatically configure the firewall appliance of choice.
 
 ## Deploy Azure Data Explorer cluster into your VNet using an Azure Resource Manager template
 
@@ -368,5 +368,5 @@ This template creates the cluster, virtual network, subnet, network security gro
 
 ## Known limitations
 
-* Virtual network resources with deployed clusters do not support the [move to a new resource group or subscription](/azure/azure-resource-manager/management/move-resource-group-and-subscription) operation.
-* Public IP address resources used for the cluster engine or the data management service do not support the move to a new resource group or subscription operation.
+* Virtual network resources with deployed clusters don't support the [move to a new resource group or subscription](/azure/azure-resource-manager/management/move-resource-group-and-subscription) operation.
+* Public IP address resources used for the cluster engine or the data management service don't support the move to a new resource group or subscription operation.
