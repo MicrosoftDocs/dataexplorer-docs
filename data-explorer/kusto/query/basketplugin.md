@@ -79,7 +79,7 @@ StormEvents
 |6|1310|22.3|||YES|
 |7|1291|21.9||Thunderstorm Wind||
 
-**Example with custom wildcards**
+## Example with custom wildcards
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
