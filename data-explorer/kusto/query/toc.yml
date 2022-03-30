@@ -553,6 +553,8 @@ items:
     href: ipv4-comparefunction.md
   - name: ipv4_is_in_range()
     href: ipv4-is-in-range-function.md
+  - name: ipv4_is_in_any_range()
+    href: ipv4-is-in-any-range-function.md
   - name: ipv4_is_match()
     href: ipv4-is-matchfunction.md
   - name: ipv4_is_private()
