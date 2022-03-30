@@ -1,12 +1,9 @@
 ---
 title: Troubleshooting Private Endpoints in Azure Data Explorer
 description: In this article, you'll learn how to troubleshoot Private Endpoints in Azure Data Explorer.
-author: shsagir
-ms.author: herauch
 ms.reviewer: eladb
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/23/2022
+ms.date: 03/30/2022
 ---
 
 # Troubleshoot private endpoints
@@ -21,7 +18,7 @@ Make sure that the private endpoint's connection state is set to approved.
 
 1. Select **Private endpoint**. In the table, in the **Connection state** column, verify that the private endpoint is approved.
 
-:::image type="content" source="media/security-network-private-endpoint/pe-create-7.png" alt-text="See all private endpoints of an Azure Data Explorer cluster in the portal.":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-create-7.png" alt-text="See all private endpoints of an Azure Data Explorer cluster in the portal.":::
 
 ## Run checks from within the virtual network
 

@@ -3,14 +3,14 @@ title: Deploy Azure Data Explorer into your Virtual Network
 description: Learn how to deploy Azure Data Explorer into your Virtual Network
 ms.reviewer: basaba
 ms.topic: how-to
-ms.date: 02/01/2022
+ms.date: 03/30/2022
 ---
 
 # Deploy Azure Data Explorer cluster into your Virtual Network
 
 This article explains the resources that are present when you deploy an Azure Data Explorer cluster into a custom Azure Virtual Network. This information will help you deploy a cluster into a subnet in your Virtual Network (VNet). For more information on Azure Virtual Networks, see [What is Azure Virtual Network?](/azure/virtual-network/virtual-networks-overview)
 
-:::image type="content" source="media/vnet-deployment/vnet-diagram.png" alt-text="diagram showing schematic virtual network architecture."::: 
+:::image type="content" source="media/vnet-deployment/vnet-diagram.png" alt-text="diagram showing schematic virtual network architecture.":::
 
 Azure Data Explorer supports deploying a cluster into a subnet in your Virtual Network (VNet). This capability enables you to:
 
@@ -28,9 +28,9 @@ You can access your Azure Data Explorer cluster using the following IP addresses
 > [!IMPORTANT]
 > The default NSG rules block access to public IP addresses outside the VNet. To reach a public endpoint, you must add an exception for your public IP addresses in the NSG.
 
-The following DNS records are created to access the service: 
+The following DNS records are created to access the service:
 
-* `[clustername].[geo-region].kusto.windows.net` (engine) `ingest-[clustername].[geo-region].kusto.windows.net` (data management) are mapped to the public IP for each service. 
+* `[clustername].[geo-region].kusto.windows.net` (engine) `ingest-[clustername].[geo-region].kusto.windows.net` (data management) are mapped to the public IP for each service.
 
 * `private-[clustername].[geo-region].kusto.windows.net` (engine) `ingest-private-[clustername].[geo-region].kusto.windows.net`\\`private-ingest-[clustername].[geo-region].kusto.windows.net` (data management) are mapped to the private IP for each service.
 
@@ -41,7 +41,7 @@ The size of the subnet used to host an Azure Data Explorer cluster can't be alte
 The total number of IP addresses:
 
 | Use | Number of addresses |
-| --- | --- |
+|--|--|
 | Engine service | 1 per instance |
 | Data management service | 2 |
 | Internal load balancers | 2 |
@@ -64,45 +64,45 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
  > [!NOTE]
  > Setting up Private Endpoint requires [configuring DNS](/azure/private-link/private-endpoint-dns), We support [Azure Private DNS zone](/azure/dns/private-dns-privatednszone) setup only. Custom DNS server isn't supported.
 
-## Network Security Groups configuration
+## Configure Network Security Group rules
 
-[Network Security Groups (NSG)](/azure/virtual-network/security-overview) provide the ability to control network access within a VNet. They must be configured for Azure Data Explorer to work.
+[NSGs](/azure/virtual-network/security-overview) give you the ability to control network access within a VNet. You must configure NSGs for your Azure Data Explorer cluster to work in your VNet.
 
-### Configuration of Network Security Groups using Subnet delegation
+### Configure Network Security Group rules using subnet delegation
 
-It's highly recommended for Azure Data Explorer to operate using the [subnet delegation](/azure/virtual-network/subnet-delegation-overview) mechanism. Before creating the cluster in the subnet, you must delegate the subnet to **Microsoft.Kusto/clusters**.
+We recommend that you use [subnet delegation](/azure/virtual-network/subnet-delegation-overview) for your cluster's deployment. To do so, you must delegate the subnet to **Microsoft.Kusto/clusters** before creating the cluster in the subnet.
 
-By enabling subnet delegation on the Azure Data Explorer cluster's subnet, you enable the service to define its pre-conditions for deployment in the form of Network Intent Policies. When creating the cluster in the subnet, the NSG configurations mentioned in the following sections are automatically created for you.
+By enabling subnet delegation on the cluster's subnet, you enable the service to define its pre-conditions for deployment in the form of Network Intent Policies. When creating the cluster in the subnet, the NSG configurations mentioned in the following sections are automatically created for you.
 
-### Alternative: Manual configuration of network security groups
+### Configure Network Security Group rules manually
 
-The alternative to using subnet delegation is to manually configure the NSG. Per default, deploying an Azure Data Explorer into a virtual network enforces subnet delegation for "Microsoft.Kusto/clusters" to be configured. Opting out of this requirement is possible using the [Preview features blade](https://portal.azure.com/#blade/Microsoft_Azure_Resources/PreviewFeaturesBlade).
+Alternatively, you can manually configure your NSG. By default, deploying a cluster into a virtual network enforces subnet delegation for "Microsoft.Kusto/clusters" to be configured. Opting out of this requirement is possible using the [Preview features](https://portal.azure.com/#blade/Microsoft_Azure_Resources/PreviewFeaturesBlade) pane.
 
  > [!WARNING]
- > Setting up the NSG rules for ADX manually is not trivial and requires to constantly monitor this documentation page for changes. It is highly recommended to use subnet delegation with ADX or consider using a [Private Endpoint](security-network-private-endpoint.md) based solution.
+ > Manually configuring NSG rules for your cluster is not trivial and requires you to constantly monitor this article for changes. We highly recommended using subnet delegation for your cluster or, if you prefer, consider using a [Private Endpoint](security-network-private-endpoint.md) based solution.
 
 #### Inbound NSG configuration
 
-| **Use**   | **From**   | **To**   | **Protocol**   |
-| --- | --- | --- | --- |
-| Management  |[Azure Data Explorer management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement(ServiceTag) | Azure Data Explorer subnet:443  | TCP  |
-| Health monitoring  | [Azure Data Explorer health monitoring addresses](#health-monitoring-addresses)  | Azure Data Explorer subnet:443  | TCP  |
-| Azure Data Explorer internal communication  | Azure Data Explorer subnet: All ports  | Azure Data Explorer subnet:All ports  | All  |
-| Allow Azure load balancer inbound (health probe)  | AzureLoadBalancer  | Azure Data Explorer subnet:80,443  | TCP  |
+| **Use** | **From** | **To** | **Protocol** |
+|--|--|--|--|
+| Management | [Azure Data Explorer management addresses](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement(ServiceTag) | Azure Data Explorer subnet:443 | TCP |
+| Health monitoring | [Azure Data Explorer health monitoring addresses](#health-monitoring-addresses) | Azure Data Explorer subnet:443 | TCP |
+| Azure Data Explorer internal communication | Azure Data Explorer subnet: All ports | Azure Data Explorer subnet:All ports | All |
+| Allow Azure load balancer inbound (health probe) | AzureLoadBalancer | Azure Data Explorer subnet:80,443 | TCP |
 
 #### Outbound NSG configuration
 
-| **Use**   | **From**   | **To**   | **Protocol**   |
-| --- | --- | --- | --- |
-| Dependency on Azure Storage  | Azure Data Explorer subnet  | Storage:443  | TCP  |
-| Dependency on Azure Data Lake  | Azure Data Explorer subnet  | AzureDataLake:443  | TCP  |
-| Event hub ingestion and service monitoring  | Azure Data Explorer subnet  | EventHub:443,5671  | TCP  |
-| Publish Metrics  | Azure Data Explorer subnet  | AzureMonitor:443 | TCP  |
+| **Use** | **From** | **To** | **Protocol** |
+|--|--|--|--|
+| Dependency on Azure Storage | Azure Data Explorer subnet | Storage:443 | TCP |
+| Dependency on Azure Data Lake | Azure Data Explorer subnet | AzureDataLake:443 | TCP |
+| Event hub ingestion and service monitoring | Azure Data Explorer subnet | EventHub:443,5671 | TCP |
+| Publish Metrics | Azure Data Explorer subnet | AzureMonitor:443 | TCP |
 | Active Directory (if applicable) | Azure Data Explorer subnet | AzureActiveDirectory:443 | TCP |
 | Dependency on KeyVault | Azure Data Explorer subnet | AzureKeyVault:443 | TCP |
 | Certificate authority | Azure Data Explorer subnet | Internet:80 | TCP |
-| Internal communication  | Azure Data Explorer subnet  | Azure Data Explorer Subnet:All Ports  | All  |
-| Ports that are used for `sql\_request` and `http\_request` plugins  | Azure Data Explorer subnet  | Internet:Custom  | TCP  |
+| Internal communication | Azure Data Explorer subnet | Azure Data Explorer Subnet:All Ports | All |
+| Ports that are used for `sql\_request` and `http\_request` plugins | Azure Data Explorer subnet | Internet:Custom | TCP |
 
 The following sections list the relevant IP addresses for management and health monitoring.
 
@@ -222,7 +222,7 @@ Use ExpressRoute to connect on premises network to the Azure Virtual Network. A 
 
 If you want to secure outbound traffic using [Azure Firewall](/azure/firewall/overview) or any virtual appliance to limit domain names, the following Fully Qualified Domain Names (FQDN) must be allowed in the firewall.
 
-```
+```ini
 prod.warmpath.msftcloudes.com:443
 gcs.prod.monitoring.core.windows.net:443
 production.diagnostics.monitoring.core.windows.net:443
@@ -255,10 +255,10 @@ crl3.digicert.com:80
 > * To restrict access for dependencies with a wildcard (*), use the API described in [How to discover dependencies automatically](vnet-deployment.md#how-to-discover-dependencies-automatically).
 > * If you're using [Azure Firewall](/azure/firewall/overview), add **Network Rule** with the following properties:
 >
->     **Protocol**: TCP  
->     **Source Type**: IP Address  
->     **Source**: \*  
->     **Service Tags**: AzureMonitor  
+>     **Protocol**: TCP
+>     **Source Type**: IP Address
+>     **Source**: \*
+>     **Service Tags**: AzureMonitor
 >     **Destination Ports**: 443
 
 ### Route table configuration
@@ -313,7 +313,7 @@ The [ARMClient](https://chocolatey.org/packages/ARMClient) is used to demonstrat
     $clusterName = '<name of cluster>'
     $resourceGroupName = '<resource group name>'
     $apiversion = '2021-01-01'
-    
+
     armclient get /subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Kusto/clusters/$clusterName/OutboundNetworkDependenciesEndpoints?api-version=$apiversion
     ```
 
@@ -321,7 +321,7 @@ The [ARMClient](https://chocolatey.org/packages/ARMClient) is used to demonstrat
 
     ```javascript
     {
-       "value": 
+       "value":
        [
         ...
           {

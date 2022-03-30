@@ -1,12 +1,9 @@
 ---
 title: Network security for Azure Data Explorer cluster
 description: 'Learn about the different options to secure your Azure Data Explorer cluster applying network security measures.'
-author: shsagir
-ms.author: shsagir
 ms.reviewer: basaba
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/23/2022
+ms.date: 03/30/2022
 ---
 
 # Network security for Azure Data Explorer

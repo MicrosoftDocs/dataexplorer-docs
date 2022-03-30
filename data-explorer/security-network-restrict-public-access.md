@@ -1,12 +1,9 @@
 ---
 title: Restrict public access to your Azure Data Explorer cluster
 description: In this article, you'll learn how to public access to your Azure Data Explorer cluster.
-author: shsagir
-ms.author: shsagir
 ms.reviewer: eladb
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/23/2022
+ms.date: 03/30/2022
 ---
 
 # Restrict public access to your Azure Data Explorer cluster
