@@ -70,7 +70,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 
 ### Configure Network Security Group rules using subnet delegation
 
-We recommend that you use [subnet delegation](/azure/virtual-network/subnet-delegation-overview) for your cluster's deployment. To do so, you must delegate the subnet to **Microsoft.Kusto/clusters** before creating the cluster in the subnet.
+We recommend that you use [subnet delegation](/azure/virtual-network/subnet-delegation-overview) for your cluster's deployment. To do so, you must delegate the subnet to *Microsoft.Kusto/clusters* before creating the cluster in the subnet.
 
 By enabling subnet delegation on the cluster's subnet, you enable the service to define its pre-conditions for deployment in the form of Network Intent Policies. When creating the cluster in the subnet, the NSG configurations mentioned in the following sections are automatically created for you.
 
@@ -107,7 +107,7 @@ Alternatively, you can manually configure your NSG. By default, deploying a clus
 The following sections list the relevant IP addresses for management and health monitoring.
 
 > [!NOTE]
-> You can disregard the following lists if your subnet is delegated to Microsoft.Kusto/clusters as described in the [section](vnet-deployment.md#configuration-of-network-security-groups-using-subnet-delegation) above. In this scenario, IP addresses may be not up to date but will be automatically updated when the required NSG rules are assigned to the cluster.
+> You can disregard the following lists if your subnet is delegated to *Microsoft.Kusto/clusters* as described in [Configure Network Security Group rules using subnet delegation](#configure-network-security-group-rules-using-subnet-delegation). In this scenario, IP addresses may be not be up to date but will be automatically updated when the required NSG rules are assigned to the cluster.
 
 #### Azure Data Explorer management IP addresses
 
@@ -261,22 +261,22 @@ crl3.digicert.com:80
 >     **Service Tags**: AzureMonitor
 >     **Destination Ports**: 443
 
-### Route table configuration
+### Configure the route table
 
-The configuration of the [route table](/azure/virtual-network/virtual-networks-udr-overview) for the Azure Data Explorer subnet with next hop *Internet* is needed to prevent asymmetric routes issues.
+You must configure the [route table](/azure/virtual-network/virtual-networks-udr-overview) of your cluster's subnet with next hop *Internet* to prevent asymmetric routes issues.
 
-#### Subnet delegation for configuration of the route table
+#### Configure the route table using subnet delegation
 
-The default and recommended way to configure the route table is to use subnet delegation similarly to the [configuration of the NSG](#configuration-of-network-security-groups-using-subnet-delegation). Azure Data Explorer will configure and update the route table for you. No additional actions are needed.
+We recommend using subnet delegation to configure the route table for your cluster's deployment, similarly to how it was done for [NSG rules](#configure-network-security-group-rules-using-subnet-delegation). By enabling subnet delegation on the cluster's subnet, you enable the service to configure and update the route table for you.
 
-#### Alternative: Manual configuration of the route table
+#### Configure the route table manually
 
-The alternative to using subnet delegation is to manually configure the route table. Per default, deploying an Azure Data Explorer into a virtual network enforces subnet delegation for "Microsoft.Kusto/clusters" to be configured. Opting out of this requirement is possible using the [Preview features blade](https://portal.azure.com/#blade/Microsoft_Azure_Resources/PreviewFeaturesBlade).
+Alternatively, you can manually configure the route table. By default, deploying a cluster into a virtual network enforces subnet delegation for "Microsoft.Kusto/clusters" to be configured. Opting out of this requirement is possible using the [Preview features](https://portal.azure.com/#blade/Microsoft_Azure_Resources/PreviewFeaturesBlade) pane.
 
  > [!WARNING]
- > Setting up the route table for ADX manually is not trivial and requires to constantly monitor this documentation page for changes. It is highly recommended to use subnet delegation with ADX or consider using a [Private Endpoint](security-network-private-endpoint.md) based solution.
+ > Manually configuring the route table for your cluster is not trivial and requires you to constantly monitor this article for changes. We highly recommended using subnet delegation for your cluster or, if you prefer, consider using a [Private Endpoint](security-network-private-endpoint.md) based solution.
 
-To configure the [route table](/azure/virtual-network/virtual-networks-udr-overview) manually you need to define it on the subnet. You need to add the [management addresses](vnet-deployment.md#azure-data-explorer-management-ip-addresses) and [health monitoring addresses](vnet-deployment.md#health-monitoring-addresses) with next hop *Internet*.
+To manually configure the [route table](/azure/virtual-network/virtual-networks-udr-overview) you must define it on the subnet. You need to add the [management](vnet-deployment.md#azure-data-explorer-management-ip-addresses) and [health monitoring](vnet-deployment.md#health-monitoring-addresses) addresses with next hop *Internet*.
 
 For example, for **West US** region, the following UDRs must be defined:
 

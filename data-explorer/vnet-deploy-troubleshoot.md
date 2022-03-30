@@ -52,7 +52,7 @@ If the test isn't successful, proceed with the following steps. If the test is s
 
 Check that the [NSG](/azure/virtual-network/security-overview) attached to the cluster's subnet, has an inbound rule that allows access from the client machine's IP for port 443.
 
-### Check route tables for access issues
+### Check the route table is configured to prevent access issues
 
 If the cluster's subnet is configured to force tunnel all internet-bound traffic back to your firewall (subnet with a [route table](/azure/virtual-network/virtual-networks-udr-overview) that contains the default route '0.0.0.0/0'), make sure that the machine IP address has a route with [next hop type](/azure/virtual-network/virtual-networks-udr-overview) to VirtualNetwork/Internet. This route is required to prevent asymmetric route issues.
 
@@ -146,7 +146,7 @@ If the *Findings* property shows an empty result, it means that all network test
 
 Make sure that the [NSG](/azure/virtual-network/security-overview) is configured properly per the instructions in [Configure Network Security Group rules](vnet-deployment.md#configure-network-security-group-rules).
 
-### Check route tables for ingestion issues
+### Check the route table is configured to prevent ingestion issues
 
 If the cluster's subnet is configured to force tunnel all internet-bound traffic back to your firewall (subnet with a [route table](/azure/virtual-network/virtual-networks-udr-overview) that contains the default route '0.0.0.0/0') make sure that the [management IP addresses](vnet-deployment.md#azure-data-explorer-management-ip-addresses)) and [health monitoring IP addresses](vnet-deployment.md#health-monitoring-addresses) have a route with [next hop type](/azure/virtual-network/virtual-networks-udr-overview##next-hop-types-across-azure-tools) *Internet*, and [source address prefix](/azure/virtual-network/virtual-networks-udr-overview#how-azure-selects-a-route) to *'management-ip/32'* and *'health-monitoring-ip/32'*. This route required to prevent asymmetric route issues.
 
