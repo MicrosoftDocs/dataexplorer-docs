@@ -60,34 +60,36 @@ Both cost and performance recommendations are currently available.
 The **Cost** recommendations are available for clusters that can be changed to reduce cost without compromising performance. 
 Cost recommendations include: 
 
-* [Azure Data Explorer unused cluster](#azure-data-explorer-unused-cluster)
-* [Azure Data Explorer clusters containing data with low activity](#azure-data-explorer-clusters-containing-data-with-low-activity)
+* [Unused running Azure Data Explorer cluster](#azure-data-explorer-unused-running-cluster)
+* [Unused stopped Azure Data Explorer cluster](#azure-data-explorer-unused-stopped-cluster)
 * [Correctly size Azure Data Explorer cluster to optimize cost](#correctly-size-azure-data-explorer-clusters-to-optimize-cost)
 * [Reduce cache for Azure Data Explorer tables](#reduce-cache-for-azure-data-explorer-tables)
 * [Run a cleanup command to delete unused storage artifacts](#delete-unused-storage-artifacts)
 * [Enable Optimized autoscale](#enable-optimized-autoscale)
 
-#### Azure Data Explorer unused cluster
+#### Unused running Azure Data Explorer cluster
 
-A cluster is considered unused if it has:
-
-* Small amount of data
-* No queries and ingestion events during the last 30 days
-* Low CPU usage during the last 30 days
-* No followers
-
-When recommended to **consider deleting empty / unused clusters**, the recommended action is to delete the cluster.
-
-#### Azure Data Explorer clusters containing data with low activity
-
-The recommendation **stop Azure Data Explorer clusters to reduce cost and keep its data** is given for a cluster that contains data but has low activity. 
-
-Low activity is based on:
-
-* No queries and ingestion events during the last 5 days
-* Low CPU usage during the last 5 days
-
+A cluster is considered unused and running if it is running and has no data ingestion or queries in the past 5 days. In some cases, clusters may be [automatically stopped](auto-stop-clusters). In the flowing cases the cluster won't automatically stop and a recomendation will be surfaced:
+ * Leader clusters. For more information, see [follower databases](follower.md).
+ * Clusters deployed in a Virtual Network
+ * Clusters where the [Auto-Stop setting](auto-stop-clusters.md#set-auto-stop-settings-while-creating-a-new-cluster) is turned off
+ * Azure Synapse Data Explorer pools
+ 
 The recommendation is to stop the cluster to reduce cost but still preserve the data. If the data isn't needed, consider deleting the cluster to increase your savings.
+
+#### Unused stopped Azure Data Explorer cluster
+
+A cluster is considered unused and stopped if it has been stopped for at least 60 days.
+In the flowing cases the recomendation will not be surfaced:
+ * Leader clusters. For more information, see [follower databases](follower.md).
+ * Clusters deployed in a Virtual Network
+ * Azure Synapse Data Explorer pools
+
+The recommendation is to delete the cluster to reduce cost. 
+
+> [!CAUTION]
+> Stopped clusters may still contain data! Verify that the data is not needed before deleting the cluster. Data will no longer be accessible after deleting the cluster.
+
 
 #### Correctly size Azure Data Explorer clusters to optimize cost
 
