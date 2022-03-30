@@ -1,12 +1,9 @@
 ---
 title: Create a Private Endpoints for Azure Data Explorer
 description: In this article, you'll learn how to create a private endpoint for Azure Data Explorer.
-author: shsagir
-ms.author: herauch
 ms.reviewer: eladb
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/24/2022
+ms.date: 03/30/2022
 ---
 
 # Create a private endpoint for Azure Data Explorer

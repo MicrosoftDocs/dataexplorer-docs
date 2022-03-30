@@ -1,12 +1,9 @@
 ---
 title: Private Endpoints for Azure Data Explorer
 description: In this article, you'll learn about private endpoints for Azure Data Explorer.
-author: shsagir
-ms.author: shsagir
 ms.reviewer: basaba
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/23/2022
+ms.date: 03/30/2022
 ---
 
 # Private Endpoints for Azure Data Explorer
