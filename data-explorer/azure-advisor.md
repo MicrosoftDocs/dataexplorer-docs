@@ -80,10 +80,6 @@ The recommendation is to stop the cluster to reduce cost but still preserve the 
 #### Unused stopped Azure Data Explorer cluster
 
 A cluster is considered unused and stopped if it has been stopped for at least 60 days.
-In the flowing cases the recomendation will not be surfaced:
- * Leader clusters. For more information, see [follower databases](follower.md).
- * Clusters deployed in a Virtual Network
- * Azure Synapse Data Explorer pools
 
 The recommendation is to delete the cluster to reduce cost. 
 
