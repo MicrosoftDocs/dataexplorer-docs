@@ -100,6 +100,9 @@ It is recommended to use the [optimized autoscale configuration](manage-cluster-
 > [!TIP]
 > The optimized autoscale configuration doesn’t change the instance count immediately. For immediate changes, use [manual scale](manage-cluster-horizontal-scaling.md#manual-scale) to reset the recommended instance count, and then enable the optimized autoscale for future optimization.
 
+> [!IMPORTANT]
+> Due to new SKUs and logical improvements, it is possible that the recommendation won't be surfaced even if the current SKU is not optimized. 
+
 #### Reduce cache for Azure Data Explorer tables
 
 The **reduce Azure Data Explorer table cache period for cluster cost optimization** recommendation is given for a cluster that can reduce its table's [cache policy](kusto/management/cachepolicy.md). This recommendation is based on the query look-back period during the last 30 days. To see where savings are possible, you can view the most relevant 40 tables per database for potential cache savings. This recommendation is only offered if the cluster can scale-in or scale-down after a cache policy change. Advisor checks if the cluster is "bounded by data", meaning the cluster has low CPU and low ingestion utilization, but because of high data capacity the cluster can't scale-in or scale-down.
@@ -133,6 +136,9 @@ It's recommended to use the [optimized autoscale configuration](manage-cluster-h
 
 > [!TIP]
 > The optimized autoscale configuration doesn’t change the instance count immediately. For instant changes, use [manual scale](manage-cluster-horizontal-scaling.md#manual-scale) to reset the recommended instance count, and then enable the optimized autoscale for future optimization.
+
+> [!IMPORTANT]
+> Due to new SKUs and logical improvements, it is possible that the recommendation won't be surfaced even if the current SKU is not optimized. 
 
 #### Update cache policy for Azure Data Explorer tables
 
