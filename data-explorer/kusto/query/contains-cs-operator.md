@@ -24,7 +24,7 @@ The following table provides a comparison of the `contains` operators:
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 ## Performance tips
 
@@ -38,7 +38,7 @@ For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 
-*T* `|` `where` *col* `contains_cs` `(`*expression*`)`   
+*T* `|` `where` *col* `contains_cs` `(`*expression*`)`
 
 ## Arguments
 

@@ -7,7 +7,7 @@ ms.date: 03/30/2020
 ---
 # consume operator
 
-Consumes the tabular data stream handed to the operator. 
+Consumes the tabular data stream handed to the operator.
 
 The `consume` operator is mostly used for triggering the query side-effect without actually returning
 the results back to the caller.
