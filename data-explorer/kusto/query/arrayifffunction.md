@@ -21,18 +21,18 @@ Another alias: array_iff().
 * *ifTrue*: Input array of values or primitive value - the result value(s) when the corresponding value of *ConditionArray* is *true*.
 * *ifFalse*: Input array of values or primitive value - the result value(s) when the corresponding value of *ConditionArray* is *false*.
 
-## Notes
+### Notes
 
 * The result length is the length of *conditionArray*.
 * Numeric condition value is treated as *condition* != *0*.
 * Non-numeric/null condition value will have null in the corresponding index of the result.
 * Missing values (in shorter length arrays) are treated as null.
 
-### Returns
+## Returns
 
 Dynamic array of the values taken either from the *IfTrue* or *IfFalse* [array] values, according to the corresponding value of the Condition array.
 
-### Example
+## Example
 
 ```kusto
 print condition=dynamic([true,false,true]), l=dynamic([1,2,3]), r=dynamic([4,5,6]) 
