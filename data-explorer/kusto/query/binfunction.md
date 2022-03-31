@@ -11,7 +11,7 @@ adobe-target: true
 Rounds values down to an integer multiple of a given bin size.
 
 Used frequently in combination with [`summarize by ...`](./summarizeoperator.md).
-If you have a scattered set of values, they will be grouped into a smaller set of specific values.
+If you have a scattered set of values, they'll be grouped into a smaller set of specific values.
 
 Null values, a null bin size, or a negative bin size will result in null.
 
