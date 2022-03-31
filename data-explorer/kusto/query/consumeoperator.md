@@ -23,12 +23,12 @@ T | consume
 ## Arguments
 
 * *DecodeBlocks*: A constant Boolean value. If set to `true`, or if the request
-  property `perftrace` is set to `true`, the `consume` operator will not just
+  property `perftrace` is set to `true`, the `consume` operator won't just
   enumerate the records at its input, but actually force each value in those
   records to be decompressed and decoded.
 
 The `consume` operator can be used for estimating the
 cost of a query without actually delivering the results back to the client.
-(The estimation is not exact for a variety of reasons; for example, `consume`
-is calculated distributively, so `T | consume` will not transmit the table's
+(The estimation isn't exact for various reasons; for example, `consume`
+is calculated distributively, so `T | consume` won't transmit the table's
 data between the nodes of the cluster.)

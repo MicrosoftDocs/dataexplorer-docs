@@ -18,7 +18,7 @@ otherwise - returns the default value.
 
 * *columnName*: The name of the column
 * *defaultValue*: The value to use if the column doesn't exist in the context that the function was used in.
-                  This value can be any scalar expression (e.g. a reference to another column).
+                  This value can be any scalar expression (for example, a reference to another column).
 
 ## Returns
 

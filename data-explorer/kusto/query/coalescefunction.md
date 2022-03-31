@@ -25,7 +25,7 @@ coalesce(tolong("not a number"), tolong("42"), 33) == 42
 
 ## Returns
 
-The value of the first *expr_i* whose value is not null (or not-empty for string expressions).
+The value of the first *expr_i* whose value isn't null (or not-empty for string expressions).
 
 ## Example
 
