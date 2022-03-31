@@ -28,7 +28,10 @@ The following list shows the basic batching policy triggers to seal a batch. A b
 * `Count`: Batch file number limit reached
 * `Time`: Batching time has expired
 
-The `IngestionBatching` policy can be set on databases or tables. Default values are as follows: **5 minutes** maximum delay time, **1000** items, total size of **1G**.
+The `IngestionBatching` policy can be set on databases or tables. 
+
+## Defaults
+Default values are as follows: **5 minutes** maximum delay time, **500** items, total size of **1GB**. If an `IngestionBatching` policy is not set, the default values apply.
 
 > [!IMPORTANT]
 > The impact of setting this policy to very small values is
