@@ -17,13 +17,13 @@ Returns the minimal schema that admits all values of *DynamicExpr*.
 
 ## Arguments
 
-* *DynamicExpr*: Expression that is used for the aggregation calculation. The parameter column type must be `dynamic`. 
+* *DynamicExpr*: Expression that is used for the aggregation calculation. The parameter column type must be `dynamic`.
 
 ## Returns
 
 The maximum value of *`Expr`* across the group.
 
-> [!TIP] 
+> [!TIP]
 > If `buildschema(json_column)` gives a syntax error:
 >
 > > *Is your `json_column` a string rather than a dynamic object?*
@@ -41,7 +41,7 @@ Assume the input column has three dynamic values.
 The resulting schema would be:
 
 ```kusto
-{ 
+{
     "x":["int", "string"],
     "y":["double", {"w": "string"}],
     "z":{"`indexer`": ["int", "string"]},
@@ -71,11 +71,11 @@ Union-type ::= '[' Type* ']';
 Primitive-type ::= "int" | "string" | ...;
 ```
 
-The values are equivalent to a subset of the TypeScript type annotations, encoded as a Kusto dynamic value. 
+The values are equivalent to a subset of the TypeScript type annotations, encoded as a Kusto dynamic value.
 In Typescript, the example schema would be:
 
 ```typescript
-var someobject: 
+var someobject:
 {
     x?: (number | string),
     y?: (number | { w?: string}),
