@@ -3,7 +3,7 @@ title: ipv4_is_in_any_range() - Azure Data Explorer
 description: This article describes ipv4_is_in_any_range() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 30/03/2021
+ms.date: 04/01/2021
 ---
 # ipv4_is_in_any_range()
 
