@@ -34,7 +34,7 @@ The plugin's runtime is hosted in a [sandbox](../concepts/sandboxes.md) on the c
   * URLs referenced in this property bag are required to be:
     * Included in the cluster's [callout policy](../management/calloutpolicy.md).
     * In a publicly available location, or provide the necessary credentials, as explained in [storage connection strings](../api/connection-strings/storage-connection-strings.md).
-  * The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Examples](#examples).
+  * The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Example](#example).
   * For more information, see [Install packages for the R plugin](#install-packages-for-the-r-plugin). 
 
 ## Reserved R variables
@@ -211,7 +211,7 @@ range x from 1 to 1 step 1
     'library("brglm2")\n'
     'result <- df\n'
     'result$ver <-packageVersion("brglm2")\n'
-    ,external_artifacts=pack(brglm2.zip', 'https://artifactswestus.blob.core.windows.net/test/libs.zip?*** REPLACE WITH YOUR SAS TOKEN ***'))
+    ,external_artifacts=pack(brglm2.zip', 'https://artifactswestus.blob.core.windows.net/r/libs.zip?*** REPLACE WITH YOUR SAS TOKEN ***'))
 ~~~
 
 | x | ver     |
