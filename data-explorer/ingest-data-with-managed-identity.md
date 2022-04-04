@@ -61,7 +61,7 @@ To apply the policy at cluster level, run:
 
 ## Ingest blobs with managed identity using Kusto SDK
 
-When ingesting the data using one of Kusto SDKs](net-sdk-ingest-data.md), generate your [blob URI using managed identity authentication](kusto/api/connection-strings/storage-authentication-methods#managed-identity) by appending `;managed_identity={objectId}` to the unauthorized blob URI. If you ingest data your cluster's system assigned managed identity, you can simply append `;managed_identity=system` to the blob URI.
+When ingesting data using one of our SDKs](net-sdk-ingest-data.md), generate your [blob URI using managed identity authentication](kusto/api/connection-strings/storage-authentication-methods.md#managed-identity) by appending `;managed_identity={objectId}` to the unauthorized blob URI. If you ingest data using your cluster's system assigned managed identity, you can simply append `;managed_identity=system` to the blob URI.
 
 Example,
 
