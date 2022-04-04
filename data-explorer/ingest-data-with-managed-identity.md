@@ -12,7 +12,7 @@ When queuing blobs for ingestion from customer owned storage accounts, you can u
 
 > [!NOTE]
 >
-> This authentication method only applies for blobs residing in customer owned storage accounts. It does not apply to local files uploaded by Kusto SDK to the service staging accounts.
+> This authentication method only applies for Azure blobs and Azure Data Lake files residing in customer owned storage accounts. It does not apply to local files uploaded by Kusto SDK to the service staging accounts.
 
 ## Assign a managed identity to your cluster
 
