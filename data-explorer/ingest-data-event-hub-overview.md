@@ -18,8 +18,8 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 * Data is read from the event hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects.
 * See [supported formats](ingestion-supported-formats.md).
     > [!NOTE]
-    > * Event Hubs doesn't support `RAW` format.
-    > * [Azure Schema Registry](azure/event-hubs/schema-registry-overview) and schema-less `Avro` are not supported.
+    > * Event Hubs doesn't support RAW format.
+    > * [Azure Schema Registry](azure/event-hubs/schema-registry-overview) and schema-less Avro are not supported.
 
 * Data can be compressed using the `GZip` compression algorithm. You can specify `Compression` dynamically using [ingestion properties](#ingestion-properties), or in the static Data Connection settings.
     > [!NOTE]
