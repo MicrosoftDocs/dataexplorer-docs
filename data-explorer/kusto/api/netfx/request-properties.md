@@ -181,7 +181,6 @@ public static System.Data.IDataReader QueryKusto(
 
 ## ClientRequestProperties options
 
-Using default connection string; use '#connect <connection string>' to modify.
 <!-- The following text can be re-produced by running: Kusto.Cli.exe -focus -execute:"#crp -doc" -->
 
 * `client_max_redirect_count` (*OptionClientMaxRedirectCount*): If set and positive, indicates the maximum number of HTTP redirects that the client will process. [Long]
