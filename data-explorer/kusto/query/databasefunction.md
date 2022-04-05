@@ -29,7 +29,7 @@ cluster('help').database('Sample').StormEvents
 
 ## Arguments
 
-* *stringConstant*: Name of the database that is referenced. Database identified can be either `DatabaseName` or `PrettyName`. Argument has to be _constant_ prior of query execution, i.e. cannot come from sub-query evaluation.
+* *stringConstant*: Name of the database that is referenced. Database identified can be either `DatabaseName` or `PrettyName`. Argument has to be *constant* prior of query execution, i.e. cannot come from sub-query evaluation.
 
 ## Examples
 

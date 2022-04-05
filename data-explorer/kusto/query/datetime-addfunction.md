@@ -21,17 +21,17 @@ Calculates a new [datetime](./scalar-data-types/datetime.md) from a specified da
 
 Possible values of *period*:
 
-- Year
-- Quarter
-- Month
-- Week
-- Day
-- Hour
-- Minute
-- Second
-- Millisecond
-- Microsecond
-- Nanosecond
+* Year
+* Quarter
+* Month
+* Week
+* Day
+* Hour
+* Minute
+* Second
+* Millisecond
+* Microsecond
+* Nanosecond
 
 ## Returns
 

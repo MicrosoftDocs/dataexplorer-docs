@@ -21,17 +21,17 @@ Calculates calendarian difference between two [datetime](./scalar-data-types/dat
 
 Possible values of *period*:
 
-- Year
-- Quarter
-- Month
-- Week
-- Day
-- Hour
-- Minute
-- Second
-- Millisecond
-- Microsecond
-- Nanosecond
+* Year
+* Quarter
+* Month
+* Week
+* Day
+* Hour
+* Minute
+* Second
+* Millisecond
+* Microsecond
+* Nanosecond
 
 ## Returns
 
