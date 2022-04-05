@@ -1,10 +1,7 @@
 ---
 title: Azure Data Explorer Kusto EngineV3
 description: 'Learn more about Azure Data Explorer (Kusto) EngineV3'
-author: orspod
-ms.author: orspodek
 ms.reviewer: avnera
-ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/18/2021
 ---

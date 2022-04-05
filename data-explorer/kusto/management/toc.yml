@@ -164,9 +164,9 @@ items:
       href: drop-column.md
     - name: ".rename column"
       href: rename-column.md
-    - name: ".alter column docstrings"
+    - name: ".alter column-docstrings"
       href: alter-column-docstrings.md
-    - name: ".alter-merge column docstrings"
+    - name: ".alter-merge column-docstrings"
       href: alter-merge-table-column.md
   - name: Data mappings
     href: mappings.md
@@ -298,6 +298,8 @@ items:
       href: alter-merge-database-merge-policy-command.md
     - name: .alter-merge table merge policy command
       href: alter-merge-table-merge-policy-command.md
+    - name: .alter-merge materialized-view merge policy command
+      href: alter-merge-materialized-view-merge-policy-command.md
     - name: .delete database merge policy command
       href: delete-database-merge-policy-command.md
     - name: .delete table merge policy command
@@ -358,8 +360,10 @@ items:
     items:
     - name: Extent tags retention policy
       href: extent-tags-retention-policy.md
-    - name: .alter extent tags retention policy
+    - name: ".alter database extent tags retention policy"
       href: alter-extent-tags-retention-policy.md
+    - name: ".alter table extent tags retention policy"
+      href: alter-table-extent-tags-retention-policy.md
     - name: .delete extent tags retention policy
       href: delete-extent-tags-retention-policy.md
     - name: .show extent tags retention policy
@@ -534,6 +538,11 @@ items:
   - name: Clear cache
     displayName: clear query results cache
     href: clear-query-results-cache-command.md
+- name: Cross-cluster schema
+  items:
+  - name: .clear cache remote-schema command
+    displayName: clear query schema cache
+    href: clear-cross-cluster-schema-cache.md
 - name: System information
   href: systeminfo.md
   items:

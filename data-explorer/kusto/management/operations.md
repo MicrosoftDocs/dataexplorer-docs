@@ -1,11 +1,7 @@
 ---
 title: Operations management - Azure Data Explorer
 description: This article describes Operations management in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 12/16/2021
 ---
@@ -44,7 +40,7 @@ which were executed in the last two weeks. The command may run in two "modes":
 
 |Output parameter |Type |Description|
 |---|---|---|
-|ID |String |Operation Identifier|
+|OperationId |String |Operation Identifier|
 |Operation |String |Admin command alias|
 |NodeId |String |If the command has a remote execution (for example, DataIngestPull) - NodeId will contain the ID of the executing remote node|
 |StartedOn |DateTime |Date/time (in UTC) when the operation started|

@@ -1,13 +1,9 @@
 ---
 title: ".alter database merge policy command - Azure Data Explorer"
 description: "This article describes the .alter database merge policy command in Azure Data Explorer."
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 01/05/2022
 ---
 # .alter database merge policy
 
@@ -15,18 +11,18 @@ Change a database's [merge policy](mergepolicy.md). The merge policy defines if 
 
 ## Syntax
 
-`.alter` `database` *DatabaseName* `policy` `merge` *ArrayOfPolicyObjects*
+`.alter` `database` *DatabaseName* `policy` `merge` *PolicyObject*
 
 ## Arguments
 
-*DatabaseName* - Specify the name of the database.
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+- *DatabaseName* - Specify the name of the database.
+- *PolicyObject* - Define a policy object. For more information, see [merge policy](mergepolicy.md).
 
 ### Examples
 
 Set all properties of the policy explicitly, at the database level:
 
-```kusto
+~~~kusto
 .alter database [database_name] policy merge ```
 {
   "RowCountUpperBoundForMerge": 16000000,
@@ -40,7 +36,7 @@ Set all properties of the policy explicitly, at the database level:
     "Kind": "Default"
   }
 }```
-```
+~~~
 
 Set the *default* merge policy at database level:
 

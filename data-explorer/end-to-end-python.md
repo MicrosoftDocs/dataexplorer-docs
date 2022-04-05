@@ -1,10 +1,7 @@
 ---
 title: 'End-to-end blob ingestion into Azure Data Explorer through Python'
 description: In this article, you learn how to ingest blobs into Azure Data Explorer with an end-to-end example that uses Python.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 02/03/2020
 ---
@@ -109,7 +106,7 @@ resource_client.resource_groups.create_or_update(
     }
 )
 
-print('Step 2: Create a Blob Storage, a container in the Storage account, an Event Hub, an Azure Data Explorer cluster, database, and add principals by using an Azure Resource Manager template.')
+print('Step 2: Create a Blob Storage, a container in the Storage account, an event hub, an Azure Data Explorer cluster, database, and add principals by using an Azure Resource Manager template.')
 #Read the Azure Resource Manager template
 with open(azure_resource_template_path, 'r') as template_file_fd:
     template = json.load(template_file_fd)
@@ -145,7 +142,7 @@ poller = resource_client.deployments.create_or_update(
 )
 poller.wait()
 
-print('Step 3: Create an Event Grid subscription to publish blob events created in a specific container to an Event Hub.')
+print('Step 3: Create an Event Grid subscription to publish blob events created in a specific container to an event hub.')
 event_client = EventGridManagementClient(credentials, subscription_id)
 storage_resource_id = '/subscriptions/{}/resourceGroups/{}/providers/Microsoft.Storage/storageAccounts/{}'.format(subscription_id, resource_group_name, storage_account_name)
 event_hub_resource_id = '/subscriptions/{}/resourceGroups/{}/providers/Microsoft.EventHub/namespaces/{}/eventhubs/{}'.format(subscription_id, resource_group_name, event_hub_namespace_name, event_hub_name)

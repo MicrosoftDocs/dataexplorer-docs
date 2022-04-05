@@ -1,11 +1,7 @@
 ---
 title: Window functions - Azure Data Explorer
 description: This article describes Window functions in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/20/2019
 ---
@@ -34,7 +30,6 @@ Many tabular operators serialize output whenever the input is already serialized
 * [sort operator](./sortoperator.md)
 * [top operator](./topoperator.md)
 * [top-hitters operator](./tophittersoperator.md)
-* [top-nested operator](./topnestedoperator.md)
 
 ## Operators that preserve the serialized row set property
 

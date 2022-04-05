@@ -1,13 +1,9 @@
 ---
 title: .alter table sharding policy command - Azure Data Explorer
 description: This article describes the .alter table sharding policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 01/05/2022
 ---
 # .alter table sharding policy
 
@@ -17,12 +13,12 @@ The sharding policy defines if and how [Extents (data shards)](../management/ext
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `sharding` *ArrayOfPolicyObjects*
+`.alter` `table` *TableName* `policy` `sharding` *PolicyObject*
 
 ## Arguments
 
 - *TableName* - Specify the name of the table. A wildcard (*) denotes all tables.
-- *ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+- *PolicyObject* - Define a policy object, see also [sharding policy](../management/shardingpolicy.md).
 
 ## Returns
 

@@ -1,14 +1,9 @@
 ---
-title: count() (aggregation function) - Azure Data Explorer | Microsoft Docs
+title: count() (aggregation function) - Azure Data Explorer
 description: This article describes count() (aggregation function) in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/21/2020
-ms.localizationpriority: high
 ---
 # count() (aggregation function)
 

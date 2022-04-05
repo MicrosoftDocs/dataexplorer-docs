@@ -1,11 +1,7 @@
 ---
 title: Show query weak consistency policy management - Azure Data Explorer
 description: This article describes the `.show query weak consistency policy` command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yabenyaa
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/16/2021
 ---
@@ -34,4 +30,4 @@ This article describes the show control command used for the [query weak consist
 
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
-|QueryWeakConsistencyPolicy||{"PercentageOfNodes": -1, "MinimumNumberOfNodes": -1, "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": -1, "RefreshPeriodInSeconds": -1}| |Cluster
+|QueryWeakConsistencyPolicy||{"PercentageOfNodes": -1, "MinimumNumberOfNodes": -1, "MaximumNumberOfNodes": -1, "SuperSlackerNumberOfNodesThreshold": -1, "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": -1, "RefreshPeriodInSeconds": -1}| |Cluster

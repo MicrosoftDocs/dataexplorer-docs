@@ -1,11 +1,7 @@
 ---
 title: around() function - Azure Data Explorer
 description: This article describes the around() function in Azure Data Explorer.
-services: data-explorer
-author: alexans
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/05/2021
 ---
@@ -25,7 +21,7 @@ Returns a `bool` value indicating if the first argument is within a range around
 
 ## Returns
 
-Returns `true` if the value within the range, `false` if the value outside the range.
+Returns `true` if the value is within the range, `false` if the value is outside the range.
 Returns `null` if any of the arguments is `null`.
 
 ## Example: Filtering values around a specific timestamp

@@ -1,17 +1,13 @@
 ---
 title: Kusto update policy - Azure Data Explorer
 description: This article describes Update policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 11/18/2021
 ---
 # Update policy overview
 
-When you trigger an [update policy](update-policy.md) with a command that adds data to a source table, data also appends to a target table. The target table can have a different schema, retention policy, and other policies from the source table.
+When you trigger an [update policy](./show-table-update-policy-command.md) with a command that adds data to a source table, data also appends to a target table. The target table can have a different schema, retention policy, and other policies from the source table.
 For example, a high-rate trace source table can contain data formatted as a free-text column. The target table can include specific trace lines, with a well-structured schema generated from a transformation of the source table's free-text data using the [parse operator](../query/parseoperator.md).
 
 :::image type="content" source="images/updatepolicy/update-policy-overview.png" alt-text="Shows and overview of the update policy in Azure Data Explorer.":::
@@ -65,10 +61,10 @@ Each such object is represented as a JSON property bag, with the following prope
 
 Update policy control commands include:
 
-* [`.show table *TableName* policy update`](update-policy.md#show-update-policy) shows the current update policy of a table.
-* [`.alter table *TableName* policy update`](update-policy.md#alter-update-policy) defines the current update policy of a table.
-* [`.alter-merge table *TableName* policy update`](update-policy.md#alter-merge-table-tablename-policy-update) appends definitions to the current update policy of a table.
-* [`.delete table *TableName* policy update`](update-policy.md#delete-table-tablename-policy-update) deletes the current update policy of a table.
+* [`.show table *TableName* policy update`](./show-table-update-policy-command.md) shows the current update policy of a table.
+* [`.alter table *TableName* policy update`](./alter-table-update-policy-command.md) defines the current update policy of a table.
+* [`.alter-merge table *TableName* policy update`](./alter-merge-table-update-policy-command.md) appends definitions to the current update policy of a table.
+* [`.delete table *TableName* policy update`](./delete-table-update-policy-command.md) deletes the current update policy of a table.
 
 ## Update policy is initiated following ingestion
 
@@ -114,7 +110,7 @@ let _extentId = toscalar(
     | top 1 by IngestionTime desc
     | project ExtentId
 );
-let MySourceTable = 
+let MyFunction = 
     MySourceTable
     | where ingestion_time() > ago(10m) and extent_id() == _extentId;
 MyFunction

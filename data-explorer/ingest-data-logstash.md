@@ -1,10 +1,7 @@
 ---
 title: 'Ingest data from Logstash to Azure Data Explorer'
 description: 'In this article, you learn how to ingest (load) data into Azure Data Explorer from Logstash'
-author: orspod
-ms.author: orspodek
 ms.reviewer: takamara
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 11/26/2020
 

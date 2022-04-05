@@ -1,19 +1,14 @@
 ---
 title: The case-insensitive !contains string operator - Azure Data Explorer
 description: This article describes the case-insensitive !contains string operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/19/2021
-ms.localizationpriority: high 
+ms.date: 12/21/2021
 ---
 
 # !contains operator
 
-Filters a record set for data that does not include a case-sensitive string.
+Filters a record set for data that does not include a case-sensitive string. `contains` searches for characters rather than [terms](datatypes-string-operators.md#what-is-a-term) of three or more characters. The query scans the values in the column, which is slower than looking up a term in a term index.
 
 The following table provides a comparison of the `contains` operators:
 
@@ -49,13 +44,13 @@ For best practices, see [Query best practices](best-practices.md).
 
 ### Case insensitive syntax
 
-*T* `|` `where` *col* `!contains` `(`*expression*`)`   
+*T* `|` `where` *Column* `!contains` `(`*Expression*`)`   
 
 ## Arguments
 
 * *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
+* *Column* - The column to filter.
+* *Expression* - Scalar or literal expression.
 
 ## Returns
 

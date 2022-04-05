@@ -1,12 +1,9 @@
 ---
 title: 'Create an IoT Hub data connection for Azure Data Explorer by using Azure Resource Manager template'
 description: In this article, you learn how to create an IoT Hub data connection for Azure Data Explorer by using Azure Resource Manager template.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/28/2019
+ms.date: 03/15/2022
 ---
 
 # Create an IoT Hub data connection for Azure Data Explorer by using Azure Resource Manager template
@@ -92,6 +89,13 @@ The following example shows an Azure Resource Manager template for adding an IoT
                 "description": "Specifies the data format"
             }
         },
+           "databaseRouting_type": {
+            "type": "string",
+            "defaultValue": "Single",
+            "metadata": {
+                "description": "The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* EventData property."
+            }
+        },
         "dataconnections_kustodc_name": {
             "type": "string",
             "defaultValue": "kustodc",
@@ -135,7 +139,8 @@ The following example shows an Azure Resource Manager template for adding an IoT
                 "sharedAccessPolicyName": "[parameters('iothubpolices_iothubowner_name')]",
                 "tableName": "[parameters('tables_kustotable_name')]",
                 "mappingRuleName": "[parameters('mapping_kustomapping_name')]",
-                "dataFormat": "[parameters('dataformat_type')]"
+                "dataFormat": "[parameters('dataformat_type')]",
+                 "databaseRouting": "[parameters('databaseRouting_type')]"
             }
         }
     ]

@@ -1,27 +1,22 @@
 ---
 title: Let statement - Azure Data Explorer
 description: This article describes the Let statement in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/09/2021
+ms.date: 12/21/2021
 ms.localizationpriority: high
 ---
 # Let statement
 
-Use the `let` statement to set a variable name equal to an expression or a function, or to create [views](schema-entities/views.md). 
+Use the `let` statement to set a variable name equal to an expression or a function, or to create [views](schema-entities/views.md).
 
 `let` statements are useful for:
 
 * Breaking up a complex expression into multiple parts, each represented by a variable. 
 * Defining constants outside of the query body for readability.
-* Defining a variable once and using it multiple times within a query. 
+* Defining a variable once and using it multiple times within a query.
 
-
-If the variable previously represented another value, for example in nested statements, the innermost `let` statement applies. 
+If the variable previously represented another value, for example in nested statements, the innermost `let` statement applies.
 
 ## Syntax
 
@@ -55,9 +50,9 @@ If the variable previously represented another value, for example in nested stat
 > [!NOTE]
 >
 > * You can use `(*)` for the tabular expression.
-> * When using a tabular expression as part of a user defined function, the columns can't be accessed as part of the function. 
+> * When using a tabular expression as part of a user defined function, the columns can't be accessed as part of the function.
 > * Tabular arguments appear before scalar arguments.
-
+> * Any two statements must be separated by a semicolon.
 
 ## Examples
 
@@ -143,7 +138,7 @@ foo2(2) | count
 
 |result|
 |---|
-|20|
+|50|
 
 ### Create a view or virtual table 
 

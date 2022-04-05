@@ -1,11 +1,7 @@
 ---
 title: materialize() - Azure Data Explorer
 description: This article describes materialize() function in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/06/2020
 ---
@@ -26,7 +22,7 @@ Allows caching a subquery result during the time of query execution in a way tha
 
 >[!TIP]
 >
->* Push all possible operators that reduce the materialized data set and keep the semantics of the query. For example, use filters, or project only required columns.
+>* Push all possible operators that reduce the materialized data set and keep the semantics of the query. For example, use common filters on top of the same materialized expression.
 >* Use materialize with join or union when their operands have mutual subqueries that can be executed once. For example, join/union fork legs. See [example of using join operator](#examples-of-query-performance-improvement).
 >* Materialize can only be used in let statements if you give the cached result a name. See [example of using let statements](#examples-of-using-materialize)).
 

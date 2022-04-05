@@ -1,18 +1,13 @@
 ---
 title: The case-insensitive !has string operators - Azure Data Explorer
 description: This article describes the case-insensitive !has string operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/19/2021
-ms.localizationpriority: high
+ms.date: 12/21/2021
 ---
 # !has operator
 
-Filters a record set for data that does not have a matching case-insensitive string.
+Filters a record set for data that does not have a matching case-insensitive string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
 The following table provides a comparison of the `has` operators:
 
@@ -46,13 +41,13 @@ For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 
-*T* `|` `where` *col* `!has` `(`*expression*`)`   
+*T* `|` `where` *Column* `!has` `(`*Expression*`)`   
 
 ## Arguments
 
 * *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
+* *Column* - The column to filter.
+* *Expression* - Scalar or literal expression.
 
 ## Returns
 

@@ -5,6 +5,8 @@ items:
   items:
   - name: What is Azure Data Explorer?
     href: data-explorer-overview.md
+  - name: Get started for free
+    href: start-for-free.md
   - name: What's new
     href: whats-new.md
   - name: Solution architectures
@@ -70,6 +72,8 @@ items:
     href: tools-integrations-overview.md
 - name: How-to guides
   items:
+  - name: Create a start-for-free cluster
+    href: start-for-free-web-ui.md
   - name: Create cluster and database
     items:
     - name: Azure CLI
@@ -82,6 +86,8 @@ items:
       href: create-cluster-database-python.md
     - name: Go
       href: create-cluster-database-go.md
+    - name: Automated provisioning
+      href: automated-deploy-overview.md
     - name: Azure Resource Manager template
       href: create-cluster-database-resource-manager.md
   - name: Create tables
@@ -91,6 +97,14 @@ items:
     - name: External table creation wizard
       displayName: one-click
       href: external-table.md
+    - name: Create table policies
+      items:
+      - name: Create ingestion batching table policy
+        displayName: one-click
+        href: one-click-table-batching-policy.md
+      - name: Create retention table policy
+        displayName: one-click
+        href: one-click-table-retention-policy.md
   - name: Ingest data
     items:
     - name: One-click ingestion
@@ -100,6 +114,8 @@ items:
       - name: JSON data from local file to existing table
         displayName: ingest data, ingestion, one click
         href: one-click-ingestion-existing-table.md
+      - name: One-click sample app generator
+        href: sample-app-generator-one-click.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
@@ -110,25 +126,28 @@ items:
         href: lightingest.md
       - name: Use wizard for one-time ingestion of historical data with LightIngest
         href: generate-lightingest-command.md
-    - name: Event Hub
+    - name: Cross-tenant data connection
+      displayName: event hub, event grid
+      href: ingest-data-cross-tenant.md
+    - name: Event hub
       items:
-      - name: Event Hub data connection
+      - name: Event hub data connection
         displayName: ingest, ingestion
         href: ingest-data-event-hub-overview.md
       - name: Azure portal
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: ingest-data-event-hub.md
       - name: One-click
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: one-click-event-hub.md
       - name: C#
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: data-connection-event-hub-csharp.md
       - name: Python
-        displayName: Event Hub, ingest
+        displayName: Event hub, ingest
         href: data-connection-event-hub-python.md
       - name: Azure Resource Manager template
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: data-connection-event-hub-resource-manager.md
     - name: Event Grid
       items:
@@ -249,6 +268,9 @@ items:
       - name: Connector
         displayName: Power BI
         href: power-bi-connector.md
+      - name: Dynamic M query parameters
+        displayName: Power BI
+        href: power-bi-dynamic-m.md
       - name: Imported query
         displayName: Power BI
         href: power-bi-imported-query.md
@@ -290,7 +312,7 @@ items:
         - name: Create Private Endpoint for your VNet cluster - Portal
           href: vnet-create-private-endpoint.md
         - name: Create a private or service endpoint to resources used by data connections
-          displayName: VNet, private endpoint, Azure Storage, Event Hub
+          displayName: VNet, private endpoint, Azure Storage, event hub
           href: vnet-endpoint-storage-event-hub.md
     - name: Encryption
       items:
@@ -327,6 +349,8 @@ items:
           href: customer-managed-keys-powershell.md
     - name: Create Azure AD app
       href: provision-azure-ad-app.md
+    - name: Conditional Access
+      href: security-conditional-access.md
   - name: Manage
     items:
     - name: Cluster
@@ -503,6 +527,9 @@ items:
     - name: pair_probabilities_fl()
       displayName: functions library, jaccard, lift
       href: kusto/functions-library/pair-probabilities-fl.md
+    - name: pairwise_dist_fl()
+      displayName: functions library, multivariate, distance, anomaly, pairwise
+      href: kusto/functions-library/pairwise-dist-fl.md      
     - name: perm_fl()
       displayName: functions library, statistics
       href: kusto/functions-library/perm-fl.md
@@ -539,6 +566,9 @@ items:
     - name: series_metric_fl()
       displayName: functions library, PromQL, Prometheus
       href: kusto/functions-library/series-metric-fl.md
+    - name: series_lag_fl()
+      displayName: functions library, filter, time shift, delay
+      href: kusto/functions-library/series-lag-fl.md
     - name: series_moving_avg_fl()
       displayName: functions library, filter, low-pass, smoothing
       href: kusto/functions-library/series-moving-avg-fl.md
@@ -548,6 +578,12 @@ items:
     - name: series_rolling_fl()
       displayName: functions library, rolling, sliding
       href: kusto/functions-library/series-rolling-fl.md
+    - name: series_uv_anomalies_fl()
+      displayName: functions library, anomaly detection, univariate
+      href: kusto/functions-library/series-uv-anomalies-fl.md
+    - name: series_uv_change_points_fl()
+      displayName: functions library, anomaly detection, univariate, change point
+      href: kusto/functions-library/series-uv-change-points-fl.md
     - name: time_weighted_avg_fl()
       displayName: functions library, binning
       href: kusto/functions-library/time-weighted-avg-fl.md

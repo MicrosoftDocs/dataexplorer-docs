@@ -1,11 +1,7 @@
 ---
 title: ".alter managed_identity policy command - Azure Data Explorer"
 description: "This article describes the .alter managed_identity policy command in Azure Data Explorer."
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: slneimer
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/29/2021
 ---
@@ -14,7 +10,7 @@ ms.date: 11/29/2021
 The command sets the ManagedIdentity policy of the cluster or the specified database, overriding the existing policy.
 
 > [!NOTE]
-> Managed identities should be assigned to the cluster (see [instructions](../../managed-identities.md)) before you can assign them to the ManagedIdentity policy.
+> Managed identities should be assigned to the cluster (see [instructions](../../configure-managed-identities-cluster.md)) before you can assign them to the ManagedIdentity policy.
 
 ## Syntax
 

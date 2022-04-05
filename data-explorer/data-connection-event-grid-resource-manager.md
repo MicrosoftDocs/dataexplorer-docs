@@ -1,12 +1,9 @@
 ---
 title: 'Create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template'
 description: In this article, you learn how to create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 03/15/2022
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template
@@ -42,21 +39,21 @@ The following example shows an Azure Resource Manager template for adding an Eve
             "type": "string",
             "defaultValue": "eventhubns",
             "metadata": {
-                "description": "Specifies the Event Hub Namespace name."
+                "description": "Specifies the event hub namespace name."
             }
         },
         "EventHubs_eventhubdemo_name": {
             "type": "string",
             "defaultValue": "eventhubdemo",
             "metadata": {
-                "description": "Specifies the Event Hub name."
+                "description": "Specifies the event hub name."
             }
         },
         "consumergroup_default_name": {
             "type": "string",
             "defaultValue": "$Default",
             "metadata": {
-                "description": "Specifies the consumer group of the Event Hub."
+                "description": "Specifies the consumer group of the event hub."
             }
         },
         "StorageAccounts_storagedemo_name": {
@@ -99,6 +96,13 @@ The following example shows an Azure Resource Manager template for adding an Eve
             "defaultValue": "csv",
             "metadata": {
                 "description": "Specifies the data format"
+            }
+        },
+             "databaseRouting_type": {
+            "type": "string",
+            "defaultValue": "Single",
+            "metadata": {
+                "description": "The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* EventData property."
             }
         },
         "dataconnections_kustodc_name": {
@@ -144,7 +148,8 @@ The following example shows an Azure Resource Manager template for adding an Eve
                 "consumerGroup": "[parameters('consumergroup_default_name')]",
                 "tableName": "[parameters('tables_kustotable_name')]",
                 "mappingRuleName": "[parameters('mapping_kustomapping_name')]",
-                "dataFormat": "[parameters('dataformat_type')]"
+                "dataFormat": "[parameters('dataformat_type')]",
+                "databaseRouting": "[parameters('databaseRouting_type')]"
             }
         }
     ]

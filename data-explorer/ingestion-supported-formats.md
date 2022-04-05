@@ -1,10 +1,7 @@
 ---
 title: Data formats supported by Azure Data Explorer for ingestion.
 description: Learn about the various data and compression formats supported by Azure Data Explorer for ingestion.
-author: orspod
-ms.author: orspodek
 ms.reviewer: tzgitlin
-ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/29/2021
 ---
@@ -39,6 +36,10 @@ Data ingestion is the process by which data is added to a table and is made avai
 |TXT      |`.txt`      |A text file with lines delimited by `\n`. Empty lines are skipped.|
 |W3CLOGFILE |`.log`    |[Web log file](https://www.w3.org/TR/WD-logfile.html) format standardized by the W3C. |
 
+> [!NOTE]
+>
+> * Ingestion from data storage systems that provide ACID functionality on top of regular Parquet format files (e.g. Apache Iceberg, Apache Hudi, Delta Lake) is not supported.
+> * Schema-less Avro is not supported
 
 ## Supported data compression formats
 

@@ -1,11 +1,7 @@
 ---
 title: .alter-merge table retention policy command- Azure Data Explorer
 description: This article describes the .alter-merge table retention policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/03/2021
 ---
@@ -15,12 +11,12 @@ Change a table's [retention policy](retentionpolicy.md). The retention policy co
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `policy` `retention` *PolicyObjects* 
+`.alter-merge` `table` *TableName* `policy` `retention` *PolicyParameters* 
 
 ## Arguments
 
 *TableName* - Specify the name of the table. 
-*PolicyObjects* - Define one or more policy objects.
+*PolicyParameters* - Define policy parameters, see also [retention policy](retentionpolicy.md).
 
 ### Example
 

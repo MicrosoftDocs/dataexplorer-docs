@@ -1,10 +1,7 @@
 ---
 title: series_exp_smoothing_fl() - Azure Data Explorer
 description: This article describes series_exp_smoothing_fl() user-defined function in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/22/2020
 ---

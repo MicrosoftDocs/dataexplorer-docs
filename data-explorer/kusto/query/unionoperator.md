@@ -1,14 +1,9 @@
 ---
-title: union operator - Azure Data Explorer | Microsoft Docs
+title: union operator - Azure Data Explorer
 description: This article describes union operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
-ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -93,6 +88,7 @@ attributed with [view keyword](./letstatement.md)
 4. `isfuzzy=true` only applies to the `union` sources resolution phase. Once the set of source tables is determined, possible additional query failures will not be suppressed.
 5. When using `outer union`, the result has all the columns that occur in any of the inputs, one column for each name and type occurrences. This means that if a column appears in multiple tables and has multiple types, it will have a corresponding column for each type in the `union`'s result. This column name will be suffixed with a '_' followed by the origin column [type](./scalar-data-types/index.md).
 6. There is no guarantee of the order in which the union legs will appear (but if each leg has an `order by` operator, then each leg will be sorted).
+7. Any two statements must be separated by a semicolon.
 
 ::: zone-end
 
@@ -106,9 +102,9 @@ with [view keyword](./letstatement.md)
 3. If the `union` input is tables (as oppose to [tabular expressions](./tabularexpressionstatements.md)), and the `union` is followed by a [where operator](./whereoperator.md), consider replacing both with [find](./findoperator.md) for better performance. Please note the different [output schema](./findoperator.md#output-schema) produced by the `find` operator. 
 4. `isfuzzy=` `true` applies only to the phase of the `union` sources resolution. Once the set of source tables was determined, possible additional query failures will not be suppressed.
 5. When using `outer union`, the result has all the columns that occur in any of the inputs, one column for each name and type occurrences. This means that if a column appears in multiple tables and has multiple types, it will have a corresponding column for each type in the `union`'s result. This column name will be suffixed with a '_' followed by the origin column [type](./scalar-data-types/index.md).
+6. Any two statements must be separated by a semicolon.
 
 ::: zone-end
-
 
 ## Example: Tables with string in name or column
 
@@ -140,7 +136,7 @@ Query
 This more efficient version produces the same result. It filters each table before creating the union.
 
 **Example: Using `isfuzzy=true`**
- 
+
 ```kusto     
 // Using union isfuzzy=true to access non-existing view:                                     
 let View_1 = view () { print x=1 };

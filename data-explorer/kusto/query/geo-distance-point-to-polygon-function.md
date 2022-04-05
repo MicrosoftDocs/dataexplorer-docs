@@ -1,11 +1,7 @@
 ---
 title: geo_distance_point_to_polygon() - Azure Data Explorer
 description: This article describes geo_distance_point_to_polygon() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: mbrichko
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/14/2020
 ---
@@ -45,7 +41,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 * LinearRingShell encloses at most half of the sphere. LinearRing divides the sphere into two regions. The smaller of the two regions will be chosen.
 * LinearRing edge length must be less than 180 degrees. The shortest edge between the two vertices will be chosen.
 * LinearRings must not cross and must not share edges. LinearRings may share vertices.
-* Polygon doesn't necessarily contain its vertices. Point containment in polygon is defined so that if the Earth is subdivided into polygons, every point is contained by exactly one polygon.
+* Polygon doesn't necessarily contain its vertices.
 
 > [!TIP]
 > * Using literal polygons may result in better performance.

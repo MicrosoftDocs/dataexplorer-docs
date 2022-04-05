@@ -1,36 +1,19 @@
 ---
 title: basket plugin - Azure Data Explorer
 description: This article describes basket plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/26/2019
+ms.date: 03/13/2022
 ---
 # basket plugin
 
-```kusto
-T | evaluate basket()
-```
-
-Basket finds all frequent patterns of discrete attributes (dimensions) in the data. It then returns the frequent patterns that passed the frequency threshold in the original query. Basket is guaranteed to find every frequent pattern in the data, but isn't guaranteed to have polynomial runtime. The runtime of the query is linear in the number of rows, but it might be exponential in the number of columns (dimensions). Basket is based on the Apriori algorithm originally developed for basket analysis data mining.
+The `basket` plugin finds frequent patterns of attributes in the data and returns the patterns that pass a frequency threshold in that data. A pattern represents a subset of the rows that have the same value across one or more columns. The `basket` plugin is based on the [Apriori algorithm](https://en.wikipedia.org/wiki/Association_rule_learning#Apriori_algorithm) originally developed for basket analysis data mining. 
 
 ## Syntax
 
-`T | evaluate basket(` *arguments* `)`
+*T* | `evaluate` `basket` `(` [*Threshold*, *WeightColumn*, *MaxDimensions*, *CustomWildcard*, *CustomWildcard*, ...]`)`
 
-## Returns
-
-Basket returns all frequent patterns appearing above the ratio threshold of the rows. The default threshold is 0.05. Each pattern is represented by a row in the results.
-
-The first column is the segment ID. The next two columns are the *count* and *percentage of rows*, from the original query, that are captured by the pattern. The remaining columns are from the original query.
-Their value is either a specific value from the column or a wildcard value, which is by default null, meaning a variable value.
-
-**Arguments (all optional)**
-
-`T | evaluate basket(`[*Threshold*, *WeightColumn*, *MaxDimensions*, *CustomWildcard*, *CustomWildcard*, ...]`)`
+## Arguments
 
 All arguments are optional, but they must be ordered as above. To indicate that the default value should be used, use the string tilde value - '~'. See examples below.
 
@@ -63,6 +46,15 @@ Available arguments:
 
      `T | evaluate basket('~', '~', '~', '*', int(-1), double(-1), long(0), datetime(1900-1-1))`
 
+## Returns
+
+The `basket` plugin returns frequent patterns that pass a ratio threshold. The default threshold is 0.05. 
+
+Each pattern is represented by a row in the results. The first column is the segment ID. The next two columns are the *count* and *percentage of rows*, from the original query that match the pattern. The remaining columns relate to the original query, with either a specific value from the column or a wildcard value, which is by default null, meaning a variable value.
+
+**Notes**
+The algorithm uses sampling to determine the initial frequent values. Consequently, the results could slightly differ between multiple runs for patterns whose frequency is close to the threshold.
+
 ## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -73,6 +65,8 @@ StormEvents
 | project State, EventType, Damage, DamageCrops
 | evaluate basket(0.2)
 ```
+
+**Output**
 
 |SegmentId|Count|Percent|State|EventType|Damage|DamageCrops|
 |---|---|---|---|---|---|---|---|---|
@@ -95,6 +89,8 @@ StormEvents
 | project State, EventType, Damage, DamageCrops
 | evaluate basket(0.2, '~', '~', '*', int(-1))
 ```
+
+**Output**
 
 |SegmentId|Count|Percent|State|EventType|Damage|DamageCrops|
 |---|---|---|---|---|---|---|---|---|

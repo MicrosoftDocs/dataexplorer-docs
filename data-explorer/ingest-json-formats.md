@@ -1,10 +1,7 @@
 ---
 title: Ingest JSON formatted data into Azure Data Explorer
 description: Learn about how to ingest JSON formatted data into Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: kerend
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/19/2020
 ---
@@ -197,7 +194,7 @@ Use Python to ingest data in raw [JSON format](#the-json-format).
     INGESTION_CLIENT = KustoIngestClient(KCSB_INGEST)
     BLOB_PATH = 'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json'
 
-    INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.json, mappingReference=MAPPING)
+    INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.JSON, ingestion_mapping_reference=MAPPING)
     BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
     INGESTION_CLIENT.ingest_from_blob(
         BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
@@ -326,7 +323,7 @@ In this example, you ingest JSON records data. Each JSON property is mapped to a
     ```python
     BLOB_PATH = 'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json'
 
-    INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.json, mappingReference=MAPPING)
+    INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.JSON, ingestion_mapping_reference=MAPPING)
     BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
     INGESTION_CLIENT.ingest_from_blob(
         BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
@@ -375,7 +372,7 @@ Ingest data into the `Events` table.
 ```python
 MAPPING = "FlatEventMapping"
 BLOB_PATH = 'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/multilined.json'
-INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.multijson, mappingReference=MAPPING)
+INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.MULTIJSON, ingestion_mapping_reference=MAPPING)
 BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
 INGESTION_CLIENT.ingest_from_blob(
     BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
@@ -545,135 +542,13 @@ Array data types are an ordered collection of values. Ingestion of a JSON array 
     TABLE = "RawEvents"
     MAPPING = "RawEventMapping"
     BLOB_PATH = 'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json'
-    INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.multijson, mappingReference=MAPPING)
+    INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.MULTIJSON, ingestion_mapping_reference=MAPPING)
     BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
     INGESTION_CLIENT.ingest_from_blob(
         BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
     ```
 
 1. Review data in the `Events` table.
-
----
-
-## Ingest JSON records containing dictionaries
-
-Dictionary structured JSON contains key-value pairs. Json records undergo ingestion mapping using logical expressions in the [JSONPath](kusto/query/jsonpath.md) format. You can ingest data with the following structure:
-
-```json
-{
-    "event":
-    [
-        {
-            "Key": "timestamp",
-            "Value": "2019-05-02 15:23:50.0000000"
-        },
-        {
-            "Key": "deviceId",
-            "Value": "ddbc1bf5-096f-42c0-a771-bc3dca77ac71"
-        },
-        {
-            "Key": "messageId",
-            "Value": "7f316225-839a-4593-92b5-1812949279b3"
-        },
-        {
-            "Key": "temperature",
-            "Value": 31.0301639051317
-        },
-        {
-            "Key": "humidity",
-            "Value": 62.0791099602725
-        }
-    ]
-}
-```
-
-### [KQL](#tab/kusto-query-language)
-
-1. Create a JSON mapping.
-
-    ```kusto
-    .create table Events ingestion json mapping 'KeyValueEventMapping' '[{"column":"Time","Properties":{"path":"$.event[?(@.Key == \'timestamp\')].Value"}},{"column":"Device","Properties":{"path":"$.event[?(@.Key == \'deviceId\')].Value","datatype":"StringBuffer"}},{"column":"MessageId","Properties":{"path":"$.event[?(@.Key == \'messageId\')].Value"}},{"column":"Temperature","Properties":{"path":"$.event[?(@.Key == \'temperature\')].Value"}},{"column":"Humidity","Properties":{"path":"$.event[?(@.Key == \'humidity\')].Value"}}]'
-    ```
-
-1. Ingest data into the `Events` table.
-
-    ```kusto
-    .ingest into table Events ('https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json') with '{"format":"multijson", "ingestionMappingReference":"KeyValueEventMapping"}'
-    ```
-
-### [C#](#tab/c-sharp)
-
-1. Create a JSON mapping.
-
-    ```csharp
-    var tableName = "Events";
-    var tableMapping = "KeyValueEventMapping";
-    var command =
-         CslCommandGenerator.GenerateTableMappingCreateCommand(
-            Data.Ingestion.IngestionMappingKind.Json,
-            "",
-            tableMapping,
-            new[]
-            {
-                new ColumnMapping() { ColumnName = "Time", Properties = new Dictionary<string, string>() { {
-                    MappingConsts.Path,
-                    "$.event[?(@.Key == 'timestamp')]"
-                } } },
-                    new ColumnMapping() { ColumnName = "Device", Properties = new Dictionary<string, string>() { {
-                    MappingConsts.Path,
-                    "$.event[?(@.Key == 'deviceId')]"
-                } } }, new ColumnMapping() { ColumnName = "MessageId", Properties = new Dictionary<string, string>() { {
-                    MappingConsts.Path,
-                    "$.event[?(@.Key == 'messageId')]"
-                } } }, new ColumnMapping() { ColumnName = "Temperature", Properties = new Dictionary<string, string>() { {
-                    MappingConsts.Path,
-                    "$.event[?(@.Key == 'temperature')]"
-                } } }, new ColumnMapping() { ColumnName = "Humidity", Properties = new Dictionary<string, string>() { {
-                    MappingConsts.Path,
-                    "$.event[?(@.Key == 'humidity')]"
-                } } },
-            });
-
-    kustoClient.ExecuteControlCommand(command);
-    ```
-
-1. Ingest data into the `Events` table.
-
-    ```csharp
-    var blobPath = "https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json";
-    var properties =
-        new KustoQueuedIngestionProperties(database, table)
-        {
-            Format = DataSourceFormat.multijson,
-            IngestionMapping = new IngestionMapping()
-            {
-                IngestionMappingReference = tableMapping
-            }
-        };
-    await ingestClient.IngestFromStorageAsync(blobPath, properties).ConfigureAwait(false);
-    ```
-
-### [Python](#tab/python)
-
-1. Create a JSON mapping.
-
-    ```python
-    MAPPING = "KeyValueEventMapping"
-    CREATE_MAPPING_COMMAND = ".create table Events ingestion json mapping '" + MAPPING + """' '[{"column":"Time","path":"$.event[?(@.Key == 'timestamp')]"},{"column":"Device","path":"$.event[?(@.Key == 'deviceId')]"},{"column":"MessageId","path":"$.event[?(@.Key == 'messageId')]"},{"column":"Temperature","path":"$.event[?(@.Key == 'temperature')]"},{"column":"Humidity","path":"$.event[?(@.Key == 'humidity')]"}]'"""
-    RESPONSE = KUSTO_CLIENT.execute_mgmt(DATABASE, CREATE_MAPPING_COMMAND)
-    dataframe_from_result_table(RESPONSE.primary_results[0])
-    ```
-
-1. Ingest data into the `Events` table.
-
-     ```python
-    MAPPING = "KeyValueEventMapping"
-    BLOB_PATH = 'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json'
-    INGESTION_PROPERTIES = IngestionProperties(database=DATABASE, table=TABLE, dataFormat=DataFormat.multijson, mappingReference=MAPPING)u
-    BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
-    INGESTION_CLIENT.ingest_from_blob(
-        BLOB_DESCRIPTOR, ingestion_properties=INGESTION_PROPERTIES)
-    ```
 
 ---
 

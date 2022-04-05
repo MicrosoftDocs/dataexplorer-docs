@@ -1,18 +1,13 @@
 ---
 title: The case-sensitive hassuffix_cs string operator - Azure Data Explorer
 description: This article describes the case-sensitive hassuffix_cs string operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/01/2021
-ms.localizationpriority: high
+ms.date: 12/21/2021
 ---
 # hassuffix_cs operator
 
-Filters a record set for data with a case-sensitive ending string.
+Filters a record set for data with a case-sensitive ending string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
 The following table provides a comparison of the `hassuffix` operators:
 

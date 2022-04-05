@@ -1,13 +1,9 @@
 ---
 title: Analyze time series data using Azure Data Explorer
 description: Learn how to analyze time series data in the cloud using Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/11/2021
-ms.localizationpriority: high
 ---
 # Time series analysis in Azure Data Explorer
 
@@ -51,15 +47,15 @@ Since there are no metrics, we can only build a set of time series representing 
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
 let max_t = toscalar(demo_make_series1 | summarize max(TimeStamp));
 demo_make_series1
-| make-series num=count() default=0 on TimeStamp in range(min_t, max_t, 1h) by OsVer
+| make-series num=count() default=0 on TimeStamp from min_t to max_t step 1h by OsVer
 | render timechart 
 ```
 
 - Use the [`make-series`](kusto/query/make-seriesoperator.md) operator to create a set of three time series, where:
     - `num=count()`: time series of traffic
-    - `range(min_t, max_t, 1h)`: time series is created in 1-hour bins in the time range (oldest and newest timestamps of table records)
+    - `from min_t to max_t step 1h`: time series is created in 1-hour bins in the time range (oldest and newest timestamps of table records)
     - `default=0`: specify fill method for missing bins to create regular time series. Alternatively use [`series_fill_const()`](kusto/query/series-fill-constfunction.md), [`series_fill_forward()`](kusto/query/series-fill-forwardfunction.md), [`series_fill_backward()`](kusto/query/series-fill-backwardfunction.md) and [`series_fill_linear()`](kusto/query/series-fill-linearfunction.md) for changes
-    - `byOsVer`:  partition by OS
+    - `by OsVer`:  partition by OS
 - The actual time series data structure is a numeric array of the aggregated value per each time bin. We use `render timechart` for visualization.
 
 In the table above, we have three partitions. We can create a separate time series: Windows 10 (red), 7 (blue) and 8.1 (green) for each OS version as seen in the graph:

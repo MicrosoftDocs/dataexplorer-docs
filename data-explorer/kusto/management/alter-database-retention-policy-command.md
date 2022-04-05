@@ -1,11 +1,7 @@
 ---
 title: ".alter database retention policy command- Azure Data Explorer"
 description: "This article describes the .alter database retention policy command in Azure Data Explorer."
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/29/2021
 ---
@@ -15,12 +11,12 @@ Change a database's [retention policy](retentionpolicy.md). The retention policy
 
 ## Syntax
 
-`.alter` `database` *DatabaseName* `policy` `retention` *ArrayOfPolicyObjects*
+`.alter` `database` *DatabaseName* `policy` `retention` *PolicyObject*
 
 ## Arguments
 
-*DatabaseName* - Specify the name of the database.
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+- *DatabaseName* - Specify the name of the database.
+- *PolicyObject* - Define a policy object. For more information, see [retention policy](retentionpolicy.md).
 
 ### Example
 

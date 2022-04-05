@@ -1,15 +1,12 @@
 ---
-title: 'Create an Event Hub data connection for Azure Data Explorer by using Azure Resource Manager template'
-description: In this article, you learn how to create an Event Hub data connection for Azure Data Explorer by using Azure Resource Manager template.
-author: orspod
-ms.author: orspodek
+title: 'Create an Event Hubs data connection for Azure Data Explorer by using Azure Resource Manager template'
+description: In this article, you learn how to create an Event Hubs data connection for Azure Data Explorer by using Azure Resource Manager template.
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/28/2019
+ms.date: 03/15/2022
 ---
 
-# Create an Event Hub data connection for Azure Data Explorer by using Azure Resource Manager template
+# Create an Event Hubs data connection for Azure Data Explorer by using Azure Resource Manager template
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
@@ -19,7 +16,7 @@ ms.date: 11/28/2019
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)] 
-In this article, you create an Event Hub data connection for Azure Data Explorer by using Azure Resource Manager template.
+In this article, you create an Event Hubs data connection for Azure Data Explorer by using Azure Resource Manager template.
 
 ## Prerequisites
 
@@ -28,9 +25,9 @@ In this article, you create an Event Hub data connection for Azure Data Explorer
 * Create [a table and column mapping](ingest-data-event-hub.md#create-a-target-table-in-azure-data-explorer).
 * Create [an event hub](/azure/event-hubs/event-hubs-create).
 
-## Azure Resource Manager template for adding an Event Hub data connection
+## Azure Resource Manager template for adding an Event Hubs data connection
 
-The following example shows an Azure Resource Manager template for adding an Event Hub data connection.  You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) by using the form.
+The following example shows an Azure Resource Manager template for adding an Event Hubs data connection.  You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) by using the form.
 
 ```json
 {
@@ -41,21 +38,21 @@ The following example shows an Azure Resource Manager template for adding an Eve
             "type": "string",
             "defaultValue": "eventhubns",
             "metadata": {
-                "description": "Specifies the Event Hub Namespace name."
+                "description": "Specifies the Event Hubs Namespace name."
             }
         },
         "EventHubs_eventhubdemo_name": {
             "type": "string",
             "defaultValue": "eventhubdemo",
             "metadata": {
-                "description": "Specifies the Event Hub name."
+                "description": "Specifies the event hub name."
             }
         },
         "consumergroup_default_name": {
             "type": "string",
             "defaultValue": "$Default",
             "metadata": {
-                "description": "Specifies the consumer group of the Event Hub."
+                "description": "Specifies the consumer group of the event hub."
             }
         },
         "Clusters_kustocluster_name": {
@@ -93,6 +90,13 @@ The following example shows an Azure Resource Manager template for adding an Eve
                 "description": "Specifies the data format"
             }
         },
+        "databaseRouting_type": {
+            "type": "string",
+            "defaultValue": "Single",
+            "metadata": {
+                "description": "The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* EventData property."
+            }
+        },
         "dataconnections_kustodc_name": {
             "type": "string",
             "defaultValue": "kustodc",
@@ -104,14 +108,14 @@ The following example shows an Azure Resource Manager template for adding an Eve
             "type": "string",
             "defaultValue": "[subscription().subscriptionId]",
             "metadata": {
-                "description": "Specifies the subscriptionId of the Event Hub"
+                "description": "Specifies the subscriptionId of the event hub"
             }
         },
         "resourceGroup": {
             "type": "string",
             "defaultValue": "[resourceGroup().name]",
             "metadata": {
-                "description": "Specifies the resourceGroup of the Event Hub"
+                "description": "Specifies the resourceGroup of the event hub"
             }
         },
         "location": {
@@ -135,7 +139,8 @@ The following example shows an Azure Resource Manager template for adding an Eve
                 "consumerGroup": "[parameters('consumergroup_default_name')]",
                 "tableName": "[parameters('tables_kustotable_name')]",
                 "mappingRuleName": "[parameters('mapping_kustomapping_name')]",
-                "dataFormat": "[parameters('dataformat_type')]"
+                "dataFormat": "[parameters('dataformat_type')]",
+                "databaseRouting": "[parameters('databaseRouting_type')]"
             }
         }
     ]

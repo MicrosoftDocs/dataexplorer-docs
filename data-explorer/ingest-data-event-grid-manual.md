@@ -1,13 +1,9 @@
 ---
 title: Create an Event Grid subscription in your storage account - Azure Data Explorer
 description: This article describes how to create an Event Grid subscription in your storage account in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: kedamari
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/05/2020
+ms.date: 01/03/2022
 ---
 # Manually create resources for Event Grid ingestion
 
@@ -18,9 +14,9 @@ ms.date: 10/05/2020
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 
-Azure Data Explorer offers continuous ingestion from Azure Storage (Azure Blob storage and Azure Data Lake Storage Gen2) using an [Event Grid Ingestion pipeline](ingest-data-event-grid-overview.md). In the Event Grid ingestion pipeline, an Azure Event Grid service routes blob created or blob renamed events from a storage account to Azure Data Explorer via an Azure Event Hub.
+Azure Data Explorer offers continuous ingestion from Azure Storage (Azure Blob storage and Azure Data Lake Storage Gen2) using an [Event Grid Ingestion pipeline](ingest-data-event-grid-overview.md). In the Event Grid ingestion pipeline, an Azure Event Grid service routes blob created or blob renamed events from a storage account to Azure Data Explorer via an Azure Event Hubs.
 
-In this article, you learn how to create manually the resources needed for Event Grid Ingestion: Event Grid subscription, Event Hub namespace, and Event Hub. Event Hub namespace and Event Hub creation are described in the [Prerequisites](#prerequisites). To use automatic creation of these resources while defining the Event Grid ingestion, see [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md).
+In this article, you learn how to create manually the resources needed for Event Grid Ingestion: Event Grid subscription, event hub namespace, and event hub. event hub namespace and event hub creation are described in the [Prerequisites](#prerequisites). To use automatic creation of these resources while defining the Event Grid ingestion, see [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md).
 
 ## Prerequisites
 
@@ -28,7 +24,7 @@ In this article, you learn how to create manually the resources needed for Event
 * Create [a cluster and database](create-cluster-database-portal.md).
 * [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 * Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
-* [An Event Hub namespace and Event Hub](/azure/event-hubs/event-hubs-create).
+* [An event hub namespace and event hub](/azure/event-hubs/event-hubs-create).
 
 > [!NOTE]
 > For best performance, create all resources in the same region as the Azure Data Explorer cluster.
@@ -55,9 +51,9 @@ In this article, you learn how to create manually the resources needed for Event
 
 1. In **ENDPOINT DETAILS**, select **Event Hubs**.
 
-    :::image type="content" source="media/eventgrid/endpoint-details.png" alt-text="Pick an event handler to receive your events - Event Hub - Azure Data Explorer.":::
+    :::image type="content" source="media/eventgrid/endpoint-details.png" alt-text="Pick an event handler to receive your events - event hub - Azure Data Explorer.":::
 
-1. Click **Select an endpoint** and fill in the Event Hub you created, for example *test-hub*.
+1. Click **Select an endpoint** and fill in the event hub you created, for example *test-hub*.
     
 1. Select the **Filters** tab if you want to track specific subjects. Set the filters for the notifications as follows:
    

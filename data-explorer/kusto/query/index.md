@@ -1,14 +1,9 @@
 ---
 title: Kusto Query Language (KQL) overview- Azure Data Explorer
 description: This article is a general overview of the Kusto Query Language in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/12/2021
-ms.localizationpriority: high 
 adobe-target: true
 ---
 # Kusto Query Language (KQL) overview
@@ -55,7 +50,7 @@ to see the result:
 
 |Count|
 |-----|
-|   23|
+|   28|
 
 To try out some more Kusto queries, see [Tutorial: Use Kusto queries](tutorial.md).
 

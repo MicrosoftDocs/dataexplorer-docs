@@ -1,11 +1,7 @@
 ---
 title: Create and alter Azure Storage external tables - Azure Data Explorer
 description: This article describes how to create and alter external tables based on Azure Blob Storage or Azure Data Lake
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/24/2020
 ---
@@ -137,7 +133,7 @@ The data format, any of the [ingestion formats](../../ingestion-supported-format
 
 One or more paths to Azure Blob Storage blob containers, Azure Data Lake Gen 2 filesystems or Azure Data Lake Gen 1 containers, including credentials.
 The external table storage type is determined by the provided connection strings.
-See [storage connection strings](../api/connection-strings/storage.md) for details. 
+See [storage connection strings](../api/connection-strings/storage-connection-strings.md) for details. 
 
 > [!TIP]
 > Provide more than a single storage account to avoid storage throttling while [exporting](data-export/export-data-to-an-external-table.md) large amounts of data to the external table. Export will distribute the writes between all accounts provided. 

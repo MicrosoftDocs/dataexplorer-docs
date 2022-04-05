@@ -1,10 +1,7 @@
 ---
 title: 'End-to-end blob ingestion into Azure Data Explorer using C#'
 description: In this article, you learn how to ingest blobs into Azure Data Explorer with an end-to-end example using C#.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 05/19/2020
 ---
@@ -81,7 +78,7 @@ await resourceManagementClient.ResourceGroups.CreateOrUpdateAsync(resourceGroupN
     new ResourceGroup() { Location = locationSmallCase });
 
 Console.WriteLine(
-    "Step 2: Create a Blob Storage, a container in the Storage account, an Event Hub, an Azure Data Explorer cluster, database, and add principals by using an Azure Resource Manager template.");
+    "Step 2: Create a Blob Storage, a container in the Storage account, an event hub, an Azure Data Explorer cluster, database, and add principals by using an Azure Resource Manager template.");
 var parameters = new Dictionary<string, Dictionary<string, object>>();
 parameters["eventHubNamespaceName"] = new Dictionary<string, object>(capacity: 1) {{"value", eventHubNamespaceName}};
 parameters["eventHubName"] = new Dictionary<string, object>(capacity: 1) {{"value", eventHubName }};
@@ -104,7 +101,7 @@ await resourceManagementClient.Deployments.CreateOrUpdateAsync(resourceGroupName
         parameters: parameters)));
 
 Console.WriteLine(
-    "Step 3: Create an Event Grid subscription to publish blob events created in a specific container to an Event Hub.");
+    "Step 3: Create an Event Grid subscription to publish blob events created in a specific container to an event hub.");
 var eventGridClient = new EventGridManagementClient(serviceCreds)
 {
     SubscriptionId = subscriptionId

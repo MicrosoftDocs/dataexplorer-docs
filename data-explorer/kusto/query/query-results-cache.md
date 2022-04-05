@@ -1,11 +1,7 @@
 ---
 title: Query results cache - Azure Data Explorer
 description: This article describes Query results cache functionality in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: amitof
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/16/2020
 ---

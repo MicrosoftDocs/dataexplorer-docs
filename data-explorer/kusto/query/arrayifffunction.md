@@ -1,11 +1,7 @@
 ---
-title: array_iif() - Azure Data Explorer | Microsoft Docs
+title: array_iif() - Azure Data Explorer
 description: This article describes array_iif() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/28/2019
 ---
@@ -25,7 +21,7 @@ Another alias: array_iff().
 * *ifTrue*: Input array of values or primitive value - the result value(s) when the corresponding value of *ConditionArray* is *true*.
 * *ifFalse*: Input array of values or primitive value - the result value(s) when the corresponding value of *ConditionArray* is *false*.
 
-**Notes**
+### Notes
 
 * The result length is the length of *conditionArray*.
 * Numeric condition value is treated as *condition* != *0*.

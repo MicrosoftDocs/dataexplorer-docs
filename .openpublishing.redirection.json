@@ -61,6 +61,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "data-explorer/kusto/api/connection-strings/storage.md",
+      "redirect_url": "/azure/data-explorer/kusto/api/connection-strings/storage-connection-strings",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "data-explorer/ingest-data-streaming-csharp.md",
       "redirect_url": "/azure/data-explorer/ingest-data-streaming",
       "redirect_document_id": false
@@ -263,6 +268,16 @@
     {
       "source_path": "data-explorer/managed-identities.md",
       "redirect_url": "/azure/data-explorer/configure-managed-identities-cluster",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/one-click-manage-database.md      ",
+      "redirect_url": "/azure/data-explorer/create-cluster-database-portal",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/concepts/crossclusterandschemachanges.md",
+      "redirect_url": "/azure/data-explorer/kusto/concepts/cross-cluster-and-schema-changes",
       "redirect_document_id": true
     },
     {

@@ -1,13 +1,9 @@
 ---
 title: ".alter-merge table row order policy command- Azure Data Explorer"
 description: "This article describes the .alter-merge table row order policy command in Azure Data Explorer."
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 01/13/2022
 ---
 # .alter-merge table row order policy
 
@@ -19,9 +15,8 @@ Change a table's [row order policy](roworderpolicy.md). The row order policy is 
 
 ## Arguments
 
-*TableName* - Specify the name of the table.  
-*column* - specify order of columns and whether columns are ascending (`asc`) or descending (`desc`).
-*ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
+- *TableName* - Specify the name of the table.  
+- *column* - specify order of columns and whether columns are ascending (`asc`) or descending (`desc`).
 
 ### Examples
 

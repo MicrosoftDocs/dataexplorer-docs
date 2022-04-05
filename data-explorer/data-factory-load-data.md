@@ -1,11 +1,7 @@
 ---
 title: Copy data from Azure Data Factory to Azure Data Explorer
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer by using the Azure Data Factory copy tool.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: jasonh
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 04/15/2019
 
@@ -183,7 +179,7 @@ To create the Azure Data Explorer linked service, do the following steps:
    h. Select **Finish** to complete the linked service creation.
 
     > [!NOTE]
-    > The service principal is used by Azure Data Factory to access the Azure Data Explorer service. To create a service principal, go to [create an Azure Active Directory (Azure AD) service principal](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal). Do not use the Azure Key Vault method.
+    > The service principal is used by Azure Data Factory to access the Azure Data Explorer service. To create a service principal, go to [create an Azure Active Directory (Azure AD) service principal](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal). Do not use the Azure Key Vault method. To assign permissions to the service principal, see [manage permissions](manage-database-permissions.md).
 
 #### Configure the Azure Data Explorer data connection
 

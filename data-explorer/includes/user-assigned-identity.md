@@ -1,6 +1,4 @@
 ---
-author: orspod
-ms.author: orspodek
 ms.date: 11/29/2021
 ms.topic: include
 ---

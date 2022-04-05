@@ -1,14 +1,9 @@
 ---
 title: render operator - Azure Data Explorer
 description: This article describes render operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/08/2020
-ms.localizationpriority: high
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -103,7 +98,6 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 |`kind`        |Further elaboration of the visualization kind. See below.                         |
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
 |`title`       |The title of the visualization (of type `string`).                                |
-|`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
 
 ::: zone-end
 

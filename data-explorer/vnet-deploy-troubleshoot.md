@@ -1,10 +1,7 @@
 ---
 title: Troubleshoot access, ingestion, and operation of your Azure Data Explorer cluster in your virtual network
 description: Troubleshoot connectivity, ingestion, cluster creation, and operation of your Azure Data Explorer cluster in your virtual network
-author: orspod
-ms.author: orspodek
 ms.reviewer: basaba
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/24/2020
 ---
@@ -80,7 +77,7 @@ If you're experiencing cluster creation or operation issues and you suspect it's
 
 ### Check the "DNS servers" configuration
 
-Custom DNS server aren't supported. Use the default option in the **DNS servers** configuration section of your Virtual Network.
+Setting up Private Endpoint requires configuring DNS, We support Azure Private DNS zone setup only. Custom DNS server setup is not support, check that the records that were created as part of private endpoint are registered to Azure Private DNS zone.
 
 ### Diagnose the virtual network with the REST API
 

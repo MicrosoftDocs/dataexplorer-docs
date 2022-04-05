@@ -1,13 +1,9 @@
 ---
 title: ".alter-merge table streaming ingestion policy command - Azure Data Explorer"
 description: "This article describes the .alter-merge table streaming ingestion policy command in Azure Data Explorer."
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 01/13/2022
 ---
 # .alter-merge table streaming ingestion policy
 
@@ -21,11 +17,12 @@ Use the classic bulk ingestion instead of streaming ingestion when the amount of
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `policy` `streamingingestion` *ArrayOfPolicyObjects*
+`.alter-merge` `table` *TableName* `policy` `streamingingestion` *PolicyObject*
 
 ## Arguments
 
-*TableName* - Specify the name of the table.*ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
+- *TableName* - Specify the name of the table.*ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
+- *PolicyObject* - Define a policy object, see also [streaming policy](../management/streamingingestionpolicy.md).
 
 ## Returns
 

@@ -1,11 +1,7 @@
 ---
 title: Row Level Security - Azure Data Explorer
 description: This article describes Row Level Security in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 10/11/2020
 ---
@@ -55,10 +51,10 @@ In a table named `Sales`, each row contains details about a sale. One of the col
 Sales | where SalesPersonAadUser == current_principal()
 ```
 
-You can also mask the credit card number:
+You can also mask the email address:
 
 ```kusto
-Sales | where SalesPersonAadUser == current_principal() | extend CreditCardNumber = "****"
+Sales | where SalesPersonAadUser == current_principal() | extend EmailAddress = "****"
 ```
 
 If you want every sales person to see all the sales of a specific country, you can define a query similar to:
@@ -80,7 +76,7 @@ let IsManager = current_principal_is_member_of('aadgroup=sales_managers@domain.c
 let AllData = Sales | where IsManager;
 let PartialData = Sales | where not(IsManager) and (SalesPersonAadUser == current_principal());
 union AllData, PartialData
-| extend CreditCardNumber = "****"
+| extend EmailAddress = "****"
 ```
 
 ### Expose different data to members of different Azure AD groups
@@ -142,15 +138,14 @@ For example:
 .create-or-alter function RLSForCustomersTables() {
     let IsProductionCluster = current_cluster_endpoint() == "mycluster.eastus.kusto.windows.net";
     let DataForProductionCluster = TempTable | where IsProductionCluster;
-    let DataForFollowerClusters = TempTable | where not(IsProductionCluster) | extend CreditCardNumber = "****";
+    let DataForFollowerClusters = TempTable | where not(IsProductionCluster) | extend EmailAddress = "****";
     union DataForProductionCluster, DataForFollowerClusters
 }
 ```
 
 ## More use cases
 
-* A call center support person may identify callers by several digits of their social security number or credit card number. Those numbers shouldn't be fully exposed to
-the support person. An RLS policy can be applied on the table to mask all but the last four digits of any social security or credit card number in the result set of any query.
+* A call center support person may identify callers by several digits of their social security number. This number shouldn't be fully exposed to the support person. An RLS policy can be applied on the table to mask all but the last four digits of the social security number in the result set of any query.
 * Set an RLS policy that masks personally identifiable information (PII), and enables developers to query production environments for troubleshooting purposes without violating compliance regulations.
 * A hospital can set an RLS policy that allows nurses to view data rows for their patients only.
 * A bank can set an RLS policy to restrict access to financial data rows based on an employee's business division or role.

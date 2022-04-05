@@ -1,14 +1,9 @@
 ---
-title: The dynamic data type - Azure Data Explorer | Microsoft Docs
+title: The dynamic data type - Azure Data Explorer
 description: This article describes The dynamic data type in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/09/2020
-ms.localizationpriority: high 
 ---
 # The dynamic data type
 
@@ -22,7 +17,7 @@ The `dynamic` scalar data type is special in that it can take on any value  of o
   The property bag has zero or more such mappings (called "slots"), indexed by the unique `string` values. The slots are unordered.
 
 > [!NOTE]
-> * Values of type `dynamic` are limited to 1MB (2^20).
+> * Values of type `dynamic` are limited to 1MB (2^20), uncompressed.
 > * Although the `dynamic` type appears JSON-like, it can hold values that the JSON
 >   model does not represent because they don't exist in JSON (e.g.,
 >   `long`, `real`, `datetime`, `timespan`, and `guid`).

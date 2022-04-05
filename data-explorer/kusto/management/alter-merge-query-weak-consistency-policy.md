@@ -1,11 +1,7 @@
 ---
 title: '.alter-merge query weak consistency policy management - Azure Data Explorer'
 description: This article describes the `.alter-merge query weak consistency policy` command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yabenyaa
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/29/2021
 ---
@@ -16,11 +12,11 @@ policy, and then returns the updated policy. The updated policy can be later vie
 
 ## Syntax
 
-`.alter-merge` `cluster` `policy` `query_weak_consistency` *ArrayOfPolicyObjects*
+`.alter-merge` `cluster` `policy` `query_weak_consistency` *PolicyObject*
 
 ## Arguments
 
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+*PolicyObject* - Define a policy object, see also [show command](show-query-weak-consistency-policy.md).
 
 ## Result
 
