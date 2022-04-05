@@ -276,7 +276,7 @@
       "redirect_document_id": true
     },
     {
-      "source_path": "vnet-create-private-endpoint.md",
+      "source_path": "data-explorer/vnet-create-private-endpoint.md",
       "redirect_url": "/azure/data-explorer/security-network-private-endpoint",
       "redirect_document_id": true
     },

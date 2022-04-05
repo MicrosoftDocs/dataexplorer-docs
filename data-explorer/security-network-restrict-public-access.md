@@ -3,7 +3,7 @@ title: Restrict public access to your Azure Data Explorer cluster
 description: In this article, you'll learn how to public access to your Azure Data Explorer cluster.
 ms.reviewer: eladb
 ms.topic: how-to
-ms.date: 03/30/2022
+ms.date: 04/05/2022
 ---
 
 # Restrict public access to your Azure Data Explorer cluster
@@ -14,7 +14,7 @@ To restrict public access to your cluster, you must turn off access from public 
 
 1. Select **Public access**, and then under **Public network access**, select **Disabled**.
 
-    :::image type="content" source="media/security-network-restrict-access/restrict-public-access.png" alt-text="Disable public access.":::
+    :::image type="content" source="media/security-network-restrict-access/restrict-public-access.png" alt-text="Screenshot of the networking page, showing the disable public access option.":::
 
 1. Optionally, you can define a list of IP addresses that can connect to the public endpoint your cluster.
 

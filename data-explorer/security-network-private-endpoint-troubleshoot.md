@@ -1,9 +1,9 @@
 ---
-title: Troubleshooting Private Endpoints in Azure Data Explorer
-description: In this article, you'll learn how to troubleshoot Private Endpoints in Azure Data Explorer.
+title: Troubleshoot private endpoints in Azure Data Explorer
+description: In this article, you'll learn how to troubleshoot private endpoints in Azure Data Explorer.
 ms.reviewer: eladb
 ms.topic: how-to
-ms.date: 03/30/2022
+ms.date: 04/05/2022
 ---
 
 # Troubleshoot private endpoints
@@ -18,7 +18,7 @@ Make sure that the private endpoint's connection state is set to approved.
 
 1. Select **Private endpoint**. In the table, in the **Connection state** column, verify that the private endpoint is approved.
 
-    :::image type="content" source="media/security-network-private-endpoint/pe-create-7.png" alt-text="See all private endpoints of an Azure Data Explorer cluster in the portal.":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-create-7.png" alt-text="Screenshot of the networking page, showing the all private endpoints of the cluster in the Azure portal.":::
 
 ## Run checks from within the virtual network
 
@@ -30,7 +30,7 @@ Make sure that the name resolution is working properly.
 
 Iterate over all FQDNs of the private endpoint DNS configuration and run the tests using *nslookup*, *Test-NetConnection*, or other similar tools to verify that each DNS matches its corresponding IP address.
 
-:::image type="content" source="media/security-network-private-endpoint/pe-dns-config.png" alt-text="DNS configuration of the private endpoint.":::
+:::image type="content" source="media/security-network-private-endpoint/pe-dns-config.png" alt-text="Screenshot of the DNS configuration page, showing the DNS configuration of the private endpoint.":::
 
 ### Check DNS resolution
 
@@ -71,7 +71,7 @@ TcpTestSucceeded : True
 
 A successful result returns **TcpTestSucceeded : True**, which means that the caller was able to establish a TCP connection to the cluster.
 
-### Checking the health of the cluster
+### Check the health of the cluster
 
 The last step of the troubleshooting is to test the health of the cluster.
 

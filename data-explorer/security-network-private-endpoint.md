@@ -1,12 +1,12 @@
 ---
-title: Private Endpoints for Azure Data Explorer
+title: Private endpoints for Azure Data Explorer
 description: In this article, you'll learn about private endpoints for Azure Data Explorer.
 ms.reviewer: basaba
 ms.topic: how-to
-ms.date: 03/30/2022
+ms.date: 04/05/2022
 ---
 
-# Private Endpoints for Azure Data Explorer
+# Private endpoints for Azure Data Explorer
 
 You can use [private endpoints](/azure/private-link/private-endpoint-overview) for your cluster to allow clients on a [virtual network (VNet)](/azure/virtual-network/virtual-networks-overview) to securely access data over a [private link](/azure/private-link/private-link-overview). Private endpoints use private IP addresses from your VNet address space to connect you privately to your cluster. Network traffic between clients on the VNet and the cluster, traverses over the VNet and a private link on the [Microsoft backbone network](/azure/networking/microsoft-global-network), eliminating exposure from the public internet.
 
@@ -20,7 +20,7 @@ Using private endpoints for your cluster enables you to:
 
 A private endpoint is a special network interface for an Azure service in your VNet that is assigned IP addresses from the IP address range of your VNet. When you create a private endpoint for your cluster, it provides secure connectivity between clients on your VNet and your cluster. The connection between the private endpoint and the cluster uses a secure private link.
 
-:::image type="content" source="media/security-network-private-endpoint/pe-diagram-detail.png" alt-text="Schematic private endpoint based architecture.":::
+:::image type="content" source="media/security-network-private-endpoint/pe-diagram-detail.png" alt-text="Diagram showing the schema of the private endpoint architecture.":::
 
 Applications in the VNet can seamlessly connect to the cluster over the private endpoint. The connection strings and authorization mechanisms are the same as you'd use to connect to a public endpoint.
 
@@ -47,7 +47,7 @@ Use the following information to help you determine the total number of IP addre
 
 If you created a subnet that is too small, you can delete it and create a new one with a larger address range. Once you've recreated the subnet, you can create a new private endpoint for the cluster.
 
-## Connecting to a private endpoint
+## Connect to a private endpoint
 
 Clients on a VNet using a private endpoint should use the same connection string for the cluster as clients connecting to a public endpoint. DNS resolution automatically routes connections from the VNet to the cluster over a private link.
 
@@ -56,7 +56,7 @@ Clients on a VNet using a private endpoint should use the same connection string
 
 By default, Azure Data Explorer creates a [private DNS zone](/azure/dns/private-dns-overview) attached to the VNet with the necessary updates for the private endpoints. However, if you're using your own DNS server, you may need to make more changes to your DNS configuration.
 
-:::image type="content" source="media/security-network-private-endpoint/pe-dns-config.png" alt-text="DNS configuration of the private endpoint.":::
+:::image type="content" source="media/security-network-private-endpoint/pe-dns-config.png" alt-text="Screenshot of the DNS configuration page, showing the DNS configuration of the private endpoint.":::
 
 Azure Data Explorer creates multiple customer visible FQDNs as part of the private endpoint deployment. In addition to the *query* and *ingestion* FQDN it comes with several FQDNs for blob / table / queue endpoints (needed for ingestion scenarios)
 
@@ -64,13 +64,13 @@ Azure Data Explorer creates multiple customer visible FQDNs as part of the priva
 
 To increase security, you also can disable public access to the cluster in the Azure portal.
 
-:::image type="content" source="media/security-network-private-endpoint/pe-disable-public-access.png" alt-text="Disable public access.":::
+:::image type="content" source="media/security-network-private-endpoint/pe-disable-public-access.png" alt-text="Screenshot of the networking page, showing the disable public access option.":::
 
 ## Managed private endpoints
 
 You can use a managed private endpoint to enable the cluster to securely access your event hub via its private endpoint. When you create a cluster, Azure provisions a managed virtual network in the Microsoft backbone infrastructure. This VNet is isolated and not visible to your users because the Azure Data Explorer service is consumed as a PaaS resource. You can create a managed private endpoint via the REST API to provision a private endpoint in the same virtual network where the root service resources of the cluster reside. This enables the service to access your event hub privately.
 
-:::image type="content" source="media/security-network-private-endpoint/pe-mpe.png" alt-text="Managed Private Endpoint schema.":::
+:::image type="content" source="media/security-network-private-endpoint/pe-mpe.png" alt-text="Diagram showing the schema of the managed private endpoint architecture.":::
 
 ### Supported services
 

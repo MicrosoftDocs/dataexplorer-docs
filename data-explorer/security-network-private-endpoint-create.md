@@ -1,9 +1,9 @@
 ---
-title: Create a Private Endpoints for Azure Data Explorer
+title: Create a private endpoint for Azure Data Explorer
 description: In this article, you'll learn how to create a private endpoint for Azure Data Explorer.
 ms.reviewer: eladb
 ms.topic: how-to
-ms.date: 03/30/2022
+ms.date: 04/05/2022
 ---
 
 # Create a private endpoint for Azure Data Explorer
@@ -36,7 +36,7 @@ Use the following information to create a private endpoint whilst [creating your
 1. Under **Connectivity method**, select **Private Endpoints**.
 1. Under **Private Endpoint**, select **Add**.
 
-    :::image type="content" source="media/security-network-private-endpoint/pe-create-deployment.png" alt-text="Private Endpoint creation during deployment.":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-create-deployment.png" alt-text="Screenshot of the cluster creation page, showing the private endpoint option during deployment.":::
 
 1. Configure the [private endpoint](#configure-your-private-endpoint).
 1. Complete the steps to create the cluster.
@@ -49,7 +49,7 @@ Use the following information to create a private endpoint on an existing cluste
 
 1. Select **Private endpoint connections**, and then select **+ Private endpoint**.
 
-    :::image type="content" source="media/security-network-private-endpoint/pe-create-1.png" alt-text="Start the creation of an Azure Private Endpoint.":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-create-1.png" alt-text="Screenshot of the networking page, showing the first step in the creation of a private endpoint.":::
 
 1. Configure the [private endpoint](#configure-your-private-endpoint).
 
@@ -57,7 +57,7 @@ Use the following information to create a private endpoint on an existing cluste
 
 1. On the **Basics** tab, fill out the basic cluster details with the following information, and then select on **Next**.
 
-    :::image type="content" source="media/security-network-private-endpoint/pe-create-2.png" alt-text="Define the Basics.":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-create-2.png" alt-text="Screenshot of the create private endpoint page, showing the basic information.":::
 
     | **Setting** | **Suggested value** | **Field description** |
     |---|---|---|
@@ -69,7 +69,7 @@ Use the following information to create a private endpoint on an existing cluste
 
 1. On the **Resources** tab, select **Connect to an Azure resource in my directory**, fill out the resource details with the following information, and then select **Next**.
 
-    :::image type="content" source="media/security-network-private-endpoint/pe-create-3.png" alt-text="Define the resource information.":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-create-3.png" alt-text="Screenshot of the create private endpoint page, showing the resources information.":::
 
     | **Setting** | **Suggested value** | **Field description** |
     |---|---|---|
@@ -101,19 +101,19 @@ Use the following information to create a private endpoint on an existing cluste
 
 1. Select **Next**.
 
-    :::image type="content" source="media/security-network-private-endpoint/pe-create-4.png" alt-text="Virtual Network configuration.":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-create-4.png" alt-text="Screenshot of the create private endpoint page, showing the virtual network configuration.":::
 
 1. On the **Tags** tab, configure any tags you require, and then select **Next**.
 
 1. Review the configuration details and then select **Create** to create the private endpoint resource.
 
-    :::image type="content" source="media/security-network-private-endpoint/pe-create-5.png" alt-text="Review and create":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-create-5.png" alt-text="Screenshot of the create private endpoint page, showing the review and create summary.":::
 
 ### Verify the private endpoint creation
 
 Once the creation of the private endpoint is complete, you'll be able to access it in the Azure portal.
 
-:::image type="content" source="media/security-network-private-endpoint/pe-create-6.png" alt-text="Private Endpoint creation result.":::
+:::image type="content" source="media/security-network-private-endpoint/pe-create-6.png" alt-text="Screenshot of the create private endpoint page, showing the results of the private endpoint creation.":::
 
 To see all the private endpoints created for your cluster:
 
@@ -121,7 +121,7 @@ To see all the private endpoints created for your cluster:
 
 1. Select **Private endpoint**. In the table, you can see all private endpoints created for your cluster.
 
-    :::image type="content" source="media/security-network-private-endpoint/pe-create-7.png" alt-text="See all private endpoints of an Azure Data Explorer cluster in the portal.":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-create-7.png" alt-text="Screenshot of the networking page, showing the all private endpoints of the cluster in the Azure portal.":::
 
 1. In the **Connection state** column, verify that the private endpoint is approved.
 
@@ -186,7 +186,7 @@ In some situations, you may not be able to integrate with the private DNS zone o
 
 1. in the Azure portal, navigate to your private endpoint, and **select DNS configuration**. On this page, you can get the required information for the IP address mapping to the DNS name.
 
-    :::image type="content" source="media/security-network-private-endpoint/pe-dns-config.png" alt-text="DNS configuration of the private endpoint.":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-dns-config.png" alt-text="Screenshot of the DNS configuration page, showing the DNS configuration of the private endpoint.":::
 
     > [!WARNING]
     > This information allows you to propagate your custom DNS server with the necessary records. We highly recommend that you integrate with the private DNS Zones of the VNet and don't configure your own custom DNS server. The nature of private endpoints for Azure Data Explorer clusters is different than for other Azure PaaS services. In some situations, such as high ingestion loads,  in order to increase throughput it might be necessary for the service to scale out the number of storage accounts that are accessible via the private endpoint. If you choose to propagate your own custom DNS server, it is your responsibility to take care of updating the DNS records in such situations, and later removing records i the number of storage accounts is scaled back in.
