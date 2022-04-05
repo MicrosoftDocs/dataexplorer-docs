@@ -328,8 +328,8 @@ items:
         href: configure-managed-identities-cluster.md
       - name: Authenticate external tables with managed identities 
         href: external-tables-managed-identities.md
-      - name: Ingest data with managed identity authentication
-        href: ingest-data-with-managed-identity.md
+      - name: Ingest data using managed identity authentication
+        href: ingest-data-managed-identity.md
     - name: Configure customer-managed-keys
       items:
         - name: Portal
@@ -349,6 +349,8 @@ items:
           href: customer-managed-keys-powershell.md
     - name: Create Azure AD app
       href: provision-azure-ad-app.md
+    - name: Conditional Access
+      href: security-conditional-access.md
   - name: Manage
     items:
     - name: Cluster
@@ -525,6 +527,9 @@ items:
     - name: pair_probabilities_fl()
       displayName: functions library, jaccard, lift
       href: kusto/functions-library/pair-probabilities-fl.md
+    - name: pairwise_dist_fl()
+      displayName: functions library, multivariate, distance, anomaly, pairwise
+      href: kusto/functions-library/pairwise-dist-fl.md      
     - name: perm_fl()
       displayName: functions library, statistics
       href: kusto/functions-library/perm-fl.md
@@ -573,6 +578,12 @@ items:
     - name: series_rolling_fl()
       displayName: functions library, rolling, sliding
       href: kusto/functions-library/series-rolling-fl.md
+    - name: series_uv_anomalies_fl()
+      displayName: functions library, anomaly detection, univariate
+      href: kusto/functions-library/series-uv-anomalies-fl.md
+    - name: series_uv_change_points_fl()
+      displayName: functions library, anomaly detection, univariate, change point
+      href: kusto/functions-library/series-uv-change-points-fl.md
     - name: time_weighted_avg_fl()
       displayName: functions library, binning
       href: kusto/functions-library/time-weighted-avg-fl.md

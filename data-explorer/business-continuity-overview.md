@@ -1,10 +1,7 @@
 ---
 title: Azure Data Explorer and business continuity disaster recovery
 description: This article describes Azure Data Explorer capabilities for recovering from disruptive events.
-author: orspod
-ms.author: orspodek
 ms.reviewer: ankhanol
-ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2020
 ---

@@ -1,12 +1,9 @@
 ---
 title: 'Ingest data from event hub into Azure Data Explorer'
 description: 'In this article, you learn how to ingest (load) data into Azure Data Explorer from event hub.'
-author: orspod
-ms.author: orspodek
 ms.reviewer: tzgitlin
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 08/31/2021
+ms.date: 03/15/2022
 
 # Customer intent: As a database administrator, I want to ingest data into Azure Data Explorer from an event hub, so I can analyze streaming data.
 ---
@@ -134,6 +131,18 @@ Fill out the form with the following information, and then select **Create**.
 > [!NOTE]
 > If you have an existing data connection that is not using managed identities, we recommend updating it to use managed identities.
 
+#### Target database (multi-database data connection)
+
+Specifying a target database allows you to override the default associated with the data connection. For more information about database routing, see [Events routing](ingest-data-event-hub-overview.md#events-routing).
+
+Before you can set an alternate target database, you must first *allow* routing the data to multiple databases. Use the following steps to *allow* routing the data to alternate databases:
+
+1. In the Azure portal, browse to your cluster.
+1. Select **Databases** > **Data connections**.
+1. Create or edit a data connection and in the **Data connection** pane, under **Data routing settings**, turn on the allow routing data to other database (multi-database data connection) option.
+
+    :::image type="content" source="media/ingest-data-event-hub/data-connection-allow-multi-database.png" alt-text="Allow multi-database routing - IoT Hub - Azure Data Explorer.":::
+
 #### Target table
 
 There are two options for routing the ingested data: *static* and *dynamic*.
@@ -147,7 +156,7 @@ For this article, you use static routing, where you specify the table name, data
     |---|---|---|
     | Table name | *TestTable* | The table you created in **TestDatabase**. |
     | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, and W3CLOG. |
-    | Mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **TestDatabase**, which maps incoming data to the column names and data types of **TestTable**. Required for JSON, MULTILINE JSON and AVRO, and optional for other formats.|
+    | Mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **TestDatabase**, which maps incoming data to the column names and data types of **TestTable**. Required for JSON, MULTILINE JSON, and AVRO as [identity mapping](kusto/management/mappings.md#identity-mapping is not automatically defined. Optional for other formats.|
 
     > [!NOTE]
     >
@@ -160,7 +169,7 @@ For this article, you use static routing, where you specify the table name, data
 
 [!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
 
-If you selected **Event system properties** in the **Data Source** section of the table, you must include [system properties](ingest-data-event-hub-overview.md#system-properties) in the table schema and mapping.
+If you selected **Event system properties** in the **Data Source** section of the table, you must include [system properties](ingest-data-event-hub-overview.md#event-system-properties-mapping) in the table schema and mapping.
 
 ## Copy the connection string
 

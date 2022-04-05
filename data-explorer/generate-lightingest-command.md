@@ -1,10 +1,7 @@
 ---
 title: Use wizard for one-time ingestion of historical data with LightIngest (preview)
 description: Learn about how to auto-generate an ingest command for LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: tzgitlin
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 07/27/2021
 ---

@@ -1,11 +1,7 @@
 ---
 title: Kusto update policy - Azure Data Explorer
 description: This article describes Update policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 11/18/2021
 ---
@@ -65,10 +61,10 @@ Each such object is represented as a JSON property bag, with the following prope
 
 Update policy control commands include:
 
-* [`.show table *TableName* policy update`](./show-table-update-policy-command.md#show-update-policy) shows the current update policy of a table.
-* [`.alter table *TableName* policy update`](./show-table-update-policy-command.md#alter-update-policy) defines the current update policy of a table.
-* [`.alter-merge table *TableName* policy update`](./show-table-update-policy-command.md#alter-merge-table-tablename-policy-update) appends definitions to the current update policy of a table.
-* [`.delete table *TableName* policy update`](./show-table-update-policy-command.md#delete-table-tablename-policy-update) deletes the current update policy of a table.
+* [`.show table *TableName* policy update`](./show-table-update-policy-command.md) shows the current update policy of a table.
+* [`.alter table *TableName* policy update`](./alter-table-update-policy-command.md) defines the current update policy of a table.
+* [`.alter-merge table *TableName* policy update`](./alter-merge-table-update-policy-command.md) appends definitions to the current update policy of a table.
+* [`.delete table *TableName* policy update`](./delete-table-update-policy-command.md) deletes the current update policy of a table.
 
 ## Update policy is initiated following ingestion
 
@@ -114,7 +110,7 @@ let _extentId = toscalar(
     | top 1 by IngestionTime desc
     | project ExtentId
 );
-let MySourceTable = 
+let MyFunction = 
     MySourceTable
     | where ingestion_time() > ago(10m) and extent_id() == _extentId;
 MyFunction

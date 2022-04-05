@@ -581,6 +581,8 @@ items:
     href: isnullfunction.md
   - name: isutf8()
     href: isutf8.md
+  - name: jaccard_index()
+    href: jaccard-index-function.md
   - name: log()
     href: log-function.md
   - name: log10()
@@ -1112,6 +1114,10 @@ items:
       href: azure-digital-twins-query-request-plugin.md
     - name: cosmosdb_sql_request plugin
       href: cosmosdb-plugin.md
+    - name: http_request plugin
+      href: http-request-plugin.md
+    - name: http_request_post plugin
+      href: http-request-plugin.md
     - name: mysql_request plugin
       href: mysqlrequest-plugin.md
     - name: sql_request plugin

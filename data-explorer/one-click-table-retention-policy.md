@@ -1,10 +1,7 @@
 ---
 title: Use the one-click table retention policy wizard to change the retention policy for a table in Azure Data Explorer.
 description: In this article, you learn how to change a table's retention policy using the one-click experience.
-author: orspod
-ms.author: orspodek
 ms.reviewer: tzgitlin
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/02/2022
 ---

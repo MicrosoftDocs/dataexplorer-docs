@@ -1,10 +1,7 @@
 ---
 title: How to authenticate using managed identities with External Tables in Azure Data Explorer
 description: Learn how to use managed identities with External Tables in Azure Data Explorer cluster.
-author: orspod
-ms.author: orspodek
 ms.reviewer: itsagui
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 11/29/2020
 ---
@@ -33,10 +30,10 @@ In this article, we will use a user-assigned managed identity with the object ID
 
 Now that you've assigned a user-assigned managed identity to your cluster, define the [managed identity policy](kusto/management/alter-managed-identity-policy-command.md), to allow the specific managed identity use the `ExternalTable`. The policy can either be defined in the cluster level or at a specific database level.
 
-Enter the following policy alter command for the database level:
+Enter the following policy alter-merge command for the database level:
 
 ~~~kusto
-.alter database DatabaseName policy managed_identity ```
+.alter-merge database DatabaseName policy managed_identity ```
 [
   {
     "ObjectId": "802bada6-4d21-44b2-9d15-e66b29e4d63e",
@@ -48,6 +45,9 @@ Enter the following policy alter command for the database level:
 
 > [!NOTE]
 > To define the policy at the cluster level, replace `database db` with `cluster`.
+
+> [!NOTE]
+> To override the existing policy, use the `alter` command instead of the `alter-marge` command.
 
 ## Create an external table
 

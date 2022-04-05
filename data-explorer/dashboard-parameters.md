@@ -1,11 +1,7 @@
 ---
 title: Parameters in Azure Data Explorer dashboards
 description: Use parameters as a building block for dashboard filters.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabil
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 11/16/2021
 ---
@@ -80,7 +76,7 @@ Several dashboard parameter types are supported. The following examples describe
 
 ### Use the default Time range parameter
 
-Every dashboard has a *Time range* parameter by default. It shows up on the dashboard as a filter only when used in a query. Use the parameter keywords `_startTime` and `__endTime` to use the default time range parameter in a query as seen in the following example:
+Every dashboard has a *Time range* parameter by default. It shows up on the dashboard as a filter only when used in a query. Use the parameter keywords `_startTime` and `_endTime` to use the default time range parameter in a query as seen in the following example:
 
 ```kusto
 EventsAll
@@ -219,7 +215,7 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 #### Use a parameter in the query
 
-1. The following sample query with the new Event parameter uses the `_ event` variable:
+1. The following sample query with the new Event parameter uses the `_event` variable:
 
     ``` kusto
     EventsAll

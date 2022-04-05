@@ -1,10 +1,7 @@
 ---
 title: 'Ingest data with Azure Data Explorer .NET SDK'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using .NET SDK.
-author: orspod
-ms.author: orspodek
 ms.reviewer: vladikb
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 07/07/2020
 
