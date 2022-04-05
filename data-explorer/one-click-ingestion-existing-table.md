@@ -56,14 +56,14 @@ For different types or sources of data, see [Use one-click ingestion to ingest C
 
 The **Schema** tab opens.
 
-    * **Compression type** will be selected automatically by the source file name. In this case, the compression type is **JSON**
+ * **Compression type** will be selected automatically by the source file name. In this case, the compression type is **JSON**
 
-    * When you select  **JSON**, you must also select **Nested levels**, from 1 to 100. The levels determine the table column data division.
+ * When you select  **JSON**, you must also select **Nested levels**, from 1 to 100. The levels determine the table column data division.
 
-        :::image type="content" source="media/one-click-ingestion-existing-table/json-levels.png" alt-text="Select Nested levels.":::
+     :::image type="content" source="media/one-click-ingestion-existing-table/json-levels.png" alt-text="Select Nested levels.":::
 
-       > [!TIP]
-       > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
+    > [!TIP]
+    > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
 
 * For tabular formats, you can select **Keep current table schema**.
 Tabular data doesn't necessarily include the column names which are used to map source data to the existing columns. When this option is checked, mapping is done by-order, and the table schema will remain the same. If this option is unchecked, new columns will be created for incoming data, regardless of data structure.
