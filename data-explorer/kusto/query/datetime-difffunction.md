@@ -15,11 +15,12 @@ Calculates calendarian difference between two [datetime](./scalar-data-types/dat
 
 ## Arguments
 
-* `period`: `string`. 
+* `period`: `string`.
 * `datetime_1`: [datetime](./scalar-data-types/datetime.md) value.
 * `datetime_2`: [datetime](./scalar-data-types/datetime.md) value.
 
-Possible values of *period*: 
+Possible values of *period*:
+
 - Year
 - Quarter
 - Month
@@ -56,6 +57,3 @@ nanosecond = datetime_diff('nanosecond',datetime(2017-10-30 23:00:00.0000000),da
 |year|quarter|month|week|day|hour|minute|second|millisecond|microsecond|nanosecond|
 |---|---|---|---|---|---|---|---|---|---|---|
 |17|2|13|5|29|2|5|10|100|100|-700|
-
-
-
