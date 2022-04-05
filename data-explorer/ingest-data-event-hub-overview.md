@@ -20,7 +20,7 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
     > [!NOTE]
     > 
     > * Ingestion from Event Hub doesn't support RAW format.
-    > * [Azure Event Hub Schema Registry](azure/event-hubs/schema-registry-overview) and schema-less Avro are not supported.
+    > * [Azure Event Hub Schema Registry](/azure/event-hubs/schema-registry-overview) and schema-less Avro are not supported.
 
 * Data can be compressed using the `GZip` compression algorithm. You can specify `Compression` dynamically using [ingestion properties](#ingestion-properties), or in the static Data Connection settings.
     > [!NOTE]
