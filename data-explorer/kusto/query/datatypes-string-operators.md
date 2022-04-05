@@ -1,11 +1,7 @@
 ---
 title: String operators - Azure Data Explorer
 description: This article describes String operators in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/05/2021
 ---
@@ -83,7 +79,7 @@ Kusto builds a term index consisting of all terms that are *three characters or 
 |[`!startswith_cs`](not-startswith-cs-operator.md) |RHS isn't an initial subsequence of LHS |Yes |`"Fabrikam" !startswith_cs "fab"`|
 
 > [!TIP]
-> All operators containing `has` search on indexed *terms* of four or more characters, and not on substring matches. A term is created by breaking up the string into sequences of ASCII alphanumeric characters. See [understanding string terms](#understanding-string-terms).
+> All operators containing `has` search on indexed *terms* of three or more characters, and not on substring matches. A term is created by breaking up the string into sequences of ASCII alphanumeric characters. See [understanding string terms](#understanding-string-terms).
 
 ## Performance tips
 

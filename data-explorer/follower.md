@@ -1,10 +1,7 @@
 ---
 title: Use follower database feature to attach databases in Azure Data Explorer
 description: Learn about how to attach databases in Azure Data Explorer using the follower database feature.
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabilehner
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/28/2022
 ---

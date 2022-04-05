@@ -1,10 +1,7 @@
 ---
 title: Using Private Endpoint in your Azure Data Explorer cluster in your virtual network
 description: Using Private Endpoint in your Azure Data Explorer cluster in your virtual network
-author: orspod
-ms.author: orspodek
 ms.reviewer: elbirnbo
-ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/09/2020
 ---

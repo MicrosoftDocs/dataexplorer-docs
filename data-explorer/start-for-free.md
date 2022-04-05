@@ -1,10 +1,7 @@
 ---
 title: Start for free using Azure Data Explorer.
 description: This article shows you how to get started with a free Azure Data Explorer cluster.
-author: orspod
-ms.author: orspodek
 ms.reviewer: avnera
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/27/2022
 ---

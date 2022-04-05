@@ -1,11 +1,7 @@
 ---
-title: facet operator - Azure Data Explorer | Microsoft Docs
+title: facet operator - Azure Data Explorer
 description: This article describes facet operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
@@ -30,8 +26,36 @@ Multiple tables: one for the `with` clause, and one for each column.
 
 ## Example
 
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-MyTable 
-| facet by city, eventType 
-    with (where timestamp > ago(7d) | take 1000)
+StormEvents
+| where State startswith "A" and EventType has "Heavy"
+| facet by State, EventType
+  with 
+  (
+  where StartTime between(datetime(2007-01-04) .. 7d) 
+  | project StartTime, Source, EpisodeId, EventType
+  | take 5
+  )
 ```
+
+|StartTime|Source|EpisodeId|EventType|
+|---|---|---|---|
+|2007-01-04 12:00:00.0000000|COOP Observer|2192|Heavy Snow|
+|2007-01-04 15:00:00.0000000|Trained Spotter|2192|Heavy Snow|
+|2007-01-04 15:00:00.0000000|Trained Spotter|2192|Heavy Snow|
+|2007-01-04 15:00:00.0000000|Trained Spotter|2192|Heavy Snow|
+|2007-01-06 18:00:00.0000000|COOP Observer|2193|Heavy Snow|
+
+|State|count_State|
+|---|---|
+|ALABAMA|19|
+|ARIZONA|33|
+|ARKANSAS|1|
+|AMERICAN SAMOA|1|
+|ALASKA|58|
+
+|EventType|count_EventType|
+|---|---|
+|Heavy Rain|34|
+|Heavy Snow|78|

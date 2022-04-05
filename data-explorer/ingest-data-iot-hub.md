@@ -1,17 +1,14 @@
 ---
 title: 'Ingest data from IoT Hub into Azure Data Explorer'
 description: 'In this article, you learn how to ingest (load) data into Azure Data Explorer from IoT Hub.'
-author: orspod
-ms.author: orspodek
 ms.reviewer: tzgitlin
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/08/2020
+ms.date: 03/15/2022
 
 # Customer intent: As a database administrator, I want to ingest data into Azure Data Explorer from an IoT Hub, so I can analyze streaming data.
 ---
 
-# Ingest data from IoT Hub into Azure Data Explorer 
+# Ingest data from IoT Hub into Azure Data Explorer
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-iot-hub.md)
@@ -53,7 +50,7 @@ Now you create a table in Azure Data Explorer to which IoT Hubs will send data. 
     ```Kusto
     .create table TestTable (temperature: real, humidity: real)
     ```
-    
+
     ![Run create query.](media/ingest-data-iot-hub/run-create-query.png)
 
 1. Copy the following command into the window and select **Run** to map the incoming JSON data to the column names and data types of the table (TestTable).
@@ -69,7 +66,7 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
 1. Select **Notifications** on the toolbar to verify that the IoT Hub deployment was successful.
 
 1. Under the cluster you created, select **Databases** then select the database that you created **testdb**.
-    
+
     ![Select test database.](media/ingest-data-iot-hub/select-database.png)
 
 1. Select **Data ingestion** and **Add data connection**.
@@ -78,8 +75,8 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
 
 ### Create a data connection
 
-1. Fill out the form with the following information. 
-    
+1. Fill out the form with the following information.
+
     :::image type="content" source="media/ingest-data-iot-hub/data-connection-pane.png" alt-text="Data connection pane in IoT Hub - Azure Data Explorer.":::
 
     |**Setting** | **Field description**|
@@ -90,13 +87,26 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
     | Shared access policy | The name of the shared access policy. Must have read permissions |
     | Consumer group |  The consumer group defined in the IoT Hub built-in endpoint |
     | Event system properties | The [IoT Hub event system properties](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties.|
+
+#### Target database (multi-database data connection)
+
+Specifying a target database allows you to override the default associated with the data connection. For more information about database routing, see [Events routing](ingest-data-iot-hub-overview.md#events-routing).
+
+Before you can set an alternate target database, you must first *allow* routing the data to multiple databases. Use the following steps to *allow* routing the data to alternate databases:
+
+1. In the Azure portal, browse to your cluster.
+1. Select **Databases** > **Data connections**.
+1. Create or edit a data connection and in the **Data connection** pane, under **Data routing settings**, turn on the allow routing data to other database (multi-database data connection) option.
+
+    :::image type="content" source="media/ingest-data-iot-hub/data-connection-allow-multi-database.png" alt-text="Allow multi-database routing - IoT Hub - Azure Data Explorer.":::
+
 #### Target table
 
-There are two options for routing the ingested data: *static* and *dynamic*. 
+There are two options for routing the ingested data: *static* and *dynamic*.
 For this article, you use static routing, where you specify the table name, data format, and mapping. If the Event Hub message includes data routing information, this routing information will override the default settings.
 
 1. Fill out the following routing settings:
-    
+
     :::image type="content" source="media/ingest-data-iot-hub/default-routing-settings.png" alt-text="Default routing properties - IoT Hub - Azure Data Explorer.":::
 
      **Setting** | **Suggested value** | **Field description**
@@ -108,7 +118,7 @@ For this article, you use static routing, where you specify the table name, data
 
     > [!WARNING]
     > In case of a [manual failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover), you must recreate the data connection.
-    
+
     > [!NOTE]
     > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
     > * Only events enqueued after you create the data connection are ingested.
@@ -173,18 +183,18 @@ With the app generating data, you can now see the data flow from the IoT hub to 
     ```
 
     The result set:
-    
+
     ![Show ingested data results.](media/ingest-data-iot-hub/show-ingested-data.png)
 
     > [!NOTE]
-    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. See [batching policy](kusto/management/batchingpolicy.md) for aggregation options. 
-    > * Configure your table to support streaming and remove the lag in response time. See [streaming policy](kusto/management/streamingingestionpolicy.md). 
+    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. See [batching policy](kusto/management/batchingpolicy.md) for aggregation options.
+    > * Configure your table to support streaming and remove the lag in response time. See [streaming policy](kusto/management/streamingingestionpolicy.md).
 
 ## Clean up resources
 
 If you don't plan to use your IoT Hub again, clean up your resource group to avoid incurring costs.
 
-1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group you created.  
+1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group you created.
 
     If the left menu is collapsed, select ![Expand button.](media/ingest-data-event-hub/expand.png) to expand it.
 

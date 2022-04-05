@@ -1,10 +1,7 @@
 ---
 title: Query data in Azure Data Lake using Azure Data Explorer
 description: Learn how to query data in Azure Data Lake using Azure Data Explorer.
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin 
-ms.service: data-explorer
+ms.reviewer: orspodek 
 ms.topic: how-to
 ms.date: 06/17/2020
 ---

@@ -1,11 +1,7 @@
 ---
 title: array_rotate_left() - Azure Data Explorer
 description: This article describes array_rotate_left() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/11/2019
 ---
@@ -41,7 +37,7 @@ Dynamic array containing the same amount of the elements as in original array, w
     print arr=dynamic([1,2,3,4,5]) 
     | extend arr_rotated=array_rotate_left(arr, 2)
     ```
-    
+
     |arr|arr_rotated|
     |---|---|
     |[1,2,3,4,5]|[3,4,5,1,2]|
@@ -53,7 +49,7 @@ Dynamic array containing the same amount of the elements as in original array, w
     print arr=dynamic([1,2,3,4,5]) 
     | extend arr_rotated=array_rotate_left(arr, -2)
     ```
-    
+
     |arr|arr_rotated|
     |---|---|
     |[1,2,3,4,5]|[4,5,1,2,3]|

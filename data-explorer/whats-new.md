@@ -1,10 +1,7 @@
 ---
 title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 11/09/2021
 ---

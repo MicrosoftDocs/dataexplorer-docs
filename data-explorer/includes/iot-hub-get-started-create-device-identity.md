@@ -2,11 +2,11 @@
  title: include file
  description: include file
  services: iot-hub
- author: orspod
+ author: shsagir
  ms.service: iot-hub
  ms.topic: include
  ms.date: 09/07/2018
- ms.author: orspodek
+ ms.author: shsagir
  ms.custom: include file, devx-track-azurecli
 ---
 
