@@ -7,7 +7,7 @@ ms.date: 02/13/2020
 ---
 # datetime_diff()
 
-Calculates calendarian difference between two [datetime](./scalar-data-types/datetime.md) values.
+Calculates the number of the specified periods between two [datetime](./scalar-data-types/datetime.md) values.
 
 ## Syntax
 
