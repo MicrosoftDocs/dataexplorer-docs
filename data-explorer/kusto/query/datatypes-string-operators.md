@@ -7,7 +7,7 @@ ms.date: 09/05/2021
 ---
 # String operators
 
-Kusto offers a variety of query operators for searching string data types. The following article describes how string terms are indexed, lists the string query operators, and gives tips for optimizing performance.
+Kusto offers various query operators for searching string data types. The following article describes how string terms are indexed, lists the string query operators, and gives tips for optimizing performance.
 
 ## Understanding string terms
 

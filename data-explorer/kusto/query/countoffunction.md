@@ -7,7 +7,7 @@ ms.date: 02/13/2020
 ---
 # countof()
 
-Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches do not.
+Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.
 
 ```kusto
 countof("The cat sat on the mat", "at") == 3
@@ -26,7 +26,7 @@ countof("The cat sat on the mat", @"\b.at\b", "regex") == 3
 
 ## Returns
 
-The number of times that the search string can be matched in the container. Plain string matches may overlap; regex matches do not.
+The number of times that the search string can be matched in the container. Plain string matches may overlap; regex matches don't.
 
 ## Examples
 
