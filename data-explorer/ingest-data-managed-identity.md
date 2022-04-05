@@ -24,7 +24,7 @@ If your cluster already has the desired managed identity assigned to it, copy it
 1. Navigate to your cluster and select **Identity**.
 1. Select the appropriate identity type, system or user assigned, and then copy the object ID of the required identity.
 
-:::image type="content" source="media/ingest-data-managed-identity/system-managed-identity-details.jpeg" alt-text="Screenshot of the overview page, showing the system managed identity object ID":::
+:::image type="content" source="media/ingest-data-managed-identity/system-managed-identity-details.png" alt-text="Screenshot of the overview page, showing the system managed identity object ID":::
 
 ## Grant permissions to the managed identity
 
@@ -37,7 +37,7 @@ If your cluster already has the desired managed identity assigned to it, copy it
 >
 > Granting **Owner** or **Contributor** permissions is not sufficient and will result in the ingestion failing.
 
-:::image type="content" source="media/ingest-data-managed-identity/managed-identity-permissions-on-system-assigned.jpeg" alt-text="Screenshot of the add role assignment page, showing the system assigned role for ingestion using managed identities":::
+:::image type="content" source="media/ingest-data-managed-identity/managed-identity-permissions-on-system-assigned.png" alt-text="Screenshot of the add role assignment page, showing the system assigned role for ingestion using managed identities":::
 
 ## Set the managed identity policy in Azure Data Explorer
 
