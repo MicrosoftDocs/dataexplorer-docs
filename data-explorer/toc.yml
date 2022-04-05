@@ -295,10 +295,10 @@ items:
     - name: Encryption
       items:
       - name: Cluster encryption overview
-        href: cluster-disk-encryption.md
-      - name: Automatic storage level encryption
-        href: setting-cluster-storage-encryption.md
-      - name: Enabling double encryption
+        href: cluster-encryption-overview.md
+      - name: Enable storage level encryption
+        href: storage-encryption.md
+      - name: Enable double encryption
         href: double-encryption.md
     - name: Managed identities
       items:

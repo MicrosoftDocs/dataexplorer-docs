@@ -264,6 +264,11 @@
       "source_path": "data-explorer/managed-identities.md",
       "redirect_url": "/azure/data-explorer/configure-managed-identities-cluster",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/cluster-disk-encryption.md",
+      "redirect_url": "/azure/data-explorer/cluster-encryption-overview",
+      "redirect_document_id": true
     }
   ]
 }
