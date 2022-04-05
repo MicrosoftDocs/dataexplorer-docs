@@ -3,7 +3,7 @@ title: Secure Azure Data Explorer clusters in Azure
 description: Learn about how to secure clusters in Azure Data Explorer.
 ms.reviewer: itsagui
 ms.topic: conceptual
-ms.date: 04/04/2021
+ms.date: 04/05/2022
 ---
 
 # Security in Azure Data Explorer
@@ -21,7 +21,7 @@ For more information, see the following topics.
 * [Create an Azure Data Explorer cluster in your virtual network](vnet-create-cluster-portal.md)
 * [Deploy Azure Data Explorer cluster into your Virtual Network](vnet-deployment.md)
 * [Troubleshoot access, ingestion, and operation of your Azure Data Explorer cluster in your virtual network](vnet-deploy-troubleshoot.md)
-* [Create a Private Endpoints for Azure Data Explorer](security-network-private-endpoint-create.md)
+* [Create a private endpoint for Azure Data Explorer](security-network-private-endpoint-create.md)
 * [Create a private or service endpoint to Event Hub and Azure Storage](vnet-endpoint-storage-event-hub.md)
 
 ## Identity and access control

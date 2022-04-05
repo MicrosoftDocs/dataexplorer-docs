@@ -3,7 +3,7 @@ title: Restrict outbound access from your Azure Data Explorer cluster
 description: In this article, you'll learn how to restrict the outbound access from your Azure Data Explorer cluster to other services.
 ms.reviewer: eladb
 ms.topic: how-to
-ms.date: 03/30/2022
+ms.date: 04/05/2022
 ---
 
 # Restrict outbound access from your Azure Data Explorer cluster
@@ -35,7 +35,7 @@ Callout policies can be divided, as follows:
     .show cluster policy callout
     ```
 
-    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access.png" alt-text="Immutable callout policies.":::
+    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access.png" alt-text="Screenshot of the restricted query page, showing the immutable callout policies.":::
 
 The following shows an example of immutable callout policies. Notice that in the list there are a few default rules that allow making calls out to other services, such as external data.
 
@@ -117,7 +117,7 @@ To restrict outbound access to from your cluster, you must empty the list of imm
 
     Updating the `restrictOutboundNetworkAccess` cluster property removes all the immutable policies on your cluster. This prevents initiating call outs to other services as shown in the following example.
 
-    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access-enabled-errorDataplane.png" alt-text="Immutable callout policies error.":::
+    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access-enabled-error-data-plane.png" alt-text="Screenshot of the restricted query page, showing an immutable callout policies error.":::
 
 1. Run the following command again and verify that it returns an empty list:
 
@@ -126,7 +126,7 @@ To restrict outbound access to from your cluster, you must empty the list of imm
     | where EntityType == "Cluster immutable policy"
     ```
 
-    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access-enabled-noImmutableCalloutPolicies.png" alt-text="No immutable callout policies.":::
+    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access-enabled-no-immutable-callout-policies.png" alt-text="Screenshot of the restricted query page, showing no immutable callout policies.":::
 
 ## Add FQDNs to the callouts under restricted conditions
 
@@ -174,7 +174,7 @@ If you want to allow outbound access to a specific FQDN, you can add it to the `
     | where Policy.CalloutType == "sql" 
     ```
 
-    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access-enabled-allowedFQDNSet.png" alt-text="Callout policy configured.":::
+    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access-enabled-allowed-fqdn-set.png" alt-text="Screenshot of the restricted query page, showing a configured callout policy.":::
 
     > [!NOTE]
     > There is a set of default policies set for Azure Data Explorer to communicate with its internal storage layer. They expose no risk for data exfiltration.

@@ -1,11 +1,11 @@
 ---
-title: Use one-click ingestion to ingest data from event hub into Azure Data Explorer.
-description: In this article, you learn how to ingest (load) data into Azure Data Explorer from event hub using the one-click experience.
+title: Use one-click ingestion to ingest data from Azure Event Hubs into Azure Data Explorer.
+description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Azure Event Hubs using the one-click experience.
 ms.reviewer: tzgitlin
 ms.topic: how-to
 ms.date: 01/04/2022
 ---
-# Use one-click ingestion to create an event hub data connection for Azure Data Explorer
+# Use one-click ingestion to create an Azure Event Hubs data connection for Azure Data Explorer
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
@@ -34,7 +34,7 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 
     :::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-web-ui.png" alt-text="Select one-click ingestion in the web UI.":::
 
-1. In the **Ingest data from event hub** card, select **Ingest**.
+1. In the **Ingest data from Event Hub** card, select **Ingest**.
 
 The **Ingest new data** window opens with the **Destination** tab selected.
 
@@ -57,7 +57,7 @@ The **Ingest new data** window opens with the **Destination** tab selected.
 
 1. Under **Data Connection**, fill in the following fields:
 
-    :::image type="content" source="media/one-click-event-hub/project-details.png" alt-text="Screenshot of source tab with project details fields to be filled in - ingest new data to Azure Data Explorer with event hub in the one click experience.":::
+    :::image type="content" source="media/one-click-event-hub/project-details.png" alt-text="Screenshot of source tab with project details fields to be filled in - ingest new data to Azure Data Explorer with Event Hubs in the one click experience.":::
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -77,12 +77,12 @@ Data is read from the event hub in form of [EventData](/dotnet/api/microsoft.ser
 For information on schema mapping with JSON-formatted data, see [Edit the schema](one-click-ingestion-existing-table.md#edit-the-schema).
 For information on schema mapping with CSV-formatted data, see [Edit the schema](one-click-ingestion-new-table.md#edit-the-schema).
 
-:::image type="content" source="media/one-click-event-hub/event-hub-schema.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with event hub in the one click experience.":::
+:::image type="content" source="media/one-click-event-hub/event-hub-schema.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hubs in the one click experience.":::
 
 > [!NOTE]
 >
 > * If [streaming](kusto/management/streamingingestionpolicy.md) is enabled for the cluster, the option to select **Streaming ingestion** appears.
-> * If streaming is not enabled for the cluster, the option to select **Batching time** appears. For event hubs, the recommended default [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
+> * If streaming is not enabled for the cluster, the option to select **Batching time** appears. For Event Hubs, the recommended default [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
 
 1. If the data you see in the preview window is not complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
     * **Discard and fetch new data**: discards the data presented and searches for new events.
@@ -93,11 +93,11 @@ For information on schema mapping with CSV-formatted data, see [Edit the schema]
 
 1. Select **Next: Summary**.
 
-## Continuous ingestion from event hub
+## Continuous ingestion from Event Hubs
 
-In the **Continuous ingestion from Event Hub established** window, all steps will be marked with green check marks when establishment finishes successfully. The cards below these steps give you options to explore your data with **Quick queries**, undo changes made using **Tools**, or **Monitor** the event hub connections and data.
+In the **Continuous ingestion from Event Hub established** window, all steps will be marked with green check marks when establishment finishes successfully. The cards below these steps give you options to explore your data with **Quick queries**, undo changes made using **Tools**, or **Monitor** the Event Hubs connections and data.
 
-:::image type="content" source="media/one-click-event-hub/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from event hub with the one click experience.":::
+:::image type="content" source="media/one-click-event-hub/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hubs with the one click experience.":::
 
 ## Next steps
 

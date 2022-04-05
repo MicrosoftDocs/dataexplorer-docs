@@ -1,9 +1,9 @@
 ---
-title: Create a Managed Private Endpoints for Azure Data Explorer
+title: Create a managed private endpoint for Azure Data Explorer
 description: In this article, you'll learn how to create a managed private endpoint for Azure Data Explorer.
 ms.reviewer: eladb
 ms.topic: how-to
-ms.date: 03/30/2022
+ms.date: 04/05/2022
 ---
 
 # Create a managed private endpoint for Azure Data Explorer
@@ -23,11 +23,11 @@ You can create a managed private endpoint using the portal for your cluster to u
 
 1. Select **Managed private endpoints**, and then select **Add**.
 
-    :::image type="content" source="media/security-network-private-endpoint/mpe-create-1.png" alt-text="Start the creation of an Azure Private Endpoint - step 1.":::
+    :::image type="content" source="media/security-network-private-endpoint/mpe-create-1.png" alt-text="Screenshot of the networking page, showing the first step in the creation of a managed private endpoint.":::
 
 1. On the **New managed private endpoint** pane, fill out the resource details with the following information, and then select **Next**.
 
-    :::image type="content" source="media/security-network-private-endpoint/mpe-create-2.png" alt-text="Start the creation of an Azure Private Endpoint - step 2.":::
+    :::image type="content" source="media/security-network-private-endpoint/mpe-create-2.png" alt-text="Screenshot of the networking page, showing the second step in the creation of a managed private endpoint.":::
 
     | **Setting** | **Suggested value** | **Field description** |
     |---|---|---|
@@ -185,11 +185,11 @@ Whichever method you used to create the managed private endpoint using, you must
 
 1. Select **Private endpoint connections**, select the managed private endpoint you created, and then select **Approve**.
 
-    :::image type="content" source="media/security-network-private-endpoint/pe-create-mpe-approval.png" alt-text="Approve the Managed Private Endpoint to on the Event Hubs service.":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-create-mpe-approval.png" alt-text="Screenshot of the networking page, showing the approval of the managed private endpoint to the Event Hubs service.":::
 
 1. In the **Connection state** column, verify that the managed private endpoint is approved.
 
-    :::image type="content" source="media/security-network-private-endpoint/pe-create-mpe-approved.png" alt-text="Approved Managed Private Endpoint.":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-create-mpe-approved.png" alt-text="Screenshot of the networking page, showing the approved managed private endpoint to the Event Hubs service.":::
 
 Your cluster can now connect to the resource using the managed private endpoint connection.
 
