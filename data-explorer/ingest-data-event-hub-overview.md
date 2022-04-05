@@ -18,6 +18,7 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 * Data is read from the event hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects.
 * See [supported formats](ingestion-supported-formats.md).
     > [!NOTE]
+    > 
     > * Ingestion from Event Hub doesn't support RAW format.
     > * [Azure Event Hub Schema Registry](azure/event-hubs/schema-registry-overview) and schema-less Avro are not supported.
 
@@ -169,7 +170,7 @@ If you don't already have one, [Create an event hub](/azure/event-hubs/event-hub
 
 > [!Note]
 >
-> * The ability to dynamically add partitions after creating an event hub is only available with Event Hubs Premium and Dedicated tiers. Consider the long-term scale when setting partition count.
+> * The ability to dynamically add partitions after creating an Event Hub is only available with Event Hubs Premium and Dedicated tiers. Consider the long-term scale when setting partition count.
 > * Consumer group *must* be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
 
 ### Send events
