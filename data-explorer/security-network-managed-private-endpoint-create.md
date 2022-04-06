@@ -185,11 +185,11 @@ Whichever method you used to create the managed private endpoint using, you must
 
 1. Select **Private endpoint connections**, select the managed private endpoint you created, and then select **Approve**.
 
-    :::image type="content" source="media/security-network-private-endpoint/pe-create-mpe-approval.png" alt-text="Screenshot of the networking page, showing the approval of the managed private endpoint to the Event Hubs service.":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-create-mpe-approval-inline.png" alt-text="Screenshot of the networking page, showing the approval of the managed private endpoint to the Event Hubs service." lightbox="media/security-network-private-endpoint/pe-create-mpe-approval.png":::
 
 1. In the **Connection state** column, verify that the managed private endpoint is approved.
 
-    :::image type="content" source="media/security-network-private-endpoint/pe-create-mpe-approved.png" alt-text="Screenshot of the networking page, showing the approved managed private endpoint to the Event Hubs service.":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-create-mpe-approved-inline.png" alt-text="Screenshot of the networking page, showing the approved managed private endpoint to the Event Hubs service." lightbox="media/security-network-private-endpoint/pe-create-mpe-approved.png":::
 
 Your cluster can now connect to the resource using the managed private endpoint connection.
 

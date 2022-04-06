@@ -14,7 +14,7 @@ To restrict public access to your cluster, you must turn off access from public 
 
 1. Select **Public access**, and then under **Public network access**, select **Disabled**.
 
-    :::image type="content" source="media/security-network-restrict-access/restrict-public-access.png" alt-text="Screenshot of the networking page, showing the disable public access option.":::
+    :::image type="content" source="media/security-network-restrict-access/restrict-public-access-inline.png" alt-text="Screenshot of the networking page, showing the disable public access option." lightbox="media/security-network-restrict-access/restrict-public-access.png":::
 
 1. Optionally, you can define a list of IP addresses that can connect to the public endpoint your cluster.
 

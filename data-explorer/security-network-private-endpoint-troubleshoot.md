@@ -30,7 +30,7 @@ Make sure that the name resolution is working properly.
 
 Iterate over all FQDNs of the private endpoint DNS configuration and run the tests using *nslookup*, *Test-NetConnection*, or other similar tools to verify that each DNS matches its corresponding IP address.
 
-:::image type="content" source="media/security-network-private-endpoint/pe-dns-config.png" alt-text="Screenshot of the DNS configuration page, showing the DNS configuration of the private endpoint.":::
+:::image type="content" source="media/security-network-private-endpoint/pe-dns-config-inline.png" alt-text="Screenshot of the DNS configuration page, showing the DNS configuration of the private endpoint." lightbox="media/security-network-private-endpoint/pe-dns-config.png":::
 
 ### Check DNS resolution
 
