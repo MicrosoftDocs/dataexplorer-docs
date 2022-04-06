@@ -186,7 +186,7 @@ In some situations, you may not be able to integrate with the private DNS zone o
 
 1. in the Azure portal, navigate to your private endpoint, and **select DNS configuration**. On this page, you can get the required information for the IP address mapping to the DNS name.
 
-    :::image type="content" source="media/security-network-private-endpoint/pe-dns-config.png" alt-text="Screenshot of the DNS configuration page, showing the DNS configuration of the private endpoint.":::
+    :::image type="content" source="media/security-network-private-endpoint/pe-dns-config-inline.png" alt-text="Screenshot of the DNS configuration page, showing the DNS configuration of the private endpoint." lightbox="media/security-network-private-endpoint/pe-dns-config.png":::
 
     > [!WARNING]
     > This information allows you to propagate your custom DNS server with the necessary records. We highly recommend that you integrate with the private DNS Zones of the VNet and don't configure your own custom DNS server. The nature of private endpoints for Azure Data Explorer clusters is different than for other Azure PaaS services. In some situations, such as high ingestion loads,  in order to increase throughput it might be necessary for the service to scale out the number of storage accounts that are accessible via the private endpoint. If you choose to propagate your own custom DNS server, it is your responsibility to take care of updating the DNS records in such situations, and later removing records i the number of storage accounts is scaled back in.
