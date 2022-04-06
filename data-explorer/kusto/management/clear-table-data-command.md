@@ -14,6 +14,9 @@ Clears the data of an existing table, including streaming ingestion data.
 > [!NOTE]
 > * Requires [table admin permission](../management/access-control/role-based-authorization.md)
 
+> [!NOTE]
+> * In case of partial success or failure an exception with the details will be thrown.
+
 **Example** 
 
 ```kusto
