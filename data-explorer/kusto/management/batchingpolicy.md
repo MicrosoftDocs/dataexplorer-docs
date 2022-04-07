@@ -55,8 +55,6 @@ If the `SystemFlush` condition is set, a batch will be sealed when a system flus
 | Data size (MB)   | 1024       | 100        |
 | Time             | 5 minutes  | 10 seconds |
 
-If an `IngestionBatching` policy is not set, the default values apply.
-
 ## Batch data size
 
 The batching policy data size is set for uncompressed data. For Parquet, AVRO, and ORC files, an estimation is calculated based on file size. When ingesting compressed data, the uncompressed data size is evaluated as follows in descending order of accuracy:
