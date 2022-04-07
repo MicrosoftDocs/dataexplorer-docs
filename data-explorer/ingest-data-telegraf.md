@@ -22,16 +22,16 @@ Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Tel
 
 The plugin supports the following authentication methods:
 
-1. Azure Active Directory (Azure AD) application tokens using service principals with secrets or certificates.
+* Azure Active Directory (Azure AD) application tokens using service principals with secrets or certificates.
 
     * For information on how to create and register an app in Azure AD, see [Register an application](/azure/active-directory/develop/quickstart-register-app#register-an-application).
     * For information on service principals, see [Application and service principal objects in Azure AD](/azure/active-directory/develop/app-objects-and-service-principals).
 
-1. Azure AD user tokens
+* Azure AD user tokens
 
     * Allows the plugin to authenticate like a user. We only recomment using this method for development purposes.
 
-1. Azure Managed Service Identity (MSI) token
+* Azure Managed Service Identity (MSI) token
 
     * This is the preferred authentication method if you're running Telegraf in an Azure Virtual Machine (VM).
 
@@ -43,26 +43,26 @@ The plugin checks for specific configurations of environment variables to determ
 
 To configure authentication for the plugin, set the appropriate environment variables for your chosen authentication method:
 
-1. **Client credentials**: Azure AD application ID and secret.
+* **Client credentials (Azure AD application tokens)**: Azure AD application ID and secret.
 
     * `AZURE_TENANT_ID`: The Azure AD tenant ID used for authentication.
     * `AZURE_CLIENT_ID`: The client ID of an App Registration in the tenant.
     * `AZURE_CLIENT_SECRET`: The client secret that was generated for the App Registration.
 
-2. **Client certificate**: Azure AD application ID and an X.509 certificate.
+* **Client certificate (Azure AD application tokens)**: Azure AD application ID and an X.509 certificate.
 
     * `AZURE_TENANT_ID`: The Azure AD tenant ID used for authentication.
     * `AZURE_CERTIFICATE_PATH`: A path to certificate and private key pair in PEM or PFX format, which can authenticate the App Registration.
     * `AZURE_CERTIFICATE_PASSWORD`: The password that was set for the certificate.
 
-3. **Resource owner password**: Azure AD user and password. We don't recommend using this grant type. If you need an interactive sign in, use device login.
+* **Resource owner password (Azure AD user tokens)**: Azure AD user and password. We don't recommend using this grant type. If you need an interactive sign in, use device login.
 
     * `AZURE_TENANT_ID`: The Azure AD tenant ID used for authentication.
     * `AZURE_CLIENT_ID`: The client ID of an App Registration in the tenant.
     * `AZURE_USERNAME`: The username, also known as upn, of an Azure Active Directory user account.
     * `AZURE_PASSWORD`: The password of the Azure Active Directory user account. Note this doesn't support accounts with MFA enabled.
 
-4. **Azure Managed Service Identity**: Delegate credential management to the platform. This method requires that code is run in Azure, for example, VM. All configuration is handled by Azure. For more information, see [Azure Managed Service Identity][/azure/active-directory/msi-overview]. This method is only available when using [Azure Resource Manager][/azure/azure-resource-manager/resource-group-overview].
+* **Azure Managed Service Identity**: Delegate credential management to the platform. This method requires that code is run in Azure, for example, VM. All configuration is handled by Azure. For more information, see [Azure Managed Service Identity][/azure/active-directory/msi-overview]. This method is only available when using [Azure Resource Manager][/azure/azure-resource-manager/resource-group-overview].
 
 ## Configure Telegraf
 
@@ -133,7 +133,7 @@ Since the collected metrics object is a complex type, the *fields* and *tags* co
     > [!NOTE]
     > This approach could impact performance when using large volumes of data. In such cases, use the update policy approach.
 
-1. **Use [Update policy](kusto/management/updatepolicy.md)**: Transform dynamic data type columns using an update policy. We recommend this approach for querying large volumes of data.
+* **Use [Update policy](kusto/management/updatepolicy.md)**: Transform dynamic data type columns using an update policy. We recommend this approach for querying large volumes of data.
 
     ```kusto
     // Function to transform data
