@@ -1,367 +1,186 @@
 ---
-title: 'Ingest data from Kafka into Azure Data Explorer'
-description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Kafka.
-ms.reviewer: ankhanol
+title: 'Ingest data from Telegraf into Azure Data Explorer'
+description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Telegraf.
+ms.reviewer: miwalia
 ms.topic: how-to
 ms.date: 11/08/2021
  
-#Customer intent: As an integration developer, I want to build integration pipelines from Kafka into Azure Data Explorer, so I can make data available for near real time analytics.
+#Customer intent: As an integration developer, I want to build integration pipelines from Telegraf into Azure Data Explorer, so I can make data available for near real time analytics.
 ---
-# Ingest data from Apache Kafka into Azure Data Explorer
+# Ingest data from Telegraf into Azure Data Explorer
  
-Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Apache Kafka](http://kafka.apache.org/documentation/). Apache Kafka is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. [Kafka Connect](https://docs.confluent.io/3.0.1/connect/intro.html#kafka-connect) is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The Azure Data Explorer [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) serves as the connector from Kafka and doesn't require using code. Download the sink connector jar from this [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/releases) or [Confluent Connector Hub](https://www.confluent.io/hub/microsoftcorporation/kafka-sink-azure-kusto).
+Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/). Telegraf is an opensource, lightweight, minimal memory foot print agent for collecting, processing and writing telemetry data (including logs, metrics, and IoT data). Telegraf supports hundreds of input and output plugins. It is widely used and very well supported by the open source community. The Azure Data Explorer [output plugin](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) serves as the connector from Telegraf and supports ingestion of data from any of these [input plugins](https://github.com/influxdata/telegraf/tree/master/plugins/inputs) into Azure Data Explorer. Download the telegraf binary from [here](https://portal.influxdata.com/downloads/).
 
-This article shows how to ingest data with Kafka into Azure Data Explorer, using a self-contained Docker setup to simplify the Kafka cluster and Kafka connector cluster setup. 
+## Pre-requisites
 
-For more information, see the connector [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) and [version specifics](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md#13-major-version-specifics).
+- [Create Azure Data Explorer cluster and database](https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-portal)
+- VM or container to host Telegraf - it could be hosted locally where an app/service to be monitored is deployed or remotely on a dedicated monitoring compute/container.
 
-## Prerequisites
+## Authentiation
+### Supported Authentication Methods
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md) using default cache and retention policies.
-* Install [Azure CLI](/cli/azure/install-azure-cli).
-* Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install).
+This plugin provides several types of authentication. The plugin will check the existence of several specific environment variables, and consequently will choose the right method.
 
-## Create an Azure Active Directory service principal
+These methods are:
 
-The Azure Active Directory service principal can be created through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
+1. AAD Application Tokens (Service Principals with secrets or certificates).
 
-This service principal will be the identity leveraged by the connector to write to the Azure Data Explorer table. We'll later grant permissions for this service principal to access Azure Data Explorer.
+    For guidance on how to create and register an App in Azure Active Directory check [this article](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#register-an-application), and for more information on the Service Principals check [this article](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals).
 
-1. Log in to your Azure subscription via Azure CLI. Then authenticate in the browser.
+2. AAD User Tokens
 
-   ```azurecli-interactive
-   az login
-   ```
+    - Allows Telegraf to authenticate like a user. This method is mainly used for development purposes only.
+
+3. Managed Service Identity (MSI) token
+
+    - If you are running Telegraf from Azure VM, then this is the prefered authentication method.
+
+[principal]: https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-application-objects
+
+Whichever method, the designated principal needs to be assigned the `Database User` role in the Azure Data Explorer. This role will
+allow the plugin to create the required tables and ingest data into it.
+If `create_tables=false` then the designated principal needs `Database Ingestor` role at least.
+
+### Configurations of the chosen Authentication Method
+
+The plugin will authenticate using the first available of the
+following configurations, **it's important to understand that the assessment, and consequently choosing the authentication method, will happen in order as below**:
+
+1. **Client Credentials**: Azure AD Application ID and Secret.
+
+    Set the following environment variables:
+
+    - `AZURE_TENANT_ID`: Specifies the Tenant to which to authenticate.
+    - `AZURE_CLIENT_ID`: Specifies the app client ID to use.
+    - `AZURE_CLIENT_SECRET`: Specifies the app secret to use.
+
+2. **Client Certificate**: Azure AD Application ID and X.509 Certificate.
+
+    - `AZURE_TENANT_ID`: Specifies the Tenant to which to authenticate.
+    - `AZURE_CLIENT_ID`: Specifies the app client ID to use.
+    - `AZURE_CERTIFICATE_PATH`: Specifies the certificate Path to use.
+    - `AZURE_CERTIFICATE_PASSWORD`: Specifies the certificate password to use.
+
+3. **Resource Owner Password**: Azure AD User and Password. This grant type is
+   *not recommended*, use device login instead if you need interactive login.
+
+    - `AZURE_TENANT_ID`: Specifies the Tenant to which to authenticate.
+    - `AZURE_CLIENT_ID`: Specifies the app client ID to use.
+    - `AZURE_USERNAME`: Specifies the username to use.
+    - `AZURE_PASSWORD`: Specifies the password to use.
+
+4. **Azure Managed Service Identity**: Delegate credential management to the
+   platform. Requires that code is running in Azure, e.g. on a VM. All
+   configuration is handled by Azure. See [Azure Managed Service Identity][msi]
+   for more details. Only available when using the [Azure Resource Manager][arm].
+
+[msi]: https://docs.microsoft.com/en-us/azure/active-directory/msi-overview
+[arm]: https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview
 
 
-1. Choose the subscription you want use to run the lab. This step is needed when you have multiple subscriptions.
+## Telegraf Configurations
 
-   ```azurecli-interactive
-   az account set --subscription YOUR_SUBSCRIPTION_GUID
-   ```
+Telergraf is a completely configuration driven agent. To get started, you just need to install telegraf binary and configure needed input and output plugins in the telegraf.config file. The default location of telegraf.conf file is "C:\Program Files\Telegraf\telegraf.conf" on windows and "etc/telegraf/telegraf.conf" on linux system.
+To enable Azure Data Explorer output plugin, you need to uncomment following section in the automatically generated config file -
 
-1. Create the service principal. In this example, the service principal is called `kusto-kafka-spn`.
+```toml
+[[outputs.azure_data_explorer]]
+  ## The URI property of the Azure Data Explorer resource on Azure
+  ## ex: https://myadxresource.australiasoutheast.kusto.windows.net
+  # endpoint_url = ""
 
-   ```azurecli-interactive
-   az ad sp create-for-rbac -n "kusto-kafka-spn" --role Contributor --scopes /subscriptions/{SubID}
-   ```
+  ## The Azure Data Explorer database that the metrics will be ingested into.
+  ## The plugin will NOT generate this database automatically, it's expected that this database already exists before ingestion.
+  ## ex: "exampledatabase"
+  # database = ""
 
-1. You'll get a JSON response as shown below. Copy the `appId`, `password`, and `tenant`, as you'll need them in later steps.
+  ## Timeout for Azure Data Explorer operations, default value is 20 seconds
+  # timeout = "20s"
 
-    ```json
-    {
-      "appId": "fe7280c7-5705-4789-b17f-71a472340429",
-      "displayName": "kusto-kafka-spn",
-      "name": "http://kusto-kafka-spn",
-      "password": "29c719dd-f2b3-46de-b71c-4004fb6116ee",
-      "tenant": "42f988bf-86f1-42af-91ab-2d7cd011db42"
-    }
-    ```
+  ## Type of metrics grouping used when ingesting to Azure Data Explorer
+  ## Default value is "TablePerMetric" which means there will be one table for each metric
+  # metrics_grouping_type = "TablePerMetric"
 
-## Create a target table in Azure Data Explorer
+  ## Name of the single table to store all the metrics (Only needed if metrics_grouping_type is "SingleTable").
+  # table_name = ""
 
-1. Sign in to the [Azure portal](https://portal.azure.com)
-
-1. Go to your Azure Data Explorer cluster.
-
-1. Create a table called `Storms` using the following command:
-
-    ```kusto
-    .create table Storms (StartTime: datetime, EndTime: datetime, EventId: int, State: string, EventType: string, Source: string)
-    ```
-
-    :::image type="content" source="media/ingest-data-kafka/create-table.png" alt-text="Create a table in Azure Data Explorer portal .":::
-    
-1. Create the corresponding table mapping `Storms_CSV_Mapping` for ingested data using the following command:
-    
-    ```kusto
-    .create table Storms ingestion csv mapping 'Storms_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EventId","datatype":"int","Ordinal":2},{"Name":"State","datatype":"string","Ordinal":3},{"Name":"EventType","datatype":"string","Ordinal":4},{"Name":"Source","datatype":"string","Ordinal":5}]'
-    ```    
-
-1. Create a batch ingestion policy on the table for configurable ingestion latency.
-
-    > [!TIP]
-    > The [ingestion batching policy](kusto/management/batchingpolicy.md) is a performance optimizer and includes three parameters. The first condition satisfied triggers ingestion into the Azure Data Explorer table.
-
-    ```kusto
-    .alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
-    ```
-
-1. Use the service principal from [Create an Azure Active Directory service principal](#create-an-azure-active-directory-service-principal) to grant permission to work with the database.
-
-    ```kusto
-    .add database YOUR_DATABASE_NAME admins  ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'AAD App'
-    ```
-
-## Run the lab
-
-The following lab is designed to give you the experience of starting to create data, setting up the Kafka connector, and streaming this data to Azure Data Explorer with the connector. You can then look at the ingested data.
-
-### Clone the git repo
-
-Clone the lab's git [repo](https://github.com/Azure/azure-kusto-labs).
-
-1. Create a local directory on your machine.
-
-    ```
-    mkdir ~/kafka-kusto-hol
-    cd ~/kafka-kusto-hol
-    ```
-
-1. Clone the repo.
-
-    ```shell
-    cd ~/kafka-kusto-hol
-    git clone https://github.com/Azure/azure-kusto-labs
-    cd azure-kusto-labs/kafka-integration/dockerized-quickstart
-    ```
-
-#### Contents of the cloned repo
-
-Run the following command to list the contents of the cloned repo:
-
-```
-cd ~/kafka-kusto-hol/azure-kusto-labs/kafka-integration/dockerized-quickstart
-tree
+  ## Creates tables and relevant mapping if set to true(default).
+  ## Skips table and mapping creation if set to false, this is useful for running telegraf with the least possible access permissions i.e. table ingestor role.
+  # create_tables = true
 ```
 
-This result of this search is:
+## Querying data ingested in Azure Data Explorer
 
-```
-├── README.md
-├── adx-query.png
-├── adx-sink-config.json
-├── connector
-│   └── Dockerfile
-├── docker-compose.yaml
-└── storm-events-producer
-    ├── Dockerfile
-    ├── StormEvents.csv
-    ├── go.mod
-    ├── go.sum
-    ├── kafka
-    │   └── kafka.go
-    └── main.go
- ```
+This section has examples of data collected using SQL and syslog telegraf input plugins along with Azure Data Explorer output plugin, and details on data transformations and queries in Azure Data Explorer -
 
-### Review the files in the cloned repo
+### SQL input plugin
 
-The following sections explain the important parts of the files in the file tree above.
+Sample metrics data collected by SQL input plugin -
 
-#### adx-sink-config.json
+name | tags | timestamp | fields
+-----|------|-----------|-------
+sqlserver_database_io|{"database_name":"azure-sql-db2","file_type":"DATA","host":"adx-vm","logical_filename":"tempdev","measurement_db_type":"AzureSQLDB","physical_filename":"tempdb.mdf","replica_updateability":"READ_WRITE","sql_instance":"adx-sql-server"}|2021-09-09T13:51:20Z|{"current_size_mb":16,"database_id":2,"file_id":1,"read_bytes":2965504,"read_latency_ms":68,"reads":47,"rg_read_stall_ms":42,"rg_write_stall_ms":0,"space_used_mb":0,"write_bytes":1220608,"write_latency_ms":103,"writes":149}
+sqlserver_waitstats|{"database_name":"azure-sql-db2","host":"adx-vm","measurement_db_type":"AzureSQLDB","replica_updateability":"READ_WRITE","sql_instance":"adx-sql-server","wait_category":"Worker Thread","wait_type":"THREADPOOL"}|2021-09-09T13:51:20Z|{"max_wait_time_ms":15,"resource_wait_ms":4469,"signal_wait_time_ms":0,"wait_time_ms":4469,"waiting_tasks_count":1464}
 
-This file contains the Kusto sink properties file where you'll update specific configuration details:
- 
-```json
-{
-    "name": "storm",
-    "config": {
-        "connector.class": "com.microsoft.azure.kusto.kafka.connect.sink.KustoSinkConnector",
-        "flush.size.bytes": 10000,
-        "flush.interval.ms": 10000,
-        "tasks.max": 1,
-        "topics": "storm-events",
-        "kusto.tables.topics.mapping": "[{'topic': 'storm-events','db': '<enter database name>', 'table': 'Storms','format': 'csv', 'mapping':'Storms_CSV_Mapping'}]",
-        "aad.auth.authority": "<enter tenant ID>",
-        "aad.auth.appid": "<enter application ID>",
-        "aad.auth.appkey": "<enter client secret>",
-        "kusto.ingestion.url": "https://ingest-<name of cluster>.<region>.kusto.windows.net",
-        "kusto.query.url": "https://<name of cluster>.<region>.kusto.windows.net",
-        "key.converter": "org.apache.kafka.connect.storage.StringConverter",
-        "value.converter": "org.apache.kafka.connect.storage.StringConverter"
-    }
-}
-```
+Since collected metrics object is of complex type so "fields" and "tags" are stored as dynamic data type, multiple ways to query this data-
 
-Replace the values for the following attributes as per your Azure Data Explorer setup: `aad.auth.authority`, `aad.auth.appid`, `aad.auth.appkey`, `kusto.tables.topics.mapping` (the database name), `kusto.ingestion.url`, and `kusto.query.url`.
+1. Query JSON attributes directly: Azure Data Explorer provides an ability to query JSON data in raw format without parsing it, so JSON attributes can be queried directly in following way:
 
-#### Connector - Dockerfile
+  ```text
+  Tablename
+  | where name == "sqlserver_azure_db_resource_stats" and todouble(fields.avg_cpu_percent) > 7
+  ```
 
-This file has the commands to generate the docker image for the connector instance.  It includes the connector download from the git repo release directory.
+  ```text
+  Tablename
+  | distinct tostring(tags.database_name)
+  ```
 
-#### Storm-events-producer directory
+  **Note** - This approach could have performance impact in case of large volumes of data, use belwo mentioned approach for such cases.
 
-This directory has a Go program that reads a local "StormEvents.csv" file and publishes the data to a Kafka topic.
+1. Use [Update policy](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/updatepolicy)**: Transform dynamic data type columns using update policy. This is the recommended performant way for querying over large volumes of data compared to querying directly over JSON attributes:
 
-#### docker-compose.yaml
+  ```
+  // Function to transform data
+  .create-or-alter function Transform_TargetTableName() {
+        SourceTableName
+        | mv-apply fields on (extend key = tostring(bag_keys(fields)[0]))
+        | project fieldname=key, value=todouble(fields[key]), name, tags, timestamp
+  }
 
-```yaml
-version: "2"
-services:
-  zookeeper:
-    image: debezium/zookeeper:1.2
-    ports:
-      - 2181:2181
-  kafka:
-    image: debezium/kafka:1.2
-    ports:
-      - 9092:9092
-    links:
-      - zookeeper
-    depends_on:
-      - zookeeper
-    environment:
-      - ZOOKEEPER_CONNECT=zookeeper:2181
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
-  kusto-connect:
-    build:
-      context: ./connector
-      args:
-        KUSTO_KAFKA_SINK_VERSION: 1.0.1
-    ports:
-      - 8083:8083
-    links:
-      - kafka
-    depends_on:
-      - kafka
-    environment:
-      - BOOTSTRAP_SERVERS=kafka:9092
-      - GROUP_ID=adx
-      - CONFIG_STORAGE_TOPIC=my_connect_configs
-      - OFFSET_STORAGE_TOPIC=my_connect_offsets
-      - STATUS_STORAGE_TOPIC=my_connect_statuses
-  events-producer:
-    build:
-      context: ./storm-events-producer
-    links:
-      - kafka
-    depends_on:
-      - kafka
-    environment:
-      - KAFKA_BOOTSTRAP_SERVER=kafka:9092
-      - KAFKA_TOPIC=storm-events
-      - SOURCE_FILE=StormEvents.csv
-```
+  // Create destination table with above query's results schema (if it doesn't exist already)
+  .set-or-append TargetTableName <| Transform_TargetTableName() | limit 0
 
-### Start the containers
+  // Apply update policy on destination table
+  .alter table TargetTableName policy update
+  @'[{"IsEnabled": true, "Source": "SourceTableName", "Query": "Transform_TargetTableName()", "IsTransactional": true, "PropagateIngestionProperties": false}]'
+  ```
 
-1. In a terminal, start the containers:
-    
-    ```shell
-    docker-compose up
-    ```
+### Syslog input plugin
 
-    The producer application will start sending events to the `storm-events` topic. 
-    You should see logs similar to the following logs:
+Sample logs collected using Syslog input plugin -
 
-    ```shell
-    ....
-    events-producer_1  | sent message to partition 0 offset 0
-    events-producer_1  | event  2007-01-01 00:00:00.0000000,2007-01-01 00:00:00.0000000,13208,NORTH CAROLINA,Thunderstorm Wind,Public
-    events-producer_1  | 
-    events-producer_1  | sent message to partition 0 offset 1
-    events-producer_1  | event  2007-01-01 00:00:00.0000000,2007-01-01 05:00:00.0000000,23358,WISCONSIN,Winter Storm,COOP Observer
-    ....
-    ```
-    
-1. To check the logs, run the following command in a separate terminal:
+name | tags | timestamp | fields
+-----|------|-----------|-------
+syslog|{"appname":"azsecmond","facility":"user","host":"adx-linux-vm","hostname":"adx-linux-vm","severity":"info"}|2021-09-20T14:36:44Z|{"facility_code":1,"message":" 2021/09/20 14:36:44.890110 Failed to connect to mdsd: dial unix /var/run/mdsd/default_djson.socket: connect: no such file or directory","procid":"2184","severity_code":6,"timestamp":"1632148604890477000","version":1}
+syslog|{"appname":"CRON","facility":"authpriv","host":"adx-linux-vm","hostname":"adx-linux-vm","severity":"info"}|2021-09-20T14:37:01Z|{"facility_code":10,"message":" pam_unix(cron:session): session opened for user root by (uid=0)","procid":"26446","severity_code":6,"timestamp":"1632148621120781000","version":1}
 
-    ```shell
-    docker-compose logs -f | grep kusto-connect
-    ```
-    
-### Start the connector
+There are multiple ways to flatten dynamic columns using 'extend' or 'bag_unpack' operator. You can use either of these ways in above mentioned update policy function - 'Transform_TargetTableName()'
 
-Use a Kafka Connect REST call to start the connector.
+- Use [extend](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/extendoperator) operator - This is the recommended approach compared to 'bag_unpack' as it is faster and robust. Even if schema changes, it will not break queries or dashboards.
 
-1. In a separate terminal, launch the sink task with the following command:
+  ```text
+  Tablenmae
+  | extend facility_code=toint(fields.facility_code), message=tostring(fields.message), procid= tolong(fields.procid), severity_code=toint(fields.severity_code),
+  SysLogTimestamp=unixtime_nanoseconds_todatetime(tolong(fields.timestamp)), version= todouble(fields.version),
+  appname= tostring(tags.appname), facility= tostring(tags.facility),host= tostring(tags.host), hostname=tostring(tags.hostname), severity=tostring(tags.severity)
+  | project-away fields, tags
+  ```
 
-    ```shell
-    curl -X POST -H "Content-Type: application/json" --data @adx-sink-config.json http://localhost:8083/connectors
-    ```
-    
-1. To check the status, run the following command in a separate terminal:
-    
-    ```shell
-    curl http://localhost:8083/connectors/storm/status
-    ```
+- Use [bag_unpack plugin](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/bag-unpackplugin) to unpack the dynamic type columns automatically. This method could lead to issues if source schema changes as its dynamically expanding columns.
 
-The connector will start queueing ingestion processes to Azure Data Explorer.
-
-> [!NOTE]
-> If you have log connector issues, [create an issue](https://github.com/Azure/kafka-sink-azure-kusto/issues).
-
-## Query and review data
-
-### Confirm data ingestion
-
-1. Wait for data to arrive in the `Storms` table. To confirm the transfer of data, check the row count:
-    
-    ```kusto
-    Storms | count
-    ```
-
-1. Confirm that there are no failures in the ingestion process:
-
-    ```kusto
-    .show ingestion failures
-    ```
-    
-    Once you see data, try out a few queries. 
-
-### Query the data
-
-1. To see all the records, run the following [query](write-queries.md):
-    
-    ```kusto
-    Storms
-    ```
-
-1. Use `where` and `project` to filter specific data:
-    
-    ```kusto
-    Storms
-    | where EventType == 'Drought' and State == 'TEXAS'
-    | project StartTime, EndTime, Source, EventId
-    ```
-    
-1. Use the [`summarize`](./write-queries.md#summarize) operator:
-
-    ```kusto
-    Storms
-    | summarize event_count=count() by State
-    | where event_count > 10
-    | project State, event_count
-    | render columnchart
-    ```
-    
-    :::image type="content" source="media/ingest-data-kafka/kusto-query.png" alt-text="Kafka query column chart results in Azure Data Explorer.":::
-
-For more query examples and guidance, see [Write queries for Azure Data Explorer](write-queries.md) and [Kusto query language documentation](./kusto/query/index.md).
-
-## Reset
-
-To reset, do the following steps:
-
-1. Stop the containers (`docker-compose down -v`)
-1. Delete (`drop table Storms`)
-1. Re-create the `Storms` table
-1. Recreate table mapping
-1. Restart containers (`docker-compose up`)
-
-## Clean up resources
-
-To delete the Azure Data Explorer resources, use [az cluster delete](/cli/azure/kusto/cluster#az-kusto-cluster-delete) or [az Kusto database delete](/cli/azure/kusto/database#az-kusto-database-delete):
-
-```azurecli-interactive
-az kusto cluster delete -n <cluster name> -g <resource group name>
-az kusto database delete -n <database name> --cluster-name <cluster name> -g <resource group name>
-```
-
-## Tuning the Kafka Sink connector
-
-Tune the [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) connector to work with the [ingestion batching policy](kusto/management/batchingpolicy.md):
-
-* Tune the Kafka Sink `flush.size.bytes` size limit starting from 1 MB, increasing by increments of 10 MB or 100 MB. 
-* When using Kafka Sink, data is aggregated twice. On the connector side data is aggregated according to flush settings, and on the Azure Data Explorer service side according to the batching policy. If the batching time is too short and no data can be ingested by both connector and service, batching time must be increased. Set batching size at 1 GB and increase or decrease by 100 MB increments as needed. For example, if the flush size is 1 MB and the batching policy size is 100 MB,after a 100 MB batch is aggregated by the Kafka Sink connector, a 100 MB batch will be ingested by the Azure Data Explorer service. If the batching policy time is 20 seconds and the Kafka Sink connector flushes 50 MB in a 20 second period - then the service will ingest a 50 MB batch.
-* You can scale by adding instances and [Kafka partitions](https://kafka.apache.org/documentation/). Increase `tasks.max` to the number of partitions. Create a partition if you have enough data to produce a blob the size of the `flush.size.bytes` setting. If the blob is smaller, the batch is processed when it reaches the time limit, so the partition will not receive enough throughput. A large number of partitions means more processing overhead.
-
-## Next Steps
-
-* Learn more about [Big data architecture](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer).
-* Learn [how to ingest JSON formatted sample data into Azure Data Explorer](./ingest-json-formats.md?tabs=kusto-query-language).
-* For additional Kafka labs:
-   * [Hands on lab for ingestion from Confluent Cloud Kafka in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/confluent-cloud/README.md)
-   * [Hands on lab for ingestion from HDInsight Kafka in distributed mode](https://github.com/Azure/azure-kusto-labs/tree/master/kafka-integration/distributed-mode/hdinsight-kafka)
-   * [Hands on lab for ingestion from Confluent IaaS Kafka on AKS in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/distributed-mode/confluent-kafka/README.md)
+  ```text
+  Tablename
+  | evaluate bag_unpack(tags, columnsConflict='replace_source')
+  | evaluate bag_unpack(fields, columnsConflict='replace_source')
+  ```
