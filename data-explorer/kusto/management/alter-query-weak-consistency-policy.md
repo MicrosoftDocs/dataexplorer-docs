@@ -27,7 +27,7 @@ JSON serialization of the updated [query weak consistency policy object](./query
 
 ## Examples
 
-### Alter
+### alter
 `alter` command:
 <!-- csl -->
 ```
@@ -61,7 +61,7 @@ For demonstrating the `alter-merge`, we will assume the following policy is set 
 }
 ```
 
-### Alter-merge
+### alter-merge
 `alter-merge` command:
 <!-- csl -->
 ```
