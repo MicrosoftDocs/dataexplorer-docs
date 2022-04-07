@@ -3,7 +3,7 @@ title: 'Ingest data from Telegraf into Azure Data Explorer'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Telegraf.
 ms.reviewer: miwalia
 ms.topic: how-to
-ms.date: 11/08/2021
+ms.date: 04/07/2022
 
 #Customer intent: As an integration developer, I want to build integration pipelines from Telegraf into Azure Data Explorer, so I can make data available for near real-time analytics.
 ---
@@ -133,7 +133,7 @@ Since the collected metrics object is a complex type, the *fields* and *tags* co
     > [!NOTE]
     > This approach could impact performance when using large volumes of data. In such cases, use the update policy approach.
 
-* **Use [Update policy](kusto/management/updatepolicy.md)**: Transform dynamic data type columns using an update policy. We recommend this approach for querying large volumes of data.
+* **Use an [update policy](kusto/management/updatepolicy.md)**: Transform dynamic data type columns using an update policy. We recommend this approach for querying large volumes of data.
 
     ```kusto
     // Function to transform data
@@ -162,7 +162,7 @@ The following table shows sample metrics data collected by Syslog input plugin:
 
 There are multiple ways to flatten dynamic columns by using the [extend](kusto/query/extendoperator.md) operator or [bag_unpack()](kusto/query/bag-unpackplugin.md) plugin. You can use either of them in update policy *Transform_TargetTableName()* function.
 
-* **Use [extend](kusto/query/extendoperator.md) operator**: We recommend using this approach as it's faster and robust. Even if the schema changes, it will not break queries or dashboards.
+* **Use the extend operator**: We recommend using this approach as it's faster and robust. Even if the schema changes, it will not break queries or dashboards.
 
     ```kusto
     Tablenmae
@@ -172,7 +172,7 @@ There are multiple ways to flatten dynamic columns by using the [extend](kusto/q
     | project-away fields, tags
     ```
 
-* **Use [bag_unpack plugin](kusto/query/bag-unpackplugin.md) plugin**: This approach automatically unpacks dynamic type columns. Changing the source schema can cause issues when dynamically expanding columns.
+* **Use bag_unpack() plugin**: This approach automatically unpacks dynamic type columns. Changing the source schema can cause issues when dynamically expanding columns.
 
     ```kusto
     Tablename
