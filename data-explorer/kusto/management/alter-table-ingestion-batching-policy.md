@@ -13,7 +13,7 @@ If the policy is not set for a table, the database-level policy applies. If it i
 
 ## Defaults and limits
 
-See [default and limits](batchingpolicy.md#defaults-and-limits).
+See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 
 ## Syntax
 
