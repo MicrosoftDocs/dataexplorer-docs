@@ -12,7 +12,7 @@ Set the [ingestion batching policy](batchingpolicy.md) to determine when data ag
 When setting the policy for a database, it applies for all its tables, except tables that were set with their own IngestionBatching policy. If the policy is not set for a database, the [default values](batchingpolicy.md#defaults-and-limits) apply.
 
 ## Defaults and limits
-See [default and limits](batchingpolicy.md#defaults-and-limits).
+See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 
 ## Syntax
 
