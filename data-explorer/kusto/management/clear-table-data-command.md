@@ -12,10 +12,9 @@ Clears the data of an existing table, including streaming ingestion data.
 `.clear` `table` *TableName* `data` 
 
 > [!NOTE]
-> * Requires [table admin permission](../management/access-control/role-based-authorization.md)
-
-> [!NOTE]
-> * In case of partial success or failure an exception with the details will be thrown.
+>
+> * Requires [table admin permission](../management/access-control/role-based-authorization.md).
+> * In the event of a partial success or failure, an exception is thrown with detailed information about the error.
 
 **Example** 
 
