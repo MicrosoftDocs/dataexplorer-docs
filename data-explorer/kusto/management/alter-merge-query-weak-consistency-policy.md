@@ -7,4 +7,4 @@ ms.date: 11/29/2021
 ---
 # .alter-merge query weak consistency policy
 
-This page is outdated. Please refer to (alter query weak consistency policy)[alter-query-weak-consistency-policy.md]).
+This page is outdated. Please refer to [alter query weak consistency policy](alter-query-weak-consistency-policy.md]).
