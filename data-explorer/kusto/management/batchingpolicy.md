@@ -47,8 +47,15 @@ The following list shows conditions to seal batches related to single blob inges
 
 If the `SystemFlush` condition is set, a batch will be sealed when a system flush is triggered. With the `SystemFlush` parameter set, the system flushes the data, for example due to cluster scaling or internal reset of system components.
 
-## Defaults
-Default values are as follows: **5 minutes** maximum delay time, **500** items, total size of **1GB**. If an `IngestionBatching` policy is not set, the default values apply.
+## Defaults and limits
+
+| Type             | Default    | Minimum    |
+|------------------|------------|------------|
+| Number of items  | 500        | 1          |
+| Data size (MB)   | 1024       | 100        |
+| Time             | 5 minutes  | 10 seconds |
+
+If an `IngestionBatching` policy is not set, the default values apply.
 
 ## Batch data size
 
