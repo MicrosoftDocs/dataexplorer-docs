@@ -9,7 +9,9 @@ ms.date: 01/13/2022
 
 Set the table [ingestion batching policy](batchingpolicy.md) to determine when data aggregation stops and a batch is sealed and ingested. 
 
-If the policy is set to `null`, the [default](batchingpolicy.md#defaults-and-limits) values apply.
+## Defaults and limits
+
+See [default and limits](batchingpolicy.md#defaults-and-limits).
 
 ## Syntax
 
