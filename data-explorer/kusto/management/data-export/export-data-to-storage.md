@@ -99,9 +99,9 @@ Column name labels are added as the first row for each blob.
     h@"https://storage1.blob.core.windows.net/containerName2;secretKey"
   ) with (
     sizeLimit=100000,
-    namePrefix=export,
-    includeHeaders=all,
-    encoding =UTF8NoBOM
+    namePrefix="export",
+    includeHeaders="all",
+    encoding ="UTF8NoBOM"
   )
   <| myLogs | where id == "moshe" | limit 10000
 ```
