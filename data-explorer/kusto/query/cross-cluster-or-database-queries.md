@@ -14,7 +14,7 @@ zone_pivot_groups: kql-flavors
 Every Kusto query operates in the context of the current cluster, and the default database.
 
 * In [Kusto Explorer](../tools/kusto-explorer.md), the default database is the one selected in the [Connections panel](../tools/kusto-explorer.md#connections-panel), and the current cluster is the connection containing that database.
-* When using [client library](../api/netfx/about-kusto-data.md), the current cluster and the default database are specified by the `Data Source` and `Initial Catalog` properties of the [connection strings](../api/connection-strings/kusto.md), respectively.
+* When using the [client library](../api/netfx/about-kusto-data.md), the current cluster and the default database are specified by the `Data Source` and `Initial Catalog` properties of the [connection strings](../api/connection-strings/kusto.md), respectively.
 
 ## Queries
 
