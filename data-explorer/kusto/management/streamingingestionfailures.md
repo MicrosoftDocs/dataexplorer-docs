@@ -32,7 +32,7 @@ This command returns a result set that includes aggregated streaming ingestion f
 |----------|--------|---------|
 Database| String| Target database of the ingestion|
 Table | String| Target table of the ingestion|
-Principal | String| The principal that credentials were used for the ingestion|
+Principal | String| The principal whosе credentials were used for the ingestion|
 RootActivityId| Guid| The ingestion Root Activity ID|
 IngestionProperties| Dynamic| The ingestion properties|
 Count| Long| The total count of failures in the bucket|

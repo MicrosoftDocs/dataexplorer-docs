@@ -43,8 +43,8 @@ MinRowCount| Long| The minimum ingestion row count per ingestion operation in th
 MaxRowCount| Long| The maximum ingestion row count per ingestion operation in the bucket|
 IngestionStatus| String| The ingestion status|
 NumOfRowStoresReferences| Int| The number of RowStore references on the table|
-Principal| String| The principal that credentials were used for the ingestion|
-NodeId| String| The machine who performed the ingestion|
+Principal| String| The principal whosе credentials were used for the ingestion|
+NodeId| String| The machine that performed the ingestion|
 IngestionProperties| Dynamic| The ingestion properties|
 
 **Example**
