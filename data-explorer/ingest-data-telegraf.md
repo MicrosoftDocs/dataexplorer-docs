@@ -22,7 +22,7 @@ Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Tel
 
 The plugin supports the following authentication methods:
 
-* Azure Active Directory (Azure AD) application tokens using service principals with secrets or certificates.
+* Azure Active Directory (Azure AD) applications with app keys or certificates.
 
     * For information on how to create and register an app in Azure AD, see [Register an application](/azure/active-directory/develop/quickstart-register-app#register-an-application).
     * For information on service principals, see [Application and service principal objects in Azure AD](/azure/active-directory/develop/app-objects-and-service-principals).
