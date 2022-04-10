@@ -9,11 +9,10 @@ ms.date: 04/07/2022
 
 ## .show streamingingestion statistics
 
-This command returns a result set that includes aggregated streaming ingestion statistics that occur when the
-[data is ingested using one of the streaming ingestion types](../../ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type).
+This command returns a result set that includes aggregated statistics for the [streaming ingestion](../../ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type) to the cluster.
 
 > [!NOTE]
->The streaming ingestion statistics are grouped into short periods of time and aggregated by Database, Table, Principal, IngestionStatus and IngestionProperties.
+>The streaming ingestion statistics are grouped into buckets of short periods of time and aggregated by Database, Table, Principal, IngestionStatus and IngestionProperties.
 >
 > The retention period for streaming ingestion statistics is 14 days.
 
@@ -30,8 +29,8 @@ This command returns a result set that includes aggregated streaming ingestion s
 |----------|--------|---------|
 Database| String| Target database of the ingestion|
 Table | String| Target table of the ingestion|
-StartTime | DateTime| Date/time (in UTC) of the first statistics in the aggregation bucket|
-EndTime | DateTime| Date/time (in UTC) of the last statistics in the aggregation bucket|
+StartTime | DateTime| Date/time (in UTC) of the first ingestion in the bucket|
+EndTime | DateTime| Date/time (in UTC) of the last ingestion in the bucket|
 Count| Long| The total count of the ingestions in the bucket|
 MinDuration| TimeSpan| The minimum ingestion duration in the bucket|
 MaxDuration| TimeSpan| The maximum ingestion duration in the bucket|
@@ -39,12 +38,12 @@ AvgDuration| TimeSpan| The average ingestion duration in the bucket|
 TotalDataSize| Long| The total size of the data ingested in the bucket|
 MinDataSize| Long| The minimum size of the data ingested in the bucket|
 MaxDataSize| Long| The maximum size of the data ingested in the bucket|
-TotalRowCount| Long| The total ingestion row count in the bucket|
-MinRowCount| Long| The minimum ingestion row count in the bucket|
-MaxRowCount| Long| The maximum ingestion row count in the bucket|
+TotalRowCount| Long| The total ingestion row count per ingestion operation in the bucket|
+MinRowCount| Long| The minimum ingestion row count per ingestion operation in the bucket|
+MaxRowCount| Long| The maximum ingestion row count per ingestion operation in the bucket|
 IngestionStatus| String| The ingestion status|
 NumOfRowStoresReferences| Int| The number of RowStore references on the table|
-Principal| String| The principal whosе credentials were used for the ingestion|
+Principal| String| The principal that credentials were used for the ingestion|
 NodeId| String| The machine who performed the ingestion|
 IngestionProperties| Dynamic| The ingestion properties|
 

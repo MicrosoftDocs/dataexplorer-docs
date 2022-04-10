@@ -13,7 +13,7 @@ This command returns a result set that includes aggregated streaming ingestion f
 [data is ingested using one of the streaming ingestion types](../../ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type).
 
 > [!NOTE]
->Streaming ingestion failures are grouped into short periods of time and aggregated by database, table, principal, ingestion properties, failure kind, and error code.
+>Streaming ingestion failures are grouped into buckets of short periods of time and aggregated by database, table, principal, ingestion properties, failure kind, and error code.
 >
 > Gateway throttling failures will not appear in the result set of this command.
 >
@@ -30,16 +30,16 @@ This command returns a result set that includes aggregated streaming ingestion f
 
 |Output parameter   |Type    |Description     |
 |----------|--------|---------|
-Database| String| Target database of the ingestion failure|
-Table | String| Target table of the ingestion failure|
-Principal | String| The principal whosе credentials were used for the ingestion|
+Database| String| Target database of the ingestion|
+Table | String| Target table of the ingestion|
+Principal | String| The principal that credentials were used for the ingestion|
 RootActivityId| Guid| The ingestion Root Activity ID|
 IngestionProperties| Dynamic| The ingestion properties|
 Count| Long| The total count of failures in the bucket|
-FirstFailureOn | DateTime| Date/time (in UTC) of the first failure in the aggregation bucket|
-LastFailureOn | DateTime| Date/time (in UTC) of the last failure in the aggregation bucket|
+FirstFailureOn | DateTime| Date/time (in UTC) of the first ingestion in the bucket|
+LastFailureOn | DateTime| Date/time (in UTC) of the last ingestion in the bucket|
 FailureKind| String| Type of the failure (Permanent/Transient)|
-ErrorCode| String| The error code of the failure|g
+ErrorCode| String| The error code of the failure|
 Details| String| The details about the failure|
 
 **Example**
