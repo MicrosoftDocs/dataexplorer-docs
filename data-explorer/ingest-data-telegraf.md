@@ -29,7 +29,7 @@ The plugin supports the following authentication methods:
 
 * Azure AD user tokens
 
-    * Allows the plugin to authenticate like a user. We only recomment using this method for development purposes.
+    * Allows the plugin to authenticate like a user. We only recommend using this method for development purposes.
 
 * Azure Managed Service Identity (MSI) token
 
