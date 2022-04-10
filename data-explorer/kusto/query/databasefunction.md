@@ -21,7 +21,7 @@ cluster('help').database('Sample').StormEvents
 > [!NOTE]
 
 > * For more information, see [cross-database and cross-cluster queries](cross-cluster-or-database-queries.md).
-> * For accessing remote cluster and remote database, see [cluster()](clusterfunction.md) scope function.
+> * For accessing remote cluster and remote database, see [`cluster()`](clusterfunction.md) scope function.
 
 ## Syntax
 
@@ -29,11 +29,11 @@ cluster('help').database('Sample').StormEvents
 
 ## Arguments
 
-* *stringConstant*: Name of the database that is referenced. Database identified can be either `DatabaseName` or `PrettyName`. Argument has to be *constant* prior of query execution, i.e. cannot come from sub-query evaluation.
+* *stringConstant*: Name of the database that is referenced. Database identified can be either `DatabaseName` or `PrettyName`. The argument must be a *constant* value and can't come from a subquery evaluation.
 
 ## Examples
 
-### Use database() to access table of other database
+### Use `database()` to access table of other database
 
 ```kusto
 database('Samples').StormEvents | count
@@ -60,7 +60,7 @@ foo('help')
 |---|
 |59066|
 
-### Use database() inside functions
+### Use database() inside stored functions
 
 The same query as above can be rewritten to be used in a function that
 receives a parameter `dbName` - which is passed into the database() function.
