@@ -34,13 +34,7 @@ If you don't already have one, [Create an Azure Stream Analytics Job](/azure/str
 > [!NOTE]
 > Azure Data Explorer output connection only supports “Managed Identity” (incorrect link, added for reference…need to update a new one) for authentication. As part of output creation, database monitor and database ingestor permission will be granted to Azure Stream Analytics job MSI.
 
-# Create Azure Data Explorer output connection using Azure portal
-
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, blobs written to blob containers and Azure Stream Analytics job.
-
-This article shows you how to create Azure Data Explorer output connection to Azure Stream Analytics job, a real time analytics and event processing engine service.
-
-For general information about creating Azure Data Explorer output connection to Azure Stream Analytics job, see Connect to Azure Stream Analytics job <main link>.
+There are various methods to create Azure Data Explorer output connection to Azure Stream Analytics job. See the following links for walkthroughs of each method.
 
 ## Prerequisites
 
@@ -48,7 +42,15 @@ For general information about creating Azure Data Explorer output connection to 
 * Create [a cluster and database](create-cluster-database-portal.md) and table
 * Create an [Azure Stream Analytics job](/azure/stream-analytics/stream-analytics-quick-create-portal)
 
-## Create Azure Data Explorer output connection to Azure Stream Analytics job
+# [Create Azure Data Explorer output connection using Azure portal](#tab/portal)
+
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, blobs written to blob containers and Azure Stream Analytics job.
+
+This article shows you how to create Azure Data Explorer output connection to Azure Stream Analytics job, a real time analytics and event processing engine service.
+
+For general information about creating Azure Data Explorer output connection to Azure Stream Analytics job, see Connect to Azure Stream Analytics job <main link>.
+
+### Create Azure Data Explorer output connection to Azure Stream Analytics job
 
 Now you create Azure Data Explorer output connection to the Azure Stream Analytics job. When this connection is complete, and job is running, data that flows into the Azure Stream Analytics job will be ingested into the target table you created.
 
@@ -71,39 +73,11 @@ The following table lists the property names and their description for creating 
 | Authentication | A managed identity from Azure Active Directory allows your cluster to easily access other Azure AD-protected resources such as Azure Key Vault. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets. Managed identity configuration is currently supported only to enable customer-managed keys for your cluster. |
 | Table | The table name where the output is written. The schema of this table should exactly match the number of fields and their types that your job output generates. |
 
-## Sample data
-
-You can download the phone call event generator app [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) from the Microsoft Download Center or get the source code from [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator). With the app generating data, you can now see the data flow from the Azure Stream Analytics to the table in your Azure Data Explorer database.
-
-> [!NOTE]
-> Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. See [batching policy](kusto/management/batchingpolicy.md) for aggregation options.
-
-## Clean up resources
-
-If you don't plan to use your Azure Stream Analytics job and Azure Data Explorer cluster again, clean up your resource group to avoid incurring costs.
-
-1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group you created.
-    If the left menu is collapsed, select :::image type="icon" source="media/stream-analytics-connector/rt arrow icon.png" border="false"::: to expand it.
-
-    :::image type="content" source="media/stream-analytics-connector/stream-analystics-resource-group-menu.png" alt-text="Screenshot of Resource group menu with Resource groups tag,  arrow, and Name dialog box highlighted.":::
-
-1. Under **test-resource-group**, select **Delete resource group**.
-1. In the new window, type the name of the resource group to delete it, and then select **Delete**.
-
-## Next steps
-
-* [Query data in Azure Data Explorer](web-query-data.md)
-
-# Create Azure Data Explorer output connection using Azure Resource Manager template
+# [Create Azure Data Explorer output connection using Azure Resource Manager template](#tab/armtemplate)
 
 In this article, you create an Azure Data Explorer output connection using Azure Resource Manager template.
 
-## Prerequisites
-
-    * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-    * Create a [cluster and database](create-cluster-database-portal.md) and table.
-
-## Azure Resource Manager template for adding Azure Data Explorer output data connection
+### Azure Resource Manager template for adding Azure Data Explorer output data connection
 
 The following example shows an Azure Resource Manager template for adding an Azure Data Explorer output data connection. You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) by using the form.
 
@@ -223,9 +197,26 @@ The following example shows an Azure Resource Manager template for adding an Azu
 > [!NOTE]
 > When creating an Azure Data Explorer output connecting using ARM template, Azure Streaming Analytics job “Managed Identity” permission to Azure Data Explorer database needs to be granted manually.
 
+---
+
+## Sample data
+
+You can download the phone call event generator app [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) from the Microsoft Download Center or get the source code from [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator). With the app generating data, you can now see the data flow from the Azure Stream Analytics to the table in your Azure Data Explorer database.
+
+> [!NOTE]
+> Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. See [batching policy](kusto/management/batchingpolicy.md) for aggregation options.
+
 ## Clean up resources
 
-When the Azure resources are no longer needed, clean up the resources you deployed by deleting the resource group.
+If you don't plan to use your Azure Stream Analytics job and Azure Data Explorer cluster again, clean up your resource group to avoid incurring costs. When the Azure resources are no longer needed, clean up the resources you deployed by deleting the resource group.
+
+1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group you created.
+    If the left menu is collapsed, select :::image type="icon" source="media/stream-analytics-connector/rt arrow icon.png" border="false"::: to expand it.
+
+    :::image type="content" source="media/stream-analytics-connector/stream-analystics-resource-group-menu.png" alt-text="Screenshot of Resource group menu with Resource groups tag,  arrow, and Name dialog box highlighted.":::
+
+1. Under **test-resource-group**, select **Delete resource group**.
+1. In the new window, type the name of the resource group to delete it, and then select **Delete**.
 
 ### Clean up resources using the Azure portal
 
@@ -235,7 +226,7 @@ Delete the resources in the Azure portal by following the steps in [clean up res
 
 If the Cloud Shell is still open, you don't need to copy/run the first line (Read-Host).
 
-### Azure PowerShellCopy
+Azure PowerShellCopy
 
 Try It
 
@@ -249,5 +240,9 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 Write-Host "Press [ENTER] to continue ..."
 
 ```
+
+## Next steps
+
+* [Query data in Azure Data Explorer](web-query-data.md)
 
 ## Feedback
