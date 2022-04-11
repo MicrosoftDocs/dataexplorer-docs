@@ -33,7 +33,7 @@ cluster('help').database('Sample').StormEvents
 
 ## Examples
 
-### Use `database()` to access table of other database
+### Use database() to access table of other database
 
 ```kusto
 database('Samples').StormEvents | count
