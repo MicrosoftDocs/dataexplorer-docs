@@ -284,6 +284,11 @@
       "source_path": "data-explorer/kusto/concepts/crossclusterandschemachanges.md",
       "redirect_url": "/azure/data-explorer/kusto/concepts/cross-cluster-and-schema-changes",
       "redirect_document_id": true
-    }
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-query-weak-consistency-policy.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/alter-query-weak-consistency-policy",
+      "redirect_document_id": true
+    },
   ]
 }
