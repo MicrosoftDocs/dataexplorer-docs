@@ -558,6 +558,8 @@ items:
     href: commands-and-queries.md
   - name: Operations
     href: operations.md
+  - name: Streaming ingestion statistics
+    href: streamingingestionstatistics.md
 - name: Access control
   href: access-control/index.md
   items:
@@ -609,3 +611,5 @@ items:
     href: ../../error-codes.md
   - name: Ingestion failures
     href: ingestionfailures.md
+  - name: Streaming ingestion failures
+    href: streamingingestionfailures.md
