@@ -334,10 +334,10 @@ items:
       items:
       - name: Cluster encryption overview
         href: cluster-encryption-overview.md
-      - name: Enable storage level encryption
-        href: storage-encryption.md
       - name: Enable double encryption
-        href: double-encryption.md
+        href: cluster-encryption-double.md
+      - name: Enable disk encryption
+        href: cluster-encryption-disk.md
     - name: Managed identities
       items:
       - name: Managed identities overview
