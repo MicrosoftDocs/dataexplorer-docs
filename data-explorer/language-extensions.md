@@ -56,5 +56,5 @@ Do the following steps to disable language extensions on your cluster:
 
 ## Limitations
 
-* The language extensions feature supports [Disk encryption](cluster-disk-encryption.md) only for VM sizes that support both sandboxes and encryption features. For more detailed limitations, see [sandboxes](kusto/concepts/sandboxes.md).
+* The language extensions feature supports [Disk encryption](cluster-encryption-disk.md) only for VM sizes that support both sandboxes and encryption features. For more detailed limitations, see [sandboxes](kusto/concepts/sandboxes.md).
 * The language extensions runtime sandbox allocates disk space even if no query runs in the scope of the relevant language. For more detailed limitations, see [sandboxes](kusto/concepts/sandboxes.md).
