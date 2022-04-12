@@ -395,6 +395,6 @@ Run the following to remove the user-assigned identity:
 ## Next steps
 
 * [Secure Azure Data Explorer clusters in Azure](security.md)
-* [Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal](cluster-disk-encryption.md) by enabling encryption at rest.
+* [Secure your cluster using Disk Encryption](cluster-encryption-disk.md) by enabling encryption at rest.
 * [Configure customer-managed-keys using C#](customer-managed-keys-csharp.md)
 * [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md)
