@@ -23,7 +23,7 @@ When double encryption is enabled, data in the storage account is encrypted twic
 1. In the **Security** tab > **Enable Double Encryption**, select **On**. To remove the double encryption, select **Off**.
 1. Select **Next:Network>** or **Review + create** to create the cluster.
 
-    :::image type="content" source="media/double-encryption/double-encryption-portal.png" alt-text="double encryption new cluster.":::
+    :::image type="content" source="media/double-encryption/double-encryption-portal.png" alt-text="Screenshot of security tab, showing double encryption being enabled on a new cluster.":::
 
 ## [C#](#tab/c-sharp)
 

@@ -17,7 +17,7 @@ Your cluster security settings allow you to enable disk encryption on your clust
 
 1. In the Azure portal, go to your Azure Data Explorer cluster resource. Under the **Settings** heading, select **Security**.
 
-    ![Turn on encryption at rest.](media/manage-cluster-security/security-encryption-at-rest.png)
+    :::image type="content" source="media/manage-cluster-security/security-encryption-at-rest.png" alt-text="Screenshot of security page, showing disk encryption at rest being turned on.":::
 
 1. In the **Security** window, select **On** for the **Disk encryption** security setting.
 
