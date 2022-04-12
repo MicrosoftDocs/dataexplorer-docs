@@ -23,7 +23,7 @@ If you require a higher level of assurance that your data is secure, use the fol
 
 ## Secure your virtual machine storage with encryption
 
-When you create a cluster, its virtual machine cache storage isn't secured by default. You can enable disk Encryption to encrypt hot cache stored on the data volumes and the operating system disk of the virtual machines belonging to your cluster. The data is encrypted at rest using Microsoft managed keys.
+When you create a cluster, its virtual machine cache storage isn't encrypted by default. You can enable disk Encryption to encrypt hot cache stored on the data volumes and the operating system disk of the virtual machines belonging to your cluster. The data is encrypted at rest using Microsoft-managed keys.
 
 Use the steps in [Enable disk encryption](cluster-encryption-disk.md) to secure your data stored in your cluster's virtual machines.
 
