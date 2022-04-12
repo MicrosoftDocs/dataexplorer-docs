@@ -13,7 +13,7 @@ Your cluster security settings allow you to enable disk encryption on your clust
 > [!NOTE]
 >
 > * Enabling disk encryption can take up to 20 minutes during which the cluster will be unavailable.
-> Legacy virtual machine (VM) Sizes such as the Dv2 family are not supported. For more information, see [Finding supported VM sizes](/azure/virtual-machines/windows/disks-enable-host-based-encryption-powershell).
+> Legacy virtual machine (VM) sizes such as the Dv2 family are not supported. For more information, see [Finding supported VM sizes](/azure/virtual-machines/windows/disks-enable-host-based-encryption-powershell).
 
 1. In the Azure portal, go to your Azure Data Explorer cluster resource. Under the **Settings** heading, select **Security**.
 
