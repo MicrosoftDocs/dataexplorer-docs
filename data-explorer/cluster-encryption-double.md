@@ -106,12 +106,12 @@ Add the 'EnableDoubleEncryption' type to tell Azure to enable infrastructure enc
 
 ---
 
-## Limitations
+## Considerations
 
-The following limitations apply to encryption of [selected volumes](kusto/concepts/sandboxes.md#virtual-machine-sizes):
+The following considerations apply to the encryption of [selected volumes](kusto/concepts/sandboxes.md#virtual-machine-sizes):
 
 * Performance impact of up to a single digit
-* Cannot be used with sandboxes
+* Can't be used with sandboxes
 
 ## Next steps
 
