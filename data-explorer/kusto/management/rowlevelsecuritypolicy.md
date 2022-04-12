@@ -66,7 +66,7 @@ let UserToCountryMapping = datatable(User:string, Country:string)
   "anna@domain.com", "France"
 ];
 Sales
-| where Country in (UserToCountryMapping | where User == current_principal_details()["UserPrincipalName"] | project Country)
+| where Country in ((UserToCountryMapping | where User == current_principal_details()["UserPrincipalName"] | project Country))
 ```
 
 If you have a group that contains the managers, you might want to give them access to all rows. Query the Row Level Security policy.
