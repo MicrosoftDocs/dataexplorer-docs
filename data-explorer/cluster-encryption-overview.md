@@ -1,6 +1,6 @@
 ---
-title: Secure your cluster with encryption in Azure Data Explorer - Azure portal
-description: This article describes how to secure your cluster with encryption in Azure Data Explorer within the Azure portal.
+title: Secure your cluster with encryption in Azure Data Explorer
+description: This article describes how to secure your cluster with encryption in Azure Data Explorer.
 ms.reviewer: gabil
 ms.topic: how-to
 ms.date: 04/12/2022
