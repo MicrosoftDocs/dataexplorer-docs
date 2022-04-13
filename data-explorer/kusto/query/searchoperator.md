@@ -117,7 +117,7 @@ search "billg" and ("steveb" or "satyan")
 search in (TraceEvent) and "billg"
 
 // 4. Like (2), but performing a case-sensitive match of all terms
-search "BillB" and ("SteveB" or "SatyaN")
+search kind=case_sensitive "BillB" and ("SteveB" or "SatyaN")
 
 // 5. Like (1), but restricting the match to some columns
 search CEO:"billg" or CSA:"billg"
