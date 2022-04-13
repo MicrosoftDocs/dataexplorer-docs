@@ -231,6 +231,7 @@ gcs.prod.monitoring.core.windows.net:443
 production.diagnostics.monitoring.core.windows.net:443
 graph.windows.net:443
 graph.microsoft.com:443
+*.login.microsoft.com :443
 *.update.microsoft.com:443
 login.live.com:443
 wdcp.microsoft.com:443
@@ -251,12 +252,6 @@ crl.microsoft.com:80
 www.microsoft.com:80
 adl.windows.com:80
 crl3.digicert.com:80
-```
-
-Additionally you need to allow the regional endpoints of Azure Active Directory in your firewall (example: westus.login.microsoft.com).
-
-```ini
-{region}.login.microsoft.com :443
 ```
 
 > [!NOTE]
