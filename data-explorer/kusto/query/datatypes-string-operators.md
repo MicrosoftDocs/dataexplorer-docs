@@ -29,7 +29,7 @@ Kusto builds a term index consisting of all terms that are *three characters or 
 
 ## Operators on strings
 
-The following abbreviations are used in the table below:
+The following abbreviations are used in this article:
 
  * RHS = right hand side of the expression
  * LHS = left hand side of the expression
