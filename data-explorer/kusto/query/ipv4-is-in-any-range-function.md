@@ -3,11 +3,11 @@ title: ipv4_is_in_any_range() - Azure Data Explorer
 description: This article describes ipv4_is_in_any_range() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/01/2021
+ms.date: 04/14/2022
 ---
 # ipv4_is_in_any_range()
 
-Checks whether IPv4 string address is in any of specified IPv4 address ranges.
+Checks whether IPv4 string address is in any of the specified IPv4 address ranges.
 
 ```kusto
 ipv4_is_in_any_range("127.0.0.1", dynamic(["127.0.0.1", "192.168.1.1"])) == true
@@ -35,7 +35,7 @@ For example, 192.168.2.0/24 will have an associated net/subnetmask containing 24
 
 ## Returns
 
-* `true`: If the IPv4 address is in range of any IPv4 network specified by subsequent argument(s).
+* `true`: If the IPv4 address is in the range of any of the specified IPv4 networks.
 * `false`: Otherwise.
 * `null`: If conversion for one of the two IPv4 strings wasn't successful.
 
