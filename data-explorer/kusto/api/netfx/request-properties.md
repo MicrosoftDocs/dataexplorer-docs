@@ -7,7 +7,7 @@ ms.date: 09/23/2019
 ---
 # Request properties and ClientRequestProperties
 
-When a request is made to Kusto, the caller is required to provide provide:
+When a request is made to Kusto, the caller is required to provide:
 
 * A connection string indicating the service endpoint to connect to, authentication parameters, and similar connection-related information. Programmatically, the connection string is represented via the `KustoConnectionStringBuilder`class.
 * The name of the database that is used to describe the "scope" of the request.

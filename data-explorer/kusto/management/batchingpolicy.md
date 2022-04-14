@@ -47,6 +47,14 @@ The following list shows conditions to seal batches related to single blob inges
 
 If the `SystemFlush` condition is set, a batch will be sealed when a system flush is triggered. With the `SystemFlush` parameter set, the system flushes the data, for example due to cluster scaling or internal reset of system components.
 
+## Defaults and limits
+
+| Type             | Property                | Default    | Minimum    |
+|------------------|-------------------------|------------|------------|
+| Number of items  | MaximumNumberOfItems    | 500        | 1          |
+| Data size (MB)   | MaximumRawDataSizeMB    | 1024       | 100        |
+| Time             | MaximumBatchingTimeSpan | 5 minutes  | 10 seconds |
+
 ## Batch data size
 
 The batching policy data size is set for uncompressed data. For Parquet, AVRO, and ORC files, an estimation is calculated based on file size. When ingesting compressed data, the uncompressed data size is evaluated as follows in descending order of accuracy:
