@@ -121,7 +121,6 @@ For this article, you use static routing, where you specify the table name, data
     > In case of a [manual failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover), you must recreate the data connection.
 
     > [!NOTE]
-    >
     > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
     > * Only events enqueued after you create the data connection are ingested.
 
@@ -130,7 +129,6 @@ For this article, you use static routing, where you specify the table name, data
 ### Event system properties mapping
 
 > [!Note]
->
 > * System properties are supported for single-record events.
 > * For `csv` mapping, properties are added at the beginning of the record. For `json` mapping, properties are added according to the name that appears in the drop-down list.
 
@@ -190,7 +188,6 @@ With the app generating data, you can now see the data flow from the IoT hub to 
     ![Show ingested data results.](media/ingest-data-iot-hub/show-ingested-data.png)
 
     > [!NOTE]
-    >
     > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. See [batching policy](kusto/management/batchingpolicy.md) for aggregation options.
     > * Configure your table to support streaming and remove the lag in response time. See [streaming policy](kusto/management/streamingingestionpolicy.md).
 

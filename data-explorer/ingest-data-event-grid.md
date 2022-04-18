@@ -11,7 +11,6 @@ ms.date: 03/15/2022
 # Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications
 
 > [!div class="op_single_selector"]
-
 > * [One-click](one-click-ingestion-new-table.md)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
@@ -37,7 +36,7 @@ Create a table in Azure Data Explorer where Azure Event Hubs will send data. Cre
 
 1. In the Azure portal, under your cluster, select **Query**.
 
-    :::image type="content" source="media/ingest-data-event-grid/azure-portal.png" alt-text="Screenshot of the Query option in the Azure portal.":::
+    :::image type="content" source="media/ingest-data-event-grid/azure-portal.png" alt-text="Screenshot of the Query option in the Azure portal left menu.":::
 
 1. Copy the following command into the window and select **Run** to create the table (TestTable) that will receive the ingested data.
 
@@ -45,7 +44,7 @@ Create a table in Azure Data Explorer where Azure Event Hubs will send data. Cre
     .create table TestTable (TimeStamp: datetime, Value: string, Source:string)
     ```
 
-    :::image type="content" source="media/ingest-data-event-grid/run-create-table.png" alt-text="Run command create table.":::
+    :::image type="content" source="media/ingest-data-event-grid/run-create-table.png" alt-text="Screenshot of the create table command copied into the run window.":::
 
 1. Copy the following command into the window and select **Run** to map the incoming JSON data to the column names and data types of the table (TestTable).
 
@@ -61,17 +60,15 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Under the cluster you created, select **Databases** > **TestDatabase**.
 
-    :::image type="content" source="media/ingest-data-event-grid/select-test-database.png" alt-text="Screenshot of Select test database.":::
+    :::image type="content" source="media/ingest-data-event-grid/select-test-database.png" alt-text="Screenshot of the Select Databases with the TestDataBase selected.":::
 
 1. Select **Data ingestion** > **Add data connection**.
 
-    :::image type="content" source="media/ingest-data-event-grid/data-ingestion-create.png" alt-text="Add data connection for data ingestion.":::
+    :::image type="content" source="media/ingest-data-event-grid/data-ingestion-create.png" alt-text="Screenshot of the TestDatabase left menu with the Data ingestion highlighted, and the menu item Add data connection selected.":::
 
-1. Under **Basics**, select the connection type: **Blob storage**.
+1. Under **Basics**, select the connection type: **Blob storage** and then fill out the form with the following information:
 
-1. Fill out the form with the following information:
-
-    :::image type="content" source="media/ingest-data-event-grid/data-connection-basics.png" alt-text="Fill out Event Grid form with connection basics.":::
+    :::image type="content" source="media/ingest-data-event-grid/data-connection-basics.png" alt-text="Screenshot of the Data Connection form with the Basics tab selected, and Blob storage selected from the Select connection type dropdown.":::
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
@@ -89,13 +86,13 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     * **Case-Sensitive** field indicates whether the prefix and suffix filters are case-sensitive
     * For more information about filtering events, see [Blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events).
 
-    :::image type="content" source="media/ingest-data-event-grid/filter-settings.png" alt-text="Fill out Filter settings form with filter parameters.":::
+    :::image type="content" source="media/ingest-data-event-grid/filter-settings.png" alt-text="Screenshot of the Fill out Filter settings form with filter parameters.":::
 
 1. Select **Next: Ingest properties**.
 
-1. Under **Ingest properties**, fill out the form with the following information. Table and mapping names are case-sensitive:
+1. Fill out the form with the following information. Table and mapping names are case-sensitive:
 
-   :::image type="content" source="media/ingest-data-event-grid/data-connection-ingest-properties.png" alt-text="Review and create table and mapping ingestion properties.":::
+   :::image type="content" source="media/ingest-data-event-grid/data-connection-ingest-properties.png" alt-text="Screenshot of the Data Connection form with the Ingest properties tab selected, and the create table and mapping ingestion properties.":::
 
     Ingest properties:
 
@@ -112,22 +109,23 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Select **Next: Review + create**
 
-1. Under ***Review + create**, review the resources that were auto created for you and select **Create**.
+1. Under ***Review + create**.
+1. Review the resources that were auto created for you and select **Create**.
 
-    :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="Screenshot of Review and create data connection for Event Grid.":::
+    :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="Screenshot of the Data Connection form with the Review and create tab selected.":::
 
 ### [Azure portal - storage](#tab/portal-1)
 
 1. Browse to the storage account in the Azure portal. On the left menu, select **Events**
 1. In the main pane, select the **Azure Data Explorer** tab.
 
-    :::image type="content" source="media/ingest-data-event-grid/storage-account.png" alt-text="Screenshot of Azure portal storage account access to Event Grid connection.":::
+    :::image type="content" source="media/ingest-data-event-grid/storage-account.png" alt-text="Screenshot of the Azure storage account portal left menu with Events selected and in the main window the Azure Data EXplorer tab selected.":::
 
-1. The **Data connection** pane opens with the **Basics** tab selected.
+The **Data connection** pane opens with the **Basics** tab selected.
 
 1. Under **Basics**, fill out the form with the following information:
 
-    :::image type="content" source="media/ingest-data-event-grid/portal-basics-tab.png" alt-text="Screenshot of basics tab for Event Grid ingestion in storage account of Azure portal.":::
+    :::image type="content" source="media/ingest-data-event-grid/portal-basics-tab.png" alt-text="Screenshot of the Data Connection form in storage account of Azure portal, with the Basics tab selected.":::
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
@@ -138,9 +136,10 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Select **Next> Ingest properties**.
 
-1. Under **Ingest properties**, fill out the form with the following information. Table and mapping names are case-sensitive:
+1. Under **Ingest properties**.
+1. Fill out the form with the following information. Table and mapping names are case-sensitive:
 
-    :::image type="content" source="media/ingest-data-event-grid/portal-ingestion-tab.png" alt-text="Screenshot of Ingest properties tab for Event Grid ingestion in storage account of Azure portal.":::
+    :::image type="content" source="media/ingest-data-event-grid/portal-ingestion-tab.png" alt-text="Screenshot of the Data Connection form in storage account of Azure portal, with the Ingest properties tab selected.":::
 
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -158,9 +157,10 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Select **Next: Review + create**
 
-1. Under **Review + create**, review the resources that were auto created for you and select **Create**.
+1. Under **Review + create**.
+1. Review the resources that were auto created for you and select **Create**.
 
-    :::image type="content" source="media/ingest-data-event-grid/portal-review-create.png" alt-text="Screenshot of review and create tab for Event Grid ingestion in storage account of Azure portal.":::
+    :::image type="content" source="media/ingest-data-event-grid/portal-review-create.png" alt-text="Screenshot of the Data Connection form, in storage account of Azure portal, with the Review and create tab selected.":::
 
 ---
 
@@ -168,7 +168,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 Wait until the deployment is completed. If your deployment failed, select **Operation details** next to the failed stage to get more information for the failure reason. Select **Redeploy** to try to deploy the resources again. You can alter the parameters before deployment.
 
-:::image type="content" source="media/ingest-data-event-grid/deploy-event-grid-resources.png" alt-text="Screenshot of Deploy Event Grid resources.":::
+:::image type="content" source="media/ingest-data-event-grid/deploy-event-grid-resources.png" alt-text="Screenshot of Deploy Event Grid resources failure results overview.":::
 
 ## Generate sample data
 
@@ -221,7 +221,7 @@ Save the data into a file and upload it with this script:
 
 If you're ingesting data from ADLSv2 storage and have defined *Blob renamed* as the event type for the data connection, the trigger for blob ingestion is blob renaming. To rename a blob, navigate to the blob in Azure portal, right-click on the blob and select **Rename**:
 
-   :::image type="content" source="media/ingest-data-event-grid/rename-blob-in-the-portal.png" alt-text="Screenshot of Rename blob in Azure portal.":::
+   :::image type="content" source="media/ingest-data-event-grid/rename-blob-in-the-portal.png" alt-text="Screenshot of the Testblob context menu in the Azure portal with Rename selected.":::
 
 ### Ingestion properties
 
@@ -241,7 +241,7 @@ You can specify the [ingestion properties](ingest-data-event-grid-overview.md#in
 
 1. In the Azure portal, under your event grid, you see the spike in activity while the app is running.
 
-    :::image type="content" source="media/ingest-data-event-grid/event-grid-graph.png" alt-text="Screenshot of Activity graph for Event Grid.":::
+    :::image type="content" source="media/ingest-data-event-grid/event-grid-graph.png" alt-text="Screenshot of Activity graph for Event Grid in the Azure portal.":::
 
 1. To check how many messages have made it to the database so far, run the following query in your test database.
 
@@ -266,31 +266,31 @@ If you don't plan to use your event grid again, clean up the Event Grid Subscrip
 
 1. In Azure portal, go to the left menu and select **All resources**.
 
-    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-all-resource.png" alt-text="Screenshot of Select all resources for Event Grid cleanup menu.":::
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-all-resource.png" alt-text="Screenshot of Azure portal left menu with All resources selected.":::
 
 1. Search for the Event Hubs namespace and select **Delete** to delete it:
 
-    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-find-eventhub-namespace-delete.png" alt-text="Screenshot of Clean up Event Hubs namespace.":::
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-find-eventhub-namespace-delete.png" alt-text="Screenshot of the All resources search results with the Delete menu option selected as part of the Clean up of the Event Hubs namespace process.":::
 
 1. In the Delete resources form, confirm the deletion to delete the Event Hubs namespace and Event Hubs resources.
 
 1. Go to your storage account. In the left menu, select **Events**:
 
-    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-events.png" alt-text="Screenshot of Select events to clean up for Event Grid.":::
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-events.png" alt-text="Screenshot of the Azure storage account portal left menu with Events selected.":::
 
 1. Below the graph, Select your Event Grid Subscription and then select **Delete** to delete it:
 
-    :::image type="content" source="media/ingest-data-event-grid/delete-event-grid-subscription.png" alt-text="Screenshot of Delete Event Grid subscription.":::
+    :::image type="content" source="media/ingest-data-event-grid/delete-event-grid-subscription.png" alt-text="Screenshot of the Event Subscription graph and available Event grids with an Even grid selected and the Delete menu item selected.":::
 
 1. To delete your Event Grid data connection, go to your Azure Data Explorer cluster. On the left menu, select **Databases**.
 
 1. Select your database **TestDatabase**:
 
-    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-database.png" alt-text="Screenshot of Select database to clean up resources.":::
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-database.png" alt-text="Screenshot of Azure Data Explorer cluster left menu after Databases has been selected and the TestDatabase is selected in order to clean up resources.":::
 
 1. On the left menu, select **Data ingestion**:
 
-    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-data-ingestion.png" alt-text="Screenshot of Select data ingestion to clean up resources.":::
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-data-ingestion.png" alt-text="Screenshot of Select data ingestion of the TestDatabase in order to clean up resources.":::
 
 1. Select your data connection *test-grid-connection* and then select **Delete** to delete it.
 
