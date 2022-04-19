@@ -46,7 +46,7 @@ The following table shows how network security related features could be impleme
 |   Feature | Private endpoint   | Virtual network injection   |
 |--- |--- |--- |
 | Inbound IP address filtering | [Restrict public access](security-network-restrict-public-access.md) | [Create an inbound Network Security Group rule](/azure/virtual-network/network-security-groups-overview) |
-| Transitive access to other services (Storage, Event Hubs, etc.) | [Create a managed private endpoint](security-network-managed-private-endpoint-create.md) | [Create a private endpoint to the resource](/azure/data-explorer/vnet-endpoint-storage-event-hub) |
+| Transitive access to other services (Storage, Event Hubs, etc.) | [Create a managed private endpoint](security-network-managed-private-endpoint-create.md) | [Create a private endpoint to the resource](./vnet-endpoint-storage-event-hub.md) |
 | Restricting outbound access | Use [Callout policies or the AllowedFQDNList](security-network-restrict-outbound-access.md) | Use a [virtual appliance](/azure/firewall/tutorial-firewall-deploy-portal) to the subnet's filter outgoing traffic |
 
 Maintain FQDN lists in firewalls, or deploying public IP addresses in a restricted environment, for virtual network injection leads to a high maintenance overhead; hence, recommend using a private endpoint to connect to your cluster.
