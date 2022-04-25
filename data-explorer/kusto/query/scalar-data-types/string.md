@@ -37,8 +37,8 @@ newline characters (`\n`), and itself (`\\`).
 
 Verbatim string literals are also supported. In this form, the backslash character (`\`) stands for itself, and not as an escape character.
 
-* Enclose in double-quotes (`"`): `@"This is a verbatim string literal that ends with a backslash\."`
-* Enclose in single-quotes (`'`): `@'This is a verbatim string literal that ends with a backslash\.'`
+* Enclose in double-quotes (`"`): `@"This is a verbatim string literal that ends with a backslash\. Double quote characters (") are escaped by a double quote (")."`
+* Enclose in single-quotes (`'`): `@'This is a verbatim string literal that ends with a backslash\. Single quote characters (') are escaped by a single quote (').'`
 
 > [!NOTE]
 > The newline character (`\n`) and the return character (`\r`) can't be included
