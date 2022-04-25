@@ -21,9 +21,9 @@ The default [caching policy](cachepolicy.md) for the follower cluster uses the l
 
 |Option             |Description                                 |
 |-------------------|----------------------------------------------|
-|**None** (default) |The caching policies used are those policies defined in the source database in the leader cluster.   |
-|**replace**  |The source database in the leader cluster database and table-level caching policies are removed (set to `null`). These policies are replaced by the database and table-level override policies, if defined.|
-|**union**    |The source database in the leader cluster database and table-level caching policies are combined with the policies defined in the database and table-level override policies.   |
+|**None**           |The caching policies used are those policies defined in the source database in the leader cluster.   |
+|**replace**        |The source database in the leader cluster database and table-level caching policies are removed (set to `null`). These policies are replaced by the database and table-level override policies, if defined.|
+|**union**(default) |The source database in the leader cluster database and table-level caching policies are combined with the policies defined in the database and table-level override policies.   |
 
 > [!NOTE]
 >  * If the collection of override database and table-level caching policies is *empty*, then everything is cached by default.
@@ -33,9 +33,9 @@ The default [caching policy](cachepolicy.md) for the follower cluster uses the l
 
 |Option             |Description                                                                                                                              |
 |-------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-|**None** (default) |The [authorized principals](access-control/index.md#authorization) are defined in the source database of the leader cluster.     |
+|**None**           |The [authorized principals](access-control/index.md#authorization) are defined in the source database of the leader cluster.     |
 |**replace**        |The override authorized principals replace the authorized principals from the source database in the leader cluster.  |
-|**union**          |The override authorized principals are combined with the authorized principals from the source database in the leader cluster. |
+|**union**(default) |The override authorized principals are combined with the authorized principals from the source database in the leader cluster. |
 
 > [!NOTE]
 > If the collection of override authorized principals is *empty*, there will be no database-level principals.

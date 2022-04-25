@@ -303,23 +303,41 @@ items:
       href: isolated-compute.md
     - name: Network isolation (VNet)
       items:
-        - name: Create a cluster in your VNet - Portal
-          href: vnet-create-cluster-portal.md
-        - name: Deploy your cluster to your VNet
-          href: vnet-deployment.md
-        - name: Troubleshoot VNet cluster creation, connectivity, and operation
-          href: vnet-deploy-troubleshoot.md
-        - name: Create Private Endpoint for your VNet cluster - Portal
-          href: vnet-create-private-endpoint.md
-        - name: Create a private or service endpoint to resources used by data connections
-          displayName: VNet, private endpoint, Azure Storage, event hub
-          href: vnet-endpoint-storage-event-hub.md
+        - name: Network security overview 
+          href: security-network-overview.md
+        - name: Private Endpoints
+          items:
+          - name: Private Endpoints overview
+            href: security-network-private-endpoint.md
+          - name: Create a private endpoint
+            href: security-network-private-endpoint-create.md
+          - name: Create a managed private endpoint
+            href: security-network-managed-private-endpoint-create.md
+          - name: Restrict public access
+            href: security-network-restrict-public-access.md
+          - name: Troubleshoot private endpoints
+            href: security-network-private-endpoint-troubleshoot.md
+        - name: Virtual network injection
+          items:
+          - name: Create a cluster in your VNet - Portal
+            href: vnet-create-cluster-portal.md
+          - name: Deploy your cluster to your VNet
+            href: vnet-deployment.md
+          - name: Create a private or service endpoint to resources used by data connections
+            displayName: VNet, private endpoint, Azure Storage, event hub
+            href: vnet-endpoint-storage-event-hub.md
+          - name: Troubleshoot VNet cluster creation, connectivity, and operation
+            href: vnet-deploy-troubleshoot.md
+        - name: Restrict outbound requests
+          href: security-network-restrict-outbound-access.md
     - name: Encryption
       items:
-      - name: Cluster disk encryption - portal
-        href: cluster-disk-encryption.md
-      - name: Double Encryption
-        href: double-encryption.md
+      - name: Cluster encryption overview
+        href: cluster-encryption-overview.md
+      - name: Enable double encryption
+        href: cluster-encryption-double.md
+      - name: Enable disk encryption
+        href: cluster-encryption-disk.md
     - name: Managed identities
       items:
       - name: Managed identities overview

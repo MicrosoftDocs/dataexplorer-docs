@@ -572,7 +572,7 @@ Remove-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -N
 
 ### Manage principals
 
-When attaching a database, specify the **"default principals modification kind"**. The default is keeping the leader database collection of [authorized principals](kusto/management/access-control/index.md#authorization)
+When attaching a database, specify the **"default principals modification kind"**. The default is to combine the override authorized principals with the leader database collection of [authorized principals](kusto/management/access-control/index.md#authorization)
 
 |**Kind** |**Description**  |
 |---------|---------|
@@ -588,7 +588,7 @@ Managing read-only database permission is the same as for all database types. Se
 
 ### Configure caching policy
 
-The follower database administrator can modify the [caching policy](./kusto/management/show-table-cache-policy-command.md) of the attached database or any of its tables on the hosting cluster. The default is keeping the leader database collection of database and table-level caching policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using control commands to configure the caching policy on the follower database or table, see [Control commands for managing a follower cluster](kusto/management/cluster-follower.md).
+The follower database administrator can modify the [caching policy](./kusto/management/show-table-cache-policy-command.md) of the attached database or any of its tables on the hosting cluster. The default is to combine the source database in the leader cluster database and table-level caching policies with the policies defined in the database and table-level override policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using control commands to configure the caching policy on the follower database or table, see [Control commands for managing a follower cluster](kusto/management/cluster-follower.md).
 
 ## Notes
 
