@@ -11,7 +11,7 @@ ms.date: 04/05/2022
 Azure Data Explorer clusters are designed to be accessible using public URLs. Anyone with valid identity on a cluster can access it from any location. As an organization, securing data may be one your highest priority tasks. As such, you may want to limit and secure access to your cluster, or even only allow access to your cluster through your private virtual network. You can use one of the following options to achieve this goal:
 
 * [Private endpoint](#private-endpoint) (recommended)
-* [Virtual network (VNet) injection](#virtual-network-injection) (alternative)
+* [Virtual network (VNet) injection](#virtual-network-injection)
 
 We highly recommended using *private endpoints* to secure network access to your cluster. This option has many advantages over *virtual network injection* that results in lower maintenance overhead, including a simpler deployment process and being more robust to virtual network changes.
 
