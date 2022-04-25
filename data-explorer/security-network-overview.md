@@ -13,7 +13,7 @@ Azure Data Explorer clusters are designed to be accessible using public URLs. An
 * [Private endpoint](#private-endpoint)
 * Alternative: [Virtual network (VNet) injection](#virtual-network-injection)
 
-It is highly recommended that *private endpoints* be used to secure network access to Azure Data Explorer. This option has multiple advantages over virtual network injection, such as having a much simpler deployment process, and being a lot more robust to customer virtual network changes, thus lowering the maintenance overhead.
+We highly recommended using *private endpoints* to secure network access to your cluster. This option has many advantages over *virtual network injection* that results in lower maintenance overhead, including a simpler deployment process and being more robust to virtual network changes.
 
 The following section explains how to secure your cluster using Private Endpoints and Virtual Network Injection.
 
