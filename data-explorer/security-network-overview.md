@@ -15,7 +15,7 @@ Azure Data Explorer clusters are designed to be accessible using public URLs. An
 
 We highly recommended using *private endpoints* to secure network access to your cluster. This option has many advantages over *virtual network injection* that results in lower maintenance overhead, including a simpler deployment process and being more robust to virtual network changes.
 
-The following section explains how to secure your cluster using Private Endpoints and Virtual Network Injection.
+The following section explains how to secure your cluster using private endpoints and virtual network injection.
 
 ## Private endpoint
 
@@ -26,7 +26,7 @@ A private endpoint is a network interface that uses private IP addresses from yo
 To successfully deploy your cluster into a private endpoint, you only require a set of private IP addresses.
 
 > [!NOTE]
-> Private endpoints aren't supported for a cluster that are injected into a virtual network.
+> Private endpoints aren't supported for a cluster that's injected into a virtual network.
 
 ## Virtual network injection
 
