@@ -258,7 +258,7 @@ You can specify the [ingestion properties](ingest-data-event-grid-overview.md#in
 
     The result set should look like the following image:
 
-    :::image type="content" source="media/ingest-data-event-grid/table-result.png" alt-text="Screenshot of Message result set for Event Grid.":::
+    :::image type="content" source="media/ingest-data-event-grid/table-result.png" alt-text="Screenshot of the query results, showing the content of Event Grid messages.":::
 
 ## Clean up resources
 
