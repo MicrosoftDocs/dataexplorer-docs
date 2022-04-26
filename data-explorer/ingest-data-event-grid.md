@@ -276,7 +276,7 @@ If you don't plan to use your event grid again, clean up the Event Grid Subscrip
 
 1. Go to your storage account. In the left menu, select **Events**:
 
-    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-events.png" alt-text="Screenshot of the Azure storage account portal left menu with Events selected.":::
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-events.png" alt-text="Screenshot of the Azure storage account left menu, showing the Events option.":::
 
 1. Below the graph, Select your Event Grid Subscription and then select **Delete** to delete it:
 
