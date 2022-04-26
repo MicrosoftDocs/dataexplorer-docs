@@ -44,7 +44,7 @@ Now you create a table in Azure Data Explorer to which IoT Hubs will send data. 
 
 1. In the Azure portal, navigate to your cluster and select **Query**.
 
-    ![ADX query in portal.](media/ingest-data-iot-hub/adx-initiate-query.png)
+    :::image type="content" source="media/ingest-data-iot-hub/adx-initiate-query.png" alt-text="Screenshot of the Azure Data Explorer left menu query option.":::
 
 1. Copy the following command into the window and select **Run** to create the table (TestTable) which will receive the ingested data.
 
@@ -52,7 +52,7 @@ Now you create a table in Azure Data Explorer to which IoT Hubs will send data. 
     .create table TestTable (temperature: real, humidity: real)
     ```
 
-    ![Run create query.](media/ingest-data-iot-hub/run-create-query.png)
+    :::image type="content" source="media/ingest-data-iot-hub/run-create-query.png" alt-text="Screenshot of the create and run a query window.":::
 
 1. Copy the following command into the window and select **Run** to map the incoming JSON data to the column names and data types of the table (TestTable).
 
@@ -68,17 +68,17 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
 
 1. Under the cluster you created, select **Databases** then select the database that you created **testdb**.
 
-    ![Select test database.](media/ingest-data-iot-hub/select-database.png)
+    :::image type="content" source="media/ingest-data-iot-hub/select-database.png" alt-text="Screenshot of the Azure data explorer select database window.":::
 
 1. Select **Data ingestion** and **Add data connection**.
 
-    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-connection.png" alt-text="Create data connection to IoT Hub- Azure Data Explorer.":::
+    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-connection.png" alt-text="Screenshot of the Create data connection to IoT Hub.":::
 
 ### Create a data connection
 
 * Fill out the form with the following information.
 
-    :::image type="content" source="media/ingest-data-iot-hub/data-connection-pane.png" alt-text="Data connection pane in IoT Hub - Azure Data Explorer.":::
+    :::image type="content" source="media/ingest-data-iot-hub/data-connection-pane.png" alt-text="Screenshot of the Data connection pane in IoT Hub.":::
 
     |**Setting** | **Field description**|
     |---|---|
@@ -108,7 +108,7 @@ For this article, you use static routing, where you specify the table name, data
 
 1. Fill out the following routing settings:
 
-    :::image type="content" source="media/ingest-data-iot-hub/default-routing-settings.png" alt-text="Default routing properties - IoT Hub - Azure Data Explorer.":::
+    :::image type="content" source="media/ingest-data-iot-hub/default-routing-settings.png" alt-text="Screenshot of the default routing properties in the IoT Hub.":::
 
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -121,6 +121,7 @@ For this article, you use static routing, where you specify the table name, data
     > In case of a [manual failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover), you must recreate the data connection.
 
     > [!NOTE]
+    >
     > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
     > * Only events enqueued after you create the data connection are ingested.
 
@@ -129,6 +130,7 @@ For this article, you use static routing, where you specify the table name, data
 ### Event system properties mapping
 
 > [!Note]
+>
 > * System properties are supported for single-record events.
 > * For `csv` mapping, properties are added at the beginning of the record. For `json` mapping, properties are added according to the name that appears in the drop-down list.
 
@@ -160,7 +162,7 @@ The simulated device application connects to a device-specific endpoint on your 
 
     The following screenshot shows the output as the simulated device application sends telemetry to your IoT hub:
 
-    ![Run the simulated device.](media/ingest-data-iot-hub/simulated-device.png)
+    :::image type="content" source="media/ingest-data-iot-hub/simulated-device.png" alt-text="Screenshot of a simulated device running.":::
 
 ## Review the data flow
 
@@ -168,7 +170,7 @@ With the app generating data, you can now see the data flow from the IoT hub to 
 
 1. In the Azure portal, under your IoT hub, you see the spike in activity while the app is running.
 
-    ![IoT Hub metrics.](media/ingest-data-iot-hub/iot-hub-metrics.png)
+    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-metrics.png" alt-text="Screenshot of the IoT Hub metrics.":::
 
 1. To check how many messages have made it to the database so far, run the following query in your test database.
 
@@ -185,9 +187,10 @@ With the app generating data, you can now see the data flow from the IoT hub to 
 
     The result set:
 
-    ![Show ingested data results.](media/ingest-data-iot-hub/show-ingested-data.png)
+    :::image type="content" source="media/ingest-data-iot-hub/show-ingested-data.png" alt-text="Screenshot of the ingested data results.":::
 
     > [!NOTE]
+    >
     > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. See [batching policy](kusto/management/batchingpolicy.md) for aggregation options.
     > * Configure your table to support streaming and remove the lag in response time. See [streaming policy](kusto/management/streamingingestionpolicy.md).
 
@@ -197,9 +200,9 @@ If you don't plan to use your IoT Hub again, clean up your resource group to avo
 
 1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group you created.
 
-    If the left menu is collapsed, select ![Expand button.](media/ingest-data-event-hub/expand.png) to expand it.
+    If the left menu is collapsed, select :::image type="content" source="media/ingest-data-event-hub/expand.png" alt-text="Screenshot of the expand button.":::
 
-   ![Select resource group to delete.](media/ingest-data-iot-hub/delete-resources-select.png)
+    :::image type="content" source="media/ingest-data-iot-hub/delete-resources-select.png" alt-text="Screenshot of Resource groups page.":::
 
 1. Under **test-resource-group**, select **Delete resource group**.
 
