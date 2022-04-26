@@ -68,7 +68,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Under **Basics**, select the connection type: **Blob storage** and then fill out the form with the following information:
 
-    :::image type="content" source="media/ingest-data-event-grid/data-connection-basics.png" alt-text="Screenshot of the Data Connection form with the Basics tab selected, and Blob storage selected from the Select connection type dropdown.":::
+    :::image type="content" source="media/ingest-data-event-grid/data-connection-basics.png" alt-text="Screenshot of the Data Connection Basics tab, showing the options for the Blob storage connection type.":::
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
