@@ -125,7 +125,7 @@ The **Data connection** pane opens with the **Basics** tab selected.
 
 1. Under **Basics**, fill out the form with the following information:
 
-    :::image type="content" source="media/ingest-data-event-grid/portal-basics-tab.png" alt-text="Screenshot of the Data Connection form in storage account of Azure portal, with the Basics tab selected.":::
+    :::image type="content" source="media/ingest-data-event-grid/portal-basics-tab.png" alt-text="Screenshot of the Data Connection Basics tab, showing the options for the connection type.":::
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
