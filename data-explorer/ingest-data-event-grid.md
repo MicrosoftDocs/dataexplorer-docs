@@ -241,7 +241,7 @@ You can specify the [ingestion properties](ingest-data-event-grid-overview.md#in
 
 1. In the Azure portal, under your event grid, you see the spike in activity while the app is running.
 
-    :::image type="content" source="media/ingest-data-event-grid/event-grid-graph.png" alt-text="Screenshot of Activity graph for Event Grid in the Azure portal.":::
+    :::image type="content" source="media/ingest-data-event-grid/event-grid-graph.png" alt-text="Screenshot of an Event Grid Activity graph, showing a spike in activity.":::
 
 1. To check how many messages have made it to the database so far, run the following query in your test database.
 
