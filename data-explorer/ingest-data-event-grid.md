@@ -60,7 +60,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Under the cluster you created, select **Databases** > **TestDatabase**.
 
-    :::image type="content" source="media/ingest-data-event-grid/select-test-database.png" alt-text="Screenshot of the Select Databases with the TestDataBase selected.":::
+    :::image type="content" source="media/ingest-data-event-grid/select-test-database.png" alt-text="Screenshot of the Databases page, showing a database.":::
 
 1. Select **Data ingestion** > **Add data connection**.
 
