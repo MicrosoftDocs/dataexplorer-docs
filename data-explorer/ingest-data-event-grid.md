@@ -64,7 +64,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Select **Data ingestion** > **Add data connection**.
 
-    :::image type="content" source="media/ingest-data-event-grid/data-ingestion-create.png" alt-text="Screenshot of the TestDatabase left menu with the Data ingestion highlighted, and the menu item Add data connection selected.":::
+    :::image type="content" source="media/ingest-data-event-grid/data-ingestion-create.png" alt-text="Screenshot of the Data ingestion page, showing the add data connection option.":::
 
 1. Under **Basics**, select the connection type: **Blob storage** and then fill out the form with the following information:
 
