@@ -119,7 +119,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 1. Browse to the storage account in the Azure portal. On the left menu, select **Events**
 1. In the main pane, select the **Azure Data Explorer** tab.
 
-    :::image type="content" source="media/ingest-data-event-grid/storage-account.png" alt-text="Screenshot of the Azure storage account portal left menu with Events selected and in the main window the Azure Data EXplorer tab selected.":::
+    :::image type="content" source="media/ingest-data-event-grid/storage-account.png" alt-text="Screenshot of the Azure storage account Events page, showing the Azure Data Explorer tab.":::
 
 The **Data connection** pane opens with the **Basics** tab selected.
 
