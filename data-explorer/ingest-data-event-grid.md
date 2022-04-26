@@ -92,7 +92,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 
 1. Fill out the form with the following information. Table and mapping names are case-sensitive:
 
-   :::image type="content" source="media/ingest-data-event-grid/data-connection-ingest-properties.png" alt-text="Screenshot of the Data Connection form with the Ingest properties tab selected, and the create table and mapping ingestion properties.":::
+   :::image type="content" source="media/ingest-data-event-grid/data-connection-ingest-properties.png" alt-text="Screenshot of the Data Connection Ingest properties tab, showing the target table properties.":::
 
     Ingest properties:
 
