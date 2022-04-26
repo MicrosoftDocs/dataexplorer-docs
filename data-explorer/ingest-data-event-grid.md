@@ -266,7 +266,7 @@ If you don't plan to use your event grid again, clean up the Event Grid Subscrip
 
 1. In Azure portal, go to the left menu and select **All resources**.
 
-    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-all-resource.png" alt-text="Screenshot of Azure portal left menu with All resources selected.":::
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-all-resource.png" alt-text="Screenshot of Azure portal left menu, showing the All resources option.":::
 
 1. Search for the Event Hubs namespace and select **Delete** to delete it:
 
