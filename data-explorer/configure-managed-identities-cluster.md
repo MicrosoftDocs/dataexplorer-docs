@@ -75,7 +75,7 @@ To set up a managed identity using the Azure Data Explorer C# client:
     ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
     var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-    var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+    var clientSecret = "PlaceholderClientSecret";//Client Secret
     var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
     var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
     var credential = new ClientCredential(clientId, clientSecret);
@@ -235,7 +235,7 @@ To set up a managed identity using the Azure Data Explorer C# client:
     ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
     var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-    var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+    var clientSecret = "PlaceholderClientSecret";//Client Secret
     var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
     var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
     var credential = new ClientCredential(clientId, clientSecret);
