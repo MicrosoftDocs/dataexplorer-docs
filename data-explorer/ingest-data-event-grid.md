@@ -160,7 +160,7 @@ The **Data connection** pane opens with the **Basics** tab selected.
 1. Under **Review + create**.
 1. Review the resources that were auto created for you and select **Create**.
 
-    :::image type="content" source="media/ingest-data-event-grid/portal-review-create.png" alt-text="Screenshot of the Data Connection form, in storage account of Azure portal, with the Review and create tab selected.":::
+    :::image type="content" source="media/ingest-data-event-grid/portal-review-create.png" alt-text="Screenshot of the Data Connection Review and create tab, showing a summary of the selected data connection settings.":::
 
 ---
 
