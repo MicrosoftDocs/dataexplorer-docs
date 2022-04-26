@@ -221,7 +221,7 @@ Save the data into a file and upload it with this script:
 
 If you're ingesting data from ADLSv2 storage and have defined *Blob renamed* as the event type for the data connection, the trigger for blob ingestion is blob renaming. To rename a blob, navigate to the blob in Azure portal, right-click on the blob and select **Rename**:
 
-   :::image type="content" source="media/ingest-data-event-grid/rename-blob-in-the-portal.png" alt-text="Screenshot of the Testblob context menu in the Azure portal with Rename selected.":::
+   :::image type="content" source="media/ingest-data-event-grid/rename-blob-in-the-portal.png" alt-text="Screenshot of a blob shortcut menu, showing the Rename option.":::
 
 ### Ingestion properties
 
