@@ -286,7 +286,7 @@ If you don't plan to use your event grid again, clean up the Event Grid Subscrip
 
 1. Select your database **TestDatabase**:
 
-    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-database.png" alt-text="Screenshot of Azure Data Explorer cluster left menu after Databases has been selected and the TestDatabase is selected in order to clean up resources.":::
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-database.png" alt-text="Screenshot of Azure Data Explorer Web UI Databases page, showing a database.":::
 
 1. On the left menu, select **Data ingestion**:
 
