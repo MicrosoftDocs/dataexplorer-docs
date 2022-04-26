@@ -28,7 +28,7 @@ Ingestion is possible without specifying a mapping (see [identity mapping](#iden
 
 When the source file is a CSV (or any delimiter-separated format) and its schema doesn't match the current table schema, a CSV mapping maps from the file schema to the table schema. If the table doesn't exist in Azure Data Explorer, it will be created according to this mapping. If some fields in the mapping are missing in the table, they will be added.
 
-CSV mapping can be applied on all the delimiter-separated formats: CSV, TSV, PSV, SCSV, and SOHsv.
+CSV mapping can be applied on all the delimiter-separated tabular formats: CSV, TSV, PSV, SCSV, SOHsv and TXT. For more information, see supported [data formats](../../ingestion-supported-formats.md).
 
 Each element in the list describes a mapping for a specific column, and may contain the following properties:
 
@@ -38,7 +38,9 @@ Each element in the list describes a mapping for a specific column, and may cont
 |`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside the CSV file.|
 
 > [!NOTE]
-> `Ordinal` and `ConstantValue` are mutually exclusive.
+>
+> * `Ordinal` and `ConstantValue` are mutually exclusive.
+> * For TXT format, only `Ordinal` `0` can be mapped, as text is treated as a single column of lines.
 
 ### Example of the CSV mapping
 
