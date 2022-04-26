@@ -280,7 +280,7 @@ If you don't plan to use your event grid again, clean up the Event Grid Subscrip
 
 1. Below the graph, select your Event Grid Subscription and then select **Delete** to delete it:
 
-    :::image type="content" source="media/ingest-data-event-grid/delete-event-grid-subscription.png" alt-text="Screenshot of the Event Subscription graph and available Event grids with an Even grid selected and the Delete menu item selected.":::
+    :::image type="content" source="media/ingest-data-event-grid/delete-event-grid-subscription.png" alt-text="Screenshot of the Event Subscription page, showing the selected Event Grid subscription and the Delete option.":::
 
 1. To delete your Event Grid data connection, go to your Azure Data Explorer cluster. On the left menu, select **Databases**.
 
