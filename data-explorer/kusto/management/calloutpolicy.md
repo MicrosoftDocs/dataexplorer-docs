@@ -18,7 +18,7 @@ Callout policies are being managed at cluster-level and are classified into the 
 * `cosmosdb` - Controls the [CosmosDB plugin](../query/cosmosdb-plugin.md).
 * `sandbox_artifacts` - Controls sandboxed plugins ([python](../query/pythonplugin.md) | [R](../query/rplugin.md)).
 * `external_data` - Controls access to external data through [external tables](../query/schema-entities/externaltables.md) or [externaldata](../query/externaldata-operator.md) operator.
-* `webapi` - Control access to http endpoints
+* `webapi` - Controls access to http endpoints
 
 Callout policy is composed of the following.
 
