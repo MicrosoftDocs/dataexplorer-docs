@@ -36,7 +36,7 @@ Create a table in Azure Data Explorer where Azure Event Hubs will send data. Cre
 
 1. In the Azure portal, under your cluster, select **Query**.
 
-    :::image type="content" source="media/ingest-data-event-grid/azure-portal.png" alt-text="Screenshot of the Query option in the Azure portal left menu.":::
+    :::image type="content" source="media/ingest-data-event-grid/azure-portal.png" alt-text="Screenshot of the Azure portal Query page, showing a selected database.":::
 
 1. Copy the following command into the window and select **Run** to create the table (TestTable) that will receive the ingested data.
 
