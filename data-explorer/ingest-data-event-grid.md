@@ -270,7 +270,7 @@ If you don't plan to use your event grid again, clean up the Event Grid Subscrip
 
 1. Search for the Event Hubs namespace and select **Delete** to delete it:
 
-    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-find-eventhub-namespace-delete.png" alt-text="Screenshot of the All resources search results with the Delete menu option selected as part of the Clean up of the Event Hubs namespace process.":::
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-find-eventhub-namespace-delete.png" alt-text="Screenshot of the All resources page, showing the Delete menu option.":::
 
 1. In the Delete resources form, confirm the deletion to delete the Event Hubs namespace and Event Hubs resources.
 
