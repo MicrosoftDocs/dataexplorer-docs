@@ -86,7 +86,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
     * **Case-Sensitive** field indicates whether the prefix and suffix filters are case-sensitive
     * For more information about filtering events, see [Blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events).
 
-    :::image type="content" source="media/ingest-data-event-grid/filter-settings.png" alt-text="Screenshot of the Fill out Filter settings form with filter parameters.":::
+    :::image type="content" source="media/ingest-data-event-grid/filter-settings.png" alt-text="Screenshot of the Filter settings form, showing the filter parameters.":::
 
 1. Select **Next: Ingest properties**.
 
