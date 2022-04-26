@@ -44,7 +44,7 @@ Create a table in Azure Data Explorer where Azure Event Hubs will send data. Cre
     .create table TestTable (TimeStamp: datetime, Value: string, Source:string)
     ```
 
-    :::image type="content" source="media/ingest-data-event-grid/run-create-table.png" alt-text="Screenshot of the create table command copied into the run window.":::
+    :::image type="content" source="media/ingest-data-event-grid/run-create-table.png" alt-text="Screenshot of the Azure Data Explorer Web UI Query page, showing the create table command.":::
 
 1. Copy the following command into the window and select **Run** to map the incoming JSON data to the column names and data types of the table (TestTable).
 
