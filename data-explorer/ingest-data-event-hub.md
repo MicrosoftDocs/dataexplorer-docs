@@ -11,7 +11,6 @@ ms.date: 03/15/2022
 # Ingest data from event hub into Azure Data Explorer
 
 > [!div class="op_single_selector"]
-
 > * [Portal](ingest-data-event-hub.md)
 > * [One-click](one-click-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
@@ -118,7 +117,7 @@ Fill out the form with the following information, and then select **Create**.
 
 :::image type="content" source="media/ingest-data-event-hub/data-connection-pane.png" alt-text="Data connection pane event hub - Azure Data Explorer.":::
 
-**Setting** | **Suggested value** | **Field description**
+| **Setting** | **Suggested value** | **Field description** |
 |---|---|---|
 | Data connection name | *test-hub-connection* | The name of the connection you want to create in Azure Data Explorer.|
 | Subscription |      | The subscription ID where the event hub resource is located.  |
