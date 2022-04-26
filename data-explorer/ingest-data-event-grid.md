@@ -112,7 +112,7 @@ Now connect the storage account to Azure Data Explorer, so that data flowing int
 1. Under ***Review + create**.
 1. Review the resources that were auto created for you and select **Create**.
 
-    :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="Screenshot of the Data Connection form with the Review and create tab selected.":::
+    :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="Screenshot of the Data Connection Review and create tab, showing a summary of the selected data connection settings.":::
 
 ### [Azure portal - storage](#tab/portal-1)
 
