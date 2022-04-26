@@ -290,7 +290,7 @@ If you don't plan to use your event grid again, clean up the Event Grid Subscrip
 
 1. On the left menu, select **Data ingestion**:
 
-    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-data-ingestion.png" alt-text="Screenshot of Select data ingestion of the TestDatabase in order to clean up resources.":::
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-data-ingestion.png" alt-text="Screenshot of the Azure portal left menu, showing the Data ingestion option.":::
 
 1. Select your data connection *test-grid-connection* and then select **Delete** to delete it.
 
