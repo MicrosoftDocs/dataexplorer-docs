@@ -139,7 +139,7 @@ The **Data connection** pane opens with the **Basics** tab selected.
 1. Under **Ingest properties**.
 1. Fill out the form with the following information. Table and mapping names are case-sensitive:
 
-    :::image type="content" source="media/ingest-data-event-grid/portal-ingestion-tab.png" alt-text="Screenshot of the Data Connection form in storage account of Azure portal, with the Ingest properties tab selected.":::
+    :::image type="content" source="media/ingest-data-event-grid/portal-ingestion-tab.png" alt-text="Screenshot of the Data Connection Ingest properties tab, showing the subscription and data routing properties.":::
 
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
