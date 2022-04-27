@@ -213,8 +213,8 @@ Create a connection to the Azure Data Explorer database.
 ## Microsoft SQL Server Management Studio (v18.x)
 
 1. Select **Connect**, and then **Database Engine** under **Object Explorer**.
-1. Specify the name of Azure Data Explorer cluster as a server name. For example, *mykusto.kusto.windows.net*.
-1. Set **Active Directory - Integrated** for authentication.
+1. Specify the name of Azure Data Explorer cluster as a server name. For example, *mykusto.region.kusto.windows.net*.
+1. Set **Azure Active Directory - Universal with MFA** for authentication and specify user name.
 1. Select **Options**.
 1. Select **Browse Server** under **Connect to database** to browse available databases.
 1. Select **Yes** to continue browsing.
