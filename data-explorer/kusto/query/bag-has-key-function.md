@@ -7,7 +7,7 @@ ms.date: 04/27/2022
 ---
 # bag_has_key()
 
-Determines whether a column contains a key.
+Checks whether a dynamic bag column contains a given key.
 
 ## Syntax
 
@@ -21,18 +21,18 @@ You can specify a key on the nested levels using [JSONPath](jsonpath.md) notatio
 
 ## Returns
 
-True or false depending on if the key exists in the column.
+`True` or `false` whether the key exists in the column.
 
 ## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-datatable(input:dynamic)
+datatable(input: dynamic)
 [
     dynamic({'key1' : 123, 'key2': 'abc'}),
     dynamic({'key1' : 123, 'key3': 'abc'}),
 ]
-| extend result=bag_has_key(input, 'key2')
+| extend result = bag_has_key(input, 'key2')
 ```
 
 |input|result|
@@ -40,15 +40,15 @@ datatable(input:dynamic)
 |{<br>  "key1": 123,<br>  "key2": "abc"<br>}|true<br>|
 |{<br>  "key1": 123,<br>  "key3": "abc"<br>}|false<br>|
 
-### Search a key in a JSONPath notation
+### Search a JSONPath key
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-datatable(input:dynamic)
+datatable(input: dynamic)
 [
     dynamic({'key1': 123, 'key2': {'prop1' : 'abc', 'prop2': 'xyz'}, 'key3': [100, 200]}),
 ]
-| extend result=bag_has_key(input, '$.key2.prop1')
+| extend result = bag_has_key(input, '$.key2.prop1')
 ```
 
 |input|result|
