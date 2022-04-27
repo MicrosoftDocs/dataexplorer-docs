@@ -61,7 +61,7 @@ The **Cost** recommendations are available for clusters that can be changed to r
 Cost recommendations include: 
 
 * [Unused running Azure Data Explorer cluster](#unused-running-azure-data-explorer-cluster)
-* [Unused stopped Azure Data Explorer cluster](#azure-data-explorer-unused-stopped-cluster)
+* [Unused stopped Azure Data Explorer cluster](#unused-stopped-azure-data-explorer-cluster)
 * [Correctly size Azure Data Explorer cluster to optimize cost](#correctly-size-azure-data-explorer-clusters-to-optimize-cost)
 * [Reduce cache for Azure Data Explorer tables](#reduce-cache-for-azure-data-explorer-tables)
 * [Run a cleanup command to delete unused storage artifacts](#delete-unused-storage-artifacts)
