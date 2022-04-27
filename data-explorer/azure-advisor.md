@@ -60,7 +60,7 @@ Both cost and performance recommendations are currently available.
 The **Cost** recommendations are available for clusters that can be changed to reduce cost without compromising performance. 
 Cost recommendations include: 
 
-* [Unused running Azure Data Explorer cluster](#azure-data-explorer-unused-running-cluster)
+* [Unused running Azure Data Explorer cluster](#unused-running-azure-data-explorer-cluster)
 * [Unused stopped Azure Data Explorer cluster](#azure-data-explorer-unused-stopped-cluster)
 * [Correctly size Azure Data Explorer cluster to optimize cost](#correctly-size-azure-data-explorer-clusters-to-optimize-cost)
 * [Reduce cache for Azure Data Explorer tables](#reduce-cache-for-azure-data-explorer-tables)
