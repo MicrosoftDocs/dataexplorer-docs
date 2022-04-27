@@ -71,7 +71,7 @@ Cost recommendations include:
 
 A cluster is considered unused and running if it is running and has no data ingestion or queries in the past 5 days. In some cases, clusters may be [automatically stopped](auto-stop-clusters). In the flowing cases the cluster won't automatically stop and a recomendation will be surfaced:
  * Leader clusters. For more information, see [follower databases](follower.md).
- * Clusters deployed in a Virtual Network
+ * Clusters deployed in a Virtual Network.
  * Clusters where the [Auto-Stop setting](auto-stop-clusters.md#set-auto-stop-settings-while-creating-a-new-cluster) is turned off
  * Azure Synapse Data Explorer pools
  
