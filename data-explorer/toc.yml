@@ -114,8 +114,6 @@ items:
       - name: JSON data from local file to existing table
         displayName: ingest data, ingestion, one click
         href: one-click-ingestion-existing-table.md
-      - name: One-click sample app generator
-        href: sample-app-generator-one-click.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
