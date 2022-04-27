@@ -84,7 +84,7 @@ A cluster is considered unused and stopped if it has been stopped for at least 6
 The recommendation is to delete the cluster to reduce cost. 
 
 > [!CAUTION]
-> Stopped clusters may still contain data! Verify that the data is not needed before deleting the cluster. Data will no longer be accessible after deleting the cluster.
+> Stopped clusters may still contain data. Before deleting the cluster, verify that the data is no longer needed. Once the cluster is deleted, the data will no longer be accessible.
 
 
 #### Correctly size Azure Data Explorer clusters to optimize cost
