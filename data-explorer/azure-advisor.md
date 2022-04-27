@@ -97,7 +97,7 @@ It is recommended to use the [optimized autoscale configuration](manage-cluster-
 > The optimized autoscale configuration doesn’t change the instance count immediately. For immediate changes, use [manual scale](manage-cluster-horizontal-scaling.md#manual-scale) to reset the recommended instance count, and then enable the optimized autoscale for future optimization.
 
 > [!IMPORTANT]
-> Due to new SKUs and logical improvements, it is possible that the recommendation won't be surfaced even if the current SKU is not optimized. 
+> Due to new SKUs and logical improvements, it's possible that the recommendation won't be shown even if the current SKU is not optimized. 
 
 #### Reduce cache for Azure Data Explorer tables
 
