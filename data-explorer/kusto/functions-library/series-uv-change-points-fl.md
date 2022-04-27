@@ -34,12 +34,12 @@ The function `series_uv_change_points_fl()` finds change points in time series b
 ### Prerequisites
 
 * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
+* You must [create an Anomaly Detector resource and obtain its key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
 * This function calls the anomaly detection service endpoint and requires:
     * Enable the [http_request plugin / http_request_post plugin](../query/http-request-plugin.md) on the cluster.
-    * Modify the [callout policy](../management/calloutpolicy.md) for type `webapi` to allow accessing the service endpoint.
-* You must [obtain a key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
+    * Modify the [callout policy](../management/calloutpolicy.md) for type `webapi` to allow accessing the service endpoint (the uri below).
 
-In the following function example, replace 'YOUR-KEY' in the 'Ocp-Apim-Subscription-Key' of the header with your key.
+In the following function example, replace 'YOUR-AD-RESOURCE-NAME' in the uri and 'YOUR-KEY' in the 'Ocp-Apim-Subscription-Key' of the header with your resource name and key.
 
 ## [Ad hoc](#tab/adhoc)
 
@@ -49,7 +49,7 @@ For ad hoc usage, embed its code using the [let statement](../query/letstatement
 ~~~kusto
 let series_uv_change_points_fl=(tbl:(*), y_series:string, score_threshold:real=0.9, trend_window:int=5, tsid:string='_tsid')
 {
-    let uri = 'https://adi.cognitiveservices.azure.com/anomalydetector/v1.0/timeseries/changepoint/detect';
+    let uri = 'https://YOUR-AD-RESOURCE-NAME.cognitiveservices.azure.com/anomalydetector/v1.0/timeseries/changepoint/detect';
     let headers=dynamic({'Ocp-Apim-Subscription-Key': h'YOUR-KEY'});
     let kwargs = pack('y_series', y_series, 'score_threshold', score_threshold, 'trend_window', trend_window);
     let code = ```if 1:
@@ -102,7 +102,7 @@ For persistent usage, use the [`.create function`](../management/create-function
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Time Series Change Points Detection by Azure Cognitive Service")
 series_uv_change_points_fl(tbl:(*), y_series:string, score_threshold:real=0.9, trend_window:int=5, tsid:string='_tsid')
 {
-    let uri = 'https://adi.cognitiveservices.azure.com/anomalydetector/v1.0/timeseries/changepoint/detect';
+    let uri = 'https://YOUR-AD-RESOURCE-NAME.cognitiveservices.azure.com/anomalydetector/v1.0/timeseries/changepoint/detect';
     let headers=dynamic({'Ocp-Apim-Subscription-Key': h'YOUR-KEY'});
     let kwargs = pack('y_series', y_series, 'score_threshold', score_threshold, 'trend_window', trend_window);
     let code = ```if 1:
