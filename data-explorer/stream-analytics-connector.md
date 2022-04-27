@@ -42,7 +42,7 @@ There are various methods to create Azure Data Explorer output connection to Azu
 * Create [a cluster and database](create-cluster-database-portal.md) and table
 * Create an [Azure Stream Analytics job](/azure/stream-analytics/stream-analytics-quick-create-portal)
 
-# [Create Azure Data Explorer output connection using Azure portal](#tab/portal)
+## [Azure portal](#tab/portal)
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, blobs written to blob containers and Azure Stream Analytics job.
 
@@ -50,13 +50,13 @@ This article shows you how to create Azure Data Explorer output connection to Az
 
 For general information about creating Azure Data Explorer output connection to Azure Stream Analytics job, see Connect to Azure Stream Analytics job <main link>.
 
-### Create Azure Data Explorer output connection to Azure Stream Analytics job
+## Create Azure Data Explorer output connection to Azure Stream Analytics job
 
 Now you create Azure Data Explorer output connection to the Azure Stream Analytics job. When this connection is complete, and job is running, data that flows into the Azure Stream Analytics job will be ingested into the target table you created.
 
 1. Under the Azure Stream Analytics job, select **Outputs** and then select **Azure Data Explorer**.
 
-    :::image type="content" source="media/stream-analytics-connector/stream-analytics-job-output.png" alt-text="Screenshot of Azure Stream Analytics Job Topology menu. Under Job Topology, Outputs is highlighted and under Add, Azure Data Explorer is highlighted.":::
+    :::image type="content" source="media/stream-analytics-connector/stream-analytics-job-output.png" alt-text="Screenshot of the Outputs page, showing how to create an Azure Data Explorer connection.":::
 
 1. Enter the required information into the outdata connection.
 
@@ -73,16 +73,15 @@ The following table lists the property names and their description for creating 
 | Authentication | A managed identity from Azure Active Directory allows your cluster to easily access other Azure AD-protected resources such as Azure Key Vault. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets. Managed identity configuration is currently supported only to enable customer-managed keys for your cluster. |
 | Table | The table name where the output is written. The schema of this table should exactly match the number of fields and their types that your job output generates. |
 
-# [Create Azure Data Explorer output connection using Azure Resource Manager template](#tab/armtemplate)
+### [Create Azure Data Explorer output connection using Azure Resource Manager template](#tab/armtemplate)
 
 In this article, you create an Azure Data Explorer output connection using Azure Resource Manager template.
 
-### Azure Resource Manager template for adding Azure Data Explorer output data connection
+## Azure Resource Manager template for adding Azure Data Explorer output data connection
 
 The following example shows an Azure Resource Manager template for adding an Azure Data Explorer output data connection. You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) by using the form.
 
 ```json
-
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
@@ -106,14 +105,14 @@ The following example shows an Azure Resource Manager template for adding an Azu
         "streamingUnits": {
             "type": "int",
             "defaultValue": 3
- },
-"ADXClusterUri": {
+        },
+        "ADXClusterUri": {
             "type": "string"
         },
-"ADXDatabaseName": {
+        "ADXDatabaseName": {
             "type": "string"
         },
-"ADXTableName": {
+        "ADXTableName": {
             "type": "string"
         }
     },
@@ -191,7 +190,6 @@ The following example shows an Azure Resource Manager template for adding an Azu
         }
     ]
 }
-
 ```
 
 > [!NOTE]
