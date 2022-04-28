@@ -17,7 +17,6 @@ Checks whether a dynamic bag column contains a given key.
 
 * *bag*: `dynamic` property-bag input.
 * *key*: `string` property-key input.
-You can specify a key on the nested levels using [JSONPath](jsonpath.md) notation.
 
 ## Returns
 
