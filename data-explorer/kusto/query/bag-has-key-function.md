@@ -39,7 +39,7 @@ datatable(input: dynamic)
 |{<br>  "key1": 123,<br>  "key2": "abc"<br>}|true<br>|
 |{<br>  "key1": 123,<br>  "key3": "abc"<br>}|false<br>|
 
-### Search a JSONPath key
+### Search using a JSONPath key
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
