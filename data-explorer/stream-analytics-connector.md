@@ -1,5 +1,5 @@
 ---
-title: Use the Azure Data Explorer connector for Azure Stream Analytics to move data between Azure Data Explorer and Azure Stream Analytics.
+title: Azure Data Explorer Connector for Azure Stream Analytics
 description: This topic shows you how to move data between Azure Data Explorer and Azure Stream Analytics.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
