@@ -22,7 +22,7 @@ Checks whether a dynamic bag column contains a given key.
 
 ## Returns
 
-Indicates whether the key exists in the bag.
+True or false depending on if the key exists in the bag.
 
 ## Example
 
