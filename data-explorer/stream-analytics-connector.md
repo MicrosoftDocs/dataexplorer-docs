@@ -10,7 +10,11 @@ ms.date: 04/06/2022
 
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) is a real-time analytics and complex event-processing engine that is designed to analyze and process high volumes of fast streaming data from multiple sources simultaneously.
 
-An Azure Stream Analytics job consists of an input, query, and an output. There are several output types to which you can send transformed data. To create, edit, and test Stream Analytics job outputs, you can use the [Azure portal](/azure/stream-analytics/stream-analytics-quick-create-portal), [Azure PowerShell](/azure/stream-analytics/stream-analytics-quick-create-powershell), [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations), [REST API](/rest/api/streamanalytics/), and [Visual Studio](/azure/stream-analytics/stream-analytics-quick-create-vs). This article covers Azure Data Explorer output connection.
+An Azure Stream Analytics job consists of an input, query, and an output. There are several output types to which you can send transformed data. To create, edit, and test Stream Analytics job outputs, you can use the [Azure portal](/azure/stream-analytics/stream-analytics-quick-create-portal), [Azure PowerShell](/azure/stream-analytics/stream-analytics-quick-create-powershell), [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations), [REST API](/rest/api/streamanalytics/), and [Visual Studio](/azure/stream-analytics/stream-analytics-quick-create-vs). This article shows you how to create Azure Data Explorer output connection to Azure Stream Analytics job.
+
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, blobs written to blob containers and Azure Stream Analytics job.
+
+For general information about creating Azure Data Explorer output connection to Azure Stream Analytics job, see Connect to Azure Stream Analytics job *main link*.
 
 ## Data format
 
@@ -34,7 +38,7 @@ If you don't already have one, [Create an Azure Stream Analytics Job](/azure/str
 > [!NOTE]
 > Azure Data Explorer output connection only supports “Managed Identity” (incorrect link, added for reference…need to update a new one) for authentication. As part of output creation, database monitor and database ingestor permission will be granted to Azure Stream Analytics job MSI.
 
-There are various methods to create Azure Data Explorer output connection to Azure Stream Analytics job. See the following links for walkthroughs of each method.
+There are various methods to create Azure Data Explorer output connection to Azure Stream Analytics job. See the following tabs to create an Azure Data Explorer output connection by using Azure portal or by using Azure Resource Manager template.
 
 ## Prerequisites
 
@@ -44,15 +48,7 @@ There are various methods to create Azure Data Explorer output connection to Azu
 
 ## [Azure portal](#tab/portal)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, blobs written to blob containers and Azure Stream Analytics job.
-
-This article shows you how to create Azure Data Explorer output connection to Azure Stream Analytics job, a real time analytics and event processing engine service.
-
-For general information about creating Azure Data Explorer output connection to Azure Stream Analytics job, see Connect to Azure Stream Analytics job <main link>.
-
-## Create Azure Data Explorer output connection to Azure Stream Analytics job
-
-Now you create Azure Data Explorer output connection to the Azure Stream Analytics job. When this connection is complete, and job is running, data that flows into the Azure Stream Analytics job will be ingested into the target table you created.
+Here you create Azure Data Explorer output connection to the Azure Stream Analytics job. When this connection is complete, and job is running, data that flows into the Azure Stream Analytics job will be ingested into the target table you created.
 
 1. Under the Azure Stream Analytics job, select **Outputs** and then select **Azure Data Explorer**.
 
@@ -73,11 +69,7 @@ The following table lists the property names and their description for creating 
 | Authentication | A managed identity from Azure Active Directory allows your cluster to easily access other Azure AD-protected resources such as Azure Key Vault. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets. Managed identity configuration is currently supported only to enable customer-managed keys for your cluster. |
 | Table | The table name where the output is written. The schema of this table should exactly match the number of fields and their types that your job output generates. |
 
-### [Create Azure Data Explorer output connection using Azure Resource Manager template](#tab/armtemplate)
-
-In this article, you create an Azure Data Explorer output connection using Azure Resource Manager template.
-
-## Azure Resource Manager template for adding Azure Data Explorer output data connection
+### [Azure Resource Manager template](#tab/armtemplate)
 
 The following example shows an Azure Resource Manager template for adding an Azure Data Explorer output data connection. You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) by using the form.
 
