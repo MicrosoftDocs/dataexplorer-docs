@@ -50,10 +50,9 @@ The following variables are reserved for interaction between Kusto Query Languag
 * The plugin is disabled by default.
 * Enable or disable the plugin in the Azure portal in the **Configuration** tab of your cluster. For more information see [Manage language extensions in your Azure Data Explorer cluster (Preview)](../../language-extensions.md)
 
-## Notes and limitations
+## R sandbox image
 
 * The R sandbox image is based on *R 3.4.4 for Windows*, and includes packages from [Anaconda's R Essentials bundle](https://docs.anaconda.com/anaconda/packages/r-language-pkg-docs/).
-* The R sandbox limits access to the network. The R code can't dynamically install additional packages that aren't included in the image. If you need specific packages, open a **New support request** in the Azure portal.
 
 ## Examples
 
@@ -140,9 +139,9 @@ Follow these step by step instructions to install package(s) that are not includ
 
 ### Install packages
 
-In your local R machine:
+The example snips below assume local R machine on Windows environment.
 
-1. Verify you’re using the appropriate R version – current R Sandbox version is 3.4.4:
+1. Verify you're using the appropriate R version – current R Sandbox version is 3.4.4:
 
     ``` 
     > R.Version()["version.string"]
@@ -172,15 +171,15 @@ In your local R machine:
     
     ```
 
-1. Once this setup is done, any package that we install shall be added to this new folder. Let’s install the requested package and its dependencies:
+1. Once this setup is done, any package that we install shall be added to this new folder. Let's install the requested package and its dependencies:
 
     ```
-    > install.packages(“brglm2”)
+    > install.packages("brglm2")
     ```
 
     In case the question "Do you want to install from sources the packages which need compilation?" pops up, answer "Y".
 
-1. Verify that new folders were added to “C:\brglm2”:
+1. Verify that new folders were added to "C:\brglm2":
 
 :::image type="content" source="images/plugin/sample-directory.png" alt-text="brglm2 directory content" border="false":::
 
@@ -204,7 +203,7 @@ libs.zip:
 Install the [brglm2 package](https://cran.r-project.org/web/packages/brglm2/index.html):
 
 ~~~kusto
-range x from 1 to 1 step 1
+print x=1
 | evaluate r(typeof(*, ver:string),
     'library(sandboxutils)\n'
     'zipfile.install("brglm2.zip")\n'
