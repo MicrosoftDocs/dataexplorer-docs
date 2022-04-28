@@ -1,13 +1,9 @@
 ---
 title: ".alter callout policy command - Azure Data Explorer"
 description: "This article describes the .alter callout policy command in Azure Data Explorer."
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/30/2021
+ms.date: 11/29/2021
 ---
 # .alter callout policy
 
@@ -15,7 +11,11 @@ Change the cluster [callout policy](calloutpolicy.md). Azure Data Explorer clust
 
 ## Syntax
 
-`.alter` `cluster` `policy` `callout` `"`*Serialized partial policy*`"`
+`.alter` `cluster` `policy` `callout` *SerializedArrayOfPolicyObjects* 
+
+## Arguments
+
+*SerializedArrayOfPolicyObjects* - A serialized array of JSON policy objects defined. See [callout policy](calloutpolicy.md) for policy properties. 
 
 ## Returns
 

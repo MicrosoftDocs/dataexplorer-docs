@@ -1,10 +1,7 @@
 ---
 title: 'Add database principals for Azure Data Explorer by using Python'
 description: In this article, you learn how to add database principals for Azure Data Explorer by using Python.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/03/2020
 ---

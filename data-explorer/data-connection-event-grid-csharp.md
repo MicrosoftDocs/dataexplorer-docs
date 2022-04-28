@@ -1,15 +1,12 @@
 ---
 title: 'Create an Event Grid data connection for Azure Data Explorer by using C#'
 description: In this article, you learn how to create an Event Grid data connection for Azure Data Explorer by using C#.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 03/15/2022
 ---
 
-# Create an Event Grid data connection for Azure Data Explorer by using C#
+# Create an Event Grid data connection for Azure Data Explorer by using C\#
 
 > [!div class="op_single_selector"]
 > * [One-click](one-click-ingestion-new-table.md)
@@ -41,7 +38,7 @@ The following example shows you how to add an Event Grid data connection program
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "PlaceholderClientSecret";//Client Secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
 var credential = new ClientCredential(clientId, clientSecret);
@@ -69,9 +66,10 @@ var tableName = "StormEvents";
 var mappingRuleName = "StormEvents_CSV_Mapping";
 var dataFormat = DataFormat.CSV;
 var blobStorageEventType = "Microsoft.Storage.BlobCreated";
+var databaseRouting = "Multi";
 
 await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, dataConnectionName,
-    new EventGridDataConnection(storageAccountResourceId, eventHubResourceId, consumerGroup, tableName: tableName, location: location, mappingRuleName: mappingRuleName, dataFormat: dataFormat, blobStorageEventType: blobStorageEventType));
+    new EventGridDataConnection(storageAccountResourceId, eventHubResourceId, consumerGroup, tableName: tableName, location: location, mappingRuleName: mappingRuleName, dataFormat: dataFormat, blobStorageEventType: blobStorageEventType, databaseRouting: databaseRouting));
 ```
 
 |**Setting** | **Suggested value** | **Field description**|
@@ -79,7 +77,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | tenantId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Your tenant ID. Also known as directory ID.|
 | subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The subscription ID that you use for resource creation.|
 | clientId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The client ID of the application that can access resources in your tenant.|
-| clientSecret | *xxxxxxxxxxxxxx* | The client secret of the application that can access resources in your tenant. |
+| clientSecret | *PlaceholderClientSecret* | The client secret of the application that can access resources in your tenant. |
 | resourceGroupName | *testrg* | The name of the resource group containing your cluster.|
 | clusterName | *mykustocluster* | The name of your cluster.|
 | databaseName | *mykustodatabase* | The name of the target database in your cluster.|
@@ -87,11 +85,12 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | tableName | *StormEvents* | The name of the target table in the target database.|
 | mappingRuleName | *StormEvents_CSV_Mapping* | The name of your column mapping related to the target table.|
 | dataFormat | *csv* | The data format of the message.|
-| eventHubResourceId | *Resource ID* | The resource ID of your Event Hub where the Event Grid is configured to send events. |
+| eventHubResourceId | *Resource ID* | The resource ID of your event hub where the Event Grid is configured to send events. |
 | storageAccountResourceId | *Resource ID* | The resource ID of your storage account that holds the data for ingestion. |
-| consumerGroup | *$Default* | The consumer group of your Event Hub.|
+| consumerGroup | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
 | blobStorageEventType | *Microsoft.Storage.BlobCreated* | The type of event that triggers ingestion. Supported events are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage.|
+| databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-grid-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-grid-overview.md#events-routing). |
 
 ## Generate sample data
 

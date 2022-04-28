@@ -1,10 +1,7 @@
 ---
 title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 11/09/2021
 ---
@@ -35,7 +32,7 @@ This section lists the major changes to docs during October 2021.
 
 | Article title | Description |
 |--|--|
-| [Role-based Authorization in Kusto](/azure/data-explorer/kusto/management/access-control/role-based-authorization.md) | Updated article. Materialized views rename source table.
+| [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md) | Updated article. Materialized views rename source table.
 | [Cache policy (hot and cold cache)](./kusto/management/cachepolicy.md) | Updated article. Caching with long storage.
 | [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md)| Updated article. Using the AllDatabasesMonitor role.
 
@@ -47,7 +44,7 @@ This section lists the major changes to docs during September 2021.
 
 | Article title | Description |
 |--|--|
-| [Ingest data from Event Hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated article. Learn how to connect event hub with managed identity.
+| [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated article. Learn how to connect event hub with managed identity.
 
 ### Query
 
@@ -65,7 +62,7 @@ This section lists the major changes to docs during August 2021.
 | Article title | Description |
 |--|--|
 | [Use wizard for ingestion with LightIngest (preview)](generate-lightingest-command.md) | New article. Learn how to use a wizard for one-time ingestion of historical data with LightIngest.
-| [Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. One click Event Hub experience. 
+| [Use one-click ingestion to create an event hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. One click event hub experience. 
 | [Use LightIngest to ingest data into Azure Data Explorer](lightingest.md)| Updated article. Generate LightIngest commands - one click experience.
 
 ### Query
@@ -104,7 +101,7 @@ This section lists the major changes to docs during August 2021.
 |--|--|
 | [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
 | [Create an external table using the Web UI wizard](external-table.md) | Updated article. New UI
-| [Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. New UI.
+| [Use one-click ingestion to create an event hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. New UI.
 | [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md) | Updated article. New UI
 | [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md) | Updated article. New UI
 | [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. New UI
@@ -187,7 +184,7 @@ This section lists the major changes to docs during April 2021.
 
 | Article title | Description |
 |--|--|
-[Workload groups - Control commands](kusto/management/workload-groups-commands.md)  | Updated article. General Availability (GA).
+[Workload groups - Control commands](./kusto/management/show-workload-group-command.md)  | Updated article. General Availability (GA).
 [Workload groups](kusto/management/workload-groups.md)  | Updated article. General Availability (GA).
 [Materialized views](kusto/management/materialized-views/materialized-view-overview.md)  | Updated article. General Availability (GA).
 [Materialized views policies](kusto/management/materialized-views/materialized-view-policies.md)  | Updated article. General Availability (GA).
@@ -218,7 +215,7 @@ This section lists the major changes to docs during March 2021.
 
 | Article title | Description |
 |--|--|
-| [Auto delete policy command](kusto/management/auto-delete-policy-command.md), [Auto delete policy](kusto/management/auto-delete-policy.md) | New articles. An auto delete policy on a table sets an expiry date for the table. |
+| [Auto delete policy command](./kusto/management/show-auto-delete-policy-command.md), [Auto delete policy](kusto/management/auto-delete-policy.md) | New articles. An auto delete policy on a table sets an expiry date for the table. |
 | [Stored query results (Preview)](kusto/management/stored-query-results.md) | Updated article. Added async mode. |
 
 ### Functions library
@@ -287,10 +284,10 @@ Article title | Description
 Article title | Description
 ---|---
 [Clean extent containers commands](kusto/management/clean-extent-containers.md) | New article. This article describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands in Azure Data Explorer.
-[Request classification policy (Preview)](kusto/management/request-classification-policy.md)  <br>[Request classification policy (Preview) - Control commands](kusto/management/request-classification-policy-commands.md) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
+[Request classification policy (Preview)](kusto/management/request-classification-policy.md)  <br>[Request classification policy (Preview) - Control commands](./kusto/management/show-cluster-policy-request-classification-command.md) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
 [Request limits policy (Preview)](kusto/management/request-limits-policy.md) | New article. A workload group's request limits policy allows limiting the resources used by the request during its execution.
 [Request rate limit policy (Preview)](kusto/management/request-rate-limit-policy.md) | New article. The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group.
-[Workload groups (Preview)](kusto/management/workload-groups.md)  <br> [Workload groups (Preview) - Control commands](kusto/management/workload-groups-commands.md) | New articles. A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
+[Workload groups (Preview)](kusto/management/workload-groups.md)  <br> [Workload groups (Preview) - Control commands](./kusto/management/show-workload-group-command.md) | New articles. A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
 [Queries management](kusto/management/queries.md) | Updated article. Syntax updated
 
 ## December 2020
@@ -329,8 +326,8 @@ This section lists the major changes to docs during November 2020.
 Article title | Description
 ---|---
 [Azure Policy built-in definitions for Azure Data Explorer](policy-reference.md) | New article. Index of [Azure Policy](/azure/governance/policy/overview) built-in policy definitions for Azure Data Explorer.
-[Use one-click ingestion to create an Event Hub data connection for Azure Data Explorer](one-click-event-hub.md) | New article. Connect an Event Hub to a table in Azure Data Explorer using the [one-click ingestion](ingest-data-one-click.md) experience.
-| [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md) | Updated article. Supports both user-assigned managed identities and system-assigned managed identities
+[Use one-click ingestion to create an event hub data connection for Azure Data Explorer](one-click-event-hub.md) | New article. Connect an event hub to a table in Azure Data Explorer using the [one-click ingestion](ingest-data-one-click.md) experience.
+| [Configure managed identities for your Azure Data Explorer cluster](./configure-managed-identities-cluster.md) | Updated article. Supports both user-assigned managed identities and system-assigned managed identities
 | [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. General availability (GA). |
  | [Quickstart: Query data in Azure Data Explorer Web UI](web-query-data.md) | Updated article. New capabilities.
 |  [What is one-click ingestion?](ingest-data-one-click.md) | Updated article. Added ingestion from JSON nested levels. General availability (GA).

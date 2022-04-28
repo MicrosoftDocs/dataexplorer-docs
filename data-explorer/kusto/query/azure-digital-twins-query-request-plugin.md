@@ -1,23 +1,19 @@
 ---
 title: azure_digital_twins_query_request plugin - Azure Data Explorer
 description: This article describes the Azure Digital Twins query request plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/06/2021
+ms.date: 01/23/2022
 ---
 # azure_digital_twins_query_request plugin
 
-The azure_digital_twins_query_request plugin runs an Azure Digital Twins query as part of a Kusto Query Language query.
+The `azure_digital_twins_query_request` plugin runs an Azure Digital Twins query as part of a Kusto Query Language query. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
-Using the plugin, you can reason across data in both Azure Digital Twins and any data source accessible through the Kusto Query Language. For example, you can use the plugin to contextualize time series data in a Kusto query by joining it with knowledge graph data held in Azure Digital Twins.
+Using the plugin, you can query across data in both Azure Digital Twins and any data source accessible through the Kusto Query Language. For example, you can use the plugin to contextualize time series data in a Kusto query by joining it with knowledge graph data held in Azure Digital Twins.
 
 ## Syntax
 
-  `evaluate` `azure_digital_twins_query_request` `(` *AdtInstanceEndpoint* `,` *AdtQuery* `)`
+`evaluate` `azure_digital_twins_query_request` `(` *AdtInstanceEndpoint* `,` *AdtQuery* `)`
 
 ## Arguments
 
@@ -43,9 +39,9 @@ evaluate azure_digital_twins_query_request(
   'SELECT T AS Twins FROM DIGITALTWINS T')
 ```
 
-#### Result
+**Output**
 
-![The twins present in the Azure Digital Twins instance.](images/azure-digital-twins-query-request-plugin/adt-twins.png "The twins present in the Azure Digital Twins instance")
+:::image type="content" source="images/azure-digital-twins-query-request-plugin/adt-twins.png" alt-text="Screenshot of the twins present in the Azure Digital Twins instance.":::
 
 ### Projection of twin properties as columns along with additional Kusto expressions
 
@@ -59,7 +55,7 @@ evaluate azure_digital_twins_query_request(
 | project TemperatureInC = Temperature, Humidity
 ```
 
-#### Result
+**Output**
 
 |TemperatureInC|Humidity|
 |---|---|
@@ -91,6 +87,6 @@ ADT_Data_History is a table whose schema as follows:
 |---|---|---|---|---|---|---|
 |2021-02-01 17:24|contosoRoom|dtmi:com:contoso:Room;1|Temperature|24|...|..|
 
-#### Result
+**Output**
 
-![Anomaly chart of the above expression.](images/azure-digital-twins-query-request-plugin/adt-anomaly.png "Highlighted point is the anomaly")
+:::image type="content" source="images/azure-digital-twins-query-request-plugin/adt-anomaly.png" alt-text="Screenshot of the Anomaly chart of the test expression. Highlighted point is the anomaly.":::

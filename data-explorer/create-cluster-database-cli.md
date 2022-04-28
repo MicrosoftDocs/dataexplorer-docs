@@ -1,10 +1,7 @@
 ---
 title: 'Create an Azure Data Explorer cluster & DB with Azure CLI'
 description: Learn how to create an Azure Data Explorer cluster and database by using the Azure CLI
-author: orspod
-ms.author: orspodek
 ms.reviewer: radennis
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/03/2019
 ---
@@ -22,18 +19,26 @@ ms.date: 06/03/2019
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a database so that you can run queries against it. In this article, you create a cluster and a database by using Azure CLI.
 
+
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 
 [!INCLUDE [cloud-shell-try-it.md](includes/cloud-shell-try-it.md)]
 
-* If you choose to install and use the Azure CLI locally, this article requires the Azure CLI version 2.0.4 or later. Run `az --version` to check your version. If you need to install or upgrade, see [Install the Azure CLI](/cli/azure/install-azure-cli).
-
 
 ## Configure the CLI parameters
 
+If you choose to install and use the Azure CLI locally, this article requires the Azure CLI version 2.0.4 or later. Run `az --version` to check your version. If you need to install or upgrade, see [Install the Azure CLI](/cli/azure/install-azure-cli).
+
 The following steps are not required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, follow these steps to sign in to Azure and to set your current subscription:
+
+1. Install extension to use the latest Kusto CLI version:
+
+    ```azurecli-interactive
+    az extension add -n kusto
+    ```
+
 
 1. Run the following command to sign in to Azure:
 
@@ -47,12 +52,6 @@ The following steps are not required if you're running commands in Azure Cloud S
     az account set --subscription MyAzureSub
     ```
    
-1. Install extension to use the latest Kusto CLI version:
-
-    ```azurecli-interactive
-    az extension add -n kusto
-    ```
-
 ## Create the Azure Data Explorer cluster
 
 1. Create your cluster by using the following command:

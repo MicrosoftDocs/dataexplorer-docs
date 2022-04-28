@@ -1,24 +1,21 @@
 ---
 title: Use follower database feature to attach databases in Azure Data Explorer
 description: Learn about how to attach databases in Azure Data Explorer using the follower database feature.
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabilehner
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 02/28/2022
 ---
 
 # Use follower databases
 
-The **follower database** feature allows you to attach a database located in a different cluster to your Azure Data Explorer cluster. The **follower database** is attached in *read-only* mode, making it possible to view the data and run queries on the data that was ingested into the **leader database**. The follower database synchronizes changes in the leader databases. Because of the synchronization, there's a data lag of a few seconds to a few minutes in data availability. The length of the time lag depends on the overall size of the leader database metadata. The leader and follower databases use the same storage account to fetch the data. The storage is owned by the leader database. The follower database views the data without needing to ingest it. Since the attached database is a read-only database, the data, tables, and policies in the database can't be modified except for [caching policy](#configure-caching-policy), [principals](#manage-principals), and [permissions](#manage-permissions). Attached databases can't be deleted. They must be detached by the leader or follower and only then they can be deleted. 
+The **follower database** feature allows you to attach a database located in a different cluster to your Azure Data Explorer cluster. The **follower database** is attached in *read-only* mode, making it possible to view the data and run queries on the data that was ingested into the **leader database**. The follower database synchronizes changes in the leader databases. Because of the synchronization, there's a data lag of a few seconds to a few minutes in data availability. The length of the time lag depends on the overall size of the leader database metadata. The leader and follower databases use the same storage account to fetch the data. The storage is owned by the leader database. The follower database views the data without needing to ingest it. Since the attached database is a read-only database, the data, tables, and policies in the database can't be modified except for [caching policy](#configure-caching-policy), [principals](#manage-principals), and [permissions](#manage-permissions). Attached databases can't be deleted. They must be detached by the leader or follower and only then they can be deleted.
 
 Attaching a database to a different cluster using the follower capability is used as the infrastructure to share data between organizations and teams. The feature is useful to segregate compute resources to protect a production environment from non-production use cases. Follower can also be used to associate the cost of Azure Data Explorer cluster to the party that runs queries on the data.
 
 ## Which databases are followed?
 
-* A cluster can follow one database, several databases, or all databases of a leader cluster. 
-* A single cluster can follow databases from multiple leader clusters. 
+* A cluster can follow one database, several databases, or all databases of a leader cluster.
+* A single cluster can follow databases from multiple leader clusters.
 * A cluster can contain both follower databases and leader databases.
 * EngineV3 clusters can only follow EngineV3 clusters, similarly EngineV2 clusters can only follow V2 clusters.
 
@@ -31,17 +28,17 @@ Attaching a database to a different cluster using the follower capability is use
 
 ## Attach a database
 
-There are various methods you can use to attach a database. In this article, we discuss attaching a database using C#, Python, PowerShell, or an Azure Resource Manager template. 
-To attach a database, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster and the follower cluster. Add or remove role assignments using [Azure portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli), and [ARM template](/azure/role-based-access-control/role-assignments-template). Learn more about [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) and the [different roles](/azure/role-based-access-control/rbac-and-directory-admin-roles). 
+There are various methods you can use to attach a database. In this article, we discuss attaching a database using C#, Python, PowerShell, or an Azure Resource Manager template.
+To attach a database, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster and the follower cluster. Add or remove role assignments using [Azure portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli), and [ARM template](/azure/role-based-access-control/role-assignments-template). Learn more about [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) and the [different roles](/azure/role-based-access-control/rbac-and-directory-admin-roles).
 
 ### Table level sharing
 
-When attaching the database all tables, external tables and materialized views are followed as well. You can share specific tables/external tables/materialized views by configuring the '*TableLevelSharingProperties*'. 
+When attaching the database all tables, external tables and materialized views are followed as well. You can share specific tables/external tables/materialized views by configuring the '*TableLevelSharingProperties*'.
 
-'*TableLevelSharingProperties*' contains six arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, and `materializedViewsToExclude`. The maximum number of entries in all arrays together is 100.  
+'*TableLevelSharingProperties*' contains six arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, and `materializedViewsToExclude`. The maximum number of entries in all arrays together is 100.
 
 > [!NOTE]
-> Table level sharing is not supported when using '*' all databases notation. 
+> Table level sharing is not supported when using '*' all databases notation.
 
 > [!NOTE]
 > When materialized views are included, their source tables are included as well.
@@ -49,42 +46,44 @@ When attaching the database all tables, external tables and materialized views a
 #### Examples
 
 1. Include all tables. No '*' is needed, since all tables are followed by default:
-  
-   ```kusto
+
+    ```kusto
     tablesToInclude = []
     ```
+
 1. Include all tables with names that start with "Logs":
-  
-   ```kusto
+
+    ```kusto
     tablesToInclude = ["Logs*"]
     ```
+
 1. Exclude all external tables:
-    
+
     ```kusto
     externalTablesToExclude = ["*"]
     ```
 
 1. Exclude all materialized views:
 
-    ```kusto 
+    ```kusto
     materializedViewsToExclude=["*"]
     ```
 
-# [C#](#tab/csharp)
+## [C#](#tab/csharp)
 
-### Attach a database using C#
+### Attach a database using C\#
 
-#### Needed NuGets
+### Prerequisite nuggets
 
 * Install [Microsoft.Azure.Management.Kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Install [Microsoft.Rest.ClientRuntime.Azure.Authentication for authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
 
-#### Example
+### C\# example
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client secret
+var clientSecret = "PlaceholderClientSecret";//Client Secret
 var leaderSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 
@@ -99,7 +98,7 @@ var leaderClusterName = "leader";
 var followerClusterName = "follower";
 var attachedDatabaseConfigurationName = "uniqueNameForAttachedDatabaseConfiguration";
 var databaseName = "db"; // Can be specific database name or * for all databases
-var defaultPrincipalsModificationKind = "Union"; 
+var defaultPrincipalsModificationKind = "Union";
 var location = "North Central US";
 
 
@@ -138,18 +137,18 @@ AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new Atta
 var attachedDatabaseConfigurations = resourceManagementClient.AttachedDatabaseConfigurations.CreateOrUpdate(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationName, attachedDatabaseConfigurationProperties);
 ```
 
-# [Python](#tab/python)
+## [Python](#tab/python)
 
 ### Attach a database using Python
 
-#### Needed modules
+### Prerequisite modules
 
-```
+```python
 pip install azure-common
 pip install azure-mgmt-kusto
 ```
 
-#### Example
+### Python example
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -195,17 +194,17 @@ attached_database_configuration_properties = AttachedDatabaseConfiguration(clust
 poller = kusto_management_client.attached_database_configurations.create_or_update(follower_resource_group_name, follower_cluster_name, attached_database_Configuration_name, attached_database_configuration_properties)
 ```
 
-# [PowerShell](#tab/azure-powershell)
+## [PowerShell](#tab/azure-powershell)
 
 ### Attach a database using PowerShell
 
-#### Needed modules
+### Prerequisite module
 
-```
+```powershell
 Install : Az.Kusto
 ```
 
-#### Example
+### PowerShell example
 
 ```Powershell
 $FollowerClustername = 'follower'
@@ -223,166 +222,168 @@ $Location = $getleadercluster.Location
 ##Handle the config name if all databases needs to be followed
 if($DatabaseName -eq '*')  {
         $configname = $FollowerClustername + 'config'
-       } 
+       }
 else {
-        $configname = $DatabaseName   
+        $configname = $DatabaseName
      }
 ##Table level sharing is not supported when using '*' all databases notation. If you use the all database notation please remove all table level sharing lines from the powershell command.
 New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
-	-Name $configname `
-	-ResourceGroupName $FollowerResourceGroupName `
-	-SubscriptionId $FollowerClusterSubscriptionID `
-	-DatabaseName $DatabaseName `
-	-ClusterResourceId $LeaderClusterResourceid `
-	-DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind `
-	-Location $Location `
-	-TableLevelSharingPropertyTablesToInclude "table1", "table2", "table3" `
-	-TableLevelSharingPropertyExternalTablesToExclude "Logs*" `
-	-ErrorAction Stop 
+    -Name $configname `
+    -ResourceGroupName $FollowerResourceGroupName `
+    -SubscriptionId $FollowerClusterSubscriptionID `
+    -DatabaseName $DatabaseName `
+    -ClusterResourceId $LeaderClusterResourceid `
+    -DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind `
+    -Location $Location `
+    -TableLevelSharingPropertyTablesToInclude "table1", "table2", "table3" `
+    -TableLevelSharingPropertyExternalTablesToExclude "Logs*" `
+    -ErrorAction Stop
 ```
 
-# [Resource Manager Template](#tab/azure-resource-manager)
+## [Resource Manager Template](#tab/azure-resource-manager)
 
 ### Attach a database using an Azure Resource Manager template
 
-In this section, you learn to attach a database to an existing cluster by using an [Azure Resource Manager template](/azure/azure-resource-manager/management/overview). 
+You can use an [Azure Resource Manager template](/azure/azure-resource-manager/management/overview) to attach a database to an existing cluster.
 
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "followerClusterName": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Name of the cluster to which the database will be attached."
-            }
-        },
-        "attachedDatabaseConfigurationsName": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Name of the attached database configurations to create."
-            }
-        },
-        "databaseName": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "The name of the database to follow. You can follow all databases by using '*'."
-            }
-        },
-        "leaderClusterResourceId": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "The resource ID of the leader cluster."
-            }
-        },
-        "defaultPrincipalsModificationKind": {
-            "type": "string",
-            "defaultValue": "Union",
-            "metadata": {
-                "description": "The default principal modification kind."
-            }
-        },
-        "tablesToInclude": {
-            "type": "array",
-            "defaultValue": [],
-            "metadata": {
-                "description": "The list of tables to include. Not supported when following all databases."
-            }
-        },
-        "tablesToExclude": {
-            "type": "array",
-            "defaultValue": [],
-            "metadata": {
-                "description": "The list of tables to exclude. Not supported when following all databases."
-            }
-        },
-        "externalTablesToInclude": {
-            "type": "array",
-            "defaultValue": [],
-            "metadata": {
-                "description": "The list of external tables to include. Not supported when following all databases."
-            }
-        },
-        "externalTablesToExclude": {
-            "type": "array",
-            "defaultValue": [],
-            "metadata": {
-                "description": "The list of external tables to exclude. Not supported when following all databases."
-            }
-        },
-        "materializedViewsToInclude": {
-            "type": "array",
-            "defaultValue": [],
-            "metadata": {
-                "description": "The list of materialized views to include. Not supported when following all databases."
-            }
-        },
-        "materializedViewsToExclude": {
-            "type": "array",
-            "defaultValue": [],
-            "metadata": {
-                "description": "The list of materialized views to exclude. Not supported when following all databases."
-            }
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Location for all resources."
-            }
-        }
-    },
-    "variables": {},
-    "resources": [
-        {
-            "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
-            "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
-            "apiVersion": "2021-01-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "databaseName": "[parameters('databaseName')]",
-                "clusterResourceId": "[parameters('leaderClusterResourceId')]",
-                "defaultPrincipalsModificationKind": "[parameters('defaultPrincipalsModificationKind')]",
-                "tableLevelSharingProperties":{
-                    "tablesToInclude": "[parameters('tablesToInclude')]",
-                    "tablesToExclude": "[parameters('tablesToExclude')]",
-                    "externalTablesToInclude": "[parameters('externalTablesToInclude')]",
-                    "externalTablesToExclude": "[parameters('externalTablesToExclude')]",
-                    "materializedViewsToInclude": "[parameters('materializedViewsToInclude')]",
-                    "materializedViewsToExclude": "[parameters('materializedViewsToExclude')]"
+Use the following steps to attach a database:
 
+1. Create a template using the information in the following table to help you configure it.
+
+    | **Parameter** | **Description** | **Example** |
+    |--|--|--|
+    | *followerClusterName* | The name of the follower cluster; where the template will be deployed. |  |
+    | *attachedDatabaseConfigurationsName* | The name of the attached database configurations object. The name can be any string that is unique at the cluster level. |  |
+    | *databaseName* | The name of the database to be followed. To follow all the leader's databases, use '*'. |  |
+    | *leaderClusterResourceId* | The resource ID of the leader cluster. |  |
+    | *defaultPrincipalsModificationKind* | The default principal modification kind. | Can be `Union`, `Replace`, or `None`. For more information about the default principal modification kind, see [principal modification kind control command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind). |
+    | *tablesToInclude* | The list of tables to include. To include all tables starting with 'Logs', use ["Logs*"]. | `["table1ToInclude", "table2ToInclude"]` |
+    | *tablesToExclude* | The list of tables to exclude. To exclude all tables, use ["*"]. | `["table1ToExclude", "table2ToExclude"]` |
+    | *externalTablesToInclude* | The list of tables to include. To include all external tables starting with 'Logs', use ["Logs*"]. | `["ExternalTable1ToInclude", "ExternalTable2ToInclude"]` |
+    | *externalTablesToExclude* | The list of tables to exclude. To exclude all external tables, use ["*"]. | `["ExternalTable1ToExclude", "ExternalTable2ToExclude"]` |
+    | *materializedViewsToInclude* | The list of materialized views to include. To include all materialized views starting with 'Logs', use ["Logs*"]. | `["Mv1ToInclude", "Mv2ToInclude"]` |
+    | *materializedViewsToExclude* | The list of materialized views to exclude. To exclude all materialized views, use ["*"]. | `["Mv11ToExclude", "Mv22ToExclude"]` |
+    | *location* | The location of all the resources. The leader and the follower must be in the same location. |  |
+
+    ```json
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "followerClusterName": {
+                "type": "string",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "Name of the cluster to which the database will be attached."
+                }
+            },
+            "attachedDatabaseConfigurationsName": {
+                "type": "string",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "Name of the attached database configurations to create."
+                }
+            },
+            "databaseName": {
+                "type": "string",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "The name of the database to follow. You can follow all databases by using '*'."
+                }
+            },
+            "leaderClusterResourceId": {
+                "type": "string",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "The resource ID of the leader cluster."
+                }
+            },
+            "defaultPrincipalsModificationKind": {
+                "type": "string",
+                "defaultValue": "Union",
+                "metadata": {
+                    "description": "The default principal modification kind."
+                }
+            },
+            "tablesToInclude": {
+                "type": "array",
+                "defaultValue": [],
+                "metadata": {
+                    "description": "The list of tables to include. Not supported when following all databases."
+                }
+            },
+            "tablesToExclude": {
+                "type": "array",
+                "defaultValue": [],
+                "metadata": {
+                    "description": "The list of tables to exclude. Not supported when following all databases."
+                }
+            },
+            "externalTablesToInclude": {
+                "type": "array",
+                "defaultValue": [],
+                "metadata": {
+                    "description": "The list of external tables to include. Not supported when following all databases."
+                }
+            },
+            "externalTablesToExclude": {
+                "type": "array",
+                "defaultValue": [],
+                "metadata": {
+                    "description": "The list of external tables to exclude. Not supported when following all databases."
+                }
+            },
+            "materializedViewsToInclude": {
+                "type": "array",
+                "defaultValue": [],
+                "metadata": {
+                    "description": "The list of materialized views to include. Not supported when following all databases."
+                }
+            },
+            "materializedViewsToExclude": {
+                "type": "array",
+                "defaultValue": [],
+                "metadata": {
+                    "description": "The list of materialized views to exclude. Not supported when following all databases."
+                }
+            },
+            "location": {
+                "type": "string",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "Location for all resources."
                 }
             }
-        }
-    ]
-}
-```
+        },
+        "variables": {},
+        "resources": [
+            {
+                "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
+                "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
+                "apiVersion": "2021-01-01",
+                "location": "[parameters('location')]",
+                "properties": {
+                    "databaseName": "[parameters('databaseName')]",
+                    "clusterResourceId": "[parameters('leaderClusterResourceId')]",
+                    "defaultPrincipalsModificationKind": "[parameters('defaultPrincipalsModificationKind')]",
+                    "tableLevelSharingProperties":{
+                        "tablesToInclude": "[parameters('tablesToInclude')]",
+                        "tablesToExclude": "[parameters('tablesToExclude')]",
+                        "externalTablesToInclude": "[parameters('externalTablesToInclude')]",
+                        "externalTablesToExclude": "[parameters('externalTablesToExclude')]",
+                        "materializedViewsToInclude": "[parameters('materializedViewsToInclude')]",
+                        "materializedViewsToExclude": "[parameters('materializedViewsToExclude')]"
 
-### Deploy the template
+                    }
+                }
+            }
+        ]
+    }
+    ```
 
-You can deploy the Azure Resource Manager template by [using the Azure portal](https://portal.azure.com) or using PowerShell.
+1. Deploy the Azure Resource Manager template using the [Azure portal](https://ms.portal.azure.com/#create/Microsoft.Template) or PowerShell.
 
-   ![template deployment.](media/follower/template-deployment.png)
-
-|**Setting**  |**Description**  | **Example** |
-|---------|---------|---|
-|Follower Cluster Name     |  The name of the follower cluster; where the template will be deployed.  |
-|Attached Database Configurations Name    |    The name of the attached database configurations object. The name can be any string that is unique at the cluster level.     |
-|Database Name     |      The name of the database to be followed. To follow all the leader's databases, use '*'.   |
-|Leader Cluster Resource ID    |   The resource ID of the leader cluster.      |
-|Default Principals Modification Kind    |   The default principal modification kind. | Can be `Union`, `Replace`, or `None`. For more information about the default principal modification kind, see [principal modification kind control command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind).      |
-| Tables To Include | The list of tables to include. To include all tables starting with 'Logs', use ["Logs*"]. | `["table1ToInclude", "table2ToInclude"]`  |
-| Tables To Exclude | The list of tables to exclude. To exclude all tables, use ["*"].| `["table1ToExclude", "table2ToExclude"]`  |
-| External Tables To Include | The list of tables to include. To include all external tables starting with 'Logs', use ["Logs*"].| `["ExternalTable1ToInclude", "ExternalTable2ToInclude"]`  |
-| External Tables To Exclude | The list of tables to exclude. To exclude all external tables, use ["*"]. | `["ExternalTable1ToExclude", "ExternalTable2ToExclude"]` |
-| Materialized Views To Include | The list of materialized views to include. To include all materialized views starting with 'Logs', use ["Logs*"]. | `["Mv1ToInclude", "Mv2ToInclude"]`   |
-| Materialized Views To Exclude | The list of materialized views to exclude. To exclude all materialized views, use ["*"]. | `["Mv11ToExclude", "Mv22ToExclude"]` |
-|Location   |   The location of all the resources. The leader and the follower must be in the same location.       |
+    ![template deployment.](media/follower/template-deployment.png)
 
 ---
 
@@ -390,7 +391,7 @@ You can deploy the Azure Resource Manager template by [using the Azure portal](h
 
 To verify that the database was successfully attached, find your attached databases in the [Azure portal](https://portal.azure.com). You can verify the databases were successfully attached in either the [follower](#check-your-follower-cluster) or [leader](#check-your-leader-cluster) clusters.
 
-### Check your follower cluster  
+### Check your follower cluster
 
 1. Navigate to the follower cluster and select **Databases**
 1. Search for new Read-only databases in the database list.
@@ -404,22 +405,21 @@ To verify that the database was successfully attached, find your attached databa
 
     ![Read and write attached databases.](media/follower/read-write-databases-shared.png)
 
-## Detach the follower database  
+## Detach the follower database
 
 > [!NOTE]
 > To detach a database from the follower or leader side, you must have user, group, service principal, or managed identity with at least contributor role on the cluster from which you are detaching the database. In the example below, we use service principal.
 
-# [C#](#tab/csharp)
+## [C#](#tab/csharp)
 
-### Detach the attached follower database from the follower cluster using C#
-
+### Detach the attached follower database from the follower cluster using C#**
 
 The follower cluster can detach any attached follower database as follows:
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client secret
+var clientSecret = "PlaceholderClientSecret";//Client Secret
 var leaderSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 
@@ -436,14 +436,14 @@ var attachedDatabaseConfigurationsName = "uniqueName";
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
 
-### Detach the attached follower database from the leader cluster using C#
+### Detach the attached follower database from the leader cluster using C\#
 
 The leader cluster can detach any attached database as follows:
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client secret
+var clientSecret = "PlaceholderClientSecret";//Client Secret
 var leaderSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 
@@ -466,7 +466,7 @@ var followerDatabaseDefinition = new FollowerDatabaseDefinition()
 resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
 ```
 
-# [Python](#tab/python)
+## [Python](#tab/python)
 
 ### Detach the attached follower database from the follower cluster using Python
 
@@ -537,32 +537,32 @@ cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceG
 poller = kusto_management_client.clusters.detach_follower_databases(resource_group_name = leader_resource_group_name, cluster_name = leader_cluster_name, cluster_resource_id = cluster_resource_id, attached_database_configuration_name = attached_database_configuration_name)
 ```
 
-# [PowerShell](#tab/azure-powershell)
+## [PowerShell](#tab/azure-powershell)
 
 ### Detach a database using PowerShell
 
-#### Needed Modules
+#### Prerequisite Module
 
-```
+```powershell
 Install : Az.Kusto
 ```
 
 #### Example
 
-```Powershell
+```powershell
 $FollowerClustername = 'follower'
 $FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
 $FollowerResourceGroupName = 'followerResouceGroup'
 $DatabaseName = "sanjn"  ## Can be specific database name or * for all databases
 
-##Construct the Configuration name 
+##Construct the Configuration name
 $confignameraw = (Get-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -ResourceGroupName $FollowerResourceGroupName -SubscriptionId $FollowerClusterSubscriptionID) | Where-Object {$_.DatabaseName -eq $DatabaseName }
 $configname =$confignameraw.Name.Split("/")[1]
 
 Remove-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -Name $configname -ResourceGroupName $FollowerResourceGroupName -SubscriptionId $FollowerClusterSubscriptionID
 ```
 
-# [Resource Manager Template](#tab/azure-resource-manager)
+## [Resource Manager Template](#tab/azure-resource-manager)
 
 [Detach the follower database](#detach-the-follower-database) using C#, Python or PowerShell.
 
@@ -572,7 +572,7 @@ Remove-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -N
 
 ### Manage principals
 
-When attaching a database, specify the **"default principals modification kind"**. The default is keeping the leader database collection of [authorized principals](kusto/management/access-control/index.md#authorization)
+When attaching a database, specify the **"default principals modification kind"**. The default is to combine the override authorized principals with the leader database collection of [authorized principals](kusto/management/access-control/index.md#authorization)
 
 |**Kind** |**Description**  |
 |---------|---------|
@@ -588,7 +588,7 @@ Managing read-only database permission is the same as for all database types. Se
 
 ### Configure caching policy
 
-The follower database administrator can modify the [caching policy](kusto/management/cache-policy.md) of the attached database or any of its tables on the hosting cluster. The default is keeping the leader database collection of database and table-level caching policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using control commands to configure the caching policy on the follower database or table, see [Control commands for managing a follower cluster](kusto/management/cluster-follower.md).
+The follower database administrator can modify the [caching policy](./kusto/management/show-table-cache-policy-command.md) of the attached database or any of its tables on the hosting cluster. The default is to combine the source database in the leader cluster database and table-level caching policies with the policies defined in the database and table-level override policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using control commands to configure the caching policy on the follower database or table, see [Control commands for managing a follower cluster](kusto/management/cluster-follower.md).
 
 ## Notes
 
@@ -597,15 +597,15 @@ The follower database administrator can modify the [caching policy](kusto/manage
   * A database named *DB* followed from two or more leader clusters will be arbitrarily chosen from *one* of the leader clusters, and won't be followed more than once.
 * Commands for showing [cluster activity log and history](kusto/management/systeminfo.md) run on a follower cluster will show the activity and history on the follower cluster, and their result sets won't include those results of the leader cluster or clusters.
   * For example: a `.show queries` command run on the follower cluster will only show queries run on databases followed by follower cluster, and not queries run against the same database in the leader cluster.
-  
+
 ## Limitations
 
 * The follower and the leader clusters must be in the same region.
-* [Streaming ingestion](ingest-data-streaming.md) can't be used on a database that is being followed.
-* Data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) isn't supported on both leader and follower clusters. 
+* If [Streaming ingestion](ingest-data-streaming.md) is used on a database that is being followed, the follower cluster should be enabled for Streaming Ingestion to allow following of streaming ingestion data.
+* Data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) isn't supported on both leader and follower clusters.
 * You can't delete a database that is attached to a different cluster before detaching it.
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
-* Table level sharing properties are not supported when following all database.
+* Table level sharing properties aren't supported when following all database.
 
 ## Next steps
 

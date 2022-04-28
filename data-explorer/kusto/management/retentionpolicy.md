@@ -1,11 +1,7 @@
 ---
 title: Kusto retention policy controls how data is removed - Azure Data Explorer
 description: This article describes retention policies in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/19/2020
 ---
@@ -44,13 +40,13 @@ A retention policy includes the following properties:
 
 ## Control commands
 
-* Use [`.show policy retention`](../management/retention-policy.md) to show the current retention policy for a database, table, or [materialized view](materialized-views/materialized-view-overview.md).
-* Use [`.alter policy retention`](../management/retention-policy.md) to change current retention policy of a database, table, or [materialized view](materialized-views/materialized-view-overview.md).
+* Use [`.show policy retention`](./show-table-retention-policy-command.md) to show the current retention policy for a database, table, or [materialized view](materialized-views/materialized-view-overview.md).
+* Use [`.alter policy retention`](./show-table-retention-policy-command.md) to change current retention policy of a database, table, or [materialized view](materialized-views/materialized-view-overview.md).
 
 ## Defaults
 
 By default, when a database or a table is created, it doesn't have a retention policy defined. Normally, the database is created and then immediately has its retention policy set by its creator according to known requirements.
-When you run a [`.show` command](../management/retention-policy.md) for the retention policy of a database or table that hasn't had its policy set, `Policy` appears as `null`.
+When you run a [`.show` command](./show-table-retention-policy-command.md) for the retention policy of a database or table that hasn't had its policy set, `Policy` appears as `null`.
 
 The default retention policy, with the default values mentioned above, can be applied using the following command.
 

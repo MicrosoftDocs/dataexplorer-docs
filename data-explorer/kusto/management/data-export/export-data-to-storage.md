@@ -1,18 +1,14 @@
 ---
-title: Export data to storage - Azure Data Explorer | Microsoft Docs
+title: Export data to storage - Azure Data Explorer
 description: This article describes Export data to storage in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 07/14/2021
 ---
 # Export data to storage
 
 Executes a query and writes the first result set to an
-external storage, specified by a [storage connection string](../../api/connection-strings/storage.md).
+external storage, specified by a [storage connection string](../../api/connection-strings/storage-connection-strings.md).
 
 **Syntax**
 
@@ -33,7 +29,7 @@ external storage, specified by a [storage connection string](../../api/connectio
 * *OutputDataFormat*: Indicates the data format of the storage artifacts written
   by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`.
 
-* *StorageConnectionString*: Specifies one or more [storage connection strings](../../api/connection-strings/storage.md)
+* *StorageConnectionString*: Specifies one or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md)
   that indicate which storage to write the data to. (More than one storage
   connection string may be specified for scalable writes.) Each such connection 
   string must indicate the credentials to use when writing to storage.
@@ -42,24 +38,25 @@ external storage, specified by a [storage connection string](../../api/connectio
   read, write, and list blobs.
 
 > [!NOTE]
-> It is highly recommended to export data to storage that is co-located in the
-> same region as the Kusto cluster itself. This includes data that is exported so it can be transferred to another cloud service in
+> We highly recommended exporting data to storage that is co-located in the
+> same region as the cluster itself. This includes data that is exported so it can be transferred to another cloud service in
 > other regions. Writes should be done locally, while reads can happen remotely.
 
 * *PropertyName*/*PropertyValue*: Zero or more optional export properties:
 
-|Property | Type | Description|
-|---|---|---|
-|`includeHeaders`|`string`|For `csv`/`tsv` output, controls the generation of column headers. Can be one of `none` (default; no header lines emitted), `all` (emit a header line into every storage artifact), or `firstFile` (emit a header line into the first storage artifact only).|
-|`fileExtension` |`string`|Indicates the "extension" part of the storage artifact (for example, `.csv` or `.tsv`). If compression is used, `.gz` will be appended as well.|
-|`namePrefix`    |`string`|Indicates a prefix to add to each generated storage artifact name. A random prefix will be used if left unspecified.       |
-|`encoding`      |`string`|Indicates how to encode the text: `UTF8NoBOM` (default) or `UTF8BOM`. |
-|`compressionType`|`string`|Indicates the type of compression to use. Possible values are `gzip` or `snappy`. Default is `gzip`. `snappy` can (optionally) be used for `parquet` format. |
-|`distribution`   |`string`  |Distribution hint (`single`, `per_node`, `per_shard`). If value equals `single`, a single thread will write to storage. Otherwise, export will write from all nodes executing the query in parallel. See [evaluate plugin operator](../../query/evaluateoperator.md). Defaults to `per_shard`.
-|`persistDetails`|`bool`  |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller does not require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
-|`sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100MB (default) to 1GB.|
-|`parquetRowGroupSize`|`int`  |Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100000 records.|
-|`distributed`   |`bool`  |Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true.
+| Property | Type | Description |
+|--|--|--|
+| `includeHeaders` | `string` | For `csv`/`tsv` output, controls the generation of column headers. Can be one of `none` (default; no header lines emitted), `all` (emit a header line into every storage artifact), or `firstFile` (emit a header line into the first storage artifact only). |
+| `fileExtension` | `string` | Indicates the "extension" part of the storage artifact (for example, `.csv` or `.tsv`). If compression is used, `.gz` will be appended as well. |
+| `namePrefix` | `string` | Indicates a prefix to add to each generated storage artifact name. A random prefix will be used if left unspecified. |
+| `encoding` | `string` | Indicates how to encode the text: `UTF8NoBOM` (default) or `UTF8BOM`. |
+| `compressionType` | `string` | Indicates the type of compression to use. Possible values are `gzip` or `snappy`. Default is `gzip`. `snappy` can (optionally) be used for `parquet` format. |
+| `distribution` | `string` | Distribution hint (`single`, `per_node`, `per_shard`). If value equals `single`, a single thread will write to storage. Otherwise, export will write from all nodes executing the query in parallel. See [evaluate plugin operator](../../query/evaluateoperator.md). Defaults to `per_shard`. |
+| `persistDetails` | `bool` | Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller does not require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
+| `sizeLimit` | `long` | The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100MB (default) to 1GB. |
+| `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100000 records. |
+| `distributed` | `bool` | Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
+| `useNativeParquetWriter` | `bool` | Use the new export implementaion when exporting to Parquet, this implementation is a more performant, resource light export mechanism. Note that an exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
 
 **Results**
 
@@ -102,9 +99,9 @@ Column name labels are added as the first row for each blob.
     h@"https://storage1.blob.core.windows.net/containerName2;secretKey"
   ) with (
     sizeLimit=100000,
-    namePrefix=export,
-    includeHeaders=all,
-    encoding =UTF8NoBOM
+    namePrefix="export",
+    includeHeaders="all",
+    encoding ="UTF8NoBOM"
   )
   <| myLogs | where id == "moshe" | limit 10000
 ```
@@ -145,7 +142,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
 
 ### Authorization failures
 
-Authentication or authorization failures during export commands can occur when the credentials provided in the storage connection string aren't permitted to write to storage. If you are using `impersonate` or a user-delegated SAS token for the export command, the [Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) role is required to write to the storage account. For more details, see [Storage connection strings](../../api/connection-strings/storage.md).
+Authentication or authorization failures during export commands can occur when the credentials provided in the storage connection string aren't permitted to write to storage. If you are using `impersonate` or a user-delegated SAS token for the export command, the [Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) role is required to write to the storage account. For more details, see [Storage connection strings](../../api/connection-strings/storage-connection-strings.md).
 
 ## Data types mapping
 
@@ -165,3 +162,18 @@ On export, Kusto data types are mapped to Parquet data types using the following
 | `string` | `BYTE_ARRAY` | UTF-8 | |
 | `timespan` | `INT64` | | Stored as ticks (100-nanosecond units) count |
 | `decimal` | `BYTE_ARRAY` | DECIMAL | |
+
+When specifying 'useNativeParquetWriter=true', Kusto data types are mapped to Parquet data types using the following rules:
+
+| Kusto Data Type | Parquet Data Type | Parquet Annotation | Comments |
+| --------------- | ----------------- | ------------------ | -------- |
+| `bool`     | `BOOLEAN` | | |
+| `datetime` | `INT64` | TIMESTAMP_MICROS | Not supported by Synapse SQL |
+| `dynamic`  | `BYTE_ARRAY` | UTF-8 | Serialized as JSON string |
+| `guid` | `BYTE_ARRAY` | UTF-8 | |
+| `int` | `INT32` | | |
+| `long` | `INT64` | | |
+| `real` | `DOUBLE` | | |
+| `string` | `BYTE_ARRAY` | UTF-8 | |
+| `timespan` | `INT64` | | Stored as ticks (100-nanosecond units) count |
+| `decimal` | `FIXED_LENGTH_BYTE_ARRAY` | DECIMAL | |

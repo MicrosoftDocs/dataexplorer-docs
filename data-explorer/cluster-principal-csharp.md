@@ -1,10 +1,7 @@
 ---
 title: 'Add cluster principals for Azure Data Explorer by using C#'
 description: In this article, you learn how to add cluster principals for Azure Data Explorer by using C#.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/03/2020
 ---
@@ -38,7 +35,7 @@ The following example shows you how to add a cluster principal programmatically.
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "PlaceholderClientSecret";//Client Secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 
 var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
@@ -65,7 +62,7 @@ await kustoManagementClient.ClusterPrincipalAssignments.CreateOrUpdateAsync(reso
 | tenantId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Your tenant ID. Also known as directory ID.|
 | subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The subscription ID that you use for resource creation.|
 | clientId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The client ID of the application that can access resources in your tenant.|
-| clientSecret | *xxxxxxxxxxxxxx* | The client secret of the application that can access resources in your tenant. |
+| clientSecret | *PlaceholderClientSecret* | The client secret of the application that can access resources in your tenant. |
 | resourceGroupName | *testrg* | The name of the resource group containing your cluster.|
 | clusterName | *mykustocluster* | The name of your cluster.|
 | principalAssignmentName | *clusterPrincipalAssignment1* | The name of your cluster principal resource.|

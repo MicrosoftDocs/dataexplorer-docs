@@ -1,11 +1,7 @@
 ---
 title: Cache policy (hot and cold cache) - Azure Data Explorer
 description: This article describes Cache policy (hot and cold cache) in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 10/03/2021
 ---
@@ -26,7 +22,7 @@ The main implications of setting the hot cache policy are:
 * **Cost**: The cost of reliable storage can be dramatically lower than for local SSD. It's currently about 45 times cheaper in Azure.
 * **Performance**: Data is queried faster when it's in local SSD, particularly for range queries that scan large amounts of data.  
 
-Use the [cache policy command](cache-policy.md) to manage the cache policy.
+Use the [cache policy command](./show-table-cache-policy-command.md) to manage the cache policy.
 
 > [!TIP]
 >Azure Data Explorer is designed for ad-hoc queries with intermediate result sets fitting the cluster's total RAM.

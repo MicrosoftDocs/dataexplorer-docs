@@ -1,10 +1,7 @@
 ---
 title: Monitor Azure Data Explorer using Resource Health
 description: Use Azure Resource Health to monitor Azure Data Explorer resources.
-author: orspod
-ms.author: orspodek
 ms.reviewer: prvavill
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/31/2020
 
@@ -14,8 +11,15 @@ ms.date: 03/31/2020
 [Resource Health](/azure/service-health/resource-health-overview) for Azure Data Explorer informs you of the health of your Azure Data Explorer resource and provides actionable recommendations to troubleshoot problems. Resource health is updated every 1-2 minutes and reports the current and past health of your resources. 
 
 Resource Health determines the health of your Azure Data Explorer resource by examining various health status checks such as:
-* Resource availability
+* Resource availability (the cluster is not available for queries)
 * Query failures
+* Update policy failures
+* Low ingestion success rate 
+* High Ingestion latency
+* Degraded materialized views  
+* High latency for data connections
+* Data connection failures
+
 
 ## Access Resource Health reporting
 
@@ -36,6 +40,10 @@ The health of a resource is displayed with one of the following statuses, availa
 A health status of **Available** indicates that your Azure Data Explorer resource is healthy and doesn't have any issues.
 
 :::image type="content" source="media/monitor-with-resource-health/available.png" alt-text="Screenshot of a Resource health page for an Azure Data Explorer resource. The status is listed as available and is highlighted." border="false":::
+
+### Degraded
+
+A health status of **Degraded** indicates that your Azure Data Explorer resource detected a loss in performance or potential data loss, for example low ingestion success rate. The cluster is still available for use.
 
 ### Unavailable
 

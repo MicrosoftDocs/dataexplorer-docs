@@ -1,10 +1,7 @@
 ---
 title: series_dbl_exp_smoothing_fl() - Azure Data Explorer
 description: This article describes the series_dbl_exp_smoothing_fl() user-defined function in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: joruales
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/06/2021
 ---

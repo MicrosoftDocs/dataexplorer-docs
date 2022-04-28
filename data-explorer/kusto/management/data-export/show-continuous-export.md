@@ -1,11 +1,7 @@
 ---
 title: Show continuous data export - Azure Data Explorer
 description: This article describes how to show continuous data export properties in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yifats
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/06/2021
 ---

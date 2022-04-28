@@ -1,11 +1,7 @@
 ---
 title: 'Azure Data Explorer integration with Azure Data Factory'
 description: 'In this topic, integrate Azure Data Explorer with Azure Data Factory to use the copy, lookup, and command activities'
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: tomersh26
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 01/20/2020
 
@@ -155,14 +151,14 @@ ABC   DEF<br/>
 Should appear in a proper CSV file as follows:
 "Hello, ""World"""<br/>
 "ABC   DEF"<br/>
-"""ABC DEF"<br/>
 """ABC\D""EF"<br/>
+ """ABC DEF"<br/>
 
 By using the default escape character (backslash), the following CSV won't work with Azure Data Explorer:
 "Hello, \"World\""<br/>
 "ABC   DEF"<br/>
-"\"ABC DEF"<br/>
 "\"ABC\D\"EF"<br/>
+ "\"ABC DEF"<br/>
 
 ### Nested JSON objects
 

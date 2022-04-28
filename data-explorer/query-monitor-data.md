@@ -1,14 +1,9 @@
 ---
 title: 'Query data in Azure Monitor with Azure Data Explorer'
 description: 'In this topic, query data in Azure Monitor (Application Insights and Log Analytics) by creating an Azure Data Explorer cross product queries.'
-services: data-explorer
-author: osalzberg
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: how-to
 ms.date: 12/13/2020
-ms.localizationpriority: high
 
 #Customer intent: I want to query data in Azure Monitor using Azure Data Explorer.
 ---
@@ -40,8 +35,11 @@ Add a Log Analytics or Application Insights workspace to Azure Data Explorer cli
 
     ![Add cluster.](media/query-monitor-data/add-cluster.png)
 
-    >[!TIP]
-    >If you add a connection to more than one Log Analytics or Application insights workspace, give each a different name. Otherwise they'll all have the same name in the left pane.
+  >[!NOTE]
+>* There are different endpoints for the following:
+>* Azure Government- `adx.monitor.azure.us/`
+>*  Azure China- `adx.monitor.azure.cn/`
+>* If you add a connection to more than one Log Analytics/Application insights workspace, give each a different name. Otherwise they'll all have the same name in the left pane.
 
 1. After the connection is established, your Log Analytics or Application Insights workspace will appear in the left pane with your native Azure Data Explorer cluster.
 

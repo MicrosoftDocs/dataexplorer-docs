@@ -1,11 +1,7 @@
 ---
 title: 'Azure Data Explorer data visualization'
 description: 'Learn about the different ways you can visualize your Azure Data Explorer data'
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabil
-ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/02/2020
 ---

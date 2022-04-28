@@ -1,31 +1,27 @@
 ---
 title: ".alter-merge managed_identity policy command - Azure Data Explorer"
 description: This article describes the .alter-merge managed_identity policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: slneimer
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/03/2021
+ms.date: 11/29/2021
 ---
 # .alter-merge managed_identity policy
 
 The command updates the ManagedIdentity policy of the cluster or the specified database, adding new managed identities or adding usages to existing managed identities.
 
 > [!NOTE]
-> Managed identities should be assigned to the cluster (see [instructions](../../managed-identities.md)) before you can assign them to the ManagedIdentity policy.
+> Managed identities should be assigned to the cluster (see [instructions](../../configure-managed-identities-cluster.md)) before you can assign them to the ManagedIdentity policy.
 
 ## Syntax
 
-* `.alter-merge` `cluster` `policy` `managed_identity` *ArrayOfManagedIdentityPolicyObjects*
-* `.alter-merge` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfManagedIdentityPolicyObjects*
+* `.alter-merge` `cluster` `policy` `managed_identity` *ArrayOfPolicyObjects*
+* `.alter-merge` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfPolicyObjects*
 
 ## Arguments
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ArrayOfManagedIdentityPolicyObjects*|array|&check;|An array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects defined.|
+|*ArrayOPolicyObjects*|array|&check;|An array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects defined.|
 |*DatabaseName*|string|&check;|The name of the database.|
 
 > [!NOTE]

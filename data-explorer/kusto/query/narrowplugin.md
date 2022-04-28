@@ -1,24 +1,18 @@
 ---
-title: narrow plugin - Azure Data Explorer | Microsoft Docs
+title: narrow plugin - Azure Data Explorer
 description: This article describes narrow plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/24/2022
 ---
 # narrow plugin
-
-```kusto
-T | evaluate narrow()
-```
 
 The `narrow` plugin "unpivots" a wide table into a table with just three columns: Row number, column type, and column value (as `string`).
 
 The `narrow` plugin is designed mainly for display purposes, as it allows wide
 tables to be displayed comfortably without the need of horizontal scrolling.
+
+The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Syntax
 

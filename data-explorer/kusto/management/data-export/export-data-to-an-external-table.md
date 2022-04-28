@@ -1,11 +1,7 @@
 ---
 title: Export data to an external table - Azure Data Explorer
 description: This article describes Export data to an external table in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 07/25/2021
 ---
@@ -38,6 +34,7 @@ The following properties are supported as part of the export to external table c
 |`parquetRowGroupSize`|`int`  |Relevant only when data format is Parquet. Controls the row group size in the exported files. | Default row group size is 100000 records.|
 |`concurrency`|*Number*|Hints the system how many partitions to run in parallel. **See note below.**| The default value is 16. |
 |`spread`|*Number*|Hints the system how to distribute the partitions among cluster nodes. For example, if there are N partitions and the spread hint is set to P, then the N partitions will be processed by P different cluster nodes equally in parallel/sequentially depending on the concurrency hint.  **See note below.**| The default value is 1. |
+|`useNativeParquetWriter`|`bool`|Use the new export implementaion when exporting to Parquet **See note below.**| Default is false. |
 
 >[!NOTE]
 > `hint.spread` and `hint.concurrency` are properties used to decrease/increase the concurrency of write operations. For more details, see [partition operator](../../query/partitionoperator.md). These properties are only relevant when exporting to an external table which is partitioned by a string partition. By default, the number of nodes exporting concurrently will be the minimum value between 64 and the number of cluster nodes.
@@ -63,6 +60,8 @@ The following properties are supported as part of the export to external table c
 * For suggestions to overcome storage errors during export commands, see [failures during export commands](export-data-to-storage.md#failures-during-export-commands).
 
 * External table columns are mapped to suitable target format data types, according to [data types mapping](export-data-to-storage.md#data-types-mapping) rules.
+
+* Parquet native export is a more performant, resource light export mechanism. Note that an exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'.
 
 ### Number of files
 

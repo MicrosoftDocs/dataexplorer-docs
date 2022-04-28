@@ -1,14 +1,9 @@
 ---
 title: String operators - Azure Data Explorer
 description: This article describes String operators in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/05/2021
-ms.localizationpriority: high 
 ---
 # String operators
 
@@ -34,12 +29,12 @@ Kusto builds a term index consisting of all terms that are *three characters or 
 
 ## Operators on strings
 
-> [!NOTE]
-> The following abbreviations are used in the table below:
-> * RHS = right hand side of the expression
-> * LHS = left hand side of the expression
-> 
-> Operators with an `_cs` suffix are case sensitive.
+The following abbreviations are used in this article:
+
+ * RHS = right hand side of the expression
+ * LHS = left hand side of the expression
+
+Operators with an `_cs` suffix are case sensitive.
 
 > [!NOTE]
 > Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
@@ -83,9 +78,6 @@ Kusto builds a term index consisting of all terms that are *three characters or 
 |[`startswith_cs`](startswith-cs-operator.md)  |RHS is an initial subsequence of LHS |Yes |`"Fabrikam" startswith_cs "Fab"`|
 |[`!startswith_cs`](not-startswith-cs-operator.md) |RHS isn't an initial subsequence of LHS |Yes |`"Fabrikam" !startswith_cs "fab"`|
 
-> [!TIP]
-> All operators containing `has` search on indexed *terms* of four or more characters, and not on substring matches. A term is created by breaking up the string into sequences of ASCII alphanumeric characters. See [understanding string terms](#understanding-string-terms).
-
 ## Performance tips
 
 For better performance, when there are two operators that do the same task, use the case-sensitive one.
@@ -98,6 +90,8 @@ For example:
 For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
 `has` works faster than `contains`, `startswith`, or `endswith`.
 
+To search for IPv4 addresses or their prefixes, use one of special [operators on IPv4 addresses](#operators-on-ipv4-addresses), which are optimized for this purpose.
+
 For more information, see [Query best practices](best-practices.md).
 
 For example, the first of these queries will run faster:
@@ -107,3 +101,14 @@ For example, the first of these queries will run faster:
 StormEvents | where State has "North" | count;
 StormEvents | where State contains "nor" | count
 ```
+
+## Operators on IPv4 addresses
+
+The following group of operators provide index accelerated search on IPv4 addresses or their prefixes.
+
+|Operator   |Description   |Example (yields `true`)  |
+|-----------|--------------|-------------------------|
+|[has_ipv4](has-ipv4-function.md)|LHS contains IPv4 address represented by RHS|`has_ipv4("Source address is 10.1.2.3:1234", "10.1.2.3")`|
+|[has_ipv4_prefix](has-ipv4-prefix-function.md)|LHS contains an IPv4 address that matches a prefix represented by RHS|`has_ipv4_prefix("Source address is 10.1.2.3:1234", "10.1.2.")`|
+|[has_any_ipv4](has-any-ipv4-function.md)|LHS contains one of IPv4 addresses provided by RHS|`has_any_ipv4("Source address is 10.1.2.3:1234", dynamic(["10.1.2.3", "127.0.0.1"]))`|
+|[has_any_ipv4_prefix](has-any-ipv4-prefix-function.md)|LHS contains an IPv4 address that matches one of prefixes provided by RHS|`has_any_ipv4_prefix("Source address is 10.1.2.3:1234", dynamic(["10.1.2.", "127.0.0."]))`|

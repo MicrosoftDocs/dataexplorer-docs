@@ -1,11 +1,7 @@
 ---
 title: Extents (data shards) - Azure Data Explorer
 description: This article describes Extents (data shards) in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/13/2020
 ---
@@ -15,7 +11,7 @@ ms.date: 03/13/2020
 
 Kusto is built to support tables with a huge number of records (rows)
 and large amounts of data. To handle such large tables, each table's data 
-is divided into smaller "tablets" called **data shards**
+is divided into smaller "chunks" called **data shards**
 or **extents** (the two terms are synonymous). The union of
 all the table's extents holds the table's data. Individual extents
 are kept smaller than a single node's capacity, and the extents

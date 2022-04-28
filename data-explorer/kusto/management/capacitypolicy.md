@@ -1,11 +1,7 @@
 ---
 title: Capacity policy - Azure Data Explorer
 description: This article describes Capacity policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/16/2021
 ---
@@ -33,7 +29,7 @@ The capacity policy is made of:
 |CoreUtilizationCoefficient         |double  |A coefficient for the percentage of cores to use when calculating the ingestion capacity. The calculation's result will always be normalized by `ClusterMaximumConcurrentOperations` <br> The cluster's total ingestion capacity, as shown by [.show capacity](../management/diagnostics.md#show-capacity), is calculated by: <br> Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
 
 > [!Note]
-> In clusters with three or more nodes, the admin node doesn't participate in ingestion operations. The `Number of nodes in cluster` is reduced by one.
+> In clusters with four or more nodes, the admin node doesn't participate in ingestion operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Extents merge capacity
 
@@ -177,9 +173,9 @@ The default capacity policy has the following JSON representation:
 > [!WARNING]
 > Consult with the Azure Data Explorer team before altering a capacity policy.
 
-* Use [`.show cluster policy capacity`](capacity-policy.md#show-cluster-policy-capacity) to show the current capacity policy of the cluster.
+* Use [`.show cluster policy capacity`](./show-cluster-capacity-policy-command.md) to show the current capacity policy of the cluster.
 
-* Use [`.alter cluster policy capacity`](capacity-policy.md#alter-cluster-policy-capacity) to alter the capacity policy of the cluster.
+* Use [`.alter cluster policy capacity`](./show-cluster-capacity-policy-command.md) to alter the capacity policy of the cluster.
 
 ## Control commands throttling
 

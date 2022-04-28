@@ -1,11 +1,7 @@
 ---
 title: Python plugin - Azure Data Explorer
 description: This article describes Python plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/01/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
@@ -20,7 +16,7 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
 
 ## Syntax
 
-*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `python(`*output_schema*`,` *script* [`,` *script_parameters*][`,` *external_artifacts*]`)`
+*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `python(`*output_schema*`,` *script* [`,` *script_parameters*][`,` *external_artifacts*][`,` *spill_to_disk*]`)`
 
 ## Arguments
 
@@ -37,9 +33,10 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
 * *external_artifacts*: An optional `dynamic` literal that is a property bag of name and URL pairs, for artifacts that are accessible from cloud storage. They can be made available for the script to use at runtime.
   * URLs referenced in this property bag are required to be:
     * Included in the cluster's [callout policy](../management/calloutpolicy.md).
-    * In a publicly available location, or provide the necessary credentials, as explained in [storage connection strings](../api/connection-strings/storage.md).
+    * In a publicly available location, or provide the necessary credentials, as explained in [storage connection strings](../api/connection-strings/storage-connection-strings.md).
   * The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Examples](#examples).
   * For more information, see [Install packages for the Python plugin](#install-packages-for-the-python-plugin). 
+* *spill_to_disk*: An optional `boolean` literal specifying an alternative method for serializing the input table to the Python sandbox. For serializing big tables set it to `true` to speed up the serialization and significantly reduce the sandbox memory consumption. Default is `false` as this parameter is experimental.
 
 ## Reserved Python variables
 

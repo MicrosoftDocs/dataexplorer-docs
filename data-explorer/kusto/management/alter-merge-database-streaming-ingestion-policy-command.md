@@ -1,13 +1,9 @@
 ---
 title: .alter-merge database streaming ingestion policy command - Azure Data Explorer
 description: This article describes the .alter-merge database streaming ingestion policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 11/29/2021
 ---
 # .alter-merge database streaming ingestion policy
 
@@ -17,15 +13,16 @@ Streaming ingestion is targeted for scenarios that require low latency, with an 
 
 Use the classic (bulk) ingestion instead of streaming ingestion when the amount of data grows to more than 4 Gb per hour per table. 
 
-* To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md).
+To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md). Streaming ingestion must be enabled on the cluster level before it can be used at the database level.
 
 ## Syntax
 
-`.alter-merge` `database` *DatabaseName* `policy` `streamingingestion`
+`.alter-merge` `database` *DatabaseName* `policy` `streamingingestion` *ArrayOfPolicyObjects*
 
 ## Arguments
 
 *DatabaseName* - Specify the name of the database. 
+*ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
 
 ## Returns
 

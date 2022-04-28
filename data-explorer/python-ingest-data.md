@@ -1,12 +1,9 @@
 ---
 title: 'Ingest data using the Azure Data Explorer Python library'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Python.
-author: orspod
-ms.author: orspodek
 ms.reviewer: vladikbr
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 06/03/2019
+ms.date: 02/07/2022
 
 # Customer intent: As a Python developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
@@ -88,14 +85,14 @@ DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
 
 ## Set source file information
 
-Import additional classes and set constants for the data source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
+Import additional classes and set constants for the data source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncei.noaa.gov/).
 
 ```python
 from azure.kusto.ingest import QueuedIngestClient, IngestionProperties, FileDescriptor, BlobDescriptor, DataFormat, ReportLevel, ReportMethod
 
 CONTAINER = "samplefiles"
-ACCOUNT_NAME = "kustosamplefiles"
-SAS_TOKEN = "?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D"
+ACCOUNT_NAME = "kustosamples"
+SAS_TOKEN = ""  # If relevant add SAS token
 FILE_PATH = "StormEvents.csv"
 FILE_SIZE = 64158321    # in bytes
 

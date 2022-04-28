@@ -1,24 +1,24 @@
 ---
-title: .alter capacity policy command - Azure Data Explorer
+title: Alter capacity policy command - Azure Data Explorer
 description: This article describes the .alter capacity policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/30/2021
 ---
 # .alter capacity policy
 
-Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy is used for controlling the compute resources of data management operations on the cluster. This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
+Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy controls the computational resources for data management operations on the cluster. This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
 
 > [!NOTE]
 > Changes to the cluster capacity policy could take up to 1 hour to take effect.
 
 ## Syntax
 
-`.alter` `cluster` `policy` `capacity` `"`*Serialized policy*`"`
+`.alter` `cluster` `policy` `capacity` *PolicyObject* 
+
+## Arguments
+
+*PolicyObject* - Define a JSON policy object. See [capacity policy](capacitypolicy.md) for policy properties. 
 
 ## Returns
 
@@ -26,7 +26,7 @@ Returns a JSON representation of the policy.
 
 ## Example
 
-```kusto
+~~~kusto
 .alter cluster policy capacity ```
 {
   "IngestionCapacity": {
@@ -34,7 +34,7 @@ Returns a JSON representation of the policy.
     "CoreUtilizationCoefficient": 0.75
   }
 }```
-```
+~~~
 
 **Output**
 

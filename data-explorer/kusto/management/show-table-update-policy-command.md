@@ -1,11 +1,7 @@
 ---
 title: .show table update policy command - Azure Data Explorer
 description: This article describes the .show table update policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/10/2021
 ---
@@ -22,7 +18,8 @@ Show the table update policy. The [update policy](updatepolicy.md) instructs Azu
 **For a specified table**
 
 `.show` `table` *TableName* `policy` `update`
-`.show` `table` *DatabaseName*`.`*TableName* `update` `sharding`
+
+`.show` `table` *DatabaseName*`.`*TableName* `policy` `update`
 
 **For all tables**
 

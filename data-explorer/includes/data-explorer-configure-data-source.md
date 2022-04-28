@@ -1,9 +1,6 @@
 ---
-author: orspod
-ms.service: data-explorer
 ms.topic: include
 ms.date: 11/03/2019
-ms.author: orspodek
 ---
 
 ## Configure the data source

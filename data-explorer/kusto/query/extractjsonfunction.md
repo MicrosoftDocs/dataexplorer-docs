@@ -1,19 +1,18 @@
 ---
-title: extract_json() - Azure Data Explorer | Microsoft Docs
-description: This article describes extractjson() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: extract_json() and extractjson() - Azure Data Explorer
+description: This article describes extract_json() and extractjson() in Azure Data Explorer.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/29/2021
+ms.date: 02/13/2022
 ---
-# extract_json()
+# extract_json(), extractjson()
 
-Get a specified element out of a JSON text using a path expression. 
+Get a specified element out of a JSON text using a path expression.
 
 Optionally convert the extracted string to a specific type.
+
+> [!NOTE]
+> The `extract_json()` and `extractjson()` functions are interpreted equivalently.
 
 ```kusto
 extract_json("$.hosts[1].AvailableMB", EventText, typeof(int))
@@ -22,42 +21,30 @@ extract_json("$.hosts[1].AvailableMB", EventText, typeof(int))
 ## Syntax
 
 `extract_json(`*jsonPath*`,` *dataSource*`, ` *type*`)` 
+ 
+`extractjson(`*jsonPath*`,` *dataSource*`, ` *type*`)`
 
 ## Arguments
 
-* *jsonPath*: JsonPath string that defines an accessor into the JSON document.
+* *jsonPath*: [JSONPath](jsonpath.md) string that defines an accessor into the JSON document.
 * *dataSource*: A JSON document.
 * *type*: An optional type literal (for example, typeof(long)). If provided, the extracted value is converted to this type.
 
 ## Returns
 
-This function performs a JsonPath query into dataSource, which contains a valid JSON string, optionally converting that value to another type depending on the third argument.
+This function performs a [JSONPath](jsonpath.md) query into dataSource, which contains a valid JSON string, optionally converting that value to another type depending on the third argument.
 
 ## Example
 
 The `[`bracket`]` notation and dot (`.`) notation are equivalent:
 
 ```kusto
-T 
-| extend AvailableMB = extract_json("$.hosts[1].AvailableMB", EventText, typeof(int)) 
+T
+| extend AvailableMB = extract_json("$.hosts[1].AvailableMB", EventText, typeof(int))
 
 T
-| extend AvailableMD = extract_json("$['hosts'][1]['AvailableMB']", EventText, typeof(int)) 
+| extend AvailableMD = extract_json("$['hosts'][1]['AvailableMB']", EventText, typeof(int))
 ```
-
-### JSON Path expressions
-
-|Path expression|Description|
-|---|---|
-|`$`|Root object|
-|`@`|Current object|
-|`.` or `[ ]` | Child|
-|`[ ]`|Array subscript|
-
-*(We don't currently implement wildcards, recursion, union, or slices.)*
-
-> [!NOTE]
-> JSON paths that include special characters should be escaped as [\'Property Name\'].
 
 **Performance tips**
 

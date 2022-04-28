@@ -1,10 +1,7 @@
 ---
 title: Debug Kusto query language inline Python using VS Code - Azure Data Explorer
 description: Learn how to debug Kusto query language (KQL) inline Python using VS Code.
-author: orspod
-ms.author: orspodek
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 12/04/2019
 ---

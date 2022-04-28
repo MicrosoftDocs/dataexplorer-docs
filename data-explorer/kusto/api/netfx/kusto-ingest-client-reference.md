@@ -1,11 +1,7 @@
 ---
 title: Kusto.Ingest client interfaces and factory classes - Azure Data Explorer
 description: This article describes Kusto.Ingest client interfaces and factory classes in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: ohbitton
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/19/2020
 ---
@@ -13,14 +9,15 @@ ms.date: 05/19/2020
 
 The main interfaces and classes in the Kusto.Ingest library are:
 
-* [interface IKustoIngestClient](#interface-ikustoingestclient): The main ingestion interface.
-* [Class ExtendedKustoIngestClient](#class-extendedkustoingestclient): Extensions to the main ingestion interface.
-* [class KustoIngestFactory](#class-kustoingestfactory): The main factory for ingestion clients.
-* [class KustoIngestionProperties](#class-kustoingestionproperties): Class used to provide common ingestion properties.
-* [class IngestionMapping](#class-ingestionmapping): Class used to describe the data mapping for the ingestion.
-* [Enum DataSourceFormat](#enum-datasourceformat): Supported data source formats (for example, CSV, JSON)
-* [Interface IKustoQueuedIngestClient](#interface-ikustoqueuedingestclient): Interface describing operations that apply for queued ingestion only.
-* [Class KustoQueuedIngestionProperties](#class-kustoqueuedingestionproperties): Properties that apply to queued ingestion only.
+* [Interface IKustoIngestClient](#interface-ikustoingestclient): The main ingestion interface
+* [Class ExtendedKustoIngestClient](#class-extendedkustoingestclient): Extensions to the main ingestion interface
+* [class KustoIngestFactory](#class-kustoingestfactory): The main factory for ingestion clients
+* [class KustoIngestionProperties](#class-kustoingestionproperties): Class used to provide common ingestion properties
+* [class SourceOptions](#class-sourceoptions): Source data handling options
+* [class IngestionMapping](#class-ingestionmapping): Class used to describe the data mapping for the ingestion
+* [Enum DataSourceFormat](#enum-datasourceformat): Supported data source formats (e.g., CSV or JSON)
+* [Interface IKustoQueuedIngestClient](#interface-ikustoqueuedingestclient): Interface describing operations that apply for queued ingestion only
+* [Class KustoQueuedIngestionProperties](#class-kustoqueuedingestionproperties): Properties that apply to queued ingestion only
 
 ## Interface IKustoIngestClient
 
@@ -348,7 +345,7 @@ KustoIngestionProperties class contains basic ingestion properties for fine cont
 |IngestionMapping|Holds either a reference to an exiting mapping or a list of column mappings|
 |AdditionalTags |Additional tags as needed |
 |IngestIfNotExists |List of tags that you don't want to ingest again (per table) |
-|ValidationPolicy |Data validation definitions. See [TODO] for details |
+|ValidationPolicy |Data validation definitions. |
 |Format |Format of the data being ingested |
 |AdditionalProperties | Other properties that will be passed as [ingestion properties](../../../ingestion-properties.md) to the ingestion command. The properties will be passed because not all of the ingestion properties are represented in a separate member of this class|
 
@@ -369,6 +366,27 @@ public class KustoIngestionProperties
 
     public KustoIngestionProperties(string databaseName, string tableName);
 }
+```
+
+## Class SourceOptions
+
+SourceOptions and derived classes encapsulate additional information and handling options for the source data. The specifics differ between supported sources
+
+```csharp
+    // Base class
+    public abstract class SourceOptions
+    {
+        public Guid SourceId  { get; set; };    // Identifies the ingestion source
+        public bool Compress { get; set; };     // Determines whether data should be compressed before being uploaded.
+    }
+
+    // Represents a local file/blob/ADLSv2 file
+    public sealed class StorageSourceOptions : SourceOptions
+    {
+        public long? Size { get; set; };    // Uncompressed data size. Should be used to comunicate the file size to the service for efficient ingestion
+        public bool DeleteSourceOnSuccess { get; set; };    // Indicates whether the ingestion source should be deleted after successful ingestion. Defaults to 'false'. When set to 'true', will require the service to individually delete each blob, which could put extra pressure on the service.
+        public DataSourceCompressionType CompressionType { get; set; }; //  Indicates compression used. Defaults to 'none'
+    }
 ```
 
 ## Class IngestionMapping

@@ -1,11 +1,7 @@
 ---
-title: arg_min() (aggregation function) - Azure Data Explorer | Microsoft Docs
+title: arg_min() (aggregation function) - Azure Data Explorer
 description: This article describes arg_min() (aggregation function) in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/12/2019
 ---
@@ -21,9 +17,13 @@ Finds a row in the group that minimizes *ExprToMinimize*, and returns the value 
 
 ## Arguments
 
-* *ExprToMinimize*: Expression that will be used for aggregation calculation. 
+* *ExprToMinimize*: Expression that will be used for aggregation calculation.
 * *ExprToReturn*: Expression that will be used for returning the value when *ExprToMinimize* is
   minimum. Expression to return may be a wildcard (*) to return all columns of the input table.
+  
+## Null handling
+
+When *ExprToMinimize* is null for all rows in a group, one row in the group is picked. Otherwise, rows where *ExprToMinimize* is null are ignored.
 
 ## Returns
 
@@ -51,4 +51,24 @@ PageViewLog
     by continent
 ```
 
-:::image type="content" source="images/arg-min-aggfunction/arg-min.png" alt-text="Arg min.":::
+:::image type="content" source="images/arg-min-aggfunction/arg-min.png" alt-text="Table showing the southernmost city with its country as calculated by the query.":::
+
+Null handling example:
+
+```kusto
+datatable(Fruit: string, Color: string, Version: int) [
+    "Apple", "Red", 1,
+    "Apple", "Green", int(null),
+    "Banana", "Yellow", int(null),
+    "Banana", "Green", int(null),
+    "Pear", "Brown", 1,
+    "Pear", "Green", 2,
+]
+| summarize arg_min(Version, *) by Fruit
+```
+
+|Fruit|Version|Color|
+|---|---|---|
+|Apple|1|Red|
+|Banana||Yellow|
+|Pear|1|Brown|

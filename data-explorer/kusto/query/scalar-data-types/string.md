@@ -1,13 +1,9 @@
 ---
 title: The string data type - Azure Data Explorer
 description: This article describes The string data type in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/07/2021
+ms.date: 04/11/2022
 ---
 # The string data type
 
@@ -15,7 +11,7 @@ The `string` data type represents a sequence of zero or more [Unicode](https://h
 characters.
 
 > [!NOTE]
-> * Internally, strings are encoded in [UTF-8](https://en.wikipedia.org/wiki/UTF-8).
+> * Internally, strings are encoded in [UTF-8](https://en.wikipedia.org/wiki/UTF-8). Invalid (non-UTF8) characters are replaced with [U+FFFD](https://codepoints.net/U+FFFD) Unicode replacement characters at ingestion time.
 > * Kusto has no data type that is equivalent to a single character. A single character
 > is represented as a string of length 1.
 > * While the `string` data type itself has no predefined limit on the length of the string,
@@ -26,8 +22,8 @@ characters.
 
 There are several ways to encode literals of the `string` data type in a query text:
 
-* Enclose the string in double-quotes (`"`): `"This is a string literal. Single quote characters (') don't require escaping. Double quote characters (\") are escaped by a backslash (\\)"`
-* Enclose the string in single-quotes (`'`): `'Another string literal. Single quote characters (\') require escaping by a backslash (\\). Double quote characters (") do not require escaping.'`
+* Enclose the string in double-quotes (`"`): `"This is a string literal. Single quote characters (') don't require escaping. Double quote characters (") are escaped by a backslash (\)."`
+* Enclose the string in single-quotes (`'`): `'Another string literal. Single quote characters (') require escaping by a backslash (\). Double quote characters (") do not require escaping.'`
 
 In the two representations above, the backslash (`\`) character indicates escaping.
 The backslash is used to escape the enclosing quote characters, tab characters (`\t`),
@@ -41,8 +37,8 @@ newline characters (`\n`), and itself (`\\`).
 
 Verbatim string literals are also supported. In this form, the backslash character (`\`) stands for itself, and not as an escape character.
 
-* Enclose in double-quotes (`"`): `@"This is a verbatim string literal that ends with a backslash\"`
-* Enclose in single-quotes (`'`): `@'This is a verbatim string literal that ends with a backslash\'`
+* Enclose in double-quotes (`"`): `@"This is a verbatim string literal that ends with a backslash\. Double quote characters (") are escaped by a double quote (")."`
+* Enclose in single-quotes (`'`): `@'This is a verbatim string literal that ends with a backslash\. Single quote characters (') are escaped by a single quote (').'`
 
 > [!NOTE]
 > The newline character (`\n`) and the return character (`\r`) can't be included

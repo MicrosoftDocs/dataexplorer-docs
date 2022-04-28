@@ -1,11 +1,7 @@
 ---
-title: Tables management - Azure Data Explorer | Microsoft Docs
+title: Tables management - Azure Data Explorer
 description: This article describes Tables management in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/27/2020
 ---
@@ -15,14 +11,14 @@ This topic discusses the life cycle of tables and associated control commands th
 
 Select the links in the table below for more information about them.
 
-| Commands                                                                                                                 | Operation                       |
-|--------------------------------------------------------------------------------------------------------------------------|---------------------------------|
-| [`.alter table docstring`](alter-table-docstring-command.md), [`.alter table folder`](alter-table-folder-command.md)                                                                                                                                                                                                   | Manage table display properties |
-| [`.create ingestion mapping`](create-ingestion-mapping-command.md), [`.show ingestion mappings`](show-ingestion-mapping-command.md), [`.alter ingestion mapping`](alter-ingestion-mapping-command.md), [`.drop ingestion mapping`](drop-ingestion-mapping-command.md)                                                                    | Manage ingestion mapping        |
-| [`.create tables`](create-tables-command.md), [`.create table`](create-table-command.md), [`.alter table`](alter-table-command.md), [`.alter-merge table`](alter-table-command.md), [`.drop tables`](drop-table-command.md), [`.drop table`](drop-table-command.md), [`.undo drop table`](undo-drop-table-command.md), [`.rename table`](rename-table-command.md) | Create/modify/drop tables       |
-| [`.show tables`](show-tables-command.md) [`.show table details`](show-table-details-command.md)[`.show table schema`](show-table-schema-command.md)                                                                                      | Enumerate tables in a database  |
-| `.ingest`, `.set`, `.append`, `.set-or-append` (see [Data Ingestion](../../ingest-data-overview.md#kusto-query-language-ingest-control-commands) for details).                                                                                                                                                                                      | Data ingestion into a table     |
-| [`.clear table data`](clear-table-data-command.md)                            | Clears all the data of a table  |
+| Commands | Operation|
+|---|---|
+| [`.alter table docstring`](alter-table-docstring-command.md), [`.alter table folder`](alter-table-folder-command.md) | Manage table display properties |
+| [`.create ingestion mapping`](create-ingestion-mapping-command.md), [`.show ingestion mappings`](show-ingestion-mapping-command.md), [`.alter ingestion mapping`](alter-ingestion-mapping-command.md), [`.drop ingestion mapping`](drop-ingestion-mapping-command.md) | Manage ingestion mapping |
+| [`.create tables`](create-tables-command.md), [`.create table`](create-table-command.md), [`.alter table`](alter-table-command.md), [`.alter-merge table`](alter-table-command.md), [`.drop tables`](drop-table-command.md), [`.drop table`](drop-table-command.md), [`.undo drop table`](undo-drop-table-command.md), [`.rename table`](rename-table-command.md) | Create/modify/drop tables  |
+| [`.show tables`](show-tables-command.md) [`.show table details`](show-table-details-command.md)[`.show table schema`](show-table-schema-command.md)   | Enumerate tables in a database  |
+| `.ingest`, `.set`, `.append`, `.set-or-append` (see [Data Ingestion](../../ingest-data-overview.md#ingest-control-commands) for details).  | Data ingestion into a table     |
+| [`.clear table data`](clear-table-data-command.md) | Clears all the data of a table  |
 
 ## CRUD naming conventions for tables 
 (See full details in the sections linked to in the table, above.)

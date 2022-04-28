@@ -61,14 +61,14 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "data-explorer/ingest-data-streaming-csharp.md",
-      "redirect_url": "/azure/data-explorer/ingest-data-streaming",
+      "source_path": "data-explorer/kusto/api/connection-strings/storage.md",
+      "redirect_url": "/azure/data-explorer/kusto/api/connection-strings/storage-connection-strings",
       "redirect_document_id": false
     },
     {
-      "source_path": "data-explorer/manage-cluster-security.md",
-      "redirect_url": "/azure/data-explorer/cluster-disk-encryption",
-      "redirect_document_id": true
+      "source_path": "data-explorer/ingest-data-streaming-csharp.md",
+      "redirect_url": "/azure/data-explorer/ingest-data-streaming",
+      "redirect_document_id": false
     },
     {
       "source_path": "data-explorer/kusto/management/externaltables.md",
@@ -260,5 +260,45 @@
       "redirect_url": "/azure/data-explorer/kusto/management/show-table-update-policy-command",
       "redirect_document_id": false
     },
+    {
+      "source_path": "data-explorer/managed-identities.md",
+      "redirect_url": "/azure/data-explorer/configure-managed-identities-cluster",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/one-click-manage-database.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-database-portal",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/vnet-create-private-endpoint.md",
+      "redirect_url": "/azure/data-explorer/security-network-private-endpoint",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/concepts/crossclusterandschemachanges.md",
+      "redirect_url": "/azure/data-explorer/kusto/concepts/cross-cluster-and-schema-changes",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-query-weak-consistency-policy.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/alter-query-weak-consistency-policy",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/manage-cluster-security.md",
+      "redirect_url": "/azure/data-explorer/cluster-encryption-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/cluster-disk-encryption.md",
+      "redirect_url": "/azure/data-explorer/cluster-encryption-disk",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/double-encryption.md",
+      "redirect_url": "/azure/data-explorer/cluster-encryption-double",
+      "redirect_document_id": true
+    }
   ]
 }

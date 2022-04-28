@@ -1,11 +1,7 @@
 ---
-title: search operator - Azure Data Explorer | Microsoft Docs
+title: search operator - Azure Data Explorer
 description: This article describes search operators in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
@@ -52,7 +48,7 @@ The `search` operator provides a multi-table/multi-column search experience.
 
   **String matching extensions**: String literals that appear as terms in the *SearchPredicate* indicate a term
     match between all columns and the literal using `has`, `hasprefix`, `hassuffix`, and the inverted (`!`)
-    or case-sensitive (`sc`) versions of these operators. The decision whether to apply `has`, `hasprefix`,
+    or case-sensitive (`cs`) versions of these operators. The decision whether to apply `has`, `hasprefix`,
     or `hassuffix` depends on whether the literal starts or ends (or both) by an asterisk (`*`). Asterisks
     inside the literal are not allowed.
 
@@ -121,7 +117,7 @@ search "billg" and ("steveb" or "satyan")
 search in (TraceEvent) and "billg"
 
 // 4. Like (2), but performing a case-sensitive match of all terms
-search "BillB" and ("SteveB" or "SatyaN")
+search kind=case_sensitive "BillB" and ("SteveB" or "SatyaN")
 
 // 5. Like (1), but restricting the match to some columns
 search CEO:"billg" or CSA:"billg"

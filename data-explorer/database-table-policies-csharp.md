@@ -1,10 +1,7 @@
 ---
 title: 'Create policies by using the Azure Data Explorer C# SDK'
 description: In this article, you will learn how to create policies by using C#.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/24/2019
 ---
@@ -40,7 +37,7 @@ Sets a retention policy with a 10-day soft-delete period.
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client secret
+var clientSecret = "PlaceholderClientSecret";//Client Secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
 var credential = new ClientCredential(clientId, clientSecret);
@@ -66,7 +63,7 @@ Sets a cache policy for the database. The previous five days of data will be on 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client secret
+var clientSecret = "PlaceholderClientSecret";//Client Secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
 var credential = new ClientCredential(clientId, clientSecret);
@@ -94,7 +91,7 @@ var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net/";
 var databaseName = "<DatabaseName>";
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client secret
+var clientSecret = "PlaceholderClientSecret";//Client Secret
 var tableName = "<TableName>"
 
 var kustoConnectionStringBuilder =
@@ -124,7 +121,7 @@ Adds a new Azure AD application as admin principal for the database.
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "PlaceholderClientSecret";//Client Secret
 var clientIdToAdd = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");

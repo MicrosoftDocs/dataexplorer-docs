@@ -5,8 +5,12 @@ items:
   items:
   - name: What is Azure Data Explorer?
     href: data-explorer-overview.md
+  - name: Get started for free
+    href: start-for-free.md
   - name: What's new
     href: whats-new.md
+  - name: Solution architectures
+    href: solution-architectures.md
 - name: Quickstarts
   expanded: true
   items:
@@ -30,6 +34,8 @@ items:
     href: ingest-data-no-code.md
   - name: Visualize data in Power BI
     href: visualize-power-bi.md
+  - name: "Learn module: Introduction to Azure Data Explorer"
+    href: /learn/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
 - name: Concepts
   items:
   - name: EngineV3
@@ -66,6 +72,8 @@ items:
     href: tools-integrations-overview.md
 - name: How-to guides
   items:
+  - name: Create a start-for-free cluster
+    href: start-for-free-web-ui.md
   - name: Create cluster and database
     items:
     - name: Azure CLI
@@ -78,6 +86,8 @@ items:
       href: create-cluster-database-python.md
     - name: Go
       href: create-cluster-database-go.md
+    - name: Automated provisioning
+      href: automated-deploy-overview.md
     - name: Azure Resource Manager template
       href: create-cluster-database-resource-manager.md
   - name: Create tables
@@ -87,6 +97,14 @@ items:
     - name: External table creation wizard
       displayName: one-click
       href: external-table.md
+    - name: Create table policies
+      items:
+      - name: Create ingestion batching table policy
+        displayName: one-click
+        href: one-click-table-batching-policy.md
+      - name: Create retention table policy
+        displayName: one-click
+        href: one-click-table-retention-policy.md
   - name: Ingest data
     items:
     - name: One-click ingestion
@@ -106,25 +124,28 @@ items:
         href: lightingest.md
       - name: Use wizard for one-time ingestion of historical data with LightIngest
         href: generate-lightingest-command.md
-    - name: Event Hub
+    - name: Cross-tenant data connection
+      displayName: event hub, event grid
+      href: ingest-data-cross-tenant.md
+    - name: Event hub
       items:
-      - name: Event Hub data connection
+      - name: Event hub data connection
         displayName: ingest, ingestion
         href: ingest-data-event-hub-overview.md
       - name: Azure portal
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: ingest-data-event-hub.md
       - name: One-click
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: one-click-event-hub.md
       - name: C#
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: data-connection-event-hub-csharp.md
       - name: Python
-        displayName: Event Hub, ingest
+        displayName: Event hub, ingest
         href: data-connection-event-hub-python.md
       - name: Azure Resource Manager template
-        displayName: Event Hub, ingest, data connection
+        displayName: Event hub, ingest, data connection
         href: data-connection-event-hub-resource-manager.md
     - name: Event Grid
       items:
@@ -245,6 +266,9 @@ items:
       - name: Connector
         displayName: Power BI
         href: power-bi-connector.md
+      - name: Dynamic M query parameters
+        displayName: Power BI
+        href: power-bi-dynamic-m.md
       - name: Imported query
         displayName: Power BI
         href: power-bi-imported-query.md
@@ -277,25 +301,49 @@ items:
       href: isolated-compute.md
     - name: Network isolation (VNet)
       items:
-        - name: Create a cluster in your VNet - Portal
-          href: vnet-create-cluster-portal.md
-        - name: Deploy your cluster to your VNet
-          href: vnet-deployment.md
-        - name: Troubleshoot VNet cluster creation, connectivity, and operation
-          href: vnet-deploy-troubleshoot.md
-        - name: Create Private Endpoint for your VNet cluster - Portal
-          href: vnet-create-private-endpoint.md
-        - name: Create a private or service endpoint to resources used by data connections
-          displayName: VNet, private endpoint, Azure Storage, Event Hub
-          href: vnet-endpoint-storage-event-hub.md
+        - name: Network security overview 
+          href: security-network-overview.md
+        - name: Private Endpoints
+          items:
+          - name: Private Endpoints overview
+            href: security-network-private-endpoint.md
+          - name: Create a private endpoint
+            href: security-network-private-endpoint-create.md
+          - name: Create a managed private endpoint
+            href: security-network-managed-private-endpoint-create.md
+          - name: Restrict public access
+            href: security-network-restrict-public-access.md
+          - name: Troubleshoot private endpoints
+            href: security-network-private-endpoint-troubleshoot.md
+        - name: Virtual network injection
+          items:
+          - name: Create a cluster in your VNet - Portal
+            href: vnet-create-cluster-portal.md
+          - name: Deploy your cluster to your VNet
+            href: vnet-deployment.md
+          - name: Create a private or service endpoint to resources used by data connections
+            displayName: VNet, private endpoint, Azure Storage, event hub
+            href: vnet-endpoint-storage-event-hub.md
+          - name: Troubleshoot VNet cluster creation, connectivity, and operation
+            href: vnet-deploy-troubleshoot.md
+        - name: Restrict outbound requests
+          href: security-network-restrict-outbound-access.md
     - name: Encryption
       items:
-      - name: Cluster disk encryption - portal
-        href: cluster-disk-encryption.md
-      - name: Double Encryption
-        href: double-encryption.md
-    - name: Configure managed identities
-      href: managed-identities.md
+      - name: Cluster encryption overview
+        href: cluster-encryption-overview.md
+      - name: Enable double encryption
+        href: cluster-encryption-double.md
+      - name: Enable disk encryption
+        href: cluster-encryption-disk.md
+    - name: Managed identities
+      items:
+      - name: Managed identities overview
+        href: managed-identities-overview.md
+      - name: Configure managed identities on your cluster
+        href: configure-managed-identities-cluster.md
+      - name: Authenticate external tables with managed identities 
+        href: external-tables-managed-identities.md
     - name: Configure customer-managed-keys
       items:
         - name: Portal
@@ -315,6 +363,8 @@ items:
           href: customer-managed-keys-powershell.md
     - name: Create Azure AD app
       href: provision-azure-ad-app.md
+    - name: Conditional Access
+      href: security-conditional-access.md
   - name: Manage
     items:
     - name: Cluster
@@ -462,88 +512,103 @@ items:
       displayName: functions library
       href: kusto/functions-library/functions-library.md
     - name: bartlett_test_fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/bartlett-test-fl.md
     - name: binomial_test_fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/binomial-test-fl.md
     - name: comb_fl()
-      displayName: functions library
+      displayName: functions library, statistics
       href: kusto/functions-library/comb-fl.md
     - name: factorial_fl()
-      displayName: functions library
+      displayName: functions library, statistics
       href: kusto/functions-library/factorial-fl.md
     - name: kmeans_fl()
-      displayName: functions library
+      displayName: functions library, clustering, K-Means
       href: kusto/functions-library/kmeans-fl.md
     - name: ks_test_fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/ks-test-fl.md
     - name: normality_test_fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/normality-test-fl.md
     - name: levene_test_fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/levene-test-fl.md
     - name: mann-whitney-u-test-fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/mann-whitney-u-test-fl.md
     - name: pair_probabilities_fl()
-      displayName: functions library, Jaccard, jaccard, lift
+      displayName: functions library, jaccard, lift
       href: kusto/functions-library/pair-probabilities-fl.md
+    - name: pairwise_dist_fl()
+      displayName: functions library, multivariate, distance, anomaly, pairwise
+      href: kusto/functions-library/pairwise-dist-fl.md      
     - name: perm_fl()
-      displayName: functions library
+      displayName: functions library, statistics
       href: kusto/functions-library/perm-fl.md
     - name: predict_fl()
-      displayName: functions library
+      displayName: functions library, score, classify
       href: kusto/functions-library/predict-fl.md
     - name: predict_onnx_fl()
-      displayName: functions library
+      displayName: functions library, score, classify
       href: kusto/functions-library/predict-onnx-fl.md
     - name: quantize_fl()
-      displayName: functions library
+      displayName: functions library, binning
       href: kusto/functions-library/quantize-fl.md
     - name: series_dbl_exp_smoothing_fl()
-      displayName: functions library
+      displayName: functions library, exponential, filter, low-pass
       href: kusto/functions-library/series-dbl-exp-smoothing-fl.md
     - name: series_dot_product_fl()
-      displayName: functions library
+      displayName: functions library, inner product, scalar product
       href: kusto/functions-library/series-dot-product-fl.md
     - name: series_downsample_fl()
-      displayName: functions library
+      displayName: functions library, subsampling, sub-sampling
       href: kusto/functions-library/series-downsample-fl.md
     - name: series_exp_smoothing_fl()
-      displayName: functions library
+      displayName: functions library, exponential, filter, low-pass
       href: kusto/functions-library/series-exp-smoothing-fl.md
     - name: series_fit_lowess_fl()
-      displayName: functions library
+      displayName: functions library, filter, low-pass, smoothing, regression
       href: kusto/functions-library/series-fit-lowess-fl.md
     - name: series_fit_poly_fl()
-      displayName: functions library
+      displayName: functions library, filter, low-pass, smoothing, regression
       href: kusto/functions-library/series-fit-poly-fl.md
     - name: series_fbprophet_forecast_fl()
-      displayName: functions library, prophet algorithm, predict
+      displayName: functions library
       href: kusto/functions-library/series-fbprophet-forecast-fl.md
     - name: series_metric_fl()
-      displayName: functions library
+      displayName: functions library, PromQL, Prometheus
       href: kusto/functions-library/series-metric-fl.md
+    - name: series_lag_fl()
+      displayName: functions library, filter, time shift, delay
+      href: kusto/functions-library/series-lag-fl.md
     - name: series_moving_avg_fl()
-      displayName: functions library
+      displayName: functions library, filter, low-pass, smoothing
       href: kusto/functions-library/series-moving-avg-fl.md
     - name: series_rate_fl()
-      displayName: functions library
+      displayName: functions library, PromQL, Prometheus
       href: kusto/functions-library/series-rate-fl.md
     - name: series_rolling_fl()
-      displayName: functions library
+      displayName: functions library, rolling, sliding
       href: kusto/functions-library/series-rolling-fl.md
+    - name: series_uv_anomalies_fl()
+      displayName: functions library, anomaly detection, univariate
+      href: kusto/functions-library/series-uv-anomalies-fl.md
+    - name: series_uv_change_points_fl()
+      displayName: functions library, anomaly detection, univariate, change point
+      href: kusto/functions-library/series-uv-change-points-fl.md
     - name: time_weighted_avg_fl()
-      displayName: functions library
+      displayName: functions library, binning
       href: kusto/functions-library/time-weighted-avg-fl.md
+    - name: time_window_rolling_avg_fl()
+      displayName: functions library, rolling, sliding
+      href: kusto/functions-library/time-window-rolling-avg-fl.md
     - name: two_sample_t_test_fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/two-sample-t-test-fl.md
     - name: wilcoxon_test_fl()
-      displayName: functions library
+      displayName: functions library, statistical test
       href: kusto/functions-library/wilcoxon-test-fl.md
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions

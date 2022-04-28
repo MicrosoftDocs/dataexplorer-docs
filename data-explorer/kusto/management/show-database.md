@@ -1,11 +1,7 @@
 ---
-title: .show database - Azure Data Explorer | Microsoft Docs
+title: .show database - Azure Data Explorer
 description: This article describes .show database in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/13/2020
 ---
@@ -43,7 +39,7 @@ The default call without any options specified is equal to 'identity' option.
 |Version  |String |The database version number. This number is updated for each change operation in the database (such as adding data and changing the schema). 
 |IsCurrent  |Boolean |True if the database is the one that the current connection points to. 
 |DatabaseAccessMode  |String |How the cluster is attached to the database. For example, if the database is attached in ReadOnly mode then the cluster will fail all requests to modify the database in any way. 
-|PrettyName |String |The database pretty name.
+|PrettyName |String |The database's pretty name.
 |AuthorizedPrincipals |String | The database's collection of authorized principals (serialized in JSON format).
 |RetentionPolicy |String | The database's Retention policy (serialized in JSON format).
 |MergePolicy |String | The database's Extents Merge policy (serialized in JSON format).
@@ -51,8 +47,12 @@ The default call without any options specified is equal to 'identity' option.
 |ShardingPolicy |String | The database's Sharding policy (serialized in JSON format).
 |StreamingIngestionPolicy |String | The database's Streaming Ingestion policy (serialized in JSON format).
 |IngestionBatchingPolicy |String | The database's Ingestion Batching policy (serialized in JSON format).
-|TotalSize |Real | The database's extents total size.
+|TotalSize |Real | The database's extents total size in bytes.
 |DatabaseId |Guid |The database's unique ID.
+|NumberOfTables |Int64 |The database's number of tables (not including external tables or materialized views).
+|NumberOfExternalTables |Int64 |The database's number of external tables.
+|NumberOfMaterializedViews |Int64 |The database's number of materialized views.
+
 
 **Output for 'policies' option**
  

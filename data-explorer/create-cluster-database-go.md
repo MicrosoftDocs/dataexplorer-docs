@@ -1,10 +1,7 @@
 ---
 title: 'Create an Azure Data Explorer cluster & database using Azure Go SDK'
 description: Learn how to create, list, and delete an Azure Data Explorer cluster and database with Azure Go SDK.
-author: orspod
-ms.author: orspodek
 ms.reviewer: abhishgu
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/28/2020
 ---
@@ -190,7 +187,7 @@ When you run the sample code as is, the following actions are performed:
     cd azure-data-explorer-go-cluster-management
     ```
 
-1. The program authenticates using client credentials. Use the Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) command to create a service principal. Save the client ID, client secret, and tenant ID information for use in the next step.
+1. The program authenticates using client credentials. Use the Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) command to create a service principal. Save the client ID, client secret, and tenant ID information for use in the next step.
 
 1. Export required environment variables including service principal information. Enter your subscription ID, resource group, and region where you want to create the cluster.
 

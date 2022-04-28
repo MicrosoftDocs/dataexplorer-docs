@@ -1,11 +1,7 @@
 ---
 title: Request queuing policy - Azure Data Explorer
 description: This article describes the request queuing policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/02/2021
 ---
@@ -25,4 +21,4 @@ The policy includes a single property:
 
 ## Control commands
 
-Manage the workload group's request limits policy with [Workload groups control commands](workload-groups-commands.md).
+Manage the workload group's request limits policy with [Workload groups control commands](./show-workload-group-command.md).

@@ -1,11 +1,7 @@
 ---
 title: Copy in bulk from a database to Azure Data Explorer by using the Azure Data Factory template
 description: In this article, you learn to use an Azure Data Factory template to copy in bulk from a database to Azure Data Explorer
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: tzgitlin
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/08/2019
 

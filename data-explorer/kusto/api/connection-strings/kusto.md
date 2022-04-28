@@ -1,11 +1,7 @@
 ---
-title: Kusto connection strings - Azure Data Explorer | Microsoft Docs
+title: Kusto connection strings - Azure Data Explorer
 description: This article describes Kusto connection strings in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/24/2020
 ---
@@ -90,20 +86,27 @@ It lists programmatic names (which is the name of the property in the
 |Application Name for Tracing                      |TraceAppName                              |ApplicationNameForTracing                     |A String value that reports to the service which application name to use when tracing the request internally|
 |Application Token                                 |AppToken                                  |ApplicationToken                              |A String value that instructs the client to perform application authenticating with the specified bearer token|
 |Authority Id                                      |TenantId                                  |Authority                                     |A String value that provides the name or ID of the tenant in which the application is registered|
-|ManagedServiceIdentity                        |N/A|EmbeddedManagedIdentity                       |A String value that instructs the client which application identity to use with managed identity authentication; use `system` to indicate the system-assigned identity. This property cannot be set with a connection string, only programmatically.|
+|ManagedServiceIdentity                            |N/A                                       |EmbeddedManagedIdentity                       |A String value that instructs the client which application identity to use with managed identity authentication; use `system` to indicate the system-assigned identity. This property cannot be set with a connection string, only programmatically.|
 |Application Certificate Subject Distinguished Name|Application Certificate Subject           |ApplicationCertificateSubjectDistinguishedName||
 |Application Certificate Issuer Distinguished Name |Application Certificate Issuer            |ApplicationCertificateIssuerDistinguishedName ||
 |Application Certificate Send Public Certificate   |Application Certificate SendX5c, SendX5c  |ApplicationCertificateSendPublicCertificate   ||
 
-
-
 ### Client communication properties
 
-|Property name                      |Alternative names|Programmatic name  |Description                                                   |
-|-----------------------------------|-----------------|-------------------|--------------------------------------------------------------|
-|Accept      ||Accept      |A Boolean value that requests detailed error objects to be returned on failure.|
-|Streaming   ||Streaming   |A Boolean value that requests the client will not accumulate data before providing it to the caller.|
-|Uncompressed||Uncompressed|A Boolean value that requests the client will not ask for transport-level compression.|
+|Property name|Alternative names|Programmatic name  |Description                                                   |
+|-------------|-----------------|-------------------|--------------------------------------------------------------|
+|Accept       |                 |Accept             |A Boolean value that requests detailed error objects to be returned on failure.|
+|Streaming    |                 |Streaming          |A Boolean value that requests the client will not accumulate data before providing it to the caller.|
+|Uncompressed |                 |Uncompressed       |A Boolean value that requests the client will not ask for transport-level compression.|
+
+> [!NOTE]
+> When the Streaming flag is enabled (as is the default),
+> the SDK does not buffer all response data in memory;
+> instead, it "pulls" the data from the service when the caller
+> requests it. Therefore, it is essential that in this case
+> the caller properly disposes of the data (such as `IDataReader`)
+> once it is done reading the data, as the network connection
+> to the service is held open unnecessarily.
 
 ## Authentication properties (details)
 

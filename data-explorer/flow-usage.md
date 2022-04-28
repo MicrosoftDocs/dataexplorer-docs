@@ -1,10 +1,7 @@
 ---
 title: Usage examples for Azure Data Explorer connector to Power Automate (Preview) 
 description: Learn some common usage examples for Azure Data Explorer connector to Power Automate.
-author: orspod
-ms.author: orspodek
 ms.reviewer: dorcohen
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/15/2020
 ---

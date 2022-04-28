@@ -1,13 +1,9 @@
 ---
 title: .alter-merge table merge policy command- Azure Data Explorer
 description: This article describes the .alter-merge table merge policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 01/13/2022
 ---
 # .alter-merge table merge policy
 
@@ -16,7 +12,12 @@ Change a table's [merge policy](mergepolicy.md). The merge policy defines if and
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `policy` `merge` 
+`.alter-merge` `table` *TableName* `policy` `merge` *PolicyObject*
+
+## Arguments
+
+*TableName* - Specify the name of the table.
+*PolicyObject* - Define a policy object, see also [merge policy](mergepolicy.md).
 
 ### Example
 

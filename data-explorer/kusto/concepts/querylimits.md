@@ -1,14 +1,9 @@
 ---
 title: Query limits - Azure Data Explorer
 description: This article describes Query limits in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/16/2021
-ms.localizationpriority: high 
+ms.date: 04/27/2022
 ---
 # Query limits
 
@@ -91,7 +86,9 @@ You can remove the result truncation limit either for export purposes by using t
 
 Kusto provides a number of client libraries that can handle "infinitely large" results by streaming them to the caller. 
 Use one of these libraries, and configure it to streaming mode. 
-For example, use the .NET Framework client (Microsoft.Azure.Kusto.Data) and either set the streaming property of the connection string to *true*, or use the *ExecuteQueryV2Async()* call that always streams results.
+For example, use the .NET Framework client (Microsoft.Azure.Kusto.Data) and either set the streaming property of the connection string to *true*, or use the *ExecuteQueryV2Async()* call that always streams results. For an example of how to use *ExecuteQueryV2Async()*, see the [HelloKustoV2](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/HelloKustoV2) application.
+
+You may also find the C# streaming ingestion sample application helpful.
 
 Result truncation is applied by default, not just to the
 result stream returned to the client. It's also applied by default to

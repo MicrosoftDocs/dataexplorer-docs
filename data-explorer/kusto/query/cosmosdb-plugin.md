@@ -1,11 +1,7 @@
 ---
 title: cosmosdb_sql_request plugin - Azure Data Explorer
 description: This article describes the cosmosdb_sql_request plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: miwalia
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/11/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
@@ -15,7 +11,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network endpoint and returns the results of the query. This plugin is primarily designed for querying small datasets, for example, enriching data with reference data stored in [Azure Cosmos DB](/azure/cosmos-db/).
+The `cosmosdb_sql_request` plugin sends a SQL query to a Cosmos DB SQL network endpoint and returns the results of the query. This plugin is primarily designed for querying small datasets, for example, enriching data with reference data stored in [Azure Cosmos DB](/azure/cosmos-db/). The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Syntax
 

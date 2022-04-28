@@ -1,10 +1,7 @@
 ---
 title: time_weighted_avg_fl() - Azure Data Explorer
 description: This article describes time_weighted_avg_fl() user-defined function in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/27/2021
 ---
@@ -49,6 +46,7 @@ let time_weighted_avg_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, s
     | join kind=fullouter keys on dummy
     | project-away dummy, dummy1
     | union tbl_ex
+    | where timestamp between (stime..etime)
     | partition hint.strategy=native by key (
         order by timestamp asc, value nulls last
         | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(value), s.f_value, value);)    // fill forward null values
@@ -98,6 +96,7 @@ time_weighted_avg_fl(tbl:(*), t_col:string, y_col:string, key_col:string, stime:
     | join kind=fullouter keys on dummy
     | project-away dummy, dummy1
     | union tbl_ex
+    | where timestamp between (stime..etime)
     | partition hint.strategy=native by key (
         order by timestamp asc, value nulls last
         | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(value), s.f_value, value);)    // fill forward null values
@@ -144,4 +143,4 @@ timestamp	                   key      val
 2021-04-26 01:00:00.0000000    Device2	100
 ```
 
-The first value is (45m*100 + 15m*200)/60m = 125, the second value is (6m*200 + 54m*100)/60m = 110, and so on.
+The first value is (45m\*100 + 15m\*200)/60m = 125, the second value is (6m*200 + 54m*100)/60m = 110, and so on.

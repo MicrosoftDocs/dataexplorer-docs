@@ -1,11 +1,7 @@
 ---
 title: Customize Azure Data Explorer dashboard visuals
 description: Easily customize your Azure Data Explorer dashboard visuals
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabil
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/25/2020
 ---

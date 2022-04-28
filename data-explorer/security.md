@@ -1,12 +1,9 @@
 ---
 title: Secure Azure Data Explorer clusters in Azure
 description: Learn about how to secure clusters in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: itsagui
-ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 04/04/2021
+ms.date: 04/05/2022
 ---
 
 # Security in Azure Data Explorer
@@ -24,7 +21,7 @@ For more information, see the following topics.
 * [Create an Azure Data Explorer cluster in your virtual network](vnet-create-cluster-portal.md)
 * [Deploy Azure Data Explorer cluster into your Virtual Network](vnet-deployment.md)
 * [Troubleshoot access, ingestion, and operation of your Azure Data Explorer cluster in your virtual network](vnet-deploy-troubleshoot.md)
-* [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network (preview)](vnet-create-private-endpoint.md)
+* [Create a private endpoint for Azure Data Explorer](security-network-private-endpoint-create.md)
 * [Create a private or service endpoint to Event Hub and Azure Storage](vnet-endpoint-storage-event-hub.md)
 
 ## Identity and access control
@@ -52,7 +49,7 @@ By default, data is encrypted with Microsoft-managed keys. For additional contro
 Use Azure Key Vault to store your customer-managed keys. You can create your own keys and store them in a key vault, or you can use an Azure Key Vault API to generate keys. The Azure Data Explorer cluster and the Azure Key Vault must be in the same region, but they can be in different subscriptions. For more information about Azure Key Vault, see [What is Azure Key Vault?](/azure/key-vault/key-vault-overview). For a detailed explanation on customer-managed keys, see [Customer-managed keys with Azure Key Vault](/azure/storage/common/storage-service-encryption). Configure customer-managed keys in your Azure Data Explorer cluster using the [Portal](customer-managed-keys-portal.md), [C#](customer-managed-keys-csharp.md), [Azure Resource Manager template](customer-managed-keys-resource-manager.md), [CLI](customer-managed-keys-cli.md), or the [PowerShell](customer-managed-keys-powershell.md)
 
 > [!Note]
-> Customer-managed keys rely on managed identities for Azure resources, a feature of Azure Active Directory (Azure AD). To configure customer-managed keys in the Azure portal, configure a managed identity to your cluster as described in [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md).
+> Customer-managed keys rely on managed identities for Azure resources, a feature of Azure Active Directory (Azure AD). To configure customer-managed keys in the Azure portal, configure a managed identity to your cluster as described in [Configure managed identities for your Azure Data Explorer cluster](./configure-managed-identities-cluster.md).
 
 #### Store customer-managed keys in Azure Key Vault
 
@@ -80,7 +77,7 @@ To revoke access to customer-managed keys, use PowerShell or Azure CLI. For more
 
 ## Next steps
 
-* [Secure your cluster using Disk Encryption in Azure Data Explorer - Portal](cluster-disk-encryption.md) by enabling encryption at rest.
-* [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md)
+* [Secure your cluster using Disk Encryption](cluster-encryption-disk.md) by enabling encryption at rest.
+* [Configure managed identities for your Azure Data Explorer cluster](./configure-managed-identities-cluster.md)
 * [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md)
 * [Configure customer-managed-keys using C#](customer-managed-keys-csharp.md)

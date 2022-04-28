@@ -1,11 +1,7 @@
 ---
 title: Materialized views policies - Azure Data Explorer
 description: This article describes materialized views policies in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yifats
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/23/2021
 ---
@@ -16,7 +12,7 @@ This article includes information about policies that can be set on materialized
 
 ## Retention and caching policy
 
-A materialized view has a [retention policy](../retentionpolicy.md) and [caching policy](../cachepolicy.md), like any Azure Data Explorer table. The materialized view derives the database retention and caching policies by default. These policies can be changed using [retention policy control commands](../retention-policy.md) or [caching policy control commands](../cache-policy.md).
+A materialized view has a [retention policy](../retentionpolicy.md) and [caching policy](../cachepolicy.md), like any Azure Data Explorer table. The materialized view derives the database retention and caching policies by default. These policies can be changed using [retention policy control commands](../show-table-retention-policy-command.md) or [caching policy control commands](../show-table-cache-policy-command.md).
 
 Both policies are applied on the *materialized part* of the materialized view only.  For an explanation of the differences between the *materialized part* and *delta* part, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work). For example, if the caching policy of a materialized view is set to 7d, but the caching policy of its source table is set to 0d, there may still be disk misses when querying the materialized view. This will happen because the source table (*delta part*) participates in the query as well.
 
@@ -34,7 +30,7 @@ The retention and caching policies both depend on [Extent Creation time](../exte
 
 A [partitioning policy](../partitioningpolicy.md) can be applied on a materialized view. We recommend configuring a partitioning policy on a materialized view only when most or all of the view queries filter by one of the materialized view's group-by keys. This is common in multi-tenant solutions, where one of the materialized view's group-by keys is the tenant's identifer (for example, `tenantId`, `customerId`). For more information, see the first use case described in the [partitioning policy supported scenarios](../partitioningpolicy.md#supported-scenarios) page.
 
-For the commands to alter a materialized view's partitioning policy, see [partitioning policy commands](../partitioning-policy.md#alter-and-alter-merge-policy).
+For the commands to alter a materialized view's partitioning policy, see [partitioning policy commands](../show-table-partitioning-policy-command.md).
 
 Adding a partitioning policy on a materialized view will increase the number of extents in the materialized view, and will create more "work" for the materialization process. For more information on why this happens, see the extents rebuild process mentioned in [how materialized views work](materialized-view-overview.md#how-materialized-views-work)). In [EngineV3](../../../engine-v3.md) clusters, this process is much more efficient than in V2. Therefore, we recommend to only add a partitioning policy on a materialized view only if the cluster is a V3 cluster.
 
@@ -54,4 +50,4 @@ A [row level security](../rowlevelsecuritypolicy.md) can be applied on a materia
     .alter table SourceTable policy row_level_security enable with (allowMaterializedViewsWithoutRowLevelSecurity=true) "RLS_function"
 ```
 
-For commands for configuring a row level security policy on a materialized view, see [row_level_security policy commands](../row-level-security-policy.md).
+For commands for configuring a row level security policy on a materialized view, see [row_level_security policy commands](../show-table-row-level-security-policy-command.md).

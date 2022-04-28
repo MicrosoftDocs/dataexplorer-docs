@@ -1,18 +1,13 @@
 ---
-title: parse_url() - Azure Data Explorer | Microsoft Docs
+title: parse_url() - Azure Data Explorer
 description: This article describes parse_url() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 12/12/2021
 ---
 # parse_url()
 
 Parses an absolute URL `string` and returns a `dynamic` object contains URL parts.
-
 
 ## Syntax
 

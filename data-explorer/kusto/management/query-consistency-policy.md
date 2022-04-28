@@ -1,30 +1,26 @@
 ---
 title: Query consistency policy - Azure Data Explorer
 description: This article describes the query consistency policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/01/2021
 ---
 # Query consistency policy
 
-A workload group's query consistency policy allows specifying options that control the [consistency model](../concepts/queryconsistency.md) of queries.
+A workload group's query consistency policy allows specifying options that control the [consistency mode](../concepts/queryconsistency.md) of queries.
 
 ## The policy object
 
 Each option consists of:
 
 * A typed `Value` - the value of the limit.
-* `IsRelaxable` - a boolean value that defines if the option can be relaxed by the caller, as part of the request's [Client request properties](../api/netfx/request-properties.md).
+* `IsRelaxable` - a boolean value that defines if the option can be relaxed by the caller, as part of the request's [Client request properties](../api/netfx/request-properties.md). Default is `true`
 
 The following limits are configurable:
 
 | Name                   | Type                 | Description                                                                                      | Supported values                                                               | Default value | Matching client request property |
 |------------------------|----------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|---------------|----------------------------------|
-| QueryConsistency       | `QueryConsistency`   | The [consistency model](../concepts/queryconsistency.md) to use.                                 | `Strong`, `Weak`, or `WeakAffinitizedByQuery`, `WeakAffinitizedByDatabase`     | `Strong`      | `queryconsistency`               |
+| QueryConsistency       | `QueryConsistency`   | The [consistency mode](../concepts/queryconsistency.md) to use.                                 | `Strong`, `Weak`, or `WeakAffinitizedByQuery`, `WeakAffinitizedByDatabase`     | `Strong`      | `queryconsistency`               |
 | CachedResultsMaxAge    | `timespan`           | The maximum age of [cached query results](../query/query-results-cache.md) that can be returned. | A non-negative `timespan`                                                      | `null`        | `query_results_cache_max_age`    |
 
 > [!NOTE]
@@ -36,7 +32,7 @@ The following limits are configurable:
 ### Example
 
 ```json
-{
+"QueryConsistencyPolicy": {
   "QueryConsistency": {
     "IsRelaxable": true,
     "Value": "Weak"
@@ -48,6 +44,7 @@ The following limits are configurable:
 }
 ```
 
+
 ## Control commands
 
-Manage the workload group's query consistency policy with [Workload groups control commands](workload-groups-commands.md).
+Manage the workload group's query consistency policy with [Workload groups control commands](./show-workload-group-command.md).

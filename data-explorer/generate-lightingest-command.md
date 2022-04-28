@@ -1,10 +1,7 @@
 ---
 title: Use wizard for one-time ingestion of historical data with LightIngest (preview)
 description: Learn about how to auto-generate an ingest command for LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: tzgitlin
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 07/27/2021
 ---
@@ -28,13 +25,13 @@ This article shows you how to create a new table, create schema mapping, and gen
 
 The wizard can be accessed either from the **Data** tab, or from the **Query** tab of the [Azure Data Explorer WebUI](https://dataexplorer.azure.com/).
 
-1. In the **Data** tab, select **Ingest new data**>**Ingest**
+1. In the **Data** tab, from the **Quick actions** section, select **Ingest new data**. Alternatively, from the **All actions** section, select **Ingest new data** and then **Ingest**.
 
-    :::image type="content" source="media/generate-lightingest-command/data-tab.png" alt-text="Screenshot of the Data tab of the Azure Data Explorer WebUI with red boxes around the fields to follow.":::
+   :::image type="content" source="media/one-click-ingestion-existing-table/ingest-new-data.png" alt-text="Screenshot for the Web UI where you select one-click ingestion for a table.":::
 
 1. In the **Query tab**, right-click a *database* and select **Ingest new data**.
 
-   :::image type="content" source="media/one-click-ingestion-new-table/one-click-ingestion-in-web-ui.png" alt-text="Ingest new data.":::
+   :::image type="content" source="media/one-click-ingestion-new-table/ingest-new-data-database-menu.png" alt-text="Ingest new data.":::
 
 In the **Ingest new data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 
@@ -57,10 +54,31 @@ In the **Ingest new data** window, the **Destination** tab is selected. The **Cl
   1. Select **Ingestion type**>**Historical data**.
   1. You can either **Add URL** manually by copying the Account Key/SAS URL to source, or **Select container** from your storage account.
       > [!NOTE]
-      > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage.md).
+      > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage-connection-strings.md).
   1. When selecting from your storage account, select your **Storage subscription**, **Storage account**, and **Container** from the dropdown menus.
 
 :::image type="content" source="media/generate-lightingest-command/source-tab-container-from-subscription.png" alt-text="Screenshot of dialog box for selecting container from storage subscription and account.":::
+
+## Advanced settings
+
+1. To define additional settings for the ingestion process using LightIngest, select **Advanced settings**.
+
+    :::image type="content" source="media/generate-lightingest-command/source-tab-advanced-settings.png" alt-text="Screenshot of selecting advanced settings for the ingestion processing involving the tool LightIngest.":::
+
+1. In the **Advanced configuration** panel, define the following settings:
+
+    :::image type="content" source="media/generate-lightingest-command/advanced-configuration-dialog.png" alt-text="Screenshot of setting advanced options for the ingestion processing involving the tool LightIngest.":::
+
+    | Property | Description|
+    |---|---|
+    | Creation time pattern | Specify to override the ingestion time property of the created extent with a pattern, for example, to apply a date based on the folder structure of the container. See also [Creation time pattern](lightingest.md#how-to-ingest-data-using-creationtime). |
+    | Blob name pattern | Specify the pattern used to identify the files to be ingested. Ingest all the files that match the blob name pattern in the given container. Supports wildcards. Recommended to enclose in double quotes. |
+    | Tag | A [tag](kusto/management/extents-overview.md#extent-tagging) assigned to the ingested data. The tag can be any string. |
+    | Limit amount of files | Specify the number of files that can be ingested. Ingests the first `n` files that match the blob name pattern, up to the number specified.  |
+    | Don't wait for ingestion to complete | If set, queues the blobs for ingestion without monitoring the ingestion process. If not set, LightIngest continues to poll the ingestion status until ingestion is complete.|
+    | Display only selected items| List the files in the container, but does not ingest them.  |
+
+1. Enter values for relevant fields and select **Done** to return to the **Source** tab.
 
 ## Filter data
 
@@ -95,7 +113,7 @@ When ingesting to a new table, alter various aspects of the table when creating 
 [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
 > [!NOTE]
-> For tabular formats, you can’t map a column twice. To map to an existing column, first delete the new column.
+> For tabular formats, you can't map a column twice. To map to an existing column, first delete the new column.
 
 Select **Next: Summary** to generate the LightIngest command.
 

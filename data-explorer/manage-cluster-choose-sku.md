@@ -1,10 +1,7 @@
 ---
 title: Select correct compute SKU for your Azure Data Explorer cluster
 description: This article describes how to select the optimal compute SKU size for Azure Data Explorer cluster.
-author: orspod
-ms.author: orspodek
 ms.reviewer: avnera
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/13/2020
 ---

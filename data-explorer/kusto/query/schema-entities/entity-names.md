@@ -1,11 +1,7 @@
 ---
-title: Entity names - Azure Data Explorer | Microsoft Docs
+title: Entity names - Azure Data Explorer
 description: This article describes Entity names in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/24/2019
 ---
@@ -70,7 +66,7 @@ Alternatively, one might want to choose entity names that are guaranteed to neve
 "collide" with a Kusto keyword. The following guarantees are made:
 
 1. The Kusto query language will not define a keyword that starts with a capital letter (`A` to `Z`).
-2. The Kusto query language will not define a keyword that starts with a single underscore (`_`).us
+2. The Kusto query language will not define a keyword that starts with a single underscore (`_`).
 3. The Kusto query language will not define a keyword that ends with a single underscore (`_`).
 
 The Kusto query language reserves all identifiers that start or end with a

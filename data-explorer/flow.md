@@ -1,10 +1,7 @@
 ---
 title: Azure Data Explorer connector to Power Automate (Preview) 
 description: Learn about using Azure Data Explorer connector to Power Automate to create flows of automatically scheduled or triggered tasks.
-author: orspod
-ms.author: orspodek
 ms.reviewer: dorcohen
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/25/2020
 ---

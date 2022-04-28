@@ -8,9 +8,9 @@ metadata:
   description: Azure Data Explorer is a log analytics cloud platform optimized for ad-hoc big data queries.
   ms.service: data-explorer
   ms.topic: landing-page
-  author: orspod
-  ms.author: orspodek
-  ms.date: 06/30/2021
+  author: shsagir
+  ms.author: shsagir
+  ms.date: 11/23/2021
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -22,6 +22,10 @@ landingContent:
         links:
           - text: What is Azure Data Explorer?
             url: data-explorer-overview.md
+      - linkListType: get-started
+        links:
+          - text: Start for free
+            url: start-for-free.md
       - linkListType: video
         links:
           - text: What is Azure Data Explorer? (19:47)
@@ -36,7 +40,8 @@ landingContent:
             url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer          
           - text: "Learn module: Introduction to Azure Data Explorer"
             url:  /learn/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
- 
+          - text: "Learn module: Write your first query with Kusto Query Language"
+            url: /learn/modules/write-first-query-kusto-query-language/
   # Card
   - title: Create cluster and database
     linkLists:
@@ -76,7 +81,7 @@ landingContent:
             url: ingest-data-streaming.md
           - text: Python
             url: python-ingest-data.md
-          - text: Event Hub using Azure portal
+          - text: Event hub using Azure portal
             url: ingest-data-event-hub.md
           - text: Event Grid using Azure portal
             url: ingest-data-event-grid.md

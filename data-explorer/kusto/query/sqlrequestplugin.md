@@ -1,11 +1,7 @@
 ---
 title: sql_request plugin - Azure Data Explorer
 description: This article describes sql_request plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
@@ -16,7 +12,8 @@ zone_pivot_groups: kql-flavors
 ::: zone pivot="azuredataexplorer"
 
 The `sql_request` plugin sends a SQL query to a SQL Server network endpoint and returns the first rowset in the results.
-The query may return more then one rowset, but only the first rowset is made available for the rest of the Kusto query.
+The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query.
+The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Syntax
 
@@ -34,7 +31,7 @@ The query may return more then one rowset, but only the first rowset is made ava
   Azure AD access token that is forwarded to the SQL endpoint for authentication. Optional.
 * *OutputSchema*: An optional expected schema (column names and their types) of the sql_request output. 
     * **Syntax**: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`
-    * There is a performance benefit of providing explicit schema at the query. If the schema is known at query planning, then different optimizations can utilize the schema without first needing to run the actual query to explore the schema. If the run-time schema is not matched to the the schema specified by *OutputSchema*, the query will yield an error indicating the mismatch.
+    * There is a performance benefit of providing explicit schema at the query. If the schema is known at query planning, then different optimizations can utilize the schema without first needing to run the actual query to explore the schema. If the run-time schema is not matched to the schema specified by *OutputSchema*, the query will yield an error indicating the mismatch.
 
 ## Examples
 
@@ -86,7 +83,7 @@ evaluate sql_request(
 
 The following example sends a SQL query to an Azure SQL DB database
 retrieving all records from `[dbo].[Table]`, while selecting only specific columns.
-It uses explicit schema definition that allow various optimizations to be evaluated before the 
+It uses explicit schema definitions that allow various optimizations to be evaluated before the 
 actual query against SQL is run.
 
 ```kusto

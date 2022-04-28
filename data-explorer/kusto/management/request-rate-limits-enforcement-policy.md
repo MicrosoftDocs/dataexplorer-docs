@@ -1,11 +1,7 @@
 ---
 title: Request rate limits enforcement policy - Azure Data Explorer
 description: This article describes the request rate limits enforcement policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/09/2021
 ---
@@ -79,4 +75,4 @@ The effective rate limits for the `default` workload group are:
 
 ## Control commands
 
-Manage the workload group's request concurrency policy with [Workload groups control commands](workload-groups-commands.md).
+Manage the workload group's request concurrency policy with [Workload groups control commands](./show-workload-group-command.md).

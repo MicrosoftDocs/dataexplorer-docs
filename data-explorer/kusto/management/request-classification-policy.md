@@ -1,11 +1,7 @@
 ---
 title: Request classification policy - Azure Data Explorer
 description: This article describes the request classification policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/30/2021
 ---
@@ -89,4 +85,4 @@ case(current_principal_is_member_of('aadgroup=somesecuritygroup@contoso.com'), "
 
 ## Control commands
 
-Use these [control commands](request-classification-policy-commands.md) to manage a cluster's request classification.
+Use these [control commands](./show-cluster-policy-request-classification-command.md) to manage a cluster's request classification.

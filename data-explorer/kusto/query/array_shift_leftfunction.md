@@ -1,11 +1,7 @@
 ---
 title: array_shift_left() - Azure Data Explorer
 description: This article describes array_shift_left() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/11/2019
 ---
@@ -42,7 +38,7 @@ Dynamic array containing the same number of elements as in the original array. E
     print arr=dynamic([1,2,3,4,5]) 
     | extend arr_shift=array_shift_left(arr, 2)
     ```
-    
+
     |`arr`|`arr_shift`|
     |---|---|
     |[1,2,3,4,5]|[3,4,5,null,null]|
@@ -54,11 +50,10 @@ Dynamic array containing the same number of elements as in the original array. E
     print arr=dynamic([1,2,3,4,5]) 
     | extend arr_shift=array_shift_left(arr, 2, -1)
     ```
-    
+
     |`arr`|`arr_shift`|
     |---|---|
     |[1,2,3,4,5]|[3,4,5,-1,-1]|
-
 
 * Shifting to the right by two positions by using negative *shift_count* value:
 
@@ -67,7 +62,7 @@ Dynamic array containing the same number of elements as in the original array. E
     print arr=dynamic([1,2,3,4,5]) 
     | extend arr_shift=array_shift_left(arr, -2, -1)
     ```
-    
+
     |`arr`|`arr_shift`|
     |---|---|
     |[1,2,3,4,5]|[-1,-1,1,2,3]|

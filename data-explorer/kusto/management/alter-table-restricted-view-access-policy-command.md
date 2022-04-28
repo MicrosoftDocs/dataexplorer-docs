@@ -1,11 +1,7 @@
 ---
 title: .alter restricted view access policy command - Azure Data Explorer
 description: This article describes the .alter restricted view access policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/27/2021
 ---
@@ -17,11 +13,11 @@ Enable or disable the optional table [restricted view access policy](restrictedv
 
 Enable or disable the policy for one table:
 
-`.alter` `table` *TableName* `policy` `restricted-view-access` `true`|`false`
+`.alter` `table` *TableName* `policy` `restricted_view_access` `true`|`false`
 
 Enable or disable the policy for several tables:
 
-`.alter` `tables` (*TableName*,*TableName2*,*TableName3*,...) `policy` `restricted-view-access` `true`|`false`
+`.alter` `tables` (*TableName*,*TableName2*,*TableName3*,...) `policy` `restricted_view_access` `true`|`false`
 
 ## Arguments
 
@@ -32,11 +28,11 @@ Enable or disable the policy for several tables:
 ### Enable a policy for a table
 
 ```kusto
-.alter table MyTable policy restricted-view-access true
+.alter table MyTable policy restricted_view_access true
 ```
 
 ### Disable the policy of several tables
 
 ```kusto
-.alter tables (Table1, Table2, Table4) policy restricted-view-access false
+.alter tables (Table1, Table2, Table4) policy restricted_view_access false
 ```

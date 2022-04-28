@@ -1,13 +1,9 @@
 ---
 title: scan operator (preview) - Azure Data Explorer
 description: This article describes the scan operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/19/2021
+ms.date: 12/28/2021
 ---
 # scan operator (preview)
 
@@ -23,7 +19,7 @@ T
 | sort by Timestamp asc
 | scan with 
 (
-    step s1: Event == "Start";
+    step s1 output=last: Event == "Start";
     step s2: Event != "Start" and Event != "Stop" and Timestamp - s1.Timestamp <= 5m;
     step s3: Event == "Stop"  and Ts - s1.Timestamp <= 5m;
 )
@@ -39,7 +35,7 @@ T
 
 ### *StepDefinition* syntax
 
-`step` *StepName* `:` *Condition* [ `=>` *Column* `=` *Assignment* [`,` ... ] ] `;`
+`step` *StepName* [ `output` = `all` | `last` | `none`] `:` *Condition* [ `=>` *Column* `=` *Assignment* [`,` ... ] ] `;`
 
 ## Arguments
 
@@ -48,6 +44,7 @@ T
 * *StepName*: Used to reference values in the state of scan for conditions and assignments. The step name must be unique.
 * *Condition*: A Boolean expression that defines which records from the input matches the step. A record matches the step when the condition is true with the step’s state or with the previous step’s state.
 * *Assignment*: A scalar expression that is assigned to the corresponding column when a record matches a step.
+* `output`: Controls the output logic of the step on repeated matches. `all` (default) outputs all records matching the step, `last` outputs only the last record in a series of repeating matches for the step, `none` does not output records matching the step.
 
 ## Returns
 
@@ -118,7 +115,7 @@ Events
 
 ### Sessions tagging 
 
-Divide the input into sessions: a session ends 30 minutes after the first event of the session, after which a new session starts.
+Divide the input into sessions: a session ends 30 minutes after the first event of the session, after which a new session starts. Note the use of `with_match_id` flag which assigns a unique value for each distinct match (session) of *scan*. Also note the special use of two *steps* in this example, `inSession` has `true` as condition so it captures and outputs all the records from the input while `endSession` captures records that happen more than 30m from the `sessionStart` value for the current match. The `endSession` step has `output=none` meaning it doesn't produce output records. The `endSession` step is used to advance the state of the current match from `inSession` to `endSession`, allowing a new match (session) to begin, starting from the current record.
 
 ```kusto
 let Events = datatable ( Ts: timespan, Event: string ) 
@@ -137,9 +134,8 @@ Events
 | scan with_match_id=session_id declare (sessionStart:timespan) with 
 (
     step inSession: true => sessionStart = iff(isnull(inSession.sessionStart), Ts, inSession.sessionStart);
-    step endSession: Ts - inSession.sessionStart > 30m => sessionStart = timespan(null);
+    step endSession output=none: Ts - inSession.sessionStart > 30m;
 )
-| where isnotnull(sessionStart)
 ```
 
 |Ts|Event|sessionStart|session_id|
@@ -196,9 +192,7 @@ Calculate a funnel completion of the sequence  `Hail` -> `Tornado` -> `Thunderst
 
 ```kusto
 StormEvents
-| where State !contains "ISLAND" and State !contains "LAKE" and State !startswith "DISTRICT" and State !startswith "GULF" and State !contains "WATERS"
-| where State !in ("AMERICAN SAMOA", "PUERTO RICO", "GUAM", "ATLANTIC SOUTH", "E PACIFIC")
-| partition by State 
+| partition hint.strategy=native by State 
 (
     sort by StartTime asc
     | scan with 
@@ -213,7 +207,7 @@ StormEvents
 
 |EventType|dcount_State|
 |---|---|
-|Hail|48|
+|Hail|50|
 |Tornado|34|
 |Thunderstorm Wind|32|
 
@@ -233,14 +227,14 @@ Referencing a value in the state is done in the form *StepName*.*ColumnName*. Fo
 
 Each record from the input is evaluated against all of scan’s steps, starting from last to first. When a record *r* is considered against some step *s_k*, the following logic is applied:
 
-* If the record *r* satisfies the condition of *s_k* using the state of the previous step *s_(k-1)*, then the following happens:
+* If the state of the previous step is not empty and the record *r* satisfies the condition of *s_k* using the state of the previous step *s_(k-1)*, then the following happens:
     1. The state of *s_k* is deleted.
-    1. The state of *s_(k-1)* becomes the state of *s_k*, and the state of *s_(k-1)* becomes empty.
+    1. The state of *s_(k-1)* becomes ("promoted" to be) the state of *s_k*, and the state of *s_(k-1)* becomes empty.
     1. All the assignments of *s_k* are calculated and extend *r*.
-    1. The extended *r* is added to the output and to the state of *s_k*.
+    1. The extended *r* is added to the output (if *s_k* is defined as `output=all`) and to the state of *s_k*.
 * If *r* doesn't satisfy the condition of *s_k* with the state of *s_(k-1)*, *r* is then checked with the state of *s_k*. If *r* satisfies the condition of *s_k* with the state of *s_k*, the following happens:
     1. The record *r* is extended with the assignments of *s_k*.
-    1. The extended record r is added to the output.
+    1. If *s_k* is defined as `output=all`, the extended record r is added to the output.
     1. The last record in the state of *s_k* (which represents *s_k* itself in the state) is replaced by the extended record *r*.
     1. Whenever the first step is matched while its state is empty, a new match begins and the match ID is increased by `1`. This only affects the output when `with_match_id` is used.
 * If r doesn't satisfy the condition *s_k* with the state *s_k*, evaluate *r* against condition *s_k-1* and repeat the logic above.

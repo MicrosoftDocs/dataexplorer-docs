@@ -1,11 +1,7 @@
 ---
 title: Auto delete policy - Azure Data Explorer
 description: This article describes Auto delete policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yifats
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/02/2021
 ---
@@ -31,4 +27,4 @@ An auto delete policy includes the following properties:
 
 ## See also
 
-For more information, see [auto delete policy commands](auto-delete-policy-command.md).
+For more information, see [auto delete policy commands](./show-auto-delete-policy-command.md).

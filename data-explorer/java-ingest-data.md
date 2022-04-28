@@ -1,12 +1,9 @@
 ---
 title: 'Ingest data with Azure Data Explorer Java SDK'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Java SDK.
-author: orspod
-ms.author: orspodek
 ms.reviewer: abhishgu
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 10/22/2020
+ms.date: 02/07/2022
 
 # Customer intent: As a Java developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
@@ -91,10 +88,10 @@ In the following example, the data type is `CSV`.
 ```java
     ...
     static final String blobPathFormat = "https://%s.blob.core.windows.net/%s/%s%s";
-    static final String blobStorageAccountName = "kustosamplefiles";
+    static final String blobStorageAccountName = "kustosamples";
     static final String blobStorageContainer = "samplefiles";
     static final String fileName = "StormEvents.csv";
-    static final String blobStorageToken = "??st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
+    static final String blobStorageToken = ""; //If relevant add SAS token
     ....
 
     static void ingestFile(String database) throws InterruptedException {

@@ -1,12 +1,9 @@
 ---
 title: Write queries for Azure Data Explorer
 description: In this how-to, you learn how to perform basic and more advanced queries for Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: mblythe
-ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 04/07/2019
+ms.date: 12/30/2021
 ms.localizationpriority: high 
 ---
 
@@ -32,7 +29,7 @@ You can run the queries in this article in one of two ways:
 
 A query in Azure Data Explorer is a read-only request to process data and return results. The request is stated in plain text, using a data-flow model designed to make the syntax easy to read, author, and automate. The query uses schema entities that are organized in a hierarchy similar to SQL: databases, tables, and columns.
 
-The query consists of a sequence of query statements, delimited by a semicolon (`;`), with at least one statement being a tabular expression statement, which is a statement that produces data arranged in a table-like mesh of columns and rows. The query's tabular expression statements produce the results of the query.
+The query consists of a sequence of query statements, delimited by a semicolon (`;`), with at least one statement being a tabular expression statement, which is a statement that produces data arranged in a table-like mesh of columns and rows. The query's tabular expression statements produce the results of the query. Any two statements must be separated by a semicolon.
 
 The syntax of the tabular expression statement has tabular data flow from one tabular query operator to another, starting with data source (for example, a table in a database, or an operator that produces data) and then flowing through a set of data transformation operators that are bound together through the use of the pipe (`|`) delimiter.
 
@@ -320,7 +317,7 @@ This query uses a **let** statement, which binds a name (in this case `MyData`) 
 
 ### parse_json()
 
-[**parse_json()**](kusto/query/parsejsonfunction.md): Interprets a string as a JSON value, and returns the value as dynamic. It is superior to using the **extract_json()** function when you need to extract more than one element of a compound JSON object.
+[**parse_json()**](kusto/query/parsejsonfunction.md): Interprets a string as a JSON value, and returns the value as dynamic. It is superior to using the **extractjson()** function when you need to extract more than one element of a compound JSON object.
 
 The following query extracts the JSON elements from an array.
 

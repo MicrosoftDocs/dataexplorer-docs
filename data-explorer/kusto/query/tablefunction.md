@@ -1,11 +1,7 @@
 ---
 title: table() (scope function) - Azure Data Explorer
 description: This article describes table() (scope function) in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/19/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
@@ -13,8 +9,7 @@ zone_pivot_groups: kql-flavors
 ---
 # table() (scope function)
 
-The table() function references a table by providing its name as an expression
-of type `string`.
+The table() function references a table by providing its name as an expression of type `string`.
 
 ```kusto
 table('StormEvent')
@@ -76,8 +71,7 @@ table('StormEvent') | count
 
 ### Use table() inside let statements
 
-The same query as above can be rewritten to use inline function (let statement) that 
-receives a parameter `tableName` - which is passed into the table() function.
+The same query as above can be rewritten to use inline function (let statement) that receives a parameter `tableName` - which is passed into the table() function.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

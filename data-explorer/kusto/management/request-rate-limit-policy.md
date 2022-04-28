@@ -1,11 +1,7 @@
 ---
 title: Request rate limit policy - Azure Data Explorer
 description: This article describes the request rate limit policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/09/2021
 ---
@@ -61,7 +57,7 @@ When a request exceeds the limit on maximum number of concurrent requests:
   * The exception type will be `QueryThrottledException` for queries, and `ControlCommandThrottledException` for control commands.
   
 > [!NOTE]
-> Control commands may also be throttled as a result of exceeding the limit defined by the cluster's [capacity policy](capacity-policy.md).
+> Control commands may also be throttled as a result of exceeding the limit defined by the cluster's [capacity policy](./show-cluster-capacity-policy-command.md).
 
 ### Resource utilization rate limit
 
@@ -181,4 +177,4 @@ The `default` workload group has the following policy defined by default. This p
 
 ## Control commands
 
-Manage the workload group's request rate limit policies with [Workload groups control commands](workload-groups-commands.md).
+Manage the workload group's request rate limit policies with [Workload groups control commands](./show-workload-group-command.md).

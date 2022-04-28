@@ -1,11 +1,7 @@
 ---
 title: externaldata operator - Azure Data Explorer
 description: This article describes the external data operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/24/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
@@ -23,8 +19,8 @@ Azure Blob Storage or a file in Azure Data Lake Storage.
 ::: zone pivot="azuremonitor"
 
 > [!NOTE]
-> `externaldata` operator usage in Azure Monitor should be limited to small reference tables. It is not designed for large data volumes. If large volumes are needed, it is better to ingest them as custom logs.
-> This operator isn’t supported when running queries over a private link or otherwise reaching to customer-owned storage accounts.
+> Use the `externaldata` operator to retrieve small reference tables of up to 100 MB from an external storage artifact. The operator is not designed for large data volumes. To retrieve large volumes of external data, we recommend [ingesting the external data into Log Analytics as custom logs](/azure/azure-monitor/logs/tutorial-custom-logs).
+> This operator isn't supported when the public endpoint of the storage artifact is behind a firewall.
 
 ::: zone-end
 
@@ -40,7 +36,10 @@ Azure Blob Storage or a file in Azure Data Lake Storage.
 * *ColumnName*, *ColumnType*: The arguments define the schema of the table.
   The syntax is the same as the syntax used when defining a table in [`.create table`](../management/create-table-command.md).
 
-* *StorageConnectionString*: [Storage connection strings](../api/connection-strings/storage.md) that describe the storage artifacts holding the data to return.
+* *StorageConnectionString*: [Storage connection strings](../api/connection-strings/storage-connection-strings.md) that describe the storage artifacts holding the data to return.
+
+> [!NOTE]
+> The `externaldata` operator supports Shared Access (SAS) key, Access key, and Azure AD Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-authentication-methods.md).
 
 * *PropertyName*, *PropertyValue*, ...: Additional properties that describe how to interpret
   the data retrieved from storage, as listed under [ingestion properties](../../ingestion-properties.md).
@@ -127,7 +126,7 @@ externaldata(Timestamp: datetime, TenantId: guid, MethodName: string)
 [ 
    h@'https://mycompanystorage.blob.core.windows.net/events/2020/09/01/part-0000046c049c1-86e2-4e74-8583-506bda10cca8.json?...SAS...'
 ]
-with(format='multijson', ingestionMapping='[{"Column":"Timestamp","Properties":{"Path":"$.time"}},{"Column":"TenantId","Properties":{"Path":"$.data.tenant"}},{"Column":"MethodName","Properties":{"Path":"$.data.method"}}]')
+with(format='multijson', ingestionMapping='[{"Column":"Timestamp","Properties":{"Path":"$.timestamp"}},{"Column":"TenantId","Properties":{"Path":"$.data.tenant"}},{"Column":"MethodName","Properties":{"Path":"$.data.method"}}]')
 ```
 
 The `MultiJSON` format is used here because single JSON records are spanned into multiple lines.

@@ -1,10 +1,7 @@
 ---
 title: Monitor batching ingestion in Azure Data Explorer
 description: Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
-author: orspod
-ms.author: orspodek
 ms.reviewer: tzviagt
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 07/18/2021
 ms.custom: contperf-fy21q1
@@ -20,7 +17,7 @@ In this article, you will learn how to use metrics to monitor batching ingestion
 
 Batching ingestion occurs in stages, and each stage is governed by an ingestion *component*:
 
-1. For Event Grid, Event Hub and IoT Hub ingestion, there is a *Data Connection* that gets the data from external sources and performs initial data rearrangement.
+1. For event grid, event hub and IoT hub ingestion, there is a *Data Connection* that gets the data from external sources and performs initial data rearrangement.
 2. The *Batching Manager* optimizes the ingestion throughput by taking the small ingress data chunks that it receives and batching them based on the ingestion batching policy.
 3. The *Ingestion Manager* sends the ingestion commands to the *Azure Data Explorer Storage Engine*.
 4. The *Azure Data Explorer Storage Engine* stores the ingested data, making it available for query.
@@ -32,7 +29,7 @@ The Azure Data Explorer ingestion metrics give you detailed information about:
 * The amount of ingested data.
 * The latency of the batching ingestion and where it occurs.
 * The batching process itself.
-* For Event Hub, Event Grid and IoT Hub ingestion: The number of events received.
+* For event hub, event grid and IoT hub ingestion: The number of events received.
 
 In this article, you'll learn how to use ingestion metrics in the Azure portal to monitor batching ingestion to Azure Data Explorer.
 
@@ -40,7 +37,7 @@ In this article, you'll learn how to use ingestion metrics in the Azure portal t
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Create [a cluster and database](create-cluster-database-portal.md).
-* An active batching ingestion ([Event Hub](ingest-data-event-hub-overview.md), [IoT Hub](ingest-data-iot-hub-overview.md), [Event Grid](ingest-data-event-grid-overview.md) or any other form of batching ingestion).
+* An active batching ingestion ([event hub](ingest-data-event-hub-overview.md), [IoT Hub](ingest-data-iot-hub-overview.md), [Event Grid](ingest-data-event-grid-overview.md) or any other form of batching ingestion).
 
 ## Create metric charts with Azure Monitor metrics explorer
 
@@ -87,7 +84,7 @@ Now the metric information is split by status, and we can see information about 
 
 Consider the following when looking at the chart of ingestion results:
 
-* When using Event Hub or IoT Hub ingestion, there is an event pre-aggregation in the *Data connection component*. During this stage of ingestion, events are treated as a single source to be ingested. Therefore, a few events appear as a single ingestion result after pre-aggregation.
+* When using event hub or IoT hub ingestion, there is an event pre-aggregation in the *Data connection component*. During this stage of ingestion, events are treated as a single source to be ingested. Therefore, a few events appear as a single ingestion result after pre-aggregation.
 * Transient failures are retried internally in a limited number of attempts. Each transient failure is reported as a transient ingestion result. That's why a single ingestion may lead to more than one ingestion result.
 * Ingestion errors in the chart are listed by the category of the error code. To see the full list of ingestion error codes by categories and try to better understand the possible error reason, see [Ingestion error codes in Azure Data Explorer](error-codes.md).
 * To get more details on an ingestion error, you can set [failed ingestion diagnostic logs](using-diagnostic-logs.md?tabs=ingestion#failed-ingestion-operation-log). However, it's important to consider that generating logs results in the creation of extra resources, and therefore an increase in the COGS (cost of goods sold).
@@ -133,7 +130,7 @@ To determine whether there are blobs that were dropped during ingestion, you sho
 The metrics **Stage Latency** and **Discovery Latency** monitor latency in the ingestion process, and tell you if there are any long latencies occurring either in Azure Data Explorer, or before data arrives to Azure Data Explorer for ingestion.
 
 * **Stage Latency** indicates the time span from when a message is discovered by Azure Data Explorer until its content is received by an ingestion component for processing.
-* **Discovery Latency** is used for ingestion pipelines with data connections (such as Event Hub, IoT Hub, and Event Grid). This metric gives information about the time span from data enqueue until discovery by Azure Data Explorer data connections. This time span is upstream to Azure Data Explorer, so it's not included in the **Stage Latency** metric that only measures the latency in Azure Data Explorer.
+* **Discovery Latency** is used for ingestion pipelines with data connections (such as event hub, IoT hub, and event grid). This metric gives information about the time span from data enqueue until discovery by Azure Data Explorer data connections. This time span is upstream to Azure Data Explorer, so it's not included in the **Stage Latency** metric that only measures the latency in Azure Data Explorer.
 
 > [!NOTE]
 > According to the default [batching policy](kusto/management/batchingpolicy.md), the default batching time is five minutes. Therefore, if the batch isn't sealed by other triggers, the batch will be sealed after five minutes. 
@@ -188,7 +185,7 @@ Let's start with an overall view of the batching process by looking at the **Bat
 
 1. In the **Metrics** pane in Azure Monitor, select **Add Metric**.
 1. Select *Batches Processed* as the **Metric** value and *Sum* as the **Aggregation** value.
-1. Select the **Apply splitting** button and choose *Batching Type* to segment the chart based on the reason the batch was sealed. For a complete list of batching types, see [Batching types](kusto/management/batchingpolicy.md#details).
+1. Select the **Apply splitting** button and choose *Batching Type* to segment the chart based on the reason the batch was sealed. For a complete list of batching types, see [Batching types](kusto/management/batchingpolicy.md#sealing-a-batch).
 1. Select the **Add filter** button and filter on the batches sent to the *GitHub* database. After selecting the filter values, click away from the filter selector to close it.
 
 The chart shows the number of sealed batches with data sent to the *GitHub* database over time, split by the *Batching Type*.
@@ -216,7 +213,7 @@ From the *Batch Duration*, *Batch Size*, and *Batch Blob Count* charts we can co
 
 ## Compare events received to events sent for ingestion
 
-When applying Event Hub, IoT Hub, or Event Grid ingestion, it can be useful to compare the number of events received by Azure Data Explorer to the number of events sent from the eventing source to Azure Data Explorer. The metrics **Events Received**, **Events Processed**, and **Events Dropped** allow you to make this comparison.
+When applying event hub, IoT hub, or event grid ingestion, it can be useful to compare the number of events received by Azure Data Explorer to the number of events sent from the eventing source to Azure Data Explorer. The metrics **Events Received**, **Events Processed**, and **Events Dropped** allow you to make this comparison.
 
 ### Events Received
 
@@ -244,27 +241,27 @@ The chart now shows the number of Events that were received, processed, and drop
 
 * Almost all the received events were processed successfully by the data connection. There is one dropped event, which is compatible with the failed ingestion result due to bad request that we saw when [viewing the ingestion result metric](#view-the-ingestion-result).
 
-### Compare Events Received in Azure Data Explorer to Outgoing Messages from Event Hub
+### Compare events received in Azure Data Explorer to outgoing messages from event hub
 
-You may also want to compare the number of events received to the number of events that were sent from Event Hub to Azure Data Explorer, by comparing the **Events Received** and **Outgoing Messages** metrics.
+You may also want to compare the number of events received to the number of events that were sent from event hub to Azure Data Explorer, by comparing the **Events Received** and **Outgoing Messages** metrics.
 
 1. On the chart you have already created for **Events Received**, select **Add metric**.
-1. Select **Scope** and in the **Select a scope** dialog, browse for, and select the namespace of the Event Hub that sends data to your data connection.
+1. Select **Scope** and in the **Select a scope** dialog, browse for, and select the namespace of the event hub that sends data to your data connection.
 
-   :::image type="content" source="media/monitor-batching-ingestion/select-a-scope.png" alt-text="Screenshot of the Select a scope dialog in the Azure portal, showing a search for the github4demo in the list of Event Hubs Namespaces." lightbox="media/monitor-batching-ingestion/select-a-scope.png":::
+   :::image type="content" source="media/monitor-batching-ingestion/select-a-scope.png" alt-text="Screenshot of the Select a scope dialog in the Azure portal, showing a search for the github4demo in the list of event hubs namespaces." lightbox="media/monitor-batching-ingestion/select-a-scope.png":::
 
 1. Select **Apply**
 1. Select *Outgoing Messages* as the **Metric** value and *Sum* as the **Aggregation** value.
 
-Click away from the settings to get the full chart that compares the number of events processed by the Azure Data Explorer data connection to the number of events sent from the Event Hub.
+Click away from the settings to get the full chart that compares the number of events processed by the Azure Data Explorer data connection to the number of events sent from the event hub.
 
 :::image type="content" source="media/monitor-batching-ingestion/all-event-metrics-chart.png" alt-text="Screenshot of the Metrics pane in Azure portal showing a chart with graphs for all of the events received, processed, dropped and during ingestion from the github database aggregated over time." lightbox="media/monitor-batching-ingestion/all-event-metrics-chart.png":::
 
-* Notice that all the events that were sent from Event Hub were processed successfully by the Azure Data Explorer data connection.
-* If you have more than one Event Hub in the Event Hub namespace, you should filter the **Outgoing Messages** metric by the **Entity Name** dimension to get only data from the desired Event Hub in your Event Hub namespace.
+* Notice that all the events that were sent from event hub were processed successfully by the Azure Data Explorer data connection.
+* If you have more than one event hub in the event hub namespace, you should filter the **Outgoing Messages** metric by the **Entity Name** dimension to get only data from the desired event hub in your event hub namespace.
 
 > [!NOTE]
-> There's no option to monitor outgoing message per consumer group. The **Outgoing Messages** metric counts the total number of messages that were consumed by all consumer groups. So, if you have a few consumer groups in your Event Hub, you may get a larger number of **Outgoing Messages** than **Events Received**.
+> There's no option to monitor outgoing message per consumer group. The **Outgoing Messages** metric counts the total number of messages that were consumed by all consumer groups. So, if you have a few consumer groups in your event hub, you may get a larger number of **Outgoing Messages** than **Events Received**.
 
 ## Next Steps
 

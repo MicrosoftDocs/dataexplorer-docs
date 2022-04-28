@@ -1,13 +1,9 @@
 ---
 title: .alter table partitioning policy command- Azure Data Explorer
 description: This article describes the .alter table partitioning policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 01/13/2022
 ---
 # .alter table partitioning policy
 
@@ -15,17 +11,18 @@ Changes a table [partitioning policy](partitioningpolicy.md). The partitioning p
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `partitioning` 
+`.alter` `table` *TableName* `policy` `partitioning` *PolicyObject*
 
 ## Arguments
 
-*TableName* - Specify the name of the table.  
+- *TableName* - Specify the name of the table.  
+- *PolicyObject* - Define a policy object, see also [partitioning policy](partitioningpolicy.md).
 
 ### Example
 
 Set a policy with a hash partition key:
 
-```kusto
+~~~kusto
 .alter table [table_name] policy partitioning ```
 {
   "PartitionKeys": [
@@ -40,11 +37,11 @@ Set a policy with a hash partition key:
     }
   ]
 }```
-```
+~~~
 
 Set a policy with a uniform range datetime partition key:
 
-```kusto
+~~~kusto
 .alter table [table_name] policy partitioning ```
 {
   "PartitionKeys": [
@@ -59,11 +56,11 @@ Set a policy with a uniform range datetime partition key:
     }
   ]
 }```
-```
+~~~
 
 Set a policy with two kinds of partition keys:
 
-```kusto
+~~~kusto
 .alter table [table_name] policy partitioning ```
 {
   "PartitionKeys": [
@@ -87,4 +84,4 @@ Set a policy with two kinds of partition keys:
     }
   ]
 }```
-```
+~~~

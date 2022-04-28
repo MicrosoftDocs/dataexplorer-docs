@@ -1,13 +1,9 @@
 ---
 title: Kusto.Explorer installation and user interface
 description: Learn about the features of Kusto.Explorer and how it can help you to explore your data
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.localizationpriority: high
 ---
 
 # Kusto.Explorer installation and user interface

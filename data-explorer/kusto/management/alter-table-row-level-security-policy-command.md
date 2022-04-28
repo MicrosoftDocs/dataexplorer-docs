@@ -1,11 +1,7 @@
 ---
 title: .alter table row level security policy command- Azure Data Explorer
 description: This article describes the .alter table row level security policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/04/2021
 ---
@@ -24,24 +20,23 @@ For more information about running queries on the row level security policy, see
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `row-level-security` [`enable` | `disable`] *Query*
-
+`.alter` `table` *TableName* `policy` `row_level_security` [`enable` | `disable`] *Query*
 
 ## Arguments
 
-*TableName* - Specify the name of the table.  
-*Query* - Specify the query to be run. For more information about running queries on the row level security policy, see [row_level_security policy](rowlevelsecuritypolicy.md).
+- *TableName* - Specify the name of the table.  
+- *Query* - Specify the query to be run. For more information about running queries on the row level security policy, see [row_level_security policy](rowlevelsecuritypolicy.md).
 
 ### Examples
 
 Enable the policy at the table level:
 
 ```kusto
-.alter table MyTable policy row-level-security enable "AnonymizeSensitiveData"
+.alter table MyTable policy row_level_security enable "AnonymizeSensitiveData"
 ```
 
 Disable the policy at the table level:
 
 ```kusto
-.alter table MyTable policy row-level-security disable "AnonymizeSensitiveData"
+.alter table MyTable policy row_level_security disable "AnonymizeSensitiveData"
 ```

@@ -1,11 +1,7 @@
 ---
 title: RESTful web API overview - Azure Data Explorer
 description: This article describes how to use the RESTful web API for Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 07/04/2021
 ---

@@ -1,11 +1,7 @@
 ---
 title: .alter table update policy command - Azure Data Explorer
 description: This article describes the .alter table update policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/10/2021
 ---
@@ -19,13 +15,14 @@ Change the table update policy. The [update policy](updatepolicy.md) instructs A
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `update`
-`.alter` `table` *DatabaseName*`.`*TableName* `update` `sharding`
+`.alter` `table` *TableName* `policy` `update` *ArrayOfPolicyObjects*
+`.alter` `table` *DatabaseName*`.`*TableName* `update` *ArrayOfPolicyObjects*
 
 ## Arguments
 
-*DatabaseName* - Specify the name of the database.
+-*DatabaseName* - Specify the name of the database.
 *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context. A wildcard (*) denotes all tables.
+*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
 
 ## Returns
 

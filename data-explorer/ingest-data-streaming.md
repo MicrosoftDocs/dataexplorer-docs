@@ -1,10 +1,7 @@
 ---
 title: Configure streaming ingestion on your Azure Data Explorer cluster
 description: Learn how to configure your Azure Data Explorer cluster and start loading data with streaming ingestion.
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexefro
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/01/2021
 ---
@@ -612,11 +609,10 @@ namespace StreamingIngestion
 
 ## Limitations
 
-* [Database cursors](kusto/management/databasecursor.md) aren't supported for a database if the database itself or any of its tables have the [Streaming ingestion policy](kusto/management/streamingingestionpolicy.md) defined and enabled.
 * [Data mappings](kusto/management/mappings.md) must be [pre-created](kusto/management/create-ingestion-mapping-command.md) for use in streaming ingestion. Individual streaming ingestion requests don't accommodate inline data mappings.
 * [Extent tags](kusto/management/extents-overview.md#extent-tagging) can't be set on the streaming ingestion data.
 * [Update policy](kusto/management/updatepolicy.md). The update policy can reference only the newly-ingested data in the source table and not any other data or tables in the database.
-* If streaming ingestion is used on any of the tables of the database, this database cannot be used as leader for [follower databases](follower.md) or as a [data provider](data-share.md#data-provider---share-data) for Azure Data Share.
+* If streaming ingestion is enabled on a cluster used as a leader for [follower databases](follower.md), streaming ingestion must be enabled on the following clusters as well to follow streaming ingestion data. Same applies whether the cluster data is shared via [Data Share](data-share.md).
 
 ## Next steps
 

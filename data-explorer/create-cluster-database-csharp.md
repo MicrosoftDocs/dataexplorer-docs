@@ -1,10 +1,7 @@
 ---
 title: 'Create an Azure Data Explorer cluster & DB using C#'
 description: Learn how to create an Azure Data Explorer cluster and database by using the C#
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/03/2019
 ---
@@ -39,7 +36,7 @@ For running the examples in this article, we need an Azure AD Application and se
     ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
     var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-    var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+    var clientSecret = "PlaceholderClientSecret";//Client Secret
     var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
     var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
     var credential = new ClientCredential(clientId, clientSecret);

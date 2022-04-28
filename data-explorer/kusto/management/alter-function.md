@@ -1,11 +1,7 @@
 ---
-title: .alter function - Azure Data Explorer | Microsoft Docs
+title: .alter function - Azure Data Explorer
 description: This article describes .alter function in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/11/2020
 ---

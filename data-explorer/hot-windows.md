@@ -1,10 +1,7 @@
 ---
 title: Use hot windows for infrequent queries over cold data in Azure Data Explorer
 description: In this article, you learn how to efficiently query cold data in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: vplauzon
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 10/17/2021
 ---
@@ -44,7 +41,7 @@ Now you can expect optimal performance during the use of hot windows.
 
 ## Set hot windows
 
-Hot windows are part of the [cache policy commands syntax](kusto/management/cache-policy.md) and are set with the [`.alter policy caching` command](./kusto/management/cachepolicy.md).
+Hot windows are part of the [cache policy commands syntax](./kusto/management/show-table-cache-policy-command.md) and are set with the [`.alter policy caching` command](./kusto/management/cachepolicy.md).
 
 > [!NOTE]
 > It can take up to an hour to fully update the cluster disk cache based on the updated cache policy definition.
@@ -85,7 +82,7 @@ Run the query or queries you want over the time period specified in the hot wind
 ## Revert settings
 
 1. Use the original cache settings retrieved above in [Set hot windows](#set-hot-windows).
-1. Revert the cache policy to the original settings with the [`.alter policy caching` command](kusto/management/cache-policy.md#alter-the-cache-policy).
+1. Revert the cache policy to the original settings with the [`.alter policy caching` command](./kusto/management/show-table-cache-policy-command.md).
 
 Since you've configured optimized autoscale for that cluster, the cluster will shrink to its original size.
 

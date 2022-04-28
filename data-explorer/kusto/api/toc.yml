@@ -3,6 +3,8 @@ items:
   href: index.md
 - name: Client libraries
   href: client-libraries.md
+- name: One-click sample app generator
+  href: ../../sample-app-generator-one-click.md
 - name: Connection strings
   items:
   - name: Connection strings overview
@@ -10,7 +12,11 @@ items:
   - name: Kusto connection strings
     href: connection-strings/kusto.md
   - name: Storage connection strings
-    href: connection-strings/storage.md
+    href: connection-strings/storage-connection-strings.md
+  - name: Storage authentication methods
+    href: connection-strings/storage-authentication-methods.md
+  - name: Generate SAS token
+    href: connection-strings/generate-sas-token.md
 - name: REST API
   items:
   - name: REST API overview

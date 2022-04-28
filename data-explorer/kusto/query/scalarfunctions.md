@@ -1,11 +1,7 @@
 ---
 title: Scalar Functions - Azure Data Explorer 
 description: This article describes Scalar Functions in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/18/2021
 ---
@@ -93,6 +89,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[bag_keys()](bagkeysfunction.md)|Enumerates all the root keys in a dynamic property-bag object.|
 |[bag_merge()](bag-merge-function.md)|Merges dynamic property-bags into a dynamic property-bag with all properties merged.|
 |[bag_remove_keys()](bag-remove-keys-function.md)|Removes keys and associated values from a dynamic property-bag.|
+|[jaccard_index()](jaccard-index-function.md)|Computes the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) of two sets.|
 |[pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
 |[pack_all()](packallfunction.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
 |[pack_array()](packarrayfunction.md)|Packs all input values into a dynamic array.|
@@ -259,7 +256,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[countof()](countoffunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.|
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
 |[extract_all()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
-|[extract_json()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
+|[extractjson()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
 |[has_any_index()](has-any-index-function.md)|Searches the string for items specified in the array and returns the position of the first item found in the string.|
 |[indexof()](indexoffunction.md)|Function reports the zero-based index of the first occurrence of a specified string within input string.|
 |[isempty()](isemptyfunction.md)|Returns true if the argument is an empty string or is null.|
@@ -299,6 +296,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |-------------------------|--------------------------------------------------------|
 |[ipv4_compare()](ipv4-comparefunction.md)|Compares two IPv4 strings.|
 |[ipv4_is_in_range()](ipv4-is-in-range-function.md)|Checks if IPv4 string address is in IPv4-prefix notation range.|
+|[ipv4_is_in_any_range()](ipv4-is-in-any-range-function.md)|Checks if IPv4 string address is any of the IPv4-prefix notation ranges.|
 |[ipv4_is_match()](ipv4-is-matchfunction.md)|Matches two IPv4 strings.|
 |[ipv4_is_private()](ipv4-is-privatefunction.md)|Checks if IPv4 string address belongs to a set of private network IPs.|
 |[ipv4_netmask_suffix](ipv4-netmask-suffix-function.md)|Returns the value of the IPv4 netmask suffix from IPv4 string address.|
@@ -334,7 +332,11 @@ This article lists all available scalar functions grouped by type. For aggregati
 |Function Name|Description|
 |--------------------------------------------------------------------------|--------------------------------------------------------|
 |[geo_distance_2points()](geo-distance-2points-function.md)|Calculates the shortest distance between two geospatial coordinates on Earth.|
-|[geo_distance_point_to_line()](geo-distance-point-to-line-function.md)|Calculates the shortest distance between a coordinate and a line on Earth.|
+|[geo_distance_point_to_line()](geo-distance-point-to-line-function.md)|Calculates the shortest distance between a coordinate and a line or multiline on Earth.|
+|[geo_distance_point_to_polygon()](geo-distance-point-to-polygon-function.md)|Calculates the shortest distance between a coordinate and a polygon or multipolygon on Earth.|
+|[geo_intersects_2lines()](geo-intersects-2lines-function.md)|Calculates whether the two lines or multilines intersects.|
+|[geo_intersects_2polygons()](geo-intersects-2polygons-function.md)|Calculates whether the two polygons or multipolygons intersects.|
+|[geo_intersects_line_with_polygon()](geo-intersects-line-with-polygon-function.md)|Calculates whether the lines or multiline intersects with polygon or a multipolygon.|
 |[geo_point_in_circle()](geo-point-in-circle-function.md)|Calculates whether the geospatial coordinates are inside a circle on Earth.|
 |[geo_point_in_polygon()](geo-point-in-polygon-function.md)|Calculates whether the geospatial coordinates are inside a polygon or a multipolygon on Earth.|
 |[geo_point_to_geohash()](geo-point-to-geohash-function.md)|Calculates the Geohash string value for a geographic location.|
@@ -351,8 +353,16 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[geo_h3cell_level()](geo-h3cell-level-function.md)|Calculates the H3 cell resolution.|
 |[geo_h3cell_rings()](geo-h3cell-rings-function.md)|Calculates the H3 cell Rings.|
 |[geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md)|Calculates S2 Cell tokens that cover a polygon or multipolygon on Earth. Useful geospatial join tool.|
+|[geo_line_centroid()](geo-line-centroid-function.md)|Calculates the centroid of line or a multiline on Earth.|
 |[geo_line_densify()](geo-line-densify-function.md)|Converts planar line edges to geodesics by adding intermediate points.|
+|[geo_line_length()](geo-line-length-function.md)|Calculates the total length of line or a multiline on Earth.|
+|[geo_line_simplify()](geo-line-simplify-function.md)|Simplifies line or a multiline by replacing nearly straight chains of short edges with a single long edge on Earth.|
+|[geo_polygon_area()](geo-polygon-area-function.md)|Calculates the area of polygon or a multipolygon on Earth.|
+|[geo_polygon_centroid()](geo-polygon-centroid-function.md)|Calculates the centroid of polygon or a multipolygon on Earth.|
 |[geo_polygon_densify()](geo-polygon-densify-function.md)|Converts polygon or multipolygon planar edges to geodesics by adding intermediate points.|
+|[geo_polygon_perimeter()](geo-polygon-perimeter-function.md)|Calculates the length of the boundary of polygon or a multipolygon on Earth.|
+[[geo_union_lines_array()](geo-union-lines-array-function.md)|Calculates the union of lines or multilines on Earth.|
+|[geo_union_polygons_array()](geo-union-polygons-array-function.md)|Calculates the union of polygons or multipolygons on Earth.|
 
 ## Hash functions
 
@@ -364,3 +374,4 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[hash_md5()](md5hashfunction.md)|Returns a MD5 hash value for the input value.|
 |[hash_sha1()](sha1-hash-function.md)|Returns a SHA1 hash value for the input value.|
 |[hash_sha256()](sha256hashfunction.md)|Returns a SHA256 hash value for the input value.|
+|[hash_xxhash64()](hash-xxhash64-function.md)|Returns an XXHASH64 hash value for the input value.|

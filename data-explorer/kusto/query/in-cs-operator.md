@@ -1,14 +1,9 @@
 ---
 title: The case-sensitive in string operator - Azure Data Explorer
 description: This article describes the case-sensitive in string operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/19/2021
-ms.localizationpriority: high
 ---
 # in operator
 
@@ -18,7 +13,7 @@ The following table provides a comparison of the `in` operators:
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
-|[`in`](in-cs-operator.md) |Equals to one of the elements |Yes |`"abc" in ("123", "345", "abc")`|
+|[`in`](in-cs-operator.md) |Equals to any of the elements |Yes |`"abc" in ("123", "345", "abc")`|
 |[`!in`](not-in-cs-operator.md) |Not equals to any of the elements |Yes | `"bca" !in ("123", "345", "abc")` |
 |[`in~`](inoperator.md) |Equals to any of the elements |No | `"Abc" in~ ("123", "345", "abc")` |
 |[`!in~`](not-in-operator.md) |Not equals to any of the elements |No | `"bCa" !in~ ("123", "345", "ABC")` |

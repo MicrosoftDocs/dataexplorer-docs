@@ -1,11 +1,7 @@
 ---
 title: Azure Data Explorer Python SDK - Azure Data Explorer
 description: This article describes Python SDK in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 10/30/2019
 ---
@@ -29,7 +25,7 @@ including, but not exclusively, [Azure Databricks](https://azure.microsoft.com/s
 
 * [GitHub Repository](https://github.com/Azure/azure-kusto-python)
 
-    [![alt text](https://travis-ci.org/Azure/azure-kusto-python.svg?branch=master "azure-kusto-python."](https://travis-ci.org/Azure/azure-kusto-python)
+    [![Build status badge](https://github.com/Azure/azure-kusto-python/actions/workflows/pythonpackage.yml/badge.svg)](https://github.com/Azure/azure-kusto-python/actions/workflows/pythonpackage.yml)
 
 * Pypi packages:
 

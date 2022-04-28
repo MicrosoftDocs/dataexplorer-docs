@@ -1,11 +1,7 @@
 ---
-title: Cluster follower commands - Azure Data Explorer | Microsoft Docs
+title: Cluster follower commands - Azure Data Explorer
 description: This article describes Cluster follower commands in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/18/2020
 ---
@@ -25,9 +21,9 @@ The default [caching policy](cachepolicy.md) for the follower cluster uses the l
 
 |Option             |Description                                 |
 |-------------------|----------------------------------------------|
-|**None** (default) |The caching policies used are those policies defined in the source database in the leader cluster.   |
-|**replace**  |The source database in the leader cluster database and table-level caching policies are removed (set to `null`). These policies are replaced by the database and table-level override policies, if defined.|
-|**union**    |The source database in the leader cluster database and table-level caching policies are combined with the policies defined in the database and table-level override policies.   |
+|**None**           |The caching policies used are those policies defined in the source database in the leader cluster.   |
+|**replace**        |The source database in the leader cluster database and table-level caching policies are removed (set to `null`). These policies are replaced by the database and table-level override policies, if defined.|
+|**union**(default) |The source database in the leader cluster database and table-level caching policies are combined with the policies defined in the database and table-level override policies.   |
 
 > [!NOTE]
 >  * If the collection of override database and table-level caching policies is *empty*, then everything is cached by default.
@@ -37,9 +33,9 @@ The default [caching policy](cachepolicy.md) for the follower cluster uses the l
 
 |Option             |Description                                                                                                                              |
 |-------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-|**None** (default) |The [authorized principals](access-control/index.md#authorization) are defined in the source database of the leader cluster.     |
+|**None**           |The [authorized principals](access-control/index.md#authorization) are defined in the source database of the leader cluster.     |
 |**replace**        |The override authorized principals replace the authorized principals from the source database in the leader cluster.  |
-|**union**          |The override authorized principals are combined with the authorized principals from the source database in the leader cluster. |
+|**union**(default) |The override authorized principals are combined with the authorized principals from the source database in the leader cluster. |
 
 > [!NOTE]
 > If the collection of override authorized principals is *empty*, there will be no database-level principals.
@@ -84,7 +80,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 * The default `modification kind` for caching policies is `union`. To change the `modification kind`, use the [`.alter follower database caching-policies-modification-kind`](#alter-follower-database-caching-policies-modification-kind) command.
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
-    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
+    * [`.show database policy retention`](./show-table-retention-policy-command.md)
     * [`.show database details`](../management/show-databases.md)
     * [`.show table details`](show-tables-command.md)
 * Viewing the override settings on the follower database after the change is made can be done using [`.show follower database`](#show-follower-database)
@@ -107,7 +103,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 **Notes**
 
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
-    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
+    * [`.show database policy retention`](./show-table-retention-policy-command.md)
     * [`.show database details`](../management/show-databases.md)
     * [`.show table details`](show-tables-command.md)
 * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
@@ -242,7 +238,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 > [!NOTE]
 > * Viewing the policy or effective policies after the change can be done using the `.show` commands:
->    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
+>    * [`.show database policy retention`](./show-table-retention-policy-command.md)
 >    * [`.show database details`](../management/show-databases.md)
 >    * [`.show table details`](show-tables-command.md)
 > * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
@@ -272,7 +268,7 @@ Requires [DatabaseAdmin permissions](../management/access-control/role-based-aut
 
 > [!NOTE]
 > * Viewing the policy or effective policies after the change can be done using the `.show` commands:
->    * [`.show database policy retention`](../management/retention-policy.md#show-retention-policy)
+>    * [`.show database policy retention`](./show-table-retention-policy-command.md)
 >    * [`.show database details`](../management/show-databases.md)
 >    * [`.show table details`](show-tables-command.md)
 > * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)

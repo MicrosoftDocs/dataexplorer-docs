@@ -1,17 +1,14 @@
 ---
 title: Monitor Azure Data Explorer ingestion, commands, and queries using diagnostic logs
 description: Learn how to set up diagnostic logs for Azure Data Explorer to monitor ingestion commands, and query operations.
-author: orspod
-ms.author: orspodek
 ms.reviewer: guregini
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/21/2021
 ---
 
 # Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs
 
-Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. [Azure Monitor diagnostic logs](/azure/azure-monitor/platform/diagnostic-logs-overview) provide data about the operation of Azure resources. Azure Data Explorer uses diagnostic logs for insights on ingestion, commands, query, and tables. You can export operation logs to Azure Storage, Event Hub, or Log Analytics to monitor ingestion, commands, and query status. Logs from Azure Storage and Azure Event Hub can be routed to a table in your Azure Data Explorer cluster for further analysis.
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. [Azure Monitor diagnostic logs](/azure/azure-monitor/platform/diagnostic-logs-overview) provide data about the operation of Azure resources. Azure Data Explorer uses diagnostic logs for insights on ingestion, commands, query, and tables. You can export operation logs to Azure Storage, event hub, or Log Analytics to monitor ingestion, commands, and query status. Logs from Azure Storage and Azure Event Hubs can be routed to a table in your Azure Data Explorer cluster for further analysis.
 
 > [!IMPORTANT] 
 > Diagnostic log data may contain sensitive data. Restrict permissions of the logs destination according to your monitoring needs. 
@@ -38,7 +35,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 
 * **Successful ingestion operations**: These logs have information about successfully completed ingestion operations.
 * **Failed ingestion operations**: These logs have detailed information about failed ingestion operations including error details. 
-* **Ingestion batching operations**: These logs have detailed statistics of batches ready for ingestion (duration, batch size, blobs count, and [batching types](kusto/management/batchingpolicy.md#batching-types)).
+* **Ingestion batching operations**: These logs have detailed statistics of batches ready for ingestion (duration, batch size, blobs count, and [batching types](kusto/management/batchingpolicy.md#sealing-a-batch)).
 
 # [Commands and Queries](#tab/commands-and-queries)
 
@@ -59,7 +56,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 
 ---
 
-The data is then archived into a Storage account, streamed to an Event Hub, or sent to Log Analytics, as per your specifications.
+The data is then archived into a Storage account, streamed to an event hub, or sent to Log Analytics, as per your specifications.
 
 ### Enable diagnostic logs
 
@@ -76,7 +73,7 @@ Diagnostic logs are disabled by default. To enable diagnostic logs, do the follo
     :::image type="content" source="media/using-diagnostic-logs/configure-diagnostics-settings.png" alt-text="Configure diagnostics settings.":::
 
     1. Enter a **Diagnostic setting name**.
-    1. Select one or more targets: a Log Analytics workspace, a storage account, or an Event Hub.
+    1. Select one or more targets: a Log Analytics workspace, a storage account, or an event hub.
     1. Select logs to be collected: `SucceededIngestion`, `FailedIngestion`, `IngestionBatching`, `Command`, or `Query`, `TableUsageStatistics`, or `TableDetails`.
     1. Select [metrics](using-metrics.md#supported-azure-data-explorer-metrics) to be collected (optional).  
     1. Select **Save** to save the new diagnostic logs settings and metrics.
@@ -219,7 +216,7 @@ Log JSON strings include elements listed in the following table:
 | Timestamp            | The time of the batching reporting |
 | Database             | Name of the database holding the target table |
 | Table                | Name of the target table into which the data is ingested |
-| BatchingType         | The trigger for sealing a batch. For a complete list of batching types, see [Batching types](kusto/management/batchingpolicy.md#batching-types). |
+| BatchingType         | The trigger for sealing a batch. For a complete list of batching types, see [Batching types](kusto/management/batchingpolicy.md#sealing-a-batch). |
 | SourceCreationTime   | Minimal time (UTC) at which blobs in this batch were created |
 | BatchTimeSeconds     | Total batching time of this batch (seconds) |
 | BatchSizeBytes       | Total uncompressed size of data in this batch (bytes) |

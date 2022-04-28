@@ -1,47 +1,58 @@
 ---
-title: UI deep links - Azure Data Explorer | Microsoft Docs
+title: UI deep links - Azure Data Explorer
 description: This article describes UI deep links in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 10/30/2019
 ---
 # UI deep links
 
-The REST API provides a deep link functionality that allows HTTP `GET` requests
-to redirect the caller to a UI tool. For example, you can craft a URI that opens
-the Kusto.Explorer tool, auto-configures it for a specific cluster and database, runs a specific query and displays its results to the user.
+UI deep links are URIs that, when opened in a web browser, result in automatically
+opening a UI tool (such as Kusto.Explorer or Kusto.WebExplorer) in a way that pre-selects
+the desired Kusto cluster (and optionally database).
 
-The UI deep links REST API:
+For example, when a user clicks [https://help.kusto.windows.net/Samples?query=print%20123](https://help.kusto.windows.net/Samples?query=print%20123),
+Kusto.WebExplorer will open to the `help.kusto.windows.net` cluster, select the `Samples`
+database as the default database, and run the associated query.
 
-* Cluster (mandatory) is commonly defined implicitly, as the service that
-  implements the REST API, but can be overridden by specifying the URI query
-  parameter `uri`.
+UI deep links work by having the user browser receive a redirect response when issuing
+a GET request to the URI, and depend on the browser settings to allow processing of
+this redirection. (For example, a UI deep link to Kusto.Explorer requires the browser
+to be configured to allow ClickOnce applications to start.)
 
-* The database (optional) is specified as the first and only fragment of the URI
-  path. The database is mandatory for queries and optional for control commands.
+The UI deep link must be a valid URI, and has the following format:
 
-* The query or control command (optional) is specified by using the
-  URI query parameter `query`, or the URI query parameter `querysrc` (which
-  points at a web resource that holds the query).
-  `query` can be used in the text of the query or control command itself (encoded
-  using the HTTP query parameter encoding). Alternatively, it can be used in the base64 encoding of the gzip of the query or control command text (making it possible to compress
-  long queries so that they fit the default browser URI length limits).
+`https://` *Cluster* `/` [*DatabaseName*] [`?` *Query*]
 
-* The name of the cluster connection (optional) is specified by using the
-  URI query parameter `name`.
+Where:
 
-* The UI tool is specified by using the `web` optional URI query parameter.
-  `web=0` indicates the desktop application Kusto.Explorer. `web=1` indicates
-  the Kusto.WebExplorer web application.
-`web=2` is the old version of Kusto.WebExplorer
-  (based in Application Insights Analytics). `web=3` is the Kusto.WebExplorer
-  with an empty profile (no previously-open tabs or clusters will be
-  available). Last, the `web` query parameter can be replaced by `saw=1` in
-  order to indicate the SAW version of Kusto.Explorer.
+* *Cluster* is the base address of the cluster itself.
+  This part is mandatory, but can be overridden by specifying
+  the query parameter `uri` in *Query*.
+
+* *DatabaseName* is the name of the database in *Cluster* to use
+  as the default database. It is optional. (Note that if the *Query*
+  specifies an actual query to run, a database must be selected for
+  the query to run.)
+
+* *Query* can be used to specify additional parameters to control
+  the behavior of the UI deep link. It is optional. All query parameters
+  that are not explicitly mentioned are passed as-is to the redirect URI,
+  so that tool-specific query parameters can be used.
+
+  |Parameter |Description|
+  |----------|-----------|
+  |`web`     |Selects the UI tool. By default, or if set to `1`, Kusto.WebExplorer is used. If set to `0`, Kusto.Explorer will be used. If set to `3`, Kusto.WebExplorer will be used with no pre-existing tabs.|
+  |`query`   |The text of the query or control command to start with when opening the UI tool.|
+  |`querysrc`|A URI pointing at a web resource that holds the text of the query or control command to start with when opening the UI tool.|
+  |`name`    |The name of the connection to the cluster.|
+
+  The value of `query` can use standard HTTP query parameter encoding.
+  Alternatively, it can be encoded using the transformation `base64(gzip(text))`,
+  which makes it possible to compress long queries or control commands
+  to git in the default browser URI length limits.
+
+## Examples
 
 Here are a few examples for links:
 
@@ -71,21 +82,26 @@ Kusto.Explorer desktop client tool with specially-crafted startup
 parameters that open a connection to a specific Kusto engine cluster
 and execute a query against that cluster.
 
-* Path: `/` [*DatabaseName*`]
-* Verb: `GET`
-* Query string: `web=0`
-
-> [!NOTE]
-> See [Deep-linking with Kusto.Explorer](../../tools/kusto-explorer-using.md#deep-linking-queries) 
-> for a description of the redirect URI syntax for starting up Kusto.Explorer.
+See [Deep-linking with Kusto.Explorer](../../tools/kusto-explorer-using.md#deep-linking-queries)
+for a description of the redirect URI syntax for starting up Kusto.Explorer.
 
 ## Deep linking to Kusto.WebExplorer
 
-This REST API performs redirection to Kusto.WebExplorer, a web application.
+In addition to the query parameters mentioned above,
+the following parameters may appear in UI deep links
+to Kusto.WebExplorer:
 
-* Path: `/` [*DatabaseName*`]
-* Verb: `GET`
-* Query string: `web=1`
+|Parameter   |Description|
+|------------|-----------|
+|`login_hint`|Sets the user login name (email) of the user.|
+|`tenant`    |Sets the Azure Active Directory tenant ID of the user.|
+
+By specifying the `login_hint` and `tenant` of the user, one may instruct
+Kusto.WebExplorer to login a user from another AAD tenant.
+
+Redirection will be to the following URI:
+
+`https://` *BaseAddress* `/clusters/` *Cluster* [`/databases/` *DatabaseName*] [`?` *Query*]
 
 ## Specifying the query or control command in the URI
 

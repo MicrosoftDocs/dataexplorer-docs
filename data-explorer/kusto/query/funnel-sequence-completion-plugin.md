@@ -1,17 +1,13 @@
 ---
 title: funnel_sequence_completion plugin - Azure Data Explorer
 description: This article describes funnel_sequence_completion plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/16/2020
+ms.date: 01/24/2022
 ---
 # funnel_sequence_completion plugin
 
-Calculates funnel of completed sequence steps within comparing different time periods.
+Calculates a funnel of completed sequence steps while comparing different time periods. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ```kusto
 T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, state_column, dynamic(['S1', 'S2', 'S3']), dynamic([10m, 30min, 1h]))
@@ -19,7 +15,7 @@ T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)
 
 ## Syntax
 
-*T* `| evaluate` `funnel_sequence_completion(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Step*`,` *StateColumn*`,` *Sequence*`,` *MaxSequenceStepWindows*`)`
+*T* `| evaluate` `funnel_sequence_completion(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *BinSize*`,` *StateColumn*`,` *Sequence*`,` *MaxSequenceStepWindows*`)`
 
 ## Arguments
 

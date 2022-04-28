@@ -1,13 +1,9 @@
 ---
-title: .alter auto delete policy command - Azure Data Explorer | Microsoft Docs
-description: This article describes the .alter auto delete policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: ".alter auto delete policy command - Azure Data Explorer"
+description: "This article describes the .alter auto delete policy command in Azure Data Explorer."
 ms.reviewer: yifats
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/30/2021
+ms.date: 01/04/2022
 ---
 # .alter auto delete policy
 
@@ -15,7 +11,12 @@ Alters the auto delete policy that is applied to a table. For more information, 
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `auto_delete` *policy object, serialized as JSON*
+`.alter` `table` *TableName* `policy` `auto_delete` *SerializedPolicyObject* 
+
+## Arguments
+
+- *TableName* - The name of the table.
+- *SerializedPolicyObject* - One serialized JSON policy object defined.
 
 ## Returns
 

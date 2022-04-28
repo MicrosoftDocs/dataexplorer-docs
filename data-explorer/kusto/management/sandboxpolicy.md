@@ -1,11 +1,7 @@
 ---
 title: Sandbox policy - Azure Data Explorer
 description: This article describes Sandbox policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 04/25/2021
 ---
@@ -71,5 +67,4 @@ The following policy sets different limits for `PythonExecution` and `RExecution
 
 ## Next steps
 
-Use the [sandbox policy control commands](../management/sandbox-policy.md) to manage the cluster's sandbox policy.
- 
+Use the [sandbox policy control commands](./show-cluster-sandbox-policy-command.md) to manage the cluster's sandbox policy.

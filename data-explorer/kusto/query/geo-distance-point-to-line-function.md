@@ -1,11 +1,7 @@
 ---
 title: geo_distance_point_to_line() - Azure Data Explorer
 description: This article describes geo_distance_point_to_line() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: mbrichko
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/11/2020
 ---
@@ -25,7 +21,7 @@ Calculates the shortest distance between a coordinate and a line or multiline on
 
 ## Returns
 
-The shortest distance, in meters, between a coordinate and a line on Earth. If the coordinate or lineString are invalid, the query will produce a null result.
+The shortest distance, in meters, between a coordinate and a line or multiline on Earth. If the coordinate or lineString are invalid, the query will produce a null result.
 
 > [!NOTE]
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) coordinate reference system.
@@ -43,7 +39,7 @@ dynamic({"type": "MultiLineString","coordinates": [ [ line_1, line_2 ,..., line_
 * Edge length must be less than 180 degrees. The shortest edge between the two vertices will be chosen.
 
 > [!TIP]
-> * For better performance, use literal lines.
+> * Using literal LineString or a MultiLineString may result in better performance.
 > * If you want to know the shortest distance between one or more points to many lines, consider folding these lines into one multiline. See the [example](#examples) below.
 
 ## Examples
@@ -105,7 +101,7 @@ let allRoads=toscalar(
     ManhattanRoads
     | project road_coordinates=features.geometry.coordinates
     | summarize make_list(road_coordinates)
-    | project multipolygon = pack("type","MultiLineString", "coordinates", list_road_coordinates));
+    | project multiline = pack("type","MultiLineString", "coordinates", list_road_coordinates));
 nyc_taxi
 | project pickup_longitude, pickup_latitude
 | where pickup_longitude != 0 and pickup_latitude != 0

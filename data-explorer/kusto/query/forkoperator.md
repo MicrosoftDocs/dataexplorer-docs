@@ -1,11 +1,7 @@
 ---
-title: fork operator - Azure Data Explorer | Microsoft Docs
+title: fork operator - Azure Data Explorer
 description: This article describes fork operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
@@ -46,6 +42,8 @@ The input stream will be cached by materialize and then the cached expression ca
 
 ## Examples
 
+In the following example, the result tables will be named "GenericResult",  "GenericResult_2" and "GenericResult_3":
+
 ```kusto
 KustoLogs
 | where Timestamp > ago(1h)
@@ -53,16 +51,21 @@ KustoLogs
     ( where Level == "Error" | project EventText | limit 100 )
     ( project Timestamp, EventText | top 1000 by Timestamp desc)
     ( summarize min(Timestamp), max(Timestamp) by ActivityID )
- 
-// In the following examples the result tables will be named: Errors, EventsTexts and TimeRangePerActivityID
+```
+
+In the following examples, the result tables will be named "Errors", "EventsTexts" and "TimeRangePerActivityID":
+
+```kusto
 KustoLogs
 | where Timestamp > ago(1h)
 | fork
     ( where Level == "Error" | project EventText | limit 100 | as Errors )
     ( project Timestamp, EventText | top 1000 by Timestamp desc | as EventsTexts )
     ( summarize min(Timestamp), max(Timestamp) by ActivityID | as TimeRangePerActivityID )
-    
- KustoLogs
+```
+
+```kusto
+KustoLogs
 | where Timestamp > ago(1h)
 | fork
     Errors = ( where Level == "Error" | project EventText | limit 100 )

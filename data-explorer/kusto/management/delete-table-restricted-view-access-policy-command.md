@@ -1,11 +1,7 @@
 ---
 title: .delete restricted view access policy command - Azure Data Explorer
 description: This article describes the .delete restricted view access policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/27/2021
 ---
@@ -15,7 +11,7 @@ Delete the optional table [restricted view access policy](restrictedviewaccesspo
 
 ## Syntax
 
-`.delete` `table` *TableName* `policy` `restricted-view-access`
+`.delete` `table` *TableName* `policy` `restricted_view_access`
 
 ## Arguments
 
@@ -24,5 +20,5 @@ Delete the optional table [restricted view access policy](restrictedviewaccesspo
 ## Example
 
 ```kusto
-.delete table MyTable policy restricted-view-access
+.delete table MyTable policy restricted_view_access
 ```

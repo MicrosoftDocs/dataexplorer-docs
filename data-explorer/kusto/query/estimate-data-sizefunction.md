@@ -1,11 +1,7 @@
 ---
 title: estimate_data_size() - Azure Data Explorer
 description: This article describes estimate_data_size() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
@@ -34,7 +30,7 @@ estimate_data_size(Col1, Col2, Col3)
 
 ## Examples
 
-Calculating total data size using `estimated_data_size()`:
+Calculating total data size using `estimate_data_size()`:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

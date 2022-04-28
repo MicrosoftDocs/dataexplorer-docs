@@ -1,11 +1,7 @@
 ---
 title: Kusto.Ingest errors & exceptions - Azure Data Explorer
 description: This article describes Kusto.Ingest - Errors and Exceptions in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 10/11/2021
 ---
@@ -58,7 +54,7 @@ In the `IngestFromDataReader` and `IngestFromDataReaderAsync` methods, the `reta
 |Failed to download blob: 'The remote server returned an error: (404) Not Found.'| The blob doesn't exist.|Verify that the blob exists. If it exists, retry and contact the Kusto team |
 |JSON column mapping isn't valid: Two or more mapping elements point to the same column.| JSON mapping has 2 columns with different paths|Fix JSON mapping |
 |EngineError - [UtilsException] `IngestionDownloader.Download`: One or more files failed to download (search KustoLogs for ActivityID:\<GUID1>, RootActivityId:\<GUID2>)| One or more files failed to download. |Retry |
-|Failed to parse: Stream with ID '\<stream name>' has a malformed CSV format, failing per ValidationOptions policy |Malformed CSV file (such as, not having the same number of columns on every line). Fails only when validation policy is set to `ValidationOptions`. ValidateCsvInputConstantColumns |Check your CSV files. This message applies only to CSV/TSV files |
+|Failed to parse: Stream with ID '\<stream name>' has a malformed CSV format, failing per ValidationOptions policy |Malformed CSV file (such as, not having the same number of columns on every line). Fails only when validation policy is set to `ValidationOptions.ValidateCsvInputConstantColumns`. |Check your CSV files. This message applies only to CSV/TSV files |
 |`IngestClientAggregateException` with error message 'Missing mandatory parameters for valid Shared Access Signature' |The SAS being used is of the service, and not of the storage account |Use the SAS of the storage account |
 
 ### Ingestion error codes

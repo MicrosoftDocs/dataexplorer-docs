@@ -23,7 +23,7 @@ items:
     - name: Request classification commands
       items:
       - name: Request classification policy commands
-        href: request-classification-policy-commands.md
+        href: ./show-cluster-policy-request-classification-command.md
       - name: .alter cluster request classification policy commands
         href: alter-cluster-policy-request-classification-command.md
       - name: .alter-merge cluster request classification policy commands
@@ -49,61 +49,61 @@ items:
   - name: Databases
     href: databases.md
     items:
-    - name: .show databases
+    - name: ".show databases"
       href: show-databases.md
-    - name: .show database
+    - name: ".show database"
       href: show-database.md
-    - name: .show cluster databases
+    - name: ".show cluster databases"
       href: show-cluster-database.md
-    - name: .alter database 
+    - name: ".alter database prettyname"
       href: alter-database.md
-    - name: .show database schema
+    - name: ".show database(s) schema"
       href: show-schema-database.md
-    - name: .execute database script
+    - name: ".execute database script"
       href: execute-database-script.md
   - name: Tables
     items:
     - name: Tables management
       href: tables.md
-    - name: .alter-merge table
+    - name: ".alter-merge table"
       href: alter-merge-table-command.md
-    - name: .alter table
+    - name: ".alter table"
       href: alter-table-command.md
-    - name: .alter table docstring
+    - name: ".alter table docstring"
       href: alter-table-docstring-command.md
-    - name: .alter table folder
+    - name: ".alter table folder"
       href: alter-table-folder-command.md
-    - name: .alter ingestion mapping
+    - name: ".alter ingestion mapping"
       href: alter-ingestion-mapping-command.md
-    - name: .create ingestion mapping
+    - name: ".create ingestion mapping"
       href: create-ingestion-mapping-command.md
-    - name: .drop ingestion mapping
+    - name: ".drop ingestion mapping"
       href: drop-ingestion-mapping-command.md
-    - name: .show ingestion mapping
+    - name: ".show ingestion mapping"
       href: show-ingestion-mapping-command.md
-    - name: .create table
+    - name: ".create table"
       href: create-table-command.md
-    - name: .create table based-on
+    - name: ".create table based-on"
       href: create-table-based-on-command.md
-    - name: .create tables
+    - name: ".create tables"
       href: create-tables-command.md
-    - name: .create-merge table
+    - name: ".create-merge table"
       href: create-merge-table-command.md
-    - name: .create-merge tables
+    - name: ".create-merge tables"
       href: create-merge-tables-command.md
-    - name: .drop table(s)
+    - name: ".drop tables"
       href: drop-table-command.md
-    - name: .rename table(s)
+    - name: ".rename tables"
       href: rename-table-command.md
-    - name: .show tables
+    - name: ".show tables"
       href: show-tables-command.md
-    - name: .undo drop table
+    - name: ".undo drop table"
       href: undo-drop-table-command.md
-    - name: .show table details
+    - name: ".show table details"
       href: show-table-details-command.md
-    - name: .show table schema
+    - name: ".show table schema"
       href: show-table-schema-command.md
-    - name: .clear table data
+    - name: ".clear table data"
       href: clear-table-data-command.md
   - name: External tables
     items:
@@ -111,37 +111,41 @@ items:
       href: external-tables-azurestorage-azuredatalake.md
     - name: Create and alter SQL Server external tables
       href: external-sql-tables.md
-    - name: .drop external table
+    - name: ".drop external table"
       href: drop-external-table.md
-    - name: .show external table
+    - name: ".show external table"
       href: show-external-tables.md
-    - name: .show external table schema
+    - name: ".show external table schema"
       href: show-external-table-schema.md
   - name: Materialized views
     items:
     - name: Materialized views overview
       href: materialized-views/materialized-view-overview.md
-    - name: .create materialized-view
+    - name: ".create materialized-view"
       href: materialized-views/materialized-view-create.md
-    - name: .alter materialized-view
+    - name: ".alter materialized-view"
       href: materialized-views/materialized-view-alter.md
-    - name: .create-or-alter materialized-view
+    - name: ".create-or-alter materialized-view"
       href: materialized-views/materialized-view-create-or-alter.md
-    - name: .alter materialized-view docstring
+    - name: ".alter materialized-view docstring"
       href: materialized-views/materialized-view-alter-docstring.md
-    - name: .alter materialized-view folder
+    - name: ".alter materialized-view folder"
       href: materialized-views/materialized-view-alter-folder.md
-    - name: .alter materialized-view lookback
+    - name: ".alter materialized-view lookback"
       href: materialized-views/materialized-view-alter-lookback.md
-    - name: .alter materialized-view autoUpdateSchema
+    - name: ".alter materialized-view autoUpdateSchema"
       href: materialized-views/materialized-view-alter-autoUpdateSchema.md
-    - name: .show materialized-view commands
+    - name: ".show materialized-view commands"
       href: materialized-views/materialized-view-show-commands.md
-    - name: .drop materialized-view
+    - name: ".show materialized-view details"
+      href: materialized-views/materialized-view-show-details-command.md
+    - name: ".rename materialized-view"
+      href: materialized-views/materialized-view-rename.md
+    - name: ".drop materialized-view"
       href: materialized-views/materialized-view-drop.md
-    - name: .clear materialized-view data
+    - name: ".clear materialized-view data"
       href: materialized-views/materialized-view-clear-data.md
-    - name: .disable | .enable materialized-view
+    - name: ".disable | .enable materialized-view"
       href: materialized-views/materialized-view-enable-disable.md    
     - name: Materialized views policies
       href: materialized-views/materialized-view-policies.md
@@ -154,15 +158,15 @@ items:
     items:
     - name: Columns management
       href: columns.md
-    - name: .alter column
+    - name: ".alter column"
       href: alter-column.md
-    - name: .drop column
+    - name: ".drop column"
       href: drop-column.md
-    - name: .rename column
+    - name: ".rename column"
       href: rename-column.md
-    - name: .alter column docstrings
+    - name: ".alter column-docstrings"
       href: alter-column-docstrings.md
-    - name: .alter-merge column docstrings
+    - name: ".alter-merge column-docstrings"
       href: alter-merge-table-column.md
   - name: Data mappings
     href: mappings.md
@@ -170,19 +174,19 @@ items:
     items:
     - name: Stored functions management overview
       href: functions.md
-    - name: .alter function
+    - name: ".alter function"
       href: alter-function.md
-    - name: .alter function docstring
+    - name: ".alter function docstring"
       href: alter-docstring-function.md
-    - name: .alter function folder
+    - name: ".alter function folder"
       href: alter-folder-function.md
-    - name: .create function
+    - name: ".create function"
       href: create-function.md
-    - name: .create-or-alter function
+    - name: ".create-or-alter function"
       href: create-alter-function.md
-    - name: .drop function
+    - name: ".drop function"
       href: drop-function.md
-    - name: .show functions
+    - name: ".show functions"
       href: show-function.md
 - name: Policies
   items:
@@ -190,73 +194,73 @@ items:
     items:
     - name: Auto delete policy
       href: auto-delete-policy.md
-    - name: .alter auto delete policy command
+    - name: ".alter auto delete policy command"
       href: alter-auto-delete-policy-command.md
-    - name: .delete auto delete policy command
+    - name: ".delete auto delete policy command"
       href: delete-auto-delete-policy-command.md
-    - name: .show auto delete policy command
+    - name: ".show auto delete policy command"
       href: show-auto-delete-policy-command.md
   - name: Cache
     items:
     - name: Cache policy (hot and cold cache)
       href: cachepolicy.md
-    - name: .alter cluster cache policy command
+    - name: ".alter cluster cache policy command"
       href: alter-cluster-cache-policy-command.md
-    - name: .alter database cache policy command
+    - name: ".alter database cache policy command"
       href: alter-database-cache-policy-command.md
-    - name: .alter materialized view cache policy command
+    - name: ".alter materialized view cache policy command"
       href: alter-materialized-view-cache-policy-command.md
-    - name: .alter table cache policy command
+    - name: ".alter table cache policy command"
       href: alter-table-cache-policy-command.md
-    - name: .delete database cache policy command
+    - name: ".delete database cache policy command"
       href: delete-database-cache-policy-command.md
-    - name: .delete materialized view cache policy command
+    - name: ".delete materialized view cache policy command"
       href: delete-materialized-view-cache-policy-command.md
-    - name: .delete table cache policy command
+    - name: ".delete table cache policy command"
       href: delete-table-cache-policy-command.md
-    - name: .show database cache policy command
+    - name: ".show database cache policy command"
       href: show-database-cache-policy-command.md
-    - name: .show materialized view cache policy command
+    - name: ".show materialized view cache policy command"
       href: show-materialized-view-cache-policy-command.md
-    - name: .show table cache policy command
+    - name: ".show table cache policy command"
       href: show-table-cache-policy-command.md
   - name: Callout
     items:
     - name: Callout policy
       href: calloutpolicy.md
-    - name: .alter callout policy command
+    - name: ".alter callout policy command"
       href: alter-callout-policy-command.md
-    - name: .alter-merge callout policy command
+    - name: ".alter-merge callout policy command"
       href: alter-merge-callout-policy-command.md
-    - name: .delete callout policy command
+    - name: ".delete callout policy command"
       href: delete-callout-policy-command.md
-    - name: .show callout policy command
+    - name: ".show callout policy command"
       href: show-cluster-callout-policy-command.md
   - name: Capacity
     items:
     - name: Capacity policy
       href: capacitypolicy.md
-    - name: .alter capacity policy command
+    - name: ".alter capacity policy command"
       href: alter-capacity-policy-command.md
-    - name: .alter-merge capacity policy command
+    - name: ".alter-merge capacity policy command"
       href: alter-merge-capacity-policy-command.md
-    - name: .show capacity policy command
+    - name: ".show capacity policy command"
       href: show-cluster-capacity-policy-command.md
-  - name: Ingestion batching
+  - name: Ingestion batching 
     items:
     - name: Ingestion batching policy
       href: batchingpolicy.md
-    - name: .alter database ingestion batching policy command
+    - name: ".alter database ingestion batching policy command"
       href: alter-database-ingestion-batching-policy.md
-    - name: .alter table ingestion batching policy command
+    - name: ".alter table ingestion batching policy command"
       href: alter-table-ingestion-batching-policy.md
-    - name: .delete database ingestion batching policy command
+    - name: ".delete database ingestion batching policy command"
       href: delete-database-ingestion-batching-policy.md
-    - name: .delete table ingestion batching policy command
+    - name: ".delete table ingestion batching policy command"
       href: delete-table-ingestion-batching-policy.md
-    - name: .show database ingestion batching policy command
+    - name: ".show database ingestion batching policy command"
       href: show-database-ingestion-batching-policy.md
-    - name: .show table ingestion batching policy command
+    - name: ".show table ingestion batching policy command"
       href: show-table-ingestion-batching-policy.md
   - name: Ingestiontime
     items:
@@ -294,6 +298,8 @@ items:
       href: alter-merge-database-merge-policy-command.md
     - name: .alter-merge table merge policy command
       href: alter-merge-table-merge-policy-command.md
+    - name: .alter-merge materialized-view merge policy command
+      href: alter-merge-materialized-view-merge-policy-command.md
     - name: .delete database merge policy command
       href: delete-database-merge-policy-command.md
     - name: .delete table merge policy command
@@ -354,8 +360,10 @@ items:
     items:
     - name: Extent tags retention policy
       href: extent-tags-retention-policy.md
-    - name: .alter extent tags retention policy
+    - name: ".alter database extent tags retention policy"
       href: alter-extent-tags-retention-policy.md
+    - name: ".alter table extent tags retention policy"
+      href: alter-table-extent-tags-retention-policy.md
     - name: .delete extent tags retention policy
       href: delete-extent-tags-retention-policy.md
     - name: .show extent tags retention policy
@@ -449,6 +457,7 @@ items:
   - name: Update
     items:
     - name: Update policy
+      displayName: SQL triggers
       href: updatepolicy.md
     - name: .alter table update policy command
       href: alter-table-update-policy-command.md
@@ -529,6 +538,11 @@ items:
   - name: Clear cache
     displayName: clear query results cache
     href: clear-query-results-cache-command.md
+- name: Cross-cluster schema
+  items:
+  - name: .clear cache remote-schema command
+    displayName: clear query schema cache
+    href: clear-cross-cluster-schema-cache.md
 - name: System information
   href: systeminfo.md
   items:
@@ -544,6 +558,8 @@ items:
     href: commands-and-queries.md
   - name: Operations
     href: operations.md
+  - name: Streaming ingestion statistics
+    href: streamingingestionstatistics.md
 - name: Access control
   href: access-control/index.md
   items:
@@ -585,9 +601,15 @@ items:
     href: cluster-follower.md
   - name: Data purge
     href: ../concepts/data-purge.md
+  - name: Data soft delete
+    href: ../concepts/data-soft-delete.md
 - name: Errors and failures
   items:
+  - name: Ingestion FAQ
+    href: Ingestion-faq.yml
   - name: Ingestion error codes
     href: ../../error-codes.md
   - name: Ingestion failures
     href: ingestionfailures.md
+  - name: Streaming ingestion failures
+    href: streamingingestionfailures.md

@@ -1,11 +1,7 @@
 ---
 title: partition operator - Azure Data Explorer
 description: This article describes partition operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/06/2021
 ---
@@ -71,9 +67,9 @@ For native, shuffle and legacy subqueries, the result must be a single tabular r
 * *TransformationSubQuery*: A tabular transformation expression, whose source is implicitly the subtables produced by partitioning the records of *T*, each subtable being homogenous on the value of *Column*.
 * *ContextFreeSubQuery*: A tabular expression that includes its own tabular source, such as a table reference. The expression can reference a single column from *T*, being the key column *Column* using the syntax `toscalar(`*Column*`)`.
 * *PartitionParameters*: Zero or more (space-separated) parameters in the form of: <br>
-  *Name* `=` *Value* that control the behavior of the operator. The following parameters are supported:
+  *HintName* `=` *Value* that control the behavior of the operator. The following hints are supported:
 
-  |Name               |Values         |Description|Native/Shuffle/Legacy strategy|
+  |HintName               |Values         |Description|Native/Shuffle/Legacy strategy|
   |-------------------|---------------|-----------|----------|
   |`hint.strategy`|`legacy`, `shuffle`, `native`|Defines the execution strategy of the partition operator.|Native, Shuffle, Legacy|
   |`hint.shufflekey`|the partition key|Runs the partition operator in shuffle strategy where the shuffle key is the specified partition key.|Shuffle|
@@ -87,7 +83,7 @@ The operator returns a union of the results of the individual subqueries.
 
 ## Examples
 
-### Native strategy
+### Native strategy example
 
 Use `hint.strategy=native` for this strategy. See the following example:
 
@@ -116,7 +112,7 @@ StormEvents
 |WASHINGTON|1|2|
 |WASHINGTON|1|10|
 
-### Shuffle strategy
+### Shuffle strategy example
 
 Use `hint.strategy=shuffle` for this strategy. See the following example:
 
@@ -137,7 +133,24 @@ StormEvents
 |---|
 |22345|
 
-#### Top-nested case
+### Legacy strategy with explicit source
+
+This strategy is for legacy purposes only, and indicated by the use of `hint.strategy=legacy` or by not including a strategy indication at all. See the following example:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+range x from 1 to 2 step 1
+| partition hint.strategy=legacy by x { StormEvents | where x == InjuriesIndirect}
+| count 
+```
+
+**Output** 
+
+|Count|
+|---|
+|113|
+
+### Partition operator
 
 In some cases, it is more performant and easier to write a query using the `partition` operator than using the [`top-nested` operator](topnestedoperator.md). The following example runs a subquery calculating `summarize` and `top` for each of States starting with `W`: (WYOMING, WASHINGTON, WEST VIRGINIA, WISCONSIN)
 
@@ -169,26 +182,7 @@ StormEvents
 |Winter Storm|WISCONSIN|310|0|
 |Hail|WISCONSIN|303|1|
 
-### Legacy Strategy Examples
-
-#### Legacy strategy with explicit source
-
-This strategy is for legacy purposes only, and indicated by the use of `hint.strategy=legacy` or by not including a strategy indication at all. See the following example:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-range x from 1 to 2 step 1
-| partition hint.strategy=legacy by x { StormEvents | where x == InjuriesIndirect}
-| count 
-```
-
-**Output** 
-
-|Count|
-|---|
-|113|
-
-#### Partition-reference
+### Partition reference
 
 The following example shows how to use the [as operator](asoperator.md) to give a "name" to each data partition and then reuse that name within the subquery. This approach is only relevant to the legacy strategy.
 

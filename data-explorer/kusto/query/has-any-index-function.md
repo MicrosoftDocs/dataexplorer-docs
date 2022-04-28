@@ -1,17 +1,13 @@
 ---
-title: has_any_index() - Azure Data Explorer
-description: This article describes has_any_index() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: "The has_any_index operator - Azure Data Explorer"
+description: "This article describes the has_any_index in Azure Data Explorer."
 ms.reviewer: atefsawaed
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/19/2021
+ms.date: 12/22/2021
 ---
 # has_any_index()
 
-Searches the string for items specified in the array and returns the position in the array of the first item found in the string.
+Searches the string for items specified in the array and returns the position in the array of the first item found in the string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
 ## Syntax
 
@@ -20,7 +16,7 @@ Searches the string for items specified in the array and returns the position in
 ## Arguments
 
 * *string*: Input string to search.
-* *lookup_array*: Array of scalar or literal expressions to lookup. The value should be of type long, integer, double, decimal, string, or guid.
+* *lookup_array*: Array of scalar or literal expressions to look up. The value should be of type long, integer, double, decimal, string, or guid.
 
 ## Returns
 

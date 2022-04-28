@@ -1,13 +1,9 @@
 ---
 title: .alter-merge materialized-view retention policy command- Azure Data Explorer
 description: This article describes the .alter-merge materialized-view retention policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/03/2021
+ms.date: 01/13/2022
 ---
 # .alter-merge materialized-view retention policy
 
@@ -15,7 +11,12 @@ Change a materialized-view's [retention policy](retentionpolicy.md). The retenti
 
 ## Syntax
 
-`.alter-merge` `materialized-view` *DatabaseName* `policy` `retention` 
+`.alter-merge` `materialized-view` *MaterializedViewName* `policy` `retention` *PolicyParameters*
+
+## Arguments
+
+*MaterializedViewName* - Specify the name of the materialized view. 
+*PolicyParameters* - Define policy parameters, see also [retention policy](retentionpolicy.md).
 
 ### Example
 

@@ -1,11 +1,7 @@
 ---
 title: Kusto CLI - Azure Data Explorer
 description: This article describes Kusto CLI in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/24/2020
 ---
@@ -32,10 +28,7 @@ PowerShell script.
 
 ## Get the tool
 
-Kusto.Cli is part of the NuGet package `Microsoft.Azure.Kusto.Tools` that
- [you can download](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
-Once downloaded, extract the package's `tools` folder to the target
-folder. No additional installation is required since it's xcopy-installable.
+Kusto.Cli is part of the NuGet package `Microsoft.Azure.Kusto.Tools` that you can download for [.NET](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/) or [.NET Core](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools.NETCore/). After you download the package, extract the package's `tools` folder to the target folder. No additional installation is required because it's xcopy-installable.
 
 ## Run the tool
 

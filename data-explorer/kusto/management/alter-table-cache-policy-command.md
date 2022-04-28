@@ -1,26 +1,23 @@
 ---
-title: .alter table cache policy command - Azure Data Explorer
-description: This article describes the .alter table cache policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: ".alter table cache policy command - Azure Data Explorer"
+description: "This article describes the .alter table cache policy command in Azure Data Explorer."
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/27/2021
+ms.date: 01/13/2022
 ---
 # .alter table cache policy
 
-Change the table cache policy. To speed up queries on data, Azure Data Explorer caches it on its processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority. 
+Change the table cache policy. To speed up queries, Azure Data Explorer caches data on its processing nodes, in SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe data so that important data can take priority.
 
 ## Syntax
 
-`.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `caching`
+`.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `caching` *PolicyParameters* 
 
 ## Arguments
 
-*DatabaseName* - Specify the name of the database.
-*TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
+- *DatabaseName* - Specify the name of the database.
+- *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
+- *PolicyParameters* - Define policy parameters, see also [cache policy](cachepolicy.md).
 
 ## Example
 
@@ -32,9 +29,9 @@ Set the caching policy to include the last 30 days.
 .alter table MyTable policy caching hot = 30d
 ```
 
-### Set the cache policy of table with additional hot-cache windows
+### Set the cache policy of table with extra hot-cache windows
 
-Set the caching policy to include the last 30 days and additional data from January and April 2021.
+Set the caching policy to include the last 30 days and extra data from January and April 2021.
 
 ```kusto
 .alter table MyTable policy caching 
@@ -45,7 +42,7 @@ Set the caching policy to include the last 30 days and additional data from Janu
 
 ### Set the caching policy for multiple tables 
 
-Set the caching policy for several tables to include last 30 days, an additional data from January, and April 2021.
+Set the caching policy for several tables to include the last 30 days, and data from January and April 2021.
 
 ```kusto
 .alter tables (MyTable1, MyTable2, MyTable3) policy caching 
@@ -54,7 +51,7 @@ Set the caching policy for several tables to include last 30 days, an additional
         hot_window = datetime(2021-04-01) .. datetime(2021-05-01)
 ```
 
-### Set the caching policy for multiple tables with additional hot-cache windows
+### Set the caching policy for multiple tables with extra hot-cache windows
 
 Set the caching policy for several tables to include the last 30 days.
 

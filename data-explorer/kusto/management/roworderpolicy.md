@@ -1,11 +1,7 @@
 ---
-title: Row order policy - Azure Data Explorer | Microsoft Docs
+title: Row order policy - Azure Data Explorer
 description: This article describes Row order policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/19/2020
 ---
@@ -32,4 +28,4 @@ process, and as more columns are added - the effective return diminishes.
 >   * In the scenarios mentioned above, it is recommended to set up to 2 sort keys in the policy.
 
 
-Control commands for managing Row Order policies can be found [here](../management/roworder-policy.md)
+Control commands for managing Row Order policies can be found [here](./show-table-row-order-policy-command.md)

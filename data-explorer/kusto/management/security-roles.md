@@ -1,11 +1,7 @@
 ---
 title: Security roles management - Azure Data Explorer
 description: This article describes security roles management in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/25/2021
 ---
@@ -64,8 +60,8 @@ permissions to perform this operation on the resource. This is called an
     |`users`     |Can view the securable object, and create new objects underneath it.|
     |`viewers`   |Can view the securable object.|
     |`unrestrictedviewers`|At the database level only, allows viewing of restricted tables (which are not exposed to "normal" `viewers` and `users`).|
-    |`ingestors` |At the database level only, allow data ingestion into all tables.|
-    |`monitors`  ||
+    |`ingestors` |At the database level only, allows data ingestion into all tables.|
+    |`monitors`  |At the specified scope (Database or AllDatabases) allows metadata (schemas, operations, permissiosn) view operations.|
 
 * *ListOfPrincipals* is an optional, comma-delimited list of security principal
   identifiers (values of type `string`).
@@ -125,6 +121,19 @@ Where:
 * *Description*, if provided, is text that will be associated with the change
   and retrieved by the corresponding `.show` command.
 
+### Example
+
+```kusto
+// No need to specify AAD tenant for UPN, as Kusto performs the resolution by itself
+.add database Test users ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
+
+// AAD SG on 'fabrikam.com' tenant
+.add database Test admins ('aadGroup=SGEmail@fabrikam.com')
+
+// OPTIONAL: AAD App on another tenant - by tenant guid
+.add database Test viewers ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
+```
+
 ## Managing table security roles
 
 `.set` `table` *TableName* *Role* `none` [`skip-results`]
@@ -158,13 +167,13 @@ Where:
 
 ```kusto
 // No need to specify AAD tenant for UPN, as Kusto performs the resolution by itself
-.add database Test users ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
+.add table TestTable admins ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
 
 // AAD SG on 'fabrikam.com' tenant
-.add database Test admins ('aadgroup=SGDisplayName;fabrikam.com') 'Test group @fabrikam.com (AAD)'
+.add table TestTable ingestors ('aadGroup=SGEmail@fabrikam.com')
 
-// AAD App on another tenant - by tenant guid
-.add database Test viewers ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
+// OPTIONAL: AAD App on another tenant - by tenant guid
+.add table TestTable ingestors ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
 ```
 
 ## Managing materialized view security roles

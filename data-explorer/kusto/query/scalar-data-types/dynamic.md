@@ -1,32 +1,23 @@
 ---
-title: The dynamic data type - Azure Data Explorer | Microsoft Docs
+title: The dynamic data type - Azure Data Explorer
 description: This article describes The dynamic data type in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/09/2020
-ms.localizationpriority: high 
 ---
 # The dynamic data type
 
-The `dynamic` scalar data type is special in that it can take on any value
-of other scalar data types from the list below, as well as arrays and property bags. Specifically,
-a `dynamic` value can be:
+The `dynamic` scalar data type is special in that it can take on any value  of other scalar data types from the list below, as well as arrays and property bags. Specifically, a `dynamic` value can be:
 
 * Null.
 * A value of any of the primitive scalar data types:
   `bool`, `datetime`, `guid`, `int`, `long`, `real`, `string`, and `timespan`.
-* An array of `dynamic` values, holding zero or more values with zero-based
-  indexing.
+* An array of `dynamic` values, holding zero or more values with zero-based   indexing.
 * A property bag that maps unique `string` values to `dynamic` values.
-  The property bag has zero or more such mappings (called "slots"),
-  indexed by the unique `string` values. The slots are unordered.
+  The property bag has zero or more such mappings (called "slots"), indexed by the unique `string` values. The slots are unordered.
 
 > [!NOTE]
-> * Values of type `dynamic` are limited to 1MB (2^20).
+> * Values of type `dynamic` are limited to 1MB (2^20), uncompressed.
 > * Although the `dynamic` type appears JSON-like, it can hold values that the JSON
 >   model does not represent because they don't exist in JSON (e.g.,
 >   `long`, `real`, `datetime`, `timespan`, and `guid`).
@@ -196,7 +187,7 @@ For a complete list of scalar dynamic/array functions, see [dynamic/array functi
 |[`array_length(`array`)`](../arraylengthfunction.md)| Null if it isn't an array
 |[`bag_keys(`bag`)`](../bagkeysfunction.md)| Enumerates all the root keys in a dynamic property-bag object.
 |[`bag_merge(`bag1,...,bagN`)`](../bag-merge-function.md)| Merges dynamic property-bags into a dynamic property-bag with all properties merged.
-|[`extract_json(`path,object`)`](../extractjsonfunction.md)|Uses path to navigate into object.
+|[`extractjson(`path,object`)`](../extractjsonfunction.md)|Uses path to navigate into object.
 |[`parse_json(`source`)`](../parsejsonfunction.md)| Turns a JSON string into a dynamic object.
 |[`range(`from,to,step`)`](../rangefunction.md)| An array of values
 |[`mv-expand` listColumn](../mvexpandoperator.md) | Replicates a row for each value in a list in a specified cell.
@@ -207,3 +198,9 @@ For a complete list of scalar dynamic/array functions, see [dynamic/array functi
 |[`summarize make_list_if(`column,predicate`)` ](../makelistif-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array (with predicate).
 |[`summarize make_list_with_nulls(`column`)` ](../make-list-with-nulls-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array, including null values.
 |[`summarize make_set(`column`)`](../makeset-aggfunction.md) | Flattens groups of rows and puts the values of the column in an array, without duplication.
+
+## Indexing for dynamic data
+
+Every field is indexed during data ingestion. The scope of the index is a single data shard. 
+
+To index dynamic columns, the ingestion process enumerates all “atomic” elements within the dynamic value (property names, values, array elements) and forwards them to the index builder. Otherwise, dynamic fields have the same inverted term index as string fields.

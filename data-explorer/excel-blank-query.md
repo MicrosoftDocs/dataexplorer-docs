@@ -1,10 +1,7 @@
 ---
 title: 'Visualize data using an Azure Data Explorer Kusto query imported into Microsoft Excel'
 description: 'In this article, you learn how to import an Azure Data Explorer Kusto query into Microsoft Excel.'
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: how-to
 ms.date: 08/30/2019
 

@@ -12,7 +12,7 @@ items:
 - name: Cross-cluster queries
   items:
   - name: Cross-cluster queries and schema changes
-    href: ../concepts/crossclusterandschemachanges.md
+    href: ../concepts/cross-cluster-and-schema-changes.md
   - name: Cross-database and cross-cluster queries
     href: cross-cluster-or-database-queries.md
 - name: Entities
@@ -89,6 +89,7 @@ items:
   - name: Set statement
     href: setstatement.md
   - name: Tabular expression statements
+    displayName: SQL views
     href: tabularexpressionstatements.md
   - name: Batches
     href: batches.md
@@ -107,51 +108,7 @@ items:
   - name: distinct operator
     href: distinctoperator.md
   - name: evaluate operator
-    items:
-    - name: evaluate operator plugins
-      href: evaluateoperator.md
-    - name: autocluster plugin
-      href: autoclusterplugin.md
-    - name: azure_digital_twins_query_request plugin
-      href: azure-digital-twins-query-request-plugin.md
-    - name: bag_unpack plugin
-      href: bag-unpackplugin.md
-    - name: basket plugin
-      href: basketplugin.md
-    - name: cosmosdb_sql_request plugin
-      href: cosmosdb-plugin.md
-    - name: dcount_intersect plugin
-      href: dcount-intersect-plugin.md
-    - name: diffpatterns plugin
-      href: diffpatternsplugin.md
-    - name: diffpatterns_text plugin
-      href: diffpatterns-textplugin.md
-    - name: infer_storage_schema plugin
-      href: inferstorageschemaplugin.md
-    - name: ipv4_lookup plugin
-      href: ipv4-lookup-plugin.md
-    - name: mysql_request plugin
-      href: mysqlrequest-plugin.md
-    - name: narrow plugin
-      href: narrowplugin.md
-    - name: pivot plugin
-      href: pivotplugin.md
-    - name: preview plugin
-      href: previewplugin.md
-    - name: python plugin
-      href: pythonplugin.md
-    - name: R plugin
-      href: rplugin.md
-    - name: rolling_percentile plugin
-      href: rolling-percentile-plugin.md
-    - name: rows_near plugin
-      href: rows-near-plugin.md  
-    - name: schema_merge plugin
-      href: schemamergeplugin.md
-    - name: sql_request plugin
-      href: sqlrequestplugin.md
-    - name: sequence_detect plugin
-      href: sequence-detect-plugin.md
+    href: evaluateoperator.md
   - name: extend operator
     href: extendoperator.md
   - name: externaldata operator
@@ -170,8 +127,6 @@ items:
     items:
     - name: join operator
       href: joinoperator.md
-    - name: Shuffle query
-      href: shufflequery.md
     - name: Cross-cluster join
       href: joincrosscluster.md
     - name: Broadcast join
@@ -182,8 +137,6 @@ items:
     href: limitoperator.md
   - name: lookup operator
     href: lookupoperator.md
-  - name: make-series operator
-    href: make-seriesoperator.md
   - name: mv-apply operator
     href: mv-applyoperator.md
   - name: mv-expand operator
@@ -224,6 +177,9 @@ items:
     href: searchoperator.md
   - name: serialize operator
     href: serializeoperator.md
+  - name: shuffle query
+    displayName: hint.shufflekey, hint.strategy, shufflekey, hint
+    href: shufflequery.md
   - name: sort operator
     href: sortoperator.md
   - name: summarize operator
@@ -232,8 +188,6 @@ items:
       href: summarizeoperator.md
     - name: Using hll() and tdigest()
       href: usinghlltdigest.md
-    - name: shuffle
-      href: shufflequery.md
   - name: take operator
     href: takeoperator.md
   - name: top operator
@@ -258,7 +212,7 @@ items:
     href: materializefunction.md
   - name: materialized_view()
     href: materialized-view-function.md
-  - name: Query results cache 
+  - name: Query results cache
     href: query-results-cache.md
   - name: table()
     href: tablefunction.md
@@ -266,18 +220,30 @@ items:
     href: toscalarfunction.md
 - name: Scalar operators
   items:
-  - name: Bitwise (binary) operators
+  - name: between operators  
+    items:  
+    - name: between operator 
+      href: betweenoperator.md
+    - name: "!between operator" 
+      href: notbetweenoperator.md
+  - name: Bitwise binary operators
     href: binoperators.md
   - name: Datetime/timespan arithmetic
     href: datetime-timespan-arithmetic.md
-  - name: Logical (binary) operators
+  - name: in operators  
+    items:
+    - name: in operator 
+      href: in-cs-operator.md
+    - name: in~ operator 
+      href: inoperator.md
+    - name: "!in operator"
+      href: not-in-cs-operator.md
+    - name: "!in~ operator" 
+      href: not-in-operator.md 
+  - name: Logical or binary operators
     href: logicaloperators.md
   - name: Numerical operators
     href: numoperators.md
-  - name: between operator 
-    href: betweenoperator.md
-  - name: not between (!between) operator 
-    href: notbetweenoperator.md
   - name: String operators
     items:
     - name: String operators overview
@@ -286,7 +252,7 @@ items:
       href: contains-operator.md
     - name: contains_cs operator
       href: contains-cs-operator.md
-    - name: "!contains operator" 
+    - name: "!contains operator"
       href: not-contains-operator.md
     - name: "!contains_cs operator" 
       href: not-contains-cs-operator.md 
@@ -298,10 +264,10 @@ items:
       href: not-endswith-operator.md
     - name: "!endswith_cs operator"
       href: not-endswith-cs-operator.md
-    - name: == (equals) operator 
+    - name: "== (equals) operator"
       displayName: equals
       href: equals-cs-operator.md
-    - name: =~ (equals) operator 
+    - name: "=~ (equals) operator" 
       href: equals-operator.md
     - name: "!= (not equals) operator"
       href: not-equals-cs-operator.md
@@ -337,7 +303,7 @@ items:
       href: has-anyoperator.md
     - name: in operator 
       href: in-cs-operator.md
-    - name: in~ operator 
+    - name: "in~ operator" 
       href: inoperator.md
     - name: "!in operator"
       href: not-in-cs-operator.md
@@ -356,6 +322,7 @@ items:
 - name: Scalar functions
   items:
   - name: Scalar function types
+    displayName: SQL stored procedures
     href: scalarfunctions.md
   - name: abs()
     href: abs-function.md
@@ -461,8 +428,6 @@ items:
     href: countoffunction.md
   - name: current_cluster_endpoint()
     href: current-cluster-endpoint-function.md
-  - name: current_cursor()
-    href: cursorcurrent.md
   - name: current_database()
     href: current-database-function.md
   - name: current_principal()
@@ -476,6 +441,7 @@ items:
   - name: cursor_before_or_at()
     href: cursorbeforeoratfunction.md
   - name: cursor_current()
+    displayName: current_cursor()
     href: cursorcurrent.md
   - name: datetime_add()
     href: datetime-addfunction.md
@@ -519,7 +485,7 @@ items:
     href: extractfunction.md
   - name: extract_all()
     href: extractallfunction.md
-  - name: extractjson()
+  - name: extract_json(), extractjson()
     href: extractjsonfunction.md
   - name: floor()
     href: floorfunction.md
@@ -567,6 +533,8 @@ items:
     href: sha1-hash-function.md
   - name: hash_sha256()
     href: sha256hashfunction.md
+  - name: hash_xxhash64()
+    href: hash-xxhash64-function.md
   - name: hll_merge()
     href: hllmergefunction.md
   - name: hourofday()
@@ -585,6 +553,8 @@ items:
     href: ipv4-comparefunction.md
   - name: ipv4_is_in_range()
     href: ipv4-is-in-range-function.md
+  - name: ipv4_is_in_any_range()
+    href: ipv4-is-in-any-range-function.md
   - name: ipv4_is_match()
     href: ipv4-is-matchfunction.md
   - name: ipv4_is_private()
@@ -613,6 +583,8 @@ items:
     href: isnullfunction.md
   - name: isutf8()
     href: isutf8.md
+  - name: jaccard_index()
+    href: jaccard-index-function.md
   - name: log()
     href: log-function.md
   - name: log10()
@@ -639,7 +611,7 @@ items:
     href: notfunction.md
   - name: now()
     href: nowfunction.md
-  - name: pack()
+  - name: bag_pack(), pack()
     href: packfunction.md
   - name: pack_all()
     href: packallfunction.md
@@ -893,133 +865,23 @@ items:
     href: varianceif-aggfunction.md
   - name: variancep()
     href: variancep-aggfunction.md
-- name: Window functions
-  items:
-  - name: Window functions overview
-    href: windowsfunctions.md
-  - name: next()
-    href: nextfunction.md
-  - name: prev()
-    href: prevfunction.md
-  - name: row_cumsum()
-    href: rowcumsumfunction.md
-  - name: row_number()
-    href: rownumberfunction.md
-  - name: row_rank()
-    href: rowrankfunction.md
-  - name: row_window_session()
-    href: row-window-session-function.md
-- name: Time series analysis
-  items:
-  - name: Time series analysis overview
-    href: machine-learning-and-tsa.md
-  - name: make-series operator
-    href: make-seriesoperator.md
-  - name: series_abs()
-    href: series-absfunction.md
-  - name: series_acos()
-    href: series-acosfunction.md  
-  - name: series_add()
-    href: series-addfunction.md
-  - name: series_asin()
-    href: series-asinfunction.md 
-  - name: series_atan()
-    href: series-atanfunction.md 
-  - name: series_cos()
-    href: series-cosfunction.md  
-  - name: series_decompose()
-    href: series-decomposefunction.md
-  - name: series_decompose_anomalies()
-    href: series-decompose-anomaliesfunction.md
-  - name: series_decompose_forecast()
-    href: series-decompose-forecastfunction.md
-  - name: series_divide()
-    href: series-dividefunction.md
-  - name: series_equals()
-    href: series-equalsfunction.md
-  - name: series_exp()
-    href: series-expfunction.md
-  - name: series_fft()
-    href: series-fft-function.md
-  - name: series_fill_backward()
-    href: series-fill-backwardfunction.md
-  - name: series_fill_const()
-    href: series-fill-constfunction.md
-  - name: series_fill_forward()
-    href: series-fill-forwardfunction.md
-  - name: series_fill_linear()
-    href: series-fill-linearfunction.md
-  - name: series_fir()
-    href: series-firfunction.md
-  - name: series_fit_2lines()
-    href: series-fit-2linesfunction.md
-  - name: series_fit_2lines_dynamic()
-    href: series-fit-2lines-dynamicfunction.md
-  - name: series_fit_line()
-    href: series-fit-linefunction.md
-  - name: series_fit_line_dynamic()
-    href: series-fit-line-dynamicfunction.md
-  - name: series_fit_poly()
-    href: series-fit-poly-function.md
-  - name: series_greater()
-    href: series-greaterfunction.md
-  - name: series_greater_equals()
-    href: series-greater-equalsfunction.md
-  - name: series_ifft()
-    href: series-ifft-function.md
-  - name: series_iir()
-    href: series-iirfunction.md
-  - name: series_less()
-    href: series-lessfunction.md
-  - name: series_less_equals()
-    href: series-less-equalsfunction.md
-  - name: series_multiply()
-    href: series-multiplyfunction.md
-  - name: series_not_equals()
-    href: series-not-equalsfunction.md
-  - name: series_outliers()
-    href: series-outliersfunction.md
-  - name: series_pearson_correlation()
-    href: series-pearson-correlationfunction.md
-  - name: series_periods_detect()
-    href: series-periods-detectfunction.md
-  - name: series_periods_validate()
-    href: series-periods-validatefunction.md
-  - name: series_pow()
-    href: series-powfunction.md  
-  - name: series_seasonal()
-    href: series-seasonalfunction.md
-  - name: series_sign()
-    href: series-signfunction.md
-  - name: series_sin()
-    href: series-sinfunction.md    
-  - name: series_stats()
-    href: series-statsfunction.md
-  - name: series_stats_dynamic()
-    href: series-stats-dynamicfunction.md
-  - name: series_subtract()
-    href: series-subtractfunction.md
-  - name: series_tan()
-    href: series-tanfunction.md   
-- name: Machine Learning
-  items:
-  - name: autocluster plugin
-    href: autoclusterplugin.md
-  - name: basket plugin
-    href: basketplugin.md
-  - name: diffpatterns plugin
-    href: diffpatternsplugin.md
-  - name: diffpatterns_text plugin
-    href: diffpatterns-textplugin.md
 - name: Geospatial
   items:
-  - name: Geospatial clustering overview 
+  - name: Geospatial clustering overview
     displayName: H3, S2, Geohash
     href: geospatial-grid-systems.md
   - name: geo_distance_2points()
     href: geo-distance-2points-function.md
   - name: geo_distance_point_to_line()
-    href: geo-distance-point-to-line-function.md   
+    href: geo-distance-point-to-line-function.md
+  - name: geo_distance_point_to_polygon()
+    href: geo-distance-point-to-polygon-function.md
+  - name: geo_intersects_2lines()
+    href: geo-intersects-2lines-function.md
+  - name: geo_intersects_2polygons()
+    href: geo-intersects-2polygons-function.md
+  - name: geo_intersects_line_with_polygon()
+    href: geo-intersects-line-with-polygon-function.md
   - name: geo_point_in_circle()
     href: geo-point-in-circle-function.md
   - name: geo_point_in_polygon()
@@ -1052,32 +914,260 @@ items:
     href: geo-h3cell-rings-function.md
   - name: geo_polygon_to_s2cells()
     href: geo-polygon-to-s2cells-function.md
+  - name: geo_line_centroid()
+    href: geo-line-centroid-function.md
   - name: geo_line_densify()
-    href: geo-line-densify-function.md 
+    href: geo-line-densify-function.md
+  - name: geo_line_length()
+    href: geo-line-length-function.md
+  - name: geo_line_simplify()
+    href: geo-line-simplify-function.md  
+  - name: geo_polygon_area()
+    href: geo-polygon-area-function.md
+  - name: geo_polygon_centroid()
+    href: geo-polygon-centroid-function.md
   - name: geo_polygon_densify()
     href: geo-polygon-densify-function.md
-- name: User analytics
+  - name: geo_polygon_perimeter()
+    href: geo-polygon-perimeter-function.md
+  - name: geo_union_lines_array()
+    href: geo-union-lines-array-function.md
+  - name: geo_union_polygons_array()
+    href: geo-union-polygons-array-function.md
+- name: Time series analysis
   items:
-  - name: User analytics plugins overview
-    href: useranalytics.md
-  - name: active_users_count plugin
-    href: active-users-count-plugin.md
-  - name: activity_counts_metrics plugin
-    href: activity-counts-metrics-plugin.md
-  - name: activity_engagement plugin
-    href: activity-engagement-plugin.md
-  - name: activity_metrics plugin
-    href: activity-metrics-plugin.md
-  - name: new_activity_metrics plugin
-    href: new-activity-metrics-plugin.md
-  - name: funnel_sequence_completion plugin
-    href: funnel-sequence-completion-plugin.md
-  - name: funnel_sequence plugin
-    href: funnel-sequence-plugin.md
-  - name: session_count plugin
-    href: session-count-plugin.md
-  - name: sliding_window_counts plugin
-    href: sliding-window-counts-plugin.md
+  - name: Time series analysis overview
+    href: machine-learning-and-tsa.md
+  - name: make-series operator
+    href: make-seriesoperator.md
+  - name: series_abs()
+    displayName: element-wise, elementwise
+    href: series-absfunction.md
+  - name: series_acos()
+    displayName: element-wise, elementwise
+    href: series-acosfunction.md  
+  - name: series_add()
+    displayName: element-wise, elementwise
+    href: series-addfunction.md
+  - name: series_asin()
+    displayName: element-wise, elementwise
+    href: series-asinfunction.md 
+  - name: series_atan()
+    displayName: element-wise, elementwise
+    href: series-atanfunction.md 
+  - name: series_cos()
+    displayName: element-wise, elementwise
+    href: series-cosfunction.md  
+  - name: series_decompose()
+    displayName: seasonal, trend, baseline
+    href: series-decomposefunction.md
+  - name: series_decompose_anomalies()
+    displayName: seasonal, trend, baseline
+    href: series-decompose-anomaliesfunction.md
+  - name: series_decompose_forecast()
+    displayName: seasonal, trend, baseline
+    href: series-decompose-forecastfunction.md
+  - name: series_divide()
+    displayName: element-wise, elementwise
+    href: series-dividefunction.md
+  - name: series_equals()
+    displayName: element-wise, elementwise
+    href: series-equalsfunction.md
+  - name: series_exp()
+    displayName: element-wise, elementwise
+    href: series-expfunction.md
+  - name: series_fft()
+    displayName: spectral, frequency, seasonality, transform, Fourier
+    href: series-fft-function.md
+  - name: series_fill_backward()
+    displayName: missing values
+    href: series-fill-backwardfunction.md
+  - name: series_fill_const()
+    displayName: missing values
+    href: series-fill-constfunction.md
+  - name: series_fill_forward()
+    displayName: missing values
+    href: series-fill-forwardfunction.md
+  - name: series_fill_linear()
+    displayName: missing values
+    href: series-fill-linearfunction.md
+  - name: series_fir()
+    displayName: filter, finite impulse response
+    href: series-firfunction.md
+  - name: series_fit_2lines()
+    displayName: regression
+    href: series-fit-2linesfunction.md
+  - name: series_fit_2lines_dynamic()
+    displayName: regression
+    href: series-fit-2lines-dynamicfunction.md
+  - name: series_fit_line()
+    displayName: regression
+    href: series-fit-linefunction.md
+  - name: series_fit_line_dynamic()
+    displayName: regression
+    href: series-fit-line-dynamicfunction.md
+  - name: series_fit_poly()
+    displayName: regression, polynomial
+    href: series-fit-poly-function.md
+  - name: series_greater()
+    displayName: element-wise, elementwise
+    href: series-greaterfunction.md
+  - name: series_greater_equals()
+    displayName: element-wise, elementwise
+    href: series-greater-equalsfunction.md
+  - name: series_ifft()
+    displayName: spectral, frequency, seasonality, transform, Fourier
+    href: series-ifft-function.md
+  - name: series_iir()
+    displayName: filter, infinite impulse response
+    href: series-iirfunction.md
+  - name: series_less()
+    displayName: element-wise, elementwise
+    href: series-lessfunction.md
+  - name: series_less_equals()
+    displayName: element-wise, elementwise
+    href: series-less-equalsfunction.md
+  - name: series_multiply()
+    displayName: element-wise, elementwise
+    href: series-multiplyfunction.md
+  - name: series_not_equals()
+    displayName: element-wise, elementwise
+    href: series-not-equalsfunction.md
+  - name: series_outliers()
+    displayName: anomaly detection, Tukey
+    href: series-outliersfunction.md
+  - name: series_pearson_correlation()
+    href: series-pearson-correlationfunction.md
+  - name: series_periods_detect()
+    displayName: spectral, fft, frequency, seasonality
+    href: series-periods-detectfunction.md
+  - name: series_periods_validate()
+    displayName: spectral, fft, frequency, seasonality
+    href: series-periods-validatefunction.md
+  - name: series_pow()
+    displayName: element-wise, elementwise
+    href: series-powfunction.md  
+  - name: series_seasonal()
+    displayName: periods
+    href: series-seasonalfunction.md
+  - name: series_sign()
+    displayName: element-wise, elementwise
+    href: series-signfunction.md
+  - name: series_sin()
+    displayName: element-wise, elementwise
+    href: series-sinfunction.md    
+  - name: series_stats()
+    displayName: statistics, average, standard deviation, variance
+    href: series-statsfunction.md
+  - name: series_stats_dynamic()
+    displayName: statistics, average, standard deviation, variance
+    href: series-stats-dynamicfunction.md
+  - name: series_subtract()
+    displayName: element-wise, elementwise
+    href: series-subtractfunction.md
+  - name: series_tan()
+    displayName: element-wise, elementwise
+    href: series-tanfunction.md   
+- name: Plugins
+  items:
+  - name: General plugins
+    items:
+    - name: dcount_intersect plugin
+      href: dcount-intersect-plugin.md
+    - name: infer_storage_schema plugin
+      href: inferstorageschemaplugin.md
+    - name: ipv4_lookup plugin
+      href: ipv4-lookup-plugin.md
+    - name: preview plugin
+      href: previewplugin.md
+    - name: schema_merge plugin
+      href: schemamergeplugin.md
+  - name: Data reshaping plugins
+    items:
+    - name: bag_unpack plugin
+      href: bag-unpackplugin.md 
+    - name: narrow plugin
+      href: narrowplugin.md
+    - name: pivot plugin
+      href: pivotplugin.md 
+  - name: Language plugins
+    items:
+    - name: python plugin
+      href: pythonplugin.md
+    - name: r plugin
+      href: rplugin.md
+  - name: Machine learning plugins
+    items:
+    - name: autocluster plugin
+      displayName: clustering, diagnostics, RCA, root cause
+      href: autoclusterplugin.md
+    - name: basket plugin
+      displayName: clustering, diagnostics, RCA, root cause
+      href: basketplugin.md
+    - name: diffpatterns plugin
+      displayName: clustering, diagnostics, RCA, root cause
+      href: diffpatternsplugin.md
+    - name: diffpatterns_text plugin
+      displayName: clustering, diagnostics, RCA, root cause
+      href: diffpatterns-textplugin.md
+  - name: Query connectivity plugins
+    items:
+    - name: azure_digital_twins_query_request plugin
+      href: azure-digital-twins-query-request-plugin.md
+    - name: cosmosdb_sql_request plugin
+      href: cosmosdb-plugin.md
+    - name: http_request plugin
+      href: http-request-plugin.md
+    - name: http_request_post plugin
+      href: http-request-plugin.md
+    - name: mysql_request plugin
+      href: mysqlrequest-plugin.md
+    - name: sql_request plugin
+      href: sqlrequestplugin.md
+  - name: User and sequence analytics plugins
+    items:
+    - name: User analytics plugins overview
+      href: useranalytics.md
+    - name: active_users_count plugin
+      href: active-users-count-plugin.md
+    - name: activity_counts_metrics plugin
+      href: activity-counts-metrics-plugin.md
+    - name: activity_engagement plugin
+      href: activity-engagement-plugin.md
+    - name: activity_metrics plugin
+      href: activity-metrics-plugin.md
+    - name: new_activity_metrics plugin
+      href: new-activity-metrics-plugin.md
+    - name: funnel_sequence_completion plugin
+      href: funnel-sequence-completion-plugin.md
+    - name: funnel_sequence plugin
+      href: funnel-sequence-plugin.md
+    - name: rolling_percentile plugin
+      href: rolling-percentile-plugin.md
+    - name: rows_near plugin
+      href: rows-near-plugin.md  
+    - name: sequence_detect plugin
+      href: sequence-detect-plugin.md
+    - name: session_count plugin
+      href: session-count-plugin.md
+    - name: sliding_window_counts plugin
+      href: sliding-window-counts-plugin.md
+- name: Window functions
+  items:
+  - name: Window functions overview
+    href: windowsfunctions.md
+  - name: next()
+    href: nextfunction.md
+  - name: prev()
+    href: prevfunction.md
+  - name: row_cumsum()
+    href: rowcumsumfunction.md
+  - name: row_number()
+    href: rownumberfunction.md
+  - name: row_rank()
+    href: rowrankfunction.md
+  - name: row_window_session()
+    href: row-window-session-function.md
 - name: Limits and Errors
   items:
   - name: Query consistency
@@ -1099,7 +1189,10 @@ items:
     href: re2.md
   - name: RE2 library
     href: re2-library.md
+  - name: JSONPath syntax
+    href: jsonpath.md
   - name: SQL to Kusto cheat sheet
+    displayName: Kusto
     href: sqlcheatsheet.md
   - name: Splunk to Kusto cheat sheet
     href: splunk-cheat-sheet.md

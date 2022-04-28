@@ -1,11 +1,7 @@
 ---
-title: Data sharding policy - Azure Data Explorer | Microsoft Docs
+title: Data sharding policy - Azure Data Explorer
 description: This article describes Data sharding policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/19/2020
 ---
@@ -15,7 +11,7 @@ The sharding policy defines if and how [Extents (data shards)](../management/ext
 
 > [!NOTE]
 > The policy applies to all operations that create new extents,
-> such as commands for [data ingestion](../../ingest-data-overview.md#kusto-query-language-ingest-control-commands), and
+> such as commands for [data ingestion](../../ingest-data-overview.md#ingest-control-commands), and
 > [extent merge operations](extents-overview.md)
 
 The data sharding policy contains the following properties:
@@ -40,4 +36,4 @@ The data sharding policy contains the following properties:
 
 When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
 
-Use the [sharding policy control commands](../management/sharding-policy.md) to manage data sharding policies for databases and tables.
+Use the [sharding policy control commands](./show-table-sharding-policy-command.md) to manage data sharding policies for databases and tables.

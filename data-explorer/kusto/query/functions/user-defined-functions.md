@@ -1,14 +1,9 @@
 ---
 title: User-defined functions - Azure Data Explorer
 description: This article describes user-defined functions (scalar and views) in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 11/17/2021
-ms.localizationpriority: high
 ---
 # User-defined functions
 
@@ -64,12 +59,12 @@ For tabular arguments, *ArgType* has the same syntax as the table definition (pa
 
 For example:
 
-|Syntax                        |Input arguments list description                                 |
-|------------------------------|-----------------------------------------------------------------|
-|`()`                          |No arguments|
-|`(s:string)`                  |Single scalar argument called `s` taking a value of type `string`|
-|`(a:long, b:bool=true)`       |Two scalar arguments, the second of which has a default value    |
-|`(T1:(*), T2(r:real), b:bool)`|Three arguments (two tabular arguments and one scalar argument)  |
+|Syntax                         |Input arguments list description                                 |
+|-------------------------------|-----------------------------------------------------------------|
+|`()`                           |No arguments                                                     |
+|`(s:string)`                   |Single scalar argument called `s` taking a value of type `string`|
+|`(a:long, b:bool=true)`        |Two scalar arguments, the second of which has a default value    |
+|`(T1:(*), T2:(r:real), b:bool)`|Three arguments (two tabular arguments and one scalar argument)  |
 
 > [!NOTE]
 > When using both tabular input arguments and scalar input arguments, put all tabular input arguments before the scalar input arguments.
@@ -151,6 +146,7 @@ The function **body** includes:
 
 > [!NOTE]
 > Other kinds of [query statements](../statements.md) that are supported at the query "top level" aren't supported inside a function body.
+> Any two statements must be separated by a semicolon.
 
 ### Examples of user-defined functions
 

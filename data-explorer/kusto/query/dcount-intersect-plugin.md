@@ -1,17 +1,13 @@
 ---
 title: dcount_intersect plugin - Azure Data Explorer
 description: This article describes dcount_intersect plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/24/2022
 ---
 # dcount_intersect plugin
 
-Calculates intersection between N sets based on `hll` values (N in range of [2..16]), and returns N `dcount` values.
+Calculates intersection between N sets based on `hll` values (N in range of [2..16]), and returns N `dcount` values. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 Given sets S<sub>1</sub>, S<sub>2</sub>, .. S<sub>n</sub> - returns values will be representing distinct counts of:  
 S<sub>1</sub>,  

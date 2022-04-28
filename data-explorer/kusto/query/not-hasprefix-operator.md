@@ -1,18 +1,13 @@
 ---
-title: The case-insensitive !hasprefix string operator - Azure Data Explorer
-description: This article describes the case-insensitive !hasprefix operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: "The case-insensitive !hasprefix string operator - Azure Data Explorer"
+description: "This article describes the case-insensitive !hasprefix operator in Azure Data Explorer."
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/01/2021
-ms.localizationpriority: high
+ms.date: 12/21/2021
 ---
 # !hasprefix operators
 
-Filters a record set for data that does not have a case-insensitive starting string.
+Filters a record set for data that does not include a case-insensitive starting string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
 The following table provides a comparison of the `hasprefix` operators:
 
@@ -29,7 +24,7 @@ The following table provides a comparison of the `hasprefix` operators:
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
 
 Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
@@ -46,13 +41,13 @@ For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 
-*T* `|` `where` *col* `!hasprefix` `(`*expression*`)`   
+*T* `|` `where` *Column* `!hasprefix` `(`*Expression*`)`   
 
 ## Arguments
 
 * *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
+* *Column* - The column to filter.
+* *Expression* - Scalar or literal expression.
 
 ## Returns
 

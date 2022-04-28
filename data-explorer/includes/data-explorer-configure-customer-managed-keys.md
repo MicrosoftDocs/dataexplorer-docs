@@ -1,9 +1,6 @@
 ---
-author: orspod
-ms.service: data-explorer
 ms.topic: include
 ms.date: 01/07/2020
-ms.author: orspodek
 ---
 
 Azure Data Explorer encrypts all data in a storage account at rest. By default, data is encrypted with Microsoft-managed keys. For additional control over encryption keys, you can supply customer-managed keys to use for data encryption. 
@@ -21,4 +18,4 @@ To configure customer-managed keys with Azure Data Explorer, you must [set two p
 
 ## Assign an identity to the cluster
 
-To enable customer-managed keys for your cluster, first assign either a system-assigned or user-assigned managed identity to the cluster. You'll use this managed identity to grant the cluster permissions to access the key vault. To configure managed identities, see [managed identities](../managed-identities.md).
+To enable customer-managed keys for your cluster, first assign either a system-assigned or user-assigned managed identity to the cluster. You'll use this managed identity to grant the cluster permissions to access the key vault. To configure managed identities, see [managed identities](../configure-managed-identities-cluster.md).

@@ -1,12 +1,9 @@
 ---
 title: 'Ingest data using the Azure Data Explorer Node library'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Node.js.
-author: orspod
-ms.author: orspodek
 ms.reviewer: mblythe
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 06/03/2019
+ms.date: 02/07/2022
 
 # Customer intent: As a Node.js developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
@@ -20,7 +17,7 @@ ms.date: 06/03/2019
 > * [Go](go-ingest-data.md)
 > * [Java](java-ingest-data.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides two client libraries for Node: an [ingest library](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) and [a data library](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). These libraries enable you to ingest (load) data into a cluster and query data from your code. In this article, you first create a table and data mapping in a test cluster. You then queue ingestion to the cluster and validate the results.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides two client libraries for Node: an [ingest library](https://github.com/Azure/azure-kusto-node/tree/master/packages/azure-kusto-ingest) and [a data library](https://github.com/Azure/azure-kusto-node/tree/master/packages/azure-kusto-data). These libraries enable you to ingest (load) data into a cluster and query data from your code. In this article, you first create a table and data mapping in a test cluster. You then queue ingestion to the cluster and validate the results.
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 
@@ -82,12 +79,12 @@ const destTableMapping = "StormEvents_CSV_Mapping";
 
 ## Set source file information
 
-Import additional classes and set constants for the data source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
+Import additional classes and set constants for the data source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncei.noaa.gov/).
 
 ```javascript
 const container = "samplefiles";
-const account = "kustosamplefiles";
-const sas = "?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
+const account = "kustosamples";
+const sas = "";  // If relevant add SAS token
 const filePath = "StormEvents.csv";
 const blobPath = `https://${account}.blob.core.windows.net/${container}/${filePath}${sas}`;
 ```
