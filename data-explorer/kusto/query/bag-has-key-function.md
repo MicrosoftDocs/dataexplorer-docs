@@ -20,7 +20,7 @@ Checks whether a dynamic bag column contains a given key.
 
 ## Returns
 
-`True` or `false` whether the key exists in the column.
+Indicates whether the key exists in the bag.
 
 ## Example
 
