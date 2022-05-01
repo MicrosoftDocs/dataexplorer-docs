@@ -56,7 +56,7 @@ Here you create Azure Data Explorer output connection to the Azure Stream Analyt
 
 1. Enter the required information into the outdata connection.
 
-    :::image type="content" source="media/stream-analytics-connector/stream-analytics-new-output.png" alt-text="Screenshot of New output dialog box. Output Alias, Subscription, Cluster, Database, and Table fields are highlighted.":::
+    :::image type="content" source="media/stream-analytics-connector/stream-analytics-new-output.png" alt-text="Screenshot of New output dialog box, showing required property information.":::
 
 The following table lists the property names and their description for creating an Azure Data Explorer output:
 
@@ -203,7 +203,7 @@ If you don't plan to use your Azure Stream Analytics job and Azure Data Explorer
 1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group you created.
     If the left menu is collapsed, select :::image type="icon" source="media/stream-analytics-connector/rt arrow icon.png" border="false"::: to expand it.
 
-    :::image type="content" source="media/stream-analytics-connector/stream-analystics-resource-group-menu.png" alt-text="Screenshot of Resource group menu with Resource groups tag,  arrow, and Name dialog box highlighted.":::
+    :::image type="content" source="media/stream-analytics-connector/stream-analystics-resource-group-menu.png" alt-text="Screenshot of Resource group menu, showing how to delete resource group.":::
 
 1. Under **test-resource-group**, select **Delete resource group**.
 1. In the new window, type the name of the resource group to delete it, and then select **Delete**.
