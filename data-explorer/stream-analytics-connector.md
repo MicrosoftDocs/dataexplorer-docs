@@ -203,7 +203,7 @@ If you don't plan to use your Azure Stream Analytics job and Azure Data Explorer
 1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group you created.
     If the left menu is collapsed, select :::image type="icon" source="media/stream-analytics-connector/rt arrow icon.png" border="false"::: to expand it.
 
-    :::image type="content" source="media/stream-analytics-connector/stream-analystics-resource-group-menu.png" alt-text="Screenshot of Resource group menu, showing how to delete resource group.":::
+    :::image type="content" source="media/stream-analytics-connector/stream-analytics-resource-group-menu.png" alt-text="Screenshot of Resource group menu, showing how to delete resource group.":::
 
 1. Under **test-resource-group**, select **Delete resource group**.
 1. In the new window, type the name of the resource group to delete it, and then select **Delete**.
@@ -234,5 +234,3 @@ Write-Host "Press [ENTER] to continue ..."
 ## Next steps
 
 * [Query data in Azure Data Explorer](web-query-data.md)
-
-## Feedback
