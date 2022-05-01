@@ -26,7 +26,7 @@ T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), 
 | *TimelineColumn* | string | &check; | The name of the column that represents the timeline. |
 | *Start* | datetime | &check; | Scalar with value of the analysis start period. |
 | *End* | datetime | &check; | Scalar with value of the analysis end period. |
-| *Window* | number in days | &check; | Scalar with value of the analysis window period. Can be either a numeric/datetime/timestamp value, or a string that is one of `week`/`month`/`year`, in which case all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md) or [startofyear](startofyearfunction.md). |
+| *Window* | decimal/datetime/timespan | &check; | Scalar with value of the analysis window period. Can be either a numeric/datetime/timestamp value, or a string that is one of `week`/`month`/`year`, in which case all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md) or [startofyear](startofyearfunction.md). |
 |  *dim1*, *dim2*, ... | tabular |   | list of the dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
