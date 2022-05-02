@@ -28,7 +28,7 @@ The following list shows the basic batching policy triggers to seal a batch. A b
 * `Count`: Batch file number limit reached
 * `Time`: Batching time has expired
 
-The `IngestionBatching` policy can be set on databases or tables. Default values are as follows: **5 minutes** maximum delay time, **1000** items, total size of **1G**.
+The `IngestionBatching` policy can be set on databases or tables. Default values are as follows: **5 minutes** maximum delay time, **1000** items, total size of **1 GB**.
 
 > [!IMPORTANT]
 > The impact of setting this policy to very small values is
@@ -46,6 +46,14 @@ The following list shows conditions to seal batches related to single blob inges
 * `SingleBlob_SizeUnknown`: Ingest a single blob because blob size is unknown
 
 If the `SystemFlush` condition is set, a batch will be sealed when a system flush is triggered. With the `SystemFlush` parameter set, the system flushes the data, for example due to cluster scaling or internal reset of system components.
+
+## Defaults and limits
+
+| Type             | Property                | Default    | Minimum    |
+|------------------|-------------------------|------------|------------|
+| Number of items  | MaximumNumberOfItems    | 500        | 1          |
+| Data size (MB)   | MaximumRawDataSizeMB    | 1024       | 100        |
+| Time             | MaximumBatchingTimeSpan | 5 minutes  | 10 seconds |
 
 ## Batch data size
 

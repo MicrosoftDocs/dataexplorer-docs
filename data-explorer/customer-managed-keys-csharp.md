@@ -47,7 +47,7 @@ By default, Azure Data Explorer encryption uses Microsoft-managed keys. Configur
     ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
     var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-    var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+    var clientSecret = "PlaceholderClientSecret";//Client Secret
     var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
     var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
     var credential = new ClientCredential(clientId, clientSecret);
@@ -87,5 +87,5 @@ When you create a new version of a key, you'll need to update the cluster to use
 
 * [Secure Azure Data Explorer clusters in Azure](security.md)
 * [Configure managed identities for your Azure Data Explorer cluster](./configure-managed-identities-cluster.md)
-* [Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal](cluster-disk-encryption.md) by enabling encryption at rest.
+* [Secure your cluster using Disk Encryption in Azure Data Explorer - Azure portal](./cluster-encryption-disk.md) by enabling encryption at rest.
 * [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md)
