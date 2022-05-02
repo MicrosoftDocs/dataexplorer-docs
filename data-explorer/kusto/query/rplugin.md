@@ -181,17 +181,17 @@ The example snips below assume local R machine on Windows environment.
 
 1. Verify that new folders were added to "C:\brglm2":
 
-:::image type="content" source="images/plugin/sample-directory.png" alt-text="brglm2 directory content" border="false":::
+    :::image type="content" source="images/plugin/sample-directory.png" alt-text="Screenshot of library directory content.":::
 
 8. Select all items in that folder and zip them to e.g. libs.zip (do not zip the parent folder). You should get an archive structure like this:
 
 
-libs.zip:
+    libs.zip:
 
-- brglm2 (folder)
-- enrichwith (folder)
-- numDeriv (folder)
-
+    - brglm2 (folder)
+    - enrichwith (folder)
+    - numDeriv (folder)
+    
 9. Upload libs.zip to the blob container that was set above
 
 1. Call the `r` plugin.
@@ -217,7 +217,7 @@ print x=1
 |---|---------|
 |  1| 1.8.2   |
 
-Note that the archive name (first value in pack pair) should have the *.zip suffix to prevent collisions when unzipping folders whose name is identical to the archive name.
+Make sure that the archive's name (first value in pack pair) has the *.zip suffix to prevent collisions when unzipping folders whose name is identical to the archive name.
 
 ---
 
