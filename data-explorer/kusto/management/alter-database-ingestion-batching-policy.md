@@ -7,22 +7,12 @@ ms.date: 01/06/2022
 ---
 # .alter database ingestion batching policy
 
-Set the [ingestion batching policy](batchingpolicy.md) to determine when data aggregation stops and a batch is sealed and ingested. The policy applies at the database or table level.
+Set the [ingestion batching policy](batchingpolicy.md) to determine when data aggregation stops and a batch is sealed and ingested. 
 
-If the policy is set to `null`, default values are used. Default values are:
+When setting the policy for a database, it applies for all its tables, except tables that were set with their own IngestionBatching policy. If the policy is not set for a database, the [default values](batchingpolicy.md#defaults-and-limits) apply.
 
-* Batch time of 5 minutes
-* 1000 items
-* Total size of 1 GB
-* Or default cluster settings
-
-## Ingestion batching limits
-
-| Type | Default | Minimum | Maximum
-|---|---|---|---|
-| Number of items | 1000 | 1 | 2000 |
-| Data size (MB) | 1000 | 100 | 1000 |
-| Time | 5 minutes | 10 seconds | 15 minutes |
+## Defaults and limits
+See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 
 ## Syntax
 
