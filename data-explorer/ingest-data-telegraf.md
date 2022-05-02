@@ -33,7 +33,7 @@ The plugin supports the following authentication methods:
 
 * Azure Managed Service Identity (MSI) token
 
-    * This is the preferred authentication method if you're running Telegraf in an Azure Virtual Machine (VM).
+    * This is the preferred authentication method if you're running Telegraf in a supporting Azure environment, such as Azure Virtual Machines.
 
 Whichever method you use, the designated principal must be assigned the *Database User* role in Azure Data Explorer. This role allows the plugin to create the tables required for ingesting data. If the plugin is configured with `create_tables=false`, the designated principal must at least have the *Database Ingestor* role.
 
