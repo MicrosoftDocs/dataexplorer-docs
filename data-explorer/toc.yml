@@ -344,6 +344,8 @@ items:
         href: configure-managed-identities-cluster.md
       - name: Authenticate external tables with managed identities 
         href: external-tables-managed-identities.md
+      - name: Ingest data using managed identity authentication
+        href: ingest-data-managed-identity.md
     - name: Configure customer-managed-keys
       items:
         - name: Portal
