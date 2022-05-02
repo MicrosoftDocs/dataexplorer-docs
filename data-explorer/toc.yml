@@ -217,6 +217,9 @@ items:
     - name: Kafka
       displayName: ingest data, ingestion
       href: ingest-data-kafka.md
+    - name: Telegraf
+      displayName: ingest data, ingestion
+      href: ingest-data-telegraf.md
     - name: Logstash
       displayName: ingest data, ingestion
       href: ingest-data-logstash.md
@@ -465,6 +468,8 @@ items:
         href: kusto/tools/logicapps.md
     - name: Cosmos DB
       href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
+    - name: Telegraf
+      href: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
     - name: Apache Spark Connector
       href: spark-connector.md
       displayName: databricks
