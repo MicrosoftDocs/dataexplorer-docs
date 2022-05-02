@@ -1,67 +1,30 @@
 ---
-title: Azure Data Explorer connector to Power Automate (Preview) 
+title: Azure Data Explorer connector to Power Automate 
 description: Learn about using Azure Data Explorer connector to Power Automate to create flows of automatically scheduled or triggered tasks.
-ms.reviewer: dorcohen
+ms.reviewer: miwalia
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 05/02/2022
 ---
 
-# Azure Data Explorer connector to :::no-loc text="Power Automate"::: (Preview)
+# Azure Data Explorer connector to Power Automate
 
-The Azure Data Explorer :::no-loc text="Power Automate"::: (previously Microsoft Flow) connector allows Azure Data Explorer to use the flow capabilities of [Microsoft :::no-loc text="Power Automate":::](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task.
+The Azure Data Explorer (previously called as Microsoft Flow) connector allows Azure Data Explorer to use the flow capabilities of [Microsoft Power Automate](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task.
 
 You can:
 
-* Send daily reports containing tables and charts.
-* Set notifications based on query results.
-* Schedule control commands on clusters.
+* Send notifications and alerts based on query results e.g. if thresholds go beyond certain limits.
+* Send regular(e.g. daily, weekly) reports containing tables and charts.
+* Schedule regular jobs using control commands on clusters e.g. copy data from one table to another using .set-or-append command.
 * Export and import data between Azure Data Explorer and other databases. 
 
-For more information, see [Azure Data Explorer :::no-loc text="Power Automate"::: connector usage examples](flow-usage.md).
+For more information, see [Azure Data Explorer Power Automate connector usage examples](flow-usage.md).
 
-##  Sign in 
+## Find the Azure Data Explorer connector
 
-1. When you connect for the first time, you're prompted to sign in.
-
-1. Select **Sign in**, and enter your credentials.
-
-![Screenshot of Azure Data Explorer Sign in prompt.](./media/flow/flow-signin.png)
-
-## Authentication
-
-You can authenticate with user credentials, or with an Azure Active Directory (Azure AD) application.
-
-> [!Note]
-> Make sure your application is an [Azure AD application](./provision-azure-ad-app.md), and is authorized to run queries on your cluster.
-
-1. In **Run control command and visualize results**, select the three dots at the top right of the flow connector.
-
-   ![Screenshot of Run control command and visualize results.](./media/flow/flow-addconnection.png)
-
-1. Select **Add new connection** > **Connect with Service Principal**.
-
-   ![Screenshot of Azure Data Explorer Sign in prompt, with Connect with Service Principal option.](./media/flow/flow-signin.png)
-
-1. Enter the required information:
-   - Connection Name: A descriptive and meaningful name for the new connection.
-   - Client ID: Your application ID.
-   - Client Secret: Your application key.
-   - Tenant: The ID of the Azure AD directory in which you created the application.
-
-   ![Screenshot of Azure Data Explorer application authentication dialog box.](./media/flow/flow-appauth.png)
-
-When authentication is complete, you'll see that your flow uses the newly added connection.
-
-![Screenshot of completed application authentication.](./media/flow/flow-appauthcomplete.png)
-
-From now on, this flow will run by using these application credentials.
-
-## Find the Azure Kusto connector
-
-To use the :::no-loc text="Power Automate"::: connector, you need to first add a trigger. 
+To use the Power Automate connector, you need to first add a trigger. 
 You can define a trigger based on a recurring time period, or as a response to a previous flow action.
 
-1. [Create a new flow](https://flow.microsoft.com/manage/flows/new), or, from the Microsoft :::no-loc text="Power Automate"::: home page, select the **My flows** > **+ New**.
+1. [Create a new flow](https://flow.microsoft.com/manage/flows/new), or, from the Microsoft Power Automate home page, select the **My flows** > **+ New**.
 
     ![Screenshot of the Microsoft Power Automate home page, with My flows and New highlighted.](./media/flow/flow-newflow.png)
 
@@ -74,19 +37,66 @@ You can define a trigger based on a recurring time period, or as a response to a
     ![Screenshot of Build a scheduled flow page, with Flow name options highlighted.](./media/flow/flow-build-scheduled-flow.png)
 
 1. Select **Create** > **+ New step**.
-1. In the search box, enter *Kusto*, and select **Azure Data Explorer**.
+1. In the search box, enter *Kusto* or *Azure Data Explorer*, and select **Azure Data Explorer**.
 
     ![Screenshot of Choose an action options, with search box and Azure Data Explorer highlighted.](./media/flow/flow-actions.png)
+	
+	
+# Create Azure Data Explorer connection
+To get started, first create a connection to Azure Data Explorer either from "Connections" menu or by following these steps -
+
+
+## Authentication
+
+You can authenticate with user credentials, or with an Azure Active Directory (Azure AD) application.
+
+> [!Note]
+> Make sure your application is an [Azure AD application](./provision-azure-ad-app.md), and is authorized to run queries on your cluster.
+
+
+1. In **Run KQL query**, select the three dots at the top right of the power automate connector.
+
+   ![Screenshot of Run KQL query.](./media/flow/flow-addconnection.png)
+
+1. Select **Add new connection** > You get two options 
+
+
+## Sign in
+
+1. When you connect for the first time, you're prompted to sign in.
+
+1. Select **Sign in**, and enter your credentials.
+
+![Screenshot of Azure Data Explorer Sign in prompt.](./media/flow/flow-signin.png)
+
+## Connect with Service Principal
+
+![Screenshot of Azure Data Explorer Sign in prompt, with Connect with Service Principal option.](./media/flow/flow-signin.png)
+
+1. Enter the required information:
+   - Connection Name: A descriptive and meaningful name for the new connection.
+   - Client ID: Your application ID.
+   - Client Secret: Your application key.
+   - Tenant: The ID of the Azure AD directory in which you created the application.
+
+![Screenshot of Azure Data Explorer application authentication dialog box.](./media/flow/flow-appauth.png)
+
+When authentication is complete, you'll see that your flow uses the newly added connection.
+
+![Screenshot of completed application authentication.](./media/flow/flow-appauthcomplete.png)
+
+From now on, this flow will run by using these application credentials.
+
 
 ## Flow actions
 
-When you open the Azure Data Explorer connector, there are three possible actions you can add to your flow. This section describes the capabilities and parameters for each action.
+When you open the Azure Data Explorer connector, there are five possible actions you can add to your flow. This section describes the capabilities and parameters for each action.
 
 ![Screenshot of Azure Data Explorer connector actions.](./media/flow/flow-adx-actions.png)
 
-### Run control command and visualize results
+## Run control command and render a chart
 
-Use this action to run a [control command](kusto/management/index.md).
+Use this action to run a [control command](kusto/management/index.md) and get the result as a chart of your choice.
 
 1. Specify the cluster URL. For example, `https://clusterName.eastus.kusto.windows.net`.
 1. Enter the name of the database.
@@ -99,38 +109,64 @@ Use this action to run a [control command](kusto/management/index.md).
    * A time chart.
    * A bar chart.
 
-![Screenshot of Run control command and visualize results in recurrence pane.](./media/flow/flow-runcontrolcommand.png)
+![Screenshot of Run control command and render a chart in recurrence pane.](./media/flow/flow-runcontrolcommand.png)
 
 > [!IMPORTANT]
 > In the **Cluster Name** field, enter the cluster URL.
 
-### Run query and list results
+
+## Run KQL query
 
 > [!Note]
-> If your query starts with a dot (meaning that it's a [control command](kusto/management/index.md)), use [Run control command and visualize results](#run-control-command-and-visualize-results).
+> If your query starts with a dot (meaning that it's a [control command](kusto/management/index.md)), use [Run control command and render a chart](#run-control-command-and-visualize-results).
 
 This action sends a query to the Kusto cluster. The actions that are added afterwards iterate over each line of the results of the query.
 
-The following example triggers a query every minute, and sends an email based on the query results. The query checks the number of lines in the database, and then sends an email only if the number of lines is greater than 0. 
+The following example triggers a query every minute, and sends an email based on the query results. The query checks the number of records in the table, and then sends an email only if the number of records is greater than 0. 
 
-![Screenshot of Run query and list results.](./media/flow/flow-runquerylistresults-2.png)
+![Screenshot of Run KQL query.](./media/flow/flow-runquerylistresults-2.png)
 
 > [!Note]
-> If the column has several lines, the connector will run for each line in the column.
+> If the column has several records, the connector will run for each record in the column.
 
-### Run query and visualize results
+
+## Run KQL query and render a chart
         
 > [!Note]
-> If your query starts with a dot (meaning that it's a [control command](kusto/management/index.md)), use [Run control command and visualize results](#run-control-command-and-visualize-results).
+> If your query starts with a dot (meaning that it's a [control command](kusto/management/index.md)), use [Run control command and render a chart](#run-control-command-and-visualize-results).
         
-Use this action to visualize a Kusto query result as a table or chart. For example, use this flow to receive daily reports by email. 
+Use this action to visualize a KQL query result as a table or chart. For example, use this flow to receive daily reports by email. 
     
-In this example, the results of the query are returned as an HTML table.
+In this example, the results of the query are returned as a timechart.
             
-![Screenshot of Run query and visualize results.](./media/flow/flow-runquery.png)
+![Screenshot of Run KQL query and render a chart.](./media/flow/flow-runquery.png)
 
 > [!IMPORTANT]
 > In the **Cluster Name** field, enter the cluster URL.
+
+
+
+## Run async control command
+
+This action runs control command in async mode and returns its ID, state and status on completion. ‘async’ keyword is mandatory. It is always recommended to execute control commands in async mode so they keep running in the background. KQL commands can run for maximum of 1 hour. Also, you get an operation ID of the async command after execution that can be used with [.show operations OPERATION_ID_RETURNED_BY_CMD](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/operations) command to get the status and details of that async command.
+
+The following example triggers an async command to copy the sample 10 records from 'TransformedSysLogs' table to 'TargetTable'.
+
+![Screenshot of Run KQL query.](./media/flow/flow-run-asynccontrolcommand.png)
+
+
+
+## Run show control command
+
+This action runs the show control command and returns the result that can be used in the following connectors. 
+
+> [!Note]
+> This action is specifically for running any of the **.show** commands, there are different actions given above to run other type of commands in sync or async mode.
+
+The following example executes **.show operation** command to find the status of an async command using an operation ID returned by an async command execution.
+
+![Screenshot of Run KQL query.](./media/flow/flow-run-showcontrolcommand.png)
+
 
 ## Email Kusto query results
 
