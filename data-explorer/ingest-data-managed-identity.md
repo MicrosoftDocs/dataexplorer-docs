@@ -70,6 +70,7 @@ The following are examples of blob URIs for system and user assigned managed ide
 
 * System assigned: `https://demosa.blob.core.windows.net/test/export.csv;managed_identity=system`
 * User assigned: `https://demosa.blob.core.windows.net/test/export.csv;managed_identity=6a5820b9-fdf6-4cc4-81b9-b416b444fd6d`
+
 > [!IMPORTANT]
 >
 > * When using Managed Identities to ingest data with the C# SDK, you must provide a blob size in `BlobSourceOptions`. If the size is not set, the SDK attempts to fill in the blob size by accessing the storage account resulting in a failure.
