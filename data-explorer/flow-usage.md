@@ -1,23 +1,23 @@
 ---
-title: Usage examples for Azure Data Explorer connector to Power Automate (Preview) 
+title: Usage examples for Azure Data Explorer connector to Power Automate
 description: Learn some common usage examples for Azure Data Explorer connector to Power Automate.
-ms.reviewer: dorcohen
+ms.reviewer: ms.reviewer: miwalia
 ms.topic: how-to
-ms.date: 03/15/2020
+ms.date: 05/02/2022
 ---
 
-# Usage examples for Azure Data Explorer connector to :::no-loc text="Power Automate"::: (Preview)
+# Usage examples for Azure Data Explorer connector to :::no-loc text="Power Automate":::
 
 The Azure Data Explorer :::no-loc text="Power Automate"::: (previously Microsoft flow) connector allows Azure Data Explorer to use the flow capabilities of [Microsoft :::no-loc text="Power Automate":::](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task. This article includes several common :::no-loc text="Power Automate"::: connector usage examples.
 
-For more information, see [Azure Data Explorer :::no-loc text="Power Automate"::: connector (Preview)](flow.md).
+For more information, see [Azure Data Explorer :::no-loc text="Power Automate"::: connector](flow.md).
 
 ## :::no-loc text="Power Automate"::: connector and your SQL database
 
 Use the :::no-loc text="Power Automate"::: connector to query your data and aggregate it in a SQL database.
 
 > [!Note]
-> Only use the :::no-loc text="Power Automate"::: connector for small amounts of output data. The SQL insert operation is done separately for each row. 
+> Only use the :::no-loc text="Power Automate"::: connector for small amounts of output data. The SQL insert operation is done separately for each row.
 
 ![Screenshot of querying data by using the Power Automate connector.](./media/flow-usage/flow-sqlexample.png)
 
@@ -31,7 +31,7 @@ You can use the :::no-loc text="Power Automate"::: connector with the Power BI c
 1. Create a new **Run query and list results** action.
 1. Select **New step**.
 1. Select **Add an action**, and search for Power BI.
-1. Select **Power BI** > **Add rows to a dataset**. 
+1. Select **Power BI** > **Add rows to a dataset**.
 
     ![Screenshot of Power BI connector.](./media/flow-usage/flow-powerbiconnector.png)
 
@@ -40,7 +40,7 @@ You can use the :::no-loc text="Power Automate"::: connector with the Power BI c
 
     ![Screenshot of Power BI fields.](./media/flow-usage/flow-powerbifields.png)
 
-The flow automatically applies the Power BI action for each row of the Kusto query result table. 
+The flow automatically applies the Power BI action for each row of the Kusto query result table.
 
 ![Screenshot of the Power BI action for each row.](./media/flow-usage/flow-powerbiforeach.png)
 
@@ -85,8 +85,8 @@ Visualize this information as a pie chart, and email it to the team.
 
 ## Email multiple Azure Data Explorer flow charts
 
-1. Create a new flow with the recurrence trigger, and define the interval and frequency of the flow. 
-1. Add a new step, with one or more **Kusto - Run query and visualize results** actions. 
+1. Create a new flow with the recurrence trigger, and define the interval and frequency of the flow.
+1. Add a new step, with one or more **Kusto - Run query and visualize results** actions.
 
     ![Screenshot of running several queries in a flow.](./media/flow-usage/flow-severalqueries.png)
 
@@ -97,14 +97,14 @@ Visualize this information as a pie chart, and email it to the team.
 
     ![Screenshot of visualizing results with multiple attachments.](./media/flow-usage/flow-visualizeresultsmultipleattachments.png)
 
-1. Add a **Send an email (v2)** action: 
+1. Add a **Send an email (v2)** action:
     1. In the body section, select the code view icon.
     1. In the **Body** field, insert the required **BodyHtml** so that the visualized result of the query is included in the body of the email.
     1. To add an attachment to the email, add **Attachment Name** and **Attachment Content**.
-    
+
     ![Screenshot of emailing multiple attachments.](./media/flow-usage/flow-email-multiple-attachments.png)
 
-    For more information about creating an email action, see [Email Kusto query results](flow.md#email-kusto-query-results). 
+    For more information about creating an email action, see [Email Kusto query results](flow.md#email-kusto-query-results).
 
 Results:
 

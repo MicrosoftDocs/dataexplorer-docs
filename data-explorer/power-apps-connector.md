@@ -1,11 +1,11 @@
 ---
-title: Create Power Apps application to query data in Azure Data Explorer 
+title: Create Power Apps application to query data in Azure Data Explorer
 description: Learn how to create an application in Power Apps based on data in Azure Data Explorer
 ms.reviewer: olgolden
 ms.topic: how-to
 ms.date: 10/20/2020
 ---
-# Create Power Apps application to query data in Azure Data Explorer (preview)
+# Create Power Apps application to query data in Azure Data Explorer
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data streaming from applications, websites, IoT devices, and more.
 
@@ -47,7 +47,7 @@ Power Apps is a suite of apps, services, connectors, and data platform that prov
 
 ### Add Connector
 
-1. Click on the **Data** icon on the left-hand navigation. 
+1. Click on the **Data** icon on the left-hand navigation.
 1. Expand **Connectors**.
 1. Select **Azure Data Explorer** in the resulting options.
 
@@ -59,7 +59,7 @@ You will see a new area called **In your app** with **Azure Data Explorer** now 
 
 ### Save Your App
 
-1. Select **File** in the menu bar. 
+1. Select **File** in the menu bar.
 1. Select **Save** in the left-hand navigation.
 
     :::image type="content" source="media/power-apps-connector/save-app.png" alt-text="Save your app to Power Apps.":::
@@ -86,8 +86,8 @@ You will see a new area called **In your app** with **Azure Data Explorer** now 
 
 ### Add Dropdown
 
-1. Select **Insert** in the menu bar. 
-1. Select **Input** in the resulting sub menu bar. 
+1. Select **Insert** in the menu bar.
+1. Select **Input** in the resulting sub menu bar.
 1. Select **Drop down** in the resulting dropdown.
 1. Click on the **Advanced** tab in the right-hand popout.
 1. Populate the **Items** input box with: ["CALIFORNIA","MICHIGAN"]
@@ -108,20 +108,20 @@ You will see a new area called **In your app** with **Azure Data Explorer** now 
     ).value
     )
     ```
-    
+
 1. Click the **Capture schema** button. Allow time for processing.
 
     :::image type="content" source="media/power-apps-connector/capture-schema.png" alt-text="Select capture schema button in dropdown menu.":::
 
 ### Add Data Table
 
-1. Select **Insert** in the menu bar. 
+1. Select **Insert** in the menu bar.
 1. Select **Data table** in the resulting sub menu bar.
 1. Reposition the data table and consider adding a border for visibility.
 1. Select the **Properties** tab in the right-hand popout. Select Results from the **Data Source** dropdown.
-1. Select **Edit fields** link. 
-1. Select **+ Add field** in the resulting popout. 
-    
+1. Select **Edit fields** link.
+1. Select **+ Add field** in the resulting popout.
+
     :::image type="content" source="media/power-apps-connector/insert-data-table-small.png" alt-text="Reposition table and add border." lightbox="media/power-apps-connector/insert-data-table.png":::
 
 1. Select desired fields and click **Add** button. A preview of the selected data table appears.
@@ -142,3 +142,5 @@ You will see a new area called **In your app** with **Azure Data Explorer** now 
 * **Timeout exceptions**: The connector has a timeout limitation of 7 minutes. To avoid potential timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [Query best practices](./kusto/query/best-practices.md).
 
 ## Next steps
+
+Learn about the [Azure Kusto Logic App connector](kusto/tools/logicapps.md), which is another way to run Kusto queries and commands automatically, as part of a scheduled or triggered task.
