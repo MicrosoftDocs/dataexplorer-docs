@@ -3,7 +3,7 @@ title: Azure Data Explorer connector for Power Automate
 description: Learn about using Azure Data Explorer connector for Power Automate to create flows of automatically scheduled or triggered tasks.
 ms.reviewer: miwalia
 ms.topic: how-to
-ms.date: 05/02/2022
+ms.date: 05/04/2022
 ---
 
 # Azure Data Explorer connector for Microsoft :::no-loc text="Power Automate":::
@@ -45,7 +45,7 @@ To use the connector, you must first add a trigger. You can define a trigger bas
 1. Select an action from the list. For an explanation of each action and how to configure them, see [Flow actions](#flow-actions).
 
     > [!IMPORTANT]
-    > You must have a valid Azure Data Explorer [connection for your flow](/power-automate/add-manage-connections) to run. For information about creating a connection, see [Create an Azure Data Explorer connection in :::no-loc text="Power Automate":::](#create-an-azure-data-explorer-connection-in-no-loc-textpower-automate).
+    > You must have a valid Azure Data Explorer [connection for your flow](/power-automate/add-manage-connections) to run. For information about creating a connection, see [Create an Azure Data Explorer connection in :::no-loc text="Power Automate":::](#create-an-azure-data-explorer-connection-in-power-automate).
 
     :::image type="content" source="media/flow/flow-action-list.png" alt-text="Screenshot of the Choose an action list, showing the list of actions highlighted.":::
 
@@ -66,7 +66,7 @@ This section describes the capabilities and parameters for each action and provi
 ### Run KQL query
 
 > [!Note]
-> If your query starts with a dot (meaning that it's a [control command](kusto/management/index.md)), use [Run control command and render a chart](#run-control-command-and-visualize-results).
+> If your query starts with a dot (meaning that it's a [control command](kusto/management/index.md)), use [Run control command and render a chart](#run-kql-query-and-render-a-chart).
 
 This action sends a query to the specified cluster. The actions that are added afterwards iterate over each line of the results of the query.
 
@@ -80,7 +80,7 @@ The following example triggers a query every minute, and sends an email based on
 ### Run KQL query and render a chart
 
 > [!Note]
-> If your query starts with a dot (meaning that it's a [control command](kusto/management/index.md)), use [Run control command and render a chart](#run-control-command-and-visualize-results).
+> If your query starts with a dot (meaning that it's a [control command](kusto/management/index.md)), use [Run control command and render a chart](#run-kql-query-and-render-a-chart).
 
 Use this action to visualize a KQL query result as a table or chart. For example, use this flow to receive daily reports by email.
 
@@ -93,7 +93,7 @@ In this example, the results of the query are returned as a timechart.
 
 ### Run async control command
 
-This action runs control command in async mode and returns its ID, state and status on completion. 'async' keyword is mandatory. It's always recommended to execute control commands in async mode so they keep running in the background. KQL commands can run for maximum of 1 hour. Also, you get an operation ID of the async command after execution that can be used with [.show operations OPERATION_ID_RETURNED_BY_CMD](kusto/management/operations) command to get the status and details of that async command.
+This action runs control command in async mode and returns its ID, state and status on completion. 'async' keyword is mandatory. It's always recommended to execute control commands in async mode so they keep running in the background. KQL commands can run for maximum of 1 hour. Also, you get an operation ID of the async command after execution that can be used with [.show operations OPERATION_ID_RETURNED_BY_CMD](kusto/management/operations.md) command to get the status and details of that async command.
 
 The following example triggers an async command to copy the sample 10 records from 'TransformedSysLogs' table to 'TargetTable'.
 
