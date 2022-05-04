@@ -17,11 +17,11 @@ Logic App and :::no-loc text="Power Automate"::: are built on the same connector
 1. Open the [Microsoft Azure portal](https://ms.portal.azure.com/).
 1. Search for `logic app` and select it.
 
-    :::image type="content" source="./images/logicapps/logicapp-search.png" alt-text="Searching for 'logic app' in the Azure portal, Azure Data Explorer" lightbox="./images/logicapps/logicapp-search.png#lightbox":::
+    :::image type="content" source="./images/logicapps/logicapp-search.png" alt-text="Screenshot of Azure portal, showing the search for Logic app." lightbox="./images/logicapps/logicapp-search.png#lightbox":::
 
 1. Select **+Add**.
 
-    ![Add logic app.](./Images/logicapps/logicapp-add.png)
+    :::image type="content" source="images/logicapps/logicapp-add.png" alt-text="Screenshot of Azure portal, showing the add logic app action.":::
 
 1. Enter the required details of the form:
     * Subscription
@@ -32,19 +32,19 @@ Logic App and :::no-loc text="Power Automate"::: are built on the same connector
     * Log analysis on or off
 1. Select **Review + create**.
 
-    ![Create logic app.](./Images/logicapps/logicapp-create-new.png)
+    :::image type="content" source="images/logicapps/logicapp-create-new.png" alt-text="Screenshot of Azure portal, showing the create logic app.":::
 
 1. When the Logic App is created, select **Edit**.
 
-    ![Edit logic app designer.](./Images/logicapps/logicapp-editdesigner.png "logicapp-editdesigner")
+    :::image type="content" source="images/logicapps/logicapp-editdesigner.png" alt-text="Screenshot of Azure portal, showing the edit logic app designer.":::
 
 1. Create a blank Logic App.
 
-    ![Logic app blank template.](./Images/logicapps/logicapp-blanktemplate.png "logicapp-blanktemplate")
+    :::image type="content" source="images/logicapps/logicapp-blanktemplate.png" alt-text="Screenshot of Azure portal, showing the logic app blank template.":::
 
 1. Add recurrence action and select **Azure Kusto**.
 
-    ![Logic app Kusto Flow connector.](./Images/logicapps/logicapp-kustoconnector.png "logicapp-kustoconnector")
+    :::image type="content" source="images/logicapps/logicapp-kustoconnector-inline.png" alt-text="Screenshot of Logic app, showing the Azure Data Explorer connector." lightbox="images/logicapps/logicapp-kustoconnector.png":::
 
 ## Next steps
 

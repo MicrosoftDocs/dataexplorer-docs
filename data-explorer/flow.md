@@ -45,7 +45,7 @@ To use the connector, you must first add a trigger. You can define a trigger bas
 1. Select an action from the list. For an explanation of each action and how to configure them, see [Flow actions](#flow-actions).
 
     > [!IMPORTANT]
-    > You must have a valid Azure Data Explorer [connection for your flow](/power-automate/add-manage-connections) to run. For information about creating a connection, see [Create an Azure Data Explorer connection in :::no-loc text="Power Automate":::](#create-an-azure-data-explorer-connection-in-power-automate).
+    > You must have a valid Azure Data Explorer [connection for your flow](/power-automate/add-manage-connections) to run. For information about creating a connection, see [Create an Azure Data Explorer connection in :::no-loc text="Power Automate":::](#create-an-azure-data-explorer-connection).
 
     :::image type="content" source="media/flow/flow-action-list.png" alt-text="Screenshot of the Choose an action list, showing the list of actions highlighted.":::
 
@@ -61,7 +61,7 @@ When you select the Azure Data Explorer connector, you can choose one of the fol
 
 This section describes the capabilities and parameters for each action and provides an example showing how to add an [email](#email-kusto-query-results) action to any flow.
 
-:::image type="content" source="media/flow/flow-adx-actions.png" alt-text="Screenshot of Azure Data Explorer connector actions.":::
+:::image type="content" source="media/flow/flow-action-list.png" alt-text="Screenshot of Azure Data Explorer connector actions.":::
 
 ### Run KQL query
 
@@ -152,7 +152,7 @@ You can include a step in any flow to send reports by email, to any email addres
 
 :::image type="content" source="media/flow/flow-add-attachments.png" alt-text="Screenshot of Send an email dialog box, with Attachments Name, Attachments Content, and Save highlighted.":::
 
-## Create an Azure Data Explorer connection in :::no-loc text="Power Automate":::
+## Create an Azure Data Explorer connection
 
 To run a flow that contains an Azure Data Explorer connector, you must use a valid Azure Data Explorer [connection](/power-automate/add-manage-connections). You can create new connection on the :::no-loc text="Power Automate"::: left pane, select **Data** > [Connections](/power-automate/add-manage-connections) or from within the flow, select the Azure Data Explorer connector's menu > **Add new connection**.
 
