@@ -40,7 +40,7 @@ To use the connector, you must first add a trigger. You can define a trigger bas
 1. Select **Create** > **+ New step**.
 1. In the search box, enter *Kusto* or *Azure Data Explorer*, and select **Azure Data Explorer**.
 
-    :::image type="content" source="media/flow/flow-actions.png" alt-text="Screenshot of Choose an action options, showing the search box and Azure Data Explorer highlighted.":::
+    :::image type="content" source="media/flow/flow-actions.png" alt-text="Screenshot of Choose an operation window, showing the search box and Azure Data Explorer highlighted.":::
 
 1. Select an action from the list. For an explanation of each action and how to configure them, see [Flow actions](#flow-actions).
 
@@ -93,7 +93,7 @@ In this example, the results of the query are returned as a timechart.
 
 ### Run async control command
 
-This action runs control command in async mode and returns its ID, state and status on completion. 'async' keyword is mandatory. It is always recommended to execute control commands in async mode so they keep running in the background. KQL commands can run for maximum of 1 hour. Also, you get an operation ID of the async command after execution that can be used with [.show operations OPERATION_ID_RETURNED_BY_CMD](kusto/management/operations) command to get the status and details of that async command.
+This action runs control command in async mode and returns its ID, state and status on completion. 'async' keyword is mandatory. It's always recommended to execute control commands in async mode so they keep running in the background. KQL commands can run for maximum of 1 hour. Also, you get an operation ID of the async command after execution that can be used with [.show operations OPERATION_ID_RETURNED_BY_CMD](kusto/management/operations) command to get the status and details of that async command.
 
 The following example triggers an async command to copy the sample 10 records from 'TransformedSysLogs' table to 'TargetTable'.
 
@@ -154,7 +154,7 @@ You can include a step in any flow to send reports by email, to any email addres
 
 ## Create an Azure Data Explorer connection in :::no-loc text="Power Automate":::
 
-To run a flow that contains an Azure Data Explorer connector, you must use a valid Azure Data Explorer [connection](/power-automate/add-manage-connections). You can create new connection on the :::no-loc text="Power Automate"::: left pane, select **Data** > [Connections](/power-automate/add-manage-connections) or from within the flow, seleect the Azure Data Explorer connector's menu > **Add new connection**.
+To run a flow that contains an Azure Data Explorer connector, you must use a valid Azure Data Explorer [connection](/power-automate/add-manage-connections). You can create new connection on the :::no-loc text="Power Automate"::: left pane, select **Data** > [Connections](/power-automate/add-manage-connections) or from within the flow, select the Azure Data Explorer connector's menu > **Add new connection**.
 
 You can use the following connection options:
 
