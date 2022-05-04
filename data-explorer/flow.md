@@ -72,7 +72,7 @@ This action sends a query to the specified cluster. The actions that are added a
 
 The following example triggers a query every minute, and sends an email based on the query results. The query checks the number of records in the table, and then sends an email only if the number of records is greater than 0.
 
-:::image type="content" source="media/flow/flow-runquerylistresults-2.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query action.":::
+:::image type="content" source="media/flow/flow-runquerylistresults-2-inline.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query action." lightbox="media/flow/flow-runquerylistresults-2.png":::
 
 > [!Note]
 > If the column has several records, the connector will run for each record in the column.
