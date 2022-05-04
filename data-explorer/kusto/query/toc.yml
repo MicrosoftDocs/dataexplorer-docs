@@ -368,6 +368,8 @@ items:
     href: atanfunction.md
   - name: atan2()
     href: atan2function.md
+  - name: bag_has_key()
+    href: bag-has-key-function.md
   - name: bag_keys()
     href: bagkeysfunction.md
   - name: bag_merge()
