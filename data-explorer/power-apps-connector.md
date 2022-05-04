@@ -3,7 +3,7 @@ title: Create Power Apps application to query data in Azure Data Explorer
 description: Learn how to create an application in Power Apps based on data in Azure Data Explorer
 ms.reviewer: olgolden
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 05/04/2022
 ---
 # Create Power Apps application to query data in Azure Data Explorer
 

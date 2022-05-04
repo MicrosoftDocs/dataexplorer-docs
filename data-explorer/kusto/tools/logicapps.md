@@ -3,7 +3,7 @@ title: Use Logic Apps to run Kusto queries automatically in Azure Data Explorer
 description: Learn how to use Logic Apps to run Kusto queries and commands automatically and schedule them.
 ms.reviewer: docohe
 ms.topic: how-to
-ms.date: 05/02/2022
+ms.date: 05/04/2022
 ---
 
 # Microsoft Logic App and Azure Data Explorer
