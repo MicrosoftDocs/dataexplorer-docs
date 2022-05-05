@@ -156,11 +156,6 @@ You can include a step in any flow to send reports by email, to any email addres
 
 To run a flow that contains an Azure Data Explorer connector, you must use a valid Azure Data Explorer [connection](/power-automate/add-manage-connections). You can create new connection on the :::no-loc text="Power Automate"::: left pane, select **Data** > [Connections](/power-automate/add-manage-connections) or from within the flow, select the Azure Data Explorer connector's menu > **Add new connection**.
 
-You can use the following connection options:
-
-- [Authentication](#authentication)
-- [Sign in](#sign-in)
-- [Connect with Service Principal](#connect-with-service-principal)
 
 ### Authentication
 
