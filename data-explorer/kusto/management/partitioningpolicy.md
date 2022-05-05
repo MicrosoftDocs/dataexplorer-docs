@@ -11,7 +11,8 @@ The partitioning policy defines if and how [extents (data shards)](../management
 
 The main purpose of the partitioning policy is to improve performance of queries in [specific scenarios](#supported-scenarios).
 
-By default, extents are partitioned by their ingestion time, and in most cases there's no need to set a data partitioning policy.
+> [!NOTE]
+> By default, extents are partitioned by time of creation (ingestion), and in most cases there's no need to set a data partitioning policy.
 
 ## Supported scenarios
 
