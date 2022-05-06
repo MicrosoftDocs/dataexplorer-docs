@@ -259,6 +259,12 @@ Use the following settings:
 | *databaseName* | The name of the database under which the script will run. |
 | *scriptName* | The name of the script when using an external file to supply the script. |
 
+## Limitations
+
+*  Two scripts can't be added at the same time on the same cluster.  The second script creation would raise an error <span style="background:yellow">Maintenance mode</span>.  An easy workaround consists in putting a dependency between the two scripts so they would be created in one after the other.
+    * Similarly a script can't be removed while another is getting added nor can two scripts be removed at the same time.
+    * This apply only to script creation / removal.  Once the scripts resource exist, many can run in parallel.
+
 ## Troubleshooting
 
 Commands run by a script resource don't appear in the results of the [.show commands-and-queries](kusto/management/commands-and-queries.md) command. You can trace the script execution using the [.show journal](kusto/management/journal.md) command.
