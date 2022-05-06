@@ -5,7 +5,7 @@ ms.date: 30/03/2020
 ## Explore quick queries and tools
 
 In the tiles below the ingestion progress, explore **Quick queries** or **Tools**: 
- * **Quick queries** includes links to the Web UI with example queries.
+ * **Quick queries** include links to the Web UI with example queries.
  * **Tools** includes links to **Undo** or **Delete new data** on the Web UI, which enable you to troubleshoot issues by running the relevant `.drop` commands.
 
      > [!NOTE]
