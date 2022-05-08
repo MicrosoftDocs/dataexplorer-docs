@@ -47,6 +47,16 @@ by the C# `Kusto.Data.KustoConnectionStringBuilder` class. This class validates
 all connection strings and generates a runtime exception if validation fails.
 This functionality is present in all flavors of Kusto SDK.
 
+## Trusted endpoints
+
+A connection with a Kusto endpoint can only be established if that endpoint is trusted.
+The Kusto client trusts all endpoints whose hostname part is issued by the service
+(e.g., endpoints whose DNS hostname ends with `kusto.windows.net`) by default.
+The client will not establish connections to other endpoints; in order to allow that,
+one can use the `Kusto.Data.Common.KustoTrustedEndpoints` class to add additional endpoints
+to the list of trusted endpoints (by using either `SetOverridePolicy` which overrides
+the default policy, or `AddTrustedHosts` which adds new entries to the existing policy.)
+
 ## Connection string properties
 
 The following table lists all the properties you can specify in a Kusto connection string.
