@@ -27,7 +27,7 @@ The one-click sample app generator wizard guides you through the one-click inges
 
 * To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), use one of the following methods:
 
-    * Select **Data** in the left pane. Within the **Data Management** page under Quick actions, select **Sample App**.
+    * Select **Data** in the left pane. Within the **Data Management** page under Quick actions, select **Generate Sample App**.
 
       :::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-welcome.png" alt-text="Sample app generator from welcome to Azure Data Explorer.":::
 
