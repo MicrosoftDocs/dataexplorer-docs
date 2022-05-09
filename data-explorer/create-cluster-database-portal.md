@@ -109,7 +109,7 @@ After you created the cluster and database, you can run queries and commands. Th
 
 ## Stop and restart the cluster
 
-You can stop and restart a cluster depending on business needs. Stopping the cluster reduces cost significantly as it releases the compute resources which are the bulk of the overall cluster cost without deleting database.
+You can stop and restart a cluster depending on business needs. Stopping the cluster significantly reduces cost as it releases the compute resources, which are the bulk of the overall cluster cost, without deleting the database.
 
 1. To stop the cluster, at the top of the **Overview** tab, select **Stop**.
 
