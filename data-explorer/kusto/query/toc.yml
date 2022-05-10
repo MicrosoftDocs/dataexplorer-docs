@@ -884,38 +884,6 @@ items:
     href: geo-intersects-2polygons-function.md
   - name: geo_intersects_line_with_polygon()
     href: geo-intersects-line-with-polygon-function.md
-  - name: geo_point_in_circle()
-    href: geo-point-in-circle-function.md
-  - name: geo_point_in_polygon()
-    href: geo-point-in-polygon-function.md
-  - name: geo_point_to_geohash()
-    href: geo-point-to-geohash-function.md
-  - name: geo_geohash_to_central_point()
-    href: geo-geohash-to-central-point-function.md
-  - name: geo_geohash_to_polygon()
-    href: geo-geohash-to-polygon-function.md
-  - name: geo_point_to_s2cell()
-    href: geo-point-to-s2cell-function.md
-  - name: geo_s2cell_to_central_point()
-    href: geo-s2cell-to-central-point-function.md
-  - name: geo_s2cell_to_polygon()
-    href: geo-s2cell-to-polygon-function.md
-  - name: geo_point_to_h3cell()
-    href: geo-point-to-h3cell-function.md
-  - name: geo_h3cell_to_central_point()
-    href: geo-h3cell-to-central-point-function.md
-  - name: geo_h3cell_to_polygon()
-    href: geo-h3cell-to-polygon-function.md
-  - name: geo_h3cell_parent()
-    href: geo-h3cell-parent-function.md
-  - name: geo_h3cell_children()
-    href: geo-h3cell-children-function.md
-  - name: geo_h3cell_level()
-    href: geo-h3cell-level-function.md
-  - name: geo_h3cell_rings()
-    href: geo-h3cell-rings-function.md
-  - name: geo_polygon_to_s2cells()
-    href: geo-polygon-to-s2cells-function.md
   - name: geo_line_centroid()
     href: geo-line-centroid-function.md
   - name: geo_line_densify()
@@ -932,6 +900,38 @@ items:
     href: geo-polygon-densify-function.md
   - name: geo_polygon_perimeter()
     href: geo-polygon-perimeter-function.md
+  - name: geo_polygon_to_s2cells()
+    href: geo-polygon-to-s2cells-function.md
+  - name: geo_point_in_circle()
+    href: geo-point-in-circle-function.md
+  - name: geo_point_in_polygon()
+    href: geo-point-in-polygon-function.md
+  - name: geo_point_to_geohash()
+    href: geo-point-to-geohash-function.md
+  - name: geo_point_to_h3cell()
+    href: geo-point-to-h3cell-function.md
+  - name: geo_point_to_s2cell()
+    href: geo-point-to-s2cell-function.md
+  - name: geo_geohash_to_central_point()
+    href: geo-geohash-to-central-point-function.md
+  - name: geo_geohash_to_polygon()
+    href: geo-geohash-to-polygon-function.md
+  - name: geo_s2cell_to_central_point()
+    href: geo-s2cell-to-central-point-function.md
+  - name: geo_s2cell_to_polygon()
+    href: geo-s2cell-to-polygon-function.md
+  - name: geo_h3cell_to_central_point()
+    href: geo-h3cell-to-central-point-function.md
+  - name: geo_h3cell_to_polygon()
+    href: geo-h3cell-to-polygon-function.md
+  - name: geo_h3cell_parent()
+    href: geo-h3cell-parent-function.md
+  - name: geo_h3cell_children()
+    href: geo-h3cell-children-function.md
+  - name: geo_h3cell_level()
+    href: geo-h3cell-level-function.md
+  - name: geo_h3cell_rings()
+    href: geo-h3cell-rings-function.md
   - name: geo_union_lines_array()
     href: geo-union-lines-array-function.md
   - name: geo_union_polygons_array()
