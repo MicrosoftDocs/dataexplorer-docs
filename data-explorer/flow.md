@@ -126,7 +126,7 @@ This action runs the show control command and returns the result that can be use
 > [!Note]
 > This action is specifically for running any of the **.show** commands, there are different actions given above to run other type of commands in sync or async mode.
 
-The following example executes **.show operation** command to find the status of an async command using an operation ID returned by an async command execution.
+The following example executes the **.show operation** command to find the status of an async command using an operation ID returned by an async command execution.
 
 :::image type="content" source="media/flow/flow-run-showcontrolcommand.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run show control command action.":::
 
@@ -154,51 +154,41 @@ You can include a step in any flow to send reports by email, to any email addres
 
 ## Create an Azure Data Explorer connection
 
-To run a flow that contains an Azure Data Explorer connector, you must use a valid Azure Data Explorer [connection](/power-automate/add-manage-connections). You can create new connection on the :::no-loc text="Power Automate"::: left pane, select **Data** > [Connections](/power-automate/add-manage-connections) or from within the flow, select the Azure Data Explorer connector's menu > **Add new connection**.
+To run a flow that contains an Azure Data Explorer connector, you must use a valid Azure Data Explorer [connection](/power-automate/add-manage-connections). You can create and authenticate a new connection from the :::no-loc text="Power Automate"::: left pane, select **Data** > [Connections](/power-automate/add-manage-connections) or from within the flow, by selecting the Azure Data Explorer connector's menu > **Add new connection**.
 
-
-### Authentication
-
-You can authenticate with user credentials, or with an Azure Active Directory (Azure AD) application.
-
-> [!Note]
-> Make sure your application is an [Azure AD application](./provision-azure-ad-app.md), and is authorized to run queries on your cluster.
+The following steps show how to create a connection from within a flow.
 
 1. In **Run KQL query**, select the three dots at the top right of the power automate connector.
 
     :::image type="content" source="media/flow/flow-addconnection.png" alt-text="Screenshot of Azure Data Explorer connection, showing the authentication option.":::
 
-1. Select **Add new connection** > You get two options
+1. Select **Add new connection**. When you connect for the first time, you're prompted to sign in. You can authenticate with user credentials or with an Azure Active Directory (Azure AD) application.
 
-### Sign in
+    :::image type="content" source="media/flow/flow-signin.png" alt-text="Screenshot of Azure Data Explorer connection, showing the sign-in option.":::
 
-1. When you connect for the first time, you're prompted to sign in.
+    - To authentication with credentials, select **Sign in**, and enter your credentials.
 
-1. Select **Sign in**, and enter your credentials.
+    - To authenticate with a Service Principal, fill out the form with the following information:
 
-:::image type="content" source="media/flow/flow-signin.png" alt-text="Screenshot of Azure Data Explorer connection, showing the sign-in option.":::
+        - **Connection Name**: A descriptive and meaningful name for the new connection.
+        - **Client ID**: Your application ID.
+        - **Client Secret**: Your application key.
+        - **Tenant**: The ID of the Azure AD directory in which you created the application.
 
-### Connect with Service Principal
+        > [!Note]
+        > Make sure your application is an [Azure AD application](./provision-azure-ad-app.md) and is authorized to run queries on your cluster.
 
-:::image type="content" source="media/flow/flow-signin.png" alt-text="Screenshot of Azure Data Explorer connection, showing the connect with Service Principal option.":::
+        :::image type="content" source="media/flow/flow-appauth.png" alt-text="Screenshot of Azure Data Explorer connection, showing the application authentication dialog box.":::
 
-1. Enter the required information:
-    - Connection Name: A descriptive and meaningful name for the new connection.
-    - Client ID: Your application ID.
-    - Client Secret: Your application key.
-    - Tenant: The ID of the Azure AD directory in which you created the application.
+        When authentication is complete, you'll see that your flow uses the newly added connection.
 
-:::image type="content" source="media/flow/flow-appauth.png" alt-text="Screenshot of Azure Data Explorer connection, showing the application authentication dialog box.":::
+        :::image type="content" source="media/flow/flow-appauthcomplete.png" alt-text="Screenshot of the completed application authentication.":::
 
-When authentication is complete, you'll see that your flow uses the newly added connection.
+        Once the connection is set, the flow runs using the application credentials.
 
-:::image type="content" source="media/flow/flow-appauthcomplete.png" alt-text="Screenshot of the completed application authentication.":::
+## Test the flow
 
-From now on, this flow will run by using these application credentials.
-
-## Check if your flow succeeded
-
-To check if your flow succeeded, see the flow's run history:
+To check if your flow works, check the flow's run history:
 
 1. Go to the [:::no-loc text="Power Automate"::: home page](https://flow.microsoft.com/).
 1. From the main menu, select [My flows](https://flow.microsoft.com/manage/flows).
@@ -234,7 +224,7 @@ The same query might run successfully in Azure Data Explorer, where the time isn
 
 - Results returned to the client are limited to 500,000 records. The overall memory for those records can't exceed 64 MB and a time of 90 seconds to run.
 - The connector doesn't support operators that aren't supported by the [`getschema` operator](kusto/query/getschemaoperator.md). For example, the [fork](kusto/query/forkoperator.md), [facet](kusto/query/facetoperator.md), and [evaluate](kusto/query/evaluateoperator.md) operators aren't supported.
-- Flow works best on Microsoft Edge and Google Chrome.
+- Flows work best on Microsoft Edge and Google Chrome.
 
 ## Next steps
 
