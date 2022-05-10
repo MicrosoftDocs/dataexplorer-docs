@@ -7,11 +7,12 @@ ms.date: 05/27/2020
 ---
 # parse_ipv4_mask()
 
-Converts the input string of IPv4 and netmask to long number representation (signed 64-bit).
+Converts the input string of IPv4 and netmask to long (signed 64-bit) number representation in big-endian order.
 
 ```kusto
 parse_ipv4_mask("127.0.0.1", 24) == 2130706432
 parse_ipv4_mask('192.1.168.2', 31) == parse_ipv4_mask('192.1.168.3', 31)
+tohex(parse_ipv4_mask('127.2.3.4', 32)) == '7f020304'
 ```
 
 ## Syntax
