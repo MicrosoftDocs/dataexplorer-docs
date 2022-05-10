@@ -8,7 +8,8 @@
   },
   "inclusionCriteria": {
     "labels": [
-      "label:whats-new"
+      "label:whats-new",
+      "label:what's-new"
     ],
     "minAdditionsToFile": 1,
     "pullRequestTitlesToIgnore": [
