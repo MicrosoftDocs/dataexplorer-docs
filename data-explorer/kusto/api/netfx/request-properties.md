@@ -218,12 +218,14 @@ in the query hierarchy for each subgroup of nodes; the size of the subgroup is s
 * `query_now` (*OptionQueryNow*): Overrides the datetime value returned by the now(0s) function. [DateTime]
 * `query_python_debug` (*OptionDebugPython*): If set, generate python debug query for the enumerated python node (default first). [Boolean or Int]
 * `query_results_apply_getschema` (*OptionQueryResultsApplyGetSchema*): If set, retrieves the schema of each tabular data in the results of the query instead of the data itself. [Boolean]
+* `query_results_cache_force_refresh` (*OptionQueryResultsCacheForceRefresh*): If set, forces query results cache refresh for a specific query. Must be used in combination with 'query_results_cache_max_age', and sent via ClientRequestProperties object (not as 'set' statement). [Boolean]
 * `query_results_cache_max_age` (*OptionQueryResultsCacheMaxAge*): If positive, controls the maximum age of the cached query results the service is allowed to return [TimeSpan]
 * `query_results_cache_per_shard` (*OptionQueryResultsCachePerShardEnabled*): If set, enables per-shard query cache. [Boolean]
 * `query_results_progressive_row_count` (*OptionProgressiveQueryMinRowCountPerUpdate*): Hint for Kusto as to how many records to send in each update (takes effect only if OptionResultsProgressiveEnabled is set)
 * `query_results_progressive_update_period` (*OptionProgressiveProgressReportPeriod*): Hint for Kusto as to how often to send progress frames (takes effect only if OptionResultsProgressiveEnabled is set)
 * `query_take_max_records` (*OptionTakeMaxRecords*): Enables limiting query results to this number of records. [Long]
-* `queryconsistency` (*OptionQueryConsistency*): Controls query consistency: ['strongconsistency', 'weakconsistency', 'affinitizedweakconsistency', or 'databaseaffinitizedweakconsistency']
+* `query_weakconsistency_session_id` (*OptionQueryWeakConsistencySessionId*): Sets the query weak consistency session id. Takes effect when 'queryconsistency' mode is set to 'weakconsistency_by_session_id'. [String]
+* `queryconsistency` (*OptionQueryConsistency*): Controls query consistency: ['strongconsistency', 'weakconsistency', 'weakconsistency_by_query', 'weakconsistency_by_database', or 'weakconsistency_by_session_id']
 * `request_app_name` (*OptionRequestAppName*): Request application name to be used in the reporting (e.g. show queries). [String]
 * `request_block_row_level_security` (*OptionRequestBlockRowLevelSecurity*): If specified, blocks access to tables for which row_level_security policy is enabled [Boolean]
 * `request_callout_disabled` (*OptionRequestCalloutDisabled*): If specified, indicates that the request can't call-out to a user-provided service. [Boolean]
