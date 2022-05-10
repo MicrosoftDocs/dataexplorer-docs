@@ -162,29 +162,34 @@ The following steps show how to create a connection from within a flow.
 
     :::image type="content" source="media/flow/flow-addconnection.png" alt-text="Screenshot of Azure Data Explorer connection, showing the authentication option.":::
 
-1. Select **Add new connection**. When you connect for the first time, you're prompted to sign in. You can authenticate with user credentials or with an Azure Active Directory (Azure AD) application.
+1. Select **Add new connection**. When you connect for the first time, you're prompted to sign in to [authenticate the connection](#authentication).
 
     :::image type="content" source="media/flow/flow-signin.png" alt-text="Screenshot of Azure Data Explorer connection, showing the sign-in option.":::
 
-    - To authentication with credentials, select **Sign in**, and enter your credentials.
+## Authentication
 
-    - To authenticate with a Service Principal, fill out the form with the following information:
+You can authenticate with user credentials or with an Azure Active Directory (Azure AD) application. To authentication with credentials, select **Sign in**, and enter your credentials.
 
-        - **Connection Name**: A descriptive and meaningful name for the new connection.
-        - **Client ID**: Your application ID.
-        - **Client Secret**: Your application key.
-        - **Tenant**: The ID of the Azure AD directory in which you created the application.
+To authenticate with a Service Principal:
 
-        > [!Note]
-        > Make sure your application is an [Azure AD application](./provision-azure-ad-app.md) and is authorized to run queries on your cluster.
+1. Select **Sign in**.
+1. Fill out the form with the following information:
 
-        :::image type="content" source="media/flow/flow-appauth.png" alt-text="Screenshot of Azure Data Explorer connection, showing the application authentication dialog box.":::
+    - **Connection Name**: A descriptive and meaningful name for the new connection. In this example, we've used "MyApplication".
+    - **Client ID**: Your application ID.
+    - **Client Secret**: Your application key.
+    - **Tenant**: The ID of the Azure AD directory in which you created the application.
 
-        When authentication is complete, you'll see that your flow uses the newly added connection.
+    > [!Note]
+    > Make sure your application is an [Azure AD application](./provision-azure-ad-app.md) and is authorized to run queries on your cluster.
 
-        :::image type="content" source="media/flow/flow-appauthcomplete.png" alt-text="Screenshot of the completed application authentication.":::
+    :::image type="content" source="media/flow/flow-appauth.png" alt-text="Screenshot of Azure Data Explorer connection, showing the application authentication dialog box.":::
 
-        Once the connection is set, the flow runs using the application credentials.
+    When authentication is complete, verify that your flow uses the new connection.
+
+    :::image type="content" source="media/flow/flow-appauthcomplete.png" alt-text="Screenshot of the completed application authentication.":::
+
+    Once the connection is set, the flow runs using the application credentials.
 
 ## Test the flow
 
