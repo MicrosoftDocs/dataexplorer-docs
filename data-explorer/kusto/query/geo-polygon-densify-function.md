@@ -48,7 +48,6 @@ Densified polygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) a
 
 > [!NOTE]
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) coordinate reference system.
-> * The polygon must be correctly defined, but the function does not check polygon validity.
 
 ## Examples
 
