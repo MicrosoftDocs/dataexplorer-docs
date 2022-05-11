@@ -1,17 +1,17 @@
 ---
-title: geo_intersects_2polygons() - Azure Data Explorer
-description: This article describes geo_intersects_2polygons() in Azure Data Explorer.
+title: geo_intersection_2polygons() - Azure Data Explorer
+description: This article describes geo_intersection_2polygons() in Azure Data Explorer.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 01/20/2022
+ms.date: 05/10/2022
 ---
-# geo_intersects_2polygons()
+# geo_intersection_2polygons()
 
-Calculates whether the two polygons or multipolygons intersects.
+Calculates the intersection of two polygons or multipolygons.
 
 ## Syntax
 
-`geo_intersects_2polygons(`*polygon1*`, `*polygon1*`)`
+`geo_intersection_2polygons(`*polygon1*`, `*polygon1*`)`
 
 ## Arguments
 
@@ -20,7 +20,7 @@ Calculates whether the two polygons or multipolygons intersects.
 
 ## Returns
 
-Indicates whether the two polygons or a multipolygons intersects. If Polygon or a MultiPolygon are invalid, the query will produce a null result.
+Intersection in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If Polygon or a MultiPolygon are invalid, the query will produce a null result.
 
 > [!NOTE]
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) coordinate reference system.
@@ -47,33 +47,72 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 
 ## Examples
 
-The following example checks whether some two literal polygons intersects.
+The following example calculates intersection between two polygons. In this case, the result is a polygon.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let polygon1 = dynamic({"type":"Polygon","coordinates":[[[-73.9630937576294,40.77498840732385],[-73.963565826416,40.774383111780914],[-73.96205306053162,40.773745311181585],[-73.96160781383514,40.7743912365898],[-73.9630937576294,40.77498840732385]]]});
 let polygon2 = dynamic({"type":"Polygon","coordinates":[[[-73.96213352680206,40.775045280447145],[-73.9631313085556,40.774578106920345],[-73.96207988262177,40.77416780398293],[-73.96213352680206,40.775045280447145]]]});
-print geo_intersects_2polygons(polygon1, polygon2)
+print intersection = geo_intersection_2polygons(polygon1, polygon2)
 ```
 
-|print_0|
+|intersection|
 |---|
-|True|
+|{"type": "Polygon",  "coordinates": [[[-73.962105776437156,40.774591360999679],[-73.962642403166868,40.774807020251778],[-73.9631313085556,40.774578106920352],[-73.962079882621765,40.774167803982927],[-73.962105776437156,40.774591360999679]    ]  ]}|
 
-The following example finds all counties in USA which intersect with area of interest literal polygon.
+The following example calculates intersection between two polygons. In this case, the result is a point.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let polygon1 = dynamic({"type":"Polygon","coordinates":[[[2,45],[0,45],[1,44],[2,45]]]});
+let polygon2 = dynamic({"type":"Polygon","coordinates":[[[3,44],[2,45],[2,43],[3,44]]]});
+print intersection = geo_intersection_2polygons(polygon1, polygon2)
+```
+
+|intersection|
+|---|
+|{"type": "Point","coordinates": [2,45]}|
+
+The following two polygons intersection is a collection.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let polygon1 = dynamic({"type":"Polygon","coordinates":[[[2,45],[0,45],[1,44],[2,45]]]});
+let polygon2 = dynamic({"type":"MultiPolygon","coordinates":[[[[3,44],[2,45],[2,43],[3,44]]],[[[1.192,45.265],[1.005,44.943],[1.356,44.937],[1.192,45.265]]]]});
+print intersection = geo_intersection_2polygons(polygon1, polygon2)
+```
+
+|intersection|
+|---|
+|{"type": "GeometryCollection","geometries": [<br>{ "type": "Point", "coordinates": [2, 45]},<br>{ "type": "Polygon", "coordinates": [[[1.3227075526410679,45.003909145068739],[1.0404565374899824,45.004356403066552],[1.005,44.943],[1.356,44.937],[1.3227075526410679,45.003909145068739]]]}]}|
+
+The following two polygons do not intersect.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let polygon1 = dynamic({"type":"Polygon","coordinates":[[[2,45],[0,45],[1,44],[2,45]]]});
+let polygon2 = dynamic({"type":"Polygon","coordinates":[[[3,44],[3,45],[2,43],[3,44]]]});
+print intersection = geo_intersection_2polygons(polygon1, polygon2)
+```
+
+|intersection|
+|---|
+|{"type": "GeometryCollection", "geometries": []}|
+
+The following example finds all counties in USA which intersect with area of interest polygon.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let area_of_interest = dynamic({"type":"Polygon","coordinates":[[[-73.96213352680206,40.775045280447145],[-73.9631313085556,40.774578106920345],[-73.96207988262177,40.77416780398293],[-73.96213352680206,40.775045280447145]]]});
 US_Counties
 | project name = features.properties.NAME, county = features.geometry
-| where geo_intersects_2polygons(county, area_of_interest)
-| project name
+| project name, intersection = geo_intersection_2polygons(county, area_of_interest)
+| where array_length(intersection.geometries) != 0
 ```
 
-|name|
-|---|
-|New York|
+|name|intersection|
+|---|---|
+|New York|{"type": "Polygon","coordinates": [[[-73.96213352680206, 40.775045280447145], [-73.9631313085556, 40.774578106920345], [-73.96207988262177,40.77416780398293],[-73.96213352680206, 40.775045280447145]]]}|
 
 The following example will return a null result because one of the polygons is invalid.
 
@@ -81,9 +120,9 @@ The following example will return a null result because one of the polygons is i
 ```kusto
 let central_park_polygon = dynamic({"type":"Polygon","coordinates":[[[-73.9495,40.7969],[-73.95807266235352,40.80068603561921],[-73.98201942443848,40.76825672305777],[-73.97317886352539,40.76455136505513],[-73.9495,40.7969]]]});
 let invalid_polygon = dynamic({"type":"Polygon"});
-print isnull(geo_intersects_2polygons(invalid_polygon, central_park_polygon))
+print isnull(geo_intersection_2polygons(invalid_polygon, central_park_polygon))
 ```
 
 |print_0|
 |---|
-|True|
+|1|
