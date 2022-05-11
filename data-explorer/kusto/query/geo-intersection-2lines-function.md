@@ -42,7 +42,7 @@ dynamic({"type": "MultiLineString","coordinates": [ [ line_1, line_2 ,..., line_
 
 ## Examples
 
-The following example calculates intersection between two lines. In this case the result is a point.
+The following example calculates intersection between two lines. In this case, the result is a point.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -55,7 +55,7 @@ print intersection = geo_intersection_2lines(lineString1, lineString2)
 |---|
 |{"type": "Point","coordinates": [-73.979837116670978,40.783989289772165]}|
 
-The following example calculates intersection between two lines. In this case the result is a line.
+The following example calculates intersection between two lines. In this case, the result is a line.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -67,7 +67,7 @@ print intersection = geo_intersection_2lines(line, line)
 |---|
 |{"type": "LineString","coordinates": [[ -73.978929, 40.785155],[ -73.980903, 40.782621]]}|
 
-The following two lines does not intersect.
+The following two lines do not intersect.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

@@ -47,7 +47,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 
 ## Examples
 
-The following example calculates intersection between two polygons. In this case the result is a polygon.
+The following example calculates intersection between two polygons. In this case, the result is a polygon.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -60,7 +60,7 @@ print intersection = geo_intersection_2polygons(polygon1, polygon2)
 |---|
 |{"type": "Polygon",  "coordinates": [[[-73.962105776437156,40.774591360999679],[-73.962642403166868,40.774807020251778],[-73.9631313085556,40.774578106920352],[-73.962079882621765,40.774167803982927],[-73.962105776437156,40.774591360999679]    ]  ]}|
 
-The following example calculates intersection between two polygons. In this case the result is a point.
+The following example calculates intersection between two polygons. In this case, the result is a point.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

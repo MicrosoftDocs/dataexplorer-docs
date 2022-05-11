@@ -57,7 +57,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 
 ## Examples
 
-The following example calculates intersection between line and polygon. In this case the result is a line.
+The following example calculates intersection between line and polygon. In this case, the result is a line.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -70,7 +70,7 @@ print intersection = geo_intersection_line_with_polygon(lineString, polygon)
 |---|
 |{"type": "LineString","coordinates": [[-73.975611956578192,40.78060906714618],[-73.974552,40.779761]]}|
 
-The following example calculates intersection between line and polygon. In this case the result is a multiline.
+The following example calculates intersection between line and polygon. In this case, the result is a multiline.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
