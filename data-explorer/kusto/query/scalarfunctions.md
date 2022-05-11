@@ -337,7 +337,10 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[geo_distance_point_to_polygon()](geo-distance-point-to-polygon-function.md)|Calculates the shortest distance between a coordinate and a polygon or multipolygon on Earth.|
 |[geo_intersects_2lines()](geo-intersects-2lines-function.md)|Calculates whether the two lines or multilines intersects.|
 |[geo_intersects_2polygons()](geo-intersects-2polygons-function.md)|Calculates whether the two polygons or multipolygons intersects.|
-|[geo_intersects_line_with_polygon()](geo-intersects-line-with-polygon-function.md)|Calculates whether the lines or multiline intersects with polygon or a multipolygon.|
+|[geo_intersects_line_with_polygon()](geo-intersects-line-with-polygon-function.md)|Calculates whether the line or multiline intersects with polygon or multipolygon.|
+|[geo_intersection_2lines()](geo-intersection-2lines-function.md)|Calculates the intersection of two lines or multilines.|
+|[geo_intersection_2polygons()](geo-intersection-2polygons-function.md)|Calculates the intersection of two polygons or multipolygons.|
+|[geo_intersection_line_with_polygon()](geo-intersection-line-with-polygon-function.md)|Calculates the intersection of line or multiline with polygon or multipolygon.|
 |[geo_point_in_circle()](geo-point-in-circle-function.md)|Calculates whether the geospatial coordinates are inside a circle on Earth.|
 |[geo_point_in_polygon()](geo-point-in-polygon-function.md)|Calculates whether the geospatial coordinates are inside a polygon or a multipolygon on Earth.|
 |[geo_point_to_geohash()](geo-point-to-geohash-function.md)|Calculates the Geohash string value for a geographic location.|
