@@ -89,7 +89,7 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 ## Event user properties mapping
 
-There is no support for enriching IoT Hub events payload with user properties. Consider embedding user properties in the event body upstream.
+There is no support for enriching the IoT Hub events payload with user properties. Consider embedding user properties in the event body upstream.
 
 ## IoT Hub connection
 
