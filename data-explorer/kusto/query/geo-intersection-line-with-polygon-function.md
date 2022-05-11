@@ -97,6 +97,39 @@ print intersection = geo_intersection_line_with_polygon(lineString, polygon)
 |---|
 |{"type": "GeometryCollection","geometries": []}|
 
+The following example finds all roads in NYC GeoJSON roads table which intersects with area of interest literal polygon.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let area_of_interest = dynamic({"type":"Polygon","coordinates":[[[-73.95768642425537,40.80065354924362],[-73.9582872390747,40.80089719667298],[-73.95869493484497,40.80050736035672],[-73.9580512046814,40.80019873831593],[-73.95768642425537,40.80065354924362]]]});
+NY_Manhattan_Roads
+| project name = features.properties.Label, road = features.geometry
+| project name, intersection = geo_intersection_line_with_polygon(road, area_of_interest)
+| where array_length(intersection.geometries) != 0
+```
+
+|name|intersection|
+|---|---|
+|Central Park W|{"type": "MultiLineString","coordinates": [[ [-73.958295846836933,      40.800316027289647    ],    [      -73.9582724,      40.8003415    ]  ],  [    [      -73.958413422194482,      40.80037239620097    ],    [      -73.9584093,      40.8003797    ]  ]]}|
+|Frederick Douglass Cir|{"type": "LineString","coordinates": [  [ -73.9579272943862,    40.800751229494182  ],  [    -73.9579019,    40.8007238  ],  [    -73.9578688,    40.8006749  ],  [    -73.9578508,    40.8006203  ],  [    -73.9578459,    40.800570199999996  ],  [    -73.9578484,    40.80053310000001  ],  [  -73.9578627,    40.800486700000008  ],  [    -73.957913,    40.800421100000008  ],  [    -73.9579668,    40.8003923  ],  [    -73.9580189,    40.80037260000001  ],  [    -73.9580543,    40.8003616  ],  [    -73.9581237,    40.8003395  ],  [  -73.9581778,    40.8003365  ],  [    -73.9582724,    40.8003415  ],  [-73.958308,    40.8003466  ],  [    -73.9583328,    40.8003517  ],  [    -73.9583757,    40.8003645  ],  [    -73.9584093,    40.8003797  ],  [    -73.9584535,    40.80041099999999  ],  [   -73.9584818,    40.8004536  ],  [    -73.958507000000012,    40.8004955  ],  [    -73.9585217,    40.800562400000004  ],  [    -73.9585282,    40.8006155  ],  [    -73.958416200000016,    40.8007325  ],  [    -73.9583541,    40.8007785  ],  [ -73.9582772,    40.800811499999995  ],  [    -73.9582151,    40.8008285  ],  [    -73.958145918999392,    40.800839887820239  ]]}|
+|W 110th St|{"type": "MultiLineString","coordinates": [  [  [  -73.957828446036331,      40.800476476316327    ],    [      -73.9578627,      40.800486700000008    ]  ],  [    [      -73.9585282,      40.8006155    ],    [      -73.958565492035873,      40.800631133466972    ]  ],  [ [  -73.958416200000016,      40.8007325    ],    [      -73.958446850928084,      40.800744577466617    ]  ]]}|
+|West Dr|{"type": "LineString","coordinates": [  [    -73.9580543,    40.8003616  ],  [-73.958009693938735, 40.800250494588468  ]]}|
+
+The following example finds all counties in USA which intersect with area of interest literal LineString.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let area_of_interest = dynamic({"type":"LineString","coordinates":[[-73.97159099578857,40.794513338780895],[-73.96738529205322,40.792758888618756],[-73.96978855133057,40.789769718601505]]});
+US_Counties
+| project name = features.properties.NAME, county = features.geometry
+| project name, intersection = geo_intersection_line_with_polygon(area_of_interest, county)
+| where array_length(intersection.geometries) != 0
+```
+
+|name|intersection|
+|---|---|
+|New York|{"type": "LineString","coordinates": [[-73.971590995788574, 40.794513338780895], [-73.967385292053223, 40.792758888618756],[-73.969788551330566, 40.789769718601512]]}|
+
 The following example will return a null result because the LineString is invalid.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->

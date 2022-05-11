@@ -86,7 +86,7 @@ print intersection = geo_intersection_2polygons(polygon1, polygon2)
 |---|
 |{"type": "GeometryCollection","geometries": [<br>{ "type": "Point", "coordinates": [2, 45]},<br>{ "type": "Polygon", "coordinates": [[[1.3227075526410679,45.003909145068739],[1.0404565374899824,45.004356403066552],[1.005,44.943],[1.356,44.937],[1.3227075526410679,45.003909145068739]]]}]}|
 
-The following two polygons does not intersect.
+The following two polygons do not intersect.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -98,6 +98,21 @@ print intersection = geo_intersection_2polygons(polygon1, polygon2)
 |intersection|
 |---|
 |{"type": "GeometryCollection", "geometries": []}|
+
+The following example finds all counties in USA which intersect with area of interest polygon.
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let area_of_interest = dynamic({"type":"Polygon","coordinates":[[[-73.96213352680206,40.775045280447145],[-73.9631313085556,40.774578106920345],[-73.96207988262177,40.77416780398293],[-73.96213352680206,40.775045280447145]]]});
+US_Counties
+| project name = features.properties.NAME, county = features.geometry
+| project name, intersection = geo_intersection_2polygons(county, area_of_interest)
+| where array_length(intersection.geometries) != 0
+```
+
+|name|intersection|
+|---|---|
+|New York|{"type": "Polygon","coordinates": [[[-73.96213352680206, 40.775045280447145], [-73.9631313085556, 40.774578106920345], [-73.96207988262177,40.77416780398293],[-73.96213352680206, 40.775045280447145]]]}|
 
 The following example will return a null result because one of the polygons is invalid.
 
