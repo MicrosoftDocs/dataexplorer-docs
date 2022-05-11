@@ -32,6 +32,7 @@ If your cluster already has the desired managed identity assigned to it, copy it
 
 1. Select **Access Control** and then select **+ Add** > **Add Role Assignment**.
 1. Grant the managed Identity **Storage Blob Data Reader** permissions to the storage account.
+1. If you wish to use the **DeleteSourceOnSuccess** source option, grant the managed identity **Storage Blob Data Contributor** permission instead.
 
 > [!IMPORTANT]
 >
