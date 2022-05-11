@@ -10,11 +10,9 @@ ms.date: 04/06/2022
 
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) is a real-time analytics and complex event-processing engine that is designed to analyze and process high volumes of fast streaming data from multiple sources simultaneously.
 
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, blobs written to blob containers and Azure Stream Analytics job. 
+
 An Azure Stream Analytics job consists of an input, query, and an output. There are several output types to which you can send transformed data. To create, edit, and test Stream Analytics job outputs, you can use the [Azure portal](/azure/stream-analytics/stream-analytics-quick-create-portal), [Azure PowerShell](/azure/stream-analytics/stream-analytics-quick-create-powershell), [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations), [REST API](/rest/api/streamanalytics/), and [Visual Studio](/azure/stream-analytics/stream-analytics-quick-create-vs). This article covers the Azure Data Explorer output connection.
-
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion (data loading) from Event Hubs, IoT Hubs, blobs written to blob containers and Azure Stream Analytics job.
-
-This article shows you how to create Azure Data Explorer output connection to Azure Stream Analytics job, a real time analytics and event processing engine service.
 
 ## Data format
 
@@ -26,14 +24,14 @@ This article shows you how to create Azure Data Explorer output connection to Az
 When setting up an [Azure Data Explorer output connection](/azure/stream-analytics/azure-database-explorer-output) to Azure Stream Analytics job, you specify target Azure Data Explorer cluster, database, and table name.
 
 > [!NOTE]
-> For Ingestion to successfully work, you need to make sure the:
+> For Ingestion to work successfully, you need to make sure the:
 >
 > * Number of columns in the Azure Stream Analytics job query match the Azure Data Explorer table, and are in the same order.
 > * Name of the columns and data type match between the Azure Stream Analytics SQL query and the Azure Data Explorer table.
 
 ## Create an Azure Data Explorer output connection
 
-If you don't already have one, [create an Azure Stream Analytics job](/azure/stream-analytics/stream-analytics-quick-create-portal). The Azure Stream Analytics job transfers events from an input source to an Azure Data Explorer cluster using the SQL query defined in the job to transform the data. A target table in Azure Data Explorer database is also needed to ingest this data. Then, you can create the Azure Data Explorer output connection to Azure Stream Analytics job, which can be managed through the Azure portal or with the Azure Resource Manager template.
+If you don't already have one, [create an Azure Stream Analytics job](/azure/stream-analytics/stream-analytics-quick-create-portal). The Azure Stream Analytics job transfers events from an input source to an Azure Data Explorer cluster using the SQL query defined in the job to transform the data. Also, a target table in Azure Data Explorer database is necessary, to ingest this data. Then, you can create the Azure Data Explorer output connection to Azure Stream Analytics job, which can be managed through the Azure portal or with the Azure Resource Manager template.
 
 > [!NOTE]
 > Azure Data Explorer output connection only supports [Managed Identity](/azure/active-directory/managed-identities-azure-resources/overview) for authentication. As part of output creation, database monitor and database ingestor permission will be granted to Azure Stream Analytics job MSI.
