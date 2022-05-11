@@ -57,7 +57,9 @@ US_States
 ```
 
 |polygons|
-|{"type": "MultiPolygon", "coordinates": [ ... ]}|
+|---|
+|{ "type": "MultiPolygon", "coordinates": [ ... ]]}|
+
 
 The following example returns True because one of the polygons is invalid.
 
