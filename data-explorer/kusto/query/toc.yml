@@ -916,14 +916,20 @@ items:
     href: geo-point-to-s2cell-function.md
   - name: geo_geohash_to_central_point()
     href: geo-geohash-to-central-point-function.md
+  - name: geo_geohash_neighbors()
+    href: geo-geohash-neighbors-function.md
   - name: geo_geohash_to_polygon()
     href: geo-geohash-to-polygon-function.md
   - name: geo_s2cell_to_central_point()
     href: geo-s2cell-to-central-point-function.md
+  - name: geo_s2cell_neighbors()
+    href: geo-s2cell-neighbors-function.md
   - name: geo_s2cell_to_polygon()
     href: geo-s2cell-to-polygon-function.md
   - name: geo_h3cell_to_central_point()
     href: geo-h3cell-to-central-point-function.md
+  - name: geo_h3cell_neighbors()
+    href: geo-h3cell-neighbors-function.md
   - name: geo_h3cell_to_polygon()
     href: geo-h3cell-to-polygon-function.md
   - name: geo_h3cell_parent()
