@@ -341,19 +341,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[geo_point_in_circle()](geo-point-in-circle-function.md)|Calculates whether the geospatial coordinates are inside a circle on Earth.|
 |[geo_point_in_polygon()](geo-point-in-polygon-function.md)|Calculates whether the geospatial coordinates are inside a polygon or a multipolygon on Earth.|
 |[geo_point_to_geohash()](geo-point-to-geohash-function.md)|Calculates the Geohash string value for a geographic location.|
-|[geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of a Geohash rectangular area.|
-|[geo_geohash_to_polygon()](geo-geohash-to-polygon-function.md)|Calculates the polygon that represents the geohash rectangular area.|
 |[geo_point_to_s2cell()](geo-point-to-s2cell-function.md)|Calculates the S2 Cell token string value for a geographic location.|
-|[geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of an S2 Cell.|
-|[geo_s2cell_to_polygon()](geo-s2cell-to-polygon-function.md)|Calculates the polygon that represents the S2 Cell rectangular area.|
 |[geo_point_to_h3cell()](geo-point-to-h3cell-function.md)|Calculates the H3 Cell token string value for a geographic location.|
-|[geo_h3cell_to_central_point()](geo-h3cell-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of an H3 Cell.|
-|[geo_h3cell_to_polygon()](geo-h3cell-to-polygon-function.md)|Calculates the polygon that represents the H3 Cell rectangular area.|
-|[geo_h3cell_parent()](geo-h3cell-parent-function.md)|Calculates the H3 cell parent.|
-|[geo_h3cell_children()](geo-h3cell-children-function.md)|Calculates the H3 cell children.|
-|[geo_h3cell_level()](geo-h3cell-level-function.md)|Calculates the H3 cell resolution.|
-|[geo_h3cell_rings()](geo-h3cell-rings-function.md)|Calculates the H3 cell Rings.|
-|[geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md)|Calculates S2 Cell tokens that cover a polygon or multipolygon on Earth. Useful geospatial join tool.|
 |[geo_line_centroid()](geo-line-centroid-function.md)|Calculates the centroid of line or a multiline on Earth.|
 |[geo_line_densify()](geo-line-densify-function.md)|Converts planar line edges to geodesics by adding intermediate points.|
 |[geo_line_length()](geo-line-length-function.md)|Calculates the total length of line or a multiline on Earth.|
@@ -362,7 +351,20 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[geo_polygon_centroid()](geo-polygon-centroid-function.md)|Calculates the centroid of polygon or a multipolygon on Earth.|
 |[geo_polygon_densify()](geo-polygon-densify-function.md)|Converts polygon or multipolygon planar edges to geodesics by adding intermediate points.|
 |[geo_polygon_perimeter()](geo-polygon-perimeter-function.md)|Calculates the length of the boundary of polygon or a multipolygon on Earth.|
-[[geo_union_lines_array()](geo-union-lines-array-function.md)|Calculates the union of lines or multilines on Earth.|
+|[geo_polygon_simplify()](geo-polygon-simplify-function.md)|Simplifies polygon or a multipolygon by replacing nearly straight chains of short edges with a single long edge on Earth.|
+|[geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md)|Calculates S2 Cell tokens that cover a polygon or multipolygon on Earth. Useful geospatial join tool.|
+|[geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of a Geohash rectangular area.|
+|[geo_geohash_to_polygon()](geo-geohash-to-polygon-function.md)|Calculates the polygon that represents the geohash rectangular area.|
+|[geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of an S2 Cell.|
+|[geo_s2cell_to_polygon()](geo-s2cell-to-polygon-function.md)|Calculates the polygon that represents the S2 Cell rectangular area.|
+|[geo_h3cell_to_central_point()](geo-h3cell-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of an H3 Cell.|
+|[geo_h3cell_to_polygon()](geo-h3cell-to-polygon-function.md)|Calculates the polygon that represents the H3 Cell rectangular area.|
+|[geo_h3cell_parent()](geo-h3cell-parent-function.md)|Calculates the H3 cell parent.|
+|[geo_h3cell_children()](geo-h3cell-children-function.md)|Calculates the H3 cell children.|
+|[geo_h3cell_level()](geo-h3cell-level-function.md)|Calculates the H3 cell resolution.|
+|[geo_h3cell_rings()](geo-h3cell-rings-function.md)|Calculates the H3 cell Rings.|
+|[geo_simplify_polygons_array()](geo-simplify-polygons-array-function.md)|Simplifies polygons by replacing nearly straight chains of short edges with a single long edge, while ensuring mutual boundaries consistency related to each other, on Earth.|
+|[geo_union_lines_array()](geo-union-lines-array-function.md)|Calculates the union of lines or multilines on Earth.|
 |[geo_union_polygons_array()](geo-union-polygons-array-function.md)|Calculates the union of polygons or multipolygons on Earth.|
 
 ## Hash functions

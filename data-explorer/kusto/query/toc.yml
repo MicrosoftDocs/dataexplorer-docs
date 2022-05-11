@@ -900,6 +900,8 @@ items:
     href: geo-polygon-densify-function.md
   - name: geo_polygon_perimeter()
     href: geo-polygon-perimeter-function.md
+  - name: geo_polygon_simplify()
+    href: geo-polygon-simplify-function.md  
   - name: geo_polygon_to_s2cells()
     href: geo-polygon-to-s2cells-function.md
   - name: geo_point_in_circle()
@@ -932,6 +934,8 @@ items:
     href: geo-h3cell-level-function.md
   - name: geo_h3cell_rings()
     href: geo-h3cell-rings-function.md
+  - name: geo_simplify_polygons_array()
+    href: geo-simplify-polygons-array-function.md
   - name: geo_union_lines_array()
     href: geo-union-lines-array-function.md
   - name: geo_union_polygons_array()
