@@ -87,6 +87,10 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 [!INCLUDE [data-explorer-iot-system-properties](includes/data-explorer-iot-system-properties.md)]
 
+## Event user properties mapping
+
+There is no support for enriching the IoT Hub events payload with user properties. Consider embedding user properties in the event body upstream.
+
 ## IoT Hub connection
 
 > [!Note]
