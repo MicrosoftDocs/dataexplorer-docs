@@ -23,7 +23,7 @@ T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), start
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | tabular | &check; | The input tabular expression.|
+| *T* | tabular expression | &check; | The input tabular expression.|
 | *IdColumn* | string | &check; | The name of the column with ID values that represent user activity. |
 | *TimelineColumn* | string | &check; | The name of the column that represents timeline. |
 | *Start* | datetime |   | Scalar with value of the analysis start period. |
