@@ -19,13 +19,15 @@ T | evaluate activity_metrics(id, datetime_column, startofday(ago(30d)), startof
 
 ## Arguments
 
-* *T*: The input tabular expression.
-* *IdColumn*: The name of the column with ID values that represent user activity.
-* *TimelineColumn*: The name of the column that represents timeline.
-* *Start*: (optional) Scalar with value of the analysis start period.
-* *End*: (optional) Scalar with value of the analysis end period.
-* *Window*: Scalar with value of the analysis window period. Can be either a numeric, datetime, timestamp, or string value. Strings are either `week`, `month`, `year`, in which case all periods will be [startofweek](startofweekfunction.md), [startofmonth](startofmonthfunction.md), [startofyear](startofyearfunction.md) respectively.
-* *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the activity metrics calculation.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | tabular expression | &check; | The input tabular expression. |
+| *IdCoumn* | string | &check; | The name of the column with ID values that represent user activity. |
+| *TimelineColumn* | string | &check; | The name of the column that represents timeline. |
+| *Start* | datetime |  | Scalar with value of the analysis start period. |
+| *End* | datetime |  | Scalar with value of the analysis end period. |
+| *Window* | decimal/datetime/timespan | &check; | Scalar with value of the analysis window period. Can be either a numeric, datetime, timestamp, or string value. Strings are either `week`, `month`, `year`, in which case all periods will be [startofweek](startofweekfunction.md), [startofmonth](startofmonthfunction.md), [startofyear](startofyearfunction.md) respectively. |
+| *dim1*, *dim2*, ... | table array |  | List of the dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
 

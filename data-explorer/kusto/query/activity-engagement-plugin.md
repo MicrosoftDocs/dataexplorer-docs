@@ -21,14 +21,16 @@ T | evaluate activity_engagement(id, datetime_column, 1d, 30d)
 
 ## Arguments
 
-* *T*: The input tabular expression.
-* *IdColumn*: The name of the column with ID values that represent user activity.
-* *TimelineColumn*: The name of the column that represents timeline.
-* *Start*: (optional) Scalar with value of the analysis start period.
-* *End*: (optional) Scalar with value of the analysis end period.
-* *InnerActivityWindow*: Scalar with value of the inner-scope analysis window period.
-* *OuterActivityWindow*: Scalar with value of the outer-scope analysis window period.
-* *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the activity metrics calculation.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | tabular expression | &check; | The input tabular expression. |
+| *IdCoumn* | string | &check; | The name of the column with ID values that represent user activity. |
+| *TimelineColumn* | string | &check; | The name of the column that represents timeline. |
+| *Start* | datetime |  | Scalar with value of the analysis start period. |
+| *End* | datetime |  | Scalar with value of the analysis end period. |
+| *InnerActivityWindow* | timespan | &check; | Scalar with value of the inner-scope analysis window period. |
+| *OuterActivityWindow* | timespan | &check; | Scalar with value of the outer-scope analysis window period. |
+| *dim1*, *dim2*, ... | table array |  | List of the dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
 
