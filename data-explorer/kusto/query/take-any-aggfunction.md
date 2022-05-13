@@ -38,6 +38,9 @@ per value of the compound group key.
 When the function is provided with a single column reference, it will attempt to
 return a non-null/non-empty value, if such value is present.
 
+> [!NOTE]
+> `take_any()` function does not select a value according to a pseudo-random function. Multiple results of the function can't be expected to follow a random pattern.
+
 As a result of the random nature of this function, using it multiple times in
 a single application of the `summarize` operator is not equivalent to using
 it a single time with multiple expressions. The former may have each application
