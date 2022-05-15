@@ -108,8 +108,8 @@ The following example shows sample client code for using request properties:
 #### Json body
 ```json
 {
-    "db": "databaseName",
-    "csl": "QueryHistory | where Duration > 4m and ClientActivityId contains 'unspecified'",
+    "db": "Samples",
+    "csl": "declare query_parameters (n:long); StormEvents | top n by StartTime asc",
     "properties": {
         "Options": {
             "maxmemoryconsumptionperiterator": 68719476736,
@@ -117,9 +117,7 @@ The following example shows sample client code for using request properties:
             "servertimeout": "50m"
         },
         "Parameters": {
-            "xIntValue": 111,
-            "xStrValue": "abc",
-            "xDoubleValue": 11.1
+            "n": 10
         }
     }
 }
@@ -128,15 +126,13 @@ The following example shows sample client code for using request properties:
 #### Csharp client
 ```csharp
 public static System.Data.IDataReader QueryKusto(
-    Kusto.Data.Common.ICslQueryProvider queryProvider,
-    string databaseName,
-    string query)
+    Kusto.Data.Common.ICslQueryProvider queryProvider)
 {
+    var databaseName = "Samples";
+    var query = "declare query_parameters (n:long); StormEvents | top n by StartTime asc";
     var queryParameters = new Dictionary<String, String>()
     {
-        { "xIntValue", "111" },
-        { "xStrValue", "abc" },
-        { "xDoubleValue", "11.1" }
+        { "n", "10" } // Will be parsed as long, according to the declare query_parameters statement in the query
     };
 
     // Query parameters (and many other properties) are provided
@@ -170,9 +166,7 @@ public static System.Data.IDataReader QueryKusto(
     {
         Console.WriteLine(
             "Failed invoking query '{0}' against Kusto."
-            + " To have the Kusto team investigate this failure,"
-            + " please open a ticket @ https://aka.ms/kustosupport,"
-            + " and provide: ClientRequestId={1}",
+            + " If contacting support, please provide this string: 'ClientRequestId={1}'",
             query, clientRequestProperties.ClientRequestId);
         return null;
     }
