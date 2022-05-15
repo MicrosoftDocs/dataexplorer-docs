@@ -9,6 +9,23 @@ ms.date: 11/09/2021
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
+## November 2021
+
+This section lists the major changes to docs during November 2021.
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Automatic stop of inactive Azure Data Explorer clusters](auto-stop-clusters.md) | New article. Inactive clusters are automatically stopped. |
+| [Solution architectures](solution-architectures.md) | New article. This article references the architectures that include Azure Data Explorer. |
+| [Delete data from Azure Data Explorer](delete-data.md) | Updated article. Added new sections for Purge and Soft Delete. |
+| [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) | Updated article. Powershell link updated and other formatting changes. |
+
+## Concepts
+
+| [Soft delete](/azure/data-explorer/kusto/concepts/data-soft-delete.md) | New article. This article describes the Data soft-delete function in Azure Data Explorer. |
+
 ## October 2021
 
 This section lists the major changes to docs during October 2021.
@@ -18,10 +35,10 @@ This section lists the major changes to docs during October 2021.
 | Article title | Description |
 |--|--|
 | [Create an Event Grid data connection for Azure Data Explorer by using C#](data-connection-event-grid-csharp.md) | Updated article. Add Event Grid data connection from Azure portal.
-| [Create an Event Grid data connection for Azure Data Explorer by using Python](data-connection-event-grid-python.md) | Updated article. 
-| [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)  | Updated article. Add Event Grid data connection from Azure portal. 
-| [Event Grid data connection](ingest-data-event-grid-overview.md) | Updated article. Add Event Grid data connection from Azure portal. 
-| [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated article. Add Event Grid data connection from Azure portal. 
+| [Create an Event Grid data connection for Azure Data Explorer by using Python](data-connection-event-grid-python.md) | Updated article.
+| [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)  | Updated article. Add Event Grid data connection from Azure portal.
+| [Event Grid data connection](ingest-data-event-grid-overview.md) | Updated article. Add Event Grid data connection from Azure portal.
+| [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated article. Add Event Grid data connection from Azure portal.
 | [Add cluster principals for Azure Data Explorer by using C#](cluster-principal-csharp.md) | Updated article. Add AllDatabasesMonitor role
 | [Add cluster principals for Azure Data Explorer by using Python](cluster-principal-python.md)  | Updated article. Add AllDatabasesMonitor role
 | [Add cluster principals for Azure Data Explorer by using an Azure Resource Manager template](cluster-principal-resource-manager.md) | Updated article. Add AllDatabasesMonitor role
@@ -62,14 +79,14 @@ This section lists the major changes to docs during August 2021.
 | Article title | Description |
 |--|--|
 | [Use wizard for ingestion with LightIngest (preview)](generate-lightingest-command.md) | New article. Learn how to use a wizard for one-time ingestion of historical data with LightIngest.
-| [Use one-click ingestion to create an event hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. One click event hub experience. 
+| [Use one-click ingestion to create an event hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. One click event hub experience.
 | [Use LightIngest to ingest data into Azure Data Explorer](lightingest.md)| Updated article. Generate LightIngest commands - one click experience.
 
 ### Query
 
 | Article title | Description |
 |--|--|
-| [series_pow()](./kusto/query/series-powfunction.md)| New article. Calculates the element-wise power of two numeric series inputs. 
+| [series_pow()](./kusto/query/series-powfunction.md)| New article. Calculates the element-wise power of two numeric series inputs.
 | [Aggregation function types at a glance](./kusto/query/aggregation-functions.md) | New article. Lists aggregation functions, which perform a calculation on a set of values and return a single value.
 | [Scalar function types at a glance](./kusto/query/scalarfunctions.md) | Updated article. Updated aggregation function and added series_pow.
 | [materialized_view() function](./kusto/query/materialized-view-function.md) | Updated article. Updated aggregation function.
@@ -110,7 +127,7 @@ This section lists the major changes to docs during August 2021.
 
 | Article title | Description |
 |--|--|
-| [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string. 
+| [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string.
 | [take_any() (aggregation function)](kusto/query/take-any-aggfunction.md) | New article. Replaces any().
 | [take_anyif() (aggregation function)](kusto/query/take-anyif-aggfunction.md) | New article. Replaces anyif().
 | [replace_regex()](kusto/query/replace-regex-function.md) | Updated article. Replace() function changed to replace_regex().
@@ -163,7 +180,7 @@ This section lists the major changes to docs during May 2021.
 
 | Article title | Description |
 |--|--|
-| [Use follower databases](follower.md) | Updated article. Add table level sharing. | 
+| [Use follower databases](follower.md) | Updated article. Add table level sharing. |
 
 ## April 2021
 
