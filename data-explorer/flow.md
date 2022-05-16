@@ -168,11 +168,11 @@ The following steps show how to create a connection from within a flow.
 
 ## Authentication
 
-You can authenticate with user credentials or with an Azure Active Directory (Azure AD) application. To authentication with credentials, select **Sign in**, and enter your credentials.
+You can authenticate with user credentials or with an Azure Active Directory (Azure AD) application. To authenticate with credentials, select **Sign in**, and enter your credentials.
 
 To authenticate with a Service Principal:
 
-1. Select **Sign in**.
+1. Select **Connect with Service Principal**.
 1. Fill out the form with the following information:
 
     - **Connection Name**: A descriptive and meaningful name for the new connection. In this example, we've used "MyApplication".
