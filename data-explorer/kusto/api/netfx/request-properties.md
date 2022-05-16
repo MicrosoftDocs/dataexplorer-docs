@@ -98,6 +98,9 @@ in the HTTP header, and can also be set if HTTP GET is used.
 Kusto queries can refer to query parameters by using a specialized [declare query-parameters](../../query/queryparametersstatement.md) statement in the query text. This statement lets client applications parameterize Kusto queries based on user input, in a secure manner, and without fear of injection attacks.
 
 Programmatically, set properties values by using the `ClearParameter`, `SetParameter`, and `HasParameter` methods.
+`SetParameter` provides a number of overloads for the common data types (such as `string` and `long`);
+for all other types, use a string that represents the value as a KQL literal, and make sure that the
+`declare query_parameters` statement declares that parameter to the correct scalar data type.
 
 In the REST API, query parameters appear in the same JSON-encoded string as the other request properties.
 
@@ -109,7 +112,7 @@ The following example shows sample client code for using request properties:
 ```json
 {
     "db": "Samples",
-    "csl": "declare query_parameters (n:long); StormEvents | top n by StartTime asc",
+    "csl": "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc",
     "properties": {
         "Options": {
             "maxmemoryconsumptionperiterator": 68719476736,
@@ -117,7 +120,7 @@ The following example shows sample client code for using request properties:
             "servertimeout": "50m"
         },
         "Parameters": {
-            "n": 10
+            "n": 10, "d": "dynamic([\"ATLANTIC SOUTH\"])"
         }
     }
 }
@@ -129,10 +132,11 @@ public static System.Data.IDataReader QueryKusto(
     Kusto.Data.Common.ICslQueryProvider queryProvider)
 {
     var databaseName = "Samples";
-    var query = "declare query_parameters (n:long); StormEvents | top n by StartTime asc";
+    var query = "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc";
     var queryParameters = new Dictionary<String, String>()
     {
-        { "n", "10" } // Will be parsed as long, according to the declare query_parameters statement in the query
+        { "n", "10" }, // Will be parsed as long, according to the declare query_parameters statement in the query
+        { "d", "dynamic([\"ATLANTIC SOUTH\"])" } // Will be parsed as dynamic, according to the declare query_parameters statement in the query
     };
 
     // Query parameters (and many other properties) are provided
