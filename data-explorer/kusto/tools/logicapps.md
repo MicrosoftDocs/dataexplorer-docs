@@ -17,11 +17,11 @@ Logic App and :::no-loc text="Power Automate"::: are built on the same connector
 1. Open the [Microsoft Azure portal](https://ms.portal.azure.com/).
 1. Search for `logic app` and select it.
 
-    :::image type="content" source="./images/logicapps/logicapp-search.png" alt-text="Screenshot of Azure portal, showing the search for Logic app." lightbox="./images/logicapps/logicapp-search.png#lightbox":::
+    :::image type="content" source="images/logicapps/logicapp-search.png" alt-text="Screenshot of the Azure portal, showing the search for Logic app." lightbox="images/logicapps/logicapp-search.png#lightbox":::
 
 1. Select **+Add**.
 
-    :::image type="content" source="images/logicapps/logicapp-add.png" alt-text="Screenshot of Azure portal, showing the add logic app action.":::
+    :::image type="content" source="images/logicapps/logicapp-add.png" alt-text="Screenshot of the Azure portal, showing the add logic app action.":::
 
 1. Enter the required details of the form:
     * Subscription
@@ -32,15 +32,15 @@ Logic App and :::no-loc text="Power Automate"::: are built on the same connector
     * Log analysis on or off
 1. Select **Review + create**.
 
-    :::image type="content" source="images/logicapps/logicapp-create-new.png" alt-text="Screenshot of Azure portal, showing the create logic app.":::
+    :::image type="content" source="images/logicapps/logicapp-create-new.png" alt-text="Screenshot of the Azure portal, showing the create logic app.":::
 
 1. When the Logic App is created, select **Edit**.
 
-    :::image type="content" source="images/logicapps/logicapp-editdesigner.png" alt-text="Screenshot of Azure portal, showing the edit logic app designer.":::
+    :::image type="content" source="images/logicapps/logicapp-editdesigner.png" alt-text="Screenshot of the Azure portal, showing the edit logic app designer.":::
 
 1. Create a blank Logic App.
 
-    :::image type="content" source="images/logicapps/logicapp-blanktemplate.png" alt-text="Screenshot of Azure portal, showing the logic app blank template.":::
+    :::image type="content" source="images/logicapps/logicapp-blanktemplate.png" alt-text="Screenshot of the Azure portal, showing the logic app blank template.":::
 
 1. Add recurrence action and select **Azure Kusto**.
 
