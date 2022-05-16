@@ -53,6 +53,7 @@ To specify an alternate database, set the *Database* [ingestion property](#inges
 ### Route event data to an alternate table
 
 You can also specify target table properties for each event, using event properties. The connection will dynamically route the data as specified in the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
+To specify an alternate table, set the *Table* [ingestion property](#ingestion-properties).
 
 > [!Note]
 > If **My data includes routing info** selected, you must provide the necessary routing information as part of the events properties.
