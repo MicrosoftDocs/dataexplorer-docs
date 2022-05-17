@@ -3,7 +3,7 @@ title: Configure a database using a Kusto Query Language script in Azure Data Ex
 description: Learn about how to use database script to run a Kusto Query Language script in Azure Data Explorer
 ms.reviewer: docohe
 ms.topic: how-to
-ms.date: 05/25/2021
+ms.date: 05/17/2022
 ---
 # Configure a database using a Kusto Query Language script
 
@@ -258,6 +258,14 @@ Use the following settings:
 | *clusterName* | The name of the cluster where the script will run. |
 | *databaseName* | The name of the database under which the script will run. |
 | *scriptName* | The name of the script when using an external file to supply the script. |
+
+## Limitations
+
+*  Inline script is only supported in Azure Data Explorer while Storage Account Script is also supported in Synapse Data Explorer pools.
+*  Two scripts can't be added at the same time on the same cluster. Adding two scripts results in the following error: `Code="ServiceIsInMaintenance"`.  You can work around the issue by placing a dependency between the two scripts so that they are created sequentially.
+    * A script can't be removed while another is being added.
+    * Two scripts can't be removed at the same time.
+    * These limitations only apply to script creation or removal.  Once script resources exist, you can run them in parallel.
 
 ## Troubleshooting
 
