@@ -36,6 +36,7 @@ Creates or alters a continuous export job.
 | `distributed` | `bool` | Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
 | `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100000 records. |
 | `useNativeParquetWriter` | `bool` | Use the new export implementaion when exporting to Parquet, this implementation is a more performant, resource light export mechanism. Note that an exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
+| `managedIdentity` | `string` | If you wish the continuous export will run on behalf of a managed identity, please specify it's object Id, or use the `system` hint for using the cluster's system managed identity. For more on managed identities, please read [here](/data-explorer/managed-identities-overview.md)  |
 
 ## Example
 
@@ -53,3 +54,5 @@ with
 | Name | ExternalTableName | Query | ForcedLatency | IntervalBetweenRuns | CursorScopedTables | ExportProperties |
 |--|--|--|--|--|--|--|
 | MyExport | ExternalBlob | S | 00:10:00 | 01:00:00 | [<br>  "['DB'].['S']"<br>] | {<br>  "SizeLimit": 104857600<br>} |
+
+## Continuous export 
