@@ -36,7 +36,7 @@ Creates or alters a continuous export job.
 | `distributed` | `bool` | Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
 | `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100000 records. |
 | `useNativeParquetWriter` | `bool` | Use the new export implementaion when exporting to Parquet, this implementation is a more performant, resource light export mechanism. Note that an exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
-| `managedIdentity` | `string` | To run the continuous export job on behalf of a managed identity, please specify it's object Id, or use the `system` reserved word for using the cluster's system managed identity. For more on managed identities, please read [here](/data-explorer/managed-identities-overview.md) |
+| `managedIdentity` | `string` | To run the continuous export job on behalf of a managed identity, please specify it's object Id, or use the `system` reserved word for using the cluster's system managed identity. For more on managed identities, please read [managed identity overview](/data-explorer/managed-identities-overview.md) |
 
 ## Example
 
@@ -57,7 +57,7 @@ with
 
 ## Continuous Export with Managed Identity
 
-Please see [managed identity overview](/data-explorer/managed-identities-overview.md) for more inforomation on how to set up and use managed identity with Continuous Exports. 
+Please see [managed identity overview](/data-explorer/managed-identities-overview.md) for more information on how to set up and use managed identity with Continuous Exports. 
 
 > [!NOTE]g
 >Continuous Export jobs exporting data to an External Table that uses impersonation authentication must run on behalf of a managed identity. 
