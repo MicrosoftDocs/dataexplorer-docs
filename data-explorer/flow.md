@@ -27,7 +27,7 @@ To use the connector, you must first add a trigger. You can define a trigger bas
 
 1. [Create a new flow](https://flow.microsoft.com/manage/flows/new), or, from the :::no-loc text="Power Automate"::: home page, select the **My flows** > **+ New flow**.
 
-    :::image type="content" source="media/flow/flow-newflow.png" alt-text="Screenshot of the Power Automate home page, showing My flows and New highlighted.":::
+    :::image type="content" source="media/flow/flow-new-flow.png" alt-text="Screenshot of the Power Automate home page, showing My flows and New highlighted.":::
 
 1. Select **Scheduled cloud flow**.
 
@@ -72,7 +72,7 @@ This action sends a query to the specified cluster. The actions that are added a
 
 The following example triggers a query every minute, and sends an email based on the query results. The query checks the number of records in the table, and then sends an email only if the number of records is greater than 0.
 
-:::image type="content" source="media/flow/flow-runquerylistresults-2-inline.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query action." lightbox="media/flow/flow-runquerylistresults-2.png":::
+:::image type="content" source="media/flow/flow-run-query-list-results-2-inline.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query action." lightbox="media/flow/flow-run-query-list-results-2.png":::
 
 > [!Note]
 > If the column has several records, the connector will run for each record in the column.
@@ -86,7 +86,7 @@ Use this action to visualize a KQL query result as a table or chart. For example
 
 In this example, the results of the query are returned as a timechart.
 
-:::image type="content" source="media/flow/flow-runquery.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query and render a chart action.":::
+:::image type="content" source="media/flow/flow-run-query.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query and render a chart action.":::
 
 > [!IMPORTANT]
 > In the **Cluster Name** field, enter the cluster URL.
@@ -97,7 +97,7 @@ This action runs control command in async mode and returns its ID, state and sta
 
 The following example triggers an async command to copy the sample 10 records from 'TransformedSysLogs' table to 'TargetTable'.
 
-:::image type="content" source="media/flow/flow-run-asynccontrolcommand.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run async control command action.":::
+:::image type="content" source="media/flow/flow-run-async-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run async control command action.":::
 
 ### Run control command and render a chart
 
@@ -114,7 +114,7 @@ Use this action to run a [control command](kusto/management/index.md) and get th
     - A time chart.
     - A bar chart.
 
-:::image type="content" source="media/flow/flow-runcontrolcommand.png" alt-text="Screenshot of Run control command and render a chart in recurrence pane.":::
+:::image type="content" source="media/flow/flow-run-control-command.png" alt-text="Screenshot of Run control command and render a chart in recurrence pane.":::
 
 > [!IMPORTANT]
 > In the **Cluster Name** field, enter the cluster URL
@@ -128,7 +128,7 @@ This action runs the show control command and returns the result that can be use
 
 The following example executes the **.show operation** command to find the status of an async command using an operation ID returned by an async command execution.
 
-:::image type="content" source="media/flow/flow-run-showcontrolcommand.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run show control command action.":::
+:::image type="content" source="media/flow/flow-run-show-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run show control command action.":::
 
 ### Email Kusto query results
 
@@ -160,11 +160,11 @@ The following steps show how to create a connection from within a flow.
 
 1. In **Run KQL query**, select the three dots at the top right of the power automate connector.
 
-    :::image type="content" source="media/flow/flow-addconnection.png" alt-text="Screenshot of Azure Data Explorer connection, showing the authentication option.":::
+    :::image type="content" source="media/flow/flow-add-connection.png" alt-text="Screenshot of Azure Data Explorer connection, showing the authentication option.":::
 
 1. Select **Add new connection**. When you connect for the first time, you're prompted to sign in to [authenticate the connection](#authentication).
 
-    :::image type="content" source="media/flow/flow-signin.png" alt-text="Screenshot of Azure Data Explorer connection, showing the sign-in option.":::
+    :::image type="content" source="media/flow/flow-sign-in.png" alt-text="Screenshot of Azure Data Explorer connection, showing the sign-in option.":::
 
 ## Authentication
 
@@ -183,11 +183,11 @@ To authenticate with a Service Principal:
     > [!Note]
     > Make sure your application is an [Azure AD application](./provision-azure-ad-app.md) and is authorized to run queries on your cluster.
 
-    :::image type="content" source="media/flow/flow-appauth.png" alt-text="Screenshot of Azure Data Explorer connection, showing the application authentication dialog box.":::
+    :::image type="content" source="media/flow/flow-app-auth.png" alt-text="Screenshot of Azure Data Explorer connection, showing the application authentication dialog box.":::
 
     When authentication is complete, verify that your flow uses the new connection.
 
-    :::image type="content" source="media/flow/flow-appauthcomplete.png" alt-text="Screenshot of the completed application authentication.":::
+    :::image type="content" source="media/flow/flow-app-auth-complete.png" alt-text="Screenshot of the completed application authentication.":::
 
     Once the connection is set, the flow runs using the application credentials.
 
@@ -198,28 +198,28 @@ To check if your flow works, check the flow's run history:
 1. Go to the [:::no-loc text="Power Automate"::: home page](https://flow.microsoft.com/).
 1. From the main menu, select [My flows](https://flow.microsoft.com/manage/flows).
 
-    :::image type="content" source="media/flow/flow-myflows.png" alt-text="Screenshot of Power Automate main menu, showing My flows highlighted":::
+    :::image type="content" source="media/flow/flow-my-flows.png" alt-text="Screenshot of Power Automate main menu, showing My flows highlighted.":::
 
 1. On the row of the flow you want to investigate, select the more commands icon, and then select **Run history**.
 
-    :::image type="content" source="media/flow//flow-runhistory.png" alt-text="Screenshot of My flows tab, showing Run history highlighted.":::
+    :::image type="content" source="media/flow//flow-run-history.png" alt-text="Screenshot of My flows tab, showing Run history highlighted.":::
 
     All flow runs are listed, with information about start time, duration, and status.
-    :::image type="content" source="media/flow/flow-runhistoryresults.png" alt-text="Screenshot of Run history results page.":::
+    :::image type="content" source="media/flow/flow-run-history-results.png" alt-text="Screenshot of Run history results page.":::
 
     For full details about the flow, on **[My flows](https://flow.microsoft.com/manage/flows)**, select the flow you want to investigate.
 
-    :::image type="content" source="media/flow/flow-fulldetails.png" alt-text="Screenshot of Run history full results page.":::
+    :::image type="content" source="media/flow/flow-full-details.png" alt-text="Screenshot of Run history full results page.":::
 
 To see why a run failed, select the run start time. The flow appears, and the step of the flow that failed is indicated by a red exclamation point. Expand the failed step to view its details. The **Details** pane on the right contains information about the failure so that you can troubleshoot it.
 
-:::image type="content" source="media/flow/flow-error.png" alt-text="Screenshot of flow error page.":::
+:::image type="content" source="media/flow/flow-error.png" alt-text="Screenshot of flow run, showing an error message.":::
 
 ## Timeout exceptions
 
 Your flow can fail and return a "RequestTimeout" exception if it runs for more than 90 seconds.
 
-:::image type="content" source="media/flow/flow-requesttimeout.png" alt-text="Screenshot of the flow request timeout exception error.":::
+:::image type="content" source="media/flow/flow-request-timeout.png" alt-text="Screenshot of the flow request timeout exception error.":::
 
 To fix a timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [Query best practices](kusto/query/best-practices.md).
 

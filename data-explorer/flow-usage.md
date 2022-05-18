@@ -110,7 +110,7 @@ Results:
 
 :::image type="content" source="media/flow-usage/flow-results-multiple-attachments.png" alt-text="Screenshot showing results of multiple email attachments, visualized as a pie chart and bar chart." lightbox="media/flow-usage/flow-results-multiple-attachments.png":::
 
-:::image type="content" source="media/flow-usage/flow-results-multiple-attachments-2.png" alt-text="Screenshot showing results of multiple email attachments, visualized as a time chart, Azure Data Explorer" lightbox="media/flow-usage/flow-results-multiple-attachments-2.png":::
+:::image type="content" source="media/flow-usage/flow-results-multiple-attachments-2.png" alt-text="Screenshot showing results of multiple email attachments, visualized as a time chart." lightbox="media/flow-usage/flow-results-multiple-attachments-2.png":::
 
 ## Next steps
 
