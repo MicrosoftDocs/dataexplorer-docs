@@ -20,7 +20,6 @@ This section lists the major changes to docs during April 2022.
 | - [Enable disk encryption for your cluster](cluster-encryption-disk.md)<br />- [Secure your cluster with encryption](cluster-encryption-overview.md)<br />- [Enable double encryption for your cluster](cluster-encryption-double.md) | New articles. Describing securing your cluster using disk encryption. |
 | - [Create a managed private endpoint for Azure Data Explorer](security-network-managed-private-endpoint-create.md)<br />- [Network security for Azure Data Explorer](security-network-overview.md)<br />- [Create a private endpoint for Azure Data Explorer](security-network-private-endpoint-create.md)<br />- [Troubleshoot private endpoints](security-network-private-endpoint-troubleshoot.md)<br />- [Private endpoints for Azure Data Explorer](security-network-private-endpoint.md)<br />- [Restrict outbound access from your Azure Data Explorer cluster](security-network-restrict-outbound-access.md)<br />- [Restrict public access to your Azure Data Explorer cluster](security-network-restrict-public-access.md)| New articles. Describes private endpoint security. |
 
-
 ### Management
 
 | Article title | Description |
@@ -57,7 +56,6 @@ This section lists the major changes to docs during March 2022.
 | [series_uv_anomalies_fl()](/azure/data-explorer/kusto/functions-library/series-uv-anomalies-fl.md) | New article. Describes the `series_uv_anomalies_fl()` user-defined function. |
 | [series_uv_change_points_fl()](/azure/data-explorer/kusto/functions-library/series-uv-change-points-fl.md) | New article. Describes the `series_uv_change_points_fl()` user-defined function. |
 
-
 ### Management
 
 | Article title | Description |
@@ -81,11 +79,8 @@ This section lists the major changes to docs during February 2022.
 |--|--|
 | [What is a Start-for-free cluster?](start-for-free.md) | New article. Describes how to get started with a free Azure Data Explorer cluster. |
 | [Cross-tenant data connection](ingest-data-cross-tenant.md) | New article. Describes how to create cross-tenant data connections for Azure Event Hubs or Azure Event Grid services in a different tenant. |
-<<<<<<< HEAD
 | [Automated provisioning in Azure Data Explorer](automated-deploy-overview.md) | New article. Maps different articles for automating provisioning. |
-=======
 | [Automated provisioning in Azure Data Explorer](automated-deploy-overview.md) | New article. Maps different articles for automating the provisioning of clusters. |
->>>>>>> 01659380db1a883fa04d54b387edf0a105ed2f77
 
 ### Functions library
 
@@ -134,9 +129,7 @@ This section lists the major changes to docs during November 2021.
 | Article title | Description |
 |--|--|
 | [Automatic stop of inactive Azure Data Explorer clusters](auto-stop-clusters.md) | New article. Inactive clusters are automatically stopped. |
-<<<<<<< HEAD
 | [Solution architectures](solution-architectures.md) | New article. Lists references the architectures that include Azure Data Explorer. |
-=======
 | [Solution architectures](solution-architectures.md) | New article. Lists references to architectures that include Azure Data Explorer. |
 >>>>>>> 01659380db1a883fa04d54b387edf0a105ed2f77
 | [Delete data from Azure Data Explorer](delete-data.md) | Updated article. Added new sections for Purge and Soft Delete. |
