@@ -261,7 +261,7 @@ Use the following settings:
 
 ## Limitations
 
-*  Inline script is only supported in Azure Data Explorer while Storage Account Script is also supported in Synapse Data Explorer pools.
+*  Script is only supported in Azure Data Explorer ; it isn't supported in Synapse Data Explorer pools
 *  Two scripts can't be added at the same time on the same cluster. Adding two scripts results in the following error: `Code="ServiceIsInMaintenance"`.  You can work around the issue by placing a dependency between the two scripts so that they are created sequentially.
     * A script can't be removed while another is being added.
     * Two scripts can't be removed at the same time.
