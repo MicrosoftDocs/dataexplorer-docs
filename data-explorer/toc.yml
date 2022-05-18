@@ -447,6 +447,8 @@ items:
         href: kusto/tools/logicapps.md
     - name: Cosmos DB
       href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
+    - name: Azure Data Explorer connector for Azure Stream Analytics
+      href: stream-analytics-connector.md
     - name: Apache Spark Connector
       href: spark-connector.md
       displayName: databricks
