@@ -146,16 +146,16 @@ This section lists the major changes to docs during October 2021.
 
 | Article title | Description |
 |--|--|
-| [Create an Event Grid data connection using C#](data-connection-event-grid-csharp.md) | Updated article. Add Event Grid data connection from Azure portal.
+| [Create an Event Grid data connection using C#](data-connection-event-grid-csharp.md) | Updated article. AddedEvent Grid data connection from Azure portal.
 | [Create an Event Grid data connection using Python](data-connection-event-grid-python.md) | Updated article.
-| [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)  | Updated article. Add Event Grid data connection from Azure portal.
-| [Event Grid data connection](ingest-data-event-grid-overview.md) | Updated article. Add Event Grid data connection from Azure portal.
-| [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated article. Add Event Grid data connection from Azure portal.
-| [Add cluster principals using C#](cluster-principal-csharp.md) | Updated article. Add AllDatabasesMonitor role
-| [Add cluster principals using Python](cluster-principal-python.md)  | Updated article. Add AllDatabasesMonitor role
-| [Add cluster principals using an Azure Resource Manager template](cluster-principal-resource-manager.md) | Updated article. Add AllDatabasesMonitor role
-| [Add database principals using Python](database-principal-python.md) | Updated article. Add AllDatabasesMonitor role
-| [Manage Azure Data Explorer database permissions](manage-database-permissions.md) | Updated article. Add AllDatabasesMonitor role
+| [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)  | Updated article. AddedEvent Grid data connection from Azure portal.
+| [Event Grid data connection](ingest-data-event-grid-overview.md) | Updated article. AddedEvent Grid data connection from Azure portal.
+| [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated article. Added Event Grid data connection from Azure portal.
+| [Add cluster principals using C#](cluster-principal-csharp.md) | Updated article. AddedAllDatabasesMonitor role.
+| [Add cluster principals using Python](cluster-principal-python.md)  | Updated article. Added AllDatabasesMonitor role.
+| [Add cluster principals using an Azure Resource Manager template](cluster-principal-resource-manager.md) | Updated article. Added AllDatabasesMonitor role.
+| [Add database principals using Python](database-principal-python.md) | Updated article. AddedAllDatabasesMonitor role.
+| [Manage Azure Data Explorer database permissions](manage-database-permissions.md) | Updated article. Added AllDatabasesMonitor role.
 
 ### Management
 
@@ -228,7 +228,7 @@ This section lists the major changes to docs during August 2021.
 | Article title | Description |
 |--|--|
 | [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
-| [Create an external table using the Web UI wizard](external-table.md) | Updated article. New UI
+| [Create an external table using the Web UI wizard](external-table.md) | Updated article. New UI.
 | [Use one-click ingestion to create an event hub data connection](one-click-event-hub.md)| Updated article. New UI.
 | [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md) | Updated article. New UI.
 | [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md) | Updated article. New UI.
@@ -267,7 +267,7 @@ This section lists the major changes to docs during June  2021.
 
 | Article title | Description |
 |--|--|
-| -[Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md)<br />- [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md) | Updated articles. Document batching types.
+| -[Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md)<br />- [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md) | Updated articles. Document batching types. |
 
 ### Query
 
@@ -291,7 +291,7 @@ This section lists the major changes to docs during May 2021.
 
 | Article title | Description |
 |--|--|
-| [Use follower databases](follower.md) | Updated article. Add table level sharing. |
+| [Use follower databases](follower.md) | Updated article. Added table level sharing. |
 
 ## April 2021
 
