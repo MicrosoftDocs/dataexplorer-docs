@@ -17,34 +17,32 @@ Logic App and :::no-loc text="Power Automate"::: are built on the same connector
 1. Open the [Microsoft Azure portal](https://ms.portal.azure.com/).
 1. Search for `logic app` and select it.
 
-    :::image type="content" source="images/logicapps/logicapp-search.png" alt-text="Screenshot of the Azure portal, showing the search for Logic app." lightbox="images/logicapps/logicapp-search.png#lightbox":::
+    :::image type="content" source="images/logicapps/logicapp-search.png" alt-text="Screenshot of the Azure portal, showing the search for Logic apps." lightbox="images/logicapps/logicapp-search.png#lightbox":::
 
 1. Select **+Add**.
 
-    :::image type="content" source="images/logicapps/logicapp-add.png" alt-text="Screenshot of the Azure portal, showing the add logic app action.":::
+    :::image type="content" source="images/logicapps/logicapp-add.png" alt-text="Screenshot of the Logic apps page, showing the add logic app button.":::
 
-1. Enter the required details of the form:
-    * Subscription
-    * Resource group
-    * Logic App name
-    * Region or Integration Service Environment
-    * Location
-    * Log analysis on or off
-1. Select **Review + create**.
+1. In the **Create Logic App** pane, fill out your app details, and then select **Review + create**.
+1. Verify that the details are correct, and then select **Create**.
 
-    :::image type="content" source="images/logicapps/logicapp-create-new.png" alt-text="Screenshot of the Azure portal, showing the create logic app.":::
+    :::image type="content" source="images/logicapps/logicapp-create-new.png" alt-text="Screenshot of the Create Logic App page, showing the Basics tab filled out.":::
 
-1. When the Logic App is created, select **Edit**.
+1. When the Logic App is created, go to the resource **Overview** page.
+1. On the left menu, select **Workflows**, and then select **+ Add**.
 
-    :::image type="content" source="images/logicapps/logicapp-editdesigner.png" alt-text="Screenshot of the Azure portal, showing the edit logic app designer.":::
+    :::image type="content" source="images/logicapps/logicapp-editdesigner.png" alt-text="Screenshot of the Workflows page, showing the add workflow button.":::
 
-1. Create a blank Logic App.
+1. In the **New workflow** pane, fill out the workflow details, and then select **Create**.
 
-    :::image type="content" source="images/logicapps/logicapp-blanktemplate.png" alt-text="Screenshot of the Azure portal, showing the logic app blank template.":::
+    :::image type="content" source="images/logicapps/logicapp-blanktemplate.png" alt-text="Screenshot of the New workflow page, showing the details filled out and the create button.":::
 
-1. Add recurrence action and select **Azure Kusto**.
+1. In the list of workflows, select the your workflow.
+1. On the left menu, select **Designer**.
+1. Add a recurrence trigger, and under **Choose an operation**, search for **Azure Data Explorer**, and select then the **Azure** results tab.
+1. Select **Azure Data Explorer**, and then under **Actions** choose the action you want to use.
 
-    :::image type="content" source="images/logicapps/logicapp-kustoconnector-inline.png" alt-text="Screenshot of Logic app, showing the Azure Data Explorer connector." lightbox="images/logicapps/logicapp-kustoconnector.png":::
+    :::image type="content" source="images/logicapps/logicapp-kustoconnector-inline.png" alt-text="Screenshot of the designer page, showing the Azure Data Explorer actions." lightbox="images/logicapps/logicapp-kustoconnector.png":::
 
 ## Next steps
 

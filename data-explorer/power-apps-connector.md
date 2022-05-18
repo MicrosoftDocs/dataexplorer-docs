@@ -9,7 +9,7 @@ ms.date: 05/04/2022
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data streaming from applications, websites, IoT devices, and more.
 
-:::no-loc text="Power Apps"::: is a suite of apps, services, connectors, and data platform that provides a rapid application development environment to build custom apps that connect to your business data. The :::no-loc text="Power Apps"::: connector is particularly useful if you have a large and growing collection of streaming data in Azure Data Explorer and want to build a low code, highly functional app to make use of this data. In this article, you will create a :::no-loc text="Power Apps"::: application to query Azure Data Explorer data. During this process, you will see the steps of data parameterization, retrieval, and presentation.
+:::no-loc text="Power Apps"::: is a suite of apps, services, connectors, and data platform that provides a rapid application development environment to build custom apps that connect to your business data. The :::no-loc text="Power Apps"::: connector is useful if you have a large and growing collection of streaming data in Azure Data Explorer and want to build a low code, highly functional app to make use of this data. In this article, you'll create an :::no-loc text="Power Apps"::: application to query Azure Data Explorer data. During this process, you'll see the steps of data parameterization, retrieval, and presentation.
 
 ## Prerequisites
 
@@ -53,7 +53,7 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 
 Under **Data**, you'll now see the **Azure Data Explorer** app in the list of connectors.
 
-   :::image type="content" source="media/power-apps-connector/adx-appears.png" alt-text="Screenshot of the app page, showing the Azure Data Explorer in the list od data connectors.":::
+   :::image type="content" source="media/power-apps-connector/adx-appears.png" alt-text="Screenshot of the app page, showing the Azure Data Explorer in the list of data connectors.":::
 
 ### Save Your App
 
@@ -62,7 +62,7 @@ Under **Data**, you'll now see the **Azure Data Explorer** app in the list of co
 
     :::image type="content" source="media/power-apps-connector/save-app.png" alt-text="Screenshot of the app page, showing the save button.":::
 
-1. Enter a meaningful name for your app. Click the **Save** button in the lower right.
+1. Enter a meaningful name for your app. Select the **Save** button in the lower right.
 
 ### Advanced Settings
 
@@ -122,7 +122,7 @@ Under **Data**, you'll now see the **Azure Data Explorer** app in the list of co
 
     :::image type="content" source="media/power-apps-connector/insert-data-table-small.png" alt-text="Screenshot of the app page, showing the repositioning of a table and adding border." lightbox="media/power-apps-connector/insert-data-table.png":::
 
-1. Select desired fields and click **Add** button. A preview of the selected data table appears.
+1. Select desired fields and select **Add** button. A preview of the selected data table appears.
 
     :::image type="content" source="media/power-apps-connector/preview-table.png" alt-text="Screenshot of the app page, showing a preview of the table populated with data.":::
 
