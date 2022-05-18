@@ -18,7 +18,7 @@ This section lists the major changes to docs during April 2022.
 | Article title | Description |
 |--|--|
 | - [Enable disk encryption for your cluster](cluster-encryption-disk.md)<br />- [Secure your cluster with encryption](cluster-encryption-overview.md)<br />- [Enable double encryption for your cluster](cluster-encryption-double.md) | New articles. Describing securing your cluster using disk encryption. |
-| - [Create a managed private endpoint for your cluster](security-network-managed-private-endpoint-create.md)<br />- [Network security for Azure Data Explorer](security-network-overview.md)<br />- [Create a private endpoint for your cluster](security-network-private-endpoint-create.md)<br />- [Troubleshoot private endpoints](security-network-private-endpoint-troubleshoot.md)<br />- [Private endpoints for your cluster](security-network-private-endpoint.md)<br />- [Restrict outbound access from your cluster](security-network-restrict-outbound-access.md)<br />- [Restrict public access to your cluster](security-network-restrict-public-access.md)| New articles. Describes private endpoint security. |
+| - [Create a managed private endpoint for your cluster](security-network-managed-private-endpoint-create.md)<br />- [Network security](security-network-overview.md)<br />- [Create a private endpoint for your cluster](security-network-private-endpoint-create.md)<br />- [Troubleshoot private endpoints](security-network-private-endpoint-troubleshoot.md)<br />- [Private endpoints for your cluster](security-network-private-endpoint.md)<br />- [Restrict outbound access from your cluster](security-network-restrict-outbound-access.md)<br />- [Restrict public access to your cluster](security-network-restrict-public-access.md)| New articles. Describes private endpoint security. |
 
 ### Management
 
@@ -36,7 +36,7 @@ This section lists the major changes to docs during March 2022.
 | Article title | Description |
 |--|--|
 | [Create a free Azure Data Explorer cluster](start-for-free-web-ui.md) | New article. Describes how to create a free cluster, ingest data, and run queries. |
-| - [Create an Event Grid data connection for Azure Data Explorer by using C\#](data-connection-event-grid-csharp.md)<br />- [Create an Event Grid data connection for Azure Data Explorer by using Python](data-connection-event-grid-python.md)<br />- [Create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template](data-connection-event-grid-resource-manager.md)<br />- [Create an Event Hubs data connection for Azure Data Explorer by using C\#](data-connection-event-hub-csharp.md)<br />- [Create an Event Hubs data connection for Azure Data Explorer by using Python](data-connection-event-hub-python.md)<br />- [Create an Event Hubs data connection for Azure Data Explorer by using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)<br />- [Create an IoT Hub data connection for Azure Data Explorer by using C\# (Preview)](data-connection-iot-hub-csharp.md)<br />- [Create an IoT Hub data connection for Azure Data Explorer by using Python (Preview)](data-connection-iot-hub-python.md)<br />- [Create an IoT Hub data connection for Azure Data Explorer by using Azure Resource Manager template](data-connection-iot-hub-resource-manager.md) | Updated articles. Added `databaseRouting` parameter and setting. |
+| - [Create an Event Grid data connection using C\#](data-connection-event-grid-csharp.md)<br />- [Create an Event Grid data connection using Python](data-connection-event-grid-python.md)<br />- [Create an Event Grid data connection using Azure Resource Manager template](data-connection-event-grid-resource-manager.md)<br />- [Create an Event Hubs data connection using C\#](data-connection-event-hub-csharp.md)<br />- [Create an Event Hubs data connection using Python](data-connection-event-hub-python.md)<br />- [Create an Event Hubs data connection using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)<br />- [Create an IoT Hub data connection using C\# (Preview)](data-connection-iot-hub-csharp.md)<br />- [Create an IoT Hub data connection using Python (Preview)](data-connection-iot-hub-python.md)<br />- [Create an IoT Hub data connection using Azure Resource Manager template](data-connection-iot-hub-resource-manager.md) | Updated articles. Added `databaseRouting` parameter and setting. |
 | - [Event Grid data connection](ingest-data-event-grid-overview.md)<br />- [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated articles. Added events routing setting. |
 | - [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)<br />- [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated articles. Added new Events Routing features including alternative databases and tables. |
 | - [IoT Hub data connection](ingest-data-iot-hub-overview.md)<br />- [Ingest data from IoT Hub into Azure Data Explorer](ingest-data-iot-hub.md) | Updated articles. Added new sections on target databases (multi-database data connection). |
@@ -146,15 +146,15 @@ This section lists the major changes to docs during October 2021.
 
 | Article title | Description |
 |--|--|
-| [Create an Event Grid data connection for Azure Data Explorer by using C#](data-connection-event-grid-csharp.md) | Updated article. Add Event Grid data connection from Azure portal.
-| [Create an Event Grid data connection for Azure Data Explorer by using Python](data-connection-event-grid-python.md) | Updated article.
+| [Create an Event Grid data connection using C#](data-connection-event-grid-csharp.md) | Updated article. Add Event Grid data connection from Azure portal.
+| [Create an Event Grid data connection using Python](data-connection-event-grid-python.md) | Updated article.
 | [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)  | Updated article. Add Event Grid data connection from Azure portal.
 | [Event Grid data connection](ingest-data-event-grid-overview.md) | Updated article. Add Event Grid data connection from Azure portal.
 | [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated article. Add Event Grid data connection from Azure portal.
-| [Add cluster principals for Azure Data Explorer by using C#](cluster-principal-csharp.md) | Updated article. Add AllDatabasesMonitor role
-| [Add cluster principals for Azure Data Explorer by using Python](cluster-principal-python.md)  | Updated article. Add AllDatabasesMonitor role
-| [Add cluster principals for Azure Data Explorer by using an Azure Resource Manager template](cluster-principal-resource-manager.md) | Updated article. Add AllDatabasesMonitor role
-| [Add database principals for Azure Data Explorer by using Python](database-principal-python.md) | Updated article. Add AllDatabasesMonitor role
+| [Add cluster principals using C#](cluster-principal-csharp.md) | Updated article. Add AllDatabasesMonitor role
+| [Add cluster principals using Python](cluster-principal-python.md)  | Updated article. Add AllDatabasesMonitor role
+| [Add cluster principals using an Azure Resource Manager template](cluster-principal-resource-manager.md) | Updated article. Add AllDatabasesMonitor role
+| [Add database principals using Python](database-principal-python.md) | Updated article. Add AllDatabasesMonitor role
 | [Manage Azure Data Explorer database permissions](manage-database-permissions.md) | Updated article. Add AllDatabasesMonitor role
 
 ### Management
@@ -191,7 +191,7 @@ This section lists the major changes to docs during August 2021.
 | Article title | Description |
 |--|--|
 | [Use wizard for ingestion with LightIngest (preview)](generate-lightingest-command.md) | New article. Learn how to use a wizard for one-time ingestion of historical data with LightIngest.
-| [Use one-click ingestion to create an event hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. One click event hub experience.
+| [Use one-click ingestion to create an event hub data connection](one-click-event-hub.md)| Updated article. One click event hub experience.
 | [Use LightIngest to ingest data into Azure Data Explorer](lightingest.md)| Updated article. Generate LightIngest commands - one click experience.
 
 ### Query
@@ -229,7 +229,7 @@ This section lists the major changes to docs during August 2021.
 |--|--|
 | [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
 | [Create an external table using the Web UI wizard](external-table.md) | Updated article. New UI
-| [Use one-click ingestion to create an event hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. New UI.
+| [Use one-click ingestion to create an event hub data connection](one-click-event-hub.md)| Updated article. New UI.
 | [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md) | Updated article. New UI.
 | [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md) | Updated article. New UI.
 | [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. New UI.
@@ -404,7 +404,7 @@ This section lists the major changes to docs during January 2021.
 
 Article title | Description
 ---|---
-[Azure Policy Regulatory Compliance controls for Azure Data Explorer](security-controls-policy.md) | New article. This page lists the **compliance domains** and **security controls** for Azure Data Explorer.
+[Azure Policy Regulatory Compliance controls](security-controls-policy.md) | New article. This page lists the **compliance domains** and **security controls**.
 [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) | New article. In this article, you will learn how to give cluster access to principals from another tenant.
 
 ### Management
@@ -453,10 +453,10 @@ This section lists the major changes to docs during November 2020.
 
 Article title | Description
 ---|---
-[Azure Policy built-in definitions for Azure Data Explorer](policy-reference.md) | New article. Index of [Azure Policy](/azure/governance/policy/overview) built-in policy definitions for Azure Data Explorer.
-[Use one-click ingestion to create an event hub data connection for Azure Data Explorer](one-click-event-hub.md) | New article. Connect an event hub to a table using the [one-click ingestion](ingest-data-one-click.md) experience.
-| [Configure managed identities for your Azure Data Explorer cluster](./configure-managed-identities-cluster.md) | Updated article. Supports both user-assigned managed identities and system-assigned managed identities
-| [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. General availability (GA). |
+[Azure Policy built-in definitions](policy-reference.md) | New article. Index of [Azure Policy](/azure/governance/policy/overview) built-in policy definitions.
+[Use one-click ingestion to create an event hub data connection](one-click-event-hub.md) | New article. Connect an event hub to a table using the [one-click ingestion](ingest-data-one-click.md) experience.
+| [Configure managed identities for your cluster](./configure-managed-identities-cluster.md) | Updated article. Supports both user-assigned managed identities and system-assigned managed identities
+| [Create a table](one-click-table.md) | Updated article. General availability (GA). |
  | [Quickstart: Query data in Azure Data Explorer Web UI](web-query-data.md) | Updated article. New capabilities.
 |  [What is one-click ingestion?](ingest-data-one-click.md) | Updated article. Added ingestion from JSON nested levels. General availability (GA).
 | [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md) | Updated article. New dashboard visuals and parameter changes.
