@@ -17,7 +17,7 @@ Logic App and :::no-loc text="Power Automate"::: are built on the same connector
 1. Open the [Microsoft Azure portal](https://ms.portal.azure.com/).
 1. Search for `logic app` and select it.
 
-    :::image type="content" source="images/logic-apps/logic-app-search.png" alt-text="Screenshot of the Azure portal, showing the search for Logic apps." lightbox="images/logic-apps/logicapp-search.png#lightbox":::
+    :::image type="content" source="images/logic-apps/logic-app-search.png" alt-text="Screenshot of the Azure portal, showing the search for Logic apps." lightbox="images/logic-apps/logic-app-search.png#lightbox":::
 
 1. Select **+Add**.
 
