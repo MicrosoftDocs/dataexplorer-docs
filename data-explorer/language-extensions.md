@@ -1,7 +1,7 @@
 ---
-title: Manage language extensions in your Azure Data Explorer cluster. 
-description: Use language extension to integrate other languages within your Azure Data Explorer KQL queries. 
-ms.reviewer: orhasban 
+title: Manage language extensions in your Azure Data Explorer cluster.
+description: Use language extension to integrate other languages within your Azure Data Explorer KQL queries.
+ms.reviewer: orhasban
 ms.topic: how-to
 ms.date: 04/01/2020
 ---
@@ -25,20 +25,20 @@ The language extensions feature allows you to use language extension plugins to 
 
 Do the following steps to enable language extensions on your cluster:
 
-1. In the Azure portal, go to your Azure Data Explorer cluster. 
-1. In **Settings**, select **Configurations**. 
+1. In the Azure portal, go to your Azure Data Explorer cluster.
+1. In **Settings**, select **Configurations**.
 1. In the **Configurations** pane, select **On** to enable a language extension.
 1. Select **Save**.
- 
+
     ![language extension on.](media/language-extensions/configurations-enable-extension.png)
 
 > [!NOTE]
 > Enabling the language extension process can take up to a few minutes. During that time, your cluster may be unavailable.
- 
+
 ## Run language extension-integrated queries
 
 * Learn how to [run Python integrated KQL queries](kusto/query/pythonplugin.md).
-* Learn how to [run R integrated KQL queries](kusto/query/rplugin.md). 
+* Learn how to [run R integrated KQL queries](kusto/query/rplugin.md).
 
 ## Disable language extensions on your cluster
 
@@ -47,8 +47,8 @@ Do the following steps to enable language extensions on your cluster:
 
 Do the following steps to disable language extensions on your cluster:
 
-1. In the Azure portal, go to your Azure Data Explorer cluster. 
-1. In **Settings**, select **Configurations**. 
+1. In the Azure portal, go to your Azure Data Explorer cluster.
+1. In **Settings**, select **Configurations**.
 1. In the **Configurations** pane, select **Off** to disable a language extension.
 1. Select **Save**.
 
