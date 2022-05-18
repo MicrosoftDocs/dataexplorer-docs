@@ -140,7 +140,9 @@ This section lists the major changes to docs during November 2021.
 
 ## Concepts
 
-| [Soft delete](/azure/data-explorer/kusto/concepts/data-soft-delete.md) | New article. Describes the Data soft-delete function in Azure Data Explorer. |
+| Article title | Description |
+|--|--|
+| [Soft delete](/azure/data-explorer/kusto/concepts/data-soft-delete.md) | New article. Describes the data soft delete function. |
 
 ## October 2021
 
