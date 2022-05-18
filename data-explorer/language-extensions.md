@@ -3,7 +3,7 @@ title: Manage language extensions in your Azure Data Explorer cluster.
 description: Use language extension to integrate other languages within your Azure Data Explorer KQL queries.
 ms.reviewer: orhasban
 ms.topic: how-to
-ms.date: 04/01/2020
+ms.date: 05/18/2022
 ---
 
 # Manage language extensions in your Azure Data Explorer cluster (Preview)
