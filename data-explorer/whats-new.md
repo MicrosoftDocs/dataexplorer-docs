@@ -135,7 +135,7 @@ This section lists the major changes to docs during November 2021.
 | Article title | Description |
 |--|--|
 | [Automatic stop of inactive Azure Data Explorer clusters](auto-stop-clusters.md) | New article. Inactive clusters are automatically stopped. |
-| [Solution architectures](solution-architectures.md) | New article. References the architectures that include Azure Data Explorer. |
+| [Solution architectures](solution-architectures.md) | New article. Lists references to architectures that include Azure Data Explorer. |
 | [Delete data from Azure Data Explorer](delete-data.md) | Updated article. Added new sections for Purge and Soft Delete. |
 
 ## Concepts
