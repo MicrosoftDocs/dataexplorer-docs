@@ -84,7 +84,7 @@ This section lists the major changes to docs during February 2022.
 |--|--|
 | [What is a Start-for-free cluster?](start-for-free.md) | New article. Describes how to get started with a free Azure Data Explorer cluster. |
 | [Cross-tenant data connection](ingest-data-cross-tenant.md) | New article. Describes how to create cross-tenant data connections for Azure Event Hubs or Azure Event Grid services in a different tenant. |
-| [Automated provisioning in Azure Data Explorer](automated-deploy-overview.md) | New article. Maps different articles for automating provisioning of Azure Data Explorer. |
+| [Automated provisioning in Azure Data Explorer](automated-deploy-overview.md) | New article. Maps different articles for automating the provisioning of clusters. |
 
 ### Functions library
 
