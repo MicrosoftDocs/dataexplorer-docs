@@ -18,7 +18,7 @@ This section lists the major changes to docs during April 2022.
 | Article title | Description |
 |--|--|
 | - [Enable disk encryption for your cluster](cluster-encryption-disk.md)<br />- [Secure your cluster with encryption](cluster-encryption-overview.md)<br />- [Enable double encryption for your cluster](cluster-encryption-double.md) | New articles. Describing securing your cluster using disk encryption. |
-| - [Create a managed private endpoint for Azure Data Explorer](security-network-managed-private-endpoint-create.md)<br />- [Network security for Azure Data Explorer](security-network-overview.md)<br />- [Create a private endpoint for Azure Data Explorer](security-network-private-endpoint-create.md)<br />- [Troubleshoot private endpoints](security-network-private-endpoint-troubleshoot.md)<br />- [Private endpoints for Azure Data Explorer](security-network-private-endpoint.md)<br />- [Restrict outbound access from your Azure Data Explorer cluster](security-network-restrict-outbound-access.md)<br />- [Restrict public access to your Azure Data Explorer cluster](security-network-restrict-public-access.md)| New articles. Describes private endpoint security. |
+| - [Create a managed private endpoint for your cluster](security-network-managed-private-endpoint-create.md)<br />- [Network security for Azure Data Explorer](security-network-overview.md)<br />- [Create a private endpoint for your cluster](security-network-private-endpoint-create.md)<br />- [Troubleshoot private endpoints](security-network-private-endpoint-troubleshoot.md)<br />- [Private endpoints for your cluster](security-network-private-endpoint.md)<br />- [Restrict outbound access from your cluster](security-network-restrict-outbound-access.md)<br />- [Restrict public access to your cluster](security-network-restrict-public-access.md)| New articles. Describes private endpoint security. |
 
 ### Management
 
@@ -129,9 +129,7 @@ This section lists the major changes to docs during November 2021.
 | Article title | Description |
 |--|--|
 | [Automatic stop of inactive Azure Data Explorer clusters](auto-stop-clusters.md) | New article. Inactive clusters are automatically stopped. |
-| [Solution architectures](solution-architectures.md) | New article. Lists references the architectures that include Azure Data Explorer. |
-| [Solution architectures](solution-architectures.md) | New article. Lists references to architectures that include Azure Data Explorer. |
->>>>>>> 01659380db1a883fa04d54b387edf0a105ed2f77
+| [Solution architectures](solution-architectures.md) | New article. Lists references to the architectures that include Azure Data Explorer. |
 | [Delete data from Azure Data Explorer](delete-data.md) | Updated article. Added new sections for Purge and Soft Delete. |
 
 ## Concepts
