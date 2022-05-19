@@ -56,6 +56,7 @@ There are some overlap between the Kusto Emulator and the [Free Cluster](https:/
 | Databases | Up to 10 | Up to 10000
 | Tables per database | Up to 100 | Unlimited
 | Columns per table | Up to 200 | Unlimited
+| External Tables | No support | To "local" files
 | Materialized views per database | Up to 5 | Unlimited
 | Managed Ingestion Pipelines | All of them | None
 | Security features | Encrypted connection only | None
