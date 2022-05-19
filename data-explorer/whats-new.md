@@ -40,7 +40,7 @@ This section lists the major changes to docs during March 2022.
 | - [Event Grid data connection](ingest-data-event-grid-overview.md)<br />- [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated articles. Added events routing setting. |
 | - [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)<br />- [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated articles. Added new Events Routing features including alternative databases and tables. |
 | - [IoT Hub data connection](ingest-data-iot-hub-overview.md)<br />- [Ingest data from IoT Hub into Azure Data Explorer](ingest-data-iot-hub.md) | Updated articles. Added new sections on target databases (multi-database data connection). |
-| [What is a Start-for-free cluster?](start-for-free.md) | Updated article. Added link to the Create a free Azure Data Explorer cluster page. |
+| [What is a Start-for-free cluster?](start-for-free.md) | Updated article. Added link to the create a free cluster page. |
 
 ### Concepts
 
@@ -67,7 +67,7 @@ This section lists the major changes to docs during March 2022.
 | Article title | Description |
 |--|--|
 | [http_request plugin / http_request_post plugin](/azure/data-explorer/kusto/query/http-request-plugin.md) | New article. Describes the http_request plugin. |
-| [Cross-database and cross-cluster queries](/azure/data-explorer/kusto/query/cross-cluster-or-database-queries.md) | Updated article. Updated links to Cross-cluster queries and schema changes page. |
+| [Cross-database and cross-cluster queries](/azure/data-explorer/kusto/query/cross-cluster-or-database-queries.md) | Updated article. Updated links to cross-cluster queries and schema changes page. |
 
 ## February 2022
 
@@ -130,7 +130,7 @@ This section lists the major changes to docs during November 2021.
 |--|--|
 | [Automatic stop of inactive Azure Data Explorer clusters](auto-stop-clusters.md) | New article. Inactive clusters are automatically stopped. |
 | [Solution architectures](solution-architectures.md) | New article. Lists references to the architectures that include Azure Data Explorer. |
-| [Delete data from Azure Data Explorer](delete-data.md) | Updated article. Added new sections for Purge and Soft Delete. |
+| [Delete data from Azure Data Explorer](delete-data.md) | Updated article. Added new sections for purge and soft delete. |
 
 ## Concepts
 
@@ -150,7 +150,7 @@ This section lists the major changes to docs during October 2021.
 | [Create an Event Grid data connection using Python](data-connection-event-grid-python.md) | Updated article.
 | [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)  | Updated article. AddedEvent Grid data connection from Azure portal.
 | [Event Grid data connection](ingest-data-event-grid-overview.md) | Updated article. AddedEvent Grid data connection from Azure portal.
-| [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated article. Added Event Grid data connection from Azure portal.
+| [Ingest blobs by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated article. Added Event Grid data connection from Azure portal.
 | [Add cluster principals using C#](cluster-principal-csharp.md) | Updated article. AddedAllDatabasesMonitor role.
 | [Add cluster principals using Python](cluster-principal-python.md)  | Updated article. Added AllDatabasesMonitor role.
 | [Add cluster principals using an Azure Resource Manager template](cluster-principal-resource-manager.md) | Updated article. Added AllDatabasesMonitor role.
