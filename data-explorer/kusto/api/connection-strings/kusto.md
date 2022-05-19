@@ -60,10 +60,11 @@ the default policy, or `AddTrustedHosts` which adds new entries to the existing 
 ```csharp
 Kusto.Data.Common.Impl.WellKnownKustoEndpoints.AddTrustedHosts(
     new[] {
-        new FastSuffixMatcher.MatchRule("trusted.host", exact: true)
+        // Allow an explicit service address
+        new FastSuffixMatcher.MatchRule("my-kusto.contoso.com", exact: true),
+        // Allow services whose DNS name end with ".contoso.com"
+        new FastSuffixMatcher.MatchRule(".contoso.com", exact: false),
     });
-```
-
 ## Connection string properties
 
 The following table lists all the properties you can specify in a Kusto connection string.
