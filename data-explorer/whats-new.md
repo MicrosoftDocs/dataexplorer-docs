@@ -9,6 +9,135 @@ ms.date: 11/09/2021
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
+## April 2022
+
+This section lists the major changes to docs during April 2022.
+
+### General
+
+| Article title | Description |
+|--|--|
+| - [Enable disk encryption for your cluster](cluster-encryption-disk.md)<br />- [Secure your cluster with encryption](cluster-encryption-overview.md)<br />- [Enable double encryption for your cluster](cluster-encryption-double.md) | New articles. Describing securing your cluster using disk encryption. |
+| - [Create a managed private endpoint for your cluster](security-network-managed-private-endpoint-create.md)<br />- [Network security](security-network-overview.md)<br />- [Create a private endpoint for your cluster](security-network-private-endpoint-create.md)<br />- [Troubleshoot private endpoints](security-network-private-endpoint-troubleshoot.md)<br />- [Private endpoints for your cluster](security-network-private-endpoint.md)<br />- [Restrict outbound access from your cluster](security-network-restrict-outbound-access.md)<br />- [Restrict public access to your cluster](security-network-restrict-public-access.md)| New articles. Describes private endpoint security. |
+
+### Management
+
+| Article title | Description |
+|--|--|
+| [Streaming ingestion failures](/azure/data-explorer/kusto/management/streamingingestionfailures.md) | New article. Describes the command to show streaming ingestion failures. |
+| [Streaming ingestion statistics](/azure/data-explorer/kusto/management/streamingingestionstatistics.md) | New article. Describes the command to show streaming ingestion statistics. |
+
+## March 2022
+
+This section lists the major changes to docs during March 2022.
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Create a free Azure Data Explorer cluster](start-for-free-web-ui.md) | New article. Describes how to create a free cluster, ingest data, and run queries. |
+| - [Create an Event Grid data connection using C\#](data-connection-event-grid-csharp.md)<br />- [Create an Event Grid data connection using Python](data-connection-event-grid-python.md)<br />- [Create an Event Grid data connection using Azure Resource Manager template](data-connection-event-grid-resource-manager.md)<br />- [Create an Event Hubs data connection using C\#](data-connection-event-hub-csharp.md)<br />- [Create an Event Hubs data connection using Python](data-connection-event-hub-python.md)<br />- [Create an Event Hubs data connection using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)<br />- [Create an IoT Hub data connection using C\# (Preview)](data-connection-iot-hub-csharp.md)<br />- [Create an IoT Hub data connection using Python (Preview)](data-connection-iot-hub-python.md)<br />- [Create an IoT Hub data connection using Azure Resource Manager template](data-connection-iot-hub-resource-manager.md) | Updated articles. Added `databaseRouting` parameter and setting. |
+| - [Event Grid data connection](ingest-data-event-grid-overview.md)<br />- [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated articles. Added events routing setting. |
+| - [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)<br />- [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated articles. Added new Events Routing features including alternative databases and tables. |
+| - [IoT Hub data connection](ingest-data-iot-hub-overview.md)<br />- [Ingest data from IoT Hub into Azure Data Explorer](ingest-data-iot-hub.md) | Updated articles. Added new sections on target databases (multi-database data connection). |
+| [What is a Start-for-free cluster?](start-for-free.md) | Updated article. Added link to the create a free cluster page. |
+
+### Concepts
+
+| Article title | Description |
+|--|--|
+| [Cross-cluster queries and schema changes](/azure/data-explorer/kusto/concepts/cross-cluster-and-schema-changes.md) | New article. Describes cross-cluster queries and schema changes. |
+
+### Functions library
+
+| Article title | Description |
+|--|--|
+| [pairwise_dist_fl()](/azure/data-explorer/kusto/functions-library/pairwise-dist-fl.md) | New article. Describes the `pairwise_dist_fl()` user-defined function. |
+| [series_uv_anomalies_fl()](/azure/data-explorer/kusto/functions-library/series-uv-anomalies-fl.md) | New article. Describes the `series_uv_anomalies_fl()` user-defined function. |
+| [series_uv_change_points_fl()](/azure/data-explorer/kusto/functions-library/series-uv-change-points-fl.md) | New article. Describes the `series_uv_change_points_fl()` user-defined function. |
+
+### Management
+
+| Article title | Description |
+|--|--|
+| [Clear schema cache for cross-cluster queries](/azure/data-explorer/kusto/management/clear-cross-cluster-schema-cache.md) | New article. Describes how to manually clear the cross-cluster query cache . |
+
+### Query
+
+| Article title | Description |
+|--|--|
+| [http_request plugin / http_request_post plugin](/azure/data-explorer/kusto/query/http-request-plugin.md) | New article. Describes the http_request plugin. |
+| [Cross-database and cross-cluster queries](/azure/data-explorer/kusto/query/cross-cluster-or-database-queries.md) | Updated article. Updated links to cross-cluster queries and schema changes page. |
+
+## February 2022
+
+This section lists the major changes to docs during February 2022.
+
+### General
+
+| Article title | Description |
+|--|--|
+| [What is a Start-for-free cluster?](start-for-free.md) | New article. Describes how to get started with a free Azure Data Explorer cluster. |
+| [Cross-tenant data connection](ingest-data-cross-tenant.md) | New article. Describes how to create cross-tenant data connections for Azure Event Hubs or Azure Event Grid services in a different tenant. |
+| [Automated provisioning in Azure Data Explorer](automated-deploy-overview.md) | New article. Maps different articles for automating provisioning. |
+| [Automated provisioning in Azure Data Explorer](automated-deploy-overview.md) | New article. Maps different articles for automating the provisioning of clusters. |
+
+### Functions library
+
+| Article title | Description |
+|--|--|
+| [series_lag_fl()](/azure/data-explorer/kusto/functions-library/series-lag-fl.md)| New article. Describes the `series_lag_fl()` user-defined function. |
+
+## January 2022
+
+This section lists the major changes to docs during January 2022.
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Use the one-click sample app generator to create code to ingest and query your data](sample-app-generator-one-click.md) | New Article. Describes how to use the one-click sample app generator for your preferred programming language. |
+
+### API
+
+| Article title | Description |
+|--|--|
+| [Azure Data Explorer API Overview](/azure/data-explorer/kusto/api/index.md) | Updated article. Added new tip and link to the doc on using the one-click sample app generator.
+
+## December 2021
+
+This section lists the major changes to docs during December 2021.
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) | Updated article. Added new section for cross-filters as dashboard parameters. |
+
+### Functions library
+
+| Article title | Description |
+|--|--|
+| [time_window_rolling_avg_fl()](/azure/data-explorer/kusto/functions-library/time-window-rolling-avg-fl.md) | New Article. Describes the function that calculates the rolling average of a metric over a constant duration time window. |
+
+## November 2021
+
+This section lists the major changes to docs during November 2021.
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Automatic stop of inactive Azure Data Explorer clusters](auto-stop-clusters.md) | New article. Inactive clusters are automatically stopped. |
+| [Solution architectures](solution-architectures.md) | New article. Lists references to the architectures that include Azure Data Explorer. |
+| [Delete data from Azure Data Explorer](delete-data.md) | Updated article. Added new sections for purge and soft delete. |
+
+## Concepts
+
+| Article title | Description |
+|--|--|
+| [Soft delete](/azure/data-explorer/kusto/concepts/data-soft-delete.md) | New article. Describes the data soft delete function. |
+
 ## October 2021
 
 This section lists the major changes to docs during October 2021.
@@ -17,16 +146,16 @@ This section lists the major changes to docs during October 2021.
 
 | Article title | Description |
 |--|--|
-| [Create an Event Grid data connection for Azure Data Explorer by using C#](data-connection-event-grid-csharp.md) | Updated article. Add Event Grid data connection from Azure portal.
-| [Create an Event Grid data connection for Azure Data Explorer by using Python](data-connection-event-grid-python.md) | Updated article. 
-| [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)  | Updated article. Add Event Grid data connection from Azure portal. 
-| [Event Grid data connection](ingest-data-event-grid-overview.md) | Updated article. Add Event Grid data connection from Azure portal. 
-| [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated article. Add Event Grid data connection from Azure portal. 
-| [Add cluster principals for Azure Data Explorer by using C#](cluster-principal-csharp.md) | Updated article. Add AllDatabasesMonitor role
-| [Add cluster principals for Azure Data Explorer by using Python](cluster-principal-python.md)  | Updated article. Add AllDatabasesMonitor role
-| [Add cluster principals for Azure Data Explorer by using an Azure Resource Manager template](cluster-principal-resource-manager.md) | Updated article. Add AllDatabasesMonitor role
-| [Add database principals for Azure Data Explorer by using Python](database-principal-python.md) | Updated article. Add AllDatabasesMonitor role
-| [Manage Azure Data Explorer database permissions](manage-database-permissions.md) | Updated article. Add AllDatabasesMonitor role
+| [Create an Event Grid data connection using C#](data-connection-event-grid-csharp.md) | Updated article. AddedEvent Grid data connection from Azure portal.
+| [Create an Event Grid data connection using Python](data-connection-event-grid-python.md) | Updated article.
+| [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)  | Updated article. AddedEvent Grid data connection from Azure portal.
+| [Event Grid data connection](ingest-data-event-grid-overview.md) | Updated article. AddedEvent Grid data connection from Azure portal.
+| [Ingest blobs by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated article. Added Event Grid data connection from Azure portal.
+| [Add cluster principals using C#](cluster-principal-csharp.md) | Updated article. AddedAllDatabasesMonitor role.
+| [Add cluster principals using Python](cluster-principal-python.md)  | Updated article. Added AllDatabasesMonitor role.
+| [Add cluster principals using an Azure Resource Manager template](cluster-principal-resource-manager.md) | Updated article. Added AllDatabasesMonitor role.
+| [Add database principals using Python](database-principal-python.md) | Updated article. AddedAllDatabasesMonitor role.
+| [Manage Azure Data Explorer database permissions](manage-database-permissions.md) | Updated article. Added AllDatabasesMonitor role.
 
 ### Management
 
@@ -62,14 +191,14 @@ This section lists the major changes to docs during August 2021.
 | Article title | Description |
 |--|--|
 | [Use wizard for ingestion with LightIngest (preview)](generate-lightingest-command.md) | New article. Learn how to use a wizard for one-time ingestion of historical data with LightIngest.
-| [Use one-click ingestion to create an event hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. One click event hub experience. 
+| [Use one-click ingestion to create an event hub data connection](one-click-event-hub.md)| Updated article. One click event hub experience.
 | [Use LightIngest to ingest data into Azure Data Explorer](lightingest.md)| Updated article. Generate LightIngest commands - one click experience.
 
 ### Query
 
 | Article title | Description |
 |--|--|
-| [series_pow()](./kusto/query/series-powfunction.md)| New article. Calculates the element-wise power of two numeric series inputs. 
+| [series_pow()](./kusto/query/series-powfunction.md)| New article. Calculates the element-wise power of two numeric series inputs.
 | [Aggregation function types at a glance](./kusto/query/aggregation-functions.md) | New article. Lists aggregation functions, which perform a calculation on a set of values and return a single value.
 | [Scalar function types at a glance](./kusto/query/scalarfunctions.md) | Updated article. Updated aggregation function and added series_pow.
 | [materialized_view() function](./kusto/query/materialized-view-function.md) | Updated article. Updated aggregation function.
@@ -86,12 +215,11 @@ This section lists the major changes to docs during August 2021.
 
 | Article title | Description |
 |--|--|
-| [pair_probabilities_fl()](kusto/functions-library/functions-library.md)] | New article. The function `pair_probabilities_fl()`calculates probabilities and metrics.
+| [pair_probabilities_fl()](kusto/functions-library/functions-library.md) | New article. The function `pair_probabilities_fl()`calculates probabilities and metrics.
 | [bartlett_test_fl()](./kusto/functions-library/bartlett-test-fl.md) | New article. The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
 | [levene_test_fl()](./kusto/functions-library/levene-test-fl.md) | New article. The function `levene_test_fl()` performs the [Levene Test](https://en.wikipedia.org/wiki/Levene%27s_test).
 | [mann_whitney_u_test_fl()](./kusto/functions-library/mann-whitney-u-test-fl.md) | New article. The function `mann_whitney_u_test_fl()` performs the [Mann-Whitney U Test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test).
 | [wilcoxon_test_fl()](./kusto/functions-library/wilcoxon-test-fl.md) | New article. The function `wilcoxon_test_fl()` performs the [Wilcoxon Test](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test).
-| [Functions library](./kusto/functions-library/functions-library.md) | Updated article. Added [pair_probabilities_fl()](kusto/functions-library/functions-library.md), [normality_test_fl](kusto/functions-library/normality-test-fl.md).
 
 ## July 2021
 
@@ -100,17 +228,17 @@ This section lists the major changes to docs during August 2021.
 | Article title | Description |
 |--|--|
 | [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
-| [Create an external table using the Web UI wizard](external-table.md) | Updated article. New UI
-| [Use one-click ingestion to create an event hub data connection for Azure Data Explorer](one-click-event-hub.md)| Updated article. New UI.
-| [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md) | Updated article. New UI
-| [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md) | Updated article. New UI
-| [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. New UI
+| [Create an external table using the Web UI wizard](external-table.md) | Updated article. New UI.
+| [Use one-click ingestion to create an event hub data connection](one-click-event-hub.md)| Updated article. New UI.
+| [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md) | Updated article. New UI.
+| [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md) | Updated article. New UI.
+| [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. New UI.
 
 ### Query
 
 | Article title | Description |
 |--|--|
-| [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string. 
+| [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string.
 | [take_any() (aggregation function)](kusto/query/take-any-aggfunction.md) | New article. Replaces any().
 | [take_anyif() (aggregation function)](kusto/query/take-anyif-aggfunction.md) | New article. Replaces anyif().
 | [replace_regex()](kusto/query/replace-regex-function.md) | Updated article. Replace() function changed to replace_regex().
@@ -139,7 +267,7 @@ This section lists the major changes to docs during June  2021.
 
 | Article title | Description |
 |--|--|
-[Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md), [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md)| Updated articles. Document batching types.
+| -[Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md)<br />- [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md) | Updated articles. Document batching types. |
 
 ### Query
 
@@ -163,7 +291,7 @@ This section lists the major changes to docs during May 2021.
 
 | Article title | Description |
 |--|--|
-| [Use follower databases](follower.md) | Updated article. Add table level sharing. | 
+| [Use follower databases](follower.md) | Updated article. Added table level sharing. |
 
 ## April 2021
 
@@ -215,7 +343,7 @@ This section lists the major changes to docs during March 2021.
 
 | Article title | Description |
 |--|--|
-| [Auto delete policy command](./kusto/management/show-auto-delete-policy-command.md), [Auto delete policy](kusto/management/auto-delete-policy.md) | New articles. An auto delete policy on a table sets an expiry date for the table. |
+| - [Auto delete policy command](./kusto/management/show-auto-delete-policy-command.md)<br />- [Auto delete policy](kusto/management/auto-delete-policy.md) | New articles. An auto delete policy on a table sets an expiry date for the table. |
 | [Stored query results (Preview)](kusto/management/stored-query-results.md) | Updated article. Added async mode. |
 
 ### Functions library
@@ -259,7 +387,7 @@ Article title | Description
 [.alter materialized-view docstring](./kusto/management/materialized-views/materialized-view-alter-docstring.md) | New article. Alters the DocString value of an existing materialized view.
 [.alter materialized-view folder](./kusto/management/materialized-views/materialized-view-alter-folder.md) | New article. Alters the folder value of an existing materialized view.
 [.create-or-alter materialized-view](./kusto/management/materialized-views/materialized-view-create-or-alter.md) | New article. Creates a materialized view or alters an existing materialized view.
-[Materialized views policies](./kusto/management/materialized-views/materialized-view-policies.md) | New article. This article includes information about policies that can be set on a materialized view.
+[Materialized views policies](./kusto/management/materialized-views/materialized-view-policies.md) | New article. Includes information about policies that can be set on a materialized view.
 [Request queuing policy (Preview)](./kusto/management/request-queuing-policy.md) | New article. A workload group's request queuing policy controls queueing of requests for delayed execution, once a certain threshold of concurrent requests is exceeded.
 
 ### Functions library
@@ -276,14 +404,14 @@ This section lists the major changes to docs during January 2021.
 
 Article title | Description
 ---|---
-[Azure Policy Regulatory Compliance controls for Azure Data Explorer](security-controls-policy.md) | New article. This page lists the **compliance domains** and **security controls** for Azure Data Explorer.
+[Azure Policy Regulatory Compliance controls](security-controls-policy.md) | New article. This page lists the **compliance domains** and **security controls**.
 [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) | New article. In this article, you will learn how to give cluster access to principals from another tenant.
 
 ### Management
 
 Article title | Description
 ---|---
-[Clean extent containers commands](kusto/management/clean-extent-containers.md) | New article. This article describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands in Azure Data Explorer.
+[Clean extent containers commands](kusto/management/clean-extent-containers.md) | New article. Describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands.
 [Request classification policy (Preview)](kusto/management/request-classification-policy.md)  <br>[Request classification policy (Preview) - Control commands](./kusto/management/show-cluster-policy-request-classification-command.md) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
 [Request limits policy (Preview)](kusto/management/request-limits-policy.md) | New article. A workload group's request limits policy allows limiting the resources used by the request during its execution.
 [Request rate limit policy (Preview)](kusto/management/request-rate-limit-policy.md) | New article. The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group.
@@ -325,10 +453,10 @@ This section lists the major changes to docs during November 2020.
 
 Article title | Description
 ---|---
-[Azure Policy built-in definitions for Azure Data Explorer](policy-reference.md) | New article. Index of [Azure Policy](/azure/governance/policy/overview) built-in policy definitions for Azure Data Explorer.
-[Use one-click ingestion to create an event hub data connection for Azure Data Explorer](one-click-event-hub.md) | New article. Connect an event hub to a table in Azure Data Explorer using the [one-click ingestion](ingest-data-one-click.md) experience.
-| [Configure managed identities for your Azure Data Explorer cluster](./configure-managed-identities-cluster.md) | Updated article. Supports both user-assigned managed identities and system-assigned managed identities
-| [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. General availability (GA). |
+[Azure Policy built-in definitions](policy-reference.md) | New article. Index of [Azure Policy](/azure/governance/policy/overview) built-in policy definitions.
+[Use one-click ingestion to create an event hub data connection](one-click-event-hub.md) | New article. Connect an event hub to a table using the [one-click ingestion](ingest-data-one-click.md) experience.
+| [Configure managed identities for your cluster](./configure-managed-identities-cluster.md) | Updated article. Supports both user-assigned managed identities and system-assigned managed identities
+| [Create a table](one-click-table.md) | Updated article. General availability (GA). |
  | [Quickstart: Query data in Azure Data Explorer Web UI](web-query-data.md) | Updated article. New capabilities.
 |  [What is one-click ingestion?](ingest-data-one-click.md) | Updated article. Added ingestion from JSON nested levels. General availability (GA).
 | [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md) | Updated article. New dashboard visuals and parameter changes.
