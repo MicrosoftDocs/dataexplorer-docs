@@ -52,6 +52,12 @@ The following steps are not required if you're running commands in Azure Cloud S
     az account set --subscription MyAzureSub
     ```
    
+1. Set the resource group where you want your cluster to be created. Replace `testrg` with the name of the resource group that you want to use:
+
+    ```azurecli-interactive
+    az group create --name testrg --location westus
+    ```
+   
 ## Create the Azure Data Explorer cluster
 
 1. Create your cluster by using the following command:
