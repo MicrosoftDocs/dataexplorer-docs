@@ -65,6 +65,8 @@ Kusto.Data.Common.Impl.WellKnownKustoEndpoints.AddTrustedHosts(
         // Allow services whose DNS name end with ".contoso.com"
         new FastSuffixMatcher.MatchRule(".contoso.com", exact: false),
     });
+```
+
 ## Connection string properties
 
 The following table lists all the properties you can specify in a Kusto connection string.
