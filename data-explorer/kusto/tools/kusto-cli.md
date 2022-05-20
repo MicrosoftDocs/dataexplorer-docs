@@ -78,6 +78,11 @@ Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true"
   The entire script file is considered a single query or command.
   This switch can't be used together with `-execute`.
 
+`-scriptQuitOnError:`*QuitOnFirstScriptError*
+* If enabled, Kusto.Cli will quit if a command or query in a script
+  results with an error. If disabled, script execution will continue
+  despite errors. By default this switch is enabled.
+
 `-echo:`*EnableEchoMode*
 * If specified, as either `true` or `false`, it enables or disables echo mode.
   When echo mode is enabled, every query or command is repeated in the output.
@@ -100,7 +105,7 @@ Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true"
 Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true" -script:"c:\mycommands.txt"
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > There should be no space between the colon and the argument value
 
 ## Directives
