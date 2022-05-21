@@ -9,7 +9,7 @@ ms.date: 05/30/2022
 
 Should contain:
 
-The Kusto Emulator provides a local environment emulating the [Kusto Query Engine](https://docs.microsoft.com/en-us/azure/data-explorer/engine-v3) facilitating local development and automated testing.  It runs locally and doesn't require provisioning any Azure service or incurring any cost (it is a free offering).  It comes with an End-User License Agreement (EULA) that can be found [here](https://aka.ms/adx.emulator.eula).
+The Kusto Emulator provides a local environment emulating the [Kusto Query Engine](https://docs.microsoft.com/en-us/azure/data-explorer/engine-v3) facilitating local development and automated testing.  It runs locally and doesn't require provisioning any Azure service or incurring any cost:  it's a free offering.  It comes with an End-User License Agreement (EULA) that can be found [here](https://aka.ms/adx.emulator.eula).
 
 > [!NOTE]
 > The Kusto Container isn't meant for production use.  It has many limitations that makes it a very poor technology for production scenario.
@@ -24,11 +24,11 @@ The Kusto Emulator is packaged as a Windows Docker Container Image.  It exposes 
 
 ![Kusto Emulator](media/kusto-emulator/kusto-emulator.png)
 
-The Kusto Emulator encapsulates the [Kusto Query Engine](https://docs.microsoft.com/en-us/azure/data-explorer/engine-v3).  It supports all commands and queries within its [architecture limitations](#limitations) (e.g. [Row Level Security functionality](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/rowlevelsecuritypolicy) is supported but since there is no authentication, it isn't useful).
+The Kusto Emulator encapsulates the [Kusto Query Engine](https://docs.microsoft.com/en-us/azure/data-explorer/engine-v3).  It supports all commands and queries within its [architecture limitations](#limitations).  For instance, [Row Level Security policy commands](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/rowlevelsecuritypolicy) are supported but since there is no authentication, they are not useful.
 
 The Kusto Emulator doesn't include a [Data Management service](https://docs.microsoft.com/en-us/azure/data-explorer/ingest-data-overview).  It therefore doesn't support queued / managed ingestion and streaming ingestion.  It does however support [ingestion commands](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query).
 
-The data is persisted on disk within the container by default (and is therefore as ephemeral as the container is) but can also be persisted outside the container by mounting a volume on the container.
+The data is persisted on disk within the container by default.  It is therefore as ephemeral as the container is.  But it can also be persisted outside the container by mounting a volume on the container.
 
 The Kusto Emulator can access local files for ingestion or [external table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/externaltables) / [external data](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/externaldata-operator?pivots=azuredataexplorer).
 
