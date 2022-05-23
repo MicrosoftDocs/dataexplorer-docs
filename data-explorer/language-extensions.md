@@ -30,7 +30,7 @@ Do the following steps to enable language extensions on your cluster:
 1. In the **Configurations** pane, select **On** to enable a language extension.
 1. Select **Save**.
 
-    :::image type="content" source="media/language-extensions/configurations-enable-extension.png" alt-text="Screenshot of Azure Data Explorer portal cluster configuration to enable language extensions.":::
+    :::image type="content" source="media/language-extensions/configuration-enable-extension-trim.png" alt-text="Screenshot of Azure Data Explorer portal cluster configuration to enable language extensions.":::
 
 > [!NOTE]
 > Enabling the language extension process can take up to a few minutes. During that time, your cluster may be unavailable.
@@ -52,7 +52,7 @@ Do the following steps to disable language extensions on your cluster:
 1. In the **Configurations** pane, select **Off** to disable a language extension.
 1. Select **Save**.
 
-    :::image type="content" source="media/language-extensions/configurations-disable-extension.png" alt-text="Screenshot of Azure Data Explorer portal cluster configuration to disable language extensions.":::
+    :::image type="content" source="media/language-extensions/configuration-disable-extension-trim.png" alt-text="Screenshot of Azure Data Explorer portal cluster configuration to disable language extensions.":::
 
 ## Limitations
 
