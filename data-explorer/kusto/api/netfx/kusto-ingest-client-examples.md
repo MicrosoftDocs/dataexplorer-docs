@@ -38,7 +38,7 @@ var sourceOptions = new StorageSourceOptions() { DeleteSourceOnSuccess = true };
 //// Create your custom implementation of IRetryPolicy, which will affect how the ingest client handles retrying on transient failures
 IRetryPolicy retryPolicy = new NoRetry();
 //// This line sets the retry policy on the ingest client that will be enforced on every ingest call from here on
-((IKustoQueuedIngestClient)client).QueueRetryPolicy = retryPolicy;
+((IKustoQueuedIngestClient)client).QueueOptions.QueueRequestOptions.RetryPolicy = retryPolicy;
 
 await client.IngestFromStorageAsync(uri: @"BLOB-URI-WITH-SAS-KEY", ingestionProperties: kustoIngestionProperties, sourceOptions);
 
