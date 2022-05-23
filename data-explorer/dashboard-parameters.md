@@ -328,14 +328,21 @@ To create a drillthrough, you must first turn it on in the visual and then add o
 
 1. Edit the dashboard, and then edit the visual where you want to add a drillthrough. Make sure that the **Visual** tab is selected. 
 1. In the right pane, select **Interactions**, then turn on drillthrough.
-3. Specify the destination page(s) that you can drill through to from the current visual. You can select one or more pages (pending they were not already used as target pages in the current visual. In addition, specify the column that will be used to provide the value for a parameter used to filter the visual's query. You can also add a short description in the notes control.
+1. Under **Drillthrough**, select **Create new**, and specify the following information. Optionally select **Add another pair** to add multiple parameters for a target page. Repeat this step to add drilthroughs to other pages in the current dashboard using different parameters.
+
+    | Field | Description |
+    |--|--|
+    | Destination page | One or more target pages to drill through to using the parameters defined in the drillthrough. | 
+    | Column | The query result's column to use as the value for a parameter in the target page. |
+    | Parameter | The parameter used to filter visuals in the target page using the column value. |
+    | Notes | Optional short description. |
 
     > [!IMPORTANT]
     > Column and parameter pairs must be of the same data type.
 
 :::image type="content" source="media/dashboard-parameters/cross-filter-query.png" alt-text="Screenshot of the edit visual page, showing the interactions tab.":::
 
-## Interact with your data using drillthrough
+## Interact with your data using drillthroughs
 
 Once drillthroughs are defined, you can use them to interact with your data. To do so, in visuals or tables where you've defined a drillthrough, right-click on a data point, and then select **Drill through to** > *destination page*. The values from the data point will be used as the parameters to filter the visuals on the target page.
 
