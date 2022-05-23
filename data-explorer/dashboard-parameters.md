@@ -159,7 +159,7 @@ Fixed value parameters are based on predefined values specified by the user. The
     * **Parameter type**: Multiple selection
     * **Variable name**: `_companies`
 
-1. Click **Done** to create the parameter.
+1. Select **Done** to create the parameter.
 
 The new parameters can be seen in the **Parameters** side pane, but aren't currently being used in any visuals.
 
@@ -241,7 +241,7 @@ Query-based parameter values are derived at dashboard load time by executing the
     * **Parameter type**: Multiple selection
     * **Variable name**: `_events`
 
-1. Click **Done** to create the parameter.
+1. Select **Done** to create the parameter.
 
 #### Use the parameters in the query
 
@@ -296,7 +296,7 @@ Cross-filters allow you to select a value in one visual and all dashboard visual
 
 ### Define cross-filters
 
-To create a cross-filter, you must enable it in the visual and the specify the parameter that is used to filter the data.
+To create a cross-filter, you must enable it in the visual and then specify the parameter that is used to filter the data.
 
 1. Edit the dashboard, and then edit the visual where you want to add cross-filters.
 1. Select **Visual**.
@@ -336,9 +336,9 @@ To create a drillthrough, you must first turn it on in the visual and then add o
 
 1. In the right pane, select **Interactions**, then turn on drillthrough.
 
-    :::image type="content" source="media/dashboard-parameters/drillthrough-visual-create.png" alt-text="Screenshot of drillthrough page, showing the turn on option." lightbox="media/dashboard-parameters/drillthrough-visual-create.png":::
+    :::image type="content" source="media/dashboard-parameters/drillthrough-visual-create.png" alt-text="Screenshot of drillthrough page, showing the turn on option.":::
 
-1. Under **Drillthrough**, select **Create new**, and specify the following information. Optionally select **Add another pair** to add multiple parameters for a target page. Repeat this step to add drilthroughs to other pages in the current dashboard using different parameters.
+1. Under **Drillthrough**, select **Create new**, and specify the following information. Optionally select **Add another pair** to add multiple parameters for a target page. Repeat this step to add drillthroughs to other pages in the current dashboard using different parameters.
 
     | Field | Description |
     |--|--|
@@ -356,7 +356,7 @@ To create a drillthrough, you must first turn it on in the visual and then add o
 
 Once drillthroughs are defined, you can use them to interact with your data. To do so, in visuals or tables where you've defined a drillthrough, right-click on a data point, and then select **Drill through to** > *destination page*. The values from the data point will be used as the parameters to filter the visuals on the target page.
 
-:::image type="content" source="media/dashboard-parameters/drillthrough-example.png" alt-text="Screenshot of a dashboard visual, showing the drillthrough interaction.":::
+:::image type="content" source="media/dashboard-parameters/drillthrough-example-inline.png" alt-text="Screenshot of a dashboard visual, showing the drillthrough interaction.":::
 
 To return to the source page, in the top-right of the destination page, select **Back**. All filters assigned by the drillthrough will be reset.
 
