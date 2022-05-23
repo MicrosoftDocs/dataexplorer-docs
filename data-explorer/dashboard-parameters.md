@@ -320,7 +320,7 @@ You can reset the cross-filter by selecting **Reset** at the top of the visual w
 
 ## Use drillthroughs as dashboard parameters
 
-With drillthrough, you can select a value in a visual use it to filter visuals in a target page in the same dashboard. When the target page opens, the value is preselected in its parameters and filters its visuals, such as line or scatter charts, to only show related data.
+With drillthrough, you can select a value in a visual and use it to filter the visuals in a target page in the same dashboard. When the target page opens, the value is preselected in the relevant filters. The visuals on the page, such as line or scatter charts, are filtered to only show related data.
 
 ### Define a drillthrough
 
