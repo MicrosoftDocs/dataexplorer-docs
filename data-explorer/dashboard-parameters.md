@@ -320,19 +320,29 @@ You can reset the cross-filter by selecting **Reset** at the top of the visual w
 
 ## Use drillthroughs as dashboard parameters
 
-With drillthrough, you can select a value in a visual to filter visuals in a target page in the same dashboard. When the target page opens, the value is preselected in its parameters and filters its visuals, such as line or scatter charts, to only show related data.
+With drillthrough, you can select a value in a visual use it to filter visuals in a target page in the same dashboard. When the target page opens, the value is preselected in its parameters and filters its visuals, such as line or scatter charts, to only show related data.
 
-### Define drillthroughs
+### Define a drillthrough
 
 To create a drillthrough, you must first turn it on in the visual and then add one or more drillthroughs as required.
 
-1. Edit the dashboard, and then edit the visual where you want to add a drillthrough. Make sure that the **Visual** tab is selected. 
+1. Edit the dashboard.
+
+    :::image type="content" source="media/dashboard-parameters/drillthrough-edit.png" alt-text="Screenshot of the dashboard menu, showing the edit option.":::
+
+1. Edit the visual where you want to add a drillthrough. Make sure that the **Visual** tab is selected.
+
+    :::image type="content" source="media/dashboard-parameters/drillthrough-visual-edit.png" alt-text="Screenshot of a dashboard visual, showing the edit option.":::
+
 1. In the right pane, select **Interactions**, then turn on drillthrough.
+
+    :::image type="content" source="media/dashboard-parameters/drillthrough-visual-create.png" alt-text="Screenshot of drillthrough page, showing the turn on option.":::
+
 1. Under **Drillthrough**, select **Create new**, and specify the following information. Optionally select **Add another pair** to add multiple parameters for a target page. Repeat this step to add drilthroughs to other pages in the current dashboard using different parameters.
 
     | Field | Description |
     |--|--|
-    | Destination page | One or more target pages to drill through to using the parameters defined in the drillthrough. | 
+    | Destination page | One or more target pages to drill through to using the defined parameters. |
     | Column | The query result's column to use as the value for a parameter in the target page. |
     | Parameter | The parameter used to filter visuals in the target page using the column value. |
     | Notes | Optional short description. |
@@ -340,17 +350,15 @@ To create a drillthrough, you must first turn it on in the visual and then add o
     > [!IMPORTANT]
     > Column and parameter pairs must be of the same data type.
 
-:::image type="content" source="media/dashboard-parameters/cross-filter-query.png" alt-text="Screenshot of the edit visual page, showing the interactions tab.":::
+    :::image type="content" source="media/dashboard-parameters/drillthrough-visual-create-form.png" alt-text="Screenshot of drillthrough form, highlighting the fields to fill out.":::
 
 ## Interact with your data using drillthroughs
 
 Once drillthroughs are defined, you can use them to interact with your data. To do so, in visuals or tables where you've defined a drillthrough, right-click on a data point, and then select **Drill through to** > *destination page*. The values from the data point will be used as the parameters to filter the visuals on the target page.
 
-:::image type="content" source="media/dashboard-parameters/cross-filter-query.png" alt-text="Screenshot of a table visual, showing the cross-filter context menu option.":::
+:::image type="content" source="media/dashboard-parameters/drillthrough-example-inline.png" alt-text="Screenshot of a dashboard visual, showing the drillthrough interaction.":::
 
-To return to the source page, in the top-right of the destination page, select **Back**. All filters assigned by the drillthrough will be removed.
-
-:::image type="content" source="media/dashboard-parameters/cross-filter-reset.png" alt-text="Screenshot of a table visual, showing the reset button.":::
+To return to the source page, in the top-right of the destination page, select **Back**. All filters assigned by the drillthrough will be reset.
 
 ## Use filter search for single and multiple selection filters
 
