@@ -301,7 +301,7 @@ To create a cross-filter, you must enable it in the visual and the specify the p
 1. Edit the dashboard, and then edit the visual where you want to add cross-filters.
 1. Select **Visual**.
 1. In the right pane, select **Interactions**, and then turn on cross-filters.
-1. Specify the column that will be used to provide the value for a parameter used to filter the visual's query.
+1. Specify both the column that will be used to provide the value and a parameter used to filter the visuals' query.
 
     > [!IMPORTANT]
     > The column and parameter must be of the same data type.
@@ -310,11 +310,45 @@ To create a cross-filter, you must enable it in the visual and the specify the p
 
 ## Interact with your data using cross-filter
 
-Once the cross-filter is defined, you can use it to interact with your data. In visuals where you've defined cross-filters, you can select data points and use their values to filter the current dashboard pages. For table visuals, select data points by right-clicking on the relevant cell and then in the context menu, select **Cross-filter**.
+Once the cross-filter is defined, you can use it to interact with your data. In visuals where you've defined cross-filters, you can select data points and use their values to filter the current dashboard page. For table visuals, select data points by right-clicking on the relevant cell and then in the context menu, select **Cross-filter**.
 
 :::image type="content" source="media/dashboard-parameters/cross-filter-query.png" alt-text="Screenshot of a table visual, showing the cross-filter context menu option.":::
 
 You can reset the cross-filter by selecting **Reset** at the top of the visual where it was selected.
+
+:::image type="content" source="media/dashboard-parameters/cross-filter-reset.png" alt-text="Screenshot of a table visual, showing the reset button.":::
+
+## Use drillthroughs as dashboard parameters
+
+With drillthrough, you can select a value in a visual to filter visuals in a target page in the same dashboard. When the target page opens, the value is preselected in its parameters and filters its visuals, such as line or scatter charts, to only show related data.
+
+### Define drillthroughs
+
+To create a drillthrough, you must first turn it on in the visual and then add one or more drillthroughs as required.
+
+1. Edit the dashboard, and then edit the visual where you want to add a drillthrough. Make sure that the **Visual** tab is selected. 
+1. In the right pane, select **Interactions**, then turn on drillthrough.
+1. Under **Drillthrough**, select **Create new**, and specify the following information. Optionally select **Add another pair** to add multiple parameters for a target page. Repeat this step to add drilthroughs to other pages in the current dashboard using different parameters.
+
+    | Field | Description |
+    |--|--|
+    | Destination page | One or more target pages to drill through to using the parameters defined in the drillthrough. | 
+    | Column | The query result's column to use as the value for a parameter in the target page. |
+    | Parameter | The parameter used to filter visuals in the target page using the column value. |
+    | Notes | Optional short description. |
+
+    > [!IMPORTANT]
+    > Column and parameter pairs must be of the same data type.
+
+:::image type="content" source="media/dashboard-parameters/cross-filter-query.png" alt-text="Screenshot of the edit visual page, showing the interactions tab.":::
+
+## Interact with your data using drillthroughs
+
+Once drillthroughs are defined, you can use them to interact with your data. To do so, in visuals or tables where you've defined a drillthrough, right-click on a data point, and then select **Drill through to** > *destination page*. The values from the data point will be used as the parameters to filter the visuals on the target page.
+
+:::image type="content" source="media/dashboard-parameters/cross-filter-query.png" alt-text="Screenshot of a table visual, showing the cross-filter context menu option.":::
+
+To return to the source page, in the top-right of the destination page, select **Back**. All filters assigned by the drillthrough will be removed.
 
 :::image type="content" source="media/dashboard-parameters/cross-filter-reset.png" alt-text="Screenshot of a table visual, showing the reset button.":::
 
