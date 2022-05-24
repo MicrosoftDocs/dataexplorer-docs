@@ -41,7 +41,7 @@ On the **Overview** tab for the selected subscription, the table displays intera
 
 - **Time Range**: By default, the table displays the last 24 hours of information based on the corresponding selections made.
 
-The counter tile, under the dropdown list, gives the total number of Azure Data Explorer clusters in the selected subscriptions and shows how many are selected. There are conditional color codings for the columns: **Keep alive**, **CPU**, **Ingestion Utilization**, and **Cache Utilization**. Orange-coded cells have values that are not sustainable for the cluster.
+The counter tile, under the dropdown list, gives the total number of Azure Data Explorer clusters in the selected subscriptions and shows how many are selected. There are conditional color codings for the columns: **Keep alive**, **CPU**, **Ingestion Utilization**, and **Cache Utilization**. Orange-coded cells have values that aren't sustainable for the cluster.
 
 To better understand what each of the metrics represent, we recommend reading through the documentation on [Azure Data Explorer metrics](/azure/data-explorer/using-metrics#cluster-metrics).
 
@@ -107,7 +107,7 @@ The **Usage** tab allows users to deep dive into the performance of the cluster'
 - Identify recent changes in the number of queries, compared to the historical daily average (over the past 16 days), by workload group, user, and application.
 - Identify trends and peaks in the number of queries, memory, and CPU consumption by workload group, user, application, and command type.
 
-The **Usage** tab includes actions that are performed directly by users. Internal cluster operations are not included in this tab.
+The **Usage** tab includes actions that are performed directly by users. Internal cluster operations aren't included in this tab.
 
 [:::image type="content" source="media/data-explorer-insights/usage.png" alt-text="Screenshot of the operations view with donut charts related to commands and queries." lightbox="media/data-explorer-insights/usage.png":::](media/data-explorer-insights/usage.png)
 
@@ -119,7 +119,7 @@ The **Tables** tab shows the latest and historical properties of tables in the c
 
 ### Cache tab
 
-The **Cache** tab allows users to analyze their actual queries' lookback window patterns and compare them to the configured cache policy (for each table). You can identify tables used by the most queries and tables that are not queried at all, and adapt the cache policy accordingly.
+The **Cache** tab allows users to analyze their actual queries' lookback window patterns and compare them to the configured cache policy (for each table). You can identify tables used by the most queries and tables that aren't queried at all, and adapt the cache policy accordingly.
 
 You might get cache policy recommendations on specific tables in Azure Advisor. Currently, cache recommendations are available only from the [main Azure Advisor dashboard](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations). They're based on actual queries' lookback window in the past 30 days and an unoptimized cache policy for at least 95 percent of the queries.
 
