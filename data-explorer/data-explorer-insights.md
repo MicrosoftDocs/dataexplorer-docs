@@ -31,7 +31,7 @@ To view the performance of your clusters across all your subscriptions:
 
 :::image type="content" source="media/data-explorer-insights/insights-hub.png" alt-text="Screenshot of selections for viewing the performance of Azure Data Explorer clusters.":::
 
-### Overview tab
+### Subscription overview tab
 
 On the **Overview** tab for the selected subscription, the table displays interactive metrics for the Azure Data Explorer clusters grouped within the subscription. You can filter results based on the options that you select from the following dropdown lists:
 
