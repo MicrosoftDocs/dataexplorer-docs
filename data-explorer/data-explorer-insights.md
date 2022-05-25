@@ -4,7 +4,6 @@ description: This article describes how to use Azure Data Explorer Insights.
 ms,reviewer: guregini
 ms.topic: conceptual
 ms.date: 05/24/2022
-
 ---
 
 # Azure Data Explorer Insights
@@ -173,7 +172,7 @@ Customizations are saved to a custom workbook to prevent overwriting the default
 
 ## Troubleshooting
 
-For general troubleshooting guidance, see the [Troubleshooting workbook-based insights](/azure/azure-monitor/troubleshoot-workbooks.md) article.
+For general troubleshooting guidance, see [Troubleshooting workbook-based insights](/azure/azure-monitor/troubleshoot-workbooks).
 
 The following sections will help you diagnose and troubleshoot of some of the common problems that you might encounter when using Azure Data Explorer Insights.
 

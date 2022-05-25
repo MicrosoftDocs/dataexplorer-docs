@@ -1,9 +1,9 @@
 ---
-title: Manage language extensions in your Azure Data Explorer cluster. 
-description: Use language extension to integrate other languages within your Azure Data Explorer KQL queries. 
-ms.reviewer: orhasban 
+title: Manage language extensions in your Azure Data Explorer cluster.
+description: Use language extension to integrate other languages within your Azure Data Explorer KQL queries.
+ms.reviewer: orhasban
 ms.topic: how-to
-ms.date: 04/01/2020
+ms.date: 05/18/2022
 ---
 
 # Manage language extensions in your Azure Data Explorer cluster (Preview)
@@ -25,20 +25,20 @@ The language extensions feature allows you to use language extension plugins to 
 
 Do the following steps to enable language extensions on your cluster:
 
-1. In the Azure portal, go to your Azure Data Explorer cluster. 
-1. In **Settings**, select **Configurations**. 
+1. In the Azure portal, go to your Azure Data Explorer cluster.
+1. In **Settings**, select **Configurations**.
 1. In the **Configurations** pane, select **On** to enable a language extension.
 1. Select **Save**.
- 
-    ![language extension on.](media/language-extensions/configurations-enable-extension.png)
+
+    :::image type="content" source="media/language-extensions/configuration-enable-extension-trim.png" alt-text="Screenshot of Azure Data Explorer portal cluster configuration to enable language extensions.":::
 
 > [!NOTE]
 > Enabling the language extension process can take up to a few minutes. During that time, your cluster may be unavailable.
- 
+
 ## Run language extension-integrated queries
 
 * Learn how to [run Python integrated KQL queries](kusto/query/pythonplugin.md).
-* Learn how to [run R integrated KQL queries](kusto/query/rplugin.md). 
+* Learn how to [run R integrated KQL queries](kusto/query/rplugin.md).
 
 ## Disable language extensions on your cluster
 
@@ -47,12 +47,12 @@ Do the following steps to enable language extensions on your cluster:
 
 Do the following steps to disable language extensions on your cluster:
 
-1. In the Azure portal, go to your Azure Data Explorer cluster. 
-1. In **Settings**, select **Configurations**. 
+1. In the Azure portal, go to your Azure Data Explorer cluster.
+1. In **Settings**, select **Configurations**.
 1. In the **Configurations** pane, select **Off** to disable a language extension.
 1. Select **Save**.
 
-    ![Language extension off.](media/language-extensions/configurations-disable-extension.png)
+    :::image type="content" source="media/language-extensions/configuration-disable-extension-trim.png" alt-text="Screenshot of Azure Data Explorer portal cluster configuration to disable language extensions.":::
 
 ## Limitations
 
