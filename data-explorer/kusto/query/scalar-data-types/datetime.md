@@ -31,15 +31,11 @@ are supported for *value*, as indicated by the following table:
 |------------------------------------------------------------|--------------------------------------------------------------|
 |`datetime(2015-12-31 23:59:59.9)`<br/>`datetime(2015-12-31)`|Times are always in UTC. Omitting the date gives a time today.|
 |`datetime(null)`                                            |See [null values](null-values.md).                            |
-|`now()`                                                     |The current time.                                             |
-|`now(`-*timespan*`)`                                        |`now()-`*timespan*                                            |
-|`ago(`*timespan*`)`                                         |`now()-`*timespan*                                            |
 
-`now()` and `ago()` indicate a `datetime` value compared with the moment
-in time when Kusto started to execute the query. These can appear multiple
-times in the same query, and a single value will be used for them all.
-(In other words, expressions such as `now(-x) - ago(x)` always evaluate
-to a `timespan` value of zero.)
+## The now() and ago() special functions
+
+Kusto provides two special functions, [now() and ago()](../nowfunction.md),
+to allow queries to reference the time at which the query starts execution.
 
 ## Supported formats
 
