@@ -44,7 +44,7 @@ Create a table in Azure Data Explorer where Azure Event Hubs will send data. Cre
     .create table TestTable (TimeStamp: datetime, Value: string, Source:string)
     ```
 
-    :::image type="content" source="media/ingest-data-event-grid/run-create-table.png" alt-text="Screenshot of the Azure Data Explorer Web UI Query page, showing the create table command.":::
+    :::image type="content" source="media/ingest-data-event-grid/run-create-table.png" alt-text="Screenshot of the Azure Data Explorer Web U I Query page, showing the create table command.":::
 
 1. Copy the following command into the window and select **Run** to map the incoming JSON data to the column names and data types of the table (TestTable).
 
@@ -286,7 +286,7 @@ If you don't plan to use your event grid again, clean up the Event Grid Subscrip
 
 1. Select your database **TestDatabase**:
 
-    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-database.png" alt-text="Screenshot of Azure Data Explorer Web UI Databases page, showing a database.":::
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-database.png" alt-text="Screenshot of Azure Data Explorer Web U I Databases page, showing a database.":::
 
 1. On the left menu, select **Data ingestion**:
 

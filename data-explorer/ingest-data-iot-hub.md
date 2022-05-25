@@ -43,7 +43,7 @@ Now you create a table in Azure Data Explorer to which IoT Hubs will send data. 
 
 1. In the Azure portal, navigate to your cluster and select **Query**.
 
-    :::image type="content" source="media/ingest-data-iot-hub/adx-initiate-query.png" alt-text="Screenshot of the Azure Data Explorer Web UI left menu, showing the query option.":::
+    :::image type="content" source="media/ingest-data-iot-hub/adx-initiate-query.png" alt-text="Screenshot of the Azure Data Explorer Web U I left menu, showing the query option.":::
 
 1. Copy the following command into the window and select **Run** to create the table (TestTable) which will receive the ingested data.
 
@@ -51,7 +51,7 @@ Now you create a table in Azure Data Explorer to which IoT Hubs will send data. 
     .create table TestTable (temperature: real, humidity: real)
     ```
 
-    :::image type="content" source="media/ingest-data-iot-hub/run-create-query.png" alt-text="Screenshot of the Azure Data Explorer Web UI, showing the run create table command.":::
+    :::image type="content" source="media/ingest-data-iot-hub/run-create-query.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the run create table command.":::
 
 1. Copy the following command into the window and select **Run** to map the incoming JSON data to the column names and data types of the table (TestTable).
 
@@ -67,17 +67,17 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
 
 1. Under the cluster you created, select **Databases** then select the database that you created **testdb**.
 
-    :::image type="content" source="media/ingest-data-iot-hub/select-database.png" alt-text="Screenshot of the Azure Data Explorer Web UI, showing a list of databases with testdb selected.":::
+    :::image type="content" source="media/ingest-data-iot-hub/select-database.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing a list of databases with testdb selected.":::
 
 1. Select **Data ingestion** and **Add data connection**.
 
-    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-connection.png" alt-text="Screenshot of the Azure Data Explorer Web UI, showing the Data Ingestion window with the Add data connection tab selected.":::
+    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-connection.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data Ingestion window with the Add data connection tab selected.":::
 
 ### Create a data connection
 
 * Fill out the form with the following information.
 
-    :::image type="content" source="media/ingest-data-iot-hub/data-connection-pane.png" alt-text="Screenshot of the Azure Data Explorer Web UI, showing the Data connection form.":::
+    :::image type="content" source="media/ingest-data-iot-hub/data-connection-pane.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data connection form.":::
 
     |**Setting** | **Field description**|
     |---|---|
@@ -98,7 +98,7 @@ Before you can set an alternate target database, you must first *allow* routing 
 1. Select **Databases** > **Data connections**.
 1. Create or edit a data connection and in the **Data connection** pane, under **Data routing settings**, turn on the allow routing data to other database (multi-database data connection) option.
 
-    :::image type="content" source="media/ingest-data-iot-hub/data-connection-allow-multi-database.png" alt-text="Screenshot of the Azure Data Explorer Web UI, showing the Data routing settings option set to allow.":::
+    :::image type="content" source="media/ingest-data-iot-hub/data-connection-allow-multi-database.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data routing settings option set to allow.":::
 
 #### Target table
 
@@ -107,7 +107,7 @@ For this article, you use static routing, where you specify the table name, data
 
 1. Fill out the following routing settings:
 
-    :::image type="content" source="media/ingest-data-iot-hub/default-routing-settings.png" alt-text="Screenshot of the Azure Data Explorer Web UI, showing the default routing settings in the Target table form.":::
+    :::image type="content" source="media/ingest-data-iot-hub/default-routing-settings.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the default routing settings in the Target table form.":::
 
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -159,7 +159,7 @@ The simulated device application connects to a device-specific endpoint on your 
 
     The following screenshot shows the output as the simulated device application sends telemetry to your IoT hub:
 
-    :::image type="content" source="media/ingest-data-iot-hub/simulated-device.png" alt-text="Screenshot of a command line window, showing a simulated device application sending telemetry to your IoT hub:.":::
+    :::image type="content" source="media/ingest-data-iot-hub/simulated-device.png" alt-text="Screenshot of a command line window, showing a simulated device application sending telemetry to your I o T hub:.":::
 
 ## Review the data flow
 
@@ -167,7 +167,7 @@ With the app generating data, you can now see the data flow from the IoT hub to 
 
 1. In the Azure portal, under your IoT hub, you see the spike in activity while the app is running.
 
-    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-metrics.png" alt-text="Screenshot of the Azure Portal UI under your IoT hub, showing the spike in activity while the app is running .":::
+    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-metrics.png" alt-text="Screenshot of the Azure Portal UI under your I o T hub, showing the spike in activity while the app is running .":::
 
 1. To check how many messages have made it to the database so far, run the following query in your test database.
 
@@ -184,7 +184,7 @@ With the app generating data, you can now see the data flow from the IoT hub to 
 
     The result set:
 
-    :::image type="content" source="media/ingest-data-iot-hub/show-ingested-data.png" alt-text="Screenshot of the Azure Data Explorer Web UI, showing the content of the messages from the query.":::
+    :::image type="content" source="media/ingest-data-iot-hub/show-ingested-data.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the content of the messages from the query.":::
 
     > [!NOTE]
     > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. See [batching policy](kusto/management/batchingpolicy.md) for aggregation options.
@@ -198,7 +198,7 @@ If you don't plan to use your IoT Hub again, clean up your resource group to avo
 
     If the left menu is collapsed, select :::image type="content" source="media/ingest-data-event-hub/expand.png" alt-text="Screenshot of the expand button.":::
 
-    :::image type="content" source="media/ingest-data-iot-hub/delete-resources-select.png" alt-text="Screenshot of the Azure Data Explorer Web UI, showing the Resource groups page.":::
+    :::image type="content" source="media/ingest-data-iot-hub/delete-resources-select.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Resource groups page.":::
 
 1. Under **test-resource-group**, select **Delete resource group**.
 
