@@ -443,7 +443,7 @@ items:
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
     - name: Use Azure Monitor insights
-      href: /azure/time-series-insights/migration-to-adx?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
+      href: /azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
     - name: Monitor batching ingestion with metrics
       href: monitor-batching-ingestion.md
   - name: Share data
