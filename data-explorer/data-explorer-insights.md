@@ -13,7 +13,7 @@ Azure Data Explorer Insights provides comprehensive monitoring of your clusters 
 It offers:
 
 - **At-scale perspective**. A snapshot view of your clusters' primary metrics helps you track performance of queries, ingestion, and export operations.
--**Drill-down analysis**. You can drill down into a particular Azure Data Explorer cluster to perform detailed analysis.
+- **Drill-down analysis**. You can drill down into a particular Azure Data Explorer cluster to perform detailed analysis.
 - **Customization**. You can change which metrics you want to see, modify or set thresholds that align with your limits, and save your own custom workbooks. Charts in a workbook can be pinned to Azure dashboards.
 
 This article will help you understand how to onboard and use Azure Data Explorer Insights.
@@ -28,7 +28,7 @@ To view the performance of your clusters across all your subscriptions:
 
 2. Select **Monitor** from the left pane. In the **Insights Hub** section, select **Azure Data Explorer Clusters**.
 
-:::image type="content" source="media/data-explorer-insights/insights-hub.png" alt-text="Screenshot of selections for viewing the performance of Azure Data Explorer clusters.":::
+:::image type="content" source="media/data-explorer-insights/insights-hub.png" alt-text="Screenshot of selections for viewing the performance of Azure Data Explorer clusters." lightbox="media/data-explorer-insights/insights-hub.png":::
 
 ### Subscription overview tab
 
@@ -48,7 +48,7 @@ To better understand what each of the metrics represent, we recommend reading th
 
 The **Query Performance** tab shows the query duration, the total number of concurrent queries, and the total number of throttled queries.
 
-:::image type="content" source="media/data-explorer-insights/query-performance.png" alt-text="Screenshot of the Query Performance tab.":::
+:::image type="content" source="media/data-explorer-insights/query-performance.png" alt-text="Screenshot of the Query Performance tab." lightbox="media/data-explorer-insights/query-performance.png":::
 
 ### Ingestion Performance tab
 
@@ -124,7 +124,7 @@ You might get cache policy recommendations on specific tables in Azure Advisor. 
 
 Cache reduction recommendations in Azure Advisor are available for clusters that are "bounded by data." That means the cluster has low CPU and low ingestion utilization, but because of high data capacity, the cluster can't scale in or scale down.
 
-[:::image type="content" source="media/data-explorer-insights/cache-tab.png" alt-text="Screenshot of cache details." lightbox="media/data-explorer-insights/cache-tab.png":::](media/data-explorer-insights/cache-tab.png)
+[:::image type="content" source="media/data-explorer-insights/cache-tab.png" alt-text="Screenshot of cache details tab, showing query lookback window patterns." lightbox="media/data-explorer-insights/cache-tab.png":::](media/data-explorer-insights/cache-tab.png)
 
 ### Cluster Boundaries tab
 
@@ -133,7 +133,7 @@ The **Cluster Boundaries** tab displays the cluster boundaries based on your usa
 On this tab, you can select a metric tile and deep dive to understand its trend and how its score is decided. You can also view the Azure Advisor SKU/size recommendation for your cluster. For example, in the following image, you can see that all metrics are scored as **Low**. The cluster receives a cost recommendation that will allow it to scale in/down and save cost.
 
 > [!div class="mx-imgBorder"]
-> [:::image type="content" source="media/data-explorer-insights/cluster-boundaries.png" alt-text="Screenshot of cluster boundaries." lightbox="media/data-explorer-insights/cluster-boundaries.png":::](media/data-explorer-insights/cluster-boundaries.png)
+> [:::image type="content" source="media/data-explorer-insights/cluster-boundaries.png" alt-text="Screenshot of cluster boundaries tab, showing metrics based on usage." lightbox="media/data-explorer-insights/cluster-boundaries.png":::](media/data-explorer-insights/cluster-boundaries.png)
 
 ### Ingestion tab (preview tab)
 
@@ -152,7 +152,7 @@ The **Ingestion** tab gives you detailed information about the following:
 
 You can pin any one of the metric sections (of the "at-scale" perspective) to an Azure dashboard by selecting the pushpin icon at the upper right of the section.
 
-:::image type="content" source="media/data-explorer-insights/pin.png" alt-text="Screenshot of the pin icon selected.":::
+:::image type="content" source="media/data-explorer-insights/pin.png" alt-text="Screenshot of the pin to Azure dashboard icon selected.":::
 
 ## Customize Azure Data Explorer Insights
 
@@ -164,11 +164,11 @@ You can edit the workbook to customize it in support of your data analytics need
 
 You can begin customizations by selecting the **Customize** button on the top toolbar.
 
-:::image type="content" source="media/data-explorer-insights/customize.png" alt-text="Screenshot of the Customize button.":::
+:::image type="content" source="media/data-explorer-insights/customize.png" alt-text="Screenshot of the Customize workbook button.":::
 
 Customizations are saved to a custom workbook to prevent overwriting the default configuration in a published workbook. Workbooks are saved within a resource group, either in the **My Reports** section that's private to you or in the **Shared Reports** section that's accessible to everyone with access to the resource group. After you save the custom workbook, go to the workbook gallery to open it.
 
-:::image type="content" source="media/data-explorer-insights/gallery.png" alt-text="Screenshot of the workbook gallery.":::
+:::image type="content" source="media/data-explorer-insights/gallery.png" alt-text="Screenshot of the workbooks gallery button.":::
 
 ## Troubleshooting
 
