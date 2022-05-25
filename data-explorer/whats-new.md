@@ -24,8 +24,8 @@ This section lists the major changes to docs during April 2022.
 
 | Article title | Description |
 |--|--|
-| [Streaming ingestion failures](streamingingestionfailures.md) | New article. Describes the command to show streaming ingestion failures. |
-| [Streaming ingestion statistics](streamingingestionstatistics.md) | New article. Describes the command to show streaming ingestion statistics. |
+| [Streaming ingestion failures](./kusto/management/streamingingestionfailures.md) | New article. Describes the command to show streaming ingestion failures. |
+| [Streaming ingestion statistics](./kusto/management/streamingingestionstatistics.md) | New article. Describes the command to show streaming ingestion statistics. |
 
 ## March 2022
 
