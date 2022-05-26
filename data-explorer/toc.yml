@@ -494,6 +494,9 @@ items:
       href: devops.md
     - name: Sync Kusto
       href: kusto/tools/synckusto.md
+    - name: Migrate TSI to Azure Data Explorer
+      href: /azure/time-series-insights/migration-to-adx
+      displayName: Time Series Insights
   - name: Troubleshoot
     items:
     - name: Creating a cluster
