@@ -54,7 +54,7 @@ This example uses an interactive AAD user authentication to access the cluster. 
 Azure Data Explorer SDK provides a convenient way to set up the authentication method as part of the connection string. For complete documentation on Azure Data Explorer connection strings, see [connection strings](kusto/api/connection-strings/kusto.md).
 
 > [!NOTE]
-> The current version of the SDK doesn't support interactive uer authentication on .NET Core. If required, use AAD username/password or application authentication instead.
+> The current version of the SDK doesn't support interactive user authentication on .NET Core. If required, use AAD username/password or application authentication instead.
 
 ### Construct the connection string
 
