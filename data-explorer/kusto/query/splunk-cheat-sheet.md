@@ -121,7 +121,7 @@ Splunk doesn't appear to have an operator that's similar to `project-away`. You 
 
 ### Aggregation
 
-See the [list of summarize aggregations functions](./kusto/query/aggregation-functions.md) that are available.
+See the [list of summarize aggregations functions](aggregation-functions.md) that are available.
 
 | Splunk operator | Splunk example | Kusto operator | Kusto example |
 |:---|:---|:---|:---|
