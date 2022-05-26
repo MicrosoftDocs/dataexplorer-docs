@@ -16,7 +16,7 @@ A user-defined function belongs to one of two categories:
 
 The function's input arguments and output determine whether it's scalar or tabular, which then establishes how it might be used.
 
- See [Stored functions](../schema-entities/stored-functions.md) to see how to create and manage entities that allow the reuse of Azure data explorer queries or query parts.
+ See [Stored functions](../schema-entities/stored-functions.md) to create and manage entities that allow the reuse of Kusto queries or query parts.
 
 ## Scalar function
 
