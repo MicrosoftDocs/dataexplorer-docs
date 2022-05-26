@@ -443,7 +443,7 @@ items:
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
     - name: Use Azure Monitor insights
-      href: /azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
+      href: data-explorer-insights.md
     - name: Monitor batching ingestion with metrics
       href: monitor-batching-ingestion.md
   - name: Share data
@@ -494,6 +494,9 @@ items:
       href: devops.md
     - name: Sync Kusto
       href: kusto/tools/synckusto.md
+    - name: Migrate TSI to Azure Data Explorer
+      href: /azure/time-series-insights/migration-to-adx
+      displayName: Time Series Insights
   - name: Troubleshoot
     items:
     - name: Creating a cluster
