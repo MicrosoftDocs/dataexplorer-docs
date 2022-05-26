@@ -25,7 +25,7 @@ and returns the value of one or more expressions over each such record.
 ## Returns
 
 The `take_any` aggregation function returns the values of the expressions calculated
-for each of the records, selected randomly from each group of the summarize operator.
+for each of the records, selected indeterministicly from each group of the summarize operator.
 
 If the `*` argument is provided, the function behaves as if the expressions are all columns
 of the input to the summarize operator barring the group-by columns, if any.
@@ -38,10 +38,7 @@ per value of the compound group key.
 When the function is provided with a single column reference, it will attempt to
 return a non-null/non-empty value, if such value is present.
 
-> [!NOTE]
-> `take_any()` function does not select a value according to a pseudo-random function. Multiple results of the function can't be expected to follow a random pattern.
-
-As a result of the random nature of this function, using it multiple times in
+As a result of the indeterministic nature of this function, using it multiple times in
 a single application of the `summarize` operator is not equivalent to using
 it a single time with multiple expressions. The former may have each application
 select a different record, while the latter guarantees that all values are calculated
@@ -49,7 +46,7 @@ over a single record (per distinct group).
 
 ## Examples
 
-Show Random State:
+Show indeterministic State:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
