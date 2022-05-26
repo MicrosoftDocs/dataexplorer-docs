@@ -10,6 +10,7 @@ ms.date: 05/26/2022
 The sharding policy defines if and how [extents (data shards)](../management/extents-overview.md) in the Azure Data Explorer cluster are created. You can only query data in an extent once it's created.
 
 > [!NOTE]
+>
 > * For low latency between ingestion and query, consider configuring [Streaming ingestion](../../ingest-data-streaming.md).
 > * The policy applies to all operations that create new extents,
 > such as commands for [data ingestion](../../ingest-data-overview.md#ingest-control-commands), and
