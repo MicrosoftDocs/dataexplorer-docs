@@ -20,7 +20,7 @@ The function's input arguments and output determine whether it's scalar or tabul
 
 ## Scalar function
 
-* Accepts zero or more, scalar or tabular input arguments. You can use the `toscalar()` function to convert tabular expressions to scalar values.
+* Has zero input arguments, or all its input arguments are scalar values
 * Produces a single scalar value
 * Can be used wherever a scalar expression is allowed
 * May only use the row context in which it's defined
