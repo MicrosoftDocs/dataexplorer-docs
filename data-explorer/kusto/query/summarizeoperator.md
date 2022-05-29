@@ -120,7 +120,7 @@ Activities | summarize cities=dcount(city) by continent
 ```
 
 |`cities`|`continent`
-|---:|---
+|---|---
 |`4290`|`Asia`|
 |`3267`|`Europe`|
 |`2673`|`North America`|
@@ -135,7 +135,7 @@ Activities | summarize count() by ActivityType, length=bin(Duration, 10m)
 ```
 
 |`count_`|`ActivityType`|`length`
-|---:|---|---
+|---|---|---
 |`354`| `dancing` | `0:00:00.000`
 |`23`|`singing` | `0:00:00.000`
 |`2717`|`dancing`|`0:10:00.000`
