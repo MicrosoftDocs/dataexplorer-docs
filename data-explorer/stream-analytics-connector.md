@@ -3,7 +3,7 @@ title: Azure Data Explorer Connector for Azure Stream Analytics
 description: This article shows you how to move data between Azure Data Explorer and Azure Stream Analytics.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 04/06/2022
+ms.date: 05/29/2022
 ---
 
 # Azure Data Explorer connector for Azure Stream Analytics
@@ -36,10 +36,12 @@ If you don't already have one, [create an Azure Stream Analytics job](/azure/str
 > [!NOTE]
 > Azure Data Explorer output connection only supports [Managed Identity](/azure/active-directory/managed-identities-azure-resources/overview) for authentication. As part of output creation, database monitor and database ingestor permission will be granted to Azure Stream Analytics job MSI.
 
-There are different ways you can create an Azure Data Explorer output connection for an Azure Stream Analytics job, you can try one of the following methods.
+There are different ways you can create an Azure Data Explorer output connection for an Azure Stream Analytics job, in this article we discuss the following methods.
 
 * Create an Azure Data Explorer output connection by using portal
 * Create an Azure Data Explorer output connection by using Azure Resource Manager template
+
+In order to have an opportunity to test the output connection we are going to create an event hub in [Azure Event Hubs](/azure/event-hubs/event-hubs-about) and ingest data from the phone call event generator app [TelcoGenerator](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) from the Microsoft Download Center. The data is ingested into the Azure Stream Analyzer and sent to Azure Data Explorer through the output connection. When this connection is complete, and job is running, data that flows into the Azure Stream Analytics job will be ingested into the target table you created in Azure Data Explorer.
 
 ## Prerequisites
 
@@ -48,7 +50,7 @@ There are different ways you can create an Azure Data Explorer output connection
 
 ## [Azure portal](#tab/portal)
 
-You can use the following steps to create an Azure Data Explorer output connection for an Azure Stream Analytics job.  When this connection is complete, and job is running, data that flows into the Azure Stream Analytics job will be ingested into the target table you created.
+You can use the following steps to create an Azure Data Explorer output connection for an Azure Stream Analytics job.  In order to create a test run for the job we will also create an event hub to ingest data that can be sent to the Azure Stream Analytics job. 
 
 1. Create an [Azure Stream Analytics job](/azure/stream-analytics/stream-analytics-quick-create-portal).
 
@@ -82,8 +84,6 @@ You can download an event generator app and use Azure Event Hubs to test the dat
 > You can modify the sample to send data relevant to your user case as long as you adhere to the Azure Data Explorer schema.
 
 Once the app is generating data, you can see the data flow from the Azure Stream Analytics to the table in your Azure Data Explorer database and run queries to test data flow.
-
-:::image type="content" source="media/stream-analytics-connector/sample-data-process.png" alt-text="Diagram showing the process of data going from the generator app to the Azure Explorer Database.":::
 
 > [!NOTE]
 > Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. See [batching policy](kusto/management/batchingpolicy.md) for aggregation options.
