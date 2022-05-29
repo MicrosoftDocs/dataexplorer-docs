@@ -34,7 +34,7 @@ A table that shows how many items have prices in each interval  [0,10.0], [10.0,
 ## Arguments
 
 * *Column:* Optional name for a result column. Defaults to a name derived from the expression.
-* *Aggregation:* A call to an [aggregation function](aggregation-functions.md)such as `count()` or `avg()`, with column names as arguments. See the [list of aggregation functions](aggregation-functions.md).
+* *Aggregation:* A call to an [aggregation function](aggregation-functions.md) such as `count()` or `avg()`, with column names as arguments.
 * *GroupExpression:* A scalar expression that can reference the input data.
   The output will have as many records as there are distinct values of all the
   group expressions.
