@@ -69,7 +69,7 @@ blob.Metadata.Add("rawSizeBytes", "4096"); // the uncompressed size is 4096 byte
 blob.Metadata.Add("kustoTable", "Events");
 blob.Metadata.Add("kustoDataFormat", "json");
 blob.Metadata.Add("kustoIngestionMappingReference", "EventsMapping");
-blob.Metadata.Add("KustoDatabase", "AnotherDB");
+blob.Metadata.Add("kustoDatabase", "AnotherDB");
 blob.UploadFromFile(jsonCompressedLocalFileName);
 ```
 

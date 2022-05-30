@@ -12,7 +12,7 @@ To change the name of multiple columns, see [below](#rename-columns).
 
 **Syntax**
 
-`.rename` `column` [*DatabaseName* `.`] *TableName* `.` *ColumnExistingName* `to` *ColumnNewName*
+`.rename` `column` [*DatabaseName*`.`]*TableName*`.`*ColumnExistingName* `to` *ColumnNewName*
 
 Where *DatabaseName*, *TableName*, *ColumnExistingName*, and *ColumnNewName*
 are the names of the respective entities and follow the [identifier naming rules](../query/schema-entities/entity-names.md).
@@ -23,7 +23,7 @@ Changes the names of multiple existing columns in the same table.
 
 **Syntax**
 
-`.rename` `columns` *Col1* `=` [*DatabaseName* `.` [*TableName* `.` *Col2*]] `,` ...
+`.rename` `columns` *Col1* `=` [*DatabaseName*`.`[*TableName*`.`*Col2*]] `,` ...
 
 The command can be used to swap the names of two columns (each is renamed as
 the other's name.)

@@ -49,7 +49,6 @@ The following table specifies functions in Kusto that are equivalent to Splunk f
 
 (1) In Splunk, the function is invoked by using the `eval` operator. In Kusto, it's used as part of `extend` or `project`.<br />(2) In Splunk, the function is invoked by using the `eval` operator. In Kusto, it can be used with the `where` operator.
 
-
 ## Operators
 
 The following sections give examples of how to use different operators in Splunk and Kusto.
@@ -59,7 +58,7 @@ The following sections give examples of how to use different operators in Splunk
 
 ### Search
 
-In Splunk, you can omit the `search` keyword and specify an unquoted string. In Kusto, you must start each query with `find`, an unquoted string is a column name, and the lookup value must be a quoted string. 
+In Splunk, you can omit the `search` keyword and specify an unquoted string. In Kusto, you must start each query with `find`, an unquoted string is a column name, and the lookup value must be a quoted string.
 
 | Product | Operator | Example |
 |:---|:---|:---|
@@ -122,7 +121,7 @@ Splunk doesn't appear to have an operator that's similar to `project-away`. You 
 
 ### Aggregation
 
-See the [list of summarize aggregations functions](summarizeoperator.md#list-of-aggregation-functions) that are available.
+See the [list of summarize aggregations functions](aggregation-functions.md) that are available.
 
 | Splunk operator | Splunk example | Kusto operator | Kusto example |
 |:---|:---|:---|:---|

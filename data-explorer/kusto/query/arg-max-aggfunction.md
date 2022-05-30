@@ -28,4 +28,4 @@ returns the value of *ExprToReturn* (or `*` to return the entire row).
 
 ## Examples
 
-See examples for [arg_min()](arg-min-aggfunction.md) aggregation function
+See examples for [arg_min()](arg-min-aggfunction.md) aggregation function.

@@ -9,9 +9,7 @@ ms.date: 02/13/2020
 
 Calculates distinct count of values, where each value has appeared in at least a minimum number of periods in a lookback period.
 
-Useful for calculating distinct counts of "fans" only,  while not including appearances of "non-fans". A user is counted as a "fan" only if it was active during the lookback period.
-The lookback period is only used to determine whether a user is considered `active` ("fan") or not.
-The aggregation itself doesn't include users from the lookback window. In comparison, the [sliding_window_counts](sliding-window-counts-plugin.md) aggregation is performed over a sliding window of the lookback period.
+Useful for calculating distinct counts of "fans" only, while not including appearances of "non-fans". A user is counted as a "fan" only if it was active during the lookback period. The lookback period is only used to determine whether a user is considered `active` ("fan") or not. The aggregation itself doesn't include users from the lookback window. In comparison, the [sliding_window_counts](sliding-window-counts-plugin.md) aggregation is performed over a sliding window of the lookback period.
 
 ```kusto
 T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, 2, 7d, dim1, dim2, dim3)
@@ -84,4 +82,4 @@ A user is considered active if it fulfills both of the following criteria:
 In the illustration below, the only appearances that are active by this criteria are the following instances: User A on 7/20 and User B on 7/4 (see plugin results above).
 The appearances of User B are included for the lookback window on 7/4, but not for the Start-End time range of 6/29-30.
 
-:::image type="content" source="images/queries/active-users-count.png" alt-text="Active user count example.":::
+:::image type="content" source="images/queries/active-users-count.png" alt-text="Graph showing active users based on the loopback window and active period specified in the query.":::
