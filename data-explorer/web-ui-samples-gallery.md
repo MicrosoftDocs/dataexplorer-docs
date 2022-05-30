@@ -28,7 +28,7 @@ Get started learning about KQL queries with a dataset from the samples gallery.
 
 1. In the Azure Data Explorer Web UI [Home](https://dataexplorer.azure.com/home) page, select **Explore sample data with KQL**.
 
-    :::image type="content" source="media/web-ui-samples-gallery/ade-web-ui-home-full-box.png" alt-text="Screenshot of the Azure Data Explorer Web U I showing the home page." lightbox="media/web-ui-samples-gallery/ade-web-ui-home-full-box.png":::
+    :::image type="content" source="media/web-ui-samples-gallery/web-ui-home-full-box.png" alt-text="Screenshot of the Azure Data Explorer Web U I showing the home page." lightbox="media/web-ui-samples-gallery/ade-web-ui-home-full-box.png":::
 
 1. In the **Explore data samples** dialog box, select a sample dataset and then select **Explore**.
 
@@ -40,7 +40,7 @@ Get started learning about KQL queries with a dataset from the samples gallery.
 
 This diagram shows a high level view of the architectural data flow, from raw data through ingestion, processing, and materialized views.
 
-:::image type="content" source="media/web-ui-samples-gallery/hi-level-flow-tables.png" alt-text="Flow chart showing a process from raw data ingestion to transformed data and materialized views.":::
+:::image type="content" source="media/web-ui-samples-gallery/high-level-flow-tables.png" alt-text="Flow chart showing a process from raw data ingestion to transformed data and materialized views.":::
 
 ## Explore sample data with KQL tutorials
 

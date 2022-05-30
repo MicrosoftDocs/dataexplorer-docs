@@ -13,7 +13,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 The following image shows the Azure Data Explorer Web UI **Home** page and navigation pane for accessing the core elements of the Web UI.
 
-:::image type="content" source="media/web-ui-overview/ade-web-ui-home-full-numbered.png" alt-text="Screenshot of Azure Data Explorer Web U I with numbered sections." lightbox="media/web-ui-overview/ade-web-ui-home-full-numbered.png":::
+:::image type="content" source="media/web-ui-overview/web-ui-home-full-numbered.png" alt-text="Screenshot of Azure Data Explorer Web U I with numbered sections." lightbox="media/web-ui-overview/ade-web-ui-home-full-numbered.png":::
 
 1. Navigation pane
 1. Help, feedback, and settings
