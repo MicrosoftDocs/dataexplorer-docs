@@ -39,7 +39,7 @@ This command returns a table with the following columns:
 ```kusto
 .clear database cache streamingingestion schema
 
-.show table T1 cache streamingingestion schema
+.clear table T1 cache streamingingestion schema
 ```
 
 |NodeId|Status|
