@@ -20,7 +20,7 @@ A Microsoft account or an Azure Active Directory user identity to access the [**
 
 The samples gallery includes datasets with guided tutorials and sample dashboards. The following diagram is a high-level view of the databases available in the samples gallery.
 
-:::image type="content" source="media/web-ui-samples-gallery/samples-hi-level-diagram.png" alt-text="Flow chart showing the Azure Data Explorer divided into sample databases.":::
+:::image type="content" source="media/web-ui-samples-gallery/samples-hi-level-diagram.png" alt-text="Flow chart showing the Azure Data Explorer divided into sample databases." border="false":::
 
 ## Take action on sample data
 
@@ -40,7 +40,7 @@ Get started learning about KQL queries with a dataset from the samples gallery.
 
 This diagram shows a high level view of the architectural data flow, from raw data through ingestion, processing, and materialized views.
 
-:::image type="content" source="media/web-ui-samples-gallery/high-level-flow-tables.png" alt-text="Flow chart showing a process from raw data ingestion to transformed data and materialized views.":::
+:::image type="content" source="media/web-ui-samples-gallery/high-level-flow-tables.png" alt-text="Flow chart showing a process from raw data ingestion to transformed data and materialized views." border="false":::
 
 ## Explore sample data with KQL tutorials
 
