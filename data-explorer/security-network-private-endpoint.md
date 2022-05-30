@@ -68,7 +68,7 @@ To increase security, you also can disable public access to the cluster in the A
 
 ## Managed private endpoints
 
-You can use a managed private endpoint to enable the cluster to securely access your event hub via its private endpoint. When you create a cluster, Azure provisions a managed virtual network in the Microsoft backbone infrastructure. This VNet is isolated and not visible to your users because the Azure Data Explorer service is consumed as a PaaS resource. You can create a managed private endpoint via the REST API to provision a private endpoint in the same virtual network where the root service resources of the cluster reside. This enables the service to access your event hub privately.
+You can use a managed private endpoint to either enable the cluster to securely access your ingestion or query related services via their private endpoint. This allows the Azure Data Explorer cluster to access your resources via private IP address.
 
 :::image type="content" source="media/security-network-private-endpoint/pe-mpe.png" alt-text="Diagram showing the schema of the managed private endpoint architecture.":::
 
