@@ -10,7 +10,7 @@ ms.date: 05/30/2022
 
 Multiple tenants can run queries and commands in a single Azure Data Explorer cluster. In this article, you will learn how to give cluster access to principals from another tenant.
 
-Cluster owners can protect their cluster from queries and commands from other tenants. You can define permissions at the cluster level using the portal, or use the API to set the `trustedExternalTenants` property to define which tenants are allowed to run queries and commands on the cluster. 
+Cluster owners can protect their cluster from queries and commands from other tenants. You can define permissions at the cluster level using the portal, or use the `trustedExternalTenants` property to define which tenants are allowed to run queries and commands on the cluster. 
 
 Permissions can be set using the portal, the [ARM Templates](/azure/templates/microsoft.kusto/clusters?tabs=json#trustedexternaltenant-object), [AZ CLI](/cli/azure/kusto/cluster#az-kusto-cluster-update-optional-parameters), [PowerShell](/powershell/module/az.kusto/new-azkustocluster), or the [Azure Resource Explorer](https://resources.azure.com/). See also [Azure Data Explorer cluster request body](/rest/api/azurerekusto/clusters/createorupdate#request-body).
 
