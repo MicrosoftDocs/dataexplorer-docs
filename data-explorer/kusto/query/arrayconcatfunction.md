@@ -7,11 +7,11 @@ ms.date: 10/23/2018
 ---
 # array_concat()
 
-Concatenates several dynamic arrays to a single array.
+Concatenates many dynamic arrays to a single array.
 
 ## Syntax
 
-`array_concat(`*arr1*`[`,`*arr2*, ...]`)`
+`array_concat(`*arr1*`[`, `*arr2*, ...]`)`
 
 ## Arguments
 

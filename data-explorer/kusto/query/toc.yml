@@ -368,6 +368,8 @@ items:
     href: atanfunction.md
   - name: atan2()
     href: atan2function.md
+  - name: bag_has_key()
+    href: bag-has-key-function.md
   - name: bag_keys()
     href: bagkeysfunction.md
   - name: bag_merge()
@@ -553,6 +555,8 @@ items:
     href: ipv4-comparefunction.md
   - name: ipv4_is_in_range()
     href: ipv4-is-in-range-function.md
+  - name: ipv4_is_in_any_range()
+    href: ipv4-is-in-any-range-function.md
   - name: ipv4_is_match()
     href: ipv4-is-matchfunction.md
   - name: ipv4_is_private()
@@ -880,38 +884,12 @@ items:
     href: geo-intersects-2polygons-function.md
   - name: geo_intersects_line_with_polygon()
     href: geo-intersects-line-with-polygon-function.md
-  - name: geo_point_in_circle()
-    href: geo-point-in-circle-function.md
-  - name: geo_point_in_polygon()
-    href: geo-point-in-polygon-function.md
-  - name: geo_point_to_geohash()
-    href: geo-point-to-geohash-function.md
-  - name: geo_geohash_to_central_point()
-    href: geo-geohash-to-central-point-function.md
-  - name: geo_geohash_to_polygon()
-    href: geo-geohash-to-polygon-function.md
-  - name: geo_point_to_s2cell()
-    href: geo-point-to-s2cell-function.md
-  - name: geo_s2cell_to_central_point()
-    href: geo-s2cell-to-central-point-function.md
-  - name: geo_s2cell_to_polygon()
-    href: geo-s2cell-to-polygon-function.md
-  - name: geo_point_to_h3cell()
-    href: geo-point-to-h3cell-function.md
-  - name: geo_h3cell_to_central_point()
-    href: geo-h3cell-to-central-point-function.md
-  - name: geo_h3cell_to_polygon()
-    href: geo-h3cell-to-polygon-function.md
-  - name: geo_h3cell_parent()
-    href: geo-h3cell-parent-function.md
-  - name: geo_h3cell_children()
-    href: geo-h3cell-children-function.md
-  - name: geo_h3cell_level()
-    href: geo-h3cell-level-function.md
-  - name: geo_h3cell_rings()
-    href: geo-h3cell-rings-function.md
-  - name: geo_polygon_to_s2cells()
-    href: geo-polygon-to-s2cells-function.md
+  - name: geo_intersection_2lines()
+    href: geo-intersection-2lines-function.md
+  - name: geo_intersection_2polygons()
+    href: geo-intersection-2polygons-function.md
+  - name: geo_intersection_line_with_polygon()
+    href: geo-intersection-line-with-polygon-function.md
   - name: geo_line_centroid()
     href: geo-line-centroid-function.md
   - name: geo_line_densify()
@@ -928,6 +906,48 @@ items:
     href: geo-polygon-densify-function.md
   - name: geo_polygon_perimeter()
     href: geo-polygon-perimeter-function.md
+  - name: geo_polygon_simplify()
+    href: geo-polygon-simplify-function.md  
+  - name: geo_polygon_to_s2cells()
+    href: geo-polygon-to-s2cells-function.md
+  - name: geo_point_in_circle()
+    href: geo-point-in-circle-function.md
+  - name: geo_point_in_polygon()
+    href: geo-point-in-polygon-function.md
+  - name: geo_point_to_geohash()
+    href: geo-point-to-geohash-function.md
+  - name: geo_point_to_h3cell()
+    href: geo-point-to-h3cell-function.md
+  - name: geo_point_to_s2cell()
+    href: geo-point-to-s2cell-function.md
+  - name: geo_geohash_to_central_point()
+    href: geo-geohash-to-central-point-function.md
+  - name: geo_geohash_neighbors()
+    href: geo-geohash-neighbors-function.md
+  - name: geo_geohash_to_polygon()
+    href: geo-geohash-to-polygon-function.md
+  - name: geo_s2cell_to_central_point()
+    href: geo-s2cell-to-central-point-function.md
+  - name: geo_s2cell_neighbors()
+    href: geo-s2cell-neighbors-function.md
+  - name: geo_s2cell_to_polygon()
+    href: geo-s2cell-to-polygon-function.md
+  - name: geo_h3cell_to_central_point()
+    href: geo-h3cell-to-central-point-function.md
+  - name: geo_h3cell_neighbors()
+    href: geo-h3cell-neighbors-function.md
+  - name: geo_h3cell_to_polygon()
+    href: geo-h3cell-to-polygon-function.md
+  - name: geo_h3cell_parent()
+    href: geo-h3cell-parent-function.md
+  - name: geo_h3cell_children()
+    href: geo-h3cell-children-function.md
+  - name: geo_h3cell_level()
+    href: geo-h3cell-level-function.md
+  - name: geo_h3cell_rings()
+    href: geo-h3cell-rings-function.md
+  - name: geo_simplify_polygons_array()
+    href: geo-simplify-polygons-array-function.md
   - name: geo_union_lines_array()
     href: geo-union-lines-array-function.md
   - name: geo_union_polygons_array()

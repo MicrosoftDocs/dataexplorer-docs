@@ -33,6 +33,7 @@ or [from a local file to an existing table](one-click-ingestion-existing-table.m
 * [Azure Synapse Apache Spark](/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
 * [Apache Spark](spark-connector.md)
 * [Apache Kafka](ingest-data-kafka.md)
+* [Telegraf](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer)
 * [Cosmos DB](https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration)
 * [Power Automate](flow.md)
 
@@ -50,7 +51,7 @@ There are several tools available for running queries in Azure Data Explorer.
 
 ### Query open source repositories
 
-The following open source repositories contain the source code for the Kusto Query Lanuguage (KQL) parser and editor:
+The following open source repositories contain the source code for the Kusto Query Language (KQL) parser and editor:
 
 * [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language) - A .NET core repository for the Kusto Query Language parser and semantic tree.
 * [Kusto Query Language setup and usage for the Monaco editor](./kusto/api/monaco/monaco-kusto.md) - The Kusto Query Language editor that can be embedded in web and electron based applications.

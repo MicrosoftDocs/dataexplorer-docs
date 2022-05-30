@@ -53,6 +53,7 @@ To specify an alternate database, set the *Database* [ingestion property](#inges
 ### Route event data to an alternate table
 
 You can also specify target table properties for each event, using event properties. The connection will dynamically route the data as specified in the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
+To specify an alternate table, set the *Table* [ingestion property](#ingestion-properties).
 
 > [!Note]
 > If **My data includes routing info** selected, you must provide the necessary routing information as part of the events properties.
@@ -86,6 +87,10 @@ IoT Hub exposes the following system properties:
 If you selected **Event system properties** in the **Data Source** section of the table, you must include the properties in the table schema and mapping.
 
 [!INCLUDE [data-explorer-iot-system-properties](includes/data-explorer-iot-system-properties.md)]
+
+## Event user properties mapping
+
+There is no support for enriching the IoT Hub events payload with user properties. Consider embedding user properties in the event body upstream.
 
 ## IoT Hub connection
 

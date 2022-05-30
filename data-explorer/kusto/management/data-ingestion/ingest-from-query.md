@@ -47,7 +47,7 @@ existing or nonexistent tables and data.
 |`folder`         | The folder to assign to the table. If the table already exists, this property will overwrite the table's folder.|
 |`ingestIfNotExists`   | A string value that. If specified, prevents ingestion from succeeding if the table already has data tagged with an `ingest-by:` tag with the same value|
 |`policy_ingestiontime`   | A Boolean value. If specified, describes if to enable the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) on a table that is created by this command. The default is "true"|
-|`tags`   | A JSON string that indicates which validations to run during ingestion|
+|`tags`   | A JSON string that represents a list of [tags](../extents-overview.md#extent-tagging) to associate with the created extent |
 |`docstring`   | A string documenting the table|
 
  Property that controls the behavior of the command.
