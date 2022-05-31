@@ -18,7 +18,7 @@ Upgrading your free cluster to a full cluster allows you to use [all the feature
 
 ## Upgrade to a full Azure cluster
 
-Use the following steps to upgrade your free cluster to a full cluster. If you're using a Microsoft account (MSA), you must add a user with a valid Azure subscription before you can upgrade.
+Use the following steps to upgrade your free cluster to a full cluster. If you're using a Microsoft account (MSA), you must use the step to add a user with a valid Azure subscription before you can upgrade.
 
 1. Go to [My Cluster](https://aka.ms/kustofree) and select **Upgrade to Azure cluster**.
 
