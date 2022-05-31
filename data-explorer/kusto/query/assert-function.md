@@ -28,13 +28,13 @@ Checks for a condition. If the condition is false, outputs error messages and fa
 
 ## Examples
 
-The following query defines a function `checkLength()` that checks input string length, and uses `assert` to validate input length parameter (checks that it is greater than zero).
+The following query defines a function `checkLength()` that checks input string length, and uses `assert` to validate input length parameter (checks that it's greater than zero).
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let checkLength = (len:long, s:string)
 {
-    assert(len > 0, "Length must be greater than zero") and 
+    assert(len > 0, "Length must be greater than zero") and
     strlen(s) > len
 };
 datatable(input:string)
@@ -45,9 +45,8 @@ datatable(input:string)
 | where checkLength(len=long(-1), input)
 ```
 
-Running this query yields an error:  
+Running this query yields an error:
 `assert() has failed with message: 'Length must be greater than zero'`
-
 
 Example of running with valid `len` input:
 

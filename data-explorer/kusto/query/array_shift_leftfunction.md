@@ -35,7 +35,7 @@ Dynamic array containing the same number of elements as in the original array. E
 
     <!-- csl: https://help.kusto.windows.net/Samples -->
     ```kusto
-    print arr=dynamic([1,2,3,4,5]) 
+    print arr=dynamic([1,2,3,4,5])
     | extend arr_shift=array_shift_left(arr, 2)
     ```
 
@@ -47,7 +47,7 @@ Dynamic array containing the same number of elements as in the original array. E
 
     <!-- csl: https://help.kusto.windows.net/Samples -->
     ```kusto
-    print arr=dynamic([1,2,3,4,5]) 
+    print arr=dynamic([1,2,3,4,5])
     | extend arr_shift=array_shift_left(arr, 2, -1)
     ```
 
@@ -59,7 +59,7 @@ Dynamic array containing the same number of elements as in the original array. E
 
     <!-- csl: https://help.kusto.windows.net/Samples -->
     ```kusto
-    print arr=dynamic([1,2,3,4,5]) 
+    print arr=dynamic([1,2,3,4,5])
     | extend arr_shift=array_shift_left(arr, -2, -1)
     ```
 

@@ -23,7 +23,7 @@ Calculates the [average](avg-aggfunction.md) of *Expr* across the group for whic
 ## Returns
 
 The average value of *Expr* across the group where *Predicate* evaluates to `true`.
- 
+
 ## Examples
 
 ```kusto
