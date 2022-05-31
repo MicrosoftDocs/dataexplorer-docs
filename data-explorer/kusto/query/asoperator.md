@@ -7,7 +7,7 @@ ms.date: 04/27/2022
 ---
 # as operator
 
-Binds a name to the operator's input tabular expression, thus allowing the query to reference the value of the tabular expression multiple times without breaking the query and binding a name through the [let statement](letstatement.md).
+Binds a name to the operator's input tabular expression. This allows the query to reference the value of the tabular expression multiple times without breaking the query and binding a name through the [let statement](letstatement.md).
 
 ## Syntax
 

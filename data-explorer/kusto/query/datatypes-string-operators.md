@@ -7,18 +7,18 @@ ms.date: 09/05/2021
 ---
 # String operators
 
-Kusto offers a variety of query operators for searching string data types. The following article describes how string terms are indexed, lists the string query operators, and gives tips for optimizing performance.
+Kusto offers various query operators for searching string data types. The following article describes how string terms are indexed, lists the string query operators, and gives tips for optimizing performance.
 
 ## Understanding string terms
 
 Kusto indexes all columns, including columns of type `string`. Multiple indexes are built for such columns, depending on the actual data. These indexes aren't directly exposed, but are used in queries with the `string` operators that have `has` as part of their name, such as `has`, `!has`, `hasprefix`, `!hasprefix`. The semantics of these operators are dictated by the way the column is encoded. Instead of doing a "plain" substring match, these operators match *terms*.
 
-### What is a term? 
+### What is a term?
 
 By default, each `string` value is broken into maximal sequences of ASCII alphanumeric characters, and each of those sequences is made into a term.
 For example, in the following `string`, the terms are `Kusto`, `KustoExplorerQueryRun`, and the following substrings: `ad67d136`, `c1db`, `4f9f`, `88ef`, `d94f3b6b0b5a`.
 
-```
+```kusto
 Kusto: ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;KustoExplorerQueryRun
 ```
 
@@ -31,14 +31,13 @@ Kusto builds a term index consisting of all terms that are *three characters or 
 
 The following abbreviations are used in this article:
 
- * RHS = right hand side of the expression
- * LHS = left hand side of the expression
+* RHS = right hand side of the expression
+* LHS = left hand side of the expression
 
 Operators with an `_cs` suffix are case sensitive.
 
 > [!NOTE]
 > Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
-
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
@@ -87,7 +86,7 @@ For example:
 * Use `in`, not `in~`
 * Use `hassuffix_cs`, not `hassuffix`
 
-For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`. 
+For faster results, if you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters, or the start or end of a field, use `has` or `in`.
 `has` works faster than `contains`, `startswith`, or `endswith`.
 
 To search for IPv4 addresses or their prefixes, use one of special [operators on IPv4 addresses](#operators-on-ipv4-addresses), which are optimized for this purpose.

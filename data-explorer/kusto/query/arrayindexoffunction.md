@@ -51,5 +51,5 @@ print
 ## See also
 
 If you only want to check whether a value exists in an array,
-but you are not interested in its position, you can use
+but you aren't interested in its position, you can use
 [set_has_element(`arr`, `value`)](sethaselementfunction.md). This function will improve the readability of your query. Both functions have the same performance.

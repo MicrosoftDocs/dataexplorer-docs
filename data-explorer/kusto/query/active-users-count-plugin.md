@@ -9,7 +9,7 @@ ms.date: 02/13/2020
 
 Calculates distinct count of values, where each value has appeared in at least a minimum number of periods in a lookback period.
 
-Useful for calculating distinct counts of "fans" only,  while not including appearances of "non-fans". A user is counted as a "fan" only if it was active during the lookback period. The lookback period is only used to determine whether a user is considered `active` ("fan") or not. The aggregation itself doesn't include users from the lookback window. In comparison, the [sliding_window_counts](sliding-window-counts-plugin.md) aggregation is performed over a sliding window of the lookback period.
+Useful for calculating distinct counts of "fans" only, while not including appearances of "non-fans". A user is counted as a "fan" only if it was active during the lookback period. The lookback period is only used to determine whether a user is considered `active` ("fan") or not. The aggregation itself doesn't include users from the lookback window. In comparison, the [sliding_window_counts](sliding-window-counts-plugin.md) aggregation is performed over a sliding window of the lookback period.
 
 ```kusto
 T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, 2, 7d, dim1, dim2, dim3)
@@ -52,7 +52,7 @@ let End = datetime(2018-07-31);
 let LookbackWindow = 8d;
 let Period = 1d;
 let ActivePeriods = 3;
-let Bin = 7d; 
+let Bin = 7d;
 let T =  datatable(User:string, Timestamp:datetime)
 [
     "B",      datetime(2018-06-29),
@@ -65,7 +65,7 @@ let T =  datatable(User:string, Timestamp:datetime)
     "A",      datetime(2018-07-17),
     "A",      datetime(2018-07-20),
     "B",      datetime(2018-07-24)
-]; 
+];
 T | evaluate active_users_count(User, Timestamp, Start, End, LookbackWindow, Period, ActivePeriods, Bin)
 ```
 
