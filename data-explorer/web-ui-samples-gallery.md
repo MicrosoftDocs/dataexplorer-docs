@@ -3,7 +3,7 @@ title: Azure Data Explorer Web samples gallery
 description: In this how-to article, you learn how to use the samples gallery in Azure Data Explorer Web UI.
 ms.reviewer: miwalia
 ms.topic: quickstart
-ms.date: 05/26/2022
+ms.date: 05/31/2022
 ms.custom: mode-portal
 ---
 # Explore the Azure Data Explorer Web UI samples gallery
@@ -20,7 +20,7 @@ A Microsoft account or an Azure Active Directory user identity to access the [**
 
 The samples gallery includes datasets with guided tutorials and sample dashboards. The following diagram is a high-level view of the databases available in the samples gallery.
 
-:::image type="content" source="media/web-ui-samples-gallery/samples-hi-level-diagram.png" alt-text="Flow chart showing the Azure Data Explorer divided into sample databases." border="false":::
+:::image type="content" source="media/web-ui-samples-gallery/samples-high-level-diagram.png" alt-text="Flow chart showing the Azure Data Explorer divided into sample databases." border="false":::
 
 ## Take action on sample data
 
@@ -32,7 +32,7 @@ Get started learning about KQL queries with a dataset from the samples gallery.
 
 1. In the **Explore data samples** dialog box, select a sample dataset and then select **Explore**.
 
-    :::image type="content" source="media/web-ui-samples-gallery/explore-data-samples-dialog-fl.png" alt-text="Screenshot of Explore data samples dialog box showing sample database options.":::
+    :::image type="content" source="media/web-ui-samples-gallery/explore-data-samples-dialog.png" alt-text="Screenshot of Explore data samples dialog box showing sample database options.":::
 
     In the cluster connections pane, the **help** cluster is displayed with sample databases showing [stored functions](kusto/query/schema-entities/stored-functions.md), [external tables](kusto/query/schema-entities/externaltables.md), [materialized views](kusto/management/materialized-views/materialized-view-overview.md), and database [tables](kusto/query/schema-entities/tables.md). The database selected in the sample data dialogue box is highlighted.
 
@@ -54,7 +54,7 @@ Tables in the **SampleMetrics** dataset include:
 
 To explore data in the tables, review and run the tutorials of KQL queries in the query editor window.
 
-:::image type="content" source="media/web-ui-samples-gallery/web-ui-query-window-1200px.png" alt-text="Screenshot showing the query editor window with sample tutorials." lightbox="media/web-ui-samples-gallery/web-ui-query-window-1200px.png":::
+:::image type="content" source="media/web-ui-samples-gallery/web-ui-query-window.png" alt-text="Screenshot showing the query editor window with sample tutorials." lightbox="media/web-ui-samples-gallery/web-ui-query-window.png":::
 
 1. In the query edit window, place your cursor in a query and select **Run** at the top of the window, or press *Shift* + *Enter* to run a query.
 
@@ -76,7 +76,7 @@ To explore data in the tables, review and run the tutorials of KQL queries in th
     > [!TIP]
     > You can navigate to other tutorials from the query editor window. Select **File** > **Open tutorials** and then choose the specific tutorial you want to explore.
     >
-    > :::image type="content" source="media/web-ui-samples-gallery/web-ui-tutorials-dropdown-300px.png" alt-text="Screenshot showing Azure Data Explorer web U I dropdown menu to choose sample tutorials in query window.":::
+    > :::image type="content" source="media/web-ui-samples-gallery/web-ui-tutorials-dropdown.png" alt-text="Screenshot showing Azure Data Explorer web U I dropdown menu to choose sample tutorials in query window.":::
 
 ## Explore sample dashboards
 
@@ -86,7 +86,7 @@ Dashboards allow users to visualize information and gain insights from data with
 
 1. In the **Explore dashboards** dialog box, choose a sample dashboard and then select **Explore**. In keeping with the example above, select the **Metrics sample dashboard**.
 
-    :::image type="content" source="media/web-ui-samples-gallery/explore-dashboards-dialog-fl.png" alt-text="Screenshot of Explore dashboards samples dialog box showing sample dashboard options.":::
+    :::image type="content" source="media/web-ui-samples-gallery/explore-dashboards-dialog.png" alt-text="Screenshot of Explore dashboards samples dialog box showing sample dashboard options.":::
 
     The dashboard window opens in Edit mode, with different types of prepopulated tiles.
 
