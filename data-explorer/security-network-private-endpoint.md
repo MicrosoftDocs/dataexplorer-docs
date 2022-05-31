@@ -68,7 +68,7 @@ To increase security, you also can disable public access to the cluster in the A
 
 ## Managed private endpoints
 
-You can use a managed private endpoint to either enable the cluster to securely access your ingestion or query related services via their private endpoint. This allows the Azure Data Explorer cluster to access your resources via private IP address.
+You can use a managed private endpoint to either enable the cluster to securely access your ingestion- or query-related services via their private endpoint. This allows the Azure Data Explorer cluster to access your resources via a private IP address.
 
 :::image type="content" source="media/security-network-private-endpoint/pe-mpe.png" alt-text="Diagram showing the schema of the managed private endpoint architecture.":::
 
