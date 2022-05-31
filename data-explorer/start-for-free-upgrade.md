@@ -18,11 +18,11 @@ Upgrading your free cluster to a full cluster allows you to use [all the feature
 
 ## Upgrade to a full Azure cluster
 
-Use the following steps to upgrade your free cluster to a full cluster. If you're using a Microsoft account (MSA) you must add a user with a alid Azure subscription before you can upgrade.
+Use the following steps to upgrade your free cluster to a full cluster. If you're using a Microsoft account (MSA), you must add a user with a valid Azure subscription before you can upgrade.
 
 1. Go to [My Cluster](https://aka.ms/kustofree) and select **Upgrade to Azure cluster**.
 
-    :::image type="content" source="media/start-for-free-upgrade/start-for-free-upgrade-cluster.png" alt-text="Screenshot of My Cluster page, showing the Upgrade to Azure cluster option.":::
+    :::image type="content" source="media/start-for-free-upgrade/start-for-free-upgrade-cluster.png" alt-text="Screenshot of My Cluster page, showing the Upgrade to Azure cluster option." lightbox="media/start-for-free-upgrade/start-for-free-upgrade-cluster.png":::
 
 1. In the "Upgrade cluster" dialog, fill out the cluster details using the following information:
 
@@ -32,9 +32,9 @@ Use the following steps to upgrade your free cluster to a full cluster. If you'r
     | Subscription | Your subscription | Select the Azure subscription that you want to use for your cluster. |
     | Resource group | Your resource group | Use an existing resource group or create a new resource group. |
     | Cluster region | Your region | Select the region that best meets your requirements. |
-    | Availability Zones | Yes | Use availability zones in the same region (optional). [Azure Availability Zones](/azure/availability-zones/az-overview) are unique physical locations within the same Azure region. They protect an Azure Data Explorer cluster from loss of data. The cluster nodes are created, by default, in the same data center. When you enable availability zones you can eliminate a single point of failure and ensure high availability. **Deployment to availability zones is possible only when creating the cluster, and can't be modified later.** |
+    | Availability Zones | Yes | Use availability zones in the same region (optional). [Azure Availability Zones](/azure/availability-zones/az-overview) are unique physical locations within the same Azure region. They protect an Azure Data Explorer cluster from loss of data. The cluster nodes are created, by default, in the same data center. When you enable availability zones, you can eliminate a single point of failure and ensure high availability. **Deployment to availability zones is possible only when creating the cluster, and can't be modified later.** |
 
-1. If required, select **Add user** and sign in using the user with subscription you want to use. Use this step if your free cluster uses an MSA, or you want to use a different user. The Azure cluster is created in the selected subscription of the user you add.
+1. If necessary, select **Add user** and sign in using the user with the subscription you want to use. Use this step if your free cluster uses an MSA, or you want to use a different user. The Azure cluster is created in the selected subscription of the user you add.
 
     :::image type="content" source="media/start-for-free-upgrade/start-for-free-upgrade-cluster-details.png" alt-text="Screenshot of the upgrade cluster pane, showing the add user options.":::
 
