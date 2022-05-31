@@ -23,7 +23,7 @@ T | evaluate activity_engagement(id, datetime_column, 1d, 30d)
 
 * *T*: The input tabular expression.
 * *IdColumn*: The name of the column with ID values that represent user activity.
-* *TimelineColumn*: The name of the column that represents timeline.
+* *TimelineColumn*: The name of the column that represents the timeline.
 * *Start*: (optional) Scalar with value of the analysis start period.
 * *End*: (optional) Scalar with value of the analysis end period.
 * *InnerActivityWindow*: Scalar with value of the inner-scope analysis window period.

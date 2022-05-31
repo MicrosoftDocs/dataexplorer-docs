@@ -36,7 +36,7 @@ The core functionalities of these methods are:
 | Cover polygon with cells | Not supported | Supported | Not supported |
 | Cell parent | Not supported | Not Supported | Supported |
 | Cell children | Not supported | Not Supported | Supported |
-| Cell rings\neighbours | Not supported | Not Supported | Supported |
+| Cell rings | Not supported | Not Supported | Supported |
 
 > [!TIP]
 > If there is no preference for a specific tool, use the [S2 Cell](#s2-cell-functions).

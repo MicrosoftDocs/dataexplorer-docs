@@ -18,7 +18,9 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 * Data is read from the event hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects.
 * See [supported formats](ingestion-supported-formats.md).
     > [!NOTE]
-    > Event Hubs doesn't support the `.raw` format.
+    > 
+    > * Ingestion from Event Hub doesn't support RAW format.
+    > * [Azure Event Hub Schema Registry](/azure/event-hubs/schema-registry-overview) and schema-less Avro are not supported.
 
 * Data can be compressed using the `GZip` compression algorithm. You can specify `Compression` dynamically using [ingestion properties](#ingestion-properties), or in the static Data Connection settings.
     > [!NOTE]
@@ -39,6 +41,9 @@ Azure Data Explorer supports the following Event Hubs properties:
 
 Ingestion properties instruct the ingestion process, where to route the data, and how to process it. You can specify [ingestion properties](ingestion-properties.md) of the events ingestion using the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
 
+> [!NOTE]
+> Property names are case sensitive.
+
 |Property |Description|
 |---|---|
 | Database | The case-sensitive name of the target database. By default, data is ingested into the target database associated with the data connection. Use this property to override the default database and send data to a different database. To do so, you must first [set up the connection as a multi-database connection](#route-event-data-to-an-alternate-database). |
@@ -48,13 +53,14 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 | Compression | Data compression, `None` (default), or `GZip` compression.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
 | Tags | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extents-overview.md#ingest-by-extent-tags) when using tags. |
+| RawHeaders | Indicates that event source is Kafka and ADX must use byte array deserialization to read other routing properties. Value is ignored. |
 
 > [!NOTE]
 > Only events enqueued after you create the data connection are ingested.
 
 ## Events routing
 
-When you create a data connection to your cluster, you specify the routing for where to send ingested data. The default routing is to the target table specified in the connection string that is associated with the target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by using the event data properties.
+When you create a data connection to your cluster, you can specify the routing for where to send ingested data. The default routing is to the target table specified in the connection string that is associated with the target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by setting the event data properties mentioned above.
 
 ### Route event data to an alternate database
 
@@ -168,7 +174,7 @@ If you don't already have one, [Create an event hub](/azure/event-hubs/event-hub
 
 > [!Note]
 >
-> * The partition count isn't changeable, so you should consider long-term scale when setting partition count.
+> * The ability to dynamically add partitions after creating an event hub is only available with Event Hubs Premium and Dedicated tiers. Consider the long-term scale when setting partition count.
 > * Consumer group *must* be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
 
 ### Send events
