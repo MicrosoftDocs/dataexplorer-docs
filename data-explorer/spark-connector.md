@@ -8,13 +8,14 @@ ms.date: 04/19/2021
 
 # Azure Data Explorer Connector for Apache Spark
 
-For documentation on working with Synapse Spark connector for Azure Data Explorer [read here](https://docs.microsoft.com/azure/synapse-analytics/quickstart-connect-azure-data-explorer).
-
 [Apache Spark](https://spark.apache.org/) is a unified analytics engine for large-scale data processing. Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data.
 
 The Azure Data Explorer connector for Spark is an [open source project](https://github.com/Azure/azure-kusto-spark) that can run on any Spark cluster. It implements data source and data sink for moving data across Azure Data Explorer and Spark clusters. Using Azure Data Explorer and Apache Spark, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, Azure Data Explorer becomes a valid data store for standard Spark source and sink operations, such as write, read, and writeStream.
 
 You can write to Azure Data Explorer in either batch or streaming mode. Reading from Azure Data Explorer supports column pruning and predicate pushdown, which filters the data in Azure Data Explorer, reducing the volume of transferred data.
+
+> [!NOTE]
+> For information about working with the Synapse Spark connector for Azure Data Explorer, see [Connect to Azure Data Explorer using Apache Spark for Azure Synapse Analytics](/azure/synapse-analytics/quickstart-connect-azure-data-explorer).
 
 This topic describes how to install and configure the Azure Data Explorer Spark connector and move data between Azure Data Explorer and Apache Spark clusters.
 
