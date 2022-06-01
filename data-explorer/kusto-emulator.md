@@ -16,7 +16,7 @@ The Kusto emulator provides a local environment emulating the [Kusto Query Engin
 
 > It is explicitly forbidden by the EULA to perform benchmark tests using the emulator.  Given the built-in limitations of the emulator, it has a very different performance profile compare to the Azure service.
 
-> The Kusto emulator is a free offering.  It is provided "as is", i.e. without support or warranties.
+> The Kusto emulator is a free offering. It's provided *as-is*, without any support or warranties.
 
 ## Architecture
 
