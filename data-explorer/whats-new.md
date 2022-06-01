@@ -148,7 +148,7 @@ This section lists the major changes to docs during November 2021.
 | [Solution architectures](solution-architectures.md) | New article. Lists references to the architectures that include Azure Data Explorer. |
 | [Delete data from Azure Data Explorer](delete-data.md) | Updated article. Added new sections for purge and soft delete. |
 
-## Query
+### Query
 
 | Article title | Description |
 |--|--|
