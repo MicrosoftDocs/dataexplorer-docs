@@ -22,7 +22,7 @@ This section lists the major changes to docs during May 2022.
 | [Azure Data Explorer tools and integrations overview](tools-integrations-overview.md) | Updated article. Added Telegraph. |
 |- [Usage examples for Azure Data Explorer connector Power Automate](flow-usage.md) <br /> - [Azure Data Explorer connector for Microsoft Power Automate](flow.md) <br /> - [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md) | Updated articles. Replaced images, updated procedures and Flow actions. |
 | [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) | Updated Article. Added section on Drillthrough. |
-## Query
+### Query
 
 | Article title | Description |
 |--|--|
