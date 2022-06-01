@@ -1,6 +1,6 @@
 ---
 title: Azure Data Explorer Kusto Emulator
-description: 'Learn more about Azure Data Explorer Kusto Emulator'
+description: 'Learn about the Azure Data Explorer Kusto emulator'
 ms.reviewer: vplauzon
 ms.topic: conceptual
 ms.date: 05/30/2022
