@@ -9,18 +9,18 @@ ms.date: 05/30/2022
 
 Should contain:
 
-The Kusto Emulator provides a local environment emulating the [Kusto Query Engine](https://docs.microsoft.com/en-us/azure/data-explorer/engine-v3) facilitating local development and automated testing.  It runs locally and doesn't require provisioning any Azure service or incurring any cost:  it's a free offering.  It comes with an End-User License Agreement (EULA) that can be found [here](https://aka.ms/adx.emulator.eula).
+The Kusto emulator provides a local environment emulating the [Kusto Query Engine](https://docs.microsoft.com/en-us/azure/data-explorer/engine-v3) facilitating local development and automated testing.  It runs locally and doesn't require provisioning any Azure service or incurring any cost. It's a free offering under the [End User License Agreement (EULA)](https://aka.ms/adx.emulator.eula).
 
 > [!NOTE]
 > The Kusto emulator isn't meant for production use.  It has many limitations that makes it a very poor technology for production scenario.
 
 > It is explicitly forbidden by the EULA to perform benchmark tests using the emulator.  Given the built-in limitations of the emulator, it has a very different performance profile compare to the Azure service.
 
-> The Kusto emulator is a free offering.  It is provided "as is", i.e. without support or warranties.
+> The Kusto emulator is a free offering. It's provided *as-is*, without any support or warranties.
 
 ## Architecture
 
-The Kusto Emulator is packaged as a Windows Docker Container Image.  It exposes a query endpoint on HTTP that can be consumed with any client:  [Kusto.Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/kusto-explorer-using), [Kusto.CLI](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/kusto-cli) or [Kusto.Data SDKs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/netfx/about-kusto-data).
+The Kusto emulator is packaged as a Docker Windows Container Image. It exposes a query endpoint on HTTP that can be consumed with any client including [Kusto.Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/kusto-explorer-using), [Kusto.CLI](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/kusto-cli), or [Kusto.Data SDKs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/netfx/about-kusto-data).
 
 ![Kusto Emulator](media/kusto-emulator/kusto-emulator.png)
 
