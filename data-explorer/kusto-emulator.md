@@ -9,7 +9,7 @@ ms.date: 05/30/2022
 
 Should contain:
 
-The Kusto Emulator provides a local environment emulating the [Kusto Query Engine](https://docs.microsoft.com/en-us/azure/data-explorer/engine-v3) facilitating local development and automated testing.  It runs locally and doesn't require provisioning any Azure service or incurring any cost:  it's a free offering.  It comes with an End-User License Agreement (EULA) that can be found [here](https://aka.ms/adx.emulator.eula).
+The Kusto emulator provides a local environment emulating the [Kusto Query Engine](https://docs.microsoft.com/en-us/azure/data-explorer/engine-v3) facilitating local development and automated testing.  It runs locally and doesn't require provisioning any Azure service or incurring any cost. It's a free offering under the [End User License Agreement (EULA)](https://aka.ms/adx.emulator.eula).
 
 > [!NOTE]
 > The Kusto Container isn't meant for production use.  It has many limitations that makes it a very poor technology for production scenario.
