@@ -5,7 +5,7 @@ ms.reviewer: vplauzon
 ms.topic: conceptual
 ms.date: 05/30/2022
 ---
-# Azure Data Explorer Kusto Emulator
+# Azure Data Explorer Kusto emulator
 
 Should contain:
 
