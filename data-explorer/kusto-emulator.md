@@ -1,5 +1,5 @@
 ---
-title: Azure Data Explorer Kusto Emulator
+title: Azure Data Explorer Kusto emulator
 description: 'Learn about the Azure Data Explorer Kusto emulator'
 ms.reviewer: vplauzon
 ms.topic: conceptual
