@@ -20,7 +20,7 @@ The Kusto emulator provides a local environment emulating the [Kusto Query Engin
 
 ## Architecture
 
-The Kusto Emulator is packaged as a Windows Docker Container Image.  It exposes a query endpoint on HTTP that can be consumed with any client:  [Kusto.Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/kusto-explorer-using), [Kusto.CLI](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/kusto-cli) or [Kusto.Data SDKs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/netfx/about-kusto-data).
+The Kusto emulator is packaged as a Docker Windows Container Image. It exposes a query endpoint on HTTP that can be consumed with any client including [Kusto.Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/kusto-explorer-using), [Kusto.CLI](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/kusto-cli), or [Kusto.Data SDKs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/netfx/about-kusto-data).
 
 ![Kusto Emulator](media/kusto-emulator/kusto-emulator.png)
 
