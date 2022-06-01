@@ -177,41 +177,7 @@ When copying a JSON file to Azure Data Explorer, note that:
 
 ### Specify AdditionalProperties when copying to Azure Data Explorer
 
-> [!NOTE]
-> This feature is currently available by manually editing the JSON payload. 
-
-Add a single row under the "sink" section of the copy activity as follows:
-
-```json
-"sink": {
-    "type": "AzureDataExplorerSink",
-    "additionalProperties": "{\"tags\":\"[\\\"drop-by:account_FiscalYearID_2020\\\"]\"}"
-},
-```
-
-Escaping of the value may be tricky. Use the following code snippet as a reference:
-
-```csharp
-static void Main(string[] args)
-{
-       Dictionary<string, string> additionalProperties = new Dictionary<string, string>();
-       additionalProperties.Add("ignoreFirstRecord", "false");
-       additionalProperties.Add("csvMappingReference", "Table1_mapping_1");
-       IEnumerable<string> ingestIfNotExists = new List<string> { "Part0001" };
-       additionalProperties.Add("ingestIfNotExists", JsonConvert.SerializeObject(ingestIfNotExists));
-       IEnumerable<string> tags = new List<string> { "ingest-by:Part0001", "ingest-by:IngestedByTest" };
-       additionalProperties.Add("tags", JsonConvert.SerializeObject(tags));
-       var additionalPropertiesForPayload = JsonConvert.SerializeObject(additionalProperties);
-       Console.WriteLine(additionalPropertiesForPayload);
-       Console.ReadLine();
-}
-```
-
-The printed value:
-
-```json
-{"ignoreFirstRecord":"false","csvMappingReference":"Table1_mapping_1","ingestIfNotExists":"[\"Part0001\"]","tags":"[\"ingest-by:Part0001\",\"ingest-by:IngestedByTest\"]"}
-```
+You can add additional ingestion properties from the supported [Ingestion Propertie](https://docs.microsoft.com/en-us/azure/data-explorer/ingestion-properties) either by using the UI or by editing the Copy activity Json definition. To add properties by using the UI, expand the **Additional Properties** section, Click on the *New* button and choose *Add node* or *Add array* according to the desired property.
 
 ## Next steps
 
