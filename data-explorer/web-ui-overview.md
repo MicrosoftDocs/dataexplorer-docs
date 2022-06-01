@@ -15,11 +15,11 @@ The following image shows the Azure Data Explorer Web UI **Home** page and navig
 
 :::image type="content" source="media/web-ui-overview/web-ui-home-full-numbered.png" alt-text="Screenshot of Azure Data Explorer Web U I with numbered sections." lightbox="media/web-ui-overview/web-ui-home-full-numbered.png":::
 
-1. Navigation pane
-1. Help, feedback, and settings
-1. Quick actions to help you get started with data exploration
-1. Recommendations for additional resources and training
-1. Documentation
+- Navigation pane
+- Help, feedback, and settings
+- Quick actions to help you get started with data exploration
+- Recommendations for additional resources and training
+- Documentation
 
 ## Experience data exploration using the Web UI
 
