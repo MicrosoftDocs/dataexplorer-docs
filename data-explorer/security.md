@@ -14,8 +14,8 @@ This article provides an introduction to security in Azure Data Explorer to help
 
 Network security is a requirement shared by many of our security-conscious enterprise customers. The intent is to isolate the network traffic and limit the attack surface for Azure Data Explorer and corresponding communications. You can therefore block traffic originating from non-Azure Data Explorer network segments and assure that only traffic from known sources reach Azure Data Explorer end points. This includes traffic originating on-premises or outside of Azure, with an Azure destination and vice versa. Azure Data Explorer supports the following features to achieve this goal:
 
-* [Private endpoint](#private-endpoint) (recommended)
-* [Virtual network (VNet) injection](#virtual-network-injection)
+* [Private endpoint](security-network-overview.md#private-endpoint) (recommended)
+* [Virtual network (VNet) injection](security-network-overview.md#virtual-network-injection)
 
 We highly recommended using private endpoints to secure network access to your cluster. This option has many advantages over virtual network injection that results in lower maintenance overhead, including a simpler deployment process and being more robust to virtual network changes.
 
