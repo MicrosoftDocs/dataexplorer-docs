@@ -177,7 +177,7 @@ When copying a JSON file to Azure Data Explorer, note that:
 
 ### Specify AdditionalProperties when copying to Azure Data Explorer
 
-You can add additional ingestion properties from the supported [Ingestion Propertie](https://docs.microsoft.com/en-us/azure/data-explorer/ingestion-properties) either by using the UI or by editing the Copy activity Json definition. To add properties by using the UI, expand the **Additional Properties** section, Click on the *New* button and choose *Add node* or *Add array* according to the desired property.
+You can add additional ingestion properties from the supported [Ingestion Propertie](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) either by using the UI or by editing the Copy activity Json definition. To add properties by using the UI, expand the **Additional Properties** section, Click on the *New* button and choose *Add node* or *Add array* according to the desired property.
 
 ## Next steps
 
