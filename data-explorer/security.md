@@ -12,17 +12,12 @@ This article provides an introduction to security in Azure Data Explorer to help
 
 ## Network security
 
-Network security is a requirement shared by many of our security-conscious enterprise customers. The intent is to isolate the network traffic and limit the attack surface for Azure Data Explorer and corresponding communications. You can therefore block traffic originating from non-Azure Data Explorer network segments and assure that only traffic from known sources reach Azure Data Explorer end points. This includes traffic originating on-premises or outside of Azure, with an Azure destination and vice versa.
+Network security is a requirement shared by many of our security-conscious enterprise customers. The intent is to isolate the network traffic and limit the attack surface for Azure Data Explorer and corresponding communications. You can therefore block traffic originating from non-Azure Data Explorer network segments and assure that only traffic from known sources reach Azure Data Explorer end points. This includes traffic originating on-premises or outside of Azure, with an Azure destination and vice versa. Azure Data Explorer supports the following features to achieve this goal:
 
-Azure Data Explorer supports [virtual network injection](vnet-deployment.md) to directly deploy into your virtual network. Both the engine and data management endpoints can be privately accessed. This allows Azure Data Explorer to be accessible through non-internet routed addresses.
+* [Private endpoint](#private-endpoint) (recommended)
+* [Virtual network (VNet) injection](#virtual-network-injection)
 
-For more information, see the following topics.
-
-* [Create an Azure Data Explorer cluster in your virtual network](vnet-create-cluster-portal.md)
-* [Deploy Azure Data Explorer cluster into your Virtual Network](vnet-deployment.md)
-* [Troubleshoot access, ingestion, and operation of your Azure Data Explorer cluster in your virtual network](vnet-deploy-troubleshoot.md)
-* [Create a private endpoint for Azure Data Explorer](security-network-private-endpoint-create.md)
-* [Create a private or service endpoint to Event Hub and Azure Storage](vnet-endpoint-storage-event-hub.md)
+We highly recommended using private endpoints to secure network access to your cluster. This option has many advantages over virtual network injection that results in lower maintenance overhead, including a simpler deployment process and being more robust to virtual network changes.
 
 ## Identity and access control
 
