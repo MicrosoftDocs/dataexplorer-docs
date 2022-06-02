@@ -45,7 +45,7 @@ dynamic({"type": "MultiLineString","coordinates": [ [ line_1, line_2 ,..., line_
 
 **Motivation**
 
-* [GeoJSON format](https://tools.ietf.org/html/rfc7946) defines an edge between two points as a straight cartesian line while ADX uses [geodesic](https://en.wikipedia.org/wiki/Geodesic).
+* [GeoJSON format](https://tools.ietf.org/html/rfc7946) defines an edge between two points as a straight cartesian line while Azure Data Explorer uses [geodesic](https://en.wikipedia.org/wiki/Geodesic).
 * The decision to use geodesic or planar edges might depend on the dataset and is especially relevant in long edges.
 
 ## Examples
