@@ -224,6 +224,9 @@ items:
     - name: Kafka
       displayName: ingest data, ingestion
       href: ingest-data-kafka.md
+    - name: Telegraf
+      displayName: ingest data, ingestion
+      href: ingest-data-telegraf.md
     - name: Logstash
       displayName: ingest data, ingestion
       href: ingest-data-logstash.md
@@ -351,6 +354,8 @@ items:
         href: configure-managed-identities-cluster.md
       - name: Authenticate external tables with managed identities 
         href: external-tables-managed-identities.md
+      - name: Ingest data using managed identity authentication
+        href: ingest-data-managed-identity.md
     - name: Configure customer-managed-keys
       items:
         - name: Portal
@@ -445,7 +450,7 @@ items:
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
     - name: Use Azure Monitor insights
-      href: /azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
+      href: data-explorer-insights.md
     - name: Monitor batching ingestion with metrics
       href: monitor-batching-ingestion.md
   - name: Share data
@@ -470,6 +475,8 @@ items:
         href: kusto/tools/logicapps.md
     - name: Cosmos DB
       href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
+    - name: Telegraf
+      href: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
     - name: Apache Spark Connector
       href: spark-connector.md
       displayName: databricks
@@ -494,6 +501,9 @@ items:
       href: devops.md
     - name: Sync Kusto
       href: kusto/tools/synckusto.md
+    - name: Migrate TSI to Azure Data Explorer
+      href: /azure/time-series-insights/migration-to-adx
+      displayName: Time Series Insights
   - name: Troubleshoot
     items:
     - name: Creating a cluster
