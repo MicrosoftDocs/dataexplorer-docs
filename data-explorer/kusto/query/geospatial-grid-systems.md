@@ -50,6 +50,7 @@ The core functionalities of these methods are:
 |---|
 |[geo_point_to_geohash()](geo-point-to-geohash-function.md)|
 |[geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md)|
+|[geo_geohash_neighbors()](geo-geohash-neighbors-function.md)|
 |[geo_geohash_to_polygon()](geo-geohash-to-polygon-function.md)|
 
 ## S2 Cell functions
@@ -58,6 +59,7 @@ The core functionalities of these methods are:
 |---|
 |[geo_point_to_s2cell()](geo-point-to-s2cell-function.md)|
 |[geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md)|
+|[geo_s2cell_neighbors()](geo-s2cell-neighbors-function.md)|
 |[geo_s2cell_to_polygon()](geo-s2cell-to-polygon-function.md)|
 |[geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md)|
 
@@ -67,6 +69,7 @@ The core functionalities of these methods are:
 |---|
 |[geo_point_to_h3cell()](geo-point-to-h3cell-function.md)|
 |[geo_h3cell_to_central_point()](geo-h3cell-to-central-point-function.md)|
+|[geo_h3cell_neighbors()](geo-h3cell-neighbors-function.md)|
 |[geo_h3cell_to_polygon()](geo-h3cell-to-polygon-function.md)|
 |[geo_h3cell_parent()](geo-h3cell-parent-function.md)|
 |[geo_h3cell_children()](geo-h3cell-children-function.md)|
