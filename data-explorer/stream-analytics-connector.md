@@ -36,13 +36,13 @@ If you don't already have one, [create an Azure Stream Analytics job](/azure/str
 > [!NOTE]
 > Azure Data Explorer output connection only supports [Managed Identity](/azure/active-directory/managed-identities-azure-resources/overview) for authentication. As part of output creation, database monitor and database ingestor permission will be granted to Azure Stream Analytics job MSI.
 
-To test the Azure Stream Analytics output connection we recommend ingesting test data into the Azure Stream Analyzer. You can download the phone call event generator app [TelcoGenerator](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/ from the Microsoft Download Center or get the source code from GitHub. To ingest the data into the Azure Stream Analyzer, create an event hub from [Azure Event Hubs](/azure/event-hubs/event-hubs-about). When this connection is complete, and job is running, data that flows into the Azure Stream Analytics job will be ingested into the target table you created in Azure Data Explorer.
+To test the Azure Stream Analytics output connection we recommend ingesting test data into the Azure Stream Analyzer. You can download the phone call event generator application [TelcoGenerator](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/ from the Microsoft Download Center or get the source code from GitHub. To ingest the data into the Azure Stream Analyzer, create an event hub from [Azure Event Hubs](/azure/event-hubs/event-hubs-about). When this connection is complete, and job is running, data that flows into the Azure Stream Analytics job will be ingested into the target table you created in Azure Data Explorer.
 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Create [a cluster and database](create-cluster-database-portal.md) and [table](/azure/data-explorer/one-click-table).
-* Create an event hub and configure ingestion from an event generator application into the event hub. This [tutorial](/azure/stream-analytics/stream-analytics-real-time-fraud-detection.md#create-an-event-hub) takes you through the steps from creating the event hub through [starting the event generator application](/azure/stream-analytics/stream-analytics-real-time-fraud-detection.md#start-the-event-generator-application).
+* Create an event hub and configure ingestion from an event generator application into the event hub. This [tutorial](/azure/stream-analytics/stream-analytics-real-time-fraud-detection.md#create-an-event-hub) takes you through the steps from creating the event hub and [starting the event generator application](/azure/stream-analytics/stream-analytics-real-time-fraud-detection.md#start-the-event-generator-application).
 
 There are different ways you can create an Azure Data Explorer output connection for an Azure Stream Analytics job, in this article we discuss the following methods.
 
@@ -51,9 +51,17 @@ There are different ways you can create an Azure Data Explorer output connection
 
 ## [Azure portal](#tab/portal)
 
-Follow these steps to create an Azure Data Explorer output connection for an Azure Stream Analytics job.  In order to create a test run for the job we will also create an event hub to ingest data from an event generator application.
+Once you have a stream of call events, you can create a Stream Analytics job that reads data from the event hub.
 
-1. Configure the Azure Stream Analytics job input https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-real-time-fraud-detection#configure-job-input
+1. To create a Stream Analytics job, navigate to the [Azure portal](https://portal.azure.com/).
+
+1. Follow the steps in the tutorial to configure the [Azure Stream Analytics job input](/azure/stream-analytics/stream-analytics-real-time-fraud-detection.md#create-an-event-hub.md#configure-job-input) and create a [consumer group](/azure/stream-analytics/stream-analytics-real-time-fraud-detection.md#create-an-event-hub.md#create-a-consumer-group), as recommended.
+
+    Here we diverge from the tutorial, and move on to create the Azure Data Explorer output.
+
+1. From the Azure portal, open All resources, and select the ASATutorial Stream Analytics job.
+
+1. In the Job Topology section of the Stream Analytics job, select the Outputs option.
 
 1. Under the Azure Stream Analytics job, select **Outputs** and then select **Azure Data Explorer**.
 
