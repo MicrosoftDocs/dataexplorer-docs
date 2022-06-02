@@ -3,12 +3,24 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 5/25/2022
+ms.date: 06/01/2022
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
+## May 2022
+
+This section lists the major changes to docs during May 2022.
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Ingest data from Telegraf into Azure Data Explorer](ingest-data-telegraf.md) | New Article. Describes how to ingest data into your cluster from Telegraf. |
+| [Ingest data using managed identity authentication](ingest-data-managed-identity.md) |  New Article. Queue Azure Storage blobs for ingestion using managed identity authentication. |
+|- [Usage examples for Azure Data Explorer connector to Power Automate](flow-usage.md) <br />- [Azure Data Explorer connector for Microsoft Power Automate](flow.md) <br />- [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md) <br />-[Microsoft Logic App and Azure Data Explorer](kusto/tools/logicapps.md)| Updated articles. General availability (GA). Content refreshed. |
+| [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) | Updated Article. Added section on Drillthrough. |
 ## April 2022
 
 This section lists the major changes to docs during April 2022.
@@ -129,7 +141,7 @@ This section lists the major changes to docs during November 2021.
 | [Solution architectures](solution-architectures.md) | New article. Lists references to the architectures that include Azure Data Explorer. |
 | [Delete data from Azure Data Explorer](delete-data.md) | Updated article. Added new sections for purge and soft delete. |
 
-## Query
+### Query
 
 | Article title | Description |
 |--|--|
