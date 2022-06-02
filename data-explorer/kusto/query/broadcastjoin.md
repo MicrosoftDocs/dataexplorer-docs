@@ -14,7 +14,7 @@ Run the following query to get the estimated size of the left side in bytes:
 ```kusto
 lookupSubQuery
 | summarize sum(estimate_data_size(*))
-``` 
+```
 
 If left side of the join is a small dataset, then you may run join in broadcast mode using the following syntax (hint.strategy = broadcast):
 
