@@ -175,9 +175,9 @@ When copying a JSON file to Azure Data Explorer, note that:
        * After the closing square bracket, add a comma followed by:<br/>
        `"mapComplexValuesToString": true`.
 
-### Specify AdditionalProperties when copying to Azure Data Explorer
+### Specify Additional Properties when copying to Azure Data Explorer
 
-You can add additional [ingestion propertie](ingestion-properties.md) by specifying them in the copy activity in the pipeline.
+You can add additional [ingestion properties](ingestion-properties.md) by specifying them in the copy activity in the pipeline.
 
 #### To add properties
 
