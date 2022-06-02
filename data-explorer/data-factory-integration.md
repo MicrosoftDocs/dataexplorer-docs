@@ -177,7 +177,17 @@ When copying a JSON file to Azure Data Explorer, note that:
 
 ### Specify AdditionalProperties when copying to Azure Data Explorer
 
-You can add additional ingestion properties from the supported [Ingestion Propertie](https://docs.microsoft.com/azure/data-explorer/ingestion-properties) either by using the UI or by editing the Copy activity Json definition. To add properties by using the UI, expand the **Additional Properties** section, Click on the *New* button and choose *Add node* or *Add array* according to the desired property.
+You can add additional [ingestion propertie](ingestion-properties.md) by specifying them in the copy activity in the pipeline.
+
+#### To add properties
+
+1. In Azure Data Factory, select the **Author** pencil tool.
+
+1. Under **Pipeline**, select the pipeline where you want to add additional ingestion properties.
+1. In the **Activities** canvas, select the **Copy data** activity.
+1. In the activity details, select **Sink**, and then expand **Additional properties**.
+1. Select **New**, select either **Add node** or **Add array** as required, and then specify the ingestion property name and value. Repeat this step to add more properties.
+1. Once complete save and publish your pipeline.
 
 ## Next steps
 
