@@ -7,13 +7,13 @@ ms.date: 05/30/2022
 ---
 # Azure Data Explorer Kusto emulator
 
-The Kusto emulator provides a local environment emulating the [Kusto Query Engine](https://docs.microsoft.com/en-us/azure/data-explorer/engine-v3) facilitating local development and automated testing.  It runs locally and doesn't require provisioning any Azure service or incurring any cost. It's a free offering under the [End User License Agreement (EULA)](https://aka.ms/adx.emulator.eula).
+The Kusto emulator provides a local environment emulating the [Kusto Query Engine](https://docs.microsoft.com/en-us/azure/data-explorer/engine-v3) facilitating local development and automated testing.  It runs locally and doesn't require provisioning any Azure service or incurring any cost. It's a free offering under the [following license terms](https://aka.ms/adx.emulator.license).
 
 > [!NOTE]
 > The Kusto emulator is a free offering.
 > * It's provided *as-is*, without any support or warranties.
 > * It isn't meant for production use due to many limitations making it a poor technology for production scenarios.
-> * It's explicitly forbidden by the EULA to perform benchmark tests using the emulator.  Given the built-in limitations of the emulator, it has a very different performance profile compare to the Azure service.
+> * It's explicitly forbidden by the [license terms](https://aka.ms/adx.emulator.license) to perform benchmark tests using the emulator.  Given the built-in limitations of the emulator, it has a very different performance profile compare to the Azure service.
 
 ## Architecture
 
