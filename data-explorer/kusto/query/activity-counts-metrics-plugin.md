@@ -1,5 +1,5 @@
 ---
-title: activity_counts_metrics plugin - Azure Data Explorer 
+title: activity_counts_metrics plugin - Azure Data Explorer
 description: This article describes activity_counts_metrics plugin in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
@@ -57,10 +57,10 @@ let window=1d;
 let T = datatable(UserId:string, Timestamp:datetime)
 [
 'A', datetime(2017-08-01),
-'D', datetime(2017-08-01), 
+'D', datetime(2017-08-01),
 'J', datetime(2017-08-01),
 'B', datetime(2017-08-01),
-'C', datetime(2017-08-02),  
+'C', datetime(2017-08-02),
 'T', datetime(2017-08-02),
 'J', datetime(2017-08-02),
 'H', datetime(2017-08-03),
@@ -71,7 +71,7 @@ let T = datatable(UserId:string, Timestamp:datetime)
 'S', datetime(2017-08-03),
 'S', datetime(2017-08-04),
 ];
- T 
+ T
  | evaluate activity_counts_metrics(UserId, Timestamp, start, end, window)
 ```
 

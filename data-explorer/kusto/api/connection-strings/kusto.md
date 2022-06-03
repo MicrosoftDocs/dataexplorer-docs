@@ -57,6 +57,16 @@ one can use the `Kusto.Data.Common.KustoTrustedEndpoints` class to add additiona
 to the list of trusted endpoints (by using either `SetOverridePolicy` which overrides
 the default policy, or `AddTrustedHosts` which adds new entries to the existing policy.)
 
+```csharp
+Kusto.Data.Common.Impl.WellKnownKustoEndpoints.AddTrustedHosts(
+    new[] {
+        // Allow an explicit service address
+        new FastSuffixMatcher.MatchRule("my-kusto.contoso.com", exact: true),
+        // Allow services whose DNS name end with ".contoso.com"
+        new FastSuffixMatcher.MatchRule(".contoso.com", exact: false),
+    });
+```
+
 ## Connection string properties
 
 The following table lists all the properties you can specify in a Kusto connection string.
