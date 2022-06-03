@@ -10,12 +10,15 @@ ms.date: 05/25/2022
 
 Installing the Kusto Emulator on your laptop allows to quickly get a local development environment while installing it on a CI/CD agent VM allows for running automated tests.
 
-In this article, we'll show you how to install the Kusto Emulator and quickly get started by creating a database, ingesting data and querying.
+In this article, we'll show you how to install the Kusto Emulator and quickly get started by creating a database, ingesting data and querying it.
 
 ## Prerequisites
 
-*    Host with Windows <span style="background:yellow">VERSIONS - XYZ???</span>
-*    [Docker Client](https://docs.docker.com/desktop/windows/install/)
+* The host OS must be either
+  * Windows Server 2022
+  * Windows Server 2019 Version 10.0.17763.2928 and above)
+  * Windows 11
+*    [Docker Client](https://docs.docker.com/desktop/windows/install/) with 
 
 ## End-User License Agreement (EULA)
 
