@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 03/15/2022
 ---
 
-# Create an IoT Hub data connection for Azure Data Explorer by using C\# 
+# Create an IoT Hub data connection for Azure Data Explorer by using C\#
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-iot-hub.md)
