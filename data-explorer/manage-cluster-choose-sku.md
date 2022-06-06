@@ -3,123 +3,107 @@ title: Select correct compute SKU for your Azure Data Explorer cluster
 description: This article describes how to select the optimal compute SKU size for Azure Data Explorer cluster.
 ms.reviewer: avnera
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 06/06/2022
 ---
 
-# Select the correct compute SKU for your Azure Data Explorer cluster
+# Selecting a SKU for your Azure Data Explorer cluster
 
 When you create a new cluster or optimize a cluster for a changing workload, Azure Data Explorer offers multiple virtual machine (VM) SKUs to choose from. These compute SKUs have been carefully chosen to give you the most optimal cost for any workload.
 
-The size and VM SKU of the data-management cluster are fully managed by the Azure Data Explorer service. They're determined by such factors as the engine's VM size and the ingestion workload. 
+The size and VM SKU of the data-management cluster are fully managed by the Azure Data Explorer service. They're determined by such factors as the engine's VM size and the ingestion workload.
 
-You can change the compute SKU for the engine cluster at any time by [scaling up the cluster](manage-cluster-vertical-scaling.md). It's best to start with the smallest SKU size that fits the initial scenario. Keep in mind that scaling up the cluster results in a downtime of up to 30 minutes while the cluster is re-created with the new SKU. You can also use the [Azure Advisor recommendations](azure-advisor.md) to optimize your compute SKU.
+You can change the compute SKU for the engine cluster at any time by [scaling up the cluster](manage-cluster-vertical-scaling.md) . It's best to start with the smallest SKU size that fits the initial scenario. Keep in mind that scaling up the cluster results in a downtime of up to 30 minutes while the cluster is re-created with the new SKU. You can also use the [Azure Advisor](azure-advisor.md) recommendations to optimize your compute SKU.
 
-You can use the [Cost Estimator tool](https://dataexplorer.azure.com/AzureDataExplorerCostEstimator.html) to estimate the pricing of your Azure Data Explorer cluster, based on your workloads and data volume.
+You can use the [Pricing calculator](https://aka.ms/adx.cost) to estimate the pricing of your Azure Data Explorer cluster, based on your workloads and data volume.
 
 > [!TIP]
-> [Compute Reserved Instances (RI)](/azure/virtual-machines/windows/prepay-reserved-vm-instances) is applicable to the Azure Data Explorer cluster. 
-
-This article describes various compute SKU options and provides the technical details that can help you make the best choice.
+> By purchasing a reservation, you can pre-pay for the Azure Data Explorer, the virtual machines used in the cluster and storage resources costs for a period of one or three years. These reserved instances (RI) are bought separately and can save a significant amount of money and secure the best rates for your Azure Data Explorer cluster. For more information, see [Prepay for Azure Data Explorer markup units with Azure Data Explorer reserved capacity](pricing-reserved-capacity.md).
 
 ## Select a cluster type
 
 Azure Data Explorer offers two types of clusters:
 
-* **Production**: Production clusters contain two nodes for engine and data-management clusters and are operated under the Azure Data Explorer [SLA](https://azure.microsoft.com/support/legal/sla/data-explorer/v1_0/).
+* Production (with SLA)&mdash;Production clusters contain two or more nodes for engine and data-management clusters and are operated under the Azure Data Explorer SLA.
+* Dev/Test (no SLA)&mdash;Dev/Test clusters have a single node for the engine and data-management cluster. This cluster type is the lowest cost configuration because of its low instance count and no engine markup charge. There's no SLA for this cluster configuration because it lacks redundancy.
 
-* **Dev/Test (no SLA)**: Dev/Test clusters have a single node for the engine and data-management cluster. This cluster type is the lowest cost configuration because of its low instance count and no engine markup charge. There's no SLA for this cluster configuration, because it lacks redundancy.
+### Development vs production
 
-## Compute SKU types
+Development clusters are great for service evaluation, setting up ingestion pipelines, conducting PoC or scenario validation. Key differences between the development cluster vs production clusters are:
 
-Azure Data Explorer cluster supports a variety of SKUs for different types of workloads. Each SKU offers a distinct SSD and CPU ratio to help customers correctly size their deployment and build cost optimal solutions for their enterprise analytical workload.
+* Development clusters are limited in size and can't grow beyond just a single node
+* Azure Data Explorer markup isn't charged for development clusters
+* Limited product SLA for development clusters
 
-### Compute optimized
+### Compute SKU types
 
-* Provides a high core to cache ratio.
-* Suited for a high rate of queries over small to moderate data sizes.
+Azure Data Explorer cluster supports various SKUs for different types of workloads. Each SKU offers a distinct SSD and CPU ratio to help customers correctly size their deployment and build cost optimal solutions for their enterprise analytical workload.
+
+**Compute optimized**
+
+* Provides a high core to cache ratio and the lowest cost per core.
 * Local SSD for low latency I/O.
 
-### Heavy compute
+**Storage optimized**
 
-* AMD SKUs that offer a much higher core to cache ratio.
-* Local SSD for low latency I/O.
+* Provides larger storage ranging from 1 TB to 4 TB per engine node and the lowest cost per GB.
+* Suited for workloads that require storage for large volumes of data.
+* Certain SKUs use premium storage (PS) attached to the engine node instead of local SSDs for hot data storage. Accessing PS is slower than local SSDs. SKUs with PS are more expensive and have lower performance.
 
-### Storage optimized
-
-* Option for larger storage ranging from 1 TB to 4 TB per engine node.
-* Suited for workloads that require storing a large volume of data with less intensive compute query requirements.
-* Certain SKUs use premium storage (managed disk) attached to the engine node instead of local SSD for hot data storage.
-
-### Isolated compute
-
-Ideal SKU for running workloads that require server instance-level isolation.
-
-## Select and optimize your compute SKU 
+## Select and optimize your compute SKU
 
 ### Select your compute SKU during cluster creation
 
-When you create an Azure Data Explorer cluster, select the *optimal* VM SKU for the planned workload.
-
+When you create an Azure Data Explorer cluster, select the optimal VM SKU for the planned workload.
 The following attributes can also help you make SKU selection:
- 
-| Attribute | Details |
-|---|---
-|**Availability**| Not all SKUs are available in all regions |
-|**Cost per GB cache per core**| High cost with compute and heavy compute optimized. Low cost with storage optimized SKUs |
-|**Reserved Instances (RI) pricing**| RI discount varies by region and by SKU |  
+
+| Attribute | Details  |
+|---------|---------|
+|Cost per GB cache per core | High cost with compute optimized SKUs. Low cost with storage optimized SKUs |
+| Reserved Instances (RI) pricing | RI discount varies by region and by SKU |
 
 > [!NOTE]
 > For Azure Data Explorer cluster, compute cost is the most significant part of cluster cost as compared to storage and networking.
 
 ### Optimize your cluster compute SKU
 
-To optimize your cluster compute SKU, [configure vertical scaling](manage-cluster-vertical-scaling.md#configure-vertical-scaling) and check [Azure Advisor recommendations](azure-advisor.md). 
+To optimize your cluster compute SKU, configure vertical scaling and check Azure Advisor recommendations.
 
-With various compute SKU options to choose from, you can optimize costs for the performance and hot-cache requirements for your scenario. 
-* If you need the most optimal performance for a high query volume, the ideal SKU should be compute-optimized. 
-* If you need to query large volumes of data with relatively lower query load, the storage-optimized SKU can help reduce costs and still provide excellent performance.
+With various compute SKU options to choose from, you can optimize costs for the performance and hot-cache requirements for your scenario.
+Choose a compute optimized SKU for optimal performance for high query volumes.
+Choose a storage optimized SKU for the best performance when querying large volumes data that need to be cached.  
 
-Because the number of instances per cluster for the small SKUs is limited, it's preferable to use larger VMs that have greater RAM. More RAM is needed for some query types that put more demand on the RAM resource, such as queries that use `joins`. That's why, when you're considering scaling options, we recommend that you scale-up to a larger SKU rather than scale-out by adding more instances.
+It's preferable to use a few nodes of a larger VMs that have larger RAM, than many smaller SKU nodes. More RAM is needed for some query types that put higher demands on RAM, such as queries that use joins. So when scaling the cluster, we recommend scaling up to a larger SKU when using small VMs, and scaling out by adding more nodes as needed.
 
-## Compute SKU options
+> [!NOTE]
+> Scale up (changing SKU operation) requires a window of up to 30 minutes of downtime, while scale out does not have this impact the cluster availability.
 
-The technical specifications for the Azure Data Explorer cluster VMs are described in the following table:
+### SKU Availability
 
-|**Name**| **Category** | **SSD size** | **Cores** | **RAM** | **Premium storage disks (1&nbsp;TB)**| **Minimum instance count per cluster** | **Maximum instance count per cluster** | **Supports ephemeral OS disk**
-|---|---|---|---|---|---|---|---
-|Dev(No SLA) Standard_D11_v2| compute-optimized | 80&nbsp;GB    | 1 | 14&nbsp;GB | 0 | 1 | 1 | No
-|Dev(No SLA) Standard_E2a_v4| compute-optimized | 24&nbsp;GB    | 1 | 16&nbsp;GB | 0 | 1 | 1 | No
-|Standard_D11_v2| compute-optimized | 80&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 2 | 8 | No 
-|Standard_D12_v2| compute-optimized | 160&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16 | No
-|Standard_D13_v2| compute-optimized | 317&nbsp;GB   | 8 | 56&nbsp;GB | 0 | 2 | 1,000 | No
-|Standard_D14_v2| compute-optimized | 628&nbsp;GB   | 16| 112&nbsp;GB | 0 | 2 | 1,000 | No
-|Standard_E2a_v4| heavy compute | 24&nbsp;GB    | 2 | 16&nbsp;GB | 0 | 2 | 8 | No 
-|Standard_E4a_v4| heavy compute | 60&nbsp;GB   | 4 | 32&nbsp;GB | 0 | 2 | 16 | No
-|Standard_E8a_v4| heavy compute | 137&nbsp;GB   | 8 | 64&nbsp;GB | 0 | 2 | 1,000 | No
-|Standard_E16a_v4| heavy compute | 273&nbsp;GB   | 16| 128&nbsp;GB | 0 | 2 | 1,000 | No
-|Standard_DS13_v2 + 1&nbsp;TB&nbsp;PS| storage-optimized | 1&nbsp;TB | 8 | 56&nbsp;GB | 1 | 2 | 1,000 | Yes
-|Standard_DS13_v2 + 2&nbsp;TB&nbsp;PS| storage-optimized | 2&nbsp;TB | 8 | 56&nbsp;GB | 2 | 2 | 1,000 | Yes
-|Standard_DS14_v2 + 3&nbsp;TB&nbsp;PS| storage-optimized | 3&nbsp;TB | 16 | 112&nbsp;GB | 2 | 2 | 1,000 | Yes
-|Standard_DS14_v2 + 4&nbsp;TB&nbsp;PS| storage-optimized | 4&nbsp;TB | 16 | 112&nbsp;GB | 4 | 2 | 1,000 | Yes
-|Standard_E8as_v4 + 1&nbsp;TB&nbsp;PS| storage-optimized | 1&nbsp;TB | 8 | 64&nbsp;GB | 1 | 2 | 1,000 | Yes
-|Standard_E8as_v4 + 2&nbsp;TB&nbsp;PS| storage-optimized | 2&nbsp;TB | 8 | 64&nbsp;GB | 2 | 2 | 1,000 | Yes
-|Standard_E16as_v4 + 3&nbsp;TB&nbsp;PS| storage-optimized | 3&nbsp;TB | 16 | 128&nbsp;GB | 3 | 2 | 1,000 | Yes
-|Standard_E16as_v4 + 4&nbsp;TB&nbsp;PS| storage-optimized | 4&nbsp;TB | 16 | 128&nbsp;GB | 4 | 2 | 1,000 | Yes
-|Standard_L4s| storage-optimized | 650&nbsp;GB | 4 | 32&nbsp;GB | 0 | 2 | 16 | No
-|Standard_L8s| storage-optimized | 1.3&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1,000 | No
-|Standard_L16s| storage-optimized | 2.6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000 | No
-|Standard_L8s_v2| storage-optimized | 1.7&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1,000 | No
-|Standard_L16s_v2| storage-optimized | 3.5&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000 | No
-|Standard_E64i_v3| isolated compute | 1.1&nbsp;TB | 64 | 432&nbsp;GB | 0 | 2 | 1,000 | No
-|Standard_E80ids_v4| isolated compute | 1.8&nbsp;TB | 80 | 504&nbsp;GB | 0 | 2 | 1,000 | Yes
+SKU availability differs based on selected:
 
-* You can view the updated compute SKU list per region by using the Azure Data Explorer [ListSkus API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus). 
-* Learn more about the [various SKUs](/azure/virtual-machines/windows/sizes). 
+* Region&mdash;Not all SKUs are available in all regions or availability zones, refer the respective compute sku page for regional availability.
+* Subscription&mdash;certain SKUs might only be available for a particular customer segment. If a SKU isn't available for your subscription in a location or zone that meets your business needs, submit a SKU request to Azure Support.
 
-## Next steps
+### Compute SKU options
 
-* You can [scale up or scale down](manage-cluster-vertical-scaling.md) the engine cluster at any time by changing the VM SKU, depending on differing needs. 
+The following sku series are available for Azure Data Explorer cluster VMs. The sku families within the compute/storage optimized bucket are ranked in order of recommendation.
 
-* You can [scale in or scale out](manage-cluster-horizontal-scaling.md) the size of the engine cluster to alter capacity, depending on changing demands.
+| Category | SKU Series | Available vCPU config | SKU type | Supports premium storage |
+|--|--|--|--|--|
+| Compute optimized | [Eadsv5](https://docs.microsoft.com/en-us/azure/virtual-machines/easv5-eadsv5-series) | 2,4,8,16 | AMD | No |
+| Compute optimized | [Edv5](https://docs.microsoft.com/en-us/azure/virtual-machines/edv5-edsv5-series), [Edv4](https://docs.microsoft.com/en-us/azure/virtual-machines/edv4-edsv4-series) | 2,4,8,16 | Intel | No |
+| Compute optimized | [Eav4](https://docs.microsoft.com/en-us/azure/virtual-machines/eav4-easv4-series) | 2,4,8,16 | AMD | No |
+| Compute optimized | [Dv2](https://docs.microsoft.com/en-us/azure/virtual-machines/dv2-dsv2-series) | 2,4,8,16 | Intel | No |
+| Storage optimized | [Lasv3](https://docs.microsoft.com/en-us/azure/virtual-machines/lasv3-series) | 8, 16 | AMD | No |
+| Storage optimized | [Lsv3](https://docs.microsoft.com/en-us/azure/virtual-machines/lsv3-series) | 8,16 | Intel | No |
+| Storage optimized | [Easv5](https://docs.microsoft.com/en-us/azure/virtual-machines/easv5-eadsv5-series), [Easv4](https://docs.microsoft.com/en-us/azure/virtual-machines/eav4-easv4-series) | 8,16 | AMD | Yes |
+| Storage optimized | [Esv5](https://docs.microsoft.com/en-us/azure/virtual-machines/ev5-esv5-series), [Esv4](https://docs.microsoft.com/en-us/azure/virtual-machines/ev4-esv4-series) | 8,16 | Intel | Yes |
+| Storage optimized | [DSv2](https://docs.microsoft.com/en-us/azure/virtual-machines/dv2-dsv2-series) | 8,16 | AMD | Yes |
+| Dev (No SLA) | All SKU series with 2 cores | 2 | AMD/Intel | No |
 
-* Use [Azure Advisor recommendations](azure-advisor.md) to optimize your compute SKU.
+* With ADX compute and storage isolation, customers can start with most cost optimal SKU and move to another SKU after maturing the usage pattern without any data loss.
+* You can view the updated compute SKU list per region by using the Azure Data Explorer [ListSkus API](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus).
+
+### Cache size
+
+From the disk size as shown in the Azure compute specification, ADX reserves a certain size for cluster operation. The exact available cache size for each SKU is available in the [SKU selection section in the portal](https://ms.portal.azure.com/#create/Microsoft.AzureKusto).
