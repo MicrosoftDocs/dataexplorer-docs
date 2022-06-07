@@ -80,6 +80,7 @@ In general, this offering isn't suited for production workloads.
   * There's no guarantee the [extent](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/extents-overview) format is going to be compatible from one version of the Kusto Emulator to another.
   * Extents aren't [merged](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/mergepolicy) and therefore can become fragmented as data get ingested
   * Retention policy can be set but won't be honored
+* [Python plugin](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/pythonplugin?pivots=azuredataexplorer) isn't supported
 
 ## Next steps
 
