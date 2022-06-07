@@ -52,6 +52,7 @@ The following list contains error codes you may come across during [ingestion](i
 |BadRequest_EntityNameIsNotValid                   |Entity name isn't valid.<br>For more information about Azure Data Explorer naming convention, see [Entity names](./kusto/query/schema-entities/entity-names.md).    |Permanent           |
 |BadRequest_MalformedIngestionProperty              |Ingestion property is malformed.    |Permanent           |
 | BadRequest_IngestionPropertyNotSupportedInThisContext | Ingestion property isn't supported in this context.| Permanent |
+| BadRequest_NonMultiDatabaseDataConnection        | Event contains the 'Database' property that routes ingested data to a different database than the target database configured in the data connection's settings. However, since the connection is not set to allow routing to multiple databases, dynamic database routing is not allowed.| Permanent |
 | BadRequest_InvalidBlobUri                        | Blob URI is invalid.      | Permanent          |
 | BadRequest_DataCapacityLimitReached              | Storage account has reached its data capacity limit.      | Permanent          |
 | BadRequest_InvalidManagedIdentity                | Managed Identity either doesn't exist or doesn't have the required permissions.      | Permanent          |

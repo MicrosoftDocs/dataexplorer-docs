@@ -11,7 +11,8 @@ The partitioning policy defines if and how [extents (data shards)](../management
 
 The main purpose of the partitioning policy is to improve performance of queries in [specific scenarios](#supported-scenarios).
 
-By default, extents are partitioned by their ingestion time, and in most cases there's no need to set a data partitioning policy.
+> [!NOTE]
+> By default, extents are partitioned by time of creation (ingestion), and in most cases there's no need to set a data partitioning policy.
 
 ## Supported scenarios
 
@@ -64,7 +65,7 @@ The following kinds of partition keys are supported.
 |Property | Description | Supported value(s)| Recommended value |
 |---|---|---|---|
 | `Function` | The name of a hash-modulo function to use.| `XxHash64` | |
-| `MaxPartitionCount` | The maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period. | In the range `(1,2048]`. <br>  Larger than five times the number of nodes in the cluster, and smaller than the cardinality of the column. |  Higher values lead to greater overhead of the data partitioning process on the cluster's nodes, and a higher number of extents for each time period. For clusters with fewer than 20 nodes, start with `128`. For clusters with fewer than 50 nodes, start with `256`. Adjust the value based on these considerations, or based on the benefit in query performance vs. the overhead of partitioning the data post-ingestion.
+| `MaxPartitionCount` | The maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period. | In the range `(1,2048]`. <br>  Larger than five times the number of nodes in the cluster, and smaller than the cardinality of the column. |  Higher values lead to greater overhead of the data partitioning process on the cluster's nodes, and a higher number of extents for each time period. The recommended value is `128`. Higher values will significantly increase the overhead of partitioning the data post-ingestion, and the size of metadata - and are therefore not recommended.
 | `Seed` | Use for randomizing the hash value. | A positive integer. | `1`, which is also the default value. |
 | `PartitionAssignmentMode` | The mode used for assigning partitions to nodes in the cluster. | `Default`: All homogeneous (partitioned) extents that belong to the same partition are assigned to the same node. <br> `Uniform`: An extents' partition values are disregarded. Extents are assigned uniformly to the cluster's nodes. | If queries don't join or aggregate on the hash partition key, use `Uniform`. Otherwise, use `Default`. |
 

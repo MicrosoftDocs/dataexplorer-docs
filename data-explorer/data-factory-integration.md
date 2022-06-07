@@ -151,14 +151,14 @@ ABC   DEF<br/>
 Should appear in a proper CSV file as follows:
 "Hello, ""World"""<br/>
 "ABC   DEF"<br/>
-"""ABC DEF"<br/>
 """ABC\D""EF"<br/>
+ """ABC DEF"<br/>
 
 By using the default escape character (backslash), the following CSV won't work with Azure Data Explorer:
 "Hello, \"World\""<br/>
 "ABC   DEF"<br/>
-"\"ABC DEF"<br/>
 "\"ABC\D\"EF"<br/>
+ "\"ABC DEF"<br/>
 
 ### Nested JSON objects
 
@@ -171,43 +171,19 @@ When copying a JSON file to Azure Data Explorer, note that:
        * After the closing square bracket, add a comma followed by:<br/>
        `"mapComplexValuesToString": true`.
 
-### Specify AdditionalProperties when copying to Azure Data Explorer
+### Specify Additional Properties when copying to Azure Data Explorer
 
-> [!NOTE]
-> This feature is currently available by manually editing the JSON payload. 
+You can add additional [ingestion properties](ingestion-properties.md) by specifying them in the copy activity in the pipeline.
 
-Add a single row under the "sink" section of the copy activity as follows:
+#### To add properties
 
-```json
-"sink": {
-    "type": "AzureDataExplorerSink",
-    "additionalProperties": "{\"tags\":\"[\\\"drop-by:account_FiscalYearID_2020\\\"]\"}"
-},
-```
+1. In Azure Data Factory, select the **Author** pencil tool.
 
-Escaping of the value may be tricky. Use the following code snippet as a reference:
-
-```csharp
-static void Main(string[] args)
-{
-       Dictionary<string, string> additionalProperties = new Dictionary<string, string>();
-       additionalProperties.Add("ignoreFirstRecord", "false");
-       additionalProperties.Add("csvMappingReference", "Table1_mapping_1");
-       IEnumerable<string> ingestIfNotExists = new List<string> { "Part0001" };
-       additionalProperties.Add("ingestIfNotExists", JsonConvert.SerializeObject(ingestIfNotExists));
-       IEnumerable<string> tags = new List<string> { "ingest-by:Part0001", "ingest-by:IngestedByTest" };
-       additionalProperties.Add("tags", JsonConvert.SerializeObject(tags));
-       var additionalPropertiesForPayload = JsonConvert.SerializeObject(additionalProperties);
-       Console.WriteLine(additionalPropertiesForPayload);
-       Console.ReadLine();
-}
-```
-
-The printed value:
-
-```json
-{"ignoreFirstRecord":"false","csvMappingReference":"Table1_mapping_1","ingestIfNotExists":"[\"Part0001\"]","tags":"[\"ingest-by:Part0001\",\"ingest-by:IngestedByTest\"]"}
-```
+1. Under **Pipeline**, select the pipeline where you want to add additional ingestion properties.
+1. In the **Activities** canvas, select the **Copy data** activity.
+1. In the activity details, select **Sink**, and then expand **Additional properties**.
+1. Select **New**, select either **Add node** or **Add array** as required, and then specify the ingestion property name and value. Repeat this step to add more properties.
+1. Once complete save and publish your pipeline.
 
 ## Next steps
 

@@ -19,7 +19,7 @@ You can use the generated code as a baseline to write your own apps, altering th
 * Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 > [!NOTE]
-> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint) in different subnets of the same VNET, see [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network](vnet-create-private-endpoint.md).
+> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
 
 ## Access the one-click wizard
 
@@ -27,7 +27,7 @@ The one-click sample app generator wizard guides you through the one-click inges
 
 * To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), use one of the following methods:
 
-    * Select **Data** in the left pane. Within the **Data Management** page under Quick actions, select **Sample App**.
+    * Select **Data** in the left pane. Within the **Data Management** page under Quick actions, select **Generate Sample App**.
 
       :::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-welcome.png" alt-text="Sample app generator from welcome to Azure Data Explorer.":::
 
