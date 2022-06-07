@@ -82,7 +82,7 @@ It's preferable to use a few nodes of a larger VMs that have larger RAM, than ma
 SKU availability differs based on selected:
 
 * **Region**&mdash;Not all SKUs are available in all regions or availability zones, refer the respective compute sku page for regional availability.
-* **Subscription**&mdash;certain SKUs might only be available for a particular customer segment. If a SKU isn't available for your subscription in a location or zone that meets your business needs, submit a [SKU request](/azure/general/region-access-request-process) to Azure Support.
+* **Subscription**&mdash;certain SKUs might only be available for a particular customer segment. If a SKU isn't available for your subscription in a location or zone that meets your business needs, submit a [SKU request](/troubleshoot/azure/general/region-access-request-process) to Azure Support.
 
 ### Compute SKU options
 
