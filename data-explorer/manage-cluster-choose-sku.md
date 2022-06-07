@@ -23,8 +23,8 @@ You can use the [Pricing calculator](https://aka.ms/adx.cost) to estimate the pr
 
 Azure Data Explorer offers two types of clusters:
 
-* Production (with SLA)&mdash;Production clusters contain two or more nodes for engine and data-management clusters and are operated under the Azure Data Explorer SLA.
-* Dev/Test (no SLA)&mdash;Dev/Test clusters have a single node for the engine and data-management cluster. This cluster type is the lowest cost configuration because of its low instance count and no engine markup charge. There's no SLA for this cluster configuration because it lacks redundancy.
+* **Production (with SLA)**&mdash;Production clusters contain two or more nodes for engine and data-management clusters and are operated under the Azure Data Explorer SLA.
+* **Dev/Test (no SLA)**&mdash;Dev/Test clusters have a single node for the engine and data-management cluster. This cluster type is the lowest cost configuration because of its low instance count and no engine markup charge. There's no SLA for this cluster configuration because it lacks redundancy.
 
 ### Development vs production
 
@@ -81,8 +81,8 @@ It's preferable to use a few nodes of a larger VMs that have larger RAM, than ma
 
 SKU availability differs based on selected:
 
-* Region&mdash;Not all SKUs are available in all regions or availability zones, refer the respective compute sku page for regional availability.
-* Subscription&mdash;certain SKUs might only be available for a particular customer segment. If a SKU isn't available for your subscription in a location or zone that meets your business needs, submit a SKU request to Azure Support.
+* **Region**&mdash;Not all SKUs are available in all regions or availability zones, refer the respective compute sku page for regional availability.
+* **Subscription**&mdash;certain SKUs might only be available for a particular customer segment. If a SKU isn't available for your subscription in a location or zone that meets your business needs, submit a [SKU request](/azure/general/region-access-request-process) to Azure Support.
 
 ### Compute SKU options
 
