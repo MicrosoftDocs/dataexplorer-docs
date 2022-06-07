@@ -30,7 +30,7 @@ When the source file is a CSV (or any delimiter-separated format) and its schema
 
 CSV mapping can be applied on all the delimiter-separated tabular formats: CSV, TSV, PSV, SCSV, SOHsv and TXT. For more information, see supported [data formats](../../ingestion-supported-formats.md).
 
-Each element in the list describes a mapping for a specific column, and may contain the following properties:
+Each element in the list describes a mapping for a specific column, and must contain either of the following properties:
 
 |Property|Description|
 |----|--|

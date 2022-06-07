@@ -172,7 +172,7 @@ Customizations are saved to a custom workbook to prevent overwriting the default
 
 ## Troubleshooting
 
-For general troubleshooting guidance, see [Troubleshooting workbook-based insights](/azure/azure-monitor/troubleshoot-workbooks).
+For general troubleshooting guidance, see [Troubleshooting workbook-based insights](/azure/azure-monitor/insights/troubleshoot-workbooks).
 
 The following sections will help you diagnose and troubleshoot of some of the common problems that you might encounter when using Azure Data Explorer Insights.
 
