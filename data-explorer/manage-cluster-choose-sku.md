@@ -91,14 +91,14 @@ The following sku series are available for Azure Data Explorer cluster VMs. The 
 | Category | SKU Series | Available vCPU config | SKU type | Supports premium storage |
 |--|--|--|--|--|
 | Compute optimized | [Eadsv5](/azure/virtual-machines/easv5-eadsv5-series) | 2,4,8,16 | AMD | No |
-| Compute optimized | [Edv5](/azure/virtual-machines/edv5-edsv5-series), [Edv4](/azure/virtual-machines/edv4-edsv4-series) | 2,4,8,16 | Intel | No |
-| Compute optimized | [Eav4](/azure/virtual-machines/eav4-easv4-series) | 2,4,8,16 | AMD | No |
-| Compute optimized | [Dv2](/azure/virtual-machines/dv2-dsv2-series) | 2,4,8,16 | Intel | No |
+| ^^ | [Edv5](/azure/virtual-machines/edv5-edsv5-series), [Edv4](/azure/virtual-machines/edv4-edsv4-series) | 2,4,8,16 | Intel | No |
+| ^^ | [Eav4](/azure/virtual-machines/eav4-easv4-series) | 2,4,8,16 | AMD | No |
+| ^^ | [Dv2](/azure/virtual-machines/dv2-dsv2-series) | 2,4,8,16 | Intel | No |
 | Storage optimized | [Lasv3](/azure/virtual-machines/lasv3-series) | 8, 16 | AMD | No |
-| Storage optimized | [Lsv3](/azure/virtual-machines/lsv3-series) | 8,16 | Intel | No |
-| Storage optimized | [Easv5](/azure/virtual-machines/easv5-eadsv5-series), [Easv4](/azure/virtual-machines/eav4-easv4-series) | 8,16 | AMD | Yes |
-| Storage optimized | [Esv5](/azure/virtual-machines/ev5-esv5-series), [Esv4](/azure/virtual-machines/ev4-esv4-series) | 8,16 | Intel | Yes |
-| Storage optimized | [DSv2](/azure/virtual-machines/dv2-dsv2-series) | 8,16 | AMD | Yes |
+| ^^ | [Lsv3](/azure/virtual-machines/lsv3-series) | 8,16 | Intel | No |
+| ^^ | [Easv5](/azure/virtual-machines/easv5-eadsv5-series), [Easv4](/azure/virtual-machines/eav4-easv4-series) | 8,16 | AMD | Yes |
+| ^^ | [Esv5](/azure/virtual-machines/ev5-esv5-series), [Esv4](/azure/virtual-machines/ev4-esv4-series) | 8,16 | Intel | Yes |
+| ^^ | [DSv2](/azure/virtual-machines/dv2-dsv2-series) | 8,16 | AMD | Yes |
 | Dev (No SLA) | All SKU series with 2 cores | 2 | AMD/Intel | No |
 
 * With ADX compute and storage isolation, customers can start with most cost optimal SKU and move to another SKU after maturing the usage pattern without any data loss.
