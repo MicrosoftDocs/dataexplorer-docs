@@ -53,7 +53,7 @@ Ingest and organize your data to explore data in a variety of ways.
  Write and run queries to analyze data with the Azure Data Explorer Web UI.
 
 - [Run](web-query-data.md#run-queries) queries on sample data through the sample tutorial.
-- Learn Kusto Query Language to write your own [queries](write-queries.md).
+- Learn Kusto Query Language to [write your own queries](write-queries.md).
 - Determine trends with sample [queries](/azure/data-explorer/kusto/query/samples?pivots=azuredataexplorer).
 
 ## Visualize your data
