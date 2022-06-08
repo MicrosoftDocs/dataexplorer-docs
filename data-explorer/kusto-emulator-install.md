@@ -33,7 +33,7 @@ Since a container runs without a graphical interface, there are no screen to acc
 
 The first step to run the Kusto Emulator is to ensure we are running Docker with Windows containers (the default is Linux containers).
 
-![Switch to Windows containers](media/install-kusto-emulator/windows-container.png)
+![Switch to Windows containers](media/kusto-emulator/kusto-emulator-docker-windows-container.png)
 
 This might require you to enable the feature.
 
@@ -63,7 +63,7 @@ This will list the container instances running and should include one with *imag
 
 ```
 CONTAINER ID   IMAGE                                                  COMMAND                  CREATED          STATUS          PORTS                    NAMES
-a8b51bce21ad   mcr.microsoft.com/azuredataexplorer/kustainer:latest   "powershell -Commandâ€¦"   11 minutes ago   Up 10 minutes   0.0.0.0:8080->8080/tcp   youthful_matsumoto
+a8b51bce21ad   mcr.microsoft.com/azuredataexplorer/kustainer:latest   "powershell -Commandâ&euro;¦"   11 minutes ago   Up 10 minutes   0.0.0.0:8080->8080/tcp   youthful_matsumoto
 ```
 
 We can verify that Kusto is running using the following command (in PowerShell):
