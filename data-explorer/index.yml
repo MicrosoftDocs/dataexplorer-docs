@@ -42,7 +42,7 @@ landingContent:
             url:  /learn/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
           - text: "Learn module: Write your first query with Kusto Query Language"
             url: /learn/modules/write-first-query-kusto-query-language/
-          - text: "Gain insights from your data by using Kusto Query Language"
+          - text: "Learn module: Gain insights from your data by using Kusto Query Language"
             url: /learn/modules/gain-insights-data-kusto-query-language/
   # Card
   - title: Create cluster and database
