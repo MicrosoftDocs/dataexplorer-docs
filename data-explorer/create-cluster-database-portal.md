@@ -26,6 +26,8 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 
+For more information on cluster subscription limits, see [Azure Data Explorer limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-data-explorer-limits).
+
 ## Sign in to the Azure portal
 
 Sign in to the [Azure portal](https://portal.azure.com/).
