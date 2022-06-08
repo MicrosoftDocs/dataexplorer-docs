@@ -128,6 +128,9 @@ The data format, any of the [ingestion formats](../../ingestion-supported-format
 > [!NOTE]
 > Using external table for [export scenario](data-export/export-data-to-an-external-table.md) is limited to the following formats: `CSV`, `TSV`, `JSON` and `Parquet`.
 
+> [!TIP]
+> We recommended using the *Parquet* format for external tables to improve query and export performance unless: you define virtual columns, use JSON paths mapping, or the external table data is in Azure Data Lake Storage (ADLS) Gen1. 
+
 <a name="connection-string"></a>
 *StorageConnectionString*
 
