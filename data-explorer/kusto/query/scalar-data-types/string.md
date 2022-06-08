@@ -3,7 +3,7 @@ title: The string data type - Azure Data Explorer
 description: This article describes The string data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/11/2022
+ms.date: 06/08/2022
 ---
 # The string data type
 
@@ -11,12 +11,10 @@ The `string` data type represents a sequence of zero or more [Unicode](https://h
 characters.
 
 > [!NOTE]
+>
 > * Internally, strings are encoded in [UTF-8](https://en.wikipedia.org/wiki/UTF-8). Invalid (non-UTF8) characters are replaced with [U+FFFD](https://codepoints.net/U+FFFD) Unicode replacement characters at ingestion time.
-> * Kusto has no data type that is equivalent to a single character. A single character
-> is represented as a string of length 1.
-> * While the `string` data type itself has no predefined limit on the length of the string,
-> actual implementations are free to limit individual values. Commonly, strings are limited
-> to 1MB (measured using UTF-8 encoding).
+> * Kusto has no data type that is equivalent to a single character. A single character is represented as a string of length 1.
+> * When ingesting the `string` data type, if a single string value in a record exceeds 1MB (measured using UTF-8 encoding), the value is truncated and ingestion succeeds. If a single string value in a record, or the entire record, exceeds the allowed data limit of 64MB, ingestion fails.
 
 ## String literals
 
