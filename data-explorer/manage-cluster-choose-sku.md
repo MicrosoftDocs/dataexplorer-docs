@@ -12,7 +12,7 @@ When you create a new cluster or optimize a cluster for a changing workload, Azu
 
 The size and VM SKU of the data management cluster are fully managed by the Azure Data Explorer service. They're determined by factors such as the engine's VM size and the ingestion workload.
 
-You can change the compute SKU for the engine cluster at any time by [scaling up the cluster](manage-cluster-vertical-scaling.md) . It's best to start with the smallest SKU size that fits the initial scenario. Scaling up the cluster results in up to 30 minutes of downtime while it's re-created with the new SKU. You can also use the [Azure Advisor](azure-advisor.md) recommendations to optimize your compute SKU.
+You can change the compute SKU for the engine cluster at any time by [scaling up the cluster](manage-cluster-vertical-scaling.md). It's best to start with the smallest SKU size that fits the initial scenario. Scaling up the cluster results in up to 30 minutes of downtime while it's re-created with the new SKU. You can also use the [Azure Advisor](azure-advisor.md) recommendations to optimize your compute SKU.
 
 You can use the [Pricing calculator](https://aka.ms/adx.cost) to estimate the pricing of your Azure Data Explorer cluster, based on your workloads and data volume.
 
@@ -32,11 +32,11 @@ Development clusters are great for service evaluation, setting up an ingestion p
 
 * Development clusters are limited in size and can't grow beyond a single node
 * Azure Data Explorer markup isn't charged for development clusters
-* Limited product SLA for development clusters
+* No SLA for development clusters
 
 ### Compute SKU types
 
-Azure Data Explorer cluster supports various SKUs for different types of workloads. Each SKU offers a distinct SSD storage and CPU ratio to help you correctly size your deployment and build cost-optimal solutions for your enterprise analytical workload.
+Azure Data Explorer clusters support various SKUs for different types of workloads. Each SKU offers a distinct SSD storage and CPU ratio to help you correctly size your deployment and build cost-optimal solutions for your enterprise analytical workload.
 
 **Compute optimized**
 
@@ -47,7 +47,7 @@ Azure Data Explorer cluster supports various SKUs for different types of workloa
 
 * Provides larger storage ranging from 1 terabyte (TB) to 4 TB per engine node and the lowest cost per gigabyte (GB).
 * Suited for workloads that require storage for large volumes of data.
-* SKUs that use premium storage (PS) for hot data storage are more expensive and have lower performance than SKUs with local SSDs.
+* Certain SKUs use premium storage (PS) attached to the engine node instead of local SSDs. Accessing PS is slower than local SSDs, so SKUs with PS are more expensive and are less performant than SKUs with local SSD attached.
 
 ## Select and optimize your compute SKU
 
@@ -72,7 +72,7 @@ With various compute SKU options to choose from, you can optimize costs for the 
 Choose a compute optimized SKU for optimal performance when there are high query volumes.
 Choose a storage optimized SKU for the best performance when querying large volumes of data that need to be cached.  
 
-It's preferable to use a few nodes of a larger VMs that use more RAM, than many smaller SKU nodes. More RAM is needed for some query types that put higher demands on RAM, such as queries that use joins. So when scaling the cluster, we recommend scaling up to a larger SKU when using small VMs, and scaling out by adding more nodes as needed.
+It's preferable to use a few nodes of larger VMs that use more RAM, than many smaller VMs. More RAM is needed for some query types that put higher demands on RAM, such as queries that use joins. So when scaling the cluster, we recommend scaling up to a larger SKU, and scaling out by adding more nodes as needed.
 
 > [!NOTE]
 > Scaling up the cluster, or changing SKU operation, results in up to 30 minutes of downtime. Scale out does not have this impact on cluster availability.
@@ -82,7 +82,7 @@ It's preferable to use a few nodes of a larger VMs that use more RAM, than many 
 SKU availability differs based on the following factors:
 
 * **Region**: Not all SKUs are available in all regions or availability zones. For more information, see each [SKU page](#sku-options) for regional availability.
-* **Subscription**: Some SKUs might only be available for specific subscription types. If a SKU isn't available for your subscription in a location or zone that meets your business needs, submit a [SKU request](/troubleshoot/azure/general/region-access-request-process) to Azure support.
+* **Subscription**: Some SKUs may only be available for specific subscription types. If a SKU isn't available for your subscription in a location or zone that meets your business needs, submit a [SKU request](/troubleshoot/azure/general/region-access-request-process) to Azure support.
 
 ### SKU options
 
@@ -101,9 +101,9 @@ The following SKU series are available for Azure Data Explorer cluster VMs. The 
 | Storage optimized | [DSv2](/azure/virtual-machines/dv2-dsv2-series) | 8,16 | AMD | Yes |
 | Dev (No SLA) | All SKU series with 2 cores | 2 | AMD/Intel | No |
 
-* With Azure Data Explorer compute and storage isolation, you can start with the most cost effective SKU and move to another SKU after maturing the usage pattern or data loss.
+* With Azure Data Explorer compute and storage isolation, you can start with the most optimal cost SKU and move to another SKU after maturing the usage pattern or data loss.
 * You can view the updated compute SKU list per region by using the Azure Data Explorer [ListSkus API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus).
 
 ### Cache size
 
-From the disk size as shown in the Azure compute specification, Azure Data Explorer reserves a certain size for cluster operation. The exact available cache size for each SKU is available in the [SKU selection section in the portal](https://ms.portal.azure.com/#create/Microsoft.AzureKusto).
+Azure Data Explorer reserves a portion of the disk size shown in each of the Azure compute [SKU](#sku-options) specifications to be used for cluster operations. The exact cache size for each SKU is available in the [SKU selection section in the portal](https://ms.portal.azure.com/#create/Microsoft.AzureKusto).
