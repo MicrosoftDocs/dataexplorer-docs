@@ -56,9 +56,10 @@ If the `SystemFlush` condition is set, a batch will be sealed when a system flus
 | Time (sec)          | MaximumBatchingTimeSpan | 300  | 20 - 30  | 10 |
 
 The most effective way of controlling the end-to-end latency using Ingestion Batching policy is to to alter its time boundary at [table](./alter-table-ingestion-batching-policy.md) or [database](./alter-database-ingestion-batching-policy.md) level, according to the higher bound of latency requirements.
-Database level policy will affect all the tables in that databse that do not have that policy defined, as well as any newly created table.
+A database level policy affects all tables in that database that do not have the table-level policy defined, as well as any newly created table.
 
-> [!IMPORTANT] Setting the time boundary of the Ingestion Batching policy too low on low-ingress tables could incur additional compute and storage work as the cluster attempts to optimize the newly created sata shards. Read more about data shards [here](./extents-overview.md).
+> [!IMPORTANT] 
+> If you set the time boundary of the Ingestion Batching policy too low on low-ingress tables, you may incur additional compute and storage work as the cluster attempts to optimize the newly created data shards. For more information about data shards, see [extents](./extents-overview.md).
 
 ## Batch data size
 
