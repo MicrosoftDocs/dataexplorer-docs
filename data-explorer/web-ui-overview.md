@@ -35,22 +35,22 @@ Use the navigation pane to guide your data analytics journey.
 
 In the **[Home](https://dataexplorer.azure.com/home)** page, take action on the sample data provided or explore your own data.
 
-- Get started with tiles for sample data, dashboards, and connect to clusters.
-  - Explore sample data with Kusto Query Language. Choose a dataset from the [samples gallery](web-ui-samples-gallery.md) that is most relevant to your needs. Then explore the provided hands-on tutorials to learn KQL and run queries.
+- Get started by exploring sample data, dashboards, and connecting to clusters.
+  - Choose a dataset from the [samples gallery](web-ui-samples-gallery.md) that is most relevant to your needs, and review the provided hands-on tutorials to learn KQL and run queries.
   - Experience data visualization with [sample dashboards](web-ui-samples-gallery.md#explore-sample-dashboards).
   - Bring your own data and analyze it for free using [My Cluster](https://dataexplorer.azure.com/freecluster), or connect to an existing [cluster](web-query-data.md#add-clusters).
-- To continue on your journey, check out additional information including **Recommended** reading and basic and advanced **Documentation**.
+- Continue on your journey with additional information including **Recommended** reading and basic and advanced **Documentation**.
 
 ## Manage your data
 
 In **[Data management](https://dataexplorer.azure.com/oneclick)**, ingest data and make it available for queries.
 
-- Begin with quick actions to [ingest data](https://dataexplorer.azure.com/oneclick/ingest?sourceType=file), [create tables](https://dataexplorer.azure.com/oneclick/createtable), learn about [batching policies](https://dataexplorer.azure.com/oneclick/updateTableBatchingPolicy), and [generate a sample app](https://dataexplorer.azure.com/oneclick/generatecode?sourceType=file).
-- Explore more ingestion options or search for available actions.
-  - Manage your data with an [external tables](external-table.md) and [batching](/azure/data-explorer/kusto/management/batchingpolicy) and [retention](/azure/data-explorer/kusto/management/retentionpolicy) policies.
-  - Use one-time ingestion from a variety of sources including [local files and blob storage](/azure/data-explorer/ingest-data-one-click), or a [container](/azure/data-explorer//one-click-ingestion-new-table)
-  - Configure continuous ingestion from [Event Hub](/azure/data-explorer/one-click-event-hub) or a blob container.
-  - Backfill from data storage or learn more about SDKs and connectors to expand your data analytics options.
+- Begin with quick actions such as [ingest data](https://dataexplorer.azure.com/oneclick/ingest?sourceType=file), [create tables](https://dataexplorer.azure.com/oneclick/createtable), explore [batching policies](https://dataexplorer.azure.com/oneclick/updateTableBatchingPolicy), and [generate a sample app](https://dataexplorer.azure.com/oneclick/generatecode?sourceType=file).
+- Review different ingestion options or search for available actions.
+  - Manage data with [external tables](external-table.md) and learn about [batching](/azure/data-explorer/kusto/management/batchingpolicy) and [retention](/azure/data-explorer/kusto/management/retentionpolicy) policies.
+  - Use one-time ingestion from various sources including [local files and blob storage](/azure/data-explorer/ingest-data-one-click), or a [container](/azure/data-explorer//one-click-ingestion-new-table)
+  - Configure continuous ingestion from [Event Hubs](/azure/data-explorer/one-click-event-hub) or a blob container.
+  - Backfill from data storage or learn more about SDKs and connectors, to expand your data analytics options.
 
 ## Query your data
 
@@ -68,7 +68,7 @@ Visualize and develop insights through sample dashboards or using your own data.
 - [Explore sample dashboards](web-ui-samples-gallery.md#explore-sample-dashboards) with sample data from the [**help** cluster](https://dataexplorer.azure.com/clusters/help).
 - Learn how to gain insights and [visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
 - Incorporate dashboard parameters to explore and [interact with your data](dashboard-parameters.md#interact-with-your-data-using-cross-filter).
-- [Customize](dashboard-customize-visuals.md#customize-azure-data-explorer-dashboard-visuals) visuals in a variety of dashboard tiles.
+- [Customize](dashboard-customize-visuals.md#customize-azure-data-explorer-dashboard-visuals) visuals in various dashboard tiles.
 
 ## Next steps
 
