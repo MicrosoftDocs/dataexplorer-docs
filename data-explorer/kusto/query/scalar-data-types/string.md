@@ -44,7 +44,7 @@ Verbatim string literals are also supported. In this form, the backslash charact
 
 ## Splicing string literals
 
-Two or more string literals are automatically joined to form a new string literal in the query if they have nothing between them, or they are separated only by whitespace and comments. <br>
+Two or more string literals are automatically joined to form a new string literal in the query if they have nothing between them, or they're separated only by whitespace and comments. <br>
 For example, the following expressions all yield a string of length 13:
 
 ```kusto
@@ -60,7 +60,7 @@ print strlen("Hello"
 ## Multi-line string literals
 
 Multi-line string literals are string literals for which the newline (`\n`) and return (`\r`)
-characters do not require escaping.
+characters don't require escaping.
 
 * Multi-line string literals always appear between two occurrences of the "triple-backtick chord" (`\``).
 
