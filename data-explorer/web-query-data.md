@@ -40,7 +40,7 @@ You must add a connection to a cluster before you can start running queries. In 
 
 1. In the **Add cluster** dialog box, enter the URI `https://help.kusto.windows.net`, then select **Add**.
 
-1. In the left pane, you should now see the **help** cluster. Expand the **Samples** database and open the **Tables** folder to see the sample tables that you have access to.
+1. In the right pane, you should now see the **help** cluster. Expand the **Samples** database and open the **Tables** folder to see the sample tables that you have access to.
 
     :::image type="content" source="media/web-query-data/help-cluster.png" alt-text="Find table in the help cluster in Azure Data Explorer web UI.":::
 
