@@ -72,7 +72,7 @@ In this article, you learn how to create manually the resources needed for Event
 
     Use **Advanced Filters** to add custom filters that meet your requirements.
 
-    For example, When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0, and this event is ignored by Azure Data Explorer. File flushing triggers another event if the *Close* parameter is set to *true*. This event indicates that this is the final update and the file stream has been closed.
+    For example, When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0. This event is ignored by Azure Data Explorer. File flushing triggers another event if the *Close* parameter is set to *true*. This event indicates that this is the final update and the file stream has been closed.
     To filter the *FlushAndClose* event and avoid unneeded delivery of *CreateFile* event with size 0, use the following filters:
 
     :::image type="content" source="media/eventgrid/filters-flush-and-close.png" alt-text="Filter flush and close events":::
