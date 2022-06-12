@@ -49,11 +49,17 @@ If the `SystemFlush` condition is set, a batch will be sealed when a system flus
 
 ## Defaults and limits
 
-| Type             | Property                | Default    | Minimum    |
-|------------------|-------------------------|------------|------------|
-| Number of items  | MaximumNumberOfItems    | 500        | 1          |
-| Data size (MB)   | MaximumRawDataSizeMB    | 1024       | 100        |
-| Time             | MaximumBatchingTimeSpan | 5 minutes  | 10 seconds |
+| Type             | Property                | Default | Low latency | Lowest |
+|------------------|-------------------------|---------|-------------|--------|
+| Number of items  | MaximumNumberOfItems    | 1000    | 1000        | 1      |
+| Data size (MB)   | MaximumRawDataSizeMB    | 1024    | 1024        | 10     |
+| Time (sec)          | MaximumBatchingTimeSpan | 300  | 20 - 30  | 10 |
+
+The most effective way of controlling the end-to-end latency using Ingestion Batching policy is to to alter its time boundary at [table](./alter-table-ingestion-batching-policy.md) or [database](./alter-database-ingestion-batching-policy.md) level, according to the higher bound of latency requirements.
+A database level policy affects all tables in that database that do not have the table-level policy defined, as well as any newly created table.
+
+> [!IMPORTANT] 
+> If you set the time boundary of the Ingestion Batching policy too low on low-ingress tables, you may incur additional compute and storage work as the cluster attempts to optimize the newly created data shards. For more information about data shards, see [extents](./extents-overview.md).
 
 ## Batch data size
 
