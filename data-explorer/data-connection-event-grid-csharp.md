@@ -166,7 +166,8 @@ dataLakeFileClient.Upload(localFileName, uploadOptions);
 ```
 
 > [!NOTE]
-> When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0, and this event is ignored by Azure Data Explorer. File flushing triggers another event if the *Close* parameter is set to *true*. This event indicates that this is the final update and the file stream has been closed. This event is processed by the Event Grid data connection. In the code snippet above, the Upload method triggers flushing when the file upload is finished. Therefore, a *Close* parameter set to *true* must be defined. For more information about flushing, see [Azure Data Lake flush method](/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush).
+> When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0, and this event is ignored by Azure Data Explorer. File flushing triggers another event if the *Close* parameter is set to *true*. This event indicates that this is the final update and the file stream has been closed. This event is processed by the Event Grid data connection. In the code snippet above, the Upload method triggers flushing when the file upload is finished. Therefore, a *Close* parameter set to *true* must be defined.
+It is highly recommended to filter the *FlushAndClose* event to avoid unneeded delivery of the file creation event with size 0 as explained [here](ingest-data-event-grid-manual.md#Create-an-Event-Grid-subscription). For more information about flushing, see [Azure Data Lake flush method](/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush).
 
 ### Rename file using Azure Data Lake SDK
 

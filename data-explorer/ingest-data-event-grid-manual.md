@@ -55,7 +55,9 @@ In this article, you learn how to create manually the resources needed for Event
 
 1. Click **Select an endpoint** and fill in the event hub you created, for example *test-hub*.
     
-1. Select the **Filters** tab if you want to track specific subjects. Set the filters for the notifications as follows:
+1. Select the **Filters** tab if you want to filter events.
+    
+    Use **Subject Filters** to track specific subjects events. Set the filters for the notifications as follows:
    
     :::image type="content" source="media/eventgrid/filters-tab.png" alt-text="Filters tab event grid.":::
 
@@ -68,10 +70,23 @@ In this article, you learn how to create manually the resources needed for Event
 
     For more information about filtering events, see [blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events).
 
+    Use **Advance Filters** to add advanced filters based on your needs.
+
+    For example, When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0, and this event is ignored by Azure Data Explorer. File flushing triggers another event if the *Close* parameter is set to *true*. This event indicates that this is the final update and the file stream has been closed.
+    To filter the *FlushAndClose* event and avoid unneeded delivery of *CreateFile* event with size 0, use the following filters:
+
+    ::image type="content" source="media/eventgrid/filters-flush-and-close.png" alt-text="Filter flush and close events":::
+
+    |**Setting** | **Suggested value** | **Field description**|
+    |---|---|---|
+    |Key | *data.api*	| The field in the event schema used for filtering. |
+    |Operator | *String is in* | An operator to be evaluated on the selected key. |
+    |Value	| *FlushWithClose* | The value used to evaluate the key. |
+
 1. Select **Create**
 
 ## Next steps
 
 * Continue the setup and create a data ingestion connection to Azure Data Explorer via Azure portal: [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md#create-an-event-grid-data-connection).
 
-* If you don't plan to continue Event Grid ingestion using the resources you created and don't want to use the resources anymore, [clean up resources](ingest-data-event-grid.md#clean-up-resources) to avoid incurring costs.  
+* If you don't plan to continue Event Grid ingestion using the resources you created and don't want to use the resources anymore, [clean up resources](ingest-data-event-grid.md#clean-up-resources) to avoid incurring costs.
