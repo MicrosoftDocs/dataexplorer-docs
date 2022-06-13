@@ -25,6 +25,14 @@ The following image shows the Azure Data Explorer Web UI **Home** page and navig
 
 Use the navigation pane to guide your data analytics journey.
 
+|Page  |Description  |
+|---------|---------|
+|Home     |  Landing page with quick access to the [samples gallery](web-ui-samples-gallery.md), providing query tutorials and built-in dashboards. Select either option to add the **help** cluster, or  your own cluster, or add a [free cluster](https://dataexplorer.azure.com/freecluster).        |
+|Data Management     |         |
+|Query     |         |
+|Dashboards     |         |
+|My Cluster     |         |
+
 - Get started quickly with the [**Home** page](https://dataexplorer.azure.com/home), which provides free and immediate access to the **help** cluster and the [samples gallery](web-ui-samples-gallery.md), complete with sample data, query tutorials, and built-in dashboards. From the home page, you can also easily create a [free cluster](start-for-free.md) or connect to your own clusters.
 - In the **Data** tab, explore the [**Data Management**](https://dataexplorer.azure.com/oneclick) page, to ingest and organize data. The [one click ingestion](ingest-data-one-click.md) wizard makes data ingestion fast and intuitive.
 - Once you've connected to data, select the **Query** tab on the left menu to open the [query editor window](https://dataexplorer.azure.com). In the query pane, you can [write](write-queries.md) or learn from descriptive tutorials in the [samples gallery](https://dataexplorer.azure.com/clusters/help).
