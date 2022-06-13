@@ -49,7 +49,7 @@ If the `SystemFlush` condition is set, a batch will be sealed when a system flus
 
 ## Defaults and limits
 
-| Type             | Property                | Default | Low latency | Lowest |
+| Type             | Property                | Default | Low latency | Minimum |
 |------------------|-------------------------|---------|-------------|--------|
 | Number of items  | MaximumNumberOfItems    | 1000    | 1000        | 1      |
 | Data size (MB)   | MaximumRawDataSizeMB    | 1024    | 1024        | 10     |
