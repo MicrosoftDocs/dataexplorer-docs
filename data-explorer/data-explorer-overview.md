@@ -3,7 +3,7 @@ title: What is Azure Data Explorer?
 description: Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data.
 ms.reviewer: mblythe
 ms.topic: overview
-ms.date: 10/25/2021
+ms.date: 06/14/2022
 adobe-target: true
 
 # Customer intent: As a data analyst, I want to understand Azure Data Explorer, so I can decide if it's suitable for my analytics workloads.
@@ -17,21 +17,21 @@ By analyzing structured, semi-structured, and unstructured data across time seri
 
 Azure Data Explorer capabilities are extended by other services built on its powerful query language, including [Azure Monitor logs](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/), and [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint).
 
-## When Should you use Azure Data Explorer?
+## When should you use Azure Data Explorer?
 
-Your decsion can be based on the following factors:
+Use the following questions to help decide if Azure Data Explorer is right for your use case:
 
-* Interactive analytics - Is interactive analysis part of the solution? (e.g. aggregation, correlation and anomaly detection)
+* **Interactive analytics**:  Is interactive analysis part of the solution? For example, aggregation, correlation, or anomaly detection.
 
-* The tripple Data Vs: Variety, Velocity, Volume - Is your schema diveres? Do you need to ingest massive amounts of data in near real-time?
+* **Variety, Velocity, Volume**: Is your schema diverse? Do you need to ingest massive amounts of data in near real-time?
 
-* Data organization - Do you aim to analyze raw data? (e.g. not fully curated star schema)
+* **Data organization**: Do you want to analyze raw data? For example, not fully curated star schema.
 
-* Query concurrency - Are multiple users or processes planing to use Azure Data Explorer?
+* **Query concurrency**: Will multiple users or processes use Azure Data Explorer?
 
-* Build vs Buy - Planning on customizing your data platform?
+* **Build vs Buy**: Do you plan on customizing your data platform?
 
-Azure Data Explorer works best for enabling interactive analytics capabilities to proficent workers over high velocity, diverse raw data.
+Azure Data Explorer is ideal for enabling interactive analytics capabilities over high velocity, diverse raw data.
 
 Use the following decision tree to help you decide if Azure Data Explorer is right for you:
 
