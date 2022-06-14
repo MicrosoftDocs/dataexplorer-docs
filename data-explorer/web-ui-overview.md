@@ -33,12 +33,6 @@ Use the tabs in the left pane to guide your data analytics journey.
 | Dashboards | Dashboards    | [Visualize](azure-data-explorer-dashboards.md) and explore either your own data or built-in dashboards from the samples gallery.        |
 | My Cluster     |  My Cluster       |Experience the capabilities of Azure Data Explorer for [free](start-for-free-web-ui.md) using your own data.
 
-- Get started quickly with the [**Home** page](https://dataexplorer.azure.com/home), which provides free and immediate access to the **help** cluster and the [samples gallery](web-ui-samples-gallery.md), complete with sample data, query tutorials, and built-in dashboards. From the home page, you can also easily create a [free cluster](start-for-free.md) or connect to your own clusters.
-- In the **Data** tab, explore the [**Data Management**](https://dataexplorer.azure.com/oneclick) page, to ingest and organize data. The [one click ingestion](ingest-data-one-click.md) wizard makes data ingestion fast and intuitive.
-- Once you've connected to data, select the **Query** tab on the left menu to open the [query editor window](https://dataexplorer.azure.com). In the query pane, you can [write](write-queries.md) or learn from descriptive tutorials in the [samples gallery](https://dataexplorer.azure.com/clusters/help).
-- In [**Dashboards**](https://dataexplorer.azure.com/dashboards), you can [visualize](azure-data-explorer-dashboards.md) and explore either your own data or built-in dashboards from the samples gallery.
-- [**MyCluster**](https://dataexplorer.azure.com/freecluster) allows you to experience the capabilities of Azure Data Explorer for [free](start-for-free-web-ui.md) using your own data.
-
 ## Explore the home page
 
 In the **[Home](https://dataexplorer.azure.com/home)** page, take action on the sample data provided or explore your own data.
@@ -63,11 +57,6 @@ In **[Data management](https://dataexplorer.azure.com/oneclick)**, ingest data a
     |**Continuous ingestion**     | Configure continuous ingestion from [Event Hubs](/azure/data-explorer/one-click-event-hub) or a blob container.        |
     |**Backfill**     |  Ingest data from sources as a one time or continuous ingestion.       |
     |**SDKs**     |  The [one-click sample app generator](https://dataexplorer.azure.com/oneclick/generatecode?programingLang=Python) is a tool that allows you to create a working app to ingest and query your data in your preferred programming language.  Learn more about connectors to expand and explore the capabilities of Azure Data Explorer.    |
-
-  - **Manage**  data with [external tables](external-table.md) and learn about [batching](/azure/data-explorer/kusto/management/batchingpolicy) and [retention](/azure/data-explorer/kusto/management/retentionpolicy) policies.
-  - Use **one-time ingestion** from various sources including [local files and blob storage](/azure/data-explorer/ingest-data-one-click), or a [container](/azure/data-explorer//one-click-ingestion-new-table)
-  - Configure **continuous ingestion** from [Event Hubs](/azure/data-explorer/one-click-event-hub) or a blob container.
-  - Backfill from data storage or learn more about SDKs and connectors, to expand your data analytics options.
 
 - Use the search box on the right side of the page to search for ingestion options and information using specific terms.
 
