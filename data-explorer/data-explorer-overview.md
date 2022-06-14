@@ -17,6 +17,22 @@ By analyzing structured, semi-structured, and unstructured data across time seri
 
 Azure Data Explorer capabilities are extended by other services built on its powerful query language, including [Azure Monitor logs](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/), and [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint).
 
+## When Should you use Azure Data Explorer?
+
+Your decsion can be based on the following factors:
+
+* Interactive analytics - Is interactive analysis part of the solution? (e.g. aggregation, correlation and anomaly detection)
+
+* The tripple Data Vs: Variety, Velocity, Volume - Is your schema diveres? Do you need to ingest massive amounts of data in near real-time?
+
+* Data organization - Do you aim to analyze raw data? (e.g. not fully curated star schema)
+
+* Query concurrency - Are multiple users or processes planing to use Azure Data Explorer?
+
+* Build vs Buy - Planning on customizing your data platform?
+
+Azure Data Explorer works best for enabling interactive analytics capabilities to proficent workers over high velocity, diverse raw data.
+
 Use the following decision tree to help you decide if Azure Data Explorer is right for you:
 
 :::image type="content" source="media/data-explorer-overview/decision-tree.png" alt-text="This image is a schematic workflow image of an Azure Data Explorer decision tree.":::
