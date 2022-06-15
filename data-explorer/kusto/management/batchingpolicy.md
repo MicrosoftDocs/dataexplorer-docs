@@ -67,7 +67,7 @@ The batching policy data size is set for uncompressed data. For Parquet, AVRO, a
 
 ## Batching latencies
 
-Latencies can result from a number of causes that can be addressed using batching policy settings.
+Latencies can result from many causes that can be addressed using batching policy settings.
 
 | Cause | Solution |
 | --- | --- |
