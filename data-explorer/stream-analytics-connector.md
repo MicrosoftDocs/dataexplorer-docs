@@ -43,7 +43,7 @@ To test the Azure Stream Analytics output connection, you can download the phone
 > [!TIP]
 > You can modify the sample to send data relevant to your user case as long as you adhere to the Azure Data Explorer schema.
 
-There are various methods to create Azure Data Explorer output connection to Azure Stream Analytics job. The following tabs contain instructions for creating an Azure Data Explorer output connection using the portal and an Azure Resource Manager template. When this connection is complete, and job is running, data that flows into the Azure Stream Analytics job will be ingested into the target table you created.
+There are various methods to create Azure Data Explorer output connection to the Azure Stream Analytics job. The following tabs have instructions for creating an Azure Data Explorer output connection using the portal and an Azure Resource Manager template. When this connection is complete, and job is running, data that flows into the Azure Stream Analytics job will be ingested into the target table you created.
 
 ## Prerequisites
 
@@ -55,7 +55,7 @@ There are various methods to create Azure Data Explorer output connection to Azu
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 
-1. Follow the steps in this tutorial to create a [Azure Stream Analytics job](/azure/stream-analytics/stream-analytics-real-time-fraud-detection#create-a-stream-analytics-job). At the point in the tutorial where it starts to [configure job output](/azure/stream-analytics/stream-analytics-real-time-fraud-detection#configure-job-output), follow the steps in this tab to create the Azure Data Explorer output connection to the Azure Stream Analytics job.
+1. Follow the steps in this [tutorial to create a Azure Stream Analytics job](/azure/stream-analytics/stream-analytics-real-time-fraud-detection#create-a-stream-analytics-job). At the point in the tutorial where it starts to [configure job output](/azure/stream-analytics/stream-analytics-real-time-fraud-detection#configure-job-output), follow the steps in this tab to create the Azure Data Explorer output connection to the Azure Stream Analytics job.
 
 1. From the Azure portal, open **All resources**, and select the **ASATutorial** Stream Analytics job.
 
