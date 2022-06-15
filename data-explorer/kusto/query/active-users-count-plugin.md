@@ -27,7 +27,7 @@ T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), start
 | *IdColumn* | string | &check; | The name of the column with ID values that represent user activity. |
 | *TimelineColumn* | string | &check; | The name of the column that represents timeline. |
 | *Start* | datetime |  &check;  | Scalar with value of the analysis start period. |
-| *End* | datetime |   | Scalar with value of the analysis end period. |
+| *End* | datetime | &check; | Scalar with value of the analysis end period. |
 | *LookbackWindow* | timespan | &check; | A sliding time window defining a period where user appearance is checked. Lookback period starts at ([current appearance] - [lookback window]) and ends on ([current appearance]). |
 | *Period* | timespan | &check; | Scalar constant timespan to count as single appearance (a user will be counted as active if it appears in at least distinct ActivePeriodsCount of this timespan. |
 | *ActivePeriodsCount* | decimal | &check; | Minimal number of distinct active periods to decide if user is active. Active users are those users who appeared in at least (equal or greater than) active periods count. |
