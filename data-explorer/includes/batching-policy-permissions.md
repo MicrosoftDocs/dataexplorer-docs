@@ -7,4 +7,6 @@ ms.reviewer: vladikbr
 ms.custom: include file
 ---
 > [!NOTE]
-> To set batching policies, the principal must have authorization. Minimal required permission levels are `Database Admin` for batching policies for a particular database and `Table Admin` for batching policies for a particular table. For more information, see [Role-based Authorization in Kusto](../kusto/management/access-control/role-based-authorization.md).
+> The minimal required permission level to set batching policies on a database is `Database Admin`.  
+> The minimal required permission level to set batching policies on a table is `Table Admin`. 
+> For more information, see [Role-based Authorization in Kusto](../kusto/management/access-control/role-based-authorization.md).
