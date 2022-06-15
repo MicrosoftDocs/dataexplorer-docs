@@ -1,202 +1,202 @@
 ---
-title: Kusto emulator Installation
-description: This article you'll learn how to install the Kusto Emulator and run your first queries.
+title: Azure Data Explorer Kusto emulator installation
+description: In this article, you'll learn how to install the Azure Data Explorer Kusto emulator and run your first query.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 05/25/2022
+ms.date: 06/12/2022
 ---
 
-> [!NOTE]
-> The image might not run in process-isolation mode. Make sure that the container is started in Hyper-V isolation mode by adding --isolation=hyperv to the docker run command.
+# Azure Data Explorer Kusto emulator installation
 
-# Kusto emulator Installation
+You can install the Azure Data Explorer Kusto emulator in the following ways:
 
-Installing the Kusto emulator on your laptop allows to quickly get a local development environment while installing it on a CI/CD agent VM allows for running automated tests.
+- On your own device: Consider using this option if you need to provision a local development environment
+- On a CI/CD agent virtual machine (VM): Use this option if you require a CI/CD pipeline for running automated tests
 
-In this article, we'll show you how to install the Kusto emulator and quickly get started by creating a database, ingesting data and querying it.
+In this article, you'll learn how to:
+
+- [Install the Kusto emulator](#install-the-kusto-emulator)
+- [Connect to the emulator](#connect-to-the-emulator)
+- [Create a database](#create-a-database)
+- [Ingest data](#ingest-data)
+- [Query data](#query-data)
 
 ## Prerequisites
 
-* The host OS must be either
-  * Windows Server 2022
-  * Windows Server 2019 Version 10.0.17763.2928 and above)
-  * Windows 11
-* [Docker Client](https://docs.docker.com/desktop/windows/install/)
+- The host operating system must be either:
+  - Windows Server 2022
+  - Windows Server 2019 Version 10.0.17763.2928 or newer
+  - Windows 11
+- 2 gigabytes (GB) of RAM minimum; we recommend using 4 GB or more
+- [Docker Client](https://docs.docker.com/desktop/windows/install/)
 
-## License Terms
+## Install the Kusto emulator
 
-The container image is covered by [license terms](https://aka.ms/adx.emulator.license).
+The following steps are for using PowerShell to start the emulator using the [Kusto emulator container image](https://aka.ms/adx.emulator.image). For other options, see [Run emulator options](#run-emulator-options).
 
-Since a container runs without a graphical interface, there are no screen to accept / consent to the license terms.  This is done instead by passing an environment variable to the container named `ACCEPT_EULA` of value `Y` (yes).
+1. Switch Docker to run with Windows containers. You may need to enable the feature in the Docker settings.
 
-## Run Docker for Windows
+    :::image type="content" source="media/kusto-emulator/kusto-emulator-docker-windows-container.png" alt-text="Screenshot of the Docker settings, showing the Switch to Windows containers option.":::
 
-The first step to run the Kusto Emulator is to ensure we are running Docker with Windows containers (the default is Linux containers).
+1. Run the following command to start the emulator.
 
-![Switch to Windows containers](media/kusto-emulator/kusto-emulator-docker-windows-container.png)
+    > [!IMPORTANT]
+    > The Kusto emulator container image is a free offering under the [Microsoft Software License Terms](https://aka.ms/adx.emulator.license). Since the emulator runs in a container, you must accept the license terms by passing the `ACCEPT_EULA` environment variable to the container with its value set to `Y` indicating.
 
-This might require you to enable the feature.
+    > [!NOTE]
+    > The first time this command is run, Docker pulls the container image which is several GBs in size and may take several minutes to download. Once downloaded, the image is cached and available for subsequent runs without having to download it again.
 
-## Run Container
+    - To start the emulator on a Windows Server operating system, make sure you we would use the `latest` or `stable` tag.
 
-You can run the Kusto Emulator with a simple `docker run` (e.g. in PowerShell) on the [Kusto Emulator Container Image](https://aka.ms/adx.emulator.image) passing the *License Terms consent environment variable* discussed in the previous section.
+        ```powershell
+        docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
+        ```
 
-We will give a concrete example here, assuming you are running on a Windows Server host.  We will give [different variations](#Run-Container-Variations) in the next section.
+    - To start the image container on a Windows 11, make sure you we would use the `windows11` tag:
 
-```bash
-docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
-```
+        ```powershell
+        docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:windows11
+        ```
 
-> [!NOTE]
-> The first time this command is executed, Docker is going to *pull* the image which is several GBs.  It is therefore normal for this step to take several minutes.  The image is cached hence later runs will not have this overhead.
+    > [!NOTE]
+    > The image might not run in process-isolation mode. If this happens, make sure that the container is started in Hyper-V isolation mode by adding `--isolation=hyperv` to the docker run command.
 
-> [!NOTE]
-> The Kusto Container image requires at least 2 GB of RAM.  Here we forced the container to take 4 GB.
+1. Run the following command to verify that the container is running.
 
-The command should return while the container is running.  We can verify the container is running with:
+    ```powershell
+    docker ps
+    ```
 
-```bash
-docker ps
-```
+    The command returns a list of running container instances. Verify that the emulator image *mcr.microsoft.com/azuredataexplorer/kustainer:latest* appears in the list.
 
-This will list the container instances running and should include one with *image* `mcr.microsoft.com/azuredataexplorer/kustainer:latest`.  For instance:
+    ```powershell
+    CONTAINER ID   IMAGE                                                  COMMAND                  CREATED          STATUS          PORTS                    NAMES
+    a8b51bce21ad   mcr.microsoft.com/azuredataexplorer/kustainer:latest   "powershell -Commandâ&euro;¦"   11 minutes ago   Up 10 minutes   0.0.0.0:8080->8080/tcp   youthful_matsumoto
+    ```
+<!-- TODO: Is the Euro correct? youthful_matsumoto? -->
 
-```
-CONTAINER ID   IMAGE                                                  COMMAND                  CREATED          STATUS          PORTS                    NAMES
-a8b51bce21ad   mcr.microsoft.com/azuredataexplorer/kustainer:latest   "powershell -Commandâ&euro;¦"   11 minutes ago   Up 10 minutes   0.0.0.0:8080->8080/tcp   youthful_matsumoto
-```
+1. Run the following command to verify that Kusto emulator is running. The command runs the `.show cluster` query against the management API and it should return a *StatusCode* with value *200*.
 
-We can verify that Kusto is running using the following command (in PowerShell):
+    ```powershell
+    curl -Method post -ContentType 'application/json' -Body '{"csl":".show cluster"}' http://localhost:8080/v1/rest/mgmt
+    ```
 
-```bash
-curl -Method post -ContentType 'application/json' -Body '{"csl":".show cluster"}' http://localhost:8080/v1/rest/mgmt
-```
+    The command should return something like the following:
 
-This should return something similar to the following:
+    ```powershell
+    StatusCode        : 200
+    StatusDescription : OK
+    Content           : {"Tables":[{"TableName":"Table_0","Columns":[{"ColumnName":"NodeId","DataType":"String","ColumnType":"string"},{"ColumnName":"Address","DataType":"St
+                        ring","ColumnType":"string"},{"ColumnName":"Name","...
+    RawContent        : HTTP/1.1 200 OK
+                        Transfer-Encoding: chunked
+                        x-ms-client-request-id: unspecified;d239f3aa-7df0-4e46-af0a-edd7139d0511
+                        x-ms-activity-id: a0ac8941-7e4c-4176-98fa-b7ebe14fae90
+                        Content-Type: application...
+    Forms             : {}
+    Headers           : {[Transfer-Encoding, chunked], [x-ms-client-request-id, unspecified;d239f3aa-7df0-4e46-af0a-edd7139d0511], [x-ms-activity-id, 
+                        a0ac8941-7e4c-4176-98fa-b7ebe14fae90], [Content-Type, application/json]...}
+    Images            : {}
+    InputFields       : {}
+    Links             : {}
+    ParsedHtml        : System.__ComObject
+    RawContentLength  : 988
+    ```
 
-```
-StatusCode        : 200
-StatusDescription : OK
-Content           : {"Tables":[{"TableName":"Table_0","Columns":[{"ColumnName":"NodeId","DataType":"String","ColumnType":"string"},{"ColumnName":"Address","DataType":"St
-                    ring","ColumnType":"string"},{"ColumnName":"Name","...
-RawContent        : HTTP/1.1 200 OK
-                    Transfer-Encoding: chunked
-                    x-ms-client-request-id: unspecified;d239f3aa-7df0-4e46-af0a-edd7139d0511
-                    x-ms-activity-id: a0ac8941-7e4c-4176-98fa-b7ebe14fae90
-                    Content-Type: application...
-Forms             : {}
-Headers           : {[Transfer-Encoding, chunked], [x-ms-client-request-id, unspecified;d239f3aa-7df0-4e46-af0a-edd7139d0511], [x-ms-activity-id, 
-                    a0ac8941-7e4c-4176-98fa-b7ebe14fae90], [Content-Type, application/json]...}
-Images            : {}
-InputFields       : {}
-Links             : {}
-ParsedHtml        : System.__ComObject
-RawContentLength  : 988
-```
+### Run emulator options
 
-We just ran the command `.show cluster` against the management API and it returned a `200-OK`.
+You can use any of any of the following options when running the emulator:
 
-## Run Container Variations
+- Mount a local folder to the container: Use this option to mount a folder in the host environment into the container. By mounting a host folder, you're queries be able to interact with local files, which is useful for [creating a persistent database](#to-create-a-persistent-database) and [ingesting data](#ingest-data).
 
-### Mounting a local folder to the container
+    For example, to mount the folder "D:\host\local" on the host to the folder "c:\kusto" in the container, use the following command on Windows Server:
 
-A useful variation consists in mounting a folder from the host into the container.  This will allow the Kusto Query Engine to interact with local files, for instance to ingest data and to persist database state.
+    ```powershell
+    docker run -v d:\host\local:c:\kusto -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
+    ```
 
-To mount the folder "D:\host\local" on the host to the folder "c:\kusto" in the container:
+- Run on a different port: The Kusto emulator exposes access to the Kusto Query Engine on port 8080; hence in other examples you mapped the host port 8080 to the emulator port 8080. You can use this option to map a different host to the engine.
 
-```bash
-docker run -v d:\host\local:c:\kustomount -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
-```
+    For example, to map port 9000 on the host to the engine, use the following command on Windows Server:
 
-### Running on Windows 11
+    ```powershell
+    docker run -e ACCEPT_EULA=Y -m 4G -d -p 9000:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
+    ```
 
-In the previous section, we assumed the Host OS was Windows Server.
+## Connect to the emulator
 
-In order to run on Windows Client, we would use the `windows11` tag:
+You can use any the following tools to connect to and interact with the emulator:
 
-```bash
-docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:windows11
-```
+- [Kusto.Explorer](kusto/tools/kusto-explorer.md)
+- [Kusto.CLI](kusto/tools/kusto-cli.md)
+- [Kusto.Data SDKs](kusto/api/netfx/about-kusto-data.md)
 
-### Running on a different port
+In the following sections, you'll use Kusto.Explorer to create a database, ingest data, and query it. To learn more, see [Using Kusto.Explorer](kusto/tools/kusto-explorer-using.md).
 
-We mapped the container internal port 8080 (exposing the query engine) to the host port 8080 (hence the `8080:8080` in the command).
+## Create a database
 
-To map it to a different port on the host, e.g. port 9000, we would map the ports this way:
+You'll need a database in your emulator for your data. You can create the following types of database:
 
-```bash
-docker run -e ACCEPT_EULA=Y -m 4G -d -p 9000:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
-```
+- A *volatile* database where the database only exists in RAM and is lost when the container is stopped
+- A *persistent* database where the database is stored in a folder in the container. This allows your database size to exceed the size of your container's RAM. If you want to keep the data between container runs, you'll need to persist the database to a [mounted folder](#run-emulator-options).
 
-## Tools to connect to the emulator
+### To create a volatile database
 
-In order to interact with the Kusto emulator, we can use one of the following tools:
-
-* [Kusto.Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/kusto-explorer)
-* [Kusto.CLI](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/kusto-cli)
-* [Kusto.Data SDKs](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/api/netfx/about-kusto-data)
-
-In this article, we will use the [Kusto.Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/kusto-explorer) rich client.
-
-## Creating a volatile database
-
-The following command (e.g. executed in [Kusto.Explorer](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/tools/kusto-explorer)):
+In the [Kusto.Explorer Query mode](kusto/tools/kusto-explorer-using.md#query-mode), run the following command to create a volatile database:
 
 ```kusto
-.create database <DBName> volatile
+.create database <YourDatabaseName> volatile
 ```
 
-creates a *volatile* database.  That is a database existing only in RAM.
+### To create a persistent database
 
-## Creating a persistent database
+In the [Kusto.Explorer Query mode](kusto/tools/kusto-explorer-using.md#query-mode), run the following command to create a volatile database:
 
 ```kusto
-.create database <DBName> persist (
-  @"c:\kusto\dbs\<DBName>\md",
-  @"c:\kusto\dbs\<DBName>\data"
+.create database <YourDatabaseName> persist (
+  @"c:\kusto\dbs\<YourDatabaseName>\md",
+  @"c:\kusto\dbs\<YourDatabaseName>\data"
   )
 ```
 
-This commands creates a database persisting its data on disk.  The data is persisted *in the container* and therefore doesn't persist between container runs.
+## Ingest data
 
-If the path is a mount (see [mounting](#Mounting-a-local-folder-to-the-container)), the data is persisted outside the container and persisted between container runs.
+To ingest data, you must first create an external table linked to the a file and then ingest the data into a table in the database.
 
-## Ingest local file
+Use the steps in the following example to create an external table and ingest data into it. For the example, in the local folder *c:\kusto\sample*, you'll create a file called `sample.csv` with the following data:
 
-Assuming we have mounted a local folder into the container at `c:\kustomount` (container path), we will create a sub folder named `sample` in the host folder.  In that folder, we will create a simple CSV file in the folder called `sample.csv`:
-
-```
+```text
 Alice, 1
 Bob, 2
 Carl, 3
 ```
 
-We should be able to consume that file through an [external table](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/external-tables-azurestorage-azuredatalake#properties):
+1. Run the following command to consume the file through an [external table](kusto/management/external-tables-azurestorage-azuredatalake.md#properties):
 
-```kusto
-.create external table MySample(Name:string, Age:int)
-kind=storage 
-dataformat=csv
-( 
-   @"c:\kustomount\sample"
-)
-```
+    ```kusto
+    .create external table MySample(Name:string, Age:int)
+    kind=storage 
+    dataformat=csv
+    ( 
+        @"c:\kusto\sample"
+    )
+    ```
 
-We should see the data with:
+1. Run the following query to view the data in the external table:
 
-```kusto
-external_table('MySample')
-```
+    ```kusto
+    external_table('MySample')
+    ```
 
-We will then [ingest that data](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query) in a database we created:
+1. Run the following command to [ingest the data](kusto/management/data-ingestion/ingest-from-query.md) into the database. The command creates the table `MyIngestedSample` and ingests the data from the external table into it.
 
-```kusto
-.set MyIngestedSample <| external_table('MySample')
-```
+    ```kusto
+    .set MyIngestedSample <| external_table('MySample')
+    ```
 
-This creates the table `MyIngestedSample` and ingest the external table content in.
+## Query data
 
-We should then be able to query that table:
+You can view the data in the table using the following query:
 
 ```kusto
 MyIngestedSample
@@ -205,14 +205,18 @@ MyIngestedSample
 
 ## Stopping the container
 
-You can stop the container by running
+1. You can stop the container by running the following command to obtain the container ID:
 
-```bash
-docker ps
-```
+    ```powershell
+    docker ps
+    ```
 
-Find the container id of the Kusto Container and the run:
+1. Run the following command with the container ID:
 
-```bash
-docker stop <container ID>
-```
+    ```powershell
+    docker stop <containerID>
+    ```
+
+## Next steps
+
+- [Kusto Query Language (KQL) overview](kusto/query/index.md)
