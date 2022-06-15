@@ -1,12 +1,12 @@
 ---
-title: Azure Data Explorer Kusto emulator installation
+title: Install the Azure Data Explorer Kusto emulator
 description: In this article, you'll learn how to install the Azure Data Explorer Kusto emulator and run your first query.
 ms.reviewer: vplauzon
 ms.topic: how-to
 ms.date: 06/12/2022
 ---
 
-# Azure Data Explorer Kusto emulator installation
+# Install the Azure Data Explorer Kusto emulator
 
 You can install the Azure Data Explorer Kusto emulator in the following ways:
 
