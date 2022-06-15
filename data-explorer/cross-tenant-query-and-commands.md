@@ -81,4 +81,4 @@ PATCH https://management.azure.com/subscriptions/12345678-1234-1234-1234-1234567
 
 ## Add Principals  
 
-After updating the `trustedExternalTenants` property, you must give cluster access to principals from the approved tenants using the `.add` command. For more information, see [identities - AAD Tenants](./kusto/management/access-control/principals-and-identity-providers.md#aad-tenants).
+After updating the `trustedExternalTenants` property, you must give cluster access to principals from the approved tenants using the `.add` command. For more information, see [identities - AAD Tenants](./kusto/management/access-control/principals-and-identity-providers.md#azure-ad-tenants).
