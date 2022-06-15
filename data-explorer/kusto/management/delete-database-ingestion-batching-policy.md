@@ -9,6 +9,8 @@ ms.date: 12/15/2021
 
 Remove the database [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
 
+[!INCLUDE [batching-policy-permissions](../../includes/batching-policy-permissions.md)]
+
 ## Syntax
 
 `.delete` `database` *DatabaseName* `policy` `ingestionbatching`

@@ -9,6 +9,8 @@ ms.date: 09/27/2021
 
 Display the database [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
 
+[!INCLUDE [batching-policy-permissions](../../includes/batching-policy-permissions.md)]
+
 ## Syntax
 
 `.show` `database` *DatabaseName* `policy` `ingestionbatching`

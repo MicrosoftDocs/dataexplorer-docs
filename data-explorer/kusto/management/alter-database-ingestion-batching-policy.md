@@ -7,11 +7,14 @@ ms.date: 01/06/2022
 ---
 # .alter database ingestion batching policy
 
-Set the [ingestion batching policy](batchingpolicy.md) to determine when data aggregation stops and a batch is sealed and ingested. 
+Set the [ingestion batching policy](batchingpolicy.md) to determine when data aggregation stops and a batch is sealed and ingested.
 
 When setting the policy for a database, it applies for all its tables, except tables that were set with their own IngestionBatching policy. If the policy is not set for a database, the [default values](batchingpolicy.md#defaults-and-limits) apply.
 
+[!INCLUDE [batching-policy-permissions](../../includes/batching-policy-permissions.md)]
+
 ## Defaults and limits
+
 See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 
 ## Syntax
@@ -33,4 +36,4 @@ The following command sets a batch ingress data time of 30 seconds, for 500 file
 
 ## Next steps
 
-* [alter table batching policy](alter-table-ingestion-batching-policy.md)
+- [alter table batching policy](alter-table-ingestion-batching-policy.md)
