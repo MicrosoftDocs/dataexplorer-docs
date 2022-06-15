@@ -11,13 +11,13 @@ The Kusto emulator is a local environment that encapsulates the [Kusto Query Eng
 
 > [!IMPORTANT]
 >
-> - The emulator provided *as-is*, without any support or warranties.
+> - The emulator is provided *as-is*, without any support or warranties.
 > - The emulator isn't intended for use in production environments.
 > - The [license terms](https://aka.ms/adx.emulator.license) explicitly prohibit benchmark tests using the emulator due to the built-in limitations making it a poor technology. The emulator has a very different performance profile compared to the Azure Data Explorer service.
 
 ## Architecture
 
-The Kusto emulator is packaged as a *Docker Windows container image*. When installed, it exposes a query endpoint over HTTP that can be used with any client including [Kusto.Explorer](kusto/tools/kusto-explorer-using.md), [Kusto.CLI](kusto/tools/kusto-cli.md), or [Kusto.Data SDKs](kusto/api/netfx/about-kusto-data.md).
+The Kusto emulator is packaged as a *Docker Windows container image*. It exposes a query endpoint over HTTP that can be used with any client including [Kusto.Explorer](kusto/tools/kusto-explorer-using.md), [Kusto.CLI](kusto/tools/kusto-cli.md), or [Kusto.Data SDKs](kusto/api/netfx/about-kusto-data.md).
 
 ![Kusto Emulator](media/kusto-emulator/kusto-emulator-architecture.png)
 
