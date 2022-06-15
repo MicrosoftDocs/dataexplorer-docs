@@ -108,7 +108,7 @@ You can use any of the following options when running the emulator:
 
 - Mount a local folder to the container: Use this option to mount a folder in the host environment into the container. Mounting a host folder enables your queries to interact with local files, which is useful for [creating a persistent database](#to-create-a-persistent-database) and [ingesting data](#ingest-data).
 
-    For example, to mount the folder "D:\host\local" on the host to the folder "c:\kustodata" in the container, use the following command on Windows Server:
+    For example, to mount the folder "D:\host\local" on the host to the folder "c:\kustodatadata" in the container, use the following command on Windows Server:
 
     ```powershell
     docker run -v d:\host\local:c:\kustodata -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
@@ -153,8 +153,8 @@ In the [Kusto.Explorer Query mode](kusto/tools/kusto-explorer-using.md#query-mod
 
 ```kusto
 .create database <YourDatabaseName> persist (
-  @"c:\kusto\dbs\<YourDatabaseName>\md",
-  @"c:\kusto\dbs\<YourDatabaseName>\data"
+  @"c:\kustodata\dbs\<YourDatabaseName>\md",
+  @"c:\kustodata\dbs\<YourDatabaseName>\data"
   )
 ```
 
@@ -162,7 +162,7 @@ In the [Kusto.Explorer Query mode](kusto/tools/kusto-explorer-using.md#query-mod
 
 To ingest data, you must first create an external table linked to a file and then ingest the data into a table in the database.
 
-Use the steps in the following example to create an external table and ingest data into it. For the example, in the local folder *c:\kusto\sample*, you'll create a file called `sample.csv` with the following data:
+Use the steps in the following example to create an external table and ingest data into it. For the example, in the local folder *c:\kustodata\sample*, you'll create a file called `sample.csv` with the following data:
 
 ```text
 Alice, 1
@@ -170,27 +170,16 @@ Bob, 2
 Carl, 3
 ```
 
-1. Run the following command to consume the file through an [external table](kusto/management/external-tables-azurestorage-azuredatalake.md#properties):
+1. Run the following command to [create a table](kusto/management/create-table-command) to receive the data:
 
     ```kusto
-    .create external table MySample(Name:string, Age:int)
-    kind=storage 
-    dataformat=csv
-    ( 
-        @"c:\kusto\sample"
-    )
+    .create table MyIngestedSample(Name:string, Id:int)
     ```
 
-1. Run the following query to view the data in the external table:
+1. Run the following command to [ingest the file into the table](kusto/management/data-ingestion/ingest-from-storage):
 
     ```kusto
-    external_table('MySample')
-    ```
-
-1. Run the following command to [ingest the data](kusto/management/data-ingestion/ingest-from-query.md) into the database. The command creates the table `MyIngestedSample` and ingests the data from the external table into it.
-
-    ```kusto
-    .set MyIngestedSample <| external_table('MySample')
+    .ingest into table MyIngestedSample(@"c:\kustodata\sample.csv")
     ```
 
 ## Query data
