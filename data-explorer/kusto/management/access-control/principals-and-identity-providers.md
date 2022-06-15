@@ -18,18 +18,18 @@ capable of authenticating security principals or federating with other identity 
 Azure AD is the preferred method for authenticating to the cluster. It supports the following authentication scenarios:
 
 * **User authentication** (interactive sign-in): Used to authenticate human principals.
-* **Application authentication** (non-interactive sign-in): Used to authenticate services and applications that have to run/authenticate with no human user being present.
+* **Application authentication** (non-interactive sign-in): Used to authenticate services and applications that have to run or authenticate without user interaction.
 
 > [!NOTE]
-> Azure AD does not allow authentication of service accounts that are by definition on-prem AD entities. The Azure AD equivalent of an AD service account is the Azure AD application.
+> Azure AD does not allow authentication of service accounts that are by definition on-premises AD entities. The Azure AD equivalent of an AD service account is the Azure AD application.
 
 ### Azure AD Group principals
 
-Azure Data Explorer only supports Security Group (SG) principals and not Distribution Group (DG) principals. Attempt to set up access for a DG on the cluster will result in an error.
+Azure Data Explorer only supports Security Group (SG) principals and not Distribution Group (DG) principals. An attempt to set up access for a DG on the cluster will result in an error.
 
 ### Azure AD Tenants
 
-If an Azure AD tenant isn't explicitly specified, the cluster will attempt to resolve it from the Universal Principal Name (UPN) (for example, `johndoe@fabrikam.com`), if provided. If your principal doesn't include the tenant information (in UPN form), you must explicitly mention it by appending the tenant ID, or name to the principal descriptor.
+If an Azure AD tenant isn't explicitly specified, an attempt will be made to resolve it from the Universal Principal Name (UPN) (for example, `johndoe@fabrikam.com`), if provided. If your principal doesn't include the tenant information in UPN form, you must explicitly mention it by appending the tenant ID, or name to the principal descriptor.
 
 #### Examples for Azure AD principals
 
@@ -45,7 +45,7 @@ If an Azure AD tenant isn't explicitly specified, the cluster will attempt to re
 | Explicit (Name) | App | `aadapp=`*ApplicationId*`;`*TenantName* |
 
 ```kusto
-// No need to specify Azure AD tenant for UPN, because the cluster (Kusto) performs the resolution by itself
+// No need to specify Azure AD tenant for UPN, because query engine attempts to perform the resolution by itself
 .add database Test users ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
 
 // Azure AD SG on 'fabrikam.com' tenant
@@ -59,7 +59,7 @@ If an Azure AD tenant isn't explicitly specified, the cluster will attempt to re
 
 Microsoft account (MSA) is the term for all the Microsoft-managed non-organizational user accounts (for example, `hotmail.com`, `live.com`, `outlook.com`.)
 Azure Data Explorer supports user authentication for MSAs that are identified by their UPN; there's no concept of security groups.
-The cluster **will not** attempt to resolve UPNs when an MSA principal is configured on it.
+No attempt will be made to resolve UPNs when an MSA principal is configured on it.
 
 ### Examples for MSA principals
 
