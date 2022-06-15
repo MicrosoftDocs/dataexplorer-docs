@@ -58,7 +58,8 @@ Use the following attributes to help you choose the correct SKU for your environ
 
 | Attribute | Details |
 |--|--|
-| Cost per GB cache per core | High cost with compute optimized SKUs. Low cost with storage optimized SKUs. |
+|Cost per GB| High cost with compute optimized. Low cost with storage optimized SKUs. |
+|Cost per core| Low cost with compute optimized. High cost with storage optimized SKUs. |
 | RI pricing | RI discount varies by region and by SKU. |
 
 > [!NOTE]
