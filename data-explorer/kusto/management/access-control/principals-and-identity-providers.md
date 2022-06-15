@@ -7,7 +7,7 @@ ms.date: 02/13/2020
 ---
 # Principals and Identity Providers
 
-The supported authorization model supports several identity providers (IdPs) and multiple principal types.
+The authorization model supports several identity providers (IdPs) and multiple principal types.
 This article reviews the supported principal types and demonstrates their use with [role assignment commands](../../management/security-roles.md).
 
 ## Azure Active Directory
