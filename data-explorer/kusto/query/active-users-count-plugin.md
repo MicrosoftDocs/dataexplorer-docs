@@ -21,16 +21,18 @@ T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), start
 
 ## Arguments
 
-* *T*: The input tabular expression.
-* *IdColumn*: The name of the column with ID values that represent user activity.
-* *TimelineColumn*: The name of the column that represents timeline.
-* *Start*: (optional) Scalar with value of the analysis start period.
-* *End*: (optional) Scalar with value of the analysis end period.
-* *LookbackWindow*: A sliding time window defining a period where user appearance is checked. Lookback period starts at ([current appearance] - [lookback window]) and ends on ([current appearance]).
-* *Period*: Scalar constant timespan to count as single appearance (a user will be counted as active if it appears in at least distinct ActivePeriodsCount of this timespan.
-* *ActivePeriodsCount*: Minimal number of distinct active periods to decide if user is active. Active users are those users who appeared in at least (equal or greater than) active periods count.
-* *Bin*: Scalar constant value of the analysis step period. Can be a numeric/datetime/timestamp value, or a string that is `week`/`month`/`year`. All periods will be the corresponding [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md) functions.
-* *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the activity metrics calculation.
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *T* | tabular expression | &check; | The input tabular expression.|
+| *IdColumn* | string | &check; | The name of the column with ID values that represent user activity. |
+| *TimelineColumn* | string | &check; | The name of the column that represents timeline. |
+| *Start* | datetime |  &check;  | Scalar with value of the analysis start period. |
+| *End* | datetime | &check; | Scalar with value of the analysis end period. |
+| *LookbackWindow* | timespan | &check; | A sliding time window defining a period where user appearance is checked. Lookback period starts at ([current appearance] - [lookback window]) and ends on ([current appearance]). |
+| *Period* | timespan | &check; | Scalar constant timespan to count as single appearance (a user will be counted as active if it appears in at least distinct ActivePeriodsCount of this timespan. |
+| *ActivePeriodsCount* | decimal | &check; | Minimal number of distinct active periods to decide if user is active. Active users are those users who appeared in at least (equal or greater than) active periods count. |
+| *Bin* | decimal/datetime/timespan | &check; | Scalar constant value of the analysis step period. Can be a numeric/datetime/timestamp value, or a string that is `week`/`month`/`year`. All periods will be the corresponding [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md) functions. |
+| *dim1*, *dim2*, ... | dynamic |   | list of the dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
 
