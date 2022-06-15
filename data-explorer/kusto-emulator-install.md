@@ -46,13 +46,13 @@ The following steps are for using PowerShell to start the emulator using the [Ku
     > [!NOTE]
     > The first time this command is run, Docker pulls the container image which is several GBs in size and may take several minutes to download. Once downloaded, the image is cached and available for subsequent runs without having to download it again.
 
-    - To start the emulator on a Windows Server operating system, make sure you we would use the `latest` or `stable` tag.
+    - To start the emulator on a Windows Server operating system, make sure you use the `latest` or `stable` tag.
 
         ```powershell
         docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
         ```
 
-    - To start the image container on a Windows 11, make sure you we would use the `windows11` tag:
+    - To start the image container on a Windows 11, make sure you use the `windows11` tag:
 
         ```powershell
         docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:windows11
@@ -71,9 +71,8 @@ The following steps are for using PowerShell to start the emulator using the [Ku
 
     ```powershell
     CONTAINER ID   IMAGE                                                  COMMAND                  CREATED          STATUS          PORTS                    NAMES
-    a8b51bce21ad   mcr.microsoft.com/azuredataexplorer/kustainer:latest   "powershell -Commandâ&euro;¦"   11 minutes ago   Up 10 minutes   0.0.0.0:8080->8080/tcp   youthful_matsumoto
+    a8b51bce21ad   mcr.microsoft.com/azuredataexplorer/kustainer:latest   "powershell -Command¦"   11 minutes ago   Up 10 minutes   0.0.0.0:8080->8080/tcp   contoso
     ```
-<!-- TODO: Is the Euro correct? youthful_matsumoto? -->
 
 1. Run the following command to verify that Kusto emulator is running. The command runs the `.show cluster` query against the management API and it should return a *StatusCode* with value *200*.
 
@@ -105,9 +104,9 @@ The following steps are for using PowerShell to start the emulator using the [Ku
 
 ### Run emulator options
 
-You can use any of any of the following options when running the emulator:
+You can use any of the following options when running the emulator:
 
-- Mount a local folder to the container: Use this option to mount a folder in the host environment into the container. By mounting a host folder, you're queries be able to interact with local files, which is useful for [creating a persistent database](#to-create-a-persistent-database) and [ingesting data](#ingest-data).
+- Mount a local folder to the container: Use this option to mount a folder in the host environment into the container. Mounting a host folder enables your queries to interact with local files, which is useful for [creating a persistent database](#to-create-a-persistent-database) and [ingesting data](#ingest-data).
 
     For example, to mount the folder "D:\host\local" on the host to the folder "c:\kusto" in the container, use the following command on Windows Server:
 
@@ -125,7 +124,7 @@ You can use any of any of the following options when running the emulator:
 
 ## Connect to the emulator
 
-You can use any the following tools to connect to and interact with the emulator:
+You can use any of the following tools to connect to and interact with the emulator:
 
 - [Kusto.Explorer](kusto/tools/kusto-explorer.md)
 - [Kusto.CLI](kusto/tools/kusto-cli.md)
@@ -161,7 +160,7 @@ In the [Kusto.Explorer Query mode](kusto/tools/kusto-explorer-using.md#query-mod
 
 ## Ingest data
 
-To ingest data, you must first create an external table linked to the a file and then ingest the data into a table in the database.
+To ingest data, you must first create an external table linked to a file and then ingest the data into a table in the database.
 
 Use the steps in the following example to create an external table and ingest data into it. For the example, in the local folder *c:\kusto\sample*, you'll create a file called `sample.csv` with the following data:
 
