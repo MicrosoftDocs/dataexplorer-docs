@@ -191,9 +191,10 @@ Azure Data Explorer doesn't support `Alias` event hub namespaces. To implement t
 > [!NOTE]
 > It's the user's responsibility to implement a failover from the primary namespace to the secondary namespace.
 
-## Next steps
+## See also
 
 * [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md)
 * [Create an event hub data connection for Azure Data Explorer using C#](data-connection-event-hub-csharp.md)
 * [Create an event hub data connection for Azure Data Explorer using Python](data-connection-event-hub-python.md)
 * [Create an event hub data connection for Azure Data Explorer using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
+* [Ingest and query Azure Monitor logs with Azure Data Explorer](ingest-data-no-code.md?tabs=diagnostic-metrics)
