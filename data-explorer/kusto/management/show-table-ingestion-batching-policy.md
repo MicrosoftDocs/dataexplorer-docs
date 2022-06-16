@@ -9,8 +9,6 @@ ms.date: 09/27/2021
 
 Display the table [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
 
-[!INCLUDE [batching-policy-permissions](../../includes/batching-policy-permissions.md)]
-
 ## Syntax
 
 `.show` `table` *TableName* `policy` `ingestionbatching`
