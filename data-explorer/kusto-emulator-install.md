@@ -170,13 +170,13 @@ Bob, 2
 Carl, 3
 ```
 
-1. Run the following command to [create a table](kusto/management/create-table-command) to receive the data:
+1. Run the following command to [create a table](kusto/management/create-table-command.md) to receive the data:
 
     ```kusto
     .create table MyIngestedSample(Name:string, Id:int)
     ```
 
-1. Run the following command to [ingest the file into the table](kusto/management/data-ingestion/ingest-from-storage):
+1. Run the following command to [ingest the file into the table](kusto/management/data-ingestion/ingest-from-storage.md):
 
     ```kusto
     .ingest into table MyIngestedSample(@"c:\kustodata\sample.csv")
