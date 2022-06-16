@@ -38,7 +38,6 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 |Body  |String |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated upon function invocation.
 |Folder|String|A folder used for UI functions categorization. This parameter doesn't change the way function is invoked.
 |DocString|String|A description of the function for UI purposes.
-|View|String|A stored view.
 
 > [!NOTE]
 > * If function already exists:
