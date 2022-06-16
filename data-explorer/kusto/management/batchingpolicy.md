@@ -22,7 +22,7 @@ When you define the [`IngestionBatching`](./show-table-ingestion-batching-policy
 
 ## Sealing a batch
 
-When ingesting data in bulk, there's an optimal size of about 1 GB of uncompressed data. Ingestion of blobs with much less data is sub-optimal, so in queued ingestion the service will batch small blobs together.
+There's an optimal size of about 1 GB of uncompressed data for bulk ingestion. Ingestion of blobs with much less data is suboptimal, so in queued ingestion the service will batch small blobs together.
 
 The following list shows the basic batching policy triggers to seal a batch. A batch is sealed and ingested when the first condition is met:
 
@@ -51,15 +51,21 @@ If the `SystemFlush` condition is set, a batch will be sealed when a system flus
 
 ## Defaults and limits
 
-| Type             | Property                | Default    | Minimum    |
-|------------------|-------------------------|------------|------------|
-| Number of items  | MaximumNumberOfItems    | 500        | 1          |
-| Data size (MB)   | MaximumRawDataSizeMB    | 1024       | 100        |
-| Time             | MaximumBatchingTimeSpan | 5 minutes  | 10 seconds |
+| Type             | Property                | Default | Low latency | Lowest |
+|------------------|-------------------------|---------|-------------|--------|
+| Number of items  | MaximumNumberOfItems    | 1000    | 1000        | 1      |
+| Data size (MB)   | MaximumRawDataSizeMB    | 1024    | 1024        | 10     |
+| Time (sec)          | MaximumBatchingTimeSpan | 300  | 20 - 30  | 10 |
+
+The most effective way of controlling the end-to-end latency using ingestion batching policy is to alter its time boundary at [table](./alter-table-ingestion-batching-policy.md) or [database](./alter-database-ingestion-batching-policy.md) level, according to the higher bound of latency requirements.
+A database level policy affects all tables in that database that don't have the table-level policy defined, and any newly created table.
+
+> [!IMPORTANT]
+> If you set the time boundary of the Ingestion Batching policy too low on low-ingress tables, you may incur additional compute and storage work as the cluster attempts to optimize the newly created data shards. For more information about data shards, see [extents](./extents-overview.md).
 
 ## Batch data size
 
-The batching policy data size is set for uncompressed data. For Parquet, AVRO, and ORC files, an estimation is calculated based on file size. When ingesting compressed data, the uncompressed data size is evaluated as follows in descending order of accuracy:
+The batching policy data size is set for uncompressed data. For Parquet, AVRO, and ORC files, an estimation is calculated based on file size. For compressed data, the uncompressed data size is evaluated as follows in descending order of accuracy:
 
 1. If the uncompressed size is provided in the ingestion source options, that value is used.
 1. When ingesting local files using SDKs, zip archives and gzip streams are inspected to assess their raw size.
@@ -72,6 +78,6 @@ Latencies can result from many causes that can be addressed using batching polic
 | Cause | Solution |
 | --- | --- |
 | Data latency matches the `time` setting, with too little data to reach the `size` or `count` limit | Reduce the `time` limit |
-| Inefficient batching due to a large number of very small files | Increase the size of the source files. If using Kafka Sink, configure it to send data in ~100-KB chunks or higher. If you have many small files, increase the `count` (up to 2000) in the database or table ingestion policy. |
+| Inefficient batching due to a large number of very small files | Increase the size of the source files. If using Kafka Sink, configure it to send data in ~100 KB chunks or higher. If you have many small files, increase the `count` (up to 2000) in the database or table ingestion policy. |
 | Batching a large amount of uncompressed data | This is common when ingesting Parquet files. Incrementally decrease `size` for the table or database batching policy towards 250 MB and check for improvement. |
 | Backlog because the cluster is under scaled | Accept any Azure advisor suggestions to scale aside or scale up your cluster. Alternatively, manually scale your cluster to see if the backlog is closed. If these options don't work, contact Azure Data Explorer support for assistance. |

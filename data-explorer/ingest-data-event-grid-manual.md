@@ -55,7 +55,9 @@ In this article, you learn how to create manually the resources needed for Event
 
 1. Click **Select an endpoint** and fill in the event hub you created, for example *test-hub*.
     
-1. Select the **Filters** tab if you want to track specific subjects. Set the filters for the notifications as follows:
+1. Select the **Filters** tab if you want to filter events.
+    
+    Use **Subject Filters** to track specific subjects events. Set the filters for the notifications as follows:
    
     :::image type="content" source="media/eventgrid/filters-tab.png" alt-text="Filters tab event grid.":::
 
@@ -67,6 +69,19 @@ In this article, you learn how to create manually the resources needed for Event
    1. **Case-sensitive subject matching** field indicates whether the prefix and suffix filters are case-sensitive.
 
     For more information about filtering events, see [blob storage events](/azure/storage/blobs/storage-blob-event-overview#filtering-events).
+
+    Use **Advanced Filters** to add custom filters that meet your requirements.
+
+    For example, When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0. This event is ignored by Azure Data Explorer. File flushing triggers another event if the *Close* parameter is set to *true*. This event indicates that this is the final update and the file stream has been closed.
+    To filter for *FlushAndClose* events and remove file creation events with size 0, use the following filter:
+
+    :::image type="content" source="media/eventgrid/filters-flush-and-close.png" alt-text="Screenshot showing how to filter for flush and close events.":::
+
+    |**Setting** | **Suggested value** | **Field description**|
+    |---|---|---|
+    |Key | *data.api* | The field in the event schema used for filtering. |
+    |Operator | *String is in* | An operator to be evaluates on the selected key. |
+    |Value | *FlushWithClose* | The value used to evaluate the key. |
 
 1. Select **Create**
 
