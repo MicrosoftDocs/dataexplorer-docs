@@ -3,7 +3,7 @@ title: What is Azure Data Explorer?
 description: Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data.
 ms.reviewer: mblythe
 ms.topic: overview
-ms.date: 06/14/2022
+ms.date: 06/19/2022
 adobe-target: true
 
 # Customer intent: As a data analyst, I want to understand Azure Data Explorer, so I can decide if it's suitable for my analytics workloads.
@@ -47,7 +47,7 @@ Use Azure Data Explorer for time series analysis with a large set of functions i
 
 ### Easy-to-use wizard
 
-The [ingestion wizard](ingest-data-one-click.md) makes the data ingestion process easy, fast, and intuitive. The [web UI](web-query-data.md) provides an intuitive and guided experience that helps you ramp-up quickly to start ingesting data, creating database tables, and mapping structures. It enables one time or a continuous ingestion from various sources and in various data formats. Table mappings and schema are auto suggested and easy to modify.
+The [ingestion wizard](ingest-data-one-click.md) makes the data ingestion process easy, fast, and intuitive. The [Azure Data Explorer web UI](web-query-data.md) provides an intuitive and guided experience that helps you ramp-up quickly to start ingesting data, creating database tables, and mapping structures. It enables one time or a continuous ingestion from various sources and in various data formats. Table mappings and schema are auto suggested and easy to modify.
 
 ### Versatile data visualization
 
@@ -66,7 +66,7 @@ The following diagram shows the different aspects of working with Azure Data Exp
 Generally speaking, when you interact with Azure Data Explorer, you're going to go through the following workflow:  
 
 > [!NOTE]
-> You can access your Azure Data Explorer resources either in the [Web UI](web-query-data.md) or by using [SDKs](kusto/api/index.md).
+> You can access your Azure Data Explorer resources either in the [Azure Data Explorer Web UI](web-query-data.md) or by using [SDKs](kusto/api/index.md).
 
 1. **Create database:** Create a *cluster* and then create one or more *databases* in that cluster. Each Azure Data Explorer cluster can hold up to 10,000 databases and each database up to 10,000 tables. The data in each table is stored in data shards also called “extents”. All data is automatically indexed and partitioned based on the ingestion time. This means you can store a lot of varied data and because of the way it's stored, you get fast access to querying it. [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
 
