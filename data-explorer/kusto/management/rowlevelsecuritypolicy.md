@@ -155,8 +155,8 @@ For example:
 
 When an RLS policy is enabled on a table, there will be some performance impact on queries that access that table. Access to the table will be replaced by the RLS query that's defined on that table. The performance impact of an RLS query will normally consist of two parts:
 
-* Membership checks in Azure Active Directory
-* The filters applied on the data
+* Membership checks in Azure Active Directory: Checks are efficient. You can check membership in tens, or even hundreds of groups without major impact on the query performance.
+* Filters, joins, and other operations that are applied on the data: Impact depends on the complexity of the query
 
 For example:
 
