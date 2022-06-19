@@ -23,10 +23,10 @@ The following image shows the Azure Data Explorer Web UI home page and left pane
 
 ## Experience data exploration using the Web UI
 
-Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and manage data, with several streamlined processes.
+Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and manage data with several streamlined processes.
 
-- From the Azure Data Explorer Web UI **Home** page, start with the [samples gallery](web-ui-samples-gallery.md), to access query tutorials and built-in sample dashboards prepopulated with data from the **help** cluster, or connect to your own cluster.
-- Select *My Cluster** to create a [free Azure Data Explorer cluster](start-for-free-web-ui.md) using your own data.
+- From the Azure Data Explorer Web UI **Home** page, start with the [samples gallery](web-ui-samples-gallery.md) to access query tutorials and built-in sample dashboards prepopulated with data from the **help** cluster, or connect to your own cluster.
+- Select **My Cluster** to create a [free Azure Data Explorer cluster](start-for-free-web-ui.md) using your own data.
 - Continue with the tabs in the left pane to guide your data analytics journey.
 
     | Tab | Description  |
@@ -47,7 +47,7 @@ In the **[Home](https://dataexplorer.azure.com/home)** page, query the sample da
 
 ## Manage your data
 
-In the **[Data management](https://dataexplorer.azure.com/oneclick)** page, ingest data and configure policies to optimize data ingestion and management.
+In the **[Data management](https://dataexplorer.azure.com/oneclick)** page, ingest data and set policies to optimize data ingestion and management.
 
 - Select from quick actions to [ingest data](https://dataexplorer.azure.com/oneclick/ingest?sourceType=file), [create tables](https://dataexplorer.azure.com/oneclick/createtable), update [batching policies](https://dataexplorer.azure.com/oneclick/updateTableBatchingPolicy), and [generate a sample app](https://dataexplorer.azure.com/oneclick/generatecode?sourceType=file).
 - Explore different ingestion options by topic:
