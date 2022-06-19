@@ -3,6 +3,8 @@ items:
   href: index.md
 - name: Client libraries
   href: client-libraries.md
+- name: One-click sample app generator
+  href: ../../sample-app-generator-one-click.md
 - name: Connection strings
   items:
   - name: Connection strings overview

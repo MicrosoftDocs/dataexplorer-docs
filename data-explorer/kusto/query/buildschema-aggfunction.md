@@ -17,13 +17,13 @@ Returns the minimal schema that admits all values of *DynamicExpr*.
 
 ## Arguments
 
-* *DynamicExpr*: Expression that is used for the aggregation calculation. The parameter column type must be `dynamic`. 
+* *DynamicExpr*: Expression that is used for the aggregation calculation. The parameter column type must be `dynamic`.
 
 ## Returns
 
 The maximum value of *`Expr`* across the group.
 
-> [!TIP] 
+> [!TIP]
 > If `buildschema(json_column)` gives a syntax error:
 >
 > > *Is your `json_column` a string rather than a dynamic object?*
@@ -41,10 +41,10 @@ Assume the input column has three dynamic values.
 The resulting schema would be:
 
 ```kusto
-{ 
-    "x":["int", "string"],
+{
+    "x":["long", "string"],
     "y":["double", {"w": "string"}],
-    "z":{"`indexer`": ["int", "string"]},
+    "z":{"`indexer`": ["long", "string"]},
     "t":{"`indexer`": "string"}
 }
 ```
@@ -52,10 +52,10 @@ The resulting schema would be:
 The schema tells us that:
 
 * The root object is a container with four properties named x, y, z, and t.
-* The property called "x" that could be of type "int" or of type "string".
+* The property called "x" that could be of type "long" or of type "string".
 * The property called "y" that could be of type "double", or another container with a property called "w" of type "string".
 * The ``indexer`` keyword indicates that "z" and "t" are arrays.
-* Each item in the array "z" is of type "int" or of type "string".
+* Each item in the array "z" is of type "long" or of type "string".
 * "t" is an array of strings.
 * Every property is implicitly optional, and any array may be empty.
 
@@ -68,18 +68,18 @@ Container ::= '{' Named-type* '}';
 Named-type ::= (name | '"`indexer`"') ':' Type;
 Type ::= Primitive-type | Union-type | Container;
 Union-type ::= '[' Type* ']';
-Primitive-type ::= "int" | "string" | ...;
+Primitive-type ::= "long" | "string" | ...;
 ```
 
-The values are equivalent to a subset of the TypeScript type annotations, encoded as a Kusto dynamic value. 
+The values are equivalent to a subset of the TypeScript type annotations, encoded as a Kusto dynamic value.
 In Typescript, the example schema would be:
 
 ```typescript
-var someobject: 
+var someobject:
 {
     x?: (number | string),
     y?: (number | { w?: string}),
-    z?: { [n:number] : (int | string)},
+    z?: { [n:number] : (long | string)},
     t?: { [n:number]: string }
 }
 ```

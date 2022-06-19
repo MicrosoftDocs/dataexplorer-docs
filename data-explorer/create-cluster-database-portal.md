@@ -26,6 +26,8 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 
+For more information on cluster subscription limits, see [Azure Data Explorer limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-data-explorer-limits).
+
 ## Sign in to the Azure portal
 
 Sign in to the [Azure portal](https://portal.azure.com/).
@@ -109,7 +111,7 @@ After you created the cluster and database, you can run queries and commands. Th
 
 ## Stop and restart the cluster
 
-You can stop and restart a cluster depending on business needs.
+You can stop and restart a cluster depending on business needs. Stopping the cluster significantly reduces cost as it releases the compute resources, which are the bulk of the overall cluster cost, without deleting the database.
 
 1. To stop the cluster, at the top of the **Overview** tab, select **Stop**.
 

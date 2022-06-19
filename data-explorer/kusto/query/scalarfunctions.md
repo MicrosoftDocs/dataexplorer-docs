@@ -86,6 +86,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[array_sort_desc()](arraysortdescfunction.md)|Sorts a collection of arrays in descending order.|
 |[array_split()](arraysplitfunction.md)|Builds an array of arrays split from the input array.|
 |[array_sum()](array-sum-function.md)|Calculates the sum of a dynamic array.|
+|[`bag_has_key()`](bag-has-key-function.md)|Checks whether a dynamic bag column contains a given key.|
 |[bag_keys()](bagkeysfunction.md)|Enumerates all the root keys in a dynamic property-bag object.|
 |[bag_merge()](bag-merge-function.md)|Merges dynamic property-bags into a dynamic property-bag with all properties merged.|
 |[bag_remove_keys()](bag-remove-keys-function.md)|Removes keys and associated values from a dynamic property-bag.|
@@ -296,6 +297,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |-------------------------|--------------------------------------------------------|
 |[ipv4_compare()](ipv4-comparefunction.md)|Compares two IPv4 strings.|
 |[ipv4_is_in_range()](ipv4-is-in-range-function.md)|Checks if IPv4 string address is in IPv4-prefix notation range.|
+|[ipv4_is_in_any_range()](ipv4-is-in-any-range-function.md)|Checks if IPv4 string address is any of the IPv4-prefix notation ranges.|
 |[ipv4_is_match()](ipv4-is-matchfunction.md)|Matches two IPv4 strings.|
 |[ipv4_is_private()](ipv4-is-privatefunction.md)|Checks if IPv4 string address belongs to a set of private network IPs.|
 |[ipv4_netmask_suffix](ipv4-netmask-suffix-function.md)|Returns the value of the IPv4 netmask suffix from IPv4 string address.|
@@ -335,23 +337,15 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[geo_distance_point_to_polygon()](geo-distance-point-to-polygon-function.md)|Calculates the shortest distance between a coordinate and a polygon or multipolygon on Earth.|
 |[geo_intersects_2lines()](geo-intersects-2lines-function.md)|Calculates whether the two lines or multilines intersects.|
 |[geo_intersects_2polygons()](geo-intersects-2polygons-function.md)|Calculates whether the two polygons or multipolygons intersects.|
-|[geo_intersects_line_with_polygon()](geo-intersects-line-with-polygon-function.md)|Calculates whether the lines or multiline intersects with polygon or a multipolygon.|
+|[geo_intersects_line_with_polygon()](geo-intersects-line-with-polygon-function.md)|Calculates whether the line or multiline intersects with polygon or multipolygon.|
+|[geo_intersection_2lines()](geo-intersection-2lines-function.md)|Calculates the intersection of two lines or multilines.|
+|[geo_intersection_2polygons()](geo-intersection-2polygons-function.md)|Calculates the intersection of two polygons or multipolygons.|
+|[geo_intersection_line_with_polygon()](geo-intersection-line-with-polygon-function.md)|Calculates the intersection of line or multiline with polygon or multipolygon.|
 |[geo_point_in_circle()](geo-point-in-circle-function.md)|Calculates whether the geospatial coordinates are inside a circle on Earth.|
 |[geo_point_in_polygon()](geo-point-in-polygon-function.md)|Calculates whether the geospatial coordinates are inside a polygon or a multipolygon on Earth.|
 |[geo_point_to_geohash()](geo-point-to-geohash-function.md)|Calculates the Geohash string value for a geographic location.|
-|[geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of a Geohash rectangular area.|
-|[geo_geohash_to_polygon()](geo-geohash-to-polygon-function.md)|Calculates the polygon that represents the geohash rectangular area.|
 |[geo_point_to_s2cell()](geo-point-to-s2cell-function.md)|Calculates the S2 Cell token string value for a geographic location.|
-|[geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of an S2 Cell.|
-|[geo_s2cell_to_polygon()](geo-s2cell-to-polygon-function.md)|Calculates the polygon that represents the S2 Cell rectangular area.|
 |[geo_point_to_h3cell()](geo-point-to-h3cell-function.md)|Calculates the H3 Cell token string value for a geographic location.|
-|[geo_h3cell_to_central_point()](geo-h3cell-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of an H3 Cell.|
-|[geo_h3cell_to_polygon()](geo-h3cell-to-polygon-function.md)|Calculates the polygon that represents the H3 Cell rectangular area.|
-|[geo_h3cell_parent()](geo-h3cell-parent-function.md)|Calculates the H3 cell parent.|
-|[geo_h3cell_children()](geo-h3cell-children-function.md)|Calculates the H3 cell children.|
-|[geo_h3cell_level()](geo-h3cell-level-function.md)|Calculates the H3 cell resolution.|
-|[geo_h3cell_rings()](geo-h3cell-rings-function.md)|Calculates the H3 cell Rings.|
-|[geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md)|Calculates S2 Cell tokens that cover a polygon or multipolygon on Earth. Useful geospatial join tool.|
 |[geo_line_centroid()](geo-line-centroid-function.md)|Calculates the centroid of line or a multiline on Earth.|
 |[geo_line_densify()](geo-line-densify-function.md)|Converts planar line edges to geodesics by adding intermediate points.|
 |[geo_line_length()](geo-line-length-function.md)|Calculates the total length of line or a multiline on Earth.|
@@ -360,7 +354,23 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[geo_polygon_centroid()](geo-polygon-centroid-function.md)|Calculates the centroid of polygon or a multipolygon on Earth.|
 |[geo_polygon_densify()](geo-polygon-densify-function.md)|Converts polygon or multipolygon planar edges to geodesics by adding intermediate points.|
 |[geo_polygon_perimeter()](geo-polygon-perimeter-function.md)|Calculates the length of the boundary of polygon or a multipolygon on Earth.|
-[[geo_union_lines_array()](geo-union-lines-array-function.md)|Calculates the union of lines or multilines on Earth.|
+|[geo_polygon_simplify()](geo-polygon-simplify-function.md)|Simplifies polygon or a multipolygon by replacing nearly straight chains of short edges with a single long edge on Earth.|
+|[geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md)|Calculates S2 Cell tokens that cover a polygon or multipolygon on Earth. Useful geospatial join tool.|
+|[geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of a Geohash rectangular area.|
+|[geo_geohash_neighbors()](geo-geohash-neighbors-function.md)|Calculates the geohash neighbors.|
+|[geo_geohash_to_polygon()](geo-geohash-to-polygon-function.md)|Calculates the polygon that represents the geohash rectangular area.|
+|[geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of an S2 Cell.|
+|[geo_s2cell_neighbors()](geo-s2cell-neighbors-function.md)|Calculates the S2 cell neighbors.|
+|[geo_s2cell_to_polygon()](geo-s2cell-to-polygon-function.md)|Calculates the polygon that represents the S2 Cell rectangular area.|
+|[geo_h3cell_to_central_point()](geo-h3cell-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of an H3 Cell.|
+|[geo_h3cell_neighbors()](geo-h3cell-neighbors-function.md)|Calculates the H3 cell neighbors.|
+|[geo_h3cell_to_polygon()](geo-h3cell-to-polygon-function.md)|Calculates the polygon that represents the H3 Cell rectangular area.|
+|[geo_h3cell_parent()](geo-h3cell-parent-function.md)|Calculates the H3 cell parent.|
+|[geo_h3cell_children()](geo-h3cell-children-function.md)|Calculates the H3 cell children.|
+|[geo_h3cell_level()](geo-h3cell-level-function.md)|Calculates the H3 cell resolution.|
+|[geo_h3cell_rings()](geo-h3cell-rings-function.md)|Calculates the H3 cell Rings.|
+|[geo_simplify_polygons_array()](geo-simplify-polygons-array-function.md)|Simplifies polygons by replacing nearly straight chains of short edges with a single long edge, while ensuring mutual boundaries consistency related to each other, on Earth.|
+|[geo_union_lines_array()](geo-union-lines-array-function.md)|Calculates the union of lines or multilines on Earth.|
 |[geo_union_polygons_array()](geo-union-polygons-array-function.md)|Calculates the union of polygons or multipolygons on Earth.|
 
 ## Hash functions

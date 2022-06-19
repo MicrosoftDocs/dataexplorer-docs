@@ -30,7 +30,7 @@ For irrelevant inputs (*occurrence* < 0 or  *length* < -1) - returns *null*.
 
 ## Example
 
-```
+```kusto
 let arr=dynamic(["this", "is", "an", "example", "an", "example"]);
 print
  idx1 = array_index_of(arr,"an")    // lookup found in input string
@@ -51,5 +51,5 @@ print
 ## See also
 
 If you only want to check whether a value exists in an array,
-but you are not interested in its position, you can use
+but you aren't interested in its position, you can use
 [set_has_element(`arr`, `value`)](sethaselementfunction.md). This function will improve the readability of your query. Both functions have the same performance.

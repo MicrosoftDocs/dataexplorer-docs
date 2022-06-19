@@ -72,7 +72,7 @@ Events
 | take n
 ```
 
-The following example binds the name `x` using the `['name']` notion, and then uses it in a tabular expression statement.
+The following example binds the name `some number` using the `['name']` notation, and then uses it in a tabular expression statement.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
