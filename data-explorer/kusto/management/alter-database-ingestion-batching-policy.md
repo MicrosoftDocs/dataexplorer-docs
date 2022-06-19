@@ -17,7 +17,6 @@ When setting the policy for a database, it applies for all its tables, except ta
 
 See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 
-
 ## Syntax
 
 `.alter` `database` *DatabaseName* `policy` `ingestionbatching` *PolicyObject*
