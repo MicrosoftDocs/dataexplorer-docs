@@ -23,10 +23,11 @@ The following image shows the Azure Data Explorer Web UI home page and left pane
 
 ## Experience data exploration using the Web UI
 
-Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and manage data with several streamlined processes.
+Azure Data Explorer Web UI provides a web experience that enables you to connect to your Azure Data Explorer clusters and manage data with several streamlined processes.
 
-- From the Azure Data Explorer Web UI **Home** page, start with the [samples gallery](web-ui-samples-gallery.md) to access query tutorials and built-in sample dashboards prepopulated with data from the **help** cluster, or connect to your own cluster.
-- Select **My Cluster** to create a [free Azure Data Explorer cluster](start-for-free-web-ui.md) using your own data.
+- From the Azure Data Explorer Web UI **Home** page, start with the [samples gallery](web-ui-samples-gallery.md) to access query tutorials and built-in sample dashboards prepopulated with data from the **help** cluster
+- Select [**My Cluster**](https://dataexplorer.azure.com/freecluster) or [**Create a free cluster**](https://dataexplorer.azure.com/freecluster to create a [free Azure Data Explorer cluster](start-for-free-web-ui.md) using your own data.
+- Connect to your own cluster from the Azure Data Explorer Web UI.
 - Continue with the tabs in the left pane to guide your data analytics journey.
 
     | Tab | Description  |
