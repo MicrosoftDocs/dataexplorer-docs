@@ -35,6 +35,7 @@ In the **[Home](https://dataexplorer.azure.com/home)** page, query the sample da
 - **Connect to your org clusters**: connect to an existing [cluster](web-query-data.md#add-clusters).
 - Review **Recommended** learning modules and **Basic** and **Advanced documentation** to build your skills.
 - Continue with the tabs in the left pane to guide your data analytics journey.
+
     | Tab | Description  |
     |---------|----------|
     | **Data** |  Ingest data from different sources, create database tables, and map the table schema. Learn about the different ways to ingest data with the fast and intuitive [one click ingestion](ingest-data-one-click.md) wizard.   |
