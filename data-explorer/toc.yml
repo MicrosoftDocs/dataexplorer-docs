@@ -77,8 +77,12 @@ items:
   - name: Explore the samples gallery
     href: web-ui-samples-gallery.md
     displayName: Web UI
-  - name: Create a start-for-free cluster
-    href: start-for-free-web-ui.md
+  - name: Start-for-free cluster
+    items:
+    - name: Create a start-for-free cluster
+      href: start-for-free-web-ui.md
+    - name: Upgrade a start-for-free cluster
+      href: start-for-free-upgrade.md
   - name: Create cluster and database
     items:
     - name: Azure CLI
