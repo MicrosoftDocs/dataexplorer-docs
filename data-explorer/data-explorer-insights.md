@@ -42,7 +42,7 @@ On the **Overview** tab for the selected subscription, the table displays intera
 
 The counter tile, under the dropdown list, gives the total number of Azure Data Explorer clusters in the selected subscriptions and shows how many are selected. There are conditional color codings for the columns: **Keep alive**, **CPU**, **Ingestion Utilization**, and **Cache Utilization**. Orange-coded cells have values that aren't sustainable for the cluster.
 
-To better understand what each of the metrics represent, we recommend reading through the documentation on [Azure Data Explorer metrics](/azure/data-explorer/using-metrics#cluster-metrics).
+To better understand what each of the metrics represent, we recommend reading through the documentation on [Azure Data Explorer metrics](./using-metrics.md#cluster-metrics).
 
 ### Query Performance tab
 
@@ -75,7 +75,7 @@ To access Azure Data Explorer Insights directly from an Azure Data Explorer clus
 You can also access these views by selecting the resource name of an Azure Data Explorer cluster from within the Azure Monitor insights view.
 
 > [!NOTE]
-> Azure Data Explorer Insights combines both logs and metrics to provide a global monitoring solution. The inclusion of logs-based visualizations requires users to [enable diagnostic logging of their Azure Data Explorer cluster and send them to a Log Analytics workspace](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs). The diagnostic logs that should be enabled are **Command**, **Query**, **SucceededIngestion**, **FailedIngestion**, **IngestionBatching**, **TableDetails**, and **TableUsageStatistics**. (Enabling **SucceededIngestion** logs might be costly. Enable them only if you need to monitor successful ingestions.)
+> Azure Data Explorer Insights combines both logs and metrics to provide a global monitoring solution. The inclusion of logs-based visualizations requires users to [enable diagnostic logging of their Azure Data Explorer cluster and send them to a Log Analytics workspace](./using-diagnostic-logs.md?tabs=commands-and-queries#enable-diagnostic-logs). The diagnostic logs that should be enabled are **Command**, **Query**, **SucceededIngestion**, **FailedIngestion**, **IngestionBatching**, **TableDetails**, and **TableUsageStatistics**. (Enabling **SucceededIngestion** logs might be costly. Enable them only if you need to monitor successful ingestions.)
 
 :::image type="content" source="media/data-explorer-insights/enable-logs.png" alt-text="Screenshot of the button for configuring logs for monitoring.":::
 
@@ -85,7 +85,7 @@ The **Overview** tab shows:
 
 - Metrics tiles that highlight the availability and overall status of the cluster for quick health assessment.
 
-- A summary of active [Azure Advisor recommendations](/azure/data-explorer/azure-advisor) and [resource health](/azure/data-explorer/monitor-with-resource-health) status.
+- A summary of active [Azure Advisor recommendations](./azure-advisor.md) and [resource health](./monitor-with-resource-health.md) status.
 
 - Charts that show the top CPU and memory consumers and the number of unique users over time.
 
@@ -120,7 +120,7 @@ The **Tables** tab shows the latest and historical properties of tables in the c
 
 The **Cache** tab allows users to analyze their actual queries' lookback window patterns and compare them to the configured cache policy (for each table). You can identify tables used by the most queries and tables that aren't queried at all, and adapt the cache policy accordingly.
 
-You might get cache policy recommendations on specific tables in Azure Advisor. Currently, cache recommendations are available only from the [main Azure Advisor dashboard](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations). They're based on actual queries' lookback window in the past 30 days and an unoptimized cache policy for at least 95 percent of the queries.
+You might get cache policy recommendations on specific tables in Azure Advisor. Currently, cache recommendations are available only from the [main Azure Advisor dashboard](./azure-advisor.md#use-the-azure-advisor-recommendations). They're based on actual queries' lookback window in the past 30 days and an unoptimized cache policy for at least 95 percent of the queries.
 
 Cache reduction recommendations in Azure Advisor are available for clusters that are "bounded by data." That means the cluster has low CPU and low ingestion utilization, but because of high data capacity, the cluster can't scale in or scale down.
 
@@ -172,7 +172,7 @@ Customizations are saved to a custom workbook to prevent overwriting the default
 
 ## Troubleshooting
 
-For general troubleshooting guidance, see [Troubleshooting workbook-based insights](/azure/azure-monitor/troubleshoot-workbooks).
+For general troubleshooting guidance, see [Troubleshooting workbook-based insights](/azure/azure-monitor/insights/troubleshoot-workbooks).
 
 The following sections will help you diagnose and troubleshoot of some of the common problems that you might encounter when using Azure Data Explorer Insights.
 
@@ -184,7 +184,7 @@ Azure Data Explorer Insights shows only subscriptions that contain Azure Data Ex
 
 ### Why don't I see any data for my Azure Data Explorer cluster under the Usage, Tables, or Cache section?
 
-To view your logs-based data, you need to [enable diagnostic logs](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) for each Azure Data Explorer cluster that you want to monitor. You can do this under the diagnostic settings for each cluster. You'll need to send your data to a Log Analytics workspace. The diagnostic logs that should be enabled are **Command**, **Query**, **TableDetails**, and **TableUsageStatistics**.
+To view your logs-based data, you need to [enable diagnostic logs](./using-diagnostic-logs.md?tabs=commands-and-queries#enable-diagnostic-logs) for each Azure Data Explorer cluster that you want to monitor. You can do this under the diagnostic settings for each cluster. You'll need to send your data to a Log Analytics workspace. The diagnostic logs that should be enabled are **Command**, **Query**, **TableDetails**, and **TableUsageStatistics**.
 
 ### I've already enabled logs for my Azure Data Explorer cluster. Why am I still unable to see my data under Commands and Queries?
 

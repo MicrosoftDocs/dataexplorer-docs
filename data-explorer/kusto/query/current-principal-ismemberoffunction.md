@@ -19,7 +19,7 @@ Checks group membership or principal identity of the current principal running t
 
 ## Arguments
 
-* *list of expressions* - a comma-separated list of string literals, where each literal represents an Azure Active Directory (Azure AD) principal. See [examples for Azure AD principals](../management/access-control/principals-and-identity-providers.md#aad-tenants).
+* *list of expressions* - a comma-separated list of string literals, where each literal represents an AAD principal. See [examples for AAD principals](../management/access-control/principals-and-identity-providers.md#azure-ad-tenants).
 
 ## Returns
   
