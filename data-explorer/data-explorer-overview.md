@@ -22,13 +22,9 @@ Azure Data Explorer capabilities are extended by other services built on its pow
 Use the following questions to help decide if Azure Data Explorer is right for your use case:
 
 * **Interactive analytics**:  Is interactive analysis part of the solution? For example, aggregation, correlation, or anomaly detection.
-
 * **Variety, Velocity, Volume**: Is your schema diverse? Do you need to ingest massive amounts of data in near real-time?
-
 * **Data organization**: Do you want to analyze raw data? For example, not fully curated star schema.
-
 * **Query concurrency**: Will multiple users or processes use Azure Data Explorer?
-
 * **Build vs Buy**: Do you plan on customizing your data platform?
 
 Azure Data Explorer is ideal for enabling interactive analytics capabilities over high velocity, diverse raw data. Use the following decision tree to help you decide if Azure Data Explorer is right for you:
