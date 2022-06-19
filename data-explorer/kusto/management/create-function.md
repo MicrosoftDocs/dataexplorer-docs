@@ -25,7 +25,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 |ifnotexists|   |Verify if the function already exists.
 |docstring|String|A description of the function.
 |folder|String|The name of the folder where the function is stored.
-|view|String|The name of the stored view to be included in the function.
+|view|bool|Designates this function as a stored view.
 |skipvalidation|Boolean|Validate the function (True or False).
 |FunctionName(ParamName:ParamType)|String (String:datatype)|Name of the function, the parameter name and datatype.
 |FunctionBody|   |Uses a user defined function or an anonymous function declaration.
@@ -33,7 +33,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 **Output**
 
 |Output parameter |Type |Description
-|---|---|---
+|---|---|---|
 |Name |String |The name of the function.
 |Parameters  |String |The parameters required by the function.
 |Body  |String |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated upon function invocation.
