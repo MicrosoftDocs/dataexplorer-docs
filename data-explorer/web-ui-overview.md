@@ -23,7 +23,7 @@ The following image shows the Azure Data Explorer Web UI home page and left pane
 
 ## Experience data exploration using the Web UI
 
-Azure Data Explorer Web UI provides a web experience that enables you to connect to your Azure Data Explorer clusters and manage data with several streamlined processes.
+Azure Data Explorer Web UI provides a web experience that enables you to connect to Azure Data Explorer clusters and manage data with several streamlined processes.
 
 ### Explore the home page
 
