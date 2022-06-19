@@ -31,9 +31,7 @@ Use the following questions to help decide if Azure Data Explorer is right for y
 
 * **Build vs Buy**: Do you plan on customizing your data platform?
 
-Azure Data Explorer is ideal for enabling interactive analytics capabilities over high velocity, diverse raw data.
-
-Use the following decision tree to help you decide if Azure Data Explorer is right for you:
+Azure Data Explorer is ideal for enabling interactive analytics capabilities over high velocity, diverse raw data. Use the following decision tree to help you decide if Azure Data Explorer is right for you:
 
 :::image type="content" source="media/data-explorer-overview/decision-tree.png" alt-text="This image is a schematic workflow image of an Azure Data Explorer decision tree.":::
 
