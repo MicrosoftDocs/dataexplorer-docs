@@ -12,15 +12,16 @@ Creates a stored function, which is a reusable KQL query,  with the given name. 
 Functions can call other functions (recursiveness isn't supported). Besides, [`let`](../query/letstatement.md) statements are allowed as part of the *Function Body*. See [`let` statements](../query/letstatement.md).
 
 Rules for parameter types and CSL statements are the same as for [`let` statements](../query/letstatement.md).
-    
+
 **Syntax**
 
 `.create` `function` [`ifnotexists`] [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`] [`view` `=` *View*] [`,` `skipvalidation` `=` 'true'] `)`]
 *FunctionName* `(` *ParamName* `:` *ParamType* [`,` ...] `)` `{` *FunctionBody* `}`
 
 **Input**
-|Input parameter |Type |Description
-|---|---|---
+
+|Input parameter |Type |Description |
+|---|---|---|
 |ifnotexists|   |Verify if the function already exists.
 |docstring|String|A description of the function.
 |folder|String|The name of the folder where the function is stored.
@@ -29,8 +30,8 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 |FunctionName(ParamName:ParamType)|String (String:datatype)|Name of the function, the parameter name and datatype.
 |FunctionBody|   |Uses a user defined function or an anonymous function declaration.
 
-**Output**    
-    
+**Output**
+
 |Output parameter |Type |Description
 |---|---|---
 |Name |String |The name of the function.
@@ -48,7 +49,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 > * Not all data types are supported in `let` statements. Supported types are: boolean, string, long, datetime, timespan, double, and dynamic.
 > * Use 'skipvalidation' to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.
 
-**Examples** 
+**Examples**
 
 ```kusto
 .create function 
