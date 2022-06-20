@@ -44,7 +44,9 @@ The following steps are for using PowerShell to start the emulator using the [Ku
     > The Kusto emulator container image is a free offering under the [Microsoft Software License Terms](https://aka.ms/adx.emulator.license). Since the emulator runs in a container, you must accept the license terms by passing the `ACCEPT_EULA` environment variable to the container with its value set to `Y` indicating.
 
     > [!NOTE]
-    > The first time this command is run, Docker pulls the container image which is several GBs in size and may take several minutes to download. Once downloaded, the image is cached and available for subsequent runs without having to download it again.
+    > 
+    > - The first time this command is run, Docker pulls the container image which is several GBs in size and may take several minutes to download. Once downloaded, the image is cached and available for subsequent runs without having to download it again.
+    > - The container must be run in process-isolation mode. This is the default on some versions of Docker. For other versions, you can start the container in Hyper-V isolation mode by adding `--isolation=hyperv` to the docker run command.
 
     - To start the emulator on a Windows Server operating system, make sure you use the `latest` or `stable` tag.
 
@@ -57,9 +59,6 @@ The following steps are for using PowerShell to start the emulator using the [Ku
         ```powershell
         docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:windows11
         ```
-
-    > [!NOTE]
-    > The image might not run in process-isolation mode. If this happens, make sure that the container is started in Hyper-V isolation mode by adding `--isolation=hyperv` to the docker run command.
 
 1. Run the following command to verify that the container is running.
 
