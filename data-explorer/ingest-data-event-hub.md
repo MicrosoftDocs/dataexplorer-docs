@@ -208,6 +208,8 @@ With the app generating data, you can now see the flow of that data from the eve
 
     :::image type="content" source="media/ingest-data-event-hub/event-hub-graph.png" alt-text="Screenshot of the Event hub graph, showing a spike in activity.":::
 
+1. To preview incoming data sent to your event hub in the Azure portal, see [process data from your event hub using Azure Stream Analytics](/azure/event-hubs/process-data-azure-stream-analytics).
+
 1. To check how many messages have made it to the database so far, run the following query in your test database.
 
     ```Kusto
