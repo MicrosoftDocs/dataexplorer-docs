@@ -243,6 +243,8 @@ You can specify the [ingestion properties](ingest-data-event-grid-overview.md#in
 
     :::image type="content" source="media/ingest-data-event-grid/event-grid-graph.png" alt-text="Screenshot of an Event Grid Activity graph, showing a spike in activity.":::
 
+1. To preview incoming Event Grid notifications that were sent to your event hub in the Azure portal see [Process data from your event hub using Azure Stream Analytics](/azure/event-hubs/process-data-azure-stream-analytics). It may help you to define the filter settings of Event Grid and to make sure that appropriate events arrive to the event hub and ADX cluster.
+
 1. To check how many messages have made it to the database so far, run the following query in your test database.
 
     ```kusto
