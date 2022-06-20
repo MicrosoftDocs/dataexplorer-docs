@@ -3,7 +3,7 @@ title: 'Tutorial: Ingest monitoring data in Azure Data Explorer without code'
 description: In this tutorial, you learn how to ingest monitoring data to Azure Data Explorer without one line of code and query that data.
 ms.reviewer: kerend
 ms.topic: tutorial
-ms.date: 09/19/2021
+ms.date: 06/20/2022
 
 # Customer intent: I want to ingest monitoring data to Azure Data Explorer without one line of code, so that I can explore and analyze my data by using queries.
 ---
@@ -198,9 +198,9 @@ Azure activity logs are subscription-level logs that provide insight into the op
 
 Setting up an Azure Data Explorer pipeline involves several steps, such as [table creation and data ingestion](ingest-sample-data.md#ingest-data). You can also manipulate, map, and update the data.
 
-### Connect to the Azure Data Explorer Web UI
+### Connect to the Azure Data Explorer web UI
 
-In your Azure Data Explorer *TestDatabase* database, select **Query** to open the Azure Data Explorer Web UI.
+In your Azure Data Explorer *TestDatabase* database, select **Query** to open the Azure Data Explorer web UI.
 
 ![Query page.](media/ingest-data-no-code/query-database.png)
 
@@ -208,7 +208,7 @@ In your Azure Data Explorer *TestDatabase* database, select **Query** to open th
 
 The structure of the Azure Monitor logs isn't tabular. You'll manipulate the data and expand each event to one or more records. The raw data will be ingested to an intermediate table named *ActivityLogsRawRecords* for activity logs and *DiagnosticRawRecords* for diagnostic metrics and logs. At that time, the data will be manipulated and expanded. Using an update policy, the expanded data will then be ingested into the *ActivityLogs* table for activity logs, *DiagnosticMetrics* for diagnostic metrics and *DiagnosticLogs* for diagnostic logs. This means that you'll need to create two separate tables for ingesting activity logs and three separate tables for ingesting diagnostic metrics and logs.
 
-Use the Azure Data Explorer Web UI to create the target tables in the Azure Data Explorer database.
+Use the Azure Data Explorer web UI to create the target tables in the Azure Data Explorer database.
 
 ### [Diagnostic metrics](#tab/diagnostic-metrics)
 

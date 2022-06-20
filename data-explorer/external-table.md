@@ -1,14 +1,14 @@
 ---
-title: Create an external table using the Web UI Wizard in Azure Data Explorer
+title: Create an external table using the Azure Data Explorer web UI Wizard in Azure Data Explorer
 description: Use the one-click experience to create an external table.
 ms.reviewer: ohbitton
 ms.topic: how-to
-ms.date: 02/07/2022
+ms.date: 06/20/2022
 ---
 
-# Create an external table using the Web UI wizard
+# Create an external table using the Azure Data Explorer web UI wizard
 
-An external table is a schema entity that references data stored outside the Azure Data Explorer database. Azure Data Explorer Web UI can create external tables by taking sample files from a storage container and creating schema based on these samples. You can then analyze and query data in external tables without ingestion into Azure Data Explorer. For information about different ways to create external tables, see [create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md).
+An external table is a schema entity that references data stored outside the Azure Data Explorer database. Azure Data Explorer web UI can create external tables by taking sample files from a storage container and creating schema based on these samples. You can then analyze and query data in external tables without ingestion into Azure Data Explorer. For information about different ways to create external tables, see [create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md).
 
 This article shows you how to create an external table using the one-click experience.
 
@@ -16,19 +16,19 @@ This article shows you how to create an external table using the one-click exper
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Create [a cluster and database](create-cluster-database-portal.md).
-* Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
+* Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 ## Create an external table
 
 There are two ways to access the creation wizard:
 
-* In the left menu of the Web UI, select **Data**. In the **Create external table** card, select **Create**.
+* In the left menu of the Azure Data Explorer web UI, select **Data**. In the **Create external table** card, select **Create**.
 
-     :::image type="content" source="media/external-table/create-external-table.png" alt-text="Screenshot of data blade in Azure Data Explorer Web UI with create external table highlighted.":::
+     :::image type="content" source="media/external-table/create-external-table.png" alt-text="Screenshot of data blade in Azure Data Explorer Web U I with create external table highlighted.":::
 
-* In the left pane of the Web UI, select **Query**. In the left menu, right-click on your database name and select **Create external table**.
+* In the left pane of the Azure Data Explorer web UI, select **Query**. In the left menu, right-click on your database name and select **Create external table**.
 
-    :::image type="content" source="media/external-table/ingest-new-data-database-menu.png" alt-text="Screenshot of how to access the wizard to create an external table in the Azure Data Explorer WebUI.":::
+    :::image type="content" source="media/external-table/ingest-new-data-database-menu.png" alt-text="Screenshot of how to access the wizard to create an external table in the Azure Data Explorer Web U I.":::
 
 The **Create external table** window opens with the **Destination** tab selected.
 
