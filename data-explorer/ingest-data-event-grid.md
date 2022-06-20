@@ -243,8 +243,7 @@ You can specify the [ingestion properties](ingest-data-event-grid-overview.md#in
 
     :::image type="content" source="media/ingest-data-event-grid/event-grid-graph.png" alt-text="Screenshot of an Event Grid Activity graph, showing a spike in activity.":::
 
-1. To preview incoming Event Grid notifications sent to your event hub in the Azure portal, see [process data from your event hub using Azure Stream Analytics](/azure/event-hubs/process-data-azure-stream-analytics). You can use the insights you gain to refine your Event Grid filter settings and ensure that only the appropriate events are sent to your 
-event hub and cluster.
+1. To preview incoming Event Grid notifications sent to your event hub in the Azure portal, see [process data from your event hub using Azure Stream Analytics](/azure/event-hubs/process-data-azure-stream-analytics). You can use the insights you gain to refine your Event Grid filter settings and ensure that only the appropriate events are sent to your event hub and cluster.
 
 1. To check how many messages have made it to the database so far, run the following query in your test database.
 
