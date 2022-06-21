@@ -14,11 +14,9 @@ Overview of all visualization options can be found [here](../../viz-overview.md)
 
 Please refer to [render operator](renderoperator.md) for all supported options.
 
-## 1. Visualization of points on a map.
+## Visualization of points on a map examples:
 
 It's possible to visualize points either using [Longitude, Latitude] columns, in that order or GeoJSON column. Series column is optional.
-
-### Examples:
 
 Visualize points on a map. Each point defined by [Longitude, Latitude] pair.
 
@@ -66,7 +64,7 @@ StormEvents
 ```
 :::image type="content" source="images/geo-visualizations/storm-events-s2cell.png" alt-text="Sample storm GeoJSON events.":::
 
-## 2. Visualization of pies\bubbles on a map.
+## Visualization of pies\bubbles on a map examples:
 
 It's possible to visualize pies\bubbles either using [Longitude, Latitude] columns, in that order or GeoJSON column, color-axis and numeric.
 
