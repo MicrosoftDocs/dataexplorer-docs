@@ -51,17 +51,15 @@ Enter the following policy alter-merge command for the database level:
 
 ## Create an external table
 
-The external table's authentication method is listed as part of the `connection string` provided in the command. To specify managed identity authentication for your external table, add the appropriate managed identity authentication suffix: 
+There are two types of external tables, [Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md) and [SQL Server external tables](kusto/management/external-sql-tables.md), and both support authentication with managed identities. In this section, we'll demonstrate creation of Azure Storage external tables with managed identities.
 
-In this example, we're using user-assigned managed identities. Attach `;managed_identity=[managed-identity-object-id]` to the end of the connection string:
-
-`https://StorageAccountName.blob.core.windows.net/Container;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e`
+To use a user-assigned managed identity with Azure Storage external tables, you need to append `;managed_identity=[managed-identity-object-id]` to the end of the connection string, for example: `https://StorageAccountName.blob.core.windows.net/Container;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e`
 
 > [!NOTE]
 > For system-assigned managed identities, you can use the reserved word `system` instead: <br>
 >`https://StorageAccountName.blob.core.windows.net/Container[/BlobName];managed_identity=system`
     
-This should give you the the following create external table command. Use this command to create the external table with your managed identity:
+This results in the following command, to create the external table with your managed identity:
 
 ```kusto
 .create external table tableName (col_a: string, col_b: string)
