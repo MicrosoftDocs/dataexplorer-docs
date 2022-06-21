@@ -33,7 +33,7 @@ The core functionalities of these methods are:
 | Neighbors count | [8](geo-geohash-neighbors-function.md) | [8](geo-s2cell-neighbors-function.md) | [6](geo-h3cell-neighbors-function.md) |
 | Noticeable feature | Common prefixes indicate points proximity. | 31 hierarchy levels. | Cell shape is hexagonal. |
 | Performance | Superb | Superb | Fast |
-| Cover polygon with cells | Not supported | Supported | Not supported |
+| Cover polygon with cells | Not supported | [Supported](geo-polygon-to-s2cells-function.md) | Not supported |
 | Cell parent | Not supported | Not Supported | [Supported](geo-h3cell-parent-function.md) |
 | Cell children | Not supported | Not Supported | [Supported](geo-h3cell-children-function.md) |
 | Cell rings | Not supported | Not Supported | [Supported](geo-h3cell-rings-function.md) |
