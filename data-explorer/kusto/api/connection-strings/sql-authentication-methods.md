@@ -38,10 +38,7 @@ Different authentication methods are available for different external storage ty
 To use AAD-integrated authentication (impersonation), add `;Authentication="Active Directory Integrated"` to the SQL connection string. Using this authentication method, the user or application authenticates via AAD to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint.
 
 > [!NOTE]
-> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see:
->
-> * [Azure Blob Storage/Azure Data Lake Storage Gen2 access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac)
-> * [Azure Data Lake Storage Gen1 access control](/azure/storage/blobs/data-lake-storage-access-control)
+> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see: [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?view=sql-server-ver16)
 
 ### AAD-integrated authentication example
 
@@ -56,12 +53,7 @@ In order to use managed identity please follow these instructions, and allow the
 * For a user-assigned managed identity, add the object ID of the user-assigned managed identity, with the following format: `;Authentication="Active Directory Managed Identity";User Id={object_id}`.
 
 > [!NOTE]
->
-> * The managed identity must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see:
->
->     * [Azure Blob Storage/Azure Data Lake Storage Gen2 access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac)
->     * [Azure Data Lake Storage Gen1 access control](/azure/storage/blobs/data-lake-storage-access-control)
-> * Managed identity is only supported in specific Azure Data Explorer flows. For more information, see [Managed identities overview](../../../managed-identities-overview.md).
+> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see: [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?view=sql-server-ver16)
 
 ### Managed identity examples
 
@@ -75,3 +67,6 @@ To use username and password, add `User ID=...; Password=...;` to connection str
 ### Username and Password example
 
 `"Server=tcp:myserver.database.windows.net,1433;User Id={some-userId};Password={some-password};Initial Catalog=mydatabase;"`
+
+> [!NOTE]
+> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see: [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?view=sql-server-ver16)
