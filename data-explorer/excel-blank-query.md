@@ -22,7 +22,7 @@ Azure Data Explorer provides two options for connecting to data in Excel: use th
 
 ## Define Kusto query as an Excel data source
 
-1. In [Azure Data Explorer web U I](https://dataexplorer.azure.com/clusters/help/databases/Samples), run the query and check the results.
+1. In [Azure Data Explorer web UI](https://dataexplorer.azure.com/clusters/help/databases/Samples), run the query and check the results.
 
 1. Select the **Share** tab and select **Query to Power BI**.
 

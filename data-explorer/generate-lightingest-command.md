@@ -42,7 +42,7 @@ In the **Ingest new data** window, the **Destination** tab is selected. The **Cl
     > [!NOTE]
     > Table names must be between 1 and 1024 characters.
 
-    :::image type="content" source="media/generate-lightingest-command/ingest-new-data.png" alt-text="Screenshot of Azure Data Explorer Web U I with Data tab selected on the left menu, and Ingest new data dialog open to the right.":::
+    :::image type="content" source="media/generate-lightingest-command/ingest-new-data.png" alt-text="Screenshot of Azure Data Explorer web U I with Data tab selected on the left menu, and Ingest new data dialog open to the right.":::
 
 1. Select **Next: Source**
 

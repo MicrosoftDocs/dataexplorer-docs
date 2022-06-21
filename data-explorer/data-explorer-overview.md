@@ -39,7 +39,7 @@ With Azure Data Explorer, you can ingest terabytes of data in minutes in batch o
 
 ### User-friendly query language
 
-Query Azure Data explorer with the [Kusto Query Language (KQL)](kusto/query/index.md), an open-source language initially invented by the team. The language is simple to understand and learn, and highly productive. You can use simple operators and advanced analytics.
+Query Azure Data Explorer with the [Kusto Query Language (KQL)](kusto/query/index.md), an open-source language initially invented by the team. The language is simple to understand and learn, and highly productive. You can use simple operators and advanced analytics.
 
 ### Advanced analytics
 
@@ -66,7 +66,7 @@ The following diagram shows the different aspects of working with Azure Data Exp
 Generally speaking, when you interact with Azure Data Explorer, you're going to go through the following workflow:  
 
 > [!NOTE]
-> You can access your Azure Data Explorer resources either in the [Azure Data Explorer Web UI](web-query-data.md) or by using [SDKs](kusto/api/index.md).
+> You can access your Azure Data Explorer resources either in the [Azure Data Explorer web UI](web-query-data.md) or by using [SDKs](kusto/api/index.md).
 
 1. **Create database:** Create a *cluster* and then create one or more *databases* in that cluster. Each Azure Data Explorer cluster can hold up to 10,000 databases and each database up to 10,000 tables. The data in each table is stored in data shards also called “extents”. All data is automatically indexed and partitioned based on the ingestion time. This means you can store a lot of varied data and because of the way it's stored, you get fast access to querying it. [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
 
@@ -74,7 +74,7 @@ Generally speaking, when you interact with Azure Data Explorer, you're going to 
 
 1. **Query database:** Azure Data Explorer uses the [Kusto Query Language](kusto/query/index.md), which is an expressive, intuitive, and highly productive query language. It offers a smooth transition from simple one-liners to complex data processing scripts, and supports querying structured, semi-structured, and unstructured (text search) data. There's a wide variety of query language operators and functions ([aggregation](kusto/query/aggregation-functions.md), filtering, [time series functions](kusto/query/machine-learning-and-tsa.md), [geospatial functions](kusto/query/geospatial-grid-systems.md), [joins](kusto/query/joinoperator.md), [unions](kusto/query/unionoperator.md), and more) in the language. KQL supports [cross-cluster and cross-database queries](kusto/query/cross-cluster-or-database-queries.md), and is feature rich from a parsing (json, XML, and more) perspective. The language also natively supports advanced analytics.
 
-    Use the web application to run, review, and share queries and results. You can also send queries programmatically (using an SDK) or to a REST API endpoint. If you're familiar with SQL, get started with the [SQL to Kusto cheat sheet](kusto/query/sqlcheatsheet.md). [Quickstart: Query data in Azure Data Explorer](web-query-data.md)
+    Use the web application to run, review, and share queries and results. You can also send queries programmatically (using an SDK) or to a REST API endpoint. If you're familiar with SQL, get started with the [SQL to Kusto cheat sheet](kusto/query/sqlcheatsheet.md). [Quickstart: Query data in Azure Data Explorer web UI](web-query-data.md)
 
 1. **Visualize results:**  Use different visual displays of your data in the native Azure Data Explorer [Dashboards](azure-data-explorer-dashboards.md). You can also display your results using connectors to some of the [leading visualization services](viz-overview.md), such as [Power BI](power-bi-connector.md) and [Grafana](grafana.md). Azure Data Explorer also has [ODBC](connect-odbc.md) and JDBC connector support to tools such as [Tableau](tableau.md) and [Sisense](sisense.md).
 

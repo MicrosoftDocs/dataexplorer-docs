@@ -488,7 +488,7 @@ Select a resource from which to export metrics. Several resource types support e
     1. In the **Event hub namespace** list, select *AzureMonitoringData*.
     1. Optionally, select your **Event hub name**.
     1. In the **Event hub policy name** list, select the default event hub policy name.
-    1. In the upper-left corner of the window, select **Save**. An event hub with the name *insights-operational-logs* will be created (unless you have selected an Event hub name above).
+    1. In the upper-left corner of the window, select **Save**. An event hub with the name *insights-operational-logs* will be created (unless you've selected an Event hub name above).
 
 ---
 
@@ -511,7 +511,7 @@ Now you need to create the data connections for your diagnostic metrics and logs
 1. In your Azure Data Explorer cluster named *kustodocs*, select **Databases** in the left menu.
 1. In the **Databases** window, select your *TestDatabase* database.
 1. In the left menu, select **Data ingestion**.
-1. In the **Data ingestion** window, click **+ Add Data Connection**.
+1. In the **Data ingestion** window, select **+ Add Data Connection**.
 1. In the **Data connection** window, enter the following information:
 
     ![Event hub data connection.](media/ingest-data-no-code/event-hub-data-connection.png)

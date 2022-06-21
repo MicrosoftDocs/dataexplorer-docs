@@ -24,11 +24,11 @@ There are two ways to access the creation wizard:
 
 * In the left menu of the Azure Data Explorer web UI, select **Data**. In the **Create external table** card, select **Create**.
 
-     :::image type="content" source="media/external-table/create-external-table.png" alt-text="Screenshot of data blade in Azure Data Explorer Web U I with create external table highlighted.":::
+     :::image type="content" source="media/external-table/create-external-table.png" alt-text="Screenshot of data blade in Azure Data Explorer web U I with create external table highlighted.":::
 
 * In the left pane of the Azure Data Explorer web UI, select **Query**. In the left menu, right-click on your database name and select **Create external table**.
 
-    :::image type="content" source="media/external-table/ingest-new-data-database-menu.png" alt-text="Screenshot of how to access the wizard to create an external table in the Azure Data Explorer Web U I.":::
+    :::image type="content" source="media/external-table/ingest-new-data-database-menu.png" alt-text="Screenshot of how to access the wizard to create an external table in the Azure Data Explorer web U I.":::
 
 The **Create external table** window opens with the **Destination** tab selected.
 
@@ -50,7 +50,7 @@ You can add up to 10 source containers.
 
 #### Add a container with the **Select container** button
 
-1. Click **Select container**.
+1. Select **Select container**.
 
     :::image type="content" source="media/external-table/select-container.png" alt-text="Screen shot of select container button in source tab.":::
 

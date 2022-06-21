@@ -16,7 +16,7 @@ Executing a `.purge` command triggers a process that can take a few days to comp
 
 ## Methods of invoking purge operations
 
-Azure Data Explorer (Kusto) supports both individual record deletion and purging an entire table. The `.purge` command can be [invoked in two ways](kusto/concepts/data-purge.md#purge-table-tablename-records-command) for differing usage scenarios:
+Azure Data Explorer supports both individual record deletion and purging an entire table. The `.purge` command can be [invoked in two ways](kusto/concepts/data-purge.md#purge-table-tablename-records-command) for differing usage scenarios:
 
 * Programmatic invocation: A single step that is intended to be invoked by applications. Calling this command directly triggers the purge execution sequence.
 
