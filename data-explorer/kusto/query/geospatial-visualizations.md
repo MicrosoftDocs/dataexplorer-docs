@@ -42,7 +42,7 @@ StormEvents
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="images/geo-visualizations/storm-events-series-sample.png" alt-text="Sample storm events on a map.":::
+:::image type="content" source="images/geo-visualizations/storm-events-series-sample.png" alt-text="Sample storm series events on a map.":::
 
 Same as above, but due to multiple columns in the result we must specify xcolumn (Longitude), ycolumn (Latitude) and series.
 
@@ -52,7 +52,7 @@ StormEvents
 | take 100
 | render scatterchart with (kind = map, xcolumn = BeginLon, ycolumns = BeginLat, series = EventType)
 ```
-:::image type="content" source="images/geo-visualizations/storm-events-series-sample.png" alt-text="Sample storm events on a map.":::
+:::image type="content" source="images/geo-visualizations/storm-events-series-sample.png" alt-text="Sample storm series events using arguments.":::
 
 Visualize points on a map. Each point defined by GeoJSON dynamic type value.
 
@@ -64,7 +64,7 @@ StormEvents
 | project geo_s2cell_to_central_point(hash)
 | render scatterchart with (kind = map)
 ```
-:::image type="content" source="images/geo-visualizations/storm-events-s2cell.png" alt-text="Sample storm events on a map.":::
+:::image type="content" source="images/geo-visualizations/storm-events-s2cell.png" alt-text="Sample storm GeoJSON events.":::
 
 ## 2. Visualization of pies\bubbles on a map.
 
