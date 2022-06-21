@@ -8,7 +8,7 @@ ms.date: 06/20/2022
 
 # Geospatial visualizations
 
-Geospatial data can be visualized using [render operator](renderoperator.md) in [Kusto Desktop Explorer](../tools/kusto-explorer-using.md) or [Web UI](../../web-query-data.md).
+Geospatial data can be visualized using [render operator](renderoperator.md) in [Kusto Desktop Explorer](../tools/kusto-explorer-using.md) ([Download and install](../tools/kusto-explorer.md)) or [Web UI](../../web-query-data.md).
 
 Overview of all visualization options can be found [here](../../viz-overview.md).
 
