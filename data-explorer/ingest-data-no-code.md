@@ -3,7 +3,7 @@ title: 'Tutorial: Ingest monitoring data in Azure Data Explorer without code'
 description: In this tutorial, you learn how to ingest monitoring data to Azure Data Explorer without one line of code and query that data.
 ms.reviewer: kerend
 ms.topic: tutorial
-ms.date: 09/19/2021
+ms.date: 06/20/2022
 
 # Customer intent: I want to ingest monitoring data to Azure Data Explorer without one line of code, so that I can explore and analyze my data by using queries.
 ---
@@ -198,9 +198,9 @@ Azure activity logs are subscription-level logs that provide insight into the op
 
 Setting up an Azure Data Explorer pipeline involves several steps, such as [table creation and data ingestion](ingest-sample-data.md#ingest-data). You can also manipulate, map, and update the data.
 
-### Connect to the Azure Data Explorer Web UI
+### Connect to the Azure Data Explorer web UI
 
-In your Azure Data Explorer *TestDatabase* database, select **Query** to open the Azure Data Explorer Web UI.
+In your Azure Data Explorer *TestDatabase* database, select **Query** to open the Azure Data Explorer web UI.
 
 ![Query page.](media/ingest-data-no-code/query-database.png)
 
@@ -208,7 +208,7 @@ In your Azure Data Explorer *TestDatabase* database, select **Query** to open th
 
 The structure of the Azure Monitor logs isn't tabular. You'll manipulate the data and expand each event to one or more records. The raw data will be ingested to an intermediate table named *ActivityLogsRawRecords* for activity logs and *DiagnosticRawRecords* for diagnostic metrics and logs. At that time, the data will be manipulated and expanded. Using an update policy, the expanded data will then be ingested into the *ActivityLogs* table for activity logs, *DiagnosticMetrics* for diagnostic metrics and *DiagnosticLogs* for diagnostic logs. This means that you'll need to create two separate tables for ingesting activity logs and three separate tables for ingesting diagnostic metrics and logs.
 
-Use the Azure Data Explorer Web UI to create the target tables in the Azure Data Explorer database.
+Use the Azure Data Explorer web UI to create the target tables in the Azure Data Explorer database.
 
 ### [Diagnostic metrics](#tab/diagnostic-metrics)
 
@@ -488,7 +488,7 @@ Select a resource from which to export metrics. Several resource types support e
     1. In the **Event hub namespace** list, select *AzureMonitoringData*.
     1. Optionally, select your **Event hub name**.
     1. In the **Event hub policy name** list, select the default event hub policy name.
-    1. In the upper-left corner of the window, select **Save**. An event hub with the name *insights-operational-logs* will be created (unless you have selected an Event hub name above).
+    1. In the upper-left corner of the window, select **Save**. An event hub with the name *insights-operational-logs* will be created (unless you've selected an Event hub name above).
 
 ---
 
@@ -511,7 +511,7 @@ Now you need to create the data connections for your diagnostic metrics and logs
 1. In your Azure Data Explorer cluster named *kustodocs*, select **Databases** in the left menu.
 1. In the **Databases** window, select your *TestDatabase* database.
 1. In the left menu, select **Data ingestion**.
-1. In the **Data ingestion** window, click **+ Add Data Connection**.
+1. In the **Data ingestion** window, select **+ Add Data Connection**.
 1. In the **Data connection** window, enter the following information:
 
     ![Event hub data connection.](media/ingest-data-no-code/event-hub-data-connection.png)
