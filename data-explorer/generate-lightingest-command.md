@@ -76,7 +76,7 @@ In the **Ingest new data** window, the **Destination** tab is selected. The **Cl
     | Tag | A [tag](kusto/management/extents-overview.md#extent-tagging) assigned to the ingested data. The tag can be any string. |
     | Limit amount of files | Specify the number of files that can be ingested. Ingests the first `n` files that match the blob name pattern, up to the number specified.  |
     | Don't wait for ingestion to complete | If set, queues the blobs for ingestion without monitoring the ingestion process. If not set, LightIngest continues to poll the ingestion status until ingestion is complete.|
-    | Display only selected items| List the files in the container, but does not ingest them.  |
+    | Display only selected items| List the files in the container, but doesn't ingest them.  |
 
 1. Enter values for relevant fields and select **Done** to return to the **Source** tab.
 
@@ -94,7 +94,7 @@ Select **Next: Schema** to view and edit your table column configuration.
 
 In the **Schema** tab:
 
-1. By looking at the name of the source, the service automatically identifies if it is compressed or not. Confirm that the **Compression type** is correct.
+1. By looking at the name of the source, the service automatically identifies if it's compressed or not. Confirm that the **Compression type** is correct.
 1. Confirm the format selected in **Data format**:
 
      In this case, the data format is **CSV**
