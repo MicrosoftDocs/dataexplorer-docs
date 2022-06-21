@@ -49,7 +49,7 @@ dataformat=csv
 
 The external table is now visible in the left pane of the Azure Data Explorer web UI:
 
-:::image type="content" source="media/data-lake-query-data/external-tables-web-ui.png" alt-text="External table in Azure Data Explorer web U I.":::
+:::image type="content" source="media/data-lake-query-data/external-tables-web-ui.png" alt-text="Screenshot that shows external table in Azure Data Explorer web UI.":::
 
 ### External table permissions
 

@@ -18,7 +18,7 @@ Azure Data Explorer dashboards provide three main advantages:
 
 The following image depicts an Azure Data Explorer dashboard.
 
-:::image type="content" source="media/adx-dashboards/dash.png" alt-text="Screenshot showing an Azure Data Explorer web U I dashboard.":::
+:::image type="content" source="media/adx-dashboards/dash.png" alt-text="Screenshot showing an Azure Data Explorer web UI dashboard.":::
 
 > [!IMPORTANT]
 > Your data is secure. Dashboards and dashboard-related metadata about users is encrypted at rest.

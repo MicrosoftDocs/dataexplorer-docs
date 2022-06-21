@@ -27,7 +27,7 @@ The wizard can be accessed either from the **Data** tab, or from the **Query** t
 
 1. In the **Data** tab, from the **Quick actions** section, select **Ingest new data**. Alternatively, from the **All actions** section, select **Ingest new data** and then **Ingest**.
 
-   :::image type="content" source="media/one-click-ingestion-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web U I where you select one-click ingestion for a table.":::
+   :::image type="content" source="media/one-click-ingestion-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select one-click ingestion for a table.":::
 
 1. In the **Query tab**, right-click a *database* and select **Ingest new data**.
 
@@ -42,7 +42,7 @@ In the **Ingest new data** window, the **Destination** tab is selected. The **Cl
     > [!NOTE]
     > Table names must be between 1 and 1024 characters.
 
-    :::image type="content" source="media/generate-lightingest-command/ingest-new-data.png" alt-text="Screenshot of Azure Data Explorer web U I with Data tab selected on the left menu, and Ingest new data dialog open to the right.":::
+    :::image type="content" source="media/generate-lightingest-command/ingest-new-data.png" alt-text="Screenshot of Azure Data Explorer web UI with Data tab selected on the left menu, and Ingest new data dialog open to the right.":::
 
 1. Select **Next: Source**
 
@@ -104,7 +104,7 @@ In the **Schema** tab:
 
     When using an existing table, you can **Keep current table schema** if the table schema matches the selected format.
 
-:::image type="content" source="media/generate-lightingest-command/schema-tab-lightingest.png" alt-text="Screenshot of the schema tab in the Ingest new data dialog in Azure Data Explorer web U I.":::
+:::image type="content" source="media/generate-lightingest-command/schema-tab-lightingest.png" alt-text="Screenshot of the schema tab in the Ingest new data dialog in Azure Data Explorer web UI.":::
 
 ### Edit the table
 

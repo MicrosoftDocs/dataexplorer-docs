@@ -26,7 +26,7 @@ Azure Data Explorer provides two options for connecting to data in Excel: use th
 
 1. Select the **Share** tab and select **Query to Power BI**.
 
-    ![Azure Data Explorer web U I query to Power BI.](media/excel-blank-query/web-ui-query-to-powerbi.png)
+    ![Screenshot that shows Azure Data Explorer web UI query to Power BI.](media/excel-blank-query/web-ui-query-to-powerbi.png)
 
 1. A window appears with the following notification:
 

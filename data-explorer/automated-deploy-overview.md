@@ -253,7 +253,7 @@ Fabrikam,NYC
 
 You create the cluster by using the service principal credentials that you specified in the pipeline. To give permissions to your users, follow the steps in [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
 
-:::image type="content" source="media/automated-deploy-overview/deployed-database.png" alt-text="Screenshot showing the deployed database with its two tables in Azure Data Explorer web U I.":::
+:::image type="content" source="media/automated-deploy-overview/deployed-database.png" alt-text="Screenshot showing the deployed database with its two tables in Azure Data Explorer web UI.":::
 
 You can verify the deployment by running a query against the *Customer* table. You should see the three records that were imported from the CSV file.
 
