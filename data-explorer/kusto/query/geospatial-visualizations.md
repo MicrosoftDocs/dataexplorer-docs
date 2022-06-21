@@ -18,7 +18,7 @@ Please refer to [render operator](renderoperator.md) for all supported options.
 
 It's possible to visualize points either using [Longitude, Latitude] columns, in that order or GeoJSON column. Series column is optional.
 
-## Examples:
+### Examples:
 
 Visualize points on a map. Each point defined by [Longitude, Latitude] pair.
 
