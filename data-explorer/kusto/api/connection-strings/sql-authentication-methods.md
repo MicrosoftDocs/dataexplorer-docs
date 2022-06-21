@@ -20,6 +20,7 @@ The following authentication methods are supported:
 * [AAD-integrated authentication](#AAD-integrated-authentication)
 * [Managed identity](#managed-identity)
 * [Username and Password](#Username-and-Password)
+* [Token](#token)
 
 ## Storage authentication availability
 
@@ -64,6 +65,7 @@ In order to use managed identity please follow these instructions, and allow the
 ## Username and Password
 
 To use username and password, add `User ID=...; Password=...;` to connection string.
+
 ### Username and Password example
 
 `"Server=tcp:myserver.database.windows.net,1433;User Id={some-userId};Password={some-password};Initial Catalog=mydatabase;"`
