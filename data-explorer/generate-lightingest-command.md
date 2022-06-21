@@ -3,11 +3,11 @@ title: Use wizard for one-time ingestion of historical data with LightIngest (pr
 description: Learn about how to auto-generate an ingest command for LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 07/27/2021
+ms.date: 06/20/2022
 ---
 # Use wizard for one-time ingestion of historical data with LightIngest (preview)
 
-LightIngest is a command-line utility for ad-hoc data ingestion into Azure Data Explorer. 
+LightIngest is a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
 To learn more about LightIngest, see [Use LightIngest to ingest data into Azure Data Explorer](lightingest.md).
 
 LightIngest can be particularly useful to load historical data from an existing storage system to Azure Data Explorer. While you can build your own command using the list of [Command-line arguments](lightingest.md#command-line-arguments), this article shows you how to auto-generate this command through an ingestion wizard. In addition to creating the command, you can use this process to create a new table, and create schema mapping. This tool infers schema mapping from your data set.
@@ -23,11 +23,11 @@ This article shows you how to create a new table, create schema mapping, and gen
 
 ## Access the wizard
 
-The wizard can be accessed either from the **Data** tab, or from the **Query** tab of the [Azure Data Explorer WebUI](https://dataexplorer.azure.com/).
+The wizard can be accessed either from the **Data** tab, or from the **Query** tab of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 
 1. In the **Data** tab, from the **Quick actions** section, select **Ingest new data**. Alternatively, from the **All actions** section, select **Ingest new data** and then **Ingest**.
 
-   :::image type="content" source="media/one-click-ingestion-existing-table/ingest-new-data.png" alt-text="Screenshot for the Web UI where you select one-click ingestion for a table.":::
+   :::image type="content" source="media/one-click-ingestion-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select one-click ingestion for a table.":::
 
 1. In the **Query tab**, right-click a *database* and select **Ingest new data**.
 
@@ -42,7 +42,7 @@ In the **Ingest new data** window, the **Destination** tab is selected. The **Cl
     > [!NOTE]
     > Table names must be between 1 and 1024 characters.
 
-    :::image type="content" source="media/generate-lightingest-command/ingest-new-data.png" alt-text="Screenshot of Azure Data Explorer WebUI with Data tab selected on the lefthand menu, and Ingest new data dialog open to the right.":::
+    :::image type="content" source="media/generate-lightingest-command/ingest-new-data.png" alt-text="Screenshot of Azure Data Explorer web UI with Data tab selected on the left menu, and Ingest new data dialog open to the right.":::
 
 1. Select **Next: Source**
 
@@ -50,7 +50,7 @@ In the **Ingest new data** window, the **Destination** tab is selected. The **Cl
 
 :::image type="content" source="media/generate-lightingest-command/source-tab-lightingest.png" alt-text="Screenshot of Source tab in Ingest new table window. ":::
 
-  1. Under **Source type**, select **From blob container** (blob container, ADLS Gen2 container). 
+  1. Under **Source type**, select **From blob container** (blob container, ADLS Gen2 container).
   1. Select **Ingestion type**>**Historical data**.
   1. You can either **Add URL** manually by copying the Account Key/SAS URL to source, or **Select container** from your storage account.
       > [!NOTE]
@@ -76,7 +76,7 @@ In the **Ingest new data** window, the **Destination** tab is selected. The **Cl
     | Tag | A [tag](kusto/management/extents-overview.md#extent-tagging) assigned to the ingested data. The tag can be any string. |
     | Limit amount of files | Specify the number of files that can be ingested. Ingests the first `n` files that match the blob name pattern, up to the number specified.  |
     | Don't wait for ingestion to complete | If set, queues the blobs for ingestion without monitoring the ingestion process. If not set, LightIngest continues to poll the ingestion status until ingestion is complete.|
-    | Display only selected items| List the files in the container, but does not ingest them.  |
+    | Display only selected items| List the files in the container, but doesn't ingest them.  |
 
 1. Enter values for relevant fields and select **Done** to return to the **Source** tab.
 
@@ -88,13 +88,13 @@ If you want to, filter the data to ingest only files in a specific folder path o
 
 The system will select one of the files at random and the schema will be generated based on that  **Schema defining file**. You can select a different file.
 
-Select **Next: Schema** to view and edit your table column configuration. 
+Select **Next: Schema** to view and edit your table column configuration.
 
 ## Edit the schema
 
 In the **Schema** tab:
 
-1. By looking at the name of the source, the service automatically identifies if it is compressed or not. Confirm that the **Compression type** is correct.
+1. By looking at the name of the source, the service automatically identifies if it's compressed or not. Confirm that the **Compression type** is correct.
 1. Confirm the format selected in **Data format**:
 
      In this case, the data format is **CSV**
@@ -104,7 +104,7 @@ In the **Schema** tab:
 
     When using an existing table, you can **Keep current table schema** if the table schema matches the selected format.
 
-:::image type="content" source="media/generate-lightingest-command/schema-tab-lightingest.png" alt-text="Screenshot of the schema tab in the Ingest new data dialog in Azure Data Explorer WebUI.":::
+:::image type="content" source="media/generate-lightingest-command/schema-tab-lightingest.png" alt-text="Screenshot of the schema tab in the Ingest new data dialog in Azure Data Explorer web UI.":::
 
 ### Edit the table
 
