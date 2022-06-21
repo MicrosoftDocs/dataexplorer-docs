@@ -37,7 +37,7 @@ ARM templates are [JSON](/azure/azure-resource-manager/templates/overview) or [B
 
 You can also use ARM templates to deploy [command scripts](/azure/templates/microsoft.kusto/clusters/databases/scripts?tabs=json), which help you create a database schema and define policies. For more information, see [Configure a database by using a Kusto Query Language script](./database-script.md).
 
-You can find more example templates on the [Azure Quickstart templates](https://azure.microsoft.com/resources/templates/) site.
+You can find more example templates on the [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/) site.
 
 ### Terraform deployment
 
@@ -68,26 +68,26 @@ You can automate schema entities deployment by using the following methods:
 * [Terraform scripts](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kusto_script)
 * [Kusto CLI](./kusto/tools/kusto-cli.md)
 * SDKs
-    * [.NET SDK](./kusto/api/netfx/about-kusto-data.md)
-    * [Python SDK](./kusto/api/python/kusto-python-client-library.md)
-    * [Java SDK](./kusto/api/java/kusto-java-client-library.md)
-    * [Node SDK](./kusto/api/node/kusto-node-client-library.md)
-    * [Go SDK](./kusto/api/golang/kusto-golang-client-library.md)
+  * [.NET SDK](./kusto/api/netfx/about-kusto-data.md)
+  * [Python SDK](./kusto/api/python/kusto-python-client-library.md)
+  * [Java SDK](./kusto/api/java/kusto-java-client-library.md)
+  * [Node SDK](./kusto/api/node/kusto-node-client-library.md)
+  * [Go SDK](./kusto/api/golang/kusto-golang-client-library.md)
 * Tools
-    * [Sync Kusto](./kusto/tools/synckusto.md). Use this interactive developer tool to extract the database schema or control command script. You can then use the extracted content command script for automatic deployment.
-    * [Delta Kusto](https://github.com/microsoft/delta-kusto): Invoke this tool in a CI/CD pipeline. It can compare two sources, such as the database schema or control command script, and compute a delta control command script. You can then use the extracted content command script for automatic deployment.
-    * [Azure DevOps task](./devops.md) for Azure Data Explorer.
+  * [Sync Kusto](./kusto/tools/synckusto.md). Use this interactive developer tool to extract the database schema or control command script. You can then use the extracted content command script for automatic deployment.
+  * [Delta Kusto](https://github.com/microsoft/delta-kusto): Invoke this tool in a CI/CD pipeline. It can compare two sources, such as the database schema or control command script, and compute a delta control command script. You can then use the extracted content command script for automatic deployment.
+  * [Azure DevOps task](./devops.md) for Azure Data Explorer.
 
 ## Ingest data
 
 Sometimes you want to ingest data into your cluster. For example, you might want to ingest data to run tests or re-create an environment. You can use the following methods to ingest data:
 
 * SDKs
-    * [.NET SDK](./net-sdk-ingest-data.md)
-    * [Python SDK](./python-ingest-data.md)
-    * [Java SDK](./java-ingest-data.md)
-    * [Node SDK](./node-ingest-data.md)
-    * [Go SDK](./go-ingest-data.md)
+  * [.NET SDK](./net-sdk-ingest-data.md)
+  * [Python SDK](./python-ingest-data.md)
+  * [Java SDK](./java-ingest-data.md)
+  * [Node SDK](./node-ingest-data.md)
+  * [Go SDK](./go-ingest-data.md)
 * [LightIngest](./lightingest.md) CLI tool
 * Triggering an [Azure Data Factory pipeline](./data-factory-integration.md)
 
@@ -113,7 +113,7 @@ Define a [service connection](/azure/devops/pipelines/library/service-endpoints)
 
 ### Step 2: Create a pipeline
 
-Define the pipeline (*deploy-environ*) that you will use to deploy the cluster, create schema entities, and ingest data.
+Define the pipeline (*deploy-environ*) that you'll use to deploy the cluster, create schema entities, and ingest data.
 
 Before you can use the pipeline, you must create the following [secret variables](/azure/devops/pipelines/process/variables?view=azure-devops&tabs=classic%2Cbatch&preserve-view=true):
 
@@ -124,7 +124,7 @@ Before you can use the pipeline, you must create the following [secret variables
 | `appId` | The client ID of the service principal used to interact with the cluster. |
 | `appSecret` | The secret of the service principal. |
 | `appTenantId` | The tenant ID of the service principal. |
-| `location` | The Azure region where you will deploy the cluster. For example, `eastus`. |
+| `location` | The Azure region where you'll deploy the cluster. For example, `eastus`. |
 
 ```yml
 resources:
@@ -177,7 +177,7 @@ stages:
 
 ### Step 3: Create an ARM template to deploy the cluster
 
-Define the ARM template (*deploy-infra.json*) that you will use to deploy the cluster to your subscription and resource group.
+Define the ARM template (*deploy-infra.json*) that you'll use to deploy the cluster to your subscription and resource group.
 
 ```json
 {
@@ -225,7 +225,7 @@ Define the ARM template (*deploy-infra.json*) that you will use to deploy the cl
 
 ### Step 4: Create a KQL script to create the schema entities
 
-Define the KQL script (*MyDatabase.kql*) that you will use to create the tables in the databases.
+Define the KQL script (*MyDatabase.kql*) that you'll use to create the tables in the databases.
 
 ```kusto
 .create table Customer(CustomerName:string, CustomerAddress:string)
@@ -253,11 +253,11 @@ Fabrikam,NYC
 
 You create the cluster by using the service principal credentials that you specified in the pipeline. To give permissions to your users, follow the steps in [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
 
-:::image type="content" source="media/automated-deploy-overview/deployed-database.png" alt-text="Screenshot showing the deployed database with its two tables in Kusto Web UI.":::
+:::image type="content" source="media/automated-deploy-overview/deployed-database.png" alt-text="Screenshot showing the deployed database with its two tables in Azure Data Explorer web UI.":::
 
 You can verify the deployment by running a query against the *Customer* table. You should see the three records that were imported from the CSV file.
 
 ## Next steps
 
 * Create a [cluster and database by using an Azure Resource Manager template](./create-cluster-database-resource-manager.md).
-* Configure a database by using a [KQL script](./database-script.md).
+* Configure a database by using a [KQL script](./database-script.md)

@@ -95,7 +95,7 @@ landingContent:
     linkLists:
       - linkListType: quickstart
         links:
-          - text: Query data with the Web UI
+          - text: Query data with the Azure Data Explorer web UI
             url: web-query-data.md
       - linkListType: tutorial
         links:
