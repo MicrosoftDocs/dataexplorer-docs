@@ -70,8 +70,6 @@ StormEvents
 
 It's possible to visualize pies\bubbles either using [Longitude, Latitude] columns, in that order or GeoJSON column, color-axis and numeric.
 
-## Examples:
-
 Show storm events aggregated by s2 cell. The chart aggregates events in pie by location.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
