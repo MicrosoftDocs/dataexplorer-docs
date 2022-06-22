@@ -30,7 +30,7 @@ StormEvents
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="images/geo-visualizations/storm-events-sample.png" alt-text="Sample storm events on a map.":::
+:::image type="content" source="images/geo-visualizations/storm-events-sample.png" alt-text="Screenshot of sample storm events on a map.":::
 
 ### Example: Visualize multiple series of points on a map
 
@@ -44,7 +44,7 @@ StormEvents
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="images/geo-visualizations/storm-events-series-sample.png" alt-text="Sample storm series events on a map.":::
+:::image type="content" source="images/geo-visualizations/storm-events-series-sample.png" alt-text="Screenshot of sample storm series events on a map.":::
 
 ### Example: Visualize series of points on data with multiple columns
 
@@ -57,7 +57,7 @@ StormEvents
 | render scatterchart with (kind = map, xcolumn = BeginLon, ycolumns = BeginLat, series = EventType)
 ```
 
-:::image type="content" source="images/geo-visualizations/storm-events-series-sample.png" alt-text="Sample storm series events using arguments.":::
+:::image type="content" source="images/geo-visualizations/storm-events-series-sample.png" alt-text="Screenshot of sample storm series events using arguments.":::
 
 ### Example: Visualize points on a map defined by GeoJSON dynamic values
 
@@ -72,7 +72,7 @@ StormEvents
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="images/geo-visualizations/storm-events-s2cell.png" alt-text="Sample storm GeoJSON events.":::
+:::image type="content" source="images/geo-visualizations/storm-events-s2cell.png" alt-text="Screenshot of sample storm GeoJSON events.":::
 
 ## Visualization of pies or bubbles on a map
 
@@ -92,7 +92,7 @@ StormEvents
 | render piechart with (kind = map) // pie map rendering available only in Kusto Explorer desktop
 ```
 
-:::image type="content" source="images/geo-visualizations/storm-events-pie.png" alt-text="Storm events on a pie map.":::
+:::image type="content" source="images/geo-visualizations/storm-events-pie.png" alt-text="Screenshot of storm events on a pie map.":::
 
 ### Example: Visualize bubbles using a color axis
 
@@ -109,7 +109,7 @@ StormEvents
 | render piechart with (kind = map)
 ```
 
-:::image type="content" source="images/geo-visualizations/storm-events-bubble.png" alt-text="Storm events on a bubble map.":::
+:::image type="content" source="images/geo-visualizations/storm-events-bubble.png" alt-text="Screenshot of storm events on a bubble map.":::
 
 ## See also
 
