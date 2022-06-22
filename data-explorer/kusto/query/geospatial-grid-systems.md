@@ -27,16 +27,16 @@ The core functionalities of these methods are:
 | Criteria | Geohash | S2 Cell | H3 Cell |
 |---|---|---|---|
 | Levels of hierarchy | 18 | 31 | 16 |
-| Cell shape | Rectangle | Rectangle | Hexagon |
+| Cell shape | [Rectangle](geo-geohash-to-polygon-function.md) | [Rectangle](geo-s2cell-to-polygon-function.md) |[Hexagon](geo-h3cell-to-polygon-function.md) |
 | Cell edges | straight | geodesic | straight |
 | Projection system | None. Encodes latitude and longitude. | Cube face centered quadratic transform. | Icosahedron face centered gnomonic. |
-| Neighbors count | 8 | 8 | 6 |
+| Neighbors count | [8](geo-geohash-neighbors-function.md) | [8](geo-s2cell-neighbors-function.md) | [6](geo-h3cell-neighbors-function.md) |
 | Noticeable feature | Common prefixes indicate points proximity. | 31 hierarchy levels. | Cell shape is hexagonal. |
 | Performance | Superb | Superb | Fast |
-| Cover polygon with cells | Not supported | Supported | Not supported |
-| Cell parent | Not supported | Not Supported | Supported |
-| Cell children | Not supported | Not Supported | Supported |
-| Cell rings | Not supported | Not Supported | Supported |
+| Cover polygon with cells | Not supported | [Supported](geo-polygon-to-s2cells-function.md) | Not supported |
+| Cell parent | Not supported | Not Supported | [Supported](geo-h3cell-parent-function.md) |
+| Cell children | Not supported | Not Supported | [Supported](geo-h3cell-children-function.md) |
+| Cell rings | Not supported | Not Supported | [Supported](geo-h3cell-rings-function.md) |
 
 > [!TIP]
 > If there is no preference for a specific tool, use the [S2 Cell](#s2-cell-functions).
