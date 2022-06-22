@@ -3,22 +3,24 @@ title: Geospatial data visualizations in Azure Data Explorer
 description: Learn about how to visualize geospatial data with Azure Data Explorer.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 06/20/2022
+ms.date: 06/22/2022
 ---
 
 # Geospatial visualizations
 
-Geospatial data can be visualized using [render operator](renderoperator.md) in [Kusto Desktop Explorer](../tools/kusto-explorer-using.md) ([Download and install](../tools/kusto-explorer.md)) or [Web UI](../../web-query-data.md).
+Geospatial data can be visualized using the [render operator](renderoperator.md) in [Kusto Desktop Explorer](../tools/kusto-explorer-using.md) or the [Azure Data Explorer web UI](../../web-query-data.md). To download Kusto Desktop Explorer, see [Kusto.Explorer installation and user interface](../tools/kusto-explorer.md).
 
-Overview of all visualization options can be found [here](../../viz-overview.md).
+For more information about visualization options, see [Data visualization with Azure Data Explorer](../../viz-overview.md). For more information about geospatial clustering, see [Geospatial clustering](geospatial-grid-systems.md).
 
-Please refer to [render operator](renderoperator.md) for all supported options.
+## Visualize points on a map
 
-## Visualization of points on a map examples:
+It's possible to visualize points either using [Longitude, Latitude] columns, or GeoJSON column. The use of a series column is optional. Each point is defined by [Longitude, Latitude] pair, in that order.
 
-It's possible to visualize points either using [Longitude, Latitude] columns, in that order or GeoJSON column. Series column is optional.
+To visualize points on a map, use the following `render` operator syntax:
 
-Visualize points on a map. Each point defined by [Longitude, Latitude] pair.
+`render scatterchart with (kind = map)`
+
+### Example: Visualize points on a map
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -30,7 +32,9 @@ StormEvents
 
 :::image type="content" source="images/geo-visualizations/storm-events-sample.png" alt-text="Sample storm events on a map.":::
 
-Visualize points series on a map. Each point is defined by [Longitude, Latitude] pair. Series defined by third column (EventType).
+### Example: Visualize multiple series of points on a map
+
+To visualize multiple series of points, each point is defined by a [Longitude, Latitude] pair, and the series is defined by a third column. In this example, the series is `EventType`.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -42,7 +46,9 @@ StormEvents
 
 :::image type="content" source="images/geo-visualizations/storm-events-series-sample.png" alt-text="Sample storm series events on a map.":::
 
-Same as above, but due to multiple columns in the result we must specify xcolumn (Longitude), ycolumn (Latitude) and series.
+### Example: Visualize series of points on data with multiple columns
+
+If you have multiple columns in the result, you must specify the columns to be used for xcolumn (Longitude), ycolumn (Latitude), and series.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -50,9 +56,12 @@ StormEvents
 | take 100
 | render scatterchart with (kind = map, xcolumn = BeginLon, ycolumns = BeginLat, series = EventType)
 ```
+
 :::image type="content" source="images/geo-visualizations/storm-events-series-sample.png" alt-text="Sample storm series events using arguments.":::
 
-Visualize points on a map. Each point defined by GeoJSON dynamic type value.
+### Example: Visualize points on a map defined by GeoJSON dynamic values
+
+In this example, the points are defined by GeoJSON dynamic values.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -62,13 +71,16 @@ StormEvents
 | project geo_s2cell_to_central_point(hash)
 | render scatterchart with (kind = map)
 ```
+
 :::image type="content" source="images/geo-visualizations/storm-events-s2cell.png" alt-text="Sample storm GeoJSON events.":::
 
-## Visualization of pies\bubbles on a map examples:
+## Visualization of pies or bubbles on a map
 
-It's possible to visualize pies\bubbles either using [Longitude, Latitude] columns, in that order or GeoJSON column, color-axis and numeric.
+You can visualize pies or bubbles either using [Longitude, Latitude] columns or GeoJSON column. These visualizations can be created with color or numeric axes.
 
-Show storm events aggregated by s2 cell. The chart aggregates events in pie by location.
+### Example: Visualize pie charts by location
+
+The following example shows storm events aggregated by s2 cell. The chart aggregates events in pie charts by location.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -77,12 +89,14 @@ StormEvents
 | where geo_point_in_circle(BeginLon, BeginLat, real(-81.3891), 28.5346, 1000 * 100)
 | summarize count() by EventType, hash = geo_point_to_s2cell(BeginLon, BeginLat)
 | project geo_s2cell_to_central_point(hash), EventType, count_
-| render piechart with (kind = map) // pie map rendering available in Kusto Explorer desktop
+| render piechart with (kind = map) // pie map rendering available only in Kusto Explorer desktop
 ```
 
 :::image type="content" source="images/geo-visualizations/storm-events-pie.png" alt-text="Storm events on a pie map.":::
 
-Show storm events aggregated by s2 cell. The chart aggregates events in bubble by location. Color-axis ("count") is the same for all events, thus render generates bubbles. 
+### Example: Visualize bubbles using a color axis
+
+The following example shows storm events aggregated by s2 cell. The chart aggregates events in bubble by location. The color-axis ("count") is the same for all events, and this is why bubbles are generated by the `render` operator.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -96,3 +110,8 @@ StormEvents
 ```
 
 :::image type="content" source="images/geo-visualizations/storm-events-bubble.png" alt-text="Storm events on a bubble map.":::
+
+## See also
+
+* [Geospatial clustering](geospatial-grid-systems.md)
+* [Render operator](renderoperator.md)
