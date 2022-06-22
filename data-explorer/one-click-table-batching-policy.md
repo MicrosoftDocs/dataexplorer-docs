@@ -42,8 +42,10 @@ In this article, you can define and assign an ingestion batching policy for a ta
     |**Setting** | **Default value** | **Field description**
     |---|---|---|
     | Number of items | *500*  | The number of files defined as the limit after which a batch is sealed.  |
-    | Time (sec) |  *10* | The time limit in seconds after which a batch is sealed.  |
-    | Size (MB) |  *1024* | The size limit in MB after which a batch is sealed.  |
+    | Time (sec) |  *10* | The time limit after which a batch is sealed. |
+    | Size (MB) |  *1024* | The size limit after which a batch is sealed.  |
+    
+    For more information, see [ingestion batching policy batch sealing](/kusto/management/batchingpolicy.md#sealing-a-batch). 
 
 1. Select **Update**.
 
