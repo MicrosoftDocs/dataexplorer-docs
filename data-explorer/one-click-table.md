@@ -3,18 +3,18 @@ title: Create a table in Azure Data Explorer
 description: Learn how to easily create a table in Azure Data Explorer with the one-click experience.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 02/07/2022
+ms.date: 06/23/2022
 ---
 
 # Create a table in Azure Data Explorer
 
-Creating a table is an important step in the process of [data ingestion](ingest-data-overview.md) and [query](write-queries.md) in Azure Data Explorer. After you've [created a cluster and database in Azure Data Explorer](create-cluster-database-portal.md), you can create a table. The following article shows how to create a table and schema mapping quickly and easily using the Azure Data Explorer Web UI.
+Creating a table is an important step in the process of [data ingestion](ingest-data-overview.md) and [query](write-queries.md) in Azure Data Explorer. After you've [created a cluster and database in Azure Data Explorer](create-cluster-database-portal.md), you can create a table. The following article shows how to create a table and schema mapping quickly and easily using the Azure Data Explorer web UI.
 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Create [a cluster and database](create-cluster-database-portal.md).
-* Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
+* Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 > [!NOTE]
 > To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
@@ -23,7 +23,7 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
 1. In the left menu, select **Data**.
 
-    :::image type="content" source="media/one-click-table/select-create-new-table.png" alt-text="Screenshot of the Web UI where you select the Data pane from the menu and then select Create a new table." lightbox="media/ingest-sample-data/select-data.png":::
+    :::image type="content" source="media/one-click-table/select-create-new-table.png" alt-text="Screenshot of the Azure Data Explorer web U I where you select the Data pane from the menu and then select Create a new table." lightbox="media/ingest-sample-data/select-data.png":::
 
 1. From the **Quick actions** section, select **Create new table**. Alternatively, from the **All actions** section, select **Create new table** and then **Create**.
 
@@ -69,6 +69,10 @@ In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats)
 
     :::image type="content" source="./media/one-click-table/schema-tab.png" alt-text="Edit schema tab in create table in one-click experience in Azure Data Explorer.":::
 
+If **Ingest data** is selected, in addition to creating the table, the wizard will also ingest the data from the source indicated previously in the **Source** tab. If clear, you may ingest data through a variety of [one-click ingestion](ingest-data-one-click.md#access-the-one-click-wizard) wizards.
+
+  :::image type="content" source="media/one-click-table/ingest-data-checkbox.png" alt-text="Screenshot of the ingest data checkbox selected to ingest data into table created from the wizard.":::
+
 1. In **Mapping**, enter a name for this table's schema mapping.
 
     > [!TIP]
@@ -87,7 +91,7 @@ In the **Create table completed** window, both steps will be marked with green c
 
 In the tiles below the **Create table** progress, explore **Quick queries** or **Tools**:
 
-* **Quick queries** includes links to the Web UI with example queries.
+* **Quick queries** includes links to the Azure Data Explorer web UI with example queries.
 
 * **Tools** includes links to **Undo** the table creation by running the relevant `.drop` commands, or **Show schema** of the newly created table.
 
