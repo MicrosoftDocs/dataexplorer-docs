@@ -42,7 +42,7 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 
   * Select **Query** in the left pane. Right-click the *database* or *table* and select **Ingest new data**.
 
-        :::image type="content" source="media/ingest-data-one-click/ingest-new-data-database-menu.png" alt-text="Screenshot of selection of one-click ingestion in the Azure Data Explorer web U I.":::
+      :::image type="content" source="media/ingest-data-one-click/ingest-new-data-database-menu.png" alt-text="Screenshot of selection of one-click ingestion in the Azure Data Explorer web U I.":::
 
 * To access the one-click ingestion wizard from the **Welcome to Azure Data Explorer** home screen in your cluster, complete the first two steps ([cluster creation and database creation](#prerequisites)) and then select **Ingest new data**.
 
