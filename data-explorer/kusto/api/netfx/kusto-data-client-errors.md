@@ -16,7 +16,7 @@ The Kusto Client SDK (Kusto.Data) provides a detailed list of .NET errors on the
 | Exception name | Description | Failure code | Failure subcode | Permanence |
 |--|--|--|--|--|
 |`Kusto.Data.Exceptions.EntityNameIsNotValidException` | Raised to indicate that the entity name is not valid. | 400 |  BadRequest_EntityNameIsNotValid | True |
-|`Kusto.Data.Exceptions.KustoClientException` | Raised when a Kusto client is unable to send or complete a request. This includes client authentication exceptions. Specific errors can be found in the [client exceptions](#client-exceptions) table. | 0 |   | False |
+|`Kusto.Data.Exceptions.KustoClientException` | Raised when a Kusto client is unable to send or complete a request. This category includes client authentication exceptions. Specific errors can be found in the [client exceptions](#client-exceptions) table. | 0 |   | False |
 |`Kusto.Data.Exceptions.KustoRequestException` | Raised when the Kusto service was sent a bad request. Specific errors can be found in the [Request Exceptions](#request-exceptions) table. | 0 |   | True |
 |`Kusto.Data.Exceptions.KustoServiceException` | Raised when the Kusto service was unable to process a request. Specific errors can be found in the [Service exceptions](#service-exceptions) table. | 0 |   | False |
 |`Kusto.Data.Exceptions.KustoServicePartialQueryFailureException` | Raised when query execution has started successfully but failed prior to completion.  | 0 |   | False |
@@ -32,7 +32,7 @@ Client exceptions contain the following exception categories:
 |`Kusto.Data.Exceptions.KustoClientAuthenticationException` | Raised on the client-side when an authentication flow fails.  Specific errors can be found in the [Authentication exceptions](#authentication-exceptions) table. | 0 |   | False |
 |`Kusto.Data.Exceptions.KustoClientInvalidConnectionStringException` | Raised when Kusto Connection String Builder is initialized with conflicting or insufficient properties. | 0 |   | False |
 |`Kusto.Data.Exceptions.KustoClientNameResolutionFailureException` | Raised when a Kusto client failed to resolve the service name.  | 0 |   | False |
-|`Kusto.Data.Exceptions.KustoClientNotSupportedException` | Raised on the client-side when a feature is not supported by Kusto .Net Core client. | 0 |   | False |
+|`Kusto.Data.Exceptions.KustoClientNotSupportedException` | Raised on the client-side when a feature is not supported by Kusto .NET Core client. | 0 |   | False |
 |`Kusto.Data.Exceptions.KustoClientPrincipalIdentityMustBeNullException` | Raised when a Kusto client is asked to transmit a `ClientRequestProperties` object with non-null PrincipalIdentity. | 0 |   | False |
 |`Kusto.Data.Exceptions.KustoClientTemporaryStorageRetrievalException` | Raised when a command to retrieve temporary storage has failed. | 0 |   | False |
 |`Kusto.Data.Exceptions.KustoClientTimeoutAwaitingPendingOperationException` | Raised when timing out awaiting for the completion of a pending operation. | 0 |   | False |
@@ -59,10 +59,10 @@ Client exceptions contain the following exception categories:
 
 | Exception name | Description | Failure code | Failure subcode | Permanence |
 |--|--|--|--|--|
-|`Kusto.Data.Exceptions.KustoClientApplicationAuthenticationException` | Raised on the client-side when AAD Application authentication fails. | 0 |   | True |
+|`Kusto.Data.Exceptions.KustoClientApplicationAuthenticationException` | Raised on the client-side when Azure Active Directory Application authentication fails. | 0 |   | True |
 |`Kusto.Data.Exceptions.KustoClientApplicationCertificateNotFoundException` | Raised when certificate required for application authentication is not found. | 0 |   | True |
 |`Kusto.Data.Exceptions.KustoClientLocalSecretAuthenticationAccessDisabledException` | Raised when `KustoConnectionStringBuilder.PreventAccessToLocalSecretsViaKeywords` is true, and there's an attempt to request authentication based on a local secret via the connection string. | 400 |  LocalSecretAuthenticationAccessDisabled | True |
-|`Kusto.Data.Exceptions.KustoClientUserAuthenticationException` | Raised on the client-side when AAD User authentication fails. | 0 |   | True |
+|`Kusto.Data.Exceptions.KustoClientUserAuthenticationException` | Raised on the client-side when Azure Active Directory User authentication fails. | 0 |   | True |
 |`Kusto.Data.Exceptions.KustoClientUserInteractiveModeNotValidException` | Raised on the client-side when it fails to authenticate to Azure Active Directory. | 0 |   | True |
 
 ## Request Exceptions
@@ -71,17 +71,17 @@ Client exceptions contain the following exception categories:
 |--|--|--|--|--|
 | `Kusto.Data.Exceptions.ClusterSuspendedException` | Raised when a request with 'request_execute_only_if_running' flag is denied because the service is in a suspended state. | 412 |  PreconditionFailed | True |
 | `Kusto.Data.Exceptions.KustoBadRequestException` | Raised when the Kusto service was sent a bad request (could not be parsed  or had semantic errors etc.). Specific errors can be found in the [Bad request exceptions](#bad-request-exceptions) table. | 400 | General_BadRequest | True |
-| `Kusto.Data.Exceptions.KustoConflictException` | Raised when the Kusto service was sent a request which cannot be performed due to service state. | 409 | Conflict | True |
+| `Kusto.Data.Exceptions.KustoConflictException` | Raised when the Kusto service was sent a request, which cannot be performed due to service state. | 409 | Conflict | True |
 | `Kusto.Data.Exceptions.KustoFailedChangeServiceStateException` | Raised on when the CM failed to change service state. | 0 |   | False |
 | `Kusto.Data.Exceptions.KustoRequestDeniedException` | Raised when the Kusto service was sent a request with insufficient security permissions to execute. | 403 | Forbidden | True |
-| `Kusto.Data.Exceptions.KustoRequestPayloadTooLargeException` | Raised when the payload is too large for example when Kusto is told to process more data than is allowed in a single batch. | 413 | Payload too large | True |
+| `Kusto.Data.Exceptions.KustoRequestPayloadTooLargeException` | Raised when the payload is too large. For example when Kusto is told to process more data than is allowed in a single batch. | 413 | Payload too large | True |
 
 ### Bad request exceptions
 
 | Exception name | Description | Failure code | Failure subcode | Permanence |
 |--|--|--|--|--|
 | `Kusto.Data.Exceptions.DatabaseNotFoundException` | Raised to indicate the failure to locate a database. | 400 | BadRequest_DatabaseNotExist | True |
-| `Kusto.Data.Exceptions.DuplicateMappingException` | Raised to indicate that the ingestion properties contains ingestion mapping and ingestion mapping reference. | 400 |  BadRequest_DuplicateMapping | True |
+| `Kusto.Data.Exceptions.DuplicateMappingException` | Raised to indicate that the ingestion properties contain ingestion mapping and ingestion mapping reference. | 400 |  BadRequest_DuplicateMapping | True |
 | `Kusto.Data.Exceptions.EntityNotFoundInContainerException` | Raised to indicate the failure to locate an entity. | 400 | General_BadRequest | True |
 | `Kusto.Data.Exceptions.EntityTypeIsNotValidException` | Raised to indicate that the entity type is unsupported. | 400 | General_BadRequest | True |
 | `Kusto.Data.Exceptions.FormatNotSupportedException` | Raised to indicate that the format provided is not supported. | 400 | BadRequest_FormatNotSupported | True |
