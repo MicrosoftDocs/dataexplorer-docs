@@ -41,7 +41,7 @@ High availability refers to the fault-tolerance of Azure Data Explorer, its comp
 
 #### Persistence layer
 
-Azure Data Explorer leverages Azure Storage as its durable persistence layer. Azure Storage automatically provides fault tolerance, with the default setting offering Locally Redundant Storage (LRS) within a data center. Three replicas are persisted. If a replica is lost while in use, another is deployed without disruption. Further resiliency is possible with Zone Redundant Storage that places replicas intelligently across Azure regional availability zones for maximum fault tolerance at an additional cost.
+Azure Data Explorer leverages Azure Storage as its durable persistence layer. Azure Storage automatically provides fault tolerance, with the default setting offering Locally Redundant Storage (LRS) within a data center. Three replicas are persisted. If a replica is lost while in use, another is deployed without disruption. Further resiliency is possible with Zone Redundant Storage (ZRS) that places replicas intelligently across Azure regional availability zones for maximum fault tolerance at an additional cost. ZRS enabled storage is automatically configured when the Azure Data Explorer cluster gets deployed into [Availability Zones](create-cluster-database-portal.md#create-a-cluster).
 
 #### Compute layer
 
