@@ -7,7 +7,7 @@ ms.date: 03/16/2019
 ---
 # print operator
 
-Outputs single-row with one or more scalar expressions.
+Outputs single-row with one or more scalar expression results as columns.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -25,7 +25,7 @@ print x=1, s=strcat("Hello", ", ", "World!")
 
 ## Returns
 
-A single-column, single-row, table whose single cell has the value of the evaluated *ScalarExpression*.
+A one or more column, single-row, table whose single cell has the value of the evaluated *ScalarExpression*.
 
 ## Examples
 
