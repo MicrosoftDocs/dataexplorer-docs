@@ -3,7 +3,7 @@ title: Use the one-click table batching policy wizard to change the ingestion ba
 description: In this article, you learn how to change a table's ingestion batching policy using the one-click experience.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 06/21/2022
+ms.date: 06/26/2022
 ---
 # Create a table's ingestion batching policy with one-click
 
@@ -21,15 +21,15 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 1. In the left menu of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select the **Data** tab, [or use the one-click link](https://dataexplorer.azure.com/oneclick).
 
-    :::image type="content" source="media/one-click-table-policies/one-click-batch-policy-start.png" alt-text="Select one-click table batching ingestion policy update in the Azure Data Explorer web U I.":::
+    :::image type="content" source="media/one-click-table-policies/batch-policy-start.png" alt-text="Select table batching ingestion policy update in the Azure Data Explorer web U I.":::
 
-1. In the **Table batching policy** tile, select **Update**.
+1. Select **Table batching policy**.
 
     The **Table batching policy** window opens with the **Policy update** tab selected.
 
 ### Policy update
 
-:::image type="content" source="media/one-click-table-policies/table-batch-policy-update.png" alt-text="Screen shot of Update table retention policy window. Cluster, Database, Table and Policy fields must be filled out before proceeding to Update.":::
+:::image type="content" source="media/one-click-table-policies/table-batch-policy-update.png" alt-text="Screen shot of Update table batch policy window. Cluster, Database, Table and Policy fields must be filled out before proceeding to Update.":::
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus, or add a cluster connection.
 
@@ -42,8 +42,8 @@ In this article, you can define and assign an ingestion batching policy for a ta
     |**Setting** | **Default value** | **Field description**
     |---|---|---|
     | Number of items | *500*  | The number of files defined as the limit after which a batch is sealed.  |
-    | Time (sec) |  *10* | The time limit in seconds after which a batch is sealed.  |
-    | Size (MB) |  *1024* | The size limit in MB after which a batch is sealed.  |
+    | Time (sec) |  *10* | The time limit after which a batch is sealed.  |
+    | Size (MB) |  *1024* | The size limit after which a batch is sealed.  |
 
 1. Select **Update**.
 
