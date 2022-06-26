@@ -41,26 +41,30 @@ The **Create table** window opens with the **Destination** tab selected.
 
 ### Source tab
 
-1. In **Source type**, select the data source you'll use to create your table mapping. Choose from the following options: **From blob**, **From file**, **From blob container**, **From ADLS Gen2 container**, and **Reference to Event Hub (Preview)**.
+1. In **Source type**, select the data source you'll use to create your table mapping. Choose from the following options: **From blob**, **From file**, **From blob container**, **From ADLS Gen2 container**, and **Reference to Event Hub (Preview)**. You may also select **None** to proceed directly to the **Schema** tab and create a table schema manually.
 
     * If you're using **From blob container**:
         * Enter the storage url of your blob, and optionally enter the sample size.
         * Filter your files using the **File Filters**.
         * Select a file that will be used in the next step to define the schema.
 
-        :::image type="content" source="media/one-click-table/storage.png" alt-text="Create table using blob to create schema mapping.":::
+        :::image type="content" source="media/one-click-table/storage.png" alt-text="Screenshot of wizard to create table using blob to create schema mapping.":::
 
     * If you're using a **local file**:
         * Select **Browse** to locate the file, or drag the file into the field.
 
-        :::image type="content" source="./media/one-click-table/data-from-file.png" alt-text="Create a table based on data from a local file.":::
+        :::image type="content" source="./media/one-click-table/data-from-file.png" alt-text="Screenshot of wizard to create a table based on data from a local file.":::
 
     * If you're using a **blob**:
         * In the **Link to storage** field, add the [SAS URL](kusto/api/connection-strings/generate-sas-token.md) of the container and optionally enter the sample size.
 
+    * To proceed to **Schema** tab without a source type, select **None**.
+
+        :::image type="content" source="media/one-click-table/create-new-table-source-none.png" alt-text="Screenshot of wizard to create a table without using a source.":::
+
 1. Select **Next: Schema** to continue to the **Schema** tab.
 
-### Edit Schema
+### [Edit Schema from a source](###tab/source)
 
 In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats) and compression are automatically identified in the left-hand pane. If incorrectly identified, use the **Data format** dropdown menu to select the correct format.
 
@@ -69,7 +73,7 @@ In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats)
 
     :::image type="content" source="./media/one-click-table/schema-tab.png" alt-text="Edit schema tab in create table in one-click experience in Azure Data Explorer.":::
 
-If **Ingest data** is selected, in addition to creating the table, the wizard will also ingest the data from the source indicated previously in the **Source** tab. If clear, you may ingest data through a variety of [one-click ingestion](ingest-data-one-click.md#access-the-one-click-wizard) wizards.
+If **Ingest data** is selected, in addition to creating the table, the wizard also ingests the data from the source indicated previously in the **Source** tab. If **Ingest data** is clear, you may ingest data through one of the [one-click ingestion](ingest-data-one-click.md#access-the-one-click-wizard) wizards.
 
   :::image type="content" source="media/one-click-table/ingest-data-checkbox.png" alt-text="Screenshot of the ingest data checkbox selected to ingest data into table created from the wizard.":::
 
@@ -80,14 +84,34 @@ If **Ingest data** is selected, in addition to creating the table, the wizard wi
 
 1. Select **Next: Create table**.
 
+### [Edit Schema without a source](###tab/none)
+
+ In the **Schema** tab, the **Create table** window opens with the option to **Add new column** or learn more about **[Schema mapping](ingest-data-one-click.md#schema-mapping)**. If you selected **None** as the source type, you need to define the table schema manually.
+
+:::image type="content" source="media/one-click-table/create-new-table-blank.png" alt-text="Screenshot of the window to define schema manually.":::
+
+1. Select **Add new column** and the **Edit columns** dialog box opens.
+
+    :::image type="content" source="media/one-click-table/create-new-table-edit-columns.png" alt-text="Screenshot of the Edit columns fields to define the schema manually.":::
+
+1. Complete the fields for **Column name** and **Data type** the required columns, selecting **Add column** for each column. Next, select **Save**. The table is displayed.
+
+    :::image type="content" source="media/one-click-table/new-table-schema.png" alt-text="Screenshot of the new table with schema defined manually.":::
+
+    To add columns quickly, select the plus icon at the top right of the grid to insert a new column.
+
+1. Select **Next: Create table**.
+
+---
+
 ### Create table completed window
 
 In the **Create table completed** window, both steps will be marked with green check marks when table creation finishes successfully.
 
 * Select **View command** to open the editor for each step.
-    * In the editor, you can view and copy the automatic commands generated from your inputs.
+  * In the editor, you can view and copy the automatic commands generated from your inputs.
 
-    :::image type="content" source="./media/one-click-table/table-completed.png" alt-text="Table creation completed in create a table in one click experience - Azure Data Explorer.":::
+    :::image type="content" source="./media/one-click-table/table-completed.png" alt-text="Screenshot of table creation completed in create a table wizard.":::
 
 In the tiles below the **Create table** progress, explore **Quick queries** or **Tools**:
 
