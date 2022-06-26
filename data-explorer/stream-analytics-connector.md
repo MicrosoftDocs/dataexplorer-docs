@@ -1,9 +1,9 @@
 ---
 title: Azure Data Explorer connector for Azure Stream Analytics
-description: This article shows you how to move data between Azure Data Explorer and Azure Stream Analytics.
+description: This article shows you how to create an Azure Data Explorer connection for Azure Stream Analytics.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 06/09/2022
+ms.date: 06/26/2022
 ---
 
 # Azure Data Explorer connector for Azure Stream Analytics
@@ -18,7 +18,7 @@ In this article, you'll learn how to use a Streaming Analytics job to collect da
 
 - An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 - Create a [cluster and database](create-cluster-database-portal.md) and a [table](one-click-table.md).
-- Create an event hub using the following sections of the from the Azure Stream Analytics tutorial:
+- Create an event hub using the following sections of the Azure Stream Analytics tutorial:
     - [Create an event hub](/azure/stream-analytics/stream-analytics-real-time-fraud-detection#create-an-event-hub)
     - [Grant access to the event hub and get a connection string](/azure/stream-analytics/stream-analytics-real-time-fraud-detection#grant-access-to-the-event-hub-and-get-a-connection-string)
 
@@ -29,7 +29,7 @@ In this article, you'll learn how to use a Streaming Analytics job to collect da
 
 ## Create an Azure Data Explorer output connection
 
-Use the following steps to create an Azure Data Explorer output connection for an Stream Analytics job using the Azure portal or using an ARM template. The connection is used by the Stream Analytics job to send data to a specified Azure Data Explorer table. Once created and job is running, data that flows into the job is ingested into the specified target table.
+Use the following steps to create an Azure Data Explorer output connection for a Stream Analytics job using the Azure portal or using an ARM template. The connection is used by the Stream Analytics job to send data to a specified Azure Data Explorer table. Once created and job is running, data that flows into the job is ingested into the specified target table.
 
 > [!NOTE]
 > The Azure Data Explorer output connector only supports [Managed Identity](/azure/active-directory/managed-identities-azure-resources/overview) authentication. As part of creating the connector, database monitor and database ingestor permissions are granted to the Azure Stream Analytics job managed identity.
@@ -41,7 +41,7 @@ Use the following steps to create an Azure Data Explorer output connection for a
 
 ## [Azure portal](#tab/portal)
 
-Before you begin, make sure your have an existing Stream Analytics job or [create a new one](/azure/stream-analytics/stream-analytics-quick-create-portal), and then use the following steps to create your Azure Data Explorer connection.
+Before you begin, make sure you have an existing Stream Analytics job or [create a new one](/azure/stream-analytics/stream-analytics-quick-create-portal), and then use the following steps to create your Azure Data Explorer connection.
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 
