@@ -20,19 +20,6 @@ The following authentication methods are supported:
 * [AAD-integrated authentication](#AAD-integrated-authentication)
 * [Managed identity](#managed-identity)
 * [Username and Password](#Username-and-Password)
-* [Token](#token)
-
-## Storage authentication availability
-
-Different authentication methods are available for different external storage types. The available methods are summarized in the following table:
-
-| Authentication method | Available in Blob storage? | Available in Azure Data Lake Storage Gen 2? | Available in Azure Data Lake Storage Gen 1? | When should you use this method? |
-|---|---|---|---|---|
-| [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Use for attended flows when you need complex access control over the external storage. For example, in continuous export flows. You can also restrict storage access at the user level. |
-| [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Use in unattended flows, where no Azure Active Directory (Azure AD) principal can be derived to execute queries and commands. Managed identities are the only authentication solution. |
-| [Shared Access (SAS) key](#shared-access-sas-token) | :heavy_check_mark: | :heavy_check_mark: | :x: | SAS tokens have an expiration time. Use when accessing storage for a limited time. |
-| [Token](#token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Azure AD tokens have an expiration time. Use when accessing storage for a limited time. |
-| [Access key](#access-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | When you need to access resources on an ongoing basis. storage for a limited time. |
 
 ## AAD-integrated authentication
 
