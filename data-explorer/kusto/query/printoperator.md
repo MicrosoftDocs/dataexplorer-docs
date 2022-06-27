@@ -7,7 +7,7 @@ ms.date: 03/16/2019
 ---
 # print operator
 
-Outputs single-row with one or more scalar expression results as columns.
+Outputs a single-row with one or more scalar expression results as columns.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
