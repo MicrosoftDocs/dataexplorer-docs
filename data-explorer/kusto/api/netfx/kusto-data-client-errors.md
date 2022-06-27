@@ -5,13 +5,32 @@ ms.reviewer: yogilad
 ms.topic: reference
 ms.date: 06/20/2022
 ---
-# Kusto.Data errors and exceptions
+#  Kusto.Data exception handling
 
-The Kusto Client SDK (Kusto.Data) provides a detailed list of .NET errors on the client side.
+All exceptions defined in the .NET SDK implement the interface
+`Kusto.Cloud.Platform.Utils.ICloudPlatformException` (defined by the `Kusto.Cloud.Platform`
+assembly, and are distributed through the `Microsoft.Azure.Kusto.Cloud.Platform`
+NuGet package). Exception handlers can then inspect the following three get
+properties to decide what to do with the exceptions:
 
-*`Kusto.Data.Exceptions.KustoException`* is the base class for all exceptions raised by the Kusto .NET client libraries.
+* `int FailureCode { get; }`: Returns the equivalent HTTP status code.
 
-## General Client exceptions
+* `string FailureSubCode { get; }`: Returns the equivalent HTTP reason phrase.
+
+* `bool IsPermanent { get; }`: Returns the exception's permanence. Permanent exceptions indicate that the caller should not retry, since it's unlikely to succeed (for example, due to bad input).
+
+## Kusto.Data exceptions
+
+Exceptions raised from `Kusto.Data` (`Microsoft.Azure.Kusto.Data`
+NuGet package) inherit the `Kusto.Data.Exceptions.KustoException` class. Based on the root cause, They may also inherit one of the following exceptions:
+
+* `Kusto.Data.Exceptions.KustoRequestException`: Indicates a problem in the request itself, or in the environment that generated it. This is equivalent to HTTP status codes 4xx and is not a service fault.
+
+* `Kusto.Data.Exceptions.KustoServiceException`: Indicates a problem in the service side processing the request. This is equivalent to HTTP status code 520.
+
+* `Kusto.Data.Exceptions.KustoClientException`: Indicates a client-side problem in sending the request to the service. Specifically, this exception informs the caller that the service itself did not receive the request.
+
+## General exceptions
 
 | Exception name | Description | Failure code | Failure subcode | Permanence |
 |--|--|--|--|--|
