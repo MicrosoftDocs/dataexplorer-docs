@@ -14,7 +14,6 @@ We recommend adding an `h` to connection strings that contain secrets, so that t
 * Hide the entire string: Add an `h` to the beginning of the string, like this: `h"Server=tcp:myserver.database.windows.net..."`
 * Hiding the secret part of the string: Split the connection string into location and secret and add the `h` before the secret part, like this: "Server=tcp:myserver.database.windows.net,1433;" h"User Id={some-userId};Password={some-password};Initial Catalog=mydatabase;"
 
-
 The following authentication methods are supported:
 
 * [AAD-integrated authentication](#AAD-integrated-authentication)
