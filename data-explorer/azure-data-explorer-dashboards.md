@@ -54,7 +54,8 @@ Add a data source for the dashboard.
     1. Enter a **Data source name**.
     1. Enter the **Cluster URI** region and then select **Connect**.
     1. Select the **Database** from the drop-down list.
-    1. Select **Apply**.
+    2. Enter the **Query results cach max age** value fot leveraging query results cache on all queries sent to this data source.
+    3. Select **Apply**.
 
     :::image type="content" source="media/adx-dashboards/data-source-pane.png" alt-text="Data source pane.":::
 
