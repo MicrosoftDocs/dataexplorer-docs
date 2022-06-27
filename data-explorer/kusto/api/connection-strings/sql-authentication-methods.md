@@ -5,7 +5,7 @@ ms.reviewer: shanisolomon
 ms.topic: reference
 ms.date: 07/02/2022
 ---
-# Storage authentication methods
+# SQL Server authentication methods
 
 Azure Data Explorer can interact with external SQL databases in different ways. For Azure Data Explorer to interact with and authenticate to SQL databases, you must specify the SQL Server's `connection string`. The `connection string` defines the database being accessed and its authentication information.
 
