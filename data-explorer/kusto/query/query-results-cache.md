@@ -75,7 +75,7 @@ The following management and observability commands are supported:
 
 * [Show query results cache](../management/show-query-results-cache-command.md): Returns statistics related to the query results cache.
 * [Clear query results cache](../management/clear-query-results-cache-command.md): Clears query results cache.
-* Refresh query cache entry: a specific query cache entry can be refreshed using `query_results_cache_force_refresh` (OptionQueryResultsCacheForceRefresh) [client request property](../api/netfx/request-properties.md). When set to `true`, it will force query results cache to be refreshed also in case existing cache is present. This is useful in scenarios that require queries results to be available for querying. The property must be used in combination with 'query_results_cache_max_age', and sent via ClientRequestProperties object (not as 'set' statement).
+* Refresh query cache entry: a specific query cache entry can be refreshed using `query_results_cache_force_refresh` (OptionQueryResultsCacheForceRefresh)[client request property](../api/netfx/request-properties.md). When set to `true`, this command will force query results cache to be refreshed also when an existing cache is present. This process is useful in scenarios that require queries results to be available for querying. This property must be used in combination with 'query_results_cache_max_age', and sent via ClientRequestProperties object. The property can't be part of a 'set' statement.
 
 ## Capacity
 
