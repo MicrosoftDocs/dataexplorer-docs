@@ -14,11 +14,7 @@ For more information about visualization options, see [Data visualization with A
 
 ## Visualize points on a map
 
-It's possible to visualize points either using [Longitude, Latitude] columns, or GeoJSON column. The use of a series column is optional. Each point is defined by [Longitude, Latitude] pair, in that order.
-
-To visualize points on a map, use the following `render` operator syntax:
-
-`render scatterchart with (kind = map)`
+It's possible to visualize points either using [Longitude, Latitude] columns, or GeoJSON column. The use of a series column is optional. Each point is defined by [Longitude, Latitude] pair, in that order. 
 
 ### Example: Visualize points on a map
 
