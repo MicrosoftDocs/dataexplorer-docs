@@ -11,7 +11,7 @@ Azure Data Explorer can interact with external SQL databases in different ways. 
 
 We recommend adding an `h` to connection strings that contain secrets, so that the connection strings are [obfuscated in telemetry data](../../query/scalar-data-types/string.md#obfuscated-string-literals) using one of the following methods:
 
-* Hide the entire string: Add an `h` to the beginning of the string, like this: `h"https://...."`
+* Hide the entire string: Add an `h` to the beginning of the string, like this: `h"Server=tcp:myserver.database.windows.net..."`
 * Hiding the secret part of the string: Split the connection string into location and secret and add the `h` before the secret part, like this: "https://fabrikam.blob.core.windows.net/container/path/to/file.csv;" h"ljkAkl...=="
 
 
