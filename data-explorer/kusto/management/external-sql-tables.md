@@ -22,7 +22,7 @@ Creates or alters an external SQL table in the database in which the command is 
 
 * *TableName* - External table name. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.
 * *SqlTableName* - The name of the SQL table. Not including the database name (example: "MySqlTable" and not "db1.MySqlTable").
-* *SqlServerConnectionString* - The connection string to the SQL server. See the supported [SQL authentication methods](../api/connection-strings/sql-authentication-methods.md).
+* *SqlServerConnectionString* - The connection string to the SQL Server. See the supported [SQL authentication methods](../api/connection-strings/sql-authentication-methods.md).
 
 > [!NOTE]
 > If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities. 
