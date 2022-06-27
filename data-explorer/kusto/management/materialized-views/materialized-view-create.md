@@ -328,7 +328,7 @@ When creating a materialized view with the `backfill` property, the materialized
     ```kusto
     .create async materialized-view with (
             backfill=true,
-            effectiveDateTime=datetime(2019-01-01),
+            effectiveDateTime=datetime(2020-01-01),
             MaxSourceRecordsForSingleIngest=3000000,
             Concurrency=2
         )
