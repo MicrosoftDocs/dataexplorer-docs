@@ -377,6 +377,24 @@ items:
       href: provision-azure-ad-app.md
     - name: Conditional Access
       href: security-conditional-access.md
+  - name: Develop
+    items:
+    - name: API overview
+      href: index.md
+    - name: One-click sample app generator
+      href: ../../sample-app-generator-one-click.md
+    - name: Connection strings
+      items:
+      - name: Connection strings overview
+        href: connection-strings/index.md
+      - name: Kusto connection strings
+        href: connection-strings/kusto.md
+      - name: Storage connection strings
+        href: connection-strings/storage-connection-strings.md
+      - name: Storage authentication methods
+        href: connection-strings/storage-authentication-methods.md
+      - name: Generate SAS token
+        href: connection-strings/generate-sas-token.md
   - name: Manage
     items:
     - name: Cluster
