@@ -18,9 +18,7 @@ We recommend the default policy be maintained except for specific scenarios. It 
 
 ## How it works
 
-Encoding policy changes do not affect data that has already been ingested. Only new ingestion operations will be performed according to the new policy.
-
-The encoding policy applies to individual columns in a table, but can be set at the column level, table level (affecting all columns of the table), or database level.
+Encoding policy changes do not affect data that has already been ingested. Only new ingestion operations will be performed according to the new policy. The encoding policy applies to individual columns in a table, but can be set at the column level, table level (affecting all columns of the table), or database level.
 
 ## Next steps
 

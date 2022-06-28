@@ -24,8 +24,8 @@ This command requires [table/database admin](access-control/role-based-authoriza
 
 ## Arguments
 
-* *EntityIdentifier* is the identifier for the column.
-* *EncodingPolicyType* is the type of the encoding policy to apply to the specified column.
+* *EntityIdentifier*: the identifier for the column.
+* *EncodingPolicyType*: the type of the encoding policy to apply to the specified column.
 
    The possible values of *EncodingPolicyType* are:
 
