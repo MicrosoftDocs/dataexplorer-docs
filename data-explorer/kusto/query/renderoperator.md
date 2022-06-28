@@ -87,7 +87,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 |`xtitle`      |The title of the x-axis (of type `string`).                                       |
 |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
-|`ysplit`      |How to split multiple the visualization. See below.                               |
+|`ysplit`      |How to split multiple the visualization. For more information, see [Multiple y-axes](#multiple-y-axes).                             |
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 |`anomalycolumns`|Property relevant only for `anomalychart`. Comma-delimited list of columns which will be considered as anomaly series and displayed as points on the chart|
 
