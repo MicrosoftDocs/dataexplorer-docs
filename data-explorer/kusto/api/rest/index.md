@@ -19,6 +19,7 @@ endpoint is an engine endpoint or a data management endpoint.
 |Query          |GET or POST |/v1/rest/query         |Yes   |No             |Yes            |
 |Query          |GET or POST |/v2/rest/query         |Yes   |No             |Yes            |
 |Management     |POST        |/v1/rest/mgmt          |Yes   |Yes            |Yes            |
+|StreamIngest   |POST        |/v1/rest/ingest        |Yes   |No             |Yes            |
 |UI             |GET         |/                      |Yes   |No             |No             |
 |UI             |GET         |/{dbname}              |Yes   |No             |No             |
 
@@ -27,6 +28,7 @@ Where *Action* represents a group of related activities
 * The Query action sends a query to the service and gets back the results of the query.
 * The Management action sends a control command to the service and gets back
   the results of the control command.
+* The StreamIngest action ingests data to a table.
 * The UI action can be used to start up a desktop client or web client. The action is done through an HTTP Redirect response,
 to interact with the service.
 
@@ -38,6 +40,10 @@ For more information on the HTTP request and response of the query and managemen
 * [Query management HTTP request](request.md)
 * [Query management HTTP response](response.md)
 * [Query v2 HTTP response](response2.md)
+
+For more information on the stream ingest action, see:
+
+* [Streaming ingestion HTTP request](streaming-ingest.md)
 
 For more information on the UI action, see:
 

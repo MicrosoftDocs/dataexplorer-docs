@@ -68,6 +68,7 @@ The cluster metrics track the general health of the cluster. For example, resour
 | Keep alive | Count | Avg | Tracks the responsiveness of the cluster. <br> <br> A fully responsive cluster returns value 1 and a blocked or disconnected cluster returns 0. |
 | Total number of throttled commands | Count | Avg, Max, Min, Sum | The number of throttled (rejected) commands in the cluster, since the maximum allowed number of concurrent (parallel) commands was reached. | None |
 | Total number of extents | Count | Avg, Max, Min, Sum | Total number of data extents in the cluster. <br> <br> Changes in this metric can imply massive data structure changes and high load on the cluster, since merging data extents is a CPU-heavy activity. | None |
+| Follower latency | Seconds | Avg, Max, Min | The follower databases synchronize changes in the leader databases. Because of the synchronization, there’s a data lag of a few seconds to a few minutes in data availability. <br> <br> This metric measures the length of the time lag. The time lag depends on several factors like: the overall size and rate of the ingested data to the leader, the number of databases followed, the rate of internal operations performed on the leader (merge/rebuild operations). <br> <br> This is a cluster level metrics: the followers catch metadata of all databases that are followed. This metric represents the latency of the process. | None |
 
 ## Export metrics
 

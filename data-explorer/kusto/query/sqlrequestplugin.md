@@ -11,8 +11,8 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The `sql_request` plugin sends a SQL query to a SQL Server network endpoint and returns the first rowset in the results.
-The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query.
+The `sql_request` plugin sends a SQL query to a SQL Server network endpoint and returns the results.
+If more than one rowset is returned by SQL, only the first one is used.
 The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Syntax
@@ -27,7 +27,18 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 | *SqlQuery* | string | &check; | Indicates the query that is to be executed against the SQL endpoint. Must return one or more row sets, but only the first one is made available for the rest of the Kusto query. |
 | *SqlParameters* | dynamic | | Holds key-value pairs to pass as parameters along with the query. |
 |*Options* | dynamic | |Holds more advanced settings as key-value pairs. Currently, only `token` can be set, to pass a caller-provided Azure AD access token that is forwarded to the SQL endpoint for authentication.
-| *OutputSchema* | | | The names and types for the expected columns of the `sql_request` plugin output.<br /><br />**Syntax**: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`<br /><br />Specifying the expected schema optimizes query execution by not having to first run the actual query to explore the schema. An error is raised if the run-time schema doesn't match the *OutputSchema* schema. |
+| *OutputSchema* | | | The names and types for the expected columns of the `sql_request` plugin output.|
+
+The optional *OutputSchema* argument has the following syntax:
+
+`(` *ColumnName* `:` *ColumnType* [`,` ...] `)`
+
+Specifying this argument allows the plugin to be used
+in scenarios (such as a cross-cluster query) which would otherwise prevent it from running,
+and enables multiple query optimizations.
+It is therefore recommended to always specify it.
+An error is raised if the run-time schema of the first rowset returned by the SQL network endpoint
+doesn't match the *OutputSchema* schema.
 
 ## Examples
 
