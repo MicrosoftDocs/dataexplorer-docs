@@ -16,7 +16,7 @@ Searches the array for the specified item, and returns its position.
 ## Arguments
 
 * *array*: Input array to search.
-* *lookup*: Value to lookup. The value should be of type long, integer, double, datetime, timespan, decimal, string, guid or boolean.
+* *lookup*: Value to lookup. The value should be of type `long`, `integer`, `double`, `datetime`, `timespan`, `decimal`, `string`, `guid` or `boolean`.
 * *start_index*: Search start position. A negative value will offset the starting search value from the end of the array by this many steps: abs(start_index). Optional.
 * *length*: Number of values to examine. A value of -1 means unlimited length. Optional.
 * *occurrence*: The number of the occurrence. Default 1. Optional.
