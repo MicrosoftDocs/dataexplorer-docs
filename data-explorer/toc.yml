@@ -380,7 +380,7 @@ items:
   - name: Develop
     items:
     - name: API overview
-      href: index.md
+      href: kusto/api/index.md
     - name: One-click sample app generator
       href: sample-app-generator-one-click.md
     - name: Connection strings
