@@ -18,7 +18,7 @@ items:
     href: create-cluster-database-portal.md
   - name: Ingest sample data
     href: ingest-sample-data.md
-  - name: Query data with Web UI
+  - name: Query data with Azure Data Explorer web UI
     href: web-query-data.md
 - name: Tutorials
   items:
@@ -40,7 +40,7 @@ items:
   items:
   - name: EngineV3
     href: engine-v3.md
-  - name: Web UI overview
+  - name: Azure Data Explorer web UI overview
     href: web-ui-overview.md
   - name: Data ingestion
     items:
@@ -76,7 +76,7 @@ items:
   items:
   - name: Explore the samples gallery
     href: web-ui-samples-gallery.md
-    displayName: Web UI
+    displayName: Azure Data Explorer web UI
   - name: Create a start-for-free cluster
     href: start-for-free-web-ui.md
   - name: Create cluster and database
@@ -221,6 +221,9 @@ items:
       - name: Java SDK
         displayName: ingest data, ingestion
         href: java-ingest-data.md
+    - name: Azure Stream Analytics
+      href: stream-analytics-connector.md
+      displayName: ingest data, ingestion
     - name: Kafka
       displayName: ingest data, ingestion
       href: ingest-data-kafka.md
