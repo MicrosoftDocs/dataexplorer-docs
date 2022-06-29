@@ -31,7 +31,7 @@ Use the following steps to create an [Azure Data Explorer output](/azure/stream-
 > [!IMPORTANT]
 >
 > - The Azure Data Explorer output connector only supports [Managed Identity](/azure/active-directory/managed-identities-azure-resources/overview) authentication. As part of creating the connector, database monitor and database ingestor permissions are granted to the Azure Stream Analytics job managed identity.
-> - When setting up the [Azure Data Explorer output connector](/azure/stream-analytics/azure-database-explorer-output), you specify target the cluster, database, and table name. For ingestion to succeed, make sure that the number, data types, and order of the columns in the Azure Stream Analytics query match the table schema in the Azure Data Explorer table.
+> - When setting up the [Azure Data Explorer output connector](/azure/stream-analytics/azure-database-explorer-output), you specify the target cluster, database, and table name. For ingestion to succeed, make sure that the number, data types, and order of the columns in the Azure Stream Analytics query match the table schema in the Azure Data Explorer table.
 
 > [!NOTE]
 >
@@ -65,7 +65,7 @@ Before you begin, make sure you have an existing Stream Analytics job or [create
     | Output alias | A friendly name used in queries to direct the query output to this database. |
     | Subscription | Select the Azure subscription where your cluster resides. |
     | Cluster | The unique name that identifies your cluster. The domain name [region].kusto.windows.net is appended to the cluster name you provide. The name can contain only lowercase letters and numbers. It must contain from 4 to 22 characters. |
-    | Cluster URI | The data ingestion URI of your cluster. You can specify the URI for the Azure Data Exploer or Synapse data ingestion endpoints. |
+    | Cluster URI | The data ingestion URI of your cluster. You can specify the URI for the Azure Data Explorer or [Azure Synapse Data Explorer](/azure/synapse-analytics/data-explorer/ingest-data/data-explorer-ingest-data-overview#programmatic-ingestion-using-sdks) data ingestion endpoints. |
     | Database | The name of the database where you're sending your output. The database name must be unique within the cluster. |
     | Authentication | An [Azure Active Directory (Azure AD) managed identity](/azure/active-directory/managed-identities-azure-resources/overview) that allows your cluster to easily access other Azure AD protected resources. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets. Managed identity configuration enables you to use customer-managed keys for your cluster. |
     | Table | The name of the table where you're sending your output. The number, data types, and order of the columns in the output must match the schema of this table schema. |
