@@ -21,7 +21,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 1. In the left menu of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select the **Data** tab, [or use the one-click link](https://dataexplorer.azure.com/oneclick).
 
-    :::image type="content" source="media/one-click-table-policies/batch-policy-start.png" alt-text="Select table batching ingestion policy update in the Azure Data Explorer web U I.":::
+    :::image type="content" source="media/one-click-table-policies/batch-policy-start.png" alt-text="Screenshot of Azure Data Explorer web U I with the table batching policy card selected to make policy changes.":::
 
 1. Select **Table batching policy**.
 
