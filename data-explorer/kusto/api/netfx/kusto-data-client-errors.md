@@ -1,11 +1,11 @@
 ---
-title: Kusto.Data errors & exceptions - Azure Data Explorer
+title: Kusto.Data exceptions - Azure Data Explorer
 description: This article describes Kusto.Data - Errors and Exceptions in Azure Data Explorer.
 ms.reviewer: yogilad
 ms.topic: reference
 ms.date: 06/20/2022
 ---
-#  Kusto.Data exception handling
+#  Kusto.Data exceptions
 
 All exceptions defined in the .NET SDK implement the interface
 `Kusto.Cloud.Platform.Utils.ICloudPlatformException` (defined by the `Kusto.Cloud.Platform`
@@ -19,7 +19,7 @@ properties to decide what to do with the exceptions:
 
 * `bool IsPermanent { get; }`: Returns the exception's permanence. Permanent exceptions indicate that the caller should not retry, since it's unlikely to succeed (for example, due to bad input).
 
-## Kusto.Data exceptions
+## Kusto.Data exceptions categories
 
 Exceptions raised from `Kusto.Data` (`Microsoft.Azure.Kusto.Data`
 NuGet package) inherit the `Kusto.Data.Exceptions.KustoException` class. Based on the root cause, They may also inherit one of the following exceptions:
