@@ -58,7 +58,7 @@ Before you begin, make sure you have an existing Stream Analytics job or [create
     > You can use the following options to specify your cluster and database:
     >
     > - **Subscription**: Select **Select Azure Data Explorer from your subscriptions**, select your subscription, and then choose your cluster and database.
-    > - **Manually**: Select **Provide Azure Data Explorer settings manually**, specify the cluster URI and database name.
+    > - **Manually**: Select **Provide Azure Data Explorer settings manually**, specify the cluster URI and database.
 
     | Property name | Description |
     |--|--|
