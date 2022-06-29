@@ -68,11 +68,13 @@ In **Source type**, select the data source you'll use to create your table mappi
 
 1. In **Source type**, select **None**.
 
-        :::image type="content" source="media/one-click-table/create-new-table-source-none.png" alt-text="Screenshot of wizard to create a table without using a source.":::
+    :::image type="content" source="media/one-click-table/create-new-table-source-none.png" alt-text="Screenshot of wizard to create a table without using a source.":::
 
 1. Select **Next: Schema** to continue to the **Schema** tab.
 
 ---
+
+### Edit Schema
 
 ### [Edit Schema from a source](#tab/source)
 
@@ -93,8 +95,6 @@ In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats)
     > Names can include alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
 
 1. Select **Next: Create table**.
-
-### Edit Schema
 
 ### [Edit Schema manually](#tab/manually)
 
