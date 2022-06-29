@@ -73,7 +73,8 @@ The following list contains error codes you may come across during [ingestion](i
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
 |Download_NotTransient                             |Failed to download source from Azure storage. Not transient error occurred                   |Permanent           |
-|Download_UnknownError                             |Failed to download source from Azure storage. Unknown error occurred              |Transient           |
+|Download_UnknownError                             |Failed to download source from Azure storage. Unknown error occurred                          |Transient           |
+|Download_TransientNameResolutionFailure           |Failed to download source from Azure storage. Transient storage account name resolution failure occurred   |Transient           |
 
 
 ## Category: EntityNotFound
