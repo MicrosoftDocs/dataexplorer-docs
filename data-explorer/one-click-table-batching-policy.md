@@ -33,7 +33,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus, or add a cluster connection.
 
-1. Under **Table**, select a table from the drop-down menus.
+1. Under **Table**, select a table from the drop-down menus. Batching policy settings for the table selected are prepopulated in the table batching policy fields.
 
 1. Under **Inherit values from database**, toggle **On** to apply the batching policy values from the database to the table. To create or update a separate policy for the table, toggle to **Off**.
 
@@ -41,8 +41,8 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
     |**Setting** | **Default value** | **Field description**
     |---|---|---|
-    | Number of items | *500*  | The number of files defined as the limit after which a batch is sealed.  |
-    | Time (sec) |  *10* | The time limit after which a batch is sealed. |
+    | Number of items | *1000*  | The number of files defined as the limit after which a batch is sealed.  |
+    | Time (seconds) |  *300* | The time limit after which a batch is sealed. |
     | Size (MB) |  *1024* | The size limit after which a batch is sealed.  |
 
     For more information, see [ingestion batching policy batch sealing](/kusto/management/batchingpolicy.md#sealing-a-batch).
