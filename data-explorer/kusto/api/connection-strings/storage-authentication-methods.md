@@ -107,7 +107,7 @@ To add a storage access key, append the key to the connection string, as follows
 
 ## AWS Programmatic Access Keys
 
-To add Amazon Web Services access key, Append `;AwsCredentials=ACCESS_KEY_ID,SECRET_ACCESS_KEY` to the connection string.
+To add Amazon Web Services access keys, Append `;AwsCredentials=ACCESS_KEY_ID,SECRET_ACCESS_KEY` to the connection string.
 
 ### AWS Programmatic Access Keys examples
 
