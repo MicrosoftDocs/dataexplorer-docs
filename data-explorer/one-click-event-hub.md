@@ -3,7 +3,7 @@ title: Use one-click ingestion to ingest data from Azure Event Hubs into Azure D
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Azure Event Hubs using the one-click experience.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 01/04/2022
+ms.date: 06/22/2022
 ---
 # Use one-click ingestion to create an Azure Event Hubs data connection for Azure Data Explorer
 
@@ -30,9 +30,9 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 
 ## Ingest new data
 
-1. In the left menu of the [Web UI](https://dataexplorer.azure.com/), select the **Data** tab.
+1. In the left menu of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select the **Data** tab.
 
-    :::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-web-ui.png" alt-text="Select one-click ingestion in the web UI.":::
+    :::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-web-ui.png" alt-text="Select one-click ingestion in the Azure Data Explorer web U I.":::
 
 1. In the **Ingest data from Event Hub** card, select **Ingest**.
 
@@ -101,5 +101,5 @@ In the **Continuous ingestion from Event Hub established** window, all steps wil
 
 ## Next steps
 
-* [Query data in Azure Data Explorer Web UI](web-query-data.md)
+* [Query data in Azure Data Explorer web UI](web-query-data.md)
 * [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)

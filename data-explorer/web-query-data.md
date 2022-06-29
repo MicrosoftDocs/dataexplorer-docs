@@ -1,20 +1,20 @@
 ---
-title: 'Quickstart: Query data in Azure Data Explorer Web UI'
-description: In this quickstart, you learn how to query and share data in Azure Data Explorer Web UI.
+title: 'Quickstart: Query data in the Azure Data Explorer web UI'
+description: In this quickstart, you learn how to query and share data in the Azure Data Explorer web UI.
 ms.reviewer: olgolden
 ms.topic: quickstart
-ms.date: 09/13/2021
+ms.date: 06/22/2022
 ms.custom: mode-portal
 
 #Customer intent: As a user of Azure Data Explorer, I want to query data in the Web UI and share data. This will allow me to understand my data and share analysis with colleagues.
 ---
-# Quickstart: Query data in Azure Data Explorer Web UI
+# Quickstart: Query data in the Azure Data Explorer web UI
 
-Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data. Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share Kusto Query Language commands and queries. The web experience is available in the Azure portal and as a stand-alone web application, the [Azure Data Explorer Web UI](https://dataexplorer.azure.com).
-The Azure Data Explorer Web UI can also be hosted by other web portals in an HTML iframe. For more information on how to host the Web UI and the Monaco editor used, see [Monaco IDE integration](kusto/api/monaco/monaco-kusto.md).
-In this quickstart, you'll be working in the stand-alone Azure Data Explorer Web UI.
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data. Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share Kusto Query Language commands and queries. The web experience is available in the Azure portal and as a stand-alone web application, the [Azure Data Explorer web UI](https://dataexplorer.azure.com).
+The Azure Data Explorer web UI can also be hosted by other web portals in an HTML iframe. For more information on how to host the Azure Data Explorer web UI and the Monaco editor used, see [Monaco IDE integration](kusto/api/monaco/monaco-kusto.md).
+In this quickstart, you'll be working in the stand-alone Azure Data Explorer web UI.
 
-:::image type="content" source="media/web-query-data/walkthrough.gif" alt-text="Walkthrough of the Kusto Web Explorer experience in Azure Data Explorer web UI.":::
+:::image type="content" source="media/web-query-data/walkthrough.gif" alt-text="Walkthrough of the Kusto Web Explorer experience in the Azure Data Explorer web U I.":::
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ Sign in to [the application](https://dataexplorer.azure.com/).
 
 When you first open the application, there are no cluster connections.
 
-![Add cluster.](media/web-query-data/add-cluster.png)
+:::image type="content" source="media/web-query-data/add-cluster.png" alt-text="Screenshot of query editor showing where to add a cluster.":::
 
 You must add a connection to a cluster before you can start running queries. In this section, you’ll add connections to the Azure Data Explorer **help** cluster and to the test cluster you've created in the [Prerequisites](#prerequisites) (optional).
 
@@ -42,7 +42,7 @@ You must add a connection to a cluster before you can start running queries. In 
 
 1. In the **Cluster connection** pane, you should now see the **help** cluster. Expand the **Samples** database and open the **Tables** folder to see the sample tables that you have access to.
 
-    :::image type="content" source="media/web-query-data/help-cluster.png" alt-text="Find table in the help cluster in Azure Data Explorer web UI.":::
+    :::image type="content" source="media/web-query-data/help-cluster.png" alt-text="Find table in the help cluster in the Azure Data Explorer web U I.":::
 
 We use the **StormEvents** table later in this quickstart, and in other Azure Data Explorer articles.
 
@@ -54,11 +54,11 @@ Now add the test cluster you created.
 
 1. In the **Add Cluster** dialog box, enter your test cluster URL in the form `https://<ClusterName>.<Region>.kusto.windows.net/`, then select **Add**. For example, `https://mydataexplorercluster.westus.kusto.windows.net` as in the following image:
 
-    :::image type="content" source="media/web-query-data/server-uri.png" alt-text="Enter test cluster URL in Azure Data Explorer web UI.":::
+    :::image type="content" source="media/web-query-data/server-uri.png" alt-text="Enter test cluster URL in the Azure Data Explorer web U I.":::
 
 1. In the example below, you see the **help** cluster and a new cluster, **docscluster.westus** (full URL is `https://docscluster.westus.kusto.windows.net/`).
 
-    ![Test cluster.](media/web-query-data/test-cluster.png)
+    :::image type="content" source="media/web-query-data/test-cluster.png" alt-text="Screenshot of the Add Cluster dialog box to enter test cluster information.":::
 
 ## Run queries
 
@@ -76,11 +76,11 @@ You can now run queries on both clusters (assuming you have data in your test cl
 
     This query returns the 10 newest records in the **StormEvents** table. The result should look like the following table.
 
-    :::image type="content" source="media/web-query-data/result-set-take-10.png" alt-text="Screenshot of a table that lists data for 10 storm events in Azure Data Explorer web UI." border="false":::
+    :::image type="content" source="media/web-query-data/result-set-take-10.png" alt-text="Screenshot of a table that lists data for 10 storm events in the Azure Data Explorer web U I." border="false":::
 
     The following image shows the state of the application, with the cluster added, and a query with results.
 
-    :::image type="content" source="media/web-query-data/webui-take10.png" alt-text="full screen in Azure Data Explorer web UI.":::
+    :::image type="content" source="media/web-query-data/webui-take10.png" alt-text="Screenshot of query editor window in the Azure Data Explorer web U I.":::
 
 1. Copy and paste the following query into the query window, below the first query. Notice how it isn't formatted on separate lines like the first query.
 
@@ -91,11 +91,11 @@ You can now run queries on both clusters (assuming you have data in your test cl
 
 1. Select the new query. Press *Shift+Alt+F* to format the query, so it looks like the following query.
 
-    ![Formatted query.](media/web-query-data/formatted-query.png)
+    :::image type="content" source="media/web-query-data/formatted-query.png" alt-text="Screenshot of a query with the correct formatting.":::
 
 1. Select **Run** or press *Shift+Enter* to run a query. This query returns the same records as the first one, but includes only the columns specified in the `project` statement. The result should look like the following table.
 
-    :::image type="content" source="media/web-query-data/result-set-project.png" alt-text="Screenshot of a table that lists the start time, end time, state, event type, damage property, and episode narrative for 10 storm events in Azure Data Explorer web UI." border="false":::
+    :::image type="content" source="media/web-query-data/result-set-project.png" alt-text="Screenshot of a table that lists the start time, end time, state, event type, damage property, and episode narrative for 10 storm events in the Azure Data Explorer web U I." border="false":::
 
     > [!TIP]
     > Select **Recall** at the top of the query window to show the result set from the first query without having to rerun the query. Often during analysis, you run multiple queries, and **Recall** allows you to retrieve the results of previous queries.
@@ -113,7 +113,7 @@ You can now run queries on both clusters (assuming you have data in your test cl
 
     The result should look like the following chart.
 
-    ![Column chart.](media/web-query-data/column-chart.png)
+    :::image type="content" source="media/web-query-data/column-chart.png" alt-text="Screenshot of a column chart as output from a query.":::
 
     > [!NOTE]
     > Blank lines in the query expression can affect which part of the query is executed.
@@ -127,15 +127,15 @@ Now that you've seen how basic queries work, you can use the results grid to cus
 
 ### Expand a cell
 
-Expanding cells is useful to view long strings or dynamic fields such as JSON.
+Expanding cells are useful to view long strings or dynamic fields such as JSON.
 
 1. Double-click a cell to open an expanded view. This view allows you to read long strings, and provides a JSON formatting for dynamic data.
 
-    :::image type="content" source="media/web-query-data/expand-cell.png" alt-text="Azure Data Explorer WebUI expand cell to show long strings.":::
+    :::image type="content" source="media/web-query-data/expand-cell.png" alt-text="Screenshot of the Azure Data Explorer web U I expanded cell to show long strings.":::
 
-1. Click on the icon on the top right of the result grid to switch reading pane modes. Choose between the following reading pane modes for expanded view: inline, below pane, and right pane.
+1. Select on the icon on the top right of the result grid to switch reading pane modes. Choose between the following reading pane modes for expanded view: inline, below pane, and right pane.
 
-    :::image type="content" source="media/web-query-data/expanded-view-icon.png" alt-text="Icon to change reading pane for expanded view mode - Azure Data Explorer WebUI query results.":::
+    :::image type="content" source="media/web-query-data/expanded-view-icon.png" alt-text="Screenshot highlighting the icon to change the reading pane to expanded view mode in the Azure Data Explorer web UI query results.":::
 
 ### Expand a row
 
@@ -143,7 +143,7 @@ When working with a table with dozens of columns, expand the entire row to be ab
 
 1. Click on the arrow **>** to the left of the row you want to expand.
 
-    :::image type="content" source="media/web-query-data/expand-row.png" alt-text="Expand a row in the Azure Data Explorer WebUI.":::
+    :::image type="content" source="media/web-query-data/expand-row.png" alt-text="Screenshot of an expanded row in the Azure Data Explorer web UI.":::
 
 1. Within the expanded row, some columns are expanded (arrow pointing down), and some columns are collapsed (arrow pointing right). Click on these arrows to toggle between these two modes.
 
@@ -161,30 +161,30 @@ Within the results, you can group results by any column.
 
 1. Mouse-over the **State** column, select the menu, and select **Group by State**.
 
-    ![Group by state.](media/web-query-data/group-by.png)
+    :::image type="content" source="media/web-query-data/group-by.png" alt-text="Screenshot of a table with query results grouped by state.":::
 
 1. In the grid, double-click on **California** to expand and see records for that state. This type of grouping can be helpful when doing exploratory analysis.
 
-    :::image type="content" source="media/web-query-data/group-expanded.png" alt-text="Screenshot of a query results grid with California group expanded in Azure Data Explorer web UI." border="false":::
+    :::image type="content" source="media/web-query-data/group-expanded.png" alt-text="Screenshot of a query results grid with California group expanded in the Azure Data Explorer web U I." border="false":::
 
 1. Mouse-over the **Group** column, then select **Reset columns**. This setting returns the grid to its original state.
 
-    ![Reset columns.](media/web-query-data/reset-columns.png)
+    :::image type="content" source="media/web-query-data/reset-columns.png" alt-text="Screenshot of the reset columns setting highlighted in the column dropdown menu.":::
 
 #### Use value aggregation
 
-After you have grouped by a column, you can then use the value aggregation function to calculate simple statistics per group.
+After you've grouped by a column, you can then use the value aggregation function to calculate simple statistics per group.
 
 1. Select the menu for the column you want to evaluate.
 1. Select **Value Aggregation**, and then select the type of function you want to do on this column.
 
-    :::image type="content" source="media/web-query-data/aggregate.png" alt-text="Aggregate results when grouping column by results in Azure Data Explorer web UI .":::
+    :::image type="content" source="media/web-query-data/aggregate.png" alt-text="Screenshot of aggregate results when grouping column by results in the Azure Data Explorer web U I. ":::
 
 ### Hide empty columns
 
 You can hide/unhide empty columns by toggling the **eye** icon on the results grid menu.
 
-:::image type="content" source="media/web-query-data/hide-empty-columns.png" alt-text="Screenshot of eye icon to hide results grid in Azure Data Explorer web UI.":::
+:::image type="content" source="media/web-query-data/hide-empty-columns.png" alt-text="Screenshot of eye icon to hide results grid in the Azure Data Explorer web U I.":::
 
 ### Filter columns
 
@@ -201,7 +201,7 @@ You can use one or more operators to filter the results of a column.
 1. To create a multi-condition filter, select a boolean operator to add another condition
 1. To remove the filter, delete the text from your first filter condition.
 
-    :::image type="content" source="media/web-query-data/filter-column.gif" alt-text="GIF showing how to filter on a column in the Azure Data Explorer WebUI.":::
+    :::image type="content" source="media/web-query-data/filter-column.gif" alt-text="GIF showing how to filter on a column in the Azure Data Explorer web U I.":::
 
 ### Run cell statistics
 
@@ -215,9 +215,9 @@ You can use one or more operators to filter the results of a column.
     | take 10
     ```
 
-1. In the results grid, select a few of the numerical cells. The table grid allows you to select multiple rows, columns, and cells and calculate aggregations on them. The Web UI currently supports the following functions for numeric values: **Average**, **Count**, **Min**, **Max**, and **Sum**.
+1. In the results grid, select a few of the numerical cells. The table grid allows you to select multiple rows, columns, and cells and calculate aggregations on them. The Azure Data Explorer web UI currently supports the following functions for numeric values: **Average**, **Count**, **Min**, **Max**, and **Sum**.
 
-    :::image type="content" source="media/web-query-data/select-stats.png" alt-text="select functions.":::
+    :::image type="content" source="media/web-query-data/select-stats.png" alt-text="Screenshot of a table with selected functions.":::
 
 ### Filter to query from grid
 
@@ -227,11 +227,11 @@ Another easy way to filter the grid is to add a filter operator to the query dir
 
 1. Right-click to open the cell actions menu. Select **Add selection as filter**.
 
-    :::image type="content" source="media/web-query-data/add-selection-filter.png" alt-text="Add selection as filter to query from the grid results in Azure Data Explorer WebUI.":::
+    :::image type="content" source="media/web-query-data/add-selection-filter.png" alt-text="Screenshot of a dropdown menu with the Add selection as filter option to query directly from the grid.":::
 
 1. A query clause will be added to your query in the query editor:
 
-    :::image type="content" source="media/web-query-data/add-query-from-filter.png" alt-text="Add query clause from filtering on the grid in Azure Data Explorer WebUI.":::
+    :::image type="content" source="media/web-query-data/add-query-from-filter.png" alt-text="Screenshot of the query editor showing query clause added from filtering on the grid in Azure Data Explorer web U I.":::
 
 ### Pivot
 
@@ -241,15 +241,15 @@ Pivoting allows you to take a columns value and turn them into columns. For exam
 
 1. On the right side of the grid, select **Columns** to see the table tool panel.
 
-    ![Table tool panel.](media/web-query-data/tool-panel.png)
+    :::image type="content" source="media/web-query-data/tool-panel.png" alt-text="Screenshot showing how to access the pivot mode feature.":::
 
 1. Select **Pivot Mode**, then drag columns as follows: **EventType** to **Row groups**; **DamageProperty** to **Values**; and **State** to **Column labels**.  
 
-    ![Pivot mode.](media/web-query-data/pivot-mode.png)
+    :::image type="content" source="media/web-query-data/pivot-mode.png" alt-text="Screenshot highlighting selected column names to create the pivot table.":::
 
     The result should look like the following pivot table:
 
-    ![Pivot table.](media/web-query-data/pivot-table.png)
+    :::image type="content" source="media/web-query-data/pivot-table.png" alt-text="Screenshot of results in a pivot table.":::
 
 ### Search in the results grid
 
@@ -265,11 +265,11 @@ You can look for a specific expression within a result table.
 
 1. Click on the **Search** button on the right and type in *"Wabash"*
 
-    :::image type="content" source="media/web-query-data/search.png" alt-text="Search in the table.":::
+    :::image type="content" source="media/web-query-data/search.png" alt-text="Screenshot highlighting the search bar in the table.":::
 
 1. All mentions of your searched expression are now highlighted in the table. You can navigate between them by clicking *Enter* to go forward or *Shift+Enter* to go backward, or you can use the *up* and *down* buttons next to the search box.
 
-    :::image type="content" source="media/web-query-data/search-results.png" alt-text="Navigate the Search results.":::
+    :::image type="content" source="media/web-query-data/search-results.png" alt-text="Screenshot of a table containing highlighted expressions from search results.":::
 
 ## Share queries
 
@@ -279,7 +279,7 @@ Many times, you want to share the queries you create.
 
 1. At the top of the query window, select **Share**.
 
-    :::image type="content" source="media/web-query-data/share-menu.png" alt-text="Share menu.":::
+    :::image type="content" source="media/web-query-data/share-menu.png" alt-text="Screenshot of the query editor showing the share dropdown menu.":::
 
 The following options are available in the drop-down:
 
@@ -299,11 +299,11 @@ You can provide a deep link so that other users with access to the cluster can r
 
 1. Paste the link into a new browser window. The result should look like the following
 
-    :::image type="content" source="media/web-query-data/shared-query.png" alt-text="Shared query deep link.":::
+    :::image type="content" source="media/web-query-data/shared-query.png" alt-text="Screenshot of a shared query deep link.":::
 
 ### Pin to dashboard
 
-When you complete data exploration using queries in the Web UI and find the data you need, you can pin it to a dashboard for continuous monitoring.
+When you complete data exploration using queries in the Azure Data Explorer web UI and find the data you need, you can pin it to a dashboard for continuous monitoring.
 
 To pin a query:
 
@@ -316,7 +316,7 @@ To pin a query:
     1. Select the **View dashboard after creation** checkbox (if it's a new dashboard).
     1. Select **Pin**
 
-    :::image type="content" source="media/web-query-data/pin-to-dashboard.png" alt-text="Pin to dashboard pane.":::
+    :::image type="content" source="media/web-query-data/pin-to-dashboard.png" alt-text="Screenshot of the Pin to dashboard pane.":::
 
 > [!NOTE]
 > **Pin to dashboard** only pins the selected query. To create the dashboard data source and translate render commands to a visual in the dashboard, the relevant database must be selected in the database list.
@@ -325,7 +325,7 @@ To pin a query:
 
 To export the query results to a CSV file, select **File** > **Export to CSV**.
 
-:::image type="content" source="media/web-query-data/export-results.png" alt-text="Export results to CSV file.":::
+:::image type="content" source="media/web-query-data/export-results.png" alt-text="Screenshot of the query editor with the file dropdown menu highlighted to show the Export results to CSV file option.":::
 
 ## Settings
 
@@ -339,7 +339,7 @@ In the **Settings** tab you can:
 
 Select the settings icon :::image type="icon" source="media/web-query-data/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
 
-:::image type="content" source="media/web-query-data/settings.png" alt-text="Settings window.":::
+:::image type="content" source="media/web-query-data/settings.png" alt-text="Screenshot of the Settings window.":::
 
 ### Export and import environment settings
 
@@ -358,7 +358,7 @@ The export and import actions help you protect your work environment and relocat
 
 1. In the **Settings** > **General** window, select **Import**. Then in **Warning** pop-up, select **Import**.
 
-    :::image type="content" source="media/web-query-data/import.png" alt-text="import warning.":::
+    :::image type="content" source="media/web-query-data/import.png" alt-text="Screenshot of the import warning dialog box.":::
 
 1. Locate your **adx-export.json** file from your local storage and open it.
 1. Your previous cluster connections and open tabs are now available.
@@ -381,7 +381,7 @@ To enable the error level highlighting:
 
 Error level color scheme in **Light** mode | Error level color scheme in **Dark** mode
 |---|---|
-:::image type="content" source="media/web-query-data/light-mode.png" alt-text="Screen shot of color legend in light mode."::: | :::image type="content" source="media/web-query-data/dark-mode.png" alt-text="Screen shot of color legend in dark mode.":::
+:::image type="content" source="media/web-query-data/light-mode.png" alt-text="Screenshot of color legend in light mode."::: | :::image type="content" source="media/web-query-data/dark-mode.png" alt-text="Screenshot of color legend in dark mode.":::
 
 #### Column requirements for highlighting
 
@@ -401,16 +401,16 @@ For highlighted error levels, the column must be of type int, long, or string.
 
 ### Change datetime to specific time zone
 
-You can change the displayed datetime values to reflect a specific time zone. This change affects the display only, and does not change the underlying data in Azure Data Explorer.
+You can change the displayed datetime values to reflect a specific time zone. This change affects the display only, and doesn't change the underlying data in Azure Data Explorer.
 
 1. Select the **Settings** icon next to your user name.
 1. Select the **General** tab, and select a time zone from the dropdown menu.
 
-    :::image type="content" source="media/web-query-data/time-zone.png" alt-text="Screen shot of general tab on settings blade to change time zone in Azure Data Explorer WebUI.":::
+    :::image type="content" source="media/web-query-data/time-zone.png" alt-text="Screenshot of general tab on settings blade to change time zone in Azure Data Explorer web U I.":::
 
 The selected time zone will then be visible in the results grid menu bar.
 
-:::image type="content" source="media/web-query-data/query-time-utc.png" alt-text="Query time changed to UTC in results grid menu.":::
+:::image type="content" source="media/web-query-data/query-time-utc.png" alt-text="Screenshot of Query time changed to UTC in results grid menu.":::
 
 ## Provide feedback
 

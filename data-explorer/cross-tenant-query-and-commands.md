@@ -42,7 +42,7 @@ The trustedExternalTenants array supports also all-tenants star ('*') notation, 
 `trustedExternalTenants: [ { "value": "*" }]`
 
 > [!NOTE]
-> The default value for `trustedExternalTenants` is all tenants: `[ { "value": "*" }]`. If the external tenants array was not defined on cluster creation, it can be overridden with a cluster update operation. An empty array isn't accepted.
+> The default value for `trustedExternalTenants` is all tenants: `[ { "value": "*" }]`. If the external tenants array was not defined on cluster creation, it can be overridden with a cluster update operation. An empty array means that only identities of the clusters tenant are allowed to authenticate to this cluster.
 
 ### Examples
 
@@ -83,3 +83,6 @@ PATCH https://management.azure.com/subscriptions/12345678-1234-1234-1234-1234567
 ## Add Principals
 
 After updating the `trustedExternalTenants` property, you must give cluster access to principals from the approved tenants using the `.add` command. For more information, see [identities - AAD Tenants](./kusto/management/access-control/principals-and-identity-providers.md#azure-ad-tenants).
+
+## Limitations
+The configuration of this feature applies solely to Azure Active Directory identities (Users, Applications) trying to connect to the Azure Data Explorer data plane. It has no impact on [cross Azure Active Directory ingestion](cross-tenant-query-and-commands.md).

@@ -3,7 +3,11 @@ title: Create a table in Azure Data Explorer
 description: Learn how to easily create a table in Azure Data Explorer with the one-click experience.
 ms.reviewer: tzgitlin
 ms.topic: how-to
+<<<<<<< HEAD
 ms.date: 06/23/2022
+=======
+ms.date: 06/22/2022
+>>>>>>> c65e0be5e8873bbf91bd394f7a0ef39c4b860672
 ---
 
 # Create a table in Azure Data Explorer
@@ -125,7 +129,11 @@ In the **Create table completed** window, both steps will be marked with green c
 
 In the tiles below the **Create table** progress, explore **Quick queries** or **Tools**:
 
+<<<<<<< HEAD
 * **Quick queries** includes links to the Azure Data Explorer web UI with example queries.
+=======
+* **Quick queries** includes links to the query editor of the Azure Data Explorer web UI with example queries.
+>>>>>>> c65e0be5e8873bbf91bd394f7a0ef39c4b860672
 
 * **Tools** includes links to **Undo** the table creation by running the relevant `.drop` commands, or **Show schema** of the newly created table.
 
