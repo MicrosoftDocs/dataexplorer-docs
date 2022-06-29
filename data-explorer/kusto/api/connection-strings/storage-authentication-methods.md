@@ -21,6 +21,7 @@ The following authentication methods are supported:
 * [Shared Access (SAS) key](#shared-access-sas-token)
 * [Token](#token)
 * [Access key](#access-key)
+* [AWS Programmatic Access Keys](#aws-programmatic-access-keys)
 
 ## Storage authentication availability
 
@@ -103,3 +104,11 @@ To add a storage access key, append the key to the connection string, as follows
 `"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;ljkAkl...=="`
 
 `"abfss://fs@fabrikam.dfs.core.windows.net/path/to/file.csv;sharedkey=sv=...&sp=rwd"`
+
+## AWS Programmatic Access Keys
+
+To add Amazon Web Services access key, Append `;AwsCredentials=ACCESS_KEY_ID,SECRET_ACCESS_KEY` to the connection string.
+
+### AWS Programmatic Access Keys examples
+
+`"https://yourbucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=AKIAIOSFODNN7EXAMPLE,wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"`
