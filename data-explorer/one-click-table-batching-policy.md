@@ -33,11 +33,11 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus, or add a cluster connection.
 
-1. Under **Table**, select a table from the drop-down menus. Batching policy settings for the table selected are prepopulated in the table batching policy fields.
+1. Under **Table**, select a table from the drop-down menus. 
 
 1. Under **Inherit values from database**, toggle **On** to apply the batching policy values from the database to the table. To create or update a separate policy for the table, toggle to **Off**.
 
-1. If you selected **Off**, you can fill in the following fields to define the table batching policy. The settings define the batch sealing limits. A batch will be sealed if any condition is met.
+1. If you selected **Off**, you fill in the following fields to define the table batching policy sealing limits. A batch will be sealed if any condition is met. These fields are prepopulated with existing table batching policy settings.
 
     |**Setting** | **Default value** | **Field description**
     |---|---|---|
