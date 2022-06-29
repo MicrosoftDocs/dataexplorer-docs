@@ -94,17 +94,17 @@ In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats)
 
 1. Select **Next: Create table**.
 
-### [Edit Schema manually](#tab/none)
+### [Edit Schema manually](#tab/manually)
 
 In the **Schema** tab, the **Create table** window opens.
 
 :::image type="content" source="media/one-click-table/create-new-table-blank.png" alt-text="Screenshot of the window to define schema manually.":::
 
-1. Select **Add new column** and the **Edit columns** dialog box opens.
+1. Select **Add new column** and the **Edit columns** panel opens.
 
     :::image type="content" source="media/one-click-table/create-new-table-edit-columns.png" alt-text="Screenshot of the Edit columns fields to define the schema manually.":::
 
-1. For each column enter **Column name** and **Data type**. Create additional columns by selecting **Add column**. Next, select **Save**. The schema is displayed.
+1. For each column, enter **Column name** and **Data type**. Create more columns by selecting **Add column**. Next, select **Save**. The schema is displayed.
 
     :::image type="content" source="media/one-click-table/new-table-schema.png" alt-text="Screenshot of the new table with schema defined manually.":::
 
