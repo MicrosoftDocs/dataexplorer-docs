@@ -18,7 +18,7 @@ Checks whether a dynamic bag column contains a given key.
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
 | *bag* | dynamic | &check; | The property bag to search. |
-| *key* | string | &check; | The key to search for.  You can search for a nested key using the [JSONPath](jsonpath.md) notation (array indexes are not supported). For an example, see [Search using a JSONPath key](#search-using-a-jsonpath-key). |
+| *key* | string | &check; | The key to search for.  You can search for a nested key using the [JSONPath](jsonpath.md) notation. Please note that array indexing are not supported. |
 
 ## Returns
 

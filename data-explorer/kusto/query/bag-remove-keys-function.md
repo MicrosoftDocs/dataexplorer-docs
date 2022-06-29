@@ -18,7 +18,7 @@ Removes keys and associated values from a `dynamic` property-bag.
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
 | *bag* | dynamic | &check; | Property-bag input. |
-| *keys* | string | &check; | Array includes keys to be removed from the input. Keys refer to the first level of the property bag. You can specify keys on the nested levels using [JSONPath](jsonpath.md) notation (array indexes are not supported). |
+| *keys* | string | &check; | Array includes keys to be removed from the input. Keys refer to the first level of the property bag. You can specify keys on the nested levels using [JSONPath](jsonpath.md) notation. Please note that array indexing are not supported. |
 
 ## Returns
 
