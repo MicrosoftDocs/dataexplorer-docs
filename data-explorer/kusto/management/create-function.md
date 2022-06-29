@@ -22,11 +22,11 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 
 |Input parameter |Type |Description |
 |---|---|---|
-|ifnotexists|   |Verify if the function already exists.
+|ifnotexists| bool | Will be executed only if the function does not exist (when set to `true`).
 |docstring|String|A description of the function.
-|folder|String|The name of the folder where the function is stored.
+|folder|String|The name of the folder tag.
 |view|bool|Designates this function as a stored view.
-|skipvalidation|Boolean|Validate the function (True or False).
+|skipvalidation|bool|When set to `true`, it Will run validation logic on the function and fail if function is not valid. (Default: `true`)
 |FunctionName(ParamName:ParamType)|String (String:datatype)|Name of the function, the parameter name and datatype.
 |FunctionBody|   |Uses a user defined function or an anonymous function declaration.
 
@@ -41,13 +41,13 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 |DocString|String|A description of the function for UI purposes.
 
 > [!NOTE]
-> * If function already exists:
->    * If `ifnotexists` flag is specified, the command is ignored (no change applied).
->    * If `ifnotexists` flag is NOT specified, an error is returned.
+> * If the function already exists:
+>    * If the`ifnotexists` flag is specified, the command is ignored (no change applied).
+>    * If the `ifnotexists` flag is NOT specified, an error is returned.
 >    * For altering an existing function, see [`.alter function`](alter-function.md)
 > * Requires [database user permission](../management/access-control/role-based-authorization.md).
 > * Not all data types are supported in `let` statements. Supported types are: boolean, string, long, datetime, timespan, double, and dynamic.
-> * Use 'skipvalidation' to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.
+> * Use `skipvalidation` to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.
 
 **Examples**
 
