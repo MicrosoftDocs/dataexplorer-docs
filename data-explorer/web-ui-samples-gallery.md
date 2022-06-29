@@ -8,9 +8,9 @@ ms.custom: mode-portal
 ---
 # Explore the Azure Data Explorer web UI samples gallery
 
-The samples gallery provides an easy way to experience Azure Data Explorer and learn about Kusto Query Language (KQL) commands, queries, and built in dashboards using sample data in a free, publicly available [**help** cluster](https://dataexplorer.azure.com/clusters/help).
+The samples gallery provides an easy way to experience Azure Data Explorer and learn about Kusto Query Language (KQL) commands, queries, and built-in dashboards using sample data in a free, publicly available [**help** cluster](https://dataexplorer.azure.com/clusters/help).
 
-Exploring the samples gallery in the Azure Data Explorer web UI eliminates the need to create a cluster, databases, tables, or [ingest data](./ingest-data-overview.md). When you choose a dataset from the gallery, everything you need to explore the sample is immediately available in prepopulated tables and dashboards. Follow the tutorials to learn basic [KQL](write-queries.md), or start by exploring the built in dashboards.
+Exploring the samples gallery in the Azure Data Explorer web UI eliminates the need to create a cluster, databases, tables, or [ingest data](./ingest-data-overview.md). When you choose a dataset from the gallery, everything you need to explore the sample is immediately available in prepopulated tables and dashboards. Follow the tutorials to learn basic [KQL](write-queries.md), or start by exploring the built-in dashboards.
 
 ## Prerequisites
 

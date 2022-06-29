@@ -20,7 +20,7 @@ The following features make one-click ingestion so useful:
 * Table mapping and schema are suggested to you and easy to change
 * Continue ingestion easily and quickly from a container with [Event Grid](one-click-ingestion-new-table.md#create-continuous-ingestion)
 
-One-click ingestion is particularly useful when ingesting data for the first time, or when your data's schema is unfamiliar to you.
+One-click ingestion is useful when ingesting data for the first time, or when your data's schema is unfamiliar to you.
 
 ## Prerequisites
 
@@ -58,7 +58,7 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 > This section describes the wizard in general. The options you select depend on what data format you are ingesting, what kind of data source you are ingesting from, and whether you are ingesting into a new or existing table.
 >
 > For sample scenarios, see:
-
+>
 > * Ingest into [a new table from a container in CSV format](one-click-ingestion-new-table.md)
 > * Ingest into an [existing table from a local file in JSON format](one-click-ingestion-existing-table.md)
 
