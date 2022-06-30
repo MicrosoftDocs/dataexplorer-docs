@@ -6,13 +6,15 @@ ms.topic: how-to
 ms.date: 03/03/2022
 ---
 
-# Ingest data using managed identity authentication
+# Queue blobs for ingestion using managed identity authentication
 
 When queuing blobs for ingestion from your own storage accounts, you can use managed identities as an alternative to [shared access signature (SAS)](/azure/storage/common/storage-sas-overview) tokens and [Shared Keys](/rest/api/storageservices/authorize-with-shared-key) authentication methods. Managed identities are a more secure way to ingest data as they don't require you to share your customer SAS tokens or shared keys with the service. Instead, a managed identity is assigned to your cluster and is granted read permissions for the storage account used to ingest data. You can revoke these permissions at any time.
 
 > [!NOTE]
 >
-> This authentication method only applies to Azure blobs and Azure Data Lake files residing in customer owned storage accounts. It does not apply to local files uploaded using the Kusto SDK.
+> * This authentication method only applies to Azure blobs and Azure Data Lake files residing in customer owned storage accounts. It does not apply to local files uploaded using the Kusto SDK.
+> * Only Queued-Ingestion is supported. Inlinde-Ingestion via KQL and Direct-Ingestion via SDK APIs are not supproted. 
+
 
 ## Assign a managed identity to your cluster
 
@@ -62,9 +64,14 @@ To apply the policy at the cluster level, run:
 >
 > In order to secure the use of managed identities, you must have the `All Database Admin` permission on the cluster to edit the Managed Identity Policy.
 
-## Ingest blobs with managed identity using Kusto SDK
+## Queue blobs for ingestion with managed identity using Kusto SDK
 
 When ingesting data using one of Kusto [SDKs](net-sdk-ingest-data.md), generate your [blob URI using managed identity authentication](kusto/api/connection-strings/storage-authentication-methods.md#managed-identity) by appending `;managed_identity={objectId}` to the unauthorized blob URI. If you ingest data your cluster's system assigned managed identity, you can append `;managed_identity=system` to the blob URI.
+
+> [!IMPORTANT]
+> 
+> Remeber to use a Queued-Ingestion client. 
+> Using managed identities with Direct-Ingestion is not supported, nor is Inline-Ingestion via KQL.
 
 The following are examples of blob URIs for system and user assigned managed identities.
 
