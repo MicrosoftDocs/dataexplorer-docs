@@ -22,7 +22,9 @@ The following subset of the JSONPath notation is supported:
 |---|---|
 |`$`|Root object|
 |`.` | Selects the specified property in a parent object. |
-|`[\'property\']`| Selects the specified property in a parent object. |
+```suggestion
+|`[\'property\']`| Selects the specified property in a parent object. Make sure you put single quotes around the property name.<br /><br />Use this notation if the property name contains special characters such as spaces or begins with a character other than `A..Za..z_`. |
+|`[n]`| Selects the n-th element from an array. Indexes are 0-based. |
 
 > [!NOTE]
 >
