@@ -47,7 +47,7 @@ Enter the following policy alter-merge command for the database level:
 > To define the policy at the cluster level, replace `database db` with `cluster`.
 
 > [!NOTE]
-> To override the existing policy, use the `alter` command instead of the `alter-marge` command.
+> To override the existing policy, use the `alter` command instead of the `alter-merge` command.
 
 ## Create an external table
 
