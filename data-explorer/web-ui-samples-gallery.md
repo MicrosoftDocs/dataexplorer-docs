@@ -1,16 +1,16 @@
 ---
-title: Azure Data Explorer Web samples gallery
-description: In this how-to article, you learn how to use the samples gallery in Azure Data Explorer Web UI.
+title: Azure Data Explorer web UI samples gallery
+description: In this how-to article, you learn how to use the samples gallery in the Azure Data Explorer web UI.
 ms.reviewer: miwalia
 ms.topic: quickstart
-ms.date: 05/31/2022
+ms.date: 06/22/2022
 ms.custom: mode-portal
 ---
-# Explore the Azure Data Explorer Web UI samples gallery
+# Explore the Azure Data Explorer web UI samples gallery
 
-The samples gallery provides an easy way to experience Azure Data Explorer and learn about Kusto Query Language (KQL) commands, queries, and built in dashboards using sample data in a free, publicly available [**help** cluster](https://dataexplorer.azure.com/clusters/help).
+The samples gallery provides an easy way to experience Azure Data Explorer and learn about Kusto Query Language (KQL) commands, queries, and built-in dashboards using sample data in a free, publicly available [**help** cluster](https://dataexplorer.azure.com/clusters/help).
 
-Exploring the samples gallery in the Azure Data Explorer Web UI eliminates the need to create a cluster, databases, tables, or [ingest data](./ingest-data-overview.md). When you choose a dataset from the gallery, everything you need to explore the sample is immediately available in prepopulated tables and dashboards. Follow the tutorials to learn basic [KQL](write-queries.md), or start by exploring the built in dashboards.
+Exploring the samples gallery in the Azure Data Explorer web UI eliminates the need to create a cluster, databases, tables, or [ingest data](./ingest-data-overview.md). When you choose a dataset from the gallery, everything you need to explore the sample is immediately available in prepopulated tables and dashboards. Follow the tutorials to learn basic [KQL](write-queries.md), or start by exploring the built-in dashboards.
 
 ## Prerequisites
 
@@ -26,9 +26,9 @@ The samples gallery includes datasets with guided tutorials and sample dashboard
 
 Get started learning about KQL queries with a dataset from the samples gallery.
 
-1. In the Azure Data Explorer Web UI [Home](https://dataexplorer.azure.com/home) page, select **Explore sample data with KQL**.
+1. In the Azure Data Explorer web UI [Home](https://dataexplorer.azure.com/home) page, select **Explore sample data with KQL**.
 
-    :::image type="content" source="media/web-ui-samples-gallery/web-ui-home-full-box.png" alt-text="Screenshot of the Azure Data Explorer Web U I showing the home page." lightbox="media/web-ui-samples-gallery/web-ui-home-full-box.png":::
+    :::image type="content" source="media/web-ui-samples-gallery/web-ui-home-full-box.png" alt-text="Screenshot of the Azure Data Explorer web U I showing the home page." lightbox="media/web-ui-samples-gallery/web-ui-home-full-box.png":::
 
 1. In the **Explore data samples** dialog box, select a sample dataset and then select **Explore**.
 
@@ -82,7 +82,7 @@ To explore data in the tables, review and run the tutorials of KQL queries in th
 
 Dashboards allow users to visualize information and gain insights from data without using the KQL query language. You can explore data easily by adjusting the parameters and visuals in dashboard editors.
 
-1. In the Azure Data Explorer Web UI [Home](https://dataexplorer.azure.com/home) page, select **Explore sample dashboards**.
+1. In the Azure Data Explorer web UI [Home](https://dataexplorer.azure.com/home) page, select **Explore sample dashboards**.
 
 1. In the **Explore dashboards** dialog box, choose a sample dashboard and then select **Explore**. In keeping with the example above, select the **Metrics sample dashboard**.
 
@@ -96,6 +96,6 @@ Dashboards allow users to visualize information and gain insights from data with
 
 ## Next steps
 
-- [Query data in Azure Data Explorer Web UI](web-query-data.md#run-queries)
+- [Query data in the Azure Data Explorer web UI](web-query-data.md#run-queries)
 - [Samples for Kusto Queries](kusto/query/samples.md)
 - [Visualize data with Azure Data Explorer dashboards(Preview)](azure-data-explorer-dashboards.md)
