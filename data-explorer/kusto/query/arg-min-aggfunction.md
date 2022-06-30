@@ -3,7 +3,7 @@ title: arg_min() (aggregation function) - Azure Data Explorer
 description: This article describes arg_min() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/12/2019
+ms.date: 06/30/2022
 ---
 # arg_min() (aggregation function)
 
@@ -17,9 +17,10 @@ Finds a row in the group that minimizes *ExprToMinimize*, and returns the value 
 
 ## Arguments
 
-* *ExprToMinimize*: Expression that will be used for aggregation calculation.
-* *ExprToReturn*: Expression that will be used for returning the value when *ExprToMinimize* is
-  minimum. Expression to return may be a wildcard (*) to return all columns of the input table.
+| Name | Description |
+|--|--|
+| *ExprToMinimize*| Expression that will be used for aggregation calculation.
+| *ExprToReturn* | Expression that will be used for returning the value when *ExprToMinimize* is minimum. Expression to return may be a wildcard (*) to return all columns of the input table. |
   
 ## Null handling
 
@@ -31,29 +32,38 @@ Finds a row in the group that minimizes *ExprToMinimize*, and returns the value 
 
 ## Examples
 
-Show cheapest supplier of each product:
+Use the `stormcenter` sample database for all the examples below.
+**Example 1**
+Show the storms based on start time, event type, and location.
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAAysuyS/KTU7NK0kt4qpRKC7NzU0syqxKVUgsSo/PzczTcC0DyoVUFqTqKASXJJakaiokVYJYRSUhmbmpADnghVs+AAAA)**\]**
 
 ```kusto
-Supplies | summarize arg_min(Price, Supplier) by Product
+stormcenter
+| summarize arg_min(EventType, State) by StartTime
 ```
 
-Show all the details, not just the supplier name:
+**Example 2**
+Show all of the details of the storms.
+
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAAysuyS/KTU7NK0kt4qpRKC7NzU0syqxKVUgsSo/PzczTcC0DyoVUFqTqKGhpKiRVKgSXJBaVhGTmpgIABwKNJToAAAA=)**\]**
 
 ```kusto
-Supplies | summarize arg_min(Price, *) by Product
+stormcenter
+| summarize arg_min(EventType, *) by StartTime
 ```
 
-Find the southernmost city in each continent, with its country:
+**Example 3**
+
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAAysuyS/KTU7NK0kt4qpRKC7NzU0syqxKVdBwSk3PzPNJLNFRcM1LAdKatolF6fG5mXlIMsEliSWpmgpJlSBWUUlIZm4qAEdbPlJQAAAA)**\]**
 
 ```kusto
-PageViewLog 
-| summarize (latitude, min_lat_City, min_lat_country)=arg_min(latitude, City, country) 
-    by continent
+stormcenter
+| summarize (BeginLat, EndLat)=arg_min(BeginLat, State) by StartTime)
 ```
 
-:::image type="content" source="images/arg-min-aggfunction/arg-min.png" alt-text="Table showing the southernmost city with its country as calculated by the query.":::
-
-Null handling example:
+**Example 4**
+The following example demonstrates null handling.
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAA31PwQrCMAy97ytCT530osfdnKBX8SCIiHQsjEKWjrRjKH68nWwoguYdkry8l5DaxoSKUG+ld7GAEMVxY2Djycu7PaIE57kAxzGHcwYp1LrrCJUBdcA6paX5oneCyKlIHs09UT4JSssJo+KERH74K/m1ZI9WxnkpfuCP6zM/+1Ymu2QPCH3bWnF3BCvNtXWsp5cMLHKobvD6/wlU5dHuDwEAAA==)**\]**
 
 ```kusto
 datatable(Fruit: string, Color: string, Version: int) [
@@ -66,9 +76,8 @@ datatable(Fruit: string, Color: string, Version: int) [
 ]
 | summarize arg_min(Version, *) by Fruit
 ```
-
-|Fruit|Version|Color|
-|---|---|---|
-|Apple|1|Red|
-|Banana||Yellow|
-|Pear|1|Brown|
+| Fruit | Version | Color |
+|--|--|--|
+| Apple | 1 | Red |
+| Banana |  | Yellow |
+| Pear | 1 | Brown |
