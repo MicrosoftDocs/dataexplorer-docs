@@ -27,5 +27,4 @@ The following subset of the JSONPath notation is supported:
 
 > [!NOTE]
 >
-> - Wildcards, recursion, union, slices and current object are not supported.
-> - JSON paths that include special characters should use child notation, for example: [\'Property Name\'].
+> Wildcards, recursion, union, slices, and current object are not supported.
