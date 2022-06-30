@@ -22,7 +22,8 @@ The following subset of the JSONPath notation is supported:
 |---|---|
 |`$`|Root object|
 |`.` | Child|
-|`[ ]`| When the brackets contain a string: child. <br> When the brackets contain an integer: array subscript. |
+|`[n]`| Selects the n-th element from an array. Indexes are 0-based. |
+|`[\'property\']`| Selects the specified property in a parent object. |
 
 > [!NOTE]
 >
