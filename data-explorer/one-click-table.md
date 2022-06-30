@@ -23,7 +23,7 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
 1. In the left menu, select **Data**.
 
-    :::image type="content" source="media/one-click-table/select-create-new-table.png" alt-text="Screenshot of the Azure Data Explorer web U I where you select the Data pane from the menu and then select Create a new table." lightbox="media/ingest-sample-data/select-data.png":::
+    :::image type="content" source="media/one-click-table/select-create-table.png" alt-text="Screenshot of the Azure Data Explorer web U I where you select the Data pane from the menu and then select Create a new table."
 
 1. From the **Quick actions** section, select **Create new table**. Alternatively, from the **All actions** section, select **Create new table** and then **Create**.
 
@@ -87,7 +87,7 @@ In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats)
 
 * If **Ingest data** is selected, in addition to creating the table, the wizard also ingests the data from the source selected in the **Source** tab.
 
-    :::image type="content" source="media/one-click-table/ingest-data-checkbox.png" alt-text="Screenshot of the ingest data checkbox selected to ingest data into table created from the wizard.":::
+    :::image type="content" source="media/one-click-table/ingest-data-checkbox-trimmed.png" alt-text="Screenshot of the ingest data checkbox selected to ingest data into table created from the wizard.":::
 
 1. In **Mapping**, enter a name for this table's schema mapping.
 
@@ -100,15 +100,15 @@ In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats)
 
 In the **Schema** tab, the **Create table** window opens.
 
-:::image type="content" source="media/one-click-table/create-new-table-blank.png" alt-text="Screenshot of the window to define schema manually.":::
+:::image type="content" source="media/one-click-table/create-new-table-blank-trimmed.png" alt-text="Screenshot of the window to define schema manually.":::
 
 1. Select **Add new column** and the **Edit columns** panel opens.
 
-    :::image type="content" source="media/one-click-table/create-new-table-edit-columns.png" alt-text="Screenshot of the Edit columns fields to define the schema manually.":::
+    :::image type="content" source="media/one-click-table/edit-columns-panel.png" alt-text="Screenshot of the Edit columns fields to define the schema manually.":::
 
 1. For each column, enter **Column name** and **Data type**. Create more columns by selecting **Add column**. Next, select **Save**. The schema is displayed.
 
-    :::image type="content" source="media/one-click-table/new-table-schema.png" alt-text="Screenshot of the new table with schema defined manually.":::
+    :::image type="content" source="media/one-click-table/new-table-schema-trimmed.png" alt-text="Screenshot of the new table with schema defined manually.":::
 
     To add columns, select the plus icon at the top right of the grid to insert a new column.
 
