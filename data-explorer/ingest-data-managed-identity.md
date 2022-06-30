@@ -13,7 +13,7 @@ When queuing blobs for ingestion from your own storage accounts, you can use man
 > [!NOTE]
 >
 > * This authentication method only applies to Azure blobs and Azure Data Lake files residing in customer owned storage accounts. It does not apply to local files uploaded using the Kusto SDK.
-> * Only Queued-Ingestion is supported. Inlinde-Ingestion via KQL and Direct-Ingestion via SDK APIs are not supproted. 
+> * Only queued ingestion is supported. Inline ingestion in Kusto Query Language and direct ingestion using SDK APIs are not supported. 
 
 
 ## Assign a managed identity to your cluster
