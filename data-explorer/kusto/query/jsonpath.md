@@ -21,10 +21,10 @@ The following subset of the JSONPath notation is supported:
 |Path expression|Description|
 |---|---|
 |`$`|Root object|
-|`.` or `[ ]` | Child|
-|`[ ]`|Array subscript|
+|`.` | Child|
+|`[ ]`| When the brackets contain a string: child. <br> When the brackets contain an integer: array subscript|
 
 > [!NOTE]
 >
 > - Wildcards, recursion, union, slices and current object are not supported.
-> - JSON paths that include special characters should be escaped as [\'Property Name\'].
+> - JSON paths that include special characters should use child notation, for example: [\'Property Name\'].
