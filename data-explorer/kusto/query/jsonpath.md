@@ -22,7 +22,7 @@ The following subset of the JSONPath notation is supported:
 |---|---|
 |`$`|Root object|
 |`.` | Child|
-|`[ ]`| When the brackets contain a string: child. <br> When the brackets contain an integer: array subscript|
+|`[ ]`| When the brackets contain a string: child. <br> When the brackets contain an integer: array subscript. |
 
 > [!NOTE]
 >
