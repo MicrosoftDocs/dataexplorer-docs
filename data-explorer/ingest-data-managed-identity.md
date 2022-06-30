@@ -70,8 +70,8 @@ When ingesting data using one of Kusto [SDKs](net-sdk-ingest-data.md), generate 
 
 > [!IMPORTANT]
 > 
-> Remeber to use a Queued-Ingestion client. 
-> Using managed identities with Direct-Ingestion is not supported, nor is Inline-Ingestion via KQL.
+> You must use a queued ingestion client. 
+> Using managed identities with direct ingestion or inline ingestion in Kusto Query Language are not supported.
 
 The following are examples of blob URIs for system and user assigned managed identities.
 
