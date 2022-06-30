@@ -3,7 +3,7 @@ title: Create a table in Azure Data Explorer
 description: Learn how to easily create a table in Azure Data Explorer with the one-click experience.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 06/23/2022
+ms.date: 06/30/2022
 ---
 
 # Create a table in Azure Data Explorer
@@ -52,7 +52,7 @@ In **Source type**, select the data source you'll use to create your table mappi
         * Filter your files using the **File Filters**.
         * Select a file that will be used in the next step to define the schema.
 
-        :::image type="content" source="media/one-click-table/storage.png" alt-text="Screenshot of wizard to create table using blob to create schema mapping.":::
+        :::image type="content" source="media/one-click-table/source-blob-container-storage-select.png" alt-text="Screenshot of wizard to create table using blob to create schema mapping.":::
 
     * If you're using a **local file**:
         * Select **Browse** to locate the file, or drag the file into the field.
