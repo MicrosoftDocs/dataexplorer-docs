@@ -26,7 +26,7 @@ The `.show` `queries` command returns a list of queries that have reached a fina
  
 The output schema is as follows:
 
-|ColumnName|ColumnType|Comment|
+|ColumnName |ColumnType |Description |
 |---|---|
 |ClientActivityId|string|Client ID of the request|
 |Text|string|Query text (truncated at 64KB)|
