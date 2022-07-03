@@ -64,6 +64,9 @@ An value converted from the `from` unit to the `to` unit.
 ## Examples
 
 ```kusto
-print result = convert_speed(1.2, 'MeterPerSecond', 'CentimeterPerHour'),
+print result = convert_speed(1.2, 'MeterPerSecond', 'CentimeterPerHour')
 ```
 
+|result|
+|---|
+|432000|

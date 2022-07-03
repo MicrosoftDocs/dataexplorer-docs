@@ -57,6 +57,9 @@ An value converted from the `from` unit to the `to` unit.
 ## Examples
 
 ```kusto
-print result = convert_mass(1.2, 'Kilogram', 'Centigram'),
+print result = convert_mass(1.2, 'Kilogram', 'Pound')
 ```
 
+|result|
+|---|
+|2.64554714621853|

@@ -47,6 +47,9 @@ An value converted from the `from` unit to the `to` unit.
 ## Examples
 
 ```kusto
-print result = convert_force(1.2, 'Newton', 'Decanewton'),
+print result = convert_force(1.2, 'Newton', 'Decanewton')
 ```
 
+|result|
+|---|
+|0.12|

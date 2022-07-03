@@ -68,6 +68,9 @@ An value converted from the `from` unit to the `to` unit.
 ## Examples
 
 ```kusto
-print result = convert_length(1.2, 'Meter', 'Angstrom'),
+print result = convert_length(1.2, 'Meter', 'Foot')
 ```
 
+|result|
+|---|
+|3.93700787401575|

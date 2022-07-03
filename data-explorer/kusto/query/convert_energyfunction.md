@@ -68,6 +68,9 @@ An value converted from the `from` unit to the `to` unit.
 ## Examples
 
 ```kusto
-print result = convert_energy(1.2, 'Joule', 'BritishThermalUnit'),
+print result = convert_energy(1.2, 'Joule', 'BritishThermalUnit')
 ```
 
+|result|
+|---|
+|0.00113738054437598|

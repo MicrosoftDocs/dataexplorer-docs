@@ -84,6 +84,9 @@ An value converted from the `from` unit to the `to` unit.
 ## Examples
 
 ```kusto
-print result = convert_volume(1.2, 'CubicMeter', 'AcreFoot'),
+print result = convert_volume(1.2, 'CubicMeter', 'AcreFoot')
 ```
 
+|result|
+|---|
+|0.0009728568|

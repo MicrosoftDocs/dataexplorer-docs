@@ -42,6 +42,9 @@ An value converted from the `from` unit to the `to` unit.
 ## Examples
 
 ```kusto
-print result = convert_temperature(1.2, 'Kelvin', 'DegreeCelsius'),
+print result = convert_temperature(1.2, 'Kelvin', 'DegreeCelsius')
 ```
 
+|result|
+|---|
+|0.00439319055464031|
