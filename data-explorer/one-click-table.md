@@ -23,7 +23,7 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
 1. In the left menu, select **Data**.
 
-    :::image type="content" source="media/one-click-table/select-create-table.png" alt-text="Screenshot of the Azure Data Explorer web U I where you select the Data pane from the menu and then select Create a new table."
+    :::image type="content" source="media/one-click-table/select-create-table.png" alt-text="Screenshot of the Azure Data Explorer web U I showing how to create a table.":::
 
 1. From the **Quick actions** section, select **Create new table**. Alternatively, from the **All actions** section, select **Create new table** and then **Create**.
 
@@ -83,7 +83,7 @@ In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats)
 * If your data format is JSON, you must also select JSON levels, from 1 to 10. The levels determine the table column data division.
 * If your data format is CSV, select the check box **Ignore the first record** to ignore the heading row of the file.
 
-    :::image type="content" source="./media/one-click-table/schema-tab.png" alt-text="Edit schema tab in create table in one-click experience in Azure Data Explorer.":::
+    :::image type="content" source="media/one-click-table/schema-tab-plug-in-selected.png" alt-text="Screenshot of table schema in create table wizard of the Azure Data Explorer web U I.":::
 
 * If **Ingest data** is selected, in addition to creating the table, the wizard also ingests the data from the source selected in the **Source** tab.
 
