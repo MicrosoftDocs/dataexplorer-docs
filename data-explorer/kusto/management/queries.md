@@ -29,7 +29,7 @@ The output schema is as follows:
 |ColumnName |ColumnType |Description |
 |---|---|
 |ClientActivityId|string|Client ID of the request|
-|Text|string|Query text (truncated at 64KB)|
+| Text | string | Query text, truncated at 64 KB|
 |Database | string | Name of the database on which the query was executed |
 | StartedOn | datetime | Timestamp when query execution started |
 | LastUpdatedOn | datetime | Timestamp of the last status update|
