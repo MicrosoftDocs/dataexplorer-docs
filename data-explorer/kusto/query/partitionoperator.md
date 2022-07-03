@@ -8,6 +8,7 @@ ms.date: 10/06/2021
 # partition operator 
 
 The partition operator partitions the records of its input table into multiple subtables according to values in a key column, runs a subquery on each subtable, and produces a single output table that is the union of the results of all subqueries.
+This operator is useful when there is a need to perform a subquery (which may include aggregate functions, window functions, top N ... etc) on each subset of rows that belongs to the same partition key rather than on top of the whole dataset.
 
 The partition operator supports several strategies of subquery operation: 
 
@@ -87,6 +88,8 @@ The operator returns a union of the results of the individual subqueries.
 
 Use `hint.strategy=native` for this strategy. See the following example:
 
+This query returns foreach InjuriesDirect, the count of events and total Injueries in each State that starts with 'W'.
+
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
@@ -112,9 +115,38 @@ StormEvents
 |WASHINGTON|1|2|
 |WASHINGTON|1|10|
 
+
+This query returns for each State that starts with 'W', the top 1 EventType by total injuries:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents
+| where State startswith 'W'
+| partition hint.strategy = native by State
+(
+    summarize TotalInjueries = sum(InjuriesDirect) by EventType
+    | top 2 by TotalInjueries
+)
+```
+
+**Output** 
+
+|EventType|TotalInjueries|
+|---|---|
+|Tornado|4|
+|Hail|1|
+|Thunderstorm Wind|1|
+|Excessive Heat|0|
+|High Wind|13|
+|Lightning|5|
+|High Wind|5|
+|Avalanche|3|
+
 ### Shuffle strategy example
 
 Use `hint.strategy=shuffle` for this strategy. See the following example:
+
+This query will return the top 3 DamagedProperty foreach EpisodeId, it returns also the columns EpisodeId and State.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -136,6 +168,12 @@ StormEvents
 ### Legacy strategy with explicit source
 
 This strategy is for legacy purposes only, and indicated by the use of `hint.strategy=legacy` or by not including a strategy indication at all. See the following example:
+
+This query will run 2 subqueries:
+* when x == 1 so it will return all rows from StormEvents that has InjuriesIndirect == 1
+* when x == 2 so it will return all rows from StormEvents that has InjuriesIndirect == 2
+
+the final result is the union of these 2 subqueries.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
