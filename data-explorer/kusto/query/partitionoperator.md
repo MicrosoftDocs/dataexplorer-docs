@@ -3,12 +3,11 @@ title: partition operator - Azure Data Explorer
 description: This article describes partition operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/06/2021
+ms.date: 07/03/2022
 ---
-# partition operator 
+# partition operator
 
-The partition operator partitions the records of its input table into multiple subtables according to values in a key column, runs a subquery on each subtable, and produces a single output table that is the union of the results of all subqueries.
-This operator is useful when there is a need to perform a subquery (which may include aggregate functions, window functions, top N ... etc) on each subset of rows that belongs to the same partition key rather than on top of the whole dataset.
+The partition operator partitions the records of its input table into multiple subtables according to values in a key column, runs a subquery on each subtable, and produces a single output table that is the union of the results of all subqueries. This operator is useful when ou need to perform a subquery only on a subset of rows that belongs to the same partition key, and not query the whole dataset. These subqueries could include aggregate functions, window functions, top N and others.
 
 The partition operator supports several strategies of subquery operation: 
 
@@ -38,7 +37,6 @@ Operators like `join`, `union`, `external_data`, `plugins`, or any other operato
 Legacy subqueries can use the following sources:
 
 * Implicit - The source is a tabular transformation that doesn't specify a tabular source. The source is implicit and will be assigned according to the subtable partitions. This applies when there are 64 or less key values. 
-
 * Explicit - The subquery must include a tabular source explicitly. Only the key column of the input table is available in the subquery, and referenced by using its name in the `toscalar()` function.
 
 For both implicit and explicit sources, the subquery type is used for legacy purposes only, and indicated by the use of `hint.strategy=legacy`, or by not including any strategy indication. 
@@ -84,11 +82,11 @@ The operator returns a union of the results of the individual subqueries.
 
 ## Examples
 
-### Native strategy example
+### Native strategy examples
 
-Use `hint.strategy=native` for this strategy. See the following example:
+Use `hint.strategy=native` for this strategy. See the following examples:
 
-This query returns foreach InjuriesDirect, the count of events and total Injueries in each State that starts with 'W'.
+This query returns foreach InjuriesDirect, the count of events and total injuries in each State that starts with 'W'.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -116,7 +114,7 @@ StormEvents
 |WASHINGTON|1|10|
 
 
-This query returns for each State that starts with 'W', the top 1 EventType by total injuries:
+This query returns the top 1 EventType by total injuries for each State that starts with 'W':
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -170,8 +168,8 @@ StormEvents
 This strategy is for legacy purposes only, and indicated by the use of `hint.strategy=legacy` or by not including a strategy indication at all. See the following example:
 
 This query will run 2 subqueries:
-* when x == 1 so it will return all rows from StormEvents that has InjuriesIndirect == 1
-* when x == 2 so it will return all rows from StormEvents that has InjuriesIndirect == 2
+* When x == 1, the query will return all rows from StormEvents that has InjuriesIndirect == 1.
+* When x == 2, the query will return all rows from StormEvents that has InjuriesIndirect == 2.
 
 the final result is the union of these 2 subqueries.
 
