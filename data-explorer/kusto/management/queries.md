@@ -49,7 +49,7 @@ The output schema is as follows:
 |WorkloadGroup|string | Name of the workload group that query was associated with|
 
 
-**Example** 
+### Example 
 
 ```kusto
 .show queries 
