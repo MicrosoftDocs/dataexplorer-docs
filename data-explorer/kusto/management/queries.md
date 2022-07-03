@@ -30,23 +30,23 @@ The output schema is as follows:
 |---|---|
 |ClientActivityId|string|Client ID of the request|
 |Text|string|Query text (truncated at 64KB)|
-|Database|string|Name of the database the query executed|
-|StartedOn|datetime|Timestamp when query execution started|
-|LastUpdatedOn|datetime|Timestamp of last status update|
-|Duration|timespan|Server-side query duration|
-|State|string|Completion state|
-|RootActivityId|guid|Server-side request ID|
-|User|string|User ID that run the query|
-|FailureReason|string|Failure reason (empty if query succeeded)
-|TotalCpu|timespan|Total CPU consumed by the query|
-|CacheStatistics|dynamic|Data-cache usage statistics|
-|Application|string|Name of the application that was used to run the query|
-|MemoryPeak|long|Peak memory statistics|
-|ScannedExtentsStatistics|dynamic|Statistics of the scanned shards (extents)|
-|Principal|string|AAD-id of the user or application that was used to run the query|
-|ClientRequestProperties|dynamic|Client request properties|
-|ResultSetStatistics|dynamic|StatistStatisticsics describing returned data set|
-|WorkloadGroup|string|Name of the workload group that query was associated with|
+|Database | string | Name of the database on which the query was executed |
+| StartedOn | datetime | Timestamp when query execution started |
+| LastUpdatedOn | datetime | Timestamp of the last status update|
+| Duration |timespan | Server-side query duration |
+| State | string | Completion state|
+| RootActivityId | guid | Server-side request ID|
+|User | string | User ID that ran the query|
+|FailureReason|string|Failure reason. If query succeeded, this field is empty. 
+|TotalCpu | timespan | Total CPU consumed by the query |
+| CacheStatistics | dynamic | Data-cache usage statistics |
+| Application | string | Name of the application that was used to run the query|
+|MemoryPeak | long | Peak memory statistics|
+|ScannedExtentsStatistics | dynamic | Statistics of the scanned shards (extents)|
+|Principal| string | AAD-ID of the user or application that was used to run the query|
+|ClientRequestProperties | dynamic | Client request properties|
+|ResultSetStatistics | dynamic |Statistics describing returned data set|
+|WorkloadGroup|string | Name of the workload group that query was associated with|
 
 
 **Example** 
