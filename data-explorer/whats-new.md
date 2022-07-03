@@ -67,7 +67,7 @@ This section lists the major changes to docs during March 2022.
 
 | Article title | Description |
 |--|--|
-| [Clear schema cache for cross-cluster queries](./kusto/management/clear-cross-cluster-schema-cache.md) | New article. Describes how to manually clear the cross-cluster query cache . |
+| [Clear schema cache for cross-cluster queries](./kusto/management/clear-cross-cluster-schema-cache.md) | New article. Describes how to manually clear the cross-cluster query cache. |
 
 ### Query
 
@@ -237,7 +237,7 @@ This section lists the major changes to docs during August 2021.
 | Article title | Description |
 |--|--|
 | [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
-| [Create an external table using the Web UI wizard](external-table.md) | Updated article. New UI.
+| [Create an external table using the Azure Data Explorer web UI wizard](external-table.md) | Updated article. New UI.
 | [Use one-click ingestion to create an event hub data connection](one-click-event-hub.md)| Updated article. New UI.
 | [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md) | Updated article. New UI.
 | [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md) | Updated article. New UI.
@@ -373,7 +373,7 @@ This section lists the major changes to docs during February 2021.
 Article title | Description
 ---|---
 [Optimize for high concurrency with Azure Data Explorer](high-concurrency.md) | New article. In this article, you learn to optimize your Azure Data Explorer setup for high concurrency.
-| [Quickstart: Query data in Azure Data Explorer Web UI](web-query-data.md) | Updated article. Explanation of table grid options.
+| [Quickstart: Query data in Azure Data Explorer web UI](web-query-data.md) | Updated article. Explanation of table grid options.
 
 ### Query
 
@@ -414,7 +414,7 @@ This section lists the major changes to docs during January 2021.
 Article title | Description
 ---|---
 [Azure Policy Regulatory Compliance controls](security-controls-policy.md) | New article. This page lists the **compliance domains** and **security controls**.
-[Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) | New article. In this article, you will learn how to give cluster access to principals from another tenant.
+[Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) | New article. In this article, you'll learn how to give cluster access to principals from another tenant.
 
 ### Management
 
@@ -466,7 +466,7 @@ Article title | Description
 [Use one-click ingestion to create an event hub data connection](one-click-event-hub.md) | New article. Connect an event hub to a table using the [one-click ingestion](ingest-data-one-click.md) experience.
 | [Configure managed identities for your cluster](./configure-managed-identities-cluster.md) | Updated article. Supports both user-assigned managed identities and system-assigned managed identities
 | [Create a table](one-click-table.md) | Updated article. General availability (GA). |
- | [Quickstart: Query data in Azure Data Explorer Web UI](web-query-data.md) | Updated article. New capabilities.
+ | [Quickstart: Query data in Azure Data Explorer web UI](web-query-data.md) | Updated article. New capabilities.
 |  [What is one-click ingestion?](ingest-data-one-click.md) | Updated article. Added ingestion from JSON nested levels. General availability (GA).
 | [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md) | Updated article. New dashboard visuals and parameter changes.
 
