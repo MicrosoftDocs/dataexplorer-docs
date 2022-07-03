@@ -19,7 +19,7 @@ The `.show` `queries` command returns a list of queries that have reached a fina
 
 `.show` `queries`
 
-* Returns a table containing queries that were run in past and their completion statistics. It is possible to use KQL query to explore the results.
+* Returns a table containing previously run queries and their completion statistics. You can use KQL queries to explore the results.
 * Note: the text of the query is truncated after 64KB.
 
 **Output**
