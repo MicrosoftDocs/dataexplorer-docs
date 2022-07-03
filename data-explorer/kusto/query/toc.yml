@@ -422,6 +422,22 @@ items:
     href: coalescefunction.md
   - name: column_ifexists()
     href: columnifexists.md
+  - name: convert_angle()
+    href: convert_anglefunction.md
+  - name: convert_energy()
+    href: convert_energyfunction.md
+  - name: convert_force()
+    href: convert_forcefunction.md
+  - name: convert_length()
+    href: convert_lengthfunction.md
+  - name: convert_mass()
+    href: convert_massfunction.md
+  - name: convert_speed()
+    href: convert_speedfunction.md
+  - name: convert_temperature()
+    href: convert_temperaturefunction.md
+  - name: convert_volume()
+    href: convert_volumefunction.md
   - name: cos()
     href: cosfunction.md
   - name: cot()

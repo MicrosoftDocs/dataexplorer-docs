@@ -384,3 +384,17 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[hash_sha1()](sha1-hash-function.md)|Returns a SHA1 hash value for the input value.|
 |[hash_sha256()](sha256hashfunction.md)|Returns a SHA256 hash value for the input value.|
 |[hash_xxhash64()](hash-xxhash64-function.md)|Returns an XXHASH64 hash value for the input value.|
+
+
+## Units conversion functions
+
+|Function Name                                            | Description                                                            |
+|---------------------------------------------------------|------------------------------------------------------------------------|
+| [convert_angle()](convert_anglefunction.md)             | Returns the input value converted from one angle unit to another       |
+| [convert_energy()](convert_energyfunction.md)           | Returns the input value converted from one energy unit to another      |
+| [convert_force()](convert_forcefunction.md)             | Returns the input value converted from one force unit to another       |
+| [convert_length()](convert_lengthfunction.md)           | Returns the input value converted from one length unit to another      |
+| [convert_mass()](convert_massfunction.md)               | Returns the input value converted from one mass unit to another        |
+| [convert_speed()](convert_speedfunction.md)             | Returns the input value converted from one speed unit to another       |
+| [convert_temperature()](convert_temperaturefunction.md) | Returns the input value converted from one temperature unit to another |
+| [convert_volume()](convert_volumefunction.md)           | Returns the input value converted from one volume unit to another      |
