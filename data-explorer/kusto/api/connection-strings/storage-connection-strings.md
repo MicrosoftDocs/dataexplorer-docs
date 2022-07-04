@@ -29,7 +29,7 @@ Each storage type has a different connection string format. See the following ta
 |Azure Data Lake Storage Gen2  |`https://`|`https://`*StorageAccountName*`.dfs.core.windows.net/`*Filesystem*[`/`*PathToDirectoryOrFile*][*CallerCredentials*]|
 |Azure Data Lake Storage Gen2  |`abfss://`|`abfss://`*Filesystem*`@`*StorageAccountName*`.dfs.core.windows.net/`[*PathToDirectoryOrFile*][*CallerCredentials*]|
 |Azure Data Lake Storage Gen1  |`adl://`  |`adl://`*StorageAccountName*.azuredatalakestore.net/*PathToDirectoryOrFile*[*CallerCredentials*]|
-|Amazon S3                     |`https://`|`https://`*BucketName*.s3.*RegionName*.amazonaws.com/*ObjectKey*[*CallerCredentials*]|
+|Amazon S3                     |`https://`|`https://`*BucketName*`.s3.`*RegionName*`.amazonaws.com/`*ObjectKey*[*CallerCredentials*]|
 
 ## Storage authentication
 
