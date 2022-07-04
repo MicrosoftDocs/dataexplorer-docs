@@ -29,11 +29,11 @@ The one-click sample app generator wizard guides you through the one-click inges
 
   * Select **Data** in the left pane. Within the **Data Management** page under Quick actions, select **Generate Sample App**.
 
-    :::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-welcome.png" alt-text="Sample app generator from welcome to Azure Data Explorer.":::
+    :::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-welcome.png" alt-text="Screenshot showing Sample app generator card from welcome to Azure Data Explorer.":::
 
   * Select **Data** in the left pane. Within the **Data Management** page, select **SDKs & Connectors** tab. Within SDKs sub-tab, select an SDK.
 
-    :::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-sdks.png" alt-text="Sample app generator from SDKs & connectors tab.":::
+    :::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-sdks.png" alt-text="Screenshot showing Sample app generator from SDKs & connectors tab.":::
 
 ## One-click sample app generator wizard
 
