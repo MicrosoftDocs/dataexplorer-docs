@@ -288,7 +288,7 @@ var config = {
 var authContext = new AuthenticationContext(config);
 ```
 
-* Call `authContext.login()` before trying to `acquireToken()` if you aren't logged in. a good way ot know if you're logged in or not is to call `authContext.getCachedUser()` and see if it returns `false`)
+* Call `authContext.login()` before trying to `acquireToken()` if you aren't logged in. a good way to know if you're logged in or not is to call `authContext.getCachedUser()` and see if it returns `false`)
 * Call `authContext.handleWindowCallback()` whenever your page loads. This is the piece of code that intercepts the redirect back from Azure AD and pulls the token out of the fragment URL and caches it.
 * Call `authContext.acquireToken()` to get the actual access token, now that you have a valid ID token. The first parameter to acquireToken will be the Kusto server Azure AD application resource URL.
 
