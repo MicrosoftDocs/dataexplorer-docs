@@ -25,7 +25,7 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
     :::image type="content" source="media/one-click-table/select-create-table.png" alt-text="Screenshot of the Azure Data Explorer web U I showing how to create a table.":::
 
-1. From the **Quick actions** section, select **Create new table**. Alternatively, from the **All actions** section, select **Create new table** and then **Create**.
+1. From the **Quick actions** section, select **Create table**. Alternatively, from the **All** actions section, select **Create table** and then **Create**.
 
 ### Destination tab
 
@@ -37,6 +37,7 @@ The **Create table** window opens with the **Destination** tab selected.
     >  Table names can be up to 1024 characters including alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
     :::image type="content" source="media/one-click-table/destination-tab.png" alt-text="Screen capture of Destination tab in the Create table window. Cluster, Database, and Table name fields must be filled out before continuing on to Next- Source.":::
+
 1. Select **Next: Source**
 
 ### Source tab
@@ -110,7 +111,7 @@ In the **Schema** tab, the **Create table** window opens.
 
     :::image type="content" source="media/one-click-table/new-table-schema-trimmed.png" alt-text="Screenshot of the new table with schema defined manually.":::
 
-    To add columns, select the plus icon at the top right of the grid to insert a new column.
+    To add columns, select the plus icon at the top right of the schema to insert a new column.
 
 1. Select **Next: Create table**.
 
