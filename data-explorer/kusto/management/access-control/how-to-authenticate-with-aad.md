@@ -9,17 +9,18 @@ ms.date: 02/07/2022
 # How to authenticate with Azure Active Directory (Azure AD) for Azure Data Explorer access
 
 The recommended way to access Azure Data Explorer is by authenticating to the
-**Azure Active Directory** service.
-Doing so guarantees that Azure Data Explorer never sees the accessing principal's
-directory credentials, by using a two-stage process:
+**Azure Active Directory (Azure AD)** service; doing so guarantees that
+Azure Data Explorer never gets the accessing principal's directory credentials.
+To do so, the client performs a two-steps process:
 
 1. In the first step, the client:
     1. Communicates with the Azure AD service.
-    1. Authenticates to the Azure AD. 
-    1. Requests an access token issued specifically for the particular Azure Data Explorer endpoint the client intends to access.
+    1. Authenticates to the Azure AD service.
+    1. Requests an access token issued specifically for Azure Data Explorer.
 1. In the second step, the client issues requests to Azure Data Explorer, providing the access token acquired in the first step as a proof of identity to Azure Data Explorer.
 
-Azure Data Explorer then executes the request on behalf of the security principal for which Azure AD issued the access token. All authorization checks are performed using this identity.
+Azure Data Explorer then executes the request on behalf of the security principal for which Azure AD issued the access token.
+All authorization checks are performed using this identity.
 
 In most cases, the recommendation is to use one of Azure Data Explorer SDKs to access the
 service programmatically, as they remove much of the hassle of implementing the
@@ -58,6 +59,16 @@ URI of the endpoint, barring the port information and the path. For example:
 https://help.kusto.windows.net
 ```
 
+Alternatively, clients may also request an access token with a cloud-static resource ID, such as
+
+`https://kusto.kusto.windows.net`
+
+(for public cloud services). Clients doing so must make sure that they only send this access token
+to an Azure Data Explorer service endpoint, based on the host name suffix (here, `kusto.windows.net`).
+Sending the access token to untrusted service endpoints might result in token leakage, allowing the
+receiving service to perform operations on any Azure Data Explorer service endpoint to which the
+principal has access.
+
 ## Specifying the Azure AD tenant ID
 
 Azure AD is a multi-tenant service, and every organization can create an object called
@@ -84,8 +95,13 @@ Azure AD has many endpoints for authentication:
   with the value `common`.
 
 > [!NOTE]
-> The Azure AD endpoint used for authentication is also called *Azure AD authority URL*
+> The Azure AD service endpoint used for authentication is also called *Azure AD authority URL*
 > or simply **Azure AD authority**.
+
+> [!NOTE]
+> The Azure AD service endpoint changes in national clouds. When working with an Azure Data Explorer
+> service deployed in a national cloud, please set the corresponding national cloud Azure AD service endpoint.
+> To change the endpoint, set an environment variable `AadAuthorityUri` to the required URI.
 
 ## Azure AD local token cache
 
@@ -272,7 +288,7 @@ var config = {
 var authContext = new AuthenticationContext(config);
 ```
 
-* Call `authContext.login()` before trying to `acquireToken()` if you aren't logged in. a good way ot know if you're logged in or not is to call `authContext.getCachedUser()` and see if it returns `false`)
+* Call `authContext.login()` before trying to `acquireToken()` if you aren't logged in. a good way to know if you're logged in or not is to call `authContext.getCachedUser()` and see if it returns `false`)
 * Call `authContext.handleWindowCallback()` whenever your page loads. This is the piece of code that intercepts the redirect back from Azure AD and pulls the token out of the fragment URL and caches it.
 * Call `authContext.acquireToken()` to get the actual access token, now that you have a valid ID token. The first parameter to acquireToken will be the Kusto server Azure AD application resource URL.
 
