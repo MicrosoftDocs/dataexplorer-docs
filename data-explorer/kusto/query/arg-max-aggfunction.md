@@ -3,7 +3,7 @@ title: arg_max() (aggregation function) - Azure Data Explorer
 description: This article describes arg_max() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/30/2022
+ms.date: 07/05/2022
 ---
 # arg_max() (aggregation function)
 
@@ -17,10 +17,10 @@ Finds a row in the group that maximizes *ExprToMaximize*, and returns the value 
 
 ## Arguments
 
-| Name | Description |
-|--|--|
-| *ExprToMaximize* | Expression that will be used for aggregation calculation |
-| *ExprToReturn* | Expression that will be used for returning the value when *ExprToMaximize* is maximum. Expression to return may be a wildcard (*) to return all columns of the input table. |
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ExprToMaximize* | string | &check; | Expression that will be used for aggregation calculation |
+| *ExprToReturn* | string | &check; | Expression that will be used for returning the value when *ExprToMaximize* is maximum. Expression to return may be a wildcard (*) to return all columns of the input table. |
 
 ## Returns
 
@@ -29,36 +29,31 @@ returns the value of *ExprToReturn* (or `*` to return the entire row).
 
 ## Examples
 
-Use the `stormcenter` sample database for all the examples below.
+The following examples demonstrate how to use this function.
+
 **Example 1**
-Show the storms based on start time, event type, and location.
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAAysuyS/KTU7NK0kt4qpRKC7NzU0syqxKVUgsSo/PTazQcC0DyoVUFqTqKASXJJakaiokVYJYRSUhmbmpADYYdmM+AAAA)**\]**
+
+Find the northern location of a storm event in each state.
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlVILEqPz02s0HBKTc/M80ks0VGAsPKTE0sy8/M0FZIqFYJLEktSATqyPZtCAAAA)**\]**
 
 ```kusto
-stormcenter
-| summarize arg_max(EventType, State) by StartTime
+StormEvents 
+| summarize arg_max(BeginLat, BeginLocation) by State
 ```
 
 **Example 2**
-Show all of the details of the storms.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAAysuyS/KTU7NK0kt4qpRKC7NzU0syqxKVUgsSo/PTazQcC0DyoVUFqTqKGhpKiRVKgSXJBaVhGTmpgIAOxiylToAAAA=)**\]**
+Find the first time an event with death direct>0 happened in each state
+
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKiQWpcfnJlZoBJckFpWEZOam6ihoaSokVSoABUpSAQPollZPAAAA)**\]**
 
 ```kusto
-stormcenter
-| summarize arg_max(EventType, *) by StartTime
+StormEvents
+| where DeathsDirect > 0
+| summarize arg_max(StartTime, *) by State
 ```
 
 **Example 3**
-
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAAysuyS/KTU7NK0kt4qpRKC7NzU0syqxKVdBwSk3PzPNJLNFRcM1LAdKatolF6fG5iRVIMsEliSWpmgpJlSBWUUlIZm4qAOWQBHlQAAAA)**\]**
-
-```kusto
-stormcenter
-| summarize (BeginLat, EndLat)=arg_max(BeginLat, State) by StartTime)
-```
-
-**Example 4**
 The following example demonstrates null handling.
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAA31PwQrCMAy97ytCT530osfdnKBX8SCIiHQsjEKWjrRjKH68nWwoguYdkry8l5DaxoSKUG+ld7GAEMVxY2Djycu7PaIE57kAxzGHcwYp1LrrCJUBdcA6paX5oneCyKlIHs09UT4JSssJo+KERH74K/m1ZI9WxnkpfuCP6zM/+1Ymu2QPCH3bWnF3BCvNtXWsp5cMLHKobvD6/wlU5dHuDwEAAA==)**\]**
 

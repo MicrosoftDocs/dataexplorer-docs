@@ -3,7 +3,7 @@ title: arg_min() (aggregation function) - Azure Data Explorer
 description: This article describes arg_min() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/30/2022
+ms.date: 07/05/2022
 ---
 # arg_min() (aggregation function)
 
@@ -17,10 +17,10 @@ Finds a row in the group that minimizes *ExprToMinimize*, and returns the value 
 
 ## Arguments
 
-| Name | Description |
-|--|--|
-| *ExprToMinimize*| Expression that will be used for aggregation calculation.
-| *ExprToReturn* | Expression that will be used for returning the value when *ExprToMinimize* is minimum. Expression to return may be a wildcard (*) to return all columns of the input table. |
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ExprToMinimize*| string | &check; | Expression that will be used for aggregation calculation.
+| *ExprToReturn* | string | &check; | Expression that will be used for returning the value when *ExprToMinimize* is minimum. Expression to return may be a wildcard (*) to return all columns of the input table. |
   
 ## Null handling
 
@@ -33,35 +33,30 @@ Finds a row in the group that minimizes *ExprToMinimize*, and returns the value 
 ## Examples
 
 Use the `stormcenter` sample database for all the examples below.
+
 **Example 1**
-Show the storms based on start time, event type, and location.
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAAysuyS/KTU7NK0kt4qpRKC7NzU0syqxKVUgsSo/PzczTcC0DyoVUFqTqKASXJJakaiokVYJYRSUhmbmpADnghVs+AAAA)**\]**
+
+Find the northern location of a storm event in each state.
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlVILEqPz83M03BKTc/M80ks0VGAsPKTE0sy8/M0FZIqFYJLEktSASw9sGhCAAAA)**\]**
 
 ```kusto
-stormcenter
-| summarize arg_min(EventType, State) by StartTime
+StormEvents 
+| summarize arg_min(BeginLat, BeginLocation) by State
 ```
 
 **Example 2**
-Show all of the details of the storms.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAAysuyS/KTU7NK0kt4qpRKC7NzU0syqxKVUgsSo/PzczTcC0DyoVUFqTqKGhpKiRVKgSXJBaVhGTmpgIABwKNJToAAAA=)**\]**
+Find the first time an event with death direct>0 happened in each state
+
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKiQWpcfnZuZpBJckFpWEZOam6ihoaSokVSoABUpSAdlWy7VPAAAA)**\]**
 
 ```kusto
-stormcenter
-| summarize arg_min(EventType, *) by StartTime
+StormEvents
+| where DeathsDirect > 0
+| summarize arg_min(StartTime, *) by State
 ```
 
 **Example 3**
-
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAAysuyS/KTU7NK0kt4qpRKC7NzU0syqxKVdBwSk3PzPNJLNFRcM1LAdKatolF6fG5mXlIMsEliSWpmgpJlSBWUUlIZm4qAEdbPlJQAAAA)**\]**
-
-```kusto
-stormcenter
-| summarize (BeginLat, EndLat)=arg_min(BeginLat, State) by StartTime)
-```
-
-**Example 4**
 The following example demonstrates null handling.
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAA31PwQrCMAy97ytCT530osfdnKBX8SCIiHQsjEKWjrRjKH68nWwoguYdkry8l5DaxoSKUG+ld7GAEMVxY2Djycu7PaIE57kAxzGHcwYp1LrrCJUBdcA6paX5oneCyKlIHs09UT4JSssJo+KERH74K/m1ZI9WxnkpfuCP6zM/+1Ymu2QPCH3bWnF3BCvNtXWsp5cMLHKobvD6/wlU5dHuDwEAAA==)**\]**
 
