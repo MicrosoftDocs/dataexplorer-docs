@@ -7,23 +7,22 @@ ms.date: 07/03/2022
 ---
 # convert_volume
 
-Convert a value from one unit to another.
-
-```kusto
-convert_volume(1.6, "CubicMeter", "AcreFoot")
-```
+Convert a volume value from one unit to another.
 
 ## Syntax
 
-`convert_volume(`*value*`,`*from*`, `*to*`)`
+`convert_volume(`*value*`,`*from*`,`*to*`)`
 
 ## Arguments
 
-* `value`: a real number
-* `from`: `string`
-* `to`: `string`
+| Name | Type | Required | Description |
+|--|--|--|--|
+| `value` | real | &check; | A real number |
+| `from` | string | &check; | String value from the list of values |
+| `to` | string  &check; |  String value from the list of values |
 
-Possible values of `from` and `to`: 
+Possible values of `from` and `to`:
+
 * AcreFoot
 * AuTablespoon
 * BoardFoot
@@ -79,7 +78,7 @@ Possible values of `from` and `to`:
 
 ## Returns
 
-An value converted from the `from` unit to the `to` unit.
+Returns the input value converted from one volume unit to another.
 
 ## Examples
 

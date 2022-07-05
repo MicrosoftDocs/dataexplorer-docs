@@ -7,23 +7,22 @@ ms.date: 07/03/2022
 ---
 # convert_length
 
-Convert a value from one unit to another.
-
-```kusto
-convert_length(1.6, "Meter", "Angstrom")
-```
+Convert a length value from one unit to another.
 
 ## Syntax
 
-`convert_length(`*value*`,`*from*`, `*to*`)`
+`convert_length(`*value*`,`*from*`,`*to*`)`
 
 ## Arguments
 
-* `value`: a real number
-* `from`: `string`
-* `to`: `string`
+| Name | Type | Required | Description |
+|--|--|--|--|
+| `value` | real | &check; | A real number |
+| `from` | string | &check; | String value from the list of values |
+| `to` | string  &check; |  String value from the list of values |
 
-Possible values of `from` and `to`: 
+Possible values of `from` and `to`:
+
 * Angstrom
 * AstronomicalUnit
 * Centimeter
@@ -63,7 +62,7 @@ Possible values of `from` and `to`:
 
 ## Returns
 
-An value converted from the `from` unit to the `to` unit.
+ Returns the input value converted from one length unit to another.
 
 ## Examples
 

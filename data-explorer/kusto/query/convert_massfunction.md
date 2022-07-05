@@ -7,23 +7,22 @@ ms.date: 07/03/2022
 ---
 # convert_mass
 
-Convert a value from one unit to another.
-
-```kusto
-convert_mass(1.6, "Kilogram", "Centigram")
-```
+Convert a mass value from one unit to another.
 
 ## Syntax
 
-`convert_mass(`*value*`,`*from*`, `*to*`)`
+`convert_mass(`*value*`,`*from*`,`*to*`)`
 
 ## Arguments
 
-* `value`: a real number
-* `from`: `string`
-* `to`: `string`
+| Name | Type | Required | Description |
+|--|--|--|--|
+| `value` | real | &check; | A real number |
+| `from` | string | &check; | String value from the list of values |
+| `to` | string  &check; |  String value from the list of values |
 
-Possible values of `from` and `to`: 
+Possible values of `from` and `to`:
+
 * Centigram
 * Decagram
 * Decigram
@@ -52,7 +51,7 @@ Possible values of `from` and `to`:
 
 ## Returns
 
-An value converted from the `from` unit to the `to` unit.
+ Returns the input value converted from one mass unit to another.
 
 ## Examples
 

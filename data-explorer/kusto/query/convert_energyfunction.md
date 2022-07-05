@@ -7,23 +7,22 @@ ms.date: 07/03/2022
 ---
 # convert_energy
 
-Convert a value from one unit to another.
-
-```kusto
-convert_energy(1.6, "Joule", "BritishThermalUnit")
-```
+Convert energy values from one unit to another.
 
 ## Syntax
 
-`convert_energy(`*value*`,`*from*`, `*to*`)`
+`convert_energy(`*value*`,`*from*`,`*to*`)`
 
 ## Arguments
 
-* `value`: a real number
-* `from`: `string`
-* `to`: `string`
+| Name | Type | Required | Description |
+|--|--|--|--|
+| `value` | real | &check; | A real number |
+| `from` | string | &check; | String value from the list of values |
+| `to` | string  &check; |  String value from the list of values |
 
-Possible values of `from` and `to`: 
+Possible values of `from` and `to`:
+
 * BritishThermalUnit
 * Calorie
 * DecathermEc
@@ -63,7 +62,7 @@ Possible values of `from` and `to`:
 
 ## Returns
 
-An value converted from the `from` unit to the `to` unit.
+ Returns the input value converted from one energy unit to another.
 
 ## Examples
 
