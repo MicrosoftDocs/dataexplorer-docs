@@ -36,7 +36,7 @@ Use the `stormcenter` sample database for all the examples below.
 
 **Example 1**
 
-Find the northern location of a storm event in each state.
+Find the northern most location of a storm event in each state.
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlVILEqPz83M03BKTc/M80ks0VGAsPKTE0sy8/M0FZIqFYJLEktSASw9sGhCAAAA)**\]**
 
 ```kusto
@@ -46,7 +46,7 @@ StormEvents
 
 **Example 2**
 
-Find the first time an event with death direct>0 happened in each state
+Find the first time an event with a direct death happened in each state.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKiQWpcfnZuZpBJckFpWEZOam6ihoaSokVSoABUpSAdlWy7VPAAAA)**\]**
 
