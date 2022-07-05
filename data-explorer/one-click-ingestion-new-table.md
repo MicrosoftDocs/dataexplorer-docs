@@ -36,11 +36,11 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 1. In the left menu of the Azure Data Explorer web UI, select **Data**.
 
-1. From the **Quick actions** section, select **Ingest new data**. Alternatively, from the **All actions** section, select **Ingest new data** and then **Ingest**.
+1. From the **Quick actions** section, select **Ingest data**. Alternatively, from the **All** section, select **Ingest data** and then **Ingest**.
 
     :::image type="content" source="media/one-click-ingestion-new-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web U I where you select one-click ingestion for a table.":::
 
-1. In the **Ingest new data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
+1. In the **Ingest data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 
     [!INCLUDE [one-click-cluster](includes/one-click-cluster.md)]
 
@@ -104,14 +104,16 @@ If you get the following error message when ingesting from a storage account:
 
 ## Filter data
 
-If you want to, filter the data to ingest only files that begin end with specific characters.
+* If you want to, filter the data to ingest only files that begin end with specific characters.
 
-For example, filter for all files that begin with the word *.csv* extension.
+  * For example, filter for all files that begin with the word *.csv* extension.
 
-:::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter.":::
+  * :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter.":::
 
-The system will select one of the files at random and the schema will be generated based on that  **Schema defining file**. You can select a different file.
+  * The system will select one of the files at random and the schema will be generated based on that  **Schema defining file**. You can select a different file.
 
+* You can also filter the folder path to limit your search for a file. When you enter a URL in the **Link to source** field, possible files to use to define the schema are listed.
+  
 ## Edit the schema
 
 Select **Next: Schema** to view and edit your table column configuration. The service automatically identifies if the schema is compressed by looking at the name of the source.
