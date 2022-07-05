@@ -34,13 +34,6 @@ Interactive analytics with Azure Data Explorer to explore data with improvised, 
 > [!div class="nextstepaction"]
 > [Azure Data Explorer interactive analytics](/azure/architecture/solution-ideas/articles/interactive-azure-data-explorer)
 
-## Long-term security log retention with Azure Data Explorer
-
-This article outlines a solution for long-term retention of security logs. At the core of the architecture is Azure Data Explorer. This service provides storage for security data at minimal cost but keeps that data in a format that you can query. Other main components include Log Analytics, Microsoft Defender for Endpoint, and Microsoft Sentinel.
-
-> [!div class="nextstepaction"]
-> [Long-term security log retention with Azure Data Explorer](/azure/architecture/example-scenario/security/security-log-retention-azure-data-explorer)
-
 ## IoT analytics with Azure Data Explorer
 
 Near real-time analytics over fast flowing, high volume streaming data from IoT devices, sensors, connected buildings and vehicles, and so on. It focuses on integration of Azure Data Explorer with other IoT services to cater to both operational and analytical workloads using Cosmos DB and Azure Data Explorer.
