@@ -25,7 +25,7 @@ print x=1, s=strcat("Hello", ", ", "World!")
 
 ## Returns
 
-A table with one or more columns and a single-row. Each row returns the corresponding value of the evaluated *ScalarExpression*.
+A table with one or more columns and a single row. Each column returns the corresponding value of the evaluated *ScalarExpression*.
 
 ## Examples
 
