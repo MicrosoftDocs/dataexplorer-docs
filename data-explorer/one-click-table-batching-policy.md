@@ -56,5 +56,6 @@ In the **Summary** tab, all steps will be marked with green check marks when the
 :::image type="content" source="media/one-click-table-policies/batch-policy-success.png" alt-text="Screenshot of final screen in the update table batching policy wizard for Azure Data Explorer with the one-click experience.":::
 
 ## Next steps
+
 * [Query data in Azure Data Explorer web UI](web-query-data.md)
 * [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)
