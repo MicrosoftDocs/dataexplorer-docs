@@ -17,11 +17,11 @@ Convert a mass value from one unit to another.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| `value` | real | &check; | A real number |
-| `from` | string | &check; | String value from the list of values |
-| `to` | string  &check; |  String value from the list of values |
+| `value` | real | &check; | The value to be converted. |
+| `from` | string | &check; | The unit to convert from. The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
+| `to` | string  &check; | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
 
-Possible values of `from` and `to`:
+### Conversion units
 
 * Centigram
 * Decagram
@@ -54,6 +54,8 @@ Possible values of `from` and `to`:
  Returns the input value converted from one mass unit to another.
 
 ## Examples
+
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJz00sLtYw1DPSUVD3zszJTy9KzFUHsgPyS/NS1DUBemVMijUAAAA=)**\]**
 
 ```kusto
 print result = convert_mass(1.2, 'Kilogram', 'Pound')

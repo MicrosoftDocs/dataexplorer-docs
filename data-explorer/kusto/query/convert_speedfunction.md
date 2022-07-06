@@ -17,11 +17,11 @@ Convert a speed value from one unit to another.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| `value` | real | &check; | A real number |
-| `from` | string | &check; | String value from the list of values |
-| `to` | string  &check; |  String value from the list of values |
+| `value` | real | &check; | The value to be converted. |
+| `from` | string | &check; | The unit to convert from. The unit to convert to. For possible values, see [Conversion units](#conversion-units).|
+| `to` | string  &check; | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
 
-Possible values of `from` and `to`:
+### Conversion units
 
 * CentimeterPerHour
 * CentimeterPerMinute
@@ -61,6 +61,8 @@ Possible values of `from` and `to`:
 Returns the input value converted from one speed unit to another.
 
 ## Examples
+
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJLy5ITU3RMNQz0lFQ900tSS0KSC0KTgXKpqgDRZxT80oyc6HCHvmlReqaAK/HOJBIAAAA)**\]**
 
 ```kusto
 print result = convert_speed(1.2, 'MeterPerSecond', 'CentimeterPerHour')

@@ -17,11 +17,11 @@ Convert a volume value from one unit to another.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| `value` | real | &check; | A real number |
-| `from` | string | &check; | String value from the list of values |
-| `to` | string  &check; |  String value from the list of values |
+| `value` | real | &check; | The value to be converted. |
+| `from` | string | &check; | The unit to convert from. The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
+| `to` | string  &check; | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
 
-Possible values of `from` and `to`:
+### Conversion units
 
 * AcreFoot
 * AuTablespoon
@@ -81,6 +81,8 @@ Possible values of `from` and `to`:
 Returns the input value converted from one volume unit to another.
 
 ## Examples
+
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJL8vPKc1N1TDUM9JRUHcuTcpM9k0tSS1SB/Ick4tS3fLzS9Q1Abo7scQ8AAAA)**\]**
 
 ```kusto
 print result = convert_volume(1.2, 'CubicMeter', 'AcreFoot')

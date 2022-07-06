@@ -17,11 +17,11 @@ Convert force values from one unit to another.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| `value` | real | &check; | A real number |
-| `from` | string | &check; | String value from the list of values |
-| `to` | string  &check; |  String value from the list of values |
+| `value` | real | &check; | The value to be converted. |
+| `from` | string | &check; | The unit to convert from. The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
+| `to` | string  &check; | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
 
-Possible values of `from` and `to`:
+### Conversion units
 
 * Decanewton
 * Dyn
@@ -44,6 +44,8 @@ Possible values of `from` and `to`:
 Returns the input value converted from one force unit to another.
 
 ## Examples
+
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJT8svSk7VMNQz0lFQ90stL8nPUweyXFKTE/MgPE0AhSGK6TkAAAA=)**\]**
 
 ```kusto
 print result = convert_force(1.2, 'Newton', 'Decanewton')
