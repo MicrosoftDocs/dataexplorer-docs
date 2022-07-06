@@ -26,6 +26,9 @@ that the principal is associated with at least one security role that grants
 permissions to perform this operation on the resource. This is called an
 **authorization check**. Failing the authorization check aborts the operation.
 
+>[!NOTE]
+>To change security principals, you must be either a database admin or an alldatabases admin.
+
 ## Security roles management commands
 
 ### Syntax
