@@ -16,7 +16,7 @@ Searches the array for the specified item, and returns its position.
 ## Arguments
 
 * *array*: Input array to search.
-* *lookup*: Value to lookup. The value should be of type long, integer, double, datetime, timespan, decimal, string, or guid.
+* *lookup*: Value to lookup. The value should be of type `long`, `integer`, `double`, `datetime`, `timespan`, `decimal`, `string`, `guid`, or `boolean`.
 * *start_index*: Search start position. A negative value will offset the starting search value from the end of the array by this many steps: abs(start_index). Optional.
 * *length*: Number of values to examine. A value of -1 means unlimited length. Optional.
 * *occurrence*: The number of the occurrence. Default 1. Optional.
@@ -51,5 +51,5 @@ print
 ## See also
 
 If you only want to check whether a value exists in an array,
-but you are not interested in its position, you can use
+but you aren't interested in its position, you can use
 [set_has_element(`arr`, `value`)](sethaselementfunction.md). This function will improve the readability of your query. Both functions have the same performance.

@@ -7,7 +7,7 @@ ms.date: 09/26/2019
 ---
 # avg() (aggregation function)
 
-Calculates the average (arithmetic mean) of *Expr* across the group. 
+Calculates the average (arithmetic mean) of *Expr* across the group.
 
 * Can only be used in context of aggregation inside [summarize](summarizeoperator.md)
 
@@ -22,4 +22,3 @@ Calculates the average (arithmetic mean) of *Expr* across the group.
 ## Returns
 
 The average value of *Expr* across the group.
- 

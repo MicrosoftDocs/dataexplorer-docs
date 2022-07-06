@@ -43,6 +43,9 @@ Both plugins return a table that has a single record with the following dynamic 
 * *ResponseHeaders*: A property bag with the response header.
 * *ResponseBody*: The response body parsed as a value of type `dynamic`.
 
+If the HTTP response indicates (via the `Content-Type` response header) that the media type is `application/json`,
+the response body is automatically parsed as-if it's a JSON object. Otherwise, it's returned as-is.
+
 ## Prerequisites
 
 Before you use the `http_request` and `http_request_post` plugins, make sure that requests meet the following requirements:
@@ -59,7 +62,10 @@ You can use the query arguments to specify authentication parameters for the `ht
 |--|--|
 | *Uri* | The URI to authenticate with. |
 | *RequestHeaders* | Using the HTTP standard `Authorization` header or any custom header supported by the web service. |
+
+<!--
 | *Options* | Using the HTTP standard `Authorization` header.<br />If you want to use Azure Active Directory (Azure AD) authentication, you must use an HTTPS URI for the request and set the following values:<br />* `azure_active_directory` to `Active Directory Integrated`<br />* `AadResourceId` to the Azure AD ResourceId value of the target web service. |
+-->
 
 > [!WARNING]
 > Be extra careful not to send secret information, such as
@@ -133,10 +139,8 @@ The following example is for a hypothetical HTTPS web service that accepts addit
 <!-- csl -->
 ```kusto
 let uri='https://example.com/node/js/on/eniac';
-let headers=dynamic({'x-ms-correlation-vector':'abc.0.1.0'});
-let options=dynamic({'Authentication':'Active Directory Integrated',
-  'AadResourceId':'https://eniac.to.the.max.example.com/'});
-evaluate http_request_post(uri, headers, options)
+let headers=dynamic({'x-ms-correlation-vector':'abc.0.1.0', 'authorization':'bearer ...Azure-AD-bearer-token-for-target-endpoint...'});
+evaluate http_request_post(uri, headers)
 ```
 
 ::: zone-end

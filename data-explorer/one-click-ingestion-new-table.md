@@ -3,7 +3,7 @@ title: Use one click to ingest data from a container or Azure Data Lake Storage 
 description: Ingest (load) data into a new Azure Data Explorer table from a container or ADLS, either as a one-time or continuous operation.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 02/07/2022
+ms.date: 06/22/2022
 ---
 
 # Ingest data from a container/ADLS into Azure Data Explorer
@@ -17,7 +17,7 @@ ms.date: 02/07/2022
 
 [One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, or as a one-time or continuous ingestion process.
 
-This document describes using the intuitive one-click wizard to ingest **CSV** data from a **container** into a **new table**. Ingestion can be done as a one-time operation, or as a continuous method by [setting up an Event Grid ingestion pipeline](#create-continuous-ingestion) that that responds to new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
+This document describes using the intuitive one-click wizard to ingest **CSV** data from a **container** into a **new table**. Ingestion can be done as a one-time operation, or as a continuous method by [setting up an Event Grid ingestion pipeline](#create-continuous-ingestion) that responds to new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
 
 For an overview of one-click ingestion, see [One-click ingestion](ingest-data-one-click.md).
 For information about ingesting data into an existing table in Azure Data Explorer, see [One-click ingestion to an existing table](one-click-ingestion-existing-table.md)
@@ -34,11 +34,11 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 ## Ingest new data
 
-1. In the left menu of the Web UI, select **Data**.
+1. In the left menu of the Azure Data Explorer web UI, select **Data**.
 
 1. From the **Quick actions** section, select **Ingest new data**. Alternatively, from the **All actions** section, select **Ingest new data** and then **Ingest**.
 
-    :::image type="content" source="media/one-click-ingestion-new-table/ingest-new-data.png" alt-text="Screenshot for the Web UI where you select one-click ingestion for a table.":::
+    :::image type="content" source="media/one-click-ingestion-new-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web U I where you select one-click ingestion for a table.":::
 
 1. In the **Ingest new data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 
@@ -185,5 +185,5 @@ Review the resources, and select **Create**.
 
 ## Next steps
 
-* [Query data in Azure Data Explorer Web UI](web-query-data.md)
+* [Query data in Azure Data Explorer web UI](web-query-data.md)
 * [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)

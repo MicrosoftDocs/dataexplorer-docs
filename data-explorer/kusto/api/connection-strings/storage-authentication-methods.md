@@ -21,18 +21,20 @@ The following authentication methods are supported:
 * [Shared Access (SAS) key](#shared-access-sas-token)
 * [Token](#token)
 * [Access key](#access-key)
+* [AWS Programmatic Access Keys](#aws-programmatic-access-keys)
 
 ## Storage authentication availability
 
 Different authentication methods are available for different external storage types. The available methods are summarized in the following table:
 
-| Authentication method | Available in Blob storage? | Available in Azure Data Lake Storage Gen 2? | Available in Azure Data Lake Storage Gen 1? | When should you use this method? |
-|---|---|---|---|---|
-| [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Use for attended flows when you need complex access control over the external storage. For example, in continuous export flows. You can also restrict storage access at the user level. |
-| [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Use in unattended flows, where no Azure Active Directory (Azure AD) principal can be derived to execute queries and commands. Managed identities are the only authentication solution. |
-| [Shared Access (SAS) key](#shared-access-sas-token) | :heavy_check_mark: | :heavy_check_mark: | :x: | SAS tokens have an expiration time. Use when accessing storage for a limited time. |
-| [Token](#token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Azure AD tokens have an expiration time. Use when accessing storage for a limited time. |
-| [Access key](#access-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | When you need to access resources on an ongoing basis. storage for a limited time. |
+| Authentication method | Available in Blob storage? | Available in Azure Data Lake Storage Gen 2? | Available in Azure Data Lake Storage Gen 1? | Available in Amazon S3? | When should you use this method? |
+|---|---|---|---|---|---|
+| [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Use for attended flows when you need complex access control over the external storage. For example, in continuous export flows. You can also restrict storage access at the user level. |
+| [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Use in unattended flows, where no Azure Active Directory (Azure AD) principal can be derived to execute queries and commands. Managed identities are the only authentication solution. |
+| [Shared Access (SAS) key](#shared-access-sas-token) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | SAS tokens have an expiration time. Use when accessing storage for a limited time. |
+| [Token](#token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Azure AD tokens have an expiration time. Use when accessing storage for a limited time. |
+| [Access key](#access-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | When you need to access resources on an ongoing basis. |
+| [AWS Programmatic Access Keys](#aws-programmatic-access-keys) | :x: | :x: | :x: | :heavy_check_mark: | When you need to access Amazon S3 resources on an ongoing basis. |
 
 ## Impersonation
 
@@ -103,3 +105,11 @@ To add a storage access key, append the key to the connection string, as follows
 `"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;ljkAkl...=="`
 
 `"abfss://fs@fabrikam.dfs.core.windows.net/path/to/file.csv;sharedkey=sv=...&sp=rwd"`
+
+## AWS Programmatic Access Keys
+
+To add Amazon Web Services access keys, append `;AwsCredentials={ACCESS_KEY_ID},{SECRET_ACCESS_KEY}` to the connection string.
+
+### AWS Programmatic Access Keys examples
+
+`"https://yourbucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=AKIAIOSFODNN7EXAMPLE,wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"`

@@ -3,12 +3,24 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/09/2021
+ms.date: 06/01/2022
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
+## May 2022
+
+This section lists the major changes to docs during May 2022.
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Ingest data from Telegraf into Azure Data Explorer](ingest-data-telegraf.md) | New Article. Describes how to ingest data into your cluster from Telegraf. |
+| [Ingest data using managed identity authentication](ingest-data-managed-identity.md) |  New Article. Queue Azure Storage blobs for ingestion using managed identity authentication. |
+|- [Usage examples for Azure Data Explorer connector to Power Automate](flow-usage.md) <br />- [Azure Data Explorer connector for Microsoft Power Automate](flow.md) <br />- [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md) <br />-[Microsoft Logic App and Azure Data Explorer](kusto/tools/logicapps.md)| Updated articles. General availability (GA). Content refreshed. |
+| [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) | Updated Article. Added section on Drillthrough. |
 ## April 2022
 
 This section lists the major changes to docs during April 2022.
@@ -24,8 +36,8 @@ This section lists the major changes to docs during April 2022.
 
 | Article title | Description |
 |--|--|
-| [Streaming ingestion failures](/azure/data-explorer/kusto/management/streamingingestionfailures.md) | New article. Describes the command to show streaming ingestion failures. |
-| [Streaming ingestion statistics](/azure/data-explorer/kusto/management/streamingingestionstatistics.md) | New article. Describes the command to show streaming ingestion statistics. |
+| [Streaming ingestion failures](./kusto/management/streamingingestionfailures.md) | New article. Describes the command to show streaming ingestion failures. |
+| [Streaming ingestion statistics](./kusto/management/streamingingestionstatistics.md) | New article. Describes the command to show streaming ingestion statistics. |
 
 ## March 2022
 
@@ -42,32 +54,29 @@ This section lists the major changes to docs during March 2022.
 | - [IoT Hub data connection](ingest-data-iot-hub-overview.md)<br />- [Ingest data from IoT Hub into Azure Data Explorer](ingest-data-iot-hub.md) | Updated articles. Added new sections on target databases (multi-database data connection). |
 | [What is a Start-for-free cluster?](start-for-free.md) | Updated article. Added link to the create a free cluster page. |
 
-### Concepts
-
-| Article title | Description |
-|--|--|
-| [Cross-cluster queries and schema changes](/azure/data-explorer/kusto/concepts/cross-cluster-and-schema-changes.md) | New article. Describes cross-cluster queries and schema changes. |
-
 ### Functions library
 
 | Article title | Description |
 |--|--|
-| [pairwise_dist_fl()](/azure/data-explorer/kusto/functions-library/pairwise-dist-fl.md) | New article. Describes the `pairwise_dist_fl()` user-defined function. |
-| [series_uv_anomalies_fl()](/azure/data-explorer/kusto/functions-library/series-uv-anomalies-fl.md) | New article. Describes the `series_uv_anomalies_fl()` user-defined function. |
-| [series_uv_change_points_fl()](/azure/data-explorer/kusto/functions-library/series-uv-change-points-fl.md) | New article. Describes the `series_uv_change_points_fl()` user-defined function. |
+| [pairwise_dist_fl()](./kusto/functions-library/pairwise-dist-fl.md) | New article. Describes the `pairwise_dist_fl()` user-defined function. |
+| [series_uv_anomalies_fl()](./kusto/functions-library/series-uv-anomalies-fl.md) | New article. Describes the `series_uv_anomalies_fl()` user-defined function. |
+| [series_uv_change_points_fl()](./kusto/functions-library/series-uv-change-points-fl.md) | New article. Describes the `series_uv_change_points_fl()` user-defined function. |
+
 
 ### Management
 
 | Article title | Description |
 |--|--|
-| [Clear schema cache for cross-cluster queries](/azure/data-explorer/kusto/management/clear-cross-cluster-schema-cache.md) | New article. Describes how to manually clear the cross-cluster query cache . |
+| [Clear schema cache for cross-cluster queries](./kusto/management/clear-cross-cluster-schema-cache.md) | New article. Describes how to manually clear the cross-cluster query cache . |
 
 ### Query
 
 | Article title | Description |
 |--|--|
-| [http_request plugin / http_request_post plugin](/azure/data-explorer/kusto/query/http-request-plugin.md) | New article. Describes the http_request plugin. |
-| [Cross-database and cross-cluster queries](/azure/data-explorer/kusto/query/cross-cluster-or-database-queries.md) | Updated article. Updated links to cross-cluster queries and schema changes page. |
+| [http_request plugin / http_request_post plugin](./kusto/query/http-request-plugin.md) | New article. Describes the http_request plugin. |
+| [Cross-database and cross-cluster queries](./kusto/query/cross-cluster-or-database-queries.md) | Updated article. Updated links to cross-cluster queries and schema changes page. |
+| [Cross-cluster queries and schema changes](./kusto/concepts/cross-cluster-and-schema-changes.md) | New article. Describes cross-cluster queries and schema changes. |
+
 
 ## February 2022
 
@@ -86,7 +95,7 @@ This section lists the major changes to docs during February 2022.
 
 | Article title | Description |
 |--|--|
-| [series_lag_fl()](/azure/data-explorer/kusto/functions-library/series-lag-fl.md)| New article. Describes the `series_lag_fl()` user-defined function. |
+| [series_lag_fl()](./kusto/functions-library/series-lag-fl.md) | New article. Describes the `series_lag_fl()` user-defined function. |
 
 ## January 2022
 
@@ -102,7 +111,7 @@ This section lists the major changes to docs during January 2022.
 
 | Article title | Description |
 |--|--|
-| [Azure Data Explorer API Overview](/azure/data-explorer/kusto/api/index.md) | Updated article. Added new tip and link to the doc on using the one-click sample app generator.
+| [Azure Data Explorer API Overview](./kusto/api/index.md) | Updated article. Added new tip and link to the doc on using the one-click sample app generator.
 
 ## December 2021
 
@@ -118,7 +127,7 @@ This section lists the major changes to docs during December 2021.
 
 | Article title | Description |
 |--|--|
-| [time_window_rolling_avg_fl()](/azure/data-explorer/kusto/functions-library/time-window-rolling-avg-fl.md) | New Article. Describes the function that calculates the rolling average of a metric over a constant duration time window. |
+| [time_window_rolling_avg_fl()](./kusto/functions-library/time-window-rolling-avg-fl.md) | New Article. Describes the function that calculates the rolling average of a metric over a constant duration time window. |
 
 ## November 2021
 
@@ -132,11 +141,11 @@ This section lists the major changes to docs during November 2021.
 | [Solution architectures](solution-architectures.md) | New article. Lists references to the architectures that include Azure Data Explorer. |
 | [Delete data from Azure Data Explorer](delete-data.md) | Updated article. Added new sections for purge and soft delete. |
 
-## Concepts
+### Query
 
 | Article title | Description |
 |--|--|
-| [Soft delete](/azure/data-explorer/kusto/concepts/data-soft-delete.md) | New article. Describes the data soft delete function. |
+| [[Soft delete]](./kusto/concepts/data-soft-delete.md) | New article. Describes the data soft delete function. |
 
 ## October 2021
 

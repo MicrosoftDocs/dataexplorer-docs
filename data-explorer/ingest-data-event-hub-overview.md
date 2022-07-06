@@ -41,6 +41,9 @@ Azure Data Explorer supports the following Event Hubs properties:
 
 Ingestion properties instruct the ingestion process, where to route the data, and how to process it. You can specify [ingestion properties](ingestion-properties.md) of the events ingestion using the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
 
+> [!NOTE]
+> Property names are case sensitive.
+
 |Property |Description|
 |---|---|
 | Database | The case-sensitive name of the target database. By default, data is ingested into the target database associated with the data connection. Use this property to override the default database and send data to a different database. To do so, you must first [set up the connection as a multi-database connection](#route-event-data-to-an-alternate-database). |
@@ -50,13 +53,14 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 | Compression | Data compression, `None` (default), or `GZip` compression.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
 | Tags | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extents-overview.md#ingest-by-extent-tags) when using tags. |
+| RawHeaders | Indicates that event source is Kafka and ADX must use byte array deserialization to read other routing properties. Value is ignored. |
 
 > [!NOTE]
 > Only events enqueued after you create the data connection are ingested.
 
 ## Events routing
 
-When you create a data connection to your cluster, you specify the routing for where to send ingested data. The default routing is to the target table specified in the connection string that is associated with the target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by using the event data properties.
+When you create a data connection to your cluster, you can specify the routing for where to send ingested data. The default routing is to the target table specified in the connection string that is associated with the target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by setting the event data properties mentioned above.
 
 ### Route event data to an alternate database
 
@@ -187,9 +191,10 @@ Azure Data Explorer doesn't support `Alias` event hub namespaces. To implement t
 > [!NOTE]
 > It's the user's responsibility to implement a failover from the primary namespace to the secondary namespace.
 
-## Next steps
+## See also
 
 * [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md)
 * [Create an event hub data connection for Azure Data Explorer using C#](data-connection-event-hub-csharp.md)
 * [Create an event hub data connection for Azure Data Explorer using Python](data-connection-event-hub-python.md)
 * [Create an event hub data connection for Azure Data Explorer using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
+* [Ingest and query Azure Monitor logs with Azure Data Explorer](ingest-data-no-code.md?tabs=diagnostic-metrics)
