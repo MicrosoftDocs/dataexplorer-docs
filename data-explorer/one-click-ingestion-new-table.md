@@ -9,7 +9,7 @@ ms.date: 06/22/2022
 # Ingest data from a container/ADLS into Azure Data Explorer
 
 > [!div class="op_single_selector"]
-> * [One-click](one-click-ingestion-new-table.md)
+> * [Ingestion wizard](one-click-ingestion-new-table.md)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
@@ -60,6 +60,8 @@ Under **Source type**, do the following steps:
   1. Select **From blob container** (blob container, ADLS Gen2 container). You can ingest up to 5000 blobs from a single container.
   1. In the **Link to storage** field, add the [blob URI with SAS token or Account key](kusto/api/connection-strings/generate-sas-token.md) of the container, and optionally enter the sample size. To ingest from a folder within this container, see [Ingest from folder in a container](#ingest-from-folder-in-a-container).
 
+    A list is populated with files from the container.
+
   > [!NOTE]
   > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage-connection-strings.md).
 
@@ -104,15 +106,21 @@ If you get the following error message when ingesting from a storage account:
 
 ## Filter data
 
-* If you want to, filter the data to ingest only files that begin end with specific characters.
+* If you want to, filter the data to ingest only files that end with a specific file extension.
 
-  * For example, filter for all files that begin with the word *.csv* extension.
+  For example, filter for all files that end with the word *.csv* extension.
 
-  * :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter.":::
+  :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter.":::
 
-  * The system will select one of the files at random and the schema will be generated based on that  **Schema defining file**. You can select a different file.
+  The system will select one of the files at random and the schema will be generated based on that  **Schema defining file**. You can select a different file.
 
-* You can also filter the folder path to limit your search for a file. When you enter a URL in the **Link to source** field, possible files to use to define the schema are listed.
+* You can also filter the folder path to limit your search for a file. Once the list of files from the container is populated you can enter a search term in the **Folder path** field.
+
+  :::image type="content" source="media/one-click-ingestion-new-table/filter-folder-path-selected.png" alt-text="Screenshot of a list of files in a container when ingesting data with the ingestion wizard.":::
+
+  The list will be filtered by the term.
+
+  :::image type="content" source="media/one-click-ingestion-new-table/filter-folder-path-search.png" alt-text="Screenshot of the folder path search to filter files when ingesting data with the ingestion wizard.":::
   
 ## Edit the schema
 
