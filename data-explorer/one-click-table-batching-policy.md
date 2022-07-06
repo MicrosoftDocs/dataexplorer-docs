@@ -7,7 +7,7 @@ ms.date: 06/26/2022
 ---
 # Create a table's ingestion batching policy with one-click
 
-During the ingestion process, throughput is optimized by batching small ingress data chunks together before ingestion. The  [ingestion batching policy](kusto/management/batchingpolicy.md) defines data aggregation for batching.
+During the ingestion process, throughput is optimized by batching small ingress data chunks together before ingestion. The  [ingestion batching policy](/kusto/management/batchingpolicy.md#sealing-a-batch) defines data aggregation for batching.
 In this article, you can define and assign an ingestion batching policy for a table using the one-click experience.
 
 [!INCLUDE [batching-policy-permissions](includes/batching-policy-permissions.md)]
