@@ -25,7 +25,7 @@ The sum value of *Expr* across the group.
  
 ## Example
 
-This example returns the total number of death cases by state.
+This example returns the total number of deaths by state.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlVIBYnFJ+eX5pXYgkkNTR2FkPySxByX1MSSDOfE4tRiBVuQBg2wQLFLZlFqcommQlKlQnBJYkkq2Lj8ohKQAJo+AH3fbol1AAAA)**\]**
 
