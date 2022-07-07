@@ -16,6 +16,11 @@ The command requires [Table admin permission](../management/access-control/role-
 > * For more information on extents, see [Extents (data shards) overview](extents-overview.md).
 > * A `.move` command either completes or fails for all source extents. There are no partial outcomes.
 
+## Restrictions
+
+* Both source and destination tables must be in the context database.
+* All columns in the source table are expected to exist in the destination table with the same name and data type.
+
 ## Syntax
 
 `.move` [`async`] `extents` `all` `from` `table` *SourceTableName* `to` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]
@@ -33,11 +38,6 @@ There are three ways to specify which extents to move:
 * Move all extents of a specific table.
 * Specify explicitly the extent IDs in the source table.
 * Provide a query whose results specify the extent IDs in the source tables.
-
-## Restrictions
-
-* Both source and destination tables must be in the context database.
-* All columns in the source table are expected to exist in the destination table with the same name and data type.
 
 ## Properties
 
