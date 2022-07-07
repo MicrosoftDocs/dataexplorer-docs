@@ -3,7 +3,7 @@ title: Create a table in Azure Data Explorer
 description: Learn how to easily create a table in Azure Data Explorer with the one-click experience.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 06/30/2022
+ms.date: 07/07/2022
 ---
 
 # Create a table in Azure Data Explorer
@@ -44,7 +44,7 @@ The **Create table** window opens with the **Destination** tab selected.
 
 In **Source type**, select the data source you'll use to create your table mapping. To proceed to the **Schema** page and map the table schema manually, select **None**.
 
-### [Define Schema from a source](#tab/source)
+### [Define schema from a source](#tab/source)
 
 1. Choose from the following options: **From blob**, **From file**, **From blob container**, **From ADLS Gen2 container**, and **Reference to Event Hub (Preview)**.
 
@@ -65,7 +65,7 @@ In **Source type**, select the data source you'll use to create your table mappi
 
 1. Select **Next: Schema** to continue to the **Schema** tab.
 
-### [Define Schema manually](#tab/manually)
+### [Define schema manually](#tab/manually)
 
 1. In **Source type**, select **None**.
 
@@ -75,9 +75,9 @@ In **Source type**, select the data source you'll use to create your table mappi
 
 ---
 
-### Edit Schema
+### Edit schema
 
-### [Edit Schema from a source](#tab/source)
+### [Edit schema from a source](#tab/source)
 
 In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats) and compression are automatically identified in the left-hand pane. If incorrectly identified, use the **Data format** dropdown menu to select the correct format.
 
@@ -88,7 +88,7 @@ In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats)
 
 * If **Ingest data** is selected, in addition to creating the table, the wizard also ingests the data from the source selected in the **Source** tab.
 
-    :::image type="content" source="media/one-click-table/ingest-data-checkbox-trimmed.png" alt-text="Screenshot of the ingest data checkbox selected to ingest data into table created from the wizard.":::
+    :::image type="content" source="media/one-click-table/ingest-data-checkbox.png" alt-text="Screenshot of the ingest data checkbox selected to ingest data into table created from the wizard.":::
 
 1. In **Mapping**, enter a name for this table's schema mapping.
 
@@ -97,21 +97,22 @@ In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats)
 
 1. Select **Next: Create table**.
 
-### [Edit Schema manually](#tab/manually)
+### [Edit schema manually](#tab/manually)
 
 In the **Schema** tab, the **Create table** window opens.
 
-:::image type="content" source="media/one-click-table/create-new-table-blank-trimmed.png" alt-text="Screenshot of the window to define schema manually.":::
+:::image type="content" source="media/one-click-table/create-new-table-selected.png" alt-text="Screenshot of the window to define schema manually.":::
 
 1. Select **Add new column** and the **Edit columns** panel opens.
 
     :::image type="content" source="media/one-click-table/edit-columns-panel.png" alt-text="Screenshot of the Edit columns fields to define the schema manually.":::
 
-1. For each column, enter **Column name** and **Data type**. Create more columns by selecting **Add column**. Next, select **Save**. The schema is displayed.
+1. For each column, enter **Column name** and **Data type**. Create more columns by selecting **Add column**.
+1. Select **Save**. The schema is displayed.
 
-    :::image type="content" source="media/one-click-table/new-table-schema-trimmed.png" alt-text="Screenshot of the new table with schema defined manually.":::
+    :::image type="content" source="media/one-click-table/new-table-schema.png" alt-text="Screenshot of the new table with schema defined manually.":::
 
-    To add columns, select the plus icon at the top right of the schema to insert a new column.
+    To insert a new column, select the plus icon at the top right of the schema .
 
 1. Select **Next: Create table**.
 
