@@ -3,7 +3,7 @@ title: Conditional Access with Azure Data Explorer
 description: In this article, you learn how to enable conditional access on your Azure Data Explorer cluster.
 ms.reviewer: cosh
 ms.topic: how-to
-ms.date: 03/10/2022
+ms.date: 07/03/2022
 ---
 
 # Conditional Access with Azure Data Explorer
@@ -14,7 +14,7 @@ The modern security perimeter extends beyond an organization's network to includ
 
 Conditional Access policies at their simplest are like if-then statements. If a user wants to access a resource, then they must complete an action. For example, a data engineer wants to access Azure Data Explorer but is required to do multi-factor authentication (MFA) to access it.
 
-In the following example, you'll learn how to configure a Conditional Access policy that enforces MFA for selected users using the Web UI. You can use the same steps to create other policies to meet your organization's security requirements.
+In the following example, you'll learn how to configure a Conditional Access policy that enforces MFA for selected users using the Azure Data Explorer web UI. You can use the same steps to create other policies to meet your organization's security requirements.
 
 ### Prerequisites
 
@@ -59,10 +59,10 @@ Using this feature requires an Azure AD Premium license. To find the right licen
 
     :::image type="content" source="media/conditional-access/configure-enforce-mfa.png" alt-text="Screenshot of the enable policy section, showing the policy being turned on.":::
 
-1. Verify the policy by asking an assigned user to access the [Web UI](https://dataexplorer.azure.com/). The user should be prompted for MFA.
+1. Verify the policy by asking an assigned user to access the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). The user should be prompted for MFA.
 
      :::image type="content" source="media/conditional-access/configure-test-policy.png" alt-text="Screenshot of the Web U I, showing the M F A prompt.":::
 
 ## Next steps
 
-* [Azure Data Explorer: Zero Trust Security with Conditional Access ](https://aka.ms/kusto.conditional.access.blog)
+* [Azure Data Explorer: Zero Trust Security with Conditional Access](https://aka.ms/kusto.conditional.access.blog)
