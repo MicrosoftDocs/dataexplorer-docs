@@ -43,7 +43,7 @@ There are three ways to specify which extents to move:
 
 The following properties are supported. All properties are optional.
 
-|Property|Type|Description |
+|Property name|Type|Description |
 |----------------|-------|---|
 |setNewIngestionTime|bool|If set to true, a new [ingestion time](../query/ingestiontimefunction.md) will be assigned to all records in extents being moved. This is useful when records should be processed by workloads that depend on [database cursors](databasecursor.md), such as [materialized views](materialized-views/materialized-view-overview.md) and [continuous data export ](data-export/continuous-data-export.md).|
 
