@@ -7,7 +7,7 @@ ms.date: 07/05/2022
 ---
 # max() (aggregation function)
 
-Returns the maximum value across the group. 
+Returns the maximum value across the group.
 
 * Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
 
@@ -19,12 +19,12 @@ Returns the maximum value across the group.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expr*  string | &check; | Expression that will be used for aggregation calculation. |
+| *Expr*  string | &check; | Expression used for aggregation calculation. |
 
 ## Returns
 
 The maximum value of *Expr* across the group.
- 
+
 > [!TIP]
 > This gives you the min or max on its own - for example, the highest or lowest price.
 > But if you want other columns in the row - for example, the name of the supplier with the lowest
@@ -32,10 +32,17 @@ The maximum value of *Expr* across the group.
 
 ## Example
 
-This example returns the first and last record in a table.
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVXDLLCouAYvb5mbmaQSXJBaVhGTmpmrqKPgklqTC5RIrkOQAN8fkeE0AAAA=)**\]**
+This example returns the last record in a table.
+
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVfBJLEktLgFL2OYmVmgElyQWlYRk5qZqAgAAp60yMgAAAA==)**\]**
 
 ```kusto
 StormEvents
-| summarize FirstEvent=min(StartTime), LatestEvent=max(StartTime)
+| summarize LatestEvent=max(StartTime)
 ```
+
+**Result**
+
+| LatestEvent |
+|--|
+| 2007-12-31T23:53:00Z |
