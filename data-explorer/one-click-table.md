@@ -112,7 +112,7 @@ In the **Schema** tab, the **Create table** window opens.
 
     :::image type="content" source="media/one-click-table/new-table-schema.png" alt-text="Screenshot of the new table with schema defined manually.":::
 
-    To insert a new column, select the plus icon at the top right of the schema .
+    To insert a new column, select the plus icon at the top right of the schema.
 
 1. Select **Next: Create table**.
 
