@@ -54,7 +54,7 @@ If the `SystemFlush` condition is set, a batch will be sealed when a system flus
 | Type             | Property                | Default | Low latency | Lowest |
 |------------------|-------------------------|---------|-------------|--------|
 | Number of items  | MaximumNumberOfItems    | 1000    | 1000        | 1      |
-| Data size (MB)   | MaximumRawDataSizeMB    | 1024    | 1024        | 10     |
+| Data size (MB)   | MaximumRawDataSizeMB    | 1024    | 1024        | 100     |
 | Time (sec)          | MaximumBatchingTimeSpan | 300  | 20 - 30  | 10 |
 
 The most effective way of controlling the end-to-end latency using ingestion batching policy is to alter its time boundary at [table](./alter-table-ingestion-batching-policy.md) or [database](./alter-database-ingestion-batching-policy.md) level, according to the higher bound of latency requirements.
