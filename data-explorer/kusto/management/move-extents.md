@@ -22,7 +22,7 @@ The command requires [Table admin permission](../management/access-control/role-
 
 `.move` [`async`] `extents` `from` `table` *SourceTableName* `to` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] `(` *GUID1* [`,` *GUID2* ...] `)`
 
-`.move` [`async`] `extents` `to` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]<| *query*
+`.move` [`async`] `extents` `to` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)` ] <| *query*
 
 `async` (optional). Execute the command asynchronously.
    * An Operation ID (Guid) is returned.
