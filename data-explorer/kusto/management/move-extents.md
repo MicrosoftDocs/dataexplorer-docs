@@ -41,7 +41,7 @@ There are three ways to specify which extents to move:
 
 ## Properties
 
-The following are supported in the `with` `(`*PropertyName* `=` *PropertyValue*)` clause. All properties are optional.
+The following properties are supported. All properties are optional.
 
 |Property|Type|Description |
 |----------------|-------|---|
