@@ -1,11 +1,11 @@
 ---
-title: scan operator (preview) - Azure Data Explorer
+title: scan operator - Azure Data Explorer
 description: This article describes the scan operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/28/2021
 ---
-# scan operator (preview)
+# scan operator
 
 Scans data, matches, and builds sequences based on the predicates.
 
