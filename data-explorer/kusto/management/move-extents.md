@@ -16,13 +16,18 @@ The command requires [Table admin permission](../management/access-control/role-
 > * For more information on extents, see [Extents (data shards) overview](extents-overview.md).
 > * A `.move` command either completes or fails for all source extents. There are no partial outcomes.
 
+## Restrictions
+
+* Both source and destination tables must be in the context database.
+* All columns in the source table are expected to exist in the destination table with the same name and data type.
+
 ## Syntax
 
-`.move` [`async`] `extents` `all` `from` `table` *SourceTableName* `to` `table` *DestinationTableName*
+`.move` [`async`] `extents` `all` `from` `table` *SourceTableName* `to` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]
 
-`.move` [`async`] `extents` `(` *GUID1* [`,` *GUID2* ...] `)` `from` `table` *SourceTableName* `to` `table` *DestinationTableName* 
+`.move` [`async`] `extents` `from` `table` *SourceTableName* `to` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] `(` *GUID1* [`,` *GUID2* ...] `)`
 
-`.move` [`async`] `extents` `to` `table` *DestinationTableName* <| *query*
+`.move` [`async`] `extents` `to` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)` ] <| *query*
 
 `async` (optional). Execute the command asynchronously.
    * An Operation ID (Guid) is returned.
@@ -34,10 +39,13 @@ There are three ways to specify which extents to move:
 * Specify explicitly the extent IDs in the source table.
 * Provide a query whose results specify the extent IDs in the source tables.
 
-## Restrictions
+## Properties
 
-* Both source and destination tables must be in the context database.
-* All columns in the source table are expected to exist in the destination table with the same name and data type.
+The following properties are supported. All properties are optional.
+
+|Property name|Type|Description |
+|----------------|-------|---|
+|setNewIngestionTime|bool|If set to true, a new [ingestion time](../query/ingestiontimefunction.md) will be assigned to all records in extents being moved. This is useful when records should be processed by workloads that depend on [database cursors](databasecursor.md), such as [materialized views](materialized-views/materialized-view-overview.md) and [continuous data export ](data-export/continuous-data-export.md).|
 
 ## Specify extents with a query
 
@@ -70,15 +78,21 @@ Move all extents in table `MyTable` to table `MyOtherTable`:
 Move two specific extents (by their extent IDs) from table `MyTable` to table `MyOtherTable`:
 
 ```kusto
-.move extents (AE6CD250-BE62-4978-90F2-5CB7A10D16D7,399F9254-4751-49E3-8192-C1CA78020706) from table MyTable to table MyOtherTable
+.move extents from table MyTable to table MyOtherTable (AE6CD250-BE62-4978-90F2-5CB7A10D16D7,399F9254-4751-49E3-8192-C1CA78020706)
 ```
 
 ### Move all extents from specific tables 
 
-Move all extents from specific tavles (`MyTable1`, `MyTable2`) to table `MyOtherTable`:
+Move all extents from specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`:
 
 ```kusto
 .move extents to table MyOtherTable <| .show tables (MyTable1,MyTable2) extents
+```
+
+### Move all extents with set new ingestion time
+
+```kusto
+.move extents all from table MyTable to table MyOtherTable with (setNewIngestionTime=true)
 ```
 
 ## Sample output
