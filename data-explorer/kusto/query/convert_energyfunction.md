@@ -7,23 +7,22 @@ ms.date: 07/03/2022
 ---
 # convert_energy
 
-Convert a value from one unit to another.
-
-```kusto
-convert_energy(1.6, "Joule", "BritishThermalUnit")
-```
+Convert energy values from one unit to another.
 
 ## Syntax
 
-`convert_energy(`*value*`,`*from*`, `*to*`)`
+`convert_energy(`*value*`,`*from*`,`*to*`)`
 
 ## Arguments
 
-* `value`: a real number
-* `from`: `string`
-* `to`: `string`
+| Name | Type | Required | Description |
+|--|--|--|--|
+| `value` | real | &check; | The value to be converted. |
+| `from` | string | &check; | The unit to convert from. The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
+| `to` | string  &check; | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
 
-Possible values of `from` and `to`: 
+### Conversion units
+
 * BritishThermalUnit
 * Calorie
 * DecathermEc
@@ -63,9 +62,11 @@ Possible values of `from` and `to`:
 
 ## Returns
 
-An value converted from the `from` unit to the `to` unit.
+ Returns the input value converted from one energy unit to another.
 
 ## Examples
+
+**\[**[**Click to run query**]( https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJT81LLUqv1DDUM9JRUPfKL81JVQcynIoySzKLM0IyUotyE3NC8zJL1DUBDSFj0EEAAAA=)**\]**
 
 ```kusto
 print result = convert_energy(1.2, 'Joule', 'BritishThermalUnit')

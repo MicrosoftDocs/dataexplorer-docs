@@ -7,23 +7,22 @@ ms.date: 07/03/2022
 ---
 # convert_temperature
 
-Convert a value from one unit to another.
-
-```kusto
-convert_temperature(1.6, "Kelvin", "DegreeCelsius")
-```
+Convert a temperature value from one unit to another.
 
 ## Syntax
 
-`convert_temperature(`*value*`,`*from*`, `*to*`)`
+`convert_temperature(`*value*`,`*from*`,`*to*`)`
 
 ## Arguments
 
-* `value`: a real number
-* `from`: `string`
-* `to`: `string`
+| Name | Type | Required | Description |
+|--|--|--|--|
+| `value` | real | &check; | The value to be converted. |
+| `from` | string | &check; | The unit to convert from. The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
+| `to` | string  &check; | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
 
-Possible values of `from` and `to`: 
+### Conversion units
+
 * DegreeCelsius
 * DegreeDelisle
 * DegreeFahrenheit
@@ -37,9 +36,11 @@ Possible values of `from` and `to`:
 
 ## Returns
 
-An value converted from the `from` unit to the `to` unit.
+ Returns the input value converted from one temperature unit to another.
 
 ## Examples
+
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJL0nNLUgtSiwpLUrVMNQz0lFQ907NKcvMUweyXFLTi1JTnVNzijNLi9U1AVVJ6WxCAAAA)**\]**
 
 ```kusto
 print result = convert_temperature(1.2, 'Kelvin', 'DegreeCelsius')

@@ -7,23 +7,22 @@ ms.date: 07/03/2022
 ---
 # convert_force
 
-Convert a value from one unit to another.
-
-```kusto
-convert_force(1.6, "Newton", "Decanewton")
-```
+Convert force values from one unit to another.
 
 ## Syntax
 
-`convert_force(`*value*`,`*from*`, `*to*`)`
+`convert_force(`*value*`,`*from*`,`*to*`)`
 
 ## Arguments
 
-* `value`: a real number
-* `from`: `string`
-* `to`: `string`
+| Name | Type | Required | Description |
+|--|--|--|--|
+| `value` | real | &check; | The value to be converted. |
+| `from` | string | &check; | The unit to convert from. The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
+| `to` | string  &check; | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
 
-Possible values of `from` and `to`: 
+### Conversion units
+
 * Decanewton
 * Dyn
 * KilogramForce
@@ -42,9 +41,11 @@ Possible values of `from` and `to`:
 
 ## Returns
 
-An value converted from the `from` unit to the `to` unit.
+Returns the input value converted from one force unit to another.
 
 ## Examples
+
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJT8svSk7VMNQz0lFQ90stL8nPUweyXFKTE/MgPE0AhSGK6TkAAAA=)**\]**
 
 ```kusto
 print result = convert_force(1.2, 'Newton', 'Decanewton')

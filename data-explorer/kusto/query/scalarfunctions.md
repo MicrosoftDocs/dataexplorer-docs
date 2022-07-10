@@ -67,7 +67,6 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[unixtime_seconds_todatetime()](unixtime-seconds-todatetimefunction.md)|Converts unix-epoch seconds to UTC datetime.|
 |[weekofyear()](weekofyearfunction.md)|Returns an integer representing the week number.|
 
-
 ## Dynamic/array functions
 
 |Function Name     |Description                                          |
@@ -384,7 +383,6 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[hash_sha1()](sha1-hash-function.md)|Returns a SHA1 hash value for the input value.|
 |[hash_sha256()](sha256hashfunction.md)|Returns a SHA256 hash value for the input value.|
 |[hash_xxhash64()](hash-xxhash64-function.md)|Returns an XXHASH64 hash value for the input value.|
-
 
 ## Units conversion functions
 

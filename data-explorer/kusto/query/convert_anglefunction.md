@@ -7,23 +7,22 @@ ms.date: 07/03/2022
 ---
 # convert_angle
 
-Convert a value from one unit to another.
-
-```kusto
-convert_angle(1.6, "Degree", "Arcminute")
-```
+Convert angle values from one unit to another.
 
 ## Syntax
 
-`convert_angle(`*value*`,`*from*`, `*to*`)`
+`convert_angle(`*value*`,`*from*`,`*to*`)`
 
 ## Arguments
 
-* `value`: a real number
-* `from`: `string`
-* `to`: `string`
+| Name | Type | Required | Description |
+|--|--|--|--|
+| `value` | real | &check; | The value to be converted. |
+| `from` | string | &check; | The unit to convert from. The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
+| `to` | string  &check; | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
 
-Possible values of `from` and `to`: 
+### Conversion units
+
 * Arcminute
 * Arcsecond
 * Centiradian
@@ -43,9 +42,11 @@ Possible values of `from` and `to`:
 
 ## Returns
 
-An value converted from the `from` unit to the `to` unit.
+ Returns the input value converted from one angle unit to another.
 
 ## Examples
+
+**\[**[**Click to run query**]( https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJT8xLz0nVMNQz0lFQd0lNL0pNVQeyHIuSczPzSktS1TUBit/6iDgAAAA=)**\]**
 
 ```kusto
 print result = convert_angle(1.2, 'Degree', 'Arcminute')
@@ -54,4 +55,3 @@ print result = convert_angle(1.2, 'Degree', 'Arcminute')
 |result|
 |---|
 |72|
-

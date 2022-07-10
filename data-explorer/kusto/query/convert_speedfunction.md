@@ -7,23 +7,22 @@ ms.date: 07/03/2022
 ---
 # convert_speed
 
-Convert a value from one unit to another.
-
-```kusto
-convert_speed(1.6, "MeterPerSecond", "CentimeterPerHour")
-```
+Convert a speed value from one unit to another.
 
 ## Syntax
 
-`convert_speed(`*value*`,`*from*`, `*to*`)`
+`convert_speed(`*value*`,`*from*`,`*to*`)`
 
 ## Arguments
 
-* `value`: a real number
-* `from`: `string`
-* `to`: `string`
+| Name | Type | Required | Description |
+|--|--|--|--|
+| `value` | real | &check; | The value to be converted. |
+| `from` | string | &check; | The unit to convert from. The unit to convert to. For possible values, see [Conversion units](#conversion-units).|
+| `to` | string  &check; | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
 
-Possible values of `from` and `to`: 
+### Conversion units
+
 * CentimeterPerHour
 * CentimeterPerMinute
 * CentimeterPerSecond
@@ -59,9 +58,11 @@ Possible values of `from` and `to`:
 
 ## Returns
 
-An value converted from the `from` unit to the `to` unit.
+Returns the input value converted from one speed unit to another.
 
 ## Examples
+
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJLy5ITU3RMNQz0lFQ900tSS0KSC0KTgXKpqgDRZxT80oyc6HCHvmlReqaAK/HOJBIAAAA)**\]**
 
 ```kusto
 print result = convert_speed(1.2, 'MeterPerSecond', 'CentimeterPerHour')
