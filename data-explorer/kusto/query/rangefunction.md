@@ -26,7 +26,8 @@ The default value for *step* is `1` for numeric and `1h` for `timespan` or `date
 ## Returns
 
 Dynamic array whose values are start, start + step, ... up to and until stop / till the max numer of values is reached.  
-The number of values is limited to 1,048,576 (2^20).
+> [!NOTE]
+> The maximum number of values is 1,048,576 (2^20).
 
 ## Examples
 
