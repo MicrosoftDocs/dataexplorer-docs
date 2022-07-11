@@ -3,7 +3,7 @@ title: Start for free using Azure Data Explorer.
 description: This article shows you how to get started with a free Azure Data Explorer cluster.
 ms.reviewer: avnera
 ms.topic: how-to
-ms.date: 02/27/2022
+ms.date: 07/03/2022
 ---
 
 # What is a Start-for-free cluster?
@@ -12,7 +12,7 @@ The Start-for-free cluster allows anyone with a Microsoft account or an Azure Ac
 
 It's a frictionless way to create a free cluster that can be used for any purpose. It's the ideal solution for anyone who wants to get started quickly with Azure Data Explorer and experience the incredible engine performance and enjoy the productive Kusto Query Language.
 
-The cluster's trial period is for a year and may automatically be extended. The cluster is provided *as-is* and is not subject to the Azure Data Explorer service level agreement. At any time, you can upgrade the cluster to a full Azure Data Explorer cluster.
+The cluster's trial period is for a year and may automatically be extended. The cluster is provided *as-is* and isn't subject to the Azure Data Explorer service level agreement. At any time, you can upgrade the cluster to a full Azure Data Explorer cluster.
 
 Start your journey by [creating your own free cluster](https://aka.ms/kustofree) and reviewing the [Microsoft Software License Terms](https://aka.ms/kustofreeeula).
 
@@ -37,8 +37,8 @@ The Start-for-free cluster is a subset of the full Azure Data Explorer cluster t
 | Kusto Query Language | &check; | &check; |
 | Database objects (tables, columns, functions) | &check; | &check; |
 | Materialized views | &check; | &check; |
-| Tools (Azure Data Explorer Web UI) | &check; | &check; |
-| Dashboards (PowerBI, Web UI, Grafana) | &check; | &check; |
+| Tools (Azure Data Explorer web UI) | &check; | &check; |
+| Dashboards (PowerBI, Azure Data Explorer web UI, Grafana) | &check; | &check; |
 | Azure Data Studio notebooks | &check; | &check; |
 | SDKs (all languages) | &check; | &check; |
 | Timeseries and ML functions | &check; | &check; |
