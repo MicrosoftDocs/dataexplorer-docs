@@ -21,12 +21,11 @@ Alters an existing ingestion mapping that is associated with a specific table/da
 
 ## Arguments
 
-*TableName* - Specify the name of the table.
-*DatabaseName* - Specify the name of the database.
-*MappingKind* - Specify the type of mapping.
-*MappingName* - Specify the name of the mapping.
-*ArrayOfMappingObjects* - An array with one or more mapping objects defined.
-
+* *TableName* - Specify the name of the table.
+* *DatabaseName* - Specify the name of the database.
+* *MappingKind* - Specify the type of mapping.
+* *MappingName* - Specify the name of the mapping.
+* *ArrayOfMappingObjects* - An array with one or more mapping objects defined.
 
 **Example** 
  

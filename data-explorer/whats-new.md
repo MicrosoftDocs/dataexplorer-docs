@@ -3,11 +3,24 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/01/2022
+ms.date: 07/06/2022
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## June 2022
+
+This section lists the major changes to docs during May 2022.
+
+### General
+
+| Article title | Description |
+|--|--|
+| [Ingest data from Azure Stream Analytics into Azure Data Explorer (Preview)](stream-analytics-connector.md) | New Article. Describes how to ingest (load) data from Azure Stream Analytics. |
+| [Azure Data Explorer web UI overview](web-ui-overview.md) | New Article. Describes the elements of web UI home page and the data analytics journey. |
+| [Explore the Azure Data Explorer web UI samples gallery](web-ui-samples-gallery.md) | New Article. Describes how to use the samples gallery in the web UI. |
+| [Select a SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md) | Updated Article.  New SKU list and refreshed content. |
 
 ## May 2022
 
