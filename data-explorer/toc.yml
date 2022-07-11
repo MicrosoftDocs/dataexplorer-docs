@@ -825,6 +825,10 @@
       href: ./kusto/query/datetime-difffunction.md
     - name: datetime_part()
       href: ./kusto/query/datetime-partfunction.md
+    - name: datetime_local_to_utc()
+      href: ./kusto/query/datetime_local_to_utc.md
+    - name: datetime_utc_to_local()
+      href: ./kusto/query/datetime_utc_to_local.md
     - name: dayofmonth()
       href: ./kusto/query/dayofmonthfunction.md
     - name: dayofweek()
