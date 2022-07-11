@@ -23,6 +23,11 @@ array and within an integer multiple of *step* from *start*.
 the array. 
 The default value for *step* is `1` for numeric and `1h` for `timespan` or `datetime`
 
+## Returns
+
+Dynamic array whose values are start, start + step, ... up to and until stop / till the max numer of values is reached.  
+The number of values is limited to 1,048,576 (2^20).
+
 ## Examples
 
 The following example returns `[1, 4, 7]`:
@@ -48,4 +53,10 @@ The following example returns `["01:00:00","02:00:00","03:00:00","04:00:00","05:
 
 ```kusto
 range(1h, 5h)
+```
+
+The following example returns `1048576`:
+
+```kusto
+print r = range(1,1000000000) | mv-expand r | count
 ```
