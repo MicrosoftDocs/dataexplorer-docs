@@ -15,7 +15,7 @@ ms.date: 06/22/2022
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
 
-[One-click ingestion](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, or as a one-time or continuous ingestion process.
+The [ingestion wizard](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, or as a one-time or continuous ingestion process.
 
 This document describes using the intuitive one-click wizard to ingest **CSV** data from a **container** into a **new table**. Ingestion can be done as a one-time operation, or as a continuous method by [setting up an Event Grid ingestion pipeline](#create-continuous-ingestion) that responds to new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
 
@@ -114,7 +114,7 @@ If you get the following error message when ingesting from a storage account:
 
   The system will select one of the files at random and the schema will be generated based on that  **Schema defining file**. You can select a different file.
 
-* You can also filter the folder path to limit your search for a file. Once the list of files from the container is populated you can enter a search term in the **Folder path** field.
+* You can also filter the folder path to limit your search for a file. Once the list of files from the container is populated, you can enter a search term in the **Folder path** field.
 
   :::image type="content" source="media/one-click-ingestion-new-table/filter-folder-path-selected.png" alt-text="Screenshot of a list of files in a container when ingesting data with the ingestion wizard.":::
 
