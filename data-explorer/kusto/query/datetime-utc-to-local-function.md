@@ -7,7 +7,7 @@ ms.date: 07/12/2022
 ---
 # datetime_utc_to_local()
 
-Converts from UTC [datetime](./scalar-data-types/datetime.md) to local [datetime](./scalar-data-types/datetime.md) in the specified [timezone](https://www.iana.org/time-zones).
+Converts UTC datetime to local datetime using a time-zone specification. 
 
 ## Syntax
 
