@@ -7,9 +7,9 @@ ms.date: 07/05/2022
 ---
 # min() (aggregation function)
 
-Returns the minimum value across the group.
+Finds the minimum value across the group.
 
-* Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
+[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Returns the minimum value across the group.
 
 ## Returns
 
-The minimum value of *Expr* across the group.
+Returns the minimum value of *Expr* across the group.
 
 > [!TIP]
 > This gives you the min or max on its own - for example, the highest or lowest price.

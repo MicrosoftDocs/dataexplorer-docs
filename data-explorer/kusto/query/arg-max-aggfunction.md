@@ -7,9 +7,9 @@ ms.date: 07/05/2022
 ---
 # arg_max() (aggregation function)
 
-Finds a row in the group that maximizes *ExprToMaximize*, and returns the value of *ExprToReturn* (or `*` to return the entire row).
+Finds a row in the group that maximizes *ExprToMaximize*.
 
-* Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
+[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
 
@@ -24,8 +24,7 @@ Finds a row in the group that maximizes *ExprToMaximize*, and returns the value 
 
 ## Returns
 
-Finds a row in the group that maximizes *ExprToMaximize*, and
-returns the value of *ExprToReturn* (or `*` to return the entire row).
+Returns a row in the group that maximizes *ExprToMaximize*, and the value of *ExprToReturn*. Use `*` to return the entire row.
 
 ## Examples
 
@@ -34,6 +33,7 @@ The following examples demonstrate how to use this function.
 **Example 1**
 
 Find the northern most location of a storm event in each state.
+
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlVILEqPz02s0HBKTc/M80ks0VGAsPKTE0sy8/M0FZIqFYJLEktSATqyPZtCAAAA)**\]**
 
 ```kusto
@@ -42,6 +42,8 @@ StormEvents
 ```
 
 **Results**
+
+The results table displays only the first 10 rows.
 
 | State                | BeginLat | BeginLocation        |
 | -------------------- | -------- | -------------------- |
@@ -55,67 +57,11 @@ StormEvents
 | WEST VIRGINIA        | 40.62    | CHESTER              |
 | SOUTH CAROLINA       | 35.18    | LANDRUM              |
 | TEXAS                | 36.4607  | DARROUZETT           |
-| GEORGIA              | 34.97    | ROSSVILLE            |
-| NEW YORK             | 45       | PERRYS MILLS         |
-| OKLAHOMA             | 37.0034  | TYRONE               |
-| FLORIDA              | 31.0216  | JAY                  |
-| OHIO                 | 41.95    | CONNEAUT             |
-| COLORADO             | 40.99    | JULESBURG            |
-| ALABAMA              | 37.8057  | MAPLE HILL           |
-| LOUISIANA            | 33.0067  | BEEKMAN              |
-| VIRGIN ISLANDS       | 18.35    | ST. THOMAS           |
-| PENNSYLVANIA         | 42.22    | NORTH EAST           |
-| KENTUCKY             | 39.08    | NEWPORT              |
-| DELAWARE             | 39.78    | HOCKESSIN            |
-| PUERTO RICO          | 18.47    | AGUADILLA            |
-| MICHIGAN             | 47.4189  | COPPER HARBOR        |
-| KANSAS               | 40       | WOODRUFF             |
-| MAINE                | 47.35    | MADAWASKA            |
-| NORTH CAROLINA       | 36.55    | ENNICE               |
-| MARYLAND             | 39.72    | HAGERSTOWN ARPT      |
-| WISCONSIN            | 46.81    | BAYFIELD             |
-| VIRGINIA             | 39.28    | GAINESBORO           |
-| MONTANA              | 49.009   | TURNER               |
-| WASHINGTON           | 48.5111  | SEDRO WOOLLEY        |
-| IOWA                 | 43.5     | CHESTER              |
-| ALASKA               | 64.5131  | HEALY LAKE           |
-| MASSACHUSETTS        | 42.86    | AMESBURY             |
-| NEW JERSEY           | 41.28    | COLESVILLE           |
-| IDAHO                | 48.72    | MOYIE SPGS           |
-| NORTH DAKOTA         | 48.9935  | DUNSEITH             |
-| ARKANSAS             | 36.4813  | LEAD HILL            |
-| NEVADA               | 41.7134  | CHARLESTON           |
-| NEW MEXICO           | 37.0336  | RATON                |
-| CALIFORNIA           | 41.83    | MACDOEL              |
-| SOUTH DAKOTA         | 45.95    | LEMMON               |
-| ILLINOIS             | 42.49    | WARREN               |
-| ARIZONA              | 36.9001  | PAGE                 |
-| WYOMING              | 44.98    | MAMMOTH HOT SPRINGS  |
-| CONNECTICUT          | 42.03    | CANAAN               |
-| OREGON               | 45.82    | WESTON               |
-| MISSOURI             | 40.58    | COATSVILLE           |
-| NEBRASKA             | 42.9789  | SPARKS               |
-| NEW HAMPSHIRE        | 44.88    | COLEBROOK            |
-| TENNESSEE            | 36.65    | MODEL                |
-| UTAH                 | 41.93    | GARDEN CITY          |
-| DISTRICT OF COLUMBIA | 38.92    | GEORGETOWN           |
-| GUAM                 |          |                      |
-| HAWAII WATERS        | 21.2     | KALAUPAPA            |
-| LAKE HURON           | 45.9466  | CEDARVILLE           |
-| LAKE ONTARIO         | 43.87    | HENDERSON HARBOR     |
-| E PACIFIC            | 47.2409  | PORT ORCHARD         |
-| ATLANTIC SOUTH       | 34.2778  | MASONBORO INLET      |
-| LAKE ST CLAIR        | 42.98    | PORT HURON           |
-| LAKE SUPERIOR        | 48.22    | PASSAGE ISLAND LIGHT |
-| GULF OF MEXICO       | 31.02    | PERDIDO KEY          |
-| LAKE MICHIGAN        | 46.0855  | NAUBINWAY            |
-| ATLANTIC NORTH       | 43.8955  | ROCKLAND             |
-| GULF OF ALASKA       | 58.8024  | HAINES               |
-| LAKE ERIE            | 42.8995  | BUFFALO HARBOR       |
+| ...             | ...    | ...            |
 
 **Example 2**
 
-Find the first time an event with a direct death happened in each state.
+Find the first time an event with a direct death happened in each state showing all the columns.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKiQWpcfnJlZoBJckFpWEZOam6ihoaSokVSoABUpSAQPollZPAAAA)**\]**
 
@@ -124,6 +70,24 @@ StormEvents
 | where DeathsDirect > 0
 | summarize arg_max(StartTime, *) by State
 ```
+
+**Results**
+
+The results table displays only the first 10 rows and first 3 columns.
+
+| State          | StartTime            | EndTime              | ... |
+| -------------- | -------------------- | -------------------- | --- |
+| GUAM           | 2007-01-27T11:15:00Z | 2007-01-27T11:30:00Z | ... |
+| MASSACHUSETTS  | 2007-02-03T22:00:00Z | 2007-02-04T10:00:00Z | ... |
+| AMERICAN SAMOA | 2007-02-17T13:00:00Z | 2007-02-18T11:00:00Z | ... |
+| IDAHO          | 2007-02-17T13:00:00Z | 2007-02-17T15:00:00Z | ... |
+| DELAWARE       | 2007-02-25T13:00:00Z | 2007-02-26T01:00:00Z | ... |
+| WYOMING        | 2007-03-10T17:00:00Z | 2007-03-10T17:00:00Z | ... |
+| NEW MEXICO     | 2007-03-23T18:42:00Z | 2007-03-23T19:06:00Z | ... |
+| INDIANA        | 2007-05-15T14:14:00Z | 2007-05-15T14:14:00Z | ... |
+| MONTANA        | 2007-05-18T14:20:00Z | 2007-05-18T14:20:00Z | ... |
+| LAKE MICHIGAN  | 2007-06-07T13:00:00Z | 2007-06-07T13:00:00Z | ... |
+|... | ... | ...| ... |
 
 **Example 3**
 

@@ -7,9 +7,9 @@ ms.date: 07/05/2022
 ---
 # arg_min() (aggregation function)
 
-Finds a row in the group that minimizes *ExprToMinimize*, and returns the value of *ExprToReturn* (or `*` to return the entire row).
+Finds a row in the group that minimizes *ExprToMinimize*.
 
-* Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
+[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
 
@@ -28,7 +28,7 @@ When *ExprToMinimize* is null for all rows in a group, one row in the group is p
 
 ## Returns
 
-Finds a row in the group that minimizes *ExprToMinimize*, and returns the value of *ExprToReturn* (or `*` to return the entire row).
+Returns a row in the group that minimizes *ExprToMinimize*, and the value of *ExprToReturn*. Use or `*` to return the entire row.
 
 ## Examples
 
@@ -47,7 +47,7 @@ StormEvents
 
 **Example 2**
 
-Find the first time an event with a direct death happened in each state.
+Find the first time an event with a direct death happened in each state showing all of the columns.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKiQWpcfnZuZpBJckFpWEZOam6ihoaSokVSoABUpSAdlWy7VPAAAA)**\]**
 
@@ -56,6 +56,21 @@ StormEvents
 | where DeathsDirect > 0
 | summarize arg_min(StartTime, *) by State
 ```
+
+**Results**
+
+| State      | StartTime            | EndTime              | ... |
+| ---------- | -------------------- | -------------------- | --- |
+| INDIANA    | 2007-01-01T00:00:00Z | 2007-01-22T18:49:00Z | ... |
+| FLORIDA    | 2007-01-03T10:55:00Z | 2007-01-03T10:55:00Z | ... |
+| NEVADA     | 2007-01-04T09:00:00Z | 2007-01-05T14:00:00Z | ... |
+| LOUISIANA  | 2007-01-04T15:45:00Z | 2007-01-04T15:52:00Z | ... |
+| WASHINGTON | 2007-01-09T17:00:00Z | 2007-01-09T18:00:00Z | ... |
+| CALIFORNIA | 2007-01-11T22:00:00Z | 2007-01-24T10:00:00Z | ... |
+| OKLAHOMA   | 2007-01-12T00:00:00Z | 2007-01-18T23:59:00Z | ... |
+| MISSOURI   | 2007-01-13T03:00:00Z | 2007-01-13T08:30:00Z | ... |
+| TEXAS      | 2007-01-13T10:30:00Z | 2007-01-13T14:30:00Z | ... |
+| ARKANSAS   | 2007-01-14T03:00:00Z | 2007-01-14T03:00:00Z | ... |
 
 **Example 3**
 

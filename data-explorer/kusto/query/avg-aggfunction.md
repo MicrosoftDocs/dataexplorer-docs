@@ -9,7 +9,7 @@ ms.date: 07/05/2022
 
 Calculates the average (arithmetic mean) of *Expr* across the group.
 
-* Can only be used in context of aggregation inside [summarize](summarizeoperator.md)
+[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Calculates the average (arithmetic mean) of *Expr* across the group.
 
 ## Returns
 
-The average value of *Expr* across the group.
+Returns the average value of *Expr* across the group.
 
 ## Examples
 
@@ -50,60 +50,4 @@ StormEvents
 | WISCONSIN            | 17764.37838      |
 | NEBRASKA             | 21366.36467      |
 | NEW YORK             | 5.714285714      |
-| NORTH CAROLINA       | 86661.24346      |
-| OKLAHOMA             | 633.4498834      |
-| PENNSYLVANIA         | 2.963841138      |
-| COLORADO             | 193.4703748      |
-| VIRGINIA             | 97027.92957      |
-| MICHIGAN             | 1259.010385      |
-| SOUTH DAKOTA         | 3.190810466      |
-| KENTUCKY             | 62456.50611      |
-| ALABAMA              | 768.8212928      |
-| OHIO                 | 27107.05596      |
-| MONTANA              | 21138.21138      |
-| MISSISSIPPI          | 640073.8916      |
-| INDIANA              | 22733.67698      |
-| TENNESSEE            | 13633.06667      |
-| NEW JERSEY           | 96.74329502      |
-| FLORIDA              | 48826.29559      |
-| ARKANSAS             | 389.1050584      |
-| SOUTH CAROLINA       | 42690.71038      |
-| NORTH DAKOTA         | 257649.7238      |
-| CALIFORNIA           | 1510041.203      |
-| MAINE                | 0                |
-| WEST VIRGINIA        | 79.65653897      |
-| MARYLAND             | 0                |
-| VERMONT              | 75               |
-| GULF OF MEXICO       | 0                |
-| NEW MEXICO           | 611.0056926      |
-| LOUISIANA            | 1835.853132      |
-| HAWAII               | 2188.183807      |
-| OREGON               | 63.82978723      |
-| MASSACHUSETTS        | 4.807692308      |
-| WYOMING              | 15.15151515      |
-| NEW HAMPSHIRE        | 0                |
-| UTAH                 | 0                |
-| ARIZONA              | 0                |
-| WASHINGTON           | 68.96551724      |
-| ALASKA               | 0                |
-| IDAHO                | 161.9433198      |
-| DELAWARE             | 0                |
-| ATLANTIC SOUTH       | 0                |
-| PUERTO RICO          | 5.729166667      |
-| ATLANTIC NORTH       | 0                |
-| LAKE MICHIGAN        | 0                |
-| NEVADA               | 30.67484663      |
-| CONNECTICUT          | 0                |
-| LAKE HURON           | 0                |
-| RHODE ISLAND         | 0                |
-| LAKE SUPERIOR        | 0                |
-| LAKE ST CLAIR        | 0                |
-| LAKE ERIE            | 0                |
-| DISTRICT OF COLUMBIA | 0                |
-| AMERICAN SAMOA       | 16875            |
-| VIRGIN ISLANDS       | 416.6666667      |
-| E PACIFIC            | 0                |
-| LAKE ONTARIO         | 0                |
-| GULF OF ALASKA       | 0                |
-| GUAM                 | 0                |
-| HAWAII WATERS        | 0                |
+| ...      | ...   |

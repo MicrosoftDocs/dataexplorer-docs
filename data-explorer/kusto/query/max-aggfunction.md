@@ -7,9 +7,9 @@ ms.date: 07/05/2022
 ---
 # max() (aggregation function)
 
-Returns the maximum value across the group.
+Finds the maximum value across the group.
 
-* Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
+[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Returns the maximum value across the group.
 
 ## Returns
 
-The maximum value of *Expr* across the group.
+Returns the maximum value of *Expr* across the group.
 
 > [!TIP]
 > This gives you the min or max on its own - for example, the highest or lowest price.
