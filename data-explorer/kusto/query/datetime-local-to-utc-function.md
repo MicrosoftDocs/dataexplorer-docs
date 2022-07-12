@@ -5,7 +5,7 @@ ms.reviewer: elgevork
 ms.topic: reference
 ms.date: 07/12/2022
 ---
-# datetime_utc_to_local()
+# datetime_local_to_utc()
 
 Converts from local [datetime](./scalar-data-types/datetime.md) in the [timezone](https://www.iana.org/time-zones) to the UTC [datetime](./scalar-data-types/datetime.md).
 
@@ -42,4 +42,4 @@ datatable(local_dt: datetime, tz: string)
 
 ## See also
 
-* To convert from UTC to local, see [datetime_utc_to_local()](datetime_utc_to_local.md).
+* To convert from UTC to local, see [datetime_utc_to_local()](datetime-utc-to-local-function.md).
