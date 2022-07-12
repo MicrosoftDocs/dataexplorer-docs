@@ -1,14 +1,9 @@
 ---
-title: datetime_utc_to_local() - Azure Data Explorer | Microsoft Docs
-
-description: This article describes datetime_utc_to_local() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: 
-ms.service: data-explorer
+title: datetime_utc_to_local() - Azure Data Explorer
+description: This article describes the datetime_utc_to_local function in Azure Data Explorer.
+ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 07/11/2022
+ms.date: 07/12/2022
 ---
 # datetime_utc_to_local()
 
@@ -20,9 +15,8 @@ Converts from UTC [datetime](./scalar-data-types/datetime.md) to local [datetime
 
 ## Arguments
 
-* `from`: UTC [datetime](./scalar-data-types/datetime.md).
-* `timezone`: [string](./scalar-data-types/string.md). Timezone string is one of the supported by the [Internet Assigned Numbers Authority (IANA) Time Zone Database](https://www.iana.org/time-zones).
-
+* *from*: UTC [datetime](./scalar-data-types/datetime.md).
+* *timezone*: [string](./scalar-data-types/string.md). The timezone string must be supported by the [Internet Assigned Numbers Authority (IANA) Time Zone Database](https://www.iana.org/time-zones).
 
 ## Returns
 
@@ -36,15 +30,12 @@ print dt=now()
 | extend diff = pacific_dt - canberra_dt
 ```
 
+**Output**
+
 |dt|pacific_dt|canberra_dt|diff|
 |---|---|---|---|
 |2022-07-11 22:18:48.4678620|2022-07-11 15:18:48.4678620|2022-07-12 08:18:48.4678620|-17:00:00|
 
-
-
 ## See also
 
-* For converting from local to UTC, see [datetime_local_to_utc()](datetime_local_to_utc.md).
-
-
-
+* To convert a datetime from local to UTC, see [datetime_local_to_utc()](datetime_local_to_utc.md).
