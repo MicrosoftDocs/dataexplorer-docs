@@ -1,6 +1,6 @@
 ---
-title: Use one-click ingestion to ingest data into Azure Data Explorer
-description: Overview of ingesting (loading) data into Azure Data Explorer simply, using one-click ingestion.
+title: Ingest data into Azure Data Explorer using the ingestion wizard.
+description: Overview of ingesting (loading) data into Azure Data Explorer simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
 ms.date: 06/22/2022
