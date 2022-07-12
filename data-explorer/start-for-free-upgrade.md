@@ -18,6 +18,7 @@ Upgrading your free cluster to a full cluster allows you to use [all the feature
 
 > [!NOTE]
 > The status of ingestion operations started before the upgrade may not be available after the upgrade. Hence, we highly recommend that you complete all ingestion operations before upgrading your cluster. For more information, see [Ingestion status](kusto/api/netfx/kusto-ingest-client-status).
+
 ## Upgrade to a full Azure cluster
 
 Use the following steps to upgrade your free cluster to a full cluster. If you're using a Microsoft account (MSA), you must use the step to add a user with a valid Azure subscription before you can upgrade.
