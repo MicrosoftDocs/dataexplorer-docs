@@ -246,6 +246,14 @@ items:
       href: alter-merge-capacity-policy-command.md
     - name: ".show capacity policy command"
       href: show-cluster-capacity-policy-command.md
+  - name: Encoding policy
+    items:
+    - name: Encoding policy
+      href: encoding-policy.md
+    - name: ".alter encoding policy command"
+      href: alter-encoding-policy.md
+    - name: ".show encoding policy command"
+      href: show-encoding-policy.md
   - name: Ingestion batching 
     items:
     - name: Ingestion batching policy
