@@ -51,4 +51,6 @@ Use the following steps to upgrade your free cluster to a full cluster. If you'r
 ## Next steps
 
 - [Network security for Azure Data Explorer](security-network-overview.md)
-- [Configure customer-managed keys using the Azure portal](customer-managed-keys-portal.md)
+- [Ingest data into your cluster](ingest-data-one-click.md)
+- [Visualize data with dashboards](azure-data-explorer-dashboards.md)
+- [Monitor your cluster with metrics](using-metrics.md)
