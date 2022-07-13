@@ -23,6 +23,11 @@ Upgrading your free cluster to a full cluster allows you to use [all the feature
 
 Use the following steps to upgrade your free cluster to a full cluster. If you're using a Microsoft account (MSA), you must use the step to add a user with a valid Azure subscription before you can upgrade.
 
+> [!NOTE]
+> Once the migration has started and until it's completed, you can't delete the cluster and you can't create or delete new databases.
+> 
+> In the last phase of the migration, when data is copied to the new cluster, queries continue to work as normal. No new data is ingested, but data can still be queued for ingestion and shortly after the migration is complete, the data is ingested into the new cluster.
+
 1. Go to [My Cluster](https://aka.ms/kustofree) and select **Upgrade to Azure cluster**.
 
     :::image type="content" source="media/start-for-free-upgrade/start-for-free-upgrade-cluster.png" alt-text="Screenshot of My Cluster page, showing the Upgrade to Azure cluster option." lightbox="media/start-for-free-upgrade/start-for-free-upgrade-cluster.png":::
