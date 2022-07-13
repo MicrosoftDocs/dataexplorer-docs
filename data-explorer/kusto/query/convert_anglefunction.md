@@ -7,7 +7,7 @@ ms.date: 07/03/2022
 ---
 # convert_angle
 
-Convert angle values from one unit to another.
+Convert an angle value from one unit to another.
 
 ## Syntax
 
