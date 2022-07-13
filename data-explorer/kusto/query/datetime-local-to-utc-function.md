@@ -7,7 +7,7 @@ ms.date: 07/12/2022
 ---
 # datetime_local_to_utc()
 
-Converts local datetime to UTC datetime using a time-zone specification. 
+Converts local datetime to UTC datetime using [a time-zone specification](timezone.md). 
 
 ## Syntax
 
@@ -16,7 +16,7 @@ Converts local datetime to UTC datetime using a time-zone specification.
 ## Arguments
 
 * *from*: local [datetime](./scalar-data-types/datetime.md).
-* *timezone*: [string](./scalar-data-types/string.md). The timezone string must be supported by the [Internet Assigned Numbers Authority (IANA) Time Zone Database](https://www.iana.org/time-zones).
+* *timezone*: [string](./scalar-data-types/string.md).  The timezone string must be one of the supported [timezones](timezone.md).
 
 ## Returns
 
@@ -43,3 +43,4 @@ datatable(local_dt: datetime, tz: string)
 ## See also
 
 * To convert from UTC to local, see [datetime_utc_to_local()](datetime-utc-to-local-function.md).
+* [Timezones](timezone.md)
