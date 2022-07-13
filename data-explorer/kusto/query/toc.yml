@@ -423,21 +423,21 @@ items:
   - name: column_ifexists()
     href: columnifexists.md
   - name: convert_angle()
-    href: convert_anglefunction.md
+    href: convert-angle-function.md
   - name: convert_energy()
-    href: convert_energyfunction.md
+    href: convert-energy-function.md
   - name: convert_force()
-    href: convert_forcefunction.md
+    href: convert-force-function.md
   - name: convert_length()
-    href: convert_lengthfunction.md
+    href: convert-length-function.md
   - name: convert_mass()
-    href: convert_massfunction.md
+    href: convert-mass-function.md
   - name: convert_speed()
-    href: convert_speedfunction.md
+    href: convert-speed-function.md
   - name: convert_temperature()
-    href: convert_temperaturefunction.md
+    href: convert-temperature-function.md
   - name: convert_volume()
-    href: convert_volumefunction.md
+    href: convert-volume-function.md
   - name: cos()
     href: cosfunction.md
   - name: cot()

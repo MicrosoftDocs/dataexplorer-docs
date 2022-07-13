@@ -7,7 +7,7 @@ ms.date: 07/03/2022
 ---
 # convert_force
 
-Convert force values from one unit to another.
+Convert a force value from one unit to another.
 
 ## Syntax
 

@@ -7,7 +7,7 @@ ms.date: 07/03/2022
 ---
 # convert_energy
 
-Convert energy values from one unit to another.
+Convert an energy value from one unit to another.
 
 ## Syntax
 
