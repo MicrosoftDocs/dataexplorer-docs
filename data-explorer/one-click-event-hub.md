@@ -1,9 +1,9 @@
 ---
-title: Use one-click ingestion to ingest data from Azure Event Hubs into Azure Data Explorer.
-description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Azure Event Hubs using the one-click experience.
+title: Ingest data from Azure Event Hubs into Azure Data Explorer using the ingestion wizard.
+description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Azure Event Hubs using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 06/22/2022
+ms.date: 07/13/2022
 ---
 # Use one-click ingestion to create an Azure Event Hubs data connection for Azure Data Explorer
 
@@ -84,7 +84,7 @@ For information on schema mapping with CSV-formatted data, see [Edit the schema]
 > * If [streaming](kusto/management/streamingingestionpolicy.md) is enabled for the cluster, the option to select **Streaming ingestion** appears.
 > * If streaming is not enabled for the cluster, the option to select **Batching time** appears. For Event Hubs, the recommended default [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
 
-1. If the data you see in the preview window is not complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
+1. If the data you see in the preview window isn't complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
     * **Discard and fetch new data**: discards the data presented and searches for new events.
     * **Fetch more data**: Searches for more events in addition to the events already found.
 

@@ -1,9 +1,9 @@
 ---
-title: Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer
-description: Ingesting (loading) data into an existing Azure Data Explorer table simply, using one-click ingestion.
+title: Ingest JSON data from a local file to an existing table in Azure Data Explorer using the ingestion wizard.
+description: Ingesting (loading) data into an existing Azure Data Explorer table simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 06/22/2022
+ms.date: 07/13/2022
 ---
 
 # Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer
@@ -66,7 +66,7 @@ The **Schema** tab opens.
     > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
 
 * For tabular formats, you can select **Keep current table schema**.
-Tabular data doesn't necessarily include the column names which are used to map source data to the existing columns. When this option is checked, mapping is done by-order, and the table schema will remain the same. If this option is unchecked, new columns will be created for incoming data, regardless of data structure.
+Tabular data doesn't necessarily include the column names that are used to map source data to the existing columns. When this option is checked, mapping is done by-order, and the table schema will remain the same. If this option is unchecked, new columns will be created for incoming data, regardless of data structure.
 
     :::image type="content" source="media/one-click-ingestion-existing-table/keep-table-schema.png" alt-text="Screen shot showing the 'keep current table schema' option checked when using tabular data format.":::
 
