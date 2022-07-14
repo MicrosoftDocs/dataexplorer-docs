@@ -175,10 +175,10 @@ Install packages as follows:
   1. Alter the cluster's [callout policy](../management/calloutpolicy.md) to allow access to that location.
         * This change requires [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
 
-        * For example, to enable access to a blob located in `https://artifcatswestus.blob.core.windows.net/python`, run the following command:
+        * For example, to enable access to a blob located in `https://artifactswestus.blob.core.windows.net/python`, run the following command:
 
         ```kusto
-        .alter-merge cluster policy callout @'[ { "CalloutType": "sandbox_artifacts", "CalloutUriRegex": "artifcatswestus\\.blob\\.core\\.windows\\.net/python/","CanCall": true } ]'
+        .alter-merge cluster policy callout @'[ { "CalloutType": "sandbox_artifacts", "CalloutUriRegex": "artifactswestus\\.blob\\.core\\.windows\\.net/python/","CanCall": true } ]'
         ```
 
 ### Install packages
