@@ -69,7 +69,7 @@ Create an event hub by using an Azure Resource Manager template in the Azure por
 
 1. Review the **Summary** of resources created. Select **Create**, which acknowledges that you're creating resources in your subscription.
 
-    :::image type="content" source="media/ingest-data-event-hub/review-create.png" alt-text="Screen shot of the Azure portal U I, showing the summary of creating EventHubs namespace, event hub, and consumer group form.":::
+    :::image type="content" source="media/ingest-data-event-hub/review-create.png" alt-text="Screenshot of the Azure portal U I, showing the summary of creating EventHubs namespace, event hub, and consumer group form.":::
 
 1. Select **Notifications** on the toolbar to monitor the provisioning process. It might take several minutes for the deployment to succeed, but you can move on to the next step now.
 
