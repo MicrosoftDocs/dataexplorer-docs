@@ -310,6 +310,15 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[format_ipv4()](format-ipv4-function.md)|Parses input with a netmask and returns string representing IPv4 address.|
 |[format_ipv4_mask()](format-ipv4-mask-function.md)|Parses input with a netmask and returns string representing IPv4 address as CIDR notation.|
 
+## IPv4 text match functions
+
+|Function Name     |Description                                          |
+|-------------------------|--------------------------------------------------------|
+|[has_ipv4()](has-ipv4-function.md)|Searches for an IPv4 address in a text.|
+|[has_ipv4_prefix()](has-ipv4-prefix-function.md)|Searches for an IPv4 address or prefix in a text.|
+|[has_any_ipv4()](has-any-ipv4-function.md)|Searches for any of the specified IPv4 addresses in a text.|
+|[has_any_ipv4_prefix()](has-any-ipv4-prefix-function.md)|Searches for any of the specified IPv4 addresses or prefixes in a text.|
+
 ## Type functions
 
 |Function Name     |Description                                          |
