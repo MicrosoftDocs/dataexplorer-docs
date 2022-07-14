@@ -20,7 +20,7 @@ Change a materialized-view's [retention policy](retentionpolicy.md). The retenti
 
 ### Example
 
-Sets a retention policy with a 10 day soft-delete period, and enable data recoverability:
+Sets a retention policy with a 10 day soft-delete period, and disable data recoverability:
 
 ```kusto
 .alter-merge materialized-view View1 policy retention softdelete = 10d recoverability = disabled

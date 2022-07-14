@@ -20,7 +20,7 @@ Change a table's [retention policy](retentionpolicy.md). The retention policy co
 
 ### Example
 
-Sets a retention policy with a 10 day soft-delete period, and enable data recoverability:
+Sets a retention policy with a 10 day soft-delete period, and disable data recoverability:
 
 ```kusto
 .alter-merge table Table1 policy retention softdelete = 10d recoverability = disabled
