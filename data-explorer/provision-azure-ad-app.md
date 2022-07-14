@@ -21,7 +21,7 @@ A service principal is automatically created when the application registration i
 
 1. Select the **App registrations** blade and select **New registration**
 
-    :::image type="content" source="media/provision-azure-ad-app/create-app-reg-new-registration.png" alt-text="Screenshot showing how to start a new app registration..":::
+    :::image type="content" source="media/provision-azure-ad-app/create-app-reg-new-registration.png" alt-text="Screenshot showing how to start a new app registration.":::
 
 1. Fill in the following information:
 
