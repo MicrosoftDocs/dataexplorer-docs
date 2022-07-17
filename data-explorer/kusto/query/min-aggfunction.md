@@ -26,9 +26,7 @@ Finds the minimum value across the group.
 Returns the minimum value of *Expr* across the group.
 
 > [!TIP]
-> This gives you the min or max on its own - for example, the highest or lowest price.
-> But if you want other columns in the row - for example, the name of the supplier with the lowest
-> price - use [arg_max](arg-max-aggfunction.md) or [arg_min](arg-min-aggfunction.md).
+> This gives you the min on its own. But if you want other columns in the row [arg_min](arg-min-aggfunction.md).
 
 ## Example
 

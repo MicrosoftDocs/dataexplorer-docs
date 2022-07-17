@@ -39,6 +39,8 @@ StormEvents
 
 **Results**
 
+The results table shown includes only the first 10 rows.
+
 | State                | event_count | TotalDeathCases |
 | -------------------- | ----------- | --------------- |
 | TEXAS                | 4701        | 71              |

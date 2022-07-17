@@ -45,6 +45,24 @@ StormEvents
 | summarize arg_min(BeginLat, BeginLocation) by State
 ```
 
+**Results**
+
+The results table shown includes only the first 10 rows.
+
+| State          | BeginLat | BeginLocation |
+| -------------- | -------- | ------------- |
+| AMERICAN SAMOA | -14.3    | PAGO PAGO     |
+| CALIFORNIA     | 32.5709  | NESTOR        |
+| MINNESOTA      | 43.5     | BIGELOW       |
+| WASHINGTON     | 45.58    | WASHOUGAL     |
+| GEORGIA        | 30.67    | FARGO         |
+| ILLINOIS       | 37       | CAIRO         |
+| FLORIDA        | 24.6611  | SUGARLOAF KEY |
+| KENTUCKY       | 36.5     | HAZEL         |
+| TEXAS          | 25.92    | BROWNSVILLE   |
+| OHIO           | 38.42    | SOUTH PT      |
+| ... | ... | ... |
+
 **Example 2**
 
 Find the first time an event with a direct death happened in each state showing all of the columns.
@@ -58,6 +76,8 @@ StormEvents
 ```
 
 **Results**
+
+The results table shown includes only the first 10 rows and first 3 columns.
 
 | State      | StartTime            | EndTime              | ... |
 | ---------- | -------------------- | -------------------- | --- |
