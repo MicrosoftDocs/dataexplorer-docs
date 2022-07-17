@@ -15,6 +15,8 @@ items:
     href: connection-strings/storage-connection-strings.md
   - name: Storage authentication methods
     href: connection-strings/storage-authentication-methods.md
+  - name: SQL Server authentication methods
+    href: connection-strings/sql-authentication-methods.md
   - name: Generate SAS token
     href: connection-strings/generate-sas-token.md
 - name: REST API
