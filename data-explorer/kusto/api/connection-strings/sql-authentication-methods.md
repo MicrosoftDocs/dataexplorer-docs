@@ -16,7 +16,7 @@ We recommend adding an `h` to connection strings that contain secrets, so that t
 
 The following authentication methods are supported:
 
-* [AAD-integrated authentication](#AAD-integrated-authentication)
+* [AAD-integrated authentication](#aad-integrated-authentication)
 * [Managed identity](#managed-identity)
 * [Username and Password](#username-and-password)
 
