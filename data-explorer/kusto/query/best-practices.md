@@ -27,12 +27,12 @@ Here are several best practices to follow to make your query run faster.
 | **Compare data already in lowercase (or uppercase)** | `Col == "lowercasestring"` (or `Col == "UPPERCASESTRING"`) | Avoid using case insensitive comparisons. |  |
 | **Filtering on columns** | Filter on a table column. | Don't filter on a calculated column. |  |
 |  | Use `T | where predicate(<expression>)` | Don't use `T | extend _value = <expression> | where predicate(_value)` |  |
-| **summarize operator** | Use the [hint.shufflekey=<key>](./shufflequery.md) when the `group by keys` of the summarize operator are with high cardinality. |  | High cardinality is ideally above 1 million. |
+| **summarize operator** | Use the [hint.shufflekey=\<key>](./shufflequery.md) when the `group by keys` of the summarize operator are with high cardinality. |  | High cardinality is ideally above 1 million. |
 | **[join operator](./joinoperator.md)** | Select the table with the fewer rows to be the first one (left-most in query). |  |
 |  | Use `in` instead of left semi `join` for filtering by a single column. |  |
 | Join across clusters | Across clusters, run the query on the "right" side of the join, where most of the data is located. |  |
 | Join when left side is small and right side is large | Use [hint.strategy=broadcast](./broadcastjoin.md) |  | Small refers to up to 100,000 records. |
-| Join when both sides are too large | Use [hint.shufflekey=<key>](./shufflequery.md) |  | Use when the join key has high cardinality. |
+| Join when both sides are too large | Use [hint.shufflekey=\<key>](./shufflequery.md) |  | Use when the join key has high cardinality. |
 | **Extract values on column with strings sharing the same format or pattern** | Use the [parse operator](./parseoperator.md) | Don't use several `extract()` statements. | For example, values like `"Time = <time>, ResourceId = <resourceId>, Duration = <duration>, ...."` |
 | **[extract() function](./extractfunction.md)** | Use when parsed strings don't all follow the same format or pattern. |  | Extract the required values by using a REGEX. |
 | **[materialize() function](./materializefunction.md)** | Push all possible operators that will reduce the materialized data set and still keep the semantics of the query. |  | For example, filters, or project only required columns. |
