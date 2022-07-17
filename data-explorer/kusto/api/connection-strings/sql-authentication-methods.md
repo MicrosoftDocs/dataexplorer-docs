@@ -48,7 +48,7 @@ In order to use managed identity please follow these instructions, and allow the
 
 `"Server=tcp:myserver.database.windows.net,1433;Authentication="Active Directory Managed Identity";User Id=9ca5bb85-1c1f-44c3-b33a-0dfcc7ec5f6b;Initial Catalog=mydatabase;"`
 
-## Username and Password
+## Username and password
 
 To use username and password, add `User ID=...; Password=...;` to connection string.
 
