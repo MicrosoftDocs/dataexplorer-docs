@@ -33,7 +33,7 @@ To use AAD-integrated authentication (impersonation), add `;Authentication="Acti
 
 ## Managed identity
 
-To add a managed identity, add `;Authentication="Active Directory Managed Identity"` to the connection string for a system-assigned managed identity, or `;Authentication="Active Directory Managed Identity";User Id={object_id}` for a user-assigned managed identity with its assosiated object ID. Azure Data Explorer will use the managed identity, either system or user-assigned, to make requests and access resources.
+To add a managed identity, add `;Authentication="Active Directory Managed Identity"` to the connection string for a system-assigned managed identity, or `;Authentication="Active Directory Managed Identity";User Id={object_id}` for a user-assigned managed identity with its associated object ID. Azure Data Explorer will use the managed identity, either system or user-assigned, to make requests and access resources.
 In order to use managed identity please follow these instructions, and allow the relevant sql db permissions to the managed identity.
 
 * For a system-assigned managed identity, add `;Authentication="Active Directory Managed Identity"`.
