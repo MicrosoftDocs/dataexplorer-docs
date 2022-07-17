@@ -52,7 +52,7 @@ In order to use managed identity please follow these instructions, and allow the
 
 To use username and password, add `User ID=...; Password=...;` to connection string.
 
-### Username and Password example
+### Username and password example
 
 `"Server=tcp:myserver.database.windows.net,1433;User Id={some-userId};Password={some-password};Initial Catalog=mydatabase;"`
 
