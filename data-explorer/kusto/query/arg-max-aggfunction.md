@@ -24,7 +24,7 @@ Finds a row in the group that maximizes *ExprToMaximize*.
 
 ## Returns
 
-Returns a row in the group that maximizes *ExprToMaximize*, and the value of *ExprToReturn*. Use `*` to return the entire row.
+Returns a row in the group that maximizes *ExprToMaximize*, and the values of columns specified in *ExprToReturn*.
 
 ## Examples
 
