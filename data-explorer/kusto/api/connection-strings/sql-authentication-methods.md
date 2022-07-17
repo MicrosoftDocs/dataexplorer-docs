@@ -18,7 +18,7 @@ The following authentication methods are supported:
 
 * [AAD-integrated authentication](#AAD-integrated-authentication)
 * [Managed identity](#managed-identity)
-* [Username and Password](#Username-and-Password)
+* [Username and Password](#username-and-password)
 
 ## AAD-integrated authentication
 
