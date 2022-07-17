@@ -42,7 +42,7 @@ without affecting existing records, and without modifying the table's schema. Mi
 > The service will be sure to scrub credentials
 > in its internal traces, error messages, etc.
 
-[!INCLUDE [ingestion-properties](includes/ingestion-properties.md)]
+[!INCLUDE [ingestion-properties](../../../includes/ingestion-properties.md)]
 
 ## Results
 
