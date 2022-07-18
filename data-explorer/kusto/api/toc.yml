@@ -74,6 +74,10 @@ items:
     - name: HowTo Data Ingestion with REST API
       displayName: Kusto.Ingest
       href: netfx/kusto-ingest-client-rest.md
+- name: Microsoft.Kusto Bicep and Azure Resource Template resource types
+  href: /azure/templates/microsoft.kusto/allversions
+- name: Microsoft.Kusto resource provider operations
+  href: /azure/role-based-access-control/resource-provider-operations#microsoftkusto
 - name: Python SDK
   items:
   - name: azure-kusto-python
@@ -98,9 +102,7 @@ items:
   items:
   - name: Calling Kusto from PowerShell
     href: powershell/powershell.md
-- name: Monaco IDE integration
-  items:
-  - name: monaco-kusto overview
-    href: monaco/monaco-kusto.md
-  - name: Embed web UX in an iFrame
-    href: monaco/host-web-ux-in-iframe.md
+- name: Azure CLI Kusto
+  href: /cli/azure/kusto?view=azure-cli-latest
+- name: PowerShell Kusto
+  href: /powershell/module/az.kusto/#kusto
