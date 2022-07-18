@@ -17,6 +17,9 @@ existing or nonexistent tables and data.
 |`.set-or-append` |Data is appended to the table      |The table is created and data is ingested|
 |`.set-or-replace`|Data replaces the data in the table|The table is created and data is ingested|
 
+> [!NOTE]
+> The [`cancel operation`](../cancel-operation-command.md) command is supported for ingest from query commands.
+
 **Syntax**
 
 `.set` [`async`] *TableName* [`with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *QueryOrCommand*
