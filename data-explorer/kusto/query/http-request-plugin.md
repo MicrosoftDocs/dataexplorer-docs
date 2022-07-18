@@ -43,6 +43,9 @@ Both plugins return a table that has a single record with the following dynamic 
 * *ResponseHeaders*: A property bag with the response header.
 * *ResponseBody*: The response body parsed as a value of type `dynamic`.
 
+If the HTTP response indicates (via the `Content-Type` response header) that the media type is `application/json`,
+the response body is automatically parsed as-if it's a JSON object. Otherwise, it's returned as-is.
+
 ## Prerequisites
 
 Before you use the `http_request` and `http_request_post` plugins, make sure that requests meet the following requirements:
