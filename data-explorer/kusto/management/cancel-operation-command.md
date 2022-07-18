@@ -14,16 +14,16 @@ The command isn't guaranteed to succeed. The output of the `.cancel operation` c
 
 |Property|Type|Description
 |----------------|-------|---|
-|OperationId|Guid|The operation ID returned from the canceled command.|
+|OperationId|Guid|The operation ID returned from the running command.|
 |ReasonPhrase|String|Describes the reason for canceling the running command.|
 
 ### Output
 
 |Output parameter |Type |Description
 |---|---|---
-|OperationId|Guid|The operation ID of the canceled command.
-|Operation|String|Operation kind of the canceled command.
-|StartedOn|DateTime|The start time of the canceled command.
+|OperationId|Guid|The operation ID of the operation that was canceled.
+|Operation|String|The operation kind that was canceled.
+|StartedOn|DateTime|The start time of the operation that was canceled.
 |CancellationState|String|One of - `Cancelled successfully` (command was canceled), `Cancel failed` (command was ended or is still running but it cannot be canceled at this point).
 |ReasonPhrase|String|Reason why cancellation wasn't successful.
 
