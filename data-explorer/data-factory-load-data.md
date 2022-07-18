@@ -156,7 +156,24 @@ To create the Azure Data Explorer linked service, do the following steps:
 
    a. In the **Name** box, enter a name for the Azure Data Explorer linked service.
 
-   b. Under **Account selection method**, choose one of the following options: 
+   b. Under **Authentication method**, choose **System Assigned Managed Identity** or **Service Principal**.
+
+    * To Authenticate using a Managed Identity, grant the Managed Identity access to the Database by using the **Managed identity name** or **Managed identity object ID**.
+
+    * To Authenticate using a Service Principal:
+
+        1. In the **Tenant** box, enter the tenant name.
+
+        2. In the **Service principal ID** box, enter the service principal ID.
+
+        3. Select **Service principal key** and then, in the **Service principal key** box, enter the value for the key.
+
+    > [!NOTE]
+    > * The service principal is used by Azure Data Factory to access the Azure Data Explorer service. To create a service principal, go to [create an Azure Active Directory (Azure AD) service principal](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal).
+    > * To assign permissions to a Managed Identity or a Service Principal or , see [manage permissions](manage-database-permissions.md).
+    > * Do not use the Azure Key Vault method or User Assigned Managed Identity.
+
+   d. Under **Account selection method**, choose one of the following options: 
 
     * Select **From Azure subscription** and then, in the drop-down lists, select your **Azure subscription** and your **Cluster**. 
 
@@ -166,20 +183,13 @@ To create the Azure Data Explorer linked service, do the following steps:
 
     * Select **Enter manually**, and then enter your **Endpoint**.
 
-   c. In the **Tenant** box, enter the tenant name.
+   e. In the **Database** drop-down list, select your database name. Alternatively, select the **Edit** check box, and then enter the database name.
 
-   d. In the **Service principal ID** box, enter the service principal ID.
-
-   e. Select **Service principal key** and then, in the **Service principal key** box, enter the value for the key.
-
-   f. In the **Database** drop-down list, select your database name. Alternatively, select the **Edit** check box, and then enter the database name.
+   f. To test the linked service connection you created, select **Test Connection**. If you can connect to your linked service, the pane displays a green checkmark and a **Connection successful** message.
 
    g. To test the linked service connection you created, select **Test Connection**. If you can connect to your linked service, the pane displays a green checkmark and a **Connection successful** message.
 
-   h. Select **Finish** to complete the linked service creation.
-
-    > [!NOTE]
-    > The service principal is used by Azure Data Factory to access the Azure Data Explorer service. To create a service principal, go to [create an Azure Active Directory (Azure AD) service principal](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal). Do not use the Azure Key Vault method. To assign permissions to the service principal, see [manage permissions](manage-database-permissions.md).
+   h. Select **Create** to complete the linked service creation.
 
 #### Configure the Azure Data Explorer data connection
 
