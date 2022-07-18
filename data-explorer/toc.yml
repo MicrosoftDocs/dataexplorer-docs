@@ -405,9 +405,9 @@ items:
       - name: Generate SAS token
         href: kusto/api/connection-strings/generate-sas-token.md
     - name: Monaco IDE integration
-      href: monaco/monaco-kusto.md
+      href: kusto/api/monaco/monaco-kusto.md
     - name: Embed web UI in an iFrame
-      href: monaco/host-web-ux-in-iframe.md
+      href: kusto/api/monaco/host-web-ux-in-iframe.md
   - name: Manage
     items:
     - name: Cluster
