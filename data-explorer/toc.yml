@@ -554,6 +554,10 @@ items:
   items:
   - name: API
     href: kusto/api/toc.yml
+  - name: Azure CLI Kusto
+    href: /cli/azure/kusto
+  - name: PowerShell Kusto
+    href: /powershell/module/az.kusto/#kusto
   - name: Functions library
     items:
     - name: List of functions

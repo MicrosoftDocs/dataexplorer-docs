@@ -102,7 +102,3 @@ items:
   items:
   - name: Calling Kusto from PowerShell
     href: powershell/powershell.md
-- name: Azure CLI Kusto
-  href: /cli/azure/kusto
-- name: PowerShell Kusto
-  href: /powershell/module/az.kusto/#kusto
