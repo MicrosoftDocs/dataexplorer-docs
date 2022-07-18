@@ -213,7 +213,7 @@ The following properties can be defined as part of the policy. These properties 
 ### Limitations
 
 * Attempts to partition data in a database that already has more than 5,000,000 extents will be throttled.
-  * In such cases, we recommend that you temporarily disable partitioning and re-evaluate your configuration and policies. For example, you can set the `EffectiveDateTime` to a future date until the extent count stabilizes on a lower value.
+  * In such cases, the `EffectiveDateTime` property of partitioning policies of tables in the database will be automatically delayed by several hours, so that you can re-evaluate your configuration and policies.
 
 ## Outliers in partitioned columns
 
