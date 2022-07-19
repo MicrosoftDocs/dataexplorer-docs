@@ -77,11 +77,11 @@ items:
   - name: Explore the samples gallery
     href: web-ui-samples-gallery.md
     displayName: Azure Data Explorer web UI
-  - name: Start-for-free cluster
+  - name: Explore with a free cluster
     items:
-    - name: Create a start-for-free cluster
+    - name: Create a free cluster
       href: start-for-free-web-ui.md
-    - name: Upgrade a start-for-free cluster
+    - name: Upgrade a free cluster
       href: start-for-free-upgrade.md
   - name: Create cluster and database
     items:
