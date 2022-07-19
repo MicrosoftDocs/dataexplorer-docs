@@ -34,7 +34,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | - [Enable disk encryption for your cluster](cluster-encryption-disk.md)<br />- [Secure your cluster with encryption](cluster-encryption-overview.md)<br />- [Enable double encryption for your cluster](cluster-encryption-double.md) | New articles. Describing securing your cluster using disk encryption. |
 | - [Create a managed private endpoint for your cluster](security-network-managed-private-endpoint-create.md)<br />- [Network security](security-network-overview.md)<br />- [Create a private endpoint for your cluster](security-network-private-endpoint-create.md)<br />- [Troubleshoot private endpoints](security-network-private-endpoint-troubleshoot.md)<br />- [Private endpoints for your cluster](security-network-private-endpoint.md)<br />- [Restrict outbound access from your cluster](security-network-restrict-outbound-access.md)<br />- [Restrict public access to your cluster](security-network-restrict-public-access.md)| New articles. Describes private endpoint security. |
 
-### Management
+**Management**
 
 | Article title | Description |
 |--|--|
@@ -51,7 +51,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | - [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)<br />- [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated articles. Added new Events Routing features including alternative databases and tables. |
 | - [IoT Hub data connection](ingest-data-iot-hub-overview.md)<br />- [Ingest data from IoT Hub into Azure Data Explorer](ingest-data-iot-hub.md) | Updated articles. Added new sections on target databases (multi-database data connection). |
 
-### Functions library
+**Functions library**
 
 | Article title | Description |
 |--|--|
@@ -59,13 +59,13 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [series_uv_anomalies_fl()](kusto/functions-library/series-uv-anomalies-fl.md) | New article. Describes the `series_uv_anomalies_fl()` user-defined function. |
 | [series_uv_change_points_fl()](kusto/functions-library/series-uv-change-points-fl.md) | New article. Describes the `series_uv_change_points_fl()` user-defined function. |
 
-### Management
+**Management**
 
 | Article title | Description |
 |--|--|
 | [Clear schema cache for cross-cluster queries](kusto/management/clear-cross-cluster-schema-cache.md) | New article. Describes how to manually clear the cross-cluster query cache. |
 
-### Query
+**Query**
 
 | Article title | Description |
 |--|--|
@@ -82,7 +82,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [Automated provisioning in Azure Data Explorer](automated-deploy-overview.md) | New article. Maps different articles for automating provisioning. |
 | [Automated provisioning in Azure Data Explorer](automated-deploy-overview.md) | New article. Maps different articles for automating the provisioning of clusters. |
 
-### Functions library
+**Functions library**
 
 | Article title | Description |
 |--|--|
@@ -94,7 +94,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 | [Use the one-click sample app generator to create code to ingest and query your data](sample-app-generator-one-click.md) | New Article. Describes how to use the one-click sample app generator for your preferred programming language. |
 
-### API
+**API**
 
 | Article title | Description |
 |--|--|
@@ -106,7 +106,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 | [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) | Updated article. Added new section for cross-filters as dashboard parameters. |
 
-### Functions library
+**Functions library**
 
 | Article title | Description |
 |--|--|
@@ -120,7 +120,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [Solution architectures](solution-architectures.md) | New article. Lists references to the architectures that include Azure Data Explorer. |
 | [Delete data from Azure Data Explorer](delete-data.md) | Updated article. Added new sections for purge and soft delete. |
 
-### Query
+**Query**
 
 | Article title | Description |
 |--|--|
@@ -141,7 +141,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [Add database principals using Python](database-principal-python.md) | Updated article. AddedAllDatabasesMonitor role.
 | [Manage Azure Data Explorer database permissions](manage-database-permissions.md) | Updated article. Added AllDatabasesMonitor role.
 
-### Management
+**Management**
 
 | Article title | Description |
 |--|--|
@@ -155,7 +155,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 | [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated article. Learn how to connect event hub with managed identity.
 
-### Query
+**Query**
 
 | Article title | Description |
 |--|--|
@@ -170,7 +170,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [Use one-click ingestion to create an event hub data connection](one-click-event-hub.md)| Updated article. One click event hub experience.
 | [Use LightIngest to ingest data into Azure Data Explorer](lightingest.md)| Updated article. Generate LightIngest commands - one click experience.
 
-### Query
+**Query**
 
 | Article title | Description |
 |--|--|
@@ -179,7 +179,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [Scalar function types at a glance](kusto/query/scalarfunctions.md) | Updated article. Updated aggregation function and added series_pow.
 | [materialized_view() function](kusto/query/materialized-view-function.md) | Updated article. Updated aggregation function.
 
-### Management
+**Management**
 
 | Article title | Description |
 |--|--|
@@ -187,7 +187,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [Query weak consistency policy](kusto/management/query-weak-consistency-policy.md) | New article.
 | [.show query weak consistency policy](kusto/management/show-query-weak-consistency-policy.md) | New article.
 
-### Functions library
+**Functions library**
 
 | Article title | Description |
 |--|--|
@@ -208,7 +208,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md) | Updated article. New UI.
 | [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. New UI.
 
-### Query
+**Query**
 
 | Article title | Description |
 |--|--|
@@ -217,7 +217,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [take_anyif() (aggregation function)](kusto/query/take-anyif-aggfunction.md) | New article. Replaces anyif().
 | [replace_regex()](kusto/query/replace-regex-function.md) | Updated article. Replace() function changed to replace_regex().
 
-### Management
+**Management**
 
 | Article title | Description |
 |--|--|
@@ -227,7 +227,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [.show extent tags retention policy](kusto/management/show-extent-tags-retention-policy.md) | New article.
 | [Stored query results](kusto/management/stored-query-results.md) | Updated article. General Availability.
 
-### Functions library
+**Functions library**
 
 | Article title | Description |
 |--|--|
@@ -239,7 +239,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 | -[Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md)<br />- [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md) | Updated articles. Document batching types. |
 
-### Query
+**Query**
 
 | Article title | Description |
 |--|--|
@@ -247,7 +247,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [has_any_ipv4()](kusto/query/has-any-ipv4-function.md) | New article. Returns a value indicating whether one of specified IPv4 addresses appears in a text.
 | [has_any_ipv4_prefix()](kusto/query/has-any-ipv4-prefix-function.md) | New article. Returns a value indicating whether one of specified IPv4 address prefixes appears in a text.
 
-### Management
+**Management**
 
 | Article title | Description |
 |--|--|
@@ -261,7 +261,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 ## April 2021
 
-### Query
+**Query**
 
 | Article title | Description |
 |--|--|
@@ -272,7 +272,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 [The string data type](kusto/query/scalar-data-types/string.md) | Updated article.
 [Null Values](kusto/query/scalar-data-types/null-values.md) | Updated article.
 
-### Management
+**Management**
 
 | Article title | Description |
 |--|--|
@@ -281,13 +281,13 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 [Materialized views](kusto/management/materialized-views/materialized-view-overview.md)  | Updated article. General Availability (GA).
 [Materialized views policies](kusto/management/materialized-views/materialized-view-policies.md)  | Updated article. General Availability (GA).
 
-### Functions library
+**Functions library**
 
 | Article title | Description |
 |--|--|
 [time_weighted_avg_fl()](kusto/functions-library/time-weighted-avg-fl.md) | New article. The function `time_weighted_avg_fl()` calculates the time weighted average of a metric in a given time window, over input time bins.
 
-### API
+**API**
 
 | Article title | Description |
 |--|--|
@@ -299,14 +299,14 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 | [Create an external table (preview)](external-table.md) | New article. An external table is a schema entity that references data stored outside the Azure Data Explorer database. |
 
-### Management
+**Management**
 
 | Article title | Description |
 |--|--|
 | - [Auto delete policy command](kusto/management/show-auto-delete-policy-command.md)<br />- [Auto delete policy](kusto/management/auto-delete-policy.md) | New articles. An auto delete policy on a table sets an expiry date for the table. |
 | [Stored query results (Preview)](kusto/management/stored-query-results.md) | Updated article. Added async mode. |
 
-### Functions library
+**Functions library**
 
 | Article title | Description |
 |--|--|
@@ -322,7 +322,7 @@ Article title | Description
 [Optimize for high concurrency with Azure Data Explorer](high-concurrency.md) | New article. In this article, you learn to optimize your Azure Data Explorer setup for high concurrency.
 | [Quickstart: Query data in Azure Data Explorer web UI](web-query-data.md) | Updated article. Explanation of table grid options.
 
-### Query
+**Query**
 
 Article title | Description
 ---|---
@@ -333,7 +333,7 @@ Article title | Description
 | [Null Values](kusto/query/scalar-data-types/null-values.md) | Updated article. New behavior in Engine V3.
 | [String operators](kusto/query/datatypes-string-operators.md) | Updated article. String term indexing for Engine V3.
 
-### Management
+**Management**
 
 Article title | Description
 ---|---
@@ -346,7 +346,7 @@ Article title | Description
 [Materialized views policies](kusto/management/materialized-views/materialized-view-policies.md) | New article. Includes information about policies that can be set on a materialized view.
 [Request queuing policy (Preview)](kusto/management/request-queuing-policy.md) | New article. A workload group's request queuing policy controls queueing of requests for delayed execution, once a certain threshold of concurrent requests is exceeded.
 
-### Functions library
+**Functions library**
 
 Article title | Description
 ---|---
@@ -359,7 +359,7 @@ Article title | Description
 [Azure Policy Regulatory Compliance controls](security-controls-policy.md) | New article. This page lists the **compliance domains** and **security controls**.
 [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) | New article. In this article, you'll learn how to give cluster access to principals from another tenant.
 
-### Management
+**Management**
 
 Article title | Description
 ---|---
@@ -376,7 +376,7 @@ Article title | Description
 ---|---
 [Ingestion error codes in Azure Data Explorer](error-codes.md) | New article. This list contains error codes you may come across during [ingestion](ingest-data-overview.md).
 
-### Management
+**Management**
 
 Article title | Description
 ---|---
@@ -385,7 +385,7 @@ Article title | Description
 [Create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md) | Updated article. Document `filesPreview` and `dryRun` external table definition options
 [Export data to an external table](kusto/management/data-export/export-data-to-an-external-table.md) | Updated article. New external table syntax in export docs
 
-### Functions library
+**Functions library**
 
 Article title | Description
 ---|---
@@ -405,7 +405,7 @@ Article title | Description
 |  [What is one-click ingestion?](ingest-data-one-click.md) | Updated article. Added ingestion from JSON nested levels. General availability (GA).
 | [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md) | Updated article. New dashboard visuals and parameter changes.
 
-### Query
+**Query**
 
 Article title | Description
 ---|---
@@ -417,7 +417,7 @@ Article title | Description
 [gzip_decompress_from_base64_string()](kusto/query/gzip-base64-decompress.md) | New article. Decodes the input string from base64 and performs gzip decompression.
 [array_reverse()](kusto/query/array-reverse-function.md) | New article. Reverses the order of the elements in a dynamic array.
 
-### Management
+**Management**
 
 Article title | Description
 ---|---
@@ -426,7 +426,7 @@ Article title | Description
 [.show plugins](kusto/management/show-plugins.md) | New article. Lists all plugins of the cluster.
 | [Cluster follower commands](kusto/management/cluster-follower.md) | Updated article. Syntax changed, added `.alter follower database prefetch-extents`. |
 
-### Functions library
+**Functions library**
 
 Article title | Description
 ---|---
