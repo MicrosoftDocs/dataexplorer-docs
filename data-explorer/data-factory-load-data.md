@@ -3,7 +3,7 @@ title: Copy data from Azure Data Factory to Azure Data Explorer
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer by using the Azure Data Factory copy tool.
 ms.reviewer: jasonh
 ms.topic: how-to
-ms.date: 04/15/2019
+ms.date: 07/19/2022
 
 #Customer intent: I want to use Azure Data Factory to load data into Azure Data Explorer so that I can analyze it later.
 ---
@@ -154,42 +154,35 @@ To create the Azure Data Explorer linked service, do the following steps:
 
     ![The Azure Data Explorer New Linked Service pane.](media/data-factory-load-data/adx-new-linked-service.png)
 
-   a. In the **Name** box, enter a name for the Azure Data Explorer linked service.
+   1. In the **Name** box, enter a name for the Azure Data Explorer linked service.
+   1. Under **Authentication method**, choose **System Assigned Managed Identity** or **Service Principal**.
 
-   b. Under **Authentication method**, choose **System Assigned Managed Identity** or **Service Principal**.
+        * To Authenticate using a Managed Identity, grant the Managed Identity access to the database by using the **Managed identity name** or **Managed identity object ID**.
+        * To Authenticate using a Service Principal:
 
-    * To Authenticate using a Managed Identity, grant the Managed Identity access to the Database by using the **Managed identity name** or **Managed identity object ID**.
-
-    * To Authenticate using a Service Principal:
-
-        1. In the **Tenant** box, enter the tenant name.
-
-        2. In the **Service principal ID** box, enter the service principal ID.
-
-        3. Select **Service principal key** and then, in the **Service principal key** box, enter the value for the key.
-
-    > [!NOTE]
-    > * The service principal is used by Azure Data Factory to access the Azure Data Explorer service. To create a service principal, go to [create an Azure Active Directory (Azure AD) service principal](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal).
-    > * To assign permissions to a Managed Identity or a Service Principal or , see [manage permissions](manage-database-permissions.md).
-    > * Do not use the Azure Key Vault method or User Assigned Managed Identity.
-
-   d. Under **Account selection method**, choose one of the following options: 
-
-    * Select **From Azure subscription** and then, in the drop-down lists, select your **Azure subscription** and your **Cluster**. 
+            1. In the **Tenant** box, enter the tenant name.
+            1. In the **Service principal ID** box, enter the service principal ID.
+            1. Select **Service principal key** and then, in the **Service principal key** box, enter the value for the key.
 
         > [!NOTE]
-        > * The **Cluster** drop-down control lists only clusters that are associated with your subscription.
-        > * Your cluster must have the appropriate [SKU](manage-cluster-choose-sku.md) for [best performance](data-factory-integration.md#performance).
+        > * The service principal is used by Azure Data Factory to access the Azure Data Explorer service. To create a service principal, go to [create an Azure Active Directory (Azure AD) service principal](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal).
+        > * To assign permissions to a Managed Identity or a Service Principal or , see [manage permissions](manage-database-permissions.md).
+        > * Do not use the Azure Key Vault method or User Assigned Managed Identity.
 
-    * Select **Enter manually**, and then enter your **Endpoint**.
+   1. Under **Account selection method**, choose one of the following options: 
 
-   e. In the **Database** drop-down list, select your database name. Alternatively, select the **Edit** check box, and then enter the database name.
+        * Select **From Azure subscription** and then, in the drop-down lists, select your **Azure subscription** and your **Cluster**. 
 
-   f. To test the linked service connection you created, select **Test Connection**. If you can connect to your linked service, the pane displays a green checkmark and a **Connection successful** message.
+            > [!NOTE]
+            > * The **Cluster** drop-down control lists only clusters that are associated with your subscription.
+            > * Your cluster must have the appropriate [SKU](manage-cluster-choose-sku.md) for [best performance](data-factory-integration.md#performance).
 
-   g. To test the linked service connection you created, select **Test Connection**. If you can connect to your linked service, the pane displays a green checkmark and a **Connection successful** message.
+        * Select **Enter manually**, and then enter your **Endpoint**.
 
-   h. Select **Create** to complete the linked service creation.
+   1. In the **Database** drop-down list, select your database name. Alternatively, select the **Edit** check box, and then enter the database name.
+   1. To test the linked service connection you created, select **Test Connection**. If you can connect to your linked service, the pane displays a green checkmark and a **Connection successful** message.
+   1. To test the linked service connection you created, select **Test Connection**. If you can connect to your linked service, the pane displays a green checkmark and a **Connection successful** message.
+   1. Select **Create** to complete the linked service creation.
 
 #### Configure the Azure Data Explorer data connection
 
