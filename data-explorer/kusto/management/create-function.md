@@ -22,11 +22,11 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 
 |Input parameter |Type |Description |
 |---|---|---|
-|ifnotexists| bool | Will be executed only if the function does not exist (when set to `true`).
+|ifnotexists| bool | Will be executed only if the function doesn't exist (when set to `true`).
 |docstring|String|A description of the function.
 |folder|String|The name of the folder tag.
 |view|bool|Designates this function as a stored view.
-|skipvalidation|bool|When set to `true`, it will run validation logic on the function and fail if function is not valid. (Default: `true`)
+|skipvalidation|bool|When set to `true`, it will run validation logic on the function and fail if function isn't valid. (Default: `true`)
 |FunctionName(ParamName:ParamType)|String (String:datatype)|Name of the function, the parameter name and datatype.
 |FunctionBody|   | An expression that yields a user defined function.
 
