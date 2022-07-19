@@ -614,6 +614,7 @@ items:
   - name: Data soft delete
     href: ../concepts/data-soft-delete.md
 - name: Cancel operation command
+  href: cancel-operation-command.md
 - name: Errors and failures
   items:
   - name: Ingestion FAQ
