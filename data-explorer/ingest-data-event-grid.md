@@ -44,7 +44,7 @@ Create a table in Azure Data Explorer where Azure Event Hubs will send data. Cre
     .create table TestTable (TimeStamp: datetime, Value: string, Source:string)
     ```
 
-    :::image type="content" source="media/ingest-data-event-grid/run-create-table.png" alt-text="Screenshot of the Azure Data Explorer Web U I Query page, showing the create table command.":::
+    :::image type="content" source="media/ingest-data-event-grid/run-create-table.png" alt-text="Screenshot of the Azure Data Explorer web U I query page, showing the create table command.":::
 
 1. Copy the following command into the window and select **Run** to map the incoming JSON data to the column names and data types of the table (TestTable).
 
@@ -239,7 +239,7 @@ You can specify the [ingestion properties](ingest-data-event-grid-overview.md#in
 > By default, the policy is configured to 5 minutes.
 > You'll be able to alter the policy at a later time if needed. In this article you can expect a latency of a few minutes.
 
-1. In the Azure portal, under your event grid, you see the spike in activity while the app is running.
+1. In the Azure portal, under your Event Grid, you see the spike in activity while the app is running.
 
     :::image type="content" source="media/ingest-data-event-grid/event-grid-graph.png" alt-text="Screenshot of an Event Grid Activity graph, showing a spike in activity.":::
 
@@ -264,7 +264,7 @@ You can specify the [ingestion properties](ingest-data-event-grid-overview.md#in
 
 ## Clean up resources
 
-If you don't plan to use your event grid again, clean up the Event Grid Subscription, Event Hubs namespace, and any event hubs that were autocreated for you, to avoid incurring costs.
+If you don't plan to use your Event Grid again, clean up the Event Grid Subscription, Event Hubs namespace, and any event hubs that were autocreated for you, to avoid incurring costs.
 
 1. In Azure portal, go to the left menu and select **All resources**.
 
@@ -288,7 +288,7 @@ If you don't plan to use your event grid again, clean up the Event Grid Subscrip
 
 1. Select your database **TestDatabase**:
 
-    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-database.png" alt-text="Screenshot of Azure Data Explorer Web U I Databases page, showing a database.":::
+    :::image type="content" source="media/ingest-data-event-grid/clean-up-resources-select-database.png" alt-text="Screenshot of Azure Data Explorer web U I Databases page, showing a database.":::
 
 1. On the left menu, select **Data ingestion**:
 

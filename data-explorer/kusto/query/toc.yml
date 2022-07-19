@@ -465,8 +465,12 @@ items:
     href: datetime-addfunction.md
   - name: datetime_diff()
     href: datetime-difffunction.md
+  - name: datetime-local-to-utc()
+    href: datetime-local-to-utc-function.md
   - name: datetime_part()
     href: datetime-partfunction.md
+  - name: datetime_utc_to_local()
+    href: datetime-utc-to-local-function.md
   - name: dayofmonth()
     href: dayofmonthfunction.md
   - name: dayofweek()
@@ -1233,6 +1237,8 @@ items:
     href: sqlcheatsheet.md
   - name: Splunk to Kusto cheat sheet
     href: splunk-cheat-sheet.md
+  - name: Timezones
+    href: timezone.md
 - name: Query tools
   items:
   - name: Kusto.Explorer
