@@ -61,7 +61,7 @@ items:
     - name: Security baseline
       href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
     - name: Security controls by Azure Policy
-      href: ./security-controls-policy.md
+      href: security-controls-policy.md
   - name: Business continuity
     items:
     - name: Overview
@@ -636,7 +636,9 @@ items:
       href: kusto/functions-library/wilcoxon-test-fl.md
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions
-    href: ./policy-reference.md
+    href: policy-reference.md
+  - name: What's new archive
+    href: whats-new-archive.md
 - name: Resources
   items:
   - name: Forums
