@@ -637,8 +637,6 @@ items:
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions
     href: policy-reference.md
-  - name: What's new archive
-    href: whats-new-archive.md
 - name: Resources
   items:
   - name: Forums

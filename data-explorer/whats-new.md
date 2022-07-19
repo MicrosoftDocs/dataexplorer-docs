@@ -16,14 +16,14 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [Ingest data from Azure Stream Analytics into Azure Data Explorer (Preview)](stream-analytics-connector.md) | New Article. Describes how to ingest (load) data from Azure Stream Analytics. |
 | [Azure Data Explorer web UI overview](web-ui-overview.md) | New Article. Describes the elements of web UI home page and the data analytics journey. |
 | [Explore the Azure Data Explorer web UI samples gallery](web-ui-samples-gallery.md) | New Article. Describes how to use the samples gallery in the web UI. |
-| [Select a SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md) | Updated Article.  New SKU list and refreshed content. |
+| [Select a SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md) | Updated Article. New SKU list and refreshed content. |
 
 ## May 2022
 
 | Article title | Description |
 |--|--|
 | [Ingest data from Telegraf into Azure Data Explorer](ingest-data-telegraf.md) | New Article. Describes how to ingest data into your cluster from Telegraf. |
-| [Ingest data using managed identity authentication](ingest-data-managed-identity.md) |  New Article. Queue Azure Storage blobs for ingestion using managed identity authentication. |
+| [Ingest data using managed identity authentication](ingest-data-managed-identity.md) | New Article. Queue Azure Storage blobs for ingestion using managed identity authentication. |
 |- [Usage examples for Azure Data Explorer connector to Power Automate](flow-usage.md) <br />- [Azure Data Explorer connector for Microsoft Power Automate](flow.md) <br />- [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md) <br />- [Microsoft Logic App and Azure Data Explorer](kusto/tools/logicapps.md)| Updated articles. General availability (GA). Content refreshed. |
 | [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) | Updated Article. Added section on drillthrough. |
 
@@ -132,11 +132,11 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 | [Create an Event Grid data connection using C#](data-connection-event-grid-csharp.md) | Updated article. AddedEvent Grid data connection from Azure portal.
 | [Create an Event Grid data connection using Python](data-connection-event-grid-python.md) | Updated article.
-| [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)  | Updated article. AddedEvent Grid data connection from Azure portal.
+| [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md) | Updated article. AddedEvent Grid data connection from Azure portal.
 | [Event Grid data connection](ingest-data-event-grid-overview.md) | Updated article. AddedEvent Grid data connection from Azure portal.
 | [Ingest blobs by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated article. Added Event Grid data connection from Azure portal.
 | [Add cluster principals using C#](cluster-principal-csharp.md) | Updated article. AddedAllDatabasesMonitor role.
-| [Add cluster principals using Python](cluster-principal-python.md)  | Updated article. Added AllDatabasesMonitor role.
+| [Add cluster principals using Python](cluster-principal-python.md) | Updated article. Added AllDatabasesMonitor role.
 | [Add cluster principals using an Azure Resource Manager template](cluster-principal-resource-manager.md) | Updated article. Added AllDatabasesMonitor role.
 | [Add database principals using Python](database-principal-python.md) | Updated article. AddedAllDatabasesMonitor role.
 | [Manage Azure Data Explorer database permissions](manage-database-permissions.md) | Updated article. Added AllDatabasesMonitor role.
@@ -268,7 +268,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 [has_ipv4()](kusto/query/has-ipv4-function.md) | New article. Returns a value indicating whether a specified IPv4 address appears in a text.
 [has_ipv4_prefix()](kusto/query/has-ipv4-prefix-function.md) | New article. Returns a value indicating whether a specified IPv4 address prefix appears in a text.
 [scan operator (preview)](kusto/query/scan-operator.md) | New article. Scans data, matches, and builds sequences based on the predicates.
-[Query results cache](kusto/query/query-results-cache.md) | Updated article.  Per shard query results cache added.
+[Query results cache](kusto/query/query-results-cache.md) | Updated article. Per shard query results cache added.
 [The string data type](kusto/query/scalar-data-types/string.md) | Updated article.
 [Null Values](kusto/query/scalar-data-types/null-values.md) | Updated article.
 
@@ -276,10 +276,10 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-[Workload groups - Control commands](kusto/management/show-workload-group-command.md)  | Updated article. General Availability (GA).
-[Workload groups](kusto/management/workload-groups.md)  | Updated article. General Availability (GA).
-[Materialized views](kusto/management/materialized-views/materialized-view-overview.md)  | Updated article. General Availability (GA).
-[Materialized views policies](kusto/management/materialized-views/materialized-view-policies.md)  | Updated article. General Availability (GA).
+[Workload groups - Control commands](kusto/management/show-workload-group-command.md) | Updated article. General Availability (GA).
+[Workload groups](kusto/management/workload-groups.md) | Updated article. General Availability (GA).
+[Materialized views](kusto/management/materialized-views/materialized-view-overview.md) | Updated article. General Availability (GA).
+[Materialized views policies](kusto/management/materialized-views/materialized-view-policies.md) | Updated article. General Availability (GA).
 
 **Functions library**
 
@@ -339,7 +339,7 @@ Article title | Description
 ---|---
 | [Materialized views data purge](kusto/management/materialized-views/materialized-view-purge.md) | New article. [Data purge](kusto/concepts/data-purge.md) commands can be used to purge records from materialized views.
 [.alter materialized-view lookback](kusto/management/materialized-views/materialized-view-alter-lookback.md) | New article. Alters the `lookback` value of an existing materialized view.
-[.alter materialized-view autoUpdateSchema](kusto/management/materialized-views/materialized-view-alter-autoupdateschema.md)  | New article. Sets the `autoUpdateSchema` value of an existing materialized view to `true` or `false`.
+[.alter materialized-view autoUpdateSchema](kusto/management/materialized-views/materialized-view-alter-autoupdateschema.md) | New article. Sets the `autoUpdateSchema` value of an existing materialized view to `true` or `false`.
 [.alter materialized-view docstring](kusto/management/materialized-views/materialized-view-alter-docstring.md) | New article. Alters the DocString value of an existing materialized view.
 [.alter materialized-view folder](kusto/management/materialized-views/materialized-view-alter-folder.md) | New article. Alters the folder value of an existing materialized view.
 [.create-or-alter materialized-view](kusto/management/materialized-views/materialized-view-create-or-alter.md) | New article. Creates a materialized view or alters an existing materialized view.
@@ -350,7 +350,7 @@ Article title | Description
 
 Article title | Description
 ---|---
-| [series_dbl_exp_smoothing_fl()](kusto/functions-library/series-dbl-exp-smoothing-fl.md) | New article.  Applies a double exponential smoothing filter on a series.
+| [series_dbl_exp_smoothing_fl()](kusto/functions-library/series-dbl-exp-smoothing-fl.md) | New article. Applies a double exponential smoothing filter on a series.
 
 ## January 2021
 
@@ -364,12 +364,8 @@ Article title | Description
 Article title | Description
 ---|---
 [Clean extent containers commands](kusto/management/clean-extent-containers.md) | New article. Describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands.
-[Request classification policy (Preview)](kusto/management/request-classification-policy.md)  <br>[Request classification policy (Preview) - Control commands](kusto/management/show-cluster-policy-request-classification-command.md) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
+[Request classification policy (Preview)](kusto/management/request-classification-policy.md)<br>[Request classification policy (Preview) - Control commands](kusto/management/show-cluster-policy-request-classification-command.md) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
 [Request limits policy (Preview)](kusto/management/request-limits-policy.md) | New article. A workload group's request limits policy allows limiting the resources used by the request during its execution.
 [Request rate limit policy (Preview)](kusto/management/request-rate-limit-policy.md) | New article. The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group.
-[Workload groups (Preview)](kusto/management/workload-groups.md)  <br> [Workload groups (Preview) - Control commands](kusto/management/show-workload-group-command.md) | New articles. A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
+[Workload groups (Preview)](kusto/management/workload-groups.md)<br>[Workload groups (Preview) - Control commands](kusto/management/show-workload-group-command.md) | New articles. A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
 [Queries management](kusto/management/queries.md) | Updated article. Syntax updated
-
-## See also
-
-[What's new archive](whats-new-archive.md)
