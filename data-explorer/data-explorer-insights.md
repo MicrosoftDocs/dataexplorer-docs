@@ -4,6 +4,7 @@ description: This article describes how to use Azure Data Explorer Insights.
 ms,reviewer: guregini
 ms.topic: conceptual
 ms.date: 05/24/2022
+ms.custom: subject-monitoring
 ---
 
 # Azure Data Explorer Insights
