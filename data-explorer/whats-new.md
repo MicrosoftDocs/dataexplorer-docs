@@ -24,7 +24,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 | [Ingest data from Telegraf into Azure Data Explorer](ingest-data-telegraf.md) | New Article. Describes how to ingest data into your cluster from Telegraf. |
 | [Ingest data using managed identity authentication](ingest-data-managed-identity.md) |  New Article. Queue Azure Storage blobs for ingestion using managed identity authentication. |
-|- [Usage examples for Azure Data Explorer connector to Power Automate](flow-usage.md) <br />- [Azure Data Explorer connector for Microsoft Power Automate](flow.md) <br />- [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md) <br />-[Microsoft Logic App and Azure Data Explorer](kusto/tools/logicapps.md)| Updated articles. General availability (GA). Content refreshed. |
+|- [Usage examples for Azure Data Explorer connector to Power Automate](flow-usage.md) <br />- [Azure Data Explorer connector for Microsoft Power Automate](flow.md) <br />- [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md) <br />- [Microsoft Logic App and Azure Data Explorer](kusto/tools/logicapps.md)| Updated articles. General availability (GA). Content refreshed. |
 | [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) | Updated Article. Added section on drillthrough. |
 
 ## April 2022
