@@ -613,6 +613,7 @@ items:
     href: ../concepts/data-purge.md
   - name: Data soft delete
     href: ../concepts/data-soft-delete.md
+- name: Cancel operation command
 - name: Errors and failures
   items:
   - name: Ingestion FAQ
