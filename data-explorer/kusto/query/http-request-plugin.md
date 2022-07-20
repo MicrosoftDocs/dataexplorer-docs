@@ -96,7 +96,7 @@ custom headers:
 
 ## Examples
 
-The following example retrieves Azure retails prices for Azure Purview in west europe:
+The following example retrieves Azure retails prices for Azure Purview in west Europe:
 
 <!-- csl -->
 ```kusto
