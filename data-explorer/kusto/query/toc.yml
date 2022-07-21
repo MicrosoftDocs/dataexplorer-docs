@@ -157,6 +157,8 @@ items:
     href: parseoperator.md
   - name: parse-where operator
     href: parsewhereoperator.md
+  - name: parse-kv operator
+    href: parse-kv-operator.md
   - name: partition operator
     href: partitionoperator.md
   - name: print operator
@@ -422,6 +424,22 @@ items:
     href: coalescefunction.md
   - name: column_ifexists()
     href: columnifexists.md
+  - name: convert_angle()
+    href: convert-angle-function.md
+  - name: convert_energy()
+    href: convert-energy-function.md
+  - name: convert_force()
+    href: convert-force-function.md
+  - name: convert_length()
+    href: convert-length-function.md
+  - name: convert_mass()
+    href: convert-mass-function.md
+  - name: convert_speed()
+    href: convert-speed-function.md
+  - name: convert_temperature()
+    href: convert-temperature-function.md
+  - name: convert_volume()
+    href: convert-volume-function.md
   - name: cos()
     href: cosfunction.md
   - name: cot()
