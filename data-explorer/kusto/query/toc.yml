@@ -157,6 +157,8 @@ items:
     href: parseoperator.md
   - name: parse-where operator
     href: parsewhereoperator.md
+  - name: parse-kv operator
+    href: parse-kv-operator.md
   - name: partition operator
     href: partitionoperator.md
   - name: print operator
