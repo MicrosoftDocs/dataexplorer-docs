@@ -1,6 +1,6 @@
 ---
 title: Upgrade a free Azure Data Explorer cluster.
-description: This article you'll learn how to upgrade a free cluster to into your data using your start-for-free cluster.
+description: This article you'll learn how to upgrade a free cluster to into your data using your free cluster.
 ms.reviewer: gabil
 ms.topic: how-to
 ms.date: 06/02/2022
