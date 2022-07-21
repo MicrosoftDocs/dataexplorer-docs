@@ -25,7 +25,7 @@ Calculates the average (arithmetic mean) of *Expr* across the group.
 
 Returns the average value of *Expr* across the group.
 
-## Examples
+## Example
 
 This example returns the average number of damaged crops per state.
 

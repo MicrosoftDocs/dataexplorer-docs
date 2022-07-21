@@ -39,7 +39,7 @@ StormEvents
 | summarize LatestEvent=max(StartTime)
 ```
 
-**Result**
+**Results**
 
 | LatestEvent |
 |--|
