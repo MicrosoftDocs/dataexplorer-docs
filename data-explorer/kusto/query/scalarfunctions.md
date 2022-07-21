@@ -67,7 +67,6 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[unixtime_seconds_todatetime()](unixtime-seconds-todatetimefunction.md)|Converts unix-epoch seconds to UTC datetime.|
 |[weekofyear()](weekofyearfunction.md)|Returns an integer representing the week number.|
 
-
 ## Dynamic/array functions
 
 |Function Name     |Description                                          |
@@ -393,3 +392,16 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[hash_sha1()](sha1-hash-function.md)|Returns a SHA1 hash value for the input value.|
 |[hash_sha256()](sha256hashfunction.md)|Returns a SHA256 hash value for the input value.|
 |[hash_xxhash64()](hash-xxhash64-function.md)|Returns an XXHASH64 hash value for the input value.|
+
+## Units conversion functions
+
+|Function Name                                            | Description                                                            |
+|---------------------------------------------------------|------------------------------------------------------------------------|
+| [convert_angle()](convert-angle-function.md)             | Returns the input value converted from one angle unit to another       |
+| [convert_energy()](convert-energy-function.md)           | Returns the input value converted from one energy unit to another      |
+| [convert_force()](convert-force-function.md)             | Returns the input value converted from one force unit to another       |
+| [convert_length()](convert-length-function.md)           | Returns the input value converted from one length unit to another      |
+| [convert_mass()](convert-mass-function.md)               | Returns the input value converted from one mass unit to another        |
+| [convert_speed()](convert-speed-function.md)             | Returns the input value converted from one speed unit to another       |
+| [convert_temperature()](convert-temperature-function.md) | Returns the input value converted from one temperature unit to another |
+| [convert_volume()](convert-volume-function.md)           | Returns the input value converted from one volume unit to another      |
