@@ -91,6 +91,7 @@ The results table shown includes only the first 10 rows and first 3 columns.
 | MISSOURI   | 2007-01-13T03:00:00Z | 2007-01-13T08:30:00Z | ... |
 | TEXAS      | 2007-01-13T10:30:00Z | 2007-01-13T14:30:00Z | ... |
 | ARKANSAS   | 2007-01-14T03:00:00Z | 2007-01-14T03:00:00Z | ... |
+| ... | ... | ... | ... |
 
 **Example 3**
 
