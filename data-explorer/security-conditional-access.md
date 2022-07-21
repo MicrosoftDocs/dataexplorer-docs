@@ -61,7 +61,7 @@ Using this feature requires an Azure AD Premium license. To find the right licen
 
 1. Verify the policy by asking an assigned user to access the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). The user should be prompted for MFA.
 
-     :::image type="content" source="media/conditional-access/configure-test-policy.png" alt-text="Screenshot of the Web U I, showing the M F A prompt.":::
+     :::image type="content" source="media/conditional-access/configure-test-policy.png" alt-text="Screenshot of the M F A prompt.":::
 
 ## Next steps
 

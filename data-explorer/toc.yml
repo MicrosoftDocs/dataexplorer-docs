@@ -61,7 +61,7 @@ items:
     - name: Security baseline
       href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
     - name: Security controls by Azure Policy
-      href: ./security-controls-policy.md
+      href: security-controls-policy.md
   - name: Business continuity
     items:
     - name: Overview
@@ -77,8 +77,12 @@ items:
   - name: Explore the samples gallery
     href: web-ui-samples-gallery.md
     displayName: Azure Data Explorer web UI
-  - name: Create a start-for-free cluster
-    href: start-for-free-web-ui.md
+  - name: Explore with a free cluster
+    items:
+    - name: Create a free cluster
+      href: start-for-free-web-ui.md
+    - name: Upgrade a free cluster
+      href: start-for-free-upgrade.md
   - name: Create cluster and database
     items:
     - name: Azure CLI
@@ -632,7 +636,7 @@ items:
       href: kusto/functions-library/wilcoxon-test-fl.md
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions
-    href: ./policy-reference.md
+    href: policy-reference.md
 - name: Resources
   items:
   - name: Forums
