@@ -60,7 +60,7 @@ print str = make_string(75, 10, 117, 10, 115, 10, 116, 10, 111)
 
 
 ```kusto
-print str = make_string(range(48,57,1), range(65,90,1), range(97,122,1))
+print str = make_string(range(48,57), range(65,90), range(97,122))
 ```
 
 |str|

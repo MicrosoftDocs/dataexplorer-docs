@@ -68,7 +68,7 @@ KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net/"
 KUSTO_DATABASE = "<DatabaseName>"
 ```
 
-Now construct the connection string. This example uses device authentication to access the cluster. You can also use [Azure Active Directory application certificate](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [Azure Active Directory application key](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), and [Azure Active Directory  user and password](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
+Now construct the connection string. The following example uses device authentication to access the cluster. You can also use [managed identity](managed-identities-overview.md) authentication, [Azure Active Directory application certificate](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [Azure Active Directory application key](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), and [Azure Active Directory user and password](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
 
 You create the destination table and mapping in a later step.
 
@@ -82,6 +82,16 @@ KCSB_DATA = KustoConnectionStringBuilder.with_aad_device_authentication(
 DESTINATION_TABLE = "StormEvents"
 DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
 ```
+
+> [!NOTE]
+> Where possible, we recommend using managed identity authentication. It's the most secure authentication method since it doesn't require you to specify credentials or secrets in your code. For more information about where you can use managed identities, see [Azure services that can use managed identities to access other services](/azure/active-directory/managed-identities-azure-resources/managed-identities-status)
+> 
+> To use managed identity authentication in your code, create the connection string without specifying the authenticaion method, as follows:
+> 
+> ```python
+> KCSB_INGEST = KustoConnectionStringBuilder()
+> KCSB_DATA = KustoConnectionStringBuilder()
+> ```
 
 ## Set source file information
 
