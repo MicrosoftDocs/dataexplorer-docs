@@ -64,7 +64,7 @@ const kustoIngestUri = `https://ingest-${cluster}.${region}.kusto.windows.net`;
 const kustoDatabase  = "Weather";
 ```
 
-Now construct the connection string. This example uses device authentication to access the cluster (Make sure to look at the console output to authenticate). You can also use Azure Active Directory application certificate, application key, and user and password.
+Now construct the connection string. This example uses device authentication to access the cluster. Check the console output to complete the authentication. You can also use an Azure Active Directory application certificate, application key, and user and password.
 
 You create the destination table and mapping in a later step.
 
