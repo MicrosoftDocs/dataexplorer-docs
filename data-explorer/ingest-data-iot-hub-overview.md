@@ -20,7 +20,6 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
     > [!NOTE]
     > IoT Hub doesn't support the .raw format.
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
-  * The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it. The ingestion uncompressed size limit per file is 4 GB.
 
 ## Ingestion properties
 
