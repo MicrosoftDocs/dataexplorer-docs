@@ -1,5 +1,5 @@
 ---
-title: Change the ingestion batching policy for a table in Azure Data Explorer using the table batching policy wizard.
+title: Change the ingestion batching policy for a table in Azure Data Explorer using the table batching policy wizard
 description: In this article, you learn how to change a table's ingestion batching policy using the batching policy wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to

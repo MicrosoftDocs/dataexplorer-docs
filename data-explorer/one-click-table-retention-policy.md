@@ -1,5 +1,5 @@
 ---
-title: Change the retention policy for a table in Azure Data Explorer using the table retention policy wizard.
+title: Change the retention policy for a table in Azure Data Explorer using the table retention policy wizard
 description: In this article, you learn how to change a table's retention policy using the retention policy wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to

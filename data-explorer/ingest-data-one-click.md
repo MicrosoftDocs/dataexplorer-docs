@@ -1,5 +1,5 @@
 ---
-title: Ingest data into Azure Data Explorer using the ingestion wizard.
+title: Ingest data into Azure Data Explorer using the ingestion wizard
 description: Overview of ingesting (loading) data into Azure Data Explorer simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
