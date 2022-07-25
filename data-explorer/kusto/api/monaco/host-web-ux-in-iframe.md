@@ -1,17 +1,17 @@
 ---
-title: Embed Web UI in an **iframe** - Azure Data Explorer
-description: This article describes Embed Web UI in an **iframe** in Azure Data Explorer.
+title: Embed the Azure Data Explorer web UI in an **iframe**.
+description: This article describes how to embed the Azure Data Explorer web UI in an **iframe**.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 07/13/2022
 ---
-# Embed Web UI in an iframe
+# Embed the Azure Data Explorer web UI in an iframe
 
-The Azure Data Explorer Web UI can be embedded in an iframe and hosted in third-party websites.
- 
-:::image type="content" source="../images/host-web-ux-in-iframe/web-ux.png" alt-text="Azure Data Explorer Web UI.":::
+The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites.
 
-Embedding the Azure Data Explorer Web UX in your website enables your users to:
+:::image type="content" source="../images/host-web-ux-in-iframe/web-ux.png" alt-text="Screenshot of the Azure Data Explorer web U I.":::
+
+Embedding the Azure Data Explorer web UI in your website enables your users to:
 
 - Edit queries (includes all language features such as colorization and intellisense)
 - Explore table schemas visually
@@ -24,13 +24,13 @@ Embedding the Azure Data Explorer Web UX in your website enables your users to:
 
 All functionality is tested for accessibility and supports dark and light on-screen themes.
 
-## Use Monaco-Kusto or embed the Web UI?
+## Use Monaco-Kusto or embed the Azure Data Explorer web UI?
 
-Monaco-Kusto offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition. It requires you to build a solution for authentication, query execution, result display, and schema exploration, but offers you  full flexibility to fashion the user experience that fits your needs.
+Monaco-Kusto offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition. It requires you to build a solution for authentication, query execution, result display, and schema exploration, but offers you full flexibility to fashion the user experience that fits your needs.
 
-Embedding the Azure Data Explorer Web UI offers you extensive functionality with little effort, but contains limited flexibility for the user experience. There's a fixed set of query parameters that enable limited control over the system's look and behavior.
+Embedding the Azure Data Explorer web UI offers you extensive functionality with little effort, but contains limited flexibility for the user experience. There's a fixed set of query parameters that enable limited control over the system's look and behavior.
 
-## How to embed the Web UI in an iframe
+## How to embed the Azure Data Explorer web UI in an iframe
 
 ### Host the website in an iframe
 
@@ -42,13 +42,13 @@ Add the following code to your website:
 ></iframe>
 ```
 
-The `ibizaPortal` query parameter tells the Azure Data Explorer Web UI *not* to redirect to get an authentication token. This action is necessary, since the hosting website is responsible for providing an authentication token to the embedded iframe.
+The `ibizaPortal` query parameter tells the Azure Data Explorer web UI *not* to redirect to get an authentication token. This action is necessary, since the hosting website is responsible for providing an authentication token to the embedded iframe.
 
 Replace `<cluster>` with the hostname of the cluster you want to load into the connection pane, such as `help.kusto.windows.net`. By default, iframe-embedded mode doesn't provide a way to add clusters from the UI, since the assumption is that the hosting website is aware of the required cluster.
 
 ### Handle authentication
 
-1. When set to 'iframe mode' (`ibizaPortal=true`), The Azure Data Explorer Web UI won't try to redirect for authentication. The Web UI will use the message posting mechanism that browsers use, to request and receive a token. During page loading, the following message will be posted to the parent window:
+1. When set to 'iframe mode' (`ibizaPortal=true`), the Azure Data Explorer web UI won't try to redirect for authentication. The message posting mechanism that browsers use, is used to request and receive a token. During page loading, the following message will be posted to the parent window:
 
    ```javascript
    window.parent.postMessage(
@@ -90,13 +90,13 @@ A feature flag can be used in the url as a query parameter. If the hosting appli
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------- |
 | ShowShareMenu           | Show the share menu item                                                                                           | true          |
 | ShowConnectionButtons   | Show the **add connection** button to add a new cluster                                                            | true          |
-| ShowOpenNewWindowButton | Show the **open in web** UI button, that opens a new browser window and point to https://dataexplorer.azure.com with the right cluster and database in scope           | false         |
+| ShowOpenNewWindowButton | Show the **open in web** UI button that opens a new browser window and point to https://dataexplorer.azure.com with the right cluster and database in scope           | false         |
 | ShowFileMenu            | Show the file menu (**download**, **tab**, **content**, and so on)                                                 | true          |
 | ShowToS                 | Show **link to the terms of service for Azure Data Explorer** from the settings dialog                             | true          |
 | ShowPersona             | Show the user name from the settings menu, in the top-right corner                                                 | true          |
 | IFrameAuth              | If true, the web explorer will expect the iframe to handle authentication and provide a token via a message. This process will always be true for iframe scenarios                                                                                                                                      | false         |
 | PersistAfterEachRun     | Usually the web explorer will persist in the unload event. When hosting in iframes, it doesn't always fire. This flag will then trigger **persisting local state** after each query run. As a result, any data loss that occurs, will only affect text that had never been run, thus limiting its impact          | false         |
-| ShowSmoothIngestion     | If true, show the 1-click ingestion experience when right-clicking on a database                                   | true          |
+| ShowSmoothIngestion     | If true, show the one-click ingestion experience when right-clicking on a database                                   | true          |
 | RefreshConnection       | If true, always refreshes the schema when loading the page and never depends on local storage                      | false         |
 | ShowPageHeader          | If true, shows the page header that includes the Azure Data Explorer title and settings                            | true          |
 | HideConnectionPane      | If true, the left connection pane doesn't display                                                                  | false         |
