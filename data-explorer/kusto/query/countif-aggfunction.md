@@ -56,6 +56,8 @@ The results table shown includes only the first 10 rows.
 
 ## Example 2
 
+This example shows the number of names with more than 4 letters.
+
 ```kusto
 let T = datatable(name:string, day_of_birth:long)
 [

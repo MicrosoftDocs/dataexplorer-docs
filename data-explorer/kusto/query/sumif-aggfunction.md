@@ -59,6 +59,8 @@ The results table shown includes only the first 10 rows.
 
 ## Example 2
 
+This example shows the sum of the birth dates for all names that have more than 4 letters.
+
 ```kusto
 let T = datatable(name:string, day_of_birth:long)
 [

@@ -26,7 +26,7 @@ Calculates the [average](avg-aggfunction.md) of *Expr* across the group.
 
 Returns the average value of *Expr* across the group where *Predicate* evaluates to `true`.
 
-## Examples
+## Example
 
 This example calculates the average damage by state in cases where there was any damage.
 
@@ -37,7 +37,7 @@ StormEvents
 | summarize Averagedamage=tolong(avg( DamageCrops)),AverageWhenDamage=tolong(avgif(DamageCrops,DamageCrops >0)) by State
 ```
 
-** Results**
+**Results**
 
 The results table shown includes only the first 10 rows.
 

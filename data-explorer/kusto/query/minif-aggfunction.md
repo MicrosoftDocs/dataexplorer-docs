@@ -30,7 +30,7 @@ The minimum value of *Expr* across the group for which *Predicate* evaluates to 
 
 ## Example
 
-Shows the minimum damage for events with casualties (Except 0)
+This example shows the minimum damage for events with casualties (Except 0)
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOsQ6CUAxFd7+iIwQGfwAXcHAwMWFwrlKlCa+Y16Ji/Hif1NXp3tvenrS1MYbtncR09QZ6GkkHDQa8UuVSx/GmhftD8hRtLqEhtF4rl4Yjna3wsJNuiQmnUwgY+UWwZ3HCka2vUSccjEmrwMKXzFdl5gDYrHPA9MZv/s05nGZoDY0gcR89xb/MVF+uWWU0mYYh+1PMPyFcEcH8AAAA)**\]**
 
@@ -42,6 +42,8 @@ StormEvents
 ```
 
 **Results**
+
+The results table shown includes only the first 10 rows.
 
 | State          | MinDamageWithCasualties |
 | -------------- | ----------------------- |
@@ -55,28 +57,4 @@ StormEvents
 | WISCONSIN      | 10000                   |
 | NEW YORK       | 25000                   |
 | NORTH CAROLINA | 15000                   |
-| OKLAHOMA       | 5000                    |
-| PENNSYLVANIA   | 400000                  |
-| COLORADO       | 1000                    |
-| VIRGINIA       | 15000                   |
-| MICHIGAN       | 25000                   |
-| KENTUCKY       | 1000                    |
-| ALABAMA        | 2000000                 |
-| OHIO           | 1300000                 |
-| INDIANA        | 10000                   |
-| NEW JERSEY     | 4000000                 |
-| FLORIDA        | 130000                  |
-| ARKANSAS       | 150000                  |
-| SOUTH CAROLINA | 500000                  |
-| NORTH DAKOTA   | 15000                   |
-| CALIFORNIA     | 80000                   |
-| MAINE          | 25000000                |
-| WEST VIRGINIA  | 30000                   |
-| MARYLAND       | 5000                    |
-| NEW MEXICO     | 16500000                |
-| LOUISIANA      | 10000                   |
-| NEW HAMPSHIRE  | 30000                   |
-| UTAH           | 200000                  |
-| ARIZONA        | 5000                    |
-| WASHINGTON     | 12000                   |
-| PUERTO RICO    | 100000                  |
+| ... | ... |
