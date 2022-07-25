@@ -59,7 +59,6 @@ The results table shown includes only the first 10 rows.
 | WASHINGTON     | 7                    |
 | MICHIGAN       | 7                    |
 | MISSOURI       | 7                    |
-| PENNSYLVANIA   | 6                    |
 | ... | ... |
 
 ## Estimation accuracy
