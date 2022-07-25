@@ -1,9 +1,9 @@
 ---
-title: Use the one-click table batching policy wizard to change the ingestion batching policy for a table in Azure Data Explorer.
-description: In this article, you learn how to change a table's ingestion batching policy using the one-click experience.
+title: Change the ingestion batching policy for a table in Azure Data Explorer using the table batching policy wizard
+description: In this article, you learn how to change a table's ingestion batching policy using the batching policy wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 06/26/2022
+ms.date: 07/13/2022
 ---
 # Create a table's ingestion batching policy with one-click
 
@@ -33,7 +33,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus, or add a cluster connection.
 
-1. Under **Table**, select a table from the drop-down menus. 
+1. Under **Table**, select a table from the drop-down menus.
 
 1. Under **Inherit values from database**, toggle **On** to apply the batching policy values from the database to the table. To create or update a separate policy for the table, toggle to **Off**.
 
