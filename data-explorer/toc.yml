@@ -404,9 +404,9 @@ items:
         href: kusto/api/connection-strings/sql-authentication-methods.md
       - name: Generate SAS token
         href: kusto/api/connection-strings/generate-sas-token.md
-    - name: Integrate the web UI query editor
+    - name: Integrate Kusto query editor in your apps
       items:
-      - name: Embed web UI in an iframe
+      - name: Embed query editor as an iframe
         displayName: monaco
         href: kusto/api/monaco/host-web-ux-in-iframe.md
       - name: Integrate custom query editor
