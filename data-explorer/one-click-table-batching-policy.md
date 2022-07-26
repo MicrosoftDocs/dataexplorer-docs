@@ -45,7 +45,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
     | Time (seconds) |  *300* | The time limit after which a batch is sealed. |
     | Size (MB) |  *1024* | The size limit after which a batch is sealed.  |
 
-    For more information, see [ingestion batching policy batch sealing](/azure/data-explorer/kusto/management/batchingpolicy#sealing-a-batch).
+    For more information, see [ingestion batching policy batch sealing](./kusto/management/batchingpolicy.md#sealing-a-batch).
 
 1. Select **Update**.
 
