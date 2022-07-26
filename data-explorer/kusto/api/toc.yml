@@ -74,9 +74,9 @@ items:
     - name: HowTo Data Ingestion with REST API
       displayName: Kusto.Ingest
       href: netfx/kusto-ingest-client-rest.md
-- name: Microsoft.Kusto Bicep and Azure Resource Template resource types
+- name: Bicep and ARM template resource types
   href: /azure/templates/microsoft.kusto/allversions
-- name: Microsoft.Kusto resource provider operations
+- name: Resource provider operations
   href: /azure/role-based-access-control/resource-provider-operations#microsoftkusto
 - name: Python SDK
   items:
