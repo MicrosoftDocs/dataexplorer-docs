@@ -150,7 +150,7 @@ For this article, you use static routing, where you specify the table name, data
     >
     > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
     > * Only events enqueued after you create the data connection are ingested.
-    > * The Mapping name is case sensitive. Any mismatch might result in no ingested records.
+    > * The mapping name is case-sensitive. A mismatch in mapping name will result in ingestion failure.
 
 1. Select **Create**.
 
