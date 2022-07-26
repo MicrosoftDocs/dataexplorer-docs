@@ -6,11 +6,11 @@ ms.topic: how-to
 ms.date: 07/13/2022
 ---
 
-# What is one-click ingestion?
+# What is the ingestion wizard?
 
-One-click ingestion makes the data ingestion process easy, fast, and intuitive. One-click ingestion helps you ramp-up quickly to start ingesting data, creating database tables, mapping structures. Select data from different kinds of sources in different data formats, either as a one-time or continuous ingestion process.
+The ingestion wizard makes the data ingestion process easy, fast, and intuitive. Using the ingestion wizard helps you ramp-up quickly to start ingesting data, creating database tables, mapping structures. Select data from different kinds of sources in different data formats, either as a one-time or continuous ingestion process.
 
-The following features make one-click ingestion so useful:
+The following features make the ingestion wizard so useful:
 
 * Intuitive experience guided by the ingestion wizard
 * Ingest data in a matter of minutes
@@ -20,7 +20,7 @@ The following features make one-click ingestion so useful:
 * Table mapping and schema are suggested to you and easy to change
 * Continue ingestion easily and quickly from a container with [Event Grid](one-click-ingestion-new-table.md#create-continuous-ingestion)
 
-One-click ingestion is useful when ingesting data for the first time, or when your data's schema is unfamiliar to you.
+The ingestion wizard is useful when ingesting data for the first time, or when your data's schema is unfamiliar to you.
 
 ## Prerequisites
 
@@ -31,9 +31,9 @@ One-click ingestion is useful when ingesting data for the first time, or when yo
 > [!NOTE]
 > To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
 
-## Access the one-click wizard
+## Access the ingestion wizard
 
-The one-click ingestion wizard guides you through the one-click ingestion process.
+The ingestion wizard guides you through the ingestion process.
 
 * To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), use one of the following methods:
   * Select **Data** in the left pane. Within the **Data Management** page, select a type of ingestion and select **Ingest**.
@@ -52,7 +52,7 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 
     :::image type="content" source="media/ingest-data-one-click/ingest-from-portal.png" alt-text="Access the one click ingestion wizard from Azure portal.":::
 
-## One-click ingestion wizard
+## Ingestion wizard
 
 > [!NOTE]
 > This section describes the wizard in general. The options you select depend on what data format you are ingesting, what kind of data source you are ingesting from, and whether you are ingesting into a new or existing table.
@@ -83,7 +83,7 @@ In the **Schema** tab, do the following actions:
 
 #### File formats
 
-One-click ingestion supports ingesting from source data in all [data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
+The ingestion wizard supports ingesting from source data in all [data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
 
 ### Editor window
 
