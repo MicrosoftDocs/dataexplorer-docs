@@ -3,7 +3,7 @@ title: Start for free using Azure Data Explorer.
 description: This article shows you how to get started with a free Azure Data Explorer cluster.
 ms.reviewer: avnera
 ms.topic: how-to
-ms.date: 07/03/2022
+ms.date: 07/26/2022
 ---
 
 # What is a free Azure Data Explorer cluster?
@@ -41,7 +41,7 @@ The free cluster is a subset of the full Azure Data Explorer cluster that provid
 | Dashboards (PowerBI, Azure Data Explorer web UI, Grafana) | &check; | &check; |
 | Azure Data Studio notebooks | &check; | &check; |
 | SDKs (all languages) | &check; | &check; |
-| Timeseries and ML functions | &check; | &check; |
+| Time series and Machine Learning functions | &check; | &check; |
 | Geospatial functions | &check; | &check; |
 | Soft delete | &check; | &check; |
 | Microsoft Power Automate and Azure Logic Apps connectors | &check; | &check; |
