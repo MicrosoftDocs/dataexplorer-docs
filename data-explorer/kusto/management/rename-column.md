@@ -29,7 +29,7 @@ The command can be used to swap the names of two columns (each is renamed as
 the other's name.)
 
 >[!NOTE]
->`rename columns` supports only swapping exactly two columns.
+>`rename columns` only supports swapping exactly two columns.
 
 ### Example
 
