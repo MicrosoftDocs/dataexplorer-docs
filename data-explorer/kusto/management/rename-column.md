@@ -10,7 +10,7 @@ ms.date: 02/11/2020
 Changes the name of an existing table column.
 To change the name of multiple columns, see [below](#rename-columns).
 
-**Syntax**
+### Syntax
 
 `.rename` `column` [*DatabaseName*`.`]*TableName*`.`*ColumnExistingName* `to` *ColumnNewName*
 
@@ -21,9 +21,18 @@ are the names of the respective entities and follow the [identifier naming rules
 
 Changes the names of multiple existing columns in the same table.
 
-**Syntax**
+### Syntax
 
 `.rename` `columns` *Col1* `=` [*DatabaseName*`.`[*TableName*`.`*Col2*]] `,` ...
 
 The command can be used to swap the names of two columns (each is renamed as
 the other's name.)
+
+>[!NOTE]
+>`rename columns` only supports swapping exactly two columns.
+
+### Example
+
+```kusto
+.rename columns TimeGenerated_archive = myDB.sampleData.TimeGenerated, TimeGenerated = myDB.sampleData.TimeGenerated_archive
+```
