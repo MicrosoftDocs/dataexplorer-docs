@@ -11,7 +11,9 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-Every Kusto query operates in the context of the current cluster, and the default database.
+Queries execute with one specific database being "in context". This database is used by default
+to check permissions, and every entity reference in the query that has no explicit cluster or database qualification
+is resolved against this default database.
 
 * In [Kusto Explorer](../tools/kusto-explorer.md), the default database is the one selected in the [Connections panel](../tools/kusto-explorer.md#connections-panel), and the current cluster is the connection containing that database.
 * When using the [client library](../api/netfx/about-kusto-data.md), the current cluster and the default database are specified by the `Data Source` and `Initial Catalog` properties of the [connection strings](../api/connection-strings/kusto.md), respectively.
@@ -119,8 +121,12 @@ database("OtherDb").MyView("exception") | extend CalCol=database("OtherDb").MyCa
 
 Tabular functions or views can be referenced across clusters. The following limitations apply:
 
-* Remote function must return tabular schema. Scalar functions can only be accessed in the same cluster.
-* Remote function can accept only scalar parameters. Functions that get one or more table arguments can only be accessed in the same cluster.
+* Remote functions must return tabular schema. Scalar functions can only be accessed in the same cluster.
+* Remote functions can accept only scalar parameters. Functions that get one or more table arguments can only be accessed in the same cluster.
+* Remote functions' result schema must be fixed (known in advance without executing parts of the query).
+  This precludes the use of query constructs such as the `pivot` plugin. (Note that some plugins,
+  such as the `bag_unpack` plugin, supports a way to indicate the result schema statically,
+  and in this form it *can* be used in cross-cluster function calls.)
 * For performance reasons, the schema of remote entities is cached by the calling cluster after the initial call. Therefore, changes made to the remote entity may result in a mismatch with the cached schema information, potentially leading to query failures. For more information, see [Cross-cluster queries and schema changes](../concepts/cross-cluster-and-schema-changes.md).
 
 The following cross-cluster call is valid.
