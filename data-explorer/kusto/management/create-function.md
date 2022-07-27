@@ -28,7 +28,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 |view|bool|Designates this function as a stored view.
 |skipvalidation|bool|When set to `true`, it will run validation logic on the function and fail if function isn't valid. (Default: `true`)
 |FunctionName(ParamName:ParamType)|String (String:datatype)|Name of the function, the parameter name and datatype.
-|FunctionBody|   | An expression that yields a user defined function.
+|FunctionBody|   | A user defined function expression.
 
 **Output**
 
@@ -49,7 +49,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 > * Not all data types are supported in `let` statements. Supported types are: boolean, string, long, datetime, timespan, double, and dynamic.
 > * Use `skipvalidation` to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.
 
-**Examples**
+**Example 1**
 
 ```kusto
 .create function 
@@ -60,6 +60,8 @@ MyFunction1()  {StormEvents | limit 100}
 |Name|Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
 |MyFunction1|()|{StormEvents &#124; limit 100}|Demo|Simple demo function|
+
+**Example 2**
 
 ```kusto
 .create function
