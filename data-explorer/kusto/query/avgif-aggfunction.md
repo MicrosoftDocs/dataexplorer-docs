@@ -7,7 +7,7 @@ ms.date: 07/10/2022
 ---
 # avgif() (aggregation function)
 
-Calculates the [average](avg-aggfunction.md) of *Expr* across the group.
+Calculates the [average](avg-aggfunction.md) of *Expr* across the group for which *Predicate* evaluates to `true`.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
