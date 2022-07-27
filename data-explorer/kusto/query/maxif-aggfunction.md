@@ -7,7 +7,7 @@ ms.date: 07/10/2022
 ---
 # maxif() (aggregation function)
 
-Calculates the maximum value across the group.
+Calculates the maximum value across the group for which *Predicate* evaluates to `true`.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 

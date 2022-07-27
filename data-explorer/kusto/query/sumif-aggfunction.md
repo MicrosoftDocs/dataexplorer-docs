@@ -7,7 +7,7 @@ ms.date: 07/12/2022
 ---
 # sumif() (aggregation function)
 
-Calculates the sum of *Expr*.
+Calculates the sum of *Expr* in records for which *Predicate* evaluates to `true`.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 

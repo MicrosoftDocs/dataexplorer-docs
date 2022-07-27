@@ -7,7 +7,7 @@ ms.date: 07/10/2022
 ---
 # dcountif() (aggregation function)
 
-Calculates an estimate of the number of distinct values of *Expr* of rows.
+Calculates an estimate of the number of distinct values of *Expr* of rows for which *Predicate* evaluates to `true`.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
