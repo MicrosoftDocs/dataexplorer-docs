@@ -1,13 +1,13 @@
 ---
-title: Use the one-click table retention policy wizard to change the retention policy for a table in Azure Data Explorer.
-description: In this article, you learn how to change a table's retention policy using the one-click experience.
+title: Change the retention policy for a table in Azure Data Explorer using the table retention policy wizard
+description: In this article, you learn how to change a table's retention policy using the retention policy wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 06/22/2022
+ms.date: 07/13/2022
 ---
-# Create a table's retention and cache policies with one-click 
+# Create a table's retention and cache policies with one-click
 
-The [retention policy](kusto/management/retentionpolicy.md) controls the mechanism that automatically removes data from tables. It's used to remove data whose relevance is age-based. 
+The [retention policy](kusto/management/retentionpolicy.md) controls the mechanism that automatically removes data from tables. It's used to remove data whose relevance is age-based.
 
 The [cache policy](kusto/management/cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority. The cache policy defines how much data will be available in a local SSD or RAM. Data is queried faster when it's in a local SSD, particularly for queries that scan large amounts of data. However, a local SSD can cost much more.
 
@@ -34,7 +34,7 @@ The **Table retention policy** window opens with the **Policy update** tab selec
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus, or [add a cluster connection](create-cluster-database-portal.md).
 
-1. Under **Table**, select a table from the drop-down menus.  
+1. Under **Table**, select a table from the drop-down menus.
 
 1. Under **Retention policy**, toggle **On** to apply the retention policy values from the database to the table. To create or update a separate policy for the table, toggle to **Off**.
 
@@ -43,7 +43,7 @@ The **Table retention policy** window opens with the **Policy update** tab selec
     |**Setting** | **Default value** | **Field description**
     |---|---|---|
     | Recoverability | *Yes*  | Enable or disable data recoverability. |
-    | Retention period |  *365* | The number of days that data is stored in long-term storage before it's deleted. The period is measured from the time data is ingested.  |
+    | Retention period |  *365* | The number of days that data is stored in long-term storage before it's deleted. The period is measured from the time that the data is ingested.  |
 
 1. Under **Cache policy**, toggle **On** to apply the caching policy values from the database to the table. To create or update a separate policy for the table, toggle to **Off**.
 
