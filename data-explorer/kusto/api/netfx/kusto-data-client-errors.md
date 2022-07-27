@@ -19,7 +19,7 @@ Exceptions raised from `Kusto.Data` using the `Microsoft.Azure.Kusto.Data` NuGet
 
 ## Kusto.Data exceptions categories
 
- Based on the root cause, exceptions may inherit one of the following error types:
+Based on the root cause, exceptions may inherit one of the following error types:
 
 * `KustoRequestException`: Indicates a problem in the request itself, or in the environment that generated it. This is equivalent to HTTP status codes 4xx and isn't a service fault. For a list of errors, see [Request Exceptions](#request-exceptions).
 
