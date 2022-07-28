@@ -54,7 +54,7 @@ require quoting when they are referenced directly by a query:
 |-------------------|----------------------------------|
 | `entity`          |Entity names (`entity`) that do not include special characters or map to some language keyword require no quoting|
 |`['entity-name']`  |Entity names that include special characters (here: `-`) must be quoted using `['` and `']` or using `["` and `"]`|
-|`["where"]`        |Entity names that are language keywords must be quoted quoted using `['` and `']` or using `["` and `"]`|
+|`["where"]`        |Entity names that are language keywords must be quoted using `['` and `']` or using `["` and `"]`|
 
 ## Naming your entities to avoid collisions with Kusto language keywords
 
