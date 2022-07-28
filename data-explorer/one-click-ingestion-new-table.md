@@ -58,7 +58,7 @@ For information about ingesting data into an existing table in Azure Data Explor
 Under **Source type**, do the following steps:
 
   1. Select **From blob container** (blob container, ADLS Gen2 container). You can ingest up to 5000 blobs from a single container.
-  1. In the **Link to storage** field, add the [blob URI with SAS token or Account key](kusto/api/connection-strings/generate-sas-token.md) of the container, and optionally enter the sample size. To ingest from a folder within this container, see [Ingest from folder in a container](#ingest-from-folder-in-a-container). 
+  1. In the **Link to storage** field, add the [blob URI with SAS token or Account key](kusto/api/connection-strings/generate-sas-token.md) of the container, and optionally enter the sample size.
      A list is populated with files from the container.
 
   > [!NOTE]
@@ -69,27 +69,23 @@ Under **Source type**, do the following steps:
    > [!TIP]
    > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
 
-### Ingest from folder in a container
+### Ingest from a container
 
 To ingest from a specific folder within a container, [generate a string of the following format](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates):
 
 *container_path*`/`*folder_path*`;`*access_key_1*
 
-You'll use this string instead of the SAS URL in [select an ingestion type](#select-an-ingestion-type).
+Alternatively, you'll use a string instead of the SAS URL in [select an ingestion type](#select-an-ingestion-type).
 
 1. Navigate to the storage account, and select **Storage Explorer > Select Blob Containers**
 
-    :::image type="content" source="media/one-click-ingestion-new-table/blob-containers.png" alt-text="Screenshot access blob containers in Azure Storage account.":::
+    :::image type="content" source="media/one-click-ingestion-new-table/storage-browser-blob-containers.png" alt-text="Screenshot access blob containers in Azure Storage account.":::
 
 1. Browse to the selected folder, and select **Copy URL**. Paste this value into a temporary file and add `;` to the end of this string.
 
-    :::image type="content" source="media/one-click-ingestion-new-table/copy-url.png" alt-text="Screenshot of copy URL in folder in blob container - Azure Storage account.":::
+    :::image type="content" source="media/one-click-ingestion-new-table/storage-folder-copy-url.png" alt-text="Screenshot of copy URL in folder in blob container - Azure Storage account.":::
 
-1. On the left menu under **Settings**, select **Access keys**.
-
-    :::image type="content" source="media/one-click-ingestion-new-table/copy-key-1.png" alt-text="screenshot of Access keys storage account copy Key string.":::
-
-1. Under **key 1**, copy the **Key** string. Paste this value at the end of your string from step 2.
+1. Enter this url into the **Folder path** field to select this folder.
 
 ### Storage subscription error
 
