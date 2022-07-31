@@ -27,11 +27,11 @@ Based on the root cause, exceptions may inherit one of the following error types
 
 * `KustoClientException`: Indicates a client-side problem in sending the request to the service. Specifically, this exception informs the caller that the service itself didn't receive the request. For a list client authentication exceptions, see [client exceptions](#client-exceptions).
 
+> [!IMPORTANT]
+> All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the description.
 ## General exceptions
 
-All the exceptions in this category have a **Failure code** of 0 and no **Failure subcode** unless noted in the description.
-
-| Exception name | Reason 
+| Exception name | Reason |
 |--|--|
 | `EntityNameIsNotValidException` | Indicates an entity name isn't valid. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_EntityNameIsNotValid </br> **Permanance**: True|
 | `KustoServicePartialQueryFailureException` | A query execution started successfully but failed prior to completion. |
@@ -41,84 +41,84 @@ All the exceptions in this category have a **Failure code** of 0 and no **Failur
 
 Client exceptions contain the following exception categories:
 
-| Exception name | Reason | Failure code | Failure subcode | Permanence |
-|--|--|--|--|--|
-| `CslInvalidQueryException` | Query failure due to the query itself. For a list of errors, see [Client query exceptions](#client-query-exceptions). |  |  |  |
-| `KustoClientAuthenticationException` | Client-side authentication flow failure. For a list of errors, see [Authentication exceptions](#authentication-exceptions). | 0 |  | False |
-| `KustoClientInvalidConnectionStringException` | Kusto Connection String Builder is initialized with conflicting, or insufficient properties. | 0 |  | False |
-| `KustoClientNameResolutionFailureException` | A Kusto client failed to resolve the service name. | 0 |  | False |
-| `KustoClientNotSupportedException` | A feature isn't supported by Kusto .NET Core client. | 0 |  | False |
-| `KustoClientPrincipalIdentityMustBeNullException` | A Kusto client is asked to transmit a `ClientRequestProperties` object with non-null PrincipalIdentity. | 0 |  | False |
-| `KustoClientTemporaryStorageRetrievalException` | Retrieving temporary storage failed. | 0 |  | False |
-| `KustoClientTimeoutAwaitingPendingOperationException` | Indicates a time-out waiting for the completion of a pending operation. | 0 |  | False |
-| `KustoClientTimeoutException` | A client is unable to send or complete a request due to a client-side timeout. | 0 |  | False |
+| Exception name | Reason |
+|--|--|
+| `CslInvalidQueryException` | Query failure due to the query itself. For a list of errors, see [Client query exceptions](#client-query-exceptions). |
+| `KustoClientAuthenticationException` | Client-side authentication flow failure. For a list of errors, see [Authentication exceptions](#authentication-exceptions). |
+| `KustoClientInvalidConnectionStringException` | Kusto Connection String Builder is initialized with conflicting, or insufficient properties. |
+| `KustoClientNameResolutionFailureException` | A Kusto client failed to resolve the service name. |
+| `KustoClientNotSupportedException` | A feature isn't supported by Kusto .NET Core client. |
+| `KustoClientPrincipalIdentityMustBeNullException` | A Kusto client is asked to transmit a `ClientRequestProperties` object with non-null PrincipalIdentity. |
+| `KustoClientTemporaryStorageRetrievalException` | Retrieving temporary storage failed. |
+| `KustoClientTimeoutAwaitingPendingOperationException` | Indicates a time-out waiting for the completion of a pending operation. |
+| `KustoClientTimeoutException` | A client is unable to send or complete a request due to a client-side timeout. |
 
 ### Client query exceptions
 
-| Exception name | Reason | Failure code | Failure subcode | Permanence |
-|--|--|--|--|--|
-| `CslBinaryOperationHasIncompatibleTypesException` | A binary operator combined two expressions with incompatible types. | 0 |  | False |
-| `CslExpectingBooleanLambdaException` | The parser is expecting a boolean lambda expression. | 0 |  | False |
-| `CslExpectingConstantExpressionException` | Indicates a failure with an expression that should represent a constant. | 0 |  | False |
-| `CslExpectingConstantNodeType` | Translating a query was aborted because the expression node type doesn't yield a constant value. | 0 |  | False |
-| `CslExpectingScalarExpressionException` | Indicates a failure because the parser is expecting a scalar expression. | 0 |  | False |
-| `CslExpectingScalarProjectionLambdaExpressionException` | Indicates a failure when the expression is expected to be a lambda expression performing scalar projection. | 0 |  | False |
-| `CslExpectingTableExpressionException` | Indicates a failure when the parser is expecting a table expression. | 0 |  | False |
-| `CslExpressionHasUnsupportedNodeTypeException` | A `System.Linq.Expressions.Expression` has an unsupported node type. | 0 |  | False |
-| `CslInternalQueryTranslationErrorException` | Translating a query was aborted due to an internal failure. | 0 |  | False |
-| `CslNotSupportedException` | Translating a query was aborted because it includes a method for which there's no support. | 0 |  | False |
-| `CslUnsupportedMethodArityInExpressionException` | Translating a query was aborted because the method arity isn't supported. | 0 |  | False |
-| `CslUnsupportedTypeInNewExpressionException` | Translating a query was aborted because the type argument to operator new isn't supported. | 0 |  | False |
+| Exception name | Reason |
+|--|--|
+| `CslBinaryOperationHasIncompatibleTypesException` | A binary operator combined two expressions with incompatible types. |
+| `CslExpectingBooleanLambdaException` | The parser is expecting a boolean lambda expression. |
+| `CslExpectingConstantExpressionException` | Indicates a failure with an expression that should represent a constant. |
+| `CslExpectingConstantNodeType` | Translating a query was aborted because the expression node type doesn't yield a constant value. |
+| `CslExpectingScalarExpressionException` | Indicates a failure because the parser is expecting a scalar expression. ||
+| `CslExpectingScalarProjectionLambdaExpressionException` | Indicates a failure when the expression is expected to be a lambda expression performing scalar projection. |
+| `CslExpectingTableExpressionException` | Indicates a failure when the parser is expecting a table expression. |
+| `CslExpressionHasUnsupportedNodeTypeException` | A `System.Linq.Expressions.Expression` has an unsupported node type. |
+| `CslInternalQueryTranslationErrorException` | Translating a query was aborted due to an internal failure. |
+| `CslNotSupportedException` | Translating a query was aborted because it includes a method for which there's no support. |
+| `CslUnsupportedMethodArityInExpressionException` | Translating a query was aborted because the method arity isn't supported. |
+| `CslUnsupportedTypeInNewExpressionException` | Translating a query was aborted because the type argument to operator new isn't supported. |
 
 ### Authentication exceptions
 
-| Exception name | Reason | Failure code | Failure subcode | Permanence |
+| Exception name | Reason |
 |--|--|--|--|--|
-| `KustoClientApplicationAuthenticationException` | Client-side Azure Active Directory Application authentication failure. | 0 |  | True |
-| `KustoClientApplicationCertificateNotFoundException` | A certificate required for application authentication isn't found. | 0 |  | True |
-| `KustoClientLocalSecretAuthenticationAccessDisabledException` | When an attempt to request authentication based on a local secret via the connection string fails and `KustoConnectionStringBuilder.PreventAccessToLocalSecretsViaKeywords` is true. | 400 | LocalSecretAuthenticationAccessDisabled | True |
-| `KustoClientUserAuthenticationException` | Client-side Azure Active Directory User authentication failure. | 0 |  | True |
-| `KustoClientUserInteractiveModeNotValidException` | Client-side failure to authenticate to Azure Active Directory. | 0 |  | True |
+| `KustoClientApplicationAuthenticationException` | Client-side Azure Active Directory Application authentication failure. </br> **Permanance**: True |
+| `KustoClientApplicationCertificateNotFoundException` | A certificate required for application authentication isn't found. </br> **Permanance**: True |
+| `KustoClientLocalSecretAuthenticationAccessDisabledException` | When an attempt to request authentication based on a local secret via the connection string fails and `KustoConnectionStringBuilder.PreventAccessToLocalSecretsViaKeywords` is true. </br> **Failure code**: 400 </br> **Failure subcode**: LocalSecretAuthenticationAccessDisabled</br> **Permanance**: True |
+| `KustoClientUserAuthenticationException` | Client-side Azure Active Directory User authentication failure. </br> **Permanance**: True |
+| `KustoClientUserInteractiveModeNotValidException` | Client-side failure to authenticate to Azure Active Directory. </br> **Permanance**: True |
 
 ## Request Exceptions
 
-| Exception name | Reason | Failure code | Failure subcode | Permanence |
-|--|--|--|--|--|
-| `ClusterSuspendedException` | A request with `request_execute_only_if_running` flag is denied because the service is in a suspended state. | 412 | PreconditionFailed | True |
-| `KustoBadRequestException` | The Kusto service was sent a bad request. For a list of errors, see [Bad request exceptions](#bad-request-exceptions) nm. | 400 | General_BadRequest | True |
-| `KustoConflictException` | The Kusto service was sent a request, which can't be performed due to service state. | 409 | Conflict | True |
-| `KustoFailedChangeServiceStateException` | The CM failed to change service state. | 0 |  | False |
-| `KustoRequestDeniedException` | The Kusto service was sent a request with insufficient security permissions to execute. | 403 | Forbidden | True |
-| `KustoRequestPayloadTooLargeException` | The payload is too large. For example, when Kusto is told to process more data than is allowed in a single batch. | 413 | Payload too large | True |
+| Exception name | Reason |
+|--|--|
+| `ClusterSuspendedException` | A request with `request_execute_only_if_running` flag is denied because the service is in a suspended state. </br> **Failure code**: 412 </br> **Failure subcode**: PreconditionFailed </br> **Permanence**: True |
+| `KustoBadRequestException` | The Kusto service was sent a bad request. For a list of errors, see [Bad request exceptions](#bad-request-exceptions) nm. </br> **Failure code**: 400 </br> **Failure subcode**: General_BadRequest </br> **Permanance**: True |
+| `KustoConflictException` | The Kusto service was sent a request, which can't be performed due to service state. </br> **Failure code**: 409 </br> **Failure subcode**: Conflict </br> **Permanance**: True|
+| `KustoFailedChangeServiceStateException` | The CM failed to change service state. |
+| `KustoRequestDeniedException` | The Kusto service was sent a request with insufficient security permissions to execute. </br> **Failure code**: 403 </br> **Failure subcode**: Forbidden </br> **Permanance**: True |
+| `KustoRequestPayloadTooLargeException` | The payload is too large. For example, when Kusto is told to process more data than is allowed in a single batch. </br> **Failure code**: 413 </br> **Failure subcode**: Payload too large </br> **Permanance**: True |
 
 ### Bad request exceptions
 
-| Exception name | Reason | Failure code | Failure subcode | Permanence |
-|--|--|--|--|--|
-| `DatabaseNotFoundException` | Failure to locate a database. | 400 | BadRequest_DatabaseNotExist | True |
-| `DuplicateMappingException` | Ingestion properties contain bad ingestion mapping and ingestion mapping references. | 400 | BadRequest_DuplicateMapping | True |
-| `EntityNotFoundInContainerException` | Failure to locate an entity. | 400 | General_BadRequest | True |
-| `EntityTypeIsNotValidException` | The entity type is unsupported. | 400 | General_BadRequest | True |
-| `FormatNotSupportedException` | The format provided isn't supported. | 400 | BadRequest_FormatNotSupported | True |
-| `IngestionPropertyNotSupportedInThisContextException` | The ingestion property isn't supported in this context. | 400 | BadRequest_IngestionPropertyNotSupportedInThisContext | True |
-| `MalformedIngestionPropertyException` | The ingestion property is malformed. | 400 | BadRequest_MalformedIngestionProperty | True |
-| `MappingNotFoundException` | The failure to locate a mapping reference. | 400 | BadRequest_MappingReferenceWasNotFound | True |
-| `MappingNotValidException` | The ingestion properties contain invalid ingestion mapping or ingestion mapping reference. | 400 | BadRequest_InvalidMapping | True |
-| `QueryCslTreeExceedsDepthsLimitsException` | The csl tree exceeds depth limits. | 400 | General_BadRequest | True |
-| `RelopSemanticException` | A semantic error that happened during relop compilation phase. | 400 | General_BadRequest | True |
-| `SemanticException` | Indicates a semantic error. | 400 | General_BadRequest | True |
-| `SyntaxException` | Indicate a syntax error. | 400 | BadRequest_SyntaxError | True |
-| `InappropriateNullLiteralException` | The null literal can't appear in the context that it appears in. | 400 | BadRequest_SyntaxError | True |
-| `InvalidLiteralFormatException` | Parsing a literal failed due to bad formatting. | 400 | BadRequest_SyntaxError | True |
-| `TableNotFoundException` | Failure to locate a table. | 400 | BadRequest_TableNotExist | True |
+| Exception name | Reason |
+|--|--|
+| `DatabaseNotFoundException` | Failure to locate a database. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_DatabaseNotExist </br> **Permanance**: True|
+| `DuplicateMappingException` | Ingestion properties contain bad ingestion mapping and ingestion mapping references. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_DuplicateMapping </br> **Permanance**: True|
+| `EntityNotFoundInContainerException` | Failure to locate an entity. </br> **Failure code**: 400 </br> **Failure subcode**: General_BadRequest </br> **Permanance**: True|
+| `EntityTypeIsNotValidException` | The entity type is unsupported. </br> **Failure code**: 400 </br> **Failure subcode**: General_BadRequest </br> **Permanance**: True|
+| `FormatNotSupportedException` | The format provided isn't supported. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_FormatNotSupported </br> **Permanance**: True|
+| `IngestionPropertyNotSupportedInThisContextException` | The ingestion property isn't supported in this context. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_IngestionPropertyNotSupportedInThisContext </br> **Permanance**: True|
+| `MalformedIngestionPropertyException` | The ingestion property is malformed. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_MalformedIngestionProperty </br> **Permanance**: True|
+| `MappingNotFoundException` | The failure to locate a mapping reference. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_MappingReferenceWasNotFound </br> **Permanance**: True|
+| `MappingNotValidException` | The ingestion properties contain invalid ingestion mapping or ingestion mapping reference. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_InvalidMapping </br> **Permanance**: True|
+| `QueryCslTreeExceedsDepthsLimitsException` | The csl tree exceeds depth limits. </br> **Failure code**: 400 </br> **Failure subcode**: General_BadRequest </br> **Permanance**: True|
+| `RelopSemanticException` | A semantic error that happened during relop compilation phase. </br> **Failure code**: 400 </br> **Failure subcode**: General_BadRequest </br> **Permanance**: True|
+| `SemanticException` | Indicates a semantic error. </br> **Failure code**: 400 </br> **Failure subcode**: General_BadRequest </br> **Permanance**: True|
+| `SyntaxException` | Indicate a syntax error. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_SyntaxError </br> **Permanance**: True|
+| `InappropriateNullLiteralException` | The null literal can't appear in the context that it appears in. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_SyntaxError </br> **Permanance**: True|
+| `InvalidLiteralFormatException` | Parsing a literal failed due to bad formatting. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_SyntaxError </br> **Permanance**: True| 400 |  | True |
+| `TableNotFoundException` | Failure to locate a table. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_TableNotExist </br> **Permanance**: True|
 
 ## Service exceptions
 
-| Exception name | Reason | Failure code | Failure subcode | Permanence |
-|--|--|--|--|--|
-| `KustoDataStreamException` | Generic exception that carries error information inside a Kusto Data Stream. | 0 |   | False |
-| `KustoRequestThrottledException` | The request is denied due to throttling. | 429 | TooManyRequests | False |
-| `KustoServicePartialQueryFailureIllFormattedDataException` | Carries error information inside a Kusto Data Stream indicating ill-formatted data. | 400 | IllFormattedData | True |
-| `KustoServicePartialQueryFailureLimitsExceededException` | Carries error information inside a Kusto Data Stream indicating that limits have been exceeded. | 400 | LimitsExceeded | True |
-| `KustoServicePartialQueryFailureLowMemoryConditionException` |Carries error information inside a Kusto Data Stream indicating low memory conditions. | 400 | LowMemoryCondition | True|
-| `KustoServiceTimeoutException` | Raised when request execution has timed-out on the service side. | 504 | RequestExecutionTimeout | False |
+| Exception name | Reason |
+|--|--|
+| `KustoDataStreamException` | Generic exception that carries error information inside a Kusto Data Stream. |
+| `KustoRequestThrottledException` | The request is denied due to throttling. </br> **Failure code**: 429 </br> **Failure subcode**: TooManyRequests </br> **Permanance**: False |
+| `KustoServicePartialQueryFailureIllFormattedDataException` | Carries error information inside a Kusto Data Stream indicating ill-formatted data. </br> **Failure code**: 400 </br> **Failure subcode**:IllFormattedData  </br> **Permanance**: True|
+| `KustoServicePartialQueryFailureLimitsExceededException` | Carries error information inside a Kusto Data Stream indicating that limits have been exceeded. </br> **Failure code**: 400 </br> **Failure subcode**: LimitsExceeded </br> **Permanance**: True|
+| `KustoServicePartialQueryFailureLowMemoryConditionException` |Carries error information inside a Kusto Data Stream indicating low memory conditions. </br> **Failure code**: 400 </br> **Failure subcode**: LowMemoryCondition </br> **Permanance**: True|
+| `KustoServiceTimeoutException` | Raised when request execution has timed-out on the service side. </br> **Failure code**: 504 </br> **Failure subcode**: RequestExecutionTimeout </br> **Permanance**: False |
