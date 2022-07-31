@@ -38,23 +38,24 @@ Add the following code to your website:
 
 ```html
 <iframe
-  src="https://dataexplorer.azure.com/clusters/<cluster>?ibizaPortal=true"
+  src="https://dataexplorer.azure.com/clusters/<cluster>?f-IFrameAuth=true"
 ></iframe>
 ```
 
-The `ibizaPortal` query parameter tells the Azure Data Explorer web UI *not* to redirect to get an authentication token. This action is necessary, since the hosting website is responsible for providing an authentication token to the embedded iframe.
+The `f-IFrameAuth` query parameter tells the Azure Data Explorer web UI *not* to redirect to get an authentication token. This action is necessary, since the hosting website is responsible for providing an authentication token to the embedded iframe.
 
 Replace `<cluster>` with the hostname of the cluster you want to load into the connection pane, such as `help.kusto.windows.net`. By default, iframe-embedded mode doesn't provide a way to add clusters from the UI, since the assumption is that the hosting website is aware of the required cluster.
 
 ### Handle authentication
 
-1. When set to 'iframe mode' (`ibizaPortal=true`), the Azure Data Explorer web UI won't try to redirect for authentication. The message posting mechanism that browsers use, is used to request and receive a token. During page loading, the following message will be posted to the parent window:
+1. When set to 'iframe mode' (`f-IFrameAuth=true`), the Azure Data Explorer web UI won't try to redirect for authentication. The message posting mechanism that browsers use, is used to request and receive a token. During page loading, the following message will be posted to the parent window:
 
    ```javascript
    window.parent.postMessage(
      {
        signature: "queryExplorer",
-       type: "getToken"
+       type: "getToken",
+       scope: "${Can be either 'query' or a custom scope}",
      },
      "*"
    );
@@ -70,11 +71,18 @@ Replace `<cluster>` with the hostname of the cluster you want to load into the c
    ```json
    {
      "type": "postToken",
-     "message": "${the actual authentication token}"
+     "message": "${the actual authentication token}",
+     "scope": "${The scope that was received in the message from the iframe}"
    }
    ```
 
 1. The provided token should be a [JWT token](https://tools.ietf.org/html/rfc7519) obtained from the [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
+When generating the token, use the scope from the message above if the scope is not 'query'. If the scope provided is 'query', use the scope of your cluster, as mentioned in the [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
+
+Example of how to calculate the scope:
+    ```javascript
+    const scope = event.data.scope === 'query' ? $"https://{serviceName}.{region}.kusto.windows.net/.default" : event.data.scope;
+    ```
 
 > [!IMPORTANT]
 > The hosting window must refresh the token before expiration and use the same mechanism to provide the updated token to the application. Otherwise, once the token expires, service calls will fail.
