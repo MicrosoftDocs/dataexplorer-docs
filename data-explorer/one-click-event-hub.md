@@ -3,18 +3,18 @@ title: Ingest data from Azure Event Hubs into Azure Data Explorer using the inge
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Azure Event Hubs using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 07/13/2022
+ms.date: 07/31/2022
 ---
-# Use one-click ingestion to create an Azure Event Hubs data connection for Azure Data Explorer
+# Use the ingestion wizard to create an Azure Event Hubs data connection for Azure Data Explorer
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [One-click](one-click-event-hub.md)
+> * [Ingestion wizard](one-click-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 
-Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data streaming platform and event ingestion service. [Event hubs](/azure/event-hubs/event-hubs-about) can process millions of events per second in near real-time. In this article, you connect an event hub to a table in Azure Data Explorer using the [one-click ingestion](ingest-data-one-click.md) experience.
+Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data streaming platform and event ingestion service. [Event hubs](/azure/event-hubs/event-hubs-about) can process millions of events per second in near real-time. In this article, you connect an event hub to a table in Azure Data Explorer using the [ingestion wizard](ingest-data-one-click.md).
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 
 1. In the left menu of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select the **Data** tab.
 
-    :::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-web-ui.png" alt-text="Select one-click ingestion in the Azure Data Explorer web U I.":::
+    :::image type="content" source="media/one-click-event-hub/one-click-ingestion-in-web-ui.png" alt-text="Select the ingestion wizard in the Azure Data Explorer web U I.":::
 
 1. In the **Ingest data from Event Hub** card, select **Ingest**.
 
@@ -57,7 +57,7 @@ The **Ingest new data** window opens with the **Destination** tab selected.
 
 1. Under **Data Connection**, fill in the following fields:
 
-    :::image type="content" source="media/one-click-event-hub/project-details.png" alt-text="Screenshot of source tab with project details fields to be filled in - ingest new data to Azure Data Explorer with Event Hubs in the one click experience.":::
+    :::image type="content" source="media/one-click-event-hub/project-details.png" alt-text="Screenshot of source tab with project details fields to be filled in - ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -77,7 +77,7 @@ Data is read from the event hub in form of [EventData](/dotnet/api/microsoft.ser
 For information on schema mapping with JSON-formatted data, see [Edit the schema](one-click-ingestion-existing-table.md#edit-the-schema).
 For information on schema mapping with CSV-formatted data, see [Edit the schema](one-click-ingestion-new-table.md#edit-the-schema).
 
-:::image type="content" source="media/one-click-event-hub/event-hub-schema.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hubs in the one click experience.":::
+:::image type="content" source="media/one-click-event-hub/event-hub-schema.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
 
 > [!NOTE]
 >
@@ -97,7 +97,7 @@ For information on schema mapping with CSV-formatted data, see [Edit the schema]
 
 In the **Continuous ingestion from Event Hub established** window, all steps will be marked with green check marks when establishment finishes successfully. The cards below these steps give you options to explore your data with **Quick queries**, undo changes made using **Tools**, or **Monitor** the Event Hubs connections and data.
 
-:::image type="content" source="media/one-click-event-hub/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hubs with the one click experience.":::
+:::image type="content" source="media/one-click-event-hub/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hubs with the ingestion wizard.":::
 
 ## Next steps
 

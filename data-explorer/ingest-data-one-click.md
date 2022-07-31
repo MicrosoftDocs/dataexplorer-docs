@@ -3,7 +3,7 @@ title: Ingest data into Azure Data Explorer using the ingestion wizard
 description: Overview of ingesting (loading) data into Azure Data Explorer simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 07/13/2022
+ms.date: 07/31/2022
 ---
 
 # What is the ingestion wizard?
@@ -38,19 +38,19 @@ The ingestion wizard guides you through the ingestion process.
 * To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), use one of the following methods:
   * Select **Data** in the left pane. Within the **Data Management** page, select a type of ingestion and select **Ingest**.
 
-      :::image type="content" source="media/ingest-data-one-click/select-data-pane.png" alt-text="Screenshot of options to ingest data from the data management window of the WebUI interface - Azure Data Explorer." lightbox="media/ingest-data-one-click/select-data-pane.png":::
+      :::image type="content" source="media/ingest-data-one-click/select-data-pane.png" alt-text="Screenshot of options to ingest data from the data management window of the Azure Data Explorer web UI interface - Azure Data Explorer." lightbox="media/ingest-data-one-click/select-data-pane.png":::
 
   * Select **Query** in the left pane. Right-click the *database* or *table* and select **Ingest new data**.
 
-      :::image type="content" source="media/ingest-data-one-click/ingest-new-data-database-menu.png" alt-text="Screenshot of selection of one-click ingestion in the Azure Data Explorer web U I.":::
+      :::image type="content" source="media/ingest-data-one-click/ingest-new-data-database-menu.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web U I.":::
 
-* To access the one-click ingestion wizard from the **Welcome to Azure Data Explorer** home screen in your cluster, complete the first two steps ([cluster creation and database creation](#prerequisites)) and then select **Ingest new data**.
+* To access the ingestion wizard from the **Welcome to Azure Data Explorer** home screen in your cluster, complete the first two steps ([cluster creation and database creation](#prerequisites)) and then select **Ingest new data**.
 
     :::image type="content" source="media/ingest-data-one-click/welcome-ingestion.png" alt-text="Ingest new data from welcome to Azure Data Explorer.":::
 
 * To access the wizard from the Azure portal, select **Query** from the left menu, right-click on the **database** or **table**, and select **Ingest new data**.
 
-    :::image type="content" source="media/ingest-data-one-click/ingest-from-portal.png" alt-text="Access the one click ingestion wizard from Azure portal.":::
+    :::image type="content" source="media/ingest-data-one-click/ingest-from-portal.png" alt-text="Access the ingestion wizard from Azure portal.":::
 
 ## Ingestion wizard
 
@@ -123,7 +123,7 @@ After ingestion, the wizard gives you options to use **[Quick commands](one-clic
 
 ## Next steps
 
-* [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md)
-* [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md)
+* [Ingest JSON data from a local file to an existing table in Azure Data Explorer using the ingestion wizard](one-click-ingestion-existing-table.md)
+* [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](one-click-ingestion-new-table.md)
 * [Query data in Azure Data Explorer web UI](web-query-data.md)
 * [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)
