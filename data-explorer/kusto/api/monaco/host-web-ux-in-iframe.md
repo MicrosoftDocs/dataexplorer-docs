@@ -80,9 +80,9 @@ Replace `<cluster>` with the hostname of the cluster you want to load into the c
 When generating the token, use the scope from the message above if the scope is not 'query'. If the scope provided is 'query', use the scope of your cluster, as mentioned in the [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
 
 Example of how to calculate the scope:
-    ```javascript
-    const scope = event.data.scope === 'query' ? $"https://{serviceName}.{region}.kusto.windows.net/.default" : event.data.scope;
-    ```
+```javascript
+const scope = event.data.scope === 'query' ? $"https://{serviceName}.{region}.kusto.windows.net/.default" : event.data.scope;
+```
 
 > [!IMPORTANT]
 > The hosting window must refresh the token before expiration and use the same mechanism to provide the updated token to the application. Otherwise, once the token expires, service calls will fail.
