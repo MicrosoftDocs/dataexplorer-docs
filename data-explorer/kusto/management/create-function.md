@@ -13,7 +13,7 @@ Functions can call other functions (recursiveness isn't supported). Besides, [`l
 
 Rules for parameter types and CSL statements are the same as for [`let` statements](../query/letstatement.md).
 
-**Syntax**
+## Syntax
 
 `.create` `function` [`ifnotexists`] [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`] [`view` `=` *View*] [`,` `skipvalidation` `=` 'true'] `)`]
 *FunctionName* `(` *ParamName* `:` *ParamType* [`,` ...] `)` `{` *FunctionBody* `}`
