@@ -61,7 +61,7 @@ Client exceptions contain the following exception categories:
 | `CslExpectingBooleanLambdaException` | The parser is expecting a boolean lambda expression. |
 | `CslExpectingConstantExpressionException` | Indicates a failure with an expression that should represent a constant. |
 | `CslExpectingConstantNodeType` | Translating a query was aborted because the expression node type doesn't yield a constant value. |
-| `CslExpectingScalarExpressionException` | Indicates a failure because the parser is expecting a scalar expression. ||
+| `CslExpectingScalarExpressionException` | Indicates a failure because the parser is expecting a scalar expression. |
 | `CslExpectingScalarProjectionLambdaExpressionException` | Indicates a failure when the expression is expected to be a lambda expression performing scalar projection. |
 | `CslExpectingTableExpressionException` | Indicates a failure when the parser is expecting a table expression. |
 | `CslExpressionHasUnsupportedNodeTypeException` | A `System.Linq.Expressions.Expression` has an unsupported node type. |
@@ -85,7 +85,7 @@ Client exceptions contain the following exception categories:
 | Exception name | Reason |
 |--|--|
 | `ClusterSuspendedException` | A request with `request_execute_only_if_running` flag is denied because the service is in a suspended state. </br> **Failure code**: 412 </br> **Failure subcode**: PreconditionFailed </br> **Permanence**: True |
-| `KustoBadRequestException` | The Kusto service was sent a bad request. For a list of errors, see [Bad request exceptions](#bad-request-exceptions) nm. </br> **Failure code**: 400 </br> **Failure subcode**: General_BadRequest </br> **Permanance**: True |
+| `KustoBadRequestException` | The Kusto service was sent a bad request. For a list of errors, see [Bad request exceptions](#bad-request-exceptions). </br> **Failure code**: 400 </br> **Failure subcode**: General_BadRequest </br> **Permanance**: True |
 | `KustoConflictException` | The Kusto service was sent a request, which can't be performed due to service state. </br> **Failure code**: 409 </br> **Failure subcode**: Conflict </br> **Permanance**: True|
 | `KustoFailedChangeServiceStateException` | The CM failed to change service state. |
 | `KustoRequestDeniedException` | The Kusto service was sent a request with insufficient security permissions to execute. </br> **Failure code**: 403 </br> **Failure subcode**: Forbidden </br> **Permanance**: True |
@@ -109,7 +109,7 @@ Client exceptions contain the following exception categories:
 | `SemanticException` | Indicates a semantic error. </br> **Failure code**: 400 </br> **Failure subcode**: General_BadRequest </br> **Permanance**: True|
 | `SyntaxException` | Indicate a syntax error. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_SyntaxError </br> **Permanance**: True|
 | `InappropriateNullLiteralException` | The null literal can't appear in the context that it appears in. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_SyntaxError </br> **Permanance**: True|
-| `InvalidLiteralFormatException` | Parsing a literal failed due to bad formatting. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_SyntaxError </br> **Permanance**: True| 400 |  | True |
+| `InvalidLiteralFormatException` | Parsing a literal failed due to bad formatting. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_SyntaxError </br> **Permanance**: True|
 | `TableNotFoundException` | Failure to locate a table. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_TableNotExist </br> **Permanance**: True|
 
 ## Service exceptions
