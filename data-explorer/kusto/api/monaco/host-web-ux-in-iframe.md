@@ -1,9 +1,9 @@
 ---
 title: Embed the Azure Data Explorer web UI in an **iframe**.
 description: This article describes how to embed the Azure Data Explorer web UI in an **iframe**.
-ms.reviewer: orspodek
+ms.reviewer: gikoifma
 ms.topic: reference
-ms.date: 07/13/2022
+ms.date: 08/01/2022
 ---
 # Embed the Azure Data Explorer web UI in an iframe
 
@@ -76,10 +76,10 @@ Replace `<cluster>` with the hostname of the cluster you want to load into the c
    }
    ```
 
-1. The provided token should be a [JWT token](https://tools.ietf.org/html/rfc7519) obtained from the [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
+1. The provided token should be a [JWT token](https://tools.ietf.org/html/rfc7519) obtained from the [[Azure AD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
 When generating the token:
-     * If the scope is not query: use the scope from the message above.
-     * If the scope is query: use the scope of your service, as described in the [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
+     * If the scope isn't query: use the scope from the message above.
+     * If the scope is query: use the scope of your service, as described in the [[Azure AD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
 
   For example, you can calculate the scope as follows:
   
@@ -89,48 +89,52 @@ When generating the token:
 > [!IMPORTANT]
 > The hosting window must refresh the token before expiration and use the same mechanism to provide the updated token to the application. Otherwise, once the token expires, service calls will fail.
 
-### Embedding dashboards
+### Embed dashboards
 
-In order to embed dashboard, all the steps above are needed, with a few changes.
+To embed a dashboard, you'll need to make a few changes to the above steps
 
-**Step 1: Change the url of the iframe**
+1. Change the URL of the iframe:
 
-  Add the following code to your website:
+  1. Add the following code to your website:
   
-  ```html
-  <iframe
-    src="https://dataexplorer.azure.com/dashboards?f-IFrameAuth=true"
-  ></iframe>
-  ```
+      ```html
+      <iframe
+        src="https://dataexplorer.azure.com/dashboards?f-IFrameAuth=true"
+      ></iframe>
+      ```
 
-**Step 2: Establish trust relationship between your application and the Azure Data Explorer service**
+1. Establish a trust relationship between your application and the Azure Data Explorer service.
 
-In addition to the steps in [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication), we will also need to establish trust relationship between your application and the dashboards service:
-1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're
-   signed-in to the correct tenant (see top/right corner for the identity
-   used to sign in to the portal).
-2. On the resources pane, click **Azure Active Directory**, then **App registrations**.
-3. Locate the application that uses the on-behalf-of flow and open it.
-4. Click **Manifest**.
-5. Go to **requiredResourceAccess** In the manifest, and add the following entry:
-```json
- {
-    "resourceAppId": "35e917a9-4d95-4062-9d97-5781291353b9",
-    "resourceAccess": [
-        {
-            "id": "388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c",
-            "type": "Scope"
+    In addition to the steps in [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication), you also need to establish trust relationship between your application and the dashboards service:       
+ 
+    1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're
+       signed-in to the correct tenant. Look at the top right corner to verify the identity used to sign into the portal.
+    1. In the resources pane, select **Azure Active Directory** > **App registrations**.
+    1. Locate the application that uses the on-behalf-of flow and open this application.
+    1. Select **Manifest**.
+    1. Select **requiredResourceAccess**.
+    1. In the manifest, and add the following entry:
+    
+        ```json
+         {
+            "resourceAppId": "35e917a9-4d95-4062-9d97-5781291353b9",
+            "resourceAccess": [
+                {
+                    "id": "388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c",
+                    "type": "Scope"
+                }
+            ]
         }
-    ]
-}
-```
-6. Save your changes in the **Manifest**.
-7. Click **API permissions**, and validate you have a new entry **RTD Metadata Service**.
-8. Open the Azure powershell and add a new service principal for that app:
-  ```
-  New-AzureADServicePrincipal -AppId 35e917a9-4d95-4062-9d97-5781291353b9
-  ```
-9. Click the **Grant admin consent** button in the **API permissions** page.
+        ```
+    
+    1. Save your changes in the **Manifest**.
+    1. Select **API permissions**, and validate you have a new entry: **RTD Metadata Service**.
+    1. Open the Azure powershell and add the following new service principal for that app:
+    
+          ```
+          New-AzureADServicePrincipal -AppId 35e917a9-4d95-4062-9d97-5781291353b9
+          ```
+    1. In the **API permissions** page, select **Grant admin consent**.
 
 
 ### Feature flags
