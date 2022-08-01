@@ -85,6 +85,7 @@ When generating the token:
   
   ```javascript
   const scope = event.data.scope === 'query' ? $"https://{serviceName}.{region}.kusto.windows.net/.default" : event.data.scope;
+  ```
 
 > [!IMPORTANT]
 > The hosting window must refresh the token before expiration and use the same mechanism to provide the updated token to the application. Otherwise, once the token expires, service calls will fail.
