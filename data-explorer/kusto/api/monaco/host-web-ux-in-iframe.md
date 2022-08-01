@@ -79,13 +79,57 @@ Replace `<cluster>` with the hostname of the cluster you want to load into the c
 1. The provided token should be a [JWT token](https://tools.ietf.org/html/rfc7519) obtained from the [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
 When generating the token, use the scope from the message above if the scope is not 'query'. If the scope provided is 'query', use the scope of your service, as mentioned in the [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
 
-Example of how to calculate the scope:
-```javascript
-const scope = event.data.scope === 'query' ? $"https://{serviceName}.{region}.kusto.windows.net/.default" : event.data.scope;
-```
+  Example of how to calculate the scope:
+  ```javascript
+  const scope = event.data.scope === 'query' ? $"https://{serviceName}.{region}.kusto.windows.net/.default" : event.data.scope;
+  ```
 
 > [!IMPORTANT]
 > The hosting window must refresh the token before expiration and use the same mechanism to provide the updated token to the application. Otherwise, once the token expires, service calls will fail.
+
+### Embedding dashboards
+
+In order to embed dashboard, all the steps above are needed, with a few changes.
+
+**Step 1: Change the url of the iframe**
+
+  Add the following code to your website:
+  
+  ```html
+  <iframe
+    src="https://dataexplorer.azure.com/dashboards?f-IFrameAuth=true"
+  ></iframe>
+  ```
+
+**Step 2: Establish trust relationship between your application and the Azure Data Explorer service**
+
+In addition to the steps in [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication), we will also need to establish trust relationship between your application and the dashboards service:
+1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're
+   signed-in to the correct tenant (see top/right corner for the identity
+   used to sign in to the portal).
+2. On the resources pane, click **Azure Active Directory**, then **App registrations**.
+3. Locate the application that uses the on-behalf-of flow and open it.
+4. Click **Manifest**.
+5. Go to **requiredResourceAccess** In the manifest, and add the following entry:
+```json
+ {
+    "resourceAppId": "35e917a9-4d95-4062-9d97-5781291353b9",
+    "resourceAccess": [
+        {
+            "id": "388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c",
+            "type": "Scope"
+        }
+    ]
+}
+```
+6. Save your changes in the **Manifest**.
+7. Click **API permissions**, and validate you have a new entry **RTD Metadata Service**.
+8. Open the Azure powershell and add a new service principal for that app:
+  ```
+  New-AzureADServicePrincipal -AppId 35e917a9-4d95-4062-9d97-5781291353b9
+  ```
+9. Click the **Grant admin consent** button in the **API permissions** page.
+
 
 ### Feature flags
 
@@ -110,6 +154,21 @@ A feature flag can be used in the url as a query parameter. If the hosting appli
 | f-HideConnectionPane      | If true, the left connection pane doesn't display                                                                  | false         |
 | f-SkipMonacoFocusOnInit   | Fixes the focus issue when hosting on iframe                                                                       | false         |
 | f-Homepage   | Enable the homepage and rerouting new users to it                                                                       | true         |
+| f-ShowNavigation   | IF true, shows the navigation pane on the left                                                                   | true         |
+| f-DisableDashboardTopBar   | IF true, hides the top bar in the dashboard                                                                  | false         |
+| f-DisableNewDashboard   | IF true, hides the option to add a new dashboard                                                               | false         |
+| f-DisableNewDashboard   | IF true, hides the option to search in the dashboards list                                                               | false         |
+| f-DisableDashboardEditMenu   | IF true, hides the option to edit a dashboard                                                               | false         |
+| f-DisableDashboardFileMenu   | IF true, hides the file menu button in a dashboard                                                               | false         |
+| f-DisableDashboardShareMenu   | IF true, hides the share menu button in a dashboard                                                               | false         |
+| f-DisableDashboardDelete   | IF true, hides the dashboard delete button                                                           | false         |
+| f-DisableTileRefresh   | IF true, disables tiles refresh button in a dashboard                                                          | false         |
+| f-DisableDashboardAutoRefresh   | IF true, disables tiles auto refresh in a dashboard                                                          | false         |
+| f-DisableExploreQuery   | IF true, disables the explore query button of the tiles                                                         | false         |
+| f-DisableCrossFiltering   | IF true, disables the cross filtering feature in dashboards                                                         | false         |
+| f-HideDashboardParametersBar   | IF true, hides the parameters bar in a dashboard                                                         | false         |
+
+
 
 ### Feature flag presets
 
@@ -119,11 +178,12 @@ Currently, there's only a single preset.
 `IbizaPortal` - Changes the following flags from the defaults.
 
 ```json
-f-ShowOpenNewWindowButton: true,
-f-PersistAfterEachRun: true,
-f-IFrameAuth: true,
-f-Homepage: false,
-f-ShowPageHeader: false,
+"f-ShowOpenNewWindowButton": true,
+"f-PersistAfterEachRun": true,
+"f-IFrameAuth": true,
+"f-Homepage": false,
+"f-ShowPageHeader": false,
+"f-ShowNavigation": false,
 ```
 
 > [!WARNING]
