@@ -242,7 +242,7 @@ The following aggregation functions are supported:
     ```
 
 > [!TIP]
-> Late arriving data in a datetime group-by key can have a negative impact on the materialized view. For example, if your materialized view uses `bin(Timestamp, 1d)` as one of its group-by keys, and there are few outliers in the data with very old `Timestamp` values, these records might negatively impact the materialized view. It's recommended to filter these records out in the materialized view query, or normalize them to current time, if possible.
+> Late arriving data in a datetime group-by key can have a negative impact on the materialized view's performance. For example, if your materialized view uses `bin(Timestamp, 1d)` as one of its group-by keys, and there are several outliers in the data with very old `Timestamp` values. These outliers may negatively impact the materialized view. We recommend that in the materialized view query you either filter out the outlier records, or normalize these records to the current time.
 
 * **Define a lookback period**: if applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [properties](#properties).  
 
