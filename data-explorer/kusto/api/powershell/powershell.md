@@ -1,9 +1,9 @@
 ---
 title: Kusto .NET Client Libraries from PowerShell - Azure Data Explorer
 description: This article describes Using the .NET Client Libraries from PowerShell in Azure Data Explorer.
-ms.reviewer: yonil
+ms.reviewer: salevy
 ms.topic: reference
-ms.date: 04/05/2021
+ms.date: 01/08/2022
 ---
 # Using the .NET client libraries from PowerShell
 
@@ -15,9 +15,8 @@ PowerShell's built-in integration with arbitrary (non-PowerShell) .NET libraries
 To start working with the Azure Data Explorer .NET client libraries using PowerShell.
 
 1. Download the [`Microsoft.Azure.Kusto.Tools` NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
-    * If you're using Powershell 7 (or above), download the [`Microsoft.Azure.Kusto.Tools.NETCore` NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools.NETCore/).
-1. Extract the contents of the 'tools' directory in the package (use an archiving tool like `7-zip`).
-1. Call `Add-Type -LiteralPath "path\Kusto.Data.dll"` from PowerShell, to load the required library.
+1. Extract the contents of the 'tools' directory in the package (use an archiving tool like `7-zip`), if you use Powershell version 5.1 you need to pick the net472 version folder, if you use Powershell version 7 and upper you can use the other versions folders contained in the package.
+1. Call `[System.Reflection.Assembly]::LoadFrom("path\Kusto.Data.dll")` from PowerShell, to load the required library.
     * The `path` parameter for the command should indicate the location of the extracted files.
 1. Once all dependent .NET assemblies are loaded:
    1. Create a Kusto connection string.
@@ -35,13 +34,12 @@ For more information, see the [Azure Data Explorer client libraries](../netfx/ab
 #  ------------
 #  Packages location - This is an example of the location from where you extract the Microsoft.Azure.Kusto.Tools package.
 #  Please make sure you load the types from a local directory and not from a remote share.
-$packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\Tools"
+$packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\tools\net<ReplaceWithRightVersion>"
 
 #  Part 2 of 3
 #  ------------
 #  Loading the Kusto.Client library and its dependencies
-dir $packagesRoot\* | Unblock-File
-Add-Type -LiteralPath "$packagesRoot\Kusto.Data.dll"
+[System.Reflection.Assembly]::LoadFrom("$packagesRoot\Kusto.Data.dll")
 
 #  Part 3 of 3
 #  ------------
