@@ -186,5 +186,15 @@ Currently, there's only a single preset.
 "f-ShowNavigation": false,
 ```
 
+For embedding dashboards only, without the query area, we recommend setting the following feature flags:
+```json
+"f-PersistAfterEachRun": true,
+"f-IFrameAuth": true,
+"f-Homepage": false,
+"f-ShowPageHeader": false,
+"f-ShowNavigation": false,
+"f-DisableExploreQuery": false,
+```
+
 > [!WARNING]
 > If you use a preset, you won't be able to add additional feature flags on top of it. If you need that flexibility, you should use individual feature flags.
