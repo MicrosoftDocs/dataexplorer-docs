@@ -77,7 +77,7 @@ Replace `<cluster>` with the hostname of the cluster you want to load into the c
    ```
 
 1. The provided token should be a [JWT token](https://tools.ietf.org/html/rfc7519) obtained from the [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
-When generating the token, use the scope from the message above if the scope is not 'query'. If the scope provided is 'query', use the scope of your cluster, as mentioned in the [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
+When generating the token, use the scope from the message above if the scope is not 'query'. If the scope provided is 'query', use the scope of your service, as mentioned in the [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
 
 Example of how to calculate the scope:
 ```javascript
@@ -123,7 +123,7 @@ f-ShowOpenNewWindowButton: true,
 f-PersistAfterEachRun: true,
 f-IFrameAuth: true,
 f-Homepage: false,
-f-ShowPageHeader: false,                                 |
+f-ShowPageHeader: false,
 ```
 
 > [!WARNING]
