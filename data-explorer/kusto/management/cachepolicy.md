@@ -37,7 +37,7 @@ When data is ingested into Azure Data Explorer, the system keeps track of the da
 > When doing so, make sure the `Lookback` property in the table's effective [Extents merge policy](mergepolicy.md) is aligned with the values you set for `creationTime`.
 
 By default, the effective policy is `null`, which means that all the data is considered **hot**.
-A non-`null` table-level policy overrides a database-level policy.
+A `null` policy at the table level means that the policy will be inherited from the database. A non-`null` table-level policy overrides a database-level policy.
 
 ## Scoping queries to hot cache
 
