@@ -3,11 +3,33 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/06/2022
+ms.date: 08/01/2022
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## July 2022
+
+**General**
+
+| Article title | Description |
+|--|--|
+| [Upgrade a free Azure Data Explorer cluster](start-for-free-upgrade.md) | New Article. Describes how to upgrade a free cluster to a full cluster without losing your data. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| [.alter extent tags](kusto/management/alter-extent.md) | Updated article. Added documentation for `alter-merge` extent tags. |
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [convert_angle](/azure/data-explorer/kusto/query/convert-angle-function.md) <br />- [convert_energy](/azure/data-explorer/kusto/query/convert-energy-function.md) <br />- [convert_force](/azure/data-explorer/kusto/query/convert-force-function.md) <br />- [convert_length](/azure/data-explorer/kusto/query/convert-length-function.md) <br />- [convert_mass](/azure/data-explorer/kusto/query/convert-mass-function.md) <br />- [convert_speed](/azure/data-explorer/kusto/query/convert-speed-function.md) <br />- [convert_temperature](/azure/data-explorer/kusto/query/convert-temperature-function.md) <br />- [convert_volume](/azure/data-explorer/kusto/query/convert-volume-function.md) | New articles. New functions for converting values. |
+| [parse-kv operator](/azure/data-explorer/kusto/query/parse-kv-operator.md) | New Article. Describes how to extract structured information from a string in key/value form. |
+|- [Scalar function types at a glance](/azure/data-explorer/kusto/query/scalarfunctions.md) <br />- [arg_max() (aggregation function)](/azure/data-explorer/kusto/query/arg-max-aggfunction.md) <br />- [arg_min() (aggregation function)](/azure/data-explorer/kusto/query/arg-min-aggfunction.md) <br />- [avg() (aggregation function)](/azure/data-explorer/kusto/query/avg-aggfunction.md) <br />- [max() (aggregation function)](/azure/data-explorer/kusto/query/max-aggfunction.md) <br />- [min() (aggregation function)](/azure/data-explorer/kusto/query/min-aggfunction.md) <br />- [sum() (aggregation function)](/azure/data-explorer/kusto/query/sum-aggfunction.md) | Updated articles. New examples added. |
 
 ## June 2022
 
