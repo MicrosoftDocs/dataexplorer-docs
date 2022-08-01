@@ -77,12 +77,14 @@ Replace `<cluster>` with the hostname of the cluster you want to load into the c
    ```
 
 1. The provided token should be a [JWT token](https://tools.ietf.org/html/rfc7519) obtained from the [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
-When generating the token, use the scope from the message above if the scope is not 'query'. If the scope provided is 'query', use the scope of your service, as mentioned in the [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
+When generating the token:
+     * If the scope is not query: use the scope from the message above.
+     * If the scope is query: use the scope of your service, as described in the [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
 
-  Example of how to calculate the scope:
+  For example, you can calculate the scope as follows:
+  
   ```javascript
   const scope = event.data.scope === 'query' ? $"https://{serviceName}.{region}.kusto.windows.net/.default" : event.data.scope;
-  ```
 
 > [!IMPORTANT]
 > The hosting window must refresh the token before expiration and use the same mechanism to provide the updated token to the application. Otherwise, once the token expires, service calls will fail.
@@ -136,7 +138,7 @@ In addition to the steps in [[AAD authentication endpoint]](../../management/acc
 The hosting application may want to control certain aspects of the user experience. For example, hide the connection pane, or disable connecting to other clusters.
 For this scenario, the web explorer supports feature flags.
 
-A feature flag can be used in the url as a query parameter. If the hosting application wants to disable adding other clusters, it should use https://dataexplorer.azure.com/?f-ShowConnectionButtons=false
+A feature flag can be used in the URL as a query parameter. To disable adding other clusters, use https://dataexplorer.azure.com/?f-ShowConnectionButtons=false in the hosting application.
 
 | setting                 | Description                                                                                                        | Default Value |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------- |
