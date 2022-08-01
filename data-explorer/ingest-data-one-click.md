@@ -55,7 +55,7 @@ The ingestion wizard guides you through the ingestion process.
 ## Ingestion wizard
 
 > [!NOTE]
-> This section describes the wizard in general. The options you select depend on what data format you are ingesting, what kind of data source you are ingesting from, and whether you are ingesting into a new or existing table.
+> This section describes the ingestion wizard in general. The options you select depend on what data format you are ingesting, what kind of data source you are ingesting from, and whether you are ingesting into a new or existing table.
 >
 > For sample scenarios, see:
 >
