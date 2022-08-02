@@ -1,5 +1,5 @@
 ---
-title: Use one click to ingest data from a container or Azure Data Lake Storage into Data Explorer
+title: Ingest data from a container or Azure Data Lake Storage into Data Explorer
 description: Ingest (load) data into a new Azure Data Explorer table from a container or ADLS, either as a one-time or continuous operation.
 ms.reviewer: tzgitlin
 ms.topic: how-to
@@ -9,7 +9,7 @@ ms.date: 06/22/2022
 # Ingest data from a container/ADLS into Azure Data Explorer
 
 > [!div class="op_single_selector"]
-> * [One-click](one-click-ingestion-new-table.md)
+> * [Ingestion wizard](one-click-ingestion-new-table.md)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
@@ -17,10 +17,10 @@ ms.date: 06/22/2022
 
 The [ingestion wizard](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, or as a one-time or continuous ingestion process.
 
-This document describes using the intuitive one-click wizard to ingest **CSV** data from a **container** into a **new table**. Ingestion can be done as a one-time operation, or as a continuous method by [setting up an Event Grid ingestion pipeline](#create-continuous-ingestion) that responds to new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
+This document describes using the intuitive ingestion wizard to ingest **CSV** data from a **container** into a **new table**. Ingestion can be done as a one-time operation, or as a continuous method by [setting up an Event Grid ingestion pipeline](#create-continuous-ingestion) that responds to new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
 
-For an overview of one-click ingestion, see [One-click ingestion](ingest-data-one-click.md).
-For information about ingesting data into an existing table in Azure Data Explorer, see [One-click ingestion to an existing table](one-click-ingestion-existing-table.md)
+For an overview of the ingestion wizard, see [Ingestion wizard](ingest-data-one-click.md).
+For information about ingesting data into an existing table in Azure Data Explorer, see [Ingestion to an existing table](one-click-ingestion-existing-table.md)
 
 ## Prerequisites
 
@@ -38,7 +38,7 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 1. From the **Quick actions** section, select **Ingest data**. Alternatively, from the **All** section, select **Ingest data** and then **Ingest**.
 
-    :::image type="content" source="media/one-click-ingestion-new-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web U I where you select one-click ingestion for a table.":::
+    :::image type="content" source="media/one-click-ingestion-new-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web U I where you select ingestion for a table.":::
 
 1. In the **Ingest data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 
@@ -49,7 +49,7 @@ For information about ingesting data into an existing table in Azure Data Explor
     > [!NOTE]
     > Table names must be between 1 and 1024 characters.
 
-    :::image type="content" source="media/one-click-ingestion-new-table/create-new-table.png" alt-text="Create a new table one-click ingestion.":::
+    :::image type="content" source="media/one-click-ingestion-new-table/create-new-table.png" alt-text="Screenshot of Azure Data Explorer to create a new table to ingest data:::
 
 1. Select **Next: Source**
 
@@ -64,20 +64,20 @@ Under **Source type**, do the following steps:
   > [!NOTE]
   > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage-connection-strings.md).
 
-   :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="One-click ingestion from container.":::
+   :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="Screenshot selecting ingestion from container in the ingestion wizard.":::
 
    > [!TIP]
-   > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
+   > For ingestion **from file**, see [Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
 
 ## Filter data
 
-Choose from one of the following options to filter data to ingest specific files, or from a selection of files.
+Choose from one of the following options to ingest specific files, or to filter the selection of files.
 
 * If you want to, filter the data to ingest only files that end with a specific file extension.
 
   For example, filter for all files that end with the word *.csv* extension.
 
-  :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="One click ingestion filter.":::
+  :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="Screenshot of Ingest data tab showing the ingestion filter.":::
 
   The system will select one of the files at random and the schema will be generated based on that  **Schema defining file**. You can select a different file.
 
@@ -91,13 +91,13 @@ Choose from one of the following options to filter data to ingest specific files
   
 * Alternatively, you can filter for a specific folder using the path to that folder.
 
-1. Navigate to the storage account, and select **Storage Explorer > Select Blob Containers**
+1. Navigate to the storage account, and select **Storage Explorer > Blob Containers**
 
     :::image type="content" source="media/one-click-ingestion-new-table/storage-browser-blob-containers.png" alt-text="Screenshot access blob containers in Azure Storage account.":::
 
 1. Browse to the selected folder, and select file path to the folder.
 
-    :::image type="content" source="media/one-click-ingestion-new-table/copy-path.png" alt-text="Screenshot of copy URL in folder in blob container - Azure Storage account.":::
+    :::image type="content" source="media/one-click-ingestion-new-table/copy-path.png" alt-text="Screenshot of a folder path to folder in blob container - Azure Storage account.":::
 
 1. Paste this path into a temporary file and insert `/` in between each folder to create a folder path.
 
@@ -114,11 +114,11 @@ In the **Schema** tab:
     In this case, the data format is **CSV**
 
     > [!TIP]
-    > If you want to use **JSON** files, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#edit-the-schema).
+    > If you want to use **JSON** files, see [Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#edit-the-schema).
 
 1. You can select the check box **Ignore the first record** to ignore the heading row of the file.
 
-    :::image type="content" source="media/one-click-ingestion-new-table/non-json-format.png" alt-text="Select include column names.":::
+    :::image type="content" source="media/one-click-ingestion-new-table/non-json-format.png" alt-text="Screenshot showing how to select the option not to include column names in the ingestion wizard.":::
 
 1. In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
 
@@ -139,7 +139,7 @@ Select **Next: Summary** to create a table and mapping and to begin data ingesti
 
 In the **Data ingestion completed** window, all three steps will be marked with green check marks when data ingestion finishes successfully.
 
-:::image type="content" source="media/one-click-ingestion-new-table/one-click-data-ingestion-complete.png" alt-text="One click ingestion complete.":::
+:::image type="content" source="media/one-click-ingestion-new-table/one-click-data-ingestion-complete.png" alt-text="Screenshot showing ingested complete dialog box with data preview.":::
 
 [!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
 
@@ -149,7 +149,7 @@ Continuous ingestion enables you to create an Event Grid that listens for new fi
 
 1. Select **Event Grid** in the **Continuous ingestion** tile to open the Azure portal. The data connection page opens with the Event Grid data connector opened and with source and target parameters already entered (source container, tables, and mappings).
 
-    :::image type="content" source="media/one-click-ingestion-new-table/continuous-button.png" alt-text="continuous ingestion button.":::
+    :::image type="content" source="media/one-click-ingestion-new-table/continuous-button.png" alt-text="Screenshot showing the continuous ingestion button.":::
 
 ### Data connection: Basics
 
@@ -158,13 +158,13 @@ Continuous ingestion enables you to create an Event Grid that listens for new fi
 1. Choose the **Event type** that will trigger ingestion.
 1. Select **Next: Ingest properties**
 
-:::image type="content" source="media/one-click-ingestion-new-table/data-connection-basics-tab.png" alt-text="Screen shot of Data connection blade with Basics tab selected. Fields that should be selected are highlighted by a red box.":::
+:::image type="content" source="media/one-click-ingestion-new-table/data-connection-basics-tab.png" alt-text="Screenshot of Data connection blade with Basics tab selected. Fields that should be selected are highlighted by a red box.":::
 
 ### Ingest properties
 
 The **Ingest properties** tab opens with pre-filled routing settings. The target table name, format, and mapping name are taken from the table created above.
 
-:::image type="content" source="media/one-click-ingestion-new-table/ingest-properties.png" alt-text="Screen shot of Ingest properties blade.":::
+:::image type="content" source="media/one-click-ingestion-new-table/ingest-properties.png" alt-text="Screenshot of Ingest properties blade.":::
 
 Select **Next: Review + create**
 
@@ -172,7 +172,7 @@ Select **Next: Review + create**
 
 Review the resources, and select **Create**.
 
-:::image type="content" source="media/one-click-ingestion-new-table/review-create.png" alt-text="Screen shot of review and create blade.":::
+:::image type="content" source="media/one-click-ingestion-new-table/review-create.png" alt-text="Screenshot of review and create blade.":::
 
 ## Next steps
 
