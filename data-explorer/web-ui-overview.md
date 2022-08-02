@@ -3,7 +3,7 @@ title: Azure Data Explorer web UI overview
 description: This article describes the elements of Azure Data Explorer web UI home page and the data analytics journey.
 ms.reviewer: mibar
 ms.topic: conceptual
-ms.date: 07/11/2022
+ms.date: 08/02/2022
 ms.custom: mode-portal
 ---
 
@@ -15,7 +15,7 @@ The following image shows the Azure Data Explorer web UI **Home** page and navig
 
 :::image type="content" source="media/web-ui-overview/web-ui-home-full-numbered.png" alt-text="Screenshot of Azure Data Explorer web U I with numbered sections." lightbox="media/web-ui-overview/web-ui-home-full-numbered.png":::
 
-1. Navigation pane
+1. Left pane
 1. Help, feedback, and settings
 1. Quick actions to help you get started with data exploration
 1. Recommendations for additional resources and training
@@ -23,13 +23,60 @@ The following image shows the Azure Data Explorer web UI **Home** page and navig
 
 ## Experience data exploration using the Azure Data Explorer web UI
 
-Use the navigation pane to guide your data analytics journey.
+Azure Data Explorer Web UI provides a web experience that enables you to connect to Azure Data Explorer clusters and manage data with several streamlined processes.
 
-- Get started quickly with the [**Home** page](https://dataexplorer.azure.com/home), which provides free and immediate access to the **help** cluster and the [samples gallery](web-ui-samples-gallery.md), complete with sample data, query tutorials, and built in dashboards. From the **Home** page, you can also easily create a [free cluster](start-for-free.md) or connect to your own clusters. To help you on your journey, check out additional information including **Recommended** reading and basic and advanced **Documentation**.
-- In the **Data** tab, explore the [**Data Management**](https://dataexplorer.azure.com/oneclick) page, to ingest and organize data. The [one click ingestion](ingest-data-one-click.md) wizard makes data ingestion fast and intuitive.
-- Once you've ingested either your own data or accessed the **help** cluster, check out the **Query** tab to open the [query editor window](https://dataexplorer.azure.com). From here you can [write](write-queries.md) and run your own KQL commands and queries, or learn from descriptive tutorials in the [samples gallery](https://dataexplorer.azure.com/clusters/help) to help you get started.
-- [**Dashboards**](https://dataexplorer.azure.com/dashboards) allow you to [visualize](azure-data-explorer-dashboards.md) and explore either your own data or built in dashboards from the samples gallery.
-- [**MyCluster**](https://dataexplorer.azure.com/freecluster) allows you to explore the capabilities of Azure Data Explorer for free [using](start-for-free-web-ui.md) your own data.
+### Explore the home page
+
+In the **[Home](https://dataexplorer.azure.com/home)** page, query the sample data provided or explore your own data.
+
+- **Explore sample data with KQL**:  choose a dataset from the [samples gallery](web-ui-samples-gallery.md) that is most relevant to your needs. Next, review the provided hands-on tutorials to learn KQL and run queries.
+- **Explore sample dashboards**:  explore data visualization with [sample dashboards](web-ui-samples-gallery.md#explore-sample-dashboards).
+- [**Create a free cluster**](https://dataexplorer.azure.com/freecluster) or [**My Cluster**](https://dataexplorer.azure.com/freecluster): ingest your own data and analyze it for free.
+- **Connect to your org clusters**: connect to an existing [cluster](web-query-data.md#add-clusters).
+- Review **Recommended** learning modules and **Basic** and **Advanced documentation** to build your skills.
+- Continue with the tabs in the left pane to guide your data analytics journey.
+
+    | Tab | Description  |
+    |---------|----------|
+    | **Data** |  Ingest data from different sources, create database tables, and map the table schema. Learn about the different ways to ingest data with the fast and intuitive [one click ingestion](ingest-data-one-click.md) wizard.   |
+    | **Query** |  Open the [query editor window](https://dataexplorer.azure.com)to [write](write-queries.md) and run queries, or learn from descriptive tutorials in the [samples gallery](https://dataexplorer.azure.com/clusters/help).        |
+    | **Dashboards** | [Visualize](azure-data-explorer-dashboards.md) and explore either your own data or built-in dashboards from the samples gallery.
+
+### Manage your data
+
+In the **[Data management](https://dataexplorer.azure.com/oneclick)** page, ingest data and set policies to optimize data ingestion and management.
+
+- Select from quick actions to [ingest data](https://dataexplorer.azure.com/oneclick/ingest?sourceType=file), [create tables](https://dataexplorer.azure.com/oneclick/createtable), update [batching policies](https://dataexplorer.azure.com/oneclick/updateTableBatchingPolicy), and [generate a sample app](https://dataexplorer.azure.com/oneclick/generatecode?sourceType=file).
+- Explore different ingestion options by topic:
+
+    |Tab  |Ingestion options  |
+    |---------|---------|
+    |**Manage**     | Create [database tables](https://dataexplorer.azure.com/oneclick/createtable), [external tables](external-table.md) and update [batching](/azure/data-explorer/kusto/management/batchingpolicy) and [retention](/azure/data-explorer/kusto/management/retentionpolicy) policies.      |
+    |**One-time ingestion**    | Ingest from [local files, blob storage](/azure/data-explorer/ingest-data-one-click), or a [container](/azure/data-explorer//one-click-ingestion-new-table).      |
+    |**Continuous ingestion**     | Configure continuous ingestion from [Event Hubs](/azure/data-explorer/one-click-event-hub) or a blob container.        |
+    |**Backfill**     |  Ingest data from sources as a one time or continuous ingestion.       |
+    |**SDKs**     |  The [one-click sample app generator](https://dataexplorer.azure.com/oneclick/generatecode?programingLang=Python) is a tool that allows you to create a working app to [ingest and query your data in your preferred programming language](sample-app-generator-one-click.md). Learn more about connectors to expand and explore the capabilities of Azure Data Explorer.    |
+
+- Use the search box on the right side of the page to filter cards by key terms.
+
+### Query your data
+
+ In the [query editor window](https://dataexplorer.azure.com/), write and run KQL queries to process data with the Azure Data Explorer.
+
+- [Add the help cluster](web-query-data.md#add-clusters) to ingest sample data and access the samples gallery.
+- Explore the [samples gallery](web-ui-samples-gallery.md) to query prepopulated tables using [KQL tutorials](web-ui-samples-gallery.md#explore-sample-data-with-kql-tutorials).
+- Read more about [Kusto Query Language](/azure/data-explorer/kusto/query/).
+- Learn how to [write your first KQL query](/learn/modules/write-first-query-kusto-query-language/).
+
+### Visualize your data
+
+In the [dashboard editor](https://dataexplorer.azure.com/dashboards), visualize data and develop insights through sample dashboards, or by building new dashboards and viewing dashboards shared by others.
+
+- Gain insights and [visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
+- From the Home page, select **Explore sample dashboards** to [view sample dashboards](web-ui-samples-gallery.md#explore-sample-dashboards) with data from the **help** cluster.
+- [Create a dashboard](azure-data-explorer-dashboards.md#create-a-dashboard) in the Web UI or by [importing a dashboard file](azure-data-explorer-dashboards.md#to-create-new-dashboard-from-a-file).
+- Use dashboard parameters to explore and [interact with your data](dashboard-parameters.md#interact-with-your-data-using-cross-filter).
+- [Customize](dashboard-customize-visuals.md#customize-azure-data-explorer-dashboard-visuals) visuals in dashboard tiles.
 
 ## Next steps
 
