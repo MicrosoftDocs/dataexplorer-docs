@@ -74,7 +74,7 @@ Use an Extent ID to drop a specific extent.
 .drop extent 609ad1e2-5b1c-4b79-90c0-1dec262e9f46 from Fruit
 ```
 
-### Drop multiple specific extents
+### Drop multiple extents
 
 Use a list of Extent Ids to drop multiple extents.
 
