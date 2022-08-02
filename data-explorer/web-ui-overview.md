@@ -29,7 +29,7 @@ There are five tabs on the left pane:
 * [Data](#data)
 * [Query](#query)
 * [Dashboards](#dashboards-preview)
-* [Cluster](#cluster-preview)
+* [Cluster](#my-cluster-preview)
 
 Access help, feedback, and settings by selecting one of the icons in the top right corner of the menu bar. 
 
