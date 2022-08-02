@@ -246,6 +246,14 @@ items:
       href: alter-merge-capacity-policy-command.md
     - name: ".show capacity policy command"
       href: show-cluster-capacity-policy-command.md
+  - name: Encoding policy
+    items:
+    - name: Encoding policy
+      href: encoding-policy.md
+    - name: ".alter encoding policy command"
+      href: alter-encoding-policy.md
+    - name: ".show encoding policy command"
+      href: show-encoding-policy.md
   - name: Ingestion batching 
     items:
     - name: Ingestion batching policy
@@ -546,18 +554,20 @@ items:
 - name: System information
   href: systeminfo.md
   items:
-  - name: Diagnostics
-    href: diagnostics.md
-  - name: Journal
-    href: journal.md
-  - name: Queries
-    href: queries.md
   - name: Commands
     href: commands.md
   - name: Commands and queries
     href: commands-and-queries.md
+  - name: Data statistics
+    href: show-table-data-statistics.md
+  - name: Diagnostics
+    href: diagnostics.md
+  - name: Journal
+    href: journal.md
   - name: Operations
     href: operations.md
+  - name: Queries
+    href: queries.md
   - name: Streaming ingestion statistics
     href: streamingingestionstatistics.md
 - name: Access control

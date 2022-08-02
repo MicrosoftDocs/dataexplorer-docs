@@ -1,9 +1,9 @@
 ---
-title: Use one-click sample app generator to ingest and query data in Azure Data Explorer
-description: Overview of using the one-click sample app generator to create the code to ingest and query your data in your preferred programming language.
+title: Use the sample app generator to ingest and query data in Azure Data Explorer
+description: Overview of using the sample app generator to create the code to ingest and query your data in your preferred programming language.
 ms.reviewer: talzamir
 ms.topic: how-to
-ms.date: 01/30/2022
+ms.date: 07/13/2022
 ---
 
 # Use the one-click sample app generator to create code to ingest and query your data
@@ -16,7 +16,7 @@ You can use the generated code as a baseline to write your own apps, altering th
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Create [a cluster and database](create-cluster-database-portal.md).
-* Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
+* Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 > [!NOTE]
 > To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
@@ -27,13 +27,13 @@ The one-click sample app generator wizard guides you through the one-click inges
 
 * To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), use one of the following methods:
 
-    * Select **Data** in the left pane. Within the **Data Management** page under Quick actions, select **Generate Sample App**.
+  * Select **Data** in the left pane. Within the **Data Management** page under Quick actions, select **Generate Sample App**.
 
-      :::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-welcome.png" alt-text="Sample app generator from welcome to Azure Data Explorer.":::
+    :::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-welcome.png" alt-text="Screenshot showing Sample app generator card from welcome to Azure Data Explorer.":::
 
-    * Select **Data** in the left pane. Within the **Data Management** page, select **SDKs & Connectors** tab. Within SDKs sub-tab, select an SDK.
+  * Select **Data** in the left pane. Within the **Data Management** page, select **SDKs & Connectors** tab. Within SDKs sub-tab, select an SDK.
 
-      :::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-sdks.png" alt-text="Sample app generator from SDKs & connectors tab.":::
+    :::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-sdks.png" alt-text="Screenshot showing Sample app generator from SDKs & connectors tab.":::
 
 ## One-click sample app generator wizard
 
@@ -56,8 +56,8 @@ The wizard guides you through the following options:
 * Ingest into an [existing table](one-click-ingestion-existing-table.md)
 * Ingest into [a new table](one-click-ingestion-new-table.md)
 * Ingest data from:
-    * Blob storage
-    * [A local file](one-click-ingestion-existing-table.md)
+  * Blob storage
+  * [A local file](one-click-ingestion-existing-table.md)
 
 ### Schema mapping
 

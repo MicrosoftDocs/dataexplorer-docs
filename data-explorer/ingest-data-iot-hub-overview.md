@@ -20,7 +20,6 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
     > [!NOTE]
     > IoT Hub doesn't support the .raw format.
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
-  * The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it. The ingestion uncompressed size limit per file is 4 GB.
 
 ## Ingestion properties
 
@@ -53,6 +52,7 @@ To specify an alternate database, set the *Database* [ingestion property](#inges
 ### Route event data to an alternate table
 
 You can also specify target table properties for each event, using event properties. The connection will dynamically route the data as specified in the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties), overriding the static properties for this event.
+To specify an alternate table, set the *Table* [ingestion property](#ingestion-properties).
 
 > [!Note]
 > If **My data includes routing info** selected, you must provide the necessary routing information as part of the events properties.
@@ -107,7 +107,7 @@ If you don't already have one, [Create an Iot Hub](ingest-data-iot-hub.md#create
 
 ## Sending events
 
-See the [sample project](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Quickstarts/SimulatedDevice) that simulates a device and generates data.
+See the [sample project](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/iot-hub/Quickstarts/SimulatedDevice) that simulates a device and generates data.
 
 ## Next steps
 

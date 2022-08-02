@@ -1,9 +1,9 @@
 ---
-title: Use one-click ingestion to ingest data into Azure Data Explorer
-description: Overview of ingesting (loading) data into Azure Data Explorer simply, using one-click ingestion.
+title: Ingest data into Azure Data Explorer using the ingestion wizard
+description: Overview of ingesting (loading) data into Azure Data Explorer simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 11/28/2021
+ms.date: 07/13/2022
 ---
 
 # What is one-click ingestion?
@@ -20,13 +20,13 @@ The following features make one-click ingestion so useful:
 * Table mapping and schema are suggested to you and easy to change
 * Continue ingestion easily and quickly from a container with [Event Grid](one-click-ingestion-new-table.md#create-continuous-ingestion)
 
-One-click ingestion is particularly useful when ingesting data for the first time, or when your data's schema is unfamiliar to you.
+One-click ingestion is useful when ingesting data for the first time, or when your data's schema is unfamiliar to you.
 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Create [a cluster and database](create-cluster-database-portal.md).
-* Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
+* Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 > [!NOTE]
 > To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
@@ -36,13 +36,13 @@ One-click ingestion is particularly useful when ingesting data for the first tim
 The one-click ingestion wizard guides you through the one-click ingestion process.
 
 * To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), use one of the following methods:
-    * Select **Data** in the left pane. Within the **Data Management** page, select a type of ingestion and click **Ingest**.
-      
+  * Select **Data** in the left pane. Within the **Data Management** page, select a type of ingestion and select **Ingest**.
+
       :::image type="content" source="media/ingest-data-one-click/select-data-pane.png" alt-text="Screenshot of options to ingest data from the data management window of the WebUI interface - Azure Data Explorer." lightbox="media/ingest-data-one-click/select-data-pane.png":::
-   
-     * Select **Query** in the left pane. Right-click the *database* or *table* and select **Ingest new data**.
-        
-        :::image type="content" source="media/ingest-data-one-click/ingest-new-data-database-menu.png" alt-text="Screenshot of selection of one-click ingestion in the Azure Data Explorer web UI.":::
+
+  * Select **Query** in the left pane. Right-click the *database* or *table* and select **Ingest new data**.
+
+      :::image type="content" source="media/ingest-data-one-click/ingest-new-data-database-menu.png" alt-text="Screenshot of selection of one-click ingestion in the Azure Data Explorer web U I.":::
 
 * To access the one-click ingestion wizard from the **Welcome to Azure Data Explorer** home screen in your cluster, complete the first two steps ([cluster creation and database creation](#prerequisites)) and then select **Ingest new data**.
 
@@ -58,25 +58,28 @@ The one-click ingestion wizard guides you through the one-click ingestion proces
 > This section describes the wizard in general. The options you select depend on what data format you are ingesting, what kind of data source you are ingesting from, and whether you are ingesting into a new or existing table.
 >
 > For sample scenarios, see:
+>
 > * Ingest into [a new table from a container in CSV format](one-click-ingestion-new-table.md)
 > * Ingest into an [existing table from a local file in JSON format](one-click-ingestion-existing-table.md)
 
 The wizard guides you through the following options:
-   * Ingest into an [existing table](one-click-ingestion-existing-table.md)
-   * Ingest into [a new table](one-click-ingestion-new-table.md)
-   * Ingest data from:
-      * Blob storage: up to 10 blobs
-      * [A local file](one-click-ingestion-existing-table.md): up to 10 files
-      * [A container](one-click-ingestion-new-table.md) (blob container, ADLS Gen1 container, ADLS Gen2 container)
+
+* Ingest into an [existing table](one-click-ingestion-existing-table.md)
+* Ingest into [a new table](one-click-ingestion-new-table.md)
+* Ingest data from:
+  * Blob storage: up to 10 blobs
+  * [A local file](one-click-ingestion-existing-table.md): up to 10 files
+  * [A container](one-click-ingestion-new-table.md) (blob container, ADLS Gen1 container, ADLS Gen2 container)
 
 ### Schema mapping
 
 The service automatically generates schema and ingestion properties, which you can change. You can use an existing mapping structure or create a new one, depending on if you're ingesting to a new or existing table.
 
 In the **Schema** tab, do the following actions:
-   * Confirm the autogenerated compression type.
-   * Choose the [format of your data](#file-formats). Different formats will allow you to make further changes.
-   * Change mapping in the [Editor window](#editor-window).
+
+* Confirm the autogenerated compression type.
+* Choose the [format of your data](#file-formats). Different formats will allow you to make further changes.
+* Change mapping in the [Editor window](#editor-window).
 
 #### File formats
 
@@ -84,7 +87,7 @@ One-click ingestion supports ingesting from source data in all [data formats sup
 
 ### Editor window
 
-In the **Editor** window of the **Schema** tab, you can adjust data table columns as necessary. 
+In the **Editor** window of the **Schema** tab, you can adjust data table columns as necessary.
 
 [!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
 
@@ -96,6 +99,7 @@ In the **Editor** window of the **Schema** tab, you can adjust data table column
 Some data format mappings (Parquet, JSON, and Avro) support simple ingest-time transformations. To apply mapping transformations, create or update a column in the [Editor window](#editor-window).
 
 Mapping transformations can be performed on a column of **Type** string or datetime, with the **Source** having data type int or long. Supported mapping transformations are:
+
 * DateTimeFromUnixSeconds
 * DateTimeFromUnixMilliseconds
 * DateTimeFromUnixMicroseconds
@@ -103,22 +107,23 @@ Mapping transformations can be performed on a column of **Type** string or datet
 
 ### Data ingestion
 
-Once you have completed schema mapping and column manipulations, the ingestion wizard will start the data ingestion process. 
+Once you have completed schema mapping and column manipulations, the ingestion wizard will start the data ingestion process.
 
 * When ingesting data from **non-container** sources, the ingestion will take immediate effect.
 
 * If your data source is a **container**:
-    * Azure Data Explorer's [batching policy](kusto/management/batchingpolicy.md) will aggregate your data. 
-    * After ingestion, you can download the ingestion report and review the performance of each blob that was addressed. 
-    * You can select **Create continuous ingestion** and set up [continuous ingestion using Event Grid](one-click-ingestion-new-table.md#create-continuous-ingestion).
- 
+
+  * Azure Data Explorer's [batching policy](kusto/management/batchingpolicy.md) will aggregate your data.
+  * After ingestion, you can download the ingestion report and review the performance of each blob that was addressed.
+  * You can select **Create continuous ingestion** and set up [continuous ingestion using Event Grid](one-click-ingestion-new-table.md#create-continuous-ingestion).
+
 ### Initial data exploration
-   
+
 After ingestion, the wizard gives you options to use **[Quick commands](one-click-ingestion-existing-table.md#explore-quick-queries-and-tools)** for initial exploration of your data.
 
 ## Next steps
 
 * [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md)
 * [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md)
-* [Query data in Azure Data Explorer Web UI](web-query-data.md)
+* [Query data in Azure Data Explorer web UI](web-query-data.md)
 * [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)

@@ -56,7 +56,7 @@ where the `# of customers returned during the period` is defined as:
 > *number of new customers acquired during the period*
 
 `Retention Rate` can vary from 0.0 to 1.0
-The higher score means the larger number of returning users.
+A higher score means a larger number of returning users.
 
 ***Churn Rate Definition***
 

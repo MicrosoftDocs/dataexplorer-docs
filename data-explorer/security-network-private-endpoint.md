@@ -30,7 +30,10 @@ You can secure your cluster to only accept connections from your VNet by configu
 
 ## Plan the size of subnet in your VNet
 
-The size of the subnet used to host a private endpoint for a cluster can't be altered once the subnet is deployed. The private endpoint consumes multiple IP addresses in your virtual network. In extreme scenarios, such as high-end ingestion, the number of IP addresses consumed by the private endpoint may increase. This increase is caused by transient storage accounts required as staging accounts for ingesting into your cluster. If the scenario is relevant in your environment, you must plan for it when determining the size for the subnet.
+The size of the subnet used to host a private endpoint for a cluster can't be altered once the subnet is deployed. The private endpoint consumes multiple IP addresses in your virtual network. In extreme scenarios, such as high-end ingestion, the number of IP addresses consumed by the private endpoint may increase. This increase is caused by an increased number of transient storage accounts required as staging accounts for ingesting into your cluster. If the scenario is relevant in your environment, you must plan for it when determining the size for the subnet.
+
+> [!NOTE]
+> The relevant ingestion scenarios that would be responsible for scaling out the transient storage accounts are [ingestion from a local file](kusto/api/netfx/kusto-ingest-client-examples.md#ingest-from-local-file) and [async ingestion from a blob](kusto/api/netfx/kusto-ingest-client-examples.md#async-ingestion-from-a-single-azure-blob).
 
 Use the following information to help you determine the total number of IP addresses required by your private endpoint:
 
@@ -68,7 +71,7 @@ To increase security, you also can disable public access to the cluster in the A
 
 ## Managed private endpoints
 
-You can use a managed private endpoint to enable the cluster to securely access your event hub via its private endpoint. When you create a cluster, Azure provisions a managed virtual network in the Microsoft backbone infrastructure. This VNet is isolated and not visible to your users because the Azure Data Explorer service is consumed as a PaaS resource. You can create a managed private endpoint via the REST API to provision a private endpoint in the same virtual network where the root service resources of the cluster reside. This enables the service to access your event hub privately.
+You can use a managed private endpoint to either enable the cluster to securely access your ingestion- or query-related services via their private endpoint. This allows the Azure Data Explorer cluster to access your resources via a private IP address.
 
 :::image type="content" source="media/security-network-private-endpoint/pe-mpe.png" alt-text="Diagram showing the schema of the managed private endpoint architecture.":::
 

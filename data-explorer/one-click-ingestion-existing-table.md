@@ -1,9 +1,9 @@
 ---
-title: Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer
-description: Ingesting (loading) data into an existing Azure Data Explorer table simply, using one-click ingestion.
+title: Ingest JSON data from a local file to an existing table in Azure Data Explorer using the ingestion wizard
+description: Ingesting (loading) data into an existing Azure Data Explorer table simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 11/28/2021
+ms.date: 07/13/2022
 ---
 
 # Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer
@@ -24,17 +24,17 @@ For different types or sources of data, see [Use one-click ingestion to ingest C
 
 ## Ingest new data
 
-1. In the left menu of the Web UI, select **Data**.
+1. In the left menu of the Azure Data Explorer web UI, select **Data**.
 
 1. From the **Quick actions** section, select **Ingest new data**. Alternatively, from the **All actions** section, select **Ingest new data** and then **Ingest**.
 
-   :::image type="content" source="media/one-click-ingestion-existing-table/ingest-new-data.png" alt-text="Screenshot for the Web UI where you select one-click ingestion for a table.":::
+   :::image type="content" source="media/one-click-ingestion-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web U I where you select one-click ingestion for a table.":::
 
 ## Select an ingestion type
 
 1. In the **Ingest new data** window, the **Destination** tab is selected.
 
-1. The **Cluster** and **Database** fields are auto-populated. You can change by select an existing cluster and database name from the drop-down menu.
+1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus.
 
     [!INCLUDE [one-click-cluster](includes/one-click-cluster.md)]
 
@@ -66,7 +66,7 @@ The **Schema** tab opens.
     > If you want to use **CSV** files, see [Use one-click ingestion to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
 
 * For tabular formats, you can select **Keep current table schema**.
-Tabular data doesn't necessarily include the column names which are used to map source data to the existing columns. When this option is checked, mapping is done by-order, and the table schema will remain the same. If this option is unchecked, new columns will be created for incoming data, regardless of data structure.
+Tabular data doesn't necessarily include the column names that are used to map source data to the existing columns. When this option is checked, mapping is done by-order, and the table schema will remain the same. If this option is unchecked, new columns will be created for incoming data, regardless of data structure.
 
     :::image type="content" source="media/one-click-ingestion-existing-table/keep-table-schema.png" alt-text="Screen shot showing the 'keep current table schema' option checked when using tabular data format.":::
 
@@ -83,7 +83,7 @@ To add columns from JSON levels that are different than the main **Nested levels
 
     :::image type="content" source="media/one-click-ingestion-existing-table/create-new-source.png" alt-text="Screenshot - create new source for adding nested JSON data in one click ingestion process - Azure Data Explorer.":::
 
-1. Enter the new source for this column and click **OK**. This source can come from any JSON level.
+1. Enter the new source for this column and select **OK**. This source can come from any JSON level.
 
     :::image type="content" source="media/one-click-ingestion-existing-table/name-new-source.png" alt-text="Screenshot showing window to name the new data source for the added column.":::
 
@@ -121,5 +121,5 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 
 ## Next steps
 
-* [Query data in Azure Data Explorer Web UI](web-query-data.md)
+* [Query data in Azure Data Explorer web UI](web-query-data.md)
 * [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)

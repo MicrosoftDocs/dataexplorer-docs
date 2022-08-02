@@ -7,10 +7,9 @@ ms.date: 02/13/2020
 ---
 # .create function
 
-Creates a stored function, which is a reusable [`let` statement](../query/letstatement.md)
-function with the given name. The function definition is persisted with the database metadata.
+Creates a stored function, which is a reusable KQL query,  with the given name. The function definition is persisted with the database metadata.
 
-Functions can call other functions (recursiveness is not supported), and `let` statements are allowed as part of the *Function Body*. See [`let` statements](../query/letstatement.md).
+Functions can call other functions (recursiveness is not supported). Besides, [`let`](../query/letstatement.md) statements are allowed as part of the *Function Body*. See [`let` statements](../query/letstatement.md).
 
 Rules for parameter types and CSL statements are the same as for [`let` statements](../query/letstatement.md).
     

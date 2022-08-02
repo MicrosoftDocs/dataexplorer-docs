@@ -49,7 +49,7 @@ Run the following command in the query window:
 
 ## Install the Logstash output plugin
 
-The Logstash output plugin communicates with Azure Data Explorer and sends the data to the service.
+The Logstash output plugin communicates with Azure Data Explorer and sends the data to the service. For more information, see [Logstash plugin](https://github.com/Azure/logstash-output-kusto).
 Run the following command inside the Logstash root directory to install the plugin:
 
 ```sh

@@ -65,7 +65,7 @@ The following kinds of partition keys are supported.
 |Property | Description | Supported value(s)| Recommended value |
 |---|---|---|---|
 | `Function` | The name of a hash-modulo function to use.| `XxHash64` | |
-| `MaxPartitionCount` | The maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period. | In the range `(1,2048]`. <br>  Larger than five times the number of nodes in the cluster, and smaller than the cardinality of the column. |  Higher values lead to greater overhead of the data partitioning process on the cluster's nodes, and a higher number of extents for each time period. The recommended value is `128`. Higher values will significantly increase the overhead of partitioning the data post-ingestion, and the size of metadata - and are therefore not recommended.
+| `MaxPartitionCount` | The maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period. | In the range `(1,2048]`. |  Higher values lead to greater overhead of the data partitioning process on the cluster's nodes, and a higher number of extents for each time period. The recommended value is `128`. Higher values will significantly increase the overhead of partitioning the data post-ingestion, and the size of metadata - and are therefore not recommended.
 | `Seed` | Use for randomizing the hash value. | A positive integer. | `1`, which is also the default value. |
 | `PartitionAssignmentMode` | The mode used for assigning partitions to nodes in the cluster. | `Default`: All homogeneous (partitioned) extents that belong to the same partition are assigned to the same node. <br> `Uniform`: An extents' partition values are disregarded. Extents are assigned uniformly to the cluster's nodes. | If queries don't join or aggregate on the hash partition key, use `Uniform`. Otherwise, use `Default`. |
 
@@ -213,7 +213,7 @@ The following properties can be defined as part of the policy. These properties 
 ### Limitations
 
 * Attempts to partition data in a database that already has more than 5,000,000 extents will be throttled.
-  * In such cases, we recommend that you temporarily disable partitioning and re-evaluate your configuration and policies. For example, you can set the `EffectiveDateTime` to a future date until the extent count stabilizes on a lower value.
+  * In such cases, the `EffectiveDateTime` property of partitioning policies of tables in the database will be automatically delayed by several hours, so that you can re-evaluate your configuration and policies.
 
 ## Outliers in partitioned columns
 

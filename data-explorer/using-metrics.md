@@ -9,7 +9,7 @@ ms.custom: contperf-fy21q1
 
 # Monitor Azure Data Explorer performance, health, and usage with metrics
 
-Azure Data Explorer metrics provide key indicators as to the health and performance of the Azure Data Explorer cluster resources. Use the metrics that are detailed in this article to monitor Azure Data Explorer cluster usage, health, and performance in your specific scenario as standalone metrics. You can also use metrics as the basis for operational [Azure Dashboards](/azure/azure-portal/azure-portal-dashboards) and [Azure Alerts](/azure/azure-monitor/platform/alerts-metric-overview).
+Azure Data Explorer metrics provide key indicators as to the health and performance of the Azure Data Explorer cluster resources. Use the metrics that are detailed in this article to monitor Azure Data Explorer cluster usage, health, and performance in your specific scenario as standalone metrics. You can also use metrics as the basis for operational [Azure Dashboards](/azure/azure-portal/azure-portal-dashboards) and [Azure Alerts](/azure/azure-monitor/alerts/alerts-types#metric-alerts).
 
 For more information about Azure Metrics Explorer, see [Metrics Explorer](/azure/azure-monitor/platform/metrics-getting-started).
 
@@ -68,6 +68,7 @@ The cluster metrics track the general health of the cluster. For example, resour
 | Keep alive | Count | Avg | Tracks the responsiveness of the cluster. <br> <br> A fully responsive cluster returns value 1 and a blocked or disconnected cluster returns 0. |
 | Total number of throttled commands | Count | Avg, Max, Min, Sum | The number of throttled (rejected) commands in the cluster, since the maximum allowed number of concurrent (parallel) commands was reached. | None |
 | Total number of extents | Count | Avg, Max, Min, Sum | Total number of data extents in the cluster. <br> <br> Changes in this metric can imply massive data structure changes and high load on the cluster, since merging data extents is a CPU-heavy activity. | None |
+| Follower latency | Seconds | Avg, Max, Min | The follower databases synchronize changes in the leader databases. Because of the synchronization, there’s a data lag of a few seconds to a few minutes in data availability. <br> <br> This metric measures the length of the time lag. The time lag depends on several factors like: the overall size and rate of the ingested data to the leader, the number of databases followed, the rate of internal operations performed on the leader (merge/rebuild operations). <br> <br> This is a cluster level metrics: the followers catch metadata of all databases that are followed. This metric represents the latency of the process. | None |
 
 ## Export metrics
 
@@ -105,7 +106,7 @@ To refine your analysis:
 | Ingestion latency | Seconds | Avg, Max, Min | Latency of data ingested, from the time the data was received in the cluster until it's ready for query. The ingestion latency period depends on the ingestion scenario. | None |
 | Ingestion result  | Count | Sum | Total number of sources that either failed or succeeded to be ingested.<br> `Status`: **Success** for successful ingestion or the failure category for failures. For a complete list of possible failure categories see [Ingestion error codes in Azure Data Explorer](error-codes.md). <br> `Failure Status Type`: Whether the failure is permanent or transient. For successful ingestion, this dimension is `None`.<br><br>**Note:**<br><ul><li> Event Hub and IoT Hub ingestion events are pre-aggregated into one blob, and then treated as a single source to be ingested. Therefore, pre-aggregated events appear as a single ingestion result after pre-aggregation.</li><br><li>Transient failures are retried internally a limited number of times. Each transient failure is reported as a transient ingestion result. Therefore, a single ingestion may result in more than one ingestion result. </li></ul> | Status, Failure Status Type |
 | Ingestion volume (in MB) | Count | Max, Sum | The total size of data ingested to the cluster (in MB) before compression. | Database |
-| Queue length | Count | Avg | Number of pending messages in a component's input queue. | Component Type |
+| Queue length | Count | Avg | Number of pending messages in a component's input queue. The batching manager component has one message per blob. The ingestion manager component has one message per batch. A batch is a single ingest command with one or more blobs.  | Component Type |
 | Queue oldest message | Seconds | Avg | Time in seconds from when the oldest message in a component's input queue has been inserted. | Component Type | 
 | Received data size bytes | Bytes | Avg, Sum | Size of data received by data connections from input stream. | Component Type, Component Name |
 | Stage latency | Seconds | Avg | Time from when a message is accepted by Azure Data Explorer, until its content is received by an ingestion component for processing. <br> <br> Use **apply filters** and select **Component Type > EngineStorage** to show the total ingestion latency.| Database, Component Type | 

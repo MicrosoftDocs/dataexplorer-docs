@@ -18,7 +18,7 @@ items:
     href: create-cluster-database-portal.md
   - name: Ingest sample data
     href: ingest-sample-data.md
-  - name: Query data with Web UI
+  - name: Query data with Azure Data Explorer web UI
     href: web-query-data.md
 - name: Tutorials
   items:
@@ -40,6 +40,8 @@ items:
   items:
   - name: EngineV3
     href: engine-v3.md
+  - name: Azure Data Explorer web UI overview
+    href: web-ui-overview.md
   - name: Data ingestion
     items:
     - name: Data ingestion overview
@@ -59,7 +61,7 @@ items:
     - name: Security baseline
       href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
     - name: Security controls by Azure Policy
-      href: ./security-controls-policy.md
+      href: security-controls-policy.md
   - name: Business continuity
     items:
     - name: Overview
@@ -72,8 +74,15 @@ items:
     href: tools-integrations-overview.md
 - name: How-to guides
   items:
-  - name: Create a start-for-free cluster
-    href: start-for-free-web-ui.md
+  - name: Explore the samples gallery
+    href: web-ui-samples-gallery.md
+    displayName: Azure Data Explorer web UI
+  - name: Explore with a free cluster
+    items:
+    - name: Create a free cluster
+      href: start-for-free-web-ui.md
+    - name: Upgrade a free cluster
+      href: start-for-free-upgrade.md
   - name: Create cluster and database
     items:
     - name: Azure CLI
@@ -114,6 +123,8 @@ items:
       - name: JSON data from local file to existing table
         displayName: ingest data, ingestion, one click
         href: one-click-ingestion-existing-table.md
+      - name: One-click sample app generator
+        href: sample-app-generator-one-click.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
@@ -214,6 +225,9 @@ items:
       - name: Java SDK
         displayName: ingest data, ingestion
         href: java-ingest-data.md
+    - name: Azure Stream Analytics
+      href: stream-analytics-connector.md
+      displayName: ingest data, ingestion
     - name: Kafka
       displayName: ingest data, ingestion
       href: ingest-data-kafka.md
@@ -443,7 +457,7 @@ items:
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
     - name: Use Azure Monitor insights
-      href: /azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
+      href: data-explorer-insights.md
     - name: Monitor batching ingestion with metrics
       href: monitor-batching-ingestion.md
   - name: Share data
@@ -494,6 +508,9 @@ items:
       href: devops.md
     - name: Sync Kusto
       href: kusto/tools/synckusto.md
+    - name: Migrate TSI to Azure Data Explorer
+      href: /azure/time-series-insights/migration-to-adx
+      displayName: Time Series Insights
   - name: Troubleshoot
     items:
     - name: Creating a cluster
@@ -619,7 +636,7 @@ items:
       href: kusto/functions-library/wilcoxon-test-fl.md
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions
-    href: ./policy-reference.md
+    href: policy-reference.md
 - name: Resources
   items:
   - name: Forums

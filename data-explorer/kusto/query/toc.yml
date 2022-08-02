@@ -157,6 +157,8 @@ items:
     href: parseoperator.md
   - name: parse-where operator
     href: parsewhereoperator.md
+  - name: parse-kv operator
+    href: parse-kv-operator.md
   - name: partition operator
     href: partitionoperator.md
   - name: print operator
@@ -422,6 +424,22 @@ items:
     href: coalescefunction.md
   - name: column_ifexists()
     href: columnifexists.md
+  - name: convert_angle()
+    href: convert-angle-function.md
+  - name: convert_energy()
+    href: convert-energy-function.md
+  - name: convert_force()
+    href: convert-force-function.md
+  - name: convert_length()
+    href: convert-length-function.md
+  - name: convert_mass()
+    href: convert-mass-function.md
+  - name: convert_speed()
+    href: convert-speed-function.md
+  - name: convert_temperature()
+    href: convert-temperature-function.md
+  - name: convert_volume()
+    href: convert-volume-function.md
   - name: cos()
     href: cosfunction.md
   - name: cot()
@@ -449,8 +467,12 @@ items:
     href: datetime-addfunction.md
   - name: datetime_diff()
     href: datetime-difffunction.md
+  - name: datetime-local-to-utc()
+    href: datetime-local-to-utc-function.md
   - name: datetime_part()
     href: datetime-partfunction.md
+  - name: datetime_utc_to_local()
+    href: datetime-utc-to-local-function.md
   - name: dayofmonth()
     href: dayofmonthfunction.md
   - name: dayofweek()
@@ -872,6 +894,9 @@ items:
   - name: Geospatial clustering overview
     displayName: H3, S2, Geohash
     href: geospatial-grid-systems.md
+  - name: Geospatial visualizations
+    displayName: Geospatial visualizations
+    href: geospatial-visualizations.md
   - name: geo_distance_2points()
     href: geo-distance-2points-function.md
   - name: geo_distance_point_to_line()
@@ -1214,6 +1239,8 @@ items:
     href: sqlcheatsheet.md
   - name: Splunk to Kusto cheat sheet
     href: splunk-cheat-sheet.md
+  - name: Timezones
+    href: timezone.md
 - name: Query tools
   items:
   - name: Kusto.Explorer
