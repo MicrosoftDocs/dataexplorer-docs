@@ -3,7 +3,7 @@ title: activity_engagement plugin - Azure Data Explorer
 description: This article describes activity_engagement plugin in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 08/02/2022
 ---
 # activity_engagement plugin
 
@@ -28,8 +28,8 @@ T | evaluate activity_engagement(id, datetime_column, 1d, 30d)
 | *TimelineColumn* | string | &check; | The name of the column that represents timeline. |
 | *Start* | datetime |  | Scalar with value of the analysis start period. |
 | *End* | datetime |  | Scalar with value of the analysis end period. |
-| *InnerActivityWindow* | timespan | &check; | Scalar with value of the inner-scope analysis window period. |
-| *OuterActivityWindow* | timespan | &check; | Scalar with value of the outer-scope analysis window period. |
+| *InnerActivityWindow* | timespan | &check; | Value of the inner-scope analysis window period. |
+| *OuterActivityWindow* | timespan | &check; | Value of the outer-scope analysis window period. |
 | *dim1*, *dim2*, ... | table array |  | List of the dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
