@@ -467,7 +467,7 @@ items:
     href: datetime-addfunction.md
   - name: datetime_diff()
     href: datetime-difffunction.md
-  - name: datetime-local-to-utc()
+  - name: datetime_local_to_utc()
     href: datetime-local-to-utc-function.md
   - name: datetime_part()
     href: datetime-partfunction.md
