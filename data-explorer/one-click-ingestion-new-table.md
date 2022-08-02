@@ -69,37 +69,9 @@ Under **Source type**, do the following steps:
    > [!TIP]
    > For ingestion **from file**, see [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md#select-an-ingestion-type)
 
-### Ingest from a container
-
-To ingest from a specific folder within a container, [generate a string of the following format](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates):
-
-*container_path*`/`*folder_path*`;`*access_key_1*
-
-Alternatively, you'll use a string instead of the SAS URL in [select an ingestion type](#select-an-ingestion-type).
-
-1. Navigate to the storage account, and select **Storage Explorer > Select Blob Containers**
-
-    :::image type="content" source="media/one-click-ingestion-new-table/storage-browser-blob-containers.png" alt-text="Screenshot access blob containers in Azure Storage account.":::
-
-1. Browse to the selected folder, and select **Copy URL**. Paste this value into a temporary file and add `;` to the end of this string.
-
-    :::image type="content" source="media/one-click-ingestion-new-table/storage-folder-copy-url.png" alt-text="Screenshot of copy URL in folder in blob container - Azure Storage account.":::
-
-1. Enter this url into the **Folder path** field to select this folder.
-
-### Storage subscription error
-
-If you get the following error message when ingesting from a storage account:
-
-> Couldn't find the storage under your selected subscriptions. Please add the storage account *`storage_account_name`* subscription to your selected subscriptions in the portal.
-
-1. Select the :::image type="icon" source="media/ingest-data-one-click/directory-subscription-icon.png" border="false":::  icon from the top-right menu tray. A **Directory + subscription** pane opens.
-
-1. In the **All subscriptions** dropdown, add your storage account's subscription to the selected list.
-
-    :::image type="content" source="media/ingest-data-one-click/subscription-dropdown.png" alt-text="Screenshot of Directory + subscription pane with subscription dropdown highlighted by a red box.":::
-
 ## Filter data
+
+Choose from one of the following options to filter data to ingest specific files, or from a selection of files.
 
 * If you want to, filter the data to ingest only files that end with a specific file extension.
 
@@ -117,6 +89,20 @@ If you get the following error message when ingesting from a storage account:
 
   :::image type="content" source="media/one-click-ingestion-new-table/filter-folder-path-search.png" alt-text="Screenshot of the folder path search to filter files when ingesting data with the ingestion wizard.":::
   
+* Alternatively, you can filter for a specific folder using the path to that folder.
+
+1. Navigate to the storage account, and select **Storage Explorer > Select Blob Containers**
+
+    :::image type="content" source="media/one-click-ingestion-new-table/storage-browser-blob-containers.png" alt-text="Screenshot access blob containers in Azure Storage account.":::
+
+1. Browse to the selected folder, and select file path to the folder.
+
+    :::image type="content" source="media/one-click-ingestion-new-table/copy-path.png" alt-text="Screenshot of copy URL in folder in blob container - Azure Storage account.":::
+
+1. Paste this path into a temporary file and insert `/` in between each folder to create a folder path.
+
+1. Enter this path into the **Folder path** field to select this folder.
+
 ## Edit the schema
 
 Select **Next: Schema** to view and edit your table column configuration. The service automatically identifies if the schema is compressed by looking at the name of the source.
