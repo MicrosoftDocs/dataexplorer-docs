@@ -18,7 +18,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 `.create` `function` [`ifnotexists`] [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`] [`view` `=` *View*] [`,` `skipvalidation` `=` 'true'] `)`]
 *FunctionName* `(` *ParamName* `:` *ParamType* [`,` ...] `)` `{` *FunctionBody* `}`
 
-**Input**
+## Arguments
 
 |Input parameter |Type |Description |
 |---|---|---|
@@ -30,7 +30,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 |FunctionName(ParamName:ParamType)|String (String:datatype)|Name of the function, the parameter name and datatype.
 |FunctionBody|   | A user defined function expression.
 
-**Output**
+## Returns
 
 |Output parameter |Type |Description
 |---|---|---|
@@ -49,7 +49,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 > * Not all data types are supported in `let` statements. Supported types are: boolean, string, long, datetime, timespan, double, and dynamic.
 > * Use `skipvalidation` to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.
 
-**Example 1**
+## Example: Simple demo function
 
 ```kusto
 .create function 
@@ -61,7 +61,7 @@ MyFunction1()  {StormEvents | limit 100}
 |---|---|---|---|---|
 |MyFunction1|()|{StormEvents &#124; limit 100}|Demo|Simple demo function|
 
-**Example 2**
+## Example: Demo function with parameter
 
 ```kusto
 .create function
