@@ -3,7 +3,7 @@ title: Kusto .NET Client Libraries from PowerShell - Azure Data Explorer
 description: This article describes Using the .NET Client Libraries from PowerShell in Azure Data Explorer.
 ms.reviewer: salevy
 ms.topic: reference
-ms.date: 08/01/2022
+ms.date: 08/02/2022
 ---
 # Using the .NET client libraries from PowerShell
 
@@ -34,9 +34,10 @@ For more information, see the [Azure Data Explorer client libraries](../netfx/ab
 ```powershell
 #  Part 1 of 3
 #  ------------
-#  Packages location - This is an example of the location from where you extract the Microsoft.Azure.Kusto.Tools package. Replace the <version> with the correct version. 
-#  Please make sure you load the types from a local directory and not from a remote share.
-$packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\tools\net<version>"
+#  Packages location - This is an example of the location from where you extract the Microsoft.Azure.Kusto.Tools package
+#  Please make sure you load the types from a local directory and not from a remote share
+#  Please make sure you load the version compatible with your PowerShell version (see explanations above)
+$packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\tools\net472"
 
 #  Part 2 of 3
 #  ------------
