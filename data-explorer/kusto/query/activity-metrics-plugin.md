@@ -31,7 +31,7 @@ T | evaluate activity_metrics(id, datetime_column, startofday(ago(30d)), startof
 
 ## Returns
 
-The plugin returns a table with the distinct count values, distinct count of new values, retention rate, and churn rate for each timeline period, and for each existing dimensions combination.
+The plugin returns a table with the distinct count values, distinct count of new values, retention rate, and churn rate for each timeline period for each existing dimensions combination.
 
 Output table schema is:
 
@@ -76,8 +76,7 @@ where the `# of customer lost in the period` is defined as:
 The higher score means the larger number of users are NOT returning to the service.
 
 ***Churn vs. Retention Rate***
-
-Derived from the definition of `Churn Rate` and `Retention Rate`, the following calculation is always true:
+The churn vs. retention Rate is derived from the definition of `Churn Rate` and `Retention Rate`. The following calculation is always true:
 
 > [`Retention Rate`] = 100.0% - [`Churn Rate`]
 
@@ -128,7 +127,7 @@ range _day from _start to _end  step 1d
 |2017-05-22 00:00:00.0000000|0.199122325836533|0.800877674163467|
 |2017-05-29 00:00:00.0000000|0.063468992248062|0.936531007751938|
 
-:::image type="content" source="images/activity-metrics-plugin/activity-metrics-churn-and-retention.png" border="false" alt-text="Table showing the calculated retention and churn rates per 7 days as specified in the query.":::
+:::image type="content" source="images/activity-metrics-plugin/activity-metrics-churn-and-retention.png" border="false" alt-text="Table showing the calculated retention and churn rates per seven days as specified in the query.":::
 
 ### Distinct values and distinct 'new' values
 

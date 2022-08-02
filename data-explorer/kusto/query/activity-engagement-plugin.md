@@ -34,7 +34,7 @@ T | evaluate activity_engagement(id, datetime_column, 1d, 30d)
 
 ## Returns
 
-Returns a table that has a distinct count of ID values inside an inner-scope window, a distinct count of ID values inside an outer-scope window, and the activity ratio for each inner-scope window period, and for each existing dimensions combination.
+Returns a table that has a distinct count of ID values inside an inner-scope window, inside an outer-scope window, and the activity ratio for each inner-scope window period for each existing dimensions combination.
 
 Output table schema is:
 
