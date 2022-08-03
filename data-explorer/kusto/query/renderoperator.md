@@ -11,15 +11,10 @@ zone_pivot_groups: kql-flavors
 
 Instructs the user agent to render the results of the query in a particular way.
 
-```kusto
-range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
-```
-
 > [!NOTE]
->
-> * The render operator should be the last operator in the query, and used only with queries that produce a single tabular data stream result.
+> * The render operator must be the last operator in the query, and can only be used with queries that produce a single tabular data stream result.
 > * The render operator does not modify data. It injects an annotation ("Visualization") into the result's extended properties. The annotation contains the information provided by the operator in the query.
-> * The interpretation of the visualization information is done by the user agent. Different agents (such as Kusto.Explorer,Kusto.WebExplorer) might support different visualizations.
+> * The interpretation of the visualization information is done by the user agent. Different agents, such as Kusto.Explorer or Azure Data Explorer web UI, may support different visualizations.
 
 ## Syntax
 
