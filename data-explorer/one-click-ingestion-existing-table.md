@@ -22,11 +22,11 @@ For different types or sources of data, see [Use the ingestion wizard to ingest 
 > [!NOTE]
 > To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
 
-## Ingest new data
+## Ingest data
 
 1. In the left menu of the Azure Data Explorer web UI, select **Data**.
 
-1. From the **Quick actions** section, select **Ingest new data**. Alternatively, from the **All actions** section, select **Ingest new data** and then **Ingest**.
+1. From the **Quick actions** section, select **Ingest data**. Alternatively, from the **All actions** section, select **Ingest data** and then **Ingest**.
 
    :::image type="content" source="media/one-click-ingestion-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web U I to select the ingestion wizard for a table.":::
 
