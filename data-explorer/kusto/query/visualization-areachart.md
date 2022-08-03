@@ -9,9 +9,10 @@ zone_pivot_groups: kql-flavors
 ---
 # Area chart
 
-Visualization in the context of the [render operator](renderoperator.md).
-
 Area graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. | **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKiUWpickZiUUlCgrlmSUZGhXJ+TmluXm2FZoApaRQYmIAAAA=)**
+
+> [!NOTE]
+> This visualization can only be used in the context of the [render operator](renderoperator.md).
 
 ## Syntax
 

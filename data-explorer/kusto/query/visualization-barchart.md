@@ -9,9 +9,10 @@ zone_pivot_groups: kql-flavors
 ---
 # Bar chart
 
-Visualization in the context of the [render operator](renderoperator.md).
-
 First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4tLc3MSizKpUhVSQcHxyfmleiS2Y1NBUSKpUCC5JLEmFKi7PSC1CUahgp2BoAJUsKMrPSk0ugWjQQVYFVVCUmpeSWqSQlFiUnJFYVAIAB5xR2owAAAA=)** 
+
+> [!NOTE]
+> This visualization can only be used in the context of the [render operator](renderoperator.md).
 
 ## Syntax
 
