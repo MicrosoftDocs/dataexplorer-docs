@@ -73,6 +73,8 @@ Under **Source type**, do the following steps:
 
 In **File filters** you can filter files to ingest specific files, or to filter the files in your search.
 
+### Filter by file extension
+
 * If you want to, filter the data to ingest only files that end with a specific file extension.
 
   For example, filter for all files that end with the word *.csv* extension.
@@ -81,13 +83,17 @@ In **File filters** you can filter files to ingest specific files, or to filter 
 
   The system will select one of the files at random and the schema will be generated based on that  **Schema defining file**. You can select a different file.
 
-* You can also filter the folder path to limit your search for a file. Once the list of files from the container is populated you can enter a search term in the **Folder path** field.
+### Filter with a search term
+
+* You can also filter the folder path to limit your search for a file. Once the list of files from the container is populated, you can enter a search term in the **Folder path** field.
 
   :::image type="content" source="media/one-click-ingestion-new-table/filter-folder-path-selected.png" alt-text="Screenshot of a list of files in a container when ingesting data with the ingestion wizard.":::
 
   The list will be filtered by the term.
 
   :::image type="content" source="media/one-click-ingestion-new-table/filter-folder-path-search.png" alt-text="Screenshot of the folder path search to filter files when ingesting data with the ingestion wizard.":::
+
+### Filter with a file path
   
 * Alternatively, you can filter for a specific folder using the path to that folder.
 
