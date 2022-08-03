@@ -19,8 +19,8 @@ The [ingestion wizard](ingest-data-one-click.md) enables you to quickly ingest d
 
 This document describes using the intuitive ingestion wizard to ingest **CSV** data from a **container** into a **new table**. Ingestion can be done as a one-time operation, or as a continuous method by [setting up an Event Grid ingestion pipeline](#create-continuous-ingestion) that responds to new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
 
-For an overview of the ingestion wizard, see [Ingestion wizard](ingest-data-one-click.md).
-For information about ingesting data into an existing table in Azure Data Explorer, see [Ingestion to an existing table](one-click-ingestion-existing-table.md)
+For an overview of the ingestion wizard, see [What is the ingestion wizard?](ingest-data-one-click.md).
+For information about ingesting data into an existing table in Azure Data Explorer, see [Ingest data to an existing table](one-click-ingestion-existing-table.md)
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ For information about ingesting data into an existing table in Azure Data Explor
 > [!NOTE]
 > To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
 
-## Ingest new data
+## Ingest data
 
 1. In the left menu of the Azure Data Explorer web UI, select **Data**.
 
@@ -44,7 +44,7 @@ For information about ingesting data into an existing table in Azure Data Explor
 
     [!INCLUDE [one-click-cluster](includes/one-click-cluster.md)]
 
-1. In **Table**, check **Create new table** and enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
+1. In **Table**, check **New table** and enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
     > [!NOTE]
     > Table names must be between 1 and 1024 characters.
@@ -71,7 +71,7 @@ Under **Source type**, do the following steps:
 
 ## Filter data
 
-Choose from one of the following options to ingest specific files, or to filter the selection of files.
+In **File filters** you can filter files to ingest specific files, or to filter the files in your search.
 
 * If you want to, filter the data to ingest only files that end with a specific file extension.
 
