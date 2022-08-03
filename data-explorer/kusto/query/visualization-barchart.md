@@ -65,3 +65,5 @@ These are:
 | `unstacked`  | Same as `default`.                                                 |
 | `stacked`    | Stack "bars".                                                      |
 | `stacked100` | Stack "bars" and stretch each one to the same width as the others. |
+
+## Example
