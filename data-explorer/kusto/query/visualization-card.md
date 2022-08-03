@@ -28,6 +28,8 @@ First result record is treated as set of scalar values and shows as a card. |  *
 |--------------|----------------------------------------------------------------------------------|
 |`title`       |The title of the visualization (of type `string`).                                |
 
+## Example
+
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
