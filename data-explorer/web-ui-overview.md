@@ -13,6 +13,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 * Azure Data Explorer [web UI](https://dataexplorer.azure.com).
 * The desktop application [Kusto.Explorer](kusto/tools/kusto-explorer.md)
+* [Kusto CLI](kusto/tools/kusto-cli.md)
 * A variety of [APIs](kusto/api/index.md)
 
 In this article, you'll see how the web UI option offers an end-to-end data exploration experience, from data ingestion to data query and dashboards. You don't need an Azure account to use the web UI. All you need is a Microsoft-linked email account.
