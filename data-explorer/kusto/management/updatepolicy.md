@@ -189,5 +189,5 @@ In this example, use an update policy in conjunction with a simple function to p
 1. To empty the source table after data is ingested into the target table, define the retention policy on the source table to have 0s as its `SoftDeletePeriod`.
 
     ```kusto
-     .alter-merge table MySourceTable policy retention softdelete = 0s ```
+     .alter-merge table MySourceTable policy retention softdelete = 0s 
     ```
