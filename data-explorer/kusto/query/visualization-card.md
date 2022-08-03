@@ -23,10 +23,10 @@ First result record is treated as set of scalar values and shows as a card. |  *
 * *T*: Input table name.
 * *PropertyName*/*PropertyValue* indicate additional information to use when rendering.
   All properties are optional. The supported properties are:
-
-|*PropertyName*|*PropertyValue*                                                                   |
-|--------------|----------------------------------------------------------------------------------|
-|`title`       |The title of the visualization (of type `string`).                                |
+    
+    |*PropertyName*|*PropertyValue*                                                                   |
+    |--------------|----------------------------------------------------------------------------------|
+    |`title`       |The title of the visualization (of type `string`).                                |
 
 ## Example
 
