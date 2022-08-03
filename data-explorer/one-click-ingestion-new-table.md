@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 08/03/2022
 ---
 
-# Ingest data from a container/ADLS into Azure Data Explorer
+# Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer
 
 > [!div class="op_single_selector"]
 > * [Ingestion wizard](one-click-ingestion-new-table.md)
@@ -58,8 +58,10 @@ For information about ingesting data into an existing table in Azure Data Explor
 Under **Source type**, do the following steps:
 
   1. Select **From blob container** (blob container, ADLS Gen2 container). You can ingest up to 5000 blobs from a single container.
-  1. In the **Link to storage** field, add the [blob URI with SAS token or Account key](kusto/api/connection-strings/generate-sas-token.md) of the container, and optionally enter the sample size.
-     A list is populated with files from the container.
+
+    * You can choose **Select container** and select information from the dropdown menus to specify the container, or **Add URL**. For this example, select **Add URL**.
+
+  1. In the **Link to source** field, add the [blob URI with SAS token or Account key](kusto/api/connection-strings/generate-sas-token.md) of the container, and optionally enter the sample size. A list is populated with files from the container.
 
   > [!NOTE]
   > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage-connection-strings.md).
