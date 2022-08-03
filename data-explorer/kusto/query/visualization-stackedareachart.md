@@ -10,9 +10,10 @@ zone_pivot_groups: kql-flavors
 # Stacked area chart
 
 ::: zone pivot="azuredataexplorer"
-Visualization in the context of the [render operator](renderoperator.md).
-
 Stacked area graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03LSwqAIBRG4XmruEODRs5bi4j+oeQDrjcyaPEZTZp+nOORq2ngiKanm9AFxdMHZotidIoFTV3z8tcXh42DRw8mamLdDm8Z1gXLQkRnlKC6q+nIZe3zAzEfsitrAAAA)** |
+
+> [!NOTE]
+> This visualization can only be used in the context of the [render operator](renderoperator.md).
 
 ## Syntax
 

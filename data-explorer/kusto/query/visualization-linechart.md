@@ -10,9 +10,11 @@ zone_pivot_groups: kql-flavors
 # Line chart
 
 ::: zone pivot="azuredataexplorer"
-Visualization in the context of the [render operator](renderoperator.md).
 
 Line graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=)** |
+
+> [!NOTE]
+> This visualization can only be used in the context of the [render operator](renderoperator.md).
 
 ## Syntax
 

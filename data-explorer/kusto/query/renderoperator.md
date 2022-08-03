@@ -22,6 +22,7 @@ Instructs the user agent to render the results of the query in a particular way.
 
 ## Arguments
 
+* *T*: Input table name.
 * *Visualization* indicates the kind of visualization to use. The supported values are:
 
 ::: zone pivot="azuredataexplorer"

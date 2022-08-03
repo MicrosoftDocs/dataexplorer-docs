@@ -9,9 +9,10 @@ zone_pivot_groups: kql-flavors
 ---
 # Pie chart
 
-Visualization in the context of the [render operator](renderoperator.md).
-
 First column is color-axis, second column is numeric. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUoLkksSU3OL80rsQWTGpoKSZUKwSBRsML8ohKQAEKZAkg4JzM3s0TB0ADELkrNS0ktUijITE3OSASqLsksyUm1VfKtVAjITFVwBovBjFQCADspGXyIAAAA)** |
+
+> [!NOTE]
+> This visualization can only be used in the context of the [render operator](renderoperator.md).
 
 ## Syntax
 
@@ -56,6 +57,7 @@ First column is color-axis, second column is numeric. |  **[**Click to run sampl
 
 Some visualizations can be further elaborated by providing the `kind` property.
 These are:
+
 | `kind` value | Description| 
 |---|---|
 | `map` | Expected columns are [Longitude, Latitude] or GeoJSON point, color-axis and numeric. Supported in Kusto Explorer desktop. For more information, see Geospatial visualizations](geospatial-visualizations.md)

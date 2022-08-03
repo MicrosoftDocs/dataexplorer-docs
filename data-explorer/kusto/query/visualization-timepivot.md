@@ -10,9 +10,12 @@ zone_pivot_groups: kql-flavors
 # Time pivot
 
 ::: zone pivot="azuredataexplorer"
-Visualization in the context of the [render operator](renderoperator.md).
 
 Interactive navigation over the events time-line (pivoting on time axis)
+
+> [!NOTE]
+> * This visualization can only be used in the context of the [render operator](renderoperator.md).
+> * This visualization can be used in Kusto.Explorer but is not available in the Azure Data Explorer web UI.
 
 ## Syntax
 
