@@ -26,22 +26,22 @@ Instructs the user agent to render the results of the query in a particular way.
 
 ::: zone pivot="azuredataexplorer"
 
-|*Visualization*     |Description| Example|
+|*Visualization*     |Description|
 |--------------------|---|---|
-| `anomalychart`     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function.  | **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WR3W7CMAyF73mKI25KpRbaTmjSUJ8CpF1WoXVptPxUifmb9vBLoGO7GFeR7ePv2I4ihpamYdToBBNLTYuqKF/zosyLdbqZqagQl/8UVV68oKreimLSdVFUDZtZR9o2WnxQ48lJ8tXsCzHM7yHMUdfidFiEN4U12AXoloUe0Turp4nYTsaeaYzs/RVedgis80CObkFdI9ltywTAagV4UtQyRKiZgyLEaTGZ9taFQqtIGHI4SX8USn4KltYEJF2YTIeFMFaHPPkMvrWOMuxFoEpDaVjujmo6aq0erafmIY+7ZCiX6wx5mSGJHb3kJA1sF8jB8q69toNwjLPkYfGTseqoja//eLNkRXXyTnuIcVyCneh72cL2YQdtDQ8ZHvIkDcsfPWH+3AvPvObx0FMXD/RLhfDYW9VhtNKwj/8U69M1b2S//AbRUQMWQQIAAA==)** |
-| `areachart`        | Area graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. | **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKiUWpickZiUUlCgrlmSUZGhXJ+TmluXm2FZoApaRQYmIAAAA=)** |
-| `barchart`         | First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4tLc3MSizKpUhVSQcHxyfmleiS2Y1NBUSKpUCC5JLEmFKi7PSC1CUahgp2BoAJUsKMrPSk0ugWjQQVYFVVCUmpeSWqSQlFiUnJFYVAIAB5xR2owAAAA=)** |
-| `card`             | First result record is treated as set of scalar values and shows as a card. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKCsmJRSkKQFCeWZKhUZGcn1Oam2dboQkA5CRu0GAAAAA=)** |
-| `columnchart`      | Like `barchart` with vertical strips instead of horizontal strips.|   **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4tLc3MSizKpUhVSQcHxyfmleiS2Y1NBUSKpUCC5JLEmFKi7PSC1CUahgp2BoAJUsKMrPSk0ugWjQQVYFVVCUmpeSWqSQnJ9TmpuXnJFYVAIAJOFS3Y8AAAA=)** |
-| `ladderchart`      | Last two columns are the x-axis, other columns are y-axis.| |
-| `linechart`        | Line graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=)** |
-| `piechart`         | First column is color-axis, second column is numeric. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUoLkksSU3OL80rsQWTGpoKSZUKwSBRsML8ohKQAEKZAkg4JzM3s0TB0ADELkrNS0ktUijITE3OSASqLsksyUm1VfKtVAjITFVwBovBjFQCADspGXyIAAAA)** |
-| `pivotchart`       | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types. |   |
-| `scatterchart`     | Points graph. First column is x-axis and should be a numeric column. Other numeric columns are y-axes. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKCsXJiSUlqUXJGYlFJQoK5ZklGRoVyfk5pbl5thWaAI8A701mAAAA)** |
-| `stackedareachart` | Stacked area graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03LSwqAIBRG4XmruEODRs5bi4j+oeQDrjcyaPEZTZp+nOORq2ngiKanm9AFxdMHZotidIoFTV3z8tcXh42DRw8mamLdDm8Z1gXLQkRnlKC6q+nIZe3zAzEfsitrAAAA)** |
-| `table`            | Default - results are shown as a table.|  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4tLc3MSizKpUhVSQcHxyfmleiS2Y1NBUSKpUCC5JLEmFKi7PSC1CUahgp2BoAJUsKMrPSk0ugWjQQVYFVVCUmpeSWqRQkpiUkwoAW+Ur0IkAAAA=)** |
-| `timechart`        | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. There's one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored). |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WrDMAyF7/sUukvCnDXJGIOVPEULuwxqoixm/gm2+jf28JObFjbYrmyho3M+yRCD1a5jaGFAJtaW8qaqX8qqLqvnYrMySYHnvxRNWT1B07xW1U03JFEzbVYDWd9Z/KAuUtAUm9UXpLJcSnAH2+LxPZe3AO9gJ6ZbRjvDGLy9EbG/BUemOXnvLxD1AOJ1mijQtWhbyHbbOgOA9RogkqGeAaXn3g1BooVb6OiDNHpD6CjAUccDGv2JrL0TSzozuQHyPYqHdqRkDKN3aBRwkJaCQJIoQ4VsuXh2A/Xezj5SWkVBWSvI0vSoOSsWpLtEpyDwY4KTW8nnJ5ws+2+eAhSyOxjkd+HDVVcIfHplp2TYTxgYTpqnnDUbarM32gPO86PY4jjqfmGw3vGkftNlCi5xNprbWW5kYvENQQnqDh8CAAA=)** |
-| `timepivot`        | Interactive navigation over the events time-line (pivoting on time axis)|  |
+|[ `anomalychart`](visualization-anomalychart.md)     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function.  |
+| [`areachart`](visualization-areachart.md)      | Area graph.  
+| [`barchart`](visualization-barchart.md)         |  displayed as horizontal strips.
+| [`card`](visualization-card.md)             | First result record is treated as set of scalar values and shows as a card. 
+| [`columnchart`](visualization-columnchart.md)      | Like `barchart` with vertical strips instead of horizontal strips.
+| [`ladderchart`](visualization-ladderchart.md)      | Last two columns are the x-axis, other columns are y-axis.| 
+| [`linechart`](visualization-linechart.md)        | Line graph. 
+| [`piechart`](visualization-piechart.md)         | First column is color-axis, second column is numeric.
+| [`pivotchart`](visualization-pivotchart.md)       | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types. | 
+| [`scatterchart`](visualization-scatterchart.md)     | Points graph. 
+| [`stackedareachart`](visualization-stackedareachart.md) | Stacked area graph. 
+| [`table`](visualization-table.md)            | Default - results are shown as a table.| 
+| [`timechart`](visualization-timechart.md)        | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. 
+| [`timepivot`](visualization-timepivot.md)        | Interactive navigation over the events time-line (pivoting on time axis)|  |
 
 > [!NOTE]
 > The ladderchart, pivotchart, and timepivot visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer web UI.
@@ -52,13 +52,13 @@ Instructs the user agent to render the results of the query in a particular way.
 
 |*Visualization*     |Description|
 |--------------------|-|
-| `areachart`        | Area graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |
-| `barchart`         | First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips.|
-| `columnchart`      | Like `barchart` with vertical strips instead of horizontal strips.|
-| `piechart`         | First column is color-axis, second column is numeric. |
-| `scatterchart`     | Points graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |
-| `table`            | Default - results are shown as a table.|
-| `timechart`        | Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There's one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored).|
+| [`areachart`](visualization-areachart.md)        | Area graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |
+| [`barchart`](visualization-barchart.md)         | First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips.|
+| [`columnchart`](visualization-columnchart.md)      | Like `barchart` with vertical strips instead of horizontal strips.|
+|  [`piechart`](visualization-piechart.md)         | First column is color-axis, second column is numeric. |
+|  [`scatterchart`](visualization-scatterchart.md)     | Points graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |
+| [`table`](visualization-table.md)            | Default - results are shown as a table.|
+|  [`timechart`](visualization-timechart.md)         | Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There's one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored).|
 
 ::: zone-end
 

@@ -9,8 +9,24 @@ zone_pivot_groups: kql-flavors
 ---
 # Card
 
-
 ::: zone pivot="azuredataexplorer"
+Visualization in the context of the [render operator](renderoperator.md).
+
+First result record is treated as set of scalar values and shows as a card. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKCsmJRSkKQFCeWZKhUZGcn1Oam2dboQkA5CRu0GAAAAA=)** |
+
+## Syntax
+
+*T* `|` `render` card [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
+
+## Arguments
+
+* *T*: Input table name.
+* *PropertyName*/*PropertyValue* indicate additional information to use when rendering.
+  All properties are optional. The supported properties are:
+
+|*PropertyName*|*PropertyValue*                                                                   |
+|--------------|----------------------------------------------------------------------------------|
+|`title`       |The title of the visualization (of type `string`).                                |
 
 ::: zone-end
 

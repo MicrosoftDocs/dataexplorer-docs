@@ -10,6 +10,36 @@ zone_pivot_groups: kql-flavors
 # Anomaly chart
 
 ::: zone pivot="azuredataexplorer"
+Visualization in the context of the [render operator](renderoperator.md).
+
+Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function.  | **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WR3W7CMAyF73mKI25KpRbaTmjSUJ8CpF1WoXVptPxUifmb9vBLoGO7GFeR7ePv2I4ihpamYdToBBNLTYuqKF/zosyLdbqZqagQl/8UVV68oKreimLSdVFUDZtZR9o2WnxQ48lJ8tXsCzHM7yHMUdfidFiEN4U12AXoloUe0Turp4nYTsaeaYzs/RVedgis80CObkFdI9ltywTAagV4UtQyRKiZgyLEaTGZ9taFQqtIGHI4SX8USn4KltYEJF2YTIeFMFaHPPkMvrWOMuxFoEpDaVjujmo6aq0erafmIY+7ZCiX6wx5mSGJHb3kJA1sF8jB8q69toNwjLPkYfGTseqoja//eLNkRXXyTnuIcVyCneh72cL2YQdtDQ8ZHvIkDcsfPWH+3AvPvObx0FMXD/RLhfDYW9VhtNKwj/8U69M1b2S//AbRUQMWQQIAAA==)** 
+
+## Syntax
+
+*T* `|` `render` anomalychart [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
+
+## Arguments
+
+* *T*: Input table name.
+* *PropertyName*/*PropertyValue* indicate additional information to use when rendering.
+  All properties are optional. The supported properties are:
+
+|*PropertyName*|*PropertyValue*                                                                   |
+|--------------|----------------------------------------------------------------------------------|
+|`accumulate`  |Whether the value of each measure gets added to all its predecessors. (`true` or `false`)|
+|`legend`      |Whether to display a legend or not (`visible` or `hidden`).                       |
+|`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
+|`ymin`        |The minimum value to be displayed on Y-axis.                                      |
+|`ymax`        |The maximum value to be displayed on Y-axis.                                      |
+|`title`       |The title of the visualization (of type `string`).                                |
+|`xaxis`       |How to scale the x-axis (`linear` or `log`).                                      |
+|`xcolumn`     |Which column in the result is used for the x-axis.                                |
+|`xtitle`      |The title of the x-axis (of type `string`).                                       |
+|`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
+|`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
+|`ysplit`      |How to split multiple the visualization. For more information, see [Multiple y-axes](#multiple-y-axes).   |
+|`ytitle`      |The title of the y-axis (of type `string`).                                       |
+|`anomalycolumns`| Comma-delimited list of columns, which will be considered as anomaly series and displayed as points on the chart|
 
 ::: zone-end
 
