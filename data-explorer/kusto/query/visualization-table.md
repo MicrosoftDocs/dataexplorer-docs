@@ -7,4 +7,4 @@ ms.date: 08/03/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
-#
+# Table
