@@ -43,10 +43,6 @@ Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your
     |`ytitle`      |The title of the y-axis (of type `string`).                                       |
     |`anomalycolumns`| Comma-delimited list of columns, which will be considered as anomaly series and displayed as points on the chart|
 
-## Data input
-
-If not specified, 
-
 ## Example
 
 
