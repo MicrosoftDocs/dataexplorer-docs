@@ -59,7 +59,7 @@ Under **Source type**, do the following steps:
 
   1. Select **From blob container** (blob container, ADLS Gen2 container). You can ingest up to 5000 blobs from a single container.
 
-    * You can choose **Select container** and select information from the dropdown menus to specify the container, or **Add URL**. For this example, select **Add URL**.
+  1. For **Select source**, select **Add URL**. Alternatively, you can select **Select container** and choose information from the dropdown menus to connect to the container.
 
   1. In the **Link to source** field, add the [blob URI with SAS token or Account key](kusto/api/connection-strings/generate-sas-token.md) of the container, and optionally enter the sample size. A list is populated with files from the container.
 
