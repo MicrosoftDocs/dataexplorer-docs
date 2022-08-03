@@ -49,7 +49,7 @@ For information about ingesting data into an existing table in Azure Data Explor
     > [!NOTE]
     > Table names must be between 1 and 1024 characters.
 
-    :::image type="content" source="media/one-click-ingestion-new-table/create-new-table.png" alt-text="Screenshot of Azure Data Explorer to create a new table to ingest data:::
+    :::image type="content" source="media/one-click-ingestion-new-table/create-new-table.png" alt-text="Screenshot of Azure Data Explorer to create a new table to ingest data":::
 
 1. Select **Next: Source**
 
