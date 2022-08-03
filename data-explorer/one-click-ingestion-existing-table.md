@@ -14,7 +14,7 @@ ms.date: 07/31/2022
 
 The [ingestion wizard](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.
 
-This document describes using the intuitive ingestion wizard in a specific use case to ingest **JSON** data from a **local file** into an **existing table**. Use the same process with slight adaptations to cover a variety of different use cases.
+This document describes using the ingestion wizard in a specific use case to ingest **JSON** data from a **local file** into an **existing table**. Use the same process with slight adaptations to cover a variety of different use cases.
 
 For an overview of the ingestion wizard and a list of prerequisites, see [Ingest data into Azure Data Explorer using the ingestion wizard](ingest-data-one-click.md).
 For different types or sources of data, see [Use the ingestion wizard to ingest CSV data from a container to a new table in Azure Data Explorer](one-click-ingestion-new-table.md).
