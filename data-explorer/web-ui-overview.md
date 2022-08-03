@@ -1,19 +1,19 @@
 ---
-title: Azure Data Explorer Web UI overview
-description: This article describes the Azure Data Explorer Web UI and the home page properties. 
+title: Azure Data Explorer web UI overview
+description: This article describes the elements of Azure Data Explorer web UI home page and the data analytics journey.
 ms.reviewer: mibar
 ms.topic: conceptual
-ms.date: 05/26/2022
+ms.date: 07/11/2022
 ms.custom: mode-portal
 ---
 
-# Azure Data Explorer Web UI overview
+# Azure Data Explorer web UI overview
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. The Azure Data Explorer [Web UI](https://dataexplorer.azure.com) is a web application that provides an end to end experience of Azure Data Explorer, including streamlined processes to ingest data, query using Kusto Query Language (KQL), and view dashboard visualizations. You can start by accessing the free sample data available from the Web UI, or by [ingesting](ingest-data-overview.md) your own data.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. The Azure Data Explorer [web UI](https://dataexplorer.azure.com) is a web application that provides an end to end experience of Azure Data Explorer, including streamlined processes to ingest data, query using Kusto Query Language (KQL), and view dashboard visualizations. You can start by accessing the free sample data available from the web UI, or by [ingesting](ingest-data-overview.md) your own data.
 
-The following image shows the Azure Data Explorer Web UI **Home** page and navigation pane for accessing the core elements of the Web UI.
+The following image shows the Azure Data Explorer web UI **Home** page and navigation pane for accessing the core elements of the web UI.
 
-:::image type="content" source="media/web-ui-overview/web-ui-home-full-numbered.png" alt-text="Screenshot of Azure Data Explorer Web U I with numbered sections." lightbox="media/web-ui-overview/web-ui-home-full-numbered.png":::
+:::image type="content" source="media/web-ui-overview/web-ui-home-full-numbered.png" alt-text="Screenshot of Azure Data Explorer web U I with numbered sections." lightbox="media/web-ui-overview/web-ui-home-full-numbered.png":::
 
 1. Navigation pane
 1. Help, feedback, and settings
@@ -21,7 +21,7 @@ The following image shows the Azure Data Explorer Web UI **Home** page and navig
 1. Recommendations for additional resources and training
 1. Documentation
 
-## Experience data exploration using the Web UI
+## Experience data exploration using the Azure Data Explorer web UI
 
 Use the navigation pane to guide your data analytics journey.
 
@@ -34,5 +34,5 @@ Use the navigation pane to guide your data analytics journey.
 ## Next steps
 
 - [Ingest sample data into Azure Data Explorer](ingest-sample-data.md)
-- [Query data in Azure Data Explorer Web UI](web-query-data.md#run-queries)
-- [Explore Azure Data Explorer Web UI samples gallery](web-ui-samples-gallery.md)
+- [Query data in the Azure Data Explorer web UI](web-query-data.md#run-queries)
+- [Explore the Azure Data Explorer web UI samples gallery](web-ui-samples-gallery.md)

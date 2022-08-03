@@ -15,8 +15,10 @@ Change the table update policy. The [update policy](updatepolicy.md) instructs A
 
 ## Syntax
 
+```kusto
 `.alter` `table` *TableName* `policy` `update` *ArrayOfPolicyObjects*
 `.alter` `table` *DatabaseName*`.`*TableName* `update` *ArrayOfPolicyObjects*
+```
 
 ## Arguments
 

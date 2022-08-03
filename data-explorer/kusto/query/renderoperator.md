@@ -3,7 +3,7 @@ title: render operator - Azure Data Explorer
 description: This article describes render operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/26/2022
+ms.date: 07/03/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -16,6 +16,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 ```
 
 > [!NOTE]
+>
 > * The render operator should be the last operator in the query, and used only with queries that produce a single tabular data stream result.
 > * The render operator does not modify data. It injects an annotation ("Visualization") into the result's extended properties. The annotation contains the information provided by the operator in the query.
 > * The interpretation of the visualization information is done by the user agent. Different agents (such as Kusto.Explorer,Kusto.WebExplorer) might support different visualizations.
@@ -41,14 +42,14 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 | `linechart`        | Line graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. | |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=)** |
 | `piechart`         | First column is color-axis, second column is numeric. | |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUoLkksSU3OL80rsQWTGpoKSZUKwSBRsML8ohKQAEKZAkg4JzM3s0TB0ADELkrNS0ktUijITE3OSASqLsksyUm1VfKtVAjITFVwBovBjFQCADspGXyIAAAA)** |
 | `pivotchart`       | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types. |   |
-| `scatterchart`     | Points graph. First column is x-axis and should be a numeric column. Other numeric columns are y-axes. | |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKCsXJiSUlqUXJGYlFJQoK5ZklGRoVyfk5pbl5thWaAI8A701mAAAA)** |
-| `stackedareachart` | Stacked area graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |  | **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03LSwqAIBRG4XmruEODRs5bi4j+oeQDrjcyaPEZTZp+nOORq2ngiKanm9AFxdMHZotidIoFTV3z8tcXh42DRw8mamLdDm8Z1gXLQkRnlKC6q+nIZe3zAzEfsitrAAAA)** |
-| `table`            | Default - results are shown as a table.|  | **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4tLc3MSizKpUhVSQcHxyfmleiS2Y1NBUSKpUCC5JLEmFKi7PSC1CUahgp2BoAJUsKMrPSk0ugWjQQVYFVVCUmpeSWqRQkpiUkwoAW+Ur0IkAAAA=)** |
-| `timechart`        | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. There is one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored). |  | **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WrDMAyF7/sUukvCnDXJGIOVPEULuwxqoixm/gm2+jf28JObFjbYrmyho3M+yRCD1a5jaGFAJtaW8qaqX8qqLqvnYrMySYHnvxRNWT1B07xW1U03JFEzbVYDWd9Z/KAuUtAUm9UXpLJcSnAH2+LxPZe3AO9gJ6ZbRjvDGLy9EbG/BUemOXnvLxD1AOJ1mijQtWhbyHbbOgOA9RogkqGeAaXn3g1BooVb6OiDNHpD6CjAUccDGv2JrL0TSzozuQHyPYqHdqRkDKN3aBRwkJaCQJIoQ4VsuXh2A/Xezj5SWkVBWSvI0vSoOSsWpLtEpyDwY4KTW8nnJ5ws+2+eAhSyOxjkd+HDVVcIfHplp2TYTxgYTpqnnDUbarM32gPO86PY4jjqfmGw3vGkftNlCi5xNprbWW5kYvENQQnqDh8CAAA=)** |
+| `scatterchart`     | Points graph. First column is x-axis and should be a numeric column. Other numeric columns are y-axes. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKCsXJiSUlqUXJGYlFJQoK5ZklGRoVyfk5pbl5thWaAI8A701mAAAA)** |
+| `stackedareachart` | Stacked area graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03LSwqAIBRG4XmruEODRs5bi4j+oeQDrjcyaPEZTZp+nOORq2ngiKanm9AFxdMHZotidIoFTV3z8tcXh42DRw8mamLdDm8Z1gXLQkRnlKC6q+nIZe3zAzEfsitrAAAA)** |
+| `table`            | Default - results are shown as a table.|  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4tLc3MSizKpUhVSQcHxyfmleiS2Y1NBUSKpUCC5JLEmFKi7PSC1CUahgp2BoAJUsKMrPSk0ugWjQQVYFVVCUmpeSWqRQkpiUkwoAW+Ur0IkAAAA=)** |
+| `timechart`        | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. There's one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored). |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WrDMAyF7/sUukvCnDXJGIOVPEULuwxqoixm/gm2+jf28JObFjbYrmyho3M+yRCD1a5jaGFAJtaW8qaqX8qqLqvnYrMySYHnvxRNWT1B07xW1U03JFEzbVYDWd9Z/KAuUtAUm9UXpLJcSnAH2+LxPZe3AO9gJ6ZbRjvDGLy9EbG/BUemOXnvLxD1AOJ1mijQtWhbyHbbOgOA9RogkqGeAaXn3g1BooVb6OiDNHpD6CjAUccDGv2JrL0TSzozuQHyPYqHdqRkDKN3aBRwkJaCQJIoQ4VsuXh2A/Xezj5SWkVBWSvI0vSoOSsWpLtEpyDwY4KTW8nnJ5ws+2+eAhSyOxjkd+HDVVcIfHplp2TYTxgYTpqnnDUbarM32gPO86PY4jjqfmGw3vGkftNlCi5xNprbWW5kYvENQQnqDh8CAAA=)** |
 | `timepivot`        | Interactive navigation over the events time-line (pivoting on time axis)|  |
 
 > [!NOTE]
-> The ladderchart, pivotchart, and timepivot visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer Web UI.
+> The ladderchart, pivotchart, and timepivot visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer web UI.
 
 ::: zone-end
 
@@ -62,7 +63,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 | `piechart`         | First column is color-axis, second column is numeric. |
 | `scatterchart`     | Points graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |
 | `table`            | Default - results are shown as a table.|
-| `timechart`        | Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There is one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored).|
+| `timechart`        | Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There's one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored).|
 
 ::: zone-end
 
@@ -89,7 +90,7 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
 |`ysplit`      |How to split multiple the visualization. For more information, see [Multiple y-axes](#multiple-y-axes).                             |
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
-|`anomalycolumns`|Property relevant only for `anomalychart`. Comma-delimited list of columns which will be considered as anomaly series and displayed as points on the chart|
+|`anomalycolumns`|Property relevant only for `anomalychart`. Comma-delimited list of columns, which will be considered as anomaly series and displayed as points on the chart|
 
 ::: zone-end
 
@@ -151,13 +152,13 @@ three kinds of columns:
   as there are y-axis columns.
 
 > [!TIP]
-> 
+>
 > * Use `where`, `summarize` and `top` to limit the volume that you display.
 > * Sort the data to define the order of the x-axis.
 > * User agents are free to "guess" the value of properties that are not specified
   by the query. In particular, having "uninteresting" columns in the schema of
   the result might translate into them guessing wrong. Try projecting-away such
-  columns when that happens. 
+  columns when that happens.
 
 ## Example
 
@@ -190,13 +191,13 @@ three kinds of columns:
   as there are y-axis columns.
 
 > [!TIP]
-> 
+>
 > * Use `where`, `summarize` and `top` to limit the volume that you display.
 > * Sort the data to define the order of the x-axis.
 > * User agents are free to "guess" the value of properties that are not specified
   by the query. In particular, having "uninteresting" columns in the schema of
   the result might translate into them guessing wrong. Try projecting-away such
-  columns when that happens. 
+  columns when that happens.
 
 ## Example
 
@@ -210,6 +211,5 @@ InsightsMetrics
 ```
 
 [Rendering examples in the tutorial](./tutorial.md?pivots=azuremonitor#display-a-chart-or-table-render-1)
-
 
 ::: zone-end

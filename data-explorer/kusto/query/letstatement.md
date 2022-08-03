@@ -40,7 +40,7 @@ If the variable previously represented another value, for example in nested stat
 
 |Field  |Definition  |
 |---------|---------|
-|*FunctionBody* | An expression that yields a user defined function, an anonymous function declaration. | 
+|*FunctionBody* | An expression that yields a user defined function. | 
 |*view* | Appears only in a parameterless `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views. | 
 | *TabularArgName*| The name of the tabular argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. | 
 | *AttributeName* : *AttributeType*| The name and type of the attribute. Part of the table schema definition, which includes a set of attributes with their types. |  

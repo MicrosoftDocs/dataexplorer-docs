@@ -73,7 +73,8 @@ The following list contains error codes you may come across during [ingestion](i
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
 |Download_NotTransient                             |Failed to download source from Azure storage. Not transient error occurred                   |Permanent           |
-|Download_UnknownError                             |Failed to download source from Azure storage. Unknown error occurred              |Transient           |
+|Download_UnknownError                             |Failed to download source from Azure storage. Unknown error occurred                          |Transient           |
+|Download_TransientNameResolutionFailure           |Failed to download source from Azure storage. Transient storage account name resolution failure occurred   |Transient           |
 
 
 ## Category: EntityNotFound
@@ -89,7 +90,7 @@ The following list contains error codes you may come across during [ingestion](i
 
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
-|Stream_InputStreamTooLarge                        |The total size of the input data or a single field in the data is too large. HRESULT: 0x80DA0009<br>For more information about the size limit for this type of ingestion, see [The string data type](/azure/data-explorer/kusto/query/scalar-data-types/string). |Permanent          |
+|Stream_InputStreamTooLarge                        |The total size of the input data or a single field in the data is too large. HRESULT: 0x80DA0009<br>For more information about the size limit for this type of ingestion, see [The string data type](./kusto/query/scalar-data-types/string.md). |Permanent          |
 |BadRequest_FileTooLarge                           |Blob size has exceeded the size limit allowed for ingestion.<br>For more information about the size limit for ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md#comparing-ingestion-methods-and-tools). |Permanent           |
 
 ## Category: InternalServiceError
