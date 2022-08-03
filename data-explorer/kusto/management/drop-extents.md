@@ -98,6 +98,17 @@ Remove all extents in tables `Table1` and `Table2` whose creation time was over 
 .drop extents older 10 days from tables (Table1, Table2)
 ```
 
+### Remove an extent using extent_id()
+
+Remove an extent from a table using the `extent_id` function.
+
+```kusto
+.drop extents  <| StormEvents | where EventId == '66144' | extend ExtentId=extent_id() | summarize by ExtentId
+```
+
+> [!CAUTION]
+> If you drop an extent, all the rows in that extent will be deleted. To delete individual records, use [Soft delete](../concepts/data-soft-delete.md).
+
 ### Emulation mode: Show which extents would be removed by the command
 
 >[!NOTE]
