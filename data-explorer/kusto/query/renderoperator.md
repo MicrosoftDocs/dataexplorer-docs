@@ -27,7 +27,7 @@ Instructs the user agent to render the results of the query in a particular way.
 
 ::: zone pivot="azuredataexplorer"
 
-|*Visualization*     |Description|
+| *Visualization*     |Description|
 |--------------------|---|---|
 |[ `anomalychart`](visualization-anomalychart.md)     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function.  |
 | [`areachart`](visualization-areachart.md)      | Area graph.  
