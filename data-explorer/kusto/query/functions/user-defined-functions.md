@@ -212,7 +212,7 @@ let T=(){
 union T, (T())
 ```
 
-A user-defined function that takes one or more scalar arguments can be invoked by using the table name and a concrete argument list in parentheses:
+A user-defined function that takes one or more scalar arguments can be invoked by using the function name and a concrete argument list in parentheses:
 
 ```kusto
 let f=(a:string, b:string) {
@@ -221,7 +221,7 @@ let f=(a:string, b:string) {
 print f("hello", "world")
 ```
 
-A user-defined function that takes one or more table arguments (with any number of scalar arguments) and can be invoked using the table name and a concrete argument list in parentheses:
+A user-defined function that takes one or more table arguments (with any number of scalar arguments) and can be invoked using the function name and a concrete argument list in parentheses:
 
 ```kusto
 let MyFilter = (T:(x:long), v:long) {
