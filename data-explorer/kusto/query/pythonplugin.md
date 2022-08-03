@@ -49,7 +49,7 @@ The following variables are reserved for interaction between Kusto Query Languag
 ## Enable the plugin
 
 * The plugin is disabled by default.
-* To enable the plugin, see the list of [prerequisites](../concepts/sandboxes.md#prerequisites).
+* To enable the plugin, see the list of [prerequisites](../concepts/sandboxes.md#prerequisites-and-limitations).
 * Enable or disable the plugin in the Azure portal, in your cluster's [Configuration tab](../../language-extensions.md).
 
 ## Python sandbox image
@@ -69,7 +69,7 @@ The following variables are reserved for interaction between Kusto Query Languag
   * Defined as part of an [update policy](../management/updatepolicy.md), whose source table is ingested to using *non-streaming* ingestion.
   * Run as part of a command that [ingests from a query](../management/data-ingestion/ingest-from-query.md), such as `.set-or-append`.
     In both these cases, verify that the volume and frequency of the ingestion, and the complexity and
-    resources used by the Python logic, align with [sandbox limitations](../concepts/sandboxes.md#limitations) and the cluster's available resources. Failure to do so may result in [throttling errors](../concepts/sandboxes.md#errors).
+    resources used by the Python logic, align with [sandbox parameters](../concepts/sandboxes.md#sandbox-parameters) and the cluster's available resources. Failure to do so may result in [throttling errors](../concepts/sandboxes.md#errors).
 * You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../../ingest-data-streaming.md).
 
 ## Examples
@@ -171,14 +171,14 @@ Install packages as follows:
 
 ### Prerequisites
 
-  1. Create a blob container to host the packages, preferably in the same place as your cluster. For example, `https://artifcatswestus.blob.core.windows.net/python`, assuming your cluster is in West US.
+  1. Create a blob container to host the packages, preferably in the same place as your cluster. For example, `https://artifactswestus.blob.core.windows.net/python`, assuming your cluster is in West US.
   1. Alter the cluster's [callout policy](../management/calloutpolicy.md) to allow access to that location.
         * This change requires [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
 
-        * For example, to enable access to a blob located in `https://artifcatswestus.blob.core.windows.net/python`, run the following command:
+        * For example, to enable access to a blob located in `https://artifactswestus.blob.core.windows.net/python`, run the following command:
 
         ```kusto
-        .alter-merge cluster policy callout @'[ { "CalloutType": "sandbox_artifacts", "CalloutUriRegex": "artifcatswestus\\.blob\\.core\\.windows\\.net/python/","CanCall": true } ]'
+        .alter-merge cluster policy callout @'[ { "CalloutType": "sandbox_artifacts", "CalloutUriRegex": "artifactswestus\\.blob\\.core\\.windows\\.net/python/","CanCall": true } ]'
         ```
 
 ### Install packages

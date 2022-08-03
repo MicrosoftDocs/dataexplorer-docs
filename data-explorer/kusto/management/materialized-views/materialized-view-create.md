@@ -241,6 +241,9 @@ The following aggregation functions are supported:
         SourceTable | summarize take_any(*) by EventId, Timestamp
     ```
 
+> [!TIP]
+> Late arriving data in a datetime group-by key can have a negative impact on the materialized view's performance. For example, if your materialized view uses `bin(Timestamp, 1d)` as one of its group-by keys, and there are several outliers in the data with very old `Timestamp` values. These outliers may negatively impact the materialized view. We recommend that in the materialized view query you either filter out the outlier records, or normalize these records to the current time.
+
 * **Define a lookback period**: if applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [properties](#properties).  
 
 * **Add columns frequently used for filtering as group-by keys:** materialized view query filters are optimized when filtered by one of the materialized view group-by keys. If you know your query pattern will often filter by a column, which is *immutable* per a unique entity in the materialized view, include it in the materialized view group by keys.
@@ -429,10 +432,11 @@ The backfill-by-move-extents option can be useful in two main scenarios:
     * On [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.  Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader.
     * On [external tables](../../query/schema-entities/externaltables.md).
 
-* A materialized view only processes new records ingested into the source table. Records which are removed from the source table, either by running [data purge](../../concepts/data-purge.md)/[drop extents](../drop-extents.md), or due to [retention policy](../retentionpolicy.md) or any other reason, have no impact on the materialized view. The materialized view has its own [retention policy](materialized-view-policies.md#retention-and-caching-policy), which is independent of the retention policy of the source table. The materialized view might include records which are not present in the source table.
+* A materialized view only processes new records ingested into the source table. Records which are removed from the source table, either by running [data purge](../../concepts/data-purge.md)/[soft delete](../../concepts/data-soft-delete.md)/[drop extents](../drop-extents.md), or due to [retention policy](../retentionpolicy.md) or any other reason, have no impact on the materialized view. The materialized view has its own [retention policy](materialized-view-policies.md#retention-and-caching-policy), which is independent of the retention policy of the source table. The materialized view might include records which are not present in the source table.
 * The source table of a materialized view:
   * Must be a table into which data is directly ingested, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [from query commands](../data-ingestion/ingest-from-query.md).
-    * Specifically, using [move extents](../move-extents.md) from other tables into the source table of the materialized view is not supported and may fail with one of the following errors:
+    * Using [move extents](../move-extents.md) from other tables to the source table of the materialized view is only supported if using `setNewIngestionTime` property as part of the move extents command (refer to [.move extents](../move-extents.md) command for more details).
+    * Moving extents to the source table of a materialized view, while *not* using `setNewIngestionTime` may fail with one of the following errors:
         * `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
         * `Cannot move extents to 'TableName' since materialized view 'ViewName' will not process these extents (can lead to data loss in the materialized view)`.
 * Must have [IngestionTime policy](../ingestiontimepolicy.md) enabled (it is enabled by default).

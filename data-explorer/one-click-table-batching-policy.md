@@ -1,13 +1,13 @@
 ---
-title: Use the one-click table batching policy wizard to change the ingestion batching policy for a table in Azure Data Explorer.
-description: In this article, you learn how to change a table's ingestion batching policy using the one-click experience.
+title: Change the ingestion batching policy for a table in Azure Data Explorer using the table batching policy wizard
+description: In this article, you learn how to change a table's ingestion batching policy using the batching policy wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 06/26/2022
+ms.date: 07/13/2022
 ---
 # Create a table's ingestion batching policy with one-click
 
-During the ingestion process, throughput is optimized by batching small ingress data chunks together before ingestion. The  [ingestion batching policy](kusto/management/batchingpolicy.md) defines data aggregation for batching.
+During the ingestion process, throughput is optimized by batching small ingress data chunks together before ingestion. The  [ingestion batching policy](./kusto/management/batchingpolicy.md#sealing-a-batch) defines data aggregation for batching.
 In this article, you can define and assign an ingestion batching policy for a table using the one-click experience.
 
 [!INCLUDE [batching-policy-permissions](includes/batching-policy-permissions.md)]
@@ -33,7 +33,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus, or add a cluster connection.
 
-1. Under **Table**, select a table from the drop-down menus. 
+1. Under **Table**, select a table from the drop-down menus.
 
 1. Under **Inherit values from database**, toggle **On** to apply the batching policy values from the database to the table. To create or update a separate policy for the table, toggle to **Off**.
 
@@ -45,7 +45,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
     | Time (seconds) |  *300* | The time limit after which a batch is sealed. |
     | Size (MB) |  *1024* | The size limit after which a batch is sealed.  |
 
-    For more information, see [ingestion batching policy batch sealing](/kusto/management/batchingpolicy.md#sealing-a-batch).
+    For more information, see [ingestion batching policy batch sealing](./kusto/management/batchingpolicy.md#sealing-a-batch).
 
 1. Select **Update**.
 

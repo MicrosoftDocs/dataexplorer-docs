@@ -22,7 +22,7 @@ In this article, you'll learn how to use a Streaming Analytics job to collect da
     - [Grant access to the event hub and get a connection string](/azure/stream-analytics/stream-analytics-real-time-fraud-detection#grant-access-to-the-event-hub-and-get-a-connection-string)
 
     > [!TIP]
-    > For testing, we recommend that you download the phone call event generator app [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/) from the Microsoft Download Center or get the source code from [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TelcoGenerator). When setting up the Azure Stream Analytics job, you'll configure it to pull data from the event hub and pass it to the Azure Data Explorer output connector.
+    > For testing, we recommend that you download the phone call event generator app from the Microsoft Download Center or get the source code from [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TelcoGenerator). When setting up the Azure Stream Analytics job, you'll configure it to pull data from the event hub and pass it to the Azure Data Explorer output connector.
 
 ## Create an Azure Data Explorer output connection
 

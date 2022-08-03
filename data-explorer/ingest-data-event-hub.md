@@ -45,11 +45,11 @@ Create an event hub by using an Azure Resource Manager template in the Azure por
 
     The **Deploy to Azure** button takes you to the Azure portal.
 
-    :::image type="content" source="media/ingest-data-event-hub/deploy-to-azure.png" alt-text="Screenshot of the Azure portal U I , showing the Create an event hub form.":::
+    :::image type="content" source="media/ingest-data-event-hub/deploy-to-azure.png" alt-text="Screenshot of the Azure portal U I, showing the Create an event hub form.":::
 
 1. Select the subscription where you want to create the event hub, and create a resource group named *test-hub-rg*.
 
-    :::image type="content" source="media/ingest-data-event-hub/create-resource-group.png" alt-text="Screenshot of the Azure portal U I , showing the create an event hub form focused on the create a resource group dropdown.":::
+    :::image type="content" source="media/ingest-data-event-hub/create-resource-group.png" alt-text="Screenshot of the Azure portal U I, showing the Create new resource group dropdown.":::
 
 1. Fill out the form with the following information.
 
@@ -69,7 +69,7 @@ Create an event hub by using an Azure Resource Manager template in the Azure por
 
 1. Review the **Summary** of resources created. Select **Create**, which acknowledges that you're creating resources in your subscription.
 
-    :::image type="content" source="media/ingest-data-event-hub/review-create.png" alt-text="Screen shot of the Azure portal U I , showing the summary of creating EventHubs namespace, event hub, and consumer group form.":::
+    :::image type="content" source="media/ingest-data-event-hub/review-create.png" alt-text="Screenshot of the Azure portal U I, showing the summary of creating EventHubs namespace, event hub, and consumer group form.":::
 
 1. Select **Notifications** on the toolbar to monitor the provisioning process. It might take several minutes for the deployment to succeed, but you can move on to the next step now.
 
@@ -89,7 +89,7 @@ Now you create a table in Azure Data Explorer, to which event hubs will send dat
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
     ```
 
-    :::image type="content" source="media/ingest-data-event-hub/run-create-query.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the run create query window.":::
+    :::image type="content" source="media/ingest-data-event-hub/run-create-query.png" alt-text="Screenshot of the Azure Data Explorer web U I, showing the query window running query.":::
 
 1. Copy the following command into the window and select **Run** to map the incoming JSON data to the column names and data types of the table (TestTable).
 
@@ -105,17 +105,17 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
 
 1. Under the cluster you created, select **Databases** then **TestDatabase**.
 
-    :::image type="content" source="media/ingest-data-event-hub/select-test-database.png" alt-text="Screenshot of Azure Data Explorer Web U I left menu, showing the Select test database item.":::
+    :::image type="content" source="media/ingest-data-event-hub/select-test-database.png" alt-text="Screenshot of Azure Data Explorer web U I left menu, showing the Test Database item, selected.":::
 
 1. Select **Data ingestion** and **Add data connection**.
 
-    :::image type="content" source="media/ingest-data-event-hub/event-hub-connection.png" alt-text=" Screenshot of the Azure Data Explorer Web U I left menu, showing the Select data ingestion item.":::
+    :::image type="content" source="media/ingest-data-event-hub/event-hub-connection.png" alt-text=" Screenshot of the Azure Data Explorer web U I left menu, showing how to Add data connection.":::
 
 ### Create a data connection
 
 Fill out the form with the following information, and then select **Create**.
 
-:::image type="content" source="media/ingest-data-event-hub/data-connection-pane.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Create data connection form.":::
+:::image type="content" source="media/ingest-data-event-hub/data-connection-pane.png" alt-text="Screenshot of the Azure Data Explorer web U I, showing the Create data connection form.":::
 
 | **Setting** | **Suggested value** | **Field description** |
 |---|---|---|
@@ -141,7 +141,7 @@ Before you can set an alternate target database, you must first *allow* routing 
 1. Select **Databases** > **Data connections**.
 1. Create or edit a data connection and in the **Data connection** pane, under **Data routing settings**, turn on the allow routing data to other databases (multi-database data connection) option.
 
-    :::image type="content" source="media/ingest-data-event-hub/data-connection-allow-multi-database.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data connections page highlighting the Data routing settings option.":::
+    :::image type="content" source="media/ingest-data-event-hub/data-connection-allow-multi-database.png" alt-text="Screenshot of the Azure Data Explorer web U I, showing the Data connections page highlighting the Data routing settings option.":::
 
 #### Target table
 
@@ -150,7 +150,7 @@ For this article, you use static routing, where you specify the table name, data
 
 1. Fill out the following routing settings:
 
-    :::image type="content" source="media/ingest-data-event-hub/default-routing-settings.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Target table form for default routing settings for ingesting data into event hub.":::
+    :::image type="content" source="media/ingest-data-event-hub/default-routing-settings.png" alt-text="Screenshot of the Azure Data Explorer web U I, showing the Target table form for default routing settings for ingesting data into event hub.":::
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -162,6 +162,7 @@ For this article, you use static routing, where you specify the table name, data
     >
     > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
     > * Only events enqueued after you create the data connection are ingested.
+    > * The mapping name is case-sensitive. A mismatch in mapping name will result in ingestion failure.
 
 1. Select **Create**.
 
@@ -177,11 +178,11 @@ When you run the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet
 
 1. Under the event hub namespace you created, select **Shared access policies**, then **RootManageSharedAccessKey**.
 
-    :::image type="content" source="media/ingest-data-event-hub/shared-access-policies.png" alt-text="Screenshot of the Azure Data Explorer Web U I left menu, showing the Shared access policies.":::
+    :::image type="content" source="media/ingest-data-event-hub/shared-access-policies.png" alt-text="Screenshot of the Azure Data Explorer web U I left menu, showing the Shared access policies.":::
 
 1. Copy **Connection string - primary key**. You paste it in the next section.
 
-    :::image type="content" source="media/ingest-data-event-hub/connection-string.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Connection string form.":::
+    :::image type="content" source="media/ingest-data-event-hub/connection-string.png" alt-text="Screenshot of the Azure Data Explorer web U I, showing the Connection string form.":::
 
 ## Generate sample data
 
@@ -229,7 +230,7 @@ With the app generating data, you can now see the flow of that data from the eve
 
     > [!NOTE]
     >
-    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of 1G, or 1000 blobs. Therefore, you may experience a latency. For more information see [batching policy](kusto/management/batchingpolicy.md).
+    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of 1G, or 1000 blobs. Therefore, you may experience a latency. For more information, see [batching policy](kusto/management/batchingpolicy.md).
     > * Event hub ingestion includes event hub response time of 10 seconds or 1 MB.
     > * To reduce response time lag, configure your table to support streaming. See [streaming policy](kusto/management/streamingingestionpolicy.md).
 

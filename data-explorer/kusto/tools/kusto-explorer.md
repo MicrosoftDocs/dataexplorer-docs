@@ -3,7 +3,7 @@ title: Kusto.Explorer installation and user interface
 description: Learn about the features of Kusto.Explorer and how it can help you to explore your data
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/26/2022
 ---
 
 # Kusto.Explorer installation and user interface
@@ -108,10 +108,10 @@ The Home tab shows the most recently used functions, divided into sections:
 
 > [!NOTE]
 > <a id="anomaly-chart">Anomaly Chart</a>: 
->The algorithm expects timeseries data, which consists of two columns:
+>The algorithm expects time series data, which consists of two columns:
 >* Time in fixed interval buckets
 >* Numeric value for anomaly detection
->To produce timeseries data in Kusto.Explorer, summarize by the time field and specify the time bucket bin.
+>To produce time series data in Kusto.Explorer, summarize by the time field and specify the time bucket bin.
 
 ### View section
 

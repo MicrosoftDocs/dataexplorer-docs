@@ -3,7 +3,7 @@ title: Ingest data from a container or Azure Data Lake Storage into Data Explore
 description: Ingest (load) data into a new Azure Data Explorer table from a container or ADLS, either as a one-time or continuous operation.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 06/22/2022
+ms.date: 08/03/2022
 ---
 
 # Ingest data from a container/ADLS into Azure Data Explorer
