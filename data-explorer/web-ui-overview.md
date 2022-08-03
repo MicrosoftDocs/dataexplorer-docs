@@ -3,7 +3,7 @@ title: Azure Data Explorer web UI overview
 description: This article describes the elements of Azure Data Explorer web UI home page and the data analytics journey.
 ms.reviewer: mibar
 ms.topic: conceptual
-ms.date: 07/11/2022
+ms.date: 07/31/2022
 ms.custom: mode-portal
 ---
 
@@ -26,7 +26,7 @@ The following image shows the Azure Data Explorer web UI **Home** page and navig
 Use the navigation pane to guide your data analytics journey.
 
 - Get started quickly with the [**Home** page](https://dataexplorer.azure.com/home), which provides free and immediate access to the **help** cluster and the [samples gallery](web-ui-samples-gallery.md), complete with sample data, query tutorials, and built in dashboards. From the **Home** page, you can also easily create a [free cluster](start-for-free.md) or connect to your own clusters. To help you on your journey, check out additional information including **Recommended** reading and basic and advanced **Documentation**.
-- In the **Data** tab, explore the [**Data Management**](https://dataexplorer.azure.com/oneclick) page, to ingest and organize data. The [one click ingestion](ingest-data-one-click.md) wizard makes data ingestion fast and intuitive.
+- In the **Data** tab, explore the [**Data Management**](https://dataexplorer.azure.com/oneclick) page, to ingest and organize data. The [ingestion wizard](ingest-data-one-click.md) makes data ingestion fast and intuitive.
 - Once you've ingested either your own data or accessed the **help** cluster, check out the **Query** tab to open the [query editor window](https://dataexplorer.azure.com). From here you can [write](write-queries.md) and run your own KQL commands and queries, or learn from descriptive tutorials in the [samples gallery](https://dataexplorer.azure.com/clusters/help) to help you get started.
 - [**Dashboards**](https://dataexplorer.azure.com/dashboards) allow you to [visualize](azure-data-explorer-dashboards.md) and explore either your own data or built in dashboards from the samples gallery.
 - [**MyCluster**](https://dataexplorer.azure.com/freecluster) allows you to explore the capabilities of Azure Data Explorer for free [using](start-for-free-web-ui.md) your own data.
