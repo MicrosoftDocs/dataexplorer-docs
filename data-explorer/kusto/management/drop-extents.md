@@ -17,6 +17,9 @@ Requires [Table admin permission](../management/access-control/role-based-author
 > Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
 
+> [!CAUTION]
+> If you drop an extent, all the rows in that extent will be deleted. To delete individual records, use [Soft delete](../concepts/data-soft-delete.md).
+
 ## Drop extents with a query
 
 Drop extents that are specified using a Kusto query.
@@ -105,9 +108,6 @@ Remove an extent from a table using the `extent_id` function.
 ```kusto
 .drop extents  <| StormEvents | where EventId == '66144' | extend ExtentId=extent_id() | summarize by ExtentId
 ```
-
-> [!CAUTION]
-> If you drop an extent, all the rows in that extent will be deleted. To delete individual records, use [Soft delete](../concepts/data-soft-delete.md).
 
 ### Emulation mode: Show which extents would be removed by the command
 
