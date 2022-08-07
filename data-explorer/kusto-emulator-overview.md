@@ -78,4 +78,4 @@ In general, this offering isn't suited for production workloads.
 
 ## Next steps
 
-[Kusto emulator installation](kusto-emulator-install.md)
+[Install the Kusto emulator](kusto-emulator-install.md)
