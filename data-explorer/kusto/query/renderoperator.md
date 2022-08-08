@@ -143,23 +143,21 @@ three kinds of columns:
   property).
   For each record, the series has as many measurements ("points" in the chart)
   as there are y-axis columns.
-## How the columns are determined
 
-Several visualizations are used for rendering sequence of values, for example, `linechart`, `timechart`, and `areachart`.
+## How to render continuous data
+
+Several visualizations are used for rendering sequences of values, for example, `linechart`, `timechart`, and `areachart`.
 These visualizations have the following conceptual model:
 
 * One column in the table represents the x-axis of the data. This column can be explicitly defined using the
-    `xcolumn` property. If not defined, the user agent will pick the first column that is appropriate
-    for the visualization.
+    `xcolumn` property. If not defined, the user agent will pick the first column that is appropriate for the visualization.
   * For example: in the `timechart` visualization, the user agent will use the first `datetime` column.
   * If this column is of type `dynamic` and it holds an array, the individual values in the array will be treated as the values of the x-axis.
 * One or more columns in the table represent one or more measures that vary by the x-axis.
-    These columns can be explicitly defined using the `ycolumns` property. If not defined, the user agent will pick
-    all columns that are appropriate for the visualization.
+    These columns can be explicitly defined using the `ycolumns` property. If not defined, the user agent will pick all columns that are appropriate for the visualization.
   * For example: in the `timechart` visualization, the user agent will use all columns with a numeric value that have not been specified otherwise.
-  * If the x-axis is an array, the values of each y-axis should also be an array of a similar length, with each y-axes occurring in a single column.
-* Zero or more columns in the table represent a unique set of dimensions that group together the measures.
-    These columns can be specified by the `series` property, or the user agent will pick them automatically from the columns that are otherwise unspecified.
+  * If the x-axis is an array, the values of each y-axis should also be an array of a similar length, with each y-axis occurring in a single column.
+* Zero or more columns in the table represent a unique set of dimensions that group together the measures. These columns can be specified by the `series` property, or the user agent will pick them automatically from the columns that are otherwise unspecified.
 
 ### Example
 
