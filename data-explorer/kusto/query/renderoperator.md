@@ -77,7 +77,7 @@ The data from these measurements is found in a table table with one record per m
 
 Using the `render` operator and the `timechart` visualization, you can render time graphs of each measurement in a different panel over time, with each line representing a different device by its longitute/latitude position. See the below image for a conceptual representation of this example.
 
-:::image type="content" source="images/wind-gauge-conceptual.png" alt-text="Conceptual image showing wind gauge data rendered as graphs":::
+:::image type="content" source="images/render-operator/wind-gauge-conceptual.png" alt-text="Conceptual image showing wind gauge data rendered as graphs":::
 
 
 ::: zone-end
