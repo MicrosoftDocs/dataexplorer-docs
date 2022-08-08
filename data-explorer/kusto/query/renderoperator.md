@@ -51,30 +51,34 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 > [!NOTE]
 > The ladderchart, pivotchart, and timepivot visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer web UI.
 
-  Several visualizations (e.g., `linechart`, `timechart`, **TODO: AlexAns to add the others**) are meant for rendering
-  sequence of values. These visualizations have the following conceptual model:
+## How the columns are determined
 
-  1. One column in the table represents the x-axis of the data. This column can be specified by the
-     `xcolumn` property (as indicated below), or the user agent will pick the first column that is appropriate
-     for the visualization (e.g., for `timechart` it'll use the first `datetime` column). Additionally,
-     if this column is of type `dynamic` and it holds an array, the individual values in the array will
-     be  treated as the values of the x-axis.
+Several visualizations are used for rendering sequence of values, for example, `linechart`, `timechart`, and `areachart`.
+These visualizations have the following conceptual model:
 
-  1. One or more columns in the table represent one or more measures that vary by the x-axis.
-     These columns can be specified by the `ycolumns` property (as indicated below), or the user agent will pick
-     all columns that are appropriate for the visualization (e.g., for `timechart` it'll use all columns with
-     a numeric value that have not been specified otherwise.) If the x-azis is an array, the values of each y-axis
-     should also be an array of a similar length (with each y-axes occupring a single column).
+* One column in the table represents the x-axis of the data. This column can be explicitly defined using the
+    `xcolumn` property. If not defined, the user agent will pick the first column that is appropriate
+    for the visualization.
+  * For example: in the `timechart` visualization, the user agent will use the first `datetime` column.
+  * If this column is of type `dynamic` and it holds an array, the individual values in the array will be treated as the values of the x-axis.
+* One or more columns in the table represent one or more measures that vary by the x-axis.
+    These columns can be explicitly defined using the `ycolumns` property. If not defined, the user agent will pick
+    all columns that are appropriate for the visualization.
+  * For example: in the `timechart` visualization, the user agent will use all columns with a numeric value that have not been specified otherwise.
+  * If the x-axis is an array, the values of each y-axis should also be an array of a similar length, with each y-axes occurring in a single column.
+* Zero or more columns in the table represent a unique set of dimensions that group together the measures.
+    These columns can be specified by the `series` property, or the user agent will pick them automatically from the columns that are otherwise unspecified.
 
-  1. Zero or more columns in the table represent a unique set of dimensions that group together the measures.
-     These columns can be specified by the `series` property (as indicated below), or the user agent will pick
-     them automatically from the columns that are otherwise unspecified.
+### Example
 
-  As an example, consider a set of anemometers (wind gauges) that measure the wind force, speed, and direction,
-  spread over a large geographic region. One possible table has one record per measurement produced by a single
-  device, with columns for the timestamp (x-axis), measurements (three y-axes), and devide long/lat location
-  (the series). One can then render time graphs of each measurement in a different panel (as explained below)
-  over time, with each line representing a different device by its long/lat position.
+You have a set of anemometers (wind gauges) that measure the wind force, speed, and direction. These wind gauges are spread over a large geographic region.
+
+The data from these measurements is found in a table table with one record per measurement by each device, with columns for the timestamp (x-axis), measurements (three y-axes), and a longitude/latitude location (the series). 
+
+Using the `render` operator and the `timechart` visualization, you can render time graphs of each measurement in a different panel over time, with each line representing a different device by its longitute/latitude position. See the below image for a conceptual representation of this example.
+
+:::image type="content" source="images/wind-gauge-conceptual.png" alt-text="Conceptual image showing wind gauge data rendered as graphs":::
+
 
 ::: zone-end
 
