@@ -54,8 +54,6 @@ The **[Data management](https://dataexplorer.azure.com/oneclick)** page is where
 > [!NOTE] 
 > Use the search box on the right side of the page to filter cards by key terms.
 
-:::image type="content" source="media/web-ui-overview/data-management-page.png" alt-text="Screenshot of data management homepage":::
-
 * Select from quick actions to [ingest data](https://dataexplorer.azure.com/oneclick/ingest?sourceType=file), [create tables](https://dataexplorer.azure.com/oneclick/createtable), update [batching policies](https://dataexplorer.azure.com/oneclick/updateTableBatchingPolicy), and [generate a sample app](https://dataexplorer.azure.com/oneclick/generatecode?sourceType=file).
 * Read more about these actions in the documentation:
 
@@ -72,16 +70,14 @@ The **[Data management](https://dataexplorer.azure.com/oneclick)** page is where
 Once you've ingested data or connected to a data source, you'll use the [query page](https://dataexplorer.azure.com/clusters/help) to query data and explore results.
 
 * Write and run Kusto Query Language (KQL) queries in the query editor window. For help getting started with KQL, see: 
-    * [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md)
+    *  [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md)
     * [Kusto Query Language overview](./kusto/query/index.md).
     * Learn module: [Write your first KQL query](/learn/modules/write-first-query-kusto-query-language/).
 * View and manipulate results in the results grid.
 
 ## Dashboards (preview)
 
-[Dashboards](https://dataexplorer.azure.com/dashboards) tell a story through visualizations, and are an interactive way to monitor your data and see all of your most important insights at a glance. See a sample dashboard below for example.
-
-:::image type="content" source="media/adx-dashboards/dash.png" alt-text="Screenshot of sample dashboard.":::
+[Dashboards](https://dataexplorer.azure.com/dashboards) tell a story through visualizations, and are an interactive way to monitor your data and see all of your most important insights at a glance.
 
 * [View sample dashboards](web-ui-samples-gallery.md#explore-sample-dashboards) with data from the **help** cluster.
 * Create your own dashboards using the following guidance:
