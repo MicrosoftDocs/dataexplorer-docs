@@ -12,7 +12,7 @@ ms.date: 08/09/2022
 This document describes using the ingestion wizard in a specific use case to ingest **JSON** data from a **local file** into an **existing table**. Use the same process with slight adaptations to cover a variety of different use cases.
 
 For an overview of the ingestion wizard and a list of prerequisites, see [Ingest data into Azure Data Explorer using the ingestion wizard](ingest-data-one-click.md).
-For different types or sources of data, see [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md).
+For different types or sources of data, see [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md). 
 
 > [!NOTE]
 > To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
