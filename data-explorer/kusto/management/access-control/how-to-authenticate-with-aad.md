@@ -290,9 +290,9 @@ import * as msal from "@azure/msal-browser";
 
 const msalConfig = {
   auth: {
-    clientId: "ee8eb7fe-6fbb-49f0-9eda-e1984df1d556",
+    clientId: "<AAD client application ID>",
     authority:
-      "https://login.microsoftonline.com/39c8ab07-3702-4354-88fd-ab6a343a7d34",
+      "https://login.microsoftonline.com/<AAD tenant ID>",
   },
 };
 
