@@ -491,8 +491,12 @@ items:
     displayName:  .ingest into, pull data, pulling ingestion
     href: data-ingestion/ingest-from-storage.md
   - name: Ingest from query
-    displayName:  .set, .append, .set-or-append, .set-or-replace
-    href: data-ingestion/ingest-from-query.md
+    items: 
+    - name: Ingest from query
+      displayName:  .set, .append, .set-or-append, .set-or-replace
+      href: data-ingestion/ingest-from-query.md
+    - name: cancel operation command
+      href: cancel-operation-command.md
   - name: Inline ingestion
     displayName:  .ingest inline
     href: data-ingestion/ingest-inline.md
