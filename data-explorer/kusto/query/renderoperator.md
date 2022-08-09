@@ -172,7 +172,7 @@ These visualizations have the following conceptual model:
 
 You have a set of anemometers (wind gauges) that measure the wind force, speed, and direction. These wind gauges are spread over a large geographic region.
 
-The data from these measurements is found in a table table with one record per measurement by each device, with columns for the timestamp (x-axis), measurements (three y-axes), and a longitude/latitude location (the series). 
+The data from these measurements is found in a table with one record per measurement by each device, with columns for the timestamp (x-axis), measurements (three y-axes), and a longitude/latitude location (the series). 
 
 Using the `render` operator and the `timechart` visualization, you can render time graphs of each measurement in a different panel over time, with each line representing a different device by its longitute/latitude position.
 
