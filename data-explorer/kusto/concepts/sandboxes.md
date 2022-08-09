@@ -7,10 +7,10 @@ ms.date: 05/03/2021
 ---
 # Sandboxes
 
-Kusto's Data Engine service can run sandboxes for specific flows that need secure isolation.
+Kusto Data Engine service can run sandboxes for specific flows that must be run in secure environment, totally isolated from external network.
 Examples of these flows are user-defined scripts that run using the [Python plugin](../query/pythonplugin.md) or the [R plugin](../query/rplugin.md).
 
-Flows that run in sandboxes aren't isolated. They're also local (close to the data). For these reasons, there's no extra latency added for remote calls.
+Flows that run in sandboxes are also local (i.e. processing is done close to the data), avoiding extra latency for remote calls.
 
 ## Prerequisites and limitations
 
