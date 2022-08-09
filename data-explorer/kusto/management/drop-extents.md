@@ -74,7 +74,7 @@ Requires [Database admin permission](../management/access-control/role-based-aut
 Use an Extent ID to drop a specific extent.
 
 ```kusto
-.drop extent 609ad1e2-5b1c-4b79-90c0-1dec262e9f46 from Fruit
+.drop extent 609ad1e2-5b1c-4b79-90c0-1dec262e9f46
 ```
 
 ### Drop multiple extents
@@ -82,7 +82,7 @@ Use an Extent ID to drop a specific extent.
 Use a list of Extent Ids to drop multiple extents.
 
 ```kusto
-.drop extents (609ad1e2-5b1c-4b79-90c0-1dec262e9f46, 310a60c6-8529-4cdf-a309-fe6aa7857e1d) from Fruit
+.drop extents (609ad1e2-5b1c-4b79-90c0-1dec262e9f46, 310a60c6-8529-4cdf-a309-fe6aa7857e1d)
 ```
 
 ### Remove all extents by time created
@@ -103,7 +103,7 @@ Remove all extents in tables `Table1` and `Table2` whose creation time was over 
 
 ### Remove an extent using extent_id()
 
-Remove an extent from a table using the `extent_id` function.
+Remove an extent from a table using the built in `extent_id()` function.
 
 ```kusto
 .drop extents  <| StormEvents | where EventId == '66144' | extend ExtentId=extent_id() | summarize by ExtentId
