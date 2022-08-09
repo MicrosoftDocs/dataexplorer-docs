@@ -9,6 +9,10 @@ ms.date: 07/12/2022
 
 The following is a list of timezones supported by the [Internet Assigned Numbers Authority (IANA) Time Zone Database](https://www.iana.org/time-zones).
 
+Related functions:
+* [datetime_local_to_utc()](datetime-local-to-utc-function.md)
+* [datetime_utc_to_local()](datetime-utc-to-local-function.md)
+
 | Timezone                         |
 | -------------------------------- |
 | Africa/Abidjan                   |

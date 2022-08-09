@@ -12,7 +12,7 @@ Examples of these flows are user-defined scripts that run using the [Python plug
 
 Flows that run in sandboxes aren't isolated. They're also local (close to the data). For these reasons, there's no extra latency added for remote calls.
 
-## Prerequisites
+## Prerequisites and limitations
 
 * Data engines that enable both [disk encryption](../../security.md#data-protection) and sandboxes features must run on a VM size that supports [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data). For more information on supported VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
   * If encryption is enabled on the data engine before encryption at host is adopted as the default for supported VM sizes, the data engine may not support both features side by side. In this case, stop and start the cluster.
@@ -32,9 +32,9 @@ Flows that run in sandboxes aren't isolated. They're also local (close to the da
   * Once a sandbox is used, a new one is automatically made available to replace it.
 * If there are no pre-allocated sandboxes available to serve a query operator, it will be throttled until new sandboxes are available. For more information, see [Errors](#errors). New sandbox allocation could take up to 10-15 seconds per sandbox, depending on the SKU and available resources on the data node. 
 
-## Limitations
+## Sandbox parameters
 
-Some of the  limitations can be controlled using a cluster-level [sandbox policy](../management/sandboxpolicy.md), for each kind of sandbox.
+Some of the  parameters can be controlled using a cluster-level [sandbox policy](../management/sandboxpolicy.md), for each kind of sandbox.
 
 * **Number of sandboxes per node:** The number of sandboxes per node is limited.
   * Requests that are made when there's no available sandbox will be throttled.
