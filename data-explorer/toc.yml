@@ -121,12 +121,12 @@ items:
         href: one-click-table-retention-policy.md
   - name: Ingest data
     items:
-    - name: One-click ingestion
+    - name: Ingestion wizard
       items:
       - name: JSON data from local file to existing table
         displayName: ingest data, ingestion, one click
         href: one-click-ingestion-existing-table.md
-      - name: One-click sample app generator
+      - name: Sample app generator
         href: sample-app-generator-one-click.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
