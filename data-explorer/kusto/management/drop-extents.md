@@ -79,7 +79,7 @@ Use an Extent ID to drop a specific extent.
 
 ### Drop multiple extents
 
-Use a list of Extent Ids to drop multiple extents.
+Use a list of Extent IDs to drop multiple extents.
 
 ```kusto
 .drop extents (609ad1e2-5b1c-4b79-90c0-1dec262e9f46, 310a60c6-8529-4cdf-a309-fe6aa7857e1d)
