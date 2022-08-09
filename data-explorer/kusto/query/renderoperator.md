@@ -3,7 +3,7 @@ title: render operator - Azure Data Explorer
 description: This article describes render operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/03/2022
+ms.date: 08/09/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -20,6 +20,15 @@ range x from 0.0 to 2*pi() step 0.01 | extend y=sin(x) | render linechart
 > * The render operator should be the last operator in the query, and used only with queries that produce a single tabular data stream result.
 > * The render operator does not modify data. It injects an annotation ("Visualization") into the result's extended properties. The annotation contains the information provided by the operator in the query.
 > * The interpretation of the visualization information is done by the user agent. Different agents (such as Kusto.Explorer,Kusto.WebExplorer) might support different visualizations.
+
+> [!TIP]
+>
+> * Use `where`, `summarize` and `top` to limit the volume that you display.
+> * Sort the data to define the order of the x-axis.
+> * User agents are free to "guess" the value of properties that are not specified
+  by the query. In particular, having "uninteresting" columns in the schema of
+  the result might translate into them guessing wrong. Try projecting-away such
+  columns when that happens.
 
 ## Syntax
 
@@ -159,26 +168,17 @@ These visualizations have the following conceptual model:
   * If the x-axis is an array, the values of each y-axis should also be an array of a similar length, with each y-axis occurring in a single column.
 * Zero or more columns in the table represent a unique set of dimensions that group together the measures. These columns can be specified by the `series` property, or the user agent will pick them automatically from the columns that are otherwise unspecified.
 
-### Example
+### Conceptual example
 
 You have a set of anemometers (wind gauges) that measure the wind force, speed, and direction. These wind gauges are spread over a large geographic region.
 
 The data from these measurements is found in a table table with one record per measurement by each device, with columns for the timestamp (x-axis), measurements (three y-axes), and a longitude/latitude location (the series). 
 
-Using the `render` operator and the `timechart` visualization, you can render time graphs of each measurement in a different panel over time, with each line representing a different device by its longitute/latitude position. See the below image for a conceptual representation of this example.
+Using the `render` operator and the `timechart` visualization, you can render time graphs of each measurement in a different panel over time, with each line representing a different device by its longitute/latitude position.
 
-:::image type="content" source="images/render-operator/wind-gauge-conceptual.png" alt-text="Conceptual image showing wind gauge data rendered as graphs":::
 
-> [!TIP]
->
-> * Use `where`, `summarize` and `top` to limit the volume that you display.
-> * Sort the data to define the order of the x-axis.
-> * User agents are free to "guess" the value of properties that are not specified
-  by the query. In particular, having "uninteresting" columns in the schema of
-  the result might translate into them guessing wrong. Try projecting-away such
-  columns when that happens.
 
-## Example
+## Example: render linechart 
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -208,14 +208,6 @@ three kinds of columns:
   For each record, the series has as many measurements ("points" in the chart)
   as there are y-axis columns.
 
-> [!TIP]
->
-> * Use `where`, `summarize` and `top` to limit the volume that you display.
-> * Sort the data to define the order of the x-axis.
-> * User agents are free to "guess" the value of properties that are not specified
-  by the query. In particular, having "uninteresting" columns in the schema of
-  the result might translate into them guessing wrong. Try projecting-away such
-  columns when that happens.
 
 ## Example
 
