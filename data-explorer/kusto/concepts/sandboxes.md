@@ -10,7 +10,7 @@ ms.date: 05/03/2021
 Kusto can run sandboxes for specific flows that must be run in a secure and isolated environment.
 Examples of these flows are user-defined scripts that run using the [Python plugin](../query/pythonplugin.md) or the [R plugin](../query/rplugin.md).
 
-Flows that run in sandboxes are also local (i.e. processing is done close to the data), avoiding extra latency for remote calls.
+Sandboxes are run locally (i.e. processing is done close to the data), with no extra latency for remote calls.
 
 ## Prerequisites and limitations
 
