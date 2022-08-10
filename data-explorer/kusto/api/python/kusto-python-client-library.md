@@ -23,9 +23,7 @@ including, but not exclusively, [Azure Databricks](https://azure.microsoft.com/s
 
 * [Data ingest sample](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-ingest/tests/sample.py)
 
-* [Ingest data using Python](https://docs.microsoft.com/azure/data-explorer/python-ingest-data)
-
-* [Send and receive events using Python](https://docs.microsoft.com/azure/event-hubs/event-hubs-python-get-started-send)
+* [Ingest data using Python](../../../python-ingest-data.md)
 
 * [GitHub Repository](https://github.com/Azure/azure-kusto-python)
 
