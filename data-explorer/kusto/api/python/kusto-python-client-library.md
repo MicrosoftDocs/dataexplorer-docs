@@ -23,6 +23,10 @@ including, but not exclusively, [Azure Databricks](https://azure.microsoft.com/s
 
 * [Data ingest sample](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-ingest/tests/sample.py)
 
+* [Ingest data using Python](https://docs.microsoft.com/azure/data-explorer/python-ingest-data)
+
+* [Send and receive events using Python](https://docs.microsoft.com/azure/event-hubs/event-hubs-python-get-started-send)
+
 * [GitHub Repository](https://github.com/Azure/azure-kusto-python)
 
     [![Build status badge](https://github.com/Azure/azure-kusto-python/actions/workflows/pythonpackage.yml/badge.svg)](https://github.com/Azure/azure-kusto-python/actions/workflows/pythonpackage.yml)
