@@ -247,7 +247,7 @@ external_table("ExternalTable")
 When data is exported from Spark, partition columns (that are provided to the dataframe writer's `partitionBy` method) are not written to data files. 
 This process avoids data duplication because the data is already present in the folder names (for example, `column1=<value>/column2=<value>/`), and Spark can recognize it upon read.
 
-External tables support the following syntax for specifying virtual columns:
+External tables support reading this data in the form of `virtual colums`. Virtual columns can be of either type `string` or `datetime`, and are specified using the following syntax:
 
 ```kusto
 .create external table ExternalTable (EventName:string, Revenue:double)  
