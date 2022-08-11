@@ -43,5 +43,5 @@ After assigning the managed identity to your cluster and configuring the relevan
 * **Continuous Export**: Run a continuous export on behalf of a managed identity. To specify that, add the managed identity identifier in the optional parameters given in the `create-or-alter` method.
 * **Event Hub Native Ingestion**: Use a managed identity with event hub native ingestion. For more information, see [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md).
 
-> [!NOTE]g
+> [!NOTE]
 > Attempting to use managed identities in any other flow will result in the following error message: `"Authentication with a Managed Identity is disabled for this flow"`
