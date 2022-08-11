@@ -60,5 +60,5 @@ with
 Please see [managed identity overview](/data-explorer/managed-identities-overview.md) for more information on how to set up and use managed identity with Continuous Exports. 
 
 > [!NOTE]
->Continuous Export jobs exporting data to an External Table that uses impersonation authentication must run on behalf of a managed identity. 
+> Continuous Export jobs exporting data to an External Table that uses impersonation authentication must run on behalf of a managed identity. 
 Setting up continuous export to such table without specifying a managed identity to run on behalf of, will result in the following error message: `"Error: continuous export to external tables with impersonation requires setting the 'managedIdentity' property in the continuous export configuration. See https://aka.ms/continuousExportWithManagedIdentity  for more information."`
