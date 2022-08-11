@@ -16,7 +16,7 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
 
 ## Syntax
 
-*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `python(`*output_schema*`,` *script* [`,` *script_parameters*][`,` *external_artifacts*][`,` *spill_to_disk*]`)`
+*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `python(`*output_schema*`,` *script* [`,` *script_arguments*][`,` *external_artifacts*][`,` *spill_to_disk*]`)`
 
 ## Arguments
 
@@ -43,7 +43,7 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
 The following variables are reserved for interaction between Kusto Query Language and the Python code.
 
 * `df`: The input tabular data (the values of `T` above), as a `pandas` DataFrame.
-* `kargs`: The value of the *script_parameters* argument, as a Python dictionary.
+* `kargs`: The value of the *script_arguments* argument, as a Python dictionary.
 * `result`: A `pandas` DataFrame created by the Python script, whose value becomes the tabular data that gets sent to the Kusto query operator that follows the plugin.
 
 ## Enable the plugin
