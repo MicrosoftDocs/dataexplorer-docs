@@ -3,7 +3,7 @@ title: Azure Data Explorer web UI overview
 description: This article describes the elements of Azure Data Explorer web UI home page and the data analytics journey.
 ms.reviewer: mibar
 ms.topic: conceptual
-ms.date: 07/31/2022
+ms.date: 08/14/2022
 ms.custom: mode-portal
 ---
 
@@ -30,7 +30,7 @@ There are five tabs on the left pane:
 * [Data](#data)
 * [Query](#query)
 * [Dashboards](#dashboards-preview)
-* [Cluster](#my-cluster-preview)
+* [My cluster](#my-cluster-preview)
 
 Access help, feedback, and settings by selecting one of the icons in the top right corner of the menu bar. 
 
@@ -43,7 +43,7 @@ In the **[Home](https://dataexplorer.azure.com/home)** page, you can get started
     * **Explore sample dashboards**:  Explore data visualization with [sample dashboards](web-ui-samples-gallery.md#explore-sample-dashboards).
 * Work on your own data without committing resources: 
     * [**Create a free cluster**](https://dataexplorer.azure.com/freecluster) or [**My Cluster**](https://dataexplorer.azure.com/freecluster): Ingest your own data and analyze it for free.
-* **Connect to an existing cluster in your org**: [Add clusters](web-query-data.md#add-clusters).
+* **Connect to an existing cluster in your org**: [Add clusters](web-query-data.md#add-clusters). You'll need the cluster URI and permission to access this data.
 
 At the bottom of the home page, you'll find links to some general documentation and Learn modules to help you learn more about Kusto Query Language.
 
@@ -70,6 +70,8 @@ The **[Data management](https://dataexplorer.azure.com/oneclick)** page is where
 ## Query
 
 Once you've ingested data or connected to a data source, you'll use the [query page](https://dataexplorer.azure.com/clusters/help) to query data and explore results.
+
+:::image type="content" source="media/web-ui-overview/query-page.png" alt-text="Screenshot of the results page with the query editor and results grid highlighted.":::
 
 * Write and run Kusto Query Language (KQL) queries in the query editor window. For help getting started with KQL, see: 
     * [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md)
