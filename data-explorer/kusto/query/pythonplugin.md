@@ -24,7 +24,7 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
     * The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`. For example, `typeof(col1:string, col2:long)`.
     * To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`
 * *script*: A `string` literal that is a valid Python script to execute. To generate multi-line strings see [Usage tips](#usage-tips).
-* *script_arguments*: An optional `dynamic` literal. It's a property bag of name/value pairs to be passed to the
+* *script_parameters*: An optional `dynamic` literal. It's a property bag of name/value pairs to be passed to the
    Python script as the reserved `kargs` dictionary. For more information, see [Reserved Python variables](#reserved-python-variables).
 * *hint.distribution*: An optional hint for the plugin's execution to be distributed across multiple cluster nodes.
   * The default value is `single`.
