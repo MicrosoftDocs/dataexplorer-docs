@@ -19,7 +19,7 @@ The Kusto emulator is a local environment that encapsulates the [Kusto Query Eng
 
 The Kusto emulator is packaged as a *Docker Windows container image*. It exposes a query endpoint over HTTP that can be used with any client including [Kusto.Explorer](kusto/tools/kusto-explorer-using.md), [Kusto.CLI](kusto/tools/kusto-cli.md), or [Kusto.Data SDKs](kusto/api/netfx/about-kusto-data.md).
 
-![Schematic representation of Kusto Emulator architecture.](media/kusto-emulator/kusto-emulator-architecture.png)
+![Schematic representation of Kusto emulator architecture.](media/kusto-emulator/kusto-emulator-architecture.png)
 
 The emulator supports all commands and queries within its [architecture limitations](#limitations). For instance, [Row Level Security policy commands](kusto/management/rowlevelsecuritypolicy.md) are supported but since there's no authentication in the emulator, they aren't useful.
 
