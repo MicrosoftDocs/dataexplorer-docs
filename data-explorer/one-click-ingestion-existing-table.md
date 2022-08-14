@@ -3,21 +3,16 @@ title: Ingest JSON data from a local file to an existing table in Azure Data Exp
 description: Ingesting (loading) data into an existing Azure Data Explorer table simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 07/31/2022
+ms.date: 08/09/2022
 ---
-
 # Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer
 
-> [!div class="op_single_selector"]
-> * [Ingest CSV data from a container to a new table](one-click-ingestion-new-table.md)
-> * [Ingest JSON data from a local file to an existing table](one-click-ingestion-existing-table.md)
-
-The [ingestion wizard](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.
+[The ingestion wizard](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.
 
 This document describes using the ingestion wizard in a specific use case to ingest **JSON** data from a **local file** into an **existing table**. Use the same process with slight adaptations to cover a variety of different use cases.
 
 For an overview of the ingestion wizard and a list of prerequisites, see [Ingest data into Azure Data Explorer using the ingestion wizard](ingest-data-one-click.md).
-For different types or sources of data, see [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md).
+For different types or sources of data, see [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md). 
 
 > [!NOTE]
 > To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
