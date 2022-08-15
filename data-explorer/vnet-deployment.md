@@ -76,9 +76,12 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 
 ### Configure Network Security Group rules using subnet delegation
 
-We recommend that you use [subnet delegation](/azure/virtual-network/subnet-delegation-overview) for your cluster's deployment. To do so, you must delegate the subnet to *Microsoft.Kusto/clusters* before creating the cluster in the subnet.
+Configuration of Network Security Group rules using [subnet delegation](/azure/virtual-network/subnet-delegation-overview) is the default for Virtual Network injected Azure Data Explorer clusters. To do so, you must delegate the subnet to *Microsoft.Kusto/clusters* before creating the cluster in the subnet.
 
 By enabling subnet delegation on the cluster's subnet, you enable the service to define its pre-conditions for deployment in the form of Network Intent Policies. When creating the cluster in the subnet, the NSG configurations mentioned in the following sections are automatically created for you.
+
+ > [!WARNING]
+ > Your Azure Data Explorer cluster will stop working eventually if you change the subnet delegation configuration. This might mean that it will not be able to start after it was stopped or we will not be able to apply management or health monitoring on the cluster.
 
 ### Configure Network Security Group rules manually
 
