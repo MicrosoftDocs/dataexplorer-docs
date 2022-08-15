@@ -23,7 +23,7 @@ Calculates an estimate of the number of distinct values that are taken by a scal
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *Expr*| scalar | &check; | A scalar expression whose distinct values are to be counted. |
-| *Accuracy* | int |   | defines the requested estimation accuracy. If unspecified, the default value is `1`. See [Estimation accuracy](#estimation-accuracy) for supported values. |
+| *Accuracy* | int |   | Defines the requested estimation accuracy. If unspecified, the default value is `1`. See [Estimation accuracy](#estimation-accuracy) for supported values. |
 
 ## Returns
 

@@ -25,7 +25,7 @@ Counts the rows for which *Predicate* evaluates to `true`.
 
 Returns a count of rows for which *Predicate* evaluates to `true`.
 
-## Example 1
+## Example of counting storms by state
 
 This example shows the number of storms with damage to crops by state.
 
@@ -54,7 +54,7 @@ The results table shown includes only the first 10 rows.
 | NEW YORK             | 1750       | 1               |
 | ... | ... | ... |
 
-## Example 2
+## Example of counting based on string length
 
 This example shows the number of names with more than 4 letters.
 

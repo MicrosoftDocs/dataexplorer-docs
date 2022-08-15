@@ -28,7 +28,7 @@ You can also use the [sum()](sum-aggfunction.md) function, which sums rows witho
 
 Returns the sum of *Expr* for which *Predicate* evaluates to `true`.
 
-## Example 1
+## Example showing the sum of damages based on no casualty count
 
 This example shows the sum total damage for storms without casualties.
 
@@ -57,7 +57,7 @@ The results table shown includes only the first 10 rows.
 | NEW YORK             | 58054000           |
 | ... | ... |
 
-## Example 2
+## Example showing sum of birth dates
 
 This example shows the sum of the birth dates for all names that have more than 4 letters.
 

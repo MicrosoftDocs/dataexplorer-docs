@@ -20,7 +20,7 @@ Calculates the [average](avg-aggfunction.md) of *Expr* across the group for whic
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *Expr* | string | &check; | Expression used for aggregation calculation. Records with `null` values are ignored and not included in the calculation. |
-| *Predicate* | string | &check; | predicate that if true, the *Expr* calculated value will be added to the average. |
+| *Predicate* | string | &check; | Predicate that if true, the *Expr* calculated value will be added to the average. |
 
 ## Returns
 
