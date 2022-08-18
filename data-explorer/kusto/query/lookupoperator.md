@@ -33,6 +33,16 @@ with the following differences:
   table (essentially, behaves as if `hint.broadcast` was specified). Note that
   this limits the size of the `$right` table.
 
+> [!NOTE]
+> The query will fail if the right side of the lookup is larger than several tens of MBs.
+> 
+> Run the following query to get the estimated size of the right side in bytes:
+> 
+> ```kusto
+> rightSide
+> | summarize sum(estimate_data_size(*))
+> ```
+
 ## Syntax
 
 *LeftTable* `|` `lookup` [`kind` `=` (`leftouter`|`inner`)] `(` *RightTable* `)` `on` *Attributes*
