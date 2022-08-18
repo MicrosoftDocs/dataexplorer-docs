@@ -61,9 +61,9 @@ The **[Data management](https://dataexplorer.azure.com/oneclick)** page is where
 
     |Tab  |Ingestion options  |
     |---------|---------|
-    |**Manage**     | Create [tables](https://dataexplorer.azure.com/oneclick/createtable), [external tables](external-table.md) and update [batching](/azure/data-explorer/kusto/management/batchingpolicy) and [retention](/azure/data-explorer/kusto/management/retentionpolicy) policies.      |
-    |**One-time ingestion**    | Ingest from [local files, blob storage](/azure/data-explorer/ingest-data-one-click), or a [container](/azure/data-explorer//one-click-ingestion-new-table).      |
-    |**Continuous ingestion**     | Configure continuous ingestion from [Event Hubs](/azure/data-explorer/one-click-event-hub) or a blob container.        |
+    |**Manage**     | Create [tables](https://dataexplorer.azure.com/oneclick/createtable), [external tables](external-table.md) and update [batching](./kusto/management/batchingpolicy.md) and [retention](./kusto/management/retentionpolicy.md) policies.      |
+    |**One-time ingestion**    | Ingest from [local files, blob storage](./ingest-data-one-click.md), or a [container](.//one-click-ingestion-new-table.md).      |
+    |**Continuous ingestion**     | Configure continuous ingestion from [Event Hubs](./one-click-event-hub.md) or a blob container.        |
     |**Backfill**     |  Ingest data from sources as a one time or [continuous ingestion](one-click-ingestion-new-table.md).       |
     |**SDKs**     |  The [one-click sample app generator](https://dataexplorer.azure.com/oneclick/generatecode?programingLang=Python) is a tool that allows you to create a working app to [ingest and query your data in your preferred programming language](sample-app-generator-one-click.md). Learn more about connectors to expand and explore the capabilities of Azure Data Explorer.    |
 
