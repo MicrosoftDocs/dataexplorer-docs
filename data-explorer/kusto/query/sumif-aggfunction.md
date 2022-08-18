@@ -57,7 +57,7 @@ The results table shown includes only the first 10 rows.
 | NEW YORK             | 58054000           |
 | ... | ... |
 
-## Example showing sum of birth dates
+## Example showing the sum of birth dates
 
 This example shows the sum of the birth dates for all names that have more than 4 letters.
 
