@@ -51,7 +51,7 @@ where *ColumnName* adheres to [entity naming](../query/schema-entities/entity-na
 > If the external data schema is unknown, use the [infer\_storage\_schema](../query/inferstorageschemaplugin.md) plug-in, which helps infer the schema based on external file contents.
 
 > [!TIP]
-> Make sure an external table covers a set of containers containing data files with an identical schema. If some data files miss columns or have extra columns, move them to a different storage container(s) and define another external table(s) matching their schema.
+> For CSV data files, having files with non-identical schema under the same storage container might result in data appearing shifted or missing. If some CSV files miss columns or have extra columns, move them to a different storage container(s) and define another external table(s) matching their schema, so that each external table covers a set of storage containers containing files of an identical schema.
 
 <a name="kind"></a>
 *Kind*
