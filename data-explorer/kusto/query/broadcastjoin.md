@@ -27,7 +27,7 @@ leftSide
 | join hint.strategy = broadcast (factTable) on key
 ```
 
-The performance improvement will be more noticeable in scenarios where the join is followed by other operators such as `summarize`. for example in this query:
+The performance improvement will be more noticeable in scenarios where the join is followed by other operators such as `summarize`.  See the following query for example:
 
 ```kusto
 leftSide 
