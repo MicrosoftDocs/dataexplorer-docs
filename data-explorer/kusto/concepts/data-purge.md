@@ -412,3 +412,7 @@ The output is the same as the '.show tables' command output (returned without th
 |TableName|DatabaseName|Folder|DocString
 |---|---|---|---
 |OtherTable|MyDatabase|---|---
+
+## Next steps
+
+* [Enable data purge on your Azure Data Explorer cluster](../../data-purge-portal.md)
