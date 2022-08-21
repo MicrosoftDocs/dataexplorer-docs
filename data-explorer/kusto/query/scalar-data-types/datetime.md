@@ -17,7 +17,7 @@ This is sometimes called "a moment in linear time".
 
 > [!WARNING]
 > A `datetime` value in Kusto is always in the UTC time zone. If displaying `datetime` values 
-> in other time zones is required, please leverage [datetime_utc_to_local()](../datetime-utc-to-local-function.md) 
+> in other time zones is required, please use [datetime_utc_to_local()](../datetime-utc-to-local-function.md) 
 > or its counterpart, [datetime_local_to_utc()](../datetime-local-to-utc-function.md), to assist with the conversion.
 
 ## datetime literals
