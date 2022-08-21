@@ -50,10 +50,13 @@ where *ColumnName* adheres to [entity naming](../query/schema-entities/entity-na
 > [!TIP]
 > If the external data schema is unknown, use the [infer\_storage\_schema](../query/inferstorageschemaplugin.md) plug-in, which helps infer the schema based on external file contents.
 
+> [!TIP]
+> For CSV data files, having files with non-identical schema under the same storage container might result in data appearing shifted or missing. If some CSV files miss columns or have extra columns, move them to a different storage container(s) and define another external table(s) matching their schema, so that each external table covers a set of storage containers containing files of an identical schema.
+
 <a name="kind"></a>
 *Kind*
 
-The type of the external table. In thise case, `storage` should to be used (rather than `sql`).
+The type of the external table. In this case, `storage` should to be used (rather than `sql`).
 
 >[!NOTE]
 > Deprecated terms:  `blob` for Blob Azure Storage or Azure Data Lake Gen 2 Storage, `adl` for Azure Data Lake Gen 1 Storage.
