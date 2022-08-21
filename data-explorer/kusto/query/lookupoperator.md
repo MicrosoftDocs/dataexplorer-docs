@@ -34,9 +34,9 @@ with the following differences:
   this limits the size of the `$right` table.
 
 > [!NOTE]
-> The query will fail if the right side of the lookup is larger than several tens of MBs.
+> If the right side of the lookup is larger than several tens of MBs, the query will fail.
 > 
-> Run the following query to get the estimated size of the right side in bytes:
+> You can run the following query to estimate the size of the right side in bytes:
 > 
 > ```kusto
 > rightSide
