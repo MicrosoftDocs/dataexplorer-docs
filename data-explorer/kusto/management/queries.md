@@ -3,7 +3,7 @@ title: Queries management - Azure Data Explorer
 description: This article describes Queries management in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/23/2020
+ms.date: 08/21/2022
 ---
 # Queries management
 
@@ -13,7 +13,7 @@ The `.show` `queries` command returns a list of queries that have reached a fina
 
 * A [database admin or database monitor](../management/access-control/role-based-authorization.md) can see any command that was invoked on their database.
 * Other users can only see queries that were invoked by them.
-* To see both queries and commands completion, use [.show queries-and-commands](commands-and-queries.md) 
+* To see both queries and commands completion, use [.show queries-and-commands](commands-and-queries.md)
 
 **Syntax**
 
@@ -23,7 +23,7 @@ The `.show` `queries` command returns a list of queries that have reached a fina
 * Note: the text of the query is truncated after 64KB.
 
 **Output**
- 
+
 The output schema is as follows:
 
 |ColumnName |ColumnType |Description |
@@ -37,7 +37,7 @@ The output schema is as follows:
 | State | string | Completion state|
 | RootActivityId | guid | Server-side request ID|
 |User | string | User ID that ran the query|
-|FailureReason|string|Failure reason. If query succeeded, this field is empty. 
+|FailureReason|string|Failure reason. If query succeeded, this field is empty.
 |TotalCpu | timespan | Total CPU consumed by the query |
 | CacheStatistics | dynamic | Data-cache usage statistics |
 | Application | string | Name of the application that was used to run the query|
@@ -48,8 +48,7 @@ The output schema is as follows:
 |ResultSetStatistics | dynamic |Statistics describing returned data set|
 |WorkloadGroup|string | Name of the workload group that query was associated with|
 
-
-### Example 
+### Example
 
 ```kusto
 .show queries 
@@ -63,7 +62,6 @@ The output schema is as follows:
 |T \| summarize count() by column1|00:00:00.0312564|
 |T \| take 10|00:00:00.0155632|
 
-
 ## .show running queries
 
 The `.show` `running` `queries` command returns a list of currently-executing queries
@@ -71,11 +69,17 @@ by the user, or by another user, or by all users.
 
 **Syntax**
 
+This example returns the currently executing queries by the current user.
+
 ```kusto
-.show running queries
+.show running queries 
 ```
 
-* Returns the currently-executing queries by the invoking user (requires read access).
+This example returns the currently executing queries by another user.
+
+```kusto
+.show running queries by user (username)
+```
 
 ## .cancel query
 
