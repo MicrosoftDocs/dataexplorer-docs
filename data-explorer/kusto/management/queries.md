@@ -20,7 +20,7 @@ The `.show` `queries` command returns a list of queries that have reached a fina
 `.show` `queries`
 
 * Returns a table containing previously run queries and their completion statistics. You can use KQL queries to explore the results.
-* Note: the text of the query is truncated after 64KB.
+* Note: the text of the query is truncated after 64 KB.
 
 **Output**
 
@@ -64,7 +64,7 @@ The output schema is as follows:
 
 ## .show running queries
 
-The `.show` `running` `queries` command returns a list of currently-executing queries
+The `.show` `running` `queries` command returns a list of currently executing queries
 by the user, or by another user, or by all users.
 
 **Syntax**
