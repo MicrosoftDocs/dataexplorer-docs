@@ -241,6 +241,9 @@ The following aggregation functions are supported:
         SourceTable | summarize take_any(*) by EventId, Timestamp
     ```
 
+> [!TIP]
+> Late arriving data in a datetime group-by key can have a negative impact on the materialized view's performance. For example, if your materialized view uses `bin(Timestamp, 1d)` as one of its group-by keys, and there are several outliers in the data with very old `Timestamp` values. These outliers may negatively impact the materialized view. We recommend that in the materialized view query you either filter out the outlier records, or normalize these records to the current time.
+
 * **Define a lookback period**: if applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [properties](#properties).  
 
 * **Add columns frequently used for filtering as group-by keys:** materialized view query filters are optimized when filtered by one of the materialized view group-by keys. If you know your query pattern will often filter by a column, which is *immutable* per a unique entity in the materialized view, include it in the materialized view group by keys.
@@ -448,7 +451,7 @@ Cancel the process of materialized view creation when using the `backfill` optio
 > [!WARNING]
 > The materialized view can't be restored after running this command.
 
-The creation process can't be aborted immediately. The cancel command signals materialization to stop, and the creation periodically checks if cancel was requested. The cancel command waits for a max period of 10 minutes until the materialized view creation process is canceled and reports back if cancellation was successful. Even if the cancellation didn't succeed within 10 minutes, and the cancel command reports failure, the materialized view will most probably abort itself later in the creation process. The [`.show operations`](../operations.md#show-operations) command will indicate if operation was canceled. The `cancel operation` command is only supported for materialized views creation cancellation, and not for canceling any other operations.
+The creation process can't be aborted immediately. The cancel command signals materialization to stop, and the creation periodically checks if a cancel was requested. The cancel command waits for a maximum period of 10 minutes until the materialized view creation process is canceled, and reports back if cancellation was successful. Even if the cancellation didn't succeed within 10 minutes, and the cancel command reports failure, the materialized view will probably abort itself later in the creation process. The [`.show operations`](../operations.md#show-operations) command indicates if the operation was canceled.
 
 ### Syntax
 
