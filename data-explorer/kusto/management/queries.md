@@ -18,13 +18,12 @@ The `.show` `queries` command lists queries that have reached a final state, and
 
 ## Syntax
 
-`.show` [`running`] `queries` [`by` *\** | `by user` *UserPrincipalName*`]
+`.show` [`running`] `queries` [`by` *\** | `by user` *UserPrincipalName*]
 
 ## Arguments
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| running |  |  | Lists currently executing queries by the user |
 | *UserPrincipalName* | string |  |  The UPN of a specific user for which to return a list of queries. |
 
 ## Returns
