@@ -25,7 +25,7 @@ Based on the root cause, exceptions may inherit one of the following error types
 
 * `KustoServiceException`: Indicates a problem in the service side processing the request. This is equivalent to HTTP status codes 5xx. For a list of errors, see [Service exceptions](#service-exceptions).
 
-* `KustoClientException`: Indicates a client-side problem in sending the request to the service. Specifically, this exception informs the caller that the service itself didn't receive the request. For a list client authentication exceptions, see [client exceptions](#client-exceptions).
+* `KustoClientException`: Indicates a client-side problem in sending the request to the service. Specifically, this exception informs the caller that the service itself didn't receive the request. For a list client authentication exceptions, see [Client exceptions](#client-exceptions).
 
 > [!IMPORTANT]
 > All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
