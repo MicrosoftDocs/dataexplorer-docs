@@ -97,7 +97,7 @@ The following SKU series are available for Azure Data Explorer cluster VMs. The 
 | [Lsv3](/azure/virtual-machines/lsv3-series) | 8, 16 | Intel | No |
 |  [Easv4](/azure/virtual-machines/eav4-easv4-series), [Easv5](/azure/virtual-machines/easv5-eadsv5-series) | 8, 16 | AMD | Yes |
 | [Esv4](/azure/virtual-machines/ev4-esv4-series), [Esv5](/azure/virtual-machines/ev5-esv5-series) | 8, 16 | Intel | Yes |
-| [DSv2](/azure/virtual-machines/dv2-dsv2-series) | 8, 16 | AMD | Yes |
+| [DSv2](/azure/virtual-machines/dv2-dsv2-series) | 8, 16 | Intel | Yes |
 
 **Compute optimized**
 

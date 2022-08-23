@@ -46,11 +46,11 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
-import com.microsoft.aad.adal4j.*;
+import com.microsoft.aad.msal4j.*;
 
 public class Sample {
   public static void main(String[] args) throws Exception {
-    AuthenticationResult authenticationResult = futureAuthenticationResult.get();
+    IAuthenticationResult authenticationResult = futureAuthenticationResult.get();
     SQLServerDataSource ds = new SQLServerDataSource();
     ds.setServerName("<your cluster DNS name>");
     ds.setDatabaseName("<your database name>");
@@ -79,7 +79,7 @@ Azure AD application provisioned for Kusto can use SQL client libraries that sup
 Assuming you have provisioned Azure AD application with *ApplicationClientId* and *ApplicationKey* and granted it permissions to access database *DatabaseName* on cluster *ClusterDnsName*, the following sample demonstrates how to use .NET SQL Client for queries from this Azure AD application.
 
 ```csharp
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -90,15 +90,14 @@ namespace Sample
   {
     private static async Task<string> ObtainToken()
     {
-      var authContext = new AuthenticationContext(
-        // Can also use tenant ID.
-        "https://login.microsoftonline.com/<your AAD tenant name>");
-      var applicationCredentials = new ClientCredential(
-        "<your application client ID>",
-        "<your application key>");
-      var result = await authContext.AcquireTokenAsync(
-        "https://<your cluster DNS name>",
-        applicationCredentials);
+      var confidentialClientApp = ConfidentialClientApplicationBuilder
+	    .Create("<your application client ID>")
+	    .WithClientSecret("<your application key>")
+	    .WithAuthority("https://login.microsoftonline.com/<your AAD tenant name>")
+	    .Build();
+
+      var result = await confidentialClientApp.AcquireTokenForClient("https://login.microsoftonline.com/<your AAD tenant name>/.default")
+	    .ExecuteAsync();
       return result.AccessToken;
     }
 
@@ -133,28 +132,27 @@ namespace Sample
 ```java
 import java.sql.*;
 import com.microsoft.sqlserver.jdbc.*;
-import com.microsoft.aad.adal4j.*;
+import com.microsoft.aad.msal4j.*;
+import java.net.MalformedURLException;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 public class Sample {
   public static void main(String[] args) throws Throwable {
-    ExecutorService service = Executors.newFixedThreadPool(1);
     // Can also use tenant name.
-    String url = "https://login.microsoftonline.com/<your AAD tenant ID>";
-    AuthenticationContext authenticationContext =
-      new AuthenticationContext(url, false, service);
-    ClientCredential  clientCredential = new ClientCredential(
-      "<your application client ID>",
-      "<your application key>");
-    Future<AuthenticationResult> futureAuthenticationResult =
-      authenticationContext.acquireToken(
-        "https://<your cluster DNS name>",
-        clientCredential,
-        null);
-    AuthenticationResult authenticationResult = futureAuthenticationResult.get();
+    String authorityUrl = "https://login.microsoftonline.com/<your AAD tenant ID>";
+	Set<String> scopes = new HashSet<>();
+	scopes.add("https://<your cluster DNS name>/.default");
+
+    IConfidentialClientApplication clientApplication = ConfidentialClientApplication.builder("<your application client ID>", ClientCredentialFactory.createFromSecret("<your application key>")).authority(authorityUrl).build();
+	CompletableFuture<IAuthenticationResult> futureAuthenticationResult = clientApplication.acquireToken(ClientCredentialParameters.builder(scopes).build());
+	IAuthenticationResult authenticationResult = futureAuthenticationResult.get();
     SQLServerDataSource ds = new SQLServerDataSource();
     ds.setServerName("<your cluster DNS name>");
     ds.setDatabaseName("<your database name>");
-    ds.setAccessToken(authenticationResult.getAccessToken());
+    ds.setAccessToken(authenticationResult.accessToken());
     connection = ds.getConnection();
     statement = connection.createStatement();
     ResultSet rs = statement.executeQuery("<your T-SQL query>");

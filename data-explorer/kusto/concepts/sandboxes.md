@@ -7,14 +7,13 @@ ms.date: 05/03/2021
 ---
 # Sandboxes
 
-Kusto's Data Engine service can run sandboxes for specific flows that need secure isolation.
+Kusto can run sandboxes for specific flows that must be run in a secure and isolated environment.
 Examples of these flows are user-defined scripts that run using the [Python plugin](../query/pythonplugin.md) or the [R plugin](../query/rplugin.md).
 
-Flows that run in sandboxes aren't isolated. They're also local (close to the data). For these reasons, there's no extra latency added for remote calls.
+Sandboxes are run locally (meaning, processing is done close to the data), with no extra latency for remote calls.
 
 ## Prerequisites and limitations
 
-* Sandboxes are not supported in air-gapped clouds.
 * Data engines that enable both [disk encryption](../../security.md#data-protection) and sandboxes features must run on a VM size that supports [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data). For more information on supported VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
   * If encryption is enabled on the data engine before encryption at host is adopted as the default for supported VM sizes, the data engine may not support both features side by side. In this case, stop and start the cluster.
 * The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space to run.

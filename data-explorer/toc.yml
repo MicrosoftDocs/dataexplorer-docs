@@ -40,8 +40,13 @@ items:
   items:
   - name: EngineV3
     href: engine-v3.md
-  - name: Azure Data Explorer web UI overview
-    href: web-ui-overview.md
+  - name: Azure Data Explorer web UI
+    items:
+    - name: Azure Data Explorer web UI overview
+      displayName: Kusto Web Explorer, KWE
+      href: web-ui-overview.md
+    - name: Ingestion wizard
+      href: ingest-data-one-click.md
   - name: Data ingestion
     items:
     - name: Data ingestion overview
@@ -116,14 +121,12 @@ items:
         href: one-click-table-retention-policy.md
   - name: Ingest data
     items:
-    - name: One-click ingestion
+    - name: Ingestion wizard
       items:
-      - name: One-click ingestion overview
-        href: ingest-data-one-click.md
       - name: JSON data from local file to existing table
         displayName: ingest data, ingestion, one click
         href: one-click-ingestion-existing-table.md
-      - name: One-click sample app generator
+      - name: Sample app generator
         href: sample-app-generator-one-click.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
