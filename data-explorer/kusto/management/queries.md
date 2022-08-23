@@ -3,28 +3,34 @@ title: Queries management - Azure Data Explorer
 description: This article describes Queries management in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/21/2022
+ms.date: 08/23/2022
 ---
 # Queries management
 
 ## .show queries
 
-The `.show` `queries` command returns a list of queries that have reached a final state, and that the user invoking the command has access to see:
+The `.show` `queries` command lists queries that have reached a final state, and that the user invoking the command has access to see. A [database admin or database monitor](../management/access-control/role-based-authorization.md) can see any command that was invoked on their database. Other users can only see queries that were invoked by them. To see both queries and commands completion, use [.show queries-and-commands](commands-and-queries.md).
 
-* A [database admin or database monitor](../management/access-control/role-based-authorization.md) can see any command that was invoked on their database.
-* Other users can only see queries that were invoked by them.
-* To see both queries and commands completion, use [.show queries-and-commands](commands-and-queries.md)
+## Syntax
 
-**Syntax**
+`.show` [`running`] `queries` [`by (user / *)`]
 
-`.show` `queries`
+## Arguments
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| running |  |  | Lists currently-executing queries by the user |
+| by | string |  | Lists currently executing queries based on |
+
+## Returns
 
 * Returns a table containing previously run queries and their completion statistics. You can use KQL queries to explore the results.
-* Note: the text of the query is truncated after 64 KB.
+* Returns a list of currently executing queries by the current user, or by another user, or by all users.
 
-**Output**
+> [!NOTE]
+> The text of the query is truncated after 64 KB.
 
-The output schema is as follows:
+The returned table schema is:
 
 |ColumnName |ColumnType |Description |
 |---|---|
@@ -48,26 +54,35 @@ The output schema is as follows:
 |ResultSetStatistics | dynamic |Statistics describing returned data set|
 |WorkloadGroup|string | Name of the workload group that query was associated with|
 
-### Example
+## Examples
+
+**Example 1**
+
+This example shows completed queries.
+
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA9MrzsgvVygsTS3KTC1W4OWqUSgoys9KTS5RCEmtKNFRcCktSizJzM8DyZQkZqcqGBoAAA0BJaEzAAAA)**\]**
 
 ```kusto
 .show queries 
 | project Text, Duration
-| take 3
+| take 10
 ```
 
-|Text|Duration|
-|---|---|
-|T \|count|00:00:00|
-|T \| summarize count() by column1|00:00:00.0312564|
-|T \| take 10|00:00:00.0155632|
+ **Results**
+| Text | Duration |
+|--|--|
+| StormEvents &#124; sort by DeathsDirect desc | 00:00:00.2343761 |
+| StormEvents &#124; sort by DeathsDirect desc | 00:00:00.2187503 |
+| StormEvents &#124; sort by DeathsDirect desc | 00:00:00.2343115 |
+| StormEvents &#124; sort by DamageProperty desc | 00:00:00.2656510 |
+| StormEvents &#124; sort by StartTime desc | 00:00:00.2343012 |
+| StormEvents &#124; sort by StartTime desc | 00:00:00.2813042 |
+| StormEvents &#124; sort by StartTime desc | 00:00:00.3594493 |
+| TestFunction(5) | 00:00:00.0312024 |
+| traceAgg(now(5500d)) | 00:00:00.0312952 |
+| traceAgg(now(-5500d)) | 00:00:00.0312445 |
 
-## .show running queries
-
-The `.show` `running` `queries` command returns a list of currently executing queries
-by the user, or by another user, or by all users.
-
-**Syntax**
+**Example 2**
 
 This example returns the currently executing queries by the current user.
 
@@ -94,14 +109,16 @@ running query.
 
 `.cancel` `query` *ClientRequestId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
 
-* *ClientRequestId* is the value of the running query's `ClientRequestId` property,
-  as a `string` literal.
+## Arguments
 
-* *ReasonPhrase*: If specified, a `string` literal that describes the reason for
-  canceling the running query. This information is included in the query results
-  if it's successfully canceled.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ClientRequestId* | string | &check; | Value of the running query's `ClientRequestId` property. |
+| *ReasonPhrase* | string |  | Describes the reason for canceling the running query and is included in the query results if it's successfully canceled. |
 
-**Example**
+## Examples
+
+This example cancels a specific query using *ClientRequestId*.
 
 ```kusto
 .cancel query "KE.RunQuery;8f70e9ab-958f-4955-99df-d2a288b32b2c"
