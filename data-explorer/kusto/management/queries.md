@@ -18,14 +18,14 @@ The `.show` `queries` command lists queries that have reached a final state, and
 
 ## Syntax
 
-`.show` [`running`] `queries` [`by (user / *)`]
+`.show` [`running`] `queries` [`by` *\** | `by user` *UserPrincipalName*`]
 
 ## Arguments
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | running |  |  | Lists currently executing queries by the user |
-| by | string |  | Lists currently executing queries based on |
+| *UserPrincipalName* | string |  |  The UPN of a specific user for which to return a list of queries. |
 
 ## Returns
 
@@ -74,6 +74,7 @@ This example shows completed queries.
 ```
 
  **Results**
+ 
 
 | Text | Duration |
 |--|--|
@@ -99,7 +100,7 @@ This example returns the currently running queries by the current user.
 This example returns the currently running queries by a specific user name.
 
 ```kusto
-.show running queries by user (username)
+.show running queries by user (<UserPrincipalName>)
 ```
 
 ## .cancel query
