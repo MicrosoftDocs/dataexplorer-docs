@@ -19,7 +19,7 @@ The `.show` `queries` command lists queries that have reached a final state, and
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| running |  |  | Lists currently-executing queries by the user |
+| running |  |  | Lists currently executing queries by the user |
 | by | string |  | Lists currently executing queries based on |
 
 ## Returns
@@ -85,13 +85,13 @@ This example shows completed queries.
 
 **Example 2**
 
-This example returns the currently executing queries by the current user.
+This example returns the currently running queries by the current user.
 
 ```kusto
 .show running queries 
 ```
 
-This example returns the currently executing queries by another user.
+This example returns the currently running queries by a specific user name.
 
 ```kusto
 .show running queries by user (username)
@@ -99,12 +99,7 @@ This example returns the currently executing queries by another user.
 
 ## .cancel query
 
-The `.cancel` `query` command starts a best-effort attempt to cancel a specific
-running query.
-
-* Cluster admins can cancel any running query.
-* Database admins can cancel any running query that was invoked on a database they have admin access on.
-* All principals can cancel running queries that they started.
+The `.cancel` `query` command starts a best-effort attempt to cancel a specific running query. Cluster admins can cancel any running query. Database admins can cancel any running query that was invoked on a database to which they have admin access. All principals can cancel running queries that they started.
 
 **Syntax**
 
