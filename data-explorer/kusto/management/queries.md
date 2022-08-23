@@ -9,7 +9,12 @@ ms.date: 08/23/2022
 
 ## .show queries
 
-The `.show` `queries` command lists queries that have reached a final state, and that the user invoking the command has access to see. A [database admin or database monitor](../management/access-control/role-based-authorization.md) can see any command that was invoked on their database. Other users can only see queries that were invoked by them. To see both queries and commands completion, use [.show queries-and-commands](commands-and-queries.md).
+The `.show` `queries` command lists queries that have reached a final state, and that the user invoking the command has access to see. Optionally, the command can return queries that are still running, queries by specific users, or queries grouped by user. To see both queries and commands completion, use [.show queries-and-commands](commands-and-queries.md).
+
+> [!NOTE}
+>
+> - A [database admin or database monitor](../management/access-control/role-based-authorization.md) can see any command that was invoked on their database.
+> - Other users can only see queries that were invoked by them.
 
 ## Syntax
 
