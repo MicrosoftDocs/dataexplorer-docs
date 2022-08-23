@@ -3,7 +3,7 @@ title: .drop extents - Azure Data Explorer
 description: This article describes the drop extents command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/02/2022
+ms.date: 08/23/2022
 ---
 # .drop extents
 
@@ -20,53 +20,48 @@ Requires [Table admin permission](../management/access-control/role-based-author
 > [!CAUTION]
 > If you drop an extent, all the rows in that extent will be deleted. To delete individual records, use [Soft delete](../concepts/data-soft-delete.md).
 
-## Drop extents with a query
+## Syntax
+
+> [!NOTE]
+> If the argument *TableName* is specified, you will need [Table admin permission](../management/access-control/role-based-authorization.md) to drop an extent.
+> If the the argument *TableName* isn't specified, you will need [Database admin permission](../management/access-control/role-based-authorization.md) if table name isn't specified.
+
+### Drop extents with a query
 
 Drop extents that are specified using a Kusto query.
 A recordset with a column called "ExtentId" is returned.
 
-If `whatif` is used, will just report them, without actually dropping.
-
-### Syntax
-
 `.drop` `extents` [`whatif`] <| *query*
 
-## Drop a specific extent
+If `whatif` is used, it will just report them, without actually dropping.
 
-Requires [Table admin permission](../management/access-control/role-based-authorization.md) if table name is specified.
-
-Requires [Database admin permission](../management/access-control/role-based-authorization.md) if table name isn't specified.
-
-### Syntax
+### Drop a specific or multiple extents
 
 `.drop` `extent` *ExtentId* [`from` *TableName*]
 
-## Drop specific multiple extents
-
-Requires [Table admin permission](../management/access-control/role-based-authorization.md) if table name is specified.
-
-Requires [Database admin permission](../management/access-control/role-based-authorization.md) if table name isn't specified.
-
-### Syntax
-
 `.drop` `extents` `(`*ExtentId1*`,`...*ExtentIdN*`)` [`from` *TableName*]
 
-## Drop extents by specified properties
+### Arguments
 
-The command supports emulation mode that produces an output as if the command would have run, but without actually executing it. Use `.drop-pretend` instead of `.drop`.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ExtentId*,  *ExtentIdN* | string | &check; | A single or multiple unique identifiers (GUID) of the extents to be dropped. |
+| *TableName* | string |  | The name of the table where the extent to be dropped is located |
 
-Requires [Table admin permission](../management/access-control/role-based-authorization.md) if table name is specified.
-
-Requires [Database admin permission](../management/access-control/role-based-authorization.md) if table name isn't specified.
-
-### Syntax
+### Drop extents by specified properties
 
 `.drop` `extents` [`older` *N* (`days` | `hours`)] `from` (*TableName* | `all` `tables`) [`trim` `by` (`extentsize` | `datasize`) *N* (`MB` | `GB` | `bytes`)] [`limit` *LimitCount*]
 
-* `older`: Only extents older than *N* days/hours will be dropped.
-* `trim`: The operation will trim the data in the database until the sum of extents matches the required size (MaxSize).
-* `limit`: The operation will be applied to first *LimitCount* extents.
+### Arguments
 
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *older* | int | &check; | Drop extents older than *N* days/hours |
+| *TableName* | string |  | The name of the table where the extent to be dropped is located |
+| *trim* | int | &check | Trim the data in the database until the sum of extents matches the required size (MaxSize). |
+| *limit* | int | &check | Applied to first *LimitCount* extents. |
+
+The command supports emulation mode that produces an output as if the command would have run, but without actually executing it. Use `.drop-pretend` instead of `.drop`.
 ## Examples
 
 ### Drop a specific extent
