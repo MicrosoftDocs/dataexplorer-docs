@@ -116,7 +116,7 @@ The `.cancel` `query` command starts a best-effort attempt to cancel a specific 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *ClientRequestId* | string | &check; | Value of the running query's `ClientRequestId` property. |
-| *ReasonPhrase* | string |  | Describes the reason for canceling the running query and is included in the query results if it's successfully canceled. |
+| *ReasonPhrase* | string | &check; when reason specified | Describes the reason for canceling the running query and is included in the query results if it's successfully canceled. |
 
 ## Examples
 
