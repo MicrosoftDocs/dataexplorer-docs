@@ -69,6 +69,7 @@ This example shows completed queries.
 ```
 
  **Results**
+
 | Text | Duration |
 |--|--|
 | StormEvents &#124; sort by DeathsDirect desc | 00:00:00.2343761 |
