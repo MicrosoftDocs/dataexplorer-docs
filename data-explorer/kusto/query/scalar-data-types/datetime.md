@@ -16,11 +16,9 @@ For example, a ticks value of 31241376000000000 represents the date, Friday, Jan
 This is sometimes called "a moment in linear time".
 
 > [!WARNING]
-> A `datetime` value in Kusto is always in the UTC time zone. Displaying `datetime`
-> values in other time zones is the responsibility of the user application that
-> displays the data, not a property of the data itself. Should time zone values be
-> required to be kept as a part of the data, a separate columns should be used
-> (providing offset information relative to UTC).
+> A `datetime` value in Kusto is always in the UTC time zone. If displaying `datetime` values 
+> in other time zones is required, please use [datetime_utc_to_local()](../datetime-utc-to-local-function.md) 
+> or its counterpart, [datetime_local_to_utc()](../datetime-local-to-utc-function.md), to convert to a different time zone.
 
 ## datetime literals
 
