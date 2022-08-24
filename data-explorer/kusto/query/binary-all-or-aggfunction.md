@@ -3,13 +3,13 @@ title: binary_all_or() (aggregation function) - Azure Data Explorer
 description: This article describes binary_all_or() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 08/24/2022
 ---
 # binary_all_or() (aggregation function)
 
-Accumulates values using the binary `OR` operation per summarization group (or in total, if summarization is done without grouping).
+Accumulates values using the binary `OR` operation for each summarization group, or in total if a group is not specified.
 
-* Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
+[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
 
@@ -17,17 +17,20 @@ Accumulates values using the binary `OR` operation per summarization group (or i
 
 ## Arguments
 
-* *Expr*: long number.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *Expr* | long | &check; | A long number used for the binary `AND`  calculation. |
 
 ## Returns
 
-Returns a value that is aggregated using the binary `OR` operation over records per summarization group (or in total, if summarization is done without grouping).
+Returns an aggregated value using the binary `OR` operation over records for each summarization group, or in total if a group is not specified.
 
-## Example
+## Examples
 
-Producing 'cafe-food' using binary `OR` operations:
+This example produces 'cafe-food' using binary `OR` operations:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA0tJLAHCpJxUjbzSXKuc/Lx0TV6uaF4uBQWDCgsQMDCw0IFwTYwMwADKNTAwNzNH5oKBqY4CL1csL1eNQnFpbm5iUWZVqkJRanFpTomCrUJJfmlBQWqRRkl+RmqFRlJmXmJRZXxiTk58fhHIek1NTQCJJ47sjwAAAA==)**\]**
+
 ```kusto
 datatable(num:long)
 [
@@ -39,6 +42,7 @@ datatable(num:long)
 | summarize result = toupper(tohex(binary_all_or(num)))
 ```
 
-|result|
+**Results**
+
 |---|
 |CAFEF00D|
