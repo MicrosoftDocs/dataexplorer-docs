@@ -44,5 +44,6 @@ datatable(num:long)
 
 **Results**
 
+|result|
 |---|
 |CAFEF00D|
