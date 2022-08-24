@@ -619,6 +619,9 @@ items:
     - name: series_rolling_fl()
       displayName: functions library, rolling, sliding
       href: kusto/functions-library/series-rolling-fl.md
+    - name: series_shapes_fl()
+      displayName: functions library, shape, trend, jump, detect
+      href: kusto/functions-library/series-shapes-fl.md
     - name: series_uv_anomalies_fl()
       displayName: functions library, anomaly detection, univariate
       href: kusto/functions-library/series-uv-anomalies-fl.md

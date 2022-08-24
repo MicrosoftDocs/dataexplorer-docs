@@ -43,6 +43,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [series_lag_fl()](series-lag-fl.md) | Apply a lag filter on a series. |
 | [series_moving_avg_fl()](series-moving-avg-fl.md) | Apply a moving average filter on a series. |
 | [series_rolling_fl()](series-rolling-fl.md) | Apply a rolling aggregation function on a series. |
+| [series_shapes_fl()](series-shapes-fl.md) | Detects positive/negative trend or jump in a series. |
 | [series_uv_anomalies_fl()](series-uv-anomalies-fl.md) | Detect anomalies in time series using the Univariate Anomaly Detection Cognitive Service API. |
 | [series_uv_change_points_fl()](series-uv-change-points-fl.md) | Detect change points in time series using the Univariate Anomaly Detection Cognitive Service API. |
 | [time_weighted_avg_fl()](time-weighted-avg-fl.md) | Calculates the time weighted average of a metric. |
