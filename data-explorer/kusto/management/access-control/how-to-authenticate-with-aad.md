@@ -4,7 +4,7 @@ description: This article describes How-To Authenticate with Azure AD for Azure 
 ms.reviewer: vladikb
 ms.topic: reference
 ms.custom: devx-track-js
-ms.date: 02/07/2022
+ms.date: 08/25/2022
 ---
 # How to authenticate with Azure Active Directory (Azure AD) for Azure Data Explorer access
 
@@ -257,118 +257,113 @@ var queryResult = queryclient.ExecuteQuery(databaseName, query, null);
 
 **Azure AD application configuration**
 
-> [!NOTE]
-> We will be using the [MSAL.js 2.0](https://www.npmjs.com/package/@azure/msal-browser) library for authentication.
-> In addition to the standard [steps](../../../provision-azure-ad-app.md) you need to
-> follow in order to setup an Azure AD application, you will also need to enable SPA setting on your AAD application, 
-> This will enable Oauth authorization code flow with PKCE for obtaining tokens, which is what msal 2 uses (MSAL 1 used a less secure implicit grant flow).
-> Follow MSAL 2 section in the MSAL tutorial [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-spa-app-registration) to configure the app accordingly.
+In addition to the standard [steps](../../../provision-azure-ad-app.md) for setting up an Azure AD application, you'll also need to enable the single-page application (SPA) setting on your Azure AD application. This enables OAuth authorization code flow with PKCE for obtaining tokens used by [MSAL.js 2.0](https://www.npmjs.com/package/@azure/msal-browser) (MSAL 1.0 used a less secure implicit grant flow). Use the MSAL 2.0 steps in the [SPA app registration scenario](/azure/active-directory/develop/scenario-spa-app-registration) to configure the app accordingly.
 
 **Details**
 
-When the client is a JavaScript code running in the user's browser, the auth code flow is used. The authentication flow consists of 2 stages: 
-1. MSAL redirects to AAD to login. AAD redirects back to the app, with an autorization code in the  url.
-2. MSAL makes a request to the token endpoint to get the access token.
-A 24 hour refresh token is given in this flow, so the client can cache the token for prolonged periods of time and try reuse it by acquiring the token silently.
+When the client is a JavaScript code running in the user's browser, the auth code flow is used. The authentication flow consists of two stages:
 
-Like in the native client flow, there should be  two Azure AD applications (Server and Client) with a configured relationship between them.
+1. The app is redirected to sign in to Azure AD. Once signed in, Azure AD redirects back to the app with an authorization code in the URI.
 
-MSAL js 2 requires logging in (also known as getting an ID token) before any access token calls are made.
+1. The app makes a request to the token endpoint to get the access token. The token is valid for 24 hour during which the client can reuse it by acquiring the token silently.
 
-The ID token is obtained by calling the `PublicClientApplication.loginRedirect()` method, and access tokens are obtained by calling `PublicClientApplication.acquireTokenSilent()` or `PublicClientApplication.acquireTokenRedirect()` in case silent acquisition failed.
-MSAL 2 also supports `PublicClientApplicationloginPopup()`, but some browser block pop-ups which makes it less useful than a redirect.
+Like in the native client flow, there should be two Azure AD applications (server and client) with a configured relationship between them.
 
-MSAL JS has detailed sample apps for different frameworks such as react and angular. [this](https://github.com/Azure-Samples/ms-identity-javascript-react-spa) is a good start if you need to auhtenticate to azure data explorer using a react application.
-Since the client-side javascript framwork ecosystem is exremely diverse, it is reccommended to find the right sample app in MSAL js documentation that feets your needs. 
+> [!NOTE]
+>
+> * The ID token is obtained by calling the `PublicClientApplication.loginRedirect()` method, and access tokens are obtained by calling `PublicClientApplication.acquireTokenSilent()`, or `PublicClientApplication.acquireTokenRedirect()` in case silent acquisition failed. MSAL 2.0 also supports `PublicClientApplicationloginPopup()`, but some browser block pop-ups which makes it less useful than a redirect.
+> * MSAL 2.0 requires signing in (also known as getting an ID token) before any access token calls are made.
 
-We will provide a barebones framework-less sample code below to use as a genereal reference.
+MSAL.js 2.0 has detailed sample apps for different frameworks such as React and Angular. For an example of how to use MSAL.js 2.0 to authenticate to an Azure Data Explorer cluster using a React application, see the [MSAL.js 2.0 React sample](https://github.com/Azure-Samples/ms-identity-javascript-react-spa). For other frameworks, check the MSAL.js 2.0 documentation to find a sample app.
 
-1. Create an instance of MSAL's `PublicClientApplication` with the right configuration:
+The following is a framework independent code sample for connecting to the *Help* cluster.
 
-```javascript
-import * as msal from "@azure/msal-browser";
+1. Create an instance of the MSAL `PublicClientApplication`:
 
-const msalConfig = {
-  auth: {
-    clientId: "<AAD client application ID>",
-    authority:
-      "https://login.microsoftonline.com/<AAD tenant ID>",
-  },
-};
+    ```javascript
+    import * as msal from "@azure/msal-browser";
 
-const msalInstance = new msal.PublicClientApplication(msalConfig);
-```
-
-2. It is important to always call `handleRedirectPromise()` whenever the page loads. This is because AAD will put the authorization code as part of the URL and this function contains the piece of code that pulls the auth code out of the fragment URL and caches it. Note the `await` here - it's important.
-
-```javascript
-await msalInstance.handleRedirectPromise();
-```
-
-3. login if the MSAL doesn't have any locallly cached accounts. Note that we're providing the scopes we'll need for access, thus at this point when the user gets redirected to AAD they might be asked to consent to provide your app the permission to access Azure Data Explorer on their behalf.
-
-```javascript
-const myAccounts = msalInstance.getAllAccounts();
-
-// If no account is logged in, redirect the user to log in.
-// no need for a return statement here, because the browser will redirect the user to the login page.
-if (myAccounts === undefined || myAccounts.length === 0) {
-  try {
-    await msalInstance.loginRedirect({
-      scopes: ["https://help.kusto.windows.net/.default"],
-    });
-  } catch (err) {
-    console.err(err); // handle error
-  }
-}
-
-```
-
-4. Now that the user is logged in, Call `msalInstance.acquireTokenSilent()` to get the actual access token for Azure data explorer. if silent token acquisition failes, you will need to call `acquireTokenRedirect()` in order to get a new authorization code.
-
-```javascript
-  const account = myAccounts[0];
-  const name = account.name;
-
-  window.document.getElementById("main").innerHTML = `HI ${name}!`;
-
-  const accessTokenRequest = {
-    account,
-    scopes: ["https://help.kusto.windows.net/.default"],
-  };
-  let acquireTokenResult = undefined;
-  try {
-    acquireTokenResult = await msalInstance.acquireTokenSilent(
-      accessTokenRequest
-    );
-  } catch (error) {
-    // if our access / refresh / id token is expired we need redirect to AAD to get a new one.
-    if (error instanceof InteractionRequiredAuthError) {
-      await msalInstance.acquireTokenRedirect(accessTokenRequest);
-    }
-  }
-
-  const accessToken = acquireTokenResult.accessToken;
-```
-
-5. Now that you have an access token to the Azure Data Explorer cluster, you can issue a requet to that cluster. All you have to do is put the token in the Authorization header:
-
-```javascript
-const fetchResult = await fetch(
-    "https://help.kusto.windows.net/v2/rest/query",
-    {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
+    const msalConfig = {
+      auth: {
+        clientId: "<AAD client application ID>",
+        authority:
+          "https://login.microsoftonline.com/<AAD tenant ID>",
       },
-      method: "POST",
-      body: JSON.stringify({
-        db: "Samples",
-        csl: "StormEvents | count",
-      }),
+    };
+
+    const msalInstance = new msal.PublicClientApplication(msalConfig);
+    ```
+
+    > [!IMPORTANT]
+    > Make sure you application always calls `handleRedirectPromise()` whenever the page loads. This is because Azure AD adds the authorization code as part of the URI and the `handleRedirectPromise()` function extracts the authorization code from URI and caches it.
+    >
+    > ```javascript
+    > await msalInstance.handleRedirectPromise();
+    > ```
+
+1. Add the code to sign in if the MSAL doesn't have any locally cached accounts. Note the use of scopes to redirect to the Azure AD page for providing your app with the permission required to access Azure Data Explorer.
+
+    ```javascript
+    const myAccounts = msalInstance.getAllAccounts();
+
+    // If no account is logged in, redirect the user to log in.
+    // no need for a return statement here, because the browser will redirect the user to the login page.
+    if (myAccounts === undefined || myAccounts.length === 0) {
+      try {
+        await msalInstance.loginRedirect({
+          scopes: ["https://help.kusto.windows.net/.default"],
+        });
+      } catch (err) {
+        console.err(err); // handle error
+      }
     }
-  );
-  const jsonResult = await fetchResult.json();
-  // the following line extracts the first cell in the result data
-  const count = jsonResult.filter((x) => x.TableKind == "PrimaryResult")[0].Rows[0][0];
-```
+    ```
+
+1. Add the code to call `msalInstance.acquireTokenSilent()` to get the actual access token required to access the specified Azure Data Explorer cluster. If silent token acquisition fails, call `acquireTokenRedirect()` to get a new token.
+
+    ```javascript
+      const account = myAccounts[0];
+      const name = account.name;
+
+      window.document.getElementById("main").innerHTML = `HI ${name}!`;
+
+      const accessTokenRequest = {
+        account,
+        scopes: ["https://help.kusto.windows.net/.default"],
+      };
+      let acquireTokenResult = undefined;
+      try {
+        acquireTokenResult = await msalInstance.acquireTokenSilent(
+          accessTokenRequest
+        );
+      } catch (error) {
+        // if our access / refresh / id token is expired we need redirect to AAD to get a new one.
+        if (error instanceof InteractionRequiredAuthError) {
+          await msalInstance.acquireTokenRedirect(accessTokenRequest);
+        }
+      }
+
+      const accessToken = acquireTokenResult.accessToken;
+    ```
+
+1. Finally, add code to make requests to the specified cluster. Note that you must add the token in the **Authorization** attribute in the request header for the authentication to succeed. For example, the following code makes a request to run a query against the **Samples** database in the *Help* cluster.
+
+    ```javascript
+    const fetchResult = await fetch(
+        "https://help.kusto.windows.net/v2/rest/query",
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({
+            db: "Samples",
+            csl: "StormEvents | count",
+          }),
+        }
+      );
+      const jsonResult = await fetchResult.json();
+      // the following line extracts the first cell in the result data
+      const count = jsonResult.filter((x) => x.TableKind == "PrimaryResult")[0].Rows[0][0];
+    ```
