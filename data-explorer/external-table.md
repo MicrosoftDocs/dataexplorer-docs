@@ -8,7 +8,7 @@ ms.date: 08/25/2022
 
 # Create an external table using the Azure Data Explorer web UI wizard
 
-An external table is a schema entity that references data stored outside the Azure Data Explorer database. Azure Data Explorer web UI can create external tables by taking sample files from a storage container and creating schema based on these samples. You can then analyze and query data in external tables without ingestion into Azure Data Explorer. For information about different ways to create external tables, see [create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md).
+An external table is a schema entity that references data stored outside the Azure Data Explorer database. Azure Data Explorer web UI can create external tables by taking sample files from a storage container and creating schema based on these samples. You can then analyze and query data in external tables without ingestion into Azure Data Explorer.  For information about different ways to create external tables, see [create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md). For a brief overview, see [External tables](kusto/query/schema-entities/externaltables.md).
 
 This article shows you how to create an external table using the creation wizard experience.
 
@@ -52,7 +52,7 @@ You can add up to 10 source containers.
 
 1. Select **Select container**.
 
-    :::image type="content" source="media/external-table/select-container.png" alt-text="Screen shot of select container button in source tab.":::
+    :::image type="content" source="media/external-table/select-container.png" alt-text="Screenshot of select container button in source tab.":::
 
 1. Choose the relevant subscription and storage account associated with your container.
 
@@ -70,7 +70,7 @@ You can add up to 10 source containers.
 
 1. Enter an [account key or SAS URL](kusto/api/connection-strings/generate-sas-token.md) to your source container with read and list permissions. When verification has completed, a green check will appear to the right of the container link.
 
-    :::image type="content" source="media/external-table/add-sas-url.png" alt-text="Screen shot of adding SAS URL.":::
+    :::image type="content" source="media/external-table/add-sas-url.png" alt-text="Screenshot of adding SAS URL.":::
 
 #### File filters
 
@@ -120,12 +120,12 @@ In the right-hand side of the tab, you can preview your data. On the left-hand s
 1. Select **Add partition** to add another partition.
 1. Select **Save**. The partitions you added now appear in the list of **Partitions** in the left pane. Partitioned columns can't be changed in preview.
 
-    :::image type="content" source="media/external-table/schema.png" alt-text="Screen shot of schema external table Azure Data Explorer.":::
+    :::image type="content" source="media/external-table/schema.png" alt-text="Screenshot of schema external table Azure Data Explorer.":::
 
 1. Select **Next: Create table**. When the table is created, an **External table successfully created** window opens.
 1. To view the command used to create the table, select **View command**.
 
-    :::image type="content" source="media/external-table/successfully-created.png" alt-text="Screen shot of successful creation of external table in Azure Data Explorer.":::
+    :::image type="content" source="media/external-table/successfully-created.png" alt-text="Screenshot of successful creation of external table in Azure Data Explorer.":::
 1. To undo the creation of the external table, select **Tools** > **Undo**.
 
 ## Query the external table
