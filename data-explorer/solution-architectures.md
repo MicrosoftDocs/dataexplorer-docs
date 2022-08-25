@@ -79,3 +79,24 @@ This solution also uses the following services:
 
 > [!div class="nextstepaction"]
 > [Content Delivery Network analytics](/azure/architecture/solution-ideas/articles/content-delivery-network-azure-data-explorer)
+
+## Data analytics for automotive test fleets
+
+Automotive OEMs need solutions to minimize the time between doing test drives and getting test drive diagnostic data to R&D engineers. 
+
+This example workload relates to both telemetry and batch test drive data ingestion scenarios. The workload focuses on the data platform that processes diagnostic data, and the connectors for visualization and reporting.
+
+This solution also uses the following services:
+
+* Azure IoT Hub
+* Azure Blob Storage
+* Azure Event Hubs
+* Azure Functions
+* Azure Managed Grafana
+* Azure App Service
+* Azure Maps
+* Azure API Management
+* Power BI
+
+> [!div class="nextstepaction"]
+> [Data analytics for automotive test fleets](/azure/architecture/industries/automotive/automotive-telemetry-analytics)

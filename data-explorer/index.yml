@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: shsagir
   ms.author: shsagir
-  ms.date: 07/05/2022
+  ms.date: 08/25/2022
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -191,7 +191,9 @@ landingContent:
           - text: Geospatial data processing and analytics 
             url: /azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure
           - text: Long-term security log retention with Azure Data Explorer
-            url: /azure/architecture/example-scenario/security/security-log-retention-azure-data-explorer      
+            url: /azure/architecture/example-scenario/security/security-log-retention-azure-data-explorer
+          - text: Data analytics for automotive test fleets
+            url: /azure/architecture/industries/automotive/automotive-telemetry-analytics
   # Card
   - title: Reference
     linkLists:
