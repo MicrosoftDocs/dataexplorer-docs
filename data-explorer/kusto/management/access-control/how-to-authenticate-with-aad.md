@@ -24,7 +24,7 @@ All authorization checks are performed using this identity.
 
 In most cases, the recommendation is to use one of Azure Data Explorer SDKs to access the
 service programmatically, as they remove much of the hassle of implementing the
-flow above (and much more). See, for example, the [.NET SDK](../../api/netfx/about-the-sdk.md).
+flow (and much more). For more information, see the [.NET SDK](../../api/netfx/about-the-sdk.md).
 The authentication properties are then set by the [Kusto connection string](../../api/connection-strings/kusto.md).
 If that isn't possible, continue reading for detailed information on how to implement this flow yourself.
 
@@ -135,7 +135,7 @@ If your application is intended to serve as front-end and authenticate users for
 The full step-by-step process is described in [Configure delegated permissions for the application registration](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
 
 The following brief code snippet demonstrates using [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an Azure AD user
-token to access Azure Data Explorer (launches logon UI):
+token to access Azure Data Explorer (launches sign-in UI):
 
 ```csharp
 // Create an HTTP request
@@ -206,17 +206,17 @@ the administrator of the Azure AD tenant.
    signed-in to the correct tenant (see top/right corner for the identity
    used to sign in to the portal).
 
-2. On the resources pane, click **Azure Active Directory**, then **App registrations**.
+2. On the resources pane, select **Azure Active Directory**, then **App registrations**.
 
 3. Locate the application that uses the on-behalf-of flow and open it.
 
-4. Click **API permissions**, then **Add a permission**.
+4. Select **API permissions**, then **Add a permission**.
 
 5. Search for the application named **Azure Data Explorer** and select it.
 
 6. Select **user_impersonation / Access Kusto**.
 
-7. Click **Add permission**.
+7. Select **Add permission**.
 
 **Step 2: Perform token exchange in your server code**
 
@@ -276,7 +276,7 @@ Like in the native client flow, there should be two Azure AD applications (serve
 
 MSAL.js 2.0 has detailed sample apps for different frameworks such as React and Angular. For an example of how to use MSAL.js 2.0 to authenticate to an Azure Data Explorer cluster using a React application, see the [MSAL.js 2.0 React sample](https://github.com/Azure-Samples/ms-identity-javascript-react-spa). For other frameworks, check the MSAL.js 2.0 documentation to find a sample app.
 
-The following is a framework independent code sample for connecting to the *Help* cluster.
+The following is a framework-independent code sample for connecting to the *Help* cluster.
 
 1. Create an instance of the MSAL `PublicClientApplication`:
 
@@ -346,7 +346,7 @@ The following is a framework independent code sample for connecting to the *Help
       const accessToken = acquireTokenResult.accessToken;
     ```
 
-1. Finally, add code to make requests to the specified cluster. Note that you must add the token in the **Authorization** attribute in the request header for the authentication to succeed. For example, the following code makes a request to run a query against the **Samples** database in the *Help* cluster.
+1. Finally, add code to make requests to the specified cluster. You must add the token in the **Authorization** attribute in the request header for the authentication to succeed. For example, the following code makes a request to run a query against the **Samples** database in the *Help* cluster.
 
     ```javascript
     const fetchResult = await fetch(
