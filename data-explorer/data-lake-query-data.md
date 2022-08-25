@@ -3,13 +3,13 @@ title: Query data in Azure Data Lake using Azure Data Explorer
 description: Learn how to query data in Azure Data Lake using Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 06/19/2022
+ms.date: 08/25/2022
 ---
 # Query data in Azure Data Lake using Azure Data Explorer
 
 Azure Data Lake Storage is a highly scalable and cost-effective data lake solution for big data analytics. It combines the power of a high-performance file system with massive scale and economy to help you reduce your time to insight. Data Lake Storage Gen2 extends Azure Blob Storage capabilities and is optimized for analytics workloads.
 
-Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Storage (Gen1 and Gen2), providing fast, cached, and indexed access to data stored in external storage. You can analyze and query data without prior ingestion into Azure Data Explorer. You can also query across ingested and uningested external data simultaneously.
+Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Storage (Gen1 and Gen2), providing fast, cached, and indexed access to data stored in external storage. You can analyze and query data without prior ingestion into Azure Data Explorer. You can also query across ingested and uningested external data simultaneously. For more information see how to [create an external table using the Azure Data Explorer web UI wizard](external-table.md).
 
 > [!TIP]
 > The best query performance necessitates data ingestion into Azure Data Explorer. The capability to query external data without prior ingestion should only be used for historical data or data that are rarely queried. [Optimize your external data query performance](#optimize-your-query-performance) for best results.
