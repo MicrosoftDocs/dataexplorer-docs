@@ -24,7 +24,7 @@ There are two ways to access the creation wizard:
 
 * In the left menu of the Azure Data Explorer web UI, select **Data**. In the **Create external table** card, select **Create**.
 
-     :::image type="content" source="media/external-table/create-external-table.png" alt-text="Screenshot of data blade in Azure Data Explorer web UI with create external table highlighted.":::
+     :::image type="content" source="media/external-table/data-create-external-table.png" alt-text="Screenshot of data blade in Azure Data Explorer web UI with create external table highlighted.":::
 
 * In the left pane of the Azure Data Explorer web UI, select **Query**. In the left menu, right-click on your database name and select **Create external table**.
 
