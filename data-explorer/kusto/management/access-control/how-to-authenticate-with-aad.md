@@ -295,7 +295,7 @@ The following is a framework-independent code sample for connecting to the *Help
     ```
 
     > [!IMPORTANT]
-    > Make sure you application always calls `handleRedirectPromise()` whenever the page loads. This is because Azure AD adds the authorization code as part of the URI and the `handleRedirectPromise()` function extracts the authorization code from URI and caches it.
+    > Make sure your application always calls `handleRedirectPromise()` whenever the page loads. This is because Azure AD adds the authorization code as part of the URI and the `handleRedirectPromise()` function extracts the authorization code from URI and caches it.
     >
     > ```javascript
     > await msalInstance.handleRedirectPromise();
