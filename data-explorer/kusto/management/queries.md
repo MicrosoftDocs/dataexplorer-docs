@@ -73,7 +73,6 @@ This example shows completed queries.
 ```
 
  **Results**
- 
 
 | Text | Duration |
 |--|--|
@@ -110,14 +109,14 @@ The `.cancel` `query` command starts a best-effort attempt to cancel a specific 
 
 `.cancel` `query` *ClientRequestId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
 
-## Arguments
+## Arguments for canceling the query
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *ClientRequestId* | string | &check; | Value of the running query's `ClientRequestId` property. |
 | *ReasonPhrase* | string | &check; when reason specified | Describes the reason for canceling the running query and is included in the query results if it's successfully canceled. |
 
-## Examples
+## Example of canceling a query
 
 This example cancels a specific query using *ClientRequestId*.
 
