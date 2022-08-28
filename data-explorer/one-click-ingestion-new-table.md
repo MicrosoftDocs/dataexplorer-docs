@@ -77,9 +77,9 @@ In **File filters** you can filter files to ingest specific files, or to filter 
 
 ### Filter by file extension
 
-* If you want to, filter the data to ingest only files that end with a specific file extension.
+* You can filter the data to ingest only files with a specific file extension.
 
-  For example, filter for all files that end with the word *.csv* extension.
+  For example, filter for all files with a *.csv* extension.
 
   :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="Screenshot of Ingest data tab showing the ingestion filter.":::
 
@@ -89,7 +89,7 @@ In **File filters** you can filter files to ingest specific files, or to filter 
 
 * You can also filter the folder path to limit your search for a file. Once the list of files from the container is populated, you can enter a search term in the **Folder path** field.
 
-  :::image type="content" source="media/one-click-ingestion-new-table/filter-folder-path-selected.png" alt-text="Screenshot of a list of files in a container when ingesting data with the ingestion wizard.":::
+  :::image type="content" source="media/one-click-ingestion-new-table/filter-folder-path-select.png" alt-text="Screenshot of a list of files in a container when ingesting data with the ingestion wizard.":::
 
   The list will be filtered by the term.
 
@@ -99,7 +99,7 @@ In **File filters** you can filter files to ingest specific files, or to filter 
   
 * Alternatively, you can filter for a specific folder using the path to that folder.
 
-1. Navigate to the storage account, and select **Storage Explorer > Blob Containers**
+1. Go to the storage account, and select **Storage Explorer > Blob Containers**
 
     :::image type="content" source="media/one-click-ingestion-new-table/storage-browser-blob-containers.png" alt-text="Screenshot access blob containers in Azure Storage account.":::
 
@@ -107,9 +107,8 @@ In **File filters** you can filter files to ingest specific files, or to filter 
 
     :::image type="content" source="media/one-click-ingestion-new-table/copy-path.png" alt-text="Screenshot of a folder path to folder in blob container - Azure Storage account.":::
 
-1. Paste this path into a temporary file and insert `/` in between each folder to create a folder path.
-
-1. Enter this path into the **Folder path** field to select this folder.
+1. Copy the file path and paste it into a temporary file.
+1. Insert `/` in between each folder to create the folder path and enter this path into the **Folder path** field to select this folder.
 
 ## Edit the schema
 
