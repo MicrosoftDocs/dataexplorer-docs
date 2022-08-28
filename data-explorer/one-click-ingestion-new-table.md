@@ -38,7 +38,7 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 1. From the **Quick actions** section, select **Ingest data**. Alternatively, from the **All** section, select **Ingest data** and then **Ingest**.
 
-    :::image type="content" source="media/one-click-ingestion-new-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web U I where you select ingestion for a table.":::
+    :::image type="content" source="media/one-click-ingestion-new-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select ingestion for a table.":::
 
 1. In the **Ingest data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 
@@ -73,7 +73,7 @@ Under **Source type**, do the following steps:
 
 ## Filter data
 
-Optionally, you can filter data to be ingested with the **File filter** field. You can filter data by file extension, file location, or both.
+You can filter data to be ingested by selecting the **File filters** options. You can filter by file extension, file location, or both.
 
 ### Filter by file extension
 
@@ -83,7 +83,7 @@ Optionally, you can filter data to be ingested with the **File filter** field. Y
 
   :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="Screenshot of Ingest data tab showing the ingestion filter.":::
 
-  The system will select one of the files at random and the schema will be generated based on that  **Schema defining file**. You can select a different file.
+  The system will select one of the files at random and the schema will be generated based on that **Schema defining file**. You can select a different file.
 
 ### Filter by folder path
 
@@ -91,22 +91,22 @@ Optionally, you can filter data to be ingested with the **File filter** field. Y
 
   :::image type="content" source="media/one-click-ingestion-new-table/filter-folder-path-select.png" alt-text="Screenshot of a list of files in a container when ingesting data with the ingestion wizard.":::
 
-  You can enter a partial folder path or folder name.
+1. You can enter a partial folder path or folder name.
 
-  :::image type="content" source="media/one-click-ingestion-new-table/filter-folder-path-search.png" alt-text="Screenshot of the folder path search to filter files when ingesting data with the ingestion wizard.":::
+    :::image type="content" source="media/one-click-ingestion-new-table/filter-folder-path-search.png" alt-text="Screenshot of the folder path search to filter files when ingesting data with the ingestion wizard.":::
 
-* Alternatively, you can filter using the full folder path.
+1. Alternatively, you can filter using the full folder path.
 
-1. Go to the storage account, and select **Storage Explorer > Blob Containers**
+    1. Go to the storage account, and select **Storage Explorer > Blob Containers**
 
-    :::image type="content" source="media/one-click-ingestion-new-table/storage-browser-blob-containers.png" alt-text="Screenshot access blob containers in Azure Storage account.":::
+            :::image type="content" source="media/one-click-ingestion-new-table/storage-browser-blob-containers.png" alt-text="Screenshot access blob containers in Azure Storage account.":::
 
-1. Browse to the selected folder, and select full folder path.
+    1. Browse to the selected folder, and select full folder path.
 
-    :::image type="content" source="media/one-click-ingestion-new-table/copy-path.png" alt-text="Screenshot of a folder path to folder in blob container - Azure Storage account.":::
+            :::image type="content" source="media/one-click-ingestion-new-table/copy-path.png" alt-text="Screenshot of a folder path to folder in blob container - Azure Storage account.":::
 
-1. Copy the full folder path and paste it into a temporary file.
-1. Insert `/` in between each folder to create the folder path and enter this path into the **Folder path** field to select this folder.
+    1. Copy the full folder path and paste it into a temporary file.
+    1. Insert `/` in between each folder to create the folder path and enter this path into the **Folder path** field to select this folder.
 
 ## Edit the schema
 
