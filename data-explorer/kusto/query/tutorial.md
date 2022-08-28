@@ -92,7 +92,7 @@ You can achieve the same result by using [sort](./sortoperator.md), and then [ta
 StormEvents
 | sort by StartTime desc
 | take 5
-| project  StartTime, EndTime, EventType, EventNarrative
+| project  StartTime, EndTime, EventType, State, EventNarrative
 ```
 
 ## Filter by Boolean expression: *where*
