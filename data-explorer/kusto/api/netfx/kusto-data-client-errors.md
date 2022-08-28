@@ -27,8 +27,6 @@ Based on the root cause, exceptions may inherit one of the following error types
 
 * `KustoClientException`: Indicates a client-side problem in sending the request to the service. Specifically, this exception informs the caller that the service itself didn't receive the request. For a list client authentication exceptions, see [Client exceptions](#client-exceptions).
 
-> [!IMPORTANT]
-> All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
 ## General exceptions
 
 | Exception name | Reason |
@@ -39,7 +37,7 @@ Based on the root cause, exceptions may inherit one of the following error types
 
 ### Client exceptions
 
-Client exceptions contain the following exception categories:
+All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column. Client exceptions contain the following exception categories:
 
 | Exception name | Reason |
 |--|--|
@@ -54,6 +52,8 @@ Client exceptions contain the following exception categories:
 | `KustoClientTimeoutException` | A client is unable to send or complete a request due to a client-side timeout. |
 
 ### Client query exceptions
+
+All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
 
 | Exception name | Reason |
 |--|--|
@@ -72,6 +72,8 @@ Client exceptions contain the following exception categories:
 
 ### Authentication exceptions
 
+All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
+
 | Exception name | Reason |
 |--|--|--|--|--|
 | `KustoClientApplicationAuthenticationException` | Client-side Azure Active Directory Application authentication failure. </br> **Permanance**: True |
@@ -81,6 +83,8 @@ Client exceptions contain the following exception categories:
 | `KustoClientUserInteractiveModeNotValidException` | Client-side failure to authenticate to Azure Active Directory. </br> **Permanance**: True |
 
 ## Request Exceptions
+
+All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
 
 | Exception name | Reason |
 |--|--|
@@ -92,6 +96,8 @@ Client exceptions contain the following exception categories:
 | `KustoRequestPayloadTooLargeException` | The payload is too large. For example, when Kusto is told to process more data than is allowed in a single batch. </br> **Failure code**: 413 </br> **Failure subcode**: Payload too large </br> **Permanance**: True |
 
 ### Bad request exceptions
+
+All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
 
 | Exception name | Reason |
 |--|--|
@@ -113,6 +119,8 @@ Client exceptions contain the following exception categories:
 | `TableNotFoundException` | Failure to locate a table. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_TableNotExist </br> **Permanance**: True|
 
 ## Service exceptions
+
+All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
 
 | Exception name | Reason |
 |--|--|
