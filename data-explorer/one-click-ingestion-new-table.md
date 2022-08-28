@@ -73,41 +73,39 @@ Under **Source type**, do the following steps:
 
 ## Filter data
 
-In **File filters** you can filter files to ingest specific files, or to filter the files in your search.
+Optionally, you can filter data to be ingested with the **File filter** field. You can filter data by file extension, file location, or both.
 
 ### Filter by file extension
 
 * You can filter the data to ingest only files with a specific file extension.
 
-  For example, filter for all files with a *.csv* extension.
+  For example, filter for all files with a **CSV** extension.
 
   :::image type="content" source="media/one-click-ingestion-new-table/from-container-with-filter.png" alt-text="Screenshot of Ingest data tab showing the ingestion filter.":::
 
   The system will select one of the files at random and the schema will be generated based on that  **Schema defining file**. You can select a different file.
 
-### Filter with a search term
+### Filter by folder path
 
-* You can also filter the folder path to limit your search for a file. Once the list of files from the container is populated, you can enter a search term in the **Folder path** field.
+* You can also filter by entering the full or partial folder path in the **Folder path** field. This field is case sensitive.
 
   :::image type="content" source="media/one-click-ingestion-new-table/filter-folder-path-select.png" alt-text="Screenshot of a list of files in a container when ingesting data with the ingestion wizard.":::
 
-  The list will be filtered by the term.
+  You can enter a partial folder path or folder name.
 
   :::image type="content" source="media/one-click-ingestion-new-table/filter-folder-path-search.png" alt-text="Screenshot of the folder path search to filter files when ingesting data with the ingestion wizard.":::
 
-### Filter with a file path
-  
-* Alternatively, you can filter for a specific folder using the path to that folder.
+* Alternatively, you can filter using the full folder path.
 
 1. Go to the storage account, and select **Storage Explorer > Blob Containers**
 
     :::image type="content" source="media/one-click-ingestion-new-table/storage-browser-blob-containers.png" alt-text="Screenshot access blob containers in Azure Storage account.":::
 
-1. Browse to the selected folder, and select file path to the folder.
+1. Browse to the selected folder, and select full folder path.
 
     :::image type="content" source="media/one-click-ingestion-new-table/copy-path.png" alt-text="Screenshot of a folder path to folder in blob container - Azure Storage account.":::
 
-1. Copy the file path and paste it into a temporary file.
+1. Copy the full folder path and paste it into a temporary file.
 1. Insert `/` in between each folder to create the folder path and enter this path into the **Folder path** field to select this folder.
 
 ## Edit the schema
