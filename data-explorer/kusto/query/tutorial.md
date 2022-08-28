@@ -38,24 +38,6 @@ For more information, see [count operator](./countoperator.md).
 Use [project](./projectoperator.md) to pick out only the columns you want. See the following example, which uses both the [project](./projectoperator.md)
 and the [take](./takeoperator.md) operators.
 
-## Filter by Boolean expression: *where*
-
-Let's see only `flood` events in `California` in Feb-2007:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| where StartTime > datetime(2007-02-01) and StartTime < datetime(2007-03-01)
-| where EventType == 'Flood' and State == 'CALIFORNIA'
-| project StartTime, EndTime , State , EventType , EpisodeNarrative
-```
-
-Here's the output:
-
-|StartTime|EndTime|State|EventType|EpisodeNarrative|
-|---|---|---|---|---|
-|2007-02-19 00:00:00.0000000|2007-02-19 08:00:00.0000000|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to western Kern County in the early morning hours of the 19th. Minor flooding was reported across State Highway 166 near Taft.|
-
 ## Show *n* rows: *take*
 
 Let's see some data. What's in a random sample of five rows?
@@ -112,6 +94,25 @@ StormEvents
 | take 5
 | project  StartTime, EndTime, EventType, EventNarrative
 ```
+
+## Filter by Boolean expression: *where*
+
+Let's see only `flood` events in `California` in Feb-2007:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents
+| where StartTime > datetime(2007-02-01) and StartTime < datetime(2007-03-01)
+| where EventType == 'Flood' and State == 'CALIFORNIA'
+| project StartTime, EndTime , State , EventType , EpisodeNarrative
+```
+
+Here's the output:
+
+|StartTime|EndTime|State|EventType|EpisodeNarrative|
+|---|---|---|---|---|
+|2007-02-19 00:00:00.0000000|2007-02-19 08:00:00.0000000|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to western Kern County in the early morning hours of the 19th. Minor flooding was reported across State Highway 166 near Taft.|
+
 
 ## Compute derived columns: *extend*
 
