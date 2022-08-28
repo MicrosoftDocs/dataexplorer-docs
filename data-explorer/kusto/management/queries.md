@@ -98,7 +98,7 @@ This example returns the currently running queries by the current user.
 This example returns the currently running queries by a specific user name.
 
 ```kusto
-.show running queries by user (<UserPrincipalName>)
+.show running queries by user <UserPrincipalName>
 ```
 
 ## .cancel query
