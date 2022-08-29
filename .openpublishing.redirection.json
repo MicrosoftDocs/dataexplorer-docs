@@ -319,7 +319,7 @@
       "source_path": "data-explorer/one-click-table-retention-policy.md",
       "redirect_url": "/azure/data-explorer/table-retention-policy-wizard",
       "redirect_document_id": true
-    }
+    },
     {
       "source_path": "data-explorer/one-click-event-hub.md",
       "redirect_url": "/azure/data-explorer/event-hub-wizard",
