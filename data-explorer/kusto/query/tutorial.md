@@ -16,7 +16,7 @@ The best way to learn about the Kusto Query Language is to look at some basic qu
 
 ## Common operators
 
-A Kusto query consists of a data source (usually a table name) followed by one or more pairs of the pipe character (`|`) and some tabular operator. We will cover some of the common [query operators](queries.md) in this section.
+A Kusto query consists of a data source (usually a table name) followed by one or more pairs of the pipe character (`|`) and some tabular operator. This section reviews some of the common [query operators](queries.md).
 
 ### count 
 
@@ -213,6 +213,28 @@ In the results of a `summarize` operator:
 * Each computed expression has a column.
 * Each combination of `by` values has a row.
 
+### render
+
+[render](./renderoperator.md): displays various types of charts and tables.
+
+Strictly speaking, `render` is a feature of the client rather than part of the query language. Still, it's integrated into the language, and it's useful for envisioning your results.
+
+Project two columns and use them as the x-axis and the y-axis of a chart:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents 
+| summarize event_count=count(), mid = avg(BeginLat) by State 
+| sort by mid
+| where event_count > 1800
+| project State, event_count
+| render columnchart
+```
+
+:::image type="content" source="images/tutorial/event-counts-state.png" alt-text="Screenshot that shows a column chart of storm event counts by state.":::
+
+We did not include `mid` in the `project` operation. This way the `mid` data is not visually represented in the chart, yet we still display the states in order based on their `mid` values.
+
 ## Scalar functions
 
 We will only review one of the most helpful scalar functions in this section. To experiement with more, check out the detailed [scalar functions](scalarfunctions.md) section of our docs.
@@ -246,32 +268,77 @@ The [bin()](./binfunction.md) function is the same as the [floor()](./floorfunct
 
 <a name="displaychartortable"></a>
 
-## Data visualizations
+## Aggregation functions
 
-This section shows how we can use the [render](./renderoperator.md) operator to visualize our query results. The [render](./renderoperator.md) operator allows us to display various types of charts and tables.
+The Kusto Query Language provides many [aggregation functions](aggregation-functions.md). 
 
-Strictly speaking, `render` is a feature of the client rather than part of the query language. Still, it's integrated into the language, and it's useful for envisioning your results.
+This section covers one built in aggregation as well as shows how to create your own aggregation using the operators we covered so far.
 
-### Column chart
-Project two columns and use them as the x-axis and the y-axis of a chart:
+### Percentiles
+
+What ranges of durations do we find in different percentages of storms?
+
+To get this information, use the preceding query from [Plot a distribution](#plot-a-distribution), but replace `render` with:
+
+```kusto
+| summarize percentiles(duration, 5, 20, 50, 80, 95)
+```
+
+In this case, we didn't use a `by` clause, so the output is a single row:
+
+:::image type="content" source="images/tutorial/summarize-percentiles-duration.png" lightbox="images/tutorial/summarize-percentiles-duration.png" alt-text="Screenshot of a table of results for summarize percentiles by duration.":::
+
+We can see from the output that:
+
+* 5% of storms have a duration of less than 5 minutes.
+* 50% of storms lasted less than 1 hour and 25 minutes.
+* 95% of storms lasted less than 2 hours and 50 minutes.
+
+To get a separate breakdown for each state, use the `state` column separately with both `summarize` operators:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-StormEvents 
-| summarize event_count=count(), mid = avg(BeginLat) by State 
-| sort by mid
-| where event_count > 1800
-| project State, event_count
-| render columnchart
+StormEvents
+| extend  duration = EndTime - StartTime
+| where duration > 0s
+| where duration < 3h
+| summarize event_count = count()
+    by bin(duration, 5m), State
+| sort by duration asc
+| summarize percentiles(duration, 5, 20, 50, 80, 95) by State
 ```
 
-:::image type="content" source="images/tutorial/event-counts-state.png" alt-text="Screenshot that shows a column chart of storm event counts by state.":::
+:::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state.":::
 
-We did not include `mid` in the `project` operation. This way the `mid` data is not visually represented in the chart, yet we still display the states in order based on their `mid` values.
+### Percentages
 
-### Time series
+Using the StormEvents table, calculate the percentage of direct injuries from all injuries:
 
-Going back to numeric bins, let's display a time series:
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents
+| where (InjuriesDirect > 0) and (InjuriesIndirect > 0) 
+| extend Percentage = (  100 * InjuriesDirect / (InjuriesDirect + InjuriesIndirect) )
+| project StartTime, InjuriesDirect, InjuriesIndirect, Percentage
+```
+
+The query removes zero count entries:
+
+|StartTime|InjuriesDirect|InjuriesIndirect|Percentage
+|---|---|---|---|
+|2007-05-01T16:50:00Z|1|1|50|
+|2007-08-10T21:25:00Z|7|2|77|
+|2007-08-23T12:05:00Z|7|22|24|
+|2007-08-23T14:20:00Z|3|2|60|
+|2007-09-10T13:45:00Z|4|1|80|
+|2007-12-06T08:30:00Z|3|3|50|
+|2007-12-08T12:00:00Z|1|1|50|
+
+## Time series visualizations
+
+This section uses our knowledge of [summarize](#summarize), [render](#render), and bin()](#bin())  to display various types of time series.
+
+Let's start with a simple timechart of event count by StartTime:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -373,71 +440,9 @@ Or, you can use `| render columnchart`:
 
 :::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="Screenshot of a column chart for event count timechart by duration.":::
 
-### Percentiles
+## Data joins
 
-What ranges of durations do we find in different percentages of storms?
-
-To get this information, use the preceding query from [Plot a distribution](#plot-a-distribution), but replace `render` with:
-
-```kusto
-| summarize percentiles(duration, 5, 20, 50, 80, 95)
-```
-
-In this case, we didn't use a `by` clause, so the output is a single row:
-
-:::image type="content" source="images/tutorial/summarize-percentiles-duration.png" lightbox="images/tutorial/summarize-percentiles-duration.png" alt-text="Screenshot of a table of results for summarize percentiles by duration.":::
-
-We can see from the output that:
-
-* 5% of storms have a duration of less than 5 minutes.
-* 50% of storms lasted less than 1 hour and 25 minutes.
-* 95% of storms lasted less than 2 hours and 50 minutes.
-
-To get a separate breakdown for each state, use the `state` column separately with both `summarize` operators:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| extend  duration = EndTime - StartTime
-| where duration > 0s
-| where duration < 3h
-| summarize event_count = count()
-    by bin(duration, 5m), State
-| sort by duration asc
-| summarize percentiles(duration, 5, 20, 50, 80, 95) by State
-```
-
-:::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state.":::
-
-### Percentages
-
-Using the StormEvents table, calculate the percentage of direct injuries from all injuries:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| where (InjuriesDirect > 0) and (InjuriesIndirect > 0) 
-| extend Percentage = (  100 * InjuriesDirect / (InjuriesDirect + InjuriesIndirect) )
-| project StartTime, InjuriesDirect, InjuriesIndirect, Percentage
-```
-
-The query removes zero count entries:
-
-|StartTime|InjuriesDirect|InjuriesIndirect|Percentage
-|---|---|---|---|
-|2007-05-01T16:50:00Z|1|1|50|
-|2007-08-10T21:25:00Z|7|2|77|
-|2007-08-23T12:05:00Z|7|22|24|
-|2007-08-23T14:20:00Z|3|2|60|
-|2007-09-10T13:45:00Z|4|1|80|
-|2007-12-06T08:30:00Z|3|3|50|
-|2007-12-08T12:00:00Z|1|1|50|
-
-## Complex queries
-
-This section covers some tools for more complex queries. We will review how to join data across tables, how to join data across databases, and how to break complex expressions into more readable chunks.
-
-### join
+This section covers how to join data across tables.
 
 [join](joinoperator.md): merges the rows of two tables by matching values of the specified column(s) from each table.
 
@@ -489,11 +494,13 @@ Events
 >[!TIP]
 > It's a good practice to use `project` to select just the relevant columns before you perform the join. In the above example, we also rename the `timestamp` column in the same clause.
 
-### let
+## Variable assignment in queries
+
+This section shows how to break complex query expressions into chunks using [let](letstatement.md). This improves readability and reusability, since we can use the variable in more than one query.
 
 [let](./letstatement.md): sets a variable name equal to an expression or a function.
 
-Use [let](./letstatement.md) to separate out the parts of the query expression in the first `join` example. This improves readability and reusability, since we can use the variable in more than one query. The results are unchanged:
+Let's use [let](./letstatement.md) to separate out the parts of the query expression in the first `join` example. The results are unchanged:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -512,7 +519,7 @@ LightningStorms
 > In Kusto Explorer, to execute the entire query, don't add blank lines between parts of the query.
 > Any two statements must be separated by a semicolon.
 
-### Combine data from several databases
+## Cross-database queries
 
 To access a table in a different database, use the following syntax:
 
