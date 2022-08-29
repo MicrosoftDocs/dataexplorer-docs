@@ -193,6 +193,10 @@ Whichever method you used to create the managed private endpoint using, you must
 
 Your cluster can now connect to the resource using the managed private endpoint connection.
 
+## Limitations
+
+In order to connect to Azure Data Lake Gen2 you must create a managed private endpoint to Microsoft.Storage/storageAccounts with the sub-resource "dfs" and "blob". Otherwise Azure Data Explorer will not be able to establish a connection to a "dfs" (i.e. "https://myAdlsGen2.dfs.core.windows.net") endpoint.
+
 ## Next steps
 
 * [Troubleshooting private endpoints in Azure Data Explorer](security-network-private-endpoint-troubleshoot.md)
