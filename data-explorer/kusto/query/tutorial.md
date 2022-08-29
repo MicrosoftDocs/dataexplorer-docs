@@ -102,7 +102,7 @@ Let's see only `flood` events in `California` in Feb-2007:
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| where StartTime > datetime(2007-02-01) and StartTime < datetime(2007-03-01)
+| where StartTime >= datetime(2007-02-01) and StartTime < datetime(2007-03-01)
 | where EventType == 'Flood' and State == 'CALIFORNIA'
 | project StartTime, EndTime , State , EventType , EpisodeNarrative
 ```
