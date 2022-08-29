@@ -57,14 +57,17 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 Under **Source type**, do the following steps:
 
-  1. Select **From blob container** (blob container, ADLS Gen2 container). You can ingest up to 5000 blobs from a single container.
+1. Select **From blob container** (blob container, ADLS Gen2 container). You can ingest up to 5000 blobs from a single container.
 
-  1. For **Select source**, select **Add URL**. Alternatively, you can select **Select container** and choose information from the dropdown menus to connect to the container.
+1. For **Select source**, select **Add URL**.
 
-  1. In the **Link to source** field, add the [blob URI with SAS token or Account key](kusto/api/connection-strings/generate-sas-token.md) of the container, and optionally enter the sample size. A list is populated with files from the container.
+   > [!NOTE]
+   > Alternatively, you can select **Select container** and choose information from the dropdown menus to connect to the container.
 
-  > [!NOTE]
-  > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage-connection-strings.md).
+1. In the **Link to source** field, add the [blob URI with SAS token or Account key](kusto/api/connection-strings/generate-sas-token.md) of the container, and optionally enter the sample size. A list is populated with files from the container.
+
+   > [!NOTE]
+   > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage-connection-strings.md).
 
    :::image type="content" source="media/one-click-ingestion-new-table/from-container.png" alt-text="Screenshot selecting ingestion from container in the ingestion wizard.":::
 
@@ -88,8 +91,6 @@ You can filter data to ingest only files with a specific file extension.
 ### Filter by folder path
 
 You can also filter files with the full or partial **Folder path**.
-
-  :::image type="content" source="media/one-click-ingestion-new-table/filter-folder-path-select.png" alt-text="Screenshot of a list of files in a container when ingesting data with the ingestion wizard.":::
 
 * You can enter a partial folder path, or folder name.
 
