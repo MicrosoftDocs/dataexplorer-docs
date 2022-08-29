@@ -1,6 +1,6 @@
 ---
 title: Create a table in Azure Data Explorer
-description: Learn how to easily create a table in Azure Data Explorer with the create table wizard.
+description: Learn how to easily create a table in Azure Data Explorer with the table creation wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
 ms.date: 07/13/2022

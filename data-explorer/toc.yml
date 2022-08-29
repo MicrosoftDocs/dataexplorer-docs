@@ -46,7 +46,7 @@ items:
       displayName: Kusto Web Explorer, KWE
       href: web-ui-overview.md
     - name: Ingestion wizard
-      href: ingest-data-one-click.md
+      href: ingest-data-wizard.md
   - name: Data ingestion
     items:
     - name: Data ingestion overview
@@ -107,7 +107,7 @@ items:
   - name: Create tables
     items:
     - name: Create table
-      href: one-click-table.md
+      href: create-table-wizard.md
     - name: External table creation wizard
       displayName: one-click
       href: external-table.md
@@ -115,10 +115,10 @@ items:
       items:
       - name: Create ingestion batching table policy
         displayName: one-click
-        href: one-click-table-batching-policy.md
+        href: table-batching-policy-wizard.md
       - name: Create retention table policy
         displayName: one-click
-        href: one-click-table-retention-policy.md
+        href: table-retention-policy-wizard.md
   - name: Ingest data
     items:
     - name: Ingestion wizard
@@ -151,7 +151,7 @@ items:
         href: ingest-data-event-hub.md
       - name: One-click
         displayName: Event hub, ingest, data connection
-        href: one-click-event-hub.md
+        href: event-hub-wizard.md
       - name: C#
         displayName: Event hub, ingest, data connection
         href: data-connection-event-hub-csharp.md
