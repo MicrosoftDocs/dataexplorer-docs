@@ -12,11 +12,11 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The best way to learn about the Kusto Query Language is to look at some basic queries to get a feel for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries in this tutorial are based on that database. We will mostly use the `StormEvents` table, which provides information about past storms in the United States.
+The best way to learn about the Kusto Query Language is to look at some basic queries to get a feel for the language. Follow along in this tutorial by running the example queries on this [database with sample data](https://help.kusto.windows.net/Samples). We will mostly use the `StormEvents` table, which provides information about past storms in the United States.
 
-## Common query operators
+## Common operators
 
-A Kusto query consists of a data source (usually a table name) followed by one or more pairs of the pipe character and some tabular operator. We will cover many of the operators in this section.
+A Kusto query consists of a data source (usually a table name) followed by one or more pairs of the pipe character (`|`) and some tabular operator. We will cover some of the common [query operators](queries.md) in this section.
 
 ### count 
 
@@ -74,9 +74,7 @@ But [take](./takeoperator.md) shows rows from the table in no particular order, 
 
 [top](./topoperator.md): shows *n* rows ordered by given column.
 
-*Syntax note*: Some operators, such as `top` and `sort`, require parameters that are introduced by keywords like `by`.
-
-In the following example, `desc` orders results in descending order and `asc` orders results in ascending order.
+Indicate the column to base the ordering on with the `by` keyword. Then, specify whether to order in ascending order (`asc`) or descending order (`desc`).
 
 Show the first *n* rows, ordered by the StartTime column:
 
@@ -99,7 +97,7 @@ Here's the output:
 
 ### sort
 
-[sort](./sortoperator.md): orders results in ascending or descending order.
+[sort](./sortoperator.md): orders results by the given column.
 
 Achieve the same result as above by using [sort](./sortoperator.md) followed by [take](./takeoperator.md):
 
@@ -215,9 +213,15 @@ In the results of a `summarize` operator:
 * Each computed expression has a column.
 * Each combination of `by` values has a row.
 
-#### Summarize by scalar values
+## Scalar functions
 
-When using scalar (numeric, time, or interval) values in the `by` clause, put the values into bins with the [bin()](./binfunction.md) function:
+We will only review one of the most helpful scalar functions in this section. To experiement with more, check out the detailed [scalar functions](scalarfunctions.md) section of our docs.
+
+### bin()
+
+[bin()](./binfunction.md): rounds values down to an integer multiple of a given bin size.
+
+Put values into bins when using scalar (numeric, time, or interval) values in the `by` clause with the [bin()](./binfunction.md) function:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -242,10 +246,13 @@ The [bin()](./binfunction.md) function is the same as the [floor()](./floorfunct
 
 <a name="displaychartortable"></a>
 
-### render
+## Data visualizations
 
-[render](./renderoperator.md): displays a chart or table.
+This section shows how we can use the [render](./renderoperator.md) operator to visualize our query results. The [render](./renderoperator.md) operator allows us to display various types of charts and tables.
 
+Strictly speaking, `render` is a feature of the client rather than part of the query language. Still, it's integrated into the language, and it's useful for envisioning your results.
+
+### Column chart
 Project two columns and use them as the x-axis and the y-axis of a chart:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -262,9 +269,7 @@ StormEvents
 
 We did not include `mid` in the `project` operation. This way the `mid` data is not visually represented in the chart, yet we still display the states in order based on their `mid` values.
 
-Strictly speaking, `render` is a feature of the client rather than part of the query language. Still, it's integrated into the language, and it's useful for envisioning your results.
-
-## Timecharts
+### Time series
 
 Going back to numeric bins, let's display a time series:
 
@@ -277,7 +282,7 @@ StormEvents
 
 :::image type="content" source="images/tutorial/time-series-start-bin.png" alt-text="Screenshot of a line chart of events binned by time.":::
 
-## Multiple series
+### Multiple series
 
 Use multiple values in a `summarize by` clause to create a separate row for each combination of values:
 
@@ -297,7 +302,7 @@ Just add the `render` term to the preceding example: `| render timechart`.
 
 Notice that `render timechart` uses the first column as the x-axis, and then displays the other columns as separate lines.
 
-## Daily average cycle
+### Daily average cycle
 
 How does activity vary over the average day?
 
@@ -318,7 +323,7 @@ Currently, `render` doesn't label durations properly, but we could use `| render
 
 :::image type="content" source="images/tutorial/column-count-hour.png" alt-text="Screenshot that shows a column chart count by hour.":::
 
-## Compare multiple daily series
+### Compare multiple daily series
 
 How does activity vary over the time of day in different states?
 
@@ -346,77 +351,9 @@ StormEvents
 
 :::image type="content" source="images/tutorial/column-hour-state.png" alt-text="Screenshot that shows a column chart by hour and state.":::
 
-## Join data types
+### Plot a distribution
 
-How would you find two specific event types and in which state each of them happened?
-
-You can pull storm events with the first `EventType` and the second `EventType`, and then join the two sets on `State`:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| where EventType == "Lightning"
-| join (
-    StormEvents 
-    | where EventType == "Avalanche"
-) on State  
-| distinct State
-```
-
-:::image type="content" source="images/tutorial/join-events-lightning-avalanche.png" alt-text="Screenshot that shows joining the events lightning and avalanche.":::
-
-## Assign a result to a variable: *let*
-
-Use [let](./letstatement.md) to separate out the parts of the query expression in the preceding `join` example. The results are unchanged:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-let LightningStorms = 
-    StormEvents
-    | where EventType == "Lightning";
-let AvalancheStorms = 
-    StormEvents
-    | where EventType == "Avalanche";
-LightningStorms 
-| join (AvalancheStorms) on State
-| distinct State
-```
-
-> [!TIP]
-> In Kusto Explorer, to execute the entire query, don't add blank lines between parts of the query.
-> Any two statements must be separated by a semicolon.
-
-## User session example of *join*
-
-This section doesn't use the `StormEvents` table.
-
-Assume you have data that includes events which mark the start and end of each user session with a unique ID.
-
-How would you find out how long each user session lasts?
-
-You can use `extend` to provide an alias for the two timestamps, and then compute the session duration:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-Events
-| where eventName == "session_started"
-| project start_time = timestamp, stop_time, country, session_id
-| join ( Events
-    | where eventName == "session_ended"
-    | project stop_time = timestamp, session_id
-    ) on session_id
-| extend duration = stop_time - start_time
-| project start_time, stop_time, country, duration
-| take 10
-```
-
-:::image type="content" source="images/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
-
-It's a good practice to use `project` to select just the relevant columns before you perform the join. In the same clause, rename the `timestamp` column.
-
-## Plot a distribution
-
-Returning to the `StormEvents` table, how many storms are there of different lengths?
+How many storms are there of different lengths?
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -436,7 +373,7 @@ Or, you can use `| render columnchart`:
 
 :::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="Screenshot of a column chart for event count timechart by duration.":::
 
-## Percentiles
+### Percentiles
 
 What ranges of durations do we find in different percentages of storms?
 
@@ -472,9 +409,9 @@ StormEvents
 
 :::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state.":::
 
-## Percentages
+### Percentages
 
-Using the StormEvents table, we can calculate the percentage of direct injuries from all injuries.
+Using the StormEvents table, calculate the percentage of direct injuries from all injuries:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -496,33 +433,118 @@ The query removes zero count entries:
 |2007-12-06T08:30:00Z|3|3|50|
 |2007-12-08T12:00:00Z|1|1|50|
 
-## Combine data from several databases in a query
+## Complex queries
 
-In the following query, the `Logs` table must be in your default database:
+This section covers some tools for more complex queries. We will review how to join data across tables, how to join data across databases, and how to break complex expressions into more readable chunks.
 
+### join
+
+[join](joinoperator.md): merges the rows of two tables by matching values of the specified column(s) from each table.
+
+#### Example: find states with two specific storm events
+
+How would you find two specific event types and in which state each of them happened?
+
+Pull storm events with the first `EventType` and the second `EventType`, and then join the two sets on `State`:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-Logs | where ...
+StormEvents
+| where EventType == "Lightning"
+| join (
+    StormEvents 
+    | where EventType == "Avalanche"
+) on State  
+| distinct State
 ```
+
+:::image type="content" source="images/tutorial/join-events-lightning-avalanche.png" alt-text="Screenshot that shows joining the events lightning and avalanche.":::
+
+#### Example: calculate user session length
+
+This example doesn't use the `StormEvents` table.
+
+Assume you have data that includes events which mark the start and end of each user session with a unique ID.
+
+How would you find out how long each user session lasts?
+
+Use `extend` to provide an alias for the two timestamps, and then compute the session duration:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+Events
+| where eventName == "session_started"
+| project start_time = timestamp, stop_time, country, session_id
+| join ( Events
+    | where eventName == "session_ended"
+    | project stop_time = timestamp, session_id
+    ) on session_id
+| extend duration = stop_time - start_time
+| project start_time, stop_time, country, duration
+| take 10
+```
+
+:::image type="content" source="images/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
+
+>[!TIP]
+> It's a good practice to use `project` to select just the relevant columns before you perform the join. In the above example, we also rename the `timestamp` column in the same clause.
+
+### let
+
+[let](./letstatement.md): sets a variable name equal to an expression or a function.
+
+Use [let](./letstatement.md) to separate out the parts of the query expression in the first `join` example. This improves readability and reusability, since we can use the variable in more than one query. The results are unchanged:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let LightningStorms = 
+    StormEvents
+    | where EventType == "Lightning";
+let AvalancheStorms = 
+    StormEvents
+    | where EventType == "Avalanche";
+LightningStorms 
+| join (AvalancheStorms) on State
+| distinct State
+```
+
+> [!TIP]
+> In Kusto Explorer, to execute the entire query, don't add blank lines between parts of the query.
+> Any two statements must be separated by a semicolon.
+
+### Combine data from several databases
 
 To access a table in a different database, use the following syntax:
 
 ```kusto
-database("db").Table
+database("<database name>").<table name>
 ```
 
-For example, if you have databases named `Diagnostics` and `Telemetry` and you want to correlate some of the data in the two tables, you might use the following query (assuming `Diagnostics` is your default database):
+The following examples require the `Logs` table to be in your default database.
+
+Now, let's say we want to correlate data in two databases named `Diagnostics` and `Telemetry`.
+
+If `Diagnostics` is your default database, use the following query:
 
 ```kusto
 Logs | join database("Telemetry").Metrics on Request MachineId | ...
 ```
 
-Use this query if your default database is `Telemetry`:
+If `Telemetry` is your default database, use the following query:
 
 ```kusto
 union Requests, database("Diagnostics").Logs | ...
 ```
 
-The preceding two queries assume that both databases are in the cluster you're currently connected to. If the `Telemetry` database was in a cluster named *TelemetryCluster.kusto.windows.net*, to access it, use this query:
+The preceding two queries assume that both databases are in the cluster you're currently connected to.
+
+If the database is in a remote cluster, access it using the following syntax:
+
+```kusto
+cluster("<cluster name>").database("<database name>").<table name>
+```
+
+For instance, if the `Telemetry` database was in a cluster named *TelemetryCluster.kusto.windows.net*, to access it, use this query:
 
 ```kusto
 Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request MachineId | ...
