@@ -3,34 +3,42 @@ title: stdevif() (aggregation function) - Azure Data Explorer
 description: This article describes stdevif() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 08/25/2022
 ---
 # stdevif() (aggregation function)
 
 Calculates the [stdev](stdev-aggfunction.md) of *Expr* across the group for which *Predicate* evaluates to `true`.
 
-* Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
+[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
 
- `stdevif` `(`*Expr*`, `*Predicate*`)`
+ `stdevif` `(`*Expr*`,`*Predicate*`)`
 
 ## Arguments
 
-* *Expr*: Expression that will be used for aggregation calculation. 
-* *Predicate*:  predicate that if true, the *Expr* calculated value will be added to the standard deviation.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *Expr* | string | &check; | Expression that will be used for aggregation calculation. |
+| *Predicate* | string | &check; | Predicate that has to evaluate to `true`, in order for *Expr* to be added to the result. |
 
 ## Returns
 
-The standard deviation value of *Expr* across the group where *Predicate* evaluates to `true`.
- 
+Returns the standard deviation value of *Expr* across the group where *Predicate* evaluates to `true`.
+
 ## Examples
+
+This example shows the standard deviation in a range of 1 to 100.
+
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0MFAoLkktUDDk5apRKC7NzU0syqxKBYqlpJZlpmlU6ChUqBop2NoqGGgCAOJM8HQ+AAAA)**\]**
 
 ```kusto
 range x from 1 to 100 step 1
 | summarize stdevif(x, x%2 == 0)
 
 ```
+
+**Results**
 
 |stdevif_x|
 |---|

@@ -7,7 +7,7 @@ ms.date: 08/14/2022
 ---
 # hll() (aggregation function)
 
-Calculates the Intermediate results of [`dcount`](dcount-aggfunction.md) across the group. only in context of aggregation inside [summarize](summarizeoperator.md).
+Calculates the Intermediate results of [`dcount`](dcount-aggfunction.md) across the group only in context of aggregation inside [summarize](summarizeoperator.md).
 
 Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accuracy](#estimation-accuracy).
 
