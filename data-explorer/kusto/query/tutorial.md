@@ -19,7 +19,8 @@ The best way to learn about the Kusto Query Language is to look at some basic qu
 A Kusto query consists of a data source (usually a table name) followed by one or more pairs of the pipe character and some tabular operator. We will cover many of the operators in this section.
 
 ### count 
-#### Return the number of rows in a table
+
+[count](./countoperator.md): returns the number of rows in the table.
 
 Let's use the [count](./countoperator.md) operator to check the size of the `StormEvents` table:
 
@@ -35,13 +36,15 @@ Here's the output:
 |59066|
 
 ### project
-#### Select a subset of columns
+
+[project](./projectoperator.md): selects a subset of columns.
 
 Use the [project](./projectoperator.md) operator to pick the columns you want. See the following example, which uses both the [project](./projectoperator.md)
 and the [take](./takeoperator.md) operators.
 
 ### take 
-#### Show *n* rows
+
+[take](./takeoperator.md): shows *n* rows.
 
 Let's see some data. What's in a random sample of five rows?
 
@@ -68,7 +71,8 @@ But [take](./takeoperator.md) shows rows from the table in no particular order, 
 > [limit](./takeoperator.md) is an alias for [take](./takeoperator.md) and has the same effect.
 
 ### top
-#### Show *n* rows ordered by given column
+
+[top](./topoperator.md): shows *n* rows ordered by given column.
 
 *Syntax note*: Some operators, such as `top` and `sort`, require parameters that are introduced by keywords like `by`.
 
@@ -94,7 +98,8 @@ Here's the output:
 |2007-12-31 22:30:00.0000000|2007-12-31 23:59:00.0000000|Winter Storm|MICHIGAN|This heavy snow event continued into the early morning hours on New Year's Day.|
 
 ### sort
-#### Order results
+
+[sort](./sortoperator.md): orders results in ascending or descending order.
 
 Achieve the same result as above by using [sort](./sortoperator.md) followed by [take](./takeoperator.md):
 
@@ -107,7 +112,8 @@ StormEvents
 ```
 
 ### where
-#### Filter by Boolean expression
+
+[where](./whereoperator.md): filters by Boolean expression.
 
 Let's see only `flood` events in `California` in Feb-2007:
 
@@ -127,7 +133,8 @@ Here's the output:
 
 
 ### extend
-#### Compute derived columns
+
+[extend](./extendoperator.md): computes derived columns.
 
 Create a new column by computing a value in every row:
 
@@ -169,7 +176,8 @@ Here's the output:
 [Scalar expressions](./scalar-data-types/index.md) can include all the usual operators (`+`, `-`, `*`, `/`, `%`), and a range of useful functions are available.
 
 ### summarize
-#### Aggregate groups of rows
+
+[summarize](./summarizeoperator.md): aggregates groups of rows.
 
 Count the number of events that occur in each state:
 
@@ -235,7 +243,8 @@ The [bin()](./binfunction.md) function is the same as the [floor()](./floorfunct
 <a name="displaychartortable"></a>
 
 ### render
-##### Display a chart or table
+
+[render](./renderoperator.md): displays a chart or table.
 
 Project two columns and use them as the x-axis and the y-axis of a chart:
 
