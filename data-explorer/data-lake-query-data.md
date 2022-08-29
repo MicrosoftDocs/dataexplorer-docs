@@ -3,13 +3,13 @@ title: Query data in Azure Data Lake using Azure Data Explorer
 description: Learn how to query data in Azure Data Lake using Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 06/19/2022
+ms.date: 08/25/2022
 ---
 # Query data in Azure Data Lake using Azure Data Explorer
 
 Azure Data Lake Storage is a highly scalable and cost-effective data lake solution for big data analytics. It combines the power of a high-performance file system with massive scale and economy to help you reduce your time to insight. Data Lake Storage Gen2 extends Azure Blob Storage capabilities and is optimized for analytics workloads.
 
-Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Storage (Gen1 and Gen2), providing fast, cached, and indexed access to data stored in external storage. You can analyze and query data without prior ingestion into Azure Data Explorer. You can also query across ingested and uningested external data simultaneously.
+Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Storage (Gen1 and Gen2), providing fast, cached, and indexed access to data stored in external storage. You can analyze and query data without prior ingestion into Azure Data Explorer. You can also query across ingested and uningested external data simultaneously. For more information, see how to [create an external table using the Azure Data Explorer web UI wizard](external-table.md). For a brief overview, see [external tables](kusto/query/schema-entities/externaltables.md).
 
 > [!TIP]
 > The best query performance necessitates data ingestion into Azure Data Explorer. The capability to query external data without prior ingestion should only be used for historical data or data that are rarely queried. [Optimize your external data query performance](#optimize-your-query-performance) for best results.
@@ -200,7 +200,7 @@ dataformat=csv
 
 You can find the created **TaxiRides** table by looking at the left pane of the Azure Data Explorer web UI:
 
-:::image type="content" source="media/data-lake-query-data/taxirides-external-table.png" alt-text="Taxi rides external table.":::
+:::image type="content" source="media/data-lake-query-data/taxirides-external-table.png" alt-text=" Screenshot showing the Taxi rides external table.":::
 
 ### Query *TaxiRides* external table data
 
@@ -218,7 +218,7 @@ external_table("TaxiRides")
 
 This query shows the busiest day of the week. Since the data isn't partitioned, the query may take up to several minutes to return results.
 
-:::image type="content" source="media/data-lake-query-data/taxirides-no-partition.png" alt-text="render non-partitioned query.":::
+:::image type="content" source="media/data-lake-query-data/taxirides-no-partition.png" alt-text="Graph representation to render non-partitioned query.":::
 
 #### Query TaxiRides external table with partitioning
 
@@ -233,7 +233,7 @@ external_table("TaxiRides")
 
 This query uses partitioning, which optimizes query time and performance. The query filters on a partitioned column (pickup_datetime) and returns results in a few seconds.
 
-:::image type="content" source="media/data-lake-query-data/taxirides-with-partition.png" alt-text="Render partitioned query.":::
+:::image type="content" source="media/data-lake-query-data/taxirides-with-partition.png" alt-text="Diagram to render partitioned query.":::
 
 You can write other queries to run on the external table *TaxiRides* and learn more about the data.
 
@@ -270,4 +270,4 @@ Select VM SKUs with more cores and higher network throughput (memory is less imp
 
 ## Next steps
 
-* Query your data in the Azure Data Lake using Azure Data Explorer. Learn to [write queries](write-queries.md) and derive additional insights from your data.
+* Query your data in the Azure Data Lake using Azure Data Explorer. Learn to [write queries](write-queries.md) and derive more insights from your data.
