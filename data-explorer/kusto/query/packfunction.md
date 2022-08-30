@@ -9,7 +9,7 @@ ms.date: 08/30/2022
 
 Creates a `dynamic` JSON object (property bag) from a list of keys and values.
 
-This is an alias to `pack_dictionary()` function.
+This is an alias to the `pack_dictionary()` function.
 
 > [!NOTE]
 > The `bag_pack()` and `pack()` functions are interpreted equivalently.
@@ -31,7 +31,7 @@ Returns a `dynamic` JSON object (property bag) from the listed *key* and *value*
 
 ## Examples
 
-This example show a property bag of keys and values.
+This example shows a property bag of keys and values.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAysoyswrUUhKTI8vSEzO1lDySS1LzVHSUVDyzEvLL8pNLMnMzwNxA4ryk1OLiz1dgBxDI2MToJBLYkkikIfQW1oE1lleXq6XlJmXrpecn6ukqQkA9RzT32IAAAA=)**\]**
 
@@ -44,9 +44,9 @@ print bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url"
 |print_0|
 |{"Level":"Information","ProcessID":1234,"Data":{"url":"www.bing.com"}}|
 
-This example uses pack_bag() to show all the columns and their data from 2 tables using a common number.
+This example uses pack_bag() to show all the columns and their data from two tables using a common number.
 
-Ingest the following 2 tables:
+Ingest the following two tables:
 
 SmsMessages
 
