@@ -14,7 +14,7 @@ zone_pivot_groups: kql-flavors
 
 The best way to learn about the Kusto Query Language is to look at some basic queries to get a feel for the language. Follow along in this tutorial by running the example queries on this [database with sample data](https://help.kusto.windows.net/Samples). We will mostly use the `StormEvents` table, which provides information about past storms in the United States.
 
-## Common operators
+## Learn common operators
 
 A Kusto query consists of a data source (usually a table name) followed by one or more pairs of the pipe character (`|`) and some tabular operator. This section reviews some of the common [query operators](queries.md).
 
@@ -39,14 +39,14 @@ Here's the output:
 
 [project](./projectoperator.md): selects a subset of columns.
 
-Use the [project](./projectoperator.md) operator to pick the columns you want. See the following example, which uses both the [project](./projectoperator.md)
+Use the [project](./projectoperator.md) operator to pick the columns you want to include in the query result. See the following example, which uses both the [project](./projectoperator.md)
 and the [take](./takeoperator.md) operators.
 
 ### take 
 
 [take](./takeoperator.md): shows *n* rows.
 
-Let's see some data. What's in a random sample of five rows?
+Let's see some data. Here is what's in a random sample of five rows:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -175,7 +175,7 @@ Here's the output:
 
 ### summarize
 
-[summarize](./summarizeoperator.md): aggregates groups of rows.
+[summarize](./summarizeoperator.md): produces a table that aggregates the content of the input table.
 
 Count the number of events that occur in each state:
 
@@ -235,15 +235,15 @@ StormEvents
 
 We did not include `mid` in the `project` operation. This way the `mid` data is not visually represented in the chart, yet we still display the states in order based on their `mid` values.
 
-## Scalar functions
+## Aggregate by scalar values
 
-We will only review one of the most helpful scalar functions in this section. To experiement with more, check out the detailed [scalar functions](scalarfunctions.md) section of our docs.
+When aggregating by scalar values, like numbers and time values, use the [bin()](./binfunction.md) function to group rows into distinct sets of data.
 
 ### bin()
 
 [bin()](./binfunction.md): rounds values down to an integer multiple of a given bin size.
 
-Put values into bins when using scalar (numeric, time, or interval) values in the `by` clause with the [bin()](./binfunction.md) function:
+The following query determines the storm event count per day.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -371,7 +371,7 @@ Notice that `render timechart` uses the first column as the x-axis, and then dis
 
 ### Daily average cycle
 
-How does activity vary over the average day?
+Let's explore how activity varies over the average day.
 
 Count events by the time modulo one day, binned into hours. Here, we use `floor` instead of `bin`:
 
@@ -392,7 +392,7 @@ Currently, `render` doesn't label durations properly, but we could use `| render
 
 ### Compare multiple daily series
 
-How does activity vary over the time of day in different states?
+The following query shows how storm activity varies over the time of day in different states.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -420,7 +420,7 @@ StormEvents
 
 ### Plot a distribution
 
-How many storms are there of different lengths?
+The following query calculates how many storms there are of different lengths.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -436,11 +436,11 @@ StormEvents
 
 :::image type="content" source="images/tutorial/event-count-duration.png" alt-text="Screenshot of timechart results for event count by duration.":::
 
-Or, you can use `| render columnchart`:
+Or, use `| render columnchart`:
 
 :::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="Screenshot of a column chart for event count timechart by duration.":::
 
-## Data joins
+## Join data from two tables
 
 This section covers how to join data across tables.
 
@@ -448,9 +448,7 @@ This section covers how to join data across tables.
 
 #### Example: find states with two specific storm events
 
-How would you find two specific event types and in which state each of them happened?
-
-Pull storm events with the first `EventType` and the second `EventType`, and then join the two sets on `State`:
+Find two specific event types and in which state each of them happened by pulling storm events with the first `EventType` and the second `EventType`, and then join the two sets on `State`:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -494,13 +492,13 @@ Events
 >[!TIP]
 > It's a good practice to use `project` to select just the relevant columns before you perform the join. In the above example, we also rename the `timestamp` column in the same clause.
 
-## Variable assignment in queries
+## Assign a result to a variable
 
-This section shows how to break complex query expressions into chunks using [let](letstatement.md). This improves readability and reusability, since we can use the variable in more than one query.
+Use [let](./letstatement.md) to make queries easier to read and manage.
 
 [let](./letstatement.md): sets a variable name equal to an expression or a function.
 
-Let's use [let](./letstatement.md) to separate out the parts of the query expression in the first `join` example. The results are unchanged:
+Let's separate out the parts of the query expression in the first `join` example with `let`. The results are unchanged:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -519,7 +517,7 @@ LightningStorms
 > In Kusto Explorer, to execute the entire query, don't add blank lines between parts of the query.
 > Any two statements must be separated by a semicolon.
 
-## Cross-database queries
+## Query across databases
 
 To access a table in a different database, use the following syntax:
 
@@ -574,7 +572,10 @@ The best way to learn about the Azure Data Explorer Query Language is to look at
 
 Run these queries by using Log Analytics in the Azure portal. Log Analytics is a tool you can use to write log queries. Use log data in Azure Monitor, and then evaluate log query results. If you aren't familiar with Log Analytics, complete the [Log Analytics tutorial](/azure/azure-monitor/log-query/log-analytics-tutorial).
 
-All queries in this tutorial use the [Log Analytics demo environment](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade). You can use your own environment, but you might not have some of the tables that are used here. Because the data in the demo environment isn't static, the results of your queries might vary slightly from the results shown here.
+>[!NOTE]
+> Because the data in the demo environment isn't static, the results of your queries might vary slightly from the results shown here.
+
+## Learn common operators 
 
 ## Count rows
 
@@ -684,11 +685,15 @@ SecurityEvent
 
 :::image type="content" source="images/tutorial/azure-monitor-summarize-count-results.png" lightbox="images/tutorial/azure-monitor-summarize-count-results.png" alt-text="Screenshot that shows the results of the summarize count operator example.":::
 
-## Summarize by scalar values
+## Aggregate by scalar values
 
-You can aggregate by scalar values like numbers and time values, but you should use the [bin()](./binfunction.md) function to group rows into distinct sets of data. For example, if you aggregate by `TimeGenerated`, you'll get a row for most time values. Use `bin()` to consolidate values per hour or day.
+When aggregating by scalar values, like numbers and time values, use the [bin()](./binfunction.md) function to group rows into distinct sets of data. 
 
-The [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) table contains performance data that's organized according to insights from Azure Monitor for VMs and Azure Monitor for containers. The following query shows the hourly average processor utilization for multiple computers:
+Otherwise, if you aggregate by `TimeGenerated`, you'll get a row for most time values. The `bin()` function consolidates values per hour or day.
+
+The [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) table contains performance data that's organized according to insights from Azure Monitor for VMs and Azure Monitor for containers. 
+
+Show the hourly average processor utilization for multiple computers:
 
 ```kusto
 InsightsMetrics
@@ -699,9 +704,9 @@ InsightsMetrics
 
 :::image type="content" source="images/tutorial/azure-monitor-summarize-avg-results.png" lightbox="images/tutorial/azure-monitor-summarize-avg-results.png" alt-text="Screenshot that shows the results of the avg operator example.":::
 
-## Display a chart or table: *render*
+## Visualize time series data
 
-The [render](./renderoperator.md?pivots=azuremonitor) operator specifies how the output of the query is rendered. Log Analytics renders output as a table by default. You can select different chart types after you run the query. The `render` operator is useful to include in queries in which a specific chart type usually is preferred.
+The [render](./renderoperator.md?pivots=azuremonitor) operator specifies how the output of the query is rendered. Log Analytics renders output as a table by default. Select different chart types after you run the query. The `render` operator is useful to include in queries in which a specific chart type usually is preferred.
 
 The following example shows the hourly average processor utilization for a single computer. It renders the output as a timechart.
 
@@ -715,7 +720,7 @@ InsightsMetrics
 
 :::image type="content" source="images/tutorial/azure-monitor-render-results.png" lightbox="images/tutorial/azure-monitor-render-results.png" alt-text="Screenshot that shows the results of the render operator example.":::
 
-## Work with multiple series
+### Multiple series
 
 If you use multiple values in a `summarize by` clause, the chart displays a separate series for each set of values:
 
@@ -731,7 +736,7 @@ InsightsMetrics
 
 ## Join data from two tables
 
-What if you need to retrieve data from two tables in a single query? You can use the [join](./joinoperator.md?pivots=azuremonitor) operator to combine rows from multiple tables in a single result set. Each table must have a column that has a matching value so that the join understands which rows to match.
+To combine rows from multiple tables in a single result set, use the [join](./joinoperator.md?pivots=azuremonitor) operator. Each table must have a column that has a matching value so that the join understands which rows to match.
 
 [VMComputer](/azure/azure-monitor/reference/tables/vmcomputer) is a table that Azure Monitor uses for VMs to store details about virtual machines that it monitors. [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) contains performance data that's collected from those virtual machines. One value collected in *InsightsMetrics* is available memory, but not the percentage memory that's available. To calculate the percentage, we need the physical memory for each virtual machine. That value is in `VMComputer`.
 
@@ -750,9 +755,11 @@ VMComputer
 
 :::image type="content" source="images/tutorial/azure-monitor-join-results.png" lightbox="images/tutorial/azure-monitor-join-results.png" alt-text="Screenshot that shows the results of the join operator example.":::
 
-## Assign a result to a variable: *let*
+## Assign a result to a variable
 
-Use [let](./letstatement.md) to make queries easier to read and manage. You can use this operator to assign the results of a query to a variable that you can use later. By using the `let` statement, the query in the preceding example can be rewritten as:
+Use [let](./letstatement.md) to make queries easier to read and manage. The [let](./letstatement.md) statement assigns the results of a query to a variable that can be used later. 
+
+Let's rewrite the query in the preceding example with [let](./letstatement.md):
 
 ```kusto
 let PhysicalComputer = VMComputer
