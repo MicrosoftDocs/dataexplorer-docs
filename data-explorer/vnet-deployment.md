@@ -81,7 +81,7 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 By enabling subnet delegation on the cluster's subnet, you enable the service to define its pre-conditions for deployment in the form of Network Intent Policies. When creating the cluster in the subnet, the NSG configurations mentioned in the following sections are automatically created for you.
 
  > [!WARNING]
- > Your Azure Data Explorer cluster will stop working eventually if you change the subnet delegation configuration. This might mean that it will not be able to start after it was stopped or we will not be able to apply management or health monitoring on the cluster.
+  > Changing your subnet delegation configuration will eventually disrupt the normal operation of your cluster. For example, after stopping the cluster you may not be able to start your cluster, run management commands, or apply health monitoring on your cluster.
 
 ### Configure Network Security Group rules manually
 
