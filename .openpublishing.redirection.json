@@ -324,6 +324,21 @@
       "source_path": "data-explorer/one-click-event-hub.md",
       "redirect_url": "/azure/data-explorer/event-hub-wizard",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/sample-app-generator-one-click.md",
+      "redirect_url": "/azure/data-explorer/sample-app-generator-wizard",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/one-click-ingestion-existing-table.md",
+      "redirect_url": "/azure/data-explorer/ingestion-wizard-existing-table",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/one-click-ingestion-new-table.md",
+      "redirect_url": "/azure/data-explorer/ingestion-wizard-new-table",
+      "redirect_document_id": true
     }
   ]
 }
