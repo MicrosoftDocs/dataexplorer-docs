@@ -16,17 +16,17 @@ The `.show` `queries` command lists queries that have reached a final state, and
 > - A [database admin or database monitor](../management/access-control/role-based-authorization.md) can see any command that was invoked on their database.
 > - Other users can only see queries that were invoked by them.
 
-## Syntax
+**Syntax**
 
 `.show` [`running`] `queries` [`by` *\** | `by user` *UserPrincipalName*]
 
-## Arguments
+**Arguments**
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *UserPrincipalName* | string |  |  The UPN of a specific user for which to return a list of queries. |
 
-## Returns
+**Returns**
 
 - Returns a table containing previously run queries and their completion statistics. You can use KQL queries to explore the results.
 - Returns a list of currently executing queries by the current user, or by another user, or by all users.
@@ -58,7 +58,7 @@ The returned table schema is:
 |ResultSetStatistics | dynamic |Statistics describing returned data set|
 |WorkloadGroup|string | Name of the workload group that query was associated with|
 
-## Examples
+**Examples**
 
 **Example 1**
 
@@ -109,14 +109,14 @@ The `.cancel` `query` command starts a best-effort attempt to cancel a specific 
 
 `.cancel` `query` *ClientRequestId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
 
-## Arguments for canceling the query
+**Arguments**
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *ClientRequestId* | string | &check; | Value of the running query's `ClientRequestId` property. |
 | *ReasonPhrase* | string | &check; when reason specified | Describes the reason for canceling the running query and is included in the query results if it's successfully canceled. |
 
-## Example of canceling a query
+**Examples**
 
 This example cancels a specific query using *ClientRequestId*.
 
