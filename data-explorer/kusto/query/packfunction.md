@@ -23,6 +23,7 @@ This is an alias to the `pack_dictionary()` function.
 ## Arguments
 
 | Name | Type | Required | Description |
+|--|--|--|--|
 |*key*, *value* |--| &check; | An alternating list of keys and values whose total length must be even. All keys must be non-empty constant strings.|
 
 ## Returns
@@ -42,6 +43,7 @@ print bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url"
 **Results**
 
 |print_0|
+|--|
 |{"Level":"Information","ProcessID":1234,"Data":{"url":"www.bing.com"}}|
 
 **Example 2**
