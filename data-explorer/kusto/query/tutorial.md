@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The best way to learn the Kusto Query Language is to look at some basic queries to get a feel for the language. Follow along in this tutorial by running the example queries on this [database with sample data](https://help.kusto.windows.net/Samples). We will mostly use the `StormEvents` table, which provides information about past storms in the United States.
+The best way to learn the Kusto Query Language is to look at some basic queries to get a feel for the language. Follow along in this tutorial by running the example queries on this [database with sample data](https://help.kusto.windows.net/Samples). We will mostly use the `StormEvents` table which provides information about past storms in the United States.
 
 ## Learn common operators
 
@@ -39,7 +39,7 @@ Here's the output:
 
 [project](./projectoperator.md): selects a subset of columns.
 
-Use the [project](./projectoperator.md) operator to pick the columns you want to include in the query result. See the following example, which uses both the [project](./projectoperator.md)
+Use [project](./projectoperator.md) to pick the columns you want to include in the query result. See the following example, which uses both the [project](./projectoperator.md)
 and the [take](./takeoperator.md) operators.
 
 ### take 
@@ -74,7 +74,7 @@ But [take](./takeoperator.md) shows rows from the table in no particular order, 
 
 [top](./topoperator.md): shows *n* rows ordered by given column.
 
-Indicate the column to base the ordering on with the `by` keyword. Then, specify whether to order in ascending order (`asc`) or descending order (`desc`).
+Use the `by` keyword to indicate the column on which you want to base the order of the results. Then, specify whether to order in ascending order (`asc`) or descending order (`desc`).
 
 Show the first *n* rows, ordered by the StartTime column:
 
@@ -185,8 +185,7 @@ StormEvents
 | summarize event_count = count() by State
 ```
 
-[summarize](./summarizeoperator.md) groups together rows that have the same values in the `by` clause, and then it uses an aggregation function (for example, `count`) to combine each group in a single row. 
-In this case, there's a row for each state and a column for the count of rows in that state.
+[summarize](./summarizeoperator.md) groups together rows that have the same values in the `by` clause, and then it uses an aggregation function (for example, `count`) to combine each group in a single row. In this case, there's a row for each state and a column for the count of rows in that state.
 
 A range of [aggregation functions](aggregation-functions.md) are available. Use several aggregation functions in one `summarize` operator to produce several computed columns. For example, get the count of storms per state and the sum of unique types of storm per state. Then, use [top](./topoperator.md) to get the most storm-affected states:
 
@@ -492,7 +491,7 @@ Use [let](./letstatement.md) to make queries easier to read and manage.
 
 [let](./letstatement.md): sets a variable name equal to an expression or a function.
 
-Let's separate out the parts of the query expression in the first `join` example with `let`. The results are unchanged:
+Here we separate out the parts of the query expression in the first `join` example with `let`. The results are unchanged.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -564,9 +563,9 @@ For more information about combining data from several databases in a query, see
 
 The best way to learn the Kusto Query Language is to look at some basic queries to get a feel for the language. 
 
-All queries in this tutorial use the [Log Analytics demo environment](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade). If you use your own environment, you might not have some of the tables that are used here.
+Run the queries in this tutorial using Log Analytics in the Azure portal. Log Analytics is a tool to write log queries. If you aren't familiar with Log Analytics, complete the [Log Analytics tutorial](/azure/azure-monitor/log-query/log-analytics-tutorial). 
 
-Run the queries in this tutorial using Log Analytics in the Azure portal. Log Analytics is a tool to write log queries. If you aren't familiar with Log Analytics, complete the [Log Analytics tutorial](/azure/azure-monitor/log-query/log-analytics-tutorial).
+All queries in this tutorial use the [Log Analytics demo environment](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade).
 
 >[!NOTE]
 > Because the data in the demo environment isn't static, the results of your queries might vary slightly from the results shown here.
@@ -594,7 +593,7 @@ Here's the output:
 |-----|
 |1,263,191|
 
-## where
+### where
 
 [where](./whereoperator.md): filters by Boolean expression.
 
@@ -602,24 +601,24 @@ The [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity) table h
 
 Let's see only `Critical` entries during a specific week:
 
+> [!TIP]
+> In addition to specifying a filter in your query by using the `TimeGenerated` column, you can specify the time range in Log Analytics. For more information, see [Log query scope and time range in Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope).
+
 ```kusto
 AzureActivity
 | where TimeGenerated > datetime(10-01-2020) and TimeGenerated < datetime(10-07-2020)
 | where Level == 'Critical'
 ```
 
-> [!TIP]
-> In addition to specifying a filter in your query by using the `TimeGenerated` column, you can specify the time range in Log Analytics. For more information, see [Log query scope and time range in Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope).
-
 The above example uses multiple commands. First, the query retrieves all records for the table. Then, it filters the data for only records that are in the time range. Finally, it filters those results for only records that have a `Critical` level.
 
 :::image type="content" source="images/tutorial/azure-monitor-where-results.png" lightbox="images/tutorial/azure-monitor-where-results.png" alt-text="Screenshot that shows the results of the where operator example.":::
 
-## project
+### project
 
 [project](./projectoperator.md): selects a subset of columns.
 
-Use the [project](./projectoperator.md) operator to pick the columns you want to include in the query result. Building on the preceding example, let's limit the output to certain columns:
+Apply the [project](./projectoperator.md) operator to pick the columns you want to include in the query result. Building on the preceding example, let's limit the output to certain columns:
 
 ```kusto
 AzureActivity
@@ -630,7 +629,7 @@ AzureActivity
 
 :::image type="content" source="images/tutorial/azure-monitor-project-results.png" lightbox="images/tutorial/azure-monitor-project-results.png" alt-text="Screenshot that shows the results of the project operator example.":::
 
-## take
+### take
 
 [take](./takeoperator.md): shows *n* rows.
 
@@ -709,7 +708,7 @@ The [summarize](./summarizeoperator.md) operator groups together rows that have 
 
 When aggregating by scalar values, like numbers and time values, use the [bin()](./binfunction.md) function to group rows into distinct sets of data. 
 
-Otherwise, if you aggregate by `TimeGenerated`, you'll get a row for most time values. The `bin()` function consolidates values per hour or day.
+For example, if you aggregate by `TimeGenerated`, you'll get a row for most time values. Use the `bin()` function to consolidate values per hour or day.
 
 The [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) table contains performance data that's organized according to insights from Azure Monitor for VMs and Azure Monitor for containers. 
 
@@ -779,7 +778,7 @@ VMComputer
 
 Use [let](./letstatement.md) to make queries easier to read and manage. The [let](./letstatement.md) statement assigns the results of a query to a variable that can be used later. 
 
-Let's rewrite the query in the preceding example with [let](./letstatement.md):
+Here we rewrite the query in the preceding example with [let](./letstatement.md):
 
 ```kusto
 let PhysicalComputer = VMComputer
