@@ -29,7 +29,7 @@ This is an alias to the `pack_dictionary()` function.
 
 Returns a `dynamic` JSON object (property bag) from the listed *key* and *value* inputs.
 
-## Examples
+**Example 1**
 
 This example shows a property bag of keys and values.
 
@@ -43,6 +43,8 @@ print bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url"
 
 |print_0|
 |{"Level":"Information","ProcessID":1234,"Data":{"url":"www.bing.com"}}|
+
+**Example 2**
 
 This example uses pack_bag() to show all the columns and their data from two tables using a common number.
 
