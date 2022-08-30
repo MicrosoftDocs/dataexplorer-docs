@@ -46,7 +46,7 @@ print bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url"
 
 **Example 2**
 
-This example uses pack_bag() to show all the columns and their data from two tables using a common number.
+This example shows a property bag based on two tables using a common source number.
 
 Ingest the following two tables:
 
