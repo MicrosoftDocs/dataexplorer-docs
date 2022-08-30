@@ -268,73 +268,7 @@ The [bin()](./binfunction.md) function is the same as the [floor()](./floorfunct
 
 <a name="displaychartortable"></a>
 
-## Aggregation functions
-
-The Kusto Query Language provides many [aggregation functions](aggregation-functions.md). 
-
-This section covers one built in aggregation as well as shows how to create your own aggregation using the operators we covered so far.
-
-### Percentiles
-
-What ranges of durations do we find in different percentages of storms?
-
-To get this information, use the preceding query from [Plot a distribution](#plot-a-distribution), but replace `render` with:
-
-```kusto
-| summarize percentiles(duration, 5, 20, 50, 80, 95)
-```
-
-In this case, we didn't use a `by` clause, so the output is a single row:
-
-:::image type="content" source="images/tutorial/summarize-percentiles-duration.png" lightbox="images/tutorial/summarize-percentiles-duration.png" alt-text="Screenshot of a table of results for summarize percentiles by duration.":::
-
-We can see from the output that:
-
-* 5% of storms have a duration of less than 5 minutes.
-* 50% of storms lasted less than 1 hour and 25 minutes.
-* 95% of storms lasted less than 2 hours and 50 minutes.
-
-To get a separate breakdown for each state, use the `state` column separately with both `summarize` operators:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| extend  duration = EndTime - StartTime
-| where duration > 0s
-| where duration < 3h
-| summarize event_count = count()
-    by bin(duration, 5m), State
-| sort by duration asc
-| summarize percentiles(duration, 5, 20, 50, 80, 95) by State
-```
-
-:::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state.":::
-
-### Percentages
-
-Using the StormEvents table, calculate the percentage of direct injuries from all injuries:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| where (InjuriesDirect > 0) and (InjuriesIndirect > 0) 
-| extend Percentage = (  100 * InjuriesDirect / (InjuriesDirect + InjuriesIndirect) )
-| project StartTime, InjuriesDirect, InjuriesIndirect, Percentage
-```
-
-The query removes zero count entries:
-
-|StartTime|InjuriesDirect|InjuriesIndirect|Percentage
-|---|---|---|---|
-|2007-05-01T16:50:00Z|1|1|50|
-|2007-08-10T21:25:00Z|7|2|77|
-|2007-08-23T12:05:00Z|7|22|24|
-|2007-08-23T14:20:00Z|3|2|60|
-|2007-09-10T13:45:00Z|4|1|80|
-|2007-12-06T08:30:00Z|3|3|50|
-|2007-12-08T12:00:00Z|1|1|50|
-
-## Time series visualizations
+## Visualize time series data
 
 This section uses our knowledge of [summarize](#summarize), [render](#render), and bin()](#bin())  to display various types of time series.
 
@@ -439,6 +373,66 @@ StormEvents
 Or, use `| render columnchart`:
 
 :::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="Screenshot of a column chart for event count timechart by duration.":::
+
+### Percentiles
+
+Let's check what ranges of durations we find in different percentages of storms.
+
+To get this information, use the preceding query from [Plot a distribution](#plot-a-distribution), but replace `render` with:
+
+```kusto
+| summarize percentiles(duration, 5, 20, 50, 80, 95)
+```
+
+In this case, we didn't use a `by` clause, so the output is a single row:
+
+:::image type="content" source="images/tutorial/summarize-percentiles-duration.png" lightbox="images/tutorial/summarize-percentiles-duration.png" alt-text="Screenshot of a table of results for summarize percentiles by duration.":::
+
+The output shows that:
+
+* 5% of storms have a duration of less than 5 minutes.
+* 50% of storms lasted less than 1 hour and 25 minutes.
+* 95% of storms lasted less than 2 hours and 50 minutes.
+
+To get a separate breakdown for each state, use the `state` column separately with both `summarize` operators:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents
+| extend  duration = EndTime - StartTime
+| where duration > 0s
+| where duration < 3h
+| summarize event_count = count()
+    by bin(duration, 5m), State
+| sort by duration asc
+| summarize percentiles(duration, 5, 20, 50, 80, 95) by State
+```
+
+:::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state.":::
+
+### Percentages
+
+Using the StormEvents table, calculate the percentage of direct injuries from all injuries:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents
+| where (InjuriesDirect > 0) and (InjuriesIndirect > 0) 
+| extend Percentage = (  100 * InjuriesDirect / (InjuriesDirect + InjuriesIndirect) )
+| project StartTime, InjuriesDirect, InjuriesIndirect, Percentage
+```
+
+The query removes zero count entries:
+
+|StartTime|InjuriesDirect|InjuriesIndirect|Percentage
+|---|---|---|---|
+|2007-05-01T16:50:00Z|1|1|50|
+|2007-08-10T21:25:00Z|7|2|77|
+|2007-08-23T12:05:00Z|7|22|24|
+|2007-08-23T14:20:00Z|3|2|60|
+|2007-09-10T13:45:00Z|4|1|80|
+|2007-12-06T08:30:00Z|3|3|50|
+|2007-12-08T12:00:00Z|1|1|50|
 
 ## Join data from two tables
 
@@ -577,11 +571,15 @@ Run these queries by using Log Analytics in the Azure portal. Log Analytics is a
 
 ## Learn common operators 
 
-## Count rows
+A Kusto query consists of a data source (usually a table name) followed by one or more pairs of the pipe character (`|`) and some tabular operator. This section reviews some of the common [query operators](queries.md).
 
-The [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) table contains performance data that's collected by insights such as Azure Monitor for VMs and Azure Monitor for containers. To find out how large the table is, we'll pipe its content into an operator that counts rows.
+### count
 
-A query is a data source (usually a table name), optionally  followed by one or more pairs of the pipe character and some tabular operator. In this case, all records from the `InsightsMetrics` table are returned and then sent to the [count operator](./countoperator.md). The `count` operator displays the results because the operator is the last command in the query.
+[count](./countoperator.md): returns the number of rows in the table.
+
+The [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) table contains performance data that's collected by insights such as Azure Monitor for VMs and Azure Monitor for containers.
+
+Let's use the [count](./countoperator.md) operator to check the size of the `InsightsMetrics` table:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -594,14 +592,13 @@ Here's the output:
 |-----|
 |1,263,191|
 
-## Filter by Boolean expression: *where*
+## where
 
-The [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity) table has entries from the Azure activity log, which provides insight into subscription-level or management group-level events occuring in Azure. Let's see only `Critical` entries during a specific week.
+[where](./whereoperator.md): filters by Boolean expression.
 
-The [where](./whereoperator.md) operator is common in the Kusto Query Language. `where` filters a table to rows that match specific criteria. The following example uses multiple commands. First, the query retrieves all records for the table. Then, it filters the data for only records that are in the time range. Finally, it filters those results for only records that have a `Critical` level.
+The [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity) table has entries from the Azure activity log, which provides insight into subscription-level or management group-level events occuring in Azure. 
 
-> [!NOTE]
-> In addition to specifying a filter in your query by using the `TimeGenerated` column, you can specify the time range in Log Analytics. For more information, see [Log query scope and time range in Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope).
+Let's see only `Critical` entries during a specific week:
 
 ```kusto
 AzureActivity
@@ -609,11 +606,18 @@ AzureActivity
 | where Level == 'Critical'
 ```
 
+> [!TIP]
+> In addition to specifying a filter in your query by using the `TimeGenerated` column, you can specify the time range in Log Analytics. For more information, see [Log query scope and time range in Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope).
+
+The above example uses multiple commands. First, the query retrieves all records for the table. Then, it filters the data for only records that are in the time range. Finally, it filters those results for only records that have a `Critical` level.
+
 :::image type="content" source="images/tutorial/azure-monitor-where-results.png" lightbox="images/tutorial/azure-monitor-where-results.png" alt-text="Screenshot that shows the results of the where operator example.":::
 
-## Select a subset of columns: *project*
+## project
 
-Use [project](./projectoperator.md) to include only the columns you want. Building on the preceding example, let's limit the output to certain columns:
+[project](./projectoperator.md): selects a subset of columns.
+
+Use the [project](./projectoperator.md) operator to pick the columns you want to include in the query result. Building on the preceding example, let's limit the output to certain columns:
 
 ```kusto
 AzureActivity
@@ -624,9 +628,13 @@ AzureActivity
 
 :::image type="content" source="images/tutorial/azure-monitor-project-results.png" lightbox="images/tutorial/azure-monitor-project-results.png" alt-text="Screenshot that shows the results of the project operator example.":::
 
-## Show *n* rows: *take*
+## take
 
-[NetworkMonitoring](/azure/azure-monitor/reference/tables/networkmonitoring) contains monitoring data for Azure virtual networks. Let's use the [take](./takeoperator.md) operator to look at 10 random sample rows in that table. The [take](./takeoperator.md) shows some rows from a table in no particular order:
+[take](./takeoperator.md): shows *n* rows.
+
+The [NetworkMonitoring](/azure/azure-monitor/reference/tables/networkmonitoring) table contains monitoring data for Azure virtual networks.  
+
+Let's use the [take](./takeoperator.md) operator to look at 10 random sample rows in that table. 
 
 ```kusto
 NetworkMonitoring
@@ -636,9 +644,13 @@ NetworkMonitoring
 
 :::image type="content" source="images/tutorial/azure-monitor-take-results.png" lightbox="images/tutorial/azure-monitor-take-results.png" alt-text="Screenshot that shows the results of the take operator example.":::
 
-## Order results: *sort*, *top*
+But [take](./takeoperator.md) shows rows from the table in no particular order, so let's sort them.
 
-Instead of random records, we can return the latest five records by first sorting by time:
+### sort
+
+[sort](./sortoperator.md): orders results by the given column.
+
+Instead of random records, let's return the latest five records by first sorting by time:
 
 ```kusto
 NetworkMonitoring
@@ -647,7 +659,9 @@ NetworkMonitoring
 | project TimeGenerated, Computer, SourceNetwork, DestinationNetwork, HighLatency, LowLatency
 ```
 
-You can get this exact behavior by instead using the [top](./topoperator.md) operator:
+### top 
+
+Achieve the same result as the previous `sort` example by using the [top](./topoperator.md) operator:
 
 ```kusto
 NetworkMonitoring
@@ -657,9 +671,11 @@ NetworkMonitoring
 
 :::image type="content" source="images/tutorial/azure-monitor-top-results.png" lightbox="images/tutorial/azure-monitor-top-results.png" alt-text="Screenshot that shows the results of the top operator example.":::
 
-## Compute derived columns: *extend*
+### extend
 
-The [extend](./projectoperator.md) operator is similar to [project](./projectoperator.md), but it adds to the set of columns instead of replacing them. You can use both operators to create a new column based on a computation on each row.
+[extend](./extendoperator.md): computes derived columns.
+
+The [extend](./projectoperator.md) operator is similar to [project](./projectoperator.md), but it adds to the set of columns instead of replacing them. Use both operators to create a new column based on a computation on each row.
 
 The [Perf](/azure/azure-monitor/reference/tables/perf) table has performance data that's collected from virtual machines that run the Log Analytics agent.
 
@@ -672,16 +688,18 @@ Perf
 
 :::image type="content" source="images/tutorial/azure-monitor-extend-results.png" lightbox="images/tutorial/azure-monitor-extend-results.png" alt-text="Screenshot that shows the results of the extend operator example.":::
 
-## Aggregate groups of rows: *summarize*
+### summarize
 
-The [summarize](./summarizeoperator.md) operator groups together rows that have the same values in the `by` clause. Then, it uses an aggregation function like `count` to combine each group in a single row. A range of [aggregation functions](aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns.
+[summarize](./summarizeoperator.md): produces a table that aggregates the content of the input table.
 
-The [SecurityEvent](/azure/azure-monitor/reference/tables/securityevent) table contains security events like logons and processes that started on monitored computers. You can count how many events of each level occurred on each computer. In this example, a row is produced for each computer and level combination. A column contains the count of events.
+The [SecurityEvent](/azure/azure-monitor/reference/tables/securityevent) table contains security events like logons and processes that started on monitored computers. Count how many events of each level occurred on each computer: 
 
 ```kusto
 SecurityEvent
 | summarize count() by Computer, Level
 ```
+
+The [summarize](./summarizeoperator.md) operator groups together rows that have the same values in the `by` clause. Then, it uses an aggregation function like `count` to combine each group in a single row. A range of [aggregation functions](aggregation-functions.md) are available. Use several aggregation functions in one `summarize` operator to produce several computed columns.
 
 :::image type="content" source="images/tutorial/azure-monitor-summarize-count-results.png" lightbox="images/tutorial/azure-monitor-summarize-count-results.png" alt-text="Screenshot that shows the results of the summarize count operator example.":::
 
