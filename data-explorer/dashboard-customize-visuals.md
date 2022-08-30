@@ -104,6 +104,13 @@ In addition, you can specify the following options:
 
 Maps are useful to visualize data with geo coordinates. The Map visual also has a built-in zoom functionality.
 
+### Funnel
+
+:::image type="content" source="media/dashboard-customize-visuals/map.png" alt-text="map visual type.":::
+
+To render the funnel visual, you must select a category column and value column.
+
+Funnels are useful to visualize usage or acquasition data across different stages to evaluate the progress between 1 stage and the next one.
 ## Customize visuals
 
 1. Select **Edit** in dashboard menu to switch to edit mode.
