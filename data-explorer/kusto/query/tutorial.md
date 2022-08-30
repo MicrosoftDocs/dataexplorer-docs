@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The best way to learn about the Kusto Query Language is to look at some basic queries to get a feel for the language. Follow along in this tutorial by running the example queries on this [database with sample data](https://help.kusto.windows.net/Samples). We will mostly use the `StormEvents` table, which provides information about past storms in the United States.
+The best way to learn the Kusto Query Language is to look at some basic queries to get a feel for the language. Follow along in this tutorial by running the example queries on this [database with sample data](https://help.kusto.windows.net/Samples). We will mostly use the `StormEvents` table, which provides information about past storms in the United States.
 
 ## Learn common operators
 
@@ -562,9 +562,11 @@ For more information about combining data from several databases in a query, see
 
 ::: zone pivot="azuremonitor"
 
-The best way to learn about the Azure Data Explorer Query Language is to look at some basic queries to get a "feel" for the language. These queries are similar to queries in the Azure Data Explorer tutorial, but use data from common tables in an Azure Log Analytics workspace.
+The best way to learn the Kusto Query Language is to look at some basic queries to get a feel for the language. 
 
-Run these queries by using Log Analytics in the Azure portal. Log Analytics is a tool you can use to write log queries. Use log data in Azure Monitor, and then evaluate log query results. If you aren't familiar with Log Analytics, complete the [Log Analytics tutorial](/azure/azure-monitor/log-query/log-analytics-tutorial).
+All queries in this tutorial use the [Log Analytics demo environment](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade). If you use your own environment, you might not have some of the tables that are used here.
+
+Run the queries in this tutorial using Log Analytics in the Azure portal. Log Analytics is a tool to write log queries. If you aren't familiar with Log Analytics, complete the [Log Analytics tutorial](/azure/azure-monitor/log-query/log-analytics-tutorial).
 
 >[!NOTE]
 > Because the data in the demo environment isn't static, the results of your queries might vary slightly from the results shown here.
