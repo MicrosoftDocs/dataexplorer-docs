@@ -110,7 +110,7 @@ Maps are useful to visualize data with geo coordinates. The Map visual also has 
 
 To render the funnel visual, select a category column and value column.
 
-Funnels are useful to visualize usage or acquasition data across different stages to evaluate the progress between 1 stage and the next one.
+Funnels are useful to visualize usage or acquisition data across different stages to evaluate the progress between 1 stage and the next one.
 
 ## Customize visuals
 
