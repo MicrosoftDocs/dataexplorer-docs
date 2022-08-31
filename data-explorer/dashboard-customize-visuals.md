@@ -106,7 +106,7 @@ Maps are useful to visualize data with geo coordinates. The Map visual also has 
 
 ### Funnel
 
-:::image type="content" source="media/dashboard-customize-visuals/map.png" alt-text="Screenshot of the funnel map visual type.":::
+:::image type="content" source="media/dashboard-customize-visuals/funnel.png" alt-text="Screenshot of the funnel map visual type.":::
 
 To render the funnel visual, select a category column and value column.
 
