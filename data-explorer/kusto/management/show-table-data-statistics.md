@@ -58,7 +58,9 @@ The command returns a result table that contains the following information.
 | `IncludeColdData`	| bool | Whether cold data was taken into account when calculating statistics estimate. |
 
 > [!NOTE]
-> For [Engine V3](../../engine-v3.md), `ExtentSize` doesn't include shared text index size. To calculate total table data size, either sum all `ExtentSize` values and add a `SharedIndexSize` value to it, or use [.show table details](show-table-details-command.md) command and look at the `TotalExtentSize` value.
+> For [Engine V3](../../engine-v3.md), `ExtentSize` doesn't include shared text index size. There are two ways to calculate total table data size:
+> * Sum all `ExtentSize` values and add the `SharedIndexSize` value.
+> * Run the [.show table details](show-table-details-command.md) command, and use the `TotalExtentSize` value.
 
 ## Example
 
