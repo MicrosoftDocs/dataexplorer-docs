@@ -48,7 +48,7 @@ The command returns a result table that contains the following information.
 | `ExtentSize` | long | Estimation of total size of extents (data size + index size) in bytes. |
 | `CompressionRatio` | real | Ratio of original data size to extent data size. |
 | `DataCompressedSize` | long | Extents data size in bytes, excluding indexes. |
-| `SharedIndexSize` | long | For [Engine V3](../../engine-v3.md), text index size in bytes. Text index is shared by all table columns in [Engine V3](../../engine-v3.md). |
+| `SharedIndexSize` | long | For [Engine V3](../../engine-v3.md), text index size in bytes. The text index is shared by all table columns in [Engine V3](../../engine-v3.md). |
 | `IndexSize` | long | Size of numeric indexes in bytes. For Engine V2, the value includes text index size as well. |
 | `IndexSizePercent` | real | Ratio of the index size to original data size in bytes. |
 | `StorageEngineVersion` | string | Engine version. If data exists for multiple engine versions, the output includes an entry for each version. |
