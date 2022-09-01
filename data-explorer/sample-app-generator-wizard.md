@@ -29,11 +29,11 @@ The sample app generator wizard guides you through the ingestion process.
 
   * Select **Data** in the left pane. Within the **Data Management** page under Quick actions, select **Generate Sample App**.
 
-    :::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-welcome.png" alt-text="Screenshot showing Sample app generator card from welcome to Azure Data Explorer.":::
+    :::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-welcome.png" alt-text="Screenshot showing Sample app generator card from welcome to Azure Data Explorer.":::
 
   * Select **Data** in the left pane. Within the **Data Management** page, select **SDKs & Connectors** tab. Within SDKs sub-tab, select an SDK.
 
-    :::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-sdks.png" alt-text="Screenshot showing Sample app generator from SDKs & connectors tab.":::
+    :::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-sdks.png" alt-text="Screenshot showing Sample app generator from SDKs & connectors tab.":::
 
 ## Sample app generator wizard
 
@@ -41,7 +41,7 @@ The sample app generator wizard guides you through the ingestion process.
 
 On the **Destination** tab, specify the destination cluster, database, and table and then select the programming language for your app.
 
-:::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-destination-tab.png" alt-text="Sample app generator destination tab.":::
+:::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-destination-tab.png" alt-text="Sample app generator destination tab.":::
 
 > [!NOTE]
 > This section describes the wizard in general. The options you select depend on what data format you are ingesting, what kind of data source you are ingesting from, and whether you are ingesting into a new or existing table.

@@ -9,7 +9,7 @@ ms.date: 07/31/2022
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [Ingestion wizard](one-click-event-hub.md)
+> * [Ingestion wizard](event-hub-wizard.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
@@ -32,7 +32,7 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 
 1. In the left menu of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select the **Data** tab.
 
-    :::image type="content" source="media/one-click-event-hub/ingestion-in-web-ui.png" alt-text="Select the ingestion wizard in the Azure Data Explorer web U I.":::
+    :::image type="content" source="media/event-hub-wizard/ingestion-in-web-ui.png" alt-text="Select the ingestion wizard in the Azure Data Explorer web U I.":::
 
 1. In the **Ingest data from Event Hub** card, select **Ingest**.
 
@@ -40,7 +40,7 @@ The **Ingest new data** window opens with the **Destination** tab selected.
 
 ### Destination tab
 
-:::image type="content" source="media/one-click-event-hub/destination-tab.png" alt-text="Screen shot of destination tab. Cluster, Database, and Table fields must be filled out before proceeding to Next-Source.":::
+:::image type="content" source="media/event-hub-wizard/destination-tab.png" alt-text="Screen shot of destination tab. Cluster, Database, and Table fields must be filled out before proceeding to Next-Source.":::
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus.
 
@@ -57,7 +57,7 @@ The **Ingest new data** window opens with the **Destination** tab selected.
 
 1. Under **Data Connection**, fill in the following fields:
 
-    :::image type="content" source="media/one-click-event-hub/project-details.png" alt-text="Screenshot of source tab with project details fields to be filled in - ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
+    :::image type="content" source="media/event-hub-wizard/project-details.png" alt-text="Screenshot of source tab with project details fields to be filled in - ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -77,7 +77,7 @@ Data is read from the event hub in form of [EventData](/dotnet/api/microsoft.ser
 For information on schema mapping with JSON-formatted data, see [Edit the schema](one-click-ingestion-existing-table.md#edit-the-schema).
 For information on schema mapping with CSV-formatted data, see [Edit the schema](one-click-ingestion-new-table.md#edit-the-schema).
 
-:::image type="content" source="media/one-click-event-hub/event-hub-schema.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
+:::image type="content" source="media/event-hub-wizard/event-hub-schema.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
 
 > [!NOTE]
 >
@@ -97,7 +97,7 @@ For information on schema mapping with CSV-formatted data, see [Edit the schema]
 
 In the **Continuous ingestion from Event Hub established** window, all steps will be marked with green check marks when establishment finishes successfully. The cards below these steps give you options to explore your data with **Quick queries**, undo changes made using **Tools**, or **Monitor** the Event Hubs connections and data.
 
-:::image type="content" source="media/one-click-event-hub/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hubs with the ingestion wizard.":::
+:::image type="content" source="media/event-hub-wizard/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hubs with the ingestion wizard.":::
 
 ## Next steps
 
