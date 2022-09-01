@@ -79,6 +79,7 @@ All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a
 All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
 
 | Exception name | Reason |
+|--|--|
 | `EntityNameIsNotValidException` | Indicates an entity name isn't valid. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_EntityNameIsNotValid </br> **Permanance**: True|
 |--|--|
 | `ClusterSuspendedException` | A request with `request_execute_only_if_running` flag is denied because the service is in a suspended state. </br> **Failure code**: 412 </br> **Failure subcode**: PreconditionFailed </br> **Permanence**: True |
