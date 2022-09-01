@@ -36,7 +36,7 @@ Returns a `dynamic` JSON object (property bag) from the listed *key* and *value*
 
 This example shows a property bag of keys and values.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAysoyswrUUhKTI8vSEzO1lDySS1LzVHSUVDyzEvLL8pNLMnMzwNxA4ryk1OLiz1dgBxDI2MToJBLYkkikIfQW1oE1lleXq6XlJmXrpecn6ukqQkA9RzT32IAAAA=)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhKTI8vSEzO1lDySS1LzVHSUVDyzEvLL8pNLMnMzwNxA4ryk1OLiz1dgBxDI2MToJBLYkkikIfQW1oE1lleXq6XlJmXrpecn6ukqQkA9RzT32IAAAA=)**\]**
 
 ```kusto
 print bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url", "www.bing.com"))
@@ -50,76 +50,44 @@ print bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url"
 
 **Example 2**
 
-This example shows a property bag based on two tables using a common source number.
+This example shows a property bag based the following two tables using a common source number
 
-1. Select a database from your Azure Data Explorer
+SmsMessages
 
-1. Create the SmsMessages table using the following:
+|SourceNumber |TargetNumber| CharsCount |
+|---|---|---|
+|555-555-1234 |555-555-1212 | 46 |
+|555-555-1234 |555-555-1213 | 50 |
+|555-555-1212 |555-555-1234 | 32 |
 
-    **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAA9NLLkpNLElVKElMyklVCM4t9k0tLk5MTy1W0AjOLy1KTvUrzU1KLbIqLinKzEvXUQhJLEpPLUETdM5ILCp2zi/NK4EKaQIAgrtkLFcAAAA=)**\]**
+MmsMessages
 
-    ```kusto
-    .create table SmsMessages (SourceNumber:string, TargetNumber:string, CharsCount:string)
-    ```
+|SourceNumber |TargetNumber| AttachmentSize | AttachmentType | AttachmentName |
+|---|---|---|---|---|
+|555-555-1212 |555-555-1213 | 200 | jpeg | Pic1 |
+|555-555-1234 |555-555-1212 | 250 | jpeg | Pic2 |
+|555-555-1234 |555-555-1213 | 300 | png | Pic3 |
 
-1. Ingest data into the SmsMessages table using the following:
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6VSQWuDMBS+C/0Pj5wUHFStO2x4GD23FPQ2xoj60Kw1lSTSbezHL9F202C7wwyavMf7fPm+7x1QQdrIDUpJK5SQQEmVXvkBwU2PnShw2zU5igepBOOVDxkVFSorua6pkOtjx9U55cHzwiFxHN+ZNwijFfFhFAehiVf3+nu7LurjJfEnZQPchkUh0X97eVw4B01r839aT0rRom6Qq5R94kw6+2jn0lva4BUh7JsPBMPl0mxvLVZm37EisBjPCxjGNi78C9f3i4Z+Lb/AIjIIN56FhQP6+QJ8V8hL2NFij2WS0+q11UeX/JpOxhPg/QA7zo4cTkzVspc8yYwBRhzYM14mjHMU52p34teQu9V8ag2xvdKspi4R27ZJhbkTsR30vAuRU40CYTw3kCTW/H0DvNexiEoDAAA=)**\]**
 
-    **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAA9PLzEtPLS5RyMzLycxLBVIl+QoliUk5qQrBucW+qcXFiUBpBZsaXi4lU1NTXRA2NDI2UdJRQOIbGoH4JmZKCviVGYP5BmjKILrRtRkbKQEAvzzU55wAAAA=)**\]**
-
-    ```kusto
-    .ingest inline into table SmsMessages <|
-    "555-555-1234", "555-555-1212", "46" 
-    "555-555-1234", "555-555-1213", "50" 
-    "555-555-1212", "555-555-1234", "32" 
-    ```
-
-    Your SmsMessages table should look like this:
-
-    |SourceNumber |TargetNumber| CharsCount |
-    |---|---|---|
-    |555-555-1234 |555-555-1212 | 46 |
-    |555-555-1234 |555-555-1213 | 50 |
-    |555-555-1212 |555-555-1234 | 32 |
-
-1. Create the SmsMessages table using the following:
-
-    **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAA23IsQ2AIBAF0FUoNTEOYOcA0MACB/lBEkFzdxQ6vZWN8ZVvTgxSGKW4w9gqFiKUIWbwR+cE12sEL6JcWp5MIM7QT66qlLaKpr7c+OlwnX/tqL49PlvSgpGJAAAA)**\]**
-
-    ```kusto
-    .create table MmsMessages (SourceNumber:string, TargetNumber:string, AttachmentSize:string, AttachmentType:string, AttachmentName:string)
-    ```
-
-1. Ingest data into the SmsMessages table using the following:
-
-    **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAA9PLzEtPLS5RyMzLycxLBVIl+QoliUk5qQq+ucW+qcXFiUBpBZsaXi4lU1NTXRA2NDI0UtJRQOYbg/hGBgYgKqsgNR1EB2QmGyqhaDM2QdMGNsbIFF2bEQFtYNuMIbYV5IF0ATUZKygBAJxTbCzMAAAA)**\]**
-
-    ```kusto
-    .ingest inline into table MmsMessages <|
-    "555-555-1212", "555-555-1213", "200", "jpeg", "Pic1"
-    "555-555-1234", "555-555-1212", "250", "jpeg", "Pic2"
-    "555-555-1234", "555-555-1213", "300", "png", Pic3 "
-    ```
-
-    Your MmsMessages table should look like this:
-
-    |SourceNumber |TargetNumber| AttachmentSize | AttachmentType | AttachmentName |
-    |---|---|---|---|---|
-    |555-555-1212 |555-555-1213 | 200 | jpeg | Pic1 |
-    |555-555-1234 |555-555-1212 | 250 | jpeg | Pic2 |
-    |555-555-1234 |555-555-1213 | 300 | png | Pic3 |
-
-1. Then run the following query:
-
-    **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA3WOOwuDQBCEe3/FcpWCKfKwtAiplYD2YdXFO8ydcg9MQn587kIguSLFwu4wO/M10kgyBkcykDyBbpbUAGfsJxrKDsfL4teUnThqc5qdsiyH75H5F6fErGAVlpvZ6Z7KFrsr1SgJJqGGUihFGiBJK2mqT1UC8L/raC32XJKyjXiQ74uFHH4c7X0JDp8Xa5EpsEQxQcgC+8pJEzRv7trJzoNyNMCKotiE2e72B/YCVizKfyMBAAA=)**\]**
-
-    ```kusto
-    SmsMessages 
+```kusto
+let SmsMessages = datatable (SourceNumber:string, TargetNumber:string, CharsCount:string) [
+"555-555-1234", "555-555-1212", "46", 
+"555-555-1234", "555-555-1213", "50",
+"555-555-1212", "555-555-1234", "32" 
+];
+let MmsMessages = datatable (SourceNumber:string, TargetNumber:string, AttachmentSize:string, AttachmentType:string, AttachmentName:string) [
+"555-555-1212", "555-555-1213", "200", "jpeg", "Pic1",
+"555-555-1234", "555-555-1212", "250", "jpeg", "Pic2",
+"555-555-1234", "555-555-1213", "300", "png", "Pic3"
+];
+SmsMessages 
     | extend Packed=bag_pack("CharsCount", CharsCount) 
     | union withsource=TableName kind=inner 
     ( MmsMessages 
       | extend Packed=bag_pack("AttachmentSize", AttachmentSize, "AttachmentType", AttachmentType, "AttachmentName", AttachmentName))
     | where SourceNumber == "555-555-1234"
-    ```
+```
 
 **Results**
 
