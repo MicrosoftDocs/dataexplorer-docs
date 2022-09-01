@@ -56,7 +56,7 @@ Events
 | where Name == "Start"
 | project Name, City, SessionId, StartTime=timestamp
 | join (Events 
-        | where Name="Stop"
+        | where Name == "Stop"
         | project StopTime=timestamp, SessionId) 
     on SessionId
 | project City, SessionId, StartTime, StopTime, Duration = StopTime - StartTime
