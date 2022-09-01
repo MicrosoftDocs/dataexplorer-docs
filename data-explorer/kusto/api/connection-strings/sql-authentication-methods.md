@@ -12,7 +12,8 @@ Azure Data Explorer can authenticate to external SQL databases in different ways
 We recommend adding an `h` to connection strings that contain secrets, so that the connection strings are [obfuscated in telemetry data](../../query/scalar-data-types/string.md#obfuscated-string-literals) using one of the following methods:
 
 * Hide the entire string: Add an `h` to the beginning of the string, like this: `h"Server=tcp:myserver.database.windows.net..."`
-* Hide the secret part of the string: Split the connection string into location and secret and add the `h` before the secret part. For example: `"Server=tcp:myserver.database.windows.net,1433;"` `h"User Id={some-userId};Password={some-password};Initial Catalog=mydatabase;"`
+* Hide the secret part of the string: Split the connection string into location and secret and add the `h` before the secret part.
+  For example: `"Server=tcp:myserver.database.windows.net,1433;"` `h"User Id={myUserId};Password={myPlaceholderPassword};Initial Catalog=mydatabase;"`
 
 The following authentication methods are supported:
 
@@ -50,11 +51,11 @@ In order to use managed identity please follow these instructions, and allow the
 
 ## Username and password
 
-To use username and password, add `User ID=...; Password=...;` to connection string.
+To use username and password, set the keywords `User ID` and `Password` in the connection string.
 
 ### Username and password example
 
-`"Server=tcp:myserver.database.windows.net,1433;User Id={some-userId};Password={some-password};Initial Catalog=mydatabase;"`
+`"Server=tcp:myserver.database.windows.net,1433;User Id={myUserId};Password={myPlaceholderPassword};Initial Catalog=mydatabase;"`
 
 > [!NOTE]
 > The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see: [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions)
