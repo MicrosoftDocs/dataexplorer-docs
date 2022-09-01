@@ -22,7 +22,7 @@ In this article, you can define and assign a retention policy and a cache policy
 
 1. In the left menu of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) select the **Data** tab, [or use the link](https://dataexplorer.azure.com/oneclick).
 
-    :::image type="content" source="media/one-click-table-policies/one-click-retention-policy-start.png" alt-text="Screenshot of Data management screen showing the table retention policy wizard in the azure Data Explorer web UI.":::
+    :::image type="content" source="media/one-click-table-policies/one-click-retention-policy-start.png" alt-text="Screenshot of Data management screen showing the table retention policy wizard in the Azure Data Explorer web UI.":::
 
 1. In the **Table retention policy** tile, select **Update**.
 
