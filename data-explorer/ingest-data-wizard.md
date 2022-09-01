@@ -42,7 +42,7 @@ The ingestion wizard guides you through the ingestion process.
 
   * Select **Query** in the left pane. Right-click the *database* or *table* and select **Ingest new data**.
 
-      :::image type="content" source="media/ingest-data-wizard/ingest-new-data-database-menu.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web U I.":::
+      :::image type="content" source="media/ingest-data-wizard/ingest-new-data-database-menu.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI.":::
 
 * To access the ingestion wizard from the **Azure Data Explorer** home screen in your cluster, complete the first two steps ([cluster creation and database creation](#prerequisites)) and then select **Ingest**.
 

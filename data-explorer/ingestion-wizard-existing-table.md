@@ -23,7 +23,7 @@ For different types or sources of data, see [Ingest data from a container/ADLS i
 
 1. From the **Quick actions** section, select **Ingest data**. Alternatively, from the **All actions** section, select **Ingest data** and then **Ingest**.
 
-   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web U I to select the ingestion wizard for a table.":::
+   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI to select the ingestion wizard for a table.":::
 
 ## Select an ingestion type
 

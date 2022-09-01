@@ -32,7 +32,7 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 
 1. In the left menu of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select the **Data** tab.
 
-    :::image type="content" source="media/event-hub-wizard/ingestion-in-web-ui.png" alt-text="Select the ingestion wizard in the Azure Data Explorer web U I.":::
+    :::image type="content" source="media/event-hub-wizard/ingestion-in-web-ui.png" alt-text="Select the ingestion wizard in the Azure Data Explorer web UI.":::
 
 1. In the **Ingest data from Event Hub** card, select **Ingest**.
 
