@@ -5,10 +5,10 @@ ms.reviewer: tzgitlin
 ms.topic: how-to
 ms.date: 07/13/2022
 ---
-# Create a table's ingestion batching policy with one-click
+# Create a table's ingestion batching policy with the table batching policy wizard
 
 During the ingestion process, throughput is optimized by batching small ingress data chunks together before ingestion. The  [ingestion batching policy](./kusto/management/batchingpolicy.md#sealing-a-batch) defines data aggregation for batching.
-In this article, you can define and assign an ingestion batching policy for a table using the one-click experience.
+In this article, you can define and assign an ingestion batching policy for a table using the table batching policy wizard.
 
 [!INCLUDE [batching-policy-permissions](includes/batching-policy-permissions.md)]
 
@@ -19,7 +19,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 ## Define and assign a table batching policy
 
-1. In the left menu of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select the **Data** tab, [or use the one-click link](https://dataexplorer.azure.com/oneclick).
+1. In the left menu of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select the **Data** tab, [or use the link](https://dataexplorer.azure.com/oneclick).
 
     :::image type="content" source="media/one-click-table-policies/batch-policy-start.png" alt-text="Screenshot of Azure Data Explorer web U I with the table batching policy card selected to make policy changes.":::
 
@@ -53,7 +53,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 In the **Summary** tab, all steps will be marked with green check marks when the update finishes successfully. The tiles below these steps give you options to explore your data with **Quick queries**, or undo changes made using **Tools**.
 
-:::image type="content" source="media/one-click-table-policies/batch-policy-success.png" alt-text="Screenshot of final screen in the update table batching policy wizard for Azure Data Explorer with the one-click experience.":::
+:::image type="content" source="media/one-click-table-policies/batch-policy-success.png" alt-text="Screenshot of final screen in the update table batching policy wizard for Azure Data Explorer with the table batching policy wizard.":::
 
 ## Next steps
 
