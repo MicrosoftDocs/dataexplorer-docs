@@ -27,14 +27,6 @@ Based on the root cause, exceptions may inherit one of the following error types
 
 * `KustoClientException`: Indicates a client-side problem in sending the request to the service. Specifically, this exception informs the caller that the service itself didn't receive the request. For a list client authentication exceptions, see [Client exceptions](#client-exceptions).
 
-## General exceptions
-
-| Exception name | Reason |
-|--|--|
-| `EntityNameIsNotValidException` | Indicates an entity name isn't valid. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_EntityNameIsNotValid </br> **Permanance**: True|
-| `KustoServicePartialQueryFailureException` | A query execution started successfully but failed prior to completion. |
-| `WeakConsistencyEntityNotFoundException` | Indicates a failure to locate an entity in weak consistency mode. |
-
 ### Client exceptions
 
 All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column. Client exceptions contain the following exception categories:
@@ -87,6 +79,7 @@ All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a
 All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
 
 | Exception name | Reason |
+| `EntityNameIsNotValidException` | Indicates an entity name isn't valid. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_EntityNameIsNotValid </br> **Permanance**: True|
 |--|--|
 | `ClusterSuspendedException` | A request with `request_execute_only_if_running` flag is denied because the service is in a suspended state. </br> **Failure code**: 412 </br> **Failure subcode**: PreconditionFailed </br> **Permanence**: True |
 | `KustoBadRequestException` | The Kusto service was sent a bad request. For a list of errors, see [Bad request exceptions](#bad-request-exceptions). </br> **Failure code**: 400 </br> **Failure subcode**: General_BadRequest </br> **Permanance**: True |
@@ -124,6 +117,8 @@ All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a
 
 | Exception name | Reason |
 |--|--|
+| `KustoServicePartialQueryFailureException` | A query execution started successfully but failed prior to completion. |
+| `WeakConsistencyEntityNotFoundException` | Indicates a failure to locate an entity in weak consistency mode. |
 | `KustoDataStreamException` | Generic exception that carries error information inside a Kusto Data Stream. |
 | `KustoRequestThrottledException` | The request is denied due to throttling. </br> **Failure code**: 429 </br> **Failure subcode**: TooManyRequests </br> **Permanance**: False |
 | `KustoServicePartialQueryFailureIllFormattedDataException` | Carries error information inside a Kusto Data Stream indicating ill-formatted data. </br> **Failure code**: 400 </br> **Failure subcode**:IllFormattedData  </br> **Permanance**: True|
