@@ -25,7 +25,7 @@ The following image depicts an Azure Data Explorer dashboard.
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
@@ -268,8 +268,8 @@ You can update an existing dashboard, or restore a previous version, as follows:
 >
 > * Select the smallest minimum time interval to reduce unnecessary load on the cluster.
 > * A dashboard viewer:
->     * Can change the minimum time intervals for personal use only.
->     * Can't select a value which is smaller than the **Minimum time interval** specified by the editor.
+>   * Can change the minimum time intervals for personal use only.
+>   * Can't select a value which is smaller than the **Minimum time interval** specified by the editor.
 
 ## Next Steps
 

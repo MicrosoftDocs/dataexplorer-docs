@@ -22,11 +22,12 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 ## Prerequisites
 
 * Visual Studio 2019, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
 ## Authentication
+
 For running the examples in this article, we need an Azure AD Application and service principal that can access resources. Check [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) to create a free Azure AD Application and add role assignment at the subscription scope. It also shows how to get the `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
 ## Create the Azure Data Explorer cluster
@@ -69,7 +70,7 @@ For running the examples in this article, we need an Azure AD Application and se
    | resourceGroupName | *testrg* | The resource group name where the cluster will be created. |
 
     > [!NOTE]
-    > **Create a cluster** is a long running operation, so it's highly recommended to use CreateOrUpdateAsync, instead of CreateOrUpdate. 
+    > **Create a cluster** is a long running operation, so it's highly recommended to use CreateOrUpdateAsync, instead of CreateOrUpdate.
 
 1. Run the following command to check whether your cluster was successfully created:
 

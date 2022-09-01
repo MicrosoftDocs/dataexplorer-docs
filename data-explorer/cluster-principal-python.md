@@ -17,7 +17,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Install Python package
