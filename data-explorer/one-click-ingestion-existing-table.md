@@ -3,7 +3,7 @@ title: Ingest JSON data from a local file to an existing table in Azure Data Exp
 description: Ingesting (loading) data into an existing Azure Data Explorer table simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 08/09/2022
+ms.date: 09/04/2022
 ---
 # Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer
 
@@ -12,7 +12,7 @@ ms.date: 08/09/2022
 This document describes using the ingestion wizard in a specific use case to ingest **JSON** data from a **local file** into an **existing table**. Use the same process with slight adaptations to cover a variety of different use cases.
 
 For an overview of the ingestion wizard and a list of prerequisites, see [Ingest data into Azure Data Explorer using the ingestion wizard](ingest-data-one-click.md).
-For different types or sources of data, see [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md). 
+For different types or sources of data, see [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md).
 
 > [!NOTE]
 > To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
@@ -88,14 +88,14 @@ To add columns from JSON levels that are different than the main **Nested levels
 
 ### Edit the table
 
-[!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
+[!INCLUDE [data-explorer-ingestion-wizard-column-table](includes/data-explorer-ingestion-wizard-column-table.md)]
 
 > [!NOTE]
 >
 > * For tabular formats, you can't map a column twice. To map to an existing column, first delete the new column.
 > * You can't change an existing column type. If you try to map to a column having a different format, you may end up with empty columns.
 
-[!INCLUDE [data-explorer-one-click-command-editor](includes/data-explorer-one-click-command-editor.md)]
+[!INCLUDE [data-explorer-ingestion-wizard-command-editor](includes/data-explorer-ingestion-wizard-command-editor.md)]
 
 ## Start ingestion
 
@@ -112,7 +112,7 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 > [!IMPORTANT]
 > To set up continuous ingestion from a container, see [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](one-click-ingestion-new-table.md#create-continuous-ingestion)
 
-[!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
+[!INCLUDE [data-explorer-ingestion-wizard-query-data](includes/data-explorer-ingestion-wizard-query-data.md)]
 
 ## Next steps
 

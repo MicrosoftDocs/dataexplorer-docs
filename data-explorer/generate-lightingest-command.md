@@ -3,7 +3,7 @@ title: Use wizard for one-time ingestion of historical data with LightIngest (pr
 description: Learn about how to auto-generate an ingest command for LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 06/20/2022
+ms.date: 09/04/2022
 ---
 # Use wizard for one-time ingestion of historical data with LightIngest (preview)
 
@@ -110,7 +110,7 @@ In the **Schema** tab:
 
 When ingesting to a new table, alter various aspects of the table when creating the table.
 
-[!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
+[!INCLUDE [data-explorer-ingestion-wizard-column-table](includes/data-explorer-ingestion-wizard-column-table.md)]
 
 > [!NOTE]
 > For tabular formats, you can't map a column twice. To map to an existing column, first delete the new column.

@@ -3,7 +3,7 @@ title: Ingest data from a container or Azure Data Lake Storage into Data Explore
 description: Ingest (load) data into a new Azure Data Explorer table from a container or ADLS, either as a one-time or continuous operation.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 08/03/2022
+ms.date: 09/04/2022
 ---
 
 # Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer
@@ -132,12 +132,12 @@ In the **Schema** tab:
 
 When ingesting to a new table, alter various aspects of the table when creating the table.
 
-[!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
+[!INCLUDE [data-explorer-ingestion-wizard-column-table](includes/data-explorer-ingestion-wizard-column-table.md)]
 
 > [!NOTE]
 > For tabular formats, you can't map a column twice. To map to an existing column, first delete the new column.
 
-[!INCLUDE [data-explorer-one-click-command-editor](includes/data-explorer-one-click-command-editor.md)]
+[!INCLUDE [data-explorer-ingestion-wizard-command-editor](includes/data-explorer-ingestion-wizard-command-editor.md)]
 
 Select **Next: Summary** to create a table and mapping and to begin data ingestion.
 
@@ -147,7 +147,7 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 
 :::image type="content" source="media/one-click-ingestion-new-table/one-click-data-ingestion-complete.png" alt-text="Screenshot showing ingested complete dialog box with data preview.":::
 
-[!INCLUDE [data-explorer-one-click-ingestion-query-data](includes/data-explorer-one-click-ingestion-query-data.md)]
+[!INCLUDE [data-explorer-ingestion-wizard-query-data](includes/data-explorer-ingestion-wizard-query-data.md)]
 
 ## Create continuous ingestion
 
