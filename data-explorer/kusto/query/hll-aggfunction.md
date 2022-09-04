@@ -37,7 +37,7 @@ Returns the intermediate results of distinct count of *`Expr`* across the group.
 
 This example returns the hll results of property damage based on the start time.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlXIyMnRcEnMTUxPDSjKL0gtKqnUVEiqVEjKzNMILkksKgnJzE3VMTTI1QQAaW7+fEIAAAA=)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVcjIydFwScxNTE8NKMovSC0qqdRUSKpUSMrM0wguSSwqCcnMTdUxNMjVBACCSG7CQQAAAA==)**\]**
 
 ```kusto
 StormEvents
@@ -76,8 +76,8 @@ which does a stochastic estimation of set cardinality. The algorithm provides a 
 
 The algorithm includes conditions for doing a perfect count (zero error), if the set cardinality is small enough:
 
-* When the accuracy level is `1`, 1000 values are returned
-* When the accuracy level is `2`, 8000 values are returned
+- When the accuracy level is `1`, 1000 values are returned
+- When the accuracy level is `2`, 8000 values are returned
 
 The error bound is probabilistic, not a theoretical bound. The value is the standard deviation of error distribution (the sigma), and 99.7% of the estimations will have a relative error of under 3 x sigma.
 

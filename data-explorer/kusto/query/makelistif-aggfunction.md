@@ -33,7 +33,7 @@ If the input to the `summarize` operator is sorted, the order of elements in the
 
 This example shows a list of names with more than 4 letters.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAy2OsQrCMBRF90D+4dHJQhZFUSu6Ck4i3URCiq9p8CWBJB0UP95HLXc6Z7gcwgItHOFpCq8jXATjsckluWAV67eOve5cKkNDMdhairsUAFBd4hAqBXv1x6sZiXG5m/mMMVlks9rM5saPkcVWisdBilaKL+TRe5PcB8GbF2pyuWjXTw0KOIIwTFDDCdb1D5O20PKtAAAA)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXNMQvCMBCG4T2/4uhkIIuiqJW6Ck4i3URCitc0eEkgSQfFH++RctPzDvcRFuihg5cpfAPhKhiPbS7JBas4f3Qc9eBSmVqKwUrxEADQXOMUGgVHVXUzM7HWh4UXjMkih81uCXd+Ftl78TyJXvwgz96b5L4I3rxRk8tFu7FuK+BxwlAh4Qxb+Qd6P2/WpQAAAA==)**\]**
 
 ```kusto
 let T = datatable(name:string, day_of_birth:long)

@@ -30,7 +30,7 @@ Returns the standard deviation value of *Expr* across the group where *Predicate
 
 This example shows the standard deviation in a range of 1 to 100.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0MFAoLkktUDDk5apRKC7NzU0syqxKBYqlpJZlpmlU6ChUqBop2NoqGGgCAOJM8HQ+AAAA)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0MFAoLkktUDDkqlEoLs3NTSzKrEoFCqWklmWmaVToKFSoGinY2ioYaAIA/zirvz0AAAA=)**\]**
 
 ```kusto
 range x from 1 to 100 step 1

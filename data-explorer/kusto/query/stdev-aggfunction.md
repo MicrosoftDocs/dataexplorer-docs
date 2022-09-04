@@ -35,7 +35,7 @@ Returns the standard deviation value of *Expr* across the group.
 
 This example shows the standard deviation for the group.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzBVKC5JLVAw5OWqUSguzc1NLMqsSlXITcxOjc/JLC7RqNDUAapISS0DsgBct/BQPgAAAA==)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzBVKC5JLVAw5KpRKC7NzU0syqxKVchNzE6Nz8ksLtGo0NQBKkhJLQOyAG3qbWE9AAAA)**\]**
 
 ```kusto
 range x from 1 to 5 step 1

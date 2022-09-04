@@ -34,7 +34,7 @@ If the input to the `summarize` operator is sorted, the order of elements in the
 
 This example shows null values in the results.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA0XQywrCMBAF0H0g/zB01UIXCj4rrvwMkRLboQ0mk9pM8YEfb0obzWzCuXczY5DBt6pDD0eoFYe5GoSUlMXCc6+pgRy8rvHkBuICNHEmxVkKCC8JBUWNwSQfg5QGY7J8zvx9UP2YrKL0WHGs/7BDYtU4CraO1uJzps2fuljbRnMVu4l2kcjR3NpHqrGaabmQ4nKQYlpYig/4wVrV6zeCfRntORzBqhuW4798aG7LcSWf/g6QfQExRyrwMQEAAA==)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz3PywqDMBAF0H2+YnCl4KKFPi1d9TNKkVQHDU0mNhnpg358E4xmNuHcu7kaGXwvB/RwhlZyuLtGyEkarDw7RR2U4FWLFzsSV6CIC3EVEF4WYkmdxqyMnNOodVFOkX+O0sVgk8Bhw3N5tgGJZWcp0DZRj+8ku0WGubRPZBu2kxySkKXUOSZpsUmyXonbSUwjxQ/8aIx06otgPlp5DruNfGAd//VLcV/HHT5fNhd/aMS6MiQBAAA=)**\]**
 
 ```kusto
 let shapes = datatable (name:string , sideCount: int)

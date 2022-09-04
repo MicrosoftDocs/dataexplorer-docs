@@ -34,7 +34,7 @@ The function returns the merged `hll` values of `*Expr*` across the group.
 
 This example shows
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlXIyMkJSi1WsAUxNFwScxPTUwOK8gtSi0oqNRWSKhWSMvM0gksSi0pCMnNTdQwNcjUx9PumFqWnpkCMiM8FcTQgpmoCAPTmUjd2AAAA)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVcjIyQlKLVawBTE0XBJzE9NTA4ryC1KLSio1FZIqFZIy8zSCSxKLSkIyc1N1DA1yNdG1+6YWpaemQEyIzwVxNCCGagIAlijQ1HQAAAA=)**\]**
 
 ```kusto
 StormEvents
@@ -68,8 +68,8 @@ which does a stochastic estimation of set cardinality. The algorithm provides a 
 
 The algorithm includes some provisions for doing a perfect count (zero error), if the set cardinality is small enough:
 
-* When the accuracy level is `1`, 1000 values are returned
-* When the accuracy level is `2`, 8000 values are returned
+- When the accuracy level is `1`, 1000 values are returned
+- When the accuracy level is `2`, 8000 values are returned
 
 The error bound is probabilistic, not a theoretical bound. The value is the standard deviation of error distribution (the sigma), and 99.7% of the estimations will have a relative error of under 3 x sigma.
 
