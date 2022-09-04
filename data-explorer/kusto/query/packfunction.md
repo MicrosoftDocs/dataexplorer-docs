@@ -34,7 +34,7 @@ Returns a `dynamic` JSON object (property bag) from the listed *key* and *value*
 
 **Example 1**
 
-This example shows a property bag of keys and values.
+The following example creates and returns a property bag from an alternating list of keys and values.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhKTI8vSEzO1lDySS1LzVHSUVDyzEvLL8pNLMnMzwNxA4ryk1OLiz1dgBxDI2MToJBLYkkikIfQW1oE1lleXq6XlJmXrpecn6ukqQkA9RzT32IAAAA=)**\]**
 
