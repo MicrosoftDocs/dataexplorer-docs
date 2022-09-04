@@ -35,7 +35,7 @@ If a key appears in more than one row, an arbitrary value, out of the possible v
 
 This example shows a packed JSON property-bag.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA8tJLVEIUbBVSEksAcKknFSNgqL8AqvikqLMvHQdhbLEnNJUKE+Tlyual0sBCJRAagwMlXQUlIAK4hOVdJDFjWDiSajixjDxZJB4rDUvVwgvV41CakVJal6KQgHQEQWJydlg+6EWa4Lki0tzcxOLMqtSFVIyk0tscxOzU+OTEtM1CjQBmc4RQ7wAAAA=)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEIUbBVSEksAcKknFSNgqL8AqvikqLMvHQdhbLEnNJUKE+TK5pLAQiUQCoMDJV0FJSA0vGJSjpIwkYw4SQUYWOYcDJQONaaK4SrRiG1oiQ1L0WhAGh7QWJyNthiqI2aQOni0tzcxKLMqlSFlMzkEtvcxOzU+KTEdI0CTQBPpqLVtAAAAA==)**\]**
 
 ```kusto
 let T = datatable(prop:string, value:string)
@@ -47,7 +47,6 @@ let T = datatable(prop:string, value:string)
 T
 | extend p = pack(prop, value)
 | summarize dict=make_bag(p)
-
 ```
 
 **Results**
@@ -58,7 +57,7 @@ T
 
 Use the [bag_unpack()](bag-unpackplugin.md) plugin for transforming the bag keys in the make_bag() output into columns.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA1WOzwrDIAzG74LvEDxV6GF/bht9i97GkNiGUqpOrI4x9vBTaWFLLsnv+8gXQxF66GDEmFsbanx4+Msaw+ymFp5oEm2b5OzGGeQSxXM4ihZENigU7S8/7Vz/8/POh8LvV856zj5Ar0huBJ+f8DgsNX8LlkVfk7UY5jeBxqmzuJDKQ+OrSMWHsWoquXogj/ILUPGHNdcAAAA=)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WNvQrDMAyEdz+F8BSDh/5sLXmLbKUYOREhxHZNYpdS+vCVTQKttJy+O3GOEnTQwoCJ1zpq4vKIlzUtUxg1PNFl2i4lbgJ4ZEkcjlKDZNug1D/4tGP7h8877hnfr6ITH6BXojBA5PaI/VyLt0bF9pq9x2V6E1gcW48zGRZNLB6VFKZqmRzqO0v1BTGl9vXOAAAA)**\]**
 
 ```kusto
 let T = datatable(prop:string, value:string)
@@ -70,8 +69,7 @@ let T = datatable(prop:string, value:string)
 T
 | extend p = pack(prop, value)
 | summarize bag=make_bag(p)
-| evaluate bag_unpack(bag) 
-
+| evaluate bag_unpack(bag)
 ```
 
 **Results**

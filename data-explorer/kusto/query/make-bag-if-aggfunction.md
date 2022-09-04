@@ -36,7 +36,7 @@ If a key appears in more than one row, an arbitrary value, out of the possible v
 
 This example shows a packed JSON property-bag.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA1WOywqDQAxF9wPzD8GVgos+dhb/wp0UyWiUwVGHMZZS+vGNRYtNNvdyuHAcMRSQQ4MsbxzFPkw+mznYsUvhgW6hX/OBGlsjU2amySValVqBXLRuTucohUgGFUrgsFB6pJedGgktuvkfX3dcb2Ot7jetCq3eQE+msQEvmh7r/mu4qSUrn5dhwGBfBGLH+YA9VQa7yraxP0gnH3QnzZ3sAAAA)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOTQuDMAyG7/0VwZNCD/u4OfwX3saQtEYpVi1tHGPsxy8bOlxyecOTFx5PDDVU0CLLGk95iHMoE0c39Rru6Bf6XSFS6ywylWaefaGuCmSyT+NwzDRk8t6gBI4L6R08bdBI6NCnP3reqF2r6nZRtXoBPZimFoL4BbTDV211KgSnZRwxuieBWHE14kCNwb5xXR52ssUbsXCntuQAAAA=)**\]**
 
 ```kusto
 let T = datatable(prop:string, value:string, predicate:bool)
@@ -48,7 +48,6 @@ let T = datatable(prop:string, value:string, predicate:bool)
 T
 | extend p = pack(prop, value)
 | summarize dict=make_bag_if(p, predicate)
-
 ```
 
 **Results**
@@ -59,7 +58,7 @@ T
 
 Use [bag_unpack()](bag-unpackplugin.md) plugin for transforming the bag keys in the make_bag_if() output into columns.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA1WOzQqDMBCE74G8w+JJwUN/bhbfwlspYaOriFFDTEopffhuRIvdvczw7SxjyEMFJTToebWh1LrZFot3/dTl8EQT6Oeso6av0VOh59lkUtylAJ4kZk7nJIeEAwpZeBcoP9LLTjWLFs3yj687rrewFI+bFJUUH6CXp6kByzUt1sPacKuWRb6EcUTXvwk0duWIAykWqm9Te+i8nlJMsYmXKkzrO5bZF6rqf10HAQAA)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOywqDMBBF9/mKwZWCiz52Fv/CXSlhoqMEo4Y8Sin9+E5Ei002J5x7wzUUoIEaOgx8laHcusVWPjg9DyU80UT6vayjTrcYqFLLYgpxF8AnS43TOSsh47hEhuAilQd52aVi6NH4P3vdbbtVxeMmGvEBegWaO7C8z2I7rtO2TQVrH6cJnX4TKBzqCUeSDFL3uT1sTUlKHeYUlHFeP2MsvmCOilb+AAAA)**\]**
 
 ```kusto
 let T = datatable(prop:string, value:string, predicate:bool)
@@ -72,7 +71,6 @@ T
 | extend p = pack(prop, value)
 | summarize bag=make_bag_if(p, predicate)
 | evaluate bag_unpack(bag)
-
 ```
 
 **Results**

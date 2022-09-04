@@ -29,7 +29,7 @@ Returns a value that is aggregated using the binary `XOR` operation over records
 
 This example produces 'cafe-food' using binary `XOR` operations:
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA0tJLAHCpJxUjbzSXKuc/Lx0TV6uaF4uBQWDChMTEwMQ1oFwDV0hEMq1NHB0cnI0sIRyDQwMnAwNTB2B3FherhqF4tLc3MSizKpUhaLU4tKcEgVbhZL80oKC1CKNkvyM1AqNpMy8xKLK+MScnPiK/CKQ9ZqamgCFqvREjwAAAA==)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbzSXKuc/Lx0Ta5oLgUFgwoTExMDENYB8wxdIRDCszRwdHJyNLCE8AwMDJwMDUwddbhiuWoUiktzcxOLMqtSFYpSi0tzShRsFUrySwsKUos0SvIzUis0kjLzEosq4xNzcuIr8otA9mpqagIAuXol8IgAAAA=)**\]**
 
 ```kusto
 datatable(num:long)

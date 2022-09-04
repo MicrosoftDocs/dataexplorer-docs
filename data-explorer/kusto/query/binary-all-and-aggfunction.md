@@ -29,7 +29,7 @@ Returns an aggregated value using the binary `AND` operation over records for ea
 
 This example produces 'cafe-food' using binary `AND` operations:
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA0tJLAHCpJxUjbzSXKuc/Lx0TV6uaF4uBQWDCjco0FFA4hsYuOlAuM4QWRco183RzRWsmpcrlperRqG4NDc3sSizKlWhKLW4NKdEwVahJL+0oCC1SKMkPyO1QiMpMy+xqDI+MScnPjEvBWS/pqYmAPUkYL2QAAAA)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbzSXKuc/Lx0Ta5oLgUFgwo3KNBRQHANDNx0wDxniJwLhOfm6OYKVsoVy1WjUFyam5tYlFmVqlCUWlyaU6Jgq1CSX1pQkFqkUZKfkVqhkZSZl1hUGZ+YkxOfmJcCslhTUxMAwZHTS4kAAAA=)**\]**
 
 ```kusto
 datatable(num:long)

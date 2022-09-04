@@ -29,7 +29,7 @@ Returns an aggregated value using the binary `OR` operation over records for eac
 
 This example produces 'cafe-food' using binary `OR` operations:
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA0tJLAHCpJxUjbzSXKuc/Lx0TV6uaF4uBQWDCgsQMDCw0IFwTYwMwADKNTAwNzNH5oKBqY4CL1csL1eNQnFpbm5iUWZVqkJRanFpTomCrUJJfmlBQWqRRkl+RmqFRlJmXmJRZXxiTk58fhHIek1NTQCJJ47sjwAAAA==)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbzSXKuc/Lx0Ta5oLgUFgwoLEDAwsNAB80yMDMAAwjMwMDczR+KBgamOAlcsV41CcWlubmJRZlWqQlFqcWlOiYKtQkl+aUFBapFGSX5GaoVGUmZeYlFlfGJOTnx+EcheTU1NAEGLHNSIAAAA)**\]**
 
 ```kusto
 datatable(num:long)

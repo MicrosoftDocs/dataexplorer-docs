@@ -41,7 +41,7 @@ If the input to the `summarize` operator is sorted, the order of elements in the
 
 The simplest example is to make a list out of a single column:
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA0XPzwrCMAwG8Huh7xB2crCD4v+JJx9DROoWZrFNZ5uBig9v51ZNLuGX7/IZZAhX1WKAPdSK414MwoSUxRICe01NAUHXeHAdcQmaOJfiKAXEyeJfUWMwK2BejBbunfK9LJJ4rDjFftgisWocRVsmu+JjpNWf2hRbJ3MVu4E2icjRmNomqrEaaTaV4rSTYigqxRtCZ63y+oVgn0YHjuWtuuG5v7/d8w9Sjr2JGQEAAA==)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz3PzwrCMAwG8HufIuzkYAfF/xNPPoaI1C1sxTadbQYqPrydy0wu4Zfv8llkiK3uMMIRas1pbxZhRtphCZGDoaaAaGo8+Z64BEOcq7OCNFn6amosZgUsi5Hio9dhgJVAwIqn0GQdEuvGU6K1UItPkc1fuim0FfLVJDsR8iSyF6mxElnM1eWgxnLqA7F3TgfzRnAvayKnvk7f8Trcv7r5F8QGBpEMAQAA)**\]**
 
 ```kusto
 let shapes = datatable (name: string, sideCount: int)
@@ -70,7 +70,7 @@ shapes
 
 In the following query, you group using the `by` clause:
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA0XQy2rDMBAF0L1A/3AJFBrwIo82DwevSr6gy1KKYg+OiDVyrHGpSz8+SmMlo81wdDd3GhKEo2kpoEBlJL5DQ3hm4yhHkM5ynSHYit58z5LDsky1+tAKcSbx33Dd0CTDMhstnHvTXeUlSUelpNgdW2Ixtedor8mO9DPS6kFtiq2T+VL8jTaJ2POY2iaqqBxpPtPqc6fVrahWfwi9c6azvwQ3NDZILO/Mib6u+3/3KQ4DbNh/E7+n8jF0PwSesEBRYHYB/AuXlkEBAAA=)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz3Py26DMBCF4b2f4ggpUiOxIEnTCxWrKE+QZRVVDoyIVTwmeKhK1YePCQZ7Y30+m78hgb/qljwKVFrCvTSEJ9aWcnjpDNcpvKno4HqWHIZlrT4VwknCr+a6oSTFLp3I33rdjfAcoaNS5tFsLbHo2nGgfaQr/UZ5WaSdR6+RXClukrco7Dhu3qNUVEbZZOr8oaY49Q/fW6s780ewQ2O8hF6rv+lrfD9y17gMMP74Q3yae8NoaccKWxQFsjvUEHjHNAEAAA==)**\]**
 
 ```kusto
 let shapes = datatable (name: string, sideCount: int)
@@ -100,7 +100,7 @@ shapes
 
 You can [pack](./packfunction.md) a dynamic object in a column before making a list out of it, as seen in the following query:
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA03PTWrDMBAF4L1AdxgMARu8SPrfFK9CT5BlKUWxBkfEGjnWOCSlh++IWGmlhcSnN4LXI0PcmwEjNGANy971CCUZj2uIPDrqaojO4iZMxGtwxJVWH1qBrELeDXU9FjXc17PF42TGJA9ZRmw5x244ILHpAok9ZtvjeaanPxpy7DlbaDlc6SUTBZpTr5kstjOtllp9vml1LarVD+CZkSxYKT2Y9lAWqa8k01FLhdy3+Ne9SoNx8t6M7hvBX3oXWT7w5oBf6V7aCnYXcPH9hLTNY5K4fQELuIOmgeUvfjeowHcBAAA=)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03PTWrDMBAF4L1OMRgKNniR/qcpXoWeIMtSysQaHBFr5FjjkJQevmMshVoLi09vhF5PAvGAA0VowKLo2vcEJaOnDUQZHXc1RGdpGyaWDTiWynwa0K/QU+Sup6KGx3qheJpwnOEpwUit5FC2gViwC6z0nOhAlyQvNxly6DVRaCUssk7CgVPmLYmlNsn9yny9m6Wc+QW6CLEFqz0HbI9lMVfU2Pyr9eG5YvGvbqVzcfIeR/dD4K+9i6LzHo/0Pe9LW8H+Ci5+nIl3eUoTtxvgDh6gaWD1B75NBjppAQAA)**\]**
 
 ```kusto
 let shapes = datatable (name: string, sideCount: int)
