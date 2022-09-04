@@ -1,5 +1,5 @@
 ---
-title: Start for free using Azure Data Explorer.
+title: Start for free using Azure Data Explorer
 description: This article shows you how to get started with a free Azure Data Explorer cluster.
 ms.reviewer: avnera
 ms.topic: how-to
