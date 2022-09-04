@@ -23,7 +23,7 @@ For different types or sources of data, see [Ingest data from a container/ADLS i
 
 1. From the **Quick actions** section, select **Ingest data**. Alternatively, from the **All actions** section, select **Ingest data** and then **Ingest**.
 
-   :::image type="content" source="media/one-click-ingestion-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web U I to select the ingestion wizard for a table.":::
+   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI to select the ingestion wizard for a table.":::
 
 ## Select an ingestion type
 
@@ -45,7 +45,7 @@ For different types or sources of data, see [Ingest data from a container/ADLS i
    1. Select **Browse** to locate up to 10 files, or drag the files into the field. The schema-defining file can be chosen using the blue star.
    1. Select **Next: Schema**
 
-      :::image type="content" source="media/one-click-ingestion-existing-table/from-file.png" alt-text="Screenshot to ingest from file with the ingestion wizard.":::
+      :::image type="content" source="media/ingestion-wizard-existing-table/from-file.png" alt-text="Screenshot to ingest from file with the ingestion wizard.":::
 
 ## Edit the schema
 
@@ -55,7 +55,7 @@ The **Schema** tab opens.
 
 * When you select  **JSON**, you must also select **Nested levels**, from 1 to 100. The levels determine the table column data division.
 
-    :::image type="content" source="media/one-click-ingestion-existing-table/json-levels.png" alt-text="Screenshot completing ingestion information for ingesting a JSON file.":::
+    :::image type="content" source="media/ingestion-wizard-existing-table/json-levels.png" alt-text="Screenshot completing ingestion information for ingesting a JSON file.":::
 
     > [!TIP]
     > If you want to use **CSV** files, see [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
@@ -63,7 +63,7 @@ The **Schema** tab opens.
 * For tabular formats, you can select **Keep current table schema**.
 Tabular data doesn't necessarily include the column names that are used to map source data to the existing columns. When this option is checked, mapping is done by-order, and the table schema will remain the same. If this option is unchecked, new columns will be created for incoming data, regardless of data structure.
 
-    :::image type="content" source="media/one-click-ingestion-existing-table/keep-table-schema.png" alt-text="Screenshot showing the 'keep current table schema' option checked when using tabular data format.":::
+    :::image type="content" source="media/ingestion-wizard-existing-table/keep-table-schema.png" alt-text="Screenshot showing the 'keep current table schema' option checked when using tabular data format.":::
 
 ### Add nested JSON data
 
@@ -71,20 +71,20 @@ To add columns from JSON levels that are different than the main **Nested levels
 
 1. Click on the arrow next to any column name, and select **New column**.
 
-    :::image type="content" source="media/one-click-ingestion-existing-table/new-column.png" alt-text="Screenshot of options in the schema tab to add a new column using the ingestion wizard for Azure Data Explorer.":::
+    :::image type="content" source="media/ingestion-wizard-existing-table/new-column.png" alt-text="Screenshot of options in the schema tab to add a new column using the ingestion wizard for Azure Data Explorer.":::
 
 1. Enter a new **Column Name** and select the **Column Type** from the dropdown menu.
 1. Under **Source**, select **Create new**.
 
-    :::image type="content" source="media/one-click-ingestion-existing-table/create-new-source.png" alt-text="Screenshot to create a new source for adding nested JSON data in the ingestion process for Azure Data Explorer.":::
+    :::image type="content" source="media/ingestion-wizard-existing-table/create-new-source.png" alt-text="Screenshot to create a new source for adding nested JSON data in the ingestion process for Azure Data Explorer.":::
 
 1. Enter the new source for this column and select **OK**. This source can come from any JSON level.
 
-    :::image type="content" source="media/one-click-ingestion-existing-table/name-new-source.png" alt-text="Screenshot showing a window to name the new data source for the added column.":::
+    :::image type="content" source="media/ingestion-wizard-existing-table/name-new-source.png" alt-text="Screenshot showing a window to name the new data source for the added column.":::
 
 1. Select **Create**. Your new column will be added at the end of the table.
 
-    :::image type="content" source="media/one-click-ingestion-existing-table/create-new-column.png" alt-text="Screenshot to create a new column using the ingestion wizard in Azure Data Explorer.":::
+    :::image type="content" source="media/ingestion-wizard-existing-table/create-new-column.png" alt-text="Screenshot to create a new column using the ingestion wizard in Azure Data Explorer.":::
 
 ### Edit the table
 
@@ -101,13 +101,13 @@ To add columns from JSON levels that are different than the main **Nested levels
 
 Select **Next: Summary** to begin data ingestion.
 
-:::image type="content" source="media/one-click-ingestion-existing-table/start-ingestion.png" alt-text="Screenshot of ingestion wizard fields completed to start ingestion.":::
+:::image type="content" source="media/ingestion-wizard-existing-table/start-ingestion.png" alt-text="Screenshot of ingestion wizard fields completed to start ingestion.":::
 
 ## Complete data ingestion
 
 In the **Data ingestion completed** window, all three steps will be marked with green check marks when data ingestion finishes successfully.
 
-:::image type="content" source="media/one-click-ingestion-existing-table/one-click-data-ingestion-complete.png" alt-text="Screenshot of ingestion wizard summary when ingestion is completed.":::
+:::image type="content" source="media/ingestion-wizard-existing-table/one-click-data-ingestion-complete.png" alt-text="Screenshot of ingestion wizard summary when ingestion is completed.":::
 
 > [!IMPORTANT]
 > To set up continuous ingestion from a container, see [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](one-click-ingestion-new-table.md#create-continuous-ingestion)

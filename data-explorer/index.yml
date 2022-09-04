@@ -78,7 +78,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Ingestion wizard
-            url: ingest-data-one-click.md
+            url: ingest-data-wizard.md
           - text: Streaming ingestion
             url: ingest-data-streaming.md
           - text: Python
