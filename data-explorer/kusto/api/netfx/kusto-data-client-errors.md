@@ -81,7 +81,6 @@ All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a
 | Exception name | Reason |
 |--|--|
 | `EntityNameIsNotValidException` | Indicates an entity name isn't valid. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_EntityNameIsNotValid </br> **Permanance**: True|
-|--|--|
 | `ClusterSuspendedException` | A request with `request_execute_only_if_running` flag is denied because the service is in a suspended state. </br> **Failure code**: 412 </br> **Failure subcode**: PreconditionFailed </br> **Permanence**: True |
 | `KustoBadRequestException` | The Kusto service was sent a bad request. For a list of errors, see [Bad request exceptions](#bad-request-exceptions). </br> **Failure code**: 400 </br> **Failure subcode**: General_BadRequest </br> **Permanance**: True |
 | `KustoConflictException` | The Kusto service was sent a request, which can't be performed due to service state. </br> **Failure code**: 409 </br> **Failure subcode**: Conflict </br> **Permanance**: True|
