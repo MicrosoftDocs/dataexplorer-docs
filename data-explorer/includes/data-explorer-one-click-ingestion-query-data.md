@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 07/11/2022
+ms.date: 09/04/2022
 ---
 ## Explore quick queries and tools
 

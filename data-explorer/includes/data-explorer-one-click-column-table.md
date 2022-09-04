@@ -1,8 +1,9 @@
 ---
 ms.topic: include
-ms.date: 06/11/2020
+ms.date: 09/04/2022
 ---
 The changes you can make in a table depend on the following parameters:
+
 * **Table** type is new or existing
 * **Mapping** type is new or existing
 
