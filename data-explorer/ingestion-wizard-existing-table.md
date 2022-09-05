@@ -31,7 +31,7 @@ For different types or sources of data, see [Ingest data from a container/ADLS i
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus.
 
-    [!INCLUDE [one-click-cluster](includes/one-click-cluster.md)]
+    [!INCLUDE [ingestion-wizard-cluster](includes/ingestion-wizard-cluster.md)]
 
 1. If the **Table** field isn't automatically filled, select an existing table name from the drop-down menu.
 
