@@ -3,7 +3,7 @@ title: 'Create an Azure Data Explorer cluster and database using PowerShell'
 description: Learn how to create an Azure Data Explorer cluster and database by using PowerShell
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 11/01/2021
+ms.date: 09/05/2022
 ---
 
 
@@ -24,7 +24,7 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 
 [!INCLUDE [updated-for-az](includes/updated-for-az.md)]
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 
 [!INCLUDE [cloud-shell-try-it.md](includes/cloud-shell-try-it.md)]
 
