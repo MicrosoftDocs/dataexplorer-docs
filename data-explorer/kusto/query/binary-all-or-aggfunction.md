@@ -3,7 +3,7 @@ title: binary_all_or() (aggregation function) - Azure Data Explorer
 description: This article describes binary_all_or() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/24/2022
+ms.date: 09/05/2022
 ---
 # binary_all_or() (aggregation function)
 
@@ -25,9 +25,9 @@ Accumulates values using the binary `OR` operation for each summarization group,
 
 Returns an aggregated value using the binary `OR` operation over records for each summarization group, or in total if a group is not specified.
 
-## Examples
+## Example
 
-This example produces 'cafe-food' using binary `OR` operations:
+The following example produces 'cafe-food' using binary `OR` operations:
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbzSXKuc/Lx0Ta5oLgUFgwoLEDAwsNAB80yMDMAAwjMwMDczR+KBgamOAlcsV41CcWlubmJRZlWqQlFqcWlOiYKtQkl+aUFBapFGSX5GaoVGUmZeYlFlfGJOTnx+EcheTU1NAEGLHNSIAAAA)**\]**
 

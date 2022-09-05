@@ -7,7 +7,7 @@ ms.date: 08/24/2022
 ---
 # make_bag_if() (aggregation function)
 
-Creates a `dynamic` JSON property-bag (dictionary) of all the values of *'Expr'* in the group, for which *Predicate* evaluates to `true`.
+Creates a `dynamic` JSON object (property-bag) of all the values of *'Expr'* in the group, for which *Predicate* evaluates to `true`.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
@@ -32,9 +32,9 @@ If a key appears in more than one row, an arbitrary value, out of the possible v
 > [!NOTE]
 > This function without the predicate is similar to [`make_bag`](./make-bag-aggfunction.md).
 
-## Examples
+## Example
 
-This example shows a packed JSON property-bag.
+The following example shows a packed JSON property-bag.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOTQuDMAyG7/0VwZNCD/u4OfwX3saQtEYpVi1tHGPsxy8bOlxyecOTFx5PDDVU0CLLGk95iHMoE0c39Rru6Bf6XSFS6ywylWaefaGuCmSyT+NwzDRk8t6gBI4L6R08bdBI6NCnP3reqF2r6nZRtXoBPZimFoL4BbTDV211KgSnZRwxuieBWHE14kCNwb5xXR52ssUbsXCntuQAAAA=)**\]**
 

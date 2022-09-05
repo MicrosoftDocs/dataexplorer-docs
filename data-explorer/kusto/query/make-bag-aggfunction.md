@@ -7,7 +7,7 @@ ms.date: 08/24/2022
 ---
 # make_bag() (aggregation function)
 
-Creates a `dynamic` JSON property-bag (dictionary) of all the values of *`Expr`* in the group.
+Creates a `dynamic` JSON object (property bag) of all the values of *`Expr`* in the group.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
@@ -31,9 +31,9 @@ Returns a `dynamic` JSON property-bag (dictionary) of all the values of *`Expr`*
 Non-dictionary values will be skipped.
 If a key appears in more than one row, an arbitrary value, out of the possible values for this key, will be selected.
 
-## Examples
+## Example
 
-This example shows a packed JSON property-bag.
+The following example shows a packed JSON property-bag.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEIUbBVSEksAcKknFSNgqL8AqvikqLMvHQdhbLEnNJUKE+TK5pLAQiUQCoMDJV0FJSA0vGJSjpIwkYw4SQUYWOYcDJQONaaK4SrRiG1oiQ1L0WhAGh7QWJyNthiqI2aQOni0tzcxKLMqlSFlMzkEtvcxOzU+KTEdI0CTQBPpqLVtAAAAA==)**\]**
 

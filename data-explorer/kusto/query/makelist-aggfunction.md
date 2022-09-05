@@ -8,7 +8,7 @@ adobe-target: true
 ---
 # make_list() (aggregation function)
 
-Creates a `dynamic` JSON array of all the values of *Expr* in the group.
+Creates a `dynamic` JSON object (array) of all the values of *Expr* in the group.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
@@ -39,7 +39,7 @@ If the input to the `summarize` operator is sorted, the order of elements in the
 
 ### One column
 
-The simplest example is to make a list out of a single column:
+The following example makes a list out of a single column:
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz3PzwrCMAwG8HufIuzkYAfF/xNPPoaI1C1sxTadbQYqPrydy0wu4Zfv8llkiK3uMMIRas1pbxZhRtphCZGDoaaAaGo8+Z64BEOcq7OCNFn6amosZgUsi5Hio9dhgJVAwIqn0GQdEuvGU6K1UItPkc1fuim0FfLVJDsR8iSyF6mxElnM1eWgxnLqA7F3TgfzRnAvayKnvk7f8Trcv7r5F8QGBpEMAQAA)**\]**
 
@@ -68,7 +68,7 @@ shapes
 
 ### Using the 'by' clause
 
-In the following query, you group using the `by` clause:
+The following example runs a query using the `by` clause:
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz3Py26DMBCF4b2f4ggpUiOxIEnTCxWrKE+QZRVVDoyIVTwmeKhK1YePCQZ7Y30+m78hgb/qljwKVFrCvTSEJ9aWcnjpDNcpvKno4HqWHIZlrT4VwknCr+a6oSTFLp3I33rdjfAcoaNS5tFsLbHo2nGgfaQr/UZ5WaSdR6+RXClukrco7Dhu3qNUVEbZZOr8oaY49Q/fW6s780ewQ2O8hF6rv+lrfD9y17gMMP74Q3yae8NoaccKWxQFsjvUEHjHNAEAAA==)**\]**
 
@@ -98,7 +98,7 @@ shapes
 
 ### Packing a dynamic object
 
-You can [pack](./packfunction.md) a dynamic object in a column before making a list out of it, as seen in the following query:
+The following examples shows how to [pack](./packfunction.md) a dynamic object in a column before making it a list.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03PTWrDMBAF4L1OMRgKNniR/qcpXoWeIMtSysQaHBFr5FjjkJQevmMshVoLi09vhF5PAvGAA0VowKLo2vcEJaOnDUQZHXc1RGdpGyaWDTiWynwa0K/QU+Sup6KGx3qheJpwnOEpwUit5FC2gViwC6z0nOhAlyQvNxly6DVRaCUssk7CgVPmLYmlNsn9yny9m6Wc+QW6CLEFqz0HbI9lMVfU2Pyr9eG5YvGvbqVzcfIeR/dD4K+9i6LzHo/0Pe9LW8H+Ci5+nIl3eUoTtxvgDh6gaWD1B75NBjppAQAA)**\]**
 

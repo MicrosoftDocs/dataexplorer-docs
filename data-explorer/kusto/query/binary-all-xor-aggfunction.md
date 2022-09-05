@@ -25,9 +25,9 @@ Accumulates values using the binary `XOR` operation for each summarization group
 
 Returns a value that is aggregated using the binary `XOR` operation over records for each summarization group, or in total if a group is not specified.
 
-## Examples
+## Example
 
-This example produces 'cafe-food' using binary `XOR` operations:
+The following example produces 'cafe-food' using binary `XOR` operations:
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbzSXKuc/Lx0Ta5oLgUFgwoTExMDENYB8wxdIRDCszRwdHJyNLCE8AwMDJwMDUwddbhiuWoUiktzcxOLMqtSFYpSi0tzShRsFUrySwsKUos0SvIzUis0kjLzEosq4xNzcuIr8otA9mpqagIAuXol8IgAAAA=)**\]**
 
