@@ -50,7 +50,7 @@ print bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url"
 
 **Example 2**
 
-This example shows a property bag based the following two tables using a common source number
+This example runs a query based on a common souce number and returns a new table with a column for the source table name and a column for the property bag.
 
 SmsMessages
 
@@ -68,6 +68,8 @@ MmsMessages
 |555-555-1234 |555-555-1212 | 250 | jpeg | Pic2 |
 |555-555-1234 |555-555-1213 | 300 | png | Pic3 |
 
+The following example will create ad-hoc tables and then run the query on the tables.
+
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6VSQWuDMBS+C/0Pj5wUHFStO2x4GD23FPQ2xoj60Kw1lSTSbezHL9F202C7wwyavMf7fPm+7x1QQdrIDUpJK5SQQEmVXvkBwU2PnShw2zU5igepBOOVDxkVFSorua6pkOtjx9U55cHzwiFxHN+ZNwijFfFhFAehiVf3+nu7LurjJfEnZQPchkUh0X97eVw4B01r839aT0rRom6Qq5R94kw6+2jn0lva4BUh7JsPBMPl0mxvLVZm37EisBjPCxjGNi78C9f3i4Z+Lb/AIjIIN56FhQP6+QJ8V8hL2NFij2WS0+q11UeX/JpOxhPg/QA7zo4cTkzVspc8yYwBRhzYM14mjHMU52p34teQu9V8ag2xvdKspi4R27ZJhbkTsR30vAuRU40CYTw3kCTW/H0DvNexiEoDAAA=)**\]**
 
 ```kusto
@@ -82,7 +84,7 @@ let MmsMessages = datatable (SourceNumber:string, TargetNumber:string, Attachmen
 "555-555-1234", "555-555-1213", "300", "png", "Pic3"
 ];
 SmsMessages 
-    | extend Packed=bag_pack("CharsCount", CharsCount) 
+    | extend Packed=bag_pack("CharsCount", CharsCount)
     | union withsource=TableName kind=inner 
     ( MmsMessages 
       | extend Packed=bag_pack("AttachmentSize", AttachmentSize, "AttachmentType", AttachmentType, "AttachmentName", AttachmentName))
