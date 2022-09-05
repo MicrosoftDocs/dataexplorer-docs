@@ -3,7 +3,7 @@ title: hll() (aggregation function) - Azure Data Explorer
 description: This article describes hll() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/14/2022
+ms.date: 09/05/2022
 ---
 # hll() (aggregation function)
 
@@ -33,9 +33,9 @@ Returns the intermediate results of distinct count of *`Expr`* across the group.
 >- You may use the aggregation function [`hll_merge`](hll-merge-aggfunction.md) to merge more than one `hll` intermediate results (it works on `hll` output only).
 >- You may use the function [`dcount_hll`](dcount-hllfunction.md), which will calculate the `dcount` from `hll` / `hll_merge` aggregation functions.
 
-## Examples
+## Example
 
-This example returns the hll results of property damage based on the start time.
+The following example returns the hll results of property damage based on the start time.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVcjIydFwScxNTE8NKMovSC0qqdRUSKpUSMrM0wguSSwqCcnMTdUxNMjVBACCSG7CQQAAAA==)**\]**
 

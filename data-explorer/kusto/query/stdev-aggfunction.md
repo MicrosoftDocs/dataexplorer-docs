@@ -3,7 +3,7 @@ title: stdev() (aggregation function) - Azure Data Explorer
 description: This article describes stdev() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 09/05/2022
 ---
 # stdev() (aggregation function)
 
@@ -31,9 +31,9 @@ For a large data set that is representative of the population, use [stdevp() (ag
 
 Returns the standard deviation value of *Expr* across the group.
 
-## Examples
+## Example
 
-This example shows the standard deviation for the group.
+The following example shows the standard deviation for the group.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzBVKC5JLVAw5KpRKC7NzU0syqxKVchNzE6Nz8ksLtGo0NQBKkhJLQOyAG3qbWE9AAAA)**\]**
 

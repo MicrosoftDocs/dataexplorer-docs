@@ -3,7 +3,7 @@ title: hll_merge() (aggregation function) - Azure Data Explorer
 description: This article describes hll_merge() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/25/2022
+ms.date: 09/05/2022
 ---
 # hll_merge() (aggregation function)
 
@@ -30,9 +30,9 @@ The function returns the merged `hll` values of `*Expr*` across the group.
 > [!TIP]
 > Use the function [dcount_hll](dcount-hllfunction.md) to calculate the `dcount` from `hll` / `hll-merge` aggregation functions.
 
-## Examples
+## Example
 
-This example shows
+The following example shows merged `HLL` results into a single `HLL` value.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVcjIyQlKLVawBTE0XBJzE9NTA4ryC1KLSio1FZIqFZIy8zSCSxKLSkIyc1N1DA1yNdG1+6YWpaemQEyIzwVxNCCGagIAlijQ1HQAAAA=)**\]**
 

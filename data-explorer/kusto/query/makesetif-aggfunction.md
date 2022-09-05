@@ -3,11 +3,11 @@ title: make_set_if() (aggregation function) - Azure Data Explorer
 description: This article describes make_set_if() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/25/2022
+ms.date: 09/05/2022
 ---
 # make_set_if() (aggregation function)
 
-Creates a `dynamic` JSON array of the set of distinct values that *Expr* takes in the group, for which *Predicate* evaluates to `true`.
+Creates a `dynamic` JSON object (array) of the set of distinct values that *Expr* takes in the group, for which *Predicate* evaluates to `true`.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
@@ -25,7 +25,7 @@ Creates a `dynamic` JSON array of the set of distinct values that *Expr* takes i
 
 ## Returns
 
-Returns a `dynamic` (JSON) array of the set of distinct values that *Expr* takes in the group, for which *Predicate* evaluates to `true`.
+Returns a `dynamic` JSON object (array) of the set of distinct values that *Expr* takes in the group, for which *Predicate* evaluates to `true`.
 The array's sort order is undefined.
 
 > [!TIP]
@@ -35,9 +35,9 @@ The array's sort order is undefined.
 
 [`make_set`](./makeset-aggfunction.md) function, which does the same, without predicate expression.
 
-## Examples
+## Example
 
-This example shows a list of names with more than 4 letters.
+The following example shows a list of names with more than 4 letters.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXNPQvCMBSF4T2/4tDJQBZFUSt1FZxEuomEFG/bYD4gSQfFH++l5U7PO9zjqKBFg5cpfJ2jVTCe6lySDYPi/NGx151NZaxdDIMUDwGgusYxVApHNetmJsdaHxZeKKaBOGx2S7jzs8jei+dJtOKHPHlvkv0SvHmTzlS07edpBd52FGZInLGVf+88QMOkAAAA)**\]**
 
