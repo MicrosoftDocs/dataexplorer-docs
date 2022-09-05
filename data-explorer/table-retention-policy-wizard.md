@@ -5,13 +5,13 @@ ms.reviewer: tzgitlin
 ms.topic: how-to
 ms.date: 07/13/2022
 ---
-# Create a table's retention and cache policies with one-click
+# Create a table's retention and cache policies with the table retention policy wizard
 
 The [retention policy](kusto/management/retentionpolicy.md) controls the mechanism that automatically removes data from tables. It's used to remove data whose relevance is age-based.
 
 The [cache policy](kusto/management/cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority. The cache policy defines how much data will be available in a local SSD or RAM. Data is queried faster when it's in a local SSD, particularly for queries that scan large amounts of data. However, a local SSD can cost much more.
 
-In this article, you can define and assign a retention policy and a cache policy for a table using the one-click experience.
+In this article, you can define and assign a retention policy and a cache policy for a table using the table retention policy wizard.
 
 ## Prerequisites
 
@@ -20,9 +20,9 @@ In this article, you can define and assign a retention policy and a cache policy
 
 ## Define and assign a table retention policy
 
-1. In the left menu of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) select the **Data** tab, [or use the one-click link](https://dataexplorer.azure.com/oneclick).
+1. In the left menu of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) select the **Data** tab, [or use the link](https://dataexplorer.azure.com/oneclick).
 
-    :::image type="content" source="media/one-click-table-policies/one-click-retention-policy-start.png" alt-text="Select one-click table retention policy in the azure Data Explorer web U I.":::
+    :::image type="content" source="media/one-click-table-policies/one-click-retention-policy-start.png" alt-text="Screenshot of Data management screen showing the table retention policy wizard in the Azure Data Explorer web UI.":::
 
 1. In the **Table retention policy** tile, select **Update**.
 
@@ -60,7 +60,7 @@ The **Table retention policy** window opens with the **Policy update** tab selec
 
 In the **Summary** tab, all steps will be marked with green check marks when the update finishes successfully. The tiles below these steps give you options to explore your data with **Quick queries**, or undo changes made using **Tools**.
 
-:::image type="content" source="media/one-click-table-policies/one-click-table-retention-policy-finished.png" alt-text="Screenshot of final screen in the update table retention policy wizard for Azure Data Explorer with the one-click experience.":::
+:::image type="content" source="media/one-click-table-policies/one-click-table-retention-policy-finished.png" alt-text="Screenshot of final screen in the update table retention policy wizard for Azure Data Explorer with the table retention policy wizard.":::
 
 ## Next steps
 
