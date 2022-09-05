@@ -3,7 +3,7 @@ title: Ingest data into Azure Data Explorer using the ingestion wizard
 description: Overview of ingesting (loading) data into Azure Data Explorer simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 07/31/2022
+ms.date: 09/05/2022
 ---
 
 # What is the ingestion wizard?
@@ -24,7 +24,7 @@ The ingestion wizard is useful when ingesting data for the first time, or when y
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
