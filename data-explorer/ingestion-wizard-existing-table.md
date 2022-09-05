@@ -3,7 +3,7 @@ title: Ingest JSON data from a local file to an existing table in Azure Data Exp
 description: Ingesting (loading) data into an existing Azure Data Explorer table simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 08/09/2022
+ms.date: 09/05/2022
 ---
 # Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer
 
@@ -27,7 +27,7 @@ For different types or sources of data, see [Ingest data from a container/ADLS i
 
 ## Select an ingestion type
 
-1. In the **Ingest new data** window, the **Destination** tab is selected.
+1. In the **Ingest data** window, the **Destination** tab is selected.
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus.
 
