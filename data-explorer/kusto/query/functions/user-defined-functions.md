@@ -3,7 +3,7 @@ title: User-defined functions - Azure Data Explorer
 description: This article describes user-defined functions (scalar and views) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/17/2021
+ms.date: 09/06/2022
 ---
 # User-defined functions
 
@@ -17,6 +17,8 @@ A user-defined function belongs to one of two categories:
 The function's input arguments and output determine whether it's scalar or tabular, which then establishes how it might be used.
 
  See [Stored functions](../schema-entities/stored-functions.md) to create and manage entities that allow the reuse of Kusto queries or query parts.
+
+To optimize multiple uses of the user-defined functions within a single query, see [Named expressions](../../named-expressions.md).
 
 ## Scalar function
 
