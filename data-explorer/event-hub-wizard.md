@@ -3,7 +3,7 @@ title: Ingest data from Azure Event Hubs into Azure Data Explorer using the inge
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Azure Event Hubs using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 07/31/2022
+ms.date: 09/06/2022
 ---
 # Use the ingestion wizard to create an Azure Event Hubs data connection for Azure Data Explorer
 
@@ -28,7 +28,7 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 > [!NOTE]
 > The cluster and event hub should be associated with the same tenants, for different tenants please use [SDKs](./data-connection-event-hub-csharp.md)
 
-## Ingest new data
+## Ingest data
 
 1. In the left menu of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select the **Data** tab.
 
@@ -36,7 +36,7 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 
 1. In the **Ingest data from Event Hub** card, select **Ingest**.
 
-The **Ingest new data** window opens with the **Destination** tab selected.
+The **Ingest data** window opens with the **Destination** tab selected.
 
 ### Destination tab
 
@@ -44,7 +44,7 @@ The **Ingest new data** window opens with the **Destination** tab selected.
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus.
 
-1. Under **Table**, select **Create new table** and enter a name for the new table. Alternatively, use an existing table.
+1. Under **Table**, select **New table** and enter a name for the new table. Alternatively, use an existing table.
 
     > [!NOTE]
     > Table names must be between 1 and 1024 characters. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.

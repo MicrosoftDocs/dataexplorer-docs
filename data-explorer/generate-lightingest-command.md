@@ -25,19 +25,19 @@ This article shows you how to create a new table, create schema mapping, and gen
 
 The wizard can be accessed either from the **Data** tab, or from the **Query** tab of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 
-1. In the **Data** tab, from the **Quick actions** section, select **Ingest new data**. Alternatively, from the **All actions** section, select **Ingest new data** and then **Ingest**.
+1. In the **Data** tab, from the **Quick actions** section, select **Ingest data**. Alternatively, from the **All actions** section, select **Ingest data** and then **Ingest**.
 
    :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select one-click ingestion for a table.":::
 
-1. In the **Query tab**, right-click a *database* and select **Ingest new data**.
+1. In the **Query tab**, right-click a *database* and select **Ingest data**.
 
    :::image type="content" source="media/ingestion-wizard-new-table/ingest-new-data-database-menu.png" alt-text="Ingest new data.":::
 
-In the **Ingest new data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
+In the **Ingest data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 
 ## Destination tab
 
-1. In **Table**, check either **Existing table** or **Create new table**. When creating a new table, enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
+1. In **Table**, check either **Existing table** or **New table**. When creating a new table, enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
     > [!NOTE]
     > Table names must be between 1 and 1024 characters.
@@ -50,7 +50,7 @@ In the **Ingest new data** window, the **Destination** tab is selected. The **Cl
 
 :::image type="content" source="media/generate-lightingest-command/source-tab-lightingest.png" alt-text="Screenshot of Source tab in Ingest new table window. ":::
 
-  1. Under **Source type**, select **From blob container** (blob container, ADLS Gen2 container).
+  1. Under **Source type**, select **Blob container** (blob container, ADLS Gen2 container).
   1. Select **Ingestion type**>**Historical data**.
   1. You can either **Add URL** manually by copying the Account Key/SAS URL to source, or **Select container** from your storage account.
       > [!NOTE]
@@ -115,7 +115,7 @@ When ingesting to a new table, alter various aspects of the table when creating 
 > [!NOTE]
 > For tabular formats, you can't map a column twice. To map to an existing column, first delete the new column.
 
-Select **Next: Summary** to generate the LightIngest command.
+Select **Next: Start Ingestion** to generate the LightIngest command.
 
 ## Generate the LightIngest command
 
