@@ -8,7 +8,12 @@ items:
 - name: Samples
   href: samples.md
 - name: Query best practices
-  href: best-practices.md
+  items:
+  - name: Best practices
+    href: best-practices.md
+  - name: Optimize queries that use named expressions
+    displayName: let statement, user defined functions, as operator, calculated
+    href: ../../named-expressions.md
 - name: Cross-cluster queries
   items:
   - name: Cross-cluster queries and schema changes

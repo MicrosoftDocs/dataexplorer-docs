@@ -6,7 +6,7 @@ ms.topic: reference
 ms.date: 09/04/2022
 
 ---
-# Named expressions
+# Optimize queries that use named expressions
 
 This article discusses how to optimize repeat use of named expressions in a query.
 
