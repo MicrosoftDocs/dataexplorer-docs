@@ -3,7 +3,7 @@ title: Ingest JSON formatted data into Azure Data Explorer
 description: Learn about how to ingest JSON formatted data into Azure Data Explorer.
 ms.reviewer: kerend
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 09/06/2022
 ---
 
 # Ingest JSON formatted sample data into Azure Data Explorer
@@ -382,7 +382,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 ## Ingest JSON records containing arrays
 
-Array data types are an ordered collection of values. Ingestion of a JSON array is done by an [update policy](./kusto/management/show-table-update-policy-command.md). The JSON is ingested as-is to an intermediate table. An update policy runs a pre-defined function on the `RawEvents` table, reingesting the results to the target table. We will ingest data with the following structure:
+Array data types are an ordered collection of values. Ingestion of a JSON array is done by an [update policy](./kusto/management/show-table-update-policy-command.md). The JSON is ingested as-is to an intermediate table. An update policy runs a pre-defined function on the `RawEvents` table, reingesting the results to the target table. We'll ingest data with the following structure:
 
 ```json
 {

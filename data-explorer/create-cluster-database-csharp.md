@@ -1,9 +1,9 @@
 ---
-title: 'Create an Azure Data Explorer cluster & DB using C#'
+title: 'Create an Azure Data Explorer cluster and database using C#'
 description: Learn how to create an Azure Data Explorer cluster and database by using the C#
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 06/03/2019
+ms.date: 09/06/2022
 ---
 
 # Create an Azure Data Explorer cluster and database by using C#
@@ -22,7 +22,7 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 ## Prerequisites
 
 * Visual Studio 2019, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](includes/data-explorer-data-connection-install-nuget-csharp.md)]
 

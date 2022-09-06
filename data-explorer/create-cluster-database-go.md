@@ -3,7 +3,7 @@ title: 'Create an Azure Data Explorer cluster & database using Azure Go SDK'
 description: Learn how to create, list, and delete an Azure Data Explorer cluster and database with Azure Go SDK.
 ms.reviewer: abhishgu
 ms.topic: how-to
-ms.date: 10/28/2020
+ms.date: 09/06/2022
 ---
 
 # Create an Azure Data Explorer cluster and database using Go
@@ -23,7 +23,7 @@ In this article, you create an Azure Data Explorer cluster and database using [G
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * Install an appropriate version of Go. For more information regarding supported releases, see the [Azure Go SDK](https://github.com/Azure/azure-sdk-for-go).
 
