@@ -22,7 +22,7 @@ When you reference these named expressions in a query, the following steps occur
 
 If the same bound name is used multiple times, then the underlying calculation will be repeated multiple times. When is this a concern?
 
-* When the calculations consume many resources and is used many times.
+* When the calculations consume many resources and are used many times.
 * When the calculation is non-deterministic, but the query assumes all invocations to return the same value.
 
 ## Mitigation
