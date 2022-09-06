@@ -3,13 +3,13 @@ title: buildschema() (aggregation function) - Azure Data Explorer
 description: This article describes buildschema() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 09/06/2022
 ---
 # buildschema() (aggregation function)
 
-Returns the minimal schema that admits all values of *DynamicExpr*.
+Builds the minimal schema that admits all values of *DynamicExpr*.
 
-* Can be used only in context of aggregation, inside [summarize](summarizeoperator.md)
+[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
 
@@ -17,11 +17,13 @@ Returns the minimal schema that admits all values of *DynamicExpr*.
 
 ## Arguments
 
-* *DynamicExpr*: Expression that is used for the aggregation calculation. The parameter column type must be `dynamic`.
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*DynamicExpr*| dynamic | &check; | Expression used for the aggregation calculation.
 
 ## Returns
 
-The maximum value of *`Expr`* across the group.
+Returns the minimal schema that admits all values of *DynamicExpr*.
 
 > [!TIP]
 > If `buildschema(json_column)` gives a syntax error:
