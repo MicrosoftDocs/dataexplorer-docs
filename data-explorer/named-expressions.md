@@ -27,12 +27,10 @@ If the same bound name is used multiple times, then the underlying calculation w
 
 ## Mitigation
 
-If the behavior above isn't desired, it's possible to indicate that
-the results of the calculation be materialized in memory during the
-query. The way to do this differs depending on how the named calculation is defined:
+To mitigate these concerns, you can materialize the calculation results in memory during the query. Depending on the way the named calculation is defined, you'll use different materialization strategies:
 
 * **let statements and function arguments**: Use the [materialize()](kusto/query/materializefunction.md) function.
-* **as operator**: Use the [materialize()](kusto/query/materializefunction.md) function, and set the `hint.materialized` hint value to `true`.
+* **as operator**: Set the `hint.materialized` hint value to `true`.
 
 ## Example
 
