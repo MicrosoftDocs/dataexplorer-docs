@@ -3,7 +3,7 @@ title: Named expressions in Azure Data Explorer
 description: Learn how to optimally use named expressions in Azure Data Explorer.
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 09/04/2022
+ms.date: 09/06/2022
 
 ---
 # Optimize queries that use named expressions
@@ -25,6 +25,22 @@ If the same bound name is used multiple times, then the underlying calculation w
 * When the calculations consume many resources and are used many times.
 * When the calculation is non-deterministic, but the query assumes all invocations to return the same value.
 
+>[!NOTE]
+> Non-deterministic scalar functions can be also be forced to calculate exactly once by using [toscalar()](kusto/query/toscalarfunction.md).
+> For example, the following query uses the non-deterministic function, [rand()](kusto/query/randfunction.md):
+>
+> ```kusto
+> let x = () {rand(1000)};
+> let y = () {toscalar(rand(1000))};
+> print x, x, y, y
+>```
+>
+> Returns:
+> |print_0|print_1|print_2|print_3|
+> |---|---|---|---|
+> |166 |137 |70 |70|
+>
+
 ## Mitigation
 
 To mitigate these concerns, you can materialize the calculation results in memory during the query. Depending on the way the named calculation is defined, you'll use different materialization strategies:
@@ -34,7 +50,7 @@ To mitigate these concerns, you can materialize the calculation results in memor
 
 ## Example
 
-For example, the following query uses the non-deterministic [sample operator](kusto/query/sampleoperator.md):
+For example, the following query uses the non-deterministic tabular [sample operator](kusto/query/sampleoperator.md):
 
 > [!NOTE]
 > Tables aren't sorted in general, so any table reference in a query is, by definition, non-deterministic.
@@ -72,3 +88,5 @@ range x from 1 to 100 step 1
 |---|
 |95|
 |95|
+
+
