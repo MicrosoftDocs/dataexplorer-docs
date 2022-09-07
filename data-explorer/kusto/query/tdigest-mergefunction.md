@@ -13,7 +13,7 @@ Read more about the underlying algorithm (T-Digest) and the estimated error [her
 
 ## Syntax
 
-`merge_tdigests(` *Expr1*`,` *Expr2*`, ...)`
+`merge_tdigest(` *Expr1*`,` *Expr2*`, ...)`
 
 `tdigest_merge(` *Expr1*`,` *Expr2*`, ...)` - An alias.
 
