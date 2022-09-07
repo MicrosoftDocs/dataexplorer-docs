@@ -3,7 +3,7 @@ title: Use wizard for one-time ingestion of historical data with LightIngest (pr
 description: Learn about how to auto-generate an ingest command for LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 06/20/2022
+ms.date: 09/04/2022
 ---
 # Use wizard for one-time ingestion of historical data with LightIngest (preview)
 
@@ -27,11 +27,11 @@ The wizard can be accessed either from the **Data** tab, or from the **Query** t
 
 1. In the **Data** tab, from the **Quick actions** section, select **Ingest new data**. Alternatively, from the **All actions** section, select **Ingest new data** and then **Ingest**.
 
-   :::image type="content" source="media/one-click-ingestion-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select one-click ingestion for a table.":::
+   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select one-click ingestion for a table.":::
 
 1. In the **Query tab**, right-click a *database* and select **Ingest new data**.
 
-   :::image type="content" source="media/one-click-ingestion-new-table/ingest-new-data-database-menu.png" alt-text="Ingest new data.":::
+   :::image type="content" source="media/ingestion-wizard-new-table/ingest-new-data-database-menu.png" alt-text="Ingest new data.":::
 
 In the **Ingest new data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 
@@ -110,7 +110,7 @@ In the **Schema** tab:
 
 When ingesting to a new table, alter various aspects of the table when creating the table.
 
-[!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
+[!INCLUDE [data-explorer-ingestion-wizard-column-table](includes/data-explorer-ingestion-wizard-column-table.md)]
 
 > [!NOTE]
 > For tabular formats, you can't map a column twice. To map to an existing column, first delete the new column.

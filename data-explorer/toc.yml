@@ -46,7 +46,7 @@ items:
       displayName: Kusto Web Explorer, KWE
       href: web-ui-overview.md
     - name: Ingestion wizard
-      href: ingest-data-one-click.md
+      href: ingest-data-wizard.md
   - name: Data ingestion
     items:
     - name: Data ingestion overview
@@ -107,27 +107,27 @@ items:
   - name: Create tables
     items:
     - name: Create table
-      href: one-click-table.md
+      href: create-table-wizard.md
     - name: External table creation wizard
       displayName: one-click
       href: external-table.md
     - name: Create table policies
       items:
       - name: Create ingestion batching table policy
-        displayName: one-click
-        href: one-click-table-batching-policy.md
+        displayName: one-click, wizard
+        href: table-batching-policy-wizard.md
       - name: Create retention table policy
-        displayName: one-click
-        href: one-click-table-retention-policy.md
+        displayName: one-click, wizard
+        href: table-retention-policy-wizard.md
   - name: Ingest data
     items:
     - name: Ingestion wizard
       items:
       - name: JSON data from local file to existing table
         displayName: ingest data, ingestion, one click
-        href: one-click-ingestion-existing-table.md
+        href: ingestion-wizard-existing-table.md
       - name: Sample app generator
-        href: sample-app-generator-one-click.md
+        href: sample-app-generator-wizard.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
@@ -149,9 +149,9 @@ items:
       - name: Azure portal
         displayName: Event hub, ingest, data connection
         href: ingest-data-event-hub.md
-      - name: One-click
+      - name: Ingestion wizard
         displayName: Event hub, ingest, data connection
-        href: one-click-event-hub.md
+        href: event-hub-wizard.md
       - name: C#
         displayName: Event hub, ingest, data connection
         href: data-connection-event-hub-csharp.md
@@ -166,9 +166,9 @@ items:
       - name: Event Grid data connection
         displayName: ingest
         href: ingest-data-event-grid-overview.md
-      - name: One-click
+      - name: Ingestion wizard
         displayName: Event Grid, ingest data, ingestion, one click, csv file
-        href: one-click-ingestion-new-table.md
+        href: ingestion-wizard-new-table.md
       - name: Azure portal
         displayName: Event Grid, ingest, data connection
         href: ingest-data-event-grid.md
@@ -463,6 +463,12 @@ items:
       href: data-explorer-insights.md
     - name: Monitor batching ingestion with metrics
       href: monitor-batching-ingestion.md
+  - name: Kusto emulator
+    items:
+    - name: Kusto emulator overview
+      href: kusto-emulator-overview.md
+    - name: Install the Kusto emulator
+      href: kusto-emulator-install.md
   - name: Share data
     items:
       - name: Use Azure Data Share

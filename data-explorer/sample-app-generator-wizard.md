@@ -3,12 +3,12 @@ title: Use the sample app generator to ingest and query data in Azure Data Explo
 description: Overview of using the sample app generator to create the code to ingest and query your data in your preferred programming language.
 ms.reviewer: talzamir
 ms.topic: how-to
-ms.date: 07/13/2022
+ms.date: 09/04/2022
 ---
 
-# Use the one-click sample app generator to create code to ingest and query your data
+# Use the sample app generator wizard to create code to ingest and query your data
 
-The one-click sample app generator is a tool that allows you to create a working app to ingest and query your data in your preferred programming language. The generated code references the relevant SDK frameworks and is tailored to your cluster and data. The app is a *self-contained*, *executable* example that demonstrates how to connect to a cluster using authentication, administer, and ingest and query data using the SDK.
+The sample app generator wizard is a tool that allows you to create a working app to ingest and query your data in your preferred programming language. The generated code references the relevant SDK frameworks and is tailored to your cluster and data. The app is a *self-contained*, *executable* example that demonstrates how to connect to a cluster using authentication, administer, and ingest and query data using the SDK.
 
 You can use the generated code as a baseline to write your own apps, altering the code as you go, or you can copy sections of code into your own apps. The code includes comments with tips, best practices, links to reference material, and recommended TODO changes when adapting the code to your needs.
 
@@ -21,27 +21,27 @@ You can use the generated code as a baseline to write your own apps, altering th
 > [!NOTE]
 > To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
 
-## Access the one-click wizard
+## Access the wizard
 
-The one-click sample app generator wizard guides you through the one-click ingestion process.
+The sample app generator wizard guides you through the ingestion process.
 
 * To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), use one of the following methods:
 
   * Select **Data** in the left pane. Within the **Data Management** page under Quick actions, select **Generate Sample App**.
 
-    :::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-welcome.png" alt-text="Screenshot showing Sample app generator card from welcome to Azure Data Explorer.":::
+    :::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-welcome.png" alt-text="Screenshot showing Sample app generator card from welcome to Azure Data Explorer.":::
 
   * Select **Data** in the left pane. Within the **Data Management** page, select **SDKs & Connectors** tab. Within SDKs sub-tab, select an SDK.
 
-    :::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-sdks.png" alt-text="Screenshot showing Sample app generator from SDKs & connectors tab.":::
+    :::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-sdks.png" alt-text="Screenshot showing Sample app generator from SDKs & connectors tab.":::
 
-## One-click sample app generator wizard
+## Sample app generator wizard
 
-The one-click sample app generator wizard guides you through the one-click ingestion process.
+The sample app generator wizard guides you through the ingestion process.
 
 On the **Destination** tab, specify the destination cluster, database, and table and then select the programming language for your app.
 
-:::image type="content" source="media/one-click-sample-app-generator/sample-app-generator-destination-tab.png" alt-text="Sample app generator destination tab.":::
+:::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-destination-tab.png" alt-text="Sample app generator destination tab.":::
 
 > [!NOTE]
 > This section describes the wizard in general. The options you select depend on what data format you are ingesting, what kind of data source you are ingesting from, and whether you are ingesting into a new or existing table.
@@ -71,13 +71,13 @@ In the **Schema** tab, do the following actions:
 
 #### File formats
 
-One-click ingestion supports ingesting from source data in all [data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
+The ingestion wizard supports ingesting from source data in all [data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
 
 ### Editor window
 
 In the **Editor** window of the **Schema** tab, you can adjust data table columns as necessary.
 
-[!INCLUDE [data-explorer-one-click-column-table](includes/data-explorer-one-click-column-table.md)]
+[!INCLUDE [data-explorer-ingestion-wizard-column-table](includes/data-explorer-ingestion-wizard-column-table.md)]
 
 >[!NOTE]
 > At any time, you can open the [command editor](one-click-ingestion-new-table.md#command-editor) above the **Editor** pane. In the command editor, you can view and copy the automatic commands generated from your inputs.
