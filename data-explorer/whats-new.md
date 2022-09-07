@@ -3,7 +3,7 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/01/2022
+ms.date: 09/06/2022
 ---
 # What's new in Azure Data Explorer documentation
 
@@ -11,61 +11,29 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 ## August 2022
 
----
-title: "Azure Data Explorer docs: What's new for August 1, 2022 - August 31, 2022"
-description: "What's new in the Azure Data Explorer docs for August 1, 2022 - August 31, 2022."
-ms.date: 09-06-2022
----
+**General**
 
-# Azure Data Explorer docs: What's new for August 1, 2022 - August 31, 2022
+| Article title | Description |
+|--|--|
+|- [Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer](ingestion-wizard-existing-table.md) <br />- [Azure Data Explorer web UI overview](web-ui-overview.md)|Updated articles. |
 
-Welcome to what's new in the Azure Data Explorer docs from August 1, 2022 through August 31, 2022. This article lists some of the major changes to docs during this period.
+**Management**
 
-## General
+| Article title | Description |
+|--|--|
+|[.cancel operation command](kusto/management/cancel-operation-command.md)| New article. |
+|[How to authenticate with Azure Active Directory (Azure AD) for Azure Data Explorer access](kusto/management/access-control/how-to-authenticate-with-aad.md)| Updated article. Updated with Microsoft Authentication Library authentication.|
+|[.drop extents](kusto/management/drop-extents.md)| Updated article. Added examples to drop specific extents.|
+|[Queries management](kusto/management/queries.md)| Updated article. Added show by user command.
+|[Ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md)|Updated article. Added ingest from Amazon S3.
+|[Ingest from query (.set, .append, .set-or-append, .set-or-replace)](kusto/management/data-ingestion/ingest-from-query.md) <br />-[.create materialized-view](kusto/management/materialized-views/materialized-view-create.md)| Updated article. Added cancel operation command.
+|[.create-or-alter function](kusto/management/create-alter-function.md) <br />- [.create function](kusto/management/create-function.md)| Updated article. Added view new parameter for stored view.|
 
-### Updated articles
+**Query**
 
-- [Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md) - Update KWE doc
-- [Azure Data Explorer web UI overview](web-ui-overview.md) - Update KWE doc
-
-## Management
-
-### New articles
-
-- [.cancel operation command](/azure/data-explorer/kusto/management/cancel-operation-command.md)
-
-### Updated articles
-
-- [How to authenticate with Azure Active Directory (Azure AD) for Azure Data Explorer access](/azure/data-explorer/kusto/management/access-control/how-to-authenticate-with-aad.md) - Replace web app ADAL with MSAL authentication
-- [.drop extents](/azure/data-explorer/kusto/management/drop-extents.md)
-  - Format changes
-  - Added examples to drop specific extents
-- [Queries management](/azure/data-explorer/kusto/management/queries.md) - Added show by user command
-- [Ingest from storage](/azure/data-explorer/kusto/management/data-ingestion/ingest-from-storage.md) - .ingest from Amazon S3
-- [Ingest from query (.set, .append, .set-or-append, .set-or-replace)](/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query.md) - Cancel operation command Original PR #3318
-- [.create materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-create.md) - Cancel operation command Original PR #3318
-- [.create-or-alter function](/azure/data-explorer/kusto/management/create-alter-function.md) - Added view (stored view) as part of the parameters
-- [.create function](/azure/data-explorer/kusto/management/create-function.md) - Added view (stored view) as part of the parameters
-
-## Query
-
-### Updated articles
-
-- [count() (aggregation function)](/azure/data-explorer/kusto/query/count-aggfunction.md) - Next 6 files for agg functions pages corrections
-- [hll() (aggregation function)](/azure/data-explorer/kusto/query/hll-aggfunction.md) - Next 6 files for agg functions pages corrections
-- [make_set() (aggregation function)](/azure/data-explorer/kusto/query/makeset-aggfunction.md) - Next 6 files for agg functions pages corrections
-- [take_any() (aggregation function)](/azure/data-explorer/kusto/query/take-any-aggfunction.md) - Next 6 files for agg functions pages corrections
-- [take_anyif() (aggregation function)](/azure/data-explorer/kusto/query/take-anyif-aggfunction.md) - Next 6 files for agg functions pages corrections
-- [tdigest() (aggregation function)](/azure/data-explorer/kusto/query/tdigest-aggfunction.md) - Next 6 files for agg functions pages corrections
-- [avgif() (aggregation function)](/azure/data-explorer/kusto/query/avgif-aggfunction.md) - New examples shortedned tables arg tables
-- [countif() (aggregation function)](/azure/data-explorer/kusto/query/countif-aggfunction.md) - New examples shortedned tables arg tables
-- [dcount() (aggregation function)](/azure/data-explorer/kusto/query/dcount-aggfunction.md) - New examples shortedned tables arg tables
-- [dcountif() (aggregation function)](/azure/data-explorer/kusto/query/dcountif-aggfunction.md) - New examples shortedned tables arg tables
-- [maxif() (aggregation function)](/azure/data-explorer/kusto/query/maxif-aggfunction.md) - New examples shortedned tables arg tables
-- [minif() (aggregation function)](/azure/data-explorer/kusto/query/minif-aggfunction.md) - New examples shortedned tables arg tables
-- [sumif() (aggregation function)](/azure/data-explorer/kusto/query/sumif-aggfunction.md) - New examples shortedned tables arg tables
-
-
+| Article title | Description |
+|--|--|
+|- [count() (aggregation function)](kusto/query/count-aggfunction.md) <br />- [hll() (aggregation function)](kusto/query/hll-aggfunction.md)<br />- [make_set() (aggregation function)](kusto/query/makeset-aggfunction.md) <br />- [take_any() (aggregation function)](kusto/query/take-any-aggfunction.md) <br />- [take_anyif() (aggregation function)](kusto/query/take-anyif-aggfunction.md) <br />- [tdigest() (aggregation function)](kusto/query/tdigest-aggfunction.md) <br />- [avgif() (aggregation function)](kusto/query/avgif-aggfunction.md) <br />- [countif() (aggregation function)](kusto/query/countif-aggfunction.md) <br />- [dcount() (aggregation function)](kusto/query/dcount-aggfunction.md) <br />- [dcountif() (aggregation function)](kusto/query/dcountif-aggfunction.md) <br /> - [maxif() (aggregation function)](kusto/query/maxif-aggfunction.md) <br />- [minif() (aggregation function)](kusto/query/minif-aggfunction.md) <br />- [sumif() (aggregation function)](kusto/query/sumif-aggfunction.md) | Updated articles. New examples, and format alignment.|
 
 ## July 2022
 
