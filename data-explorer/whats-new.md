@@ -15,25 +15,18 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|- [Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer](ingestion-wizard-existing-table.md) <br />- [Azure Data Explorer web UI overview](web-ui-overview.md)|Updated articles. Added references to ingestion wizard and updated UI.|
+|- [Use the ingestion wizard to ingest JSON data](ingestion-wizard-existing-table.md) <br />- [Azure Data Explorer web UI overview](web-ui-overview.md)|Updated articles. Added references to ingestion wizard and updated UI.|
 
 **Management**
 
 | Article title | Description |
 |--|--|
 |[.cancel operation command](kusto/management/cancel-operation-command.md)| New article. Describes how use the `.cancel operation` command.|
-|[How to authenticate with Azure Active Directory (Azure AD) for Azure Data Explorer access](kusto/management/access-control/how-to-authenticate-with-aad.md)| Updated article. Updated with Microsoft Authentication Library authentication.|
+|[How to authenticate with Azure Active Directory](kusto/management/access-control/how-to-authenticate-with-aad.md)| Updated article. Updated with Microsoft Authentication Library authentication.|
 |[.drop extents](kusto/management/drop-extents.md)| Updated article. Added examples to drop specific extents.|
 |[Queries management](kusto/management/queries.md)| Updated article. Added show by user command.
 |- [Ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md)|Updated article. Added ingest from Amazon S3.
-|[Ingest from query (.set, .append, .set-or-append, .set-or-replace)](kusto/management/data-ingestion/ingest-from-query.md) <br />-[.create materialized-view](kusto/management/materialized-views/materialized-view-create.md)| Updated article. Added cancel operation command.
-|- [.create-or-alter function](kusto/management/create-alter-function.md) <br />- [.create function](kusto/management/create-function.md)| Updated article. Added view new parameter for stored view.|
-
-**Query**
-
-| Article title | Description |
-|--|--|
-|- [count() (aggregation function)](kusto/query/count-aggfunction.md) <br />- [hll() (aggregation function)](kusto/query/hll-aggfunction.md)<br />- [make_set() (aggregation function)](kusto/query/makeset-aggfunction.md) <br />- [take_any() (aggregation function)](kusto/query/take-any-aggfunction.md) <br />- [take_anyif() (aggregation function)](kusto/query/take-anyif-aggfunction.md) <br />- [tdigest() (aggregation function)](kusto/query/tdigest-aggfunction.md) <br />- [avgif() (aggregation function)](kusto/query/avgif-aggfunction.md) <br />- [countif() (aggregation function)](kusto/query/countif-aggfunction.md) <br />- [dcount() (aggregation function)](kusto/query/dcount-aggfunction.md) <br />- [dcountif() (aggregation function)](kusto/query/dcountif-aggfunction.md) <br /> - [maxif() (aggregation function)](kusto/query/maxif-aggfunction.md) <br />- [minif() (aggregation function)](kusto/query/minif-aggfunction.md) <br />- [sumif() (aggregation function)](kusto/query/sumif-aggfunction.md) | Updated articles. New examples, and format alignment.|
+|- [- .create-or-alter function](kusto/management/create-alter-function.md)<br />- [.create function](kusto/management/create-function.md)| New and updated article. Added new parameter for stored view.|
 
 ## July 2022
 
