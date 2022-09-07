@@ -94,3 +94,9 @@ For example, the following query uses the non-deterministic function, [rand()](k
  |print_0|print_1|print_2|print_3|
  |---|---|---|---|
  |166 |137 |70 |70|
+
+## See also
+
+* [Let statement](kusto/query/letstatement.md)
+* [as operator](kusto/query/asoperator.md)
+* [toscalar()](kusto/query/toscalarfunction.md)
