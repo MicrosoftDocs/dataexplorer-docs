@@ -15,13 +15,13 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|- [Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer](ingestion-wizard-existing-table.md) <br />- [Azure Data Explorer web UI overview](web-ui-overview.md)|Updated articles. |
+|- [Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer](ingestion-wizard-existing-table.md) <br />- [Azure Data Explorer web UI overview](web-ui-overview.md)|Updated articles. Added references to ingestion wizard and updated UI.|
 
 **Management**
 
 | Article title | Description |
 |--|--|
-|[.cancel operation command](kusto/management/cancel-operation-command.md)| New article. |
+|[.cancel operation command](kusto/management/cancel-operation-command.md)| New article. Describes how use the `.cancel operation` command.|
 |[How to authenticate with Azure Active Directory (Azure AD) for Azure Data Explorer access](kusto/management/access-control/how-to-authenticate-with-aad.md)| Updated article. Updated with Microsoft Authentication Library authentication.|
 |[.drop extents](kusto/management/drop-extents.md)| Updated article. Added examples to drop specific extents.|
 |[Queries management](kusto/management/queries.md)| Updated article. Added show by user command.
