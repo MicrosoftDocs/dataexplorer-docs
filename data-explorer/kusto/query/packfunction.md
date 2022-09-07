@@ -24,7 +24,11 @@ Alias to `pack_dictionary()`.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*key*,&nbsp;*value* |--| &check; | An alternating list of keys and values whose total length must be even. All keys must be non-empty constant strings.|
+|*key*| string | &check; | Key name.|
+|*value* | string | &check; | Key value.|
+
+> [!NOTE]
+> The *key* and *value* strings are an alternating list the total length of the list must be even.
 
 ## Returns
 
