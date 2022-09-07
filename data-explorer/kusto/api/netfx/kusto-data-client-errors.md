@@ -13,9 +13,9 @@ All exceptions defined in the .NET SDK implement the interface `Kusto.Cloud.Plat
 
 * `string FailureSubCode { get; }`: Returns the equivalent HTTP reason phrase.
 
-* `bool IsPermanent { get; }`: Returns the exception's permanence. Permanent exceptions indicate that the caller shouldn't retry since it's unlikely to succeed (for example, due to bad input).
+* `bool IsPermanent { get; }`: Returns the exception's permanence. Permanent exceptions indicate that the caller shouldn't retry since it's unlikely to succeed, for example, due to bad input.
 
-Exceptions raised from `Kusto.Data` using the `Microsoft.Azure.Kusto.Data` NuGet package, inherit the `Kusto.Data.Exceptions.KustoException` class. All exceptions begin with `Kusto.Data.Exceptions`.
+Exceptions raised from `Kusto.Data` using the `Microsoft.Azure.Kusto.Data` NuGet package inherit the `Kusto.Data.Exceptions.KustoException` class. All exceptions begin with `Kusto.Data.Exceptions`.
 
 ## Kusto.Data exceptions categories
 
@@ -29,7 +29,7 @@ Based on the root cause, exceptions may inherit one of the following error types
 
 ### Client exceptions
 
-All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column. Client exceptions contain the following exception categories:
+All client exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column. Client exceptions contain the following exception categories:
 
 | Exception name | Reason |
 |--|--|
@@ -45,7 +45,7 @@ All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a
 
 ### Client query exceptions
 
-All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
+All client query exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
 
 | Exception name | Reason |
 |--|--|
@@ -64,7 +64,7 @@ All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a
 
 ### Authentication exceptions
 
-All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
+All authentication exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
 
 | Exception name | Reason |
 |--|--|--|--|--|
@@ -76,7 +76,7 @@ All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a
 
 ## Request Exceptions
 
-All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
+All request exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
 
 | Exception name | Reason |
 |--|--|
@@ -90,7 +90,7 @@ All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a
 
 ### Bad request exceptions
 
-All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
+All bad request exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
 
 | Exception name | Reason |
 |--|--|
@@ -113,7 +113,7 @@ All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a
 
 ## Service exceptions
 
-All the exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
+All service exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
 
 | Exception name | Reason |
 |--|--|
