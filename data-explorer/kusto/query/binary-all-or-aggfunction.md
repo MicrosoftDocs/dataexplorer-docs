@@ -27,7 +27,7 @@ Returns an aggregated value using the binary `OR` operation over records for eac
 
 ## Example
 
-The following example produces 'cafe-food' using binary `OR` operations:
+The following example produces `CAFEF00D` using binary `OR` operations:
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbzSXKuc/Lx0Ta5oLgUFgwoLEDAwsNAB80yMDMAAwjMwMDczR+KBgamOAlcsV41CcWlubmJRZlWqQlFqcWlOiYKtQkl+aUFBapFGSX5GaoVGUmZeYlFlfGJOTnx+EcheTU1NAEGLHNSIAAAA)**\]**
 

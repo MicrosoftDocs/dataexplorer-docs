@@ -27,7 +27,7 @@ Returns an aggregated value using the binary `AND` operation over records for ea
 
 ## Example
 
-The following example produces 'cafe-food' using binary `AND` operations:
+The following example produces `CAFEF00D` using binary `AND` operations:
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbzSXKuc/Lx0Ta5oLgUFgwo3KNBRQHANDNx0wDxniJwLhOfm6OYKVsoVy1WjUFyam5tYlFmVqlCUWlyaU6Jgq1CSX1pQkFqkUZKfkVqhkZSZl1hUGZ+YkxOfmJcCslhTUxMAwZHTS4kAAAA=)**\]**
 

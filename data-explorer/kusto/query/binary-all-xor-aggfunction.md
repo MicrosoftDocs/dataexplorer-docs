@@ -27,7 +27,7 @@ Returns a value that is aggregated using the binary `XOR` operation over records
 
 ## Example
 
-The following example produces 'cafe-food' using binary `XOR` operations:
+The following example produces `CAFEF00D` using binary `XOR` operations:
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbzSXKuc/Lx0Ta5oLgUFgwoTExMDENYB8wxdIRDCszRwdHJyNLCE8AwMDJwMDUwddbhiuWoUiktzcxOLMqtSFYpSi0tzShRsFUrySwsKUos0SvIzUis0kjLzEosq4xNzcuIr8otA9mpqagIAuXol8IgAAAA=)**\]**
 
