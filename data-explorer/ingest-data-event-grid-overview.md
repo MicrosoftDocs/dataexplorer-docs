@@ -15,6 +15,12 @@ Event Grid ingestion can be managed through the [Azure portal](ingest-data-event
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
+[!INCLUDE [data-connection-auth](includes/data-connection-auth.md)]
+
+* For the MI will be able to fetch data from Azure Storage, it should have at least:
+  * [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) on the Azure Event Hubs.
+  * [Storage Blob Data Reader](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) on the Azure Storage accunt.
+
 ## Data format
 
 * See [supported formats](ingestion-supported-formats.md).

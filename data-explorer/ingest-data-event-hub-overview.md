@@ -13,6 +13,10 @@ The Event Hubs ingestion pipeline transfers events to Azure Data Explorer in sev
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
+[!INCLUDE [data-connection-auth](includes/data-connection-auth.md)]
+
+* For the MI will be able to fetch data from Azure Even Hubs, it should have at least [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver)
+
 ## Data format
 
 * Data is read from the event hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects.
