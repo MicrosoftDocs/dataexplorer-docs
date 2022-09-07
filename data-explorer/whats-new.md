@@ -25,9 +25,9 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |[How to authenticate with Azure Active Directory (Azure AD) for Azure Data Explorer access](kusto/management/access-control/how-to-authenticate-with-aad.md)| Updated article. Updated with Microsoft Authentication Library authentication.|
 |[.drop extents](kusto/management/drop-extents.md)| Updated article. Added examples to drop specific extents.|
 |[Queries management](kusto/management/queries.md)| Updated article. Added show by user command.
-|[Ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md)|Updated article. Added ingest from Amazon S3.
+|- [Ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md)|Updated article. Added ingest from Amazon S3.
 |[Ingest from query (.set, .append, .set-or-append, .set-or-replace)](kusto/management/data-ingestion/ingest-from-query.md) <br />-[.create materialized-view](kusto/management/materialized-views/materialized-view-create.md)| Updated article. Added cancel operation command.
-|[.create-or-alter function](kusto/management/create-alter-function.md) <br />- [.create function](kusto/management/create-function.md)| Updated article. Added view new parameter for stored view.|
+|- [.create-or-alter function](kusto/management/create-alter-function.md) <br />- [.create function](kusto/management/create-function.md)| Updated article. Added view new parameter for stored view.|
 
 **Query**
 
