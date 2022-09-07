@@ -15,11 +15,11 @@ For more information about the underlying algorithm (T-Digest) and the estimated
 
 `tdigest_merge` `(`*Expr*`)`
 
-`merge_tdigests` `(`*Expr*`)` 
+`merge_tdigest` `(`*Expr*`)` 
 
 
 > [!NOTE]
-> `merge-tdigests` is an alias of `tdigest_merge`. 
+> `merge_tdigest` is an alias of `tdigest_merge`. 
 
 
 ## Arguments
@@ -41,7 +41,7 @@ The merged tdigest values of *Expr* across the group.
 ```kusto
 StormEvents
 | summarize PreAggDamageProperty=tdigest(DamageProperty) by State
-| summarize merge_tdigests(PreAggDamageProperty)
+| summarize merge_tdigest(PreAggDamageProperty)
 ```
 
 |merge_tdigests_PreAggDamageProperty|
