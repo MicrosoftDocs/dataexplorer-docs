@@ -27,7 +27,7 @@ Creates a `dynamic` JSON property bag (dictionay) of all the values of *`Expr`* 
 
 ## Returns
 
-Returns a `dynamic` JSON property bag (dictionary) of all the values of *`Expr`* in the group, which are property-bags.
+Returns a `dynamic` JSON property bag (dictionary) of all the values of *`Expr`* in the group, which are property bags.
 Non-dictionary values will be skipped.
 If a key appears in more than one row, an arbitrary value, out of the possible values for this key, will be selected.
 
