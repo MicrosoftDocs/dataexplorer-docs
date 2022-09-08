@@ -8,11 +8,13 @@ ms.date: 09/07/2022
 
 # Keyboard shortcuts for Azure Data Explorer web UI query editor window
 
-This article lists the keyboard shortcuts that work in the query editor window of the Azure Data Explorer web UI. For more information, see [Query data in the Azure Data Explorer web UI](web-query-data.md).
+This article lists the keyboard shortcuts that work in the Azure Data Explorer web UI query editor window.
 
-## Keyboard shortcuts for the query editor window
+The letters that appear below represent letter keys on your keyboard. For example, to use G+N, hold down the G key and then press N.
 
-| Command                                                | Key binding          |
+## Actions
+
+| To do this action                                      | Press                |
 |--------------------------------------------------------|----------------------|
 | Add Cursor Above                                       | Ctrl+Alt+UpArrow     |
 | Add Cursor Below                                       | Ctrl+Alt+DownArrow   |
@@ -103,5 +105,6 @@ This article lists the keyboard shortcuts that work in the query editor window o
 
 ## Next steps
 
+[Query data in the Azure Data Explorer web UI](web-query-data.md).
 [Write queries for Azure Data Explorer](write-queries.md)
 [[Azure Data Explorer web UI overview]](web-ui-overview.md)
