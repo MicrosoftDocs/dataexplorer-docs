@@ -187,7 +187,7 @@ You can view the data in the table using the following query:
 
 ```kusto
 MyIngestedSample
-| summarize sum(Age), avg(Age)
+| summarize sum(Id), avg(Id)
 ```
 
 ## Stopping the container
