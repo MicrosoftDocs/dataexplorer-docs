@@ -16,9 +16,9 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 
 |To do this action                                       |Press                 |
 |--------------------------------------------------------|----------------------|
-| Add Cursor Above                                       | Ctrl+Alt+UpArrow     |
-| Add Cursor Below                                       | Ctrl+Alt+DownArrow   |
-| Add Cursors to Line Ends                               | Shift+Alt+I          |
+| Add Cursor Above                                       | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>UpArrow</kbd>     |
+| Add Cursor Below                                       | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>DownArrow</kbd>  |
+| Add Cursors to Line Ends                               | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd>          |
 | Add Line Comment                                       | Ctrl+K Ctrl+C        |
 | Add Selection To Next Find Match                       | Ctrl+D               |
 | Change All Occurrences                                 | Ctrl+F2              |
@@ -107,4 +107,4 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 
 - [Query data in the Azure Data Explorer web UI](web-query-data.md).
 - [Write queries for Azure Data Explorer](write-queries.md)
-- [[Azure Data Explorer web UI overview]](web-ui-overview.md)
+- [Azure Data Explorer web UI overview](web-ui-overview.md)
