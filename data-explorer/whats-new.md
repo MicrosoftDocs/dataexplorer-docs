@@ -26,7 +26,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |[.drop extents](kusto/management/drop-extents.md)| Updated article. Added examples to drop specific extents.|
 |[Queries management](kusto/management/queries.md)| Updated article. Added show by user command.
 |- [Ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md)|Updated article. Added ingest from Amazon S3.
-|- [- .create-or-alter function](kusto/management/create-alter-function.md)<br />- [.create function](kusto/management/create-function.md)| New and updated article. Added new parameter for stored view.|
+|- [.create-or-alter function](kusto/management/create-alter-function.md)<br />- [.create function](kusto/management/create-function.md)| New and updated article. Added new parameter for stored view.|
 
 ## July 2022
 
