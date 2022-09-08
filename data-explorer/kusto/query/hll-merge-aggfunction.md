@@ -52,7 +52,7 @@ The results show only the first 5 results in the array.
 
 ## Estimation accuracy
 
-The `(hll_merge)` aggregate function uses a variant of the [HyperLogLog (HLL) algorithm](https://en.wikipedia.org/wiki/HyperLogLog),
+The `hll_merge()` aggregate function uses a variant of the [HyperLogLog (HLL) algorithm](https://en.wikipedia.org/wiki/HyperLogLog),
 which does a stochastic estimation of set cardinality. The algorithm provides a "knob" that can be used to balance accuracy and execution time per memory size:
 
 |Accuracy|Error (%)|Entry count   |
