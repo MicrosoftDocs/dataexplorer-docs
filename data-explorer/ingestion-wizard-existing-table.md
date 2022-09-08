@@ -53,6 +53,8 @@ The **Schema** tab opens.
 
 * **Compression type** will be selected automatically by the source file name. In this case, the compression type is **JSON**
 
+* If you select **Ignore data format errors**, the data will be ingested in JSON format. If you leave this check box unselected, the data will be ingested in Multijson format.
+
 * When you select  **JSON**, you must also select **Nested levels**, from 1 to 100. The levels determine the table column data division.
 
     :::image type="content" source="media/ingestion-wizard-existing-table/json-levels.png" alt-text="Screenshot completing ingestion information for ingesting a JSON file.":::
