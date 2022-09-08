@@ -14,7 +14,7 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 
 ## Actions
 
-| To do this action                                      | Press                |
+|To do this action                                       |Press                 |
 |--------------------------------------------------------|----------------------|
 | Add Cursor Above                                       | Ctrl+Alt+UpArrow     |
 | Add Cursor Below                                       | Ctrl+Alt+DownArrow   |
@@ -105,6 +105,6 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 
 ## Next steps
 
-[Query data in the Azure Data Explorer web UI](web-query-data.md).
-[Write queries for Azure Data Explorer](write-queries.md)
-[[Azure Data Explorer web UI overview]](web-ui-overview.md)
+- [Query data in the Azure Data Explorer web UI](web-query-data.md).
+- [Write queries for Azure Data Explorer](write-queries.md)
+- [[Azure Data Explorer web UI overview]](web-ui-overview.md)
