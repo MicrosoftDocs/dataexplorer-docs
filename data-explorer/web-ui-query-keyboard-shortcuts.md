@@ -10,7 +10,7 @@ ms.date: 09/07/2022
 
 Keyboard shortcuts provide a quick way to navigate and allow users to work more efficiently. Instead of using a pointing device, you use keys or combinations of keys to run tasks. This article lists Windows keyboard shortcuts that work in the Azure Data Explorer web UI query editor window.
 
-The letters that appear below represent letter keys on your keyboard. For example, to use <kbd>G</kbd>+<kbd>N</kbd>, hold down the G key and then press <kbd>N</kbd>. If the command is <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>X</kbd>, hold down the <kbd>Ctrl</kbd> and then press <kbd>K</kbd>. When using the query editor you can select <kbd>F1</kbd> to view the list of keyboard shortcuts in the **Command Palette**.
+The letters that appear below represent letter keys on your keyboard. For example, to use <kbd>G</kbd>+<kbd>N</kbd>, hold down the <kbd>G</kbd> key and then press <kbd>N</kbd>. If the command is <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>X</kbd>, hold down the <kbd>Ctrl</kbd>, and simultaneously, press <kbd>K</kbd> and then <kbd>X</kbd>. When using the query editor you can select <kbd>F1</kbd> to view the list of keyboard shortcuts in the **Command Palette**.
 
 ## Actions
 
