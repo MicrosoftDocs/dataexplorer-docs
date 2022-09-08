@@ -8,9 +8,9 @@ ms.date: 09/07/2022
 
 # Keyboard shortcuts for Azure Data Explorer web UI query editor window
 
-This article lists the keyboard shortcuts that work in the Azure Data Explorer web UI query editor window.
+Keyboard shortcuts provide a quick way to navigate and allow users to work more efficiently. Instead of using a pointing device, you use keys or combinations of keys to run tasks. This article lists Windows keyboard shortcuts that work in the Azure Data Explorer web UI query editor window.
 
-The letters that appear below represent letter keys on your keyboard. For example, to use G+N, hold down the G key and then press N. If the command is <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+
+The letters that appear below represent letter keys on your keyboard. For example, to use <kbd>G</kbd>+<kbd>N</kbd>, hold down the G key and then press <kbd>N</kbd>. If the command is <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>X</kbd>, hold down the <kbd>Ctrl</kbd> and then press <kbd>K</kbd>. When using the query editor you can select <kbd>F1</kbd> to view the list of keyboard shortcuts in the **Command Palette**.
 
 ## Actions
 
@@ -22,7 +22,7 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | Add Line Comment                                       |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>C</kbd>   |
 | Add Selection To Next Find Match                       |             | <kbd>Ctrl</kbd>+<kbd>D</kbd>                                |
 | Change All Occurrences                                 |             | <kbd>Ctrl</kbd>+<kbd>F2</kbd>                               |
-| Command Palette                                        |             | <kbd>F1</kbd>                                               |
+| Show **Command Palette**                               |             | <kbd>F1</kbd>                                               |
 | Copy Line Down                                         |             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>DownArrow</kbd>        |
 | Copy Line Up                                           |             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>UpArrow</kbd>          |
 | Copy Link to Clipboard                                 |             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>J</kbd>                |
@@ -55,7 +55,7 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | Format Command Under Cursor                            |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>F</kbd>   |
 | Format Document                                        |             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd>                |
 | Format Selection                                       |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>F</kbd>   |
-| Go to Bracket                                          |             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>\</kbd>               |
+| Go to Bracket                                          |             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd> \ </kbd>               |
 | Go to Definition                                       |             | <kbd>Ctrl</kbd>+<kbd>F12</kbd>                              |
 | Go to Line/Column...                                   |             | <kbd>Ctrl</kbd>+<kbd>G</kbd>                                |
 | Go to Next Problem (Error, Warning, Info)              |             | <kbd>Alt</kbd>+<kbd>F8</kbd>                                |
@@ -87,7 +87,7 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | Show Accessibility Help                                |             | <kbd>Alt</kbd>+<kbd>F1</kbd>                                |
 | Show Editor Context Menu                               |             | <kbd>Shift</kbd>+<kbd>F10</kbd>                             |
 | Show Hover                                             |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>I</kbd>   |
-| Shrink Selection                                       |             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+LeftArrow                   |
+| Shrink Selection                                       |             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>LeftArrow</kbd>                  |
 | Start Linked Editing                                   |             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F2</kbd>              |
 | Switch to tab on the left                              |             | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>[</kbd>                 |
 | Switch to tab on the right                             |             | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>]</kbd>                 |
