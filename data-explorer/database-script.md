@@ -3,7 +3,7 @@ title: Configure a database using a Kusto Query Language script in Azure Data Ex
 description: Learn about how to use database script to run a Kusto Query Language script in Azure Data Explorer
 ms.reviewer: docohe
 ms.topic: how-to
-ms.date: 05/17/2022
+ms.date: 09/11/2022
 ---
 # Configure a database using a Kusto Query Language script
 
@@ -40,7 +40,7 @@ Notice the two commands are idempotent. When first run, they create the tables, 
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Security
