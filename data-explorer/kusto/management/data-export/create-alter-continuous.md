@@ -57,7 +57,7 @@ with
 
 ## Continuous Export with Managed Identity
 
-In order to use Continuous Export with Managed Identity, please add the correct `Automated Flow` usage to the [Managed Identity policy](/data-explorer/kusto/management/managed-identity-policy.md).
+In order to use Continuous Export with Managed Identity, please add the `Automated Flow` usage to the [Managed Identity policy](/data-explorer/kusto/management/managed-identity-policy.md).
  
 See [managed identity overview](/data-explorer/managed-identities-overview.md) for more information on how to set up and use managed identity with Continuous Exports. 
 
