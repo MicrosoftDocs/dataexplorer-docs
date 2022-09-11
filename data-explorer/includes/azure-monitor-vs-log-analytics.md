@@ -7,5 +7,5 @@ ms.reviewer: orhasban
 ms.custom: include file
 ---
 > [!NOTE]
-> Clarification - Raw metrics data, that is fetched by either 'Metrics' or 'Insights' page in Azure portal, is stored within Azure Monitor. Azure portal queries that data directly and has the most accurate results.
-> When using Diagnostics settings feature, customers might migrate metrics data into Log Analytics workpace. During data migration, the data would possibly be rounded a bit and results could be slightly different (margin for error is less than 1%).
+> Raw metrics data that is fetched by either 'Metrics' or 'Insights' page in Azure portal is stored in Azure Monitor. The Azure portal queries this metrics data directly and gives the most accurate results.
+> When using the diagnostics settings feature, you can migrate this metrics data into the Log Analytics workspace. During data migration, the data might be rounded a bit and therefore the results may be slightly different than the original data. The margin for error is less than 1%.
