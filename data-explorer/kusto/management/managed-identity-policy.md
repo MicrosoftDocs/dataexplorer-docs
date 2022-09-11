@@ -41,12 +41,14 @@ The following is an example of a ManagedIdentity policy object:
 }
 ```
 
-### Managed Identity Usages
+### Managed identity usages
 
-These are the supported Managed Identity usages:
+The following values specify authentication to a `usage` using the configured managed identity:
 
-1. `DataConnection`: Data connections to an Event Hub or an Event Grid can be authenticated using the specified managed identity.
-2. `NativeIngestion`: Native ingestions from an external source (for example, Blob) using Data Explorer's SDK and authenticated using the specified managed identity.
-3. `ExternalTable`: External tables using connection strings configured with a managed identity. Data Explorer uses the configured managed identity to authenticate.
-4. `AutomatedFlow`: Continuous export automated flow will run on behalf of a managed identity.
-5. `All`: All current and future usages are allowed.
+| Value | Description | 
+|---|---|
+| `DataConnection` | Authenticate to data connections to an Event Hub or an Event Grid. |
+| `NativeIngestion` |  Authenticate to an SDK for native ingestions from an external source. |
+|`ExternalTable` | Authenticate to external tables using connection strings configured with a managed identity. |
+| `AutomatedFlow`| Run a continuous export automated flow on behalf of a managed identity. |
+| `All` | All current and future usages are allowed. |
