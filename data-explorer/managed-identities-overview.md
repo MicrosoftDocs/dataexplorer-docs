@@ -40,7 +40,7 @@ The managed identity policy control commands are:
 After assigning the managed identity to your cluster and configuring the relevant managed identity policy usage, you can start using managed identity authentication in the following workflows:
 
 
-* **External Tables**: Create an external table with managed identity authentication. The authentication is stated as part of the connection string. (see [storage connection string](./kusto/api/connection-strings/storage-connection-strings.md) for example). For instructions for using external tables with managed identity authentication, see [Authenticate external tables with managed identities](external-tables-managed-identities.md)
+* **External Tables**: Create an external table with managed identity authentication. The authentication is stated as part of the connection string. For examples, see [storage connection string](./kusto/api/connection-strings/storage-connection-strings.md). For instructions for using external tables with managed identity authentication, see [Authenticate external tables with managed identities](external-tables-managed-identities.md)
 * **Continuous Export**: Run a continuous export on behalf of a managed identity. To specify that, add the managed identity identifier in the optional parameters given in the `create-or-alter` method.
 * **Event Hub Native Ingestion**: Use a managed identity with event hub native ingestion. For more information, see [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md).
 * **Python plugin**: Use a managed identity to authenticate to storage accounts of external artifacts that are used in the python plugin. For more information, see [Python plugin](./kusto/query/pythonplugin.md).
