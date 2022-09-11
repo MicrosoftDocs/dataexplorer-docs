@@ -1,16 +1,16 @@
 ---
 title: Azure Data Explorer web UI query keyboard shortcuts
 description: This article describes Azure Data Explorer query keyboard shortcuts (hot-keys) in Azure Data Explorer web UI.
-ms.reviewer: 
+ms.reviewer:
 ms.topic: reference
 ms.date: 09/07/2022
 ---
 
 # Keyboard shortcuts for Azure Data Explorer web UI query editor window
 
-Keyboard shortcuts provide a quick way to navigate and allow users to work more efficiently. Instead of using a pointing device, you use keys or combinations of keys to run tasks. This article lists Windows keyboard shortcuts that work in the Azure Data Explorer web UI query editor window.
+Keyboard shortcuts provide a quick way to navigate websites, and allow users to work more efficiently. Instead of using a pointing device, you use keys, or combinations of keys, to run tasks. This article lists Windows keyboard shortcuts that work in the Azure Data Explorer web UI query editor window.
 
-The letters that appear below represent letter keys on your keyboard. For example, to use <kbd>G</kbd>+<kbd>N</kbd>, hold down the <kbd>G</kbd> key and then press <kbd>N</kbd>. If the command is <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>X</kbd>, hold down the <kbd>Ctrl</kbd>, and simultaneously, press <kbd>K</kbd> and then <kbd>X</kbd>. When using the query editor you can select <kbd>F1</kbd> to view the list of keyboard shortcuts in the **Command Palette**.
+The letters that appear below represent letter keys on your keyboard. For example, to use <kbd>G</kbd>+<kbd>N</kbd>, hold down the <kbd>G</kbd> key and then press <kbd>N</kbd>. If the command is <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>X</kbd>, hold down the <kbd>Ctrl</kbd>, and simultaneously press <kbd>K</kbd> and then <kbd>X</kbd>. When using the query editor you can select <kbd>F1</kbd> to view the list of keyboard shortcuts in the **Command Palette**.
 
 ## Actions
 
@@ -20,13 +20,13 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | Add Cursor Below                                       |             | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>DownArrow</kbd>         |
 | Add Cursors to Line Ends                               |             | <kbd><Shift</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd>               |
 | Add Line Comment                                       |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>C</kbd>   |
-| Add Selection To Next Find Match                       |             | <kbd>Ctrl</kbd>+<kbd>D</kbd>                                |
-| Change All Occurrences                                 |             | <kbd>Ctrl</kbd>+<kbd>F2</kbd>                               |
+| Add Selection To Next Find Match                       |Similar to ctrl + F            | <kbd>Ctrl</kbd>+<kbd>D</kbd>                                |
+| Change All Occurrences                                 |Similar to ctrl + F            | <kbd>Ctrl</kbd>+<kbd>F2</kbd>                               |
 | Show **Command Palette**                               |             | <kbd>F1</kbd>                                               |
-| Copy Line Down                                         |             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>DownArrow</kbd>        |
-| Copy Line Up                                           |             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>UpArrow</kbd>          |
-| Copy Link to Clipboard                                 |             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>J</kbd>                |
-| Copy Query And Link To Clipboard                       |             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>C</kbd>                |
+| Copy Line Down                                         |Extends cursor as written           | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>DownArrow</kbd>        |
+| Copy Line Up                                           |Extends cursor as written           | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>UpArrow</kbd>          |
+| Copy Link to Clipboard                                 |     X       | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>J</kbd>                |
+| Copy Query And Link To Clipboard                       |Copy query text   | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>C</kbd>                |
 | Cursor Undo                                            |             | <kbd>Ctrl</kbd>+<kbd>U</kbd>                                |
 | Decode multi-line string to text                       |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>M</kbd>   |
 | Delete Line                                            |             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd>               |
@@ -44,64 +44,64 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | Fold All Block Comments                                |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>/</kbd>   |
 | Fold All Regions                                       |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>8</kbd>   |
 | Fold All Regions Except Selected                       |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>-</kbd>   |
-| Fold Level 1                                           |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>1</kbd>   |
-| Fold Level 2                                           |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>2</kbd>   |
-| Fold Level 3                                           |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>3</kbd>   |
-| Fold Level 4                                           |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>4</kbd>   |
-| Fold Level 5                                           |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>5</kbd>   |
-| Fold Level 6                                           |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>6</kbd>   |
-| Fold Level 7                                           |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>7</kbd>   |
-| Fold Recursively                                       |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>[</kbd>   |
-| Format Command Under Cursor                            |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>F</kbd>   |
-| Format Document                                        |             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd>                |
-| Format Selection                                       |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>F</kbd>   |
-| Go to Bracket                                          |             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd> \ </kbd>               |
+| Fold Level 1                                   |Condense comments in Query window (around a selected line?) |<kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>1</kbd>|
+| Fold Level 2                                           |      X      | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>2</kbd>   |
+| Fold Level 3                                           |      X      | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>3</kbd>   |
+| Fold Level 4                                           |      X      | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>4</kbd>   |
+| Fold Level 5                                           |      X      | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>5</kbd>   |
+| Fold Level 6                                           |      X      | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>6</kbd>   |
+| Fold Level 7                                           |      X      | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>7</kbd>   |
+| Fold Recursively                                       | Condense line only?            | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>[</kbd>   |
+| Format Command Under Cursor                            |  Formats consistently in some cases           | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>F</kbd>   |
+| Format Document                                        |      X      | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd>                |
+| Format Selection                                       |      X      | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>F</kbd>   |
+| Go to Bracket                                          |      X      | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd> \ </kbd>               |
 | Go to Definition                                       |             | <kbd>Ctrl</kbd>+<kbd>F12</kbd>                              |
 | Go to Line/Column...                                   |             | <kbd>Ctrl</kbd>+<kbd>G</kbd>                                |
-| Go to Next Problem (Error, Warning, Info)              |             | <kbd>Alt</kbd>+<kbd>F8</kbd>                                |
-| Go to Next Problem in Files (Error, Warning, Info)     |             | <kbd>F8</kbd>                                               |
+| Go to Next Problem (Error, Warning, Info)              |      X      | <kbd>Alt</kbd>+<kbd>F8</kbd>                                |
+| Go to Next Problem in Files (Error, Warning, Info)     |      X      | <kbd>F8</kbd>                                               |
 | Go to Next Symbol Highlight                            |             | <kbd>F7</kbd>                                               |
-| Go to Previous Problem (Error, Warning, Info)          |             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F8</kbd>               |
-| Go to Previous Problem in Files (Error, Warning, Info) |             | <kbd>Shift</kbd>+<kbd>F8</kbd>                              |
-| Go to Previous Symbol Highlight                        |             | <kbd>Shift</kbd>+<kbd>F7</kbd>                              |
+| Go to Previous Problem (Error, Warning, Info)          |      X      | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F8</kbd>               |
+| Go to Previous Problem in Files (Error, Warning, Info) |      X      | <kbd>Shift</kbd>+<kbd>F8</kbd>                              |
+| Go to Previous Symbol Highlight                        |Similar to ctrl F  | <kbd>Shift</kbd>+<kbd>F7</kbd>                              |
 | Go to References                                       |             | <kbd>Shift</kbd>+<kbd>F12</kbd>                             |
 | Indent Line                                            |             | <kbd>Ctrl</kbd>+<kbd>]</kbd>                                |
 | Insert Line Above                                      |             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>           |
 | Insert Line Below                                      |             | <kbd>Ctrl</kbd>+<kbd>Enter</kbd>                            |
-| Link, query, results to clipboard                      |             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd>               |
-| Move Last Selection To Next Find Match                 |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>D</kbd>   |
+| Link, query, results to clipboard                      |Copies results to clipboard             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd>               |
+| Move Last Selection To Next Find Match                 |similar to cntl F  | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>D</kbd>   |
 | Move Line Down                                         |             | <kbd>Alt</kbd>+<kbd>DownArrow</kbd>                         |
 | Move Line Up                                           |             | <kbd>Alt</kbd>+<kbd>UpArrow</kbd>                           |
 | New Tab                                                |             | <kbd>Ctrl</kbd>+<kbd>J</kbd>                                |
 | Open Definition to the Side                            |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>F12</kbd> |
-| Outdent Line                                           |             | <kbd>Ctrl</kbd>+<kbd>[</kbd>                                |
+| Outdent Line                                           |reverse indent | <kbd>Ctrl</kbd>+<kbd>[</kbd>                                |
 | Peek Definition                                        |             | <kbd>Alt</kbd>+<kbd>F12</kbd>                               |
-| Recall Execution Result                                |             | <kbd>F8</kbd>                                               |
-| Remove Line Comment                                    |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>U</kbd>   |
+| Recall Execution Result                                |      X      | <kbd>F8</kbd>                                               |
+| Remove Line Comment                                    |removed //? | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>U</kbd>   |
 | Rename Symbol                                          |             | <kbd>F2</kbd>                                               |
 | Replace                                                |             | <kbd>Ctrl</kbd>+<kbd>H</kbd>                                |
-| Replace with Next Value                                |             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd>               |
-| Replace with Previous Value                            |             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>,</kbd>               |
-| Select All Occurrences of Find Match                   |             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>J</kbd>               |
-| Set Selection Anchor                                   |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>B</kbd>   |
+| Replace with Next Value                                | for number  | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd>               |
+| Replace with Previous Value                            | for number  | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>,</kbd>               |
+| Select All Occurrences of Find Match                   |developer mode | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>J</kbd>               |
+| Set Selection Anchor                                   |      X      | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>B</kbd>   |
 | Show Accessibility Help                                |             | <kbd>Alt</kbd>+<kbd>F1</kbd>                                |
-| Show Editor Context Menu                               |             | <kbd>Shift</kbd>+<kbd>F10</kbd>                             |
-| Show Hover                                             |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>I</kbd>   |
-| Shrink Selection                                       |             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>LeftArrow</kbd>                  |
-| Start Linked Editing                                   |             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F2</kbd>              |
+| Show Editor Context Menu                               |      X      | <kbd>Shift</kbd>+<kbd>F10</kbd>                             |
+| Show Hover                                           |shows information| <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>I</kbd>   |
+| Shrink Selection                                       |      X      | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>LeftArrow</kbd>                  |
+| Start Linked Editing                                   |      X      | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F2</kbd>              |
 | Switch to tab on the left                              |             | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>[</kbd>                 |
 | Switch to tab on the right                             |             | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>]</kbd>                 |
-| Toggle Block Comment                                   |             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>A</kbd>                |
-| Toggle Fold                                            |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>J</kbd>   |
-| Toggle Line Comment                                    |             | <kbd>Ctrl</kbd>+<kbd>/</kbd>                                |
-| Toggle Tab Key Moves Focus                             |             | <kbd>Ctrl</kbd>+<kbd>M</kbd>                                |
-| Trigger Suggest                                        |             | <kbd>Ctrl</kbd>+<kbd>Space</kbd>                            |
+| Toggle Block Comment                                   |      X      | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>A</kbd>                |
+| Toggle Fold                                            |  unfold?    | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>J</kbd>   |
+| Toggle Line Comment                                    | toggle //            | <kbd>Ctrl</kbd>+<kbd>/</kbd>                                |
+| Toggle Tab Key Moves Focus                             |     X        | <kbd>Ctrl</kbd>+<kbd>M</kbd>                                |
+| Trigger Suggest                        |Suggests options based on letter selected | <kbd>Ctrl</kbd>+<kbd>Space</kbd>                            |
 | Trim Trailing Whitespace                               |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>X</kbd>   |
-| Unfold                                                 |             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>]</kbd>               |
+| Unfold                                               |unfold selected line| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>]</kbd>               |
 | Unfold All                                             |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>J</kbd>   |
 | Unfold All Regions                                     |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>9</kbd>   |
 | Unfold All Regions Except Selected                     |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>=</kbd>   |
-| Unfold Recursively                                     |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>]</kbd>   |
+| Unfold Recursively                                   |unfold selection| <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>]</kbd>   |
 
 ## Next steps
 
