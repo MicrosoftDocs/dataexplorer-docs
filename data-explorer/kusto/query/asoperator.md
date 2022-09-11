@@ -3,11 +3,13 @@ title: as operator - Azure Data Explorer
 description: This article describes as operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/27/2022
+ms.date: 09/06/2022
 ---
 # as operator
 
-Binds a name to the operator's input tabular expression, thus allowing the query to reference the value of the tabular expression multiple times without breaking the query and binding a name through the [let statement](letstatement.md).
+Binds a name to the operator's input tabular expression. This allows the query to reference the value of the tabular expression multiple times without breaking the query and binding a name through the [let statement](letstatement.md).
+
+To optimize multiple uses of the `as` operator within a single query, see [Named expressions](../../named-expressions.md).
 
 ## Syntax
 

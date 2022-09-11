@@ -175,9 +175,12 @@ points in the Kusto:
 By default, timeout is set to four minutes for queries, and 10 minutes for
 control commands. This value can be increased if needed (capped at one hour).
 
-* If you query using Kusto.Explorer, use **Tools** &gt; **Options*** &gt;
+* Various client tools support changing the timeout as part of their global
+  or per-connection settings. For example, in Kusto.Explorer, use **Tools** &gt; **Options*** &gt;
   **Connections** &gt; **Query Server Timeout**.
-* Programmatically, set the `servertimeout` client request property, a value of type `System.TimeSpan`, up to an hour.
+* Programmatically, SDKs support setting the timeout through the `servertimeout`
+  property. For example, in .NET SDK this is done through a [client request property](../api/netfx/request-properties.md),
+  by setting a value of type `System.TimeSpan`.
 
 **Notes about timeouts**
 
@@ -243,3 +246,4 @@ The suggestion in this case is to review the query and reduce the columns being 
 ## Next steps
 
 * [Optimize for high concurrency with Azure Data Explorer](../../high-concurrency.md)
+* [Query best practices](../query/best-practices.md)

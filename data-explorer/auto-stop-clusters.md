@@ -7,7 +7,7 @@ ms.date: 11/03/2021
 ---
 # Automatic stop of inactive Azure Data Explorer clusters
 
-Azure Data Explorer clusters that have been *inactive* for a specified time interval are automatically stopped. Inactivity is defined by having no data ingestion or queries in the past 5 days.
+Azure Data Explorer clusters that have been *inactive* for a specified time interval are automatically stopped. Inactivity is defined as clusters that haven't had any data ingestion or queries in the past 5 days. The interval is fixed at 5 days and cannot be changed.
 
 Cluster behavior isn't automatically resumed. To restart the cluster, do so manually.
 

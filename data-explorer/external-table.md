@@ -1,34 +1,32 @@
 ---
-title: Create an external table using the Web UI Wizard in Azure Data Explorer
-description: Use the one-click experience to create an external table.
+title: Create an external table using the Azure Data Explorer web UI wizard in Azure Data Explorer
+description: Use the wizard experience to create an external table.
 ms.reviewer: ohbitton
 ms.topic: how-to
-ms.date: 02/07/2022
+ms.date: 08/25/2022
 ---
 
-# Create an external table using the Web UI wizard
+# Create an external table using the Azure Data Explorer web UI wizard
 
-An external table is a schema entity that references data stored outside the Azure Data Explorer database. Azure Data Explorer Web UI can create external tables by taking sample files from a storage container and creating schema based on these samples. You can then analyze and query data in external tables without ingestion into Azure Data Explorer. For information about different ways to create external tables, see [create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md).
-
-This article shows you how to create an external table using the one-click experience.
+An external table is a schema entity that references data stored outside the Azure Data Explorer database. Azure Data Explorer web UI can create external tables by taking sample files from a storage container and creating schema based on these samples. You can then analyze and query data in external tables without ingestion into Azure Data Explorer. For a brief overview, see [external tables](kusto/query/schema-entities/externaltables.md). For information about different ways to create external tables, see [create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md). This article shows you how to create an external table using the creation wizard experience.
 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Create [a cluster and database](create-cluster-database-portal.md).
-* Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
+* Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 ## Create an external table
 
 There are two ways to access the creation wizard:
 
-* In the left menu of the Web UI, select **Data**. In the **Create external table** card, select **Create**.
+* In the left menu of the Azure Data Explorer web UI, select **Data**. In the **Create external table** card, select **Create**.
 
-     :::image type="content" source="media/external-table/create-external-table.png" alt-text="Screenshot of data blade in Azure Data Explorer Web UI with create external table highlighted.":::
+     :::image type="content" source="media/external-table/data-create-external-table.png" alt-text="Screenshot of data blade in Azure Data Explorer web UI with create external table highlighted.":::
 
-* In the left pane of the Web UI, select **Query**. In the left menu, right-click on your database name and select **Create external table**.
+* In the left pane of the Azure Data Explorer web UI, select **Query**. In the left menu, right-click on your database name and select **Create external table**.
 
-    :::image type="content" source="media/external-table/ingest-new-data-database-menu.png" alt-text="Screenshot of how to access the wizard to create an external table in the Azure Data Explorer WebUI.":::
+    :::image type="content" source="media/external-table/ingest-new-data-database-menu.png" alt-text="Screenshot of how to access the wizard to create an external table in the Azure Data Explorer web UI.":::
 
 The **Create external table** window opens with the **Destination** tab selected.
 
@@ -50,9 +48,9 @@ You can add up to 10 source containers.
 
 #### Add a container with the **Select container** button
 
-1. Click **Select container**.
+1. Select **Select container**.
 
-    :::image type="content" source="media/external-table/select-container.png" alt-text="Screen shot of select container button in source tab.":::
+    :::image type="content" source="media/external-table/select-container.png" alt-text="Screenshot of select container button in source tab.":::
 
 1. Choose the relevant subscription and storage account associated with your container.
 
@@ -70,7 +68,7 @@ You can add up to 10 source containers.
 
 1. Enter an [account key or SAS URL](kusto/api/connection-strings/generate-sas-token.md) to your source container with read and list permissions. When verification has completed, a green check will appear to the right of the container link.
 
-    :::image type="content" source="media/external-table/add-sas-url.png" alt-text="Screen shot of adding SAS URL.":::
+    :::image type="content" source="media/external-table/add-sas-url.png" alt-text="Screenshot of adding SAS URL.":::
 
 #### File filters
 
@@ -120,12 +118,12 @@ In the right-hand side of the tab, you can preview your data. On the left-hand s
 1. Select **Add partition** to add another partition.
 1. Select **Save**. The partitions you added now appear in the list of **Partitions** in the left pane. Partitioned columns can't be changed in preview.
 
-    :::image type="content" source="media/external-table/schema.png" alt-text="Screen shot of schema external table Azure Data Explorer.":::
+    :::image type="content" source="media/external-table/schema.png" alt-text="Screenshot of schema external table Azure Data Explorer.":::
 
 1. Select **Next: Create table**. When the table is created, an **External table successfully created** window opens.
 1. To view the command used to create the table, select **View command**.
 
-    :::image type="content" source="media/external-table/successfully-created.png" alt-text="Screen shot of successful creation of external table in Azure Data Explorer.":::
+    :::image type="content" source="media/external-table/successfully-created.png" alt-text="Screenshot of successful creation of external table in Azure Data Explorer.":::
 1. To undo the creation of the external table, select **Tools** > **Undo**.
 
 ## Query the external table

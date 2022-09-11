@@ -3,7 +3,7 @@ title: 'Azure Data Explorer data ingestion overview'
 description: 'Learn about the different ways you can ingest (load) data in Azure Data Explorer'
 ms.reviewer: tzgitlin
 ms.topic: conceptual
-ms.date: 11/08/2021
+ms.date: 07/31/2022
 ---
 
 # Azure Data Explorer data ingestion overview
@@ -20,7 +20,7 @@ Azure Data Explorer pulls data from an external source and reads requests from a
 
 ## Supported data formats, properties, and permissions
 
-* **[Supported data formats](ingestion-supported-formats.md)** 
+* **[Supported data formats](ingestion-supported-formats.md)**
 
 * **[Ingestion properties](ingestion-properties.md)**: The properties that affect how the data will be ingested (for example, tagging, mapping, creation time).
 
@@ -28,7 +28,7 @@ Azure Data Explorer pulls data from an external source and reads requests from a
 
 ## Batching vs streaming ingestion
 
-* Batching ingestion does data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. The [ingestion batching](kusto/management/batchingpolicy.md) policy can be set on databases or tables. By default, the maximum batching value is 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a batch ingestion command is 4 GB.
+* Batching ingestion does data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. The [ingestion batching](kusto/management/batchingpolicy.md) policy can be set on databases or tables. By default, the maximum batching value is 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a batch ingestion command is 6 GB.
 
 * [Streaming ingestion](ingest-data-streaming.md) is ongoing data ingestion from a streaming source. Streaming ingestion allows near real-time latency for small sets of data per table. Data is initially ingested to row store, then moved to column store extents. Streaming ingestion can be done using an Azure Data Explorer client library or one of the supported data pipelines.
 
@@ -47,10 +47,10 @@ For organizations who wish to have management (throttling, retries, monitors, al
 * **[IoT Hub](https://azure.microsoft.com/services/iot-hub/)**: A pipeline that is used for the transfer of data from supported IoT devices to Azure Data Explorer. For more information, see [Ingest from IoT Hub](ingest-data-iot-hub.md).
 
 * **Azure Data Factory (ADF)**: A fully managed data integration service for analytic workloads in Azure. Azure Data Factory connects with over 90 supported sources to provide efficient and resilient data transfer. ADF prepares, transforms, and enriches data to give insights that can be monitored in different kinds of ways. This service can be used as a one-time solution, on a periodic timeline, or triggered by specific events.
-    * [Integrate Azure Data Explorer with Azure Data Factory](data-factory-integration.md).
-    * [Use Azure Data Factory to copy data from supported sources to Azure Data Explorer](./data-factory-load-data.md).
-    * [Copy in bulk from a database to Azure Data Explorer by using the Azure Data Factory template](data-factory-template.md).
-    * [Use Azure Data Factory command activity to run Azure Data Explorer control commands](data-factory-command-activity.md).
+  * [Integrate Azure Data Explorer with Azure Data Factory](data-factory-integration.md).
+  * [Use Azure Data Factory to copy data from supported sources to Azure Data Explorer](./data-factory-load-data.md).
+  * [Copy in bulk from a database to Azure Data Explorer by using the Azure Data Factory template](data-factory-template.md).
+  * [Use Azure Data Factory command activity to run Azure Data Explorer control commands](data-factory-command-activity.md).
 
 ### Ingestion using connectors and plugins
 
@@ -77,7 +77,7 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 
 ### Tools
 
-* **[One click ingestion](ingest-data-one-click.md)**: Enables you to quickly ingest data by creating and adjusting tables from a wide range of source types. One click ingestion automatically suggests tables and mapping structures based on the data source in Azure Data Explorer. One click ingestion can be used for one-time ingestion, or to define continuous ingestion via Event Grid on the container to which the data was ingested.
+* The **[ingestion wizard](ingest-data-one-click.md)**: Enables you to quickly ingest data by creating and adjusting tables from a wide range of source types. The ingestion wizard automatically suggests tables and mapping structures based on the data source in Azure Data Explorer. The wizard can be used for one-time ingestion, or to define continuous ingestion via Event Grid on the container to which the data was ingested.
 
 * **[LightIngest](lightingest.md)**: A command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder or from an Azure blob storage container.
 
@@ -95,13 +95,13 @@ Use commands to ingest data directly to the engine. This method bypasses the Dat
 
 | Ingestion name | Data type | Maximum file size | Streaming, batching, direct | Most common scenarios | Considerations |
 | --- | --- | --- | --- | --- | --- |
-| [**One click ingestion**](ingest-data-one-click.md) | *sv, JSON | 1 GB uncompressed (see note)| Batching to container, local file and blob in direct ingestion | One-off, create table schema, definition of continuous ingestion with event grid, bulk ingestion with container (up to 5,000 blobs; no limit when using historical ingestion) |  |
+| [**Ingestion wizard**](ingest-data-one-click.md) | *sv, JSON | 1 GB uncompressed (see note)| Batching to container, local file and blob in direct ingestion | One-off, create table schema, definition of continuous ingestion with Event Grid, bulk ingestion with container (up to 5,000 blobs; no limit when using historical ingestion) |  |
 | [**LightIngest**](lightingest.md) | All formats supported | 1 GB uncompressed (see note) | Batching via DM or direct ingestion to engine |  Data migration, historical data with adjusted ingestion timestamps, bulk ingestion (no size restriction)| Case-sensitive, space-sensitive |
 | [**ADX Kafka**](ingest-data-kafka.md) |Avro, ApacheAvro, JSON, CSV, Parquet, and ORC |Unlimited. Inherits Java restrictions.| Batching, streaming |Existing pipeline, high volume consumption from the source.| Preference may be determined by which “multiple producer/consumer” service is already used, or how managed of a service is desired. |
 | [**ADX to Apache Spark**](spark-connector.md) | Every format supported by the Spark environment  | Unlimited | Batching | Existing pipeline, preprocessing on Spark before ingestion, fast way to create a safe (Spark) streaming pipeline from the various sources the Spark environment supports. | Consider cost of Spark cluster. For batch write, compare with Azure Data Explorer data connection for Event Grid. For Spark streaming, compare with the data connection for event hub.
 | [**LogStash**](ingest-data-logstash.md) | JSON | Unlimited. Inherits Java restrictions. | Inputs to the connector are Logstash events, and the connector outputs to Kusto using batching ingestion.| Existing pipeline, leverage the mature, open source nature of Logstash for high volume consumption from the input(s).| Preference may be determined by which “multiple producer/consumer” service is already used, or how managed of a service is desired.
 | [**Azure Data Factory (ADF)**](./data-factory-integration.md) | [Supported data formats](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | Unlimited *(per ADF restrictions) | Batching or per ADF trigger | Supports formats that are usually unsupported, large files, can copy from over 90 sources, from on perm to cloud | This method takes relatively more time until data is ingested. ADF uploads all data to memory and then begins ingestion. |
-|[ **Power Automate**](./flow.md) | All formats supported| 1 GB uncompressed (see note) | Batching | Ingestion commands as part of flow. Used to automate pipelines. |
+| [**Power Automate**](./flow.md) | All formats supported| 1 GB uncompressed (see note) | Batching | Ingestion commands as part of flow. Used to automate pipelines. |
 | [**Logic Apps**](kusto/tools/logicapps.md)| All formats supported | 1 GB uncompressed (see note) | Batching | Used to automate pipelines |
 | [**IoT Hub**](ingest-data-iot-hub-overview.md) | [Supported data formats](ingest-data-iot-hub-overview.md#data-format)  | N/A | Batching, streaming | IoT messages, IoT events, IoT properties | |
 | [**Event Hub**](ingest-data-event-hub-overview.md) | [Supported data formats](ingest-data-event-hub-overview.md#data-format) | N/A | Batching, streaming | Messages, events | |
@@ -113,8 +113,8 @@ Use commands to ingest data directly to the engine. This method bypasses the Dat
 | [**REST**](kusto/api/netfx/kusto-ingest-client-rest.md) | All formats supported | 1 GB uncompressed (see note) | Batching, streaming, direct| Write your own code according to organizational needs |
 | [**Go**](kusto/api/golang/kusto-golang-client-library.md) | All formats supported | 1 GB uncompressed (see note) | Batching, streaming, direct | Write your own code according to organizational needs |
 
-> [!Note]
-> When referenced in the above table, ingestion supports a maximum file size of 4 GB. The recommendation is to ingest files between 100 MB and 1 GB.
+> [!NOTE]
+> When referenced in the above table, ingestion supports a maximum file size of 6 GB. The recommendation is to ingest files between 100 MB and 1 GB.
 
 ## Ingestion process
 
@@ -122,7 +122,7 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
 
 1. **Set batching policy** (optional)
 
-     The batching manager batches ingestion data based on the [ingestion batching policy](kusto/management/batchingpolicy.md). Define a batching policy before ingestion. See [ingestion best practices - optimizing for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput). Batching policy changes can require up to 5 minutes to take effect. The policy sets batch limits according to three factors: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. By default, settings are 5 minutes / 1000 blobs / 1 GB, with the limit first reached taking effect. Therefore there is usually a 5 minute delay when queueing sample data for ingestion.
+     The batching manager batches ingestion data based on the [ingestion batching policy](kusto/management/batchingpolicy.md). Define a batching policy before ingestion. See [ingestion best practices - optimizing for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput). Batching policy changes can require up to 5 minutes to take effect. The policy sets batch limits according to three factors: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. By default, settings are 5 minutes / 1000 blobs / 1 GB, with the limit first reached taking effect. Therefore there's usually a 5-minute delay when queueing sample data for ingestion.
 
 1. **Set retention policy**
 
@@ -135,7 +135,7 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
     In order to ingest data, a table needs to be created beforehand. Use one of the following options:
 
     * Create a table [with a command](kusto/management/create-table-command.md).
-    * Create a table using [One Click Ingestion](one-click-ingestion-new-table.md).
+    * Create a table using the [ingestion wizard](one-click-ingestion-new-table.md).
 
     > [!Note]
     > If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.
@@ -148,9 +148,9 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
 
    Some of the data format mappings (Parquet, JSON, and Avro) support simple and useful ingest-time transformations. If the scenario requires more complex processing at ingestion, adjust the [update policy](./kusto/management/show-table-update-policy-command.md), which supports lightweight processing using query commands. The update policy automatically runs extractions and transformations on ingested data on the original table, and ingests the resulting data into one or more destination tables.
 
-1. **Ingest data** 
+1. **Ingest data**
 
-    You can [ingest sample data](ingest-sample-data.md) into the table you created in your database using commands or the one-click wizard.
+    You can [ingest sample data](ingest-sample-data.md) into the table you created in your database using commands or the ingestion wizard.
     To ingest your own data, you can select from a range of options, including [ingestion tools](#comparing-ingestion-methods-and-tools), [connectors and plugins](#ingestion-using-connectors-and-plugins) to diverse services, [managed pipelines](#ingestion-using-managed-pipelines), [programmatic ingestion using SDKs](#programmatic-ingestion-using-sdks), and [direct access to ingestion](#ingest-control-commands).
 
 ## Next steps

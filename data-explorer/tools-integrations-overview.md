@@ -3,7 +3,7 @@ title: Azure Data Explorer tools and integrations overview - Azure Data Explorer
 description: This article describes tools and integrations in Azure Data Explorer.
 ms.reviewer: olgolden
 ms.topic: conceptual
-ms.date: 12/15/2021
+ms.date: 07/03/2022
 ---
 # Azure Data Explorer tools and integrations overview
 
@@ -43,11 +43,11 @@ or [from a local file to an existing table](one-click-ingestion-existing-table.m
 
 There are several tools available for running queries in Azure Data Explorer.
 
+* [Azure Data Explorer web UI](web-query-data.md)
 * Kusto.Explorer
-    * [installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
-    * Additional topics include [options](kusto/tools/kusto-explorer-options.md), [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code refactoring](kusto/tools/kusto-explorer-refactor.md), [code navigation](kusto/tools/kusto-explorer-codenav.md), and [code analyze](kusto/tools/kusto-explorer-code-analyzer.md)
-* [Web UI](web-query-data.md)
-* [Kusto.Cli](kusto/tools/kusto-cli.md)
+  * [installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
+  * Additional topics include [options](kusto/tools/kusto-explorer-options.md), [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code refactoring](kusto/tools/kusto-explorer-refactor.md), [code navigation](kusto/tools/kusto-explorer-codenav.md), and [code analyze](kusto/tools/kusto-explorer-code-analyzer.md)
+* [Kusto CLI](kusto/tools/kusto-cli.md)
 
 ### Query open source repositories
 
@@ -55,8 +55,8 @@ The following open source repositories contain the source code for the Kusto Que
 
 * [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language) - A .NET core repository for the Kusto Query Language parser and semantic tree.
 * [Kusto Query Language setup and usage for the Monaco editor](./kusto/api/monaco/monaco-kusto.md) - The Kusto Query Language editor that can be embedded in web and electron based applications.
-    * [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto) - Access the Kusto Query Language editor plugin.
-    * [Embedding the Web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) - The Web UI can be embedded in an iframe and hosted in third-party websites.
+  * [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto) - Access the Kusto Query Language editor plugin.
+  * [Embedding the Azure Data Explorer web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) - The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites.
 
 ### Query integrations
 
@@ -69,7 +69,7 @@ The following open source repositories contain the source code for the Kusto Que
 
 ## Visualizations, dashboards, and reporting
 
-The [visualization overview](viz-overview.md) details data visualization, dashboards, and reporting options. 
+The [visualization overview](viz-overview.md) details data visualization, dashboards, and reporting options.
 
 ## Notebook connectivity
 
@@ -80,9 +80,9 @@ The [visualization overview](viz-overview.md) details data visualization, dashbo
 ## Orchestration
 
 * Power Automate
-    * [Power Automate connector](flow.md)
-    * [Power Automate connector usage examples](flow-usage.md)
-* [Microsoft Logic App](kusto/tools/logicapps.md) 
+  * [Power Automate connector](flow.md)
+  * [Power Automate connector usage examples](flow-usage.md)
+* [Microsoft Logic App](kusto/tools/logicapps.md)
 * [Azure Data Factory](data-factory-integration.md)
 
 ## Share data
@@ -91,6 +91,6 @@ The [visualization overview](viz-overview.md) details data visualization, dashbo
 
 ## Source control integration
 
-* [Azure Pipelines](devops.md) 
-* [Sync Kusto](kusto/tools/synckusto.md) 
+* [Azure Pipelines](devops.md)
+* [Sync Kusto](kusto/tools/synckusto.md)
 * [Delta Kusto](https://github.com/microsoft/delta-kusto)

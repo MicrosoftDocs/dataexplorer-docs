@@ -5,11 +5,11 @@ ms.reviewer: avnera
 ms.topic: conceptual
 ms.date: 05/18/2021
 ---
-# Azure Data Explorer performance update (EngineV3)
+# Azure Data Explorer EngineV3
 
-Kusto EngineV3 is Azure Data Explorer’s performance update next generation storage and query engine. It's designed to provide unparalleled performance for ingesting and querying telemetry, logs, and time series data.
+Kusto EngineV3 is Azure Data Explorer’s performance update next generation storage and query engine. It's designed to provide unparalleled performance for ingesting and querying telemetry, logs, and timeseries data.
 
-EngineV3 includes a new optimized storage format and indexes. EngineV3 uses advanced data statistics query optimizations to create an optimal query plan and just-in-time compiled query execution. EngineV3 also has improved disk cache resulting in query performance with an order of magnitude improvement over the current engine (EngineV2). EngineV3 lays the foundation for the next wave of innovations of the Azure Data Explorer service.
+EngineV3 includes a new optimized storage format and indexes and uses advanced data statistics query optimizations to create an optimal query plan and just-in-time compiled query execution. EngineV3 also has improved disk cache resulting in query performance with an order of magnitude improvement over the current engine (EngineV2). EngineV3 lays the foundation for the next wave of innovations of the Azure Data Explorer service.
 
 Azure Data Explorer cluster running in EngineV3 mode is fully compatible with the EngineV2, so data migration isn't required.
 

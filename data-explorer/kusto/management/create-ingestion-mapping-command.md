@@ -63,4 +63,5 @@ Creates an ingestion mapping that can be associated with a specific format and a
 ```
 
 ## Next steps
-For more information about ingestion mapping, see [Data mappings](mappings.md).
+
+For detailed descriptions of various ingestion mapping formats such as CSV, JSON, Avro, Parquet, and Orc, see [Data mappings](mappings.md).

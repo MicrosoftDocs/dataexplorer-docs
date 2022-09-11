@@ -4,11 +4,11 @@
   items:
   - name: Azure Data Explorer
     tocHref: /azure/data-explorer/
-    topicHref: /azure/data-explorer/
+    topicHref: /azure/data-explorer/index
     items:
-      - name: Kusto
-        tocHref: /azure/data-explorer/kusto/
-        topicHref: /azure/data-explorer/kusto/
+    - name: Kusto
+      tocHref: /azure/data-explorer/kusto/query/
+      topicHref: /azure/data-explorer/kusto/query/index
 
 - name: Azure
   tocHref: /sql/

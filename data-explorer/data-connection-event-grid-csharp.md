@@ -3,13 +3,13 @@ title: 'Create an Event Grid data connection for Azure Data Explorer by using C#
 description: In this article, you learn how to create an Event Grid data connection for Azure Data Explorer by using C#.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 03/15/2022
+ms.date: 07/31/2022
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer by using C\#
 
 > [!div class="op_single_selector"]
-> * [One-click](one-click-ingestion-new-table.md)
+> * [Ingestion wizard](one-click-ingestion-new-table.md)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
@@ -166,7 +166,8 @@ dataLakeFileClient.Upload(localFileName, uploadOptions);
 ```
 
 > [!NOTE]
-> When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0, and this event is ignored by Azure Data Explorer. File flushing triggers another event if the *Close* parameter is set to *true*. This event indicates that this is the final update and the file stream has been closed. This event is processed by the Event Grid data connection. In the code snippet above, the Upload method triggers flushing when the file upload is finished. Therefore, a *Close* parameter set to *true* must be defined. For more information about flushing, see [Azure Data Lake flush method](/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush).
+> When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, the file creation triggers an Event Grid event with size 0, which Azure Data Explorer ignores when ingesting the data. File flushing with the *close* parameter set to *true* triggers another event indicating that this is the final update and the file stream has been closed. This *FlushAndClose* event is processed by Azure Data Explorer during ingestion. In the upload file code snippet, the *Close* parameter is set to *true* causing the Upload method to trigger the *FlushAndClose* event.
+To reduce traffic coming from Event Grid and the subsequent processing when ingesting events into Azure Data Explorer, we highly recommend [filtering](ingest-data-event-grid-manual.md#create-an-event-grid-subscription) the *data.api* key to only include *FlushAndClose* events, thereby removing file creation events with size 0. For more information about flushing, see [Azure Data Lake flush method](/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush).
 
 ### Rename file using Azure Data Lake SDK
 

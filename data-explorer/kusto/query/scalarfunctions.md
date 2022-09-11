@@ -37,8 +37,10 @@ This article lists all available scalar functions grouped by type. For aggregati
 |-------------------------|--------------------------------------------------------|
 |[ago()](agofunction.md)|Subtracts the given timespan from the current UTC clock time.|
 |[datetime_add()](datetime-addfunction.md)|Calculates a new datetime from a specified datepart multiplied by a specified amount, added to a specified datetime.|
-|[datetime_part()](datetime-partfunction.md)|Extracts the requested date part as an integer value.|
 |[datetime_diff()](datetime-difffunction.md)|Returns the end of the year containing the date, shifted by an offset, if provided.|
+|[datetime_local_to_utc()](datetime-local-to-utc-function.md) |  Converts local datetime to UTC datetime using [a time-zone specification](../query/timezone.md). 
+|[datetime_part()](datetime-partfunction.md)|Extracts the requested date part as an integer value.|
+| [datetime_utc_to_local()](datetime-utc-to-local-function.md) | Converts UTC datetimgoe to local datetime using a [time-zone specification](../query/timezone.md).
 |[dayofmonth()](dayofmonthfunction.md)|Returns the integer number representing the day number of the given month.|
 |[dayofweek()](dayofweekfunction.md)|Returns the integer number of days since the preceding Sunday, as a timespan.|
 |[dayofyear()](dayofyearfunction.md)|Returns the integer number represents the day number of the given year.|
@@ -66,7 +68,6 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[unixtime_nanoseconds_todatetime()](unixtime-nanoseconds-todatetimefunction.md)|Converts unix-epoch nanoseconds to UTC datetime.|
 |[unixtime_seconds_todatetime()](unixtime-seconds-todatetimefunction.md)|Converts unix-epoch seconds to UTC datetime.|
 |[weekofyear()](weekofyearfunction.md)|Returns an integer representing the week number.|
-
 
 ## Dynamic/array functions
 
@@ -310,6 +311,15 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[format_ipv4()](format-ipv4-function.md)|Parses input with a netmask and returns string representing IPv4 address.|
 |[format_ipv4_mask()](format-ipv4-mask-function.md)|Parses input with a netmask and returns string representing IPv4 address as CIDR notation.|
 
+## IPv4 text match functions
+
+|Function Name     |Description                                          |
+|-------------------------|--------------------------------------------------------|
+|[has_ipv4()](has-ipv4-function.md)|Searches for an IPv4 address in a text.|
+|[has_ipv4_prefix()](has-ipv4-prefix-function.md)|Searches for an IPv4 address or prefix in a text.|
+|[has_any_ipv4()](has-any-ipv4-function.md)|Searches for any of the specified IPv4 addresses in a text.|
+|[has_any_ipv4_prefix()](has-any-ipv4-prefix-function.md)|Searches for any of the specified IPv4 addresses or prefixes in a text.|
+
 ## Type functions
 
 |Function Name     |Description                                          |
@@ -384,3 +394,16 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[hash_sha1()](sha1-hash-function.md)|Returns a SHA1 hash value for the input value.|
 |[hash_sha256()](sha256hashfunction.md)|Returns a SHA256 hash value for the input value.|
 |[hash_xxhash64()](hash-xxhash64-function.md)|Returns an XXHASH64 hash value for the input value.|
+
+## Units conversion functions
+
+|Function Name                                            | Description                                                            |
+|---------------------------------------------------------|------------------------------------------------------------------------|
+| [convert_angle()](convert-angle-function.md)             | Returns the input value converted from one angle unit to another       |
+| [convert_energy()](convert-energy-function.md)           | Returns the input value converted from one energy unit to another      |
+| [convert_force()](convert-force-function.md)             | Returns the input value converted from one force unit to another       |
+| [convert_length()](convert-length-function.md)           | Returns the input value converted from one length unit to another      |
+| [convert_mass()](convert-mass-function.md)               | Returns the input value converted from one mass unit to another        |
+| [convert_speed()](convert-speed-function.md)             | Returns the input value converted from one speed unit to another       |
+| [convert_temperature()](convert-temperature-function.md) | Returns the input value converted from one temperature unit to another |
+| [convert_volume()](convert-volume-function.md)           | Returns the input value converted from one volume unit to another      |

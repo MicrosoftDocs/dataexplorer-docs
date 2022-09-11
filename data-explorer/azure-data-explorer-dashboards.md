@@ -3,35 +3,35 @@ title: Visualize data with the Azure Data Explorer dashboard
 description: Learn how to visualize data with the Azure Data Explorer dashboard
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 01/26/2022
+ms.date: 09/05/2022
 ---
 
-# Visualize data with Azure Data Explorer dashboards(Preview)
+# Visualize data with Azure Data Explorer dashboards (Preview)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides a web application that enables you to run queries and build dashboards. Dashboards are available in the stand-alone web application, the [Web UI](web-query-data.md). Azure Data Explorer is also integrated with other dashboard services like [Power BI](power-bi-connector.md) and [Grafana](grafana.md).
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides a web application that enables you to run queries and build dashboards. Dashboards are available in the stand-alone web application, the [Azure Data Explorer web UI](web-query-data.md). Azure Data Explorer is also integrated with other dashboard services like [Power BI](power-bi-connector.md) and [Grafana](grafana.md).
 
 Azure Data Explorer dashboards provide three main advantages:
 
-* Natively export queries from the Web UI to Azure Data Explorer dashboards.
-* Explore the data in the Web UI.
+* Natively export queries from the Azure Data Explorer web UI to Azure Data Explorer dashboards.
+* Explore the data in the Azure Data Explorer web UI.
 * Optimized dashboard rendering performance.
 
 The following image depicts an Azure Data Explorer dashboard.
 
-:::image type="content" source="media/adx-dashboards/dash.png" alt-text="Final dashboard.":::
+:::image type="content" source="media/adx-dashboards/dash.png" alt-text="Screenshot showing an Azure Data Explorer web UI dashboard.":::
 
 > [!IMPORTANT]
-> Your data is secure. Dashboards and dashboard-related metadata about users is encrypted at rest.
+> Your data is secure. Dashboards and dashboard-related metadata about users is encrypted at rest using Microsoft-managed keys.
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
-* Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
+* Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 ## Create a dashboard
 
-You can create a dashboard in the Web UI using the following steps. Alternatively, you can create a dashboard by [importing a dashboard file](#to-create-new-dashboard-from-a-file).
+You can create a dashboard in the Azure Data Explorer web UI using the following steps. Alternatively, you can create a dashboard by [importing a dashboard file](#to-create-new-dashboard-from-a-file).
 
 1. In the navigation bar, select **Dashboards (Preview)** and then select **New dashboard**.
 
@@ -54,6 +54,7 @@ Add a data source for the dashboard.
     1. Enter a **Data source name**.
     1. Enter the **Cluster URI** region and then select **Connect**.
     1. Select the **Database** from the drop-down list.
+    1. Enter a value for  **Query results cache max age** to enable query results cache on all queries of this data source. The max age can be in units of seconds, hours, or days.
     1. Select **Apply**.
 
     :::image type="content" source="media/adx-dashboards/data-source-pane.png" alt-text="Data source pane.":::
@@ -76,7 +77,7 @@ Parameters significantly improve dashboard rendering performance, and enable you
 |**Parameter type**|One of the following:<br>- **Single Selection**: Only one value can be selected in the filter as input for the parameter.<br>- **Multiple Selection**: One or more values can be selected in the filter as input(s) for the parameter.<br>- **Time Range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.<br>- The parameter type you select will affect the way you write any query that's based on this parameter.|
 |**Variable name**|The name of the parameter to be used in the query.|
 |**Data type**|The data type of the parameter values.|
-|**Pin as dashboard filter**|The option to pin the parameter-based filter to the dashboard .|
+|**Pin as dashboard filter**|The option to pin the parameter-based filter to the dashboard.|
 |**Source**|The source of the parameter values:<br>- **Fixed values**: Manually introduced static filter values.<br>- **Query**: Dynamically introduced values using a KQL query.|
 |**Value column**|Results column to be used as parameter values. Only applicable for query-based parameters.|
 |**Label column**|Results column to be used for parameter labels. Only applicable for query-based parameters.|
@@ -245,7 +246,7 @@ You can update an existing dashboard, or restore a previous version, as follows:
 
 1. In the dashboard, select **File** > **Replace with file**.
 
-    :::image type="content" source="media/adx-dashboards/replace-dashboard-file.png" alt-text="Screenshot of dashboard, showing the replace with file option.":::
+    :::image type="content" source="media/adx-dashboards/replace-dashboard-file.png" alt-text="Screenshot of dashboard, showing the option to replace with file.":::
 
 1. Select the file to update the dashboard.
 1. Select **Save changes**.
@@ -268,8 +269,8 @@ You can update an existing dashboard, or restore a previous version, as follows:
 >
 > * Select the smallest minimum time interval to reduce unnecessary load on the cluster.
 > * A dashboard viewer:
->     * Can change the minimum time intervals for personal use only.
->     * Can't select a value which is smaller than the **Minimum time interval** specified by the editor.
+>   * Can change the minimum time intervals for personal use only.
+>   * Can't select a value which is smaller than the **Minimum time interval** specified by the editor.
 
 ## Next Steps
 
