@@ -27,7 +27,7 @@ The wizard can be accessed either from the **Data** tab, or from the **Query** t
 
 1. In the **Data** tab, from the **Quick actions** section, select **Ingest new data**. Alternatively, from the **All actions** section, select **Ingest new data** and then **Ingest**.
 
-   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select one-click ingestion for a table.":::
+   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select the ingestion wizard for a table.":::
 
 1. In the **Query tab**, right-click a *database* and select **Ingest new data**.
 
