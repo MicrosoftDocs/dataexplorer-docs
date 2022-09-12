@@ -38,16 +38,16 @@ In addition, run the following command to verify that the DNS name of each FQDN 
 
 ```bash
 #replace the <...> placeholders with the correct values
-nslookup kustope.westeurope.kusto.windows.net
+nslookup <cluster-name>.<cluster-region>.kusto.windows.net
 
 #Results in the following output:
-Server:127.0.0.53
-Address:127.0.0.53#53
+Server:'Server'
+Address:'Address'
 
 Non-authoritative answer:
-kustope.westeurope.kusto.windows.netcanonical name = kustope.privatelink.westeurope.kusto.windows.net.
-Name:kustope.privatelink.westeurope.kusto.windows.net
-Address: 10.1.1.12
+<cluster-name>.<cluster-region>.kusto.windows.netcanonical name = <cluster-name>.privatelink.<cluster-region>.kusto.windows.net.
+Name:<cluster-name>.privatelink.<cluster-region>.kusto.windows.net
+Address: 'Address'
 ```
 
 If you find an FQDN that doesn't match its corresponding IP address, you need to fix your custom DNS server. If you aren't using a custom DNS server, create a support ticket.
@@ -58,14 +58,14 @@ Check if you can establish a TCP connection every FQDN of the private endpoint D
 
 ```Powershell
 #replace the <...> placeholders with the correct values
-Test-NetConnection -ComputerName kustope.westeurope.kusto.windows.net -Port 443
+Test-NetConnection -ComputerName <cluster-name>.<cluster-region>.kusto.windows.net -Port 443
 
 #Results in the following output:
-ComputerName     : kustope.westeurope.kusto.windows.net
-RemoteAddress    : 10.1.1.12
+ComputerName     : <cluster-name>.<cluster-region>.kusto.windows.net
+RemoteAddress    : 'RemoteAddress'
 RemotePort       : 443
 InterfaceAlias   : Ethernet
-SourceAddress    : 10.2.1.23
+SourceAddress    : 'SourceAddress'
 TcpTestSucceeded : True
 ```
 
@@ -78,11 +78,11 @@ The last step of the troubleshooting is to test the health of the cluster.
 ```Powershell
 #replace the <...> placeholders with the correct values
 #engine
-Invoke-RestMethod https://kustope.westeurope.kusto.windows.net/v1/rest/ping
+Invoke-RestMethod https://<cluster-name>.<cluster-region>.kusto.windows.net/v1/rest/ping
 Pong! IP address: 'IPv6IPaddress1'
 
 #data management
-Invoke-RestMethod https://ingest-kustope.westeurope.kusto.windows.net/v1/rest/ping
+Invoke-RestMethod https://ingest-<cluster-name>.<cluster-region>.kusto.windows.net/v1/rest/ping
 Pong! IP address: 'IPv6IPaddress2'
 ```
 

@@ -3,11 +3,30 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/01/2022
+ms.date: 09/06/2022
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## August 2022
+
+**General**
+
+| Article title | Description |
+|--|--|
+|- [Use the ingestion wizard to ingest JSON data](ingestion-wizard-existing-table.md) <br />- [Azure Data Explorer web UI overview](web-ui-overview.md)|Updated articles. Added references to ingestion wizard and updated UI.|
+
+**Management**
+
+| Article title | Description |
+|--|--|
+|[.cancel operation command](kusto/management/cancel-operation-command.md)| New article. Describes how use the `.cancel operation` command.|
+|[How to authenticate with Azure Active Directory](kusto/management/access-control/how-to-authenticate-with-aad.md)| Updated article. Updated with Microsoft Authentication Library authentication.|
+|[.drop extents](kusto/management/drop-extents.md)| Updated article. Added examples to drop specific extents.|
+|[Queries management](kusto/management/queries.md)| Updated article. Added show by user command.
+|- [Ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md)|Updated article. Added ingest from Amazon S3.
+|- [.create-or-alter function](kusto/management/create-alter-function.md)<br />- [.create function](kusto/management/create-function.md)| New and updated article. Added new parameter for stored view.|
 
 ## July 2022
 
