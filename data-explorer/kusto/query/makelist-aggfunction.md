@@ -81,7 +81,7 @@ let shapes = datatable (name: string, sideCount: int)
     "pentagon", 5,
     "hexagon", 6,
     "heptagon", 7,
-    "octogon", 8,
+    "octagon", 8,
     "nonagon", 9,
     "decagon", 10
 ];
@@ -94,7 +94,7 @@ shapes
 |isEvenSideCount| mylist|
 |---|---|
 |false|["triangle","pentagon","heptagon","nonagon"]|
-|true|["square","rectangle","hexagon","octogon","decagon"]|
+|true|["square","rectangle","hexagon","octagon","decagon"]|
 
 ### Packing a dynamic object
 
@@ -111,7 +111,7 @@ let shapes = datatable (name: string, sideCount: int)
     "pentagon", 5,
     "hexagon", 6,
     "heptagon", 7,
-    "octogon", 8,
+    "octagon", 8,
     "nonagon", 9,
     "decagon", 10
 ];
@@ -125,7 +125,7 @@ shapes
 |mylist|isEvenSideCount|
 |---|---|
 |false|[{"name":"triangle","sideCount":3},{"name":"pentagon","sideCount":5},{"name":"heptagon","sideCount":7},{"name":"nonagon","sideCount":9}]|
-|true|[{"name":"square","sideCount":4},{"name":"rectangle","sideCount":4},{"name":"hexagon","sideCount":6},{"name":"octogon","sideCount":8},{"name":"decagon","sideCount":10}]|
+|true|[{"name":"square","sideCount":4},{"name":"rectangle","sideCount":4},{"name":"hexagon","sideCount":6},{"name":"octagon","sideCount":8},{"name":"decagon","sideCount":10}]|
 
 ## See also
 
