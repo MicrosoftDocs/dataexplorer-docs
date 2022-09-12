@@ -48,7 +48,7 @@ On the **Destination** tab, specify the destination cluster, database, and table
 >
 > For sample scenarios, see:
 >
-> * Ingest into [a new table from a Blob storage in CSV format](one-click-ingestion-new-table.md)
+> * Ingest into [a new table from Azure Blob Storage in CSV format](one-click-ingestion-new-table.md)
 > * Ingest into an [existing table from a local file in JSON format](one-click-ingestion-existing-table.md)
 
 The wizard guides you through the following options:
@@ -56,7 +56,7 @@ The wizard guides you through the following options:
 * Ingest into an [existing table](one-click-ingestion-existing-table.md)
 * Ingest into [a new table](one-click-ingestion-new-table.md)
 * Ingest data from:
-  * Blob storage
+  * Blob Storage
   * [A local file](one-click-ingestion-existing-table.md)
 
 ### Schema mapping

@@ -3,7 +3,7 @@ title: Upgrade a free Azure Data Explorer cluster.
 description: This article you'll learn how to upgrade a free cluster to into your data using your free cluster.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 06/02/2022
+ms.date: 09/12/2022
 ---
 
 # Upgrade a free Azure Data Explorer cluster
@@ -56,6 +56,6 @@ Use the following steps to upgrade your free cluster to a full cluster. If you'r
 ## Next steps
 
 - [Network security for Azure Data Explorer](security-network-overview.md)
-- [Ingest data into your cluster](ingest-data-one-click.md)
+- [What is the ingestion wizard?](ingest-data-one-click.md)
 - [Visualize data with dashboards](azure-data-explorer-dashboards.md)
 - [Monitor your cluster with metrics](using-metrics.md)
