@@ -9,7 +9,7 @@ ms.date: 09/06/2022
 
 Calculates the variance of *Expr* across the group, considering the group as a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29).
 
-* Used formula:
+The following formula is used:
 
 :::image type="content" source="images/variance-aggfunction/variance-sample.png" alt-text="Image showing a variance sample formula.":::
 

@@ -11,7 +11,7 @@ Calculates the standard deviation of *Expr* across the group, considering the gr
 
 For a small data set that is a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29), use [stdev() (aggregation function)](stdev-aggfunction.md).
 
-* Used formula:
+The following formula is used:
 
 :::image type="content" source="images/stdevp-aggfunction/stdev-population.png" alt-text="Image showing a Stdev sample formula.":::
 
