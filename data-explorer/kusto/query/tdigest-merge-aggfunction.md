@@ -3,7 +3,6 @@ title: tdigest_merge() (aggregation function) - Azure Data Explorer
 description: This article describes tdigest_merge() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-<<<<<<< HEAD
 ms.date: 09/06/2022
 =======
 ms.date: 09/08/2022
@@ -21,27 +20,22 @@ For more information about the underlying algorithm (T-Digest) and the estimated
 
 `tdigest_merge` `(`*Expr*`)`
 
-<<<<<<< HEAD
 `merge_tdigests` `(`*Expr*`)`
 
 > [!NOTE]
 > `merge-tdigests` is an alias of `tdigest_merge`.
-=======
-`merge_tdigest` `(`*Expr*`)` 
+
+`merge_tdigest` `(`*Expr*`)`
 
 > [!NOTE]
-> `merge_tdigest` is an alias of `tdigest_merge`. 
->>>>>>> 146d6ac2a9e36467c55018877284a071e015fa8b
+> `merge_tdigest` is an alias of `tdigest_merge`.
 
 ## Arguments
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-<<<<<<< HEAD
 |*Expr* | string | &check; | Expression that will be used for aggregation calculation.
 =======
-| *Expr* | dynamic | &check; | Expression used for aggregation calculation. |
->>>>>>> 146d6ac2a9e36467c55018877284a071e015fa8b
 
 ## Returns
 
@@ -54,11 +48,7 @@ Returns the merged tdigest values of *Expr* across the group.
 
 ## Example
 
-<<<<<<< HEAD
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQgoSnVMT3dJzE1MTw0oyi9ILSqptC1JyUxPLS7RQBXWVEiqVAguSSxJRTEhN7UoPTUeqqVYA5uBmgCTdTq/fgAAAA==)**\]**
-=======
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQgoSnVMT3dJzE1MTw0oyi9ILSqptC1JyUxPLS7RQBXWVEiqVAguSSxJRTEBqjg+N7UoPVUDm3maAHash459AAAA)**\]**
->>>>>>> 146d6ac2a9e36467c55018877284a071e015fa8b
 
 ```kusto
 StormEvents
