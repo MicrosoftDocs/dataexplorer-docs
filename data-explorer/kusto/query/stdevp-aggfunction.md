@@ -13,7 +13,7 @@ For a small data set that is a [sample](https://en.wikipedia.org/wiki/Sample_%28
 
 * Used formula:
 
-:::image type="content" source="images/stdevp-aggfunction/stdev-population.png" alt-text="Stdev population." alt-text="Image showing a Stdev sample formula.":::
+:::image type="content" source="images/stdevp-aggfunction/stdev-population.png" alt-text="Image showing a Stdev sample formula.":::
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 

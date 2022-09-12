@@ -11,7 +11,7 @@ Calculates the variance of *Expr* across the group, considering the group as a [
 
 * Used formula:
 
-:::image type="content" source="images/variance-aggfunction/variance-sample.png" alt-text="Variance sample." alt-text="Image showing a variance sample formula.":::
+:::image type="content" source="images/variance-aggfunction/variance-sample.png" alt-text="Image showing a variance sample formula.":::
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
