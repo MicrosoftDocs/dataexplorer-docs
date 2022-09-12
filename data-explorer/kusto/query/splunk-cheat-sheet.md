@@ -112,14 +112,21 @@ Kusto uses the `project-rename` operator to rename a field. In the `project-rena
 
 ### Format results and projection
 
-Splunk doesn't appear to have an operator that's similar to `project-away`. You can use the UI to filter out fields.
+Use the following commands to format your results projection.
+
+The following table formats your results projection by including columns.
 
 | Product | Operator | Example |
 |:---|:---|:---|
 | Splunk | `table` |  `Event.Rule=330009.2`<br />&#124; `table rule, state` |
-| Splunk | `fields -` | `fields - quota, hightest_seller` |
 | Kusto | `project` | `Office_Hub_OHubBGTaskError`<br />&#124; `project exception, state` |
-| Kusto | `project-away` | `project-away exception, state` |
+
+The following table formats your results projection by excluding columns.
+
+| Product | Operator | Example |
+|:---|:---|:---|
+| Splunk | `fields -` |`Event.Rule=330009.2`<br />&#124; `fields - quota, hightest_seller` |
+| Kusto | `project-away` |`Office_Hub_OHubBGTaskError`<br />&#124; `project-away exception, state` |
 
 ### Aggregation
 
