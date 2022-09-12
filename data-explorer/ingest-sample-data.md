@@ -3,7 +3,7 @@ title: Ingest sample data into Azure Data Explorer
 description: Learn about how to ingest (load) weather-related sample data into Azure Data Explorer.
 ms.reviewer: mblythe
 ms.topic: quickstart
-ms.date: 06/22/2022
+ms.date: 09/05/2022
 ms.custom: mode-portal
 ---
 
@@ -16,7 +16,7 @@ This article shows you how to ingest (load) sample data into an Azure Data Explo
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Ingest data
