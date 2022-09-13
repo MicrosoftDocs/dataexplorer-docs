@@ -99,7 +99,7 @@ To refine your analysis:
 | Blobs received    | Count | Sum, Max, Min | Number of blobs received from input stream by a component. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
 | Blobs processed   | Count | Sum, Max, Min | Number of blobs processed by a component. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
 | Blobs dropped     | Count | Sum, Max, Min | Number of blobs permanently dropped by a component. For each such blob, an `Ingestion result` metric with a failure reason is sent. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
-| Discovery latency | Seconds | Avg | Time from data enqueue until discovery by data connections. This time isn't included in the **Stage latency** or in the **Ingestion latency** metrics | Component Type, Component Name |
+| Discovery latency | Seconds | Avg | Time from data enqueue until discovery by data connections. This time isn't included in the **Stage latency** or in the **Ingestion latency** metrics. Discovery latency may increase when cross-region data connections are used or, for Event Hub data connections, if the number of Event Hub partitions isn't enough for the data egress volume. | Component Type, Component Name |
 | Events received   | Count | Sum, Max, Min | Number of events received by data connections from input stream. | Component Type, Component Name |
 | Events processed  | Count | Sum, Max, Min | Number of events processed by data connections. | Component Type, Component Name | 
 | Events dropped    | Count | Sum, Max, Min | Number of events permanently dropped by data connections. | Component Type, Component Name | 
