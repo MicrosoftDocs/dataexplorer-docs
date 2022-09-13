@@ -19,6 +19,8 @@ items:
     href: connection-strings/sql-authentication-methods.md
   - name: Generate SAS token
     href: connection-strings/generate-sas-token.md
+- name: Evaluate query performance in your cluster
+  href: load-test-cluster.md
 - name: REST API
   items:
   - name: REST API overview
