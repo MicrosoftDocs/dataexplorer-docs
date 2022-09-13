@@ -1,5 +1,5 @@
 ---
-title: Evaluate query performance in your cluster
+title: Evaluate query performance in your Azure Data Explorer cluster
 description: In this article, you'll learn how to evaluate query performance in your Azure Data Explorer cluster.
 ms.reviewer: sujosyul
 ms.topic: how-to
@@ -323,3 +323,9 @@ In the following steps, you'll set up and run load tests using JMeter. You'll se
 > You can save the test as a `.jmx` file and use it in Azure Load Testing. Do so enables you to automate, schedule, and report on the test run against your cluster. For more information, see [Create a JMeter-based load test](/azure/load-testing/how-to-create-and-run-load-test-with-jmeter-script).
 
 ---
+
+## Next steps
+
+- [Query limits](../concepts/querylimits.md)
+- [Optimize for high concurrency](../../high-concurrency.md)
+- [Query best practices](../query/best-practices.md)
