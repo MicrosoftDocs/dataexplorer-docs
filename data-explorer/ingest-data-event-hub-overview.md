@@ -3,7 +3,7 @@ title: Ingest from event hub - Azure Data Explorer
 description: This article describes how to ingest data from Azure Event Hubs into Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 09/12/2022
+ms.date: 09/13/2022
 ---
 # Azure Event Hubs data connection
 
@@ -164,21 +164,6 @@ You can use one of the following methods to embed custom properties into the dat
 * Use Azure Stream Analytics to [process events from the event hub and embed the custom properties](/azure/event-hubs/process-data-azure-stream-analytics) in the event data. From Azure Stream Analytics you can ingest the data natively using the [Azure Data Explorer output connector](/azure/stream-analytics/azure-database-explorer-output), or route the data into another event hub and from there into your cluster.
 * Use [Azure Functions](/azure/azure-functions/functions-overview) to add the custom properties and then ingest the data.
 
-## Ingesting Event Hub Capture Avro files
-
-A popular way of consuming Event Hub data is by [capturing the events in Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview) and setting up an [Event Grid Data Connection in Azure Data Explorer](/azure/data-explorer/ingest-data-event-grid-overview) to ingest the capture files as they are written.
-
-Event Hub Avro capture file schema is described in detail in the [Explore Captured Avro Files article](/azure/event-hubs/explore-captured-avro-files).
-It is important to understand that the schema of the capture files is different from the schema of the original event sent to Event Hub and to be aware of this
-while designing the destination table schema.
-
-The most important point is that the event payload is represented in the capture file as a byte array, and unlike the Event Hub Azure Data Explorer data connection is not automatically decoded by the Event Grid Azure Data Explorer data connection.
-
-To correctly decode the event payload, make sure to
-* Map the `Body` field of the captured event to a column of type `dynamic` in the destination table
-* Apply an [update policy](/azure/data-explorer/kusto/management/updatepolicy) to convert the byte array into a readable string using the [make_string()](/azure/data-explorer/kusto/query/makestringfunction) function
-
-
 ## Event Hubs connection
 
 For best performance, create all the following resources in the same region as the cluster.
@@ -205,6 +190,18 @@ Azure Data Explorer doesn't support `Alias` event hub namespaces. To implement t
 
 > [!NOTE]
 > It's the user's responsibility to implement a failover from the primary namespace to the secondary namespace.
+
+## Ingest Event Hubs Capture Avro files
+
+One way to consume Event Hub data is to [capture events through Azure Event Hubs in Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview). You can then ingest the capture files as they are written using an [Event Grid Data Connection in Azure Data Explorer](/azure/data-explorer/ingest-data-event-grid-overview).
+
+The schema of the capture files is different from the schema of the original event sent to Event Hub. You should design the destination table schema with this difference in mind. 
+Specifically, the event payload is represented in the capture file as a byte array, and this array isn't automatically decoded by the Event Grid Azure Data Explorer data connection. For more specific information on the file schema for Event Hub Avro capture data, see [Exploring captured Avro files in Azure Event Hubs](/azure/event-hubs/explore-captured-avro-files).
+
+To correctly decode the event payload:
+
+1. Map the `Body` field of the captured event to a column of type `dynamic` in the destination table.
+1. Apply an [update policy](/azure/data-explorer/kusto/management/updatepolicy) that converts the byte array into a readable string using the [make_string()](/azure/data-explorer/kusto/query/makestringfunction) function.
 
 ## See also
 
