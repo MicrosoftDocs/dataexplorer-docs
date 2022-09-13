@@ -3,7 +3,7 @@ title: 'Ingest data from event hub into Azure Data Explorer'
 description: 'In this article, you learn how to ingest (load) data into Azure Data Explorer from event hub.'
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 03/15/2022
+ms.date: 09/11/2022
 
 # Customer intent: As a database administrator, I want to ingest data into Azure Data Explorer from an event hub, so I can analyze streaming data.
 ---
@@ -12,7 +12,7 @@ ms.date: 03/15/2022
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [One-click](one-click-event-hub.md)
+> * [Ingestion wizard](one-click-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
