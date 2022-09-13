@@ -70,7 +70,7 @@ Two modes of property bag expansions are supported:
 
 ## Examples
 
-### Single Column - array expansion
+### Single column - array expansion
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -87,7 +87,7 @@ datatable (a:int, b:dynamic)
 |2|a|
 |2|b|
 
-### Single Column - bag expansion
+### Single column - bag expansion
 
 A simple expansion of a single column:
 
