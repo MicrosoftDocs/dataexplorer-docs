@@ -9,7 +9,7 @@ ms.date: 04/15/2019
 
 Merges `hll` results (scalar version of the aggregate version [`hll_merge()`](hll-merge-aggfunction.md)).
 
-Read about the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy](dcount-aggfunction.md#estimation-accuracy).
+Read about the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy](#estimation-accuracy).
 
 ## Syntax
 
@@ -37,3 +37,7 @@ range x from 1 to 10 step 1
 |`dcount_hll_merged`|
 |---|
 |20|
+
+## Estimation accuracy
+
+[!INCLUDE [data-explorer-estimation-accuracy](../../includes/data-explorer-estimation-accuracy.md)]
