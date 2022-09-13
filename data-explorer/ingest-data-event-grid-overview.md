@@ -19,7 +19,7 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 
 * For the MI be able to fetch data from Azure Storage, it should have at least:
   * [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) on the Azure Event Hubs.
-  * [Storage Blob Data Reader](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) on the Azure Storage accunt.
+  * [Storage Blob Data Reader](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) on the Azure Storage account.
 
 ## Data format
 
