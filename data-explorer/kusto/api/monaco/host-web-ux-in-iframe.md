@@ -3,7 +3,7 @@ title: Embed the Azure Data Explorer web UI in an **iframe**.
 description: This article describes how to embed the Azure Data Explorer web UI in an **iframe**.
 ms.reviewer: gikoifma
 ms.topic: reference
-ms.date: 08/01/2022
+ms.date: 09/13/2022
 ---
 # Embed the Azure Data Explorer web UI in an iframe
 
@@ -130,7 +130,7 @@ To embed a dashboard, you'll need to make a few changes to the above steps
     
     1. Save your changes in the **Manifest**.
     1. Select **API permissions**, and validate you have a new entry: **RTD Metadata Service**.
-    1. Open the Azure powershell and add the following new service principal for that app:
+    1. Open the Azure PowerShell and add the following new service principal for that app:
     
           ```
           New-AzureADServicePrincipal -AppId 35e917a9-4d95-4062-9d97-5781291353b9

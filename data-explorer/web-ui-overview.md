@@ -3,7 +3,7 @@ title: Azure Data Explorer web UI overview
 description: This article describes the elements of Azure Data Explorer web UI home page and the data analytics journey.
 ms.reviewer: mibar
 ms.topic: conceptual
-ms.date: 08/14/2022
+ms.date: 09/13/2022
 ms.custom: mode-portal
 ---
 
