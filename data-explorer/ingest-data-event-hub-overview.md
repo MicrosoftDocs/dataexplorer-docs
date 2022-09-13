@@ -123,7 +123,7 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 [!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
 
-### Schema mapping for Event Hubs Capture Avro files
+### Schema mapping for Event Hub Capture Avro files
 
 One way to consume Event Hub data is to [capture events through Azure Event Hubs in Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview). You can then ingest the capture files as they are written using an [Event Grid Data Connection in Azure Data Explorer](/azure/data-explorer/ingest-data-event-grid-overview).
 
