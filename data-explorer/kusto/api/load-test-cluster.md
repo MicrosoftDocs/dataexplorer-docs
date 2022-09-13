@@ -20,7 +20,7 @@ In this article, we'll show you how to evaluate query performance in your cluste
 
 ## Retrieve a bearer (authentication) token
 
-1. [Creating a service principal](../../grafana.md#create-a-service-principal) and make a note of the following information that you'll need later:
+1. [Create a service principal](../../grafana.md#create-a-service-principal) and make a note of the following information that you'll need later:
     - AppID or ClientID
     - TenantID
     - Secret
@@ -57,8 +57,8 @@ In this article, we'll show you how to evaluate query performance in your cluste
     | *Content-Type* | application/json; charset=utf-8 | The content type indicating the media type of the request |
     | *Host* | `<cluster-name>.<region>.kusto.windows.net` | The cluster query URI without the protocol |
     | *x-ms-client-request-id* | `<uuid>` | A random UUID to identify the request. If you're using Postman, you can use Postman.Query to generate the UUID. |
-    | *x-ms-user-id* | `<user-name>` | A user name for reference. We recommend specifying one as it is useful when tracing and Root Cause Analysis query performance. |
-    | *x-ms-app* | `<app-name>` | A app name for reference. We recommend specifying one as it is useful when tracing and Root Cause Analysis query performance. |
+    | *x-ms-user-id* | `<user-name>` | A user name for reference. We recommend specifying one as it's useful when tracing and Root Cause Analysis query performance. |
+    | *x-ms-app* | `<app-name>` | A app name for reference. We recommend specifying one as it's useful when tracing and Root Cause Analysis query performance. |
 
     The following image shows an example of sending a request to the Azure Data Explorer REST API using Postman.
 
@@ -69,7 +69,7 @@ In this article, we'll show you how to evaluate query performance in your cluste
     | Key | Description |
     |--|--|
     | *db* | The name of the database you want to query. |
-    | *csl* | The Kusto query you want to run. The query must be sent as a string literal. If used, [encode string literals](../query/scalar-data-types/string.md#string-literals). We recommend verify the query before you send it by testing it in the [web UI](../../web-ui-overview.md). |
+    | *csl* | The Kusto query you want to run. The query must be sent as a string literal. If used, [encode string literals](../query/scalar-data-types/string.md#string-literals). We recommend verifying the query before you send it by testing it in the [web UI](../../web-ui-overview.md). |
 
     :::image type="content" source="images/load-test/postman-request.png" lightbox="images/load-test/postman-request.png" alt-text="Screenshot of POST request, showing the parameters for the body of the API request.":::
 
@@ -87,14 +87,14 @@ Before you start load testing, consider the following:
 - Configure the load test to reflect the estimated queries/second that you intend to send to your cluster. For example, 1 query/second translates to 86400 queries/day.
 - Scale out is triggered by sustained CPU usage, and query and ingestion operations. Therefore, you should consider the following when planning your load test:
     - Running a few short load tests that last a matter of minutes is unlikely to trigger your cluster to scale out.
-    - Running load tests for longer periods can generate unnecessary load on the cluster that can potentially trigger a scale out event and additional costs.
+    - Running load tests for longer periods can generate unnecessary load on the cluster that can potentially trigger a scale-out event and additional costs.
 
-    Hence, configure your load tests appropriately. Typically, running a load test for 5 mins with 20 virtual users can generate 7 queries/second which is equivalent to sending nearly 200,000 queries to your cluster in an 8-hour business day.
-- Load tests are synthetic in nature. This means that all users from the same location send the same requests for a defined duration. Your real-life scenarios typically have users from many locations, sending different queries to your cluster. Bear this in ming when when reviewing the results of the tests.
+    Hence, configure your load tests appropriately. Typically, running a load test for 5 mins with 20 virtual users can generate 7 queries per second, which is equivalent to sending nearly 200,000 queries to your cluster in an 8-hour business day.
+- Load tests are synthetic in nature. This means that all users from the same location send the same requests for a defined duration. Your real-life scenarios typically have users from many locations, sending different queries to your cluster. Bear this in ming when reviewing the results of the tests.
 
 ### [Grafana k6](#tab/grafana-k6)
 
-Grafana k6 is an open source tool built for load testing using javascript that integrates with many other tools such as Microsoft Visual Studio Code and GitHub.
+Grafana k6 is an open-source tool built for load testing using JavaScript that integrates with many other tools such as Microsoft Visual Studio Code and GitHub.
 
 #### Prerequisites for Grafana k6
 
@@ -165,12 +165,12 @@ In the following steps, you'll run load tests using a local installation of Graf
     | *access_token* | `<bearer-token>` | The bearer token you noted earlier |
     | *cluster-uri* | `https://\<cluster-name>.<region-name>.kusto.windows.net/.default` | The URI for your cluster. You can get the URI from the overview page of your Azure Data Explorer cluster. |
     | *database-name* | Sampledb | The name of the database you want to query. |
-    | *kusto-query* | "Tablename \| take 10" | The Kusto query you want to run. The query must be sent as a string literal. If used, [encode string literals](../query/scalar-data-types/string.md#string-literals). We recommend verify the query before you send it by testing it in the [web UI](../../web-ui-overview.md). |
-    | *random-uuid* | e9f884e4-90f0-404a-8e8b-01d883023bf1 | A random UUID to identify the request. Use any internet based generator to generate a UUID. |
+    | *kusto-query* | "Tablename \| take 10" | The Kusto query you want to run. The query must be sent as a string literal. If used, [encode string literals](../query/scalar-data-types/string.md#string-literals). We recommend verifying the query before you send it by testing it in the [web UI](../../web-ui-overview.md). |
+    | *random-uuid* | e9f884e4-90f0-404a-8e8b-01d883023bf1 | A random UUID to identify the request. Use any internet-based generator to generate a UUID. |
     | *Host* | `<cluster-name>.<region>.kusto.windows.net` | The cluster query URI. For Azure Synapse Data Explorer pools, use the relevant Data Explorer pool URI. |
     | *x-ms-client-request-id* | e9f884e4-90f0-404a-8e8b-01d883023bf1 | A random UUID to identify the request. If you're using Postman, you can use Postman.Query to generate the UUID. |
-    | *x-ms-user-id* | `<domain/user-name>` | A user name for reference. We recommend specifying one as it is useful when tracing and Root Cause Analysis query performance. |
-    | *x-ms-app* | k6 | A app name for reference. We recommend specifying one as it is useful when tracing and Root Cause Analysis query performance. |
+    | *x-ms-user-id* | `<domain/user-name>` | A user name for reference. We recommend specifying one as it's useful when tracing and Root Cause Analysis query performance. |
+    | *x-ms-app* | k6 | A app name for reference. We recommend specifying one as it's useful when tracing and Root Cause Analysis query performance. |
 
     >[!TIP]
     >
@@ -193,7 +193,7 @@ In the following steps, you'll run load tests using a local installation of Graf
 
     The query results show the time it takes to execute all the requests sent by Grafana k6.
 
-1. In Visual Studio Code, use Powershell or Bash to run the script, as follows:
+1. In Visual Studio Code, use PowerShell or Bash to run the script, as follows:
 
     >[!TIP]
     > Before starting a full test run, perform a small load test execution with 1-2 virtual users for 10 seconds. This will help you identify if there are any HTTP errors, or authentication or authorization issues before you launch the full load test run.
@@ -214,7 +214,7 @@ In the following steps, you'll run load tests using a local installation of Graf
 
 #### Troubleshoot Grafana k6 issues
 
-The following is a list of the common issues you might encounter when using Grafana k6.
+The following is a list of the common issues you might encounter when using Grafana k6:
 
 | Issue | Resolution |
 |--|--|
@@ -223,7 +223,7 @@ The following is a list of the common issues you might encounter when using Graf
 
 ### [JMeter](#tab/jmeter)
 
-JMeter is an open source Java tool designed to load test functional behavior and measure performance. You can use JMeter to analyze and measure the performance of web application or a variety of services.
+JMeter is an open-source Java tool designed to load test functional behavior and measure performance. You can use JMeter to analyze and measure the performance of a web application or other services.
 
 #### Prerequisites for JMeter
 
@@ -232,9 +232,7 @@ JMeter is an open source Java tool designed to load test functional behavior and
 
 ## Run load test using JMeter
 
-In the following steps, you'll set up and run load tests using JMeter. You'll set up 2 thread groups, each with its own HTTP request, and run 20 parallel sessions of query executions.
-
-/**TODO**: @Surya where is the set up for the second thread group?
+In the following steps, you'll set up and run load tests using JMeter. You'll set up a thread group, an HTTP request, and run 10 parallel sessions of query executions.
 
 1. In JMeter, right-click on the **Test Plan**, and select **Add** > **Threads (Users)** > **Thread Group**.
 
@@ -247,15 +245,15 @@ In the following steps, you'll set up and run load tests using JMeter. You'll se
     | *Name* | The name for the thread group |
     | *Number of Threads (users)* | The number of parallel sessions (simulating users) for running the query |
     | *Loop Count* | The number of times the query should. The loops are run sequentially, not in parallel. |
-    | Same user on each iteration | Runs the query as same user on each iteration. Selecting this option use the query and results cache from the source. |
+    | Same user on each iteration | Runs the query as same user on each iteration. uses the query and results cache from the source. |
 
-    For example, to run a query 10 times in parallel, set the *Number of Threads* to 10 and *Loop Count* to 1. To run a query 10 times in sequense, set the *Number of Threads* to 1 and *Loop Count* to 10.
+    For example, to run a query 10 times in parallel, set the *Number of Threads* to 10 and *Loop Count* to 1. To run a query 10 times in sequence, set the *Number of Threads* to 1 and *Loop Count* to 10.
 
-    :::image type="content" source="images/load-test/jmeter-thread-group-properties.png" alt-text="Screenshot of the thread group, showing the properties of the thread group.":::
+    :::image type="content" source="images/load-test/jmeter-thread-group-properties.png" lightbox="images/load-test/jmeter-thread-group-properties.png" alt-text="Screenshot of the thread group, showing the properties of the thread group.":::
 
 1. Right-click on the thread group and select **Add** > **Sampler** > **HTTP Request**.
 
-    :::image type="content" source="images/load-test/jmeter-http-req-add.png" alt-text="Screenshot of the thread group, showing the addition of an HTTP request.":::
+    :::image type="content" source="images/load-test/jmeter-http-request-add.png" alt-text="Screenshot of the thread group, showing the addition of an HTTP request.":::
 
 1. Configure the HTTP request to use the *POST* method and fill out the properties using the following information:
 
@@ -269,9 +267,9 @@ In the following steps, you'll set up and run load tests using JMeter. You'll se
     | Key | Description |
     |--|--|
     | *db* | The name of the database you want to query. |
-    | *csl* | The Kusto query you want to run. The query must be sent as a string literal. If used, [encode string literals](../query/scalar-data-types/string.md#string-literals). We recommend verify the query before you send it by testing it in the [web UI](../../web-ui-overview.md). |
+    | *csl* | The Kusto query you want to run. The query must be sent as a string literal. If used, [encode string literals](../query/scalar-data-types/string.md#string-literals). We recommend verifying the query before you send it by testing it in the [web UI](../../web-ui-overview.md). |
 
-    :::image type="content" source="images/load-test/jmeter-http-req-properties.png" alt-text="Screenshot of POST request, showing the body properties and the parameters of the API request.":::
+    :::image type="content" source="images/load-test/jmeter-http-request-properties.png" lightbox="images/load-test/jmeter-http-request-properties.png" alt-text="Screenshot of POST request, showing the body properties and the parameters of the API request.":::
 
 1. Right-click on the HTTP Request and select **Add** > **Config Element** > **Http Header Manager**.
 
@@ -287,8 +285,8 @@ In the following steps, you'll set up and run load tests using JMeter. You'll se
     | *Content-Type* | application/json; charset=utf-8 | The content type indicating the media type of the request |
     | *Host* | `<cluster-name>.<region>.kusto.windows.net` | The cluster query URI without the protocol |
     | *x-ms-client-request-id* | `<uuid>` | A random UUID to identify the request. If you're using Postman, you can use Postman.Query to generate the UUID. |
-    | *x-ms-user-id* | `<user-name>` | A user name for reference. We recommend specifying one as it is useful when tracing and Root Cause Analysis query performance. |
-    | *x-ms-app* | `<app-name>` | A app name for reference. We recommend specifying one as it is useful when tracing and Root Cause Analysis query performance. |
+    | *x-ms-user-id* | `<user-name>` | A user name for reference. We recommend specifying one as it's useful when tracing and Root Cause Analysis query performance. |
+    | *x-ms-app* | `<app-name>` | A app name for reference. We recommend specifying one as it's useful when tracing and Root Cause Analysis query performance. |
 
     :::image type="content" source="images/load-test/jmeter-http-header-properties.png" alt-text="Screenshot of the HTTP Header, showing the configured properties.":::
 
@@ -309,11 +307,11 @@ In the following steps, you'll set up and run load tests using JMeter. You'll se
 
 1. In the view results tree report, select HTTP requests to view their test results including the response header and body.
 
-    :::image type="content" source="images/load-test/jmeter-results-tree.png" alt-text="Screenshot of the view results tree report, showing the response headers.":::
+    :::image type="content" source="images/load-test/jmeter-results-tree.png" lightbox="images/load-test/jmeter-results-tree.png" alt-text="Screenshot of the view results tree report, showing the response headers.":::
 
 1. In the aggregate report, you can see the overall results of the test including the number samples, the avg response time in milliseconds, the percentage of errors, and the throughput in requests per second.
 
-    :::image type="content" source="images/load-test/jmeter-results.png" alt-text="Screenshot of the aggregate report report, showing the overall test results.":::
+    :::image type="content" source="images/load-test/jmeter-results.png" alt-text="Screenshot of the aggregate report, showing the overall test results.":::
 
 > [!NOTE]
 >
