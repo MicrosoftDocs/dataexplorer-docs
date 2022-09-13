@@ -41,7 +41,7 @@ var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
 var clientSecret = "PlaceholderClientSecret";//Client Secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
+var authenticationContext = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 var credential = new ClientCredential(clientId, clientSecret);
 var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
 
