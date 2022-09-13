@@ -112,16 +112,14 @@ Kusto uses the `project-rename` operator to rename a field. In the `project-rena
 
 ### Format results and projection
 
-Use the following commands to format your results projection.
-
-The following table formats your results projection by including columns.
+Splunk uses the `table` command to select which columns to include in the results. Kusto has a `project` operator that does the same and [more](projectoperator.md).
 
 | Product | Operator | Example |
 |:---|:---|:---|
 | Splunk | `table` |  `Event.Rule=330009.2`<br />&#124; `table rule, state` |
 | Kusto | `project` | `Office_Hub_OHubBGTaskError`<br />&#124; `project exception, state` |
 
-The following table formats your results projection by excluding columns.
+Splunk uses the `field -` command to select which columns to exclude from the results. Kusto has a `project-away` operator that does the same.
 
 | Product | Operator | Example |
 |:---|:---|:---|
