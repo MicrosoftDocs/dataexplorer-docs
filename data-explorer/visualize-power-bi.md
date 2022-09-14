@@ -3,7 +3,7 @@ title: 'Tutorial: Visualize data from Azure Data Explorer in Power BI'
 description: 'In this tutorial, you learn how to connect to Azure Data Explorer with Power BI, and visualize your data.'
 ms.reviewer: gabil
 ms.topic: tutorial
-ms.date: 06/02/2020
+ms.date: 09/14/2022
 
 #Customer intent: As a data analyst, I want to connect to Azure Data Explorer with Power BI, so that I can explore and visualize my data.
 ---
@@ -12,7 +12,7 @@ ms.date: 06/02/2020
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Power BI is a business analytics solution that lets you visualize your data and share the results across your organization. In this tutorial, you first learn how to render visuals in Azure Data Explorer. You then connect to Azure Data Explorer with Power BI, build a report based on sample data, and publish the report to the Power BI service.
 
-If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin. If you're not signed up for Power BI Pro, [sign up for a free trial](https://app.powerbi.com/signupredirect?pbi_source=web) before you begin.
+If you're not signed up for Power BI Pro, [sign up for a free trial](https://app.powerbi.com/signupredirect?pbi_source=web) before you begin.
 
 In this tutorial, you learn how to:
 
@@ -25,9 +25,9 @@ In this tutorial, you learn how to:
 
 ## Prerequisites
 
-In addition to Azure and Power BI subscriptions, you need the following to complete this tutorial:
+In addition to a Power BI subscription, you need the following to complete this tutorial:
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md).
 * [The StormEvents sample data](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)].
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**).

@@ -3,7 +3,7 @@ title: Manage language extensions in your Azure Data Explorer cluster.
 description: Use language extension to integrate other languages within your Azure Data Explorer KQL queries.
 ms.reviewer: orhasban
 ms.topic: how-to
-ms.date: 09/11/2022
+ms.date: 05/25/2022
 ---
 
 # Manage language extensions in your Azure Data Explorer cluster (Preview)
@@ -15,7 +15,7 @@ The language extensions feature allows you to use language extension plugins to 
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Enable language extensions on your cluster
