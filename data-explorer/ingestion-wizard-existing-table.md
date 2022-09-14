@@ -3,7 +3,7 @@ title: Ingest JSON data from a local file to an existing table in Azure Data Exp
 description: Ingesting (loading) data into an existing Azure Data Explorer table simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 09/04/2022
+ms.date: 09/14/2022
 ---
 # Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer
 
@@ -53,6 +53,8 @@ The **Schema** tab opens.
 
 * **Compression type** will be selected automatically by the source file name. In this case, the compression type is **JSON**
 
+* If you select **Ignore data format errors**, the data will be ingested in JSON format. If you leave this check box unselected, the data will be ingested in multijson format.
+
 * When you select  **JSON**, you must also select **Nested levels**, from 1 to 100. The levels determine the table column data division.
 
     :::image type="content" source="media/ingestion-wizard-existing-table/json-levels.png" alt-text="Screenshot completing ingestion information for ingesting a JSON file.":::
@@ -99,7 +101,7 @@ To add columns from JSON levels that are different than the main **Nested levels
 
 ## Start ingestion
 
-Select **Next: Summary** to begin data ingestion.
+Select **Next: Start ingestion** to begin data ingestion.
 
 :::image type="content" source="media/ingestion-wizard-existing-table/start-ingestion.png" alt-text="Screenshot of ingestion wizard fields completed to start ingestion.":::
 
