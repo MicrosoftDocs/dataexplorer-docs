@@ -14,7 +14,7 @@ You can use the generated code as a baseline to write your own apps, altering th
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
@@ -48,7 +48,7 @@ On the **Destination** tab, specify the destination cluster, database, and table
 >
 > For sample scenarios, see:
 >
-> * Ingest into [a new table from a Blob storage in CSV format](one-click-ingestion-new-table.md)
+> * Ingest into [a new table from Azure Blob Storage in CSV format](one-click-ingestion-new-table.md)
 > * Ingest into an [existing table from a local file in JSON format](one-click-ingestion-existing-table.md)
 
 The wizard guides you through the following options:
@@ -56,7 +56,7 @@ The wizard guides you through the following options:
 * Ingest into an [existing table](one-click-ingestion-existing-table.md)
 * Ingest into [a new table](one-click-ingestion-new-table.md)
 * Ingest data from:
-  * Blob storage
+  * Blob Storage
   * [A local file](one-click-ingestion-existing-table.md)
 
 ### Schema mapping

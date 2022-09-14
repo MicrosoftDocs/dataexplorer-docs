@@ -2,7 +2,7 @@
 title: Splunk to Kusto map for Azure Data Explorer and Azure Monitor
 description: Concept mapping for users who are familiar with Splunk to learn the Kusto Query Language to write log queries.
 ms.topic: conceptual
-ms.date: 02/08/2022
+ms.date: 09/07/2022
 ---
 
 # Splunk to Kusto Query Language map
@@ -112,12 +112,19 @@ Kusto uses the `project-rename` operator to rename a field. In the `project-rena
 
 ### Format results and projection
 
-Splunk doesn't appear to have an operator that's similar to `project-away`. You can use the UI to filter out fields.
+Splunk uses the `table` command to select which columns to include in the results. Kusto has a `project` operator that does the same and [more](projectoperator.md).
 
 | Product | Operator | Example |
 |:---|:---|:---|
 | Splunk | `table` |  `Event.Rule=330009.2`<br />&#124; `table rule, state` |
-| Kusto | `project`<br />`project-away` | `Office_Hub_OHubBGTaskError`<br />&#124; `project exception, state` |
+| Kusto | `project` | `Office_Hub_OHubBGTaskError`<br />&#124; `project exception, state` |
+
+Splunk uses the `field -` command to select which columns to exclude from the results. Kusto has a `project-away` operator that does the same.
+
+| Product | Operator | Example |
+|:---|:---|:---|
+| Splunk | `fields -` |`Event.Rule=330009.2`<br />&#124; `fields - quota, hightest_seller` |
+| Kusto | `project-away` |`Office_Hub_OHubBGTaskError`<br />&#124; `project-away exception, state` |
 
 ### Aggregation
 
