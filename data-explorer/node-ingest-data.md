@@ -125,7 +125,7 @@ const defaultProps  = new IngestionProperties({
 });
 
 const ingestClient = new KustoIngestClient(kcsbIngest, defaultProps);
-// All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
+// All ingestion properties are documented here: https://learn.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
 
 const blobDesc = new BlobDescriptor(blobPath, 10);
 try {
