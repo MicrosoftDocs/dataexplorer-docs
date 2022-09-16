@@ -10,7 +10,7 @@ ms.date: 09/12/2022
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [Ingestion wizard](one-click-event-hub.md)
+> * [Ingestion wizard](./event-hub-wizard.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
