@@ -3,7 +3,7 @@ title: Ingest from event hub - Azure Data Explorer
 description: This article describes how to ingest data from Azure Event Hubs into Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 03/15/2022
+ms.date: 09/13/2022
 ---
 # Azure Event Hubs data connection
 
@@ -12,6 +12,10 @@ ms.date: 03/15/2022
 The Event Hubs ingestion pipeline transfers events to Azure Data Explorer in several steps. You first create an event hub in the Azure portal. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#ingestion-properties). The Event Hubs connection needs to know [events routing](#events-routing). Data may be embedded with selected properties according to the [event system properties](#event-system-properties-mapping). [Create a connection](#event-hubs-connection) to Event Hubs to [create an event hub](#create-an-event-hub) and [send events](#send-events). This process can be managed through the [Azure portal](ingest-data-event-hub.md), programmatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
+
+[!INCLUDE [data-connection-auth](includes/data-connection-auth.md)]
+
+* So that the MI can fetch data from Azure Event Hubs, it should have at least [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver).
 
 ## Data format
 
@@ -122,6 +126,18 @@ When you work with [IoT Central](https://azure.microsoft.com/services/iot-centra
 If you selected **Event system properties** in the **Data Source** section of the table, you must include the properties in the table schema and mapping.
 
 [!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
+
+### Schema mapping for Event Hub Capture Avro files
+
+One way to consume Event Hub data is to [capture events through Azure Event Hubs in Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview). You can then ingest the capture files as they are written using an [Event Grid Data Connection in Azure Data Explorer](/azure/data-explorer/ingest-data-event-grid-overview).
+
+The schema of the capture files is different from the schema of the original event sent to Event Hub. You should design the destination table schema with this difference in mind. 
+Specifically, the event payload is represented in the capture file as a byte array, and this array isn't automatically decoded by the Event Grid Azure Data Explorer data connection. For more specific information on the file schema for Event Hub Avro capture data, see [Exploring captured Avro files in Azure Event Hubs](/azure/event-hubs/explore-captured-avro-files).
+
+To correctly decode the event payload:
+
+1. Map the `Body` field of the captured event to a column of type `dynamic` in the destination table.
+1. Apply an [update policy](/azure/data-explorer/kusto/management/updatepolicy) that converts the byte array into a readable string using the [make_string()](/azure/data-explorer/kusto/query/makestringfunction) function.
 
 ## Ingest custom properties
 
