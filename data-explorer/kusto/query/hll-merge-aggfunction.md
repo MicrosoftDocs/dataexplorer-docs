@@ -20,6 +20,7 @@ For more information, see the [underlying algorithm (*H*yper*L*og*L*og) and esti
 ## Arguments
 
 | Name | Type | Required | Description |
+|--|--|--|--|
 |*Expr*|string|&check;|Expression used for the aggregation calculation.|
 
 ## Returns

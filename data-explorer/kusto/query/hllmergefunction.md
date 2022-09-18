@@ -18,6 +18,7 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy
 ## Arguments
 
 | Name | Type | Required | Description |
+|--|--|--|--|
 |*Expr*|string|&check;|Columns that have `hll` values to be merged.|
 
 ## Returns
