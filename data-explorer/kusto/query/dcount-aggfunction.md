@@ -60,8 +60,6 @@ The results table shown includes only the first 10 rows.
 | KANSAS               | 21              |
 | ... | ... |
 
-[!INCLUDE [data-explorer-estimation-accuracy](../../includes/data-explorer-estimation-accuracy.md)]
-
 ## Estimation accuracy
 
 [!INCLUDE [data-explorer-estimation-accuracy](../../includes/data-explorer-estimation-accuracy.md)]

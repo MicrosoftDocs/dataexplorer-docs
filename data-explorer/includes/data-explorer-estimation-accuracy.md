@@ -2,7 +2,6 @@
 ms.topic: include
 ms.date: 07/12/2022
 ---
-## Estimation accuracy
 
 This function uses a variant of the [HyperLogLog (HLL) algorithm](https://en.wikipedia.org/wiki/HyperLogLog),
 which does a stochastic estimation of set cardinality. The algorithm provides a "knob" that can be used to balance accuracy and execution time per memory size:
