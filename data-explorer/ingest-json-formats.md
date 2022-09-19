@@ -3,7 +3,7 @@ title: Ingest JSON formatted data into Azure Data Explorer
 description: Learn about how to ingest JSON formatted data into Azure Data Explorer.
 ms.reviewer: kerend
 ms.topic: how-to
-ms.date: 09/06/2022
+ms.date: 09/14/2022
 ---
 
 # Ingest JSON formatted sample data into Azure Data Explorer
@@ -21,6 +21,9 @@ Azure Data Explorer supports two JSON file formats:
 
 * `json`: Line separated JSON. Each line in the input data has exactly one JSON record.
 * `multijson`: Multi-lined JSON. The parser ignores the line separators and reads a record from the previous position to the end of a valid JSON.
+
+> [!NOTE]
+> When ingesting using the [ingestion wizard](ingest-data-wizard.md), select **Ignore data format errors**, to ingest data in JSON format. If you leave this check box unselected, the data will be ingested in multijson format. For more information, see [edit the schema in the ingestion wizard](ingestion-wizard-existing-table.md#edit-the-schema).
 
 For more information, see [JSON Lines](https://jsonlines.org/).
 

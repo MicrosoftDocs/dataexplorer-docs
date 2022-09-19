@@ -3,14 +3,14 @@ title: 'Create an Event Hubs data connection for Azure Data Explorer by using C#
 description: In this article, you learn how to create an Event Hubs data connection for Azure Data Explorer by using C#.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 03/15/2022
+ms.date: 09/11/2022
 ---
 
 # Create an Event Hubs data connection for Azure Data Explorer by using C\#
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [One-click](one-click-event-hub.md)
+> * [Ingestion wizard](one-click-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
@@ -41,7 +41,7 @@ var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
 var clientSecret = "PlaceholderClientSecret";//Client Secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
+var authenticationContext = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 var credential = new ClientCredential(clientId, clientSecret);
 var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
 

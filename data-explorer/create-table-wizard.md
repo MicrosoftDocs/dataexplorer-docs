@@ -3,7 +3,7 @@ title: Create a table in Azure Data Explorer
 description: Learn how to easily create a table in Azure Data Explorer with the table creation wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 07/13/2022
+ms.date: 09/11/2022
 ---
 
 # Create a table in Azure Data Explorer
@@ -141,5 +141,5 @@ In the tiles below the **Create table** progress, explore **Quick queries** or *
 ## Next steps
 
 * [Data ingestion overview](ingest-data-overview.md)
-* [One-click ingestion](ingest-data-one-click.md)
+* [Ingestion wizard](ingest-data-one-click.md)
 * [Write queries for Azure Data Explorer](write-queries.md)
