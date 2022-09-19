@@ -12,6 +12,40 @@ Keyboard shortcuts provide a quick way to navigate websites, and allow users to 
 
 The letters that appear below represent letter keys on your keyboard. For example, to use <kbd>G</kbd>+<kbd>N</kbd>, hold down the <kbd>G</kbd> key and then press <kbd>N</kbd>. If the command is <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>X</kbd>, hold down the <kbd>Ctrl</kbd>, and simultaneously press <kbd>K</kbd> and then <kbd>X</kbd>. When using the query editor you can select <kbd>F1</kbd> to view the list of keyboard shortcuts in the **Command Palette**.
 
+## Query editor
+
+|To do this action  |Press  |
+|---------|---------|
+|Show **Command Palette**      |  <kbd>F1</kbd>        |
+| Copy query link to clipboard     | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>L</kbd>           |
+|Copy query and link to clipboard       |  <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>C</kbd |
+|Copy line(s) up          |     <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>UpArrow</kbd>      |
+|Copy line(s) down     |   <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>DownArrow</kbd>      |  
+|Toggle line(s) comment     |      <kbd>Ctrl</kbd>+<kbd>/</kbd>    |
+|Find     |  <kbd>Ctrl</kbd>+<kbd>F</kbd>         |
+|Fold         |  <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>[</kbd>        |
+|Fold all     | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>0</kbd>        |
+|Format selection     |  <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>F</kbd>        |
+|Format all     | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd>    |**Format Document**
+|Go to definition     |   <kbd>Ctrl</kbd>+<kbd>F12</kbd>       |
+|Go to line     | <kbd>Ctrl</kbd>+<kbd>G</kbd>          |**Go to Line/Column...**
+|Go to Next Problem (Error, Warning, Info)     |  <kbd>Alt</kbd>+<kbd>F8</kbd>        |
+|Go to Previous Problem (Error, Warning, Info)     |   <kbd>Shift</kbd>+<kbd>F8</kbd>      |
+|Insert line above     |  <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>       |
+|Insert Line Below       |  <kbd>Ctrl</kbd>+<kbd>Enter</kbd>        |
+|Move line down     |<kbd>Alt</kbd>+<kbd>DownArrow</kbd>         |
+|Move line up     | <kbd>Alt</kbd>+<kbd>UpArrow</kbd>         |
+|Add new tab     |  <kbd>Ctrl</kbd>+<kbd>J</kbd>       |**New Tab**
+|Show Editor Context Menu  | <kbd>Shift</kbd>+<kbd>F10</kbd>         |
+|Switch to tab on the left     | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>[</kbd>         |
+|Switch to tab on the right     |  <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>]</kbd>       |
+|Unfold     | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>]</kbd>         |
+|Unfold all     |  <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>J</kbd>        |
+|Run query     | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>         |
+|Recall execution results     | <kbd>F8</kbd>         |**Go to Next Problem in Files (Error, Warning, Info)**
+|Reopen closed tab     | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd>       |
+
+
 ## Actions
 
 | To do this action                                      | Description | Press                                                       |
@@ -25,14 +59,14 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | Show **Command Palette**                               |             | <kbd>F1</kbd>                                               |
 | Copy Line Down                                         |Extends cursor as written           | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>DownArrow</kbd>        |
 | Copy Line Up                                           |Extends cursor as written           | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>UpArrow</kbd>          |
-| Copy Link to Clipboard                                 |     X       | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>J</kbd>                |
+| Copy Link to Clipboard                                 |     X       | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>L</kbd>                |
 | Copy Query And Link To Clipboard                       |Copy query text   | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>C</kbd>                |
 | Cursor Undo                                            |             | <kbd>Ctrl</kbd>+<kbd>U</kbd>                                |
 | Decode multi-line string to text                       |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>M</kbd>   |
 | Delete Line                                            |             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd>               |
 | Edit as multi-line text                                |             | <kbd>Alt</kbd>+<kbd>F2</kbd>                                |
 | Encode text to multi-line string                       |             | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>S</kbd>   |
-| Expand Line Selection                                  |             | <kbd>Ctrl</kbd>+<kbd>J</kbd>                                |
+| Expand Line Selection                                  |             | <kbd>Ctrl</kbd>+<kbd>L</kbd>                                |
 | Expand Selection                                       |             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>RightArrow</kbd>       |
 | Find                                                   |             | <kbd>Ctrl</kbd>+<kbd>F</kbd>                                |
 | Find Next                                              |             | <kbd>Enter</kbd>                                            |
@@ -82,7 +116,7 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | Replace                                                |             | <kbd>Ctrl</kbd>+<kbd>H</kbd>                                |
 | Replace with Next Value                                | for number  | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd>               |
 | Replace with Previous Value                            | for number  | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>,</kbd>               |
-| Select All Occurrences of Find Match                   |developer mode | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>J</kbd>               |
+| Select All Occurrences of Find Match                   |developer mode | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd>               |
 | Set Selection Anchor                                   |      X      | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>B</kbd>   |
 | Show Accessibility Help                                |             | <kbd>Alt</kbd>+<kbd>F1</kbd>                                |
 | Show Editor Context Menu                               |      X      | <kbd>Shift</kbd>+<kbd>F10</kbd>                             |
@@ -92,7 +126,7 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | Switch to tab on the left                              |             | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>[</kbd>                 |
 | Switch to tab on the right                             |             | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>]</kbd>                 |
 | Toggle Block Comment                                   |      X      | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>A</kbd>                |
-| Toggle Fold                                            |  unfold?    | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>J</kbd>   |
+| Toggle Fold                                            |  unfold?    | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>L</kbd>   |
 | Toggle Line Comment                                    | toggle //            | <kbd>Ctrl</kbd>+<kbd>/</kbd>                                |
 | Toggle Tab Key Moves Focus                             |     X        | <kbd>Ctrl</kbd>+<kbd>M</kbd>                                |
 | Trigger Suggest                        |Suggests options based on letter selected | <kbd>Ctrl</kbd>+<kbd>Space</kbd>                            |
