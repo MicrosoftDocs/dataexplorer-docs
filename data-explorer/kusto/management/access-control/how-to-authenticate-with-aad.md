@@ -224,7 +224,7 @@ the administrator of the Azure AD tenant.
 // Create a confidential authentication client for Azure AD:
 var authClient = ConfidentialClientApplicationBuilder.Create("<your client app ID>")
             .WithAuthority("https://login.microsoftonline.com/{Azure AD Tenant ID or name}")
-            .WithClientSecret("<your client app >") // can be replaced by .WithCertificate to authenticate with an X.509 certificate
+            .WithClientSecret("<your client app secret key>") // can be replaced by .WithCertificate to authenticate with an X.509 certificate
             .Build();
 
 // Define scopes for accessing Azure Data Explorer cluster
