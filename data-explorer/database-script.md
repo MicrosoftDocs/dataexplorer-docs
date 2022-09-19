@@ -7,7 +7,7 @@ ms.date: 09/11/2022
 ---
 # Configure a database using a Kusto Query Language script
 
-You can run a Kusto Query Language script to configure your database during Azure Resource Management (ARM) template deployment. A script is a list of one or more [control commands](kusto/management/index.md), each separated by one line break, and is created as a resource that will be accessed with the ARM template. The script can only run control commands that start with the following verbs:
+You can run a Kusto Query Language script to configure your database during Azure Resource Management template (ARM template) deployment. A script is a list of one or more [control commands](kusto/management/index.md), each separated by one line break, and is created as a resource that will be accessed with the ARM template. The script can only run control commands that start with the following verbs:
 
 * `.create`
 * `.create-or-alter`
@@ -116,7 +116,7 @@ Use the following settings:
 | *continueOnErrors* | A flag indicating whether to continue if one of the commands fails. Default value: false. |
 | *clusterName* | The name of the cluster where the script will run. |
 | *databaseName* | The name of the database under which the script will run. |
-| *scriptName* | The name of the script when using an external file to supply the script.  This is the name of the actual ARM resource of type *script*.|
+| *scriptName* | The name of the script when using an external file to supply the script.  This is the name of the actual ARM template resource of type *script*.|
 
 ### Omit update tag
 
@@ -251,7 +251,7 @@ Use the following settings:
 
 | **Setting** | **Description** |
 |--|--|
-| *scriptUrl* | The URL of the blob. For example 'https://myaccount.blob.core.windows.net/mycontainer/myblob'. |
+| *scriptUrl* | The URL of the blob. For example, 'https://myaccount.blob.core.windows.net/mycontainer/myblob'. |
 | *scriptUrlSastoken* | A string with the [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview). |
 | *forceUpdateTag* | A unique string. If changed, the script will be applied again. |
 | *continueOnErrors* | A flag indicating whether to continue if one of the commands fails. Default value: false. |
@@ -261,8 +261,8 @@ Use the following settings:
 
 ## Limitations
 
-*  Script is only supported in Azure Data Explorer ; it isn't supported in Synapse Data Explorer pools
-*  Two scripts can't be added / modified / removed in parallel on the same cluster. This results in the following error: `Code="ServiceIsInMaintenance"`.  You can work around the issue by placing a dependency between the two scripts so that they are created / updated sequentially.
+* Script is only supported in Azure Data Explorer; it isn't supported in Synapse Data Explorer pools
+* Two scripts can't be added, modified, or removed in parallel on the same cluster. This results in the following error: `Code="ServiceIsInMaintenance"`.  You can work around the issue by placing a dependency between the two scripts so that they're created or updated sequentially.
 
 ## Troubleshooting
 
