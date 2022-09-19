@@ -20,8 +20,8 @@ Data ingestion is the process used to load data records from one or more sources
 ### Azure Data Explorer ingestion tools
 
 * [LightIngest](lightingest.md) - Help utility for ad-hoc data ingesting into Azure Data Explorer
-* Ingestion wizard: [overview](ingest-data-one-click.md) and ingest data [from a container to a new table](one-click-ingestion-new-table.md)
-or [from a local file to an existing table](one-click-ingestion-existing-table.md)
+* Ingestion wizard: [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](./ingestion-wizard-new-table.md)
+or [from a local file to an existing table](./ingestion-wizard-existing-table.md)
 
 ### Ingestion integrations
 

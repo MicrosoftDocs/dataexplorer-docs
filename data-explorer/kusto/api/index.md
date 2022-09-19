@@ -50,7 +50,7 @@ Azure Data Explorer provides a number of client libraries that make use of the a
 * PowerShell
 
 > [!TIP]
-> You can use the sample app generator wizard to create a working app tailored to your cluster, to ingest and query your data in your preferred programming language. The generated code can be used as a baseline to write your own apps, alter the code as you go, or you can copy sections of code into your own apps. For more information, see [sample app generator wizard](../../sample-app-generator-one-click.md).
+> You can use the sample app generator wizard to create a working app tailored to your cluster, to ingest and query your data in your preferred programming language. The generated code can be used as a baseline to write your own apps, alter the code as you go, or you can copy sections of code into your own apps. For more information, see [sample app generator wizard](../../sample-app-generator-wizard.md).
 
 ### .NET Framework Libraries
 

@@ -37,11 +37,11 @@ Article title | Description
 Article title | Description
 ---|---
 [Azure Policy built-in definitions](policy-reference.md) | New article. Index of [Azure Policy](/azure/governance/policy/overview) built-in policy definitions.
-[Use one-click ingestion to create an event hub data connection](one-click-event-hub.md) | New article. Connect an event hub to a table using the [one-click ingestion](ingest-data-one-click.md) experience.
+[Use one-click ingestion to create an event hub data connection](./event-hub-wizard.md) | New article. Connect an event hub to a table using the [one-click ingestion](./ingest-data-wizard.md) experience.
 | [Configure managed identities for your cluster](configure-managed-identities-cluster.md) | Updated article. Supports both user-assigned managed identities and system-assigned managed identities
-| [Create a table](one-click-table.md) | Updated article. General availability (GA). |
+| [Create a table](./create-table-wizard.md) | Updated article. General availability (GA). |
  | [Quickstart: Query data in Azure Data Explorer web UI](web-query-data.md) | Updated article. New capabilities.
-|  [What is one-click ingestion?](ingest-data-one-click.md) | Updated article. Added ingestion from JSON nested levels. General availability (GA).
+|  [What is one-click ingestion?](./ingest-data-wizard.md) | Updated article. Added ingestion from JSON nested levels. General availability (GA).
 | [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md) | Updated article. New dashboard visuals and parameter changes.
 
 **Query**

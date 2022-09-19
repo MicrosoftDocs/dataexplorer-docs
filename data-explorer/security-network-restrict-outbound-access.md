@@ -3,7 +3,7 @@ title: Restrict outbound access from your Azure Data Explorer cluster
 description: In this article, you'll learn how to restrict the outbound access from your Azure Data Explorer cluster to other services.
 ms.reviewer: eladb
 ms.topic: how-to
-ms.date: 07/03/2022
+ms.date: 09/12/2022
 ---
 
 # Restrict outbound access from your Azure Data Explorer cluster
@@ -21,7 +21,7 @@ Callout policies can be divided, as follows:
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md), or use the Azure Data Explorer help cluster.
 
 ## Run callout policy commands

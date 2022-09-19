@@ -62,10 +62,10 @@ The **[Data management](https://dataexplorer.azure.com/oneclick)** page is where
     |Tab  |Ingestion options  |
     |---------|---------|
     |**Manage**     | Create [tables](https://dataexplorer.azure.com/oneclick/createtable), [external tables](external-table.md) and update [batching](./kusto/management/batchingpolicy.md) and [retention](./kusto/management/retentionpolicy.md) policies.      |
-    |**One-time ingestion**    | Ingest from [local files, blob storage](./ingest-data-one-click.md), or a [container](.//one-click-ingestion-new-table.md).      |
-    |**Continuous ingestion**     | Configure continuous ingestion from [Event Hubs](./one-click-event-hub.md) or a blob container.        |
-    |**Backfill**     |  Ingest data from sources as a one time or [continuous ingestion](one-click-ingestion-new-table.md).       |
-    |**SDKs**     |  The [sample app generator wizard](https://dataexplorer.azure.com/oneclick/generatecode?programingLang=Python) is a tool that allows you to create a working app to [ingest and query your data in your preferred programming language](sample-app-generator-one-click.md). Learn more about connectors to expand and explore the capabilities of Azure Data Explorer.    |
+    |**One-time ingestion**    | Ingest from [local files, blob storage](./ingest-data-wizard.md), or a [container](./ingestion-wizard-new-table.md).      |
+    |**Continuous ingestion**     | Configure continuous ingestion from [Event Hubs](./event-hub-wizard.md) or a blob container.        |
+    |**Backfill**     |  Ingest data from sources as a one time or [continuous ingestion](./ingestion-wizard-new-table.md).       |
+    |**SDKs**     |  The [sample app generator wizard](https://dataexplorer.azure.com/oneclick/generatecode?programingLang=Python) is a tool that allows you to create a working app to [ingest and query your data in your preferred programming language](./sample-app-generator-wizard.md). Learn more about connectors to expand and explore the capabilities of Azure Data Explorer.    |
 
 ## Query
 

@@ -77,7 +77,7 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 
 ### Tools
 
-* The **[ingestion wizard](ingest-data-one-click.md)**: Enables you to quickly ingest data by creating and adjusting tables from a wide range of source types. The ingestion wizard automatically suggests tables and mapping structures based on the data source in Azure Data Explorer. The wizard can be used for one-time ingestion, or to define continuous ingestion via Event Grid on the container to which the data was ingested.
+* The **[ingestion wizard](./ingest-data-wizard.md)**: Enables you to quickly ingest data by creating and adjusting tables from a wide range of source types. The ingestion wizard automatically suggests tables and mapping structures based on the data source in Azure Data Explorer. The wizard can be used for one-time ingestion, or to define continuous ingestion via Event Grid on the container to which the data was ingested.
 
 * **[LightIngest](lightingest.md)**: A command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder or from an Azure blob storage container.
 
@@ -95,7 +95,7 @@ Use commands to ingest data directly to the engine. This method bypasses the Dat
 
 | Ingestion name | Data type | Maximum file size | Streaming, batching, direct | Most common scenarios | Considerations |
 | --- | --- | --- | --- | --- | --- |
-| [**Ingestion wizard**](ingest-data-one-click.md) | *sv, JSON | 1 GB uncompressed (see note)| Batching to container, local file and blob in direct ingestion | One-off, create table schema, definition of continuous ingestion with Event Grid, bulk ingestion with container (up to 5,000 blobs; no limit when using historical ingestion) |  |
+| [**Ingestion wizard**](./ingest-data-wizard.md) | *sv, JSON | 1 GB uncompressed (see note)| Batching to container, local file and blob in direct ingestion | One-off, create table schema, definition of continuous ingestion with Event Grid, bulk ingestion with container (up to 5,000 blobs; no limit when using historical ingestion) |  |
 | [**LightIngest**](lightingest.md) | All formats supported | 1 GB uncompressed (see note) | Batching via DM or direct ingestion to engine |  Data migration, historical data with adjusted ingestion timestamps, bulk ingestion (no size restriction)| Case-sensitive, space-sensitive |
 | [**ADX Kafka**](ingest-data-kafka.md) |Avro, ApacheAvro, JSON, CSV, Parquet, and ORC |Unlimited. Inherits Java restrictions.| Batching, streaming |Existing pipeline, high volume consumption from the source.| Preference may be determined by which “multiple producer/consumer” service is already used, or how managed of a service is desired. |
 | [**ADX to Apache Spark**](spark-connector.md) | Every format supported by the Spark environment  | Unlimited | Batching | Existing pipeline, preprocessing on Spark before ingestion, fast way to create a safe (Spark) streaming pipeline from the various sources the Spark environment supports. | Consider cost of Spark cluster. For batch write, compare with Azure Data Explorer data connection for Event Grid. For Spark streaming, compare with the data connection for event hub.
@@ -135,7 +135,7 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
     In order to ingest data, a table needs to be created beforehand. Use one of the following options:
 
     * Create a table [with a command](kusto/management/create-table-command.md).
-    * Create a table using the [ingestion wizard](one-click-ingestion-new-table.md).
+    * Create a table using the [ingestion wizard](./ingestion-wizard-new-table.md).
 
     > [!Note]
     > If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.

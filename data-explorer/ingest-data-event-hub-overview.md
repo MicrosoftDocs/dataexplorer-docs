@@ -129,7 +129,7 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 ### Schema mapping for Event Hub Capture Avro files
 
-One way to consume Event Hub data is to [capture events through Azure Event Hubs in Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview). You can then ingest the capture files as they are written using an [Event Grid Data Connection in Azure Data Explorer](/azure/data-explorer/ingest-data-event-grid-overview).
+One way to consume Event Hub data is to [capture events through Azure Event Hubs in Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview). You can then ingest the capture files as they are written using an [Event Grid Data Connection in Azure Data Explorer](./ingest-data-event-grid-overview.md).
 
 The schema of the capture files is different from the schema of the original event sent to Event Hub. You should design the destination table schema with this difference in mind. 
 Specifically, the event payload is represented in the capture file as a byte array, and this array isn't automatically decoded by the Event Grid Azure Data Explorer data connection. For more specific information on the file schema for Event Hub Avro capture data, see [Exploring captured Avro files in Azure Event Hubs](/azure/event-hubs/explore-captured-avro-files).
@@ -137,7 +137,7 @@ Specifically, the event payload is represented in the capture file as a byte arr
 To correctly decode the event payload:
 
 1. Map the `Body` field of the captured event to a column of type `dynamic` in the destination table.
-1. Apply an [update policy](/azure/data-explorer/kusto/management/updatepolicy) that converts the byte array into a readable string using the [make_string()](/azure/data-explorer/kusto/query/makestringfunction) function.
+1. Apply an [update policy](./kusto/management/updatepolicy.md) that converts the byte array into a readable string using the [make_string()](./kusto/query/makestringfunction.md) function.
 
 ## Ingest custom properties
 
