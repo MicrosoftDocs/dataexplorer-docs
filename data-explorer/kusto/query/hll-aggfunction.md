@@ -60,6 +60,7 @@ The results table shown includes only the first 10 rows.
 
 ## Estimation accuracy
 
+<<<<<<< HEAD
 This function uses a variant of the [HyperLogLog (HLL) algorithm](https://en.wikipedia.org/wiki/HyperLogLog),
 which does a stochastic estimation of set cardinality. The algorithm provides a "knob" that can be used to balance accuracy and execution time per memory size:
 
@@ -85,3 +86,6 @@ The following image shows the probability distribution function of the relative
 estimation error, in percentages, for all supported accuracy settings:
 
 :::image type="content" border="false" source="images/dcount-aggfunction/hll-error-distribution.png" alt-text="hll error distribution.":::
+=======
+[!INCLUDE [data-explorer-estimation-accuracy](../../includes/data-explorer-estimation-accuracy.md)]
+>>>>>>> 612542d7811c730c7e19b9934319353ad52b9a99

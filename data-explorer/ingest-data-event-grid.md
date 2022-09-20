@@ -3,7 +3,7 @@ title: 'Ingest Azure Blobs into Azure Data Explorer'
 description: In this article, you learn how to send storage account data to Azure Data Explorer using an Event Grid subscription.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 03/15/2022
+ms.date: 09/11/2022
 
 # Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
 ---
@@ -11,7 +11,7 @@ ms.date: 03/15/2022
 # Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications
 
 > [!div class="op_single_selector"]
-> * [One-click](one-click-ingestion-new-table.md)
+> * [Ingestion wizard](./ingestion-wizard-new-table.md)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)

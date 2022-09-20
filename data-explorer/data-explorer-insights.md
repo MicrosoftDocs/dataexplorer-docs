@@ -191,6 +191,8 @@ To view your logs-based data, you need to [enable diagnostic logs](./using-diagn
 
 Currently, diagnostic logs don't work retroactively. The data will start appearing after actions have been taken in Azure Data Explorer. It might take some time, ranging from hours to a day, depending on how active your Azure Data Explorer cluster is.
 
+[!INCLUDE [azure-monitor-vs-log-analytics](includes/azure-monitor-vs-log-analytics.md)]
+
 ## Next steps
 
 Learn the scenarios that workbooks are designed to support, how to author new and customize existing reports, and more by reviewing [Create interactive reports with Azure Monitor workbooks](/azure/azure-monitor/visualize/workbooks-overview).

@@ -3,14 +3,14 @@ title: "Create an Event Hubs data connection for Azure Data Explorer by using Py
 description: In this article, you learn how to create an Event Hubs data connection for Azure Data Explorer by using Python.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 03/15/2022
+ms.date: 09/12/2022
 ---
 
 # Create an Event Hubs data connection for Azure Data Explorer by using Python
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [One-click](one-click-event-hub.md)
+> * [Ingestion wizard](./event-hub-wizard.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)

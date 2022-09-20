@@ -9,7 +9,7 @@ ms.date: 07/31/2022
 # Create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template
 
 > [!div class="op_single_selector"]
-> * [Ingestion wizard](one-click-ingestion-new-table.md)
+> * [Ingestion wizard](./ingestion-wizard-new-table.md)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)

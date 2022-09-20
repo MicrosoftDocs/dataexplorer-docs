@@ -3,7 +3,7 @@ title: 'Visualize data with Azure Data Explorer connector for Power BI'
 description: 'In this article, you learn how to use one of the three options for visualizing data in Power BI: the Power BI connector for Azure Data Explorer.'
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 09/12/2022
 
 # Customer intent: As a data analyst, I want to understand connection options in Power BI so I can choose the option most appropriate to my scenario. I also want to visualize my data for additional insights
 ---
@@ -16,7 +16,6 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 You need the following to complete this article:
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * An organizational email account that is a member of Azure Active directory, so you can connect to the [Azure Data Explorer help cluster](https://dataexplorer.azure.com/clusters/help/databases/samples).
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**)
 
