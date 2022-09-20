@@ -3,7 +3,7 @@ title: Create a free Azure Data Explorer cluster.
 description: This article you'll learn how to create a free cluster, ingest data, and run queries to gain insights into your data using your free cluster.
 ms.reviewer: avnera
 ms.topic: how-to
-ms.date: 02/27/2022
+ms.date: 09/11/2022
 ---
 
 # Create a free Azure Data Explorer cluster
@@ -55,7 +55,7 @@ Quick actions make it easy to get started with your cluster. You can create a da
 
 To start a quick action, under **Actions**, select the action you want to perform:
 
-* **Ingest**: Use this action to load data into your cluster. For more information, see [One-click ingestion wizard](ingest-data-one-click.md#ingestion-wizard).
+* **Ingest**: Use this action to load data into your cluster. For more information, see the [ingestion wizard](./ingest-data-wizard.md#ingestion-wizard).
 * **Query**: Use this action to run a query against data in your cluster. For more information, see [Run queries](web-query-data.md#run-queries).
 * **Create**: Use this action if you want to create a new database in your cluster.
     1. In the **Create new database** card, select **Create**.

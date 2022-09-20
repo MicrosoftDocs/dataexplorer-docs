@@ -67,7 +67,7 @@ sections:
           To efficiently ingest large quantities of historical data, use [LightIngest](../../lightingest.md). 
           For ease of use, try the LightIngest [wizard](../../generate-lightingest-command.md). 
           To improve performance for many small files, adjust the [batching policy](batchingpolicy.md), change batching conditions and address [latencies](batchingpolicy.md#batching-latencies). 
-          Use the batching policy [wizard](../../one-click-table-batching-policy.md) to quickly change policy settings. 
+          Use the batching policy [wizard](../../table-batching-policy-wizard.md) to quickly change policy settings. 
           To improve ingestion performance when ingesting extremely large data files, use [Azure Data Factory](/azure/data-factory/) (ADF), a cloud-based data integration service. 
   - name: SDKs and connectors
     questions:     
@@ -77,4 +77,4 @@ sections:
           Try incrementally decreasing the size of data ingested in the table or database batching policy down towards 250 MB and check if there is an improvement.
       - question: How can I tune Kusto Kafka Sink for better ingestion performance?
         answer: |
-          [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) users should [tune the connector](../../ingest-data-kafka.md) to work together with the [ingestion batching policy](batchingpolicy.md) by tuning batching time, size, and item number. 
+          [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) users should [tune the connector](../../ingest-data-kafka.md) to work together with the [ingestion batching policy](batchingpolicy.md) by tuning batching time, size, and item number.

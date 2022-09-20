@@ -246,3 +246,4 @@ The suggestion in this case is to review the query and reduce the columns being 
 ## Next steps
 
 * [Optimize for high concurrency with Azure Data Explorer](../../high-concurrency.md)
+* [Query best practices](../query/best-practices.md)

@@ -3,7 +3,7 @@ title: 'Ingest data using the Azure Data Explorer Python library'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Python.
 ms.reviewer: vladikbr
 ms.topic: how-to
-ms.date: 02/07/2022
+ms.date: 09/07/2022
 
 # Customer intent: As a Python developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
@@ -21,10 +21,9 @@ In this article, you ingest data using the Azure Data Explorer Python library. A
 
 First, create a table and data mapping in a cluster. You then queue ingestion to the cluster and validate the results.
 
-
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md).
 * [Python 3.4+](https://www.python.org/downloads/).
 
@@ -53,7 +52,7 @@ To authenticate an application, Azure Data Explorer uses your Azure Active Direc
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
-For example, if your domain is *contoso.com*, the URL is: [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Click this URL to see the results; the first line is as follows. 
+For example, if your domain is *contoso.com*, the URL is: [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Click this URL to see the results; the first line is as follows.
 
 ```console
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
@@ -82,16 +81,6 @@ KCSB_DATA = KustoConnectionStringBuilder.with_aad_device_authentication(
 DESTINATION_TABLE = "StormEvents"
 DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
 ```
-
-> [!NOTE]
-> Where possible, we recommend using managed identity authentication. It's the most secure authentication method since it doesn't require you to specify credentials or secrets in your code. For more information about where you can use managed identities, see [Azure services that can use managed identities to access other services](/azure/active-directory/managed-identities-azure-resources/managed-identities-status)
-> 
-> To use managed identity authentication in your code, create the connection string without specifying the authentication method, as follows:
-> 
-> ```python
-> KCSB_INGEST = KustoConnectionStringBuilder()
-> KCSB_DATA = KustoConnectionStringBuilder()
-> ```
 
 ## Set source file information
 

@@ -3,7 +3,7 @@ title: Azure Data Explorer tools and integrations overview - Azure Data Explorer
 description: This article describes tools and integrations in Azure Data Explorer.
 ms.reviewer: olgolden
 ms.topic: conceptual
-ms.date: 07/03/2022
+ms.date: 09/11/2022
 ---
 # Azure Data Explorer tools and integrations overview
 
@@ -20,8 +20,8 @@ Data ingestion is the process used to load data records from one or more sources
 ### Azure Data Explorer ingestion tools
 
 * [LightIngest](lightingest.md) - Help utility for ad-hoc data ingesting into Azure Data Explorer
-* One-click Ingestion: [overview](ingest-data-one-click.md) and ingest data [from a container to a new table](one-click-ingestion-new-table.md)
-or [from a local file to an existing table](one-click-ingestion-existing-table.md)
+* Ingestion wizard: [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](./ingestion-wizard-new-table.md)
+or [from a local file to an existing table](./ingestion-wizard-existing-table.md)
 
 ### Ingestion integrations
 

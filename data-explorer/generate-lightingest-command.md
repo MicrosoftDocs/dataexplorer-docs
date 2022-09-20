@@ -27,7 +27,7 @@ The wizard can be accessed either from the **Data** tab, or from the **Query** t
 
 1. In the **Data** tab, from the **Quick actions** section, select **Ingest data**. Alternatively, from the **All actions** section, select **Ingest data** and then **Ingest**.
 
-   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select one-click ingestion for a table.":::
+   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select the ingestion wizard for a table.":::
 
 1. In the **Query tab**, right-click a *database* and select **Ingest data**.
 
@@ -74,7 +74,7 @@ In the **Ingest data** window, the **Destination** tab is selected. The **Cluste
     | Creation time pattern | Specify to override the ingestion time property of the created extent with a pattern, for example, to apply a date based on the folder structure of the container. See also [Creation time pattern](lightingest.md#how-to-ingest-data-using-creationtime). |
     | Blob name pattern | Specify the pattern used to identify the files to be ingested. Ingest all the files that match the blob name pattern in the given container. Supports wildcards. Recommended to enclose in double quotes. |
     | Tag | A [tag](kusto/management/extents-overview.md#extent-tagging) assigned to the ingested data. The tag can be any string. |
-    | Limit amount of files | Specify the number of files that can be ingested. Ingests the first `n` files that match the blob name pattern, up to the number specified.  |
+    | Limit number of files | Specify the number of files that can be ingested. Ingests the first `n` files that match the blob name pattern, up to the number specified.  |
     | Don't wait for ingestion to complete | If set, queues the blobs for ingestion without monitoring the ingestion process. If not set, LightIngest continues to poll the ingestion status until ingestion is complete.|
     | Display only selected items| List the files in the container, but doesn't ingest them.  |
 

@@ -3,7 +3,7 @@ title: Create a table in Azure Data Explorer
 description: Learn how to easily create a table in Azure Data Explorer with the table creation wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 07/13/2022
+ms.date: 09/11/2022
 ---
 
 # Create a table in Azure Data Explorer
@@ -79,7 +79,7 @@ In **Source type**, select the data source you'll use to create your table mappi
 
 ### [Edit schema from a source](#tab/source)
 
-In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats) and compression are automatically identified in the left-hand pane. If incorrectly identified, use the **Data format** dropdown menu to select the correct format.
+In the **Schema** tab, your [data format](./ingest-data-wizard.md#file-formats) and compression are automatically identified in the left-hand pane. If incorrectly identified, use the **Data format** dropdown menu to select the correct format.
 
 * If your data format is JSON, you must also select JSON levels, from 1 to 10. The levels determine the table column data division.
 * If your data format is CSV, select the check box **Ignore the first record** to ignore the heading row of the file.
@@ -141,5 +141,5 @@ In the tiles below the **Create table** progress, explore **Quick queries** or *
 ## Next steps
 
 * [Data ingestion overview](ingest-data-overview.md)
-* [One-click ingestion](ingest-data-one-click.md)
+* [Ingestion wizard](./ingest-data-wizard.md)
 * [Write queries for Azure Data Explorer](write-queries.md)
