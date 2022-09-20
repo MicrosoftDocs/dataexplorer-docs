@@ -97,7 +97,7 @@ public class IngestionStatus
     // The ingestion status returns from the service. Status remains 'Pending' during the ingestion process and
     // is updated by the service once the ingestion completes. When <see cref="IngestionReportMethod"/> is set to 'Queue' the ingestion status
     // will always be 'Queued' and the caller needs to query the report queues for ingestion status, as configured. To query statuses that were
-    // reported to queue, see: <see href="https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-client-status#ingestion-status-in-azure-queue"/>.
+    // reported to queue, see: <see href="https://learn.microsoft.com/azure/kusto/api/netfx/kusto-ingest-client-status#ingestion-status-in-azure-queue"/>.
     // When <see cref="IngestionReportMethod"/> is set to 'Table', call <see cref="IKustoIngestionResult.GetIngestionStatusBySourceId"/> or
     // <see cref="IKustoIngestionResult.GetIngestionStatusCollection"/> to retrieve the most recent ingestion status.
     public Status Status { get; set; }

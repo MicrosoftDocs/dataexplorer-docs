@@ -39,11 +39,11 @@ landingContent:
           - text: "Free Pluralsight training: Azure Data Explorer"
             url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer          
           - text: "Learn module: Introduction to Azure Data Explorer"
-            url:  /learn/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+            url:  /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
           - text: "Learn module: Write your first query with Kusto Query Language"
-            url: /learn/modules/write-first-query-kusto-query-language/
+            url: /training/modules/write-first-query-kusto-query-language/
           - text: "Learn module: Gain insights from your data by using Kusto Query Language"
-            url: /learn/modules/gain-insights-data-kusto-query-language/
+            url: /training/modules/gain-insights-data-kusto-query-language/
   # Card
   - title: Create cluster and database
     linkLists:
