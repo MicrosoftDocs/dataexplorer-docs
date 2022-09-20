@@ -1,9 +1,9 @@
 ---
 title: Alias statement - Azure Data Explorer
-description: This article describes Alias statement in Azure Data Explorer.
+description: Learn how to use an Alias statement to define an alias for a database that is used for a query in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 09/20/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---

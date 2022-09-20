@@ -1,13 +1,13 @@
 ---
 title: activity_metrics plugin - Azure Data Explorer
-description: This article describes activity_metrics plugin in Azure Data Explorer.
+description: Learn how to use the activity_metrics plugin to calculate activity metrics using the current time window compared to the previous window in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/02/2022
+ms.date: 09/20/2022
 ---
 # activity_metrics plugin
 
-Calculates useful activity metrics based on the current period window compared to the previous period window. The metrics include distinct count values, distinct count of new values, retention rate, and churn rate. This plugin is different from [activity_counts_metrics plugin](activity-counts-metrics-plugin.md) in which every time window is compared to *all* previous time windows.
+Calculates useful . The metrics include distinct count values, distinct count of new values, retention rate, and churn rate. This plugin is different from [activity_counts_metrics plugin](activity-counts-metrics-plugin.md) in which every time window is compared to *all* previous time windows.
 
 ```kusto
 T | evaluate activity_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
