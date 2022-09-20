@@ -7,7 +7,7 @@ ms.date: 08/24/2022
 ---
 # make_bag() (aggregation function)
 
-Creates a `dynamic` JSON property bag (dictionay) of all the values of *`Expr`* in the group.
+Creates a `dynamic` JSON property bag (dictionary) of all the values of *`Expr`* in the group.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
