@@ -58,5 +58,6 @@ The results table shown includes only the first 10 rows.
 | 2007-01-01T05:30:00Z | [[1024,14],["3803688792395291579"],[]] |
 | 2007-01-01T06:30:00Z | [[1024,14],["1589522558235929902"],[]] |
 
+## Estimation accuracy
+
 [!INCLUDE [data-explorer-estimation-accuracy](../../includes/data-explorer-estimation-accuracy.md)]
->>>>>>> 612542d7811c730c7e19b9934319353ad52b9a99
