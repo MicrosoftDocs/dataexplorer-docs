@@ -76,7 +76,7 @@ Once you've ingested data or connected to a data source, you'll use the [query p
 * Write and run Kusto Query Language (KQL) queries in the query editor window. For help getting started with KQL, see:
   * [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md)
   * [Kusto Query Language overview](./kusto/query/index.md).
-  * Learn module: [Write your first KQL query](/learn/modules/write-first-query-kusto-query-language/).
+  * Learn module: [Write your first KQL query](/training/modules/write-first-query-kusto-query-language/).
 * View and manipulate results in the results grid.
 
 ## Dashboards (preview)
