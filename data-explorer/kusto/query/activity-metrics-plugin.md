@@ -7,7 +7,7 @@ ms.date: 09/20/2022
 ---
 # activity_metrics plugin
 
-Calculates useful . The metrics include distinct count values, distinct count of new values, retention rate, and churn rate. This plugin is different from [activity_counts_metrics plugin](activity-counts-metrics-plugin.md) in which every time window is compared to *all* previous time windows.
+Calculates useful metrics that include distinct count values, distinct count of new values, retention rate, and churn rate. This plugin is different from [activity_counts_metrics plugin](activity-counts-metrics-plugin.md) in which every time window is compared to *all* previous time windows.
 
 ```kusto
 T | evaluate activity_metrics(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, dim1, dim2, dim3)
