@@ -82,16 +82,6 @@ DESTINATION_TABLE = "StormEvents"
 DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
 ```
 
-> [!NOTE]
-> Where possible, we recommend using managed identity authentication. It's the most secure authentication method since it doesn't require you to specify credentials or secrets in your code. For more information about where you can use managed identities, see [Azure services that can use managed identities to access other services](/azure/active-directory/managed-identities-azure-resources/managed-identities-status)
->
-> To use managed identity authentication in your code, create the connection string without specifying the authentication method, as follows:
->
-> ```python
-> KCSB_INGEST = KustoConnectionStringBuilder()
-> KCSB_DATA = KustoConnectionStringBuilder()
-> ```
-
 ## Set source file information
 
 Import additional classes and set constants for the data source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncei.noaa.gov/).
