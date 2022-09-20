@@ -14,36 +14,45 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 
 ## Query editor
 
-|To do this action  |Press  |
-|---------|---------|
-|Show **Command Palette**      |  <kbd>F1</kbd>        |
-| Copy query link to clipboard     | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>L</kbd>           |
-|Copy query and link to clipboard       |  <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>C</kbd |
-|Copy line(s) up          |     <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>UpArrow</kbd>      |
-|Copy line(s) down     |   <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>DownArrow</kbd>      |  
-|Toggle line(s) comment     |      <kbd>Ctrl</kbd>+<kbd>/</kbd>    |
-|Find     |  <kbd>Ctrl</kbd>+<kbd>F</kbd>         |
-|Fold         |  <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>[</kbd>        |
-|Fold all     | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>0</kbd>        |
-|Format selection     |  <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>F</kbd>        |
-|Format all     | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd>    |**Format Document**
-|Go to definition     |   <kbd>Ctrl</kbd>+<kbd>F12</kbd>       |
-|Go to line     | <kbd>Ctrl</kbd>+<kbd>G</kbd>          |**Go to Line/Column...**
-|Go to Next Problem (Error, Warning, Info)     |  <kbd>Alt</kbd>+<kbd>F8</kbd>        |
-|Go to Previous Problem (Error, Warning, Info)     |   <kbd>Shift</kbd>+<kbd>F8</kbd>      |
-|Insert line above     |  <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>       |
-|Insert Line Below       |  <kbd>Ctrl</kbd>+<kbd>Enter</kbd>        |
-|Move line down     |<kbd>Alt</kbd>+<kbd>DownArrow</kbd>         |
-|Move line up     | <kbd>Alt</kbd>+<kbd>UpArrow</kbd>         |
-|Add new tab     |  <kbd>Ctrl</kbd>+<kbd>J</kbd>       |**New Tab**
-|Show Editor Context Menu  | <kbd>Shift</kbd>+<kbd>F10</kbd>         |
-|Switch to tab on the left     | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>[</kbd>         |
-|Switch to tab on the right     |  <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>]</kbd>       |
-|Unfold     | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>]</kbd>         |
-|Unfold all     |  <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>J</kbd>        |
-|Run query     | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>         |
-|Recall execution results     | <kbd>F8</kbd>         |**Go to Next Problem in Files (Error, Warning, Info)**
-|Reopen closed tab     | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd>       |
+| To do this action                             | Press                                                        |                                                        |
+| --------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------ |
+| Show **Command Palette**                      | <kbd>F1</kbd>                                                |                                                        |
+| Copy query link to clipboard                  | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>L</kbd>                 |                                                        |
+| Copy query and link to clipboard              | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>C</kbd>                 |                                                    |
+| Copy line(s) up                               | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>UpArrow</kbd>           |                                                        |
+| Copy line(s) down                             | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>DownArrow</kbd>         |                                                        |
+| Toggle line(s) comment                        | <kbd>Ctrl</kbd>+<kbd>/</kbd>                                 |                                                        |
+| Find                                          | <kbd>Ctrl</kbd>+<kbd>F</kbd>                                 |                                                        |
+| Fold                                          | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>[</kbd>                | Condense lines                                         |
+| Fold all                                      | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>0</kbd>    |                                                        |
+| Format selection                              | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>F</kbd>    |  **?**    KQL format?                           |
+| Format all                                    | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd>                 | **Format Document**                                    |
+| Go to definition                              | <kbd>Ctrl</kbd>+<kbd>F12</kbd>                               |                                                        |
+| Go to line                                    | <kbd>Ctrl</kbd>+<kbd>G</kbd>                                 | **Go to Line/Column...**                               |
+| Go to Next Problem (Error, Warning, Info)     | <kbd>Alt</kbd>+<kbd>F8</kbd>                                 |                                                        |
+| Go to Previous Problem (Error, Warning, Info) | <kbd>Shift</kbd>+<kbd>F8</kbd>                               |                                                        |
+| Insert line above                             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>            |                                                        |
+| Insert Line Below                             | <kbd>Ctrl</kbd>+<kbd>Enter</kbd>                             |                                                        |
+| Move line down                                | <kbd>Alt</kbd>+<kbd>DownArrow</kbd>                          |                                                        |
+| Move line up                                  | <kbd>Alt</kbd>+<kbd>UpArrow</kbd>                            |                                                        |
+| Add new tab                                   | <kbd>Ctrl</kbd>+<kbd>J</kbd>                                 | **New Tab**                                            |
+| Show Editor Context Menu                      | <kbd>Shift</kbd>+<kbd>F10</kbd>                              |   **                                                    |
+| Switch to tab on the left                     | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>[</kbd>                  |                                                        |
+| Switch to tab on the right                    | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>]</kbd>                  |                                                        |
+| Unfold                                        | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>]</kbd>                |                                                        |
+| Unfold all                                    | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>J</kbd>    |                                                        |
+| Run query                                     | <<kbd>Shift</kbd>+<kbd>Enter</kbd>                            |                                                        |
+| Recall execution results                      | <kbd>F8</kbd>                                                | **Go to Next Problem in Files (Error, Warning, Info)** |
+| Reopen closed tab                             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> |                                                        |
+
+## Results viewer
+
+| To do this action                                     | Press                                             |
+| ----------------------------------------------------- | ------------------------------------------------- |
+| Insert data cell selections as filters into the query | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> |
+| [Column header] Toggle the sorting state              | <kbd>Enter</kbd>                                  |
+| [Column header] open the menu for the focused header  | <<kbd>Shift</kbd>+<kbd>Enter</kbd>                |**
+|                                                       |                                                   |
 
 
 ## Actions
@@ -86,7 +95,7 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | Fold Level 6                                           |      X      | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>6</kbd>   |
 | Fold Level 7                                           |      X      | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>7</kbd>   |
 | Fold Recursively                                       | Condense line only?            | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>[</kbd>   |
-| Format Command Under Cursor                            |  Formats consistently in some cases           | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>F</kbd>   |
+| Format Command Under Cursor                            |  Formats consistently in some cases | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>F</kbd>   |
 | Format Document                                        |      X      | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd>                |
 | Format Selection                                       |      X      | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>F</kbd>   |
 | Go to Bracket                                          |      X      | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd> \ </kbd>               |
