@@ -1,9 +1,9 @@
 ---
 title: make_set_if() (aggregation function) - Azure Data Explorer
-description: This article describes make_set_if() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the make_set_if() aggregation function to create a `dynamic` JSON object (array) of a set of distinct values in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/05/2022
+ms.date: 09/20/2022
 ---
 # make_set_if() (aggregation function)
 

@@ -1,9 +1,9 @@
 ---
 title: stdevif() (aggregation function) - Azure Data Explorer
-description: This article describes stdevif() (aggregation function) in Azure Data Explorer.
+description: Learn how too use the stdevif() aggregation function to calculate the standard deviation ina group in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/05/2022
+ms.date: 09/20/2022
 ---
 # stdevif() (aggregation function)
 

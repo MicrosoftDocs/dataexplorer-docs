@@ -1,9 +1,9 @@
 ---
 title: make_list_if() (aggregation function) - Azure Data Explorer
-description: This article describes make_list_if() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the make_list_if() aggregation function to creates a `dynamic` JSON object (array) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/05/2022
+ms.date: 09/20/2022
 ---
 # make_list_if() (aggregation function)
 
