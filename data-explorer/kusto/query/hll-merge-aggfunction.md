@@ -50,13 +50,6 @@ The results show only the first 5 results in the array.
 |--|
 | [[1024,14],["-6903255281122589438","-7413697181929588220","-2396604341988936699","5824198135224880646","-6257421034880415225", ...]|
 
-## Returns
-
-Returns the merged `hll` values of `*Expr*` across the group.
-
-> [!TIP]
-> Use the function [dcount_hll](dcount-hllfunction.md) to calculate the `dcount` from `hll` / `hll-merge` aggregation functions.
-
 ## Estimation accuracy
 
 [!INCLUDE [data-explorer-estimation-accuracy](../../includes/data-explorer-estimation-accuracy.md)]

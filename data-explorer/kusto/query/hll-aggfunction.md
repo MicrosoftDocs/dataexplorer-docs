@@ -58,34 +58,5 @@ The results table shown includes only the first 10 rows.
 | 2007-01-01T05:30:00Z | [[1024,14],["3803688792395291579"],[]] |
 | 2007-01-01T06:30:00Z | [[1024,14],["1589522558235929902"],[]] |
 
-## Estimation accuracy
-
-<<<<<<< HEAD
-This function uses a variant of the [HyperLogLog (HLL) algorithm](https://en.wikipedia.org/wiki/HyperLogLog),
-which does a stochastic estimation of set cardinality. The algorithm provides a "knob" that can be used to balance accuracy and execution time per memory size:
-
-|Accuracy|Error (%)|Entry count   |
-|--------|---------|--------------|
-|       0|      1.6|2<sup>12</sup>|
-|       1|      0.8|2<sup>14</sup>|
-|       2|      0.4|2<sup>16</sup>|
-|       3|     0.28|2<sup>17</sup>|
-|       4|      0.2|2<sup>18</sup>|
-
-> [!NOTE]
-> The "entry count" column is the number of 1-byte counters in the HLL implementation.
-
-The algorithm includes conditions for doing a perfect count (zero error), if the set cardinality is small enough:
-
-- When the accuracy level is `1`, 1000 values are returned
-- When the accuracy level is `2`, 8000 values are returned
-
-The error bound is probabilistic, not a theoretical bound. The value is the standard deviation of error distribution (the sigma), and 99.7% of the estimations will have a relative error of under 3 x sigma.
-
-The following image shows the probability distribution function of the relative
-estimation error, in percentages, for all supported accuracy settings:
-
-:::image type="content" border="false" source="images/dcount-aggfunction/hll-error-distribution.png" alt-text="hll error distribution.":::
-=======
 [!INCLUDE [data-explorer-estimation-accuracy](../../includes/data-explorer-estimation-accuracy.md)]
 >>>>>>> 612542d7811c730c7e19b9934319353ad52b9a99
