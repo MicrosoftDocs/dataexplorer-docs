@@ -35,7 +35,7 @@ items:
   - name: Visualize data in Power BI
     href: visualize-power-bi.md
   - name: "Learn module: Introduction to Azure Data Explorer"
-    href: /learn/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+    href: /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
 - name: Concepts
   items:
   - name: EngineV3
