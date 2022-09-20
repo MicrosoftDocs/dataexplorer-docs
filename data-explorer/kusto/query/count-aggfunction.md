@@ -26,11 +26,6 @@ Returns a count of the records per summarization group (or in total, if summariz
 This example returns a count of events in states starting with letter `W`:
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVKC5JLCopLs8syVBQClcCShaX5uYmFmVWpSo455fmldgmg0gNTYWkSogOAJStyvpLAAAA
-
-StormEvents
-| where State startswith "W"
-| summarize Count=count() by State)**\]**
-
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
