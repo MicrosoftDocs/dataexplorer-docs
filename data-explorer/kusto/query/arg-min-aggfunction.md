@@ -1,9 +1,9 @@
 ---
 title: arg_min() (aggregation function) - Azure Data Explorer
-description: This article describes arg_min() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the arg_min() aggregation function to find a row in a group that minimizes the input expression in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/05/2022
+ms.date: 09/21/2022
 ---
 # arg_min() (aggregation function)
 
