@@ -23,11 +23,11 @@ For different types or sources of data, see [Ingest data from a container/ADLS i
 
 1. From the **Quick actions** section, select **Ingest data**. Alternatively, from the **All actions** section, select **Ingest data** and then **Ingest**.
 
-   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI to select the ingestion wizard for a table.":::
+   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI to select the ingestion wizard for a table." lightbox="media/ingestion-wizard-existing-table/ingest-new-data.png":::
 
 ## Select an ingestion type
 
-1. In the **Ingest new data** window, the **Destination** tab is selected.
+1. In the **Ingest data** window, the **Destination** tab is selected.
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus.
 
