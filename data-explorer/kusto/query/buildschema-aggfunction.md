@@ -1,6 +1,6 @@
 ---
 title: buildschema() (aggregation function) - Azure Data Explorer
-description: Learn how to use the buildschema() aggregation function to builds a table schema from dynamic a expression in Azure Data Explorer.
+description: Learn how to use the buildschema() aggregation function to build a table schema from a dynamic expression in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/21/2022
@@ -34,7 +34,7 @@ Returns the minimal schema that admits all values of *DynamicExpr*.
 
 ## Example
 
-The following example builds a schema based on:.
+The following example builds a schema based on:
 
 * `{"x":1, "y":3.5}`
 * `{"x":"somevalue", "z":[1, 2, 3]}`
@@ -72,13 +72,13 @@ The resulting schema tells us that:
 The syntax of the returned schema is:
 
 Container ::= '{' Named-type* '}';
-Named-type ::= (name | '"`indexer`"') ':' Type;
+Named-type: := (name | '"`indexer`"') ':' Type;
 Type ::= Primitive-type | Union-type | Container;
 Union-type ::= '[' Type* ']';
 Primitive-type ::= "long" | "string" | ...;
 
 The values are equivalent to a subset of TypeScript type annotations, encoded as a Kusto dynamic value.
-In Typescript, the example schema would be:
+In TypeScript, the example schema would be:
 
 ```typescript
 var someobject:
