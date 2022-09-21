@@ -1,9 +1,9 @@
 ---
 title: variance() (aggregation function) - Azure Data Explorer
-description: This article describes variance() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the variance() aggregation function to calculate the variance of an expression in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/06/2022
+ms.date: 09/21/2022
 ---
 # variance() (aggregation function)
 

@@ -1,9 +1,9 @@
 ---
 title: stdevp() (aggregation function) - Azure Data Explorer
-description: This article describes stdevp() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the stdevp() aggregation function to calculate the standard deviation in an expression in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/06/2022
+ms.date: 09/21/2022
 ---
 # stdevp() (aggregation function)
 

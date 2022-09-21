@@ -1,9 +1,9 @@
 ---
 title: varianceif() (aggregation function) - Azure Data Explorer
-description: This article describes varianceif() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the varianceif() aggregation function to calculate the variance in an expression if the a condition is TRUE in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/06/2022
+ms.date: 09/21/2022
 ---
 # varianceif() (aggregation function)
 

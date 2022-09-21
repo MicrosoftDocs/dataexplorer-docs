@@ -1,9 +1,9 @@
 ---
 title: variancep() (aggregation function) - Azure Data Explorer
-description: This article describes variancep() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the variancep() aggregation function to calculate the variance of an expression as a population in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/06/2022
+ms.date: 09/21/2022
 ---
 # variancep() (aggregation function)
 
