@@ -133,7 +133,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-| [Use the one-click sample app generator to create code to ingest and query your data](sample-app-generator-one-click.md) | New Article. Describes how to use the one-click sample app generator for your preferred programming language. |
+| [Use the one-click sample app generator to create code to ingest and query your data](./sample-app-generator-wizard.md) | New Article. Describes how to use the one-click sample app generator for your preferred programming language. |
 
 **API**
 
@@ -208,7 +208,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 | [Use wizard for ingestion with LightIngest (preview)](generate-lightingest-command.md) | New article. Learn how to use a wizard for one-time ingestion of historical data with LightIngest.
-| [Use one-click ingestion to create an event hub data connection](one-click-event-hub.md)| Updated article. One click event hub experience.
+| [Use one-click ingestion to create an event hub data connection](./event-hub-wizard.md)| Updated article. One click event hub experience.
 | [Use LightIngest to ingest data into Azure Data Explorer](lightingest.md)| Updated article. Generate LightIngest commands - one click experience.
 
 **Query**
@@ -244,10 +244,10 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 | [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
 | [Create an external table using the Azure Data Explorer web UI wizard](external-table.md) | Updated article. New UI.
-| [Use one-click ingestion to create an event hub data connection](one-click-event-hub.md)| Updated article. New UI.
-| [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](one-click-ingestion-existing-table.md) | Updated article. New UI.
-| [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md) | Updated article. New UI.
-| [Create a table in Azure Data Explorer](one-click-table.md) | Updated article. New UI.
+| [Use one-click ingestion to create an event hub data connection](./event-hub-wizard.md)| Updated article. New UI.
+| [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](./ingestion-wizard-existing-table.md) | Updated article. New UI.
+| [Ingest data from a container/ADLS into Azure Data Explorer](./ingestion-wizard-new-table.md) | Updated article. New UI.
+| [Create a table in Azure Data Explorer](./create-table-wizard.md) | Updated article. New UI.
 
 **Query**
 

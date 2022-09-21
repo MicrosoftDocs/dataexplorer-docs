@@ -82,16 +82,6 @@ DESTINATION_TABLE = "StormEvents"
 DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
 ```
 
-> [!NOTE]
-> Where possible, we recommend using managed identity authentication. It's the most secure authentication method since it doesn't require you to specify credentials or secrets in your code. For more information about where you can use managed identities, see [Azure services that can use managed identities to access other services](/azure/active-directory/managed-identities-azure-resources/managed-identities-status)
->
-> To use managed identity authentication in your code, create the connection string without specifying the authentication method, as follows:
->
-> ```python
-> KCSB_INGEST = KustoConnectionStringBuilder()
-> KCSB_DATA = KustoConnectionStringBuilder()
-> ```
-
 ## Set source file information
 
 Import additional classes and set constants for the data source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncei.noaa.gov/).
@@ -142,7 +132,7 @@ Queue a message to pull data from blob storage and ingest that data into Azure D
 ```python
 INGESTION_CLIENT = QueuedIngestClient(KCSB_INGEST)
 
-# All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
+# All ingestion properties are documented here: https://learn.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
 INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, data_format=DataFormat.CSV,
                                            ingestion_mapping_reference=DESTINATION_TABLE_COLUMN_MAPPING, additional_properties={'ignoreFirstRecord': 'true'})
 # FILE_SIZE is the raw size of the data in bytes

@@ -14,7 +14,7 @@ ms.date: 07/31/2022
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 
-Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data streaming platform and event ingestion service. [Event hubs](/azure/event-hubs/event-hubs-about) can process millions of events per second in near real-time. In this article, you connect an event hub to a table in Azure Data Explorer using the [ingestion wizard](ingest-data-one-click.md).
+Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data streaming platform and event ingestion service. [Event hubs](/azure/event-hubs/event-hubs-about) can process millions of events per second in near real-time. In this article, you connect an event hub to a table in Azure Data Explorer using the [ingestion wizard](./ingest-data-wizard.md).
 
 ## Prerequisites
 
@@ -74,8 +74,8 @@ The **Ingest new data** window opens with the **Destination** tab selected.
 
 Data is read from the event hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects. Supported formats are CSV, JSON, PSV, SCsv, SOHsv TSV, TXT, and TSVE.
 
-For information on schema mapping with JSON-formatted data, see [Edit the schema](one-click-ingestion-existing-table.md#edit-the-schema).
-For information on schema mapping with CSV-formatted data, see [Edit the schema](one-click-ingestion-new-table.md#edit-the-schema).
+For information on schema mapping with JSON-formatted data, see [Edit the schema](./ingestion-wizard-existing-table.md#edit-the-schema).
+For information on schema mapping with CSV-formatted data, see [Edit the schema](./ingestion-wizard-new-table.md#edit-the-schema).
 
 :::image type="content" source="media/event-hub-wizard/event-hub-schema.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
 

@@ -3,7 +3,7 @@ title: Embed the Azure Data Explorer web UI in an **iframe**.
 description: This article describes how to embed the Azure Data Explorer web UI in an **iframe**.
 ms.reviewer: gikoifma
 ms.topic: reference
-ms.date: 08/01/2022
+ms.date: 09/13/2022
 ---
 # Embed the Azure Data Explorer web UI in an iframe
 
@@ -130,7 +130,7 @@ To embed a dashboard, you'll need to make a few changes to the above steps
     
     1. Save your changes in the **Manifest**.
     1. Select **API permissions**, and validate you have a new entry: **RTD Metadata Service**.
-    1. Open the Azure powershell and add the following new service principal for that app:
+    1. Open the Azure PowerShell and add the following new service principal for that app:
     
           ```
           New-AzureADServicePrincipal -AppId 35e917a9-4d95-4062-9d97-5781291353b9
@@ -155,7 +155,7 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-ShowPersona             | Show the user name from the settings menu, in the top-right corner                                                 | true          |
 | f-IFrameAuth              | If true, the web explorer will expect the iframe to handle authentication and provide a token via a message. This process will always be true for iframe scenarios                                                                                                                                      | false         |
 | f-PersistAfterEachRun     | Usually the web explorer will persist in the unload event. When hosting in iframes, it doesn't always fire. This flag will then trigger **persisting local state** after each query run. As a result, any data loss that occurs, will only affect text that had never been run, thus limiting its impact          | false         |
-| f-ShowSmoothIngestion     | If true, show the one-click ingestion experience when right-clicking on a database                                   | true          |
+| f-ShowSmoothIngestion     | If true, show the ingestion wizard experience when right-clicking on a database                                   | true          |
 | f-RefreshConnection       | If true, always refreshes the schema when loading the page and never depends on local storage                      | false         |
 | f-ShowPageHeader          | If true, shows the page header that includes the Azure Data Explorer title and settings                            | true          |
 | f-HideConnectionPane      | If true, the left connection pane doesn't display                                                                  | false         |
