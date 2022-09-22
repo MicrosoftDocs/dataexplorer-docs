@@ -141,10 +141,6 @@ The simulated device application connects to a device-specific endpoint on your 
 
 1. In a local terminal window, navigate to the root folder of the sample C# project. Then navigate to the **iot-hub\Quickstarts\SimulatedDevice** folder.
 
-1. Open the **Program.cs** file in a text editor of your choice.
-
-    Replace the value of the `s_connectionString` variable with the device connection string from [Register a device to the IoT Hub](#register-a-device-to-the-iot-hub). Then save your changes to **Program.cs** file.
-
 1. In the local terminal window, run the following commands to install the required packages for simulated device application:
 
     ```cmd/sh
@@ -153,8 +149,10 @@ The simulated device application connects to a device-specific endpoint on your 
 
 1. In the local terminal window, run the following command to build and run the simulated device application:
 
+    Replace the value of {DeviceConnectionString} with the device connection string from [Register a device to the IoT Hub](#register-a-device-to-the-iot-hub). Then save your changes to **Program.cs** file.
+
     ```cmd/sh
-    dotnet run
+    dotnet run --DeviceConnectionString "{DeviceConnectionString}"
     ```
 
     The following screenshot shows the output as the simulated device application sends telemetry to your IoT hub:
