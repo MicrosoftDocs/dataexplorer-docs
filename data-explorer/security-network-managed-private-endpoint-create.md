@@ -54,6 +54,9 @@ Creating a managed private endpoint requires a single API call to the *Kusto* re
 
 In the following this example, you'll use the [ARMclient](https://chocolatey.org/packages/ARMClient) in PowerShell to create a managed private endpoint using the REST API.
 
+> [!NOTE]
+> Connecting to a storage account a "dfs" resource requires an additional managed private endpoint to the "blob" sub-resource.
+
 ### Prerequisites for using the REST API
 
 1. Install [choco](https://chocolatey.org/install)
