@@ -99,9 +99,9 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 > * Using `autoUpdateSchema` may lead to irreversible data loss when columns in the source table are dropped.
 > Monitor automatic disable of materialized views using the [MaterializedViewResult metric](materialized-view-overview.md#materializedviewresult-metric).  After fixing incompatibility issues, re-enable the view with the [enable materialized view](materialized-view-enable-disable.md) command.
 
-### Create materialized view over materialized view (preview)
+### Create materialized view over materialized view
 
-A materialized view over another materialized view can only be created when the source materialized view is of kind `take_any(*)` aggregation (deduplication). See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view-preview) and [examples](#examples) below.
+A materialized view over another materialized view can only be created when the source materialized view is of kind `take_any(*)` aggregation (deduplication). See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view) and [examples](#examples) below.
 
 **Syntax":**
 `.create` [`async`] [`ifnotexists`] `materialized-view` <br>
@@ -428,7 +428,7 @@ The backfill-by-move-extents option can be useful in two main scenarios:
 ## Materialized views limitations and known issues
 
 * A materialized view can't be created:
-    * On top of another materialized view, unless the first materialized view is of type `take_any(*)` aggregation. See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view-preview).
+    * On top of another materialized view, unless the first materialized view is of type `take_any(*)` aggregation. See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view).
     * On [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.  Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader.
     * On [external tables](../../query/schema-entities/externaltables.md).
 
