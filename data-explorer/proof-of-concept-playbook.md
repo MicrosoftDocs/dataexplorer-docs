@@ -217,7 +217,7 @@ Here are some examples of high-level tasks:
     - For more information, see [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md).
     - For technical issues, please [create a support ticket](https://ms.portal.azure.com/#create/Microsoft.Support).
 1. Estimating the pricing:
-    - At the end of the POC, you should use what you learned in the POC to [estimate the cost](https://azure.microsoft.com/en-us/pricing/calculator/?service=data-explorer) of a cluster that meets your requirements.
+    - At the end of the POC, you should use what you learned in the POC to [estimate the cost](https://azure.microsoft.com/pricing/calculator/?service=data-explorer) of a cluster that meets your requirements.
 1. Close the POC:
     - Record the results, lessons learned and the outcome of the POC phase including the benchmarks, configuration, optimization that you applied during the POC.
     - Clean up any Azure resources that you created during the POC that you no longer need.
