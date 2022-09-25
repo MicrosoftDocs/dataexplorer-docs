@@ -535,6 +535,10 @@ items:
   href: kusto/query/toc.yml
 - name: Management commands
   href: kusto/management/toc.yml
+- name: Guidance
+  items:
+  - name: Big data analytics with Azure Data Explorer
+    href: proof-of-concept-playbook.md
 - name: Reference
   items:
   - name: API

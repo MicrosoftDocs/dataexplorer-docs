@@ -34,7 +34,7 @@ The following scenarios are also good candidates for Azure Data Explorer:
 
 ## Prepare for the POC
 
-A POC project can help you make an informed business decision about implementing a big data and advanced analytics environment on a cloud-based platform that leverages Azure Data Explorer.
+A POC project can help you make an informed business decision about implementing a big data and advanced analytics environment on a cloud-based platform that uses Azure Data Explorer.
 
 A POC project will identify your key goals and business drivers that cloud-based big data and advanced analytics platform must support. It will test key metrics and prove key behaviors that are critical to the success of your data engineering, machine learning model building, and training requirements. A POC isn't designed to be deployed to a production environment. Rather, it's a short-term project that focuses on key questions, and its result can be discarded.
 
@@ -48,19 +48,19 @@ Before you begin planning your Azure Data Explorer POC project:
 
 Before you start preparing for the POC project, we recommend you first read the [Azure Data Explorer documentation](index.yml).
 
-By now you should have determined that there are no immediate blockers and then you can start preparing for your POC. If you are new to Azure Data Explorer you can refer to [this documentation](data-explorer-overview.md) where you can get an overview of the Azure Data Explorer architecture.
+By now you should have determined that there are no immediate blockers and then you can start preparing for your POC. If you are new to Azure Data Explorer, you can refer to [this documentation](data-explorer-overview.md) where you can get an overview of the Azure Data Explorer architecture.
 
 Develop an understanding of these key concepts:
 
 - Azure Data Explorer and its architecture.
 - Support data formats and data sources.
 - Cluster, databases, tables, materialized views, functions as Azure Data Explorer artifacts.
-- Supported ingestion methods for ingestion wizard as well as continuous ingestion.
+- Supported ingestion methods for ingestion wizard and continuous ingestion.
 - Authentication and authorization in Azure Data Explorer.
-- Native connectors that integrate with visualization solutions such as PowerBI, Grafana, Kibana, and more.
-- Creating external tables to read data from Azure SQL/SQL Server, Azure CosmosDB, Azure Monitor, Azure Digital Twin.
+- Native connectors that integrate with visualization solutions such as Power BI, Grafana, Kibana, and more.
+- Creating external tables to read data from Azure SQL/SQL Server, Azure Cosmos DB, Azure Monitor, Azure Digital Twin.
 
-Azure Data Explorer decouples compute resources from storage so that you can better manage your data processing needs and control costs. You only pay for compute when it's in use. When it's not in use, you only pay for storage. The managed services architecture of Azure Data Explorer allows you to scale your cluster independently of your storage. You can scale up and down ([vertical](manage-cluster-vertical-scaling.md)), as well as scale in and out ([horizontal](manage-cluster-horizontal-scaling.md)). You can also manually stop, or [auto-stop](auto-stop-clusters.md), your cluster without losing your data. For example, you can scale up your cluster for heavy data processing needs or large loads, and then scale it back down during less intense processing times, or shut it down completely. Similarly, you can effectively scale and stop a cluster during the weekends to reduce costs.
+Azure Data Explorer decouples compute resources from storage so that you can better manage your data processing needs and control costs. You only pay for compute when it's in use. When it's not in use, you only pay for storage. The managed services architecture of Azure Data Explorer allows you to scale your cluster independently of your storage. You can scale up and down ([vertical](manage-cluster-vertical-scaling.md)), as well as scale in and out ([horizontal](manage-cluster-horizontal-scaling.md)). You can also manually stop, or [autostop](auto-stop-clusters.md), your cluster without losing your data. For example, you can scale up your cluster for heavy data processing needs or large loads, and then scale it back down during less intense processing times, or shut it down completely. Similarly, you can effectively scale and stop a cluster during the weekends to reduce costs.
 
 ### Set the goals
 
@@ -73,7 +73,7 @@ A successful POC project requires planning. Start by identify why you're doing a
 > - Who will use the outputs?
 > - What will define a successful POC?
 
-eep in mind that a POC should be a short and focused effort to quickly prove a limited set of concepts and capabilities. These concepts and capabilities should be representative of the overall workload. If you have a long list of items to prove, you may want to plan more than one POC. In that case, define gates between the PoCs to determine whether you need to continue with the next one. For example, one POC could focus on requirements for the data engineering role, such as ingestion and processing. Another POC could focus on machine learning (ML) model development.
+Keep in mind that a POC should be a short and focused effort to quickly prove a limited set of concepts and capabilities. These concepts and capabilities should be representative of the overall workload. If you have a long list of items to prove, you may want to plan more than one POC. In that case, define gates between the PoCs to determine whether you need to continue with the next one. For example, one POC could focus on requirements for the data engineering role, such as ingestion and processing. Another POC could focus on machine learning (ML) model development.
 
 As you consider your POC goals, ask yourself the following questions to help you shape the goals:
 
@@ -95,21 +95,21 @@ Here are some examples of POC goal setting:
     - We need to know whether near real-time stream processing is possible and how much throughput it can support. (Will it support our business requirements?)
     - We need to know if our existing data ingestion and transformation processes are a good fit and where improvements will need to be made.
     - We need to know if we can shorten our data integration run times and by how much.
-    - We need to know if our data scientists can build and train machine learning models and leverage AI/ML libraries as needed in Azure Data Explorer.
+    - We need to know if our data scientists can build and train machine learning models and use AI/ML libraries as needed in Azure Data Explorer.
     - Will the move to cloud-based Azure Data Explorer meet our cost goals?
 - At the conclusion of this POC:
-    - We will have the data to determine if our data processing performance requirements can be met for both batch and real-time streaming.
-    - We will have tested ingestion and processing of all our different data types (structured, semi-structured, and unstructured) that support our use cases.
-    - We will have tested some of our existing data processing needs and can identify the work that can be completed with update policies in Azure Data Explorer.
-    - We will have tested data ingestion and processing and will have the data points to estimate the effort required for the initial migration and load of historical data.
-    - We will have tested data ingestion and processing and can determine if our ETL/ELT processing requirements can be met.
-    - We will have gained insight to better estimate the effort required to complete the implementation project.
-    - We will have tested scale and scaling options and will have the data points to better configure our platform for better price-performance settings.
-    - We will have a list of items that may need more testing.
+    - We'll have the data to determine if our data processing performance requirements can be met for both batch and real-time streaming.
+    - We'll have tested ingestion and processing of all our different data types (structured, semi-structured, and unstructured) that support our use cases.
+    - We'll have tested some of our existing data processing needs and can identify the work that can be completed with update policies in Azure Data Explorer.
+    - We'll have tested data ingestion and processing and will have the data points to estimate the effort required for the initial migration and load of historical data.
+    - We'll have tested data ingestion and processing and can determine if our ETL/ELT processing requirements can be met.
+    - We'll have gained insight to better estimate the effort required to complete the implementation project.
+    - We'll have tested scale and scaling options and will have the data points to better configure our platform for better price-performance settings.
+    - We'll have a list of items that may need more testing.
 
 ### Plan the project
 
-Use your goals to identify specific tests and to provide the outputs you identified. It's important to make sure that you have at least one test to support each goal and expected output. Also, identify specific data ingestion, batch or stream processing, and all other processes that will be executed so you can identify a very specific dataset and codebase. This specific dataset and codebase will define the scope of the POC.
+Use your goals to identify specific tests and to provide the outputs you identified. It's important to make sure that you have at least one test to support each goal and expected output. Also, identify specific data ingestion, batch or stream processing, and all other processes that will be executed so you can identify a specific dataset and codebase. This specific dataset and codebase will define the scope of the POC.
 
 Here are the typical subject areas that are evaluated with Azure Data Explorer:
 
@@ -134,35 +134,35 @@ Here are the typical subject areas that are evaluated with Azure Data Explorer:
 Here's an example of the needed level of specificity in planning:
 
 - **Goal A**: We need to know whether our requirement for data ingestion and processing of batch data can be met under our defined SLA.
-- **Output A**: We will have the data to determine whether our batch data ingestion and processing can meet the data processing requirement and SLA.
-    - **Test A1**: Processing queries A, B, and C are identified as good performance tests as they are commonly executed by the data engineering team. Also, they represent overall data processing needs.
+- **Output A**: We'll have the data to determine whether our batch data ingestion and processing can meet the data processing requirement and SLA.
+    - **Test A1**: Processing queries A, B, and C are identified as good performance tests as they're commonly executed by the data engineering team. Also, they represent overall data processing needs.
     - **Test A2**: Processing queries X, Y, and Z are identified as good performance tests as they contain near real-time stream processing requirements. Also, they represent overall event-based stream processing needs.
     - **Test A3**: Compare the performance of these queries at different scale of our cluster (cluster SKU, number of instances) with the benchmark obtained from the existing system.
 - **Goal B**: We need to know if our business users can build their dashboards on this platform.
-- **Output B**: We will have tested some of our existing dashboards and visuals on data in our cluster, leveraging different visualization options, connectors and Kusto queries. These tests will help to determine which dashboards can be migrated to the new environment.
+- **Output B**: We'll have tested some of our existing dashboards and visuals on data in our cluster, using different visualization options, connectors and Kusto queries. These tests will help to determine which dashboards can be migrated to the new environment.
     - **Test B1**: Specific visuals will be created with ADX data and will be tested.
     - **Test B2**: Test out of the box KQL functions and operators to meet the requirement.
-- **Goal C**: We will have tested data ingestion and will have the data points to:
+- **Goal C**: We'll have tested data ingestion and will have the data points to:
     - Estimate the effort for our initial historical data migration to our Azure Data Explorer cluster.
     - Plan an approach to migrate historical data.
-- **Output C**: We will have tested and determined the data ingestion rate achievable in our environment and can determine whether our data ingestion rate is sufficient to migrate historical data during the available time window.
+- **Output C**: We'll have tested and determined the data ingestion rate achievable in our environment and can determine whether our data ingestion rate is sufficient to migrate historical data during the available time window.
     - **Test C1**: Test different approaches of historical data migration. For more information, see [Comparing ingestion methods and tools](ingest-data-overview.md#comparing-ingestion-methods-and-tools).
     - **Test C2**: Test data transfer from the data source to our cluster by using either LightIngest, Continuous ingestion from blob storage or data lake store. For more information, see [Use wizard for one-time ingestion of historical data with LightIngest](generate-lightingest-command.md).
-- **Goal D**: We will have tested the data ingestion rate of incremental data loading and will have the data points to estimate the data ingestion and processing time window.
-- **Output D**: We will have tested the data ingestion rate and can determine whether our data ingestion and processing requirements can be met with the identified approach.
+- **Goal D**: We'll have tested the data ingestion rate of incremental data loading and will have the data points to estimate the data ingestion and processing time window.
+- **Output D**: We'll have tested the data ingestion rate and can determine whether our data ingestion and processing requirements can be met with the identified approach.
     - **Test D1**: Test daily, hourly, and near-real time data ingestion and processing.
-    - **Test D2**: TExecute the continuous (batch or streaming) data ingestion and processing while running end user queries.
+    - **Test D2**: Execute the continuous (batch or streaming) data ingestion and processing while running end-user queries.
 
 Be sure to refine your tests by adding multiple testing scenarios.
 
 Here are some testing scenarios:
 
-- **Azure Data Explorer test A**: We will execute data ingestion, processing, and querying across multiple cluster SKU sizes (Storage Optimized or Compute Optimized), as well as different numbers of cluster instances.
-- **Azure Data Explorer test B**: We will query processed data from our cluster using dashboards and querying tools such as the Azure Data Explorer [web UI](web-ui-overview.md).
+- **Azure Data Explorer test A**: We'll execute data ingestion, processing, and querying across multiple cluster SKU sizes (Storage Optimized or Compute Optimized), and different numbers of cluster instances.
+- **Azure Data Explorer test B**: We'll query processed data from our cluster using dashboards and querying tools such as the Azure Data Explorer [web UI](web-ui-overview.md).
 
 ### Evaluate the POC dataset
 
-Using the specific tests you identified, select a dataset to support the tests. Take time to review this dataset. You should verify that the dataset will adequately represent your future processing in terms of content, complexity, and scale. Don't use a dataset that's too small (less than 1GB) because it won't deliver representative performance. Conversely, don't use a dataset that's too large because the POC shouldn't become a full data migration. Be sure to obtain the appropriate benchmarks from existing systems so you can use them for performance comparisons. Check if your dataset aligns with the supported data formats. Then, depending on the ingestion method (batch or streaming), your dataset can be ingested in batches of appropriate sizes.
+Using the specific tests you identified, select a dataset to support the tests. Take time to review this dataset. You should verify that the dataset will adequately represent your future processing in terms of content, complexity, and scale. Don't use a dataset that's too small (less than 1 GB) because it won't deliver representative performance. Conversely, don't use a dataset that's too large because the POC shouldn't become a full data migration. Be sure to obtain the appropriate benchmarks from existing systems so you can use them for performance comparisons. Check if your dataset aligns with the supported data formats. Then, depending on the ingestion method (batch or streaming), your dataset can be ingested in batches of appropriate sizes.
 
 > [!IMPORTANT]
 > Make sure you check with business owners for any blockers before moving any data to the cloud. Identify any security or privacy concerns or any data obfuscation needs that should be done before moving data to the cloud.
@@ -181,9 +181,9 @@ Specifically identify the technical resources and time commitments required to s
 
 - A business representative to oversee requirements and results.
 - An application data expert, to source the data for the POC and provide knowledge of the existing processes and logic.
-- An Azure Data Explorer expert. You can request your Microsoft contacts to arrange, if required.
-- An expert advisor, to optimize the POC tests. You can request your Microsoft contacts to arrange, if required.
-- Resources that will be required for specific components of your POC project, but not necessarily required for the duration of the POC. These resources could include network admins, Azure admins, Active Directory admins, Azure portal admins, and others.
+- An Azure Data Explorer expert. You can request your Microsoft contacts to arrange, if necessary.
+- An expert advisor, to optimize the POC tests. You can request your Microsoft contacts to arrange, if necessary.
+- Resources that will be required for specific components of your POC project, but not necessarily required during the POC. These resources could include network admins, Azure admins, Active Directory admins, Azure portal admins, and others.
 - Ensure all the required Azure services resources are provisioned and the required level of access is granted, including access to storage accounts.
 - Ensure you have an account that has required data access permissions to retrieve data from all data sources in the POC scope.
 
@@ -203,7 +203,7 @@ Here are some examples of high-level tasks:
 1. Create an Azure Data Explorer cluster, and all Azure resources identified in the PoC plan.
 1. Load POC dataset:
     - Make data available in Azure by extracting from the source or by creating sample data in Azure. For an initial test on ingesting data in Azure Data Explorer, use the [ingestion wizard](ingest-data-wizard.md).
-    - Test the connector/integration methods you have planned to use to ingest data into your cluster.
+    - Test the connector/integration methods you've planned to use to ingest data into your cluster.
 1. Write Kusto Queries to query data:
     - If you're migrating from SQL based system, you can use the [SQL to Kusto cheat sheet](kusto/query/sqlcheatsheet.md) to help you get started.
 1. Execute the tests:
@@ -211,8 +211,8 @@ Here are some examples of high-level tasks:
     - You can create [load test using JMeter or Grafana k6](kusto/api/load-test-cluster.md).
     - Record your results in a consumable and readily understandable format.
 1. Optimize the queries and cluster:
-    - Whether you are writing new KQL queries or converting existing queries from other languages, we recommend checking that you your queries follow [Query best practices](kusto/query/best-practices.md).
-    - Depending on the test results, you may need to fine tune your cluster with a caching policy, partitioning policy, cluster sizing, or other optimizations. For recommendations, see [Optimize for high concurrency with Azure Data Explorer](high-concurrency.md)
+    - Whether you're writing new KQL queries or converting existing queries from other languages, we recommend checking that your queries follow [Query best practices](kusto/query/best-practices.md).
+    - Depending on the test results, you may need to fine-tune your cluster with a caching policy, partitioning policy, cluster sizing, or other optimizations. For recommendations, see [Optimize for high concurrency with Azure Data Explorer](high-concurrency.md)
 1. Monitor for troubleshooting and performance:
     - For more information, see [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md).
     - For technical issues, please [create a support ticket](https://ms.portal.azure.com/#create/Microsoft.Support).
@@ -231,7 +231,7 @@ When you complete all the POC tests, you evaluate the results. Begin by evaluati
 
 ## Migrating from POC to production
 
-If you have decide to proceed with Azure Data Explorer and intend to migrate your POC cluster to production, we strongly recommend that you keep the POC cluster running and use it to set up your production cluster. This will help you ensure that you don't lose the configurations and optimizations that you may have applied during the POC.
+If you've decided to proceed with Azure Data Explorer and intend to migrate your POC cluster to production, we strongly recommend that you keep the POC cluster running, and use it to set up your production cluster. This will help you ensure that you don't lose the configurations and optimizations that you may have applied during the POC.
 
 Before you migrate your POC cluster to production, we highly recommend that you consider, design, and decide on the following factors:
 
