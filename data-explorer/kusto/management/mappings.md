@@ -136,6 +136,7 @@ Each element in the list describes a mapping for a specific column, and may cont
         {"Column": "column_b", "Properties": {"Path": "$.Property"}},
         {"Column": "custom_column", "Properties": {"Path": "$.[\'Property name with space\']"}}
       ]
+      ```
   )
 ````
 
