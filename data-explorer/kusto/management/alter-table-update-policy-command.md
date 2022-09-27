@@ -3,7 +3,7 @@ title: .alter table update policy command - Azure Data Explorer
 description: This article describes the .alter table update policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 09/27/2022
 ---
 # .alter table update policy
 
@@ -35,5 +35,16 @@ Returns a JSON representation of the policy.
 Change the update policy for a table:
 
 ```kusto
-.alter table MyDatabase.MyTable policy update @'[{"IsEnabled": true, "Source": "MyTableX", "Query": "MyOtherTable", "IsTransactional": true, "PropagateIngestionProperties": false}]'
+.alter table MyDatabase.MyTable policy update
+'```'
+[
+    {
+        "IsEnabled": true,
+        "Source": "MyTableX",
+        "Query": "MyOtherTable",
+        "IsTransactional": true,
+        "PropagateIngestionProperties": false
+    }
+]
+'```'
 ```
