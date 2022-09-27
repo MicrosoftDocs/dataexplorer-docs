@@ -32,7 +32,7 @@ Returns a JSON representation of the policy.
 
 ## Example
 
-Change the update policy for a table:
+Change the update policy for a table (using [multi-line string literals](../query/scalar-data-types/string.md#multi-line-string-literals)):
 
 ````kusto
 .alter table MyDatabase.MyTable policy update
