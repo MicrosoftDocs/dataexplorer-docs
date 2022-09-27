@@ -7,7 +7,7 @@ ms.date: 04/23/2021
 ---
 # Materialized views
 
-Materialized views expose an *aggregation* query over a source table, or over [another materialized view](#materialized-view-over-materialized-view-preview).
+Materialized views expose an *aggregation* query over a source table, or over [another materialized view](#materialized-view-over-materialized-view).
 
 Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-views-queries) is more performant than running the aggregation directly over the source table.
 
@@ -162,9 +162,9 @@ The main contributors that can impact a materialized view health are:
 
 * **Materialized view definition**: The materialized view definition must be defined according to query best practices for best query performance. For more information, see [create command performance tips](materialized-view-create.md#performance-tips).
 
-## Materialized view over materialized view (preview)
+## Materialized view over materialized view
 
-A materialized view can be created over another materialized view if the source materialized view is a deduplication view. Specifically, the aggregation of the source materialized view must be `take_any(*)` in order to deduplicate source records. The second materialized view can use any [supported aggregation functions](materialized-view-create.md#supported-aggregation-functions). For specific information on how to create a materialized view over a materialized view, see [`.create materialized-view` command](materialized-view-create.md#create-materialized-view-over-materialized-view-preview).
+A materialized view can be created over another materialized view if the source materialized view is a deduplication view. Specifically, the aggregation of the source materialized view must be `take_any(*)` in order to deduplicate source records. The second materialized view can use any [supported aggregation functions](materialized-view-create.md#supported-aggregation-functions). For specific information on how to create a materialized view over a materialized view, see [`.create materialized-view` command](materialized-view-create.md#create-materialized-view-over-materialized-view).
 
 > [!TIP]
 > When querying a materialized view that is defined over another materialized view, we recommend querying the materialized part only using the `materialized_view()` function. Querying the entire view will not be performant when both views aren't fully materialized. For more information, see [materialized views queries](#materialized-views-queries).
