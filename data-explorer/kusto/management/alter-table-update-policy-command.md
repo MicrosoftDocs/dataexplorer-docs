@@ -34,9 +34,9 @@ Returns a JSON representation of the policy.
 
 Change the update policy for a table:
 
-```kusto
+````kusto
 .alter table MyDatabase.MyTable policy update
-'```'
+```
 [
     {
         "IsEnabled": true,
@@ -46,5 +46,5 @@ Change the update policy for a table:
         "PropagateIngestionProperties": false
     }
 ]
-'```'
 ```
+````
