@@ -47,8 +47,6 @@ items:
       href: web-ui-overview.md
     - name: Ingestion wizard
       href: ingest-data-wizard.md
-    - name: Azure Data Explorer web UI keyboard shortcuts
-      href: web-ui-query-keyboard-shortcuts.md
   - name: Data ingestion
     items:
     - name: Data ingestion overview
