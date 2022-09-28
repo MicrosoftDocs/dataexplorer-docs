@@ -11,14 +11,16 @@ zone_pivot_groups: kql-flavors
 # Tutorial: Use Kusto queries
 
 ::: zone pivot="azuredataexplorer"
+[Add short description/ definition of Kusto Query Language, or redirect to a page that provides more background information for those starting out].
+*Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator. //this would be included in the definition provided above//
 
 The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
 
+
 ## Count rows
 
-Our example database has a table called `StormEvents`. we want to find out how large the table is. So we'll pipe its content into an operator that counts the rows in the table.
+Our example database has a table called `StormEvents`. To find out how large the table is, we need to pipe its content into an operator that counts the rows in the table.
 
-*Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -35,10 +37,36 @@ For more information, see [count operator](./countoperator.md).
 
 ## Select a subset of columns: *project*
 
-Use [project](./projectoperator.md) to pick out only the columns you want. See the following example, which uses both the [project](./projectoperator.md)
-and the [take](./takeoperator.md) operators.
+Use [project](./projectoperator.md) to only pick out the columns you want. See the following example, which uses both the [project](./projectoperator.md)
+and the [take](./takeoperator.md) operators. 
+For the [take](./takeoperator.md) operator, see the following section. 
+
+## Show *n* rows: *take*
+
+What if we wanted to retrieve a random sample of five rows? Let's see some data. 
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents
+| take 5
+| project  StartTime, EndTime, EventType, State, EventNarrative  
+```
+
+Here's the output:
+
+|Start Time|End Time|Event Type|State|Event Narrative|
+|---|---|---|---|---|
+|2007-09-18 20:00:00.0000000|2007-09-19 18:00:00.0000000|Heavy Rain|FLORIDA|As much as 9 inches of rain fell in a 24-hour period across parts of coastal Volusia County.|
+|2007-09-20 21:57:00.0000000|2007-09-20 22:05:00.0000000|Tornado|FLORIDA|A tornado touched down in the Town of Eustis at the northern end of West Crooked Lake. The tornado quickly intensified to EF1 strength as it moved north northwest through Eustis. The track was just under two miles long and had a maximum width of 300 yards.  The tornado destroyed 7 homes. Twenty seven homes received major damage and 81 homes reported minor damage. There were no serious injuries and property damage was set at $6.2 million.|
+|2007-09-29 08:11:00.0000000|2007-09-29 08:11:00.0000000|Waterspout|ATLANTIC SOUTH|A waterspout formed in the Atlantic southeast of Melbourne Beach and briefly moved toward shore.|
+|2007-12-20 07:50:00.0000000|2007-12-20 07:53:00.0000000|Thunderstorm Wind|MISSISSIPPI|Numerous large trees were blown down with some down on power lines. Damage occurred in eastern Adams county.|
+|2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|Thunderstorm Wind|GEORGIA|The county dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206. The cost of tree removal was estimated.|
+
+But [take](./takeoperator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./takeoperator.md) is an alias for [take](./takeoperator.md) and has the same effect.)
+
 
 ## Filter by Boolean expression: *where*
+[What is a Boolean expression? redirect to page with more information/ include about true/false statements that provide WHERE clause output]
 
 Let's see only `flood` events in `California` in Feb-2007:
 
@@ -52,32 +80,9 @@ StormEvents
 
 Here's the output:
 
-|StartTime|EndTime|State|EventType|EpisodeNarrative|
+|Start Time|End Time|State|Event Type|Episode Narrative|
 |---|---|---|---|---|
 |2007-02-19 00:00:00.0000000|2007-02-19 08:00:00.0000000|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to western Kern County in the early morning hours of the 19th. Minor flooding was reported across State Highway 166 near Taft.|
-
-## Show *n* rows: *take*
-
-Let's see some data. What's in a random sample of five rows?
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| take 5
-| project  StartTime, EndTime, EventType, State, EventNarrative  
-```
-
-Here's the output:
-
-|StartTime|EndTime|EventType|State|EventNarrative|
-|---|---|---|---|---|
-|2007-09-18 20:00:00.0000000|2007-09-19 18:00:00.0000000|Heavy Rain|FLORIDA|As much as 9 inches of rain fell in a 24-hour period across parts of coastal Volusia County.|
-|2007-09-20 21:57:00.0000000|2007-09-20 22:05:00.0000000|Tornado|FLORIDA|A tornado touched down in the Town of Eustis at the northern end of West Crooked Lake. The tornado quickly intensified to EF1 strength as it moved north northwest through Eustis. The track was just under two miles long and had a maximum width of 300 yards.  The tornado destroyed 7 homes. Twenty seven homes received major damage and 81 homes reported minor damage. There were no serious injuries and property damage was set at $6.2 million.|
-|2007-09-29 08:11:00.0000000|2007-09-29 08:11:00.0000000|Waterspout|ATLANTIC SOUTH|A waterspout formed in the Atlantic southeast of Melbourne Beach and briefly moved toward shore.|
-|2007-12-20 07:50:00.0000000|2007-12-20 07:53:00.0000000|Thunderstorm Wind|MISSISSIPPI|Numerous large trees were blown down with some down on power lines. Damage occurred in eastern Adams county.|
-|2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|Thunderstorm Wind|GEORGIA|The county dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206. The cost of tree removal was estimated.|
-
-But [take](./takeoperator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./takeoperator.md) is an alias for [take](./takeoperator.md) and has the same effect.)
 
 ## Order results: *sort*, *top*
 
@@ -95,7 +100,7 @@ StormEvents
 
 Here's the output:
 
-|StartTime|EndTime|EventType|State|EventNarrative|
+|Start Time|End Time|Event Type|State|Event Narrative|
 |---|---|---|---|---|
 |2007-12-31 22:30:00.0000000|2007-12-31 23:59:00.0000000|Winter Storm|MICHIGAN|This heavy snow event continued into the early morning hours on New Year's Day.|
 |2007-12-31 22:30:00.0000000|2007-12-31 23:59:00.0000000|Winter Storm|MICHIGAN|This heavy snow event continued into the early morning hours on New Year's Day.|
@@ -127,7 +132,7 @@ StormEvents
 
 Here's the output:
 
-|StartTime|EndTime|Duration|EventType|State|
+|Start Time|End Time|Duration|Event Type|State|
 |---|---|---|---|---|
 |2007-09-18 20:00:00.0000000|2007-09-19 18:00:00.0000000|22:00:00|Heavy Rain|FLORIDA|
 |2007-09-20 21:57:00.0000000|2007-09-20 22:05:00.0000000|00:08:00|Tornado|FLORIDA|
@@ -177,7 +182,7 @@ StormEvents
 
 Here's the output:
 
-|State|StormCount|TypeOfStorms|
+|State|Storm Count|Type Of Storms|
 |---|---|---|
 |TEXAS|4701|27|
 |KANSAS|3166|21|
