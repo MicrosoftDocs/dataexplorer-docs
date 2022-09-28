@@ -73,7 +73,7 @@ A successful POC project requires planning. Start by identify why you're doing a
 > - Who will use the outputs?
 > - What will define a successful POC?
 
-Keep in mind that a POC should be a short and focused effort to quickly prove a limited set of concepts and capabilities. These concepts and capabilities should be representative of the overall workload. If you have a long list of items to prove, you may want to plan more than one POC. In that case, define gates between the PoCs to determine whether you need to continue with the next one. For example, one POC could focus on requirements for the data engineering role, such as ingestion and processing. Another POC could focus on machine learning (ML) model development.
+Keep in mind that a POC should be a short and focused effort to quickly prove a limited set of concepts and capabilities. These concepts and capabilities should be representative of the overall workload. If you have a long list of items to prove, you may want to plan more than one POC. In that case, define gates between the POCs to determine whether you need to continue with the next one. For example, one POC could focus on requirements for the data engineering role, such as ingestion and processing. Another POC could focus on machine learning (ML) model development.
 
 As you consider your POC goals, ask yourself the following questions to help you shape the goals:
 
@@ -140,7 +140,7 @@ Here's an example of the needed level of specificity in planning:
     - **Test A3**: Compare the performance of these queries at different scale of our cluster (cluster SKU, number of instances) with the benchmark obtained from the existing system.
 - **Goal B**: We need to know if our business users can build their dashboards on this platform.
 - **Output B**: We'll have tested some of our existing dashboards and visuals on data in our cluster, using different visualization options, connectors and Kusto queries. These tests will help to determine which dashboards can be migrated to the new environment.
-    - **Test B1**: Specific visuals will be created with ADX data and will be tested.
+    - **Test B1**: Specific visuals will be created with Azure Data Explorer data and will be tested.
     - **Test B2**: Test out of the box KQL functions and operators to meet the requirement.
 - **Goal C**: We'll have tested data ingestion and will have the data points to:
     - Estimate the effort for our initial historical data migration to our Azure Data Explorer cluster.
@@ -159,6 +159,48 @@ Here are some testing scenarios:
 
 - **Azure Data Explorer test A**: We'll execute data ingestion, processing, and querying across multiple cluster SKU sizes (Storage Optimized or Compute Optimized), and different numbers of cluster instances.
 - **Azure Data Explorer test B**: We'll query processed data from our cluster using dashboards and querying tools such as the Azure Data Explorer [web UI](web-ui-overview.md).
+
+The following is a high level example of tasks that you can use to help you plan your POC:
+
+| Task | Sprint |
+|--|--|
+| Present and demo Azure Data Explorer to the customer team | Sprint 0 |
+| Define business scenarios that customer wants to achieve with Azure Data Explorer | Sprint 0 |
+| Define technical requirements in terms of data sources, ingestion methods, data retention, data caching, SLAs, security, networking, IAM | Sprint 0 |
+| Define key performance measures, such as query performance expectation, latency, concurrent requests, ingestion throughout, data freshness | Sprint 0 |
+| Define high level architecture with Azure Data Explorer and its data ingesters and consumers | Sprint 0 |
+| Define POC Scope | Sprint 0 |
+| Define POC planning and timelines | Sprint 0 |
+| Define, prioritize and weigh POC evaluation criteria | Sprint 0 |
+| Define and prioritize queries to be tested | Sprint 1 |
+| Define data access rules for each group of users | Sprint 1 |
+| Estimate one-time (historical) data ingestion volume and daily data ingestion volume | Sprint 1 |
+| Define data retention, caching, and purge strategy | Sprint 1 |
+| Define configuration elements needed when creating clusters, such as streaming, Python/R plugins, purge | Sprint 1 |
+| Review source data format, structure, schema | Sprint 1 |
+| Review, refine, revise evaluation criteria | Sprint 1 |
+| Building pricing scenarios based on the Azure Pricing Calculator for Azure Data Explorer | Sprint 1 |
+| Create cluster and the required databases, tables, materialized views per the architecture design | Sprint 2 |
+| Assign permissions to the relevant users for data plane access | Sprint 2 |
+| Implement partitioning and merge policies (if required) | Sprint 2 |
+| Implement one-time ingestion of data, typically historical or migration data | Sprint 2 |
+| Install and configure query tool (if required) | Sprint 2 |
+| Test queries on the ingested data using Data Explorer web UI | Sprint 2 |
+| Test update and delete scenarios | Sprint 2 |
+| Test connection to PowerBI | Sprint 2 |
+| Test connection to Grafana | Sprint 2 |
+| Configure data access management rules | Sprint 2 |
+| Implement continuous ingestion | Sprint 2 |
+| Create data connections with Event Hubs/Iot Hub/Event Grid | Sprint 2 |
+| Implement autorefreshing dashboard for near real-time monitoring in Azure Data Explorer Dashboards or Grafana | Sprint 3 |
+| Define how to perform load testing | Sprint 3 |
+| Optimize ingestion methods and processes based on learnings from previous sprints and completed backlog items | Sprint 3 |
+| Performance assessment on Grafana dashboard | Sprint 3 |
+| Perform load testing in line with concurrency and expected load requirements | Sprint 3 |
+| Validate success criteria | Sprint 3 |
+| Review scoring | Sprint 3 |
+| Test ability to ingest data with different formats | Sprint 3 |
+| Validate POC result | Sprint 3 |
 
 ### Evaluate the POC dataset
 
@@ -200,7 +242,7 @@ We recommend you execute your POC project with the discipline and rigor of any p
 
 Here are some examples of high-level tasks:
 
-1. Create an Azure Data Explorer cluster, and all Azure resources identified in the PoC plan.
+1. Create an Azure Data Explorer cluster, and all Azure resources identified in the POC plan.
 1. Load POC dataset:
     - Make data available in Azure by extracting from the source or by creating sample data in Azure. For an initial test on ingesting data in Azure Data Explorer, use the [ingestion wizard](ingest-data-wizard.md).
     - Test the connector/integration methods you've planned to use to ingest data into your cluster.
@@ -241,7 +283,7 @@ Before you migrate your POC cluster to production, we highly recommend that you 
 - Networking requirements
 - Continuous Integration/Continuous Deployment requirements
 - Monitoring and Support requirements
-- Training of key personnel in ADX
+- Training of key personnel in Azure Data Explorer
 - Control and data plane access control requirements
 - Schema, data model and data flow requirements
 - Ingestion requirements
