@@ -73,7 +73,7 @@ When attaching the database all tables, external tables and materialized views a
 
 ### Attach a database using C\#
 
-### Prerequisite nuggets
+### Required NuGet packages
 
 * Install [Microsoft.Azure.Management.Kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Install [Microsoft.Rest.ClientRuntime.Azure.Authentication for authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
