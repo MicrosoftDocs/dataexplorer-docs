@@ -28,7 +28,7 @@ Two streaming ingestion types are supported:
 
 Use the following table to help you choose the ingestion type that's appropriate for your environment:
 
-|Criterion|Data Connection|Custom Ingestion|
+|Criterion|Data connection|Custom Ingestion|
 |---------|---------|---------|
 |Data delay between ingestion initiation and the data available for query | Longer delay | Shorter delay  |
 |Development overhead | Fast and easy setup, no development overhead | High development overhead to create an application ingest the data, handle errors, and ensure data consistency |
