@@ -1,16 +1,18 @@
 ---
 title: Azure Data Explorer web UI query keyboard shortcuts
 description: This article describes Azure Data Explorer query keyboard shortcuts (hot-keys) in Azure Data Explorer web UI.
-ms.reviewer:
+ms.reviewer: mibar
 ms.topic: reference
 ms.date: 09/20/2022
 ---
 
-# Keyboard shortcuts for Azure Data Explorer web UI query editor window
+# Azure Data Explorer web UI keyboard shortcuts
 
 Keyboard shortcuts provide a quick way to navigate websites, and allow users to work more efficiently. Instead of using a pointing device, you use keys, or combinations of keys, to run tasks. This article lists Windows keyboard shortcuts that work in the Azure Data Explorer web UI query editor window and results viewer.
 
-The letters that appear below represent letter keys on your keyboard. For example, to use <kbd>G</kbd>+<kbd>N</kbd>, hold down the <kbd>G</kbd> key and then press <kbd>N</kbd>. If the command is <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>X</kbd>, hold down the <kbd>Ctrl</kbd>, and simultaneously press <kbd>K</kbd> and then <kbd>X</kbd>. When using the query editor you can select <kbd>F1</kbd> to view the list of keyboard shortcuts in the command palette.
+In the query editor, select <kbd>F1</kbd> to view a list of keyboard shortcuts in the command palette.
+
+The letters that appear below represent letter keys on your keyboard. For example, to use <kbd>G</kbd>+<kbd>N</kbd>, hold down the <kbd>G</kbd> key and then press <kbd>N</kbd>. If the command is <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>X</kbd>, keep pressing <kbd>Ctrl</kbd>, and simultaneously press <kbd>K</kbd> and then <kbd>X</kbd>.
 
 ## Query editor
 
@@ -51,10 +53,10 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | ----------------------------------------------------- | ------------------------------------------------- |
 | Insert data cell selections as filters into the query | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> |
 | [Column header] Toggle the sorting state              | <kbd>Enter</kbd>                                  |
-| [Column header] open the menu for the focused header  | <kbd>Shift</kbd>+<kbd>Enter</kbd>                 |
+| [Column header] Open the menu for the focused header  | <kbd>Shift</kbd>+<kbd>Enter</kbd>                 |
 
 ## Next steps
 
-- [Query data in the Azure Data Explorer web UI](web-query-data.md).
+- [Query data in the Azure Data Explorer web UI](web-query-data.md)
 - [Write queries for Azure Data Explorer](write-queries.md)
 - [Azure Data Explorer web UI overview](web-ui-overview.md)
