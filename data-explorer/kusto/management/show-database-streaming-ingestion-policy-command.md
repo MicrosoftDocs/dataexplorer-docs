@@ -25,7 +25,7 @@ Use the classic (bulk) ingestion instead of streaming ingestion when the amount 
 
 ## Example
 
-The following command deletes the streaming ingestion policy:
+The following command shows the streaming ingestion policy:
 
 ```kusto
 .show database MyDatabase policy streamingingestion 
