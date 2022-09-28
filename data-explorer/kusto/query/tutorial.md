@@ -16,8 +16,9 @@ The best way to learn about the Kusto Query Language is to look at some basic qu
 
 ## Count rows
 
-Our example database has a table called `StormEvents`. we want to find out how large the table is. So we'll pipe its content into an operator that counts the rows in the table.
+Our example database has a table called `StormEvents`. We want to find out how large the table is. So we'll pipe its content into a [count operator] (./countoperator.md) that counts the rows in the table.
 
+// Highlight the Syntax note to distinguish it from the rest of the text //
 *Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -31,16 +32,14 @@ Here's the output:
 |-----|
 |59066|
 
-For more information, see [count operator](./countoperator.md).
 
 ## Select a subset of columns: *project*
 
-Use [project](./projectoperator.md) to pick out only the columns you want. See the following example, which uses both the [project](./projectoperator.md)
-and the [take](./takeoperator.md) operators.
+Use [project](./projectoperator.md) to pick out only the columns you want. See the following example, which uses both the project and the [take](./takeoperator.md) operators.
 
 ## Filter by Boolean expression: *where*
 
-Let's see only `flood` events in `California` in Feb-2007:
+Let's see only "flood" events in "California" in Feb-2007:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -81,8 +80,8 @@ But [take](./takeoperator.md) shows rows from the table in no particular order, 
 
 ## Order results: *sort*, *top*
 
-* *Syntax note*: Some operators have parameters that are introduced by keywords like `by`.
-* In the following example, `desc` orders results in descending order and `asc` orders results in ascending order.
+*Syntax note*: Some operators have parameters that are introduced by keywords like `by`.
+*Syntax note*: In the following example, `desc` orders results in descending order and `asc` orders results in ascending order.
 
 Show me the first *n* rows, ordered by a specific column:
 
