@@ -162,45 +162,45 @@ Here are some testing scenarios:
 
 The following is a high level example of tasks that you can use to help you plan your POC:
 
-| Task | Sprint |
+| Sprint | Task |
 |--|--|
-| Present and demo Azure Data Explorer to the customer team | Sprint 0 |
-| Define business scenarios that customer wants to achieve with Azure Data Explorer | Sprint 0 |
-| Define technical requirements in terms of data sources, ingestion methods, data retention, data caching, SLAs, security, networking, IAM | Sprint 0 |
-| Define key performance measures, such as query performance expectation, latency, concurrent requests, ingestion throughout, data freshness | Sprint 0 |
-| Define high level architecture with Azure Data Explorer and its data ingesters and consumers | Sprint 0 |
-| Define POC Scope | Sprint 0 |
-| Define POC planning and timelines | Sprint 0 |
-| Define, prioritize and weigh POC evaluation criteria | Sprint 0 |
-| Define and prioritize queries to be tested | Sprint 1 |
-| Define data access rules for each group of users | Sprint 1 |
-| Estimate one-time (historical) data ingestion volume and daily data ingestion volume | Sprint 1 |
-| Define data retention, caching, and purge strategy | Sprint 1 |
-| Define configuration elements needed when creating clusters, such as streaming, Python/R plugins, purge | Sprint 1 |
-| Review source data format, structure, schema | Sprint 1 |
-| Review, refine, revise evaluation criteria | Sprint 1 |
-| Building pricing scenarios based on the Azure Pricing Calculator for Azure Data Explorer | Sprint 1 |
-| Create cluster and the required databases, tables, materialized views per the architecture design | Sprint 2 |
-| Assign permissions to the relevant users for data plane access | Sprint 2 |
-| Implement partitioning and merge policies (if required) | Sprint 2 |
-| Implement one-time ingestion of data, typically historical or migration data | Sprint 2 |
-| Install and configure query tool (if required) | Sprint 2 |
-| Test queries on the ingested data using Data Explorer web UI | Sprint 2 |
-| Test update and delete scenarios | Sprint 2 |
-| Test connection to PowerBI | Sprint 2 |
-| Test connection to Grafana | Sprint 2 |
-| Configure data access management rules | Sprint 2 |
-| Implement continuous ingestion | Sprint 2 |
-| Create data connections with Event Hubs/Iot Hub/Event Grid | Sprint 2 |
-| Implement autorefreshing dashboard for near real-time monitoring in Azure Data Explorer Dashboards or Grafana | Sprint 3 |
-| Define how to perform load testing | Sprint 3 |
-| Optimize ingestion methods and processes based on learnings from previous sprints and completed backlog items | Sprint 3 |
-| Performance assessment on Grafana dashboard | Sprint 3 |
-| Perform load testing in line with concurrency and expected load requirements | Sprint 3 |
-| Validate success criteria | Sprint 3 |
-| Review scoring | Sprint 3 |
-| Test ability to ingest data with different formats | Sprint 3 |
-| Validate POC result | Sprint 3 |
+| 0 | Present and demo Azure Data Explorer to the customer team |
+| 0 | Define business scenarios that customer wants to achieve with Azure Data Explorer |
+| 0 | Define technical requirements in terms of data sources, ingestion methods, data retention, data caching, SLAs, security, networking, IAM |
+| 0 | Define key performance measures, such as query performance expectation, latency, concurrent requests, ingestion throughout, data freshness |
+| 0 | Define high level architecture with Azure Data Explorer and its data ingesters and consumers |
+| 0 | Define POC Scope |
+| 0 | Define POC planning and timelines |
+| 0 | Define, prioritize and weigh POC evaluation criteria |
+| 1 | Define and prioritize queries to be tested |
+| 1 | Define data access rules for each group of users |
+| 1 | Estimate one-time (historical) data ingestion volume and daily data ingestion volume |
+| 1 | Define data retention, caching, and purge strategy |
+| 1 | Define configuration elements needed when creating clusters, such as streaming, Python/R plugins, purge |
+| 1 | Review source data format, structure, schema |
+| 1 | Review, refine, revise evaluation criteria |
+| 1 | Building pricing scenarios based on the Azure Pricing Calculator for Azure Data Explorer |
+| 2 | Create cluster and the required databases, tables, materialized views per the architecture design |
+| 2 | Assign permissions to the relevant users for data plane access |
+| 2 | Implement partitioning and merge policies (if required) |
+| 2 | Implement one-time ingestion of data, typically historical or migration data |
+| 2 | Install and configure query tool (if required) |
+| 2 | Test queries on the ingested data using Data Explorer web UI |
+| 2 | Test update and delete scenarios |
+| 2 | Test connection to PowerBI |
+| 2 | Test connection to Grafana |
+| 2 | Configure data access management rules |
+| 2 | Implement continuous ingestion |
+| 2 | Create data connections with Event Hubs/Iot Hub/Event Grid |
+| 3 | Implement autorefreshing dashboard for near real-time monitoring in Azure Data Explorer Dashboards or Grafana |
+| 3 | Define how to perform load testing |
+| 3 | Optimize ingestion methods and processes based on learnings from previous sprints and completed backlog items |
+| 3 | Performance assessment on Grafana dashboard |
+| 3 | Perform load testing in line with concurrency and expected load requirements |
+| 3 | Validate success criteria |
+| 3 | Review scoring |
+| 3 | Test ability to ingest data with different formats |
+| 3 | Validate POC result |
 
 ### Evaluate the POC dataset
 
