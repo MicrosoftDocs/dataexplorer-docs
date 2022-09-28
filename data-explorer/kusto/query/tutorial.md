@@ -12,11 +12,11 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
+The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). This tutorial shows the queries that should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
 
 ## Count rows
 
-Our example database has a table called `StormEvents`. we want to find out how large the table is. So we'll pipe its content into an operator that counts the rows in the table.
+Our example database has a table called `StormEvents`. we want to find out how large the table is. Let's insert its content into an operator that counts the rows in the table.
 
 *Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator.
 
@@ -77,7 +77,7 @@ Here's the output:
 |2007-12-20 07:50:00.0000000|2007-12-20 07:53:00.0000000|Thunderstorm Wind|MISSISSIPPI|Numerous large trees were blown down with some down on power lines. Damage occurred in eastern Adams county.|
 |2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|Thunderstorm Wind|GEORGIA|The county dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206. The cost of tree removal was estimated.|
 
-But [take](./takeoperator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./takeoperator.md) is an alias for [take](./takeoperator.md) and has the same effect.)
+But [take](./takeoperator.md) shows us rows from the table in no particular order, so let's sort them. ([limit](./takeoperator.md) is an alias for [take](./takeoperator.md) and has the same effect.)
 
 ## Order results: *sort*, *top*
 
@@ -156,7 +156,7 @@ Here's the output:
 
 ## Aggregate groups of rows: *summarize*
 
-Count the number of events occur in each state:
+Count the number of events that occur in each state:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -164,7 +164,7 @@ StormEvents
 | summarize event_count = count() by State
 ```
 
-[summarize](./summarizeoperator.md) groups together rows that have the same values in the `by` clause, and then uses an aggregation function (for example, `count`) to combine each group in a single row. In this case, there's a row for each state and a column for the count of rows in that state.
+[Summarize](./summarizeoperator.md) groups together rows that have the same values in the `by` clause, and then uses an aggregation function (for example, `count`) to combine each group in a single row. In this case, there's a row for each state and a column for the count of rows in that state.
 
 A range of [aggregation functions](aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. For example, we could get the count of storms per state, and the sum of unique types of storm per state. Then, we could use [top](./topoperator.md) to get the most storm-affected states:
 
@@ -236,7 +236,7 @@ StormEvents
 
 Although we removed `mid` in the `project` operation, we still need it if we want the chart to display the states in that order.
 
-Strictly speaking, `render` is a feature of the client rather than part of the query language. Still, it's integrated into the language, and it's useful for envisioning your results.
+`Render` is a feature of the client rather than part of the query language. Still, it's integrated into the language, and it's useful for envisioning your results.
 
 ## Timecharts
 
@@ -275,7 +275,7 @@ Notice that `render timechart` uses the first column as the x-axis, and then dis
 
 How does activity vary over the average day?
 
-Count events by the time modulo one day, binned into hours. Here, we use `floor` instead of `bin`:
+Count events using one day structure, binned into hours. Here, we use `floor` instead of `bin`:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -365,7 +365,7 @@ Events
 
 :::image type="content" source="images/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
 
-It's a good practice to use `project` to select just the relevant columns before you perform the join. In the same clause, rename the `timestamp` column.
+It's good practice to use `project` to select just the relevant columns before you join. In the same clause, rename the `timestamp` column.
 
 ## Plot a distribution
 
@@ -451,7 +451,7 @@ The query removes zero count entries:
 
 ## Assign a result to a variable: *let*
 
-Use [let](./letstatement.md) to separate out the parts of the query expression in the preceding `join` example. The results are unchanged:
+Use [let](./letstatement.md) to separate the parts of the query expression in the preceding `join` example. The results are unchanged:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
