@@ -8,17 +8,17 @@ zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 
-# Tutorial: Use Kusto queries
+# Tutorial: Use Kusto Queries
 
 ::: zone pivot="azuredataexplorer"
 
-The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
+By the end of this tutorial, you will be able to use queries in the Kusto Query Language to meet common query needs.
+
+A query is a data source (usually a table name) optionally followed by one or more pairs of the pipe character and some tabular operator. The best way to learn about the Kusto Query Language is to look at some basic queries to get familiar with the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples) to practice. The queries that are demonstrated in this tutorial should run on that database.
 
 ## Count rows
 
-Our example database has a table called `StormEvents`. we want to find out how large the table is. So we'll pipe its content into an operator that counts the rows in the table.
-
-*Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator.
+Our example database has a table called `StormEvents` that provides some information about storms that happened in the United States. To find out how large the table is, pipe its content into an operator that counts the rows in the table.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -40,7 +40,7 @@ and the [take](./takeoperator.md) operators.
 
 ## Filter by Boolean expression: *where*
 
-Let's see only `flood` events in `California` in Feb-2007:
+Use the _where_ operator to output info on a specific location. Let's see only `flood` events in `California` in February 2007:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
