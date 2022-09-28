@@ -141,9 +141,9 @@ items:
     - name: Cross-tenant data connection
       displayName: event hub, event grid
       href: ingest-data-cross-tenant.md
-    - name: Event hub
+    - name: Event Hubs
       items:
-      - name: Event hub data connection
+      - name: Event Hubs data connection
         displayName: ingest, ingestion
         href: ingest-data-event-hub-overview.md
       - name: Azure portal
@@ -535,6 +535,10 @@ items:
   href: kusto/query/toc.yml
 - name: Management commands
   href: kusto/management/toc.yml
+- name: Guidance
+  items:
+  - name: Big data analytics with Azure Data Explorer
+    href: proof-of-concept-playbook.md
 - name: Reference
   items:
   - name: API
