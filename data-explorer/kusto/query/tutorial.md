@@ -10,15 +10,18 @@ zone_pivot_groups: kql-flavors
 
 # Tutorial: Use Kusto queries
 
-::: zone pivot="azuredataexplorer"
+Before you begin, let's briefly explain what Kusto queries are. 
+[Provide explanation].
+A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator.
 
 The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
 
+
+
 ## Count rows
 
-Our example database has a table called `StormEvents`. we want to find out how large the table is. So we'll pipe its content into an operator that counts the rows in the table.
+Our example database has a table called `StormEvents`. We want to find out how large the table is. To do that, we'll pipe its content into an operator that counts the rows in the table.
 
-*Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -35,26 +38,8 @@ For more information, see [count operator](./countoperator.md).
 
 ## Select a subset of columns: *project*
 
-Use [project](./projectoperator.md) to pick out only the columns you want. See the following example, which uses both the [project](./projectoperator.md)
+To pick out the columns you want, use [project](./projectoperator.md). See the following example which uses both the [project](./projectoperator.md)
 and the [take](./takeoperator.md) operators.
-
-## Filter by Boolean expression: *where*
-
-Let's see only `flood` events in `California` in Feb-2007:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| where StartTime > datetime(2007-02-01) and StartTime < datetime(2007-03-01)
-| where EventType == 'Flood' and State == 'CALIFORNIA'
-| project StartTime, EndTime , State , EventType , EpisodeNarrative
-```
-
-Here's the output:
-
-|StartTime|EndTime|State|EventType|EpisodeNarrative|
-|---|---|---|---|---|
-|2007-02-19 00:00:00.0000000|2007-02-19 08:00:00.0000000|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to western Kern County in the early morning hours of the 19th. Minor flooding was reported across State Highway 166 near Taft.|
 
 ## Show *n* rows: *take*
 
@@ -78,6 +63,25 @@ Here's the output:
 |2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|Thunderstorm Wind|GEORGIA|The county dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206. The cost of tree removal was estimated.|
 
 But [take](./takeoperator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./takeoperator.md) is an alias for [take](./takeoperator.md) and has the same effect.)
+
+
+## Filter by Boolean expression: *where*
+
+To only see `flood` events in `California` in Feb-2007:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents
+| where StartTime > datetime(2007-02-01) and StartTime < datetime(2007-03-01)
+| where EventType == 'Flood' and State == 'CALIFORNIA'
+| project StartTime, EndTime , State , EventType , EpisodeNarrative
+```
+
+Here's the output:
+
+|StartTime|EndTime|State|EventType|EpisodeNarrative|
+|---|---|---|---|---|
+|2007-02-19 00:00:00.0000000|2007-02-19 08:00:00.0000000|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to western Kern County in the early morning hours of the 19th. Minor flooding was reported across State Highway 166 near Taft.|
 
 ## Order results: *sort*, *top*
 
