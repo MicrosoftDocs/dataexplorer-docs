@@ -3,7 +3,7 @@ title: Data mappings - Azure Data Explorer
 description: This article describes Data mappings in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/13/2021
+ms.date: 09/27/2022
 ---
 
 # Data mappings
@@ -56,18 +56,20 @@ Each element in the list describes a mapping for a specific column, and must con
 > [!NOTE]
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as a JSON string.
 
-```kusto
+````kusto
 .ingest into Table123 (@"source1", @"source2")
     with
     (
         format="csv",
         ingestionMapping =
-        '['
-            '{"Column": "column_a", "Properties": {"Ordinal": 0}},'
-            '{"Column": "column_b", "Properties": {"Ordinal": 1}}'
-        ']'
+        ```
+        [
+            {"Column": "column_a", "Properties": {"Ordinal": 0}},
+            {"Column": "column_b", "Properties": {"Ordinal": 1}}
+        ]
+        ```
     )
-```
+````
 
 > [!NOTE]
 > When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
@@ -122,19 +124,21 @@ Each element in the list describes a mapping for a specific column, and may cont
 > [!NOTE]
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string.
 
-```kusto
+````kusto
 .ingest into Table123 (@"source1", @"source2")
   with
   (
       format = "json",
       ingestionMapping =
-      '['
-        '{"Column": "column_a", "Properties": {"Path": "$.Obj.Property"}},'
-        '{"Column": "column_b", "Properties": {"Path": "$.Property"}},'
-        '{"Column": "custom_column", "Properties": {"Path": "$.[\'Property name with space\']"}}'
-      ']'
+      ```
+      [
+        {"Column": "column_a", "Properties": {"Path": "$.Obj.Property"}},
+        {"Column": "column_b", "Properties": {"Path": "$.Property"}},
+        {"Column": "custom_column", "Properties": {"Path": "$.[\'Property name with space\']"}}
+      ]
+      ```
   )
-```
+````
 
 > [!NOTE]
 > When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
@@ -224,18 +228,20 @@ Each element in the list describes a mapping for a specific column, and may cont
 > [!NOTE]
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string.
 
-```kusto
+````kusto
 .ingest into Table123 (@"source1", @"source2")
   with
   (
       format = "AVRO",
       ingestionMapping =
-      '['
-        '{"Column": "column_a", "Properties": {"Field": "Field1"}},'
-        '{"Column": "column_b", "Properties": {"Field": "$.[\'Field name with space\']"}}'
-      ']'
+      ```
+      [
+        {"Column": "column_a", "Properties": {"Field": "Field1"}},
+        {"Column": "column_b", "Properties": {"Field": "$.[\'Field name with space\']"}}
+      ]
+      ```
   )
-```
+````
 
 > [!NOTE]
 > When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
@@ -306,18 +312,20 @@ Each element in the list describes a mapping for a specific column, and may cont
 > [!NOTE]
 > When the mapping above is provided as part of the `.ingest` control command, the mapping is serialized as a JSON string.
 
-```kusto
+````kusto
 .ingest into Table123 (@"source1", @"source2")
   with
   (
       format = "parquet",
       ingestionMapping =
-      '['
-        '{"Column": "column_a", "Properties": {"Path": "$.Field1.Subfield"}},'
-        '{"Column": "column_b", "Properties": {"Path": "$.[\'Field name with space\']"}},'
-      ']'
+      ```
+      [
+        {"Column": "column_a", "Properties": {"Path": "$.Field1.Subfield"}},
+        {"Column": "column_b", "Properties": {"Path": "$.[\'Field name with space\']"}},
+      ]
+      ```
   )
-```
+````
 
 > [!NOTE]
 > When the mapping above is [pre-created](create-ingestion-mapping-command.md), it can be referenced in the `.ingest` control command:
@@ -388,18 +396,20 @@ Each element in the list describes a mapping for a specific column, and may cont
 > [!NOTE]
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as a JSON string.
 
-```kusto
+````kusto
 .ingest into Table123 (@"source1", @"source2")
   with
   (
       format = "orc",
       ingestionMapping =
-      '['
-        '{"Column": "column_a", "Properties": {"Path": "$.Field1"}},'
-        '{"Column": "column_b", "Properties": {"Path": "$.[\'Field name with space\']"}}'
-      ']'
+      ```
+      [
+        {"Column": "column_a", "Properties": {"Path": "$.Field1"}},
+        {"Column": "column_b", "Properties": {"Path": "$.[\'Field name with space\']"}}
+      ]
+      ```
   )
-```
+````
 
 > [!NOTE]
 > When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
@@ -460,18 +470,20 @@ Each element in the list describes a mapping for a specific column, and may cont
 > The only supported transformations for W3CLOGFILE format are: `SourceLineNumber` and `SourceLocation`.
 > When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string.
 
-```kusto
+````kusto
 .ingest into Table123 (@"source1", @"source2")
   with
   (
       format = "w3clogfile",
       ingestionMapping =
-      '['
-         '{"Column": "column_a", "Properties": {"Field": "field1"}},'
-         '{"Column": "column_b", "Properties": {"Field": "field2"}}'
-      ']'
+      ```
+      [
+         {"Column": "column_a", "Properties": {"Field": "field1"}},
+         {"Column": "column_b", "Properties": {"Field": "field2"}}
+      ]
+      ```
   )
-```
+````
 
 > [!NOTE]
 > When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
