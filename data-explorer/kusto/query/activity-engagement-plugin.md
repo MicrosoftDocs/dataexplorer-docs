@@ -1,6 +1,6 @@
 ---
 title: activity_engagement plugin - Azure Data Explorer
-description: Learn how to use the activity_engagement plugin to calculate activity engagement ratios in Azure Data Explorer.
+description: Learn how to use the activity_engagement plugin to calculate activity engagement ratios.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/20/2022

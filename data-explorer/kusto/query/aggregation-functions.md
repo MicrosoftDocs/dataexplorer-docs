@@ -1,6 +1,6 @@
 ---
 title: Aggregation Functions - Azure Data Explorer 
-description: Learn how to use aggregation functions to perform calculations on a set of values, and return a single value in Azure Data Explorer.
+description: Learn how to use aggregation functions to perform calculations on a set of values and return a single value.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/20/2022

@@ -1,6 +1,6 @@
 ---
 title: Alias statement - Azure Data Explorer
-description: Learn how to use an Alias statement to define an alias for a database that is used for a query in Azure Data Explorer.
+description: Learn how to use an alias statement to define an alias for a database that is used for a query.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/20/2022

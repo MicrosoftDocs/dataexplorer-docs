@@ -1,6 +1,6 @@
 ---
 title: abs() - Azure Data Explorer
-description: Learn how to use the function abs() to calculate the absolute value of an input in Azure Data Explorer.
+description: Learn how to use the function abs() to calculate the absolute value of an input.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/20/2022

@@ -1,6 +1,6 @@
 ---
 title: ago() - Azure Data Explorer
-description: Learn how to use the ago() function to subtract a given timespan from the current UTC clock time in Azure Data Explorer.
+description: Learn how to use the ago() function to subtract a given timespan from the current UTC clock time.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/20/2022

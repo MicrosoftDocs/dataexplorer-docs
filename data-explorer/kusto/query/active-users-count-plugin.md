@@ -1,6 +1,6 @@
 ---
 title: active_users_count plugin - Azure Data Explorer
-description: Learn how to use the plugin to calculate the distinct count of values that appeared in a minimum number of periods in a lookback period in Azure Data Explorer.
+description: Learn how to use the active_users_count plugin to calculate the distinct count of values that appeared in a minimum number of periods in a lookback period.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/20/2022
