@@ -3,7 +3,7 @@ title: ".alter database sharding policy command - Azure Data Explorer"
 description: "This article describes the .alter database sharding policy command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 01/06/2022
+ms.date: 09/29/2022
 ---
 # .alter database sharding policy
 
@@ -28,7 +28,13 @@ Returns a JSON representation of the policy.
 
 The following command returns the updated extents sharding policy for the database:
 
-```kusto
-.alter database MyDatabase policy sharding 
-@'{ "MaxRowCount": 750000, "MaxExtentSizeInMb": 1024, "MaxOriginalSizeInMb": 2048}'
+````kusto
+.alter database MyDatabase policy sharding
 ```
+{
+    "MaxRowCount" : 750000,
+    "MaxExtentSizeInMb" : 1024,
+    "MaxOriginalSizeInMb": 2048
+}
+```
+````
