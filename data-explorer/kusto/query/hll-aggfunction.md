@@ -1,13 +1,13 @@
 ---
 title: hll() (aggregation function) - Azure Data Explorer
-description: This article describes hll() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the hll() aggregation function to calculate the results of the dcount() function in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/14/2022
+ms.date: 09/20/2022
 ---
 # hll() (aggregation function)
 
-Calculates the Intermediate results of [`dcount`](dcount-aggfunction.md) across the group. only in context of aggregation inside [summarize](summarizeoperator.md).
+Calculates the Intermediate results of [`dcount`](dcount-aggfunction.md) across the group only in context of aggregation inside [summarize](summarizeoperator.md).
 
 Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accuracy](#estimation-accuracy).
 
@@ -33,11 +33,11 @@ Returns the intermediate results of distinct count of *`Expr`* across the group.
 >- You may use the aggregation function [`hll_merge`](hll-merge-aggfunction.md) to merge more than one `hll` intermediate results (it works on `hll` output only).
 >- You may use the function [`dcount_hll`](dcount-hllfunction.md), which will calculate the `dcount` from `hll` / `hll_merge` aggregation functions.
 
-## Examples
+## Example
 
-This example returns the hll results of property damage based on the start time.
+The following example returns the hll results of property damage based on the start time.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlXIyMnRcEnMTUxPDSjKL0gtKqnUVEiqVEjKzNMILkksKgnJzE3VMTTI1QQAaW7+fEIAAAA=)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVcjIydFwScxNTE8NKMovSC0qqdRUSKpUSMrM0wguSSwqCcnMTdUxNMjVBACCSG7CQQAAAA==)**\]**
 
 ```kusto
 StormEvents
