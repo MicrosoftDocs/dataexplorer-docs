@@ -1,6 +1,6 @@
 ---
 title: as operator - Azure Data Explorer
-description: Learnn how to use the as operator to bind a name to the operator's input tabular expression.
+description: Learn how to use the as operator to bind a name to the operator's input tabular expression.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/21/2022

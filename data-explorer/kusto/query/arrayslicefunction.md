@@ -30,7 +30,7 @@ Returns a dynamic array of the values in the range [`start..end`] from `array`.
 
 ## Examples
 
-The followinf examples return a slice of the array.
+The following examples return a slice of the array.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMY7VVOCqUUitKEnNS1EozslMTk2xBapKrIwHczSAbB0FQx0FI00AeoUyQ0IAAAA=)**\]**
 

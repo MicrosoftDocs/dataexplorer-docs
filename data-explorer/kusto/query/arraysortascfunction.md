@@ -66,7 +66,7 @@ let SortedNames = strcat_array(array_sort_asc(split(Names, ",")), ",");
 print result = SortedNames
 ```
 
-**Resuklts**
+**Results**
 
 |`result`|
 |---|
