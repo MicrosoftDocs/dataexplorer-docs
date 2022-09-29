@@ -53,4 +53,3 @@ The results show only the first 5 results in the array.
 ## Estimation accuracy
 
 [!INCLUDE [data-explorer-estimation-accuracy](../../includes/data-explorer-estimation-accuracy.md)]
->>>>>>> 612542d7811c730c7e19b9934319353ad52b9a99
