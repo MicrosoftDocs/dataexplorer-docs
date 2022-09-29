@@ -1,9 +1,9 @@
 ---
 title: arg_max() (aggregation function) - Azure Data Explorer
-description: This article describes arg_max() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the arg_max() aggregation function to find a row in a group that maximizes the input expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/05/2022
+ms.date: 09/20/2022
 ---
 # arg_max() (aggregation function)
 

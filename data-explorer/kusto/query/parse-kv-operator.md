@@ -35,7 +35,7 @@ The following extraction modes are supported:
 * **KeysList**: A comma-separated list of key names and their value data types. The order of the keys doesn't have to match the order in which they appear in the text.
 * **PairDelimiter**: A string literal representing a delimiter that separates key value pairs from each other.
 * **KvDelimiter**: A string literal representing a delimiter that separates keys from values.
-* **QuoteChars**: A one- or two-character string literal representing opening and closing quotes that the extracted value may be wrapped with. The parameter can be repeated to specify a separate set of opening/closing quotes.
+* **QuoteChars**: A one- or two-character string literal representing opening and closing quotes that key name or the extracted value may be wrapped with. The parameter can be repeated to specify a separate set of opening/closing quotes.
 * **EscapeChar**: A one-character string literal describing a character that may be used for escaping special characters in a quoted value. The parameter can be repeated if multiple escape characters are used.
 * **RegexPattern**: A [RE2](re2.md) regular expression containing two capturing groups exactly. The first group represents the key name, the second group represents the key value.
 
@@ -67,27 +67,27 @@ print str="ThreadId:458745723, Machine:Node001, Text: The service is up, Level: 
 
 ### Extraction with value quoting
 
-Sometimes values are wrapped in quotes, which allows the values themselves to contain delimiter characters. The following examples show how a `quote` argument is used for extracting such values.
+Sometimes key names or values are wrapped in quotes, which allows the values themselves to contain delimiter characters. The following examples show how a `quote` argument is used for extracting such values.
 
 ```kusto
-print str='src=10.1.1.123 dst=10.1.1.124 bytes=125 failure="connection aborted" time=2021-01-01T10:00:54'
-| parse-kv str as (['time']:datetime, src:string, dst:string, bytes:long, failure:string) with (pair_delimiter=' ', kv_delimiter='=', quote='"')
+print str='src=10.1.1.123 dst=10.1.1.124 bytes=125 failure="connection aborted" "event time"=2021-01-01T10:00:54'
+| parse-kv str as (['event time']:datetime, src:string, dst:string, bytes:long, failure:string) with (pair_delimiter=' ', kv_delimiter='=', quote='"')
 | project-away str
 ```
 
-|time|	src|	dst|	bytes|	failure|
+|event time|	src|	dst|	bytes|	failure|
 |--|--|--|--|--|
 |2021-01-01 10:00:54.0000000|	10.1.1.123|	10.1.1.124|	125|	connection aborted|
 
 The following example uses different opening and closing quotes:
 
 ```kusto
-print str='src=10.1.1.123 dst=10.1.1.124 bytes=125 failure=(connection aborted) time=(2021-01-01 10:00:54)'
-| parse-kv str as (['time']:datetime, src:string, dst:string, bytes:long, failure:string) with (pair_delimiter=' ', kv_delimiter='=', quote='()')
+print str='src=10.1.1.123 dst=10.1.1.124 bytes=125 failure=(connection aborted) (event time)=(2021-01-01 10:00:54)'
+| parse-kv str as (['event time']:datetime, src:string, dst:string, bytes:long, failure:string) with (pair_delimiter=' ', kv_delimiter='=', quote='()')
 | project-away str
 ```
 
-|time|	src|	dst|	bytes|	failure|
+|event time|	src|	dst|	bytes|	failure|
 |--|--|--|--|--|
 |2021-01-01 10:00:54.0000000|	10.1.1.123|	10.1.1.124|	125|	connection aborted|
 

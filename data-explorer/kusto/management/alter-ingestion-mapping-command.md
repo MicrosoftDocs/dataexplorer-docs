@@ -3,7 +3,7 @@ title: ".alter ingestion mapping - Azure Data Explorer"
 description: "This article describes .alter ingestion mapping in Azure Data Explorer."
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 09/29/2022
 ---
 # .alter ingestion mapping
 
@@ -29,25 +29,31 @@ Alters an existing ingestion mapping that is associated with a specific table/da
 
 **Example** 
  
-```kusto
+````kusto
 .alter table MyTable ingestion csv mapping "Mapping1"
-'['
-'	{ "column" : "rownumber", "DataType":"int", "Properties":{"Ordinal":"0"}},'
-'	{ "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"} }'
-']'
+```
+[
+    {"column" : "rownumber", "DataType" : "int", "Properties" : {"Ordinal":"0"} },
+    { "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"} }
+]
+```
 
 .alter table MyTable ingestion json mapping "Mapping1"
-'['
-'	{ "column" : "rownumber", "Properties":{"Path":"$.rownumber"}},'
-'	{ "column" : "rowguid", "Properties":{"Path":"$.rowguid"}}'
-']'
+```
+[
+    { "column" : "rownumber", "Properties":{"Path":"$.rownumber"}},
+    { "column" : "rowguid", "Properties":{"Path":"$.rowguid"}}
+]
+```
 
 .alter database MyDatabase ingestion csv mapping "Mapping2"
-'['
-'	{ "column" : "rownumber", "DataType":"int", "Properties":{"Ordinal":"0"}},'
-'	{ "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"} }'
-']'
 ```
+[
+    { "column" : "rownumber", "DataType":"int", "Properties":{"Ordinal":"0"}},
+    { "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"} }
+]
+```
+````
 
 **Sample output**
 
