@@ -1,6 +1,6 @@
 ---
 title: array_iif() - Azure Data Explorer
-description: Learn how to use the array_iif() function to scan and evaluate elements in an array and return different values for TRUE and FALSE Azure Data Explorer.
+description: Learn how to use the array_iif() function to scan and evaluate elements in an array.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/21/2022

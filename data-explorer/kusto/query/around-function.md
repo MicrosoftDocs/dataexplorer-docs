@@ -1,6 +1,6 @@
 ---
 title: around() function - Azure Data Explorer
-description: Learn how to use the around() function to indicate if the first argument is within a range around the center value in Azure Data Explorer.
+description: Learn how to use the around() function to indicate if the first argument is within a range around the center value.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/21/2022

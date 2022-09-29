@@ -1,6 +1,6 @@
 ---
 title: array_concat() - Azure Data Explorer
-description: Learn how to use the array_concat() function to concatenate many dynamic arrays to a single array in Azure Data Explorer.
+description: Learn how to use the array_concat() function to concatenate many dynamic arrays to a single array.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 10/23/2018

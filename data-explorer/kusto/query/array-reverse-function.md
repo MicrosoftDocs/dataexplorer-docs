@@ -1,6 +1,6 @@
 ---
 title: array_reverse() - Azure Data Explorer
-description: Learn how to use the array_reverse() function to Reverses the order of the elements in a dynamic array in Azure Data Explorer.
+description: Learn how to use the array_reverse() function to reverse the order of the elements in a dynamic array.
 ms.reviewer: slneimer
 ms.topic: reference
 ms.date: 09/21/2022
