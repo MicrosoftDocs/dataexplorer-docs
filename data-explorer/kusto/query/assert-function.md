@@ -1,6 +1,6 @@
 ---
 title: assert() - Azure Data Explorer
-description: Learn how to use the assert() function to check for a condition and output an error message when false in Azure Data Explorer.
+description: Learn how to use the assert() function to check for a condition and output an error message when false.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/21/2022

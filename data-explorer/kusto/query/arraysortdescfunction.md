@@ -1,6 +1,6 @@
 ---
 title: array_sort_desc() - Azure Data Explorer
-description: Learn how to use the array_sort_desc() function to sort arrays in descending order in Azure Data Explorer.
+description: Learn how to use the array_sort_desc() function to sort arrays in descending order.
 ms.reviewer: slneimer
 ms.topic: reference
 ms.date: 09/21/2022

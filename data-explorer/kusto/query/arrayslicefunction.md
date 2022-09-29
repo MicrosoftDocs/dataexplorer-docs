@@ -1,6 +1,6 @@
 ---
 title: array_slice() - Azure Data Explorer
-description: Learn how to use the array_slice() function to extract a slice of a dynamic array in Azure Data Explorer.
+description: Learn how to use the array_slice() function to extract a slice of a dynamic array.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/21/2022
