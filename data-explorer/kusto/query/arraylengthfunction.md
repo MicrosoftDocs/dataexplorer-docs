@@ -38,4 +38,3 @@ print array_length(parse_json('[1, 2, 3, "four"]'))
 |print_0|
 |--|
 |4|
-```
