@@ -93,6 +93,7 @@ datatable(command:string, command_time:datetime, user_id:string)
 ```
 
 **Results**
+
 |`user_id`|`commands_in_chronological_order`|
 |---|---|
 |user1|[<br>  "rm",<br>  "pwd",<br>  "dir",<br>  "chmod",<br>  "mkdir",<br>  "ls"<br>]|
