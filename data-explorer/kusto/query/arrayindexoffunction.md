@@ -1,13 +1,13 @@
 ---
 title: array_index_of() - Azure Data Explorer
-description: Learn how to use the array_index_of() function to search the array for a specified item, and return its position in Azure Data Explorer.
+description: Learn how to use the array_index_of() function to search an array for a specified item, and return its position.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/21/2022
 ---
 # array_index_of()
 
-Searches the array for the specified item, and returns its position.
+Searches an array for the specified item, and returns its position.
 
 ## Syntax
 
