@@ -31,7 +31,7 @@ Use the following steps to create an [Azure Data Explorer output](/azure/stream-
 > [!IMPORTANT]
 >
 > - The Azure Data Explorer output connector only supports [Managed Identity](/azure/active-directory/managed-identities-azure-resources/overview) authentication. As part of creating the connector, database monitor and database ingestor permissions are granted to the Azure Stream Analytics job managed identity.
-> - When setting up the [Azure Data Explorer output connector](/azure/stream-analytics/azure-database-explorer-output), you specify the target cluster, database, and table name. For ingestion to succeed, make sure that the number, data types, and order of the columns in the Azure Stream Analytics query match the table schema in the Azure Data Explorer table.
+> - When setting up the [Azure Data Explorer output connector](/azure/stream-analytics/azure-database-explorer-output), you specify the target cluster, database, and table name.  For ingestion to succeed, all of the columns defined in the Azure Stream Analytics query will need to match the ADX table columns by name and type - order is irrelevant. Column names are case sensitive. If there are extra columns in the ADX table that aren't in the ASA query, they will be ignored during the ingestion.
 
 > [!NOTE]
 >
@@ -68,7 +68,7 @@ Before you begin, make sure you have an existing Stream Analytics job or [create
     | Cluster URI | The data ingestion URI of your cluster. You can specify the URI for the Azure Data Explorer or [Azure Synapse Data Explorer](/azure/synapse-analytics/data-explorer/ingest-data/data-explorer-ingest-data-overview#programmatic-ingestion-using-sdks) data ingestion endpoints. |
     | Database | The name of the database where you're sending your output. The database name must be unique within the cluster. |
     | Authentication | An [Azure Active Directory (Azure AD) managed identity](/azure/active-directory/managed-identities-azure-resources/overview) that allows your cluster to easily access other Azure AD protected resources. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets. Managed identity configuration enables you to use customer-managed keys for your cluster. |
-    | Table | The name of the table where you're sending your output. The number, data types, and order of the columns in the output must match the schema of this table schema. |
+    | Table | The name of the table where you're sending your output. The column names, and data types in the ASA output must match the schema of ADX table. |
 
     :::image type="content" source="media/stream-analytics-connector/stream-analytics-new-output.png" alt-text="Screenshot of New output dialog box, showing required information.":::
 
