@@ -3,7 +3,7 @@ title: Use follower database feature to attach databases in Azure Data Explorer
 description: Learn about how to attach databases in Azure Data Explorer using the follower database feature.
 ms.reviewer: gabilehner
 ms.topic: how-to
-ms.date: 02/28/2022
+ms.date: 10/02/2022
 ---
 
 # Use follower databases
@@ -393,24 +393,24 @@ To verify that the database was successfully attached, find your attached databa
 
 ### Check your follower cluster
 
-1. Navigate to the follower cluster and select **Databases**
-1. Search for new Read-only databases in the database list.
+1. Browse to the follower cluster and select **Databases**.
+1. In the database list, search for new read-only databases.
 
     ![Read-only follower database.](media/follower/read-only-follower-database.png)
 
-1. You can also view this in the database overview page 
+    You can also view this list in the database overview page:
 
     ![Read-only follower database.](media/follower/read-only-follower-database-overview.png)
-2. 
+
 ### Check your leader cluster
 
 1. Navigate to the leader cluster and select **Databases**
 1. Check that the relevant databases are marked as **SHARED WITH OTHERS** > **Yes**
-1. Toggle the relationship link to view details
+1. Toggle the relationship link to view details.
 
     ![Read and write attached databases.](media/follower/read-write-databases-shared.png)
 
-1. You can also view this in the database overview page
+    You can also view this in the database overview page:
 
    ![Read and write attached database.](media/follower/read-write-databases-shared-overview.png)
 
