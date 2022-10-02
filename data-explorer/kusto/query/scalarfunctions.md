@@ -90,9 +90,9 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[`bag_has_key()`](bag-has-key-function.md)|Checks whether a dynamic bag column contains a given key.|
 |[bag_keys()](bagkeysfunction.md)|Enumerates all the root keys in a dynamic property-bag object.|
 |[bag_merge()](bag-merge-function.md)|Merges dynamic property-bags into a dynamic property-bag with all properties merged.|
+|[bag_pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
 |[bag_remove_keys()](bag-remove-keys-function.md)|Removes keys and associated values from a dynamic property-bag.|
 |[jaccard_index()](jaccard-index-function.md)|Computes the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) of two sets.|
-|[pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
 |[pack_all()](packallfunction.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
 |[pack_array()](packarrayfunction.md)|Packs all input values into a dynamic array.|
 |[repeat()](repeatfunction.md)|Generates a dynamic array holding a series of equal values.|

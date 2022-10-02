@@ -1,18 +1,15 @@
 ---
-title: bag_pack(), pack() - Azure Data Explorer
-description: This article describes bag_pack() and pack() in Azure Data Explorer.
+title: bag_pack() - Azure Data Explorer
+description: This article describes bag_pack() function in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/30/2022
+ms.date: 10/02/2022
 ---
-# bag_pack(), pack()
+# bag_pack()
 
 Creates a `dynamic` JSON object (property bag) from a list of keys and values.
 
-Alias to `pack_dictionary()`.
-
-> [!NOTE]
-> The `bag_pack()` and `pack()` functions are interpreted equivalently.
+Alias: pack(), pack_dictionary()
 
 ## Syntax
 
@@ -54,7 +51,7 @@ print bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url"
 
 **Example 2**
 
-This example runs a query based on a common souce number and returns a new table with a column for the source table name and a column for the property bag.
+The following example uses two tables, *SmsMessages* and *MmsMessages*, and returns their common columns and a property bag from the other columns. The tables are created ad-hoc as part of the query.
 
 SmsMessages
 
@@ -72,34 +69,41 @@ MmsMessages
 |555-555-1234 |555-555-1212 | 250 | jpeg | Pic2 |
 |555-555-1234 |555-555-1213 | 300 | png | Pic3 |
 
-The following example will create ad-hoc tables and then run the query on the tables.
-
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6VSQWuDMBS+C/0Pj5wUHFStO2x4GD23FPQ2xoj60Kw1lSTSbezHL9F202C7wwyavMf7fPm+7x1QQdrIDUpJK5SQQEmVXvkBwU2PnShw2zU5igepBOOVDxkVFSorua6pkOtjx9U55cHzwiFxHN+ZNwijFfFhFAehiVf3+nu7LurjJfEnZQPchkUh0X97eVw4B01r839aT0rRom6Qq5R94kw6+2jn0lva4BUh7JsPBMPl0mxvLVZm37EisBjPCxjGNi78C9f3i4Z+Lb/AIjIIN56FhQP6+QJ8V8hL2NFij2WS0+q11UeX/JpOxhPg/QA7zo4cTkzVspc8yYwBRhzYM14mjHMU52p34teQu9V8ag2xvdKspi4R27ZJhbkTsR30vAuRU40CYTw3kCTW/H0DvNexiEoDAAA=)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61Sy26DMBC88xUrnxKJSmBCD604VDknikRuVVUZWIEJGGQb9aF+fG1olJgmbQ/FwmZ3Zr3MaBvUkLZqg0qxEhUkUDBtVtYgLDwwT9oNMsft0GYo70BpyUXpj8ieyRL1JWRdManW3SD0Me8t4XGESBzHN/YNabQi/nkcUhuvbs3+KzUa44D4c+Z0ybwyogS8p3uvMXI3/y73QWuWVy0KnfJ3vIbt3/qr2Ja1+JNVc1WTfhoE9qh7LO2543n43ZDLLtN4Xkr/UDp2jaauvThWRsRaez5F3gfUHRdw4KJIuBAoHdc74dhs2PiqURSwY/kBiyRj5XNvPhfkNEim1ykwfV3PDeomHIZ13mHYhMOw/jsMm1haHS8VSnR+F5JkZpKh9bKrMdcO0XdGxv9S9wkokKY3cgMAAA==)**\]**
 
 ```kusto
-let SmsMessages = datatable (SourceNumber:string, TargetNumber:string, CharsCount:string) [
-"555-555-1234", "555-555-1212", "46", 
-"555-555-1234", "555-555-1213", "50",
-"555-555-1212", "555-555-1234", "32" 
+let SmsMessages = datatable (
+    SourceNumber: string,
+    TargetNumber: string,
+    CharsCount: string
+) [
+    "555-555-1234", "555-555-1212", "46", 
+    "555-555-1234", "555-555-1213", "50",
+    "555-555-1212", "555-555-1234", "32" 
 ];
-let MmsMessages = datatable (SourceNumber:string, TargetNumber:string, AttachmentSize:string, AttachmentType:string, AttachmentName:string) [
-"555-555-1212", "555-555-1213", "200", "jpeg", "Pic1",
-"555-555-1234", "555-555-1212", "250", "jpeg", "Pic2",
-"555-555-1234", "555-555-1213", "300", "png", "Pic3"
+let MmsMessages = datatable (
+    SourceNumber: string,
+    TargetNumber: string,
+    AttachmentSize: string,
+    AttachmentType: string,
+    AttachmentName: string
+) [
+    "555-555-1212", "555-555-1213", "200", "jpeg", "Pic1",
+    "555-555-1234", "555-555-1212", "250", "jpeg", "Pic2",
+    "555-555-1234", "555-555-1213", "300", "png", "Pic3"
 ];
 SmsMessages 
-    | extend Packed=bag_pack("CharsCount", CharsCount)
-    | union withsource=TableName kind=inner 
-    ( MmsMessages 
-      | extend Packed=bag_pack("AttachmentSize", AttachmentSize, "AttachmentType", AttachmentType, "AttachmentName", AttachmentName))
-    | where SourceNumber == "555-555-1234"
+| join kind=inner MmsMessages on SourceNumber
+| extend Packed=bag_pack("CharsCount", CharsCount, "AttachmentSize", AttachmentSize, "AttachmentType", AttachmentType, "AttachmentName", AttachmentName) 
+| where SourceNumber == "555-555-1234"
+| project SourceNumber, TargetNumber, Packed
 ```
 
 **Results**
 
-|TableName | SourceNumber | TargetNumber | Packed |
+| SourceNumber | TargetNumber | Packed |
 |--|--|--|--|
-| union_arg0 | 555-555-1234 | 555-555-1212 | {"CharsCount":"46"} |
-| union_arg0 | 555-555-1234 | 555-555-1213 | {"CharsCount":"50"} |
-| union_arg1 | 555-555-1234 | 555-555-1212 | {"AttachmentSize":"250","AttachmentType":" jpeg ","AttachmentName":" Pic2 "} |
-| union_arg1 | 555-555-1234 | 555-555-1213 | {"AttachmentSize":"300","AttachmentType":" png ","AttachmentName":" Pic3 "} |
+| 555-555-1234 | 555-555-1213 | {"CharsCount":"50","AttachmentSize":"250","AttachmentType":"jpeg","AttachmentName":"Pic2"} |
+| 555-555-1234 | 555-555-1212 | {"CharsCount":"46","AttachmentSize":"250","AttachmentType":"jpeg","AttachmentName":"Pic2"} |
+| 555-555-1234 | 555-555-1213 | {"CharsCount":"50","AttachmentSize":"300","AttachmentType":"png","AttachmentName":"Pic3"} |
+| 555-555-1234 | 555-555-1212 | {"CharsCount":"46","AttachmentSize":"300","AttachmentType":"png","AttachmentName":"Pic3"} |
