@@ -404,7 +404,7 @@ To verify that the database was successfully attached, find your attached databa
 
 ### Check your leader cluster
 
-1. Navigate to the leader cluster and select **Databases**
+1. Browse to the leader cluster and select **Databases**
 1. Check that the relevant databases are marked as **SHARED WITH OTHERS** > **Yes**
 1. Toggle the relationship link to view details.
 
