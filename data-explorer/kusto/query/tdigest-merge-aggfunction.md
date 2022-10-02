@@ -1,13 +1,15 @@
 ---
 title: tdigest_merge() (aggregation function) - Azure Data Explorer
-description: This article describes tdigest_merge() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the tdigest_merge() aggregation function to merge tdigest results in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/08/2022
+ms.date: 09/21/2022
 ---
 # tdigest_merge() (aggregation function)
 
-Merges tdigest results across the group. Can only be used in the context of aggregation inside [summarize](summarizeoperator.md).
+Merges tdigest results across the group.
+
+[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 For more information about the underlying algorithm (T-Digest) and the estimated error, see [estimation error in percentiles](percentiles-aggfunction.md#estimation-error-in-percentiles).
 
@@ -15,20 +17,26 @@ For more information about the underlying algorithm (T-Digest) and the estimated
 
 `tdigest_merge` `(`*Expr*`)`
 
-`merge_tdigest` `(`*Expr*`)` 
+`merge_tdigests` `(`*Expr*`)`
 
 > [!NOTE]
-> `merge_tdigest` is an alias of `tdigest_merge`. 
+> `merge-tdigests` is an alias of `tdigest_merge`.
+
+`merge_tdigest` `(`*Expr*`)`
+
+> [!NOTE]
+> `merge_tdigest` is an alias of `tdigest_merge`.
 
 ## Arguments
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expr* | dynamic | &check; | Expression used for aggregation calculation. |
+|*Expr* | string | &check; | Expression that will be used for aggregation calculation.
+
 
 ## Returns
 
-The merged tdigest values of *Expr* across the group.
+Returns the merged tdigest values of *Expr* across the group.
 
 > [!NOTE]
 >
@@ -37,9 +45,8 @@ The merged tdigest values of *Expr* across the group.
 
 ## Example
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQgoSnVMT3dJzE1MTw0oyi9ILSqptC1JyUxPLS7RQBXWVEiqVAguSSxJRTEBqjg+N7UoPVUDm3maAHash459AAAA)**\]**
+**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQgoSnVMT3dJzE1MTw0oyi9ILSqptC1JyUxPLS7RQBXWVEiqVAguSSxJRTEhN7UoPTUeqqVYA5uBmgCTdTq/fgAAAA==)**\]**
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | summarize PreAggDamageProperty=tdigest(DamageProperty) by State

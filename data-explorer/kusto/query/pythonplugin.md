@@ -186,8 +186,7 @@ Install packages as follows:
 1. For public packages in [PyPi](https://pypi.org/) or other channels,
 download the package and its dependencies.
 
-   * Compile wheel (`*.whl`) files, if required.
-   * From a cmd window in your local Python environment, run:
+   * From a cmd window in your local Windows Python environment, run:
     
     ```python
     pip wheel [-w download-dir] package-name.
@@ -199,7 +198,7 @@ download the package and its dependencies.
     * For public packages, zip the files that were downloaded in the previous step.
     
     > [!NOTE]
-    > * Make sure to download the package that is compatible to the Python engine of the sandbox runtime (currently 3.6.5)
+    > * Make sure to download the package that is compatible to the Python engine and the platform of the sandbox runtime (currently 3.6.5 on Windows)
     > * Make sure to zip the `.whl` files themselves, and not their parent folder.
     > * You can skip `.whl` files for packages that already exist with the same version in the base sandbox image.
 
