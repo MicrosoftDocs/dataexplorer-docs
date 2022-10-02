@@ -9,7 +9,7 @@ ms.date: 10/02/2022
 
 Creates a `dynamic` JSON object (property bag) from a list of keys and values.
 
-> **Alias**: pack(), pack_dictionary()
+> **Aliases**: pack(), pack_dictionary()
 
 ## Syntax
 
