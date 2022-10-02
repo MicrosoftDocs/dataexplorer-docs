@@ -396,11 +396,11 @@ To verify that the database was successfully attached, find your attached databa
 1. Browse to the follower cluster and select **Databases**.
 1. In the database list, search for new read-only databases.
 
-    ![Read-only follower database.](media/follower/read-only-follower-database.png)
+    :::image type="content" source="media/follower/read-only-follower-database.png" alt-text="Screenshot of read-only follower databases in portal.":::
 
     You can also view this list in the database overview page:
 
-    ![Read-only follower database.](media/follower/read-only-follower-database-overview.png)
+    :::image type="content" source="media/follower/read-only-follower-database-overview.png" alt-text="Screenshot of databases overview page with list of follower clusters.":::    
 
 ### Check your leader cluster
 
@@ -408,11 +408,11 @@ To verify that the database was successfully attached, find your attached databa
 1. Check that the relevant databases are marked as **SHARED WITH OTHERS** > **Yes**
 1. Toggle the relationship link to view details.
 
-    ![Read and write attached databases.](media/follower/read-write-databases-shared.png)
+    :::image type="content" source="media/follower/read-write-databases-shared.png" alt-text="Screenshot of databases shared with others to check leader cluster.":::
 
     You can also view this in the database overview page:
 
-   ![Read and write attached database.](media/follower/read-write-databases-shared-overview.png)
+   :::image type="content" source="media/follower/read-write-databases-shared-overview.png" alt-text="Screenshot of overview with list of databases shared with others.":::
 
 ## Detach the follower database
 
