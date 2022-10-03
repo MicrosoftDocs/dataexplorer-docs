@@ -9,13 +9,11 @@ ms.date: 10/02/2022
 
 Creates a `dynamic` JSON object (property bag) from a list of keys and values.
 
-> **Aliases**: pack(), pack_dictionary()
+> **Deprecated aliases**: pack(), pack_dictionary()
 
 ## Syntax
 
 `bag_pack(`*key1*`,` *value1*`,` *key2*`,` *value2*`,... )`
-
-`pack(`*key1*`,` *value1*`,` *key2*`,` *value2*`,... )`
 
 ## Arguments
 
