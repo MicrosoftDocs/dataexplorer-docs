@@ -31,7 +31,7 @@ Use the following steps to create an [Azure Data Explorer output](/azure/stream-
 > [!IMPORTANT]
 >
 > - The Azure Data Explorer output connector only supports [Managed Identity](/azure/active-directory/managed-identities-azure-resources/overview) authentication. As part of creating the connector, database monitor and database ingestor permissions are granted to the Azure Stream Analytics job managed identity.
-> - When setting up the [Azure Data Explorer output connector](/azure/stream-analytics/azure-database-explorer-output), you specify the target cluster, database, and table name.  For ingestion to succeed, all of the columns defined in the Azure Stream Analytics query will need to match the ADX table columns by name and type - order is irrelevant. Column names are case sensitive. If there are extra columns in the ADX table that aren't in the ASA query, they will be ignored during the ingestion.
+> - When setting up the [Azure Data Explorer output connector](/azure/stream-analytics/azure-database-explorer-output), you specify the target cluster, database, and table name. For ingestion to succeed, all of the columns defined in the Azure Stream Analytics query must match the column names and types in the Azure Data Explorer table. Column names are case-sensitive and can be in any order. If there are columns in the Azure Stream Analytics query that don't map to columns in the Azure Data Explorer table, an error is raised.
 
 > [!NOTE]
 >
