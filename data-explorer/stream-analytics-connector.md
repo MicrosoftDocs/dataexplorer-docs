@@ -68,7 +68,7 @@ Before you begin, make sure you have an existing Stream Analytics job or [create
     | Cluster URI | The data ingestion URI of your cluster. You can specify the URI for the Azure Data Explorer or [Azure Synapse Data Explorer](/azure/synapse-analytics/data-explorer/ingest-data/data-explorer-ingest-data-overview#programmatic-ingestion-using-sdks) data ingestion endpoints. |
     | Database | The name of the database where you're sending your output. The database name must be unique within the cluster. |
     | Authentication | An [Azure Active Directory (Azure AD) managed identity](/azure/active-directory/managed-identities-azure-resources/overview) that allows your cluster to easily access other Azure AD protected resources. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets. Managed identity configuration enables you to use customer-managed keys for your cluster. |
-    | Table | The name of the table where you're sending your output. The column names, and data types in the ASA output must match the schema of ADX table. |
+    | Table | The name of the table where you're sending your output. The column names and data types in the Azure Stream Analytics output must match the schema of the Azure Data Explorer table. |
 
     :::image type="content" source="media/stream-analytics-connector/stream-analytics-new-output.png" alt-text="Screenshot of New output dialog box, showing required information.":::
 
