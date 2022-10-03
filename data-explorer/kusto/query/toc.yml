@@ -381,6 +381,9 @@ items:
     href: bagkeysfunction.md
   - name: bag_merge()
     href: bag-merge-function.md
+  - name: bag_pack()
+    displayName: pack(), pack_dictionary()
+    href: packfunction.md
   - name: bag_remove_keys()
     href: bag-remove-keys-function.md
   - name: base64_decode_toarray()
@@ -640,14 +643,10 @@ items:
     href: notfunction.md
   - name: now()
     href: nowfunction.md
-  - name: bag_pack(), pack()
-    href: packfunction.md
   - name: pack_all()
     href: packallfunction.md
   - name: pack_array()
     href: packarrayfunction.md
-  - name: pack_dictionary()
-    href: packdictionaryfunction.md
   - name: parse_command_line()
     href: parse-command-line.md
   - name: parse_csv()
