@@ -10,7 +10,7 @@ ms.reviewer: ramacg
 
 [OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) (OTel) is an open framework for application observability. The instrumentation is hosted by the Cloud Native Computing Foundation (CNCF), which provides standard interfaces for observability data, including [metrics](https://opentelemetry.io/docs/concepts/observability-primer/#reliability--metrics), [logs](https://opentelemetry.io/docs/concepts/observability-primer/#logs), and [traces](https://opentelemetry.io/docs/concepts/observability-primer/#distributed-traces).
 
-The OpenTelemetry exporter supports ingestion of data from many receivers into Azure Data Explorer.
+The OpenTelemetry exporter supports ingestion of data from many receivers into Azure Data Explorer. In this article, you'll learn how to configure the OTel collector to ingest into Azure Data Explorer, you'll set up the collector to ingest sample data, and then you'll take a quick look at the data that has been ingested.
 
 ## Prerequisites
 
@@ -28,9 +28,9 @@ Azure Active Directory (Azure AD) applications with app keys are supported. To c
 
 ???DOES THE USER NEED TO USE STREAMING INGESTION FOR THIS CONNECTOR? WHAT INFORMATION CAN WE GIVE THE USER TO MAKE A DECISION ON WHAT IS BEST IN THIS SCENARIO???
 
-Managed ingestion attempts to use Azure Data Explorer streaming ingestion capabilities, with a fallback to the batched ingestion mode. For more information, see [batching vs streaming ingestion](./ingest-data-overview#batching-vs-streaming-ingestion).
+Managed ingestion attempts to use Azure Data Explorer streaming ingestion capabilities, with a fallback to the batched ingestion mode. For more information, see [batching vs streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion).
 
-> Note: [Streaming ingestion](./ingest-data-streaming?tabs=azure-portal%2Ccsharp) has to be enabled on Azure Data Explorer [configure the Azure Data Explorer cluster] in case of `managed` option. Refer the query below to check if streaming is enabled:
+> Note: [Streaming ingestion](ingest-data-streaming.md) has to be enabled on Azure Data Explorer [configure the Azure Data Explorer cluster] in case of `managed` option. Refer the query below to check if streaming is enabled:
 
 ```kql
 .show database <DB-Name> policy streamingingestion
@@ -62,7 +62,6 @@ In order to ingest your OpenTelemetry data into Azure Data Explorer, you need [d
     | traces | Services: traces components to enable   |  receivers: [otlp] <br> processors: [batch] <br> exporters: [azuredataexplorer]
     | metrics | Services: metrics components to enable | receivers: [otlp] <br> processors: [batch] <br> exporters: [logging, azuredataexplorer]
     | logs | Services: logs components to enable | receivers: [otlp] <br> processors: [batch] <br> exporters: [ azuredataexplorer]
-    
 
 1. Use the "--config" flag to run the OpenTelemetry collector.
 
@@ -104,9 +103,16 @@ service:
       exporters: [ azuredataexplorer]
 ```
 
+??? HOW WILL THE USER KNOW WHAT MAPPING JSONS TO USE???
+
 ## Collect data with a sample application
 
-Set up the sample [spring pet clinic](https://github.com/spring-projects/spring-petclinic) application with the java OTeL collector agent. The agent can be downloaded from the releases of [Open telemetry collector agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
+Now that the collector is configured, you need to send data to be ingested.
+You can use the sample [spring pet clinic](https://github.com/spring-projects/spring-petclinic) application with the java OTeL collector agent. 
+
+1. Download the collector agent here: [Open telemetry collector agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
+
+??? WHERE DOES THE USER INPUT THE FOLLOWING INFORMATION? DO WE HAVE A SCREENSHOT?
 
 ```sh
 OTEL_SERVICE_NAME=pet-clinic-service 
@@ -118,14 +124,15 @@ java -javaagent:./opentelemetry-javaagent.jar -jar spring-petclinic-<version>-SN
 
 ## Query incoming data
 
-Once the application is run and the default tables are set up, the following queries can be executed: 
+Once the sample app has run, your data has been ingested into the defined tables in Azure Data Explorer. You can take a look at a small selection of the sample data with a simple query. 
 
 * __Metrics__
 
-  The following are some sample metrics exported from the sample spring application. Metrics could be any type supported by the OTEL metrics specification.
+  The following query from the sample spring application. Metrics could be any type supported by the OTEL metrics specification.
 
   ```kql
-  OTELMetrics|take 2
+    OTELMetrics
+    |take 2
   ```
 
 * __Logs__
