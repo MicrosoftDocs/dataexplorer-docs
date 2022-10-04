@@ -1,12 +1,12 @@
 ---
-title: Ingest data from Azure Stream Analytics into Azure Data Explorer (Preview)
+title: Ingest data from Azure Stream Analytics into Azure Data Explorer
 description: In this article, you'll learn how to ingest (load) data into Azure Data Explorer from Azure Stream Analytics.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
 ms.date: 06/26/2022
 ---
 
-# Ingest data from Azure Stream Analytics into Azure Data Explorer (Preview)
+# Ingest data from Azure Stream Analytics into Azure Data Explorer
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion from Event Hubs, IoT Hubs, blobs written to blob containers, and Azure Stream Analytics jobs.
 
