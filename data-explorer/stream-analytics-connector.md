@@ -48,7 +48,7 @@ Before you begin, make sure you have an existing Stream Analytics job or [create
 
 1. Under **Job topology**, select the **Outputs**.
 
-1. Select **Add** > **Azure Data Explorer (Preview)**.
+1. Select **Add** > **Azure Data Explorer**.
 
     :::image type="content" source="media/stream-analytics-connector/stream-analytics-job-output.png" alt-text="Screenshot of the Outputs page, showing how to create an Azure Data Explorer connection.":::
 
