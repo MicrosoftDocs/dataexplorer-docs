@@ -12,10 +12,13 @@ ms.reviewer: ramacg
 
 The OpenTelemetry exporter supports ingestion of data from many receivers into Azure Data Explorer. In this article, you'll learn how to configure the OTel collector to ingest into Azure Data Explorer, you'll set up the collector to ingest sample data, and then you'll take a quick look at the data that has been ingested.
 
+> [!NOTE]
+> The configuration settings are summarized in the [readme documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/azuredataexplorerexporter/README.md).
+
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create a cluster and database, Instructions for creating the database and tables are provided in the [readme documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/azuredataexplorerexporter/README.md).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/)
+* An cluster and a database: [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
 
 ## Supported authentication methods
 
@@ -24,17 +27,40 @@ Azure Active Directory (Azure AD) applications with app keys are supported. To c
 > [!NOTE]
 > The designated principal must have *Data Ingestor* role-based authorization. For more information, see [role-based authorization](kusto/management/access-control/role-based-authorization.md).
 
-## Set up managed ingestion
+## Create tables
 
-???DOES THE USER NEED TO USE STREAMING INGESTION FOR THIS CONNECTOR? WHAT INFORMATION CAN WE GIVE THE USER TO MAKE A DECISION ON WHAT IS BEST IN THIS SCENARIO???
+1. Browse to [Azure Data Explorer web UI](https://dataexplorer.azure.com/). 
+1. Select **Query** from the left menu. 
+1. Expand the target cluster in the left pane.
+1. Select the database to give your queries the correct context.
 
-Managed ingestion attempts to use Azure Data Explorer streaming ingestion capabilities, with a fallback to the batched ingestion mode. For more information, see [batching vs streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion).
+1. Run the following commands are to create tables and schema mapping for the incoming data:
 
-> Note: [Streaming ingestion](ingest-data-streaming.md) has to be enabled on Azure Data Explorer [configure the Azure Data Explorer cluster] in case of `managed` option. Refer the query below to check if streaming is enabled:
+    ```kusto
+    .create-merge table <Logs-Table-Name> (Timestamp:datetime, ObservedTimestamp:datetime, TraceId:string, SpanId:string, SeverityText:string, SeverityNumber:int, Body:string, ResourceAttributes:dynamic, LogsAttributes:dynamic) 
+    
+    .create-merge table <Metrics-Table-Name> (Timestamp:datetime, MetricName:string, MetricType:string, MetricUnit:string, MetricDescription:string, MetricValue:real, Host:string, ResourceAttributes:dynamic,MetricAttributes:dynamic) 
+    
+    .create-merge table <Traces-Table-Name> (TraceId:string, SpanId:string, ParentId:string, SpanName:string, SpanStatus:string, SpanKind:string, StartTime:datetime, EndTime:datetime, ResourceAttributes:dynamic, TraceAttributes:dynamic, Events:dynamic, Links:dynamic) 
+    ```
+    
+1. Run the following command for each of the three tables to enable streaming ingestion:
 
-```kql
-.show database <DB-Name> policy streamingingestion
-```
+    ```kusto
+    .alter table <Table-Name> policy streamingingestion enable
+    ```
+
+## Set up ingestion type
+
+??? DOES THE USER NEED TO USE STREAMING INGESTION FOR THIS CONNECTOR? WHAT INFORMATION CAN WE GIVE THE USER TO MAKE A DECISION ON WHAT IS BEST IN THIS SCENARIO???
+
+Azure Data Explorer has two main types of ingestion: batching and streaming. For more information, see [batching vs streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion). The OpenTelemetry connector uses Azure Data Explorer streaming ingestion capabilities, with a fallback to the batched ingestion mode.
+
+> [!NOTE]
+> [Streaming ingestion](ingest-data-streaming.md) must be enabled on Azure Data Explorer cluster to enable the `managed` option.
+> You can check if streaming is enabled using the [.show database streaming ingestion policy](kusto/management/show-database-streaming-ingestion-policy-command.md) command.
+
+??? WE USUALLY REFER TO THIS AS STREAMING IN THE DOCS. IS THE WORD MANAGED COMING FROM THE OTEL CONNECTOR? DO WE NEED TO CONTINUE USING MANAGED?
 
 ## Configure the Azure Data Explorer collector
 
@@ -45,18 +71,18 @@ In order to ingest your OpenTelemetry data into Azure Data Explorer, you need [d
     |Field | Description | Suggested setting|
     |---|---|---|
     | Exporters| Type of exporter | Azure Data Explorer | 
-    |  cluster_uri |   Kusto cluster uri |  https:// &lt;cluster>.kusto.windows.net |
+    |  cluster_uri |   Kusto cluster URI where the database and tables will be created |  https:// &lt;cluster>.kusto.windows.net |
     | application_id |  Client ID|  &lt;application id> |
     | application_key| Client secret |  &lt;application key> |
     | tenant_id | Tenant |  &lt;application tenant>|
-    | db_name | Database for the logs | oteldb
-    | metrics_table_name | Raw metric table name | OTELMetrics
-    | logs_table_name | Raw log table name | OTELLogs
-    | traces_table_name | Raw traces table name | OTELTraces
-    | ingestion_type | Type of ingestion: managed or queued | managed
-    | otelmetrics_mapping | Optional mappings that can be provided and defined in Azure Data Explorer | &lt;json metrics_table_name mapping>
-    | otellogs_mapping | Optional mappings that can be provided and defined in Azure Data Explorer | &lt;json logs_table_name mapping>
-    | oteltraces_mapping | Optional mappings that can be provided and defined in Azure Data Explorer |&lt;json traces_table_name mapping>
+    | db_name | Database that will receive the logs | oteldb, or other database you have already created
+    | metrics_table_name | The target table in the database db_name that stores exported metric data. | OTELMetrics
+    | logs_table_name | The target table in the database db_name that stores exported logs data. | OTELLogs
+    | traces_table_name | The target table in the database db_name that stores exported traces data. | OTELTraces
+    | ingestion_type | Type of ingestion: managed (streaming) or batched | managed
+    | otelmetrics_mapping | Optional mapping for the metrics table that can be provided and defined in Azure Data Explorer | &lt;json metrics_table_name mapping>
+    | otellogs_mapping | Optional mappings for the logs table can be provided and defined in Azure Data Explorer | &lt;json logs_table_name mapping>
+    | oteltraces_mapping | Optional mapping for the traces table that can be provided and defined in Azure Data Explorer |&lt;json traces_table_name mapping>
     | logLevel |  | info
     | extensions | Services: extension components to enable | [pprof, zpages, health_check]
     | traces | Services: traces components to enable   |  receivers: [otlp] <br> processors: [batch] <br> exporters: [azuredataexplorer]
@@ -72,7 +98,7 @@ The following is an example configuration for the OTel collector:
 ```yaml
 exporters:
   azuredataexplorer:
-    cluster_uri: "https://CLUSTER.kusto.windows.net"
+    cluster_uri: "https://<cluster>.kusto.windows.net"
     application_id: "<application id>"
     application_key: "<application key>"
     tenant_id: "<application tenant>"
@@ -107,63 +133,122 @@ service:
 
 ## Collect data with a sample application
 
-Now that the collector is configured, you need to send data to be ingested.
-You can use the sample [spring pet clinic](https://github.com/spring-projects/spring-petclinic) application with the java OTeL collector agent. 
+Now that the collector is configured, you need to send data to be ingested. In this example. you'll use the sample [spring pet clinic](https://github.com/spring-projects/spring-petclinic) application with the java OTeL collector agent.
 
 1. Download the collector agent here: [Open telemetry collector agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
 
-??? WHERE DOES THE USER INPUT THE FOLLOWING INFORMATION? DO WE HAVE A SCREENSHOT?
-
-```sh
-OTEL_SERVICE_NAME=pet-clinic-service 
-OTEL_TRACES_EXPORTER=otlp 
-OTEL_LOGS_EXPORTER=otlp  
-OTEL_EXPORTER_OTLP_ENDPOINT=http://<open-telemetry-collector-host>:4317 
-java -javaagent:./opentelemetry-javaagent.jar -jar spring-petclinic-<version>-SNAPSHOT.jar
-```
+    ??? WHERE DOES THE USER INPUT THE FOLLOWING INFORMATION? DO WE HAVE A SCREENSHOT? ARE THERE OTHER STEPS THAT NEED TO BE TAKEN?
+    
+    ```sh
+    OTEL_SERVICE_NAME=pet-clinic-service 
+    OTEL_TRACES_EXPORTER=otlp 
+    OTEL_LOGS_EXPORTER=otlp  
+    OTEL_EXPORTER_OTLP_ENDPOINT=http://<open-telemetry-collector-host>:4317 
+    java -javaagent:./opentelemetry-javaagent.jar -jar spring-petclinic-<version>-SNAPSHOT.jar
+    ```
 
 ## Query incoming data
 
-Once the sample app has run, your data has been ingested into the defined tables in Azure Data Explorer. You can take a look at a small selection of the sample data with a simple query. 
+Once the sample app has run, your data has been ingested into the defined tables in Azure Data Explorer. These tables were created in a database that was defined in the OTel collector configuration, as *oteldb*. The tables you have created were defined in the OTel collector configuration. In this example, you've created three tables: *OTELMetrics*, *OTELLogs*, and *OTELTraces*. In this section, you'll query each table separately to get a small selection of the available data.
 
-* __Metrics__
+1. Browse to [Azure Data Explorer web UI](https://dataexplorer.azure.com/). 
+1. Select **Query** from the left menu. 
+1. Expand the target cluster in the left pane.
+1. Select the **oteldb** database to give your queries the correct context.
+1. Copy/paste the following queries sequentially, to see an arbitrary number of rows from each table:
 
-  The following query from the sample spring application. Metrics could be any type supported by the OTEL metrics specification.
+    * Metrics
+        ```kusto
+        OTELMetrics
+        |take 2
+        ```
+    
+        You should get results that are similar, but not exactly the same, as the following:
+    
+        |Timestamp           |MetricName                 |MetricType|MetricUnit|MetricDescription                                                  |MetricValue|Host           |MetricAttributes                                                                                                                                                                                                                   |ResourceAttributes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+        |--------------------|---------------------------|----------|----------|-------------------------------------------------------------------|-----------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+        |2022-07-01T12:55:33Z|http.server.active_requests|Sum       |requests  |The number of concurrent HTTP requests that are currently in-flight|0          |DESKTOP-SFS7RUQ|{"http.flavor":"1.1", "http.host":"localhost:8080", "scope.name":"io.opentelemetry.tomcat-7.0", "scope.version":"1.14.0-alpha", "http.method":"GET", "http.scheme":"http"}                                                              |{"host.name":"DESKTOP-SFS7RUQ", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "process.runtime.version":"18.0.1.1+2-6", "telemetry.sdk.language":"java", "host.arch":"amd64", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.auto.version":"1.14.0", "telemetry.sdk.name":"opentelemetry", "os.type":"windows", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.pid":5980, "service.name":"my-service", "telemetry.sdk.version":"1.14.0"}|
+        |2022-07-01T12:55:33Z|http.server.duration_sum   |Histogram |ms        |The duration of the inbound HTTP request(Sum total of samples)     |114.9881   |DESKTOP-SFS7RUQ|{"http.flavor":"1.1", "http.host":"localhost:8080", "scope.name":"io.opentelemetry.tomcat-7.0", "scope.version":"1.14.0-alpha", "http.method":"GET", "http.scheme":"http", "http.route":"/owners/find", "http.status_code":200}           |{"host.name":"DESKTOP-SFS7RUQ", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "process.runtime.version":"18.0.1.1+2-6", "telemetry.sdk.language":"java", "host.arch":"amd64", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.auto.version":"1.14.0", "telemetry.sdk.name":"opentelemetry", "os.type":"windows", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.pid":5980, "service.name":"my-service", "telemetry.sdk.version":"1.14.0"}|
 
-  ```kql
-    OTELMetrics
-    |take 2
-  ```
+    * Logs
 
-* __Logs__
+        ```kusto
+        OTELLogs
+        |take 2
+        ```
 
-    |Timestamp           |MetricName                 |MetricType|MetricUnit|MetricDescription                                                  |MetricValue|Host           |MetricAttributes                                                                                                                                                                                                                   |ResourceAttributes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-    |--------------------|---------------------------|----------|----------|-------------------------------------------------------------------|-----------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    |2022-07-01T12:55:33Z|http.server.active_requests|Sum       |requests  |The number of concurrent HTTP requests that are currently in-flight|0          |DESKTOP-SFS7RUQ|{"http.flavor":"1.1", "http.host":"localhost:8080", "scope.name":"io.opentelemetry.tomcat-7.0", "scope.version":"1.14.0-alpha", "http.method":"GET", "http.scheme":"http"}                                                              |{"host.name":"DESKTOP-SFS7RUQ", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "process.runtime.version":"18.0.1.1+2-6", "telemetry.sdk.language":"java", "host.arch":"amd64", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.auto.version":"1.14.0", "telemetry.sdk.name":"opentelemetry", "os.type":"windows", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.pid":5980, "service.name":"my-service", "telemetry.sdk.version":"1.14.0"}|
-    |2022-07-01T12:55:33Z|http.server.duration_sum   |Histogram |ms        |The duration of the inbound HTTP request(Sum total of samples)     |114.9881   |DESKTOP-SFS7RUQ|{"http.flavor":"1.1", "http.host":"localhost:8080", "scope.name":"io.opentelemetry.tomcat-7.0", "scope.version":"1.14.0-alpha", "http.method":"GET", "http.scheme":"http", "http.route":"/owners/find", "http.status_code":200}           |{"host.name":"DESKTOP-SFS7RUQ", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "process.runtime.version":"18.0.1.1+2-6", "telemetry.sdk.language":"java", "host.arch":"amd64", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.auto.version":"1.14.0", "telemetry.sdk.name":"opentelemetry", "os.type":"windows", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.pid":5980, "service.name":"my-service", "telemetry.sdk.version":"1.14.0"}|
-
-  Sample log statements exported from the sample spring application. Depending on the application configuration, all logs with severity INFO and up are exported into the Azure Data Explorer table.
-  ```kql
-  OTELLogs|take 2
-  ```
-
-* __Traces__
-
-  |Timestamp           |TraceId|SpanId|SeverityText|SeverityNumber|Body                                                                                                                                                                                                                                                                      |ResourceAttributes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |LogsAttributes                                                             |
-  |--------------------|-------|------|------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-  |2022-07-01T13:00:39Z|       |      |INFO        |9             |Starting PetClinicApplication v2.7.0-SNAPSHOT using Java 18.0.1.1 on DESKTOP-SFS7RUQ with PID 37280 (C:\Users\adxuser\Documents\Repos\spring-petclinic\target\spring-petclinic-2.7.0-SNAPSHOT.jar started by adxuser in C:\Users\adxuser\Documents\Repos\spring-petclinic)|{"host.name":"DESKTOP-SFS7RUQ", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.pid":37280, "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.sdk.name":"opentelemetry", "os.type":"windows", "process.runtime.version":"18.0.1.1+2-6", "telemetry.sdk.language":"java", "telemetry.sdk.version":"1.14.0", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "os.description":"Windows 11 10.0", "service.name":"my-service", "telemetry.auto.version":"1.14.0", "host.arch":"amd64"}|{"scope.name":"org.springframework.samples.petclinic.PetClinicApplication"}|
-  |2022-07-01T13:00:39Z|       |      |INFO        |9             |No active profile set, falling back to 1 default profile: "default"                                                                                                                                                                                                       |{"host.name":"DESKTOP-SFS7RUQ", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.pid":37280, "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.sdk.name":"opentelemetry", "os.type":"windows", "process.runtime.version":"18.0.1.1+2-6", "telemetry.sdk.language":"java", "telemetry.sdk.version":"1.14.0", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "os.description":"Windows 11 10.0", "service.name":"my-service", "telemetry.auto.version":"1.14.0", "host.arch":"amd64"}|{"scope.name":"org.springframework.samples.petclinic.PetClinicApplication"}|
+        You should get results that are similar, but not exactly the same, as the following:
+ 
+        |Timestamp           |TraceId|SpanId|SeverityText|SeverityNumber|Body                                                                                                                                                                                                                                                                      |ResourceAttributes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |LogsAttributes                                                             |
+          |--------------------|-------|------|------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+          |2022-07-01T13:00:39Z|       |      |INFO        |9             |Starting PetClinicApplication v2.7.0-SNAPSHOT using Java 18.0.1.1 on DESKTOP-SFS7RUQ with PID 37280 (C:\Users\adxuser\Documents\Repos\spring-petclinic\target\spring-petclinic-2.7.0-SNAPSHOT.jar started by adxuser in C:\Users\adxuser\Documents\Repos\spring-petclinic)|{"host.name":"DESKTOP-SFS7RUQ", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.pid":37280, "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.sdk.name":"opentelemetry", "os.type":"windows", "process.runtime.version":"18.0.1.1+2-6", "telemetry.sdk.language":"java", "telemetry.sdk.version":"1.14.0", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "os.description":"Windows 11 10.0", "service.name":"my-service", "telemetry.auto.version":"1.14.0", "host.arch":"amd64"}|{"scope.name":"org.springframework.samples.petclinic.PetClinicApplication"}|
+          |2022-07-01T13:00:39Z|       |      |INFO        |9             |No active profile set, falling back to 1 default profile: "default"                                                                                                                                                                                                       |{"host.name":"DESKTOP-SFS7RUQ", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.pid":37280, "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.sdk.name":"opentelemetry", "os.type":"windows", "process.runtime.version":"18.0.1.1+2-6", "telemetry.sdk.language":"java", "telemetry.sdk.version":"1.14.0", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "os.description":"Windows 11 10.0", "service.name":"my-service", "telemetry.auto.version":"1.14.0", "host.arch":"amd64"}|{"scope.name":"org.springframework.samples.petclinic.PetClinicApplication"}|
 
 
-  Sample traces statements exported from the sample spring application. Application(s) can export traces / spans that can be correlated using TraceId as per OTEL traces specification.
-  ```kql
-  OTELTraces|take 2
-  ```
+    * Traces
 
-  |TraceId             |SpanId          |ParentId|SpanName|SpanStatus|SpanKind                                                                                                                                                                                                                                                                  |StartTime                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |EndTime                                                                    |ResourceAttributes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |TraceAttributes                                                                                                                                                                                                                                                                 |Events|Links|
-  |--------------------|----------------|--------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------|-----|
-  |573c0e4e002a9f7281f6d63eafe4ef87|dab70d0ba8902c5e|        |87d003d6-02c1-4f3d-8972-683243c35642|STATUS_CODE_UNSET|SPAN_KIND_CLIENT                                                                                                                                                                                                                                                          |2022-07-01T13:17:59Z                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |2022-07-01T13:17:59Z                                                       |{"telemetry.auto.version":"1.14.0", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "service.name":"my-service", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.sdk.language":"java", "telemetry.sdk.name":"opentelemetry", "host.arch":"amd64", "host.name":"DESKTOP-SFS7RUQ", "process.pid":34316, "process.runtime.version":"18.0.1.1+2-6", "os.type":"windows", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "telemetry.sdk.version":"1.14.0"}|{"db.user":"sa", "thread.id":1, "db.name":"87d003d6-02c1-4f3d-8972-683243c35642", "thread.name":"main", "db.system":"h2", "scope.name":"io.opentelemetry.jdbc", "scope.version":"1.14.0-alpha", "db.connection_string":"h2:mem:", "db.statement":"DROP TABLE vet_specialties IF EXISTS"}|[]    |[]   |
-  |84a9a8c4009d91476da02dfa40746c13|3cd4c0e91717969a|        |87d003d6-02c1-4f3d-8972-683243c35642|STATUS_CODE_UNSET|SPAN_KIND_CLIENT                                                                                                                                                                                                                                                          |2022-07-01T13:17:59Z                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |2022-07-01T13:17:59Z                                                       |{"telemetry.auto.version":"1.14.0", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "service.name":"my-service", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.sdk.language":"java", "telemetry.sdk.name":"opentelemetry", "host.arch":"amd64", "host.name":"DESKTOP-SFS7RUQ", "process.pid":34316, "process.runtime.version":"18.0.1.1+2-6", "os.type":"windows", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "telemetry.sdk.version":"1.14.0"}|{"db.user":"sa", "thread.id":1, "db.name":"87d003d6-02c1-4f3d-8972-683243c35642", "thread.name":"main", "db.system":"h2", "scope.name":"io.opentelemetry.jdbc", "scope.version":"1.14.0-alpha", "db.connection_string":"h2:mem:", "db.statement":"DROP TABLE vets IF EXISTS"}           |[]    |[]   |
+        ```kusto
+        OTELTraces
+        |take 2
+        ```
+    
+        You should get results that are similar, but not exactly the same, as the following:
+
+
+       |TraceId             |SpanId          |ParentId|SpanName|SpanStatus|SpanKind                                                                                                                                                                                                                                                                  |StartTime                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |EndTime                                                                    |ResourceAttributes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |TraceAttributes                                                                                                                                                                                                                                                                 |Events|Links|
+      |--------------------|----------------|--------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------|-----|
+      |573c0e4e002a9f7281f6d63eafe4ef87|dab70d0ba8902c5e|        |87d003d6-02c1-4f3d-8972-683243c35642|STATUS_CODE_UNSET|SPAN_KIND_CLIENT                                                                                                                                                                                                                                                          |2022-07-01T13:17:59Z                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |2022-07-01T13:17:59Z                                                       |{"telemetry.auto.version":"1.14.0", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "service.name":"my-service", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.sdk.language":"java", "telemetry.sdk.name":"opentelemetry", "host.arch":"amd64", "host.name":"DESKTOP-SFS7RUQ", "process.pid":34316, "process.runtime.version":"18.0.1.1+2-6", "os.type":"windows", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "telemetry.sdk.version":"1.14.0"}|{"db.user":"sa", "thread.id":1, "db.name":"87d003d6-02c1-4f3d-8972-683243c35642", "thread.name":"main", "db.system":"h2", "scope.name":"io.opentelemetry.jdbc", "scope.version":"1.14.0-alpha", "db.connection_string":"h2:mem:", "db.statement":"DROP TABLE vet_specialties IF EXISTS"}|[]    |[]   |
+      |84a9a8c4009d91476da02dfa40746c13|3cd4c0e91717969a|        |87d003d6-02c1-4f3d-8972-683243c35642|STATUS_CODE_UNSET|SPAN_KIND_CLIENT                                                                                                                                                                                                                                                          |2022-07-01T13:17:59Z                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |2022-07-01T13:17:59Z                                                       |{"telemetry.auto.version":"1.14.0", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "service.name":"my-service", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.sdk.language":"java", "telemetry.sdk.name":"opentelemetry", "host.arch":"amd64", "host.name":"DESKTOP-SFS7RUQ", "process.pid":34316, "process.runtime.version":"18.0.1.1+2-6", "os.type":"windows", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "telemetry.sdk.version":"1.14.0"}|{"db.user":"sa", "thread.id":1, "db.name":"87d003d6-02c1-4f3d-8972-683243c35642", "thread.name":"main", "db.system":"h2", "scope.name":"io.opentelemetry.jdbc", "scope.version":"1.14.0-alpha", "db.connection_string":"h2:mem:", "db.statement":"DROP TABLE vets IF EXISTS"}           |[]    |[]   |
+
+
+## Further data processing
+
+Using update policies , the collected data can further be processed as per application need. 
+
+1. The following example exports histogram metrics to a histo-specific table with buckets and aggregates. Run the following command in the query pane of the Azure Data Explorer web UI:
+    
+    ```kusto
+    .create table HistoBucketData (Timestamp: datetime, MetricName: string , MetricType: string , Value: double, LE: double, Host: string , ResourceAttributes: dynamic, MetricAttributes: dynamic )
+    
+    .create function 
+    with ( docstring = "Histo bucket processing function", folder = "UpdatePolicyFunctions") ExtractHistoColumns()
+    {
+        OTELMetrics
+        | where MetricType == 'Histogram' and MetricName has "_bucket"
+        | extend f=parse_json(MetricAttributes)
+        | extend le=todouble(f.le)
+        | extend M_name=replace_string(MetricName, '_bucket','')
+        | project Timestamp, MetricName=M_name, MetricType, MetricValue, LE=le, Host, ResourceAttributes, MetricAttributes
+    }
+    
+    .alter table HistoBucketData policy update 
+    @'[{ "IsEnabled": true, "Source": "OTELMetrics","Query": "ExtractHistoColumns()", "IsTransactional": false, "PropagateIngestionProperties": false}]'
+    ```
+
+1. The following commands create a table which only contains count and sum values of Histogram metric type and attaches an update policy. Run the following command in the query pane of the Azure Data Explorer web UI:
+
+    ```kusto
+     .create table HistoData (Timestamp: datetime, MetricName: string , MetricType: string , Count: double, Sum: double, Host: string , ResourceAttributes: dynamic, MetricAttributes: dynamic)
+    
+     .create function 
+    with ( docstring = "Histo sum count processing function", folder = "UpdatePolicyFunctions") ExtractHistoCountColumns()
+    {
+       OTELMetrics
+        | where MetricType =='Histogram'
+        | where MetricName has "_count"
+        | extend Count=MetricValue
+        | extend M_name=replace_string(MetricName, '_bucket','')
+        | join kind=inner (OTELMetrics
+        | where MetricType =='Histogram'
+        | where MetricName has "_sum"
+        | project Sum = MetricValue , Timestamp)
+     on Timestamp | project Timestamp, MetricName=M_name, MetricType, Count, Sum, Host, ResourceAttributes, MetricAttributes
+    }
+    
+    .alter table HistoData policy update 
+    @'[{ "IsEnabled": true, "Source": "RawMetricsData","Query": "ExtractHistoCountColumns()", "IsTransactional": false, "PropagateInge
+    ```
+
 
 ## Next steps
 
