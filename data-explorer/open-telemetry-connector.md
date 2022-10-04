@@ -43,14 +43,8 @@ Azure Active Directory (Azure AD) applications with app keys are supported. To c
     
     .create-merge table <Traces-Table-Name> (TraceId:string, SpanId:string, ParentId:string, SpanName:string, SpanStatus:string, SpanKind:string, StartTime:datetime, EndTime:datetime, ResourceAttributes:dynamic, TraceAttributes:dynamic, Events:dynamic, Links:dynamic) 
     ```
-    
-1. Run the following command for each of the three tables to enable streaming ingestion:
 
-    ```kusto
-    .alter table <Table-Name> policy streamingingestion enable
-    ```
-
-## Set up ingestion type
+## Set up streaming ingestion
 
 ??? DOES THE USER NEED TO USE STREAMING INGESTION FOR THIS CONNECTOR? WHAT INFORMATION CAN WE GIVE THE USER TO MAKE A DECISION ON WHAT IS BEST IN THIS SCENARIO???
 
@@ -60,7 +54,11 @@ Azure Data Explorer has two main types of ingestion: batching and streaming. For
 > [Streaming ingestion](ingest-data-streaming.md) must be enabled on Azure Data Explorer cluster to enable the `managed` option.
 > You can check if streaming is enabled using the [.show database streaming ingestion policy](kusto/management/show-database-streaming-ingestion-policy-command.md) command.
 
-??? WE USUALLY REFER TO THIS AS STREAMING IN THE DOCS. IS THE WORD MANAGED COMING FROM THE OTEL CONNECTOR? DO WE NEED TO CONTINUE USING MANAGED?
+1. Run the following command for each of the three tables to enable streaming ingestion:
+
+    ```kusto
+    .alter table <Table-Name> policy streamingingestion enable
+    ```
 
 ## Configure the Azure Data Explorer collector
 
@@ -90,8 +88,6 @@ In order to ingest your OpenTelemetry data into Azure Data Explorer, you need [d
     | logs | Services: logs components to enable | receivers: [otlp] <br> processors: [batch] <br> exporters: [ azuredataexplorer]
 
 1. Use the "--config" flag to run the OpenTelemetry collector.
-
-### Example configuration
 
 The following is an example configuration for the OTel collector:
 
@@ -203,7 +199,7 @@ Once the sample app has run, your data has been ingested into the defined tables
 
 ## Further data processing
 
-Using update policies , the collected data can further be processed as per application need. 
+Using update policies, the collected data can further be processed as per application need. 
 
 1. The following example exports histogram metrics to a histo-specific table with buckets and aggregates. Run the following command in the query pane of the Azure Data Explorer web UI:
     
