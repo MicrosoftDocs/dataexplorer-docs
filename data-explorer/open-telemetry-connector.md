@@ -18,7 +18,7 @@ The OpenTelemetry exporter supports ingestion of data from many receivers into A
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/)
-* An cluster and a database: [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
+* A cluster and a database: [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
 
 ## Supported authentication methods
 
@@ -145,7 +145,7 @@ Now that the collector is configured, you need to send data to be ingested. In t
 
 ## Query incoming data
 
-Once the sample app has run, your data has been ingested into the defined tables in Azure Data Explorer. These tables were created in a database that was defined in the OTel collector configuration, as *oteldb*. The tables you have created were defined in the OTel collector configuration. In this example, you've created three tables: *OTELMetrics*, *OTELLogs*, and *OTELTraces*. In this section, you'll query each table separately to get a small selection of the available data.
+Once the sample app has run, your data has been ingested into the defined tables in Azure Data Explorer. These tables were created in a database that was defined in the OTel collector configuration, as *oteldb*. The tables you've created were defined in the OTel collector configuration. In this example, you've created three tables: *OTELMetrics*, *OTELLogs*, and *OTELTraces*. In this section, you'll query each table separately to get a small selection of the available data.
 
 1. Browse to [Azure Data Explorer web UI](https://dataexplorer.azure.com/). 
 1. Select **Query** from the left menu. 
@@ -221,7 +221,7 @@ Using update policies, the collected data can further be processed as per applic
     @'[{ "IsEnabled": true, "Source": "OTELMetrics","Query": "ExtractHistoColumns()", "IsTransactional": false, "PropagateIngestionProperties": false}]'
     ```
 
-1. The following commands create a table which only contains count and sum values of Histogram metric type and attaches an update policy. Run the following command in the query pane of the Azure Data Explorer web UI:
+1. The following commands create a table that only contains count and sum values of Histogram metric type and attaches an update policy. Run the following command in the query pane of the Azure Data Explorer web UI:
 
     ```kusto
      .create table HistoData (Timestamp: datetime, MetricName: string , MetricType: string , Count: double, Sum: double, Host: string , ResourceAttributes: dynamic, MetricAttributes: dynamic)
