@@ -149,7 +149,7 @@ Now that the collector is configured, you need to send data to be ingested. In t
 
     The open-telemetry-collector-host references the host where ADX OTEL exporter is configured and running.
 
-1. Run the sample spring-boot application with the followingcommand line arguments:
+1. Run the sample spring-boot application with the following command line arguments:
     
     ```
     java -javaagent:./opentelemetry-javaagent.jar -jar spring-petclinic-<version>-SNAPSHOT.jar    
