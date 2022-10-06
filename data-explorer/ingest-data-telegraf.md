@@ -102,8 +102,8 @@ To enable the Azure Data Explorer output plugin, you must uncomment the followin
 
 The plugin supports managed (streaming) and queued (batching) [ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion). The default ingestion type is *queued*.
 
-    > [!IMPORTANT]
-    > To use managed ingestion, you must enable [streaming ingestion](ingest-data-streaming.md) on your cluster.
+> [!IMPORTANT]
+> To use managed ingestion, you must enable [streaming ingestion](ingest-data-streaming.md) on your cluster.
     
 To configure the ingestion type for the plugin, modify the automatically generated configuration file, as follows:
 
