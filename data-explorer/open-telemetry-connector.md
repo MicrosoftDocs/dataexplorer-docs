@@ -1,12 +1,12 @@
 ---
-title: Ingest data from OpenTelemetry
+title: Ingest data from OpenTelemetry to Azure Data Explorer
 description: Learn how to use Azure Data Explorer as an OpenTelemetry sink.
 ms.date: 10/03/2022
 ms.topic: how-to
 ms.reviewer: ramacg
 ---
 
-# Ingest data from OpenTelemetry
+# Ingest data from OpenTelemetry to Azure Data Explorer
 
 [OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) (OTel) is an open framework for application observability. The instrumentation is hosted by the Cloud Native Computing Foundation (CNCF), which provides standard interfaces for observability data, including [metrics](https://opentelemetry.io/docs/concepts/observability-primer/#reliability--metrics), [logs](https://opentelemetry.io/docs/concepts/observability-primer/#logs), and [traces](https://opentelemetry.io/docs/concepts/observability-primer/#distributed-traces).
 
@@ -44,17 +44,15 @@ Azure Active Directory (Azure AD) applications with app keys are supported. To c
     .create-merge table <Traces-Table-Name> (TraceId:string, SpanId:string, ParentId:string, SpanName:string, SpanStatus:string, SpanKind:string, StartTime:datetime, EndTime:datetime, ResourceAttributes:dynamic, TraceAttributes:dynamic, Events:dynamic, Links:dynamic) 
     ```
 
-## Set up streaming ingestion
+## Set up streaming or batching ingestion
 
-??? DOES THE USER NEED TO USE STREAMING INGESTION FOR THIS CONNECTOR? WHAT INFORMATION CAN WE GIVE THE USER TO MAKE A DECISION ON WHAT IS BEST IN THIS SCENARIO???
-
-Azure Data Explorer has two main types of ingestion: batching and streaming. For more information, see [batching vs streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion). The OpenTelemetry connector uses Azure Data Explorer streaming ingestion capabilities, with a fallback to the batched ingestion mode.
+Azure Data Explorer has two main types of ingestion: batching and streaming. For more information, see [batching vs streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion). The *streaming* method is called *managed* in the OTel collector. Streaming ingestion may be a good choice for you if you need the logs and traces are to be available in near real time. However, streaming ingestion uses more resources than batched ingestion. The OTeL framework itself batches data, which should be considered when choosing which method to use for ingestion.
 
 > [!NOTE]
 > [Streaming ingestion](ingest-data-streaming.md) must be enabled on Azure Data Explorer cluster to enable the `managed` option.
 > You can check if streaming is enabled using the [.show database streaming ingestion policy](kusto/management/show-database-streaming-ingestion-policy-command.md) command.
 
-1. Run the following command for each of the three tables to enable streaming ingestion:
+Run the following command for each of the three tables to enable streaming ingestion:
 
     ```kusto
     .alter table <Table-Name> policy streamingingestion enable
@@ -78,9 +76,9 @@ In order to ingest your OpenTelemetry data into Azure Data Explorer, you need [d
     | logs_table_name | The target table in the database db_name that stores exported logs data. | OTELLogs
     | traces_table_name | The target table in the database db_name that stores exported traces data. | OTELTraces
     | ingestion_type | Type of ingestion: managed (streaming) or batched | managed
-    | otelmetrics_mapping | Optional mapping for the metrics table that can be provided and defined in Azure Data Explorer | &lt;json metrics_table_name mapping>
-    | otellogs_mapping | Optional mappings for the logs table can be provided and defined in Azure Data Explorer | &lt;json logs_table_name mapping>
-    | oteltraces_mapping | Optional mapping for the traces table that can be provided and defined in Azure Data Explorer |&lt;json traces_table_name mapping>
+    | otelmetrics_mapping | Optional mapping for the metrics table that can be provided and defined in Azure Data Explorer. The table mapping was defined during table creation, but if desired can be altered with this value. | &lt;json metrics_table_name mapping>
+    | otellogs_mapping | Optional mappings for the logs table can be provided and defined in Azure Data Explorer. The table mapping was defined during table creation, but if desired can be altered with this value.| &lt;json logs_table_name mapping>
+    | oteltraces_mapping | Optional mapping for the traces table that can be provided and defined in Azure Data Explorer. The table mapping was defined during table creation, but if desired can be altered with this value. |&lt;json traces_table_name mapping>
     | logLevel |  | info
     | extensions | Services: extension components to enable | [pprof, zpages, health_check]
     | traces | Services: traces components to enable   |  receivers: [otlp] <br> processors: [batch] <br> exporters: [azuredataexplorer]
@@ -104,8 +102,8 @@ exporters:
     traces_table_name: "OTELTraces"
     ingestion_type : "managed"
     otelmetrics_mapping : "<json metrics_table_name mapping>"
-		otellogs_mapping  : "<json logs_table_name mapping>"
-		oteltraces_mapping  : "<json traces_table_name mapping>"
+    otellogs_mapping  : "<json logs_table_name mapping>"
+    oteltraces_mapping  : "<json traces_table_name mapping>"
   logging:
     logLevel: info
 service:
@@ -125,22 +123,36 @@ service:
       exporters: [ azuredataexplorer]
 ```
 
-??? HOW WILL THE USER KNOW WHAT MAPPING JSONS TO USE???
-
 ## Collect data with a sample application
 
 Now that the collector is configured, you need to send data to be ingested. In this example. you'll use the sample [spring pet clinic](https://github.com/spring-projects/spring-petclinic) application with the java OTeL collector agent.
 
 1. Download the collector agent here: [Open telemetry collector agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
 
-    ??? WHERE DOES THE USER INPUT THE FOLLOWING INFORMATION? DO WE HAVE A SCREENSHOT? ARE THERE OTHER STEPS THAT NEED TO BE TAKEN?
+1. To enable open telemetry for the sample application, set the following environment variables in a command line:
+
+    ```command_line
+    $env:OTEL_SERVICE_NAME="pet-clinic-service"
+    $env:OTEL_TRACES_EXPORTER="otlp"
+    $env:OTEL_LOGS_EXPORTER="otlp "                   
+    $env:OTEL_EXPORTER_OTLP_ENDPOINT="http://<open-telemetry-collector-host>:4317"
+    ```
     
-    ```sh
-    OTEL_SERVICE_NAME=pet-clinic-service 
-    OTEL_TRACES_EXPORTER=otlp 
-    OTEL_LOGS_EXPORTER=otlp  
-    OTEL_EXPORTER_OTLP_ENDPOINT=http://<open-telemetry-collector-host>:4317 
-    java -javaagent:./opentelemetry-javaagent.jar -jar spring-petclinic-<version>-SNAPSHOT.jar
+    Alternatively, you can use the following commands in bash shell:
+
+    ```bash
+    export OTEL_SERVICE_NAME=pet-clinic-service 
+    export OTEL_TRACES_EXPORTER=otlp 
+    export OTEL_LOGS_EXPORTER=otlp  
+    export OTEL_EXPORTER_OTLP_ENDPOINT=http://<open-telemetry-collector-host>:4317 
+    ```
+
+    The open-telemetry-collector-host references the host where ADX OTEL exporter is configured and running.
+
+1. Run the sample spring-boot application with the followingcommand line arguments:
+    
+    ```
+    java -javaagent:./opentelemetry-javaagent.jar -jar spring-petclinic-<version>-SNAPSHOT.jar    
     ```
 
 ## Query incoming data
@@ -199,7 +211,7 @@ Once the sample app has run, your data has been ingested into the defined tables
 
 ## Further data processing
 
-Using update policies, the collected data can further be processed as per application need. 
+Using update policies, the collected data can further be processed as per application need. For more information, see [Update policy overview](kusto/management/updatepolicy.md).
 
 1. The following example exports histogram metrics to a histo-specific table with buckets and aggregates. Run the following command in the query pane of the Azure Data Explorer web UI:
     
