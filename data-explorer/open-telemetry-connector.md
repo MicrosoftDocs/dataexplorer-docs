@@ -54,9 +54,9 @@ Azure Data Explorer has two main types of ingestion: batching and streaming. For
 
 Run the following command for each of the three tables to enable streaming ingestion:
 
-    ```kusto
-    .alter table <Table-Name> policy streamingingestion enable
-    ```
+```kusto
+.alter table <Table-Name> policy streamingingestion enable
+```
 
 ## Configure the Azure Data Explorer collector
 
