@@ -233,6 +233,9 @@ items:
     - name: Azure Stream Analytics
       href: stream-analytics-connector.md
       displayName: ingest data, ingestion
+    - name: OpenTelemetry
+      href: open-telemetry-connector.md
+      displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion
     - name: Kafka
       displayName: ingest data, ingestion
       href: ingest-data-kafka.md
