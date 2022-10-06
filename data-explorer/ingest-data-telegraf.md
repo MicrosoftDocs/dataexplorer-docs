@@ -98,6 +98,22 @@ To enable the Azure Data Explorer output plugin, you must uncomment the followin
   ## Skips table and mapping creation if set to false, this is useful for running telegraf with the least possible access permissions i.e. table ingestor role.
   # create_tables = true
 ```
+## Supported ingestion type
+
+The Azure Data Explorer output plugin for Telegraf supports both streaming and batching [ingestion type](https://learn.microsoft.com/en-us/azure/data-explorer/ingest-data-overview#batching-vs-streaming-ingestion) with the upcoming [update](https://github.com/influxdata/telegraf/pull/11874). The data ingestion type with this update has become configurable. The default ingestion type will be "queued" in case no type is [configured](https://github.com/asaharn/telegraf/tree/feature/AddedIngestionType/plugins/outputs/azure_data_explorer).
+
+    > [!NOTE]
+    > [Streaming ingestion](https://aka.ms/AAhlg6s) has to be enabled on Azure Data Explorer to use managed streaming.
+
+To configure the Azure Data Explorer output plugin for ingestion type modify the automatically generated config file as below:
+
+```ini
+  ##  Ingestion method to use.
+  ##  Available options are
+  ##    - managed  --  streaming ingestion with fallback to batched ingestion or the "queued" method below
+  ##    - queued   --  queue up metrics data and process sequentially
+  # ingestion_type = "queued"
+```
 
 ## Query ingested data
 
