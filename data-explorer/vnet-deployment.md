@@ -55,7 +55,7 @@ The total number of IP addresses:
 > Subnet size must be planned in advance since it can't be changed after Azure Data Explorer is deployed. Therefore, reserve needed subnet size accordingly.
 
 > [!NOTE]
-> Please don't deploy any Azure Resource or Service in the Subnet which is planned to deploy the Azure Data Explorer. Azure Data Explorer also won't resume from suspended if any service or resource running in the subnet.
+> Please don't deploy any Azure Resource or Service in the Subnet which is planned to deploy Azure Data Explorer. Azure Data Explorer also won't resume from suspended if any service or resource running in the subnet.
 
 ## Service endpoints for connecting to Azure Data Explorer
 
