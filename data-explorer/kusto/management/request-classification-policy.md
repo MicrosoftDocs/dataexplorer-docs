@@ -85,4 +85,11 @@ case(current_principal_is_member_of('aadgroup=somesecuritygroup@contoso.com'), "
 
 ## Control commands
 
-Use these [control commands](./show-cluster-policy-request-classification-command.md) to manage a cluster's request classification.
+Use the following control commands to manage a cluster's request classification.
+
+| Command | Description |
+|--|--|
+| [`.alter cluster request classification policy`](alter-cluster-policy-request-classification-command.md) | Alters cluster's request classification policy |
+| [`.alter-merge cluster request classification policy`](alter-merge-cluster-policy-request-classification-command.md) | Enables or disables a cluster's request classification policy |
+| [`.delete cluster request classification policy`](delete-cluster-policy-request-classification-command.md) | Deletes the cluster's request classification policy |
+| [`.show cluster request classification policy`](show-cluster-policy-request-classification-command.md) | Shows the cluster's request classification policy |
