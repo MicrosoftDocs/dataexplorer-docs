@@ -20,18 +20,14 @@ items:
     items:
     - name: Request classification policy
       href: request-classification-policy.md
-    - name: Request classification commands
-      items:
-      - name: Request classification policy commands
-        href: ./show-cluster-policy-request-classification-command.md
-      - name: .alter cluster request classification policy commands
-        href: alter-cluster-policy-request-classification-command.md
-      - name: .alter-merge cluster request classification policy commands
-        href: alter-merge-cluster-policy-request-classification-command.md
-      - name: .delete cluster request classification policy commands
-        href: delete-cluster-policy-request-classification-command.md
-      - name: .show cluster request classification policy commands
-        href: show-cluster-policy-request-classification-command.md
+    - name: .alter cluster request classification policy commands
+      href: alter-cluster-policy-request-classification-command.md
+    - name: .alter-merge cluster request classification policy commands
+      href: alter-merge-cluster-policy-request-classification-command.md
+    - name: .delete cluster request classification policy commands
+      href: delete-cluster-policy-request-classification-command.md
+    - name: .show cluster request classification policy commands
+      href: show-cluster-policy-request-classification-command.md
   - name: Request limits policy
     href: request-limits-policy.md
   - name: Request rate limit policy

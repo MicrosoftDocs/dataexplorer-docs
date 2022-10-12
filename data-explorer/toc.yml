@@ -47,6 +47,8 @@ items:
       href: web-ui-overview.md
     - name: Ingestion wizard
       href: ingest-data-wizard.md
+    - name: Azure Data Explorer web UI keyboard shortcuts
+      href: web-ui-query-keyboard-shortcuts.md
   - name: Data ingestion
     items:
     - name: Data ingestion overview
@@ -231,6 +233,9 @@ items:
     - name: Azure Stream Analytics
       href: stream-analytics-connector.md
       displayName: ingest data, ingestion
+    - name: OpenTelemetry
+      href: open-telemetry-connector.md
+      displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion
     - name: Kafka
       displayName: ingest data, ingestion
       href: ingest-data-kafka.md
