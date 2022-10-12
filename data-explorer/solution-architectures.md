@@ -36,7 +36,7 @@ Interactive analytics with Azure Data Explorer to explore data with improvised, 
 
 ## IoT analytics with Azure Data Explorer
 
-Near real-time analytics over fast flowing, high volume streaming data from IoT devices, sensors, connected buildings and vehicles, and so on. It focuses on integration of Azure Data Explorer with other IoT services to cater to both operational and analytical workloads using Cosmos DB and Azure Data Explorer.
+Near real-time analytics over fast flowing, high volume streaming data from IoT devices, sensors, connected buildings and vehicles, and so on. It focuses on integration of Azure Data Explorer with other IoT services to cater to both operational and analytical workloads using Azure Cosmos DB and Azure Data Explorer.
 
 > [!div class="nextstepaction"]
 > [IoT analytics with Azure Data Explorer](/azure/architecture/solution-ideas/articles/iot-azure-data-explorer)
