@@ -494,7 +494,7 @@ items:
           displayName: Microsoft Flow, flow, flow connector
       - name: Logic Apps
         href: kusto/tools/logicapps.md
-    - name: Cosmos DB
+    - name: Azure Cosmos DB
       href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
     - name: Telegraf
       href: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer

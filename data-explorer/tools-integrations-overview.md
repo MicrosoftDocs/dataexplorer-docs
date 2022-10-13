@@ -34,7 +34,7 @@ or [from a local file to an existing table](./ingestion-wizard-existing-table.md
 * [Apache Spark](spark-connector.md)
 * [Apache Kafka](ingest-data-kafka.md)
 * [Telegraf](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer)
-* [Cosmos DB](https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration)
+* [Azure Cosmos DB](https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration)
 * [Power Automate](flow.md)
 
 ## Query data
