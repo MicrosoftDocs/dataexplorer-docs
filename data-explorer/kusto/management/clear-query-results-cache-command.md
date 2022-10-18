@@ -25,7 +25,7 @@ This command returns a table with the following columns:
 **Example**
 
 ```kusto
-.clear database cache queryresults
+.clear database cache query_results
 ```
 
 |NodeId|Entries|
