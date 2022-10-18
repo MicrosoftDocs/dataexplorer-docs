@@ -13,7 +13,7 @@ Another alias: array_iff().
 
 ## Syntax
 
-`array_iif(`*ConditionArray*, *IfTrue*, *IfFalse*]`)`
+`array_iif(`*ConditionArray*, *IfTrue*, *IfFalse*`)`
 
 ## Arguments
 
