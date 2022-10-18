@@ -31,7 +31,7 @@ This section shows you how to configure customer-managed keys encryption using t
 ### Install C# NuGet packages
 
 * Install the [Azure Data Explorer (Kusto) NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Install the [MSAL NuGet package](https://www.nuget.org/packages/Microsoft.Identity.Client/) for authentication with Azure AD.
+* Install the [MSAL NuGet package](https://www.nuget.org/packages/Microsoft.Identity.Client/) for authentication with Azure Active Directory (Azure AD).
 
 ### Authentication
 
