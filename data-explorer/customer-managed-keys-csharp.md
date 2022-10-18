@@ -31,18 +31,17 @@ This section shows you how to configure customer-managed keys encryption using t
 ### Install C# NuGet packages
 
 * Install the [Azure Data Explorer (Kusto) NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-
 * Install the [MSAL NuGet package](https://www.nuget.org/packages/Microsoft.Identity.Client/) for authentication with Azure AD.
 
 ### Authentication
 
 To run the examples in this article, [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You can add role assignment at the subscription scope and get the required `Azure AD Directory (tenant) ID`, `Application ID`, and `Application Secret`.
 
+The following code snippet demonstrates using [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an Azure AD application token to access Azure Management plane. For this flow to succeed, a client application must be registered with Azure AD and equipped with credentials needed to perform application authentication (such as an app key issued by Azure AD, or an X.509v2 certificate that has been pre-registered with Azure AD).
+
 ### Configure cluster
 
 By default, Azure Data Explorer encryption uses Microsoft-managed keys. Configure your Azure Data Explorer cluster to use customer-managed keys and specify the key to associate with the cluster.
-
-The following brief code snippet demonstrates using [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an Azure AD application token to access Azure Data Explorer. For this flow to succeed, the application must be registered with Azure AD and equipped with credentials needed to perform application authentication (such as an app key issued by Azure AD, or an X.509v2 certificate that has been pre-registered with Azure AD).
 
 1. Update your cluster by using the following code:
 
@@ -61,7 +60,7 @@ The following brief code snippet demonstrates using [Microsoft Authentication Li
     // Define scopes for accessing Azure management plane
     string[] scopes = new string[] { "https://management.core.windows.net/.default" };
 
-    // Acquire aplpication token
+    // Acquire application token
     AuthenticationResult result = authClient.AcquireTokenForClient(scopes).ExecuteAsync().Result;
 
     var credentials = new TokenCredentials(result.AccessToken, result.TokenType);
