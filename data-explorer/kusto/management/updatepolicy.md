@@ -110,9 +110,11 @@ let _extentId = toscalar(
     | top 1 by IngestionTime desc
     | project ExtentId
 );
-let MyFunction = 
+// This scopes the source table to the single recent extent.
+let MySourceTable = 
     MySourceTable
     | where ingestion_time() > ago(10m) and extent_id() == _extentId;
+// This invokes the function in the update policy (that internally references `MySourceTable`).
 MyFunction
 ```
 
