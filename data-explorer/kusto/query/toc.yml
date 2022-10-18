@@ -815,8 +815,10 @@ items:
   - name: Aggregation function types
     href: aggregation-functions.md
   - name: arg_max()
+    displayName: last
     href: arg-max-aggfunction.md
   - name: arg_min()
+    displayName: first
     href: arg-min-aggfunction.md
   - name: avg()
     href: avg-aggfunction.md
