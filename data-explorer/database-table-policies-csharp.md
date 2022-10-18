@@ -25,28 +25,34 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 ## Install C# NuGet
 
 * Install the [Azure Data Explorer (Kusto) NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Install the [Microsoft.Azure.Kusto.Data.NETStandard NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/). (Optional, for changing table policies.)
-* Install the [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet package](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/), for authentication.
-
-> [!IMPORTANT]
-> The [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) NuGet package and Azure AD Authentication Library (ADAL) have been deprecated. No new features have been added since June 30, 2020.   We strongly encourage you to upgrade, see the [migration guide](/azure/active-directory/develop/msal-migration) for more details.
+* Install the [Microsoft.Azure.Kusto.Data NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). (Optional, for changing table policies)
+* Install the [MSAL NuGet package](https://www.nuget.org/packages/Microsoft.Identity.Client/) for authentication with Azure AD.
 
 ## Authentication
-To run the examples in this article, you need an Azure Active Directory (Azure AD) application and service principal that can access resources. You can use the same Azure AD application for authentication from [a test cluster and database](create-cluster-database-csharp.md#authentication). If you want to use a different Azure AD application, see [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) to create a free Azure AD application and add role assignment at the subscription scope. This article also shows how to get the `Directory (tenant) ID`, `Application ID`, and `Client secret`. You might need to add the new Azure AD application as a principal in the database. For more information, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
+To run the examples in this article, you need an Azure Active Directory (Azure AD) application and service principal that can access resources. You can use the same Azure AD application for authentication from [a test cluster and database](create-cluster-database-csharp.md#authentication). If you want to use a different Azure AD application, see [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) to create a free Azure AD application and add role assignment at the subscription scope. This article also shows how to get the `Azure AD Directory (tenant) ID`, `Application ID`, and `Application secret`. You might need to add the new Azure AD application as a principal in the database. For more information, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
+
+The following code snippets use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an Azure AD application token to access Azure Data Explorer and Azure Management plane. For tese flows to succeed, a client application must be registered with Azure AD and equipped with credentials needed to perform application authentication (such as an app key issued by Azure AD, or an X.509v2 certificate that has been pre-registered with Azure AD).
 
 ## Alter database retention policy
 Sets a retention policy with a 10-day soft-delete period.
     
 ```csharp
-var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "PlaceholderClientSecret";//Client Secret
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";    // Azure AD Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";    // Application ID
+var clientSecret = "PlaceholderClientSecret";           // Application secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
-var credential = new ClientCredential(clientId, clientSecret);
-var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
+   
+// Create a confidential authentication client for Azure AD:
+var authClient = ConfidentialClientApplicationBuilder.Create(clientId)
+    .WithAuthority($"https://login.microsoftonline.com/{tenantId}")
+    .WithClientSecret(clientSecret)                     // can be replaced by .WithCertificate to authenticate with an X.509 certificate
+    .Build();
+// Define scopes for accessing Azure management plane
+string[] scopes = new string[] { "https://management.core.windows.net/.default" };
 
-var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
+// Acquire application token
+AuthenticationResult result = authClient.AcquireTokenForClient(scopes).ExecuteAsync().Result;
+var credentials = new TokenCredentials(result.AccessToken, result.TokenType);
 
 var kustoManagementClient = new KustoManagementClient(credentials)
 {
@@ -54,7 +60,7 @@ var kustoManagementClient = new KustoManagementClient(credentials)
 };
 
 var resourceGroupName = "testrg";
-//The cluster and database that are created as part of the prerequisites
+// The cluster and database that are created as part of the prerequisites
 var clusterName = "mykustocluster";
 var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName, databaseName, new DatabaseUpdate(softDeletePeriod: TimeSpan.FromDays(10)));
@@ -64,15 +70,22 @@ await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName
 Sets a cache policy for the database. The previous five days of data will be on the cluster SSD.
 
 ```csharp
-var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "PlaceholderClientSecret";//Client Secret
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";    // Azure AD Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";    // Application ID
+var clientSecret = "PlaceholderClientSecret";           // Application secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
-var credential = new ClientCredential(clientId, clientSecret);
-var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
+   
+// Create a confidential authentication client for Azure AD:
+var authClient = ConfidentialClientApplicationBuilder.Create(clientId)
+    .WithAuthority($"https://login.microsoftonline.com/{tenantId}")
+    .WithClientSecret(clientSecret)                     // can be replaced by .WithCertificate to authenticate with an X.509 certificate
+    .Build();
+// Define scopes for accessing Azure management plane
+string[] scopes = new string[] { "https://management.core.windows.net/.default" };
 
-var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
+// Acquire application token
+AuthenticationResult result = authClient.AcquireTokenForClient(scopes).ExecuteAsync().Result;
+var credentials = new TokenCredentials(result.AccessToken, result.TokenType);
 
 var kustoManagementClient = new KustoManagementClient(credentials)
 {
@@ -80,41 +93,34 @@ var kustoManagementClient = new KustoManagementClient(credentials)
 };
 
 var resourceGroupName = "testrg";
-//The cluster and database that are created as part of the prerequisites
+// The cluster and database that are created as part of the prerequisites
 var clusterName = "mykustocluster";
 var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName, databaseName, new DatabaseUpdate(hotCachePeriod: TimeSpan.FromDays(5)));
 ```
 
 ## Alter table cache policy
-Sets a cache policy for the table. The previous five days of data will be on the cluster SSD.
+Sets a cache policy for the table. This snippet configures the hot cache of the cluster (local SSDs) to hold the most recent 5 days worth of data.
 
 ```csharp
 var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net/";
 var databaseName = "<DatabaseName>";
-var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "PlaceholderClientSecret";//Client Secret
-var tableName = "<TableName>"
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";    // Azure AD Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";    // Application ID
+var clientSecret = "PlaceholderClientSecret";           // Application secret
+var tableName = "<TableName>";
 
-var kustoConnectionStringBuilder =
-    new KustoConnectionStringBuilder(kustoUri)
-    {
-        FederatedSecurity = true,
-        InitialCatalog = databaseName,
-        ApplicationClientId = clientId,
-        ApplicationKey = clientSecret,
-        Authority = tenantId
-    };
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
+    .WithAadApplicationKeyAuthentication(clientId, clientSecret, tenantId);
 
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
 {
-    //dataHotSpan and indexHotSpan should have the same value
     var hotSpan = TimeSpan.FromDays(5);
-    var command1 = CslCommandGenerator.GenerateAlterTableCachingPolicyCommand(tableName: tableName,
-                    dataHotSpan: hotSpan, indexHotSpan: hotSpan);
+    var command = CslCommandGenerator.GenerateAlterTableCachingPolicyCommand(
+                    tableName: tableName,
+                    hotSpan: hotSpan);
 
-    kustoClient.ExecuteControlCommand(command);
+    kustoClient.ExecuteControlCommand(database: databaseName, command: command);
 }
 ```
 
@@ -122,16 +128,26 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 Adds a new Azure AD application as admin principal for the database.
 
 ```csharp
-var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "PlaceholderClientSecret";//Client Secret
-var clientIdToAdd = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";    // Azure AD Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";    // Application ID
+var clientSecret = "PlaceholderClientSecret";           // Application secret
+var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+   
+var clientIdToAdd = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; // Application ID
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
-var credential = new ClientCredential(clientId, clientSecret);
-var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
 
-var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
+// Create a confidential authentication client for Azure AD:
+var authClient = ConfidentialClientApplicationBuilder.Create(clientId)
+    .WithAuthority($"https://login.microsoftonline.com/{tenantId}")
+    .WithClientSecret(clientSecret)                     // can be replaced by .WithCertificate to authenticate with an X.509 certificate
+    .Build();
+// Define scopes for accessing Azure management plane
+string[] scopes = new string[] { "https://management.core.windows.net/.default" };
+
+// Acquire application token
+AuthenticationResult result = authClient.AcquireTokenForClient(scopes).ExecuteAsync().Result;
+var credentials = new TokenCredentials(result.AccessToken, result.TokenType);
 
 var kustoManagementClient = new KustoManagementClient(credentials)
 {
@@ -139,7 +155,7 @@ var kustoManagementClient = new KustoManagementClient(credentials)
 };
 
 var resourceGroupName = "testrg";
-//The cluster and database that are created as part of the prerequisites
+// The cluster and database that are created as part of the prerequisites
 var clusterName = "mykustocluster";
 var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.AddPrincipalsAsync(resourceGroupName, clusterName, databaseName,
