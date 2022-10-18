@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors
 ---
 # search operator
 
-Search text pattern in multiple tables and columns.
+Searches a text pattern in multiple tables and columns.
 
 ::: zone pivot="azuredataexplorer"
 
