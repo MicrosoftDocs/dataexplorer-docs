@@ -37,7 +37,7 @@ This section shows you how to configure customer-managed keys encryption using t
 
 To run the examples in this article, [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You can add role assignment at the subscription scope and get the required `Azure AD Directory (tenant) ID`, `Application ID`, and `Application Secret`.
 
-The following code snippet demonstrates how to use the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an Azure AD application token to access your cluster. For this flow to succeed, the application must be registered with Azure AD and you must have the credentials for application authentication (such as the Azure AD-issued application key or an Azure AD registered X.509v2 certificate).
+The following code snippet demonstrates how to use the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an Azure AD application token to access your cluster. For this flow to succeed, the application must be registered with Azure AD and you must have the credentials for application authentication - Azure AD-issued application key or an Azure AD-registered X.509v2 certificate.
 
 ### Configure cluster
 
