@@ -17,7 +17,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Prerequisites
 
-* Visual Studio 2019. Download and use the *free* [Visual Studio Community 2019](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
+* Visual Studio. Download and use the *free* [Visual Studio Community Edition](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Create [a cluster and database](create-cluster-database-portal.md).
 * [A test table](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
@@ -29,7 +29,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 * Install the [MSAL NuGet package](https://www.nuget.org/packages/Microsoft.Identity.Client/) for authentication with Azure Active Directory (Azure AD).
 
 ## Authentication
-To run the examples in this article, you need an Azure AD application and service principal that can access resources. If required, create an Azure AD application and grant it apporpriate role assignments on the subscription, as documented [here](/azure/active-directory/develop/howto-create-service-principal-portal).
+To run the examples in this article, you need an Azure AD application and service principal that can access resources. If necessary, create an Azure AD application and grant it appropriate role assignments on the subscription, as documented [here](/azure/active-directory/develop/howto-create-service-principal-portal).
 The examples also show you how to get the `Azure AD Directory (tenant) ID`, `Application ID`, and `Application secret`. You may need to add the new Azure AD application as a principal in the database. For more information, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
 
 The following code snippets use the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an Azure Active Directory application token to access the Azure Management plane or your cluster. For these flows to succeed, the application must be registered with Azure AD and you must have the credentials for application authentication, such as an Azure AD-issued application key or an Azure AD-registered X.509v2 certificate.
