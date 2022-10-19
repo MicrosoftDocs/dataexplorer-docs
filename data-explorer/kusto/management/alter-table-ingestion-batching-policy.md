@@ -3,7 +3,7 @@ title: ".alter table ingestion batching policy command - Azure Data Explorer"
 description: "This article describes the .alter table ingestion batching policy command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/19/2022
+ms.date: 09/27/2022
 ---
 # .alter table ingestion batching policy
 
@@ -37,15 +37,29 @@ See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 
 The following command sets a batch ingress data time of 30 seconds, for 500 files, or 1 GB, whichever comes first.
 
-```kusto
-.alter table MyDatabase.MyTable policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:30", "MaximumNumberOfItems": 500, "MaximumRawDataSizeMB": 1024}'
+````kusto
+.alter table MyDatabase.MyTable policy ingestionbatching
 ```
+{
+    "MaximumBatchingTimeSpan" : "00:00:30",
+    "MaximumNumberOfItems" : 500,
+    "MaximumRawDataSizeMB": 1024
+}
+```
+````
 
 The following command sets a batch ingress data time of 1 minute, for 20 files, or 300 MB, whichever comes first.
 
-```kusto
-.alter tables (MyTable1, MyTable2, MyTable3) policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:01:00", "MaximumNumberOfItems": 20, "MaximumRawDataSizeMB": 300}'
+````kusto
+.alter tables (MyTable1, MyTable2, MyTable3) policy ingestionbatching
 ```
+{
+    "MaximumBatchingTimeSpan" : "00:01:00",
+    "MaximumNumberOfItems" : 20,
+    "MaximumRawDataSizeMB": 300
+}
+```
+````
 
 ## Next steps
 

@@ -8,9 +8,10 @@ ms.date: 10/15/2026
 
 # Materialized views limitations and known issues
 
-* A materialized view is created over a source table. It cannot be created:
-  * On top of another materialized view, unless the first materialized view is of type `take_any(*)` aggregation. See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view-preview).
-  * Over [external tables](../../query/schema-entities/externaltables.md).
+* A materialized view can't be created:
+  * On top of another materialized view, unless the first materialized view is of type `take_any(*)` aggregation. See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view).
+  * On [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.  Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader.
+  * On [external tables](../../query/schema-entities/externaltables.md).
 
 * The source table of a materialized view:
   * Must be a table into which data is directly ingested, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [from query commands](../data-ingestion/ingest-from-query.md).
@@ -20,9 +21,6 @@ ms.date: 10/15/2026
       * `Cannot move extents to 'TableName' since materialized view 'ViewName' will not process these extents (can lead to data loss in the materialized view)`.
     * Must have [IngestionTime policy](../ingestiontimepolicy.md) enabled (it is enabled by default).
     * Can't be a table with [restricted view access policy](../restrictedviewaccesspolicy.md).
-
-* Materialized views cannot be created in [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.
-  * Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader.
 
 * A materialized view only processes new records ingested into the source table. Records which are removed from the source table, either by running [data purge](../../concepts/data-purge.md)/[soft delete](../../concepts/data-soft-delete.md)/[drop extents](../drop-extents.md), or due to [retention policy](../retentionpolicy.md) or any other reason, have no impact on the materialized view. The materialized view has its own [retention policy](materialized-view-policies.md#retention-and-caching-policy), which is independent of the retention policy of the source table. The materialized view might include records which are not present in the source table.
 

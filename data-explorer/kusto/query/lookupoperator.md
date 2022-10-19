@@ -7,8 +7,7 @@ ms.date: 03/12/2020
 ---
 # lookup operator
 
-The `lookup` operator extends the columns of a fact table with values
-looked-up in a dimension table.
+Extends the columns of a fact table with values looked-up in a dimension table.
 
 ```kusto
 FactTable | lookup kind=leftouter (DimensionTable) on CommonColumn, $left.Col1 == $right.Col2

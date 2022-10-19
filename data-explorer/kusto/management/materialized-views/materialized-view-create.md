@@ -99,9 +99,9 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 > * Using `autoUpdateSchema` may lead to irreversible data loss when columns in the source table are dropped.
 > Monitor automatic disable of materialized views using the [MaterializedViewResult metric](materialized-view-overview.md#materializedviewresult-metric).  After fixing incompatibility issues, re-enable the view with the [enable materialized view](materialized-view-enable-disable.md) command.
 
-### Create materialized view over materialized view (preview)
+### Create materialized view over materialized view
 
-A materialized view over another materialized view can only be created when the source materialized view is of kind `take_any(*)` aggregation (deduplication). See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view-preview) and [examples](#examples) below.
+A materialized view over another materialized view can only be created when the source materialized view is of kind `take_any(*)` aggregation (deduplication). See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view) and [examples](#examples) below.
 
 **Syntax":**
 `.create` [`async`] [`ifnotexists`] `materialized-view` <br>
