@@ -1,6 +1,6 @@
 ---
 title: 'Create policies by using the Azure Data Explorer C# SDK'
-description: In this article, you will learn how to create policies by using C#.
+description: This article describes how to programmatically create Azure Data Explorer policies using C#.
 ms.reviewer: lugoldbe
 ms.topic: how-to
 ms.date: 09/24/2019
@@ -31,7 +31,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 ## Authentication
 To run the examples in this article, you need an Azure Active Directory (Azure AD) application and service principal that can access resources. You can use the same Azure AD application for authentication from [a test cluster and database](create-cluster-database-csharp.md#authentication). If you want to use a different Azure AD application, see [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) to create a free Azure AD application and add role assignment at the subscription scope. This article also shows how to get the `Azure AD Directory (tenant) ID`, `Application ID`, and `Application secret`. You might need to add the new Azure AD application as a principal in the database. For more information, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
 
-The following code snippets use the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an Azure Active Directory application token to access Azure Management plane or your cluster. For these flows to succeed, the application must be registered with Azure AD and you must have the credentials for application authentication (such as the Azure AD-issued application key or an Azure AD registered X.509v2 certificate).
+The following code snippets use the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an Azure Active Directory application token to access Azure Management plane or your cluster. For these flows to succeed, the application must be registered with Azure AD and you must have the credentials for application authentication - Azure AD-issued application key or an Azure AD-registered X.509v2 certificate.
 
 ## Alter database retention policy
 Sets a retention policy with a 10-day soft-delete period.
@@ -100,7 +100,7 @@ await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName
 ```
 
 ## Alter table cache policy
-Sets a cache policy for the table. This snippet configures the hot cache of the cluster (local SSDs) to hold the most recent 5 days worth of data.
+Sets a cache policy for the table. This snippet configures the hot cache of the cluster (local SSDs) to hold the most recent five days worth of data.
 
 ```csharp
 var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net/";
