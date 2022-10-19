@@ -29,6 +29,8 @@ print s = dynamic([-1.5,1,2.5])
 | extend s_ceiling = series_ceiling(s)
 ```
 
+**Output**
+
 |s|s_ceiling|
 |---|---|
 |[-1.5,1,2.5]|[-1.0,1.0,3.0]|
