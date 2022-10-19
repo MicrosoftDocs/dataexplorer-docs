@@ -36,7 +36,7 @@ The following examples demonstrate how to use this function.
 
 **Example 1**
 
-Find the storm event at the minimum latitude in each state.
+Find the minimum latitude of a storm event in each state.
 
 [**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlVILEqPz83M03BKTc/M80ks0VGAsPKTE0sy8/M0FZIqFYJLEktSASw9sGhCAAAA)
 
