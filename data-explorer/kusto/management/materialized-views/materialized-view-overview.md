@@ -13,8 +13,8 @@ Materialized views always return an up-to-date result of the aggregation query (
 
 > [!NOTE]
 >
-> * Materialized views have some [limitations](materialized-views-limitations.md), and don't work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
 > * Review the materialized views [use cases](#materialized-views-use-cases) to decide whether materialized views are suitable for you.
+> * Materialized views have some [limitations](materialized-views-limitations.md). Review the [performance considerations](#performance-considerations) before working with the feature.
 > * Prefer using [update policies](../updatepolicy.md) where appropriate - see [materialized views or update policies?](#materialized-views-or-update-policies) for more details.
 
 Use the following commands to manage materialized views:

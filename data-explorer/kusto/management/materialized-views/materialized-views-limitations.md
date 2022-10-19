@@ -3,15 +3,16 @@ title: Materialized views limitations - Azure Data Explorer
 description: This article describes materialized views limitations.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 10/15/2026
+ms.date: 10/15/2022
 ---
 
 # Materialized views limitations and known issues
 
-* A materialized view can't be created:
-  * On top of another materialized view, unless the first materialized view is of type `take_any(*)` aggregation. See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view).
-  * On [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.  Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader.
-  * On [external tables](../../query/schema-entities/externaltables.md).
+* A materialized view can't be created on top of another materialized view, unless the first materialized view is of type `take_any(*)` aggregation. See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view).
+
+* Materialized views cannot be created in [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.  Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader.
+  
+* Materialized views cannot be defined over [external tables](../../query/schema-entities/externaltables.md).
 
 * The source table of a materialized view:
   * Must be a table into which data is directly ingested, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [from query commands](../data-ingestion/ingest-from-query.md).
