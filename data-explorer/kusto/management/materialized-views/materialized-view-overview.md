@@ -12,7 +12,7 @@ Materialized views expose an *aggregation* query over a source table, or over [a
 Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-views-queries) is more performant than running the aggregation directly over the source table.
 
 > [!NOTE]
-> * Materialized views have some [limitations](materialized-view-create.md#materialized-views-limitations-and-known-issues), and don't work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
+> * Materialized views have some [limitations](materialized-views-limitations.md), and don't work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
 >
 > * Materialized views are only recommended for specific [use cases](#materialized-views-use-cases). Other use cases, that do not require aggregations, can be achieved using [update policies](../updatepolicy.md).
 
