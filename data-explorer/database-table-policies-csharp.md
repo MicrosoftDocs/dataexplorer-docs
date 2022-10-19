@@ -26,12 +26,12 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 * Install the [Azure Data Explorer (Kusto) NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Install the [Microsoft.Azure.Kusto.Data NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). (Optional, for changing table policies)
-* Install the [MSAL NuGet package](https://www.nuget.org/packages/Microsoft.Identity.Client/) for authentication with Azure AD.
+* Install the [MSAL NuGet package](https://www.nuget.org/packages/Microsoft.Identity.Client/) for authentication with Azure Active Directory.
 
 ## Authentication
 To run the examples in this article, you need an Azure Active Directory (Azure AD) application and service principal that can access resources. You can use the same Azure AD application for authentication from [a test cluster and database](create-cluster-database-csharp.md#authentication). If you want to use a different Azure AD application, see [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) to create a free Azure AD application and add role assignment at the subscription scope. This article also shows how to get the `Azure AD Directory (tenant) ID`, `Application ID`, and `Application secret`. You might need to add the new Azure AD application as a principal in the database. For more information, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
 
-The following code snippets use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an Azure AD application token to access Azure Data Explorer and Azure Management plane. For tese flows to succeed, a client application must be registered with Azure AD and equipped with credentials needed to perform application authentication (such as an app key issued by Azure AD, or an X.509v2 certificate that has been pre-registered with Azure AD).
+The following code snippets use the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an Azure Active Directory application token to access Azure Management plane or your cluster. For these flows to succeed, the application must be registered with Azure AD and you must have the credentials for application authentication (such as the Azure AD-issued application key or an Azure AD registered X.509v2 certificate).
 
 ## Alter database retention policy
 Sets a retention policy with a 10-day soft-delete period.
