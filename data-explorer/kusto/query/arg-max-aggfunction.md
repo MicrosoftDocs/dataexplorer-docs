@@ -32,7 +32,7 @@ The following examples demonstrate how to use this function.
 
 **Example 1**
 
-Find the northern most location of a storm event in each state.
+Find the storm event at the maximum latitude in each state.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlVILEqPz02s0HBKTc/M80ks0VGAsPKTE0sy8/M0FZIqFYJLEktSATqyPZtCAAAA)**\]**
 
