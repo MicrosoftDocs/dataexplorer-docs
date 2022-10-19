@@ -1004,7 +1004,7 @@ items:
     href: series-atanfunction.md
   - name: series_ceiling()
     displayName: element-wise, elementwise
-    href: series-ceilingfunction.md
+    href: series-ceiling-function.md
   - name: series_cos()
     displayName: element-wise, elementwise
     href: series-cosfunction.md  
@@ -1061,7 +1061,7 @@ items:
     href: series-fit-poly-function.md
   - name: series_floor()
     displayName: element-wise, elementwise
-    href: series-floorfunction.md
+    href: series-floor-function.md
   - name: series_greater()
     displayName: element-wise, elementwise
     href: series-greaterfunction.md
@@ -1082,7 +1082,7 @@ items:
     href: series-less-equalsfunction.md
   - name: series_log()
     displayName: element-wise, elementwise
-    href: series-logfunction.md
+    href: series-log-function.md
   - name: series_multiply()
     displayName: element-wise, elementwise
     href: series-multiplyfunction.md

@@ -3,7 +3,7 @@ title: series_log() - Azure Data Explorer
 description: This article describes series_log() in Azure Data Explorer.
 ms.reviewer: afridman
 ms.topic: reference
-ms.date: 12/10/2022
+ms.date: 11/07/2022
 ---
 # series_log()
 
