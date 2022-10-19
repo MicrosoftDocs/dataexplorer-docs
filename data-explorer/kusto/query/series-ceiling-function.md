@@ -19,7 +19,7 @@ Calculates the element-wise ceiling function of the numeric series input.
 
 ## Returns
 
-Dynamic array of calculated ceiling function. Any non-numeric element yields a `null` element value.
+Dynamic array of the calculated ceiling function. Any non-numeric element yields a `null` element value.
 
 ## Example
 
