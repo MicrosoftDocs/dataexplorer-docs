@@ -19,7 +19,7 @@ Calculates the element-wise floor function of the numeric series input.
 
 ## Returns
 
-Dynamic array of calculated floor function. Any non-numeric element yields a `null` element value.
+Dynamic array of the calculated floor function. Any non-numeric element yields a `null` element value.
 
 ## Example
 
