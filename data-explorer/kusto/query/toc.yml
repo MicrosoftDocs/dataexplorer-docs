@@ -1004,7 +1004,7 @@ items:
     href: series-atanfunction.md
   - name: series_ceiling()
     displayName: element-wise, elementwise
-    href: series-ceilfunction.md
+    href: series-ceilingfunction.md
   - name: series_cos()
     displayName: element-wise, elementwise
     href: series-cosfunction.md  
