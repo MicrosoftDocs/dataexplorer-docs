@@ -19,7 +19,7 @@ Calculates the element-wise natural logarithm function (base-e) of the numeric s
 
 ## Returns
 
-Dynamic array of calculated natural logarithm function. Any non-numeric element yields a `null` element value.
+Dynamic array of the calculated natural logarithm function. Any non-numeric element yields a `null` element value.
 
 ## Example
 
