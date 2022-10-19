@@ -12,9 +12,10 @@ Materialized views expose an *aggregation* query over a source table, or over [a
 Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-views-queries) is more performant than running the aggregation directly over the source table.
 
 > [!NOTE]
-> * Materialized views have some [limitations](materialized-views-limitations.md), and don't work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
 >
-> * Materialized views are only recommended for specific [use cases](#materialized-views-use-cases). Other use cases, that do not require aggregations, can be achieved using [update policies](../updatepolicy.md).
+> * Materialized views have some [limitations](materialized-views-limitations.md), and don't work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
+> * Review the materialized views [use cases](#materialized-views-use-cases) to decide whether materialized views are suitable for you.
+> * Prefer using [update policies](../updatepolicy.md) where appropriate - see [materialized views or update policies?](#materialized-views-or-update-policies) for more details.
 
 Use the following commands to manage materialized views:
 
@@ -57,6 +58,20 @@ The following are common scenarios that can be addressed by using a materialized
     ```
 
 For examples of all use cases, see [materialized view create command](materialized-view-create.md#examples).
+
+### Materialized views or update policies?
+
+Materialized views and update policies work differently and serve different use cases. Use the following guidelines to identify which one you should use:
+
+* Materialized views are suitable for *aggregations*, while update policies are not. Update policies run separately for each ingestion batch, and therefore can only perform aggregations within the same ingestion batch. If you require an aggregation query, always use materialized views.
+
+* Update policies are useful for data transformations, enrichments with dimension tables (usually using [lookup operator](../../query/lookupoperator.md)) and other data manipulations that can run in the scope of a single ingestion.
+
+* Update policies run during ingestion time. Data is not available for queries, neither in source table nor in target table(s), until all update policies have run on it. Materialized views, on the other hand, are not part of the ingestion pipeline. The [materialization process](#how-materialized-views-work) runs periodically in the background, post ingestion. Records in source table are available for queries before they are materialized.
+
+* Neither update policies nor materialized views are suitable for [joins](../../query/joinoperator.md). Both *can* include joins, but they are limited to specific use cases. Namely, only when matching data from both sides of the join is available when the update policy / materialization process runs. If the matching entities are expected to be ingested to the join left and right tables during the same time, there is a chance data will be missed when the update policy / materialization runs. See more about `dimension tables` in  [materialized view query argument](materialized-view-create.md#query-argument) and in [fact and dimension tables](../../concepts/fact-and-dimension-tables.md).
+  
+  * If you do need to *materialize* joins, which are not suitable for update policies and materialized views, you can orchestrate your own process for doing so, using [orchestration tools](../../../tools-integrations-overview.md#orchestration) and [ingest from query commands](../data-ingestion/ingest-from-query.md).
 
 ## How materialized views work
 
@@ -164,7 +179,7 @@ The main contributors that can impact a materialized view health are:
 
 ## Materialized view over materialized view
 
-A materialized view can be created over another materialized view if the source materialized view is a deduplication view. Specifically, the aggregation of the source materialized view must be `take_any(*)` in order to deduplicate source records. The second materialized view can use any [supported aggregation functions](materialized-view-create.md#supported-aggregation-functions). For specific information on how to create a materialized view over a materialized view, see [`.create materialized-view` command](materialized-view-create.md#create-materialized-view-over-materialized-view).
+A materialized view can be created over another materialized view if the source materialized view is a deduplication view. Specifically, the aggregation of the source materialized view must be `take_any(*)` in order to deduplicate source records. The second materialized view can use any [supported aggregation functions](materialized-view-create.md#supported-aggregation-functions). For specific information on how to create a materialized view over a materialized view, see [`.create materialized-view` command](materialized-view-create.md#create-materialized-view-over-materialized-view-preview).
 
 > [!TIP]
 > When querying a materialized view that is defined over another materialized view, we recommend querying the materialized part only using the `materialized_view()` function. Querying the entire view will not be performant when both views aren't fully materialized. For more information, see [materialized views queries](#materialized-views-queries).
