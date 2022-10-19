@@ -29,6 +29,8 @@ print s = dynamic([-1.5,1,2.5])
 | extend s_floor = series_floor(s)
 ```
 
+**Output**
+
 |s|s_floor|
 |---|---|
 |[-1.5,1,2.5]|[-2.0,1.0,2.0]|
