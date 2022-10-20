@@ -400,7 +400,7 @@ To verify that the database was successfully attached, find your attached databa
 1. Browse to the follower cluster and select **Databases**.
 1. In the database list, search for new read-only databases.
 
-    :::image type="content" source="media/follower/read-only-follower-database.png" alt-text="Screenshot of read-only follower databases in portal.":::
+    :::image type="content" source="media/follower/read-only-follower-database.png" lightbox="media/follower/read-only-follower-database.png" alt-text="Screenshot of read-only follower databases in portal.":::
 
     You can also view this list in the database overview page:
 
