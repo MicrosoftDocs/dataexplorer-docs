@@ -15,8 +15,8 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|[Kusto.Data exceptions](/azure/data-explorer/kusto/api/netfx/kusto-data-client-errors.md)|New article. Describes Kusto.Data exceptions.|
-|[Evaluate query performance in your cluster](/azure/data-explorer/kusto/api/load-test-cluster.md)|New article. Describes how to load test a cluster's query performance.|
+|[Kusto.Data exceptions](kusto/api/netfx/kusto-data-client-errors.md)|New article. Describes Kusto.Data exceptions.|
+|[Evaluate query performance in your cluster](kusto/api/load-test-cluster.md)|New article. Describes how to load test a cluster's query performance.|
 
 **General**
 
