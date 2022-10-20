@@ -282,7 +282,7 @@ Related functions:
 | Asia/Gaza                        |
 | Asia/Harbin                      |
 | Asia/Hebron                      |
-| Asia/Ho\_Chi\_Minh               |
+| Asia/Ho\_Chi\_Minh\_City         |
 | Asia/Hong\_Kong                  |
 | Asia/Hovd                        |
 | Asia/Irkutsk                     |
@@ -321,7 +321,6 @@ Related functions:
 | Asia/Qyzylorda                   |
 | Asia/Rangoon                     |
 | Asia/Riyadh                      |
-| Asia/Saigon                      |
 | Asia/Sakhalin                    |
 | Asia/Samarkand                   |
 | Asia/Seoul                       |
