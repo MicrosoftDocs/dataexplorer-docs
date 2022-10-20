@@ -69,6 +69,10 @@ When attaching the database all tables, external tables and materialized views a
     materializedViewsToExclude=["*"]
     ```
 
+### Database name override
+
+You can optionally make the database name in the follower cluster different from the leader cluster. For example, you may want to attach the same database name from multiple leader clusters to a follower cluster. To specify a different database name, configure the '*DatabaseNameOverride*' or '*DatabaseNamePrefix*' property.
+
 ## [C#](#tab/csharp)
 
 ### Attach a database using C\#
@@ -396,7 +400,7 @@ To verify that the database was successfully attached, find your attached databa
 1. Browse to the follower cluster and select **Databases**.
 1. In the database list, search for new read-only databases.
 
-    :::image type="content" source="media/follower/read-only-follower-database.png" alt-text="Screenshot of read-only follower databases in portal.":::
+    :::image type="content" source="media/follower/read-only-follower-database.png" lightbox="media/follower/read-only-follower-database.png" alt-text="Screenshot of read-only follower databases in portal.":::
 
     You can also view this list in the database overview page:
 
