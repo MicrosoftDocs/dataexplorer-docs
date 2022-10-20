@@ -69,10 +69,9 @@ When attaching the database all tables, external tables and materialized views a
     materializedViewsToExclude=["*"]
     ```
 
-### Database Name Override
+### Database name override
 
-If you would like to see the database name in the follower cluster as a different name, you can use the '*DatabaseNameOverride*' Or '*DatabaseNamePrefix*'. This is useful when you want to attach the same database name from multiple leader clusters to a follower cluster.
-
+You can optionally make the database name in the follower cluster different from the leader cluster. For example, you may want to attach the same database name from multiple leader clusters to a follower cluster. To specify a different database name, configure the '*DatabaseNameOverride*' or '*DatabaseNamePrefix*' property.
 
 ## [C#](#tab/csharp)
 
