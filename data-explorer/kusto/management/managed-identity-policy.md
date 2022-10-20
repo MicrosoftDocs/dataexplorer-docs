@@ -11,6 +11,9 @@ ms.date: 11/03/2021
 
 This policy can be enabled at the cluster and database levels. The policy is additive, meaning that for every operation that involves a managed identity, Azure Data Explorer will allow the operation if the usage is allowed at either the cluster or database level.
 
+> [!NOTE]
+> creating and modifying the managed identity policy requires [all databases admin user permission](../management/access-control/role-based-authorization.md).
+
 ## The ManagedIdentity policy object
 
 A cluster or database may have zero or more ManagedIdentity policy objects associated with it.
