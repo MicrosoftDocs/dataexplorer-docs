@@ -76,10 +76,10 @@ Replace `<cluster>` with the hostname of the cluster you want to load into the c
    }
    ```
 
-1. The provided token should be a [JWT token](https://tools.ietf.org/html/rfc7519) obtained from the [[Azure AD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
+1. The provided token should be a [JWT token](https://tools.ietf.org/html/rfc7519) obtained from the [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
 When generating the token:
      * If the scope isn't query: use the scope from the message above.
-     * If the scope is query: use the scope of your service, as described in the [[Azure AD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
+     * If the scope is query: use the scope of your service, as described in the [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
 
   For example, you can calculate the scope as follows:
   
@@ -106,7 +106,7 @@ To embed a dashboard, you'll need to make a few changes to the above steps
 
 1. Establish a trust relationship between your application and the Azure Data Explorer service.
 
-    In addition to the steps in [[AAD authentication endpoint]](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication), you also need to establish trust relationship between your application and the dashboards service:       
+    In addition to the steps in [AAD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication), you also need to establish trust relationship between your application and the dashboards service:       
  
     1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're
        signed-in to the correct tenant. Look at the top right corner to verify the identity used to sign into the portal.
