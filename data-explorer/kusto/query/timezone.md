@@ -266,7 +266,7 @@ Related functions:
 | Asia/Beirut                      |
 | Asia/Bishkek                     |
 | Asia/Brunei                      |
-| Asia/Calcutta                    |
+| Asia/Kolkata                     |
 | Asia/Chita                       |
 | Asia/Choibalsan                  |
 | Asia/Chongqing                   |
