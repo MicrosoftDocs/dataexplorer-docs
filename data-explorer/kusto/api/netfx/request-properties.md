@@ -179,7 +179,7 @@ public static System.Data.IDataReader QueryKusto(
 
 ## ClientRequestProperties options
 
-<!-- The following text can be reproduced by running: Kusto.Cli.exe -focus -execute:"#crp -doc" -->
+<!-- The following text can be re-produced by running: Kusto.Cli.exe -focus -execute:"#crp -doc" -->
 
 * `client_max_redirect_count` (*OptionClientMaxRedirectCount*): If set and positive, indicates the maximum number of HTTP redirects that the client will process. [Long]
 * `deferpartialqueryfailures` (*OptionDeferPartialQueryFailures*): If true, disables reporting partial query failures as part of the result set. [Boolean]
@@ -227,7 +227,8 @@ in the query hierarchy for each subgroup of nodes; the size of the subgroup is s
 * `request_block_row_level_security` (*OptionRequestBlockRowLevelSecurity*): If specified, blocks access to tables for which row_level_security policy is enabled [Boolean]
 * `request_callout_disabled` (*OptionRequestCalloutDisabled*): If specified, indicates that the request can't call-out to a user-provided service. [Boolean]
 * `request_description` (*OptionRequestDescription*): Arbitrary text that the author of the request wants to include as the request description. [String]
-* `request_external_table_disabled` (*OptionRequestExternalTableDisabled*):  If specified, indicates that the request can't invoke code in the ExternalTable. [Boolean]
+* `request_external_data_disabled` (*OptionRequestExternalDataDisabled*): If specified, indicates that the request can't access external data (using externaldata operator) or external tables. [Boolean]
+* `request_external_table_disabled` (*OptionRequestExternalTableDisabled*): If specified, indicates that the request can't access external tables. [Boolean]
 * `request_impersonation_disabled` (*OptionDoNotImpersonate*): If specified, indicates that the service should not impersonate the caller's identity. [Boolean]
 * `request_readonly` (*OptionRequestReadOnly*): If specified, indicates that the request can't write anything. [Boolean]
 * `request_remote_entities_disabled` (*OptionRequestRemoteEntitiesDisabled*): If specified, indicates that the request can't access remote databases and clusters. [Boolean]

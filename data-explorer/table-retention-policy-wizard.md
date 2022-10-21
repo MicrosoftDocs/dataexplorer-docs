@@ -3,7 +3,7 @@ title: Change the retention policy for a table in Azure Data Explorer using the 
 description: In this article, you learn how to change a table's retention policy using the retention policy wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 07/13/2022
+ms.date: 09/14/2022
 ---
 # Create a table's retention and cache policies with the table retention policy wizard
 
@@ -15,7 +15,7 @@ In this article, you can define and assign a retention policy and a cache policy
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Define and assign a table retention policy
@@ -60,7 +60,7 @@ The **Table retention policy** window opens with the **Policy update** tab selec
 
 In the **Summary** tab, all steps will be marked with green check marks when the update finishes successfully. The tiles below these steps give you options to explore your data with **Quick queries**, or undo changes made using **Tools**.
 
-:::image type="content" source="media/one-click-table-policies/one-click-table-retention-policy-finished.png" alt-text="Screenshot of final screen in the update table retention policy wizard for Azure Data Explorer with the table retention policy wizard.":::
+:::image type="content" source="media/one-click-table-policies/one-click-table-retention-policy-finished.png" alt-text="Screenshot of final screen in the update table retention policy wizard for Azure Data Explorer.":::
 
 ## Next steps
 

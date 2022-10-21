@@ -3,16 +3,16 @@ title: Ingest JSON data from a local file to an existing table in Azure Data Exp
 description: Ingesting (loading) data into an existing Azure Data Explorer table simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 09/04/2022
+ms.date: 09/14/2022
 ---
 # Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer
 
-[The ingestion wizard](ingest-data-one-click.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.
+[The ingestion wizard](./ingest-data-wizard.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.
 
 This document describes using the ingestion wizard in a specific use case to ingest **JSON** data from a **local file** into an **existing table**. Use the same process with slight adaptations to cover a variety of different use cases.
 
-For an overview of the ingestion wizard and a list of prerequisites, see [Ingest data into Azure Data Explorer using the ingestion wizard](ingest-data-one-click.md).
-For different types or sources of data, see [Ingest data from a container/ADLS into Azure Data Explorer](one-click-ingestion-new-table.md).
+For an overview of the ingestion wizard and a list of prerequisites, see [Ingest data into Azure Data Explorer using the ingestion wizard](./ingest-data-wizard.md).
+For different types or sources of data, see [Ingest data from a container/ADLS into Azure Data Explorer](./ingestion-wizard-new-table.md).
 
 > [!NOTE]
 > To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
@@ -23,11 +23,11 @@ For different types or sources of data, see [Ingest data from a container/ADLS i
 
 1. From the **Quick actions** section, select **Ingest data**. Alternatively, from the **All actions** section, select **Ingest data** and then **Ingest**.
 
-   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI to select the ingestion wizard for a table.":::
+   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI to select the ingestion wizard for a table." lightbox="media/ingestion-wizard-existing-table/ingest-new-data.png":::
 
 ## Select an ingestion type
 
-1. In the **Ingest new data** window, the **Destination** tab is selected.
+1. In the **Ingest data** window, the **Destination** tab is selected.
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus.
 
@@ -53,12 +53,14 @@ The **Schema** tab opens.
 
 * **Compression type** will be selected automatically by the source file name. In this case, the compression type is **JSON**
 
+* If you select **Ignore data format errors**, the data will be ingested in JSON format. If you leave this check box unselected, the data will be ingested in multijson format.
+
 * When you select  **JSON**, you must also select **Nested levels**, from 1 to 100. The levels determine the table column data division.
 
     :::image type="content" source="media/ingestion-wizard-existing-table/json-levels.png" alt-text="Screenshot completing ingestion information for ingesting a JSON file.":::
 
     > [!TIP]
-    > If you want to use **CSV** files, see [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](one-click-ingestion-new-table.md#edit-the-schema)
+    > If you want to use **CSV** files, see [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](./ingestion-wizard-new-table.md#edit-the-schema)
 
 * For tabular formats, you can select **Keep current table schema**.
 Tabular data doesn't necessarily include the column names that are used to map source data to the existing columns. When this option is checked, mapping is done by-order, and the table schema will remain the same. If this option is unchecked, new columns will be created for incoming data, regardless of data structure.
@@ -99,7 +101,7 @@ To add columns from JSON levels that are different than the main **Nested levels
 
 ## Start ingestion
 
-Select **Next: Summary** to begin data ingestion.
+Select **Next: Start ingestion** to begin data ingestion.
 
 :::image type="content" source="media/ingestion-wizard-existing-table/start-ingestion.png" alt-text="Screenshot of ingestion wizard fields completed to start ingestion.":::
 
@@ -110,7 +112,7 @@ In the **Data ingestion completed** window, all three steps will be marked with 
 :::image type="content" source="media/ingestion-wizard-existing-table/one-click-data-ingestion-complete.png" alt-text="Screenshot of ingestion wizard summary when ingestion is completed.":::
 
 > [!IMPORTANT]
-> To set up continuous ingestion from a container, see [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](one-click-ingestion-new-table.md#create-continuous-ingestion)
+> To set up continuous ingestion from a container, see [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](./ingestion-wizard-new-table.md#create-continuous-ingestion)
 
 [!INCLUDE [data-explorer-ingestion-wizard-query-data](includes/data-explorer-ingestion-wizard-query-data.md)]
 

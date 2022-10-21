@@ -3,7 +3,7 @@ title: Use the sample app generator to ingest and query data in Azure Data Explo
 description: Overview of using the sample app generator to create the code to ingest and query your data in your preferred programming language.
 ms.reviewer: talzamir
 ms.topic: how-to
-ms.date: 09/04/2022
+ms.date: 09/05/2022
 ---
 
 # Use the sample app generator wizard to create code to ingest and query your data
@@ -31,9 +31,9 @@ The sample app generator wizard guides you through the ingestion process.
 
     :::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-welcome.png" alt-text="Screenshot showing Sample app generator card from welcome to Azure Data Explorer.":::
 
-  * Select **Data** in the left pane. Within the **Data Management** page, select **SDKs & Connectors** tab. Within SDKs sub-tab, select an SDK.
+  * Select **Data** in the left pane. Within the **Data Management** page, select **SDKs** tab. Within SDKs sub-tab, select an SDK.
 
-    :::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-sdks.png" alt-text="Screenshot showing Sample app generator from SDKs & connectors tab.":::
+    :::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-sdks.png" alt-text="Screenshot showing Sample app generator from SDKs tab.":::
 
 ## Sample app generator wizard
 
@@ -41,23 +41,23 @@ The sample app generator wizard guides you through the ingestion process.
 
 On the **Destination** tab, specify the destination cluster, database, and table and then select the programming language for your app.
 
-:::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-destination-tab.png" alt-text="Sample app generator destination tab.":::
+:::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-destination-tab.png" alt-text="Screenshot of Azure Data Explorer web UI showing the Sample app generator destination tab.":::
 
 > [!NOTE]
 > This section describes the wizard in general. The options you select depend on what data format you are ingesting, what kind of data source you are ingesting from, and whether you are ingesting into a new or existing table.
 >
 > For sample scenarios, see:
 >
-> * Ingest into [a new table from a Blob storage in CSV format](one-click-ingestion-new-table.md)
-> * Ingest into an [existing table from a local file in JSON format](one-click-ingestion-existing-table.md)
+> * Ingest into [a new table from Azure Blob Storage in CSV format](./ingestion-wizard-new-table.md)
+> * Ingest into an [existing table from a local file in JSON format](./ingestion-wizard-existing-table.md)
 
 The wizard guides you through the following options:
 
-* Ingest into an [existing table](one-click-ingestion-existing-table.md)
-* Ingest into [a new table](one-click-ingestion-new-table.md)
+* Ingest into an [existing table](./ingestion-wizard-existing-table.md)
+* Ingest into [a new table](./ingestion-wizard-new-table.md)
 * Ingest data from:
-  * Blob storage
-  * [A local file](one-click-ingestion-existing-table.md)
+  * Blob Storage
+  * [A local file](./ingestion-wizard-existing-table.md)
 
 ### Schema mapping
 
@@ -80,7 +80,7 @@ In the **Editor** window of the **Schema** tab, you can adjust data table column
 [!INCLUDE [data-explorer-ingestion-wizard-column-table](includes/data-explorer-ingestion-wizard-column-table.md)]
 
 >[!NOTE]
-> At any time, you can open the [command editor](one-click-ingestion-new-table.md#command-editor) above the **Editor** pane. In the command editor, you can view and copy the automatic commands generated from your inputs.
+> At any time, you can open the [command editor](./ingestion-wizard-new-table.md#command-editor) above the **Editor** pane. In the command editor, you can view and copy the automatic commands generated from your inputs.
 
 #### Mapping transformations
 
@@ -101,7 +101,7 @@ Once you have completed schema mapping and column manipulations, the sample app 
 
 ### Initial data exploration
 
-After code generation, the sample app project will be available for download as a ZIP file. Detailed instructions for running the project with the selected SDK will be shown both on the summary tab and inside the sample project file. In addition, the wizard gives you options to use **[Quick commands](one-click-ingestion-existing-table.md#explore-quick-queries-and-tools)** for initial exploration of your data.
+After code generation, the sample app project will be available for download as a ZIP file. Detailed instructions for running the project with the selected SDK will be shown both on the summary tab and inside the sample project file. In addition, the wizard gives you options to use **[Quick commands](./ingestion-wizard-existing-table.md#explore-quick-queries-and-tools)** for initial exploration of your data.
 
 >[!NOTE]
 > You may need to run the downloaded app for the Quick commands to work.

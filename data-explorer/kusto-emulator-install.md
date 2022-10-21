@@ -76,7 +76,7 @@ The following steps are for using PowerShell to start the emulator using the [Ku
 1. Run the following command to verify that Kusto emulator is running. The command runs the `.show cluster` query against the management API and it should return a *StatusCode* with value *200*.
 
     ```powershell
-    curl -Method post -ContentType 'application/json' -Body '{"csl":".show cluster"}' http://localhost:8080/v1/rest/mgmt
+    Invoke-WebRequest -Method post -ContentType 'application/json' -Body '{"csl":".show cluster"}' http://localhost:8080/v1/rest/mgmt
     ```
 
     The command should return something like the following:

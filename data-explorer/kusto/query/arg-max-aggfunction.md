@@ -1,9 +1,9 @@
 ---
 title: arg_max() (aggregation function) - Azure Data Explorer
-description: This article describes arg_max() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the arg_max() aggregation function to find a row in a group that maximizes the input expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/05/2022
+ms.date: 09/20/2022
 ---
 # arg_max() (aggregation function)
 
@@ -32,7 +32,7 @@ The following examples demonstrate how to use this function.
 
 **Example 1**
 
-Find the northern most location of a storm event in each state.
+Find the maximum latitude of a storm event in each state.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlVILEqPz02s0HBKTc/M80ks0VGAsPKTE0sy8/M0FZIqFYJLEktSATqyPZtCAAAA)**\]**
 

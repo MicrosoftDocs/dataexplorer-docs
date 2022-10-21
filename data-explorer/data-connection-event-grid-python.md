@@ -9,7 +9,7 @@ ms.date: 07/31/2022
 # Create an Event Grid data connection for Azure Data Explorer by using Python
 
 > [!div class="op_single_selector"]
-> * [Ingestion wizard](one-click-ingestion-new-table.md)
+> * [Ingestion wizard](./ingestion-wizard-new-table.md)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
@@ -76,7 +76,7 @@ data_format = "csv"
 database_routing = "Multi"
 blob_storage_event_type = "Microsoft.Storage.BlobCreated"
 
-#Returns an instance of LROPoller, check https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, check https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.data_connections.begin_create_or_update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name, data_connection_name=data_connection_name,
                                             parameters=EventGridDataConnection(storage_account_resource_id=storage_account_resource_id, event_hub_resource_id=event_hub_resource_id, 
                                                                                 consumer_group=consumer_group, table_name=table_name, location=location, mapping_rule_name=mapping_rule_name, data_format=data_format, database_routing=database_routing,
