@@ -15,7 +15,7 @@ The function `pairwise_dist_fl()` calculates the multivariate distance between d
 - All numerical fields are considered numerical variables. They're normalized by transforming to z-scores and the distance is calculated as the absolute value of the difference.
 The total multivariate distance between data points is calculated as the average of the distances between variables.
 
-A distance close to 0 means that the entities are very similar and a distance above 1 means they're very different. Similarly, an entity with an average distance close to or above 1 indicates that it's different from many other entities in the partition, indicating a potential outlier.
+A distance close to zero means that the entities are similar and a distance above 1 means they're different. Similarly, an entity with an average distance close to or above one indicates that it's different from many other entities in the partition, indicating a potential outlier.
 
 The output of the function is pairwise distances between entities under the same partition. It can be used as-is to look for similar or different pairs. such as entities with minimal distances share many common features. It can also be easily transformed to a distance matrix (see the usage example) or used as input for clustering or outlier detection algorithms.
 
@@ -115,7 +115,7 @@ let raw_data = datatable(name:string, gender: string, height:int, weight:int, li
     'Tweety',   'F',    52,     20,     6,  'Tail',     'Pet' ,
     'Ulfie',    'M',    39,     29,     4,  'Wings',    'Pet',
     'Vinnie',   'F',    53,     22,     1,  'Tail',     'Pet',
-    'Woody',    'F',    51,     21,     4,  'Tail',     'Pet',
+    'Waldo',    'F',    51,     21,     4,  'Tail',     'Pet',
     'Xander',   'M',    50,     24,     4,  'Tail',     'Pet'
 ];
 raw_data
