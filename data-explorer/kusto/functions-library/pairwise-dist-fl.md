@@ -115,7 +115,7 @@ let raw_data = datatable(name:string, gender: string, height:int, weight:int, li
     'Tweety',   'F',    52,     20,     6,  'Tail',     'Pet' ,
     'Ulfie',    'M',    39,     29,     4,  'Wings',    'Pet',
     'Vinnie',   'F',    53,     22,     1,  'Tail',     'Pet',
-    'Woody',    'F',    51,     21,     4,  'Tail',     'Pet',
+    'Waldo',    'F',    51,     21,     4,  'Tail',     'Pet',
     'Xander',   'M',    50,     24,     4,  'Tail',     'Pet'
 ];
 raw_data
