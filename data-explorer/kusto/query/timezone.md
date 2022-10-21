@@ -270,7 +270,6 @@ Related functions:
 | Asia/Chita                       |
 | Asia/Choibalsan                  |
 | Asia/Chongqing                   |
-| Asia/Chungking                   |
 | Asia/Colombo                     |
 | Asia/Dacca                       |
 | Asia/Damascus                    |
