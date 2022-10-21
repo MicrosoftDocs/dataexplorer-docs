@@ -26,7 +26,7 @@ Creates or alters an external SQL table in the database in which the command is 
 
 > [!NOTE]
 > * If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities.
-> * When creating or altering an external table using managed identity authentication, [all databases admin permission](../management/access-control/role-based-authorization.md) is required.
+> * When creating or altering an external table using managed identity authentication, [All Databases admin permission](../management/access-control/role-based-authorization.md) is required.
 
 > [!WARNING]
 > Connection strings and queries that include confidential information should be obfuscated so that they'll be omitted from any Kusto tracing. For more information, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals).
