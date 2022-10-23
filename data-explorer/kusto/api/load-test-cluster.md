@@ -181,7 +181,7 @@ In the following steps, you'll run load tests using a local installation of Graf
 
     ```kusto
     .show queries
-    | where StartedOn >=ago(1h)l'
+    | where StartedOn >=ago(1h)
     | where Application == "k6"
     | where Database == "<database-name>"
     | where State == "Completed"
