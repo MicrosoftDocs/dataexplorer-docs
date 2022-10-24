@@ -29,7 +29,7 @@ The following properties are supported as part of the export to external table c
 
 | Property | Type | Description| Default
 |---|---|---|---|
-| `sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). Kusto will always write a full rowgroup of size `parquetRowGroupSize` before checking whether it has reached the size limit and should start a new artifact. Allowed range is 100MB (default) to 1GB.|
+| `sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). A full row group of size `parquetRowGroupSize` will be written before checking whether this row group has reached the size limit and should start a new artifact. Allowed range is 100MB (default) to 1GB.|
 |`distributed`   |`bool`  |Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. | Default is true.
 |`parquetRowGroupSize`|`int`  |Relevant only when data format is Parquet. Controls the row group size in the exported files. This takes precedence over `sizeLimit`, meaning Kusto will always export a full rowgroup before checking whether it has reached the size limit and should start a new artifact. | Default row group size is 100000 records.|
 |`concurrency`|*Number*|Hints the system how many partitions to run in parallel. **See note below.**| The default value is 16. |
