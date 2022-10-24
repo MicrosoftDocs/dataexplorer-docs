@@ -185,7 +185,7 @@ In this example, use an update policy in conjunction with a simple function to p
 
     ```kusto
     .alter table MyTargetTable policy update 
-    @'[{ "IsEnabled": true, "Source": "MySourceTable", "Query": "ExtractMyLogs()", "IsTransactional": false, "PropagateIngestionProperties": false}]'
+    @'[{ "IsEnabled": true, "Source": "MySourceTable", "Query": "ExtractMyLogs()", "IsTransactional": true, "PropagateIngestionProperties": false}]'
     ```
 
 1. To empty the source table after data is ingested into the target table, define the retention policy on the source table to have 0s as its `SoftDeletePeriod`.
