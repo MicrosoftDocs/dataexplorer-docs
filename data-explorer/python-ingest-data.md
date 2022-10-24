@@ -72,11 +72,11 @@ Now construct the connection string. The following example uses device authentic
 You create the destination table and mapping in a later step.
 
 ```python
-KCSB_INGEST = KustoConnectionStringBuilder.with_aad_device_authentication(
-    KUSTO_INGEST_URI, AAD_TENANT_ID)
+KCSB_INGEST = KustoConnectionStringBuilder.with_interactive_login(
+    KUSTO_INGEST_URI)
 
-KCSB_DATA = KustoConnectionStringBuilder.with_aad_device_authentication(
-    KUSTO_URI, AAD_TENANT_ID)
+KCSB_DATA = KustoConnectionStringBuilder.with_interactive_login(
+    KUSTO_URI)
 
 DESTINATION_TABLE = "StormEvents"
 DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
