@@ -318,7 +318,7 @@ Related functions:
 | Asia/Qatar                       |
 | Asia/Qostanay                    |
 | Asia/Qyzylorda                   |
-| Asia/Rangoon                     |
+| Asia/Yangon (Rangoon)            |
 | Asia/Riyadh                      |
 | Asia/Sakhalin                    |
 | Asia/Samarkand                   |
