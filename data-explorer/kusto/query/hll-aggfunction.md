@@ -22,7 +22,7 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accu
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *Expr* |  string | &check; | Expression used for the aggregation calculation. |
-| *Accuracy* |   |   | Controls the balance between speed and accuracy. |
+| *Accuracy* |   |   | Controls the balance between speed and accuracy. If unspecified, the default value is `1`. See [Estimation accuracy](../../includes/data-explorer-estimation-accuracy.md) for supported values. |
 
 ## Returns
 
