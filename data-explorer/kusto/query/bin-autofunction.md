@@ -1,11 +1,7 @@
 ---
-title: bin_auto() - Azure Data Explorer | Microsoft Docs
+title: bin_auto() - Azure Data Explorer
 description: This article describes bin_auto() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
@@ -21,7 +17,7 @@ Rounds values down to a fixed-size "bin", with control over the bin size and sta
 
 * *Expression*: A scalar expression of a numeric type indicating the value to round.
 
-**Client Request Properties**
+## Client request properties
 
 * `query_bin_auto_size`: A numeric literal indicating the size of each bin.
 * `query_bin_auto_at`: A numeric literal indicating one value of *Expression* which is a "fixed point" (that is, a value `fixed_point`

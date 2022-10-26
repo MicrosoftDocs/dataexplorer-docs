@@ -1,10 +1,7 @@
 ---
 title: 'Create policies for Azure Data Explorer cluster and database using the Azure Data Explorer Python library '
 description: In this article, you learn how to create policies using Python.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/24/2019
 ---
@@ -63,7 +60,7 @@ resource_group_name = "testrg";
 cluster_name = "mykustocluster";
 database_name = "mykustodatabase";
 
-#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, see https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kustoManagementClient.databases.update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name,
                                            parameters=DatabaseUpdate(soft_delete_period=datetime.timedelta(days=10)))
 ```
@@ -96,7 +93,7 @@ resource_group_name = "testrg";
 cluster_name = "mykustocluster";
 database_name = "mykustodatabase";
 
-#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, see https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kustoManagementClient.databases.update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name,
                                            parameters=DatabaseUpdate(hot_cache_period=datetime.timedelta(days=5)))
 ```

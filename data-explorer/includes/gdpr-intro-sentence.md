@@ -1,9 +1,6 @@
 ---
-author: orspod
-ms.service: data-explorer
 ms.topic: include
 ms.date: 01/05/2022
-ms.author: orspodek
 ---
 
 > [!NOTE]

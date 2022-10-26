@@ -1,12 +1,9 @@
 ---
 title: 'Add database principals for Azure Data Explorer by using C#'
 description: In this article, you learn how to add database principals for Azure Data Explorer by using C#.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 09/11/2022
 ---
 
 # Add database principals for Azure Data Explorer by using C#
@@ -21,7 +18,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 ## Prerequisites
 
 * Visual Studio 2019, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md).
 
 ## Install C# NuGet
@@ -38,7 +35,7 @@ The following example shows you how to add a database principal programmatically
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "PlaceholderClientSecret";//Client Secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 
 var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
@@ -66,7 +63,7 @@ await kustoManagementClient.DatabasePrincipalAssignments.CreateOrUpdateAsync(res
 | tenantId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Your tenant ID. Also known as directory ID.|
 | subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The subscription ID that you use for resource creation.|
 | clientId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The client ID of the application that can access resources in your tenant.|
-| clientSecret | *xxxxxxxxxxxxxx* | The client secret of the application that can access resources in your tenant. |
+| clientSecret | *PlaceholderClientSecret* | The client secret of the application that can access resources in your tenant. |
 | resourceGroupName | *testrg* | The name of the resource group containing your cluster.|
 | clusterName | *mykustocluster* | The name of your cluster.|
 | databaseName | *mykustodatabase* | The name of your database.|

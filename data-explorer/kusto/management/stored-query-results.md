@@ -1,11 +1,7 @@
 ---
 title: Stored query results - Azure Data Explorer
 description: This article describes how to create and use stored query results in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: mispecto
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/15/2021
 ---
@@ -26,6 +22,7 @@ Stored query results can be useful in the following scenarios:
 > [!NOTE]
 >
 > * This feature is only available when [EngineV3](../../engine-v3.md) is enabled.
+> * If the stored-query-result name exists, `.set` will fail with an error. In contrast, `.set-or-replace` will delete the existing stored-query-result if it exists and then create a new one with the same name.
 > * When you have more than 500 columns, an error is raised and the results aren't stored.
 > * Query results are stored in a storage account associated with the cluster; the data is not cached in local SSD storage.
 
@@ -39,9 +36,9 @@ Using stored query results requires `Database Viewer` or higher access role.
 
 **Syntax**
 
-`.set` [`async`] `stored_query_result` *StoredQueryResultName* 
-[`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`]
-<| *Query*
+`.set` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`] <| *Query*
+
+`.set-or-replace` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`] <| *Query*
 
 **Arguments**
 

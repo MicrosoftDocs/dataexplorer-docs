@@ -124,7 +124,11 @@
         "v-thepet",
         "sdwheeler",
         "meganbradley"
-      ]
+      ],
+      "author": "shsagir",
+      "ms.author": "shsagir",
+      "ms.service": "data-explorer",
+      "services": "data-explorer"
     },
     "fileMetadata": {},
     "template": [],

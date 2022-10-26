@@ -1,11 +1,7 @@
 ---
-title: binary_and() - Azure Data Explorer | Microsoft Docs
+title: binary_and() - Azure Data Explorer
 description: This article describes binary_and() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
@@ -14,7 +10,7 @@ ms.date: 02/13/2020
 Returns a result of the bitwise `and` operation between two values.
 
 ```kusto
-binary_and(x,y)	
+binary_and(x,y)
 ```
 
 ## Syntax

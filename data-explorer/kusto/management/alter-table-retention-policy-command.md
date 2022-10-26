@@ -1,13 +1,9 @@
 ---
 title: .alter table retention policy command- Azure Data Explorer
 description: This article describes the .alter table retention policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/13/2022
+ms.date: 09/29/2022
 ---
 # .alter table retention policy
 
@@ -26,6 +22,12 @@ Change a table's [retention policy](retentionpolicy.md). The retention policy co
 
 Sets a retention policy with a 10 day soft-delete period, and enable data recoverability:
 
-```kusto
-.alter table MySourceTable policy retention "{\"SoftDeletePeriod\": \"10.00:00:00\", \"Recoverability\": \"Enabled\"}"
+````kusto
+.alter table MySourceTable policy retention
 ```
+{
+    "SoftDeletePeriod": "10.00:00:00",
+    "Recoverability": "Enabled"
+}
+```
+````

@@ -1,11 +1,7 @@
 ---
 title: Extents merge policy - Azure Data Explorer
 description: This article describes Extents merge policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/19/2020
 ---
@@ -33,7 +29,7 @@ The merge policy contains the following properties:
     * Maximum allowed row count of the merged extent.
     * Applies to Merge operations, not Rebuild.  
 * **OriginalSizeMBUpperBoundForMerge**:
-    * Defaults to 0 (unlimited).
+    * Defaults to 30,000.
     * Maximum allowed original size (in MBs) of the merged extent.
     * Applies to Merge operations, not Rebuild.  
 * **MaxExtentsToMerge**:
@@ -74,7 +70,7 @@ The following example shows the default policy:
 ```json
 {
   "RowCountUpperBoundForMerge": 16000000,
-  "OriginalSizeMBUpperBoundForMerge": 0,
+  "OriginalSizeMBUpperBoundForMerge": 30000,
   "MaxExtentsToMerge": 100,
   "LoopPeriod": "01:00:00",
   "MaxRangeInHours": 8,

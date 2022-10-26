@@ -1,13 +1,9 @@
 ---
 title: Security roles management - Azure Data Explorer
 description: This article describes security roles management in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/25/2021
+ms.date: 09/07/2022
 ---
 # Security roles management
 
@@ -29,6 +25,9 @@ principal attempts to make an operation on a secured resource, the system checks
 that the principal is associated with at least one security role that grants
 permissions to perform this operation on the resource. This is called an
 **authorization check**. Failing the authorization check aborts the operation.
+
+>[!NOTE]
+>To change security principals, you must be either a database admin or an alldatabases admin.
 
 ## Security roles management commands
 
@@ -63,7 +62,7 @@ permissions to perform this operation on the resource. This is called an
     |`admins`    |Have control over the securable object, including the ability to view, modify it, and remove the object and all sub-objects.|
     |`users`     |Can view the securable object, and create new objects underneath it.|
     |`viewers`   |Can view the securable object.|
-    |`unrestrictedviewers`|At the database level only, allows viewing of restricted tables (which are not exposed to "normal" `viewers` and `users`).|
+    |`unrestrictedviewers`|At the database level only, gives view permission to `admins`, `viewers` or `users` for all tables in the database that have a restricted view policy enabled. Use this role in addition to the `admins`, `viewers` or `users` roles. |
     |`ingestors` |At the database level only, allows data ingestion into all tables.|
     |`monitors`  |At the specified scope (Database or AllDatabases) allows metadata (schemas, operations, permissiosn) view operations.|
 

@@ -1,11 +1,7 @@
 ---
 title: format_ipv4() - Azure Data Explorer
 description: This article describes format_ipv4() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/09/2020
 ---
@@ -24,7 +20,7 @@ print format_ipv4(3232236031, 24) == '192.168.1.0'
 
 ## Arguments
 
-* *`Expr`*: A string or number representation of the IPv4 address.
+* *`Expr`*: A string or number representation (in big-endian order) of the IPv4 address.
 * *`PrefixMask`*: (Optional) An integer from 0 to 32 representing the number of most-significant bits that are taken into account. If argument isn't specified, all bit-masks are used (32).
 
 ## Returns

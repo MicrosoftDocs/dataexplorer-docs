@@ -1,12 +1,9 @@
 ---
 title: Visualize data from Azure Data Explorer in Tableau
 description: In this article, you learn how to use an Open Database Connectivity (ODBC) connection to Azure Data Explorer connection to visualize data with Tableau.
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabil
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 12/15/2021
+ms.date: 09/14/2022
 ---
 
 # Visualize data from Azure Data Explorer in Tableau
@@ -15,7 +12,7 @@ ms.date: 12/15/2021
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md).
 * Tableau Desktop, full, or [trial](https://www.tableau.com/products/desktop/download) version.
 * [Connect to Azure Data Explorer with ODBC](connect-odbc.md) using the SQL Server ODBC driver, to connect to Azure Data Explorer from Tableau.

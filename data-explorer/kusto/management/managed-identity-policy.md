@@ -1,11 +1,7 @@
 ---
 title: Kusto ManagedIdentity policy - Azure Data Explorer
 description: This article describes ManagedIdentity policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: slneimer
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 11/03/2021
 ---
@@ -14,6 +10,9 @@ ms.date: 11/03/2021
 *ManagedIdentity* is a policy that controls which managed identities can be used for what purposes. For example, you can configure a policy that allows a specific managed identity to be used for accessing a storage account for ingestion purposes.
 
 This policy can be enabled at the cluster and database levels. The policy is additive, meaning that for every operation that involves a managed identity, Azure Data Explorer will allow the operation if the usage is allowed at either the cluster or database level.
+
+> [!NOTE]
+> Creating and altering the managed identity policy requires [All Databases admin permission](../management/access-control/role-based-authorization.md).
 
 ## The ManagedIdentity policy object
 
@@ -30,7 +29,7 @@ The following table describes the properties of the ManagedIdentity policy objec
 | TenantId      | string | Not applicable | The tenant ID of the managed identity. |
 | DisplayName   | string | Not applicable | The display name of the managed identity. |
 | IsSystem      | bool   | Not applicable | A Boolean value indicating true if the identity is a System Managed Identity; false if otherwise. |
-| AllowedUsages | string | &check;  | A list of comma-separated allowed usages for the managed identity. Possible values are:<br />- "DataConnection": Data connections to an Event Hub or an Event Grid can be created authenticated using the specified managed identity<br />- "NativeIngestion": Native ingestions from an external source (for example, Blob) using Data Explorer's SDK and authenticated using the specified managed identity<br />- "ExternalTable": External tables using connection strings configured with a managed identity. Data Explorer uses the configured managed identity to authenticate<br />- "All": All current and future usages are allowed |
+| AllowedUsages | string | &check;  | A list of comma-separated allowed usage values for the managed identity. See [managed identity usages](#managed-identity-usages). |
 
 The following is an example of a ManagedIdentity policy object:
 
@@ -44,3 +43,15 @@ The following is an example of a ManagedIdentity policy object:
   "AllowedUsages": "NativeIngestion, ExternalTable"
 }
 ```
+
+### Managed identity usages
+
+The following values specify authentication to a `usage` using the configured managed identity:
+
+| Value | Description | 
+|---|---|
+| `DataConnection` | Authenticate to data connections to an Event Hub or an Event Grid. |
+| `NativeIngestion` |  Authenticate to an SDK for native ingestions from an external source. |
+|`ExternalTable` | Authenticate to external tables using connection strings configured with a managed identity. |
+| `AutomatedFlow`| Run a continuous export automated flow on behalf of a managed identity. |
+| `All` | All current and future usages are allowed. |

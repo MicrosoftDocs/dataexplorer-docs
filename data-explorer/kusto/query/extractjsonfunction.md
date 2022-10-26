@@ -1,11 +1,7 @@
 ---
-title: extract_json() and extractjson() - Azure Data Explorer | Microsoft Docs
+title: extract_json() and extractjson() - Azure Data Explorer
 description: This article describes extract_json() and extractjson() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2022
 ---
@@ -47,7 +43,7 @@ T
 | extend AvailableMB = extract_json("$.hosts[1].AvailableMB", EventText, typeof(int))
 
 T
-| extend AvailableMD = extract_json("$['hosts'][1]['AvailableMB']", EventText, typeof(int))
+| extend AvailableMB = extract_json("$['hosts'][1]['AvailableMB']", EventText, typeof(int))
 ```
 
 **Performance tips**

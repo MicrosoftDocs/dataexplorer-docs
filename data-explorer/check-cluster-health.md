@@ -1,10 +1,7 @@
 ---
 title: Check the health of an Azure Data Explorer cluster
 description: This article describes steps to monitor the health of your Azure Data Explorer cluster.
-author: orspod
-ms.author: orspodek
 ms.reviewer: mblythe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/24/2018
 ---

@@ -1,10 +1,7 @@
 ---
 title: KQL quick reference
 description: A list of useful KQL functions and their definitions with syntax examples.
-author: orspod
-ms.author: orspodek
 ms.reviewer: 
-ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/19/2020
 adobe-target: true

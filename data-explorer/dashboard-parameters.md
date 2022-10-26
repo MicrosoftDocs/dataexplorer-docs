@@ -1,13 +1,9 @@
 ---
 title: Parameters in Azure Data Explorer dashboards
 description: Use parameters as a building block for dashboard filters.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabil
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 05/23/2022
 ---
 
 # Use parameters in Azure Data Explorer dashboards
@@ -80,7 +76,7 @@ Several dashboard parameter types are supported. The following examples describe
 
 ### Use the default Time range parameter
 
-Every dashboard has a *Time range* parameter by default. It shows up on the dashboard as a filter only when used in a query. Use the parameter keywords `_startTime` and `__endTime` to use the default time range parameter in a query as seen in the following example:
+Every dashboard has a *Time range* parameter by default. It shows up on the dashboard as a filter only when used in a query. Use the parameter keywords `_startTime` and `_endTime` to use the default time range parameter in a query as seen in the following example:
 
 ```kusto
 EventsAll
@@ -163,7 +159,7 @@ Fixed value parameters are based on predefined values specified by the user. The
     * **Parameter type**: Multiple selection
     * **Variable name**: `_companies`
 
-1. Click **Done** to create the parameter.
+1. Select **Done** to create the parameter.
 
 The new parameters can be seen in the **Parameters** side pane, but aren't currently being used in any visuals.
 
@@ -219,7 +215,7 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 #### Use a parameter in the query
 
-1. The following sample query with the new Event parameter uses the `_ event` variable:
+1. The following sample query with the new Event parameter uses the `_event` variable:
 
     ``` kusto
     EventsAll
@@ -245,7 +241,7 @@ Query-based parameter values are derived at dashboard load time by executing the
     * **Parameter type**: Multiple selection
     * **Variable name**: `_events`
 
-1. Click **Done** to create the parameter.
+1. Select **Done** to create the parameter.
 
 #### Use the parameters in the query
 
@@ -300,12 +296,12 @@ Cross-filters allow you to select a value in one visual and all dashboard visual
 
 ### Define cross-filters
 
-To create a cross-filter, you must enable it in the visual and the specify the parameter that is used to filter the data.
+To create a cross-filter, you must enable it in the visual and then specify the parameter that is used to filter the data.
 
 1. Edit the dashboard, and then edit the visual where you want to add cross-filters.
 1. Select **Visual**.
 1. In the right pane, select **Interactions**, and then turn on cross-filters.
-1. Specify the column that will be used to provide the value for a parameter used to filter the visual's query.
+1. Specify both the column that will be used to provide the value and a parameter used to filter the visuals' query.
 
     > [!IMPORTANT]
     > The column and parameter must be of the same data type.
@@ -314,13 +310,55 @@ To create a cross-filter, you must enable it in the visual and the specify the p
 
 ## Interact with your data using cross-filter
 
-Once the cross-filter is defined, you can use it to interact with your data. In visuals where you've defined cross-filters, you can select data points and use their values to filter the current dashboard pages. For table visuals, select data points by right-clicking on the relevant cell and then in the context menu, select **Cross-filter**.
+Once the cross-filter is defined, you can use it to interact with your data. In visuals where you've defined cross-filters, you can select data points and use their values to filter the current dashboard page. For table visuals, select data points by right-clicking on the relevant cell and then in the context menu, select **Cross-filter**.
 
 :::image type="content" source="media/dashboard-parameters/cross-filter-query.png" alt-text="Screenshot of a table visual, showing the cross-filter context menu option.":::
 
 You can reset the cross-filter by selecting **Reset** at the top of the visual where it was selected.
 
 :::image type="content" source="media/dashboard-parameters/cross-filter-reset.png" alt-text="Screenshot of a table visual, showing the reset button.":::
+
+## Use drillthroughs as dashboard parameters
+
+With drillthrough, you can select a value in a visual and use it to filter the visuals in a target page in the same dashboard. When the target page opens, the value is preselected in the relevant filters. The visuals on the page, such as line or scatter charts, are filtered to only show related data.
+
+### Define a drillthrough
+
+To create a drillthrough, you must first turn it on in the visual and then add one or more drillthroughs as required.
+
+1. Edit the dashboard.
+
+    :::image type="content" source="media/dashboard-parameters/drillthrough-edit.png" alt-text="Screenshot of the dashboard menu, showing the edit option.":::
+
+1. Edit the visual where you want to add a drillthrough. Make sure that the **Visual** tab is selected.
+
+    :::image type="content" source="media/dashboard-parameters/drillthrough-visual-edit.png" alt-text="Screenshot of a dashboard visual, showing the edit option.":::
+
+1. In the right pane, select **Interactions**, then turn on drillthrough.
+
+    :::image type="content" source="media/dashboard-parameters/drillthrough-visual-create.png" alt-text="Screenshot of drillthrough page, showing the turn on option.":::
+
+1. Under **Drillthrough**, select **Create new**, and specify the following information. Optionally select **Add another pair** to add multiple parameters for a target page. Repeat this step to add drillthroughs to other pages in the current dashboard using different parameters.
+
+    | Field | Description |
+    |--|--|
+    | Destination page | One or more target pages to drill through to using the defined parameters. |
+    | Column | The query result's column to use as the value for a parameter in the target page. |
+    | Parameter | The parameter used to filter visuals in the target page using the column value. |
+    | Notes | Optional short description. |
+
+    > [!IMPORTANT]
+    > Column and parameter pairs must be of the same data type.
+
+    :::image type="content" source="media/dashboard-parameters/drillthrough-visual-create-form.png" alt-text="Screenshot of drillthrough form, highlighting the fields to fill out.":::
+
+## Interact with your data using drillthroughs
+
+Once drillthroughs are defined, you can use them to interact with your data. To do so, in visuals or tables where you've defined a drillthrough, right-click on a data point, and then select **Drill through to** > *destination page*. The values from the data point will be used as the parameters to filter the visuals on the target page.
+
+:::image type="content" source="media/dashboard-parameters/drillthrough-example.png" alt-text="Screenshot of a dashboard visual, showing the drillthrough interaction.":::
+
+To return to the source page, in the top-right of the destination page, select **Back**. All filters assigned by the drillthrough will be reset.
 
 ## Use filter search for single and multiple selection filters
 

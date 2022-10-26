@@ -1,10 +1,7 @@
 ---
 title: Monitor Azure Data Explorer ingestion, commands, and queries using diagnostic logs
 description: Learn how to set up diagnostic logs for Azure Data Explorer to monitor ingestion commands, and query operations.
-author: orspod
-ms.author: orspodek
 ms.reviewer: guregini
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/21/2021
 ---
@@ -15,6 +12,8 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 
 > [!IMPORTANT] 
 > Diagnostic log data may contain sensitive data. Restrict permissions of the logs destination according to your monitoring needs. 
+
+[!INCLUDE [azure-monitor-vs-log-analytics](includes/azure-monitor-vs-log-analytics.md)]
 
 ## Prerequisites
 

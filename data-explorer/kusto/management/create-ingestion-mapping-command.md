@@ -1,11 +1,7 @@
 ---
 title: .create ingestion mapping - Azure Data Explorer
 description: This article describes .create ingestion mapping in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/04/2020
 ---
@@ -67,4 +63,5 @@ Creates an ingestion mapping that can be associated with a specific format and a
 ```
 
 ## Next steps
-For more information about ingestion mapping, see [Data mappings](mappings.md).
+
+For detailed descriptions of various ingestion mapping formats such as CSV, JSON, Avro, Parquet, and Orc, see [Data mappings](mappings.md).

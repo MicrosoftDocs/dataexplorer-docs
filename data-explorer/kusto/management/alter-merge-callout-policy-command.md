@@ -1,13 +1,9 @@
 ---
 title: .alter-merge callout policy command- Azure Data Explorer
 description: This article describes the .alter-merge callout policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 09/29/2022
 ---
 # .alter-merge callout policy
 
@@ -23,6 +19,15 @@ Enables or disables a cluster's [callout policy](calloutpolicy.md). Azure Data E
 
 ### Examples
 
-```kusto
-.alter-merge cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname\\.database\\.azure\\.com/?$","CanCall": true}]'
+````kusto
+.alter-merge cluster policy callout
 ```
+[
+    {
+        "CalloutType": "sql",
+        "CalloutUriRegex": "sqlname\\.database\\.azure\\.com/?$",
+        "CanCall": true
+    }
+]
+```
+````

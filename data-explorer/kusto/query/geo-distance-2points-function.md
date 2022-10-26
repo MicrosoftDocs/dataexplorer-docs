@@ -1,11 +1,7 @@
 ---
 title: geo_distance_2points() - Azure Data Explorer
 description: This article describes geo_distance_2points() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: mbrichko
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/11/2020
 ---
@@ -57,7 +53,7 @@ range i from 1 to 1000000 step 1
 | project lng = rand() * real(-122), lat = rand() * 90
 | where lng between(real(-122) .. 0) and lat between(47 .. 90)
 | where geo_distance_point_to_line(lng,lat,dynamic({"type":"LineString","coordinates":[[-122,47],[0,51]]})) < 500
-| render scatterchart with (kind=map) // map rendering available in Kusto Explorer desktop
+| render scatterchart with (kind=map)
 ```
 
 The following example finds all rows in which the shortest distance between two coordinates is between 1 and 11 meters.

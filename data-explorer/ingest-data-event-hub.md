@@ -1,12 +1,9 @@
 ---
 title: 'Ingest data from event hub into Azure Data Explorer'
 description: 'In this article, you learn how to ingest (load) data into Azure Data Explorer from event hub.'
-author: orspod
-ms.author: orspodek
 ms.reviewer: tzgitlin
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 08/31/2021
+ms.date: 09/11/2022
 
 # Customer intent: As a database administrator, I want to ingest data into Azure Data Explorer from an event hub, so I can analyze streaming data.
 ---
@@ -15,7 +12,7 @@ ms.date: 08/31/2021
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [One-click](one-click-event-hub.md)
+> * [Ingestion wizard](./event-hub-wizard.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
@@ -44,15 +41,15 @@ Create an event hub by using an Azure Resource Manager template in the Azure por
 
 1. To create an event hub, use the following button to start the deployment. Right-click and select **Open in new window**, so you can follow the rest of the steps in this article.
 
-    [![Deploy to Azure button](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.eventhub%2Fevent-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    :::image type="content" source="media/ingest-data-event-hub/deploybutton.png" alt-text="Screenshot of the Deploy to Azure button." link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.eventhub%2Fevent-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json":::
 
     The **Deploy to Azure** button takes you to the Azure portal.
 
-    ![Create an event hub form](media/ingest-data-event-hub/deploy-to-azure.png)
+    :::image type="content" source="media/ingest-data-event-hub/deploy-to-azure.png" alt-text="Screenshot of the Azure portal U I, showing the Create an event hub form.":::
 
 1. Select the subscription where you want to create the event hub, and create a resource group named *test-hub-rg*.
 
-    ![Create a resource group](media/ingest-data-event-hub/create-resource-group.png)
+    :::image type="content" source="media/ingest-data-event-hub/create-resource-group.png" alt-text="Screenshot of the Azure portal U I, showing the Create new resource group dropdown.":::
 
 1. Fill out the form with the following information.
 
@@ -72,11 +69,11 @@ Create an event hub by using an Azure Resource Manager template in the Azure por
 
 1. Review the **Summary** of resources created. Select **Create**, which acknowledges that you're creating resources in your subscription.
 
-    :::image type="content" source="media/ingest-data-event-hub/review-create.png" alt-text="Screen shot of Azure portal for reviewing and creating EventHubs namespace, event hub, and consumer group.":::
+    :::image type="content" source="media/ingest-data-event-hub/review-create.png" alt-text="Screenshot of the Azure portal U I, showing the summary of creating EventHubs namespace, event hub, and consumer group form.":::
 
 1. Select **Notifications** on the toolbar to monitor the provisioning process. It might take several minutes for the deployment to succeed, but you can move on to the next step now.
 
-    ![Notifications icon](media/ingest-data-event-hub/notifications.png)
+    :::image type="content" source="media/ingest-data-event-hub/notifications.png" alt-text="Screenshot of the Azure portal U I toolbar, showing the Notifications icon.":::
 
 ## Create a target table in Azure Data Explorer
 
@@ -84,7 +81,7 @@ Now you create a table in Azure Data Explorer, to which event hubs will send dat
 
 1. In the Azure portal, browse to your cluster, and select **Query**.
 
-    ![Query application link](media/ingest-data-event-hub/query-explorer-link.png)
+    :::image type="content" source="media/ingest-data-event-hub/query-explorer-link.png" alt-text="Screenshot of the Azure portal U I left menu, showing the Query application option.":::
 
 1. Copy the following command into the window and select **Run** to create the table (TestTable) which will receive the ingested data.
 
@@ -92,7 +89,7 @@ Now you create a table in Azure Data Explorer, to which event hubs will send dat
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
     ```
 
-    ![Run create query](media/ingest-data-event-hub/run-create-query.png)
+    :::image type="content" source="media/ingest-data-event-hub/run-create-query.png" alt-text="Screenshot of the Azure Data Explorer web U I, showing the query window running query.":::
 
 1. Copy the following command into the window and select **Run** to map the incoming JSON data to the column names and data types of the table (TestTable).
 
@@ -108,19 +105,19 @@ Now you connect to the event hub from Azure Data Explorer. When this connection 
 
 1. Under the cluster you created, select **Databases** then **TestDatabase**.
 
-    ![Select test database](media/ingest-data-event-hub/select-test-database.png)
+    :::image type="content" source="media/ingest-data-event-hub/select-test-database.png" alt-text="Screenshot of Azure Data Explorer web U I left menu, showing the Test Database item, selected.":::
 
 1. Select **Data ingestion** and **Add data connection**.
 
-    :::image type="content" source="media/ingest-data-event-hub/event-hub-connection.png" alt-text="Select data ingestion and Add data connection in event hub - Azure Data Explorer.":::
+    :::image type="content" source="media/ingest-data-event-hub/event-hub-connection.png" alt-text=" Screenshot of the Azure Data Explorer web U I left menu, showing how to Add data connection.":::
 
 ### Create a data connection
 
 Fill out the form with the following information, and then select **Create**.
 
-:::image type="content" source="media/ingest-data-event-hub/data-connection-pane.png" alt-text="Data connection pane event hub - Azure Data Explorer.":::
+:::image type="content" source="media/ingest-data-event-hub/data-connection-pane.png" alt-text="Screenshot of the Azure Data Explorer web U I, showing the Create data connection form.":::
 
-**Setting** | **Suggested value** | **Field description**
+| **Setting** | **Suggested value** | **Field description** |
 |---|---|---|
 | Data connection name | *test-hub-connection* | The name of the connection you want to create in Azure Data Explorer.|
 | Subscription |      | The subscription ID where the event hub resource is located.  |
@@ -134,6 +131,18 @@ Fill out the form with the following information, and then select **Create**.
 > [!NOTE]
 > If you have an existing data connection that is not using managed identities, we recommend updating it to use managed identities.
 
+#### Target database (multi-database data connection)
+
+Specifying a target database allows you to override the default associated with the data connection. For more information about database routing, see [Events routing](ingest-data-event-hub-overview.md#events-routing).
+
+Before you can set an alternate target database, you must first *allow* routing the data to multiple databases. Use the following steps to *allow* routing the data to alternate databases:
+
+1. In the Azure portal, browse to your cluster.
+1. Select **Databases** > **Data connections**.
+1. Create or edit a data connection and in the **Data connection** pane, under **Data routing settings**, turn on the allow routing data to other databases (multi-database data connection) option.
+
+    :::image type="content" source="media/ingest-data-event-hub/data-connection-allow-multi-database.png" alt-text="Screenshot of the Azure Data Explorer web U I, showing the Data connections page highlighting the Data routing settings option.":::
+
 #### Target table
 
 There are two options for routing the ingested data: *static* and *dynamic*.
@@ -141,18 +150,19 @@ For this article, you use static routing, where you specify the table name, data
 
 1. Fill out the following routing settings:
 
-    :::image type="content" source="media/ingest-data-event-hub/default-routing-settings.png" alt-text="Default routing settings for ingesting data to event hub - Azure Data Explorer.":::
+    :::image type="content" source="media/ingest-data-event-hub/default-routing-settings.png" alt-text="Screenshot of the Azure Data Explorer web U I, showing the Target table form for default routing settings for ingesting data into event hub.":::
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
     | Table name | *TestTable* | The table you created in **TestDatabase**. |
     | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, and W3CLOG. |
-    | Mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **TestDatabase**, which maps incoming data to the column names and data types of **TestTable**. Required for JSON, MULTILINE JSON and AVRO, and optional for other formats.|
+    | Mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **TestDatabase**, which maps incoming data to the column names and data types of **TestTable**. If not specified, an [identity data mapping](kusto/management/mappings.md#identity-mapping) derived from the table's schema is used. |
 
     > [!NOTE]
     >
     > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
     > * Only events enqueued after you create the data connection are ingested.
+    > * The mapping name is case-sensitive. A mismatch in mapping name will result in ingestion failure.
 
 1. Select **Create**.
 
@@ -160,7 +170,7 @@ For this article, you use static routing, where you specify the table name, data
 
 [!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
 
-If you selected **Event system properties** in the **Data Source** section of the table, you must include [system properties](ingest-data-event-hub-overview.md#system-properties) in the table schema and mapping.
+If you selected **Event system properties** in the **Data Source** section of the table, you must include [system properties](ingest-data-event-hub-overview.md#event-system-properties-mapping) in the table schema and mapping.
 
 ## Copy the connection string
 
@@ -168,11 +178,11 @@ When you run the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet
 
 1. Under the event hub namespace you created, select **Shared access policies**, then **RootManageSharedAccessKey**.
 
-    ![Shared access policies.](media/ingest-data-event-hub/shared-access-policies.png)
+    :::image type="content" source="media/ingest-data-event-hub/shared-access-policies.png" alt-text="Screenshot of the Azure Data Explorer web U I left menu, showing the Shared access policies.":::
 
 1. Copy **Connection string - primary key**. You paste it in the next section.
 
-    ![Connection string.](media/ingest-data-event-hub/connection-string.png)
+    :::image type="content" source="media/ingest-data-event-hub/connection-string.png" alt-text="Screenshot of the Azure Data Explorer web U I, showing the Connection string form.":::
 
 ## Generate sample data
 
@@ -197,7 +207,9 @@ With the app generating data, you can now see the flow of that data from the eve
 
 1. In the Azure portal, under your event hub, you see the spike in activity while the app is running.
 
-    ![Event hub graph.](media/ingest-data-event-hub/event-hub-graph.png)
+    :::image type="content" source="media/ingest-data-event-hub/event-hub-graph.png" alt-text="Screenshot of the Event hub graph, showing a spike in activity.":::
+
+1. To preview incoming data sent to your event hub in the Azure portal, see [process data from your event hub using Azure Stream Analytics](/azure/event-hubs/process-data-azure-stream-analytics).
 
 1. To check how many messages have made it to the database so far, run the following query in your test database.
 
@@ -214,11 +226,11 @@ With the app generating data, you can now see the flow of that data from the eve
 
     The result set should look like the following image:
 
-    ![Message result set.](media/ingest-data-event-hub/message-result-set.png)
+    :::image type="content" source="media/ingest-data-event-hub/message-result-set.png" alt-text="Screenshot of the event hub query showing the results from the TestTable.":::
 
     > [!NOTE]
     >
-    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of 1G, or 1000 blobs. Therefore, you may experience a latency. For more information see [batching policy](kusto/management/batchingpolicy.md).
+    > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of 1G, or 1000 blobs. Therefore, you may experience a latency. For more information, see [batching policy](kusto/management/batchingpolicy.md).
     > * Event hub ingestion includes event hub response time of 10 seconds or 1 MB.
     > * To reduce response time lag, configure your table to support streaming. See [streaming policy](kusto/management/streamingingestionpolicy.md).
 
@@ -228,9 +240,9 @@ If you don't plan to use your event hub again, clean up **test-hub-rg**, to avoi
 
 1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group you created.
 
-    If the left menu is collapsed, select ![Expand button.](media/ingest-data-event-hub/expand.png) to expand it.
+    If the left menu is collapsed, select :::image type="content" source="media/ingest-data-event-hub/expand.png" alt-text="Screenshot of the Expand button."::: to expand it.
 
-   ![Select resource group to delete.](media/ingest-data-event-hub/delete-resources-select.png)
+    :::image type="content" source="media/ingest-data-event-hub/delete-resources-select.png" alt-text="Screenshot of the Azure portal U I left menu, showing the Resource groups page.":::
 
 1. Under **test-resource-group**, select **Delete resource group**.
 

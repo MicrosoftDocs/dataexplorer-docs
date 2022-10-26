@@ -1,10 +1,7 @@
 ---
 title: time_weighted_avg_fl() - Azure Data Explorer
 description: This article describes time_weighted_avg_fl() user-defined function in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/27/2021
 ---

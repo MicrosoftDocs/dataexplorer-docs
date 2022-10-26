@@ -20,18 +20,14 @@ items:
     items:
     - name: Request classification policy
       href: request-classification-policy.md
-    - name: Request classification commands
-      items:
-      - name: Request classification policy commands
-        href: ./show-cluster-policy-request-classification-command.md
-      - name: .alter cluster request classification policy commands
-        href: alter-cluster-policy-request-classification-command.md
-      - name: .alter-merge cluster request classification policy commands
-        href: alter-merge-cluster-policy-request-classification-command.md
-      - name: .delete cluster request classification policy commands
-        href: delete-cluster-policy-request-classification-command.md
-      - name: .show cluster request classification policy commands
-        href: show-cluster-policy-request-classification-command.md
+    - name: .alter cluster request classification policy commands
+      href: alter-cluster-policy-request-classification-command.md
+    - name: .alter-merge cluster request classification policy commands
+      href: alter-merge-cluster-policy-request-classification-command.md
+    - name: .delete cluster request classification policy commands
+      href: delete-cluster-policy-request-classification-command.md
+    - name: .show cluster request classification policy commands
+      href: show-cluster-policy-request-classification-command.md
   - name: Request limits policy
     href: request-limits-policy.md
   - name: Request rate limit policy
@@ -246,6 +242,14 @@ items:
       href: alter-merge-capacity-policy-command.md
     - name: ".show capacity policy command"
       href: show-cluster-capacity-policy-command.md
+  - name: Encoding policy
+    items:
+    - name: Encoding policy
+      href: encoding-policy.md
+    - name: ".alter encoding policy command"
+      href: alter-encoding-policy.md
+    - name: ".show encoding policy command"
+      href: show-encoding-policy.md
   - name: Ingestion batching 
     items:
     - name: Ingestion batching policy
@@ -483,8 +487,12 @@ items:
     displayName:  .ingest into, pull data, pulling ingestion
     href: data-ingestion/ingest-from-storage.md
   - name: Ingest from query
-    displayName:  .set, .append, .set-or-append, .set-or-replace
-    href: data-ingestion/ingest-from-query.md
+    items: 
+    - name: Ingest from query
+      displayName:  .set, .append, .set-or-append, .set-or-replace
+      href: data-ingestion/ingest-from-query.md
+    - name: cancel operation command
+      href: cancel-operation-command.md
   - name: Inline ingestion
     displayName:  .ingest inline
     href: data-ingestion/ingest-inline.md
@@ -546,18 +554,22 @@ items:
 - name: System information
   href: systeminfo.md
   items:
-  - name: Diagnostics
-    href: diagnostics.md
-  - name: Journal
-    href: journal.md
-  - name: Queries
-    href: queries.md
   - name: Commands
     href: commands.md
   - name: Commands and queries
     href: commands-and-queries.md
+  - name: Data statistics
+    href: show-table-data-statistics.md
+  - name: Diagnostics
+    href: diagnostics.md
+  - name: Journal
+    href: journal.md
   - name: Operations
     href: operations.md
+  - name: Queries
+    href: queries.md
+  - name: Streaming ingestion statistics
+    href: streamingingestionstatistics.md
 - name: Access control
   href: access-control/index.md
   items:
@@ -609,3 +621,5 @@ items:
     href: ../../error-codes.md
   - name: Ingestion failures
     href: ingestionfailures.md
+  - name: Streaming ingestion failures
+    href: streamingingestionfailures.md

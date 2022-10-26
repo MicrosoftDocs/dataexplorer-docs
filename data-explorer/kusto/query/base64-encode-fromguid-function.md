@@ -1,11 +1,7 @@
 ---
 title: base64_encode_fromguid() - Azure Data Explorer
 description: This article describes base64_encode_fromguid() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference 
 ms.date: 08/31/2021
 ---
@@ -19,7 +15,7 @@ Encodes a [GUID](./scalar-data-types/guid.md) to a base64 string.
 
 ## Arguments
 
-* *GUID*: Input [GUID](./scalar-data-types/guid.md) to be encoded to a base64 string. 
+* *GUID*: Input [GUID](./scalar-data-types/guid.md) to be encoded to a base64 string.
 
 ## Returns
 

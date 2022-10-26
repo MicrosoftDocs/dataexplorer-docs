@@ -1,11 +1,7 @@
 ---
 title: make-series operator - Azure Data Explorer
 description: This article describes make-series operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 12/30/2021
 ms.localizationpriority: high
@@ -42,8 +38,7 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
   |Name  |Description  |
   |---|---|
   |`kind` |Produces default result when the input of make-series operator is empty. Value: `nonempty`|  
-  |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. See [shuffle query](shufflequery.md) |
-  |`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node will process one partition of the data. See [shuffle query](shufflequery.md) |
+  |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. See [shuffle query](shufflequery.md) |  
 
 > [!NOTE]
 >

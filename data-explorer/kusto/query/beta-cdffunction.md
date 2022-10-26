@@ -1,11 +1,7 @@
 ---
 title: beta_cdf() - Azure Data Explorer
 description: This article describes beta_cdf() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
@@ -66,9 +62,7 @@ datatable(x:double, alpha:double, beta:double, comment:string)
 |-10|10|20|x < 0, yields NaN|NaN|
 |0.1|-1|20|alpha is < 0, yields NaN|NaN|
 
-
 ## See also
-
 
 * For computing the inverse of the beta cumulative probability density function, see [beta-inv()](./beta-invfunction.md).
 * For computing probability density function, see [beta-pdf()](./beta-pdffunction.md).

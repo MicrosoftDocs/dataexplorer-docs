@@ -1,18 +1,13 @@
 ---
-title: lookup operator - Azure Data Explorer | Microsoft Docs
+title: lookup operator - Azure Data Explorer
 description: This article describes lookup operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/12/2020
 ---
 # lookup operator
 
-The `lookup` operator extends the columns of a fact table with values
-looked-up in a dimension table.
+Extends the columns of a fact table with values looked-up in a dimension table.
 
 ```kusto
 FactTable | lookup kind=leftouter (DimensionTable) on CommonColumn, $left.Col1 == $right.Col2
@@ -36,6 +31,16 @@ with the following differences:
 * The `lookup` operator automatically broadcasts the `$right` table to the `$left`
   table (essentially, behaves as if `hint.broadcast` was specified). Note that
   this limits the size of the `$right` table.
+
+> [!NOTE]
+> If the right side of the lookup is larger than several tens of MBs, the query will fail.
+> 
+> You can run the following query to estimate the size of the right side in bytes:
+> 
+> ```kusto
+> rightSide
+> | summarize sum(estimate_data_size(*))
+> ```
 
 ## Syntax
 

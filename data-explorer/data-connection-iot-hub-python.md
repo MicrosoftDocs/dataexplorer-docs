@@ -1,15 +1,12 @@
 ---
 title: 'Create an IoT Hub data connection for Azure Data Explorer by using Python'
 description: In this article, you learn how to create an IoT Hub data connection for Azure Data Explorer by using Python.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 10/07/2019
+ms.date: 03/15/2022
 ---
 
-# Create an IoT Hub data connection for Azure Data Explorer by using Python (Preview)
+# Create an IoT Hub data connection for Azure Data Explorer by using Python
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-iot-hub.md)
@@ -18,7 +15,7 @@ ms.date: 10/07/2019
 > * [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md)
 
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
-In this article, you create an IoT Hub data connection for Azure Data Explorer by using Python. 
+In this article, you create an IoT Hub data connection for Azure Data Explorer by using Python.
 
 ## Prerequisites
 
@@ -33,7 +30,7 @@ In this article, you create an IoT Hub data connection for Azure Data Explorer b
 
 [!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
-## Add an IoT Hub data connection 
+## Add an IoT Hub data connection
 
 The following example shows you how to add an IoT Hub data connection programmatically. See [connect Azure Data Explorer table to IoT Hub](ingest-data-iot-hub.md#connect-azure-data-explorer-table-to-iot-hub) for adding an Iot Hub data connection using the Azure portal.
 
@@ -70,11 +67,12 @@ location = "Central US"
 table_name = "StormEvents"
 mapping_rule_name = "StormEvents_CSV_Mapping"
 data_format = "csv"
+database_routing = "Multi"
 
-#Returns an instance of LROPoller, check https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, check https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.data_connections.create_or_update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name, data_connection_name=data_connection_name,
-                                            parameters=IotHubDataConnection(iot_hub_resource_id=iot_hub_resource_id, shared_access_policy_name=shared_access_policy_name, 
-                                                                                consumer_group=consumer_group, table_name=table_name, location=location, mapping_rule_name=mapping_rule_name, data_format=data_format))
+                                            parameters=IotHubDataConnection(iot_hub_resource_id=iot_hub_resource_id, shared_access_policy_name=shared_access_policy_name,
+                                                                                consumer_group=consumer_group, table_name=table_name, location=location, mapping_rule_name=mapping_rule_name, data_format=data_format, database_routing=database_routing))
 ```
 
 |**Setting** | **Suggested value** | **Field description**|
@@ -94,5 +92,6 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | shared_access_policy_name | *iothubforread* | The name of the shared access policy that defines the permissions for devices and services to connect to IoT Hub. |
 | consumer_group | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
+| database_routing | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-iot-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-iot-hub-overview.md#events-routing). |
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-python](includes/data-explorer-data-connection-clean-resources-python.md)]

@@ -1,10 +1,7 @@
 ---
 title: "Quickstart: Create an Azure Data Explorer cluster and database"
 description: In this quickstart, you learn how to create an Azure Data Explorer cluster and database, and ingest data.
-author: orspod
-ms.author: orspodek
 ms.reviewer: mblythe
-ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 02/08/2022
 ms.custom: mode-portal
@@ -28,6 +25,8 @@ adobe-target: true
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest data into a database so that you can run queries against it. In this quickstart, you create a cluster and a database.
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+
+For more information on cluster subscription limits, see [Azure Data Explorer limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-data-explorer-limits).
 
 ## Sign in to the Azure portal
 
@@ -112,7 +111,7 @@ After you created the cluster and database, you can run queries and commands. Th
 
 ## Stop and restart the cluster
 
-You can stop and restart a cluster depending on business needs.
+You can stop and restart a cluster depending on business needs. Stopping the cluster significantly reduces cost as it releases the compute resources, which are the bulk of the overall cluster cost, without deleting the database.
 
 1. To stop the cluster, at the top of the **Overview** tab, select **Stop**.
 

@@ -1,11 +1,7 @@
 ---
-title: strcmp() - Azure Data Explorer | Microsoft Docs
+title: strcmp() - Azure Data Explorer
 description: This article describes strcmp() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/23/2018
 ---
@@ -33,12 +29,13 @@ Returns an integral value indicating the relationship between the strings:
 
 ## Examples
 
-```
-datatable(string1:string, string2:string)
-["ABC","ABC",
-"abc","ABC",
-"ABC","abc",
-"abcde","abc"]
+```kusto
+datatable(string1:string, string2:string) [
+    "ABC","ABC",
+    "abc","ABC",
+    "ABC","abc",
+    "abcde","abc"
+]
 | extend result = strcmp(string1,string2)
 ```
 

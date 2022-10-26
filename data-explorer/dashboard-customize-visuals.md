@@ -1,11 +1,7 @@
 ---
 title: Customize Azure Data Explorer dashboard visuals
 description: Easily customize your Azure Data Explorer dashboard visuals
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabil
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 08/25/2020
 ---
@@ -107,6 +103,14 @@ In addition, you can specify the following options:
 - Size column: The integer values in this column are used to set the size of bubbles. The visual calculates the min and max values in the selected size column and then organizes sets the bubble size for all the other values in between.
 
 Maps are useful to visualize data with geo coordinates. The Map visual also has a built-in zoom functionality.
+
+### Funnel
+
+:::image type="content" source="media/dashboard-customize-visuals/funnel.png" alt-text="Screenshot of the funnel map visual type.":::
+
+To render the funnel visual, select a category column and value column.
+
+Funnels are useful to visualize usage or acquisition data across different stages to evaluate the progress between 1 stage and the next one.
 
 ## Customize visuals
 

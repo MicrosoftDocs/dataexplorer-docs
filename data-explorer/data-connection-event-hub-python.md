@@ -1,25 +1,22 @@
 ---
-title: "Create an event hub data connection for Azure Data Explorer by using Python"
-description: In this article, you learn how to create an event hub data connection for Azure Data Explorer by using Python.
-author: orspod
-ms.author: orspodek
+title: "Create an Event Hubs data connection for Azure Data Explorer by using Python"
+description: In this article, you learn how to create an Event Hubs data connection for Azure Data Explorer by using Python.
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 03/03/2022
+ms.date: 09/12/2022
 ---
 
-# Create an event hub data connection for Azure Data Explorer by using Python
+# Create an Event Hubs data connection for Azure Data Explorer by using Python
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [One-click](one-click-event-hub.md)
+> * [Ingestion wizard](./event-hub-wizard.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
-In this article, you create an event hub data connection for Azure Data Explorer by using Python.
+In this article, you create an Event Hubs data connection for Azure Data Explorer by using Python.
 
 ## Prerequisites
 
@@ -28,15 +25,15 @@ In this article, you create an event hub data connection for Azure Data Explorer
 * [Python 3.4+](https://www.python.org/downloads/).
 * [Table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
 * [Database and table policies](database-table-policies-python.md) (optional).
-* [Event hub with data for ingestion](ingest-data-event-hub.md#create-an-event-hub).
+* [Event Hubs with data for ingestion](ingest-data-event-hub.md#create-an-event-hub).
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](includes/data-explorer-data-connection-install-package-python.md)]
 
 [!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
-## Add an event hub data connection
+## Add an Event Hubs data connection
 
-The following example shows you how to add an event hub data connection programmatically. See [connect to the event hub](ingest-data-event-hub.md#connect-to-the-event-hub) for adding an event hub data connection using the Azure portal.
+The following example shows you how to add an Event Hubs data connection programmatically. See [connect to the event hub](ingest-data-event-hub.md#connect-to-the-event-hub) for adding an Event Hubs data connection using the Azure portal.
 
 ```Python
 from azure.mgmt.kusto import KustoManagementClient
@@ -70,9 +67,10 @@ location = "Central US"
 table_name = "mytable"
 mapping_rule_name = "mytablemappingrule"
 data_format = "csv"
-#Returns an instance of LROPoller, check https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+database_routing = "Multi"
+#Returns an instance of LROPoller, check https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.data_connections.create_or_update(
-            resource_group_name=resource_group_name, 
+            resource_group_name=resource_group_name,
             cluster_name=cluster_name,
             database_name=database_name,
             data_connection_name=data_connection_name,
@@ -82,7 +80,8 @@ poller = kusto_management_client.data_connections.create_or_update(
                 location=location,
                 table_name=table_name,
                 mapping_rule_name=mapping_rule_name,
-                data_format=data_format
+                data_format=data_format,
+                database_routing=database_routing
             )
         )
 poller.wait()
@@ -105,5 +104,6 @@ print(poller.result())
 | event_hub_resource_id | *Resource ID* | The resource ID of your event hub that holds the data for ingestion. |
 | consumer_group | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
+| databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-hub-overview.md#events-routing). |
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-python](includes/data-explorer-data-connection-clean-resources-python.md)]

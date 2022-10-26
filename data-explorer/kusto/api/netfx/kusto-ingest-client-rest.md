@@ -1,11 +1,7 @@
 ---
 title: Kusto data ingestion without Ingest library - Azure Data Explorer
 description: This article describes HowTo Data Ingestion without Kusto.Ingest Library in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/06/2022
 ---
@@ -267,9 +263,9 @@ internal static string PrepareIngestionMessage(string db, string table, string d
 
     message.Add("AdditionalProperties", new JObject(
                                             new JProperty("authorizationContext", identityToken),
-                                            new JProperty("jsonMappingReference", mappingRef),
+                                            new JProperty("mappingReference", mappingRef),
                                             // Data is in JSON format
-                                            new JProperty("format", "json")));
+                                            new JProperty("format", "multijson")));
     return message.ToString();
 }
 ```

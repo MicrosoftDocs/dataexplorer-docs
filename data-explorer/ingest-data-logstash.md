@@ -1,12 +1,9 @@
 ---
 title: 'Ingest data from Logstash to Azure Data Explorer'
 description: 'In this article, you learn how to ingest (load) data into Azure Data Explorer from Logstash'
-author: orspod
-ms.author: orspodek
 ms.reviewer: takamara
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/26/2020
+ms.date: 09/22/2022
 
 #Customer intent: As a DevOps engineer, I want to use Logstash to pipeline logs and ingest into Azure Data Explorer so that I can analyze them later.
 ---
@@ -20,7 +17,7 @@ ms.date: 11/26/2020
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md).
 * Logstash version 6+ [Installation instructions](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html).
 
@@ -52,7 +49,7 @@ Run the following command in the query window:
 
 ## Install the Logstash output plugin
 
-The Logstash output plugin communicates with Azure Data Explorer and sends the data to the service.
+The Logstash output plugin communicates with Azure Data Explorer and sends the data to the service. For more information, see [Logstash plugin](https://github.com/Azure/logstash-output-kusto).
 Run the following command inside the Logstash root directory to install the plugin:
 
 ```sh
@@ -117,7 +114,7 @@ output {
 
 ## Run Logstash
 
-We are now ready to run Logstash and test our settings.
+We're now ready to run Logstash and test our settings.
 
 1. In the Logstash root directory, run the following command:
 

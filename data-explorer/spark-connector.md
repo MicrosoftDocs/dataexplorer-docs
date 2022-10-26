@@ -1,10 +1,7 @@
 ---
 title: Use the Azure Data Explorer connector for Apache Spark to move data between Azure Data Explorer and Spark clusters.
 description: This topic shows you how to move data between Azure Data Explorer and Apache Spark clusters.
-author: orspod
-ms.author: orspodek
 ms.reviewer: ohbitton
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 04/19/2021
 ---
@@ -16,6 +13,9 @@ ms.date: 04/19/2021
 The Azure Data Explorer connector for Spark is an [open source project](https://github.com/Azure/azure-kusto-spark) that can run on any Spark cluster. It implements data source and data sink for moving data across Azure Data Explorer and Spark clusters. Using Azure Data Explorer and Apache Spark, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, Azure Data Explorer becomes a valid data store for standard Spark source and sink operations, such as write, read, and writeStream.
 
 You can write to Azure Data Explorer in either batch or streaming mode. Reading from Azure Data Explorer supports column pruning and predicate pushdown, which filters the data in Azure Data Explorer, reducing the volume of transferred data.
+
+> [!NOTE]
+> For information about working with the Synapse Spark connector for Azure Data Explorer, see [Connect to Azure Data Explorer using Apache Spark for Azure Synapse Analytics](/azure/synapse-analytics/quickstart-connect-azure-data-explorer).
 
 This topic describes how to install and configure the Azure Data Explorer Spark connector and move data between Azure Data Explorer and Apache Spark clusters.
 
@@ -116,7 +116,7 @@ Azure AD application authentication is the simplest and most common authenticati
 | Properties | Option String | Description |
 |--|--|--|
 | **KUSTO_AAD_APP_ID** | kustoAadAppId | Azure AD application (client) identifier. |
-| **KUSTO_AAD_AUTHORITY_ID** | kustoAadAuthorityID | Azure AD authentication authority. Azure AD Directory (tenant) ID. |
+| **KUSTO_AAD_AUTHORITY_ID** | kustoAadAuthorityID | Azure AD authentication authority. Azure AD Directory (tenant) ID. Optional - defaults to microsoft.com. For more information, see [AAD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
 | **KUSTO_AAD_APP_SECRET** | kustoAadAppSecret | Azure AD application key for the client. |
 
 > [!NOTE]

@@ -1,11 +1,7 @@
 ---
-title: Kusto connection strings - Azure Data Explorer | Microsoft Docs
+title: Kusto connection strings - Azure Data Explorer
 description: This article describes Kusto connection strings in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/24/2020
 ---
@@ -51,6 +47,26 @@ by the C# `Kusto.Data.KustoConnectionStringBuilder` class. This class validates
 all connection strings and generates a runtime exception if validation fails.
 This functionality is present in all flavors of Kusto SDK.
 
+## Trusted endpoints
+
+A connection with a Kusto endpoint can only be established if that endpoint is trusted.
+The Kusto client trusts all endpoints whose hostname part is issued by the service
+(e.g., endpoints whose DNS hostname ends with `kusto.windows.net`) by default.
+The client will not establish connections to other endpoints; in order to allow that,
+one can use the `Kusto.Data.Common.KustoTrustedEndpoints` class to add additional endpoints
+to the list of trusted endpoints (by using either `SetOverridePolicy` which overrides
+the default policy, or `AddTrustedHosts` which adds new entries to the existing policy.)
+
+```csharp
+Kusto.Data.Common.Impl.WellKnownKustoEndpoints.AddTrustedHosts(
+    new[] {
+        // Allow an explicit service address
+        new FastSuffixMatcher.MatchRule("my-kusto.contoso.com", exact: true),
+        // Allow services whose DNS name end with ".contoso.com"
+        new FastSuffixMatcher.MatchRule(".contoso.com", exact: false),
+    });
+```
+
 ## Connection string properties
 
 The following table lists all the properties you can specify in a Kusto connection string.
@@ -89,7 +105,7 @@ It lists programmatic names (which is the name of the property in the
 |Application Key                                   |AppKey                                    |ApplicationKey                                |A String value that provides the application key to use when authenticating using an application secret flow|
 |Application Name for Tracing                      |TraceAppName                              |ApplicationNameForTracing                     |A String value that reports to the service which application name to use when tracing the request internally|
 |Application Token                                 |AppToken                                  |ApplicationToken                              |A String value that instructs the client to perform application authenticating with the specified bearer token|
-|Authority Id                                      |TenantId                                  |Authority                                     |A String value that provides the name or ID of the tenant in which the application is registered|
+|Authority Id                                      |TenantId                                  |Authority                                     |A String value that provides the name or ID of the tenant in which the application is registered. The default value is microsoft.com. For more information, see [AAD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
 |ManagedServiceIdentity                            |N/A                                       |EmbeddedManagedIdentity                       |A String value that instructs the client which application identity to use with managed identity authentication; use `system` to indicate the system-assigned identity. This property cannot be set with a connection string, only programmatically.|
 |Application Certificate Subject Distinguished Name|Application Certificate Subject           |ApplicationCertificateSubjectDistinguishedName||
 |Application Certificate Issuer Distinguished Name |Application Certificate Issuer            |ApplicationCertificateIssuerDistinguishedName ||

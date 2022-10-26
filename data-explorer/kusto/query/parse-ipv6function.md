@@ -1,11 +1,7 @@
 ---
 title: parse_ipv6() - Azure Data Explorer
 description: This article describes parse_ipv6() function in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/13/2022
 ---
@@ -34,7 +30,7 @@ The IP address to the LEFT of the slash (`/`) is the base IP address. The number
 ## Returns
 
 If conversion is successful, the result will be a string representing a canonical IPv6 network address.
-If conversion isn't successful, the result will be `null`.
+If conversion isn't successful, the result will be an empty string.
 
 ## Example
 

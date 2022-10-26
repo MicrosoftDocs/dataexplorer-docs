@@ -1,25 +1,22 @@
 ---
-title: 'Create an event hub data connection for Azure Data Explorer by using Azure Resource Manager template'
-description: In this article, you learn how to create an event hub data connection for Azure Data Explorer by using Azure Resource Manager template.
-author: orspod
-ms.author: orspodek
+title: 'Create an Event Hubs data connection for Azure Data Explorer by using Azure Resource Manager template'
+description: In this article, you learn how to create an Event Hubs data connection for Azure Data Explorer by using Azure Resource Manager template.
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 11/28/2019
+ms.date: 03/15/2022
 ---
 
-# Create an event hub data connection for Azure Data Explorer by using Azure Resource Manager template
+# Create an Event Hubs data connection for Azure Data Explorer by using Azure Resource Manager template
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [One-click](one-click-event-hub.md)
+> * [Ingestion wizard](./event-hub-wizard.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)] 
-In this article, you create an event hub data connection for Azure Data Explorer by using Azure Resource Manager template.
+In this article, you create an Event Hubs data connection for Azure Data Explorer by using Azure Resource Manager template.
 
 ## Prerequisites
 
@@ -28,9 +25,9 @@ In this article, you create an event hub data connection for Azure Data Explorer
 * Create [a table and column mapping](ingest-data-event-hub.md#create-a-target-table-in-azure-data-explorer).
 * Create [an event hub](/azure/event-hubs/event-hubs-create).
 
-## Azure Resource Manager template for adding an event hub data connection
+## Azure Resource Manager template for adding an Event Hubs data connection
 
-The following example shows an Azure Resource Manager template for adding an event hub data connection.  You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) by using the form.
+The following example shows an Azure Resource Manager template for adding an Event Hubs data connection.  You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) by using the form.
 
 ```json
 {
@@ -41,7 +38,7 @@ The following example shows an Azure Resource Manager template for adding an eve
             "type": "string",
             "defaultValue": "eventhubns",
             "metadata": {
-                "description": "Specifies the event hub Namespace name."
+                "description": "Specifies the Event Hubs Namespace name."
             }
         },
         "EventHubs_eventhubdemo_name": {
@@ -93,6 +90,13 @@ The following example shows an Azure Resource Manager template for adding an eve
                 "description": "Specifies the data format"
             }
         },
+        "databaseRouting_type": {
+            "type": "string",
+            "defaultValue": "Single",
+            "metadata": {
+                "description": "The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* EventData property."
+            }
+        },
         "dataconnections_kustodc_name": {
             "type": "string",
             "defaultValue": "kustodc",
@@ -135,7 +139,8 @@ The following example shows an Azure Resource Manager template for adding an eve
                 "consumerGroup": "[parameters('consumergroup_default_name')]",
                 "tableName": "[parameters('tables_kustotable_name')]",
                 "mappingRuleName": "[parameters('mapping_kustomapping_name')]",
-                "dataFormat": "[parameters('dataformat_type')]"
+                "dataFormat": "[parameters('dataformat_type')]",
+                "databaseRouting": "[parameters('databaseRouting_type')]"
             }
         }
     ]

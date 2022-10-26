@@ -1,11 +1,7 @@
 ---
 title: Samples for Kusto Queries - Azure Data Explorer
 description: This article describes common queries and examples that use the Kusto Query Language.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/02/2021
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
@@ -60,7 +56,7 @@ Events
 | where Name == "Start"
 | project Name, City, SessionId, StartTime=timestamp
 | join (Events 
-        | where Name="Stop"
+        | where Name == "Stop"
         | project StopTime=timestamp, SessionId) 
     on SessionId
 | project City, SessionId, StartTime, StopTime, Duration = StopTime - StartTime
@@ -821,7 +817,7 @@ The following sections give examples of how to work with strings when using the 
 
 ### Strings and how to escape them
 
-String values are wrapped with either single or double quotes. Add the backslash (\\) to the left of a character to escape the character: `\t` for tab, `\n` for newline, and `\"` for the single quote character.
+String values are wrapped with either single or double quotes. Add the backslash (\\) to the left of a character to escape the character: `\t` for tab, `\n` for newline, `\'` for a single quote character, and `\"` for a double quote character.
 
 ```kusto
 print "this is a 'string' literal in double \" quotes"

@@ -1,11 +1,7 @@
 ---
 title: ".alter cluster sandbox policy command - Azure Data Explorer"
 description: "This article describes the .alter cluster sandbox policy command in Azure Data Explorer."
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 09/30/2021
 ---
@@ -35,22 +31,22 @@ Returns a JSON representation of the policy.
 Modifies the collection of sandbox policies at the cluster level.
 
 ```kusto
-.alter cluster policy sandbox @'['
-  '{'
-    '"SandboxKind": "PythonExecution",'
-    '"IsEnabled": true,'
-    '"InitializeOnStartup": false,'
-    '"TargetCountPerNode": 4,'
-    '"MaxCpuRatePerSandbox": 50,'
-    '"MaxMemoryMbPerSandbox": 10240'
-  '},'
-  '{'
-    '"SandboxKind": "RExecution",'
-    '"IsEnabled": true,'
-    '"InitializeOnStartup": false,'
-    '"TargetCountPerNode": 4,'
-    '"MaxCpuRatePerSandbox": 50,'
-    '"MaxMemoryMbPerSandbox": 10240'
-  '}'
-']'
+.alter cluster policy sandbox ```[
+  {
+    "SandboxKind": "PythonExecution",
+    "IsEnabled": true,
+    "InitializeOnStartup": false,
+    "TargetCountPerNode": 4,
+    "MaxCpuRatePerSandbox": 50,
+    "MaxMemoryMbPerSandbox": 10240
+  },
+  {
+    "SandboxKind": "RExecution",
+    "IsEnabled": true,
+    "InitializeOnStartup": false,
+    "TargetCountPerNode": 4,
+    "MaxCpuRatePerSandbox": 50,
+    "MaxMemoryMbPerSandbox": 10240
+  }
+]```
 ```

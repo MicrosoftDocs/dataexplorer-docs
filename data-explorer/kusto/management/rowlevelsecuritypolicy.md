@@ -1,11 +1,7 @@
 ---
 title: Row Level Security - Azure Data Explorer
 description: This article describes Row Level Security in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 10/11/2020
 ---
@@ -70,7 +66,7 @@ let UserToCountryMapping = datatable(User:string, Country:string)
   "anna@domain.com", "France"
 ];
 Sales
-| where Country in (UserToCountryMapping | where User == current_principal_details()["UserPrincipalName"] | project Country)
+| where Country in ((UserToCountryMapping | where User == current_principal_details()["UserPrincipalName"] | project Country))
 ```
 
 If you have a group that contains the managers, you might want to give them access to all rows. Query the Row Level Security policy.
@@ -159,8 +155,8 @@ For example:
 
 When an RLS policy is enabled on a table, there will be some performance impact on queries that access that table. Access to the table will be replaced by the RLS query that's defined on that table. The performance impact of an RLS query will normally consist of two parts:
 
-* Membership checks in Azure Active Directory
-* The filters applied on the data
+* Membership checks in Azure Active Directory: Checks are efficient. You can check membership in tens, or even hundreds of groups without major impact on the query performance.
+* Filters, joins, and other operations that are applied on the data: Impact depends on the complexity of the query
 
 For example:
 

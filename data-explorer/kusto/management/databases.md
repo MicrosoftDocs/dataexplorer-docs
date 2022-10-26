@@ -1,11 +1,7 @@
 ---
 title: Databases management - Azure Data Explorer
 description: This article describes Databases management in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/24/2020
 ---
@@ -21,6 +17,3 @@ This topic describes the following database control commands:
 |[`.alter database prettyname`](alter-database.md) |Alters a database's pretty (friendly) name |
 |[`.show database schema`](show-schema-database.md) |Returns a flat list of the structure of the selected databases with all their tables and columns in a single table or JSON object |
 |[`.execute database script`](execute-database-script.md) | Executes batch of control commands in scope of a single database |
-
-
-

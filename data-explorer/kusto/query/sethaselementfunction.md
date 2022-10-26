@@ -1,11 +1,7 @@
 ---
 title: set_has_element() - Azure Data Explorer
 description: This article describes set_has_element() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/23/2020
 ---
@@ -20,7 +16,7 @@ Determines whether the specified set contains the specified element.
 ## Arguments
 
 * *array*: Input array to search.
-* *value*: Value to search for. The value should be of type `long`, `integer`, `double`, `datetime`, `timespan`, `decimal`, `string`, or `guid`.
+* *value*: Value to search for. The value should be of type `long`, `integer`, `double`, `datetime`, `timespan`, `decimal`, `string`, `guid`, or `boolean`.
 
 ## Returns
 

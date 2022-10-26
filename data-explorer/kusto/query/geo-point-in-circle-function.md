@@ -1,11 +1,7 @@
 ---
 title: geo_point_in_circle() - Azure Data Explorer
 description: This article describes geo_point_in_circle() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: mbrichko
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/03/2020
 ---
@@ -71,7 +67,7 @@ StormEvents
 | where geo_point_in_circle(BeginLon, BeginLat, real(-81.3891), 28.5346, 1000 * 100)
 | summarize count() by EventType, hash = geo_point_to_s2cell(BeginLon, BeginLat)
 | project geo_s2cell_to_central_point(hash), EventType, count_
-| render piechart with (kind=map) // map rendering available in Kusto Explorer desktop
+| render piechart with (kind=map) // map pie rendering available in Kusto Explorer desktop
 ```
 
 The following example shows NY Taxi pickups within 10 meters of a particular location. Relevant pickups are aggregated by hash.
@@ -85,7 +81,7 @@ nyc_taxi
 | where geo_point_in_circle( pickup_longitude, pickup_latitude, real(-73.9928), 40.7429, 10)
 | summarize by hash = geo_point_to_s2cell(pickup_longitude, pickup_latitude, 22)
 | project geo_s2cell_to_central_point(hash)
-| render scatterchart with (kind = map) // map rendering available in Kusto Explorer desktop
+| render scatterchart with (kind = map)
 ```
 
 The following example will return true.

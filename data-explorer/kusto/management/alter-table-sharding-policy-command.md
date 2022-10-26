@@ -1,13 +1,9 @@
 ---
 title: .alter table sharding policy command - Azure Data Explorer
 description: This article describes the .alter table sharding policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/05/2022
+ms.date: 09/29/2022
 ---
 # .alter table sharding policy
 
@@ -32,6 +28,13 @@ Returns a JSON representation of the policy.
 
 The following command  returns the updated extents sharding policy for the table:
 
-```kusto
-.alter table MyTable policy sharding @'{ "MaxRowCount": 750000, "MaxExtentSizeInMb": 1024, "MaxOriginalSizeInMb": 2048}'
+````kusto
+.alter table MyTable policy sharding
 ```
+{
+    "MaxRowCount" : 750000,
+    "MaxExtentSizeInMb" : 1024,
+    "MaxOriginalSizeInMb" : 2048
+}
+```
+````

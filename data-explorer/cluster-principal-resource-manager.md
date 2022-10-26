@@ -1,12 +1,9 @@
 ---
 title: 'Add cluster principals for Azure Data Explorer by using an Azure Resource Manager template'
 description: In this article, you learn how to add cluster principals for Azure Data Explorer by using an Azure Resource Manager template.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 02/3/2020
 ---
 
 # Add cluster principals for Azure Data Explorer by using an Azure Resource Manager template

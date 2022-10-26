@@ -1,11 +1,7 @@
 ---
 title: ipv4_is_match() - Azure Data Explorer
 description: This article describes ipv4_is_match() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/24/2020
 ---
@@ -40,6 +36,9 @@ For example, 192.168.2.0/24 will have an associated net/subnetmask containing 24
 * `true`: If the long representation of the first IPv4 string argument is equal to the second IPv4 string argument.
 *  `false`: Otherwise.
 * `null`: If conversion for one of the two IPv4 strings wasn't successful.
+
+>[!NOTE]
+> When matching against an IPv4 address that's not a range, we recommend using the [equals operator](equals-cs-operator.md) (`==`), for better performance.
 
 ## Examples
 

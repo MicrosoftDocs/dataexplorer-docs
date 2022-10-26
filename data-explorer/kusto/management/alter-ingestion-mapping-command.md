@@ -1,13 +1,9 @@
 ---
 title: ".alter ingestion mapping - Azure Data Explorer"
 description: "This article describes .alter ingestion mapping in Azure Data Explorer."
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 09/29/2022
 ---
 # .alter ingestion mapping
 
@@ -25,34 +21,39 @@ Alters an existing ingestion mapping that is associated with a specific table/da
 
 ## Arguments
 
-*TableName* - Specify the name of the table.
-*DatabaseName* - Specify the name of the database.
-*MappingKind* - Specify the type of mapping.
-*MappingName* - Specify the name of the mapping.
-*ArrayOfMappingObjects* - An array with one or more mapping objects defined.
-
+* *TableName* - Specify the name of the table.
+* *DatabaseName* - Specify the name of the database.
+* *MappingKind* - Specify the type of mapping.
+* *MappingName* - Specify the name of the mapping.
+* *ArrayOfMappingObjects* - An array with one or more mapping objects defined.
 
 **Example** 
  
-```kusto
+````kusto
 .alter table MyTable ingestion csv mapping "Mapping1"
-'['
-'	{ "column" : "rownumber", "DataType":"int", "Properties":{"Ordinal":"0"}},'
-'	{ "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"} }'
-']'
+```
+[
+    {"column" : "rownumber", "DataType" : "int", "Properties" : {"Ordinal":"0"} },
+    { "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"} }
+]
+```
 
 .alter table MyTable ingestion json mapping "Mapping1"
-'['
-'	{ "column" : "rownumber", "Properties":{"Path":"$.rownumber"}},'
-'	{ "column" : "rowguid", "Properties":{"Path":"$.rowguid"}}'
-']'
+```
+[
+    { "column" : "rownumber", "Properties":{"Path":"$.rownumber"}},
+    { "column" : "rowguid", "Properties":{"Path":"$.rowguid"}}
+]
+```
 
 .alter database MyDatabase ingestion csv mapping "Mapping2"
-'['
-'	{ "column" : "rownumber", "DataType":"int", "Properties":{"Ordinal":"0"}},'
-'	{ "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"} }'
-']'
 ```
+[
+    { "column" : "rownumber", "DataType":"int", "Properties":{"Ordinal":"0"}},
+    { "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"} }
+]
+```
+````
 
 **Sample output**
 

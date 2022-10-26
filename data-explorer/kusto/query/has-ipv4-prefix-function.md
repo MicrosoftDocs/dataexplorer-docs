@@ -1,11 +1,7 @@
 ---
 title: has_ipv4_prefix() - Azure Data Explorer
 description: This article describes has_ipv4_prefix() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/21/2021
 ---
@@ -33,7 +29,7 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 `true` if the *ip_address_prefix* is a valid IPv4 address prefix, and it was found in *source*. Otherwise, the function returns `false`.
 
-> [!NOTE]
+> [!TIP]
 > To search for many IPv4 prefixes at once, use the [has_any_ipv4_prefix()](has-any-ipv4-prefix-function.md) function.
 
 ## Examples

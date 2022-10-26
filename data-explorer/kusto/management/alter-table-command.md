@@ -1,11 +1,7 @@
 ---
 title: .alter table - Azure Data Explorer
 description: This article describes the .alter table command.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: orspodek
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 06/08/2020
 ---

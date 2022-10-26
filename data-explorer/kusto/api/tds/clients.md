@@ -1,11 +1,7 @@
 ---
 title: MS-TDS clients and Kusto - Azure Data Explorer
 description: This article describes MS-TDS clients and Kusto in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 10/30/2019
@@ -97,6 +93,26 @@ You can also use service principal authentication with ODBC. To do so, you must 
 ```odbc
 "Driver={ODBC Driver 17 for SQL Server};Server=<adx_cluster_name>.<region_name>.kusto.windows.net;Database=<adx_database_name>;Authentication=ActiveDirectoryServicePrincipal;Language=any@MaxStringSize:4000,AadAuthority:<aad_tenant_id>;UID=<aad_application_id>;PWD=<aad_application_secret>"
 ```
+
+You can also change the *Language* field in the ODBC data source (DSN). To do so, add the *Language* value in the DSN registry, as shown in the following example:
+
+```odbc
+[HKEY_CURRENT_USER\SOFTWARE\ODBC\ODBC.INI\MyUserDSN]
+"Language"="any@AadAuthority:<aad_tenant_id>"
+```
+
+For Linux and macOS, edit the odbc.ini file, as follows:
+
+```odbc
+# [DSN name]
+[MSSQLTest]  
+Driver = ODBC Driver 17 for SQL Server  
+# Server = [protocol:]server[,port]  
+Server = tcp:<adx_cluster_name>.<region_name>.kusto.windows.net,1433
+Language = any@AadAuthority:<aad_tenant_id>
+```
+
+The Azure AD tenant ID for SQL clients can also be configured at the cluster level. If configured, you don't need to specify the ID on client. To change the tenant ID at the cluster level, please open a support request in the [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
 
 ### PowerShell
 
@@ -197,8 +213,8 @@ Create a connection to the Azure Data Explorer database.
 ## Microsoft SQL Server Management Studio (v18.x)
 
 1. Select **Connect**, and then **Database Engine** under **Object Explorer**.
-1. Specify the name of Azure Data Explorer cluster as a server name. For example, *mykusto.kusto.windows.net*.
-1. Set **Active Directory - Integrated** for authentication.
+1. Specify the name of Azure Data Explorer cluster as a server name. For example, *mykusto.region.kusto.windows.net*.
+1. Set **Azure Active Directory - Universal with MFA** for authentication and specify the username.
 1. Select **Options**.
 1. Select **Browse Server** under **Connect to database** to browse available databases.
 1. Select **Yes** to continue browsing.

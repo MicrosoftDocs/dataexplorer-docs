@@ -1,11 +1,7 @@
 ---
 title: geo_point_to_geohash() - Azure Data Explorer
 description: This article describes geo_point_to_geohash() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: mbrichko
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/04/2020
 ---
@@ -77,7 +73,7 @@ StormEvents
 | project BeginLon, BeginLat
 | summarize by hash=geo_point_to_geohash(BeginLon, BeginLat, 3)
 | project geo_geohash_to_central_point(hash)
-| render scatterchart with (kind=map) // map rendering available in Kusto Explorer desktop
+| render scatterchart with (kind=map)
 ```
 
 <!-- csl: https://help.kusto.windows.net/Samples -->

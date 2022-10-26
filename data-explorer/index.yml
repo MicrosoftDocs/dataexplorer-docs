@@ -8,9 +8,9 @@ metadata:
   description: Azure Data Explorer is a log analytics cloud platform optimized for ad-hoc big data queries.
   ms.service: data-explorer
   ms.topic: landing-page
-  author: orspod
-  ms.author: orspodek
-  ms.date: 11/23/2021
+  author: shsagir
+  ms.author: shsagir
+  ms.date: 08/25/2022
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -39,9 +39,11 @@ landingContent:
           - text: "Free Pluralsight training: Azure Data Explorer"
             url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer          
           - text: "Learn module: Introduction to Azure Data Explorer"
-            url:  /learn/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+            url:  /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
           - text: "Learn module: Write your first query with Kusto Query Language"
-            url: /learn/modules/write-first-query-kusto-query-language/
+            url: /training/modules/write-first-query-kusto-query-language/
+          - text: "Learn module: Gain insights from your data by using Kusto Query Language"
+            url: /training/modules/gain-insights-data-kusto-query-language/
   # Card
   - title: Create cluster and database
     linkLists:
@@ -75,8 +77,8 @@ landingContent:
             url: ingest-sample-data.md
       - linkListType: how-to-guide
         links:
-          - text: One-click ingestion
-            url: ingest-data-one-click.md
+          - text: Ingestion wizard
+            url: ingest-data-wizard.md
           - text: Streaming ingestion
             url: ingest-data-streaming.md
           - text: Python
@@ -93,7 +95,7 @@ landingContent:
     linkLists:
       - linkListType: quickstart
         links:
-          - text: Query data with the Web UI
+          - text: Query data with the Azure Data Explorer web UI
             url: web-query-data.md
       - linkListType: tutorial
         links:
@@ -187,7 +189,11 @@ landingContent:
           - text: IoT analytics with Azure Data Explorer
             url: /azure/architecture/solution-ideas/articles/iot-azure-data-explorer
           - text: Geospatial data processing and analytics 
-            url: /azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure   
+            url: /azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure
+          - text: Long-term security log retention with Azure Data Explorer
+            url: /azure/architecture/example-scenario/security/security-log-retention-azure-data-explorer
+          - text: Data analytics for automotive test fleets
+            url: /azure/architecture/industries/automotive/automotive-telemetry-analytics
   # Card
   - title: Reference
     linkLists:

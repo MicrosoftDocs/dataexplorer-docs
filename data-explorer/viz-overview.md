@@ -1,16 +1,12 @@
 ---
 title: 'Azure Data Explorer data visualization'
 description: 'Learn about the different ways you can visualize your Azure Data Explorer data'
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabil
-ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 06/22/2022
 ---
 
-# Data visualization with Azure Data Explorer 
+# Data visualization with Azure Data Explorer
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data that is used to build complex analytics solutions for vast amounts of data. Azure Data Explorer integrates with various visualization tools, so you can visualize your data and share the results across your organization. This data can be transformed into actionable insights to make an impact on your business.
 
@@ -18,13 +14,13 @@ Data visualization and reporting is a critical step in the data analytics proces
 
 ## Azure Data Explorer dashboards
 
-Azure Data Explorer dashboards is a web application that enables you to run queries and build dashboards in the stand-alone web application, the [Web UI](web-query-data.md). Azure Data Explorer dashboards provide three main advantages:
+Azure Data Explorer dashboards is a web application that enables you to run queries and build dashboards in the stand-alone web application, the [Azure Data Explorer web UI](web-query-data.md). Azure Data Explorer dashboards provide three main advantages:
 
-* Natively export queries from the Web UI to Azure Data Explorer dashboards. 
-* Explore the data in the Web UI.
+* Natively export queries from the Azure Data Explorer web UI to Azure Data Explorer dashboards.
+* Explore the data in the Azure Data Explorer web UI.
 * Optimized dashboard rendering performance.
 
-For more information see, [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
+For more information, see, [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
 
 ## Kusto query language visualizations
 
@@ -32,13 +28,13 @@ The Kusto query language [`render operator`](kusto/query/renderoperator.md) offe
 
 ## Power BI
 
-Azure Data Explorer provides the capability to connect to [Power BI](https://powerbi.microsoft.com) using various methods: 
+Azure Data Explorer provides the capability to connect to [Power BI](https://powerbi.microsoft.com) using various methods:
 
-  * [Built-in native Power BI connector](power-bi-connector.md)
+* [Built-in native Power BI connector](power-bi-connector.md)
 
-  * [Query import from Azure Data Explorer into Power BI](power-bi-imported-query.md)
- 
-  * [SQL query](power-bi-sql-query.md)
+* [Query import from Azure Data Explorer into Power BI](power-bi-imported-query.md)
+
+* [SQL query](power-bi-sql-query.md)
 
 ## Microsoft Excel
 
@@ -46,7 +42,7 @@ Azure Data Explorer provides the capability to connect to [Microsoft Excel](http
 
 ## Grafana
 
-[Grafana](https://grafana.com) provides an Azure Data Explorer plugin that enables you to visualize data from Azure Data Explorer. You [set up Azure Data Explorer as a data source for Grafana, and then visualize the data](grafana.md). 
+[Grafana](https://grafana.com) provides an Azure Data Explorer plugin that enables you to visualize data from Azure Data Explorer. You [set up Azure Data Explorer as a data source for Grafana, and then visualize the data](grafana.md).
 
 ## Kibana
 
@@ -63,9 +59,9 @@ Azure Data Explorer provides the capability to connect to [Tableau](https://www.
 
 ## Qlik
 
-Azure Data Explorer provides the capability to connect to [Qlik](https://www.qlik.com) using the [ODBC connector](connect-odbc.md) and then create Qlik Sense dashboards and visualize the data. Using the following video, you can learn to visualize Azure Data Explorer data with Qlik. 
+Azure Data Explorer provides the capability to connect to [Qlik](https://www.qlik.com) using the [ODBC connector](connect-odbc.md) and then create Qlik Sense dashboards and visualize the data. Using the following video, you can learn to visualize Azure Data Explorer data with Qlik.
 
-> [!VIDEO https://www.youtube.com/embed/nhWIiBwxjjU]  
+> [!VIDEO https://www.youtube.com/embed/nhWIiBwxjjU]
 
 ## Sisense
 

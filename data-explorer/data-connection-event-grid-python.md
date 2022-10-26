@@ -1,18 +1,15 @@
 ---
 title: 'Create an Event Grid data connection for Azure Data Explorer by using Python'
 description: In this article, you learn how to create an Event Grid data connection for Azure Data Explorer by using Python.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 01/03/2022
+ms.date: 07/31/2022
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer by using Python
 
 > [!div class="op_single_selector"]
-> * [One-click](one-click-ingestion-new-table.md)
+> * [Ingestion wizard](./ingestion-wizard-new-table.md)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
@@ -76,12 +73,13 @@ location = "Central US"
 table_name = "StormEvents"
 mapping_rule_name = "StormEvents_CSV_Mapping"
 data_format = "csv"
+database_routing = "Multi"
 blob_storage_event_type = "Microsoft.Storage.BlobCreated"
 
-#Returns an instance of LROPoller, check https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, check https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.data_connections.begin_create_or_update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name, data_connection_name=data_connection_name,
                                             parameters=EventGridDataConnection(storage_account_resource_id=storage_account_resource_id, event_hub_resource_id=event_hub_resource_id, 
-                                                                                consumer_group=consumer_group, table_name=table_name, location=location, mapping_rule_name=mapping_rule_name, data_format=data_format,
+                                                                                consumer_group=consumer_group, table_name=table_name, location=location, mapping_rule_name=mapping_rule_name, data_format=data_format, database_routing=database_routing,
                                                                                 blob_storage_event_type=blob_storage_event_type))
 # The creation of the connection is async. Validation errors are only visible if you wait for the results.
 poller.wait()
@@ -100,6 +98,7 @@ print(poller.result())
 | data_connection_name | *myeventhubconnect* | The desired name of your data connection.|
 | table_name | *StormEvents* | The name of the target table in the target database.|
 | mapping_rule_name | *StormEvents_CSV_Mapping* | The name of your column mapping related to the target table.|
+| database_routing | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-grid-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-grid-overview.md#events-routing). |
 | data_format | *csv* | The data format of the message.|
 | event_hub_resource_id | *Resource ID* | The resource ID of your event hub where the Event Grid is configured to send events. |
 | storage_account_resource_id | *Resource ID* | The resource ID of your storage account that holds the data for ingestion. |

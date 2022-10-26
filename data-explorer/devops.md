@@ -1,11 +1,7 @@
 ---
 title: 'Azure DevOps task for Azure Data Explorer'
 description: 'In this topic, you learn to create a release pipeline and deploy'
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: shfeldma
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/05/2021
 

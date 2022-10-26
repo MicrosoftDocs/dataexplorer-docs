@@ -1,32 +1,21 @@
 ---
 title: ".alter database ingestion batching policy command - Azure Data Explorer"
 description: "This article describes the .alter database ingestion batching policy command in Azure Data Explorer."
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/06/2022
+ms.date: 09/27/2022
 ---
 # .alter database ingestion batching policy
 
-Set the [ingestion batching policy](batchingpolicy.md) to determine when data aggregation stops and a batch is sealed and ingested. The policy applies at the database or table level.
+Set the [ingestion batching policy](batchingpolicy.md) to determine when data aggregation stops and a batch is sealed and ingested.
 
-If the policy is set to `null`, default values are used. Default values are:
+When setting the policy for a database, it applies for all its tables, except tables that were set with their own IngestionBatching policy. If the policy isn't set for a database, the [default values](batchingpolicy.md#defaults-and-limits) apply.
 
-* Batch time of 5 minutes
-* 1000 items
-* Total size of 1 GB
-* Or default cluster settings
+[!INCLUDE [batching-policy-permissions](../../includes/batching-policy-permissions.md)]
 
-## Ingestion batching limits
+## Defaults and limits
 
-| Type | Default | Minimum | Maximum
-|---|---|---|---|
-| Number of items | 1000 | 1 | 2000 |
-| Data size (MB) | 1000 | 100 | 1000 |
-| Time | 5 minutes | 10 seconds | 15 minutes |
+See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 
 ## Syntax
 
@@ -41,10 +30,17 @@ If the policy is set to `null`, default values are used. Default values are:
 
 The following command sets a batch ingress data time of 30 seconds, for 500 files, or 1 GB, whichever comes first.
 
-```kusto
-.alter database MyDatabase policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:30", "MaximumNumberOfItems": 500, "MaximumRawDataSizeMB": 1024}'
+````kusto
+.alter database MyDatabase policy ingestionbatching
 ```
+{
+    "MaximumBatchingTimeSpan" : "00:00:30",
+    "MaximumNumberOfItems" : 500,
+    "MaximumRawDataSizeMB" : 1024
+}
+```
+````
 
 ## Next steps
 
-* [alter table batching policy](alter-table-ingestion-batching-policy.md)
+- [alter table batching policy](alter-table-ingestion-batching-policy.md)

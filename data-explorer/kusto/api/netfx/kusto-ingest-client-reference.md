@@ -1,11 +1,7 @@
 ---
 title: Kusto.Ingest client interfaces and factory classes - Azure Data Explorer
 description: This article describes Kusto.Ingest client interfaces and factory classes in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: ohbitton
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/19/2020
 ---
@@ -45,7 +41,7 @@ public interface IKustoIngestClient : IDisposable
     /// Ingest data from one of the supported storage providers. Currently the supported providers are: File System, Azure Blob Storage.
     /// </summary>
     /// <param name="uri">The URI of the storage resource to be ingested. Note: This URI may include a storage account key or shared access signature (SAS).
-    ///  See <see href="https://docs.microsoft.com/azure/kusto/api/connection-strings/storage"/> for the URI format options.</param>
+    ///  See <see href="https://learn.microsoft.com/azure/kusto/api/connection-strings/storage"/> for the URI format options.</param>
     /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
     /// <param name="sourceOptions">Options for the storage ingestion source. This is an optional parameter</param>
     /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>

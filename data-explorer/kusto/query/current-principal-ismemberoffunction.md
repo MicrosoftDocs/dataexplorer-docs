@@ -1,11 +1,7 @@
 ---
 title: current_principal_is_member_of() - Azure Data Explorer
 description: This article describes current_principal_is_member_of() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/31/2021
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
@@ -23,11 +19,12 @@ Checks group membership or principal identity of the current principal running t
 
 ## Arguments
 
-* *list of expressions* - a comma-separated list of string literals, where each literal represents an AAD principal. See [examples for AAD principals](../management/access-control/principals-and-identity-providers.md#aad-tenants).
+* *list of expressions* - a comma-separated list of string literals, where each literal represents an AAD principal. See [examples for AAD principals](../management/access-control/principals-and-identity-providers.md#azure-ad-tenants).
 
 ## Returns
   
 The function returns:
+
 * `true`: if the current principal running the query was successfully matched for at least one input argument.
 * `false`: otherwise
 

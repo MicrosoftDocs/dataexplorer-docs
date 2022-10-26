@@ -1,10 +1,7 @@
 ---
 title: 'Create an Azure Data Explorer cluster & DB using Python'
 description: Learn how to create an Azure Data Explorer cluster and database by using Python.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 06/03/2019
 ---
@@ -73,7 +70,7 @@ For running the examples in this article, we need an Azure AD Application and se
 
     cluster_operations = kusto_management_client.clusters
     
-    poller = cluster_operations.create_or_update(resource_group_name, cluster_name, cluster)
+    poller = cluster_operations.begin_create_or_update(resource_group_name, cluster_name, cluster)
     poller.wait()
     ```
 
@@ -86,7 +83,7 @@ For running the examples in this article, we need an Azure AD Application and se
    | resource_group_name | *testrg* | The resource group name where the cluster will be created. |
 
     > [!NOTE]
-    > **Create a cluster** is a long running operation. Method **create_or_update** returns an instance of LROPoller, see [LROPoller class](/python/api/msrest/msrest.polling.lropoller) to get more information.
+    > **Create a cluster** is a long running operation. Method **begin_create_or_update** returns an instance of LROPoller, see [LROPoller class](/python/api/msrest/msrest.polling.lropoller) to get more information.
 
 1. Run the following command to check whether your cluster was successfully created:
 
@@ -133,7 +130,7 @@ If the result contains `provisioningState` with the `Succeeded` value, then the 
      					soft_delete_period=soft_delete_period,
      					hot_cache_period=hot_cache_period)
     
-    poller = database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = cluster_name, database_name = database_name, parameters = database)
+    poller = database_operations.begin_create_or_update(resource_group_name = resource_group_name, cluster_name = cluster_name, database_name = database_name, parameters = database)
     poller.wait()
     ```
 

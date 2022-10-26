@@ -1,11 +1,7 @@
 ---
-title: Kusto client library - Azure Data Explorer | Microsoft Docs
+title: Kusto client library - Azure Data Explorer
 description: This article describes Kusto client library in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/15/2020
 adobe-target: true
@@ -38,7 +34,7 @@ concurrently.
 Following are a few examples. Additional samples can be found [here](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client).
 
 **Example: Counting Rows**
- 
+
 The following code demonstrates counting the rows of a table named `StormEvents` in a database named `Samples`:
 
 ```csharp
@@ -48,20 +44,22 @@ var reader = client.ExecuteQuery("StormEvents | count");
 // Don't forget to dispose of reader when done.
 ```
 
-**Example: Getting diagnostics info from the Kusto cluster**
+**Example: Enumerating the accessible databases**
 
 ```csharp
 var kcsb = new KustoConnectionStringBuilder(cluster URI here). WithAadUserPromptAuthentication();
 using (var client = KustoClientFactory.CreateCslAdminProvider(kcsb))
 {
-    var diagnosticsCommand = CslCommandGenerator.GenerateShowDiagnosticsCommand();
-    var objectReader = new ObjectReader<DiagnosticsShowCommandResult>(client.ExecuteControlCommand(diagnosticsCommand));
-    DiagnosticsShowCommandResult diagResult = objectReader.ToList().FirstOrDefault();
-    // DO something with the diagResult    
+    var databasesShowCommand = CslCommandGenerator.GenerateDatabasesShowCommand();
+    using (var reader = client.ExecuteControlCommand(diagnosticsCommand))
+    {
+        while (reader.Read())
+        {
+            Console.WriteLine("DatabaseName={0}", reader.GetString(0));
+        }
+    }
 }
 ```
-
-
 
 ## The KustoClientFactory client factory
 
@@ -73,4 +71,3 @@ of client code that utilizes Kusto. It provides the following important static m
 |`CreateCslQueryProvider`                    |`ICslQueryProvider`                    |Sending queries to a Kusto engine cluster.                    |
 |`CreateCslAdminProvider`                    |`ICslAdminProvider`                    |Sending control commands to a Kusto cluster (of any kind).    |
 |`CreateRedirectProvider`                    |`IRedirectProvider`                    |Creating a redirect HTTP response message for a Kusto request.|
-

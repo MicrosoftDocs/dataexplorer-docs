@@ -1,11 +1,7 @@
 ---
 title: ".alter cluster policy request classification command - Azure Data Explorer"
 description: "This article describes the .alter cluster policy request classification command in Azure Data Explorer."
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/06/2022
 ---

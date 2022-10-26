@@ -1,11 +1,7 @@
 ---
 title: Shuffle query - Azure Data Explorer
 description: This article describes Shuffle query in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 10/07/2021
 ---
@@ -182,7 +178,7 @@ StormEvents
 |---|
 |14|
 
-To overcome this issue and run in shuffle strategy, choose the key which is common for the `summarize` and `join` operations. In this case, this key is `ActivityId`. Use the hint `hint.shufflekey` to specify the shuffle key on the `join` to `hint.shufflekey = ActivityId`:
+To overcome this issue and run in shuffle strategy, choose the key which is common for the `summarize` and `join` operations. In this case, this key is `EpisodeId`. Use the hint `hint.shufflekey` to specify the shuffle key on the `join` to `hint.shufflekey = EpisodeId`:
 
 ```kusto
 StormEvents

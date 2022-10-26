@@ -1,10 +1,7 @@
 ---
 title: Delete data from Azure Data Explorer
 description: This article describes delete scenarios in Azure Data Explorer, including purge, dropping extents and retention based deletes.
-author: orspod
-ms.author: orspodek
 ms.reviewer: avneraa
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/01/2022
 ---

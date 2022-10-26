@@ -1,11 +1,7 @@
 ---
 title: Materialized views data purge - Azure Data Explorer
 description: This article describes materialized views data purge in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yifats
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/08/2021
 ---
@@ -23,8 +19,11 @@ The recommended process for purging records from a materialized view is:
 1. Purge the source table of the materialized view.
 1. After the source table purge is completed successfully, purge the materialized view.
 
-> [!WARNING]
+>[!WARNING]
 > Data deletion through the `.purge` command is designed to be used to protect personal data and should not be used in other scenarios. It is not designed to support frequent delete requests, or deletion of massive quantities of data, and may have a significant performance impact on the service.
+
+>[!NOTE]
+> While purge is running on a materialized view, materialization is not run. In this scenario, the materialization process is disabled because it conflicts with the purge process, both trying to work on the same [extents (data shards)](../extents-overview.md). The purge process is always prioritized over the materialization process. If the purge takes a long while to complete, the materialized view might start lagging. We recommend that you only query the [materialized part of the view](materialized-view-overview.md#materialized-views-queries) during this time. For more information, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work).
 
 **Limitations**
 

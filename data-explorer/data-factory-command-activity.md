@@ -1,11 +1,7 @@
 ---
 title: 'Use Azure Data Explorer control commands in Azure Data Factory'
 description: 'In this topic, use Azure Data Explorer control commands in Azure Data Factory'
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: tzgitlin
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/15/2019
 

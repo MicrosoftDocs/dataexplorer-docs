@@ -1,15 +1,12 @@
 ---
 title: 'Create an IoT Hub data connection for Azure Data Explorer by using C#'
 description: In this article, you learn how to create an IoT Hub data connection for Azure Data Explorer by using C#.
-author: orspod
-ms.author: orspodek
 ms.reviewer: lugoldbe
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 10/07/2019
+ms.date: 03/15/2022
 ---
 
-# Create an IoT Hub data connection for Azure Data Explorer by using C# (Preview)
+# Create an IoT Hub data connection for Azure Data Explorer by using C\#
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-iot-hub.md)
@@ -33,14 +30,14 @@ In this article, you create an IoT Hub data connection for Azure Data Explorer b
 
 [!INCLUDE [data-explorer-authentication](includes/data-explorer-authentication.md)]
 
-## Add an IoT Hub data connection 
+## Add an IoT Hub data connection
 
 The following example shows you how to add an IoT Hub data connection programmatically. See [connect Azure Data Explorer table to IoT Hub](ingest-data-iot-hub.md#connect-azure-data-explorer-table-to-iot-hub) for adding an Iot Hub data connection using the Azure portal.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "PlaceholderClientSecret";//Client Secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
 var credential = new ClientCredential(clientId, clientSecret);
@@ -67,9 +64,10 @@ var location = "Central US";
 var tableName = "StormEvents";
 var mappingRuleName = "StormEvents_CSV_Mapping";
 var dataFormat = DataFormat.CSV;
+var databaseRouting = "Multi";
 
 await kustoManagementClient.DataConnections.CreateOrUpdate(resourceGroupName, clusterName, databaseName, dataConnectionName,
-            new IotHubDataConnection(iotHubResourceId, consumerGroup, sharedAccessPolicyName, tableName: tableName, location: location, mappingRuleName: mappingRuleName, dataFormat: dataFormat));
+            new IotHubDataConnection(iotHubResourceId, consumerGroup, sharedAccessPolicyName, tableName: tableName, location: location, mappingRuleName: mappingRuleName, dataFormat: dataFormat, databaseRouting: databaseRouting));
 ```
 
 |**Setting** | **Suggested value** | **Field description**|
@@ -77,7 +75,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdate(resourceGroupName, cl
 | tenantId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Your tenant ID. Also known as directory ID.|
 | subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The subscription ID that you use for resource creation.|
 | clientId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The client ID of the application that can access resources in your tenant.|
-| clientSecret | *xxxxxxxxxxxxxx* | The client secret of the application that can access resources in your tenant. |
+| clientSecret | *PlaceholderClientSecret* | The client secret of the application that can access resources in your tenant. |
 | resourceGroupName | *testrg* | The name of the resource group containing your cluster.|
 | clusterName | *mykustocluster* | The name of your cluster.|
 | databaseName | *mykustodatabase* | The name of the target database in your cluster.|
@@ -89,5 +87,6 @@ await kustoManagementClient.DataConnections.CreateOrUpdate(resourceGroupName, cl
 | sharedAccessPolicyName | *iothubforread* | The name of the shared access policy that defines the permissions for devices and services to connect to IoT Hub. |
 | consumerGroup | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
+| databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-iot-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-iot-hub-overview.md#events-routing). |
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](includes/data-explorer-data-connection-clean-resources-csharp.md)]

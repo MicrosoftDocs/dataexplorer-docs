@@ -1,13 +1,10 @@
 ---
 title: Write queries for Azure Data Explorer
 description: In this how-to, you learn how to perform basic and more advanced queries for Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: mblythe
-ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 12/30/2021
-ms.localizationpriority: high 
+ms.date: 09/07/2022
+ms.localizationpriority: high
 ---
 
 # Write queries for Azure Data Explorer
@@ -16,15 +13,15 @@ In this article, you learn how to use the query language in Azure Data Explorer 
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md).
 
 You can run the queries in this article in one of two ways:
 
-- On the Azure Data Explorer *help cluster* that we have set up to aid learning.
+* On the Azure Data Explorer *help cluster* that we have set up to aid learning.
     [Sign in to the cluster](https://dataexplorer.azure.com/clusters/help/databases/samples) with an organizational email account that is a member of Azure Active directory.
 
-- On your own cluster that includes the StormEvents sample data. For  more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
+* On your own cluster that includes the StormEvents sample data. For  more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
@@ -43,7 +40,7 @@ For example, the following query has a single statement, which is a tabular expr
 ```Kusto
 StormEvents
 | where StartTime >= datetime(2007-11-01) and StartTime < datetime(2007-12-01)
-| where State == "FLORIDA"  
+| where State == "FLORIDA"
 | count
 ```
 
@@ -205,11 +202,11 @@ StormEvents
 
 The result of a **summarize** operation has:
 
-- Each column named in **by**
+* Each column named in **by**
 
-- A column for each computed expression
+* A column for each computed expression
 
-- A row for each combination of by values
+* A row for each combination of by values
 
 ### render
 
@@ -263,7 +260,7 @@ StormEvents
 ```
 
 > [!NOTE]
-> The **render** operator is a client-side feature rather than part of the engine. It's integrated into the language for ease of use. The web application supports the following options: barchart, columnchart, piechart, timechart, and linechart. 
+> The **render** operator is a client-side feature rather than part of the engine. It's integrated into the language for ease of use. The web application supports the following options: barchart, columnchart, piechart, timechart, and linechart.
 
 ## Scalar operators
 
@@ -415,7 +412,7 @@ StormEvents
 
 ## Tabular operators
 
-Kusto has many tabular operators, some of which are covered in other sections of this article. Here we'll focus on **parse**. 
+Kusto has many tabular operators, some of which are covered in other sections of this article. Here we'll focus on **parse**.
 
 ### parse
 
@@ -435,7 +432,7 @@ let MyTrace = datatable (EventTrace:string)
 'Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00Z, releaseTime=02/17/2016 08:41:00Z, previousLockTime=02/17/2016 08:40:00Z)'
 ];
 MyTrace
-| parse EventTrace with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previouLockTime:date ")" *  
+| parse EventTrace with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previouLockTime:date ")" *
 | project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previouLockTime
 ```
 
@@ -453,7 +450,7 @@ let MyTrace = datatable (EventTrace:string)
 'Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00Z, releaseTime=02/17/2016 08:41:00Z, previousLockTime=02/17/2016 08:40:00Z)'
 ];
 MyTrace
-| parse kind = regex EventTrace with "(.*?)[a-zA-Z]*=" resourceName @", totalSlices=\s*\d+\s*.*?sliceNumber=" sliceNumber:long  ".*?(previous)?lockTime=" lockTime ".*?releaseTime=" releaseTime ".*?previousLockTime=" previousLockTime:date "\\)"  
+| parse kind = regex EventTrace with "(.*?)[a-zA-Z]*=" resourceName @", totalSlices=\s*\d+\s*.*?sliceNumber=" sliceNumber:long  ".*?(previous)?lockTime=" lockTime ".*?releaseTime=" releaseTime ".*?previousLockTime=" previousLockTime:date "\\)"
 | project resourceName , sliceNumber , lockTime , releaseTime , previousLockTime
 ```
 
@@ -471,7 +468,7 @@ let MyTrace = datatable (EventTrace:string)
 'Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00Z, releaseTime=02/17/2016 08:41:00Z, previousLockTime=02/17/2016 08:40:00Z)'
 ];
 MyTrace
-| parse kind=relaxed "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=NULL, sliceNumber=23, lockTime=02/17/2016 08:40:01, releaseTime=NULL, previousLockTime=02/17/2016 08:39:01)" with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previousLockTime:date ")" *  
+| parse kind=relaxed "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=NULL, sliceNumber=23, lockTime=02/17/2016 08:40:01, releaseTime=NULL, previousLockTime=02/17/2016 08:39:01)" with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previousLockTime:date ")" *
 | project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previousLockTime
 ```
 
@@ -566,7 +563,7 @@ The following query counts the distinct values of `Source` where `DamageProperty
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwNDDg5apRKC7NzU0syqxKVQjOLy1KTi1WsFVISc4vzSvJTNOACOkouCTmJqanBhTlF6QWlVQq2CiYGhgYaCokVSoElySWpAIAuk%2fTX14AAAA%3d)**\]**
 
 ```Kusto
-StormEvents 
+StormEvents
 | take 100
 | summarize Sources = dcountif(Source, DamageProperty < 5000) by State
 ```
@@ -712,7 +709,7 @@ let Y = datatable(Key:string, Value2:long)
     'c',30,
     'd',40
 ];
-X 
+X
 | join kind=inner Y on Key
 ```
 

@@ -1,10 +1,7 @@
 ---
 title: Monitor batching ingestion in Azure Data Explorer
 description: Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
-author: orspod
-ms.author: orspodek
 ms.reviewer: tzviagt
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 07/18/2021
 ms.custom: contperf-fy21q1

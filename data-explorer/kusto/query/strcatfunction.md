@@ -1,11 +1,7 @@
 ---
 title: strcat() - Azure Data Explorer
 description: This article describes strcat() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
@@ -29,7 +25,7 @@ Arguments, concatenated to a single string.
 
 ## Examples
   
-   ```kusto
+```kusto
 print str = strcat("hello", " ", "world")
 ```
 

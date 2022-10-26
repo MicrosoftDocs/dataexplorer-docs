@@ -1,10 +1,7 @@
 ---
 title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ---
@@ -218,8 +215,8 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 |Argument  |Description                                                               |
 |----------|--------------------------------------------------------------------------|
 |**Query to execute**                                                                 |
-|`query`   |The query to execute (base64-encoded). If empty, use `querysrc`.          |
-|`querysrc`|The URL of a file or blob holding the query to execute (if `query` is empty).|
+|`query`   |The query to execute (gzipped, then base64-encoded; see "Getting shorter links" above). If empty, use `querysrc`.|
+|`querysrc`|The HTTP URL of a file/blob holding the query to execute (if `query` is empty).|
 |**Connection to the Kusto cluster**                                                  |
 |`uri`     |The connection string of the Kusto cluster to connect to.                 |
 |`name`    |The display name of the connection to the Kusto cluster.                  |
@@ -227,7 +224,6 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 |`path`    |The URL of a connection group file to download (URL-encoded).             |
 |`group`   |The name of the connection group.                                         |
 |`filename`|The local file holding the connection group.                              |
-
 
 ## Manage clusters, databases, tables, or function authorized principals
 

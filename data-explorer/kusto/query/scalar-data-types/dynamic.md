@@ -1,11 +1,7 @@
 ---
-title: The dynamic data type - Azure Data Explorer | Microsoft Docs
+title: The dynamic data type - Azure Data Explorer
 description: This article describes The dynamic data type in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 07/09/2020
 ---
@@ -21,7 +17,7 @@ The `dynamic` scalar data type is special in that it can take on any value  of o
   The property bag has zero or more such mappings (called "slots"), indexed by the unique `string` values. The slots are unordered.
 
 > [!NOTE]
-> * Values of type `dynamic` are limited to 1MB (2^20).
+> * Values of type `dynamic` are limited to 1MB (2^20), uncompressed.
 > * Although the `dynamic` type appears JSON-like, it can hold values that the JSON
 >   model does not represent because they don't exist in JSON (e.g.,
 >   `long`, `real`, `datetime`, `timespan`, and `guid`).
@@ -189,6 +185,7 @@ For a complete list of scalar dynamic/array functions, see [dynamic/array functi
 | *value* `in` *array*| True if there is an element of *array* that == *value*<br/>`where City in ('London', 'Paris', 'Rome')`
 | *value* `!in` *array*| True if there is no element of *array* that == *value*
 |[`array_length(`array`)`](../arraylengthfunction.md)| Null if it isn't an array
+|[`bag_has_key(`bag`,`key`)`](../bag-has-key-function.md)| Checks whether a dynamic bag column contains a given key.
 |[`bag_keys(`bag`)`](../bagkeysfunction.md)| Enumerates all the root keys in a dynamic property-bag object.
 |[`bag_merge(`bag1,...,bagN`)`](../bag-merge-function.md)| Merges dynamic property-bags into a dynamic property-bag with all properties merged.
 |[`extractjson(`path,object`)`](../extractjsonfunction.md)|Uses path to navigate into object.

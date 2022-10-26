@@ -1,22 +1,20 @@
 ---
 title: Materialized views - Azure Data Explorer
 description: This article describes materialized views in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yifats
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 04/23/2021
 ---
 # Materialized views
 
-Materialized views expose an *aggregation* query over a source table, or over [another materialized view](#materialized-view-over-materialized-view-preview).
+Materialized views expose an *aggregation* query over a source table, or over [another materialized view](#materialized-view-over-materialized-view).
 
 Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-views-queries) is more performant than running the aggregation directly over the source table.
 
 > [!NOTE]
-> Materialized views have some [limitations](materialized-view-create.md#materialized-views-limitations-and-known-issues), and don't work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
+> * Materialized views have some [limitations](materialized-view-create.md#materialized-views-limitations-and-known-issues), and don't work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
+>
+> * Materialized views are only recommended for specific [use cases](#materialized-views-use-cases). Other use cases, that do not require aggregations, can be achieved using [update policies](../updatepolicy.md).
 
 Use the following commands to manage materialized views:
 
@@ -154,8 +152,9 @@ The main contributors that can impact a materialized view health are:
 
 * **Cluster resources:** Like any other process running on the cluster, materialized views consume resources (CPU, memory) from the cluster. If the cluster is overloaded, adding materialized views to it may cause a degradation in the cluster's performance. Monitor your cluster's health using [cluster health metrics](../../../using-metrics.md#cluster-metrics). [Optimized autoscale](../../../manage-cluster-horizontal-scaling.md#optimized-autoscale) currently doesn't take materialized views health under consideration as part of autoscale rules.
 
-* **Overlap with materialized data:** During materialization, all new records ingested to source table since the last materialization (the delta) are processed and materialized into the view. The higher the intersection between new-records and already-materialized-records is, the worse the performance of the materialized view will be. A materialized view will work best if the number of records being updated (for example, in `arg_max` view) is a small subset of the source table. If all or most of the materialized view records need to be updated in every materialization cycle, then the materialized view won't perform well. Use [extents rebuild metrics](../../../using-metrics.md#materialized-view-metrics) to identify this situation.
-    * Moving the cluster to [Engine V3](../../../engine-v3.md) should have a significant performance impact and the materialized view, when the intersection between new records and the materialized view is relatively high. This is because the extents rebuild phase in Engine V3 is much more optimized than in V2.
+* **Overlap with materialized data:** During materialization, all new records ingested to the source table since the last materialization (the delta) are processed and materialized into the view. The higher the intersection between new records and already materialized records is, the worse the performance of the materialized view will be. A materialized view works best if the number of records being updated (for example, in `arg_max` view) is a small subset of the source table. If all or most of the materialized view records need to be updated in every materialization cycle, then the materialized view might not perform well.
+
+* **Engine V3:** Materialized views perform better on [Engine V3](../../../engine-v3.md) clusters, especially if the number of records to update in each iteration is high. If your cluster is not an [Engine V3](../../../engine-v3.md), you can [create a support ticket](https://ms.portal.azure.com/#create/Microsoft.Support) to request migration.
 
 * **Ingestion rate:** There are no hard-coded limits on the data volume or ingestion rate in the source table of the materialized view. However, the recommended ingestion rate for materialized views is no more than 1-2GB/sec. Higher ingestion rates may still perform well. Performance depends on cluster size, available resources, and amount of intersection with existing data.
 
@@ -163,9 +162,9 @@ The main contributors that can impact a materialized view health are:
 
 * **Materialized view definition**: The materialized view definition must be defined according to query best practices for best query performance. For more information, see [create command performance tips](materialized-view-create.md#performance-tips).
 
-## Materialized view over materialized view (preview)
+## Materialized view over materialized view
 
-A materialized view can be created over another materialized view if the source materialized view is a deduplication view. Specifically, the aggregation of the source materialized view must be `take_any(*)` in order to deduplicate source records. The second materialized view can use any [supported aggregation functions](materialized-view-create.md#supported-aggregation-functions). For specific information on how to create a materialized view over a materialized view, see [`.create materialized-view` command](materialized-view-create.md#create-materialized-view-over-materialized-view-preview).
+A materialized view can be created over another materialized view if the source materialized view is a deduplication view. Specifically, the aggregation of the source materialized view must be `take_any(*)` in order to deduplicate source records. The second materialized view can use any [supported aggregation functions](materialized-view-create.md#supported-aggregation-functions). For specific information on how to create a materialized view over a materialized view, see [`.create materialized-view` command](materialized-view-create.md#create-materialized-view-over-materialized-view).
 
 > [!TIP]
 > When querying a materialized view that is defined over another materialized view, we recommend querying the materialized part only using the `materialized_view()` function. Querying the entire view will not be performant when both views aren't fully materialized. For more information, see [materialized views queries](#materialized-views-queries).

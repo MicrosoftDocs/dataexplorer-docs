@@ -1,12 +1,9 @@
 ---
 title: 'Visualize data using an Azure Data Explorer Kusto query imported into Microsoft Excel'
 description: 'In this article, you learn how to import an Azure Data Explorer Kusto query into Microsoft Excel.'
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 08/30/2019
+ms.date: 09/06/2022
 
 # Customer intent: As a data analyst, I want to understand how to visualize my Azure Data Explorer data in Excel.
 ---
@@ -17,19 +14,16 @@ Azure Data Explorer provides two options for connecting to data in Excel: use th
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Create [a cluster and database](create-cluster-database-portal.md).
-* An organizational email account that is a member of Azure Active directory, so you can connect to the [Azure Data Explorer help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples) 
-<br>or</br>
-* Sign in to [the Azure Data Explorer Web UI application](https://dataexplorer.azure.com/).
+* An organizational email account that is a member of Azure Active Directory, so you can connect to the [Azure Data Explorer help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples)
 
 ## Define Kusto query as an Excel data source
 
-1. In [Azure Data Explorer Web UI](https://dataexplorer.azure.com/clusters/help/databases/Samples), run the query and check the results.
+1. In [Azure Data Explorer web UI](https://dataexplorer.azure.com/clusters/help/databases/Samples), run the query and check the results.
 
 1. Select the **Share** tab and select **Query to Power BI**.
 
-    ![Web UI query to Power BI.](media/excel-blank-query/web-ui-query-to-powerbi.png)
+    ![Screenshot that shows Azure Data Explorer web UI query to Power BI.](media/excel-blank-query/web-ui-query-to-powerbi.png)
 
 1. A window appears with the following notification:
 
@@ -47,7 +41,7 @@ Azure Data Explorer provides two options for connecting to data in Excel: use th
 
 1. In the **Advanced Editor** window, paste the query you exported to the clipboard and select **Done**.
 
-    ![Advanced editor query.](media/excel-blank-query/advanced-editor-query.png)    
+    ![Advanced editor query.](media/excel-blank-query/advanced-editor-query.png)
 
 1. To authenticate, select **Edit Credentials**.
 

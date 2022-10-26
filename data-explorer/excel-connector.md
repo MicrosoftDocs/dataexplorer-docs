@@ -1,10 +1,7 @@
 ---
 title: 'Visualize data using the Azure Data Explorer connector for Microsoft Excel'
 description: 'In this article, you learn how to use the Excel connector for Azure Data Explorer.'
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: how-to
 ms.date: 08/30/2019
 

@@ -1,12 +1,9 @@
 ---
 title: Ingest JSON formatted data into Azure Data Explorer
 description: Learn about how to ingest JSON formatted data into Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: kerend
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 09/14/2022
 ---
 
 # Ingest JSON formatted sample data into Azure Data Explorer
@@ -15,7 +12,7 @@ This article shows you how to ingest JSON formatted data into an Azure Data Expl
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md).
 
 ## The JSON format
@@ -24,6 +21,9 @@ Azure Data Explorer supports two JSON file formats:
 
 * `json`: Line separated JSON. Each line in the input data has exactly one JSON record.
 * `multijson`: Multi-lined JSON. The parser ignores the line separators and reads a record from the previous position to the end of a valid JSON.
+
+> [!NOTE]
+> When ingesting using the [ingestion wizard](ingest-data-wizard.md), select **Ignore data format errors**, to ingest data in JSON format. If you leave this check box unselected, the data will be ingested in multijson format. For more information, see [edit the schema in the ingestion wizard](ingestion-wizard-existing-table.md#edit-the-schema).
 
 For more information, see [JSON Lines](https://jsonlines.org/).
 
@@ -385,7 +385,7 @@ INGESTION_CLIENT.ingest_from_blob(
 
 ## Ingest JSON records containing arrays
 
-Array data types are an ordered collection of values. Ingestion of a JSON array is done by an [update policy](./kusto/management/show-table-update-policy-command.md). The JSON is ingested as-is to an intermediate table. An update policy runs a pre-defined function on the `RawEvents` table, reingesting the results to the target table. We will ingest data with the following structure:
+Array data types are an ordered collection of values. Ingestion of a JSON array is done by an [update policy](./kusto/management/show-table-update-policy-command.md). The JSON is ingested as-is to an intermediate table. An update policy runs a pre-defined function on the `RawEvents` table, reingesting the results to the target table. We'll ingest data with the following structure:
 
 ```json
 {

@@ -1,10 +1,7 @@
 ---
 title: Create an Azure Data Explorer cluster & DB in your virtual network
 description: 'In this article, you learn how to create an Azure Data Explorer cluster in your virtual network.'
-author: orspod
-ms.author: orspodek
 ms.reviewer: basaba
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/24/2020
 

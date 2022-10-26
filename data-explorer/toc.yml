@@ -18,7 +18,7 @@ items:
     href: create-cluster-database-portal.md
   - name: Ingest sample data
     href: ingest-sample-data.md
-  - name: Query data with Web UI
+  - name: Query data with Azure Data Explorer web UI
     href: web-query-data.md
 - name: Tutorials
   items:
@@ -35,11 +35,20 @@ items:
   - name: Visualize data in Power BI
     href: visualize-power-bi.md
   - name: "Learn module: Introduction to Azure Data Explorer"
-    href: /learn/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+    href: /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
 - name: Concepts
   items:
   - name: EngineV3
     href: engine-v3.md
+  - name: Azure Data Explorer web UI
+    items:
+    - name: Azure Data Explorer web UI overview
+      displayName: Kusto Web Explorer, KWE
+      href: web-ui-overview.md
+    - name: Ingestion wizard
+      href: ingest-data-wizard.md
+    - name: Azure Data Explorer web UI keyboard shortcuts
+      href: web-ui-query-keyboard-shortcuts.md
   - name: Data ingestion
     items:
     - name: Data ingestion overview
@@ -59,7 +68,7 @@ items:
     - name: Security baseline
       href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
     - name: Security controls by Azure Policy
-      href: ./security-controls-policy.md
+      href: security-controls-policy.md
   - name: Business continuity
     items:
     - name: Overview
@@ -72,8 +81,15 @@ items:
     href: tools-integrations-overview.md
 - name: How-to guides
   items:
-  - name: Create a start-for-free cluster
-    href: start-for-free-web-ui.md
+  - name: Explore the samples gallery
+    href: web-ui-samples-gallery.md
+    displayName: Azure Data Explorer web UI
+  - name: Explore with a free cluster
+    items:
+    - name: Create a free cluster
+      href: start-for-free-web-ui.md
+    - name: Upgrade a free cluster
+      href: start-for-free-upgrade.md
   - name: Create cluster and database
     items:
     - name: Azure CLI
@@ -93,29 +109,27 @@ items:
   - name: Create tables
     items:
     - name: Create table
-      href: one-click-table.md
+      href: create-table-wizard.md
     - name: External table creation wizard
       displayName: one-click
       href: external-table.md
     - name: Create table policies
       items:
       - name: Create ingestion batching table policy
-        displayName: one-click
-        href: one-click-table-batching-policy.md
+        displayName: one-click, wizard
+        href: table-batching-policy-wizard.md
       - name: Create retention table policy
-        displayName: one-click
-        href: one-click-table-retention-policy.md
+        displayName: one-click, wizard
+        href: table-retention-policy-wizard.md
   - name: Ingest data
     items:
-    - name: One-click ingestion
+    - name: Ingestion wizard
       items:
-      - name: One-click ingestion overview
-        href: ingest-data-one-click.md
       - name: JSON data from local file to existing table
         displayName: ingest data, ingestion, one click
-        href: one-click-ingestion-existing-table.md
-      - name: One-click sample app generator
-        href: sample-app-generator-one-click.md
+        href: ingestion-wizard-existing-table.md
+      - name: Sample app generator
+        href: sample-app-generator-wizard.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
@@ -129,17 +143,17 @@ items:
     - name: Cross-tenant data connection
       displayName: event hub, event grid
       href: ingest-data-cross-tenant.md
-    - name: Event hub
+    - name: Event Hubs
       items:
-      - name: Event hub data connection
+      - name: Event Hubs data connection
         displayName: ingest, ingestion
         href: ingest-data-event-hub-overview.md
       - name: Azure portal
         displayName: Event hub, ingest, data connection
         href: ingest-data-event-hub.md
-      - name: One-click
+      - name: Ingestion wizard
         displayName: Event hub, ingest, data connection
-        href: one-click-event-hub.md
+        href: event-hub-wizard.md
       - name: C#
         displayName: Event hub, ingest, data connection
         href: data-connection-event-hub-csharp.md
@@ -154,9 +168,9 @@ items:
       - name: Event Grid data connection
         displayName: ingest
         href: ingest-data-event-grid-overview.md
-      - name: One-click
+      - name: Ingestion wizard
         displayName: Event Grid, ingest data, ingestion, one click, csv file
-        href: one-click-ingestion-new-table.md
+        href: ingestion-wizard-new-table.md
       - name: Azure portal
         displayName: Event Grid, ingest, data connection
         href: ingest-data-event-grid.md
@@ -216,9 +230,18 @@ items:
       - name: Java SDK
         displayName: ingest data, ingestion
         href: java-ingest-data.md
+    - name: Azure Stream Analytics
+      href: stream-analytics-connector.md
+      displayName: ingest data, ingestion
+    - name: OpenTelemetry
+      href: open-telemetry-connector.md
+      displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion
     - name: Kafka
       displayName: ingest data, ingestion
       href: ingest-data-kafka.md
+    - name: Telegraf
+      displayName: ingest data, ingestion
+      href: ingest-data-telegraf.md
     - name: Logstash
       displayName: ingest data, ingestion
       href: ingest-data-logstash.md
@@ -303,23 +326,41 @@ items:
       href: isolated-compute.md
     - name: Network isolation (VNet)
       items:
-        - name: Create a cluster in your VNet - Portal
-          href: vnet-create-cluster-portal.md
-        - name: Deploy your cluster to your VNet
-          href: vnet-deployment.md
-        - name: Troubleshoot VNet cluster creation, connectivity, and operation
-          href: vnet-deploy-troubleshoot.md
-        - name: Create Private Endpoint for your VNet cluster - Portal
-          href: vnet-create-private-endpoint.md
-        - name: Create a private or service endpoint to resources used by data connections
-          displayName: VNet, private endpoint, Azure Storage, event hub
-          href: vnet-endpoint-storage-event-hub.md
+        - name: Network security overview 
+          href: security-network-overview.md
+        - name: Private Endpoints
+          items:
+          - name: Private Endpoints overview
+            href: security-network-private-endpoint.md
+          - name: Create a private endpoint
+            href: security-network-private-endpoint-create.md
+          - name: Create a managed private endpoint
+            href: security-network-managed-private-endpoint-create.md
+          - name: Restrict public access
+            href: security-network-restrict-public-access.md
+          - name: Troubleshoot private endpoints
+            href: security-network-private-endpoint-troubleshoot.md
+        - name: Virtual network injection
+          items:
+          - name: Create a cluster in your VNet - Portal
+            href: vnet-create-cluster-portal.md
+          - name: Deploy your cluster to your VNet
+            href: vnet-deployment.md
+          - name: Create a private or service endpoint to resources used by data connections
+            displayName: VNet, private endpoint, Azure Storage, event hub
+            href: vnet-endpoint-storage-event-hub.md
+          - name: Troubleshoot VNet cluster creation, connectivity, and operation
+            href: vnet-deploy-troubleshoot.md
+        - name: Restrict outbound requests
+          href: security-network-restrict-outbound-access.md
     - name: Encryption
       items:
-      - name: Cluster disk encryption - portal
-        href: cluster-disk-encryption.md
-      - name: Double Encryption
-        href: double-encryption.md
+      - name: Cluster encryption overview
+        href: cluster-encryption-overview.md
+      - name: Enable double encryption
+        href: cluster-encryption-double.md
+      - name: Enable disk encryption
+        href: cluster-encryption-disk.md
     - name: Managed identities
       items:
       - name: Managed identities overview
@@ -328,6 +369,8 @@ items:
         href: configure-managed-identities-cluster.md
       - name: Authenticate external tables with managed identities 
         href: external-tables-managed-identities.md
+      - name: Ingest data using managed identity authentication
+        href: ingest-data-managed-identity.md
     - name: Configure customer-managed-keys
       items:
         - name: Portal
@@ -347,6 +390,8 @@ items:
           href: customer-managed-keys-powershell.md
     - name: Create Azure AD app
       href: provision-azure-ad-app.md
+    - name: Conditional Access
+      href: security-conditional-access.md
   - name: Manage
     items:
     - name: Cluster
@@ -420,9 +465,15 @@ items:
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
     - name: Use Azure Monitor insights
-      href: /azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
+      href: data-explorer-insights.md
     - name: Monitor batching ingestion with metrics
       href: monitor-batching-ingestion.md
+  - name: Kusto emulator
+    items:
+    - name: Kusto emulator overview
+      href: kusto-emulator-overview.md
+    - name: Install the Kusto emulator
+      href: kusto-emulator-install.md
   - name: Share data
     items:
       - name: Use Azure Data Share
@@ -443,8 +494,10 @@ items:
           displayName: Microsoft Flow, flow, flow connector
       - name: Logic Apps
         href: kusto/tools/logicapps.md
-    - name: Cosmos DB
+    - name: Azure Cosmos DB
       href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
+    - name: Telegraf
+      href: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
     - name: Apache Spark Connector
       href: spark-connector.md
       displayName: databricks
@@ -469,6 +522,9 @@ items:
       href: devops.md
     - name: Sync Kusto
       href: kusto/tools/synckusto.md
+    - name: Migrate TSI to Azure Data Explorer
+      href: /azure/time-series-insights/migration-to-adx
+      displayName: Time Series Insights
   - name: Troubleshoot
     items:
     - name: Creating a cluster
@@ -484,6 +540,10 @@ items:
   href: kusto/query/toc.yml
 - name: Management commands
   href: kusto/management/toc.yml
+- name: Guidance
+  items:
+  - name: Big data analytics with Azure Data Explorer
+    href: proof-of-concept-playbook.md
 - name: Reference
   items:
   - name: API
@@ -523,6 +583,9 @@ items:
     - name: pair_probabilities_fl()
       displayName: functions library, jaccard, lift
       href: kusto/functions-library/pair-probabilities-fl.md
+    - name: pairwise_dist_fl()
+      displayName: functions library, multivariate, distance, anomaly, pairwise
+      href: kusto/functions-library/pairwise-dist-fl.md      
     - name: perm_fl()
       displayName: functions library, statistics
       href: kusto/functions-library/perm-fl.md
@@ -571,6 +634,15 @@ items:
     - name: series_rolling_fl()
       displayName: functions library, rolling, sliding
       href: kusto/functions-library/series-rolling-fl.md
+    - name: series_shapes_fl()
+      displayName: functions library, shape, trend, jump, detect
+      href: kusto/functions-library/series-shapes-fl.md
+    - name: series_uv_anomalies_fl()
+      displayName: functions library, anomaly detection, univariate
+      href: kusto/functions-library/series-uv-anomalies-fl.md
+    - name: series_uv_change_points_fl()
+      displayName: functions library, anomaly detection, univariate, change point
+      href: kusto/functions-library/series-uv-change-points-fl.md
     - name: time_weighted_avg_fl()
       displayName: functions library, binning
       href: kusto/functions-library/time-weighted-avg-fl.md
@@ -585,7 +657,7 @@ items:
       href: kusto/functions-library/wilcoxon-test-fl.md
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions
-    href: ./policy-reference.md
+    href: policy-reference.md
 - name: Resources
   items:
   - name: Forums

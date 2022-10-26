@@ -1,10 +1,7 @@
 ---
 title: Create a cross-tenant data connection for Azure Data Explorer
 description: Learn how to create a cross-tenant data connection for an Azure Event Hubs or Azure Event Grid service in a different tenant
-author: shsagir
-ms.author: shsagir
 ms.reviewer: miwalia
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/14/2022
 ---

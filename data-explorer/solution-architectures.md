@@ -1,12 +1,9 @@
 ---
 title: Solution architectures in Azure
 description: Learn about solution architectures in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: 
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/11/2021
+ms.date: 07/05/2022
 ---
 # Solution architectures
 
@@ -39,7 +36,7 @@ Interactive analytics with Azure Data Explorer to explore data with improvised, 
 
 ## IoT analytics with Azure Data Explorer
 
-Near real-time analytics over fast flowing, high volume streaming data from IoT devices, sensors, connected buildings and vehicles, and so on. It focuses on integration of Azure Data Explorer with other IoT services to cater to both operational and analytical workloads using Cosmos DB and Azure Data Explorer.
+Near real-time analytics over fast flowing, high volume streaming data from IoT devices, sensors, connected buildings and vehicles, and so on. It focuses on integration of Azure Data Explorer with other IoT services to cater to both operational and analytical workloads using Azure Cosmos DB and Azure Data Explorer.
 
 > [!div class="nextstepaction"]
 > [IoT analytics with Azure Data Explorer](/azure/architecture/solution-ideas/articles/iot-azure-data-explorer)
@@ -82,3 +79,24 @@ This solution also uses the following services:
 
 > [!div class="nextstepaction"]
 > [Content Delivery Network analytics](/azure/architecture/solution-ideas/articles/content-delivery-network-azure-data-explorer)
+
+## Data analytics for automotive test fleets
+
+Automotive OEMs need solutions to minimize the time between doing test drives and getting test drive diagnostic data to R&D engineers. 
+
+This example workload relates to both telemetry and batch test drive data ingestion scenarios. The workload focuses on the data platform that processes diagnostic data, and the connectors for visualization and reporting.
+
+This solution also uses the following services:
+
+* Azure IoT Hub
+* Azure Blob Storage
+* Azure Event Hubs
+* Azure Functions
+* Azure Managed Grafana
+* Azure App Service
+* Azure Maps
+* Azure API Management
+* Power BI
+
+> [!div class="nextstepaction"]
+> [Data analytics for automotive test fleets](/azure/architecture/industries/automotive/automotive-telemetry-analytics)

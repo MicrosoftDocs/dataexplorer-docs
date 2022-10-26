@@ -1,11 +1,7 @@
 ---
 title: ".alter auto delete policy command - Azure Data Explorer"
 description: "This article describes the .alter auto delete policy command in Azure Data Explorer."
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yifats
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/04/2022
 ---

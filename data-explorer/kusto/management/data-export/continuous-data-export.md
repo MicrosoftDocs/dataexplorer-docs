@@ -1,11 +1,7 @@
 ---
-title: Continuous data export - Azure Data Explorer | Microsoft Docs
+title: Continuous data export - Azure Data Explorer
 description: This article describes Continuous data export in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yifats
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 08/03/2020
 ---
@@ -98,12 +94,11 @@ Use the [`.show continuous export failures`](show-continuous-failures.md) comman
 
 ## Limitations
 
-* Continuous export doesn't work for data ingested using streaming ingestion.
 * Continuous export can't be configured on a table with [row level security policy](../../management/rowlevelsecuritypolicy.md), or a table with [restricted view access policy](../restrictedviewaccesspolicy.md).
 * Continuous export cannot be created on [follower databases](../../../follower.md) since follower databases are read-only and continuous export requires write operations.  
 * Continuous export will only work if records in source table are ingested to the table directly (either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md). If records are moved into the table using [.move extents](../move-extents.md) or using [.rename table](../rename-table-command.md), continuous export may not process these records. See the limitations described in the [Database Cursors](../databasecursor.md#restrictions) page.
-* Continuous export isn't supported for external tables with `impersonate` in their [connection strings](../../api/connection-strings/storage-connection-strings.md).
 * Continuous export doesn't support cross-database and cross-cluster calls.
 * Continuous export isn't designed to work over [materialized views](../materialized-views/materialized-view-overview.md), since a materialized view may be updated, while data exported to storage is always append only and never updated.
-* Continuous export isn't designed for constantly streaming data out of Azure Data Explorer. Continuous export runs in a distributed mode, where all nodes export concurrently. If the range of data queried by each run is small, the output of the continuous export would be many small artifacts. The number of artifacts depends on the number of nodes in the cluster.
+* Continuous export isn't designed for low-latency streaming data out of Azure Data Explorer.
+* By default, continuous export runs in a distributed mode, where all nodes export concurrently, so the number of artifacts depends on the number of nodes in the cluster.
 * If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](../../../ingest-data-event-grid-overview.md#known-event-grid-issues).

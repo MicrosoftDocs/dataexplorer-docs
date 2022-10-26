@@ -1,11 +1,7 @@
 ---
 title: Kusto update policy - Azure Data Explorer
 description: This article describes Update policy in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 11/18/2021
 ---
@@ -65,10 +61,10 @@ Each such object is represented as a JSON property bag, with the following prope
 
 Update policy control commands include:
 
-* [`.show table *TableName* policy update`](./show-table-update-policy-command.md#show-update-policy) shows the current update policy of a table.
-* [`.alter table *TableName* policy update`](./show-table-update-policy-command.md#alter-update-policy) defines the current update policy of a table.
-* [`.alter-merge table *TableName* policy update`](./show-table-update-policy-command.md#alter-merge-table-tablename-policy-update) appends definitions to the current update policy of a table.
-* [`.delete table *TableName* policy update`](./show-table-update-policy-command.md#delete-table-tablename-policy-update) deletes the current update policy of a table.
+* [`.show table *TableName* policy update`](./show-table-update-policy-command.md) shows the current update policy of a table.
+* [`.alter table *TableName* policy update`](./alter-table-update-policy-command.md) defines the current update policy of a table.
+* [`.alter-merge table *TableName* policy update`](./alter-merge-table-update-policy-command.md) appends definitions to the current update policy of a table.
+* [`.delete table *TableName* policy update`](./delete-table-update-policy-command.md) deletes the current update policy of a table.
 
 ## Update policy is initiated following ingestion
 
@@ -114,9 +110,11 @@ let _extentId = toscalar(
     | top 1 by IngestionTime desc
     | project ExtentId
 );
+// This scopes the source table to the single recent extent.
 let MySourceTable = 
     MySourceTable
     | where ingestion_time() > ago(10m) and extent_id() == _extentId;
+// This invokes the function in the update policy (that internally references `MySourceTable`).
 MyFunction
 ```
 
@@ -187,11 +185,11 @@ In this example, use an update policy in conjunction with a simple function to p
 
     ```kusto
     .alter table MyTargetTable policy update 
-    @'[{ "IsEnabled": true, "Source": "MySourceTable", "Query": "ExtractMyLogs()", "IsTransactional": false, "PropagateIngestionProperties": false}]'
+    @'[{ "IsEnabled": true, "Source": "MySourceTable", "Query": "ExtractMyLogs()", "IsTransactional": true, "PropagateIngestionProperties": false}]'
     ```
 
 1. To empty the source table after data is ingested into the target table, define the retention policy on the source table to have 0s as its `SoftDeletePeriod`.
 
     ```kusto
-     .alter-merge table MySourceTable policy retention softdelete = 0s ```
+     .alter-merge table MySourceTable policy retention softdelete = 0s 
     ```

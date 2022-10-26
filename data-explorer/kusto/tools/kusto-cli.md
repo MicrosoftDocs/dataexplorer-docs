@@ -1,11 +1,7 @@
 ---
 title: Kusto CLI - Azure Data Explorer
 description: This article describes Kusto CLI in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/24/2020
 ---
@@ -32,7 +28,7 @@ PowerShell script.
 
 ## Get the tool
 
-Kusto.Cli is part of the NuGet package `Microsoft.Azure.Kusto.Tools` that you can download for [.NET](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/) or [.NET Core](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools.NETCore/). After you download the package, extract the package's `tools` folder to the target folder. No additional installation is required because it's xcopy-installable.
+Kusto.Cli is part of the NuGet package `Microsoft.Azure.Kusto.Tools` that you can download for [.NET](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/). After you download the package, extract the package's `tools` folder to the target folder. No additional installation is required because it's xcopy-installable.
 
 ## Run the tool
 
@@ -82,6 +78,11 @@ Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true"
   The entire script file is considered a single query or command.
   This switch can't be used together with `-execute`.
 
+`-scriptQuitOnError:`*QuitOnFirstScriptError*
+* If enabled, Kusto.Cli will quit if a command or query in a script
+  results with an error. If disabled, script execution will continue
+  despite errors. By default this switch is enabled.
+
 `-echo:`*EnableEchoMode*
 * If specified, as either `true` or `false`, it enables or disables echo mode.
   When echo mode is enabled, every query or command is repeated in the output.
@@ -104,7 +105,7 @@ Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true"
 Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true" -script:"c:\mycommands.txt"
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > There should be no space between the colon and the argument value
 
 ## Directives

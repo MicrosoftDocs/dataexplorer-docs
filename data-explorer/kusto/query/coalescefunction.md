@@ -1,11 +1,7 @@
 ---
 title: coalesce() - Azure Data Explorer
 description: This article describes coalesce() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 02/13/2020
 ---
@@ -27,10 +23,9 @@ coalesce(tolong("not a number"), tolong("42"), 33) == 42
 - All arguments must be of the same type.
 - Maximum of 64 arguments is supported.
 
-
 ## Returns
 
-The value of the first *expr_i* whose value is not null (or not-empty for string expressions).
+The value of the first *expr_i* whose value isn't null (or not-empty for string expressions).
 
 ## Example
 
