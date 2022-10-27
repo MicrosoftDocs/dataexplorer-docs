@@ -585,7 +585,6 @@ Related functions:
 | Pacific/Yap                      |
 | Poland                           |
 | Portugal                         |
-| ROC                              |
 | ROK                              |
 | Singapore                        |
 | Turkey                           |
