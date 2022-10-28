@@ -3,7 +3,7 @@ title: materialize() - Azure Data Explorer
 description: This article describes materialize() function in Azure Data Explorer.
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 28/10/2022
+ms.date: 2022-10-28
 ---
 # materialize()
 
