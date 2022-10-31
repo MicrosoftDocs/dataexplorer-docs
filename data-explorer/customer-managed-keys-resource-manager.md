@@ -53,7 +53,7 @@ You can deploy the Azure Resource Manager template by using the Azure portal or 
       "name": "[parameters('clusterName')]",
       "type": "Microsoft.Kusto/clusters",
       "sku": {
-        "name": "Standard_D13_v2",
+        "name": "Standard_E8ads_v5",
         "tier": "Standard",
         "capacity": 2
       },
