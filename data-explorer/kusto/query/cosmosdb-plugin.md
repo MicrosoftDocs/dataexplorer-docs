@@ -79,7 +79,7 @@ evaluate cosmosdb_sql_request(
 ### Query Azure Cosmos DB with a query-define output schema
 
 The following example uses the *cosmosdb_sql_request* plugin to send a SQL query while selecting only specific columns.
-It uses explicit schema definitions that allow various optimizations to be evaluated before the actual query against SQL is run.
+It uses explicit schema definitions that allow various optimizations to be evaluated before the actual query against Cosmos DB is run.
 
 ```kusto
 evaluate cosmosdb_sql_request(
