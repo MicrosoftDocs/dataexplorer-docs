@@ -60,13 +60,13 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
 1. Create your cluster by using the following command:
 
     ```azurecli-interactive
-    az kusto cluster create --cluster-name azureclitest --sku name="Standard_D13_v2" tier="Standard" --resource-group testrg --location westus
+    az kusto cluster create --cluster-name azureclitest --sku name="Standard_E8ads_v5" tier="Standard" --resource-group testrg --location westus
     ```
 
    |**Setting** | **Suggested value** | **Field description**|
    |---|---|---|
    | name | *azureclitest* | The desired name of your cluster.|
-   | sku | *Standard_D13_v2* | The SKU that will be used for your cluster. Parameters: *name* -  The SKU name. *tier* - The SKU tier. |
+   | sku | *Standard_E8ads_v5* | The SKU that will be used for your cluster. Parameters: *name* -  The SKU name. *tier* - The SKU tier. |
    | resource-group | *testrg* | The resource group name where the cluster will be created. |
    | location | *westus* | The location where the cluster will be created. |
 

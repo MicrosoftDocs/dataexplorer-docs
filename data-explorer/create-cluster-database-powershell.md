@@ -59,13 +59,13 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
 1. Create your cluster by using the following command:
 
     ```azurepowershell-interactive
-     New-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Location westus2 -SkuTier Standard -SkuCapacity 2 -SkuName 'Standard_D11_v2'
+     New-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Location westus2 -SkuTier Standard -SkuCapacity 2 -SkuName 'Standard_E8ads_v5'
     ```
 
    |**Setting** | **Suggested value** | **Field description**|
    |---|---|---|
    | Name | *mykustocluster* | The desired name of your cluster.|
-   | Sku | *D13_v2* | The SKU that will be used for your cluster. |
+   | Sku | *Standard_E8ads_v5* | The SKU that will be used for your cluster. |
    | ResourceGroupName | *testrg* | The resource group name where the cluster will be created. |
 
     There are other optional parameters that you can use, such as the capacity of the cluster.
