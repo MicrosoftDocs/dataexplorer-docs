@@ -7,7 +7,7 @@ ms.date: 2022-10-28
 ---
 # materialize()
 
-Captures the value of a tabular expression for the duration of the query execution so that it could be referenced multiple times by the query without recalculation.
+Captures the value of a tabular expression for the duration of the query execution so that it can be referenced multiple times by the query without recalculation.
 
 ## Syntax
 
