@@ -60,7 +60,7 @@ In this article, you use an [existing quickstart template](https://azure.microso
           "name": "[parameters('clusters_kustocluster_name')]",
           "type": "Microsoft.Kusto/clusters",
           "sku": {
-              "name": "Standard_D13_v2",
+              "name": "Standard_E8ads_v5",
               "tier": "Standard",
               "capacity": 2
           },
