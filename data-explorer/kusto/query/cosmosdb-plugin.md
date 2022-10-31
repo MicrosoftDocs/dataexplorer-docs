@@ -15,7 +15,7 @@ The `cosmosdb_sql_request` plugin sends a SQL query to an Azure Cosmos DB SQL ne
 
 ## Syntax
 
-`evaluate` `cosmosdb_sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)`
+`evaluate` `cosmosdb_sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)` [`:` *OutputSchema*]
 
 ## Arguments
 
@@ -24,11 +24,18 @@ The `cosmosdb_sql_request` plugin sends a SQL query to an Azure Cosmos DB SQL ne
 | *ConnectionString* | A `string` literal indicating the connection string that points to the Azure Cosmos DB collection to query. It must include *AccountEndpoint*, *Database*, and *Collection*. It may include *AccountKey* if a master key is used for authentication. <br> **Example:** `'AccountEndpoint=https://cosmosdbacc.documents.azure.com/ ;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;'`| Required |
 | *SqlQuery*| A `string` literal indicating the query to execute. | Required |
 | *SqlParameters* | A constant value of type `dynamic` that holds key-value pairs to pass as parameters along with the query. Parameter names must begin with `@`. | Optional |
+| *OutputSchema* | | | The names and types for the expected columns of the `cosmosdb_sql_request` plugin output.|
 | *Options* | A constant value of type `dynamic` that holds more advanced settings as key-value pairs. | Optional |
 || ----*Supported Options settings include:*-----
 |      `armResourceId` | Retrieve the API key from the Azure Resource Manager <br> **Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc`|
 |  `token` | Provide the Azure AD access token used to authenticate with the Azure Resource Manager.
 | `preferredLocations` | Control which region the data is queried from. <br> **Example:** `['East US']` | |
+
+The optional *OutputSchema* argument has the following syntax:
+
+`(` *ColumnName* `:` *ColumnType* [`,` ...] `)`
+
+Specifying this argument enables multiple query optimizations. It is therefore recommended to specify it.
 
 ## Set callout policy
 
@@ -67,6 +74,17 @@ The following example uses the *cosmosdb_sql_request* plugin to send a SQL query
 evaluate cosmosdb_sql_request(
   'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;',
   'SELECT * from c')
+```
+
+### Query Azure Cosmos DB with a query-define output schema
+
+The following example uses the *cosmosdb_sql_request* plugin to send a SQL query while selecting only specific columns.
+It uses explicit schema definitions that allow various optimizations to be evaluated before the actual query against SQL is run.
+
+```kusto
+evaluate cosmosdb_sql_request(
+  'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;',
+  'SELECT Id, Name from c') : (Id:long, Name:string) 
 ```
 
 ### Query Azure Cosmos DB with parameters
