@@ -24,8 +24,9 @@ for all instantiations.
 
 ## Parameters
 
-* *[a_timespan](scalar-data-types/timespan.md)*: Interval to subtract from the current UTC clock time
-(`now()`).
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *a_timespan* | timespan | &check; | Interval to subtract from the current UTC clock time (`now()`). |
 
 ## Returns
 
