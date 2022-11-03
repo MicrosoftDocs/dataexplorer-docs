@@ -464,7 +464,7 @@ items:
       href: using-diagnostic-logs.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
-    - name: Use Azure Monitor Insights
+    - name: Use Azure Data Explorer Clusters Insights
       href: data-explorer-insights.md
     - name: Monitor batching ingestion with metrics
       href: monitor-batching-ingestion.md
