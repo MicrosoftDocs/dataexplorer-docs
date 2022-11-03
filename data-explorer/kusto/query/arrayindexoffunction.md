@@ -3,7 +3,7 @@ title: array_index_of() - Azure Data Explorer
 description: Learn how to use the array_index_of() function to search an array for a specified item, and return its position.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 11/03/2022
 ---
 # array_index_of()
 
@@ -17,7 +17,7 @@ Searches an array for the specified item, and returns its position.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array*| array | &check; | Input array to search.|
+| *array*| dynamic | &check; | Input array to search.|
 | *lookup* |scalar | &check; | Value to lookup. The value should be of type `long`, `integer`, `double`, `datetime`, `timespan`, `decimal`, `string`, `guid`, or `boolean`. |
 | *start_index* | number |  | Search start position. A negative value will offset the starting search value from the end of the array by `abs(start_index)` steps.
 | *length* | number |  | Number of values to examine. A value of -1 means unlimited length.

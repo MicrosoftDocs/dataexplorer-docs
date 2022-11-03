@@ -4,7 +4,7 @@ description: Learn how to use the array_sum() function to calculate the sum of e
 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 11/03/2022
 ---
 # array_sum()
 
@@ -18,7 +18,7 @@ Calculates the sum of elements in a dynamic array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array*| | &check;| Array used for input.|
+| *array*| dynamic | &check;| Input array to sum.|
 
 ## Returns
 

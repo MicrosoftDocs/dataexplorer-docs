@@ -3,7 +3,7 @@ title: array_reverse() - Azure Data Explorer
 description: Learn how to use the array_reverse() function to reverse the order of the elements in a dynamic array.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 11/03/2022
 ---
 # array_reverse()
 
@@ -17,7 +17,7 @@ Reverses the order of the elements in a dynamic array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*array*|  | &check;| Input array to reverse.|
+|*array*| dynamic | &check;| Input array to reverse.|
 
 ## Returns
 

@@ -3,7 +3,7 @@ title: array_length() - Azure Data Explorer
 description: Learn how to use the array_length() function to calculate the number of elements in a dynamic array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 11/03/2022
 ---
 # array_length()
 
@@ -17,7 +17,7 @@ Calculates the number of elements in a dynamic array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array* |dynamic | &check; | A `dynamic` value.
+| *array* | dynamic | &check; | A `dynamic` array.
 
 ## Returns
 
