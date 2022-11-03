@@ -11,9 +11,9 @@ Checks whether a dynamic bag column contains a given key.
 
 ## Syntax
 
-`bag_has_key(`*bag*`, `*key*`)`
+`bag_has_key(`*bag*`,`*key*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
