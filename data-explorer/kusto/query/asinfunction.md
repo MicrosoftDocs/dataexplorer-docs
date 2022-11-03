@@ -13,7 +13,7 @@ Calculates the angle whose sine is the specified number (the inverse operation o
 
 `asin(`*x*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

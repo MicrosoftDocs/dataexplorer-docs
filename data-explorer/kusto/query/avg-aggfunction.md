@@ -15,7 +15,7 @@ Calculates the average (arithmetic mean) of *Expr* across the group.
 
 `avg` `(`*Expr*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

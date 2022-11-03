@@ -15,7 +15,7 @@ To optimize multiple uses of the `as` operator within a single query, see [Named
 
 *T* `|` `as` [`hint.materialized` `=` `true`] *Name*
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

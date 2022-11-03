@@ -17,7 +17,7 @@ Receives one or more arrays. Sorts the first array in descending order. Orders t
 
 If *nulls_last* isn't provided, a default value of `true` is used.
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

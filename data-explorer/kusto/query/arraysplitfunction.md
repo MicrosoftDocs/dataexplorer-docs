@@ -13,7 +13,7 @@ Splits an array to multiple arrays according to the split indices and packs the 
 
 `array_split`(*array*, *`indices`*)
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

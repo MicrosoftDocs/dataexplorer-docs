@@ -13,7 +13,7 @@ Calculates the angle, in radians, between the positive x-axis and the ray from t
 
 `atan2(`*y*`,`*x*`)`
 
-## Arguments
+## Parameters
 
 * *x*: X coordinate (a real number).
 * *y*: Y coordinate (a real number).

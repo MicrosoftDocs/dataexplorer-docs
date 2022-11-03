@@ -13,7 +13,7 @@ Checks for a condition. If the condition is false, outputs error messages and fa
 
 `assert(`*condition*`, `*message*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

@@ -13,7 +13,7 @@ Returns the angle whose tangent is the specified number (the inverse operation o
 
 `atan(`*x*`)`
 
-## Arguments
+## Parameters
 
 * *x*: A real number.
 

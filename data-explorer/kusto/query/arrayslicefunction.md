@@ -13,7 +13,7 @@ Extracts a slice of a dynamic array.
 
 `array_slice`(*array*, *start*, *end*)
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
