@@ -13,7 +13,7 @@ Calculates the absolute value of the input.
 
 `abs(`*x*`)`
 
-## Arguments
+## Parameters
 
 * *x*: An integer or real number, or a timespan value.
 

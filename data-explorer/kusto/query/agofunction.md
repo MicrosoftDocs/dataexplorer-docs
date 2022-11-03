@@ -22,7 +22,7 @@ for all instantiations.
 
 `ago(`*a_timespan*`)`
 
-## Arguments
+## Parameters
 
 * *[a_timespan](scalar-data-types/timespan.md)*: Interval to subtract from the current UTC clock time
 (`now()`).

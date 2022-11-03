@@ -19,7 +19,7 @@ T | evaluate active_users_count(id, datetime_column, startofday(ago(30d)), start
 
 *T* `| evaluate` `active_users_count(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *LookbackWindow*`,` *Period*`,` *ActivePeriodsCount*`,` *Bin* `,` [*dim1*`,` *dim2*`,` ...]`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |

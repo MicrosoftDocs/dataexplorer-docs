@@ -13,7 +13,7 @@ Calculates the angle whose cosine is the specified number (the inverse operation
 
 `acos(`*x*`)`
 
-## Arguments
+## Parameters
 
 * *x*: A real number in range [-1, 1].
 
