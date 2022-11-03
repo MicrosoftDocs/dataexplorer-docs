@@ -3,7 +3,7 @@ title: week_of_year() - Azure Data Explorer
 description: This article describes week_of_year() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/18/2020
+ms.date: 11/03/2022
 ---
 # week_of_year()
 
@@ -12,6 +12,8 @@ Returns an integer which represents the week number. The week number is calculat
 ```kusto
 week_of_year(datetime("2015-12-14"))
 ```
+
+ **Deprecated alias:** weekofyear()
 
 ## Syntax
 
