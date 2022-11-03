@@ -17,7 +17,7 @@ Calculates the angle whose sine is the specified number (the inverse operation o
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*x* |  | &check;| A real number in range [-1, 1].|
+|*x* | real | &check;| A real number in range [-1, 1].|
 
 ## Returns
 

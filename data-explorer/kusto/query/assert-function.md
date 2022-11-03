@@ -17,7 +17,7 @@ Checks for a condition. If the condition is false, outputs error messages and fa
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *condition* | expression | &check; |Conditional expression to evaluate. If the condition is `false`, the specified message is used to report an error. If the condition is `true`, it returns `true` as an evaluation result. Condition must be evaluated to constant during the query analysis phase.|
+| *condition* | bool | &check; | Conditional expression to evaluate. Condition must be evaluated to constant during the query analysis phase.|
 | *message* | string | &check; | The message used if assertion is evaluated to `false`.|
 
 > [!NOTE]
@@ -25,7 +25,7 @@ Checks for a condition. If the condition is false, outputs error messages and fa
 
 ## Returns
 
-Returns `true` if the condition is `true`. 
+Returns `true` if the condition is `true`.
 Raises a semantic error if the condition is evaluated to `false`.
 
 ## Examples

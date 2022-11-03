@@ -21,8 +21,8 @@ If *nulls_last* isn't provided, a default value of `true` is used.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*array1...arrayN*|  | &check; | Input arrays.|
-| *nulls_last* |bool |  | Indicating whether `null`s should be last.|
+|*array1...arrayN*| dynamic | &check; | Input array or list of arrays.|
+| *nulls_last* |bool |  | Indicates whether `null`s should be last.|
 
 ## Returns
 

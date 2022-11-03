@@ -17,8 +17,8 @@ Splits an array to multiple arrays according to the split indices and packs the 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array*| dynamic| &check; |Array to split.|
-| *indices* | integer | &check;| Split indices (zero based). This can be a single integer or a dynamic array of integers. Negative values are converted to `array_length` + `value`.
+| *array*| dynamic | &check; | Array to split.|
+| *indices* | integer | &check;| Integer or dynamic array of integers used to indicate the location at which to split the array. The start index of arrays is zero. Negative values are converted to `array_length` + `value`.|
 
 ## Returns
 

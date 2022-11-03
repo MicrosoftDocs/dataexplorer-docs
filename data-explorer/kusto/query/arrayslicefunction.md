@@ -17,7 +17,7 @@ Extracts a slice of a dynamic array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array* | dynamic | &check; | Input array to extract the slice.|
+| *array* | dynamic | &check; | Input array from which to extract the slice.|
 | *start*| number | &check; | Start index of the slice (inclusive). Negative values are converted to `array_length`+`start`.|
 | *end*| number | &check; | Last index of the slice. (inclusive). Negative values are converted to `array_length`+`start`.|
 
