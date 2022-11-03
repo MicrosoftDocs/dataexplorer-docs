@@ -26,15 +26,15 @@ Returns a JSON representation of the policy.
 
 ## Example
 
-~~~kusto
-.alter cluster policy capacity ```
+```kusto
+.alter cluster policy capacity
 {
   "IngestionCapacity": {
     "ClusterMaximumConcurrentOperations": 512,
     "CoreUtilizationCoefficient": 0.75
   }
-}```
-~~~
+}
+```
 
 **Output**
 
