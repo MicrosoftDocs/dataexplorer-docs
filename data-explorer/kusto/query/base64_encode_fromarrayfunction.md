@@ -13,9 +13,11 @@ Encodes a base64 string from a bytes array.
 
 `base64_encode_fromarray(`*BytesArray*`)`
 
-## Arguments
+## Parameters
 
-* *BytesArray*: Input bytes array to be encoded into base64 string.
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *BytesArray* | dynamic | &check; |  Input bytes array to be encoded into base64 string. |
 
 ## Returns
 
