@@ -3,7 +3,7 @@ title: count_distinctif() (aggregation function) - Azure Data Explorer
 description: This article describes count_distinctif() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/18/2022
+ms.date: 11/03/2022
 ---
 # count_distinctif() (aggregation function)
 
@@ -11,10 +11,10 @@ Conditionally counts unique values specified by the scalar expression per summar
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
-If estimation of unique values count is good enough, use less resource consuming [dcountif](dcountif-aggfunction.md) aggregation function.
+If you only need an estimation of unique values count, we recommend using the less resource-consuming [dcountif](dcountif-aggfunction.md) aggregation function.
 
 > [!NOTE]
-> The `count_distinctif()` is limited by 100M of unique values; an attemt to apply the function on an expression returning more unique values than this limit will produce a runtime error (HRESULT: 0x80DA0012).
+> This function is limited to 100M unique values. An attempt to apply the function on an expression returning too many values will produce a runtime error (HRESULT: 0x80DA0012).
 
 ## Syntax
 
@@ -29,11 +29,11 @@ If estimation of unique values count is good enough, use less resource consuming
 
 ## Returns
 
-Long integer value indicating the number of unique values of *`Expr`* per summary group, for all records for which *Predicate* evaluates to `true`.
+Long integer value indicating the number of unique values of *`Expr`* per summary group, for all records for which the *Predicate* evaluates to `true`.
 
 ## Example
 
-This example shows how many types of storm events happened in each state.
+This example shows how many types of death-causing storm events happened in each state. Only storm events with a nonzero count of deaths will be counted.
 
 ```kusto
 StormEvents

@@ -1,6 +1,6 @@
 ---
 title: count_distinct() (aggregation function) - Azure Data Explorer
-description: This article describes count_distinct() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the count_distinct() (aggregation function) to count unique values specified by a scalar expression per summary group.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 10/18/2022
@@ -11,12 +11,12 @@ Counts unique values specified by the scalar expression per summary group, or th
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
-If estimation of unique values count is good enough, use less resource consuming [dcount](dcount-aggfunction.md) aggregation function.
+If you only need an estimation of unique values count, we recommend using the less resource-consuming [`dcount`](dcount-aggfunction.md) aggregation function.
 
 Use the [count_distinctif](count-distinctif-aggfunction.md) aggregation function to count only records for which a predicate returns `true`.
 
 > [!NOTE]
-> The `count_distinct()` is limited by 100M of unique values; an attemt to apply the function on an expression returning more unique values than this limit will produce a runtime error (HRESULT: 0x80DA0012).
+> This function is limited to 100M unique values. An attempt to apply the function on an expression returning too many values will produce a runtime error (HRESULT: 0x80DA0012).
 
 ## Syntax
 
@@ -30,7 +30,7 @@ Use the [count_distinctif](count-distinctif-aggfunction.md) aggregation function
 
 ## Returns
 
-Long integer value indicating the number of unique values of *`Expr`* per summary group.
+Long integer value indicating the number of unique values of *Expr* per summary group.
 
 ## Example
 
