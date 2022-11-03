@@ -14,8 +14,8 @@ ago(1h)
 ago(1d)
 ```
 
-Like `now()`, if you use `ago()` multiple times in a single query statement, the time
-being referenced (the current UTC time) will be the same across all uses.
+Like `now()`, if you use `ago()` multiple times in a single query statement, the current UTC time
+being referenced will be the same across all uses.
 
 ## Syntax
 
