@@ -13,7 +13,7 @@ Counts unique values specified by the scalar expression per summary group, or th
 
 If you only need an estimation of unique values count, we recommend using the less resource-consuming [`dcount`](dcount-aggfunction.md) aggregation function.
 
-Use the [count_distinctif](count-distinctif-aggfunction.md) aggregation function to count only records for which a predicate returns `true`.
+To count only records for which a predicate returns `true`, use the [count_distinctif](count-distinctif-aggfunction.md) aggregation function.
 
 > [!NOTE]
 > This function is limited to 100M unique values. An attempt to apply the function on an expression returning too many values will produce a runtime error (HRESULT: 0x80DA0012).
