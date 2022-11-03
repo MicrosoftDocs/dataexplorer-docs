@@ -1,11 +1,11 @@
 ---
-title: count_distinctif() (aggregation function) - Azure Data Explorer
+title: count_distinctif() (aggregation function) - Azure Data Explorer - (preview)
 description: This article describes count_distinctif() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/03/2022
 ---
-# count_distinctif() (aggregation function)
+# count_distinctif() (aggregation function) - (preview)
 
 Conditionally counts unique values specified by the scalar expression per summary group, or the total number of unique values if the summary group is omitted. Only records for which *Predicate* evaluates to `true` are counted.
 
