@@ -15,7 +15,9 @@ Returns the angle whose tangent is the specified number (the inverse operation o
 
 ## Parameters
 
-* *x*: A real number.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *x* | real | &check; | Number used to calculate the arc tangent.|
 
 ## Returns
 

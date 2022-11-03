@@ -15,8 +15,10 @@ Calculates the angle, in radians, between the positive x-axis and the ray from t
 
 ## Parameters
 
-* *x*: X coordinate (a real number).
-* *y*: Y coordinate (a real number).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *x* | real | &check; | X coordinate.|
+| *y* | real | &check; | Y coordinate.|
 
 ## Returns
 
