@@ -14,7 +14,7 @@ Calculates the sum of elements in a dynamic array.
 
 `array_sum`(*array*)
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

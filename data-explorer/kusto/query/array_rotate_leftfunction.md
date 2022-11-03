@@ -13,7 +13,7 @@ Rotates values inside a `dynamic` array to the left.
 
 `array_rotate_left(`*array*, *rotate_count*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

@@ -13,7 +13,7 @@ Reverses the order of the elements in a dynamic array.
 
 `array_reverse(`*array*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

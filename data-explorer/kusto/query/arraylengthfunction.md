@@ -13,7 +13,7 @@ Calculates the number of elements in a dynamic array.
 
 `array_length(`*array*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

@@ -13,7 +13,7 @@ Concatenates many dynamic arrays to a single array.
 
 `array_concat(`*arr1*`[`, `*arr2*, ...]`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

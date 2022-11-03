@@ -15,7 +15,7 @@ Another alias: array_iff().
 
 `array_iif(`*ConditionArray*, *IfTrue*, *IfFalse*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

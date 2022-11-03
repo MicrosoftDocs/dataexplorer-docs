@@ -13,7 +13,7 @@ Shifts the values inside a dynamic array to the right.
 
 `array_shift_right(`*array*, *shift_count* [, *fill_value* ]`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

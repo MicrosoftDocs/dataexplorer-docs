@@ -13,7 +13,7 @@ Searches an array for the specified item, and returns its position.
 
 `array_index_of(`*array*,*lookup*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
