@@ -13,9 +13,11 @@ Encodes a [GUID](./scalar-data-types/guid.md) to a base64 string.
 
 `base64_encode_fromguid(`*GUID*`)`
 
-## Arguments
+## Parameters
 
-* *GUID*: Input [GUID](./scalar-data-types/guid.md) to be encoded to a base64 string.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *GUID* | guid | &check; | Input GUID to be encoded to a base64 string. |
 
 ## Returns
 

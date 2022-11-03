@@ -13,9 +13,11 @@ Encodes a string as base64 string.
 
 `base64_encode_tostring(`*String*`)`
 
-## Arguments
+## Parameters
 
-* *String*: Input string to be encoded as base64 string.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *String* | string | &check; |  Input string to be encoded as base64 string. |
 
 ## Returns
 

@@ -13,9 +13,11 @@ Decodes a base64 string to a [GUID](./scalar-data-types/guid.md).
 
 `base64_decode_toguid(`*String*`)`
 
-## Arguments
+## Parameters
 
-* *String*: Input string to be decoded from base64 to a [GUID](./scalar-data-types/guid.md).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *String* | string | &check; | Input string to be decoded from base64 to a GUID. |
 
 ## Returns
 
