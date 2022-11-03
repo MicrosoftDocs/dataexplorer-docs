@@ -17,7 +17,7 @@ Shifts the values inside a `dynamic` array to the left.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*array* | dynamic |&check; | Input array to shift, must be dynamic array.|
+|*array* | dynamic |&check; | Input array to shift.|
 |*shift_count* | integer | &check; | Number of positions that array elements will be shifted to the left. If the value is negative, the elements will be shifted to the right. |
 |*fill_value* | scalar | &check; | Value used for inserting elements instead of the ones that were shifted and removed. The default is null or an empty string depending on the *array* type.|
 
