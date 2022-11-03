@@ -3,7 +3,7 @@ title: atan2() - Azure Data Explorer
 description: Learn how to use the atan2() function to calculate an angle in radians between axes.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 11/03/2022
 ---
 # atan2()
 
