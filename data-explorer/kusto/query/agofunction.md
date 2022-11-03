@@ -7,16 +7,15 @@ ms.date: 09/20/2022
 ---
 # ago()
 
-Subtracts the given timespan from the current UTC clock time.
+Subtracts the given [timespan](scalar-data-types/timespan.md) from the current UTC time.
 
 ```kusto
 ago(1h)
 ago(1d)
 ```
 
-Like `now()`, this function can be used multiple times
-in a statement and the UTC clock time being referenced will be the same
-for all instantiations.
+If you use `ago()` multiple times in a single query statement, the time
+being referenced (the current UTC time) will be the same across all uses.
 
 ## Syntax
 
