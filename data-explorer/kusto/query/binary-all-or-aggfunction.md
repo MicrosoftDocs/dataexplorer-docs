@@ -15,7 +15,7 @@ Accumulates values using the binary `OR` operation for each summarization group,
 
 `binary_all_or` `(`*Expr*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

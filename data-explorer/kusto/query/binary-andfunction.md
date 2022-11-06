@@ -17,9 +17,12 @@ binary_and(x,y)
 
 `binary_and(`*num1*`,` *num2* `)`
 
-## Arguments
+## Parameters
 
-* *num1*, *num2*: long numbers.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *num1* | long | &check; | A long number. |
+| *num2* | long | &check; | A long number. |
 
 ## Returns
 

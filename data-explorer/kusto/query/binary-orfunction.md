@@ -17,9 +17,12 @@ binary_or(x,y)
 
 `binary_or(`*num1*`,` *num2* `)`
 
-## Arguments
+## Parameters
 
-* *num1*, *num2*: long numbers.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *num1* | long | &check; | A long number. |
+| *num2* | long | &check; | A long number. |
 
 ## Returns
 

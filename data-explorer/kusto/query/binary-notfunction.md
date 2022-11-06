@@ -17,9 +17,11 @@ binary_not(x)
 
 `binary_not(`*num1*`)`
 
-## Arguments
+## Parameters
 
-* *num1*: numeric
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *num1* | long | &check; | A long number. |
 
 ## Returns
 

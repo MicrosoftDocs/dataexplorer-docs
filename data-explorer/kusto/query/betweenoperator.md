@@ -19,12 +19,14 @@ If *expr* expression is datetime - another syntactic sugar syntax is provided:
 
 *T* `|` `where` *expr* `between` `(`*leftRangeDateTime*` .. `*rightRangeTimespan*`)`
 
-## Arguments
+## Parameters
 
-* *T* - The tabular input whose records are to be matched.
-* *expr* - the expression to filter.
-* *leftRange* - expression of the left range (inclusive).
-* *rightRange* - expression of the right range (inclusive).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check; |  The tabular input whose records are to be matched. |
+| *expr* | string | &check; |  The expression to filter. |
+| *leftRange* | string | &check; |  Expression of the left range (inclusive). |
+| *rightRange* | string | &check; |  Expression of the right range (inclusive). |
 
 ## Returns
 
