@@ -704,7 +704,7 @@ items:
     href: regexquotefunction.md
   - name: repeat()
     href: repeatfunction.md
-  - name: replace_regex()
+  - name: replace_regex(), replace_string()
     displayName: replace()
     href: replace-regex-function.md
   - name: replace_string()
