@@ -43,11 +43,10 @@ A copy of the input tabular result set, such that:
 ## Example
 
 ```kusto
-Logs
+TransformedSysLogs
 | extend
-    Duration = CreatedOn - CompletedOn
-    , Age = now() - CreatedOn
-    , IsSevere = Level == "Critical" or Level == "Error"
+    injestionTime = SysLogTimestamp - timestamp,
+    needsInvestigation = severity == "warning" or severity == "err"
 ```
 
 You can use the [series_stats](series-statsfunction.md) function to return multiple columns.
