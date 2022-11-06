@@ -64,31 +64,6 @@ evaluate azure_digital_twins_query_request(
 |49|34|
 |80|32|
 
-### Performing time series analytics
+### Perform time series analytics
 
-
-The following example shows how to perform complex analysis, such as anomaly detection, through a `join` operation between the plugin results and a table containing historical data in a Kusto table, based on the ID column (`$dtid`).
-
-```kusto
-evaluate azure_digital_twins_query_request(
-  'https://contoso.api.wcus.digitaltwins.azure.net',
-  'SELECT T.$dtId AS tid, T.Temperature FROM DIGITALTWINS T WHERE IS_PRIMITIVE(T.$dtId) AND IS_PRIMITIVE(T.Temperature)')
-| project tostring(tid), todouble(Temperature)
-| join kind=inner (
-    ADT_Data_History
-) on $left.tid == $right.twinId
-| make-series num=avg(value) on timestamp from min_t to max_t step dt by tid
-| extend (anomalies, score , baseline) = 
-          series_decompose_anomalies(num, 1.5, -1, 'linefit')
-| render anomalychart with(anomalycolumns=anomalies, title= 'Test, anomalies')
-```
-
-ADT_Data_History is a table whose schema as follows:
-
-|timestamp|twinId|modelId|name|value|relationshipTarget|relationshipId|
-|---|---|---|---|---|---|---|
-|2021-02-01 17:24|contosoRoom|dtmi:com:contoso:Room;1|Temperature|24|...|..|
-
-**Output**
-
-:::image type="content" source="images/azure-digital-twins-query-request-plugin/adt-anomaly.png" alt-text="Screenshot of the Anomaly chart of the test expression. Highlighted point is the anomaly.":::
+For an example that shows... see, [View the historized twin updates in Azure Data Explorer](azure/digital-twins/how-to-use-data-history?tabs=cli#view-the-historized-twin-updates-in-azure-data-explorer)
