@@ -41,12 +41,11 @@ The following example shows several kinds of manipulations that can be done
 using the `project` operator. The input table `T` has three columns of type `int`: `A`, `B`, and `C`. 
 
 ```kusto
-T
+StormEvents
 | project
-    X=C,                       // Rename column C to X
-    A=2*B,                     // Calculate a new column A from the old B
-    C=strcat("-",tostring(C)), // Calculate a new column C from the old C
-    B=2*B                      // Calculate a new column B from the old B
+    StartLocation=BeginLocation,                    // Rename column
+    totalDeaths=DeathsDirect+DeathsIndirect,        // Calculate a new column TotalDeaths from two existing columns
+    StormSummary=StormSummary.Details.Description   // Calculate a new column StormSummary from the old StormSummary
 ```
 
 [series_stats](series-statsfunction.md) is an example of a function that returns multiple columns.
