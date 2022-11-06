@@ -185,7 +185,7 @@ items:
   - name: serialize operator
     href: serializeoperator.md
   - name: shuffle query
-    displayName: hint.shufflekey, hint.strategy, shufflekey, hint
+    displayName: hint.shufflekey, hint.strategy, shufflekey, hint, strategy
     href: shufflequery.md
   - name: sort operator
     href: sortoperator.md
