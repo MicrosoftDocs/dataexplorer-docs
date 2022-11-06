@@ -23,7 +23,7 @@ If *expr* expression is datetime - another syntactic sugar syntax is provided:
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; |  The tabular input whose records are to be matched. |
+| *T* | string | &check; |  The tabular input whose records are to be matched. For example, the table name. |
 | *expr* | string | &check; |  The expression to filter. |
 | *leftRange* | string | &check; |  Expression of the left range (inclusive). |
 | *rightRange* | string | &check; |  Expression of the right range (inclusive). |
