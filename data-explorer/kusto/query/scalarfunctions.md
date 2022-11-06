@@ -67,7 +67,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[unixtime_milliseconds_todatetime()](unixtime-milliseconds-todatetimefunction.md)|Converts unix-epoch milliseconds to UTC datetime.|
 |[unixtime_nanoseconds_todatetime()](unixtime-nanoseconds-todatetimefunction.md)|Converts unix-epoch nanoseconds to UTC datetime.|
 |[unixtime_seconds_todatetime()](unixtime-seconds-todatetimefunction.md)|Converts unix-epoch seconds to UTC datetime.|
-|[weekofyear()](weekofyearfunction.md)|Returns an integer representing the week number.|
+|[week_of_year()](weekofyearfunction.md)|Returns an integer representing the week number.|
 
 ## Dynamic/array functions
 
