@@ -4,13 +4,13 @@ description: Learn how to use the azure_digital_twins_query_request plugin to ru
 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/03/2022
+ms.date: 11/06/2022
 ---
 # azure_digital_twins_query_request plugin
 
 The `azure_digital_twins_query_request` plugin runs an Azure Digital Twins query as part of a Kusto Query Language query. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
-Using the plugin, you can query across data in both Azure Digital Twins and any data source accessible through the Kusto Query Language. For example, you can use the plugin to contextualize time series data in a Kusto query by joining it with knowledge graph data held in Azure Digital Twins.
+Using the plugin, you can query across data in both Azure Digital Twins and any data source accessible through the Kusto Query Language. For example, you can use the plugin to contextualize time series data in a Kusto query by joining it with knowledge graph data held in Azure Digital Twins. For more information about the plugin, see [Azure Digital Twins query plugin for Azure Data Explorer](azure/digital-twins/concepts-data-explorer-plugin#using-the-plugin).
 
 ## Syntax
 
@@ -64,7 +64,8 @@ evaluate azure_digital_twins_query_request(
 |49|34|
 |80|32|
 
-### Joining the plugin results with another data source
+### Performing time series analytics
+
 
 The following example shows how to perform complex analysis, such as anomaly detection, through a `join` operation between the plugin results and a table containing historical data in a Kusto table, based on the ID column (`$dtid`).
 
