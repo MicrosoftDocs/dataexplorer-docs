@@ -3,13 +3,11 @@ title: replace_string() - Azure Data Explorer
 description: This article describes replace_string() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/03/2022
+ms.date: 07/15/2021
 ---
 # replace_string()
 
-Replaces all string matches with another string.
-
-> **Deprecated aliases:** replace()
+Replaces all string matches with another string. 
 
 ## Syntax
 

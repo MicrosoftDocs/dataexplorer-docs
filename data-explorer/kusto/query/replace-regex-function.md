@@ -3,13 +3,11 @@ title: replace_regex() - Azure Data Explorer
 description: This article describes replace_regex() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/03/2022
+ms.date: 07/18/2021
 ---
 # replace_regex()
 
 Replaces all regex matches with another string.
-
-> **Deprectated aliases:** replace()
 
 ## Syntax
 

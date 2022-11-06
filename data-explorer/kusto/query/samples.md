@@ -974,12 +974,12 @@ Heartbeat | where isnotempty(ComputerIP) | take 1  // return 1 Heartbeat record 
 ```
 
 
-### *parse_url*
+### *parseurl*
 
 Splits a URL into its parts, like protocol, host, and port, and then returns a dictionary object that contains the parts as strings.
 
 ```
-parse_url(urlstring)
+parseurl(urlstring)
 ```
 
 #### Example
