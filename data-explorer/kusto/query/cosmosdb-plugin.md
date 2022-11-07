@@ -60,16 +60,6 @@ The following example shows an alter callout policy command for `cosmosdb` *Call
 
 ## Examples
 
-### Query Azure Cosmos DB
-
-The following example uses the *cosmosdb_sql_request* plugin to send a SQL query to fetch data from Azure Cosmos DB using its Azure Cosmos DB for NoSQL.
-
-```kusto
-evaluate cosmosdb_sql_request(
-  'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;',
-  'SELECT * from c')
-```
-
 ### Query Azure Cosmos DB with a query-defined output schema
 
 The following example uses the *cosmosdb_sql_request* plugin to send a SQL query while selecting only specific columns.
@@ -79,6 +69,16 @@ This query uses explicit schema definitions that allow various optimizations bef
 evaluate cosmosdb_sql_request(
   'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;',
   'SELECT Id, Name from c') : (Id:long, Name:string) 
+```
+
+### Query Azure Cosmos DB
+
+The following example uses the *cosmosdb_sql_request* plugin to send a SQL query to fetch data from Azure Cosmos DB using its Azure Cosmos DB for NoSQL.
+
+```kusto
+evaluate cosmosdb_sql_request(
+  'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;',
+  'SELECT * from c')
 ```
 
 ### Query Azure Cosmos DB with parameters
