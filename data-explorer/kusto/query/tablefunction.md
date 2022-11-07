@@ -60,9 +60,9 @@ table('StormEvent')
 
 `table(T)` returns:
 
-* Data from table *T*, if a table named *T* exists.
-* Data returned by function *T*, if a table named *T* doesn't exist, but a function named *T* exists - function *T* must take no arguments, and must return a tabular result.
-* A semantic error is raised if there's no table named *T*, and no function named *T*.
+* Data from table *T* if a table named *T* exists.
+* Data returned by function *T* if a table named *T* doesn't exist but a function named *T* exists. Function *T* must take no arguments and must return a tabular result.
+* A semantic error is raised if there's no table named *T* and no function named *T*.
 
 ## Examples
 
