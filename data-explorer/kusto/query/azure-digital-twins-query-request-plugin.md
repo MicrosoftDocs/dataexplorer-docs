@@ -4,13 +4,19 @@ description: Learn how to use the azure_digital_twins_query_request plugin to ru
 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/06/2022
+ms.date: 11/07/2022
 ---
 # azure_digital_twins_query_request plugin
 
 The `azure_digital_twins_query_request` plugin runs an Azure Digital Twins query as part of a Kusto Query Language query. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
-Using the plugin, you can query across data in both Azure Digital Twins and any data source accessible through the Kusto Query Language. For example, you can use the plugin to contextualize time series data in a Kusto query by joining it with knowledge graph data held in Azure Digital Twins. For more information about the plugin, see [Azure Digital Twins query plugin for Azure Data Explorer](azure/digital-twins/concepts-data-explorer-plugin#using-the-plugin).
+Using the plugin, you can query across data in both Azure Digital Twins and any data source accessible through the Kusto Query Language. For example, you can [historize digital twin property updates to Azure Data Explorer](#perform-time-series-analytics).
+
+For more information about the plugin, see [Azure Digital Twins query plugin for Azure Data Explorer](azure/digital-twins/concepts-data-explorer-plugin#using-the-plugin).
+
+## Authentication and authorization
+
+The azure_digital_twins_query_request plugin uses the Azure AD account of the user running the query to authenticate. To run a query, a user must at least be granted the **Azure Digital Twins Data Reader** role. Information on how to assign this role can be found in [**Security for Azure Digital Twins solutions**](/azure/digital-twins/concepts-security#authorization-azure-roles-for-azure-digital-twins).
 
 ## Syntax
 
@@ -21,17 +27,7 @@ Using the plugin, you can query across data in both Azure Digital Twins and any 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *AdtInstanceEndpoint* | string | &check; | The Azure Digital Twins instance endpoint to be queried. |
-
 | *AdtQuery* | string | &check; | The query that is to be run against the Azure Digital Twins endpoint. This query is written in a custom SQL-like query language for Azure Digital Twins, called the Azure Digital Twins query language. For more information, see [Query language for Azure Digital Twins](/azure/digital-twins/concepts-query-language).|
-
-
-## Authentication and authorization
-
-The azure_digital_twins_query_request plugin uses the Azure AD account of the user running the query to authenticate. To run a query, a user must at least be granted the **Azure Digital Twins Data Reader** role. Information on how to assign this role can be found in [**Security for Azure Digital Twins solutions**](/azure/digital-twins/concepts-security#authorization-azure-roles-for-azure-digital-twins).
-
-## Perform time series analytics
-
-Use the data history integration feature of Azure Digital Twins to historize digital twin property updates to Azure Data Explorer. To view the historized twin updates in Azure Data Explorer, see [View the historized twin updates in Azure Data Explorer](azure/digital-twins/how-to-use-data-history?tabs=cli#view-the-historized-twin-updates-in-azure-data-explorer)
 
 ## Examples
 
@@ -70,3 +66,7 @@ evaluate azure_digital_twins_query_request(
 |21|48|
 |49|34|
 |80|32|
+
+## Perform time series analytics
+
+You can use the data history integration feature of Azure Digital Twins to historize digital twin property updates to Azure Data Explorer. To learn how to view the historized twin updates in Azure Data Explorer, see [View the historized twin updates in Azure Data Explorer](azure/digital-twins/how-to-use-data-history?tabs=cli#view-the-historized-twin-updates-in-azure-data-explorer)
