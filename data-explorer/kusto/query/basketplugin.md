@@ -1,9 +1,9 @@
 ---
 title: basket plugin - Azure Data Explorer
-description: This article describes basket plugin in Azure Data Explorer.
+description: Learn how to use the basket plugin to find frequent patterns in the data that pass a frequency threshold. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/13/2022
+ms.date: 11/07/2022
 ---
 # basket plugin
 
@@ -67,7 +67,6 @@ StormEvents
 ```
 
 **Output**
-
 |SegmentId|Count|Percent|State|EventType|Damage|DamageCrops|
 |---|---|---|---|---|---|---|---|---|
 |0|4574|77.7|||NO|0
@@ -91,7 +90,6 @@ StormEvents
 ```
 
 **Output**
-
 |SegmentId|Count|Percent|State|EventType|Damage|DamageCrops|
 |---|---|---|---|---|---|---|---|---|
 |0|4574|77.7|\*|\*|NO|0
