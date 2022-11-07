@@ -142,7 +142,7 @@ FALSE	    FALSE	        9284
 
 ### Model asset
 
-Get sample dataset and pre-trained model in your cluster with python plugin enabled.
+Get sample dataset and pre-trained model in your cluster with Python plugin enabled.
 
 <!-- csl -->
 ```kusto
