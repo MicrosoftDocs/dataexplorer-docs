@@ -12,7 +12,7 @@ The `azure_digital_twins_query_request` plugin runs an Azure Digital Twins query
 
 Using the plugin, you can query across data in both Azure Digital Twins and any data source accessible through the Kusto Query Language. For example, you can [historize digital twin property updates to Azure Data Explorer](#perform-time-series-analytics).
 
-For more information about the plugin, see [Azure Digital Twins query plugin for Azure Data Explorer](azure/digital-twins/concepts-data-explorer-plugin#using-the-plugin).
+For more information about the plugin, see [Azure Digital Twins query plugin for Azure Data Explorer](/azure/digital-twins/concepts-data-explorer-plugin#using-the-plugin).
 
 ## Authentication and authorization
 
@@ -69,4 +69,4 @@ evaluate azure_digital_twins_query_request(
 
 ## Perform time series analytics
 
-You can use the data history integration feature of Azure Digital Twins to historize digital twin property updates to Azure Data Explorer. To learn how to view the historized twin updates in Azure Data Explorer, see [View the historized twin updates in Azure Data Explorer](azure/digital-twins/how-to-use-data-history?tabs=cli#view-the-historized-twin-updates-in-azure-data-explorer)
+You can use the data history integration feature of Azure Digital Twins to historize digital twin property updates to Azure Data Explorer. To learn how to view the historized twin updates in Azure Data Explorer, see [View the historized twin updates in Azure Data Explorer](/azure/digital-twins/how-to-use-data-history?tabs=cli#view-the-historized-twin-updates-in-azure-data-explorer)
