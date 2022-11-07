@@ -266,11 +266,10 @@ Related functions:
 | Asia/Beirut                      |
 | Asia/Bishkek                     |
 | Asia/Brunei                      |
-| Asia/Calcutta                    |
+| Asia/Kolkata                     |
 | Asia/Chita                       |
 | Asia/Choibalsan                  |
 | Asia/Chongqing                   |
-| Asia/Chungking                   |
 | Asia/Colombo                     |
 | Asia/Dacca                       |
 | Asia/Damascus                    |
@@ -282,7 +281,7 @@ Related functions:
 | Asia/Gaza                        |
 | Asia/Harbin                      |
 | Asia/Hebron                      |
-| Asia/Ho\_Chi\_Minh               |
+| Asia/Ho\_Chi\_Minh\_City         |
 | Asia/Hong\_Kong                  |
 | Asia/Hovd                        |
 | Asia/Irkutsk                     |
@@ -319,9 +318,8 @@ Related functions:
 | Asia/Qatar                       |
 | Asia/Qostanay                    |
 | Asia/Qyzylorda                   |
-| Asia/Rangoon                     |
+| Asia/Yangon (Rangoon)            |
 | Asia/Riyadh                      |
-| Asia/Saigon                      |
 | Asia/Sakhalin                    |
 | Asia/Samarkand                   |
 | Asia/Seoul                       |
@@ -462,7 +460,7 @@ Related functions:
 | Europe/Istanbul                  |
 | Europe/Jersey                    |
 | Europe/Kaliningrad               |
-| Europe/Kiev                      |
+| Europe/Kyiv                      |
 | Europe/Kirov                     |
 | Europe/Lisbon                    |
 | Europe/Ljubljana                 |
@@ -587,7 +585,6 @@ Related functions:
 | Pacific/Yap                      |
 | Poland                           |
 | Portugal                         |
-| ROC                              |
 | ROK                              |
 | Singapore                        |
 | Turkey                           |

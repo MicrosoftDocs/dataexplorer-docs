@@ -196,7 +196,7 @@ In this article, you use an Azure Resource Manager template to create a resource
             "name": "[parameters('kustoClusterName')]",
             "type": "Microsoft.Kusto/clusters",
             "sku": {
-                "name": "Standard_D13_v2",
+                "name": "Standard_E8ads_v5",
                 "tier": "Standard",
                 "capacity": 2
             },

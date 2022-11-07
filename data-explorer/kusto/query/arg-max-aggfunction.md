@@ -15,7 +15,7 @@ Finds a row in the group that maximizes *ExprToMaximize*.
 
 `arg_max` `(`*ExprToMaximize*`,` *\** | *ExprToReturn*  [`,` ...]`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
@@ -32,7 +32,7 @@ The following examples demonstrate how to use this function.
 
 **Example 1**
 
-Find the northern most location of a storm event in each state.
+Find the maximum latitude of a storm event in each state.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlVILEqPz02s0HBKTc/M80ks0VGAsPKTE0sy8/M0FZIqFYJLEktSATqyPZtCAAAA)**\]**
 
@@ -61,7 +61,7 @@ The results table displays only the first 10 rows.
 
 **Example 2**
 
-Find the first time an event with a direct death happened in each state showing all the columns.
+Find the last time an event with a direct death happened in each state showing all the columns.
 
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKiQWpcfnJlZoBJckFpWEZOam6ihoaSokVSoABUpSAQPollZPAAAA)**\]**
 
