@@ -3,7 +3,7 @@ title: Samples for Kusto Queries - Azure Data Explorer
 description: This article describes common queries and examples that use the Kusto Query Language.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 11/07/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---

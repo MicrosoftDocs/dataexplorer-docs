@@ -849,6 +849,10 @@ items:
   - name: count()
     displayName: cnt()
     href: count-aggfunction.md
+  - name: count_distinct()
+    href: count-distinct-aggfunction.md
+  - name: count_distinctif()
+    href: count-distinctif-aggfunction.md
   - name: countif()
     displayName: count(predicate)
     href: countif-aggfunction.md
