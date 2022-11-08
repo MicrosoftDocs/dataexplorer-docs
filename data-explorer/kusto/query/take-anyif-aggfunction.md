@@ -15,7 +15,7 @@ This function is useful when you want to get a sample value of one column per va
 > **Deprecated aliases:** anyif()
 
 > [!NOTE]
-> The legacy version adds `any_` prefix to the columns returned by the `any()` aggregation.
+> The deprecated version adds `any_` prefix to the columns returned by the `any()` aggregation.
 
 ## Syntax
 
