@@ -27,7 +27,7 @@ The recommended process for purging records from a materialized view is:
 
 **Limitations**
 
-The purge predicate of a materialized view purge can only reference the group by keys of the aggregation, or any column in a [arg_max()](../../query/arg-max-aggfunction.md)/[arg_min() ](../../query/arg-min-aggfunction.md)/[any()](../../query/take-any-aggfunction.md) view. It **cannot** reference other aggregation functions result columns.
+The purge predicate of a materialized view purge can only reference the group by keys of the aggregation, or any column in a [arg_max()](../../query/arg-max-aggfunction.md)/[arg_min() ](../../query/arg-min-aggfunction.md)/[take_any()](../../query/take-any-aggfunction.md) view. It **cannot** reference other aggregation functions result columns.
 
 For example, for a materialized view `MV` which is defined with the following aggregation function:
 
@@ -35,7 +35,7 @@ For example, for a materialized view `MV` which is defined with the following ag
 T | summarize count(), avg(Duration) by UserId
 ```
 
-The following purge predicate is not valid, since it references the result of the avg() aggregation:
+The following purge predicate isn't valid, since it references the result of the avg() aggregation:
 
 ```kusto
 MV | where avg_Duration > 1h

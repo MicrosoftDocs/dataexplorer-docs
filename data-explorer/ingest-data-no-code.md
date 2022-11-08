@@ -604,7 +604,7 @@ The following query analyzes how many ingestions accrued in a minute, including 
 ```kusto
 DiagnosticLogs
 | where Timestamp > ago(15m) and OperationName has 'INGEST'
-| summarize count(), any(Database, Table, IngestionSourcePath) by bin(Timestamp, 1m)
+| summarize count(), take_any(Database, Table, IngestionSourcePath) by bin(Timestamp, 1m)
 ```
 
 Query results:

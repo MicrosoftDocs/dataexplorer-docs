@@ -600,9 +600,9 @@ StormEvents
 | project State, StartTime, EndTime, EventType
 ```
 
-### makeset()
+### make_set()
 
-[**makeset()**](kusto/query/makeset-aggfunction.md): Returns a dynamic (JSON) array of the set of distinct values that an expression takes in the group.
+[**make_set()**](kusto/query/makeset-aggfunction.md): Returns a dynamic (JSON) array of the set of distinct values that an expression takes in the group.
 
 The following query returns all the times when a flood was reported by each state and creates an array from the set of distinct values.
 
@@ -611,7 +611,7 @@ The following query returns all the times when a flood was reported by each stat
 ```Kusto
 StormEvents
 | where EventType == "Flood"
-| summarize FloodReports = makeset(StartTime) by State
+| summarize FloodReports = make_set(StartTime) by State
 | project State, FloodReports
 ```
 
@@ -627,7 +627,7 @@ The following query generates sample data by creating a set and then using it to
 ```Kusto
 let FloodDataSet = StormEvents
 | where EventType == "Flood"
-| summarize FloodReports = makeset(StartTime) by State
+| summarize FloodReports = make_set(StartTime) by State
 | project State, FloodReports;
 FloodDataSet
 | mv-expand FloodReports
