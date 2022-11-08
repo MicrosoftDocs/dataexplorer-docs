@@ -1,57 +1,66 @@
 ---
-title: 'Ingest data from Cosmos DB into Azure Data Explorer using (Synapse Link, Public preview)'
-description: 'In this article, you learn how to ingest (load) data into Azure Data Explorer from Cosmos DB.'
-ms.reviewer: vilauzon
+title: Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
+description: Learn how to ingest (load) data into Azure Data Explorer from Cosmos DB.
+ms.reviewer: vplauzon
 ms.topic: how-to
 ms.date: 21/11/2022
-
 ---
 
-# Ingest data from Cosmos DB
+# Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
 
-Cosmos DB change feed data connection is ingestion pipeline that listens to your [Cosmos DB change feed](https://docs.microsoft.com/en-us/azure/cosmos-db/change-feed) and ingests the data to Kusto. It is available for SQL API and picks up new and updated documents (and not deleted ones due to limitation of change feed).
-A single data connection listens to a specified  Cosmos DB's container and ingests the data to Kusto table.
-The ingestion is done using streaming ingestion (if enabled) with fallback to queued ingestion.
+Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from Azure Cosmos DB using a [change feed](/azure/cosmos-db/change-feed). The Cosmos DB change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your cluster. The change feed listens for new and updated documents but does not log deletes.
 
-## Data Connection Properties
+Each data connection listens to a specific Cosmos DB container and ingests data into a specified table. The ingestion method defaults to using streaming ingestion when enabled, otherwise it falls back to using queued ingestion.
 
-> [!Note]
-> This section should be replaced by the provisioning experience (not available yet)
+## Prerequisites
 
-For creating the data connection, the following properties should be provided:
-  * Data connection name - Name for the data connection
-  * Kusto database name - Name of the target Kusto database
-  * Kusto table name - Name (case sensitive) of the target Kusto table
-  * Ingestion mapping reference - Optional. The name of the ingestion mapping which will be used for the ingestion (Json mapping)
-  * Cosmos DB SubscriptionId - The subscription id of the Cosmos DB account
-  * Cosmos DB Resource group - The resource group name of the Cosmos DB account
-  * Cosmos DB Account Endpoint - The Cosmos DB account endpoint (e.g. "https://mycosmosaccount.documents.azure.com:443/")
-  * Cosmos DB Database - The Cosmos Db Source database
-  * Cosmos DB Container - The Cosmos Db Source container
-  * Start time - The initial starting point of reading from the changes feed.
+// What are the prereqs?
 
-## Notes
+## Create a data connection
 
-* For managing the change feed's checkpoints, the data connection will create a new container under the Cosmos DB database with the name "adx-connection-lease-\<data connection name\>", for a proper functiong of the data connection, this container should not modified.
-* Our tests showed that data connection consume less than 1% of the Cosmos DB RUs used for write documents
+// Where are the How-to steps ... i.e. where does the customer set up the connection?
+// Probably move this down
 
-## Permissions 
+> [!IMPORTANT]
+> The data connection creates a container under the Cosmos DB database with the name *adx-connection-lease-DATA_CONNECTION_NAME*, where *DATA_CONNECTION_NAME* is the name identifying the data connection. This container is required for the proper functioning of the data connection and must not be modified.
 
-Kusto cluster authenticates against Cosmos DB by using its system-assigned managed identity.
-Therefore, you should grant permissions to your cluster on your cosmos DB account. It can be done via Azure portal by the following steps:
-1. Go to your Cosmos DB account in Azure portal
-2. Click "Access control (IAM)"
-3. Click "Add" -> "Add Role Assignment"
-4. Choose "DocumentDB Account Contributor
-5. In the "Assign access to choose "Managed Identity" option
-6. Select your ADX cluster's managed identity as a Member (It can be found by filtering to 'Azure Data Explorer Cluster' on the cluster's subscription)
-7. Click "Review + Create"
+### Data connection properties
+
+The following table describes the properties for a data connection:
+
+| Property Name | Description |
+|---|---|
+| *Connection name* | The name to identify this data connection |
+| *Database* | The case-sensitive name of the existing target database |
+| *Table* | The case-sensitive name of the existing target table |
+| *Ingestion mapping reference* | Optional. Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used |
+| *Cosmos DB subscription ID* | The subscription ID of the Cosmos DB account |
+| *Cosmos DB resource group* | The resource group of the Cosmos DB account used to create the data connection |
+| *Cosmos DB account endpoint* | The Cosmos DB account endpoint. For example, `https://contoso.documents.azure.com:443/` |
+| *Cosmos DB database* | The name of the source database in the Cosmos DB account. |
+| *Cosmos DB container* | The name of the source container in the Cosmos DB account. |
+| *Start time* | Optional. If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date. |
+
+## Permissions
+
+The data connection uses your cluster's system-assigned managed identity for access to read from the Cosmos DB.
+
+Use the following steps to grant the identity access to the Cosmos DB account:
+
+1. In the Azure portal, browse to your Cosmos DB account.
+1. In the left menu, select **Access control (IAM)** > **Add role assignments**.
+1. Select **DocumentDB Account Contributor** and then select **Next**.
+1. Under **Assign access to**, select **Managed identity**.
+1. Under **Members**, select **Select members**.
+1. In the **Select managed identity** pane, select your cluster's managed identity and the select **Select**.
+1. Select **Review + assign** to complete the assignment.
 
 ## Table and Mapping
 
 You should create a target kusto table and a mapping that suits the schema in the source Cosmos DB container.
 For example, if an item in the Cosmos DB container has the following structure:
-```Json
+
+```json
 {
     "id": "17313a67-362b-494f-b948-e2a8e95e237e",
     "creationTime": "2022-04-28T07:36:49.5434296Z",
@@ -66,33 +75,37 @@ For example, if an item in the Cosmos DB container has the following structure:
 There are different ingestion options:
 
 1. Ingest all the first level fields - by creating table using the command and ingest it without specifying mapping:
-```Kusto
-.create-merge table CosmosChangeFeed1 (['id']:string, creationTime:datetime, ['_rid']:string, ['_self']:string, ['_etag']:string, ['_attachments']:string, ['_ts']:long)  
-```
-2. Ingest only part of the fields - by creating  table and mapping with the commands:
 
-```Kusto
-// Table
-.create-merge table CosmosChangeFeed2 (id:string , creationTime:datetime)
+    ```Kusto
+    .create-merge table CosmosChangeFeed1 (['id']:string, creationTime:datetime, ['_rid']:string, ['_self']:string, ['_etag']:string, ['_attachments']:string, ['_ts']:long)
+    ```
 
-// Mapping
-.create-or-alter table CosmosChangeFeed2 ingestion json mapping "CosmosChangeFeedMapping"
-'['
-'    { "column" : "id", "Properties":{"Path":"$.id"}},'
-'    { "column" : "creationTime", "Properties":{"Path":"$.creationTime"}}'
-']'
-```
-3. Ingest the full item to a single dynamic column - by creating  table and mapping with the commands:
- ```Kusto
- // Table
-.create table CosmosChangeFeed3(Doc:dynamic)
+1. Ingest only part of the fields - by creating  table and mapping with the commands:
 
-// Mapping
-.create-or-alter table CosmosChangeFeed1 ingestion json mapping "CosmosChangeFeedDynamicMapping"
-'['
-'    { "Column" : "Doc", "Properties":{"Path":"$"}}
-']'
-```
+    ```Kusto
+    // Table
+    .create-merge table CosmosChangeFeed2 (id:string , creationTime:datetime)
+
+    // Mapping
+    .create-or-alter table CosmosChangeFeed2 ingestion json mapping "CosmosChangeFeedMapping"
+    '['
+    '    { "column" : "id", "Properties":{"Path":"$.id"}},'
+    '    { "column" : "creationTime", "Properties":{"Path":"$.creationTime"}}'
+    ']'
+    ```
+
+1. Ingest the full item to a single dynamic column - by creating  table and mapping with the commands:
+
+    ```Kusto
+    // Table
+    .create table CosmosChangeFeed3(Doc:dynamic)
+
+    // Mapping
+    .create-or-alter table CosmosChangeFeed1 ingestion json mapping "CosmosChangeFeedDynamicMapping"
+    '['
+    '    { "Column" : "Doc", "Properties":{"Path":"$"}}
+    ']'
+    ```
 
 ## Mapping Timestamp
 
