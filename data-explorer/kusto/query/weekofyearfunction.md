@@ -12,7 +12,7 @@ Returns an integer which represents the week number. The week number is calculat
  **Deprecated alias:** weekofyear()
 
 > [!NOTE]
-> `weekofyear()` is an obsolete variant of this function. `weekofyear()` wasn't ISO 8601 compliant; the first week of a year was defined as the week with the year's first Wednesday in it.
+> `weekofyear()` wasn't ISO 8601 compliant; the first week of a year was defined as the week with the year's first Wednesday in it.
 
 ## Syntax
 
