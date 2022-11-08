@@ -27,7 +27,7 @@ Use the following commands to manage materialized views:
 
 ## Why use materialized views?
 
-By investing resources (data storage, background CPU cycles) for materialized views of commonly-used aggregations, you get the following benefits:
+By investing resources (data storage, background CPU cycles) for materialized views of commonly used aggregations, you get the following benefits:
 
 * **Performance improvement:** Querying a materialized view commonly performs better than querying the source table for the same aggregation function(s).
 
@@ -89,7 +89,7 @@ There are 2 ways to query a materialized view:
 
 * **Query the entire view**: when you query the materialized view by its name, similarly to querying a table, the materialized view query _combines_ the materialized part of the view with the records in the source table that haven't been materialized yet (the `delta`). 
   * Querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. For more information about the _materialized_ vs. _non-materialized_ parts in materialized view, see [how materialized views work](#how-materialized-views-work).
-  * This option will might not perform best as it needs to materialize the `delta` part during query time. Performance in this case depends on the view's age and the filters applied in the query. The [materialized view query optimizer section](#materialized-view-query-optimizer) includes possible ways to improve query performance when querying the entire view.
+  * This option might not perform best as it needs to materialize the `delta` part during query time. Performance in this case depends on the view's age and the filters applied in the query. The [materialized view query optimizer section](#materialized-view-query-optimizer) includes possible ways to improve query performance when querying the entire view.
 
 * **Query the materialized part only**: another way of querying the view is by using the [`materialized_view()` function](../../query/materialized-view-function.md). This option supports querying only the materialized part of the view, while specifying the max latency the user is willing to tolerate.
   * This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. 
