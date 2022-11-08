@@ -152,10 +152,10 @@ When the input of `summarize` operator doesn't have an empty group-by key, the r
 
 ```kusto
 datatable(x:long)[]
-| summarize any(x), arg_max(x, x), arg_min(x, x), avg(x), buildschema(todynamic(tostring(x))), max(x), min(x), percentile(x, 55), hll(x) ,stdev(x), sum(x), sumif(x, x > 0), tdigest(x), variance(x)
+| summarize any(x), arg_max=arg_max(x, x), arg_min=arg_min(x, x), avg(x), buildschema(todynamic(tostring(x))), max(x), min(x), percentile(x, 55), hll(x) ,stdev(x), sum(x), sumif(x, x > 0), tdigest(x), variance(x)
 ```
 
-|any_x|x|x1|x2|x3|avg_x|schema_x|max_x|min_x|percentile_x_55|hll_x|stdev_x|sum_x|sumif_x|tdigest_x|variance_x|
+|any_x|arg_max|x|arg_min|x1|avg_x|schema_x|max_x|min_x|percentile_x_55|hll_x|stdev_x|sum_x|sumif_x|tdigest_x|variance_x|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 ||||||NaN||||||0|0|0||0|
 
