@@ -78,7 +78,7 @@ The following example uses the *cosmosdb_sql_request* plugin to send a SQL query
 ```kusto
 evaluate cosmosdb_sql_request(
   'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;',
-  'SELECT * from c') // OutputSchema is unknown, so it is not specified.
+  'SELECT * from c') // OutputSchema is unknown, so it is not specified. This may harm the performance of the query.
 ```
 
 ### Query Azure Cosmos DB with parameters
@@ -86,7 +86,6 @@ evaluate cosmosdb_sql_request(
 The following example uses SQL query parameters and queries the data from an alternate region. For more information, see [`preferredLocations`](/azure/cosmos-db/tutorial-global-distribution-sql-api?tabs=dotnetv2%2Capi-async#preferred-locations).
 
 ```kusto
-// 
 evaluate cosmosdb_sql_request(
     'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;',
     "SELECT c.id, c.lastName, @param0 as Column0 FROM c WHERE c.dob >= '1970-01-01T00:00:00Z'",
