@@ -45,7 +45,15 @@ For a list of **all** functions, see [.show functions](#show-functions).
 
 **Syntax**
 
-`.show` `function` *FunctionName*
+`.show` `function` *FunctionName* [`with(`*Options*`)`]
+
+**Arguments**
+
+The following *Options* are all optional:  
+
+* `ShowObfuscatedStrings`: (`true` | `false`) - If `true` and used by principal with proper permissions, [obfuscated strings](../query/scalar-data-types/string.md#obfuscated-string-literals) in function's body will be shown. Defaults to `false`.
+* `Builtin`: (`true` | `false`) - If `true` and used by cluster admin, shows builtin function(s). Defaults to `false`.
+* `IncludeHiddenFunctions`: (`false` | `true`). If `true`, show hidden function(s). Defaults to `false`.
 
 **Output**
 
@@ -65,6 +73,8 @@ For a list of **all** functions, see [.show functions](#show-functions).
 
 ```kusto
 .show function MyFunction1 
+
+.show function MyFunction1 with (ShowObfuscatedStrings = true)
 ```
     
 |Name |Parameters |Body|Folder|DocString
