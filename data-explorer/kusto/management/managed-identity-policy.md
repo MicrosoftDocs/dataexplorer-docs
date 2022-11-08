@@ -50,9 +50,9 @@ The following values specify authentication to a `usage` using the configured ma
 
 | Value | Description | 
 |---|---|
-| `DataConnection` | Authenticate to data connections to an Event Hub or an Event Grid. |
-| `NativeIngestion` |  Authenticate to an SDK for native ingestions from an external source. |
-|`ExternalTable` | Authenticate to external tables using connection strings configured with a managed identity. |
-| `AutomatedFlow`| Run a continuous export automated flow on behalf of a managed identity. |
-| `SandboxArtifacts`| Authenticate to external artifacts referenced in the Python plugin with a managed identity. This usage needs to be define on the cluster managed identity policy. |
 | `All` | All current and future usages are allowed. |
+| `AutomatedFlow`| Run a continuous export automated flow on behalf of a managed identity. |
+| `DataConnection` | Authenticate to data connections to an Event Hub or an Event Grid. |
+|`ExternalTable` | Authenticate to external tables using connection strings configured with a managed identity. |
+| `NativeIngestion` |  Authenticate to an SDK for native ingestions from an external source. |
+| `SandboxArtifacts`| Authenticate to external artifacts referenced in the Python plugin with a managed identity. This usage needs to be defined on the cluster level managed identity policy. |
