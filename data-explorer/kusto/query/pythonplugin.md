@@ -30,7 +30,7 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
   * The default value is `single`.
   * `single`: A single instance of the script will run over the entire query data.
   * `per_node`: If the query before the Python block is distributed, an instance of the script will run on each node, on the data that it contains.
-* *external_artifacts*: An optional `dynamic` literal that is a property bag of name and URL pairs, for artifacts that are accessible from cloud storage. See more [here](#using-external-artifacts-with-managed-identity).
+* *external_artifacts*: An optional `dynamic` literal that is a property bag of name and URL pairs, for artifacts that are accessible from cloud storage. See more [here](#using-external-artifacts).
 * *spill_to_disk*: An optional `boolean` literal specifying an alternative method for serializing the input table to the Python sandbox. For serializing big tables set it to `true` to speed up the serialization and significantly reduce the sandbox memory consumption. Default is `false` as this parameter is experimental.
 
 ## Reserved Python variables
