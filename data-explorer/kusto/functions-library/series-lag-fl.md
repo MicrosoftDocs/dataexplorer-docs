@@ -37,7 +37,7 @@ let series_lag_fl = (series:dynamic, offset:int)
 {
     let lag_f = toscalar(range x from 1 to offset+1 step 1
     | project y=iff(x == offset+1, 1, 0)
-    | summarize lag_filter = makelist(y));
+    | summarize lag_filter = make_list(y));
     fir(series, lag_f, false)
 }
 ;
@@ -64,7 +64,7 @@ series_lag_fl(series:dynamic, offset:int)
 {
     let lag_f = toscalar(range x from 1 to offset+1 step 1
     | project y=iff(x == offset+1, 1, 0)
-    | summarize lag_filter = makelist(y));
+    | summarize lag_filter = make_list(y));
     fir(series, lag_f, false)
 } 
 ```

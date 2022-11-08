@@ -3,7 +3,7 @@ title: Write queries for Azure Data Explorer
 description: In this how-to, you learn how to perform basic and more advanced queries for Azure Data Explorer.
 ms.reviewer: mblythe
 ms.topic: tutorial
-ms.date: 09/07/2022
+ms.date: 11/08/2022
 ms.localizationpriority: high
 ---
 
@@ -611,14 +611,14 @@ The following query returns all the times when a flood was reported by each stat
 ```Kusto
 StormEvents
 | where EventType == "Flood"
-| summarize FloodReports = makeset(StartTime) by State
+| summarize FloodReports = make_set(StartTime) by State
 | project State, FloodReports
 ```
 
 ### mv-expand
 
 [**mv-expand**](kusto/query/mvexpandoperator.md):
-Expands multi-value collection(s) from a dynamic-typed column so that each value in the collection gets a separate row. All the other columns in an expanded row are duplicated. It's the opposite of makelist.
+Expands multi-value collection(s) from a dynamic-typed column so that each value in the collection gets a separate row. All the other columns in an expanded row are duplicated. It's the opposite of make_list.
 
 The following query generates sample data by creating a set and then using it to demonstrate the **mv-expand** capabilities.
 
@@ -627,7 +627,7 @@ The following query generates sample data by creating a set and then using it to
 ```Kusto
 let FloodDataSet = StormEvents
 | where EventType == "Flood"
-| summarize FloodReports = makeset(StartTime) by State
+| summarize FloodReports = make_set(StartTime) by State
 | project State, FloodReports;
 FloodDataSet
 | mv-expand FloodReports

@@ -12,6 +12,8 @@ Creates a `dynamic` JSON object (array) of all the values of *Expr* in the group
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
+> **Deprecated aliases:** makelist()
+
 ## Syntax
 
 `make_list` `(`*Expr* [`,` *MaxSize*]`)`
@@ -24,7 +26,7 @@ Creates a `dynamic` JSON object (array) of all the values of *Expr* in the group
 | *MaxSize* | integer |  | The limit on the maximum number of elements returned. The default is *1048576* and can't exceed *1048576*. |
 
 > [!NOTE]
-> `makelist()` has been deprecated in favor of `make_list`. The legacy version has a default *MaxSize* limit of 128.
+> The legacy version has a default *MaxSize* limit of 128.
 
 ## Returns
 

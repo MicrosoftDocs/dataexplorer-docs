@@ -869,7 +869,7 @@ items:
   - name: make_bag_if()
     href: make-bag-if-aggfunction.md
   - name: make_list()
-    displayName: makelist
+    displayName: makelist()
     href: makelist-aggfunction.md
   - name: make_list_if()
     href: makelistif-aggfunction.md
