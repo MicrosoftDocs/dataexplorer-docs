@@ -21,7 +21,7 @@ ms.date: 10/15/2022
 * A materialized view can't be created on top of another materialized view, unless the first materialized view is of type `take_any(*)` aggregation. See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view).
 * Materialized views cannot be defined over [external tables](../../query/schema-entities/externaltables.md).
 
-## Impact of records ingested/dropped to/from the source table on the materialized view
+## Impact of records ingested to or dropped from the source table
 
 * A materialized view only processes new records ingested into the source table. Records which are removed from the source table, either by running [data purge](../../concepts/data-purge.md)/[soft delete](../../concepts/data-soft-delete.md)/[drop extents](../drop-extents.md), or due to [retention policy](../retentionpolicy.md) or any other reason, have no impact on the materialized view.
 * The materialized view has its own [retention policy](materialized-view-policies.md#retention-and-caching-policy), which is independent of the retention policy of the source table. The materialized view might include records which are not present in the source table.
