@@ -3,7 +3,7 @@ title: reduce operator - Azure Data Explorer
 description: This article describes reduce operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 11/08/2022
 ---
 # reduce operator
 
@@ -39,7 +39,6 @@ many rows in the input to the operator are represented by this pattern, and `Rep
 is one value from the input that falls into this group.
 
 If `[kind=source]` is specified, the operator will append the `Pattern` column to the existing rows in the table (instead of aggregating by `Pattern`).
-Note that the syntax an schema of this flavor might be subjected to future changes.
 
 For example, the result of `reduce by city` might include: 
 
