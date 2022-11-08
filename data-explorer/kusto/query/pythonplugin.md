@@ -164,7 +164,7 @@ The URLs referenced by the external artifacts property must be:
   * In a publicly available location, or provide the necessary credentials, as explained in [storage connection strings](../api/connection-strings/storage-connection-strings.md).
 
   > [!NOTE]
-  > When authenticating external artifacts using Managed Identities, the `SandboxArtifacts` usage must be defined in the cluster's [managed identity policy](kusto/management/managed-identity-policy.md).
+  > When authenticating external artifacts using Managed Identities, the `SandboxArtifacts` usage must be defined in the cluster's [managed identity policy](management/managed-identity-policy.md).
 
 The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Examples](#examples).
 
