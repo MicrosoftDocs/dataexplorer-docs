@@ -3,7 +3,7 @@ title: Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
 description: Learn how to ingest (load) data into Azure Data Explorer from Cosmos DB.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 21/11/2022
+ms.date: 11/08/2022
 ---
 
 # Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
@@ -14,11 +14,14 @@ Each data connection listens to a specific Cosmos DB container and ingests data 
 
 ## Prerequisites
 
-// What are the prereqs?
+//VP:: What are the prereqs?
+
+- An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+- An existing or new [cluster and database](create-cluster-database-portal.md).
 
 ## Create a data connection
 
-// Where are the How-to steps ... i.e. where does the customer set up the connection?
+//VP:: Where are the How-to steps ... i.e. where does the customer set up the connection?
 // Probably move this down
 
 > [!IMPORTANT]
@@ -26,24 +29,28 @@ Each data connection listens to a specific Cosmos DB container and ingests data 
 
 ### Data connection properties
 
+// PART OF CREATE CONNECTION
+
 The following table describes the properties for a data connection:
 
 | Property Name | Description |
 |---|---|
-| *Connection name* | The name to identify this data connection |
-| *Database* | The case-sensitive name of the existing target database |
+| *Connection name* | The name to identify this data connection. |
+| *Database* | The case-sensitive name of the existing target database. |
 | *Table* | The case-sensitive name of the existing target table |
-| *Ingestion mapping reference* | Optional. Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used |
-| *Cosmos DB subscription ID* | The subscription ID of the Cosmos DB account |
-| *Cosmos DB resource group* | The resource group of the Cosmos DB account used to create the data connection |
+| *Ingestion mapping reference* | Optional. The name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to use. |
+| *Cosmos DB subscription ID* | The subscription ID of the Cosmos DB account. |
+| *Cosmos DB resource group* | The resource group of the Cosmos DB account used to create the data connection. |
 | *Cosmos DB account endpoint* | The Cosmos DB account endpoint. For example, `https://contoso.documents.azure.com:443/` |
 | *Cosmos DB database* | The name of the source database in the Cosmos DB account. |
 | *Cosmos DB container* | The name of the source container in the Cosmos DB account. |
 | *Start time* | Optional. If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date. |
 
-## Permissions
+### Permissions
 
-The data connection uses your cluster's system-assigned managed identity for access to read from the Cosmos DB.
+// PART OF CREATE CONNECTION
+
+The data connection uses your cluster's [system-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity) for access to read from the Cosmos DB.
 
 Use the following steps to grant the identity access to the Cosmos DB account:
 
@@ -55,7 +62,9 @@ Use the following steps to grant the identity access to the Cosmos DB account:
 1. In the **Select managed identity** pane, select your cluster's managed identity and the select **Select**.
 1. Select **Review + assign** to complete the assignment.
 
-## Table and Mapping
+## Target table
+
+//VP:: Why do I need a mapping if it's specified in the connector?
 
 You should create a target kusto table and a mapping that suits the schema in the source Cosmos DB container.
 For example, if an item in the Cosmos DB container has the following structure:
@@ -71,6 +80,9 @@ For example, if an item in the Cosmos DB container has the following structure:
     "_ts": 1651131409
 }
 ```
+
+//VP:: When is this performed? Is it part of the connection setup?
+// Before or after the connection is created?
 
 There are different ingestion options:
 
@@ -98,7 +110,7 @@ There are different ingestion options:
 
     ```Kusto
     // Table
-    .create table CosmosChangeFeed3(Doc:dynamic)
+    .create-merge table CosmosChangeFeed3(Doc:dynamic)
 
     // Mapping
     .create-or-alter table CosmosChangeFeed1 ingestion json mapping "CosmosChangeFeedDynamicMapping"
@@ -109,24 +121,29 @@ There are different ingestion options:
 
 ## Mapping Timestamp
 
+//VP:: Where would this be done? Is this part of the mapping file?
+// We need an example of how to do this.
+
 Cosmos DB SQL API has a special property `_ts` for the timestamp of the last change on a document.  The timestamp is expressed in [UNIX seconds](https://en.wikipedia.org/wiki/Unix_time).
 
 It makes sense to land that property in a `long` column in Kusto.  It is useful to have the "original" timestamp (in UNIX seconds) for comparison with original documents in Cosmos DB containers.
 
-An [important Kusto optimisation](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/best-practices) (time filter) is based on the [`datetime` Kusto type](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/scalar-data-types/datetime).  In order for time filters to be effective on large datasets (multiple GBs of ingested data), you need to filter on a `datetime` column.
+An An [important optimization](kusto/query/best-practices.md) (time filter) is based on the [`datetime` Kusto type](kusto/query/scalar-data-types/datetime.md).  In order for time filters to be effective on large datasets (multiple GBs of ingested data), you need to filter on a `datetime` column.
 
-You can map the `_ts` to a `datetime` column using the `DateTimeFromUnixSeconds` [mapping transformation](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/mappings#mapping-transformations).
+You can map the `_ts` to a `datetime` column using the `DateTimeFromUnixSeconds` [mapping transformation](kusto/management/mappings.md#mapping-transformations).
 
-We recommend using the column name `_timestamp` for the Kusto column having `_ts` mapped as `datetime` because that name isn't used by Cosmos DB nor Kusto (see [naming conventions to avoid collisions in Kusto](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/entity-names#naming-your-entities-to-avoid-collisions-with-kusto-language-keywords)).
+We recommend using the column name `_timestamp` for the Kusto column having `_ts` mapped as `datetime` because that name isn't used by Cosmos DB nor Kusto (see [naming conventions to avoid collisions in Kusto](kusto/query/schema-entities/entity-names.md#naming-your-entities-to-avoid-collisions-with-kusto-language-keywords)).
 
 ## Beyond Data Mapping with Update Policies
 
-Kusto Data Mapping can only do straightforward mapping.  For more complicated one, you can use [Update Policies](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/updatepolicy).
+//VP:: Is this done before or after the connection is created?
+
+Kusto Data Mapping can only do straightforward mapping.  For more complicated one, you can use [Update Policies](kusto/management/updatepolicy.md).
 
 Here are a couple of examples:
 
-* You might want to filter-out documents (e.g. removing some document types) ; this can be achieved by putting a where-clause in an update policy
-* Flattening an array can be accomplish by using [mv-expand operator](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/alter-table-update-policy-command) on the array
+- You might want to filter-out documents (e.g. removing some document types) ; this can be achieved by putting a where-clause in an update policy
+- Flattening an array can be accomplish by using [mv-expand operator](kusto/management/alter-table-update-policy-command.md) on the array
 
 ## Handling deleted documents
 
@@ -134,18 +151,22 @@ Deleted documents aren't relayed to the ingestion pipeline as the change feed on
 
 There are two alternatives to consider to handle deleted documents in Kusto:
 
-1.  Soft delete corresponding table rows using [.delete command](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/concepts/data-soft-delete).
-1.  Use a [soft marker](https://docs.microsoft.com/en-us/azure/cosmos-db/change-feed#change-feed-and-different-operations) to mark a Cosmos DB document as deleted
+//VP:: Where is this applied? Is this part of the mapping file? Update policy? How does it know which to delete?
+
+1. Soft delete corresponding table rows using [.delete command](kusto/concepts/data-soft-delete.md).
+1. Use a [soft marker](/azure/cosmos-db/change-feed#change-feed-and-different-operations) to mark a Cosmos DB document as deleted
 
 The first alternative requires that each delete done in Cosmos DB is match with a .delete command issued to Kusto.  This alternative doesn't scale to many deletes per second in Kusto.  A workaround could be to issue .delete to delete many rows at once.
 
 ## Latest version of each document
 
+//VP::So this is around querying the data for the latest version of each document?
+
 The target table will contain every documents created and updated in the corresponding Cosmos DB Container.  Each time a document is updated, a new row will be ingested in the target table.
 
 For the examples of this section, we will assume the data mapping was done so there is an `id` column and a `_ts` column corresponding to the `id` and `_ts` properties in Cosmos DB documents.
 
-In order to view only the latest version of each document, you could write the following query, leveraging [arg_max](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/arg-max-aggfunction):
+In order to view only the latest version of each document, you could write the following query, leveraging [arg_max](kusto/query/arg-max-aggfunction.md):
 
 ```kusto
 CosmosChangeFeed1
@@ -154,7 +175,7 @@ CosmosChangeFeed1
 
 This queries the latest version of each document.
 
-In the case where we have a [soft marker](https://docs.microsoft.com/en-us/azure/cosmos-db/change-feed#change-feed-and-different-operations) `IsDeleted` on documents we could obtain the latest version of documents, excluding deleted documents with:
+In the case where we have a [soft marker](/azure/cosmos-db/change-feed#change-feed-and-different-operations) `IsDeleted` on documents we could obtain the latest version of documents, excluding deleted documents with:
 
 ```kusto
 CosmosChangeFeed1
@@ -162,7 +183,7 @@ CosmosChangeFeed1
 | where not(IsDeleted)
 ```
 
-You can also materialize the result of that query using a [materialized view](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview):
+You can also materialize the result of that query using a [materialized view](kusto/management/materialized-views/materialized-view-overview.md):
 
 ```kusto
 .create materialized-view LatestDocuments on table CosmosChangeFeed1
@@ -179,5 +200,4 @@ LatestDocuments
 | where not(IsDeleted)
 ```
 
-This can be encapsulated in a [stored function](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/schema-entities/stored-functions).
-
+This can be encapsulated in a [stored function](kusto/query/schema-entities/stored-functions.md).
