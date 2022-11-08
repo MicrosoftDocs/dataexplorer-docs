@@ -393,7 +393,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[hash()](hashfunction.md)|Returns a hash value for the input value.|
 |[hash_combine()](hash_combinefunction.md)|Combines two or more hash values.|
 |[hash_many()](hash_manyfunction.md)|Returns a combined hash value of multiple values.|
-|[hash_md5()](md5hashfunction.md)|Returns a MD5 hash value for the input value.|
+|[hash_md5()](md5hashfunction.md)|Returns an MD5 hash value for the input value.|
 |[hash_sha1()](sha1-hash-function.md)|Returns a SHA1 hash value for the input value.|
 |[hash_sha256()](sha256hashfunction.md)|Returns a SHA256 hash value for the input value.|
 |[hash_xxhash64()](hash-xxhash64-function.md)|Returns an XXHASH64 hash value for the input value.|
