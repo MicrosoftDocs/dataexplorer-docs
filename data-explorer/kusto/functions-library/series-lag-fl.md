@@ -9,7 +9,7 @@ ms.date: 02/03/2022
 
 Applies a lag on a series.
 
-The function `series_lag_fl()` takes an expression containing a dynamic numerical array as input and shift it backward. It is commonly used for shifting time series to test whether a pattern is new or it matches historical data.
+The function `series_lag_fl()` takes an expression containing a dynamic numerical array as input and shifts it backward. It's commonly used for shifting time series to test whether a pattern is new or it matches historical data.
 
 > [!NOTE]
 > This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
