@@ -26,7 +26,7 @@ Creates a `dynamic` JSON object (array) of all the values of *Expr* in the group
 | *MaxSize* | integer |  | The limit on the maximum number of elements returned. The default is *1048576* and can't exceed *1048576*. |
 
 > [!NOTE]
-> The legacy version has a default *MaxSize* limit of 128.
+> The deprecated version has a default *MaxSize* limit of 128.
 
 ## Returns
 
