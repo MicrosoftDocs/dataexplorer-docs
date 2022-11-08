@@ -3,7 +3,7 @@ title: series_fbprophet_forecast_fl() - Azure Data Explorer
 description: This article describes the series_fbprophet_forecast_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/01/2021
+ms.date: 11/08/2022
 ---
 # series_fbprophet_forecast_fl()
 
@@ -46,7 +46,7 @@ For ad hoc usage, embed its code using [let statement](../query/letstatement.md)
 ~~~kusto
 let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_pred_series:string, points:int=0, y_pred_low_series:string='', y_pred_high_series:string='')
 {
-    let kwargs = pack('ts_series', ts_series, 'y_series', y_series, 'y_pred_series', y_pred_series, 'points', points, 'y_pred_low_series', y_pred_low_series, 'y_pred_high_series', y_pred_high_series);
+    let kwargs = bag_pack('ts_series', ts_series, 'y_series', y_series, 'y_pred_series', y_pred_series, 'points', points, 'y_pred_low_series', y_pred_low_series, 'y_pred_high_series', y_pred_high_series);
     let code = ```if 1:
         from sandbox_utils import Zipackage
         Zipackage.install("fbprophet.zip")
@@ -89,7 +89,7 @@ let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_
     tbl
      | evaluate python(typeof(*), code, kwargs
 //  fbprophet v0.7.1 for Python 3.6.5, SAS key till 3/26/2030
-, external_artifacts=pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
+, external_artifacts=bag_pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
 };
 //
 //  Forecasting 3 time series using fbprophet, compare to forecasting using the native function series_decompose_forecast()
@@ -117,7 +117,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Time Series Forecast using Facebook fbprophet package")
 series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_series:string, points:int=0, y_pred_low_series:string='', y_pred_high_series:string='')
 {
-    let kwargs = pack('ts_series', ts_series, 'y_series', y_series, 'y_pred_series', y_pred_series, 'points', points, 'y_pred_low_series', y_pred_low_series, 'y_pred_high_series', y_pred_high_series);
+    let kwargs = bag_pack('ts_series', ts_series, 'y_series', y_series, 'y_pred_series', y_pred_series, 'points', points, 'y_pred_low_series', y_pred_low_series, 'y_pred_high_series', y_pred_high_series);
     let code = ```if 1:
         from sandbox_utils import Zipackage
         Zipackage.install("fbprophet.zip")
@@ -160,7 +160,7 @@ series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_
     tbl
      | evaluate python(typeof(*), code, kwargs
 //  fbprophet v0.7.1 for Python 3.6.5, SAS key till 3/26/2030
-, external_artifacts=pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
+, external_artifacts=bag_pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
 }
 ~~~
 

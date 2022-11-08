@@ -3,7 +3,7 @@ title: geo_polygon_simplify() - Azure Data Explorer
 description: This article describes geo_polygon_simplify() in Azure Data Explorer.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 05/10/2022
+ms.date: 11/08/2022
 ---
 # geo_polygon_simplify()
 
@@ -66,7 +66,7 @@ Polygons
 | project polygon = features.geometry
 | project simplified = geo_polygon_simplify(polygon, 1000)
 | summarize lst = make_list(simplified)
-| project geojson = pack("type", "Feature","geometry", pack("type", "GeometryCollection", "geometries", lst), "properties", pack("name", "polygons"))
+| project geojson = bag_pack("type", "Feature","geometry", bag_pack("type", "GeometryCollection", "geometries", lst), "properties", bag_pack("name", "polygons"))
 ```
 
 |geojson|

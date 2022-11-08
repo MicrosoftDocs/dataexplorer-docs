@@ -3,7 +3,7 @@ title: geo_distance_point_to_line() - Azure Data Explorer
 description: This article describes geo_distance_point_to_line() in Azure Data Explorer.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/11/2020
+ms.date: 11/08/2022
 ---
 # geo_distance_point_to_line()
 
@@ -101,7 +101,7 @@ let allRoads=toscalar(
     ManhattanRoads
     | project road_coordinates=features.geometry.coordinates
     | summarize make_list(road_coordinates)
-    | project multiline = pack("type","MultiLineString", "coordinates", list_road_coordinates));
+    | project multiline = bag_pack("type","MultiLineString", "coordinates", list_road_coordinates));
 nyc_taxi
 | project pickup_longitude, pickup_latitude
 | where pickup_longitude != 0 and pickup_latitude != 0

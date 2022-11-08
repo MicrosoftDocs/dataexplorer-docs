@@ -61,7 +61,7 @@ NY_Manhattan_Roads
 | project road = features.geometry
 | project road_simplified = geo_line_simplify(road, 100)
 | summarize roads_lst = make_list(road_simplified)
-| project geojson = pack("type", "Feature","geometry", pack("type", "GeometryCollection", "geometries", roads_lst), "properties", pack("name", "roads"))
+| project geojson = bag_pack("type", "Feature","geometry", bag_pack("type", "GeometryCollection", "geometries", roads_lst), "properties", bag_pack("name", "roads"))
 ```
 
 |geojson|

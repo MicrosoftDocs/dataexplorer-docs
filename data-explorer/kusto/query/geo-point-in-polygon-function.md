@@ -3,7 +3,7 @@ title: geo_point_in_polygon() - Azure Data Explorer
 description: This article describes geo_point_in_polygon() in Azure Data Explorer.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 05/10/2020
+ms.date: 11/08/2022
 ---
 # geo_point_in_polygon()
 
@@ -164,7 +164,7 @@ let multipolygon = toscalar(
     Polygons
     | project individual_polygon = pack_array(polygon.coordinates)
     | summarize multipolygon_coordinates = make_list(individual_polygon)
-    | project multipolygon = pack("type","MultiPolygon", "coordinates", multipolygon_coordinates));
+    | project multipolygon = bag_pack("type","MultiPolygon", "coordinates", multipolygon_coordinates));
 Coordinates
 | where geo_point_in_polygon(longitude, latitude, multipolygon)
 ```

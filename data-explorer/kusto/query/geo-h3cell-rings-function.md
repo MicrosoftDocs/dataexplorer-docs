@@ -3,7 +3,7 @@ title: geo_h3cell_rings() - Azure Data Explorer
 description: This article describes geo_h3cell_rings() in Azure Data Explorer.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 11/08/2022
 ---
 # geo_h3cell_rings()
 
@@ -79,10 +79,10 @@ print rings = geo_h3cell_rings('861f8894fffffff', 1)
 | mv-expand list_rings to typeof(string)
 | project polygon = geo_h3cell_to_polygon(list_rings)
 | summarize polygon_lst = make_list(polygon)
-| project geojson = pack(
+| project geojson = bag_pack(
     "type", "Feature",
-    "geometry", pack("type", "GeometryCollection", "geometries", polygon_lst),
-    "properties", pack("name", "H3 polygons collection"))
+    "geometry", bag_pack("type", "GeometryCollection", "geometries", polygon_lst),
+    "properties", bag_pack("name", "H3 polygons collection"))
 ```
 
 |geojson|

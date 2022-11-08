@@ -3,7 +3,7 @@ title: geo_h3cell_neighbors() - Azure Data Explorer
 description: This article describes geo_h3cell_neighbors() in Azure Data Explorer.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 05/10/2022
+ms.date: 11/08/2022
 ---
 # geo_h3cell_neighbors()
 
@@ -60,7 +60,7 @@ print cells = array_concat(pack_array(h3cell), geo_h3cell_neighbors(h3cell))
 | mv-expand cells to typeof(string)
 | project polygons = geo_h3cell_to_polygon(cells)
 | summarize arr = make_list(polygons)
-| project geojson = pack("type", "Feature","geometry", pack("type", "GeometryCollection", "geometries", arr), "properties", pack("name", "polygons"))
+| project geojson = bag_pack("type", "Feature","geometry", bag_pack("type", "GeometryCollection", "geometries", arr), "properties", bag_pack("name", "polygons"))
 ```
 
 |geojson|

@@ -3,7 +3,7 @@ title: geo_s2cell_to_polygon() - Azure Data Explorer
 description: This article describes geo_s2cell_to_polygon() in Azure Data Explorer.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 06/03/2021
+ms.date: 11/08/2022
 ---
 # geo_s2cell_to_polygon()
 
@@ -50,10 +50,10 @@ datatable(lng:real, lat:real)
 | project s2_hash = geo_point_to_s2cell(lng, lat, 10)
 | project s2_hash_polygon = geo_s2cell_to_polygon(s2_hash)
 | summarize s2_hash_polygon_lst = make_list(s2_hash_polygon)
-| project pack(
+| project bag_pack(
     "type", "Feature",
-    "geometry", pack("type", "GeometryCollection", "geometries", s2_hash_polygon_lst),
-    "properties", pack("name", "S2 Cell polygons collection"))
+    "geometry", bag_pack("type", "GeometryCollection", "geometries", s2_hash_polygon_lst),
+    "properties", bag_pack("name", "S2 Cell polygons collection"))
 ```
 
 |Column1|
