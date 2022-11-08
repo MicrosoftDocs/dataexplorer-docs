@@ -17,7 +17,7 @@ The beta distribution is commonly used to study variation in the percentage of s
 
 ## Syntax
 
-`beta_pdf(`*x*`,`*alpha*`,`*beta*`)`
+`beta_pdf(`*x*`,` *alpha*`,` *beta*`)`
 
 ## Arguments
 
