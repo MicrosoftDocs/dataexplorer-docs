@@ -1,6 +1,6 @@
 ---
 title: make_set() (aggregation function) - Azure Data Explorer
-description: Learn how to use the make_set() function to return a JSON array of the values that the expression takes in the group. 
+description: Learn how to use the make_set() function to return a JSON array of the distinct values that the expression takes in the group. 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/08/2022
