@@ -52,7 +52,7 @@ This functionality is present in all flavors of Kusto SDK.
 A connection with a Kusto endpoint can only be established if that endpoint is trusted.
 The Kusto client trusts all endpoints whose hostname part is issued by the service
 (e.g., endpoints whose DNS hostname ends with `kusto.windows.net`) by default.
-The client will not establish connections to other endpoints; in order to allow that,
+The client won't establish connections to other endpoints; in order to allow that,
 one can use the `Kusto.Data.Common.KustoTrustedEndpoints` class to add additional endpoints
 to the list of trusted endpoints (by using either `SetOverridePolicy` which overrides
 the default policy, or `AddTrustedHosts` which adds new entries to the existing policy.)
@@ -113,7 +113,7 @@ Note that `Enforce MFA` and `User Name for Tracing` are both optional, and can a
 |Application Token                                 |AppToken                                  |ApplicationToken                              |A String value that instructs the client to perform application authenticating with the specified bearer token|
 |Authority Id                                      |TenantId                                  |Authority                                     |A String value that provides the name or ID of the tenant in which the application is registered. The default value is microsoft.com. For more information, see [AAD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
 |Azure Region                                      |AzureRegion, Region                       |AzureRegion                                   |A string value that provides the name of the Azure Region in which to authenticate.|
-|ManagedServiceIdentity                            |N/A                                       |EmbeddedManagedIdentity                       |A String value that instructs the client which application identity to use with managed identity authentication; use `system` to indicate the system-assigned identity. This property cannot be set with a connection string, only programmatically.|
+|ManagedServiceIdentity                            |N/A                                       |EmbeddedManagedIdentity                       |A String value that instructs the client which application identity to use with managed identity authentication; use `system` to indicate the system-assigned identity. This property can't be set with a connection string, only programmatically.|
 |Application Certificate Subject Distinguished Name|Application Certificate Subject           |ApplicationCertificateSubjectDistinguishedName||
 |Application Certificate Issuer Distinguished Name |Application Certificate Issuer            |ApplicationCertificateIssuerDistinguishedName ||
 |Application Certificate Send Public Certificate   |Application Certificate SendX5c, SendX5c  |ApplicationCertificateSendPublicCertificate   ||
@@ -133,8 +133,8 @@ Note that `Application Name for Tracing` is optional, and can always be specifie
 |Property name|Alternative names|Programmatic name  |Description                                                   |
 |-------------|-----------------|-------------------|--------------------------------------------------------------|
 |Accept       |                 |Accept             |A Boolean value that requests detailed error objects to be returned on failure.|
-|Streaming    |                 |Streaming          |A Boolean value that requests the client will not accumulate data before providing it to the caller.|
-|Uncompressed |                 |Uncompressed       |A Boolean value that requests the client will not ask for transport-level compression.|
+|Streaming    |                 |Streaming          |A Boolean value that requests the client won't accumulate data before providing it to the caller.|
+|Uncompressed |                 |Uncompressed       |A Boolean value that requests the client won't ask for transport-level compression.|
 
 > [!NOTE]
 > When the Streaming flag is enabled (as is the default),
@@ -157,7 +157,7 @@ The following algorithm is generally used by clients for authentication against 
     1. Otherwise, if ApplicationClientId and ApplicationCertificateThumbprint are specified, perform federated authentication with the specified application client ID and certificate
     1. Otherwise, perform federated authentication with the current logged-on user's identity (user will be prompted if this is the first authentication in the session)
 
-1. Otherwise do not authenticate.
+1. Otherwise don't authenticate.
 
 
 ### AAD federated application authentication with application certificate
