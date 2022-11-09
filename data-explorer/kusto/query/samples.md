@@ -3,7 +3,7 @@ title: Samples for Kusto Queries - Azure Data Explorer
 description: This article describes common queries and examples that use the Kusto Query Language.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 11/09/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -35,7 +35,7 @@ StormEvents
 
 ## Get sessions from start and stop events
 
-In a log of events, some events mark the start or end of an extended activity or session. 
+In a log of events, some events mark the start or end of an extended activity or session.
 
 |Name|City|SessionId|Timestamp|
 |---|---|---|---|
@@ -65,7 +65,7 @@ Events
 To match start and stop events with a session ID:
 
 1. Use [let](./letstatement.md) to name a projection of the table that's pared down as far as possible before starting the join.
-1. Use [project](./projectoperator.md) to change the names of the timestamps so that both the start time and the stop time appear in the results. `project` also selects the other columns to view in the results. 
+1. Use [project](./projectoperator.md) to change the names of the timestamps so that both the start time and the stop time appear in the results. `project` also selects the other columns to view in the results.
 1. Use [join](./joinoperator.md) to match the start and stop entries for the same activity. A row is created for each activity. 
 1. Use `project` again to add a column to show the duration of the activity.
 
@@ -371,7 +371,7 @@ Now, you have a good view into the top errors that contributed to the detected a
 
 To understand the effect of these errors across the sample system, consider that: 
 * The `Logs` table contains additional dimensional data, like `Component` and `Cluster`.
-* The new autocluster plugin can help derive component and cluster insight with a simple query. 
+* The new autocluster plugin can help derive component and cluster insight with a simple query.
 
 In the following example, you can clearly see that each of the top four errors is specific to a component. Also, although the top three errors are specific to the DB4 cluster, the fourth error happens across all clusters.
 
@@ -564,7 +564,7 @@ datatable(id:string, timestamp:datetime, bla:string)           // #1
 Here's a step-by-step explanation of the preceding query (the numbering refers to the numbers in the code comments):
 
 1. The `datatable` is a way to produce some test data for demonstration purposes. Normally, you'd use real data here.
-1. This line essentially means _return all distinct values of `id`_. 
+1. This line essentially means _return all distinct values of `id`_.
 1. This line then returns, for the top two records that maximize:
      * The `timestamp` column
      * The columns of the preceding level (here, just `id`)
@@ -1263,7 +1263,6 @@ The following sections give examples of how to aggregate the results of a query 
 
 Count the number of rows in the result set after any filters are applied. The following example returns the total number of rows in the `Perf` table from the last 30 minutes. The results are returned in a column named `count_` unless you assign a specific name to the column:
 
-
 ```kusto
 Perf
 | where TimeGenerated > ago(30m) 
@@ -1380,13 +1379,13 @@ Perf
 
 ### Generate lists and sets
 
-You can use `makelist` to pivot data by the order of values in a specific column. For example, you might want to explore the most common order events that take place on your computers. You can essentially pivot the data by the order of `EventID` values on each computer: 
+You can use `make_list` to pivot data by the order of values in a specific column. For example, you might want to explore the most common order events that take place on your computers. You can essentially pivot the data by the order of `EventID` values on each computer: 
 
 ```kusto
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
-| summarize makelist(EventID) by Computer
+| summarize make_list(EventID) by Computer
 ```
 
 Here's the output:
@@ -1397,15 +1396,15 @@ Here's the output:
 | computer2 | [326,105,302,301,300,102] |
 | ... | ... |
 
-`makelist` generates a list in the order that data was passed into it. To sort events from oldest to newest, use `asc` in the `order` statement instead of `desc`. 
+`make_list` generates a list in the order that data was passed into it. To sort events from oldest to newest, use `asc` in the `order` statement instead of `desc`. 
 
-You might find it useful to create a list only of distinct values. This list is called a _set_, and you can generate it by using the `makeset` command:
+You might find it useful to create a list only of distinct values. This list is called a _set_, and you can generate it by using the `make_set` command:
 
 ```kusto
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
-| summarize makeset(EventID) by Computer
+| summarize make_set(EventID) by Computer
 ```
 
 Here's the output:
@@ -1416,11 +1415,11 @@ Here's the output:
 | computer2 | [326,105,302,301,300,102] |
 | ... | ... |
 
-Like `makelist`, `makeset` also works with ordered data. The `makeset` command generates arrays based on the order of the rows that are passed into it.
+Like `make_list`, `make_set` also works with ordered data. The `make_set` command generates arrays based on the order of the rows that are passed into it.
 
 ### Expand lists
 
-The inverse operation of `makelist` or `makeset` is `mv-expand`. The `mv-expand` command expands a list of values to separate rows. It can expand across any number of dynamic columns, including JSON and array columns. For example, you can check the `Heartbeat` table for solutions that sent data from computers that sent a heartbeat in the past hour:
+The inverse operation of `make_list` or `make_set` is `mv-expand`. The `mv-expand` command expands a list of values to separate rows. It can expand across any number of dynamic columns, including JSON and array columns. For example, you can check the `Heartbeat` table for solutions that sent data from computers that sent a heartbeat in the past hour:
 
 ```kusto
 Heartbeat
@@ -1460,14 +1459,14 @@ Here's the output:
 | ... | ... |
 
 
-You can use `makelist` to group items together. In the output, you can see the list of computers per solution:
+You can use `make_list` to group items together. In the output, you can see the list of computers per solution:
 
 ```kusto
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, split(Solutions, ",")
 | mv-expand Solutions
-| summarize makelist(Computer) by tostring(Solutions) 
+| summarize make_list(Computer) by tostring(Solutions) 
 ```
 
 Here's the output:
@@ -1536,9 +1535,7 @@ Here's the output:
 | Direct Agent | 2017-06-06T22:00:00Z | 60 |
 | ... | ... | ... |
 
-
-
-### Narrow results to a set of elements: *let*, *makeset*, *toscalar*, *in*
+### Narrow results to a set of elements: *let*, *make_set*, *toscalar*, *in*
 
 A common scenario is to select the names of specific entities based on a set of criteria, and then filter a different dataset down to that set of entities. For example, you might find computers that are known to have missing updates and identify IP addresses that these computers called out to.
 
@@ -1547,7 +1544,7 @@ Here's an example:
 ```kusto
 let ComputersNeedingUpdate = toscalar(
     Update
-    | summarize makeset(Computer)
+    | summarize make_set(Computer)
     | project set_Computer
 );
 WindowsFirewall
@@ -1581,10 +1578,9 @@ If both datasets have columns that have the same name, the columns of the right-
 > [!NOTE]
 > To improve performance, keep only the relevant columns of the joined datasets by using the `project` operator.
 
-
 Use the following syntax to join two datasets in which the joined key has a different name between the two tables:
 
-```
+```Kusto
 Table1
 | join ( Table2 ) 
 on $left.key1 == $right.key2
@@ -1634,7 +1630,6 @@ Use `extractjson` to access a specific JSON element in a known path. This functi
 
 - Use _$_ to refer to the root folder.
 - Use the bracket or dot notation to refer to indexes and elements as illustrated in the following examples.
-
 
 Use brackets for indexes and dots to separate elements:
 
@@ -1753,7 +1748,7 @@ For a more useful view, select **Chart**, and then select the **Pie** option to 
 
 ### Timecharts
 
-Show the average and the 50th and 95th percentiles of processor time in bins of one hour. 
+Show the average and the 50th and 95th percentiles of processor time in bins of one hour.
 
 The following query generates multiple series. In the results, you can choose which series to show in the timechart.
 
@@ -1803,7 +1798,7 @@ You can switch between columns by selecting the drop-down arrow for the column n
 
 ## Smart analytics
 
-This section includes examples that use smart analytics functions in Azure Log Analytics to analyze user activity. You can use these examples to analyze your own applications that are monitored by Azure Application Insights, or use the concepts in these queries for similar analysis on other data. 
+This section includes examples that use smart analytics functions in Azure Log Analytics to analyze user activity. You can use these examples to analyze your own applications that are monitored by Azure Application Insights, or use the concepts in these queries for similar analysis on other data.
 
 ### Cohorts analytics
 
@@ -1886,7 +1881,7 @@ let starttime = endtime-window;
 let interval = 1d;
 let user_bins_to_analyze = 28;
 // Create an array of filters coefficients for series_fir(). A list of '1' in our case will produce a simple sum.
-let moving_sum_filter = toscalar(range x from 1 to user_bins_to_analyze step 1 | extend v=1 | summarize makelist(v)); 
+let moving_sum_filter = toscalar(range x from 1 to user_bins_to_analyze step 1 | extend v=1 | summarize make_list(v)); 
 // Level of engagement. Users will be counted as engaged if they completed at least this number of activities.
 let min_activity = 1;
 customEvents
@@ -1931,7 +1926,7 @@ let rollingDcount = (sliding_window_size: int, event_name:string)
     let window = 90d;
     let starttime = endtime-window;
     let interval = 1d;
-    let moving_sum_filter = toscalar(range x from 1 to sliding_window_size step 1 | extend v=1| summarize makelist(v));    
+    let moving_sum_filter = toscalar(range x from 1 to sliding_window_size step 1 | extend v=1| summarize make_list(v));    
     let min_activity = 1;
     customEvents
     | where timestamp > starttime
@@ -1991,7 +1986,7 @@ traces
 | extend Ratio = (todouble(Bad) / todouble(Good + Bad))*10000
 | project timestamp , Ratio
 // Create a time series.
-| make-series RatioSeries=any(Ratio) default=0 on timestamp in range(startDate , endDate -1d, 1d) by 'TraceSeverity' 
+| make-series RatioSeries=take_any(Ratio) default=0 on timestamp in range(startDate , endDate -1d, 1d) by 'TraceSeverity' 
 // Apply a 2-line regression to the time series.
 | extend (RSquare2, SplitIdx, Variance2,RVariance2,LineFit2)=series_fit_2lines(RatioSeries)
 // Find out if our 2-line is trending up or down.
