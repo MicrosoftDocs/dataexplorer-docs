@@ -43,10 +43,10 @@ A copy of the input tabular result set, such that:
 ## Example
 
 ```kusto
-TransformedSysLogs
+StormEvents
 | extend
-    injestionTime = SysLogTimestamp - timestamp,
-    needsInvestigation = severity == "warning" or severity == "err"
+    Duration = EndTime - StartTime,
+    Description = StormSummary.Details.Description
 ```
 
 You can use the [series_stats](series-statsfunction.md) function to return multiple columns.
