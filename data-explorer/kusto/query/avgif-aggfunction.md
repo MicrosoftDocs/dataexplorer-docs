@@ -1,6 +1,6 @@
 ---
 title: avgif() (aggregation function) - Azure Data Explorer
-description: Learn how to use the avgif() function to return the average value of expression where predicative evaluates to true.
+description: Learn how to use the avgif() function to return the average value of an expression where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/03/2022
@@ -15,7 +15,7 @@ Calculates the [average](avg-aggfunction.md) of *Expr* across the group for whic
 
 `avgif` `(`*Expr*`,` *Predicate*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

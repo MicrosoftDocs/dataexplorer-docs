@@ -1,6 +1,6 @@
 ---
 title: bag_unpack plugin - Azure Data Explorer
-description: Learn how to use the bag_unpack() function to unpack singular dynamic columns.
+description: Learn how to use the bag_unpack plugin to unpack a dynamic column.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/03/2022
@@ -13,7 +13,7 @@ The `bag_unpack` plugin unpacks a single column of type `dynamic`, by treating e
 
 *T* `|` `evaluate` `bag_unpack(` *Column* [`,` *OutputColumnPrefix* ] [`,` *columnsConflict* ] [`,` *ignoredProperties* ] `)` [`:` *OutputSchema*]
 
-## Arguments
+## Parameters
 
 | Name | Type | Required| Description |
 |---|---|---|---|

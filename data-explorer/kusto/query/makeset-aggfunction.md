@@ -1,6 +1,6 @@
 ---
 title: make_set() (aggregation function) - Azure Data Explorer
-description: This article describes make_set() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the make_set() function to return a JSON array of the distinct values that the expression takes in the group. 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/09/2022
@@ -33,7 +33,7 @@ Returns a `dynamic` JSON array of the set of distinct values that *Expr* takes i
 The array's sort order is undefined.
 
 > [!TIP]
-> To only count distinct values, use [dcount()](dcount-aggfunction.md).
+> To only count distinct values, use [dcount()](dcount-aggfunction.md) or [count_distinct()](count-distinct-aggfunction.md).
 
 ## Example
 

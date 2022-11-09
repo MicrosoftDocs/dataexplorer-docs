@@ -1,6 +1,6 @@
 ---
 title: avg() (aggregation function) - Azure Data Explorer
-description: Learn how to use the avg() function to calculate the average of expression across the group.
+description: Learn how to use the avg() function to calculate the average value of an expression.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/02/2022
