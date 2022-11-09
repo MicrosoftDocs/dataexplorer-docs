@@ -147,4 +147,7 @@ The following example shows an Azure Resource Manager template for adding an Eve
 }
 ```
 
+> [!WARNING]
+> The data connection will break if the Event Hub moves to a different resource or subscription. To fix the issue, update or recreate the data connection.
+
 [!INCLUDE [data-explorer-clean-resources](includes/data-explorer-clean-resources.md)]

@@ -99,6 +99,9 @@ In the **Continuous ingestion from Event Hub established** window, all steps wil
 
 :::image type="content" source="media/event-hub-wizard/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hubs with the ingestion wizard.":::
 
+> [!WARNING]
+> The data connection will break if the Event Hub moves to a different resource or subscription. To fix the issue, update or recreate the data connection.
+
 ## Next steps
 
 * [Query data in Azure Data Explorer web UI](web-query-data.md)
