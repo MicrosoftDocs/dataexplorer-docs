@@ -37,15 +37,14 @@ A table that has the columns named as arguments, and as many rows as the input t
 
 ## Example
 
-The following example shows several kinds of manipulations that can be done
-using the `project` operator. The input table `T` has three columns of type `int`: `A`, `B`, and `C`. 
+The following example shows some manipulations that can be done
+using the `project` operator.
 
 ```kusto
 StormEvents
 | project
-    StartLocation=BeginLocation,                    // Rename column
-    totalDeaths=DeathsDirect+DeathsIndirect,        // Calculate a new column TotalDeaths from two existing columns
-    StormSummary=StormSummary.Details.Description   // Calculate a new column StormSummary from the old StormSummary
+    StartLocation = BeginLocation,                    // Rename column
+    TotalDeaths = DeathsDirect + DeathsIndirect,      // Calculate a new column from two existing columns
 ```
 
 [series_stats](series-statsfunction.md) is an example of a function that returns multiple columns.
