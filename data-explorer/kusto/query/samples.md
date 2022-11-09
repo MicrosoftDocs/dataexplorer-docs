@@ -1656,7 +1656,7 @@ print hosts_object
 | extend status0=hosts_object.hosts[0].status, rate1=hosts_object.hosts[1].rate
 ```
 
-### *arraylength*
+### *array_length*
 
 Use `array_length` to count the number of elements in an array:
 
