@@ -600,9 +600,9 @@ StormEvents
 | project State, StartTime, EndTime, EventType
 ```
 
-### makeset()
+### make_set()
 
-[**makeset()**](kusto/query/makeset-aggfunction.md): Returns a dynamic (JSON) array of the set of distinct values that an expression takes in the group.
+[**make_set()**](kusto/query/makeset-aggfunction.md): Returns a dynamic (JSON) array of the set of distinct values that an expression takes in the group.
 
 The following query returns all the times when a flood was reported by each state and creates an array from the set of distinct values.
 
