@@ -30,18 +30,12 @@ T | sort by strlen(country) asc, price desc
 
 ## Example
 
-```kusto
-Traces
-| where ActivityId == "479671d99b7b"
-| sort by Timestamp asc nulls first
-```
-
-All rows in table Traces that have a specific `ActivityId`, sorted by their timestamp. If `Timestamp` column contains null values, those will appear at the first lines of the result.
-
-In order to exclude null values from the result add a filter before the call to sort:
+**\[**[**Run query**](https://dataexplorer.azure.com/clusters/help/databases/SampleLogs?query=H4sIAAAAAAAAAwspSkxO9clPL+aqUSjPSC1KVXDOyUzNKwlKLSxNLS7xTFGwtVVQMk20MLFIMzfQtbS0NNNNTTI01zU0TU3RNTJMskhNsjRJSjNIVQKaUJxfVKKQVKkQkpkL1JyYW6CQWJwMAFAUnRtjAAAA)**\]**
 
 ```kusto
-Traces
-| where ActivityId == "479671d99b7b" and isnotnull(Timestamp)
+TraceLogs
+| where ClientRequestId == "5a848f70-9996-eb17-15ed-21b8eb94bf0e"
 | sort by Timestamp asc
 ```
+
+All rows in table Traces that have a specific `ClientRequestId`, sorted by their timestamp.
