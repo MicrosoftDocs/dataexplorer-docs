@@ -3,7 +3,7 @@ title: Materialized views policies - Azure Data Explorer
 description: This article describes materialized views policies in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 11/09/2022
 ---
 
 # Materialized views policies
@@ -40,9 +40,9 @@ A [row level security](../rowlevelsecuritypolicy.md) can be applied on a materia
 
 * The policy can be applied only to materialized views with [arg_max()](../../query/arg-max-aggfunction.md)/[arg_min()](../../query/arg-min-aggfunction.md)/[take_any()](../../query/take-any-aggfunction.md) aggregation functions.
 * The policy is applied to the [materialized part](materialized-view-overview.md#how-materialized-views-work) of the view only.
-  * If the same row level security policy is not defined on the source table of the materialized view, then querying the materialized view may return records that should be hidden by the policy. This happens because [querying the materialized view](materialized-view-overview.md#materialized-views-queries) queries the source table as well.
+  * If the same row level security policy isn't defined on the source table of the materialized view, then querying the materialized view may return records that should be hidden by the policy. This happens because [querying the materialized view](materialized-view-overview.md#materialized-views-queries) queries the source table as well.
   * We recommend defining the same row level security policy both on the source table and the materialized view if the view is an [arg_max()](../../query/arg-max-aggfunction.md) or [arg_min()](../../query/arg-min-aggfunction.md)/[take_any()](../../query/take-any-aggfunction.md).
-* When defining a row level security policy on the source table of an [arg_max()](../../query/arg-max-aggfunction.md) or [arg_min()](../../query/arg-min-aggfunction.md)/[take_any()](../../query/take-any-aggfunction.md) materialized view, the command will fail if there is no row level security policy defined on the materialized view itself. The purpose of the failure is to alert the user of a potential data leak, since the materialized view may expose information. To mitigate this error, do one of the following actions:
+* When defining a row level security policy on the source table of an [arg_max()](../../query/arg-max-aggfunction.md) or [arg_min()](../../query/arg-min-aggfunction.md)/[take_any()](../../query/take-any-aggfunction.md) materialized view, the command will fail if there's no row level security policy defined on the materialized view itself. The purpose of the failure is to alert the user of a potential data leak, since the materialized view may expose information. To mitigate this error, do one of the following actions:
   * Define the row level security policy over the materialized view.
   * Choose to ignore the error by adding `allowMaterializedViewsWithoutRowLevelSecurity` property to the alter policy command. For example:
 

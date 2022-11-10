@@ -3,7 +3,7 @@ title: 'Tutorial: Ingest monitoring data in Azure Data Explorer without code'
 description: In this tutorial, you learn how to ingest monitoring data to Azure Data Explorer without one line of code and query that data.
 ms.reviewer: kerend
 ms.topic: tutorial
-ms.date: 06/20/2022
+ms.date: 11/09/2022
 
 # Customer intent: I want to ingest monitoring data to Azure Data Explorer without one line of code, so that I can explore and analyze my data by using queries.
 ---
