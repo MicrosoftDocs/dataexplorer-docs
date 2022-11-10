@@ -3,7 +3,7 @@ title: case() - Azure Data Explorer
 description: This article describes case() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 11/10/2022
 ---
 # case()
 
@@ -20,11 +20,13 @@ All even arguments (the `then`s) and the last argument (the `else`) must be of t
        *predicate_3*, *then_3*,
        *else*`)`
 
-## Arguments
+## Parameters
 
-* *predicate_i*: An expression that evaluates to a `boolean` value.
-* *then_i*: An expression that gets evaluated and its value is returned from the function if *predicate_i* is the first predicate that evaluates to `true`.
-* *else*: An expression that gets evaluated and its value is returned from the function if neither of the *predicate_i* evaluate to `true`.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *predicate_i* | string | &check; | An expression that evaluates to a `boolean` value. |
+| *then_i* | string | &check; | An expression that gets evaluated and its value is returned from the function if *predicate_i* is the first predicate that evaluates to `true`. |
+| *else_i* | string | &check; | An expression that gets evaluated and its value is returned from the function if neither of the *predicate_i* evaluate to `true`. |
 
 ## Returns
 

@@ -15,7 +15,7 @@ Builds the minimal schema that admits all values of *DynamicExpr*.
 
 `buildschema` `(`*DynamicExpr*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
