@@ -3,7 +3,7 @@ title: Samples for Kusto Queries - Azure Data Explorer
 description: This article describes common queries and examples that use the Kusto Query Language.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 11/10/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -676,7 +676,6 @@ Here's the output:
 
 The query "stretches" (duplicates) each record in the input table throughout the seven days after its actual appearance. Each record actually appears seven times. As a result, the daily aggregation includes all records of the preceding seven days.
 
-
 Here's a step-by-step explanation of the preceding query:
 
 1. Bin each record to one day (relative to `_start`).
@@ -946,10 +945,10 @@ let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
 print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) * time(1s);  //result: 00:09:27
 ```
-### *isempty*, *isnotempty*, *notempty*
+### *isempty*, *isnotempty*
 
 - `isempty` returns `true` if the argument is an empty string or null (see `isnull`).
-- `isnotempty` returns `true` if the argument isn't an empty string or null (see `isnotnull`). Alias: `notempty`.
+- `isnotempty` returns `true` if the argument isn't an empty string or null (see `isnotnull`). Alias: `isnotempty`.
 
 ```kusto
 isempty(value)
@@ -981,7 +980,7 @@ parse_url(urlstring)
 #### Example
 
 ```kusto
-print parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
+print parse_url("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
 ```
 
 Here's the output:
@@ -999,7 +998,7 @@ Here's the output:
 }
 ```
 
-### *replace*
+### *replace_regex*
 
 Replaces all regex matches with another string.
 
