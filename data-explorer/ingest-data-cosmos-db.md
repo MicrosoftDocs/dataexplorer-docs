@@ -6,27 +6,25 @@ ms.topic: how-to
 ms.date: 11/08/2022
 ---
 
-Test 1-2
-
 # Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
 
-Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from Azure Cosmos DB using a [change feed](/azure/cosmos-db/change-feed). The Cosmos DB change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your cluster. The change feed listens for new and updated documents but does not log deletes.
+Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Azure Cosmos DB for NoSql](/azure/cosmos-db/nosql/) using a [change feed](/azure/cosmos-db/change-feed). The Cosmos DB change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your cluster. The change feed listens for new and updated documents but does not log deletes.
 
-Each data connection listens to a specific Cosmos DB container and ingests data into a specified table. The ingestion method defaults to using streaming ingestion when enabled, otherwise it falls back to using queued ingestion.
+Each data connection listens to a specific Cosmos DB container and ingests data into a specified table. The ingestion method supports streaming ingestion (when enabled) and batch ingestion.
 
 In the article, you'll learn how to set up a Cosmos DB change feed data connection and ingest data into Azure Data Explorer. Follow the steps below to set up a connector.
 
-//VP:: These are the steps for setting up the connector
+Step 1: Choose or create an Azure Data Explorer table to ingest data into
 
-Step 1: Choose or create an Azure Data Explorer table to ingest data into.
+Step 2: Configure table mapping
 
-Step 2: Configure table mapping and optionally set up an update policy.
-
-Step 3: Configure access to read from Cosmos DB using managed identities.
+Step 3: Configure access to read from Cosmos DB using managed identities
 
 Step 4: Create a Cosmos DB change feed data connection
 
 //VP:: The rest of the topics we'll move to another article and use them as next steps
+//Shlomo:  If we do that (which sounds like a good idea), I would suggest to push the update policy into the other article as well.  This way we could keep this article as "the simplest use case".
+//Shlomo:  something like that?  https://learn.microsoft.com/en-us/azure/data-explorer/ingest-data-event-hub-overview
 
 ## Prerequisites
 
@@ -34,16 +32,97 @@ Step 4: Create a Cosmos DB change feed data connection
 
 - An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 - An existing or new [cluster and database](create-cluster-database-portal.md).
+- An existing container from a [Cosmos DB account for NoSql](/azure/cosmos-db/nosql/)
 
-## Create a data connection
+## Step 1: Choose or create an Azure Data Explorer table
 
-//VP:: Where are the How-to steps ... i.e. where does the customer set up the connection?
-// Probably move this down
+//Shlomo:  https://learn.microsoft.com/en-us/azure/data-explorer/ingest-data-event-hub#create-a-target-table-in-azure-data-explorer goes with screen shots to show how to execute a command.  I don't know if that is necessary?
 
-> [!IMPORTANT]
-> The data connection creates a container under the Cosmos DB database with the name *adx-connection-lease-DATA_CONNECTION_NAME*, where *DATA_CONNECTION_NAME* is the name identifying the data connection. This container is required for the proper functioning of the data connection and must not be modified.
+Execute the following KQL command in the context of the database you want to create a table:
 
-### Data connection properties
+```kql
+.create table TestTable (Name:string, Id:string, _ts:long, _timestamp:datetime) 
+```
+
+## Step 2: Configure table mapping
+
+Execute the following KQL command in the context of the same database you created the table:
+
+````kql
+.create table TestTable ingestion json mapping "DocumentMapping"
+```
+[
+    {"column":"Name","path":"$.Name"},
+    {"column":"Id","path":"$.id"},
+    {"column":"_ts","path":"$._ts"},
+    {"column":"_timestamp","path":"$._ts", "transform":"DateTimeFromUnixSeconds"}
+]
+```
+````
+
+Here we map a custom property `Name` from a Cosmos DB JSON document to the column `Name` in our Kusto Table.  We then map the mandatory Cosmos DB JSON properties `id` and `_ts` to the table's column `Id` and `_ts`.  Finally we map the Cosmos DB JSON properties `_ts` (again) to the table's column `_timestamp`.  Since `_timestamp` is of type `datetime` while `_ts` is expressed in [UNIX seconds](https://en.wikipedia.org/wiki/Unix_time), we apply a transformation.
+
+> [!NOTE]
+> 
+> We recommend to have a `datetime` column corresponding to the transform of `_ts` in Cosmos DB to enable efficient time filters (see [Query best practice](/azure/data-explorer/kusto/query/best-practices)).  Keeping the `_ts` column often makes sense to reconciliate data with Cosmos DB.
+
+## Step 3: Configure access to read from Cosmos DB using managed identities
+
+Cosmos DB Data Connection supports only [Managed Identities](/azure/data-explorer/managed-identities-overview) authentication (it doesn't support Cosmos DB access keys authentication).
+
+For a managed identity to be used by a Cosmos DB connection you need to do two sub steps:
+
+1.  Allow the managed identity to be used with [DataConnection](/azure/data-explorer/kusto/management/managed-identity-policy#managed-identity-usages) with a [Managed Identity Policy](/azure/data-explorer/kusto/management/managed-identity-policy)
+2.  Give the managed identity RBAC permission to access Cosmos DB
+
+> [!Note]
+> If you use the Portal to create the data connection, those two sub steps are done automatically.
+
+In this article, you will use the *system* managed identity (as opposed to a user system identity).
+
+For the first sub step, execute the following command:
+
+````kql
+.alter database db policy managed_identity
+```
+[
+  {
+    "ObjectId": "system",
+    "AllowedUsages": "DataConnection"
+  }
+]
+```
+````
+
+This allows the *system* managed identity to be used in data connections.
+
+For the second sub step, you can't do that in the Azure Portal since the Cosmos DB role isn't exposed as an Azure role.
+
+Using Azure CLI:
+
+```
+az cosmosdb sql role assignment create --account-name <cosmos db account name> --resource-group <cosmos db resource group> --role-definition-id 00000000-0000-0000-0000-000000000001 --principal-id <ADX cluster principal id> --scope "/"
+```
+
+Using PowerShell:
+
+```
+TBD
+```
+
+Your ADX cluster principal id can be found [on the Azure portal](/azure/data-explorer/configure-managed-identities-cluster#add-a-system-assigned-identity).
+
+> [!Note]
+> The role used here is [Cosmos DB Built-in Data Reader](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions).  Technically, only the action [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-setup-rbac#permission-model) is required, so it is possible to define a custom role with only that action and assign it to the managed identity.
+
+Step 4: Create a Cosmos DB change feed data connection
+
+//Shlomo:  content is coming, neither options are available to me at this very moment.  It would be nice to have a 2 pane setup, although the panes will contain more than code (e.g. the Azure Portal will contain screen shots)
+
+Azure Portal:  TBD
+ARM Template:  TBD
+
+Following content will roll up in either or both of those...
 
 // PART OF CREATE CONNECTION
 
@@ -62,23 +141,30 @@ The following table describes the properties for a data connection:
 | *Cosmos DB container* | The name of the source container in the Cosmos DB account. |
 | *Start time* | Optional. If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date. |
 
-### Permissions
+## Testing data connection
 
-// PART OF CREATE CONNECTION
+Let's insert a document in the Cosmos DB container.
 
-The data connection uses your cluster's [system-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity) for access to read from the Cosmos DB.
+In the Azure portal, select...
 
-Use the following steps to grant the identity access to the Cosmos DB account:
+**SCREENSHOT of Cosmos DB doc insert**
 
-1. In the Azure portal, browse to your Cosmos DB account.
-1. In the left menu, select **Access control (IAM)** > **Add role assignments**.
-1. Select **DocumentDB Account Contributor** and then select **Next**.
-1. Under **Assign access to**, select **Managed identity**.
-1. Under **Members**, select **Select members**.
-1. In the **Select managed identity** pane, select your cluster's managed identity and the select **Select**.
-1. Select **Review + assign** to complete the assignment.
+Now, let's query the table in Kusto:
 
-## Target table
+```kql
+TestTable
+```
+
+The result set should look like the following image:
+
+**SCREENSHOT of result in Kusto**
+
+> [!NOTE]
+>
+> * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of 1G, or 1000 blobs. Therefore, you may experience a latency. For more information, see [batching policy](kusto/management/batchingpolicy.md).
+> * To reduce response time lag, configure your table to support streaming. See [streaming policy](kusto/management/streamingingestionpolicy.md).
+
+## Data Mapping
 
 //VP:: Why do I need a mapping if it's specified in the connector?
 
@@ -134,21 +220,6 @@ There are different ingestion options: // data mapping
     '    { "Column" : "Doc", "Properties":{"Path":"$"}}
     ']'
     ```
-
-## Mapping Timestamp
-
-//VP:: Where would this be done? Is this part of the mapping file?
-// We need an example of how to do this.
-
-Cosmos DB SQL API has a special property `_ts` for the timestamp of the last change on a document.  The timestamp is expressed in [UNIX seconds](https://en.wikipedia.org/wiki/Unix_time).
-
-It makes sense to land that property in a `long` column in Kusto.  It is useful to have the "original" timestamp (in UNIX seconds) for comparison with original documents in Cosmos DB containers.
-
-An An [important optimization](kusto/query/best-practices.md) (time filter) is based on the [`datetime` Kusto type](kusto/query/scalar-data-types/datetime.md).  In order for time filters to be effective on large datasets (multiple GBs of ingested data), you need to filter on a `datetime` column.
-
-You can map the `_ts` to a `datetime` column using the `DateTimeFromUnixSeconds` [mapping transformation](kusto/management/mappings.md#mapping-transformations).
-
-We recommend using the column name `_timestamp` for the Kusto column having `_ts` mapped as `datetime` because that name isn't used by Cosmos DB nor Kusto (see [naming conventions to avoid collisions in Kusto](kusto/query/schema-entities/entity-names.md#naming-your-entities-to-avoid-collisions-with-kusto-language-keywords)).
 
 ## Beyond Data Mapping with Update Policies
 
