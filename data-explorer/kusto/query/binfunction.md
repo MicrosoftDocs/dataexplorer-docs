@@ -3,7 +3,7 @@ title: bin() - Azure Data Explorer
 description: This article describes bin() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 11/10/2022
 adobe-target: true
 ---
 # bin()
@@ -21,10 +21,12 @@ Alias to `floor()` function.
 
 `bin(`*value*`,`*roundTo*`)`
 
-## Arguments
+## Parameters
 
-* *value*: A number, date, or [timespan](scalar-data-types/timespan.md).
-* *roundTo*: The "bin size". A number or timespan that divides *value*.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value* | scalar | &check; | A number, date, or timespan. |
+| *roundTo* | scalar | &check; | The "bin size". A number or timespan that divides *value*. |
 
 ## Returns
 
