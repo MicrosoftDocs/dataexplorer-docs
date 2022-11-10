@@ -12,6 +12,20 @@ Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from Azur
 
 Each data connection listens to a specific Cosmos DB container and ingests data into a specified table. The ingestion method defaults to using streaming ingestion when enabled, otherwise it falls back to using queued ingestion.
 
+In the article, you'll learn how to set up a Cosmos DB change feed data connection and ingest data into Azure Data Explorer. Follow the steps below to set up a connector.
+
+//VP:: These are the steps for setting up the connector
+
+Step 1: Choose or create an Azure Data Explorer table to ingest data into.
+
+Step 2: Configure table mapping and optionally set up an update policy.
+
+Step 3: Configure access to read from Cosmos DB using managed identities.
+
+Step 4: Create a Cosmos DB change feed data connection
+
+//VP:: The rest of the topics we'll move to another article and use them as next steps
+
 ## Prerequisites
 
 //VP:: What are the prereqs?
@@ -84,7 +98,7 @@ For example, if an item in the Cosmos DB container has the following structure:
 //VP:: When is this performed? Is it part of the connection setup?
 // Before or after the connection is created?
 
-There are different ingestion options:
+There are different ingestion options: // data mapping
 
 1. Ingest all the first level fields - by creating table using the command and ingest it without specifying mapping:
 
