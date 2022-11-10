@@ -20,9 +20,7 @@ Rounds values down to a fixed-size "bin", with control over the bin's starting p
 |--|--|--|--|
 | *value* | scalar | &check; | A scalar expression of a numeric type (including `datetime` and `timespan`) indicating the value to round. |
 | *bin_size* | scalar | &check; | A scalar constant of a numeric type or `timespan` (for a `datetime` or `timespan` *Expression*) indicating the size of each bin. |
-| *fixed_point* | scalar | &check; | A scalar constant of the same type as *Expression* indicating
-  one value of *Expression, which is a "fixed point" (that is, a value `fixed_point`
-  for which `bin_at(fixed_point, bin_size, fixed_point) == fixed_point`.) |
+| *fixed_point* | scalar | &check; | A scalar constant of the same type as *Expression* indicating one value of *Expression, which is a "fixed point" (that is, a value `fixed_point` for which `bin_at(fixed_point, bin_size, fixed_point) == fixed_point`.) |
 
 ## Returns
 
