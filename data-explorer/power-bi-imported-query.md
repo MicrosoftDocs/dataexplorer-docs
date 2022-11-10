@@ -3,14 +3,16 @@ title: 'Visualize data from Azure Data Explorer with a Power BI imported query'
 description: 'In this article, you learn how to use one of the three options for visualizing data in Power BI: importing a query from Azure Data Explorer.'
 ms.reviewer: mblythe
 ms.topic: how-to
-ms.date: 07/10/2019
+ms.date: 11/10/2022
 
 #Customer intent: As a data analyst, I want to understand connection options in Power BI so I can choose the option most appropriate to my scenario.
 ---
 
 # Visualize data using a query imported into Power BI
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Power BI is a business analytics solution that lets you visualize your data and share the results across your organization.
+> [Introductory sentence about the relation between ADX and Power BI]. 
+
+Power BI is a business analytics solution that lets you visualize your data and share the results across your organization.
 
 Azure Data Explorer provides three options for connecting to data in Power BI: use the built-in connector, import a query from Azure Data Explorer, or use a SQL query. This article shows you how to import a query so that you can get data and visualize it in a Power BI report.
 
