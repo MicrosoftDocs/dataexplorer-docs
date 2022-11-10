@@ -99,8 +99,8 @@ In the **Continuous ingestion from Event Hub established** window, all steps wil
 
 :::image type="content" source="media/event-hub-wizard/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hubs with the ingestion wizard.":::
 
-> [!WARNING]
-> The data connection will break if the Event Hub moves to a different resource or subscription. To fix the issue, update or recreate the data connection.
+> [!CAUTION]
+> If the Event Hub moves to a different resource or subscription, you will not be able to make changes to the connection from the portal. To fix this, update or recreate the connection.
 
 ## Next steps
 

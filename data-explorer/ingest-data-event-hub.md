@@ -128,8 +128,8 @@ Fill out the form with the following information, and then select **Create**.
 | Compression | *None* | The compression type of the event hub messages payload. Supported compression types: *None, Gzip*.|
 | Managed Identity (recommended) | System-assigned | The managed identity used by the Data Explorer cluster for access to read from the event hub. We recommend using managed identities to control access to your event hub.<br /><br />**Note**:<br />When the data connection is created:<br/>\* *System-assigned* identities are automatically created if they don't exist<br />\* The managed identity is automatically assigned the *Azure Event Hubs Data Receiver* role and is added to your Data Explorer cluster. We recommend verifying that the role was assigned and that the identity was added to the cluster. |
 
-> [!WARNING]
-> The data connection will break if the Event Hub moves to a different resource or subscription. To fix the issue, update or recreate the data connection.
+> [!CAUTION]
+> If the Event Hub moves to a different resource or subscription, you will not be able to make changes to the connection from the portal. To fix this, update or recreate the connection.
 
 > [!NOTE]
 > If you have an existing data connection that is not using managed identities, we recommend updating it to use managed identities.
