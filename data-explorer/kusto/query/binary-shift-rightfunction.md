@@ -3,7 +3,7 @@ title: binary_shift_right() - Azure Data Explorer
 description: This article describes binary_shift_right() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 11/10/2022
 ---
 # binary_shift_right()
 
@@ -15,11 +15,14 @@ binary_shift_right(x,y)
 
 ## Syntax
 
-`binary_shift_right(`*num1*`,` *num2* `)`
+`binary_shift_right(`*value*`,` *shift* `)`
 
-## Arguments
+## Parameters
 
-* *num1*, *num2*: long numbers.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value* | int | &check; | The start value. |
+| *shift* | int | &check; | The number of bits to shift. |
 
 ## Returns
 

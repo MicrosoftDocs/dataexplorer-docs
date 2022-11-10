@@ -15,11 +15,14 @@ binary_xor(x,y)
 
 ## Syntax
 
-`binary_xor(`*num1*`,` *num2* `)`
+`binary_xor(`*value1*`,` *value2* `)`
 
-## Arguments
+## Parameters
 
-* *num1*, *num2*: long numbers.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value1* | int | &check; | An integer. |
+| *value2* | int | &check; | An integer. |
 
 ## Returns
 
