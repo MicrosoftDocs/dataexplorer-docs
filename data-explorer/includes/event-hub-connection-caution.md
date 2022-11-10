@@ -1,4 +1,9 @@
 ---
+title: Include file
+description: Include file
+author: v-dkorn
+ms.author: v-dkorn
+ms.service: data-explorer
 ms.topic: include
 ms.date: 11/10/2022
 ---
