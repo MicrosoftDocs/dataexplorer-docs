@@ -147,7 +147,6 @@ The following example shows an Azure Resource Manager template for adding an Eve
 }
 ```
 
-> [!CAUTION]
-> If the Event Hub moves to a different resource or subscription, you will not be able to make changes to the connection from the portal. To fix this, update or recreate the connection.
+[!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
 
 [!INCLUDE [data-explorer-clean-resources](includes/data-explorer-clean-resources.md)]
