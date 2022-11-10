@@ -15,11 +15,13 @@ bitset_count_ones(42)
 
 ## Syntax
 
-`bitset_count_ones(`*num1*``)`
+`bitset_count_ones(`*value*``)`
 
-## Arguments
+## Parameters
 
-* *num1*: long or integer number.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value* | int | &check; | The integer for which to calculate the number of set bits. |
 
 ## Returns
 
