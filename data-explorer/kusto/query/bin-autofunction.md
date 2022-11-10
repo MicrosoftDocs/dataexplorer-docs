@@ -13,19 +13,23 @@ Rounds values down to a fixed-size "bin", with control over the bin size and sta
 
 `bin_auto` `(` *Expression* `)`
 
-## Arguments
+## Parameters
 
-* *Expression*: A scalar expression of a numeric type indicating the value to round.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *Expression* | scalar | &check; |  A scalar expression of a numeric type indicating the value to round. |
 
 ## Client request properties
 
-* `query_bin_auto_size`: A numeric literal indicating the size of each bin.
-* `query_bin_auto_at`: A numeric literal indicating one value of *Expression* which is a "fixed point" (that is, a value `fixed_point`
-  for which `bin_auto(fixed_point)` == `fixed_point`.)
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *query_bin_auto_size* | int, long, or timespan | &check; |  Indicates the size of each bin.|
+| *query_bin_auto_at* | int, long, or timespan | |  Indicates one value of *Expression* which is a "fixed point" for which `bin_auto(fixed_point)` == `fixed_point`. Default is 0.|
+
 
 ## Returns
 
-The nearest multiple of `query_bin_auto_at` below *Expression*, shifted so that `query_bin_auto_at`
+The nearest multiple of `query_bin_auto_size` below *Expression*, shifted so that `query_bin_auto_at`
 will be translated into itself.
 
 ## Examples
