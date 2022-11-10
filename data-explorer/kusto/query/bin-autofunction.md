@@ -3,7 +3,7 @@ title: bin_auto() - Azure Data Explorer
 description: This article describes bin_auto() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 11/10/2022
 ---
 # bin_auto()
 
