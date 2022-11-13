@@ -34,8 +34,10 @@ items:
     href: ingest-data-no-code.md
   - name: Visualize data in Power BI
     href: visualize-power-bi.md
-  - name: "Learn module: Introduction to Azure Data Explorer"
+  - name: "Training module: Introduction to Azure Data Explorer"
     href: /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+  - text: "Training module: Write your first query with Kusto Query Language"
+    url: /training/modules/write-first-query-kusto-query-language/
 - name: Concepts
   items:
   - name: EngineV3
