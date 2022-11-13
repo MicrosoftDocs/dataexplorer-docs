@@ -32,7 +32,7 @@ landingContent:
             url: https://youtu.be/D_AJk2lAepw
 
   # Card
- - title: Training
+  - title: Training
     linkLists: 
       - linkListType: learn
         links:
