@@ -29,7 +29,7 @@ This article explains the vertical scaling workflow:
 
     The SKUs are disabled because they're the current SKU, or they aren't available in the region where the cluster is located.
 
-1. To change your SKU, select a new SKU and click **Select**.
+1. To change your SKU, select a new SKU and click **Apply**.
 
 > [!NOTE]
 > * The vertical scaling process can take a few minutes, and during that time your cluster will be  suspended. 
