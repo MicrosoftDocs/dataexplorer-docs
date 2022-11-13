@@ -123,7 +123,7 @@ For this article, you use static routing, where you specify the table name, data
     > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
     > * Only events enqueued after you create the data connection are ingested.
 
-2. Select **Create**.
+1. Select **Create**.
 
 ### Event system properties mapping
 
