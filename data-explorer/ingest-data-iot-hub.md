@@ -166,7 +166,7 @@ With the app generating data, you can now see the data flow from the IoT hub to 
 
 1. In the Azure portal, under your IoT hub, you see the spike in activity while the app is running.
 
-    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-metrics.png" alt-text="Screenshot of the Azure Portal UI under your I o T hub, showing the spike in activity while the app is running .":::
+    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-metrics.png" alt-text="Screenshot of the Azure portal UI under your I o T hub, showing the spike in activity while the app is running .":::
 
 1. To check how many messages have made it to the database so far, run the following query in your test database.
 
