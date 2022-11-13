@@ -24,6 +24,15 @@ The mappings can be [pre-created](create-ingestion-mapping-command.md) and can b
 
 Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
 
+## Supported types
+
+* [CSV](csv-mapping.md)
+* [JSON](json-mapping.md)
+* [ARVO](arvo-mapping.md)
+* [Parquet](parquet-mapping.md)
+* [ORC](orc-mapping.md)
+* [W3CLOGFILE](w3clogfile-mapping.md)
+
 ## Mapping transformations
 
 Some of the data format mappings (Parquet, JSON and AVRO) support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time, use [Update policy](./show-table-update-policy-command.md), which allows defining lightweight processing using KQL expression.
