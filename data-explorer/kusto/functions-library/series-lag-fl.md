@@ -3,7 +3,7 @@ title: series_lag_fl() - Azure Data Explorer
 description: This article describes series_lag_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 02/03/2022
+ms.date: 11/09/2022
 ---
 # series_lag_fl()
 
