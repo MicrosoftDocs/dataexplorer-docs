@@ -30,7 +30,9 @@ Add a Log Analytics or Application Insights workspace to Azure Data Explorer cli
 
     * For Log Analytics (LA): `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
     * For Application Insights (AI): `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
-    * Note that if you just specify `https://ade.applicationinsights.io/subscriptions/<subscription-id>`, then you get to see all databases in the subscription (this also works for Log Analytics clusters).
+
+    > [!NOTE]
+    > Specify `https://ade.applicationinsights.io/subscriptions/<subscription-id>` to see all databases in the subscription. This syntax also works for Log Analytics clusters).
 
 1. Select **Add**.
 
