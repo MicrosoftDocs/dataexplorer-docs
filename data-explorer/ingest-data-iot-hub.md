@@ -69,15 +69,15 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
 
     :::image type="content" source="media/ingest-data-iot-hub/select-database.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing a list of databases with testdb selected.":::
 
-1. Select **Data ingestion** and **Add data connection**.
+1. Select **Data ingestion** and **Add data connection**. From the dropdown, select **IoT Hub**.
 
-    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-connection.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data Ingestion window with the Add data connection tab selected.":::
+    :::image type="content" source="media/ingest-data-iot-hub/add-data-connection.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data Ingestion window with the Add data connection tab selected.":::
 
 ### Create a data connection
 
 * Fill out the form with the following information.
 
-    :::image type="content" source="media/ingest-data-iot-hub/data-connection-pane.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data connection form.":::
+    :::image type="content" source="media/ingest-data-iot-hub/create-data-connection.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data connection form.":::
 
     |**Setting** | **Field description**|
     |---|---|
@@ -107,7 +107,7 @@ For this article, you use static routing, where you specify the table name, data
 
 1. Fill out the following routing settings:
 
-    :::image type="content" source="media/ingest-data-iot-hub/default-routing-settings.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the default routing settings in the Target table form.":::
+    :::image type="content" source="media/ingest-data-iot-hub/table-routing-settings.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the default routing settings in the Target table form.":::
 
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -123,7 +123,7 @@ For this article, you use static routing, where you specify the table name, data
     > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
     > * Only events enqueued after you create the data connection are ingested.
 
-1. Select **Create**.
+2. Select **Create**.
 
 ### Event system properties mapping
 
