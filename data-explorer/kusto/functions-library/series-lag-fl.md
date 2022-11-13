@@ -3,13 +3,13 @@ title: series_lag_fl() - Azure Data Explorer
 description: This article describes series_lag_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 02/03/2022
+ms.date: 11/09/2022
 ---
 # series_lag_fl()
 
 Applies a lag on a series.
 
-The function `series_lag_fl()` takes an expression containing a dynamic numerical array as input and shift it backward. It is commonly used for shifting time series to test whether a pattern is new or it matches historical data.
+The function `series_lag_fl()` takes an expression containing a dynamic numerical array as input and shift it backward. It's commonly used for shifting time series to test whether a pattern is new or it matches historical data.
 
 > [!NOTE]
 > This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
@@ -37,7 +37,7 @@ let series_lag_fl = (series:dynamic, offset:int)
 {
     let lag_f = toscalar(range x from 1 to offset+1 step 1
     | project y=iff(x == offset+1, 1, 0)
-    | summarize lag_filter = makelist(y));
+    | summarize lag_filter = make_list(y));
     fir(series, lag_f, false)
 }
 ;
@@ -64,7 +64,7 @@ series_lag_fl(series:dynamic, offset:int)
 {
     let lag_f = toscalar(range x from 1 to offset+1 step 1
     | project y=iff(x == offset+1, 1, 0)
-    | summarize lag_filter = makelist(y));
+    | summarize lag_filter = make_list(y));
     fir(series, lag_f, false)
 } 
 ```
