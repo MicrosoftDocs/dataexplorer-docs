@@ -120,10 +120,11 @@ For this article, you use static routing, where you specify the table name, data
     > In case of a [manual failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover), you must recreate the data connection.
 
     > [!NOTE]
+    > * The JSON data format will be parsed as multijson by default. Select **Ignore format errors** to ingest the data in strict JSON format.
     > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
     > * Only events enqueued after you create the data connection are ingested.
 
-1. Select **Create**.
+2. Select **Create**.
 
 ### Event system properties mapping
 
