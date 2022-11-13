@@ -3,7 +3,7 @@ title: summarize operator - Azure Data Explorer
 description: This article describes summarize operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/09/2022
+ms.date: 11/13/2022
 ms.localizationpriority: high 
 ---
 # summarize operator
@@ -152,7 +152,7 @@ When the input of `summarize` operator doesn't have an empty group-by key, the r
 
 ```kusto
 datatable(x:long)[]
-| summarize take_any(x), arg_max(x, x), arg_min(x, x), avg(x), buildschema(todynamic(tostring(x))), max(x), min(x), percentile(x, 55), hll(x) ,stdev(x), sum(x), sumif(x, x > 0), tdigest(x), variance(x)
+| summarize take_any(x), arg_max(x, x), arg_min(x, x), avg(x), buildschema(parse_json(tostring(x))), max(x), min(x), percentile(x, 55), hll(x) ,stdev(x), sum(x), sumif(x, x > 0), tdigest(x), variance(x)
 ```
 
 |any_x|max_x|max_x_x|min_x|min_x_x|avg_x|schema_x|max_x1|min_x1|percentile_x_55|hll_x|stdev_x|sum_x|sumif_x|tdigest_x|variance_x|

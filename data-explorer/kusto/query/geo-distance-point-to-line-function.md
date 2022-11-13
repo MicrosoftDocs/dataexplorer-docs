@@ -3,7 +3,7 @@ title: geo_distance_point_to_line() - Azure Data Explorer
 description: This article describes geo_distance_point_to_line() in Azure Data Explorer.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/11/2020
+ms.date: 11/13/2022
 ---
 # geo_distance_point_to_line()
 
@@ -105,7 +105,7 @@ let allRoads=toscalar(
 nyc_taxi
 | project pickup_longitude, pickup_latitude
 | where pickup_longitude != 0 and pickup_latitude != 0
-| where geo_distance_point_to_line(pickup_longitude, pickup_latitude, todynamic(allRoads)) > 10000
+| where geo_distance_point_to_line(pickup_longitude, pickup_latitude, parse_json(allRoads)) > 10000
 | take 10
 | render scatterchart with (kind=map)
 ```
