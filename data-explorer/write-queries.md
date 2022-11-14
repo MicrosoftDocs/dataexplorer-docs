@@ -760,7 +760,7 @@ This section includes elements and queries that demonstrate how easy it is to pe
 
 ### activity_counts_metrics plugin
 
-[**activity_counts_metrics plugin**](kusto/query/activity-counts-metrics-plugin.md): Calculates useful activity metrics (total count values, distinct count values, distinct count of new values, and aggregated distinct count). Metrics are calculated for each time window, then they are compared, and aggregated to and with all previous time windows.
+[**activity_counts_metrics plugin**](kusto/query/activity-counts-metrics-plugin.md): Calculates useful activity metrics (total count values, distinct count values, distinct count of new values, and aggregated distinct count). Metrics are calculated for each time window, then they're compared, and aggregated to and with all previous time windows.
 
 The following query analyzes user adoption by calculating daily activity counts.
 
