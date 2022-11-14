@@ -135,6 +135,28 @@ Use the following properties to customize visuals.
 |**Render links**     |    Toggle to make links that start with "https://" in tables, clickable. <li>**Apply on columns**: Select columns containing URL. </li>     | Table|
 |**Layout**     |    Select the layout configuration for multi stat visual. <li>**Apply on columns**: Select columns containing URL. </li>     | Multi stat|
 
+### Conditional formatting
+
+Conditional formatting is supported for Table, Stat and Multi stat visuals. It is used to format the visual data points by the actual values of the data point using colors, tags and icons.
+Each visual can have 1 or more conditional formatting rules defined. In case of contrast between different rules, the last rull will overrided the previous ones.
+Conditional formatting can be applied to a specific set of cells in a predetermined column or to entire rows.
+Select **Add rule** in the visual formatting right pane, conditional formatting section. The select **Edit** to set the rule.
+For each rule you can define a name in the **Rule name** control. In case you do not define a rule name the default rule name would be the selected column with some additional proprties of the rule.
+In the formatting section of each rule you can define the formatting of the data points. The formatting can be applied to an entire row or to a specific column.
+
+#### Color by condition
+
+Select **Column** to set the condition column, **Operator** to set the operator and **Value** to define the value of the rule.
+You can define another rule using the **+Add condition** option. The second condition can use the column selected in the first condition or any other column.
+In the formatting section, select **Apply options** to apply the formatting to entire rows or to cells in a specific column. When selecting **Apply to rows** one can format only the color of the row. When selecting **Apply to cells** once can set the color, tag and icon to a specific cell in a defined column. with this option it is also possible to hide the text of the column.
+
+#### Color by value
+
+Select **Column** to set the rule column and **column** to select the column use for coloring the visual.
+In case the column selected is of numeric type, the **Theme** definition will be enabled. The theme is applied according to the range of values in the selected column. The min and max values of the value range are either retirieved by default from the selected column or explicitly defined in the **Min value** and **Max value** controls.
+In case the column selected is non numeric, selecting the theme is disabled and the colors are set by the rule automatically according to the values in the selected column.
+Select **Apply options** to apply the formatting to entire rows or to cells in a specific column. 
+
 ## Next steps
 
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
