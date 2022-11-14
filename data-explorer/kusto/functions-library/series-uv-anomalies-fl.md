@@ -3,7 +3,7 @@ title: series_uv_anomalies_fl() - Azure Data Explorer
 description: This article describes the series_uv_anomalies_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 11/14/2022
 ---
 # series_uv_anomalies_fl()
 

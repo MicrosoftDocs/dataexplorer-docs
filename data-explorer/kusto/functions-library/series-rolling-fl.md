@@ -3,10 +3,9 @@ title: series_rolling_fl() - Azure Data Explorer
 description: This article describes the series_rolling_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 11/14/2022
 ---
 # series_rolling_fl()
-
 
 The function `series_rolling_fl()` applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
@@ -26,15 +25,15 @@ The function `series_rolling_fl()` applies rolling aggregation on a series. It t
 * *aggr*: The name of the aggregation function to use. See [aggregation functions](#aggregation-functions).
 * *aggr_params*: Optional parameters for the aggregation function.
 * *center*: An optional Boolean value that indicates whether the rolling window is one of the following options:
-    * applied symmetrically before and after the current point, or 
+    * applied symmetrically before and after the current point, or
     * applied from the current point backwards. <br>
     By default, *center* is false, for calculation on streaming data.
 
 ## Aggregation functions
 
-This function supports any aggregation function from [numpy](https://numpy.org/) or [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats) that calculates a scalar out of a series. The following list is not exhaustive:
+This function supports any aggregation function from [numpy](https://numpy.org/) or [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats) that calculates a scalar out of a series. The following list isn't exhaustive:
 
-* [`sum`](https://numpy.org/doc/stable/reference/generated/numpy.sum.html#numpy.sum) 
+* [`sum`](https://numpy.org/doc/stable/reference/generated/numpy.sum.html#numpy.sum)
 * [`mean`](https://numpy.org/doc/stable/reference/generated/numpy.mean.html?highlight=mean#numpy.mean)
 * [`min`](https://numpy.org/doc/stable/reference/generated/numpy.amin.html#numpy.amin)
 * [`max`](https://numpy.org/doc/stable/reference/generated/numpy.amax.html)
@@ -48,10 +47,10 @@ This function supports any aggregation function from [numpy](https://numpy.org/)
 * [`mode` (most common value)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mode.html)
 * [`moment` (n<sup>th</sup> moment)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.moment.html)
 * [`tmean` (trimmed mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmean.html)
-* [`tmin`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmin.html) 
+* [`tmin`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmin.html)
 * [`tmax`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmax.html)
 * [`tstd`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tstd.html)
-* [`iqr` (inter quantile range)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.iqr.html) 
+* [`iqr` (inter quantile range)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.iqr.html)
 
 ## Usage
 
@@ -187,4 +186,3 @@ The following examples assume the function is already installed:
     ```
     
     :::image type="content" source="images/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean." border="false":::
-    
