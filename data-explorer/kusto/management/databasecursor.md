@@ -3,7 +3,7 @@ title: Database cursors - Azure Data Explorer
 description: This article describes Database cursors in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 11/09/2022
 ---
 # Database cursors
 
@@ -30,7 +30,6 @@ Kusto provides three functions to help implement the two above scenarios:
 * [cursor_current()](../query/cursorcurrent.md):
    Use this function to retrieve the current value of the database cursor.
    You can use this value as an argument to the two other functions.
-   This function also has a synonym, `current_cursor()`.
 
 * [cursor_after(rhs:string)](../query/cursorafterfunction.md):
    This special function can be used on table records that have the
