@@ -3,7 +3,7 @@ title: Write queries for Azure Data Explorer
 description: In this how-to, you learn how to perform basic and more advanced queries for Azure Data Explorer.
 ms.reviewer: mblythe
 ms.topic: tutorial
-ms.date: 11/09/2022
+ms.date: 11/14/2022
 ms.localizationpriority: high
 ---
 
