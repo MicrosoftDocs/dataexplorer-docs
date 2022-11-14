@@ -3,7 +3,7 @@ title: make_bag() (aggregation function) - Azure Data Explorer
 description: This article describes the make_bag() aggregation function in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/24/2022
+ms.date: 11/14/2022
 ---
 # make_bag() (aggregation function)
 
@@ -45,7 +45,7 @@ let T = datatable(prop:string, value:string)
     "prop03", "val_c",
 ];
 T
-| extend p = pack(prop, value)
+| extend p = bag_pack(prop, value)
 | summarize dict=make_bag(p)
 ```
 
@@ -67,7 +67,7 @@ let T = datatable(prop:string, value:string)
     "prop03", "val_c",
 ];
 T
-| extend p = pack(prop, value)
+| extend p = bag_pack(prop, value)
 | summarize bag=make_bag(p)
 | evaluate bag_unpack(bag)
 ```

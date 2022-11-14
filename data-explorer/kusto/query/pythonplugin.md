@@ -3,7 +3,7 @@ title: Python plugin - Azure Data Explorer
 description: This article describes Python plugin in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 11/14/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -81,7 +81,7 @@ g = kargs["gain"]
 f = kargs["cycles"]
 result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
 ```
-, pack('gain', 100, 'cycles', 4)    //  dictionary of parameters
+, bag_pack('gain', 100, 'cycles', 4)    //  dictionary of parameters
 )
 | render linechart 
 ~~~
@@ -151,7 +151,7 @@ print "This is an example for using 'external_artifacts'"
     | evaluate python(
         typeof(*, fx:double),
         toscalar(script), 
-        pack('gain', 100, 'cycles', 4))
+        bag_pack('gain', 100, 'cycles', 4))
     | render linechart 
     ```
 
@@ -234,7 +234,7 @@ range ID from 1 to 3 step 1
     for i in range(df.shape[0]):
         result.loc[i, "Name"] = fake.name()
     ```,
-    external_artifacts=pack('faker.zip', 'https://artifacts.blob.core.windows.net/kusto/Faker.zip?*** REPLACE WITH YOUR SAS TOKEN ***'))
+    external_artifacts=bag_pack('faker.zip', 'https://artifacts.blob.core.windows.net/kusto/Faker.zip?*** REPLACE WITH YOUR SAS TOKEN ***'))
 ~~~
 
 | ID | Name         |

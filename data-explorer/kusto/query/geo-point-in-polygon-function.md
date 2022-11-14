@@ -3,7 +3,7 @@ title: geo_point_in_polygon() - Azure Data Explorer
 description: This article describes geo_point_in_polygon() in Azure Data Explorer.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 11/14/2022
 ---
 # geo_point_in_polygon()
 
@@ -123,7 +123,7 @@ let Locations = datatable(longitude:real, latitude:real)
       real(-115.18), real(36.16)  // Somewhere in Las Vegas
     ];
 Polygons
-| project polygonPartition = tostring(pack("description", description, "polygon", polygon))
+| project polygonPartition = tostring(bag_pack("description", description, "polygon", polygon))
 | partition hint.materialized=true by polygonPartition
 {   
      Locations

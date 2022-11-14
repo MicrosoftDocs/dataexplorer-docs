@@ -3,7 +3,7 @@ title: make_bag_if() (aggregation function) - Azure Data Explorer
 description: This article describes make_bag_if() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/24/2022
+ms.date: 11/14/2022
 ---
 # make_bag_if() (aggregation function)
 
@@ -46,7 +46,7 @@ let T = datatable(prop:string, value:string, predicate:bool)
     "prop03", "val_c", true
 ];
 T
-| extend p = pack(prop, value)
+| extend p = bag_pack(prop, value)
 | summarize dict=make_bag_if(p, predicate)
 ```
 
@@ -68,7 +68,7 @@ let T = datatable(prop:string, value:string, predicate:bool)
     "prop03", "val_c", true
 ];
 T
-| extend p = pack(prop, value)
+| extend p = bag_pack(prop, value)
 | summarize bag=make_bag_if(p, predicate)
 | evaluate bag_unpack(bag)
 ```

@@ -3,7 +3,7 @@ title: R plugin (Preview) - Azure Data Explorer
 description: This article describes R plugin (Preview) in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/03/2022
+ms.date: 11/14/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -68,7 +68,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 'f <- kargs$cycles\n'
 'result$fx <- g * sin(df$x / n * 2 * pi * f)'
 //
-, pack('gain', 100, 'cycles', 4)    //  dictionary of parameters
+, bag_pack('gain', 100, 'cycles', 4)    //  dictionary of parameters
 )
 | render linechart 
 ```
@@ -117,7 +117,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
     | evaluate r(
         typeof(*, fx:double),
         toscalar(script), 
-        pack('gain', 100, 'cycles', 4))
+        bag_pack('gain', 100, 'cycles', 4))
     | render linechart 
     ```
 
@@ -210,7 +210,7 @@ print x=1
     'library("brglm2")\n'
     'result <- df\n'
     'result$ver <-packageVersion("brglm2")\n'
-    ,external_artifacts=pack(brglm2.zip', 'https://artifactswestus.blob.core.windows.net/r/libs.zip?*** REPLACE WITH YOUR SAS TOKEN ***'))
+    ,external_artifacts=bag_pack(brglm2.zip', 'https://artifactswestus.blob.core.windows.net/r/libs.zip?*** REPLACE WITH YOUR SAS TOKEN ***'))
 ~~~
 
 | x | ver     |

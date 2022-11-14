@@ -3,7 +3,7 @@ title: make_list() (aggregation function) - Azure Data Explorer
 description: This article describes make_list() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/09/2022
+ms.date: 11/14/2022
 adobe-target: true
 ---
 # make_list() (aggregation function)
@@ -118,7 +118,7 @@ let shapes = datatable (name: string, sideCount: int)
     "decagon", 10
 ];
 shapes
-| extend d = pack("name", name, "sideCount", sideCount)
+| extend d = bag_pack("name", name, "sideCount", sideCount)
 | summarize mylist = make_list(d) by isEvenSideCount = sideCount % 2 == 0
 ```
 

@@ -3,7 +3,7 @@ title: The dynamic data type - Azure Data Explorer
 description: This article describes The dynamic data type in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/09/2020
+ms.date: 11/14/2022
 ---
 # The dynamic data type
 
@@ -158,7 +158,7 @@ Cast functions are:
 
 Several functions enable you to create new `dynamic` objects:
 
-* [pack()](../packfunction.md) creates a property bag from name/value pairs.
+* [bag_pack()](../packfunction.md) creates a property bag from name/value pairs.
 * [pack_array()](../packarrayfunction.md) creates an array from name/value pairs.
 * [range()](../rangefunction.md) creates an array with an arithmetic series of numbers.
 * [zip()](../zipfunction.md) pairs "parallel" values from two arrays into a single array.
