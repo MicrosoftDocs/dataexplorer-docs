@@ -90,6 +90,8 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | compression | *Gzip* or *None* | The type of data compression. |
 | databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-hub-overview.md#events-routing). |
 
+[!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
+
 ## Generate data
 
 See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub.
