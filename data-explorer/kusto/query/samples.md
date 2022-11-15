@@ -3,7 +3,7 @@ title: Samples for Kusto Queries - Azure Data Explorer
 description: This article describes common queries and examples that use the Kusto Query Language.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 11/13/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -66,7 +66,7 @@ To match start and stop events with a session ID:
 
 1. Use [let](./letstatement.md) to name a projection of the table that's pared down as far as possible before starting the join.
 1. Use [project](./projectoperator.md) to change the names of the timestamps so that both the start time and the stop time appear in the results. `project` also selects the other columns to view in the results.
-1. Use [join](./joinoperator.md) to match the start and stop entries for the same activity. A row is created for each activity.
+1. Use [join](./joinoperator.md) to match the start and stop entries for the same activity. A row is created for each activity. 
 1. Use `project` again to add a column to show the duration of the activity.
 
 Here's the output:
@@ -493,7 +493,6 @@ Here's the output:
 |iPhone 6 |55
 |iPhone5 |66
 
-
 ## Create and use query-time dimension tables
 
 Often, you'll want to join the results of a query with an ad-hoc dimension table that isn't stored in the database. You can define an expression whose result is a table scoped to a single query.
@@ -675,7 +674,6 @@ Here's the output:
 |2018-10-07 00:00:00.0000000|Apples|8|8|8|
 
 The query "stretches" (duplicates) each record in the input table throughout the seven days after its actual appearance. Each record actually appears seven times. As a result, the daily aggregation includes all records of the preceding seven days.
-
 
 Here's a step-by-step explanation of the preceding query:
 
@@ -946,10 +944,10 @@ let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
 print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) * time(1s);  //result: 00:09:27
 ```
-### *isempty*, *isnotempty*, *notempty*
+### *isempty*, *isnotempty*
 
 - `isempty` returns `true` if the argument is an empty string or null (see `isnull`).
-- `isnotempty` returns `true` if the argument isn't an empty string or null (see `isnotnull`). Alias: `notempty`.
+- `isnotempty` returns `true` if the argument isn't an empty string or null (see `isnotnull`). Alias: `isnotempty`.
 
 ```kusto
 isempty(value)
@@ -981,7 +979,7 @@ parse_url(urlstring)
 #### Example
 
 ```kusto
-print parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
+print parse_url("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
 ```
 
 Here's the output:
@@ -999,7 +997,7 @@ Here's the output:
 }
 ```
 
-### *replace*
+### *replace_regex*
 
 Replaces all regex matches with another string.
 
@@ -1388,7 +1386,7 @@ Here's the output:
 | computer2 | [326,105,302,301,300,102] |
 | ... | ... |
 
-`make_list` generates a list in the order that data was passed into it. To sort events from oldest to newest, use `asc` in the `order` statement instead of `desc`. 
+`make_list` generates a list in the order that data was passed into it. To sort events from oldest to newest, use `asc` in the `order` statement instead of `desc`.
 
 You might find it useful to create a list only of distinct values. This list is called a _set_, and you can generate it by using the `make_set` command:
 
@@ -1452,12 +1450,14 @@ Here's the output:
 
 You can use `make_list` to group items together. In the output, you can see the list of computers per solution:
 
+You can use `make_list` to group items together. In the output, you can see the list of computers per solution:
+
 ```kusto
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, split(Solutions, ",")
 | mv-expand Solutions
-| summarize make_list(Computer) by tostring(Solutions)
+| summarize make_list(Computer) by tostring(Solutions) 
 ```
 
 Here's the output:
@@ -1571,7 +1571,7 @@ If both datasets have columns that have the same name, the columns of the right-
 
 Use the following syntax to join two datasets in which the joined key has a different name between the two tables:
 
-```
+```Kusto
 Table1
 | join ( Table2 )
 on $left.key1 == $right.key2
@@ -1656,7 +1656,7 @@ print hosts_object
 | extend status0=hosts_object.hosts[0].status, rate1=hosts_object.hosts[1].rate
 ```
 
-### *arraylength*
+### *array_length*
 
 Use `array_length` to count the number of elements in an array:
 
@@ -1870,7 +1870,7 @@ let starttime = endtime-window;
 let interval = 1d;
 let user_bins_to_analyze = 28;
 // Create an array of filters coefficients for series_fir(). A list of '1' in our case will produce a simple sum.
-let moving_sum_filter = toscalar(range x from 1 to user_bins_to_analyze step 1 | extend v=1 | summarize make_list(v));
+let moving_sum_filter = toscalar(range x from 1 to user_bins_to_analyze step 1 | extend v=1 | summarize make_list(v)); 
 // Level of engagement. Users will be counted as engaged if they completed at least this number of activities.
 let min_activity = 1;
 customEvents
@@ -1915,7 +1915,7 @@ let rollingDcount = (sliding_window_size: int, event_name:string)
     let window = 90d;
     let starttime = endtime-window;
     let interval = 1d;
-    let moving_sum_filter = toscalar(range x from 1 to sliding_window_size step 1 | extend v=1| summarize make_list(v));
+    let moving_sum_filter = toscalar(range x from 1 to sliding_window_size step 1 | extend v=1| summarize make_list(v));    
     let min_activity = 1;
     customEvents
     | where timestamp > starttime
