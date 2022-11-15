@@ -16,10 +16,10 @@ This article shows you how to import a query so that you can get data and visual
 
 You need the following to complete this article:
 
-* A [Microsoft account](https://account.microsoft.com/account/Account?ru=https%3A%2F%2Faccount.microsoft.com%2F&destrt=home.landing) so you can connect to the [Azure Data Explorer help cluster](https://dataexplorer.azure.com/clusters/help/databases/samples).
+* A [Microsoft account](https://account.microsoft.com/account/Account?ru=https%3A%2F%2Faccount.microsoft.com%2F&destrt=home.landing).
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**).
 * [Power BI Desktop - Alternate Download Link](https://www.microsoft.com/download/details.aspx?id=58494).
-* [Azure Data Explorer desktop app](kusto/tools/kusto-explorer.md) or **[Azure Data Web Explorer](link TBD)**
+* [Azure Data Explorer desktop app](kusto/tools/kusto-explorer.md) or [Azure Data Explorer](https://dataexplorer.azure.com/)
 
 ## Get data from Azure Data Explorer
 
@@ -50,7 +50,11 @@ First, you create a query in Azure Data Explorer. Then, you connect to the Azure
 
 # [Kusto Web Explorer](#tab/kusto-web-explorer/)
 
-In a browser, go to [https://help.kusto.windows.net/](https://help.kusto.windows.net/)
+1. In a browser, go to [https://help.kusto.windows.net/](https://help.kusto.windows.net/)
+1. Select query from cluster.
+1. Select **Share** then **Query to Power BI**
+
+    ![Share query.](media/power-bi-imported-query/share-query.png)
 
 ---
 
