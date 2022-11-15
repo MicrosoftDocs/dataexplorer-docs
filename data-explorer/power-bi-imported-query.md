@@ -23,9 +23,7 @@ You need the following to complete this article:
 
 ## Get data from Azure Data Explorer
 
-1. Create a query in Azure Data Explorer.
-1. Connect to the Azure Data Explorer help cluster.
-1. Bring in a subset of the data from the *StormEvents* table. [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
+To create a query from the *StormEvents* table, connect to the Azure Data Explorer help cluster.[!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
 ## Import query to Power BI
 
