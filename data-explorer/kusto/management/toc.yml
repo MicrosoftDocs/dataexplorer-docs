@@ -625,3 +625,6 @@ items:
     href: ingestionfailures.md
   - name: Streaming ingestion failures
     href: streamingingestionfailures.md
+  - name: Ingesting bad data
+    href: ingesting-bad-data.md
+    
