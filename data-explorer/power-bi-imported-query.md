@@ -19,7 +19,7 @@ You need the following to complete this article:
 * A [Microsoft account](https://account.microsoft.com/account/Account?ru=https%3A%2F%2Faccount.microsoft.com%2F&destrt=home.landing).
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**).
 * [Power BI Desktop - Alternate Download Link](https://www.microsoft.com/download/details.aspx?id=58494).
-* [Azure Data Explorer desktop app](kusto/tools/kusto-explorer.md) or [Azure Data Explorer](https://dataexplorer.azure.com/)
+* [Azure Data Explorer desktop app](kusto/tools/kusto-explorer.md) or [Azure Data Explorer](https://dataexplorer.azure.com/).
 
 ## Get data from Azure Data Explorer
 
