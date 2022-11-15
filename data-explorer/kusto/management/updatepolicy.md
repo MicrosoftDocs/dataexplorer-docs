@@ -31,7 +31,7 @@ If the update policy is defined on the target table, multiple queries can run on
 * When referencing the `Source` table in the `Query` part of the policy, or in functions referenced by the `Query` part:
     * Don't use the qualified name of the table. Instead, use `TableName`.
     * Don't use `database("DatabaseName").TableName` or `cluster("ClusterName").database("DatabaseName").TableName`.
-* The query can't include an external table.
+* The query can't include an external table reference.
 * For update policy limitations in streaming ingestion, see [streaming ingestion limitations](../../ingest-data-streaming.md#limitations).
 
 > [!WARNING]
