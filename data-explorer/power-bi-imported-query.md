@@ -27,6 +27,14 @@ First, you create a query in Azure Data Explorer. Then, you connect to the Azure
 
 ## Import query to Power BI
 
+# [Azure Data Explorer web UI](#tab/azure-data-explorer-web-ui/)
+
+1. In a browser, go to [https://help.kusto.windows.net/](https://help.kusto.windows.net/)
+1. Select query from cluster.
+1. Select **Share** then **Query to Power BI**
+
+    ![Share query.](media/power-bi-imported-query/share-query.png)
+
 # [Kusto Explorer](#tab/kusto-explorer/)
 
 1. Launch the Azure Data Explorer desktop app.
@@ -47,14 +55,6 @@ First, you create a query in Azure Data Explorer. Then, you connect to the Azure
 1. On the **Home** tab, select **Close & Apply**.
 
     ![Close and apply.](media/power-bi-imported-query/close-apply.png)
-
-# [Kusto Web Explorer](#tab/kusto-web-explorer/)
-
-1. In a browser, go to [https://help.kusto.windows.net/](https://help.kusto.windows.net/)
-1. Select query from cluster.
-1. Select **Share** then **Query to Power BI**
-
-    ![Share query.](media/power-bi-imported-query/share-query.png)
 
 ---
 
