@@ -17,11 +17,11 @@ Calculates the smallest integer greater than, or equal to, the specified numeric
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *x* | int, long, or real | &check; | A number. |
+| *x* | int, long, or real | &check; | The value to round up. |
 
 ## Returns
 
-* The smallest integer greater than, or equal to, the specified numeric expression.
+The smallest integer greater than, or equal to, the specified numeric expression.
 
 ## Examples
 

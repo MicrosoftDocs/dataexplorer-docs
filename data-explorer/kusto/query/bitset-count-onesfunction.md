@@ -9,10 +9,6 @@ ms.date: 02/22/2020
 
 Returns the number of set bits in the binary representation of a number.
 
-```kusto
-bitset_count_ones(42)
-```
-
 ## Syntax
 
 `bitset_count_ones(`*value*``)`
@@ -21,7 +17,7 @@ bitset_count_ones(42)
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | int | &check; | The integer for which to calculate the number of set bits. |
+| *value* | int | &check; | The value for which to calculate the number of set bits. |
 
 ## Returns
 

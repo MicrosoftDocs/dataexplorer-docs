@@ -17,7 +17,7 @@ Rounds values down to a fixed-size "bin", with control over the bin size and sta
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expression* | scalar | &check; |  A scalar expression of a numeric type indicating the value to round. |
+| *Expression* | scalar | &check; |  A numeric expression indicating the value to round. |
 
 ## Client request properties
 

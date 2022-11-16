@@ -25,8 +25,8 @@ Alias to `floor()` function.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | scalar | &check; | A number, date, or timespan. |
-| *roundTo* | scalar | &check; | The "bin size". A number or timespan that divides *value*. |
+| *value* | scalar | &check; | The start value on which to base the rounding. |
+| *roundTo* | scalar | &check; | The "bin size" that divides *value*. |
 
 ## Returns
 

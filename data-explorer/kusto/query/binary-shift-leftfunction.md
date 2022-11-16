@@ -9,10 +9,6 @@ ms.date: 11/10/2022
 
 Returns binary shift left operation on a pair of numbers.
 
-```kusto
-binary_shift_left(x,y)
-```
-
 ## Syntax
 
 `binary_shift_left(`*value*`,` *shift* `)`
@@ -22,9 +18,19 @@ binary_shift_left(x,y)
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *value* | int | &check; | The start value. |
-| *shift* | int | &check; | The number of bits to shift. |
+| *shift* | int | &check; | The number of bits to shift left. |
 
 ## Returns
 
 Returns binary shift left operation on a pair of numbers: num1 << (num2%64).
 If n is negative a NULL value is returned.
+
+## Example
+
+```kusto
+binary_shift_left(1,2)
+```
+
+|Result|
+|------|
+|4 |
