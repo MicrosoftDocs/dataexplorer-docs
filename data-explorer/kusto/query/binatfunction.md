@@ -8,7 +8,6 @@ ms.date: 11/10/2022
 # bin_at()
 
 Rounds values down to a fixed-size bin, with control over the bin's starting point.
-(See also [`bin function`](./binfunction.md).)
 
 ## Syntax
 
@@ -56,3 +55,7 @@ datetime(2018-02-26T15:14),5]
 |2018-02-23 15:14:00.0000000|4|
 |2018-02-24 15:14:00.0000000|3|
 |2018-02-26 15:14:00.0000000|5|
+
+## See Also
+
+* [`bin function`](./binfunction.md)
