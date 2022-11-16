@@ -9,22 +9,22 @@ ms.date: 11/10/2022
 
 Evaluates a list of predicates and returns the first result expression whose predicate is satisfied.
 
-If neither of the predicates return `true`, the result of the `else` expression is returned.
+If none of the predicates return `true`, the result of the `else` expression is returned.
 All `predicate` arguments must be expressions that evaluate to a  `boolean` value.
 All `then` arguments and the `else` argument must be of the same type.
 
 ## Syntax
 
 `case(`*predicate_1*, *then_1*,
-       [*predicate_2*, *then_2*...]
+       [*predicate_2*, *then_2*, ...]
        *else*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *predicate_i* | string | &check; | An expression that evaluates to a `boolean` value. |
-| *then_i* | string | &check; | An expression that gets evaluated and its value is returned from the function if *predicate_i* is the first predicate that evaluates to `true`. |
+| *predicate* | string | &check; | An expression that evaluates to a `boolean` value. |
+| *then* | string | &check; | An expression that gets evaluated and its value is returned from the function if *predicate* is the first predicate that evaluates to `true`. |
 | *else* | string | &check; | An expression that gets evaluated and its value is returned from the function if neither of the *predicate_i* evaluate to `true`. |
 
 ## Returns
