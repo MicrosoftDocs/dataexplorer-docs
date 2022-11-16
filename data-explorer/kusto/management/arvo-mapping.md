@@ -13,7 +13,7 @@ When the source file is in AVRO format, the AVRO file content is mapped to the t
 
 The columns mapped in the AVRO mapping must exist in the table unless a datatype is specified for all the non-existing columns.
 
-Each element in the list describes a mapping for a specific column, and may contain the following properties:
+Each element in the list describes a mapping for a specific column and may contain the following properties:
 
 |Property|Description|
 |----|--|
