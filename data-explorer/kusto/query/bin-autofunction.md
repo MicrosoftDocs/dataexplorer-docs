@@ -24,7 +24,7 @@ To control the bin size and starting point, set the below parameters before usin
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *query_bin_auto_size* | int, long, real, or timespan | &check; |  Indicates the size of each bin.|
-| *query_bin_auto_at* | int, long, real, or timespan | |  Indicates one value of *Expression* which is a "fixed point" for which `bin_auto(fixed_point)` == `fixed_point`. Default is 0.|
+| *query_bin_auto_at* | int, long, real, or timespan | |  A value of *Expression* that is a fixed point, such that `bin_auto(fixed_point)` == `fixed_point`. The default value is 0.|
 
 ## Returns
 
