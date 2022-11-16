@@ -11,13 +11,13 @@ Calculates the smallest integer greater than, or equal to, the specified numeric
 
 ## Syntax
 
-`ceiling(`*x*`)`
+`ceiling(`*number*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *x* | int, long, or real | &check; | The value to round up. |
+| *number* | int, long, or real | &check; | The value to round up. |
 
 ## Returns
 
