@@ -30,10 +30,6 @@ Alias to `floor()` function.
 
 The nearest multiple of *roundTo* below *value*. Null values, a null bin size, or a negative bin size will result in null.
 
-```kusto
-(toint((value/roundTo))) * roundTo`
-```
-
 ## Examples
 
 Expression | Result
