@@ -53,7 +53,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 ```
 
 > [!NOTE]
-> When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string.
+> When the mapping above is provided as part of the `.ingest` control command, the mapping is serialized as JSON string.
 
 ````kusto
 .ingest into Table123 (@"source1", @"source2")
