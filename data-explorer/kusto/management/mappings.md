@@ -24,7 +24,7 @@ The mappings can be [pre-created](create-ingestion-mapping-command.md) and can b
 
 Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
 
-## Supported types
+## Supported mapping types
 
 * [CSV](csv-mapping.md)
 * [JSON](json-mapping.md)
