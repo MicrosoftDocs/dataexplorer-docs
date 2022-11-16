@@ -20,7 +20,7 @@ Returns a dynamic array of the unicode characters of an input string (the invers
 ## Returns
 
 Returns a dynamic array of the unicode characters that make up the string provided to this function.
-See [`make_string()`](makestringfunction.md))
+See [`make_string()`](unicode_codepoints_to_stringfunction.md))
 
 ## Examples
 
