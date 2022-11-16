@@ -1,6 +1,6 @@
 ---
 title: JSON Mapping - Azure Data Explorer
-description: This article describes JSON data mapping in Azure Data Explorer.
+description: Learn how to use JSON mapping to map data to columns inside tables upon ingestion.
 ms.topic: reference
 ms.date: 11/16/2022
 ---
@@ -19,7 +19,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 |`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside the JSON file.|
 |`Transform`|(Optional) Transformation that should be applied on the content with [mapping transformations](mappings.md#mapping-transformations).|
 
-### Example
+## Example
 
 ```json
 [
@@ -76,7 +76,7 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
-### Example copying JSON mapping
+## Example copying JSON mapping
 
 You can copy JSON mapping of an existing table and create a new table with the same mapping using the following process:
 

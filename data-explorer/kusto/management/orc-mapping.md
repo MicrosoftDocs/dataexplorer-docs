@@ -1,6 +1,6 @@
 ---
 title: ORC Mapping - Azure Data Explorer
-description: This article describes ORC data mapping in Azure Data Explorer.
+description: Learn how to use ORC mapping to map data to columns inside tables upon ingestion.
 ms.topic: reference
 ms.date: 11/16/2022
 ---
@@ -37,7 +37,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 > ]
 > ```
 
-### Example
+## Example
 
 ```json
 [

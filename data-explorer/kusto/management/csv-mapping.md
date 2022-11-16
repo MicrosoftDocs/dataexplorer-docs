@@ -1,6 +1,6 @@
 ---
 title: CSV Mapping - Azure Data Explorer
-description: This article describes CSV data mapping in Azure Data Explorer.
+description: Learn how to use CSV mapping to map data to columns inside tables upon ingestion.
 ms.topic: reference
 ms.date: 11/16/2022
 ---
@@ -9,7 +9,7 @@ ms.date: 11/16/2022
 
 CSV mapping is one type of [data mapping](mappings.md) used to map incoming data to columns inside tables.
 
-When the source file is a CSV (or any delimiter-separated format) and its schema doesn't match the current table schema, a CSV mapping maps from the file schema to the table schema. If the table doesn't exist in Azure Data Explorer, it will be created according to this mapping. If some fields in the mapping are missing in the table, they'll be added.
+When the source file is a CSV, or any delimiter-separated format, and its schema doesn't match the current table schema, a CSV mapping maps from the file schema to the table schema. If the table doesn't exist in Azure Data Explorer, it will be created according to this mapping. If some fields in the mapping are missing in the table, they'll be added.
 
 CSV mapping can be applied on all the delimiter-separated tabular formats: CSV, TSV, PSV, SCSV, SOHsv and TXT. For more information, see supported [data formats](../../ingestion-supported-formats.md).
 
@@ -25,7 +25,7 @@ Each element in the list describes a mapping for a specific column, and must con
 > * `Ordinal` and `ConstantValue` are mutually exclusive.
 > * For TXT format, only `Ordinal` `0` can be mapped, as text is treated as a single column of lines.
 
-### Example
+## Example
 
 ``` json
 [
