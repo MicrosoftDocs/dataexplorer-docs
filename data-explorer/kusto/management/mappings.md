@@ -29,9 +29,21 @@ Ingestion is possible without specifying a mapping (see [identity mapping](#iden
 * [CSV](csv-mapping.md)
 * [JSON](json-mapping.md)
 * [ARVO](arvo-mapping.md)
+* [W3CLOGFILE](w3clogfile-mapping.md)
 * [Parquet](parquet-mapping.md)
 * [ORC](orc-mapping.md)
-* [W3CLOGFILE](w3clogfile-mapping.md)
+
+## Identity mapping
+
+Ingestion is possible without specifying `ingestionMapping` or `ingestionMappingReference` properties. The data will be mapped using an identity data mapping derived from the table's schema. The table schema will remain the same. `format` property should be specified. (see [ingestion formats](../../ingestion-supported-formats.md)).
+
+|Format type|Format|Mapping logic|
+|---------|---------| ---------|
+|Tabular data formats with defined order of columns, such as delimiter-separated or single-line formats| `CSV`, `TSV`, `TSVe`, `PSV`, `SCSV`, `Txt`, `SOHsv`, `Raw`| All table columns are mapped in their respective order to data columns in order they appear in the data source. Column data type is taken from the table schema. |
+|Formats with named columns or records with named fields|`JSON`, `Parquet`, `Avro`, `ApacheAvro`, `Orc`, `W3CLOGFILE`| All table columns are mapped to data columns or record fields having the same name (case-sensitive). Column data type is taken from the table schema. |
+
+> [!WARNING]
+> Any mismatch between the table schema and the structure of data, such as column or field data types, column or field names or their number might result in empty or incorrect data ingested.
 
 ## Mapping transformations
 
@@ -46,15 +58,3 @@ Some of the data format mappings (Parquet, JSON and AVRO) support simple and use
 |`DateTimeFromUnixMilliseconds`|Converts number representing unix-time (milliseconds since 1970-01-01) to UTC datetime string|
 |`DateTimeFromUnixMicroseconds`|Converts number representing unix-time (microseconds since 1970-01-01) to UTC datetime string|
 |`DateTimeFromUnixNanoseconds`|Converts number representing unix-time (nanoseconds since 1970-01-01) to UTC datetime string|
-
-## Identity mapping
-
-Ingestion is possible without specifying `ingestionMapping` or `ingestionMappingReference` properties. The data will be mapped using an identity data mapping derived from the table's schema. The table schema will remain the same. `format` property should be specified. (see [ingestion formats](../../ingestion-supported-formats.md)).
-
-|Format type|Format|Mapping logic|
-|---------|---------| ---------|
-|Tabular data formats with defined order of columns, such as delimiter-separated or single-line formats| `CSV`, `TSV`, `TSVe`, `PSV`, `SCSV`, `Txt`, `SOHsv`, `Raw`| All table columns are mapped in their respective order to data columns in order they appear in the data source. Column data type is taken from the table schema. |
-|Formats with named columns or records with named fields|`JSON`, `Parquet`, `Avro`, `ApacheAvro`, `Orc`, `W3CLOGFILE`| All table columns are mapped to data columns or record fields having the same name (case-sensitive). Column data type is taken from the table schema. |
-
-> [!WARNING]
-> Any mismatch between the table schema and the structure of data, such as column or field data types, column or field names or their number might result in empty or incorrect data ingested.
