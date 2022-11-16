@@ -56,6 +56,6 @@ datetime(2018-02-26T15:14),5]
 |2018-02-24 15:14:00.0000000|3|
 |2018-02-26 15:14:00.0000000|5|
 
-## See Also
+## See also
 
-* [`bin function`](./binfunction.md)
+* [`bin()`](./binfunction.md)
