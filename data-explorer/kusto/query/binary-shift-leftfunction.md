@@ -11,7 +11,7 @@ Returns binary shift left operation on a pair of numbers.
 
 ## Syntax
 
-`binary_shift_left(`*value*`,` *shift* `)`
+`binary_shift_left(`*value*`,`*shift*`)`
 
 ## Parameters
 
@@ -22,7 +22,7 @@ Returns binary shift left operation on a pair of numbers.
 
 ## Returns
 
-Returns binary shift left operation on a pair of numbers: num1 << (num2%64).
+Returns binary shift left operation on a pair of numbers: value << (shift%64).
 If n is negative a NULL value is returned.
 
 ## Example

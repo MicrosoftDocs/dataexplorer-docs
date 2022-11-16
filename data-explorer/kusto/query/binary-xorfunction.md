@@ -11,7 +11,7 @@ Returns a result of the bitwise `xor` operation of the two values.
 
 ## Syntax
 
-`binary_xor(`*value1*`,` *value2* `)`
+`binary_xor(`*value1*`,`*value2*`)`
 
 ## Parameters
 

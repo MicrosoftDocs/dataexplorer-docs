@@ -11,7 +11,7 @@ Returns the number of set bits in the binary representation of a number.
 
 ## Syntax
 
-`bitset_count_ones(`*value*``)`
+`bitset_count_ones(`*value*`)`
 
 ## Parameters
 
