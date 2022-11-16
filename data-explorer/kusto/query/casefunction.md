@@ -16,7 +16,7 @@ All `then` arguments and the `else` argument must be of the same type.
 ## Syntax
 
 `case(`*predicate_1*, *then_1*,
-       [*predicate_2*, *then_2*...]
+       [*predicate_2*, *then_2*, ...]
        *else*`)`
 
 ## Parameters
