@@ -18,7 +18,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 |----|--|
 |`Field`|W3CLOGFILE entry name|
 |`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside W3CLOGFILE file.|
-|`Transform`|(Optional) [mapping transformations](#mapping-transformations) that should be applied on the content.|
+|`Transform`|(Optional) [mapping transformations](mappings.md#mapping-transformations) that should be applied on the content.|
 
 ### Example
 
@@ -72,7 +72,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 ```
 
 > [!NOTE]
-> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
+> Ingestion is possible without specifying a mapping (see [identity mapping](mappings.md#identity-mapping)).
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")

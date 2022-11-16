@@ -169,7 +169,7 @@ items:
   - name: Data mappings
     items:
     - name: Data mappings
-      href: mapping.md
+      href: mappings.md
     - name: "CSV mapping"
       href: csv-mapping.md
     - name: "JSON mapping"
