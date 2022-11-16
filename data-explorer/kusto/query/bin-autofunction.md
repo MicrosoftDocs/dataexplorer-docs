@@ -11,24 +11,24 @@ Rounds values down to a fixed-size bin, with control over the bin size and start
 
 ## Syntax
 
-`bin_auto` `(`*Expression*`)`
+`bin_auto` `(`*value*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expression* | int, long, real, timespan, or datetime | &check; |  The value to round into bins. |
+| *value* | int, long, real, timespan, or datetime | &check; |  The value to round into bins. |
 
 To control the bin size and starting point, set the below parameters before using the function.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *query_bin_auto_size* | int, long, real, or timespan | &check; |  Indicates the size of each bin.|
-| *query_bin_auto_at* | int, long, real, or timespan | |  Indicates one value of *Expression* which is a "fixed point" for which `bin_auto(fixed_point)` == `fixed_point`. Default is 0.|
+| *query_bin_auto_at* | int, long, real, or timespan | |  Indicates one value of *value* which is a "fixed point" for which `bin_auto(fixed_point)` == `fixed_point`. Default is 0.|
 
 ## Returns
 
-The nearest multiple of `query_bin_auto_size` below *Expression*, shifted so that `query_bin_auto_at`
+The nearest multiple of `query_bin_auto_size` below *value*, shifted so that `query_bin_auto_at`
 will be translated into itself.
 
 ## Examples
