@@ -19,7 +19,7 @@ Rounds values down to a fixed-size bin, with control over the bin size and start
 |--|--|--|--|
 | *Expression* | int, long, real, timespan, or datetime | &check; |  The value to round into bins. |
 
-To control the bin size and starting point, set the below parameters before using the function.
+To control the bin size and starting point, set the following parameters before using the function.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
