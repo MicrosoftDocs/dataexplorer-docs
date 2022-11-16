@@ -27,6 +27,8 @@ If n is negative a NULL value is returned.
 
 ## Examples
 
+[**Run the Query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr0UjKzEssqowvzshMK4kvykzPKNEw1DHS1AQAd48PPR4AAAA=)
+
 ```kusto
 binary_shift_right(1,2)
 ```

@@ -25,7 +25,8 @@ Returns the number of set bits in the binary representation of a number.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+[**Run the Query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9PXVzAxUrBVMDbSttA2UrBSSFI3MDAEQ3UFW6C4QlJmSbFCcWoJL1dBUWZeiUJ+XmoxUANIOLUkPjm/NK8kHiSmYWKkCQAj0l10TgAAAA==)
+
 ```kusto
 // 42 = 32+8+2 : b'00101010' == 3 bits set
 print ones = bitset_count_ones(42) 

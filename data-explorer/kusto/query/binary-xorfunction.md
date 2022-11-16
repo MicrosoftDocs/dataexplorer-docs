@@ -26,6 +26,8 @@ Returns logical XOR operation on a pair of numbers: value1 ^ value2.
 
 ## Examples
 
+[**Run the Query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr0UjKzEssqoyvyC/SMNQx1NQEAKWP8zEWAAAA)
+
 ```kusto
 binary_xor(1,1)
 ```
@@ -33,6 +35,8 @@ binary_xor(1,1)
 |Result|
 |------|
 |0 |
+
+[**Run the Query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr0UjKzEssqoyvyC/SMNQx0tQEAPwxtTMWAAAA)
 
 ```kusto
 binary_xor(1,2)

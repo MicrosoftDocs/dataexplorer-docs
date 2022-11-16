@@ -34,7 +34,8 @@ The value of the first *then_i* whose *predicate_i* evaluates to `true`, or the 
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+[**Run the Query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA33LQQpAQACF4b1yh9esKAtDdtyAlRMMHolBY5Tk8KTs5F9/v1FTR5T9QbRm1pCwM2SC1XJB5DonuFtODaqtHmiRoVYrvWdIM8QBRKnVOIoAroPvXizDWxds+k3/cZEr01H4FzbjCsCbAAAA)
+
 ```kusto
 range Size from 1 to 15 step 2
 | extend bucket = case(Size <= 3, "Small", 
