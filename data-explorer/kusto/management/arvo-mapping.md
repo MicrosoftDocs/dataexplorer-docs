@@ -71,7 +71,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 ````
 
 > [!NOTE]
-> When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
+> When the mapping above is [pre-created](create-ingestion-mapping-command.md), it can be referenced in the `.ingest` control command:
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
