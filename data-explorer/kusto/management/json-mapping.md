@@ -34,8 +34,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 ]
 ```
 
-> [!NOTE]
-> When the mapping above is provided as part of the `.ingest` control command it is serialized as JSON string.
+The mapping above is serialized as a JSON string when it is provided as part of the `.ingest` control command.
 
 ````kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -53,8 +52,9 @@ Each element in the list describes a mapping for a specific column, and may cont
   )
 ````
 
-> [!NOTE]
-> When the mapping above is [pre-created](create-ingestion-mapping-command.md) it can be referenced in the `.ingest` control command:
+## Example using a pre-created mapping
+
+When the mapping above is [pre-created](create-ingestion-mapping-command.md), reference it by name in the `.ingest` control command.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -65,8 +65,9 @@ Each element in the list describes a mapping for a specific column, and may cont
     )
 ```
 
-> [!NOTE]
-> Ingestion is possible without specifying a mapping (see [identity mapping](mappings.md#identity-mapping)).
+## Example using identity mapping
+
+Use JSON mapping during ingestion without defining a mapping schema (see [identity mapping](mappings.md#identity-mapping)).
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
