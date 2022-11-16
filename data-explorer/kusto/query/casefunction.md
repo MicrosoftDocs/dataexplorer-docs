@@ -23,8 +23,8 @@ All `then` arguments and the `else` argument must be of the same type.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *predicate_i* | string | &check; | An expression that evaluates to a `boolean` value. |
-| *then_i* | string | &check; | An expression that gets evaluated and its value is returned from the function if *predicate_i* is the first predicate that evaluates to `true`. |
+| *predicate* | string | &check; | An expression that evaluates to a `boolean` value. |
+| *then* | string | &check; | An expression that gets evaluated and its value is returned from the function if *predicate* is the first predicate that evaluates to `true`. |
 | *else* | string | &check; | An expression that gets evaluated and its value is returned from the function if neither of the *predicate_i* evaluate to `true`. |
 
 ## Returns
