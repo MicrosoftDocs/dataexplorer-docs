@@ -9,7 +9,7 @@ ms.date: 11/10/2022
 
 Evaluates a list of predicates and returns the first result expression whose predicate is satisfied.
 
-If neither of the predicates return `true`, the result of the `else` expression is returned.
+If none of the predicates return `true`, the result of the `else` expression is returned.
 All `predicate` arguments must be expressions that evaluate to a  `boolean` value.
 All `then` arguments and the `else` argument must be of the same type.
 
