@@ -7,7 +7,7 @@ ms.date: 11/10/2022
 ---
 # bin_at()
 
-Rounds values down to a fixed-size "bin", with control over the bin's starting point.
+Rounds values down to a fixed-size bin, with control over the bin's starting point.
 (See also [`bin function`](./binfunction.md).)
 
 ## Syntax

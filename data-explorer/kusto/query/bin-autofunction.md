@@ -7,7 +7,7 @@ ms.date: 11/10/2022
 ---
 # bin_auto()
 
-Rounds values down to a fixed-size "bin", with control over the bin size and starting point provided by a query property.
+Rounds values down to a fixed-size bin, with control over the bin size and starting point provided by a query property.
 
 ## Syntax
 
@@ -19,7 +19,7 @@ Rounds values down to a fixed-size "bin", with control over the bin size and sta
 |--|--|--|--|
 | *Expression* | int, long, real, timespan, or datetime | &check; |  The value to round into bins. |
 
-## Client request properties
+To control the bin size and starting point, set the below parameters before using the function.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
