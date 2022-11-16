@@ -1,3 +1,9 @@
+---
+title: ARVO Mapping - Azure Data Explorer
+description: This article describes ARVO data mapping in Azure Data Explorer.
+ms.topic: reference
+ms.date: 11/16/2022
+---
 
 # AVRO mapping
 
@@ -14,7 +20,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 |`Field`|The name of the field in the AVRO record.|
 |`Path`|Alternative to using `Field` that allows taking the inner part of an AVRO record-field, if necessary. The value denotes a JSON path from the root of the AVRO record (JSON path that denotes the entire AVRO record is `$`). If the value doesn't start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
 |`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside AVRO file.|
-|`Transform`|(Optional) Transformation that should be applied on the content with [supported transformations](#mapping-transformations).|
+|`Transform`|(Optional) Transformation that should be applied on the content with [supported transformations](./mappings.md#mapping-transformations).|
 
 >[!NOTE]
 > `Field` and `Path` cannot be used together; only one is allowed.
@@ -77,7 +83,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 ```
 
 > [!NOTE]
-> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
+> Ingestion is possible without specifying a mapping (see [identity mapping](mappings.md#identity-mapping)).
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")

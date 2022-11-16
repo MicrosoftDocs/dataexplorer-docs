@@ -1,3 +1,10 @@
+---
+title: ORC Mapping - Azure Data Explorer
+description: This article describes ORC data mapping in Azure Data Explorer.
+ms.topic: reference
+ms.date: 11/16/2022
+---
+
 # ORC mapping
 
 ORC mapping is one type of [data mapping](mappings.md) used to map incoming data to columns inside tables.
@@ -11,7 +18,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 |`Field`|The name of the field in the ORC record.|
 |`Path`|Alternative to using `Field` that allows taking the inner part of an ORC record-field, if necessary. The value denotes a JSON-path from the root of the ORC record (JSON path that denotes the entire ORC record is `$`). If the value doesn't start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
 |`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside the ORC file.|
-|`Transform`|(Optional) [mapping transformations](#mapping-transformations) that should be applied on the content.|
+|`Transform`|(Optional) [mapping transformations](mappings.md#mapping-transformations) that should be applied on the content.|
 
 > [!NOTE]
 > `Field` and `Path` cannot be used together; only one is allowed.
@@ -74,7 +81,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 ```
 
 > [!NOTE]
-> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
+> Ingestion is possible without specifying a mapping (see [identity mapping](mappings.md#identity-mapping)).
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")

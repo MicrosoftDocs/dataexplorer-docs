@@ -3,7 +3,7 @@ title: Data mappings - Azure Data Explorer
 description: This article describes Data mappings in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/27/2022
+ms.date: 11/16/2022
 ---
 
 # Data mappings

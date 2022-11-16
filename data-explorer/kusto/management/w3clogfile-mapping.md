@@ -1,3 +1,11 @@
+---
+title: W3CLOGFILE Mapping - Azure Data Explorer
+description: This article describes W3CLOGFILE data mapping in Azure Data Explorer.
+ms.topic: reference
+ms.date: 11/16/2022
+---
+
+
 # W3CLOGFILE mapping
 
 W3CLOGFILE mapping is one type of [data mapping](mappings.md) used to map incoming data to columns inside tables.

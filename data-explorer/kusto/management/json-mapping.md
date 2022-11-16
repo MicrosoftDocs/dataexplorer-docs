@@ -1,3 +1,10 @@
+---
+title: JSON Mapping - Azure Data Explorer
+description: This article describes JSON data mapping in Azure Data Explorer.
+ms.topic: reference
+ms.date: 11/16/2022
+---
+
 # JSON mapping
 
 JSON mapping is one type of [data mapping](mappings.md) used to map incoming data to columns inside tables.
@@ -10,7 +17,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 |----|--|
 |`Path`|If the value starts with `$`: JSON path to the field that will become the content of the column in the JSON document (JSON path that denotes the entire document is `$`). If the value doesn't start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
 |`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside the JSON file.|
-|`Transform`|(Optional) Transformation that should be applied on the content with [mapping transformations](#mapping-transformations).|
+|`Transform`|(Optional) Transformation that should be applied on the content with [mapping transformations](mappings.md#mapping-transformations).|
 
 ### Example
 
@@ -59,7 +66,7 @@ Each element in the list describes a mapping for a specific column, and may cont
 ```
 
 > [!NOTE]
-> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
+> Ingestion is possible without specifying a mapping (see [identity mapping](mappings.md#identity-mapping)).
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")

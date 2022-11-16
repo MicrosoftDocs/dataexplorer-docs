@@ -1,3 +1,10 @@
+---
+title: CSV Mapping - Azure Data Explorer
+description: This article describes CSV data mapping in Azure Data Explorer.
+ms.topic: reference
+ms.date: 11/16/2022
+---
+
 # CSV mapping
 
 CSV mapping is one type of [data mapping](mappings.md) used to map incoming data to columns inside tables.
@@ -60,7 +67,7 @@ Each element in the list describes a mapping for a specific column, and must con
 ```
 
 > [!NOTE]
-> Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
+> Ingestion is possible without specifying a mapping (see [identity mapping](mappings.md#identity-mapping)).
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
