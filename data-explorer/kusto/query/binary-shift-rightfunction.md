@@ -17,7 +17,7 @@ Returns binary shift right operation on a pair of numbers.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | int | &check; | The start value. |
+| *value* | int | &check; | The value to shift right. |
 | *shift* | int | &check; | The number of bits to shift right. |
 
 ## Returns
