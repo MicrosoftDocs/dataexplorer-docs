@@ -43,7 +43,6 @@ In the following example, notice that the `"fixed point"` arg is returned as one
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-
 datatable(Date:datetime, Num:int)[
 datetime(2018-02-24T15:14),3,
 datetime(2018-02-23T16:14),4,
