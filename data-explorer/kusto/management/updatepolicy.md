@@ -92,7 +92,7 @@ After ingesting data to the target table, you may want to remove it from the sou
 * Operational performance improves. Post-ingestion resources are reduced for background grooming operations on [extents](../management/extents-overview.md) in the source table.
 
 > [!NOTE]
-> When the source table has a soft delete period of `0sec` (or `00:00:00`), any update policy referencing it must be transactional.
+> When the source table has a soft delete period of `0sec` (or `00:00:00`), any update policy referencing this table must be transactional.
 
 ## Performance impact
 
