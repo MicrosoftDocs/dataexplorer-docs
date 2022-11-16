@@ -168,7 +168,7 @@ items:
       href: alter-merge-table-column.md
   - name: Data mappings
     items:
-    - name: Data mappings
+    - name: Data mappings overview
       href: mappings.md
     - name: "CSV mapping"
       href: csv-mapping.md
