@@ -12,7 +12,7 @@ Use W3CLOGFILE mapping to map incoming data to columns inside tables when your i
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 
-Each item in a W3CLOGFILE mapping may contain the following `properties`:
+Each W3CLOGFILE mapping element may contain the following `properties`:
 
 |Property|Description|
 |----|--|

@@ -12,7 +12,7 @@ Use Parquet mapping to map incoming data to columns inside tables when your inge
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 
-Each item in a Parquet mapping may contain the following `properties`:
+Each Parquet mapping element may contain the following `properties`:
 
 |Property|Description|
 |----|--|

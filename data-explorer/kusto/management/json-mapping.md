@@ -11,7 +11,7 @@ Use JSON mapping to map incoming data to columns inside tables when your ingesti
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 
-Each item in a JSON mapping may contain the following `properties`:
+Each JSON mapping element may contain the following `properties`:
 
 |Property|Description|
 |----|--|

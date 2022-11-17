@@ -28,8 +28,8 @@ Ingestion is possible without specifying a mapping. See [identity mapping](#iden
 
 ## Supported mapping types
 
-* [CSV](csv-mapping.md)
 * [JSON](json-mapping.md)
+* [CSV](csv-mapping.md)
 * [AVRO](avro-mapping.md)
 * [W3CLOGFILE](w3clogfile-mapping.md)
 * [Parquet](parquet-mapping.md)
