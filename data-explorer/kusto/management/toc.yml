@@ -175,7 +175,7 @@ items:
     - name: "JSON mapping"
       href: json-mapping.md
     - name: "ARVO mapping"
-      href: arvo-mapping.md
+      href: avro-mapping.md
     - name: "Parquet mapping"
       href: parquet-mapping.md
     - name: "ORC mapping"

@@ -28,7 +28,7 @@ Ingestion is possible without specifying a mapping (see [identity mapping](#iden
 
 * [CSV](csv-mapping.md)
 * [JSON](json-mapping.md)
-* [ARVO](arvo-mapping.md)
+* [AVRO](avro-mapping.md)
 * [W3CLOGFILE](w3clogfile-mapping.md)
 * [Parquet](parquet-mapping.md)
 * [ORC](orc-mapping.md)
