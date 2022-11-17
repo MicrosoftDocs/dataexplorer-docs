@@ -3,7 +3,7 @@ title: 'Visualize data from Azure Data Explorer with a Power BI imported query'
 description: 'In this article, you learn how to import a query from Azure Data Explorer and visualize it in a Power BI report.'
 ms.reviewer: mblythe
 ms.topic: how-to
-ms.date: 11/15/2022
+ms.date: 11/17/2022
 
 #Customer intent: As a data analyst, I want to understand connection options in Power BI so I can choose the option most appropriate to my scenario.
 ---
@@ -18,7 +18,6 @@ You need the following to complete this article:
 
 * A [Microsoft account](https://account.microsoft.com/account/Account?ru=https%3A%2F%2Faccount.microsoft.com%2F&destrt=home.landing).
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**).
-* [Power BI Desktop - Alternate Download Link](https://www.microsoft.com/download/details.aspx?id=58494).
 * [Azure Data Explorer desktop app](kusto/tools/kusto-explorer.md) or [Azure Data Explorer](https://dataexplorer.azure.com/).
 
 ## Get data from Azure Data Explorer
@@ -27,21 +26,15 @@ To create a query from the *StormEvents* table, connect to the Azure Data Explor
 
 ## Import query to Power BI
 
-# [Azure Data Explorer web UI](#tab/azure-data-explorer-web-ui/)
+# [Web UI](#tab/web-ui)
+
+This section shows you how to query to Power BI using Azure Data Explorer web UI.
 
 1. In a browser, go to [https://help.kusto.windows.net/](https://help.kusto.windows.net/)
 1. Select query from cluster.
 1. Select **Share** then **Query to Power BI**
 
     ![Share query.](media/power-bi-imported-query/share-query.png)
-
-# [Kusto Explorer](#tab/kusto-explorer/)
-
-1. Launch the Azure Data Explorer desktop app.
-1. Select query from cluster.
-1. On the **Tools** tab, select **Query to Power BI** then **OK**.
-
-    ![Export query.](media/power-bi-imported-query/export-query.png)
 
 1. Launch Power BI Desktop.
 1. On the **Home** tab, select **Transform data**.
@@ -56,8 +49,62 @@ To create a query from the *StormEvents* table, connect to the Azure Data Explor
 
     ![Close and apply.](media/power-bi-imported-query/close-apply.png)
 
----
+# [Connector](#tab/connector/)
+
+This section shows you how to use the built-in connector to load data in a Power BI report. The Power BI connector supports [Import and Direct Query connectivity modes](/power-bi/desktop-directquery-about). You can build dashboards using **Import** or **DirectQuery** mode depending on the scenario, scale, and performance requirements.
+
+1. Launch Power BI Desktop.
+1. On the **Home** tab, select **Get Data** then **More**.
+
+    ![Get data.](media/power-bi-connector/get-data-more.png)
+
+1. Search for *Azure Data Explorer (Kusto)*, select **Azure Data Explorer (Kusto)** then **Connect**.
+
+    ![Search and get data.](media/power-bi-connector/search-get-data.png)
+
+1. On the **Azure Data Explorer (Kusto)** screen, fill out the form with the following information.
+
+    ![Cluster, database, table options.](media/power-bi-connector/cluster-database-table.png)
+
+    | Setting | Value | Field description
+    |---|---|---
+    | Cluster | *https://help.kusto.windows.net* | The URL for the help cluster. For other clusters, the URL is in the form *https://\<ClusterName\>.\<Region\>.kusto.windows.net*. |
+    | Database | Leave blank | A database that is hosted on the cluster you're connecting to. We'll select this in a later step. |
+    | Table name | Leave blank | One of the tables in the database, or a query like <code>StormEvents \| take 1000</code>. We'll select this in a later step. |
+    | Advanced options | Leave blank | Options for your queries, such as result set size.
+    | Data connectivity mode | *DirectQuery* | Determines whether Power BI imports the data or connects directly to the data source. You can use either option with this connector. |
+
+    > [!NOTE]
+    > In **Import** mode, data is moved to Power BI. In **DirectQuery** mode, data is queried directly from your Azure Data Explorer cluster.
+    >
+    > Use **Import** mode when:
+    >
+    > * Your data set is small.
+    > * You don't need near real-time data.
+    > * Your data is already aggregated or you perform [aggregation in Kusto](./kusto/query/aggregation-functions.md)
+    >
+    > Use **DirectQuery** mode when:
+    >
+    > * Your data set is very large.
+    > * You need near real-time data.
+
+    **Advanced options**
+
+    | Setting | Sample value | Field description
+    |---|---|---
+    | Limit query result record number| `300000` | The maximum number of records to return in the result |
+    | Limit query result data size | `4194304` | The maximum data size in bytes to return in the result |
+    | Disable result set truncation | `true` | Enable/disable result truncation by using the notruncation request option |
+    | Additional set statements | `set query_datascope=hotcache` | Sets query options for the duration of the query. Query options control how a query executes and returns results. |
+
+1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents** then **Transform Data**.
+
+    ![Select table.](media/power-bi-connector/select-table.png)
+
+    The table opens in Power Query Editor, where you can edit rows and columns before importing the data.
 
 ## Next steps
 
-[Visualize data using the Azure Data Explorer connector for Power BI](power-bi-connector.md)
+[Tips for using the Azure Data Explorer connector for Power BI to query data](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data)
+
+---
