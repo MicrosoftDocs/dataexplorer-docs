@@ -56,15 +56,15 @@ This section shows you how to use the built-in connector to load data in a Power
 1. Launch Power BI Desktop.
 1. On the **Home** tab, select **Get Data** then **More**.
 
-    ![Get data.](media/power-bi-connector/get-data-more.png)
+    ![Get data.](media/power-bi-imported-query/get-data.png)
 
 1. Search for *Azure Data Explorer (Kusto)*, select **Azure Data Explorer (Kusto)** then **Connect**.
 
-    ![Search and get data.](media/power-bi-connector/search-get-data.png)
+    ![Search and get data.](media/power-bi-imported-query/connect-data.png)
 
 1. On the **Azure Data Explorer (Kusto)** screen, fill out the form with the following information.
 
-    ![Cluster, database, table options.](media/power-bi-connector/cluster-database-table.png)
+    ![Cluster, database, table options.](media/power-bi-imported-query/cluster-database-table.png)
 
     | Setting | Value | Field description
     |---|---|---
@@ -99,10 +99,10 @@ This section shows you how to use the built-in connector to load data in a Power
 
 1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents** then **Transform Data**.
 
-    ![Select table.](media/power-bi-connector/select-table.png)
-
-    The table opens in Power Query Editor, where you can edit rows and columns before importing the data.
+    ![Select table.](media/power-bi-imported-query/select-table.png)
 
 [Tips for using the Azure Data Explorer connector for Power BI to query data](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data).
 
 ---
+
+## Next steps
