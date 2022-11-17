@@ -7,13 +7,11 @@ ms.date: 11/16/2022
 
 # AVRO mapping
 
-AVRO mapping is one way to map incoming data to columns inside tables. When the ingestion source file is in AVRO format, the AVRO file content is mapped to the table based on a defined mapping list.
+AVRO mapping is one way to map incoming data to columns inside tables. When the ingestion source file is in AVRO format, map the file content to the table using an AVRO mapping.
 
-Each element in the mapping list is constructed from three properties: `column`, `datatype` (optional), and `properties` (optional). Learn more about these properties in the [data mapping overview](mappings.md).
+[!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 
-If the table does not yet exist in the database, then a valid datatype must be specified for all the columns in the mapping. Similarly, if the columns in the mapping do not exist in the table, then a datatype must be specified for all of the non-existing columns.
-
-Each element in the list describes a mapping for a specific column. The following properties may be provided under the `properties` field:
+Each item may contain the following `properties`:
 
 |Property|Description|
 |----|--|

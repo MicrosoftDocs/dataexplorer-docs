@@ -7,11 +7,11 @@ ms.date: 11/16/2022
 
 # JSON mapping
 
-JSON mapping is one type of [data mapping](mappings.md) used to map incoming data to columns inside tables.
+JSON mapping is one way to map incoming data to columns inside tables. When the ingestion source file is in JSON format, map the file content to the table using a JSON mapping.
 
-When the source file is in JSON format, the file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped. The columns mapped in the JSON mapping must exist in the table unless a datatype is specified for all the non-existing columns.
+[!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 
-Each element in the list describes a mapping for a specific column and may contain the following properties:
+Each item may contain the following `properties`:
 
 |Property|Description|
 |----|--|
