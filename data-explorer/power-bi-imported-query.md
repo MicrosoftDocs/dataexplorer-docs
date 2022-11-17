@@ -101,6 +101,10 @@ This section shows you how to use the built-in connector to load data in a Power
 
     ![Select table.](media/power-bi-imported-query/select-table.png)
 
+1. On the **Home** tab, select **Close & Apply**.
+
+    ![Close and apply.](media/power-bi-imported-query/close-apply.png)
+
 [Tips for using the Azure Data Explorer connector for Power BI to query data](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data).
 
 ---
