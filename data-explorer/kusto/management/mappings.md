@@ -18,7 +18,7 @@ Each element in the mapping list is constructed from three properties:
 |----|--|
 |`Column`|Target column name in the table|
 |`Datatype`| (Optional) Datatype with which to create the mapped column if it doesn't already exist in the table|
-|`Properties`|(Optional) Property-bag containing properties specific for each mapping as described in each section below.|
+|`Properties`|(Optional) Property-bag containing properties specific for each mapping as described in each specific mapping type page.|
 
 [!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
 

@@ -11,7 +11,7 @@ Use ORC mapping to map incoming data to columns inside tables when your ingestio
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 
-Each item may contain the following `properties`:
+Each item in an ORC mapping may contain the following `properties`:
 
 |Property|Description|
 |----|--|

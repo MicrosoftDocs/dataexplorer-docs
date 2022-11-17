@@ -11,7 +11,7 @@ Use CSV mapping to map incoming data to columns inside tables when your ingestio
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 
-Each element in the list must contain either of the following `properties`:
+Each item in a CSV mapping must contain either of the following `properties`:
 
 |Property|Description|
 |----|--|

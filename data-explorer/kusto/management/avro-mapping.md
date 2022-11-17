@@ -11,7 +11,7 @@ Use AVRO mapping to map incoming data to columns inside tables when your ingesti
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 
-Each item may contain the following `properties`:
+Each item in an AVRO mapping may contain the following `properties`:
 
 |Property|Description|
 |----|--|
