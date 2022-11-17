@@ -36,7 +36,7 @@ Creates or alters a continuous export job.
 | `distributed` | `bool` | Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
 | `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100000 records. |
 | `useNativeParquetWriter` | `bool` | Use the new export implementation when exporting to Parquet, this implementation is a more performant, resource light export mechanism. Note that an exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
-| `managedIdentity` | `string` | The managed identity on behalf of which the continuous export job will run. This can be an object ID, or the `system` reserved word. For more information on managed identities, see [managed identity overview](/data-explorer/managed-identities-overview.md) |
+| `managedIdentity` | `string` | The managed identity on behalf of which the continuous export job will run. This can be an object ID, or the `system` reserved word. For more information on managed identities, see [managed identity overview](/azure/data-explorer/managed-identities-overview) |
 
 ## Example
 
@@ -57,9 +57,9 @@ with
 
 ## Continuous Export with Managed Identity
 
-In order to use Continuous Export with Managed Identity, please add the `AutomatedFlow` usage to the [Managed Identity policy](/data-explorer/kusto/management/managed-identity-policy.md).
+In order to use Continuous Export with Managed Identity, please add the `AutomatedFlow` usage to the [Managed Identity policy](/azure/data-explorer/kusto/management/managed-identity-policy).
  
-For more information on how to set up and use a managed identity with continuous exports, see [managed identity overview](/data-explorer/managed-identities-overview.md). 
+For more information on how to set up and use a managed identity with continuous exports, see [managed identity overview](/azure/data-explorer/managed-identities-overview). 
 
 > [!NOTE]
 > Continuous export jobs exporting data to an external table that uses impersonation authentication must run on behalf of a managed identity. 
