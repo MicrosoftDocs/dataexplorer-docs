@@ -23,6 +23,8 @@ Each item may contain the following `properties`:
 > [!NOTE]
 > The only supported transformations for W3CLOGFILE format are: `SourceLineNumber` and `SourceLocation`.
 
+[!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
+
 ## Example
 
 ```json

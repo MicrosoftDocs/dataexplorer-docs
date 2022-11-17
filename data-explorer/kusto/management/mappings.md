@@ -20,6 +20,8 @@ Each element in the mapping list is constructed from three properties:
 |`Datatype`| (Optional) Datatype with which to create the mapped column if it doesn't already exist in the table|
 |`Properties`|(Optional) Property-bag containing properties specific for each mapping as described in each section below.|
 
+[!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
+
 The mappings can be [pre-created](create-ingestion-mapping-command.md) and can be referenced from the ingest command using `ingestionMappingReference` parameters.
 
 Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).

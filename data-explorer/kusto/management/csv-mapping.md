@@ -25,6 +25,8 @@ Each element in the list must contain either of the following `properties`:
 > * `Ordinal` and `ConstantValue` are mutually exclusive.
 > * For TXT format, only `Ordinal` `0` can be mapped, as text is treated as a single column of lines.
 
+[!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
+
 ## Example
 
 ``` json

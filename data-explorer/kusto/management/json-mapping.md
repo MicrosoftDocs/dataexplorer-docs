@@ -19,6 +19,8 @@ Each item may contain the following `properties`:
 |`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside the JSON file.|
 |`Transform`|(Optional) Transformation that should be applied on the content with [mapping transformations](mappings.md#mapping-transformations).|
 
+[!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
+
 ## Example
 
 ```json
