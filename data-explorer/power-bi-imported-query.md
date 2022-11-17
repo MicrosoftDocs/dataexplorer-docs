@@ -28,7 +28,7 @@ To create a query from the *StormEvents* table, connect to the Azure Data Explor
 
 # [Web UI](#tab/web-ui)
 
-This section shows you how to query to Power BI using Azure Data Explorer web UI.
+This section shows you how to import a query to Power BI using Azure Data Explorer web UI.
 
 1. In a browser, go to [https://help.kusto.windows.net/](https://help.kusto.windows.net/)
 1. Select query from cluster.
@@ -103,8 +103,6 @@ This section shows you how to use the built-in connector to load data in a Power
 
     The table opens in Power Query Editor, where you can edit rows and columns before importing the data.
 
-## Next steps
-
-[Tips for using the Azure Data Explorer connector for Power BI to query data](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data)
+[Tips for using the Azure Data Explorer connector for Power BI to query data](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data).
 
 ---
