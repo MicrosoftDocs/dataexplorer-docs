@@ -15,7 +15,7 @@ Each JSON mapping element may contain the following `properties`:
 
 |Property|Description|
 |----|--|
-|`Path`|If the value starts with `$`: JSON path to the field that will become the content of the column in the JSON document (JSON path that denotes the entire document is `$`). If the value doesn't start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
+|`Path`|If the value starts with `$`: JSON path to the field that will become the content of the column in the JSON document. The JSON path that denotes the entire document is `$`. If the value doesn't start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
 |`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside the JSON file.|
 |`Transform`|(Optional) Transformation that should be applied on the content with [mapping transformations](mappings.md#mapping-transformations).|
 
