@@ -110,3 +110,5 @@ This section shows you how to use the built-in connector to load data in a Power
 ---
 
 ## Next steps
+
+[Build reports](/power-bi/fundamentals/desktop-getting-started#build-reports)
