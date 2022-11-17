@@ -24,7 +24,7 @@ Each element in the mapping list is constructed from three properties:
 
 The mappings can be [pre-created](create-ingestion-mapping-command.md) and can be referenced from the ingest command using `ingestionMappingReference` parameters.
 
-Ingestion is possible without specifying a mapping (see [identity mapping](#identity-mapping)).
+Ingestion is possible without specifying a mapping. See [identity mapping](#identity-mapping).
 
 ## Supported mapping types
 
@@ -37,7 +37,7 @@ Ingestion is possible without specifying a mapping (see [identity mapping](#iden
 
 ## Identity mapping
 
-Ingestion is possible without specifying `ingestionMapping` or `ingestionMappingReference` properties. The data will be mapped using an identity data mapping derived from the table's schema. The table schema will remain the same. `format` property should be specified. (see [ingestion formats](../../ingestion-supported-formats.md)).
+Ingestion is possible without specifying `ingestionMapping` or `ingestionMappingReference` properties. The data will be mapped using an identity data mapping derived from the table's schema. The table schema will remain the same. `format` property should be specified. See [ingestion formats](../../ingestion-supported-formats.md).
 
 |Format type|Format|Mapping logic|
 |---------|---------| ---------|
