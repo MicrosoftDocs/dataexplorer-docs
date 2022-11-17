@@ -7,7 +7,7 @@ ms.date: 11/16/2022
 
 # ORC mapping
 
-ORC mapping is one way to map incoming data to columns inside tables. When the ingestion source file is in ORC format, map the file content to the table using an ORC mapping.
+Use ORC mapping to map incoming data to columns inside tables when your ingestion source file is in ORC format.
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 

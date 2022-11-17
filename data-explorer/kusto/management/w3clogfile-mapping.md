@@ -8,7 +8,7 @@ ms.date: 11/16/2022
 
 # W3CLOGFILE mapping
 
-W3CLOGFILE mapping is way to map incoming data to columns inside tables. When the ingestion source file is in W3CLOGFILE format, map the file content to the table using a W3CLOGFILE mapping.
+Use W3CLOGFILE mapping to map incoming data to columns inside tables when your ingestion source file is in W3CLOGFILE format.
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 

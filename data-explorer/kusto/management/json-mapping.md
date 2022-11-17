@@ -7,7 +7,7 @@ ms.date: 11/16/2022
 
 # JSON mapping
 
-JSON mapping is one way to map incoming data to columns inside tables. When the ingestion source file is in JSON format, map the file content to the table using a JSON mapping.
+Use JSON mapping to map incoming data to columns inside tables when your ingestion source file is in JSON format.
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 

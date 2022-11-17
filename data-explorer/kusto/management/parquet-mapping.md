@@ -8,7 +8,7 @@ ms.date: 11/16/2022
 
 # Parquet mapping
 
-Parquet mapping is one way to map incoming data to columns inside tables. When the ingestion source file is in Parquet format, map the file content to the table using a Parquet mapping.
+Use Parquet mapping to map incoming data to columns inside tables when your ingestion source file is in Parquet format.
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 

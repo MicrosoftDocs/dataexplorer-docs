@@ -7,9 +7,7 @@ ms.date: 11/16/2022
 
 # CSV mapping
 
-CSV mapping is one way to map incoming data to columns inside tables. When the ingestion source file is in CSV format, or any other delimiter-separated format, map the file content to the table using a CSV mapping.
-
-CSV mapping can be applied on all the delimiter-separated tabular formats: CSV, TSV, PSV, SCSV, SOHsv and TXT. For more information, see supported [data formats](../../ingestion-supported-formats.md).
+Use CSV mapping to map incoming data to columns inside tables when your ingestion source file is any of the following delimiter-separated tabular formats: CSV, TSV, PSV, SCSV, SOHsv and TXT. For more information, see supported [data formats](../../ingestion-supported-formats.md).
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 
