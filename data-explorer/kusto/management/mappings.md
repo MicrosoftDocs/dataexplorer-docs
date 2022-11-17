@@ -53,7 +53,7 @@ Some of the data format mappings (Parquet, JSON and AVRO) support simple and use
 
 |Path-dependant transformation|Description|Conditions|
 |--|--|--|
-|`PropertyBagArrayToDictionary`|Transforms JSON array of properties (e.g. {events:[{"n1":"v1"},{"n2":"v2"}]}) to dictionary and serializes it to valid JSON document (for example, {"n1":"v1","n2":"v2"}).|Can be applied only when `Path` is used|
+|`PropertyBagArrayToDictionary`|Transforms JSON array of properties, such as {events:[{"n1":"v1"},{"n2":"v2"}]}, to dictionary and serializes it to valid JSON document, such as {"n1":"v1","n2":"v2"}.|Can be applied only when `Path` is used|
 |`SourceLocation`|Name of the storage artifact that provided the data, type string (for example, the blob's "BaseUri" field).|
 |`SourceLineNumber`|Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).|
 |`DateTimeFromUnixSeconds`|Converts number representing unix-time (seconds since 1970-01-01) to UTC datetime string|
