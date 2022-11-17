@@ -1,24 +1,24 @@
 ---
-title: ARVO Mapping - Azure Data Explorer
-description: Learn how to use ARVO mapping to map data to columns inside tables upon ingestion.
+title: AVRO Mapping - Azure Data Explorer
+description: Learn how to use AVRO mapping to map data to columns inside tables upon ingestion.
 ms.topic: reference
 ms.date: 11/16/2022
 ---
 
 # AVRO mapping
 
-ARVO mapping is one type of [data mapping](mappings.md) used to map incoming data to columns inside tables.
+AVRO mapping is one way to map incoming data to columns inside tables. When the ingestion source file is in AVRO format, the AVRO file content is mapped to the table based on a defined mapping list.
 
-When the source file is in AVRO format, the AVRO file content is mapped to the table. The table must exist in the database unless a valid datatype is specified for all the columns mapped.
+Each element in the mapping list is constructed from three properties: `column`, `datatype` (optional), and `properties` (optional). Learn more about these properties in the [data mapping overview](mappings.md).
 
-The columns mapped in the AVRO mapping must exist in the table unless a datatype is specified for all the non-existing columns.
+If the table does not yet exist in the database, then a valid datatype must be specified for all the columns in the mapping. Similarly, if the columns in the mapping do not exist in the table, then a datatype must be specified for all of the non-existing columns.
 
-Each element in the list describes a mapping for a specific column and may contain the following properties:
+Each element in the list describes a mapping for a specific column. The following properties may be provided under the `properties` field:
 
 |Property|Description|
 |----|--|
 |`Field`|The name of the field in the AVRO record.|
-|`Path`|Alternative to using `Field` that allows taking the inner part of an AVRO record-field, if necessary. The value denotes a JSON path from the root of the AVRO record (JSON path that denotes the entire AVRO record is `$`). If the value doesn't start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
+|`Path`|Alternative to using `Field` that allows taking the inner part of an AVRO record-field. The value denotes a JSON path from the root of the AVRO record. The JSON path that denotes the entire AVRO record is `$`. If the value doesn't start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
 |`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside AVRO file.|
 |`Transform`|(Optional) Transformation that should be applied on the content with [supported transformations](./mappings.md#mapping-transformations).|
 
@@ -84,7 +84,7 @@ When the mapping is [pre-created](create-ingestion-mapping-command.md), referenc
 
 ## Example using identity mapping
 
-Use ARVO mapping during ingestion without defining a mapping schema (see [identity mapping](mappings.md#identity-mapping)).
+Use AVRO mapping during ingestion without defining a mapping schema (see [identity mapping](mappings.md#identity-mapping)).
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
