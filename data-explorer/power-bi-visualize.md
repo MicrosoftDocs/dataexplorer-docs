@@ -26,11 +26,11 @@ To create a query from the *StormEvents* table, connect to the Azure Data Explor
 
 ## Visualize data in Power BI
 
-There are multiple ways of querying data in Power BI. The following tabs show you two ways of querying data. The first is through Azure Data Explorer web UI, and the second is by way of a built-in connector in Power BI Desktop.
+There are multiple ways of querying data in Power BI. The following tabs show you two ways of querying data. The first is by using Azure Data Explorer web UI, and the second is through a built-in connector in Power BI Desktop.
 
 # [Web UI](#tab/web-ui/)
 
-This section shows you how to import a query to Power BI using Azure Data Explorer web UI.
+This section shows you how to query data in Power BI using Azure Data Explorer web UI.
 
 1. In a browser, go to [https://help.kusto.windows.net/](https://help.kusto.windows.net/)
 1. Select query from cluster.
@@ -53,7 +53,7 @@ This section shows you how to import a query to Power BI using Azure Data Explor
 
 # [Connector](#tab/connector/)
 
-This section shows you how to use the built-in connector to load data in a Power BI report. The Power BI connector supports [Import and Direct Query connectivity modes](/power-bi/desktop-directquery-about). You can build dashboards using **Import** or **DirectQuery** mode depending on the scenario, scale, and performance requirements.
+This section shows you how to use the built-in connector to query data in a Power BI report. The Power BI connector supports [Import and Direct Query connectivity modes](/power-bi/desktop-directquery-about). You can build dashboards using **Import** or **DirectQuery** mode depending on the scenario, scale, and performance requirements.
 
 1. Launch Power BI Desktop.
 1. On the **Home** tab, select **Get Data** then **More**.
@@ -113,4 +113,4 @@ This section shows you how to use the built-in connector to load data in a Power
 
 ## Next steps
 
-[Create reports](/power-bi/create-reports/)
+[Create reports and dashboards in Power BI](/power-bi/create-reports/)
