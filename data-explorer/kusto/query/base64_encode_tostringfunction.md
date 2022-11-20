@@ -11,24 +11,22 @@ Encodes a string as base64 string.
 
 ## Syntax
 
-`base64_encode_tostring(`*String*`)`
+`base64_encode_tostring(`*string*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *String* | string | &check; |  Input string to be encoded as base64 string. |
+| *string* | string | &check; |  Value to encode as base64 string. |
 
 ## Returns
 
-Returns the string encoded as base64 string.
-
-* To decode base64 strings to UTF-8 strings, see [base64_decode_tostring()](base64_decode_tostringfunction.md)
-* To decode base64 strings to an array of long values, see [base64_decode_toarray()](base64_decode_toarrayfunction.md)
+Returns *string* encoded as base64 string.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQgszcxLtU1KLE41M4lPzUvOT0mNL8kvLgFKpmsoeZcWl+QraQIAKEgGNSsAAAA=)
+
 ```kusto
 print Quine=base64_encode_tostring("Kusto")
 ```
@@ -36,3 +34,8 @@ print Quine=base64_encode_tostring("Kusto")
 |Quine   |
 |--------|
 |S3VzdG8=|
+
+## See also
+
+* To decode base64 strings to UTF-8 strings, see [base64_decode_tostring()](base64_decode_tostringfunction.md).
+* To decode base64 strings to an array of long values, see [base64_decode_toarray()](base64_decode_toarrayfunction.md).

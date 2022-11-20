@@ -7,23 +7,19 @@ ms.date: 02/13/2020
 ---
 # binary_and()
 
-Returns a result of the bitwise `and` operation between two values.
-
-```kusto
-binary_and(x,y)
-```
+Returns a result of the bitwise `AND` operation between two values.
 
 ## Syntax
 
-`binary_and(`*num1*`,` *num2* `)`
+`binary_and(`*value1*`,`*value2*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *num1* | long | &check; | A long number. |
-| *num2* | long | &check; | A long number. |
+| *value1* | long | &check; | Left-hand value of the bitwise `AND` operation. |
+| *value2* | long | &check; | Right-hand value of the bitwise `AND` operation. |
 
 ## Returns
 
-Returns logical AND operation on a pair of numbers: num1 & num2.
+Returns logical `AND` operation on a pair of numbers: value1 & value2.

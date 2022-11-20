@@ -11,23 +11,22 @@ Decodes a base64 string to a [GUID](./scalar-data-types/guid.md).
 
 ## Syntax
 
-`base64_decode_toguid(`*String*`)`
+`base64_decode_toguid(`*base64_string*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *String* | string | &check; | Input string to be decoded from base64 to a GUID. |
+| *base64_string* | string | &check; | Value to decode from base64 to a GUID. |
 
 ## Returns
 
 Returns a [GUID](./scalar-data-types/guid.md) decoded from a base64 string.
 
-* To encode a [GUID](./scalar-data-types/guid.md) to a base64 string, see [base64_encode_fromguid()](base64-encode-fromguid-function.md)
-
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQgszcxLVbBVSEosTjUziU9JTc5PSY0vyU8vzUzRUPIqSCpwdS61SAmtNA8oM01PSvWKcHS0tVXSBAA/Uk1CPgAAAA==)
+
 ```kusto
 print Quine = base64_decode_toguid("JpbpECu8dUy7Pv5gbeJXAA==")  
 ```
@@ -38,11 +37,12 @@ print Quine = base64_decode_toguid("JpbpECu8dUy7Pv5gbeJXAA==")
 
 If you try to decode an invalid base64 string, "null" will be returned:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUXDNLSipVLBVSEosTjUziU/NS85PSY1PK8rPTS/NTNFQSkxKTjE0MjZU0gQApqVKnzAAAAA=)
+
 ```kusto
-print Empty = base64_decode_toarray("abcd1231")
+print Empty = base64_encode_fromguid("abcd1231")
 ```
 
-|Empty|
-|-----|
-||
+## See also
+
+To encode a [GUID](./scalar-data-types/guid.md) to a base64 string, see [base64_encode_fromguid()](base64-encode-fromguid-function.md).

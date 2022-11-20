@@ -9,20 +9,28 @@ ms.date: 02/13/2020
 
 Returns a bitwise negation of the input value.
 
-```kusto
-binary_not(x)
-```
-
 ## Syntax
 
-`binary_not(`*num1*`)`
+`binary_not(`*value*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *num1* | long | &check; | A long number. |
+| *value* | long | &check; | Value to negate. |
 
 ## Returns
 
-Returns logical NOT operation on a number: num1.
+Returns logical NOT operation on a number: value.
+
+## Example
+
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzEssqozPyy/RMDQw0AQAChXSgRUAAAA=)
+
+```kusto
+binary_not(100)
+```
+
+|result|
+|------|
+|-101|

@@ -23,8 +23,8 @@ If *expr* expression is datetime - another syntactic sugar syntax is provided:
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; |  The tabular input whose records are to be matched. For example, the table name. |
-| *expr* | string | &check; |  The expression to filter. |
+| *T* | string | &check; |  Tabular input whose records are to be matched. For example, the table name. |
+| *expr* | string | &check; |  Expression used to filter. |
 | *leftRange* | string | &check; |  Expression of the left range (inclusive). |
 | *rightRange* | string | &check; |  Expression of the right range (inclusive). |
 
@@ -36,7 +36,8 @@ Rows in *T* for which the predicate of (*expr* >= *leftRange* and *expr* <= *rig
 
 ### Filter numeric values
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+[**Run the Query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0MFAoLkktUDDk5apRKM9ILQLJJ6WWlKem5ilomBoo6OkpmJpqAgBfXYZBOgAAAA==)
+
 ```kusto
 range x from 1 to 100 step 1
 | where x between (50 .. 55)
@@ -53,7 +54,8 @@ range x from 1 to 100 step 1
 
 ### Filter datetime
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrApGRuaaCnp4ChrixgaYmyKTk/NK8EgBluyagXgAAAA==)
+
 ```kusto
 StormEvents
 | where StartTime between (datetime(2007-07-27) .. datetime(2007-07-30))
@@ -64,7 +66,8 @@ StormEvents
 |---|
 |476|
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrApGRuaaCnp6CcYomSF9yfmleCQCGAqjRTAAAAA==)
+
 ```kusto
 StormEvents
 | where StartTime between (datetime(2007-07-27) .. 3d)
