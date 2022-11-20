@@ -11,17 +11,17 @@ Searches an array for the specified item, and returns its position.
 
 ## Syntax
 
-`array_index_of(`*array*,*lookup*`)`
+`array_index_of(`*array*,*value*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array*| dynamic | &check; | Input array to search.|
-| *lookup* |scalar | &check; | Value to lookup. The value should be of type `long`, `integer`, `double`, `datetime`, `timespan`, `decimal`, `string`, `guid`, or `boolean`. |
-| *start_index* | number |  | Search start position. A negative value will offset the starting search value from the end of the array by `abs(start_index)` steps.
-| *length* | number |  | Number of values to examine. A value of -1 means unlimited length.
-| *occurrence* | The number of the occurrence. The default is 1.
+| *array*| dynamic | &check; | Array to search.|
+| *value* | long, integer, double, datetime, timespan, decimal, string, guid, or boolean | &check; | Value to lookup. |
+| *start* | number |  | Search start position. A negative value will offset the starting search value from the end of the array by `abs(start_index)` steps.
+| *length* | int |  | Number of values to examine. A value of -1 means unlimited length.
+| *occurrence* | int | Number of the occurrence. Default is 1.
 
 ## Returns
 
@@ -33,7 +33,7 @@ Returns *null* for irrelevant inputs (*occurrence* < 0 or  *length* < -1).
 
 The following example shows the position number of specific words within the array.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52T7WrCMBiF/3sVB//MQoq0dV8Mr2QMielbDUuTkqRO735pmsk2dQ5LG0jhPOfkvK0iD27tsj5o3koxe536rXRThum4cj2stOdtp+j0xVv2Mums1H4CWe8LLAcYP6ykrmm/Ms0sbNmgyRCu+RzKmPe+Q2N6XUPqcHe9h/OBsZmADZTyAuUYomBVdo5lyRG3Yks1LNcbQgJW14FlBI7ykIZb79BY0yIqUDCsY0zTOfDGk0WJHVc9OQZnvpIIru881jRGSu6LC+5DvyVbnDEeDYwQvbWkBcE0ySEh768dqGR5kZ30ndQP59VptOGoeXjKbJyXI2FCu9/C/BpdbDqRH/9DrhJZG4RPzf5gH6mRkqhPf1LzI4823MsdjS2mwX1IpWIH4B6KO48KpKgl7V3CP1/Cxx8gX9yK/wT41ILVWgMAAA==)**\]**
+[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52T7WrCMBiF/3sVB//MQoq0dV8Mr2QMielbDUuTkqRO735pmsk2dQ5LG0jhPOfkvK0iD27tsj5o3koxe536rXRThum4cj2stOdtp+j0xVv2Mums1H4CWe8LLAcYP6ykrmm/Ms0sbNmgyRCu+RzKmPe+Q2N6XUPqcHe9h/OBsZmADZTyAuUYomBVdo5lyRG3Yks1LNcbQgJW14FlBI7ykIZb79BY0yIqUDCsY0zTOfDGk0WJHVc9OQZnvpIIru881jRGSu6LC+5DvyVbnDEeDYwQvbWkBcE0ySEh768dqGR5kZ30ndQP59VptOGoeXjKbJyXI2FCu9/C/BpdbDqRH/9DrhJZG4RPzf5gH6mRkqhPf1LzI4823MsdjS2mwX1IpWIH4B6KO48KpKgl7V3CP1/Cxx8gX9yK/wT41ILVWgMAAA==)
 
 ```kusto
 let arr=dynamic(["this", "is", "an", "example", "an", "example"]);

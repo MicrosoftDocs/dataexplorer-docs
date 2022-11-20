@@ -3,7 +3,7 @@ title: array_iif() - Azure Data Explorer
 description: Learn how to use the array_iif() function to scan and evaluate elements in an array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 11/20/2022
 ---
 # array_iif()
 
@@ -13,30 +13,30 @@ Another alias: array_iff().
 
 ## Syntax
 
-`array_iif(`*ConditionArray*, *IfTrue*, *IfFalse*`)`
+`array_iif(`*condition_array*, *when_true*, *when_false*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *conditionArray*| dynamic | &check;| Array of *boolean* or numeric values.|
-| *ifTrue* |  | &check; | Array of values or primitive value. This will be the result when *ConditionArray* is *true*.|
-| *ifFalse* |  | &check; | Array of values or primitive value. This will be the result when *ConditionArray* is *false*.|
+| *condition_array*| dynamic | &check;| Array of *boolean* or numeric values.|
+| *when_true* |  | &check; | Array of values or primitive value. This will be the result when *condition_array* is *true*.|
+| *when_false* |  | &check; | Array of values or primitive value. This will be the result when *condition_array* is *false*.|
 
 ### Notes
 
-* The result length is the length of *conditionArray*.
+* The result length is the length of *condition_array*.
 * Numeric condition value is treated as *condition* != *0*.
 * Non-numeric/null condition value will have null in the corresponding index of the result.
 * Missing values (in shorter length arrays) are treated as null.
 
 ## Returns
 
-Returns a dynamic array of the values taken either from the *IfTrue* or *IfFalse* [array] values, according to the corresponding value of the Condition array.
+Returns a dynamic array of the values taken either from the *when_true* or *when_false* [array] values, according to the corresponding value of the condition array.
 
 ## Example
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOz0vJLMnMz7NNqcxLzM1M1oguKSpN1UlLzClO1QExYzV1FHIQsoY6RjrGILEihJiJjqmOWaymAi9XjUJqRUlqXopCUWqxbWJRUWJlfGZmmgbcFqBRQJ2aACda2uZ8AAAA)**\]**
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOz0vJLMnMz7NNqcxLzM1M1oguKSpN1UlLzClO1QExYzV1FHIQsoY6RjrGILEihJiJjqmOWaymAi9XjUJqRUlqXopCUWqxbWJRUWJlfGZmmgbcFqBRQJ2aACda2uZ8AAAA)
 
 ```kusto
 print condition=dynamic([true,false,true]), l=dynamic([1,2,3]), r=dynamic([4,5,6]) 

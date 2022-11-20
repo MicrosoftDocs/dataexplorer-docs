@@ -3,7 +3,7 @@ title: array_rotate_right() - Azure Data Explorer
 description: Learn how to use the array_rotate_right() function to rotate values inside a dynamic array to the right.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 11/20/2022
 ---
 # array_rotate_right()
 
@@ -17,12 +17,12 @@ Rotates values inside a `dynamic` array to the right.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*array* | dynamic | &check;| Input array to rotate.|
+|*array* | dynamic | &check;| Array to rotate.|
 |*rotate_count*| integer | &check;| Number of positions that array elements will be rotated to the right. If the value is negative, the elements will be rotated to the Left.|
 
 ## Returns
 
-Dynamic array containing the same amount of the elements as in the original array, where each element was rotated according to *rotate_count*.
+Dynamic array containing the same elements as the original array with each element rotated according to *rotate_count*.
 
 ## See also
 
@@ -34,7 +34,7 @@ Dynamic array containing the same amount of the elements as in the original arra
 
 * Rotating to the right by two positions:
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eSqUUitKEnNSwGpiC/KL0ksSU2xBbITK6G8+KLM9IwSDaCQjoKRJgBslCYKTgAAAA==)**\]**
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eSqUUitKEnNSwGpiC/KL0ksSU2xBbITK6G8+KLM9IwSDaCQjoKRJgBslCYKTgAAAA==)
 
 ```kusto
 print arr=dynamic([1,2,3,4,5])
@@ -49,7 +49,7 @@ print arr=dynamic([1,2,3,4,5])
 
 * Rotating to the left by two positions by using negative rotate_count value:
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eSqUUitKEnNSwGpiC/KL0ksSU2xBbITK6G8+KLM9IwSDaCQjoKukSYA0VPyak8AAAA=)**\]**
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eSqUUitKEnNSwGpiC/KL0ksSU2xBbITK6G8+KLM9IwSDaCQjoKukSYA0VPyak8AAAA=)
 
 **Results**
 

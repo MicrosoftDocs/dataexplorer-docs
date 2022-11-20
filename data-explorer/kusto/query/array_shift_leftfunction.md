@@ -3,7 +3,7 @@ title: array_shift_left() - Azure Data Explorer
 description: Learn how to use the array_shift_left() function to shift the values inside a dynamic array to the left.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 11/20/2022
 ---
 # array_shift_left()
 
@@ -11,19 +11,19 @@ Shifts the values inside a `dynamic` array to the left.
 
 ## Syntax
 
-`array_shift_left(`*array*, *shift_count* `[,` *fill_value* ]`)`
+`array_shift_left(`*array*, *shift_count* `[,` *default_value* ]`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*array* | dynamic |&check; | Input array to shift.|
+|*array* | dynamic |&check; | Array to shift.|
 |*shift_count* | integer | &check; | Number of positions that array elements will be shifted to the left. If the value is negative, the elements will be shifted to the right. |
-|*fill_value* | scalar | &check; | Value used for inserting elements instead of the ones that were shifted and removed. The default is null or an empty string depending on the *array* type.|
+|*default_value* | scalar | | Value used for an element that was shifted and removed. The default is null or an empty string depending on the type of elements in the *array*.|
 
 ## Returns
 
-Returns a dynamic array containing the same number of elements as in the original array. Each element has been shifted according to *shift_count*. New elements that are added in place of removed elements will have a value of *fill_value*.
+Returns a dynamic array containing the same number of elements as in the original array. Each element has been shifted according to *shift_count*. New elements that are added in place of removed elements will have a value of *default_value*.
 
 ## See also
 
@@ -35,7 +35,7 @@ Returns a dynamic array containing the same number of elements as in the origina
 
 * Shifting to the left by two positions:
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4nNS0Eg2ggI6CkSYADEKYSUsAAAA=)**\]**
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4nNS0Eg2ggI6CkSYADEKYSUsAAAA=)
 
 ```kusto
 print arr=dynamic([1,2,3,4,5])
@@ -65,7 +65,7 @@ print arr=dynamic([1,2,3,4,5])
 
 * Shifting to the right by two positions by using negative *shift_count* value:
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4nNS0Eg2ggI6CrhEQG2oCAIeuighQAAAA)**\]**
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4nNS0Eg2ggI6CrhEQG2oCAIeuighQAAAA)
 
 ```kusto
 print arr=dynamic([1,2,3,4,5])
