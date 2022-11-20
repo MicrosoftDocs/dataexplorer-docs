@@ -43,6 +43,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [series_lag_fl()](series-lag-fl.md) | Apply a lag filter on series. |
 | [series_moving_avg_fl()](series-moving-avg-fl.md) | Apply a moving average filter on series. |
 | [series_mv_ee_anomalies_fl()](series-mv-ee-anomalies-fl.md) | Multivariate Anomaly Detection for series using elliptical envelope model. |
+| [series_mv_if_anomalies_fl()](series-mv-if-anomalies-fl.md) | Multivariate Anomaly Detection for series using isolation forest model. |
 | [series_rolling_fl()](series-rolling-fl.md) | Apply a rolling aggregation function on series. |
 | [series_shapes_fl()](series-shapes-fl.md) | Detects positive/negative trend or jump in series. |
 | [series_uv_anomalies_fl()](series-uv-anomalies-fl.md) | Detect anomalies in time series using the Univariate Anomaly Detection Cognitive Service API. |
