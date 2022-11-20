@@ -9,6 +9,8 @@ ms.date: 11/20/2022
 
 Calculates the number of elements in a dynamic array.
 
+> **Deprecated aliases:** arraylength()
+
 ## Syntax
 
 `array_length(`*array*`)`

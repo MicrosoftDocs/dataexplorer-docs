@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: shsagir
   ms.author: shsagir
-  ms.date: 08/25/2022
+  ms.date: 11/13/2022
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -38,12 +38,18 @@ landingContent:
         links:
           - text: "Free Pluralsight training: Azure Data Explorer"
             url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer          
-          - text: "Learn module: Introduction to Azure Data Explorer"
+          - text: "Training module: Introduction to Azure Data Explorer"
             url:  /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
-          - text: "Learn module: Write your first query with Kusto Query Language"
+          - text: "Training module: Write your first query with Kusto Query Language"
             url: /training/modules/write-first-query-kusto-query-language/
-          - text: "Learn module: Gain insights from your data by using Kusto Query Language"
+          - text: "Training module: Gain insights from your data by using Kusto Query Language"
             url: /training/modules/gain-insights-data-kusto-query-language/
+          - text: "Training module: Multi-table queries using Kusto Query Language"
+            url: /training/modules/multi-table-queries-with-kusto-query-language/
+          - text: "Training module: Characterize an unfamiliar dataset with Azure Data Explorer"
+            url: /training/modules/characterize-data-azure-data-explorer/
+          - text: "Training module: Create dashboards in Azure Data Explorer"
+            url: /training/modules/create-dashboards-azure-data-explorer/
   # Card
   - title: Create cluster and database
     linkLists:
