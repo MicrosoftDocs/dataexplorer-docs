@@ -57,7 +57,7 @@ You can also mask the email address:
 Sales | where SalesPersonAadUser == current_principal() | extend EmailAddress = "****"
 ```
 
-If you want every sales person to see all the sales of a specific country, you can define a query similar to:
+If you want every sales person to see all the sales of a specific country/region, you can define a query similar to:
 
 ```kusto
 let UserToCountryMapping = datatable(User:string, Country:string)

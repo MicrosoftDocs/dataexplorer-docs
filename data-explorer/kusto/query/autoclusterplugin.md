@@ -1,9 +1,9 @@
 ---
 title: autocluster plugin - Azure Data Explorer
-description: This article describes autocluster plugin in Azure Data Explorer.
+description: Learn how to use the autocluster plugin to find common patterns in data. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/23/2022
+ms.date: 11/07/2022
 ---
 # autocluster plugin
 

@@ -106,8 +106,8 @@ Remove an extent from a table using the built in [`extent_id()`](../query/extent
 
 ### Emulation mode: Show which extents would be removed by the command
 
->[!NOTE]
->Extent ID parameter isn't applicable for this command.
+> [!NOTE]
+> Extent ID parameter isn't applicable for this command.
 
 ```kusto
 .drop-pretend extents older 10 days from all tables
@@ -118,6 +118,9 @@ Remove an extent from a table using the built in [`extent_id()`](../query/extent
 ```kusto
 .drop extents from TestTable
 ```
+
+> [!NOTE]
+> Removing all extents does not necessarily delete all the data in the table, if streaming ingestion is enabled. To clear all the data of a table, use [`.clear table data TestTable`](./clear-table-data-command.md).
 
 ## Return output
 

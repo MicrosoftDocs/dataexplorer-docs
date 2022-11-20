@@ -1,15 +1,17 @@
 ---
 title: make_set() (aggregation function) - Azure Data Explorer
-description: This article describes make_set() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the make_set() function to return a JSON array of the distinct values that the expression takes in the group. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/14/2022
+ms.date: 11/09/2022
 ---
 # make_set() (aggregation function)
 
 Creates a `dynamic` JSON array of the set of distinct values that *Expr* takes in the group.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+
+> **Deprecated aliases:** makeset()
 
 ## Syntax
 
@@ -23,7 +25,7 @@ Creates a `dynamic` JSON array of the set of distinct values that *Expr* takes i
 | *MaxSize* |  |  | Integer limit on the maximum number of elements returned. *MaxSize* value can't exceed 1048576. The default is *1048576*. |
 
 > [!NOTE]
-> `makeset()` has been deprecated in favor of `make_set`. The legacy version has a default *MaxSize* limit of 128.
+> The deprecated version has a default *MaxSize* limit of 128.
 
 ## Returns
 
@@ -31,7 +33,7 @@ Returns a `dynamic` JSON array of the set of distinct values that *Expr* takes i
 The array's sort order is undefined.
 
 > [!TIP]
-> To only count distinct values, use [dcount()](dcount-aggfunction.md).
+> To only count distinct values, use [dcount()](dcount-aggfunction.md) or [count_distinct()](count-distinct-aggfunction.md).
 
 ## Example
 
