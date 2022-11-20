@@ -11,14 +11,14 @@ Splits an array to multiple arrays according to the split indices and packs the 
 
 ## Syntax
 
-`array_split`(*array*, *`indices`*)
+`array_split`(*array*, *index*)
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *array*| dynamic | &check; | Array to split.|
-| *indices* | integer | &check;| Integer or dynamic array of integers used to indicate the location at which to split the array. The start index of arrays is zero. Negative values are converted to `array_length` + `value`.|
+| *index* | integer or dynamic | &check;| Integer or dynamic array of integers used to indicate the location at which to split the array. The start index of arrays is zero. Negative values are converted to `array_length` + `value`.|
 
 ## Returns
 
@@ -28,28 +28,24 @@ Returns a dynamic array containing N+1 arrays with the values in the range `[0..
 
 This following example shows how to split and array.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUsBKYkvLsjJLLEFshIrIWwNIFtHwUgTAB7YikBGAAAA)**\]**
+[**Run the query**](https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUsBKYkvLsjJLLEFshIrIWwNIFtHwUgTAB7YikBGAAAA)
 
 ```kusto
 print arr=dynamic([1,2,3,4,5]) 
 | extend arr_split=array_split(arr, 2)
 ```
 
-**Results**
-
-|`arr`|`arr_split`|
+|arr|arr_split|
 |---|---|
 |[1,2,3,4,5]|[[1,2],[3,4,5]]|
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUsBKYkvLsjJLLEFshIrIWwNIFtHAUmncaymJgD5vl9PUwAAAA==)**\]**
+[**Run the query**](https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUsBKYkvLsjJLLEFshIrIWwNIFtHAUmncaymJgD5vl9PUwAAAA==)
 
 ```kusto
 print arr=dynamic([1,2,3,4,5]) 
 | extend arr_split=array_split(arr, dynamic([1,3]))
 ```
 
-**Results**
-
-|`arr`|`arr_split`|
+|arr|arr_split|
 |---|---|
 |[1,2,3,4,5]|[[1],[2,3],[4,5]]|

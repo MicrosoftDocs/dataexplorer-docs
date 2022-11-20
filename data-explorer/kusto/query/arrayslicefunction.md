@@ -17,9 +17,9 @@ Extracts a slice of a dynamic array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array* | dynamic | &check; | Input array from which to extract the slice.|
-| *start*| number | &check; | Start index of the slice (inclusive). Negative values are converted to `array_length`+`start`.|
-| *end*| number | &check; | Last index of the slice. (inclusive). Negative values are converted to `array_length`+`start`.|
+| *array* | dynamic | &check; | Array from which to extract the slice.|
+| *start*| int | &check; | Start index of the slice (inclusive). Negative values are converted to `array_length`+`start`.|
+| *end*| int | &check; | Last index of the slice. (inclusive). Negative values are converted to `array_length`+`start`.|
 
 > [!NOTE]
 > Out of bounds indices are ignored.
@@ -32,41 +32,35 @@ Returns a dynamic array of the values in the range [`start..end`] from `array`.
 
 The following examples return a slice of the array.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMY7VVOCqUUitKEnNS1EozslMTk2xBapKrIwHczSAbB0FQx0FI00AeoUyQ0IAAAA=)**\]**
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMY7VVOCqUUitKEnNS1EozslMTk2xBapKrIwHczSAbB0FQx0FI00AeoUyQ0IAAAA=)
 
 ```kusto
 print arr=dynamic([1,2,3]) 
 | extend sliced=array_slice(arr, 1, 2)
 ```
 
-**Results**
-
-|`arr`|`sliced`|
+|arr|sliced|
 |---|---|
 |[1,2,3]|[2,3]|
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUtRKM7JTE5NsQWqTKyMB3M0gGwdBSMdBV1DTQAv2T4vRwAAAA==)**\]**
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUtRKM7JTE5NsQWqTKyMB3M0gGwdBSMdBV1DTQAv2T4vRwAAAA==)
 
 ```kusto
 print arr=dynamic([1,2,3,4,5]) 
 | extend sliced=array_slice(arr, 2, -1)
 ```
 
-**Results**
-
-|`arr`|sliced|
+|arr|sliced|
 |---|---|
 |[1,2,3,4,5]|[3,4,5]|
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUtRKM7JTE5NsQWqTKyMB3M0gGwdBV1jIDbSBABajMjTSAAAAA==)**\]**
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUtRKM7JTE5NsQWqTKyMB3M0gGwdBV1jIDbSBABajMjTSAAAAA==)
 
 ```kusto
 print arr=dynamic([1,2,3,4,5]) 
 | extend sliced=array_slice(arr, -3, -2)
 ```
 
-**Results**
-
-|`arr`|sliced|
+|arr|sliced|
 |---|---|
 |[1,2,3,4,5]|[3,4]|
