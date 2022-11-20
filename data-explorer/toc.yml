@@ -640,6 +640,9 @@ items:
     - name: series_moving_avg_fl()
       displayName: functions library, filter, low-pass, smoothing
       href: kusto/functions-library/series-moving-avg-fl.md
+    - name: series_mv_ee_anomalies_fl()
+      displayName: functions library, anomaly detection, multivariate, elliptical envelope
+      href: kusto/functions-library/series-mv-ee-anomalies-fl.md
     - name: series_rate_fl()
       displayName: functions library, PromQL, Prometheus
       href: kusto/functions-library/series-rate-fl.md

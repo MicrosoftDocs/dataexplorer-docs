@@ -33,17 +33,18 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | Function Name | Description |
 |--|--|
 | [quantize_fl()](quantize-fl.md) | Quantize metric columns. |
-| [series_dbl_exp_smoothing_fl()](series-dbl-exp-smoothing-fl.md) | Apply a double exponential smoothing filter on a series. |
+| [series_dbl_exp_smoothing_fl()](series-dbl-exp-smoothing-fl.md) | Apply a double exponential smoothing filter on series. |
 | [series_dot_product_fl()](series-dot-product-fl.md) | Calculate the dot product of two numerical vectors. |
-| [series_downsample_fl()](series-downsample-fl.md) | Downsample a time series by an integer factor. |
-| [series_exp_smoothing_fl()](series-exp-smoothing-fl.md) | Apply a basic exponential smoothing filter on a series. |
+| [series_downsample_fl()](series-downsample-fl.md) | Downsample time series by an integer factor. |
+| [series_exp_smoothing_fl()](series-exp-smoothing-fl.md) | Apply a basic exponential smoothing filter on series. |
 | [series_fit_lowess_fl()](series-fit-lowess-fl.md) | Fit a local polynomial to series using LOWESS method. |
 | [series_fit_poly_fl()](series-fit-poly-fl.md) | Fit a polynomial to series using regression analysis. |
 | [series_fbprophet_forecast_fl()](series-fbprophet-forecast-fl.md) | Forecast time series values using the Prophet algorithm. |
-| [series_lag_fl()](series-lag-fl.md) | Apply a lag filter on a series. |
-| [series_moving_avg_fl()](series-moving-avg-fl.md) | Apply a moving average filter on a series. |
-| [series_rolling_fl()](series-rolling-fl.md) | Apply a rolling aggregation function on a series. |
-| [series_shapes_fl()](series-shapes-fl.md) | Detects positive/negative trend or jump in a series. |
+| [series_lag_fl()](series-lag-fl.md) | Apply a lag filter on series. |
+| [series_moving_avg_fl()](series-moving-avg-fl.md) | Apply a moving average filter on series. |
+| [series_mv_ee_anomalies_fl()](series-mv-ee-anomalies-fl.md) | Multivariate Anomaly Detection for series using elliptical envelope model. |
+| [series_rolling_fl()](series-rolling-fl.md) | Apply a rolling aggregation function on series. |
+| [series_shapes_fl()](series-shapes-fl.md) | Detects positive/negative trend or jump in series. |
 | [series_uv_anomalies_fl()](series-uv-anomalies-fl.md) | Detect anomalies in time series using the Univariate Anomaly Detection Cognitive Service API. |
 | [series_uv_change_points_fl()](series-uv-change-points-fl.md) | Detect change points in time series using the Univariate Anomaly Detection Cognitive Service API. |
 | [time_weighted_avg_fl()](time-weighted-avg-fl.md) | Calculates the time weighted average of a metric. |
