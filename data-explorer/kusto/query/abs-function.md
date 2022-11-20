@@ -17,8 +17,8 @@ Calculates the absolute value of the input.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *x* | int, real, or timespan | &check; | The value to make absolute. |
+| *x* | int, real, or timespan | &check; | Value to make absolute. |
 
 ## Returns
 
-* Absolute value of x.
+Absolute value of x.
