@@ -76,7 +76,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-.create-or-alter function with (folder = "Packages\\Series", docstring = "Anomaly Detection for multi dimensional normally distributed data using isolation forest model")
+.create-or-alter function with (folder = "Packages\\Series", docstring = "Anomaly Detection for multi dimensional data using isolation forest model")
 series_mv_if_anomalies_fl(tbl:(*), features_cols:dynamic, anomaly_col:string, anomalies_pct:real=4.0, num_trees:int=100, samples_pct:real=100.0)
 {
     let kwargs = bag_pack('features_cols', features_cols, 'anomaly_col', anomaly_col, 'anomalies_pct', anomalies_pct, 'num_trees', num_trees, 'samples_pct', samples_pct);
