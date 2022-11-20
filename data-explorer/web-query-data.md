@@ -287,7 +287,7 @@ The following options are available in the drop-down:
 * [Link query to clipboard](#provide-a-deep-link)
 * Link, query, results to clipboard
 * [Pin to dashboard](#pin-to-dashboard)
-* [Query to Power BI](power-bi-imported-query.md)
+* [Query to Power BI](power-bi-visualize.md)
 
 ### Provide a deep link
 

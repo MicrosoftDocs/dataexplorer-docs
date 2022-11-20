@@ -1,16 +1,16 @@
 ---
-title: 'Visualize data from Azure Data Explorer with a Power BI imported query'
+title: 'Visualize data from Azure Data Explorer in Power BI'
 description: 'In this article, you learn how to import a query from Azure Data Explorer and visualize it in a Power BI report.'
 ms.reviewer: mblythe
 ms.topic: how-to
-ms.date: 11/17/2022
+ms.date: 11/20/2022
 
 #Customer intent: As a data analyst, I want to understand connection options in Power BI so I can choose the option most appropriate to my scenario.
 ---
 
-# Visualize data using a query imported into Power BI
+# Use Azure Data Explorer Data in Power BI
 
-This article shows you how to import a query so that you can get data and visualize it in a Power BI report.
+This article shows you how use data from Azure Data Explorer so that you can visualize it in a Power BI report.
 
 ## Prerequisites
 
@@ -24,9 +24,11 @@ You need the following to complete this article:
 
 To create a query from the *StormEvents* table, connect to the Azure Data Explorer help cluster. [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
-## Import query to Power BI
+## Visualize data in Power BI
 
-# [Web UI](#tab/web-ui)
+There are multiple ways of querying data in Power BI. The following tabs show you two ways of querying data. The first is through Azure Data Explorer web UI, and the second is by way of a built-in connector in Power BI Desktop.
+
+# [Web UI](#tab/web-ui/)
 
 This section shows you how to import a query to Power BI using Azure Data Explorer web UI.
 
@@ -111,4 +113,4 @@ This section shows you how to use the built-in connector to load data in a Power
 
 ## Next steps
 
-[Build reports](/power-bi/fundamentals/desktop-getting-started#build-reports)
+[Create reports](/power-bi/create-reports/)

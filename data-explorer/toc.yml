@@ -300,15 +300,12 @@ items:
       items:
       - name: Power BI best practices
         href: power-bi-best-practices.md
-      - name: Connector
-        displayName: Power BI
-        href: power-bi-connector.md
       - name: Dynamic M query parameters
         displayName: Power BI
         href: power-bi-dynamic-m.md
       - name: Imported query
         displayName: Power BI
-        href: power-bi-imported-query.md
+        href: power-bi-visualize.md
       - name: SQL query
         displayName: Power BI
         href: power-bi-sql-query.md
