@@ -1,9 +1,9 @@
 ---
 title: base64_decode_toarray() - Azure Data Explorer
-description: This article describes base64_decode_toarray() in Azure Data Explorer.
+description: Learn how to use the base64_decode_toarray() function to decode a base64 string into an array of long values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/22/2019
+ms.date: 11/03/2022
 ---
 # base64_decode_toarray()
 
@@ -13,9 +13,11 @@ Decodes a base64 string to an array of long values.
 
 `base64_decode_toarray(`*String*`)`
 
-## Arguments
+## Parameters
 
-* *String*: Input base64 string to be decoded from base64 to an array of long values.
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *String* | string | &check; |  Input base64 string to be decoded from base64 to an array of long values.|
 
 ## Returns
 

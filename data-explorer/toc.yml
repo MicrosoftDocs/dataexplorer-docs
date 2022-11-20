@@ -34,8 +34,20 @@ items:
     href: ingest-data-no-code.md
   - name: Visualize data in Power BI
     href: visualize-power-bi.md
-  - name: "Learn module: Introduction to Azure Data Explorer"
-    href: /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+  - name: Training modules
+    items:
+    - name: "Training module: Introduction to Azure Data Explorer"
+      href:  /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+    - name: "Training module: Write your first query with Kusto Query Language"
+      href: /training/modules/write-first-query-kusto-query-language/
+    - name: "Training module: Gain insights from your data by using Kusto Query Language"
+      href: /training/modules/gain-insights-data-kusto-query-language/
+    - name: "Training module: Multi-table queries using Kusto Query Language"
+      href: /training/modules/multi-table-queries-with-kusto-query-language/
+    - name: "Training module: Characterize an unfamiliar dataset with Azure Data Explorer"
+      href: /training/modules/characterize-data-azure-data-explorer/
+    - name: "Training module: Create dashboards in Azure Data Explorer"
+      href: /training/modules/create-dashboards-azure-data-explorer/
 - name: Concepts
   items:
   - name: EngineV3
@@ -464,7 +476,7 @@ items:
       href: using-diagnostic-logs.md
     - name: Use resource health to monitor cluster health
       href: monitor-with-resource-health.md
-    - name: Use Azure Monitor Insights
+    - name: Use Azure Data Explorer Clusters Insights
       href: data-explorer-insights.md
     - name: Monitor batching ingestion with metrics
       href: monitor-batching-ingestion.md
