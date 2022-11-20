@@ -23,12 +23,12 @@ Another alias: array_iff().
 | *when_true* |  | &check; | Array of values or primitive value. This will be the result when *condition_array* is *true*.|
 | *when_false* |  | &check; | Array of values or primitive value. This will be the result when *condition_array* is *false*.|
 
-### Notes
-
-* The result length is the length of *condition_array*.
-* Numeric condition value is treated as *condition* != *0*.
-* Non-numeric/null condition value will have null in the corresponding index of the result.
-* Missing values (in shorter length arrays) are treated as null.
+> [!NOTE]
+>
+> * The result length is the length of *condition_array*.
+> * Numeric condition value is treated as *condition* != *0*.
+> * Non-numeric/null condition value will have null in the corresponding index of the result.
+> * Missing values (in shorter length arrays) are treated as null.
 
 ## Returns
 
@@ -42,8 +42,6 @@ Returns a dynamic array of the values taken either from the *when_true* or *when
 print condition=dynamic([true,false,true]), l=dynamic([1,2,3]), r=dynamic([4,5,6]) 
 | extend res=array_iif(condition, l, r)
 ```
-
-**Results** 
 
 |condition|l|r|res|
 |---|---|---|---|

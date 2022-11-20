@@ -25,15 +25,9 @@ Shifts the values inside a dynamic array to the right.
 
 Returns a dynamic array containing the same amount of the elements as in the original array. Each element has been shifted according to *shift_count*. New elements that are added instead of the removed elements will have a value of *default_value*.
 
-## See also
-
-* For shifting array left, see [array_shift_left()](array_shift_leftfunction.md).
-* For rotating array right, see [array_rotate_right()](array_rotate_rightfunction.md).
-* For rotating array left, see [array_rotate_left()](array_rotate_leftfunction.md).
-
 ## Examples
 
-* Shifting to the right by two positions:
+Shifting to the right by two positions:
 
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4osz0jBINoIiOgpEmAKRlW6FMAAAA)
 
@@ -42,13 +36,11 @@ print arr=dynamic([1,2,3,4,5])
 | extend arr_shift=array_shift_right(arr, 2)
 ```
 
-**Results**
-
 |arr|arr_shift|
 |---|---|
 |[1,2,3,4,5]|[null,null,1,2,3]|
 
-* Shifting to the right by two positions and adding a default value:
+Shifting to the right by two positions and adding a default value:
 
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4osz0jBINoIiOgpGOgq6hJgBHJWeJUAAAAA==)
 
@@ -57,13 +49,11 @@ print arr=dynamic([1,2,3,4,5])
 | extend arr_shift=array_shift_right(arr, 2, -1)
 ```
 
-**Results**
-
 |arr|arr_shift|
 |---|---|
 |[1,2,3,4,5]|[-1,-1,1,2,3]|
 
-* Shifting to the left by two positions by using a negative shift_count value:
+Shifting to the left by two positions by using a negative shift_count value:
 
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4osz0jBINoIiOgq4REBtqAgCqvHZwUQAAAA==)
 
@@ -72,8 +62,12 @@ print arr=dynamic([1,2,3,4,5])
 | extend arr_shift=array_shift_right(arr, -2, -1)
 ```
 
-**Results**
-
 |arr|arr_shift|
 |---|---|
 |[1,2,3,4,5]|[3,4,5,-1,-1]|
+
+## See also
+
+* For shifting array left, see [array_shift_left()](array_shift_leftfunction.md).
+* For rotating array right, see [array_rotate_right()](array_rotate_rightfunction.md).
+* For rotating array left, see [array_rotate_left()](array_rotate_leftfunction.md).

@@ -35,8 +35,6 @@ The following example shows the number of elements in the array.
 print array_length(dynamic([1, 2, 3, "four"]))
 ```
 
-**Results**
-
 |print_0|
 |--|
 |4|

@@ -11,13 +11,13 @@ Concatenates many dynamic arrays to a single array.
 
 ## Syntax
 
-`array_concat(`*arr1*`[`, `*arr2*, ...]`)`
+`array_concat(`*arr*`[`, `*arr2*, ...]`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *arr1...arrN* | dynamic | &check; |Arrays to be concatenated into a dynamic array. All arguments must be dynamic arrays (see [pack_array](packarrayfunction.md)).|
+| *arr1...arrN* | dynamic | &check; |Arrays to concatenate into a dynamic array.|
 
 ## Returns
 
@@ -37,10 +37,12 @@ range x from 1 to 3 step 1
 | project array_concat(a1, a2)
 ```
 
-**Results**
-
 |Column1|
 |---|
 |[1,2,4,1,2]|
 |[2,4,8,2,4]|
 |[3,6,12,3,6]|
+
+## See also
+
+* [pack_array()](packarrayfunction.md)

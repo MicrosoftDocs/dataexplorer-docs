@@ -34,8 +34,6 @@ print arr=dynamic(["this", "is", "an", "example"])
 | project Result=array_reverse(arr)
 ```
 
-**Results**
-
 |Result|
 |---|
 |["example","an","is","this"]|

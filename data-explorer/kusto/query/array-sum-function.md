@@ -38,8 +38,6 @@ print arr=dynamic([1,2,3,4])
 | extend arr_sum=array_sum(arr)
 ```
 
-**Results**
-
-|`arr`|`arr_sum`|
+|arr|arr_sum|
 |---|---|
 |[1,2,3,4]|10|

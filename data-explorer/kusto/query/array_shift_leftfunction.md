@@ -25,15 +25,9 @@ Shifts the values inside a `dynamic` array to the left.
 
 Returns a dynamic array containing the same number of elements as in the original array. Each element has been shifted according to *shift_count*. New elements that are added in place of removed elements will have a value of *default_value*.
 
-## See also
-
-* For shifting array right, see [array_shift_right()](array_shift_rightfunction.md).
-* For rotating array right, see [array_rotate_right()](array_rotate_rightfunction.md).
-* For rotating array left, see [array_rotate_left()](array_rotate_leftfunction.md).
-
 ## Examples
 
-* Shifting to the left by two positions:
+Shifting to the left by two positions:
 
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4nNS0Eg2ggI6CkSYADEKYSUsAAAA=)
 
@@ -42,22 +36,18 @@ print arr=dynamic([1,2,3,4,5])
 | extend arr_shift=array_shift_left(arr, 2)
 ```
 
-**Results**
-
 |`arr`|`arr_shift`|
 |---|---|
 |[1,2,3,4,5]|[3,4,5,null,null]|
 
-* Shifting to the left by two positions and adding default value:
+Shifting to the left by two positions and adding default value:
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4nNS0Eg2ggI6CkY6CrqEmAA+qvHJPAAAA)**\]**
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4nNS0Eg2ggI6CkY6CrqEmAA+qvHJPAAAA)
 
 ```kusto
 print arr=dynamic([1,2,3,4,5])
 | extend arr_shift=array_shift_left(arr, 2, -1)
 ```
-
-**Results**
 
 |`arr`|`arr_shift`|
 |---|---|
@@ -72,8 +62,12 @@ print arr=dynamic([1,2,3,4,5])
 | extend arr_shift=array_shift_left(arr, -2, -1)
 ```
 
-**Results**
-
-|`arr`|`arr_shift`|
+|arr|arr_shift|
 |---|---|
 |[1,2,3,4,5]|[-1,-1,1,2,3]|
+
+## See also
+
+* For shifting array right, see [array_shift_right()](array_shift_rightfunction.md).
+* For rotating array right, see [array_rotate_right()](array_rotate_rightfunction.md).
+* For rotating array left, see [array_rotate_left()](array_rotate_leftfunction.md).

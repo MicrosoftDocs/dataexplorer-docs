@@ -24,15 +24,9 @@ Rotates values inside a `dynamic` array to the right.
 
 Dynamic array containing the same elements as the original array with each element rotated according to *rotate_count*.
 
-## See also
-
-* For rotating array to the left, see [array_rotate_left()](array_rotate_leftfunction.md).
-* For shifting array to the left, see [array_shift_left()](array_shift_leftfunction.md).
-* For shifting array to the right, see [array_shift_right()](array_shift_rightfunction.md).
-
 ## Examples
 
-* Rotating to the right by two positions:
+Rotating to the right by two positions:
 
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eSqUUitKEnNSwGpiC/KL0ksSU2xBbITK6G8+KLM9IwSDaCQjoKRJgBslCYKTgAAAA==)
 
@@ -41,17 +35,13 @@ print arr=dynamic([1,2,3,4,5])
 | extend arr_rotated=array_rotate_right(arr, 2)
 ```
 
-**Results**
-
 |arr|arr_rotated|
 |---|---|
 |[1,2,3,4,5]|[4,5,1,2,3]|
 
-* Rotating to the left by two positions by using negative rotate_count value:
+Rotating to the left by two positions by using negative rotate_count value:
 
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eSqUUitKEnNSwGpiC/KL0ksSU2xBbITK6G8+KLM9IwSDaCQjoKukSYA0VPyak8AAAA=)
-
-**Results**
 
 ```kusto
 print arr=dynamic([1,2,3,4,5])
@@ -61,3 +51,9 @@ print arr=dynamic([1,2,3,4,5])
 |arr|arr_rotated|
 |---|---|
 |[1,2,3,4,5]|[3,4,5,1,2]|
+
+## See also
+
+* For rotating array to the left, see [array_rotate_left()](array_rotate_leftfunction.md).
+* For shifting array to the left, see [array_shift_left()](array_shift_leftfunction.md).
+* For shifting array to the right, see [array_shift_right()](array_shift_rightfunction.md).
