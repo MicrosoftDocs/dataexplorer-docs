@@ -22,3 +22,15 @@ Calculates the absolute value of the input.
 ## Returns
 
 Absolute value of x.
+
+## Example
+
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhMKtbQNdUEADsyYK4NAAAA)
+
+```kusto
+abs(-5)
+```
+
+|Result|
+|------|
+|5|
