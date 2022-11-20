@@ -353,7 +353,7 @@
     {
       "source_path": "data-explorer/power-bi-imported-query.md",
       "redirect_url": "/azure/data-explorer/power-bi-visualize",
-      "redirect_document_id": true
+      "redirect_document_id": false
     }
   ]
 }
