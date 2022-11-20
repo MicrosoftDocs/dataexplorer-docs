@@ -7,7 +7,7 @@ ms.date: 11/20/2022
 ---
 # series_mv_if_anomalies_fl()
 
-The function `series_mv_if_anomalies_fl()` detects multivariate anomalies in series by applying [isolation forest model from scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html). The function accepts a set of series as numerical dynamic arrays, the names of the features columns and the expected percentage of anomalies out of the whole series. The function builds an ensemble of isolation trees for each series and marks the points that that are quickly isolated as anomalies.
+The function `series_mv_if_anomalies_fl()` detects multivariate anomalies in series by applying [isolation forest model from scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html). The function accepts a set of series as numerical dynamic arrays, the names of the features columns and the expected percentage of anomalies out of the whole series. The function builds an ensemble of isolation trees for each series and marks the points that are quickly isolated as anomalies.
 
 > [!NOTE]
 > * `series_mv_if_anomalies_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
@@ -119,4 +119,4 @@ normal_2d_with_anomalies contains a set of 3 time series, each one has 2 dimensi
 ![Graph showing multivariate anomalies on a time chart.](images/series-mv-if-anomalies-fl/mv-if-anomalies-example-1.png)
 ![Graph showing multivariate anomalies on a scatter chart.](images/series-mv-if-anomalies-fl/mv-if-anomalies-example-1a.png)
 
-We can see that on TS2 most of the anomalies occuring at 8am were detected using this multivariate model.
+We can see that on TS2 most of the anomalies occurring at 8am were detected using this multivariate model.
