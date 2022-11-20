@@ -160,8 +160,11 @@ Each visual can have one or more conditional formatting rules defined. When mult
 
     :::image type="content" source="media/dashboard-customize-visuals/edit-new-rule.png" alt-text="Screenshot of editing new rule in dashboards in Azure Data Explorer.":::
 
-1. Select the **Edit** icon. 
-1. For each rule you can define a name in the **Rule name** control. In case you don't define a rule name the default rule name would be the selected column with some other properties of the rule.
+1. Select the **Edit** icon. The **Conditional formatting** pane opens.
+
+    :::image type="content" source="media/dashboard-customize-visuals/edit-conditional-formatting.png" alt-text="Screenshot of editing conditional formatting in dashboards in Azure Data Explorer web UI.":::
+
+1. For each rule, define a name in the **Rule name** control. The default name is selected from other properties of the rule.
 In the formatting section of each rule, you can define the formatting of the data points. The formatting can be applied to an entire row or to a specific column.
 
 #### Color by condition
