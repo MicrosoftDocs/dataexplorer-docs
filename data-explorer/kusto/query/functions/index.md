@@ -12,7 +12,7 @@ adobe-target: true
 **Functions** are reusable queries or query parts. Kusto supports two
 kinds of functions:
 
-* **Built-in functions** are hard-coded functions defined by Kusto that cannot be
+* **Built-in functions** are hard-coded functions defined by Kusto that can't be
   modified by users.
 
 * **User-defined functions**, which are divided into two types:
