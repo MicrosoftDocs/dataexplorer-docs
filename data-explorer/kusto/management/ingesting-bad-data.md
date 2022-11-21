@@ -24,7 +24,6 @@ Malformed data, unparsable, too large or not conforming to schema, might fail to
 |Value not matching the table schema data type (e.g. floating point value ingested into an int column)              |NULL values filled                                 |                           |
 |Mapped fields are missing from the data                                                                            |NULL values filled                                 |                           |
 
-
 ## See
 
 * [Data ingestion](../../ingest-data-overview.md)
