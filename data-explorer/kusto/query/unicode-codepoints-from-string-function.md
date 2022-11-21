@@ -13,7 +13,7 @@ Returns a dynamic array of the Unicode codepoints of an input string. This funct
 
 ## Syntax
 
-`unicode_codepoints_from_string(`*source*`)`
+`unicode_codepoints_from_string(`*value*`)`
 
 ## Parameters
 
