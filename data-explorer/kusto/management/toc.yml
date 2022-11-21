@@ -621,9 +621,9 @@ items:
     href: Ingestion-faq.yml
   - name: Ingestion error codes
     href: ../../error-codes.md
+  - name: Ingesting invalid data
+    href: ingesting-invalid-data.md
   - name: Ingestion failures
     href: ingestionfailures.md
   - name: Streaming ingestion failures
     href: streamingingestionfailures.md
-  - name: Ingesting bad data
-    href: ingesting-bad-data.md
