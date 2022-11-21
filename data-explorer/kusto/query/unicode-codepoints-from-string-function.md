@@ -46,6 +46,8 @@ print arr = unicode_codepoints_from_string("קוסטו - Kusto")
 |---|
 |[1511, 1493, 1505, 1496, 1493, 32, 45, 32, 75, 117, 115, 116, 111]|
 
+[**Run the Query**][(https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVSjNy0zOT0mNBxEF+UDx4vi0ovzc+OISoKJ0DaXry69Pvb7w+ozrUxV0FbxLi0vylTQBiYjgf0AAAAA=](https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUSguKVKwVSjNy0zOT0mNBxEF+UDx4viS/HigXGZeugYWybSi/FyYtJJ3aXFJvpKmJgA5JJpZUQAAAA==))
+
 ```kusto
 print str = unicode_codepoints_to_string(unicode_codepoints_from_string("Kusto"))
 ```
