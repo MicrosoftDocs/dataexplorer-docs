@@ -46,6 +46,8 @@ print str = unicode_codepoints_to_string(dynamic([75, 117, 115, 116, 111]))
 |---|
 |Kusto|
 
+[**Run the Query**](https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUSguKVKwVSjNy0zOT0mNBxEF+UDx4viS/HigXGZeukZKZV5ibmayRrS5qY6CoaE5iDCN1QRRZiDCUBMAeB3lVUsAAAA=)
+
 ```kusto
 print str = unicode_codepoints_to_string(dynamic([75, 117, 115]), 116, 111)
 ```
