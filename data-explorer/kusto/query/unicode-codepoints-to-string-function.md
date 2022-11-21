@@ -13,7 +13,7 @@ Returns the string represented by the Unicode codepoints. This function is the i
     
 ## Syntax
 
-`unicode_codepoints_to_string (`*Arg1*[, *ArgN*]... `)`
+`unicode_codepoints_to_string (`*value*[, *valueN*]... `)`
 
 ## Parameters
 
