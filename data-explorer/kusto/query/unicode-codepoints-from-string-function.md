@@ -7,7 +7,7 @@ ms.date: 02/13/2020
 ---
 # unicode_codepoints_from_string()
 
-Returns a dynamic array of the Unicode codepoints of an input string (the inverse operation of unicode_codepoints_to_string).
+Returns a dynamic array of the Unicode codepoints of an input string. This function is the inverse operation of [`unicode_codepoints_to_string()`](unicode-codepoints-to-string-function.md) function.
 
 > **Deprecated aliases:** to_utf8()
 
