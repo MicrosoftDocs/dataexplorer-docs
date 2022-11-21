@@ -28,6 +28,8 @@ If any argument isn't a valid Unicode codepoint, the function returns `null`.
 
 ## Examples
 
+[**Run the Query**](https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUSguKVKwVSjNy0zOT0mNBxEF+UDx4viS/HigXGZeuoa5qY6CoaE5iACzzECEoSYA+KAQ+EAAAAA=)
+
 ```kusto
 print str = unicode_codepoints_to_string(75, 117, 115, 116, 111)
 ```
