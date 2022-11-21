@@ -15,7 +15,7 @@ Returns a dynamic array of the Unicode codepoints of an input string. This funct
 
 `unicode_codepoints_from_string(`*source*`)`
 
-## Arguments
+## Parameters
 
 * *source*: The source string to convert.
 
