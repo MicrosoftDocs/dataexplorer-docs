@@ -3,7 +3,7 @@ title: unicode_codepoints_from_string() - Azure Data Explorer
 description: This article describes unicode_codepoints_from_string() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 11/21/2022
 ---
 # unicode_codepoints_from_string()
 
