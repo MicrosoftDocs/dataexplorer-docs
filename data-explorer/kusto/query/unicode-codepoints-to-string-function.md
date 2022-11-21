@@ -7,7 +7,7 @@ ms.date: 11/21/2022
 ---
 # unicode_codepoints_to_string()
 
-Returns the string represented by the Unicode codepoints.
+Returns the string represented by the Unicode codepoints. This function is the inverse operation of [`unicode_codepoints_from_string()`](unicode-codepoints-from-string-function.md) function.
 
 > **Deprecated aliases:** make_string()
     
