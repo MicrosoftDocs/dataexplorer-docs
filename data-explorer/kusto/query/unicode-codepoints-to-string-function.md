@@ -15,7 +15,7 @@ Returns the string represented by the Unicode codepoints. This function is the i
 
 `unicode_codepoints_to_string (`*Arg1*[, *ArgN*]... `)`
 
-## Arguments
+## Parameters
 
 * *Arg1* ... *ArgN*: Expressions that are integers (int or long) or a dynamic value holding an array of integral numbers.
 
