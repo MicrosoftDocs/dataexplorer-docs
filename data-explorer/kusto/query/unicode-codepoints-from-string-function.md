@@ -17,7 +17,9 @@ Returns a dynamic array of the Unicode codepoints of an input string. This funct
 
 ## Parameters
 
-* *source*: The source string to convert.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value* | string | &check; | The source string to convert. |
 
 ## Returns
 
