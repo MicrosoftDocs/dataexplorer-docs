@@ -636,7 +636,7 @@ items:
     href: loggammafunction.md
   - name: make_datetime()
     href: make-datetimefunction.md
-  - name: make_string()
+  - name: unicode_codepoints_to_string()
     href: unicode-codepoints-to-string-function.md
   - name: make_timespan()
     href: make-timespanfunction.md
@@ -758,7 +758,7 @@ items:
     href: tanfunction.md
   - name: tdigest_merge()
     href: tdigest-mergefunction.md
-  - name: to_utf8()
+  - name: unicode_codepoints_from_string()
     href: unicode-codepoints-from-string-function.md
   - name: tobool()
     href: toboolfunction.md
