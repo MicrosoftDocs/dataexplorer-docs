@@ -28,6 +28,8 @@ See [`unicode_codepoints_to_string()`](unicode-codepoints-to-string-function.md)
 
 ## Examples
 
+[**Run the Query**](https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVSjNy0zOT0mNBxEF+UDx4vi0ovzc+OISoKJ0DaVHk5Y9mrTh0aR1jyatfzRplZImADy1iJs9AAAA)
+
 ```kusto
 print arr = unicode_codepoints_from_string("⒦⒰⒮⒯⒪")
 ```
