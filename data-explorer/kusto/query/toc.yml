@@ -637,7 +637,7 @@ items:
   - name: make_datetime()
     href: make-datetimefunction.md
   - name: make_string()
-    href: unicode_codepoints_to_stringfunction.md
+    href: unicode-codepoints-to-stringfunction.md
   - name: make_timespan()
     href: make-timespanfunction.md
   - name: max_of()
@@ -759,7 +759,7 @@ items:
   - name: tdigest_merge()
     href: tdigest-mergefunction.md
   - name: to_utf8()
-    href: unicode_codepoints_from_stringfunction.md
+    href: unicode-codepoints-from-stringfunction.md
   - name: tobool()
     href: toboolfunction.md
   - name: todatetime()
