@@ -57,9 +57,9 @@ with
 
 ## Continuous Export with Managed Identity
 
-In order to use Continuous Export with Managed Identity, please add the `AutomatedFlow` usage to the [Managed Identity policy](/azure/data-explorer/kusto/management/managed-identity-policy).
+In order to use Continuous Export with Managed Identity, please add the `AutomatedFlow` usage to the [Managed Identity policy](../managed-identity-policy.md).
  
-For more information on how to set up and use a managed identity with continuous exports, see [managed identity overview](/azure/data-explorer/managed-identities-overview). 
+For more information on how to set up and use a managed identity with continuous exports, see [managed identity overview](../../../managed-identities-overview.md). 
 
 > [!NOTE]
 > Continuous export jobs exporting data to an external table that uses impersonation authentication must run on behalf of a managed identity. 
