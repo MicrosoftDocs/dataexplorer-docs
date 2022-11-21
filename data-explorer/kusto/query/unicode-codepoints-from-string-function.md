@@ -36,6 +36,8 @@ print arr = unicode_codepoints_from_string("⒦⒰⒮⒯⒪")
 |---|
 |[9382, 9392, 9390, 9391, 9386]|
 
+[**Run the Query**](https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVSjNy0zOT0mNBxEF+UDx4vi0ovzc+OISoKJ0DaXry69Pvb7w+ozrUxV0FbxLi0vylTQBiYjgf0AAAAA=)
+
 ```kusto
 print arr = unicode_codepoints_from_string("קוסטו - Kusto")
 ```
