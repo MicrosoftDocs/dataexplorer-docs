@@ -17,7 +17,9 @@ Returns the string represented by the Unicode codepoints. This function is the i
 
 ## Parameters
 
-* *Arg1* ... *ArgN*: Expressions that are integers (int or long) or a dynamic value holding an array of integral numbers.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value* | int, long, or dynamic array of int or long | &check; | The integer value to convert. |
 
 * This function receives up to 64 arguments.
 
