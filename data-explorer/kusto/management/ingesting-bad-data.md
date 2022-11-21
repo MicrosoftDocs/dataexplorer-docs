@@ -1,6 +1,6 @@
 ---
 title: How invalid data affects ingestion to Azure Data Explorer.
-description: Learn about the various behaviors related to invalid data being ingested by Azure Data Explorer.
+description: Learn about possible outcomes of ingesting invalid data to Azure Data Explorer.
 ms.reviewer: slneimer
 ms.topic: conceptual
 ms.date: 11/14/2022
