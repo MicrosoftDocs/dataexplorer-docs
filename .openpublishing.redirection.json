@@ -347,12 +347,12 @@
     },
     {
       "source_path": "data-explorer/kusto/query/toutf8function.md",
-      "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-from-stringfunction",
+      "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-from-string-function",
       "redirect_document_id": true
     },
     {
       "source_path": "data-explorer/kusto/query/makestringfunction.md",
-      "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-to-stringfunction",
+      "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-to-string-function",
       "redirect_document_id": true
     }
   ]
