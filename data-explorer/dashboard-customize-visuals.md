@@ -3,7 +3,7 @@ title: Customize Azure Data Explorer dashboard visuals
 description: Easily customize your Azure Data Explorer dashboard visuals
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 11/16/2022
+ms.date: 11/21/2022
 ---
 
 # Customize Azure Data Explorer dashboard visuals
@@ -181,19 +181,12 @@ Each visual can have one or more conditional formatting rules defined. When mult
     | Formatting: Tag |
     | Formatting: Icon |
 
+WAITING ON MORE INFORMATION FROM GABI
 
 #### Color by condition
 
-Select **Column** to set the condition column, **Operator** to set the operator and **Value** to define the value of the rule.
-You can define another rule using the **+Add condition** option. The second condition can use the column selected in the first condition or any other column.
-In the formatting section, select **Apply options** to apply the formatting to entire rows or to cells in a specific column. When selecting **Apply to rows**, you can format only the color of the row. When selecting **Apply to cells** once can set the color, tag and icon to a specific cell in a defined column. with this option it's also possible to hide the text of the column.
-
 #### Color by value
 
-Select **Column** to set the rule column and **column** to select the column use for coloring the visual.
-In case the column selected is of numeric type, the **Theme** definition will be enabled. The theme is applied according to the range of values in the selected column. The min and max values of the value range are either retrieved by default from the selected column or explicitly defined in the **Min value** and **Max value** controls.
-In case the column selected is nonnumeric, selecting the theme is disabled and the colors are set by the rule automatically according to the values in the selected column.
-Select **Apply options** to apply the formatting to entire rows or to cells in a specific column. 
 
 ## Next steps
 
