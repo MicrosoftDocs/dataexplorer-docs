@@ -145,11 +145,11 @@ This is a premium support option for your data ingestion and engine clusters. It
 
 Choose a support plan:
 
-* **Developer** - select this option when configuring Azure Data Explorer in a non-production environment or for trial and evaluation. For more information, see the [Azure Support: Developer](https://azure.microsoft.com/support/plans/developer/) page.
+* **Developer**: select this option when configuring Azure Data Explorer in a non-production environment or for trial and evaluation. For more information, see the [Azure Support: Developer](https://azure.microsoft.com/support/plans/developer/) page.
 
-* **Standard** - select this option when configuring Azure Data Explorer when you need minimal business critical dependence. For more information, see the [Azure Support: Standard](https://azure.microsoft.com/support/plans/standard/) page.
+* **Standard**: select this option when configuring Azure Data Explorer when you need minimal business critical dependence. For more information, see the [Azure Support: Standard](https://azure.microsoft.com/support/plans/standard/) page.
 
-* **Professional Direct** - select this option when you need substantial business critical utilization of Azure Data Explorer. For more information, see the [Azure Support: Professional Direct](https://azure.microsoft.com/support/plans/prodirect/) page.
+* **Professional Direct**: select this option when you need substantial business critical utilization of Azure Data Explorer. For more information, see the [Azure Support: Professional Direct](https://azure.microsoft.com/support/plans/prodirect/) page.
 
 ## What to do with your estimate
 
