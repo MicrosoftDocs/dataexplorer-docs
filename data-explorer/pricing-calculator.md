@@ -13,7 +13,7 @@ This article explains each of the components of the calculator and gives tips an
 
 ## How it works
 
-You set the the region, environment, and estimated data ingestion of your cluster. Then, the calculator estimates a monthly cost based on auto-selected or manually-selected specifications in each of the following components:
+You set the region, environment, and estimated data ingestion of your cluster. Then, the calculator estimates a monthly cost based on auto-selected or manually selected specifications in each of the following components:
 
 * Engine instances
 * Data management instances
@@ -34,7 +34,7 @@ At the bottom of the form, these individual component estimates are added togeth
     1. If not, scroll back to the top of the page and type “Azure Data Explorer” into the search box. Select the **Azure Data Explorer** widget.
 1. Start the configuration.
 
-The coming sections of this article correspond to the components in the calculator and will highlight what you need to know as you go.
+The sections of this article correspond to the components in the calculator and will highlight what you need to know as you go.
 
 :::image type="content" source="media/pricing/pricing-calculator.png" alt-text="Image of online Azure Data Explorer pricing calculator.":::
 
