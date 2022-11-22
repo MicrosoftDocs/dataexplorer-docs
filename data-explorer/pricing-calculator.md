@@ -61,7 +61,7 @@ In the calculator, select the type of **Environment** for your cluster.
 
 ## Estimated data ingestion
 
-This component asks for estimates of the amount of data collected per day, hot cache retention, total retention, and data compression. These factors influence the price of the rest of the components of your cluster.
+The information provided in the **Estimated Data Ingestion** section of the calculator influences the price of all the components of your cluster. This component asks for estimates of the amount of data collected per day, hot cache retention, total retention, and data compression.
 
 * **Data Collected per day (GB/TB)**: Data that you plan to ingest without compression into Azure Data Explorer cluster every day. Calculate this based on the number of files and the average size of a file being ingested. If you're streaming the data using messages, review the average size of a single message and how many messages you're ingesting.
 
