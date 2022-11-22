@@ -84,9 +84,11 @@ This component asks for estimates of the amount of data collected per day, hot c
 
 ## Engine instances
 
-Engine instances are responsible for indexing, caching data on local SSDs, premium storage as managed disks, and serving queries. The Engine service requires a minimum of two compute instances. Choose from a [wide variety of SKUs](./manage-cluster-choose-sku.md) to match the workload for your use case. If you change the workload type, the auto-selected instance type will adjust accordingly. The Premium Managed Disk component is preconfigured based on the SKU selected.
+Engine instances are responsible for indexing, caching data on local SSDs, premium storage as managed disks, and serving queries. The Engine service requires a minimum of two compute instances.
 
-To configure engine instances, choose between the following workload options:
+In this component, when you change the **Workload** type, the auto-selected **Instance** adjusts accordingly. There are a [wide variety of SKUs](./manage-cluster-choose-sku.md) to match the workload for your use case. The **Premium Managed Disk** component is pre-configured based on the SKU selected.
+
+Choose between the following **Workload** options:
 
 * **All** – automatically selects the optimal SKU based on the input you provide
 * **Compute Optimized SKUs** -
@@ -94,9 +96,9 @@ To configure engine instances, choose between the following workload options:
   * Suited for high query rates
   * Local SSD for low latency I/O
 * **Storage optimized SKUs** -
-  * Provides larger storage options ranging from 1TB to 4 TB per Engine node
-  * Suited for workloads that require catching large data sizes
-  * Premium storage (managed disk) is attached to the engine node instead of Local SSD for hot data storage in some SKUs
+  * Provides larger storage options of 1TB to 4TB per Engine node
+  * Suited for workloads that require caching large data sizes
+  * In some SKUs, premium managed disk storage is attached to the engine node instead of Local SSD for hot data storage
 * **Isolate Compute SKUs** -
   * Suited for running workloads that require server instance-level isolation
   * See [Isolation in the Azure Public Cloud](/azure/security/fundamentals/isolation-choices)
