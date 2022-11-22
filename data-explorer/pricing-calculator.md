@@ -86,7 +86,7 @@ This component asks for estimates of the amount of data collected per day, hot c
 
 Engine instances are responsible for indexing, caching data on local SSDs, premium storage as managed disks, and serving queries. The Engine service requires a minimum of two compute instances.
 
-In this component, when you change the **Workload** type, the auto-selected **Instance** adjusts accordingly. There are a [wide variety of SKUs](./manage-cluster-choose-sku.md) to match the workload for your use case. The **Premium Managed Disk** component is pre-configured based on the SKU selected.
+In this component, when you change the **Workload** type, the auto-selected **Instance** adjusts accordingly. There's a [wide variety of SKUs](./manage-cluster-choose-sku.md) to match the workload for your use case. The **Premium Managed Disk** component is pre-configured based on the SKU selected.
 
 Choose between the following **Workload** options:
 
@@ -107,7 +107,7 @@ Choose between the following **Workload** options:
 
 The data management (DM) service is responsible for data ingestion from managed data pipelines such as Azure Blob storage, Event Hub, IoT Hub, and from other services like Azure Data Factory, Azure Stream Analytics, and Kafka. The service requires a minimum of two compute instances which are automatically configured and managed based on the engine instance size.  
 
-In this component, provide a number of hours/days/months you’d like to run the instance.
+In this component, provide the number of hours/days/months you’d like to run the instance.
 
 ## Storage and transactions
 
