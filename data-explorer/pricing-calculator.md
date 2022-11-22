@@ -76,7 +76,7 @@ The information provided in the **Estimated Data Ingestion** section of the calc
 > [!IMPORTANT]
 > If you want to granularly configure the remaining components, turn off Auto-select Engine Instances.
 
-## Engine instances
+### Engine instances
 
 Engine instances are responsible for indexing, caching data on local SSDs, premium storage as managed disks, and serving queries. The Engine service requires a minimum of two compute instances.
 
@@ -97,17 +97,17 @@ Choose between the following **Workload** options:
   * Suited for running workloads that require server instance-level isolation
   * See [Isolation in the Azure Public Cloud](/azure/security/fundamentals/isolation-choices)
 
-## Data management instances
+### Data management instances
 
 The data management (DM) service is responsible for data ingestion from managed data pipelines like Azure Blob storage, Event Hubs, IoT Hub, and other services like Azure Data Factory, Azure Stream Analytics, and Kafka. The service requires a minimum of two compute instances that are automatically configured and managed based on the engine instance size.  
 
 In this component, provide the number of hours/days/months you’d like to run the instance.
 
-## Storage and transactions
+### Storage and transactions
 
 The storage component is the persistent layer where all the data is stored compressed and is billed as Standard LRS or as Standard ZRS. The storage isn't configurable. It's calculated based on the amount of data collected, the total retention days, and the estimated data compression.
 
-## Networking
+### Networking
 
 This component is configured using the [bandwidth service](https://azure.microsoft.com/pricing/details/bandwidth/).  
 
@@ -125,11 +125,11 @@ To get a bandwidth service estimate:
 > [!NOTE]
 > Select the same region where logs are generated to avoid cross region cost and reduce latency. There’s no data transfer cost between Azure services deployed in the same region.
 
-## Azure Data Explorer markup
+### Azure Data Explorer markup
 
 The Azure Data Explorer markup is charged for the premium support option provided with your data ingestion and engine clusters. It's billed based on the number of engine vCPUs in the cluster and isn't charged for dev clusters. Your costs change based on the number of hours/days/months configured in the engine instances component. For more information, see [Azure Data Explorer pricing - FAQ](https://azure.microsoft.com/pricing/details/data-explorer/#faq).
 
-## Support
+### Support
 
 Choose a support plan:
 
