@@ -62,7 +62,7 @@ To configure authentication for the plugin, set the appropriate environment vari
     * `AZURE_USERNAME`: The username, also known as upn, of an Azure Active Directory user account.
     * `AZURE_PASSWORD`: The password of the Azure Active Directory user account. Note this doesn't support accounts with MFA enabled.
 
-* **Azure Managed Service Identity**: Delegate credential management to the platform. This method requires that code is run in Azure, for example, VM. All configuration is handled by Azure. For more information, see [Azure Managed Service Identity][/azure/active-directory/msi-overview]. This method is only available when using [Azure Resource Manager][/azure/azure-resource-manager/resource-group-overview].
+* **Azure Managed Service Identity**: Delegate credential management to the platform. This method requires that code is run in Azure, for example, VM. All configuration is handled by Azure. For more information, see [Azure Managed Service Identity](/azure/active-directory/msi-overview). This method is only available when using [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview).
 
 ## Configure Telegraf
 
@@ -97,6 +97,22 @@ To enable the Azure Data Explorer output plugin, you must uncomment the followin
   ## Creates tables and relevant mapping if set to true(default).
   ## Skips table and mapping creation if set to false, this is useful for running telegraf with the least possible access permissions i.e. table ingestor role.
   # create_tables = true
+```
+## Supported ingestion types
+
+The plugin supports managed (streaming) and queued (batching) [ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion). The default ingestion type is *queued*.
+
+> [!IMPORTANT]
+> To use managed ingestion, you must enable [streaming ingestion](ingest-data-streaming.md) on your cluster.
+    
+To configure the ingestion type for the plugin, modify the automatically generated configuration file, as follows:
+
+```ini
+  ##  Ingestion method to use.
+  ##  Available options are
+  ##    - managed  --  streaming ingestion with fallback to batched ingestion or the "queued" method below
+  ##    - queued   --  queue up metrics data and process sequentially
+  # ingestion_type = "queued"
 ```
 
 ## Query ingested data

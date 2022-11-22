@@ -35,7 +35,8 @@ Creates or alters a continuous export job.
 | `sizeLimit` | `long` | The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100MB (default) to 1GB. |
 | `distributed` | `bool` | Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
 | `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100000 records. |
-| `useNativeParquetWriter` | `bool` | Use the new export implementaion when exporting to Parquet, this implementation is a more performant, resource light export mechanism. Note that an exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
+| `useNativeParquetWriter` | `bool` | Use the new export implementation when exporting to Parquet, this implementation is a more performant, resource light export mechanism. Note that an exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
+| `managedIdentity` | `string` | The managed identity on behalf of which the continuous export job will run. This can be an object ID, or the `system` reserved word. For more information on managed identities, see [managed identity overview](../../../managed-identities-overview.md) |
 
 ## Example
 
@@ -53,3 +54,13 @@ with
 | Name | ExternalTableName | Query | ForcedLatency | IntervalBetweenRuns | CursorScopedTables | ExportProperties |
 |--|--|--|--|--|--|--|
 | MyExport | ExternalBlob | S | 00:10:00 | 01:00:00 | [<br>  "['DB'].['S']"<br>] | {<br>  "SizeLimit": 104857600<br>} |
+
+## Continuous Export with Managed Identity
+
+In order to use Continuous Export with Managed Identity, please add the `AutomatedFlow` usage to the [Managed Identity policy](../managed-identity-policy.md).
+ 
+For more information on how to set up and use a managed identity with continuous exports, see [managed identity overview](../../../managed-identities-overview.md). 
+
+> [!NOTE]
+> Continuous export jobs exporting data to an external table that uses impersonation authentication must run on behalf of a managed identity. 
+> If you set up continuous export to such a table without specifying a managed identity to run on behalf of, will result in the following error message: `"Error: continuous export to external tables with impersonation requires setting the 'managedIdentity' property in the continuous export configuration.

@@ -7,12 +7,13 @@ ms.date: 07/02/2022
 ---
 # SQL Server authentication methods
 
-Azure Data Explorer can authentication to external SQL databases in different ways. For Azure Data Explorer to interact with and authenticate to SQL databases, you must specify the SQL Server's `connection string`. The `connection string` defines the database being accessed and its authentication information.
+Azure Data Explorer can authenticate to external SQL databases in different ways. For Azure Data Explorer to interact with and authenticate to SQL databases, you must specify the SQL Server's `connection string`. The `connection string` defines the database being accessed and its authentication information.
 
 We recommend adding an `h` to connection strings that contain secrets, so that the connection strings are [obfuscated in telemetry data](../../query/scalar-data-types/string.md#obfuscated-string-literals) using one of the following methods:
 
 * Hide the entire string: Add an `h` to the beginning of the string, like this: `h"Server=tcp:myserver.database.windows.net..."`
-* Hide the secret part of the string: Split the connection string into location and secret and add the `h` before the secret part. For example: `"Server=tcp:myserver.database.windows.net,1433;"` `h"User Id={some-userId};Password={some-password};Initial Catalog=mydatabase;"`
+* Hide the secret part of the string: Split the connection string into location and secret and add the `h` before the secret part.
+  For example: `"Server=tcp:myserver.database.windows.net,1433;"` `h"User Id={myUserId};Password={myPlaceholderPassword};Initial Catalog=mydatabase;"`
 
 The following authentication methods are supported:
 
@@ -22,10 +23,10 @@ The following authentication methods are supported:
 
 ## AAD-integrated authentication
 
-To use AAD-integrated authentication (impersonation), add `;Authentication="Active Directory Integrated"` to the SQL connection string. Using this authentication method, the user or application authenticates via AAD to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint.
+To use AAD-integrated authentication (impersonation), add `;Authentication="Active Directory Integrated"` to the SQL connection string. Using this authentication method, the user or application authenticates via Azure AD to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint.
 
 > [!NOTE]
-> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see: [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?view=sql-server-ver16)
+> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see: [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions)
 
 ### AAD-integrated authentication example
 
@@ -40,7 +41,7 @@ In order to use managed identity please follow these instructions, and allow the
 * For a user-assigned managed identity, add the object ID of the user-assigned managed identity, with the following format: `;Authentication="Active Directory Managed Identity";User Id={object_id}`.
 
 > [!NOTE]
-> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see: [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?view=sql-server-ver16)
+> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see: [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions)
 
 ### Managed identity examples
 
@@ -50,11 +51,11 @@ In order to use managed identity please follow these instructions, and allow the
 
 ## Username and password
 
-To use username and password, add `User ID=...; Password=...;` to connection string.
+To use username and password, set the keywords `User ID` and `Password` in the connection string.
 
 ### Username and password example
 
-`"Server=tcp:myserver.database.windows.net,1433;User Id={some-userId};Password={some-password};Initial Catalog=mydatabase;"`
+`"Server=tcp:myserver.database.windows.net,1433;User Id={myUserId};Password={myPlaceholderPassword};Initial Catalog=mydatabase;"`
 
 > [!NOTE]
-> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see: [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?view=sql-server-ver16)
+> The principal must have the appropriate role-based access control (RBAC) role assignments to be able to perform the read/write operations. To manage the access controls for different storage types, see: [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions)

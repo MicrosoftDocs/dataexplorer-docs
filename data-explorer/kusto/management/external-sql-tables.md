@@ -21,11 +21,12 @@ Creates or alters an external SQL table in the database in which the command is 
 ## Parameters
 
 * *TableName* - External table name. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.
-* *SqlTableName* - The name of the SQL table. Not including the database name (example: "MySqlTable" and not "db1.MySqlTable").
+* *SqlTableName* - The name of the SQL table. Not including the database name (example: "MySqlTable" and not "db1.MySqlTable"). If the name of the table contains a period (".") you can use ['Name.of.the.table'] notation.
 * *SqlServerConnectionString* - The connection string to the SQL Server. See the supported [SQL authentication methods](../api/connection-strings/sql-authentication-methods.md).
 
 > [!NOTE]
-> If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities. 
+> * If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities.
+> * When creating or altering an external table using managed identity authentication, [All Databases admin permission](../management/access-control/role-based-authorization.md) is required.
 
 > [!WARNING]
 > Connection strings and queries that include confidential information should be obfuscated so that they'll be omitted from any Kusto tracing. For more information, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals).

@@ -116,7 +116,7 @@ Azure AD application authentication is the simplest and most common authenticati
 | Properties | Option String | Description |
 |--|--|--|
 | **KUSTO_AAD_APP_ID** | kustoAadAppId | Azure AD application (client) identifier. |
-| **KUSTO_AAD_AUTHORITY_ID** | kustoAadAuthorityID | Azure AD authentication authority. Azure AD Directory (tenant) ID. |
+| **KUSTO_AAD_AUTHORITY_ID** | kustoAadAuthorityID | Azure AD authentication authority. Azure AD Directory (tenant) ID. Optional - defaults to microsoft.com. For more information, see [AAD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
 | **KUSTO_AAD_APP_SECRET** | kustoAadAppSecret | Azure AD application key for the client. |
 
 > [!NOTE]

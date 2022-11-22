@@ -3,7 +3,7 @@ title: What is Azure Data Explorer?
 description: Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data.
 ms.reviewer: mblythe
 ms.topic: overview
-ms.date: 06/19/2022
+ms.date: 07/31/2022
 adobe-target: true
 
 # Customer intent: As a data analyst, I want to understand Azure Data Explorer, so I can decide if it's suitable for my analytics workloads.
@@ -47,7 +47,7 @@ Use Azure Data Explorer for time series analysis with a large set of functions i
 
 ### Easy-to-use wizard
 
-The [ingestion wizard](ingest-data-one-click.md) makes the data ingestion process easy, fast, and intuitive. The [Azure Data Explorer web UI](web-query-data.md) provides an intuitive and guided experience that helps you ramp-up quickly to start ingesting data, creating database tables, and mapping structures. It enables one time or a continuous ingestion from various sources and in various data formats. Table mappings and schema are auto suggested and easy to modify.
+The [ingestion wizard](./ingest-data-wizard.md) makes the data ingestion process easy, fast, and intuitive. The [Azure Data Explorer web UI](web-query-data.md) provides an intuitive and guided experience that helps you ramp-up quickly to start ingesting data, creating database tables, and mapping structures. It enables one time or a continuous ingestion from various sources and in various data formats. Table mappings and schema are auto suggested and easy to modify.
 
 ### Versatile data visualization
 
@@ -70,7 +70,7 @@ Generally speaking, when you interact with Azure Data Explorer, you're going to 
 
 1. **Create database:** Create a *cluster* and then create one or more *databases* in that cluster. Each Azure Data Explorer cluster can hold up to 10,000 databases and each database up to 10,000 tables. The data in each table is stored in data shards also called “extents”. All data is automatically indexed and partitioned based on the ingestion time. This means you can store a lot of varied data and because of the way it's stored, you get fast access to querying it. [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
 
-1. **Ingest data:** Load data into database tables so that you can run queries against it. Azure Data Explorer supports several [ingestion methods](ingest-data-overview.md), each with its own target scenarios. These methods include ingestion tools, connectors and plugins to diverse services, managed pipelines, programmatic ingestion using SDKs, and direct access to ingestion. Get started with [one-click ingestion](ingest-data-one-click.md).
+1. **Ingest data:** Load data into database tables so that you can run queries against it. Azure Data Explorer supports several [ingestion methods](ingest-data-overview.md), each with its own target scenarios. These methods include ingestion tools, connectors and plugins to diverse services, managed pipelines, programmatic ingestion using SDKs, and direct access to ingestion. Get started with the [ingestion wizard](./ingest-data-wizard.md).
 
 1. **Query database:** Azure Data Explorer uses the [Kusto Query Language](kusto/query/index.md), which is an expressive, intuitive, and highly productive query language. It offers a smooth transition from simple one-liners to complex data processing scripts, and supports querying structured, semi-structured, and unstructured (text search) data. There's a wide variety of query language operators and functions ([aggregation](kusto/query/aggregation-functions.md), filtering, [time series functions](kusto/query/machine-learning-and-tsa.md), [geospatial functions](kusto/query/geospatial-grid-systems.md), [joins](kusto/query/joinoperator.md), [unions](kusto/query/unionoperator.md), and more) in the language. KQL supports [cross-cluster and cross-database queries](kusto/query/cross-cluster-or-database-queries.md), and is feature rich from a parsing (json, XML, and more) perspective. The language also natively supports advanced analytics.
 

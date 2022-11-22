@@ -99,9 +99,9 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 > * Using `autoUpdateSchema` may lead to irreversible data loss when columns in the source table are dropped.
 > Monitor automatic disable of materialized views using the [MaterializedViewResult metric](materialized-view-overview.md#materializedviewresult-metric).  After fixing incompatibility issues, re-enable the view with the [enable materialized view](materialized-view-enable-disable.md) command.
 
-### Create materialized view over materialized view (preview)
+### Create materialized view over materialized view
 
-A materialized view over another materialized view can only be created when the source materialized view is of kind `take_any(*)` aggregation (deduplication). See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view-preview) and [examples](#examples) below.
+A materialized view over another materialized view can only be created when the source materialized view is of kind `take_any(*)` aggregation (deduplication). See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view) and [examples](#examples) below.
 
 **Syntax":**
 `.create` [`async`] [`ifnotexists`] `materialized-view` <br>
@@ -240,6 +240,9 @@ The following aggregation functions are supported:
     ```kusto
         SourceTable | summarize take_any(*) by EventId, Timestamp
     ```
+
+> [!TIP]
+> Late arriving data in a datetime group-by key can have a negative impact on the materialized view's performance. For example, if your materialized view uses `bin(Timestamp, 1d)` as one of its group-by keys, and there are several outliers in the data with very old `Timestamp` values. These outliers may negatively impact the materialized view. We recommend that in the materialized view query you either filter out the outlier records, or normalize these records to the current time.
 
 * **Define a lookback period**: if applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [properties](#properties).  
 
@@ -422,25 +425,6 @@ The backfill-by-move-extents option can be useful in two main scenarios:
     } 
     ```
 
-## Materialized views limitations and known issues
-
-* A materialized view can't be created:
-    * On top of another materialized view, unless the first materialized view is of type `take_any(*)` aggregation. See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view-preview).
-    * On [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.  Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader.
-    * On [external tables](../../query/schema-entities/externaltables.md).
-
-* A materialized view only processes new records ingested into the source table. Records which are removed from the source table, either by running [data purge](../../concepts/data-purge.md)/[soft delete](../../concepts/data-soft-delete.md)/[drop extents](../drop-extents.md), or due to [retention policy](../retentionpolicy.md) or any other reason, have no impact on the materialized view. The materialized view has its own [retention policy](materialized-view-policies.md#retention-and-caching-policy), which is independent of the retention policy of the source table. The materialized view might include records which are not present in the source table.
-* The source table of a materialized view:
-  * Must be a table into which data is directly ingested, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [from query commands](../data-ingestion/ingest-from-query.md).
-    * Using [move extents](../move-extents.md) from other tables to the source table of the materialized view is only supported if using `setNewIngestionTime` property as part of the move extents command (refer to [.move extents](../move-extents.md) command for more details).
-    * Moving extents to the source table of a materialized view, while *not* using `setNewIngestionTime` may fail with one of the following errors:
-        * `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
-        * `Cannot move extents to 'TableName' since materialized view 'ViewName' will not process these extents (can lead to data loss in the materialized view)`.
-* Must have [IngestionTime policy](../ingestiontimepolicy.md) enabled (it is enabled by default).
-* Can't be a table with [restricted view access policy](../restrictedviewaccesspolicy.md).
-* [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
-* Continuous export from a materialized view isn't supported.
-
 ## Cancel materialized-view creation
 
 Cancel the process of materialized view creation when using the `backfill` option. This action is useful when creation is taking too long and you want to abort it while running.  
@@ -448,7 +432,7 @@ Cancel the process of materialized view creation when using the `backfill` optio
 > [!WARNING]
 > The materialized view can't be restored after running this command.
 
-The creation process can't be aborted immediately. The cancel command signals materialization to stop, and the creation periodically checks if cancel was requested. The cancel command waits for a max period of 10 minutes until the materialized view creation process is canceled and reports back if cancellation was successful. Even if the cancellation didn't succeed within 10 minutes, and the cancel command reports failure, the materialized view will most probably abort itself later in the creation process. The [`.show operations`](../operations.md#show-operations) command will indicate if operation was canceled. The `cancel operation` command is only supported for materialized views creation cancellation, and not for canceling any other operations.
+The creation process can't be aborted immediately. The cancel command signals materialization to stop, and the creation periodically checks if a cancel was requested. The cancel command waits for a maximum period of 10 minutes until the materialized view creation process is canceled, and reports back if cancellation was successful. Even if the cancellation didn't succeed within 10 minutes, and the cancel command reports failure, the materialized view will probably abort itself later in the creation process. The [`.show operations`](../operations.md#show-operations) command indicates if the operation was canceled.
 
 ### Syntax
 

@@ -3,7 +3,7 @@ title: 'Ingest data from event hub into Azure Data Explorer'
 description: 'In this article, you learn how to ingest (load) data into Azure Data Explorer from event hub.'
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 03/15/2022
+ms.date: 09/11/2022
 
 # Customer intent: As a database administrator, I want to ingest data into Azure Data Explorer from an event hub, so I can analyze streaming data.
 ---
@@ -12,7 +12,7 @@ ms.date: 03/15/2022
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [One-click](one-click-event-hub.md)
+> * [Ingestion wizard](./event-hub-wizard.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
@@ -128,6 +128,8 @@ Fill out the form with the following information, and then select **Create**.
 | Compression | *None* | The compression type of the event hub messages payload. Supported compression types: *None, Gzip*.|
 | Managed Identity (recommended) | System-assigned | The managed identity used by the Data Explorer cluster for access to read from the event hub. We recommend using managed identities to control access to your event hub.<br /><br />**Note**:<br />When the data connection is created:<br/>\* *System-assigned* identities are automatically created if they don't exist<br />\* The managed identity is automatically assigned the *Azure Event Hubs Data Receiver* role and is added to your Data Explorer cluster. We recommend verifying that the role was assigned and that the identity was added to the cluster. |
 
+[!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
+
 > [!NOTE]
 > If you have an existing data connection that is not using managed identities, we recommend updating it to use managed identities.
 
@@ -162,6 +164,7 @@ For this article, you use static routing, where you specify the table name, data
     >
     > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
     > * Only events enqueued after you create the data connection are ingested.
+    > * The mapping name is case-sensitive. A mismatch in mapping name will result in ingestion failure.
 
 1. Select **Create**.
 

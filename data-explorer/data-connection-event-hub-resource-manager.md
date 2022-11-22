@@ -10,7 +10,7 @@ ms.date: 03/15/2022
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [One-click](one-click-event-hub.md)
+> * [Ingestion wizard](./event-hub-wizard.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
@@ -146,5 +146,7 @@ The following example shows an Azure Resource Manager template for adding an Eve
     ]
 }
 ```
+
+[!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
 
 [!INCLUDE [data-explorer-clean-resources](includes/data-explorer-clean-resources.md)]

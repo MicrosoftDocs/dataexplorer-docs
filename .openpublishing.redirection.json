@@ -299,6 +299,61 @@
       "source_path": "data-explorer/double-encryption.md",
       "redirect_url": "/azure/data-explorer/cluster-encryption-double",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/ingest-data-one-click.md",
+      "redirect_url": "/azure/data-explorer/ingest-data-wizard",
+      "redirect_document_id": true
+    },   
+    {
+      "source_path": "data-explorer/one-click-table.md",
+      "redirect_url": "/azure/data-explorer/create-table-wizard",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/one-click-table-batching-policy.md",
+      "redirect_url": "/azure/data-explorer/table-batching-policy-wizard",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/one-click-table-retention-policy.md",
+      "redirect_url": "/azure/data-explorer/table-retention-policy-wizard",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/one-click-event-hub.md",
+      "redirect_url": "/azure/data-explorer/event-hub-wizard",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/sample-app-generator-one-click.md",
+      "redirect_url": "/azure/data-explorer/sample-app-generator-wizard",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/one-click-ingestion-existing-table.md",
+      "redirect_url": "/azure/data-explorer/ingestion-wizard-existing-table",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/one-click-ingestion-new-table.md",
+      "redirect_url": "/azure/data-explorer/ingestion-wizard-new-table",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/packdictionaryfunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/packfunction",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/toutf8function.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-from-string-function",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/makestringfunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-to-string-function",
+      "redirect_document_id": true
     }
   ]
 }

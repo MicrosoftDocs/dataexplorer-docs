@@ -3,7 +3,7 @@ title: Azure Data Explorer tools and integrations overview - Azure Data Explorer
 description: This article describes tools and integrations in Azure Data Explorer.
 ms.reviewer: olgolden
 ms.topic: conceptual
-ms.date: 07/03/2022
+ms.date: 09/11/2022
 ---
 # Azure Data Explorer tools and integrations overview
 
@@ -20,8 +20,8 @@ Data ingestion is the process used to load data records from one or more sources
 ### Azure Data Explorer ingestion tools
 
 * [LightIngest](lightingest.md) - Help utility for ad-hoc data ingesting into Azure Data Explorer
-* One-click Ingestion: [overview](ingest-data-one-click.md) and ingest data [from a container to a new table](one-click-ingestion-new-table.md)
-or [from a local file to an existing table](one-click-ingestion-existing-table.md)
+* Ingestion wizard: [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](./ingestion-wizard-new-table.md)
+or [from a local file to an existing table](./ingestion-wizard-existing-table.md)
 
 ### Ingestion integrations
 
@@ -34,7 +34,7 @@ or [from a local file to an existing table](one-click-ingestion-existing-table.m
 * [Apache Spark](spark-connector.md)
 * [Apache Kafka](ingest-data-kafka.md)
 * [Telegraf](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer)
-* [Cosmos DB](https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration)
+* [Azure Cosmos DB](https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration)
 * [Power Automate](flow.md)
 
 ## Query data
@@ -43,10 +43,10 @@ or [from a local file to an existing table](one-click-ingestion-existing-table.m
 
 There are several tools available for running queries in Azure Data Explorer.
 
+* [Azure Data Explorer web UI](web-query-data.md)
 * Kusto.Explorer
   * [installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
   * Additional topics include [options](kusto/tools/kusto-explorer-options.md), [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code refactoring](kusto/tools/kusto-explorer-refactor.md), [code navigation](kusto/tools/kusto-explorer-codenav.md), and [code analyze](kusto/tools/kusto-explorer-code-analyzer.md)
-* [Azure Data Explorer web UI](web-query-data.md)
 * [Kusto CLI](kusto/tools/kusto-cli.md)
 
 ### Query open source repositories

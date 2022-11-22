@@ -2,7 +2,7 @@
 title: Splunk to Kusto map for Azure Data Explorer and Azure Monitor
 description: Concept mapping for users who are familiar with Splunk to learn the Kusto Query Language to write log queries.
 ms.topic: conceptual
-ms.date: 02/08/2022
+ms.date: 09/07/2022
 ---
 
 # Splunk to Kusto Query Language map
@@ -36,7 +36,7 @@ The following table specifies functions in Kusto that are equivalent to Splunk f
 | `if`     | `iff()`   | (1) |
 | `tonumber` | `todouble()`<br />`tolong()`<br />`toint()` | (1) |
 | `upper`<br />`lower` |`toupper()`<br />`tolower()`|(1) |
-| `replace` | `replace()` | (1)<br /> Also note that although `replace()` takes three parameters in both products, the parameters are different. |
+| `replace` | `replace_string()` or `replace_regex()` | (1)<br />Note that although replace functions take three parameters in both products, the parameters are different. |
 | `substr` | `substring()` | (1)<br />Also note that Splunk uses one-based indices. Kusto notes zero-based indices. |
 | `tolower` |  `tolower()` | (1) |
 | `toupper` | `toupper()` | (1) |
@@ -112,12 +112,19 @@ Kusto uses the `project-rename` operator to rename a field. In the `project-rena
 
 ### Format results and projection
 
-Splunk doesn't appear to have an operator that's similar to `project-away`. You can use the UI to filter out fields.
+Splunk uses the `table` command to select which columns to include in the results. Kusto has a `project` operator that does the same and [more](projectoperator.md).
 
 | Product | Operator | Example |
 |:---|:---|:---|
 | Splunk | `table` |  `Event.Rule=330009.2`<br />&#124; `table rule, state` |
-| Kusto | `project`<br />`project-away` | `Office_Hub_OHubBGTaskError`<br />&#124; `project exception, state` |
+| Kusto | `project` | `Office_Hub_OHubBGTaskError`<br />&#124; `project exception, state` |
+
+Splunk uses the `field -` command to select which columns to exclude from the results. Kusto has a `project-away` operator that does the same.
+
+| Product | Operator | Example |
+|:---|:---|:---|
+| Splunk | `fields -` |`Event.Rule=330009.2`<br />&#124; `fields - quota, hightest_seller` |
+| Kusto | `project-away` |`Office_Hub_OHubBGTaskError`<br />&#124; `project-away exception, state` |
 
 ### Aggregation
 

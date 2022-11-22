@@ -1,9 +1,9 @@
 ---
-title: 'Create an Azure Data Explorer cluster & DB using Powershell'
+title: 'Create an Azure Data Explorer cluster and database using PowerShell'
 description: Learn how to create an Azure Data Explorer cluster and database by using PowerShell
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 11/01/2021
+ms.date: 09/05/2022
 ---
 
 
@@ -18,13 +18,13 @@ ms.date: 11/01/2021
 > * [Go](create-cluster-database-go.md)
 > * [ARM template](create-cluster-database-resource-manager.md)  
 
-Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a database so that you can run queries against it. In this article, you create a cluster and a database by using Powershell. You can run PowerShell cmdlets and scripts on Windows, Linux, or in [Azure Cloud Shell](/azure/cloud-shell/overview) with [Az.Kusto](/powershell/module/az.kusto/#kusto) to create and configure Azure Data Explorer clusters and databases.
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a database so that you can run queries against it. In this article, you create a cluster and a database by using PowerShell. You can run PowerShell cmdlets and scripts on Windows, Linux, or in [Azure Cloud Shell](/azure/cloud-shell/overview) with [Az.Kusto](/powershell/module/az.kusto/#kusto) to create and configure Azure Data Explorer clusters and databases.
 
 ## Prerequisites
 
 [!INCLUDE [updated-for-az](includes/updated-for-az.md)]
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 
 [!INCLUDE [cloud-shell-try-it.md](includes/cloud-shell-try-it.md)]
 
@@ -34,7 +34,7 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 
 ## Configure parameters
 
-The following steps are not required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, follow steps 1 & 2 to sign in to Azure and to set your current subscription:
+The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, follow steps 1 and 2 to sign in to Azure and to set your current subscription:
 
 1. Run the following command to sign in to Azure:
 
@@ -47,6 +47,7 @@ The following steps are not required if you're running commands in Azure Cloud S
     ```azurepowershell-interactive
      Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
+
 1. When running Azure CLI locally or in the Azure Cloud Shell, you need to install the Az.Kusto module on your device:
 
     ```azurepowershell-interactive
@@ -58,16 +59,16 @@ The following steps are not required if you're running commands in Azure Cloud S
 1. Create your cluster by using the following command:
 
     ```azurepowershell-interactive
-     New-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Location westus2 -SkuTier Standard -SkuCapacity 2 -SkuName 'Standard_D11_v2'
+     New-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Location westus2 -SkuTier Standard -SkuCapacity 2 -SkuName 'Standard_E8ads_v5'
     ```
 
    |**Setting** | **Suggested value** | **Field description**|
    |---|---|---|
    | Name | *mykustocluster* | The desired name of your cluster.|
-   | Sku | *D13_v2* | The SKU that will be used for your cluster. |
+   | Sku | *Standard_E8ads_v5* | The SKU that will be used for your cluster. |
    | ResourceGroupName | *testrg* | The resource group name where the cluster will be created. |
 
-    There are additional optional parameters that you can use, such as the capacity of the cluster.
+    There are other optional parameters that you can use, such as the capacity of the cluster.
 
 1. Run the following command to check whether your cluster was successfully created:
 

@@ -1,21 +1,23 @@
 ---
 title: acos() - Azure Data Explorer
-description: This article describes acos() in Azure Data Explorer.
+description: Learn how to use the function acos() to calculate the angle of the cosine input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 09/20/2022
 ---
 # acos()
 
-Returns the angle whose cosine is the specified number (the inverse operation of [`cos()`](cosfunction.md)).
+Calculates the angle whose cosine is the specified number (the inverse operation of [`cos()`](cosfunction.md)).
 
 ## Syntax
 
 `acos(`*x*`)`
 
-## Arguments
+## Parameters
 
-* *x*: A real number in range [-1, 1].
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *x* | real | &check; | A real number in range [-1, 1]. |
 
 ## Returns
 

@@ -48,11 +48,14 @@ Creating a managed private endpoint requires a single API call to the *Kusto* re
 * Microsoft.EventHub/namespaces (sub-resource "namespace")
 * Microsoft.Devices/IoTHubs (sub-resource "iotHub")
 * Microsoft.KeyVault/vaults (sub-resource "vault")
-* Microsoft.Sql/servers (sub-resource "servers")
+* Microsoft.Sql/servers (sub-resource "sqlServer")
 * Microsoft.Kusto/clusters (sub-resource "cluster")
 * Microsoft.DigitalTwins/digitalTwinsInstance (sub-resource "digitaltwinsinstance")
 
 In the following this example, you'll use the [ARMclient](https://chocolatey.org/packages/ARMClient) in PowerShell to create a managed private endpoint using the REST API.
+
+> [!NOTE]
+> Connecting to a storage account a "dfs" resource requires an additional managed private endpoint to the "blob" sub-resource.
 
 ### Prerequisites for using the REST API
 

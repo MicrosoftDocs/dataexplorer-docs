@@ -3,7 +3,7 @@ title: Scalar Functions - Azure Data Explorer
 description: This article describes Scalar Functions in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/18/2021
+ms.date: 11/10/2022
 ---
 # Scalar function types at a glance
 
@@ -37,8 +37,10 @@ This article lists all available scalar functions grouped by type. For aggregati
 |-------------------------|--------------------------------------------------------|
 |[ago()](agofunction.md)|Subtracts the given timespan from the current UTC clock time.|
 |[datetime_add()](datetime-addfunction.md)|Calculates a new datetime from a specified datepart multiplied by a specified amount, added to a specified datetime.|
-|[datetime_part()](datetime-partfunction.md)|Extracts the requested date part as an integer value.|
 |[datetime_diff()](datetime-difffunction.md)|Returns the end of the year containing the date, shifted by an offset, if provided.|
+|[datetime_local_to_utc()](datetime-local-to-utc-function.md) |  Converts local datetime to UTC datetime using [a time-zone specification](../query/timezone.md).
+|[datetime_part()](datetime-partfunction.md)|Extracts the requested date part as an integer value.|
+| [datetime_utc_to_local()](datetime-utc-to-local-function.md) | Converts UTC datetimgoe to local datetime using a [time-zone specification](../query/timezone.md).
 |[dayofmonth()](dayofmonthfunction.md)|Returns the integer number representing the day number of the given month.|
 |[dayofweek()](dayofweekfunction.md)|Returns the integer number of days since the preceding Sunday, as a timespan.|
 |[dayofyear()](dayofyearfunction.md)|Returns the integer number represents the day number of the given year.|
@@ -67,7 +69,6 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[unixtime_seconds_todatetime()](unixtime-seconds-todatetimefunction.md)|Converts unix-epoch seconds to UTC datetime.|
 |[weekofyear()](weekofyearfunction.md)|Returns an integer representing the week number.|
 
-
 ## Dynamic/array functions
 
 |Function Name     |Description                                          |
@@ -89,9 +90,9 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[`bag_has_key()`](bag-has-key-function.md)|Checks whether a dynamic bag column contains a given key.|
 |[bag_keys()](bagkeysfunction.md)|Enumerates all the root keys in a dynamic property-bag object.|
 |[bag_merge()](bag-merge-function.md)|Merges dynamic property-bags into a dynamic property-bag with all properties merged.|
+|[bag_pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
 |[bag_remove_keys()](bag-remove-keys-function.md)|Removes keys and associated values from a dynamic property-bag.|
 |[jaccard_index()](jaccard-index-function.md)|Computes the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) of two sets.|
-|[pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
 |[pack_all()](packallfunction.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
 |[pack_array()](packarrayfunction.md)|Packs all input values into a dynamic array.|
 |[repeat()](repeatfunction.md)|Generates a dynamic array holding a series of equal values.|
@@ -201,14 +202,17 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[series_add()](series-addfunction.md)|Calculates the element-wise addition of two numeric series inputs.|
 |[series_asin()](series-asinfunction.md)|Calculates the element-wise arcsine function of the numeric series input.|
 |[series_atan()](series-atanfunction.md)|Calculates the element-wise arctangent function of the numeric series input.|
+|[series_ceiling()](series-ceiling-function.md)|Calculates the element-wise ceiling function of the numeric series input.|
 |[series_cos()](series-cosfunction.md)|Calculates the element-wise cosine function of the numeric series input.|
 |[series_divide()](series-dividefunction.md)|Calculates the element-wise division of two numeric series inputs.|
 |[series_equals()](series-equalsfunction.md)|Calculates the element-wise equals (`==`) logic operation of two numeric series inputs.|
 |[series_exp()](series-expfunction.md)|Calculates the element-wise base-e exponential function (e^x) of the numeric series input.|
+|[series_floor()](series-floor-function.md)|Calculates the element-wise floor function of the numeric series input.|
 |[series_greater()](series-greaterfunction.md)|Calculates the element-wise greater (`>`) logic operation of two numeric series inputs.|
 |[series_greater_equals()](series-greater-equalsfunction.md)|Calculates the element-wise greater or equals (`>=`) logic operation of two numeric series inputs.|
 |[series_less()](series-lessfunction.md)|Calculates the element-wise less (`<`) logic operation of two numeric series inputs.|
 |[series_less_equals()](series-less-equalsfunction.md)|Calculates the element-wise less or equal (`<=`) logic operation of two numeric series inputs.|
+|[series_log()](series-log-function.md)|Calculates the element-wise natural logarithm function (base-e) of the numeric series input.|
 |[series_multiply()](series-multiplyfunction.md)|Calculates the element-wise multiplication of two numeric series inputs.|
 |[series_not_equals()](series-not-equalsfunction.md)|Calculates the element-wise not equals (`!=`) logic operation of two numeric series inputs.|
 |[series_pow()](series-powfunction.md)|Calculates the element-wise power of two numeric series inputs.|
@@ -389,7 +393,20 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[hash()](hashfunction.md)|Returns a hash value for the input value.|
 |[hash_combine()](hash_combinefunction.md)|Combines two or more hash values.|
 |[hash_many()](hash_manyfunction.md)|Returns a combined hash value of multiple values.|
-|[hash_md5()](md5hashfunction.md)|Returns a MD5 hash value for the input value.|
+|[hash_md5()](md5hashfunction.md)|Returns an MD5 hash value for the input value.|
 |[hash_sha1()](sha1-hash-function.md)|Returns a SHA1 hash value for the input value.|
 |[hash_sha256()](sha256hashfunction.md)|Returns a SHA256 hash value for the input value.|
 |[hash_xxhash64()](hash-xxhash64-function.md)|Returns an XXHASH64 hash value for the input value.|
+
+## Units conversion functions
+
+|Function Name                                            | Description                                                            |
+|---------------------------------------------------------|------------------------------------------------------------------------|
+| [convert_angle()](convert-angle-function.md)             | Returns the input value converted from one angle unit to another       |
+| [convert_energy()](convert-energy-function.md)           | Returns the input value converted from one energy unit to another      |
+| [convert_force()](convert-force-function.md)             | Returns the input value converted from one force unit to another       |
+| [convert_length()](convert-length-function.md)           | Returns the input value converted from one length unit to another      |
+| [convert_mass()](convert-mass-function.md)               | Returns the input value converted from one mass unit to another        |
+| [convert_speed()](convert-speed-function.md)             | Returns the input value converted from one speed unit to another       |
+| [convert_temperature()](convert-temperature-function.md) | Returns the input value converted from one temperature unit to another |
+| [convert_volume()](convert-volume-function.md)           | Returns the input value converted from one volume unit to another      |

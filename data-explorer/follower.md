@@ -3,7 +3,7 @@ title: Use follower database feature to attach databases in Azure Data Explorer
 description: Learn about how to attach databases in Azure Data Explorer using the follower database feature.
 ms.reviewer: gabilehner
 ms.topic: how-to
-ms.date: 02/28/2022
+ms.date: 10/02/2022
 ---
 
 # Use follower databases
@@ -69,11 +69,15 @@ When attaching the database all tables, external tables and materialized views a
     materializedViewsToExclude=["*"]
     ```
 
+### Database name override
+
+You can optionally make the database name in the follower cluster different from the leader cluster. For example, you may want to attach the same database name from multiple leader clusters to a follower cluster. To specify a different database name, configure the '*DatabaseNameOverride*' or '*DatabaseNamePrefix*' property.
+
 ## [C#](#tab/csharp)
 
 ### Attach a database using C\#
 
-### Prerequisite nuggets
+### Required NuGet packages
 
 * Install [Microsoft.Azure.Management.Kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Install [Microsoft.Rest.ClientRuntime.Azure.Authentication for authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
@@ -190,7 +194,7 @@ if (database_name != "*"):
 
 attached_database_configuration_properties = AttachedDatabaseConfiguration(cluster_resource_id = cluster_resource_id, database_name = database_name, default_principals_modification_kind = default_principals_modification_kind, location = location, table_level_sharing_properties = table_level_sharing_properties)
 
-#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, see https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.create_or_update(follower_resource_group_name, follower_cluster_name, attached_database_Configuration_name, attached_database_configuration_properties)
 ```
 
@@ -393,17 +397,26 @@ To verify that the database was successfully attached, find your attached databa
 
 ### Check your follower cluster
 
-1. Navigate to the follower cluster and select **Databases**
-1. Search for new Read-only databases in the database list.
+1. Browse to the follower cluster and select **Databases**.
+1. In the database list, search for new read-only databases.
 
-    ![Read-only follower database.](media/follower/read-only-follower-database.png)
+    :::image type="content" source="media/follower/read-only-follower-database.png" lightbox="media/follower/read-only-follower-database.png" alt-text="Screenshot of read-only follower databases in portal.":::
+
+    You can also view this list in the database overview page:
+
+    :::image type="content" source="media/follower/read-only-follower-database-overview.png" alt-text="Screenshot of databases overview page with list of follower clusters.":::    
 
 ### Check your leader cluster
 
-1. Navigate to the leader cluster and select **Databases**
+1. Browse to the leader cluster and select **Databases**
 1. Check that the relevant databases are marked as **SHARED WITH OTHERS** > **Yes**
+1. Toggle the relationship link to view details.
 
-    ![Read and write attached databases.](media/follower/read-write-databases-shared.png)
+    :::image type="content" source="media/follower/read-write-databases-shared.png" alt-text="Screenshot of databases shared with others to check leader cluster.":::
+
+    You can also view this in the database overview page:
+
+   :::image type="content" source="media/follower/read-write-databases-shared-overview.png" alt-text="Screenshot of overview with list of databases shared with others.":::
 
 ## Detach the follower database
 
@@ -495,7 +508,7 @@ follower_resource_group_name = "followerResouceGroup"
 follower_cluster_name = "follower"
 attached_database_configurationName = "uniqueName"
 
-#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, see https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
 ```
 
@@ -533,7 +546,7 @@ attached_database_configuration_name = "uniqueName"
 location = "North Central US"
 cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceGroups/" + follower_resource_group_name + "/providers/Microsoft.Kusto/Clusters/" + follower_cluster_name
 
-#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, see https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.clusters.detach_follower_databases(resource_group_name = leader_resource_group_name, cluster_name = leader_cluster_name, cluster_resource_id = cluster_resource_id, attached_database_configuration_name = attached_database_configuration_name)
 ```
 

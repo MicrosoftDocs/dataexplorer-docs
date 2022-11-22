@@ -3,7 +3,7 @@ title: User-defined functions - Azure Data Explorer
 description: This article describes user-defined functions (scalar and views) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/17/2021
+ms.date: 09/06/2022
 ---
 # User-defined functions
 
@@ -17,6 +17,8 @@ A user-defined function belongs to one of two categories:
 The function's input arguments and output determine whether it's scalar or tabular, which then establishes how it might be used.
 
  See [Stored functions](../schema-entities/stored-functions.md) to create and manage entities that allow the reuse of Kusto queries or query parts.
+
+To optimize multiple uses of the user-defined functions within a single query, see [Optimize queries that use named expressions](../../../named-expressions.md).
 
 ## Scalar function
 
@@ -212,7 +214,7 @@ let T=(){
 union T, (T())
 ```
 
-A user-defined function that takes one or more scalar arguments can be invoked by using the table name and a concrete argument list in parentheses:
+A user-defined function that takes one or more scalar arguments can be invoked by using the function name and a concrete argument list in parentheses:
 
 ```kusto
 let f=(a:string, b:string) {
@@ -221,7 +223,7 @@ let f=(a:string, b:string) {
 print f("hello", "world")
 ```
 
-A user-defined function that takes one or more table arguments (with any number of scalar arguments) and can be invoked using the table name and a concrete argument list in parentheses:
+A user-defined function that takes one or more table arguments (with any number of scalar arguments) and can be invoked using the function name and a concrete argument list in parentheses:
 
 ```kusto
 let MyFilter = (T:(x:long), v:long) {

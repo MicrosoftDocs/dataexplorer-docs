@@ -31,6 +31,7 @@ If the update policy is defined on the target table, multiple queries can run on
 * When referencing the `Source` table in the `Query` part of the policy, or in functions referenced by the `Query` part:
     * Don't use the qualified name of the table. Instead, use `TableName`.
     * Don't use `database("DatabaseName").TableName` or `cluster("ClusterName").database("DatabaseName").TableName`.
+* The query can't include an external table reference.
 * For update policy limitations in streaming ingestion, see [streaming ingestion limitations](../../ingest-data-streaming.md#limitations).
 
 > [!WARNING]
@@ -90,6 +91,9 @@ After ingesting data to the target table, you may want to remove it from the sou
 * The source data doesn't persist in durable storage as part of the ingestion operation
 * Operational performance improves. Post-ingestion resources are reduced for background grooming operations on [extents](../management/extents-overview.md) in the source table.
 
+> [!NOTE]
+> When the source table has a soft delete period of `0sec` (or `00:00:00`), any update policy referencing this table must be transactional.
+
 ## Performance impact
 
 Update policies can affect cluster performance, and ingestion for data extents is multiplied by the number of target tables. It's important to optimize the policy-related query. You can test an update policy's performance impact by invoking the policy on already-existing extents, before creating or altering the policy, or on the function used with the query.
@@ -110,9 +114,11 @@ let _extentId = toscalar(
     | top 1 by IngestionTime desc
     | project ExtentId
 );
-let MyFunction = 
+// This scopes the source table to the single recent extent.
+let MySourceTable = 
     MySourceTable
     | where ingestion_time() > ago(10m) and extent_id() == _extentId;
+// This invokes the function in the update policy (that internally references `MySourceTable`).
 MyFunction
 ```
 
@@ -183,11 +189,11 @@ In this example, use an update policy in conjunction with a simple function to p
 
     ```kusto
     .alter table MyTargetTable policy update 
-    @'[{ "IsEnabled": true, "Source": "MySourceTable", "Query": "ExtractMyLogs()", "IsTransactional": false, "PropagateIngestionProperties": false}]'
+    @'[{ "IsEnabled": true, "Source": "MySourceTable", "Query": "ExtractMyLogs()", "IsTransactional": true, "PropagateIngestionProperties": false}]'
     ```
 
 1. To empty the source table after data is ingested into the target table, define the retention policy on the source table to have 0s as its `SoftDeletePeriod`.
 
     ```kusto
-     .alter-merge table MySourceTable policy retention softdelete = 0s ```
+     .alter-merge table MySourceTable policy retention softdelete = 0s 
     ```

@@ -24,18 +24,13 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
     * The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`. For example, `typeof(col1:string, col2:long)`.
     * To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`
 * *script*: A `string` literal that is a valid Python script to execute. To generate multi-line strings see [Usage tips](#usage-tips).
-* *script_arguments*: An optional `dynamic` literal. It's a property bag of name/value pairs to be passed to the
+* *script_parameters*: An optional `dynamic` literal. It's a property bag of name/value pairs to be passed to the
    Python script as the reserved `kargs` dictionary. For more information, see [Reserved Python variables](#reserved-python-variables).
 * *hint.distribution*: An optional hint for the plugin's execution to be distributed across multiple cluster nodes.
   * The default value is `single`.
   * `single`: A single instance of the script will run over the entire query data.
   * `per_node`: If the query before the Python block is distributed, an instance of the script will run on each node, on the data that it contains.
-* *external_artifacts*: An optional `dynamic` literal that is a property bag of name and URL pairs, for artifacts that are accessible from cloud storage. They can be made available for the script to use at runtime.
-  * URLs referenced in this property bag are required to be:
-    * Included in the cluster's [callout policy](../management/calloutpolicy.md).
-    * In a publicly available location, or provide the necessary credentials, as explained in [storage connection strings](../api/connection-strings/storage-connection-strings.md).
-  * The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Examples](#examples).
-  * For more information, see [Install packages for the Python plugin](#install-packages-for-the-python-plugin). 
+* *external_artifacts*: An optional `dynamic` literal that is a property bag of name and URL pairs, for artifacts that are accessible from cloud storage. See more [here](#using-external-artifacts).
 * *spill_to_disk*: An optional `boolean` literal specifying an alternative method for serializing the input table to the Python sandbox. For serializing big tables set it to `true` to speed up the serialization and significantly reduce the sandbox memory consumption. Default is `false` as this parameter is experimental.
 
 ## Reserved Python variables
@@ -49,7 +44,7 @@ The following variables are reserved for interaction between Kusto Query Languag
 ## Enable the plugin
 
 * The plugin is disabled by default.
-* To enable the plugin, see the list of [prerequisites](../concepts/sandboxes.md#prerequisites).
+* To enable the plugin, see the list of [prerequisites](../concepts/sandboxes.md#prerequisites-and-limitations).
 * Enable or disable the plugin in the Azure portal, in your cluster's [Configuration tab](../../language-extensions.md).
 
 ## Python sandbox image
@@ -69,7 +64,7 @@ The following variables are reserved for interaction between Kusto Query Languag
   * Defined as part of an [update policy](../management/updatepolicy.md), whose source table is ingested to using *non-streaming* ingestion.
   * Run as part of a command that [ingests from a query](../management/data-ingestion/ingest-from-query.md), such as `.set-or-append`.
     In both these cases, verify that the volume and frequency of the ingestion, and the complexity and
-    resources used by the Python logic, align with [sandbox limitations](../concepts/sandboxes.md#limitations) and the cluster's available resources. Failure to do so may result in [throttling errors](../concepts/sandboxes.md#errors).
+    resources used by the Python logic, align with [sandbox parameters](../concepts/sandboxes.md#sandbox-parameters) and the cluster's available resources. Failure to do so may result in [throttling errors](../concepts/sandboxes.md#errors).
 * You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../../ingest-data-streaming.md).
 
 ## Examples
@@ -160,6 +155,21 @@ print "This is an example for using 'external_artifacts'"
     | render linechart 
     ```
 
+## Using External Artifacts
+
+External artifacts from cloud storage can be made available for the script and used at runtime.
+
+The URLs referenced by the external artifacts property must be:
+  * Included in the cluster's [callout policy](../management/calloutpolicy.md).
+  * In a publicly available location, or provide the necessary credentials, as explained in [storage connection strings](../api/connection-strings/storage-connection-strings.md).
+
+  > [!NOTE]
+  > When authenticating external artifacts using Managed Identities, the `SandboxArtifacts` usage must be defined on the cluster level [managed identity policy](../management/managed-identity-policy.md).
+
+The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Examples](#examples).
+
+For information regarding referencing external packages, see [Install packages for the Python plugin](#install-packages-for-the-python-plugin).
+
 ## Install packages for the Python plugin
 
 You may need to install package(s) yourself, for the following reasons:
@@ -186,8 +196,7 @@ Install packages as follows:
 1. For public packages in [PyPi](https://pypi.org/) or other channels,
 download the package and its dependencies.
 
-   * Compile wheel (`*.whl`) files, if required.
-   * From a cmd window in your local Python environment, run:
+   * From a cmd window in your local Windows Python environment, run:
     
     ```python
     pip wheel [-w download-dir] package-name.
@@ -199,7 +208,7 @@ download the package and its dependencies.
     * For public packages, zip the files that were downloaded in the previous step.
     
     > [!NOTE]
-    > * Make sure to download the package that is compatible to the Python engine of the sandbox runtime (currently 3.6.5)
+    > * Make sure to download the package that is compatible to the Python engine and the platform of the sandbox runtime (currently 3.6.5 on Windows)
     > * Make sure to zip the `.whl` files themselves, and not their parent folder.
     > * You can skip `.whl` files for packages that already exist with the same version in the base sandbox image.
 

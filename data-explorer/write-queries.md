@@ -3,8 +3,8 @@ title: Write queries for Azure Data Explorer
 description: In this how-to, you learn how to perform basic and more advanced queries for Azure Data Explorer.
 ms.reviewer: mblythe
 ms.topic: tutorial
-ms.date: 12/30/2021
-ms.localizationpriority: high 
+ms.date: 11/09/2022
+ms.localizationpriority: high
 ---
 
 # Write queries for Azure Data Explorer
@@ -13,15 +13,15 @@ In this article, you learn how to use the query language in Azure Data Explorer 
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md).
 
 You can run the queries in this article in one of two ways:
 
-- On the Azure Data Explorer *help cluster* that we have set up to aid learning.
+* On the Azure Data Explorer *help cluster* that we have set up to aid learning.
     [Sign in to the cluster](https://dataexplorer.azure.com/clusters/help/databases/samples) with an organizational email account that is a member of Azure Active directory.
 
-- On your own cluster that includes the StormEvents sample data. For  more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
+* On your own cluster that includes the StormEvents sample data. For  more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
@@ -31,7 +31,7 @@ A query in Azure Data Explorer is a read-only request to process data and return
 
 The query consists of a sequence of query statements, delimited by a semicolon (`;`), with at least one statement being a tabular expression statement, which is a statement that produces data arranged in a table-like mesh of columns and rows. The query's tabular expression statements produce the results of the query. Any two statements must be separated by a semicolon.
 
-The syntax of the tabular expression statement has tabular data flow from one tabular query operator to another, starting with data source (for example, a table in a database, or an operator that produces data) and then flowing through a set of data transformation operators that are bound together through the use of the pipe (`|`) delimiter.
+The syntax of the tabular expression statement has tabular data flow from one tabular query operator to another, starting with data source (for example, a table in a database, or an operator that produces data) and then flowing through a set of data transformation operators that are bound together by using the pipe (`|`) delimiter.
 
 For example, the following query has a single statement, which is a tabular expression statement. The statement starts with a reference to a table called `StormEvents` (the database that host this table is implicit here, and part of the connection information). The data (rows) for that table are then filtered by the value of the `StartTime` column, and then filtered by the value of the `State` column. The query then returns the count of "surviving" rows.
 
@@ -40,7 +40,7 @@ For example, the following query has a single statement, which is a tabular expr
 ```Kusto
 StormEvents
 | where StartTime >= datetime(2007-11-01) and StartTime < datetime(2007-12-01)
-| where State == "FLORIDA"  
+| where State == "FLORIDA"
 | count
 ```
 
@@ -51,7 +51,7 @@ In this case, the result is:
 |   23|
 | |
 
-For more information see the [Query language reference](./kusto/query/index.md).
+For more information, see the [Query language reference](./kusto/query/index.md).
 
 ## Most common operators
 
@@ -202,11 +202,11 @@ StormEvents
 
 The result of a **summarize** operation has:
 
-- Each column named in **by**
+* Each column named in **by**
 
-- A column for each computed expression
+* A column for each computed expression
 
-- A row for each combination of by values
+* A row for each combination of by values
 
 ### render
 
@@ -260,7 +260,7 @@ StormEvents
 ```
 
 > [!NOTE]
-> The **render** operator is a client-side feature rather than part of the engine. It's integrated into the language for ease of use. The web application supports the following options: barchart, columnchart, piechart, timechart, and linechart. 
+> The **render** operator is a client-side feature rather than part of the engine. It's integrated into the language for ease of use. The web application supports the following options: barchart, columnchart, piechart, timechart, and linechart.
 
 ## Scalar operators
 
@@ -317,7 +317,7 @@ This query uses a **let** statement, which binds a name (in this case `MyData`) 
 
 ### parse_json()
 
-[**parse_json()**](kusto/query/parsejsonfunction.md): Interprets a string as a JSON value, and returns the value as dynamic. It is superior to using the **extractjson()** function when you need to extract more than one element of a compound JSON object.
+[**parse_json()**](kusto/query/parsejsonfunction.md): Interprets a string as a JSON value, and returns the value as dynamic. It's superior to using the **extractjson()** function when you need to extract more than one element of a compound JSON object.
 
 The following query extracts the JSON elements from an array.
 
@@ -412,7 +412,7 @@ StormEvents
 
 ## Tabular operators
 
-Kusto has many tabular operators, some of which are covered in other sections of this article. Here we'll focus on **parse**. 
+Kusto has many tabular operators, some of which are covered in other sections of this article. Here we'll focus on **parse**.
 
 ### parse
 
@@ -432,7 +432,7 @@ let MyTrace = datatable (EventTrace:string)
 'Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00Z, releaseTime=02/17/2016 08:41:00Z, previousLockTime=02/17/2016 08:40:00Z)'
 ];
 MyTrace
-| parse EventTrace with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previouLockTime:date ")" *  
+| parse EventTrace with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previouLockTime:date ")" *
 | project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previouLockTime
 ```
 
@@ -450,7 +450,7 @@ let MyTrace = datatable (EventTrace:string)
 'Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00Z, releaseTime=02/17/2016 08:41:00Z, previousLockTime=02/17/2016 08:40:00Z)'
 ];
 MyTrace
-| parse kind = regex EventTrace with "(.*?)[a-zA-Z]*=" resourceName @", totalSlices=\s*\d+\s*.*?sliceNumber=" sliceNumber:long  ".*?(previous)?lockTime=" lockTime ".*?releaseTime=" releaseTime ".*?previousLockTime=" previousLockTime:date "\\)"  
+| parse kind = regex EventTrace with "(.*?)[a-zA-Z]*=" resourceName @", totalSlices=\s*\d+\s*.*?sliceNumber=" sliceNumber:long  ".*?(previous)?lockTime=" lockTime ".*?releaseTime=" releaseTime ".*?previousLockTime=" previousLockTime:date "\\)"
 | project resourceName , sliceNumber , lockTime , releaseTime , previousLockTime
 ```
 
@@ -468,7 +468,7 @@ let MyTrace = datatable (EventTrace:string)
 'Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00Z, releaseTime=02/17/2016 08:41:00Z, previousLockTime=02/17/2016 08:40:00Z)'
 ];
 MyTrace
-| parse kind=relaxed "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=NULL, sliceNumber=23, lockTime=02/17/2016 08:40:01, releaseTime=NULL, previousLockTime=02/17/2016 08:39:01)" with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previousLockTime:date ")" *  
+| parse kind=relaxed "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=NULL, sliceNumber=23, lockTime=02/17/2016 08:40:01, releaseTime=NULL, previousLockTime=02/17/2016 08:39:01)" with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previousLockTime:date ")" *
 | project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previousLockTime
 ```
 
@@ -511,7 +511,7 @@ We covered basic aggregations, like **count** and **summarize**, earlier in this
 
 [**top-nested**](kusto/query/topnestedoperator.md): Produces hierarchical top results, where each level is a drill-down based on previous level values.
 
-This operator is useful for dashboard visualization scenarios, or when it is necessary to answer a question like the following: "Find the top-N values of K1 (using some aggregation); for each of them, find what are the top-M values of K2 (using another aggregation); ..."
+This operator is useful for dashboard visualization scenarios, or when it's necessary to answer a question like the following: "Find the top-N values of K1 (using some aggregation); for each of them, find what are the top-M values of K2 (using another aggregation); ..."
 
 The following query returns a hierarchical table with `State` at the
 top level, followed by `Sources`.
@@ -527,7 +527,7 @@ top-nested 1 of EndLocation by sum(BeginLat)
 
 ### pivot() plugin
 
-[**pivot() plugin**](kusto/query/pivotplugin.md): Rotates a table by turning the unique values from one column in the input table into multiple columns in the output table. The operator performs aggregations where they are required on any remaining column values in the final output.
+[**pivot() plugin**](kusto/query/pivotplugin.md): Rotates a table by turning the unique values from one column in the input table into multiple columns in the output table. The operator performs aggregations where they're required on any remaining column values in the final output.
 
 The following query applies a filter and pivots the rows into columns.
 
@@ -563,7 +563,7 @@ The following query counts the distinct values of `Source` where `DamageProperty
 **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwNDDg5apRKC7NzU0syqxKVQjOLy1KTi1WsFVISc4vzSvJTNOACOkouCTmJqanBhTlF6QWlVQq2CiYGhgYaCokVSoElySWpAIAuk%2fTX14AAAA%3d)**\]**
 
 ```Kusto
-StormEvents 
+StormEvents
 | take 100
 | summarize Sources = dcountif(Source, DamageProperty < 5000) by State
 ```
@@ -600,9 +600,9 @@ StormEvents
 | project State, StartTime, EndTime, EventType
 ```
 
-### makeset()
+### make_set()
 
-[**makeset()**](kusto/query/makeset-aggfunction.md): Returns a dynamic (JSON) array of the set of distinct values that an expression takes in the group.
+[**make_set()**](kusto/query/makeset-aggfunction.md): Returns a dynamic (JSON) array of the set of distinct values that an expression takes in the group.
 
 The following query returns all the times when a flood was reported by each state and creates an array from the set of distinct values.
 
@@ -611,14 +611,14 @@ The following query returns all the times when a flood was reported by each stat
 ```Kusto
 StormEvents
 | where EventType == "Flood"
-| summarize FloodReports = makeset(StartTime) by State
+| summarize FloodReports = make_set(StartTime) by State
 | project State, FloodReports
 ```
 
 ### mv-expand
 
 [**mv-expand**](kusto/query/mvexpandoperator.md):
-Expands multi-value collection(s) from a dynamic-typed column so that each value in the collection gets a separate row. All the other columns in an expanded row are duplicated. It's the opposite of makelist.
+Expands multi-value collection(s) from a dynamic-typed column so that each value in the collection gets a separate row. All the other columns in an expanded row are duplicated. It's the opposite of make_list.
 
 The following query generates sample data by creating a set and then using it to demonstrate the **mv-expand** capabilities.
 
@@ -627,7 +627,7 @@ The following query generates sample data by creating a set and then using it to
 ```Kusto
 let FloodDataSet = StormEvents
 | where EventType == "Flood"
-| summarize FloodReports = makeset(StartTime) by State
+| summarize FloodReports = make_set(StartTime) by State
 | project State, FloodReports;
 FloodDataSet
 | mv-expand FloodReports
@@ -709,7 +709,7 @@ let Y = datatable(Key:string, Value2:long)
     'c',30,
     'd',40
 ];
-X 
+X
 | join kind=inner Y on Key
 ```
 
@@ -924,7 +924,7 @@ StormEvents
 
 ## Functions
 
-This section covers [**functions**](kusto/query/functions/index.md): reusable queries that are stored on the server. Functions can be invoked by queries and other functions (recursive functions are not supported).
+This section covers [**functions**](kusto/query/functions/index.md): reusable queries that are stored on the server. Functions can be invoked by queries and other functions (recursive functions aren't supported).
 
 > [!NOTE]
 > You cannot create functions on the help cluster, which is read-only. Use your own test cluster for this part.
