@@ -31,9 +31,9 @@ At the bottom of the form, the total cost estimate dynamically updates as you ma
 ## Get started
 
 1. Go to the [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=azure-data-explorer).
-1. Scroll down the page until you see a tab titled **Your Estimate**. Check if “Azure Data Explorer” appears in this tab.  
+1. Scroll down the page until you see a tab titled **Your Estimate**. Check if **Azure Data Explorer** appears in this tab.  
     1. If so, go on to step 3.
-    1. If not, scroll back to the top of the page and type “Azure Data Explorer” into the search box. Select the “Azure Data Explorer” widget to add it to your estimates.
+    1. If not, scroll back to the top of the page and type “Azure Data Explorer” into the search box. Select the **Azure Data Explorer** widget to add it to your estimates.
 1. Start the configuration.
 
 :::image type="content" source="media/pricing/pricing-calculator.png" alt-text="Image of online Azure Data Explorer pricing calculator.":::
