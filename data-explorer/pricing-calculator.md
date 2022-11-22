@@ -43,11 +43,13 @@ The coming sections of this article correspond to the components in the calculat
 
 ## Region
 
-Before you choose a region for your cluster, consider your requirements. There are Azure regions all over the world, and they don't all provide exactly the same services or capacity.
+Before you choose a region for your cluster, consider your use case. There are Azure regions all over the world, and they don't all provide exactly the same services or capacity.
 
-For example, if you need [availability zone support](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support) or [disaster recovery](/azure/reliability/cross-region-replication-azure) then you'll need to choose a region that supports these services. Or if you need to keep the data within a specific geography due to [data residency and protection](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) concerns, you'll need to select regions within the relevant geography. Check out the [Azure regions decision guide](/azure/cloud-adoption-framework/migrate/azure-best-practices/multiple-regions) for more specifics.
+For example, if you need [availability zone support](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support) or [disaster recovery](/azure/reliability/cross-region-replication-azure) then you'll need to choose a region that supports these services. Or if you need to keep the data within a specific geography due to [data residency and protection](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) concerns, you'll need to select regions within the relevant geography. 
 
-Once you've decided which region is right for you, select the desired **Region** in the calculator.
+Check out the [Azure regions decision guide](/azure/cloud-adoption-framework/migrate/azure-best-practices/multiple-regions) for more specifics.
+
+In the calculator, select the desired **Region** for your cluster.
 
 ## Environment
 
@@ -65,7 +67,7 @@ The information provided in the **Estimated Data Ingestion** section of the calc
 
 * **Data Collected per day (GB/TB)**: Data that you plan to ingest without compression into Azure Data Explorer cluster every day. Calculate this estimate based on the number of files and the average size of a file being ingested. If you're streaming the data using messages, review the average size of a single message and how many messages you're ingesting.
 
-* **Hot cache retention (days)**: Ingested data that's cached according to our [cache policy](./kusto/management/cachepolicy.md) on the local SSD of the Engine service. Your query performance requirement determines the amount of compute nodes and local SSD storage needed. Where slower performance is acceptable, use blob storage for data that isn’t queried often to reduce costs.
+* **Hot cache retention (days)**: Ingested data that's cached according to our [cache policy](./kusto/management/cachepolicy.md) on the local SSD of the Engine service. Your query performance requirement determines the amount of compute nodes and local SSD storage needed.
 
 * **Total retention (days)**: Period for which your data is available for query. This retention is a combination of hot data and cold cache that keeps the data in the blob, indexed and compressed. Choose the data retention window based on compliance or other regulatory requirements. Apply the [hot window capability](../data-explorer/hot-windows.md) to warm the data based on the time window for faster queries.  
 
