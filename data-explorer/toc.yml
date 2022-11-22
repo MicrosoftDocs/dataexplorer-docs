@@ -428,7 +428,7 @@ items:
       items:
       - name: Integrate the web UI
         displayName: monaco web UI
-        href: kusto/api/monaco/manaco-overview.md
+        href: kusto/api/monaco/monaco-overview.md
       - name: Embed the web UI as an iframe
         displayName: monaco web UI
         href: kusto/api/monaco/host-web-ux-in-iframe.md

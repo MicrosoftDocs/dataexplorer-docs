@@ -32,7 +32,7 @@ You can integrate the Azure Data Explorer web UI into your apps in the following
 
     Integrating the web UI into your app offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition. It requires you to build a solution for authentication, query execution, result display, and schema exploration, but offers you full flexibility to fashion the user experience that fits your needs.
 
-- [Embed the web UI in an iframe](host-the-web-ui-in-an-iframe.md)
+- [Embed the web UI in an iframe](host-web-ux-in-iframe.md)
 
     Embedding the Azure Data Explorer web UI offers you extensive functionality with little effort, but contains limited flexibility for the user experience. There's a fixed set of query parameters that enable limited control over the system's look and behavior.
 
