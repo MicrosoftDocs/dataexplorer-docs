@@ -262,6 +262,8 @@ items:
       href: ingest-json-formats.md
   - name: Query data
     items:
+    - name: Evaluate query performance in your cluster
+      href: kusto/api/load-test-cluster.md
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
@@ -272,10 +274,8 @@ items:
       href: hot-windows.md
     - name: Debug KQL inline Python
       href: debug-inline-python.md
-    - name: Using SDKs
-      items:
-      - name: Python
-        href: python-query-data.md
+    - name: Query data using Python
+      href: python-query-data.md
     - name: Optimize for high concurrency
       href: high-concurrency.md
     - name: Time Series Analysis and Machine Learning
