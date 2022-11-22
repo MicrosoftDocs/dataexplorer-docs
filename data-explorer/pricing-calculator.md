@@ -63,7 +63,9 @@ In the calculator, select the type of **Environment** for your cluster.
 
 ## Estimated data ingestion
 
-The information provided in the **Estimated Data Ingestion** section of the calculator influences the price of all the components of your cluster. This component asks for the following estimates:
+The information provided in the **Estimated Data Ingestion** section of the calculator influences the price of all the components of your cluster.
+
+In the calculator, enter estimates for the following fields:
 
 * **Data Collected per day (GB/TB)**: Data that you plan to ingest without compression into Azure Data Explorer cluster every day. Calculate this estimate based on the number of files and the average size of a file being ingested. If you're streaming the data using messages, review the average size of a single message and how many messages you're ingesting.
 
@@ -72,13 +74,6 @@ The information provided in the **Estimated Data Ingestion** section of the calc
 * **Total retention (days)**: Period for which your data is available for query. This retention is a combination of hot data and cold cache that keeps the data in the blob, indexed and compressed. Choose the data retention window based on compliance or other regulatory requirements. Apply the [hot window capability](../data-explorer/hot-windows.md) to warm the data based on the time window for faster queries.  
 
 * **Estimated data compression**: All ingested data is compressed by default. Data compression varies based on the cardinality of the values and its structure. For example, logs data ingested in structured columns has higher compression compared to dynamic columns or GUID. To see your ratio, use the “.show tables details” command and divide the original size by the extent size.
-
-In the calculator, set the ingestion and storage parameters:
-
-1. Enter the amount of estimated data you plan to collect per day.
-1. Enter the hot cache retention days.
-1. Enter the total retention days.
-1. Enter the estimated data compression ratio.
 
 At this point, your cluster cost estimate will reflect your data requirements.
 
