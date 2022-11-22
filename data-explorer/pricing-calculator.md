@@ -9,19 +9,6 @@ ms.date: 11/21/2022
 
 Azure Data Explorer provides a [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=azure-data-explorer) to estimate the cost of your cluster based on your workloads and data volume. The calculator estimates the cost from either an auto-selected set of components or from components you manually select and configure. As you change the configuration, the price will change as well to help you make better decisions about how to configure your cluster.
 
-## Get started
-
-1. Go to the [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=azure-data-explorer).
-1. Scroll down the page until you see a tab titled **Your Estimate**. Check if “Azure Data Explorer” appears in this tab.  
-    1. If so, go on to step 3.
-    1. If not, scroll back to the top of the page and type “Azure Data Explorer” into the search box. Select the “Azure Data Explorer” widget to add it to your estimates.
-1. Start the configuration.
-
-> [!TIP]
-> Create multiple estimates for the same or different products by selecting the **+** tab. Once the new tab is open, search for a product using the search box or select one from the products list. Stay organized by giving each estimate a name in place of the **Your Estimate** heading.
-
-:::image type="content" source="media/pricing/pricing-calculator.png" alt-text="Image of online Azure Data Explorer pricing calculator.":::
-
 ## How it works
 
 The calculator estimates a monthly cost based on the following components:
@@ -38,6 +25,19 @@ The cost estimate dynamically updates as you configure each of the components.
 
 > [!NOTE]
 > Other resources such as Network I/O, Bandwidth, and VNET cost may be charged separately based on your cross-region usage.
+
+## Get started
+
+1. Go to the [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=azure-data-explorer).
+1. Scroll down the page until you see a tab titled **Your Estimate**. Check if “Azure Data Explorer” appears in this tab.  
+    1. If so, go on to step 3.
+    1. If not, scroll back to the top of the page and type “Azure Data Explorer” into the search box. Select the “Azure Data Explorer” widget to add it to your estimates.
+1. Start the configuration.
+
+> [!TIP]
+> Create multiple estimates for the same or different products by selecting the **+** tab. Once the new tab is open, search for a product using the search box or select one from the products list. Stay organized by giving each estimate a name in place of the **Your Estimate** heading.
+
+:::image type="content" source="media/pricing/pricing-calculator.png" alt-text="Image of online Azure Data Explorer pricing calculator.":::
 
 ## Region and environment
 
