@@ -23,10 +23,10 @@ You set the the region, environment, and estimated data ingestion of your cluste
 
 At the bottom of the form, these individual component estimates are added together to create a total monthly estimate. The component estimates and total estimate update as you make configuration changes.
 
-The coming sections of this article correspond to the components in the calculator and will highlight what you need to know as you go.
-
 > [!NOTE]
 > Other resources such as Network I/O, Bandwidth, and VNET cost may be charged separately based on your cross-region usage.
+
+The coming sections of this article correspond to the components in the calculator and will highlight what you need to know as you go.
 
 ## Get started
 
