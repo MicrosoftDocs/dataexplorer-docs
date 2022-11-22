@@ -9,9 +9,11 @@ ms.date: 11/21/2022
 
 Azure Data Explorer provides a [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=azure-data-explorer) to estimate the cost of your cluster based on your workloads and data volume. The calculator estimates the cost from either an auto-selected set of components or from components you manually select and configure. As you change the configuration, the price will change as well to help you make better decisions about how to configure your cluster.
 
+This article will walk you through the different components of the calculator. We will review how to configure the different components and share resources to help you make better decisions about what they are... ???
+
 ## How it works
 
-The calculator estimates a monthly cost based on the following components:
+The calculator estimates a monthly cost for the following components:
 
 * Region and environment
 * Estimated data ingestion
@@ -21,7 +23,7 @@ The calculator estimates a monthly cost based on the following components:
 * Networking
 * Azure Data Explorer markup
 
-The cost estimate dynamically updates as you configure each of the components.
+At the bottom of the form, the total cost estimate dynamically updates as you make changes to each of the components.
 
 > [!NOTE]
 > Other resources such as Network I/O, Bandwidth, and VNET cost may be charged separately based on your cross-region usage.
