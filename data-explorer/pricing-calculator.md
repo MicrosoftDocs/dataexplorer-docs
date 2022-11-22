@@ -125,14 +125,14 @@ This component is configured using the [bandwidth service](https://azure.microso
 
 To get a bandwidth service estimate:  
 
-* Scroll to the top of the page
-* Type in “bandwidth” in the search box
-* Select the Bandwidth product widget
-* Scroll down to the Bandwidth component of the estimate
-* Select a data transfer type
-* Select a source region
-* Select a destination region
-* Enter the estimated amount of outbound data in GB
+1. Scroll to the top of the page
+1. Type in “bandwidth” in the search box
+1. Select the Bandwidth product widget
+1. Scroll down to the Bandwidth component of the estimate
+1. Select a data transfer type
+1. Select a source region
+1. Select a destination region
+1. Enter the estimated amount of outbound data in GB
 
 > [!NOTE]
 > Select the same region where logs are generated to avoid cross region cost and reduce latency. There’s no data transfer cost between Azure services deployed in the same region.
