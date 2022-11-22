@@ -71,21 +71,13 @@ Dev/test clusters are great for service evaluation, conducting PoCs, and scenari
 
 This component asks for estimates of the amount of data collected per day, hot cache retention, total retention, and data compression. These factors influence the price of the rest of the components of your cluster.
 
-### Data Collected per day (GB/TB)
+* **Data Collected per day (GB/TB)**: Data that you plan to ingest without compression into Azure Data Explorer cluster every day. Calculate this based on the number of files and the average size of a file being ingested. If you're streaming the data using messages, review the average size of a single message and how many messages you're ingesting.
 
-This field represents the data that you plan to ingest without compression into Azure Data Explorer cluster every day. Calculate this based on the number of files and the average size of a file being ingested. If you're streaming the data using messages, review the average size of a single message and how many messages you're ingesting. The default value of this field is 100 GB.
+* **Hot cache retention (days)**: Ingested data that's cached according to our [cache policy](./kusto/management/cachepolicy.md) on the local SSD of the Engine service. Your query performance requirement determines the amount of compute nodes and local SSD storage needed. Where slower performance is acceptable, use blob storage for data that isn’t queried often to reduce costs.
 
-### Hot cache retention (days)
+* **Total retention (days)**: Period for which your data is available for query. This is a combination of hot data and cold cache which keeps the data in the blob, indexed and compressed. Choose the data retention window based on compliance or other regulatory requirements. Leverage the [hot window capability](../data-explorer/hot-windows.md) to warm the data based on the time window for faster queries.  
 
-This field represents ingested data that's cached according to our [cache policy](./kusto/management/cachepolicy.md) on the local SSD of the Engine service. Your query performance requirement determines the amount of compute nodes and local SSD storage needed. Where slower performance is acceptable, use blob storage for data that isn’t queried often to reduce costs.
-
-### Total retention (days)
-
-This field represents the period for which your data is available for query. This is a combination of hot data and cold cache which keeps the data in the blob, indexed and compressed. Choose the data retention window based on compliance or other regulatory requirements. Leverage the [hot window capability](../data-explorer/hot-windows.md) to warm the data based on the time window for faster queries.  
-
-### Estimated data compression
-
-This field represents all ingested data is compressed by default. Data compression varies based on the cardinality of the values and its structure. For example, logs data ingested in structured columns has higher compression compared to dynamic columns or GUID. To see your ratio, use the “.show tables details” command and divide the original size by the extent size. Use the [Azure Data Explorer free cluster](https://dataexplorer.azure.com/freecluster) to try this out.
+* **Estimated data compression**: All ingested data is compressed by default. Data compression varies based on the cardinality of the values and its structure. For example, logs data ingested in structured columns has higher compression compared to dynamic columns or GUID. To see your ratio, use the “.show tables details” command and divide the original size by the extent size.
 
 > [!IMPORTANT]
 > If you want to granularly configure the remaining components, turn off Auto-select Engine Instances.
