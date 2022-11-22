@@ -3,7 +3,7 @@ title: Functions - Azure Data Explorer
 description: This article describes Functions in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/21/2022
+ms.date: 11/22/2022
 adobe-target: true
 ---
 
@@ -17,8 +17,9 @@ kinds of functions:
 
 * **User-defined functions**, which are divided into two types:
 
-  * Stored functions: are user-defined functions that are stored and managed database schema entities (such as tables). See [Stored functions](../schema-entities/stored-functions.md).
-  * Temporary functions: are user-defined functions that are defined and used within the scope of a single query. The definition of such functions is done through a [let statement](../letstatement.md).
+  * Stored functions: are user-defined functions that are stored and managed database schema entities (such as tables).
+For more information on how to create and manage stored functions, see [Stored functions management overview](../../management/functions.md).
 
-For more information on user-defined functions, see [User-defined functions](./user-defined-functions.md).
-For details on how to create and manage stored functions, see [managing functions](../../management/functions.md).
+    For more information on user-defined functions, see [User-defined functions](./user-defined-functions.md).
+
+  * Temporary functions: are user-defined functions that are defined and used within the scope of a single query. The definition of such functions is done through a [let statement](../letstatement.md).
