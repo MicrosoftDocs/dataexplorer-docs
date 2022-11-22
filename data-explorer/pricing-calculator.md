@@ -5,11 +5,11 @@ ms.topic: how-to
 ms.date: 11/21/2022
 ---
 
-Azure Data Explorer provides a [pricing calculator](https://azure.microsoft.com/en-us/pricing/calculator/?service=azure-data-explorer) to help you decide how to configure your cluster. The calculator estimates the cost of your configuration from either a pre-configured set of components or from components you manually select and configure.
+Azure Data Explorer provides a [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=azure-data-explorer) to help you decide how to configure your cluster. The calculator estimates the cost of your configuration from either a pre-configured set of components or from components you manually select and configure.
 
 ## Get started
 
-1. Go to the [pricing calculator](https://azure.microsoft.com/en-us/pricing/calculator/?service=azure-data-explorer).
+1. Go to the [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=azure-data-explorer).
 1. Scroll down the page until you see a tab titled **Your Estimate**. Check if “Azure Data Explorer” appears in this tab.  
     1. If so, go on to step 3.
     1. If not, scroll back to the top of the page and type “Azure Data Explorer” into the search box. Select the “Azure Data Explorer” widget to add it to your estimates.
@@ -117,7 +117,7 @@ The storage component is the persistent layer where all the data is stored compr
 
 ## Networking
 
-This component is configured using the [bandwidth service](https://azure.microsoft.com/en-us/pricing/details/bandwidth/).  
+This component is configured using the [bandwidth service](https://azure.microsoft.com/pricing/details/bandwidth/).  
 
 To add and set up a bandwidth service estimate:  
 
@@ -134,17 +134,17 @@ To add and set up a bandwidth service estimate:
 
 ## Azure Data Explorer markup
 
-This is a premium support option for your data ingestion and engine clusters. It is billed based on the number of engine vCPUs in the cluster and is not charged for dev clusters. Your costs change based on the number of hours/days/months configured in the engine instances component. For more information, see [Azure Data Explorer pricing - FAQ](https://azure.microsoft.com/en-us/pricing/details/data-explorer/#faq).
+This is a premium support option for your data ingestion and engine clusters. It is billed based on the number of engine vCPUs in the cluster and is not charged for dev clusters. Your costs change based on the number of hours/days/months configured in the engine instances component. For more information, see [Azure Data Explorer pricing - FAQ](https://azure.microsoft.com/pricing/details/data-explorer/#faq).
 
 ## Support
 
 Choose a support plan:
 
-* **Developer** - select this option when configuring Azure Data Explorer in a non-production environment or for trial and evaluation. For more information, see the [Azure Support: Developer](https://azure.microsoft.com/en-us/support/plans/developer/) page.
+* **Developer** - select this option when configuring Azure Data Explorer in a non-production environment or for trial and evaluation. For more information, see the [Azure Support: Developer](https://azure.microsoft.com/support/plans/developer/) page.
 
-* **Standard** - select this option when configuring Azure Data Explorer when you need minimal business critical dependence. For more information, see the [Azure Support: Standard](https://azure.microsoft.com/en-us/support/plans/standard/) page.
+* **Standard** - select this option when configuring Azure Data Explorer when you need minimal business critical dependence. For more information, see the [Azure Support: Standard](https://azure.microsoft.com/support/plans/standard/) page.
 
-* **Professional Direct** - select this option when you need substantial business critical utilization of Azure Data Explorer. For more information, see the [Azure Support: Professional Direct](https://azure.microsoft.com/en-us/support/plans/prodirect/) page.
+* **Professional Direct** - select this option when you need substantial business critical utilization of Azure Data Explorer. For more information, see the [Azure Support: Professional Direct](https://azure.microsoft.com/support/plans/prodirect/) page.
 
 ## What to do with your estimate
 
