@@ -45,15 +45,15 @@ The coming sections of this article correspond to the components in the calculat
 
 Before you choose a region for your cluster, consider your requirements. There are Azure regions all over the world, and they don't all provide exactly the same services or capacity.
 
-For example, if you need [availability zone support](https://learn.microsoft.com/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support) or [disaster recovery](https://learn.microsoft.com/azure/reliability/cross-region-replication-azure) then you'll need to choose a region that support these services. Or if you need to keep the data within a specific geography due to [data residency and protection](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) concerns, you'll need to select regions within the relevant geography. Check out the [Azure regions decision guide](/azure/cloud-adoption-framework/migrate/azure-best-practices/multiple-regions) for more specifics.
+For example, if you need [availability zone support](https://learn.microsoft.com/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support) or [disaster recovery](https://learn.microsoft.com/azure/reliability/cross-region-replication-azure) then you'll need to choose a region that supports these services. Or if you need to keep the data within a specific geography due to [data residency and protection](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) concerns, you'll need to select regions within the relevant geography. Check out the [Azure regions decision guide](/azure/cloud-adoption-framework/migrate/azure-best-practices/multiple-regions) for more specifics.
 
-Once you have decided which region is right for you, select the desired **Region** in the calculator.
+Once you've decided which region is right for you, select the desired **Region** in the calculator.
 
 ## Environment
 
 There are two options for your cluster environment: **production** or **dev/test**.
 
-Dev/test clusters are the lowest cost option, which make them great for service evaluation, conducting PoCs, and scenario validations. They're limited in size and can't grow beyond a single node. There is no Azure Data Explorer markup charge and also no product SLA for these clusters.
+Dev/test clusters are the lowest cost option, which makes them great for service evaluation, conducting PoCs, and scenario validations. They're limited in size and can't grow beyond a single node. There's no Azure Data Explorer markup charge and also no product SLA for these clusters.
 
 Production clusters contain two or more nodes for engine and data management and operate under the Azure Data Explorer SLA.
 
@@ -63,11 +63,11 @@ In the calculator, select the type of **Environment** for your cluster.
 
 The information provided in the **Estimated Data Ingestion** section of the calculator influences the price of all the components of your cluster. This component asks for estimates of the amount of data collected per day, hot cache retention, total retention, and data compression.
 
-* **Data Collected per day (GB/TB)**: Data that you plan to ingest without compression into Azure Data Explorer cluster every day. Calculate this based on the number of files and the average size of a file being ingested. If you're streaming the data using messages, review the average size of a single message and how many messages you're ingesting.
+* **Data Collected per day (GB/TB)**: Data that you plan to ingest without compression into Azure Data Explorer cluster every day. Calculate this estimate based on the number of files and the average size of a file being ingested. If you're streaming the data using messages, review the average size of a single message and how many messages you're ingesting.
 
 * **Hot cache retention (days)**: Ingested data that's cached according to our [cache policy](./kusto/management/cachepolicy.md) on the local SSD of the Engine service. Your query performance requirement determines the amount of compute nodes and local SSD storage needed. Where slower performance is acceptable, use blob storage for data that isn’t queried often to reduce costs.
 
-* **Total retention (days)**: Period for which your data is available for query. This is a combination of hot data and cold cache which keeps the data in the blob, indexed and compressed. Choose the data retention window based on compliance or other regulatory requirements. Leverage the [hot window capability](../data-explorer/hot-windows.md) to warm the data based on the time window for faster queries.  
+* **Total retention (days)**: Period for which your data is available for query. This retention is a combination of hot data and cold cache that keeps the data in the blob, indexed and compressed. Choose the data retention window based on compliance or other regulatory requirements. Apply the [hot window capability](../data-explorer/hot-windows.md) to warm the data based on the time window for faster queries.  
 
 * **Estimated data compression**: All ingested data is compressed by default. Data compression varies based on the cardinality of the values and its structure. For example, logs data ingested in structured columns has higher compression compared to dynamic columns or GUID. To see your ratio, use the “.show tables details” command and divide the original size by the extent size.
 
@@ -88,7 +88,7 @@ Choose between the following **Workload** options:
   * Suited for high query rates
   * Local SSD for low latency I/O
 * **Storage optimized SKUs** -
-  * Provides larger storage options of 1TB to 4TB per Engine node
+  * Provides larger storage options of 1 TB to 4 TB per Engine node
   * Suited for workloads that require caching large data sizes
   * In some SKUs, premium managed disk storage is attached to the engine node instead of Local SSD for hot data storage
 * **Isolate Compute SKUs** -
@@ -97,13 +97,13 @@ Choose between the following **Workload** options:
 
 ## Data management instances
 
-The data management (DM) service is responsible for data ingestion from managed data pipelines such as Azure Blob storage, Event Hub, IoT Hub, and from other services like Azure Data Factory, Azure Stream Analytics, and Kafka. The service requires a minimum of two compute instances which are automatically configured and managed based on the engine instance size.  
+The data management (DM) service is responsible for data ingestion from managed data pipelines like Azure Blob storage, Event Hubs, IoT Hub, and other services like Azure Data Factory, Azure Stream Analytics, and Kafka. The service requires a minimum of two compute instances that are automatically configured and managed based on the engine instance size.  
 
 In this component, provide the number of hours/days/months you’d like to run the instance.
 
 ## Storage and transactions
 
-The storage component is the persistent layer where all the data is stored compressed and is billed as Standard LRS or as Standard ZRS. The storage isn't configurable. It is calculated based on the amount of data collected, the total retention days, and the estimated data compression.
+The storage component is the persistent layer where all the data is stored compressed and is billed as Standard LRS or as Standard ZRS. The storage isn't configurable. It's calculated based on the amount of data collected, the total retention days, and the estimated data compression.
 
 ## Networking
 
@@ -125,7 +125,7 @@ To get a bandwidth service estimate:
 
 ## Azure Data Explorer markup
 
-This is a premium support option for your data ingestion and engine clusters. It is billed based on the number of engine vCPUs in the cluster and is not charged for dev clusters. Your costs change based on the number of hours/days/months configured in the engine instances component. For more information, see [Azure Data Explorer pricing - FAQ](https://azure.microsoft.com/pricing/details/data-explorer/#faq).
+The Azure Data Explorer markup is charged for the premium support option provided with your data ingestion and engine clusters. It's billed based on the number of engine vCPUs in the cluster and isn't charged for dev clusters. Your costs change based on the number of hours/days/months configured in the engine instances component. For more information, see [Azure Data Explorer pricing - FAQ](https://azure.microsoft.com/pricing/details/data-explorer/#faq).
 
 ## Support
 
@@ -141,7 +141,7 @@ Choose a support plan:
 
 * Export the estimate to Excel
 * Save the estimate for future reference
-* Share the estimate – login required
+* Share the estimate – sign in required
 
 ## Next Steps
 
