@@ -101,6 +101,8 @@ Choose between the following **Workload** options:
   * Suited for running workloads that require server instance-level isolation
   * See [Isolation in the Azure Public Cloud](/azure/security/fundamentals/isolation-choices)
 
+> [!NOTE]
+> Not all **VM Series** are offered in each region. If you are looking for a SKU that is not listed in the selected region, choose a different region.
 ### Data management instances
 
 The data management (DM) service is responsible for data ingestion from managed data pipelines like Azure Blob storage, Event Hubs, IoT Hub, and other services like Azure Data Factory, Azure Stream Analytics, and Kafka. The service requires a minimum of two compute instances that are automatically configured and managed based on the engine instance size.  
