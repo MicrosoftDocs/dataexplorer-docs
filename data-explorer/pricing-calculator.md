@@ -13,7 +13,7 @@ This article explains each of the components of the calculator and gives tips an
 
 ## How it works
 
-The calculator estimates a monthly cost for the following components based on the region, environment, and estimated data ingestion of your cluster:
+You set the the region, environment, and estimated data ingestion of your cluster. Then, the calculator estimates a monthly cost for each of the following components:
 
 * Engine instances
 * Data management instances
@@ -21,7 +21,7 @@ The calculator estimates a monthly cost for the following components based on th
 * Networking
 * Azure Data Explorer markup
 
-At the bottom of the form, these individual component estimates are added together to create a total monthly estimate. The component estimates and total estimate update as you make configuration changes.  
+At the bottom of the form, these individual component estimates are added together to create a total monthly estimate. The component estimates and total estimate update as you make configuration changes.
 
 The coming sections of this article correspond to the components in the calculator and will highlight what you need to know as you go.
 
