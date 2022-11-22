@@ -123,15 +123,16 @@ The storage component is the persistent layer where all the data is stored compr
 
 This component is configured using the [bandwidth service](https://azure.microsoft.com/pricing/details/bandwidth/).  
 
-To add and set up a bandwidth service estimate:  
+To get a bandwidth service estimate:  
 
-* Scroll to the top of the page, in the search products box, type in “bandwidth.”
-* Select the Bandwidth product.
-* Scroll down to the Bandwidth component of the estimate.
-* Select a data transfer type.
-* Select a source region.
-* Select a destination region.
-* Enter the estimated amount of outbound data (in GB).
+* Scroll to the top of the page
+* Type in “bandwidth” in the search box
+* Select the Bandwidth product widget
+* Scroll down to the Bandwidth component of the estimate
+* Select a data transfer type
+* Select a source region
+* Select a destination region
+* Enter the estimated amount of outbound data in GB
 
 > [!NOTE]
 > Select the same region where logs are generated to avoid cross region cost and reduce latency. There’s no data transfer cost between Azure services deployed in the same region.
