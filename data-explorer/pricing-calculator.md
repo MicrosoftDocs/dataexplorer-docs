@@ -21,7 +21,7 @@ You set the the region, environment, and estimated data ingestion of your cluste
 * Networking
 * Azure Data Explorer markup
 
-At the bottom of the form, these individual component estimates are added together to create a total monthly estimate. The component estimates and total estimate update as you make configuration changes.
+At the bottom of the form, these individual component estimates are added together to create a total monthly estimate. The estimates update as you make configuration changes.
 
 > [!NOTE]
 > Other resources such as Network I/O, Bandwidth, and VNET cost may be charged separately based on your cross-region usage.
@@ -55,7 +55,7 @@ In the calculator, select the desired **Region** for your cluster.
 
 There are two options for your cluster environment: **production** or **dev/test**.
 
-Dev/test clusters are the lowest cost option, which makes them great for service evaluation, conducting PoCs, and scenario validations. They're limited in size and can't grow beyond a single node. There's no Azure Data Explorer markup charge and also no product SLA for these clusters.
+Dev/test clusters are the lowest cost option, which makes them great for service evaluation, conducting PoCs, and scenario validations. They're limited in size and can't grow beyond a single node. There's no Azure Data Explorer markup charge or product SLA for these clusters.
 
 Production clusters contain two or more nodes for engine and data management and operate under the Azure Data Explorer SLA.
 
