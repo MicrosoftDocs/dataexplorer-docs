@@ -41,31 +41,23 @@ The coming sections of this article correspond to the components in the calculat
 > [!TIP]
 > Create multiple estimates for the same or different products by selecting the **+** tab. Once the new tab is open, search for a product using the search box or select one from the products list. Stay organized by giving each estimate a name in place of the **Your Estimate** heading.
 
-## Region and environment
+## Region
 
-### Region
+Before you choose a region for your cluster, consider your requirements. There are Azure regions all over the world, and they don't all provide exactly the same services or capacity.
 
-Select the **Region** for your cluster based on the [Azure regions decision guide](/azure/cloud-adoption-framework/migrate/azure-best-practices/multiple-regions).
+For example, if you need [availability zone support](https://learn.microsoft.com/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support) or [disaster recovery](https://learn.microsoft.com/azure/reliability/cross-region-replication-azure) then you'll need to choose a region that support these services. Or if you need to keep the data within a specific geography due to [data residency and protection](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) concerns, you'll need to select regions within the relevant geography. Check out the [Azure regions decision guide](/azure/cloud-adoption-framework/migrate/azure-best-practices/multiple-regions) for more specifics.
 
-Some key considerations when picking a region are VM sizes and families, data residency and protection, disaster recovery, and availability zones.
+Once you have decided which region is right for you, select the desired **Region** in the calculator.
 
-* Not all VM sizes or VM families are offered in each region. If you’re looking for a SKU that isn’t listed in the selected region, choose a different region.
+## Environment
 
-* If you need to keep the data within a specific geography, select from the regions in the same geography. For more information, see Enabling Data Residency and Data Protection in Microsoft Azure Regions.
+There are two options for your cluster environment: **production** or **dev/test**.
 
-* To build a disaster recovery (DR) Azure Data Explorer cluster, deploy the DR cluster in a DR region, or paired region. For more information, see Cross-region replication in Azure: Business continuity and disaster recovery.
+Dev/test clusters are the lowest cost option, which make them great for service evaluation, conducting PoCs, and scenario validations. They're limited in size and can't grow beyond a single node. There is no Azure Data Explorer markup charge and also no product SLA for these clusters.
 
-* Availability Zones – An Availability Zone (AZ) is a high availability offering that protects your applications and data from data center failures. Choose AZ during cluster creation if it is enabled in your selected region. For fault tolerance within a single region, deploy your cluster to one or many zones. AZ enabled clusters use ZRS storage instead of LRS. For more information see, Data redundancy - Azure Storage | Microsoft Docs.  
+Production clusters contain two or more nodes for engine and data management and operate under the Azure Data Explorer SLA.
 
-### Environment
-
-Select the type of **Environment** for your cluster: production or dev/test.
-
-Dev/test clusters are great for service evaluation, conducting PoCs, and scenario validations because unlike production clusters:
-
-* Dev/test clusters are limited in size and can’t grow beyond a single node.
-* Azure Data Explorer markup isn't charged for dev/test clusters.
-* There’s no product SLA for dev/test clusters.
+In the calculator, select the type of **Environment** for your cluster.
 
 ## Estimated data ingestion
 
