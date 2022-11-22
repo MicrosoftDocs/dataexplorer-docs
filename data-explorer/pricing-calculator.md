@@ -73,8 +73,17 @@ The information provided in the **Estimated Data Ingestion** section of the calc
 
 * **Estimated data compression**: All ingested data is compressed by default. Data compression varies based on the cardinality of the values and its structure. For example, logs data ingested in structured columns has higher compression compared to dynamic columns or GUID. To see your ratio, use the “.show tables details” command and divide the original size by the extent size.
 
+In the calculator, set the ingestion and storage parameters:
+
+1. Enter the amount of estimated data you plan to collect per day.
+1. Enter the hot cache retention days.
+1. Enter the total retention days.
+1. Enter the estimated data compression ratio.
+
+At this point, your cluster cost estimate will reflect your data requirements.
+
 > [!IMPORTANT]
-> If you want to granularly configure the remaining components, turn off Auto-select Engine Instances.
+> If you want to granularly configure the remaining components, turn off **Auto-select Engine Instances**.
 
 ### Engine instances
 
