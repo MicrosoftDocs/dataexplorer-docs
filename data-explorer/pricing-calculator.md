@@ -7,13 +7,13 @@ ms.date: 11/21/2022
 
 # Estimate the cost of your Azure Data Explorer cluster with the pricing calculator
 
-Azure Data Explorer provides a [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=azure-data-explorer) to estimate the cost of your cluster. The estimate is calculated from an auto-selected set of components or from components you manually select and configure. As you make changes to the configuration, the price estimate also changes so you can understand the cost implications of your configuration choices.
+Azure Data Explorer provides a [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=azure-data-explorer) to estimate the cost of your cluster. The estimate is based on specifications such as estimated data ingestion and engine workload. As you make changes to the configuration, the price estimate also changes so you can understand the cost implications of your configuration choices.
 
 This article explains each of the components of the calculator and gives tips and resources along the way to help you make better decisions about how to configure your cluster.
 
 ## How it works
 
-You set the the region, environment, and estimated data ingestion of your cluster. Then, based on auto-selected or manually-selected specifications, the calculator estimates a monthly cost for each of the following components:
+You set the the region, environment, and estimated data ingestion of your cluster. Then, the calculator estimates a monthly cost based on auto-selected or manually-selected specifications in each of the following components:
 
 * Engine instances
 * Data management instances
@@ -103,6 +103,7 @@ Choose between the following **Workload** options:
 
 > [!NOTE]
 > Not all **VM Series** are offered in each region. If you are looking for a SKU that is not listed in the selected region, choose a different region.
+
 ### Data management instances
 
 The data management (DM) service is responsible for data ingestion from managed data pipelines like Azure Blob storage, Event Hubs, IoT Hub, and other services like Azure Data Factory, Azure Stream Analytics, and Kafka. The service requires a minimum of two compute instances that are automatically configured and managed based on the engine instance size.  
