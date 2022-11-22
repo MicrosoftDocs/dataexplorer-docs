@@ -69,6 +69,11 @@ sections:
           To improve performance for many small files, adjust the [batching policy](batchingpolicy.md), change batching conditions and address [latencies](batchingpolicy.md#batching-latencies). 
           Use the batching policy [wizard](../../table-batching-policy-wizard.md) to quickly change policy settings. 
           To improve ingestion performance when ingesting extremely large data files, use [Azure Data Factory](/azure/data-factory/) (ADF), a cloud-based data integration service. 
+  - name: Ingesting invalid data
+    questions:
+      - question: What happens when invalid data is ingested?
+        answer: |
+          Malformed data, unparsable, too large or not conforming to schema, might fail to be ingested properly. For more information, see [Ingesting invalid data](ingesting-invalid-data.md). 
   - name: SDKs and connectors
     questions:     
       - question: How can I improve ingestion with SDKs?
