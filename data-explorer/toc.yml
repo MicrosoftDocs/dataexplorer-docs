@@ -426,11 +426,14 @@ items:
         href: kusto/api/connection-strings/generate-sas-token.md
     - name: Integrate Kusto query editor in your apps
       items:
-      - name: Embed query editor as an iframe
-        displayName: monaco
+      - name: Integrate the web UI
+        displayName: monaco web UI
+        href: kusto/api/monaco/manaco-overview.md
+      - name: Embed the web UI as an iframe
+        displayName: monaco web UI
         href: kusto/api/monaco/host-web-ux-in-iframe.md
-      - name: Integrate custom query editor
-        displayName: monaco
+      - name: Integrate the web UI directly in your app
+        displayName: monaco monaco-kusto web UI
         href: kusto/api/monaco/monaco-kusto.md
   - name: Manage
     items:
