@@ -26,8 +26,6 @@ At the bottom of the form, these individual component estimates are added togeth
 > [!NOTE]
 > Other resources such as Network I/O, Bandwidth, and VNET cost may be charged separately based on your cross-region usage.
 
-The coming sections of this article correspond to the components in the calculator and will highlight what you need to know as you go.
-
 ## Get started
 
 1. Go to the [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=azure-data-explorer).
@@ -35,6 +33,8 @@ The coming sections of this article correspond to the components in the calculat
     1. If so, go on to step 3.
     1. If not, scroll back to the top of the page and type “Azure Data Explorer” into the search box. Select the **Azure Data Explorer** widget.
 1. Start the configuration.
+
+The coming sections of this article correspond to the components in the calculator and will highlight what you need to know as you go.
 
 :::image type="content" source="media/pricing/pricing-calculator.png" alt-text="Image of online Azure Data Explorer pricing calculator.":::
 
