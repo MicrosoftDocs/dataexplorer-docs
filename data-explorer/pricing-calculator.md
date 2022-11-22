@@ -23,7 +23,7 @@ The calculator estimates a monthly cost for the following components:
 * Networking
 * Azure Data Explorer markup
 
-At the bottom of the form, the total cost estimate dynamically updates as you make changes to each of the components.
+At the bottom of the form, the total monthly cost estimate updates as you make changes to each of the components.
 
 > [!NOTE]
 > Other resources such as Network I/O, Bandwidth, and VNET cost may be charged separately based on your cross-region usage.
