@@ -7,24 +7,24 @@ ms.date: 11/03/2022
 ---
 # avgif() (aggregation function)
 
-Calculates the [average](avg-aggfunction.md) of *Expr* across the group for which *Predicate* evaluates to `true`.
+Calculates the [average](avg-aggfunction.md) of *expr* across the group for which *predicate* evaluates to `true`.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
 
-`avgif` `(`*Expr*`,` *Predicate*`)`
+`avgif` `(`*expr*`,` *predicate*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expr* | string | &check; | Expression used for aggregation calculation. Records with `null` values are ignored and not included in the calculation. |
-| *Predicate* | string | &check; | Predicate that if true, the *Expr* calculated value will be added to the average. |
+| *expr* | string | &check; | Expression used for aggregation calculation. Records with `null` values are ignored and not included in the calculation. |
+| *predicate* | string | &check; | Predicate that if true, the *expr* calculated value will be added to the average. |
 
 ## Returns
 
-Returns the average value of *Expr* across the group where *Predicate* evaluates to `true`.
+Returns the average value of *expr* across the group where *predicate* evaluates to `true`.
 
 ## Example
 
