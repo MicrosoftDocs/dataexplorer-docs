@@ -3,7 +3,7 @@ title: geo_polygon_to_s2cells() - Azure Data Explorer
 description: This article describes geo_polygon_to_s2cells() in Azure Data Explorer.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 05/10/2020
+ms.date: 11/08/2022
 ---
 # geo_polygon_to_s2cells()
 
@@ -79,7 +79,7 @@ This match can be achieved by the following process:
 * If the polygons are far from each other, choose the [S2 cell level](geo-point-to-s2cell-function.md) such that its cell edge will be similar to the edge of the average polygon.
 * In practice, covering a polygon with more than 10000 cells might not yield good performance.
 * Sample use cases:
-   - S2 cell level 5 might prove to be good for covering countries.
+   - S2 cell level 5 might prove to be good for covering countries/regions.
    - S2 cell level 16 can cover dense and relatively small Manhattan (New York) neighborhoods.
    - S2 cell level 11 can be used for covering suburbs of Australia.
 * Query run time and memory consumption might differ because of different S2 cell level values.
@@ -136,7 +136,7 @@ EarthAtNight
 | extend covering = geo_polygon_to_s2cells(polygon, intersection_level_hint)
 | mv-apply c = covering to typeof(string) on
 (
-    summarize is_intersects = anyif(1, array_index_of(area_of_interest_covering, c) != -1)
+    summarize is_intersects = take_anyif(1, array_index_of(area_of_interest_covering, c) != -1)
 )
 | where is_intersects == 1
 | count
