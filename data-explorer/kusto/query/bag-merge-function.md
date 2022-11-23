@@ -7,7 +7,7 @@ ms.date: 11/23/2022
 ---
 # bag_merge()
 
-Merges `dynamic` property-bags into a `dynamic` property-bag with all properties merged.
+Merges `dynamic` property bags into a `dynamic` property bag object with all properties merged.
 
 ## Syntax
 
@@ -17,11 +17,11 @@ Merges `dynamic` property-bags into a `dynamic` property-bag with all properties
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *bag1...bagN* | dynamic | &check; | Input property-bags. The function accepts between 2 to 64 arguments. |
+| *bag1...bagN* | dynamic | &check; | Property bags to merge. The function accepts between 2 to 64 arguments. |
 
 ## Returns
 
-Returns a `dynamic` property-bag. Results from merging all of the input property-bag objects. If a key appears in more than one input object, an arbitrary value out of the possible values for this key will be chosen.
+Returns a `dynamic` property bag. Results from merging all of the input property bag objects. If a key appears in more than one input object, an arbitrary value out of the possible values for this key will be chosen.
 
 ## Example
 

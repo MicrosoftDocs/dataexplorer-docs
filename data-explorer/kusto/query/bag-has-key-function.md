@@ -7,7 +7,7 @@ ms.date: 11/23/2022
 ---
 # bag_has_key()
 
-Checks whether a dynamic bag column contains a given key.
+Checks whether a dynamic property bag object contains a given key.
 
 ## Syntax
 

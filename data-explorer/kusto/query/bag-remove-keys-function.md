@@ -7,7 +7,7 @@ ms.date: 11/23/2022
 ---
 # bag_remove_keys()
 
-Removes keys and associated values from a `dynamic` property-bag.
+Removes keys and associated values from a `dynamic` property bag.
 
 ## Syntax
 
@@ -17,12 +17,12 @@ Removes keys and associated values from a `dynamic` property-bag.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *bag* | dynamic | &check; | Property-bag input. |
+| *bag* | dynamic | &check; | Property bag from which to remove keys. |
 | *keys* | string | &check; | Array keys to be removed from the input. Keys refer to the first level of the property bag. You can specify keys on the nested levels using [JSONPath](jsonpath.md) notation. Array indexing isn't supported. |
 
 ## Returns
 
-Returns a `dynamic` property-bag without specified keys and their values.
+Returns a `dynamic` property bag without specified keys and their values.
 
 ## Examples
 
