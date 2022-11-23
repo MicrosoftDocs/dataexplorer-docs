@@ -5,7 +5,7 @@ ms.topic: how-to
 ms.date: 11/21/2022
 ---
 
-# Estimate the cost of your Azure Data Explorer cluster with the pricing calculator
+# Azure Data Explorer pricing calculator
 
 Azure Data Explorer provides a [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=azure-data-explorer) to estimate the cost of your cluster. The estimate is based on specifications such as estimated data ingestion and engine workload. As you make changes to the configuration, the price estimate also changes so you can understand the cost implications of your configuration choices.
 
