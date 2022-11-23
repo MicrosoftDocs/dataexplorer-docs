@@ -1,6 +1,6 @@
 ---
 title: binary_all_xor() (aggregation function) - Azure Data Explorer
-description: Learn how to use the binary_all_xor() function to aggregate values using the binary 'xor' operation.
+description: Learn how to use the binary_all_xor() function to aggregate values using the binary XOR operation.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/20/2022
