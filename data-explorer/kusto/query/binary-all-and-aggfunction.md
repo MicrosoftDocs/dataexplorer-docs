@@ -1,6 +1,6 @@
 ---
 title: binary_all_and() (aggregation function) - Azure Data Explorer
-description: Learn how to use the binary_all_and() function to aggregate values using the binary 'and' operation.
+description: Learn how to use the binary_all_and() function to aggregate values using the binary AND operation.
 ms.topic: reference
 ms.date: 11/20/2022
 ---
