@@ -26,8 +26,8 @@ The `azure_digital_twins_query_request` plugin uses the Azure AD account of the 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *AdtInstanceEndpoint* | string | &check; | The Azure Digital Twins instance endpoint to be queried. |
-| *AdtQuery* | string | &check; | The query that is to be run against the Azure Digital Twins endpoint. This query is written in a custom SQL-like query language for Azure Digital Twins, called the Azure Digital Twins query language. For more information, see [Query language for Azure Digital Twins](/azure/digital-twins/concepts-query-language).|
+| *AdtInstanceEndpoint* | string | &check; | Azure Digital Twins instance endpoint to be queried. |
+| *AdtQuery* | string | &check; | Query that is to be run against the Azure Digital Twins endpoint. This query is written in a custom SQL-like query language for Azure Digital Twins, called the Azure Digital Twins query language. For more information, see [Query language for Azure Digital Twins](/azure/digital-twins/concepts-query-language).|
 
 ## Examples
 
