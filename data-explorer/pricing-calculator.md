@@ -73,7 +73,7 @@ In the calculator, enter estimates for the following fields:
 
 * **Total retention (days)**: Period for which your data is available for query. This retention is a combination of hot data and cold cache that keeps the data in the blob, indexed and compressed. Choose the data retention window based on compliance or other regulatory requirements. Apply the [hot window capability](../data-explorer/hot-windows.md) to warm the data based on the time window for faster queries.  
 
-* **Estimated data compression**: All ingested data is compressed by default. Data compression varies based on the cardinality of the values and its structure. For example, logs data ingested in structured columns has higher compression compared to dynamic columns or GUID. To see your ratio, use the “.show tables details” command and divide the original size by the extent size.
+* **Estimated data compression**: Ratio between the uncompressed data size and compressed size. Data compression varies based on the cardinality of the values and its structure. For example, logs data ingested in structured columns has higher compression compared to dynamic columns or GUID. All ingested data is compressed by default.
 
 At this point, your cluster cost estimate will reflect your data requirements.
 
@@ -97,9 +97,6 @@ Choose between the following **Workload** options:
   * Provides larger storage options of 1 TB to 4 TB per Engine node
   * Suited for workloads that require caching large data sizes
   * In some SKUs, premium managed disk storage is attached to the engine node instead of Local SSD for hot data storage
-* **Isolate Compute SKUs** -
-  * Suited for running workloads that require server instance-level isolation
-  * See [Isolation in the Azure Public Cloud](/azure/security/fundamentals/isolation-choices)
 
 > [!NOTE]
 > Not all **VM Series** are offered in each region. If you are looking for a SKU that is not listed in the selected region, choose a different region.
