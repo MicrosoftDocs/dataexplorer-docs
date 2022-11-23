@@ -10,7 +10,7 @@ ms.date: 11/20/2022
 The function `series_mv_if_anomalies_fl()` detects multivariate anomalies in series by applying [isolation forest model from scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html). The function accepts a set of series as numerical dynamic arrays, the names of the features columns and the expected percentage of anomalies out of the whole series. The function builds an ensemble of isolation trees for each series and marks the points that are quickly isolated as anomalies.
 
 > [!NOTE]
-> * `series_mv_if_anomalies_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+> * `series_mv_if_anomalies_fl()` is a [user-defined function](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 > * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
 
 ## Syntax
@@ -21,7 +21,7 @@ The function `series_mv_if_anomalies_fl()` detects multivariate anomalies in ser
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *features_cols* | dynamic | &check; | Dynamic array containing the names of the columns that are used for the multivariate anomaly detection model |
+| *features_cols* | dynamic | &check; | Dynamic array containing the names of the columns that are used for the multivariate anomaly detection model. |
 | *anomaly_col* | string | &check; | The name of the column to store the detected anomalies. |
 | *anomalies_pct* | real | | A real number in the range [0-50] specifying the expected percentage of anomalies in the data. Default value: 4% |
 | *num_trees* | int | | The number of isolation trees to build for each time series. Default value: 100 |

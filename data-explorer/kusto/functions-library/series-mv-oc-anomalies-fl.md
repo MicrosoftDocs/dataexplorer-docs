@@ -7,10 +7,10 @@ ms.date: 11/20/2022
 ---
 # series_mv_oc_anomalies_fl()
 
-The function `series_mv_oc_anomalies_fl()` detects multivariate anomalies in series by applying [One Class SVM model](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html). The function accepts a set of series as numerical dynamic arrays, the names of the features columns and the expected percentage of anomalies out of the whole series. The function trains one class SVM for each series and marks the points that fall outside the hyper sphere as anomalies.
+The function `series_mv_oc_anomalies_fl()` detects multivariate anomalies in series by applying the [One Class SVM model](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html). The function accepts a set of series as numerical dynamic arrays, the names of the features columns and the expected percentage of anomalies out of the whole series. The function trains one class SVM for each series and marks the points that fall outside the hyper sphere as anomalies.
 
 > [!NOTE]
-> * `series_mv_oc_anomalies_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+> * `series_mv_oc_anomalies_fl()` is a [user-defined function](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 > * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
 
 ## Syntax
@@ -21,7 +21,7 @@ The function `series_mv_oc_anomalies_fl()` detects multivariate anomalies in ser
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *features_cols* | dynamic | &check; | Dynamic array containing the names of the columns that are used for the multivariate anomaly detection model |
+| *features_cols* | dynamic | &check; | Dynamic array containing the names of the columns that are used for the multivariate anomaly detection model. |
 | *anomaly_col* | string | &check; | The name of the column to store the detected anomalies. |
 | *anomalies_pct* | real | | A real number in the range [0-50] specifying the expected percentage of anomalies in the data. Default value: 4% |
 
@@ -107,7 +107,7 @@ normal_2d_with_anomalies
 
 ---
 
-normal_2d_with_anomalies contains a set of 3 time series, each one has 2 dimensional normal distribution with daily anomalies added at midnight, 8am and 4pm respectively. It can be created by [this query](series-mv-ee-anomalies-fl.md#creating-the-sample-data-set).
+The table normal_2d_with_anomalies contains a set of 3 time series. Each time series has two-dimensional normal distribution with daily anomalies added at midnight, 8am, and 4pm respectively. You can create this sample data set using [an example query](series-mv-ee-anomalies-fl.md#create-a-sample-data-set).
 
 ![Graph showing multivariate anomalies on a time chart.](images/series-mv-oc-anomalies-fl/mv-oc-anomalies-example-1.png)
 ![Graph showing multivariate anomalies on a scatter chart.](images/series-mv-oc-anomalies-fl/mv-oc-anomalies-example-1a.png)

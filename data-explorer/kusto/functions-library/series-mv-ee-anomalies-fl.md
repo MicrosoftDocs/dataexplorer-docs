@@ -10,7 +10,7 @@ ms.date: 11/20/2022
 The function `series_mv_ee_anomalies_fl()` detects multivariate anomalies in series by applying [elliptic envelope model from scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.covariance.EllipticEnvelope.html). This model assumes that the source of the multivariate data is multi-dimensional normal distribution. The function accepts a set of series as numerical dynamic arrays, the names of the features columns and the expected percentage of anomalies out of the whole series. The function builds a multi dimensional elliptical envelope for each series and marks the points that fall outside this normal envelope as anomalies.
 
 > [!NOTE]
-> * `series_mv_ee_anomalies_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+> * `series_mv_ee_anomalies_fl()` is a [user-defined function](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 > * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
 
 ## Syntax
@@ -115,7 +115,7 @@ normal_2d_with_anomalies contains a set of 3 time series, each one has 2 dimensi
 
 We can see that on TS1 most of the midnight anomalies were detected using this multivariate model.
 
-### Creating the sample data set
+### Create a sample data set
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
