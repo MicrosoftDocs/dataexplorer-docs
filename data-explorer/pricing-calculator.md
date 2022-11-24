@@ -78,7 +78,7 @@ In the calculator, enter estimates for the following fields:
 At this point, your cluster cost estimate will reflect your data requirements.
 
 > [!IMPORTANT]
-> If you want to granularly configure the remaining components, turn off **AUTO-SELECT ENGINE INSTANCES**.
+> If you want to individually configure the remaining components, turn off **AUTO-SELECT ENGINE INSTANCES**.
 >
 > :::image type="content" source="media/pricing/auto-select-engine-instances.png" alt-text="Image of auto select engine instances toggle.":::
 
