@@ -29,6 +29,7 @@ StormEvents
 ```
 
 |State|EventType|
+|--|--|
 |TEXAS|Winter Weather|
 |KANSAS|Tornado|
 |MISSOURI|Excessive Heat|

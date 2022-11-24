@@ -15,8 +15,8 @@ Returns the first *N* records sorted by the specified columns.
 
 ## Parameters
 
-| Name | Type | Required | Description |
-| -- | -- | -- | -- |
+|Name|Type|Required|Description|
+|--|--|--|--|
 | *T* | tabular | &check; | Input to sort. |
 | *NumberOfRows* | int | &check; | The number of rows of *T* to return.|
 | *Expression* | string | &check; A scalar expression by which to sort. The type of the values must be numeric, date, time or string.
@@ -40,6 +40,7 @@ StormEvents
 The below table shows only the relevant column. Run the query above to see more storm details for these events.
 
 |InjuriesDirect|...|
+|--|--|
 |519|...|
 |422|...|
 |200|...|
