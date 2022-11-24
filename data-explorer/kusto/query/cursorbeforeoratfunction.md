@@ -1,9 +1,9 @@
 ---
 title: cursor_before_or_at() - Azure Data Explorer
-description: This article describes cursor_before_or_at() in Azure Data Explorer.
+description: Learn how to use the cursor_before_or_at() function to check if the record was ingested before or at the time of ingestion of the database cursor.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 11/24/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---

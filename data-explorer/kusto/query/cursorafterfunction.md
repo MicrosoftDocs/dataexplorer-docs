@@ -1,9 +1,9 @@
 ---
 title: cursor_after() - Azure Data Explorer
-description: This article describes cursor_after() in Azure Data Explorer.
+description: Learn how to use the cursor_after() function to check if the record was ingested after the database cursor.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 11/24/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
