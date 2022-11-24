@@ -33,7 +33,7 @@ This article describes the available cluster level roles and how to assign princ
 
 :::image type="content" source="media/manage-cluster-permissions/add-widget.png" alt-text="Image of the add widget for adding permissions.":::
 
-1. In the **New principals** window, search for and select the desired principal. Add as many as you want.At the bottom of the window, choose **Select** to finish.
+1. In the **New principals** window, search for and select the desired principal. Add as many as you want. At the bottom of the window, choose **Select** to finish.
 
 :::image type="content" source="media/manage-cluster-permissions/new-principals-window.png" alt-text="Image of new principals window for adding new permissions.":::
 
