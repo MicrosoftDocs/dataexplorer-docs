@@ -33,7 +33,7 @@ This section shows you how to query data in Power BI starting from the Azure Dat
 1. In a browser, go to [https://help.kusto.windows.net/](https://help.kusto.windows.net/)
 1. Create a query and select it. Take the following query for example:
 
-    ```Kusto
+     ```Kusto
     StormEvents
     | sort by DamageCrops desc
     | take 1000
