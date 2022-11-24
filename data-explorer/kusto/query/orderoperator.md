@@ -9,8 +9,7 @@ ms.date: 02/13/2020
 
 Sort the rows of the input table into order by one or more columns.
 
-> [!NOTE]
-> The order operator is an alias to the sort operator. For more information, see [sort operator](sortoperator.md)
+**Alias**: [sort](sortoperator.md)
 
 ## Syntax
 
@@ -20,7 +19,7 @@ Sort the rows of the input table into order by one or more columns.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | tabular | &check; | Input to sort. |
+| *T* | string | &check; | Tabular input to sort. |
 | *column* | string | &check; | Column of *T* by which to sort. The type of the column values must be numeric, date, time or string.|
 | `asc` or `desc` | string | | `asc` sorts into ascending order, low to high. Default is `desc`, high to low. |
 | `nulls first` or `nulls last`  | string | | `nulls first` will place the null values at the beginning and `nulls last` will place the null values at the end. Default for `asc` is `nulls first`. Default for `desc` is `nulls last`.|

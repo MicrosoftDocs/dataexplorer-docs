@@ -48,6 +48,10 @@ For more information, see the summary of [available String operators](./datatype
 
 ### Simple comparisons first
 
+Retrieve storm records that report damaged property, are floods, and start and end in different places.
+
+Notice that we put the comparison between two columns last, as it can't use the index and forces a scan.
+
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVXBJzE1MTw0oyi9ILSqpVLBTMODlUgCCxLwUBbDakMqCVAVbWwUlt5z8/BQlhKxTanpmnk9+cmJJZn6egqKtgmteCowLAAhN4ulrAAAA)
 
 ```kusto
@@ -57,11 +61,9 @@ StormEvents
     and BeginLocation != EndLocation 
 ```
 
-This example retrieves storm records that report damaged property, are floods, and start and end in different places.
+### Columns contain string
 
-Notice that we put the comparison between two columns last, as it can't use the index and forces a scan.
-
-## Columns contain string
+All the rows in which the word "cow" appears in any column.
 
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVdBSyEgsVlBKzi9XAgC3DyzDIAAAAA==)
 
@@ -69,5 +71,3 @@ Notice that we put the comparison between two columns last, as it can't use the 
 StormEvents
 | where * has "cow"
 ```
-
-All the rows in which the word "cow" appears in any column.

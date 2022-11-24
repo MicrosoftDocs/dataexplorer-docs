@@ -20,8 +20,9 @@ Splits a given string representing a single record of comma-separated values and
 | *csv_text* | string | &check; | A single record of comma-separated values. |
 
 > [!NOTE]
-> Embedded line feeds, commas, and quotes may be escaped using the double quotation mark ('"').
-This function doesn't support multiple records per row (only the first record is taken).
+>
+> * Embedded line feeds, commas, and quotes may be escaped using the double quotation mark ('"').
+> * This function doesn't support multiple records per row (only the first record is taken).
 
 ## Returns
 
@@ -29,7 +30,7 @@ A string array that contains the split values.
 
 ## Examples
 
-### Example filtering by count of values in record
+### Filter by count of values in record
 
 Count ADX conference sessions with more than three participants.
 
@@ -46,7 +47,7 @@ ConferenceSessions
 |CON-PRT157|...|Guy Reginiano, Guy Yehudy, Pankaj Suri, Saeed Copty|
 |BRK3099|...|Yoni Leibowitz, Eric Fleischman, Robert Pack, Avner Aharoni|
 
-### Example using escaping quotes
+### Use escaping quotes
 
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAxXFMQqAMAwF0KuUv1Qhi46CozdwFCSWIIVSa5N6fpU3vFJjNldFW7K5cFXZgz6dZyYc9AGFQFg0cIn5dHe7THRywBotCQBCilmGLf+N8P0LWIqWMVMAAAA=)
 
@@ -58,7 +59,9 @@ print result=parse_csv('aa,"b,b,b",cc,"Escaping quotes: ""Title""","line1\nline2
 |---|
 |[<br>  "aa",<br>  "b,b,b",<br>  "cc",<br>  "Escaping quotes: \"Title\"",<br>  "line1\nline2"<br>]|
 
-### Example of CSV with multiple records
+### CSV with multiple records
+
+Only the first record is taken since this function does not support multiple records. 
 
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKYnPBRKZ8UWpyflFKbYFiUXFqfHJxWUa6hARQ51EnSSd5Jg8CNdIp0KnUqdKXRMAyO6RzEMAAAA=)
 
