@@ -29,7 +29,7 @@ A table with columns that were not named as arguments. Contains same number of r
 
 > [!TIP]
 >
-> * You can `project-away` any columns that are present in the original table or that were computed as part of the query.
+> You can `project-away` any columns that are present in the original table or that were computed as part of the query.
 
 ## Examples
 
