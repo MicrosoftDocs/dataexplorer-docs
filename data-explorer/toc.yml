@@ -11,6 +11,8 @@ items:
     href: whats-new.md
   - name: Solution architectures
     href: solution-architectures.md
+  - name: Find a partner
+    href: findmypartner.md
 - name: Quickstarts
   expanded: true
   items:
