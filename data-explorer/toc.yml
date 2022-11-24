@@ -32,8 +32,7 @@ items:
         href: end-to-end-python.md
   - name: Ingest and query monitoring data
     href: ingest-data-no-code.md
-  - name: Use data in Power BI
-    displayName: Import query
+  - name: Visualize data in Power BI
     href: visualize-power-bi.md
   - name: Training modules
     items:
@@ -304,8 +303,8 @@ items:
       - name: Dynamic M query parameters
         displayName: Power BI
         href: power-bi-dynamic-m.md
-      - name: Imported query
-        displayName: Power BI
+      - name: Use data in Power BI 
+        displayName: Imported query
         href: power-bi-visualize.md
       - name: SQL query
         displayName: Power BI
