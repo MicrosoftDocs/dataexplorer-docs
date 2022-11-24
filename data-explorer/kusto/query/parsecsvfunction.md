@@ -41,10 +41,10 @@ ConferenceSessions
 | distinct *
 ```
 
-|sessionid|session_type|participants|
+|sessionid|...|participants|
 |--|--|--|
-|CON-PRT157|Roundtable|Guy Reginiano, Guy Yehudy, Pankaj Suri, Saeed Copty|
-|BRK3099|Breakout|Yoni Leibowitz, Eric Fleischman, Robert Pack, Avner Aharoni|
+|CON-PRT157|...|Guy Reginiano, Guy Yehudy, Pankaj Suri, Saeed Copty|
+|BRK3099|...|Yoni Leibowitz, Eric Fleischman, Robert Pack, Avner Aharoni|
 
 ### Example using escaping quotes
 
