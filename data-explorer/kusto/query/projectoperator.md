@@ -35,7 +35,7 @@ or
 
 ## Returns
 
-A table containing the columns specified in the project clause, and as many rows as the input table.
+A table with columns that were named as arguments. Contains same number of rows as the input table.
 
 ## Examples
 

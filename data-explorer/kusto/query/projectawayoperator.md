@@ -9,9 +9,6 @@ ms.date: 02/13/2020
 
 Select what columns from the input to exclude from the output.
 
-> [!NOTE]
-> The order of the columns in the result is determined by their original order in the table. Only the columns that were specified as arguments are dropped. The other columns are included in the result.
-
 ## Syntax
 
 *T* `| project-away` *ColumnNameOrPattern* [`,` ...]
@@ -20,20 +17,22 @@ Select what columns from the input to exclude from the output.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | tabular | &check; | Input from which to remove columns. |
-| *ColumnNameOrPattern* | Name of the column or column wildcard-pattern to be removed from the output.
+| *T* | string | &check; | Tabular input from which to remove columns. |
+| *ColumnNameOrPattern* | string | &check; | Name of the column or column wildcard-pattern to be removed from the output.|
 
 ## Returns
 
 A table with columns that were not named as arguments. Contains same number of rows as the input table.
 
 > [!TIP]
->
 > You can `project-away` any columns that are present in the original table or that were computed as part of the query.
+
+> [!NOTE]
+> The order of the columns in the result is determined by their original order in the table. Only the columns that were specified as arguments are dropped. The other columns are included in the result.
 
 ## Examples
 
-The input table `PopulationData` has 2 columns: `State` and `Population`. Project-away the `Population` column and you'll be left with a list of state names.
+The input table `PopulationData` has 2 columns: `State` and `Population`. Project-away the `Population` column and you're left with a list of state names.
 
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwvILyjNSSzJzM9zSSxJ5OWqUSgoys9KTS7RTSxPrFQIgEsDAH2sb1kpAAAA)
 
@@ -59,7 +58,7 @@ The below table shows only the first 10 results.
 
 ### Project-away using a column name pattern
 
-Removing columns starting with "session": `sessionid`, `session_title`, `session_type`, and `session_location`.
+Removing columns starting with the word "session".
 
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+blqlEoKMrPSk0u0U0sT6xUKIZIaAEAV4MJgSsAAAA=)
 

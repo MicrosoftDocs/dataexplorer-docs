@@ -9,9 +9,6 @@ ms.date: 10/21/2020
 
 Select what columns from the input to keep in the output.
 
-> [!NOTE]
-> The order of the columns in the result is determined by their original order in the table. Only the columns that were specified as arguments are kept. The other columns are excluded from the result.
-
 ## Syntax
 
 *T* `| project-keep` *ColumnNameOrPattern* [`,` ...]
@@ -20,8 +17,8 @@ Select what columns from the input to keep in the output.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | tabular | &check; | Input from which to keep columns.
-| *ColumnNameOrPattern | Name of the column or column wildcard-pattern to be kept in the output.
+| *T* | string | &check; | Tabular input from which to keep columns.|
+| *ColumnNameOrPattern* | string | &check; | Name of the column or column wildcard-pattern to be kept in the output.|
 
 ## Returns
 
@@ -30,9 +27,12 @@ A table with columns that were named as arguments. Contains same number of rows 
 > [!TIP]
 > You can `project-keep` any columns that are present in the original table or that were computed as part of the query.
 
+> [!NOTE]
+> The order of the columns in the result is determined by their original order in the table. Only the columns that were specified as arguments are kept. The other columns are excluded from the result.
+
 ## Example
 
-The input table `ConferenceSessions` has many columns: `conference`, `sessionid`, `session_title`,`session_type`, `owner`, `participants`, `URL`, `level`, `session_location`, `starttime`, `duration`, `time_and_duration`, and `kusto_affinity`.
+Only show columns from the `ConferenceSessions` table that contain the word "session".
 
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+blqlEoKMrPSk0u0c1OTS1QKIZIaAEAWs65FysAAAA=)
 
