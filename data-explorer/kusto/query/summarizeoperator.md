@@ -156,8 +156,8 @@ datatable(x:long)[]
 ```
 
 |any_x|arg_max_x|arg_min_x|avg_x|schema_x|max_x|min_x|percentile_x_55|hll_x|stdev_x|sum_x|sumif_x|tdigest_x|variance_x|
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-||||||||||||0|0|0||0|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+||||||||||0|0|0||0|
 
 ```kusto
 datatable(x:long)[]
