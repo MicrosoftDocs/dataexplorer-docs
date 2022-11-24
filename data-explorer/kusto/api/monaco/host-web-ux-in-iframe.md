@@ -1,13 +1,17 @@
 ---
 title: Embed the Azure Data Explorer web UI in an **iframe**.
 description: Learn how to embed the Azure Data Explorer web UI in an **iframe**.
-ms.reviewer: gikoifma
+ms.reviewer: izlisbon
 ms.topic: how-to
 ms.date: 11/22/2022
 ---
 # Embed the Azure Data Explorer web UI in an iframe
 
 The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites. This article describes how to embed the Azure Data Explorer web UI in an iframe.
+
+:::image type="content" source="../images/host-web-ux-in-iframe/web-ux.png" alt-text="Screenshot of the Azure Data Explorer web U I.":::
+
+All functionality is tested for accessibility and supports dark and light on-screen themes.
 
 ## How to embed the web UI in an iframe
 
@@ -27,68 +31,76 @@ Replace `<cluster>` with the hostname of the cluster you want to load into the c
 
 1. When set to 'iframe mode' (`f-IFrameAuth=true`), the Azure Data Explorer web UI won't try to redirect for authentication. The message posting mechanism that browsers use, is used to request and receive a token. During page loading, the following message will be posted to the parent window:
 
-   ```javascript
-   window.parent.postMessage(
-     {
-       signature: "queryExplorer",
-       type: "getToken",
-       scope: "${Can be either 'query' or a custom scope}",
-     },
-     "*"
-   );
-   window.addEventListener(
-     "message",
-     event => this.handleIncomingMessage(event),
-     false
-   );
+    ```javascript
+    window.parent.postMessage({
+      signature: "queryExplorer",
+      type: "getToken",
+      scope: "${Can be either 'query' or a custom scope}",
+    }, "*"
+    );
+    window.addEventListener(
+      "message",
+      event => this.handleIncomingMessage(event),
+      false
+    );
    ```
 
 1. Then, it will listen for a message with the following structure:
 
-   ```json
-   {
-     "type": "postToken",
-     "message": "${the actual authentication token}",
-     "scope": "${The scope that was received in the message from the iframe}"
-   }
-   ```
+    ```json
+    {
+      "type": "postToken",
+      "message": "${the actual authentication token}",
+      "scope": "${The scope that was received in the message from the iframe}"
+    }
+    ```
 
-1. The provided token should be a [JWT token](https://tools.ietf.org/html/rfc7519) obtained from the [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
+1. The provided token should be a [JWT token](https://tools.ietf.org/html/rfc7519) obtained from the [Azure Active Directory (Azure AD) authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
 When generating the token:
 
     - If the scope isn't query: use the scope from the message above.
     - If the scope is query: use the scope of your service, as described in the [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
 
-  For example, you can calculate the scope as follows:
+    For example, you can calculate the scope as follows:
 
-  ```javascript
-  const scope = event.data.scope === 'query' ? $"https://{serviceName}.{region}.kusto.windows.net/.default" : event.data.scope;
-  ```
+    ```javascript
+    const scope = event.data.scope === 'query' ? $"https://{serviceName}.{region}.kusto.windows.net/.default" : event.data.scope;
+    ```
 
 > [!IMPORTANT]
-> The hosting window must refresh the token before expiration and use the same mechanism to provide the updated token to the application. Otherwise, once the token expires, service calls will fail.
+> The hosting window must refresh the token before expiration and use the same mechanism to provide the updated token to the app. Otherwise, once the token expires, service calls will fail.
 
 ### Embed dashboards (preview)
 
-To embed a dashboard, you'll need to make a few changes to the above steps
+To embed a dashboard, you'll need to make a few changes to the steps.
 
-1. Change the URL of the iframe:
+1. Change the URL of the iframe, to include the `f-IFrameAuth=true` feature flag.
 
-    1. Add the following code to your website:
+    ```html
+    <iframe
+      src="https://dataexplorer.azure.com/dashboards?f-IFrameAuth=true"
+    ></iframe>
+    ```
 
-      ```html
-      <iframe
-        src="https://dataexplorer.azure.com/dashboards?f-IFrameAuth=true"
-      ></iframe>
-      ```
+    > [!NOTE]
+    > For embedding dashboards only, without the query area, we recommend setting the following feature flags:
+    >
+    > ```html
+    > "f-PersistAfterEachRun": true,
+    > "f-IFrameAuth": true,
+    > "f-Homepage": false,
+    > "f-ShowPageHeader": false,
+    > "f-ShowNavigation": false,
+    > "f-DisableExploreQuery": false,
+    > ```
 
-1. Establish a trust relationship between your application and the Azure Data Explorer service.
+1. Establish a trust relationship between your app and the Azure Data Explorer service.
 
-    In addition to the steps in [AAD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication), you also need to establish trust relationship between your application and the dashboards service:
+    In addition to the steps in [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication), you also need to establish trust relationship between your app and the dashboards service:
 
     1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're signed-in to the correct tenant. Look at the top right corner to verify the identity used to sign into the portal.
     1. In the resources pane, select **Azure Active Directory** > **App registrations**.
-    1. Locate the application that uses the on-behalf-of flow and open this application.
+    1. Locate the app that uses the on-behalf-of flow and open this app.
     1. Select **Manifest**.
     1. Select **requiredResourceAccess**.
     1. In the manifest, and add the following entry:
@@ -117,10 +129,13 @@ To embed a dashboard, you'll need to make a few changes to the above steps
 
 ### Feature flags
 
-The hosting application may want to control certain aspects of the user experience. For example, hide the connection pane, or disable connecting to other clusters.
+> [!IMPORTANT]
+> The `f-IFrameAuth=true` flag is required for the iframe to work. The other flags are optional.
+
+The hosting app may want to control certain aspects of the user experience. For example, hide the connection pane, or disable connecting to other clusters.
 For this scenario, the web explorer supports feature flags.
 
-A feature flag can be used in the URL as a query parameter. To disable adding other clusters, use https://dataexplorer.azure.com/?f-ShowConnectionButtons=false in the hosting application.
+A feature flag can be used in the URL as a query parameter. To disable adding other clusters, use https://dataexplorer.azure.com/?f-ShowConnectionButtons=false in the hosting app.
 
 | setting | Description | Default Value |
 |---|---|---|
@@ -151,36 +166,6 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-DisableExploreQuery | IF true, disables the explore query button of the tiles | false |
 | f-DisableCrossFiltering | IF true, disables the cross filtering feature in dashboards | false |
 | f-HideDashboardParametersBar | IF true, hides the parameters bar in a dashboard | false |
-
-### Feature flag presets
-
-Presets will set a bunch of feature flags at once.
-Currently, there's only a single preset.
-
-`IbizaPortal` - Changes the following flags from the defaults.
-
-```json
-"f-ShowOpenNewWindowButton": true,
-"f-PersistAfterEachRun": true,
-"f-IFrameAuth": true,
-"f-Homepage": false,
-"f-ShowPageHeader": false,
-"f-ShowNavigation": false,
-```
-
-For embedding dashboards only, without the query area, we recommend setting the following feature flags:
-
-```json
-"f-PersistAfterEachRun": true,
-"f-IFrameAuth": true,
-"f-Homepage": false,
-"f-ShowPageHeader": false,
-"f-ShowNavigation": false,
-"f-DisableExploreQuery": false,
-```
-
-> [!WARNING]
-> If you use a preset, you won't be able to add additional feature flags on top of it. If you need that flexibility, you should use individual feature flags.
 
 ## Next steps
 
