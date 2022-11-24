@@ -33,12 +33,11 @@ A string array that contains the split values.
 
 Count ADX conference sessions with more than 3 participants.
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+blqlEozwCKKSQWFSVWxuek5qWXZGgUJBYVp8YnF5eBWCWZyZkFiXklxZqaCnYKxgCdQH/uRQAAAA==)
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+aqUSjPAAopJBYVJVbG56TmpZdkaBQkFhWnxicXl4FYJZnJmQWJeSXFmpoKdgrGQB0pmcUlmXnJJQpaAB0oOCtRAAAA)
 
 ```kusto
 ConferenceSessions
 | where array_length(parse_csv(participants)) > 3
-| project sessionid, session_type, participants
 | distinct *
 ```
 
