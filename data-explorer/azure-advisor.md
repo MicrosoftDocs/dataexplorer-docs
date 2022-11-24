@@ -69,7 +69,8 @@ Cost recommendations include:
 
 #### Unused running Azure Data Explorer cluster
 
-A cluster is considered unused and running if it is running and has not ingested data or run queries in the past 5 days. In some cases, clusters may be [automatically stopped](auto-stop-clusters.md). In the flowing cases, the cluster won't automatically stop and a recommendation will be shown:
+A cluster is considered unused and running if it is in the running state and has neither ingested data nor run queries in the past five days. 
+In some cases, clusters may be [automatically stopped](auto-stop-clusters.md). In the flowing cases, the cluster won't automatically stop and a recommendation will be shown:
  * Leader clusters. For more information, see [follower databases](follower.md).
  * Clusters deployed in a Virtual Network.
  * Clusters where the [Auto-Stop setting](auto-stop-clusters.md#set-auto-stop-settings-while-creating-a-new-cluster) is turned off
