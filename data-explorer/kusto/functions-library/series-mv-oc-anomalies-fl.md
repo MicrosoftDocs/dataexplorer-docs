@@ -10,6 +10,7 @@ ms.date: 11/20/2022
 The function `series_mv_oc_anomalies_fl()` detects multivariate anomalies in series by applying the [One Class SVM model](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html). The function accepts a set of series as numerical dynamic arrays, the names of the features columns and the expected percentage of anomalies out of the whole series. The function trains one class SVM for each series and marks the points that fall outside the hyper sphere as anomalies.
 
 > [!NOTE]
+>
 > * `series_mv_oc_anomalies_fl()` is a [user-defined function](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
 > * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
 
@@ -29,12 +30,13 @@ The function `series_mv_oc_anomalies_fl()` detects multivariate anomalies in ser
 
 `series_mv_oc_anomalies_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
-# [Ad hoc](#tab/adhoc)
+### [Ad hoc](#tab/adhoc)
 
 For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
+//Define function
 let series_mv_oc_anomalies_fl=(tbl:(*), features_cols:dynamic, anomaly_col:string, anomalies_pct:real=4.0)
 {
     let kwargs = bag_pack('features_cols', features_cols, 'anomaly_col', anomaly_col, 'anomalies_pct', anomalies_pct);
@@ -56,6 +58,7 @@ let series_mv_oc_anomalies_fl=(tbl:(*), features_cols:dynamic, anomaly_col:strin
     | evaluate python(typeof(*), code, kwargs)
 }
 ;
+// Usage
 normal_2d_with_anomalies
 | extend anomalies=dynamic(null)
 | invoke series_mv_oc_anomalies_fl(pack_array('x', 'y'), 'anomalies', anomalies_pct=6)
@@ -63,7 +66,7 @@ normal_2d_with_anomalies
 | render timechart
 ```
 
-# [Persistent](#tab/persistent)
+### [Persistent](#tab/persistent)
 
 For persistent usage, use [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
@@ -109,7 +112,20 @@ normal_2d_with_anomalies
 
 The table normal_2d_with_anomalies contains a set of 3 time series. Each time series has two-dimensional normal distribution with daily anomalies added at midnight, 8am, and 4pm respectively. You can create this sample data set using [an example query](series-mv-ee-anomalies-fl.md#create-a-sample-data-set).
 
-![Graph showing multivariate anomalies on a time chart.](images/series-mv-oc-anomalies-fl/mv-oc-anomalies-example-1.png)
-![Graph showing multivariate anomalies on a scatter chart.](images/series-mv-oc-anomalies-fl/mv-oc-anomalies-example-1a.png)
+![Graph showing multivariate anomalies on a time chart.](images/series-mv-oc-anomalies-fl/mv-oc-anomalies-time-chart.png)
 
-We can see that on TS1 most of the anomalies occurring at midnights were detected using this multivariate model.
+To view the data as a scatter chart, replace the usage code with the following:
+
+```kusto
+normal_2d_with_anomalies
+| extend anomalies=dynamic(null)
+| invoke series_mv_oc_anomalies_fl(pack_array('x', 'y'), 'anomalies')
+| where name == 'TS1'
+| project x, y, anomalies
+| mv-expand x to typeof(real), y to typeof(real), anomalies to typeof(string)
+| render scatterchart with(series=anomalies)
+```
+
+![Graph showing multivariate anomalies on a scatter chart.](images/series-mv-oc-anomalies-fl/mv-oc-anomalies-scatter-chart.png)
+
+You can see that on TS1 most of the anomalies occurring at midnights were detected using this multivariate model.
