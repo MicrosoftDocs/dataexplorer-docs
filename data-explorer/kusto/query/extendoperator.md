@@ -21,7 +21,8 @@ Create calculated columns and append them to the result set.
 | *ColumnName* | string | | Name of the column to add or update. |
 | *Expression* | string | &check; | Calculation to perform over the input.|
 
-If *ColumnName* is omitted, the output column name of *Expression* will be automatically generated. If *Expression* returns more than one column, a list of column names can be specified in parentheses. In this case *Expression*'s output columns will be given the specified names, dropping the rest of the output columns, if there are any. If a list of the column names is not specified, all *Expression*'s output columns with generated names will be added to the output.
+* If *ColumnName* is omitted, the output column name of *Expression* will be automatically generated.
+* If *Expression* returns more than one column, a list of column names can be specified in parentheses. Then, *Expression*'s output columns will be given the specified names. If a list of the column names is not specified, all *Expression*'s output columns with generated names will be added to the output.
 
 ## Returns
 
