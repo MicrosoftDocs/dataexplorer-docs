@@ -9,20 +9,19 @@ ms.date: 02/13/2020
 
 Select what columns from the input to exclude from the output.
 
-```kusto
-T | project-away price, quantity, zz*
-```
-
-The order of the columns in the result is determined by their original order in the table. Only the columns that were specified as arguments are dropped. The other columns are included in the result. (See also `project`.)
+> [!NOTE]
+> The order of the columns in the result is determined by their original order in the table. Only the columns that were specified as arguments are dropped. The other columns are included in the result.
 
 ## Syntax
 
 *T* `| project-away` *ColumnNameOrPattern* [`,` ...]
 
-## Arguments
+## Parameters
 
-* *T*: The input table
-* *ColumnNameOrPattern:* The name of the column or column wildcard-pattern to be removed from the output.
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *T* | tabular | &check; | Input from which to remove columns. |
+| *ColumnNameOrPattern* | Name of the column or column wildcard-pattern to be removed from the output.
 
 ## Returns
 
@@ -30,36 +29,53 @@ A table with columns that were not named as arguments. Contains same number of r
 
 > [!TIP]
 >
-> * To rename columns, use [`project-rename`](projectrenameoperator.md).
-> * To reorder columns, use [`project-reorder`](projectreorderoperator.md).
 > * You can `project-away` any columns that are present in the original table or that were computed as part of the query.
 
 ## Examples
 
-The input table `T` has three columns of type `long`: `A`, `B`, and `C`.
+The input table `PopulationData` has 2 columns: `State` and `Population`. Project-away the `Population` column and you'll be left with a list of state names.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwvILyjNSSzJzM9zSSxJ5OWqUSgoys9KTS7RTSxPrFQIgEsDAH2sb1kpAAAA)
+
 ```kusto
-datatable(A:long, B:long, C:long) [1, 2, 3]
-| project-away C    // Removes column C from the output
+PopulationData
+| project-away Population
 ```
 
-|A|B|
-|---|---|
-|1|2|
+The below table shows only the first 10 results.
 
-Removing columns starting with 'a'.
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-print a2='a2', b = 'b', a3='a3', a1='a1'
-| project-away a*
-```
-
-|b|
+|State|
 |---|
-|b|
+|ALABAMA|
+|ALASKA|
+|ARIZONA|
+|ARKANSAS|
+|CALIFORNIA|
+|COLORADO|
+|CONNECTICUT|
+|DELAWARE|
+|DISTRICT OF COLUMBIA|
+|FLORIDA|
+
+### Project-away using a column name pattern
+
+Removing columns starting with "session": `sessionid`, `session_title`, `session_type`, and `session_location`.
+
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+blqlEoKMrPSk0u0U0sT6xUKIZIaAEAV4MJgSsAAAA=)
+
+```kusto
+ConferenceSessions
+| project-away session*
+```
+
+The below table only displays the output columns. To see the content of the output run the query above.
+
+|conference|owner|participants|URL|level|starttime|duration|time_and_duration|kusto_affinity|
+|---|---|---|---|---|---|---|---|---|
+||||||||||
 
 ## See also
 
-To choose what columns from the input to keep in the output, use [project-keep](project-keep-operator.md).
+* To choose what columns from the input to keep in the output, use [project-keep](project-keep-operator.md).
+* To rename columns, use [`project-rename`](projectrenameoperator.md).
+* To reorder columns, use [`project-reorder`](projectreorderoperator.md).
