@@ -9,24 +9,20 @@ ms.date: 02/13/2020
 
 Sort the rows of the input table into order by one or more columns.
 
-```kusto
-T | sort by strlen(country) asc, price desc
-```
-
-**Alias**
-
-`order`
+**Alias**: [order](orderoperator.md)
 
 ## Syntax
 
-*T* `| sort by` *expression* [`asc` | `desc`] [`nulls first` | `nulls last`] [`,` ...]
+*T* `| sort by` *column* [`asc` | `desc`] [`nulls first` | `nulls last`] [`,` ...]
 
-## Arguments
+## Parameters
 
-* *T*: The table input to sort.
-* *expression*: A scalar expression by which to sort. The type of the values must be numeric, date, time or string.
-* `asc` Sort by into ascending order, low to high. The default is `desc`, descending high to low.
-* `nulls first` (the default for `asc` order) will place the null values at the beginning and `nulls last` (the default for `desc` order) will place the null values at the end.
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *T* | tabular | &check; | Input to sort. |
+| *column* | string | &check; | Column of *T* by which to sort. The type of the column values must be numeric, date, time or string.|
+| `asc` or `desc` | string | | `asc` sorts into ascending order, low to high. Default is `desc`, high to low. |
+| `nulls first` or `nulls last`  | string | &check; | `nulls first` will place the null values at the beginning and `nulls last` will place the null values at the end. Default for `asc` is `nulls first`. Default for `desc` is `nulls last`.|
 
 ## Example
 
