@@ -32,7 +32,8 @@ items:
         href: end-to-end-python.md
   - name: Ingest and query monitoring data
     href: ingest-data-no-code.md
-  - name: Visualize data in Power BI
+  - name: Use data in Power BI
+    displayName: Import query
     href: visualize-power-bi.md
   - name: Training modules
     items:
