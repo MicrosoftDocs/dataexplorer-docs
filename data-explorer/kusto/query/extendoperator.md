@@ -9,10 +9,6 @@ ms.date: 02/13/2020
 
 Create calculated columns and append them to the result set.
 
-```kusto
-T | extend duration = endTime - startTime
-```
-
 ## Syntax
 
 *T* `| extend` [*ColumnName* | `(`*ColumnName*[`,` ...]`)` `=`] *Expression* [`,` ...]
@@ -41,6 +37,8 @@ A copy of the input tabular result set, such that:
   use the [`project-rename` operator](projectrenameoperator.md) instead.
 
 ## Example
+
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUUitKEnNS+HlUgACl9KixJLM/DwFWwXXvJSQzNxUBV2F4JLEohIQWweqKLU4uSizAKouGGRacGlubmJRpZ5LakliZk6xHpISAKfNOhtuAAAA)
 
 ```kusto
 StormEvents
