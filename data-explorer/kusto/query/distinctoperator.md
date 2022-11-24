@@ -11,20 +11,10 @@ Produces a table with the distinct combination of the provided columns of the in
 
 ## Syntax
 
-Produces a table with the distinct combination of Column1 and Column2.
-
-```kusto
-T | distinct Column1, Column2
-```
-
-Produces a table with the distinct combination of all columns in the input table.
-
-```kusto
-T | distinct *
-```
+*T* `| distinct` *ColumnName*`[,`*ColumnName2*`, ...]`
 
 > [!NOTE]
-> Unlike `summarize by ...`, the `distinct` operator supports providing an asterisk (`*`) as the group key, making it easier to use for wide tables.
+> Unlike `summarize by ...`, the `distinct` operator supports providing an asterisk `*` as the group key to denote all columns, making it easier to use for wide tables.
 
 ## Example
 
