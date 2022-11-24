@@ -7,46 +7,48 @@ ms.date: 10/21/2020
 ---
 # project-keep operator
 
-Select what columns from the input to keep in the output using a columnname pattern matcher.
+Select what columns from the input to keep in the output.
 
-```kusto
-T | project-keep price, quantity, zz*
-```
-
-The order of the columns in the result is determined by their original order in the table. Only the columns that were specified as arguments are kept. The other columns are excluded from the result. See also [`project`](projectoperator.md).
+> [!NOTE]
+> The order of the columns in the result is determined by their original order in the table. Only the columns that were specified as arguments are kept. The other columns are excluded from the result.
 
 ## Syntax
 
 *T* `| project-keep` *ColumnNameOrPattern* [`,` ...]
 
-## Arguments
+## Parameters
 
-* *T*: The input table
-* *ColumnNameOrPattern:* The name of the column or column wildcard-pattern to be kept in the output.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | tabular | &check; | Input from which to keep columns.
+| *ColumnNameOrPattern | Name of the column or column wildcard-pattern to be kept in the output.
 
 ## Returns
 
 A table with columns that were named as arguments. Contains same number of rows as the input table.
 
 > [!TIP]
->* To rename columns, use [`project-rename`](projectrenameoperator.md).
->* To reorder columns, use [`project-reorder`](projectreorderoperator.md).
->* You can `project-keep` any columns that are present in the original table or that were computed as part of the query.
+> You can `project-keep` any columns that are present in the original table or that were computed as part of the query.
 
 ## Example
 
-The input table `T` has three columns of type `long`: `A`, `B`, and `C`.
+The input table `ConferenceSessions` has many columns: `conference`, `sessionid`, `session_title`,`session_type`, `owner`, `participants`, `URL`, `level`, `session_location`, `starttime`, `duration`, `time_and_duration`, and `kusto_affinity`.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+blqlEoKMrPSk0u0c1OTS1QKIZIaAEAWs65FysAAAA=)
+
 ```kusto
-datatable(A1:long, A2:long, B:long) [1, 2, 3]
-| project-keep A*    // Keeps only columns A1 and A2 in the output
+ConferenceSessions
+| project-keep session*
 ```
 
-|A1|A2|
-|---|---|
-|1|2|
+The below table only displays the output columns. To see the content of the output run the query above.
+
+|sessionid| session_title| session_type| session_location|
+|--|--|--|--|
+||||
 
 ## See also
 
-To choose what columns from the input to exclude from the output, use [project-away](projectawayoperator.md).
+* To choose what columns from the input to exclude from the output, use [project-away](projectawayoperator.md).
+* To rename columns, use [`project-rename`](projectrenameoperator.md).
+* To reorder columns, use [`project-reorder`](projectreorderoperator.md).
