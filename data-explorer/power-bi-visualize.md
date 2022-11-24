@@ -3,37 +3,42 @@ title: 'Visualize data from Azure Data Explorer in Power BI'
 description: 'In this article, you learn how to import a query from Azure Data Explorer and visualize it in a Power BI report.'
 ms.reviewer: mblythe
 ms.topic: how-to
-ms.date: 11/20/2022
+ms.date: 11/24/2022
 
 #Customer intent: As a data analyst, I want to understand connection options in Power BI so I can choose the option most appropriate to my scenario.
 ---
 
 # Use Azure Data Explorer Data in Power BI
 
-This article shows you how use data from Azure Data Explorer so that you can visualize it in a Power BI report.
+This article shows you how use data from Azure Data Explorer in Power BI.
 
 ## Prerequisites
 
 You need the following to complete this article:
 
-* A [Microsoft account](https://account.microsoft.com/account/Account?ru=https%3A%2F%2Faccount.microsoft.com%2F&destrt=home.landing).
+* A [Microsoft account](https://account.microsoft.com/account/Account?ru=https%3A%2F%2Faccount.microsoft.com%2F&destrt=home.landing), or an organizational email account that is a member of the Azure Active directory.
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**).
-* [Azure Data Explorer desktop app](kusto/tools/kusto-explorer.md) or [Azure Data Explorer](https://dataexplorer.azure.com/).
 
-## Get data from Azure Data Explorer
+## Use data in Power BI
 
-To create a query from the *StormEvents* table, connect to the Azure Data Explorer help cluster. [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
+There are multiple ways to query data in Power BI. The following tabs show you two ways of querying data:
 
-## Visualize data in Power BI
-
-There are multiple ways of querying data in Power BI. The following tabs show you two ways of querying data. The first is by using Azure Data Explorer web UI, and the second is through a built-in connector in Power BI Desktop.
+* Starting in Azure Data Explorer web UI and then pasting the data in Power BI Desktop.
+* Starting directly in Power BI Desktop and using the built-in connector.
 
 # [Web UI](#tab/web-ui/)
 
-This section shows you how to query data in Power BI using Azure Data Explorer web UI.
+This section shows you how to query data in Power BI starting from the Azure Data Explorer web UI.
 
 1. In a browser, go to [https://help.kusto.windows.net/](https://help.kusto.windows.net/)
-1. Select query from cluster.
+1. Create a query and select it. Take the following query for example:
+
+    ```Kusto
+    StormEvents
+    | sort by DamageCrops desc
+    | take 1000
+    ```
+
 1. Select **Share** then **Query to Power BI**
 
     ![Share query.](media/power-bi-imported-query/share-query.png)
@@ -53,7 +58,7 @@ This section shows you how to query data in Power BI using Azure Data Explorer w
 
 # [Connector](#tab/connector/)
 
-This section shows you how to use the built-in connector to query data in a Power BI report. The Power BI connector supports [Import and Direct Query connectivity modes](/power-bi/desktop-directquery-about). You can build dashboards using **Import** or **DirectQuery** mode depending on the scenario, scale, and performance requirements.
+This section shows you how to use the built-in connector to query Azure Data Explorer data in a Power BI report. The Power BI connector supports [Import and Direct Query connectivity modes](/power-bi/desktop-directquery-about). You can build dashboards using **Import** or **DirectQuery** mode depending on the scenario, scale, and performance requirements.
 
 1. Launch Power BI Desktop.
 1. On the **Home** tab, select **Get Data** then **More**.
@@ -111,6 +116,7 @@ This section shows you how to use the built-in connector to query data in a Powe
 
 ---
 
+You now know how to query data from Azure Data Explorer in Power BI.
 ## Next steps
 
 [Create reports and dashboards in Power BI](/power-bi/create-reports/)
