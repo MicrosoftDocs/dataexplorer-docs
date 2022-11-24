@@ -14,7 +14,7 @@ Produces a table with the distinct combination of the provided columns of the in
 *T* `| distinct` *ColumnName*`[,`*ColumnName2*`, ...]`
 
 > [!NOTE]
-> Unlike `summarize by ...`, the `distinct` operator supports providing an asterisk `*` as the group key to denote all columns, making it easier to use for wide tables.
+> The `distinct` operator supports providing an asterisk `*` as the group key to denote all columns, which makes it easy to use for wide tables.
 
 ## Example
 
@@ -42,4 +42,4 @@ StormEvents
 
 ## See also
 
-* If the group by keys are of high cardinalities, try `summarize by ...` with the [shuffle strategy](shufflequery.md)
+If the group by keys are of high cardinalities, try `summarize by ...` with the [shuffle strategy](shufflequery.md).

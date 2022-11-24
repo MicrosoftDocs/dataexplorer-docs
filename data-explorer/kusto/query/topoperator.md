@@ -19,9 +19,9 @@ Returns the first *N* records sorted by the specified columns.
 |--|--|--|--|
 | *T* | tabular | &check; | Input to sort. |
 | *NumberOfRows* | int | &check; | The number of rows of *T* to return.|
-| *Expression* | string | &check; A scalar expression by which to sort. The type of the values must be numeric, date, time or string.
+| *Expression* | string | &check; | Scalar expression by which to sort. The type of the values must be numeric, date, time or string.
 | `asc` or `desc` | string | | Controls whether the selection is from the "bottom" or "top" of the range. Default `desc`.
-| `nulls first` or `nulls last`  | string | | `nulls first` will place the null values at the beginning and `nulls last` will place the null values at the end. Default for `asc` is `nulls first`. Default for `desc` is `nulls last`.|
+| `nulls first` or `nulls last`  | string | | Controls whether null values appear at the "bottom" or "top" of the range. Default for `asc` is `nulls first`. Default for `desc` is `nulls last`.|
 
 > [!TIP]
 > `top 5 by name` is equivalent to the expression `sort by name | take 5` both from semantic and performance perspectives.

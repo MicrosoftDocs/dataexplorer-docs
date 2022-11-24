@@ -24,11 +24,10 @@ or
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
 | *T* | string | &check; | Tabular input for which to project certain columns. |
-| *ColumnName* | string | | Name of column to appear in the output. If there is no *Expression*, then a column of *ColumnName* must appear in the input. If *Expression* returns more than one column, a list of column names can be specified in parentheses. If a list of the column names is not specified, all *Expression*'s output columns with generated names will be added to the output. |
-| *Expression* | string | | Optional scalar expression referencing the input columns. If *ColumnName* is omitted, the output column name of *Expression* will be automatically generated. |
+| *ColumnName* | string | | Name of column to appear in the output. |
+| *Expression* | string | | Scalar expression to perform over the input. |
 
-> [!IMPORTANT]
-> Either *ColumnName* or *Expression* must be specified.
+Either *ColumnName* or *Expression* must be specified. If there is no *Expression*, then a column of *ColumnName* must appear in the input. If *Expression* returns more than one column, a list of column names can be specified in parentheses. If a list of the column names is not specified, all *Expression*'s output columns with generated names will be added to the output. If *ColumnName* is omitted, the output column name of *Expression* will be automatically generated.
 
 > [!NOTE]
 > It is possible but not recommended to return a new calculated column with the same name as an existing column in the input.
