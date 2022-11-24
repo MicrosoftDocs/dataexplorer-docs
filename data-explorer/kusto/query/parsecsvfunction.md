@@ -16,7 +16,7 @@ Splits a given string representing a single record of comma-separated values and
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
+|--|--|--|--|
 | *csv_text* | string | &check; | A single record of comma-separated values. |
 
 > [!NOTE]
@@ -31,7 +31,7 @@ A string array that contains the split values.
 
 ### Example filtering by count of values in record
 
-Count ADX conference sessions with more than 3 participants.
+Count ADX conference sessions with more than three participants.
 
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+aqUSjPAAopJBYVJVbG56TmpZdkaBQkFhWnxicXl4FYJZnJmQWJeSXFmpoKdgrGQB0pmcUlmXnJJQpaAB0oOCtRAAAA)
 
