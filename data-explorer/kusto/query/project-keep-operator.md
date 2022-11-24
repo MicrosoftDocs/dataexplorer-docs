@@ -3,7 +3,7 @@ title: project-keep operator - Azure Data Explorer
 description: This article describes project-keep operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/21/2020
+ms.date: 11/24/2022
 ---
 # project-keep operator
 

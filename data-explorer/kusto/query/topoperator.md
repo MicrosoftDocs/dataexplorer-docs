@@ -3,7 +3,7 @@ title: top operator - Azure Data Explorer
 description: This article describes top operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 11/24/2022
 ---
 # top operator
 
