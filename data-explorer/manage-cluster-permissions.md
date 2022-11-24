@@ -27,15 +27,15 @@ This article describes the available cluster level roles and how to assign princ
 
 1. In the left-hand menu, scroll down to **Security + networking** and select **Permissions**.
 
-:::image type="content" source="media/manage-cluster-permissions/left-hand-menu.png" alt-text="Image of the left settings menu containing the permissions tab.":::
+    :::image type="content" source="media/manage-cluster-permissions/left-hand-menu.png" alt-text="Image of the left settings menu containing the permissions tab.":::
 
 1. Select **Add**, and pick the role you wish to assign from the dropdown.
 
-:::image type="content" source="media/manage-cluster-permissions/add-widget.png" alt-text="Image of the add widget for adding permissions.":::
+    :::image type="content" source="media/manage-cluster-permissions/add-widget.png" alt-text="Image of the add widget for adding permissions.":::
 
 1. In the **New principals** window, search for and select the desired principal. Add as many as you want. At the bottom of the window, choose **Select** to finish.
 
-:::image type="content" source="media/manage-cluster-permissions/new-principals-window.png" alt-text="Image of new principals window for adding new permissions.":::
+    :::image type="content" source="media/manage-cluster-permissions/new-principals-window.png" alt-text="Image of new principals window for adding new permissions.":::
 
 ## See also
 
