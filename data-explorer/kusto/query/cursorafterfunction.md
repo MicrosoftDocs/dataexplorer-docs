@@ -1,6 +1,6 @@
 ---
 title: cursor_after() - Azure Data Explorer
-description: Learn how to use the cursor_after() function to check if the record was ingested after the database cursor.
+description: Learn how to use the cursor_after() function to compare the ingestion time of the records of a table against the database cursor time.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/24/2022
@@ -11,8 +11,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-A predicate over the records of a table to compare their ingestion time
-against a database cursor.
+A predicate run over the records of a table to compare their ingestion time against a database cursor.
 
 ## Syntax
 
