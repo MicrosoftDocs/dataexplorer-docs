@@ -7,7 +7,11 @@ ms.date: 02/13/2020
 ---
 # distinct operator
 
-Produces a table with the distinct combination of the provided columns of the input table. 
+Produces a table with the distinct combination of the provided columns of the input table.
+
+## Syntax
+
+Produces a table with the distinct combination of Column1 and Column2.
 
 ```kusto
 T | distinct Column1, Column2
@@ -19,17 +23,30 @@ Produces a table with the distinct combination of all columns in the input table
 T | distinct *
 ```
 
+> [!NOTE]
+> Unlike `summarize by ...`, the `distinct` operator supports providing an asterisk (`*`) as the group key, making it easier to use for wide tables.
+
 ## Example
 
-Shows the distinct combination of fruit and price.
+Shows distinct combination of states and type of events that led to over 45 direct injuries.
 
 ```kusto
-Table | distinct fruit, price
+StormEvents
+| where InjuriesDirect > 45
+| distinct State, EventType
 ```
 
-:::image type="content" source="images/distinctoperator/distinct.PNG" alt-text="Two tables. One has suppliers, fruit types, and prices, with some fruit-price combinations repeated. The second table lists only unique combinations.":::
+|State|EventType|
+|TEXAS|Winter Weather|
+|KANSAS|Tornado|
+|MISSOURI|Excessive Heat|
+|OKLAHOMA|Thunderstorm Wind|
+|OKLAHOMA|Excessive Heat|
+|ALABAMA|Tornado|
+|ALABAMA|Heat|
+|TENNESSEE|Heat|
+|CALIFORNIA|Wildfire|
 
-**Notes**
+## See also
 
-* Unlike `summarize by ...`, the `distinct` operator supports providing an asterisk (`*`) as the group key, making it easier to use for wide tables.
-* If the group by keys are of high cardinalities, using `summarize by ...` with the [shuffle strategy](shufflequery.md) could be useful.
+* If the group by keys are of high cardinalities, try `summarize by ...` with the [shuffle strategy](shufflequery.md)
