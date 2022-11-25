@@ -175,7 +175,7 @@ For this article, you use static routing, where you specify the table name, data
 If you selected **Event system properties** in the **Data Source** section of the table, you must include [system properties](ingest-data-event-hub-overview.md#event-system-properties-mapping) in the table schema and mapping.
 
 ### Event retrieval start date
-The Evnt Hub data connection can retrieve pre-existing Event Hub events created since the *Event retrieval start date*. It can only retrieve events retained by the Event hub, based on its [retention period](https://learn.microsoft.com/azure/event-hubs/event-hubs-features#event-retention). This field  can be used if you want to ingest historical events from the Event Hub, for example, for testing purposes. Note that the time zone is UTC. If no time is specified, the default time is the time at which the data connection is created.
+The Evnt Hub data connection can retrieve pre-existing Event Hub events created since the *Event retrieval start date*. It can only retrieve events retained by the Event hub, based on its [retention period](https://learn.microsoft.com/azure/event-hubs/event-hubs-features#event-retention). This field  can be used if you want to ingest historical events from the Event Hub, for example, to ingest data that existed in the Event Hub prior to creating the data connection, or for testing purposes. Note that the time zone is UTC. If no time is specified, the default time is the time at which the data connection is created.
 Changing the default time might cause ingestion latency while older records are ingested. For existing data connections, this might ingest events previously ingested.
 
 ## Copy the connection string
