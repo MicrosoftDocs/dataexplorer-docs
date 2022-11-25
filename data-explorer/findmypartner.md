@@ -11,6 +11,15 @@ This article describes the partners of the Azure Data Explorer Find My Partner P
 
 The services and expertise are chosen by the partner and should not be considered as endorsement confirmation by Microsoft. The partner is solely responsible for the services it provides.
 
+Besides this documentation you can query the data on the [help](https://help.kusto.windows.net) cluster. The table "Partner" in the database "FindMyPartner" is at your disposal.
+
+The following example returns all partners of the Find My Partner Program.
+
+<!-- csl: https://help.kusto.windows.net/FindMyPartner -->
+```kusto
+Partner
+```
+
 ## Glossary
 
 | Term | Definition | Description |
