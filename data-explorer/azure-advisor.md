@@ -154,11 +154,6 @@ You can think about the **Reduce table cache policy to match usage patterns** re
 
 * Tables with redundant cache policy –  which means that your table's actual query look-backs, or usage patterns, are lower than the configured cache policy. However, reducing the cache policy won’t result in an immediate cost saving, since the cluster is not data-bound. The cluster won’t scale in, even if you remove data from the hot cache.
 
-## Next steps
-
-* [Manage cluster horizontal scaling (scale out) in Azure Data Explorer to accommodate changing demand](manage-cluster-horizontal-scaling.md)
-* [Manage cluster vertical scaling (scale up) in Azure Data Explorer to accommodate changing demand](manage-cluster-vertical-scaling.md)
-
 ### Reliability recommendations
 
 The **Reliability recommendations** are recommendations that helps you ensure and improve the continuity of your business-critical applications. 
@@ -175,3 +170,8 @@ The recommendation is given when your virtual network cluster when the subnet yo
 
 #### Azure data explorer failed to install or resume due virtual network issues
 The recommendation is given once your Azure data explorer cluster failed to install/resume due virtual network issues. The issues may very between clusters, please follow the [troubleshooting guide](vnet-deploy-troubleshoot.md) to resolve this recommendation.
+
+## Next steps
+
+* [Manage cluster horizontal scaling (scale out) in Azure Data Explorer to accommodate changing demand](manage-cluster-horizontal-scaling.md)
+* [Manage cluster vertical scaling (scale up) in Azure Data Explorer to accommodate changing demand](manage-cluster-vertical-scaling.md)
