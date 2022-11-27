@@ -19,8 +19,6 @@ Use the following steps to integrate *monaco-kusto* into your app using *npm*.
 
 **Step 3**: [Add your database schema to the editor](#add-your-database-schema-to-the-editor)
 
-**Step 4**: Configure your app to run queries written in the editor
-
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) (v6.10.3 or later)
@@ -203,10 +201,6 @@ You can get your database schema using one of the following methods:
 1. Use the `setSchema()` method to set the schema in the editor.
 
 ---
-
-## Configure your app to run queries written in the editor
-
-**//TODO:: NOAM - Add instructions for running queries written in the editor**
 
 ## Sample project
 
