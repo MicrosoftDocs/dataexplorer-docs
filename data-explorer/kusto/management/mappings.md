@@ -14,11 +14,11 @@ Data Explorer supports different types of mappings, both `row-oriented` (CSV, JS
 
 Each element in the mapping list is constructed from three properties:
 
-|Property|Description|
-|----|--|
-|`Column`|Target column name in the table|
-|`Datatype`| (Optional) Datatype with which to create the mapped column if it doesn't already exist in the table|
-|`Properties`|(Optional) Property-bag containing properties specific for each mapping as described in each specific mapping type page.|
+|Property|Required|Description|
+|--|--|--|
+|`Column`| &check; |Target column name in the table|
+|`Datatype`| | Datatype with which to create the mapped column if it doesn't already exist in the table|
+|`Properties`| | Property-bag containing properties specific for each mapping as described in each specific mapping type page.|
 
 [!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
 
