@@ -13,13 +13,13 @@ Convert a length value from one unit to another.
 
 `convert_length(`*value*`,`*from*`,`*to*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| `value` | real | &check; | The value to be converted. |
-| `from` | string | &check; | The unit to convert from. For possible values, see [Conversion units](#conversion-units). |
-| `to` | string | &check; | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
+| `value` | real | &check; | Value to be converted. |
+| `from` | string | &check; | Unit to convert from. For possible values, see [Conversion units](#conversion-units). |
+| `to` | string | &check; | Unit to convert to. For possible values, see [Conversion units](#conversion-units). |
 
 ### Conversion units
 
@@ -64,9 +64,9 @@ Convert a length value from one unit to another.
 
  Returns the input value converted from one length unit to another.
 
-## Examples
+## Example
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJz0nNSy/J0DDUM9JRUPdNLUktUgcy3PLzS9Q1AWLmFfkzAAAA)**\]**
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJz0nNSy/J0DDUM9JRUPdNLUktUgcy3PLzS9Q1AWLmFfkzAAAA)
 
 ```kusto
 print result = convert_length(1.2, 'Meter', 'Foot')
