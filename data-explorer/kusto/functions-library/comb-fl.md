@@ -25,11 +25,11 @@ The function `comb_fl()`calculates *C(n, k)*, the number of [combinations](https
 
 ## Usage
 
-`comb_fl()` is a user-defined function. You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`comb_fl()` is a user-defined function. You can either embed its code in your query, or install it in your database. There are two usage options: temporary and stored usage. See the below tabs for examples.
 
-# [Ad hoc](#tab/adhoc)
+# [Temporary](#tab/temporary)
 
-For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
+For temporary usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -46,7 +46,7 @@ range n from 3 to 10 step 3
 | extend cnk = comb_fl(n, k)
 ```
 
-# [Persistent](#tab/persistent)
+# Stored(#tab/stored)
 
 For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 

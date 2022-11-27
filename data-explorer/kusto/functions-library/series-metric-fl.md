@@ -36,11 +36,11 @@ The `series_metric_fl()` function selects and retrieves time series of metrics i
 
 ## Usage
 
-`series_metric_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`series_metric_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: temporary and persistent usage. See the below tabs for examples.
 
-# [Ad hoc](#tab/adhoc)
+# [Temporary](#tab/temporary)
 
-For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
+For temporary usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -64,7 +64,7 @@ demo_prometheus
 | render timechart with(series=labels)
 ```
 
-# [Persistent](#tab/persistent)
+# Stored(#tab/stored)
 
 For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 

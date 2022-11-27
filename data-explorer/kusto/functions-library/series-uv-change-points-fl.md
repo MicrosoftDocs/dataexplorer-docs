@@ -29,7 +29,7 @@ The function `series_uv_change_points_fl()` finds change points in time series b
 
 ## Usage
 
-`series_uv_change_points_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query (ad hoc) or you can define it as a stored function in your database (persistent).
+`series_uv_change_points_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a temporary query or you can define it as a stored function in your database.
 
 ### Prerequisites
 
@@ -41,9 +41,9 @@ The function `series_uv_change_points_fl()` finds change points in time series b
 
 In the following function example, replace 'YOUR-AD-RESOURCE-NAME' in the uri and 'YOUR-KEY' in the 'Ocp-Apim-Subscription-Key' of the header with your resource name and key.
 
-## [Ad hoc](#tab/adhoc)
+## [Temporary](#tab/temporary)
 
-For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permissions are required.
+For temporary usage, embed its code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
@@ -91,7 +91,7 @@ ts
 | render anomalychart with(xcolumn=ts, ycolumns=y, confidence, anomalycolumns=change_point)
 ~~~
 
-## [Persistent](#tab/persistent)
+## Stored(#tab/stored)
 
 For persistent usage, use the [`.create function`](../management/create-function.md) to add the code to a stored function. Creating a function requires [database user permissions](../management/access-control/role-based-authorization.md).
 

@@ -29,11 +29,11 @@ The function `predict_fl()` predicts using an existing trained machine learning 
 
 ## Usage
 
-`predict_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`predict_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: temporary and stored usage. See the below tabs for examples.
 
-# [Ad hoc](#tab/adhoc)
+# [Temporary](#tab/temporary)
 
-For ad hoc usage, embed the code using the [let statement](../query/letstatement.md). No permission is required.
+For temporary usage, embed the code using the [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
@@ -75,7 +75,7 @@ OccupancyDetection
 | summarize n=count() by Occupancy, pred_Occupancy
 ~~~
 
-# [Persistent](#tab/persistent)
+# Stored(#tab/stored)
 
 For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 

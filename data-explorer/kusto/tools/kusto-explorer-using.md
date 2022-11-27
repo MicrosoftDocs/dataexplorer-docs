@@ -28,7 +28,7 @@ Search++ mode enables you to search for a term using search syntax across one or
 
 ## Query mode
 
-Kusto.Explorer includes a powerful script mode that enables you to write, edit, and run ad-hoc queries. The script mode comes with syntax highlighting and IntelliSense, so you can quickly ramp-up your knowledge of the Kusto Query Language.
+Kusto.Explorer includes a powerful script mode that enables you to write, edit, and run temporary queries. The script mode comes with syntax highlighting and IntelliSense, so you can quickly ramp-up your knowledge of the Kusto Query Language.
 
 This section describes how to run basic queries in Kusto.Explorer and how to add parameters to your queries.
 
