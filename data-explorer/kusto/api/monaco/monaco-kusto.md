@@ -7,7 +7,7 @@ ms.date: 11/22/2022
 ---
 # Integrate the Monaco Editor with Kusto Query Language support directly in your app
 
-Azure Data Explorer [Monaco Editor](https://microsoft.github.io/monaco-editor) with Kusto query support (*monaco-kusto*) can be directly integrated into your app. Integrating *monaco-kusto* into your app offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition. It requires you to build a solution for authentication, query execution, result display, and schema exploration, but offers you full flexibility to fashion the user experience that fits your needs.
+Azure Data Explorer [Monaco Editor](https://microsoft.github.io/monaco-editor) with Kusto query support (*monaco-kusto*) can be directly integrated into your app. Integrating *monaco-kusto* into your app offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition. It requires you to build a solution for authentication, query execution, result display, and schema exploration. It offers you full flexibility to fashion the user experience that fits your needs.
 
 In this article, you'll learn how to integrate *monaco-kusto* into your app. The package is available on [GitHub](https://github.com/Azure/monaco-kusto) and on *npm*.
 
@@ -43,7 +43,7 @@ You can set up your app to use *monaco-kusto* using one of the following methods
 
 ### [AMD module system](#tab/amd)
 
-1. Add the following HTML to pages where the Monaco Editor is used, such as your *index.html* file. These are required due to a dependency the package has on `kusto-language-service`.
+1. Add the following HTML to pages where the Monaco Editor is used, such as your *index.html* file. They're required due to a dependency the package has on `kusto-language-service`.
 
     ```html
     <script src="%PUBLIC_URL%/monaco-editor/min/vs/language/kusto/bridge.min.js"></script>
@@ -53,13 +53,13 @@ You can set up your app to use *monaco-kusto* using one of the following methods
     ```
 
 1. Copy the static files from the *monaco* and *monaco-kusto* packages to the **monaco-editor** folder on your web server. Your app will need to access these static files.
-1. Use monaco's `loader.js` to load them. For an example on how to do this, see [sample code](https://github.com/Azure/monaco-kusto/tree/master/samples/react/src/monaco-kusto.js)
+1. Use monaco's `loader.js` to load them. For an example, see [sample code](https://github.com/Azure/monaco-kusto/tree/master/samples/react/src/monaco-kusto.js)
 
 ### [ESM (webpack)](#tab/esm)
 
-The following steps describe how to set up your app to use *monaco-kusto* using webpack. The default entry point for a project is the *src/index.js* file and the default configuration file is the *src/webpack.config.js* file. The following steps assume that you're using the default webpack project set up to bundle your app.
+The following steps describe how to set up your app to use *monaco-kusto* using webpack. The default entry point for a project is the *src/index.js* file and the default configuration file is the *src/webpack.config.js* file. The following steps assume that you're using the default webpack project setup to bundle your app.
 
-1. In the configuration file, add the following:
+1. In the configuration file, add the following snippets:
     1. Under **resolve.alias**, add the following aliases:
 
         ```javascript

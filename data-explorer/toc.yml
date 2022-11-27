@@ -426,7 +426,7 @@ items:
         href: kusto/api/connection-strings/generate-sas-token.md
     - name: Integrate Kusto query editor in your apps
       items:
-      - name: Integrate the web UI
+      - name: Integrate Azure Data Explorer capabilities overview
         displayName: monaco web UI
         href: kusto/api/monaco/monaco-overview.md
       - name: Embed the web UI as an iframe

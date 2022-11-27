@@ -1,13 +1,13 @@
 ---
-title: Integrate Azure Data Explorer capabilities into your app.
-description: Learn about the different ways you can integrate Azure Data Explorer capabilities into your apps.
+title: Integrate Azure Data Explorer capabilities in your app.
+description: Learn about the different ways you can integrate Azure Data Explorer capabilities in your apps.
 ms.reviewer: izlisbon
 ms.topic: conceptual
 ms.date: 11/22/2022
 ---
-# Integrate Azure Data Explorer capabilities into your app
+# Integrate Azure Data Explorer capabilities in your app overview
 
-You can integrate Azure Data Explorer capabilities into your app with features to suit your needs. Integrating Azure Data Explorer capabilities into your app enables you to:
+You can integrate Azure Data Explorer capabilities in your app with features to suit your needs. Integrating Azure Data Explorer capabilities in your app enables you to:
 
 - Edit queries (including all language features such as colorization and intellisense)
 - Explore table schemas visually
@@ -20,11 +20,11 @@ You can integrate Azure Data Explorer capabilities into your app with features t
 
 ## Integration methods
 
-You can integrate Azure Data Explorer capabilities into your apps in the following ways:
+You can integrate Azure Data Explorer capabilities in your apps in the following ways:
 
 - [Integrate the Monaco Editor with Kusto query support directly into your app](monaco-kusto.md)
 
-    Integrating the [Monaco Editor](https://microsoft.github.io/monaco-editor/) into your app offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition. It requires you to build a solution for authentication, query execution, result display, and schema exploration, but offers you full flexibility to fashion the user experience that fits your needs.
+    Integrating the [Monaco Editor](https://microsoft.github.io/monaco-editor/) in your app offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition. It requires you to build a solution for authentication, query execution, result display, and schema exploration. It offers you full flexibility to fashion the user experience that fits your needs.
 
 - [Embed the Azure Data Explorer web UI in an iframe](host-web-ux-in-iframe.md)
 
