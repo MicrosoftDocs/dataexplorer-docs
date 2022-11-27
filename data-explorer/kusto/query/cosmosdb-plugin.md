@@ -31,8 +31,8 @@ Supported options settings include:
 |Name|Description|
 |--|--|
 | `armResourceId` | Retrieve the API key from the Azure Resource Manager <br> **Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc`|
-| `token` | Provide the Azure AD access token used to authenticate with the Azure Resource Manager.
-| `preferredLocations` | Control which region the data is queried from. <br> **Example:** `['East US']` | |
+| `token` | Provide the Azure AD access token used to authenticate with the Azure Resource Manager.|
+| `preferredLocations` | Control which region the data is queried from. <br> **Example:** `['East US']` |
 
 ## Set callout policy
 
