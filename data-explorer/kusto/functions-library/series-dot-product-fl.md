@@ -46,7 +46,7 @@ union
 | extend v3=series_dot_product_fl(v1, v2)
 ```
 
-# Stored(#tab/stored)
+# [Stored](#tab/stored)
 
 For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 

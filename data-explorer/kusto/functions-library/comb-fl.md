@@ -46,7 +46,7 @@ range n from 3 to 10 step 3
 | extend cnk = comb_fl(n, k)
 ```
 
-# Stored(#tab/stored)
+# [Stored](#tab/stored)
 
 For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 

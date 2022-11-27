@@ -60,7 +60,7 @@ datatable(id:string, sample1:dynamic) [
 | invoke normality_test_fl('sample1', 'test_stat', 'p_val')
 ~~~
 
-# Stored(#tab/stored)
+# [Stored](#tab/stored)
 
 For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 

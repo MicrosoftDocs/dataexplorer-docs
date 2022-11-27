@@ -41,7 +41,7 @@ range x from 1 to 10 step 3
 | extend fx = factorial_fl(x)
 ```
 
-# Stored(#tab/stored)
+# [Stored](#tab/stored)
 
 For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 

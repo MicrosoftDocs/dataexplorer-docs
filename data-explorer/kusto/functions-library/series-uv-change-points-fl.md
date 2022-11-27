@@ -91,7 +91,7 @@ ts
 | render anomalychart with(xcolumn=ts, ycolumns=y, confidence, anomalycolumns=change_point)
 ~~~
 
-## Stored(#tab/stored)
+## [Stored](#tab/stored)
 
 For persistent usage, use the [`.create function`](../management/create-function.md) to add the code to a stored function. Creating a function requires [database user permissions](../management/access-control/role-based-authorization.md).
 

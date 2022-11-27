@@ -74,7 +74,7 @@ tbl
 | invoke time_window_rolling_avg_fl('ts', 'val', 'key', 10m)
 ```
 
-# Stored(#tab/stored)
+# [Stored](#tab/stored)
 
 For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 

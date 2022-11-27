@@ -62,7 +62,7 @@ demo_prometheus
 | render timechart with(series=labels)
 ```
 
-# Stored(#tab/stored)
+# [Stored](#tab/stored)
 
 For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 

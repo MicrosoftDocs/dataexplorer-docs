@@ -88,7 +88,7 @@ ts
 | render anomalychart with(xcolumn=timestamp, ycolumns=value, anomalycolumns=ad_ama)
 ~~~
 
-## Stored(#tab/stored)
+## [Stored](#tab/stored)
 
 For persistent usage, use the [`.create function`](../management/create-function.md) to add the code to a stored function. Creating a function requires [database user permissions](../management/access-control/role-based-authorization.md).
 

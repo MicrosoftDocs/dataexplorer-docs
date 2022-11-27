@@ -66,7 +66,7 @@ datatable(id:string, x:int, n:int) [
 | invoke binomial_test_fl('x', 'n', 'p_val', success_prob=0.2, alt_hypotheis='greater')
 ```
 
-# Stored(#tab/stored)
+# [Stored](#tab/stored)
 
 For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
