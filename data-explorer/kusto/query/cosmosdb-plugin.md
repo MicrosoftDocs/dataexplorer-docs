@@ -24,16 +24,16 @@ The `cosmosdb_sql_request` plugin sends a SQL query to an Azure Cosmos DB SQL ne
 | *ConnectionString* | string | &check; | Connection string that points to the Azure Cosmos DB collection to query. It must include *AccountEndpoint*, *Database*, and *Collection*. It may include *AccountKey* if a master key is used for authentication. <br> **Example:** `'AccountEndpoint=https://cosmosdbacc.documents.azure.com/ ;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;'` |
 | *SqlQuery*| string | &check; | Query to execute. |
 | *SqlParameters* | dynamic | | Property bag object to pass as parameters along with the query. Parameter names must begin with `@`. |
-| *OutputSchema* | | | Names and types of the expected columns of the `cosmosdb_sql_request` plugin output. Use the following syntax: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)` <br><br> Specifying this argument enables multiple query optimizations. |
-| *Options* | dynamic | | Property bag object that holds more advanced settings as key-value pairs. |
+| *OutputSchema* | | | Names and types of the expected columns of the `cosmosdb_sql_request` plugin output. Use the following syntax: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`. Specifying this parameter enables multiple query optimizations. |
+| *Options* | dynamic | | Property bag object that holds more advanced settings. |
 
-Supported options settings include:
+Supported *Options* settings include:
 
-|Name|Description|Example|
-|--|--|--|
-| `armResourceId` | API key from the Azure Resource Manager | `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc` |
-| `token` | Azure AD access token used to authenticate with the Azure Resource Manager.| |
-| `preferredLocations` | Which region the data is queried from.| `['East US']` |
+|Name|Description|
+|--|--|
+| `armResourceId` | API key from the Azure Resource Manager </br>**Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc` |
+| `token` | Azure AD access token used to authenticate with the Azure Resource Manager.|
+| `preferredLocations` | Which region the data is queried from. </br>**Example:**`['East US']` |
 
 ## Set callout policy
 
