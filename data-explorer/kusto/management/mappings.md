@@ -12,7 +12,7 @@ Data mappings are used during ingestion to map incoming data to columns inside t
 
 Data Explorer supports different types of mappings, both `row-oriented` (CSV, JSON, AVRO and W3CLOGFILE), and `column-oriented` (Parquet and ORC).
 
-Each element in the mapping list is constructed from three properties:
+Each element in the mapping list is constructed from three fields:
 
 |Property|Required|Description|
 |--|--|--|
