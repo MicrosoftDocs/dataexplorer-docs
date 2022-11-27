@@ -23,7 +23,7 @@ Each AVRO mapping element may contain the following `properties`:
 >[!NOTE]
 > `Field` and `Path` cannot be used together; only one is allowed.
 >
-> The following alternatives are equal:
+> The following alternatives are equivalent:
 >
 > ``` json
 > [
