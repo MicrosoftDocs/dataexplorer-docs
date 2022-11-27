@@ -16,7 +16,7 @@ Returns the number of records in the input record set.
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
+|--|--|--|--|
 | *T* | string | &check; | Tabular input whose records are to be counted. |
 
 ## Returns
