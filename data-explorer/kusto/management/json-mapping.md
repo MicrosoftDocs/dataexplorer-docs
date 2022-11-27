@@ -11,13 +11,13 @@ Use JSON mapping to map incoming data to columns inside tables when your ingesti
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 
-Each JSON mapping element may contain the following `properties`:
+Each JSON mapping element may contain the following optional `properties`:
 
-|Property|Required|Description|
-|--|--|--|
-|`Path`| |If the value starts with `$`: JSON path to the field that will become the content of the column in the JSON document. The JSON path that denotes the entire document is `$`. If the value doesn't start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
-|`ConstantValue`| |The constant value to be used for a column instead of some value inside the JSON file.|
-|`Transform`| | Transformation that should be applied on the content with [mapping transformations](mappings.md#mapping-transformations).|
+|Property|Description|
+|--|--|
+|`Path`|If the value starts with `$`: JSON path to the field that will become the content of the column in the JSON document. The JSON path that denotes the entire document is `$`. If the value doesn't start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
+|`ConstantValue`|The constant value to be used for a column instead of some value inside the JSON file.|
+|`Transform`|Transformation that should be applied on the content with [mapping transformations](mappings.md#mapping-transformations).|
 
 [!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
 

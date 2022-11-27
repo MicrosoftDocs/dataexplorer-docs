@@ -11,12 +11,12 @@ Use CSV mapping to map incoming data to columns inside tables when your ingestio
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 
-Each CSV mapping element must contain either of the following `properties`:
+Each CSV mapping element must contain either of the following optional `properties`:
 
-|Property|Required|Description|
-|--|--|--|
-|`Ordinal`| |The column order number in CSV.|
-|`ConstantValue`| | The constant value to be used for a column instead of some value inside the CSV file.|
+|Property|Description|
+|--|--|
+|`Ordinal`|The column order number in CSV.|
+|`ConstantValue`|The constant value to be used for a column instead of some value inside the CSV file.|
 
 > [!NOTE]
 >

@@ -12,14 +12,14 @@ Use Parquet mapping to map incoming data to columns inside tables when your inge
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 
-Each Parquet mapping element may contain the following `properties`:
+Each Parquet mapping element may contain the following optional `properties`:
 
-|Property|Required|Description|
-|--|--|--|
-|`Field`| |The name of the field in the Parquet record.|
-|`Path`| | Alternative to using `Field` that allows taking the inner part of a Parquet record-field, if necessary. The value denotes a JSON-path from the root of the Parquet record. The JSON path that denotes the entire AVRO record is `$`. If the value doesn't start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
-|`ConstantValue`| |The constant value to be used for a column instead of some value inside Parquet file.|
-|`Transform`| | [mapping transformations](mappings.md#mapping-transformations) that should be applied on the content.|
+|Property|Description|
+|--|--|
+|`Field`|The name of the field in the Parquet record.|
+|`Path`|Alternative to using `Field` that allows taking the inner part of a Parquet record-field, if necessary. The value denotes a JSON-path from the root of the Parquet record. The JSON path that denotes the entire AVRO record is `$`. If the value doesn't start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
+|`ConstantValue`|The constant value to be used for a column instead of some value inside Parquet file.|
+|`Transform`|[mapping transformations](mappings.md#mapping-transformations) that should be applied on the content.|
 
 > [!NOTE]
 > `Field` and `Path` cannot be used together; only one is allowed.

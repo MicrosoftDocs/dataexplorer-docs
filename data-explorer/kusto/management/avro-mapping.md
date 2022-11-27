@@ -11,14 +11,14 @@ Use AVRO mapping to map incoming data to columns inside tables when your ingesti
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 
-Each AVRO mapping element may contain the following `properties`:
+Each AVRO mapping element may contain the following optional `properties`:
 
-|Property|Required|Description|
-|--|--|--|
-|`Field`|  | The name of the field in the AVRO record.|
-|`Path`|  | Alternative to using `Field` that allows taking the inner part of an AVRO record-field. The value denotes a JSON path from the root of the AVRO record. The JSON path that denotes the entire AVRO record is `$`. If the value doesn't start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
-|`ConstantValue`| | The constant value to be used for a column instead of some value inside AVRO file.|
-|`Transform`| | Transformation that should be applied on the content with [supported transformations](./mappings.md#mapping-transformations).|
+|Property|Description|
+|--|--|
+|`Field`| The name of the field in the AVRO record.|
+|`Path`|Alternative to using `Field` that allows taking the inner part of an AVRO record-field. The value denotes a JSON path from the root of the AVRO record. The JSON path that denotes the entire AVRO record is `$`. If the value doesn't start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
+|`ConstantValue`|The constant value to be used for a column instead of some value inside AVRO file.|
+|`Transform`|Transformation that should be applied on the content with [supported transformations](./mappings.md#mapping-transformations).|
 
 >[!NOTE]
 > `Field` and `Path` cannot be used together; only one is allowed.
