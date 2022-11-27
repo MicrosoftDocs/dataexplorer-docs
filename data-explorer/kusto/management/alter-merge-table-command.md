@@ -27,7 +27,7 @@ The `.alter-merge table` command:
 | -- | -- | -- | -- |
 | *TableName* | string | &check; | Name of the table to alter. |
 | *coulmnName* | string | &check; | Name of an existing or new column. |
-| *coulmnType* | string | &check; | Type of data in the column specified before the colon. |
+| *coulmnType* | string | &check; | Type of data in the specified column. |
 | *Documentation* | string | | Free text describing the entity to be added. This string is presented in various UX settings next to the entity names. |
 | *FolderName* | string | | Name of folder to add to the table. |
 
