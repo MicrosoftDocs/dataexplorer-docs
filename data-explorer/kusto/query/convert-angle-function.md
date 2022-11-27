@@ -3,7 +3,7 @@ title: convert_angle() - Azure Data Explorer
 description: Learn how to use the convert_angle() function to convert an angle input value from one unit to another.
 ms.reviewer: itsagui
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 11/27/2022
 ---
 # convert_angle
 
