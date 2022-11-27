@@ -3,7 +3,7 @@ title: convert_length() - Azure Data Explorer
 description: Learn how to use the convert_length() function to convert a length input value from one unit to another.
 ms.reviewer: itsagui
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 11/27/2022
 ---
 # convert_length
 
@@ -17,9 +17,9 @@ Convert a length value from one unit to another.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| `value` | real | &check; | Value to be converted. |
-| `from` | string | &check; | Unit to convert from. For possible values, see [Conversion units](#conversion-units). |
-| `to` | string | &check; | Unit to convert to. For possible values, see [Conversion units](#conversion-units). |
+| *value* | real | &check; | Value to be converted. |
+| *from* | string | &check; | Unit to convert from. For possible values, see [Conversion units](#conversion-units). |
+| *to* | string | &check; | Unit to convert to. For possible values, see [Conversion units](#conversion-units). |
 
 ### Conversion units
 
