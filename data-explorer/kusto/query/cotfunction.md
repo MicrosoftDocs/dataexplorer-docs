@@ -11,12 +11,26 @@ Calculates the trigonometric cotangent of the specified angle, in radians.
 
 ## Syntax
 
-`cot(`*x*`)`
+`cot(`*number*`)`
 
-## Arguments
+## Parameters
 
-* *x*: A real number.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *number* | real | &check; | Value for which to calculate the cotangent. |
 
 ## Returns
 
-* The cotangent function value for `x`
+The cotangent function value for *number*.
+
+## Example
+
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOL9Ew1AQA9l3LZAwAAAA=)
+
+```kusto
+print cot(1)
+```
+
+|result|
+|--|
+|0.64209261593433065|
