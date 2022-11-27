@@ -70,7 +70,7 @@ The mapping above is serialized as a JSON string when it's provided as part of t
   )
 ````
 
-## Example using a pre-created mapping
+## Pre-created mapping
 
 When the mapping is [pre-created](create-ingestion-mapping-command.md), reference the mapping by name in the `.ingest` control command.
 
@@ -83,7 +83,7 @@ When the mapping is [pre-created](create-ingestion-mapping-command.md), referenc
     )
 ```
 
-## Example using identity mapping
+## Identity mapping
 
 Use Parquet mapping during ingestion without defining a mapping schema (see [identity mapping](mappings.md#identity-mapping)).
 
