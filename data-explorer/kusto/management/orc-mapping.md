@@ -39,7 +39,7 @@ Each ORC mapping element may contain the following `properties`:
 
 [!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
 
-## Example
+## Examples
 
 ```json
 [
