@@ -13,10 +13,10 @@ Use CSV mapping to map incoming data to columns inside tables when your ingestio
 
 Each CSV mapping element must contain either of the following `properties`:
 
-|Property|Description|
-|----|--|
-|`Ordinal`|The column order number in CSV.|
-|`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside the CSV file.|
+|Property|Required|Description|
+|--|--|--|
+|`Ordinal`| |The column order number in CSV.|
+|`ConstantValue`| | The constant value to be used for a column instead of some value inside the CSV file.|
 
 > [!NOTE]
 >

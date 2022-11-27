@@ -5,7 +5,6 @@ ms.topic: reference
 ms.date: 11/16/2022
 ---
 
-
 # W3CLOGFILE mapping
 
 Use W3CLOGFILE mapping to map incoming data to columns inside tables when your ingestion source file is in W3CLOGFILE format.
@@ -14,11 +13,11 @@ Use W3CLOGFILE mapping to map incoming data to columns inside tables when your i
 
 Each W3CLOGFILE mapping element may contain the following `properties`:
 
-|Property|Description|
-|----|--|
-|`Field`|W3CLOGFILE entry name|
-|`ConstantValue`|(Optional) The constant value to be used for a column instead of some value inside W3CLOGFILE file.|
-|`Transform`|(Optional) [mapping transformations](mappings.md#mapping-transformations) that should be applied on the content.|
+|Property|Required|Description|
+|--|--|--|
+|`Field`| &check; | W3CLOGFILE entry name|
+|`ConstantValue`| | The constant value to be used for a column instead of some value inside W3CLOGFILE file.|
+|`Transform`| | [mapping transformations](mappings.md#mapping-transformations) that should be applied on the content.|
 
 > [!NOTE]
 > The only supported transformations for W3CLOGFILE format are: `SourceLineNumber` and `SourceLocation`.
