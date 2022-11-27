@@ -3,7 +3,7 @@ title: cluster() (scope function) - Azure Data Explorer
 description: Learn how to use the cluster() function to change the reference of the query to a remote cluster.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 11/27/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -19,18 +19,14 @@ cluster('help').database('Sample').SomeTable
 
 ## Syntax
 
-`cluster(`*stringConstant*`)`
+`cluster(`*name*`)`
 
-## Arguments
+## Parameters
 
-* *stringConstant*: Name of the cluster that is referenced. Cluster name can be either
-a fully qualified DNS name, or a string that will be suffixed with `.kusto.windows.net`. Argument has to be _constant_ prior to the query's execution,
-i.e. can't come from sub-query evaluation.
-
-**Notes**
-
-* For accessing database within the same cluster - use [database()](databasefunction.md) function.
-* More information about cross-cluster and cross-database queries available [here](cross-cluster-or-database-queries.md)
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *name* | string | &check; | Name of the cluster to reference. Can be either
+a fully qualified DNS name or a string that will be suffixed with `.kusto.windows.net`. Argument has to be constant prior to the query's execution, meaning it can't come from subquery evaluation. |
 
 ## Examples
 
@@ -86,3 +82,8 @@ receives a parameter `clusterName` - which is passed into the cluster() function
 This capability isn't supported in Azure Monitor
 
 ::: zone-end
+
+## See also
+
+* For accessing database within, the same cluster - use [database()](databasefunction.md) function.
+* More information about cross-cluster and cross-database queries available [here](cross-cluster-or-database-queries.md).
