@@ -13,10 +13,6 @@ zone_pivot_groups: kql-flavors
 
 Changes the reference of the query to a remote cluster.
 
-```kusto
-cluster('help').database('Sample').SomeTable
-```
-
 ## Syntax
 
 `cluster(`*name*`)`
@@ -34,6 +30,8 @@ a fully qualified DNS name or a string that will be suffixed with `.kusto.window
 
 The next query can be run on any of the Kusto clusters.
 
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/SampleLogs?query=H4sIAAAAAAAAA0vOKS0uSS3SUM9IzSlQ19RLSSxJTEosTtVQD07MLchJLQaKBZfkF+W6lqXmlRQr1Cgk55fmlQAAayjLjjcAAAA=)
+
 ```kusto
 cluster('help').database('Samples').StormEvents | count
 
@@ -48,6 +46,8 @@ cluster('help.kusto.windows.net').database('Samples').StormEvents | count
 
 The same query as above can be rewritten to use inline function (let statement) that
 receives a parameter `clusterName` - which is passed into the cluster() function.
+
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/SampleLogs?query=H4sIAAAAAAAAA8tJLVFIy89XsFXQSM4pLS5JLfJLzE21Ki4pysxL1+Sq5lIAAqgMsgpNvZTEksSkxOJUDfXgxNyCnNRidU294JL8olzXstS8kmKFGoXk/NK8Eq5aay6gBRrqGak5BeqaADuaG9BwAAAA)
 
 ```kusto
 let foo = (clusterName:string)
@@ -73,7 +73,8 @@ receives a parameter `clusterName` - which is passed into the cluster() function
 };
 ```
 
-**Note:** such functions can be used only locally and not in the cross-cluster query.
+> [!NOTE]
+> Such functions can be used only locally and not in the cross-cluster query.
 
 ::: zone-end
 
