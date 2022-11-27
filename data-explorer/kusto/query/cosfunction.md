@@ -11,17 +11,17 @@ Returns the cosine function.
 
 ## Syntax
 
-`cos(`*x*`)`
+`cos(`*number*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *x* | real | &check; | Value for which to calculate the cosine. |
+| *number* | real | &check; | Value for which to calculate the cosine. |
 
 ## Returns
 
-The cosine of *x*.
+The cosine of *number*.
 
 ## Example
 
