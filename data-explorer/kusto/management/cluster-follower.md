@@ -1,11 +1,11 @@
 ---
-title: Cluster follower commands - Azure Data Explorer
-description: This article describes Cluster follower commands in Azure Data Explorer.
+title: Follower commands - Azure Data Explorer
+description: Learn how to use follower commands to manage follower cluster configuration.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/18/2020
 ---
-# Cluster follower commands
+# Follower commands
 
 Control commands for managing the follower cluster configuration are listed below. These commands run synchronously, but are applied on the next periodic schema refresh. That's why there may be a few minutes delay until the new configuration is applied.
 

@@ -609,7 +609,8 @@ items:
         href: show-extents.md
     - name: Extent containers clean commands
       href: clean-extent-containers.md
-  - name: Cluster follower
+  - name: Follower commands
+    displayName: Cluster commands, database commands, materialized view commands, table commands 
     href: cluster-follower.md
   - name: Data purge
     href: ../concepts/data-purge.md
