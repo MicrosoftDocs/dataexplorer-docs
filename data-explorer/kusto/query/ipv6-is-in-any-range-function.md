@@ -1,6 +1,6 @@
 ---
 title: ipv6_is_in_any_range() - Azure Data Explorer
-description: This article describes ipv6_is_in_any_range() in Azure Data Explorer.
+description: This article describes how to use the ipv6_is_in_any_range function in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/15/2022
