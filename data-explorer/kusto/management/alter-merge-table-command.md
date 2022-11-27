@@ -6,7 +6,7 @@ ms.topic: reference
 ms.date: 08/05/2021
 ---
 # .alter-merge table
- 
+
 The `.alter-merge table` command:
 
 * Secures data in existing columns
@@ -17,7 +17,7 @@ The `.alter-merge table` command:
 `DocString` is free text that you can attach to a table/function/column describing the entity. This string is presented in various UX settings next to the entity names.
 
 > [!WARNING]
-> Using the `.alter-merge` command incorrectly may lead to data loss.
+> If you change the type of a column during `.alter-merge`, all values in that column will be nullified. This may lead to unexpected data loss.
 
 > [!TIP]
 > The `.alter-merge` has a counterpart, the `.alter` table command that has similar functionality. For more information, see [`.alter table`](../management/alter-table-command.md)
