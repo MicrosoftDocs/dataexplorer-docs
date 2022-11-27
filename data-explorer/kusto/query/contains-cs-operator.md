@@ -44,9 +44,9 @@ For best practices, see [Query best practices](best-practices.md).
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | Tabular input whose records are to be filtered. |
-| *col* | string | Name of the column to check for *string*. |
-| *string* | string | Case-sensitive string by which to filter the data. |
+| *T* | string | &check; | Tabular input whose records are to be filtered. |
+| *col* | string | &check; | Name of the column to check for *string*. |
+| *string* | string | &check; | Case-sensitive string by which to filter the data. |
 
 ## Returns
 
