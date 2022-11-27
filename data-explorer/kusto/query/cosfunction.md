@@ -13,10 +13,23 @@ Returns the cosine function.
 
 `cos(`*x*`)`
 
-## Arguments
+## Parameters
 
-* *x*: A real number.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *x* | real | &check; | Value for which to calculate the cosine. |
 
 ## Returns
 
-* The result of `cos(x)`
+The cosine of *x*.
+
+## Example
+
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOL9Yw1AQAT2Uc+QwAAAA=)
+
+```kusto
+print cos(1)
+```
+
+|result|
+|0.54030230586813977|
