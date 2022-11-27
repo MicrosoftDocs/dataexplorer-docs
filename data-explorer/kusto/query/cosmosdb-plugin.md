@@ -28,11 +28,12 @@ The `cosmosdb_sql_request` plugin sends a SQL query to an Azure Cosmos DB SQL ne
 | *Options* | dynamic | | Property bag object that holds more advanced settings as key-value pairs. |
 
 Supported options settings include:
-|Name|Description|
-|--|--|
-| `armResourceId` | Retrieve the API key from the Azure Resource Manager <br> **Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc`|
-| `token` | Provide the Azure AD access token used to authenticate with the Azure Resource Manager.|
-| `preferredLocations` | Control which region the data is queried from. <br> **Example:** `['East US']` |
+
+|Name|Description|Example|
+|--|--|--|
+| `armResourceId` | API key from the Azure Resource Manager | `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc` |
+| `token` | Azure AD access token used to authenticate with the Azure Resource Manager.| |
+| `preferredLocations` | Which region the data is queried from.| `['East US']` |
 
 ## Set callout policy
 
