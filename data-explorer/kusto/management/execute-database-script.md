@@ -54,7 +54,8 @@ Each command appearing in the script will be reported as a separate record in th
 ## Example
 
 ```kusto
-.execute database script <|
+.execute database script with (ContinueOnErrors=true)
+<|
 //
 // Create tables
 .create-merge table T(a:string, b:string)
