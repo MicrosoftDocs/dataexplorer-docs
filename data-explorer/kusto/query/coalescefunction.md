@@ -7,17 +7,17 @@ ms.date: 11/27/2022
 ---
 # coalesce()
 
-Evaluates a list of expressions and returns the first non-null, or non-empty for string, expression.
+Evaluates a list of expressions and returns the first non-null (or non-empty for string) expression.
 
 ## Syntax
 
-`coalesce(`*arg*`,`*arg_2*`,[`*arg_3*`...])`
+`coalesce(`*arg*`,`*arg_2*`,[`*arg_3*`,...])`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| arg | scalar | Expression to be evaluated.|
+| arg | scalar | | Expression to be evaluated.|
 
 > [!NOTE]
 >
@@ -26,7 +26,7 @@ Evaluates a list of expressions and returns the first non-null, or non-empty for
 
 ## Returns
 
-The value of the first *expr_i* whose value isn't null (or not-empty for string expressions).
+The value of the first *arg* whose value isn't null (or not-empty for string expressions).
 
 ## Example
 
