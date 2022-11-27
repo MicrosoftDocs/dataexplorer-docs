@@ -7,7 +7,7 @@ ms.date: 02/12/2021
 ---
 # ipv6_is_in_range()
 
-Checks if IPv6 string address is in IPv6-prefix notation range.
+Checks if an IPv6 string address is in IPv6-prefix notation range.
 
 ```kusto
 ipv6_is_in_range("a5e:f127:8a9d:146d:e102:b5d3:c755:f6cd", "a5e:f127:8a9d:146d:e102:b5d3:c755:f6cd/112") == true
@@ -18,10 +18,12 @@ ipv6_is_in_range("a5e:f127:8a9d:146d:e102:b5d3:c755:f6cd", "a5e:f127:8a9d:146d:e
 
 `ipv6_is_in_range(`*Ipv6Address*`, `*Ipv6Range*`)`
 
-## Arguments
+## Parameters
 
-* *Ipv6Address*: A string expression representing an IPv6 address. 
-* *Ipv6Range*: A string expression representing an IPv6 range using [IP-prefix notation](#ip-prefix-notation).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *Ipv6Address* | string | &check; | An expression representing an IPv6 address. 
+| *Ipv6Range*| string | &check; | An expression representing an IPv6 range using [IP-prefix notation](#ip-prefix-notation).
 
 ## IP-prefix notation
 
@@ -36,9 +38,7 @@ For example, fe80::85d:e82c:9446:7994/120 will have an associated net/subnetmask
 * `false`: Otherwise.
 * `null`: If conversion for one of the two IPv6 strings wasn't successful.
 
-## Examples
-
-### IPv6 range check
+## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
