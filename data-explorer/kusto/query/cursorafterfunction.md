@@ -14,26 +14,29 @@ zone_pivot_groups: kql-flavors
 A predicate over the records of a table to compare their ingestion time
 against a database cursor.
 
+> [!NOTE]
+> This function can only be invoked on records of a table which has the
+[IngestionTime policy](../management/ingestiontimepolicy.md) enabled.
+
 ## Syntax
 
-`cursor_after` `(` *RHS* `)`
+`cursor_after(`*RHS*`)`
 
-## Arguments
+## Parameters
 
-* *RHS*: Either an empty string literal, or a valid database cursor value.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *RHS* | string | &check; | Either an empty string literal or a valid database cursor value.|
 
 ## Returns
 
 A scalar value of type `bool` that indicates whether the record was ingested
 after the database cursor *RHS* (`true`) or not (`false`).
 
-**Notes**
+## See also
 
 See [database cursors](../management/databasecursor.md) for additional
 details on database cursors.
-
-This function can only be invoked on records of a table which has the
-[IngestionTime policy](../management/ingestiontimepolicy.md) enabled.
 
 ::: zone-end
 
