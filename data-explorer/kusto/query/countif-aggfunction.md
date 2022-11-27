@@ -3,7 +3,7 @@ title: countif() (aggregation function) - Azure Data Explorer
 description: Learn how to use the countif() function to count the rows where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/16/2022
+ms.date: 11/27/2022
 ---
 # countif() (aggregation function)
 

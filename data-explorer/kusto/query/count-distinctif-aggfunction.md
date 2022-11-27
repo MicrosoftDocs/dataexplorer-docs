@@ -3,7 +3,7 @@ title: count_distinctif() (aggregation function) - Azure Data Explorer - (previe
 description: This article describes count_distinctif() (aggregation function) in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/03/2022
+ms.date: 11/27/2022
 ---
 # count_distinctif() (aggregation function) - (preview)
 

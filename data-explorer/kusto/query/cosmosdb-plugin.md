@@ -3,7 +3,7 @@ title: cosmosdb_sql_request plugin - Azure Data Explorer
 description: Learn how to use the cosmosdb_sql_request plugin to send a SQL query to an Azure Cosmos DB SQL network endpoint to query small datasets.
 ms.reviewer: miwalia
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 11/27/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
