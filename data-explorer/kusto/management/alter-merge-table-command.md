@@ -15,7 +15,7 @@ The `.alter-merge table` command:
 * Requires [Table Admin permission](../management/access-control/role-based-authorization.md)
 
 > [!WARNING]
-> If you change the type of a column during `.alter-merge`, all values in that column will be nullified. This may lead to unexpected data loss.
+> Using the `.alter-merge` command incorrectly may lead to data loss.
 
 ## Syntax
 
