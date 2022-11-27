@@ -7,7 +7,6 @@ ms.date: 11/27/2022
 ---
 # column_ifexists()
 
-
 Takes a column name as a string and a default value. Returns a reference to the column if it exists, otherwise - returns the default value.
 
 > **Deprecated aliases:** columnifexists()
@@ -20,8 +19,8 @@ Takes a column name as a string and a default value. Returns a reference to the 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *columnName* | string | Name of the column to check if exists.|
-| *defaultValue* | scalar | Value to use if the column doesn't exist. This value can be any scalar expression. For example, a reference to another column.|
+| *columnName* | string | &check; | Name of the column to check if exists.|
+| *defaultValue* | scalar | &check; | Value to use if the column doesn't exist. This value can be any scalar expression. For example, a reference to another column.|
 
 ## Returns
 
