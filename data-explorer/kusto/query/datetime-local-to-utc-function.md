@@ -17,8 +17,8 @@ Converts local datetime to UTC datetime using [a time-zone specification](timezo
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *from* | datetime | &check; | Local datetime to convert.|
-| *timezone* | sting | &check; | Timezone of the desired datetime. Must be one of the supported [timezones](timezone.md).
+| *from* | datetime | &check; | The local datetime to convert.|
+| *timezone* | string | &check; | The timezone of the desired datetime. The value must be one of the supported [timezones](timezone.md).|
 
 ## Returns
 
