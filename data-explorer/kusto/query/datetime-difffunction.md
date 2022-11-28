@@ -11,15 +11,17 @@ Calculates the number of the specified periods between two [datetime](./scalar-d
 
 ## Syntax
 
-`datetime_diff(`*period*`,`*datetime_1*`,`*datetime_2*`)`
+`datetime_diff(`*period*`,`*datetime1*`,`*datetime2*`)`
 
-## Arguments
+## Parameters
 
-* `period`: `string`.
-* `datetime_1`: [datetime](./scalar-data-types/datetime.md) value.
-* `datetime_2`: [datetime](./scalar-data-types/datetime.md) value.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *period* | string | &check; | Measurement of time used to calculate the return value. See [possible values](#possible-values-of-period).|
+| *datetime1* | datetime | &check; | Left-hand side of the subtraction equation.|
+| *datetime2* | datetime | &check; | Right-hand side of the subtraction equation. |
 
-Possible values of *period*:
+### Possible values of *period*
 
 * Year
 * Quarter
@@ -35,9 +37,11 @@ Possible values of *period*:
 
 ## Returns
 
-An integer, which represents amount of `periods` in the result of subtraction (`datetime_1` - `datetime_2`).
+An integer representing the amount of *periods* in the result of subtraction (*datetime1* - *datetime2*).
 
-## Examples
+## Example
+
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52S3YrDIBCF7/sU3rVCDTORkCawz7JIY6lsY7pZw9K3X3+6bagmQsWrc8bvDONcR6XN5ibFSD5IJ4w0qpefnTqddlunbvf/4q4ErBmgvXQuAjAsGUdK95vvSYxGJlB3I6LVrzQncsbB0fpBm3PM8nK+L6x8X570K+VXDHLqKweBlQ0BaAGivhpLIyVvq8YxO3GLkVZ8n3gepsTonJpgciSACaazZsxe6cnIxBC9nuL6x1C18cc8XbjTf+Rx0F1MD/oyHVqEAlea9+MqGgh7oC4XtRQ1M9fyLM2uaj7SVjxSj+OwnPowM6kBuDrLUHWwhS5XC70Y+/QyqRBOJjUU1ZT+AYwetRIGBAAA)
 
 ```kusto
 print
