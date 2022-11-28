@@ -17,9 +17,9 @@ Calculates the number of the specified periods between two [datetime](./scalar-d
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *period* | string | &check; | Measurement of time used to calculate the return value. See [possible values](#possible-values-of-period).|
-| *datetime1* | datetime | &check; | Left-hand side of the subtraction equation.|
-| *datetime2* | datetime | &check; | Right-hand side of the subtraction equation. |
+| *period* | string | &check; | The measurement of time used to calculate the return value. See [possible values](#possible-values-of-period).|
+| *datetime1* | datetime | &check; | The left-hand side of the subtraction equation.|
+| *datetime2* | datetime | &check; | The right-hand side of the subtraction equation. |
 
 ### Possible values of *period*
 

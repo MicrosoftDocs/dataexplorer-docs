@@ -17,9 +17,9 @@ Calculates a new [datetime](./scalar-data-types/datetime.md) from a specified pe
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *period* | string | &check; | Length of time by which to increment.|
-| *amount* | int | &check; | Number of *periods* to add to *datetime*.|
-| *datetime* | datetime | &check; | Date to increment by the result of the above *period* x *amount* calculation. |
+| *period* | string | &check; | The length of time by which to increment.|
+| *amount* | int | &check; | The number of *periods* to add to *datetime*.|
+| *datetime* | datetime | &check; | The date to increment by the result of the above *period* x *amount* calculation. |
 
 Possible values of *period*:
 
