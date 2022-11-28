@@ -85,3 +85,7 @@ Use W3CLOGFILE mapping during ingestion without defining a mapping schema (see [
         format="w3clogfile"
     )
 ```
+
+## Next steps
+
+* Learn more about [Data mappings](mappings.md)

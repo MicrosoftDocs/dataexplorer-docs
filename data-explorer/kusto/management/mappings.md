@@ -31,7 +31,7 @@ Ingestion is possible without specifying a mapping. See [identity mapping](#iden
 * [JSON](json-mapping.md)
 * [CSV](csv-mapping.md)
 * [AVRO](avro-mapping.md)
-* [W3CLOGFILE](w3clogfile-mapping.md)
+* [W3CLOGFILE](w3c-log-file-mapping.md)
 * [Parquet](parquet-mapping.md)
 * [ORC](orc-mapping.md)
 

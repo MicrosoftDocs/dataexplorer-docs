@@ -93,3 +93,7 @@ Use ORC mapping during ingestion without defining a mapping schema (see [identit
         format="orc"
     )
 ```
+
+## Next steps
+
+* Learn more about [Data mappings](mappings.md)

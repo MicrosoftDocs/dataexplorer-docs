@@ -79,3 +79,7 @@ Use CSV mapping during ingestion without defining a mapping schema (see [identit
         format="csv"
     )
 ```
+
+## Next steps
+
+* Learn more about [Data mappings](mappings.md)

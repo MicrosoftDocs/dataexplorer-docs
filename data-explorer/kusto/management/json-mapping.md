@@ -96,3 +96,7 @@ You can copy JSON mapping of an existing table and create a new table with the s
     ```kusto
     .create table TABLENAME ingestion json mapping "TABLENAME_Mapping" RESULT_OF_ABOVE_CMD
     ```
+
+## Next steps
+
+* Learn more about [Data mappings](mappings.md)

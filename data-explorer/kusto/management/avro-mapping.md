@@ -93,3 +93,7 @@ Use AVRO mapping during ingestion without defining a mapping schema (see [identi
         format="AVRO"
     )
 ```
+
+## Next steps
+
+* Learn more about [Data mappings](mappings.md)
