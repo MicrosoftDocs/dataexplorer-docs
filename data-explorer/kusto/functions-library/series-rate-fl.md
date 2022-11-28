@@ -33,7 +33,7 @@ The function `series_rate_fl()` calculates the average rate of metric increase p
 
 # [Temporary](#tab/temporary)
 
-For temporary usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
+For temporary use, embed its code using the [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -64,7 +64,7 @@ demo_prometheus
 
 # [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 

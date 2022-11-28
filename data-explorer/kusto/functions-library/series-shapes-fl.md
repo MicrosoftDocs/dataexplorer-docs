@@ -27,7 +27,7 @@ The function `series_shapes_fl()` detects positive/negative trend or jump in a s
 
 # [Temporary](#tab/temporary)
 
-For temporary usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
+For temporary use, embed its code using [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -90,7 +90,7 @@ union
 
 # [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 

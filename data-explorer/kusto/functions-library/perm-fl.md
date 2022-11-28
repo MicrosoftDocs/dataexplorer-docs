@@ -29,7 +29,7 @@ The function `perm_fl()`calculates *P(n, k)*, the number of [permutations](https
 
 # [Temporary](#tab/temporary)
 
-For temporary usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
+For temporary use, embed its code using a [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -47,7 +47,7 @@ range n from 3 to 10 step 3
 
 # [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 

@@ -31,7 +31,7 @@ The function `binomial_test_fl()` performs the [binomial test](https://en.wikipe
 
 # [Temporary](#tab/temporary)
 
-For temporary usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
+For temporary use, embed its code using the [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -68,7 +68,7 @@ datatable(id:string, x:int, n:int) [
 
 # [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 

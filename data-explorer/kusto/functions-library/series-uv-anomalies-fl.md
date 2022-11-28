@@ -42,7 +42,7 @@ In the following function example, replace 'YOUR-AD-RESOURCE-NAME' in the uri an
 
 ## [Temporary](#tab/temporary)
 
-For temporary usage, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
+For temporary use, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
@@ -90,7 +90,7 @@ ts
 
 ## [Stored](#tab/stored)
 
-For persistent usage, use the [`.create function`](../management/create-function.md) to add the code to a stored function. Creating a function requires [database user permissions](../management/access-control/role-based-authorization.md).
+To store the function, see the [`.create function`](../management/create-function.md) to add the code to a stored function. Creating a function requires [database user permissions](../management/access-control/role-based-authorization.md).
 
 ### One time installation
 

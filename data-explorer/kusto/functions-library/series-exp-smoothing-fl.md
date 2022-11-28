@@ -29,7 +29,7 @@ The function `series_exp_smoothing_fl()` takes an expression containing a dynami
 
 # [Temporary](#tab/temporary)
 
-For temporary usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
+For temporary use, embed its code using a [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -47,7 +47,7 @@ range x from 1 to 50 step 1
 
 # [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 

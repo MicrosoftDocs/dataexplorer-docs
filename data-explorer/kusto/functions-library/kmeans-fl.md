@@ -29,7 +29,7 @@ The function `kmeans_fl()` clusterizes a dataset using the [k-means algorithm](h
 
 # [Temporary](#tab/temporary)
 
-For temporary usage, embed the code using the [let statement](../query/letstatement.md). No permission is required.
+For temporary use, embed the code using the [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
@@ -67,7 +67,7 @@ OccupancyDetection
 
 # [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
