@@ -12,9 +12,10 @@ Materialized views expose an *aggregation* query over a source table, or over [a
 Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-views-queries) is more performant than running the aggregation directly over the source table.
 
 > [!NOTE]
-> * Materialized views have some [limitations](materialized-view-create.md#materialized-views-limitations-and-known-issues), and don't work well for all scenarios. Review the [performance considerations](#performance-considerations) before working with the feature.
 >
-> * Materialized views are only recommended for specific [use cases](#materialized-views-use-cases). Other use cases, that do not require aggregations, can be achieved using [update policies](../updatepolicy.md).
+> * Review the materialized views [use cases](#materialized-views-use-cases) to decide whether materialized views are suitable for you.
+> * Materialized views have some [limitations](materialized-views-limitations.md). Review the [performance considerations](#performance-considerations) before working with the feature.
+> * Consider using [update policies](../updatepolicy.md) where appropriate - see [How to choose between materialized views and update policies?](#how-to-choose-between-materialized-views-and-update-policies) for more details.
 
 Use the following commands to manage materialized views:
 
@@ -26,7 +27,7 @@ Use the following commands to manage materialized views:
 
 ## Why use materialized views?
 
-By investing resources (data storage, background CPU cycles) for materialized views of commonly-used aggregations, you get the following benefits:
+By investing resources (data storage, background CPU cycles) for materialized views of commonly used aggregations, you get the following benefits:
 
 * **Performance improvement:** Querying a materialized view commonly performs better than querying the source table for the same aggregation function(s).
 
@@ -58,6 +59,20 @@ The following are common scenarios that can be addressed by using a materialized
 
 For examples of all use cases, see [materialized view create command](materialized-view-create.md#examples).
 
+### How to choose between materialized views and update policies?
+
+Materialized views and update policies work differently and serve different use cases. Use the following guidelines to identify which one you should use:
+
+* Materialized views are suitable for *aggregations*, while update policies are not. Update policies run separately for each ingestion batch, and therefore can only perform aggregations within the same ingestion batch. If you require an aggregation query, always use materialized views.
+
+* Update policies are useful for data transformations, enrichments with dimension tables (usually using [lookup operator](../../query/lookupoperator.md)) and other data manipulations that can run in the scope of a single ingestion.
+
+* Update policies run during ingestion time. Data is not available for queries, neither in source table nor in target table(s), until all update policies have run on it. Materialized views, on the other hand, are not part of the ingestion pipeline. The [materialization process](#how-materialized-views-work) runs periodically in the background, post ingestion. Records in source table are available for queries before they are materialized.
+
+* Neither update policies nor materialized views are suitable for [joins](../../query/joinoperator.md). Both *can* include joins, but they are limited to specific use cases. Namely, only when matching data from both sides of the join is available when the update policy / materialization process runs. If the matching entities are expected to be ingested to the join left and right tables during the same time, there is a chance data will be missed when the update policy / materialization runs. See more about `dimension tables` in  [materialized view query argument](materialized-view-create.md#query-argument) and in [fact and dimension tables](../../concepts/fact-and-dimension-tables.md).
+  
+  * If you do need to *materialize* joins, which are not suitable for update policies and materialized views, you can orchestrate your own process for doing so, using [orchestration tools](../../../tools-integrations-overview.md#orchestration) and [ingest from query commands](../data-ingestion/ingest-from-query.md).
+
 ## How materialized views work
 
 A materialized view is made of two components:
@@ -74,7 +89,7 @@ There are 2 ways to query a materialized view:
 
 * **Query the entire view**: when you query the materialized view by its name, similarly to querying a table, the materialized view query _combines_ the materialized part of the view with the records in the source table that haven't been materialized yet (the `delta`). 
   * Querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. For more information about the _materialized_ vs. _non-materialized_ parts in materialized view, see [how materialized views work](#how-materialized-views-work).
-  * This option will might not perform best as it needs to materialize the `delta` part during query time. Performance in this case depends on the view's age and the filters applied in the query. The [materialized view query optimizer section](#materialized-view-query-optimizer) includes possible ways to improve query performance when querying the entire view.
+  * This option might not perform best as it needs to materialize the `delta` part during query time. Performance in this case depends on the view's age and the filters applied in the query. The [materialized view query optimizer section](#materialized-view-query-optimizer) includes possible ways to improve query performance when querying the entire view.
 
 * **Query the materialized part only**: another way of querying the view is by using the [`materialized_view()` function](../../query/materialized-view-function.md). This option supports querying only the materialized part of the view, while specifying the max latency the user is willing to tolerate.
   * This option isn't guaranteed to return the most up-to-date records, but it should always be more performant than querying the entire view. 
