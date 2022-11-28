@@ -81,7 +81,7 @@ Filtering is a common practice in signal processing and useful for time series p
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
 let max_t = toscalar(demo_make_series1 | summarize max(TimeStamp));
 demo_make_series1
-| make-series num=count() default=0 on TimeStamp in range(min_t, max_t, 1h) by OsVer
+| make-series num=count() default=0 on TimeStamp from min_t to max_t step 1h by OsVer
 | extend ma_num=series_fir(num, repeat(1, 5), true, true)
 | render timechart
 ```
@@ -160,7 +160,7 @@ Arithmetic and logical operations can be done on a time series. Using [series_su
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
 let max_t = toscalar(demo_make_series1 | summarize max(TimeStamp));
 demo_make_series1
-| make-series num=count() default=0 on TimeStamp in range(min_t, max_t, 1h) by OsVer
+| make-series num=count() default=0 on TimeStamp in from min_t to max_t step 1h by OsVer
 | extend ma_num=series_fir(num, repeat(1, 5), true, true)
 | extend residual_num=series_subtract(num, ma_num) //to calculate residual time series
 | where OsVer == "Windows 10"   // filter on Win 10 to visualize a cleaner chart 
@@ -212,7 +212,7 @@ Building a time series in 1-hour bins of the read metric (total four days * 24 h
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
 let max_t = toscalar(demo_many_series1 | summarize max(TIMESTAMP));  
 demo_many_series1
-| make-series reads=avg(DataRead) on TIMESTAMP in range(min_t, max_t, 1h)
+| make-series reads=avg(DataRead) on TIMESTAMP from min_t to max_t step 1h
 | render timechart with(ymin=0) 
 ```
 
@@ -242,7 +242,7 @@ Now, we're going to create a set of 18339 time series of the read count metric. 
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
 let max_t = toscalar(demo_many_series1 | summarize max(TIMESTAMP));  
 demo_many_series1
-| make-series reads=avg(DataRead) on TIMESTAMP in range(min_t, max_t, 1h) by Loc, Op, DB
+| make-series reads=avg(DataRead) on TIMESTAMP from min_t to max_t step 1h by Loc, Op, DB
 | extend (rsquare, slope) = series_fit_line(reads)
 | top 2 by slope asc 
 | render timechart with(title='Service Traffic Outage for 2 instances (out of 18339)')
@@ -258,7 +258,7 @@ Display the instances:
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
 let max_t = toscalar(demo_many_series1 | summarize max(TIMESTAMP));  
 demo_many_series1
-| make-series reads=avg(DataRead) on TIMESTAMP in range(min_t, max_t, 1h) by Loc, Op, DB
+| make-series reads=avg(DataRead) on TIMESTAMP from min_t to max_t step 1h by Loc, Op, DB
 | extend (rsquare, slope) = series_fit_line(reads)
 | top 2 by slope asc
 | project Loc, Op, DB, slope 
