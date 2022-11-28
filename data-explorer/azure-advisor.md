@@ -163,7 +163,7 @@ Reliability recommendations include:
 * [Azure data explorer failed to install or resume due virtual network issues](#azure-data-explorer-failed-to-install-or-resume-due-virtual-network-issues)
 
 #### Azure data explorer uses subnet without delegation 
-This recommendation is given to your virtual network cluster when you use a subnet without delegation for 'Microsoft.Kusto/clusters'. Please delegate your subnet to 'Microsoft.Kusto/clusters'. When you delegate a subnet to an Azure Azure data explorer, you allow that service to establish some basic network configuration rules for that subnet, which help the Azure data explorer operate their instances in a stable manner.
+This recommendation is given to your virtual network cluster when you use a subnet without delegation for 'Microsoft.Kusto/clusters'. Please delegate your subnet to 'Microsoft.Kusto/clusters' as [explained here](vnet-create-cluster-portal.md#create-virtual-network-and-subnet) in step 8. When you delegate a subnet to an Azure Azure data explorer, you allow that service to establish some basic network configuration rules for that subnet, which help the Azure data explorer operate their instances in a stable manner.
 
 #### Azure data explorer uses subnet with invalid IP configuration
 The recommendation is given when your virtual network cluster when the subnet you use, is used in several services beside this Azure data explorer cluster. Please use this subnet for this service only. To resolve this recommendation, remove all other services from this subnet by deleting them.
