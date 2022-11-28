@@ -17,9 +17,9 @@ Convert a speed value from one unit to another.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | real | &check; | Value to be converted. |
-| *from* | string | &check; | Unit to convert from. For possible values, see [Conversion units](#conversion-units).|
-| *to* | string | &check; | Unit to convert to. For possible values, see [Conversion units](#conversion-units). |
+| *value* | real | &check; | The value to be converted. |
+| *from* | string | &check; | The unit to convert from. For possible values, see [Conversion units](#conversion-units).|
+| *to* | string | &check; | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
 
 ### Conversion units
 

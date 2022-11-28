@@ -17,7 +17,7 @@ Returns the cosine function.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *number* | real | &check; | Value for which to calculate the cosine. |
+| *number* | real | &check; | The value for which to calculate the cosine. |
 
 ## Returns
 

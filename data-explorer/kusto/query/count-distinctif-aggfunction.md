@@ -24,8 +24,8 @@ If you only need an estimation of unique values count, we recommend using the le
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr*| scalar | &check; | Expression whose unique values are to be counted. |
-| *predicate* | string | &check; | Expression used to filter records to be aggregated. |
+| *expr*| scalar | &check; | The expression whose unique values are to be counted. |
+| *predicate* | string | &check; | The expression used to filter records to be aggregated. |
 
 ## Returns
 

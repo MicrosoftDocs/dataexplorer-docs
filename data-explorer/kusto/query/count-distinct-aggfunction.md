@@ -26,7 +26,7 @@ To count only records for which a predicate returns `true`, use the [count_disti
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr*| scalar | &check; | Expression whose unique values are to be counted. |
+| *expr*| scalar | &check; | The expression whose unique values are to be counted. |
 
 ## Returns
 
