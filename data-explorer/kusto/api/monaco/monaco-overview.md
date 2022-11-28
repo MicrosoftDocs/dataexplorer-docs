@@ -22,7 +22,7 @@ You can integrate Azure Data Explorer capabilities in your app with features to 
 
 You can integrate Azure Data Explorer capabilities in your apps in the following ways:
 
-- [Integrate the Monaco Editor with Kusto query support directly into your app](monaco-kusto.md)
+- [Integrate the Monaco Editor with Kusto Query Language support in your app](monaco-kusto.md)
 
     Integrating the [Monaco Editor](https://microsoft.github.io/monaco-editor/) in your app offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition. It requires you to build a solution for authentication, query execution, result display, and schema exploration. It offers you full flexibility to fashion the user experience that fits your needs.
 

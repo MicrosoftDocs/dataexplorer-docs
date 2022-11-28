@@ -432,8 +432,8 @@ items:
       - name: Embed the web UI as an iframe
         displayName: monaco web UI
         href: kusto/api/monaco/host-web-ux-in-iframe.md
-      - name: Integrate the Monaco Editor
-        displayName: monaco monaco-kusto web UI
+      - name: Integrate the Monaco Editor with Kusto query support
+        displayName: monaco monaco-kusto
         href: kusto/api/monaco/monaco-kusto.md
   - name: Manage
     items:

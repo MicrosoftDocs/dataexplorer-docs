@@ -1,15 +1,15 @@
 ---
-title: Integrate the Monaco Editor with Kusto query support directly in your app
-description: Learn how to integrate the Monaco Editor with Kusto query support directly in your app.
+title: Integrate the Monaco Editor with Kusto Query Language support in your app
+description: Learn how to integrate the Monaco Editor with Kusto query support in your app.
 ms.reviewer: izlisbon
 ms.topic: how-to
 ms.date: 11/22/2022
 ---
-# Integrate the Monaco Editor with Kusto Query Language support directly in your app
+# Integrate the Monaco Editor with Kusto Query Language support in your app
 
-Azure Data Explorer [Monaco Editor](https://microsoft.github.io/monaco-editor) with Kusto query support (*monaco-kusto*) can be directly integrated into your app. Integrating *monaco-kusto* into your app offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition. It requires you to build a solution for authentication, query execution, result display, and schema exploration. It offers you full flexibility to fashion the user experience that fits your needs.
+You can integrate the [Monaco Editor](https://microsoft.github.io/monaco-editor) with Kusto Query Language support (*monaco-kusto*) into your app. Integrating *monaco-kusto* into your app offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition. It requires you to build a solution for authentication, query execution, result display, and schema exploration. It offers you full flexibility to fashion the user experience that fits your needs.
 
-In this article, you'll learn how to integrate *monaco-kusto* into your app. The package is available on [GitHub](https://github.com/Azure/monaco-kusto) and on *npm*.
+In this article, you'll learn how to add *monaco-kusto* to the Monaco Editor and integrate it into your app. The package is available on [GitHub](https://github.com/Azure/monaco-kusto) and on *npm*.
 
 Use the following steps to integrate *monaco-kusto* into your app using *npm*.
 
@@ -30,6 +30,9 @@ Use the following steps to integrate *monaco-kusto* into your app using *npm*.
     ```bash
     npm i monaco-editor
     ```
+
+    > [!NOTE]
+    > To customize the native Monaco Editor, see [Monaco Editor GitHub repo](https://github.com/microsoft/monaco-editor).
 
 1. Install the *monaco-kusto* npm package:
 
@@ -84,7 +87,7 @@ The following steps describe how to set up your app to use *monaco-kusto* using 
         { test: /kustoMonarchLanguageDefinition/, loader: 'imports-loader?Kusto' },
         ```
 
-    1. Under **entry**, add the following entry point:
+    1. Under **entry**, add the following entry point. Make a note the worker path returned, you'll need this later.
 
         ```javascript
         `@kusto/monaco-kusto/release/esm/kusto.worker.js`
@@ -102,13 +105,11 @@ The following steps describe how to set up your app to use *monaco-kusto* using 
 
 1. In your app, add the following code:
 
-    1. Define the **MonacoEnvironment** function on your `window` object:
+    1. Define the **MonacoEnvironment** function on your `window` object. Replace `<path_and_full_name_of_kusto_worker>` with the worker path you noted earlier.
 
         ```javascript
-        window.MonacoEnvironment = { globalAPI: true, getWorkerUrl: function() { return "@kusto/monaco-kusto/release/esm/kusto.worker.js"} };
+        window.MonacoEnvironment = { globalAPI: true, getWorkerUrl: function() { return "<path_and_full_name_of_kusto_worker>"} };
         ```
-
-        **//TODO:: Check MonacoEnvironment path with Noam**
 
     1. Create the `monaco.editor` object from an HTML element:
 
@@ -131,9 +132,9 @@ The following steps describe how to set up your app to use *monaco-kusto* using 
 
 ## Add your database schema to the editor
 
-The *monaco-kusto* package provides a way to add your database schema to the editor using a *schema.js* file. This enables the editor to provide auto-complete suggestions and other features.
+The *monaco-kusto* package provides a way to add your database schema to the editor. This enables the editor to provide auto-complete suggestions and other features.
 
-Use the following structure for the *schema.js* file:
+Use the following structure to define the schema:
 
 ```javascript
 const schema = {... <YOUR_DATABASE_SCHEMA> ...};
@@ -167,7 +168,7 @@ You can get your database schema using one of the following methods:
     .show schema as json
     ```
 
-1. Copy the result of the query and paste it as the **schema** constant in the *schema.js* file. The result of the query is a list of databases (see interface `Result` in the *schema.ts* file).
+1. Copy the result of the query and paste it as the **schema** constant. The result of the query is a list of databases (see interface `Result` in the *schema.ts* file).
 1. Use the `setSchemaFromShowSchema()` method to set the schema in the editor. You  must also specify the cluster URI and the name of the database to use in the editor.
 
 ### [Create manually](#tab/manual)
@@ -176,25 +177,40 @@ You can get your database schema using one of the following methods:
 
     ```json
     {
-    "clusterType":"Engine",
-    "cluster":{
+      "clusterType":"Engine",
+      "cluster":{
         "connectionString":"<CONNECTION_STRING>",
-        "databases":[{
-        "database": {
+        "databases":[ {
+          "database": {
             "name": "<DATABASE_NAME>",
             "majorVersion": 5,
             "minorVersion": 0,
-            "tables": [{
-                "name": "<TABLE_NAME>",
-                "entityType": "Table",
-                "columns": [{
-                    "name": "<COLUMN_NAME>",
-                    "type": "<COLUMN_TYPE>",
-                }, ...]
-            }, ...]
-        }
-        }, ...]
-    }
+            "tables": [ {
+              "name": "<TABLE_NAME>",
+              "entityType": "Table",
+              "columns": [ {
+                "name": "<COLUMN_NAME>",
+                "type": "<COLUMN_TYPE>"
+              }, ... ]
+            }, ... ]
+          }
+        }, ... ]
+      },
+      // Defines schema for the required database.
+      // The schema must also be defined in the cluster object.
+      "database": {
+        "name": "<DATABASE_NAME>",
+        "majorVersion": 5,
+        "minorVersion": 0,
+        "tables": [ {
+          "name": "<TABLE_NAME>",
+          "entityType": "Table",
+          "columns": [ {
+            "name": "<COLUMN_NAME>",
+            "type": "<COLUMN_TYPE>"
+          }, ... ]
+        }, ... ]
+      }
     }
     ```
 
