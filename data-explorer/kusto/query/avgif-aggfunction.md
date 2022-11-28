@@ -19,8 +19,8 @@ Calculates the [average](avg-aggfunction.md) of *expr* across the group for whic
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | string | &check; | Expression used for aggregation calculation. Records with `null` values are ignored and not included in the calculation. |
-| *predicate* | string | &check; | Predicate that if true, the *expr* calculated value will be added to the average. |
+| *expr* | string | &check; | The expression used for aggregation calculation. Records with `null` values are ignored and not included in the calculation. |
+| *predicate* | string | &check; | The predicate that if true, the *expr* calculated value will be added to the average. |
 
 ## Returns
 

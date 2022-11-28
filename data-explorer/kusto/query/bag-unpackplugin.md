@@ -17,12 +17,12 @@ The `bag_unpack` plugin unpacks a single column of type `dynamic`, by treating e
 
 | Name | Type | Required| Description |
 |---|---|---|---|
-| *T* | tabular | &check; | Input whose column *Column* is to be unpacked. |
-| *Column* | dynamic | &check; | Column of *T* to unpack. |
-| *OutputColumnPrefix* | string | | Common prefix to add to all columns produced by the plugin. |
-| *columnsConflict* | string | | Direction for column conflict resolution. Valid values: <br />`error` - Query produces an error (default)<br />`replace_source` - Source column is replaced<br />`keep_source` - Source column is kept
-| *ignoredProperties* | dynamic | Optional set of bag properties to be ignored.
-| *OutputSchema* | | | Names and types for the expected columns of the `bag_unpack` plugin output.<br /><br />**Syntax**: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`<br /><br />Specifying the expected schema optimizes query execution by not having to first run the actual query to explore the schema. An error is raised if the run-time schema doesn't match the *OutputSchema* schema. |
+| *T* | string | &check; | The tabular input whose column *Column* is to be unpacked. |
+| *Column* | dynamic | &check; | The column of *T* to unpack. |
+| *OutputColumnPrefix* | string | | A common prefix to add to all columns produced by the plugin. |
+| *columnsConflict* | string | | The direction for column conflict resolution. Valid values: <br />`error` - Query produces an error (default)<br />`replace_source` - Source column is replaced<br />`keep_source` - Source column is kept
+| *ignoredProperties* | dynamic | An optional set of bag properties to be ignored.
+| *OutputSchema* | | | The names and types for the expected columns of the `bag_unpack` plugin output.<br /><br />**Syntax**: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`<br /><br />Specifying the expected schema optimizes query execution by not having to first run the actual query to explore the schema. An error is raised if the run-time schema doesn't match the *OutputSchema* schema. |
 
 ## Returns
 

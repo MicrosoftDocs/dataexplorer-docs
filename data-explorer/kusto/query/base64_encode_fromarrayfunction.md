@@ -17,7 +17,7 @@ Encodes a base64 string from a bytes array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *base64_string_decodced_as_array* | dynamic | &check; | Bytes array to be encoded into base64 string. |
+| *base64_string_decodced_as_array* | dynamic | &check; | The bytes array to be encoded into base64 string. |
 
 ## Returns
 
