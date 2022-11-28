@@ -19,14 +19,14 @@ The activity_engagement plugin can be used for calculating DAU/WAU/MAU (daily/we
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | tabular | &check; | Input used to calculate engagement. |
-| *IdCoumn* | string | &check; | Name of the column with ID values that represent user activity. |
-| *TimelineColumn* | string | &check; | Name of the column that represents timeline. |
-| *Start* | datetime |  | Analysis start period. |
-| *End* | datetime |  | Analysis end period. |
-| *InnerActivityWindow* | timespan | &check; | Inner-scope analysis window period. |
-| *OuterActivityWindow* | timespan | &check; | Outer-scope analysis window period. |
-| *dim1*, *dim2*, ... | dynamic |  | List of the dimensions columns that slice the activity metrics calculation. |
+| *T* | string | &check; | The tabular input used to calculate engagement. |
+| *IdCoumn* | string | &check; | The name of the column with ID values that represent user activity. |
+| *TimelineColumn* | string | &check; | The name of the column that represents timeline. |
+| *Start* | datetime |  | The analysis start period. |
+| *End* | datetime |  | The analysis end period. |
+| *InnerActivityWindow* | timespan | &check; | The inner-scope analysis window period. |
+| *OuterActivityWindow* | timespan | &check; | The outer-scope analysis window period. |
+| *dim1*, *dim2*, ... | dynamic |  | An array of the dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
 

@@ -20,7 +20,7 @@ being referenced will be the same across all uses.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *timespan* | timespan | &check; | Interval to subtract from the current UTC clock time `now()`. |
+| *timespan* | timespan | &check; | The interval to subtract from the current UTC clock time `now()`. |
 
 ## Returns
 

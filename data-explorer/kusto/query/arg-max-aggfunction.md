@@ -21,8 +21,8 @@ Finds a row in the group that maximizes *ExprToMaximize*.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ExprToMaximize* | string | &check; | Expression used for aggregation calculation. |
-| *ExprToReturn* | string | &check; | Expression used for returning the value when *ExprToMaximize* is maximum.  Use a `*` to return all columns of the input table. |
+| *ExprToMaximize* | string | &check; | The expression used for aggregation calculation. |
+| *ExprToReturn* | string | &check; | THe expression used for returning the value when *ExprToMaximize* is maximum.  Use a `*` to return all columns of the input table. |
 
 ## Returns
 

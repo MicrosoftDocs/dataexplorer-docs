@@ -21,13 +21,13 @@ T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), 
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | tabular | &check; | Input used to count activities. |
-| *IdColumn* | string | &check; | Name of the column with ID values that represent user activity. |
-| *TimelineColumn* | string | &check; | Name of the column that represents the timeline. |
-| *Start* | datetime | &check; | Analysis start period. |
-| *End* | datetime | &check; | Analysis end period. |
-| *LoockbackWindow* | decimal, datetime, or timespan | &check; | Analysis window period. May also be a string of `week`, `month`, or `year`, in which case all periods would be [startofweek](startofweekfunction.md), [startofmonth](startofmonthfunction.md), or [startofyear](startofyearfunction.md). |
-|  *dim1*, *dim2*, ... | dynamic |   | List of the dimensions columns that slice the activity metrics calculation. |
+| *T* | string | &check; | The tabular input used to count activities. |
+| *IdColumn* | string | &check; | The name of the column with ID values that represent user activity. |
+| *TimelineColumn* | string | &check; | The name of the column that represents the timeline. |
+| *Start* | datetime | &check; | The analysis start period. |
+| *End* | datetime | &check; | The analysis end period. |
+| *LoockbackWindow* | decimal, datetime, or timespan | &check; | The analysis window period. The value may also be a string of `week`, `month`, or `year`, in which case all periods would be [startofweek](startofweekfunction.md), [startofmonth](startofmonthfunction.md), or [startofyear](startofyearfunction.md). |
+|  *dim1*, *dim2*, ... | dynamic |   | An array of the dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
 

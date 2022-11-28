@@ -21,8 +21,8 @@ Finds a row in the group that minimizes *ExprToMinimize*.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ExprToMinimize*| string | &check; | Expression used for aggregation calculation. |
-| *ExprToReturn* | string | &check; | Expression used for returning the value when *ExprToMinimize* is minimum. Use a wildcard (*) to return all columns of the input table. |
+| *ExprToMinimize*| string | &check; | The expression used for aggregation calculation. |
+| *ExprToReturn* | string | &check; | The expression used for returning the value when *ExprToMinimize* is minimum. Use a wildcard (*) to return all columns of the input table. |
   
 ## Null handling
 
