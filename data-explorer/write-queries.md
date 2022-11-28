@@ -57,7 +57,7 @@ For more information, see the [Query language reference](./kusto/query/index.md)
 
 The operators covered in this section are the building blocks to understanding queries in Azure Data Explorer. Most queries you write will include several of these operators.
 
-To run queries on the help cluster: select **Click to run query** above each query.
+To run queries on the help cluster: select **Run the query** above each query.
 
 To run queries on your own cluster:
 
