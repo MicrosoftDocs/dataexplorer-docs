@@ -27,7 +27,7 @@ The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipe
 
 ## Usage
 
-`bartlett_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: temporary and stored usage. See the below tabs for examples.
+`bartlett_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a temporary query or you can define it as a stored function in your database. See the following tabs for more examples.
 
 # [Temporary](#tab/temporary)
 

@@ -36,7 +36,7 @@ The `series_metric_fl()` function selects and retrieves time series of metrics i
 
 ## Usage
 
-`series_metric_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: temporary and persistent usage. See the below tabs for examples.
+`series_metric_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a temporary query or you can define it as a stored function in your database. See the following tabs for more examples.
 
 # [Temporary](#tab/temporary)
 

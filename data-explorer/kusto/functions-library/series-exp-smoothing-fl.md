@@ -25,7 +25,7 @@ The function `series_exp_smoothing_fl()` takes an expression containing a dynami
 
 ## Usage
 
-`series_exp_smoothing_fl()` is a user-defined function. You can either embed its code in your query, or install it in your database. There are two usage options: temporary and stored usage. See the below tabs for examples.
+`series_exp_smoothing_fl()` is a user-defined function. You can either embed its code as a temporary query or you can define it as a stored function in your database. See the following tabs for more examples.
 
 # [Temporary](#tab/temporary)
 
