@@ -61,6 +61,8 @@ The following command sets a batch ingress data time of 1 minute, for 20 files, 
 ```
 ````
 
+[!NOTE] Specifying a partial *PolicyObject*, for example, specifying only the "MaximumBatchingTimeSpan" parameter, will (default)[https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/batchingpolicy#sealing-a-batch] the other parameters that are not specified.
+
 ## Next steps
 
 * [alter database batching policy](alter-database-ingestion-batching-policy.md)
