@@ -169,7 +169,7 @@ This recommendation is given to your virtual network cluster when you use a subn
 The recommendation is given when your virtual network cluster when the subnet you use, is used in several services beside this Azure data explorer cluster. Please use this subnet for this service only. To resolve this recommendation, remove all other services from this subnet by deleting them.
 
 #### Azure data explorer failed to install or resume due virtual network issues
-The recommendation is given once your Azure data explorer cluster failed to install/resume due virtual network issues.  The issues may very between clusters, please follow the [troubleshooting guide](vnet-deploy-troubleshoot.md) to resolve this recommendation.
+The recommendation is given once your Azure data explorer cluster failed to install/resume due virtual network issues. The issues may very between clusters, please follow the [troubleshooting guide](vnet-deploy-troubleshoot.md) to resolve this recommendation.
 
 ## Next steps
 
