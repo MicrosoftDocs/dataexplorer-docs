@@ -17,7 +17,7 @@ Evaluates a list of expressions and returns the first non-null (or non-empty for
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| arg | scalar | &check; | Expression to be evaluated.|
+| arg | scalar | &check; | The expression to be evaluated.|
 
 > [!NOTE]
 >

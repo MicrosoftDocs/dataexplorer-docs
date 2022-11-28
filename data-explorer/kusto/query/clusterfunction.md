@@ -21,7 +21,7 @@ Changes the reference of the query to a remote cluster.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *name* | string | &check; | Name of the cluster to reference. Either a fully qualified DNS name or string suffixed with `.kusto.windows.net`. Argument has to be constant prior to the query's execution, meaning it can't come from subquery evaluation. |
+| *name* | string | &check; | The name of the cluster to reference. Either a fully qualified DNS name or string suffixed with `.kusto.windows.net`. Argument has to be constant prior to the query's execution, meaning it can't come from subquery evaluation. |
 
 ## Examples
 
