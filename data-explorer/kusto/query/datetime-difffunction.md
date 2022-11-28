@@ -3,7 +3,7 @@ title: datetime_diff() - Azure Data Explorer
 description: This article describes datetime_diff() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 11/28/2022
 ---
 # datetime_diff()
 
