@@ -23,7 +23,7 @@ This article explains the vertical scaling workflow:
 
 1. In the Azure portal, go to your Azure Data Explorer cluster resource. Under **Settings**, select **Scale up**.
 
-1. In the **Scale up** window, you will see available SKUs for your cluster. For example, in the following figure, there are 8 recommended SKUs available. Expand the **Storage optimized**, **Compute optimized**, and **Dev/test** dropdowns to see more options.
+1. In the **Scale up** window, you'll see available SKUs for your cluster. For example, in the following figure, there are eight recommended SKUs available. Expand the **Storage optimized**, **Compute optimized**, and **Dev/test** dropdowns to see more options.
 
     ![Scale up.](media/manage-cluster-vertical-scaling/scale-up.png)
 
