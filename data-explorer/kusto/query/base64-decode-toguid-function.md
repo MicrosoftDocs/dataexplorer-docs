@@ -17,7 +17,7 @@ Decodes a base64 string to a [GUID](./scalar-data-types/guid.md).
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *base64_string* | string | &check; | Value to decode from base64 to a GUID. |
+| *base64_string* | string | &check; | The value to decode from base64 to a GUID. |
 
 ## Returns
 

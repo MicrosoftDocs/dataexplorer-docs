@@ -1,15 +1,13 @@
 ---
 title: base64_encode_tostring() - Azure Data Explorer
-description: Learn how to use the base64_encode_tostring() function to return an input string as a base64 string. 
+description: This article describes base64_encode_tostring() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/07/2022
+ms.date: 06/22/2019
 ---
 # base64_encode_tostring()
 
 Encodes a string as base64 string.
-
-> **Deprecated aliases:** base64_encodestring()
 
 ## Syntax
 
@@ -19,7 +17,7 @@ Encodes a string as base64 string.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *string* | string | &check; |  Value to encode as base64 string. |
+| *string* | string | &check; |  The value to encode as base64 string. |
 
 ## Returns
 

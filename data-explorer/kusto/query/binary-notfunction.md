@@ -17,7 +17,7 @@ Returns a bitwise negation of the input value.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | long | &check; | Value to negate. |
+| *value* | long | &check; | The value to negate. |
 
 ## Returns
 

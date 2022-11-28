@@ -19,7 +19,7 @@ Accumulates values using the binary `XOR` operation for each summarization group
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | long | &check; | Value used for the binary `XOR`  calculation. |
+| *expr* | long | &check; | The value used for the binary `XOR`  calculation. |
 
 ## Returns
 

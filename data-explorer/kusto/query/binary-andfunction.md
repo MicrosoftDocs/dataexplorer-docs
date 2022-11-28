@@ -17,8 +17,8 @@ Returns a result of the bitwise `AND` operation between two values.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value1* | long | &check; | Left-hand value of the bitwise `AND` operation. |
-| *value2* | long | &check; | Right-hand value of the bitwise `AND` operation. |
+| *value1* | long | &check; | The left-hand value of the bitwise `AND` operation. |
+| *value2* | long | &check; | The right-hand value of the bitwise `AND` operation. |
 
 ## Returns
 
