@@ -159,6 +159,8 @@ datatable(x:long)[]
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 ||||NaN||||||0|0|0||0|
 
+The result of avg_x above is NaN due to dividing by 0.
+
 ```kusto
 datatable(x:long)[]
 | summarize  count(x), countif(x > 0) , dcount(x), dcountif(x, x > 0)
