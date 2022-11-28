@@ -17,8 +17,8 @@ Checks for a condition. If the condition is false, outputs error messages and fa
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *condition* | bool | &check; | Conditional expression to evaluate. Condition must be evaluated to constant during the query analysis phase.|
-| *message* | string | &check; | Message used if assertion is evaluated to `false`.|
+| *condition* | bool | &check; | The conditional expression to evaluate. The condition must be evaluated to constant during the query analysis phase.|
+| *message* | string | &check; | The message used if assertion is evaluated to `false`.|
 
 > [!NOTE]
 > `condition` must be evaluated to constant during the query analysis phase. In other words, it can be constructed from other expressions referencing constants, and can't be bound to row-context.

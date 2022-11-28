@@ -19,7 +19,7 @@ Calculates the average (arithmetic mean) of *expr* across the group.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | string | &check; | Expression used for aggregation calculation. Records with `null` values are ignored and not included in the calculation. |
+| *expr* | string | &check; | The expression used for aggregation calculation. Records with `null` values are ignored and not included in the calculation. |
 
 ## Returns
 
