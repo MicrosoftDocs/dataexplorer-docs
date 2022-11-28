@@ -19,9 +19,9 @@ Another alias: array_iff().
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *condition_array*| dynamic | &check;| Array of *boolean* or numeric values.|
-| *when_true* |  | &check; | Array of values or primitive value. This will be the result when *condition_array* is *true*.|
-| *when_false* |  | &check; | Array of values or primitive value. This will be the result when *condition_array* is *false*.|
+| *condition_array*| dynamic | &check;| An array of *boolean* or numeric values.|
+| *when_true* |  | &check; | An array of values or primitive value. This will be the result when *condition_array* is *true*.|
+| *when_false* |  | &check; | An array of values or primitive value. This will be the result when *condition_array* is *false*.|
 
 > [!NOTE]
 >

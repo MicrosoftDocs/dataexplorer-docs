@@ -17,8 +17,8 @@ Rotates values inside a `dynamic` array to the left.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*array* | dynamic | &check;| Array to rotate.|
-|*rotate_count*| integer | &check;| Number of positions that array elements will be rotated to the left. If the value is negative, the elements will be rotated to the right.|
+|*array* | dynamic | &check;| The array to rotate.|
+|*rotate_count*| integer | &check;| The number of positions that array elements will be rotated to the left. If the value is negative, the elements will be rotated to the right.|
 
 ## Returns
 

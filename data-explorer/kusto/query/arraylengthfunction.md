@@ -19,7 +19,7 @@ Calculates the number of elements in a dynamic array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array* | dynamic | &check; | Array for which to calculate length.
+| *array* | dynamic | &check; | The array for which to calculate length.
 
 ## Returns
 

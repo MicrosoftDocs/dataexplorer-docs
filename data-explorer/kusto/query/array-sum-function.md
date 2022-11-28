@@ -18,7 +18,7 @@ Calculates the sum of elements in a dynamic array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array*| dynamic | &check;| Array to sum.|
+| *array*| dynamic | &check;| The array to sum.|
 
 ## Returns
 

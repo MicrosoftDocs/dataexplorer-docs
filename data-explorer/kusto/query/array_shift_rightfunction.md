@@ -17,9 +17,9 @@ Shifts the values inside a dynamic array to the right.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*array* | dynamic |&check; | Array to shift.|
-|*shift_count* | integer | &check; | Number of positions that array elements will be shifted to the right. If the value is negative, the elements will be shifted to the left. |
-|*default_value* | scalar | | Value used for an element that was shifted and removed. The default is null or an empty string depending on the type of elements in the *array*.|
+|*array* | dynamic |&check; | The array to shift.|
+|*shift_count* | integer | &check; | The number of positions that array elements will be shifted to the right. If the value is negative, the elements will be shifted to the left. |
+|*default_value* | scalar | | The value used for an element that was shifted and removed. The default is null or an empty string depending on the type of elements in the *array*.|
 
 ## Returns
 

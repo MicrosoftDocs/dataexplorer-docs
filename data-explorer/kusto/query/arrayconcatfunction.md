@@ -17,7 +17,7 @@ Concatenates many dynamic arrays to a single array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *arr1...arrN* | dynamic | &check; |Arrays to concatenate into a dynamic array.|
+| *arr1...arrN* | dynamic | &check; | The arrays to concatenate into a dynamic array.|
 
 ## Returns
 

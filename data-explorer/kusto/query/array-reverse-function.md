@@ -17,7 +17,7 @@ Reverses the order of the elements in a dynamic array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*value*| dynamic | &check;| Array to reverse.|
+|*value*| dynamic | &check;| The array to reverse.|
 
 ## Returns
 
