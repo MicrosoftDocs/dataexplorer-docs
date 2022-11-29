@@ -16,14 +16,14 @@ The `.alter-merge table` command:
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* (*columnName*:*columnType*, ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
+`.alter-merge` `table` *TableName* (*columnName*:*columnType*[, ...])  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *TableName* | string | &check; | The name of the table to alter. |
-| (*columnName*:*columnType*, ...) | string | &check; | The name of an existing or new column mapped to the type of data in that column. This list defines the output column schema.|
+| *columnName*:*columnType* | string | &check; | The name of an existing or new column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
 | *Documentation* | string | | Free text describing the entity to be added. This string is presented in various UX settings next to the entity names. |
 | *FolderName* | string | | The name of the folder to add to the table. |
 
