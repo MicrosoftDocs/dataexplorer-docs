@@ -69,7 +69,7 @@ This section shows you how to use the built-in connector to query Azure Data Exp
 
     ![Cluster, database, table options.](media/power-bi-imported-query/cluster-database-table.png)
 
-    | Setting | Value | Field description
+    | Setting | Sample value | Field description
     |---|---|---
     | Cluster | *https://help.kusto.windows.net* | The URL for the help cluster. For other clusters, the URL is in the form *https://\<ClusterName\>.\<Region\>.kusto.windows.net*. |
     | Database | Leave blank | A database that is hosted on the cluster you're connecting to. We'll select this in a later step. |
