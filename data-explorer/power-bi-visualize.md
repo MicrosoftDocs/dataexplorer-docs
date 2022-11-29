@@ -10,7 +10,7 @@ ms.date: 11/24/2022
 
 # Use Azure Data Explorer Data in Power BI
 
-This article shows you how use data from Azure Data Explorer in Power BI.
+In this article, you'll learn about the different ways in which you can connect Azure Data Explorer as a data source to Power BI. Once connected, you can proceed to build Power BI reports and visualizations.
 
 ## Prerequisites
 
