@@ -16,9 +16,6 @@ The `.alter-merge table` command:
 
 `DocString` is free text that you can attach to a table/function/column describing the entity. This string is presented in various UX settings next to the entity names.
 
-> [!WARNING]
-> Using the `.alter-merge` command incorrectly may lead to data loss.
-
 > [!TIP]
 > The `.alter-merge` has a counterpart, the `.alter` table command that has similar functionality. For more information, see [`.alter table`](../management/alter-table-command.md)
 
