@@ -181,7 +181,7 @@ items:
     - name: "ORC mapping"
       href: orc-mapping.md
     - name: "W3CLOGFILE mapping"
-      href: w3clogfile-mapping.md
+      href: w3c-log-file-mapping.md
   - name: Functions
     items:
     - name: Stored functions management overview
