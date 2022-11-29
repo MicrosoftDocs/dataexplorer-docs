@@ -14,8 +14,8 @@ The `.alter-merge table` command:
 * Must run in the context of a specific database that scopes the table name
 * Requires [Table Admin permission](../management/access-control/role-based-authorization.md)
 
-> [!WARNING]
-> Using the `.alter-merge` command incorrectly may lead to data loss.
+> [!TIP]
+> Use `.show table [TableName] cslschema` to get the existing column schema before you alter it.
 
 ## Syntax
 
@@ -24,28 +24,21 @@ The `.alter-merge table` command:
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
-| *TableName* | string | &check; | Name of the table to alter. |
-| *coulmnName* | string | &check; | Name of an existing or new column. |
-| *coulmnType* | string | &check; | Type of data in the specified column. |
+|--|--|--|--|
+| *TableName* | string | &check; | The name of the table to alter. |
+| *columnName* | string | &check; | The name of an existing or new column. |
+| *columnType* | string | &check; | The type of data in the specified column. |
 | *Documentation* | string | | Free text describing the entity to be added. This string is presented in various UX settings next to the entity names. |
-| *FolderName* | string | | Name of folder to add to the table. |
+| *FolderName* | string | | The name of the folder to add to the table. |
 
 > [!NOTE]
->
-> * If you specify a column that does not exist, it will be added at the end of the existing schema.
-> * If the passed schema doesn't contain some table of the columns, the columns won't be deleted.
-> * If you specify an existing column with a different type, the command will fail.
+> If you specify an existing column with a different type, the command will fail.
 
-## How will the command affect the data?
+## How the command affects the data
 
-* Existing data isn't physically modified by the command.
-* Data in removed columns is ignored.
-* Data in new columns is assumed to be null.
-* Depending on how the cluster is configured, data ingestion might modify the table's column schema, even without user interaction. When you make changes to a table's column schema, ensure that ingestion won't add needed columns that the command will then remove.
-
-> [!TIP]
-> Use `.show table [TableName] cslschema` to get the existing column schema before you alter it.
+* Existing data isn't modified or deleted
+* New columns are added to the end of the schema
+* Data in new columns is assumed to be null
 
 ## Examples
 
