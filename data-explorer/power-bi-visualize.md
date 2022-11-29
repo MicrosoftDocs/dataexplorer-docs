@@ -37,7 +37,7 @@ This section shows you how to query data in Power BI starting from the Azure Dat
     | take 1000
     ```
 
-1. Select **Share** then **Query to Power BI**
+1. From the **Share**  menu, select **Query to Power BI**
 
     ![Share query.](media/power-bi-imported-query/share-query.png)
 
