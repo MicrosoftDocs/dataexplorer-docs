@@ -28,7 +28,7 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 
 This section shows you how to query data in Power BI starting from the Azure Data Explorer web UI.
 
-1. In a browser, go to [https://help.kusto.windows.net/](https://help.kusto.windows.net/)
+1. In the Azure Data Explorer web UI, on the left menu, select **Query**, and then select the database with your data. For example, connect to [our help cluster](https://help.kusto.windows.net/) and select the **Samples** database.
 1. Create a query and select it. Take the following query for example:
 
     ```Kusto
