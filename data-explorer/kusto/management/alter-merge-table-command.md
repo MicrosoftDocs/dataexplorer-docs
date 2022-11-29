@@ -3,7 +3,7 @@ title: .alter-merge table - Azure Data Explorer
 description: This article describes the .alter-merge table command.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/05/2021
+ms.date: 11/29/2022
 ---
 # .alter-merge table
 
