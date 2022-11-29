@@ -29,7 +29,7 @@ The `.alter-merge table` command:
 | *FolderName* | string | | The name of the folder to add to the table. |
 
 > [!NOTE]
-> If you specify an existing column with a different type, the command will fail.
+> If you try to alter a column type, the command will fail. Use the [`.alter column`](alter-column.md) command instead.
 
 > [!TIP]
 > Use `.show table [TableName] cslschema` to get the existing column schema before you alter it.

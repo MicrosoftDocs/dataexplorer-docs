@@ -44,7 +44,7 @@ The `.alter table` command:
 * The table will have the same columns, in the same order, as specified
 
 > [!NOTE]
-> Altering a column type isn't supported. Use the [`.alter column`](alter-column.md) command instead.
+> If you try to alter a column type, the command will fail. Use the [`.alter column`](alter-column.md) command instead.
 
 > [!WARNING]
 >
