@@ -14,9 +14,6 @@ The `.alter-merge table` command:
 * Must run in the context of a specific database that scopes the table name
 * Requires [Table Admin permission](../management/access-control/role-based-authorization.md)
 
-> [!TIP]
-> Use `.show table [TableName] cslschema` to get the existing column schema before you alter it.
-
 ## Syntax
 
 `.alter-merge` `table` *TableName* (*columnName*:*columnType*, ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
@@ -33,6 +30,9 @@ The `.alter-merge table` command:
 
 > [!NOTE]
 > If you specify an existing column with a different type, the command will fail.
+
+> [!TIP]
+> Use `.show table [TableName] cslschema` to get the existing column schema before you alter it.
 
 ## How the command affects the data
 
