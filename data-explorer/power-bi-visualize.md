@@ -89,7 +89,7 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
     > * Your data set is very large.
     > * You need near real-time data.
 
-**Advanced options**
+    **Advanced options**
 
     | Setting | Field description | Sample value
     |---|---|---
