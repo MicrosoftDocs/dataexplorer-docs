@@ -67,11 +67,11 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 
     ![Cluster, database, table options.](media/power-bi-imported-query/cluster-database-table.png)
 
-| Setting | Field description | Sample value
+    | Setting | Field description | Sample value
     |---|---|---
     | Cluster | The URL for the help cluster. For other clusters, the URL is in the form *https://\<ClusterName\>.\<Region\>.kusto.windows.net*. | *https://help.kusto.windows.net* |
     | Database | A database that is hosted on the cluster you're connecting to. We'll select this in a later step. | Leave blank |
-    | Table name | One of the tables in the database, or a query like <code>StormEvents \| take 1000</code>. We'll select this in a later step. | Leave blank |
+    | Table name | One of the tables in the database, or a query like <code>StormEvents \ | take 1000</code>. We'll select this in a later step. | Leave blank |
     | Advanced options | Options for your queries, such as result set size. |  Leave blank |
     | Data connectivity mode | Determines whether Power BI imports the data or connects directly to the data source. You can use either option with this connector. | *DirectQuery* |
 
@@ -89,9 +89,9 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
     > * Your data set is very large.
     > * You need near real-time data.
 
-    **Advanced options**
+**Advanced options**
 
-| Setting | Field description | Sample value
+    | Setting | Field description | Sample value
     |---|---|---
     | Limit query result record number| The maximum number of records to return in the result |`300000` |
     | Limit query result data size | The maximum data size in bytes to return in the result | `4194304` |
