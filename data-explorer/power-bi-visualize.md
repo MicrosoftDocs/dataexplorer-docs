@@ -19,7 +19,7 @@ In this article, you'll learn about the different ways in which you can connect 
 
 ## Use data in Power BI
 
-There are multiple ways to query data in Power BI. The following tabs show you two ways of querying data:
+You can connect Azure Data Explorer as a data source to Power BI in the following ways:
 
 * Starting in Azure Data Explorer web UI and then pasting the data in Power BI Desktop.
 * Starting directly in Power BI Desktop and using the built-in connector.
