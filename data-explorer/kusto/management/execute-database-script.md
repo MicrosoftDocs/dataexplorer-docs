@@ -19,14 +19,14 @@ Executes batch of control commands in scope of a single database.
 ### Parameters
 
 * *Control-commands-script*: Text with one or more control commands.
-* *Database scope*: Script is applied on the *database scope* specified as part of the request context.
+* *PropertyName*: Optional properties from the following list:
 
-### Optional properties
+#### Optional properties
 
-| Property            | Type            | Description                          |
-|---------------------|-----------------|---------------------------------------------------------------------------------------------------|
-| `ContinueOnErrors`            | `bool`        | If set to `false` - the script will stop on the first error. If set to `true` - the script execution continues. Default: `false`. |
-| `ThrowOnErrors`            | `bool`        | If set to `true` - the script will throw an error (fail) on the first error. Does not work together with `ContinueOnErrors`, only one is allowed. Default: `false`. |
+  | PropertyName            | Type            | Description                          |
+  |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
+  | `ContinueOnErrors`            | `bool`        | If set to `false` - the script will stop on the first error. If set to `true` - the script execution continues. Default: `false`. |
+  | `ThrowOnErrors`            | `bool`        | If set to `true` - the script will throw an error (fail) on the first error. Does not work together with `ContinueOnErrors`, only one is allowed. Default: `false`. |
 
 ## Output
 
@@ -54,7 +54,8 @@ Each command appearing in the script will be reported as a separate record in th
 ## Example
 
 ```kusto
-.execute database script <|
+.execute database script with (ContinueOnErrors=true)
+<|
 //
 // Create tables
 .create-merge table T(a:string, b:string)
