@@ -14,8 +14,6 @@ In this article, you'll learn about the different ways in which you can connect 
 
 ## Prerequisites
 
-You need the following to complete this article:
-
 * A [Microsoft account](https://account.microsoft.com/account/Account), or an Azure Active Directory user identity.
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**).
 
