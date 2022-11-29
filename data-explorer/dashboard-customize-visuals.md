@@ -194,6 +194,7 @@ Each visual can have one or more conditional formatting rules defined. When mult
 1. In this example, we're going to create a rule that will color the cells of event count by the value of this count.  Enter the following information:
 
     :::image type="content" source="media/dashboard-customize-visuals/color-by-value.png" alt-text="Screenshot of conditional formatting to color by value.":::
+    
     Field | Description | Suggested value
     |---|---|---| 
     | Rule type | Condition-based rules or absolute value-based rules. | Color by value
