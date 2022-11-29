@@ -67,7 +67,7 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 
     ![Cluster, database, table options.](media/power-bi-imported-query/cluster-database-table.png)
 
- | Setting | Field description | Sample value
+| Setting | Field description | Sample value
     |---|---|---
     | Cluster | The URL for the help cluster. For other clusters, the URL is in the form *https://\<ClusterName\>.\<Region\>.kusto.windows.net*. | *https://help.kusto.windows.net* |
     | Database | A database that is hosted on the cluster you're connecting to. We'll select this in a later step. | Leave blank |
