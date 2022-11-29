@@ -51,7 +51,7 @@ var kcsb = new KustoConnectionStringBuilder(cluster URI here). WithAadUserPrompt
 using (var client = KustoClientFactory.CreateCslAdminProvider(kcsb))
 {
     var databasesShowCommand = CslCommandGenerator.GenerateDatabasesShowCommand();
-    using (var reader = client.ExecuteControlCommand(diagnosticsCommand))
+    using (var reader = client.ExecuteControlCommand(databasesShowCommand))
     {
         while (reader.Read())
         {
