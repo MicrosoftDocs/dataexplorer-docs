@@ -7,7 +7,7 @@ ms.date: 24/10/2022
 ---
 # log_reduce_full_fl()
 
-The function `log_reduce_full_fl()` finds common patterns in semi structured textual columns, such as log lines, and clusters the lines according to the extracted patterns. The function algorithm and most of the parameters are identical to [log_reduce_fl()](log-reduce-fl.md), but unlike log_reduce_fl() that output a patterns summary table, this function outputs a full table containing the pattern and parameters per each line.
+The function `log_reduce_full_fl()` finds common patterns in semi structured textual columns, such as log lines, and clusters the lines according to the extracted patterns. The function's algorithm and most of the parameters are identical to [log_reduce_fl()](log-reduce-fl.md), but unlike log_reduce_fl() that output a patterns summary table, this function outputs a full table containing the pattern and parameters per each line.
 
 > [!NOTE]
 > * `log_reduce_full_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
