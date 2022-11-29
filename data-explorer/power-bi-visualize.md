@@ -3,7 +3,7 @@ title: 'Use data from Azure Data Explorer in Power BI'
 description: 'Learn how to use Azure Data Explorer data in Power BI.'
 ms.reviewer: danyhoter
 ms.topic: how-to
-ms.date: 11/24/2022
+ms.date: 11/29/2022
 
 #Customer intent: As a data analyst, I want to understand connection options in Power BI so I can choose the option most appropriate to my scenario.
 ---
@@ -22,7 +22,7 @@ In this article, you'll learn about the different ways in which you can connect 
 You can connect Azure Data Explorer as a data source to Power BI in the following ways:
 
 * Starting in Azure Data Explorer web UI and then pasting the data in Power BI Desktop.
-* Starting directly in Power BI Desktop and using the Azure Data Explorer connector.
+* Starting directly in Power BI Desktop and using the Azure Data Explorer connector. The Power BI connector supports [Import and Direct Query connectivity modes](/power-bi/desktop-directquery-about). You can build dashboards using **Import** or **DirectQuery** mode depending on the scenario, scale, and performance requirements.
 
 # [Web UI](#tab/web-ui/)
 
@@ -56,8 +56,6 @@ This section shows you how to query data in Power BI starting from the Azure Dat
 
 # [Connector](#tab/connector/)
 
-This section shows you how to use the built-in connector to query Azure Data Explorer data in a Power BI report. The Power BI connector supports [Import and Direct Query connectivity modes](/power-bi/desktop-directquery-about). You can build dashboards using **Import** or **DirectQuery** mode depending on the scenario, scale, and performance requirements.
-
 1. Launch Power BI Desktop.
 1. On the **Home** tab, select **Get Data** then **More**.
 
@@ -71,13 +69,13 @@ This section shows you how to use the built-in connector to query Azure Data Exp
 
     ![Cluster, database, table options.](media/power-bi-imported-query/cluster-database-table.png)
 
-    | Setting | Value | Field description
+ | Setting | Field description | Sample value
     |---|---|---
-    | Cluster | *https://help.kusto.windows.net* | The URL for the help cluster. For other clusters, the URL is in the form *https://\<ClusterName\>.\<Region\>.kusto.windows.net*. |
-    | Database | Leave blank | A database that is hosted on the cluster you're connecting to. We'll select this in a later step. |
-    | Table name | Leave blank | One of the tables in the database, or a query like <code>StormEvents \| take 1000</code>. We'll select this in a later step. |
-    | Advanced options | Leave blank | Options for your queries, such as result set size.
-    | Data connectivity mode | *DirectQuery* | Determines whether Power BI imports the data or connects directly to the data source. You can use either option with this connector. |
+    | Cluster | The URL for the help cluster. For other clusters, the URL is in the form *https://\<ClusterName\>.\<Region\>.kusto.windows.net*. | *https://help.kusto.windows.net* |
+    | Database | A database that is hosted on the cluster you're connecting to. We'll select this in a later step. | Leave blank |
+    | Table name | One of the tables in the database, or a query like <code>StormEvents \| take 1000</code>. We'll select this in a later step. | Leave blank |
+    | Advanced options | Options for your queries, such as result set size. |  Leave blank |
+    | Data connectivity mode | Determines whether Power BI imports the data or connects directly to the data source. You can use either option with this connector. | *DirectQuery* |
 
     > [!NOTE]
     > In **Import** mode, data is moved to Power BI. In **DirectQuery** mode, data is queried directly from your Azure Data Explorer cluster.
@@ -95,12 +93,12 @@ This section shows you how to use the built-in connector to query Azure Data Exp
 
     **Advanced options**
 
-    | Setting | Sample value | Field description
+| Setting | Field description | Sample value
     |---|---|---
-    | Limit query result record number| `300000` | The maximum number of records to return in the result |
-    | Limit query result data size | `4194304` | The maximum data size in bytes to return in the result |
-    | Disable result set truncation | `true` | Enable/disable result truncation by using the notruncation request option |
-    | Additional set statements | `set query_datascope=hotcache` | Sets query options for the duration of the query. Query options control how a query executes and returns results. |
+    | Limit query result record number| The maximum number of records to return in the result |`300000` |
+    | Limit query result data size | The maximum data size in bytes to return in the result | `4194304` |
+    | Disable result set truncation | Enable/disable result truncation by using the notruncation request option | `true` |
+    | Additional set statements | Sets query options for the duration of the query. Query options control how a query executes and returns results. | `set query_datascope=hotcache` |
 
 1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents** then **Transform Data**.
 
@@ -115,6 +113,7 @@ This section shows you how to use the built-in connector to query Azure Data Exp
 ---
 
 You now know how to query data from Azure Data Explorer in Power BI.
+
 ## Next steps
 
 [Create reports and dashboards in Power BI](/power-bi/create-reports/)
