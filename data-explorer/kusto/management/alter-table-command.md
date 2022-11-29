@@ -29,9 +29,6 @@ The `.alter table` command:
 | *Documentation* | string | | Free text describing the entity to be added. This string is presented in various UX settings next to the entity names. |
 | *FolderName* | string | | The name of the folder to add to the table. |
 
-* The table will have exactly the same columns, in the same order, as specified.
-* Altering a column type isn't supported. Use the [`.alter column`](alter-column.md) command instead.
-
 > [!WARNING]
 > If existing columns aren't specified in the command, they'll be dropped. This could lead to unexpected data loss.
 
@@ -41,13 +38,18 @@ The `.alter table` command:
 ## How the command affects the data
 
 * Existing data in the listed columns isn't modified
-* Existing data could be deleted if the column is not listed as part of the schema
+* Existing data in unlisted columns will be deleted
 * New columns are added to the end of the schema
 * Data in new columns is assumed to be null
-* Depending on how the cluster is configured, data ingestion might modify the table's column schema, even without user interaction. When you make changes to a table's column schema, ensure that ingestion won't add needed columns that the command will then remove.
+* The table will have the same columns, in the same order, as specified
+
+> [!NOTE]
+> Altering a column type isn't supported. Use the [`.alter column`](alter-column.md) command instead.
 
 > [!WARNING]
-> Data ingestion processes into the table that modify the table's column schema, and that occur in parallel with the `.alter table` command, might be performed agnostic to the order of table columns. There is also a risk that data will be ingested into the wrong columns. Prevent these issues by stopping ingestion during the command, or by making sure that such ingestion operations always use a mapping object.
+>
+> * Data ingestion processes might disregard the order of table columns. If these processes occur in parallel with the `.alter table` command, you risk ingesting data into the wrong columns. To prevent this, stop ingestion during the command or make sure that the ingestion uses a mapping object.
+> * Depending on how the cluster is configured, the table's column schema might be modified during ingestion. Be careful not to accidentally remove columns that were added during ingestion.
 
 ## Examples
 
