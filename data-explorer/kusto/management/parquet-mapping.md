@@ -97,4 +97,4 @@ Use Parquet mapping during ingestion without defining a mapping schema (see [ide
 
 ## Next steps
 
-* Learn more about [Data mappings](mappings.md)
+* Learn more about [data mappings](mappings.md)

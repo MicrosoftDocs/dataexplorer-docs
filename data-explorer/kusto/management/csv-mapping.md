@@ -82,4 +82,4 @@ Use CSV mapping during ingestion without defining a mapping schema (see [identit
 
 ## Next steps
 
-* Learn more about [Data mappings](mappings.md)
+* Learn more about [data mappings](mappings.md)

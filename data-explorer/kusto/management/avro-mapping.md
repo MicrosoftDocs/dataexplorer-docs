@@ -96,4 +96,4 @@ Use AVRO mapping during ingestion without defining a mapping schema (see [identi
 
 ## Next steps
 
-* Learn more about [Data mappings](mappings.md)
+* Learn more about [data mappings](mappings.md)

@@ -99,4 +99,4 @@ You can copy JSON mapping of an existing table and create a new table with the s
 
 ## Next steps
 
-* Learn more about [Data mappings](mappings.md)
+* Learn more about [data mappings](mappings.md)

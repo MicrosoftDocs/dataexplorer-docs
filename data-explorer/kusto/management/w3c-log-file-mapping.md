@@ -88,4 +88,4 @@ Use W3CLOGFILE mapping during ingestion without defining a mapping schema (see [
 
 ## Next steps
 
-* Learn more about [Data mappings](mappings.md)
+* Learn more about [data mappings](mappings.md)
