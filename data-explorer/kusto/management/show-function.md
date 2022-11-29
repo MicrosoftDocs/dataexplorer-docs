@@ -45,7 +45,21 @@ For a list of **all** functions, see [.show functions](#show-functions).
 
 **Syntax**
 
-`.show` `function` *FunctionName*
+`.show` `function` *FunctionName* [`with (`*PropertyName* = *PropertyValue* [, ...] )]
+
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*FunctionName* | string | &check; | Name of stored function.
+
+ *PropertyName*/*PropertyValue* indicate additional information to use when showing function details. All properties are optional. The supported properties are:
+
+| Property name | Property values | Description | Default |
+|---|---|---|---|
+|`ShowObfuscatedStrings` | `true` or `false`| If `true` and used by principal with proper permissions, [obfuscated strings](../query/scalar-data-types/string.md#obfuscated-string-literals) in function's body will be shown. | Defaults to `false`
+|`Builtin` | `true` or `false`` | If `true` and used by cluster admin, shows built in function(s). | Defaults to `false`
+| `IncludeHiddenFunctions` | `true` or `false` | If `true`, show hidden function(s). | Defaults to `false`.
 
 **Output**
 
@@ -64,7 +78,7 @@ For a list of **all** functions, see [.show functions](#show-functions).
 **Example** 
 
 ```kusto
-.show function MyFunction1 
+.show function MyFunction1 with(ShowObfuscatedStrings = true)
 ```
     
 |Name |Parameters |Body|Folder|DocString

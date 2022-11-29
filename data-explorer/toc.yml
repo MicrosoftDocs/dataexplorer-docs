@@ -34,8 +34,20 @@ items:
     href: ingest-data-no-code.md
   - name: Visualize data in Power BI
     href: visualize-power-bi.md
-  - name: "Learn module: Introduction to Azure Data Explorer"
-    href: /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+  - name: Training modules
+    items:
+    - name: "Training module: Introduction to Azure Data Explorer"
+      href:  /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+    - name: "Training module: Write your first query with Kusto Query Language"
+      href: /training/modules/write-first-query-kusto-query-language/
+    - name: "Training module: Gain insights from your data by using Kusto Query Language"
+      href: /training/modules/gain-insights-data-kusto-query-language/
+    - name: "Training module: Multi-table queries using Kusto Query Language"
+      href: /training/modules/multi-table-queries-with-kusto-query-language/
+    - name: "Training module: Characterize an unfamiliar dataset with Azure Data Explorer"
+      href: /training/modules/characterize-data-azure-data-explorer/
+    - name: "Training module: Create dashboards in Azure Data Explorer"
+      href: /training/modules/create-dashboards-azure-data-explorer/
 - name: Concepts
   items:
   - name: EngineV3
@@ -628,6 +640,15 @@ items:
     - name: series_moving_avg_fl()
       displayName: functions library, filter, low-pass, smoothing
       href: kusto/functions-library/series-moving-avg-fl.md
+    - name: series_mv_ee_anomalies_fl()
+      displayName: functions library, anomaly detection, multivariate, elliptical envelope
+      href: kusto/functions-library/series-mv-ee-anomalies-fl.md
+    - name: series_mv_if_anomalies_fl()
+      displayName: functions library, anomaly detection, multivariate, isolation forest
+      href: kusto/functions-library/series-mv-if-anomalies-fl.md
+    - name: series_mv_oc_anomalies_fl()
+      displayName: functions library, anomaly detection, multivariate, one class svm, support vector machines
+      href: kusto/functions-library/series-mv-oc-anomalies-fl.md
     - name: series_rate_fl()
       displayName: functions library, PromQL, Prometheus
       href: kusto/functions-library/series-rate-fl.md
