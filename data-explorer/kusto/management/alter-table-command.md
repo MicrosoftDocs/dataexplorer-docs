@@ -24,8 +24,7 @@ The `.alter table` command:
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *TableName* | string | &check; | The name of the table to alter. |
-| *columnName* | string | &check; | The name of an existing or new column. |
-| *columnType* | string | &check; | The type of data in the specified column. |
+| (*columnName*:*columnType*, ...) | string | &check; | The name of an existing or new column mapped to the type of data in that column. This list defines the output column schema.|
 | *Documentation* | string | | Free text describing the entity to be added. This string is presented in various UX settings next to the entity names. |
 | *FolderName* | string | | The name of the folder to add to the table. |
 
@@ -37,7 +36,7 @@ The `.alter table` command:
 
 ## How the command affects the data
 
-* Existing data in the listed columns isn't modified
+* Existing data in listed columns isn't modified
 * Existing data in unlisted columns will be deleted
 * New columns are added to the end of the schema
 * Data in new columns is assumed to be null
@@ -48,8 +47,8 @@ The `.alter table` command:
 
 > [!WARNING]
 >
-> * Data ingestion processes might disregard the order of table columns. If these processes occur in parallel with the `.alter table` command, you risk ingesting data into the wrong columns. To prevent this, stop ingestion during the command or make sure that the ingestion uses a mapping object.
-> * Depending on how the cluster is configured, the table's column schema might be modified during ingestion. Be careful not to accidentally remove columns that were added during ingestion.
+> * Data ingestion that disregards the order of columns and occurs in parallel with `.alter table` risks ingesting data into the wrong columns. To prevent this, make sure that ingestion uses a mapping object or stop ingestion while running the `.alter table` command.
+> * Data ingestion may modify a table's column schema even without user interaction depending on how the cluster is configured. Be careful not to accidentally remove desired columns that were added during ingestion.
 
 ## Examples
 
@@ -60,4 +59,4 @@ The `.alter table` command:
 
 ## See also
 
-The `.alter` table command has a counterpart with similar functionality, the `.alter-merge` table command. For more information, see [`.alter-merge table`](../management/alter-merge-table-command.md).
+The `.alter-merge` table command has similar functionality. For more information, see [.alter-merge table](../management/alter-merge-table-command.md).

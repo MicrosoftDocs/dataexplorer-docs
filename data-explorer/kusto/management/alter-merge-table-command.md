@@ -23,8 +23,7 @@ The `.alter-merge table` command:
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *TableName* | string | &check; | The name of the table to alter. |
-| *columnName* | string | &check; | The name of an existing or new column. |
-| *columnType* | string | &check; | The type of data in the specified column. |
+| (*columnName*:*columnType*, ...) | string | &check; | The name of an existing or new column mapped to the type of data in that column. This list defines the output column schema.|
 | *Documentation* | string | | Free text describing the entity to be added. This string is presented in various UX settings next to the entity names. |
 | *FolderName* | string | | The name of the folder to add to the table. |
 
@@ -49,4 +48,4 @@ The `.alter-merge table` command:
 
 ## See also
 
-The `.alter-merge` has a counterpart, the `.alter` table command that has similar functionality. For more information, see [`.alter table`](../management/alter-table-command.md).
+The `.alter` table command has similar functionality. For more information, see [.alter table](../management/alter-table-command.md).
