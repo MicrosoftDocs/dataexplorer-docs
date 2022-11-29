@@ -151,6 +151,8 @@ Use the following properties to customize visuals.
 Conditional formatting is used to format the visual data points by their values using colors, tags, and icons.  Conditional formatting can be applied to a specific set of cells in a predetermined column or to entire rows.
 Each visual can have one or more conditional formatting rules defined. When multiple rules conflict, the last rule will override previous rules.
 
+#### Add a conditional formatting rule
+
 1. Enter the editing mode of the table, stat, or multi stat visual you wish to conditionally format.
 1. In the **Visual formatting** pane, scroll to the bottom and toggle **Conditional formatting** to **Show**.
     
@@ -191,7 +193,7 @@ Each visual can have one or more conditional formatting rules defined. When mult
 
 #### Color by value
 
-1. In this example, we're going to create a rule that will color the cells of event count by the value of this count.  Enter the following information:
+1. In this example, we're going to create a rule that will color the cells of event count on a gradient determined by the value of this count.  Enter the following information:
 
     :::image type="content" source="media/dashboard-customize-visuals/color-by-value.png" alt-text="Screenshot of conditional formatting to color by value.":::
     
@@ -205,7 +207,7 @@ Each visual can have one or more conditional formatting rules defined. When mult
     | Max value |  Optional maximum value for conditional coloring.
     | Apply options | Apply the formatting to cells in a specific column or to the entire row. | Apply to cells |
 
-1. Select **Save**. The visual will now be colored conditionally. 
+1. Select **Save**. The visual will now be colored conditionally. Note the color changes based on the value in the **event** column.
 
     :::image type="content" source="media/dashboard-customize-visuals/color-by-value-results.png" alt-text="Screenshot of results for coloring by value.":::
 
