@@ -115,6 +115,7 @@ This section shows you how to use the built-in connector to query Azure Data Exp
 ---
 
 You now know how to query data from Azure Data Explorer in Power BI.
+
 ## Next steps
 
 [Create reports and dashboards in Power BI](/power-bi/create-reports/)
