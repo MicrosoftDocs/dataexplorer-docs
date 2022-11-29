@@ -1,7 +1,7 @@
 ---
-title: 'Visualize data from Azure Data Explorer in Power BI'
-description: 'In this article, you learn how to import a query from Azure Data Explorer and visualize it in a Power BI report.'
-ms.reviewer: mblythe
+title: 'Use data from Azure Data Explorer in Power BI'
+description: 'Learn how to use Azure Data Explorer data in Power BI.'
+ms.reviewer: danyhoter
 ms.topic: how-to
 ms.date: 11/24/2022
 
@@ -10,27 +10,25 @@ ms.date: 11/24/2022
 
 # Use Azure Data Explorer Data in Power BI
 
-This article shows you how use data from Azure Data Explorer in Power BI.
+In this article, you'll learn about the different ways in which you can connect Azure Data Explorer as a data source to Power BI. Once connected, you can proceed to build Power BI reports and visualizations.
 
 ## Prerequisites
 
-You need the following to complete this article:
-
-* A [Microsoft account](https://account.microsoft.com/account/Account?ru=https%3A%2F%2Faccount.microsoft.com%2F&destrt=home.landing), or an organizational email account that is a member of the Azure Active directory.
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**).
+* A [Microsoft account](https://account.microsoft.com/account/Account), or an Azure Active Directory user identity.
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started).
 
 ## Use data in Power BI
 
-There are multiple ways to query data in Power BI. The following tabs show you two ways of querying data:
+You can connect Azure Data Explorer as a data source to Power BI in the following ways:
 
 * Starting in Azure Data Explorer web UI and then pasting the data in Power BI Desktop.
-* Starting directly in Power BI Desktop and using the built-in connector.
+* Starting directly in Power BI Desktop and using the Azure Data Explorer connector.
 
 # [Web UI](#tab/web-ui/)
 
 This section shows you how to query data in Power BI starting from the Azure Data Explorer web UI.
 
-1. In a browser, go to [https://help.kusto.windows.net/](https://help.kusto.windows.net/)
+1. In the Azure Data Explorer web UI, on the left menu, select **Query**, and then select the database with your data. For example, connect to [our help cluster](https://help.kusto.windows.net/) and select the **Samples** database.
 1. Create a query and select it. Take the following query for example:
 
     ```Kusto
@@ -39,7 +37,7 @@ This section shows you how to query data in Power BI starting from the Azure Dat
     | take 1000
     ```
 
-1. Select **Share** then **Query to Power BI**
+1. From the **Share**  menu, select **Query to Power BI**
 
     ![Share query.](media/power-bi-imported-query/share-query.png)
 
