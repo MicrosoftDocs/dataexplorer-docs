@@ -1,5 +1,5 @@
 ---
-title: 'Visualize data from Azure Data Explorer in Power BI'
+title: 'Use data from Azure Data Explorer in Power BI'
 description: 'In this article, you learn how to import a query from Azure Data Explorer and visualize it in a Power BI report.'
 ms.reviewer: mblythe
 ms.topic: how-to
