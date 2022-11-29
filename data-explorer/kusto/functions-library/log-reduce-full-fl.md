@@ -14,7 +14,7 @@ The function `log_reduce_full_fl()` finds common patterns in semi structured tex
 > * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
 
 ## Syntax
-`T | invoke log_reduce_full_fl(`*reduce_col*`,` *pattern_col*`,` *parameters_col*`,` *custom_regexes*`,` *custom_regexes_policy*`,` *delimiters*`,` *use_logram*`,` *use_drain*`,` *similarity_th*`,` *tree_depth*`,` *trigram_th_ratio*`,` *bigram_th_ratio*`)`
+`T | invoke log_reduce_full_fl(`*reduce_col*`,` *pattern_col*`,` *parameters_col*`,` *use_logram*`,` *use_drain*`,` *custom_regexes*`,` *custom_regexes_policy*`,` *delimiters*`,` *similarity_th*`,` *tree_depth*`,` *trigram_th*`,` *bigram_th*`)`
 
 ## Arguments
 
@@ -25,19 +25,19 @@ The argument description below is a summary, see [More about the algorithm](#mor
 | *reduce_col* | string | &check; | The name of the string column the function is applied to. |
 | *pattern_col* | string | &check; | The name of the string column to populate the pattern. |
 | *parameters_col* | string | &check; | The name of the string column to populate the pattern's parameters. |
-| *delimiters* | dynamic | | A dynamic array containing delimiter strings. Default value is dynamic([" "]), defining space as the only single character delimiter. |
-| *custom_regexes* | dynamic | | A dynamic array containing pairs of regular expression and replacement symbols to be searched in each input row, and replaced with their respective matching symbol. Default value is dynamic([]). The default regex table replaces numbers, IPs and GUIDs. |
-| *custom_regexes_policy* | string | | Either 'prepend', 'append' or 'replace'. Controls whether custom_regexes are prepend/append/replace the default ones. Default value is 'prepend'. |
 | *use_logram* | boolean | | Enable/disable the Logram algorithm. Default value is True. |
 | *use_drain* | boolean | | Enable/disable the Drain algorithm. Default value is True. |
+| *custom_regexes* | dynamic | | A dynamic array containing pairs of regular expression and replacement symbols to be searched in each input row, and replaced with their respective matching symbol. Default value is dynamic([]). The default regex table replaces numbers, IPs and GUIDs. |
+| *custom_regexes_policy* | string | | Either 'prepend', 'append' or 'replace'. Controls whether custom_regexes are prepend/append/replace the default ones. Default value is 'prepend'. |
+| *delimiters* | dynamic | | A dynamic array containing delimiter strings. Default value is dynamic([" "]), defining space as the only single character delimiter. |
 | *similarity_th* | real | | Similarity threshold, used by the Drain algorithm. Increasing *similarity_th* will result in more refined clusters. Default value is 0.5. If Drain is disabled this parameter has no effect.
 | *tree_depth* | integer | | Increasing *tree_depth* will improve the runtime of the Drain algorithm, but might reduce its accuracy. Default value is 4. If Drain is disabled this parameter has no effect. |
-| *trigram_th_ratio* | real | | Decreasing *trigram_th_ratio* will increase the chances of Logram to replace tokens with wildcards. Default value is 0.005. If Logram is disabled this parameter has no effect. |
-| *bigram_th_ratio* | real | | Decreasing *bigram_th_ratio* will increase the chances of Logram to replace tokens with wildcards. Default value is 0.075. If Logram is disabled this parameter has no effect. |
+| *trigram_th* | integer | | Decreasing *trigram_th* will increase the chances of Logram to replace tokens with wildcards. Default value is 10. If Logram is disabled this parameter has no effect. |
+| *bigram_th* | int | | Decreasing *bigram_th* will increase the chances of Logram to replace tokens with wildcards. Default value is 15. If Logram is disabled this parameter has no effect. |
 
 ## More about the algorithm
 
-See [More about the algorithm](log-reduce-fl.md#more-about-the-algorithm). As mentioned, this function runs the same passes over the data, just instead of summarize the patterns' frequency it outputs full table containing the pattern and its parameters per each log line.
+See [More about the algorithm of log_reduce_fl()](log-reduce-fl.md#more-about-the-algorithm). As mentioned, this function runs the same passes over the data, just instead of summarizing the patterns' frequency it outputs full table containing per each log line the pattern and its parameters.
 
 ## Usage
 
@@ -49,41 +49,35 @@ For ad hoc usage, embed the code using the [let statement](../query/letstatement
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
-let tbl2dynamic=(tbl:(*))
+let log_reduce_full_fl=(tbl:(*), reduce_col:string, pattern_col:string, parameters_col:string,
+                   use_logram:bool=True, use_drain:bool=True, custom_regexes: dynamic = dynamic([]), custom_regexes_policy: string = 'prepend',
+                   delimiters:dynamic = dynamic(' '), similarity_th:double=0.5, tree_depth:int = 4, trigram_th:int=10, bigram_th:int=15)
 {
-    toscalar(tbl
-    | extend pa = pack_all()
-    | summarize make_list(pa))
-};
-let log_reduce_full_fl=(tbl:(*), reduce_col:string, pattern_col:string, parameters_col:string,                                                               //required parameters
-                   custom_regexes:string="", append_custom_regexes: bool = True, delimiters:dynamic = dynamic(" "), use_logram:bool=True, use_drain:bool=True,    //joint optional parameters
-                   st:double=0.5, tree_depth:int = 4,                                                                                                   //Drain optional parameters
-                   trigram_th_ratio:double=0.005, bigram_th_ratio:double=0.0075)                                                                        //Logram optional parameters
-{
-    let effective_delimiters = dynamic_to_json(delimiters);
-    let default_regex_table = dynamic_to_json(tbl2dynamic(datatable(regex:string, symbol:string) [
-    '(/|)([0-9]+\\.){3}[0-9]+(:[0-9]+|)(:|)', '<IP>',
-    '([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})', '<GUID>',
-    '(?<=[^A-Za-z0-9])(\\-?\\+?\\d+)(?=[^A-Za-z0-9])|[0-9]+$', '<NUM>'
-    ]))
-    ;
-    let kwargs = bag_pack('reduced_column', reduce_col, 'delimiters', effective_delimiters,'output_column', pattern_col, 'parameters_column', parameters_col, 'tri_threshold', trigram_th_ratio, 'double_threshold', bigram_th_ratio, "default_regexes", default_regex_table, "custom_regexes", custom_regexes, "append_custom_regexes", append_custom_regexes, 'tree_depth', tree_depth, "st", st, "use_drain", use_drain, "use_logram", use_logram, "save_regex_tuples_in_output", True, "regex_tuples_column", "RegexesColumn", "output_type", "Full");
-    let code = ```
-if 1:
-    from sandbox_utils import Zipackage
-    Zipackage.install('LogReduceFilter.zip')
-    from LogReduceFilter import LogReduce
-    result = LogReduce.log_reduce(df, kargs)
-```;
+    let default_regex_table = pack_array('(/|)([0-9]+\\.){3}[0-9]+(:[0-9]+|)(:|)', '<IP>', 
+                                         '([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})', '<GUID>', 
+                                         '(?<=[^A-Za-z0-9])(\\-?\\+?\\d+)(?=[^A-Za-z0-9])|[0-9]+$', '<NUM>');
+    let kwargs = bag_pack('reduced_column', reduce_col, 'delimiters', delimiters,'output_column', pattern_col, 'parameters_column', parameters_col, 
+                          'trigram_th', trigram_th, 'bigram_th', bigram_th, 'default_regexes', default_regex_table, 
+                          'custom_regexes', custom_regexes, 'custom_regexes_policy', custom_regexes_policy, 'tree_depth', tree_depth, 'similarity_th', similarity_th, 
+                          'use_drain', use_drain, 'use_logram', use_logram, 'save_regex_tuples_in_output', True, 'regex_tuples_column', 'RegexesColumn', 
+                          'output_type', 'full');
+    let code = ```if 1:
+        from sandbox_utils import Zipackage
+        Zipackage.install('LogReduceFilter.zip')
+        from LogReduceFilter import LogReduce
+        result = LogReduce.log_reduce(df, kargs)
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs, external_artifacts =
-    bag_pack('LogReduceFilter.zip', 'https://adiwesteurope.blob.core.windows.net/python-we/LogReduceFilter/LogReduceFilter-0.2.39-py3-none-any.zip'))
-};
-// Finds common patterns in BGL_logs, a commonly used benchmark for log parsing (as the name suggests, the benchmark contains logs of the BGL system).
-BGL_logs
-| take 100000 
+    bag_pack('LogReduceFilter.zip', 'https://adiwesteurope.blob.core.windows.net/python-we/LogReduceFilter/LogReduceFilter-1.0.1.zip'))
+}
+;
+// Finds common patterns in HDFS_log, a commonly used benchmark for log parsing.
+HDFS_log
+| take 100000
 | extend Patterns="", Parameters=""
 | invoke log_reduce_full_fl(reduce_col="data", pattern_col="Patterns", parameters_col="Parameters")
+| take 10
 ~~~
 
 # [Persistent](#tab/persistent)
@@ -92,44 +86,29 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One-time installation
 
-First, create the `tbl2dynamic()` function:
 ~~~kusto
-.create-or-alter function with (folder = "Packages\\Utils", docstring = "Convert a small table to dynamic array")
-tbl2dynamic(tbl:(*))
+.create-or-alter function with (folder = 'Packages\\Text', docstring = 'Find common patterns in textual logs')
+log_reduce_full_fl(tbl:(*), reduce_col:string, pattern_col:string, parameters_col:string,
+                   use_logram:bool=True, use_drain:bool=True, custom_regexes: dynamic = dynamic([]), custom_regexes_policy: string = 'prepend',
+                   delimiters:dynamic = dynamic(' '), similarity_th:double=0.5, tree_depth:int = 4, trigram_th:int=10, bigram_th:int=15)
 {
-    toscalar(tbl
-    | extend pa = pack_all()
-    | summarize make_list(pa))
-}
-~~~
-
-Then, create the `log_reduce_full_fl()` function:
-
-~~~kusto
-.create-or-alter function with (folder = "Packages\\Text", docstring = "Find common patterns in textual logs")
-log_reduce_full_fl(tbl:(*), reduce_col:string, pattern_col:string, parameters_col:string,                                                               //required parameters
-                   custom_regexes:string="", append_custom_regexes: bool = True, delimiters:dynamic = dynamic(" "), use_logram:bool=True, use_drain:bool=True,    //joint optional parameters
-                   st:double=0.5, tree_depth:int = 4,                                                                                                   //Drain optional parameters
-                   trigram_th_ratio:double=0.005, bigram_th_ratio:double=0.0075)                                                                        //Logram optional parameters
-{
-    let effective_delimiters = dynamic_to_json(delimiters);
-    let default_regex_table = dynamic_to_json(tbl2dynamic(datatable(regex:string, symbol:string) [
-    '(/|)([0-9]+\\.){3}[0-9]+(:[0-9]+|)(:|)', '<IP>',
-    '([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})', '<GUID>',
-    '(?<=[^A-Za-z0-9])(\\-?\\+?\\d+)(?=[^A-Za-z0-9])|[0-9]+$', '<NUM>'
-    ]))
-    ;
-    let kwargs = bag_pack('reduced_column', reduce_col, 'delimiters', effective_delimiters,'output_column', pattern_col, 'parameters_column', parameters_col, 'tri_threshold', trigram_th_ratio, 'double_threshold', bigram_th_ratio, "default_regexes", default_regex_table, "custom_regexes", custom_regexes, "append_custom_regexes", append_custom_regexes, 'tree_depth', tree_depth, "st", st, "use_drain", use_drain, "use_logram", use_logram, "save_regex_tuples_in_output", True, "regex_tuples_column", "RegexesColumn", "output_type", "Full");
-    let code = ```
-if 1:
-    from sandbox_utils import Zipackage
-    Zipackage.install('LogReduceFilter.zip')
-    from LogReduceFilter import LogReduce
-    result = LogReduce.log_reduce(df, kargs)
-```;
+    let default_regex_table = pack_array('(/|)([0-9]+\\.){3}[0-9]+(:[0-9]+|)(:|)', '<IP>', 
+                                         '([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})', '<GUID>', 
+                                         '(?<=[^A-Za-z0-9])(\\-?\\+?\\d+)(?=[^A-Za-z0-9])|[0-9]+$', '<NUM>');
+    let kwargs = bag_pack('reduced_column', reduce_col, 'delimiters', delimiters,'output_column', pattern_col, 'parameters_column', parameters_col, 
+                          'trigram_th', trigram_th, 'bigram_th', bigram_th, 'default_regexes', default_regex_table, 
+                          'custom_regexes', custom_regexes, 'custom_regexes_policy', custom_regexes_policy, 'tree_depth', tree_depth, 'similarity_th', similarity_th, 
+                          'use_drain', use_drain, 'use_logram', use_logram, 'save_regex_tuples_in_output', True, 'regex_tuples_column', 'RegexesColumn', 
+                          'output_type', 'full');
+    let code = ```if 1:
+        from sandbox_utils import Zipackage
+        Zipackage.install('LogReduceFilter.zip')
+        from LogReduceFilter import LogReduce
+        result = LogReduce.log_reduce(df, kargs)
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs, external_artifacts =
-    bag_pack('LogReduceFilter.zip', 'https://adiwesteurope.blob.core.windows.net/python-we/LogReduceFilter/LogReduceFilter-0.2.39-py3-none-any.zip'))
+    bag_pack('LogReduceFilter.zip', 'https://adiwesteurope.blob.core.windows.net/python-we/LogReduceFilter/LogReduceFilter-1.0.1.zip'))
 }
 ~~~
 

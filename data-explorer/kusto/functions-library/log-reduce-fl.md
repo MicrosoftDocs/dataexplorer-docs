@@ -15,7 +15,7 @@ The function `log_reduce_fl()` finds common patterns in semi structured textual 
 
 ## Syntax
 
-`T | invoke log_reduce_fl(`*reduce_col*`,` *custom_regexes*`,` *custom_regexes_policy*`,` *delimiters*`,` *use_logram*`,` *use_drain*`,` *similarity_th*`,` *tree_depth*`,` *trigram_th_ratio*`,` *bigram_th_ratio*`)`
+`T | invoke log_reduce_fl(`*reduce_col*`,` *use_logram*`,` *use_drain*`,` *custom_regexes*`,` *custom_regexes_policy*`,` *delimiters*`,` *similarity_th*`,` *tree_depth*`,` *trigram_th*`,` *bigram_th*`)`
 
 ## Arguments
 
@@ -24,15 +24,15 @@ The argument description below is a summary, see [More about the algorithm](#mor
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *reduce_col* | string | &check; | The name of the string column the function is applied to. |
-| *delimiters* | dynamic | | A dynamic array containing delimiter strings. Default value is dynamic([" "]), defining space as the only single character delimiter. |
-| *custom_regexes* | dynamic | | A dynamic array containing pairs of regular expression and replacement symbols to be searched in each input row, and replaced with their respective matching symbol. Default value is dynamic([]). The default regex table replaces numbers, IPs and GUIDs. |
-| *custom_regexes_policy* | string | | Either 'prepend', 'append' or 'replace'. Controls whether custom_regexes are prepend/append/replace the default ones. Default value is 'prepend'. |
 | *use_logram* | boolean | | Enable/disable the Logram algorithm. Default value is True. |
 | *use_drain* | boolean | | Enable/disable the Drain algorithm. Default value is True. |
+| *custom_regexes* | dynamic | | A dynamic array containing pairs of regular expression and replacement symbols to be searched in each input row, and replaced with their respective matching symbol. Default value is dynamic([]). The default regex table replaces numbers, IPs and GUIDs. |
+| *custom_regexes_policy* | string | | Either 'prepend', 'append' or 'replace'. Controls whether custom_regexes are prepend/append/replace the default ones. Default value is 'prepend'. |
+| *delimiters* | dynamic | | A dynamic array containing delimiter strings. Default value is dynamic([" "]), defining space as the only single character delimiter. |
 | *similarity_th* | real | | Similarity threshold, used by the Drain algorithm. Increasing *similarity_th* will result in more refined clusters. Default value is 0.5. If Drain is disabled this parameter has no effect.
 | *tree_depth* | integer | | Increasing *tree_depth* will improve the runtime of the Drain algorithm, but might reduce its accuracy. Default value is 4. If Drain is disabled this parameter has no effect. |
-| *trigram_th_ratio* | real | | Decreasing *trigram_th_ratio* will increase the chances of Logram to replace tokens with wildcards. Default value is 0.005. If Logram is disabled this parameter has no effect. |
-| *bigram_th_ratio* | real | | Decreasing *bigram_th_ratio* will increase the chances of Logram to replace tokens with wildcards. Default value is 0.075. If Logram is disabled this parameter has no effect. |
+| *trigram_th* | integer | | Decreasing *trigram_th* will increase the chances of Logram to replace tokens with wildcards. Default value is 10. If Logram is disabled this parameter has no effect. |
+| *bigram_th* | int | | Decreasing *bigram_th* will increase the chances of Logram to replace tokens with wildcards. Default value is 15. If Logram is disabled this parameter has no effect. |
 
 ## More about the algorithm
 
@@ -40,10 +40,10 @@ The function runs multiples passes over the rows to be reduced to common pattern
 
 * Regular expression replacements: in this pass each line is independently matched to a set of regular expressions, and each matched expression is replaced by a replacement symbol. The default regular expressions replace IPs, numbers and GUIDs with \<IP\>, \<GUID\> and \<NUM\>. The user can prepend/append additional regular expressions to those, or replace it with new ones or empty list by modifying *custom_regexes* and *custom_regexes_policy*. For example, to replace whole numbers with  \<WNUM\> set custom_regexes=pack_array('/^\d+$/', '\<WNUM\>'); to cancel regular expressions replacement set custom_regexes_policy='replace''. Note that for each line the function keeps list of the original expressions (before replacements) to be output as parameters of the generic replacement tokens.
 
-* Tokenization: similar to the previous step, each line is processed independently and broken into tokens based on set of *delimiters*. For example, to define breaking to tokens by either comma, period or ellipsis set *delimiters*=pack_array(',', '...', '.'). Note that we define ellipsis before period to make sure we don't break ellipsis to redundant tokens.
+* Tokenization: similar to the previous step, each line is processed independently and broken into tokens based on set of *delimiters*. For example, to define breaking to tokens by either comma, period or semicolon set *delimiters*=pack_array(',', '.', ';').
 
 * Apply [Logram algorithm](https://arxiv.org/pdf/2001.03038.pdf): this pass is optional, pending *use_logram* is true. It is recommended to use Logram when large scale is required, and when parameters can appear in the first tokens of the log entry. OTOH, disable it when the log entries are short, as the algorithm tends to replace tokens with wildcards too often in such cases.\
-The Logram algorithm considers 3-tuples and 2-tuples of tokens. If a 3-tuple of tokens is common in the log corpus (its frequency is above *trigram_th_ratio*), then it is likely that all 3 tokens are part of the pattern. If the 3-tuple is rare, then it is likely that it contains a variable that should be replaced by a wildcard. For rare 3-tuples, we consider the frequency with which 2-tuples contained in the 3-tuple appear. If a 2-tuple is common (its frequency is above *bigram_th_ratio*), then the remaining token is likely to be a parameter, and not part of the pattern.\
+The Logram algorithm considers 3-tuples and 2-tuples of tokens. If a 3-tuple of tokens is common in the log lines (it appears more than *trigram_th* times), then it is likely that all 3 tokens are part of the pattern. If the 3-tuple is rare, then it is likely that it contains a variable that should be replaced by a wildcard. For rare 3-tuples, we consider the frequency with which 2-tuples contained in the 3-tuple appear. If a 2-tuple is common (it appears more than *bigram_th* times), then the remaining token is likely to be a parameter, and not part of the pattern.\
 Note that the Logram algorithm is easy to parallelize. It requires two passes on the log corpus - the first one to count the frequency of each 3-tuple and 2-tuple, and the second one to apply the logic described above to each entry. To parallelize the algorithm, we only need to partition the log entries, and unify the frequency counts of different workers.
     
 * Apply [Drain algorithm](https://jiemingzhu.github.io/pub/pjhe_icws2017.pdf): this pass is optional, pending *use_drain* is true. Drain is a log parsing algorithm based on a truncated depth prefix tree. Log messages are split according to their length, and for each length the first *tree_depth* tokens of the log message are used to build a prefix tree. If no match for the prefix tokens was found, a new branch is created. If a match for the prefix was found, we search for the most similar pattern among the patterns contained in the tree leaf. Pattern similarity is measured by the ratio of matched non-wildcard tokens out of all tokens. If the similarity of the most similar pattern is above the similarity threshold (the parameter *similarity_th*), then the log entry is matched to the pattern. For that pattern, the function replaces all non-matching tokens by wildcards. If the similarity of the most similar pattern is below the similarity threshold, a new pattern containing the log entry is created.\
@@ -62,34 +62,32 @@ For ad hoc usage, embed the code using the [let statement](../query/letstatement
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
 let log_reduce_fl=(tbl:(*), reduce_col:string,
-              use_logram:bool=True, use_drain:bool=True, custom_regexes: dynamic = dynamic([]), custom_regexes_policy: string = "prepend", delimiters:dynamic = dynamic(" "), 
-              similarity_th:double=0.5, tree_depth:int = 4,
-              trigram_th_ratio:double=0.005, bigram_th_ratio:double=0.0075)
+              use_logram:bool=True, use_drain:bool=True, custom_regexes: dynamic = dynamic([]), custom_regexes_policy: string = 'prepend',
+              delimiters:dynamic = dynamic(' '), similarity_th:double=0.5, tree_depth:int = 4, trigram_th:int=10, bigram_th:int=15)
 {
     let default_regex_table = pack_array('(/|)([0-9]+\\.){3}[0-9]+(:[0-9]+|)(:|)', '<IP>', 
                                          '([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})', '<GUID>', 
                                          '(?<=[^A-Za-z0-9])(\\-?\\+?\\d+)(?=[^A-Za-z0-9])|[0-9]+$', '<NUM>');
-    let kwargs = bag_pack('reduced_column', reduce_col, 'delimiters', delimiters,'output_column', "LogReduce", 'parameters_column', "", 
-                          'tri_threshold', trigram_th_ratio, 'double_threshold', bigram_th_ratio, "default_regexes", default_regex_table, 
-                          "custom_regexes", custom_regexes, "custom_regexes_policy", custom_regexes_policy, 'tree_depth', tree_depth, "st", similarity_th, 
-                          "use_drain", use_drain, "use_logram", use_logram, "save_regex_tuples_in_output", True, "regex_tuples_column", "RegexesColumn", 
-                          "output_type", "summary");
-    let code = ```
-if 1:
-    from sandbox_utils import Zipackage
-    Zipackage.install('LogReduceFilter.zip')
-    from LogReduceFilter import LogReduce
-    result = LogReduce.log_reduce(df, kargs)
-```;
+    let kwargs = bag_pack('reduced_column', reduce_col, 'delimiters', delimiters,'output_column', 'LogReduce', 'parameters_column', '', 
+                          'trigram_th', trigram_th, 'bigram_th', bigram_th, 'default_regexes', default_regex_table, 
+                          'custom_regexes', custom_regexes, 'custom_regexes_policy', custom_regexes_policy, 'tree_depth', tree_depth, 'similarity_th', similarity_th, 
+                          'use_drain', use_drain, 'use_logram', use_logram, 'save_regex_tuples_in_output', True, 'regex_tuples_column', 'RegexesColumn', 
+                          'output_type', 'summary');
+    let code = ```if 1:
+        from sandbox_utils import Zipackage
+        Zipackage.install('LogReduceFilter.zip')
+        from LogReduceFilter import LogReduce
+        result = LogReduce.log_reduce(df, kargs)
+    ```;
     tbl
-    | extend LogReduce=""
+    | extend LogReduce=''
     | evaluate python(typeof(Count:int, LogReduce:string, example:string), code, kwargs, external_artifacts =
-    bag_pack('LogReduceFilter.zip', 
-             'https://adiwesteurope.blob.core.windows.net/python-we/LogReduceFilter/LogReduceFilter-0.2.48-py3-none-any.zip'))
-};
-// Finds common patterns in BGL_logs, a commonly used benchmark for log parsing (as the name suggests, the benchmark contains logs of the BGL system).
-BGL_logs
-| take 100000 
+    bag_pack('LogReduceFilter.zip', 'https://adiwesteurope.blob.core.windows.net/python-we/LogReduceFilter/LogReduceFilter-1.0.1.zip'))
+}
+;
+// Finds common patterns in HDFS_log, a commonly used benchmark for log parsing.
+HDFS_log
+| take 100000
 | invoke log_reduce_fl(reduce_col="data")
 ~~~
 
@@ -102,32 +100,29 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 To create the `log_reduce_fl()` function:
 
 ~~~kusto
-.create-or-alter function with (folder = "Packages\\Text", docstring = "Find common patterns in textual logs")
+.create-or-alter function with (folder = 'Packages\\Text', docstring = 'Find common patterns in textual logs')
 log_reduce_fl(tbl:(*), reduce_col:string,
-              use_logram:bool=True, use_drain:bool=True, custom_regexes: dynamic = dynamic([]), custom_regexes_policy: string = "prepend", delimiters:dynamic = dynamic(" "), 
-              similarity_th:double=0.5, tree_depth:int = 4,
-              trigram_th_ratio:double=0.005, bigram_th_ratio:double=0.0075)
+              use_logram:bool=True, use_drain:bool=True, custom_regexes: dynamic = dynamic([]), custom_regexes_policy: string = 'prepend',
+              delimiters:dynamic = dynamic(' '), similarity_th:double=0.5, tree_depth:int = 4, trigram_th:int=10, bigram_th:int=15)
 {
     let default_regex_table = pack_array('(/|)([0-9]+\\.){3}[0-9]+(:[0-9]+|)(:|)', '<IP>', 
                                          '([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})', '<GUID>', 
                                          '(?<=[^A-Za-z0-9])(\\-?\\+?\\d+)(?=[^A-Za-z0-9])|[0-9]+$', '<NUM>');
-    let kwargs = bag_pack('reduced_column', reduce_col, 'delimiters', delimiters,'output_column', "LogReduce", 'parameters_column', "", 
-                          'tri_threshold', trigram_th_ratio, 'double_threshold', bigram_th_ratio, "default_regexes", default_regex_table, 
-                          "custom_regexes", custom_regexes, "custom_regexes_policy", custom_regexes_policy, 'tree_depth', tree_depth, "st", similarity_th, 
-                          "use_drain", use_drain, "use_logram", use_logram, "save_regex_tuples_in_output", True, "regex_tuples_column", "RegexesColumn", 
-                          "output_type", "summary");
-    let code = ```
-if 1:
-    from sandbox_utils import Zipackage
-    Zipackage.install('LogReduceFilter.zip')
-    from LogReduceFilter import LogReduce
-    result = LogReduce.log_reduce(df, kargs)
-```;
+    let kwargs = bag_pack('reduced_column', reduce_col, 'delimiters', delimiters,'output_column', 'LogReduce', 'parameters_column', '', 
+                          'trigram_th', trigram_th, 'bigram_th', bigram_th, 'default_regexes', default_regex_table, 
+                          'custom_regexes', custom_regexes, 'custom_regexes_policy', custom_regexes_policy, 'tree_depth', tree_depth, 'similarity_th', similarity_th, 
+                          'use_drain', use_drain, 'use_logram', use_logram, 'save_regex_tuples_in_output', True, 'regex_tuples_column', 'RegexesColumn', 
+                          'output_type', 'summary');
+    let code = ```if 1:
+        from sandbox_utils import Zipackage
+        Zipackage.install('LogReduceFilter.zip')
+        from LogReduceFilter import LogReduce
+        result = LogReduce.log_reduce(df, kargs)
+    ```;
     tbl
-    | extend LogReduce=""
+    | extend LogReduce=''
     | evaluate python(typeof(Count:int, LogReduce:string, example:string), code, kwargs, external_artifacts =
-    bag_pack('LogReduceFilter.zip', 
-             'https://adiwesteurope.blob.core.windows.net/python-we/LogReduceFilter/LogReduceFilter-0.2.48-py3-none-any.zip'))
+    bag_pack('LogReduceFilter.zip', 'https://adiwesteurope.blob.core.windows.net/python-we/LogReduceFilter/LogReduceFilter-1.0.1.zip'))
 }
 ~~~
 
