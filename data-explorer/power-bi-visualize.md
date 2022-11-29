@@ -16,7 +16,7 @@ In this article, you'll learn about the different ways in which you can connect 
 
 You need the following to complete this article:
 
-* A [Microsoft account](https://account.microsoft.com/account/Account?ru=https%3A%2F%2Faccount.microsoft.com%2F&destrt=home.landing), or an organizational email account that is a member of the Azure Active directory.
+* A [Microsoft account](https://account.microsoft.com/account/Account), or an Azure Active Directory user identity.
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**).
 
 ## Use data in Power BI
