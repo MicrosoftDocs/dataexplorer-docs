@@ -44,7 +44,7 @@ Step 4: Create a Cosmos DB data connection
 1. Copy the following command into the copy window and select Run to create the table (TestTable).
 
     ```kusto
-    .create table TestTable(Id: int, Name: string, _ts: long, _timestamp: datetime)
+    .create table TestTable(Id:string, Name:string, _ts:long, _timestamp:datetime)
     ```
 
 1. Run the following command to create the table mapping.
@@ -176,6 +176,24 @@ You can find your cluster's principle ID (first parameter) in the Azure portal. 
 
 ### [Azure Portal](#tab/portal)
 
+From the Azure Portal overview pane of the Azure Data Explorer cluster, select *Getting started*, then *Create data connection* and then *Cosmos DB* from the drop down.
+
+![Create data connection](media/ingest-data-cosmos-db/create-data-connection.png)
+
+In the *Create data connection* form, select the Azure Data Explorer database you want to ingest data in, then name the data connection.
+
+Select the subscription where the Cosmos DB NoSQL account is.  Select the Cosmos DB account, the database and the container.
+
+Finally select the Azure Data Explorer table and the table mapping we configured in previous sections.
+
+![Fill form's fields](media/ingest-data-cosmos-db/fill-fields.png)
+
+By Default, *System Assigned* managed identity is selected.  You can select *User-assigned* and then select the identity.
+
+![Advance settings](media/ingest-data-cosmos-db/advanced-settings.png)
+
+Click the *Create* button.
+
 ### [ARM Template](#tab/arm)
 
 The following example shows an Azure Resource Manager template for adding a Cosmos DB data connection. You can [edit and deploy the template in the Azure portal](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) by using the form.
@@ -279,82 +297,27 @@ The following example shows an Azure Resource Manager template for adding a Cosm
 
 ## Testing data connection
 
-Let's insert a document in the Cosmos DB container.
+Let's insert the following document in the Cosmos DB container:
 
-In the Azure portal, select...
+```json
+{
+    "name":"Cousteau"
+}
+```
 
-**SCREENSHOT of Cosmos DB doc insert**
+To see this document in Azure Data Explorer table, run the following query:
 
-Now, let's query the table in Kusto:
-
-```kql
+```kusto
 TestTable
 ```
 
 The result set should look like the following image:
 
-**SCREENSHOT of result in Kusto**
+![Test result](media/ingest-data-cosmos-db/test-result.png)
 
 > [!NOTE]
 >
 > * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of 1G, or 1000 blobs. Therefore, you may experience a latency. For more information, see [batching policy](kusto/management/batchingpolicy.md).
 > * To reduce response time lag, configure your table to support streaming. See [streaming policy](kusto/management/streamingingestionpolicy.md).
-
-## Data Mapping
-
-//VP:: Why do I need a mapping if it's specified in the connector?
-
-You should create a target kusto table and a mapping that suits the schema in the source Cosmos DB container.
-For example, if an item in the Cosmos DB container has the following structure:
-
-```json
-{
-    "id": "17313a67-362b-494f-b948-e2a8e95e237e",
-    "creationTime": "2022-04-28T07:36:49.5434296Z",
-    "_rid": "pL0MAJ0Plo0CAAAAAAAAAA==",
-    "_self": "dbs/pL0MAA==/colls/pL0MAJ0Plo0=/docs/pL0MAJ0Plo0CAAAAAAAAAA==/",
-    "_etag": "\"000037fc-0000-0700-0000-626a44110000\"",
-    "_attachments": "attachments/",
-    "_ts": 1651131409
-}
-```
-
-//VP:: When is this performed? Is it part of the connection setup?
-// Before or after the connection is created?
-
-There are different ingestion options: // data mapping
-
-1. Ingest all the first level fields - by creating table using the command and ingest it without specifying mapping:
-
-    ```Kusto
-    .create-merge table CosmosChangeFeed1 (['id']:string, creationTime:datetime, ['_rid']:string, ['_self']:string, ['_etag']:string, ['_attachments']:string, ['_ts']:long)
-    ```
-
-1. Ingest only part of the fields - by creating  table and mapping with the commands:
-
-    ```Kusto
-    // Table
-    .create-merge table CosmosChangeFeed2 (id:string , creationTime:datetime)
-
-    // Mapping
-    .create-or-alter table CosmosChangeFeed2 ingestion json mapping "CosmosChangeFeedMapping"
-    '['
-    '    { "column" : "id", "Properties":{"Path":"$.id"}},'
-    '    { "column" : "creationTime", "Properties":{"Path":"$.creationTime"}}'
-    ']'
-    ```
-
-1. Ingest the full item to a single dynamic column - by creating  table and mapping with the commands:
-
-    ```Kusto
-    // Table
-    .create-merge table CosmosChangeFeed3(Doc:dynamic)
-
-    // Mapping
-    .create-or-alter table CosmosChangeFeed1 ingestion json mapping "CosmosChangeFeedDynamicMapping"
-    '['
-    '    { "Column" : "Doc", "Properties":{"Path":"$"}}
-    ']'
-    ```
 
 ## Next steps
