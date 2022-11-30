@@ -17,13 +17,13 @@ Counts occurrences of a substring in a string. Plain string matches may overlap;
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source* | string | &check; | The value from which to count occurrences of the substring. |
-| *search* | string | &check; | The text or [regular expression](./re2.md) to match inside *source*. |
-| *kind* | string | | The value "normal" or "regex". The default is "normal". |
+| *source* | string | &check; | The value to search. |
+| *search* | string | &check; | The value or [regular expression](./re2.md) to match inside *source*. |
+| *kind* | string | | The value `normal` or `regex`. The default is `normal`. |
 
 ## Returns
 
-The number of times that the search string can be matched in the container. Plain string matches may overlap; regex matches don't.
+The number of times that the *search* value can be matched in the *source* string. Plain string matches may overlap; regex matches don't.
 
 ## Examples
 
