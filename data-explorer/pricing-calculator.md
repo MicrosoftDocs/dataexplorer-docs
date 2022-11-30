@@ -42,7 +42,7 @@ The sections of this article correspond to the components in the calculator and 
 
 ## Region and Environment
 
-The region and environment you choose for your cluster will affect the cost of each component as seen in the calculator. This is because the different regions and environments don't provide exactly the same services or capacity.
+The region and environment you choose for your cluster will affect the cost of each component. This is because the different regions and environments don't provide exactly the same services or capacity.
 
 1. Select the desired **Region** for your cluster.
 
