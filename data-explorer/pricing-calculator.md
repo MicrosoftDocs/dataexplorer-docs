@@ -104,7 +104,9 @@ Choose between the following **Workload** options:
 
 The data management (DM) service is responsible for data ingestion from managed data pipelines like Azure Blob storage, Event Hubs, IoT Hub, and other services like Azure Data Factory, Azure Stream Analytics, and Kafka. The service requires a minimum of two compute instances that are automatically configured and managed based on the engine instance size.  
 
-In this component, provide the number of hours, days, or months you’d like to run the instance.
+#### To configure data management instances
+
+* Specify the number of hours, days, or months you’d like to run the instance
 
 ### Storage and transactions
 
