@@ -40,9 +40,6 @@ The sections of this article correspond to the components in the calculator and 
 
 :::image type="content" source="media/pricing/pricing-calculator.png" alt-text="Screenshot of the online Azure Data Explorer pricing calculator.":::
 
-> [!TIP]
-> Create multiple estimates for the same or different products by selecting the **+** tab. Once the new tab is open, search for a product using the search box or select one from the products list. Stay organized by giving each estimate a name in place of the **Your Estimate** heading.
-
 ## Region
 
 Before you choose a region for your cluster, consider your use case. There are Azure regions all over the world, and they don't all provide exactly the same services or capacity.
