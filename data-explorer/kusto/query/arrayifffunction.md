@@ -27,7 +27,7 @@ Another alias: array_iff().
 >
 > * The length of the return value will be the same as the input *condition_array*.
 > * Numeric condition values are considered `true` if not equal to 0.
-> * Non-numeric, non-boolean, and null condition values will be null in the corresponding index of the return value.
+> * Non-numeric and non-boolean condition values will be null in the corresponding index of the return value.
 > * If *when_true* or *when_false* is shorter than *condition_array*, missing values will be treated as null.
 
 ## Returns
