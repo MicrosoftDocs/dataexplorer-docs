@@ -9,7 +9,7 @@ ms.date: 11/21/2022
 
 Azure Data Explorer provides a [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=azure-data-explorer) to estimate the cost of your cluster. The estimate is based on specifications such as estimated data ingestion and engine workload. As you make changes to the configuration, the price estimate also changes so you can understand the cost implications of your configuration choices.
 
-This article explains each of the components of the calculator and gives tips and resources along the way to help you make better decisions about how to configure your cluster.
+This article explains each of the components of the calculator and gives tips along the way to help you make better decisions about how to configure your cluster.
 
 ## How it works
 
@@ -29,14 +29,16 @@ At the bottom of the form, the individual component estimates are added together
 ## Get started
 
 1. Go to the [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=azure-data-explorer).
-1. Scroll down the page until you see a tab titled **Your Estimate**. Check if **Azure Data Explorer** appears in this tab.  
-    1. If so, go on to step 3.
-    1. If not, scroll back to the top of the page and type “Azure Data Explorer” into the search box. Select the **Azure Data Explorer** widget.
+1. Scroll down the page until you see a tab titled **Your Estimate**.
+1. Verify that **Azure Data Explorer** appears in the tab. If it doesn't, do the following:
+    1. Scroll back to the top of the page.
+    1. In the search box, type “Azure Data Explorer”.
+    1. Select the **Azure Data Explorer** widget.
 1. Start the configuration.
 
-The sections of this article correspond to the components in the calculator and will highlight what you need to know as you go.
+The sections of this article correspond to the components in the calculator and highlight what you need to know.
 
-:::image type="content" source="media/pricing/pricing-calculator.png" alt-text="Image of online Azure Data Explorer pricing calculator.":::
+:::image type="content" source="media/pricing/pricing-calculator.png" alt-text="Screenshot of the online Azure Data Explorer pricing calculator.":::
 
 > [!TIP]
 > Create multiple estimates for the same or different products by selecting the **+** tab. Once the new tab is open, search for a product using the search box or select one from the products list. Stay organized by giving each estimate a name in place of the **Your Estimate** heading.
@@ -45,9 +47,7 @@ The sections of this article correspond to the components in the calculator and 
 
 Before you choose a region for your cluster, consider your use case. There are Azure regions all over the world, and they don't all provide exactly the same services or capacity.
 
-For example, if you need [availability zone support](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support) or [disaster recovery](/azure/reliability/cross-region-replication-azure) then you'll need to choose a region that supports these services. Or if you need to keep the data within a specific geography due to [data residency and protection](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) concerns, you'll need to select regions within the relevant geography. 
-
-Check out the [Azure regions decision guide](/azure/cloud-adoption-framework/migrate/azure-best-practices/multiple-regions) for more specifics.
+For example, if you need [availability zone support](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support) or [disaster recovery](/azure/reliability/cross-region-replication-azure), you'll need to choose a region that supports these services. Or if you need to keep the data within a specific geography due to [data residency and protection](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) concerns, you'll need to select regions within the relevant geography. For more information, see [Azure regions decision guide](/azure/cloud-adoption-framework/migrate/azure-best-practices/multiple-regions).
 
 In the calculator, select the desired **Region** for your cluster.
 
@@ -84,18 +84,18 @@ At this point, your cluster cost estimate will reflect your data requirements.
 
 ### Engine instances
 
-Engine instances are responsible for indexing, caching data on local SSDs, premium storage as managed disks, and serving queries. The Engine service requires a minimum of two compute instances.
+Engine instances are responsible for indexing, caching data on local SSDs, premium storage as managed disks, and serving queries. The engine service requires a minimum of two compute instances.
 
 In this component, when you change the **Workload** type, the auto-selected **Instance** adjusts accordingly. There's a [wide variety of SKUs](./manage-cluster-choose-sku.md) to match the workload for your use case. The **Premium Managed Disk** component is pre-configured based on the SKU selected.
 
 Choose between the following **Workload** options:
 
-* **All** – automatically selects the optimal SKU based on the input you provide
-* **Compute Optimized SKUs** -
+* **All**: Automatically selects the optimal SKU based on the input you provide
+* **Compute Optimized SKUs**:
   * Provides high cores to hot cache ratio
   * Suited for high query rates
   * Local SSD for low latency I/O
-* **Storage optimized SKUs** -
+* **Storage optimized SKUs**:
   * Provides larger storage options of 1 TB to 4 TB per Engine node
   * Suited for workloads that require caching large data sizes
   * In some SKUs, premium managed disk storage is attached to the engine node instead of Local SSD for hot data storage
@@ -107,7 +107,7 @@ Choose between the following **Workload** options:
 
 The data management (DM) service is responsible for data ingestion from managed data pipelines like Azure Blob storage, Event Hubs, IoT Hub, and other services like Azure Data Factory, Azure Stream Analytics, and Kafka. The service requires a minimum of two compute instances that are automatically configured and managed based on the engine instance size.  
 
-In this component, provide the number of hours/days/months you’d like to run the instance.
+In this component, provide the number of hours, days, or months you’d like to run the instance.
 
 ### Storage and transactions
 
@@ -120,7 +120,7 @@ This component is configured using the [bandwidth service](https://azure.microso
 To get a bandwidth service estimate:  
 
 1. Scroll to the top of the page
-1. Type in “bandwidth” in the search box
+1. In the search box, type in “bandwidth”
 1. Select the Bandwidth product widget
 1. Scroll down to the Bandwidth component of the estimate
 1. Select a data transfer type
@@ -133,23 +133,23 @@ To get a bandwidth service estimate:
 
 ### Azure Data Explorer markup
 
-The Azure Data Explorer markup is charged for the premium support option provided with your data ingestion and engine clusters. It's billed based on the number of engine vCPUs in the cluster and isn't charged for dev clusters. Your costs change based on the number of hours/days/months configured in the engine instances component. For more information, see [Azure Data Explorer pricing - FAQ](https://azure.microsoft.com/pricing/details/data-explorer/#faq).
+The Azure Data Explorer markup is charged for the premium support option provided with your data ingestion and engine clusters. It's billed based on the number of engine vCPUs in the cluster and isn't charged for dev clusters. Your costs change based on the number of hours, days, or months configured in the engine instances component. For more information, see [Azure Data Explorer pricing - FAQ](https://azure.microsoft.com/pricing/details/data-explorer/#faq).
 
 ### Support
 
 Choose a support plan:
 
-* **Developer**: select this option when configuring Azure Data Explorer in a non-production environment or for trial and evaluation. For more information, see the [Azure Support: Developer](https://azure.microsoft.com/support/plans/developer/) page.
+* **Developer**: Select this option when configuring Azure Data Explorer in a non-production environment or for trial and evaluation. For more information, see the [Azure Support: Developer](https://azure.microsoft.com/support/plans/developer/) page.
 
-* **Standard**: select this option when configuring Azure Data Explorer when you need minimal business critical dependence. For more information, see the [Azure Support: Standard](https://azure.microsoft.com/support/plans/standard/) page.
+* **Standard**: Select this option when configuring Azure Data Explorer when you need minimal business critical dependence. For more information, see the [Azure Support: Standard](https://azure.microsoft.com/support/plans/standard/) page.
 
-* **Professional Direct**: select this option when you need substantial business critical utilization of Azure Data Explorer. For more information, see the [Azure Support: Professional Direct](https://azure.microsoft.com/support/plans/prodirect/) page.
+* **Professional Direct**: Select this option when you need substantial business critical utilization of Azure Data Explorer. For more information, see the [Azure Support: Professional Direct](https://azure.microsoft.com/support/plans/prodirect/) page.
 
 ## What to do with your estimate
 
 * Export the estimate to Excel
 * Save the estimate for future reference
-* Share the estimate – sign in required
+* Share the estimate – sign-in is required
 
 ## Next Steps
 
