@@ -22,7 +22,7 @@ Finds a row in the group that maximizes *ExprToMaximize*.
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *ExprToMaximize* | string | &check; | The expression used for aggregation calculation. |
-| *ExprToReturn* | string | &check; | The expression used for returning the value when *ExprToMaximize* is maximum.  Use a `*` to return all columns of the input table. |
+| *ExprToReturn* | string | &check; | The expression used for returning the value when *ExprToMaximize* is maximum.  Use a wildcard `*` to return all columns of the input table. |
 
 ## Returns
 
