@@ -20,29 +20,70 @@ Another alias: array_iff().
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *condition_array*| dynamic | &check;| An array of *boolean* or numeric values.|
-| *when_true* |  | &check; | An array of values or primitive value. This will be the result when *condition_array* is *true*.|
-| *when_false* |  | &check; | An array of values or primitive value. This will be the result when *condition_array* is *false*.|
+| *when_true* | dynamic or scalar | &check; | An array of values or primitive value. This will be the result when *condition_array* is *true*.|
+| *when_false* | dynamic or scalar | &check; | An array of values or primitive value. This will be the result when *condition_array* is *false*.|
 
 > [!NOTE]
 >
-> * The result length is the length of *condition_array*.
-> * Numeric condition value is treated as *condition* != *0*.
-> * Non-numeric/null condition value will have null in the corresponding index of the result.
-> * Missing values (in shorter length arrays) are treated as null.
+> * The length of the return value will be the same as the input *condition_array*.
+> * Numeric condition values are considered `true` if not equal to 0.
+> * Non-numeric, non-boolean, and null condition values will be null in the corresponding index of the return value.
+> * If *when_true* or *when_false* is shorter than *condition_array*, missing values will be treated as null.
 
 ## Returns
 
-Returns a dynamic array of the values taken either from the *when_true* or *when_false* [array] values, according to the corresponding value of the condition array.
+Returns a dynamic array of the values taken either from the *when_true* or *when_false* array values, according to the corresponding value of the condition array.
 
-## Example
+## Examples
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOz0vJLMnMz7NNqcxLzM1M1oguKSpN1UlLzClO1QExYzV1FHIQsoY6RjrGILEihJiJjqmOWaymAi9XjUJqRUlqXopCUWqxbWJRUWJlfGZmmgbcFqBRQJ2aACda2uZ8AAAA)
+### Boolean condition values
+
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOz0vJLMnMz7NNqcxLzM1M1oguKSpN1UlLzClO1QExYzV1FDLT4kFMhBpDHSMdY6gMWClCykTHVMcsVlOBq0YhtaIkNS9FoSi12DaxqCixMj4zM00DbiPcWIQpmgBu0sBflQAAAA==)
 
 ```kusto
-print condition=dynamic([true,false,true]), l=dynamic([1,2,3]), r=dynamic([4,5,6]) 
-| extend res=array_iif(condition, l, r)
+print condition=dynamic([true,false,true]), if_true=dynamic([1,2,3]), if_false=dynamic([4,5,6]) 
+| extend res=array_iif(condition, if_true, if_false)
 ```
 
-|condition|l|r|res|
+|condition|if_true|if_false|res|
 |---|---|---|---|
 |[true, false, true]|[1, 2, 3]|[4, 5, 6]|[1, 5, 3]|
+
+### Numeric condition values
+
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOz0vJLMnMz7NNqcxLzM1M1og21DHQMTWI1dRRyEyLLykqTUWWMtIxhsqkJeYUI0mZ6JjqmMVqKnDVKKRWlKTmpSgUpRbbJhYVJVbGZ2amacAtghuLMEUTAPkKcEKMAAAA)
+
+```kusto
+print condition=dynamic([1,0,50]), if_true=dynamic([1,2,3]), if_false=dynamic([4,5,6]) 
+| extend res=array_iif(condition, if_true, if_false)
+```
+
+|condition|when_true|when_false|res|
+|---|---|---|---|
+|[true, false, true]|[1, 2, 3]|[4, 5, 6]|[1, 5, 3]|
+
+### Non-numeric and non-boolean condition values
+
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02OywrDIBBF9/2KwZWChcQ+dvmSEILEsQyoKTqWBvrxdVGSwoWzOHC4z0yJYVmTI6Y1DW5LNtIiR1HWiFC4+Qe8bKgoNDjLyBRRiq4/t5nOGKE0pBrC1Eh+5lzxqPTa6MvPeBvKn7rqm75PCk4fwDdjcpCxDDZnu81EXu6f9uxRUV+wyOGWtwAAAA==)
+
+```kusto
+print condition=dynamic(["some string value", datetime("01-01-2022"), null]), if_true=dynamic([1,2,3]), if_false=dynamic([4,5,6]) 
+| extend res=array_iif(condition, if_true, if_false)
+```
+
+|condition|when_true|when_false|res|
+|---|---|---|---|
+|[true, false, true]|[1, 2, 3]|[4, 5, 6]|[null, null, null]|
+
+### Mismatched array lengths
+
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOz0vJLMnMz7NNqcxLzM1M1oguKSpN1YETsZo6Cplp8SAmQomhjhFUPC0xpxhJwljHJFZTgatGIbWiJDUvRaEotdg2sagosTI+MzNNA24Z3EiEGZoACxaCE5AAAAA=)
+
+```kusto
+print condition=dynamic([true,true,true]), if_true=dynamic([1,2]), if_false=dynamic([3,4]) 
+| extend res=array_iif(condition, if_true, if_false)
+```
+
+|condition|when_true|when_false|res|
+|---|---|---|---|
+|[true, true, true]|[1, 2]|[3, 4]|[1, 2, null]|
