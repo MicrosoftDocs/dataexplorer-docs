@@ -51,29 +51,29 @@ print condition=dynamic([true,false,true]), if_true=dynamic([1,2,3]), if_false=d
 
 ### Numeric condition values
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOz0vJLMnMz7NNqcxLzM1M1og21DHQMTWI1dRRyEyLLykqTUWWMtIxhsqkJeYUI0mZ6JjqmMVqKnDVKKRWlKTmpSgUpRbbJhYVJVbGZ2amacAtghuLMEUTAPkKcEKMAAAA)
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOz0vJLMnMz7NNqcxLzM1M1og21DHQMTWI1dRRyEyLLykqTbVVqkwtVgJz0xJzioH8vHwlBa4ahdSKktS8FIWi1GLbxKKixMr4zMw0DbiJcP0InZoAPCLjbHUAAAA=)
 
 ```kusto
-print condition=dynamic([1,0,50]), if_true=dynamic([1,2,3]), if_false=dynamic([4,5,6]) 
+print condition=dynamic([1,0,50]), if_true="yes", if_false="no" 
 | extend res=array_iif(condition, if_true, if_false)
 ```
 
-|condition|when_true|when_false|res|
+|condition|if_true|if_false|res|
 |---|---|---|---|
-|[true, false, true]|[1, 2, 3]|[4, 5, 6]|[1, 5, 3]|
+|[true, false, true]|yes|no|[yes, no, yes]|
 
 ### Non-numeric and non-boolean condition values
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02OywrDIBBF9/2KwZWChcQ+dvmSEILEsQyoKTqWBvrxdVGSwoWzOHC4z0yJYVmTI6Y1DW5LNtIiR1HWiFC4+Qe8bKgoNDjLyBRRiq4/t5nOGKE0pBrC1Eh+5lzxqPTa6MvPeBvKn7rqm75PCk4fwDdjcpCxDDZnu81EXu6f9uxRUV+wyOGWtwAAAA==)
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WNwQrDIBBE7/2KxZOBFIx3v6SUsMS1LOhadFMa6MdXekhhYAYej3k2FoWtSmTlKiEegoU3ezO9FoKugz/ghXknM0NEJeVC1rjlOuKd92aaQfac76M5rdp2CstvJsydgrt8gN5KEqFRD9gaHitzsufp6f2t6QsxYYlomAAAAA==)
 
 ```kusto
-print condition=dynamic(["some string value", datetime("01-01-2022"), null]), if_true=dynamic([1,2,3]), if_false=dynamic([4,5,6]) 
+print condition=dynamic(["some string value", datetime("01-01-2022"), null]), if_true=1, if_false=0
 | extend res=array_iif(condition, if_true, if_false)
 ```
 
-|condition|when_true|when_false|res|
+|condition|if_true|if_false|res|
 |---|---|---|---|
-|[true, false, true]|[1, 2, 3]|[4, 5, 6]|[null, null, null]|
+|[true, false, true]|1|0|[null, null, null]|
 
 ### Mismatched array lengths
 
@@ -84,6 +84,6 @@ print condition=dynamic([true,true,true]), if_true=dynamic([1,2]), if_false=dyna
 | extend res=array_iif(condition, if_true, if_false)
 ```
 
-|condition|when_true|when_false|res|
+|condition|if_true|if_false|res|
 |---|---|---|---|
 |[true, true, true]|[1, 2]|[3, 4]|[1, 2, null]|
