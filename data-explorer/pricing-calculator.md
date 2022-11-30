@@ -40,7 +40,7 @@ The sections of this article correspond to the components in the calculator and 
 
 :::image type="content" source="media/pricing/pricing-calculator.png" alt-text="Screenshot of the online Azure Data Explorer pricing calculator.":::
 
-## Region and Environment
+## Region and environment
 
 The region and environment you choose for your cluster will affect the cost of each component. This is because the different regions and environments don't provide exactly the same services or capacity.
 
@@ -55,6 +55,7 @@ The region and environment you choose for your cluster will affect the cost of e
 1. Choose the **Environment** for your cluster.
 
      * **Production** clusters contain two or more nodes for engine and data management and operate under the Azure Data Explorer SLA.
+
      * **Dev/test** clusters are the lowest cost option, which makes them great for service evaluation, conducting PoCs, and scenario validations. They're limited in size and can't grow beyond a single node. There's no Azure Data Explorer markup charge or product SLA for these clusters.
 
 ## Estimated data ingestion
