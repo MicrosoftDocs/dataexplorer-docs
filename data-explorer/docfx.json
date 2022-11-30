@@ -41,7 +41,7 @@
       {
         "files": [
           "includes/**/*.svg",
-          "includes/**/*.pSng",
+          "includes/**/*.png",
           "includes/**/*.jpg",
           "includes/**/*.jpeg",
           "includes/**/*.gif"
