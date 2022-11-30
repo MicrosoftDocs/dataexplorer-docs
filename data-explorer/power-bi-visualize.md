@@ -37,35 +37,35 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 
 1. From the **Share**  menu, select **Query to Power BI**
 
-:::image type="content" source="media/power-bi-imported-query/share-query.png" alt-text="Screenshot of Azure Data Explorer web UI that shows an open Share menu. The menu entry titled Query to Power BI is highlighted.":::
+:::image type="content" source="media/power-bi-imported-query/share-query.png" alt-text="Screenshot of Azure Data Explorer web UI that shows an open Share menu. The Share button and Share menu entry titled Query to Power BI are highlighted.":::
 
 1. Launch Power BI Desktop.
 1. On the **Home** tab, select **Transform data**.
 
-    ![Screenshot of the Home tab in Power BI Desktop. The Home tab option titled Transform data is highlighted.](media/power-bi-imported-query/transform-data.png)
+:::image type="content" source="media/power-bi-imported-query/transform-data.png" alt-text="Screenshot of the Home tab in Power BI Desktop. The Home tab option titled Transform data is highlighted.":::
 
 1. Paste the query in the **Navigator** pane.
 
-    ![Screenshot of the Power BI Desktop Navigator pane that shows the drop down menu of the right mouse button. The drop down menu option titled Paste is highlighted.](media/power-bi-imported-query/paste-query.png)
+:::image type="content" source="media/power-bi-imported-query/paste-query.png" alt-text="Screenshot of the Power BI Desktop Navigator pane that shows the drop down menu of the right mouse button. The drop down menu option titled Paste is highlighted.":::
 
 1. On the **Home** tab, select **Close & Apply**.
 
-    ![Close and apply.](media/power-bi-imported-query/close-apply.png)
+:::image type="content" source="media/power-bi-imported-query/close-apply.png" alt-text="Screenshot of the Home tab. The home tab option titled Close & Apply is highlighted.":::
 
 # [Connector](#tab/connector/)
 
 1. Launch Power BI Desktop.
 1. On the **Home** tab, select **Get Data** then **More**.
 
-    ![Get data.](media/power-bi-imported-query/get-data.png)
+:::image type="content" source="media/power-bi-imported-query/get-data.png" alt-text="Screenshot of the Home tab in Power BI Desktop that shows the drop down menu of the Home tab entry titled Get data. The Get data entry titled More is highlighted.":::
 
 1. Search for *Azure Data Explorer (Kusto)*, select **Azure Data Explorer (Kusto)** then **Connect**.
 
-    ![Search and get data.](media/power-bi-imported-query/connect-data.png)
+:::image type="content" source="media/power-bi-imported-query/connect-data.png" alt-text="Screenshot of the Get Data window that shows Azure Data Explorer (Kusto) typed into the search bar. Both the search result and the connect option are highlighted.":::
 
 1. On the **Azure Data Explorer (Kusto)** screen, fill out the form with the following information.
 
-    ![Cluster, database, table options.](media/power-bi-imported-query/cluster-database-table.png)
+:::image type="content" source="media/power-bi-imported-query/cluster-database-table.png" alt-text="Screenshot of the Azure Data Explorer(Kusto) connection form. The cluster option has the following link pasted: https://help.kusto.windows.net/. The cluster, the Data Connectivity mode, and the OK button are highlighted.":::
 
     | Setting | Field description | Sample value
     |---|---|---
@@ -100,11 +100,11 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 
 1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents** then **Transform Data**.
 
-    ![Select table.](media/power-bi-imported-query/select-table.png)
+:::image type="content" source="media/power-bi-imported-query/select-table.png" alt-text="Screenshot of Navigator screen. The table titled StormEvents is selected. The table and the Transform Data button are highlighted.":::
 
 1. On the **Home** tab, select **Close & Apply**.
 
-    ![Close and apply.](media/power-bi-imported-query/close-apply.png)
+:::image type="content" source="media/power-bi-imported-query/close-apply.png" alt-text="Screenshot of the Home tab. The home tab option titled Close & Apply is highlighted.":::
 
 [Tips for using the Azure Data Explorer connector for Power BI to query data](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data).
 
