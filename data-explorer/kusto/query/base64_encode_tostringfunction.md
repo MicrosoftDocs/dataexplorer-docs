@@ -9,6 +9,8 @@ ms.date: 06/22/2019
 
 Encodes a string as base64 string.
 
+> **Deprecated aliases:** base64_encodestring()
+
 ## Syntax
 
 `base64_encode_tostring(`*string*`)`
