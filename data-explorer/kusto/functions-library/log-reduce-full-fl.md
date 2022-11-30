@@ -47,7 +47,6 @@ See [More about the algorithm of log_reduce_fl()](log-reduce-fl.md#more-about-th
 
 For ad hoc usage, embed the code using the [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
 let log_reduce_full_fl=(tbl:(*), reduce_col:string, pattern_col:string, parameters_col:string,
                    use_logram:bool=True, use_drain:bool=True, custom_regexes: dynamic = dynamic([]), custom_regexes_policy: string = 'prepend',
@@ -114,7 +113,6 @@ log_reduce_full_fl(tbl:(*), reduce_col:string, pattern_col:string, parameters_co
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 // Finds common patterns in HDFS_log, a commonly used benchmark for log parsing.
 HDFS_log
@@ -127,7 +125,7 @@ HDFS_log
 ---
 
 Result:
-<!-- csl: https://help.kusto.windows.net/Samples -->
+
 ```kusto
 data	Patterns	Parameters
 081110 215858 15485 INFO dfs.DataNode$PacketResponder: Received block blk_5080254298708411681 of size 67108864 from /10.251.43.21	081110 <NUM> <NUM> INFO dfs.DataNode$PacketResponder: Received block blk_<NUM> of size <NUM> from <IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15485"", ""parameter_2"": ""5080254298708411681"", ""parameter_3"": ""67108864"", ""parameter_4"": ""/10.251.43.21""}"

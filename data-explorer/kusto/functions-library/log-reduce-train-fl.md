@@ -47,7 +47,6 @@ See [More about the algorithm of log_reduce_fl()](log-reduce-fl.md#more-about-th
 
 For ad hoc usage, embed the code using the [let statement](../query/letstatement.md). No permission is required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
 let log_reduce_train_fl=(tbl:(*), reduce_col:string, model_name:string,
               use_logram:bool=True, use_drain:bool=True, custom_regexes: dynamic = dynamic([]), custom_regexes_policy: string = 'prepend',
@@ -86,7 +85,6 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ### One-time installation
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
 .create-or-alter function with (folder = 'Packages\\Text', docstring = 'Find common patterns in textual logs, output a model')
 log_reduce_train_fl(tbl:(*), reduce_col:string, model_name:string,
@@ -117,7 +115,6 @@ log_reduce_train_fl(tbl:(*), reduce_col:string, model_name:string,
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 // Creates a model named "HDFS_model", for the HDFS log, a commonly used benchmark for log parsing.
 HDFS_log
@@ -128,7 +125,7 @@ HDFS_log
 ---
 
 Result:
-<!-- csl: https://help.kusto.windows.net/Samples -->
+
 ```kusto
 name	timestamp	model
 HDFS_model	2022-11-23 12:38:52.8445035	80036370616e646...
