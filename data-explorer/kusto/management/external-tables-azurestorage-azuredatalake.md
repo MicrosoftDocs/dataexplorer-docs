@@ -339,7 +339,7 @@ For partitioned table, `Partition` column will contain extracted partition value
 
 `.create` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
 
-Creates a new mapping. For more information, see [Data Mappings](./mappings.md#json-mapping).
+Creates a new mapping. For more information, see [Data Mappings](./json-mapping.md).
 
 **Example** 
  
