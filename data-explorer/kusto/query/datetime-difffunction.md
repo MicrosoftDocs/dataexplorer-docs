@@ -37,7 +37,7 @@ Calculates the number of the specified periods between two [datetime](./scalar-d
 
 ## Returns
 
-An integer representing the amount of *periods* in the result of subtraction (*datetime1* - *datetime2*).
+An integer that represents the amount of *periods* in the result of subtraction (*datetime1* - *datetime2*).
 
 ## Example
 

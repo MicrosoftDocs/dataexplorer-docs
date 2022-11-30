@@ -19,7 +19,7 @@ Extracts the requested date part as an integer value.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *part* | string | &check; | The measurement of time of interest. See [possible values](#possible-values-of-part).|
+| *part* | string | &check; | Measurement of time to extract from *date*. See [possible values](#possible-values-of-part).|
 | *date* | datetime | &check; | The full date from which to extract *part*. |
 
 ### Possible values of part
