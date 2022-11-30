@@ -70,7 +70,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 ### One-time installation
 
 ~~~kusto
-.create-or-alter function with (folder = 'Packages\\Text', docstring = 'Apply a trained model to find common patterns in textual logs, output full table')
+.create-or-alter function with (folder = 'Packages\\Text', docstring = 'Apply a trained model to find common patterns in textual logs, output a full table')
 log_reduce_predict_full_fl(tbl:(*), models_tbl: (name:string, timestamp: datetime, model:string), 
                            model_name:string, reduce_col:string, pattern_col:string, parameters_col:string, 
                            anomaly_str: string = 'ANOMALY')

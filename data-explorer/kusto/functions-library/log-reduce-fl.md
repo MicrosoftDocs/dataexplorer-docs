@@ -99,7 +99,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 To create the `log_reduce_fl()` function:
 
 ~~~kusto
-.create-or-alter function with (folder = 'Packages\\Text', docstring = 'Find common patterns in textual logs')
+.create-or-alter function with (folder = 'Packages\\Text', docstring = 'Find common patterns in textual logs, output a summary table')
 log_reduce_fl(tbl:(*), reduce_col:string,
               use_logram:bool=True, use_drain:bool=True, custom_regexes: dynamic = dynamic([]), custom_regexes_policy: string = 'prepend',
               delimiters:dynamic = dynamic(' '), similarity_th:double=0.5, tree_depth:int = 4, trigram_th:int=10, bigram_th:int=15)
