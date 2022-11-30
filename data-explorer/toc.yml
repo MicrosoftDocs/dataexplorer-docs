@@ -11,8 +11,6 @@ items:
     href: whats-new.md
   - name: Solution architectures
     href: solution-architectures.md
-  - name: Find a partner
-    href: findmypartner.md
 - name: Quickstarts
   expanded: true
   items:
@@ -703,4 +701,5 @@ items:
       href: pricing-reserved-capacity.md
   - name: Service updates
     href: https://azure.microsoft.com/updates/?product=data-explorer
-    
+  - name: Find a partner
+    href: findmypartner.md

@@ -11,11 +11,10 @@ This article describes the partners of the Azure Data Explorer Find My Partner P
 
 The services and expertise are chosen by the partner and should not be considered as endorsement confirmation by Microsoft. The partner is solely responsible for the services it provides.
 
-Besides this documentation you can query the data on the [help](https://help.kusto.windows.net) cluster. The table "Partner" in the database "FindMyPartner" is at your disposal.
+You can also get the list of partners by running the following query on the [help](https://help.kusto.windows.net) cluster:
 
-The following example returns all partners of the Find My Partner Program.
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/FindMyPartner?query=H4sIAAAAAAAAAwtILCrJSy0CAIoHlv4HAAAA)
 
-<!-- csl: https://help.kusto.windows.net/FindMyPartner -->
 ```kusto
 Partner
 ```
@@ -116,7 +115,7 @@ Data Mastery help businesses harness the power of their data and make data-drive
 
 :::image type="icon" source="https://kustopartnersa.z6.web.core.windows.net/Data3.png":::
 
-As Australia’s largest Microsoft partner, we have helped countless clients progress their data and analytics initiatives. We have created a framework that takes best-in-class approaches, methodologies and architectures to help solve complex data analytics problems.
+As Australia's largest Microsoft partner, we have helped countless clients progress their data and analytics initiatives. We have created a framework that takes best-in-class approaches, methodologies and architectures to help solve complex data analytics problems.
 
 **Partner type**
 
@@ -292,7 +291,7 @@ LINKIT serves more than 100 customers in the Netherlands and Germany, providing 
 
 :::image type="icon" source="https://kustopartnersa.z6.web.core.windows.net/MAQ-logo.png":::
 
-As 2021 Microsoft Power BI Partner of the Year, we engage with leading companies to accelerate their business intelligence and analytics initiatives. Our solutions enable our clients to improve their operations, reduce costs, increase sales, and build stronger customer relationships. Our clients consistently recognize us for providing architecture and governance frameworks, implementing best practices to optimize reports, and building team capability through training programs. Our innovative tools and 33 certified visuals expand Power BI capabilities to save time for decision makers. 
+As 2021 Microsoft Power BI Partner of the Year, we engage with leading companies to accelerate their business intelligence and analytics initiatives. Our solutions enable our clients to improve their operations, reduce costs, increase sales, and build stronger customer relationships. Our clients consistently recognize us for providing architecture and governance frameworks, implementing best practices to optimize reports, and building team capability through training programs. Our innovative tools and 33 certified visuals expand Power BI capabilities to save time for decision makers.
 As a premier supplier to Microsoft for two decades, our clients benefit from our extensive insights on the platform and engineering practices. As a Microsoft Managed Partner, our clients benefit from our breadth and depth of expertise. With globally integrated teams in Redmond, Washington, and three locations in India, we deliver solutions with increased velocity and technical intensity. Inc. magazine has recognized us for sustained growth by listing us on the Inc. 5000 list ten times – a rare honor.
 
 **Partner type**
@@ -351,9 +350,9 @@ Mesh Systems is an IoT Solutions Provider that develops, operates, and manages e
 
 :::image type="icon" source="https://kustopartnersa.z6.web.core.windows.net/NealAnalytics.png":::
 
-Neal Analytics is an award-winning Data & AI consulting partner of Microsoft. With 6 different advanced specializations in Azure & 4 Partner of the Year awards & finalist finishes, Neal has a proven track record of success you can trust for all your Azure deployment needs. 
+Neal Analytics is an award-winning Data & AI consulting partner of Microsoft. With 6 different advanced specializations in Azure & 4 Partner of the Year awards & finalist finishes, Neal has a proven track record of success you can trust for all your Azure deployment needs.
 
-Neal has worked extensively with Azure Data Explorer and maintains a trained bench of consultants who can leverage this expertise to assist you in your customer scenario. Neal is also a partner in Microsoft’s Solution Assessment program, and if your organization qualifies this program will assist us in standing up a landing zone featuring Azure Data Explorer to help you get started with your ADX project.
+Neal has worked extensively with Azure Data Explorer and maintains a trained bench of consultants who can leverage this expertise to assist you in your customer scenario. Neal is also a partner in Microsoft's Solution Assessment program, and if your organization qualifies this program will assist us in standing up a landing zone featuring Azure Data Explorer to help you get started with your ADX project.
 
 **Partner type**
 
@@ -426,13 +425,13 @@ We have a Co-sell offering on the Azure Market place: https://azuremarketplace.m
 
 **Success stories**
 
-- [https://customers.microsoft.com/en-us/story/840041-buhler-group-discrete-manufacturing-azure-en-switzerland](https://customers.microsoft.com/en-us/story/840041-buhler-group-discrete-manufacturing-azure-en-switzerland)
+- [https://customers.microsoft.com/story/840041-buhler-group-discrete-manufacturing-azure-en-switzerland](https://customers.microsoft.com/story/840041-buhler-group-discrete-manufacturing-azure-en-switzerland)
 
 ## Orion Systems Integrators, LLC
 
 :::image type="icon" source="https://kustopartnersa.z6.web.core.windows.net/OrionInnovationLogo-black.png":::
 
-Orion Innovation is a Leader in Digital transformation services with a Design led , technology driven approach. We are a trusted partner to our Fortune 500, Large, Medium clients in their business transformation initiatives with 99% CSAT. With 25+ years of experience we bring deep domain expertise in Financial Services, Professional Services,  Healthcare & Life Sciences , Hi-Tech, Telecom, Media & Entertainment, Sports and Education Verticals.  Our global team of 6,000+ associates  in 12 major delivery centers across USA, LATAM, Europe and APAC delivers those digital transformation services around Experience Design, Digital Product Development, Data Analytics & AI, Cloud & Infrastructure, Business application & Modernization, Embedded & Realtime solutions, IoT/IIoT, Testing and Cybersecurity. We are ISO 9001:2015, ISO/IEC 27001:2013 certified, as well as CMMI®️ Level 3 compliant and have IP’s covering Industry Solutions, Accelerators and proprietary internal tools.
+Orion Innovation is a Leader in Digital transformation services with a Design led , technology driven approach. We are a trusted partner to our Fortune 500, Large, Medium clients in their business transformation initiatives with 99% CSAT. With 25+ years of experience we bring deep domain expertise in Financial Services, Professional Services,  Healthcare & Life Sciences , Hi-Tech, Telecom, Media & Entertainment, Sports and Education Verticals.  Our global team of 6,000+ associates  in 12 major delivery centers across USA, LATAM, Europe and APAC delivers those digital transformation services around Experience Design, Digital Product Development, Data Analytics & AI, Cloud & Infrastructure, Business application & Modernization, Embedded & Realtime solutions, IoT/IIoT, Testing and Cybersecurity. We are ISO 9001:2015, ISO/IEC 27001:2013 certified, as well as CMMI&reg;️ Level 3 compliant and have IP's covering Industry Solutions, Accelerators and proprietary internal tools.
 
 **Partner type**
 
@@ -458,7 +457,7 @@ Orion Innovation is a Leader in Digital transformation services with a Design le
 
 :::image type="icon" source="https://kustopartnersa.z6.web.core.windows.net/terawe.png":::
 
-We have deep expertise with custom solutions and also have multiple solution offerings that help businesses move to the next stage of digital transformation and achieve greater efficiencies with the use of Microsoft’s Data Platform and AI services.
+We have deep expertise with custom solutions and also have multiple solution offerings that help businesses move to the next stage of digital transformation and achieve greater efficiencies with the use of Microsoft's Data Platform and AI services.
 
 **Partner type**
 
@@ -505,13 +504,13 @@ Tricloud provides an end-to-end Industrial IoT Platform based on Azure IoT and A
 
 **Success stories**
 
-- [https://pulse.microsoft.com/da-dk/transform-da-dk/na/fa1-topsoe-has-accelerated-its-digital-transformation-by-deploying-a-scalable-solution-to-analyze-customer-data-in-real-time-and-optimize-services/](https://pulse.microsoft.com/da-dk/transform-da-dk/na/fa1-topsoe-has-accelerated-its-digital-transformation-by-deploying-a-scalable-solution-to-analyze-customer-data-in-real-time-and-optimize-services/)
+- [https://pulse.microsoft.com/transform-da-dk/na/fa1-topsoe-has-accelerated-its-digital-transformation-by-deploying-a-scalable-solution-to-analyze-customer-data-in-real-time-and-optimize-services/](https://pulse.microsoft.com/transform-da-dk/na/fa1-topsoe-has-accelerated-its-digital-transformation-by-deploying-a-scalable-solution-to-analyze-customer-data-in-real-time-and-optimize-services/)
 
 ## Uptake Technologies Inc.
 
 :::image type="icon" source="https://kustopartnersa.z6.web.core.windows.net/uptake-logo-black-PNG.png":::
 
-Uptake provides our customers with the scalable, secure ability to connect their machines, people and data together to accelerate and unlock AI-enabled industrial intelligence to optimize costs, manage risks and increase revenue assurance. 
+Uptake provides our customers with the scalable, secure ability to connect their machines, people and data together to accelerate and unlock AI-enabled industrial intelligence to optimize costs, manage risks and increase revenue assurance.
 
 Uptake is the intelligence system for industrial assets. With the power of data acquisition and artificial intelligence, Uptake gives all departments — maintenance, reliability, and operations teams — a single, shared, and contextualized view of every asset in an operation. Driven by powerful data science models and cloud computing, our products deliver insights to customers that help them predict and prevent asset failure, mitigate risk, optimize maintenance strategy and asset performance, reduce costs, assure productivity, and enhance safety. With 48+ patents and recognized for leadership in Industrial AI by Gartner, the World Economic Forum, CNBC, and Forbes, Uptake is headquartered in Chicago with presence in Canada, South America, Europe, India, and Australia.
 
