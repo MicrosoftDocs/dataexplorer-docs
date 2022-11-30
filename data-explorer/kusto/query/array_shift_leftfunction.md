@@ -53,7 +53,7 @@ print arr=dynamic([1,2,3,4,5])
 |---|---|
 |[1,2,3,4,5]|[3,4,5,-1,-1]|
 
-* Shifting to the right by two positions by using negative *shift_count* value:
+Shifting to the right by two positions by using negative *shift_count* value:
 
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4nNS0Eg2ggI6CrhEQG2oCAIeuighQAAAA)
 
@@ -68,6 +68,6 @@ print arr=dynamic([1,2,3,4,5])
 
 ## See also
 
-* For shifting array right, see [array_shift_right()](array_shift_rightfunction.md).
-* For rotating array right, see [array_rotate_right()](array_rotate_rightfunction.md).
-* For rotating array left, see [array_rotate_left()](array_rotate_leftfunction.md).
+* To shift an array to the right, use [array_shift_right()](array_shift_rightfunction.md).
+* To rotate an array to the right, use [array_rotate_right()](array_rotate_rightfunction.md).
+* To rotate an array to the left, use [array_rotate_left()](array_rotate_leftfunction.md).
