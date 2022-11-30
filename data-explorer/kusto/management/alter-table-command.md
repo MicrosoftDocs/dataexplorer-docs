@@ -29,26 +29,26 @@ The `.alter table` command:
 | *FolderName* | string | | The name of the folder to add to the table. |
 
 > [!WARNING]
-> If existing columns aren't specified in the command, they'll be dropped. This could lead to unexpected data loss.
+> Existing columns that aren't specified in the command will be dropped. This could lead to unexpected data loss.
 
 > [!TIP]
 > Use `.show table [TableName] cslschema` to get the existing column schema before you alter it.
 
 ## How the command affects the data
 
-* Existing data in listed columns isn't modified
-* Existing data in unlisted columns will be deleted
-* New columns are added to the end of the schema
+* Existing data in columns listed in the command won't be modified
+* Existing data in columns not listed in the command will be deleted
+* New columns will be added to the end of the schema
 * Data in new columns is assumed to be null
 * The table will have the same columns, in the same order, as specified
 
 > [!NOTE]
-> If you try to alter a column type, the command will fail. Use the [`.alter column`](alter-column.md) command instead.
+> If you try to alter a column type, the command will fail. Use [`.alter column`](alter-column.md) instead.
 
 > [!WARNING]
 >
 > * Data ingestion that disregards the order of columns and occurs in parallel with `.alter table` risks ingesting data into the wrong columns. To prevent this, make sure that ingestion uses a mapping object or stop ingestion while running the `.alter table` command.
-> * Data ingestion may modify a table's column schema even without user interaction depending on how the cluster is configured. Be careful not to accidentally remove desired columns that were added during ingestion.
+> * Data ingestion may modify a table's column schema. Be careful not to accidentally remove desired columns that were added during ingestion.
 
 ## Examples
 

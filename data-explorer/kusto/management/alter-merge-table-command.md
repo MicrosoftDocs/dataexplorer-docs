@@ -28,15 +28,15 @@ The `.alter-merge table` command:
 | *FolderName* | string | | The name of the folder to add to the table. |
 
 > [!NOTE]
-> If you try to alter a column type, the command will fail. Use the [`.alter column`](alter-column.md) command instead.
+> If you try to alter a column type, the command will fail. Use [`.alter column`](alter-column.md) instead.
 
 > [!TIP]
 > Use `.show table [TableName] cslschema` to get the existing column schema before you alter it.
 
 ## How the command affects the data
 
-* Existing data isn't modified or deleted
-* New columns are added to the end of the schema
+* Existing data won't be modified or deleted
+* New columns will be added to the end of the schema
 * Data in new columns is assumed to be null
 
 ## Examples
