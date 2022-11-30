@@ -40,23 +40,22 @@ The sections of this article correspond to the components in the calculator and 
 
 :::image type="content" source="media/pricing/pricing-calculator.png" alt-text="Screenshot of the online Azure Data Explorer pricing calculator.":::
 
-## Region
+## Region and Environment
 
-Before you choose a region for your cluster, consider your use case. There are Azure regions all over the world, and they don't all provide exactly the same services or capacity.
+The region and environment you choose for your cluster will affect the cost of each component as seen in the calculator. This is because the different regions and environments don't provide exactly the same services or capacity.
 
-For example, if you need [availability zone support](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support) or [disaster recovery](/azure/reliability/cross-region-replication-azure), you'll need to choose a region that supports these services. Or if you need to keep the data within a specific geography due to [data residency and protection](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) concerns, you'll need to select regions within the relevant geography. For more information, see [Azure regions decision guide](/azure/cloud-adoption-framework/migrate/azure-best-practices/multiple-regions).
+1. Select the desired **Region** for your cluster.
 
-In the calculator, select the desired **Region** for your cluster.
+    Use the [regions decision guide](/azure/cloud-adoption-framework/migrate/azure-best-practices/multiple-regions) to find the right region for you. Your choice may depend on requirements such as:
 
-## Environment
+    * [Availability zone support](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support)
+    * [Disaster recovery](/azure/reliability/cross-region-replication-azure)
+    * [Data residency and protection](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)
 
-There are two options for your cluster environment: **production** or **dev/test**.
+1. Choose the **Environment** for your cluster.
 
-Dev/test clusters are the lowest cost option, which makes them great for service evaluation, conducting PoCs, and scenario validations. They're limited in size and can't grow beyond a single node. There's no Azure Data Explorer markup charge or product SLA for these clusters.
-
-Production clusters contain two or more nodes for engine and data management and operate under the Azure Data Explorer SLA.
-
-In the calculator, select the type of **Environment** for your cluster.
+     * **Production** clusters contain two or more nodes for engine and data management and operate under the Azure Data Explorer SLA.
+     * **Dev/test** clusters are the lowest cost option, which makes them great for service evaluation, conducting PoCs, and scenario validations. They're limited in size and can't grow beyond a single node. There's no Azure Data Explorer markup charge or product SLA for these clusters.
 
 ## Estimated data ingestion
 
