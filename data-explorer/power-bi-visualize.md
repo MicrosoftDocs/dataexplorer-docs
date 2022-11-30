@@ -67,36 +67,36 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 
 :::image type="content" source="media/power-bi-imported-query/cluster-database-table.png" alt-text="Screenshot of the Azure Data Explorer(Kusto) connection form. The cluster option has the following link pasted: https://help.kusto.windows.net/. The cluster, the Data Connectivity mode, and the OK button are highlighted.":::
 
-    | Setting | Field description | Sample value
-    |---|---|---
-    | Cluster | The URL for the help cluster. For other clusters, the URL is in the form *https://\<ClusterName\>.\<Region\>.kusto.windows.net*. | *https://help.kusto.windows.net* |
-    | Database | A database that is hosted on the cluster you're connecting to. We'll select this in a later step. | Leave blank |
-    | Table name | One of the tables in the database, or a query like <code>StormEvents \| take 1000</code>. We'll select this in a later step. | Leave blank |
-    | Advanced options | Options for your queries, such as result set size. |  Leave blank |
-    | Data connectivity mode | Determines whether Power BI imports the data or connects directly to the data source. You can use either option with this connector. | *DirectQuery* |
+| Setting | Field description | Sample value
+|---|---|---
+| Cluster | The URL for the help cluster. For other clusters, the URL is in the form *https://\<ClusterName\>.\<Region\>.kusto.windows.net*. | *https://help.kusto.windows.net* |
+| Database | A database that is hosted on the cluster you're connecting to. We'll select this in a later step. | Leave blank |
+| Table name | One of the tables in the database, or a query like <code>StormEvents \| take 1000</code>. We'll select this in a later step. | Leave blank |
+| Advanced options | Options for your queries, such as result set size. |  Leave blank |
+| Data connectivity mode | Determines whether Power BI imports the data or connects directly to the data source. You can use either option with this connector. | *DirectQuery* |
 
-    > [!NOTE]
-    > In **Import** mode, data is moved to Power BI. In **DirectQuery** mode, data is queried directly from your Azure Data Explorer cluster.
-    >
-    > Use **Import** mode when:
-    >
-    > * Your data set is small.
-    > * You don't need near real-time data.
-    > * Your data is already aggregated or you perform [aggregation in Kusto](./kusto/query/aggregation-functions.md)
-    >
-    > Use **DirectQuery** mode when:
-    >
-    > * Your data set is very large.
-    > * You need near real-time data.
+> [!NOTE]
+> In **Import** mode, data is moved to Power BI. In **DirectQuery** mode, data is queried directly from your Azure Data Explorer cluster.
+>
+> Use **Import** mode when:
+>
+> * Your data set is small.
+> * You don't need near real-time data.
+> * Your data is already aggregated or you perform [aggregation in Kusto](./kusto/query/aggregation-functions.md)
+>
+> Use **DirectQuery** mode when:
+>
+> * Your data set is very large.
+> * You need near real-time data.
 
-    **Advanced options**
+**Advanced options**
 
-    | Setting | Field description | Sample value
-    |---|---|---
-    | Limit query result record number| The maximum number of records to return in the result |`300000` |
-    | Limit query result data size | The maximum data size in bytes to return in the result | `4194304` |
-    | Disable result set truncation | Enable/disable result truncation by using the notruncation request option | `true` |
-    | Additional set statements | Sets query options for the duration of the query. Query options control how a query executes and returns results. | `set query_datascope=hotcache` |
+| Setting | Field description | Sample value
+|---|---|---
+| Limit query result record number| The maximum number of records to return in the result |`300000` |
+| Limit query result data size | The maximum data size in bytes to return in the result | `4194304` |
+| Disable result set truncation | Enable/disable result truncation by using the notruncation request option | `true` |
+| Additional set statements | Sets query options for the duration of the query. Query options control how a query executes and returns results. | `set query_datascope=hotcache` |
 
 1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents** then **Transform Data**.
 
