@@ -58,7 +58,7 @@ To cancel an ingest from query command, see [`cancel operation`](../cancel-opera
 * Matching the result set schema to that of the target table is based on the column types. There's no matching of column names. Make sure that the query result schema columns are in the same order as the table, else data will be ingested into the wrong columns.
 
 > [!CAUTION]
-> If the schema is modified, it happens before the actual data ingestion in its own transaction. A failure to ingest the data doesn't mean the schema wasn't modified.
+> If the schema is modified, it happens in a separate transaction before the actual data ingestion. This means the schema may be modified even when there is a failure to ingest the data.
 
 ## Performance tips
 
