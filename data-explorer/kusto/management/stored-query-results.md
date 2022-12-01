@@ -26,13 +26,13 @@ Stored query results can be useful in the following scenarios:
 > * When you have more than 500 columns, an error is raised and the results aren't stored.
 > * Query results are stored in a storage account associated with the cluster; the data is not cached in local SSD storage.
 
-Stored query results can be accessed for up to 24 hours from the moment of creation. Updates to security policies (for example, database access, row level security, and so on) aren't propagated to stored query results. Use [`.drop stored_query_results`](#drop-stored_query_results) if there is user permission revocation. A stored query result can only be accessed by the same principal identity that created the stored query. 
+Stored query results can be accessed for up to 24 hours from the moment of creation. Updates to security policies (for example, database access, row level security, and so on) aren't propagated to stored query results. Use [`.drop stored_query_results`](#drop-stored_query_results) if there's user permission revocation. A stored query result can only be accessed by the same principal identity that created the stored query. 
 
 Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, it's recommended that the query includes unique ID columns. For more information, see [examples](#examples). If there are multiple result sets returned by a query, only the first result set will be stored. 
 
 Using stored query results requires `Database Viewer` or higher access role.
 
-[!INCLUDE [dollar-sign-character-alert](../../../includes/dollar-sign-character-alert.md)]
+[!INCLUDE [dollar-sign-character-alert](../../includes/dollar-sign-character-alert.md)]
 
 ## Store the results of a query
 
