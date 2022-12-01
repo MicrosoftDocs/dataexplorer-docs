@@ -7,7 +7,7 @@ ms.date: 03/18/2020
 ---
 # Follower commands
 
-Control commands for managing the follower cluster configuration are listed below. These commands run synchronously, but are applied on the next periodic schema refresh. That's why there may be a few minutes delay until the new configuration is applied.
+Control commands for managing your follower configuration. These commands run synchronously but are applied on the next periodic schema refresh, which may result in a short delay until the new configuration is applied.
 
 The follower commands include [database level commands](#database-level-commands) and [table level commands](#tables-and-materialized-views-commands).
 
