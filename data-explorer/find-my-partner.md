@@ -142,7 +142,7 @@ As Australia's largest Microsoft partner, we have helped countless clients progr
 
 **Best of both worlds: Azure IoT**
 
-Following the IoT"s Lego principle, we combine the best of both worlds: Device Insight"s turnkey IoT building blocks along with native integration into Microsoft Azure. We select the right IoT services from Microsoft Azure and complement them with solution components from Device Insight"s core product CENTERSIGHT scale. All functions can be tailored flexibly and individually to meet your exact requirements. So your IoT project doesn"t have to start from scratch and you will be able to realize your first applications within a very short time. Once the proof of value has been provided, we prepare everything for scaling.
+Following the IoT's Lego principle, we combine the best of both worlds: Device Insight"s turnkey IoT building blocks along with native integration into Microsoft Azure. We select the right IoT services from Microsoft Azure and complement them with solution components from Device Insight"s core product CENTERSIGHT scale. All functions can be tailored flexibly and individually to meet your exact requirements. So your IoT project doesn't have to start from scratch and you will be able to realize your first applications within a very short time. Once the proof of value has been provided, we prepare everything for scaling.
 
 **Partner type**
 
@@ -165,7 +165,7 @@ Following the IoT"s Lego principle, we combine the best of both worlds: Device I
 
 :::image type="icon" source="media/findmypartner/elasta-cloud-logo.png":::
 
-Elastacloud are experts at building complex real-time solutions using Azure Data Explorer. With a penchant for understanding event-driven architectures for high-performant, high-fidelity platforms, Elastacloud has used Azure Data Explorer (ADX) to ingest, transform and serve data for large scale cybersecurity analytics for Security Operations Centers (SOC) and IoT monitoring solutions serving billions of events an hour through real-time queries using KQL.  Elastacloud have contributed the popular tool [DexCmd](https://github.com/elastacloud/dexcmdline) back to the community. If you need high performance, high-fidelity event driven platforms built that simplify and abstract the user journey contact Elastacloud.
+Elastacloud are experts at building complex real-time solutions using Azure Data Explorer. With a penchant for understanding event-driven architectures for high-performant, high-fidelity platforms, Elastacloud has used Azure Data Explorer (ADX) to ingest, transform and serve data for large scale cybersecurity analytics for Security Operations Centers (SOC) and IoT monitoring solutions serving billions of events an hour through real-time queries using KQL. Elastacloud have contributed the popular tool [DexCmd](https://github.com/elastacloud/dexcmdline) back to the community. If you need high performance, high-fidelity event driven platforms built that simplify and abstract the user journey contact Elastacloud.
 
 **Partner type**
 
