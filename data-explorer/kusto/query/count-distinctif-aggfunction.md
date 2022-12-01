@@ -7,7 +7,7 @@ ms.date: 11/20/2022
 ---
 # count_distinctif() (aggregation function) - (preview)
 
-Conditionally counts unique values specified by the scalar expression per summary group in records for which the *Predicate* evaluates to `true`.
+Conditionally counts unique values specified by a scalar expression per summary group in records for which the *Predicate* evaluates to `true`.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
