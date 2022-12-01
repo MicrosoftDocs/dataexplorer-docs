@@ -702,4 +702,4 @@ items:
   - name: Service updates
     href: https://azure.microsoft.com/updates/?product=data-explorer
   - name: Find a partner
-    href: findmypartner.md
+    href: find-my-partner.md
