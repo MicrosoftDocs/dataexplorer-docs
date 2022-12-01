@@ -41,14 +41,14 @@ To cancel an ingest from query command, see [`cancel operation`](../cancel-opera
 
 |Property|Type|Description|
 |--|--|--|
-|`creationTime` | string | The datetime value, formatted as an ISO8601 string, to use at the creation time of the ingested data extents. If unspecified, the current value (`now()`) will be used. When specified, make sure the `Lookback` property in the target table's effective [Extents merge policy](../mergepolicy.md) is aligned with the specified value.|
-|`extend_schema` | bool | If `true`, the command will extend the schema of the table. Default is `false`. This option applies only to `.append`, `.set-or-append`, and `set-or-replace` commands. |
-|`recreate_schema` | bool | If `true`, the command may recreate the schema of the table. Default is `false`. This option applies only to the `.set-or-replace` command. This option takes precedence over the extend_schema property if both are set.|
+|`creationTime` | string | The datetime value, formatted as an ISO8601 string, to use at the creation time of the ingested data extents. If unspecified, `now()` will be used. When specified, make sure the `Lookback` property in the target table's effective [Extents merge policy](../mergepolicy.md) is aligned with the specified value.|
+|`extend_schema` | bool | If `true`, the command may extend the schema of the table. Default is `false`. This option applies only to `.append`, `.set-or-append`, and `set-or-replace` commands. |
+|`recreate_schema` | bool | If `true`, the command may recreate the schema of the table. Default is `false`. This option applies only to the `.set-or-replace` command. This option takes precedence over the `extend_schema` property if both are set.|
 |`folder` | string | The folder to assign to the table. If the table already exists, this property will overwrite the table's folder.|
-|`ingestIfNotExists` | string | If specified, prevents ingestion from succeeding if the table already has data tagged with an `ingest-by:` tag with the same value.|
-|`policy_ingestiontime` | bool | If `true`, enables the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) on a table that is created by this command. The default is `true`.|
+|`ingestIfNotExists` | string | If specified, ingestion won't succeed if the table already has data tagged with an `ingest-by:` tag with the same value.|
+|`policy_ingestiontime` | bool | If `true`, the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) will be enabled on the table. The default is `true`.|
 |`tags` | string | A JSON string that represents a list of [tags](../extents-overview.md#extent-tagging) to associate with the created extent. |
-|`docstring` | string | Description used to document the table.|
+|`docstring` | string | A description used to document the table.|
 |`distributed` | bool | If `true`, the command will ingest from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips) below.|
 
 ## Schema considerations
