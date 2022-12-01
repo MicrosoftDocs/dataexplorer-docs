@@ -16,8 +16,7 @@ These commands execute a query or a control command and ingest the results of th
 |`.set-or-append` |Data is appended to the table      |The table is created and data is ingested|
 |`.set-or-replace`|Data replaces the data in the table|The table is created and data is ingested|
 
-> [!NOTE]
-> To cancel an ingest from query command, see [`cancel operation`](../cancel-operation-command.md).
+To cancel an ingest from query command, see [`cancel operation`](../cancel-operation-command.md).
 
 ## Syntax
 
@@ -51,9 +50,6 @@ These commands execute a query or a control command and ingest the results of th
 |`tags` | string | A JSON string that represents a list of [tags](../extents-overview.md#extent-tagging) to associate with the created extent. |
 |`docstring` | string | Description used to document the table.|
 |`distributed` | bool | If `true`, the command will ingest from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips) below.|
-
-> [!NOTE]
-> Only `.show` control commands are supported.
 
 ## Schema considerations
 
