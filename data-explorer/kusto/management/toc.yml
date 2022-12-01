@@ -518,6 +518,8 @@ items:
       href: data-ingestion/streaming-ingestion-schema-changes.md
     - name: Clear schema cache for streaming ingestion
       href: data-ingestion/clear-schema-cache-command.md
+  - name: Ingestion troubleshooting
+    href: data-ingestion/ingestion-troubleshooting.md
 - name: Data export
   href: data-export/index.md
   items:
