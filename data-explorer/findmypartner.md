@@ -29,7 +29,7 @@ Partner
 
 ## AM Squared Systems
 
-:::image type="icon" source="media/findmypartner/AM2.png":::
+:::image type="icon" source="media/findmypartner/am-squared-logo.png":::
 
 AM Squared Provides specialist consulting, project and support services with respect to an Intelligent Edge, IoT and Azure Cloud Technologies.  We provide an enablement platform to support numerous industries in making sense of their data and analytics requirements in support of Digital Transformation. A key differentiator is to integrate OT Data Sources into the enablement platform powered by ADX.
 
@@ -52,7 +52,7 @@ AM Squared Provides specialist consulting, project and support services with res
 
 ## beanTech srl
 
-:::image type="icon" source="media/findmypartner/beanTech.png":::
+:::image type="icon" source="media/findmypartner/bean-tech-logo.png":::
 
 beanTech is an IT company that has been supporting industries in the challenges of Digital Transformation for over twenty years.
 
@@ -85,7 +85,7 @@ beanTech is the IT partner that can help you manage the entire data chain in the
 
 ## Data Mastery
 
-:::image type="icon" source="media/findmypartner/DataMastery.png":::
+:::image type="icon" source="media/findmypartner/data-mastery-logo.png":::
 
 Data Mastery is a Data Engineering and Advanced Analytics consultancy. Our specialty is the design, build, implementation and management of data analytics solutions. Our consultants are experts in advanced analytics using Azure and Databricks.
 Data Mastery help businesses harness the power of their data and make data-driven decisions through advanced analytics, business intelligence, and modern data platforms. We have a wealth of knowledge and experience across the Utilities, Mining, Financial Services, Real Estate and Education sectors. We have delivered some of Sydney's most exciting Cloud Transformation projects and we look forward to helping you in your journey to the cloud.
@@ -113,7 +113,7 @@ Data Mastery help businesses harness the power of their data and make data-drive
 
 ## Data#3 Ltd
 
-:::image type="icon" source="media/findmypartner/Data3.png":::
+:::image type="icon" source="media/findmypartner/data-3-logo.png":::
 
 As Australia's largest Microsoft partner, we have helped countless clients progress their data and analytics initiatives. We have created a framework that takes best-in-class approaches, methodologies and architectures to help solve complex data analytics problems.
 
@@ -138,7 +138,7 @@ As Australia's largest Microsoft partner, we have helped countless clients progr
 
 ## Device Insight GmbH
 
-:::image type="icon" source="media/findmypartner/DI_RGB_black_Medium.png":::
+:::image type="icon" source="media/findmypartner/device-insight-logo.png":::
 
 **Best of both worlds: Azure IoT**
 
@@ -163,7 +163,7 @@ Following the IoT"s Lego principle, we combine the best of both worlds: Device I
 
 ## Elastacloud Limited
 
-:::image type="icon" source="media/findmypartner/elastacloud.png":::
+:::image type="icon" source="media/findmypartner/elasta-cloud-logo.png":::
 
 Elastacloud are experts at building complex real-time solutions using Azure Data Explorer. With a penchant for understanding event-driven architectures for high-performant, high-fidelity platforms, Elastacloud has used Azure Data Explorer (ADX) to ingest, transform and serve data for large scale cybersecurity analytics for Security Operations Centers (SOC) and IoT monitoring solutions serving billions of events an hour through real-time queries using KQL.  Elastacloud have contributed the popular tool [DexCmd](https://github.com/elastacloud/dexcmdline) back to the community. If you need high performance, high-fidelity event driven platforms built that simplify and abstract the user journey contact Elastacloud.
 
@@ -187,7 +187,7 @@ Elastacloud are experts at building complex real-time solutions using Azure Data
 
 ## Henry Been Consultancy
 
-:::image type="icon" source="media/findmypartner/AzureSpecialist_compact@3x.png":::
+:::image type="icon" source="media/findmypartner/azure-specialist-logo.png":::
 
 Consulting, architecture and implementation of cloud-native software for the MS Azure Cloud.
 
@@ -210,7 +210,7 @@ Consulting, architecture and implementation of cloud-native software for the MS 
 
 ## iLink Systems
 
-:::image type="icon" source="media/findmypartner/iLinkDigitalSquareRGB400px.png":::
+:::image type="icon" source="media/findmypartner/ilink-digital-logo.png":::
 
 - **Data Technology Jumpstart**
 We help customers accelerate their project timings by familiarizing them with the Azure data platform technologies, and environment setup, providing reference solutions to the customer use-case and setting up guidance for best practices.
@@ -241,7 +241,7 @@ We build up our customer's data platforms powered with Azure data services. Our 
 
 ## Intelligent Spaces Limited
 
-:::image type="icon" source="media/findmypartner/eis.png":::
+:::image type="icon" source="media/findmypartner/elasta-cloud-intelligent-spaces-logo.png":::
 
 A product spin-off of Elastacloud, Intelligent Spaces build a wholly Azure backed Digital Twin for managing spaces used by business. Intelligent Spaces handles BIM collaboration and analytics, automated graph creation and a geospatial enrichment engine that produced 3D and AR visualizations. Operating at the intersection of spatial and real-time, their Digital Twin is connected to physical space using IoT technologies. Their Analytics Pack is an ADX powered, web UI that allows business users to drag and drop analytic operations which are then translated and executed directly in ADX. They have contributed the popular tool [AdxUtils](https://github.com/intelligentspaces/AdxUtils) back to the community. If you need Digital Twins or BIM integrations with ADX, contact Intelligent Spaces.
 
@@ -265,7 +265,7 @@ A product spin-off of Elastacloud, Intelligent Spaces build a wholly Azure backe
 
 ## LINKIT
 
-:::image type="icon" source="media/findmypartner/LINKIT.png":::
+:::image type="icon" source="media/findmypartner/linkit-logo.png":::
 
 LINKIT serves more than 100 customers in the Netherlands and Germany, providing digital innovations that help customers accelerate IT to become frontrunners in their industry. For over 25 years, LINKIT helps solve business challenges by combining a winning approach, a knowledge-driven team, and powerful technology like Low-code platforms Mendix and OutSystems, as well as data, cloud & IoT technology.
 
@@ -289,7 +289,7 @@ LINKIT serves more than 100 customers in the Netherlands and Germany, providing 
 
 ## MAQ Software
 
-:::image type="icon" source="media/findmypartner/MAQ-logo.png":::
+:::image type="icon" source="media/findmypartner/maq-software-logo.png":::
 
 As 2021 Microsoft Power BI Partner of the Year, we engage with leading companies to accelerate their business intelligence and analytics initiatives. Our solutions enable our clients to improve their operations, reduce costs, increase sales, and build stronger customer relationships. Our clients consistently recognize us for providing architecture and governance frameworks, implementing best practices to optimize reports, and building team capability through training programs. Our innovative tools and 33 certified visuals expand Power BI capabilities to save time for decision makers. 
 As a premier supplier to Microsoft for two decades, our clients benefit from our extensive insights on the platform and engineering practices. As a Microsoft Managed Partner, our clients benefit from our breadth and depth of expertise. With globally integrated teams in Redmond, Washington, and three locations in India, we deliver solutions with increased velocity and technical intensity. Inc. magazine has recognized us for sustained growth by listing us on the Inc. 5000 list ten times – a rare honor.
@@ -318,7 +318,7 @@ As a premier supplier to Microsoft for two decades, our clients benefit from our
 
 ## Mesh Systems
 
-:::image type="icon" source="media/findmypartner/MeshSystemsLARGE.png":::
+:::image type="icon" source="media/findmypartner/mesh-systems-logo.png":::
 
 Mesh Systems is an IoT Solutions Provider that develops, operates, and manages end-to-end IoT solutions. Our full stack capabilities span hardware design, embedded software development, device connectivity, cloud-based services, and custom web/app development. Mesh Systems is the ideal partner to launch new connected products, scale a proof-of-value, and reach hyper growth production volume.
 
@@ -348,7 +348,7 @@ Mesh Systems is an IoT Solutions Provider that develops, operates, and manages e
 
 ## Neal Analytics
 
-:::image type="icon" source="media/findmypartner/NealAnalytics.png":::
+:::image type="icon" source="media/findmypartner/neal-analytics-logo.png":::
 
 Neal Analytics is an award-winning Data & AI consulting partner of Microsoft. With 6 different advanced specializations in Azure & 4 Partner of the Year awards & finalist finishes, Neal has a proven track record of success you can trust for all your Azure deployment needs. 
 
@@ -379,7 +379,7 @@ Neal has worked extensively with Azure Data Explorer and maintains a trained ben
 
 ## Niels Berglund
 
-:::image type="icon" source="media/findmypartner/noLogo.png":::
+:::image type="icon" source="media/findmypartner/no-logo.png":::
 
 Provide training around Azure Data Explorer.
 
@@ -402,7 +402,7 @@ Provide training around Azure Data Explorer.
 
 ## OPTION 4.0 AG
 
-:::image type="icon" source="media/findmypartner/option40.svg":::
+:::image type="icon" source="media/findmypartner/option-4-0-logo.svg":::
 
 We have a Co-sell offering on the Azure Market place: https://azuremarketplace.microsoft.com/marketplace/consulting-services/option40ag1624272391965.02052010
 
@@ -429,7 +429,7 @@ We have a Co-sell offering on the Azure Market place: https://azuremarketplace.m
 
 ## Orion Systems Integrators, LLC
 
-:::image type="icon" source="media/findmypartner/OrionInnovationLogo-black.png":::
+:::image type="icon" source="media/findmypartner/orion-innovation-logo.png":::
 
 Orion Innovation is a Leader in Digital transformation services with a Design led , technology driven approach. We are a trusted partner to our Fortune 500, Large, Medium clients in their business transformation initiatives with 99% CSAT. With 25+ years of experience we bring deep domain expertise in Financial Services, Professional Services,  Healthcare & Life Sciences , Hi-Tech, Telecom, Media & Entertainment, Sports and Education Verticals.  Our global team of 6,000+ associates  in 12 major delivery centers across USA, LATAM, Europe and APAC delivers those digital transformation services around Experience Design, Digital Product Development, Data Analytics & AI, Cloud & Infrastructure, Business application & Modernization, Embedded & Realtime solutions, IoT/IIoT, Testing and Cybersecurity. We are ISO 9001:2015, ISO/IEC 27001:2013 certified, as well as CMMI&reg;️ Level 3 compliant and have IP's covering Industry Solutions, Accelerators and proprietary internal tools.
 
@@ -455,7 +455,7 @@ Orion Innovation is a Leader in Digital transformation services with a Design le
 
 ## Terawe Corporation
 
-:::image type="icon" source="media/findmypartner/terawe.png":::
+:::image type="icon" source="media/findmypartner/terawe-logo.png":::
 
 We have deep expertise with custom solutions and also have multiple solution offerings that help businesses move to the next stage of digital transformation and achieve greater efficiencies with the use of Microsoft's Data Platform and AI services.
 
@@ -480,7 +480,7 @@ We have deep expertise with custom solutions and also have multiple solution off
 
 ## Tricloud
 
-:::image type="icon" source="media/findmypartner/tc_logo_horiz_black.png":::
+:::image type="icon" source="media/findmypartner/tricloud-logo.png":::
 
 Tricloud provides an end-to-end Industrial IoT Platform based on Azure IoT and Azure Data Explorer, to support the Digitalization efforts of modern industries. Tricloud supports enterprises in their cloud transformation with expert Azure consultants, specializing in Azure IoT and data analytics with Azure Data Explorer.
 
@@ -508,7 +508,7 @@ Tricloud provides an end-to-end Industrial IoT Platform based on Azure IoT and A
 
 ## Uptake Technologies Inc.
 
-:::image type="icon" source="media/findmypartner/uptake-logo-black-PNG.png":::
+:::image type="icon" source="media/findmypartner/uptake-logo.png":::
 
 Uptake provides our customers with the scalable, secure ability to connect their machines, people and data together to accelerate and unlock AI-enabled industrial intelligence to optimize costs, manage risks and increase revenue assurance. 
 
@@ -543,7 +543,7 @@ Uptake provides asset-intensive companies the transparency, traceable, secure, c
 
 ## Zure Ltd
 
-:::image type="icon" source="media/findmypartner/Zure-logo.jpg":::
+:::image type="icon" source="media/findmypartner/zure-ltd-logo.jpg":::
 
 Experienced company that is focused on full lifecycle custom software development and integrations using Azure PaaS services.
 
