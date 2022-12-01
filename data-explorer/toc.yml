@@ -686,8 +686,8 @@ items:
     items:
     - name: Pricing page
       href: https://azure.microsoft.com/pricing/details/data-explorer/
-    - name: Cost estimator
-      href: https://aka.ms/adecostestimator
+    - name: Pricing calculator
+      href: pricing-calculator.md
     - name: Reserved capacity
       href: pricing-reserved-capacity.md
   - name: Service updates
