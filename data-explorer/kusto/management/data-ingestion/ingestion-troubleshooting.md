@@ -9,9 +9,9 @@ ms.date: 12/01/2022
 
 Use the `.dup-next-ingest` and `.dup-next-failed-ingest` commands for on-demand troubleshooting of your data ingestion pull flow.
 
-Invoking `.dup-next-ingest` causes the next data pull ingestion into the specified table to be duplicated to the specified storage container, and `.dup-next-failed-ingest` will do the same only in the case of an ingestion failure.
+Invoking `.dup-next-ingest` causes the next data pull ingestion into the specified table to be duplicated to the specified storage container, and `.dup-next-failed-ingest` will do the same only if the ingestion process fails.
 
-The command causes the ingestion source files and an additional file containing metadata to be uploaded to the specified blob container. The file uploads to the blob container are performed by the same node that does the ingestion. Since the duplication configuration is not persisted, rerun the command if there are admin node changes.
+The command causes the ingestion source files and another file containing metadata to be uploaded to the specified blob container. The file uploads to the blob container are performed by the same node that does the ingestion. Since the duplication configuration isn't persisted, rerun the command if there are admin node changes.
 
 > [!NOTE]
 >
@@ -36,7 +36,7 @@ The command causes the ingestion source files and an additional file containing 
 
 The *TableName* and *StorageContainerPath* will be returned along with an *IngestionCommandFilePath*, which is the location of the the ingestion file request within the blob container.
 
-Upon the next pull data ingestion, or failed ingestion in the case of `.dup-next-failed-ingest`, the source files and an additional file containing metadata will be uploaded to the blob container.
+Upon the next pull data ingestion, or failed ingestion for `.dup-next-failed-ingest`, the source files and another file containing metadata will be uploaded to the blob container.
 
 ## Example
 
