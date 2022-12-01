@@ -68,7 +68,7 @@ To cancel an ingest from query command, see [`cancel operation`](../cancel-opera
 
 ## Known issues
 
-The command will fail if the query generates an entity name with the `$` character. When creating stored entities, the [entity names](../../query/schema-entities/entity-names.md) must comply with the naming rules. This means the `$` character must be removed from these names for the ingest command to succeed.
+The command will fail if the query generates an entity name with the `$` character. When storing query results, the [entity names](../../query/schema-entities/entity-names.md) must comply with the naming rules. This means the `$` character must be removed from these names for the ingest command to succeed.
 
 For example, in the following query, the `search` operator generates a column `$table`. To work around this issue, use [project-rename](../../query/projectrenameoperator.md) to rename the column.
 
