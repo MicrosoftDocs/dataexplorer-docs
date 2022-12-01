@@ -23,25 +23,16 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|[AVRO mapping](kusto/management/avro-mapping.md) | New article. Describes how to use AVRO mapping to map data to columns inside tables upon ingestion.|
-|[CSV mapping](kusto/management/csv-mapping.md) | New article. Describes how to use CSV mapping to map data to columns inside tables upon ingestion. |
-|[ORC mapping](kusto/management/orc-mapping.md) | New article. Describes how to use ORC mapping to map data to columns inside tables upon ingestion. |
-|[Parquet mapping](kusto/management/parquet-mapping.md) | New article. Describes how to use Parquet mapping to map data to columns inside tables upon ingestion. |
-|[W3CLOGFILE mapping](kusto/management/w3c-log-file-mapping.md) | New article. Describes how to use W3CLOGFILE mapping to map data to columns inside tables upon ingestion. |
 |[.show function(s)](kusto/management/show-function.md) | Updated article. Added optional arguments and tables to `.show function`. |
 
 **Query**
 
 | Article title | Description |
 |--|--|
-|[unicode_codepoints_from_string()](kusto/query/unicode-codepoints-from-string-function.md) | New article. Returns a dynamic array of the Unicode codepoints of an input string.
-|[unicode_codepoints_to_string()](kusto/query/unicode-codepoints-to-string-function.md) | New article. Returns the string represented by the Unicode codepoints.
-|[ipv6_is_in_any_range()](kusto/query/ipv6-is-in-any-range-function.md) | New article. Checks whether an IPv6 string address is in any of the specified IPv6 address ranges.
-|[ipv6_is_in_range()](kusto/query/ipv6-is-in-range-function.md) | New article. Checks if an IPv6 string address is in IPv6-prefix notation range.
+|- [unicode_codepoints_from_string()](kusto/query/unicode-codepoints-from-string-function.md) <br/> - [unicode_codepoints_to_string()](kusto/query/unicode-codepoints-to-string-function.md)| New article. Returns a dynamic array of the Unicode codepoints of an input string. | New article. Returns the string represented by the Unicode codepoints. |
+|- [ipv6_is_in_any_range()](kusto/query/ipv6-is-in-any-range-function.md) <br/> - [ipv6_is_in_range()](kusto/query/ipv6-is-in-range-function.md) | New articles. Check whether an IPv6 string address is in any of the specified IPv6 address ranges.|
 |- [count_distinct() (aggregation function) - (preview)](kusto/query/count-distinct-aggfunction.md) <br/> - [count_distinctif() (aggregation function) - (preview)](kusto/query/count-distinctif-aggfunction.md)| New articles. Count unique values specified by the scalar expression per summary group. |
-|[series_ceiling()](kusto/query/series-ceiling-function.md) | New article. Calculates the element-wise ceiling function of the numeric series input. |
-|[series_floor()](kusto/query/series-floor-function.md) | New article. Calculates the element-wise floor function of the numeric series input. |
-|[series_log()](kusto/query/series-log-function.md) | New article. Calculates the element-wise natural logarithm function (base-e) of the numeric series input. |
+|- [series_ceiling()](kusto/query/series-ceiling-function.md) <br/> - [series_floor()](kusto/query/series-floor-function.md) <br/> [series_log()](kusto/query/series-log-function.md)| New articles. Calculate the element-wise functions of the numeric series input. |
 |- [bin_auto()](kusto/query/bin-autofunction.md) <br/> - [binary_shift_left()](kusto/query/binary-shift-leftfunction.md) <br/> - [binary_shift_right()](kusto/query/binary-shift-rightfunction.md) <br/> - [binary_xor()](kusto/query/binary-xorfunction.md) <br/> - [bin_at()](kusto/query/binatfunction.md) <br/> - [bin()](kusto/query/binfunction.md) <br/> - [bitset_count_ones()](kusto/query/bitset-count-onesfunction.md) <br/> - [buildschema() (aggregation function)](kusto/query/buildschema-aggfunction.md) <br/> - [case()](kusto/query/casefunction.md) <br/> - [ceiling()](kusto/query/ceilingfunction.md) <br/> - [cosmosdb_sql_request plugin](kusto/query/cosmosdb-plugin.md)| Updated articles. Added new tables and examples. |
 
 ## October 2022
