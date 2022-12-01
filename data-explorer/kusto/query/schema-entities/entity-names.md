@@ -75,11 +75,3 @@ Alternatively, one might want to choose entity names that are guaranteed to neve
 The Kusto query language reserves all identifiers that start or end with a
 sequence of two underscore characters (`__`); users can't define such names
 for their own use.
-
-
-
-
-
-
-
-
