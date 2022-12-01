@@ -15,9 +15,9 @@ The command causes the ingestion source files and another file containing metada
 
 > [!NOTE]
 >
-> * These commands requires `Database admin` permissions
+> * These commands require `Database admin` permissions
 > * These commands run in the context of a specific database
-> * Only azure blob containers are currently supported
+> * Azure blob containers are the only storage containers currently supported
 
 ## Syntax
 
