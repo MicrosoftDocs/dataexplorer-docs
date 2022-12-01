@@ -73,7 +73,7 @@ To retrieve a stored query result, use `stored_query_result()` function in your 
 
 Storing a simple query result:
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9MrTi1RKC7JL0pNiS8sTS2qjC9KLS7NKVHwK81NSi0qVrCpUShKzEtPVYhQSCvKz1UwVCjJVzA0AAOgxtQCBUMA3q5PyEQAAAA=)
+<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9MrTi1RKC7JL0pNiS8sTS2qjC9KLS7NKVHwK81NSi0qVrCpUShKzEtPVYhQSCvKz1UwVCjJVzA0AAOgxtQCBUMA3q5PyEQAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 .set stored_query_result Numbers <| range X from 1 to 1000000 step 1
@@ -88,7 +88,7 @@ Storing a simple query result:
 
 Retrieve stored query result:
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysuyS9KTYkvLE0tqowvSi0uzSnRUPIrzU1KLSpW0gQA2FVHnR4AAAA=)
+<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysuyS9KTYkvLE0tqowvSi0uzSnRUPIrzU1KLSpW0gQA2FVHnR4AAAA=" target="_blank">Run the query</a>
 
 ```kusto
 stored_query_result("Numbers")
