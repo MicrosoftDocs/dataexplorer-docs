@@ -15,9 +15,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|[series_mv_ee_anomalies_fl()](kusto/functions-library/series-mv-ee-anomalies-fl.md) | New article. Describes the `series_mv_ee_anomalies_fl()` user-defined function.|
-|[series_mv_if_anomalies_fl()](kusto/functions-library/series-mv-if-anomalies-fl.md) | New article. Describes the `series_mv_if_anomalies_fl()` user-defined function.|
-|[series_mv_oc_anomalies_fl()](kusto/functions-library/series-mv-oc-anomalies-fl.md) | New article. Describes the `series_mv_oc_anomalies_fl()` user-defined function.|
+| - [series_mv_ee_anomalies_fl()](kusto/functions-library/series-mv-ee-anomalies-fl.md)<br />- [series_mv_if_anomalies_fl()](kusto/functions-library/series-mv-if-anomalies-fl.md)<br />- [series_mv_oc_anomalies_fl()](kusto/functions-library/series-mv-oc-anomalies-fl.md) | New article. Describes multivariate anomalies in a series user-defined functions. |
 
 **Management**
 
