@@ -1,6 +1,6 @@
 ---
 title: Follower commands - Azure Data Explorer
-description: Learn how to use follower commands to manage follower cluster configuration.
+description: Learn how to use follower commands to manage your follower configuration.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/18/2020
