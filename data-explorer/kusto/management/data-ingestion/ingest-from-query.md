@@ -17,7 +17,9 @@ existing or nonexistent tables and data.
 |`.set-or-append` |Data is appended to the table      |The table is created and data is ingested|
 |`.set-or-replace`|Data replaces the data in the table|The table is created and data is ingested|
 
-[!INCLUDE [dollar-sign-character-alert](../../../includes/dollar-sign-character-alert.md)]
+> [!IMPORTANT]
+> The command will fail if the query generates an entity name with the `$` character. This is because the rules for [entity names](../kusto/query/schema-entities/entity-names.md#identifier-naming-rules) must be met when creating stored entities. See [how to handle this situation](#handle-the--character).
+
 
 > [!NOTE]
 > To cancel an ingest from query command, see [`cancel operation`](../cancel-operation-command.md).
@@ -81,7 +83,7 @@ existing or nonexistent tables and data.
   require serialization, so that multiple nodes can produce output in parallel.
   When the query results are small, don't use this flag, since it might needlessly generate many small data shards.
 
-**Examples** 
+## Examples
 
 Create a new table called :::no-loc text="RecentErrors"::: in the database that has the same schema as :::no-loc text="LogsTable"::: and holds all the error records of the last hour.
 
@@ -146,3 +148,15 @@ Returns information on the extents created because of the `.set` or `.append` co
 |ExtentId |OriginalSize |ExtentSize |CompressedSize |IndexSize |RowCount | 
 |--|--|--|--|--|--|
 |23a05ed6-376d-4119-b1fc-6493bcb05563 |1291 |5882 |1568 |4314 |10 |
+
+### Handle the $ character
+
+In the following query, the `search` operator generates a column `$table`. Use [project-rename](../kusto/query/projectrenameoperator.md) to rename the column.
+
+Otherwise, the command will fail because the rules for [entity names](../kusto/query/schema-entities/entity-names.md#identifier-naming-rules) must be met when creating stored entities.
+
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3JzQpAYBAF0Fe5C/WteADxCjbsJA1uSX5nRlEenuxOncToMN+UQ3uc1LtV2jk7UPESQ/bAKNqPqEPp4gxNGv4KeLDrNrH3WLnKQrh0M4tPefTzBbhw1LVdAAAA)
+
+```kusto
+.set stored_query_result  Texas <| search ['State']:'Texas' | project-rename tableName=$table
+```
