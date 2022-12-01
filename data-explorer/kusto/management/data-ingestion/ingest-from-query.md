@@ -69,17 +69,7 @@ To cancel an ingest from query command, see [`cancel operation`](../cancel-opera
 * Limit the data for ingestion to less than 1 GB per ingestion operation. If necessary, use multiple ingestion commands.
 * Set the `distributed` flag to `true` if the amount of data being produced by the query is large, exceeds 1 GB, and doesn't require serialization. Then, multiple nodes can produce output in parallel. Don't use this flag when query results are small, since it might needlessly generate many small data shards.
 
-## Known issues
-
-The command will fail if the query generates an entity name with the `$` character. When storing query results, the [entity names](../../query/schema-entities/entity-names.md) must comply with the naming rules. This means the `$` character must be removed from these names for the ingest command to succeed.
-
-For example, in the following query, the `search` operator generates a column `$table`. To work around this issue, use [project-rename](../../query/projectrenameoperator.md) to rename the column.
-
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3JzQpAYBAF0Fe5C/WteADxCjbsJA1uSX5nRlEenuxOncToMN+UQ3uc1LtV2jk7UPESQ/bAKNqPqEPp4gxNGv4KeLDrNrH3WLnKQrh0M4tPefTzBbhw1LVdAAAA)
-
-```kusto
-.set stored_query_result Texas <| search ['State']:'Texas' | project-rename tableName=$table
-```
+[!INCLUDE [store-query-known-issue.md](../../../includes/store-query-character-limitation.md)]
 
 ## Examples
 
