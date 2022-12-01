@@ -75,7 +75,7 @@ For example, in the following query, the `search` operator generates a column `$
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3JzQpAYBAF0Fe5C/WteADxCjbsJA1uSX5nRlEenuxOncToMN+UQ3uc1LtV2jk7UPESQ/bAKNqPqEPp4gxNGv4KeLDrNrH3WLnKQrh0M4tPefTzBbhw1LVdAAAA)
 
 ```kusto
-.set stored_query_result  Texas <| search ['State']:'Texas' | project-rename tableName=$table
+.set stored_query_result Texas <| search ['State']:'Texas' | project-rename tableName=$table
 ```
 
 ## Examples
