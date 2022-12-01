@@ -53,8 +53,8 @@ To cancel an ingest from query command, see [`cancel operation`](../cancel-opera
 
 ## Schema considerations
 
-* `.set-or-replace` will preserve the schema unless one of `extend_schema` or `recreate_schema` ingestion properties is set to "true".
-* `.set-or-append` and `.append` commands will preserve the schema unless the  `extend_schema` ingestion property is set to "true".
+* `.set-or-replace` will preserve the schema unless one of `extend_schema` or `recreate_schema` ingestion properties is set to `true`.
+* `.set-or-append` and `.append` commands will preserve the schema unless the  `extend_schema` ingestion property is set to `true`.
 * Matching the result set schema to that of the target table is based on the column types. There's no matching of column names. Make sure that the query result schema columns are in the same order as the table, else data will be ingested into the wrong columns.
 
 > [!CAUTION]
