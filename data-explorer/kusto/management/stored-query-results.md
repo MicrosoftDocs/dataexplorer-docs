@@ -17,7 +17,7 @@ Stored query results can be useful in the following scenarios:
 
 Updates to security policies, such as database access and row level security, aren't propagated to stored query results. Use [`.drop stored_query_results`](#drop-stored_query_results) if there's user permission revocation.
 
-Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, it's recommended that the query includes unique ID columns. For more information, see [examples](#examples). If there are multiple result sets returned by a query, only the first result set will be stored.
+Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, it's recommended that the query includes unique ID columns. See [examples](#examples). If there are multiple result sets returned by a query, only the first result set will be stored.
 
 > [!NOTE]
 >
@@ -26,7 +26,7 @@ Stored query results behave like tables, in that the order of records isn't pres
 
 ## Prerequisites
 
-* Enable [EngineV3](../../engine-v3.md)
+* [EngineV3](../../engine-v3.md)
 * `Database Viewer` or higher access role
 
 ## Syntax
@@ -59,13 +59,13 @@ Stored query results behave like tables, in that the order of records isn't pres
 
 A tabular subset of the records produced by the query, referred to as the "preview", or all records. Regardless of how many records are shown on return, all records are stored.
 
+[!INCLUDE [store-query-known-issue.md](../../includes/store-query-character-limitation.md)]
+
 ## Retrieve a stored query result
 
 To retrieve a stored query result, use `stored_query_result()` function in your query:
 
 `stored_query_result` `(` 'StoredQueryResultName' `)` `|` ...
-
-[!INCLUDE [store-query-known-issue.md](../../includes/store-query-character-limitation.md)]
 
 ## Examples
 
