@@ -7,7 +7,7 @@ ms.date: 11/27/2022
 ---
 # iif()
 
-This function returns the value of *ifTrue* if *predicate* evaluates to `true`,
+Returns the value of *ifTrue* if *predicate* evaluates to `true`,
 or the value of *ifFalse* otherwise.
 
 ## Syntax
