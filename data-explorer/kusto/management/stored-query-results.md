@@ -8,52 +8,56 @@ ms.date: 07/15/2021
 
 # Stored query results
 
-Stored query results is a mechanism that temporarily stores the result of a query on the service. You can reference this data in later queries.
-Create the stored query object with a command that uses the name of the created entity and the executed query.
-This command returns a subset of the records produced by the query, referred to as the "preview", but stores all records.
+Stored query results is a mechanism that stores the result of a query on the service for up to 24 hours. The same principal identity that created the stored query can reference this data in later queries.
 
 Stored query results can be useful in the following scenarios:
 
-* Paging through query results. The initial command runs the query and returns the first "page" of records.
-  Later queries reference other "pages" without the need to rerun the query.
-* Drill-down scenarios, in which the results of an initial query are then
-  explored using other queries.
+* Paging through query results. The initial command runs the query and returns the first "page" of records. Later queries reference other "pages" without the need to rerun the query.
+* Drill-down scenarios, in which the results of an initial query are then explored using other queries.
+
+Updates to security policies, such as database access and row level security, aren't propagated to stored query results. Use [`.drop stored_query_results`](#drop-stored_query_results) if there's user permission revocation.
+
+Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, it's recommended that the query includes unique ID columns. For more information, see [examples](#examples). If there are multiple result sets returned by a query, only the first result set will be stored.
 
 > [!NOTE]
 >
-> * This feature is only available when [EngineV3](../../engine-v3.md) is enabled.
-> * If the stored-query-result name exists, `.set` will fail with an error. In contrast, `.set-or-replace` will delete the existing stored-query-result if it exists and then create a new one with the same name.
 > * When you have more than 500 columns, an error is raised and the results aren't stored.
 > * Query results are stored in a storage account associated with the cluster; the data is not cached in local SSD storage.
 
-Stored query results can be accessed for up to 24 hours from the moment of creation. Updates to security policies (for example, database access, row level security, and so on) aren't propagated to stored query results. Use [`.drop stored_query_results`](#drop-stored_query_results) if there's user permission revocation. A stored query result can only be accessed by the same principal identity that created the stored query. 
+## Prerequisites
 
-Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, it's recommended that the query includes unique ID columns. For more information, see [examples](#examples). If there are multiple result sets returned by a query, only the first result set will be stored. 
+* Enable [EngineV3](../../engine-v3.md)
+* `Database Viewer` or higher access role
 
-Using stored query results requires `Database Viewer` or higher access role.
-
-[!INCLUDE [dollar-sign-character-alert](../../includes/dollar-sign-character-alert.md)]
-
-## Store the results of a query
-
-**Syntax**
+## Syntax
 
 `.set` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`] <| *Query*
 
 `.set-or-replace` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`] <| *Query*
 
-**Arguments**
+## Parameters
 
-* `async`: If specified, the command will immediately return and continue running in the background. The results of the command will include an `OperationId` value. This value can then be used with the [.show operation details](operations.md#show-operation-details) command to retrieve the command completion status and results.
-* *StoredQueryResultName*: Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.
-* *Query*: A potentially heavyweight KQL query whose results will be stored.
-* *PropertyName*: (all properties are optional)
-    
-    | Property       | Type       | Description       |
-    |----------------|------------|-------------------------------------------------------------------------------------|
-    | `expiresAfter` | `timespan` | A timespan literal indicating when the stored query result will expire (maximum of 24 hours). |
-    | `previewCount` | `int`      | The number of rows to return in a preview. Setting this property to `0` (default) makes the command return all the query result rows. The property is ignored when the command is invoked using `async` mode. |
-    | `distributed`  | `bool`     | Indicates that the command stores query results from all nodes executing the query in parallel. Default is *true*. Setting `distributed` flag to *false* is useful when the amount of data produced by a query is small, or the number of cluster nodes is large, to prevent creating many small data shards. |
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *async* | string | | If specified, the command will return and continue ingestion in the background. Use the returned `OperationId` with the `.show operations` command to retrieve the ingestion completion status and results. |
+| *StoredQueryResultName* | string | &check; | Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.|
+| *PropertyName*, *PropertyValue* | string | &check; | Any number of [supported properties](#supported-properties). |
+| *Query* | string | &check; | The text of a query whose results will be stored.|
+
+> [!NOTE]
+> If the *StoredQueryResultName* exists, `.set` will fail with an error. In contrast, `.set-or-replace` will delete the existing stored-query-result if it exists and then create a new one with the same name.
+
+## Supported properties
+
+| Property | Type | Description |
+|--|--|--|
+| `expiresAfter` | timespan | Determines when the stored query result will expire. Maximum is 24 hours. |
+| `previewCount` | int | The number of rows to return in a preview. Setting this property to `0` (default) makes the command return all the query result rows. The property is ignored when the command is invoked using `async` mode. |
+| `distributed`  | bool | If `true`, the command will ingest from all nodes executing the query in parallel. Default is `true`. Set the flag to `false` when the amount of data produced by a query is small, or the number of cluster nodes is large, to prevent creating many small data shards. |
+
+## Returns
+
+A tabular subset of the records produced by the query, referred to as the "preview", or all records. Regardless of how many records are shown on return, all records are stored.
 
 ## Retrieve a stored query result
 
@@ -61,18 +65,19 @@ To retrieve a stored query result, use `stored_query_result()` function in your 
 
 `stored_query_result` `(` 'StoredQueryResultName' `)` `|` ...
 
+[!INCLUDE [store-query-known-issue.md](../../includes/store-query-character-limitation.md)]
+
 ## Examples
 
 ### Simple query
 
 Storing a simple query result:
 
-<!-- csl -->
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9MrTi1RKC7JL0pNiS8sTS2qjC9KLS7NKVHwK81NSi0qVrCpUShKzEtPVYhQSCvKz1UwVCjJVzA0AAOgxtQCBUMA3q5PyEQAAAA=)
+
 ```kusto
 .set stored_query_result Numbers <| range X from 1 to 1000000 step 1
 ```
-
-**Output:**
 
 | X |
 |---|
@@ -83,12 +88,11 @@ Storing a simple query result:
 
 Retrieve stored query result:
 
-<!-- csl -->
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysuyS9KTYkvLE0tqowvSi0uzSnRUPIrzU1KLSpW0gQA2FVHnR4AAAA=)
+
 ```kusto
 stored_query_result("Numbers")
 ```
-
-**Output:**
 
 | X |
 |---|
@@ -112,8 +116,6 @@ Events
 | project Num=row_number(), Day, AdNetwork, Count
 ```
 
-**Output:**
-
 | Num | Day | AdNetwork | Count |
 |-----|-----|-----------|-------|
 | 1 | 2020-01-01 00:00:00.0000000 | NeoAds | 1002 |
@@ -129,8 +131,6 @@ stored_query_result("DailyClicksByAdNetwork7Days")
 | where Num between(100 .. 200)
 ```
 
-**Output:**
-
 | Num | Day | AdNetwork | Count |
 |-----|-----|-----------|-------|
 | 100 | 2020-01-01 00:00:00.0000000 | CoolAds | 301 |
@@ -144,7 +144,8 @@ stored_query_result("DailyClicksByAdNetwork7Days")
 
 Shows information on active stored query results.
 
->[!NOTE]
+> [!NOTE]
+>
 > * Users with `DatabaseAdmin` or `DatabaseMonitor` permissions can inspect the presence of active stored query results in the context of the database.
 > * Users with `DatabaseUser` or `DatabaseViewer` permissions can inspect the presence of active stored query results created by their principal.
 
