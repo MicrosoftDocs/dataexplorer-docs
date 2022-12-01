@@ -18,7 +18,7 @@ existing or nonexistent tables and data.
 |`.set-or-replace`|Data replaces the data in the table|The table is created and data is ingested|
 
 > [!IMPORTANT]
-> The command will fail if the query generates an entity name with the `$` character. This is because the rules for [entity names](../kusto/query/schema-entities/entity-names.md#identifier-naming-rules) must be met when creating stored entities. See [how to handle this situation](#handle-the--character).
+> The command will fail if the query generates an entity name with the `$` character. This is because the rules for [entity names](../../query/schema-entities/entity-names.md) must be met when creating stored entities. See [how to handle this situation](#handle-the--character).
 
 > [!NOTE]
 > To cancel an ingest from query command, see [`cancel operation`](../cancel-operation-command.md).
@@ -37,12 +37,8 @@ existing or nonexistent tables and data.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *async* | string | | If specified, the command will immediately return and continue
-  ingestion in the background. The results of the command will include
-  an `OperationId` value that can be used with the `.show operations`
-  command to retrieve the ingestion completion status and results. |
-| *TableName* | string | &check; | The name of the table to ingest data into.
-  The *TableName* is always related to the database in context. |
+| *async* | string | | If specified, the command will immediately return and continue ingestion in the background. The results of the command will include an `OperationId` value that can be used with the `.show operations` command to retrieve the ingestion completion status and results. |
+| *TableName* | string | &check; | The name of the table to ingest data into. The *TableName* is always related to the database in context. |
 | *PropertyName*, *PropertyValue* | string | &check; | Any number of [supported ingestion properties](#supported-ingestion-properties) used to control the ingestion process. |
 | *QueryOrCommand* | string | &check; | The text of a query or a control command whose results will be used as data to ingest.|
 
@@ -146,9 +142,9 @@ Returns information on the extents created because of the `.set` or `.append` co
 
 ### Handle the $ character
 
-In the following query, the `search` operator generates a column `$table`. Use [project-rename](../kusto/query/projectrenameoperator.md) to rename the column.
+In the following query, the `search` operator generates a column `$table`. Use [project-rename](../../query/projectrenameoperator.md) to rename the column.
 
-Otherwise, the command will fail because the rules for [entity names](../kusto/query/schema-entities/entity-names.md#identifier-naming-rules) must be met when creating stored entities.
+Otherwise, the command will fail because the rules for [entity names](../../query/schema-entities/entity-names.md) must be met when creating stored entities.
 
 [**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3JzQpAYBAF0Fe5C/WteADxCjbsJA1uSX5nRlEenuxOncToMN+UQ3uc1LtV2jk7UPESQ/bAKNqPqEPp4gxNGv4KeLDrNrH3WLnKQrh0M4tPefTzBbhw1LVdAAAA)
 
