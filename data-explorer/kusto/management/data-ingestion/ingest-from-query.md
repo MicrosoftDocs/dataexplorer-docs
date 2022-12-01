@@ -17,6 +17,8 @@ existing or nonexistent tables and data.
 |`.set-or-append` |Data is appended to the table      |The table is created and data is ingested|
 |`.set-or-replace`|Data replaces the data in the table|The table is created and data is ingested|
 
+[!INCLUDE [dollar-sign-character-alert](../../../includes/dollar-sign-character-alert.md)]
+
 > [!NOTE]
 > To cancel an ingest from query command, see [`cancel operation`](../cancel-operation-command.md).
 

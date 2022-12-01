@@ -32,6 +32,8 @@ Stored query results behave like tables, in that the order of records isn't pres
 
 Using stored query results requires `Database Viewer` or higher access role.
 
+[!INCLUDE [dollar-sign-character-alert](../../../includes/dollar-sign-character-alert.md)]
+
 ## Store the results of a query
 
 **Syntax**
