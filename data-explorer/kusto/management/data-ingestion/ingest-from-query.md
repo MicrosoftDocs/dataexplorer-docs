@@ -20,11 +20,10 @@ existing or nonexistent tables and data.
 > [!IMPORTANT]
 > The command will fail if the query generates an entity name with the `$` character. This is because the rules for [entity names](../kusto/query/schema-entities/entity-names.md#identifier-naming-rules) must be met when creating stored entities. See [how to handle this situation](#handle-the--character).
 
-
 > [!NOTE]
 > To cancel an ingest from query command, see [`cancel operation`](../cancel-operation-command.md).
 
-**Syntax**
+## Syntax
 
 `.set` [`async`] *TableName* [`with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *QueryOrCommand*
 
@@ -34,54 +33,50 @@ existing or nonexistent tables and data.
 
 `.set-or-replace` [`async`] *TableName* [`with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *QueryOrCommand*
 
-**Arguments**
+## Parameters
 
-* `async`: If specified, the command will immediately return and continue
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *async* | string | | If specified, the command will immediately return and continue
   ingestion in the background. The results of the command will include
-  an `OperationId` value that can then be used with the `.show operations`
-  command, to retrieve the ingestion completion status and results.
-* *TableName*: The name of the table to ingest data into.
-  The table name is always related to the database in context.
-* *PropertyName*, *PropertyValue*: Any number of ingestion properties that affect the ingestion process.
+  an `OperationId` value that can be used with the `.show operations`
+  command to retrieve the ingestion completion status and results. |
+| *TableName* | string | &check; | The name of the table to ingest data into.
+  The *TableName* is always related to the database in context. |
+| *PropertyName*, *PropertyValue* | string | &check; | Any number of [supported ingestion properties](#supported-ingestion-properties) used to control the ingestion process. |
+| *QueryOrCommand* | string | &check; | The text of a query or a control command whose results will be used as data to ingest.|
 
- Ingestion properties that are supported.
+## Supported ingestion properties
 
-|Property        |Description|
-|----------------|-----------------------------------------------------------------------------------------------------------------------------|
-|`creationTime`   | The datetime value, formatted as an ISO8601 string, to use at the creation time of the ingested data extents. If unspecified, the current value (`now()`) will be used. When specified, make sure the `Lookback` property in the target table's effective [Extents merge policy](../mergepolicy.md) is aligned with the specified value|
-|`extend_schema`  | A Boolean value that, if specified, instructs the command to extend the schema of the table. Default is "false". This option applies only to `.append`, `.set-or-append`, and `set-or-replace` commands. The only permitted schema extensions have additional columns added to the table at the end|
-|`recreate_schema`  | A Boolean value that. If specified, describes if the command may recreate the schema of the table. Default is "false". This option applies only to the *set-or-replace* command. This option takes precedence over the extend_schema property if both are set|
-|`folder`         | The folder to assign to the table. If the table already exists, this property will overwrite the table's folder.|
-|`ingestIfNotExists`   | A string value that. If specified, prevents ingestion from succeeding if the table already has data tagged with an `ingest-by:` tag with the same value|
-|`policy_ingestiontime`   | A Boolean value. If specified, describes if to enable the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) on a table that is created by this command. The default is "true"|
-|`tags`   | A JSON string that represents a list of [tags](../extents-overview.md#extent-tagging) to associate with the created extent |
-|`docstring`   | A string documenting the table|
-
- Property that controls the behavior of the command.
-
-|Property        |Type    |Description|
-|----------------|--------|-----------------------------------------------------------------------------------------------------------------------------|
-|`distributed`   |`bool`  |Indicates that the command ingests from all nodes executing the query in parallel. Default is "false".  See remarks below.|
-
-* *QueryOrCommand*: The text of a query or a control command whose results will be used as data to ingest.
+|Property|Type|Description|
+|--|--|--|
+|`creationTime` | string | The datetime value, formatted as an ISO8601 string, to use at the creation time of the ingested data extents. If unspecified, the current value (`now()`) will be used. When specified, make sure the `Lookback` property in the target table's effective [Extents merge policy](../mergepolicy.md) is aligned with the specified value.|
+|`extend_schema` | bool | If `true`, instructs the command to extend the schema of the table. Default is `false`. This option applies only to `.append`, `.set-or-append`, and `set-or-replace` commands. The only permitted schema extensions have additional columns added to the table at the end.|
+|`recreate_schema` | bool | If `true`, describes if the command may recreate the schema of the table. Default is `false`. This option applies only to the `.set-or-replace` command. This option takes precedence over the extend_schema property if both are set.|
+|`folder` | string | The folder to assign to the table. If the table already exists, this property will overwrite the table's folder.|
+|`ingestIfNotExists` | string | If specified, prevents ingestion from succeeding if the table already has data tagged with an `ingest-by:` tag with the same value.|
+|`policy_ingestiontime` | bool | If `true`, enables the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) on a table that is created by this command. The default is `true`.|
+|`tags` | string | A JSON string that represents a list of [tags](../extents-overview.md#extent-tagging) to associate with the created extent. |
+|`docstring` | string | Description used to document the table.|
+|`distributed` | bool | If `true`, the command will ingest from all nodes executing the query in parallel. Default is `false`. See [performance considerations](#performance-considerations) below.|
 
 > [!NOTE]
 > Only `.show` control commands are supported.
 
-**Remarks**
+## Schema considerations
 
-* `.set-or-replace` replaces the data of the table if it exists. It drops the existing data shards or creates the target table, if doesn't already exist.
-  The table schema will be preserved unless one of `extend_schema` or `recreate_schema`
-  ingestion properties is set to "true". If the schema is modified, it happens before the actual data ingestion in its own transaction. A failure to ingest the data doesn't mean the schema wasn't modified.
-* `.set-or-append` and `.append` commands will preserve the schema unless the  `extend_schema` ingestion property is set to "true". If the schema is modified, it happens before the actual data ingestion in its own transaction. A failure to ingest the data doesn't mean the schema wasn't modified.
-* We recommended that you limit the data for ingestion to less than 1 GB per ingestion
-  operation. Multiple ingestion commands may be used, if necessary.
-* Data ingestion is a resource-intensive operation that might affect concurrent activities on the cluster, including running queries. Avoid running too many such commands at the same time.
-* When matching the result set schema to that of the target table, the comparison is based on the column types. There's no matching of column names. Make sure that the query result schema columns are in the same order as the table. Else data will be ingested into the wrong column.
-* Setting the `distributed` flag to "true" is useful when the amount of data being
-  produced by the query is large, exceeds 1GB, and the query doesn't
-  require serialization, so that multiple nodes can produce output in parallel.
-  When the query results are small, don't use this flag, since it might needlessly generate many small data shards.
+* `.set-or-replace` will preserve the schema unless one of `extend_schema` or `recreate_schema` ingestion properties is set to "true".
+* `.set-or-append` and `.append` commands will preserve the schema unless the  `extend_schema` ingestion property is set to "true".
+* When matching the result set schema to that of the target table, the comparison is based on the column types. There's no matching of column names. Make sure that the query result schema columns are in the same order as the table, else data will be ingested into the wrong columns.
+
+> [!CAUTION]
+> If the schema is modified, it happens before the actual data ingestion in its own transaction. A failure to ingest the data doesn't mean the schema wasn't modified.
+
+## Performance considerations
+
+* Data ingestion is a resource-intensive operation that might affect concurrent activities on the cluster, including running queries. Avoid running too many ingestion commands at the same time.
+* Limit the data for ingestion to less than 1 GB per ingestion operation. If necessary, use multiple ingestion commands.
+* Set the `distributed` flag to `true` if the amount of data being produced by the query is large, exceeds 1 GB, and doesn't require serialization. Then, multiple nodes can produce output in parallel. Don't use this flag when query results are small, since it might needlessly generate many small data shards.
 
 ## Examples
 
