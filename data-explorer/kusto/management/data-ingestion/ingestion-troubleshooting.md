@@ -1,11 +1,11 @@
 ---
-title: Ingestion troubleshooting with .dup-next-ingest
-description: Learn how to troubleshoot your data ingestion on demand using .dup-next-ingest commands.
+title: Ingestion troubleshooting
+description: Learn how to troubleshoot your data ingestion on demand using .dup-next-ingest and .dup-next-failed-ingest commands.
 ms.topic: reference
 ms.date: 12/01/2022
 ---
 
-# Ingestion troubleshooting with .dup-next-ingest
+# Ingestion troubleshooting
 
 Use the `.dup-next-ingest` and `.dup-next-failed-ingest` commands for on-demand troubleshooting of your data ingestion pull flow.
 
