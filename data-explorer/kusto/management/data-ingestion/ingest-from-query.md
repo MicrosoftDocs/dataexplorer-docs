@@ -7,8 +7,7 @@ ms.date: 03/30/2020
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
 
-These commands execute a query or a control command and ingest the results of the query into a table. The difference between these commands, is how they treat
-existing or nonexistent tables and data.
+These commands execute a query or a control command and ingest the results of the query into a table. The difference between these commands, is how they treat existing or nonexistent tables and data.
 
 |Command          |If table exists                     |If table doesn't exist                    |
 |-----------------|------------------------------------|------------------------------------------|
@@ -54,7 +53,7 @@ existing or nonexistent tables and data.
 |`policy_ingestiontime` | bool | If `true`, enables the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) on a table that is created by this command. The default is `true`.|
 |`tags` | string | A JSON string that represents a list of [tags](../extents-overview.md#extent-tagging) to associate with the created extent. |
 |`docstring` | string | Description used to document the table.|
-|`distributed` | bool | If `true`, the command will ingest from all nodes executing the query in parallel. Default is `false`. See [performance considerations](#performance-considerations) below.|
+|`distributed` | bool | If `true`, the command will ingest from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips) below.|
 
 > [!NOTE]
 > Only `.show` control commands are supported.
@@ -68,7 +67,7 @@ existing or nonexistent tables and data.
 > [!CAUTION]
 > If the schema is modified, it happens before the actual data ingestion in its own transaction. A failure to ingest the data doesn't mean the schema wasn't modified.
 
-## Performance considerations
+## Performance tips
 
 * Data ingestion is a resource-intensive operation that might affect concurrent activities on the cluster, including running queries. Avoid running too many ingestion commands at the same time.
 * Limit the data for ingestion to less than 1 GB per ingestion operation. If necessary, use multiple ingestion commands.
@@ -131,7 +130,7 @@ Append data to the "OldExtents" table in the current database, while setting the
 ```
 
 **Return output**
- 
+
 Returns information on the extents created because of the `.set` or `.append` command.
 
 **Example output**
