@@ -28,6 +28,9 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 > [!NOTE]
 > The cluster and event hub should be associated with the same tenants, for different tenants please use [SDKs](./data-connection-event-hub-csharp.md)
 
+> [!NOTE]
+> To use the ingestion wizard, the user requires at least Database user permission.
+
 ## Ingest data
 
 1. In the left menu of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select the **Data** tab.
