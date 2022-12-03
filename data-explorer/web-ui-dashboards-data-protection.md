@@ -7,7 +7,7 @@ ms.date: 01/12/2022
 ms.custom: mode-portal
 ---
 
-## Azure Data Explorer Dashboards
+## Dashboards Data protection Overview
 
 Dashboards tell a story through visualizations, and are an excellent way to view your data and see all of your most important insights at a glance. Azure Data Explorer dashboards in the web UI natively support the Kusto Query Language over data hosted in Azure Data Explorer.
 
