@@ -71,8 +71,13 @@ items:
     - name: Formats for data ingestion
       displayName: supported data formats
       href: ingestion-supported-formats.md
-  - name: Data visualization overview
-    href: viz-overview.md
+  - name: Azure Data Explorer Dashboards
+    items:
+    - name: Data visualization overview
+      displayName: Kusto Web Explorer, KWE, Dashboards
+      href: viz-overview.md
+    - name: Data Protection
+      href: web-ui-dashboards-data-protection.md
   - name: Security
     items:
     - name: Security overview
