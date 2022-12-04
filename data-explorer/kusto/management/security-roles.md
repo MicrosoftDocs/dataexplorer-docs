@@ -136,18 +136,30 @@ When a principal attempts to make an operation on a secured resource, the system
 
 ## Materialized view role management
 
-`.show` `materialized-view` *MaterializedViewName* `principals`
+### Syntax
 
-`.set` `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
+* See all principals set on the table:
 
-`.add` `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
+    `.show` `materialized-view` *MaterializedViewName* `principals`
 
-`.drop` `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
+* Add new principals to the role without removing existing principals:
 
-Where:
+    `.add` `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
 
-* *MaterializedViewName* is the name of the materialized view whose security role is being modified
-* *Principal* is one or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md)
+* Remove the indicated principals from the roles and keeps the others:
+
+    `.drop` `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
+
+* Remove all principals from the role and set a new set of principals:
+
+    `.set` `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
+
+### Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *MaterializedViewName* | string | &check; | The name of the materialized view whose security role is being modified.|
+| *Principal* | string | | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
 
 ## Function security role management
 
