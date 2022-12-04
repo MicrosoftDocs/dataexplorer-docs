@@ -9,9 +9,9 @@ ms.date: 12/01/2022
 
 Use the `.dup-next-ingest` and `.dup-next-failed-ingest` commands for on-demand troubleshooting of your data ingestion pull flow.
 
-Invoking `.dup-next-ingest` causes the next data pull ingestion into the specified table to be duplicated to the specified storage container, and `.dup-next-failed-ingest` will do the same only if the ingestion process fails.
+On the next ingestion to the specified table, `.dup-next-ingest` uploads the successfully downloaded source files plus a file containing metadata on the ingestion request to the specified storage container. `.dup-next-failed-ingest` does the same process but only if the ingestion fails.
 
-The command causes the ingestion source files and another file containing metadata to be uploaded to the specified blob container. The file uploads to the blob container are performed by the same node that does the ingestion. Since the duplication configuration isn't persisted, rerun the command if there are admin node changes.
+The file uploads to the storage container are performed by the same node that does the ingestion. Since the duplication configuration isn't persisted, rerun the command if there are admin node changes.
 
 > [!NOTE]
 >
