@@ -9,22 +9,13 @@ ms.date: 09/07/2022
 
 > [!IMPORTANT]
 > Before altering authorization rules on your Kusto cluster(s), read the following:
-> [Kusto access control overview](../management/access-control/index.md) 
-> [role based authorization](../management/access-control/role-based-authorization.md) 
+>
+> * [Kusto access control overview](../management/access-control/index.md)
+> * [Role-based authorization](../management/access-control/role-based-authorization.md)
 
-This article describes the control commands used to manage security roles.
-Security roles define which security principals (users and applications) have
-permissions to operate on a secured resource such as a database or a table,
-and what operations are permitted. For example, principals that have the
-`database viewer` security role for a specific database can query and view all
-entities of that database (with the exception of restricted tables).
+This article describes the control commands used to manage security roles. Security roles determine if and how principals—such as users, groups, and apps—can interact with resources in your cluster—such as databases and tables.
 
-The security role can be associated with security principals or security groups (which
-can have other security principals or other security groups). When a security
-principal attempts to make an operation on a secured resource, the system checks
-that the principal is associated with at least one security role that grants
-permissions to perform this operation on the resource. This is called an
-**authorization check**. Failing the authorization check aborts the operation.
+When a principal attempts to make an operation on a secured resource, the system checks that the principal is associated with at least one security role that grants permissions to perform the desired operation on the resource. This is called an authorization check. Failing the authorization check aborts the operation.
 
 >[!NOTE]
 >To change security principals, you must be either a database admin or an alldatabases admin.
