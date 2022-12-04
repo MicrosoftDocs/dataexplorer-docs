@@ -18,43 +18,9 @@ This article describes the control commands used to manage security roles. Secur
 When a principal attempts to make an operation on a secured resource, the system checks that the principal is associated with at least one security role that grants permissions to perform the desired operation on the resource. This is called an authorization check. Failing the authorization check aborts the operation.
 
 >[!NOTE]
->To change security principals, you must be either a database admin or an alldatabases admin.
+> To change security principals, you must be either a database admin or an alldatabases admin.
 
-## Security roles management commands
-
-### Syntax
-
-*Verb* *SecurableObjectType* *SecurableObjectName* *Role* `(` *ListOfPrincipals* `)` [*Description*]
-
-### Parameters
-
-|Name|Type|Required|Description|
-|--|--|--|--|
-| *Verb* | string | &check; | The kind of action to perform. See [verb options](#verb-options).|
-| *SecurableObjectType* | string | &check; | The kind of object whose role is specified. See [SecurableObjectType options](#securableobjecttype-options).|
-| *SecurableObjectName* | string | &check; | The name of the *SecurableObjectType* object.|
-| *Role* | string | &check; | The name of the relevant role. See [role options](#role-options).|
-| *ListOfPrincipals* | string | &check; | Comma-delimited list of security principal identifiers.|
-| *Description* | string | | A description stored alongside the principal to security role association for future reference.
-
-#### Verb options
-
-|*Verb*|Description|
-|--|--|
-|`.show`|List the principals to the role.|
-|`.add` |Adds one or more principals to the role.|
-|`.drop`|Removes one or more principals from the role.|
-|`.set` |Sets the role to the specific list of principals, removing all previous ones.|
-
-#### SecurableObjectType options
-
-|*SecurableObjectType*|Description|
-|--|--|
-|`database`|The specified database.|
-|`table`|The specified table.|
-|`materialized-view`| The specified [materialized view](materialized-views/materialized-view-overview.md).|
-
-#### Role options
+## Role options
 
 |*Role*|Description|
 |--|--|
@@ -65,57 +31,48 @@ When a principal attempts to make an operation on a secured resource, the system
 |`ingestors` |At the database level only, allows data ingestion into all tables.|
 |`monitors` |At the specified scope (Database or AllDatabases) allows metadata (schemas, operations, permissiosn) view operations.|
 
-### .show command
+## Action options
 
-The `.show` command lists the principals that are set on the securable object. A line is returned for each role assigned to the principal.
+|Command|Description|
+|--|--|
+|`.show`|Lists the principals to the role.|
+|`.add` |Adds one or more principals to the role.|
+|`.drop`|Removes one or more principals from the role.|
+|`.set` |Sets the role to the specific list of principals, removing all previous ones.|
 
-#### Syntax
+## Database security roles management
 
-`.show` *SecurableObjectType* *SecurableObjectName* `principals`
+### Syntax
 
-#### Example
+* See all principals set on the database:
 
-The following control command lists all security principals which have some
-access to the table `StormEvents` in the database:
+    `.show` `database` *DatabaseName* `principals`
 
-```kusto
-.show table StormEvents principals
-```
+* Add new principals to the role without removing existing principals:
 
-Here are potential results from this command:
+    `.add` `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
 
-|Role |PrincipalType |PrincipalDisplayName |PrincipalObjectId |PrincipalFQN 
-|---|---|---|---|---
-|Database Apsty Admin |Azure AD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com|
+* Remove the indicated principals from the roles and keeps the others:
 
-## Managing database security roles
+    `.drop` `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
 
-`.set` `database` *DatabaseName* *Role* `none` [`skip-results`]
+* Remove all principals from the role:
 
-`.set` `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
+    `.set` `database` *DatabaseName* *Role* `none` [`skip-results`]
 
-`.add` `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
+* Remove all principals from the role and set a new set of principals:
 
-`.drop` `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
+    `.set` `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
 
-The first command removes all principals from the role. The second removes all
-principals from the role, and sets a new set of principals. The third adds new
-principals to the role without removing existing principals. The last removes
-the indicated principals from the roles and keeps the others.
+### Parameters
 
-Where:
-
-* *DatabaseName* is the name of the database whose security role is being modified.
-
-* *Role* is: `admins`, `ingestors`, `monitors`, `unrestrictedviewers`, `users`, or `viewers`.
-
-* *Principal* is one or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals.
-
-* `skip-results`, if provided, requests that the command will not return the updated
-  list of database principals.
-
-* *Description*, if provided, is text that will be associated with the change
-  and retrieved by the corresponding `.show` command.
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *DatabaseName* | string | &check; | The name of the database whose security role is being modified.|
+| *Role* | string | &check; | The name of the relevant role. See [role options](#role-options).|
+| *Principal* | string | | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
+| *Description* | string | | Text that will be associated with the change and retrieved by the `.show` command.
+| `skip-results` | | | If provided, the command will not return the updated list of database principals.|
 
 ### Example
 
@@ -130,7 +87,7 @@ Where:
 .add database Test viewers ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
 ```
 
-## Managing table security roles
+## Table security roles management
 
 `.set` `table` *TableName* *Role* `none` [`skip-results`]
 
