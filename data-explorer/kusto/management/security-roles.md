@@ -31,11 +31,11 @@ When a principal attempts to make an operation on a secured resource, the system
 |`ingestors` |At the database level only, allows data ingestion into all tables.|
 |`monitors` |At the specified scope (Database or AllDatabases) allows metadata (schemas, operations, permissiosn) view operations.|
 
-## Actions
+## Commands
 
 |Command|Description|
 |--|--|
-|`.show`|Lists the principals to the role.|
+|`.show`|Lists the principals to the resource.|
 |`.add` |Adds one or more principals to the role.|
 |`.drop`|Removes one or more principals from the role.|
 |`.set` |Sets the role to the specific list of principals, removing all previous ones.|
@@ -44,30 +44,23 @@ When a principal attempts to make an operation on a secured resource, the system
 
 ### Syntax
 
-* List all principals on the database:
+* List all principals:
 
-    `.show` `database` *DatabaseName* `principals`
+  `.show` `database` *DatabaseName* `principals`
 
-* Add new principals to the role without removing existing principals:
+* Remove all principals of the role:
 
-    `.add` `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
+  `.set` `database` *DatabaseName* *Role* `none` [`skip-results`]
 
-* Remove the indicated principals from the roles and keep the others:
+* Add, remove, or set principals of the role:
 
-    `.drop` `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
-
-* Remove all principals from the role:
-
-    `.set` `database` *DatabaseName* *Role* `none` [`skip-results`]
-
-* Remove all principals from the role and add a new set of principals:
-
-    `.set` `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
+  *Action* `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
 
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
+| *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
 | *DatabaseName* | string | &check; | The name of the database whose security role is being modified.|
 | *Role* | string | &check; | Any of the [security roles](#security-roles).|
 | *Principal* | string | | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
@@ -87,34 +80,27 @@ When a principal attempts to make an operation on a secured resource, the system
 .add database Test viewers ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
 ```
 
-## Table security roles management
+## Table roles management
 
 ### Syntax
 
-* See all principals set on the table:
+* List all principals:
 
-    `.show` `table` *TableName* `principals`
+  `.show` `table` *TableName* `principals`
 
-* Add new principals to the role without removing existing principals:
+* Remove all principals of the role:
 
-    `.add` `table` *TableName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
+  `.set` `table` *TableName* *Role* `none` [`skip-results`]
 
-* Remove the indicated principals from the roles and keeps the others:
+* Add, remove, or set principals of the role:
 
-    `.drop` `table` *TableName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
-
-* Remove all principals from the role:
-
-    `.set` `table` *TableName* *Role* `none` [`skip-results`]
-
-* Remove all principals from the role and set a new set of principals:
-
-    `.set` `table` *TableName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
+  *Action* `table` *TableName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
 
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
+| *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
 | *TableName* | string | &check; | The name of the table whose security role is being modified.|
 | *Role* | string | &check; | For tables, role must be either `admins` or `ingestors`. For more information, see [security-roles](#security-roles).|
 | *Principal* | string | | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
@@ -140,24 +126,17 @@ When a principal attempts to make an operation on a secured resource, the system
 
 * See all principals set on the table:
 
-    `.show` `materialized-view` *MaterializedViewName* `principals`
+  `.show` `materialized-view` *MaterializedViewName* `principals`
 
-* Add new principals to the role without removing existing principals:
+* Add, remove, or set principals of the role:
 
-    `.add` `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
-
-* Remove the indicated principals from the roles and keeps the others:
-
-    `.drop` `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
-
-* Remove all principals from the role and set a new set of principals:
-
-    `.set` `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
+  *Action* `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
 
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
+| *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
 | *MaterializedViewName* | string | &check; | The name of the materialized view whose security role is being modified.|
 | *Principal* | string | | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
 
