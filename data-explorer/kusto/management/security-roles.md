@@ -161,35 +161,29 @@ When a principal attempts to make an operation on a secured resource, the system
 | *MaterializedViewName* | string | &check; | The name of the materialized view whose security role is being modified.|
 | *Principal* | string | | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
 
-## Function security role management
+## Function role management
 
-`.set` `function` *FunctionName* *Role* `none` [`skip-results`]
+* List all principals:
 
-`.set` `function` *FunctionName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
+  `.show` `function` *FunctionName* `principals`
 
-`.add` `function` *FunctionName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
+* Remove all principals of the role:
 
-`.drop` `function` *FunctionName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
+  `.set` `function` *FunctionName* `admins` `none` [`skip-results`]
 
-The first command removes all principals from the role. The second removes all
-principals from the role, and sets a new set of principals. The third adds new
-principals to the role without removing existing principals. The last removes
-the indicated principals from the roles and keeps the others.
+* Add, remove, or set principals of the role:
 
-Where:
+  *Action* `function` *FunctionName* `admins` `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
 
-* *FunctionName* is the name of the function whose security role is being modified.
+### Parameters
 
-* *Role* is always `admin`.
-
-* *Principal* is one or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md)
-  for how to specify these principals.
-
-* `skip-results`, if provided, requests that the command will not return the updated
-  list of function principals.
-
-* *Description*, if provided, is text that will be associated with the change
-  and retrieved by the corresponding `.show` command.
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
+| *FunctionName* | string | &check; | The name of the function whose security role is being modified.|
+| *Principal* | string | | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
+| *Description* | string | | Text that will be associated with the change and retrieved by the `.show` command.
+| `skip-results` | | | If provided, the command will not return the updated list of database principals.|
 
 ### Example
 
