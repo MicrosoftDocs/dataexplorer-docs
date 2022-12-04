@@ -102,7 +102,7 @@ When a principal attempts to make an operation on a secured resource, the system
 |--|--|--|--|
 | *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
 | *TableName* | string | &check; | The name of the table whose security role is being modified.|
-| *Role* | string | &check; | For tables, role must be either `admins` or `ingestors`. For more information, see [security-roles](#security-roles).|
+| *Role* | string | &check; | For tables, role must be either `admins` or `ingestors`. For more information, see [security roles](#security-roles).|
 | *Principal* | string | | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
 | *Description* | string | | Text that will be associated with the change and retrieved by the `.show` command.
 | `skip-results` | | | If provided, the command will not return the updated list of database principals.|
