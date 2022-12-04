@@ -24,48 +24,50 @@ When a principal attempts to make an operation on a secured resource, the system
 
 ### Syntax
 
-*Verb* *SecurableObjectType* *SecurableObjectName* *Role* [`(` *ListOfPrincipals* `)` [*Description*]]
+*Verb* *SecurableObjectType* *SecurableObjectName* *Role* `(` *ListOfPrincipals* `)` [*Description*]
 
-### Arguments
+### Parameters
 
-* *Verb* indicates the kind of action to perform: `.show`, `.add`, `.drop`, and `.set`.
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *Verb* | string | &check; | The kind of action to perform. See [verb options](#verb-options).|
+| *SecurableObjectType* | string | &check; | The kind of object whose role is specified. See [SecurableObjectType options](#securableobjecttype-options).|
+| *SecurableObjectName* | string | &check; | The name of the *SecurableObjectType* object.|
+| *Role* | string | &check; | The name of the relevant role. See [role options](#role-options).|
+| *ListOfPrincipals* | string | &check; | Comma-delimited list of security principal identifiers.|
+| *Description* | string | | A description stored alongside the principal to security role association for future reference.
 
-    |*Verb* |Description                                  |
-    |-------|---------------------------------------------|
-    |`.add` |Adds one or more principals to the role.     |
-    |`.drop`|Removes one or more principals from the role.|
-    |`.set` |Sets the role to the specific list of principals, removing all previous ones (if any).|
+#### Verb options
 
-* *SecurableObjectType* is the kind of object whose role is specified.
+|*Verb*|Description|
+|--|--|
+|`.show`|List the principals to the role.|
+|`.add` |Adds one or more principals to the role.|
+|`.drop`|Removes one or more principals from the role.|
+|`.set` |Sets the role to the specific list of principals, removing all previous ones.|
 
-    |*SecurableObjectType*|Description|
-    |---------------------|-----------|
-    |`database`|The specified database|
-    |`table`|The specified table|
-    |`materialized-view`| The specified [materialized view](materialized-views/materialized-view-overview.md)| 
+#### SecurableObjectType options
 
-* *SecurableObjectName* is the name of the object.
+|*SecurableObjectType*|Description|
+|--|--|
+|`database`|The specified database.|
+|`table`|The specified table.|
+|`materialized-view`| The specified [materialized view](materialized-views/materialized-view-overview.md).|
 
-* *Role* is the name of the relevant role.
+#### Role options
 
-    |*Role*      |Description|
-    |------------|-----------|
-    |`admins`    |Have control over the securable object, including the ability to view, modify it, and remove the object and all sub-objects.|
-    |`users`     |Can view the securable object, and create new objects underneath it.|
-    |`viewers`   |Can view the securable object.|
-    |`unrestrictedviewers`|At the database level only, gives view permission to `admins`, `viewers` or `users` for all tables in the database that have a restricted view policy enabled. Use this role in addition to the `admins`, `viewers` or `users` roles. |
-    |`ingestors` |At the database level only, allows data ingestion into all tables.|
-    |`monitors`  |At the specified scope (Database or AllDatabases) allows metadata (schemas, operations, permissiosn) view operations.|
-
-* *ListOfPrincipals* is an optional, comma-delimited list of security principal
-  identifiers (values of type `string`).
-
-* *Description* is an optional value of type `string` that is stored alongside
-  the association, for future audit purposes.
+|*Role*|Description|
+|--|--|
+|`admins` |Have control over the securable object, including the ability to view, modify it, and remove the object and all sub-objects.|
+|`users` |Can view the securable object, and create new objects underneath it.|
+|`viewers` |Can view the securable object.|
+|`unrestrictedviewers`|At the database level only, gives view permission to `admins`, `viewers` or `users` for all tables in the database that have a restricted view policy enabled. Use this role in addition to the `admins`, `viewers` or `users` roles. |
+|`ingestors` |At the database level only, allows data ingestion into all tables.|
+|`monitors` |At the specified scope (Database or AllDatabases) allows metadata (schemas, operations, permissiosn) view operations.|
 
 ### .show command
 
-The `.show` command lists the principals that are set on the securable object. A line is returned for each role assigned to the principal. 
+The `.show` command lists the principals that are set on the securable object. A line is returned for each role assigned to the principal.
 
 #### Syntax
 
