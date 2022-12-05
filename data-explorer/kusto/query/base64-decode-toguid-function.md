@@ -37,10 +37,10 @@ print Quine = base64_decode_toguid("JpbpECu8dUy7Pv5gbeJXAA==")
 
 If you try to decode an invalid base64 string, "null" will be returned:
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUXDNLSipVLBVSEosTjUziU/NS85PSY1PK8rPTS/NTNFQSkxKTjE0MjZU0gQApqVKnzAAAAA=)
+[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUXDNLSipVLBVSEosTjUziU9JTc5PSY0vyU8vzUzRUEpMSk4xNDI2VNIEADTfymYuAAAA)
 
 ```kusto
-print Empty = base64_encode_fromguid("abcd1231")
+print Empty = base64_decode_toguid("abcd1231")
 ```
 
 ## See also
