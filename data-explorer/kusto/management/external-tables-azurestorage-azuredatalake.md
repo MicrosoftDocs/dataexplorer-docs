@@ -56,7 +56,7 @@ where *ColumnName* adheres to [entity naming](../query/schema-entities/entity-na
 <a name="kind"></a>
 *Kind*
 
-The type of the external table. In this case, `storage` should to be used (rather than `sql`).
+The type of the external table. In this case, `storage` should be used (rather than `sql`).
 
 >[!NOTE]
 > Deprecated terms:  `blob` for Blob Azure Storage or Azure Data Lake Gen 2 Storage, `adl` for Azure Data Lake Gen 1 Storage.
@@ -339,7 +339,7 @@ For partitioned table, `Partition` column will contain extracted partition value
 
 `.create` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
 
-Creates a new mapping. For more information, see [Data Mappings](./mappings.md#json-mapping).
+Creates a new mapping. For more information, see [Data Mappings](./json-mapping.md).
 
 **Example** 
  

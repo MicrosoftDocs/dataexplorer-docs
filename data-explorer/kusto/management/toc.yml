@@ -167,7 +167,21 @@ items:
     - name: ".alter-merge column-docstrings"
       href: alter-merge-table-column.md
   - name: Data mappings
-    href: mappings.md
+    items:
+    - name: Data mappings overview
+      href: mappings.md
+    - name: "CSV mapping"
+      href: csv-mapping.md
+    - name: "JSON mapping"
+      href: json-mapping.md
+    - name: "ARVO mapping"
+      href: avro-mapping.md
+    - name: "Parquet mapping"
+      href: parquet-mapping.md
+    - name: "ORC mapping"
+      href: orc-mapping.md
+    - name: "W3CLOGFILE mapping"
+      href: w3c-log-file-mapping.md
   - name: Functions
     items:
     - name: Stored functions management overview
