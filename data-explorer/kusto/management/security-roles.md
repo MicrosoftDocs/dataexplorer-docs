@@ -50,18 +50,58 @@ When a principal attempts to make an operation on a secured resource, the system
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands). The syntax for `.show` is different, see [list all principals](#list-all-principals).
+| *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
 | *ObjectType* | string | &check; | The type of object: `database`, `table`, `materialized-view` or `function`.
 | *ObjectName* | string | &check; | The name of the object for which to list principals.|
-| *Role* | string | &check; | One of the valid [security roles](#security-roles) for the specified object type.|
+| *Role* | string | &check; | A valid [security roles](#security-roles) for the specified object type.|
 | *Principal* | string | &check; | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
 | *Description* | string | | Text that will be associated with the change and retrieved by the `.show` command.
 | `skip-results` | string | | If provided, the command will not return the updated list of database principals.|
 
 > [!NOTE]
 >
-> * For tables, the role must be `admins` or `ingestors`.
-> * For materialized views and functions, the role must be `admins`.
+> * For tables, *Role* must be `admins` or `ingestors`.
+> * For materialized views and functions, *Role* must be `admins`.
+
+### Examples
+
+Database security roles management:
+
+```kusto
+// No need to specify AAD tenant for UPN, as Kusto performs the resolution by itself
+.add database Test users ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
+
+// AAD SG on 'fabrikam.com' tenant
+.add database Test admins ('aadGroup=SGEmail@fabrikam.com')
+
+// OPTIONAL: AAD App on another tenant - by tenant guid
+.add database Test viewers ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
+```
+
+Tables security roles management:
+
+```kusto
+// No need to specify AAD tenant for UPN, as Kusto performs the resolution by itself
+.add table TestTable admins ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
+
+// AAD SG on 'fabrikam.com' tenant
+.add table TestTable ingestors ('aadGroup=SGEmail@fabrikam.com')
+
+// OPTIONAL: AAD App on another tenant - by tenant guid
+.add table TestTable ingestors ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
+```
+
+Materialized view security roles management:
+
+```kusto
+.add materialized-view MyView admins ('aaduser=imike@fabrikam.com') 'This user should have access'
+```
+
+Function security roles management:
+
+```kusto
+.add function MyFunction admins ('aaduser=imike@fabrikam.com') 'This user should have access'
+```
 
 ## List all principals
 
@@ -116,44 +156,4 @@ The following control command removes all `viewers` on the `Samples` database:
 
 ```kusto
 .set database Samples viewers none
-```
-
-## Examples
-
-### Database role management
-
-```kusto
-// No need to specify AAD tenant for UPN, as Kusto performs the resolution by itself
-.add database Test users ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
-
-// AAD SG on 'fabrikam.com' tenant
-.add database Test admins ('aadGroup=SGEmail@fabrikam.com')
-
-// OPTIONAL: AAD App on another tenant - by tenant guid
-.add database Test viewers ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
-```
-
-### Table role management
-
-```kusto
-// No need to specify AAD tenant for UPN, as Kusto performs the resolution by itself
-.add table TestTable admins ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
-
-// AAD SG on 'fabrikam.com' tenant
-.add table TestTable ingestors ('aadGroup=SGEmail@fabrikam.com')
-
-// OPTIONAL: AAD App on another tenant - by tenant guid
-.add table TestTable ingestors ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
-```
-
-### Materialized view role management
-
-```kusto
-.add materialized-view MyView admins ('aaduser=imike@fabrikam.com') 'This user should have access'
-```
-
-### Function role management
-
-```kusto
-.add function MyFunction admins ('aaduser=imike@fabrikam.com') 'This user should have access'
 ```
