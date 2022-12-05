@@ -50,12 +50,12 @@ When a principal attempts to make an operation on a secured resource, the system
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *Action* | string | &check; | The command `.add`, `.drop`, or `.set`. For more information, see [commands](#commands).
-| *ObjectType* | string | &check; | The type of object: `database`, `table`, `materialized-view` or `function`.
+| *Action* | string | &check; | The command `.add`, `.drop`, or `.set`. For more information, see [commands](#commands).|
+| *ObjectType* | string | &check; | The type of object: `database`, `table`, `materialized-view` or `function`.|
 | *ObjectName* | string | &check; | The name of the object for which to list principals.|
 | *Role* | string | &check; | A valid [security roles](#security-roles) for the specified object type.|
 | *Principal* | string | &check; | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
-| *Description* | string | | Text that will be associated with the change and retrieved by the `.show` command.
+| *Description* | string | | Text that will be associated with the change and retrieved by the `.show` command.|
 | `skip-results` | string | | If provided, the command will not return the updated list of database principals.|
 
 > [!NOTE]
