@@ -50,7 +50,7 @@ When a principal attempts to make an operation on a secured resource, the system
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
+| *Action* | string | &check; | The command `.add`, `.drop`, or `.set`. For more information, see [commands](#commands).
 | *ObjectType* | string | &check; | The type of object: `database`, `table`, `materialized-view` or `function`.
 | *ObjectName* | string | &check; | The name of the object for which to list principals.|
 | *Role* | string | &check; | A valid [security roles](#security-roles) for the specified object type.|
