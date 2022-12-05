@@ -22,7 +22,7 @@ When a principal attempts to make an operation on a secured resource, the system
 
 ## Security roles
 
-|*Role*|Description|
+|Role|Description|
 |--|--|
 |`admins` |Have control over the securable object, including the ability to view, modify it, and remove the object and all sub-objects.|
 |`users` |Can view the securable object, and create new objects underneath it.|
@@ -40,34 +40,87 @@ When a principal attempts to make an operation on a secured resource, the system
 |`.drop`|Removes one or more principals from the role.|
 |`.set` |Sets the role to the specific list of principals, removing all previous ones.|
 
-## Database roles management
+## Managing security roles
 
 ### Syntax
 
-* List all principals:
-
-  `.show` `database` *DatabaseName* `principals`
-
-* Remove all principals of the specified role:
-
-  `.set` `database` *DatabaseName* *Role* `none` [`skip-results`]
-
-* Add, remove, or set principals of the specified role:
-
-  *Action* `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
+*Action* *ObjectType* *ObjectName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
 
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
-| *DatabaseName* | string | &check; | The name of the database whose security role is being modified.|
-| *Role* | string | &check; | Any of the [security roles](#security-roles).|
+| *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands). The syntax for `.show` is different, see [list all principals](#list-all-principals).
+| *ObjectType* | string | &check; | The type of object: `database`, `table`, `materialized-view` or `function`.
+| *ObjectName* | string | &check; | The name of the object for which to list principals.|
+| *Role* | string | &check; | One of the valid [security roles](#security-roles) for the specified object type.|
 | *Principal* | string | &check; | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
 | *Description* | string | | Text that will be associated with the change and retrieved by the `.show` command.
 | `skip-results` | string | | If provided, the command will not return the updated list of database principals.|
 
+> [!NOTE]
+>
+> * For tables, the role must be `admins` or `ingestors`.
+> * For materialized views and functions, the role must be `admins`.
+
+## List all principals
+
+The `.show` command lists the principals that are set on the securable object. A line is returned for each role assigned to the principal.
+
+### Syntax
+
+`.show` *ObjectType* *ObjectName* `principals`
+
+### Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *ObjectType* | string | &check; | The type of object: `database`, `table`, `materialized-view` or `function`.
+| *ObjectName* | string | &check; | The name of the object for which to list principals.|
+
 ### Example
+
+The following control command lists all security principals that have some
+access to the table `StormEvents` in the database:
+
+```kusto
+.show table StormEvents principals
+```
+
+Example result:
+
+|Role |PrincipalType |PrincipalDisplayName |PrincipalObjectId |PrincipalFQN 
+|---|---|---|---|---
+|Database Apsty Admin |Azure AD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com|
+
+## Remove all principals
+
+The `.set` command with `none` instead of a list of principals will remove all principals of the specified role.
+
+### Syntax
+
+`.set` *ObjectType* *ObjectName* *Role* `none` [`skip-results`]
+
+### Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *ObjectType* | string | &check; | The type of object: `database`, `table`, `materialized-view` or `function`.
+| *ObjectName* | string | &check; | The name of the object for which to list principals.|
+| *Role* | string | &check; | The role to clear of all principals. The value must be a valid [security role](#security-roles) for the type of object.|
+| `skip-results` | string | | If provided, the command will not return the updated list of principals.|
+
+### Example
+
+The following control command removes all `viewers` on the `Samples` database:
+
+```kusto
+.set database Samples viewers none
+```
+
+## Examples
+
+### Database role management
 
 ```kusto
 // No need to specify AAD tenant for UPN, as Kusto performs the resolution by itself
@@ -80,34 +133,7 @@ When a principal attempts to make an operation on a secured resource, the system
 .add database Test viewers ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
 ```
 
-## Table roles management
-
-### Syntax
-
-* List all principals:
-
-  `.show` `table` *TableName* `principals`
-
-* Remove all principals of the specified role:
-
-  `.set` `table` *TableName* *Role* `none` [`skip-results`]
-
-* Add, remove, or set principals of the specified role:
-
-  *Action* `table` *TableName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
-
-### Parameters
-
-|Name|Type|Required|Description|
-|--|--|--|--|
-| *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
-| *TableName* | string | &check; | The name of the table whose security role is being modified.|
-| *Role* | string | &check; | For tables, role must be either `admins` or `ingestors`. For more information, see [security roles](#security-roles).|
-| *Principal* | string | &check;  | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
-| *Description* | string | | Text that will be associated with the change and retrieved by the `.show` command.
-| `skip-results` | string | | If provided, the command will not return the updated list of principals.|
-
-### Example
+### Table role management
 
 ```kusto
 // No need to specify AAD tenant for UPN, as Kusto performs the resolution by itself
@@ -120,56 +146,13 @@ When a principal attempts to make an operation on a secured resource, the system
 .add table TestTable ingestors ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
 ```
 
-## Materialized view role management
+### Materialized view role management
 
-### Syntax
+```kusto
+.add materialized-view MyView admins ('aaduser=imike@fabrikam.com') 'This user should have access'
+```
 
-* List all principals:
-
-  `.show` `materialized-view` *MaterializedViewName* `principals`
-
-* Remove all principals:
-
-  `.set` `materialized-view` *MaterializedViewName* `admins` `none` [`skip-results`]
-
-* Add, remove, or set principals:
-
-  *Action* `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
-
-### Parameters
-
-|Name|Type|Required|Description|
-|--|--|--|--|
-| *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
-| *MaterializedViewName* | string | &check; | The name of the materialized view whose security role is being modified.|
-| *Principal* | string | &check; | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
-| `skip-results` | string | | If provided, the command will not return the updated list of principals.|
-
-## Function role management
-
-* List all principals:
-
-  `.show` `function` *FunctionName* `principals`
-
-* Remove all principals:
-
-  `.set` `function` *FunctionName* `admins` `none` [`skip-results`]
-
-* Add, remove, or set principals:
-
-  *Action* `function` *FunctionName* `admins` `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
-
-### Parameters
-
-|Name|Type|Required|Description|
-|--|--|--|--|
-| *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
-| *FunctionName* | string | &check; | The name of the function whose security role is being modified.|
-| *Principal* | string | &check; | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
-| *Description* | string | | Text that will be associated with the change and retrieved by the `.show` command.
-| `skip-results` | string | | If provided, the command will not return the updated list of principals.|
-
-### Example
+### Function role management
 
 ```kusto
 .add function MyFunction admins ('aaduser=imike@fabrikam.com') 'This user should have access'
