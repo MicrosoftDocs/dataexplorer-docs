@@ -19,7 +19,7 @@ Counts the rows in which *predicate* evaluates to `true`.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *predicate*|  string | &check; | The expression used for aggregation calculation. THe value can be any scalar expression with a return type of bool.
+| *predicate*|  string | &check; | The expression used for aggregation calculation. The value can be any scalar expression with a return type of bool.
 
 ## Returns
 
