@@ -135,13 +135,9 @@ items:
         href: table-retention-policy-wizard.md
   - name: Ingest data
     items:
-    - name: Ingestion wizard
-      items:
-      - name: JSON data from local file to existing table
-        displayName: ingest data, ingestion, one click
-        href: ingestion-wizard-existing-table.md
-      - name: Sample app generator
-        href: sample-app-generator-wizard.md
+    - name: Ingest JSON data using the wizard
+      displayName: ingest data, ingestion wizard, one click, local file, existing table
+      href: ingestion-wizard-existing-table.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
@@ -408,7 +404,7 @@ items:
     items:
     - name: API overview
       href: kusto/api/index.md
-    - name: One-click sample app generator
+    - name: Sample app generator
       href: sample-app-generator-one-click.md
     - name: Connection strings
       items:
