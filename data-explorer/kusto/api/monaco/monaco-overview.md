@@ -26,7 +26,7 @@ You can integrate Azure Data Explorer capabilities in your apps in the following
 
     Integrating the [Monaco Editor](https://microsoft.github.io/monaco-editor/) in your app offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition. It requires you to build a solution for authentication, query execution, result display, and schema exploration. It offers you full flexibility to fashion the user experience that fits your needs.
 
-- [Embed the Azure Data Explorer web UI in an iframe](host-web-ux-in-iframe.md)
+- [Embed the Azure Data Explorer web UI in an IFrame](host-web-ux-in-iframe.md)
 
     Embedding the Azure Data Explorer web UI offers you extensive functionality with little effort, but contains limited flexibility for the user experience. There's a fixed set of query parameters that enable limited control over the system's look and behavior.
 

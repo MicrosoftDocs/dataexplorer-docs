@@ -1,19 +1,19 @@
 ---
-title: Embed the Azure Data Explorer web UI in an **iframe**.
-description: Learn how to embed the Azure Data Explorer web UI in an **iframe**.
+title: Embed the Azure Data Explorer web UI in an **IFrame**.
+description: Learn how to embed the Azure Data Explorer web UI in an **IFrame**.
 ms.reviewer: izlisbon
 ms.topic: how-to
 ms.date: 11/22/2022
 ---
-# Embed the Azure Data Explorer web UI in an iframe
+# Embed the Azure Data Explorer web UI in an IFrame
 
-The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites. This article describes how to embed the Azure Data Explorer web UI in an iframe.
+The Azure Data Explorer web UI can be embedded in an IFrame and hosted in third-party websites. This article describes how to embed the Azure Data Explorer web UI in an IFrame.
 
 :::image type="content" source="../images/host-web-ux-in-iframe/web-ux.png" alt-text="Screenshot of the Azure Data Explorer web U I.":::
 
 All functionality is tested for accessibility and supports dark and light on-screen themes.
 
-## How to embed the web UI in an iframe
+## How to embed the web UI in an IFrame
 
 Add the following code to your website:
 
@@ -23,13 +23,13 @@ Add the following code to your website:
 ></iframe>
 ```
 
-The `f-IFrameAuth` query parameter tells the Azure Data Explorer web UI *not* to redirect to get an authentication token. This action is necessary, since the hosting website is responsible for providing an authentication token to the embedded iframe.
+The `f-IFrameAuth` query parameter tells the Azure Data Explorer web UI *not* to redirect to get an authentication token. This action is necessary, since the hosting website is responsible for providing an authentication token to the embedded IFrame.
 
-Replace `<cluster>` with the hostname of the cluster you want to load into the connection pane, such as `help.kusto.windows.net`. By default, iframe-embedded mode doesn't provide a way to add clusters from the UI, since the assumption is that the hosting website is aware of the required cluster.
+Replace `<cluster>` with the hostname of the cluster you want to load into the connection pane, such as `help.kusto.windows.net`. By default, *iframe-embedded* mode doesn't provide a way to add clusters from the UI, since the assumption is that the hosting website is aware of the required cluster.
 
 ### Handle authentication
 
-1. When set to 'iframe mode' (`f-IFrameAuth=true`), the Azure Data Explorer web UI won't try to redirect for authentication. The message posting mechanism that browsers use, is used to request and receive a token. During page loading, the following message will be posted to the parent window:
+1. When set to *IFrame* mode (`f-IFrameAuth=true`), the Azure Data Explorer web UI won't try to redirect for authentication. The message posting mechanism that browsers use, is used to request and receive a token. During page loading, the following message will be posted to the parent window:
 
     ```javascript
     window.parent.postMessage({
@@ -51,15 +51,15 @@ Replace `<cluster>` with the hostname of the cluster you want to load into the c
     {
       "type": "postToken",
       "message": "${the actual authentication token}",
-      "scope": "${The scope that was received in the message from the iframe}"
+      "scope": "${The scope that was received in the message from the IFrame}"
     }
     ```
 
 1. The provided token should be a [JWT token](https://tools.ietf.org/html/rfc7519) obtained from the [Azure Active Directory (Azure AD) authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
 When generating the token:
 
-    - If the scope isn't query: use the scope from the message above.
-    - If the scope is query: use the scope of your service, as described in the [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
+    - If the scope isn't a query, use the scope from the message.
+    - If the scope is a query, use the scope of your service, as described in the [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
 
     For example, you can calculate the scope as follows:
 
@@ -74,7 +74,7 @@ When generating the token:
 
 To embed a dashboard, you'll need to make a few changes to the steps.
 
-1. Change the URL of the iframe, to include the `f-IFrameAuth=true` feature flag.
+1. Change the URL of the IFrame, to include the `f-IFrameAuth=true` feature flag.
 
     ```html
     <iframe
@@ -130,7 +130,7 @@ To embed a dashboard, you'll need to make a few changes to the steps.
 ### Feature flags
 
 > [!IMPORTANT]
-> The `f-IFrameAuth=true` flag is required for the iframe to work. The other flags are optional.
+> The `f-IFrameAuth=true` flag is required for the IFrame to work. The other flags are optional.
 
 The hosting app may want to control certain aspects of the user experience. For example, hide the connection pane, or disable connecting to other clusters.
 For this scenario, the web explorer supports feature flags.
@@ -145,13 +145,13 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-ShowFileMenu | Show the file menu (**download**, **tab**, **content**, and so on) | true |
 | f-ShowToS | Show **link to the terms of service for Azure Data Explorer** from the settings dialog | true |
 | f-ShowPersona | Show the user name from the settings menu, in the top-right corner | true |
-| f-IFrameAuth | If true, the web explorer will expect the iframe to handle authentication and provide a token via a message. This process will always be true for iframe scenarios | false |
-| f-PersistAfterEachRun | Usually the web explorer will persist in the unload event. When hosting in iframes, it doesn't always fire. This flag will then trigger **persisting local state** after each query run. As a result, any data loss that occurs, will only affect text that had never been run, thus limiting its impact | false |
+| f-IFrameAuth | If true, the web explorer will expect the IFrame to handle authentication and provide a token via a message. This process will always be true for IFrame scenarios | false |
+| f-PersistAfterEachRun | Usually, browsers persist in the unload event. However, the unload event isn't always triggered when hosting in an IFrame. This flag will then trigger **persisting local state** after each query run. As a result, any data loss that occurs, will only affect text that had never been run, thus limiting its impact | false |
 | f-ShowSmoothIngestion | If true, show the ingestion wizard experience when right-clicking on a database | true |
 | f-RefreshConnection | If true, always refreshes the schema when loading the page and never depends on local storage | false |
 | f-ShowPageHeader | If true, shows the page header that includes the Azure Data Explorer title and settings | true |
 | f-HideConnectionPane | If true, the left connection pane doesn't display | false |
-| f-SkipMonacoFocusOnInit | Fixes the focus issue when hosting on iframe | false |
+| f-SkipMonacoFocusOnInit | Fixes the focus issue when hosting on IFrame | false |
 | f-Homepage | Enable the homepage and rerouting new users to it | true |
 | f-ShowNavigation | IF true, shows the navigation pane on the left | true |
 | f-DisableDashboardTopBar | IF true, hides the top bar in the dashboard | false |

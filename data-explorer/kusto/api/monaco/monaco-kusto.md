@@ -58,9 +58,9 @@ You can set up your app to use *monaco-kusto* using one of the following methods
 1. Copy the static files from the *monaco* and *monaco-kusto* packages to the **monaco-editor** folder on your web server. Your app will need to access these static files.
 1. Use monaco's `loader.js` to load them. For an example, see [sample code](https://github.com/Azure/monaco-kusto/tree/master/samples/react/src/monaco-kusto.js)
 
-### [ESM (webpack)](#tab/esm)
+### [ESM (Webpack)](#tab/esm)
 
-The following steps describe how to set up your app to use *monaco-kusto* using webpack. The default entry point for a project is the *src/index.js* file and the default configuration file is the *src/webpack.config.js* file. The following steps assume that you're using the default webpack project setup to bundle your app.
+The following steps describe how to set up your app to use *monaco-kusto* using Webpack. The default entry point for a project is the *src/index.js* file and the default configuration file is the *src/webpack.config.js* file. The following steps assume that you're using the default Webpack project setup to bundle your app.
 
 1. In the configuration file, add the following snippets:
     1. Under **resolve.alias**, add the following aliases:
@@ -87,7 +87,7 @@ The following steps describe how to set up your app to use *monaco-kusto* using 
         { test: /kustoMonarchLanguageDefinition/, loader: 'imports-loader?Kusto' },
         ```
 
-    1. Under **entry**, add the following entry point. Make a note the worker path returned, you'll need this later.
+    1. Under **entry**, add the following entry point. Make a note the worker path returned, you'll need it later.
 
         ```javascript
         `@kusto/monaco-kusto/release/esm/kusto.worker.js`
@@ -132,7 +132,7 @@ The following steps describe how to set up your app to use *monaco-kusto* using 
 
 ## Add your database schema to the editor
 
-The *monaco-kusto* package provides a way to add your database schema to the editor. This enables the editor to provide auto-complete suggestions and other features.
+The *monaco-kusto* package provides a way to add your database schema to the editor. The schema enables the editor to provide auto-complete suggestions and other features.
 
 Use the following structure to define the schema:
 
