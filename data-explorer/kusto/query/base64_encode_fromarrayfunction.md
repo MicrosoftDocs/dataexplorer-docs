@@ -17,7 +17,7 @@ Encodes a base64 string from a bytes array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *base64_string_decodced_as_array* | dynamic | &check; | The bytes array to be encoded into base64 string. |
+| *base64_string_decodced_as_array* | dynamic | &check; | The bytes array to be encoded into a base64 string. |
 
 ## Returns
 
@@ -52,5 +52,5 @@ print empty_string = base64_encode_fromarray(empty_bytes_array)
 ## See also
 
 * For decoding base64 strings to a UTF-8 string, see [base64_decode_tostring()](base64_decode_tostringfunction.md)
-* For encoding strings to base64 string see [base64_encode_tostring()](base64_encode_tostringfunction.md)
+* For encoding strings to a base64 string see [base64_encode_tostring()](base64_encode_tostringfunction.md)
 * This function is the inverse of [base64_decode_toarray()](base64_decode_toarrayfunction.md)
