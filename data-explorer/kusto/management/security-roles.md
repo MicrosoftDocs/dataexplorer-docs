@@ -48,11 +48,11 @@ When a principal attempts to make an operation on a secured resource, the system
 
   `.show` `database` *DatabaseName* `principals`
 
-* Remove all principals of the role:
+* Remove all principals of the specified role:
 
   `.set` `database` *DatabaseName* *Role* `none` [`skip-results`]
 
-* Add, remove, or set principals of the role:
+* Add, remove, or set principals of the specified role:
 
   *Action* `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
 
@@ -63,7 +63,7 @@ When a principal attempts to make an operation on a secured resource, the system
 | *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
 | *DatabaseName* | string | &check; | The name of the database whose security role is being modified.|
 | *Role* | string | &check; | Any of the [security roles](#security-roles).|
-| *Principal* | string | | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
+| *Principal* | string | &check; | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
 | *Description* | string | | Text that will be associated with the change and retrieved by the `.show` command.
 | `skip-results` | | | If provided, the command will not return the updated list of database principals.|
 
@@ -88,11 +88,11 @@ When a principal attempts to make an operation on a secured resource, the system
 
   `.show` `table` *TableName* `principals`
 
-* Remove all principals of the role:
+* Remove all principals of the specified role:
 
   `.set` `table` *TableName* *Role* `none` [`skip-results`]
 
-* Add, remove, or set principals of the role:
+* Add, remove, or set principals of the specified role:
 
   *Action* `table` *TableName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
 
@@ -103,7 +103,7 @@ When a principal attempts to make an operation on a secured resource, the system
 | *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
 | *TableName* | string | &check; | The name of the table whose security role is being modified.|
 | *Role* | string | &check; | For tables, role must be either `admins` or `ingestors`. For more information, see [security roles](#security-roles).|
-| *Principal* | string | | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
+| *Principal* | string | &check;  | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
 | *Description* | string | | Text that will be associated with the change and retrieved by the `.show` command.
 | `skip-results` | | | If provided, the command will not return the updated list of database principals.|
 
@@ -124,11 +124,15 @@ When a principal attempts to make an operation on a secured resource, the system
 
 ### Syntax
 
-* See all principals set on the table:
+* List all principals:
 
   `.show` `materialized-view` *MaterializedViewName* `principals`
 
-* Add, remove, or set principals of the role:
+* Remove all principals:
+
+  `.set` `materialized-view` *MaterializedViewName* `admins` `none` [`skip-results`]
+
+* Add, remove, or set principals:
 
   *Action* `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
 
@@ -138,7 +142,7 @@ When a principal attempts to make an operation on a secured resource, the system
 |--|--|--|--|
 | *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
 | *MaterializedViewName* | string | &check; | The name of the materialized view whose security role is being modified.|
-| *Principal* | string | | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
+| *Principal* | string | &check; | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
 
 ## Function role management
 
@@ -146,7 +150,7 @@ When a principal attempts to make an operation on a secured resource, the system
 
   `.show` `function` *FunctionName* `principals`
 
-* Remove all principals of the role:
+* Remove all principals of the specified role:
 
   `.set` `function` *FunctionName* `admins` `none` [`skip-results`]
 
@@ -160,7 +164,7 @@ When a principal attempts to make an operation on a secured resource, the system
 |--|--|--|--|
 | *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
 | *FunctionName* | string | &check; | The name of the function whose security role is being modified.|
-| *Principal* | string | | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
+| *Principal* | string | &check; | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
 | *Description* | string | | Text that will be associated with the change and retrieved by the `.show` command.
 | `skip-results` | | | If provided, the command will not return the updated list of database principals.|
 
