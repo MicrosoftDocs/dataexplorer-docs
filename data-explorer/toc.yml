@@ -405,7 +405,7 @@ items:
     - name: API overview
       href: kusto/api/index.md
     - name: Sample app generator
-      href: sample-app-generator-one-click.md
+      href: sample-app-generator-wizard.md
     - name: Connection strings
       items:
       - name: Connection strings overview
