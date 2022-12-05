@@ -13,9 +13,9 @@ ms.date: 09/07/2022
 > * [Kusto access control overview](../management/access-control/index.md)
 > * [Role-based authorization](../management/access-control/role-based-authorization.md)
 
-This article describes the control commands used to manage security roles. Security roles determine if and how principals—such as users, groups, and apps—can interact with resources in your cluster—such as databases and tables.
+This article describes the control commands used to manage security roles. Security roles determine if and how principals—such as users, groups, and apps—can interact with resources in your cluster.
 
-When a principal attempts to make an operation on a secured resource, the system checks that the principal is associated with at least one security role that grants permissions to perform the desired operation on the resource. This is called an authorization check. Failing the authorization check aborts the operation.
+When a principal attempts to make an operation on a secured resource, the system checks that the principal is associated with at least one security role that grants permissions to perform the operation on the resource. This is called an authorization check. Failing the authorization check aborts the operation.
 
 >[!NOTE]
 > To change security principals, you must be either a database admin or an alldatabases admin.
