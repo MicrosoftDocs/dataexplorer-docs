@@ -19,11 +19,11 @@ Encodes a string as base64 string.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *string* | string | &check; |  The value to encode as base64 string. |
+| *string* | string | &check; |  The value to encode as a base64 string. |
 
 ## Returns
 
-Returns *string* encoded as base64 string.
+Returns *string* encoded as a base64 string.
 
 ## Example
 
