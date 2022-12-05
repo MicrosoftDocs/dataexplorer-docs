@@ -150,11 +150,11 @@ When a principal attempts to make an operation on a secured resource, the system
 
   `.show` `function` *FunctionName* `principals`
 
-* Remove all principals of the specified role:
+* Remove all principals:
 
   `.set` `function` *FunctionName* `admins` `none` [`skip-results`]
 
-* Add, remove, or set principals of the role:
+* Add, remove, or set principals:
 
   *Action* `function` *FunctionName* `admins` `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
 
