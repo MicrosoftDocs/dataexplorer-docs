@@ -124,7 +124,8 @@ The following *Options* are all optional:
   * Authorized principals at the database/table level.
   * Row level security policies at the table level.
   * Restricted view access policies at the table level.
-* `IncludeIngestionMappings`: (`true` | `false`) - If `true`, ingestion mappings at the table level will be included. Defaults to `false`. 
+* `IncludeIngestionMappings`: (`true` | `false`) - If `true`, ingestion mappings at the table level will be included. Defaults to `false`.
+* `showObfuscatedStrings`: (`true` | `false`) -  Defaults to `false`. If `true`, credentials persisted in Kusto configurations will be visible to Database admins, Cluster admins, and creators of the entity that holds the credentials. If the user don't have those permissions - the command will fail.
 
 **Returns**
 
