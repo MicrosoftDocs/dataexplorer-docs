@@ -11,13 +11,13 @@ Encodes a base64 string from a bytes array.
 
 ## Syntax
 
-`base64_encode_fromarray(`*base64_string_decodced_as_array*`)`
+`base64_encode_fromarray(`*base64_string_decoded_as_array*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *base64_string_decodced_as_array* | dynamic | &check; | The bytes array to be encoded into a base64 string. |
+| *base64_string_decoded_as_array* | dynamic | &check; | The bytes array to be encoded into a base64 string. |
 
 ## Returns
 
