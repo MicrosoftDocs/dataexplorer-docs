@@ -40,6 +40,27 @@ datatable(local_dt: datetime, tz: string)
 |2020-02-02 20:02:20.0000000|America/Chicago|2020-02-03 02:02:20.0000000|
 |2020-02-02 20:02:20.0000000|US/Pacific|2020-02-03 04:02:20.0000000|
 
+
+> [!NOTE] Normally there is a 1:1 mapping between UTC and local time, however there is a time ambiguity near DST transition.
+> Translating from local to UTC and then back to local might produce an hour offset between two local datetime values if the clocks were advanced due to DST.
+
+
+```kusto
+range Local from datetime(2022-03-27 01:00:00.0000000) to datetime(2022-03-27 04:00:00.0000000) step 1h
+| extend UTC=datetime_local_to_utc(Local, 'Europe/Brussels')
+| extend BackToLocal=datetime_utc_to_local(UTC, 'Europe/Brussels')
+| extend diff=Local-BackToLocal
+```
+ 
+|Local|UTC|BackToLocal|diff|
+|---|---|---|---|
+|2022-03-27 02:00:00.0000000|2022-03-27 00:00:00.0000000|2022-03-27 01:00:00.0000000|01:00:00|
+|2022-03-27 01:00:00.0000000|2022-03-27 00:00:00.0000000|2022-03-27 01:00:00.0000000|00:00:00|
+|2022-03-27 03:00:00.0000000|2022-03-27 01:00:00.0000000|2022-03-27 03:00:00.0000000|00:00:00|
+|2022-03-27 04:00:00.0000000|2022-03-27 02:00:00.0000000|2022-03-27 04:00:00.0000000|00:00:00|
+ 
+
+
 ## See also
 
 * To convert from UTC to local, see [datetime_utc_to_local()](datetime-utc-to-local-function.md).
