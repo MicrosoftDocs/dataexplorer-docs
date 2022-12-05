@@ -124,7 +124,9 @@ Where:
 * *Description*, if provided, is text that will be associated with the change
   and retrieved by the corresponding `.show` command.
 
-### Example
+### Examples
+
+Add security roles:
 
 ```kusto
 // No need to specify AAD tenant for UPN, as Kusto performs the resolution by itself
@@ -135,7 +137,11 @@ Where:
 
 // OPTIONAL: AAD App on another tenant - by tenant guid
 .add database Test viewers ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
+```
 
+Remove security roles:
+
+```kusto
 .drop database Test admins ('aadGroup=SGEmail@fabrikam.com')
 ```
 
@@ -168,7 +174,9 @@ Where:
 * *Description*, if provided, is text that will be associated with the change
   and retrieved by the corresponding `.show` command.
 
-### Example
+### Examples
+
+Add security roles:
 
 ```kusto
 // No need to specify AAD tenant for UPN, as Kusto performs the resolution by itself
@@ -179,7 +187,11 @@ Where:
 
 // OPTIONAL: AAD App on another tenant - by tenant guid
 .add table TestTable ingestors ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
+```
 
+Drop security roles:
+
+```kusto
 .drop table TestTable admins ('aaduser=imikeoein@fabrikam.com')
 ```
 
