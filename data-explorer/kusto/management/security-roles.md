@@ -13,7 +13,7 @@ ms.date: 09/07/2022
 > * [Kusto access control overview](../management/access-control/index.md)
 > * [Role-based authorization](../management/access-control/role-based-authorization.md)
 
-This article describes the control commands used to manage security roles. Security roles determine if and how principals—such as users, groups, and apps—can interact with resources in your cluster.
+This article describes the control commands used to manage security roles. Security roles determine if and how principals—users, groups, and apps—can interact with resources in your cluster.
 
 When a principal attempts to make an operation on a secured resource, the system checks that the principal is associated with at least one security role that grants permissions to perform the operation on the resource. This is called an authorization check. Failing the authorization check aborts the operation.
 
@@ -65,7 +65,7 @@ When a principal attempts to make an operation on a secured resource, the system
 | *Role* | string | &check; | Any of the [security roles](#security-roles).|
 | *Principal* | string | &check; | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
 | *Description* | string | | Text that will be associated with the change and retrieved by the `.show` command.
-| `skip-results` | | | If provided, the command will not return the updated list of database principals.|
+| `skip-results` | string | | If provided, the command will not return the updated list of database principals.|
 
 ### Example
 
@@ -105,7 +105,7 @@ When a principal attempts to make an operation on a secured resource, the system
 | *Role* | string | &check; | For tables, role must be either `admins` or `ingestors`. For more information, see [security roles](#security-roles).|
 | *Principal* | string | &check;  | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
 | *Description* | string | | Text that will be associated with the change and retrieved by the `.show` command.
-| `skip-results` | | | If provided, the command will not return the updated list of database principals.|
+| `skip-results` | string | | If provided, the command will not return the updated list of principals.|
 
 ### Example
 
@@ -143,6 +143,7 @@ When a principal attempts to make an operation on a secured resource, the system
 | *Action* | string | &check; | The command `.add`, `.remove`, or `.set`. For more information, see [commands](#commands).
 | *MaterializedViewName* | string | &check; | The name of the materialized view whose security role is being modified.|
 | *Principal* | string | &check; | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
+| `skip-results` | string | | If provided, the command will not return the updated list of principals.|
 
 ## Function role management
 
@@ -166,7 +167,7 @@ When a principal attempts to make an operation on a secured resource, the system
 | *FunctionName* | string | &check; | The name of the function whose security role is being modified.|
 | *Principal* | string | &check; | One or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals. |
 | *Description* | string | | Text that will be associated with the change and retrieved by the `.show` command.
-| `skip-results` | | | If provided, the command will not return the updated list of database principals.|
+| `skip-results` | string | | If provided, the command will not return the updated list of principals.|
 
 ### Example
 
