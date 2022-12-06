@@ -42,7 +42,7 @@ The following table shows which security roles are allowed for each object type.
 |`viewers` |&check;||||
 |`unrestrictedviewers`|&check;||||
 |`ingestors` |&check;|&check;|||
-|`monitors` |&check;|||||
+|`monitors` |&check;||||
 
 ## List all principals
 
