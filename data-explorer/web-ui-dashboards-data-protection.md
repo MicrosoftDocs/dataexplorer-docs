@@ -13,11 +13,11 @@ Dashboards tell a story through visualizations, and are an excellent way to view
 
 This article discusses the steps that Microsoft takes to help keep your dashboards available, secure, and private. 
 
-It will be most useful to individuals who are already familiar with Azure Data Explorer Web UI and want to know more about how Microsoft protects stored assets related to Azure Data Explorer Dashboards.
+It will be most useful to individuals who are already familiar with Azure Data Explorer Web UI and want to know more about how Microsoft protects stored assets related to [Azure Data Explorer Dashboards](https://dataexplorer.azure.com/dashboards).
 
 ## Our commitment
 
-Microsoft helps to ensure that your projects remain safe and secure, without exception. When stored in Azure Data Explorer Dashboards, your projects benefit from multiple layers of security and governance technologies, operational practices, and compliance policies. We enforce data privacy and integrity both at rest and in transit.
+Microsoft helps to ensure that your data remains safe and secure, without exception. When stored in Azure Data Explorer Dashboards, your data benefits from multiple layers of security and governance technologies, operational practices, and compliance policies. We enforce data privacy and integrity both at rest and in transit.
 
 ## Built on Azure
 
