@@ -387,6 +387,8 @@ items:
     href: packfunction.md
   - name: bag_remove_keys()
     href: bag-remove-keys-function.md
+  - name: bag_set_key()
+    href: bag-set-key-function.md
   - name: base64_decode_toarray()
     href: base64_decode_toarrayfunction.md
   - name: base64_decode_tostring()
