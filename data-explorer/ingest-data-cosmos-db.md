@@ -3,7 +3,7 @@ title: Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
 description: Learn how to ingest (load) data into Azure Data Explorer from Cosmos DB.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 11/21/2022
+ms.date: 12/06/2022
 ---
 
 # Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
@@ -28,20 +28,15 @@ Step 4: Create a Cosmos DB data connection
 
 ## Prerequisites
 
-//VP:: What are the prereqs?
-
 - An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 - An existing or new [cluster and database](create-cluster-database-portal.md).
-- An existing container from a [Cosmos DB account for NoSql](/azure/cosmos-db/nosql/)
+- An existing container from a [Cosmos DB account for NoSQL](/azure/cosmos-db/nosql/)
 
 ## Step 1: Choose an Azure Data Explorer table and configure if its table mapping
 
-//Shlomo:  https://learn.microsoft.com/azure/data-explorer/ingest-data-event-hub#create-a-target-table-in-azure-data-explorer goes with screen shots to show how to execute a command.  I don't know if that is necessary?
-// VP: Not required, though good if it's complex. I think these steps are pretty straightforward.
+1. In the Azure Data Explorer web UI, from the left navigation menu select **Query**, and then select the database where you want to create the table.
 
-1. In the Azure Data Explorer web UI, select **Query** from the left navigation menu, and then select the database where you want the table to be created.
-
-1. Copy the following command into the copy window and select Run to create the table (TestTable).
+1. Run the following command to create a table called *TestTable*.
 
     ```kusto
     .create table TestTable(Id:string, Name:string, _ts:long, _timestamp:datetime)
@@ -49,7 +44,7 @@ Step 4: Create a Cosmos DB data connection
 
 1. Run the following command to create the table mapping.
 
-    The command maps custom properties from a Cosmos DB JSON document to columns in your Azure Data Explorer table, as follows:
+    The command maps custom properties from a Cosmos DB JSON document to columns in the *TestTable* table, as follows:
 
     | Cosmos DB property | Table column | Transformation |
     |--|--|--|
@@ -59,7 +54,7 @@ Step 4: Create a Cosmos DB data connection
     | _ts | _timestamp | Uses `DateTimeFromUnixSeconds` to transform **\_ts** ([UNIX seconds](https://wikipedia.org/wiki/Unix_time)) to **_timestamp** (`datetime`)) |
 
     > [!NOTE]
-    > We recommend having two timestamp columns, as follows:
+    > We recommend using the following timestamp columns:
     >
     > - **_ts**: Use this column to reconcile data with Cosmos DB.
     > - **_timestamp**:  Use this column to run efficient time filters in your Kusto queries. For more information, see [Query best practice](/azure/data-explorer/kusto/query/best-practices).
@@ -101,25 +96,24 @@ The Cosmos DB data connector leverages [managed identity](/azure/data-explorer/m
 
 ## Step 3: Configure Cosmos DB access
 
-> [!NOTE]
-> This configuration is done automatically when provisioning the data connection using the Azure portal.
+For the connector to work, you must grant it permission to access your CosmosDB account. Providing the connector access to your CosmosDB allows it to access and retrieve data from your database.
+
+If you are provisioning the data connection using the Azure portal, you can skip the configuration as it's automatically done as part of provisioning.
+
+To grant access, you'll need your cluster's principal ID. You can find your cluster's principal ID in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity).
 
 > [!NOTE]
 >
-> This step can't be run in the *Role Assignement* Azure portal experience because the Cosmos DB role isn't listed as an Azure role.
-
-> [!NOTE]
-> The role configured in the following step is the [Cosmos DB Built-in Data Reader](/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions) as it contains the [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed and Microsoft.DocumentDB/databaseAccounts/readMetadata](/azure/cosmos-db/how-to-setup-rbac#permission-model) action required for the connection. However, if you need more granular control of your permissions, you can define a custom role with only the required action and assign it to the managed identity.
+> - The following steps assign the [Cosmos DB Built-in Data Reader](/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions) to the principal ID as it contains the [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed and the Microsoft.DocumentDB/databaseAccounts/readMetadata](/azure/cosmos-db/how-to-setup-rbac#permission-model) action required for the connection. If you need more granular control of your permissions, you can define a custom role with only the required action and assign it to the principal ID.
+> - You can't assign the **Cosmos DB Built-in Data Reader** role using the Azure portal *Role Assignment* feature.
 
 ### [Azure CLI](#tab/azurecli)
 
-In a shell, run the following:
+To grant access using the Azure CLI, run the CLI command, using information in the following table to replace placeholders with appropriate values:
 
-```bash
+```azurecli
 az cosmosdb sql role assignment create --account-name <CosmosDbAccountName> --resource-group <CosmosDbResourceGroup> --role-definition-id 00000000-0000-0000-0000-000000000001 --principal-id <ClusterPrincipalId> --scope "/"
 ```
-
-Replace the placeholders with the appropriate values as described in the following table:
 
 | Placeholder | Description |
 |--|--|
@@ -129,7 +123,7 @@ Replace the placeholders with the appropriate values as described in the followi
 
 ### [ARM Template](#tab/arm)
 
-Deploy the following ARM template in the Cosmos DB account resource group:
+To grant access using an Azure Resource Manager (ARM) template, deploy the following template in the Cosmos DB account resource group:
 
 ```json
 {
@@ -168,35 +162,46 @@ Deploy the following ARM template in the Cosmos DB account resource group:
 }
 ```
 
-You can find your cluster's principle ID (first parameter) in the Azure portal.  For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity).
-
 ---
 
 ## Step 4: Create a Cosmos DB data connection
 
+You can use the following methods to create the data connector:
+
 ### [Azure Portal](#tab/portal)
 
-From the Azure Portal overview pane of the Azure Data Explorer cluster, select *Getting started*, then *Create data connection* and then *Cosmos DB* from the drop down.
+1. In the Azure portal, go to your cluster overview page, and then select the **Getting started** tab.
 
-![Create data connection](media/ingest-data-cosmos-db/create-data-connection.png)
+1. On the **Data ingestion** tile, select **Create data connection** > **Cosmos DB**.
 
-In the *Create data connection* form, select the Azure Data Explorer database you want to ingest data in, then name the data connection.
+    :::image type="content" source="media/ingest-data-cosmos-db/create-data-connection.png" alt-text="Screenshot of the Getting started tab, showing the Create CosmosDB data connection option.":::
 
-Select the subscription where the Cosmos DB NoSQL account is.  Select the Cosmos DB account, the database and the container.
+1. In the CosmosDB **Create data connection** pane, fill out the form with the information in the table:
 
-Finally select the Azure Data Explorer table and the table mapping we configured in previous sections.
+    :::image type="content" source="media/ingest-data-cosmos-db/fill-fields.png" alt-text="Screenshot of the data connection pane, showing the form fields with values.":::
 
-![Fill form's fields](media/ingest-data-cosmos-db/fill-fields.png)
+    | Field | Description |
+    |--|--|
+    | **Database name** | Choose the Azure Data Explorer database into which you want to ingest data. |
+    | **Data connection name** | Specify a name for the data connection. |
+    | **Subscription** | Select the subscription that contains your Cosmos DB NoSQL account. |
+    | **Cosmos DB account** | Choose the Cosmos DB account from which you want to ingest data. |
+    | **SQL database** | Choose the Cosmos DB database from which you want to ingest data. |
+    | **SQL container** | Choose the Cosmos DB container from which you want to ingest data. |
+    | **Table name** | Specify the Azure Data Explorer [table name](#step-1-choose-an-azure-data-explorer-table-and-configure-if-its-table-mapping) to which you want to ingest data. |
+    | **Mapping name** | Specify the [mapping name](#step-1-choose-an-azure-data-explorer-table-and-configure-if-its-table-mapping) to use for the data connection. |
 
-By Default, *System Assigned* managed identity is selected.  You can select *User-assigned* and then select the identity.
+1. Optionally, under the **Avanced settings** section, do the following:
+    1. Specify the **Event retrieval start date**. This is the time from which the connector will start ingesting data. If you don't specify a time, the connector will start ingesting data from the time you create the data connection. The recommended date format is the ISO 8601 UTC standard, specified as follows: `yyyy-MM-ddTHH:mm:ss.fffffffZ`.
+    1. Select **User-assigned** and then select the identity. By Default, the **System-assigned** managed identity is used by the connection. If required, you can use a **User-assigned** identity.
 
-![Advance settings](media/ingest-data-cosmos-db/advanced-settings.png)
+        :::image type="content" source="media/ingest-data-cosmos-db/advanced-settings.png" alt-text="Screenshot of the data connection pane, showing the Advance settings.":::
 
-Click the *Create* button.
+1. Select **Create** to crate the data connection.
 
 ### [ARM Template](#tab/arm)
 
-The following example shows an Azure Resource Manager template for adding a Cosmos DB data connection. You can [edit and deploy the template in the Azure portal](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) by using the form.
+The following is an example ARM template for adding a Cosmos DB data connection. You can use the example as basis for creating your own data connection template and then [deploy it in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template).
 
 ```json
 {
@@ -295,29 +300,28 @@ The following example shows an Azure Resource Manager template for adding a Cosm
 }
 ```
 
-## Testing data connection
+## Test the data connection
 
-Let's insert the following document in the Cosmos DB container:
+1. In the Cosmos DB container, insert the following document:
 
-```json
-{
-    "name":"Cousteau"
-}
-```
+    ```json
+    {
+        "name":"Cousteau"
+    }
+    ```
 
-To see this document in Azure Data Explorer table, run the following query:
+1. In the Azure Data Explorer web UI, run the following query:
 
-```kusto
-TestTable
-```
+    ```kusto
+    TestTable
+    ```
 
-The result set should look like the following image:
+    The result set should look like the following image:
 
-![Test result](media/ingest-data-cosmos-db/test-result.png)
+    :::image type="content" source="media/ingest-data-cosmos-db/test-result.png" alt-text="Screenshot of the results pane, showing the ingested document.":::
 
 > [!NOTE]
 >
-> * Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of 1G, or 1000 blobs. Therefore, you may experience a latency. For more information, see [batching policy](kusto/management/batchingpolicy.md).
-> * To reduce response time lag, configure your table to support streaming. See [streaming policy](kusto/management/streamingingestionpolicy.md).
+> Azure Data Explorer has an aggregation (batching) policy for data ingestion designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of one GB, or 1000 blobs. Therefore, you may experience a latency. For more information, see [batching policy](kusto/management/batchingpolicy.md). To reduce latency, configure your table to support streaming. See [streaming policy](kusto/management/streamingingestionpolicy.md).
 
 ## Next steps
