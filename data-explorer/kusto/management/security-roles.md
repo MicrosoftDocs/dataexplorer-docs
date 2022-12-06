@@ -76,6 +76,8 @@ Example result:
 
 ## Managing security roles
 
+This section will show how to use the commands `.add`, `.drop`, and `.set` to control the principals and their security permissions.
+
 ### Syntax
 
 *Action* *ObjectType* *ObjectName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
