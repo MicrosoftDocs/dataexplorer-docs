@@ -22,14 +22,27 @@ When a principal attempts to make an operation on a secured resource, the system
 
 ## Security roles
 
-|Role|Description|Databases|Tables|Materialized views|Functions|
-|--|--|--|--|--|--|
-|`admins` |Have control over the securable object, including the ability to view, modify it, and remove the object and all sub-objects.|&check;|&check;|&check;|&check;|
-|`users` |Can view the securable object, and create new objects underneath it.|&check;||||
-|`viewers` |Can view the securable object.|&check;||||
-|`unrestrictedviewers`|At the database level only, gives view permission to `admins`, `viewers` or `users` for all tables in the database that have a restricted view policy enabled. Use this role in addition to the `admins`, `viewers` or `users` roles. |&check;||||
-|`ingestors` |At the database level only, allows data ingestion into all tables.|&check;|&check;|||
-|`monitors` |At the specified scope (Database or AllDatabases) allows metadata (schemas, operations, permissiosn) view operations.|&check;||||
+Different security roles permit different levels of access.
+
+|Role|Description|
+|--|--|
+|`admins` |Have control over the securable object, including the ability to view, modify it, and remove the object and all sub-objects.|
+|`users` |Can view the securable object, and create new objects underneath it.|
+|`viewers` |Can view the securable object.|
+|`unrestrictedviewers`|At the database level only, gives view permission to `admins`, `viewers` or `users` for all tables in the database that have a restricted view policy enabled. Use this role in addition to the `admins`, `viewers` or `users` roles. |
+|`ingestors` |At the database level only, allows data ingestion into all tables.|
+|`monitors` |At the specified scope (Database or AllDatabases) allows metadata (schemas, operations, permissiosn) view operations.|
+
+The following table shows which security roles are allowed for each object type.
+
+|Role|Databases|Tables|Materialized views|Functions|
+|--|--|--|--|--|
+|`admins` |&check;|&check;|&check;|&check;|
+|`users` |&check;||||
+|`viewers` |&check;||||
+|`unrestrictedviewers`|&check;||||
+|`ingestors` |&check;|&check;|||
+|`monitors` |&check;|||||
 
 ## List all principals
 
