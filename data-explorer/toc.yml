@@ -135,6 +135,8 @@ items:
         href: table-retention-policy-wizard.md
   - name: Ingest data
     items:
+    - name: Ingestion FAQ
+      href: Ingestion-faq.yml
     - name: Ingest JSON data using the wizard
       displayName: ingest data, ingestion wizard, one click, local file, existing table
       href: ingestion-wizard-existing-table.md
@@ -587,6 +589,10 @@ items:
   items:
   - name: API
     href: kusto/api/toc.yml
+  - name: Ingestion
+    items:
+    - name: Ingestion error codes
+      href: error-codes.md
   - name: Azure CLI Kusto
     href: /cli/azure/kusto
   - name: PowerShell Kusto
