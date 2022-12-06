@@ -22,18 +22,18 @@ When a principal attempts to make an operation on a secured resource, the system
 
 ## Security roles
 
-Different security roles permit different levels of access.
+The following table describes the level of access granted for each security role.
 
-|Role|Description|
+|Role|Permissions|
 |--|--|
-|`admins` | Can view, modify, and remove the object and all sub-objects.|
-|`users` | Can view the object and create new objects underneath it.|
-|`viewers` |Can view the object if the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) isn't enabled.|
-|`unrestrictedviewers`|Can view tables with a [RestrictedViewAccess policy](restrictedviewaccesspolicy.md). Use in addition to the `admins`, `viewers` or `users` roles. |
-|`ingestors` | Can ingest data in the scope of a particular table, but can't query the data. |
-|`monitors` | Can view metadata such as schemas, operations, and permissions.|
+|`admins` | View, modify, and remove the object and sub-objects.|
+|`users` | View the object and create new sub-objects.|
+|`viewers` | View the object if [RestrictedViewAccess](restrictedviewaccesspolicy.md) isn't enabled.|
+|`unrestrictedviewers`| View the object even with [RestrictedViewAccess](restrictedviewaccesspolicy.md). Use in addition to the `admins`, `viewers` or `users` roles. |
+|`ingestors` | Ingest data to the object without access to query. |
+|`monitors` | View metadata such as schemas, operations, and permissions.|
 
-The following table shows which security roles are allowed for each object type.
+The following table shows a check if the role can be assigned within the given object type.
 
 |Role|Databases|Tables|Materialized views|Functions|
 |--|--|--|--|--|
@@ -43,6 +43,7 @@ The following table shows which security roles are allowed for each object type.
 |`unrestrictedviewers`|&check;||||
 |`ingestors` |&check;|&check;|||
 |`monitors` |&check;||||
+
 
 ## List all principals
 
