@@ -136,7 +136,7 @@ items:
   - name: Ingest data
     items:
     - name: Ingestion FAQ
-      href: Ingestion-faq.yml
+      href: kusto/management/ingestion-faq.yml
     - name: Ingest JSON data using the wizard
       displayName: ingest data, ingestion wizard, one click, local file, existing table
       href: ingestion-wizard-existing-table.md
