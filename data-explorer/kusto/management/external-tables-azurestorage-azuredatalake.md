@@ -56,7 +56,7 @@ where *ColumnName* adheres to [entity naming](../query/schema-entities/entity-na
 <a name="kind"></a>
 *Kind*
 
-The type of the external table. In this case, `storage` should to be used (rather than `sql`).
+The type of the external table. In this case, `storage` should be used (rather than `sql`).
 
 >[!NOTE]
 > Deprecated terms:  `blob` for Blob Azure Storage or Azure Data Lake Gen 2 Storage, `adl` for Azure Data Lake Gen 1 Storage.
@@ -132,7 +132,7 @@ The data format, any of the [ingestion formats](../../ingestion-supported-format
 > Using external table for [export scenario](data-export/export-data-to-an-external-table.md) is limited to the following formats: `CSV`, `TSV`, `JSON` and `Parquet`.
 
 > [!TIP]
-> We recommended using the *Parquet* format for external tables to improve query and export performance unless: you define virtual columns, use JSON paths mapping, or the external table data is in Azure Data Lake Storage (ADLS) Gen1. 
+> We recommended using the *Parquet* format for external tables to improve query and export performance, unless you use JSON paths mapping.
 
 <a name="connection-string"></a>
 *StorageConnectionString*
