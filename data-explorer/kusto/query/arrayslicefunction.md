@@ -3,7 +3,7 @@ title: array_slice() - Azure Data Explorer
 description: Learn how to use the array_slice() function to extract a slice of a dynamic array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 11/03/2022
 ---
 # array_slice()
 
@@ -13,13 +13,13 @@ Extracts a slice of a dynamic array.
 
 `array_slice`(*array*, *start*, *end*)
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array* | dynamic | &check; | Input array to extract the slice.|
-| *start*| number | &check; | Start index of the slice (inclusive). Negative values are converted to `array_length`+`start`.|
-| *end*| number | &check; | Last index of the slice. (inclusive). Negative values are converted to `array_length`+`start`.|
+| *array* | dynamic | &check; | THe array from which to extract the slice.|
+| *start*| int | &check; | The start index of the slice (inclusive). Negative values are converted to `array_length`+`start`.|
+| *end*| int | &check; | The last index of the slice. (inclusive). Negative values are converted to `array_length`+`start`.|
 
 > [!NOTE]
 > Out of bounds indices are ignored.
@@ -39,9 +39,7 @@ print arr=dynamic([1,2,3])
 | extend sliced=array_slice(arr, 1, 2)
 ```
 
-**Results**
-
-|`arr`|`sliced`|
+|arr|sliced|
 |---|---|
 |[1,2,3]|[2,3]|
 
@@ -52,9 +50,7 @@ print arr=dynamic([1,2,3,4,5])
 | extend sliced=array_slice(arr, 2, -1)
 ```
 
-**Results**
-
-|`arr`|sliced|
+|arr|sliced|
 |---|---|
 |[1,2,3,4,5]|[3,4,5]|
 
@@ -65,8 +61,6 @@ print arr=dynamic([1,2,3,4,5])
 | extend sliced=array_slice(arr, -3, -2)
 ```
 
-**Results**
-
-|`arr`|sliced|
+|arr|sliced|
 |---|---|
 |[1,2,3,4,5]|[3,4]|

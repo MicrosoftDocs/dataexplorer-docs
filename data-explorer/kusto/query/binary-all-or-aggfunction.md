@@ -13,13 +13,13 @@ Accumulates values using the binary `OR` operation for each summarization group,
 
 ## Syntax
 
-`binary_all_or` `(`*Expr*`)`
+`binary_all_or` `(`*expr*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expr* | long | &check; | A long number used for the binary `AND`  calculation. |
+| *expr* | long | &check; | The value used for the binary `OR`  calculation. |
 
 ## Returns
 
@@ -41,8 +41,6 @@ datatable(num:long)
 ]
 | summarize result = toupper(tohex(binary_all_or(num)))
 ```
-
-**Results**
 
 |result|
 |---|

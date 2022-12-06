@@ -3,7 +3,7 @@ title: assert() - Azure Data Explorer
 description: Learn how to use the assert() function to check for a condition and output an error message when false.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 11/03/2022
 ---
 # assert()
 
@@ -11,13 +11,13 @@ Checks for a condition. If the condition is false, outputs error messages and fa
 
 ## Syntax
 
-`assert(`*condition*`, `*message*`)`
+`assert(`*condition*`,`*message*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *condition* | expression | &check; |Conditional expression to evaluate. If the condition is `false`, the specified message is used to report an error. If the condition is `true`, it returns `true` as an evaluation result. Condition must be evaluated to constant during the query analysis phase.|
+| *condition* | bool | &check; | The conditional expression to evaluate. The condition must be evaluated to constant during the query analysis phase.|
 | *message* | string | &check; | The message used if assertion is evaluated to `false`.|
 
 > [!NOTE]
@@ -25,7 +25,7 @@ Checks for a condition. If the condition is false, outputs error messages and fa
 
 ## Returns
 
-Returns `true` if the condition is `true`. 
+Returns `true` if the condition is `true`.
 Raises a semantic error if the condition is evaluated to `false`.
 
 ## Examples
@@ -67,8 +67,6 @@ datatable(input:string)
 ]
 | where checkLength(len=3, input)
 ```
-
-**Results**
 
 |input|
 |---|

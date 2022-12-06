@@ -17,12 +17,12 @@ Receives one or more arrays. Sorts the first array in ascending order. Orders th
 
 If *nulls_last* isn't provided, a default value of `true` is used.
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*array1...arrayN*|  | &check; | Input arrays.|
-| *nulls_last* |bool |  | Indicating whether `null`s should be last.|
+|*array1...arrayN*| dynamic | &check; | The array or list of arrays to sort.|
+| *nulls_last* | bool |  | Determines whether `null`s should be last.|
 
 ## Returns
 
@@ -47,9 +47,7 @@ let array2 = dynamic(["a","b","c","d","e"]);
 print array_sort_asc(array1,array2)
 ```
 
-**Results**
-
-|`array1_sorted`|`array2_sorted`|
+|array1_sorted|array2_sorted|
 |---|---|
 |[1,2,3,4,5]|["a","e","b","c","d"]|
 
@@ -66,9 +64,7 @@ let SortedNames = strcat_array(array_sort_asc(split(Names, ",")), ",");
 print result = SortedNames
 ```
 
-**Results**
-
-|`result`|
+|result|
 |---|
 |George,John,Paul,Ringo|
 
@@ -92,9 +88,7 @@ datatable(command:string, command_time:datetime, user_id:string)
 | project user_id, commands_in_chronological_order = array_sort_asc(timestamps, commands)[1]
 ```
 
-**Results**
-
-|`user_id`|`commands_in_chronological_order`|
+|user_id|commands_in_chronological_order|
 |---|---|
 |user1|[<br>  "ls",<br>  "mkdir",<br>  "chmod",<br>  "dir",<br>  "pwd",<br>  "rm"<br>]|
 |user2|[<br>  "rm",<br>  "pwd"<br>]|
@@ -114,9 +108,7 @@ Example with default behavior:
 print array_sort_asc(dynamic([null,"blue","yellow","green",null]))
 ```
 
-**Results**
-
-|`print_0`|
+|print_0|
 |---|
 |["blue","green","yellow",null,null]|
 
@@ -127,8 +119,6 @@ Example with non-default behavior:
 ```kusto
 print array_sort_asc(dynamic([null,"blue","yellow","green",null]), false)
 ```
-
-**Results**
 
 |`print_0`|
 |---|

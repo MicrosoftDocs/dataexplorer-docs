@@ -3,7 +3,7 @@ title: arg_max() (aggregation function) - Azure Data Explorer
 description: Learn how to use the arg_max() aggregation function to find a row in a group that maximizes the input expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/20/2022
+ms.date: 11/20/2022
 ---
 # arg_max() (aggregation function)
 
@@ -21,18 +21,14 @@ Finds a row in the group that maximizes *ExprToMaximize*.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ExprToMaximize* | string | &check; | Expression used for aggregation calculation. |
-| *ExprToReturn* | string | &check; | Expression used for returning the value when *ExprToMaximize* is maximum.  Use a `*` to return all columns of the input table. |
+| *ExprToMaximize* | string | &check; | The expression used for aggregation calculation. |
+| *ExprToReturn* | string | &check; | The expression used for returning the value when *ExprToMaximize* is maximum.  Use a wildcard `*` to return all columns of the input table. |
 
 ## Returns
 
 Returns a row in the group that maximizes *ExprToMaximize*, and the values of columns specified in *ExprToReturn*.
 
 ## Examples
-
-The following examples demonstrate how to use this function.
-
-**Example 1**
 
 Find the maximum latitude of a storm event in each state.
 
@@ -42,8 +38,6 @@ Find the maximum latitude of a storm event in each state.
 StormEvents 
 | summarize arg_max(BeginLat, BeginLocation) by State
 ```
-
-**Results**
 
 The results table displays only the first 10 rows.
 
@@ -61,7 +55,7 @@ The results table displays only the first 10 rows.
 | TEXAS                | 36.4607  | DARROUZETT           |
 | ...             | ...    | ...            |
 
-**Example 2**
+Find the first time an event with a direct death happened in each state showing all the columns.
 
 Find the last time an event with a direct death happened in each state showing all the columns.
 
@@ -72,8 +66,6 @@ StormEvents
 | where DeathsDirect > 0
 | summarize arg_max(StartTime, *) by State
 ```
-
-**Results**
 
 The results table displays only the first 10 rows and first 3 columns.
 
@@ -91,8 +83,6 @@ The results table displays only the first 10 rows and first 3 columns.
 | LAKE MICHIGAN  | 2007-06-07T13:00:00Z | 2007-06-07T13:00:00Z | ... |
 |... | ... | ...| ... |
 
-**Example 3**
-
 The following example demonstrates null handling.
 
 <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAA31PwQrCMAy97ytCT530osfdnKBX8SCIiHQsjEKWjrRjKH68nWwoguYdkry8l5DaxoSKUG+ld7GAEMVxY2Djycu7PaIE57kAxzGHcwYp1LrrCJUBdcA6paX5oneCyKlIHs09UT4JSssJo+KERH74K/m1ZI9WxnkpfuCP6zM/+1Ymu2QPCH3bWnF3BCvNtXWsp5cMLHKobvD6/wlU5dHuDwEAAA==" target="_blank">Run the query</a>
@@ -108,7 +98,6 @@ datatable(Fruit: string, Color: string, Version: int) [
 ]
 | summarize arg_max(Version, *) by Fruit
 ```
-**Results**
 
 | Fruit | Version | Color |
 |--|--|--|

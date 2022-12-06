@@ -15,13 +15,13 @@ To optimize multiple uses of the `as` operator within a single query, see [Named
 
 *T* `|` `as` [`hint.materialized` `=` `true`] *Name*
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*T*| tabular | &check; |  A tabular expression.|
-| *Name*| string| &check; | A temporary name for the tabular expression|
-| * `hint.materialized`| bool |  | If set to `true`, the value of the tabular expression will be  materialized as if it was wrapped by a [materialize()](./materializefunction.md) function call.|
+|*T*| string | &check; | The tabular expression to rename.|
+| *Name*| string| &check; | The temporary name for the tabular expression.|
+| *`hint.materialized`*| bool |  | If set to `true`, the value of the tabular expression will be as if it was wrapped by a [materialize()](./materializefunction.md) function call.|
 
 > [!NOTE]
 >

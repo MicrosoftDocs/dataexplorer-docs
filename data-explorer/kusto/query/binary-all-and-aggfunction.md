@@ -12,13 +12,13 @@ Accumulates values using the binary `AND` operation for each summarization group
 
 ## Syntax
 
-`binary_all_and` `(`*Expr*`)`
+`binary_all_and` `(`*expr*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expr* | long | &check; | A long number used for the binary `AND`  calculation. |
+| *expr* | long | &check; | The value used for the binary `AND`  calculation. |
 
 ## Returns
 
@@ -40,8 +40,6 @@ datatable(num:long)
 ]
 | summarize result = toupper(tohex(binary_all_and(num)))
 ```
-
-**Results**
 
 |result|
 |---|

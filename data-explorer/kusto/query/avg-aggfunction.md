@@ -7,23 +7,23 @@ ms.date: 11/02/2022
 ---
 # avg() (aggregation function)
 
-Calculates the average (arithmetic mean) of *Expr* across the group.
+Calculates the average (arithmetic mean) of *expr* across the group.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
 
-`avg` `(`*Expr*`)`
+`avg(`*expr*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expr* | string | &check; | Expression used for aggregation calculation. Records with `null` values are ignored and not included in the calculation. |
+| *expr* | string | &check; | The expression used for aggregation calculation. Records with `null` values are ignored and not included in the calculation. |
 
 ## Returns
 
-Returns the average value of *Expr* across the group.
+Returns the average value of *expr* across the group.
 
 ## Example
 
@@ -36,7 +36,6 @@ StormEvents
 | summarize AvgDamageToCrops = avg(DamageCrops) by State
 ```
 
-**Results**
 The results table shown includes only the first 10 rows.
 
 | State                | AvgDamageToCrops |
