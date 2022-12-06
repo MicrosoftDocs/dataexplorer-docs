@@ -135,8 +135,6 @@ items:
         href: table-retention-policy-wizard.md
   - name: Ingest data
     items:
-    - name: Ingestion FAQ
-      href: kusto/management/ingestion-faq.yml
     - name: Ingest JSON data using the wizard
       displayName: ingest data, ingestion wizard, one click, local file, existing table
       href: ingestion-wizard-existing-table.md
@@ -258,6 +256,8 @@ items:
     - name: JSON formatted data
       displayName: ingest data, ingestion
       href: ingest-json-formats.md
+    - name: Ingestion FAQ
+      href: kusto/management/ingestion-faq.yml  
   - name: Query data
     items:
     - name: Evaluate query performance in your cluster
