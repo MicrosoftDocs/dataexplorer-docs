@@ -27,7 +27,7 @@ The engine service has the following roles:
 |Table admin |Can do anything in the scope of a particular table. |
 |Table ingestor |Can ingest data in the scope of a particular table, but can't query the data. |
 
-To assign a database role, see [managing roles and permissions](../security-roles.md#database-roles-management).
+To assign a database role, see [managing roles and permissions](../security-roles.md#managing-security-roles).
 
 > [!NOTE]
 > To grant a principal from a different tenant access to your cluster, see [Allow cross-tenant queries and commands](../../../cross-tenant-query-and-commands.md).

@@ -127,7 +127,7 @@ It requires [DatabaseAdmin permission](../management/access-control/role-based-a
 
 * The default `modification kind` for such authorized principals is `none`. To change the `modification kind` use  [alter follower database principals-modification-kind](#alter-follower-database-principals-modification-kind).
 * Viewing the effective collection of principals after the change can be done using the `.show` commands:
-    * [`.show database principals`](../management/security-roles.md#database-roles-management)
+    * [`.show database principals`](../management/security-roles.md#list-all-principals)
     * [`.show database details`](../management/show-databases.md)
 * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
@@ -148,7 +148,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 > [!NOTE]
 > * Viewing the effective collection of principals after the change can be done using the `.show` commands:
->    * [`.show database principals`](../management/security-roles.md#database-roles-management)
+>    * [`.show database principals`](../management/security-roles.md#list-all-principals)
 >    * [`.show database details`](../management/show-databases.md)
 > * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
@@ -170,7 +170,7 @@ It requires [DatabaseAdmin permissions](../management/access-control/role-based-
 
 > [!NOTE]
 > * Viewing the effective collection of principals after the change can be done using the `.show` commands:
->    * [`.show database principals`](../management/security-roles.md#database-roles-management)
+>    * [`.show database principals`](../management/security-roles.md#list-all-principals)
 >    * [`.show database details`](../management/show-databases.md)
 > * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
