@@ -74,7 +74,6 @@ print str = unicode_codepoints_to_string(75, 10, 117, 10, 115, 10, 116, 10, 111)
 |---|
 |K<br>u<br>s<br>t<br>o|
 
-
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUSguKVKwVSjNy0zOT0mNBxEF+UDx4viS/HigXGZeukZRYl56qoaJhY6puaaOAoRnZqpjaQDnWZrrGBoZaWoCAIEH/7dTAAAA" target="_blank">Run the query</a>
 

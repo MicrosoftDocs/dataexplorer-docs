@@ -26,6 +26,7 @@ The smallest integer greater than, or equal to, the specified numeric expression
 ## Examples
 
 > [!div class="nextstepaction"]
+> > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUg2VLBVSE7NzMnMS9fQNdQz1NRRSDZCEjMACRgjC+hZagIAMiJDFDwAAAA=" target="_blank">Run the query</a>
 
 ```kusto

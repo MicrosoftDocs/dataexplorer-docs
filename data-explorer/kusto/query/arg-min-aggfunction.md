@@ -36,7 +36,8 @@ Returns a row in the group that minimizes *ExprToMinimize*, and the value of *Ex
 
 Find the minimum latitude of a storm event in each state.
 
-<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlVILEqPz83M03BKTc/M80ks0VGAsPKTE0sy8/M0FZIqFYJLEktSASw9sGhCAAAA)" target="_blank">Run the query</a>
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlVILEqPz83M03BKTc/M80ks0VGAsPKTE0sy8/M0FZIqFYJLEktSASw9sGhCAAAA)" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents 
@@ -61,7 +62,8 @@ The results table shown includes only the first 10 rows.
 
 Find the first time an event with a direct death happened in each state showing all of the columns.
 
-<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKiQWpcfnZuZpBJckFpWEZOam6ihoaSokVSoABUpSAdlWy7VPAAAA)" target="_blank">Run the query</a>
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKiQWpcfnZuZpBJckFpWEZOam6ihoaSokVSoABUpSAdlWy7VPAAAA)" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents

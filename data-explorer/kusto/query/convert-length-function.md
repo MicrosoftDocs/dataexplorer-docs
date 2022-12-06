@@ -66,7 +66,8 @@ Convert a length value from one unit to another.
 
 ## Examples
 
-<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJz0nNSy/J0DDUM9JRUPdNLUktUgcy3PLzS9Q1AWLmFfkzAAAA" target="_blank">Run the query</a>
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJz0nNSy/J0DDUM9JRUPdNLUktUgcy3PLzS9Q1AWLmFfkzAAAA" target="_blank">Run the query</a>
 
 ```kusto
 print result = convert_length(1.2, 'Meter', 'Foot')

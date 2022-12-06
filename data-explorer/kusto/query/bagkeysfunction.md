@@ -26,6 +26,7 @@ An array of keys, order is undetermined.
 ## Example
 
 > [!div class="nextstepaction"]
+> > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XMSwrDIBCA4b2nmN0ouEnSBwg9iUjRjIRQaxdNICHt3WvzqN1kZjP8fAzZLq0LnreR/KDCIzYSSNEY7b2tBWgGaYrUlsIntKjQoQSsURVl9RYSZlTuoQlpkYnOstqT+kfNZg/Zxj6EtR7/PmzylFt6usZzjtoIZtgL/ND5SHDz4xMu4Gxz/Z6cxAfYZXgQDQEAAA==" target="_blank">Run the query</a>
 
 ```kusto

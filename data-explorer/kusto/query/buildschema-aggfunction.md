@@ -41,6 +41,7 @@ The following example builds a schema based on:
 * `{"y":{"w":"zzz"}, "t":["aa", "bb"], "z":["foo"]}`
 
 > [!div class="nextstepaction"]
+> > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WOQQrCMBBF9z3F8FctBEGLm1ylZDFpIgYSA7ZVm9q7O2p3nVkN/73POB5lbfT1g+PkNbn5xin0DXUVyWxnveAFfVSEGbo9nNdG7WMMOflfDQQs0J0IJ0Wt2eNSs+ApTikFq+Cj4GD+mtbCbAW45AzRK1O9aZhS4nsonuwUohv6q0/8/7v5AOnXbR3IAAAA" target="_blank">Run the query</a>
 
 ```kusto
