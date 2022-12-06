@@ -156,21 +156,24 @@ You can think about the **Reduce table cache policy to match usage patterns** re
 
 ### Reliability recommendations
 
-The **Reliability recommendations** are recommendations that helps you ensure and improve the continuity of your business-critical applications. 
-Reliability recommendations include:
-* [Azure data explorer uses subnet without delegation](#azure-data-explorer-uses-subnet-without-delegation)
-* [Azure data explorer uses subnet with invalid IP configuration](#azure-data-explorer-uses-subnet-with-invalid-ip-configuration)
-* [Azure data explorer failed to install or resume due virtual network issues](#azure-data-explorer-failed-to-install-or-resume-due-virtual-network-issues)
+The **Reliability recommendations** help you ensure and improve the continuity of your business-critical applications. 
+Reliability recommendations include the following:
 
-#### Azure data explorer uses subnet without delegation 
-This recommendation is given to your virtual network cluster when you use a subnet without delegation for 'Microsoft.Kusto/clusters'. Please delegate your subnet to 'Microsoft.Kusto/clusters' as [explained here](vnet-create-cluster-portal.md#create-virtual-network-and-subnet) in step 8. When you delegate a subnet to an Azure Azure data explorer, you allow that service to establish some basic network configuration rules for that subnet, which help the Azure data explorer operate their instances in a stable manner.
+* [Cluster uses subnet without delegation](#cluster-uses-subnet-without-delegation)
+* [Cluster uses subnet with invalid IP configuration](#cluster-uses-subnet-with-invalid-ip-configuration)
+* [Cluster failed to install or resume due to virtual network issues](#luster-failed-to-install-or-resume-due-to-virtual-network-issues)
 
-#### Azure data explorer uses subnet with invalid IP configuration
-The recommendation is given when your virtual network cluster when the subnet you use, is used in several services beside this Azure data explorer cluster. Please use this subnet for this service only. To resolve this recommendation, remove all other services from this subnet by deleting them.
+#### Cluster uses subnet without delegation
 
-#### Azure data explorer failed to install or resume due virtual network issues
-The recommendation is given once your Azure data explorer cluster failed to install/resume due virtual network issues. The issues may very between clusters, please follow the [troubleshooting guide](vnet-deploy-troubleshoot.md) to resolve this recommendation.
+The recommendation is given to a virtual network cluster that uses a subnet without delegation for 'Microsoft.Kusto/clusters'. The recommendation is to delegate your subnet to 'Microsoft.Kusto/clusters'. For more information, see step 8 in [Create Virtual Network and subnet](vnet-create-cluster-portal.md#create-virtual-network-and-subnet). When you delegate a subnet to a cluster, you allow that service to establish basic network configuration rules for the subnet, which helps the cluster operate its instances in a stable manner.
 
+#### Cluster uses subnet with invalid IP configuration
+
+The recommendation is given to a virtual network cluster where the subnet is also used by other services. The recommendation is to remove all other services from the subnet and only use it for your cluster.
+
+#### Cluster failed to install or resume due to virtual network issues
+
+The recommendation is given to a cluster that failed to install or resume due to virtual network issues. The recommendation is to use the [virtual network troubleshooting guide](vnet-deploy-troubleshoot.md) to resolve the issue.
 ## Next steps
 
 * [Manage cluster horizontal scaling (scale out) in Azure Data Explorer to accommodate changing demand](manage-cluster-horizontal-scaling.md)
