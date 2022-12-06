@@ -20,7 +20,7 @@ Azure Data Explorer pulls data from an external source and reads requests from a
 
 ## Supported data formats, properties, and permissions
 
-* **[Supported data formats](ingestion-supported-formats.md)**
+* **[Supported data formats](ingestion-supported-formats.md)**: The data formats that Azure Data Explorer can understand and ingest natively (for example Parquet, JSON)
 
 * **[Ingestion properties](ingestion-properties.md)**: The properties that affect how the data will be ingested (for example, tagging, mapping, creation time).
 
