@@ -28,7 +28,6 @@ Returns UTF-8 string decoded from base64 string.
 ## Example
 
 > [!div class="nextstepaction"]
-> > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQgszcxLtU1KLE41M4lPSU3OT0mNL8kvLgFKpmsoBRuHVaW4W9gqaQIAN0l1sy4AAAA=" target="_blank">Run the query</a>
 
 ```kusto
@@ -42,7 +41,6 @@ print Quine=base64_decode_tostring("S3VzdG8=")
 Trying to decode a base64 string that was generated from invalid UTF-8 encoding will return null:
 
 > [!div class="nextstepaction"]
-> > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUXDNLSiptE1KLE41M4lPSU3OT0mNL8kvLgFKpmsohRoHVSaGm+YZeHsEGZS4Oxr4mAdlWDqbGfg42ippAgCBCpEtQgAAAA==" target="_blank">Run the query</a>
 
 ```kusto

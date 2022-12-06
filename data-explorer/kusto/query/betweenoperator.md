@@ -37,7 +37,6 @@ Rows in *T* for which the predicate of (*expr* >= *leftRange* and *expr* <= *rig
 ### Filter numeric values
 
 > [!div class="nextstepaction"]
-> > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0MFAoLkktUDDk5apRKM9ILQLJJ6WWlKem5ilomBoo6OkpmJpqAgBfXYZBOgAAAA==" target="_blank">Run the query</a>
 
 ```kusto
@@ -57,7 +56,6 @@ range x from 1 to 100 step 1
 ### Filter datetime
 
 > [!div class="nextstepaction"]
-> > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrApGRuaaCnp4ChrixgaYmyKTk/NK8EgBluyagXgAAAA==" target="_blank">Run the query</a>
 
 ```kusto
@@ -71,7 +69,6 @@ StormEvents
 |476|
 
 > [!div class="nextstepaction"]
-> > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrApGRuaaCnp6CcYomSF9yfmleCQCGAqjRTAAAAA==" target="_blank">Run the query</a>
 
 ```kusto

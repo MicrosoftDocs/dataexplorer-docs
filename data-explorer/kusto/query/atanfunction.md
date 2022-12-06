@@ -26,7 +26,6 @@ The value of the arc tangent of `x`.
 ## Example
 
 > [!div class="nextstepaction"]
-> > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbFNLEnM0zDQM9UEACNi3wIWAAAA" target="_blank">Run the query</a>
 
 ```kusto

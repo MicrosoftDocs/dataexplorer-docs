@@ -60,7 +60,6 @@ The results table shown includes only the first 10 rows.
 This example shows the number of names with more than 4 letters.
 
 > [!div class="nextstepaction"]
-> > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWNMQvCMBBG9/yKo1MDWRRFregqOIl0EympXtNAcgdpMij+eI+Wb3pv+F7ADC2c4G2zrA9Yk43YTDl5ckb0p+Oh633KYxOYnFYPBQDVlUeqDBzMTDdbgtBqv+AFOTkUsd4u4i5nLLxTz6Nq1Q+mEqNN/ovw4kLZD7UUA9Jc13CGjf4DYumr9poAAAA=" target="_blank">Run the query</a>
 
 ```kusto

@@ -26,7 +26,6 @@ Returns logical NOT operation on a number: value.
 ## Example
 
 > [!div class="nextstepaction"]
-> > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzEssqozPyy/RMDQw0AQAChXSgRUAAAA=" target="_blank">Run the query</a>
 
 ```kusto

@@ -26,7 +26,6 @@ Returns the base64 string encoded from the bytes array.
 ## Examples
 
 > [!div class="nextstepaction"]
-> > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIqixJLY5PLCpKrFSwVSjJL05OzEks0igoyswDSiYWp5qZxKekJuenpMaX5IOVaSgFG4dVpbhb2CppalpzQVRClKTEQ3UUlwBF04EGQvmpeWAT0orycyFmIFmrCQCPOEFEhwAAAA==" target="_blank">Run the query</a>
 
 ```kusto
@@ -41,7 +40,6 @@ print decoded_base64_string = base64_encode_fromarray(bytes_array)
 Trying to encode a base64 string from an invalid bytes array that was generated from invalid UTF-8 encoded string will return null:
 
 > [!div class="nextstepaction"]
-> > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIzS0oqYxPqixJLY5PLCpKrFSwVSjJL05OzEks0igoyswrUUhKLE41M4lPSU3OT0mNL8kHK9NQCjUOqkwMN80z8PYIMihxdzTwMQ/KsHQ2M/BxVNLUtOaCaIaYX1wC5KQDjYaalZoHNiutKD8XYhqGMzQBTXW2Jp0AAAA=" target="_blank">Run the query</a>
 
 ```kusto
