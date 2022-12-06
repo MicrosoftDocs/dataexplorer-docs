@@ -8,9 +8,11 @@ ms.date: 12/20/2021
 # Role-based authorization
 
 Authorization is the process of allowing or disallowing a security principal permission to carry out an action.
-Azure Data Explorer uses a role-based access control model, under which authenticated principals are mapped to roles, and get access according to the roles they're assigned.
+Azure Data Explorer uses a role-based access control model in which principals—users, groups, and apps—are mapped to roles. Principals get access to resources according to the roles they're assigned.
 
-The engine service has the following roles:
+Roles are assigned at various levels: cluster, database, table, function, or materialized view. If a role is assigned at the cluster level, then it applies to all databases in the cluster. If a role is assigned at the database level, then it applies to all tables in the database.
+
+The following table describes the possible roles at each level:
 
 |Level|Role |Permissions |
 |---|---|---|
@@ -30,7 +32,7 @@ The engine service has the following roles:
 
 To set cluster level permissions, see [LINK TO NEW DOC THAT I WROTE].
 
-To set permissions for a specific database, table, function, or materialized view, use management commands or the Azure portal. To use management commands, see [manage security roles](../security-roles.md#managing-security-roles). To use the portal, see an example of how to [manage database permissions](../../../manage-database-permissions.md).
+To set permissions for a specific database, table, function, or materialized view, [use management commands](../security-roles.md#managing-security-roles) or [use the Azure portal](../../../manage-database-permissions.md).
 
 > [!NOTE]
 > To grant a principal from a different tenant access to your cluster, see [Allow cross-tenant queries and commands](../../../cross-tenant-query-and-commands.md).
