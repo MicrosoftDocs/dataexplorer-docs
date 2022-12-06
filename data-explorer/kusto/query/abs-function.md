@@ -26,7 +26,7 @@ Absolute value of x.
 ## Example
 
 > [!div class="nextstepaction"]
-> [Run the query](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhMKtbQNdUEADsyYK4NAAAA)
+> [Run the query](<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhMKtbQNdUEADsyYK4NAAAA" target="_blank"></a>)
 
 ```kusto
 abs(-5)
