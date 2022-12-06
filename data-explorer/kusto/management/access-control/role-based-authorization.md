@@ -16,19 +16,19 @@ The following table describes the possible roles at each level:
 
 |Level|Role |Permissions |
 |---|---|---|
-|Cluster|`AllDatabasesAdmin` |Can do anything in the scope of any database. Includes all lower level `AllDatabases` permissions. Can show and alter certain cluster-level policies. |
-|Cluster|`AllDatabasesViewer` |Can read all data and metadata of any database. |
-|Cluster|`AllDatabasesMonitor` |Can execute `.show` commands in the context of any database and its child entities. |
-|Database|`admin`|Can do anything in the scope of a particular database. Includes all lower level permissions.  |
-|Database|`user`|Can read all data and metadata of the database. Can create tables and become the table admin for those tables, and create functions in the database.|
-|Database|`viewer` |Can read all data and metadata of a particular database if the [RestrictedViewAccess policy](../show-table-restricted-view-access-policy-command.md) isn't enabled. |
-|Database|`unrestrictedviewer` |Can query all tables in the database that have the [RestrictedViewAccess policy](../show-table-restricted-view-access-policy-command.md) enabled. |
-|Database|`ingestor` |Can ingest data into all existing tables in the database, but can't query the data. |
-|Database|`monitor` |Can execute `.show` commands in the context of the database and its child entities.  |
-|Table| `admin` |Can do anything in the scope of a particular table. |
-|Table|`ingestor` |Can ingest data in the scope of a particular table, but can't query the data. |
-|Function|`admin` |Can alter function, delete function, or grant admin permissions to another principal. |
-|Materialized view|`admin` |Can alter or delete the materialized view and grant admin permissions to another principal. |
+|Cluster|`AllDatabasesAdmin` |Full permission to all databases in the cluster. Show and alter certain cluster-level policies. Includes all lower `AllDatabases` permissions. |
+|Cluster|`AllDatabasesViewer` |Read all data and metadata of any database in the cluster. |
+|Cluster|`AllDatabasesMonitor` |Execute `.show` commands in the context of any database in the cluster.|
+|Database|`admin`|Full permission in the scope of a particular database. Includes all lower level permissions.  |
+|Database|`user`|Read all data and metadata of the database. Create tables and functions, and become the admin for those tables and functions.|
+|Database|`viewer` |Read all data and metadata of a particular database without a [RestrictedViewAccess policy](../show-table-restricted-view-access-policy-command.md). |
+|Database|`unrestrictedviewer` |Read all data and metadata of a particular database even with a [RestrictedViewAccess policy](../show-table-restricted-view-access-policy-command.md). |
+|Database|`ingestor` |Ingest data into all existing tables in the database, but can't query the data. |
+|Database|`monitor` |Execute `.show` commands in the context of the database and its child entities.  |
+|Table| `admin` |Full permission in the scope of a particular table. |
+|Table|`ingestor` |Ingest data in the scope of a particular table, but can't query the data. |
+|Function|`admin` |Alter function, delete function, or grant admin permissions to another principal. |
+|Materialized view|`admin` |Alter or delete the materialized view and grant admin permissions to another principal. |
 
 To set cluster level permissions, see [LINK TO NEW DOC THAT I WROTE].
 
