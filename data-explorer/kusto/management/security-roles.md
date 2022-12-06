@@ -26,12 +26,12 @@ Different security roles permit different levels of access.
 
 |Role|Description|
 |--|--|
-|`admins` |Have control over the securable object, including the ability to view, modify it, and remove the object and all sub-objects.|
-|`users` |Can view the securable object, and create new objects underneath it.|
-|`viewers` |Can view the securable object.|
-|`unrestrictedviewers`|At the database level only, gives view permission to `admins`, `viewers` or `users` for all tables in the database that have a restricted view policy enabled. Use this role in addition to the `admins`, `viewers` or `users` roles. |
-|`ingestors` |At the database level only, allows data ingestion into all tables.|
-|`monitors` |At the specified scope (Database or AllDatabases) allows metadata (schemas, operations, permissiosn) view operations.|
+|`admins` | Can view, modify, and remove the object and all sub-objects.|
+|`users` | Can view the object and create new objects underneath it.|
+|`viewers` |Can view the object if the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) isn't enabled.|
+|`unrestrictedviewers`|Can view tables with a [RestrictedViewAccess policy](restrictedviewaccesspolicy.md). Use in addition to the `admins`, `viewers` or `users` roles. |
+|`ingestors` | Can ingest data in the scope of a particular table, but can't query the data. |
+|`monitors` | Can view metadata such as schemas, operations, and permissions.|
 
 The following table shows which security roles are allowed for each object type.
 
