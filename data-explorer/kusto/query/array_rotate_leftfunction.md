@@ -34,7 +34,7 @@ Dynamic array containing the same amount of the elements as in original array, w
 
 * Rotating to the left by two positions:
 
- > [!div class="nextstepaction"]
+> [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eSqUUitKEnNSwGpiC/KL0ksSU2xBbITK6G8+JzUtBINoIiOgpEmACPTVOVNAAAA" target="_blank">Run the query</a>
 
 ```kusto

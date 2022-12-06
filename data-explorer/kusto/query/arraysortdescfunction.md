@@ -118,7 +118,8 @@ print array_sort_desc(dynamic([null,"blue","yellow","green",null]))
 
 Example with non-default behavior:
 
-<a href="https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAxXJUQqAIAwA0KvIvhR2owhZukKYM6YS3r76e/BuKzocmdGKvdmImXvyeSnVkvymUwThkMmAsFikPR8uY1bAP/eA7iTpHF4VdlwBSgAAAA==" target="_blank">Run the query</a>
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAxXJUQqAIAwA0KvIvhR2owhZukKYM6YS3r76e/BuKzocmdGKvdmImXvyeSnVkvymUwThkMmAsFikPR8uY1bAP/eA7iTpHF4VdlwBSgAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 print array_sort_desc(dynamic([null,"blue","yellow","green",null]), false)
