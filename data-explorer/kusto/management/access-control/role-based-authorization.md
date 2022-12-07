@@ -29,15 +29,15 @@ The following table describes the possible roles at each level.
 |Database|`user`|Read all data and metadata of the database. Create tables and functions, and become the admin for those tables and functions.|
 |Database|`viewer` |Read all data and metadata of a particular database without a [RestrictedViewAccess policy](../show-table-restricted-view-access-policy-command.md). |
 |Database|`unrestrictedviewer` |Read all data and metadata of a particular database even with a [RestrictedViewAccess policy](../show-table-restricted-view-access-policy-command.md). |
-|Database|`ingestor` |Ingest data to all tables in the database without access to query. |
+|Database|`ingestor` |Ingest data to all tables in the database without access to query the data. |
 |Database|`monitor` |Execute `.show` commands in the context of the database and its child entities.  |
 |Table| `admin` |Full permission in the scope of a particular table. |
-|Table|`ingestor` |Ingest data to the table without access to query. |
-|Materialized view|`admin` |Alter or delete the materialized view and grant admin permissions to another principal. |
-|Function|`admin` |Alter or delete the function and grant admin permissions to another principal. |
+|Table|`ingestor` |Ingest data to the table without access to query the data. |
+|Materialized view|`admin` |Full permission to alter the view, delete the view, and grant admin permissions to another principal. |
+|Function|`admin` |Full permission to alter the function, delete the function, and grant admin permissions to another principal. |
 
 ## Next steps
 
-* To set cluster level permissions, see [LINK TO NEW DOC THAT I WROTE - NOT MERGED TO MAIN YET BUT PR READY FOR REVIEW].
+* To set cluster level permissions, see [LINK TO NEW DOC - NOT MERGED YET].
 * To set permissions for a specific database, table, function, or materialized view, [use management commands](../security-roles.md#commands-overview) or [use the Azure portal](../../../manage-database-permissions.md).
 * To grant a principal from a different tenant access to your cluster, see [Allow cross-tenant queries and commands](../../../cross-tenant-query-and-commands.md).
