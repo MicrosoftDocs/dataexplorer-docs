@@ -27,8 +27,8 @@ The following table describes the possible roles at each level.
 |Cluster|`AllDatabasesMonitor` |Execute `.show` commands in the context of any database in the cluster.|
 |Database|`admin`|Full permission in the scope of a particular database. Includes all lower level permissions.  |
 |Database|`user`|Read all data and metadata of the database. Create tables and functions, and become the admin for those tables and functions.|
-|Database|`viewer` |Read all data and metadata of a particular database without a [RestrictedViewAccess policy](../show-table-restricted-view-access-policy-command.md). |
-|Database|`unrestrictedviewer` |Read all data and metadata of a particular database even with a [RestrictedViewAccess policy](../show-table-restricted-view-access-policy-command.md). |
+|Database|`viewer` |Read all data and metadata, except for tables with the [RestrictedViewAccess policy](../show-table-restricted-view-access-policy-command.md) enabled. |
+|Database|`unrestrictedviewer` |Read all data and metadata, including in tables with the [RestrictedViewAccess policy](../show-table-restricted-view-access-policy-command.md) enabled. |
 |Database|`ingestor` |Ingest data to all tables in the database without access to query the data. |
 |Database|`monitor` |Execute `.show` commands in the context of the database and its child entities.  |
 |Table| `admin` | To query a table, a principal needs access in the database scope as well. Even without database access, a table admin can ingest data to the table or drop the table.|
