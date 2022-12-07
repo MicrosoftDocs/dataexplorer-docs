@@ -7,12 +7,14 @@ ms.date: 12/20/2021
 ---
 # Role-based authorization
 
-Authorization is the process of allowing or disallowing a security principal permission to carry out an action.
-Azure Data Explorer uses a role-based access control model in which principals—users, groups, and apps—are mapped to roles. Principals get access to resources according to the roles they're assigned.
+Authorization is the process of allowing or disallowing a security principal permission to carry out an action. Azure Data Explorer uses a role-based access control model in which principals—users, groups, and apps—are mapped to roles. Principals get access to resources according to the roles they're assigned.
 
 Roles are assigned at various levels: cluster, database, table, function, or materialized view. If a role is assigned at the cluster level, then it applies to all databases in the cluster. If a role is assigned at the database level, then it applies to all tables in the database.
 
 Principals are assigned roles either through the Azure portal or by management commands. If done through the portal, the roles are saved on the Azure level. If done my management commands, they are stored within the Azure Data Explorer service.
+
+## Roles and permissions
+
 The following table describes the possible roles at each level:
 
 |Level|Role |Permissions |
@@ -31,9 +33,8 @@ The following table describes the possible roles at each level:
 |Function|`admin` |Alter function, delete function, or grant admin permissions to another principal. |
 |Materialized view|`admin` |Alter or delete the materialized view and grant admin permissions to another principal. |
 
-To set cluster level permissions, see [LINK TO NEW DOC THAT I WROTE].
+## Next steps
 
-To set permissions for a specific database, table, function, or materialized view, [use management commands](../security-roles.md#commands-overview) or [use the Azure portal](../../../manage-database-permissions.md).
-
-> [!NOTE]
-> To grant a principal from a different tenant access to your cluster, see [Allow cross-tenant queries and commands](../../../cross-tenant-query-and-commands.md).
+* To set cluster level permissions, see [LINK TO NEW DOC THAT I WROTE - NOT MERGED TO MAIN YET BUT PR READY FOR REVIEW].
+* To set permissions for a specific database, table, function, or materialized view, [use management commands](../security-roles.md#commands-overview) or [use the Azure portal](../../../manage-database-permissions.md).
+* To grant a principal from a different tenant access to your cluster, see [Allow cross-tenant queries and commands](../../../cross-tenant-query-and-commands.md).

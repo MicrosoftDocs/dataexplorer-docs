@@ -18,6 +18,7 @@ This article describes the control commands used to manage security roles. Secur
 When a principal attempts to make an operation on a secured resource, the system checks that the principal is associated with at least one security role that grants permissions to perform the operation on the resource. This process is called an authorization check. Failing an authorization check aborts the operation.
 
 Principals are assigned roles either through the Azure portal or by management commands. If done through the portal, the roles are saved on the Azure level. If done my management commands, as described in this document, they are stored within the Azure Data Explorer service.
+
 >[!NOTE]
 > To change security principals, you must be either a **database admin** or an **alldatabases admin**.
 
