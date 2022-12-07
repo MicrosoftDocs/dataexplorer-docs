@@ -74,7 +74,7 @@ Example result:
 |---|---|---|---|---|
 |Database Apsty Admin |Azure AD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com|
 
-## Managing security roles overview
+## Commands overview
 
 This section will show how to use the commands `.add`, `.drop`, and `.set` to control the principals and their security permissions.
 
