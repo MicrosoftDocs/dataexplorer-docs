@@ -7,7 +7,7 @@ ms.date: 12/20/2021
 ---
 # Role-based access control
 
-Azure Data Explorer uses a role-based access control (RBAC) model in which [principal](principals-and-identity-providers.md) get access to resources according to the roles they're assigned.
+Azure Data Explorer uses a role-based access control (RBAC) model in which [principals](principals-and-identity-providers.md) get access to resources according to the roles they're assigned.
 
 Roles are defined within the scope of a cluster, database, table, materialized view, or function. If defined within the scope of a cluster, the role applies to all databases in the cluster. If defined within the scope of a database, the role applies to all tables in the database.
 
