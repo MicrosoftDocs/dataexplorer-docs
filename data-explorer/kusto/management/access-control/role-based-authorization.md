@@ -12,6 +12,7 @@ Azure Data Explorer uses a role-based access control model in which principalsâ€
 
 Roles are assigned at various levels: cluster, database, table, function, or materialized view. If a role is assigned at the cluster level, then it applies to all databases in the cluster. If a role is assigned at the database level, then it applies to all tables in the database.
 
+Principals are assigned roles either through the Azure portal or by management commands. If done through the portal, the roles are saved on the Azure level. If done my management commands, they are stored within the Azure Data Explorer service.
 The following table describes the possible roles at each level:
 
 |Level|Role |Permissions |
