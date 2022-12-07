@@ -104,7 +104,7 @@ To grant access, you'll need your cluster's principal ID. You can find your clus
 > - The following steps assign the [Cosmos DB Built-in Data Reader](/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions) to the principal ID as it contains the [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed and the Microsoft.DocumentDB/databaseAccounts/readMetadata](/azure/cosmos-db/how-to-setup-rbac#permission-model) action required for the connection. If you need more granular control of your permissions, you can define a custom role with only the required action and assign it to the principal ID.
 > - You can't assign the **Cosmos DB Built-in Data Reader** role using the Azure portal *Role Assignment* feature.
 
-### [Azure CLI](#tab/portal)
+### [Azure CLI](#tab/step2-azurecli)
 
 To grant access using the Azure CLI, run the CLI command, using information in the following table to replace placeholders with appropriate values:
 
@@ -118,7 +118,7 @@ az cosmosdb sql role assignment create --account-name <CosmosDbAccountName> --re
 | **\<CosmosDBResourceGroup>** | The name of the resource group that contains your Cosmos DB account. |
 | **\<ClusterPrincipalId>** | The principle ID of your cluster. You can find your cluster's principle ID in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity). |
 
-### [ARM Template](#tab/arm)
+### [ARM Template](#tab/step2-arm)
 
 To grant access using an Azure Resource Manager (ARM) template, deploy the following template in the Cosmos DB account resource group:
 
@@ -165,7 +165,7 @@ To grant access using an Azure Resource Manager (ARM) template, deploy the follo
 
 You can use the following methods to create the data connector:
 
-### [Azure Portal](#tab/portal)
+### [Azure Portal](#tab/step3-portal)
 
 1. In the Azure portal, go to your cluster overview page, and then select the **Getting started** tab.
 
@@ -196,7 +196,7 @@ You can use the following methods to create the data connector:
 
 1. Select **Create** to crate the data connection.
 
-### [ARM Template](#tab/arm)
+### [ARM Template](#tab/step3-arm)
 
 The following is an example ARM template for adding a Cosmos DB data connection. You can use the example as basis for creating your own data connection template and then [deploy it in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template).
 
