@@ -103,7 +103,7 @@ This section will show how to use the commands `.add`, `.drop`, and `.set` to co
 |`.set` |Sets the role to the specific list of principals, removing all previous ones.|
 
 > [!NOTE]
-> The `.set` command with `none` instead of a list of principals will remove all principals of the specified role.
+> The `.set` command with `none` instead of a list of principals will remove all principals of the specified role. See [an example](#set).
 
 ## Managing database security roles
 
