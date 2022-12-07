@@ -165,10 +165,10 @@ Assign a principal to the `admins` role:
 .add table SampleTable admins ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
 ```
 
-Assign a group to the `ingestors` role:
+Assign an app to the `ingestors` role:
 
 ```kusto
-.add table SampleTable ingestors ('aadGroup=SGEmail@fabrikam.com') 'Test group @fabrikam.com (AAD)'
+.add table SampleTable ingestors ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;fabrikam.com') 'Test app @fabrikam.com (AAD)'
 ```
 
 ### .drop
