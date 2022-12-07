@@ -44,10 +44,9 @@ The following table shows a check if the role can be assigned within the given o
 |`ingestors` |&check;|&check;|||
 |`monitors` |&check;||||
 
-
 ## List all principals
 
-The `.show` command lists the principals that are set on the securable object. A line is returned for each role assigned to the principal.
+The `.show` management command lists the principals that are set on the securable object. A line is returned for each security role assigned to the principal.
 
 ### Syntax
 
@@ -75,7 +74,7 @@ Example result:
 |---|---|---|---|---|
 |Database Apsty Admin |Azure AD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com|
 
-## Managing security roles
+## Managing security roles overview
 
 This section will show how to use the commands `.add`, `.drop`, and `.set` to control the principals and their security permissions.
 
@@ -91,7 +90,7 @@ This section will show how to use the commands `.add`, `.drop`, and `.set` to co
 | *ObjectType* | string | &check; | The type of object: `database`, `table`, `materialized-view` or `function`.|
 | *ObjectName* | string | &check; | The name of the object for which to list principals.|
 | *Role* | string | &check; | A valid [security roles](#security-roles) for the specified object type.|
-| *Principal* | string | &check; | One or more principals. For how to specify these principals, see [principals and identity providers](./access-control/principals-and-identity-providers.md).|
+| *Principal* | string | &check; | One or more principals. For how to specify these principals, see [principals and identity providers](./access-control/principals-and-identity-providers.md#examples-for-azure-ad-principals).|
 | *Description* | string | | Text to describe the change that will be displayed when using the `.show` command.|
 | `skip-results` | string | | If provided, the command will not return the updated list of database principals.|
 
@@ -103,40 +102,159 @@ This section will show how to use the commands `.add`, `.drop`, and `.set` to co
 |`.drop`|Removes one or more principals from the role.|
 |`.set` |Sets the role to the specific list of principals, removing all previous ones.|
 
-### Examples
+> [!NOTE]
+> The `.set` command with `none` instead of a list of principals will remove all principals of the specified role.
+
+## Managing database security roles
+
+Databases allow for every security role. For more information on the types of roles, see [security roles](#security-roles).
+
+### .add examples
+
+Assign a principal to the `users` role:
 
 ```kusto
-// No need to specify AAD tenant for UPN, as Kusto performs the resolution by itself
-.add database Test users ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
-
-// AAD App on another tenant - by tenant guid
-.add database Test viewers ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
-
-// AAD SG on 'fabrikam.com' tenant
-.add table TestTable ingestors ('aadGroup=SGEmail@fabrikam.com')
+.add database SampleDatabase users ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
 ```
 
-## Remove all principals
-
-The `.set` command with `none` instead of a list of principals will remove all principals of the specified role.
-
-### Syntax
-
-`.set` *ObjectType* *ObjectName* *Role* `none` [`skip-results`]
-
-### Parameters
-
-|Name|Type|Required|Description|
-|--|--|--|--|
-| *ObjectType* | string | &check; | The type of object: `database`, `table`, `materialized-view` or `function`.
-| *ObjectName* | string | &check; | The name of the object for which to list principals.|
-| *Role* | string | &check; | The role to clear of all principals. The value must be a valid [security role](#security-roles) for the type of object.|
-| `skip-results` | string | | If provided, the command will not return the updated list of principals.|
-
-### Example
-
-The following control command removes all `viewers` on the `Samples` database:
+Assign a group to the `admins` role:
 
 ```kusto
-.set database Samples viewers none
+.add database SampleDatabase admins ('aadGroup=SGEmail@fabrikam.com') 'Test group @fabrikam.com (AAD)'
+```
+
+Assign an app to the `viewers` role:
+
+```kusto
+.add database SampleDatabase viewers ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;fabrikam.com') 'Test app @fabrikam.com (AAD)'
+```
+
+### .drop example
+
+Remove a group from the `admins` role:
+
+```kusto
+.drop database SampleDatabase admins ('aadGroup=SGEmail@fabrikam.com')
+```
+
+### .set examples
+
+Remove existing `viewers` and set the given principals as the new `viewers`:
+
+```kusto
+.set database SampleDatabase viewers ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')
+```
+
+Remove all existing `viewers` on the `SampleDatabase` database:
+
+```kusto
+.set database SampleDatabase viewers none
+```
+
+## Managing table security roles
+
+Tables only allow for principals to receive the `admins` or `ingestors` roles. The `admins` have full permission to the table whereas `ingestors` can only ingest data into the table.
+
+### .add examples
+
+Assign a principal to the `admins` role:
+
+```kusto
+.add table SampleTable admins ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
+```
+
+Assign a group to the `ingestors` role:
+
+```kusto
+.add table SampleTable ingestors ('aadGroup=SGEmail@fabrikam.com') 'Test group @fabrikam.com (AAD)'
+```
+
+### .drop example
+
+Remove a group from the `ingestors` role:
+
+```kusto
+.drop table SampleTable ingestors ('aadGroup=SGEmail@fabrikam.com')
+```
+
+### .set examples
+
+Remove existing `admins` and set the given principals as the new `admins`:
+
+```kusto
+.set table SampleTable admins ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')
+```
+
+Remove all existing `ingestors` on the `SampleTable` table:
+
+```kusto
+.set table SampleTable ingestors none
+```
+
+## Managing materialized view security roles
+
+Materialized views only allow for principals to receive the `admins` role.
+
+### .add example
+
+Assign a principal to the `admins` role:
+
+```kusto
+.add materialized-view SampleView admins ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
+```
+
+### .drop example
+
+Remove a principal from the `admins` role:
+
+```kusto
+.drop materialized-view SampleView admins ('aadGroup=SGEmail@fabrikam.com')
+```
+
+### .set examples
+
+Remove existing `admins` and sets the given principals as the new `admins`:
+
+```kusto
+.set materialized-view SampleView admins ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')
+```
+
+Remove all existing `admins` on the `SampleView` materialized view:
+
+```kusto
+.set materialized-view SampleView admins none
+```
+
+## Managing function security roles
+
+Functions only allow for principals to receive the `admins` role.
+
+### .add example
+
+Assign a principal to the `admins` role:
+
+```kusto
+.add function SampleFunction admins ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
+```
+
+### .drop example
+
+Remove a principal from the `admins` role:
+
+```kusto
+.drop function SampleFunction admins ('aadGroup=SGEmail@fabrikam.com')
+```
+
+### .set examples
+
+Remove existing `admins` and sets the given principals as the new `admins`:
+
+```kusto
+.set function SampleFunction admins ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')
+```
+
+Remove all existing `admins` on the `SampleFunction` function:
+
+```kusto
+.set function SampleFunction admins none
 ```
