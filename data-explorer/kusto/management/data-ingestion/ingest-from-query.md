@@ -49,8 +49,7 @@ existing or nonexistent tables and data.
 |`recreate_schema`  | A Boolean value that. If specified, describes if the command may recreate the schema of the table. Default is "false". This option applies only to the *set-or-replace* command. This option takes precedence over the extend_schema property if both are set|
 |`folder`         | The folder to assign to the table. If the table already exists, this property will overwrite the table's folder.|
 |`ingestIfNotExists`   | A string value that. If specified, prevents ingestion from succeeding if the table already has data tagged with an `ingest-by:` tag with the same value|
-|`persistDetails` |A Boolean value that, if specified, indicates that the command should persist the detailed results for retreival by the [.show operation details](../operations.md#show-operation-details) command. Defaults to `false`. |`with (persistDetails=true)`|
-|`policy_ingestiontime`   | A Boolean value. If specified, describes if to enable the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) on a table that is created by this command. The default is "true"|
+|`persistDetails` |A Boolean value that, if specified, indicates that the command should persist the detailed results for retrieval by the [.show operation details](../operations.md#show-operation-details) command. Defaults to `false`. |`with (persistDetails=true)`|
 |`tags`   | A JSON string that represents a list of [tags](../extents-overview.md#extent-tagging) to associate with the created extent |
 |`docstring`   | A string documenting the table|
 
@@ -90,7 +89,7 @@ Create a new table called :::no-loc text="RecentErrors"::: in the database that 
    | where Level == "Error" and Timestamp > now() - time(1h)
 ```
 
-Create a new table called "OldExtents" in the database that has a single column, "ExtentId", and holds the extent IDs of all extents in the database that has been created more than 30 days earlier. The database has an existing table named "MyExtents". Since the dataset is expected to be bigger than 1GB (more than ~1 million rows) use the *distributed* flag 
+Create a new table called "OldExtents" in the database that has a single column, "ExtentId", and holds the extent IDs of all extents in the database that has been created more than 30 days earlier. The database has an existing table named "MyExtents". Since the dataset is expected to be bigger than 1GB (more than ~1 million rows) use the *distributed* flag
 
 ```kusto
 .set async OldExtents with(distributed=true) <|
