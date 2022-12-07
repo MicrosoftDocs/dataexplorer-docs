@@ -26,7 +26,7 @@ bag_set_key() receives a `dynamic` property-bag, a key and a value. The function
 Returns a `dynamic` property-bag with the new key and its value. If the bag isn't a property-bag, a `null` value is returned.
 
 > [!NOTE]
-> If you want to handle nulls as if those were empty bags, you can do so with `coalesce(x, dynamic({}))`​.
+> To treat `null`s as empty bags, use `coalesce(x, dynamic({}))`​.
 
 ## Example
 
