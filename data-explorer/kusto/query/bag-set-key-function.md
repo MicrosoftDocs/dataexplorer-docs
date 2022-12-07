@@ -30,6 +30,8 @@ Returns a `dynamic` property-bag with the new key and its value. If the bag isn'
 
 ## Example
 
+### Using a root-level key
+
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 datatable(input: dynamic)
