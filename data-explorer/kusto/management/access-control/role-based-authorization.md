@@ -7,11 +7,11 @@ ms.date: 12/20/2021
 ---
 # Role-based authorization
 
-Authorization is the process of allowing or disallowing a [principal](principals-and-identity-providers.md) permission to carry out an action. Azure Data Explorer uses a role-based access control model in which principals get access to resources according to the roles they're assigned.
+Authorization is the process of allowing or disallowing a [principal](principals-and-identity-providers.md) permission to carry out an action. Azure Data Explorer uses a role-based access control (RBAC) model in which principals get access to resources according to the roles they're assigned.
 
-Roles are assigned within the scope of a cluster, database, table, materialized view, or function. Roles defined within the scope of a cluster apply to all databases in the cluster. Similarly, roles defined within the scope of a database apply to all tables in the database.
+Roles are defined within the scope of a cluster, database, table, materialized view, or function. If defined within the scope of a cluster, the role applies to all databases in the cluster. If defined within the scope of a database, the role applies to all tables in the database.
 
-Manage roles through the Azure portal or with management commands. If set through the Azure portal, roles are stored on the Azure level. If set by management commands, roles are stored on the Azure Data Explorer level.
+Manage roles through the Azure portal or with management commands. Roles set through the Azure portal are stored within the greater Azure RBAC model. Roles set by management commands are stored on the Azure Data Explorer level. The permissions work the same in both cases.
 
 > [!NOTE]
 > Cluster level roles can only be assigned through the Azure portal.

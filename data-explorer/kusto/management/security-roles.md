@@ -13,11 +13,11 @@ ms.date: 09/07/2022
 > * [Role-based authorization](../management/access-control/role-based-authorization.md)
 > * [Principals and identity providers](./access-control/principals-and-identity-providers.md)
 
-This article describes the control commands used to manage security roles. Security roles determine if and how principals—users, groups, and apps—can interact with resources in your cluster.
+Azure Data Explorer uses a role-based access control (RBAC) model in which principals—users, groups, and apps—get access to resources according to the security roles they're assigned.
 
-When a principal attempts to make an operation on a secured resource, the system checks that the principal is associated with at least one security role that grants permissions to perform the operation on the resource. This process is called an authorization check. Failing an authorization check aborts the operation.
+When a principal attempts an operation, the system performs an authorization check to make sure the principal is associated with at least one security role that grants permissions to perform the operation. Failing an authorization check aborts the operation.
 
-Principals are assigned roles either through the Azure portal or by management commands. If done through the portal, the roles are saved on the Azure level. If done my management commands, as described in this document, they are stored within the Azure Data Explorer service.
+Security roles can be set with management commands, as described in this article, or through the Azure portal. Roles set through the Azure portal are stored within the greater Azure RBAC model. Roles set by management commands are stored on the Azure Data Explorer level. The permissions work the same in both cases.
 
 >[!NOTE]
 > To change security principals, you must be either a **database admin** or an **alldatabases admin**.
