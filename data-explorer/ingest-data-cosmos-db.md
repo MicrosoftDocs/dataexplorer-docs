@@ -20,17 +20,13 @@ Step 2: [Configure Managed Identity Policy](#step-2-configure-managed-identity-p
 
 Step 3: [Configure Cosmos DB access](#step-3-configure-cosmos-db-access)
 
-Step 4: Create a Cosmos DB data connection
-
-//VP:: The rest of the topics we'll move to another article and use them as next steps
-//Shlomo:  If we do that (which sounds like a good idea), I would suggest to push the update policy into the other article as well.  This way we could keep this article as "the simplest use case".
-//Shlomo:  something like that?  https://learn.microsoft.com/azure/data-explorer/ingest-data-event-hub-overview
+Step 4: [Create a Cosmos DB data connection](#step-4-create-a-cosmos-db-data-connection)
 
 ## Prerequisites
 
-- An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-- An existing or new [cluster and database](create-cluster-database-portal.md).
-- An existing container from a [Cosmos DB account for NoSQL](/azure/cosmos-db/nosql/)
+- An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/)
+- A [cluster and database](create-cluster-database-portal.md)
+- A container from a [Cosmos DB account for NoSQL](/azure/cosmos-db/nosql/)
 
 ## Step 1: Choose an Azure Data Explorer table and configure if its table mapping
 
@@ -51,7 +47,7 @@ Step 4: Create a Cosmos DB data connection
     | id | Id | None |
     | name | Name | None |
     | _ts | _ts | None |
-    | _ts | _timestamp | Uses `DateTimeFromUnixSeconds` to transform **\_ts** ([UNIX seconds](https://wikipedia.org/wiki/Unix_time)) to **_timestamp** (`datetime`)) |
+    | _ts | _timestamp | Uses `DateTimeFromUnixSeconds` to [transform](kusto/management/mappings.md) **\_ts** ([UNIX seconds](https://wikipedia.org/wiki/Unix_time)) to **_timestamp** (`datetime`)) |
 
     > [!NOTE]
     > We recommend using the following timestamp columns:
@@ -74,9 +70,9 @@ Step 4: Create a Cosmos DB data connection
 ## Step 2: Configure Managed Identity Policy
 
 > [!NOTE]
-> This configuration is done automatically when provisioning the data connection using the Azure portal.
+> Skip this step if you are provisioning the data connection using the Azure portal, as it's automatically done as part of provisioning.
 
-The Cosmos DB data connector leverages [managed identity](/azure/data-explorer/managed-identities-overview) authentication.  To configure a System Managed Identity for your Cosmos DB connection:
+The Cosmos DB data connector leverages [managed identity](/azure/data-explorer/managed-identities-overview) authentication. To configure a System Managed Identity for your Cosmos DB connection:
 
 1. In the Azure Data Explorer web UI, select **Query** from the left navigation menu, and then select the cluster or database for the data connection.
 
@@ -86,19 +82,20 @@ The Cosmos DB data connector leverages [managed identity](/azure/data-explorer/m
     .alter database db policy managed_identity
     ```
     [
-    {
+      {
         "ObjectId": "system",
         "AllowedUsages": "DataConnection"
-    }
+      }
     ]
     ```
     ~~~
 
 ## Step 3: Configure Cosmos DB access
 
-For the connector to work, you must grant it permission to access your CosmosDB account. Providing the connector access to your CosmosDB allows it to access and retrieve data from your database.
+> [!NOTE]
+> Skip this step if you are provisioning the data connection using the Azure portal, as it's automatically done as part of provisioning.
 
-If you are provisioning the data connection using the Azure portal, you can skip the configuration as it's automatically done as part of provisioning.
+For the connector to work, you must grant it permission to access your CosmosDB account. Providing the connector access to your CosmosDB allows it to access and retrieve data from your database.
 
 To grant access, you'll need your cluster's principal ID. You can find your cluster's principal ID in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity).
 
@@ -107,7 +104,7 @@ To grant access, you'll need your cluster's principal ID. You can find your clus
 > - The following steps assign the [Cosmos DB Built-in Data Reader](/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions) to the principal ID as it contains the [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed and the Microsoft.DocumentDB/databaseAccounts/readMetadata](/azure/cosmos-db/how-to-setup-rbac#permission-model) action required for the connection. If you need more granular control of your permissions, you can define a custom role with only the required action and assign it to the principal ID.
 > - You can't assign the **Cosmos DB Built-in Data Reader** role using the Azure portal *Role Assignment* feature.
 
-### [Azure CLI](#tab/azurecli)
+### [Azure CLI](#tab/portal)
 
 To grant access using the Azure CLI, run the CLI command, using information in the following table to replace placeholders with appropriate values:
 
