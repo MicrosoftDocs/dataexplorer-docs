@@ -31,7 +31,7 @@ The `.alter table` command:
  * When you alter a table, altering a column type isn't supported. Use the [`.alter column`](alter-column.md) command instead.
 
 > [!TIP]
-> Use `.show table [TableName] cslschema` to get the existing column schema before you alter it.
+> Use `.show table [TableName] cslschema` to get the existing table schema before you alter it.
 
 
 How will the command affect the data?
