@@ -32,7 +32,7 @@ The following table describes the possible roles at each level:
 
 To set cluster level permissions, see [LINK TO NEW DOC THAT I WROTE].
 
-To set permissions for a specific database, table, function, or materialized view, [use management commands](../security-roles.md#managing-security-roles-overview) or [use the Azure portal](../../../manage-database-permissions.md).
+To set permissions for a specific database, table, function, or materialized view, [use management commands](../security-roles.md#commands-overview) or [use the Azure portal](../../../manage-database-permissions.md).
 
 > [!NOTE]
 > To grant a principal from a different tenant access to your cluster, see [Allow cross-tenant queries and commands](../../../cross-tenant-query-and-commands.md).
