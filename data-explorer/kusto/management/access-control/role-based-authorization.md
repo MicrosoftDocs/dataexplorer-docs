@@ -34,7 +34,7 @@ The following table describes the possible roles at each level.
 |Table| `admin` |Full permission in the scope of a particular table. |
 |Table|`ingestor` |Ingest data to the table without access to query. |
 |Materialized view|`admin` |Alter or delete the materialized view and grant admin permissions to another principal. |
-|Function|`admin` |Alter function, delete function, or grant admin permissions to another principal. |
+|Function|`admin` |Alter or delete the function and grant admin permissions to another principal. |
 
 ## Next steps
 
