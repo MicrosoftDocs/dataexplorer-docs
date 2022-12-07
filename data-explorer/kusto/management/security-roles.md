@@ -76,7 +76,7 @@ Example result:
 
 ## Commands overview
 
-This section will show how to use the commands `.add`, `.drop`, and `.set` to control the principals and their security permissions.
+This section will show how to use the commands `.add`, `.drop`, and `.set` to control the principals and their security roles.
 
 ### Syntax
 
