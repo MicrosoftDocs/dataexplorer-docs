@@ -26,7 +26,8 @@ A local datetime in the *timezone* that corresponds the UTC datetime.
 
 ## Example
 
-<a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAAysoyswrUUgpsc3LL9fQ5OWqUUitKEnNS1EoSEzOTMtMjk8pUbBVSEksSS3JzE2NLy1Jji/Jj8/JT07M0Ugp0VFQDw3WD4AoVdfUUUhOzEtKLSpKJKjNsbS4pCgxJzNR3xmqRR3Z9pTMtDSgAUiO0EU2GwCn09zktgAAAA==" target="_blank">Run the query</a>
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAAysoyswrUUgpsc3LL9fQ5OWqUUitKEnNS1EoSEzOTMtMjk8pUbBVSEksSS3JzE2NLy1Jji/Jj8/JT07M0Ugp0VFQDw3WD4AoVdfUUUhOzEtKLSpKJKjNsbS4pCgxJzNR3xmqRR3Z9pTMtDSgAUiO0EU2GwCn09zktgAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 print dt=now()
