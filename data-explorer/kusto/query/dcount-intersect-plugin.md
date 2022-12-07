@@ -25,7 +25,7 @@ Calculates intersection between N sets based on `hll` values (N in range of [2..
 Returns a table with N `dcount` values (per column, representing set intersections).
 Column names are s0, s1, ... (until n-1).
 
-Given sets S<sub>1</sub>, S<sub>2</sub>, .. S<sub>n</sub> - returns values will be representing distinct counts of:  
+Given sets S<sub>1</sub>, S<sub>2</sub>, .. S<sub>n</sub> return values will be representing distinct counts of:  
 S<sub>1</sub>,  
 S<sub>1</sub> ∩ S<sub>2</sub>,  
 S<sub>1</sub> ∩ S<sub>2</sub> ∩ S<sub>3</sub>,  
