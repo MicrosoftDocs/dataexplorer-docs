@@ -117,12 +117,6 @@ Assign a principal to the `users` role:
 .add database SampleDatabase users ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
 ```
 
-Assign a group to the `admins` role:
-
-```kusto
-.add database SampleDatabase admins ('aadGroup=SGEmail@fabrikam.com') 'Test group @fabrikam.com (AAD)'
-```
-
 Assign an app to the `viewers` role:
 
 ```kusto
@@ -233,10 +227,10 @@ This section contains examples for the commands used to control function permiss
 
 ### .add
 
-Assign a principal to the `admins` role:
+Assign a group to the `admins` role:
 
 ```kusto
-.add function SampleFunction admins ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
+.add function SampleFunction admins ('aadGroup=SGEmail@fabrikam.com') 'Test group @fabrikam.com (AAD)'
 ```
 
 ### .drop
