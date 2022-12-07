@@ -594,7 +594,7 @@ items:
   - name: Azure Active Directory
     displayName: AAD, Azure AD
     href: access-control/aad.md
-  - name: Principal roles
+  - name: Role-based access control
     href: access-control/role-based-authorization.md
   - name: Allow cross-tenant queries and commands
     href: ../../cross-tenant-query-and-commands.md

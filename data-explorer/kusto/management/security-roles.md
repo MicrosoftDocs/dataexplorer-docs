@@ -10,7 +10,7 @@ ms.date: 09/07/2022
 > [!IMPORTANT]
 > Before altering authorization rules on your cluster(s), read the following:
 >
-> * [Role-based authorization](../management/access-control/role-based-authorization.md)
+> * [role-based access control](../management/access-control/role-based-authorization.md)
 > * [Principals and identity providers](./access-control/principals-and-identity-providers.md)
 
 Azure Data Explorer uses a role-based access control (RBAC) model in which principals—users, groups, and apps—get access to resources according to the security roles they're assigned.

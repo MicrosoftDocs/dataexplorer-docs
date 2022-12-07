@@ -1,17 +1,17 @@
 ---
-title: Role-based Authorization in Kusto - Azure Data Explorer
-description: This article describes Role-based Authorization in Kusto in Azure Data Explorer.
+title: role-based access control in Kusto - Azure Data Explorer
+description: This article describes role-based access control in Kusto in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 12/20/2021
 ---
-# Role-based authorization
+# Role-based access control
 
-Authorization is the process of allowing or disallowing a [principal](principals-and-identity-providers.md) permission to carry out an action. Azure Data Explorer uses a role-based access control (RBAC) model in which principals get access to resources according to the roles they're assigned.
+Azure Data Explorer uses a role-based access control (RBAC) model in which [principal](principals-and-identity-providers.md) get access to resources according to the roles they're assigned.
 
 Roles are defined within the scope of a cluster, database, table, materialized view, or function. If defined within the scope of a cluster, the role applies to all databases in the cluster. If defined within the scope of a database, the role applies to all tables in the database.
 
-Manage roles through the Azure portal or with management commands. Roles set through the Azure portal are stored within the greater Azure RBAC model. Roles set by management commands are stored on the Azure Data Explorer level. The permissions work the same in both cases.
+Manage roles with the Azure portal or management commands. Roles set through the Azure portal are stored within the greater Azure RBAC model. Roles set by management commands are stored on the Azure Data Explorer level. The permissions work the same in both cases.
 
 > [!NOTE]
 > Cluster level roles can only be assigned through the Azure portal.
