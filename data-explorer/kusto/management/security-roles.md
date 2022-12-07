@@ -153,7 +153,7 @@ This section contains examples for the commands used to control table permission
 
 Tables only allow for principals to receive the `admins` or `ingestors` roles.
 
-If a principal receives an `admins` table role, they must also have a role on the database to query the data because queries require database access. Regardless, they will be able to drop the table. The `ingestors` can only ingest data into the table.
+If a principal receives an `admins` table role, they must also have a role on the database to query the data because queries require database access. Regardless, they'll be able to drop the table. The `ingestors` can only ingest data into the table.
 
 ### .add
 
