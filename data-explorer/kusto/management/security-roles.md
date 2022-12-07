@@ -151,7 +151,9 @@ Remove all existing `viewers` on the `SampleDatabase` database:
 
 This section contains examples for the commands used to control table permissions. To learn how to construct the commands, see [commands overview](#commands-overview).
 
-Tables only allow for principals to receive the `admins` or `ingestors` roles. The `admins` have full permission to the table whereas `ingestors` can only ingest data into the table.
+Tables only allow for principals to receive the `admins` or `ingestors` roles.
+
+If a principal receives an `admins` table role, they must also have a role on the database to query the data because queries require database access. Regardless, they will be able to drop the table. The `ingestors` can only ingest data into the table.
 
 ### .add
 

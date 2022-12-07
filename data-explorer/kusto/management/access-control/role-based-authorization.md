@@ -31,7 +31,7 @@ The following table describes the possible roles at each level.
 |Database|`unrestrictedviewer` |Read all data and metadata of a particular database even with a [RestrictedViewAccess policy](../show-table-restricted-view-access-policy-command.md). |
 |Database|`ingestor` |Ingest data to all tables in the database without access to query the data. |
 |Database|`monitor` |Execute `.show` commands in the context of the database and its child entities.  |
-|Table| `admin` |Full permission in the scope of a particular table. |
+|Table| `admin` | To query a table, a principal needs access in the database scope as well. Even without database access, a table admin can ingest data to the table or drop the table.|
 |Table|`ingestor` |Ingest data to the table without access to query the data. |
 |Materialized view|`admin` |Full permission to alter the view, delete the view, and grant admin permissions to another principal. |
 |Function|`admin` |Full permission to alter the function, delete the function, and grant admin permissions to another principal. |
