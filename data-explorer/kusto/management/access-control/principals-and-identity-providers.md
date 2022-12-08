@@ -3,12 +3,12 @@ title: Security principals - Azure Data Explorer
 description: This article describes security principals and identity providers in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 12/08/2022
 ---
 # Security principals
 
-The authorization model supports several identity providers (IdPs) and multiple principal types.
-This article reviews the supported principal types and demonstrates their use with [security role management commands](../../management/security-roles.md).
+The Azure Data Explorer authorization model supports several identity providers (IdPs) and multiple principal types.
+This article reviews identity providers and their supported principal types, and demonstrates how to reference these principals when [assigning security roles with management commands](../../management/security-roles.md).
 
 ## Azure Active Directory
 
@@ -45,6 +45,8 @@ To identify a principal, we need to know the Azure AD tenant to which the princi
 | Explicit (UPN) | App | `aadapp`=*ApplicationDisplayName*`;`*TenantId* |
 | Explicit (Name) | App | `aadapp=`*ApplicationId*`;`*TenantName* |
 
+### Examples
+
 ```kusto
 // No need to specify Azure AD tenant for UPN, because query engine attempts to perform the resolution by itself
 .add database Test users ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
@@ -78,5 +80,6 @@ Assigning an MSA user to be a user on the `Test` database:
 
 ## Next steps
 
-* Use the Azure portal to [manage database principals and roles](manage-database-permissions)
-* Learn how to use [management commands to set security roles](../security-roles.md)
+* Learn how to [authenticate with Azure Active Directory](how-to-authenticate-with-aad.md)
+* Learn how to use [management commands to assign security roles](../security-roles.md)
+* Learn how to use the Azure portal to [manage database principals and roles](manage-database-permissions)
