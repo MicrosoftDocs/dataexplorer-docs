@@ -69,7 +69,8 @@ Cost recommendations include:
 
 #### Unused running Azure Data Explorer cluster
 
-A cluster is considered unused and running if it is running and has not ingested data or run queries in the past 5 days. In some cases, clusters may be [automatically stopped](auto-stop-clusters.md). In the flowing cases, the cluster won't automatically stop and a recommendation will be shown:
+A cluster is considered unused and running if it is in the running state and has neither ingested data nor run queries in the past five days. 
+In some cases, clusters may be [automatically stopped](auto-stop-clusters.md). In the following cases, the cluster won't automatically stop and a recommendation will be shown:
  * Leader clusters. For more information, see [follower databases](follower.md).
  * Clusters deployed in a Virtual Network.
  * Clusters where the [Auto-Stop setting](auto-stop-clusters.md#set-auto-stop-settings-while-creating-a-new-cluster) is turned off
@@ -154,6 +155,26 @@ You can think about the **Reduce table cache policy to match usage patterns** re
 
 * Tables with redundant cache policy –  which means that your table's actual query look-backs, or usage patterns, are lower than the configured cache policy. However, reducing the cache policy won’t result in an immediate cost saving, since the cluster is not data-bound. The cluster won’t scale in, even if you remove data from the hot cache.
 
+### Reliability recommendations
+
+The **Reliability recommendations** help you ensure and improve the continuity of your business-critical applications. 
+Reliability recommendations include the following:
+
+* [Cluster uses subnet without delegation](#cluster-uses-subnet-without-delegation)
+* [Cluster uses subnet with invalid IP configuration](#cluster-uses-subnet-with-invalid-ip-configuration)
+* [Cluster failed to install or resume due to virtual network issues](#cluster-failed-to-install-or-resume-due-to-virtual-network-issues)
+
+#### Cluster uses subnet without delegation
+
+The recommendation is given to a virtual network cluster that uses a subnet without delegation for 'Microsoft.Kusto/clusters'. The recommendation is to delegate your subnet to 'Microsoft.Kusto/clusters'. For more information, see step 8 in [Create Virtual Network and subnet](vnet-create-cluster-portal.md#create-virtual-network-and-subnet). When you delegate a subnet to a cluster, you allow that service to establish basic network configuration rules for the subnet, which helps the cluster operate its instances in a stable manner.
+
+#### Cluster uses subnet with invalid IP configuration
+
+The recommendation is given to a virtual network cluster where the subnet is also used by other services. The recommendation is to remove all other services from the subnet and only use it for your cluster.
+
+#### Cluster failed to install or resume due to virtual network issues
+
+The recommendation is given to a cluster that failed to install or resume due to virtual network issues. The recommendation is to use the [virtual network troubleshooting guide](vnet-deploy-troubleshoot.md) to resolve the issue.
 ## Next steps
 
 * [Manage cluster horizontal scaling (scale out) in Azure Data Explorer to accommodate changing demand](manage-cluster-horizontal-scaling.md)
