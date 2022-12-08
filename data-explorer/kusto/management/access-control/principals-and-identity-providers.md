@@ -82,4 +82,4 @@ Assigning an MSA user to be a user on the `Test` database:
 
 * Learn how to [authenticate with Azure Active Directory](how-to-authenticate-with-aad.md)
 * Learn how to use [management commands to assign security roles](../security-roles.md)
-* Learn how to use the Azure portal to [manage database principals and roles](manage-database-permissions)
+* Learn how to use the Azure portal to [manage database principals and roles](../../../manage-database-permissions.md)
