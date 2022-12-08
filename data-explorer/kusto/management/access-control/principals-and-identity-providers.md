@@ -22,11 +22,11 @@ Azure AD supports the following authentication scenarios:
 > [!NOTE]
 > Azure AD does not allow authentication of service accounts that are by definition on-premises AD entities. The Azure AD equivalent of an AD service account is the Azure AD application.
 
-### Azure AD Group principals
+### Azure AD group principals
 
 Azure Data Explorer only supports Security Group (SG) principals and not Distribution Group (DG) principals. An attempt to set up access for a DG on the cluster will result in an error.
 
-### Azure AD Tenants
+### Referencing Azure AD principals
 
 If an Azure AD tenant isn't explicitly specified, an attempt will be made to resolve it from the Universal Principal Name (UPN) if provided. For example, `johndoe@fabrikam.com`. If your principal doesn't include the tenant information in UPN form, you must explicitly mention it by appending the tenant ID, or name to the principal descriptor.
 
@@ -62,7 +62,7 @@ Microsoft account (MSA) is the term for all the Microsoft-managed non-organizati
 Azure Data Explorer supports user authentication for MSAs that are identified by their UPN; there's no concept of security groups.
 No attempt will be made to resolve UPNs when an MSA principal is configured on it.
 
-### Examples for MSA principals
+### Referencing MSA principals
 
 | IdP | Type | Syntax |
 |--|--|--|
