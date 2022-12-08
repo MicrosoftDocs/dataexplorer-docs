@@ -24,8 +24,6 @@ Checks group membership or principal identity of the current principal running t
 |*group* | string | &check;| A comma-separated list of AAD principals. See [referencing Azure AD principals](../management/access-control/principals-and-identity-providers.md#referencing-azure-ad-principals).
 
 ## Returns
-  
-The function returns:
 
 * `true`: if the current principal running the query was successfully matched for at least one input argument.
 * `false`: otherwise
