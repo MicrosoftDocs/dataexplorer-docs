@@ -635,6 +635,9 @@ items:
     - name: pairwise_dist_fl()
       displayName: functions library, multivariate, distance, anomaly, pairwise
       href: kusto/functions-library/pairwise-dist-fl.md      
+    - name: percentiles_linear_fl()
+      displayName: functions library, percentile, rank, statistics
+      href: kusto/functions-library/percentiles-linear-fl.md      
     - name: perm_fl()
       displayName: functions library, statistics
       href: kusto/functions-library/perm-fl.md
