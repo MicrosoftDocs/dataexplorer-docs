@@ -1,11 +1,11 @@
 ---
-title: Principals and Identity Providers - Azure Data Explorer
-description: This article describes Principals and Identity Providers in Azure Data Explorer.
+title: Security Principals and Identity Providers - Azure Data Explorer
+description: This article describes security principals and identity providers in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# Principals and Identity Providers
+# Security Principals and Identity Providers
 
 The authorization model supports several identity providers (IdPs) and multiple principal types.
 This article reviews the supported principal types and demonstrates their use with [role assignment commands](../../management/security-roles.md).

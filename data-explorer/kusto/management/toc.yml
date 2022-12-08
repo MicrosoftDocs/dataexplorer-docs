@@ -595,7 +595,8 @@ items:
 - name: Access control
   href: access-control/index.md
   items:
-  - name: Identities
+  - name: Security Principals and Identity Providers
+    displayName: Referencing security principals, Security group, IdPs, SG, Azure AD tenants
     href: access-control/principals-and-identity-providers.md
   - name: Azure Active Directory
     displayName: AAD, Azure AD
