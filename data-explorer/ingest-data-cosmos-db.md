@@ -16,11 +16,7 @@ In this article, you'll learn how to set up a Cosmos DB change feed data connect
 
 Step 1: [Choose an Azure Data Explorer table and configure if its table mapping](#step-1-choose-an-azure-data-explorer-table-and-configure-if-its-table-mapping)
 
-Step 2: [Configure Managed Identity Policy](#step-2-configure-managed-identity-policy)
-
-Step 3: [Configure Cosmos DB access](#step-3-configure-cosmos-db-access)
-
-Step 4: [Create a Cosmos DB data connection](#step-4-create-a-cosmos-db-data-connection)
+Step 2: [Create a Cosmos DB data connection](#step-2-create-a-cosmos-db-data-connection)
 
 ## Prerequisites
 
@@ -67,101 +63,7 @@ Step 4: [Create a Cosmos DB data connection](#step-4-create-a-cosmos-db-data-con
     ```
     ~~~
 
-## Step 2: Configure Managed Identity Policy
-
-> [!NOTE]
-> Skip this step if you are provisioning the data connection using the Azure portal, as it's automatically done as part of provisioning.
-
-The Cosmos DB data connector leverages [managed identity](/azure/data-explorer/managed-identities-overview) authentication. To configure a System Managed Identity for your Cosmos DB connection:
-
-1. In the Azure Data Explorer web UI, select **Query** from the left navigation menu, and then select the cluster or database for the data connection.
-
-1. Run the following command to configure a [managed identity policy](/azure/data-explorer/kusto/management/managed-identity-policy) allowing the System Managed Identity to authenticate [data connections](/azure/data-explorer/kusto/management/managed-identity-policy#managed-identity-usages). This allows the System Managed Identity to be used in data connections.
-
-    ~~~kql
-    .alter database db policy managed_identity
-    ```
-    [
-      {
-        "ObjectId": "system",
-        "AllowedUsages": "DataConnection"
-      }
-    ]
-    ```
-    ~~~
-
-## Step 3: Configure Cosmos DB access
-
-> [!NOTE]
-> Skip this step if you are provisioning the data connection using the Azure portal, as it's automatically done as part of provisioning.
-
-For the connector to work, you must grant it permission to access your CosmosDB account. Providing the connector access to your CosmosDB allows it to access and retrieve data from your database.
-
-To grant access, you'll need your cluster's principal ID. You can find your cluster's principal ID in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity).
-
-> [!NOTE]
->
-> - The following steps assign the [Cosmos DB Built-in Data Reader](/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions) to the principal ID as it contains the [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed and the Microsoft.DocumentDB/databaseAccounts/readMetadata](/azure/cosmos-db/how-to-setup-rbac#permission-model) action required for the connection. If you need more granular control of your permissions, you can define a custom role with only the required action and assign it to the principal ID.
-> - You can't assign the **Cosmos DB Built-in Data Reader** role using the Azure portal *Role Assignment* feature.
-
-### [Azure CLI](#tab/step2-azurecli)
-
-To grant access using the Azure CLI, run the CLI command, using information in the following table to replace placeholders with appropriate values:
-
-```azurecli
-az cosmosdb sql role assignment create --account-name <CosmosDbAccountName> --resource-group <CosmosDbResourceGroup> --role-definition-id 00000000-0000-0000-0000-000000000001 --principal-id <ClusterPrincipalId> --scope "/"
-```
-
-| Placeholder | Description |
-|--|--|
-| **\<CosmosDBAccountName>** | The name of your Cosmos DB account. |
-| **\<CosmosDBResourceGroup>** | The name of the resource group that contains your Cosmos DB account. |
-| **\<ClusterPrincipalId>** | The principle ID of your cluster. You can find your cluster's principle ID in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity). |
-
-### [ARM Template](#tab/step2-arm)
-
-To grant access using an Azure Resource Manager (ARM) template, deploy the following template in the Cosmos DB account resource group:
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "clusterPrincipalId": {
-            "type": "string",
-            "metadata": {
-                "description": "The principle ID of your cluster."
-            }
-        },
-        "cosmosDbAccount": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of your Cosmos DB account."
-            }
-        }
-    },
-    "variables": {
-        "cosmosDataReader": "00000000-0000-0000-0000-000000000001",
-        "roleDefinitionId": "[format('/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DocumentDB/databaseAccounts/{2}/sqlRoleDefinitions/{3}', subscription().subscriptionId, resourceGroup().name, parameters('cosmosDbAccount'), variables('cosmosDataReader'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments",
-            "apiVersion": "2022-08-15",
-            "name": "[concat(parameters('cosmosDbAccount'), '/', guid(parameters('clusterPrincipalId'), parameters('cosmosDbAccount')))]",
-            "properties": {
-                "principalId": "[parameters('clusterPrincipalId')]",
-                "roleDefinitionId": "[variables('roleDefinitionId')]",
-                "scope": "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosDbAccount'))]"
-            }
-        }
-    ]
-}
-```
-
----
-
-## Step 4: Create a Cosmos DB data connection
+## Step 2: Create a Cosmos DB data connection
 
 You can use the following methods to create the data connector:
 
@@ -200,102 +102,147 @@ You can use the following methods to create the data connector:
 
 The following is an example ARM template for adding a Cosmos DB data connection. You can use the example as basis for creating your own data connection template and then [deploy it in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template).
 
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "kustoClusterName": {
-            "type": "string",
-            "metadata": {
-                "description": "Kusto Cluster name"
+To configure your Cosmos DB connection:
+
+1. Configure a [System Managed Identity](managed-identities-overview.md) for your Cosmos DB connection authentication.
+
+    1. In the Azure Data Explorer web UI, select **Query** from the left navigation menu, and then select the cluster or database for the data connection.
+
+    1. Run the following command to configure a [managed identity policy](/azure/data-explorer/kusto/management/managed-identity-policy) allowing the System Managed Identity to authenticate [data connections](/azure/data-explorer/kusto/management/managed-identity-policy#managed-identity-usages). This allows the System Managed Identity to be used in data connections.
+
+        ~~~kql
+        .alter database db policy managed_identity
+        ```
+        [{
+        "ObjectId": "system",
+        "AllowedUsages": "DataConnection"
+        }]
+        ```
+        ~~~
+
+1. Grant the connector permission to access your CosmosDB account. Providing the connector access to your CosmosDB, allows it to access and retrieve data from your database. You'll need your cluster's principal ID, which you can find in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity).
+
+    > [!NOTE]
+    >
+    > - The following steps assign the [Cosmos DB Built-in Data Reader](/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions) to the principal ID as it contains the [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed and the Microsoft.DocumentDB/databaseAccounts/readMetadata](/azure/cosmos-db/how-to-setup-rbac#permission-model) action required for the connection. If you need more granular control of your permissions, you can define a custom role with only the required action and assign it to the principal ID.
+    > - You can't assign the **Cosmos DB Built-in Data Reader** role using the Azure portal *Role Assignment* feature.
+
+    To grant access to your CosmosDB account, do one of the following:
+
+    - **Grant access using the Azure CLI**: Run the CLI command, using information in the following table to replace placeholders with appropriate values:
+
+        ```azurecli
+        az cosmosdb sql role assignment create --account-name <CosmosDbAccountName> --resource-group <CosmosDbResourceGroup> --role-definition-id 00000000-0000-0000-0000-000000000001 --principal-id <ClusterPrincipalId> --scope "/"
+        ```
+
+        | Placeholder | Description |
+        |--|--|
+        | **\<CosmosDBAccountName>** | The name of your Cosmos DB account. |
+        | **\<CosmosDBResourceGroup>** | The name of the resource group that contains your Cosmos DB account. |
+        | **\<ClusterPrincipalId>** | The principle ID of your cluster. You can find your cluster's principle ID in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity). |
+
+    - **Grant access using an ARM Template**: Deploy the following template in the Cosmos DB account resource group:
+
+        ```json
+        {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "clusterPrincipalId": { "type": "string", "metadata": { "description": "The principle ID of your cluster." } },
+            "cosmosDbAccount": { "type": "string", "metadata": { "description": "The name of your Cosmos DB account." } }
+          },
+          "variables": {
+            "cosmosDataReader": "00000000-0000-0000-0000-000000000001",
+            "roleDefinitionId": "[format('/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DocumentDB/databaseAccounts/{2}/sqlRoleDefinitions/{3}', subscription().subscriptionId, resourceGroup().name, parameters('cosmosDbAccount'), variables('cosmosDataReader'))]"
+          },
+          "resources": [{
+            "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments",
+            "apiVersion": "2022-08-15",
+            "name": "[concat(parameters('cosmosDbAccount'), '/', guid(parameters('clusterPrincipalId'), parameters('cosmosDbAccount')))]",
+            "properties": {
+            "principalId": "[parameters('clusterPrincipalId')]",
+            "roleDefinitionId": "[variables('roleDefinitionId')]",
+            "scope": "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosDbAccount'))]"
             }
+          }]
+        }
+        ```
+
+1. Deploy the following ARM template to create a Cosmos DB data connection. Replace the placeholders with appropriate values.
+
+    ```json
+    {
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "kustoClusterName": {
+          "type": "string",
+          "metadata": { "description": "Kusto Cluster name" }
         },
         "kustoDbName": {
-            "type": "string",
-            "metadata": {
-                "description": "Kusto Database name"
-            }
+          "type": "string",
+          "metadata": { "description": "Kusto Database name" }
         },
         "kustoConnectionName": {
-            "type": "string",
-            "metadata": {
-                "description": "Kusto Database connection name"
-            }
+          "type": "string",
+          "metadata": { "description": "Kusto Database connection name" }
         },
         "kustoLocation": {
-            "type": "string",
-            "metadata": {
-                "description": "Location (Azure Region) of the Kusto cluster"
-            }
+          "type": "string",
+          "metadata": { "description": "Location (Azure Region) of the Kusto cluster" }
         },
         "kustoTable": {
-            "type": "string",
-            "metadata": {
-                "description": "Kusto Table name where to ingest data"
-            }
+          "type": "string",
+          "metadata": { "description": "Kusto Table name where to ingest data" }
         },
         "kustoMappingRuleName": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Mapping name of the Kusto Table (if omitted, default mapping is applied)"
-            }
+          "type": "string",
+          "defaultValue": "",
+          "metadata": { "description": "Mapping name of the Kusto Table (if omitted, default mapping is applied)" }
         },
         "managedIdentityResourceId": {
-            "type": "string",
-            "metadata": {
-                "description": "ARM resource ID of the managed identity (either the cluster resource ID for system identity or resource ID of the user managed identity)"
-            }
+          "type": "string",
+          "metadata": { "description": "ARM resource ID of the managed identity (cluster resource ID for system or user identity)" }
         },
         "cosmosDbAccountResourceId": {
-            "type": "string",
-            "metadata": {
-                "description": "ARM resource ID of Cosoms DB account"
-            }
+          "type": "string",
+          "metadata": { "description": "ARM resource ID of Cosoms DB account" }
         },
         "cosmosDbDatabase": {
-            "type": "string",
-            "metadata": {
-                "description": "Cosmos DB Database name"
-            }
+          "type": "string",
+          "metadata": { "description": "Cosmos DB Database name" }
         },
         "cosmosDbContainer": {
-            "type": "string",
-            "metadata": {
-                "description": "Cosmos DB container name"
-            }
+          "type": "string",
+          "metadata": { "description": "Cosmos DB container name" }
         },
         "retrievalStartDate": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Date-time at which to start the data retrieval ; will default to 'now' if not provided.  Recommended date format is yyyy-MM-ddTHH:mm:ss.fffffffZ, i.e. ISO 8601 UTC standard."
-            }
+          "type": "string",
+          "defaultValue": "",
+          "metadata": { "description": "Date-time at which to start the data retrieval; default: 'now' if not provided. Recommended format: yyyy-MM-ddTHH:mm:ss.fffffffZ" }
         }
-    },
-    "variables": {
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Kusto/Clusters/Databases/DataConnections",
-            "apiVersion": "2022-11-11",
-            "name": "[concat(parameters('kustoClusterName'), '/', parameters('kustoDbName'), '/', parameters('kustoConnectionName'))]",
-            "location": "[parameters('kustoLocation')]",
-            "kind": "CosmosDb",
-            "properties": {
-                "tableName": "[parameters('kustoTable')]",
-                "mappingRuleName": "[parameters('kustoMappingRuleName')]",
-                "managedIdentityResourceId": "[parameters('managedIdentityResourceId')]",
-                "cosmosDbAccountResourceId": "[parameters('cosmosDbAccountResourceId')]",
-                "cosmosDbDatabase": "[parameters('cosmosDbDatabase')]",
-                "cosmosDbContainer": "[parameters('cosmosDbContainer')]",
-                "retrievalStartDate": "[parameters('retrievalStartDate')]"
-            }
+      },
+      "variables": { },
+      "resources": [{
+        "type": "Microsoft.Kusto/Clusters/Databases/DataConnections",
+        "apiVersion": "2022-11-11",
+        "name": "[concat(parameters('kustoClusterName'), '/', parameters('kustoDbName'), '/', parameters('kustoConnectionName'))]",
+        "location": "[parameters('kustoLocation')]",
+        "kind": "CosmosDb",
+        "properties": {
+          "tableName": "[parameters('kustoTable')]",
+          "mappingRuleName": "[parameters('kustoMappingRuleName')]",
+          "managedIdentityResourceId": "[parameters('managedIdentityResourceId')]",
+          "cosmosDbAccountResourceId": "[parameters('cosmosDbAccountResourceId')]",
+          "cosmosDbDatabase": "[parameters('cosmosDbDatabase')]",
+          "cosmosDbContainer": "[parameters('cosmosDbContainer')]",
+          "retrievalStartDate": "[parameters('retrievalStartDate')]"
         }
-    ]
-}
-```
+      }]
+    }
+    ```
+
+---
 
 ## Test the data connection
 
