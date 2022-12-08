@@ -29,7 +29,7 @@ Azure Data Explorer only supports Security Group (SG) principals and not Distrib
 
 ### Azure AD Tenants
 
-If an Azure AD tenant isn't explicitly specified, an attempt will be made to resolve it from the Universal Principal Name (UPN) (for example, `johndoe@fabrikam.com`), if provided. If your principal doesn't include the tenant information in UPN form, you must explicitly mention it by appending the tenant ID, or name to the principal descriptor.
+If an Azure AD tenant isn't explicitly specified, an attempt will be made to resolve it from the Universal Principal Name (UPN) if provided. For example, `johndoe@fabrikam.com`. If your principal doesn't include the tenant information in UPN form, you must explicitly mention it by appending the tenant ID, or name to the principal descriptor.
 
 #### Examples for Azure AD principals
 
@@ -59,7 +59,7 @@ Use the syntax in the following table to reference security principals. For exam
 
 ## Microsoft Accounts (MSAs)
 
-Microsoft account (MSA) is the term for all the Microsoft-managed non-organizational user accounts (for example, `hotmail.com`, `live.com`, `outlook.com`.)
+Microsoft account (MSA) is the term for all the Microsoft-managed non-organizational user accounts. For example, `hotmail.com`, `live.com`, `outlook.com`.
 Azure Data Explorer supports user authentication for MSAs that are identified by their UPN; there's no concept of security groups.
 No attempt will be made to resolve UPNs when an MSA principal is configured on it.
 
