@@ -12,13 +12,12 @@ This article reviews the supported principal types and demonstrates their use wi
 
 ## Azure Active Directory
 
-Azure Active Directory (Azure AD) is Azure's preferred multi-tenant cloud directory service and identity provider. It's
-capable of authenticating security principals or federating with other identity providers, such as Microsoft's Active Directory (AD).
+The recommended way to access Azure Data Explorer is by authenticating to the Azure Active Directory (Azure AD) service. Azure AD is an identity provider capable of authenticating security principals and coordinating with other identity providers, such as Microsoft's Active Directory (AD).
 
-Azure AD is the preferred method for authenticating to the cluster. It supports the following authentication scenarios:
+Azure AD supports the following authentication scenarios:
 
-* **User authentication** (interactive sign-in): Used to authenticate human principals.
-* **Application authentication** (non-interactive sign-in): Used to authenticate services and applications that have to run or authenticate without user interaction.
+* **Interactive sign-in**: Used to authenticate human principals.
+* **Non-interactive sign-in**: Used to authenticate services and applications.
 
 > [!NOTE]
 > Azure AD does not allow authentication of service accounts that are by definition on-premises AD entities. The Azure AD equivalent of an AD service account is the Azure AD application.
