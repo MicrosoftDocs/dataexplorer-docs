@@ -15,11 +15,13 @@ Checks group membership or principal identity of the current principal running t
 
 ## Syntax
 
-`current_principal_is_member_of`(`*list of string literals*`)
+`current_principal_is_member_of(`*group*`)`
 
-## Arguments
+## Parameters
 
-* *list of expressions* - a comma-separated list of string literals, where each literal represents an AAD principal. See [examples for AAD principals](../management/access-control/principals-and-identity-providers.md#azure-ad-tenants).
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*group* | string | &check;| A comma-separated list of AAD principals. See [referencing Azure AD principals](../management/access-control/principals-and-identity-providers.md#referencing-azure-ad-principals).
 
 ## Returns
   
