@@ -33,6 +33,8 @@ If an Azure AD tenant isn't explicitly specified, an attempt will be made to res
 
 #### Examples for Azure AD principals
 
+Use the syntax in the following table to reference security principals. For example, when using management commands to set security roles.
+
 | Azure AD Tenant | Type | Syntax |
 |--|--|--|
 | Implicit (UPN) | User | `aaduser=`*UserEmailAddress* |
@@ -70,3 +72,8 @@ No attempt will be made to resolve UPNs when an MSA principal is configured on i
 ```kusto
 .add database Test users ('msauser=john.doe@live.com') 'Test user (live.com)'
 ```
+
+## Next steps
+
+* Use the Azure portal to [manage database principals and roles](manage-database-permissions)
+* Learn how to use [management commands to set security roles](../security-roles.md)
