@@ -68,4 +68,4 @@ Failures from all parts of the ingestion process appear in the ingestion [metric
 ## See
 
 * [Data ingestion](../../ingest-data-overview.md)
-* [Ingesting invalid data](ingesting-invalid-data.md)
+* [Ingestion of invalid data](../../ingest-invalid-data.md)

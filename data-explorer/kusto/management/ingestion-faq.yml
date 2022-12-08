@@ -73,7 +73,7 @@ sections:
     questions:
       - question: What happens when invalid data is ingested?
         answer: |
-          Malformed data, unparsable, too large or not conforming to schema, might fail to be ingested properly. For more information, see [Ingesting invalid data](ingesting-invalid-data.md). 
+          Malformed data, unparsable, too large or not conforming to schema, might fail to be ingested properly. For more information, see [Ingestion of invalid data](../../ingest-invalid-data.md). 
   - name: SDKs and connectors
     questions:     
       - question: How can I improve ingestion with SDKs?

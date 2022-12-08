@@ -593,6 +593,8 @@ items:
     items:
     - name: Ingestion error codes
       href: error-codes.md
+    - name: Ingestion of invalid data
+      href: ingest-invalid-data.md
   - name: Azure CLI Kusto
     href: /cli/azure/kusto
   - name: PowerShell Kusto
