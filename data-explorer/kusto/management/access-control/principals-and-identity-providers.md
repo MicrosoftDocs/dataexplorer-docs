@@ -8,7 +8,7 @@ ms.date: 02/13/2020
 # Security principals
 
 The authorization model supports several identity providers (IdPs) and multiple principal types.
-This article reviews the supported principal types and demonstrates their use with [role assignment commands](../../management/security-roles.md).
+This article reviews the supported principal types and demonstrates their use with [security role management commands](../../management/security-roles.md).
 
 ## Azure Active Directory
 
@@ -33,7 +33,7 @@ If an Azure AD tenant isn't explicitly specified, an attempt will be made to res
 
 #### Examples for Azure AD principals
 
-Use the syntax in the following table to reference security principals. For example, when using management commands to set security roles.
+The syntax in the following table describes how to reference security principals. For example, the management commands used to assign security roles to principals expect the principals to be specified with this syntax.
 
 | Azure AD Tenant | Type | Syntax |
 |--|--|--|
