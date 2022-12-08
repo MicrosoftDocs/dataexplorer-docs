@@ -12,7 +12,7 @@ ms.custom: include file
 Setup of a data coneection using managed identity required:
   - [Adding a managed identity to your cluster](../configure-managed-identities-cluster.md).
   - [Granting permissions to the managed identity on the data source](../ingest-data-managed-identity.md#grant-permissions-to-the-managed-identity).
-  - [Setting the managed identity policy on the target databases](../ingest-data-managed-identity.md#set-the-managed-identity-policy-in-azure-data-explorer)
+  - Setting [managed identity policy](../kusto/management/managed-identity-policy.md) on the target databases.
   - Creating the data connection using the managed identity authentication to fetch data.
 
 > [!CAUTION]
