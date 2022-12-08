@@ -25,7 +25,7 @@ Checks group membership or principal identity of the current principal running t
 
 ## Returns
 
-If the current principal running the query is successfully matched for at least one input argument, the function returns `true`. If not, the function returns `false`.
+The function returns `true` if the current principal running the query is successfully matched for at least one input argument. If not, the function returns `false`.
 
 ## Example
 
