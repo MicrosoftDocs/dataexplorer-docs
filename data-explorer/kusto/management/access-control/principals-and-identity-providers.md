@@ -58,18 +58,22 @@ To identify a principal, we need to know the Azure AD tenant to which the princi
 
 ## Microsoft Accounts (MSAs)
 
-Microsoft account (MSA) is the term for all the Microsoft-managed non-organizational user accounts. For example, `hotmail.com`, `live.com`, `outlook.com`.
-Azure Data Explorer supports user authentication for MSAs that are identified by their UPN; there's no concept of security groups.
-No attempt will be made to resolve UPNs when an MSA principal is configured on it.
+Azure Data Explorer supports user authentication for Microsoft Accounts (MSAs), or all of the Microsoft-managed non-organizational user accounts. For example, `hotmail.com`, `live.com`, `outlook.com`.
+
+If a User Principal Name (UPN)—a username and domain in email address format—contains an MSA in the domain section, the user can be authenticated. Unlike with [Azure AD principals](#referencing-azure-ad-principals), there won't be an attempt to resolve the tenant information from the UPN.
 
 ### Referencing MSA principals
 
 | IdP | Type | Syntax |
 |--|--|--|
-| Live.com | User | `msauser=`john.doe@live.com` |
+| Live.com | User | `msauser=`abbiatkins@live.com` |
+
+### Example
+
+Assigning an MSA user to be a user on the `Test` database:
 
 ```kusto
-.add database Test users ('msauser=john.doe@live.com') 'Test user (live.com)'
+.add database Test users ('msauser=abbiatkins@live.com') 'Test user (live.com)'
 ```
 
 ## Next steps
