@@ -28,11 +28,11 @@ Azure Data Explorer only supports Security Group (SG) principals and not Distrib
 
 ### Referencing Azure AD principals
 
-If an Azure AD tenant isn't explicitly specified, an attempt will be made to resolve it from the Universal Principal Name (UPN) if provided. For example, `johndoe@fabrikam.com`. If your principal doesn't include the tenant information in UPN form, you must explicitly mention it by appending the tenant ID, or name to the principal descriptor.
+The following table describes how to reference security principals, such as when using management commands to assign security roles.
 
-#### Examples for Azure AD principals
+A principal can be referenced using their object ID or their User Principal Name (UPN), which is a username and domain in email address format. For example, `abbiatkins@fabrikam.com`.
 
-The syntax in the following table describes how to reference security principals. For example, the management commands used to assign security roles to principals expect the principals to be specified with this syntax.
+To identify a principal, we need to know the Azure AD tenant to which the principal belongs. In some cases, the UPN contains the tenant information. In these cases, the tenant will be resolved from the UPN. In other cases, the tenant ID or name must be explicitly provided.
 
 | Azure AD Tenant | Type | Syntax |
 |--|--|--|
