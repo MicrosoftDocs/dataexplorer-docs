@@ -17,7 +17,7 @@ Data that is malformed, unparsable, too large, or doesn't conform to the schema 
 
 The following table shows cases where ingestion of invalid data fails with an error code:
 
-|Case                                                                                           |ErrorCode                          |
+| Ingestion problem                                                                                           | Error code                          |
 |-----------------------------------------------------------------------------------------------|-----------------------------------|
 |Invalid or corrupted format (actual data does not match the specified format)                  |BadRequest_InvalidBlob             |
 |Empty data (Engine V2)                                                                         |BadRequest_InvalidBlob             |
@@ -30,7 +30,7 @@ The following table shows cases where ingestion of invalid data fails with an er
 
 The following table shows cases where ingestion succeeds without an error, silently handling the invalid data:
 
-|Case                                                                                                                       |Notes                                         |
+| Ingestion problem                                                                                                                   |Notes                                         |
 |---------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
 |Malformed records in JSON data ingested with format="json". For example: unexpected newlines, missing braces or quotes.            |Malformed records are ignored and not ingested|
 |Value larger than 1MB ingested into a string column                                                                        |Value truncated up to 1MB                     |
