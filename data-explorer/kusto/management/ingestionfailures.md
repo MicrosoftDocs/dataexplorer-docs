@@ -65,7 +65,7 @@ Failures from all parts of the ingestion process appear in the ingestion [metric
 |a9f287a1-f3e6-4154-ad18-b86438da0929 |DB1 |Table1 |2017-02-14 22:36:26.5525250 |...url... |Unknown error occurred: Exception of type 'System.Exception' was thrown |Transient |9b7bb017-471e-48f6-9c96-d16fcf938d2a |DataIngestPull | 0|Unknown |aadapp=xxxxxx| | Format=Csv| 10
 |9edb3ecc-f4b4-4738-87e1-648eed2bd998 |DB1 |Table1 |2017-02-14 23:52:31.5460071 |...url... |Failed to download source from Azure storage - access forbidden |Permanent |21fa0dd6-cd7d-4493-b6f7-78916ce0d617 |DataIngestPull | 0|Download_Forbidden |aadapp=xxxxxx| | Format=Csv| 1
 
-## See
+## See also
 
 * [Data ingestion](../../ingest-data-overview.md)
 * [Ingestion of invalid data](../../ingest-invalid-data.md)
