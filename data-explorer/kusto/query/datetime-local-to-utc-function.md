@@ -41,8 +41,9 @@ datatable(local_dt: datetime, tz: string)
 |2020-02-02 20:02:20.0000000|US/Pacific|2020-02-03 04:02:20.0000000|
 
 
-> [!NOTE] Normally there is a 1:1 mapping between UTC and local time, however there is a time ambiguity near DST transition.
-> Translating from local to UTC and then back to local might produce an hour offset between two local datetime values if the clocks were advanced due to DST.
+> [!NOTE] 
+> Normally there is a 1:1 mapping between UTC and local time, however there is a time ambiguity near the DST transition.
+> Translating from local to UTC and then back to local may produce an hour offset between two local datetime values if the clocks were advanced due to DST.
 
 
 ```kusto
