@@ -7,12 +7,16 @@ ms.date: 09/26/2021
 ---
 # .drop workload_group
 
-Drops a workload group. This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
+Drops a workload group.
 
 > [!NOTE]
 > The `internal` and `default` workload groups can't be dropped.  
 
 For more information, see [Workload groups](workload-groups.md).
+
+## Permissions
+
+This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permissions.
 
 ## Syntax
 

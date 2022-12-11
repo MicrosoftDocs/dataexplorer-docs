@@ -18,6 +18,8 @@ When you define the [`IngestionBatching`](./show-table-ingestion-batching-policy
 * [Ingestion batching policy command reference](./show-table-ingestion-batching-policy.md)
 * [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)
 
+## Permissions
+
 [!INCLUDE [batching policy permissions](../../includes/batching-policy-permissions.md)]
 
 ## Sealing a batch

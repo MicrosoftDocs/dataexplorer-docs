@@ -9,7 +9,9 @@ ms.date: 11/02/2020
 
 Disables a plugin.
 
-This command requires `All Databases admin` permission.
+## Permissions
+
+This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permissions.
 
 ## Syntax
 

@@ -9,12 +9,18 @@ ms.date: 02/11/2020
 
 Alters the Folder value of an existing function.
 
-`.alter` `function` *FunctionName* `folder` *Folder*
-
 > [!NOTE]
-> * Requires [database admin permission](../management/access-control/role-based-authorization.md)
-> * The [database user](../management/access-control/role-based-authorization.md) who originally created the function is allowed to modify the function. 
-> * If the function doesn't exist, an error is returned. For creating new function, [`.create function`](create-function.md)
+> If the function doesn't exist, an error is returned. For more information on how to create a new function, see [`.create function`](create-function.md).
+
+## Permissions
+
+This command requires [database admin](../management/access-control/role-based-authorization.md) permissions.
+
+The database user who originally created the function may modify the function.
+
+## Syntax
+
+`.alter` `function` *FunctionName* `folder` *Folder*
 
 |Output parameter |Type |Description
 |---|---|--- 

@@ -9,7 +9,9 @@ ms.date: 11/22/2021
 
 Renames a materialized view.
 
-Requires [Database Admin](../access-control/role-based-authorization.md) or materialized view admin permissions.
+## Permissions
+
+This command requires [database or materialized view admin](../access-control/role-based-authorization.md) permissions.
 
 ## Syntax
 `.rename` `materialized-view` *OldName* `to` *NewName*

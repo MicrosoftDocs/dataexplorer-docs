@@ -9,8 +9,6 @@ ms.date: 02/04/2020
 
 Gets the schema to use in create/alter commands and additional table metadata.
 
-Requires [Database user permission](../management/access-control/role-based-authorization.md).
-
 ```kusto
 .show table TableName cslschema 
 ```
@@ -23,6 +21,9 @@ Requires [Database user permission](../management/access-control/role-based-auth
 | Folder           | String | Table's folder                                            |
 | DocString        | String | Table's docstring                                         |
 
+## Permissions
+
+This command requires [database user](../management/access-control/role-based-authorization.md) permissions.
 
 ## .show table schema as JSON
 

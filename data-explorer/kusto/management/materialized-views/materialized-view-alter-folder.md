@@ -11,10 +11,11 @@ Alters the folder value of an existing materialized view.
 
 `.alter` `materialized-view` *MaterializedViewName* `folder` *Folder*
 
-> [!NOTE]
-> You must either be the [database user](../access-control/role-based-authorization.md) who created the materialized view or have [database admin permission](../access-control/role-based-authorization.md) to run this command.
+## Permissions
 
-**Examples** 
+This command requires you to have [database admin or materialized view admin](../access-control/role-based-authorization.md) permissions.
+
+## Example
 
 ```kusto
 .alter materialized-view MyView folder "Updated folder"

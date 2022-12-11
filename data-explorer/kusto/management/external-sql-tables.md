@@ -8,7 +8,13 @@ ms.date: 03/24/2020
 
 # Create and alter SQL Server external tables
 
-Creates or alters an external SQL table in the database in which the command is executed.  
+Creates or alters an external SQL table in the database in which the command is executed.
+
+## Permissions
+
+Creating or altering an external table using managed identity authentication requires[AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
+
+To `.create` requires [database user](../management/access-control/role-based-authorization.md) permissions and to `.alter` requires [table admin](../management/access-control/role-based-authorization.md) permissions.
 
 ## Syntax
 
@@ -25,8 +31,7 @@ Creates or alters an external SQL table in the database in which the command is 
 * *SqlServerConnectionString* - The connection string to the SQL Server. See the supported [SQL authentication methods](../api/connection-strings/sql-authentication-methods.md).
 
 > [!NOTE]
-> * If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities.
-> * When creating or altering an external table using managed identity authentication, [All Databases admin permission](../management/access-control/role-based-authorization.md) is required.
+> If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities.
 
 > [!WARNING]
 > Connection strings and queries that include confidential information should be obfuscated so that they'll be omitted from any Kusto tracing. For more information, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals).
@@ -43,10 +48,8 @@ Creates or alters an external SQL table in the database in which the command is 
 
 > [!NOTE]
 > * If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables. 
-> * Altering the schema or format of an external SQL table is not supported. 
+> * Altering the schema or format of an external SQL table is not supported.
 
-Requires [database user permission](../management/access-control/role-based-authorization.md) for `.create` and [table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. 
- 
 **Example** 
 
 ```kusto

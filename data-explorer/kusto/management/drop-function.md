@@ -10,21 +10,22 @@ ms.date: 02/13/2020
 Drops a function from the database.
 For dropping multiple functions from the database, see [.drop functions](#drop-functions).
 
-**Syntax**
+## Permissions
+
+This command requires [function admin](access-control/role-based-authorization.md) permissions.
+
+## Syntax
 
 `.drop` `function` *FunctionName* [`ifexists`]
 
 * `ifexists`: If specified, modifies the behavior of the command to
   not fail for a non-existent function.
 
-> [!NOTE]
-> * Requires [function admin permission](../management/access-control/role-based-authorization.md).
-    
 |Output parameter |Type |Description
 |---|---|--- 
 |Name  |String |The name of the function that was removed
- 
-**Example** 
+
+## Example
 
 ```kusto
 .drop function MyFunction1
@@ -34,11 +35,11 @@ For dropping multiple functions from the database, see [.drop functions](#drop-f
 
 Drops multiple functions from the database.
 
-**Syntax**
+### Syntax
 
 `.drop` `functions` (*FunctionName1*, *FunctionName2*,..) [ifexists]
 
-**Returns**
+### Returns
 
 This command returns a list of the remaining functions in the database.
 
@@ -52,7 +53,7 @@ This command returns a list of the remaining functions in the database.
 
 Requires [function admin permission](../management/access-control/role-based-authorization.md).
 
-**Example** 
+### Example
  
 ```kusto
 .drop functions (Function1, Function2, Function3) ifexists

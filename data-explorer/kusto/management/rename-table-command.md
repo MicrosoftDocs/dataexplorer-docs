@@ -11,9 +11,11 @@ Changes the name of an existing table.
 
 The `.rename tables` command changes the name of a number of tables in the database as a single transaction.
 
-Requires [Database  admin permission](../management/access-control/role-based-authorization.md).
+## Permissions
 
-**Syntax**
+This command requires [Database admin](../management/access-control/role-based-authorization.md) permissions.
+
+## Syntax
 
 `.rename` `table` *OldName* `to` *NewName*
 
@@ -42,7 +44,7 @@ The command **does** support swapping table names, or more complex
 permutations, as long as they adhere to the rules above. For example, ingest data into multiple staging tables,
 and then swap them with existing tables in a single transaction.
 
-**Examples**
+## Examples
 
 Imagine a database with the following tables: `A`, `B`, `C`, and `A_TEMP`.
 The following command will swap `A` and `A_TEMP` (so that the `A_TEMP` table will now be called `A`, and the other way around), rename

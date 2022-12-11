@@ -12,10 +12,13 @@ Alters the `lookback` value of an existing materialized view. For more informati
 `.alter` `materialized-view` *MaterializedViewName* `lookback` *LookbackPeriod*
 
 > [!NOTE]
-> * A `lookback` for a materialized view is only supported for [EngineV3](../../../engine-v3.md) clusters.
-> * You must either be the [database user](../access-control/role-based-authorization.md) who created the materialized view or have [database admin permission](../access-control/role-based-authorization.md) to run this command.
+> A `lookback` for a materialized view is only supported for [EngineV3](../../../engine-v3.md) clusters.
 
-**Examples** 
+## Permissions
+
+This command requires you to have [database admin or materialized view admin](../access-control/role-based-authorization.md) permissions.
+
+## Examples
 
 ```kusto
 .alter materialized-view MyView lookback 6h

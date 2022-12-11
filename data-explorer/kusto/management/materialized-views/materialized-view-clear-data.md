@@ -13,7 +13,9 @@ The data is cleared from the `materialized part` of the view only. For more deta
 
 The difference between this command and dropping and recreating the view (with no `backfill`) is that using this command preserves all policies set on the materialized view.
 
-Requires [Database Admin](../access-control/role-based-authorization.md) permissions, or an admin of the materialized view.
+## Permissions
+
+This command requires [database admin or materialized view admin permissions](../access-control/role-based-authorization.md).
 
 ## Syntax
 

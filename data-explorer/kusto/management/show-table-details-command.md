@@ -8,7 +8,11 @@ ms.date: 02/04/2020
 # .show table details
 Returns a set that contains the specified table or all tables in the database with a detailed summary of each table's properties.
 
-Requires [Database viewer permission](../management/access-control/role-based-authorization.md).
+## Permissions
+
+This command requires [database viewer](../management/access-control/role-based-authorization.md) permissions.
+
+## Syntax
 
 ```kusto
 .show table T1 details
@@ -16,7 +20,7 @@ Requires [Database viewer permission](../management/access-control/role-based-au
 .show tables details
 ```
 
-**Output**
+## Output
 
 | Output parameter           | Type     | Description                                                                                     |
 |----------------------------|----------|-------------------------------------------------------------------------------------------------|

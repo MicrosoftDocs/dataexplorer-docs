@@ -10,7 +10,13 @@ ms.date: 02/11/2020
 Alters an existing function and stores it inside the database metadata.
 Rules for parameter types and CSL statements are the same as for [`let` statements](../query/letstatement.md).
 
-**Syntax**
+## Permissions
+
+This command requires [database admin](../management/access-control/role-based-authorization.md) permissions.
+
+The database user who originally created the function may modify the function.
+
+## Syntax
 
 ```kusto
 .alter function [with (docstring = '<description>', folder='<name>', skipvalidation='true')] [FunctionName] ([paramName:paramType], ...) { CSL-statement }
@@ -26,8 +32,6 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 
 > [!NOTE]
 > * If the function doesn't exist, an error is returned. For creating a new function, see [`.create function`](create-function.md)
-> * Requires [database admin permission](../management/access-control/role-based-authorization.md)
-> * The [database user](../management/access-control/role-based-authorization.md) who originally created the function is allowed to modify the function. 
 > * Not all Kusto types are supported in `let` statements. Supported types are: string, long, datetime, timespan, and double.
 > * Use `skipvalidation` to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.
  

@@ -9,10 +9,14 @@ ms.date: 02/04/2020
 
 Returns a set that contains the specified table or all tables in the database.
 
-Requires [Database viewer permission](../management/access-control/role-based-authorization.md).
-
 > [!NOTE]
 > For table statistics, see the [.show table data statistics](show-table-data-statistics.md) command.
+
+## Permissions
+
+This command requires [database viewer](../management/access-control/role-based-authorization.md) permissions.
+
+## Example
 
 ```kusto
 .show tables

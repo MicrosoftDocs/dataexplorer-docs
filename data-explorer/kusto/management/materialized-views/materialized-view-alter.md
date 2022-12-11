@@ -9,10 +9,12 @@ ms.date: 08/30/2020
 
 Altering the [materialized view](materialized-view-overview.md) can be used for changing the query of a materialized view, while preserving the existing data in the view.
 
-Requires [Database Admin](../access-control/role-based-authorization.md) permissions, or an admin of the materialized view.
-
 > [!WARNING]
 > Be extra cautious when altering a materialized view. Incorrect use may lead to data loss.
+
+## Permissions
+
+This command requires [database admin or materialized view admin permissions](../access-control/role-based-authorization.md).
 
 ## Syntax
 

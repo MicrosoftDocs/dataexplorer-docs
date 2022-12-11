@@ -9,6 +9,8 @@ ms.date: 06/19/2022
 
 Remove the table [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
 
+## Permissions
+
 [!INCLUDE [batching-policy-permissions](../../includes/batching-policy-permissions.md)]
 
 ## Syntax

@@ -19,6 +19,10 @@ There are two ways to specify which tags should be removed from which extents:
 * Explicitly specify the tags that should be removed from all extents in the specified table.
 * Provide a query whose results specify the extent IDs in the table, and for each extent - the tags that should be removed.
 
+## Permissions
+
+This command requires [table admin](access-control/role-based-authorization.md) permissions for all involved source and destination tables.
+
 ## Syntax
 
 `.drop` [`async`] `extent` `tags` `from` `table` *TableName* `(`'*Tag1*'[`,`'*Tag2*'`,`...`,`'*TagN*']`)`
@@ -42,8 +46,6 @@ The extents and the tags to drop are specified using a Kusto query. It returns a
 > When using the [Kusto .NET client library](../api/netfx/about-kusto-data.md), the following methods will generate the required command:
 > * `CslCommandGenerator.GenerateExtentTagsDropByRegexCommand(string tableName, string regex)`
 > * `CslCommandGenerator.GenerateExtentTagsDropBySubstringCommand(string tableName, string substring)`
-
-Requires [Table admin permission](../management/access-control/role-based-authorization.md) for all involved source and destination tables.
 
 ### Syntax for .drop extent tags in query
 

@@ -12,15 +12,17 @@ The `.alter table` command:
 * Reorders table columns
 * Sets a new column schema, `docstring`, and folder to an existing table, overwriting the existing column schema, `docstring`, and folder
 * Must run in the context of a specific database that scopes the table name
-* Requires [Table Admin permission](../management/access-control/role-based-authorization.md)
-
 > [!WARNING]
 > Using the `.alter` command incorrectly may lead to data loss.
 
 > [!TIP]
 > The `.alter` has a counterpart, the `.alter-merge` table command that has similar functionality. For more information, see [`.alter-merge table`](../management/alter-merge-table-command.md)
 
-**Syntax**
+## Permissions
+
+This command requires [table admin](access-control/role-based-authorization.md) permissions.
+
+## Syntax
 
 `.alter` `table` *TableName* (*columnName*:*columnType*, ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
@@ -41,7 +43,7 @@ How will the command affect the data?
 > [!WARNING]
 > Data ingestion processes into the table that modify the table's column schema, and that occur in parallel with the `.alter table` command, might be performed agnostic to the order of table columns. There is also a risk that data will be ingested into the wrong columns. Prevent these issues by stopping ingestion during the command, or by making sure that such ingestion operations always use a mapping object.
 
-**Examples**
+## Examples
 
 ```kusto
 .alter table MyTable (ColumnX:string, ColumnY:int) 

@@ -9,11 +9,11 @@ ms.date: 02/04/2020
 
 Lets you create and extend the schemas of existing tables in a single bulk operation, in the context of a specific database.
 
-> [!NOTE]
-> Requires [Database user permission](../management/access-control/role-based-authorization.md).
-> Requires [table admin permission](../management/access-control/role-based-authorization.md) for extending existing tables.
+## Permissions
 
-**Syntax**
+This command requires [database user](access-control/role-based-authorization.md) permissions, and [table admin](access-control/role-based-authorization.md) permissions for extending existing tables.
+
+## Syntax
 
 `.create-merge` `tables` *TableName1* ([columnName:columnType], ...) [`,` *TableName2* ([columnName:columnType], ...) ... ] [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 

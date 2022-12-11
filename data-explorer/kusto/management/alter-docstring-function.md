@@ -11,12 +11,18 @@ Alters the `DocString` value of an existing function.
 
 `DocString` is free text that you can attach to a table/function/column describing the entity. This string is presented in various UX settings next to the entity names.
 
-`.alter` `function` *FunctionName* `docstring` *Documentation*
-
 > [!NOTE]
-> * Requires [database admin permission](../management/access-control/role-based-authorization.md)
-> * The [database user](../management/access-control/role-based-authorization.md) who originally created the function is allowed to modify the function.
-> * If the function doesn't exist, an error is returned. For more information on how to create a new function, see [`.create function`](create-function.md).
+> If the function doesn't exist, an error is returned. For more information on how to create a new function, see [`.create function`](create-function.md).
+
+## Permissions
+
+This command requires [database admin](../management/access-control/role-based-authorization.md) permissions.
+
+The database user who originally created the function may modify the function.
+
+## Syntax
+
+`.alter` `function` *FunctionName* `docstring` *Documentation*
 
 |Output parameter |Type |Description
 |---|---|--- 

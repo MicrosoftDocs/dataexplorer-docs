@@ -11,14 +11,16 @@ Drops extents from a specified database or table.
 
 This command has several variants: In one, the extents to be dropped are specified by a Kusto query. In the other variants, extents are specified using a mini-language described below.
 
-Requires [Table admin permission](../management/access-control/role-based-authorization.md) for each table that has extents returned by the provided query.
-
 > [!NOTE]
 > Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
 
 > [!CAUTION]
 > If you drop an extent, all the rows in that extent will be deleted. To delete individual records, use [Soft delete](../concepts/data-soft-delete.md).
+
+## Permissions
+
+This command requires [table admin](access-control/role-based-authorization.md) permissions for each table that has extents returned by the provided query.
 
 ## Syntax
 

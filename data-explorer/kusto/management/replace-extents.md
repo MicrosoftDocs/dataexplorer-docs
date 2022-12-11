@@ -12,11 +12,13 @@ It moves the specified extents from their source tables to the destination table
 and then drops the specified extents from the destination table.
 All of the drop and move operations are done in a single transaction.
 
-Requires [Table admin permission](../management/access-control/role-based-authorization.md) for the source and destination tables.
-
 > [!NOTE]
 > Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (data shards) overview](extents-overview.md).
+
+## Permissions
+
+This command requires [table admin](../management/access-control/role-based-authorization.md) permissions for the source and destination tables.
 
 ## Syntax
 

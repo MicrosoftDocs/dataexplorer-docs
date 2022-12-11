@@ -11,21 +11,23 @@ Creates a new empty table.
 
 The command must run in context of a specific database.
 
-Requires [Database user permission](../management/access-control/role-based-authorization.md).
+## Permissions
 
-**Syntax**
+This command requires [database user](access-control/role-based-authorization.md) permissions.
+
+## Syntax
 
 `.create` `table` *TableName* ([columnName:columnType], ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
 If the table already exists, the command will return success.
 
-**Example** 
+## Example
 
 ```kusto
 .create table MyLogs ( Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32 ) 
 ```
- 
-**Return output**
+
+## Returns
 
 Returns the table's schema in JSON format, same as:
 

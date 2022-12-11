@@ -7,7 +7,11 @@ ms.date: 09/26/2021
 ---
 # .show cluster capacity policy
 
-Display a cluster's [capacity policy](capacitypolicy.md). A capacity policy is used for controlling the compute resources of data management operations on the cluster. This command requires [AllDatabasesMonitor](access-control/role-based-authorization.md) permission.
+Display a cluster's [capacity policy](capacitypolicy.md). A capacity policy is used for controlling the compute resources of data management operations on the cluster.
+
+## Permissions
+
+This command requires [AllDatabasesMonitor](../management/access-control/role-based-authorization.md) permissions.
 
 ## Syntax
 

@@ -9,13 +9,15 @@ ms.date: 02/13/2020
 
 Alters a database's pretty (friendly) name.
 
-Requires [DatabaseAdmin permission](../management/access-control/role-based-authorization.md).
+## Permissions
 
-**Syntax**
+This command requires [database admin](access-control/role-based-authorization.md) permissions.
+
+## Syntax
 
 `.alter` `database` *DatabaseName* `prettyname` `'`*DatabasePrettyName*`'`
 
-**Return output**
+## Returns
  
 |Output parameter |Type |Description 
 |---|---|---

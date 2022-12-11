@@ -10,14 +10,16 @@ ms.date: 02/13/2020
 Lists all the stored functions in the currently-selected database.
 To return only one specific function, see [.show function](#show-function).
 
+## Permissions
+
+These commands requires [database user](../management/access-control/role-based-authorization.md) permissions.
+
 ## .show functions
 
 ```kusto
 .show functions
 ```
 
-Requires [database user permission](../management/access-control/role-based-authorization.md).
- 
 |Output parameter |Type |Description
 |---|---|--- 
 |Name  |String |The name of the function. 
@@ -71,10 +73,9 @@ For a list of **all** functions, see [.show functions](#show-functions).
 |Folder|String|A folder used for UI functions categorization. This parameter doesn't change the way function is invoked
 |DocString|String|A description of the function for UI purposes.
  
-> [!NOTE] 
-> * If the function does not exist, an error is returned.
-> * Requires [database user permission](../management/access-control/role-based-authorization.md).
- 
+> [!NOTE]
+> If the function does not exist, an error is returned.
+
 **Example** 
 
 ```kusto

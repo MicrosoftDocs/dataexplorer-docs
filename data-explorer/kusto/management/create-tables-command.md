@@ -11,15 +11,17 @@ Creates new empty tables as a bulk operation.
 
 The command must run in context of a specific database.
 
-Requires [Database user permission](../management/access-control/role-based-authorization.md).
+## Permissions
 
-**Syntax**
+This command requires [database user](access-control/role-based-authorization.md) permissions.
+
+## Syntax
 
 `.create` `tables` *TableName1* ([columnName:columnType], ...) [`,` *TableName2* ([columnName:columnType], ...) ... ] [`with` `(` [`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
 If any table already exists, the command will return success.
- 
-**Example** 
+
+## Example
 
 ```kusto
 .create tables 

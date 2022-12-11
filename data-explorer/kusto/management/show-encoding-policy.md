@@ -8,7 +8,10 @@ ms.date: 06/28/2022
 # .show encoding policy
 
 Shows the encoding policy. For an overview of the encoding policy, see [Encoding policy](encoding-policy.md).
-This command requires [database monitor](access-control/role-based-authorization.md) permission.
+
+## Permissions
+
+This command requires [database monitor](../management/access-control/role-based-authorization.md) permissions.
 
 ## Syntax
 

@@ -7,10 +7,14 @@ ms.date: 09/30/2021
 ---
 # .alter capacity policy
 
-Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy controls the computational resources for data management operations on the cluster. This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
+Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy controls the computational resources for data management operations on the cluster.
 
 > [!NOTE]
 > Changes to the cluster capacity policy could take up to 1 hour to take effect.
+
+## Permissions
+
+This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permissions.
 
 ## Syntax
 

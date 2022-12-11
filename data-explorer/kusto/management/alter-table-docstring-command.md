@@ -14,9 +14,13 @@ Alters the `DocString` value of an existing table.
 `.alter` `table` *TableName* `docstring` *Documentation*
 
 > [!NOTE]
-> * Requires [database admin permission](../management/access-control/role-based-authorization.md)
-> * The [database user](../management/access-control/role-based-authorization.md) who originally created the table is permitted to modify it
-> * If the table doesn't exist, an error is returned. To create a new table, see [`.create table`](create-table-command.md)
+> If the table doesn't exist, an error is returned. To create a new table, see [`.create table`](create-table-command.md)
+
+## Permissions
+
+This command requires [database admin](access-control/role-based-authorization.md) permissions.
+
+The [database user](../management/access-control/role-based-authorization.md) who originally created the table is permitted to modify it.
 
 **Example** 
 

@@ -7,11 +7,13 @@ ms.date: 10/11/2021
 ---
 # .create-merge table
 
-Creates a new table or extends an existing table. 
+Creates a new table or extends an existing table.
 
-The command must run in context of a specific database. 
+The command must run in context of a specific database.
 
-Requires [Database user permission](../management/access-control/role-based-authorization.md).
+## Permissions
+
+This command requires [database user](access-control/role-based-authorization.md) permissions.
 
 ## Syntax
 

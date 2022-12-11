@@ -9,7 +9,11 @@ ms.date: 05/20/2021
 
 Returns all external tables in the database (or a specific external table).
 
-Requires [Database monitor permission](../management/access-control/role-based-authorization.md). This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
+This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
+
+## Permissions
+
+This command requires [database monitor](../management/access-control/role-based-authorization.md) permissions.
 
 ## Syntax
 

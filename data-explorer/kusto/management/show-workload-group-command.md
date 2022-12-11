@@ -7,9 +7,13 @@ ms.date: 09/26/2021
 ---
 # .show workload group
 
-Shows a specific workload group or all workload group definitions. This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
+Shows a specific workload group or all workload group definitions.
 
 For more information, see [Workload groups](workload-groups.md).
+
+## Permissions
+
+This command requires [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
 
 ## Syntax
 

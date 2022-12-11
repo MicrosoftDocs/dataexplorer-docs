@@ -12,10 +12,11 @@ Sets the `autoUpdateSchema` value of an existing materialized view to `true` or 
 
 `.alter` `materialized-view` *MaterializedViewName* `autoUpdateSchema` [`true`|`false`]
 
-> [!NOTE]
-> You must either be the [database user](../access-control/role-based-authorization.md) who created the materialized view or have [database admin permission](../access-control/role-based-authorization.md) to run this command.
+## Permissions
 
-**Examples** 
+This command requires you to have [database admin or materialized view admin](../access-control/role-based-authorization.md) permissions.
+
+## Examples
 
 ```kusto
 .alter materialized-view MyView autoUpdateSchema true
