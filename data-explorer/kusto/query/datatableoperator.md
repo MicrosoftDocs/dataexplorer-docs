@@ -1,6 +1,6 @@
 ---
 title: datatable operator - Azure Data Explorer
-description: Learn how to use the datatable operator to return a table of the given schema and data.
+description: Learn how to use the datatable operator to define a table with given schema and data.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/24/2022
