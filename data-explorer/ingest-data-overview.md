@@ -46,7 +46,7 @@ For organizations who wish to have management (throttling, retries, monitors, al
 
 * **[IoT Hub](https://azure.microsoft.com/services/iot-hub/)**: A pipeline that is used for the transfer of data from supported IoT devices to Azure Data Explorer. For more information, see [Ingest from IoT Hub](ingest-data-iot-hub.md).
 
-* **[Azure Data Factory (ADF)](https://azure.microsoft.com/en-us/products/data-factory/)**: A fully managed data integration service for analytic workloads in Azure. Azure Data Factory connects with over 90 supported sources to provide efficient and resilient data transfer. ADF prepares, transforms, and enriches data to give insights that can be monitored in different kinds of ways. This service can be used as a one-time solution, on a periodic timeline, or triggered by specific events.
+* **[Azure Data Factory (ADF)](https://azure.microsoft.com/products/data-factory/)**: A fully managed data integration service for analytic workloads in Azure. Azure Data Factory connects with over 90 supported sources to provide efficient and resilient data transfer. ADF prepares, transforms, and enriches data to give insights that can be monitored in different kinds of ways. This service can be used as a one-time solution, on a periodic timeline, or triggered by specific events.
   * [Integrate Azure Data Explorer with Azure Data Factory](data-factory-integration.md).
   * [Use Azure Data Factory to copy data from supported sources to Azure Data Explorer](./data-factory-load-data.md).
   * [Copy in bulk from a database to Azure Data Explorer by using the Azure Data Factory template](data-factory-template.md).
