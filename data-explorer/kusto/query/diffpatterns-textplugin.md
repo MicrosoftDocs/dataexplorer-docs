@@ -1,9 +1,9 @@
 ---
 title: diffpatterns_text plugin - Azure Data Explorer
-description: This article describes diffpatterns_text plugin in Azure Data Explorer.
+description: Learn how to use the diffpatterns_text plugin to compare two string value data sets to find the differences between the two data sets. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/24/2022
+ms.date: 12/11/2022
 ---
 # diffpatterns_text plugin
 
@@ -13,7 +13,7 @@ The `diffpatterns_text` returns a set of text patterns that capture different po
 
 ## Syntax
 
-`T | evaluate diffpatterns_text(`TextColumn, BooleanCondition [, MinTokens, Threshold , MaxTokens]`)` 
+`T | evaluate diffpatterns_text(`TextColumn, BooleanCondition [, MinTokens, Threshold, MaxTokens]`)`
 
 ## Arguments
 
@@ -21,15 +21,15 @@ The `diffpatterns_text` returns a set of text patterns that capture different po
 
 * TextColumn - *column_name*
 
-    The text column to analyze, must be of type string.
-    
+    The text column to analyze must be of type string.
+
 * BooleanCondition - *Boolean expression*
 
-    Defines how to generate the two record subsets to compare to the input table. The algorithm splits the query into two data sets, “True” and “False” according to the condition, then analyzes the (text) differences between them. 
+    Defines how to generate the two record subsets to compare to the input table. The algorithm splits the query into two data sets, “True” and “False” according to the condition, then analyzes the (text) differences between them.
 
 ### Optional arguments
 
-All other arguments are optional, but they must be ordered as below. 
+All other arguments are optional, but they must be ordered as following.
 
 * MinTokens  - 0 < *int* < 200 [default: 1]
 
@@ -51,7 +51,7 @@ The result of diffpatterns_text returns the following columns:
 * Count_of_False: The number of rows matching the pattern when the condition is `false`.
 * Percent_of_True: The percentage of rows matching the pattern from the rows when the condition is `true`.
 * Percent_of_False: The percentage of rows matching the pattern from the rows when the condition is `false`.
-* Pattern: The text pattern containing tokens from the text string and '`*`' for wildcards. 
+* Pattern: The text pattern containing tokens from the text string and '`*`' for wildcards.
 
 > [!NOTE]
 > The patterns aren't necessarily distinct and may not provide full coverage of the data set. The patterns may be overlapping and some rows may not match any pattern.
