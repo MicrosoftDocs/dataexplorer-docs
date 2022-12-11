@@ -1,6 +1,6 @@
 ---
 title: dcount() (aggregation function) - Azure Data Explorer
-description: Learn how to use the dcount() function to return an estimate of the number of distinct values of an expression in the group.
+description: Learn how to use the dcount() function to return an estimate of the number of distinct values of an expression within a group.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/24/2022
