@@ -13,8 +13,8 @@ Examples of these flows are user-defined scripts that run using the [Python plug
 Sandboxes are run locally (meaning, processing is done close to the data), with no extra latency for remote calls.
 
 ## Prerequisites and limitations
-* Sandboxes that run on [modern VM size](#Modern-Virtual-machine-sizes) (that supports nested virtualization) don't have any limitations.
-* Sandboxes that run on non-modern VM sizes are subject to some limitations mentioned [here](./sandboxes-in-non-modern-skus.md).
+* Sandboxes that run on [modern VM size](#modern-virtual-machine-sizes) (that supports nested virtualization) don't have any limitations.
+* Sandboxes that run on [non-modern VM sizes](./sandboxes-in-non-modern-skus.md#virtual-machine-sizes) are subject to some limitations mentioned [here](./sandboxes-in-non-modern-skus.md).
 * The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space to run.
   * The estimated size is 10 GB.
   * This affects the cluster's data capacity, and may affect the [cost](https://azure.microsoft.com/pricing/details/data-explorer) of the cluster.
