@@ -221,6 +221,14 @@ items:
         href: data-factory-template.md
       - name: Run control commands using Azure Data Factory
         href: data-factory-command-activity.md
+    - name: CosmosDB
+      items:
+      - name: Azure portal
+        displayName: CosmosDB, ingest, data connection
+        href: ingest-data-cosmos-db-connection.md
+      - name: CosmosDB data connection
+        displayName: ingest data, ingestion
+        href: ingest-data-cosmos-db-overview.md
     - name: Using SDKs
       items:
       - name: .NET SDK

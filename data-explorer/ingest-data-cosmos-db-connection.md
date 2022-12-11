@@ -3,18 +3,18 @@ title: Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
 description: Learn how to ingest (load) data into Azure Data Explorer from Cosmos DB.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 12/06/2022
+ms.date: 12/11/2022
 ---
 
 # Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
 
-Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Azure Cosmos DB for NoSql](/azure/cosmos-db/nosql/) using a [change feed](/azure/cosmos-db/change-feed). The Cosmos DB change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your cluster. The change feed listens for new and updated documents but does not log deletes.
+Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Azure Cosmos DB for NoSql](/azure/cosmos-db/nosql/) using a [change feed](/azure/cosmos-db/change-feed). The Cosmos DB change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your cluster. The change feed listens for new and updated documents but does not log deletes. For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
 Each data connection listens to a specific Cosmos DB container and ingests data into a specified table. The ingestion method supports streaming ingestion (when enabled) and batch ingestion.
 
 In this article, you'll learn how to set up a Cosmos DB change feed data connection to ingest data into Azure Data Explorer with System Managed Identity. Use the following steps to set up a connector.
 
-Step 1: [Choose an Azure Data Explorer table and configure if its table mapping](#step-1-choose-an-azure-data-explorer-table-and-configure-if-its-table-mapping)
+Step 1: [Choose an Azure Data Explorer table and configure its table mapping](#step-1-choose-an-azure-data-explorer-table-and-configure-its-table-mapping)
 
 Step 2: [Create a Cosmos DB data connection](#step-2-create-a-cosmos-db-data-connection)
 
@@ -24,7 +24,25 @@ Step 2: [Create a Cosmos DB data connection](#step-2-create-a-cosmos-db-data-con
 - A [cluster and database](create-cluster-database-portal.md)
 - A container from a [Cosmos DB account for NoSQL](/azure/cosmos-db/nosql/)
 
-## Step 1: Choose an Azure Data Explorer table and configure if its table mapping
+## Step 1: Choose an Azure Data Explorer table and configure its table mapping
+
+Before you create a data connection, create a table where you'll store the ingested data and apply a mapping that matches schema in the source Cosmos DB container.
+
+The following shows a sample schema of an item in the Cosmos DB container:
+
+```json
+{
+    "id": "17313a67-362b-494f-b948-e2a8e95e237e",
+    "creationTime": "2022-04-28T07:36:49.5434296Z",
+    "_rid": "pL0MAJ0Plo0CAAAAAAAAAA==",
+    "_self": "dbs/pL0MAA==/colls/pL0MAJ0Plo0=/docs/pL0MAJ0Plo0CAAAAAAAAAA==/",
+    "_etag": "\"000037fc-0000-0700-0000-626a44110000\"",
+    "_attachments": "attachments/",
+    "_ts": 1651131409
+}
+```
+
+Use the following steps to create a table and apply a table mapping:
 
 1. In the Azure Data Explorer web UI, from the left navigation menu select **Query**, and then select the database where you want to create the table.
 
@@ -73,9 +91,9 @@ You can use the following methods to create the data connector:
 
 1. On the **Data ingestion** tile, select **Create data connection** > **Cosmos DB**.
 
-    :::image type="content" source="media/ingest-data-cosmos-db/create-data-connection.png" alt-text="Screenshot of the Getting started tab, showing the Create CosmosDB data connection option.":::
+    :::image type="content" source="media/ingest-data-cosmos-db/create-data-connection.png" alt-text="Screenshot of the Getting started tab, showing the Create Cosmos DB data connection option.":::
 
-1. In the CosmosDB **Create data connection** pane, fill out the form with the information in the table:
+1. In the Cosmos DB **Create data connection** pane, fill out the form with the information in the table:
 
     :::image type="content" source="media/ingest-data-cosmos-db/fill-fields.png" alt-text="Screenshot of the data connection pane, showing the form fields with values.":::
 
@@ -120,14 +138,14 @@ To configure your Cosmos DB connection:
         ```
         ~~~
 
-1. Grant the connector permission to access your CosmosDB account. Providing the connector access to your CosmosDB, allows it to access and retrieve data from your database. You'll need your cluster's principal ID, which you can find in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity).
+1. Grant the connector permission to access your Cosmos DB account. Providing the connector access to your Cosmos DB, allows it to access and retrieve data from your database. You'll need your cluster's principal ID, which you can find in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity).
 
     > [!NOTE]
     >
     > - The following steps assign the [Cosmos DB Built-in Data Reader](/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions) to the principal ID as it contains the [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed and the Microsoft.DocumentDB/databaseAccounts/readMetadata](/azure/cosmos-db/how-to-setup-rbac#permission-model) action required for the connection. If you need more granular control of your permissions, you can define a custom role with only the required action and assign it to the principal ID.
     > - You can't assign the **Cosmos DB Built-in Data Reader** role using the Azure portal *Role Assignment* feature.
 
-    To grant access to your CosmosDB account, do one of the following:
+    To grant access to your Cosmos DB account, do one of the following:
 
     - **Grant access using the Azure CLI**: Run the CLI command, using information in the following table to replace placeholders with appropriate values:
 
