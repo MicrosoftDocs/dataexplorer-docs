@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 11/14/2022
 ---
 
-# Azure Data Explorer ingestion behavior on invalid data
+# Ingestion behavior of invalid data
 
 Data that is malformed, unparsable, too large, or doesn't conform to the schema may fail to be ingested properly. The following tables describe what to expect when ingesting invalid data into Azure Data Explorer.
 
-> For more information about why ingestion might fail, see [Ingestion failures](kusto/management/ingestionfailures.md) and  [Ingestion error codes in Azure Data Explorer](error-codes.md).
+> [!NOTE]
+> For more information about why ingestion might fail, see [Ingestion failures](kusto/management/ingestionfailures.md) and [Ingestion error codes in Azure Data Explorer](error-codes.md).
 
 ## Failure with error code
 
