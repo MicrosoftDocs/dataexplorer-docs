@@ -62,7 +62,7 @@ Some of the  parameters can be controlled using a cluster-level [sandbox policy]
 
 ## Modern Virtual machine sizes
 
-The following table lists all modern VM sizes that supports hyper-v sandbox technology.
+The following table lists all modern VM sizes that support hyper-v sandbox technology.
 
 | **Name**                              | **Category**      |
 |---------------------------------------|-------------------|
