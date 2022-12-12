@@ -21,7 +21,7 @@ Checks group membership or principal identity of the current principal running t
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *group* | dynamic | &check; | An array of string literals in which each literal represents an AAD principal. See [examples for Azure AD principals](../management/access-control/principals-and-identity-providers.md#azure-ad-tenants).|
+| *group* | dynamic | &check; | An array of string literals in which each literal represents an Azure AD principal. See [examples for Azure AD principals](../management/access-control/principals-and-identity-providers.md#azure-ad-tenants).|
 
 ## Returns
   
