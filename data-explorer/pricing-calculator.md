@@ -23,9 +23,6 @@ You set the region, environment, and estimated data ingestion of your cluster. T
 
 At the bottom of the form, the individual component estimates are added together to create a total monthly estimate. The component estimates and total update as you make configuration changes.
 
-> [!NOTE]
-> Other resources such as Network I/O, Bandwidth, and VNET cost may be charged separately based on your cross-region usage.
-
 ## Get started
 
 1. Go to the [pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=azure-data-explorer).
