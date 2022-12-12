@@ -99,6 +99,7 @@ If you left the [auto-select engine instances](#auto-select-engine-instances) to
 
 1. Choose between the [workload options](#workload-options). The engine **Instance** will adjust accordingly.
 1. Specify the number of hours, days, or months you’d like to run the engine.
+1. (Optional) Select a **Savings Options** plan.
 
 #### When auto-select is disabled
 
@@ -108,6 +109,7 @@ If you disabled the [auto-select engine instances](#auto-select-engine-instances
 1. Choose the **VM Series**.
 1. Choose the specific engine **Instance**.
 1. Specify the number of hours, days, or months you’d like to run the engine.
+1. (Optional) Select a **Savings Options** plan.
 
 The **Premium Managed Disk** component is based on the SKU selected.
 
@@ -120,7 +122,8 @@ The data management (DM) service is responsible for data ingestion from managed 
 
 To get an estimate for **Data Management Instances**:
 
-* Specify the number of hours, days, or months you’d like to run the instance
+1. Specify the number of hours, days, or months you’d like to run the instance.
+1. (Optional) Select a **Savings Options** plan.
 
 ### Storage and transactions
 
@@ -152,7 +155,7 @@ To get a bandwidth service estimate:
 
 ### Azure Data Explorer markup
 
-The Azure Data Explorer markup is charged for the premium support option provided with your data ingestion and engine clusters. It's billed based on the number of engine vCPUs in the cluster and isn't charged for dev clusters. Your costs change based on the number of hours, days, or months configured in the engine instances component. For more information, see [Azure Data Explorer pricing - FAQ](https://azure.microsoft.com/pricing/details/data-explorer/#faq).
+The Azure Data Explorer markup is charged for the premium support option provided with your data ingestion and engine clusters. It's billed based on the number of engine vCPUs in the cluster and isn't charged for dev clusters. Your costs change based on the number of hours, days, or months configured in the engine instances component. Optionally select a **Savings Options** plan. For more information, see [Azure Data Explorer pricing - FAQ](https://azure.microsoft.com/pricing/details/data-explorer/#faq).
 
 ### Support
 
