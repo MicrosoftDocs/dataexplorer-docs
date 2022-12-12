@@ -72,12 +72,11 @@ In the calculator, enter estimates for the following fields:
 
 * **Estimated data compression**: Ratio between the uncompressed data size and compressed size. Data compression varies based on the cardinality of the values and its structure. For example, logs data ingested in structured columns has higher compression compared to dynamic columns or GUID. All ingested data is compressed by default.
 
-At this point, your cluster cost estimate will reflect your data requirements.
+### Auto-select engine instances
 
-> [!IMPORTANT]
-> If you want to individually configure the remaining components, turn off **AUTO-SELECT ENGINE INSTANCES**.
->
-> :::image type="content" source="media/pricing/auto-select-engine-instances.png" alt-text="Image of auto select engine instances toggle.":::
+If you want to individually configure the remaining components, disable the **AUTO-SELECT ENGINE INSTANCES** toggle. When enabled, the calculator will select the most optimal SKU based on the ingestion inputs.
+
+:::image type="content" source="media/pricing/auto-select-engine-instances.png" alt-text="Image of auto select engine instances toggle.":::
 
 ### Engine instances
 
@@ -85,7 +84,7 @@ Engine instances are responsible for indexing, caching data on local SSDs, premi
 
 In this component, when you change the **Workload** type, the auto-selected **Instance** adjusts accordingly. There's a [wide variety of SKUs](./manage-cluster-choose-sku.md) to match the workload for your use case. The **Premium Managed Disk** component is pre-configured based on the SKU selected.
 
-Choose between the following **Workload** options:
+The following are the engine **Workload** options:
 
 * **All**: Automatically selects the optimal SKU based on the input you provide
 * **Compute Optimized SKUs**:
@@ -97,6 +96,23 @@ Choose between the following **Workload** options:
   * Suited for workloads that require caching large data sizes
   * In some SKUs, premium managed disk storage is attached to the engine node instead of Local SSD for hot data storage
 
+#### When auto-select is enabled
+
+If you left the [auto-select engine instances](#auto-select-engine-instances) toggle enabled:
+
+1. Choose between the [workload options](#workload-options). The engine **Instance** will adjust accordingly.
+1. Specify the number of hours, days, or months you’d like to run the engine.
+
+#### When auto-select is disabled
+
+If you disabled the [auto-select engine instances](#auto-select-engine-instances) toggle:
+
+1. Choose between the [workload options](#workload-options).
+1. Choose the **VM Series**.
+1. Choose the specific engine **Instance**.
+1. Specify the number of hours, days, or months you’d like to run the engine.
+
+The **Premium Managed Disk** component is based on the SKU selected.
 > [!NOTE]
 > Not all **VM Series** are offered in each region. If you are looking for a SKU that is not listed in the selected region, choose a different region.
 
