@@ -48,4 +48,4 @@ The `.alter-merge table` command:
 
 ## See also
 
-The `.alter` table command has similar functionality. For more information, see [.alter table](../management/alter-table-command.md).
+Use the `.alter` table command when you wish to further redefine the table settings. For more information, see [.alter table](../management/alter-table-command.md).

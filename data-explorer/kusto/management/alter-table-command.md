@@ -59,4 +59,4 @@ The `.alter table` command:
 
 ## See also
 
-The `.alter-merge` table command has similar functionality. For more information, see [.alter-merge table](../management/alter-merge-table-command.md).
+Use `.alter-merge` when you wish to preserve the table settings and only override or expand certain columns. For more information, see [.alter-merge table](../management/alter-merge-table-command.md).
