@@ -68,7 +68,7 @@ In the calculator, enter estimates for the following fields:
 
 * **Hot cache retention (days)**: Ingested data that's cached according to our [cache policy](./kusto/management/cachepolicy.md) on the local SSD of the Engine service. Your query performance requirement determines the amount of compute nodes and local SSD storage needed.
 
-* **Total retention (days)**: Period for which your data is available for query. This retention is a combination of hot data and cold cache that keeps the data in the blob, indexed and compressed. Choose the data retention window based on compliance or other regulatory requirements. Apply the [hot window capability](../data-explorer/hot-windows.md) to warm the data based on the time window for faster queries.  
+* **Total retention (days)**: Period for which your data is stored and available for query. Following the retention window, your data will be automatically removed. Choose the data retention window based on compliance or other regulatory requirements. Apply the [hot window capability](../data-explorer/hot-windows.md) to warm the data based on the time window for faster queries.  
 
 * **Estimated data compression**: Ratio between the uncompressed data size and compressed size. Data compression varies based on the cardinality of the values and its structure. For example, logs data ingested in structured columns has higher compression compared to dynamic columns or GUID. All ingested data is compressed by default.
 
@@ -82,7 +82,7 @@ If you want to individually configure the remaining components, disable the **AU
 
 Engine instances are responsible for indexing, caching data on local SSDs, premium storage as managed disks, and serving queries. The engine service requires a minimum of two compute instances.
 
-In this component, when you change the **Workload** type, the auto-selected **Instance** adjusts accordingly. There's a [wide variety of SKUs](./manage-cluster-choose-sku.md) to match the workload for your use case. The **Premium Managed Disk** component is pre-configured based on the SKU selected.
+#### Workload options
 
 The following are the engine **Workload** options:
 
@@ -113,6 +113,7 @@ If you disabled the [auto-select engine instances](#auto-select-engine-instances
 1. Specify the number of hours, days, or months you’d like to run the engine.
 
 The **Premium Managed Disk** component is based on the SKU selected.
+
 > [!NOTE]
 > Not all **VM Series** are offered in each region. If you are looking for a SKU that is not listed in the selected region, choose a different region.
 
