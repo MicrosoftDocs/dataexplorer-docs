@@ -1,9 +1,9 @@
 ---
 title: dcount_intersect plugin - Azure Data Explorer
-description: This article describes dcount_intersect plugin in Azure Data Explorer.
+description: Learn how to use the dcount_intersect plugin to calculate the intersection between N sets based on hyper log log (hll) values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/24/2022
+ms.date: 12/11/2022
 ---
 # dcount_intersect plugin
 

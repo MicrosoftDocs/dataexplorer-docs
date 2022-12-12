@@ -1,9 +1,9 @@
 ---
 title: degrees() - Azure Data Explorer
-description: This article describes degrees() in Azure Data Explorer.
+description: Learn how to use the degrees() function to convert angle values from radians to values in degrees.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 12/11/2022
 ---
 # degrees()
 

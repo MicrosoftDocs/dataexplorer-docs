@@ -1,9 +1,9 @@
 ---
 title: dcount_hll() - Azure Data Explorer
-description: This article describes dcount_hll() in Azure Data Explorer.
+description: Learn how to use the dcount_hll() function to calculate the distinct count from hyper log log (hll) intermediate calculation results.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/15/2019
+ms.date: 12/11/2022
 ---
 # dcount_hll()
 
