@@ -71,4 +71,4 @@ nanosecond = datetime_part("nanosecond", dt)
 
 > [!NOTE]
 > `weekofyear` is an obsolete variant of `week_of_year` part. `weekofyear` was not ISO 8601 compliant; the first week of a year was defined as the week with the year's first Wednesday in it.
-> `week_of_year` is ISO 8601 compliant; the first week of a year is defined as the week with the year's first Thursday in it. [For more information](https://en.wikipedia.org/wiki/ISO_8601#Week_dates).
+> `week_of_year` is ISO 8601 compliant; the first week of a year is defined as the week with the year's first Thursday in it. [For more information], see [ISO 8601 week dates](https://en.wikipedia.org/wiki/ISO_8601#Week_dates).

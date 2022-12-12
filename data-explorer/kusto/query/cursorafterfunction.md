@@ -14,7 +14,7 @@ zone_pivot_groups: kql-flavors
 A predicate run over the records of a table to compare their ingestion time against a database cursor.
 
 > [!NOTE]
-> This function can only be invoked on records of a table which has the
+> This function can only be invoked on records of a table that has the
 [IngestionTime policy](../management/ingestiontimepolicy.md) enabled.
 
 ## Syntax
