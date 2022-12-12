@@ -131,7 +131,7 @@ The storage component is the persistent layer where all the data is stored compr
 
 To get an estimate for **Storage and transactions**:
 
-* Choose whether you need **AVAILABILITY ZONE** support. When the toggle is enabled, storage will be deployed as ZRS. Otherwise, storage will be deployed as LRS.
+* If you need [availability zone support](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support), enable the **AVAILABILITY ZONE** toggle. If enabled, storage will be deployed as ZRS. Otherwise, storage will be deployed as LRS.
 
 :::image type="content" source="media/pricing/availability-zone-toggle.png" alt-text="Image of availability zone toggle.":::
 
