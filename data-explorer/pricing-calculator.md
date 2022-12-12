@@ -126,7 +126,13 @@ To get an estimate for **Data Management Instances**:
 
 ### Storage and transactions
 
-The storage component is the persistent layer where all the data is stored compressed and is billed as Standard LRS or as Standard ZRS. The storage isn't configurable. It's calculated based on the amount of data collected, the total retention days, and the estimated data compression.
+The storage component is the persistent layer where all the data is stored compressed and is billed as Standard LRS or as Standard ZRS. The storage is calculated based on the amount of data collected, the total retention days, and the estimated data compression.
+
+To get an estimate for **Storage and transactions**:
+
+* Choose whether you need **AVAILABILITY ZONE** support. When the toggle is enabled, storage will be deployed as ZRS. Otherwise, storage will be deployed as LRS.
+
+:::image type="content" source="media/pricing/availability-zone-toggle.png" alt-text="Image of availability zone toggle.":::
 
 ### Networking
 
