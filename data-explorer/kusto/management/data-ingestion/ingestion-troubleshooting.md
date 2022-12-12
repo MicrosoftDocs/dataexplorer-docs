@@ -21,16 +21,16 @@ The file uploads to the storage container and the ingestion are performed by the
 
 ## Syntax
 
-`.dup-next-ingest` `into` *TableName* `to` h@*StorageContainerPath*
+`.dup-next-ingest` `into` *TableName* `to` *StorageContainerPath*
 
-`.dup-next-failed-ingest` `into` *TableName* `to` h@*StorageContainerPath*
+`.dup-next-failed-ingest` `into` *TableName* `to` *StorageContainerPath*
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*TableName* | string | &check; | The name of the table from which the next ingestion will be duplicated.|
-|*StorageContainerPath*| string | &check; | The path to the blob container that will store the duplication.|
+|*StorageContainerPath*| string | &check; | The path to the blob container that will store the duplication. We recommend prefacing the path with "h@" to hide sensitive information. To learn more, see [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals)|
 
 ## Returns
 
