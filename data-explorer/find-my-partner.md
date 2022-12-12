@@ -13,7 +13,8 @@ The services and expertise are chosen by the partner and should not be considere
 
 You can also get the list of partners by running the following query on the [help](https://help.kusto.windows.net) cluster:
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/FindMyPartner?query=H4sIAAAAAAAAAwtILCrJSy0CAIoHlv4HAAAA)
+> [!div class="nextstepaction"]
+> [Run the query](https://dataexplorer.azure.com/clusters/help/databases/FindMyPartner?query=H4sIAAAAAAAAAwtILCrJSy0CAIoHlv4HAAAA)
 
 ```kusto
 Partner
