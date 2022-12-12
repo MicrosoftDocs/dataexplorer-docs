@@ -22,6 +22,7 @@ The function `series_dot_product()` takes an expression containing two numeric s
 ## Returns
 
 Returns a double type value with the sum of the elements of the array, created by the element-wise multiplication operation between the two inputs.
+Any non-numeric element or non-existing element (arrays of different sizes) will be ignored.
 
 > [!NOTE]
 > If the input contains empty arrays, the result is `null`.
