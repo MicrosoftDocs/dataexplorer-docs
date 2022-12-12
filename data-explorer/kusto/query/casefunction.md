@@ -1,9 +1,9 @@
 ---
 title: case() - Azure Data Explorer
-description: This article describes case() in Azure Data Explorer.
+description: Learn how to use the case() function to evaluate a list of predicates and return the first expression for which the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/10/2022
+ms.date: 11/23/2022
 ---
 # case()
 
@@ -33,7 +33,8 @@ The value of the first *then_i* whose *predicate_i* evaluates to `true`, or the 
 
 ## Example
 
-[**Run the Query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA33LQQpAQACF4b1yh9esKAtDdtyAlRMMHolBY5Tk8KTs5F9/v1FTR5T9QbRm1pCwM2SC1XJB5DonuFtODaqtHmiRoVYrvWdIM8QBRKnVOIoAroPvXizDWxds+k3/cZEr01H4FzbjCsCbAAAA)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA33LQQpAQACF4b1yh9esKAtDdtyAlRMMHolBY5Tk8KTs5F9/v1FTR5T9QbRm1pCwM2SC1XJB5DonuFtODaqtHmiRoVYrvWdIM8QBRKnVOIoAroPvXizDWxds+k3/cZEr01H4FzbjCsCbAAAA" target="_blank">Run the query</a>
 
 ```kusto
 range Size from 1 to 15 step 2

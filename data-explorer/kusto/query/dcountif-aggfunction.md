@@ -1,14 +1,13 @@
 ---
 title: dcountif() (aggregation function) - Azure Data Explorer
-description: This article describes dcountif() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the dcountif() function to return an estimate of the number of distinct values of an expression for rows where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/10/2022
+ms.date: 11/16/2022
 ---
 # dcountif() (aggregation function)
 
-Calculates an estimate of the number of distinct values of *Expr* of rows for which *Predicate* evaluates to `true`.
-
+Estimates the number of distinct values of *Expr* for rows in which *Predicate* evaluates to `true`.
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
@@ -25,7 +24,7 @@ Calculates an estimate of the number of distinct values of *Expr* of rows for wh
 
 ## Returns
 
-Returns an estimate of the number of distinct values of *Expr* of rows for which *Predicate* evaluates to `true` in the group.
+Returns an estimate of the number of distinct values of *Expr* for rows in which *Predicate* evaluates to `true`.
 
 > [!TIP]
 > `dcountif()` may return an error in cases where all, or none of the rows pass the `Predicate` expression.
@@ -34,7 +33,8 @@ Returns an estimate of the number of distinct values of *Expr* of rows for which
 
 This example shows how many types of fatal storm events happened in each state.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22MMQ6DMBAE+7ziShAUfAAqEyk1+cCBz8ISttH5AIHy+BhoKXc0O50Edu1KXuLrB3FxDtkeBMoaQ5zwGwWnW6j1EBYv1mTX/u4zlZkilDEqyzQIFHDPj9cXyJsqh36HTlAo9bcxNR/b0ECVhMCa+Hw8OX+LHx0UrAAAAA==)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22MMQ6DMBAE+7ziShAUfAAqEyk1+cCBz8ISttH5AIHy+BhoKXc0O50Edu1KXuLrB3FxDtkeBMoaQ5zwGwWnW6j1EBYv1mTX/u4zlZkilDEqyzQIFHDPj9cXyJsqh36HTlAo9bcxNR/b0ECVhMCa+Hw8OX+LHx0UrAAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents

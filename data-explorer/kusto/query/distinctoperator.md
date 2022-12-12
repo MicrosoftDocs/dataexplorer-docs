@@ -1,6 +1,6 @@
 ---
 title: distinct operator - Azure Data Explorer
-description: This article describes distinct operator in Azure Data Explorer.
+description: Learn how to use the distinct operator to create a table with the distinct combination of the columns of the input table.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/24/2022
