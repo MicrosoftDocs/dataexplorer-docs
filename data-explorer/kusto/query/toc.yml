@@ -1151,7 +1151,7 @@ items:
     href: series-subtractfunction.md
   - name: series_tan()
     displayName: element-wise, elementwise
-    href: series-atanfunction.md
+    href: series-tanfunction.md
   - name: series_dot_product()
     displayName: element-wise, elementwise
     href: series-dot-productfunction.md  
