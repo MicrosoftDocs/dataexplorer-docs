@@ -7,9 +7,9 @@ ms.date: 12/12/2022
 ---
 # series_dot_product()
 
-Calculates the dot product of two numeric series inputs.
+Calculates the dot product of two numeric series.
 
-The function `series_dot_product()` takes an expression containing two numeric series inputs as input and calculates their [dot product](https://en.wikipedia.org/wiki/Dot_product).
+The function `series_dot_product()` takes an expression containing two numeric series as input and calculates their [dot product](https://en.wikipedia.org/wiki/Dot_product).
 
 ## Syntax
 
@@ -17,15 +17,15 @@ The function `series_dot_product()` takes an expression containing two numeric s
 
 ## Arguments
 
-* *series1, series2*: Input numeric arrays to be element-wise multiplied and then summed into a double type value.
+* *series1, series2*: Input dynamic arrays with numeric data, to be element-wise multiplied and then summed into a double type value.
 
 ## Returns
 
-Returns a double type value with the sum of the elements of the array, created by the element-wise multiplication operation between the two inputs.
-Any non-numeric element or non-existing element (arrays of different sizes) will be ignored.
+Returns a real type value with the sum of the elements of the array, created by the element-wise multiplication operation between the two inputs.
+Any non-numeric element of the input series or non-existing element (arrays of different sizes) will be ignored.
 
 > [!NOTE]
-> If the input contains empty arrays, the result is `null`.
+> If the input contains empty arrays or one of the inputs is null, the result is `null`.
 
 ## Example
 

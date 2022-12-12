@@ -1048,6 +1048,9 @@ items:
   - name: series_divide()
     displayName: element-wise, elementwise
     href: series-dividefunction.md
+  - name: series_dot_product()
+    displayName: element-wise, elementwise
+    href: series-dot-productfunction.md
   - name: series_equals()
     displayName: element-wise, elementwise
     href: series-equalsfunction.md
@@ -1152,9 +1155,6 @@ items:
   - name: series_tan()
     displayName: element-wise, elementwise
     href: series-tanfunction.md
-  - name: series_dot_product()
-    displayName: element-wise, elementwise
-    href: series-dot-productfunction.md  
 - name: Plugins
   items:
   - name: General plugins
