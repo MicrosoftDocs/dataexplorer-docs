@@ -1,5 +1,5 @@
 ---
-title: Ingestion troubleshooting
+title: Ingestion troubleshooting - Azure Data Explorer
 description: Learn how to troubleshoot your data ingestion on demand using .dup-next-ingest and .dup-next-failed-ingest commands.
 ms.topic: reference
 ms.date: 12/01/2022
@@ -11,7 +11,7 @@ Use the `.dup-next-ingest` and `.dup-next-failed-ingest` commands for on-demand 
 
 On the next ingestion to the specified table, `.dup-next-ingest` uploads the successfully downloaded source files plus a file containing metadata on the ingestion request to the specified storage container. `.dup-next-failed-ingest` does the same process but only if the ingestion fails.
 
-The file uploads to the storage container are performed by the same node that does the ingestion. Since the duplication configuration isn't persisted, rerun the command if there are admin node changes.
+The file uploads to the storage container and the ingestion are performed by the same node. Since the duplication configuration isn't persisted, rerun the command if there are admin node changes.
 
 > [!NOTE]
 >
@@ -34,7 +34,7 @@ The file uploads to the storage container are performed by the same node that do
 
 ## Returns
 
-The *TableName* and *StorageContainerPath* will be returned along with an *IngestionCommandFilePath*, which is the location of the the ingestion file request within the blob container.
+The *TableName* and *StorageContainerPath* will be returned along with an *IngestionCommandFilePath*, which is the location of the ingestion file request within the blob container.
 
 Upon the next pull data ingestion, or failed ingestion for `.dup-next-failed-ingest`, the source files and another file containing metadata will be uploaded to the blob container.
 
