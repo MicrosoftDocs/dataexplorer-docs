@@ -18,7 +18,7 @@ Converts UTC [datetime](./scalar-data-types/datetime.md) to local datetime using
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *from* | datetime | &check; | The UTC datetime to convert.|
-| *timezone* | string | &check; | The timezone to convert to. The value must be one of the supported [timezones](timezone.md).|
+| *timezone* | string | &check; | The timezone to convert to. This value must be one of the supported [timezones](timezone.md).|
 
 ## Returns
 
