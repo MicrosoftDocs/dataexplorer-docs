@@ -3,7 +3,7 @@ title: array_index_of() - Azure Data Explorer
 description: Learn how to use the array_index_of() function to search an array for a specified item, and return its position.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 11/03/2022
 ---
 # array_index_of()
 
@@ -11,17 +11,17 @@ Searches an array for the specified item, and returns its position.
 
 ## Syntax
 
-`array_index_of(`*array*,*lookup*`)`
+`array_index_of(`*array*,*value*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array*| array | &check; | Input array to search.|
-| *lookup* |scalar | &check; | Value to lookup. The value should be of type `long`, `integer`, `double`, `datetime`, `timespan`, `decimal`, `string`, `guid`, or `boolean`. |
-| *start_index* | number |  | Search start position. A negative value will offset the starting search value from the end of the array by `abs(start_index)` steps.
-| *length* | number |  | Number of values to examine. A value of -1 means unlimited length.
-| *occurrence* | The number of the occurrence. The default is 1.
+| *array*| dynamic | &check; | The array to search.|
+| *value* | long, integer, double, datetime, timespan, decimal, string, guid, or boolean | &check; | The value to lookup. |
+| *start* | number |  | The search start position. A negative value will offset the starting search value from the end of the array by `abs(start_index)` steps.
+| *length* | int |  | The number of values to examine. A value of -1 means unlimited length.
+| *occurrence* | int | The number of the occurrence. The default is 1.
 
 ## Returns
 
@@ -50,14 +50,10 @@ print
  , idx9 = array_index_of(arr, "is", -4)   // negative start index will look at last 3 elements
 ```
 
-**Results**
-
 |idx1|idx2|idx3|idx4|idx5|idx6|idx7|idx8|idx9|
 |----|----|----|----|----|----|----|----|----|
 |2   |3   |-1  |-1   |3   |4   |-1  |4  |-1  |
 
 ## See also
 
-If you only want to check whether a value exists in an array,
-but you aren't interested in its position, you can use
-[set_has_element(`arr`, `value`)](sethaselementfunction.md). This function will improve the readability of your query. Both functions have the same performance.
+Use [set_has_element(`arr`, `value`)](sethaselementfunction.md) to check whether a value exists in an array. This function will improve the readability of your query. Both functions have the same performance.

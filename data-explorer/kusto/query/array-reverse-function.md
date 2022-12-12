@@ -3,7 +3,7 @@ title: array_reverse() - Azure Data Explorer
 description: Learn how to use the array_reverse() function to reverse the order of the elements in a dynamic array.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 11/20/2022
 ---
 # array_reverse()
 
@@ -11,17 +11,17 @@ Reverses the order of the elements in a dynamic array.
 
 ## Syntax
 
-`array_reverse(`*array*`)`
+`array_reverse(`*value*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*array*|  | &check;| Input array to reverse.|
+|*value*| dynamic | &check;| The array to reverse.|
 
 ## Returns
 
-Returns an array that contains exactly the same elements as the input array, but in reverse order.
+Returns an array that contains the same elements as the input array in reverse order.
 
 ## Example
 
@@ -34,8 +34,6 @@ This example shows an array of words reversed.
 print arr=dynamic(["this", "is", "an", "example"]) 
 | project Result=array_reverse(arr)
 ```
-
-**Results**
 
 |Result|
 |---|

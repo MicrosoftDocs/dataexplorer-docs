@@ -518,6 +518,12 @@ items:
       href: data-ingestion/streaming-ingestion-schema-changes.md
     - name: Clear schema cache for streaming ingestion
       href: data-ingestion/clear-schema-cache-command.md
+  - name: Ingestion failures
+    items:
+    - name: Ingestion failures
+      href: ingestionfailures.md
+    - name: Streaming ingestion failures
+      href: streamingingestionfailures.md   
 - name: Data export
   href: data-export/index.md
   items:
@@ -629,13 +635,3 @@ items:
     href: ../concepts/data-purge.md
   - name: Data soft delete
     href: ../concepts/data-soft-delete.md
-- name: Errors and failures
-  items:
-  - name: Ingestion FAQ
-    href: Ingestion-faq.yml
-  - name: Ingestion error codes
-    href: ../../error-codes.md
-  - name: Ingestion failures
-    href: ingestionfailures.md
-  - name: Streaming ingestion failures
-    href: streamingingestionfailures.md
