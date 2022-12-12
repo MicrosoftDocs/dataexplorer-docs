@@ -1151,7 +1151,10 @@ items:
     href: series-subtractfunction.md
   - name: series_tan()
     displayName: element-wise, elementwise
-    href: series-tanfunction.md   
+    href: series-atanfunction.md
+  - name: series_dot_product()
+    displayName: element-wise, elementwise
+    href: series-dot-productfunction.md  
 - name: Plugins
   items:
   - name: General plugins
