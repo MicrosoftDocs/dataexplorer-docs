@@ -34,7 +34,7 @@ To cancel an ingest from query command, see [`cancel operation`](../cancel-opera
 |--|--|--|--|
 | *async* | string | | If specified, the command will return and continue ingestion in the background. Use the returned `OperationId` with the `.show operations` command to retrieve the ingestion completion status and results. |
 | *TableName* | string | &check; | The name of the table to ingest data into. The *TableName* is always related to the database in context. |
-| *PropertyName*, *PropertyValue* | string | &check; | Any number of [supported ingestion properties](#supported-ingestion-properties) used to control the ingestion process. |
+| *PropertyName*, *PropertyValue* | string | | One or more [supported ingestion properties](#supported-ingestion-properties) used to control the ingestion process. |
 | *QueryOrCommand* | string | &check; | The text of a query or a control command whose results will be used as data to ingest.|
 
 > [!NOTE]
@@ -69,7 +69,7 @@ To cancel an ingest from query command, see [`cancel operation`](../cancel-opera
 * Limit the data for ingestion to less than 1 GB per ingestion operation. If necessary, use multiple ingestion commands.
 * Set the `distributed` flag to `true` if the amount of data being produced by the query is large, exceeds 1 GB, and doesn't require serialization. Then, multiple nodes can produce output in parallel. Don't use this flag when query results are small, since it might needlessly generate many small data shards.
 
-[!INCLUDE [store-query-known-issue.md](../../../includes/store-query-character-limitation.md)]
+[!INCLUDE [store-query-character-limitation.md](../../../includes/store-query-character-limitation.md)]
 
 ## Examples
 

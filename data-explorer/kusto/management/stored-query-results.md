@@ -8,7 +8,7 @@ ms.date: 07/15/2021
 
 # Stored query results
 
-Stored query results is a mechanism that stores the result of a query on the service for up to 24 hours. The same principal identity that created the stored query can reference this data in later queries.
+*Stored query results* is a mechanism that stores the result of a query on the service for up to 24 hours. The same principal identity that created the stored query can reference the results in later queries.
 
 Stored query results can be useful in the following scenarios:
 
@@ -17,7 +17,7 @@ Stored query results can be useful in the following scenarios:
 
 Updates to security policies, such as database access and row level security, aren't propagated to stored query results. Use [`.drop stored_query_results`](#drop-stored_query_results) if there's user permission revocation.
 
-Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, it's recommended that the query includes unique ID columns. See [examples](#examples). If there are multiple result sets returned by a query, only the first result set will be stored.
+Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, we recommended that the query includes [unique ID columns](#pagination). If there are multiple result sets returned by a query, only the first result set will be stored.
 
 > [!NOTE]
 >
@@ -41,7 +41,7 @@ Stored query results behave like tables, in that the order of records isn't pres
 |--|--|--|--|
 | *async* | string | | If specified, the command will return and continue ingestion in the background. Use the returned `OperationId` with the `.show operations` command to retrieve the ingestion completion status and results. |
 | *StoredQueryResultName* | string | &check; | Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.|
-| *PropertyName*, *PropertyValue* | string | &check; | Any number of [supported properties](#supported-properties). |
+| *PropertyName*, *PropertyValue* | string |  | One or more [supported properties](#supported-properties). |
 | *Query* | string | &check; | The text of a query whose results will be stored.|
 
 > [!NOTE]
