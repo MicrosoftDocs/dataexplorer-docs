@@ -16,7 +16,7 @@ Select what columns from the input to exclude from the output.
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
+|--|--|--|--|
 | *T* | string | &check; | Tabular input from which to remove columns. |
 | *ColumnNameOrPattern* | string | &check; | Name of the column or column wildcard-pattern to be removed from the output.|
 
@@ -67,7 +67,7 @@ ConferenceSessions
 | project-away session*
 ```
 
-The below table only displays the output columns. To see the content of the output run the query above.
+The below table only displays the output columns. To see the content of the output run the query.
 
 |conference|owner|participants|URL|level|starttime|duration|time_and_duration|kusto_affinity|
 |---|---|---|---|---|---|---|---|---|
