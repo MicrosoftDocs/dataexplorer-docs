@@ -256,8 +256,6 @@ items:
     - name: JSON formatted data
       displayName: ingest data, ingestion
       href: ingest-json-formats.md
-    - name: Ingestion FAQ
-      href: kusto/management/ingestion-faq.yml  
   - name: Query data
     items:
     - name: Evaluate query performance in your cluster
@@ -589,13 +587,15 @@ items:
   items:
   - name: API
     href: kusto/api/toc.yml
-  - name: Ingestion
+  - name: Troubleshoot ingestion
     items:
     - name: Ingestion error codes
       href: error-codes.md
     - name: Ingestion behavior of invalid data
       href: ingest-invalid-data.md
       displayName: Failure, error code
+    - name: Ingestion FAQ
+      href: kusto/management/ingestion-faq.yml  
   - name: Azure CLI Kusto
     href: /cli/azure/kusto
   - name: PowerShell Kusto
