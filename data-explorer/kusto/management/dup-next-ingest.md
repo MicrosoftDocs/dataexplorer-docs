@@ -31,7 +31,7 @@ This command requires [database admin](access-control/role-based-authorization.m
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*TableName* | string | &check; | The name of the table from which the next ingestion will be duplicated.|
-|*StorageContainerPath*| string | &check; | The path to the blob container that will store the duplication. We recommend prefacing the path with "h@" to hide sensitive information. To learn more, see [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals)|
+|*StorageContainerPath*| string | &check; | The path to the blob container that will store the duplication. We recommend prefacing the path with "h@" to hide sensitive information. To learn more, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals)|
 
 ## Returns
 
