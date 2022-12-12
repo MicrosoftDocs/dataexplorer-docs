@@ -21,6 +21,8 @@ The base-10 exponential function of x, which is 10 raised to the power x: 10^x.
 
 * Exponential value of x.
 
+## See also
+
 For natural (base-10) logarithms, see [log10()](log10-function.md).
 
 For exponential functions of base-e and base-2 logarithms, see [exp()](exp-function.md), [exp2()](exp2-function.md).
