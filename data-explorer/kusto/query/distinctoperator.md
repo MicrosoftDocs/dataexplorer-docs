@@ -13,6 +13,12 @@ Produces a table with the distinct combination of the provided columns of the in
 
 *T* `| distinct` *ColumnName*`[,`*ColumnName2*`, ...]`
 
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ColumnName*| string | &check;| The column name to search for distinct values. |
+
 > [!NOTE]
 > The `distinct` operator supports providing an asterisk `*` as the group key to denote all columns, which is helpful for wide tables.
 

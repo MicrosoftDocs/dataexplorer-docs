@@ -7,7 +7,7 @@ ms.date: 11/24/2022
 ---
 # project-keep operator
 
-Select what columns from the input to keep in the output.
+Select what columns from the input to keep in the output. Only the columns that are specified as arguments will be shown in the result. The other columns are excluded.
 
 ## Syntax
 
@@ -41,7 +41,7 @@ ConferenceSessions
 | project-keep session*
 ```
 
-The below table only displays the output columns. To see the content of the output run the query above.
+The following table displays only the output columns. To see the full content of the output run the above query.
 
 |sessionid| session_title| session_type| session_location|
 |--|--|--|--|
