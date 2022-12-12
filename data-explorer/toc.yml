@@ -135,13 +135,9 @@ items:
         href: table-retention-policy-wizard.md
   - name: Ingest data
     items:
-    - name: Ingestion wizard
-      items:
-      - name: JSON data from local file to existing table
-        displayName: ingest data, ingestion, one click
-        href: ingestion-wizard-existing-table.md
-      - name: Sample app generator
-        href: sample-app-generator-wizard.md
+    - name: Ingest JSON data using the wizard
+      displayName: ingest data, ingestion wizard, one click, local file, existing table
+      href: ingestion-wizard-existing-table.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
@@ -262,6 +258,10 @@ items:
       href: ingest-json-formats.md
   - name: Query data
     items:
+    - name: Evaluate query performance in your cluster
+      href: kusto/api/load-test-cluster.md
+    - name: Optimize for high concurrency
+      href: high-concurrency.md
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
@@ -272,12 +272,8 @@ items:
       href: hot-windows.md
     - name: Debug KQL inline Python
       href: debug-inline-python.md
-    - name: Using SDKs
-      items:
-      - name: Python
-        href: python-query-data.md
-    - name: Optimize for high concurrency
-      href: high-concurrency.md
+    - name: Query data using Python
+      href: python-query-data.md
     - name: Time Series Analysis and Machine Learning
       items:
       - name: Time series analysis
@@ -404,6 +400,37 @@ items:
       href: provision-azure-ad-app.md
     - name: Conditional Access
       href: security-conditional-access.md
+  - name: Develop
+    items:
+    - name: API overview
+      href: kusto/api/index.md
+    - name: Sample app generator
+      href: sample-app-generator-wizard.md
+    - name: Connection strings
+      items:
+      - name: Connection strings overview
+        href: kusto/api/connection-strings/index.md
+      - name: Kusto connection strings
+        href: kusto/api/connection-strings/kusto.md
+      - name: Storage connection strings
+        href: kusto/api/connection-strings/storage-connection-strings.md
+      - name: Storage authentication methods
+        href: kusto/api/connection-strings/storage-authentication-methods.md
+      - name: SQL Server authentication methods
+        href: kusto/api/connection-strings/sql-authentication-methods.md
+      - name: Generate SAS token
+        href: kusto/api/connection-strings/generate-sas-token.md
+    - name: Integrate Kusto query editor in your apps
+      items:
+      - name: Integrate Azure Data Explorer capabilities overview
+        displayName: monaco web UI
+        href: kusto/api/monaco/monaco-overview.md
+      - name: Embed the web UI in an iframe
+        displayName: monaco web UI
+        href: kusto/api/monaco/host-web-ux-in-iframe.md
+      - name: Integrate the Monaco Editor with Kusto query support
+        displayName: monaco monaco-kusto
+        href: kusto/api/monaco/monaco-kusto.md
   - name: Manage
     items:
     - name: Cluster
@@ -560,6 +587,19 @@ items:
   items:
   - name: API
     href: kusto/api/toc.yml
+  - name: Troubleshoot ingestion
+    items:
+    - name: Ingestion error codes
+      href: error-codes.md
+    - name: Ingestion behavior of invalid data
+      href: ingest-invalid-data.md
+      displayName: Failure, error code
+    - name: Ingestion FAQ
+      href: kusto/management/ingestion-faq.yml  
+  - name: Azure CLI Kusto
+    href: /cli/azure/kusto
+  - name: PowerShell Kusto
+    href: /powershell/module/az.kusto/#kusto
   - name: Functions library
     items:
     - name: List of functions
@@ -598,6 +638,9 @@ items:
     - name: pairwise_dist_fl()
       displayName: functions library, multivariate, distance, anomaly, pairwise
       href: kusto/functions-library/pairwise-dist-fl.md      
+    - name: percentiles_linear_fl()
+      displayName: functions library, percentile, rank, statistics
+      href: kusto/functions-library/percentiles-linear-fl.md      
     - name: perm_fl()
       displayName: functions library, statistics
       href: kusto/functions-library/perm-fl.md
@@ -701,4 +744,5 @@ items:
       href: pricing-reserved-capacity.md
   - name: Service updates
     href: https://azure.microsoft.com/updates/?product=data-explorer
-    
+  - name: Find a partner
+    href: find-my-partner.md

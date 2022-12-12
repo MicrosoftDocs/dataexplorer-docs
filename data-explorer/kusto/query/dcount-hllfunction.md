@@ -1,9 +1,9 @@
 ---
 title: dcount_hll() - Azure Data Explorer
-description: This article describes dcount_hll() in Azure Data Explorer.
+description: Learn how to use the dcount_hll() function to calculate the distinct count from hyper log log (hll) intermediate calculation results.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/15/2019
+ms.date: 12/11/2022
 ---
 # dcount_hll()
 
@@ -29,7 +29,8 @@ Returns the distinct count of each value in *Expr*.
 
 The following example shows the distinct count hll merged results.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlXIyMkJSi1WsAUxNFwScxPTUwOK8gtSi0oqNRWSKhWSMvM0gksSi0pCMnNTdQwNcjUx9PumFqWnpkCMiM8FcTQgpoKVFhTlZ6UmlyikJOeX5pXEg6yB69EEAKm9wyCXAAAA)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlXIyMkJSi1WsAUxNFwScxPTUwOK8gtSi0oqNRWSKhWSMvM0gksSi0pCMnNTdQwNcjUx9PumFqWnpkCMiM8FcTQgpoKVFhTlZ6UmlyikJOeX5pXEg6yB69EEAKm9wyCXAAAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
