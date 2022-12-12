@@ -518,12 +518,10 @@ items:
       href: data-ingestion/streaming-ingestion-schema-changes.md
     - name: Clear schema cache for streaming ingestion
       href: data-ingestion/clear-schema-cache-command.md
-  - name: Ingestion failures
-    items:
-    - name: Ingestion failures
-      href: ingestionfailures.md
-    - name: Streaming ingestion failures
-      href: streamingingestionfailures.md   
+  - name: .show ingestion failures
+    href: ingestionfailures.md
+  - name: .show streaming ingestion failures
+    href: streamingingestionfailures.md   
 - name: Data export
   href: data-export/index.md
   items:
