@@ -32,7 +32,7 @@ The `.alter table` command:
 > Existing columns that aren't specified in the command will be dropped. This could lead to unexpected data loss.
 
 > [!TIP]
-> Use `.show table [TableName] cslschema` to get the existing column schema before you alter it.
+> Use `.show table [TableName] cslschema` to get the existing table schema before you alter it.
 
 ## How the command affects the data
 
