@@ -1,9 +1,9 @@
 ---
 title: format_bytes() - Azure Data Explorer
-description: This article describes format_bytes() in Azure Data Explorer.
+description: Learn how to use the format_bytes() function to format a number as a string representing the data size in bytes.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 12/12/2022
 ---
 # format_bytes()
 
@@ -41,4 +41,4 @@ v5 = format_bytes(20010332, 0, "KB")
 
 |v1|v2|v3|v4|v5|
 |---|---|---|---|---|
-|564 Bytes|10.1 KB|19 MB|19.08 MB|19541 KB|
+|564 Bytes|10.1 KB|19 MB|19.08 MB|19,541 KB|
