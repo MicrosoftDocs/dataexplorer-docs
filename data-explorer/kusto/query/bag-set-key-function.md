@@ -28,7 +28,7 @@ Returns a `dynamic` property-bag with specified key-value pairs. If the input ba
 > [!NOTE]
 > To treat `null`s as empty bags, use `coalesce(x, dynamic({}))`​.
 
-## Example
+## Examples
 
 ### Using a root-level key
 
