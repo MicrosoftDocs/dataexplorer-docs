@@ -78,7 +78,7 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 
     :::image type="content" source="media/power-bi-imported-query/connect-data.png" alt-text="Screenshot of the Get Data window that shows Azure Data Explorer (Kusto) typed into the search bar. Both the search result and the connect option are highlighted.":::
 
-1. On the **Azure Data Explorer (Kusto)** screen, fill out the form with the following information.
+1. In the window that appears, fill out the form with the following information.
 
     :::image type="content" source="media/power-bi-imported-query/cluster-database-table.png" alt-text="Screenshot of the Azure Data Explorer(Kusto) connection form. The cluster option has the following link pasted: https://help.kusto.windows.net/. The cluster, the Data Connectivity mode, and the OK button are highlighted.":::
 
