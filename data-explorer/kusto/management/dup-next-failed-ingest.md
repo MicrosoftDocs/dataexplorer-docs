@@ -11,7 +11,7 @@ Use the `.dup-next-failed-ingest` command for ad-hoc troubleshooting of your dat
 
 `.dup-next-failed-ingest` will watch the following ingestion for an ingestion failure. If the ingestion fails, the successfully downloaded ingestion source file(s) and a file containing metadata on the ingestion request will be uploaded to the specified storage container. Run the command before each ingestion you wish to watch, since it will only watch the very next ingestion.
 
-The file uploads to the storage container and the ingestion are performed by the same cluster node. The command takes effect on a single ingest operation and has no persistent state, so if the admin node changes between the command execution and the next ingestion, you'll need to rerun the command.
+The file uploads to the storage container and the ingestion are performed by the same cluster node. The command takes effect on a single ingest operation and has no persistent state, so if the admin node changes between the command execution and the next ingestion, you'll need to rerun the command. Watch the storage container to know when the duplication is completed.
 
 > [!NOTE]
 >
