@@ -36,7 +36,9 @@ If the result is a tabular, then the first column and first row will be taken fo
 `toscalar()` can be calculated a constant number of times during the query execution which means that the function can't be applied on row-level (for-each-row scenario).
 Usually, when this limitation is hit, the following error will be reported: `can't use '<column name>' as it is defined outside its row-context scope.`
 
-for example in this case, it will fail with the error `'toscalar': can't use 'x' as it is defined outside its row-context scope.` :
+In the following example, the query fails with the error:
+
+> `'toscalar': can't use 'x' as it is defined outside its row-context scope.` 
 
 ```kusto
 let _dataset1 = datatable(x:long)[1,2,3,4,5];
