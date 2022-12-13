@@ -223,12 +223,12 @@ items:
         href: data-factory-command-activity.md
     - name: CosmosDB
       items:
-      - name: Azure portal
-        displayName: CosmosDB, ingest, data connection
+      - name: Create a CosmosDB data feed connection
+        displayName: ingest
         href: ingest-data-cosmos-db-connection.md
-      - name: CosmosDB data connection
+      - name: Get latest CosmosDB documents
         displayName: ingest data, ingestion
-        href: ingest-data-cosmos-db-overview.md
+        href: ingest-data-cosmos-db-queries.md
     - name: Using SDKs
       items:
       - name: .NET SDK

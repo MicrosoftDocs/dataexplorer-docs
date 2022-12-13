@@ -3,20 +3,24 @@ title: Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
 description: Learn how to ingest (load) data into Azure Data Explorer from Cosmos DB.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 12/11/2022
+ms.date: 12/13/2022
 ---
 
 # Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
 
-Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Azure Cosmos DB for NoSql](/azure/cosmos-db/nosql/) using a [change feed](/azure/cosmos-db/change-feed). The Cosmos DB change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your cluster. The change feed listens for new and updated documents but does not log deletes. For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
+Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Azure Cosmos DB for NoSql](/azure/cosmos-db/nosql/) using a [change feed](/azure/cosmos-db/change-feed). The Cosmos DB change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your cluster. The change feed listens for new and updated documents but doesn't log deletes. For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
 Each data connection listens to a specific Cosmos DB container and ingests data into a specified table. The ingestion method supports streaming ingestion (when enabled) and batch ingestion.
 
-In this article, you'll learn how to set up a Cosmos DB change feed data connection to ingest data into Azure Data Explorer with System Managed Identity. Use the following steps to set up a connector.
+In this article, you'll learn how to set up a Cosmos DB change feed data connection to ingest data into Azure Data Explorer with System Managed Identity. Review the [considerations](#considerations) before you start.
+
+Use the following steps to set up a connector:
 
 Step 1: [Choose an Azure Data Explorer table and configure its table mapping](#step-1-choose-an-azure-data-explorer-table-and-configure-its-table-mapping)
 
 Step 2: [Create a Cosmos DB data connection](#step-2-create-a-cosmos-db-data-connection)
+
+Step 3: [Test the data connection](#step-3-test-the-data-connection)
 
 ## Prerequisites
 
@@ -26,7 +30,7 @@ Step 2: [Create a Cosmos DB data connection](#step-2-create-a-cosmos-db-data-con
 
 ## Step 1: Choose an Azure Data Explorer table and configure its table mapping
 
-Before you create a data connection, create a table where you'll store the ingested data and apply a mapping that matches schema in the source Cosmos DB container.
+Before you create a data connection, create a table where you'll store the ingested data and apply a mapping that matches schema in the source Cosmos DB container. If your scenario requires more than a simple mapping of fields, you can use [update policies to transform and map data](#transform-and-map-data-with-update-policies) ingested from your change feed.
 
 The following shows a sample schema of an item in the Cosmos DB container:
 
@@ -58,10 +62,10 @@ Use the following steps to create a table and apply a table mapping:
 
     | Cosmos DB property | Table column | Transformation |
     |--|--|--|
-    | id | Id | None |
-    | name | Name | None |
-    | _ts | _ts | None |
-    | _ts | _timestamp | Uses `DateTimeFromUnixSeconds` to [transform](kusto/management/mappings.md) **\_ts** ([UNIX seconds](https://wikipedia.org/wiki/Unix_time)) to **_timestamp** (`datetime`)) |
+    | **id** | Id | None |
+    | **name** | Name | None |
+    | **_ts** | _ts | None |
+    | **_ts** | _timestamp | Uses `DateTimeFromUnixSeconds` to [transform](kusto/management/mappings.md) **\_ts** ([UNIX seconds](https://wikipedia.org/wiki/Unix_time)) to **_timestamp** (`datetime`)) |
 
     > [!NOTE]
     > We recommend using the following timestamp columns:
@@ -81,11 +85,23 @@ Use the following steps to create a table and apply a table mapping:
     ```
     ~~~
 
+### Transform and map data with update policies
+
+If your scenario requires more than a simple mapping of fields, you can use update policies to transform and map data ingested from your change feed.
+
+[Update policies](kusto/management/updatepolicy.md) are a way to transform data as it's ingested into your table. They're written in Kusto Query Language and are run on the ingestion pipeline. They can be used to transform data from a Cosmos DB change feed ingestion, such as in the following scenarios:
+
+- Your documents contain arrays that would be easier to query if they're transformed in multiple rows using the [`mv-expand`](kusto/management/alter-table-update-policy-command.md) operator.
+- You want to filter out documents. For example, you can filter out documents by type using the [`where`](kusto/query/whereoperator.md) operator.
+- You have complex logic that can't be represented in a table mapping.
+
+For information on how to create and manage update policies, see [Update policy overview](kusto/management/alter-table-update-policy-command.md).
+
 ## Step 2: Create a Cosmos DB data connection
 
 You can use the following methods to create the data connector:
 
-### [Azure Portal](#tab/step3-portal)
+### [Azure portal](#tab/portal)
 
 1. In the Azure portal, go to your cluster overview page, and then select the **Getting started** tab.
 
@@ -108,17 +124,17 @@ You can use the following methods to create the data connector:
     | **Table name** | Specify the Azure Data Explorer [table name](#step-1-choose-an-azure-data-explorer-table-and-configure-if-its-table-mapping) to which you want to ingest data. |
     | **Mapping name** | Specify the [mapping name](#step-1-choose-an-azure-data-explorer-table-and-configure-if-its-table-mapping) to use for the data connection. |
 
-1. Optionally, under the **Avanced settings** section, do the following:
+1. Optionally, under the **Advanced settings** section, do the following:
     1. Specify the **Event retrieval start date**. This is the time from which the connector will start ingesting data. If you don't specify a time, the connector will start ingesting data from the time you create the data connection. The recommended date format is the ISO 8601 UTC standard, specified as follows: `yyyy-MM-ddTHH:mm:ss.fffffffZ`.
-    1. Select **User-assigned** and then select the identity. By Default, the **System-assigned** managed identity is used by the connection. If required, you can use a **User-assigned** identity.
+    1. Select **User-assigned** and then select the identity. By Default, the **System-assigned** managed identity is used by the connection. If necessary, you can use a **User-assigned** identity.
 
         :::image type="content" source="media/ingest-data-cosmos-db/advanced-settings.png" alt-text="Screenshot of the data connection pane, showing the Advance settings.":::
 
 1. Select **Create** to crate the data connection.
 
-### [ARM Template](#tab/step3-arm)
+### [ARM template](#tab/arm)
 
-The following is an example ARM template for adding a Cosmos DB data connection. You can use the example as basis for creating your own data connection template and then [deploy it in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template).
+Use the following sample ARM template as the basis for creating your own data connection template, and then [deploy it in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template).
 
 To configure your Cosmos DB connection:
 
@@ -132,8 +148,8 @@ To configure your Cosmos DB connection:
         .alter database db policy managed_identity
         ```
         [{
-        "ObjectId": "system",
-        "AllowedUsages": "DataConnection"
+          "ObjectId": "system",
+          "AllowedUsages": "DataConnection"
         }]
         ```
         ~~~
@@ -145,7 +161,7 @@ To configure your Cosmos DB connection:
     > - The following steps assign the [Cosmos DB Built-in Data Reader](/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions) to the principal ID as it contains the [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed and the Microsoft.DocumentDB/databaseAccounts/readMetadata](/azure/cosmos-db/how-to-setup-rbac#permission-model) action required for the connection. If you need more granular control of your permissions, you can define a custom role with only the required action and assign it to the principal ID.
     > - You can't assign the **Cosmos DB Built-in Data Reader** role using the Azure portal *Role Assignment* feature.
 
-    To grant access to your Cosmos DB account, do one of the following:
+    Use one of the following options to grant access to your Cosmos DB account:
 
     - **Grant access using the Azure CLI**: Run the CLI command, using information in the following table to replace placeholders with appropriate values:
 
@@ -157,7 +173,7 @@ To configure your Cosmos DB connection:
         |--|--|
         | **\<CosmosDBAccountName>** | The name of your Cosmos DB account. |
         | **\<CosmosDBResourceGroup>** | The name of the resource group that contains your Cosmos DB account. |
-        | **\<ClusterPrincipalId>** | The principle ID of your cluster. You can find your cluster's principle ID in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity). |
+        | **\<ClusterPrincipalId>** | The principal ID of your cluster. You can find your cluster's principle ID in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity). |
 
     - **Grant access using an ARM Template**: Deploy the following template in the Cosmos DB account resource group:
 
@@ -262,7 +278,7 @@ To configure your Cosmos DB connection:
 
 ---
 
-## Test the data connection
+## Step 3: Test the data connection
 
 1. In the Cosmos DB container, insert the following document:
 
@@ -286,4 +302,64 @@ To configure your Cosmos DB connection:
 >
 > Azure Data Explorer has an aggregation (batching) policy for data ingestion designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of one GB, or 1000 blobs. Therefore, you may experience a latency. For more information, see [batching policy](kusto/management/batchingpolicy.md). To reduce latency, configure your table to support streaming. See [streaming policy](kusto/management/streamingingestionpolicy.md).
 
+## Considerations
+
+The following considerations apply to the Cosmos DB change feed:
+
+- The change feed doesn't expose *deletion* events.
+
+    The Cosmos DB change feed only includes new and updated documents. If you need to know about deleted documents, you can configure your feed use a [soft marker](/azure/cosmos-db/change-feed#change-feed-and-different-operations) to mark a Cosmos DB document as deleted. A property is added to update events that indicate whether a document has been deleted. You can then use the `where` operator in your queries to filter them out.
+
+    For example, if you map the deleted property to a table column called **IsDeleted**, you can filter out deleted documents with the following query:
+
+    ```kusto
+    TestTable
+    | where not(IsDeleted)
+    ```
+
+- The change feed only exposes the *latest* update of a document.
+
+    To understand the ramification of the second consideration, examine the following scenario:
+
+    A Cosmos DB container contains documents *A* and *B*. The changes to a property called **foo** are shown in the following table:
+
+    | Document ID | Property **foo** | Event | Document timestamp (**_ts**) |
+    |---|---|---|---|
+    | A | Red | Creation | 10 |
+    | B | Blue | Creation | 20 |
+    | A | Orange | Update | 30 |
+    | **A** | **Pink** | **Update** | **40** |
+    | B | Violet | Update | 50 |
+    | A | Carmine | Update | 50 |
+    | B | NeonBlue | Update | 70 |
+
+    The change feed API is polled by the data connector at regular intervals, typically every few seconds. Each poll contains changes that occurred in the container between calls, *but only the latest version of change per document*.
+
+    To illustrate the issue, consider a sequence of API calls with timestamps *15*, *35*, *55*, and *75* as shown in the following table:
+
+    | API Call Timestamp | Document ID | Property **foo** | Document timestamp (**_ts**) |
+    |---|---|---|---|
+    | 15 | A | Red | 10 |
+    | 35 | B | Blue | 20 |
+    | 35 | A | Orange | 30 |
+    | 55 | B | Violet | 50 |
+    | 55 | A | Carmine | 60 |
+    | 75 | B | NeonBlue | 70 |
+
+    Comparing the API results to the list of changes made in the Cosmos DB document, you'll notice that they don't match. The update event to document *A*, highlighted in the change table at timestamp 40, doesn't appear in the results of the API call.
+
+    To understand why the event doesn't appear, we'll examine the changes to document *A* between the API calls at timestamps 35 and 55. Between these two calls, document *A* changed twice, as follows:
+
+    | Document ID | Property **foo** | Event | Document timestamp (**_ts**) |
+    |---|---|---|---|
+    | A | Pink | Update | 40 |
+    | A | Carmine | Update | 50 |
+
+    When the API call at timestamp 55 is made, the change feed API returns the latest version of the document. In this case, the latest version of document *A* is the update at timestamp 50, which is the update to property **foo** from *Pink* to *Carmine*.
+
+    Because of this scenario, the data connector may miss some intermediate document changes. For example, some events may be missed if the data connection service is down for a few minutes, or if the frequency of document changes is higher than the API polling frequency. However, the latest state of each document is captured.
+
 ## Next steps
+
+- [Get latest versions of Azure Cosmos DB documents (Preview)](ingest-data-cosmos-db-queries.md)
+- [Kusto Query Language (KQL) overview](kusto/query/index.md)
