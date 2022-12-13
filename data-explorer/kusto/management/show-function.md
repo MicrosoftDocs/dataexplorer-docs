@@ -58,7 +58,7 @@ For a list of **all** functions, see [.show functions](#show-functions).
 | Property name | Property values | Description | Default |
 |---|---|---|---|
 |`ShowObfuscatedStrings` | `true` or `false`| If `true` and used by principal with proper permissions, [obfuscated strings](../query/scalar-data-types/string.md#obfuscated-string-literals) in function's body will be shown. | Defaults to `false`
-|`Builtin` | `true` or `false`` | If `true` and used by cluster admin, shows built in function(s). | Defaults to `false`
+|`Builtin` | `true` or `false` | If `true` and used by cluster admin, shows built in function(s). | Defaults to `false`
 | `IncludeHiddenFunctions` | `true` or `false` | If `true`, show hidden function(s). | Defaults to `false`.
 
 **Output**

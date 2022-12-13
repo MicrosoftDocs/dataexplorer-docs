@@ -138,11 +138,12 @@ The following example shows an Azure Resource Manager template for adding an Eve
     },
     "resources": [{
             "type": "Microsoft.Kusto/Clusters/Databases/DataConnections",
-            "apiVersion": "2019-09-07",
+            "apiVersion": "2022-02-01",
             "name": "[concat(parameters('Clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'), '/', parameters('dataconnections_kustodc_name'))]",
             "location": "[parameters('location')]",
             "kind": "EventGrid",
             "properties": {
+                "managedIdentityResourceId": "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]",
                 "storageAccountResourceId": "[resourceId(parameters('subscriptionId'), parameters('resourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('StorageAccounts_storagedemo_name'))]",
                 "eventHubResourceId": "[resourceId(parameters('subscriptionId'), parameters('resourceGroup'), 'Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_eventhubns_name'), parameters('EventHubs_eventhubdemo_name'))]",
                 "consumerGroup": "[parameters('consumergroup_default_name')]",
