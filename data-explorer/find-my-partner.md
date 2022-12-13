@@ -30,7 +30,7 @@ Partner
 
 ## AIT GmbH & Co. KG
 
-:::image type="icon" source="media/findmypartner/ait-logo.jpg":::
+:::image type="icon" source="media/findmypartner/ait-white-logo.jpg":::
 
 We develop and design sophisticated, forward-looking software solutions based on the latest Microsoft technologies and advise our customers on the development process, architecture and software design.
 
