@@ -41,9 +41,7 @@ Some of the  parameters can be controlled using a cluster-level [sandbox policy]
   * When the limit is reached, the sandbox's CPU use is throttled, but execution continues.
 * **Memory:** The maximum amount of RAM a sandbox can consume of its host's RAM is limited (default is `20GB`).
   * Reaching the limit results in termination of the sandbox, and a query execution error.
-* **Disk:** A sandbox has a unique and independent directory attached to it. It can't access the host's file system.
-  * The unique folder provides access to the image/package that matches the sandbox's type. For example, the non-customizable Python or R package.
-  
+
 ## Sandbox limitations
 * **Network:** A sandbox can't interact with any resource on the virtual machine (VM) or outside of it.
   * A sandbox can't interact with another sandbox.
