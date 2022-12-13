@@ -19,13 +19,13 @@ In this article, you'll learn about the different ways in which you can connect 
 
 ## Connectivity modes
 
-Power BI supports Import and Direct Query connectivity modes. You can build dashboards using **Import** or **DirectQuery** mode depending on your scenario, scale, and performance requirements. In **Import** mode, data is moved to Power BI. In **DirectQuery** mode, data is queried directly from your Azure Data Explorer cluster.
+Power BI supports *Import* and *DirectQuery* connectivity modes. When building Power BI reports or dashboards, choose your connectivity mode depending on your scenario, scale, and performance requirements. Using **Import** mode copies your data to Power BI. In contrast, using **DirectQuery** mode queries your data directly from your Azure Data Explorer cluster.
 
 Use **Import** mode when:
 
 * Your data set is small.
 * You don't need near real-time data.
-* Your data is already aggregated or you perform [aggregation in Kusto](./kusto/query/aggregation-functions.md)
+* Your data is already aggregated or you perform [aggregation in Kusto](./kusto/query/aggregation-functions.md).
 
 Use **DirectQuery** mode when:
 * Your data set is very large.
