@@ -40,7 +40,7 @@ TestTable
 
 ### Create a materialized view of the latest versions of documents
 
-If your table has a lot of updates, the query to get the latest versions of documents can be slow. [materialized views](kusto/management/materialized-views/materialized-view-overview.md) usually have better performance than a query if there are a lot of updates.
+If your Cosmos DB container has a lot of updates, the query to get the latest versions of documents can be slow. [Materialized views](kusto/management/materialized-views/materialized-view-overview.md) usually have better performance than a query if there are a lot of updates. If the query is frequently run, using a materialized view can be beneficial and save cost.
 
 Run the following command to create a materialized view of the latest versions of documents:
 

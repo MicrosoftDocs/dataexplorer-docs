@@ -223,7 +223,7 @@ items:
         href: data-factory-command-activity.md
     - name: CosmosDB
       items:
-      - name: Create a CosmosDB data feed connection
+      - name: CosmosDB data feed connection
         displayName: ingest
         href: ingest-data-cosmos-db-connection.md
       - name: Get latest CosmosDB documents
