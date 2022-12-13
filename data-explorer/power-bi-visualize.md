@@ -37,7 +37,7 @@ For more information on connectivity modes, see [Import and Direct Query connect
 You can connect Azure Data Explorer as a data source to Power BI in the following ways:
 
 * Starting in Azure Data Explorer web UI and then pasting the data in Power BI Desktop.
-* Starting directly in Power BI Desktop and using the Azure Data Explorer connector.
+* Starting directly in Power BI Desktop and then adding the Azure Data Explorer connector.
 
 # [Web UI](#tab/web-ui/)
 
@@ -52,7 +52,7 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 
 1. From the **Share**  menu, select **Query to Power BI**
 
-    :::image type="content" source="media/power-bi-imported-query/share-query.png" alt-text="Screenshot of Azure Data Explorer web UI that shows an open Share menu. The Share button and Share menu entry titled Query to Power BI are highlighted.":::
+    :::image type="content" source="media/power-bi-imported-query/share-query.png" alt-text="Screenshot of Azure Data Explorer web UI, showing the open Share menu with the Query to Power BI option highlighted.":::
 
 1. Launch Power BI Desktop.
 1. On the **Home** tab, select **Transform data**.
