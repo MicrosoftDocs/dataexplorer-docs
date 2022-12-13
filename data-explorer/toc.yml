@@ -441,6 +441,8 @@ items:
         href: manage-cluster-choose-sku.md
       - name: Automatic stop of inactive clusters
         href: auto-stop-clusters.md
+      - name: Manage cluster permissions
+        href: manage-cluster-permissions.md
       - name: Manage cluster horizontal scaling
         href: manage-cluster-horizontal-scaling.md
       - name: Manage cluster vertical scaling
