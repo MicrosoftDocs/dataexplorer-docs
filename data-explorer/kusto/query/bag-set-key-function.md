@@ -23,7 +23,7 @@ bag_set_key() receives a `dynamic` property-bag, a key and a value. The function
 
 ## Returns
 
-Returns a `dynamic` property-bag with the new key and its value. If the bag isn't a property-bag, a `null` value is returned.
+Returns a `dynamic` property-bag with specified key-value pairs. If the input bag isn't a property-bag, a `null` value is returned.
 
 > [!NOTE]
 > To treat `null`s as empty bags, use `coalesce(x, dynamic({}))`​.
