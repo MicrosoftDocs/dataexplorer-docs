@@ -8,7 +8,7 @@ ms.date: 12/05/2022
 #Customer intent: As a data analyst, I want to understand connection options in Power BI so I can choose the option most appropriate to my scenario.
 ---
 
-# Use Azure Data Explorer Data in Power BI
+# Use Azure Data Explorer data in Power BI
 
 In this article, you'll learn about the different ways in which you can connect Azure Data Explorer as a data source to Power BI. Once connected, you can proceed to build Power BI reports and visualizations.
 
@@ -19,13 +19,13 @@ In this article, you'll learn about the different ways in which you can connect 
 
 ## Connectivity modes
 
-Power BI supports Import and Direct Query connectivity modes. You can build dashboards using **Import** or **DirectQuery** mode depending on your scenario, scale, and performance requirements. In **Import** mode, data is moved to Power BI. In **DirectQuery** mode, data is queried directly from your Azure Data Explorer cluster.
+Power BI supports *Import* and *DirectQuery* connectivity modes. When building Power BI reports or dashboards, choose your connectivity mode depending on your scenario, scale, and performance requirements. Using **Import** mode copies your data to Power BI. In contrast, using **DirectQuery** mode queries your data directly from your Azure Data Explorer cluster.
 
 Use **Import** mode when:
 
 * Your data set is small.
 * You don't need near real-time data.
-* Your data is already aggregated or you perform [aggregation in Kusto](./kusto/query/aggregation-functions.md)
+* Your data is already aggregated or you perform [aggregation in Kusto](./kusto/query/aggregation-functions.md).
 
 Use **DirectQuery** mode when:
 * Your data set is very large.
@@ -37,7 +37,7 @@ For more information on connectivity modes, see [Import and Direct Query connect
 You can connect Azure Data Explorer as a data source to Power BI in the following ways:
 
 * Starting in Azure Data Explorer web UI and then pasting the data in Power BI Desktop.
-* Starting directly in Power BI Desktop and using the Azure Data Explorer connector.
+* Starting directly in Power BI Desktop and then adding the Azure Data Explorer connector.
 
 # [Web UI](#tab/web-ui/)
 
@@ -52,7 +52,7 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 
 1. From the **Share**  menu, select **Query to Power BI**
 
-    :::image type="content" source="media/power-bi-imported-query/share-query.png" alt-text="Screenshot of Azure Data Explorer web UI that shows an open Share menu. The Share button and Share menu entry titled Query to Power BI are highlighted.":::
+    :::image type="content" source="media/power-bi-imported-query/share-query.png" alt-text="Screenshot of Azure Data Explorer web UI, showing the open Share menu with the Query to Power BI option highlighted.":::
 
 1. Launch Power BI Desktop.
 1. On the **Home** tab, select **Transform data**.
@@ -74,11 +74,11 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 
     :::image type="content" source="media/power-bi-imported-query/get-data.png" alt-text="Screenshot of the Home tab in Power BI Desktop that shows the drop-down menu of the Home tab entry titled Get data. The Get data entry titled More is highlighted.":::
 
-1. Search for *Azure Data Explorer (Kusto)*, select **Azure Data Explorer (Kusto)** > **Connect**.
+1. Search for *Azure Data Explorer*, and then select **Azure Data Explorer (Kusto)** > **Connect**.
 
     :::image type="content" source="media/power-bi-imported-query/connect-data.png" alt-text="Screenshot of the Get Data window that shows Azure Data Explorer (Kusto) typed into the search bar. Both the search result and the connect option are highlighted.":::
 
-1. On the **Azure Data Explorer (Kusto)** screen, fill out the form with the following information.
+1. In the window that appears, fill out the form with the following information.
 
     :::image type="content" source="media/power-bi-imported-query/cluster-database-table.png" alt-text="Screenshot of the Azure Data Explorer(Kusto) connection form. The cluster option has the following link pasted: https://help.kusto.windows.net/. The cluster, the Data Connectivity mode, and the OK button are highlighted.":::
 
