@@ -33,8 +33,8 @@ If the result is a tabular, then the first column and first row will be taken fo
 
 ## Limitations
 
-`toscalar()` can be calculated a constant number of times during the query execution which means that the function can't be applied on row-level (for-each-row scenario).
-Usually, when this limitation is hit, the following error will be reported: `can't use '<column name>' as it is defined outside its row-context scope.`
+`toscalar()` can't be applied on a scenario that applies the function on each row. This is because the function can only be calculated a constant number of times during the query execution.
+Usually, when this limitation is hit, the following error will be returned: `can't use '<column name>' as it is defined outside its row-context scope.`
 
 In the following example, the query fails with the error:
 
