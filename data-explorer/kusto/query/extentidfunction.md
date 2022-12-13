@@ -1,6 +1,6 @@
 ---
 title: extent_id() - Azure Data Explorer
-description: Learn how to use the extent_id() function to return an identifier that identifies the current record's data shard
+description: Learn how to use the extent_id() function to return an identifier of the current record's data shard
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/11/2022
