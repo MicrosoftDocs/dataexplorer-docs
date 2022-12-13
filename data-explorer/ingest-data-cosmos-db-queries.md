@@ -40,7 +40,7 @@ TestTable
 
 ### Create a materialized view of the latest versions of documents
 
-If you frequently run the query to get the latest versions of document, you should consider creating a [materialized view](kusto/management/materialized-views/materialized-view-overview.md) of the results. A materialized view usually improves query performance, ensures the freshness of data, and reduces cost.
+If your table has a lot of updates, the query to get the latest versions of documents can be slow. [materialized views](kusto/management/materialized-views/materialized-view-overview.md) usually have better performance than a query if there are a lot of updates.
 
 Run the following command to create a materialized view of the latest versions of documents:
 
