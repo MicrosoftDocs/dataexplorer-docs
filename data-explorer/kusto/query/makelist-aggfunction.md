@@ -121,7 +121,7 @@ let shapes = datatable (name: string, sideCount: int)
     "decagon", 10
 ];
 shapes
-| extend d = pack("name", name, "sideCount", sideCount)
+| extend d = bag_pack("name", name, "sideCount", sideCount)
 | summarize mylist = make_list(d) by isEvenSideCount = sideCount % 2 == 0
 ```
 

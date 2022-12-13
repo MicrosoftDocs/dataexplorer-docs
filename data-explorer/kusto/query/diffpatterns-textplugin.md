@@ -9,39 +9,21 @@ ms.date: 12/11/2022
 
 Compares two data sets of string values and finds text patterns that characterize differences between the two data sets. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
-The `diffpatterns_text` returns a set of text patterns that capture different portions of the data in the two sets (i.e. a pattern capturing a large percentage of the rows when the condition is `true` and low percentage of the rows when the condition is `false`). The patterns are built from consecutive tokens (separated by white space), with a token from the text column or a `*` representing a wildcard. Each pattern is represented by a row in the results.
+The `diffpatterns_text` returns a set of text patterns that capture different portions of the data in the two sets. For example, a pattern capturing a large percentage of the rows when the condition is `true` and low percentage of the rows when the condition is `false`. The patterns are built from consecutive tokens separated by white space, with a token from the text column or a `*` representing a wildcard. Each pattern is represented by a row in the results.
 
 ## Syntax
 
-`T | evaluate diffpatterns_text(`TextColumn, BooleanCondition [, MinTokens, Threshold, MaxTokens]`)`
+`T | evaluate diffpatterns_text(`*TextColumn*, *BooleanCondition* [, *MinTokens*, *Threshold* , *MaxTokens*]`)`
 
-## Arguments
+## Parameters
 
-### Required arguments
-
-* TextColumn - *column_name*
-
-    The text column to analyze must be of type string.
-
-* BooleanCondition - *Boolean expression*
-
-    Defines how to generate the two record subsets to compare to the input table. The algorithm splits the query into two data sets, “True” and “False” according to the condition, then analyzes the (text) differences between them.
-
-### Optional arguments
-
-All other arguments are optional, but they must be ordered as following.
-
-* MinTokens  - 0 < *int* < 200 [default: 1]
-
-    Sets the minimal number of non-wildcard tokens per result pattern.
-
-* Threshold - 0.015 < *double* < 1 [default: 0.05]
-
-    Sets the minimal pattern (ratio) difference between the two sets (see [diffpatterns](diffpatternsplugin.md)).
-
-* MaxTokens  - 0 < *int* [default: 20]
-
-    Sets the maximal number of tokens (from the beginning) per result pattern, specifying a lower limit decreases the query runtime.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *TextColumn* | string | &check; | The text column to analyze. |
+| *BooleanCondition* | string | &check; | An expression that evaluates to a boolean value. The algorithm splits the query into the two data sets to compare based on this expression.|
+| *MinTokens* | int | | An integer value between 0 and 200 that represents the minimal number of non-wildcard tokens per result pattern. The default is 1. |
+| *Threshold* | decimal | | A decimal value between 0.015 and 1 that sets the minimal pattern ratio difference between the two sets. Default is 0.05. See [diffpatterns](diffpatternsplugin.md).|
+| *MaxTokens* | int | | An integer value between 0 and 20 that sets the maximal number of tokens per result pattern, specifying a lower limit decreases the query runtime.|
 
 ## Returns
 
@@ -60,7 +42,9 @@ The result of diffpatterns_text returns the following columns:
 
 The following example uses data from the StormEvents table in the help cluster. To access this data, sign in to [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples). In the left menu, browse to **help** > **Samples** > **Tables** > **Storm_Events**.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA43OvQrCQBAE4F7wHdarEgiIdoKxiWltErCUhdt4B/cTNptowIc3sbBIIU45Ax9TSWRfDhSkgznr1QsehpjgU16QGcUOBJsclAIMGnwMYmIzEnJSCbLU1lMKJ9j9mo9wWNj12BLkE3vm2N+NKIi8WMqnMHmCIjq9vdpJL4x1Ts0SDeh6FAJtm6ZFEeLQ3YSekpSt7aKm7/nsTzaDffoGjOv6LBEBAAA=" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents     
 | where EventNarrative != "" and monthofyear(StartTime) > 1 and monthofyear(StartTime) < 9

@@ -7,24 +7,24 @@ ms.date: 11/16/2022
 ---
 # dcountif() (aggregation function)
 
-Estimates the number of distinct values of *Expr* for rows in which *Predicate* evaluates to `true`.
+Estimates the number of distinct values of *expr* for rows in which *predicate* evaluates to `true`.
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
 
-`dcountif` `(`*Expr*, *Predicate*, [`,` *Accuracy*]`)`
+`dcountif` `(`*expr*, *predicate*, [`,` *accuracy*]`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expr* | string | &check; | Expression that will be used for aggregation calculation. |
-| *Predicate* | string | &check; | Expression that will be used to filter rows. |
-| *Accuracy* | int |  | Controls the balance between speed and accuracy. If unspecified, the default value is `1`. See [Estimation accuracy](#estimation-accuracy) for supported values. |
+| *expr* | string | &check; | The expression used for the aggregation calculation. |
+| *predicate* | string | &check; | The expression used to filter rows. |
+| *accuracy* | int |  | The control between speed and accuracy. If unspecified, the default value is `1`. See [Estimation accuracy](#estimation-accuracy) for supported values. |
 
 ## Returns
 
-Returns an estimate of the number of distinct values of *Expr* for rows in which *Predicate* evaluates to `true`.
+Returns an estimate of the number of distinct values of *expr* for rows in which *predicate* evaluates to `true`.
 
 > [!TIP]
 > `dcountif()` may return an error in cases where all, or none of the rows pass the `Predicate` expression.
@@ -42,8 +42,6 @@ StormEvents
 | where DifferentFatalEvents > 0
 | order by DifferentFatalEvents 
 ```
-
-**Results**
 
 The results table shown includes only the first 10 rows.
 
