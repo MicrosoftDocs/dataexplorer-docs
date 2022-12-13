@@ -30,9 +30,9 @@ The Kusto query language [`render operator`](kusto/query/renderoperator.md) offe
 
 Azure Data Explorer provides the capability to connect to [Power BI](https://powerbi.microsoft.com) using various methods:
 
-* [Built-in native Power BI connector](power-bi-visualize.md?tabs=connector)
+* [Built-in native Power BI connector](power-bi-data-connector.md?tabs=connector)
 
-* [Query import from Azure Data Explorer into Power BI](power-bi-visualize.md)
+* [Query import from Azure Data Explorer into Power BI](power-bi-data-connector.md)
 
 * [SQL query](power-bi-sql-query.md)
 

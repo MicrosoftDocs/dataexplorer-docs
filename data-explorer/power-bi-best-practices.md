@@ -10,7 +10,7 @@ ms.date: 11/20/2022
 
 # Best practices for using Power BI to query and visualize Azure Data Explorer data
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. [Power BI](/power-bi/) is a business analytics solution that lets you visualize your data and share the results across your organization. To import data into Power BI, see [import a query from Azure Data Explorer into Power BI](power-bi-visualize.md), or use a [SQL query](power-bi-sql-query.md). This article supplies you with tips for querying and visualizing your Azure Data Explorer data with Power BI.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. [Power BI](/power-bi/) is a business analytics solution that lets you visualize your data and share the results across your organization. To import data into Power BI, see [import a query from Azure Data Explorer into Power BI](power-bi-data-connector.md), or use a [SQL query](power-bi-sql-query.md). This article supplies you with tips for querying and visualizing your Azure Data Explorer data with Power BI.
 
 ## Best practices for using Power BI
 
@@ -190,4 +190,4 @@ queries against a data source. This mechanism shouldn't be used to schedule cont
 
 ## Next steps
 
-[Visualize data using the Azure Data Explorer connector for Power BI](power-bi-visualize.md?tabs=connector)
+[Visualize data using the Azure Data Explorer connector for Power BI](power-bi-data-connector.md?tabs=connector)

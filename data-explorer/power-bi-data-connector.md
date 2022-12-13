@@ -1,9 +1,9 @@
 ---
-title: 'Use data from Azure Data Explorer in Power BI'
-description: 'Learn how to use Azure Data Explorer data in Power BI.'
+title: Use data from Azure Data Explorer in Power BI
+description: Learn how to use Azure Data Explorer data in Power BI.
 ms.reviewer: danyhoter
 ms.topic: how-to
-ms.date: 12/05/2022
+ms.date: 12/13/2022
 
 #Customer intent: As a data analyst, I want to understand connection options in Power BI so I can choose the option most appropriate to my scenario.
 ---
@@ -28,10 +28,12 @@ Use **Import** mode when:
 * Your data is already aggregated or you perform [aggregation in Kusto](./kusto/query/aggregation-functions.md).
 
 Use **DirectQuery** mode when:
+
 * Your data set is very large.
 * You need near real-time data.
 
 For more information on connectivity modes, see [Import and Direct Query connectivity modes](/power-bi/desktop-directquery-about).
+
 ## Use data in Power BI
 
 You can connect Azure Data Explorer as a data source to Power BI in the following ways:
@@ -39,9 +41,11 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 * Starting in Azure Data Explorer web UI and then pasting the data in Power BI Desktop.
 * Starting directly in Power BI Desktop and then adding the Azure Data Explorer connector.
 
+To demonstrate how to use Azure Data Explorer data in Power BI, we'll be using the StormEvents table from our [help cluster](https://help.kusto.windows.net/) as an example database for the following steps.
+
 # [Web UI](#tab/web-ui/)
 
-1. In the Azure Data Explorer web UI, on the left menu, select **Query**, and then select the database with your data. For example, connect to [our help cluster](https://help.kusto.windows.net/) and select the **Samples** database.
+1. In the Azure Data Explorer web UI, on the left menu, select **Query**, and then select the database with your data.
 1. Create a query and select it. For example, the following query from the **Samples** > **StormEvents** table, returns storm events that caused the most crop damage:
 
     ```Kusto
@@ -52,35 +56,41 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 
 1. From the **Share**  menu, select **Query to Power BI**
 
-    :::image type="content" source="media/power-bi-imported-query/share-query.png" alt-text="Screenshot of Azure Data Explorer web UI, showing the open Share menu with the Query to Power BI option highlighted.":::
+    :::image type="content" source="media/power-bi-data-connector/share-query.png" alt-text="Screenshot of Azure Data Explorer web UI, showing the open Share menu with the Query to Power BI option highlighted.":::
 
 1. Launch Power BI Desktop.
 1. On the **Home** tab, select **Transform data**.
 
-    :::image type="content" source="media/power-bi-imported-query/transform-data.png" alt-text="Screenshot of the Home tab in Power BI Desktop. The Home tab option titled Transform data is highlighted.":::
+    :::image type="content" source="media/power-bi-data-connector/transform-data.png" alt-text="Screenshot of the Home tab in Power BI Desktop, with the Home tab option titled Transform data highlighted.":::
 
 1. Paste the query in the **Navigator** pane.
 
-    :::image type="content" source="media/power-bi-imported-query/paste-query.png" alt-text="Screenshot of the Power BI Desktop Navigator pane that shows the drop-down menu of the right mouse button. The drop-down menu option titled Paste is highlighted.":::
+    :::image type="content" source="media/power-bi-data-connector/paste-query.png" alt-text="Screenshot of the Power BI Desktop Navigator pane, showing the drop-down menu of the right mouse button with the Paste option highlighted.":::
+
+1. You can optionally change the connectivity mode from DirectQuery to Import. In the **Query Settings** window that appears on the right, select the settings cog under **Applied steps**.
+
+    :::image type="content" source="media/power-bi-data-connector/connectivity-mode-web-ui.png" alt-text="Screenshot of the Query Settings window, showing applied steps with the settings cog highlighted.":::
+
+    For more information, see [Connectivity modes](#connectivity-modes)
 
 1. On the **Home** tab, select **Close & Apply**.
 
-    :::image type="content" source="media/power-bi-imported-query/close-apply.png" alt-text="Screenshot of the Home tab. The home tab option titled Close & Apply is highlighted.":::
+    :::image type="content" source="media/power-bi-data-connector/close-apply.png" alt-text="Screenshot of the Home tab with the Close & Apply option highlighted.":::
 
 # [Connector](#tab/connector/)
 
 1. Launch Power BI Desktop.
 1. On the **Home** tab, select **Get Data** > **More**.
 
-    :::image type="content" source="media/power-bi-imported-query/get-data.png" alt-text="Screenshot of the Home tab in Power BI Desktop that shows the drop-down menu of the Home tab entry titled Get data. The Get data entry titled More is highlighted.":::
+    :::image type="content" source="media/power-bi-data-connector/get-data.png" alt-text="Screenshot of the Home tab in Power BI Desktop, showing the drop-down menu of the Home tab entry titled Get data with the More option highlighted.":::
 
 1. Search for *Azure Data Explorer*, and then select **Azure Data Explorer (Kusto)** > **Connect**.
 
-    :::image type="content" source="media/power-bi-imported-query/connect-data.png" alt-text="Screenshot of the Get Data window that shows Azure Data Explorer (Kusto) typed into the search bar. Both the search result and the connect option are highlighted.":::
+    :::image type="content" source="media/power-bi-data-connector/connect-data.png" alt-text="Screenshot of the Get Data window, showing  Azure Data Explorer in the search bar with the connect option highlighted.":::
 
 1. In the window that appears, fill out the form with the following information.
 
-    :::image type="content" source="media/power-bi-imported-query/cluster-database-table.png" alt-text="Screenshot of the Azure Data Explorer(Kusto) connection form. The cluster option has the following link pasted: https://help.kusto.windows.net/. The cluster, the Data Connectivity mode, and the OK button are highlighted.":::
+    :::image type="content" source="media/power-bi-data-connector/cluster-database-table.png" alt-text="Screenshot of the Azure Data Explorer(Kusto) connection window showing the help cluster URL, with the DirectQuery option selected.":::
 
 | Setting | Field description | Sample value
 |---|---|---
@@ -101,17 +111,15 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 
 1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents** > **Transform Data**.
 
-    :::image type="content" source="media/power-bi-imported-query/select-table.png" alt-text="Screenshot of Navigator screen. The table titled StormEvents is selected. The table and the Transform Data button are highlighted.":::
+    :::image type="content" source="media/power-bi-data-connector/select-table.png" alt-text="Screenshot of Navigator screen, showing that the StormEvents table is selected. The Transform Data button is highlighted.":::
 
 1. On the **Home** tab, select **Close & Apply**.
 
-    :::image type="content" source="media/power-bi-imported-query/close-apply.png" alt-text="Screenshot of the Home tab. The home tab option titled Close & Apply is highlighted.":::
+    :::image type="content" source="media/power-bi-data-connector/close-apply.png" alt-text="Screenshot of the Home tab with the Close & Apply option highlighted.":::
 
 [Tips for using the Azure Data Explorer connector for Power BI to query data](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data).
 
 ---
-
-You now know how to query data from Azure Data Explorer in Power BI.
 
 ## Next steps
 
