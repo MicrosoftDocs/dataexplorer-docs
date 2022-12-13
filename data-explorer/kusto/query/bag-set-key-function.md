@@ -30,7 +30,7 @@ Returns a `dynamic` property-bag with specified key-value pairs. If the input ba
 
 ## Examples
 
-### Using a root-level key
+### Use a root-level key
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
