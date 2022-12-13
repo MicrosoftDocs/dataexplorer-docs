@@ -1,11 +1,11 @@
 ﻿---
-title: Sandboxes In Non-Modern SKUs - Azure Data Explorer
+title: Sandboxes in VM sizes not supporting nested virtualization - Azure Data Explorer
 description: This article describes Sandboxes limitations in non-modern skus in Azure Data Explorer.
 ms.reviewer:
 ms.topic: reference
 ms.date: 11/12/2022
 ---
-# Sandboxes in Non-Modern VM sizes
+# Sandboxes in VM sizes not supporting nested virtualization
 
 ## Prerequisites and limitations
 * Sandboxes that run on [non-modern VM sizes](#virtual-machine-sizes) are subject to the following limitations:
@@ -18,7 +18,7 @@ ms.date: 11/12/2022
 
 ## Virtual machine sizes
 
-The following table lists all non-modern VM sizes, and whether they support both encryption and sandbox features running side by side, and hyper-threading:
+The following table lists all VM sizes not supporting nested virtualization, and whether they support both encryption and sandbox features running side by side, and hyper-threading:
 
 | **Name**                              | **Category**      | **Supports sandboxes and encryption** | **Supports hyper-threading** |
 |---------------------------------------|-------------------|---------------------------------------|------------------------------|

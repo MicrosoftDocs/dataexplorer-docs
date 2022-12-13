@@ -14,7 +14,7 @@ Sandboxes are run locally (meaning, processing is done close to the data), with 
 
 ## Prerequisites and limitations
 
-* Sandboxes that run on [VM sizes supporting nested virtualization](#vm-sizes-supporting-nested-virtualization) (that supports nested virtualization) have no limitations.
+* Sandboxes that run on [VM sizes supporting nested virtualization](#vm-sizes-supporting-nested-virtualization) have no limitations.
 * Sandboxes that run on [VM sizes not supporting nested virtualization](./sandboxes-in-non-modern-skus.md#virtual-machine-sizes) are subject to [some limitations](./sandboxes-in-non-modern-skus.md).
 * The image for running the sandboxes is deployed to each of the Data Engine's nodes and requires dedicated SSD space to run.
   * The estimated size is between 10-20 GB.
@@ -35,7 +35,7 @@ Some of the  parameters can be controlled using a cluster-level [sandbox policy]
 
 * **Number of sandboxes per node:** The number of sandboxes per node is limited.
   * Requests that are made when there's no available sandbox will be throttled.
-* **Initialize on startup:** Sandboxes are lazily initialized on a node, the first time a query requires a sandbox for its execution.
+* **Initialize on startup:** if set to `false` (default), sandboxes are lazily initialized on a node, the first time a query requires a sandbox for its execution. Otherwise, if set to `true`, sandboxes are initialized as part of service startup.
   * This means that the first execution of a plugin that uses sandboxes on a node will include a short warm-up period.
 * **CPU:** The maximum rate of CPU a sandbox can consume of its host's processors is limited (default is `50%`).
   * When the limit is reached, the sandbox's CPU use is throttled, but execution continues.
