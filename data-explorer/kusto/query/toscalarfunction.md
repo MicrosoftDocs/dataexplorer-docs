@@ -51,7 +51,7 @@ _dataset1
 | extend y = tg(x)
 ```
 
-The solution in this case is to use `join` operator like this:
+This failure can be mitigated by using the `join` operator, as in the following example:
 
 ```kusto
 let _dataset1 = datatable(x: long)[1, 2, 3, 4, 5];
