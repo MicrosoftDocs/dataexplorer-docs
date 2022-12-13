@@ -121,8 +121,8 @@ You can use the following methods to create the data connector:
     | **Cosmos DB account** | Choose the Cosmos DB account from which you want to ingest data. |
     | **SQL database** | Choose the Cosmos DB database from which you want to ingest data. |
     | **SQL container** | Choose the Cosmos DB container from which you want to ingest data. |
-    | **Table name** | Specify the Azure Data Explorer [table name](#step-1-choose-an-azure-data-explorer-table-and-configure-if-its-table-mapping) to which you want to ingest data. |
-    | **Mapping name** | Specify the [mapping name](#step-1-choose-an-azure-data-explorer-table-and-configure-if-its-table-mapping) to use for the data connection. |
+    | **Table name** | Specify the Azure Data Explorer [table name](#step-1-choose-an-azure-data-explorer-table-and-configure-its-table-mapping) to which you want to ingest data. |
+    | **Mapping name** | Specify the [mapping name](#step-1-choose-an-azure-data-explorer-table-and-configure-its-table-mapping) to use for the data connection. |
 
 1. Optionally, under the **Advanced settings** section, do the following:
     1. Specify the **Event retrieval start date**. This is the time from which the connector will start ingesting data. If you don't specify a time, the connector will start ingesting data from the time you create the data connection. The recommended date format is the ISO 8601 UTC standard, specified as follows: `yyyy-MM-ddTHH:mm:ss.fffffffZ`.
