@@ -47,7 +47,7 @@ datatable(input: dynamic)
 |{<br>  "key1": 1,<br>  "key2": 2<br>}|{<br>  "key1": 1,<br>  "key2": 2,<br>  "key3": 3<br>}|
 |{<br>  "key1": 1,<br>  "key3": "abc"<br>}|{<br>  "key1": 1,<br>  "key3": 3<br>}|
 
-### Using a JSONPath key
+### Use a JSONPath key
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
