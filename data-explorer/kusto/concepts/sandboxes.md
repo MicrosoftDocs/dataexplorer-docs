@@ -45,7 +45,6 @@ Some of the  parameters can be controlled using a cluster-level [sandbox policy]
 ## Sandbox limitations
 * **Network:** A sandbox can't interact with any resource on the virtual machine (VM) or outside of it.
   * A sandbox can't interact with another sandbox.
-* **Child processes:** The sandbox is blocked from spawning child processes.  
 
 > [!NOTE]
 > The resources used with sandbox depend not only on the size of the data being processed as part of the request,
