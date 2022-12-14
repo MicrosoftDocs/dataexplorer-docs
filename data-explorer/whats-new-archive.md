@@ -9,6 +9,20 @@ ms.date: 07/06/2022
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
 
+## November 2021
+
+| Article title | Description |
+|--|--|
+| [Automatic stop of inactive clusters](auto-stop-clusters.md) | New article. Inactive clusters are automatically stopped. |
+| [Solution architectures](solution-architectures.md) | New article. Lists references to the architectures that include Azure Data Explorer. |
+| [Delete data](delete-data.md) | Updated article. Added new sections for purge and soft delete. |
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| [[Soft delete]](kusto/concepts/data-soft-delete.md) | New article. Describes the data soft delete function. |
+
 ## October 2021
 
 | Article title | Description |
@@ -307,7 +321,7 @@ Article title | Description
 [.disable plugin](kusto/management/disable-plugin.md) | New article. Disables a plugin.
 [.enable plugin](kusto/management/enable-plugin.md) | New article. Enables a plugin.
 [.show plugins](kusto/management/show-plugins.md) | New article. Lists all plugins of the cluster.
-| [Cluster follower commands](kusto/management/cluster-follower.md) | Updated article. Syntax changed, added `.alter follower database prefetch-extents`. |
+| [Follower commands](kusto/management/cluster-follower.md) | Updated article. Syntax changed, added `.alter follower database prefetch-extents`. |
 
 **Functions library**
 
