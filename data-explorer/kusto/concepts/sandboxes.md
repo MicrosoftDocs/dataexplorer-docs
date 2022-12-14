@@ -62,7 +62,7 @@ Some of the  parameters can be controlled using a cluster-level [sandbox policy]
 
 ## VM Sizes supporting nested virtualization
 
-The following table lists all modern VM sizes that support hyper-v sandbox technology.
+The following table lists all modern VM sizes that support Hyper-V sandbox technology.
 
 | **Name**                              | **Category**      |
 |---------------------------------------|-------------------|
