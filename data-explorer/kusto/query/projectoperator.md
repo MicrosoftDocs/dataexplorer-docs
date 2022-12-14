@@ -45,7 +45,8 @@ A table with columns that were named as arguments. Contains same number of rows 
 
 Only show the `EventId`, `State`, `EventType`, and `EpisodeNarrative` of the `StormEvents` table.
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSgoys9KTS5RAIt4pugoBJcklqTqQPghlQUgZkFmcX5Kql9iUVFiSWZZKgC3v2vmQgAAAA==)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSgoys9KTS5RAIt4pugoBJcklqTqQPghlQUgZkFmcX5Kql9iUVFiSWZZKgC3v2vmQgAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents

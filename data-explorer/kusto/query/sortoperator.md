@@ -28,7 +28,8 @@ Sort the rows of the input table into order by one or more columns.
 
 All rows in table Traces that have a specific `ClientRequestId`, sorted by their timestamp.
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/SampleLogs?query=H4sIAAAAAAAAAwspSkxO9clPL+aqUSjPSC1KVXDOyUzNKwlKLSxNLS7xTFGwtVVQMk20MLFIMzfQtbS0NNNNTTI01zU0TU3RNTJMskhNsjRJSjNIVQKaUJxfVKKQVKkQkpkL1JyYW6CQWJwMAFAUnRtjAAAA)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleLogs?query=H4sIAAAAAAAAAwspSkxO9clPL+aqUSjPSC1KVXDOyUzNKwlKLSxNLS7xTFGwtVVQMk20MLFIMzfQtbS0NNNNTTI01zU0TU3RNTJMskhNsjRJSjNIVQKaUJxfVKKQVKkQkpkL1JyYW6CQWJwMAFAUnRtjAAAA" target="_blank">Run the query</a>
 
 ```kusto
 TraceLogs

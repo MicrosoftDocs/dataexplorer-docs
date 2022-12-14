@@ -48,11 +48,12 @@ For more information, see the summary of [available String operators](./datatype
 
 ### Order comparisons by complexity
 
-Retrieve storm records that report damaged property, are floods, and start and end in different places.
+The following query returns storm records that report damaged property, are floods, and start and end in different places.
 
 Notice that we put the comparison between two columns last, as the where operator can't use the index and forces a scan.
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVXBJzE1MTw0oyi9ILSqpVLBTMODlUgCCxLwUBbDakMqCVAVbWwUlt5z8/BQlhKxTanpmnk9+cmJJZn6egqKtgmteCowLAAhN4ulrAAAA)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVXBJzE1MTw0oyi9ILSqpVLBTMODlUgCCxLwUBbDakMqCVAVbWwUlt5z8/BQlhKxTanpmnk9+cmJJZn6egqKtgmteCowLAAhN4ulrAAAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
@@ -65,7 +66,8 @@ StormEvents
 
 The following query returns the rows in which the word "cow" appears in any column.
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVdBSyEgsVlBKzi9XAgC3DyzDIAAAAA==)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVdBSyEgsVlBKzi9XAgC3DyzDIAAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
