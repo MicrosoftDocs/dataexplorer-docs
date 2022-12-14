@@ -53,6 +53,12 @@ StormEvents
 | project EventId, State, EventType, EpisodeNarrative
 ```
 
+The following table displays only the output columns. To see the full content of the output, run the query.
+
+|EventId|State|EventType|EpisodeNarrative|
+|--|--|--|--|
+||||
+
 ### Potential manipulations using project
 
 ```kusto
