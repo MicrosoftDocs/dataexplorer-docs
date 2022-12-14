@@ -6,7 +6,7 @@ ms.topic: reference
 ms.date: 11/12/2022
 ---
 # Sandboxes in VM sizes not supporting nested virtualization
-In this article, we will cover the limitations of sandboxes in VM sizes that do not support nested virtualization.
+In this article, we'll cover the limitations of sandboxes in VM sizes that don't support nested virtualization.
 
 ## Prerequisites and limitations
 * Sandboxes that run on [non-modern VM sizes](#virtual-machine-sizes) are subject to the following limitations:
