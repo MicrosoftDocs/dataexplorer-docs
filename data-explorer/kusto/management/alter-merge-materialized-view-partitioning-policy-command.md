@@ -11,12 +11,12 @@ Change a materialized view [partitioning policy](partitioningpolicy.md). The par
 
 ## Syntax
 
-`.alter-merge` `materialized-view` *MaterializedViewName* `policy` `partitioning` *ArrayOfPolicyObjects*
+`.alter-merge` `materialized-view` *MaterializedViewName* `policy` `partitioning` *PolicyObject*
 
 ## Arguments
 
-*MaterializedViewName* - Specify the name of the materialized view. 
-*ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
+*MaterializedViewName* - Specify the name of the materialized view.
+*PolicyObject* - Define a policy object, see also [partitioning policy](partitioningpolicy.md).
 
 ### Example
 
