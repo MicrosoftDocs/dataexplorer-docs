@@ -42,7 +42,7 @@ PopulationData
 | project-away Population
 ```
 
-The following table shows only the top 10 results.
+The following table shows only the first 10 results.
 
 |State|
 |---|
@@ -70,7 +70,7 @@ ConferenceSessions
 | project-away session*
 ```
 
-The following table shows only the top 10 results.
+The following table shows only the first 10 results.
 
 |conference|owner|participants|URL|level|starttime|duration|time_and_duration|kusto_affinity|
 |---|---|---|---|---|---|---|---|---|

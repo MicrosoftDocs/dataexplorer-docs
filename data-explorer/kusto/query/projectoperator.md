@@ -82,7 +82,7 @@ StormEvents
 | where TotalInjuries > 5
 ```
 
-The following table shows only the top 10 results.
+The following table shows only the first 10 results.
 
 |StartLocation| TotalInjuries|
 |--|--|

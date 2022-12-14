@@ -42,7 +42,7 @@ ConferenceSessions
 | project-keep session*
 ```
 
-The following table shows only the top 10 results.
+The following table shows only the first 10 results.
 
 |sessionid|session_title|session_type|session_location|
 |--|--|--|--|
