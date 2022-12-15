@@ -1,24 +1,23 @@
 ---
-title: tdigest_merge() - Azure Data Explorer
-description: This article describes tdigest_merge() in Azure Data Explorer.
+title: tdigest_merge(), merge_tdigest() - Azure Data Explorer
+description: Learn how to use the tdigest_merge() and merge_tdigest() functions to merge columns.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/08/2022
 ---
-# tdigest_merge()
+# tdigest_merge(), merge_tdigest()
 
 Merges `tdigest` results (scalar version of the aggregate version [`tdigest_merge()`](tdigest-merge-aggfunction.md)).
 
 Read more about the underlying algorithm (T-Digest) and the estimated error [here](percentiles-aggfunction.md#estimation-error-in-percentiles).
+
+> The `tdigest_merge()` and `merge_tdigest()` functions are equivalent
 
 ## Syntax
 
 `tdigest_merge(` *Expr1*`,` *Expr2*`, ...)`
 
 `merge_tdigest(` *Expr1*`,` *Expr2*`, ...)`
-
-> [!NOTE]
-> `merge_tdigest` is an alias of `tdigest_merge`. 
 
 ## Arguments
 

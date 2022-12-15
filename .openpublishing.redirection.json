@@ -354,6 +354,11 @@
       "source_path": "data-explorer/kusto/query/makestringfunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-to-string-function",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/limitoperator.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/takeoperator",
+      "redirect_document_id": true
     }
   ]
 }

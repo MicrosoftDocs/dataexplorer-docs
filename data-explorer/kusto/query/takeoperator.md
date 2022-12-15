@@ -1,20 +1,18 @@
 ---
-title: take operator - Azure Data Explorer
-description: This article describes take operator in Azure Data Explorer.
+title: take operator, limit operator - Azure Data Explorer
+description: Learn how to use the take operator and limit operator to return a specified number of rows.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/13/2020
 ---
-# take operator
+# take operator, limit operator
 
 Return up to the specified number of rows.
 
-```kusto
-T | take 5
-```
-
 There is no guarantee which records are returned, unless
 the source data is sorted.
+
+> The `take` operator and `limit` operator are equivalent
 
 > [!NOTE]
 > `take` is a simple, quick, and efficient way to view a small sample of records when browsing data interactively, but be aware that it doesn't guarantee any consistency in its results when executing multiple times, even if the data set hasn't changed.
@@ -25,8 +23,6 @@ the source data is sorted.
 `take` *NumberOfRows*
 `limit` *NumberOfRows*
 
-(`take` and `limit` are synonyms.)
-
 ## Paging of query results
 
 Methods for implementing paging include:
@@ -35,8 +31,13 @@ Methods for implementing paging include:
    generated data.
 * Write a middle-tier application that provides a stateful paging API by caching
    the results of a Kusto query.
-* Use pagination in [Stored query results](../management/stored-query-results.md#pagination) .
+* Use pagination in [Stored query results](../management/stored-query-results.md#pagination).
 
+## Example
+
+```kusto
+T | take 5
+```
 
 ## See also
 
