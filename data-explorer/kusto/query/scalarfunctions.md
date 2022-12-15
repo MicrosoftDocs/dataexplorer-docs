@@ -50,12 +50,11 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[endofyear()](endofyearfunction.md)|Returns the end of the year containing the date, shifted by an offset, if provided.|
 |[format_datetime()](format-datetimefunction.md)|Formats a datetime parameter based on the format pattern parameter.|
 |[format_timespan()](format-timespanfunction.md)|Formats a format-timespan parameter based on the format pattern parameter.|
-|[getmonth()](getmonthfunction.md)|Get the month number (1-12) from a datetime.|
 |[getyear()](getyearfunction.md)|Returns the year part of the datetime argument.|
 |[hourofday()](hourofdayfunction.md)|Returns the integer number representing the hour number of the given date.|
 |[make_datetime()](make-datetimefunction.md)|Creates a datetime scalar value from the specified date and time.|
 |[make_timespan()](make-timespanfunction.md)|Creates a timespan scalar value from the specified time period.|
-|[monthofyear()](monthofyearfunction.md)|Returns the integer number represents the month number of the given year.|
+|[monthofyear(), getmonth()](monthofyearfunction.md)|Return the integer number that represents the month number of the given year.|
 |[now()](nowfunction.md)|Returns the current UTC clock time, optionally offset by a given timespan.|
 |[startofday()](startofdayfunction.md)|Returns the start of the day containing the date, shifted by an offset, if provided.|
 |[startofmonth()](startofmonthfunction.md)|Returns the start of the month containing the date, shifted by an offset, if provided.|
@@ -189,7 +188,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |-------------------------|--------------------------------------------------------|
 |[case()](casefunction.md)|Evaluates a list of predicates and returns the first result expression whose predicate is satisfied.|
 |[coalesce()](coalescefunction.md)|Evaluates a list of expressions and returns the first non-null (or non-empty for string) expression.|
-|[iif()/iff()](iiffunction.md)|Evaluates the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to true (second) or false (third).|
+|[iif(), iff()](iiffunction.md)|Evaluate the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to true (second) or false (third).|
 |[max_of()](max-offunction.md)|Returns the maximum value of several evaluated numeric expressions.|
 |[min_of()](min-offunction.md)|Returns the minimum value of several evaluated numeric expressions.|
 

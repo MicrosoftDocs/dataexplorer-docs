@@ -354,6 +354,16 @@
       "source_path": "data-explorer/kusto/query/makestringfunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-to-string-function",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/iiffunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/ifffunction",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/getmonthfunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/monthofyearfunction",
+      "redirect_document_id": true
     }
   ]
 }

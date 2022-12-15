@@ -1,14 +1,16 @@
 ---
-title: iff() - Azure Data Explorer
+title: iff(), iif() - Azure Data Explorer
 description: This article describes iff() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/27/2022
 ---
-# iff()
+# iff(), iif()
 
 Returns the value of *ifTrue* if *predicate* evaluates to `true`,
 or the value of *ifFalse* otherwise.
+
+> The `iff()` and `iif()` functions are equivalent
 
 ## Syntax
 

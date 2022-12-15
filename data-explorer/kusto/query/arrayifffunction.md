@@ -1,15 +1,15 @@
 ---
-title: array_iif() - Azure Data Explorer
-description: Learn how to use the array_iif() function to scan and evaluate elements in an array.
+title: array_iif(), array_iff() - Azure Data Explorer
+description: Learn how to use the array_iif() and array_iff() functions to scan and evaluate elements in an array.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/20/2022
 ---
-# array_iif()
+# array_iif(), array_iff()
 
 Element-wise iif function on dynamic arrays.
 
-Another alias: array_iff().
+> The `array_iif()` and `array_iff()` functions are equivalent
 
 ## Syntax
 
