@@ -12,7 +12,7 @@ Interprets a `string` as a JSON value and returns the value as `dynamic`. If pos
 > [!NOTE]
 > The `todynamic()` and `parse_json()` functions are interpreted equivalently.
 
-This function is better than [extractjson() function](./extractjsonfunction.md) when you need to extract more than one element of a JSON compound object. Prefer using [dynamic()](./scalar-data-types/dynamic.md) when possible.
+It's better to use the parse_json() function over the [extractjson(), extract_json()](./extractjsonfunction.md) functions when you need to extract more than one element of a JSON compound object. Use [dynamic()](./scalar-data-types/dynamic.md) when possible.
 
 ## Syntax
 
