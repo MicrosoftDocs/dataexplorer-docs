@@ -122,7 +122,7 @@ You can use the following methods to create the data connector:
     | **SQL database** | Choose the Cosmos DB database from which you want to ingest data. |
     | **SQL container** | Choose the Cosmos DB container from which you want to ingest data. |
     | **Table name** | Specify the Azure Data Explorer [table name](#step-1-choose-an-azure-data-explorer-table-and-configure-its-table-mapping) to which you want to ingest data. |
-    | **Mapping name** | Specify the [mapping name](#step-1-choose-an-azure-data-explorer-table-and-configure-its-table-mapping) to use for the data connection. |
+    | **Mapping name** | Optionally, specify the [mapping name](#step-1-choose-an-azure-data-explorer-table-and-configure-its-table-mapping) to use for the data connection. |
 
 1. Optionally, under the **Advanced settings** section, do the following:
     1. Specify the **Event retrieval start date**. This is the time from which the connector will start ingesting data. If you don't specify a time, the connector will start ingesting data from the time you create the data connection. The recommended date format is the ISO 8601 UTC standard, specified as follows: `yyyy-MM-ddTHH:mm:ss.fffffffZ`.
@@ -141,18 +141,6 @@ To configure your Cosmos DB connection:
 1. Configure a [System Managed Identity](managed-identities-overview.md) for your Cosmos DB connection authentication.
 
     1. In the Azure Data Explorer web UI, select **Query** from the left navigation menu, and then select the cluster or database for the data connection.
-
-    1. Run the following command to configure a [managed identity policy](/azure/data-explorer/kusto/management/managed-identity-policy) allowing the System Managed Identity to authenticate [data connections](/azure/data-explorer/kusto/management/managed-identity-policy#managed-identity-usages). This allows the System Managed Identity to be used in data connections.
-
-        ~~~kql
-        .alter database db policy managed_identity
-        ```
-        [{
-          "ObjectId": "system",
-          "AllowedUsages": "DataConnection"
-        }]
-        ```
-        ~~~
 
 1. Grant the connector permission to access your Cosmos DB account. Providing the connector access to your Cosmos DB, allows it to access and retrieve data from your database. You'll need your cluster's principal ID, which you can find in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity).
 
@@ -173,7 +161,7 @@ To configure your Cosmos DB connection:
         |--|--|
         | **\<CosmosDBAccountName>** | The name of your Cosmos DB account. |
         | **\<CosmosDBResourceGroup>** | The name of the resource group that contains your Cosmos DB account. |
-        | **\<ClusterPrincipalId>** | The principal ID of your cluster. You can find your cluster's principle ID in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity). |
+        | **\<ClusterPrincipalId>** | The principal ID of the managed identity assigned to your cluster. You can find your cluster's principle ID in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity). |
 
     - **Grant access using an ARM Template**: Deploy the following template in the Cosmos DB account resource group:
 
