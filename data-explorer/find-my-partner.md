@@ -13,7 +13,8 @@ The services and expertise are chosen by the partner and should not be considere
 
 You can also get the list of partners by running the following query on the [help](https://help.kusto.windows.net) cluster:
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/FindMyPartner?query=H4sIAAAAAAAAAwtILCrJSy0CAIoHlv4HAAAA)
+> [!div class="nextstepaction"]
+> [Run the query](https://dataexplorer.azure.com/clusters/help/databases/FindMyPartner?query=H4sIAAAAAAAAAwtILCrJSy0CAIoHlv4HAAAA)
 
 ```kusto
 Partner
@@ -26,6 +27,32 @@ Partner
 | ISV | Independent Software Vendor | A company that develops and sells software products. |
 | SI | System Integrator | A company that provides services to help customers implement and integrate software products. |
 | MSSP | Managed Security Service Provider | A company that provides security services to customers. |
+
+## AIT GmbH & Co. KG
+
+:::image type="icon" source="media/findmypartner/ait-white-logo.jpg":::
+
+We develop and design sophisticated, forward-looking software solutions based on the latest Microsoft technologies and advise our customers on the development process, architecture and software design.
+
+**Partner type**
+
+- Custom Software Development
+- System Integrator
+
+**Focus geography**
+
+- Primarily Germany
+- EMEA
+- US
+
+**Contact**
+
+- [ait.vertrieb@aitgmbh.de](mailto:ait.vertrieb@aitgmbh.de)
+
+**Additional information**
+
+- [AIT GmbH & Co. KG website](https://www.aitgmbh.de/)
+- [Microsoft partner site for AIT GmbH & Co. KG](https://appsource.microsoft.com/marketplace/partner-dir/c9febb40-e205-4f30-8d0b-c00039a9f4fc/overview)
 
 ## AM Squared Systems
 
@@ -110,31 +137,6 @@ Data Mastery help businesses harness the power of their data and make data-drive
 
 - [https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-fortinet-logs](https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-fortinet-logs)
 - [https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-palo-alto-web-traffic-logs](https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-palo-alto-web-traffic-logs)
-
-## Data#3 Ltd
-
-:::image type="icon" source="media/findmypartner/data-3-logo.png":::
-
-As Australia's largest Microsoft partner, we have helped countless clients progress their data and analytics initiatives. We have created a framework that takes best-in-class approaches, methodologies and architectures to help solve complex data analytics problems.
-
-**Partner type**
-
-- System integrator
-- Managed service provider
-- Licensing Solutions Provider
-
-**Focus geography**
-
-- Australia
-
-**Contact**
-
-- [https://www.data3.com/contact/](https://www.data3.com/contact/)
-
-**Additional information**
-
-- [Data#3 Ltd website](https://www.data3.com/solutions/data-and-analytics/business-analytics)
-- [Microsoft partner site for Data#3 Ltd](https://appsource.microsoft.com/marketplace/partner-dir/aee1d42e-29d0-401f-b3a7-4dfa337692cc/overview)
 
 ## Device Insight GmbH
 
@@ -291,7 +293,7 @@ LINKIT serves more than 100 customers in the Netherlands and Germany, providing 
 
 :::image type="icon" source="media/findmypartner/maq-software-logo.png":::
 
-As 2021 Microsoft Power BI Partner of the Year, we engage with leading companies to accelerate their business intelligence and analytics initiatives. Our solutions enable our clients to improve their operations, reduce costs, increase sales, and build stronger customer relationships. Our clients consistently recognize us for providing architecture and governance frameworks, implementing best practices to optimize reports, and building team capability through training programs. Our innovative tools and 33 certified visuals expand Power BI capabilities to save time for decision makers. 
+As 2021 Microsoft Power BI Partner of the Year, we engage with leading companies to accelerate their business intelligence and analytics initiatives. Our solutions enable our clients to improve their operations, reduce costs, increase sales, and build stronger customer relationships. Our clients consistently recognize us for providing architecture and governance frameworks, implementing best practices to optimize reports, and building team capability through training programs. Our innovative tools and 33 certified visuals expand Power BI capabilities to save time for decision makers.
 As a premier supplier to Microsoft for two decades, our clients benefit from our extensive insights on the platform and engineering practices. As a Microsoft Managed Partner, our clients benefit from our breadth and depth of expertise. With globally integrated teams in Redmond, Washington, and three locations in India, we deliver solutions with increased velocity and technical intensity. Inc. magazine has recognized us for sustained growth by listing us on the Inc. 5000 list ten times – a rare honor.
 
 **Partner type**
@@ -304,7 +306,7 @@ As a premier supplier to Microsoft for two decades, our clients benefit from our
 
 **Contact**
 
-- [msaccount@maqsoftware.com](mailto:msaccount@maqsoftware.com)
+- [engage@maqsoftware.com](mailto:engage@maqsoftware.com)
 
 **Additional information**
 
@@ -345,37 +347,6 @@ Mesh Systems is an IoT Solutions Provider that develops, operates, and manages e
 **Success stories**
 
 - [https://meshsystems.com/case-study/bunn](https://meshsystems.com/case-study/bunn)
-
-## Neal Analytics
-
-:::image type="icon" source="media/findmypartner/neal-analytics-logo.png":::
-
-Neal Analytics is an award-winning Data & AI consulting partner of Microsoft. With 6 different advanced specializations in Azure & 4 Partner of the Year awards & finalist finishes, Neal has a proven track record of success you can trust for all your Azure deployment needs. 
-
-Neal has worked extensively with Azure Data Explorer and maintains a trained bench of consultants who can leverage this expertise to assist you in your customer scenario. Neal is also a partner in Microsoft's Solution Assessment program, and if your organization qualifies this program will assist us in standing up a landing zone featuring Azure Data Explorer to help you get started with your ADX project.
-
-**Partner type**
-
-- System Integrator
-- ISV
-
-**Focus geography**
-
-- US
-- Canada
-- LATAM
-- EMEA
-- Middle East
-- APAC
-
-**Contact**
-
-- [Davidb@nealanalytics.com](mailto:Davidb@nealanalytics.com)
-
-**Additional information**
-
-- [Neal Analytics website](https://nealanalytics.com/)
-- [Microsoft partner site for Neal Analytics](https://appsource.microsoft.com/marketplace/partner-dir/4fd354cb-e69d-49f6-b954-daf93d5cef95/overview)
 
 ## Niels Berglund
 
@@ -540,28 +511,3 @@ Uptake provides asset-intensive companies the transparency, traceable, secure, c
 - [https://explore.uptake.com/c/case-study-ensign?x=BEdWTc](https://explore.uptake.com/c/case-study-ensign?x=BEdWTc)
 - [https://explore.uptake.com/c/case-Study-enerplus?x=DBxBPq](https://explore.uptake.com/c/case-Study-enerplus?x=DBxBPq)
 - [https://explore.uptake.com/c/case-study-davey-textiles?x=ri4YdG](https://explore.uptake.com/c/case-study-davey-textiles?x=ri4YdG)
-
-## Zure Ltd
-
-:::image type="icon" source="media/findmypartner/zure-ltd-logo.jpg":::
-
-Experienced company that is focused on full lifecycle custom software development and integrations using Azure PaaS services.
-
-**Partner type**
-
-- System Integrator
-
-**Focus geography**
-
-- Finland
-- Denmark
-- Belgium
-
-**Contact**
-
-- [jaakko.nikko@zure.com](mailto:jaakko.nikko@zure.com)
-
-**Additional information**
-
-- [Zure Ltd website](https://www.zure.com)
-- [Microsoft partner site for Zure Ltd](https://appsource.microsoft.com/marketplace/partner-dir/d4842539-1664-4a55-981e-a6a6643b6d02/overview)

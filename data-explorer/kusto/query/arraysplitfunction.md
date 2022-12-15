@@ -28,7 +28,8 @@ Returns a dynamic array containing N+1 arrays with the values in the range `[0..
 
 This following example shows how to split and array.
 
-[**Run the query**](https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUsBKYkvLsjJLLEFshIrIWwNIFtHwUgTAB7YikBGAAAA)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUsBKYkvLsjJLLEFshIrIWwNIFtHwUgTAB7YikBGAAAA" target="_blank">Run the query</a>
 
 ```kusto
 print arr=dynamic([1,2,3,4,5]) 
@@ -39,7 +40,8 @@ print arr=dynamic([1,2,3,4,5])
 |---|---|
 |[1,2,3,4,5]|[[1,2],[3,4,5]]|
 
-[**Run the query**](https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUsBKYkvLsjJLLEFshIrIWwNIFtHAUmncaymJgD5vl9PUwAAAA==)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUsBKYkvLsjJLLEFshIrIWwNIFtHAUmncaymJgD5vl9PUwAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 print arr=dynamic([1,2,3,4,5]) 
