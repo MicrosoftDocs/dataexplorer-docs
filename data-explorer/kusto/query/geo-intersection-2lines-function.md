@@ -40,7 +40,7 @@ dynamic({"type": "MultiLineString","coordinates": [[line_1, line_2,..., line_N]]
 
 > [!TIP]
 >
-> * Using literal LineString or a MultiLineString may result in better performance.
+> Use literal LineString or MultiLineString for better performance.
 
 ## Examples
 
