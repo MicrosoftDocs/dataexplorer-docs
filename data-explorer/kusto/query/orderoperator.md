@@ -1,15 +1,15 @@
 ---
-title: order operator  - Azure Data Explorer
-description: This article describes order operator  in Azure Data Explorer.
+title: order operator, sort operator - Azure Data Explorer
+description: Learn how to use the order operator and the sort operator to sort the rows of the input table by on or more columns.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/24/2022
 ---
-# order operator
+# order operator, sort operator
 
 Sort the rows of the input table into order by one or more columns.
 
-**Alias**: [sort](sortoperator.md)
+> The `order` operator and `sort` operator are equivalent
 
 ## Syntax
 

@@ -146,7 +146,7 @@ items:
     href: mv-applyoperator.md
   - name: mv-expand operator
     href: mvexpandoperator.md
-  - name: order operator
+  - name: order operator, sort operator
     href: orderoperator.md
   - name: project operator
     href: projectoperator.md
@@ -187,8 +187,6 @@ items:
   - name: shuffle query
     displayName: hint.shufflekey, hint.strategy, shufflekey, hint, strategy
     href: shufflequery.md
-  - name: sort operator
-    href: sortoperator.md
   - name: summarize operator
     items:
     - name: summarize operator overview
