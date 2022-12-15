@@ -22,10 +22,8 @@ Returns the rounded source to the specified precision.
 
 The rounded source to the specified precision.
 
-Round is different than [`bin()`](binfunction.md)/[`floor()`](floorfunction.md) in
-that the first rounds a number to a specific number of digits while the last rounds value to an integer multiple 
-of a given bin size (round(2.15, 1) returns 2.2 while bin(2.15, 1) returns 2).
- 
+Round is different than [`bin()`/`floor()`](binfunction.md) in
+that the first rounds a number to a specific number of digits while the last rounds value to an integer multiple of a given bin size (round(2.15, 1) returns 2.2 while bin(2.15, 1) returns 2).
 
 ## Examples
 
