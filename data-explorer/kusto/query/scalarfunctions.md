@@ -25,7 +25,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[tobool()](toboolfunction.md)|Converts input to boolean (signed 8-bit) representation.|
+|[tobool(), toboolean()](toboolfunction.md)|Convert inputs to boolean (signed 8-bit) representation.|
 |[todatetime()](todatetimefunction.md)|Converts input to datetime scalar.|
 |[todouble()/toreal()](todoublefunction.md)|Converts the input to a value of type real. (todouble() and toreal() are synonyms.)|
 |[tostring()](tostringfunction.md)|Converts input to a string representation.|
@@ -74,7 +74,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[array_concat()](arrayconcatfunction.md)|Concatenates a number of dynamic arrays to a single array.|
-|[array_iif()](arrayifffunction.md)|Applies element-wise iif function on arrays.|
+|[array_iif(), array_iff()](arrayifffunction.md)|Apply element-wise iif function on arrays.|
 |[array_index_of()](arrayindexoffunction.md)|Searches the array for the specified item, and returns its position.|
 |[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
 |[array_reverse()](array-reverse-function.md)|Reverses the order of the elements in a dynamic array.|

@@ -341,7 +341,7 @@ items:
     href: around-function.md
   - name: array_concat()
     href: arrayconcatfunction.md
-  - name: array_iif()
+  - name: array_iif(), array_iff()
     href: arrayifffunction.md
   - name: array_index_of()
     href: arrayindexoffunction.md
@@ -760,7 +760,7 @@ items:
     href: tanfunction.md
   - name: tdigest_merge()
     href: tdigest-mergefunction.md
-  - name: tobool()
+  - name: tobool(), toboolean()
     href: toboolfunction.md
   - name: todatetime()
     href: todatetimefunction.md
