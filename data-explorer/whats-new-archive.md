@@ -321,7 +321,7 @@ Article title | Description
 [.disable plugin](kusto/management/disable-plugin.md) | New article. Disables a plugin.
 [.enable plugin](kusto/management/enable-plugin.md) | New article. Enables a plugin.
 [.show plugins](kusto/management/show-plugins.md) | New article. Lists all plugins of the cluster.
-| [Cluster follower commands](kusto/management/cluster-follower.md) | Updated article. Syntax changed, added `.alter follower database prefetch-extents`. |
+| [Follower commands](kusto/management/cluster-follower.md) | Updated article. Syntax changed, added `.alter follower database prefetch-extents`. |
 
 **Functions library**
 

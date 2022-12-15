@@ -147,6 +147,12 @@ Remove all existing `viewers` on the `SampleDatabase` database:
 .set database SampleDatabase viewers none
 ```
 
+Drop security roles:
+
+```kusto
+.drop database Test admins ('aadGroup=SGEmail@fabrikam.com')
+```
+
 ## Managing table security roles
 
 This section contains examples for the commands used to control table permissions. To learn how to construct the commands, see [commands overview](#commands-overview).
@@ -189,6 +195,12 @@ Remove all existing `ingestors` on the `SampleTable` table:
 
 ```kusto
 .set table SampleTable ingestors none
+```
+
+Drop security roles:
+
+```kusto
+.drop table TestTable admins ('aaduser=imikeoein@fabrikam.com')
 ```
 
 ## Managing materialized view security roles
