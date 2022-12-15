@@ -107,7 +107,7 @@ The same query may be done over the values of `tdigest`, which represent the `By
 
 ```kusto
 PageViewsHllTDigest
-| summarize merged_tdigests = merge_tdigests(tdigestBytesDel) by bin(Timestamp, 12h)
+| summarize merged_tdigests = merge_tdigest(tdigestBytesDel) by bin(Timestamp, 12h)
 | project Timestamp , percentile_tdigest(merged_tdigests, 95, typeof(long))
 ```
 
@@ -158,7 +158,7 @@ If you save the `hll` and `tdigest` values (which are the intermediate results o
 
 ```kusto
 PageViewsHllTDigest
-| summarize  percentile_tdigest(merge_tdigests(tdigestBytesDel), 90), dcount_hll(hll_merge(hllPage)) by bin(Timestamp, 1d)
+| summarize  percentile_tdigest(merge_tdigest(tdigestBytesDel), 90), dcount_hll(hll_merge(hllPage)) by bin(Timestamp, 1d)
 ```
 
 |Timestamp|`percentile_tdigest_merge_tdigests_tdigestBytesDel`|`dcount_hll_hll_merge_hllPage`|

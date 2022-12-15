@@ -913,7 +913,7 @@ items:
     href: take-anyif-aggfunction.md        
   - name: tdigest()
     href: tdigest-aggfunction.md
-  - name: tdigest_merge()
+  - name: tdigest_merge(), merge_tdigest()
     href: tdigest-merge-aggfunction.md
   - name: variance()
     href: variance-aggfunction.md
