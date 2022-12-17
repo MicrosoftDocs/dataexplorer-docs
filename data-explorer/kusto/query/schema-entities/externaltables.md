@@ -41,3 +41,4 @@ For more information about how to query external tables, and ingested and uninge
 * Maximum limit of external tables per database is 1,000.
 * Kusto supports [export](../../management/data-export/export-data-to-an-external-table.md) and [continuous export](../../management/data-export/continuous-data-export.md) to an external table.
 * [Data purge](../../concepts/data-purge.md) isn't applied on external tables. Records are never deleted from external tables.
+* External table is recommended for data that is less than 1 GB 
