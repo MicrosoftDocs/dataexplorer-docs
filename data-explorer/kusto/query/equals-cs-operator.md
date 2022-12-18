@@ -29,7 +29,7 @@ For faster results, use the case-sensitive version of an operator, for example, 
 
 ## Syntax
 
-*T* `|` `where` *col* `==` `(`*expressions`)`
+*T* `|` `where` *col* `==` `(`*expressions*`)`
 
 ## Parameters
 
