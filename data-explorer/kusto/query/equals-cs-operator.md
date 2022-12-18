@@ -22,10 +22,11 @@ For more information about other operators and to determine which operator is mo
 
 ## Performance tips
 
+* For faster results, use the case-sensitive version of an operator, for example, `==`, not `=~`.
+* For best practices, see [Query best practices](best-practices.md).
+
 > [!NOTE]
 > Performance depends on the type of search and the structure of the data.
-
-For faster results, use the case-sensitive version of an operator, for example, `==`, not `=~`. For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 
