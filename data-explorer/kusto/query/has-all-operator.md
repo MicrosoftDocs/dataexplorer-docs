@@ -3,7 +3,7 @@ title: The case-insensitive has_all string operator - Azure Data Explorer
 description: This article describes the case-insensitive has_all string operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/22/2021
+ms.date: 12/18/2022
 ---
 # has_all operator
 
@@ -13,15 +13,16 @@ For more information about other operators and to determine which operator is mo
 
 ## Performance tips
 
+* For faster results, use the case-sensitive version of an operator. Ror example, use `has_cs` instead of `has`.
+* For best practices, see [Query best practices](best-practices.md).
+
 > [!NOTE]
 > Performance depends on the type of search and the structure of the data.
-
-For faster results, use the case-sensitive version of an operator, for example, `has_cs`, not `has`. For best practices, see [Query best practices](best-practices.md).
 
 ## Syntax
 
 *T* `|` `where` *Column* `has_all` `(`*expression*`,` [*expression_2*, ...]`)`
- 
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -43,15 +44,15 @@ Rows in *T* for which the predicate is `true`.
 
 ### Use has_all operator with a list
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx2NsQ7CMAxEd77CytRKbMxMqCsL7Mi0hkRK7Mh2i4r4eJoup7vT093NRcuwELvB4QefSEow1GQy0RVV0dNCENEemDN0YZQ8hSMEcxV+N4cvJ2URbiFiyqHfhmwuBTV9CS4ys5/Hpl0PzxX2t/taacNcKpxauVN/jkW/jI0AAAA=" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents 
 | where EpisodeNarrative has_all ("cold", "strong", "afternoon", "hail")
 | summarize Count=count() by EventType
 | top 3 by Count
 ```
-
-**Output**
 
 |EventType|Count|
 |---|---|
@@ -63,7 +64,9 @@ StormEvents
 
 The same result can be achieved using a dynamic array notation:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzWNsQrCQBBE+3zFclUCdpaSStLaaCcia241h3e3YW+TcOLHmwvYDDPDY8aTwpvywmITtGBzxOD6+mp69tbswCQVjq/i8KkkkTmWMKDz5tYcqrOyhG6mqAmqLywDCUE3usSWTiiC6maCAdMdvYf6/9WsbJpCQHEfgiNPUdu+aN3AI8M2eMkjrZjyCPtSbtQPqfuJjLEAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 let keywords = dynamic(["cold", "strong", "afternoon", "hail"]);
 StormEvents 
@@ -71,8 +74,6 @@ StormEvents
 | summarize Count=count() by EventType
 | top 3 by Count
 ```
-
-**Output**
 
 |EventType|Count|
 |---|---|

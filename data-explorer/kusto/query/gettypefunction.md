@@ -3,7 +3,7 @@ title: gettype() - Azure Data Explorer
 description: This article describes gettype() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 12/18/2022
 ---
 # gettype()
 
@@ -36,8 +36,8 @@ A string representing the runtime type of *value*.
 |`gettype(1s)`                       |`timespan`   |
 |`gettype(parse_json('1'))`           |`int`        |
 |`gettype(parse_json(' "abc" '))`     |`string`     |
-|`gettype(parse_json(' {"abc":1} '))` |`dictionary` | 
+|`gettype(parse_json(' {"abc":1} '))` |`dictionary` |
 |`gettype(parse_json(' [1, 2, 3] '))` |`array`      |
 |`gettype(123.45)`                   |`real`       |
-|`gettype(guid(12e8b78d-55b4-46ae-b068-26d7a0080254))`|`guid`| 
+|`gettype(guid(12e8b78d-55b4-46ae-b068-26d7a0080254))`|`guid`|
 |`gettype(parse_json(''))`            |`null`|
