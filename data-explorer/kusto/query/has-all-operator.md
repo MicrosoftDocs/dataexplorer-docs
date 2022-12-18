@@ -13,7 +13,7 @@ For more information about other operators and to determine which operator is mo
 
 ## Performance tips
 
-* For faster results, use the case-sensitive version of an operator. Ror example, use `has_cs` instead of `has`.
+* For faster results, use the case-sensitive version of an operator. For example, use `has_cs` instead of `has`.
 * For best practices, see [Query best practices](best-practices.md).
 
 > [!NOTE]
