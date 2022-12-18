@@ -18,12 +18,12 @@ Calculates distinct count of users who have taken a sequence of states, and the 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The input tabular expression. |
-| *IdColum* | string | &check; | The column reference representing the ID. The column must be present in the source expression.|
-| *TimelineColumn* | string | &check; | The column reference representing the timeline. The column must be present in the source expression.|
+| *IdColum* | string | &check; | The column reference representing the ID. The column must be present in *T*.|
+| *TimelineColumn* | string | &check; | The column reference representing the timeline. The column must be present in *T*.|
 | *Start* | datetime, timespan, or long | &check; | The analysis start period.|
 | *End* | datetime, timespan, or long | &check; | The analysis end period.|
 | *MaxSequenceStepWindow* | datetime, timespan, or long | &check; | The value of the max allowed timespan between two sequential steps in the sequence.|
-| *StateColumn* | string | &check; | The column reference representing the state. The column must be present in the source expression.|
+| *StateColumn* | string | &check; | The column reference representing the state. The column must be present in *T*.|
 | *Sequence* | dynamic | &check; | An array with the sequence values that are looked up in `StateColumn`.|
 
 ## Returns

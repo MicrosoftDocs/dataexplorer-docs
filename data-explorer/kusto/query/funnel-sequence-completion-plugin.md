@@ -18,12 +18,12 @@ Calculates a funnel of completed sequence steps while comparing different time p
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The input tabular expression. |
-| *IdColum* | string | &check; | The column reference representing the ID. The column must be present in the source expression.|
-| *TimelineColumn* | string | &check; | The column reference representing the timeline. The column must be present in the source expression.|
+| *IdColum* | string | &check; | The column reference representing the ID. The column must be present in *T*.|
+| *TimelineColumn* | string | &check; | The column reference representing the timeline. The column must be present in *T*.|
 | *Start* | datetime, timespan, or long | &check; | The analysis start period.|
 | *End* | datetime, timespan, or long | &check; | The analysis end period.|
 | *BinSize* | datetime, timespan, or long | &check; | The analysis window size. Each window is analyzed separately.|
-| *StateColumn* | string | &check; | The column reference representing the state. The column must be present in the source expression.|
+| *StateColumn* | string | &check; | The column reference representing the state. The column must be present in *T*.|
 | *Sequence* | dynamic | &check; | An array with the sequence values that are looked up in `StateColumn`.|
 | *MaxSequenceStepPeriods* | dynamic | &check; | An array with the values of the max allowed timespan between the first and last sequential steps in the sequence. Each period in the array generates a funnel analysis result.|
 
