@@ -7,17 +7,17 @@ ms.date: 09/30/2021
 ---
 # !endswith_cs operator
 
-Filters a record set for data that does not contain a case-insensitive ending string.
+Filters a record set for data that doesn't contain a case-insensitive ending string.
 
 [!INCLUDE [endswith-operator-comparison](../../includes/endswith-operator-comparison.md)]
 
 > [!NOTE]
-> The following abbreviations are used in the table above:
+> The following abbreviations are used in the table earlier in this article:
 >
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 ## Performance tips
 
