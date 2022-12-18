@@ -11,19 +11,19 @@ Formats a number as a string representing data size in bytes.
 
 ## Syntax
 
-`format_bytes(`*value* [`,` *precision* [`,` *units*]]`)`
+`format_bytes(`*size* [`,` *precision* [`,` *units*]]`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | real | &check; | The number to be formatted as data size in bytes.|
+| *size* | real | &check; | The value to be formatted as data size in bytes.|
 | *precision* | int | | The number of digits the value will be rounded to. The default is 0.|
 | *units* | string | | The units of the target data size: `Bytes`, `KB`, `MB`, `GB`, `TB`, or `PB`. If this parameter is empty, the units will be auto-selected based on input value.|
 
 ## Returns
 
-The string with the format result.
+A string of *size* formatted as data size in bytes.
 
 ## Examples
 
