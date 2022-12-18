@@ -17,16 +17,12 @@ format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') == "2:3:4.1234500"
 
 `format_timespan(`*timespan* `,` *format*`)`
 
-## Arguments
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *timespan* | timespan | &check; | The value to format.|
+| *format* | string | &check;| The output format comprised of one or more of the [supported format elements](#supported-format-elements).
 
-* `timespan`: value of a type `timespan`.
-* `format`: format specifier string, consisting of one or more [format elements](#supported-formats).
-
-## Returns
-
-The string with the format result.
-
-## Supported formats
+### Supported format elements
 
 |Format specifier| Description| Examples
 |---|---|---

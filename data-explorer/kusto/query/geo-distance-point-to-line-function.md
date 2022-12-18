@@ -13,11 +13,13 @@ Calculates the shortest distance between a coordinate and a line or multiline on
 
 `geo_distance_point_to_line(`*longitude*`,`*latitude*`,`*lineString*`)`
 
-## Arguments
+## Parameters
 
-* *longitude*: Geospatial coordinate longitude value in degrees. Valid value is a real number and in the range [-180, +180].
-* *latitude*: Geospatial coordinate latitude value in degrees. Valid value is a real number and in the range [-90, +90].
-* *lineString*: Line or multiline in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *longitude* | real | &check; | The geospatial coordinate longitude value in degrees. A valid value is in the range [-180, +180].|
+| *latitude* | real | &check; | The geospatial coordinate latitude value in degrees. A valid value is in the range [-90, +90].|
+| *lineString* | dynamic | &check; | A line or multiline in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 
 ## Returns
 

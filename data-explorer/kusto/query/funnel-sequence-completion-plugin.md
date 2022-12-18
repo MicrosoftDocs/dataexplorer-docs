@@ -19,15 +19,17 @@ T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)
 
 ## Arguments
 
-* *T*: The input tabular expression.
-* *IdColum*: column reference, must be present in the source expression.
-* *TimelineColumn*: column reference representing timeline, must be present in the source expression.
-* *Start*: scalar constant value of the analysis start period.
-* *End*: scalar constant value of the analysis end period.
-* *BinSize*: scalar constant value of the analysis window (bin) size, each window is analyzed separately.
-* *StateColumn*: column reference representing the state, must be present in the source expression.
-* *Sequence*: a constant dynamic array with the sequence values (values are looked up in `StateColumn`).
-* *MaxSequenceStepPeriods*: scalar constant dynamic array with the values of the max allowed timespan between the first and last sequential steps in the sequence. Each period in the array generates a funnel analysis result.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check; | The input tabular expression. |
+| *IdColum* | string | &check; | The column reference representing the ID. The column must be present in the source expression.|
+| *TimelineColumn* | string | &check; | The column reference representing the timeline. The column must be present in the source expression.|
+| *Start* | datetime, timespan, or long | &check; | The analysis start period.|
+| *End* | datetime, timespan, or long | &check; | The analysis end period.|
+| *BinSize* | datetime, timespan, or long | &check; | The analysis window size. Each window is analyzed separately.|
+| *StateColumn* | string | &check; | The column reference representing the state. The column must be present in the source expression.|
+| *Sequence* | dynamic | &check; | An array with the sequence values that are looked up in `StateColumn`.|
+| *MaxSequenceStepPeriods* | dynamic | &check; | An array with the values of the max allowed timespan between the first and last sequential steps in the sequence. Each period in the array generates a funnel analysis result.|
 
 ## Returns
 

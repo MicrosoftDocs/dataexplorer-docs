@@ -16,12 +16,14 @@ print format_ipv4_mask(3232236031, 24) == '192.168.1.0/24'
 
 ## Syntax
 
-`format_ipv4_mask(`*Expr* [`,` *PrefixMask*`])`
+`format_ipv4_mask(`*ip* [`,` *prefix*`])`
 
-## Arguments
+## Parameters
 
-* *`Expr`*: A string or number representation (in big-endian order) of the IPv4 address as CIDR notation.
-* *`PrefixMask`*: (Optional) An integer from 0 to 32 representing the number of most-significant bits that are taken into account. If argument isn't specified, all bit-masks are used (32).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ip* | string | &check; | The IPv4 address as CIDR notation. The format may be a string or number representation in big-endian order.|
+| *prefix* | int | | An integer from 0 to 32 representing the number of most-significant bits that are taken into account. If unspecified, all 32 bit-masks are used.|
 
 ## Returns
 

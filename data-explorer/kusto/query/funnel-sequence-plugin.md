@@ -17,17 +17,18 @@ T | evaluate funnel_sequence(id, datetime_column, startofday(ago(30d)), startofd
 
 *T* `| evaluate` `funnel_sequence(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *MaxSequenceStepWindow*, *Step*, *StateColumn*, *Sequence*`)`
 
-## Arguments
+## Parameters
 
-* *T*: the input tabular expression.
-* *IdColum*: column reference, must be present in the source expression.
-* *TimelineColumn*: column reference representing timeline, must be present in the source expression.
-* *Start*: scalar constant value of the analysis start period.
-* *End*: scalar constant value of the analysis end period.
-* *MaxSequenceStepWindow*: scalar constant value of the max allowed timespan between two sequential steps in the sequence.
-* *Step*: scalar constant value of the analysis step period (bin).
-* *StateColumn*: column reference representing the state, must be present in the source expression.
-* *Sequence*: a constant dynamic array with the sequence values (values are looked up in `StateColumn`).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check; | The input tabular expression. |
+| *IdColum* | string | &check; | The column reference representing the ID. The column must be present in the source expression.|
+| *TimelineColumn* | string | &check; | The column reference representing the timeline. The column must be present in the source expression.|
+| *Start* | datetime, timespan, or long | &check; | The analysis start period.|
+| *End* | datetime, timespan, or long | &check; | The analysis end period.|
+| *MaxSequenceStepWindow* | datetime, timespan, or long | &check; | The value of the max allowed timespan between two sequential steps in the sequence.|
+| *StateColumn* | string | &check; | The column reference representing the state. The column must be present in the source expression.|
+| *Sequence* | dynamic | &check; | An array with the sequence values that are looked up in `StateColumn`.|
 
 ## Returns
 

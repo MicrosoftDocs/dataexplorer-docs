@@ -9,19 +9,16 @@ ms.date: 12/12/2022
 
 Parses the input with a netmask and returns a string representing the IPv4 address.
 
-```kusto
-print format_ipv4('192.168.1.255', 24) == '192.168.1.0'
-print format_ipv4(3232236031, 24) == '192.168.1.0'
-```
-
 ## Syntax
 
-`format_ipv4(`*Expr* [`,` *PrefixMask*`])`
+`format_ipv4(`*ip* [`,` *prefix*`])`
 
-## Arguments
+## Parameters
 
-* *`Expr`*: A string or number representation (in big-endian order) of the IPv4 address.
-* *`PrefixMask`*: (Optional) An integer from 0 to 32 representing the number of most-significant bits that are taken into account. If argument isn't specified, all bit-masks are used (32).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ip* | string | &check; | The IPv4 address. The format may be a string or number representation in big-endian order.|
+| *prefix* | int | | An integer from 0 to 32 representing the number of most-significant bits that are taken into account. If unspecified, all 32 bit-masks are used.|
 
 ## Returns
 

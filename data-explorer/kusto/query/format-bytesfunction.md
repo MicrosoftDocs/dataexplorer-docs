@@ -17,11 +17,13 @@ format_bytes(1024) == '1 KB'"
 
 `format_bytes(`*value* [`,` *precision* [`,` *units*]]`)`
 
-## Arguments
+## Parameters
 
-* `value`: a number to be formatted as data size in bytes.
-* `precision`: (optional) Number of digits the value will be rounded to. (default value is 0).
-* `units`: (optional) Units of the target data size the string formatting will use (`Bytes`, `KB`, `MB`, `GB`, `TB`, `PB`). If parameter is empty - the units will be auto-selected based on input value.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value* | real | &check; | The number to be formatted as data size in bytes.|
+| *precision* | int | | The number of digits the value will be rounded to. The default is 0.|
+| *units* | string | | The units of the target data size: `Bytes`, `KB`, `MB`, `GB`, `TB`, or `PB`. If this parameter is empty, the units will be auto-selected based on input value.|
 
 ## Returns
 

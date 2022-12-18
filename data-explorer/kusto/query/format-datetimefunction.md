@@ -15,21 +15,19 @@ format_datetime(datetime(2015-12-14 02:03:04.12345), 'y-M-d h:m:s.fffffff') == "
 
 ## Syntax
 
-`format_datetime(`*datetime* `,` *format*`)`
+`format_datetime(`*date* `,` *format*`)`
 
-## Arguments
+## Parameters
 
-* `datetime`: value of a type `datetime`.
-* `format`: format specifier string, consisting of one or more [format elements](#supported-formats).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *date* | datetime | &check; | The value to format.|
+| *format* | string | &check;| The output format comprised of one or more of the [supported format elements](#supported-format-elements).
 
-## Returns
+### Supported format elements
 
-The string with the format result.
-
-## Supported formats
-
-|Format specifier| Description| Examples
-|---|---|---
+|Format specifier| Description| Examples|
+|--|--|--|
 |`d`| The day of the month, from 1 through 31.| 2009-06-01T13:45:30 -> 1, 2009-06-15T13:45:30 -> 15
 |`dd`| The day of the month, from 01 through 31.| 2009-06-01T13:45:30 -> 01, 2009-06-15T13:45:30 -> 15
 |`f`| The tenths of a second in a date and time value.| 2009-06-15T13:45:30.6170000 -> 6, 2009-06-15T13:45:30.05 -> 0
