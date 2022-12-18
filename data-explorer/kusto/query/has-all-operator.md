@@ -20,19 +20,19 @@ For faster results, use the case-sensitive version of an operator, for example, 
 
 ## Syntax
 
-*T* `|` `where` *Column* `has_all` `(`*list of scalar expressions*`)`   
-*T* `|` `where` *Column* `has_all` `(`*tabular expression*`)`
+*T* `|` `where` *Column* `has_all` `(`*expression*`,` [*expression_2*, ...]`)`
  
-## Arguments
+## Parameters
 
-* *T*: Tabular input whose records are to be filtered.
-* *Column*: Column to filter.
-* *list of expressions*: Comma separated list of tabular, scalar, or literal expressions.  
-* *tabular expression*: Tabular expression that has a set of values (if expression has multiple columns, the first column is used).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check; | The tabular input whose records are to be filtered.|
+| *Column* | string | &check; | The column to filter.|
+| *expression* | scalar or tabular | &check; | An expression or list of expressions for which to search.|
 
 ## Returns
 
-Rows in *T* for which the predicate is `true`
+Rows in *T* for which the predicate is `true`.
 
 > [!NOTE]
 >

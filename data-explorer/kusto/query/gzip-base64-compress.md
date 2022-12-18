@@ -15,9 +15,11 @@ Performs gzip compression and encodes the result to base64.
 
 `gzip_compress_to_base64_string("`*input_string*"`)`
 
-## Arguments
+## Parameters
 
-*input_string*: Input `string`, a string to be compressed and base64 encoded. The function accepts one string argument.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *string* | string | &check; | The value to be compressed and base64 encoded. The function accepts only one argument.|
 
 ## Returns
 

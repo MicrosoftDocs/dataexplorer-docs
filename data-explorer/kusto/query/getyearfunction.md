@@ -9,6 +9,20 @@ ms.date: 02/13/2020
 
 Returns the year part of the `datetime` argument.
 
+## Syntax
+
+`getyear(`*date*`)`
+
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *date* | datetime | &check; | The date for which to get the year. |
+
+## Returns
+
+The  year that contains the given *date*.
+
 ## Example
 
 ```kusto

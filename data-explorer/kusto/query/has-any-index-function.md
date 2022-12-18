@@ -13,15 +13,17 @@ Searches the string for items specified in the array and returns the position in
 
 `has_any_index` `(`*string*`,` *lookup_array*`)`
 
-## Arguments
+## Parameters
 
-* *string*: Input string to search.
-* *lookup_array*: Array of scalar or literal expressions to look up. The value should be of type long, integer, double, decimal, string, or guid.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *source*| string | &check;| The value to search.|
+| *values*| dynamic | &check;| An array of scalar or literal expressions to look up. |
 
 ## Returns
 
-Zero-based index position of the first item in *lookup_array* that is found in *string*.
-Returns -1 if none of the array items were found in the string or if *lookup_array* is empty.
+Zero-based index position of the first item in *values* that is found in *source*.
+Returns -1 if none of the array items were found in the string or if *values* is empty.
 
 ## Example
 
