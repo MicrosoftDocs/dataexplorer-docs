@@ -13,12 +13,14 @@ An additional table can be created by using the `with` clause.
 
 ## Syntax
 
-*T* `| facet by` *ColumnName* [`,` ...] [`with (` *filterPipe* `)`
+*T* `| facet by` *ColumnName* [`,` *ColumnName2*`,` ...] [`with (` *filterPipe* `)`]
 
-## Arguments
+## Parameters
 
-* *ColumnName:* The name of column in the input, to be summarized as an output table.
-* *filterPipe:* A query expression applied to the input table to produce one of the outputs.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ColumnName* | string | &check; | The column name, or list of column names, to be summarized.|
+| *filterPipe* | string | | A query expression applied to the input table.|
 
 ## Returns
 
