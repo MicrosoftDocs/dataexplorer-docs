@@ -27,7 +27,7 @@ Runs multiple consumer operators in parallel.
 > [!NOTE]
 >
 > * Avoid using `fork` with a single *subquery*.
-> * The name provided for the `name` parameter or with the [`as`](asoperator.md) operator will be the name of the result tab.
+> * The name of the results tab will be the same name as provided with the `name` parameter or the [`as` operator](asoperator.md).
 
 ### Supported query operators
 
