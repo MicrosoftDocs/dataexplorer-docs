@@ -21,7 +21,7 @@ Runs multiple consumer operators in parallel.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *subquery* | string | &check; | A downstream pipeline of query operators.|
+| *subquery* | string | &check; | A downstream pipeline of [supported query operators](#supported-query-operators).|
 | *name* | string | | A temporary name for the subquery result table.|
 
 > [!NOTE]
@@ -29,11 +29,7 @@ Runs multiple consumer operators in parallel.
 > * Avoid using `fork` with a single *subquery*.
 > * The name provided for the `name` parameter or with the [`as`](asoperator.md) operator will be the name of the result tab.
 
-## Returns
-
-Multiple result tables, one for each of the *subquery* arguments.
-
-### Supported Operators
+### Supported query operators
 
 * [`as`](asoperator.md)
 * [`count`](countoperator.md)
@@ -53,7 +49,11 @@ Multiple result tables, one for each of the *subquery* arguments.
 * [`mv-expand`](mvexpandoperator.md)
 * [`reduce`](reduceoperator.md)
 
-### Tips
+## Returns
+
+Multiple result tables, one for each of the *subquery* arguments.
+
+## Tips
 
 * Use [`materialize`](materializefunction.md) as a replacement for [`join`](joinoperator.md) or [`union`](unionoperator.md) on fork legs. The input stream will be cached by materialize and then the cached expression can be used in join/union legs.
 
