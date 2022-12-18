@@ -11,7 +11,7 @@ Decodes the input string from base64 and performs gzip decompression.
 
 ## Syntax
 
-`gzip_decompress_from_base64_string("`*string*`")`
+`gzip_decompress_from_base64_string(`*string*`)`
 
 ## Parameters
 
@@ -20,8 +20,10 @@ Decodes the input string from base64 and performs gzip decompression.
 | *string* | string | &check; | The value that was compressed with gzip and then base64-encoded. The function accepts only one argument.|
 
 > [!NOTE]
-> This function checks mandatory gzip header fields (ID1, ID2, and CM) and returns an empty output if any of these fields have incorrect values.
-> Optional header fields are not supported, and FLG is expected to be zero.
+>
+> * This function checks mandatory gzip header fields (ID1, ID2, and CM) and returns an empty output if any of these fields have incorrect values.
+> * FLG is expected to be zero.
+> * Optional header fields are not supported.
 
 ## Returns
 
