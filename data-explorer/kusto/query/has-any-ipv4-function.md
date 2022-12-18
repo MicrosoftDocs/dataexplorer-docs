@@ -1,6 +1,6 @@
 ---
 title: has_any_ipv4() - Azure Data Explorer
-description: Learn how to use the has_any_ipv4() function to check if specified IPv4 addresses appear in the text.
+description: Learn how to use the has_any_ipv4() function to check if any IPv4 addresses appear in the text.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/18/2022
