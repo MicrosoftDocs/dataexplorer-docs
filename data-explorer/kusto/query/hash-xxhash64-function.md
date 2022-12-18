@@ -7,7 +7,7 @@ ms.date: 12/18/2022
 ---
 # hash_xxhash64()
 
-Returns a xxhash64 value for the input value.
+Returns an xxhash64 value for the input value.
 
 ## Syntax
 
