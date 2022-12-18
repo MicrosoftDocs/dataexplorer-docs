@@ -3,15 +3,11 @@ title: format_timespan() - Azure Data Explorer
 description: Learn how to use the format_timespan() function to format a timespan according to the provided format.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/12/2022
+ms.date: 12/18/2022
 ---
 # format_timespan()
 
 Formats a timespan according to the provided format.
-
-```kusto
-format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') == "2:3:4.1234500"
-```
 
 ## Syntax
 
@@ -48,9 +44,9 @@ format_timespan(time(14.02:03:04.12345), 'h:m:s.fffffff') == "2:3:4.1234500"
 |`s`| The number of whole seconds in the time interval that aren't included as part of hours, days, or minutes. Single-digit seconds don't have a leading zero.| 15.13:45:09 -> 9
 |`ss`|The number of whole seconds in the time interval that aren't included as part of hours, days, or minutes. Single-digit seconds have a leading zero.| 15.13:45:09 -> 09
 
-**Supported delimeters**
+### Supported delimeters
 
-Format specifier can include following delimeters characters:
+The format specifier can include following delimeters:
 
 |Delimeter|Comment|
 |---------|-------|
@@ -64,9 +60,15 @@ Format specifier can include following delimeters characters:
 |`'['`||
 |`']'`||
 
+## Returns
+
+A string with *timespan* formatted as specified by *format*.
+
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoUbBVKMnMTdUwstQzsLQyMLAyMNUzNDI2MdW05iooyswrUeAqM7RNyy/KTSyJB6ksLkjM0yjRUVBPSdHLyLDKzbUqLrZyc1PX1OEqM8KhEKgSolAhOg0CYtU1AcM/CQ1/AAAA" target="_blank">Run the query</a>
+
 ```kusto
 let t = time(29.09:00:05.12345);
 print 

@@ -3,21 +3,17 @@ title: funnel_sequence_completion plugin - Azure Data Explorer
 description: Learn how to use the funnel_sequence_completion plugin to calculate a funnel of completed sequence steps while comparing different time periods.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/12/2022
+ms.date: 12/18/2022
 ---
 # funnel_sequence_completion plugin
 
 Calculates a funnel of completed sequence steps while comparing different time periods. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
-```kusto
-T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, state_column, dynamic(['S1', 'S2', 'S3']), dynamic([10m, 30min, 1h]))
-```
-
 ## Syntax
 
 *T* `| evaluate` `funnel_sequence_completion(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *BinSize*`,` *StateColumn*`,` *Sequence*`,` *MaxSequenceStepWindows*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
@@ -40,10 +36,6 @@ Returns a single table useful for constructing a funnel diagram for the analyzed
 * `Period`: the maximal period allowed for completing steps in the funnel sequence measured from the first step in the sequence. Each value in *MaxSequenceStepPeriods* generates a funnel analysis with a separate period.
 * `dcount`: distinct count of `IdColumn` in time window that transitioned from first sequence state to the value of `StateColumn`.
 
-## See also
-
-* [scan operator](scan-operator.md)
-
 ## Examples
 
 ### Exploring Storm Events
@@ -51,7 +43,9 @@ Returns a single table useful for constructing a funnel diagram for the analyzed
 The following query checks the completion funnel of the sequence: `Hail` -> `Tornado` -> `Thunderstorm Wind`
 in "overall" time of 1hour, 4hours, 1day.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WQywrCMBBF937F7FohQusbxKWg6xZciEjojBhIJzVJFcWPNylVFBIIw8nh3tHk4eS8tB7WgNKTVzWl4yxbjLI8nOFqoCNCjAH4I5b/xF0xmnuhnhTAyXyG/dzRtSWu4hQfLGtVpYdkK5VOBCSlsSzRdM9Ly0jWeWNr2AdZcvyoG7LKoPs15BcB03BzjFQRP21uxN4NXkA3qdsQFM4tM+lvglNl6iYIleF00yhnkHYooIjty1BK9JsQXV3xW0lAZy8fTUf1QvGNNnwDOQRUXkgBAAA=" target="_blank">Run the query</a>
+
 ```kusto
 let _start = datetime(2007-01-01);
 let _end =  datetime(2008-01-01);
@@ -76,3 +70,7 @@ StormEvents
 
 Understanding the results:  
 The outcome is three funnels (for periods: One hour, 4 hours, and one day). For each funnel step, a number of distinct counts of  are shown. You can see that the more time is given to complete the whole sequence of `Hail` -> `Tornado` -> `Thunderstorm Wind`, the higher `dcount` value is obtained. In other words, there were more occurrences of the sequence reaching the funnel step.
+
+## See also
+
+* [scan operator](scan-operator.md)

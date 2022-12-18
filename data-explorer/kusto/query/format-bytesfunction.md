@@ -3,15 +3,11 @@ title: format_bytes() - Azure Data Explorer
 description: Learn how to use the format_bytes() function to format a number as a string representing the data size in bytes.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/12/2022
+ms.date: 12/18/2022
 ---
 # format_bytes()
 
 Formats a number as a string representing data size in bytes.
-
-```kusto
-format_bytes(1024) == '1 KB'"
-```
 
 ## Syntax
 
@@ -31,7 +27,9 @@ The string with the format result.
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUeAqM1SwVUjLL8pNLIlPqixJLdYwNTPR1OEqM0IXNzQwNjbSUTAESRqjSxoZGIDlQZImuCR1FMDyprjlDXQUlLydlDQBI/ZQzZ0AAAA=" target="_blank">Run the query</a>
+
 ```kusto
 print 
 v1 = format_bytes(564),

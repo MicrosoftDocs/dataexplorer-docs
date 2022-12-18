@@ -3,16 +3,11 @@ title: format_ipv4_mask() - Azure Data Explorer
 description: Learn how to use the format_ipv4_mask() function to parse the input with a netmask and return a string representing the IPv4 address in CIDR notation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/12/2022
+ms.date: 12/18/2022
 ---
 # format_ipv4_mask()
 
 Parses the input with a netmask and returns a string representing the IPv4 address in CIDR notation.
-
-```kusto
-print format_ipv4_mask('192.168.1.255', 24) == '192.168.1.0/24'
-print format_ipv4_mask(3232236031, 24) == '192.168.1.0/24'
-```
 
 ## Syntax
 
@@ -30,14 +25,11 @@ print format_ipv4_mask(3232236031, 24) == '192.168.1.0/24'
 If conversion is successful, the result will be a string representing IPv4 address as CIDR notation.
 If conversion isn't successful, the result will be an empty string.
 
-## See also
-
-* [format_ipv4()](format-ipv4-function.md): For IPv4 address formatting without CIDR notation.
-* [IPv4 and IPv6 functions](scalarfunctions.md#ipv4ipv6-functions)
-
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcSUlKLU4mKr4pKizLx0HYXcxOJsq5z8vHRNrmguBXVDSyM9QzMLPUM9Q3UdBSMTHQU4wJA1NsIpq29kgqIAmyzIUg1dQ00dBa5YrhqF1IqS1LwUBaDjSnNKFGwV0vKLchNL4jMLykxgjoa4FqQBbi1EeTxIHFUPWAhNIwAom5ZMBgEAAA==" target="_blank">Run the query</a>
+
 ```kusto
 datatable(address:string, mask:long)
 [
@@ -56,3 +48,8 @@ datatable(address:string, mask:long)
 |192.168.1.1|32|192.168.1.1|192.168.1.1/32|
 |192.168.1.1/24|32|192.168.1.0|192.168.1.0/24|
 |192.168.1.1/24|-1|||
+
+## See also
+
+* For IPv4 address formatting without CIDR notation, see [format_ipv4()](format-ipv4-function.md).
+* For a list of functions related to IP addresses, see [IPv4 and IPv6 functions](scalarfunctions.md#ipv4ipv6-functions).
