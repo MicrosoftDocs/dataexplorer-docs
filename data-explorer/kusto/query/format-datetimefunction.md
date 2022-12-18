@@ -22,6 +22,8 @@ Formats a datetime according to the provided format.
 
 ### Supported format elements
 
+The *format* parameter should include one or more of the following elements:
+
 |Format specifier| Description| Examples|
 |--|--|--|
 |`d`| The day of the month, from 1 through 31.| 2009-06-01T13:45:30 -> 1, 2009-06-15T13:45:30 -> 15
