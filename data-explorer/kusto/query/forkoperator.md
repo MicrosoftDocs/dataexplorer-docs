@@ -17,10 +17,17 @@ Runs multiple consumer operators in parallel.
 
 *T* `|` `fork` [*name*`=`]`(`*subquery*`)` [*name*`=`]`(`*subquery*`)` ...
 
-## Arguments
+## Parameters
 
-* *subquery* is a downstream pipeline of query operators
-* *name* is a temporary name for the subquery result table
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *subquery* | string | &check; | A downstream pipeline of query operators.|
+| *name* | string | | A temporary name for the subquery result table.|
+
+> [!NOTE]
+>
+> * Avoid using `fork` with a single *subquery*.
+> * The name provided for the `name` parameter or with the [`as`](asoperator.md) operator will be the name of the result tab.
 
 ## Returns
 
