@@ -12,7 +12,7 @@ Filters a record set for data that doesn't contain a case-insensitive ending str
 [!INCLUDE [endswith-operator-comparison](../../includes/endswith-operator-comparison.md)]
 
 > [!NOTE]
-> The following abbreviations are used in the table earlier in this article:
+> The following abbreviations are used in this table:
 >
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
