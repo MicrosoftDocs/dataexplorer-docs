@@ -10,41 +10,35 @@ ms.date: 09/07/2022
 > [!IMPORTANT]
 > Before altering authorization rules on your cluster(s), read the following:
 >
-> * [Role-based access control](../management/access-control/role-based-authorization.md)
+> * [Azure Data Explorer role-based access control](../management/access-control/role-based-authorization.md)
 > * [Principals and identity providers](./access-control/principals-and-identity-providers.md)
 
 Azure Data Explorer uses a role-based access control (RBAC) model in which principals—users, groups, and apps—get access to resources according to the security roles they're assigned.
 
 When a principal attempts an operation, the system performs an authorization check to make sure the principal is associated with at least one security role that grants permissions to perform the operation. Failing an authorization check aborts the operation.
 
-Security roles can be set with management commands, as described in this article, or through the Azure portal. Roles set through the Azure portal are stored within the greater Azure RBAC model. Roles set by management commands are stored on the Azure Data Explorer level. The permissions work the same in both cases.
+This article describes how to use management commands to set, view, and manage security roles for databases, tables, functions, and materialized views.
 
 >[!NOTE]
 > To change security principals, you must be either a **database admin** or an **alldatabases admin**.
 
 ## Security roles
 
-The following table describes the level of access granted for each security role.
+The following table describes the level of access granted for each role and shows a check if the role can be assigned within the given object type.
 
-|Role|Permissions|
-|--|--|
-|`admins` | View, modify, and remove the object and subobjects.|
-|`users` | View the object and create new subobjects.|
-|`viewers` | View the object if [RestrictedViewAccess](restrictedviewaccesspolicy.md) isn't enabled.|
-|`unrestrictedviewers`| View the object even with [RestrictedViewAccess](restrictedviewaccesspolicy.md). Use in addition to the `admins`, `viewers` or `users` roles. |
-|`ingestors` | Ingest data to the object without access to query. |
-|`monitors` | View metadata such as schemas, operations, and permissions.|
+|Role|Permissions|Databases|Tables|Materialized views|Functions|
+|--|--|--|--|--|--|
+|`admins` | View, modify, and remove the object and subobjects.|&check;|&check;|&check;|&check;|
+|`users` | View the object and create new subobjects.|&check;||||
+|`viewers` | View the object if [RestrictedViewAccess](restrictedviewaccesspolicy.md) isn't enabled.|&check;||||
+|`unrestrictedviewers`| View the object even with [RestrictedViewAccess](restrictedviewaccesspolicy.md). Use in addition to the `admins`, `viewers` or `users` roles. |&check;||||
+|`ingestors` | Ingest data to the object without access to query. |&check;|&check;|||
+|`monitors` | View metadata such as schemas, operations, and permissions.|&check;||||
 
-The following table shows a check if the role can be assigned within the given object type.
+For a full description of the security roles at each scope, see [Azure Data Explorer role-based access control](access-control/role-based-authorization.md).
 
-|Role|Databases|Tables|Materialized views|Functions|
-|--|--|--|--|--|
-|`admins` |&check;|&check;|&check;|&check;|
-|`users` |&check;||||
-|`viewers` |&check;||||
-|`unrestrictedviewers`|&check;||||
-|`ingestors` |&check;|&check;|||
-|`monitors` |&check;||||
+> [!TIP]
+> There are three cluster level security roles—AllDatabasesAdmin, AllDatabasesViewer, and AllDatabasesMonitor—that can only be configured in the Azure portal. To learn more, see [manage cluster permissions](../../manage-cluster-permissions.md).
 
 ## List all principals
 
