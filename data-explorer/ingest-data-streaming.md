@@ -319,11 +319,13 @@ namespace StreamingIngestion
 ### [Python](#tab/python)
 
 ```python
-from azure.kusto.data import KustoConnectionStringBuilder
+from azure.kusto.data import (
+    KustoConnectionStringBuilder,
+    DataFormat
+)
 
 from azure.kusto.ingest import (
     IngestionProperties,
-    DataFormat,
     KustoStreamingIngestClient
 )
 
