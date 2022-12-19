@@ -22,21 +22,19 @@ MAKE SURE THEY'RE IN CONTEXT OF SAMPLES DB.
 
 ## Kusto Query Language overview
 
-The Kusto Query Language (KQL) is used to write queries in Azure Data Explorer. A KQL query consists of one or more query statements and returns data in a tabular or graph format. There are three types of KQL query statements: [tabular expression statements](#tabular-expression-statements), [let statements](#let-statements), and [set statements](#set-statements). All query statements are separated by a semicolon and affect a single query.
+The Kusto Query Language (KQL) is used to write queries in Azure Data Explorer. A KQL query consists of one or more query statements and returns data in a tabular or graph format. Query statements are separated by a semicolon and affect a single query.
+
+In this tutorial, we'll use the main two types of query statements: [tabular expression statements](#tabular-expression-statements) and [let statements](#let-statements).
 
 ### Tabular expression statements
 
-Every KQL query must consist of at least one tabular expression statement. This makes them the most common type of query statement.
+Every KQL query must consist of at least one tabular expression statement.
 
-The input and output of tabular expression statements consist of tables or tabular datasets. In these statements, operators are sequenced by the pipe (`|`) delimiter. Data flows, or is piped, from one operator to the next. The data is filtered or manipulated at each step and then fed into the following step.
+Both the input and the output of these statements consist of tables or tabular datasets. In these statements, operators are separated by the pipe (`|`) delimiter, and data flows from one operator to the next. The data is filtered or manipulated at each step and then fed into the following step.
 
 #### Example
 
-Let's go through the following query step by step.
-
-1. All rows of the `StormEvents` table are fed into the `where` operator and filtered by the value of the `StartTime` column.
-1. The remaining rows are fed into the `where` operator again and filtered by the value of the `State` column.
-1. The remaining rows are fed into the `count` operator and counted.
+Read the following query, and then we'll go through it step by step.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksKgnJzE1VSEotKU9NzVPQSEksSS0BimgYGRiY6xoa6hoYairo6SmgiRuBxDVRTCpJVbC1VVBy8/EP8nRxVALJJeeX5pUAAG+X/jp7AAAA" target="_blank">Run the query</a>
@@ -51,6 +49,10 @@ StormEvents
 |Count|
 |--|
 |28|
+
+1. All rows of the `StormEvents` table are fed into the `where` operator and filtered by the value of the `StartTime` column.
+1. The remaining rows are fed into the `where` operator again and filtered by the value of the `State` column.
+1. The remaining rows are fed into the `count` operator and counted.
 
 ### Let statements
 
@@ -69,11 +71,7 @@ StormEvents
 | where EventType in~ (WindStorms) or EventNarrative has_any (WindStorms)
 ```
 
-### Set statements
-
-EXAMPLE NEEDED ????
-
-## Most common operators
+## Learn common operators
 
 The operators covered in this section are the building blocks to understanding queries in Azure Data Explorer. Most queries you write will include several of these operators.
 
