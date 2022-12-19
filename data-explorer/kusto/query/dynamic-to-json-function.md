@@ -1,6 +1,6 @@
 ---
 title: dynamic_to_json() - Azure Data Explorer 
-description: Learn how to use the dynamic_to_json() function to convert a scalar value of type dynamic to a canonical string representation.
+description: Learn how to use the dynamic_to_json() function to convert a scalar value of type `dynamic` to a canonical string representation.
 ms.reviewer: elgevork
 ms.topic: reference
 ms.date: 12/11/2022
