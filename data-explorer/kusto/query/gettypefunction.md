@@ -1,6 +1,6 @@
 ---
 title: gettype() - Azure Data Explorer
-description: Learn how to use the gettype() function to return the runtime type of its single argument.
+description: Learn how to use the gettype() function to return a string representing the runtime type of its single argument.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/18/2022

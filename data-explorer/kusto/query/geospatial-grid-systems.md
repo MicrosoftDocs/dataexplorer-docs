@@ -20,7 +20,7 @@ The core functionalities of these methods are:
 
 * Calculate hash\index\cell token of geospatial coordinate. Different geospatial coordinates that belong to same cell will have same cell token value.
 * Calculate center point of hash\index\cell token. This point is useful because it may represent all the values in the cell.
-* Calculate cell polygon. Calculating cell polygon is useful in cell visualization or other calculations, for example, distance, or point in polygon checks.
+* Calculate cell polygon. Calculating cell polygons is useful in cell visualization or other calculations, for example, distance, or point in polygon checks.
 
 ## Compare methods
 
