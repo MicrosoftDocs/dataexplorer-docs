@@ -3,54 +3,52 @@ title: Write queries for Azure Data Explorer
 description: In this how-to, you learn how to perform basic and more advanced queries for Azure Data Explorer.
 ms.reviewer: mblythe
 ms.topic: tutorial
-ms.date: 11/09/2022
+ms.date: 12/19/2022
 ms.localizationpriority: high
 ---
 
 # Write queries for Azure Data Explorer
 
-In this article, you learn how to use the query language in Azure Data Explorer to perform basic queries with the most common operators. You also get exposure to some of the more advanced features of the language.
+In this article, you'll learn how to perform queries in Azure Data Explorer using the [Kusto Query Language](./kusto/query/index.md).
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Create [a cluster and database](create-cluster-database-portal.md).
+* A Microsoft account or an Azure Active Directory user identity to access the [help cluster](https://dataexplorer.azure.com/clusters/help).
+* Familiarity with database structures like tables, columns, and rows.
 
-You can run the queries in this article in one of two ways:
+## Get started
 
-* On the Azure Data Explorer *help cluster* that we have set up to aid learning.
-    [Sign in to the cluster](https://dataexplorer.azure.com/clusters/help/databases/samples) with an organizational email account that is a member of Azure Active directory.
+MAKE SURE THEY'RE IN CONTEXT OF SAMPLES DB.
 
-* On your own cluster that includes the StormEvents sample data. For  more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
+## Kusto Query Language overview
 
-    [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
+The Kusto Query Language (KQL) is used to write queries in Azure Data Explorer. A KQL query consists of one or more query statements and returns data in a tabular or graph format. There are three types of KQL query statements: [tabular expression statements](#tabular-expression-statements), [let statements](#let-statements), and [set statements](#set-statements). All query statements are separated by a semicolon and affect a single query.
 
-## Overview of the query language
+### Tabular expression statements
 
-A query in Azure Data Explorer is a read-only request to process data and return results. The request is stated in plain text, using a data-flow model designed to make the syntax easy to read, author, and automate. The query uses schema entities that are organized in a hierarchy similar to SQL: databases, tables, and columns.
+The input and output of tabular expression statements consist of tables or tabular datasets. In these statements, operators are sequenced by the pipe (`|`) delimiter. Data flows, or is piped, from one operator to the next. The data is filtered or manipulated at each step and then fed into the following step.
 
-The query consists of a sequence of query statements, delimited by a semicolon (`;`), with at least one statement being a tabular expression statement, which is a statement that produces data arranged in a table-like mesh of columns and rows. The query's tabular expression statements produce the results of the query. Any two statements must be separated by a semicolon.
+#### Example
 
-The syntax of the tabular expression statement has tabular data flow from one tabular query operator to another, starting with data source (for example, a table in a database, or an operator that produces data) and then flowing through a set of data transformation operators that are bound together by using the pipe (`|`) delimiter.
+Let's go through the following query step by step.
 
-For example, the following query has a single statement, which is a tabular expression statement. The statement starts with a reference to a table called `StormEvents` (the database that host this table is implicit here, and part of the connection information). The data (rows) for that table are then filtered by the value of the `StartTime` column, and then filtered by the value of the `State` column. The query then returns the count of "surviving" rows.
+1. All data rows of the `StormEvents` table are fed into the `where` operator and filtered by the value of the `StartTime` column.
+1. The remaining rows are fed into the `where` operator again and filtered by the value of the `State` column.
+1. The remaining rows are fed into the `count` operator and counted.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVWws1VISSxJLQGyNYwMDMx1DQ11DQw1FRLzUpBU2aArMgIpQjGvJFXB1lZByc3HP8jTxVFJQQEkm5xfmlcCAHoR9euCAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksKgnJzE1VSEotKU9NzVPQSEksSS0BimgYGRiY6xoa6hoYairo6SmgiRuBxDVRTCpJVbC1VVBy8/EP8nRxVALJJeeX5pUAAG+X/jp7AAAA" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
-| where StartTime >= datetime(2007-11-01) and StartTime < datetime(2007-12-01)
+| where StartTime between (datetime(2007-11-01) .. datetime(2007-12-01))
 | where State == "FLORIDA"
 | count
 ```
 
-In this case, the result is:
-
 |Count|
-|-----|
-|   23|
-| |
+|--|
+|28|
 
 For more information, see the [Query language reference](./kusto/query/index.md).
 
