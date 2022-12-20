@@ -114,7 +114,7 @@ The following table shows only 6 of the 22 returned columns. To see the full out
 
 ### project
 
-Use the [project](kusto/query/projectoperator.md) operator to select a specific subset of columns.
+When writing queries, it's common that you'll be interested in a specific subset of columns. The [project](kusto/query/projectoperator.md) operator allows you to view a specific subset of columns.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUShJzE5VMAWxCorys1KTSxSCSxJLUnUUwEpCKguATJfE3MT01ICi/ILUopJKAG0+9oFBAAAA" target="_blank">Run the query</a>
@@ -135,18 +135,16 @@ StormEvents
 
 ### distinct
 
-Use the [distinct](kusto/query/distinctoperator.md) operator to list all of the types of storms recorded in Texas.
+Let's use the [distinct](kusto/query/distinctoperator.md) operator to list all unique storm types.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUShJzE5VMAWxCorys1KTSxSCSxJLUnUUwEpCKguATJfE3MT01ICi/ILUopJKAG0+9oFBAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRSMksLsnMSy5RAIuEVBakAgD24XVdIAAAAA==" target="_blank">Run the query</a>
 
 ```Kusto
-StormEvents
-| where State == 'TEXAS'
-| distinct EventType
+StormEvents | distinct EventType
 ```
 
-There are 27 types of storms recorded in Texas. Here's a sample of 10.
+There are 46 types of storms in our table.
 
 |EventType|
 |--|
@@ -158,8 +156,8 @@ There are 27 types of storms recorded in Texas. Here's a sample of 10.
 |Winter Storm|
 |Heavy Snow|
 |High Wind|
+|Frost/Freeze|
 |Flood|
-|Tornado|
 |...|
 
 ### where
@@ -188,9 +186,7 @@ There are 146 events that match these conditions. The following table shows a sa
 
 ### sort
 
-Use the [sort](kusto/query/sortoperator.md) operator to arrange the rows in ascending or descending order based on one or more columns. The default is descending order.
-
-To view the top five floods in Texas that caused the most damage, let's use `sort` to arrange the rows in descending order based on the `DamageProperty` column and `take` to display only the top five rows.
+To view the top five floods in Texas that caused the most damage, let's use the [sort](kusto/query/sortoperator.md) operator to arrange the rows in descending order based on the `DamageProperty` column and `take` to display only the top five rows.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12NPQsCMRBEe8H/MF2atJZXCMZauBS28bL4mWzYLCcBf7zkrhDsHszMm1FZkpspa91uPnjfSAijBiUMA4x35/1oEHLEUvKtrMHxxRxNn1QWxaXhEFK40km4kGhDpDr1WMOTsOtUhB80abeL+nsiC5fjCsuj/X3YP90XMW6LAacAAAA=" target="_blank">Run the query</a>
