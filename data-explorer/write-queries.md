@@ -28,7 +28,7 @@ The Kusto Query Language (KQL) is used to write queries and retrieve data in Azu
 
 A tabular expression statement is a type of query that manipulates data in tables or tabular datasets. It consists of one or more operators, which are separated by a pipe (`|`) and process the data sequentially. Each operator starts with a tabular input and returns a tabular output.
 
-The order of the operators is important, as the data flows from one operator to the next and is transformed at each step. Think of it like a funnel, where the data starts as an entire table and is refined as it passes through each operator, until you're left with a final output at the end.
+The order of the operators is important, as the data flows from one operator to the next and is transformed at each step. Think of it like a funnel where the data starts as an entire table and is refined as it passes through each operator, until you're left with a final output at the end.
 
 #### Example
 
@@ -146,7 +146,7 @@ StormEvents
 | distinct EventType
 ```
 
-There are 27 types of storms recorded in Texas. Here is a sample of 10.
+There are 27 types of storms recorded in Texas. Here's a sample of 10.
 
 |EventType|
 |--|
@@ -340,7 +340,7 @@ StormEvents
 |--|
 |28|
 
-Write the query using a [timespan](kusto/query/scalar-data-types/timespan.md) value, such as an amount of days, and achieve the same result.
+Write the query using a [timespan](kusto/query/scalar-data-types/timespan.md) value, such as a number of days, and achieve the same result.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksKgnJzE1VSEotKU9NzVPQSEksSS0BimgYGRiY6xoa6hoYairo6SkYG6RoomgsSVWwtVVQcvPxD/J0cVQCySXnl+aVAABlfHI1agAAAA==" target="_blank">Run the query</a>
@@ -358,7 +358,7 @@ StormEvents
 
 ### bin()
 
-The [bin()](./binfunction.md) function to group rows into distinct sets of data when aggregating by scalar values, like numbers and time values.
+The [bin()](kusto/query/binfunction.md) function to group rows into distinct sets of data when aggregating by scalar values, like numbers and time values.
 
 The following example finds the event count of storms for each day in the first week of November.
 
@@ -381,7 +381,7 @@ StormEvents
 |2007-11-06T00:00:00Z| 14|
 |2007-11-07T00:00:00Z| 62|
 
-The [bin()](./binfunction.md) function is the same as the [floor()](./floorfunction.md) function in many languages. It reduces every value to the nearest multiple of the modulus that you supply. This allows [summarize](./summarizeoperator.md) to assign the rows to groups.
+The [bin()](./binfunction.md) function is the same as the [floor()](kusto/query/floorfunction.md) function in many languages. It reduces every value to the nearest multiple of the modulus that you supply and allows [summarize](kusto/query/summarizeoperator.md) to assign the rows to groups.
 
 ### case()
 
