@@ -22,15 +22,11 @@ MAKE SURE THEY'RE IN CONTEXT OF SAMPLES DB.
 
 ## Kusto Query Language overview
 
-The Kusto Query Language (KQL) is used to write queries in Azure Data Explorer. A KQL query consists of one or more query statements and returns data in a tabular or graph format. Query statements are separated by a semicolon and affect a single query.
-
-In this tutorial, we'll use the main two types of query statements: [tabular expression statements](#tabular-expression-statements) and [let statements](#let-statements).
+The Kusto Query Language (KQL) is used to write queries and retrieve data in Azure Data Explorer. A KQL query consists of one or more query statements separated by a semicolon and returns data in tabular or graph format. The two most common types of query statements are [tabular expression statements](#tabular-expression-statements) and [let statements](#let-statements).
 
 ### Tabular expression statements
 
-Every KQL query must consist of at least one tabular expression statement.
-
-Both the input and the output of these statements consist of tables or tabular datasets. In these statements, operators are separated by the pipe (`|`) delimiter, and data flows from one operator to the next. The data is filtered or manipulated at each step and then fed into the following step.
+Tabular expression statements manipulate tabular data by applying operations such as filtering, rearranging, or summarizing the data. Each operator is separated by a pipe (`|`) delimiter, with the order of the operators being important as the data flows from one operation to the next. The process is similar to a funnel, where the data is refined as it passes through each operation. The final output of the process is a refined table.
 
 #### Example
 
@@ -50,13 +46,13 @@ StormEvents
 |--|
 |28|
 
-1. All rows of the `StormEvents` table are fed into the `where` operator and filtered by the value of the `StartTime` column.
-1. The remaining rows are fed into the `where` operator again and filtered by the value of the `State` column.
-1. The remaining rows are fed into the `count` operator and counted.
+1. The `StormEvents` table is filtered to only include rows where the value of the `StartTime` column falls within the specified date range.
+1. The resulting table is further filtered to only include rows where the value of the `State` column is equal to "FLORIDA".
+1. The resulting table is passed to the `count` operator, which counts the number of rows and outputs a table with the count.
 
 ### Let statements
 
-Set a variable name equal to an expression or a function using [let statements](kusto/query/letstatement.md).
+Let statements define variables that can be used within a query.
 
 #### Example
 
