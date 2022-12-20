@@ -474,39 +474,6 @@ StormEvents
 
 :::image type="content" source="media/write-queries/render-pie-chart.png" alt-text="Screenshot of Azure Data Explorer web UI pie chart rendered by the previous query.":::
 
-## Time series analysis
-
-### make-series
-
-[**make-series**](./kusto/query/make-seriesoperator.md): aggregates together groups of rows like [summarize](./kusto/query/summarizeoperator.md), but generates a (time) series vector per each combination of by values.
-
-The following query returns a set of time series for the count of storm events per day. The query covers a three-month period for each state, filling missing bins with the constant 0:
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUchNzE7VLU4tykwtVsizTc4vzSvR0FRISU1LLM0psTVQyM9TCC5JLCoJycxNVcjMUyhKzEtP1UhJLEktAYpoGBkYmOsaGAKRpo4CmqixrjFI1DBFUyGpEmRKSSoAazsM0n0AAAA%3d" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| make-series n=count() default=0 on StartTime in range(datetime(2007-01-01), datetime(2007-03-31), 1d) by State
-```
-
-Once you create a set of (time) series, you can apply series functions to detect anomalous shapes, seasonal patterns, and a lot more.
-
-The following query extracts the top three states that had the most events in specific day:
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2OsQoCMRBEe8F%2f2DIBAzmvsLrSLzj7EC%2brBs3mSPbkBD%2feLDYibPVmZmdGziUdn0hct5s3JH9HU7FErEDDlBdipSHgxS8PHixkgpF94VNMCJGgeLqiCp6RG1F7aw%2fGdu30Dv5ob3qhXdBwfskXRmnElZECfDtdbbgq0qJwnqEX76%2fmyCW%2ftkV1Ek9pWSwgNdOt7foAJIuybs8AAAA%3d" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| make-series n=count() default=0 on StartTime in range(datetime(2007-01-01), datetime(2007-03-31), 1d) by State
-| extend series_stats(n)
-| top 3 by series_stats_n_max desc
-| render timechart
-```
-
-For more information, review the full list of [series functions](./kusto/query/scalarfunctions.md#series-processing-functions).
-
 ## Advanced aggregations
 
 We covered basic aggregations, like **count** and **summarize**, earlier in this article. This section introduces more advanced options.
