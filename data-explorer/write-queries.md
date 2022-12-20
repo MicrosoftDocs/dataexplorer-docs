@@ -108,7 +108,7 @@ The following table shows only 6 of the 22 returned columns. To see the full out
 |2007-09-18T20:00:00Z| 2007-09-19T18:00:00Z| 11074| 60904| FLORIDA| Heavy Rain|...|
 
 > [!NOTE]
-> [limit](./takeoperator.md) is an alias for [take](./takeoperator.md) and has the same effect.
+> [limit](kusto/query/limitoperator.md) is an alias for [take](kusto/query/takeoperator.md) and has the same effect.
 
 ### project
 
