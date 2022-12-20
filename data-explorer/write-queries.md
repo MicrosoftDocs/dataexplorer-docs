@@ -22,7 +22,7 @@ MAKE SURE THEY'RE IN CONTEXT OF SAMPLES DB.
 
 ## Kusto Query Language overview
 
-The Kusto Query Language (KQL) is used to write queries and retrieve data in Azure Data Explorer. A KQL query consists of one or more query statements separated by a semicolon and returns data in tabular or graphical format. The two most common types of query statements are [tabular expression statements](#tabular-expression-statements) and [let statements](#let-statements).
+The Kusto Query Language (KQL) is used to write queries and retrieve data in Azure Data Explorer. A KQL query consists of one or more query statements separated by a semicolon and returns data in tabular or graphical format. The two most common types of query statements are tabular expression statements and let statements.
 
 ### Tabular expression statements
 
