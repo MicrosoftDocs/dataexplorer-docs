@@ -157,7 +157,7 @@ There are 146 events that match these conditions. The following table shows a sa
 
 ### sort
 
-Use the [sort](kusto/query/sortoperator.md) operator to arrange the rows in ascending or descending order based on one or more columns. The default is ascending order.
+Use the [sort](kusto/query/sortoperator.md) operator to arrange the rows in ascending or descending order based on one or more columns. The default is descending order.
 
 To view the top 5 floods in Texas that caused the most damage, let's use `sort` to arrange the rows in descending order based on the `DamageProperty` column and `take` to display only the top 5 rows.
 
@@ -287,61 +287,53 @@ The result of a summarize operation has columns for each value in the by clause,
 
 ### render
 
-[**render**](./kusto/query/renderoperator.md): Renders results as a graphical output.
+The [render](kusto/query/renderoperator.md) operator allows you to display query results as graphical output. The render operator is a client-side feature that is integrated into the language for ease of use. It's not a part of the engine. The web application supports the following options for graphical output: barchart, columnchart, piechart, timechart, and linechart.
 
-The following query displays a column chart.
+Let's create a column chart showing the states that experienced over 50 storms in November 2007.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWMsQ7CQAxDdyT%2bIWMrdSgbSxmQ2Nj6Aei4Ru0hkqA0VwTi49uUBRZL9rPdmiidJmQbt5sPjJkoaHojoGeXKJmtWbUoK6DUQQNh6osj9onPwUq4vqC1YLjORc2Dpef2OaD%2bPcEBdvu6dvZQuWG077b6LTlV5A4VotwzcRyC2gxU6ktSqQAAAA%3d%3d" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12PwQqCUBBF90H/MEuFlKcQrWoTfYH9wPN5QaP3XoxjUvTxObZQ2szi3sO5TCWR/eWJIP1286GxBYMqsSzXzoNqyAgEShorkClJSmMOWVFkpkgpz+kvLzVP1dQP3lvu3qDZfo5DkKPTm6RUv3RDsEwuEJ1ob2ZDZFFyVdneafPgeIOTn2O3ArRkhAZMLt4HH1w7ffIF6O9O1uQAAAA=" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
-| summarize event_count=count(), mid = avg(BeginLat) by State
-| sort by mid
-| where event_count > 1800
-| project State, event_count
+| where StartTime between (datetime(2007-11-01) .. datetime(2007-12-01))
+| summarize EventCount=count() by State
+| where EventCount > 50
+| sort by EventCount asc
+| project State, EventCount
 | render columnchart
 ```
 
-The following query displays a simple time chart.
+:::image type="content" source="media/write-queries/render-column-chart.png" alt-text="Screenshot of the Azure Data Explorer web UI column chart created by the previous render query.":::
+
+Let's create a time chart showing the storm count by day in November 2007.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIBYnFJ%2beX5pXYgkkNTYWkSoWkzDyN4JLEopKQzNxUHQXDFE2QtqLUvJTUIoUSoFhyBlASAAyXWQJWAAAA" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
+| where StartTime between (datetime(2007-11-01) .. datetime(2007-12-01))
 | summarize event_count=count() by bin(StartTime, 1d)
 | render timechart
 ```
 
-The following query counts events by the time modulo one day, binned into hours, and displays a time chart.
+:::image type="content" source="media/write-queries/render-time-chart.png" alt-text="Screenshot of the Azure Data Explorer web UI time chart created by the previous render query.":::
+
+Let's use a time chart to compare the daily series of several selected states.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEADWNQQqDMBRE90LvMBtBwY0HcNkT2L2k8UuEJh9%2bfqSWHt4k4GZghpk3s7L450FB46P5g75KYYXjJJiwfZilm9WIvnZPaDGuGDC6vnRj8t7I%2fiNQ2S%2bWU9CpatfjfVZKLbLo7WGiLZnkGxJoxlqX%2bRf81ZbyiAAAAA%3d%3d" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWOywqDMBBF94X+wyVQUHDjB7iQ1mKhIDQuurU6RcEkMI590Y9vkm5mBu5hztXi2FQPsrJsN1/QS8gOqN3KKHCfneMEWjqWdjKEHfIBGfIxDfBzJKaQCmGySFRbXUutMqjjubmcDmU4/aobFfllNabj6UOIwr1brRR9mEmK2ztas/+/gLNvQgzx4n70DX6/4TkLqwAAAA==" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
-| extend hour = floor(StartTime % 1d , 1h)
-| summarize event_count=count() by hour
-| sort by hour asc
+| extend Hour = floor( StartTime % 1d , 1h)
+| where State in ("TEXAS", "FLORIDA", "CALIFORNIA")
+| summarize EventCount=count() by Hour, State
 | render timechart
 ```
 
-The following query compares multiple daily series on a time chart.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEACWPSwvCMBCE74L%2fYSgIFXrpD%2bihaKzxkUBTXyeputKCbSCmvvDHm9TL7gwzsN8qq03DHtTa%2b3DwBb0stRdUujMJrjetTQhlS2OLuiGMEF8QIa7GvvusyJBPLaFuEQbZZjWDnGHN9nwigyhYp1wwt7c8z7jgqZM7riZSKC6cFjIv5pimS1n4SLAdFixX7OCMzFkmRdAfundNU5r6QyAPejzrrrVJP8MxTu8eN%2fqT%2bL5xL5CBdcjnyrH%2fALPTSKnkAAAA" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| extend hour= floor( StartTime % 1d , 1h)
-| where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
-| summarize event_count=count() by hour, State
-| render timechart
-```
-
-> [!NOTE]
-> The **render** operator is a client-side feature rather than part of the engine. It's integrated into the language for ease of use. The web application supports the following options: barchart, columnchart, piechart, timechart, and linechart.
+:::image type="content" source="media/write-queries/render-multi-time-chart.png" alt-text="Screenshot of Azure Data Explorer web UI time chart from the previous query.":::
 
 ## Scalar operators
 
