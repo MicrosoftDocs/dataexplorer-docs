@@ -32,18 +32,18 @@ The order of the operators is important, as the data flows from one operator to 
 
 #### Example
 
-The following steps are performed in this example query:
+The following steps are performed in this example query.
 
 1. The `StormEvents` table is filtered to select rows with `StartTime` values within the specified date range.
 1. The filtered table is further narrowed down to include only rows with a `State` value of "FLORIDA".
 1. The final table is passed to the `count` operator, which returns a new table containing the count of rows.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksKgnJzE1VSEotKU9NzVPQSEksSS0BimgYGRiY6xoa6hoYairo6SmgiRuBxDVRTCpJVbC1VVBy8/EP8nRxVALJJeeX5pUAAG+X/jp7AAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksKgnJzE1VsLNVSEksSS0BsjWMDAzMdQ0NdQ0MNRUS81KQVNlgqDICqUIxsCRVwdZWQcnNxz/I08VRCSSXnF+aVwIAeGM3BoIAAAA=" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents 
-| where StartTime between (datetime(2007-11-01) .. datetime(2007-12-01))
+| where StartTime >= datetime(2007-11-01) and StartTime <= datetime(2007-12-01)
 | where State == "FLORIDA"
 | count
 ```
@@ -287,26 +287,138 @@ StormEvents
 
 The result of a summarize operation has columns for each value in the by clause, a column for each computed expression, and a row for each combination of by values.
 
-### render
+## Learn common functions
 
-The [render](kusto/query/renderoperator.md) operator allows you to display query results as graphical output. The web application supports the following options for graphical output: `barchart`, `columnchart`, `piechart`, `timechart`, and `linechart`.
+Let's take a look at some common functions and learn how to use them in queries. Remember that there are many more functions to choose from based on your specific needs and goals.
 
-Let's create a column chart showing the states that experienced over 50 storms in November 2007.
+### between()
+
+The [between](kusto/query/betweenoperator.md) function matches values that are inside the inclusive range.
+
+The following query is equivalent to the example provided earlier in the [tabular expression statements](#tabular-expression-statements) example.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12PwQqCUBBF90H/MEuFlKcQrWoTfYH9wPN5QaP3XoxjUvTxObZQ2szi3sO5TCWR/eWJIP1286GxBYMqsSzXzoNqyAgEShorkClJSmMOWVFkpkgpz+kvLzVP1dQP3lvu3qDZfo5DkKPTm6RUv3RDsEwuEJ1ob2ZDZFFyVdneafPgeIOTn2O3ArRkhAZMLt4HH1w7ffIF6O9O1uQAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrApGRuaaCnp4ChrixgaYmyKTk%2fNK8EgBluyagXgAAAA%3d%3d" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents 
+| where StartTime between (datetime(2007-11-01) .. datetime(2007-12-01))
+| where State == "FLORIDA"
+| count
+```
+
+|Count|
+|--|
+|28|
+
+Write the query using a [timespan](kusto/query/scalar-data-types/timespan.md) value, such as an amount of days, and achieve the same result.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksKgnJzE1VSEotKU9NzVPQSEksSS0BimgYGRiY6xoa6hoYairo6SkYG6RoomgsSVWwtVVQcvPxD/J0cVQCySXnl+aVAABlfHI1agAAAA==" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents 
+| where StartTime between (datetime(2007-11-01) .. 30d)
+| where State == "FLORIDA"
+| count
+```
+
+|Count|
+|--|
+|28|
+
+### bin()
+
+The [bin()](./binfunction.md) function to group rows into distinct sets of data when aggregating by scalar values, like numbers and time values.
+
+The following example finds the event count of storms for each day in the first week of November.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKWCKW2hqgkwqLs3NTSzKrEpVAJvunF+aV6Jgq5AMojU0FZIqFZIy8zTgNukoGKZoAgCRt8vYjQAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| where StartTime between (datetime(2007-11-01) .. datetime(2007-11-08))
+| summarize EventCount = count() by bin(StartTime, 1d)
+```
+
+|StartTime|EventCount|
+|---|---|
+|2007-11-01T00:00:00Z| 335|
+|2007-11-02T00:00:00Z| 14|
+|2007-11-03T00:00:00Z| 49|
+|2007-11-04T00:00:00Z| 38|
+|2007-11-05T00:00:00Z| 73|
+|2007-11-06T00:00:00Z| 14|
+|2007-11-07T00:00:00Z| 62|
+
+The [bin()](./binfunction.md) function is the same as the [floor()](./floorfunction.md) function in many languages. It reduces every value to the nearest multiple of the modulus that you supply. This allows [summarize](./summarizeoperator.md) to assign the rows to groups.
+
+### case()
+
+The [case()](kusto/query/casefunction.md) function evaluates a list of conditions, called predicates, and returns a corresponding result expression for the first predicate that is satisfied. If none of the predicates are satisfied, `case()` will return the final else expression, if provided.
+
+The following query returns a new column `injuries_bucket` and groups the injuries by number.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlXwzMsqLcpMLXbOL80rUbAFyWjAxFwyi1KTSzQVkioVgksSS1JBOlMrSlLzUuDanEqTs1NB+pITi1MVNHi5FPACVNvsFEwNdAhpUfJJLEpPVSKoDt1oQyKM9k1NySzNJd1sIowOzk3MySFsspJfvkIm1HQlfIo1wdGWX1QCjw2FxOJkAHJXMdXXAQAA" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
-| where StartTime between (datetime(2007-11-01) .. datetime(2007-12-01))
-| summarize EventCount=count() by State
-| where EventCount > 50
-| sort by EventCount asc
+| summarize InjuriesCount = sum(InjuriesDirect) by State
+| extend InjuriesBucket = case (
+                              InjuriesCount > 50,
+                              "Large",
+                              InjuriesCount > 10,
+                              "Medium",
+                              InjuriesCount > 0,
+                              "Small",
+                              "No injuries"
+                          )
+| sort by State asc
+```
+
+|State|InjuriesCount|InjuriesBucket|
+|--|--|--|
+|ALABAMA| 494| Large|
+|ALASKA| 0| No injuries|
+|AMERICAN SAMOA| 0| No injuries|
+|ARIZONA| 6| Small|
+|ARKANSAS| 54| Large|
+|...|...|...|
+
+## Visualize query results
+
+This section teaches how to use common operators and functions to visualize your query results using the render operator.
+
+### render
+
+The [render](kusto/query/renderoperator.md) operator allows you to display query results as graphical output.
+
+> [!NOTE]
+> The render operator is a client-side feature that is integrated into the language for ease of use. It's not a part of the engine.
+
+#### Column chart
+
+Let's view the states that experienced over 50 storms in November 2007 in a column chart. The projected columns are used as the x-axis and y-axis of the chart.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1VNvQ6CQAzeTXyHjpAw4Oaig8ZNJp6gHg2c8Xqm9DAQH96rLDp9+f5bjRIuE7GOsN28YUwhoPiF4CueY2KFAzjDoqyg8V2mOPXFiXrPV9QSbjO0ikrrQBQ1JQeNvgaSv60j7PZ1bdZT4p2crt3qJ2OmEHck+feRArsBRT95g86eqgAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents 
+| summarize EventCount = count(), Mid = avg(BeginLat) by State 
+| sort by Mid
+| where EventCount > 1800
 | project State, EventCount
 | render columnchart
 ```
 
+We left out `Mid` in the project operation so it's not shown in the chart, but the states are still displayed in order based on their `Mid` values.
+
 :::image type="content" source="media/write-queries/render-column-chart.png" alt-text="Screenshot of the Azure Data Explorer web UI column chart created by the previous render query.":::
+
+#### Time chart
 
 Let's create a time chart showing the storm count by day in November 2007.
 
@@ -337,231 +449,30 @@ StormEvents
 
 :::image type="content" source="media/write-queries/render-multi-time-chart.png" alt-text="Screenshot of Azure Data Explorer web UI time chart from the previous query.":::
 
-> [!NOTE]
-> The render operator is a client-side feature that is integrated into the language for ease of use. It's not a part of the engine.
+#### Pie chart
 
-## Scalar operators
-
-This section covers some of the most important scalar operators.
-
-### bin()
-
-[**bin()**](./kusto/query/binfunction.md): Rounds values down to an integer multiple of a given bin size.
-
-The following query calculates the count with a bucket size of one day.
+Let's create a pie chart to visualize the number of states that experienced storms resulting in a large, medium, or small number of injuries.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVWwU0hJLEktATI1jAwMzHUNjHQNTTQVEvNSkBTZYCoyMtQEGVdcmpubWJRZlaqQCrIiPjm%2fNK9EwVYBTGtoKiRVKiRl5mnAjdJRMEzRBABIhjnmkwAAAA%3d%3d" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRvQ6CMBCAdxPe4cIEiYMOjjigDibqwhPUctEqLeZ6NWJ8eC3+JBgD2LG972vTL+OS9OKMhm0wuIF1WgtSV4SlOThSaGelMwyJP4nee3NFKDmGbQUZC0ZP4oXR5B8sdfKInpPCIkTBAFpX87YpTEbDLiRcCdph2Dn3rR73UK8xV07/7+6hzrQoim5zuClBvexh23D8I1v1/P20qusk0r8uqnM183iUHtWQ4KRQ7gXxHQoTE4gQAgAA" target="_blank">Run the query</a>
 
-```Kusto
+```kusto
 StormEvents
-| where StartTime > datetime(2007-02-14) and StartTime < datetime(2007-02-21)
-| summarize event_count = count() by bin(StartTime, 1d)
+| summarize InjuriesCount = sum(InjuriesDirect) by State
+| extend InjuriesBucket = case (
+                              InjuriesCount > 50,
+                              "Large",
+                              InjuriesCount > 10,
+                              "Medium",
+                              InjuriesCount > 0,
+                              "Small",
+                              "No injuries"
+                          )
+| summarize InjuryBucketByState=count() by InjuriesBucket
+| render piechart 
 ```
 
-### case()
-
-[**case()**](./kusto/query/casefunction.md): Evaluates a list of predicates, and returns the first result expression whose predicate is satisfied, or the final **else** expression. You can use this operator to categorize or group data:
-
-The following query returns a new column `deaths_bucket` and groups the deaths by number.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAGWOwQrCQAxE74X%2bQ9hTCwX14FFBaK9e%2bgGS7gZdbFrYZEXFj7dbqgfNbfJmhml1DNzcaFDJsxdIZMbgnwSOUC8Cu%2fQq6lnUPpDVEroHtIpKKUB3pcEt7lMX7ZV0ClkUgiLPYLqlaQ%2fbdQWmx3AmU%2f2gTUJMzkf%2bYwkJY99%2fiDmuDqac545Bv3MAxb4Bic1Oy88AAAA%3d" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| summarize deaths = sum(DeathsDirect) by State
-| extend deaths_bucket = case (
-    deaths > 50, "large",
-    deaths > 10, "medium",
-    deaths > 0, "small",
-    "N/A")
-| sort by State asc
-```
-
-### extract()
-
-[**extract()**](./kusto/query/extractfunction.md): Gets a match for a regular expression from a text string.
-
-The following query extracts specific attribute values from a trace.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAE2OwQrCMBBE74X%2bw9BTojHYagSVHJRevXkrHqJdpVBbSVew4McbFYungeXtvKmJsetzxw4WZQh2x5og9t6daIWOfdVcJIpkY1OFrc0U8rt3XLWNTbOZnhultU4UfoD5A4zRmVkovInDOo6%2bojh6gh5MTTmQwR0uQckiGb5FMZ0s9WEsQ3uo%2fixSccT9jdqz8ORqKTECV1cSaSdfq2k6L8oAAAA%3d" target="_blank">Run the query</a>
-
-```Kusto
-let MyData = datatable (Trace: string) ["A=1, B=2, Duration=123.45,...", "A=1, B=5, Duration=55.256, ..."];
-MyData
-| extend Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) * time(1s)
-```
-
-This query uses a **let** statement, which binds a name (in this case `MyData`) to an expression. For the rest of the scope, in which the **let** statement appears (global scope or in a function body scope), the name can be used to refer to its bound value.
-
-### parse_json()
-
-[**parse_json()**](./kusto/query/parsejsonfunction.md): Interprets a string as a JSON value, and returns the value as dynamic. It's superior to using the **extractjson()** function when you need to extract more than one element of a compound JSON object.
-
-The following query extracts the JSON elements from an array.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAHWPQQuCQBCF74L%2fYdmLBSJ6EGKjU17r1E0kJh1C2XZlHc0w%2f3ur1s1O896bB%2fONRGKnVwIE7MAKOwhuEtnmYiBHwRoypbpvXSf1Bl60BqjUiot04B3IFrmIol0Q%2bpPLdauIi3iyj9KWojCcNfRWx7NuqEiw48KaMRu9bO86y3HXeTPsCVXBzvg8amlpajANXqtGq4VmO5VqoyvM6dsKfkhpmAUzkf9nM9OtLi3reg79ar788AEVX8GkOAEAAA%3d%3d" target="_blank">Run the query</a>
-
-```Kusto
-let MyData = datatable (Trace: string)
-['{"duration":[{"value":118.0,"valcount":5.0,"min":100.0,"max":150.0,"stdDev":0.0}]}'];
-MyData
-| extend NewCol = parse_json(Trace)
-| project NewCol.duration[0].value, NewCol.duration[0].valcount, NewCol.duration[0].min, NewCol.duration[0].max, NewCol.duration[0].stdDev
-```
-
-The following query extracts the JSON elements.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAE2OwQqCQBCG74LvsOzFBBE9CLHRKa916hYRkw6RbLuyO5pRvXvrGtZpvn9m4P8kEts%2bSiBga1a7QXCWyBZ7AxUKZslc1SVmh%2bjJe5AdcpHnyzRLxlTpThEXxRhvV%2bVOWeYZBseFZ0t1iT0XLryj4yoMprIweDEcCFXNdnjfaOnaWzAWT43VamqPx6fW6AYr%2bn6l3iH5S95hXjiLH8Mw82TxAQvJEB%2fsAAAA" target="_blank">Run the query</a>
-
-```Kusto
-let MyData = datatable (Trace: string) ['{"value":118.0,"valcount":5.0,"min":100.0,"max":150.0,"stdDev":0.0}'];
-MyData
-| extend NewCol = parse_json(Trace)
-| project NewCol.value, NewCol.valcount, NewCol.min, NewCol.max, NewCol.stdDev
-```
-
-The following query extracts the JSON elements with a dynamic data type.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAD2NMQvCMBBG90D%2bw5GphVLSoSARt65ubuJwJjdU0lZiWlrU%2f25MotO9x8H7LHk4bh16hAOYcDxeLUFxcqhJgdlGHHpdcnbOWDzFgnYmoZpmV8tK6GkePTmh2q8N%2fRg%2bUkbGNXAb%2beFNR4tQQd7lZc9ZGuXsBXc33Uh7iJN1jFdZcvunIf5HXCvOEqf2BwXmDCnKAAAA" target="_blank">Run the query</a>
-
-```Kusto
-let MyData = datatable (Trace: dynamic)
-[dynamic({"value":118.0,"counter":5.0,"min":100.0,"max":150.0,"stdDev":0.0})];
-MyData
-| project Trace.value, Trace.counter, Trace.min, Trace.max, Trace.stdDev
-```
-
-### ago()
-
-[**ago()**](./kusto/query/agofunction.md): Subtracts the given timespan from the current UTC clock time.
-
-The following query returns data for the last 12 hours.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOQQ6CQAxF9yTc4S8hQcmQuNSNR4ALTKQyJDAlnSIuPLwzJGrctM3v+7+t684R7qMEhW6MafQUMJAnsUoIdl4mQm/VVrC+h0Z6shFOINZAIc/qOql24KIEL8nIAuWYohC6sfQB9yjtPtPA8SrhmGeLjF7RjTO1Gu+cIdYPVHjeisOpLyukKTbjYml5piuvXknwIU1lGlPm2Qvzg55L+u+b9udIyOZI6LfHZf/YNK58Ay2HrbAEAQAA" target="_blank">Run the query</a>
-
-```Kusto
-//The first two lines generate sample data, and the last line uses
-//the ago() operator to get records for last 12 hours.
-print TimeStamp= range(now(-5d), now(), 1h), SomeCounter = range(1,121)
-| mv-expand TimeStamp, SomeCounter
-| where TimeStamp > ago(12h)
-```
-
-### startofweek()
-
-[**startofweek()**](./kusto/query/startofweekfunction.md): Returns the start of the week containing the date, shifted by an offset, if provided
-
-The following query returns the start of the week with different offsets.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEACtKzEtPVchPSytOLVFIK8rPVdA1VCjJVzBUKC5JLVAw5OWqUSgoys9KTS5RKE9NzQ4uSSwqUbAFygLp%2fDSQkEZefrmGpg7UEE0dCA0AdE3lv1kAAAA%3d" target="_blank">Run the query</a>
-
-```Kusto
-range offset from -1 to 1 step 1
-| project weekStart = startofweek(now(), offset),offset
-```
-
-This query uses the **range** operator, which generates a single-column
-table of values. See also: [**startofday()**](./kusto/query/startofdayfunction.md), [**startofweek()**](./kusto/query/startofweekfunction.md), [**startofyear()**](./kusto/query/startofyearfunction.md)), [**startofmonth()**](./kusto/query/startofmonthfunction.md), [**endofday()**](./kusto/query/endofdayfunction.md), [**endofweek()**](./kusto/query/endofweekfunction.md), [**endofmonth()**](./kusto/query/endofmonthfunction.md), and [**endofyear()**](./kusto/query/endofyearfunction.md).
-
-### between()
-
-[**between()**](./kusto/query/betweenoperator.md):
-Matches the input that is inside the inclusive range.
-
-The following query filters the data by a given date range.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrApGRuaaCnp4ChrixgaYmyKTk%2fNK8EgBluyagXgAAAA%3d%3d" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| where StartTime between (datetime(2007-07-27) .. datetime(2007-07-30))
-| count
-```
-
-The following query filters the data by a given date range, with the slight variation of three days (`3d`) from the start date.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrApGRuaaCnp6CcYomSF9yfmleCQCGAqjRTAAAAA%3d%3d" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| where StartTime between (datetime(2007-07-27) .. 3d)
-| count
-```
-
-## Tabular operators
-
-Kusto has many tabular operators, some of which are covered in other sections of this article. Here we'll focus on **parse**.
-
-### parse
-
-[**parse**](./kusto/query/parseoperator.md): Evaluates a string expression and parses its value into one or more calculated columns. There are three ways to parse: simple (the default), regex, and relaxed.
-
-The following query parses a trace and extracts the relevant values, using a default of simple parsing. The expression (referred to as StringConstant) is a regular string value and the match is strict: extended columns must match the required types.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAN2UTU%2fDMAyG75X6H6xcxlCkpRlsUNQjN6gQ2wnEoevMFsiaKk2HJvHjabqvlI91l11QLrH12vETW5Zo4H411kmKEME0MdWZSISz2yVmpvaHhdEim3V979n3OrU%2fhFgZ8boaSZHiI0pMiipEY6FKnWKcLDB6EDlKkeEoneO0lKgpGGUSWYcUER9SKOw1LhcT1BHvU5AqfR%2bLKpbxXjDscRYMgF2FFyxkwRMFvX7ngCLXuBSqLO5%2bT9S%2ftrJuh54OI7g8iMFaMdhxGOy0GJz9i25w%2fjdG0IoRHNWNNe1ph2pwEKNlqI7HsEPley83vrfZCL73CXmiq%2fr32wA%2bhJnDOZAGEQHXBNIEIq4VSpXNbAIXkbjAO8UOmuz4bWoXlrhWWO0vqyA2%2bAcw2f7B1rORd60calat3jA1TRbq1A6NxsC%2bLdCoCuj3p74AKTs4pmcFAAA%3d" target="_blank">Run the query</a>
-
-```Kusto
-let MyTrace = datatable (EventTrace:string)
-[
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=23, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=15, lockTime=02/17/2016 08:40:00, releaseTime=02/17/2016 08:40:00, previousLockTime=02/17/2016 08:39:00)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=20, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=22, lockTime=02/17/2016 08:41:01, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
-];
-MyTrace
-| parse EventTrace with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previouLockTime:date ")" *
-| project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previouLockTime
-```
-
-The following query parses a trace and extracts the relevant values, using `kind = regex`. The StringConstant can be a regular expression.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAN2UQU%2fCQBCF7036HyZ7gWKRbVHQmgY9eNPGCCcoh9KOsLK0ZLtFMf54l6LQBgUuXEyTTbP7pt3vvclwlPC47IkgRHAhCqR6Rhyher%2fAWOb7TioFi8eGrg10rZLvO%2bAlkr0su5yF%2bIwcg1SVCEyTTIToBTN0n9gcOYuxG04wyjgKE2QiA56XpK7dNiFdvXrZbITCtZsm8CSc9piqpXbDajdsarWAXjkX1KFW3wSx%2fs8exVzggiVZ%2bvD7h5rXK5lRMU%2bHYV3uxaAHMehxGPS0GDb9F2nY9t8Y1kEM66g01rSnbarWXowDTXU8xqqpdG14o2vfE0HXPmEeCHX%2fKYsjNR8EjvEdtqMB3picAKme1zrGIKh%2f3NX7w5pLoEgLt6SM56c1PzpTq6oqYpIitMOTeAxAlKb6c3Wjs3GBbAzJJUV8UjQjP91BJztuOGryKbHvGwQgxxbJK4ayTFKKBbahQCkA2DX7C29veJJmBQAA" target="_blank">Run the query</a>
-
-```Kusto
-let MyTrace = datatable (EventTrace:string)
-[
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=23, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=15, lockTime=02/17/2016 08:40:00, releaseTime=02/17/2016 08:40:00, previousLockTime=02/17/2016 08:39:00)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=20, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=22, lockTime=02/17/2016 08:41:01, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
-];
-MyTrace
-| parse kind = regex EventTrace with "(.*?)[a-zA-Z]*=" resourceName @", totalSlices=\s*\d+\s*.*?sliceNumber=" sliceNumber:long  ".*?(previous)?lockTime=" lockTime ".*?releaseTime=" releaseTime ".*?previousLockTime=" previousLockTime:date "\\)"
-| project resourceName , sliceNumber , lockTime , releaseTime , previousLockTime
-```
-
-The following query parses a trace and extracts the relevant values, using `kind = relaxed`. The StringConstant is a regular string value and the match is relaxed: extended columns can partially match the required types.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAN2US0%2fCQBDH7036HSZ7wZpN2BYFrenRGzZG4KLxUNoRVpYu2W5REj%2b83fKw9QE1kYvppTOZx%2f%2b3MxmBGm5WQxXFCAEkkS6%2bsUA4uV5iqku%2fn2nF04ljWw%2b21Sr9PoRS86fVQPAY71BglBUpCjOZqxjDaI7BLV%2bg4CkO4ikmuUBFQUsdiTIlC7wehcz8hvl8jCrwOhSEjGdDXuQyr%2b322h5zu8Au%2fDPmM%2feeglr32ROxULjkMs%2f63xfqXJowp0WPh%2bGe78VgBzFYMwx2XAyP%2fYtpeN7PGO5BDLfRNNa0x12q7l6MA0vVHMMslW09XtnW5iLY1hssIlXon%2fE0CYom0SsmQP6IMxz1%2b7%2b7AnXQdX6TNXMIvHA9hVMgNYEEqiaQuj5StXwh04kpUNVLqup3ETsCsoMxpavSSdXyi7NrIohJ%2foJDtoRbzybcMeFQjkjJZ4x1nYVWtEPtleHjjaGmCujnVu%2fWU75tHgYAAA%3d%3d" target="_blank">Run the query</a>
-
-```Kusto
-let MyTrace = datatable (EventTrace:string)
-[
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=23, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=15, lockTime=02/17/2016 08:40:00, releaseTime=02/17/2016 08:40:00, previousLockTime=02/17/2016 08:39:00)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=20, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=22, lockTime=02/17/2016 08:41:01, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
-];
-MyTrace
-| parse kind=relaxed "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=NULL, sliceNumber=23, lockTime=02/17/2016 08:40:01, releaseTime=NULL, previousLockTime=02/17/2016 08:39:01)" with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previousLockTime:date ")" *
-| project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previousLockTime
-```
+:::image type="content" source="media/write-queries/render-pie-chart.png" alt-text="Screenshot of Azure Data Explorer web UI pie chart rendered by the previous query.":::
 
 ## Time series analysis
 
@@ -765,30 +676,9 @@ StormEvents
 | summarize percentiles(duration, 5, 20, 50, 80, 95) by State
 ```
 
-### Cross Dataset
+## Query across datasets
 
 This section covers elements that enable you to create more complex queries, join data across tables, and query across databases and clusters.
-
-### let
-
-[**let**](./kusto/query/letstatement.md): Improves modularity and reuse. The **let** statement allows you to break a potentially complex expression into multiple parts, each bound to a name, and compose those parts together. A **let** statement can also be used to create user-defined functions and views (expressions over tables whose results look like a new table). Expressions bound by a **let** statement can be of scalar type, of tabular type, or user-defined function (lambdas).
-
-The following example creates a tabular type variable and uses it in a subsequent expression.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAMtJLVHwyUzPKMnLzEsPLskvyi1WsOXlArNcy1LzSop5uWoUyjNSi1IVwPyQyoJUBVtbBSW4LiVrXq4coDGOZYk5iXnJGakkGQPXBTIGzSUgPVn5mXkKGmhmayrk5ykElySWpIKUpGQWl2TmJZdARACul3kY0gAAAA%3d%3d" target="_blank">Run the query</a>
-
-```Kusto
-let LightningStorms =
-StormEvents
-| where EventType == "Lightning";
-let AvalancheStorms =
-StormEvents
-| where EventType == "Avalanche";
-LightningStorms
-| join (AvalancheStorms) on State
-| distinct State
-```
 
 ### join
 
@@ -820,34 +710,6 @@ X
 
 > [!TIP]
 > Use **where** and **project** operators to reduce the numbers of rows and columns in the input tables, before the join. If one table is always smaller than the other, use it as the left (piped) side of the join. The columns for the join match must have the same name. Use the **project** operator if necessary to rename a column in one of the tables.
-
-### serialize
-
-[**serialize**](./kusto/query/serializeoperator.md): Serializes the row set so you can use functions that require serialized data, like **row_number()**.
-
-The following query succeeds because the data is serialized.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIzi%2fNK9HQVEiqVAguSSxJBcumFmUm5gBlQZzUipLUvBSFovzy%2bLzS3KTUIgVbJI6GJgB4pV4NWgAAAA%3d%3d" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| summarize count() by State
-| serialize
-| extend row_number = row_number()
-```
-
-The row set is also considered as serialized if it's a result of: **sort**, **top**, or **range** operators, optionally followed by **project**, **project-away**, **extend**, **where**, **parse**, **mv-expand**, or **take** operators.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIzi%2fNK9HQVEiqVAguSSxJBcvmF5XABRQSi5NBgqkVJal5KQpF%2beXxeaW5SalFCrZIHA1NAEGimf5iAAAA" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| summarize count() by State
-| sort by State asc
-| extend row_number = row_number()
-```
 
 ### Cross-database and cross-cluster queries
 
