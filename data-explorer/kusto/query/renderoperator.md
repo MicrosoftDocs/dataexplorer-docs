@@ -220,6 +220,6 @@ InsightsMetrics
 | render timechart
 ```
 
-[Rendering examples in the tutorial](./tutorial.md?pivots=azuremonitor#display-a-chart-or-table-render-1)
+[Rendering examples in the tutorial](./tutorial.md?pivots=azuremonitor#display-a-chart-or-table-render)
 
 ::: zone-end
