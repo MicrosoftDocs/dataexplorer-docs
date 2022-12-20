@@ -9,7 +9,7 @@ ms.localizationpriority: high
 
 # Write queries for Azure Data Explorer
 
-In this article, you'll learn how to perform queries in Azure Data Explorer using the [Kusto Query Language](./kusto/query/index.md).
+In this tutorial, you'll learn how to perform queries in Azure Data Explorer using the [Kusto Query Language](./kusto/query/index.md). We'll explore the basics of writing queries, including how to retrieve data, filter, aggregate and visualize your data.
 
 ## Prerequisites
 
