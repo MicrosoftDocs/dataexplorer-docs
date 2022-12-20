@@ -136,7 +136,8 @@ When the number of extents/nodes is large, this may lead to high load on storage
         set query_fanout_nodes_percent = 50;
         ExportQuery
     ```
-* Reduce concurrency of number of threads exporting in each node when using per shard export, by setting the [client request property](../../api/netfx/request-properties.md) `query_fanout_threads_percent` to the desired concurrency (percent of threads). The property can be set as part of the export query. For example, the following command will limit the number of threads writing to storage concurrently to 50% on each of the clusters node:
+
+* Reduce concurrency of number of threads exporting in each node when using per shard export, by setting the [client request property](../../api/netfx/request-properties.md) `query_fanout_threads_percent` to the desired concurrency (percent of threads). The property can be set as part of the export query. For example, the following command will limit the number of threads writing to storage concurrently to 50% on each of the cluster nodes:
 
     ```kusto
     .export async  to csv
@@ -149,6 +150,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
         set query_fanout_threads_percent = 50;
         ExportQuery
     ```
+
 * If exporting to a partitioned external table, setting the `spread`/`concurrency` properties can reduce concurrency (see details in the [command properties](export-data-to-an-external-table.md#syntax).
 * If neither of the above work, is also possible to completely disable distribution by setting the `distributed` property to false, but this is not recommended, as it may significantly impact the command performance.
 
