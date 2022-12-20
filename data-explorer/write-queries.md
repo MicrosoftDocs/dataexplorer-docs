@@ -32,7 +32,11 @@ The order of the operators is important, as the data flows from one operator to 
 
 #### Example
 
-Read the following query, and then we'll go through it step by step.
+The following steps are performed in this example query:
+
+1. The `StormEvents` table is filtered to select rows with `StartTime` values within the specified date range.
+1. The filtered table is further narrowed down to include only rows with a `State` value of "FLORIDA".
+1. The final table is passed to the `count` operator, which returns a new table containing the count of rows.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksKgnJzE1VSEotKU9NzVPQSEksSS0BimgYGRiY6xoa6hoYairo6SmgiRuBxDVRTCpJVbC1VVBy8/EP8nRxVALJJeeX5pUAAG+X/jp7AAAA" target="_blank">Run the query</a>
@@ -47,10 +51,6 @@ StormEvents
 |Count|
 |--|
 |28|
-
-1. The `StormEvents` table is filtered to only include rows where the value of the `StartTime` column falls within the specified date range.
-1. The resulting table is further filtered to only include rows where the value of the `State` column is equal to "FLORIDA".
-1. The resulting table is passed to the `count` operator, which counts the number of rows and outputs a table with the count.
 
 ### Let statements
 
