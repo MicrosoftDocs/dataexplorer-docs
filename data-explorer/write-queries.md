@@ -236,38 +236,54 @@ With the computed `Duration` column, it's easy to see that the flood that caused
 
 ### summarize
 
-[**summarize**](./kusto/query/summarizeoperator.md): Aggregates groups of rows.
+The [summarize](kusto/query/summarizeoperator.md) operator groups rows based on the values in the **by** clause and applies an aggregation function, such as count, to combine each group into a single row.
 
-The following query returns the count of events by `State`.
+For example, the following query returns the count of events by state.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIBYnFJ%2beX5pUo2CqAaQ1NhaRKheCSxJJUAB%2fedDI3AAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUAiznnl+aVKNgqJINoDU2FpEqF4JLEklQAtZY60TYAAAA=" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
-| summarize event_count = count() by State
+| summarize EventCount = count() by State
 ```
 
-The **summarize** operator groups together rows that have the same values in the **by** clause, and then uses the aggregation function (such as **count**) to combine each group into a single row. So, in this case, there's a row for each state, and a column for the count of rows in that state.
+|State|EventCount|
+|--|--|
+|TEXAS| 4701|
+|KANSAS| 3166|
+|IOWA| 2337|
+|ILLINOIS| 2022|
+|MISSOURI| 2016|
+|GEORGIA| 1983|
+|MINNESOTA| 1881|
+|WISCONSIN| 1850|
+|NEBRASKA| 1766|
+|NEW YORK| 1750|
+|...|...|
 
-There's a range of aggregation functions, and you can use several of them in one **summarize** operator to produce several computed columns. For example, you could get the count of storms in each state and the unique number of storms per state, then use **top** to get the most storm-affected states.
+Use multiple aggregation functions in a single summarize operator to produce several computed columns.
+
+For example, the following query returns the count of storms in each state and the unique number of storm type per state, then uses top to get the most storm-affected states.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlUIBkk455fmlSjYKiSDaA1NHYWQyoJU%2fzSwXDFQPAUiAdYPktJUSKoE6kwsSQUZVpJfoGAKEYGblZJanAwAgbFb73QAAAA%3d" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUAiznnl+aVKNgqJINoDU0dhZDKglT/tGCQpmKgeApEAqwWJKWpkFSpEFySWJIKMqwkv0DBFCSCZFZKanEyALnxdKV0AAAA" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
-| summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State
-| top 5 by StormCount desc
+| summarize EventCount = count(), TypeOfStorms = dcount(EventType) by State
+| top 5 by EventCount desc
 ```
 
-The result of a **summarize** operation has:
+|State|EventCount|TypeOfStorms|
+|--|--|--|
+|TEXAS| 4701| 27|
+|KANSAS| 3166| 21|
+|IOWA| 2337| 19|
+|ILLINOIS| 2022| 23|
+|MISSOURI| 2016| 20|
 
-* Each column named in **by**
-
-* A column for each computed expression
-
-* A row for each combination of by values
+The result of a summarize operation has columns for each value in the by clause, a column for each computed expression, and a row for each combination of by values.
 
 ### render
 
