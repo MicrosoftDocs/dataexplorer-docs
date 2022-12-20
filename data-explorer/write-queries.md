@@ -75,7 +75,7 @@ Let's learn some common query operators using the `StormEvents` table. These ope
 
 ### count
 
-First, let's use the [count](kusto/query/countoperator.md) operator to check the size of the `StormEvents` table.
+Let's start by using the [count](kusto/query/countoperator.md) operator to check the size of the `StormEvents` table.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRSM4vzSsBALU2eHsTAAAA" target="_blank">Run the query</a>
@@ -90,7 +90,7 @@ StormEvents | count
 
 ### take
 
-To view a sample of the data, use the [take](kusto/query/takeoperator.md) operator. Keep in mind that the rows returned are random and aren't guaranteed unless the source data is sorted.
+Now, use the [take](kusto/query/takeoperator.md) operator to view a sample of the data. Keep in mind that the rows returned are random and aren't guaranteed unless the source data is sorted.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d" target="_blank">Run the query</a>
@@ -102,19 +102,19 @@ StormEvents | take 5
 The following table shows only 6 of the 22 returned columns. To see the full output, run the query.
 
 |StartTime|EndTime|EpisodeId|EventId|State|EventType|...|
-|--|--|--|--|--|--|...|
-|2007-09-20T21:57:00Z| 2007-09-20T22:05:00Z| 11078| 60913| FLORIDA| Tornado|...|
-|2007-12-20T07:50:00Z| 2007-12-20T07:53:00Z| 12554| 68796| MISSISSIPPI| Thunderstorm Wind|...|
-|2007-12-30T16:00:00Z| 2007-12-30T16:05:00Z| 11749| 64588| GEORGIA| Thunderstorm Wind|...|
-|2007-09-29T08:11:00Z| 2007-09-29T08:11:00Z| 11091| 61032| ATLANTIC SOUTH| Waterspout|...|
-|2007-09-18T20:00:00Z| 2007-09-19T18:00:00Z| 11074| 60904| FLORIDA| Heavy Rain|...|
+|--|--|--|--|--|--|--|
+|2007-09-20T21:57:00Z|2007-09-20T22:05:00Z|11078|60913|FLORIDA|Tornado|...|
+|2007-12-20T07:50:00Z|2007-12-20T07:53:00Z|12554|68796|MISSISSIPPI|Thunderstorm Wind|...|
+|2007-12-30T16:00:00Z|2007-12-30T16:05:00Z|11749|64588|GEORGIA|Thunderstorm Wind|...|
+|2007-09-29T08:11:00Z|2007-09-29T08:11:00Z|11091|61032|ATLANTIC SOUTH|Waterspout|...|
+|2007-09-18T20:00:00Z|2007-09-19T18:00:00Z|11074|60904|FLORIDA|Heavy Rain|...|
 
 > [!NOTE]
 > [limit](kusto/query/limitoperator.md) is an alias for [take](kusto/query/takeoperator.md) and has the same effect.
 
 ### project
 
-Use the [project](kusto/query/projectoperator.md) operator to select specific columns when you only want to see a subset of the data.
+Use the [project](kusto/query/projectoperator.md) operator to select a specific subset of columns.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUShJzE5VMAWxCorys1KTSxSCSxJLUnUUwEpCKguATJfE3MT01ICi/ILUopJKAG0+9oFBAAAA" target="_blank">Run the query</a>
@@ -213,7 +213,7 @@ StormEvents
 
 Use the [extend](kusto/query/extendoperator.md) operator to add computed columns to a table. This operator allows you to use standard operators such as +, -, *, /, and %, and various functions in the expression for the computed column.
 
-For example, extend the table showing the top five floods in Texas to include a `Duration` column by calculating the difference between the `StartTime` and `EndTime` columns.
+Let's extend the table showing the top five floods in Texas to include a `Duration` column by calculating the difference between the `StartTime` and `EndTime` columns.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2OvQ7CMAyEdyTewVuWMDJ2QGr5WQJSKzGHxoIiEkeuKVTi4WmooBKbfXeffaUQ%2b6LDIO189oLHBRnhs1d9RMgyUOsbkVNgg4NSrIzicVVud2ZT7Y1KnFCEJZx6yK23ZzwwRWTpwWFbJx%2bfggOf39lKQwEyKIKrGo%2bwSEdZ0pyCkemKtUyi%2fib1j9ZjDz311H9%2fBys2LTk0lhPT4RvwA3pn6AAAAA%3d%3d" target="_blank">Run the query</a>
@@ -289,7 +289,7 @@ The result of a summarize operation has columns for each value in the by clause,
 
 ### render
 
-The [render](kusto/query/renderoperator.md) operator allows you to display query results as graphical output. The render operator is a client-side feature that is integrated into the language for ease of use. It's not a part of the engine. The web application supports the following options for graphical output: `barchart`, `columnchart`, `piechart`, `timechart`, and `linechart`.
+The [render](kusto/query/renderoperator.md) operator allows you to display query results as graphical output. The web application supports the following options for graphical output: `barchart`, `columnchart`, `piechart`, `timechart`, and `linechart`.
 
 Let's create a column chart showing the states that experienced over 50 storms in November 2007.
 
@@ -336,6 +336,9 @@ StormEvents
 ```
 
 :::image type="content" source="media/write-queries/render-multi-time-chart.png" alt-text="Screenshot of Azure Data Explorer web UI time chart from the previous query.":::
+
+> [!NOTE]
+> The render operator is a client-side feature that is integrated into the language for ease of use. It's not a part of the engine.
 
 ## Scalar operators
 
