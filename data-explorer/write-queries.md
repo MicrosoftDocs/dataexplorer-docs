@@ -69,13 +69,11 @@ StormEvents
 
 ## Learn common operators
 
-The operators covered in this section are the building blocks to understanding queries in Azure Data Explorer. Most queries you write will include several of these operators.
+Let's learn some common query operators using the `StormEvents` table. These operators are key to understanding KQL and will be used in many of your queries.
 
 ### count
 
-[**count**](./kusto/query/countoperator.md): Returns the count of rows in the table.
-
-The following query returns the count of rows in the StormEvents table.
+First, let's use the [count](kusto/query/countoperator.md) operator to check the size of the `StormEvents` table.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRSM4vzSsBALU2eHsTAAAA" target="_blank">Run the query</a>
@@ -84,11 +82,13 @@ The following query returns the count of rows in the StormEvents table.
 StormEvents | count
 ```
 
+|Count|
+|--|
+|59066|
+
 ### take
 
-[**take**](./kusto/query/takeoperator.md): Returns up to the specified number of rows of data.
-
-The following query returns five rows from the StormEvents table. The keyword *limit* is an alias for *take.*
+To view a sample of the data, use the [take](kusto/query/takeoperator.md) operator. This helps to get an idea of what the data in your table looks like. Keep in mind that the rows returned are random and are not guaranteed unless the source data is sorted.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d" target="_blank">Run the query</a>
@@ -97,96 +97,142 @@ The following query returns five rows from the StormEvents table. The keyword *l
 StormEvents | take 5
 ```
 
-> [!TIP]
-> There is no guarantee which records are returned unless the source data is sorted.
+The following table shows only 6 of the the 22 returned columns. To see the full output, run the query.
+
+|StartTime|EndTime|EpisodeId|EventId|State|EventType|...|
+|--|--|--|--|--|--|...|
+|2007-09-20T21:57:00Z| 2007-09-20T22:05:00Z| 11078| 60913| FLORIDA| Tornado|...|
+|2007-12-20T07:50:00Z| 2007-12-20T07:53:00Z| 12554| 68796| MISSISSIPPI| Thunderstorm Wind|...|
+|2007-12-30T16:00:00Z| 2007-12-30T16:05:00Z| 11749| 64588| GEORGIA| Thunderstorm Wind|...|
+|2007-09-29T08:11:00Z| 2007-09-29T08:11:00Z| 11091| 61032| ATLANTIC SOUTH| Waterspout|...|
+|2007-09-18T20:00:00Z| 2007-09-19T18:00:00Z| 11074| 60904| FLORIDA| Heavy Rain|...|
+
+> [!NOTE]
+> [limit](./takeoperator.md) is an alias for [take](./takeoperator.md) and has the same effect.
 
 ### project
 
-[**project**](./kusto/query/projectoperator.md):
-Selects a subset of columns.
-
-The following query returns a specific set of columns.
+Use the [project](kusto/query/projectoperator.md) operator to select specific columns when you only want to see a subset of the data. This simplifies the view and shows only the columns that are relevant to you.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUShJzE5VMAWxCorys1KTSxSCSxKLSkIyc1N1FFzzUiAMoFgJiA%2fSFlJZAGS6JOYmpqcGFOUXpBaVVAKlCjKL81NS%2fRKLihJLMstSAY%2buIINnAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUShJzE5VMAWxCorys1KTSxSCSxJLUnUUwEpCKguATJfE3MT01ICi/ILUopJKAG0+9oFBAAAA" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
 | take 5
-| project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative
+| project State, EventType, DamageProperty
 ```
+
+|State|EventType|DamageProperty|
+|--|--|--|
+|ATLANTIC SOUTH| Waterspout| 0|
+|FLORIDA| Heavy Rain| 0|
+|FLORIDA| Tornado| 6200000|
+|GEORGIA| Thunderstorm Wind| 2000|
+|MISSISSIPPI| Thunderstorm Wind| 20000|
 
 ### where
 
-[**where**](./kusto/query/whereoperator.md): Filters a table to the subset of rows that satisfy a predicate.
-
-The following query filters the data by `EventType` and `State`.
+To filter the data based on certain criteria, use the [where](kusto/query/whereoperator.md) operator. For example, the following query will only return rows where the `EventType` and `State` columns meet certain conditions.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAEWMPQvCMBCGd8H%2fcFuWro4dBOvHkgoJOB%2fm0KjJhetRKfjjNe3g9n49r1OW1I2UdVivPvC%2bkxDM3k%2bFoG3B7F%2fMwQDmAE5Rl%2fCydceTPfjemsopPgk2VRXhB121TkV9TNRAl8MiZrz53zeww4Q3OgsXEp1%2bVYkDB7IoghpH%2bgI9OH8WnwAAAA%3d%3d" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSxJVbC1VVAPcY1wDFZXSMxLUQArCqksgEi45eTnp6iDtBQU5WelJpeANBWVhGTmpuoouOalQBhgg3QQWnUUXBJzE9NTA4ryC1KLSioBBDYIBX4AAAA=" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
-| where EventType == 'Flood' and State == 'WASHINGTON'
-| take 5
-| project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative
+| where State == 'TEXAS' and EventType == 'Flood'
+| project StartTime, EndTime, State, EventType, DamageProperty
 ```
+
+There are 146 events that match these conditions. The following table shows a sample of 5 of them.
+
+|StartTime|EndTime|State|EventType|DamageProperty|
+|--|--|--|--|--|
+|2007-01-13T08:45:00Z| 2007-01-13T10:30:00Z| TEXAS| Flood| 0|
+|2007-01-13T09:30:00Z| 2007-01-13T21:00:00Z| TEXAS| Flood| 0|
+|2007-01-13T09:30:00Z| 2007-01-13T21:00:00Z| TEXAS| Flood| 0|
+|2007-01-15T22:00:00Z| 2007-01-16T22:00:00Z| TEXAS| Flood| 20000|
+|2007-03-12T02:30:00Z| 2007-03-12T06:45:00Z| TEXAS| Flood| 0|
+|...|...|...|...|...|
 
 ### sort
 
-[**sort**](./kusto/query/sortoperator.md): Sort the rows of the input table into order by one or more columns.
+Use the [sort](kusto/query/sortoperator.md) operator to arrange the rows in ascending or descending order based on one or more columns. The default is ascending order.
 
-The following query sorts the data in descending order by `DamageProperty`.
+To view the top 5 floods in Texas that caused the most damage, let's use `sort` to arrange the rows in descending order based on the `DamageProperty` column and `take` to display only the top 5 rows.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2NPQvCMBCGd8H%2fcFuXrI4dBOvHEoUGnM%2fm0KjphctRKfjjNe0guL0fvM%2fbKktsBuo1LxdveN1ICCbvxkRQ11Btn8y%2bAuw9tIo6h%2bd1uz%2fYnTvaquwyi8JlhA1GvNJJOJHoCJ5yV2rFB8GqqCR8p04LSdSFSAaa3s9iopvfu%2fnDfasUMnuyKIIaBvoAtvGMsb4AAAA%3d" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12NPQsCMRBEe8H/MF2atJZXCMZauBS28bL4mWzYLCcBf7zkrhDsHszMm1FZkpspa91uPnjfSAijBiUMA4x35/1oEHLEUvKtrMHxxRxNn1QWxaXhEFK40km4kGhDpDr1WMOTsOtUhB80abeL+nsiC5fjCsuj/X3YP90XMW6LAacAAAA=" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
-| where EventType == 'Flood' and State == 'WASHINGTON'
+| where State == 'TEXAS' and EventType == 'Flood'
 | sort by DamageProperty desc
 | take 5
-| project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative
+| project StartTime, EndTime, State, EventType, DamageProperty
 ```
 
+|StartTime|EndTime|State|EventType|DamageProperty|
+|--|--|--|--|--|
+|2007-08-18T21:30:00Z| 2007-08-19T23:00:00Z| TEXAS| Flood| 5000000|
+|2007-06-27T00:00:00Z| 2007-06-27T12:00:00Z| TEXAS| Flood| 1200000|
+|2007-06-28T18:00:00Z| 2007-06-28T23:00:00Z| TEXAS| Flood| 1000000|
+|2007-06-27T00:00:00Z| 2007-06-27T08:00:00Z| TEXAS| Flood| 750000|
+|2007-06-26T20:00:00Z| 2007-06-26T23:00:00Z| TEXAS| Flood| 750000|
+
 > [!NOTE]
-> The order of operations is important. Try putting `take 5` before `sort by`. Do you get different results?
+> The order of operations is important. Try putting `take 5` before `sort by`. You'll get different results.
 
 ### top
 
-[**top**](./kusto/query/topoperator.md): Returns the first *N* records sorted by the specified columns.
+The [top](kusto/query/topoperator.md) operator returns the first *n* rows sorted by the specified column.
 
-The following query returns the same results as above with one less
-operator.
+The following query will return the same results as the example in the sort section but with one less operator.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2NOwvCMBSFd8H%2fcLcsWR07CNbHkgoJOMfmohGTG24vlYA%2fXtsOgtt5cL5jhTi1I2YZ1qs3vO7ICLN3tSA0Daj9kygo8DmAFS9LeNna48kcXGfUtBMqsIFrhZ1P%2foZnpoIsFQIO%2fdQXpgf2MgFYXEyooc1hETNU%2f071H%2bRblThQQOOZvcQRP1rSng21AAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12NPQsCMRBEe8H/MF2atJZXCMZaSArbeFn8wGTD3qIE7scfuSsEu4E388YrS3YfKjrtdzO+DxKC16iEYYAJ7nr0BrEkrKXQ6gbOb+Zk+kS54oBbwynmeKeLcCXRhkTT2HkVftGoXSoanpksXElbWI/sT23/JAtx66DdngAAAA==" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
-| where EventType == 'Flood' and State == 'WASHINGTON'
+| where State == 'TEXAS' and EventType == 'Flood'
 | top 5 by DamageProperty desc
-| project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative
+| project StartTime, EndTime, State, EventType, DamageProperty
 ```
+
+|StartTime|EndTime|State|EventType|DamageProperty|
+|--|--|--|--|--|
+|2007-08-18T21:30:00Z| 2007-08-19T23:00:00Z| TEXAS| Flood| 5000000|
+|2007-06-27T00:00:00Z| 2007-06-27T12:00:00Z| TEXAS| Flood| 1200000|
+|2007-06-28T18:00:00Z| 2007-06-28T23:00:00Z| TEXAS| Flood| 1000000|
+|2007-06-27T00:00:00Z| 2007-06-27T08:00:00Z| TEXAS| Flood| 750000|
+|2007-06-26T20:00:00Z| 2007-06-26T23:00:00Z| TEXAS| Flood| 750000|
 
 ### extend
 
-[**extend**](./kusto/query/extendoperator.md): Computes derived columns.
+Use the [extend](kusto/query/extendoperator.md) operator to add computed columns to a table. This operator allows you to use standard operators such as +, -, *, /, and %, as well as various functions in the expression for the computed column.
 
-The following query creates a new column by computing a value in every row.
+For example, extend the table showing the top 5 floods in Texas to include a `Duration` column by calculating the difference between the `StartTime` and `EndTime` columns.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2OvQ7CMAyEdyTewVuWMDJ2QGr5WQJSKzGHxoIiEkeuKVTi4WmooBKbfXeffaUQ%2b6LDIO189oLHBRnhs1d9RMgyUOsbkVNgg4NSrIzicVVud2ZT7Y1KnFCEJZx6yK23ZzwwRWTpwWFbJx%2bfggOf39lKQwEyKIKrGo%2bwSEdZ0pyCkemKtUyi%2fib1j9ZjDz311H9%2fBys2LTk0lhPT4RvwA3pn6AAAAA%3d%3d" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
-| where EventType == 'Flood' and State == 'WASHINGTON'
+| where State == 'TEXAS' and EventType == 'Flood'
 | top 5 by DamageProperty desc
 | extend Duration = EndTime - StartTime
-| project StartTime, EndTime, Duration, State, EventType, DamageProperty, EpisodeNarrative
+| project StartTime, EndTime, Duration, DamageProperty
 ```
 
-Expressions can include all the usual operators (+, -, *, /, %), and there's a range of useful functions that you can call.
+With the computed `Duration` column, it's easy to see that the flood that caused the most damage was also the longest flood.
+
+|StartTime| EndTime| Duration| DamageProperty|
+|--|--|--|--|
+|2007-08-18T21:30:00Z| 2007-08-19T23:00:00Z| 1.01:30:00| 5000000|
+|2007-06-27T00:00:00Z| 2007-06-27T12:00:00Z| 12:00:00| 1200000|
+|2007-06-28T18:00:00Z| 2007-06-28T23:00:00Z| 05:00:00| 1000000|
+|2007-06-27T00:00:00Z| 2007-06-27T08:00:00Z| 08:00:00| 750000|
+|2007-06-26T20:00:00Z| 2007-06-26T23:00:00Z| 03:00:00| 750000|
 
 ### summarize
 
