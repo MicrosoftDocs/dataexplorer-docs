@@ -133,6 +133,35 @@ StormEvents
 |GEORGIA| Thunderstorm Wind| 2000|
 |MISSISSIPPI| Thunderstorm Wind| 20000|
 
+### distinct
+
+Use the [distinct](kusto/query/distinctoperator.md) operator to list all of the types of storms recorded in Texas.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUShJzE5VMAWxCorys1KTSxSCSxJLUnUUwEpCKguATJfE3MT01ICi/ILUopJKAG0+9oFBAAAA" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents
+| where State == 'TEXAS'
+| distinct EventType
+```
+
+There are 27 types of storms recorded in Texas. Here is a sample of 10.
+
+|EventType|
+|--|
+|Thunderstorm Wind|
+|Hail|
+|Flash Flood|
+|Drought|
+|Winter Weather|
+|Winter Storm|
+|Heavy Snow|
+|High Wind|
+|Flood|
+|Tornado|
+|...|
+
 ### where
 
 To filter the data based on certain criteria, use the [where](kusto/query/whereoperator.md) operator. For example, the following query will only return rows where the `EventType` and `State` columns meet certain conditions.
@@ -610,84 +639,38 @@ StormEvents
 | evaluate pivot(State)
 ```
 
-## Query across datasets
+## Join data across tables
 
-This section covers elements that enable you to create more complex queries, join data across tables, and query across databases and clusters.
+Use the [join](joinoperator.md) operator to merge the rows of two tables by matching values of the specified column(s) from each table.
 
-### join
+Find two specific event types and in which state each of them happened by pulling storm events with the first `EventType` and the second `EventType`, and then join the two sets on `State`:
 
-[**join**](./kusto/query/joinoperator.md): Merge the rows of two tables to form a new table by matching values of the specified column(s) from each table. Kusto supports a full range of join types: **fullouter**, **inner**, **innerunique**, **leftanti**, **leftantisemi**, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter**, **rightsemi**.
-
-The following example joins two tables with an inner join.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq+KSosy8dB2FsMSc0lRDq5z8vHRNXq5oXi4FIFBPVNcx1IGyk9R1jJDYxjB2srqOCS9XrDUvVw7Qhkj8Nhih2wA0ydAAySgjZI4xnJMCtMQAYkuEQo1CVn5mnkJ2Zl6KbWZeXmoR0Nb8PAWgZQAFPLdO5AAAAA==" target="_blank">Run the query</a>
-
-```Kusto
-let X = datatable(Key:string, Value1:long)
-[
-    'a',1,
-    'b',2,
-    'b',3,
-    'c',4
-];
-let Y = datatable(Key:string, Value2:long)
-[
-    'b',10,
-    'c',20,
-    'c',30,
-    'd',40
-];
-X
-| join kind=inner Y on Key
+```kusto
+StormEvents
+| where EventType == "Lightning"
+| join (
+    StormEvents 
+    | where EventType == "Avalanche"
+) on State  
+| distinct State
 ```
 
-> [!TIP]
-> Use **where** and **project** operators to reduce the numbers of rows and columns in the input tables, before the join. If one table is always smaller than the other, use it as the left (piped) side of the join. The columns for the join match must have the same name. Use the **project** operator if necessary to rename a column in one of the tables.
+Let's join data from another table in our database.
 
-### Cross-database and cross-cluster queries
-
-[Cross-database and cross-cluster queries](./kusto/query/cross-cluster-or-database-queries.md): You can query a database on the same cluster by referring it as `database("MyDatabase").MyTable`. You can query a database on a remote cluster by referring to it as `cluster("MyCluster").database("MyDatabase").MyTable`.
-
-The following query is called from one cluster and queries data from `MyCluster` cluster. To run this query, use your own cluster name and database name.
-
-```Kusto
-cluster("MyCluster").database("Wiki").PageViews
-| where Views < 2000
-| take 1000;
+```kusto
+StormEvents
+| where EventType == "Tornado"
+| join kind=innerunique PopulationData on State
+| project State, Population
 ```
-
-## Functions
-
-This section covers [**functions**](./kusto/query/functions/index.md): reusable queries that are stored on the server. Functions can be invoked by queries and other functions (recursive functions aren't supported).
 
 > [!NOTE]
-> You cannot create functions on the help cluster, which is read-only. Use your own test cluster for this part.
-
-The following example creates a function that takes a state name (`MyState`) as an argument.
-
-```Kusto
-.create function with (folder="Demo")
-MyFunction (MyState: string)
-{
-StormEvents
-| where State =~ MyState
-}
-```
-
-The following example calls a function, which gets data for the state of Texas.
-
-```Kusto
-MyFunction ("Texas")
-| summarize count()
-```
-
-The following example deletes the function that was created in the first step.
-
-```Kusto
-.drop function MyFunction
-```
+>
+> * Reduce the number of rows and columns in the input tables using the `where` and `project` operators before performing the join.
+> * Use the smaller table as the left table in the join.
+> * Make sure the columns being used for the join have the same name, and use `project` to rename a column if needed.
 
 ## Next steps
 
-[Kusto Query Language reference](./kusto/query/index.md)
+* Read more about the [Kusto Query Language](./kusto/query/index.md)
+* Learn how to perform [cross-database and cross-cluster queries](./kusto/query/cross-cluster-or-database-queries.md)
