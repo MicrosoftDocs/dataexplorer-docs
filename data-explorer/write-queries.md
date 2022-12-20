@@ -26,7 +26,9 @@ The Kusto Query Language (KQL) is used to write queries and retrieve data in Azu
 
 ### Tabular expression statements
 
-Tabular expression statements manipulate tabular data by applying operations such as filtering, rearranging, or summarizing the data. Each operator is separated by a pipe (`|`) delimiter, with the order of the operators being important as the data flows from one operation to the next. The process is similar to a funnel, where the data is refined as it passes through each operation. The final output of the process is a refined table.
+A tabular expression statement is a type of query that manipulates data in tables or tabular datasets. It consists of one or more operators, which are separated by a pipe (`|`) and process the data sequentially. Each operator starts with a tabular input and returns a tabular output.
+
+The order of the operators is important, as the data flows from one operator to the next and is transformed at each step. Think of it like a funnel, where the data starts as an entire table and is refined as it passes through each operator, until you're left with a final output at the end.
 
 #### Example
 
