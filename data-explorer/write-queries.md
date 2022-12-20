@@ -412,93 +412,6 @@ StormEvents
 |ARKANSAS| 54| Large|
 |...|...|...|
 
-## Visualize query results
-
-This section teaches how to use common operators and functions to visualize your query results using the render operator.
-
-### render
-
-The [render](kusto/query/renderoperator.md) operator allows you to display query results as graphical output.
-
-> [!NOTE]
-> The render operator is a client-side feature that is integrated into the language for ease of use. It's not a part of the engine.
-
-#### Column chart
-
-Let's view the states that experienced over 50 storms in November 2007 in a column chart. The projected columns are used as the x-axis and y-axis of the chart.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1VNvQ6CQAzeTXyHjpAw4Oaig8ZNJp6gHg2c8Xqm9DAQH96rLDp9+f5bjRIuE7GOsN28YUwhoPiF4CueY2KFAzjDoqyg8V2mOPXFiXrPV9QSbjO0ikrrQBQ1JQeNvgaSv60j7PZ1bdZT4p2crt3qJ2OmEHck+feRArsBRT95g86eqgAAAA==" target="_blank">Run the query</a>
-
-```kusto
-StormEvents 
-| summarize EventCount = count(), Mid = avg(BeginLat) by State 
-| sort by Mid
-| where EventCount > 1800
-| project State, EventCount
-| render columnchart
-```
-
-We left out `Mid` in the project operation so it's not shown in the chart, but the states are still displayed in order based on their `Mid` values.
-
-:::image type="content" source="media/write-queries/render-column-chart.png" alt-text="Screenshot of the Azure Data Explorer web UI column chart created by the previous render query.":::
-
-#### Time chart
-
-Let's create a time chart showing the storm count by day in November 2007.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIBYnFJ%2beX5pXYgkkNTYWkSoWkzDyN4JLEopKQzNxUHQXDFE2QtqLUvJTUIoUSoFhyBlASAAyXWQJWAAAA" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| where StartTime between (datetime(2007-11-01) .. datetime(2007-12-01))
-| summarize event_count=count() by bin(StartTime, 1d)
-| render timechart
-```
-
-:::image type="content" source="media/write-queries/render-time-chart.png" alt-text="Screenshot of the Azure Data Explorer web UI time chart created by the previous render query.":::
-
-Let's use a time chart to compare the daily series of several selected states.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWOywqDMBBF94X+wyVQUHDjB7iQ1mKhIDQuurU6RcEkMI590Y9vkm5mBu5hztXi2FQPsrJsN1/QS8gOqN3KKHCfneMEWjqWdjKEHfIBGfIxDfBzJKaQCmGySFRbXUutMqjjubmcDmU4/aobFfllNabj6UOIwr1brRR9mEmK2ztas/+/gLNvQgzx4n70DX6/4TkLqwAAAA==" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| extend Hour = floor( StartTime % 1d , 1h)
-| where State in ("TEXAS", "FLORIDA", "CALIFORNIA")
-| summarize EventCount=count() by Hour, State
-| render timechart
-```
-
-:::image type="content" source="media/write-queries/render-multi-time-chart.png" alt-text="Screenshot of Azure Data Explorer web UI time chart from the previous query.":::
-
-#### Pie chart
-
-Let's create a pie chart to visualize the number of states that experienced storms resulting in a large, medium, or small number of injuries.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRvQ6CMBCAdxPe4cIEiYMOjjigDibqwhPUctEqLeZ6NWJ8eC3+JBgD2LG972vTL+OS9OKMhm0wuIF1WgtSV4SlOThSaGelMwyJP4nee3NFKDmGbQUZC0ZP4oXR5B8sdfKInpPCIkTBAFpX87YpTEbDLiRcCdph2Dn3rR73UK8xV07/7+6hzrQoim5zuClBvexh23D8I1v1/P20qusk0r8uqnM183iUHtWQ4KRQ7gXxHQoTE4gQAgAA" target="_blank">Run the query</a>
-
-```kusto
-StormEvents
-| summarize InjuriesCount = sum(InjuriesDirect) by State
-| extend InjuriesBucket = case (
-                              InjuriesCount > 50,
-                              "Large",
-                              InjuriesCount > 10,
-                              "Medium",
-                              InjuriesCount > 0,
-                              "Small",
-                              "No injuries"
-                          )
-| summarize InjuryBucketByState=count() by InjuriesBucket
-| render piechart 
-```
-
-:::image type="content" source="media/write-queries/render-pie-chart.png" alt-text="Screenshot of Azure Data Explorer web UI pie chart rendered by the previous query.":::
-
 ## Perform advanced aggregations
 
 We've already learned about basic aggregation functions like `count` and `summarize`. Now, let's move on to some more complex aggregation functions.
@@ -665,6 +578,93 @@ StormEvents
 > * Reduce the number of rows and columns in the input tables using the `where` and `project` operators before performing the join.
 > * Use the smaller table as the left table in the join.
 > * Make sure the columns being used for the join have the same name, and use `project` to rename a column if needed.
+
+## Visualize query results
+
+This section teaches how to use common operators and functions to visualize your query results using the render operator.
+
+### render
+
+The [render](kusto/query/renderoperator.md) operator allows you to display query results as graphical output.
+
+> [!NOTE]
+> The render operator is a client-side feature that is integrated into the language for ease of use. It's not a part of the engine.
+
+#### Column chart
+
+Let's view the states that experienced over 50 storms in November 2007 in a column chart. The projected columns are used as the x-axis and y-axis of the chart.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1VNvQ6CQAzeTXyHjpAw4Oaig8ZNJp6gHg2c8Xqm9DAQH96rLDp9+f5bjRIuE7GOsN28YUwhoPiF4CueY2KFAzjDoqyg8V2mOPXFiXrPV9QSbjO0ikrrQBQ1JQeNvgaSv60j7PZ1bdZT4p2crt3qJ2OmEHck+feRArsBRT95g86eqgAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents 
+| summarize EventCount = count(), Mid = avg(BeginLat) by State 
+| sort by Mid
+| where EventCount > 1800
+| project State, EventCount
+| render columnchart
+```
+
+We left out `Mid` in the project operation so it's not shown in the chart, but the states are still displayed in order based on their `Mid` values.
+
+:::image type="content" source="media/write-queries/render-column-chart.png" alt-text="Screenshot of the Azure Data Explorer web UI column chart created by the previous render query.":::
+
+#### Time chart
+
+Let's create a time chart showing the storm count by day in November 2007.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIBYnFJ%2beX5pXYgkkNTYWkSoWkzDyN4JLEopKQzNxUHQXDFE2QtqLUvJTUIoUSoFhyBlASAAyXWQJWAAAA" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents
+| where StartTime between (datetime(2007-11-01) .. datetime(2007-12-01))
+| summarize event_count=count() by bin(StartTime, 1d)
+| render timechart
+```
+
+:::image type="content" source="media/write-queries/render-time-chart.png" alt-text="Screenshot of the Azure Data Explorer web UI time chart created by the previous render query.":::
+
+Let's use a time chart to compare the daily series of several selected states.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWOywqDMBBF94X+wyVQUHDjB7iQ1mKhIDQuurU6RcEkMI590Y9vkm5mBu5hztXi2FQPsrJsN1/QS8gOqN3KKHCfneMEWjqWdjKEHfIBGfIxDfBzJKaQCmGySFRbXUutMqjjubmcDmU4/aobFfllNabj6UOIwr1brRR9mEmK2ztas/+/gLNvQgzx4n70DX6/4TkLqwAAAA==" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents
+| extend Hour = floor( StartTime % 1d , 1h)
+| where State in ("TEXAS", "FLORIDA", "CALIFORNIA")
+| summarize EventCount=count() by Hour, State
+| render timechart
+```
+
+:::image type="content" source="media/write-queries/render-multi-time-chart.png" alt-text="Screenshot of Azure Data Explorer web UI time chart from the previous query.":::
+
+#### Pie chart
+
+Let's create a pie chart to visualize the number of states that experienced storms resulting in a large, medium, or small number of injuries.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRvQ6CMBCAdxPe4cIEiYMOjjigDibqwhPUctEqLeZ6NWJ8eC3+JBgD2LG972vTL+OS9OKMhm0wuIF1WgtSV4SlOThSaGelMwyJP4nee3NFKDmGbQUZC0ZP4oXR5B8sdfKInpPCIkTBAFpX87YpTEbDLiRcCdph2Dn3rR73UK8xV07/7+6hzrQoim5zuClBvexh23D8I1v1/P20qusk0r8uqnM183iUHtWQ4KRQ7gXxHQoTE4gQAgAA" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| summarize InjuriesCount = sum(InjuriesDirect) by State
+| extend InjuriesBucket = case (
+                              InjuriesCount > 50,
+                              "Large",
+                              InjuriesCount > 10,
+                              "Medium",
+                              InjuriesCount > 0,
+                              "Small",
+                              "No injuries"
+                          )
+| summarize InjuryBucketByState=count() by InjuriesBucket
+| render piechart 
+```
+
+:::image type="content" source="media/write-queries/render-pie-chart.png" alt-text="Screenshot of Azure Data Explorer web UI pie chart rendered by the previous query.":::
 
 ## Next steps
 
