@@ -474,91 +474,67 @@ StormEvents
 
 :::image type="content" source="media/write-queries/render-pie-chart.png" alt-text="Screenshot of Azure Data Explorer web UI pie chart rendered by the previous query.":::
 
-## Advanced aggregations
+## Perform advanced aggregations
 
-We covered basic aggregations, like **count** and **summarize**, earlier in this article. This section introduces more advanced options.
-
-### top-nested
-
-[**top-nested**](./kusto/query/topnestedoperator.md): Produces hierarchical top results, where each level is a drill-down based on previous level values.
-
-This operator is useful for dashboard visualization scenarios, or when it's necessary to answer a question like the following: "Find the top-N values of K1 (using some aggregation); for each of them, find what are the top-M values of K2 (using another aggregation); ..."
-
-The following query returns a hierarchical table with `State` at the
-top level, followed by `Sources`.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjJL9DNSy0uSU1RMFLIT1MILkksSVVIqlQoLs3VcEpNz8zzSSzR1OHlQlJoDFaYX1qUTEilIUila16KT35yYklmfh6GcgDrXwk5jgAAAA%3d%3d" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| top-nested 2 of State by sum(BeginLat),
-top-nested 3 of Source by sum(BeginLat),
-top-nested 1 of EndLocation by sum(BeginLat)
-```
-
-### pivot() plugin
-
-[**pivot() plugin**](./kusto/query/pivotplugin.md): Rotates a table by turning the unique values from one column in the input table into multiple columns in the output table. The operator performs aggregations where they're required on any remaining column values in the final output.
-
-The following query applies a filter and pivots the rows into columns.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSgoys9KTS5RCC5JLEnVUQBLhFQWpILkyjNSi1IhMgrFJYlFJcXlmSUZCkqOPkoIabgOhYzEYgWl8My8FLBsalliTilIZ0FmWX6JBtgUTQDlv21NfQAAAA%3d%3d" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| project State, EventType
-| where State startswith "AL"
-| where EventType has "Wind"
-| evaluate pivot(State)
-```
+We've already learned about basic aggregation functions like `count` and `summarize`. Now, let's move on to some more complex aggregation functions.
 
 ### dcount()
 
-[**dcount()**](./kusto/query/dcount-aggfunction.md): Returns an estimate of the number of distinct values of an expression in the group. Use [**count()**](./kusto/query/countoperator.md) to count all values.
+Use [dcount()](kusto/query/dcount-aggfunction.md) to return an estimate of the number of distinct values of an expression in the group.
 
 The following query counts distinct `Source` by `State`.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlUIzi8tSk4tVrBVSEnOL80r0YAIaCokVSoElySWpAIAFKgSBDoAAAA%3d" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIzi8tSk4tVrBVSEnOL80r0YAIaCokVSoElySWpIKV5xeVgAUgigH09cdWTQAAAA==" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
 | summarize Sources = dcount(Source) by State
+| sort by Sources
 ```
+
+|State|Sources|
+|--|--|
+|FLORIDA| 26|
+|TEXAS| 25|
+|VIRGINIA| 24|
+|ILLINOIS| 23|
+|WISCONSIN| 23|
+|SOUTH CAROLINA| 23|
+|OKLAHOMA| 23|
+|NEW YORK| 23|
+|KANSAS| 23|
+|MISSOURI| 23|
+|...|...|
 
 ### dcountif()
 
-[**dcountif()**](./kusto/query/dcountif-aggfunction.md): Returns an estimate of the number of distinct values of the expression for rows for which the predicate evaluates to true.
+Use [dcount()](kusto/query/dcount-aggfunction.md) to return an estimate of the number of distinct values of the expression for rows for which the predicate evaluates to true.
 
-The following query counts the distinct values of `Source` where `DamageProperty < 5000`.
+The following query counts the distinct values of `Source` by `State` in cases where the `DamageProperty` column value is greater than 5000.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwNDDg5apRKC7NzU0syqxKVQjOLy1KTi1WsFVISc4vzSvJTNOACOkouCTmJqanBhTlF6QWlVQq2CiYGhgYaCokVSoElySWpAIAuk%2fTX14AAAA%3d" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIzi8tSk4tVrBVSEnOL80ryUzTgAjpKLgk5iampwYU5RekFpVUKtgpmBoYGGgqJFUqBJcklqSCzckvKgELQEwBAHgC/sJmAAAA" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
-| take 100
-| summarize Sources = dcountif(Source, DamageProperty < 5000) by State
+| summarize Sources = dcountif(Source, DamageProperty > 5000) by State
+| sort by Sources
 ```
 
-### dcount_hll()
-
-[**dcount_hll()**](./kusto/query/dcount-hllfunction.md):
-Calculates the **dcount** from HyperLogLog results (generated by [**hll**](./kusto/query/hll-aggfunction.md) or [**hll_merge**](./kusto/query/hll-merge-aggfunction.md).
-
-The following query uses the HLL algorithm to generate the count.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlXIyMkJSi1WsAUxNFwScxPTUwOK8gtSi0oqNRWSKhWSMvM0gksSi0pCMnNTdQwNcjUx9PumFqWnpkCMiM8FcTQgpoKVFhTlZ6UmlyikJOeX5pXEg6yB69EEAKm9wyCXAAAA" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| summarize hllRes = hll(DamageProperty) by bin(StartTime,10m)
-| summarize hllMerged = hll_merge(hllRes)
-| project dcount_hll(hllMerged)
-```
+|State|Sources|
+|--|--|
+|TEXAS| 23|
+|IOWA| 21|
+|NEW YORK| 21|
+|OKLAHOMA| 20|
+|CALIFORNIA| 17|
+|KENTUCKY| 17|
+|VIRGINIA| 16|
+|MISSISSIPPI| 16|
+|INDIANA| 16|
+|OHIO| 16|
+|...|...|
 
 ### arg_max()
 
@@ -593,54 +569,45 @@ StormEvents
 | project State, FloodReports
 ```
 
-### mv-expand
+### top-nested
 
-[**mv-expand**](./kusto/query/mvexpandoperator.md):
-Expands multi-value collection(s) from a dynamic-typed column so that each value in the collection gets a separate row. All the other columns in an expanded row are duplicated. It's the opposite of make_list.
+The [top-nested](kusto/query/topnestedoperator.md) operator produces hierarchical top results, where each level drills down based on the values of the previous level. This operator is useful for creating dashboards or for answering questions like "What are the top N values of K1, and for each of them, what are the top M values of K2?"
 
-The following query generates sample data by creating a set and then using it to demonstrate the **mv-expand** capabilities.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWOQQ6CQAxF9yTcoWGliTcws1MPIFygyk9EKTPpVBTj4Z2BjSz%2f738v7WF06r1vD2xcp%2bCoNq9yHDFYLIsvvW5Q0JybKYCco2omqnyNTxHW7oPFckbwajFZhB%2bIsE1trNZ0gi1dpuRmQ%2baC%2bjuuthS7Fbwvi%2f%2bP8lpGvAMP7Wr3A6BceSu7AAAA" target="_blank">Run the query</a>
-
-```Kusto
-let FloodDataSet = StormEvents
-| where EventType == "Flood"
-| summarize FloodReports = make_set(StartTime) by State
-| project State, FloodReports;
-FloodDataSet
-| mv-expand FloodReports
-```
-
-### percentiles()
-
-[**percentiles()**](./kusto/query/percentiles-aggfunction.md): Returns an estimate for the specified [**nearest-rank percentile**](./kusto/query/percentiles-aggfunction.md) of the population defined by an expression. The accuracy depends on the density of population in the region of the percentile. Can be used only in the context of aggregation inside [**summarize**](./kusto/query/summarizeoperator.md).
-
-The following query calculates percentiles for storm duration.
+The following query returns a hierarchical table with `State` at the top level followed by `Sources`.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUUitKEnNS1FIKS1KLMnMz1OwVXDNSwnJzE1V0FUILkksKgGxQQrLM1KLUhHq7BQMirEI2ygYZ4CEi0tzcxOLMqtSFQpSi5KBlmXmpBZrwJTpKJjqKBgZACkgtgBiS1NNAEC7XiaYAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjJL9DNSy0uSU1RMFbIT1MILkksSVVIqlQoLs3VcEnMTUxPDSjKL0gtKqnU1FHg5UJSbwRWn19alIxLAwBef4q5bAAAAA==" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
-| extend duration = EndTime - StartTime
-| where duration > 0s
-| where duration < 3h
-| summarize percentiles(duration, 5, 20, 50, 80, 95)
+| top-nested 3 of State by sum(DamageProperty), 
+top-nested 2 of Source by sum(DamageProperty)
 ```
 
-The following query calculates percentiles for storm duration by state and normalizes the data by five-minute bins (`5m`).
+|State| aggregated_State| Source| aggregated_Source|
+|--|--|--|--|
+|CALIFORNIA| 1445937600| Fire Department/Rescue| 826550000|
+|CALIFORNIA| 1445937600| Newspaper| 554508100|
+|OKLAHOMA| 915470300| Emergency Manager| 721867000|
+|OKLAHOMA| 915470300| Trained Spotter| 152121000|
+|KANSAS| 690178500| NWS Storm Survey| 256005000|
+|KANSAS| 690178500| Emergency Manager| 188137500|
+
+### pivot()
+
+[**pivot() plugin**](./kusto/query/pivotplugin.md): Rotates a table by turning the unique values from one column in the input table into multiple columns in the output table. The operator performs aggregations where they're required on any remaining column values in the final output.
+
+The following query applies a filter and pivots the rows into columns.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAG1NSwrCMBTcC95hli1EKEpBQd31BHUvafOgAZNI8uIPD28SEBVcDDMM8%2bnZedNdyHKYz56gG5NVUNFL1s5ih86qgzaEBXqWnrPOwetEnj65PZrwx95iNWU7RGOk1w8C5avj6KLlNF64qjHcMWhbvXsCralFPmT6rZ%2fJj2lAnyh8pwWWTaKEdcKmLYul%2fgLODFs%2b4AAAAA%3d%3d" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSgoys9KTS5RCC5JLEnVUQBLhFQWpILkyjNSi1IhMgrFJYlFJcXlmSUZCkqOPkoIabgOhYzEYgWl8My8FLBsalliTilIZ0FmWX6JBtgUTQDlv21NfQAAAA%3d%3d" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
-| extend duration = EndTime - StartTime
-| where duration > 0s
-| where duration < 3h
-| summarize event_count = count() by bin(duration, 5m), State
-| summarize percentiles(duration, 5, 20, 50, 80, 95) by State
+| project State, EventType
+| where State startswith "AL"
+| where EventType has "Wind"
+| evaluate pivot(State)
 ```
 
 ## Query across datasets
