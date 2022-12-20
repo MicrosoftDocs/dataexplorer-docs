@@ -1,6 +1,6 @@
 ---
 title: Write queries for Azure Data Explorer
-description: In this how-to, you learn how to perform basic and more advanced queries for Azure Data Explorer.
+description: Learn how to perform basic and more advanced queries for Azure Data Explorer.
 ms.reviewer: mblythe
 ms.topic: tutorial
 ms.date: 12/19/2022
@@ -88,7 +88,7 @@ StormEvents | count
 
 ### take
 
-To view a sample of the data, use the [take](kusto/query/takeoperator.md) operator. This helps to get an idea of what the data in your table looks like. Keep in mind that the rows returned are random and are not guaranteed unless the source data is sorted.
+To view a sample of the data, use the [take](kusto/query/takeoperator.md) operator. Keep in mind that the rows returned are random and aren't guaranteed unless the source data is sorted.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d" target="_blank">Run the query</a>
@@ -97,7 +97,7 @@ To view a sample of the data, use the [take](kusto/query/takeoperator.md) operat
 StormEvents | take 5
 ```
 
-The following table shows only 6 of the the 22 returned columns. To see the full output, run the query.
+The following table shows only 6 of the 22 returned columns. To see the full output, run the query.
 
 |StartTime|EndTime|EpisodeId|EventId|State|EventType|...|
 |--|--|--|--|--|--|...|
@@ -112,7 +112,7 @@ The following table shows only 6 of the the 22 returned columns. To see the full
 
 ### project
 
-Use the [project](kusto/query/projectoperator.md) operator to select specific columns when you only want to see a subset of the data. This simplifies the view and shows only the columns that are relevant to you.
+Use the [project](kusto/query/projectoperator.md) operator to select specific columns when you only want to see a subset of the data.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUShJzE5VMAWxCorys1KTSxSCSxJLUnUUwEpCKguATJfE3MT01ICi/ILUopJKAG0+9oFBAAAA" target="_blank">Run the query</a>
@@ -159,7 +159,7 @@ There are 146 events that match these conditions. The following table shows a sa
 
 Use the [sort](kusto/query/sortoperator.md) operator to arrange the rows in ascending or descending order based on one or more columns. The default is descending order.
 
-To view the top 5 floods in Texas that caused the most damage, let's use `sort` to arrange the rows in descending order based on the `DamageProperty` column and `take` to display only the top 5 rows.
+To view the top five floods in Texas that caused the most damage, let's use `sort` to arrange the rows in descending order based on the `DamageProperty` column and `take` to display only the top five rows.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12NPQsCMRBEe8H/MF2atJZXCMZauBS28bL4mWzYLCcBf7zkrhDsHszMm1FZkpspa91uPnjfSAijBiUMA4x35/1oEHLEUvKtrMHxxRxNn1QWxaXhEFK40km4kGhDpDr1WMOTsOtUhB80abeL+nsiC5fjCsuj/X3YP90XMW6LAacAAAA=" target="_blank">Run the query</a>
@@ -209,9 +209,9 @@ StormEvents
 
 ### extend
 
-Use the [extend](kusto/query/extendoperator.md) operator to add computed columns to a table. This operator allows you to use standard operators such as +, -, *, /, and %, as well as various functions in the expression for the computed column.
+Use the [extend](kusto/query/extendoperator.md) operator to add computed columns to a table. This operator allows you to use standard operators such as +, -, *, /, and %, and various functions in the expression for the computed column.
 
-For example, extend the table showing the top 5 floods in Texas to include a `Duration` column by calculating the difference between the `StartTime` and `EndTime` columns.
+For example, extend the table showing the top five floods in Texas to include a `Duration` column by calculating the difference between the `StartTime` and `EndTime` columns.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2OvQ7CMAyEdyTewVuWMDJ2QGr5WQJSKzGHxoIiEkeuKVTi4WmooBKbfXeffaUQ%2b6LDIO189oLHBRnhs1d9RMgyUOsbkVNgg4NSrIzicVVud2ZT7Y1KnFCEJZx6yK23ZzwwRWTpwWFbJx%2bfggOf39lKQwEyKIKrGo%2bwSEdZ0pyCkemKtUyi%2fib1j9ZjDz311H9%2fBys2LTk0lhPT4RvwA3pn6AAAAA%3d%3d" target="_blank">Run the query</a>
@@ -264,7 +264,7 @@ StormEvents
 
 Use multiple aggregation functions in a single summarize operator to produce several computed columns.
 
-For example, the following query returns the count of storms in each state and the unique number of storm type per state, then uses top to get the most storm-affected states.
+For example, the following query returns the count of storms in each state and the unique number of storm types per state, then uses top to get the most storm-affected states.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUAiznnl+aVKNgqJINoDU0dhZDKglT/tGCQpmKgeApEAqwWJKWpkFSpEFySWJIKMqwkv0DBFCSCZFZKanEyALnxdKV0AAAA" target="_blank">Run the query</a>
@@ -287,7 +287,7 @@ The result of a summarize operation has columns for each value in the by clause,
 
 ### render
 
-The [render](kusto/query/renderoperator.md) operator allows you to display query results as graphical output. The render operator is a client-side feature that is integrated into the language for ease of use. It's not a part of the engine. The web application supports the following options for graphical output: barchart, columnchart, piechart, timechart, and linechart.
+The [render](kusto/query/renderoperator.md) operator allows you to display query results as graphical output. The render operator is a client-side feature that is integrated into the language for ease of use. It's not a part of the engine. The web application supports the following options for graphical output: `barchart`, `columnchart`, `piechart`, `timechart`, and `linechart`.
 
 Let's create a column chart showing the states that experienced over 50 storms in November 2007.
 
