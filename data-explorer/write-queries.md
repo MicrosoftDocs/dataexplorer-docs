@@ -32,7 +32,7 @@ A tabular expression statement is a type of query that manipulates data in table
 
 The order of the operators is important, as the data flows from one operator to the next and is transformed at each step. Think of it like a funnel where the data starts as an entire table and is refined as it passes through each operator, until you're left with a final output at the end.
 
-Consider the following query:
+Read the following query and after we'll go through it step-by-step.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKaCJG4HENZENKklVsLVVUHLz8Q/ydHFUAkol55fmlQAA2ZnM/XgAAAA=" target="_blank">Run the query</a>
@@ -99,7 +99,7 @@ The following table shows only 6 of the 22 returned columns. To see the full out
 
 ### project
 
-Let's use the [project](kusto/query/projectoperator.md) operator to simplify our view and select a specific subset of columns. This is often more efficient and easier to read than viewing all columns.
+Let's use the [project](kusto/query/projectoperator.md) operator to simplify our view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNACyCorys1KTSxSCSxJLUnUUwCpCKgtSAXs3VfgwAAAA" target="_blank">Run the query</a>
@@ -255,7 +255,7 @@ With the computed `Duration` column, it's easy to see that the flood that caused
 
 Aggregation functions allow you to group and combine data from multiple rows into a single summary value. The summary value type depends on the chosen function, for example a count, maximum, minimum, or average value. Aggregation functions are especially useful for discovering valuable insights when working with large amounts of individual events, like storm events, and comparing them across groups.
 
-In the following examples, we'll use the [summarize](kusto/query/summarizeoperator.md) operator to group rows by certain values and apply aggregation functions, and the [render](kusto/query/renderoperator.md) operator to visualize the results of your query as graphical output in various chart types."
+In the following examples, we'll use the [summarize](kusto/query/summarizeoperator.md) operator to group rows by certain values and apply aggregation functions. We'll also use the [render](kusto/query/renderoperator.md) operator to visualize the results of your query as graphical output in various chart types.
 
 ### count()
 
@@ -467,7 +467,7 @@ StormEvents
 
 ## Join data from two tables
 
-The [join](kusto/query/joinoperator.md) operator is used to combine rows from tables based on matching values in specified columns. This allows you to merge data from different sources and perform analysis on the combined data set.
+The [join](kusto/query/joinoperator.md) operator is used to combine rows from tables based on matching values in specified columns and perform analysis on a combined data set.
 
 For example, let's say you want to create a list of states in which both lightning and avalanche events occurred. Use the join operator to merge the rows of two tables—one containing data on lightning events and the other containing data on avalanche events—based on the `State` column.
 
@@ -507,7 +507,7 @@ Let statements are used to define variables within a query. Defining variables c
 
 ### Readability
 
-Here we use a let statement to separate out the parts of the query expression in the previous `join` example. The results are unchanged.
+In the following query, a let statement separates out the parts of the query expression in the previous `join` example. The results are unchanged.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WOsQ6DMBBDd77C4jeqDB26sZUfiOBErg1OlZyoKvHxRCAxtFM338l+dhRDp1MwKqe7pTwXOOzitgitYMU7SBbsZ/95CZxDe2baSxMr47r46DkE+YNxZirje0Oz4pGUeCpHp6Tkn4rE2uFNqnXUYsrBjscGj91by9QAAAA=" target="_blank">Run the query</a>
