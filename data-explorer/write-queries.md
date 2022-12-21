@@ -9,7 +9,7 @@ ms.localizationpriority: high
 
 # Write KQL Queries for Azure Data Explorer
 
-In this tutorial, you'll learn how to perform queries in Azure Data Explorer using the [Kusto Query Language](./kusto/query/index.md). We'll explore the essentials of writing queries, including how to retrieve data, filter, aggregate, and visualize your data.
+In this tutorial, you'll learn how to perform queries in Azure Data Explorer using the Kusto Query Language (KQL). We'll explore the essentials, including how to retrieve data, filter, aggregate, and visualize your data.
 
 ## Prerequisites
 
@@ -22,13 +22,13 @@ MAKE SURE THEY'RE IN CONTEXT OF SAMPLES DB.
 
 ## Kusto Query Language overview
 
-The Kusto Query Language (KQL) is used to write queries and retrieve data in Azure Data Explorer. A KQL query consists of one or more query statements separated by a semicolon and returns data in tabular or graphical format.
+The [Kusto Query Language (KQL)](./kusto/query/index.md) is used to write queries in Azure Data Explorer. A KQL query consists of one or more query statements and returns data in tabular or graphical format.
 
-There are three types of query statements: tabular expression statements, let statements, and set statements. In this tutorial, we'll mainly focus on tabular expression statements but will also briefly cover let statements, which allow us to use variables in queries.
+There are three types of query statements: tabular expression statements, let statements, and set statements. In this tutorial, we'll mainly focus on tabular expression statements but will also briefly cover let statements, which will allow us to use variables in queries.
 
 ### Tabular expression statements
 
-A tabular expression statement is a type of query that manipulates data in tables or tabular datasets. It consists of one or more operators, which are separated by a pipe (`|`) and process the data sequentially. Each operator starts with a tabular input and returns a tabular output.
+A tabular expression statement is a type of query that manipulates data in tables or tabular datasets. These statements consists of one or more operators, which are separated by a pipe (`|`), and process the data sequentially. Each operator starts with a tabular input and returns a tabular output.
 
 The order of the operators is important, as the data flows from one operator to the next and is transformed at each step. Think of it like a funnel where the data starts as an entire table and is refined as it passes through each operator, until you're left with a final output at the end.
 
@@ -50,9 +50,9 @@ StormEvents
 
 The query performs the following actions in sequence:
 
-1. The `StormEvents` table is filtered to select rows with `StartTime` values within the specified date range.
-1. The filtered table is further narrowed down to include only rows with a `State` value of "FLORIDA".
-1. The final table is passed to the `count` operator, which returns a new table containing the count of rows.
+1. The `StormEvents` table is passed to the `where` operator which selects rows with `StartTime` values within the specified date range.
+1. The filtered table is then passed to another `where` operator which selects rows with a `State` value of "FLORIDA".
+1. The final table is passed to the `count` operator, which returns a new table with a single column `Count` that contains the number of rows.
 
 ## Get started with common operators
 
@@ -94,34 +94,31 @@ The following table shows only 6 of the 22 returned columns. To see the full out
 |2007-09-29T08:11:00Z|2007-09-29T08:11:00Z|11091|61032|ATLANTIC SOUTH|Waterspout|...|
 |2007-09-18T20:00:00Z|2007-09-19T18:00:00Z|11074|60904|FLORIDA|Heavy Rain|...|
 
-> [!NOTE]
-> [limit](kusto/query/limitoperator.md) is an alias for [take](kusto/query/takeoperator.md) and has the same effect.
-
 ### project
 
 Let's use the [project](kusto/query/projectoperator.md) operator to simplify our view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNACyCorys1KTSxSCSxJLUnUUwCpCKgtSAXs3VfgwAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUShJzE5VMDQAMQuK8rNSk0sUgksSS1J1FMBqQioLgEyXxNzE9NSAovyC1KKSSgBtBl0/QgAAAA==" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
 | take 10
-| project State, EventType
+| project State, EventType, DamageProperty
 ```
 
-|State|EventType|
+|State|EventType|DamageProperty|
 |--|--|--|
-|ATLANTIC SOUTH|Waterspout|
-|FLORIDA|Heavy Rain|
-|FLORIDA|Tornado|
-|GEORGIA|Thunderstorm Wind|
-|MISSISSIPPI|Thunderstorm Wind|
-|MISSISSIPPI|Tornado|
-|MISSISSIPPI|Thunderstorm Wind|
-|MISSISSIPPI|Hail|
-|AMERICAN SAMOA|Flash Flood|
-|KENTUCKY|Flood|
+|ATLANTIC SOUTH|Waterspout|0|
+|FLORIDA|Heavy Rain|0|
+|FLORIDA|Tornado|6200000|
+|GEORGIA|Thunderstorm Wind|2000|
+|MISSISSIPPI|Thunderstorm Wind|20000|
+|MISSISSIPPI|Tornado|450000|
+|MISSISSIPPI|Thunderstorm Wind|60000|
+|MISSISSIPPI|Hail|0|
+|AMERICAN SAMOA|Flash Flood|250000|
+|KENTUCKY|Flood|1000|
 
 ### distinct
 
@@ -152,7 +149,7 @@ There are 46 types of storms in our table.
 
 ### where
 
-The [where](kusto/query/whereoperator.md) operator filters rows of data based on certain criteria. Let's try it and look for storm events in a specific `State` of a specific `EventType`.
+The [where](kusto/query/whereoperator.md) operator filters rows of data based on certain criteria. Let's look for storm events in a specific `State` of a specific `EventType`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSxJVbC1VVAPcY1wDFZXSMxLUQArCqksgEi45eTnp6iDtBQU5WelJpeANBWVhGTmpuoouOalQBhgg3QQWnUUXBJzE9NTA4ryC1KLSioBBDYIBX4AAAA=" target="_blank">Run the query</a>
@@ -163,7 +160,7 @@ StormEvents
 | project StartTime, EndTime, State, EventType, DamageProperty
 ```
 
-There are 146 events that match these conditions. The following table shows a sample of 5 of them.
+There are 146 events that match these conditions. Here's a sample of 5 of them.
 
 |StartTime|EndTime|State|EventType|DamageProperty|
 |--|--|--|--|--|
@@ -198,13 +195,13 @@ StormEvents
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
 
 > [!NOTE]
-> The order of operations is important. Try putting `take 5` before `sort by`. You'll get different results.
+> The order of operations is important. Try putting `take 5` before `sort`. You'll get different results.
 
 ### top
 
 The [top](kusto/query/topoperator.md) operator returns the first *n* rows sorted by the specified column.
 
-The following query will return the same results as the example in the sort section but with one less operator.
+The following query will return the same results as the previous example in the `sort` section but with one less operator.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12NPQsCMRBEe8H/MF2atJZXCMZaSArbeFn8wGTD3qIE7scfuSsEu4E388YrS3YfKjrtdzO+DxKC16iEYYAJ7nr0BrEkrKXQ6gbOb+Zk+kS54oBbwynmeKeLcCXRhkTT2HkVftGoXSoanpksXElbWI/sT23/JAtx66DdngAAAA==" target="_blank">Run the query</a>
@@ -226,7 +223,7 @@ StormEvents
 
 ### extend
 
-Use the [extend](kusto/query/extendoperator.md) operator to add computed columns to a table. This operator allows you to use standard operators such as +, -, *, /, and %, and various functions in the expression for the computed column.
+Use the [extend](kusto/query/extendoperator.md) operator to add computed columns to a table.
 
 Let's extend the table showing the top five floods in Texas to include a `Duration` column by calculating the difference between the `StartTime` and `EndTime` columns.
 
@@ -249,11 +246,11 @@ StormEvents
 |2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|08:00:00|750000|
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|03:00:00|750000|
 
-With the computed `Duration` column, it's easy to see that the flood that caused the most damage was also the longest flood.
+With the computed `Duration` column, it stands out that the flood that caused the most damage was also the longest flood.
 
 ## Find insights with aggregation functions
 
-Aggregation functions allow you to group and combine data from multiple rows into a single summary value. The summary value type depends on the chosen function, for example a count, maximum, minimum, or average value. Aggregation functions are especially useful for discovering valuable insights when working with large amounts of individual events, like storm events, and comparing them across groups.
+Aggregation functions allow you to group and combine data from multiple rows into a single summary value. The summary value type depends on the chosen function, for example a count, maximum, minimum, or average value. Aggregation functions are especially useful for discovering insights when working with large amounts of individual events, like our storm events.
 
 In the following examples, we'll use the [summarize](kusto/query/summarizeoperator.md) operator to group rows by certain values and apply aggregation functions. We'll also use the [render](kusto/query/renderoperator.md) operator to visualize the results of your query as graphical output in various chart types.
 
@@ -297,11 +294,11 @@ StormEvents
 
 Multiple aggregation functions can be used in a single summarize operator to produce several computed columns.
 
-The following query uses the [countif()](kusto/query/countif-aggfunction.md), [dcount()](kusto/query/dcount-aggfunction.md), and [dcountif()](kusto/query/dcountif-aggfunction.md) aggregation functions to find by state:
+The following query uses the [countif()](kusto/query/countif-aggfunction.md), [dcount()](kusto/query/dcount-aggfunction.md), and [dcountif()](kusto/query/dcountif-aggfunction.md) aggregation functions to find:
 
-1. The number of storms that caused crop damage
-1. The unique number of storm types
-1. The unique number of storm types that caused crop damage
+1. The number of storms that caused crop damage by state
+1. The unique number of storm types by state
+1. The unique number of storm types that caused crop damage by state
 
 The query then uses the `top` operator to identify the states with the most crop damage from storms.
 
@@ -328,9 +325,9 @@ StormEvents
 
 ### min(), max(), and avg()
 
-Learn more about the storm types that caused crop damage using the min(), max(), and avg() aggregation functions.
+Let's learn more about the storm types that caused crop damage using the `min()`, `max()`, and `avg()` aggregation functions.
 
-In the following query, we'll filter out rows with no damaged crops, calculate the minimum, maximum, and average crop damage for each event type, and sort the result by the average damage.
+We'll filter out rows with no damaged crops, calculate the minimum, maximum, and average crop damage for each event type, and sort the result by the average damage.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcEnMTUxPdS7KLyhWsFMwAIoXl+bmJhZlVqVyKQCBb2IFRIltbmKFBpJqTR0FiILMPJiCzDxsChzL0qEKEsvSURSApZMqFcBOCqksSAXZnl9UAhKD6wIA7R/hf7UAAAA=" target="_blank">Run the query</a>
@@ -358,6 +355,7 @@ StormEvents
 |High Wind|1000000|1000|209800|
 |Cold/Wind Chill|500000|100000|200000|
 |Heavy Rain|1150000|5000|171000|
+|...|...|...|...|
 
 ### bin()
 
