@@ -32,13 +32,7 @@ A tabular expression statement is a type of query that manipulates data in table
 
 The order of the operators is important, as the data flows from one operator to the next and is transformed at each step. Think of it like a funnel where the data starts as an entire table and is refined as it passes through each operator, until you're left with a final output at the end.
 
-#### Example
-
-The following steps are performed in this example query.
-
-1. The `StormEvents` table is filtered to select rows with `StartTime` values within the specified date range.
-1. The filtered table is further narrowed down to include only rows with a `State` value of "FLORIDA".
-1. The final table is passed to the `count` operator, which returns a new table containing the count of rows.
+Consider the following query:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKaCJG4HENZENKklVsLVVUHLz8Q/ydHFUAkol55fmlQAA2ZnM/XgAAAA=" target="_blank">Run the query</a>
@@ -53,6 +47,12 @@ StormEvents
 |Count|
 |--|
 |28|
+
+The query performs the following actions in sequence:
+
+1. The `StormEvents` table is filtered to select rows with `StartTime` values within the specified date range.
+1. The filtered table is further narrowed down to include only rows with a `State` value of "FLORIDA".
+1. The final table is passed to the `count` operator, which returns a new table containing the count of rows.
 
 ## Get started with common operators
 
@@ -241,8 +241,6 @@ StormEvents
 | project StartTime, EndTime, Duration, DamageProperty
 ```
 
-With the computed `Duration` column, it's easy to see that the flood that caused the most damage was also the longest flood.
-
 |StartTime|EndTime|Duration|DamageProperty|
 |--|--|--|--|
 |2007-08-18T21:30:00Z|2007-08-19T23:00:00Z|1.01:30:00|5000000|
@@ -251,21 +249,13 @@ With the computed `Duration` column, it's easy to see that the flood that caused
 |2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|08:00:00|750000|
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|03:00:00|750000|
 
-### render
-
-The [render](kusto/query/renderoperator.md) operator helps you visualize query results by displaying them as graphical output. For example, you can display results as a `barchart`, `timechart`, `columnchart`, `piechart`, `scatterchart`, and more.
-
-We'll use `render` to better understand and interpret our results as we progress through the following sections.
+With the computed `Duration` column, it's easy to see that the flood that caused the most damage was also the longest flood.
 
 ## Find insights with aggregation functions
 
-This section will show how to use aggregation functions to identify patterns and trends in our data. These functions allow us to group and combine values from multiple rows into a single summary value. The summary value type depends on the chosen function, for example a count, maximum, minimum, or average value.
+Aggregation functions allow you to group and combine data from multiple rows into a single summary value. The summary value type depends on the chosen function, for example a count, maximum, minimum, or average value. Aggregation functions are especially useful for discovering valuable insights when working with large amounts of individual events, like storm events, and comparing them across groups.
 
-Aggregation functions are especially useful for discovering valuable insights when working with large amounts of individual events, like storm events, and comparing them across groups.
-
-### summarize
-
-The [summarize](kusto/query/summarizeoperator.md) operator groups rows based on the values in the **by** clause and applies an aggregation function to combine each group into a single row. In the following examples, we'll use `summarize` in combination with various aggregation functions.
+In the following examples, we'll use the [summarize](kusto/query/summarizeoperator.md) operator to group rows by certain values and apply aggregation functions, and the [render](kusto/query/renderoperator.md) operator to visualize the results of your query as graphical output in various chart types."
 
 ### count()
 
@@ -513,7 +503,7 @@ StormEvents
 
 ## Define variables with let statements
 
-Let statements are used to define variables within a query. Defining variables with let statements is helpful for improving code readability, reusability, and allows for experimentation with different values. Look at the following examples.
+Let statements are used to define variables within a query. Defining variables can improve the readability, reusability, and exploratory potential of your queries.
 
 ### Readability
 
@@ -571,9 +561,11 @@ StormEvents
 |10942|Flash Flood|Heavy rain associated with Hurricane Humberto caused flooded service roads along I-10 between Vidor and Orange.|
 |...|...|...|
 
-### Experiment with different values
+### Exploratory potential
 
-Defining a variable allows you to easily experiment with different boundary values by changing the variable and rerunning the query. Try changing the `MinDamage` value or the `EventLocation` value in the following query and see what happens.
+Once you define a variable, explore the data by manipulating their values by changing the variable value and rerunning the query.
+
+Try changing the `MinDamage` value or the `EventLocation` value in the following query and see what happens.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA11OzQqCQBC++xSDJ8VLl06ygViBYD9kL7DVooK7K+NobPTwrW7/c/v+pxEEm1otueSlAAbz2Xix11h+NQhFuT5zqrWymp8mebbeHbZZ4sdeQRrlZOm8O1wrgQIK4mRb2G/0LbuVFHXbQfREe4sEkoEF+zxiE10vJcf69kox1L26BHwog79g9N0bhnAybv5o2qlII42cMz0Abpac3PAAAAA=" target="_blank">Run the query</a>
