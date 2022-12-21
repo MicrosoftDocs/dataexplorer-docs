@@ -336,7 +336,7 @@ StormEvents
 |NORTHCAROLINA|82|23|5|
 |MISSOURI|78|20|5|
 
-## min(), max(), and avg()
+### min(), max(), and avg()
 
 Learn more about the storm types that caused crop damage using the min(), max(), and avg() aggregation functions.
 
