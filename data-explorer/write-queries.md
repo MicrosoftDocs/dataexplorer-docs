@@ -9,7 +9,7 @@ ms.localizationpriority: high
 
 # Write queries for Azure Data Explorer
 
-In this tutorial, you'll learn how to perform queries in Azure Data Explorer using the [Kusto Query Language](./kusto/query/index.md). We'll explore the basics of writing queries, including how to retrieve data, filter, aggregate and visualize your data.
+In this tutorial, you'll learn how to perform queries in Azure Data Explorer using the [Kusto Query Language](./kusto/query/index.md). We'll explore the essentials of writing queries, including how to retrieve data, filter, aggregate, and visualize your data.
 
 ## Prerequisites
 
@@ -22,7 +22,9 @@ MAKE SURE THEY'RE IN CONTEXT OF SAMPLES DB.
 
 ## Kusto Query Language overview
 
-The Kusto Query Language (KQL) is used to write queries and retrieve data in Azure Data Explorer. A KQL query consists of one or more query statements separated by a semicolon and returns data in tabular or graphical format. The two most common types of query statements are tabular expression statements and let statements.
+The Kusto Query Language (KQL) is used to write queries and retrieve data in Azure Data Explorer. A KQL query consists of one or more query statements separated by a semicolon and returns data in tabular or graphical format.
+
+There are three types of query statements: tabular expression statements, let statements, and set statements. In this tutorial, we'll mainly focus on tabular expression statements but will also briefly cover let statements, which allow us to use variables in queries.
 
 ### Tabular expression statements
 
@@ -52,45 +54,13 @@ StormEvents
 |--|
 |28|
 
-### Let statements
-
-Let statements define variables that can be used within a query.
-
-#### Example
-
-The following query defines a list of `WindStorms` to use twice in the tabular statement.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMsQoCMRBE+/uKIdUd+AdiaWujYCEiy2UhC2ZXNvGOgPjt6lmI3TzmzVy54iga99U8F2wQm1KWsT+FdHeXkZTDCiGbFjP9xLepFC2ch3W3zLYTay3dA3NiZyx4aDeG6BP9732A+bfdkTtVmRiJyoW0/WkvdINpapQAAAA=" target="_blank">Run the query</a>
-
-```Kusto
-let WindStorms = dynamic(["hurricane", "monsoon", "tornado"]);
-StormEvents
-| where EventType in~ (WindStorms) or EventNarrative has_any (WindStorms)
-```
-
 ## Learn common operators
 
 Let's learn some common query operators using the `StormEvents` table. These operators are key to understanding KQL and will be used in many of your queries.
 
-### count
-
-Let's start by using the [count](kusto/query/countoperator.md) operator to check the size of the `StormEvents` table.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRSM4vzSsBALU2eHsTAAAA" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents | count
-```
-
-|Count|
-|--|
-|59066|
-
 ### take
 
-Now, use the [take](kusto/query/takeoperator.md) operator to view a sample of the data. Keep in mind that the rows returned are random and aren't guaranteed unless the source data is sorted.
+To get a sense of the data in our table, let's use the [take](kusto/query/takeoperator.md) operator to view a sample of records. This operator returns a specified number of random rows from the table, which can be useful for previewing the data and becoming familiar with it.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d" target="_blank">Run the query</a>
@@ -114,7 +84,7 @@ The following table shows only 6 of the 22 returned columns. To see the full out
 
 ### project
 
-When writing queries, it's common that you'll be interested in a specific subset of columns. The [project](kusto/query/projectoperator.md) operator allows you to view a specific subset of columns.
+Let's use the [project](kusto/query/projectoperator.md) operator to simplify our view and select a specific subset of columns. This is often more efficient and easier to read than viewing all columns.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUShJzE5VMAWxCorys1KTSxSCSxJLUnUUwEpCKguATJfE3MT01ICi/ILUopJKAG0+9oFBAAAA" target="_blank">Run the query</a>
@@ -133,36 +103,9 @@ StormEvents
 |GEORGIA| Thunderstorm Wind| 2000|
 |MISSISSIPPI| Thunderstorm Wind| 20000|
 
-### distinct
-
-Let's use the [distinct](kusto/query/distinctoperator.md) operator to list all unique storm types.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRSMksLsnMSy5RAIuEVBakAgD24XVdIAAAAA==" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents | distinct EventType
-```
-
-There are 46 types of storms in our table.
-
-|EventType|
-|--|
-|Thunderstorm Wind|
-|Hail|
-|Flash Flood|
-|Drought|
-|Winter Weather|
-|Winter Storm|
-|Heavy Snow|
-|High Wind|
-|Frost/Freeze|
-|Flood|
-|...|
-
 ### where
 
-To filter the data based on certain criteria, use the [where](kusto/query/whereoperator.md) operator. For example, the following query will only return rows where the `EventType` and `State` columns meet certain conditions.
+The [where](kusto/query/whereoperator.md) operator is used to filter rows of data based on certain criteria. It allows you to specify conditions that must be met in order for a row to be included in the results of your query. Let's try it and look for storm events in a specific `State` of a specific `EventType`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSxJVbC1VVAPcY1wDFZXSMxLUQArCqksgEi45eTnp6iDtBQU5WelJpeANBWVhGTmpuoouOalQBhgg3QQWnUUXBJzE9NTA4ryC1KLSioBBDYIBX4AAAA=" target="_blank">Run the query</a>
