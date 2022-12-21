@@ -356,7 +356,7 @@ StormEvents
 | sort by AvgDamage
 ```
 
-EventType MaxDamage MinDamage AvgDamage
+|EventType| MaxDamage| MinDamage| AvgDamage|
 |--|--|--|--|
 |Frost/Freeze| 568600000| 3000| 9106087.5954198465|
 |Wildfire| 21000000| 10000| 7268333.333333333|
