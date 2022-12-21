@@ -475,7 +475,7 @@ StormEvents
 
 :::image type="content" source="media/write-queries/render-pie-chart.png" alt-text="Screenshot of Azure Data Explorer web UI pie chart rendered by the previous query.":::
 
-## Joins
+## Join data from two tables
 
 The [join](kusto/query/joinoperator.md) operator is used to combine rows from tables based on matching values in specified columns. This allows you to merge data from different sources and perform analysis on the combined data set.
 
