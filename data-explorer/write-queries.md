@@ -520,7 +520,7 @@ PopulationData | take 10
 
 The table contains a `State` column just like the one in the `StormEvents` table, and one more column showing the population of that state.
 
-Let's join the `PopulationData` table with `StormEvents` on the `State` column to find the total property damage per capita by state.
+Let's join the `PopulationData` table with `StormEvents` on the `State` column to find the total property damage caused by storms per capita by state.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOQQrCQAxF94J3yFJB8ASzsu4LPUHUIKlOMqYZodLDt2MRpeAy//NefuNq8fgk8W69GqDLMaLxi6A2TWTeVxjxShBKtZmPT7WFUw+No1NBW2WBG8slsAhZFn7kSaMp39FZpUJHUPkCybSls8/BbvGwJjtg4gkJyyn7H+l7s5qXJX8EI25L+sbiAAAA" target="_blank">Run the query</a>
@@ -533,7 +533,7 @@ StormEvents
 | sort by PropertyDamagePerCapita
 ```
 
-Add `render columnchart` to the query to visualize the result.
+Add `| render columnchart` to the query to visualize the result.
 
 :::image type="content" source="media/write-queries/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
 
