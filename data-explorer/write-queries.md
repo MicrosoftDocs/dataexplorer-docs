@@ -256,7 +256,7 @@ In the following examples, we'll use the [summarize](kusto/query/summarizeoperat
 
 ### count()
 
-Combine `summarize` with the [count](kusto/query/count-aggfunction.md) aggregation function to find the number of events by state.
+Use `summarize` with the [count](kusto/query/count-aggfunction.md) aggregation function to find the number of events by state.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUAiznnl+aVKNgqJINoDU2FpEqF4JLEklQAtZY60TYAAAA=" target="_blank">Run the query</a>
@@ -280,7 +280,7 @@ StormEvents
 |NEWYORK|1750|
 |...|...|
 
-Let's use `render` to visualize the output.
+Then, use `render` to visualize the output.
 
 ```Kusto
 StormEvents
@@ -290,9 +290,9 @@ StormEvents
 
 :::image type="content" source="media/write-queries/count-by-state-bar-chart.png" alt-text="Screenshot of event count by state bar chart created with the render operator. ":::
 
-### countif(), dcount() and dcountif()
+### countif(), dcount(), and dcountif()
 
-Multiple aggregation functions can be used in a single summarize operator to produce several computed columns.
+Multiple aggregation functions can be used in a single `summarize` operator to produce several computed columns.
 
 The following query uses the [countif()](kusto/query/countif-aggfunction.md), [dcount()](kusto/query/dcount-aggfunction.md), and [dcountif()](kusto/query/dcountif-aggfunction.md) aggregation functions to find:
 
@@ -325,25 +325,25 @@ StormEvents
 
 ### min(), max(), and avg()
 
-Let's learn more about the storm types that caused crop damage using the `min()`, `max()`, and `avg()` aggregation functions.
+Let's learn more about storm types that cause crop damage using the `min()`, `max()`, and `avg()` aggregation functions.
 
 We'll filter out rows with no damaged crops, calculate the minimum, maximum, and average crop damage for each event type, and sort the result by the average damage.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcEnMTUxPdS7KLyhWsFMwAIoXl+bmJhZlVqVyKQCBb2IFRIltbmKFBpJqTR0FiILMPJiCzDxsChzL0qEKEsvSURSApZMqFcBOCqksSAXZnl9UAhKD6wIA7R/hf7UAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVXBJzE1MT3Uuyi8oVrBTMABJFJfm5iYWZVal8nIpAIFvYgVIGqLQNjexQgNJj6aOAlRVZh6yqsw8rKocy9KRVCWWpaOogqhJqlQAOzKksiAV7Jz8ohKQIIpeANxkeM/MAAAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
 | where DamageCrops > 0
 | summarize
-    MaxDamage=max(DamageCrops), 
-    MinDamage=min(DamageCrops), 
-    AvgDamage=avg(DamageCrops)
+    MaxCropDamage=max(DamageCrops), 
+    MinCropDamage=min(DamageCrops), 
+    AvgCropDamage=avg(DamageCrops)
     by EventType
-| sort by AvgDamage
+| sort by AvgCropDamage
 ```
 
-|EventType|MaxDamage|MinDamage|AvgDamage|
+|EventType|MaxCropDamage|MinCropDamage|AvgCropDamage|
 |--|--|--|--|
 |Frost/Freeze|568600000|3000|9106087.5954198465|
 |Wildfire|21000000|10000|7268333.333333333|
