@@ -7,6 +7,11 @@ ms.date: 12/19/2022
 ms.localizationpriority: high
 ---
 
+IDEAS FOR HEADINGS/FLOW:
+
+- Write multi-table queries
+- Visualize results
+
 # Write queries for Azure Data Explorer
 
 In this tutorial, you'll learn how to perform queries in Azure Data Explorer using the [Kusto Query Language](./kusto/query/index.md). We'll explore the essentials of writing queries, including how to retrieve data, filter, aggregate, and visualize your data.
@@ -319,7 +324,7 @@ The query then uses the `top` operator to identify the states with the most crop
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVeBSAIJgkGRxeGZJhnNRfoFLYm5ieqqCrUJyfmleSWaaBkQAJFWsYKdgoKmD0BRSWZBaDFSaAlarAbYAJIahBsPwFJjpcD06CugWgc1IqgQak1iSCnR2SX6BgilEANPBAO37ssfiAAAA" target="_blank">Run the query</a>
 
 ```Kusto
-StormEvents 
+StormEvents
 | summarize 
     StormsWithCropDamage = countif(DamageCrops > 0),
     StormTypes = dcount(EventType),
@@ -346,7 +351,7 @@ In the following query, we'll filter out rows with no damaged crops, calculate t
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcEnMTUxPdS7KLyhWsFMwAIoXl+bmJhZlVqVyKQCBb2IFRIltbmKFBpJqTR0FiILMPJiCzDxsChzL0qEKEsvSURSApZMqFcBOCqksSAXZnl9UAhKD6wIA7R/hf7UAAAA=" target="_blank">Run the query</a>
 
 ```kusto
-StormEvents 
+StormEvents
 | where DamageCrops > 0
 | summarize
     MaxDamage=max(DamageCrops), 
@@ -475,131 +480,126 @@ StormEvents
 
 :::image type="content" source="media/write-queries/render-pie-chart.png" alt-text="Screenshot of Azure Data Explorer web UI pie chart rendered by the previous query.":::
 
-## Perform advanced aggregations
+## Joins
 
-We've already learned about basic aggregation functions like `count` and `summarize`. Now, let's move on to some more complex aggregation functions.
+The [join](kusto/query/joinoperator.md) operator is used to combine rows from tables based on matching values in specified columns. This allows you to merge data from different sources and perform analysis on the combined data set.
 
-### arg_max()
-
-[**arg_max()**](./kusto/query/arg-max-aggfunction.md):
-Finds a row in the group that maximizes an expression, and returns the value of another expression (or * to return the entire row).
-
-The following query returns the time of the last flood report in each state.
+For example, let's say you want to create a list of states in which both lightning and avalanche events occurred. Use the join operator to merge the rows of two tables—one containing data on lightning events and the other containing data on avalanche events—based on the `State` column.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQDzQyoLUhVsbRWU3HLy81OUQLLFpbm5iUWZVakKiUXp8bmJFRrBJYlFJSGZuak6ClqaCkmVCkCBklSQ2oKi%2fKzU5BKIgI4CkkLXvBQoA2YNAHO1S0OFAAAA" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| where EventType == "Flood"
-| summarize arg_max(StartTime, *) by State
-| project State, StartTime, EndTime, EventType
-```
-
-### make_set()
-
-[**make_set()**](./kusto/query/makeset-aggfunction.md): Returns a dynamic (JSON) array of the set of distinct values that an expression takes in the group.
-
-The following query returns all the times when a flood was reported by each state and creates an array from the set of distinct values.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWLQQ6CQBAE7yb8ocNJE76wR3mA8IEFOxF1mM3siIHweAVPHqsq1bianCeOnovDiveNRuzczokIAWX9VL2WW80vkWjDQuzuwqTmGQESH8z0Y%2bPRvB2EJ3QzvuTcvmR6Z%2b8%2fUf3NH6ZkMFeAAAAA" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| where EventType == "Flood"
-| summarize FloodReports = make_set(StartTime) by State
-| project State, FloodReports
-```
-
-### top-nested
-
-The [top-nested](kusto/query/topnestedoperator.md) operator produces hierarchical top results, where each level drills down based on the values of the previous level. This operator is useful for creating dashboards or for answering questions like "What are the top N values of K1, and for each of them, what are the top M values of K2?"
-
-The following query returns a hierarchical table with `State` at the top level followed by `Sources`.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjJL9DNSy0uSU1RMFbIT1MILkksSVVIqlQoLs3VcEnMTUxPDSjKL0gtKqnU1FHg5UJSbwRWn19alIxLAwBef4q5bAAAAA==" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| top-nested 3 of State by sum(DamageProperty), 
-top-nested 2 of Source by sum(DamageProperty)
-```
-
-|State| aggregated_State| Source| aggregated_Source|
-|--|--|--|--|
-|CALIFORNIA| 1445937600| Fire Department/Rescue| 826550000|
-|CALIFORNIA| 1445937600| Newspaper| 554508100|
-|OKLAHOMA| 915470300| Emergency Manager| 721867000|
-|OKLAHOMA| 915470300| Trained Spotter| 152121000|
-|KANSAS| 690178500| NWS Storm Survey| 256005000|
-|KANSAS| 690178500| Emergency Manager| 188137500|
-
-### pivot()
-
-[**pivot() plugin**](./kusto/query/pivotplugin.md): Rotates a table by turning the unique values from one column in the input table into multiple columns in the output table. The operator performs aggregations where they're required on any remaining column values in the final output.
-
-The following query applies a filter and pivots the rows into columns.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSgoys9KTS5RCC5JLEnVUQBLhFQWpILkyjNSi1IhMgrFJYlFJcXlmSUZCkqOPkoIabgOhYzEYgWl8My8FLBsalliTilIZ0FmWX6JBtgUTQDlv21NfQAAAA%3d%3d" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents
-| project State, EventType
-| where State startswith "AL"
-| where EventType has "Wind"
-| evaluate pivot(State)
-```
-
-## Join data across tables
-
-Use the [join](joinoperator.md) operator to merge the rows of two tables by matching values of the specified column(s) from each table.
-
-Find two specific event types and in which state each of them happened by pulling storm events with the first `EventType` and the second `EventType`, and then join the two sets on `State`:
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZR8MtMzSvIy89KVgAqy8jPzFLIz81JsM/PyUosUNLgUgCAYYYgCWAC7SY5liTmJeckZqUpgRZpgMj8PqD2xJFVBAWh8SmZxSWZecglECABlvNsfnAAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
 | where EventType == "Lightning"
-| join (
+| join kind=inner (
     StormEvents 
     | where EventType == "Avalanche"
-) on State  
+    )
+    on State  
 | distinct State
 ```
 
-Let's join data from another table in our database.
-
-```kusto
-StormEvents
-| where EventType == "Tornado"
-| join kind=innerunique PopulationData on State
-| project State, Population
-```
+|State|
+|--|
+|OREGON|
+|UTAH|
+|WYOMING|
+|WASHINGTON|
+|COLORADO|
+|IDAHO|
+|NEVADA|
 
 > [!NOTE]
 >
-> - Reduce the number of rows and columns in the input tables using the `where` and `project` operators before performing the join.
+> - Use `where` and `project` to reduce the number of rows and columns in the input tables before performing the join.
 > - Use the smaller table as the left table in the join.
-> - Make sure the columns being used for the join have the same name, and use `project` to rename a column if needed.
+> - Make sure that the columns being used for the join have the same name and data type, and use `project` to rename a column if needed.
 
-### Let statements
+## Define variables with let statements
 
-Let statements define variables that can be used within a query.
+Let statements are used to define variables within a query. Defining variables with let statements is helpful to increase code readability, reusability, and for experimentation with different values. Look at the following examples.
 
-#### Example
+### Readability
 
-The following query defines a list of `WindStorms` to use twice in the tabular statement.
+Here we use a let statement to separate out the parts of the query expression in the previous `join` example. The results are unchanged.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMsQoCMRBE+/uKIdUd+AdiaWujYCEiy2UhC2ZXNvGOgPjt6lmI3TzmzVy54iga99U8F2wQm1KWsT+FdHeXkZTDCiGbFjP9xLepFC2ch3W3zLYTay3dA3NiZyx4aDeG6BP9732A+bfdkTtVmRiJyoW0/WkvdINpapQAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WOsQ6DMBBDd77C4jeqDB26sZUfiOBErg1OlZyoKvHxRCAxtFM338l+dhRDp1MwKqe7pTwXOOzitgitYMU7SBbsZ/95CZxDe2baSxMr47r46DkE+YNxZirje0Oz4pGUeCpHp6Tkn4rE2uFNqnXUYsrBjscGj91by9QAAAA=" target="_blank">Run the query</a>
+
+```kusto
+let LightningStorms = StormEvents | where EventType == "Lightning";
+let AvalancheStorms = StormEvents | where EventType == "Avalanche";
+LightningStorms 
+| join kind=inner AvalancheStorms on State
+| distinct State
+```
+
+|State|
+|--|
+|OREGON|
+|UTAH|
+|WYOMING|
+|WASHINGTON|
+|COLORADO|
+|IDAHO|
+|NEVADA|
+
+### Reusability
+
+The following query defines a list of `WindStorms` to use multiple times in the tabular statement.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OQQuCQBCF7/6KwZOC/yA6Bl3sotAhIgZ3cDdyRmY3Q+jHZ6skNrf33vce86AAZ8emCqKdhz2YkbFzTXZJYLq0FmU0khawaPtkQ+q/eCymxRyUwl6Ef+DRtXYDVEGF28VaoBLVMcHKRvua75L4z2EgDj55w8uSEkRZjz2BY8jWr3MQncMTqmJwA4FFf0MeN9g01KvcqQnrVPFX/ACqRzMEEAEAAA==" target="_blank">Run the query</a>
 
 ```Kusto
-let WindStorms = dynamic(["hurricane", "monsoon", "tornado"]);
+let WindStorms = dynamic([
+    "Tornado", 
+    "Thunderstorm Wind",
+    "Monsoon", 
+    "High Wind",
+    "Strong Wind", 
+    "Marine High Wind"
+    ]);
 StormEvents
-| where EventType in~ (WindStorms) or EventNarrative has_any (WindStorms)
+| where EventType in (WindStorms) or EventNarrative has_any (WindStorms)
 ```
+
+|EventType|EventNarrative|
+|--|--|
+|Tornado| A tornado touched down in the Town of Eustis at the northern end of West Crooked Lake. The tornado quickly intensified to EF1 strength as it moved north northwest through Eustis. The track was just under two miles long and had a maximum width of 300 yards.  The tornado destroyed 7 homes. Twenty seven homes received major damage and 81 homes reported minor damage. There were no serious injuries and property damage was set at $6.2 million.|
+|Thunderstorm Wind| The county dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206. The cost of tree removal was estimated.|
+|Thunderstorm Wind| Numerous large trees were blown down with some down on power lines. Damage occurred in eastern Adams county.|
+|..|..|
+
+### Experiment with different values
+
+Defining a variable allows you to easily experiment with different boundary values by changing the variable and rerunning the query. Try changing the `MinDamage` value or the `EventLocation` value in the following query and see what happens.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA11OzQqCQBC++xSDJ8VLl06ygViBYD9kL7DVooK7K+NobPTwrW7/c/v+pxEEm1otueSlAAbz2Xix11h+NQhFuT5zqrWymp8mebbeHbZZ4sdeQRrlZOm8O1wrgQIK4mRb2G/0LbuVFHXbQfREe4sEkoEF+zxiE10vJcf69kox1L26BHwog79g9N0bhnAybv5o2qlII42cMz0Abpac3PAAAAA=" target="_blank">Run the query</a>
+
+```kusto
+let MinDamage = 500000;
+let EventLocation = "CALIFORNIA";
+StormEvents
+| where State == EventLocation
+| where DamageCrops + DamageProperty >= MinDamage
+| summarize Damage=round(avg(DamageProperty + DamageCrops)) by EventType
+| sort by Damage
+```
+
+|EventType|Damage|
+|--|--|
+|Wildfire|97707143|
+|Frost/Freeze|54662917|
+|Debris Flow|48000000|
+|High Wind|15000000|
+|Thunderstorm Wind|4000000|
+|Drought|2000000|
+|Flash Flood|500000|
+|Flood|500000|
+|Dust Storm|500000|
 
 ## Next steps
 
