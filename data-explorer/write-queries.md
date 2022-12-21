@@ -7,11 +7,6 @@ ms.date: 12/19/2022
 ms.localizationpriority: high
 ---
 
-IDEAS FOR HEADINGS/FLOW:
-
-- Write multi-table queries
-- Visualize results
-
 # Write queries for Azure Data Explorer
 
 In this tutorial, you'll learn how to perform queries in Azure Data Explorer using the [Kusto Query Language](./kusto/query/index.md). We'll explore the essentials of writing queries, including how to retrieve data, filter, aggregate, and visualize your data.
