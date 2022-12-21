@@ -359,7 +359,7 @@ StormEvents
 
 ### bin()
 
-Instead of grouping rows by a specific column value, we can use the [bin()](kusto/query/binfunction.md) function to divide the data into distinct sets based on numeric or time values.
+Instead of grouping rows by a specific column value, we can use the [bin()](kusto/query/binfunction.md) function to divide the data into distinct ranges based on numeric or time values.
 
 The following example finds the event count of storms that caused crop damage for each week in 2007.
 
