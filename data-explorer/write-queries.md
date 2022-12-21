@@ -493,11 +493,49 @@ StormEvents
 |IDAHO|
 |NEVADA|
 
-> [!NOTE]
->
-> - Use `where` and `project` to reduce the number of rows and columns in the input tables before performing the join.
-> - Use the smaller table as the left table in the join.
-> - Make sure that the columns being used for the join have the same name and data type, and use `project` to rename a column if needed.
+### Cross-table joins
+
+We have access to another table in the sample database called `PopulationData`. Use `take` to see what data this table contains.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwvILyjNSSzJzM9zSSxJVKhRKEnMTlUwNAAAWLY+MRgAAAA=" target="_blank">Run the query</a>
+
+```kusto
+PopulationData | take 10
+```
+
+|State|Population|
+|--|--|
+|ALABAMA|4918690|
+|ALASKA|727951|
+|ARIZONA|7399410|
+|ARKANSAS|3025880|
+|CALIFORNIA|39562900|
+|COLORADO|5826180|
+|CONNECTICUT|3559050|
+|DELAWARE|982049|
+|DISTRICT OF COLUMBIA|709951|
+|FLORIDA|21711200|
+|...|...|
+
+The table contains a `State` column just like the one in the `StormEvents` table, and one more column showing the population of that state.
+
+Let's join the `PopulationData` table with `StormEvents` on the `State` column to find the total property damage per capita by state.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOQQrCQAxF94J3yFJB8ASzsu4LPUHUIKlOMqYZodLDt2MRpeAy//NefuNq8fgk8W69GqDLMaLxi6A2TWTeVxjxShBKtZmPT7WFUw+No1NBW2WBG8slsAhZFn7kSaMp39FZpUJHUPkCybSls8/BbvGwJjtg4gkJyyn7H+l7s5qXJX8EI25L+sbiAAAA" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| summarize PropertyDamage = sum(DamageProperty) by State
+| join kind=innerunique PopulationData on State
+| project State, PropertyDamagePerCapita = PropertyDamage / Population
+| sort by PropertyDamagePerCapita
+```
+
+Add `render columnchart` to the query to visualize the result.
+
+:::image type="content" source="media/write-queries/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
 
 ## Define variables with let statements
 
