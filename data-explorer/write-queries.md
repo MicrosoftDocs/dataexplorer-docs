@@ -1,5 +1,5 @@
 ---
-title: Write queries for Azure Data Explorer
+title: Write KQL queries for Azure Data Explorer
 description: Learn how to perform basic and more advanced queries for Azure Data Explorer.
 ms.reviewer: mblythe
 ms.topic: tutorial
@@ -7,7 +7,7 @@ ms.date: 12/19/2022
 ms.localizationpriority: high
 ---
 
-# Write queries for Azure Data Explorer
+# Write KQL Queries for Azure Data Explorer
 
 In this tutorial, you'll learn how to perform queries in Azure Data Explorer using the [Kusto Query Language](./kusto/query/index.md). We'll explore the essentials of writing queries, including how to retrieve data, filter, aggregate, and visualize your data.
 
@@ -513,7 +513,7 @@ StormEvents
 
 ## Define variables with let statements
 
-Let statements are used to define variables within a query. Defining variables with let statements is helpful to increase code readability, reusability, and for experimentation with different values. Look at the following examples.
+Let statements are used to define variables within a query. Defining variables with let statements is helpful for improving code readability, reusability, and allows for experimentation with different values. Look at the following examples.
 
 ### Readability
 
@@ -545,27 +545,31 @@ LightningStorms
 The following query defines a list of `WindStorms` to use multiple times in the tabular statement.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OQQuCQBCF7/6KwZOC/yA6Bl3sotAhIgZ3cDdyRmY3Q+jHZ6skNrf33vce86AAZ8emCqKdhz2YkbFzTXZJYLq0FmU0khawaPtkQ+q/eCymxRyUwl6Ef+DRtXYDVEGF28VaoBLVMcHKRvua75L4z2EgDj55w8uSEkRZjz2BY8jWr3MQncMTqmJwA4FFf0MeN9g01KvcqQnrVPFX/ACqRzMEEAEAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12PwQqDQAxE735F8KTgH5QeC17sRaGHUkrQ4G6pScmuFqEfX7vais1tMm+G5E4eTpab0ot2DvbQjIydrZNzBNPElShjI3EGizY9N6Tug4dgnM1GIexE+AfmvaqtkekL5LY1m0TpVbhdVkuqQLVMsLJhfUl3UTjwMBB7F73gaUgJgqzGB4FlSNY3UhCdzSOqorcDgUF3RR432FT0ULlR7deq7C/4Bhq91F4hAQAA" target="_blank">Run the query</a>
 
 ```Kusto
 let WindStorms = dynamic([
     "Tornado", 
     "Thunderstorm Wind",
     "Monsoon", 
+    "Hurricane",
     "High Wind",
     "Strong Wind", 
     "Marine High Wind"
     ]);
 StormEvents
 | where EventType in (WindStorms) or EventNarrative has_any (WindStorms)
+| project EpisodeId, EventType, EventNarrative
 ```
 
-|EventType|EventNarrative|
-|--|--|
-|Tornado| A tornado touched down in the Town of Eustis at the northern end of West Crooked Lake. The tornado quickly intensified to EF1 strength as it moved north northwest through Eustis. The track was just under two miles long and had a maximum width of 300 yards.  The tornado destroyed 7 homes. Twenty seven homes received major damage and 81 homes reported minor damage. There were no serious injuries and property damage was set at $6.2 million.|
-|Thunderstorm Wind| The county dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206. The cost of tree removal was estimated.|
-|Thunderstorm Wind| Numerous large trees were blown down with some down on power lines. Damage occurred in eastern Adams county.|
-|..|..|
+|EpisodeId|EventType|EventNarrative|
+|--|--|--|
+|829|Thunderstorm Wind|Sheriff reported a couple of trees down near Elijah Clark State Park.|
+|...|...|...|
+|10020|Drought|The southwest monsoon brought surges of moisture to western Colorado resulting in periodic outbreaks of showers and thunderstorms. This resulted in some improvement across extreme southwest Colorado where moderate drought lost its grip. However, abnormally dry conditions and water supply concerns persisted across the area due to long-term dryness and above normal temperatures.|
+|...|...|...|
+|10942|Flash Flood|Heavy rain associated with Hurricane Humberto caused flooded service roads along I-10 between Vidor and Orange.|
+|...|...|...|
 
 ### Experiment with different values
 
