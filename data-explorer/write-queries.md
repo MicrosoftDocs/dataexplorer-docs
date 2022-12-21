@@ -250,9 +250,7 @@ With the computed `Duration` column, it stands out that the flood that caused th
 
 ## Find insights with aggregation functions
 
-Aggregation functions allow you to group and combine data from multiple rows into a single summary value. The summary value type depends on the chosen function, for example a count, maximum, minimum, or average value. Aggregation functions are especially useful for discovering insights when working with large amounts of individual events, like our storm events.
-
-In the following examples, we'll use the [summarize](kusto/query/summarizeoperator.md) operator to group rows by certain values and apply aggregation functions. We'll also use the [render](kusto/query/renderoperator.md) operator to visualize the results of your query as graphical output in various chart types.
+Aggregation functions allow you to group and combine data from multiple rows into a summary value. In the following examples, we'll use the [summarize](kusto/query/summarizeoperator.md) operator to group rows and apply aggregation functions, and the [render](kusto/query/renderoperator.md) operator to visualize the results in charts. These functions are useful for finding insights when working with large amounts of individual events.
 
 ### count()
 
