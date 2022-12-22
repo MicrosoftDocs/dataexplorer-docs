@@ -437,12 +437,6 @@ StormEvents
 |PENNSYLVANIA|25|
 |GEORGIA|24|
 |ILLINOIS|23|
-|MARYLAND|23|
-|NORTH CAROLINA|23|
-|MICHIGAN|22|
-|FLORIDA|22|
-|OREGON|21|
-|KANSAS|21|
 |...|...|
 
 It seems some states experience more types of storms than others. Could it be that an increase in storm types is correlated with an increase in damages or deaths?
