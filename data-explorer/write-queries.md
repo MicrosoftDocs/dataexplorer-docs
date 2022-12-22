@@ -406,7 +406,9 @@ Add `| render timechart` to the end of the query to visualize the results.
 
 ### sum()
 
-The results of the last two queries were interesting, since we saw that Freeze/Frost events caused the most damage on average, yet based on the chart most events that cause some level of crop damage happen in the summer. Let's use [sum()](kusto/query/sum-aggfunction.md) to change our last query to count the total damaged crops instead of the amount of events.
+The results of the previous queries revealed that Freeze/Frost events tend to cause the most damage on average, but the chart showed that most events that cause some level of crop damage occur during the summer months.
+
+To further investigate this, modify the last query to use the [sum()](kusto/query/sum-aggfunction.md) function instead of the `count()` function. This will allow us to see the total amount of damaged crops, rather than just the number of events that caused some damage.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOwQrCMBBE74X+wxwTsCWth570on5B/YHULLaHpGWzWhQ/3gRBdNjTm2FnepnZn+4UJJbFC+tITOjFspwnTxhIVqIA5ayQJKJaY7rKNOk06hr/vGmrbaM1ygJJNjgcrbdXOvC8ROxhcke8eW95ehIy/gSwy1j9pDWGB4YpqO+YDTqn8wOm4IiRay9jMt/qYo/IxAAAAA==" target="_blank">Run the query</a>
@@ -421,7 +423,7 @@ StormEvents
 
 :::image type="content" source="media/write-queries/sum-crop-damage-by-week.png" alt-text="Screenshot of time chart showing crop damage by week.":::
 
-Now we see that there is a peak in January, which probably was due to Freeze/Frost.
+Now we can see a peak in crop damage in January, which probably was due to Freeze/Frost.
 
 ### dcount()
 
