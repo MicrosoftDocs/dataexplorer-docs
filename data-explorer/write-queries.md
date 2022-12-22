@@ -481,6 +481,32 @@ StormEvents
 
 Based on the chart, it seems that there may be a relationship worth exploring between the number of storm types and deaths.
 
+### make_set()
+
+The [make_set()](kusto/query/makeset-aggfunction.md) operator is a way to take a bunch of rows in a table and turn them into a array of unique values.
+
+The following query uses `make_set()` to create a array of the event types that cause deaths in each state. The resulting table is then sorted by the number of storm types in each array.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NMQ7CMAxFdyTu4LGVGLgATGVgLhJjZeCLBEhSOS4oiMODC2Lq+vz8fqtJwuaOqHk+e9HDQUANWF1uvOCotKYlJfmxbTz9qfl5CIHFP0GthXalR957dV+bVhT4ii5Dq3HD7jUdysdmhQV6SRfrjWAxWRl3kqj9sQiX7oZ4VldNyfUbAcrl9NEAAAA=" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents
+| where DeathsDirect > 0 or DeathsIndirect > 0
+| summarize StormTypesWithDeaths = make_set(EventType) by State
+| project State, StormTypesWithDeaths
+| sort by array_length(StormTypesWithDeaths)
+```
+
+|State|StormTypesWithDeaths|
+|--|--|
+|CALIFORNIA|["Thunderstorm Wind","High Surf","Cold/Wind Chill","Strong Wind","Rip Current","Heat","Excessive Heat","Wildfire","Dust Storm","Astronomical Low Tide","Dense Fog","Winter Weather"]|
+|TEXAS|["Flash Flood","Thunderstorm Wind","Tornado","Lightning","Flood","Ice Storm","Winter Weather","Rip Current","Excessive Heat","Dense Fog","Hurricane (Typhoon)","Cold/Wind Chill"]|
+|OKLAHOMA|["Flash Flood","Tornado","Cold/Wind Chill","Winter Storm","Heavy Snow","Excessive Heat","Heat","Ice Storm","Winter Weather","Dense Fog"]|
+|NEW YORK|["Flood","Lightning","Thunderstorm Wind","Flash Flood","Winter Weather","Ice Storm","Extreme Cold/Wind Chill","Winter Storm","Heavy Snow"]|
+|KANSAS|["Thunderstorm Wind","Heavy Rain","Tornado","Flood","Flash Flood","Lightning","Heavy Snow","Winter Weather","Blizzard"]|
+|...|...|
+
 ### case()
 
 The [case()](kusto/query/casefunction.md) function groups data into buckets based on specified conditions. The function returns the corresponding result expression for the first satisfied predicate, or the final else expression if none of the predicates are satisfied.
