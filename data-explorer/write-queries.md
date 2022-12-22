@@ -26,6 +26,8 @@ To set up your environment for this tutorial:
 1. Select the **Samples** database. Queries run within the context of a specific database, so it's important to select the appropriate database context to make sure your queries run successfully.
 1. Under the **Tables** section of the **Samples** database, you'll find the **StormEvents** table. This is the table we'll be using in this tutorial.
 
+:::image type="content" source="media/write-queries/web-ui-help-cluster-environment.png" alt-text="Screenshot of the Azure Data Explorer web UI help cluster environment.":::
+
 ## Kusto Query Language overview
 
 The [Kusto Query Language (KQL)](./kusto/query/index.md) is used to write queries in Azure Data Explorer. A KQL query consists of one or more query statements and returns data in tabular or graphical format.
