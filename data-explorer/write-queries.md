@@ -472,7 +472,7 @@ StormEvents
 | render scatterchart
 ```
 
-:::image type="content" source="media/write-queries/damage-by-storm-type-scatter-chart.png" alt-text="Screenshot of scatter chart showing property damage by storm type count.":::
+:::image type="content" source="media/write-queries/damage-by-storm-type-count-scatter-chart.png" alt-text="Screenshot of scatter chart showing property damage by storm type count.":::
 
 It doesn't seem there's a tight connection here.
 
