@@ -9,7 +9,7 @@ ms.localizationpriority: high
 
 # Write KQL Queries for Azure Data Explorer
 
-In this tutorial, you'll learn how to perform queries in Azure Data Explorer using the Kusto Query Language (KQL). We'll explore the essentials, including how to retrieve data, filter, aggregate, and visualize your data.
+In this tutorial, you'll learn how to use the Kusto Query Language (KQL) to perform queries in Azure Data Explorer. We'll give an overview of KQL and then provide you with the essential concepts and tools needed for retrieving, manipulating, and visualizing data. You'll also learn how to join tables and define variables to make your queries more efficient and reusable. By the end of this tutorial, you'll have the foundation you need in KQL to start uncovering valuable insights in your data.
 
 ## Prerequisites
 
