@@ -419,7 +419,7 @@ StormEvents
 | render timechart
 ```
 
-:::image type="content" source="media/query-monitor-data/sum-crop-damage-by-week.png" alt-text="Screenshot of time chart showing crop damage by week.":::
+:::image type="content" source="media/write-queries/sum-crop-damage-by-week.png" alt-text="Screenshot of time chart showing crop damage by week.":::
 
 Now we see that there is a peak in January, which probably was due to Freeze/Frost.
 
@@ -470,7 +470,7 @@ StormEvents
 | render scatterchart
 ```
 
-:::image type="content" source="media/write-queries/crop-damage-by-storm-type-scatter-chart.png" alt-text="Screenshot of scatter chart showing property damage by storm type count.":::
+:::image type="content" source="media/write-queries/damage-by-storm-type-scatter-chart.png" alt-text="Screenshot of scatter chart showing property damage by storm type count.":::
 
 It doesn't seem there's a tight connection here.
 
