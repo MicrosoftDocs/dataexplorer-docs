@@ -13,12 +13,18 @@ In this tutorial, you'll learn how to use the Kusto Query Language (KQL) to perf
 
 ## Prerequisites
 
-- A Microsoft account or an Azure Active Directory user identity to access the [help cluster](https://dataexplorer.azure.com/clusters/help).
-- Familiarity with database structures like tables, columns, and rows.
+- A Microsoft or Azure account to access the [help cluster](https://dataexplorer.azure.com/clusters/help)
+- Familiarity with database structures like tables, columns, and rows
 
 ## Connect to the data
 
-MAKE SURE THEY'RE IN CONTEXT OF SAMPLES DB.
+To set up your environment for this tutorial:
+
+1. Go to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and sign in with your Azure account.
+1. In the left pane, select the **Query** option.
+1. Expand the **help** cluster.
+1. Select the **Samples** database. Queries run within the context of a specific database, so it's important to select the appropriate database context to make sure your queries run successfully.
+1. Under the **Tables** section of the **Samples** database, you'll find the **StormEvents** table. This is the table we'll be using in this tutorial.
 
 ## Kusto Query Language overview
 
