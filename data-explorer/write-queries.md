@@ -297,42 +297,42 @@ StormEvents
 
 :::image type="content" source="media/write-queries/total-storms-by-state-bar-chart.png" alt-text="Screenshot of total storms by state bar chart created with the render operator. ":::
 
-### countif(), dcount(), and dcountif()
+### countif()
 
-Multiple aggregation functions can be used in a single `summarize` operator to produce several computed columns.
+It's possible to use multiple aggregation functions in a single `summarize` operator to produce several computed columns.
 
-The following query uses the [countif()](kusto/query/countif-aggfunction.md), [dcount()](kusto/query/dcount-aggfunction.md), and [dcountif()](kusto/query/dcountif-aggfunction.md) aggregation functions to find:
+Let's add the [countif()](kusto/query/countif-aggfunction.md) function to our query to add a column showing the count of storms that caused damage. Then, we'll `extend` our table with a calculation between the `TotalStorms` and `StormsWithCropDamage` columns to find the percentage of storms that caused damage.
 
-1. The number of storms that caused crop damage by state
-1. The unique number of storm types by state
-1. The unique number of storm types that caused crop damage by state
-
-The query then uses the `top` operator to identify the states with the most crop damage from storms.
+Finally, use the `top` operator to identify states with the most crop damage from storms.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVeBSAIJgkGRxeGZJhnNRfoFLYm5ieqqCrUJyfmleSWaaBkQAJFWsYKdgoKmD0BRSWZBaDFSaAlarAbYAJIahBsPwFJjpcD06CugWgc1IqgQak1iSCnR2SX6BgilEANPBAO37ssfiAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OwQrCMBBE74X+wxwTKVgFj3pR70IFz2m7aqFJSrIVFT/ehKAIdY+zM/OmYuv0/kaGfZ694EetleuehDxDuKNl1VfR47FGY0fDQhbpl+RTx9ets8NOaXWhj6k7iyTEl8cGpUyh+hFyiinC6M5kWhzINYE/KUoBF+paIdi2dqx7Ev+oEnN8DT+TJWZYlKUssJQRyHbAKk2YlrwBwRSpiQoBAAA=" target="_blank">Run the query</a>
 
-```Kusto
+```kusto
 StormEvents
 | summarize 
-    StormsWithCropDamage = countif(DamageCrops > 0),
-    StormTypes = dcount(EventType),
-    StormTypesWithCropDamage = dcountif(EventType, DamageCrops > 0)
+    TotalStorms = count(),
+    StormsWithCropDamage = countif(DamageCrops > 0)
     by State
+| extend PercentWithCropDamage = 
+    round((todouble(StormsWithCropDamage) / todouble(TotalStorms) * 100), 2)
 | top 5 by StormsWithCropDamage
 ```
 
-|State|StormsWithCropDamage|StormTypes|StormTypesWithCropDamage|
+|State|TotalStorms|StormsWithCropDamage|PercentWithCropDamage|
 |--|--|--|--|
-|IOWA|359|19|6|
-|NEBRASKA|201|16|7|
-|MISSISSIPPI|105|13|4|
-|NORTHCAROLINA|82|23|5|
-|MISSOURI|78|20|5|
+|IOWA|2337|359|15.36|
+|NEBRASKA|1766|201|11.38|
+|MISSISSIPPI|1218|105|8.62|
+|NORTH CAROLINA|1721|82|4.76|
+|MISSOURI|2016|78|3.87|
+
+> [!NOTE]
+> The `todouble()` function is used to cast the integer values returned by the `count()` and `countif()` aggregation functions to doubles before performing division. Without the `todouble()` function, the division would be an integer division, resulting in a truncated result.
 
 ### min(), max(), and avg()
 
-Let's learn more about storm types that cause crop damage using the `min()`, `max()`, and `avg()` aggregation functions.
+Let's learn more about types of storms that cause crop damage using the `min()`, `max()`, and `avg()` aggregation functions.
 
 We'll filter out rows with no damaged crops, calculate the minimum, maximum, and average crop damage for each event type, and sort the result by the average damage.
 
