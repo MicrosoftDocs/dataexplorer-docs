@@ -460,9 +460,9 @@ StormEvents
 
 :::image type="content" source="media/write-queries/damage-by-storm-type-count-scatter-chart.png" alt-text="Screenshot of scatter chart showing property damage by storm type count.":::
 
-It doesn't seem there's a tight connection here.
+We don't see strong correlation.
 
-What about deaths?
+Let's check the relationship between storm types and total deaths.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NsQ6DMAxEdyT+wSOo/EI3OnSGH3ATS4CaBDlHJap+fBOyxNvdPd9NCOoeH/GIbfOjeDjHun6lbSjdlNP53CXSnawJh0d3wdnrhwLNAfwehbFkKjV0RYyrikFPt8p7elvc8vo60wRD8vSuYUtJtTnU1RlR8VaUomFA1Cys+ANUUMvywAAAAA==" target="_blank">Run the query</a>
