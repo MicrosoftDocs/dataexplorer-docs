@@ -256,21 +256,21 @@ With the computed `Duration` column, it stands out that the flood that caused th
 
 Aggregation functions allow you to group and combine data from multiple rows into a summary value. The summary value depends on the chosen function, for example a count, maximum, minimum, or average value.
 
-In the following examples, we'll use the [summarize](kusto/query/summarizeoperator.md) operator with aggregation functions to find insights, and the [render](kusto/query/renderoperator.md) operator to visualize the results. These functions are useful when working with large amounts of individual events.
+In the following examples, we'll use the [summarize](kusto/query/summarizeoperator.md) operator together with aggregation functions to find insights in our data, and the [render](kusto/query/renderoperator.md) operator to visualize the results.
 
 ### count()
 
 Use `summarize` with the [count](kusto/query/count-aggfunction.md) aggregation function to find the number of events by state.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUAiznnl+aVKNgqJINoDU2FpEqF4JLEklQAtZY60TYAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIyS9JzAkGyRYr2Cok55fmlWhoKiRVKgSXJJakAgChqbNHNwAAAA==" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
-| summarize EventCount = count() by State
+| summarize TotalStorms = count() by State
 ```
 
-|State|EventCount|
+|State|TotalStorms|
 |--|--|
 |TEXAS|4701|
 |KANSAS|3166|
@@ -286,13 +286,16 @@ StormEvents
 
 Then, use `render` to visualize the output.
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIyS9JzAkGyRYr2Cok55fmlWhoKiRVKgSXJJakgtQWpealpBYpJCUWJWckFpUAAFJrtYhKAAAA" target="_blank">Run the query</a>
+
 ```Kusto
 StormEvents
-| summarize EventCount = count() by State
+| summarize TotalStorms = count() by State
 | render barchart
 ```
 
-:::image type="content" source="media/write-queries/count-by-state-bar-chart.png" alt-text="Screenshot of event count by state bar chart created with the render operator. ":::
+:::image type="content" source="media/write-queries/total-storms-by-state-bar-chart.png" alt-text="Screenshot of total storms by state bar chart created with the render operator. ":::
 
 ### countif(), dcount(), and dcountif()
 
