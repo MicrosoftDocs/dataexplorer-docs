@@ -9,7 +9,7 @@ ms.localizationpriority: high
 
 # Write KQL Queries for Azure Data Explorer
 
-In this tutorial, you'll learn how to use the Kusto Query Language (KQL) to perform queries in Azure Data Explorer. We'll give an overview of KQL and then provide you with the essential concepts and tools needed for retrieving, manipulating, and visualizing data. You'll also learn how to join tables and define variables to make your queries more efficient and reusable. By the end of this tutorial, you'll have the foundation you need in KQL to start uncovering valuable insights in your data.
+In this tutorial, you'll learn how to use the [Kusto Query Language (KQL)](./kusto/query/index.md) to perform queries in Azure Data Explorer. We'll give an overview of KQL and then provide you with the essential concepts and tools needed for retrieving, manipulating, and visualizing data. You'll also learn how to join tables and define variables to make your queries more efficient and reusable. By the end of this tutorial, you'll have the foundation you need in KQL to start uncovering valuable insights in your data.
 
 ## Prerequisites
 
@@ -28,19 +28,21 @@ To set up your environment for this tutorial:
 
 :::image type="content" source="media/write-queries/web-ui-help-cluster-environment.png" alt-text="Screenshot of the Azure Data Explorer web UI help cluster environment.":::
 
-## Kusto Query Language overview
+## Introduction to KQL queries
 
-The [Kusto Query Language (KQL)](./kusto/query/index.md) is used to write queries in Azure Data Explorer. A KQL query consists of one or more query statements and returns data in tabular or graphical format.
-
-There are three types of query statements: tabular expression statements, let statements, and set statements. In this tutorial, we'll mainly focus on tabular expression statements but will also briefly cover let statements, which will allow us to use variables in queries.
+A KQL query is a read-only request to retrieve and process data in Azure Data Explorer. These queries consist of one or more query statements and return data in tabular or graphical format.
 
 ### Tabular expression statements
 
-A tabular expression statement is a type of query that manipulates data in tables or tabular datasets. These statements consists of one or more operators, which are separated by a pipe (`|`), and process the data sequentially. Each operator starts with a tabular input and returns a tabular output.
+The most common type of query statement is a tabular expression statement. These statements are used to manipulate data in tables or tabular datasets. They consist of one or more operators, separated by a pipe (`|`), and process the data sequentially. Each operator begins with a tabular input and returns a tabular output.
 
 The order of the operators is important, as the data flows from one operator to the next and is transformed at each step. Think of it like a funnel where the data starts as an entire table and is refined as it passes through each operator, until you're left with a final output at the end.
 
-Read the following query and after we'll go through it step-by-step.
+The following query performs these actions in sequence:
+
+1. The `StormEvents` table is filtered by the `where` operator to include rows with `StartTime` values within the specified date range.
+1. The filtered table is then further filtered by another `where` operator to include rows with a `State` value of "FLORIDA".
+1. The final table is passed to the `count` operator, which returns a new table with a single column, `Count`, containing the number of rows in the table.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKaCJG4HENZENKklVsLVVUHLz8Q/ydHFUAkol55fmlQAA2ZnM/XgAAAA=" target="_blank">Run the query</a>
@@ -55,12 +57,6 @@ StormEvents
 |Count|
 |--|
 |28|
-
-The query performs the following actions in sequence:
-
-1. The `StormEvents` table is passed to the `where` operator which selects rows with `StartTime` values within the specified date range.
-1. The filtered table is then passed to another `where` operator which selects rows with a `State` value of "FLORIDA".
-1. The final table is passed to the `count` operator, which returns a new table with a single column `Count` that contains the number of rows.
 
 ## Get started with common operators
 
