@@ -479,7 +479,7 @@ StormEvents
 
 :::image type="content" source="media/write-queries/deaths-by-storm-type-scatter-chart-NOWHERE.png" alt-text="Screenshot of deaths by storm type count scatter chart.":::
 
-It looks like there may be a connection there to investigate.
+Based on the chart, it seems that there may be a relationship worth exploring between the number of storm types and deaths.
 
 ### case()
 
