@@ -30,11 +30,7 @@ The most common type of query statement is a tabular expression statement. These
 
 The order of the operators is important, as the data flows from one operator to the next and is transformed at each step. Think of it like a funnel where the data starts as an entire table and is refined as it passes through each operator, until you're left with a final output at the end.
 
-The following query performs these actions in sequence:
-
-1. The `StormEvents` table is filtered by the `where` operator to include rows with `StartTime` values within the specified date range.
-1. The filtered table is then further filtered by another `where` operator to include rows with a `State` value of "FLORIDA".
-1. The final table is passed to the `count` operator, which returns a new table with a single column, `Count`, containing the number of rows in the table.
+Read the following query, and then we'll go through it step by step.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKaCJG4HENZENKklVsLVVUHLz8Q/ydHFUAkol55fmlQAA2ZnM/XgAAAA=" target="_blank">Run the query</a>
@@ -49,6 +45,10 @@ StormEvents
 |Count|
 |--|
 |28|
+
+1. The `StormEvents` table is filtered by the `where` operator to include rows with `StartTime` values within the specified date range.
+1. The filtered table is then further filtered by another `where` operator to include rows with a `State` value of "FLORIDA".
+1. The final table is passed to the `count` operator, which returns a new table with a single column, `Count`, containing the number of rows in the table.
 
 ## Get started with common operators
 
