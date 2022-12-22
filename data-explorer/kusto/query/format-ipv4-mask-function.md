@@ -1,13 +1,13 @@
 ---
 title: format_ipv4_mask() - Azure Data Explorer
-description: Learn how to use the format_ipv4_mask() function to parse the input with a netmask and return a string representing the IPv4 address as a CIDR notation.
+description: Learn how to use the format_ipv4_mask() function to parse the input with a netmask and return a string representing the IPv4 address in CIDR notation.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/12/2022
 ---
 # format_ipv4_mask()
 
-Parses the input with a netmask and returns a string representing the IPv4 address as a CIDR notation.
+Parses the input with a netmask and returns a string representing the IPv4 address in CIDR notation.
 
 ```kusto
 print format_ipv4_mask('192.168.1.255', 24) == '192.168.1.0/24'
