@@ -412,6 +412,95 @@ StormEvents
 > [!NOTE]
 > `bin()` is similar to the `floor()` function in other programming languages. It reduces every value to the nearest multiple of the modulus that you supply and allows `summarize` to assign the rows to groups.
 
+### sum()
+
+The results of the last two queries were interesting, since we saw that Freeze/Frost events caused the most damage on average, yet based on the chart most events that cause some level of crop damage happen in the summer. Let's use [sum()](kusto/query/sum-aggfunction.md) to change our last query to count the total damaged crops instead of the amount of events.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOwQrCMBBE74X+wxwTsCWth570on5B/YHULLaHpGWzWhQ/3gRBdNjTm2FnepnZn+4UJJbFC+tITOjFspwnTxhIVqIA5ayQJKJaY7rKNOk06hr/vGmrbaM1ygJJNjgcrbdXOvC8ROxhcke8eW95ehIy/gSwy1j9pDWGB4YpqO+YDTqn8wOm4IiRay9jMt/qYo/IxAAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| where StartTime between (datetime(2007-01-01) .. datetime(2007-12-31)) 
+    and DamageCrops > 0
+| summarize CropDamage = sum(DamageCrops) by bin(StartTime, 7d)
+| render timechart
+```
+
+:::image type="content" source="media/query-monitor-data/sum-crop-damage-by-week.png" alt-text="Screenshot of time chart showing crop damage by week.":::
+
+Now we see that there is a peak in January, which probably was due to Freeze/Frost.
+
+### dcount()
+
+Check how many unique storm types there are by state using [dcount()](kusto/query/dcount-aggfunction.md).
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoLs3NTSzKrEpVCAbJhFQWpBYr2CqkJOeX5pVogBWCxDQVkiqBKhJLUsGa8otKIAIwLQAdj1AoVwAAAA==" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents 
+| summarize StormTypes = dcount(EventType) by State
+| sort by StormTypes
+```
+
+|State|StormTypes|
+|--|--|
+|TEXAS|27|
+|CALIFORNIA|26|
+|PENNSYLVANIA|25|
+|GEORGIA|24|
+|ILLINOIS|23|
+|MARYLAND|23|
+|NORTH CAROLINA|23|
+|MICHIGAN|22|
+|FLORIDA|22|
+|OREGON|21|
+|KANSAS|21|
+|...|...|
+
+It seems some states experience more types of storms than others. Could it be that an increase in storm types is correlated with an increase in damages or deaths?
+
+Let's check.
+
+The following query gets the distinct count of storm types and uses [sum()](kusto/query/sum-aggfunction.md) to calculate the damage per state. Then, it renders a scatter chart to visualize the data points.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NPQ7CMAxG90q9g8dG9AqdgB2pvYBJLX5E4shxKwX18CRkiTd/fv7erCzuupPX2HcHxM05lNeX+g7yzOW6pEARJlgtb16HP1wyM1ZoYcXPBR0+KFO5YajLTTiQaDJwatJzTqOpn/eUDahUzEH4TVYb5dg2F0TIryQQLaqS2CeK/gAUuA+1vwAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| summarize
+    StormTypes = dcount(EventType),
+    TotalDamage = sum(DamageProperty) + sum(DamageCrops)
+    by State
+| project StormTypes, TotalDamage
+| render scatterchart
+```
+
+:::image type="content" source="media/write-queries/crop-damage-by-storm-type-scatter-chart.png" alt-text="Screenshot of scatter chart showing property damage by storm type count.":::
+
+It doesn't seem there's a tight connection here.
+
+What about deaths?
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NsQ6DMAxEdyT+wSOo/EI3OnSGH3ATS4CaBDlHJap+fBOyxNvdPd9NCOoeH/GIbfOjeDjHun6lbSjdlNP53CXSnawJh0d3wdnrhwLNAfwehbFkKjV0RYyrikFPt8p7elvc8vo60wRD8vSuYUtJtTnU1RlR8VaUomFA1Cys+ANUUMvywAAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| summarize
+    StormTypes = dcount(EventType),
+    TotalDeaths = sum(DeathsDirect) + sum(DeathsIndirect)
+    by State
+| project StormTypes, TotalDeaths
+| render scatterchart
+```
+
+:::image type="content" source="media/write-queries/deaths-by-storm-type-scatter-chart-NOWHERE.png" alt-text="Screenshot of deaths by storm type count scatter chart.":::
+
+It looks like there may be a connection there to investigate.
+
 ### case()
 
 The [case()](kusto/query/casefunction.md) function groups data into buckets based on specified conditions. The function returns the corresponding result expression for the first satisfied predicate, or the final else expression if none of the predicates are satisfied. In this example, we group states based on the number of storm-related injuries their citizens sustained.
@@ -470,35 +559,9 @@ StormEvents
 
 :::image type="content" source="media/write-queries/injuries-bucket-pie-chart.png" alt-text="Screenshot of Azure Data Explorer web UI pie chart rendered by the previous query.":::
 
-## Join data from two tables
+## Joins
 
 The [join](kusto/query/joinoperator.md) operator is used to combine rows from tables based on matching values in specified columns and perform analysis on a combined data set.
-
-For example, let's say you want to create a list of states in which both lightning and avalanche events occurred. Use the join operator to merge the rows of two tables—one containing data on lightning events and the other containing data on avalanche events—based on the `State` column.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZR8MtMzSvIy89KVgAqy8jPzFLIz81JsM/PyUosUNLgUgCAYYYgCWAC7SY5liTmJeckZqUpgRZpgMj8PqD2xJFVBAWh8SmZxSWZecglECABlvNsfnAAAAA==" target="_blank">Run the query</a>
-
-```kusto
-StormEvents
-| where EventType == "Lightning"
-| join kind=inner (
-    StormEvents 
-    | where EventType == "Avalanche"
-    )
-    on State  
-| distinct State
-```
-
-|State|
-|--|
-|OREGON|
-|UTAH|
-|WYOMING|
-|WASHINGTON|
-|COLORADO|
-|IDAHO|
-|NEVADA|
 
 ### Cross-table joins
 
@@ -543,6 +606,36 @@ StormEvents
 Add `| render columnchart` to the query to visualize the result.
 
 :::image type="content" source="media/write-queries/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
+
+### Join query results
+
+Joins can be done based off of query results from the same table as well.
+
+Say you want to create a list of states in which both lightning and avalanche events occurred. Use the join operator to merge the rows of two tables—one containing data on lightning events and the other containing data on avalanche events—based on the `State` column.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZR8MtMzSvIy89KVgAqy8jPzFLIz81JsM/PyUosUNLgUgCAYYYgCWAC7SY5liTmJeckZqUpgRZpgMj8PqD2xJFVBAWh8SmZxSWZecglECABlvNsfnAAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| where EventType == "Lightning"
+| join kind=inner (
+    StormEvents 
+    | where EventType == "Avalanche"
+    )
+    on State  
+| distinct State
+```
+
+|State|
+|--|
+|OREGON|
+|UTAH|
+|WYOMING|
+|WASHINGTON|
+|COLORADO|
+|IDAHO|
+|NEVADA|
 
 ## Define variables with let statements
 
