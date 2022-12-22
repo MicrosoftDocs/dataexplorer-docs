@@ -394,18 +394,10 @@ StormEvents
 |2007-03-26T00:00:00Z|2|
 |...|...|
 
-Let's render these results in a `timechart`.
+Add `| render timechart` to the end of the query to visualize the results.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOQQ6CMBBF95ziL9tESIsLVroBT4AXKHQiXbSYYZBoPLzFhYmTSSZ5P5P3e5k5Xh6UZCne2CZiQi+O5RoiYSDZiBKUd0KSiaqNaUpj82pUFf65rcuj1RoF8rjk0bnobtTyfF9whsmGZY3RcXgRvtJ2XpPghHG/SmN4YghJ/Roc0Hid35iSJ8auGqecfQAkVosYtwAAAA==" target="_blank">Run the query</a>
-
-```kusto
-StormEvents
-| where StartTime between (datetime(2007-01-01) .. datetime(2007-12-31)) 
-    and DamageCrops > 0
-| summarize EventCount = count() by bin(StartTime, 7d)
-| render timechart
-```
 
 :::image type="content" source="media/write-queries/crop-damage-by-week-time-chart.png" alt-text="Screenshot of the crop damage by week time chart rendered by the previous query.":::
 
