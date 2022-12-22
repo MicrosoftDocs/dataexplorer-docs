@@ -628,7 +628,9 @@ Let statements are used to define variables within a query. Defining variables c
 
 ### Readability
 
-In the following query, a let statement separates out the parts of the query expression in the previous `join` example. The results are unchanged.
+Defining variables can make it easier to understand the purpose and function of different parts of a query.
+
+In the following query, a let statement separates out the parts of the query expression in the previous `join` example that filter the `StormEvents` table by `EventType`. This separation makes it easier to understand the overall purpose of the query, which is to find the distinct states where both lightning and avalanche events occurred.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WOsQ6DMBBDd77C4jeqDB26sZUfiOBErg1OlZyoKvHxRCAxtFM338l+dhRDp1MwKqe7pTwXOOzitgitYMU7SBbsZ/95CZxDe2baSxMr47r46DkE+YNxZirje0Oz4pGUeCpHp6Tkn4rE2uFNqnXUYsrBjscGj91by9QAAAA=" target="_blank">Run the query</a>
@@ -653,7 +655,9 @@ LightningStorms
 
 ### Reusability
 
-The following query defines a list of `WindStorms` to use multiple times in the tabular statement.
+Defining variables allows you to reuse them multiple times within a query. 
+
+In the following example, a list of `WindStorms` is defined and used to filter the `StormEvents` table. If you want to add another type of wind storm to the query, just add it to the list of `WindStorms` instead of modifying the query itself.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12PwQqDQAxE735F8KTgH5QeC17sRaGHUkrQ4G6pScmuFqEfX7vais1tMm+G5E4eTpab0ot2DvbQjIydrZNzBNPElShjI3EGizY9N6Tug4dgnM1GIexE+AfmvaqtkekL5LY1m0TpVbhdVkuqQLVMsLJhfUl3UTjwMBB7F73gaUgJgqzGB4FlSNY3UhCdzSOqorcDgUF3RR432FT0ULlR7deq7C/4Bhq91F4hAQAA" target="_blank">Run the query</a>
@@ -684,9 +688,9 @@ StormEvents
 
 ### Exploratory potential
 
-Once you define a variable, explore the data by manipulating their values by changing the variable value and rerunning the query.
+Defining variables allows you to easily modify and experiment with different values in your query.
 
-Try changing the `MinDamage` value or the `EventLocation` value in the following query and see what happens.
+In the following example, the variables `MinDamage` and `EventLocation` are used to filter the `StormEvents` table. Explore different scenarios by changing the values of these variables and rerunning the query.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA11OzQqCQBC++xSDJ8VLl06ygViBYD9kL7DVooK7K+NobPTwrW7/c/v+pxEEm1otueSlAAbz2Xix11h+NQhFuT5zqrWymp8mebbeHbZZ4sdeQRrlZOm8O1wrgQIK4mRb2G/0LbuVFHXbQfREe4sEkoEF+zxiE10vJcf69kox1L26BHwog79g9N0bhnAybv5o2qlII42cMz0Abpac3PAAAAA=" target="_blank">Run the query</a>
