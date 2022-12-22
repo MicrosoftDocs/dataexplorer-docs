@@ -483,7 +483,9 @@ Based on the chart, it seems that there may be a relationship worth exploring be
 
 ### case()
 
-The [case()](kusto/query/casefunction.md) function groups data into buckets based on specified conditions. The function returns the corresponding result expression for the first satisfied predicate, or the final else expression if none of the predicates are satisfied. In this example, we group states based on the number of storm-related injuries their citizens sustained.
+The [case()](kusto/query/casefunction.md) function groups data into buckets based on specified conditions. The function returns the corresponding result expression for the first satisfied predicate, or the final else expression if none of the predicates are satisfied.
+
+In this example, we group states based on the number of storm-related injuries their citizens sustained.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlXwzMsqLcpMLXbOL80rUbAFyWjAxFwyi1KTSzQVkioVgksSS1JBOlMrSlLzUuDanEqTs1NB+pITi1MVNHi5FPACVNvsFEwNdAhpUfJJLEpPVSKoDt1oQyKM9k1NySzNJd1sIowOzk3MySFsspJfvkIm1HQlfIo1wdGWX1QCjw2FxOJkAHJXMdXXAQAA" target="_blank">Run the query</a>
@@ -539,7 +541,7 @@ StormEvents
 
 :::image type="content" source="media/write-queries/injuries-bucket-pie-chart.png" alt-text="Screenshot of Azure Data Explorer web UI pie chart rendered by the previous query.":::
 
-## Joins
+## Join data
 
 The [join](kusto/query/joinoperator.md) operator is used to combine rows from tables based on matching values in specified columns and perform analysis on a combined data set.
 
