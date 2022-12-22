@@ -400,7 +400,7 @@ Add `| render timechart` to the end of the query to visualize the results.
 
 The results of the previous queries revealed that Freeze/Frost events tend to cause the most damage on average, but the chart showed that most events that cause some level of crop damage occur during the summer months.
 
-To further investigate this, modify the last query to use the [sum()](kusto/query/sum-aggfunction.md) function instead of the `count()` function. This will allow us to see the total amount of damaged crops, rather than just the number of events that caused some damage.
+To further investigate this, modify the last query to use the [sum()](kusto/query/sum-aggfunction.md) function instead of the `count()` function. This will allow us to see the total number of damaged crops, rather than just the number of events that caused some damage.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOwQrCMBBE74X+wxwTsCWth570on5B/YHULLaHpGWzWhQ/3gRBdNjTm2FnepnZn+4UJJbFC+tITOjFspwnTxhIVqIA5ayQJKJaY7rKNOk06hr/vGmrbaM1ygJJNjgcrbdXOvC8ROxhcke8eW95ehIy/gSwy1j9pDWGB4YpqO+YDTqn8wOm4IiRay9jMt/qYo/IxAAAAA==" target="_blank">Run the query</a>
@@ -483,9 +483,9 @@ Based on the chart, it seems that there may be a relationship worth exploring be
 
 ### make_set()
 
-The [make_set()](kusto/query/makeset-aggfunction.md) operator is a way to take a bunch of rows in a table and turn them into a array of unique values.
+The [make_set()](kusto/query/makeset-aggfunction.md) operator is a way to take a bunch of rows in a table and turn them into an array of unique values.
 
-The following query uses `make_set()` to create a array of the event types that cause deaths in each state. The resulting table is then sorted by the number of storm types in each array.
+The following query uses `make_set()` to create an array of the event types that cause deaths in each state. The resulting table is then sorted by the number of storm types in each array.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NMQ7CMAxFdyTu4LGVGLgATGVgLhJjZeCLBEhSOS4oiMODC2Lq+vz8fqtJwuaOqHk+e9HDQUANWF1uvOCotKYlJfmxbTz9qfl5CIHFP0GthXalR957dV+bVhT4ii5Dq3HD7jUdysdmhQV6SRfrjWAxWRl3kqj9sQiX7oZ4VldNyfUbAcrl9NEAAAA=" target="_blank">Run the query</a>
@@ -567,7 +567,7 @@ StormEvents
 
 :::image type="content" source="media/write-queries/injuries-bucket-pie-chart.png" alt-text="Screenshot of Azure Data Explorer web UI pie chart rendered by the previous query.":::
 
-## Join data
+## Join data from multiple tables
 
 The [join](kusto/query/joinoperator.md) operator is used to combine rows from tables based on matching values in specified columns and perform analysis on a combined data set.
 
