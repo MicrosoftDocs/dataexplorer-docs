@@ -1,13 +1,13 @@
 ---
 title: isnan() - Azure Data Explorer
-description: This article describes isnan() in Azure Data Explorer.
+description: Learn how to use the isnan() function to check if the input is a not-a-number (NaN) value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 12/21/2022
 ---
 # isnan()
 
-Returns whether input is Not-a-Number (NaN) value.  
+Returns whether the input is a Not-a-Number (NaN) value.  
 
 ## Syntax
 

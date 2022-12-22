@@ -1,13 +1,13 @@
 ---
 title: isfinite() - Azure Data Explorer
-description: This article describes isfinite() in Azure Data Explorer.
+description: Learn how to use the isfinite() function to check if the input is a finite value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 12/21/2022
 ---
 # isfinite()
 
-Returns whether input is a finite value (is neither infinite nor NaN).
+Returns whether the input is a finite value (is neither infinite nor NaN).
 
 ## Syntax
 

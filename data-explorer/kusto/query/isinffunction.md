@@ -1,13 +1,13 @@
 ---
 title: isinf() - Azure Data Explorer
-description: This article describes isinf() in Azure Data Explorer.
+description: Learn how to use the isinf() function to check if the input is an infinite value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 12/21/2022
 ---
 # isinf()
 
-Returns whether input is an infinite (positive or negative) value.  
+Returns whether the input is an infinite (positive or negative) value.  
 
 ## Syntax
 
