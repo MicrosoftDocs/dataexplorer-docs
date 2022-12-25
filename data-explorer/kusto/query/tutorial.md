@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-In this tutorial, you'll learn how to use the [Kusto Query Language (KQL)](./kusto/query/index.md) to retrieve, manipulate, and visualize your data stored in Azure Data Explorer. You'll learn about the essential operators and functions needed to effectively work with your data, as well as how to join tables and define variables to make your queries more efficient and reusable.
+In this tutorial, you'll learn how to use the [Kusto Query Language (KQL)](index.md) to retrieve, manipulate, and visualize your data stored in Azure Data Explorer. You'll learn about the essential operators and functions needed to effectively work with your data, as well as how to join tables and define variables to make your queries more efficient and reusable.
 
 To follow along, use the buttons above each example query to automatically run them. The examples in this tutorial use the `StormEvents` table, which is located in the [Sample database](https://help.kusto.windows.net/Samples) of the publicly available and free **help** cluster.
 
@@ -59,7 +59,7 @@ Let's learn some common query operators using the `StormEvents` table. These ope
 
 ### count
 
-Let's begin by using the [count](kusto/query/countoperator.md) operator to find the number of storm records in our table.
+Let's begin by using the [count](./countoperator.md) operator to find the number of storm records in our table.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRSM4vzSsBALU2eHsTAAAA" target="_blank">Run the query</a>
@@ -74,7 +74,7 @@ StormEvents | count
 
 ### take
 
-To get a sense of the data in our table, let's use the [take](kusto/query/takeoperator.md) operator to view a sample of records. This operator returns a specified number of random rows from the table, which can be useful for previewing the data and becoming familiar with it.
+To get a sense of the data in our table, let's use the [take](./takeoperator.md) operator to view a sample of records. This operator returns a specified number of random rows from the table, which can be useful for previewing the data and becoming familiar with it.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d" target="_blank">Run the query</a>
@@ -95,7 +95,7 @@ The following table shows only 6 of the 22 returned columns. To see the full out
 
 ### project
 
-Let's use the [project](kusto/query/projectoperator.md) operator to simplify our view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
+Let's use the [project](./projectoperator.md) operator to simplify our view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUShJzE5VMDQAMQuK8rNSk0sUgksSS1J1FMBqQioLgEyXxNzE9NSAovyC1KKSSgBtBl0/QgAAAA==" target="_blank">Run the query</a>
@@ -121,7 +121,7 @@ StormEvents
 
 ### distinct
 
-It appears that there are multiple types of storms based on the results of our previous query. Let's use the [distinct](kusto/query/distinctoperator.md) operator to list all of the unique storm types.
+It appears that there are multiple types of storms based on the results of our previous query. Let's use the [distinct](./distinctoperator.md) operator to list all of the unique storm types.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRSMksLsnMSy5RAIuEVBakAgD24XVdIAAAAA==" target="_blank">Run the query</a>
@@ -148,7 +148,7 @@ There are 46 types of storms in our table.
 
 ### where
 
-The [where](kusto/query/whereoperator.md) operator filters rows of data based on certain criteria. Let's look for storm events in a specific `State` of a specific `EventType`.
+The [where](./whereoperator.md) operator filters rows of data based on certain criteria. Let's look for storm events in a specific `State` of a specific `EventType`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSxJVbC1VVAPcY1wDFZXSMxLUQArCqksgEi45eTnp6iDtBQU5WelJpeANBWVhGTmpuoouOalQBhgg3QQWnUUXBJzE9NTA4ryC1KLSioBBDYIBX4AAAA=" target="_blank">Run the query</a>
@@ -172,7 +172,7 @@ There are 146 events that match these conditions. Here's a sample of 5 of them.
 
 ### sort
 
-To view the top five floods in Texas that caused the most damage, let's use the [sort](kusto/query/sortoperator.md) operator to arrange the rows in descending order based on the `DamageProperty` column and `take` to display only the top five rows.
+To view the top five floods in Texas that caused the most damage, let's use the [sort](./sortoperator.md) operator to arrange the rows in descending order based on the `DamageProperty` column and `take` to display only the top five rows.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12NPQsCMRBEe8H/MF2atJZXCMZauBS28bL4mWzYLCcBf7zkrhDsHszMm1FZkpspa91uPnjfSAijBiUMA4x35/1oEHLEUvKtrMHxxRxNn1QWxaXhEFK40km4kGhDpDr1WMOTsOtUhB80abeL+nsiC5fjCsuj/X3YP90XMW6LAacAAAA=" target="_blank">Run the query</a>
@@ -198,7 +198,7 @@ StormEvents
 
 ### top
 
-The [top](kusto/query/topoperator.md) operator returns the first *n* rows sorted by the specified column.
+The [top](./topoperator.md) operator returns the first *n* rows sorted by the specified column.
 
 The following query will return the same results as the previous example in the `sort` section but with one less operator.
 
@@ -222,7 +222,7 @@ StormEvents
 
 ### extend
 
-Use the [extend](kusto/query/extendoperator.md) operator to add computed columns to a table.
+Use the [extend](./extendoperator.md) operator to add computed columns to a table.
 
 Let's extend the table showing the top five floods in Texas to include a `Duration` column by calculating the difference between the `StartTime` and `EndTime` columns.
 
@@ -251,11 +251,11 @@ With the computed `Duration` column, it stands out that the flood that caused th
 
 Aggregation functions allow you to group and combine data from multiple rows into a summary value. The summary value depends on the chosen function, for example a count, maximum, minimum, or average value.
 
-In the following examples, we'll use the [summarize](kusto/query/summarizeoperator.md) operator together with aggregation functions to find insights in our data, and the [render](kusto/query/renderoperator.md) operator to visualize the results.
+In the following examples, we'll use the [summarize](./summarizeoperator.md) operator together with aggregation functions to find insights in our data, and the [render](./renderoperator.md) operator to visualize the results.
 
 ### count()
 
-Use `summarize` with the [count](kusto/query/count-aggfunction.md) aggregation function to find the number of events by state.
+Use `summarize` with the [count](./count-aggfunction.md) aggregation function to find the number of events by state.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIyS9JzAkGyRYr2Cok55fmlWhoKiRVKgSXJJakAgChqbNHNwAAAA==" target="_blank">Run the query</a>
@@ -290,13 +290,13 @@ StormEvents
 | render barchart
 ```
 
-:::image type="content" source="media/write-queries/total-storms-by-state-bar-chart.png" alt-text="Screenshot of total storms by state bar chart created with the render operator. ":::
+:::image type="content" source="images/tutorial/total-storms-by-state-bar-chart.png" alt-text="Screenshot of total storms by state bar chart created with the render operator.":::
 
 ### countif()
 
 It's possible to use multiple aggregation functions in a single `summarize` operator to produce several computed columns.
 
-Let's add the [countif()](kusto/query/countif-aggfunction.md) function to our query to add a column showing the count of storms that caused damage. Then, we'll `extend` our table with a calculation between the `TotalStorms` and `StormsWithCropDamage` columns to find the percentage of storms that caused damage.
+Let's add the [countif()](./countif-aggfunction.md) function to our query to add a column showing the count of storms that caused damage. Then, we'll `extend` our table with a calculation between the `TotalStorms` and `StormsWithCropDamage` columns to find the percentage of storms that caused damage.
 
 Finally, use the `top` operator to identify states with the most crop damage from storms.
 
@@ -361,7 +361,7 @@ StormEvents
 
 ### bin()
 
-Instead of grouping rows by a specific column value, we can use the [bin()](kusto/query/binfunction.md) function to divide the data into distinct ranges based on numeric or time values.
+Instead of grouping rows by a specific column value, we can use the [bin()](./binfunction.md) function to divide the data into distinct ranges based on numeric or time values.
 
 The following example finds the event count of storms that caused crop damage for each week in 2007.
 
@@ -394,7 +394,7 @@ Add `| render timechart` to the end of the query to visualize the results.
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOQQ6CMBBF95ziL9tESIsLVroBT4AXKHQiXbSYYZBoPLzFhYmTSSZ5P5P3e5k5Xh6UZCne2CZiQi+O5RoiYSDZiBKUd0KSiaqNaUpj82pUFf65rcuj1RoF8rjk0bnobtTyfF9whsmGZY3RcXgRvtJ2XpPghHG/SmN4YghJ/Roc0Hid35iSJ8auGqecfQAkVosYtwAAAA==" target="_blank">Run the query</a>
 
-:::image type="content" source="media/write-queries/crop-damage-by-week-time-chart.png" alt-text="Screenshot of the crop damage by week time chart rendered by the previous query.":::
+:::image type="content" source="images/tutorial/crop-damage-by-week-time-chart.png" alt-text="Screenshot of the crop damage by week time chart rendered by the previous query.":::
 
 > [!NOTE]
 > `bin()` is similar to the `floor()` function in other programming languages. It reduces every value to the nearest multiple of the modulus that you supply and allows `summarize` to assign the rows to groups.
@@ -403,7 +403,7 @@ Add `| render timechart` to the end of the query to visualize the results.
 
 The results of the previous queries revealed that Freeze/Frost events tend to cause the most damage on average, but the chart showed that most events that cause some level of crop damage occur during the summer months.
 
-To further investigate this, modify the last query to use the [sum()](kusto/query/sum-aggfunction.md) function instead of the `count()` function. This will allow us to see the total number of damaged crops, rather than just the number of events that caused some damage.
+To further investigate this, modify the last query to use the [sum()](./sum-aggfunction.md) function instead of the `count()` function. This will allow us to see the total number of damaged crops, rather than just the number of events that caused some damage.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOwQrCMBBE74X+wxwTsCWth570on5B/YHULLaHpGWzWhQ/3gRBdNjTm2FnepnZn+4UJJbFC+tITOjFspwnTxhIVqIA5ayQJKJaY7rKNOk06hr/vGmrbaM1ygJJNjgcrbdXOvC8ROxhcke8eW95ehIy/gSwy1j9pDWGB4YpqO+YDTqn8wOm4IiRay9jMt/qYo/IxAAAAA==" target="_blank">Run the query</a>
@@ -416,13 +416,13 @@ StormEvents
 | render timechart
 ```
 
-:::image type="content" source="media/write-queries/sum-crop-damage-by-week.png" alt-text="Screenshot of time chart showing crop damage by week.":::
+:::image type="content" source="images/tutorial/sum-crop-damage-by-week.png" alt-text="Screenshot of time chart showing crop damage by week.":::
 
 Now we can see a peak in crop damage in January, which probably was due to Freeze/Frost.
 
 ### dcount()
 
-Check how many unique storm types there are by state using [dcount()](kusto/query/dcount-aggfunction.md).
+Check how many unique storm types there are by state using [dcount()](./dcount-aggfunction.md).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoLs3NTSzKrEpVCAbJhFQWpBYr2CqkJOeX5pVogBWCxDQVkiqBKhJLUsGa8otKIAIwLQAdj1AoVwAAAA==" target="_blank">Run the query</a>
@@ -446,7 +446,7 @@ It seems some states experience more types of storms than others. Could it be th
 
 Let's check.
 
-The following query gets the distinct count of storm types and uses [sum()](kusto/query/sum-aggfunction.md) to calculate the damage per state. Then, it renders a scatter chart to visualize the data points.
+The following query gets the distinct count of storm types and uses [sum()](./sum-aggfunction.md) to calculate the damage per state. Then, it renders a scatter chart to visualize the data points.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NPQ7CMAxG90q9g8dG9AqdgB2pvYBJLX5E4shxKwX18CRkiTd/fv7erCzuupPX2HcHxM05lNeX+g7yzOW6pEARJlgtb16HP1wyM1ZoYcXPBR0+KFO5YajLTTiQaDJwatJzTqOpn/eUDahUzEH4TVYb5dg2F0TIryQQLaqS2CeK/gAUuA+1vwAAAA==" target="_blank">Run the query</a>
@@ -461,7 +461,7 @@ StormEvents
 | render scatterchart
 ```
 
-:::image type="content" source="media/write-queries/damage-by-storm-type-count-scatter-chart.png" alt-text="Screenshot of scatter chart showing property damage by storm type count.":::
+:::image type="content" source="images/tutorial/damage-by-storm-type-count-scatter-chart.png" alt-text="Screenshot of scatter chart showing property damage by storm type count.":::
 
 We don't see strong correlation.
 
@@ -480,13 +480,13 @@ StormEvents
 | render scatterchart
 ```
 
-:::image type="content" source="media/write-queries/deaths-by-storm-type-scatter-chart-NOWHERE.png" alt-text="Screenshot of deaths by storm type count scatter chart.":::
+:::image type="content" source="images/tutorial/deaths-by-storm-type-scatter-chart-NOWHERE.png" alt-text="Screenshot of deaths by storm type count scatter chart.":::
 
 Based on the chart, it seems that there may be a relationship worth exploring between the number of storm types and deaths.
 
 ### make_set()
 
-The [make_set()](kusto/query/makeset-aggfunction.md) operator is a way to take a bunch of rows in a table and turn them into an array of unique values.
+The [make_set()](./makeset-aggfunction.md) operator is a way to take a bunch of rows in a table and turn them into an array of unique values.
 
 The following query uses `make_set()` to create an array of the event types that cause deaths in each state. The resulting table is then sorted by the number of storm types in each array.
 
@@ -512,7 +512,7 @@ StormEvents
 
 ### case()
 
-The [case()](kusto/query/casefunction.md) function groups data into buckets based on specified conditions. The function returns the corresponding result expression for the first satisfied predicate, or the final else expression if none of the predicates are satisfied.
+The [case()](./casefunction.md) function groups data into buckets based on specified conditions. The function returns the corresponding result expression for the first satisfied predicate, or the final else expression if none of the predicates are satisfied.
 
 In this example, we group states based on the number of storm-related injuries their citizens sustained.
 
@@ -568,11 +568,11 @@ StormEvents
 | render piechart 
 ```
 
-:::image type="content" source="media/write-queries/injuries-bucket-pie-chart.png" alt-text="Screenshot of Azure Data Explorer web UI pie chart rendered by the previous query.":::
+:::image type="content" source="images/tutorial/injuries-bucket-pie-chart.png" alt-text="Screenshot of Azure Data Explorer web UI pie chart rendered by the previous query.":::
 
 ## Join data from multiple tables
 
-The [join](kusto/query/joinoperator.md) operator is used to combine rows from tables based on matching values in specified columns and perform analysis on a combined data set.
+The [join](./joinoperator.md) operator is used to combine rows from tables based on matching values in specified columns and perform analysis on a combined data set.
 
 ### Cross-table joins
 
@@ -619,7 +619,7 @@ Add `| render columnchart` to the query to visualize the result.
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOQQrCQAxF94J3yFJB8ARdWfeFniC2QVM7yZhmhIqHt2MRpeAy+Xk/r3a1cLyT+LBePWFIIaDxg6AyjWQ+lhjwTFDkaDMPn2gLpxFqR6eMdsoCV5a2YBGyJHxLU43G1KOzSomOoPIFomlHjc+L3eJhRXbAyBNSLFX2P6VvZzXPJn8K8omRtGTQaJ+CNBc0fwFjx28n+AAAAA==" target="_blank">Run the query</a>
 
-:::image type="content" source="media/write-queries/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
+:::image type="content" source="images/tutorial/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
 
 ### Join query results
 
@@ -748,8 +748,8 @@ StormEvents
 
 ## Next steps
 
-- Read more about the [Kusto Query Language](./kusto/query/index.md)
-- Learn how to perform [cross-database and cross-cluster queries](./kusto/query/cross-cluster-or-database-queries.md)
+- Read more about the [Kusto Query Language](index.md)
+- Learn how to perform [cross-database and cross-cluster queries](cross-cluster-or-database-queries.md)
 
 ::: zone-end
 
