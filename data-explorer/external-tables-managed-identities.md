@@ -49,6 +49,12 @@ Enter the following policy alter-merge command for the database level:
 > [!NOTE]
 > To override the existing policy, use the `alter` command instead of the `alter-merge` command.
 
+## Grant correct external resource permissions
+
+When accessing external storage using an external table, correct permissions must be provided. In this example, We demonstrate creation of Azure Storage external tables with managed identities, and therefore require to grant the managed identity with the correct Azure Storage RBAC permissions.
+
+For external table query operations, the managed identity must be granted with `Storage Blob Data Reader` permissions. For external table used for export operations, the managed identity must be granted `Storage Blob Data Contributor` permissions. Add these permissions by following [Azure Storage - Assign an Azure role](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal#assign-an-azure-role).
+
 ## Create an external table
 
 There are two types of external tables, [Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md) and [SQL Server external tables](kusto/management/external-sql-tables.md), and both support authentication with managed identities. In this section, we'll demonstrate creation of Azure Storage external tables with managed identities.
