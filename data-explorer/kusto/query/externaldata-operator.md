@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors
 The `externaldata` operator returns a table whose schema is defined in the query itself, and whose data is read from an external storage artifact, such as a blob in Azure Blob Storage or a file in Azure Data Lake Storage.
 
 > [!NOTE]
-> The `externaldata` operator supports Shared Access (SAS) key, Access key, and Azure AD Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-authentication-methods.md).
+> The `externaldata` operator supports Shared Access Signature (SAS) key, Access key, and Azure AD Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-authentication-methods.md).
 
 ::: zone pivot="azuredataexplorer"
 
@@ -44,8 +44,8 @@ The `externaldata` operator returns a table whose schema is defined in the query
 
 | Property         | Type     | Description       |
 |------------------|----------|-------------------|
-| format         | string | The data format. If unspecified, an attempt is made to detect the data format from file extension. The default is `CSV`. Any of the [ingestion data formats](../../ingestion-supported-formats.md) are supported. |
-| ignoreFirstRecord | bool | If set to true, the first record in every file is ignored. This property is useful when querying CSV files with headers. |
+| format         | string | The data format. If unspecified, an attempt is made to detect the data format from file extension. The default is `CSV`. All [ingestion data formats](../../ingestion-supported-formats.md) are supported. |
+| ignoreFirstRecord | bool | If set to `true`, the first record in every file is ignored. This property is useful when querying CSV files with headers. |
 | ingestionMapping | string | Indicates how to map data from the source file to the actual columns in the operator result set. See [data mappings](../management/mappings.md). |
 
 > [!NOTE]
