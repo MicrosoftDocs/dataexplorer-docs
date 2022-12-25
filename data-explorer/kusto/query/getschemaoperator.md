@@ -1,6 +1,6 @@
 ---
 title: getschema operator  - Azure Data Explorer
-description: This article describes getschema operator  in Azure Data Explorer.
+description: Learn how to use the getschema operator to create a tabular schema of the input.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/18/2022
@@ -11,7 +11,7 @@ Produce a table that represents a tabular schema of the input.
 
 ## Syntax
 
-*T* `| ` `getschema`
+*T* `|` `getschema`
 
 ## Example
 

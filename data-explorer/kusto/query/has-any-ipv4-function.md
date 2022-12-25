@@ -1,6 +1,6 @@
 ---
 title: has_any_ipv4() - Azure Data Explorer
-description: This article describes has_any_ipv4() in Azure Data Explorer.
+description: Learn how to use the has_any_ipv4() function to check if any IPv4 addresses appear in the text.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/18/2022
@@ -11,8 +11,8 @@ Returns a value indicating whether one of specified IPv4 addresses appears in a 
 
 IP address entrances in a text must be properly delimited with non-alphanumeric characters. For example, properly delimited IP addresses are:
 
- * "These requests came from: 192.168.1.1, 10.1.1.115 and 10.1.1.201"
- * "05:04:54 127.0.0.1 GET /favicon.ico 404"
+* "These requests came from: 192.168.1.1, 10.1.1.115 and 10.1.1.201"
+* "05:04:54 127.0.0.1 GET /favicon.ico 404"
 
 ## Syntax
 

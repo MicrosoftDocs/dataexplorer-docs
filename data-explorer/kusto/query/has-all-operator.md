@@ -1,6 +1,6 @@
 ---
 title: The case-insensitive has_all string operator - Azure Data Explorer
-description: This article describes the case-insensitive has_all string operator in Azure Data Explorer.
+description: Learn how to use the has_all string operator to filter a record set for data with one or more case-insensitive search strings.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/18/2022

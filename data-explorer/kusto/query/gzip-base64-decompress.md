@@ -1,6 +1,6 @@
 ---
 title: gzip_decompress_from_base64_string() - Azure Data Explorer 
-description: This article describes the gzip_decompress_from_base64_string() command in Azure Data Explorer.
+description: Learn how to use the gzip_decompress_from_base64_string() function to decode an input string from base64 and perform a gzip-decompression.
 ms.reviewer: elgevork
 ms.topic: reference
 ms.date: 12/18/2022
@@ -27,9 +27,9 @@ Decodes the input string from base64 and performs gzip decompression.
 
 ## Returns
 
-* Returns a `string` that represents the original string. 
-* Returns an empty result if decompression or decoding failed. 
-    * For example, invalid gzip-compressed and base 64-encoded strings will return an empty output.
+* Returns a `string` that represents the original string.
+* Returns an empty result if decompression or decoding failed.
+  * For example, invalid gzip-compressed and base 64-encoded strings will return an empty output.
 
 ## Examples
 

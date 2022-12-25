@@ -1,6 +1,6 @@
 ---
 title: gzip_compress_to_base64_string - Azure Data Explorer 
-description: This article describes the gzip_compress_to_base64_string() command in Azure Data Explorer.
+description: Learn how to use the gzip_compress_to_base64_string() function to gzip-compress an input and encode it into a base64 string.
 ms.reviewer: elgevork
 ms.topic: reference
 ms.date: 12/18/2022
@@ -22,7 +22,7 @@ Performs gzip compression and encodes the result to base64.
 
 ## Returns
 
-* Returns a `string` that represents gzip-compressed and base64-encoded original string. 
+* Returns a `string` that represents gzip-compressed and base64-encoded original string.
 * Returns an empty result if compression or encoding failed.
 
 ## Example

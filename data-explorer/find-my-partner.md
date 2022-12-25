@@ -3,7 +3,7 @@ title: Find an Azure Data Explorer partner
 description: Learn about our partners and how they can help you with Azure Data Explorer.
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 12/01/2022
+ms.date: 12/20/2022
 ---
 # Find an Azure Data Explorer partner
 
@@ -109,6 +109,31 @@ beanTech is the IT partner that can help you manage the entire data chain in the
 
 - [https://www.beantech.it/case-studies/analisi-dati-raccolti-dallimpianto-turbine-remote-monitoring-per-fincantieri/](https://www.beantech.it/case-studies/analisi-dati-raccolti-dallimpianto-turbine-remote-monitoring-per-fincantieri/)
 - [https://www.beantech.it/case-studies/fameccanica/](https://www.beantech.it/case-studies/fameccanica/)
+
+## Data Addiction Pty Ltd
+
+:::image type="icon" source="media/findmypartner/data-addiction-logo.png":::
+
+Data Addiction is a specialist provider of Microsoft Data and AI, and Dynamics 365 solutions in Australia and New Zealand.
+
+**Partner type**
+
+- System Integrator
+- Specialist in Microsoft Data & AI and Dynamics 365
+
+**Focus geography**
+
+- Australia
+- New Zealand
+
+**Contact**
+
+- [ben.johnson@dataaddiction.com.au](mailto:ben.johnson@dataaddiction.com.au)
+
+**Additional information**
+
+- [Data Addiction Pty Ltd website](https://www.dataaddiction.com.au/)
+- [Microsoft partner site for Data Addiction Pty Ltd](https://appsource.microsoft.com/marketplace/partner-dir/ba43003a-491b-4811-8473-d6fcde34296d/overview)
 
 ## Data Mastery
 
@@ -240,6 +265,32 @@ We build up our customer's data platforms powered with Azure data services. Our 
 
 - [iLink Systems website](https://www.ilink-digital.com)
 - [Microsoft partner site for iLink Systems](https://appsource.microsoft.com/marketplace/partner-dir/a8e5d571-43e8-4c3c-96be-344156cf6887/overview)
+
+## Insight
+
+:::image type="icon" source="media/findmypartner/insight-logo.jpg":::
+
+Insight is ready to help you get more value from your data at any scale. Harnessing the power of Azure Data Explorer, Insight can drive real-time intelligence discovery and delivery over your log, IoT, web-click or other large-scale, fast-paced data with a secure, cost-effective solution.
+
+**Partner type**
+
+- global solutions integrator
+- SI
+
+**Focus geography**
+
+- North America
+- EMEA
+- APAC
+
+**Contact**
+
+- [alliances@insight.com](mailto:alliances@insight.com)
+
+**Additional information**
+
+- [Insight website](https://www.insight.com)
+- [Microsoft partner site for Insight](https://appsource.microsoft.com/marketplace/partner-dir/7c70c055-d83e-420c-8645-615d9b242d59/overview)
 
 ## Intelligent Spaces Limited
 
@@ -481,7 +532,7 @@ Tricloud provides an end-to-end Industrial IoT Platform based on Azure IoT and A
 
 :::image type="icon" source="media/findmypartner/uptake-logo.png":::
 
-Uptake provides our customers with the scalable, secure ability to connect their machines, people and data together to accelerate and unlock AI-enabled industrial intelligence to optimize costs, manage risks and increase revenue assurance. 
+Uptake provides our customers with the scalable, secure ability to connect their machines, people and data together to accelerate and unlock AI-enabled industrial intelligence to optimize costs, manage risks and increase revenue assurance.
 
 Uptake is the intelligence system for industrial assets. With the power of data acquisition and artificial intelligence, Uptake gives all departments — maintenance, reliability, and operations teams — a single, shared, and contextualized view of every asset in an operation. Driven by powerful data science models and cloud computing, our products deliver insights to customers that help them predict and prevent asset failure, mitigate risk, optimize maintenance strategy and asset performance, reduce costs, assure productivity, and enhance safety. With 48+ patents and recognized for leadership in Industrial AI by Gartner, the World Economic Forum, CNBC, and Forbes, Uptake is headquartered in Chicago with presence in Canada, South America, Europe, India, and Australia.
 
@@ -511,3 +562,28 @@ Uptake provides asset-intensive companies the transparency, traceable, secure, c
 - [https://explore.uptake.com/c/case-study-ensign?x=BEdWTc](https://explore.uptake.com/c/case-study-ensign?x=BEdWTc)
 - [https://explore.uptake.com/c/case-Study-enerplus?x=DBxBPq](https://explore.uptake.com/c/case-Study-enerplus?x=DBxBPq)
 - [https://explore.uptake.com/c/case-study-davey-textiles?x=ri4YdG](https://explore.uptake.com/c/case-study-davey-textiles?x=ri4YdG)
+
+## Zure Ltd
+
+:::image type="icon" source="media/findmypartner/zure-ltd-logo.jpg":::
+
+Experienced company that is focused on full lifecycle custom software development and integrations using Azure PaaS services.
+
+**Partner type**
+
+- System Integrator
+
+**Focus geography**
+
+- Finland
+- Denmark
+- Belgium
+
+**Contact**
+
+- [jaakko.nikko@zure.com](mailto:jaakko.nikko@zure.com)
+
+**Additional information**
+
+- [Zure Ltd website](https://www.zure.com)
+- [Microsoft partner site for Zure Ltd](https://appsource.microsoft.com/marketplace/partner-dir/d4842539-1664-4a55-981e-a6a6643b6d02/overview)
