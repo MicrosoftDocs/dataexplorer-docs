@@ -52,7 +52,7 @@ to see the result:
 |-----|
 |   28|
 
-To try out some more Kusto queries, see [Tutorial: Use Kusto queries](tutorial.md).
+To try out some more Kusto queries, see [Tutorial: Write Kusto queries](tutorial.md).
 
 ## Control commands
 
@@ -71,7 +71,7 @@ For more information on control commands, see [Management (control commands) ove
 
 ## Next steps
 
-* [Tutorial: Use Kusto queries](tutorial.md)
+* [Tutorial: Write Kusto queries](tutorial.md)
 * [Samples for Kusto Queries](samples.md)
 * [KQL quick reference](../../kql-quick-reference.md)
 * [SQL to Kusto cheat sheet](sqlcheatsheet.md)

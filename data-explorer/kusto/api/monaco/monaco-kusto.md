@@ -241,4 +241,4 @@ Run the following commands from the root of the cloned repo:
 ## Next steps
 
 - [Kusto Query Language (KQL) overview](../../query/index.md)
-- [Use Kusto queries](../../query/tutorial.md)
+- [Write Kusto queries](../../query/tutorial.md)
