@@ -21,7 +21,7 @@ Returns the year part of the `datetime` argument.
 
 ## Returns
 
-The  year that contains the given *date*.
+The year that contains the given *date*.
 
 ## Example
 
