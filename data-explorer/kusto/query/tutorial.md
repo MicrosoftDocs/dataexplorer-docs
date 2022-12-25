@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Kusto queries'
-description: This tutorial describes how to use queries in the Kusto Query Language to meet common query needs.
+title: 'Tutorial: Write Kusto queries'
+description: This tutorial describes how to write queries in the Kusto Query Language to meet common query needs.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/19/2022
@@ -8,7 +8,7 @@ zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 
-# Tutorial: Use Kusto queries
+# Tutorial: Write Kusto queries
 
 ::: zone pivot="azuredataexplorer"
 
